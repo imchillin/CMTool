@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Weavers>
+  <PropertyChanged />
+  <Costura CreateTemporaryAssemblies='true' />
+  <Costura IncludeDebugSymbols='false' />
+  <Costura>
+    <IncludeAssemblies>
+      Memory
+      PropetyuChanged
+      MahApps.Metro
+    </IncludeAssemblies>
+  </Costura>
+  <Costura />
+</Weavers>
