@@ -226,7 +226,7 @@ namespace FFXIVTool.Views
 
         private void Timexd_ValueChanged_1(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.TimeAddress, Settings.Instance.Character.TimeControl), "byte", Timexd.Value.ToString());
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.TimeAddress, Settings.Instance.Character.TimeControl), "int", Timexd.Value.ToString());
             Timexd.ValueChanged -= Timexd_ValueChanged_1;
         }
 
@@ -288,16 +288,6 @@ namespace FFXIVTool.Views
         private void WeatherBox_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             isUserInteraction = true;
-        }
-
-        private void HousingButton_Checked(object sender, RoutedEventArgs e)
-        {
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.HousingOffset, "byte", "01");
-        }
-
-        private void HousingButton_Unchecked(object sender, RoutedEventArgs e)
-        {
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.HousingOffset, "byte", "00");
         }
 
         private void Filters_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)

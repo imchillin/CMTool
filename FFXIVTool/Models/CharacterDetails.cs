@@ -196,7 +196,7 @@ namespace FFXIVTool.Models
         [JsonIgnore] public Address<string> HeadSlot { get; set; }
         [JsonIgnore] public Address<string> BodySlot { get; set; }
         [JsonIgnore] public Address<string> ArmSlot { get; set; }
-        [JsonIgnore] public Address<byte> TimeControl { get; set; }
+        [JsonIgnore] public Address<int> TimeControl { get; set; }
         [JsonIgnore] public Address<byte> Weather { get; set; }
         [JsonIgnore] public Address<byte> EntityType { get; set; }
         [JsonIgnore] public Address<int> Territoryxd { get; set; }
@@ -262,7 +262,7 @@ namespace FFXIVTool.Models
             Jaw = new Address<byte>();
             RBust = new Address<byte>();
             Jaw = new Address<byte>();
-            TimeControl = new Address<byte>();
+            TimeControl = new Address<int>();
             Weather = new Address<byte>();
             LFingerSlot = new Address<string>();
             RFingerSlot = new Address<string>();

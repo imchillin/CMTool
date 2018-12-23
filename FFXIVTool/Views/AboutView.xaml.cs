@@ -27,7 +27,7 @@ namespace FFXIVTool.Views
         }
         private void GitHubButton_OnClick(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://github.com/SaberNaut/FFTrainer");
+            Process.Start("https://github.com/Khyrou/SSTool");
         }
         private void DonateButton_OnClick(object sender, RoutedEventArgs e)
         {
@@ -36,7 +36,7 @@ namespace FFXIVTool.Views
 
         private void ChatButton_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://discord.gg/nxu2Ydp");
+            Process.Start("https://discord.gg/jZ7kWEZ");
         }
     }
 }

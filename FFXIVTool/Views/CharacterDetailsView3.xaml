@@ -126,13 +126,9 @@
         </ComboBox>
         <Button Content="Refresh Me" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="207,384,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="212,346,0,0" TextWrapping="Wrap" Text="Not all Weather ID work on X Zone" VerticalAlignment="Top" Width="130" Height="40"/>
-        <Slider x:Name="Timexd" Value="{Binding Path=CharacterDetails.TimeControl.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="378,367,0,0" VerticalAlignment="Top" Width="234" Maximum="10" SmallChange="1" TickPlacement="BottomRight" Interval="1" IsSnapToTickEnabled="True" Height="32" SourceUpdated="Timexd_SourceUpdated"/>
+        <Slider x:Name="Timexd" Value="{Binding Path=CharacterDetails.TimeControl.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="378,367,0,0" VerticalAlignment="Top" Width="234" Maximum="90000" SmallChange="1" Interval="1" Height="32" SourceUpdated="Timexd_SourceUpdated"/>
         <Label Content="Time Control" HorizontalAlignment="Left" Margin="448,342,0,0" VerticalAlignment="Top" Width="116"/>
         <TextBlock HorizontalAlignment="Left" Margin="621,363,0,0" TextWrapping="Wrap" Text="Set this slider to minimum for real Eorzea Time" VerticalAlignment="Top" Height="36" Width="161"/>
-        <ToggleButton Margin="477,426,0,0" Height="21" Name="HousingButton" Checked="HousingButton_Checked" Unchecked="HousingButton_Unchecked" VerticalAlignment="Top" HorizontalAlignment="Left" Width="46"/>
-        <Label Content="Remove Housing Placement Restriction" HorizontalAlignment="Left" Margin="379,398,0,0" VerticalAlignment="Top"/>
-        <Label Content="Off" HorizontalAlignment="Left" Margin="455,422,0,0" VerticalAlignment="Top"/>
-        <Label Content="On" HorizontalAlignment="Left" Margin="513,422,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="BGMTEXT" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="822,366,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="89" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Text="0">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >

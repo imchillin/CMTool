@@ -30,11 +30,9 @@ namespace FFXIVTool.Utility
         #endregion
         public string AoBOffset { get; set; }
         public string GposeOffset { get; set; }
-        public string GposeEmoteOffset { get; set; }
         public string CameraOffset { get; set; }
         public string TimeOffset { get; set; }
         public string WeatherOffset { get; set; }
-        public string HousingOffset { get; set; }
         public string TerritoryOffset { get; set; }
         public string TargetOffset { get; set; }
         public string GposeFilters { get; set; }

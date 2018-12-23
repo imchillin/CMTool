@@ -43,8 +43,7 @@ namespace FFXIVTool
             AutoUpdater.RunUpdateAsAdmin = true;
             AutoUpdater.DownloadPath = Environment.CurrentDirectory;
             AutoUpdater.Start("https://raw.githubusercontent.com/SaberNaut/xd/master/UpdateTest.xml");
-            List<ProcessLooker.Game> GameList = new List<ProcessLooker.Game>();
-
+            List<ProcessLooker.Game> GameList = new  List<ProcessLooker.Game>();
             Process[] processlist = Process.GetProcesses();
             Processcheck = 0;
             foreach (Process theprocess in processlist)
@@ -166,7 +165,7 @@ namespace FFXIVTool
 
         private void DiscordButton_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://discord.gg/nxu2Ydp");
+            Process.Start("https://discord.gg/jZ7kWEZ");
         }
         private void Save_Click(object sender, RoutedEventArgs e)
         {
@@ -194,7 +193,6 @@ namespace FFXIVTool
             if (c.Choice == "App") Appereanco();
             if (c.Choice == "Xuip") Equipo();
         }
-
         private void dqwewqw()
         {
             OpenFileDialog dig = new OpenFileDialog();

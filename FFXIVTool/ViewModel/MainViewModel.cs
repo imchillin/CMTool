@@ -1,5 +1,7 @@
 ﻿using FFXIVTool.Utility;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.IO;
@@ -51,10 +53,7 @@ namespace FFXIVTool.ViewModel
             var ns = new XmlSerializerNamespaces();
             // add blank namespaces
             ns.Add("", "");
-            // string xmlData = Properties.Resources.Settings;
-            var document = XDocument.Load(@"https://raw.githubusercontent.com/SaberNaut/xd/master/SettingsNew.xml");
-            // using a stream reader
-            using (StringReader reader = new StringReader(document.ToString()))
+            using (var reader = new StreamReader(@"./OffsetSettings.xml"))
             {
                 try
                 {
@@ -72,12 +71,10 @@ namespace FFXIVTool.ViewModel
             MemoryManager.Instance.BaseAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.AoBOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.TargetAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.TargetOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.CameraAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.CameraOffset, NumberStyles.HexNumber));
-            MemoryManager.Instance.EmoteAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.GposeEmoteOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.GposeAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.GposeOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.TimeAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.TimeOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.WeatherAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.WeatherOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.TerritoryAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.TerritoryOffset, NumberStyles.HexNumber));
-            MemoryManager.Instance.HousingOffset = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.HousingOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.MusicOffset = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.MusicOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.GposeFilters = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.GposeFilters, NumberStyles.HexNumber));
             while (true)
