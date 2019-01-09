@@ -42,6 +42,8 @@
     <Prefer32Bit>false</Prefer32Bit>
     <DebugSymbols>true</DebugSymbols>
     <NoWarn>CS0067</NoWarn>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>ffxivmeteorlogo.ico</ApplicationIcon>
@@ -479,6 +481,9 @@
     <None Include="Resources\131065.tex.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\131066.tex.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\131201.tex.png" />
   </ItemGroup>
   <ItemGroup>
@@ -680,6 +685,9 @@
     <None Include="Resources\131267.tex.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\131268.tex.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\131501.tex.png" />
   </ItemGroup>
   <ItemGroup>
@@ -872,6 +880,9 @@
     <None Include="Resources\131564.tex.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\131565.tex.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\131701.tex.png" />
   </ItemGroup>
   <ItemGroup>
@@ -1055,6 +1066,9 @@
     <None Include="Resources\131761.tex.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\131762.tex.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\132001.tex.png" />
   </ItemGroup>
   <ItemGroup>
@@ -1233,6 +1247,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\132060.tex.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\132061.tex.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\132201.tex.png" />
@@ -1430,6 +1447,9 @@
     <None Include="Resources\132265.tex.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\132266.tex.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\133001.tex.png" />
   </ItemGroup>
   <ItemGroup>
@@ -1611,6 +1631,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\133061.tex.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\133062.tex.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\133201.tex.png" />
@@ -1808,6 +1831,9 @@
     <None Include="Resources\133265.tex.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\133266.tex.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\134001.tex.png" />
   </ItemGroup>
   <ItemGroup>
@@ -1983,6 +2009,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\134059.tex.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\134060.tex.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\134201.tex.png" />
@@ -2178,6 +2207,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\134265.tex.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\134266.tex.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\135001.tex.png" />
@@ -2378,6 +2410,9 @@
     <None Include="Resources\135066.tex.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\135067.tex.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\135201.tex.png" />
   </ItemGroup>
   <ItemGroup>
@@ -2561,6 +2596,9 @@
     <None Include="Resources\135261.tex.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\135262.tex.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\136001.tex.png" />
   </ItemGroup>
   <ItemGroup>
@@ -2736,6 +2774,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\136059.tex.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\136060.tex.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\136201.tex.png" />
@@ -2916,6 +2957,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\136260.tex.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\136261.tex.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="OffsetSettings.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
