@@ -157,6 +157,12 @@
   <data name="weather_0_exh_en" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\weather_0.exh_en.csv;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="PropsList" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PropsList.csv;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="BGM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BGM.csv;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
   <data name="_131001_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\131001.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -351,6 +357,9 @@
   </data>
   <data name="_131065_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\131065.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_131066_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\131066.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_131201_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\131201.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -553,6 +562,9 @@
   <data name="_131267_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\131267.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="_131268_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\131268.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="_131501_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\131501.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -745,6 +757,9 @@
   <data name="_131564_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\131564.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="_131565_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\131565.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="_131701_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\131701.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -928,6 +943,9 @@
   <data name="_131761_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\131761.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="_131762_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\131762.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="_132001_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\132001.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -1107,6 +1125,9 @@
   </data>
   <data name="_132060_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\132060.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_132061_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\132061.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_132201_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\132201.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -1303,6 +1324,9 @@
   <data name="_132265_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\132265.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="_132266_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\132266.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="_133001_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\133001.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -1485,6 +1509,9 @@
   </data>
   <data name="_133061_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\133061.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_133062_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\133062.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_133201_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\133201.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -1681,6 +1708,9 @@
   <data name="_133265_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\133265.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="_133266_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\133266.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="_134001_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\134001.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -1857,6 +1887,9 @@
   </data>
   <data name="_134059_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\134059.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_134060_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\134060.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_134201_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\134201.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -2052,6 +2085,9 @@
   </data>
   <data name="_134265_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\134265.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_134266_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\134266.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_135001_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\135001.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -2251,6 +2287,9 @@
   <data name="_135066_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\135066.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="_135067_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\135067.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="_135201_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\135201.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -2434,6 +2473,9 @@
   <data name="_135261_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\135261.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="_135262_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\135262.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="_136001_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\136001.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -2610,6 +2652,9 @@
   </data>
   <data name="_136059_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\136059.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_136060_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\136060.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_136201_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\136201.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -2791,10 +2836,7 @@
   <data name="_136260_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\136260.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="PropsList" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PropsList.csv;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="BGM" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BGM.csv;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  <data name="_136261_tex" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\136261.tex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
