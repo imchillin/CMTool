@@ -42,13 +42,16 @@ namespace FFXIVTool.Utility
         public static extern UIntPtr Native_VirtualQueryEx(IntPtr hProcess, UIntPtr lpAddress,
             out MEMORY_BASIC_INFORMATION64 lpBuffer, UIntPtr dwLength);
 
+        [DllImport("kernel32.dll")]
+        static extern uint GetLastError();
+
         public UIntPtr VirtualQueryEx(IntPtr hProcess, UIntPtr lpAddress,
             out MEMORY_BASIC_INFORMATION lpBuffer)
         {
             UIntPtr retVal;
 
             // TODO: Need to change this to only check once.
-            if (Is64Bit)
+            if (Is64Bit || IntPtr.Size == 8)
             {
                 // 64 bit
                 MEMORY_BASIC_INFORMATION64 tmp64 = new MEMORY_BASIC_INFORMATION64();
@@ -272,6 +275,7 @@ namespace FFXIVTool.Utility
         {
             if (!isAdmin())
             {
+                Debug.WriteLine("WARNING: You are NOT running this program as admin! Visit https://github.com/erfg12/memory.dll/wiki/Administrative-Privileges");
                 MessageBox.Show("WARNING: You are NOT running this program as admin!");
             }
 
@@ -836,7 +840,7 @@ namespace FFXIVTool.Utility
         ///Write to memory address. See https://github.com/erfg12/memory.dll/wiki/writeMemory() for more information.
         ///</summary>
         ///<param name="code">address, module + pointer + offset, module + offset OR label in .ini file.</param>
-        ///<param name="type">byte, bytes, float, int, string or long.</param>
+        ///<param name="type">byte, 2bytes, bytes, float, int, string, double or long.</param>
         ///<param name="write">value to write to address.</param>
         ///<param name="file">path and name of .ini file (OPTIONAL)</param>
         public bool writeMemory(string code, string type, string write, string file = "")
@@ -969,7 +973,7 @@ namespace FFXIVTool.Utility
 
             UIntPtr newCode = UIntPtr.Add(theCode, moveQty);
 
-            //Debug.Write("DEBUG: Writing bytes [TYPE:" + type + " ADDR:[O]" + theCode + " [N]" + newCode + " MQTY:" + moveQty + "] " + String.Join(",", memory) + Environment.NewLine);
+            Debug.Write("DEBUG: Writing bytes [TYPE:" + type + " ADDR:[O]" + theCode + " [N]" + newCode + " MQTY:" + moveQty + "] " + String.Join(",", memory) + Environment.NewLine);
             Thread.Sleep(1000);
             return WriteProcessMemory(pHandle, newCode, memory, (UIntPtr)size, IntPtr.Zero);
         }
@@ -1002,12 +1006,13 @@ namespace FFXIVTool.Utility
         /// <summary>
         /// Convert code from string to real address. If path is not blank, will pull from ini file.
         /// </summary>
-        /// <param name="name">label in ini file</param>
-        /// <param name="path">path to ini file</param>
+        /// <param name="name">label in ini file or code</param>
+        /// <param name="path">path to ini file (OPTIONAL)</param>
         /// <param name="size">size of address (default is 8)</param>
         /// <returns></returns>
-        public UIntPtr getCode(string name, string path, int size = 8)
+        public UIntPtr getCode(string name, string path = "", int size = 8)
         {
+            string theCode = "";
             if (is64bit())
             {
                 //Debug.WriteLine("Changing to 64bit code...");
@@ -1015,7 +1020,10 @@ namespace FFXIVTool.Utility
                 return get64bitCode(name, path, size); //jump over to 64bit code grab
             }
 
-            string theCode = LoadCode(name, path);
+            if (path != "")
+                theCode = LoadCode(name, path);
+            else
+                theCode = name;
 
             if (theCode == "")
             {
@@ -1045,7 +1053,16 @@ namespace FFXIVTool.Utility
                 {
                     string test = oldOffsets;
                     if (oldOffsets.Contains("0x")) test = oldOffsets.Replace("0x", "");
-                    offsetsList.Add(Int32.Parse(test, NumberStyles.HexNumber));
+                    int preParse = 0;
+                    if (!oldOffsets.Contains("-"))
+                        preParse = Int32.Parse(test, NumberStyles.AllowHexSpecifier);
+                    else
+                    {
+                        test = test.Replace("-", "");
+                        preParse = Int32.Parse(test, NumberStyles.AllowHexSpecifier);
+                        preParse = preParse * -1;
+                    }
+                    offsetsList.Add(preParse);
                 }
                 int[] offsets = offsetsList.ToArray();
 
@@ -1084,13 +1101,13 @@ namespace FFXIVTool.Utility
 
                 for (int i = 1; i < offsets.Length; i++)
                 {
-                    base1 = new UIntPtr(num1 + Convert.ToUInt32(offsets[i]));
+                    base1 = new UIntPtr(Convert.ToUInt32(num1 + offsets[i]));
                     ReadProcessMemory(pHandle, base1, memoryAddress, (UIntPtr)size, IntPtr.Zero);
                     num1 = BitConverter.ToUInt32(memoryAddress, 0); //ToUInt64 causes arithmetic overflow.
                 }
                 return base1;
             }
-            else
+            else // no offsets
             {
                 int trueCode = Convert.ToInt32(newOffsets, 16);
                 IntPtr altModule = IntPtr.Zero;
@@ -1128,13 +1145,18 @@ namespace FFXIVTool.Utility
         /// <summary>
         /// Convert code from string to real address. If path is not blank, will pull from ini file.
         /// </summary>
-        /// <param name="name">label in ini file</param>
-        /// <param name="path">path to ini file</param>
+        /// <param name="name">label in ini file OR code</param>
+        /// <param name="path">path to ini file (OPTIONAL)</param>
         /// <param name="size">size of address (default is 16)</param>
         /// <returns></returns>
-        public UIntPtr get64bitCode(string name, string path, int size = 16)
+        public UIntPtr get64bitCode(string name, string path = "", int size = 16)
         {
-            string theCode = LoadCode(name, path);
+            string theCode = "";
+            if (path != "")
+                theCode = LoadCode(name, path);
+            else
+                theCode = name;
+
             if (theCode == "")
                 return UIntPtr.Zero;
             string newOffsets = theCode;
@@ -1154,7 +1176,16 @@ namespace FFXIVTool.Utility
                 {
                     string test = oldOffsets;
                     if (oldOffsets.Contains("0x")) test = oldOffsets.Replace("0x", "");
-                    offsetsList.Add(Int64.Parse(test, System.Globalization.NumberStyles.HexNumber));
+                    Int64 preParse = 0;
+                    if (!oldOffsets.Contains("-"))
+                        preParse = Int64.Parse(test, NumberStyles.AllowHexSpecifier);
+                    else
+                    {
+                        test = test.Replace("-", "");
+                        preParse = Int64.Parse(test, NumberStyles.AllowHexSpecifier);
+                        preParse = preParse * -1;
+                    }
+                    offsetsList.Add(preParse);
                 }
                 Int64[] offsets = offsetsList.ToArray();
 
@@ -1180,18 +1211,18 @@ namespace FFXIVTool.Utility
                     }
                     ReadProcessMemory(pHandle, (UIntPtr)((Int64)altModule + offsets[0]), memoryAddress, (UIntPtr)size, IntPtr.Zero);
                 }
-                else
+                else // no offsets
                     ReadProcessMemory(pHandle, (UIntPtr)(offsets[0]), memoryAddress, (UIntPtr)size, IntPtr.Zero);
 
-                UInt64 num1 = BitConverter.ToUInt64(memoryAddress, 0);
+                Int64 num1 = BitConverter.ToInt64(memoryAddress, 0);
 
                 UIntPtr base1 = (UIntPtr)0;
 
                 for (int i = 1; i < offsets.Length; i++)
                 {
-                    base1 = new UIntPtr(num1 + Convert.ToUInt64(offsets[i]));
+                    base1 = new UIntPtr(Convert.ToUInt64(num1 + offsets[i]));
                     ReadProcessMemory(pHandle, base1, memoryAddress, (UIntPtr)size, IntPtr.Zero);
-                    num1 = BitConverter.ToUInt64(memoryAddress, 0);
+                    num1 = BitConverter.ToInt64(memoryAddress, 0);
                 }
                 return base1;
             }
@@ -1645,7 +1676,7 @@ namespace FFXIVTool.Utility
         /// </summary>
         public bool DumpMemory(string file = "dump.dmp")
         {
-            //Debug.Write("[DEBUG] memory dump starting... (" + DateTime.Now.ToString("h:mm:ss tt") + ")" + Environment.NewLine);
+            Debug.Write("[DEBUG] memory dump starting... (" + DateTime.Now.ToString("h:mm:ss tt") + ")" + Environment.NewLine);
             SYSTEM_INFO sys_info = new SYSTEM_INFO();
             GetSystemInfo(out sys_info);
 
@@ -1750,17 +1781,18 @@ namespace FFXIVTool.Utility
             if (end > (long)proc_max_address.ToUInt64())
                 end = (long)proc_max_address.ToUInt64();
 
-            //Debug.Write("[DEBUG] memory scan starting... (min:0x" + proc_min_address.ToUInt64().ToString(mSize()) + " max:0x" + proc_max_address.ToUInt64().ToString(mSize()) + " time:" + DateTime.Now.ToString("h:mm:ss tt") + ")" + Environment.NewLine);
-
+            Debug.WriteLine("[DEBUG] memory scan starting... (min:0x" + proc_min_address.ToUInt64().ToString(mSize()) + " max:0x" + proc_max_address.ToUInt64().ToString(mSize()) + " time:" + DateTime.Now.ToString("h:mm:ss tt") + ")");
             UIntPtr currentBaseAddress = new UIntPtr((ulong)start);
 
             MEMORY_BASIC_INFORMATION memInfo = new MEMORY_BASIC_INFORMATION();
+
+            //Debug.WriteLine("[DEBUG] start:0x" + start.ToString("X8") + " curBase:0x" + currentBaseAddress.ToUInt64().ToString("X8") + " end:0x" + end.ToString("X8") + " size:0x" + memInfo.RegionSize.ToString("X8") + " vAloc:" + VirtualQueryEx(pHandle, currentBaseAddress, out memInfo).ToUInt64().ToString());
+
             while (VirtualQueryEx(pHandle, currentBaseAddress, out memInfo).ToUInt64() != 0 &&
                    currentBaseAddress.ToUInt64() < (ulong)end &&
                    currentBaseAddress.ToUInt64() + (ulong)memInfo.RegionSize >
                    currentBaseAddress.ToUInt64())
             {
-
                 bool isValid = memInfo.State == MEM_COMMIT;
                 isValid &= memInfo.BaseAddress.ToUInt64() < (ulong)proc_max_address.ToUInt64();
                 isValid &= ((memInfo.Protect & PAGE_GUARD) == 0);
@@ -1791,7 +1823,6 @@ namespace FFXIVTool.Utility
                     continue;
                 }
 
-
                 MemoryRegionResult memRegion = new MemoryRegionResult
                 {
                     CurrentBaseAddress = currentBaseAddress,
@@ -1800,6 +1831,8 @@ namespace FFXIVTool.Utility
                 };
 
                 currentBaseAddress = new UIntPtr(memInfo.BaseAddress.ToUInt64() + (ulong)memInfo.RegionSize);
+
+                //Console.WriteLine("SCAN start:" + memRegion.RegionBase.ToString() + " end:" + currentBaseAddress.ToString());
 
                 if (memRegionList.Count > 0)
                 {
@@ -1831,6 +1864,8 @@ namespace FFXIVTool.Utility
                                  foreach (long result in compareResults)
                                      bagResult.Add(result);
                              });
+
+            Debug.WriteLine("[DEBUG] memory scan completed. (time:" + DateTime.Now.ToString("h:mm:ss tt") + ")");
 
             return bagResult.ToList().OrderBy(c => c);
         }
