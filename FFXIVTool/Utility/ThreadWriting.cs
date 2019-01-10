@@ -224,12 +224,12 @@ namespace FFXIVTool.Utility
                     }
                     if (CharacterDetails.Emote.freeze)
                     {
-                        if (CharacterDetails.Emote.value > 7121) CharacterDetails.Emote.value = 7121;
+                        if (CharacterDetails.Emote.value > 7421) CharacterDetails.Emote.value = 7421;
                         MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, Settings.Instance.Character.Emote), CharacterDetails.Emote.GetBytes());
                     }
                     if (CharacterDetails.EmoteX.freeze)
                     {
-                        if (CharacterDetails.EmoteX.value > 7121) CharacterDetails.EmoteX.value = 7121;
+                        if (CharacterDetails.EmoteX.value > 7421) CharacterDetails.EmoteX.value = 7421;
                         MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Emote), CharacterDetails.EmoteX.GetBytes());
                     }
                     Thread.Sleep(9);
