@@ -349,7 +349,7 @@ namespace FFXIVTool.Utility
         }
 
         /// <summary>
-        /// Check if opened process is 64bit. Used primarily for getCode().
+        /// Check if opened process is 64bit. Used primarily for get64bitCode().
         /// </summary>
         /// <returns>True if 64bit false if 32bit.</returns>
         public bool is64bit()
@@ -540,7 +540,7 @@ namespace FFXIVTool.Utility
         public byte[] readBytes(string code, long length, string file = "")
         {
             byte[] memory = new byte[length];
-            UIntPtr theCode = getCode(code, file);
+            UIntPtr theCode = get64bitCode(code, file);
 
             if (!ReadProcessMemory(pHandle, theCode, memory, (UIntPtr)length, IntPtr.Zero))
                 return null;
@@ -560,7 +560,7 @@ namespace FFXIVTool.Utility
             byte[] memory = new byte[4];
 
             UIntPtr theCode;
-            theCode = getCode(code, file);
+            theCode = get64bitCode(code, file);
             try
             {
                 if (ReadProcessMemory(pHandle, theCode, memory, (UIntPtr)4, IntPtr.Zero))
@@ -592,7 +592,7 @@ namespace FFXIVTool.Utility
         {
             byte[] memoryNormal = new byte[length];
             UIntPtr theCode;
-            theCode = getCode(code, file);
+            theCode = get64bitCode(code, file);
             if (ReadProcessMemory(pHandle, theCode, memoryNormal, (UIntPtr)length, IntPtr.Zero))
                 return (zeroTerminated) ? Encoding.UTF8.GetString(memoryNormal).Split('\0')[0] : Encoding.UTF8.GetString(memoryNormal);
             else
@@ -611,7 +611,7 @@ namespace FFXIVTool.Utility
             byte[] memory = new byte[8];
 
             UIntPtr theCode;
-            theCode = getCode(code, file);
+            theCode = get64bitCode(code, file);
             try
             {
                 if (ReadProcessMemory(pHandle, theCode, memory, (UIntPtr)8, IntPtr.Zero))
@@ -650,7 +650,7 @@ namespace FFXIVTool.Utility
         {
             byte[] memory = new byte[4];
             UIntPtr theCode;
-            theCode = getCode(code, file);
+            theCode = get64bitCode(code, file);
             if (ReadProcessMemory(pHandle, theCode, memory, (UIntPtr)4, IntPtr.Zero))
                 return BitConverter.ToInt32(memory, 0);
             else
@@ -668,7 +668,7 @@ namespace FFXIVTool.Utility
             byte[] memory = new byte[16];
             UIntPtr theCode;
 
-            theCode = getCode(code, file);
+            theCode = get64bitCode(code, file);
 
             if (ReadProcessMemory(pHandle, theCode, memory, (UIntPtr)16, IntPtr.Zero))
                 return BitConverter.ToInt64(memory, 0);
@@ -686,7 +686,7 @@ namespace FFXIVTool.Utility
         {
             byte[] memory = new byte[4];
             UIntPtr theCode;
-            theCode = getCode(code, file);
+            theCode = get64bitCode(code, file);
 
             if (ReadProcessMemory(pHandle, theCode, memory, (UIntPtr)4, IntPtr.Zero))
                 return BitConverter.ToUInt64(memory, 0);
@@ -705,7 +705,7 @@ namespace FFXIVTool.Utility
         {
             byte[] memory = new byte[4];
             UIntPtr theCode;
-            theCode = getCode(code, file);
+            theCode = get64bitCode(code, file);
 
             UIntPtr newCode = UIntPtr.Add(theCode, moveQty);
 
@@ -726,7 +726,7 @@ namespace FFXIVTool.Utility
         {
             byte[] memory = new byte[4];
             UIntPtr theCode;
-            theCode = getCode(code, file);
+            theCode = get64bitCode(code, file);
 
             UIntPtr newCode = UIntPtr.Add(theCode, moveQty);
 
@@ -747,7 +747,7 @@ namespace FFXIVTool.Utility
         {
             byte[] memory = new byte[8];
             UIntPtr theCode;
-            theCode = getCode(code, file, 8);
+            theCode = get64bitCode(code, file, 8);
 
             UIntPtr newCode = UIntPtr.Add(theCode, moveQty);
 
@@ -768,7 +768,7 @@ namespace FFXIVTool.Utility
             byte[] memoryTiny = new byte[4];
 
             UIntPtr theCode;
-            theCode = getCode(code, file);
+            theCode = get64bitCode(code, file);
 
             if (ReadProcessMemory(pHandle, theCode, memoryTiny, (UIntPtr)2, IntPtr.Zero))
                 return BitConverter.ToInt32(memoryTiny, 0);
@@ -787,7 +787,7 @@ namespace FFXIVTool.Utility
             byte[] memoryTiny = new byte[4];
 
             UIntPtr theCode;
-            theCode = getCode(code, file);
+            theCode = get64bitCode(code, file);
 
             if (ReadProcessMemory(pHandle, theCode, memoryTiny, (UIntPtr)1, IntPtr.Zero))
                 return BitConverter.ToInt32(memoryTiny, 0);
@@ -849,7 +849,7 @@ namespace FFXIVTool.Utility
             int size = 4;
 
             UIntPtr theCode;
-            theCode = getCode(code, file);
+            theCode = get64bitCode(code, file);
 
             if (type == "float")
             {
@@ -935,7 +935,7 @@ namespace FFXIVTool.Utility
             int size = 4;
 
             UIntPtr theCode;
-            theCode = getCode(code, file);
+            theCode = get64bitCode(code, file);
 
             if (type == "float")
             {
@@ -987,7 +987,7 @@ namespace FFXIVTool.Utility
         public void writeBytes(string code, byte[] write, string file = "")
         {
             UIntPtr theCode;
-            theCode = getCode(code, file);
+            theCode = get64bitCode(code, file);
             WriteProcessMemory(pHandle, theCode, write, (UIntPtr)write.Length, IntPtr.Zero);
         }
 
@@ -1002,146 +1002,6 @@ namespace FFXIVTool.Utility
         }
 
         #endregion
-
-        /// <summary>
-        /// Convert code from string to real address. If path is not blank, will pull from ini file.
-        /// </summary>
-        /// <param name="name">label in ini file or code</param>
-        /// <param name="path">path to ini file (OPTIONAL)</param>
-        /// <param name="size">size of address (default is 8)</param>
-        /// <returns></returns>
-        public UIntPtr getCode(string name, string path = "", int size = 16)
-        {
-            string theCode = "";
-            if (is64bit())
-            {
-                //Debug.WriteLine("Changing to 64bit code...");
-                if (size == 8) size = 16; //change to 64bit
-                return get64bitCode(name, path, size); //jump over to 64bit code grab
-            }
-
-            if (path != "")
-                theCode = LoadCode(name, path);
-            else
-                theCode = name;
-
-            if (theCode == "")
-            {
-                //Debug.WriteLine("ERROR: LoadCode returned blank. NAME:" + name + " PATH:" + path);
-                return UIntPtr.Zero;
-            }
-            else
-            {
-                //Debug.WriteLine("Found code=" + theCode + " NAME:" + name + " PATH:" + path);
-            }
-
-            if (!theCode.Contains("+") && !theCode.Contains(",")) return new UIntPtr(Convert.ToUInt32(theCode, 16));
-
-            string newOffsets = theCode;
-
-            if (theCode.Contains("+"))
-                newOffsets = theCode.Substring(theCode.IndexOf('+') + 1);
-
-            byte[] memoryAddress = new byte[size];
-
-            if (newOffsets.Contains(','))
-            {
-                List<int> offsetsList = new List<int>();
-
-                string[] newerOffsets = newOffsets.Split(',');
-                foreach (string oldOffsets in newerOffsets)
-                {
-                    string test = oldOffsets;
-                    if (oldOffsets.Contains("0x")) test = oldOffsets.Replace("0x", "");
-                    int preParse = 0;
-                    if (!oldOffsets.Contains("-"))
-                        preParse = Int32.Parse(test, NumberStyles.AllowHexSpecifier);
-                    else
-                    {
-                        test = test.Replace("-", "");
-                        preParse = Int32.Parse(test, NumberStyles.AllowHexSpecifier);
-                        preParse = preParse * -1;
-                    }
-                    offsetsList.Add(preParse);
-                }
-                int[] offsets = offsetsList.ToArray();
-
-                if (theCode.Contains("base") || theCode.Contains("main"))
-                    ReadProcessMemory(pHandle, (UIntPtr)((int)mainModule.BaseAddress + offsets[0]), memoryAddress, (UIntPtr)size, IntPtr.Zero);
-                else if (!theCode.Contains("base") && !theCode.Contains("main") && theCode.Contains("+"))
-                {
-                    string[] moduleName = theCode.Split('+');
-                    IntPtr altModule = IntPtr.Zero;
-                    if (!moduleName[0].Contains(".dll") && !moduleName[0].Contains(".exe"))
-                    {
-                        string theAddr = moduleName[0];
-                        if (theAddr.Contains("0x")) theAddr = theAddr.Replace("0x", "");
-                        altModule = (IntPtr)Int32.Parse(theAddr, NumberStyles.HexNumber);
-                    }
-                    else
-                    {
-                        try
-                        {
-                            altModule = modules[moduleName[0]];
-                        }
-                        catch
-                        {
-                            Debug.WriteLine("Module " + moduleName[0] + " was not found in module list!");
-                            Debug.WriteLine("Modules: " + string.Join(",", modules));
-                        }
-                    }
-                    ReadProcessMemory(pHandle, (UIntPtr)((int)altModule + offsets[0]), memoryAddress, (UIntPtr)size, IntPtr.Zero);
-                }
-                else
-                    ReadProcessMemory(pHandle, (UIntPtr)(offsets[0]), memoryAddress, (UIntPtr)size, IntPtr.Zero);
-
-                uint num1 = BitConverter.ToUInt32(memoryAddress, 0); //ToUInt64 causes arithmetic overflow.
-
-                UIntPtr base1 = (UIntPtr)0;
-
-                for (int i = 1; i < offsets.Length; i++)
-                {
-                    base1 = new UIntPtr(Convert.ToUInt32(num1 + offsets[i]));
-                    ReadProcessMemory(pHandle, base1, memoryAddress, (UIntPtr)size, IntPtr.Zero);
-                    num1 = BitConverter.ToUInt32(memoryAddress, 0); //ToUInt64 causes arithmetic overflow.
-                }
-                return base1;
-            }
-            else // no offsets
-            {
-                int trueCode = Convert.ToInt32(newOffsets, 16);
-                IntPtr altModule = IntPtr.Zero;
-                //Debug.WriteLine("newOffsets=" + newOffsets);
-                if (theCode.Contains("base") || theCode.Contains("main"))
-                    altModule = mainModule.BaseAddress;
-                else if (!theCode.Contains("base") && !theCode.Contains("main") && theCode.Contains("+"))
-                {
-                    string[] moduleName = theCode.Split('+');
-                    if (!moduleName[0].Contains(".dll") && !moduleName[0].Contains(".exe"))
-                    {
-                        string theAddr = moduleName[0];
-                        if (theAddr.Contains("0x")) theAddr = theAddr.Replace("0x", "");
-                        altModule = (IntPtr)Int32.Parse(theAddr, NumberStyles.HexNumber);
-                    }
-                    else
-                    {
-                        try
-                        {
-                            altModule = modules[moduleName[0]];
-                        }
-                        catch
-                        {
-                            Debug.WriteLine("Module " + moduleName[0] + " was not found in module list!");
-                            Debug.WriteLine("Modules: " + string.Join(",", modules));
-                        }
-                    }
-                }
-                else
-                    altModule = modules[theCode.Split('+')[0]];
-                return (UIntPtr)((int)altModule + trueCode);
-            }
-        }
-
         /// <summary>
         /// Convert code from string to real address. If path is not blank, will pull from ini file.
         /// </summary>
@@ -1337,7 +1197,7 @@ namespace FFXIVTool.Utility
                                      // to better match existing code
 
             UIntPtr theCode;
-            theCode = getCode(code, file);
+            theCode = get64bitCode(code, file);
             UIntPtr address = theCode;
 
             // if x64 we need to try to allocate near the address so we dont run into the +-2GB limit of the 0xE9 jmp
@@ -1880,7 +1740,7 @@ namespace FFXIVTool.Utility
         /// <returns>First address found</returns>
         public long AoBScan(string code, long end, string search, string file = "")
         {
-            long start = (long)getCode(code, file).ToUInt64();
+            long start = (long)get64bitCode(code, file).ToUInt64();
 
             return (AoBScan(start, end, search, true, true, file)).FirstOrDefault();
         }
