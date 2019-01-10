@@ -1010,7 +1010,7 @@ namespace FFXIVTool.Utility
         /// <param name="path">path to ini file (OPTIONAL)</param>
         /// <param name="size">size of address (default is 8)</param>
         /// <returns></returns>
-        public UIntPtr getCode(string name, string path = "", int size = 8)
+        public UIntPtr getCode(string name, string path = "", int size = 16)
         {
             string theCode = "";
             if (is64bit())
@@ -1722,9 +1722,9 @@ namespace FFXIVTool.Utility
         /// <param name="executable">Include executable addresses in scan</param>
         /// <param name="file">ini file (OPTIONAL)</param>
         /// <returns>IEnumerable of all addresses found.</returns>
-        public async Task<IEnumerable<long>> AoBScan(string search, bool writable = false, bool executable = true, string file = "")
+        public IEnumerable<long> AoBScan(string search, bool writable = false, bool executable = true, string file = "")
         {
-            return await AoBScan(0, long.MaxValue, search, writable, executable, file);
+            return AoBScan(0, long.MaxValue, search, writable, executable, file);
         }
 
         /// <summary>
@@ -1737,7 +1737,7 @@ namespace FFXIVTool.Utility
         /// <param name="writable">Include writable addresses in scan</param>
         /// <param name="executable">Include executable addresses in scan</param>
         /// <returns>IEnumerable of all addresses found.</returns>
-        public async Task<IEnumerable<long>> AoBScan(long start, long end, string search, bool writable = false, bool executable = true, string file = "")
+        public IEnumerable<long> AoBScan(long start, long end, string search, bool writable = false, bool executable = true, string file = "")
         {
             var memRegionList = new List<MemoryRegionResult>();
 
@@ -1878,11 +1878,11 @@ namespace FFXIVTool.Utility
         /// <param name="search">array of bytes to search for or your ini code label</param>
         /// <param name="file">ini file</param>
         /// <returns>First address found</returns>
-        public async Task<long> AoBScan(string code, long end, string search, string file = "")
+        public long AoBScan(string code, long end, string search, string file = "")
         {
             long start = (long)getCode(code, file).ToUInt64();
 
-            return (await AoBScan(start, end, search, true, true, file)).FirstOrDefault();
+            return (AoBScan(start, end, search, true, true, file)).FirstOrDefault();
         }
 
         private long[] CompareScan(MemoryRegionResult item, string[] aobToFind, byte[] mask)
