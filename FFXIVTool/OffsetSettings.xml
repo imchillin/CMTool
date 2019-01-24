@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Settings>
-  <CameraOffset>1AA71A0</CameraOffset>
-  <GposeOffset>1AA7398</GposeOffset>
-  <AoBOffset>1AA87B8</AoBOffset>
-  <TargetOffset>1AA73B0</TargetOffset>
-  <TimeOffset>1A8C3C0</TimeOffset>
-  <WeatherOffset>1A61448</WeatherOffset>
-  <TerritoryOffset>1AE4A88</TerritoryOffset>
-  <GposeFilters>1A8A278</GposeFilters>
-  <MusicOffset>1AC0158</MusicOffset>
+  <CameraOffset>1AA81A0</CameraOffset>
+  <GposeOffset>1AA8398</GposeOffset>
+  <AoBOffset>1AA97B8</AoBOffset>
+  <TargetOffset>1AA83B0</TargetOffset>
+  <TimeOffset>1A8D3C0</TimeOffset>
+  <WeatherOffset>1A62448</WeatherOffset>
+  <TerritoryOffset>1AE5A88</TerritoryOffset>
+  <GposeFilters>1A8B278</GposeFilters>
+  <MusicOffset>1AC1158</MusicOffset>
   
   <Character>
     <Name>30</Name>
