@@ -28,6 +28,6 @@
         </DataGrid>
         <Button Content="Ok" HorizontalAlignment="Left" Margin="279,325,0,0" VerticalAlignment="Top" Width="84" Click="Button_Click"/>
         <Button Content="Refresh" HorizontalAlignment="Left" Margin="10,325,0,0" VerticalAlignment="Top" Width="84" Click="Button_Click_1"/>
-        <TextBlock HorizontalAlignment="Left" Margin="104,325,0,0" TextWrapping="Wrap" Text="Make sure ffxiv_dx11.exe or ffxiv.exe is running!" VerticalAlignment="Top" Height="32" Width="175"/>
+        <TextBlock HorizontalAlignment="Left" Margin="104,325,0,0" TextWrapping="Wrap" Text="Make sure ffxiv_dx11.exe is running!" VerticalAlignment="Top" Height="32" Width="175"/>
     </Grid>
 </Window>
