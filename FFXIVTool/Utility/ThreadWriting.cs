@@ -237,7 +237,7 @@ namespace FFXIVTool.Utility
             }
             catch (System.Exception ex)
             {
-                System.Windows.MessageBox.Show(ex.Message + "\n" + ex.StackTrace, "Oh no! - Screencap this and send to Johto!");
+                System.Windows.MessageBox.Show(ex.Message + "\n" + ex.StackTrace, "Oh no!");
                 worker.CancelAsync();
             }
         }
