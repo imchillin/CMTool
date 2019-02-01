@@ -23,7 +23,6 @@ namespace FFXIVTool.ViewModel
         public static ThreadWriting ThreadTime;
         private static CharacterDetailsViewModel characterDetails;
         public CharacterDetailsViewModel CharacterDetails { get => characterDetails; set => characterDetails = value; }
-
         public MainViewModel()
         {
             mediator = new Mediator();
@@ -65,29 +64,31 @@ namespace FFXIVTool.ViewModel
                     Console.WriteLine(ex);
                 }
             }
-            if (CheckInternet())
+            if (CheckUpdate()==true)
             {
-                var xmlDoc = new System.Xml.XmlDocument();
-                xmlDoc.LoadXml(@"https://raw.githubusercontent.com/SaberNaut/xd/master/Settings.xml");
-                var offsets = (Settings)serializer.Deserialize(new StreamReader(xmlDoc.InnerXml));
-
-                if (!string.Equals(Settings.Instance.LastUpdated, offsets.LastUpdated))
-                {
-                    File.WriteAllText(@"./OffsetSettings.xml", xmlDoc.InnerXml);
-                    System.Windows.MessageBox.Show("We successfully updated offsets automatically for you! Please Restart the program or Press Find New Process on the top right of the application", "Oh wow!");
-                }
+                System.Windows.MessageBox.Show("We successfully updated offsets automatically for you! Please Restart the program or Press Find New Process on the top right of the application if this doesn't work!", "Oh wow!");
             }
         }
-        public static bool CheckInternet()
+        private bool CheckUpdate()
         {
             try
             {
-                using (var client = new WebClient() { Proxy = null })
-                using (client.OpenRead("https://www.google.com/"))
+                string xmlStr;
+                using (var HAH = new WebClient())
                 {
-                    client.Dispose();
+                    xmlStr = HAH.DownloadString(@"https://raw.githubusercontent.com/Khyrou/SSTool/master/FFXIVTool/OffsetSettings.xml");
+                }
+                var serializer = new XmlSerializer(typeof(Settings), "");
+                var xmlDoc = new System.Xml.XmlDocument();
+                xmlDoc.LoadXml(xmlStr);
+                var offset = (Settings)serializer.Deserialize(new StringReader(xmlDoc.InnerXml));
+                if (!string.Equals(Settings.Instance.LastUpdated, offset.LastUpdated))
+                {
+                    File.WriteAllText(@"./OffsetSettings.xml", xmlDoc.InnerXml);
+                    Settings.Instance = offset;
                     return true;
                 }
+                else return false;
             }
             catch
             {
