@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.IO;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -63,6 +64,34 @@ namespace FFXIVTool.ViewModel
                 {
                     Console.WriteLine(ex);
                 }
+            }
+            if (CheckInternet())
+            {
+                var xmlDoc = new System.Xml.XmlDocument();
+                xmlDoc.LoadXml(@"https://raw.githubusercontent.com/SaberNaut/xd/master/Settings.xml");
+                var offsets = (Settings)serializer.Deserialize(new StreamReader(xmlDoc.InnerXml));
+
+                if (!string.Equals(Settings.Instance.LastUpdated, offsets.LastUpdated))
+                {
+                    File.WriteAllText(@"./OffsetSettings.xml", xmlDoc.InnerXml);
+                    System.Windows.MessageBox.Show("We successfully updated offsets automatically for you! Please Restart the program or Press Find New Process on the top right of the application", "Oh wow!");
+                }
+            }
+        }
+        public static bool CheckInternet()
+        {
+            try
+            {
+                using (var client = new WebClient() { Proxy = null })
+                using (client.OpenRead("https://www.google.com/"))
+                {
+                    client.Dispose();
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
             }
         }
         private void Worker_DoWork(object sender, DoWorkEventArgs e)
