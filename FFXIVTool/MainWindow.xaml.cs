@@ -43,6 +43,26 @@ namespace FFXIVTool
             AutoUpdater.RunUpdateAsAdmin = true;
             AutoUpdater.DownloadPath = Environment.CurrentDirectory;
             AutoUpdater.Start("https://raw.githubusercontent.com/Khyrou/xD/master/UpdateLog.xml");
+            if (!File.Exists(@"./OffsetSettings.xml"))
+            {
+                try
+                {
+                    string xmlStr;
+                    using (var wc = new WebClient())
+                    {
+                        xmlStr = wc.DownloadString(@"https://raw.githubusercontent.com/Khyrou/SSTool/master/FFXIVTool/OffsetSettings.xml");
+                    }
+                    var xmlDoc = new System.Xml.XmlDocument();
+                    xmlDoc.LoadXml(xmlStr);
+                    File.WriteAllText(@"./OffsetSettings.xml", xmlDoc.InnerXml);
+                }
+                catch
+                {
+                    System.Windows.MessageBox.Show("Unable to connect to the remote server - No connection could be made because the target machine actively refused it! \n If you wish to pursue using this application please download an updated OffsetSettings via discord.", "Oh no!");
+                    Close();
+                    return;
+                }
+            }
             List<ProcessLooker.Game> GameList = new  List<ProcessLooker.Game>();
             Process[] processlist = Process.GetProcesses();
             Processcheck = 0;

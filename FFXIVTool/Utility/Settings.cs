@@ -28,6 +28,7 @@ namespace FFXIVTool.Utility
             }
         }
         #endregion
+        public string LastUpdated { get; set; }
         public string AoBOffset { get; set; }
         public string GposeOffset { get; set; }
         public string CameraOffset { get; set; }
@@ -43,6 +44,7 @@ namespace FFXIVTool.Utility
     [Serializable]
     public struct CharacterOffsets
     {
+        public string CharacterRender { get; set; }
         public string HDR { get; set; }
         public string Brightness { get; set; }
         public string Contrast { get; set; }
