@@ -37,7 +37,7 @@ namespace FFXIVTool.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Indigo")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Blue")]
         public string Primary {
             get {
                 return ((string)(this["Primary"]));
@@ -49,7 +49,7 @@ namespace FFXIVTool.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Indigo")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Blue")]
         public string Accent {
             get {
                 return ((string)(this["Accent"]));

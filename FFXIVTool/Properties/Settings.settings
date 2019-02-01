@@ -6,10 +6,10 @@
       <Value Profile="(Default)">Light</Value>
     </Setting>
     <Setting Name="Primary" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Indigo</Value>
+      <Value Profile="(Default)">Blue</Value>
     </Setting>
     <Setting Name="Accent" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Indigo</Value>
+      <Value Profile="(Default)">Blue</Value>
     </Setting>
     <Setting Name="TopApp" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
