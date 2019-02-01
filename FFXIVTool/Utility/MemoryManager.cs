@@ -43,6 +43,7 @@ namespace FFXIVTool.Utility
         public string TerritoryAddress { get; set; }
         public string MusicOffset { get; set; }
         public string GposeFilters { get; set; }
+        public string CharacterRenderAddress { get; set; }
 
         /// <summary>
         /// Constructor for the singleton memory manager

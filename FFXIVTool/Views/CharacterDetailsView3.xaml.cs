@@ -982,5 +982,15 @@ namespace FFXIVTool.Views
         {
             WorldFlyout.IsOpen = !WorldFlyout.IsOpen;
         }
+
+        private void RenderButton_Checked(object sender, RoutedEventArgs e)
+        {
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.CharacterRenderAddress, "bytes", "0x1B 0x07 0xBD 0xFF");
+        }
+
+        private void RenderButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.CharacterRenderAddress, "bytes", "0xB8 0x00 0x00 0x00");
+        }
     }
 }

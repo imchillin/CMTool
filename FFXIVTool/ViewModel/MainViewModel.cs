@@ -74,6 +74,7 @@ namespace FFXIVTool.ViewModel
             try
             {
                 string xmlStr;
+                ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
                 using (var HAH = new WebClient())
                 {
                     xmlStr = HAH.DownloadString(@"https://raw.githubusercontent.com/Khyrou/SSTool/master/FFXIVTool/OffsetSettings.xml");
@@ -107,6 +108,7 @@ namespace FFXIVTool.ViewModel
             MemoryManager.Instance.TerritoryAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.TerritoryOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.MusicOffset = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.MusicOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.GposeFilters = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.GposeFilters, NumberStyles.HexNumber));
+            MemoryManager.Instance.CharacterRenderAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.CharacterRenderOffset, NumberStyles.HexNumber));
             while (true)
             {
                 if (worker.CancellationPending)

@@ -38,6 +38,7 @@ namespace FFXIVTool.Utility
         public string TargetOffset { get; set; }
         public string GposeFilters { get; set; }
         public string MusicOffset { get; set; }
+        public string CharacterRenderOffset { get; set; }
         public CharacterOffsets Character { get; set; }
     }
 
