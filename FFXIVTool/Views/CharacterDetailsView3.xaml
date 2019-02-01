@@ -138,9 +138,9 @@
         </TextBox>
         <Button x:Name="ApplyButton" Content="Apply" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="922,373,0,0" VerticalAlignment="Top" Width="80" Click="ApplyButton_Click"/>
         <Label Content="Note: Applying ID 0 will leave&#xD;&#xA; bgm sounds at default" HorizontalAlignment="Left" Margin="807,411,0,0" VerticalAlignment="Top" Width="155" Height="39" FontSize="11"/>
-        <ToggleButton x:Name="RenderButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding Path=CharacterDetails.CharacterRender.Activated}" ToolTip="Highlight Toggle Switch" Margin="569,410,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="22"  IsTabStop="False" Checked="RenderButton_Checked" Unchecked="RenderButton_Unchecked" />
-        <Label Content="Off" HorizontalAlignment="Left" Margin="537,408,0,0" VerticalAlignment="Top"/>
-        <Label Content="On" HorizontalAlignment="Left" Margin="603,408,0,0" VerticalAlignment="Top"/>
+        <ToggleButton x:Name="RenderButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding Path=CharacterDetails.CharacterRender.Activated}" ToolTip="Highlight Toggle Switch" Margin="578,409,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="22"  IsTabStop="False" Checked="RenderButton_Checked" Unchecked="RenderButton_Unchecked" />
+        <Label Content="Off" HorizontalAlignment="Left" Margin="546,407,0,0" VerticalAlignment="Top"/>
+        <Label Content="On" HorizontalAlignment="Left" Margin="612,407,0,0" VerticalAlignment="Top"/>
         <Label Content="Remove Character Render Limit:" HorizontalAlignment="Left" Margin="336,407,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Views:WorldFlyOut x:Name="WorldFlyout" Width="667" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Margin="0,-5,0,0"/>
         <Button x:Name="SearchBGM" Content="Search" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="1007,373,0,0" VerticalAlignment="Top" Width="77" Click="SearchBGM_Click"/>

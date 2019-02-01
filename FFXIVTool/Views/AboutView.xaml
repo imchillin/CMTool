@@ -47,7 +47,7 @@
                 </Border>
             </Grid>
         </materialDesign:Card>
-        <materialDesign:Card Width="420" Margin="435,166,0,0" Height="270" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <materialDesign:Card Width="531" Margin="435,166,0,0" Height="270" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Grid VerticalAlignment="Stretch">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -63,22 +63,28 @@
                     <TextBlock TextWrapping="Wrap" Margin="16 0 16 8" Foreground="{DynamicResource MaterialDesignBodyLight}"
                                            VerticalAlignment="Top" Text="This project is completely open source. If you like it and want to say thanks you could hit the GitHub Star button and message us your thanks."/>
                 </StackPanel>
-                <Border Grid.Row="1" Grid.ColumnSpan="2" BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}" Padding="8">
-                    <DockPanel>
-                        <Button Style="{DynamicResource MaterialDesignFlatButton}" 
-                                            DockPanel.Dock="Right"
-                                            x:Name="DonateButton" Click="DonateButton_OnClick" FontSize="18">
+                <Border Grid.Row="1" BorderThickness="0 1 0 1" BorderBrush="{DynamicResource MaterialDesignDivider}" Margin="6,8,9,-24" Grid.Column="1">
+                    <Grid Margin="0">
+                        <Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
+                            x:Name="GitHubButton1" Width="auto" Click="DonateButton_OnClick">
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Gift" />
-                                <TextBlock Margin="8 0 0 0" VerticalAlignment="Center">Donate</TextBlock>
+                                <materialDesign:PackIcon Kind="Donate" />
+                                <TextBlock Margin="0 0 0 0" VerticalAlignment="Center" FontSize="14" Width="auto"><Run Text="Donate to Johto"/></TextBlock>
                             </StackPanel>
                         </Button>
-                        <TextBlock Foreground="{DynamicResource MaterialDesignBodyLight}" TextWrapping="Wrap" Margin="16" VerticalAlignment="Center" Text="Feel like you want to make a donation? It would be gratefully received. Click the button to donate via Ko-fi."/>
-                    </DockPanel>
+                        <Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Right"
+                            x:Name="ChatButton1" Click="DonateButton_OnClick2" Margin="110,0,0,0" Width="auto">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Donate" />
+                                <TextBlock Margin="0 0 0 0" VerticalAlignment="Center" FontSize="14"><Run Text="Donate to LeonBlade"/></TextBlock>
+                            </StackPanel>
+                        </Button>
+                    </Grid>
                 </Border>
             </Grid>
         </materialDesign:Card>
         <GroupBox Header="About"  HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" Margin="10,10,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="151" Width="420" />
         <TextBlock HorizontalAlignment="Left" Margin="15,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="114" Width="415"><Run FontSize="14" Text="This trainer's base code was made by LeonBlade and then the project continued with Johto working on it. This application uses the following libraries in this project: MaterialDesignInXAML, MahApps, Fody, AutoUpdater.Net, Newtonsoft.Json and Memory.dll. This project uses portions of the code from the Wardrobe, thanks to Goat helping out."/></TextBlock>
+        <TextBlock Foreground="{DynamicResource MaterialDesignBodyLight}" TextWrapping="Wrap" Margin="445,329,498,57" VerticalAlignment="Center" Text="Feel like you want to make a donation? It would be gratefully received. Click the button to donate via Ko-fi." Height="74"/>
     </Grid>
 </UserControl>

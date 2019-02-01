@@ -34,6 +34,11 @@ namespace FFXIVTool.Views
             Process.Start("https://ko-fi.com/seibanaut");
         }
 
+        private void DonateButton_OnClick2(object sender, RoutedEventArgs e)
+        {
+            Process.Start("http://ko-fi.com/leonblade");
+        }
+
         private void ChatButton_Click(object sender, RoutedEventArgs e)
         {
             Process.Start("https://discord.gg/jZ7kWEZ");
