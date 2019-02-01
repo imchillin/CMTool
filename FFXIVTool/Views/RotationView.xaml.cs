@@ -1,4 +1,5 @@
-﻿using FFXIVTool.Utility;
+﻿using FFXIVTool.Models;
+using FFXIVTool.Utility;
 using FFXIVTool.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,6 +19,8 @@ namespace FFXIVTool.Views
             public bool isTracking;
             public MouseButton mouseButton;
         }
+
+        public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
 
         private DragState dragState;
 
@@ -89,10 +92,13 @@ namespace FFXIVTool.Views
 
             var qv = RotationQuaternion.GetValue(QuaternionRotation3D.QuaternionProperty);
             var q = (Quaternion)qv;
-
+            CharacterDetails.Rotation.value = (float)q.X;
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.Rotation), "float", ((float)q.X).ToString());
+            CharacterDetails.Rotation2.value = (float)q.Y;
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.Rotation2), "float", ((float)q.Y).ToString());
+            CharacterDetails.Rotation3.value = (float)q.Z;
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.Rotation3), "float", ((float)q.Z).ToString());
+            CharacterDetails.Rotation4.value = (float)q.W;
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.Rotation4), "float", ((float)q.W).ToString());
         }
     }
