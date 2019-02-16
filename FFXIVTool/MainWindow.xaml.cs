@@ -185,7 +185,7 @@ namespace FFXIVTool
 
         private void DiscordButton_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://discord.gg/jZ7kWEZ");
+            Process.Start("https://twitter.com/ffxivsstool");
         }
         private void Save_Click(object sender, RoutedEventArgs e)
         {

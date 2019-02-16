@@ -686,7 +686,7 @@ Index,0 [0x0][0x0],1 [0x0][0x4],2 [0x3][0x2c],3 [0x5][0x1c],4 [0x5][0x1e],5 [0x5
 788,"d2d9","ex1/02_dra_d2/dun/d2d9/level/d2d9",1,498,511,2034,481,8,2,3,584,false,0,false,0,true,false,false,false,1001,122018,124813,0,0,0,-1,333,-1,false,2,0,0,0,false
 789,"e3d7","ex2/02_est_e3/dun/e3d7/level/e3d7",1,2401,515,2851,480,10,2,3,585,false,97,false,0,true,false,false,false,1001,122024,124865,0,0,0,-1,330,-1,false,2,0,0,0,false
 790,"w1t1_5th","ffxiv/wil_w1/twn/w1t1/level/w1t1",1,24,504,40,487,4,3,43,583,false,95,true,0,true,false,false,false,226,122002,123110,852086,0,9,-1,0,2,false,0,0,0,0,false
-791,"","",0,0,0,0,0,0,0,0,0,false,0,false,0,false,false,false,false,0,0,0,0,0,0,0,0,0,false,0,0,0,0,false
+791,"w1p1","ffxiv/pvp_xx/pvp/w1p1/level/w1p1",4,24,505,2589,488,4,2,39,599,false,0,false,0,true,false,true,true,1001,122002,123111,0,0,0,-1,355,-1,true,0,0,0,0,false
 792,"w1eg","ffxiv/wil_w1/evt/w1eg/level/w1eg",1,24,505,2498,507,4,3,44,600,false,0,false,0,true,false,false,false,251,-1,-1,0,0,0,-1,0,-1,false,0,0,0,0,false
 793,"g3d5","ex2/01_gyr_g3/dun/g3d5/level/g3d5",1,2400,514,2586,500,9,2,3,611,false,0,false,0,true,false,false,false,1001,122023,124959,0,0,0,-1,368,-1,false,2,0,0,0,false
 794,"o3c2","ex2/03_ocn_o3/cnt/o3c2/level/o3c2",1,2405,0,2485,499,1,3,33,586,false,0,false,0,true,false,false,false,1001,122010,124754,0,0,0,-1,341,-1,false,2,0,0,0,false
@@ -722,7 +722,7 @@ Index,0 [0x0][0x0],1 [0x0][0x4],2 [0x3][0x2c],3 [0x5][0x1c],4 [0x5][0x1e],5 [0x5
 824,"e3fg","ex2/02_est_e3/fld/e3fg/level/e3fg",1,2401,515,2510,516,10,2,10,637,false,99,false,0,true,false,false,false,1001,122024,124869,0,0,0,-1,361,-1,false,2,0,0,0,false
 825,"e3fg_2","ex2/02_est_e3/fld/e3fg/level/e3fg",1,2401,515,2510,516,10,2,10,638,false,99,false,0,true,false,false,false,1001,122024,124870,0,0,0,-1,362,-1,false,2,0,0,0,false
 826,"z3r3","ex2/05_zon_z3/rad/z3r3/level/z3r3",1,2405,0,2864,512,1,2,8,636,false,0,false,0,true,false,false,false,1001,122010,124755,0,0,0,-1,0,-1,false,2,0,0,0,false
-827,"","",0,0,0,0,0,0,0,0,0,false,0,false,0,false,false,false,false,0,0,0,0,0,0,0,0,0,false,0,0,0,0,false
+827,"z3fd","ex2/05_zon_z3/fld/z3fd/level/z3fd",1,2405,0,2545,515,1,3,41,639,false,100,false,0,true,false,true,false,524,122010,124756,0,0,0,-1,0,-1,false,2,0,25,0,false
 828,"z3e2_2","ex2/05_zon_z3/evt/z3e2/level/z3e2",1,2405,0,2370,420,1,0,15,0,false,0,false,0,true,false,false,false,510,-1,-1,853859,0,111,-1,0,-1,false,2,0,0,0,false
 829,"g3e7","ex2/01_gyr_g3/evt/g3e7/level/g3e7",1,2400,514,2862,518,12,0,15,0,false,0,false,0,true,false,false,false,77,-1,-1,853857,0,103,-1,0,-1,false,2,0,0,0,false
 830,"","",0,0,0,0,0,0,0,0,0,false,0,false,0,false,false,false,false,0,0,0,0,0,0,0,0,0,false,0,0,0,0,false

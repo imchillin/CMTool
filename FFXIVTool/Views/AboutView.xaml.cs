@@ -41,7 +41,7 @@ namespace FFXIVTool.Views
 
         private void ChatButton_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://discord.gg/jZ7kWEZ");
+            Process.Start("https://twitter.com/ffxivsstool");
         }
     }
 }

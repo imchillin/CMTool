@@ -24,7 +24,7 @@
                 <TextBlock Grid.Column="1" Style="{StaticResource MaterialDesignHeadlineTextBlock}" Margin="16 16 16 2">Get In Touch</TextBlock>
                 <TextBlock Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Margin="16 0 16 8" Foreground="{DynamicResource MaterialDesignBodyLight}"
                                        VerticalAlignment="Center">Say hello, make a feature request, or raise a bug through one of these channels:</TextBlock>
-                <Border Grid.Column="1" Grid.Row="2" BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}" Margin="0 8 0 0">
+                <Border Grid.Row="2" BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}" Margin="190,8,0,0" Grid.ColumnSpan="2">
                     <Grid Margin="8">
                         <Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
                                             x:Name="GitHubButton" Click="GitHubButton_OnClick" Width="117">
@@ -34,15 +34,15 @@
                             </StackPanel>
                         </Button>
                         <Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
-                                            x:Name="ChatButton" Click="ChatButton_Click" Margin="110,0,0,0" Width="94">
+                                            x:Name="ChatButton" Click="ChatButton_Click" Margin="108,0,0,0" Width="106">
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Discord" />
-                                <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" FontSize="16"><Run Text="Chat"/></TextBlock>
+                                <materialDesign:PackIcon Kind="Twitter" />
+                                <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" FontSize="16"><Run Text="Twitter"/></TextBlock>
                             </StackPanel>
                         </Button>
                     </Grid>
                 </Border>
-                <Border Grid.Column="1" Grid.Row="3" BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}">
+                <Border Grid.Row="3" BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}" Grid.ColumnSpan="2" Margin="190,0,0,0">
                     <Grid Margin="8"/>
                 </Border>
             </Grid>
