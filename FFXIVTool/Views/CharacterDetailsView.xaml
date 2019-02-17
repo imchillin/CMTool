@@ -157,7 +157,7 @@
         <Label Content="Off" HorizontalAlignment="Left" Margin="672,376,0,0" VerticalAlignment="Top"/>
         <Label Content="On" HorizontalAlignment="Left" Margin="731,376,0,0" VerticalAlignment="Top"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.EmoteSpeed1.freeze}" Content="Emote Speed" HorizontalAlignment="Left" Margin="543,404,0,0" VerticalAlignment="Top"/>
-        <mah:NumericUpDown x:Name="EmoteSpeed" Value="{Binding Path=CharacterDetails.EmoteSpeed1.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="646,402,0,0" VerticalAlignment="Top" Width="112" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F3" Interval="0.1" TextAlignment="Right"/>
+        <mah:NumericUpDown x:Name="EmoteSpeed" Value="{Binding Path=CharacterDetails.EmoteSpeed1.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="646,402,0,0" VerticalAlignment="Top" Width="112" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F3" Interval="0.105" TextAlignment="Right"/>
         <Views:EmoteFlyOut x:Name="EmoteFlyouts" Width="535" HorizontalAlignment="Left" VerticalAlignment="Top" Height="460" Visibility="Hidden"/>
         <Label Content="Gpose Only" HorizontalAlignment="Left" Margin="711,312,0,0" VerticalAlignment="Top" FontSize="16" BorderBrush="Black"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.CameraHeight.freeze}" Content="Cam Height" HorizontalAlignment="Left" Margin="543,432,0,0" VerticalAlignment="Top"/>
