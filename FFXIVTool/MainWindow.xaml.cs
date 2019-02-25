@@ -1096,6 +1096,15 @@ namespace FFXIVTool
             CharacterDetails.TestArray.freeze = false;
             CharacterDetails.TestArray2.freeze = false;
             CharacterDetails.BodyType.freeze = false;
+            CharacterDetails.X.freeze = false;
+            CharacterDetails.Y.freeze = false;
+            CharacterDetails.Z.freeze = false;
+            CharacterDetails.Rotation.freeze = false;
+            CharacterDetails.Rotation2.freeze = false;
+            CharacterDetails.Rotation3.freeze = false;
+            CharacterDetails.Rotation4.freeze = false;
+            CharacterDetailsView.xyzcheck = false;
+            CharacterDetailsView.numbcheck = false;
         }
 
         private void AlwaysOnTop_Click(object sender, RoutedEventArgs e)
@@ -1164,6 +1173,11 @@ namespace FFXIVTool
             collection.AddRange(distinct.Select(x => x.ToString()).ToArray());
             Properties.Settings.Default.FavoriteEmotes = collection;
             Properties.Settings.Default.Save();
+        }
+
+        private void ActualDiscordButton_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://discord.gg/hq3DnBa");
         }
     }
 }

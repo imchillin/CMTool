@@ -54,11 +54,11 @@
         <Button x:Name="CharacterRefreshButton" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Character Refresh" HorizontalAlignment="Left" Margin="225,6,0,0" VerticalAlignment="Top" Width="151" Click="CharacterRefreshButton_Click" IsTabStop="False"/>
         <Button x:Name="FindProcess" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Find New Process" HorizontalAlignment="Left" Margin="946,6,0,0" VerticalAlignment="Top" Width="151" Click="FindProcess_Click" IsTabStop="False"/>
         <Button x:Name="NPCRefresh" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="NPC Refresh" HorizontalAlignment="Left" Margin="381,6,0,0" VerticalAlignment="Top" Width="111" Click="NPCRefresh_Click" IsTabStop="False"/>
-        <ToggleButton x:Name="GposeButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding Path=CharacterDetails.CharacterDetails.GposeMode.Activated}" ToolTip="Highlight Toggle Switch" Margin="624,2,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="21" Checked="GposeButton_Checked" Unchecked="GposeButton_Unchecked" IsTabStop="False" />
+        <ToggleButton x:Name="GposeButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding Path=CharacterDetails.CharacterDetails.GposeMode.Activated}" Margin="624,2,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="21" Checked="GposeButton_Checked" Unchecked="GposeButton_Unchecked" IsTabStop="False" />
         <Label Content="Off" HorizontalAlignment="Left" Margin="591,0,0,0" VerticalAlignment="Top"/>
         <Label Content="On" HorizontalAlignment="Left" Margin="658,0,0,0" VerticalAlignment="Top"/>
         <Label Content="Gpose Mode:" HorizontalAlignment="Left" Margin="497,0,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Button HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}" VerticalAlignment="Top" x:Name="DiscordButton" Margin="890,-45,0,0" Width="151" Click="DiscordButton_Click" Height="45" Foreground="White" BorderBrush="#7F000000" BorderThickness="1,0" Padding="16,20,16,4" IsTabStop="False">
+        <Button HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}" VerticalAlignment="Top" x:Name="DiscordButton" Margin="910,-45,0,0" Width="131" Click="DiscordButton_Click" Height="45" Foreground="White" BorderBrush="#7F000000" BorderThickness="1,0" Padding="16,20,16,4" IsTabStop="False">
             <StackPanel Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="Twitter" Padding="0" />
                 <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0"><Run Text="Our Twitter"/></TextBlock>
@@ -67,14 +67,20 @@
         <Button x:Name="Save" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Save" HorizontalAlignment="Left" Margin="866,6,0,0" VerticalAlignment="Top" Width="70" Click="Save_Click" IsTabStop="False"/>
         <Button x:Name="Load" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Load" HorizontalAlignment="Left" Margin="791,6,0,0" VerticalAlignment="Top" Width="70" Click="Load_Click" IsTabStop="False"/>
         <Button x:Name="Uncheck" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Uncheck All" HorizontalAlignment="Left" Margin="690,6,0,0" VerticalAlignment="Top" Width="94" Click="Uncheck_Click" Padding="15,4,16,4" FontSize="12" IsTabStop="False"/>
-        <Button HorizontalAlignment="Left" Content="Always on Top" Style="{DynamicResource MaterialDesignFlatButton}" VerticalAlignment="Top" x:Name="AlwaysOnTop" Margin="760,-45,0,0" Width="131" Click="AlwaysOnTop_Click" Height="45" Foreground="White" BorderBrush="#7F000000" BorderThickness="1,0" Padding="16,20,16,4" IsTabStop="False"/>
-        <Button HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}" VerticalAlignment="Top" x:Name="UpdateButton" Margin="654,-45,0,0" Width="107" Click="UpdateButton_Click" Height="45" Foreground="White" BorderBrush="#7F000000" BorderThickness="1,0" Padding="16,20,16,4" IsTabStop="False">
+        <Button HorizontalAlignment="Left" Content="Always on Top" Style="{DynamicResource MaterialDesignFlatButton}" VerticalAlignment="Top" x:Name="AlwaysOnTop" Margin="648,-45,0,0" Width="131" Click="AlwaysOnTop_Click" Height="45" Foreground="White" BorderBrush="#7F000000" BorderThickness="1,0" Padding="16,20,16,4" IsTabStop="False"/>
+        <Button HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}" VerticalAlignment="Top" x:Name="UpdateButton" Margin="542,-45,0,0" Width="107" Click="UpdateButton_Click" Height="45" Foreground="White" BorderBrush="#7F000000" BorderThickness="1,0" Padding="16,20,16,4" IsTabStop="False">
             <StackPanel Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="Update" Padding="0" />
                 <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0"><Run Text="Update"/></TextBlock>
             </StackPanel>
         </Button>
-        <ToggleButton x:Name="TargetButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.CharacterDetails.TargetMode.Activated}" ToolTip="Highlight Toggle Switch" Margin="625,24,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Checked="TargetButton_Checked" Unchecked="TargetButton_Unchecked" IsTabStop="False" />
+        <Button HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}" VerticalAlignment="Top" x:Name="ActualDiscordButton" Margin="778,-45,0,0" Width="133" Click="ActualDiscordButton_Click" Height="45" Foreground="White" BorderBrush="#7F000000" BorderThickness="1,0" Padding="16,20,16,4" IsTabStop="False">
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="Discord" Padding="0" />
+                <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="Our Discord"/>
+            </StackPanel>
+        </Button>
+        <ToggleButton x:Name="TargetButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.CharacterDetails.TargetMode.Activated}" Margin="625,24,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Checked="TargetButton_Checked" Unchecked="TargetButton_Unchecked" IsTabStop="False" />
         <Label Content="Off" HorizontalAlignment="Left" Margin="591,25,0,0" VerticalAlignment="Top"/>
         <Label Content="On" HorizontalAlignment="Left" Margin="658,25,0,0" VerticalAlignment="Top"/>
         <Label Content="Target Mode:" HorizontalAlignment="Left" Margin="497,23,0,0" VerticalAlignment="Top" FontSize="14"/>
