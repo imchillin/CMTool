@@ -20,6 +20,8 @@ namespace FFXIVTool.Views
     {
         public static CmpReader _colorMap = new CmpReader(Properties.Resources.human);
         public static ExdCsvReader _exdProvider = new ExdCsvReader();
+        public static bool xyzcheck = false;
+        public static bool numbcheck = false;
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
         public CharacterDetailsView()
         {
@@ -725,7 +727,7 @@ namespace FFXIVTool.Views
         {
             if (SpecialControl.IsOpen)
             {
-                if (!SpecialControl.ColorTab.IsSelected || SpecialControl.ClanBox.SelectedIndex!=7)
+                if (!SpecialControl.ColorTab.IsSelected || SpecialControl.ClanBox.SelectedIndex != 7)
                 {
                     SpecialControl.ColorTab.IsSelected = true;
                     SpecialControl.CharaMakeColorSelector(_colorMap, 0, 192);
@@ -740,6 +742,28 @@ namespace FFXIVTool.Views
                 SpecialControl.CharaMakeColorSelector(_colorMap, 0, 192);
                 SpecialControl.ClanBox.SelectedIndex = 7;
             }
+        }
+
+        private void Setto0_Click(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.EmoteSpeed1.value = 0;
+        }
+
+        private void FreezeXYZ_Click(object sender, RoutedEventArgs e)
+        {
+            xyzcheck = !xyzcheck;
+            CharacterDetails.X.freeze = xyzcheck;
+            CharacterDetails.Y.freeze = xyzcheck;
+            CharacterDetails.Z.freeze = xyzcheck;
+        }
+
+        private void Freeze1234_Click(object sender, RoutedEventArgs e)
+        {
+            numbcheck = !numbcheck;
+            CharacterDetails.Rotation.freeze = numbcheck;
+            CharacterDetails.Rotation2.freeze = numbcheck;
+            CharacterDetails.Rotation3.freeze = numbcheck;
+            CharacterDetails.Rotation4.freeze = numbcheck;
         }
     }
 }

@@ -32,6 +32,7 @@ namespace FFXIVTool.Views
         {
             InitializeComponent();
             CheckIncluded.Visibility = Visibility.Hidden;
+            KeepDyes.Visibility = Visibility.Hidden;
         }
         public void GearPicker(ExdCsvReader.Item[] items)
         {
@@ -134,26 +135,36 @@ namespace FFXIVTool.Views
             CharacterDetails.Job.value = _cGearSet.MainWep.Item1;
             CharacterDetails.WeaponBase.value = (byte)_cGearSet.MainWep.Item2;
             CharacterDetails.WeaponV.value = (byte)_cGearSet.MainWep.Item3;
-            CharacterDetails.WeaponDye.value = (byte)_cGearSet.MainWep.Item4;
+            if (KeepDyes.IsChecked == false)
+            {
+                CharacterDetails.WeaponDye.value = (byte)_cGearSet.MainWep.Item4;
+            }
+            else _cGearSet.MainWep = new WepTuple(_cGearSet.MainWep.Item1, _cGearSet.MainWep.Item2, _cGearSet.MainWep.Item3, CharacterDetails.WeaponDye.value);
             CharacterDetails.Offhand.value = _cGearSet.OffWep.Item1;
             CharacterDetails.OffhandBase.value = (byte)_cGearSet.OffWep.Item2;
             CharacterDetails.OffhandV.value = (byte)_cGearSet.OffWep.Item3;
-            CharacterDetails.OffhandDye.value = (byte)_cGearSet.OffWep.Item4;
+            if (KeepDyes.IsChecked == false) CharacterDetails.OffhandDye.value = (byte)_cGearSet.OffWep.Item4;
+            else _cGearSet.OffWep = new WepTuple(_cGearSet.OffWep.Item1, _cGearSet.OffWep.Item2, _cGearSet.OffWep.Item3, CharacterDetails.OffhandDye.value);
             CharacterDetails.HeadPiece.value = _cGearSet.HeadGear.Item1;
             CharacterDetails.HeadV.value = (byte)_cGearSet.HeadGear.Item2;
-            CharacterDetails.HeadDye.value = (byte)_cGearSet.HeadGear.Item3;
+            if (KeepDyes.IsChecked == false) CharacterDetails.HeadDye.value = (byte)_cGearSet.HeadGear.Item3;
+            else _cGearSet.HeadGear = new GearTuple(_cGearSet.HeadGear.Item1, _cGearSet.HeadGear.Item2, CharacterDetails.HeadDye.value);
             CharacterDetails.Chest.value = _cGearSet.BodyGear.Item1;
             CharacterDetails.ChestV.value = (byte)_cGearSet.BodyGear.Item2;
-            CharacterDetails.ChestDye.value = (byte)_cGearSet.BodyGear.Item3;
+            if (KeepDyes.IsChecked == false) CharacterDetails.ChestDye.value = (byte)_cGearSet.BodyGear.Item3;
+            else _cGearSet.BodyGear = new GearTuple(_cGearSet.BodyGear.Item1, _cGearSet.BodyGear.Item2, CharacterDetails.ChestDye.value);
             CharacterDetails.Arms.value = _cGearSet.HandsGear.Item1;
             CharacterDetails.ArmsV.value = (byte)_cGearSet.HandsGear.Item2;
-            CharacterDetails.ArmsDye.value = (byte)_cGearSet.HandsGear.Item3;
+            if (KeepDyes.IsChecked == false) CharacterDetails.ArmsDye.value = (byte)_cGearSet.HandsGear.Item3;
+            else _cGearSet.HandsGear = new GearTuple(_cGearSet.HandsGear.Item1, _cGearSet.HandsGear.Item2, CharacterDetails.ArmsDye.value);
             CharacterDetails.Legs.value = _cGearSet.LegsGear.Item1;
             CharacterDetails.LegsV.value = (byte)_cGearSet.LegsGear.Item2;
-            CharacterDetails.LegsDye.value = (byte)_cGearSet.LegsGear.Item3;
+            if (KeepDyes.IsChecked == false) CharacterDetails.LegsDye.value = (byte)_cGearSet.LegsGear.Item3;
+            else _cGearSet.LegsGear = new GearTuple(_cGearSet.LegsGear.Item1, _cGearSet.LegsGear.Item2, CharacterDetails.LegsDye.value);
             CharacterDetails.Feet.value = _cGearSet.FeetGear.Item1;
             CharacterDetails.FeetVa.value = (byte)_cGearSet.FeetGear.Item2;
-            CharacterDetails.FeetDye.value = (byte)_cGearSet.FeetGear.Item3;
+            if (KeepDyes.IsChecked == false) CharacterDetails.FeetDye.value = (byte)_cGearSet.FeetGear.Item3;
+            else _cGearSet.FeetGear = new GearTuple(_cGearSet.FeetGear.Item1, _cGearSet.FeetGear.Item2, CharacterDetails.FeetDye.value);
             CharacterDetails.Neck.value = _cGearSet.NeckGear.Item1;
             CharacterDetails.NeckVa.value = (byte)_cGearSet.NeckGear.Item2;
             CharacterDetails.Ear.value = _cGearSet.EarGear.Item1;
@@ -193,7 +204,9 @@ namespace FFXIVTool.Views
         private void EquipBoxC_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             CheckIncluded.IsChecked = false;
+            KeepDyes.IsChecked = false;
             CheckIncluded.Visibility = Visibility.Hidden;
+            KeepDyes.Visibility = Visibility.Hidden;
             if (isUserInteraction)
             {
                 if (!CharacterDetailsView2.CheckItemList())
@@ -201,20 +214,44 @@ namespace FFXIVTool.Views
                 if (EquipBoxC.SelectedIndex == 0)
                 {
                     CheckIncluded.Visibility = Visibility.Visible;
+                    KeepDyes.Visibility = Visibility.Visible;
                     CheckIncluded.Content = "Include OffHand";
                     GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep && !c.ModelMain.Contains("0,0,0,0")).ToArray());
                 }
                 if (EquipBoxC.SelectedIndex == 1)
                 {
                     CheckIncluded.Visibility = Visibility.Visible;
+                    KeepDyes.Visibility = Visibility.Visible;
                     CheckIncluded.Content = "Non-Offhand Aesthetics";
                     GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep && !c.ModelMain.Contains("0,0,0,0")).ToArray());
                 }
-                if (EquipBoxC.SelectedIndex == 2) GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Head).ToArray());
-                if (EquipBoxC.SelectedIndex == 3) GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Body).ToArray());
-                if (EquipBoxC.SelectedIndex == 4) GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Hands).ToArray());
-                if (EquipBoxC.SelectedIndex == 5) GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Legs).ToArray());
-                if (EquipBoxC.SelectedIndex == 6) GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Feet).ToArray());
+                if (EquipBoxC.SelectedIndex == 2)
+                {
+                    KeepDyes.Visibility = Visibility.Visible;
+                    GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Head).ToArray());
+                }
+                if (EquipBoxC.SelectedIndex == 3)
+                {
+                    KeepDyes.Visibility = Visibility.Visible;
+                    GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Body).ToArray());
+                }
+
+                if (EquipBoxC.SelectedIndex == 4)
+                {
+                    KeepDyes.Visibility = Visibility.Visible;
+                    GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Hands).ToArray());
+                }
+                if (EquipBoxC.SelectedIndex == 5)
+                {
+                    KeepDyes.Visibility = Visibility.Visible;
+                    GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Legs).ToArray());
+                }
+                if (EquipBoxC.SelectedIndex == 6)
+                {
+                    KeepDyes.Visibility = Visibility.Visible;
+                    GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Feet).ToArray());
+                }
+
                 if (EquipBoxC.SelectedIndex == 7) GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Ears).ToArray());
                 if (EquipBoxC.SelectedIndex == 8) GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Neck).ToArray());
                 if (EquipBoxC.SelectedIndex == 9) GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wrists).ToArray());

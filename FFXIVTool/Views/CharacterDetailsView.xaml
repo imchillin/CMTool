@@ -121,6 +121,16 @@
         <mah:NumericUpDown x:Name="PosY" Value="{Binding Path=CharacterDetails.Y.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="636,163,0,0" VerticalAlignment="Top" Width="160" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" SourceUpdated="PosY_SourceUpdated" TextAlignment="Right"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.Z.freeze}" Content="Position Z" HorizontalAlignment="Left" Margin="543,196,0,0" VerticalAlignment="Top"/>
         <mah:NumericUpDown x:Name="PosZ" Value="{Binding Path=CharacterDetails.Z.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="636,194,0,0" VerticalAlignment="Top" Width="160" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" SourceUpdated="PosZ_SourceUpdated" TextAlignment="Right"/>
+        <Button x:Name="FreezeXYZ" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Freeze XYZ" HorizontalAlignment="Left" Margin="806,130,0,0" VerticalAlignment="Top" Width="94" Height="29" FontSize="12" Click="FreezeXYZ_Click">
+            <Button.LayoutTransform>
+                <RotateTransform Angle="90" />
+            </Button.LayoutTransform>
+        </Button>
+        <Button x:Name="Freeze1234" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Freeze 1234" HorizontalAlignment="Left" Margin="879,186,0,0" VerticalAlignment="Top" Width="98" Height="28" FontSize="12" Click="Freeze1234_Click">
+            <Button.LayoutTransform>
+                <RotateTransform Angle="-90" />
+            </Button.LayoutTransform>
+        </Button>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.TailSize.freeze}" Content="Tail/Ear Size" HorizontalAlignment="Left" Margin="543,231,0,0" VerticalAlignment="Top"/>
         <mah:NumericUpDown x:Name="TailSize" Value="{Binding Path=CharacterDetails.TailSize.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="639,227,0,0" VerticalAlignment="Top" Width="157" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" TextAlignment="Right" SourceUpdated="TailSize_SourceUpdated"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.MuscleTone.freeze}" Content="Muscle Tone" HorizontalAlignment="Left" Margin="543,262,0,0" VerticalAlignment="Top"/>
@@ -141,11 +151,11 @@
             </Views:RotationView>
         </Border>
         <Label Content="Rotation" HorizontalAlignment="Left" Margin="970,-4,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding Path=CharacterDetails.Wetness.Activated}" ToolTip="Highlight Toggle Switch" Margin="892,318,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="24" BorderThickness="1" />
+        <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding Path=CharacterDetails.Wetness.Activated}" Margin="892,318,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="24" BorderThickness="1" />
         <Label Content="Off" HorizontalAlignment="Left" Margin="864,315,0,0" VerticalAlignment="Top" BorderThickness="0" BorderBrush="Black"/>
         <Label Content="On" HorizontalAlignment="Left" Margin="922,315,0,0" VerticalAlignment="Top" BorderThickness="0,0,1,0" BorderBrush="Black"/>
         <Label Content="Wetness:" HorizontalAlignment="Left" Margin="808,315,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1,0,0,0"/>
-        <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding Path=CharacterDetails.SWetness.Activated}" ToolTip="Highlight Toggle Switch" Margin="1040,318,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="24" />
+        <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding Path=CharacterDetails.SWetness.Activated}" Margin="1040,318,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="24" />
         <Label Content="Off" HorizontalAlignment="Left" Margin="1012,315,0,0" VerticalAlignment="Top"/>
         <Label Content="On" HorizontalAlignment="Left" Margin="1070,315,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="0"/>
         <Label Content="Wetness+:" HorizontalAlignment="Left" Margin="948,315,0,0" VerticalAlignment="Top"/>
@@ -153,11 +163,12 @@
         <mah:NumericUpDown x:Name="EmoteBox" Maximum="7426" Minimum="1" Value="{Binding Path=CharacterDetails.Emote.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="642,346,0,0" VerticalAlignment="Top" Width="116" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" TextAlignment="Right" HasDecimals="False" NumericInputMode="Numbers" SourceUpdated="EmoteBox_SourceUpdated"/>
         <Button x:Name="EmoteSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Search" HorizontalAlignment="Left" Margin="763,346,0,0" VerticalAlignment="Top" Width="75" Height="26" Click="EmoteSearch_Click"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.FreezeFacial.freeze}" Content="Freeze Expression" HorizontalAlignment="Left" Margin="543,378,0,0" VerticalAlignment="Top"/>
-        <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding Path=CharacterDetails.FreezeFacial.Activated}" ToolTip="Highlight Toggle Switch" Margin="700,378,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="24" />
+        <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding Path=CharacterDetails.FreezeFacial.Activated}" Margin="700,378,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="24" />
         <Label Content="Off" HorizontalAlignment="Left" Margin="672,376,0,0" VerticalAlignment="Top"/>
         <Label Content="On" HorizontalAlignment="Left" Margin="731,376,0,0" VerticalAlignment="Top"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.EmoteSpeed1.freeze}" Content="Emote Speed" HorizontalAlignment="Left" Margin="543,404,0,0" VerticalAlignment="Top"/>
-        <mah:NumericUpDown x:Name="EmoteSpeed" Value="{Binding Path=CharacterDetails.EmoteSpeed1.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="646,402,0,0" VerticalAlignment="Top" Width="112" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F3" Interval="0.105" TextAlignment="Right"/>
+        <mah:NumericUpDown x:Name="EmoteSpeed" Value="{Binding Path=CharacterDetails.EmoteSpeed1.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="646,402,0,0" VerticalAlignment="Top" Width="112" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F3" Interval="0.10" TextAlignment="Right"/>
+        <Button x:Name="Setto0" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Set to 0" HorizontalAlignment="Left" Margin="766,402,0,0" VerticalAlignment="Top" Width="72" Height="26" FontSize="11" Click="Setto0_Click"/>
         <Views:EmoteFlyOut x:Name="EmoteFlyouts" Width="535" HorizontalAlignment="Left" VerticalAlignment="Top" Height="460" Visibility="Hidden"/>
         <Label Content="Gpose Only" HorizontalAlignment="Left" Margin="711,312,0,0" VerticalAlignment="Top" FontSize="16" BorderBrush="Black"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.CameraHeight.freeze}" Content="Cam Height" HorizontalAlignment="Left" Margin="543,432,0,0" VerticalAlignment="Top"/>

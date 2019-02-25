@@ -253,6 +253,7 @@ namespace FFXIVTool.Views
                     EquipmentControl.EquipTab.IsSelected=true;
                     EquipmentControl.EquipBoxC.SelectedIndex = 0;
                     EquipmentControl.CheckIncluded.Visibility = Visibility.Visible;
+                    EquipmentControl.KeepDyes.Visibility = Visibility.Visible;
                     EquipmentControl.CheckIncluded.Content = "Include OffHand";
                     EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep && !c.ModelMain.Contains("0,0,0,0")).ToArray());
                 }
@@ -264,6 +265,7 @@ namespace FFXIVTool.Views
                 EquipmentControl.EquipBoxC.SelectedIndex = 0;
                 EquipmentControl.EquipTab.IsSelected = true;
                 EquipmentControl.CheckIncluded.Visibility = Visibility.Visible;
+                EquipmentControl.KeepDyes.Visibility = Visibility.Visible;
                 EquipmentControl.CheckIncluded.Content = "Include OffHand";
                 EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep && !c.ModelMain.Contains("0,0,0,0")).ToArray());
             }
@@ -280,6 +282,7 @@ namespace FFXIVTool.Views
                     EquipmentControl.EquipBoxC.SelectedIndex = 1;
                     EquipmentControl.EquipTab.IsSelected = true;
                     EquipmentControl.CheckIncluded.Visibility = Visibility.Visible;
+                    EquipmentControl.KeepDyes.Visibility = Visibility.Visible;
                     EquipmentControl.CheckIncluded.Content = "Non-Offhand Aesthetics";
                     EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep && !c.ModelMain.Contains("0,0,0,0")).ToArray());
                 }
@@ -291,6 +294,7 @@ namespace FFXIVTool.Views
                 EquipmentControl.EquipBoxC.SelectedIndex = 1;
                 EquipmentControl.EquipTab.IsSelected = true;
                 EquipmentControl.CheckIncluded.Visibility = Visibility.Visible;
+                EquipmentControl.KeepDyes.Visibility = Visibility.Visible;
                 EquipmentControl.CheckIncluded.Content = "Non-Offhand Aesthetics";
                 EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep && !c.ModelMain.Contains("0,0,0,0")).ToArray());
             }
@@ -307,6 +311,7 @@ namespace FFXIVTool.Views
                     EquipmentControl.EquipTab.IsSelected = true;
                     EquipmentControl.EquipBoxC.SelectedIndex = 2;
                     EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
+                    EquipmentControl.KeepDyes.Visibility = Visibility.Visible;
                     EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Head).ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
@@ -317,6 +322,7 @@ namespace FFXIVTool.Views
                 EquipmentControl.EquipTab.IsSelected = true;
                 EquipmentControl.EquipBoxC.SelectedIndex = 2;
                 EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
+                EquipmentControl.KeepDyes.Visibility = Visibility.Visible;
                 EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Head).ToArray());
             }
         }
@@ -332,6 +338,7 @@ namespace FFXIVTool.Views
                     EquipmentControl.EquipTab.IsSelected = true;
                     EquipmentControl.EquipBoxC.SelectedIndex = 3;
                     EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
+                    EquipmentControl.KeepDyes.Visibility = Visibility.Visible;
                     EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Body).ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
@@ -342,6 +349,7 @@ namespace FFXIVTool.Views
                 EquipmentControl.EquipTab.IsSelected = true;
                 EquipmentControl.EquipBoxC.SelectedIndex = 3;
                 EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
+                EquipmentControl.KeepDyes.Visibility = Visibility.Visible;
                 EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Body).ToArray());
             }
         }
@@ -357,6 +365,7 @@ namespace FFXIVTool.Views
                     EquipmentControl.EquipTab.IsSelected = true;
                     EquipmentControl.EquipBoxC.SelectedIndex = 4;
                     EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
+                    EquipmentControl.KeepDyes.Visibility = Visibility.Visible;
                     EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Hands).ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
@@ -367,6 +376,7 @@ namespace FFXIVTool.Views
                 EquipmentControl.EquipTab.IsSelected = true;
                 EquipmentControl.EquipBoxC.SelectedIndex = 4;
                 EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
+                EquipmentControl.KeepDyes.Visibility = Visibility.Visible;
                 EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Hands).ToArray());
             }
         }
@@ -382,6 +392,7 @@ namespace FFXIVTool.Views
                     EquipmentControl.EquipTab.IsSelected = true;
                     EquipmentControl.EquipBoxC.SelectedIndex = 5;
                     EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
+                    EquipmentControl.KeepDyes.Visibility = Visibility.Visible;
                     EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Legs).ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
@@ -392,6 +403,7 @@ namespace FFXIVTool.Views
                 EquipmentControl.EquipTab.IsSelected = true;
                 EquipmentControl.EquipBoxC.SelectedIndex = 5;
                 EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
+                EquipmentControl.KeepDyes.Visibility = Visibility.Visible;
                 EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Legs).ToArray());
             }
         }
@@ -407,6 +419,7 @@ namespace FFXIVTool.Views
                     EquipmentControl.EquipTab.IsSelected = true;
                     EquipmentControl.EquipBoxC.SelectedIndex = 6;
                     EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
+                    EquipmentControl.KeepDyes.Visibility = Visibility.Visible;
                     EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Feet).ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
@@ -417,6 +430,7 @@ namespace FFXIVTool.Views
                 EquipmentControl.EquipTab.IsSelected = true;
                 EquipmentControl.EquipBoxC.SelectedIndex = 6;
                 EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
+                EquipmentControl.KeepDyes.Visibility = Visibility.Visible;
                 EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Feet).ToArray());
             }
         }
@@ -432,6 +446,7 @@ namespace FFXIVTool.Views
                     EquipmentControl.EquipTab.IsSelected = true;
                     EquipmentControl.EquipBoxC.SelectedIndex = 7;
                     EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
+                    EquipmentControl.KeepDyes.Visibility = Visibility.Hidden;
                     EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Ears).ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
@@ -442,6 +457,7 @@ namespace FFXIVTool.Views
                 EquipmentControl.EquipTab.IsSelected = true;
                 EquipmentControl.EquipBoxC.SelectedIndex = 7;
                 EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
+                EquipmentControl.KeepDyes.Visibility = Visibility.Hidden;
                 EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Ears).ToArray());
             }
         }
@@ -457,6 +473,7 @@ namespace FFXIVTool.Views
                     EquipmentControl.EquipTab.IsSelected = true;
                     EquipmentControl.EquipBoxC.SelectedIndex = 8;
                     EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
+                    EquipmentControl.KeepDyes.Visibility = Visibility.Hidden;
                     EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Neck).ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
@@ -467,6 +484,7 @@ namespace FFXIVTool.Views
                 EquipmentControl.EquipTab.IsSelected = true;
                 EquipmentControl.EquipBoxC.SelectedIndex = 8;
                 EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
+                EquipmentControl.KeepDyes.Visibility = Visibility.Hidden;
                 EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Neck).ToArray());
             }
         }
@@ -482,6 +500,7 @@ namespace FFXIVTool.Views
                     EquipmentControl.EquipTab.IsSelected = true;
                     EquipmentControl.EquipBoxC.SelectedIndex = 9;
                     EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
+                    EquipmentControl.KeepDyes.Visibility = Visibility.Hidden;
                     EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wrists).ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
@@ -492,6 +511,7 @@ namespace FFXIVTool.Views
                 EquipmentControl.EquipTab.IsSelected = true;
                 EquipmentControl.EquipBoxC.SelectedIndex = 9;
                 EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
+                EquipmentControl.KeepDyes.Visibility = Visibility.Hidden;
                 EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wrists).ToArray());
             }
         }
@@ -507,6 +527,7 @@ namespace FFXIVTool.Views
                     EquipmentControl.EquipTab.IsSelected = true;
                     EquipmentControl.EquipBoxC.SelectedIndex = 10;
                     EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
+                    EquipmentControl.KeepDyes.Visibility = Visibility.Hidden;
                     EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
@@ -517,6 +538,7 @@ namespace FFXIVTool.Views
                 EquipmentControl.EquipBoxC.SelectedIndex = 10;
                 EquipmentControl.EquipTab.IsSelected = true;
                 EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
+                EquipmentControl.KeepDyes.Visibility = Visibility.Hidden;
                 EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
             }
         }
@@ -532,6 +554,7 @@ namespace FFXIVTool.Views
                     EquipmentControl.EquipTab.IsSelected = true;
                     EquipmentControl.EquipBoxC.SelectedIndex = 11;
                     EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
+                    EquipmentControl.KeepDyes.Visibility = Visibility.Hidden;
                     EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
@@ -542,6 +565,7 @@ namespace FFXIVTool.Views
                 EquipmentControl.EquipTab.IsSelected = true;
                 EquipmentControl.EquipBoxC.SelectedIndex = 11;
                 EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
+                EquipmentControl.KeepDyes.Visibility = Visibility.Hidden;
                 EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
             }
         }
@@ -592,6 +616,7 @@ namespace FFXIVTool.Views
                     EquipmentControl.EquipTab.IsSelected = true;
                     EquipmentControl.EquipBoxC.SelectedIndex = 12;
                     EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
+                    EquipmentControl.KeepDyes.Visibility = Visibility.Hidden;
                     EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.ItemsProps.Values.ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
@@ -602,6 +627,7 @@ namespace FFXIVTool.Views
                 EquipmentControl.EquipBoxC.SelectedIndex = 12;
                 EquipmentControl.EquipTab.IsSelected = true;
                 EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
+                EquipmentControl.KeepDyes.Visibility = Visibility.Hidden;
                 EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.ItemsProps.Values.ToArray());
             }
         }
