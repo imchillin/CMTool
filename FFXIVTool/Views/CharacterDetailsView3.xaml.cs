@@ -223,19 +223,36 @@ namespace FFXIVTool.Views
                 Weather.ValueChanged += Weather_ValueChanged;
             }
         }
+        private void TimeControlUpDown_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
+        {
 
+        }
         private void Timexd_ValueChanged_1(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.TimeAddress, Settings.Instance.Character.TimeControl), "int", Timexd.Value.ToString());
+            TimeControlUpDown.Value = Timexd.Value;
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.TimeAddress, Settings.Instance.Character.TimeControl), "int", TimeControlUpDown.Value.ToString());
             Timexd.ValueChanged -= Timexd_ValueChanged_1;
         }
-
+        private void TimeVA(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            if (TimeControlUpDown.Value.HasValue)
+            {
+                Timexd.Value = (double)TimeControlUpDown.Value;
+                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.TimeAddress, Settings.Instance.Character.TimeControl), "int", TimeControlUpDown.Value.ToString());
+            }
+            TimeControlUpDown.ValueChanged -= TimeVA;
+        }
         private void Timexd_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (Timexd.IsMouseOver || Timexd.IsKeyboardFocusWithin)
             {
                 Timexd.ValueChanged -= Timexd_ValueChanged_1;
                 Timexd.ValueChanged += Timexd_ValueChanged_1;
+            }
+            if (TimeControlUpDown.IsMouseOver || TimeControlUpDown.IsKeyboardFocusWithin)
+            {
+                TimeControlUpDown.ValueChanged -= TimeVA;
+                TimeControlUpDown.ValueChanged += TimeVA;
             }
         }
         public void WeatherSelector(List<ExdCsvReader.Weather> allowedWeathers, int currentWeather)
@@ -991,6 +1008,12 @@ namespace FFXIVTool.Views
         private void RenderButton_Unchecked(object sender, RoutedEventArgs e)
         {
              MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.CharacterRenderAddress, "bytes", "0xE9 0xB8 0x00 0x00 0x00");
+        }
+
+        private void TimeButton_Click(object sender, RoutedEventArgs e)
+        {
+            Timexd.Value = 0;
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.TimeAddress, Settings.Instance.Character.TimeControl), "int", "0");
         }
     }
 }
