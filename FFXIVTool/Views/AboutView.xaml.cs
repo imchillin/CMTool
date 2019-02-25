@@ -43,5 +43,10 @@ namespace FFXIVTool.Views
         {
             Process.Start("https://twitter.com/ffxivsstool");
         }
+
+        private void ActualDiscordButton_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://discord.gg/hq3DnBa");
+        }
     }
 }
