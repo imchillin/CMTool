@@ -10,7 +10,6 @@ namespace FFXIVTool.Models
 {
     public class CharacterDetails : BaseModel
     {
-
         [JsonIgnore] private long size;
         [JsonIgnore]
         public long Size
