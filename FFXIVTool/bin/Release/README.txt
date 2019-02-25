@@ -4,6 +4,8 @@
 
 [ Offical Twitter] -> https://twitter.com/ffxivsstool (ONLY GET YOUR DOWNLOAD FROM HERE)
 
+[ Our Discord] -> https://discord.gg/hq3DnBa
+
 [ Patreon ] -> https://www.patreon.com/JohtoXIV
 
 [ Ko-Fi(Alternative for Donating to Johto) ] -> https://ko-fi.com/seibanaut
