@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Settings>
-  <LastUpdated>4.55</LastUpdated>
+  <LastUpdated>4.55B</LastUpdated>
   <CameraOffset>1AA81A0</CameraOffset>
   <GposeOffset>1AA8398</GposeOffset>
   <AoBOffset>1AA97B8</AoBOffset>
@@ -10,7 +10,7 @@
   <TerritoryOffset>1AE5A88</TerritoryOffset>
   <GposeFilters>1A8B278</GposeFilters>
   <MusicOffset>1AC1158</MusicOffset>
-  <CharacterRenderOffset>41FA30</CharacterRenderOffset>
+  <CharacterRenderOffset>41FA50</CharacterRenderOffset>
   
   <Character>
     <Name>30</Name>
