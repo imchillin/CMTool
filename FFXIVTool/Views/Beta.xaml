@@ -37,6 +37,6 @@
         <TextBox HorizontalAlignment="Left" Height="15" Margin="155,10,0,0" TextWrapping="Wrap" Text="{Binding X, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="185"/>
         <TextBox HorizontalAlignment="Left" Height="15" Margin="155,41,0,0" TextWrapping="Wrap" Text="{Binding Y, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="185"/>
         <TextBox HorizontalAlignment="Left" Height="15" Margin="155,72,0,0" TextWrapping="Wrap" Text="{Binding Z, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="185"/>
-        <TextBlock HorizontalAlignment="Left" Margin="326,267,0,0" TextWrapping="Wrap" Text="NOTE: This is a Beta panel.  The UI here is going to be a bit messy, but will serve its purpose." VerticalAlignment="Top" Height="73" Width="164" Foreground="#DDCF1E1E"/>
+        <TextBlock HorizontalAlignment="Left" Margin="223,286,0,0" TextWrapping="Wrap" Text="NOTE: This is a Beta panel.  The UI here is going to be a bit messy, but will serve its purpose." VerticalAlignment="Top" Height="54" Width="267" Foreground="#DDCF1E1E"/>
     </Grid>
 </UserControl>

@@ -15,13 +15,10 @@ namespace FFXIVTool.ViewModel
         public CharacterDetails CharacterDetails { get => (CharacterDetails)model; set => model = value; }
         private RefreshEntitiesCommand refreshEntitiesCommand;
         public static string eOffset = "8";
-        public static bool NotAllowed = false;
         public static bool FreezeAll = false;
         public static bool EnabledEditing = false;
-        public static bool CheckAble = true;
         public static bool CurrentlySavingFilter = false;
         public int WritingCheck = 0;
-        HashSet<int> ZoneBlacklist = new HashSet<int> { 691, 692, 693, 694, 695, 696, 697, 698, 733, 734, 725, 748, 749, 750, 751, 752, 753, 754, 755, 758, 765, 766, 767, 777, 798, 799, 800, 801, 802, 803, 804, 805, 807, 808, 810, 811, 812 };
         public static string baseAddr;
         public RefreshEntitiesCommand RefreshEntitiesCommand
         {
@@ -82,53 +79,9 @@ namespace FFXIVTool.ViewModel
         }
         private void Work()
         {
-            CharacterDetails.Territoryxd.value = MemoryManager.Instance.MemLib.readInt(MemoryManager.GetAddressString(MemoryManager.Instance.TerritoryAddress, Settings.Instance.Character.Territory));
-            if (ZoneBlacklist.Contains(CharacterDetails.Territoryxd.value))
-            {
-                if (CharacterDetails.Max.value > (float)20.00) // Maximum Zoom limit is 20.00
-                {
-                    CharacterDetails.Max.freeze = false;
-                    CharacterDetails.Max.value = (float)20.00;
-                    MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.Max), "float", "20");
-                }
-                if (CharacterDetails.Min.value < (float)1.50) // Minimum Zoom limit is 1.50
-                {
-                    CharacterDetails.Min.freeze = false;
-                    CharacterDetails.Min.value = (float)1.50;
-                    MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.Min), "float", "1.50");
-                }
-                if (CharacterDetails.CZoom.value > (float)20.00) // Camera's current zoom 
-                {
-                    CharacterDetails.CZoom.freeze = false;
-                    CharacterDetails.CZoom.value = (float)19.50;
-                    MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CZoom), "float", "20");
-                }
-                if (CheckAble == true)
-                {
-                    NotAllowed = true;
-                    CheckAble = false;
-                    CharacterDetails.Max.freeze = false;
-                    CharacterDetails.CZoom.freeze = false;
-                    CharacterDetails.Min.freeze = false;
-                    //These are the checkbox to freeze addresses
-                    CharacterDetails.Max.Checker = false;
-                    CharacterDetails.Min.Checker = false;
-                    CharacterDetails.CZoom.Checker = false;
-                }
-            }
-            else
-            {
-                if (CheckAble == false)
-                {
-                    CheckAble = true;
-                    NotAllowed = false;
-                    CharacterDetails.Max.Checker = true;
-                    CharacterDetails.Min.Checker = true;
-                    CharacterDetails.CZoom.Checker = true;
-                }
-            }
             try
             {
+                CharacterDetails.Territoryxd.value = MemoryManager.Instance.MemLib.readInt(MemoryManager.GetAddressString(MemoryManager.Instance.TerritoryAddress, Settings.Instance.Character.Territory));
                 baseAddr = MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset);
                 if (CharacterDetails.GposeMode.Activated) baseAddr = MemoryManager.Instance.GposeAddress;
                 if (CharacterDetails.TargetMode.Activated) baseAddr = MemoryManager.Instance.TargetAddress;
