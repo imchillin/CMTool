@@ -19,10 +19,10 @@ namespace FFXIVTool.Views
         public class FiltersDetails : BaseModel
         {
             public Address<string> FilterAoB { get; set; }
-            public Address<byte> Vignette { get; set; }
         }
         private List<ExdCsvReader.Weather> AllowedWeathers;
         private bool isUserInteraction;
+        private bool istimeLocked=false;
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
         public CharacterDetailsView3()
         {
@@ -30,7 +30,7 @@ namespace FFXIVTool.Views
         }
         private void MaxZoomXD(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            if (MaxZoom.Value.HasValue && CharacterDetailsViewModel.NotAllowed == false)
+            if (MaxZoom.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.Max), "float", MaxZoom.Value.ToString());
             MaxZoom.ValueChanged -= MaxZoomXD;
         }
@@ -46,7 +46,7 @@ namespace FFXIVTool.Views
 
         private void MinZoomXD(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            if (Min_Zoom.Value.HasValue && CharacterDetailsViewModel.NotAllowed == false)
+            if (Min_Zoom.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.Min), "float", Min_Zoom.Value.ToString());
             Min_Zoom.ValueChanged -= MinZoomXD;
         }
@@ -62,13 +62,13 @@ namespace FFXIVTool.Views
 
         private void CurrentZoomxD(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            if (CurrentZoom.Value.HasValue && CharacterDetailsViewModel.NotAllowed == false)
+            if (CurrentZoom.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CZoom), "float", CurrentZoom.Value.ToString());
             CurrentZoom.ValueChanged -= CurrentZoomxD;
         }
         private void CurrentZoomxD(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (CurrentZoom.Value.HasValue && CharacterDetailsViewModel.NotAllowed == false)
+            if (CurrentZoom.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CZoom), "float", CZoom2.Value.ToString());
             CZoom2.ValueChanged -= CurrentZoomxD;
         }
@@ -1014,6 +1014,25 @@ namespace FFXIVTool.Views
         {
             Timexd.Value = 0;
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.TimeAddress, Settings.Instance.Character.TimeControl), "int", "0");
+        }
+
+        private async void TimeButtonLock_Checked(object sender, RoutedEventArgs e)
+        {
+            istimeLocked = true;
+            while(istimeLocked)
+            {
+                if (!istimeLocked) break;
+                if (TimeControlUpDown.Value == 0) TimeControlUpDown.Value += 86400;
+                TimeControlUpDown.Value -= 1;
+                if (TimeControlUpDown.Value == int.MinValue) TimeControlUpDown.Value += 86400;
+                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.TimeAddress, Settings.Instance.Character.TimeControl), "int", TimeControlUpDown.Value.ToString());
+                await System.Threading.Tasks.Task.Delay(37);
+            }
+        }
+
+        private void TimeButtonLock_Unchecked(object sender, RoutedEventArgs e)
+        {
+            istimeLocked = false;
         }
     }
 }
