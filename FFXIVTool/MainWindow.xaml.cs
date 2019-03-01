@@ -119,7 +119,7 @@ namespace FFXIVTool
         }
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            this.Title = "FFXIV Screenshot Tool - v" + version + "- Made By: Johto";
+            this.Title = "FFXIV Screenshot Tool-v" + version + "-Made By:Johto&LeonBlade";
             DataContext = new MainViewModel();
             var accentColor = Properties.Settings.Default.Accent;
             new PaletteHelper().ReplaceAccentColor(accentColor);
