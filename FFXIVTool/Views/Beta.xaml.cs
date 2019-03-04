@@ -38,7 +38,12 @@ namespace FFXIVTool.Views
 			set
 			{
 				SetValue(FrozenProperty, value);
-
+				
+				// Set the rotation freeze values to the Frozen value
+				CharacterDetails.Rotation.freeze = value;
+				CharacterDetails.Rotation2.freeze = value;
+				CharacterDetails.Rotation3.freeze = value;
+				CharacterDetails.Rotation4.freeze = value;
 			}
 		}
 
@@ -62,11 +67,6 @@ namespace FFXIVTool.Views
 
 							if (!Frozen)
 							{
-								CharacterDetails.Rotation.freeze = false;
-								CharacterDetails.Rotation2.freeze = false;
-								CharacterDetails.Rotation3.freeze = false;
-								CharacterDetails.Rotation4.freeze = false;
-
 								var q = new Quaternion(
 									CharacterDetails.Rotation.value,
 									CharacterDetails.Rotation2.value,
@@ -83,11 +83,6 @@ namespace FFXIVTool.Views
 							else
 							{
 								var q = GetQuaternion(new Vector3D(X, Y, Z));
-
-								CharacterDetails.Rotation.freeze = true;
-								CharacterDetails.Rotation2.freeze = true;
-								CharacterDetails.Rotation3.freeze = true;
-								CharacterDetails.Rotation4.freeze = true;
 
 								CharacterDetails.Rotation.value = (float)q.X;
 								CharacterDetails.Rotation2.value = (float)q.Y;
