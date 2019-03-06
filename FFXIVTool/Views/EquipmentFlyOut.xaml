@@ -39,7 +39,7 @@
                                                   >
                     <TabItem Header="Equipment Selector" Name="EquipTab">
                         <Grid>
-                            <CheckBox Content="Include OffHand" Name="CheckIncluded" HorizontalAlignment="Left" Margin="203,11,0,0" VerticalAlignment="Top" Width="125"/>
+                            <CheckBox Content="Include OffHand" Name="CheckIncluded" HorizontalAlignment="Left" Margin="181,11,0,0" VerticalAlignment="Top" Width="171"/>
                             <DataGrid x:Name="EquipBox" HorizontalAlignment="Left" Height="270" Margin="-6,42,0,0" VerticalAlignment="Top" Width="478" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden" SelectionChanged="EquipBox_SelectionChanged">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="300"/>
@@ -63,7 +63,7 @@
                                 <ComboBoxItem Content="Props Main Hand"/>
                                 <ComboBoxItem Content="Props Off Hand"/>
                             </ComboBox>
-                            <CheckBox Content="Keep Dyes" x:Name="KeepDyes" HorizontalAlignment="Left" Margin="333,11,0,0" VerticalAlignment="Top" Width="129"/>
+                            <CheckBox Content="Keep Dyes" x:Name="KeepDyes" HorizontalAlignment="Left" Margin="365,11,0,0" VerticalAlignment="Top" Width="98"/>
                         </Grid>
                     </TabItem>
                     <TabItem Header="NPC Selector" Name="NPCTab">

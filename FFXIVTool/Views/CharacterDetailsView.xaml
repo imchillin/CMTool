@@ -92,6 +92,7 @@
         <CheckBox IsChecked="{Binding Path=CharacterDetails.ModelType.freeze}" Content="Model Type" HorizontalAlignment="Left" Margin="281,371,0,0" VerticalAlignment="Top"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="26" Margin="394,365,0,0" Text="{Binding Path=CharacterDetails.ModelType.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center"/>
         <Button x:Name="ModelTypeButton" Content="Search" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="454,365,0,0" VerticalAlignment="Top" Width="75" Height="26" Click="ModelTypeButton_Click"/>
+        <Button Content="Random Appearance" HorizontalAlignment="Left" Margin="327,420,0,0" VerticalAlignment="Top" Width="171" Click="Button_Click_1"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.Height.freeze}" Content="Height" HorizontalAlignment="Left" Margin="543,10,0,0" VerticalAlignment="Top"/>
         <mah:NumericUpDown Maximum="99999" x:Name="Height2x" Value="{Binding Path=CharacterDetails.Height.value, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" HorizontalAlignment="Left" Margin="618,8,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Minimum="0.0001" SourceUpdated="Height2x_SourceUpdated" Interval="0.01" TextAlignment="Right"/>
         <Slider x:Name="HeightSlider" Value="{Binding Path=CharacterDetails.Height.value, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" HorizontalAlignment="Left" Margin="763,12,0,0" VerticalAlignment="Top" Width="117" IsMoveToPointEnabled="True" TickFrequency="0.1" Maximum="30" LargeChange="0.1" SourceUpdated="Height2x_SourceUpdated" />
@@ -179,6 +180,5 @@
         <Label Content="Emote Checker:" HorizontalAlignment="Left" Margin="540,314,0,0" VerticalAlignment="Top"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" IsEnabled="False" HorizontalAlignment="Left" Height="26" Margin="642,315,0,0" TextWrapping="Wrap" Text="{Binding Path=CharacterDetails.EmoteX.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="64" TextAlignment="Center"/>
         <Views:SpecialControl x:Name="SpecialControl" Width="583" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Margin="531,0,0,-12"/>
-        <Button Content="Random Appearance" HorizontalAlignment="Left" Margin="327,420,0,0" VerticalAlignment="Top" Width="171" Click="Button_Click_1"/>
     </Grid>
 </UserControl>
