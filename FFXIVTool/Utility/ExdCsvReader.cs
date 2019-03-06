@@ -710,7 +710,6 @@ namespace FFXIVTool.Utility
                         GearSet gear = new GearSet();
                         int dDataCount = 0;
                         int modelId = 0;
-
                         foreach (string field in fields)
                         {
                             fCount++;
@@ -720,12 +719,12 @@ namespace FFXIVTool.Utility
                                 id = int.Parse(field);
                             }
 
-                            if (fCount == 37)
+                            if (fCount == 2)
                             {
                                 modelId = int.Parse(field);
                             }
 
-                            if (fCount >= 38 && fCount <= 63)
+                            if (fCount >= 3 && fCount <= 28)
                             {
                                 try
                                 {
@@ -738,107 +737,72 @@ namespace FFXIVTool.Utility
                                     //Console.WriteLine("Invalid: " + field);
                                 }
                             }
-
-                            if (fCount == 67)
+                            if (fCount == 29)
                             {
                                 gear.MainWep = EquipmentFlyOut.CommaToWepTuple(field);
                             }
 
-                            if (fCount == 69)
+                            if (fCount == 30)
                             {
                                 gear.OffWep = EquipmentFlyOut.CommaToWepTuple(field);
                             }
 
-                            if (fCount >= 71 && fCount <= 90)
+                            if (fCount >= 31 && fCount <= 45)
                             {
                                 Int32 fieldint = 0;
-
-                                if (fCount != 73)
-                                    fieldint = Int32.Parse(field);
-
-                                var bytes = BitConverter.GetBytes(fieldint);
-
-                                var model = BitConverter.ToUInt16(bytes, 0);
-
-                                switch (fCount - 1)
+                                fieldint = Int32.Parse(field);
+                                int[] result = convertToIntArray(BitConverter.GetBytes(fieldint));
+                                switch (fCount-1)
                                 {
-                                    case 70:
-                                        gear.HeadGear = new GearTuple(model, bytes[2], 0);
+                                    case 30:
+                                        gear.HeadGear = new GearTuple((result[0] + result[1] * 256), result[2], 0);
                                         break;
-                                    case 71:
-                                        gear.HeadGear = new GearTuple(gear.HeadGear.Item1, gear.HeadGear.Item2,
-                                            int.Parse(field));
+                                    case 31:
+                                        gear.HeadGear = new GearTuple(gear.HeadGear.Item1, gear.HeadGear.Item2, int.Parse(field));
                                         break;
-                                    case 72:
+                                    case 32:
+                                        gear.BodyGear = new GearTuple((result[0] + result[1] * 256), result[2], 0);
                                         break;
-                                    case 73:
-                                        gear.BodyGear = new GearTuple(model, bytes[2], 0);
+                                    case 33:
+                                        gear.BodyGear = new GearTuple(gear.BodyGear.Item1, gear.BodyGear.Item2, int.Parse(field));
                                         break;
-                                    case 74:
-                                        gear.BodyGear = new GearTuple(gear.BodyGear.Item1, gear.BodyGear.Item2,
-                                            int.Parse(field));
+                                    case 34:
+                                        gear.HandsGear = new GearTuple((result[0] + result[1] * 256), result[2], 0);
                                         break;
-                                    case 75:
-                                        gear.HandsGear = new GearTuple(model, bytes[2], 0);
+                                    case 35:
+                                        gear.HandsGear = new GearTuple(gear.HandsGear.Item1, gear.HandsGear.Item2, int.Parse(field));
                                         break;
-                                    case 76:
-                                        gear.HandsGear = new GearTuple(gear.HandsGear.Item1, gear.HandsGear.Item2,
-                                            int.Parse(field));
+                                    case 36:
+                                        gear.LegsGear = new GearTuple((result[0] + result[1] * 256), result[2], 0);
                                         break;
-                                    case 77:
-                                        gear.LegsGear = new GearTuple(model, bytes[2], 0);
+                                    case 37:
+                                        gear.LegsGear = new GearTuple(gear.LegsGear.Item1, gear.LegsGear.Item2,int.Parse(field));
                                         break;
-                                    case 78:
-                                        gear.LegsGear = new GearTuple(gear.LegsGear.Item1, gear.LegsGear.Item2,
-                                            int.Parse(field));
+                                    case 38:
+                                        gear.FeetGear = new GearTuple((result[0] + result[1] * 256), result[2], 0);
                                         break;
-                                    case 79:
-                                        gear.FeetGear = new GearTuple(model, bytes[2], 0);
+                                    case 39:
+                                        gear.FeetGear = new GearTuple(gear.FeetGear.Item1, gear.FeetGear.Item2, int.Parse(field));
                                         break;
-                                    case 80:
-                                        gear.FeetGear = new GearTuple(gear.FeetGear.Item1, gear.FeetGear.Item2,
-                                            int.Parse(field));
+                                    case 40:
+                                        gear.EarGear = new GearTuple((result[0] + result[1] * 256), result[2], 0);
                                         break;
-
-                                    case 81:
-                                        gear.EarGear = new GearTuple(model, bytes[2], 0);
+                                    case 41:
+                                        gear.NeckGear = new GearTuple((result[0] + result[1] * 256), result[2], 0);
                                         break;
-                                    case 82:
-                                        gear.EarGear = new GearTuple(gear.EarGear.Item1, gear.EarGear.Item2,
-                                            int.Parse(field));
+                                    case 42:
+                                        gear.WristGear = new GearTuple((result[0] + result[1] * 256), result[2], 0);
                                         break;
-                                    case 83:
-                                        gear.NeckGear = new GearTuple(model, bytes[2], 0);
+                                    case 43:
+                                        gear.LRingGear = new GearTuple((result[0] + result[1] * 256), result[2], 0);
                                         break;
-                                    case 84:
-                                        gear.NeckGear = new GearTuple(gear.NeckGear.Item1, gear.NeckGear.Item2,
-                                            int.Parse(field));
-                                        break;
-                                    case 85:
-                                        gear.WristGear = new GearTuple(model, bytes[2], 0);
-                                        break;
-                                    case 86:
-                                        gear.WristGear = new GearTuple(gear.WristGear.Item1, gear.WristGear.Item2,
-                                            int.Parse(field));
-                                        break;
-                                    case 87:
-                                        gear.LRingGear = new GearTuple(model, bytes[2], 0);
-                                        break;
-                                    case 88:
-                                        gear.LRingGear = new GearTuple(gear.LRingGear.Item1, gear.LRingGear.Item2,
-                                            int.Parse(field));
-                                        break;
-                                    case 89:
-                                        gear.RRingGear = new GearTuple(model, bytes[2], 0);
-                                        break;
-                                    case 90:
-                                        gear.RRingGear = new GearTuple(gear.RRingGear.Item1, gear.RRingGear.Item2,
-                                            int.Parse(field));
+                                    case 44:
+                                        gear.RRingGear = new GearTuple((result[0] + result[1] * 256), result[2], 0);
                                         break;
                                 }
                             }
                         }
-                        //            Console.WriteLine($"{id} - {wepCSV} - {dDataCount}");
+                        // Console.WriteLine($"{id} - {wepCSV} - {dDataCount}");
 
                         gear.Customize = customize.ToArray();
 
@@ -1128,6 +1092,15 @@ namespace FFXIVTool.Utility
 #endif
                 }
             }
+        }
+        public static int[] convertToIntArray(byte[] input)
+        {
+            int[] NewArray = new int[input.Length];
+            for (int i = 0; i < input.Length; i++)
+            {
+                NewArray[i] = input[i] & 0xff;
+            }
+            return NewArray;
         }
     }
 }
