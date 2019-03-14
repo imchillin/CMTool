@@ -42,7 +42,7 @@ namespace FFXIVTool
             ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
             AutoUpdater.RunUpdateAsAdmin = true;
             AutoUpdater.DownloadPath = Environment.CurrentDirectory;
-            AutoUpdater.Start("https://raw.githubusercontent.com/Khyrou/xD/master/UpdateLog.xml");
+            AutoUpdater.Start("https://raw.githubusercontent.com/Khyrou/SSTool/master/UpdateLog.xml");
             if (!File.Exists(@"./OffsetSettings.xml"))
             {
                 try
@@ -1232,7 +1232,7 @@ namespace FFXIVTool
             AutoUpdater.DownloadPath = Environment.CurrentDirectory;
             AutoUpdater.Mandatory = true;
             AutoUpdater.ShowRemindLaterButton = false;
-            AutoUpdater.Start("https://raw.githubusercontent.com/Khyrou/xD/master/UpdateLog.xml");
+            AutoUpdater.Start("https://raw.githubusercontent.com/Khyrou/SSTool/master/UpdateLog.xml");
         }
 
         private void GposeButton_Checked(object sender, RoutedEventArgs e)
