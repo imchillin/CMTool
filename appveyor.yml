@@ -1,7 +1,11 @@
 configuration: Release
 
+image:
+- Visual Studio 2017
+
 before_build:
   - nuget restore FFXIVTool.sln
   
 build:
     project: FFXIVTool.sln
+    
