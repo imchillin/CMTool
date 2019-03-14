@@ -108,7 +108,8 @@ namespace FFXIVTool
             var path2 = Path.Combine(Directory.GetCurrentDirectory(), "ZipExtractor.exe");
             if (File.Exists(path)) File.Delete(path);
             if (File.Exists(path2)) File.Delete(path2);
-            InitializeComponent();
+
+			InitializeComponent();
         }
         public static ImageSource IconToImageSource(System.Drawing.Icon icon)
         {
@@ -128,7 +129,9 @@ namespace FFXIVTool
             var theme = Properties.Settings.Default.Theme;
             new PaletteHelper().SetLightDark(theme != "Light");
             this.Topmost = Properties.Settings.Default.TopApp;
-        }
+			// toggle status
+			(DataContext as MainViewModel).ToggleStatus(Properties.Settings.Default.TopApp);
+		}
 
         private void CharacterRefreshButton_Click(object sender, RoutedEventArgs e)
         {
@@ -1204,20 +1207,22 @@ namespace FFXIVTool
             CharacterDetailsView.numbcheck = false;
         }
 
-        private void AlwaysOnTop_Click(object sender, RoutedEventArgs e)
+		private void AlwaysOnTop_Click(object sender, RoutedEventArgs e)
         {
             if ((bool)Properties.Settings.Default.TopApp == false)
             {
                 Properties.Settings.Default.TopApp = true;
                 Properties.Settings.Default.Save();
                 this.Topmost = true;
+				(DataContext as MainViewModel).ToggleStatus(true);
             }
             else
             {
                 Properties.Settings.Default.TopApp = false;
                 Properties.Settings.Default.Save();
                 this.Topmost = false;
-            }
+				(DataContext as MainViewModel).ToggleStatus(false);
+			}
         }
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)

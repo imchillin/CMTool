@@ -1,19 +1,18 @@
 ﻿using FFXIVTool.Utility;
-using Newtonsoft.Json;
+using MaterialDesignThemes.Wpf;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Xml.Linq;
+using System.Windows.Media;
 using System.Xml.Serialization;
 
 namespace FFXIVTool.ViewModel
 {
-    public class MainViewModel
+	public class MainViewModel : INotifyPropertyChanged
     {
         private static Mediator mediator;
 
@@ -22,8 +21,15 @@ namespace FFXIVTool.ViewModel
         public static int gameProcId = 0;
         public static ThreadWriting ThreadTime;
         private static CharacterDetailsViewModel characterDetails;
-        public CharacterDetailsViewModel CharacterDetails { get => characterDetails; set => characterDetails = value; }
-        public MainViewModel()
+
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		public CharacterDetailsViewModel CharacterDetails { get => characterDetails; set => characterDetails = value; }
+
+		public PackIconKind AOTToggleStatus { get; set; } = PackIconKind.ToggleSwitchOffOutline;
+		public Brush ToggleForeground { get; set; } = new SolidColorBrush(Color.FromArgb(0x75, 0xFF, 0xFF, 0xFF));
+
+		public MainViewModel()
         {
             mediator = new Mediator();
             MemoryManager.Instance.MemLib.OpenProcess(gameProcId);
@@ -121,5 +127,11 @@ namespace FFXIVTool.ViewModel
                 if (!MainWindow.CurrentlySaving) mediator.SendWork();
             }
         }
+
+		public void ToggleStatus(bool on)
+		{
+			ToggleForeground = on ? new SolidColorBrush(Color.FromArgb(255, 255, 255, 255)) : new SolidColorBrush(Color.FromArgb(0x75, 0xFF, 0xFF, 0xFF));
+			AOTToggleStatus = on ? PackIconKind.ToggleSwitch : PackIconKind.ToggleSwitchOffOutline;
+		}
     }
 }
