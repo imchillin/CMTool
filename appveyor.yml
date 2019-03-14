@@ -1,11 +1,20 @@
 configuration: Release
 
 image:
-- Visual Studio 2017
+  - Visual Studio 2017
+  
+cache:
+  - packages -> **\packages.config
 
 before_build:
   - nuget restore FFXIVTool.sln
   
 build:
-    project: FFXIVTool.sln
+  project: FFXIVTool.sln
     
+after_build:
+  7z a SSTool.zip %APPVEYOR_BUILD_FOLDER%\FFXIVTool\bin\%CONFIGURATION%\*.exe %APPVEYOR_BUILD_FOLDER%\FFXIVTool\bin\%CONFIGURATION%\*.txt %APPVEYOR_BUILD_FOLDER%\FFXIVTool\bin\%CONFIGURATION%\OffsetSettings.xml
+    
+artifacts:
+  - path: SSTool.zip
+    name: SSTool
