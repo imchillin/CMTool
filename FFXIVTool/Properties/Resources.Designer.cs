@@ -9032,20 +9032,29 @@ namespace FFXIVTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to key,0,1,2,3
-        ///#,,Icon,Data,IsPurchasable
-        ///int32,byte,Image,uint16,bit&amp;01
-        ///0,0,&quot;ui/icon/000000/000000.tex&quot;,0,False
-        ///1,1,&quot;ui/icon/131000/131001.tex&quot;,0,False
-        ///2,2,&quot;ui/icon/131000/131002.tex&quot;,0,False
-        ///3,3,&quot;ui/icon/131000/131003.tex&quot;,0,False
-        ///4,4,&quot;ui/icon/131000/131004.tex&quot;,0,False
-        ///5,5,&quot;ui/icon/131000/131005.tex&quot;,0,False
-        ///6,6,&quot;ui/icon/131000/131006.tex&quot;,0,False
-        ///7,7,&quot;ui/icon/131000/131007.tex&quot;,0,False
-        ///8,8,&quot;ui/icon/131000/131008.tex&quot;,0,False
-        ///9,9,&quot;ui/icon/131000/131009.tex&quot;,0,False
-        ///10,10,&quot;ui/icon/131000/131010. [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to Index,0 [0x3][0x6],1 [0x7][0x0],2 [0x5][0x4],3 [0x19][0x7]
+        ///0,0,0,0,false
+        ///1,1,131001,0,false
+        ///2,2,131002,0,false
+        ///3,3,131003,0,false
+        ///4,4,131004,0,false
+        ///5,5,131005,0,false
+        ///6,6,131006,0,false
+        ///7,7,131007,0,false
+        ///8,8,131008,0,false
+        ///9,9,131009,0,false
+        ///10,10,131010,0,false
+        ///11,11,131011,0,false
+        ///12,12,131012,0,false
+        ///13,13,131013,0,false
+        ///14,14,131014,0,false
+        ///15,51,131015,0,false
+        ///16,52,131016,0,false
+        ///17,53,131017,0,false
+        ///18,54,131018,0,false
+        ///19,101,131020,303,true
+        ///20,104,131022,0,false
+        ///21,102,13102 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string charamakecustomize_exh {
             get {
@@ -9054,7 +9063,11 @@ namespace FFXIVTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Index,0 [0x5][0xbc],1 [0x19][0xef],2 [0x7][0x0],3 [0x7][0x4],4 [0x7][0x8],5 [0x7][0xc],6 [0x7][0x10],7 [0x7][0x14],8 [0x7][0x18],9 [0x7][0x1c],10 [0x7][0x20],11 [0x7][0x24],12 [0x7][0x28],13 [0x7][0x2c],14 [0x7][0x30],15 [0x7][0x34],16 [0x7][0x38],17 [0x7][0x3c],18 [0x7][0x40],19 [0x7][0x44],20 [0x7][0x48],21 [0x7][0x4c],22 [0x7][0x50],23 [0x7][0x54],24 [0x7][0x58],25 [0x7][0x5c],26 [0x7][0x60],27 [0x7][0x64],28 [0x7][0x68],29 [0x7][0x6c],30 [0x7][0x70],31 [0x7][0x74],32 [0x7][0x78],33 [0x7][0x7c],34 [0x9][ [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to Index[00],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,&quot;0, 0, 0, 0&quot;,&quot;0, 0, 0, 0&quot;,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+        ///1000000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,&quot;0, 0, 0, 0&quot;,&quot;0, 0, 0, 0&quot;,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+        ///1000001,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,&quot;0, 0, 0, 0&quot;,&quot;0, 0, 0, 0&quot;,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+        ///1000002,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,&quot;0, 0, 0, 0&quot;,&quot;0, 0, 0, 0&quot;,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+        ///1000003,0,0,0,0,0,0,0,0,0,0,0,0,0, [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string enpcbase_exh {
             get {
@@ -9124,7 +9137,8 @@ namespace FFXIVTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 0,&quot;&quot;,0,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
+        ///   Looks up a localized string similar to Index,0 [STRING(0x0)][0x0],1,0,0
+        ///0,&quot;&quot;,0,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
         ///1,&quot;gil&quot;,63,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
         ///2,&quot;fire shard&quot;,59,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
         ///3,&quot;ice shard&quot;,59,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
@@ -9136,7 +9150,7 @@ namespace FFXIVTool.Properties {
         ///9,&quot;ice crystal&quot;,59,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
         ///10,&quot;wind crystal&quot;,59,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
         ///11,&quot;earth crystal&quot;,59,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
-        ///12,&quot;lightning crystal&quot;,59,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;        /// [rest of string was truncated]&quot;;.
+        ///12,&quot;lightnin [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Item {
             get {
@@ -9270,8 +9284,7 @@ namespace FFXIVTool.Properties {
         ///9,&quot;Sea Wolf&quot;
         ///10,&quot;Hellsguard&quot;
         ///11,&quot;Raen&quot;
-        ///12,&quot;Xaela&quot;
-        ///.
+        ///12,&quot;Xaela&quot;.
         /// </summary>
         internal static string tribe_exh_en {
             get {

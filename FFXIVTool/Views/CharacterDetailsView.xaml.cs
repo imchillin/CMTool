@@ -90,114 +90,6 @@ namespace FFXIVTool.Views
                 HeightSlider.ValueChanged += Height2_ValueChanged;
             }
         }
-
-        private void PlayerAoBbox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (PlayerAoBbox.Text.Length > PlayerAoBbox.MaxLength)
-            {
-                e.Handled = true;
-                return;
-            }
-        }
-
-        private void AoBButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                byte[] haha;
-                haha = MemoryManager.StringToByteArray(PlayerAoBbox.Text.Replace(" ", string.Empty));
-                if (CharacterDetails.Highlights.Activated == true) { CharacterDetails.Highlights.freeze = true; CharacterDetails.Highlights.Activated = false; }
-                if (CharacterDetails.Race.freeze == true) { CharacterDetails.Race.freeze = false; CharacterDetails.Race.Activated = true; }
-                if (CharacterDetails.Gender.freeze == true) { CharacterDetails.Gender.freeze = false; CharacterDetails.Gender.Activated = true; }
-                if (CharacterDetails.BodyType.freeze == true) { CharacterDetails.BodyType.freeze = false; CharacterDetails.BodyType.Activated = true; }
-                if (CharacterDetails.RHeight.freeze == true) { CharacterDetails.RHeight.freeze = false; CharacterDetails.RHeight.Activated = true; }
-                if (CharacterDetails.Clan.freeze == true) { CharacterDetails.Clan.freeze = false; CharacterDetails.Clan.Activated = true; }
-                if (CharacterDetails.Head.freeze == true) { CharacterDetails.Head.freeze = false; CharacterDetails.Head.Activated = true; }
-                if (CharacterDetails.Hair.freeze == true) { CharacterDetails.Hair.freeze = false; CharacterDetails.Hair.Activated = true; }
-                if (CharacterDetails.HighlightTone.freeze == true) { CharacterDetails.HighlightTone.freeze = false; CharacterDetails.HighlightTone.Activated = true; }
-                if (CharacterDetails.Skintone.freeze == true) { CharacterDetails.Skintone.freeze = false; CharacterDetails.Skintone.Activated = true; }
-                if (CharacterDetails.RightEye.freeze == true) { CharacterDetails.RightEye.freeze = false; CharacterDetails.RightEye.Activated = true; }
-                if (CharacterDetails.LeftEye.freeze == true) { CharacterDetails.LeftEye.freeze = false; CharacterDetails.LeftEye.Activated = true; }
-                if (CharacterDetails.HairTone.freeze == true) { CharacterDetails.HairTone.freeze = false; CharacterDetails.HairTone.Activated = true; }
-                if (CharacterDetails.FacePaint.freeze == true) { CharacterDetails.FacePaint.freeze = false; CharacterDetails.FacePaint.Activated = true; }
-                if (CharacterDetails.FacePaintColor.freeze == true) { CharacterDetails.FacePaintColor.freeze = false; CharacterDetails.FacePaintColor.Activated = true; }
-                if (CharacterDetails.EyeBrowType.freeze == true) { CharacterDetails.EyeBrowType.freeze = false; CharacterDetails.EyeBrowType.Activated = true; }
-                if (CharacterDetails.Nose.freeze == true) { CharacterDetails.Nose.freeze = false; CharacterDetails.Nose.Activated = true; }
-                if (CharacterDetails.Eye.freeze == true) { CharacterDetails.Eye.freeze = false; CharacterDetails.Eye.Activated = true; }
-                if (CharacterDetails.Jaw.freeze == true) { CharacterDetails.Jaw.freeze = false; CharacterDetails.Jaw.Activated = true; }
-                if (CharacterDetails.Lips.freeze == true) { CharacterDetails.Lips.freeze = false; CharacterDetails.Lips.Activated = true; }
-                if (CharacterDetails.LipsTone.freeze == true) { CharacterDetails.LipsTone.freeze = false; CharacterDetails.LipsTone.Activated = true; }
-                if (CharacterDetails.TailorMuscle.freeze == true) { CharacterDetails.TailorMuscle.freeze = false; CharacterDetails.TailorMuscle.Activated = true; }
-                if (CharacterDetails.TailType.freeze == true) { CharacterDetails.TailType.freeze = false; CharacterDetails.TailType.Activated = true; }
-                if (CharacterDetails.FacialFeatures.freeze == true) { CharacterDetails.FacialFeatures.freeze = false; CharacterDetails.FacialFeatures.Activated = true; }
-                if (CharacterDetails.RBust.freeze == true) { CharacterDetails.RBust.freeze = false; CharacterDetails.RBust.Activated = true; }
-                WriteCurrentCustomize(haha);
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show("One or more fields were not formatted correctly.\n\n" + exc, " Error " + Assembly.GetExecutingAssembly().GetName().Version, MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        private void WriteCurrentCustomize(byte[] Haha)
-        {
-            if (Haha == null)
-            {
-                if (CharacterDetails.Highlights.Activated == true) { CharacterDetails.Highlights.freeze = true; CharacterDetails.Highlights.Activated = false; }
-                if (CharacterDetails.Race.Activated == true) { CharacterDetails.Race.freeze = true; CharacterDetails.Race.Activated = false; }
-                if (CharacterDetails.Gender.Activated == true) { CharacterDetails.Gender.freeze = true; CharacterDetails.Gender.Activated = false; }
-                if (CharacterDetails.BodyType.Activated == true) { CharacterDetails.BodyType.freeze = true; CharacterDetails.BodyType.Activated = false; }
-                if (CharacterDetails.RHeight.Activated == true) { CharacterDetails.RHeight.freeze = true; CharacterDetails.RHeight.Activated = false; }
-                if (CharacterDetails.Clan.Activated == true) { CharacterDetails.Clan.freeze = true; CharacterDetails.Clan.Activated = false; }
-                if (CharacterDetails.Head.Activated == true) { CharacterDetails.Head.freeze = true; CharacterDetails.Head.Activated = false; }
-                if (CharacterDetails.Hair.Activated == true) { CharacterDetails.Hair.freeze = true; CharacterDetails.Hair.Activated = false; }
-                if (CharacterDetails.HighlightTone.Activated == true) { CharacterDetails.HighlightTone.freeze = true; CharacterDetails.HighlightTone.Activated = false; }
-                if (CharacterDetails.Skintone.Activated == true) { CharacterDetails.Skintone.freeze = true; CharacterDetails.Skintone.Activated = false; }
-                if (CharacterDetails.RightEye.Activated == true) { CharacterDetails.RightEye.freeze = true; CharacterDetails.RightEye.Activated = false; }
-                if (CharacterDetails.LeftEye.Activated == true) { CharacterDetails.LeftEye.freeze = true; CharacterDetails.LeftEye.Activated = false; }
-                if (CharacterDetails.HairTone.Activated == true) { CharacterDetails.HairTone.freeze = true; CharacterDetails.HairTone.Activated = false; }
-                if (CharacterDetails.FacePaint.Activated == true) { CharacterDetails.FacePaint.freeze = true; CharacterDetails.FacePaint.Activated = false; }
-                if (CharacterDetails.FacePaintColor.Activated == true) { CharacterDetails.FacePaintColor.freeze = true; CharacterDetails.FacePaintColor.Activated = false; }
-                if (CharacterDetails.EyeBrowType.Activated == true) { CharacterDetails.EyeBrowType.freeze = true; CharacterDetails.EyeBrowType.Activated = false; }
-                if (CharacterDetails.Nose.Activated == true) { CharacterDetails.Nose.freeze = true; CharacterDetails.Nose.Activated = false; }
-                if (CharacterDetails.Eye.Activated == true) { CharacterDetails.Eye.freeze = true; CharacterDetails.Eye.Activated = false; }
-                if (CharacterDetails.Jaw.Activated == true) { CharacterDetails.Jaw.freeze = true; CharacterDetails.Jaw.Activated = false; }
-                if (CharacterDetails.Lips.Activated == true) { CharacterDetails.Lips.freeze = true; CharacterDetails.Lips.Activated = false; }
-                if (CharacterDetails.LipsTone.Activated == true) { CharacterDetails.LipsTone.freeze = true; CharacterDetails.LipsTone.Activated = false; }
-                if (CharacterDetails.TailorMuscle.Activated == true) { CharacterDetails.TailorMuscle.freeze = true; CharacterDetails.TailorMuscle.Activated = false; }
-                if (CharacterDetails.TailType.Activated == true) { CharacterDetails.TailType.freeze = true; CharacterDetails.TailType.Activated = false; }
-                if (CharacterDetails.FacialFeatures.Activated == true) { CharacterDetails.FacialFeatures.freeze = true; CharacterDetails.FacialFeatures.Activated = false; }
-                if (CharacterDetails.RBust.Activated == true) { CharacterDetails.RBust.freeze = true; CharacterDetails.RBust.Activated = false; }
-                return;
-            }
-            MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Race), Haha);
-            Task.Delay(25).Wait();
-            if (CharacterDetails.Highlights.Activated == true) { CharacterDetails.Highlights.freeze = true; CharacterDetails.Highlights.Activated = false; }
-            if (CharacterDetails.Race.Activated == true) { CharacterDetails.Race.freeze = true; CharacterDetails.Race.Activated = false; }
-            if (CharacterDetails.Gender.Activated == true) { CharacterDetails.Gender.freeze = true; CharacterDetails.Gender.Activated = false; }
-            if (CharacterDetails.BodyType.Activated == true) { CharacterDetails.BodyType.freeze = true; CharacterDetails.BodyType.Activated = false; }
-            if (CharacterDetails.RHeight.Activated == true) { CharacterDetails.RHeight.freeze = true; CharacterDetails.RHeight.Activated = false; }
-            if (CharacterDetails.Clan.Activated == true) { CharacterDetails.Clan.freeze = true; CharacterDetails.Clan.Activated = false; }
-            if (CharacterDetails.Head.Activated == true) { CharacterDetails.Head.freeze = true; CharacterDetails.Head.Activated = false; }
-            if (CharacterDetails.Hair.Activated == true) { CharacterDetails.Hair.freeze = true; CharacterDetails.Hair.Activated = false; }
-            if (CharacterDetails.HighlightTone.Activated == true) { CharacterDetails.HighlightTone.freeze = true; CharacterDetails.HighlightTone.Activated = false; }
-            if (CharacterDetails.Skintone.Activated == true) { CharacterDetails.Skintone.freeze = true; CharacterDetails.Skintone.Activated = false; }
-            if (CharacterDetails.RightEye.Activated == true) { CharacterDetails.RightEye.freeze = true; CharacterDetails.RightEye.Activated = false; }
-            if (CharacterDetails.LeftEye.Activated == true) { CharacterDetails.LeftEye.freeze = true; CharacterDetails.LeftEye.Activated = false; }
-            if (CharacterDetails.HairTone.Activated == true) { CharacterDetails.HairTone.freeze = true; CharacterDetails.HairTone.Activated = false; }
-            if (CharacterDetails.FacePaint.Activated == true) { CharacterDetails.FacePaint.freeze = true; CharacterDetails.FacePaint.Activated = false; }
-            if (CharacterDetails.FacePaintColor.Activated == true) { CharacterDetails.FacePaintColor.freeze = true; CharacterDetails.FacePaintColor.Activated = false; }
-            if (CharacterDetails.EyeBrowType.Activated == true) { CharacterDetails.EyeBrowType.freeze = true; CharacterDetails.EyeBrowType.Activated = false; }
-            if (CharacterDetails.Nose.Activated == true) { CharacterDetails.Nose.freeze = true; CharacterDetails.Nose.Activated = false; }
-            if (CharacterDetails.Eye.Activated == true) { CharacterDetails.Eye.freeze = true; CharacterDetails.Eye.Activated = false; }
-            if (CharacterDetails.Jaw.Activated == true) { CharacterDetails.Jaw.freeze = true; CharacterDetails.Jaw.Activated = false; }
-            if (CharacterDetails.Lips.Activated == true) { CharacterDetails.Lips.freeze = true; CharacterDetails.Lips.Activated = false; }
-            if (CharacterDetails.LipsTone.Activated == true) { CharacterDetails.LipsTone.freeze = true; CharacterDetails.LipsTone.Activated = false; }
-            if (CharacterDetails.TailorMuscle.Activated == true) { CharacterDetails.TailorMuscle.freeze = true; CharacterDetails.TailorMuscle.Activated = false; }
-            if (CharacterDetails.TailType.Activated == true) { CharacterDetails.TailType.freeze = true; CharacterDetails.TailType.Activated = false; }
-            if (CharacterDetails.FacialFeatures.Activated == true) { CharacterDetails.FacialFeatures.freeze = true; CharacterDetails.FacialFeatures.Activated = false; }
-            if (CharacterDetails.RBust.Activated == true) { CharacterDetails.RBust.freeze = true; CharacterDetails.RBust.Activated = false; }
-        }
         private void DigitCheckInput(object sender, TextCompositionEventArgs e)
         {
             if (!char.IsDigit(e.Text, e.Text.Length - 1))
@@ -583,7 +475,7 @@ namespace FFXIVTool.Views
                 if (!SpecialControl.ColorTab.IsSelected || SpecialControl.ClanBox.SelectedIndex != 3)
                 {
                     SpecialControl.ColorTab.IsSelected = true;
-                    SpecialControl.CharaMakeColorSelector(_colorMap, 512, 96);
+                    SpecialControl.CharaMakeColorSelectorLips(_colorMap, 512, 96);
                     SpecialControl.ClanBox.SelectedIndex = 3;
                 }
                 else SpecialControl.IsOpen = !SpecialControl.IsOpen;
@@ -592,7 +484,7 @@ namespace FFXIVTool.Views
             {
                 SpecialControl.IsOpen = !SpecialControl.IsOpen;
                 SpecialControl.ColorTab.IsSelected = true;
-                SpecialControl.CharaMakeColorSelector(_colorMap, 512, 96);
+                SpecialControl.CharaMakeColorSelectorLips(_colorMap, 512, 96);
                 SpecialControl.ClanBox.SelectedIndex = 3;
             }
         }
@@ -646,7 +538,7 @@ namespace FFXIVTool.Views
                 if (!SpecialControl.ColorTab.IsSelected || SpecialControl.ClanBox.SelectedIndex != 6)
                 {
                     SpecialControl.ColorTab.IsSelected = true;
-                    SpecialControl.CharaMakeColorSelector(_colorMap, 1152, 96);
+                    SpecialControl.CharaMakeColorSelectorLips(_colorMap, 512, 96);
                     SpecialControl.ClanBox.SelectedIndex = 6;
                 }
                 else SpecialControl.IsOpen = !SpecialControl.IsOpen;
@@ -655,7 +547,7 @@ namespace FFXIVTool.Views
             {
                 SpecialControl.IsOpen = !SpecialControl.IsOpen;
                 SpecialControl.ColorTab.IsSelected = true;
-                SpecialControl.CharaMakeColorSelector(_colorMap, 1152, 96);
+                SpecialControl.CharaMakeColorSelectorLips(_colorMap, 512, 96);
                 SpecialControl.ClanBox.SelectedIndex = 6;
             }
         }
@@ -764,6 +656,160 @@ namespace FFXIVTool.Views
             CharacterDetails.Rotation2.freeze = numbcheck;
             CharacterDetails.Rotation3.freeze = numbcheck;
             CharacterDetails.Rotation4.freeze = numbcheck;
+        }
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                Random rnd = new Random();
+                CharacterDetails.Race.value = (byte)rnd.Next(1, 7);
+                MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Race), CharacterDetails.Race.GetBytes());
+                if (CharacterDetails.Race.value == 1) CharacterDetails.Clan.value = (byte)rnd.Next(1, 3);
+                else if (CharacterDetails.Race.value == 2) CharacterDetails.Clan.value = (byte)rnd.Next(3, 5);
+                else if (CharacterDetails.Race.value == 3) CharacterDetails.Clan.value = (byte)rnd.Next(5, 7);
+                else if (CharacterDetails.Race.value == 4) CharacterDetails.Clan.value = (byte)rnd.Next(7, 9);
+                else if (CharacterDetails.Race.value == 5) CharacterDetails.Clan.value = (byte)rnd.Next(9, 11);
+                else if (CharacterDetails.Race.value == 6) CharacterDetails.Clan.value = (byte)rnd.Next(11, 13);
+                MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Clan), CharacterDetails.Clan.GetBytes());
+                CharacterDetails.Gender.value = (byte)rnd.Next(0, 2);
+                MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Gender), CharacterDetails.Gender.GetBytes());
+                SpecialControl.HairRandomPick(CharacterDetails.Clan.value, CharacterDetails.Gender.value, _exdProvider);
+                if (CharacterDetails.Race.value == 1 && CharacterDetails.Clan.value == 1 && CharacterDetails.Gender.value == 0) CharacterDetails.Head.value = (byte)rnd.Next(0, 8);
+                else if (CharacterDetails.Race.value == 1 && CharacterDetails.Clan.value == 1 && CharacterDetails.Gender.value == 1) CharacterDetails.Head.value = (byte)rnd.Next(0, 6);
+                else CharacterDetails.Head.value = (byte)rnd.Next(0, 5);
+                MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Head), CharacterDetails.Head.GetBytes());
+                CharacterDetails.HairTone.value = (byte)rnd.Next(0, 193);
+                MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HairTone), CharacterDetails.HairTone.GetBytes());
+                if (rnd.Next(2) == 1)
+                {
+                     CharacterDetails.Highlights.value = 128;
+                    MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Highlights), CharacterDetails.Highlights.GetBytes());
+                     CharacterDetails.HighlightTone.value = (byte)rnd.Next(0, 193);
+                    MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HighlightTone), CharacterDetails.HighlightTone.GetBytes());
+                }
+                else
+                 {
+                    CharacterDetails.Highlights.value = 0;
+                    MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Highlights), CharacterDetails.Highlights.GetBytes());
+                    CharacterDetails.HighlightTone.value = 0;
+                    MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HighlightTone), CharacterDetails.HighlightTone.GetBytes());
+                }
+                CharacterDetails.RHeight.value = (byte)rnd.Next(0, 101);
+                MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.RHeight), CharacterDetails.RHeight.GetBytes());
+                CharacterDetails.RBust.value = (byte)rnd.Next(0, 101);
+                MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.RBust), CharacterDetails.RBust.GetBytes());
+                CharacterDetails.Eye.value = (byte)rnd.Next(0, 6);
+                MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Eye), CharacterDetails.Eye.GetBytes());
+                CharacterDetails.EyeBrowType.value = (byte)rnd.Next(0, 5);
+                MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.EyeBrowType), CharacterDetails.EyeBrowType.GetBytes());
+                if (rnd.Next(100) < 15) //Checks if there should be Odd Eyes.
+                {
+                    CharacterDetails.RightEye.value = (byte)rnd.Next(0, 193);
+                    MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.RightEye), CharacterDetails.RightEye.GetBytes());
+                    CharacterDetails.LeftEye.value = (byte)rnd.Next(0, 193);
+                    MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.LeftEye), CharacterDetails.LeftEye.GetBytes());
+                }
+                else
+                {
+                    CharacterDetails.RightEye.value = (byte)rnd.Next(0, 193);
+                    MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.RightEye), CharacterDetails.RightEye.GetBytes());
+                    CharacterDetails.LeftEye.value = CharacterDetails.RightEye.value;
+                    MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.LeftEye), CharacterDetails.LeftEye.GetBytes());
+                }
+                CharacterDetails.Nose.value = (byte)rnd.Next(0, 6);
+                MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Nose), CharacterDetails.Nose.GetBytes());
+                if (rnd.Next(100) < 25) // 25% chance Lip coloring may happen?
+                {
+                    CharacterDetails.Lips.value = (byte)rnd.Next(128, 134);
+                    MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Lips), CharacterDetails.Lips.GetBytes());
+                    if (rnd.Next(2) == 1) // 50% chance it'll be dark lips?
+                    {
+                        CharacterDetails.LipsTone.value = (byte)rnd.Next(0, 96);
+                        MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.LipsTone), CharacterDetails.LipsTone.GetBytes());
+                    }
+                    else
+                    {
+                        CharacterDetails.LipsTone.value = (byte)rnd.Next(128, 224);
+                        MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.LipsTone), CharacterDetails.LipsTone.GetBytes());
+                    }
+                }
+                else
+                {
+                    CharacterDetails.Lips.value = (byte)rnd.Next(0, 6);
+                    MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Lips), CharacterDetails.Lips.GetBytes());
+                    CharacterDetails.LipsTone.value = 0;
+                    MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.LipsTone), CharacterDetails.LipsTone.GetBytes());
+                }
+                CharacterDetails.Jaw.value = (byte)rnd.Next(0, 6);
+                MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Jaw), CharacterDetails.Jaw.GetBytes());
+                if (rnd.Next(100) < 25) //25% having facial feature?
+                {
+                    CharacterDetails.FacialFeatures.value = (byte)rnd.Next(0, 256);
+                    MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.FacialFeatures), CharacterDetails.FacialFeatures.GetBytes());
+                    if (CharacterDetails.Race.value == 6)
+                    {
+                        CharacterDetails.LimbalEyes.value = (byte)rnd.Next(0, 192);
+                        MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.LimbalEyes), CharacterDetails.LimbalEyes.GetBytes());
+                    }
+                }
+                else
+                {
+                    CharacterDetails.FacialFeatures.value = 0;
+                    MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.FacialFeatures), CharacterDetails.FacialFeatures.GetBytes());
+                    CharacterDetails.LimbalEyes.value = 0;
+                    MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.LimbalEyes), CharacterDetails.LimbalEyes.GetBytes());
+                }
+                if (rnd.Next(100) < 25)
+                {
+                    if (rnd.Next(2) == 1) //50% Chance of being reversed
+                    {
+                        CharacterDetails.FacePaint.value = (byte)rnd.Next(128, 157);
+                        MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.FacePaint), CharacterDetails.FacePaint.GetBytes());
+                    }
+                    else
+                    {
+                        CharacterDetails.FacePaint.value = (byte)rnd.Next(0, 29);
+                        MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.FacePaint), CharacterDetails.FacePaint.GetBytes());
+                    }
+                    if (rnd.Next(2) == 1) // 50% chance it'll be dark Paint?
+                    {
+                        CharacterDetails.FacePaintColor.value = (byte)rnd.Next(0, 96);
+                        MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.FacePaintColor), CharacterDetails.FacePaintColor.GetBytes());
+                    }
+                    else
+                    {
+                        CharacterDetails.FacePaintColor.value = (byte)rnd.Next(128, 224);
+                        MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.FacePaintColor), CharacterDetails.FacePaintColor.GetBytes());
+                    }
+                }
+                else
+                {
+                    CharacterDetails.FacePaint.value = 0;
+                    MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.FacePaint), CharacterDetails.FacePaint.GetBytes());
+                    CharacterDetails.FacePaintColor.value = 0;
+                    MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.FacePaintColor), CharacterDetails.FacePaintColor.GetBytes());
+                }
+                if (CharacterDetails.Race.value == 4) CharacterDetails.TailType.value = (byte)rnd.Next(0, 9);
+                else if (CharacterDetails.Race.value == 3 || CharacterDetails.Race.value == 2 || CharacterDetails.Race.value == 6) CharacterDetails.TailType.value = (byte)rnd.Next(0, 4);
+                else CharacterDetails.TailType.value = 0;
+                MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.TailType), CharacterDetails.TailType.GetBytes());
+                CharacterDetails.TailorMuscle.value = (byte)rnd.Next(0, 101);
+                MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.TailorMuscle), CharacterDetails.TailorMuscle.GetBytes());
+                CharacterDetails.Skintone.value = (byte)rnd.Next(0, 192);
+                MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Skintone), CharacterDetails.Skintone.GetBytes());
+            }
+            catch (System.Exception ex)
+            {
+                // Get stack trace for the exception with source file information
+                var st = new System.Diagnostics.StackTrace(ex, true);
+                // Get the top stack frame
+                var frame = st.GetFrame(0);
+                // Get the line number from the stack frame
+                var line = frame.GetFileLineNumber();
+                System.Windows.MessageBox.Show(ex.Message + "\n" + ex.StackTrace + frame + line, "Oh no!");
+
+            }
         }
     }
 }

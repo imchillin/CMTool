@@ -54,5 +54,19 @@ namespace FFXIVTool.Windows
             Choice = Xuip.Name;
             Close();
         }
+
+        private void Dat_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key != System.Windows.Input.Key.Enter) return;
+            e.Handled = true;
+            Choice = Dat.Name;
+            Close();
+        }
+
+        private void Dat_PreviewMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Choice = Dat.Name;
+            Close();
+        }
     }
 }

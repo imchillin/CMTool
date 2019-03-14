@@ -59,7 +59,44 @@ namespace FFXIVTool.Views
 
             _startIndex = start;
         }
-
+        public void CharaMakeColorSelectorLips(CmpReader colorMap, int start, int length)
+        {
+            colorListView.Items.Clear();
+            for (int i = start; i < start + length; i++)
+            {
+                ListViewItem item = new ListViewItem();
+                item.Width = 64;
+                item.Height = 64;
+                var newColor = new SolidColorBrush(Color.FromArgb(colorMap.Colors[i].A, colorMap.Colors[i].R, colorMap.Colors[i].G, colorMap.Colors[i].B));
+                item.Background = newColor;
+                item.FontSize = 13;
+                item.FontWeight = FontWeights.Bold;
+                item.Content = "Dark-" + (i - start);
+                colorListView.Items.Add(item);
+            }
+            for (int i = 0; i < 32; i++)
+            {
+                ListViewItem item = new ListViewItem();
+                item.Width = 64;
+                item.Height = 64;
+                item.FontSize = 12;
+                item.Visibility = Visibility.Collapsed;
+                colorListView.Items.Add(item);
+            }
+            for (int i = 1792; i < 1792 + 96; i++)
+            {
+                ListViewItem item = new ListViewItem();
+                item.Width = 64;
+                item.Height = 64;
+                var newColor = new SolidColorBrush(Color.FromArgb(colorMap.Colors[i].A, colorMap.Colors[i].R, colorMap.Colors[i].G, colorMap.Colors[i].B));
+                item.Background = newColor;
+                item.FontSize = 11;
+                item.FontWeight = FontWeights.Bold;
+                item.Content = "Light-" + (i - (1792 - 128));
+                colorListView.Items.Add(item);
+            }
+            _startIndex = start;
+        }
         private void colorListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (colorListView.SelectedItem == null)
@@ -341,6 +378,39 @@ namespace FFXIVTool.Views
         private void AnimatedTabControl_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             Userinteraction2 = true;
+        }
+        public void HairRandomPick(int tribe, int gender, ExdCsvReader reader)
+        {
+            if (DidUserInteract) return;
+            DidUserInteract = true;
+            _tribe = tribe;
+            _gender = gender;
+            _reader = reader;
+
+            try
+            {
+                CharacterFeature.Items.Clear();
+                int added = 0;
+                for (int i = 0; i < 200; i++)
+                {
+                    var feature = GetFeature(GetHairstyleCustomizeIndex(_tribe, _gender == 0), 100, (byte)i);
+
+                    if (feature == null)
+                        continue;
+                    CharacterFeature.Items.Add(new FeatureSelect() { ID = feature.FeatureID, FeatureImage = GetImageStream(feature.Icon) });
+                    added++;
+                }
+                DidUserInteract = false;
+                Random rnd = new Random();
+                int Value = rnd.Next(CharacterFeature.Items.Count);
+                var checkxd = (FeatureSelect)CharacterFeature.Items[Value];
+                CharacterDetails.Hair.value = (byte)checkxd.ID;
+                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Hair), "byte", checkxd.ID.ToString("X"));
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }
