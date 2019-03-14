@@ -5,6 +5,12 @@ VisualStudioVersion = 15.0.28010.2019
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FFXIVTool", "FFXIVTool\FFXIVTool.csproj", "{E226AAB7-5918-4E9F-B0EB-8D1AD9AC7BB9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Release", "Release", "{92AFC387-0D61-4C2B-8450-436D5DF23097}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.txt = LICENSE.txt
+		README.txt = README.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

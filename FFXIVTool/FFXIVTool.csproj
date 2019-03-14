@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Costura.Fody.3.3.2\build\Costura.Fody.props" Condition="Exists('..\packages\Costura.Fody.3.3.2\build\Costura.Fody.props')" />
   <Import Project="..\packages\PropertyChanged.Fody.2.6.0\build\PropertyChanged.Fody.props" Condition="Exists('..\packages\PropertyChanged.Fody.2.6.0\build\PropertyChanged.Fody.props')" />
@@ -1232,4 +1232,8 @@
   </Target>
   <Import Project="..\packages\ShowMeTheXAML.MSBuild.1.0.12\build\net45\ShowMeTheXAML.MSBuild.targets" Condition="Exists('..\packages\ShowMeTheXAML.MSBuild.1.0.12\build\net45\ShowMeTheXAML.MSBuild.targets')" />
   <Import Project="..\packages\Fody.4.0.2\build\Fody.targets" Condition="Exists('..\packages\Fody.4.0.2\build\Fody.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /y $(ProjectDir)..\README.txt $(ProjectDir)$(OutDir)
+xcopy /y $(ProjectDir)..\LICENSE.txt $(ProjectDir)$(OutDir)</PostBuildEvent>
+  </PropertyGroup>
 </Project>
