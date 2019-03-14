@@ -1,0 +1,7 @@
+configuration: Release
+
+before_build:
+  - nuget restore FFXIVTool.sln
+  
+build:
+    project: FFXIVTool.sln
