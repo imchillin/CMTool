@@ -18,3 +18,13 @@ after_build:
 artifacts:
   - path: SSTool.zip
     name: SSTool
+
+deploy:
+  provider: Github
+  draft: true
+  auth_token:
+    secure: YTu4crUwOEzeE0vpM39Lj1bbaXWPBaGyfS3aTWHqopVyfNUjuET/GMb1ixJdaVEk
+  artifact: SSTool.zip
+  on:
+    branch: master
+    appveyor_repo_tag: true
