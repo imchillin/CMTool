@@ -1,0 +1,8 @@
+branches:
+  only:
+    - release
+
+image: Visual Studio 2015
+
+before_build:
+  - nuget restore
