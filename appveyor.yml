@@ -13,18 +13,19 @@ build:
   project: FFXIVTool.sln
     
 after_build:
-  7z a SSTool.zip %APPVEYOR_BUILD_FOLDER%\FFXIVTool\bin\%CONFIGURATION%\*.exe %APPVEYOR_BUILD_FOLDER%\FFXIVTool\bin\%CONFIGURATION%\*.txt %APPVEYOR_BUILD_FOLDER%\FFXIVTool\bin\%CONFIGURATION%\OffsetSettings.xml
+  7z a FFXIVTool.zip %APPVEYOR_BUILD_FOLDER%\FFXIVTool\bin\%CONFIGURATION%\*.exe %APPVEYOR_BUILD_FOLDER%\FFXIVTool\bin\%CONFIGURATION%\*.txt %APPVEYOR_BUILD_FOLDER%\FFXIVTool\bin\%CONFIGURATION%\OffsetSettings.xml
     
 artifacts:
-  - path: SSTool.zip
-    name: SSTool
+  - path: FFXIVTool.zip
+    name: FFXIVTool
 
 deploy:
+  release: Screenshot Helper $(appveyor_repo_tag_name)
   provider: Github
   draft: true
   auth_token:
     secure: YTu4crUwOEzeE0vpM39Lj1bbaXWPBaGyfS3aTWHqopVyfNUjuET/GMb1ixJdaVEk
-  artifact: SSTool.zip
+  artifact: FFXIVTool.zip
   on:
     branch: master
     appveyor_repo_tag: true
