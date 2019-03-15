@@ -20,7 +20,7 @@ artifacts:
     name: FFXIVTool
 
 deploy:
-  tag: 2.0.2.8
+  tag: $(appveyor_repo_tag_name)
   release: Screenshot Helper $(appveyor_repo_tag_name)
   provider: GitHub
   draft: true
