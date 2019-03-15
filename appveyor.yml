@@ -20,11 +20,12 @@ artifacts:
     name: FFXIVTool
 
 deploy:
+  tag: 2.0.2.8
   release: Screenshot Helper $(appveyor_repo_tag_name)
-  provider: Github
+  provider: GitHub
   draft: true
   auth_token:
-    secure: YTu4crUwOEzeE0vpM39Lj1bbaXWPBaGyfS3aTWHqopVyfNUjuET/GMb1ixJdaVEk
+    secure: O6Rsj+hoS5X7Q1u7TjtFwjRN53ohwjF8Mik/BpVidoefAag5FfpxoWqS5GTdJECG
   artifact: FFXIVTool.zip
   on:
     branch: master
