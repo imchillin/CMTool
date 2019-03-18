@@ -66,6 +66,7 @@ namespace FFXIVTool.Utility
             public string Name { get; set; }
             public string ModelMain { get; set; }
             public string ModelOff { get; set; }
+            public int Gender { get; set; }
             public ItemType Type { get; set; }
 
             public override string ToString()
@@ -634,6 +635,10 @@ namespace FFXIVTool.Utility
                                     {
                                         item.ModelOff = tfield;
                                     }
+                                }
+                                if(fCount == 6)
+                                {
+                                    item.Gender = int.Parse(field);
                                 }
                             }
                             //   Debug.WriteLine(item.Name + " - " + item.Type);

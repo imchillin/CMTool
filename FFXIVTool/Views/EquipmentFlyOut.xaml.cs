@@ -82,10 +82,13 @@ namespace FFXIVTool.Views
                     {
                         if (CharacterDetails.HeadPiece.value > 0)
                         {
-                            if (Modelmain.Item1 == CharacterDetails.HeadPiece.value && Modelmain.Item2 == CharacterDetails.HeadV.value)
+                            if (game.Gender >= 2 || game.Gender == CharacterDetails.Gender.value)
                             {
-                                CurrentlyEquippedName.Content = game.Name;
-                                found = true;
+                                if (Modelmain.Item1 == CharacterDetails.HeadPiece.value && Modelmain.Item2 == CharacterDetails.HeadV.value)
+                                {
+                                    CurrentlyEquippedName.Content = game.Name;
+                                    found = true;
+                                }
                             }
                         }
                     }
@@ -94,10 +97,13 @@ namespace FFXIVTool.Views
                     {
                         if (CharacterDetails.Chest.value > 0)
                         {
-                            if (Modelmain.Item1 == CharacterDetails.Chest.value && Modelmain.Item2 == CharacterDetails.ChestV.value)
+                            if (game.Gender >= 2 || game.Gender == CharacterDetails.Gender.value)
                             {
-                                CurrentlyEquippedName.Content = game.Name;
-                                found = true;
+                                if (Modelmain.Item1 == CharacterDetails.Chest.value && Modelmain.Item2 == CharacterDetails.ChestV.value)
+                                {
+                                    CurrentlyEquippedName.Content = game.Name;
+                                    found = true;
+                                }
                             }
                         }
                     }
@@ -106,10 +112,13 @@ namespace FFXIVTool.Views
                     {
                         if (CharacterDetails.Arms.value > 0)
                         {
-                            if (Modelmain.Item1 == CharacterDetails.Arms.value && Modelmain.Item2 == CharacterDetails.ArmsV.value)
+                            if (game.Gender >= 2 || game.Gender == CharacterDetails.Gender.value)
                             {
-                                CurrentlyEquippedName.Content = game.Name;
-                                found = true;
+                                if (Modelmain.Item1 == CharacterDetails.Arms.value && Modelmain.Item2 == CharacterDetails.ArmsV.value)
+                                {
+                                    CurrentlyEquippedName.Content = game.Name;
+                                    found = true;
+                                }
                             }
                         }
                     }
@@ -118,10 +127,13 @@ namespace FFXIVTool.Views
                     {
                         if (CharacterDetails.Legs.value > 0)
                         {
-                            if (Modelmain.Item1 == CharacterDetails.Legs.value && Modelmain.Item2 == CharacterDetails.LegsV.value)
+                            if (game.Gender >= 2 || game.Gender == CharacterDetails.Gender.value)
                             {
-                                CurrentlyEquippedName.Content = game.Name;
-                                found = true;
+                                if (Modelmain.Item1 == CharacterDetails.Legs.value && Modelmain.Item2 == CharacterDetails.LegsV.value)
+                                {
+                                    CurrentlyEquippedName.Content = game.Name;
+                                    found = true;
+                                }
                             }
                         }
                     }
@@ -130,10 +142,13 @@ namespace FFXIVTool.Views
                     {
                         if (CharacterDetails.Feet.value > 0)
                         {
-                            if (Modelmain.Item1 == CharacterDetails.Feet.value && Modelmain.Item2 == CharacterDetails.FeetVa.value)
+                            if (game.Gender >= 2 || game.Gender == CharacterDetails.Gender.value)
                             {
-                                CurrentlyEquippedName.Content = game.Name;
-                                found = true;
+                                if (Modelmain.Item1 == CharacterDetails.Feet.value && Modelmain.Item2 == CharacterDetails.FeetVa.value)
+                                {
+                                    CurrentlyEquippedName.Content = game.Name;
+                                    found = true;
+                                }
                             }
                         }
                     }
