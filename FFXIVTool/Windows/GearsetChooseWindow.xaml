@@ -4,10 +4,27 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FFXIVTool.Windows"
+                TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="13"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="GearsetChooseWindow" Height="257.598" Width="372.035" WindowStartupLocation="CenterOwner">
+        Title="GearsetChooseWindow" Height="400.598" Width="364.035" WindowStartupLocation="CenterOwner">
     <Grid>
-        <ListBox x:Name="GearListBox" HorizontalAlignment="Left" Height="207" Margin="10,10,0,0" VerticalAlignment="Top" Width="344" FontSize="14" SelectionChanged="GearListBox_SelectionChanged"/>
-
+        <DataGrid x:Name="GearDataGrid" HorizontalAlignment="Left" Height="306" Margin="0,10,0,0" VerticalAlignment="Top" Width="346" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" ItemsSource="{Binding Path=GearSave}" IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow"  CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden" SelectionChanged="GearDataGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Gearset Name" Binding="{Binding Path=Description}"/>
+                <DataGridTextColumn Header="Date Created" Binding="{Binding Path=DateCreated}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox x:Name="GearSetSearchText" Style="{StaticResource MaterialDesignFloatingHintTextBox}" MaxLength="240" Margin="10,323,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="336" TextAlignment="Center" TextChanged="GearSetSearchText_TextChanged" BorderThickness="0,0,0,1">
+            <materialDesign:HintAssist.Hint>
+                <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
+                    <TextBlock><Run Text="Search Gearset name here..."/></TextBlock>
+                </StackPanel>
+            </materialDesign:HintAssist.Hint>
+        </TextBox>
     </Grid>
 </Window>
