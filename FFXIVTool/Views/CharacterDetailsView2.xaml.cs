@@ -1,10 +1,16 @@
 ﻿using FFXIVTool.Models;
 using FFXIVTool.Utility;
 using FFXIVTool.ViewModel;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using GearTuple = System.Tuple<int, int, int>;
+using WepTuple = System.Tuple<int, int, int, int>;
 
 namespace FFXIVTool.Views
 {
@@ -656,6 +662,131 @@ namespace FFXIVTool.Views
                 EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.ItemsProps.Values.ToArray());
             }
         }
+        public class GearSaves
+        {
+            public WepTuple MainHand;
+            public WepTuple OffHand;
+            public string EquipmentBytes;
+            public string Description;
+            public string DateCreated; 
+        }
+        private void SaveGearset_Click(object sender, RoutedEventArgs e)
+        {
+            var c = new Windows.GearSave();
+            c.Owner = Application.Current.MainWindow;
+            c.ShowDialog();
+            if (c.Filename == null) return;
+            else
+            {
+                string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "SSTool", "Gearsets");
+                if (Directory.Exists(path))
+                {
+                    GearSaves Save1 = new GearSaves(); // Gearsave is class with all address
+                    Save1.Description = c.Filename;
+                    Save1.DateCreated = (DateTime.Today.ToString("dd-MM-yyyy") +"-"+ DateTime.Now.ToString("HH:mm:ss"));
+                    Save1.MainHand = new WepTuple(CharacterDetails.Job.value, CharacterDetails.WeaponBase.value, CharacterDetails.WeaponV.value, CharacterDetails.WeaponDye.value);
+                    Save1.OffHand = new WepTuple(CharacterDetails.Offhand.value, CharacterDetails.OffhandBase.value, CharacterDetails.OffhandV.value, CharacterDetails.OffhandDye.value);
+                    Save1.EquipmentBytes = MemoryManager.ByteArrayToString(MemoryManager.Instance.MemLib.readBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HeadPiece), 26));
+                    string details = JsonConvert.SerializeObject(Save1, Formatting.Indented);
+                    File.WriteAllText(Path.Combine(path, c.Filename + ".json"), details);
+                   // Console.WriteLine(Path.Combine(path, c.Filename + ".json"));
+                    //Exists
+                }
+                else
+                {
+                    System.IO.Directory.CreateDirectory(path);
+                    GearSaves Save1 = new GearSaves(); // Gearsave is class with all address
+
+                    Save1.MainHand = new WepTuple(CharacterDetails.Job.value, CharacterDetails.WeaponBase.value, CharacterDetails.WeaponV.value, CharacterDetails.WeaponDye.value);
+                    Save1.OffHand = new WepTuple(CharacterDetails.Offhand.value, CharacterDetails.OffhandBase.value, CharacterDetails.OffhandV.value, CharacterDetails.OffhandDye.value);
+                    Save1.EquipmentBytes = MemoryManager.ByteArrayToString(MemoryManager.Instance.MemLib.readBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HeadPiece), 26));
+                    string details = JsonConvert.SerializeObject(Save1, Formatting.Indented);
+                    File.WriteAllText(Path.Combine(path, c.Filename + ".json"), details);
+                    //Needs to be created
+                }
+            }
+        }
+
+        private void LoadGearSet_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.GearsetChooseWindow fam = new Windows.GearsetChooseWindow("Select the saved gearset you want to load.");
+            fam.Owner = Application.Current.MainWindow;
+            fam.ShowDialog();
+            if (fam.Choice != null)
+            {
+                EAoB(fam.Choice);
+            }
+            else return;
+        }
+
+        private void EAoB(GearSaves equpmentarray)
+        {
+            try
+            {
+                byte[] EquipmentArray;
+                EquipmentArray = MemoryManager.StringToByteArray(equpmentarray.EquipmentBytes.Replace(" ", string.Empty));
+                if (CharacterDetails.Job.Activated == true) { CharacterDetails.Job.freeze = true; CharacterDetails.Job.Activated = false; }
+                if (CharacterDetails.HeadPiece.freeze == true) { CharacterDetails.HeadPiece.freeze = false; CharacterDetails.HeadPiece.Activated = true; }
+                if (CharacterDetails.Chest.freeze == true) { CharacterDetails.Chest.freeze = false; CharacterDetails.Chest.Activated = true; }
+                if (CharacterDetails.Legs.freeze == true) { CharacterDetails.Legs.freeze = false; CharacterDetails.Legs.Activated = true; }
+                if (CharacterDetails.Arms.freeze == true) { CharacterDetails.Arms.freeze = false; CharacterDetails.Arms.Activated = true; }
+                if (CharacterDetails.Feet.freeze == true) { CharacterDetails.Feet.freeze = false; CharacterDetails.Feet.Activated = true; }
+                if (CharacterDetails.Offhand.freeze == true) { CharacterDetails.Offhand.freeze = false; CharacterDetails.Offhand.Activated = true; }
+                if (CharacterDetails.Ear.freeze == true) { CharacterDetails.Ear.freeze = false; CharacterDetails.Ear.Activated = true; }
+                if (CharacterDetails.Neck.freeze == true) { CharacterDetails.Neck.freeze = false; CharacterDetails.Neck.Activated = true; }
+                if (CharacterDetails.Wrist.freeze == true) { CharacterDetails.Wrist.freeze = false; CharacterDetails.Wrist.Activated = true; }
+                if (CharacterDetails.RFinger.freeze == true) { CharacterDetails.RFinger.freeze = false; CharacterDetails.RFinger.Activated = true; }
+                if (CharacterDetails.LFinger.freeze == true) { CharacterDetails.LFinger.freeze = false; CharacterDetails.LFinger.Activated = true; }
+                WriteEquipmentArray(EquipmentArray, equpmentarray);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("One or more fields were not formatted correctly.\n\n" + exc, " Error " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version, MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void WriteEquipmentArray(byte[] EquipmentArray, GearSaves SaveX)
+        {
+            if (EquipmentArray == null)
+            {
+                if (CharacterDetails.Job.Activated == true) { CharacterDetails.Job.freeze = true; CharacterDetails.Job.Activated = false; }
+                if (CharacterDetails.Offhand.Activated == true) { CharacterDetails.Offhand.freeze = true; CharacterDetails.Offhand.Activated = false; }
+                if (CharacterDetails.HeadPiece.Activated == true) { CharacterDetails.HeadPiece.freeze = true; CharacterDetails.HeadPiece.Activated = false; }
+                if (CharacterDetails.Chest.Activated == true) { CharacterDetails.Chest.freeze = true; CharacterDetails.Chest.Activated = false; }
+                if (CharacterDetails.Legs.Activated == true) { CharacterDetails.Legs.freeze = true; CharacterDetails.Legs.Activated = false; }
+                if (CharacterDetails.Feet.Activated == true) { CharacterDetails.Feet.freeze = true; CharacterDetails.Feet.Activated = false; }
+                if (CharacterDetails.Arms.Activated == true) { CharacterDetails.Arms.freeze = true; CharacterDetails.Arms.Activated = false; }
+                if (CharacterDetails.Ear.Activated == true) { CharacterDetails.Ear.freeze = true; CharacterDetails.Ear.Activated = false; }
+                if (CharacterDetails.Wrist.Activated == true) { CharacterDetails.Wrist.freeze = true; CharacterDetails.Wrist.Activated = false; }
+                if (CharacterDetails.Neck.Activated == true) { CharacterDetails.Neck.freeze = true; CharacterDetails.Neck.Activated = false; }
+                if (CharacterDetails.LFinger.Activated == true) { CharacterDetails.LFinger.freeze = true; CharacterDetails.LFinger.Activated = false; }
+                if (CharacterDetails.RFinger.Activated == true) { CharacterDetails.RFinger.freeze = true; CharacterDetails.RFinger.Activated = false; }
+                return;
+            }
+            MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HeadPiece), EquipmentArray);
+            System.Threading.Tasks.Task.Delay(25).Wait();
+            CharacterDetails.Job.value = SaveX.MainHand.Item1;
+            CharacterDetails.WeaponBase.value = (byte)SaveX.MainHand.Item2;
+            CharacterDetails.WeaponV.value = (byte)SaveX.MainHand.Item3;
+            CharacterDetails.WeaponDye.value = (byte)SaveX.MainHand.Item4;
+            MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Job), EquipmentFlyOut.WepTupleToByteAry(SaveX.MainHand));
+            CharacterDetails.Offhand.value = SaveX.OffHand.Item1;
+            CharacterDetails.OffhandBase.value = (byte)SaveX.OffHand.Item2;
+            CharacterDetails.OffhandV.value = (byte)SaveX.OffHand.Item3;
+            CharacterDetails.OffhandDye.value = (byte)SaveX.OffHand.Item4;
+            MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Offhand), EquipmentFlyOut.WepTupleToByteAry(SaveX.OffHand));
+            if (CharacterDetails.Job.Activated == true) { CharacterDetails.Job.freeze = true; CharacterDetails.Job.Activated = false; }
+            if (CharacterDetails.Offhand.Activated == true) { CharacterDetails.Offhand.freeze = true; CharacterDetails.Offhand.Activated = false; }
+            if (CharacterDetails.HeadPiece.Activated == true) { CharacterDetails.HeadPiece.freeze = true; CharacterDetails.HeadPiece.Activated = false; }
+            if (CharacterDetails.Chest.Activated == true) { CharacterDetails.Chest.freeze = true; CharacterDetails.Chest.Activated = false; }
+            if (CharacterDetails.Legs.Activated == true) { CharacterDetails.Legs.freeze = true; CharacterDetails.Legs.Activated = false; }
+            if (CharacterDetails.Feet.Activated == true) { CharacterDetails.Feet.freeze = true; CharacterDetails.Feet.Activated = false; }
+            if (CharacterDetails.Arms.Activated == true) { CharacterDetails.Arms.freeze = true; CharacterDetails.Arms.Activated = false; }
+            if (CharacterDetails.Ear.Activated == true) { CharacterDetails.Ear.freeze = true; CharacterDetails.Ear.Activated = false; }
+            if (CharacterDetails.Wrist.Activated == true) { CharacterDetails.Wrist.freeze = true; CharacterDetails.Wrist.Activated = false; }
+            if (CharacterDetails.Neck.Activated == true) { CharacterDetails.Neck.freeze = true; CharacterDetails.Neck.Activated = false; }
+            if (CharacterDetails.LFinger.Activated == true) { CharacterDetails.LFinger.freeze = true; CharacterDetails.LFinger.Activated = false; }
+            if (CharacterDetails.RFinger.Activated == true) { CharacterDetails.RFinger.freeze = true; CharacterDetails.RFinger.Activated = false; }
+        }
     }
 }
-

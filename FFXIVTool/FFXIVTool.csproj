@@ -203,6 +203,12 @@
     <Compile Include="Windows\CharacterSaveChooseWindow.xaml.cs">
       <DependentUpon>CharacterSaveChooseWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\GearSave.xaml.cs">
+      <DependentUpon>GearSave.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\GearsetChooseWindow.xaml.cs">
+      <DependentUpon>GearsetChooseWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\LoadWindow.xaml.cs">
       <DependentUpon>LoadWindow.xaml</DependentUpon>
     </Compile>
@@ -270,6 +276,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\CharacterSaveChooseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\GearSave.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\GearsetChooseWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
