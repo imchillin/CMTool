@@ -11,14 +11,16 @@ namespace FFXIVTool.Utility
     class DatSaves
     {
         public readonly string Description;
+        public readonly int CharacterSaveNumber;
         public readonly byte[] CustomizeBytes;
 
-        public DatSaves(byte[] buffer)
+        public DatSaves(byte[] buffer, int filenum)
         {
             using (MemoryStream stream = new MemoryStream(buffer))
             {
                 using (BinaryReader reader = new BinaryReader(stream))
                 {
+                    CharacterSaveNumber = filenum;
                     stream.Seek(0x10, SeekOrigin.Begin);
 
                     CustomizeBytes = reader.ReadBytes(26);
@@ -48,7 +50,9 @@ namespace FFXIVTool.Utility
 
             foreach (var file in files)
             {
-                output.Add(new DatSaves(File.ReadAllBytes(file)));
+                string numeric = new String(Path.GetFileNameWithoutExtension(file).Where(Char.IsDigit).ToArray());
+                int newnum = Int32.Parse(numeric);
+                output.Add(new DatSaves(File.ReadAllBytes(file), newnum));
             }
 
             return output;

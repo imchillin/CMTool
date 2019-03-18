@@ -32,7 +32,7 @@ namespace FFXIVTool.Windows
             {
                 var gender = saveDat.CustomizeBytes[1] == 1 ? "♀️" : "♂️";
                 CharacterListbox.Items.Add(
-                    $"{ByteToRaceDict[saveDat.CustomizeBytes[0]]} - {ByteToTribeDict[saveDat.CustomizeBytes[4]]} {gender} - {saveDat.Description}");
+                    $"Save #{saveDat.CharacterSaveNumber}: {ByteToRaceDict[saveDat.CustomizeBytes[0]]} - {ByteToTribeDict[saveDat.CustomizeBytes[4]]} {gender} - {saveDat.Description}");
             }
         }
         private readonly Dictionary<byte, string> ByteToRaceDict = new Dictionary<byte, string>
