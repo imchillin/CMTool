@@ -38,13 +38,183 @@ namespace FFXIVTool.Views
         {
             EquipBox.Items.Clear();
             _items = items;
+            CurrentlyEquippedName.Content = "None";
+            bool found = false;
             foreach (ExdCsvReader.Item game in _items)
+            {
                 EquipBox.Items.Add(new ExdCsvReader.Item
                 {
                     Name = game.Name.ToString(),
                     ModelMain = game.ModelMain,
                     ModelOff = game.ModelOff
                 });
+                if(!found) // Only looking for a match once and will stop trying to match. 
+                {
+                    var Modelmain = CommaToGearTuple(game.ModelMain);
+                    if (EquipBoxC.SelectedIndex == 0)
+                    {
+                        if (CharacterDetails.Job.value > 0)
+                        {
+                            if (Modelmain.Item1 == CharacterDetails.Job.value && Modelmain.Item2 == CharacterDetails.WeaponBase.value && Modelmain.Item3 == CharacterDetails.WeaponV.value)
+                            { CurrentlyEquippedName.Content = game.Name; found = true; }
+                        }
+                    }
+                    else
+                    if (EquipBoxC.SelectedIndex == 1)
+                    {
+                        var ModelOff = CommaToGearTuple(game.ModelOff);
+                        if (CharacterDetails.Offhand.value > 0)
+                        {
+                            if (CharacterDetails.Job.value >= 200 && CharacterDetails.Job.value <= 299) // check if it's paladin sword
+                            {
+                                if (Modelmain.Item1 == CharacterDetails.Offhand.value && Modelmain.Item2 == CharacterDetails.OffhandBase.value && Modelmain.Item3 == CharacterDetails.OffhandV.value)
+                                { CurrentlyEquippedName.Content = game.Name; found = true; }
+                            }
+                            else
+                            {
+                                if (ModelOff.Item1 == CharacterDetails.Offhand.value && ModelOff.Item2 == CharacterDetails.OffhandBase.value && ModelOff.Item3 == CharacterDetails.OffhandV.value)
+                                { CurrentlyEquippedName.Content = game.Name; found = true; }
+                            }
+                        }
+                    }
+                    else
+                    if (EquipBoxC.SelectedIndex == 2)
+                    {
+                        if (CharacterDetails.HeadPiece.value > 0)
+                        {
+                            if (Modelmain.Item1 == CharacterDetails.HeadPiece.value && Modelmain.Item2 == CharacterDetails.HeadV.value)
+                            {
+                                CurrentlyEquippedName.Content = game.Name;
+                                found = true;
+                            }
+                        }
+                    }
+                    else
+                    if (EquipBoxC.SelectedIndex == 3)
+                    {
+                        if (CharacterDetails.Chest.value > 0)
+                        {
+                            if (Modelmain.Item1 == CharacterDetails.Chest.value && Modelmain.Item2 == CharacterDetails.ChestV.value)
+                            {
+                                CurrentlyEquippedName.Content = game.Name;
+                                found = true;
+                            }
+                        }
+                    }
+                    else
+                    if (EquipBoxC.SelectedIndex == 4)
+                    {
+                        if (CharacterDetails.Arms.value > 0)
+                        {
+                            if (Modelmain.Item1 == CharacterDetails.Arms.value && Modelmain.Item2 == CharacterDetails.ArmsV.value)
+                            {
+                                CurrentlyEquippedName.Content = game.Name;
+                                found = true;
+                            }
+                        }
+                    }
+                    else
+                    if (EquipBoxC.SelectedIndex == 5)
+                    {
+                        if (CharacterDetails.Legs.value > 0)
+                        {
+                            if (Modelmain.Item1 == CharacterDetails.Legs.value && Modelmain.Item2 == CharacterDetails.LegsV.value)
+                            {
+                                CurrentlyEquippedName.Content = game.Name;
+                                found = true;
+                            }
+                        }
+                    }
+                    else
+                    if (EquipBoxC.SelectedIndex == 6)
+                    {
+                        if (CharacterDetails.Feet.value > 0)
+                        {
+                            if (Modelmain.Item1 == CharacterDetails.Feet.value && Modelmain.Item2 == CharacterDetails.FeetVa.value)
+                            {
+                                CurrentlyEquippedName.Content = game.Name;
+                                found = true;
+                            }
+                        }
+                    }
+                    else
+                    if (EquipBoxC.SelectedIndex == 7)
+                    {
+                        if (CharacterDetails.Ear.value > 0)
+                        {
+                            if (Modelmain.Item1 == CharacterDetails.Ear.value && Modelmain.Item2 == CharacterDetails.EarVa.value)
+                            {
+                                CurrentlyEquippedName.Content = game.Name;
+                                found = true;
+                            }
+                        }
+                    }
+                    else
+                    if (EquipBoxC.SelectedIndex == 8)
+                    {
+                        if (CharacterDetails.Neck.value > 0)
+                        {
+                            if (Modelmain.Item1 == CharacterDetails.Neck.value && Modelmain.Item2 == CharacterDetails.NeckVa.value)
+                            {
+                                CurrentlyEquippedName.Content = game.Name;
+                                found = true;
+                            }
+                        }
+                    }
+                    else
+                    if (EquipBoxC.SelectedIndex == 9)
+                    {
+                        if (CharacterDetails.Wrist.value > 0)
+                        {
+                            if (Modelmain.Item1 == CharacterDetails.Wrist.value && Modelmain.Item2 == CharacterDetails.WristVa.value)
+                            {
+                                CurrentlyEquippedName.Content = game.Name;
+                            }
+                        }
+                    }
+                    else
+                    if (EquipBoxC.SelectedIndex == 10)
+                    {
+                        if (CharacterDetails.RFinger.value > 0)
+                        {
+                            if (Modelmain.Item1 == CharacterDetails.RFinger.value && Modelmain.Item2 == CharacterDetails.RFingerVa.value)
+                            {
+                                CurrentlyEquippedName.Content = game.Name;
+                                found = true;
+                            }
+                        }
+                    }
+                    else
+                    if (EquipBoxC.SelectedIndex == 11)
+                    {
+                        if (CharacterDetails.LFinger.value > 0)
+                        {
+                            if (Modelmain.Item1 == CharacterDetails.LFinger.value && Modelmain.Item2 == CharacterDetails.LFingerVa.value)
+                            {
+                                CurrentlyEquippedName.Content = game.Name;
+                                found = true;
+                            }
+                        }
+                    }
+                    else
+                    { CurrentlyEquippedName.Content = "Unknown!? Unable to verifiy"; found = true; }
+                }
+            }
+            if(CurrentlyEquippedName.Content.ToString()=="None")
+            {
+                if (EquipBoxC.SelectedIndex == 0 && CharacterDetails.Job.value > 0 ||
+                    EquipBoxC.SelectedIndex == 1 && CharacterDetails.Offhand.value > 0 ||
+                    EquipBoxC.SelectedIndex == 2 && CharacterDetails.HeadPiece.value > 0 ||
+                    EquipBoxC.SelectedIndex == 3 && CharacterDetails.Chest.value > 0 ||
+                    EquipBoxC.SelectedIndex == 4 && CharacterDetails.Arms.value > 0 ||
+                    EquipBoxC.SelectedIndex == 5 && CharacterDetails.Legs.value > 0 ||
+                    EquipBoxC.SelectedIndex == 6 && CharacterDetails.Feet.value > 0 ||
+                    EquipBoxC.SelectedIndex == 7 && CharacterDetails.Ear.value > 0 ||
+                    EquipBoxC.SelectedIndex == 8 && CharacterDetails.Neck.value > 0 ||
+                    EquipBoxC.SelectedIndex == 9 && CharacterDetails.Wrist.value > 0 ||
+                    EquipBoxC.SelectedIndex == 10 && CharacterDetails.RFinger.value > 0 ||
+                    EquipBoxC.SelectedIndex == 11 && CharacterDetails.LFinger.value > 0) CurrentlyEquippedName.Content = "Unknown? Unable to verifiy";
+            }
         }
         public static byte[] WepTupleToByteAry(WepTuple tuple)
         {
