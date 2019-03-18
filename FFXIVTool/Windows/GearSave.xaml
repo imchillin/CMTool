@@ -12,7 +12,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FFXIVTool.Windows"
         mc:Ignorable="d"
-        Title="Save Gearset" Height="153.166" Width="303" WindowStartupLocation="CenterOwner">
+        Title="Save Gearset" Height="153.166" Width="310.333" WindowStartupLocation="CenterOwner">
     <Grid>
         <TextBox x:Name="FilenameText" Style="{StaticResource MaterialDesignFloatingHintTextBox}" MaxLength="240" Margin="10,21,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="274" TextAlignment="Center">
             <materialDesign:HintAssist.Hint>
