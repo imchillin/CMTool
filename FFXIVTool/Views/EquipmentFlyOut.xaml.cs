@@ -33,6 +33,8 @@ namespace FFXIVTool.Views
             InitializeComponent();
             CheckIncluded.Visibility = Visibility.Hidden;
             KeepDyes.Visibility = Visibility.Hidden;
+            CurrentlyEquippedName.Visibility = Visibility.Hidden;
+            EquippedLabel.Visibility = Visibility.Hidden;
         }
         public void GearPicker(ExdCsvReader.Item[] items)
         {
@@ -392,10 +394,14 @@ namespace FFXIVTool.Views
             KeepDyes.IsChecked = false;
             CheckIncluded.Visibility = Visibility.Hidden;
             KeepDyes.Visibility = Visibility.Hidden;
+            CurrentlyEquippedName.Visibility = Visibility.Hidden;
+            EquippedLabel.Visibility = Visibility.Hidden;
             if (isUserInteraction)
             {
                 if (!CharacterDetailsView2.CheckItemList())
                     return;
+                CurrentlyEquippedName.Visibility = Visibility.Visible;
+                EquippedLabel.Visibility = Visibility.Visible;
                 if (EquipBoxC.SelectedIndex == 0)
                 {
                     CheckIncluded.Visibility = Visibility.Visible;
@@ -545,6 +551,8 @@ namespace FFXIVTool.Views
         public void ResidentSelector(ExdCsvReader.Resident[] residents)
         {
             UserDoneInteraction = true;
+            CurrentlyEquippedName.Visibility = Visibility.Hidden;
+            EquippedLabel.Visibility = Visibility.Hidden;
             residentlist.Items.Clear();
             _residents = residents;
             foreach (ExdCsvReader.Resident resident in _residents) residentlist.Items.Add(resident);
@@ -749,7 +757,7 @@ namespace FFXIVTool.Views
 
         private void AnimatedTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (NPCTab.IsSelected && Userinteraction2)
+            if (NPCTab.IsSelected && Userinteraction2&&UserDoneInteraction)
             {
                 if (!CharacterDetailsView2.CheckResidentList())
                 {
@@ -758,12 +766,23 @@ namespace FFXIVTool.Views
                 }
                 ResidentSelector(CharacterDetailsView._exdProvider.Residents.Values.Where(c => c.IsGoodNpc()).ToArray());
             }
+            if (NPCTab.IsSelected)
+            {
+                CurrentlyEquippedName.Visibility = Visibility.Hidden;
+                EquippedLabel.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                CurrentlyEquippedName.Visibility = Visibility.Visible;
+                EquippedLabel.Visibility = Visibility.Visible;
+            }
             Userinteraction2 = false;
         }
 
         private void AnimatedTabControl_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             if(!UserDoneInteraction)Userinteraction2 = true;
+            else Userinteraction2 = true;
         }
     }
 }

@@ -29,6 +29,8 @@
     </controls:Flyout.Resources>
 
     <Grid>
+        <Label FontSize="16" x:Name="EquippedLabel" Content="Currently Equipped:" HorizontalAlignment="Left" Margin="35,-69,0,0" VerticalAlignment="Top" Height="30" Width="168" FontWeight="Bold"/>
+        <Label FontSize="16" x:Name="CurrentlyEquippedName" Content="None" HorizontalAlignment="Left" Margin="180,-69,0,0" VerticalAlignment="Top" Width="286" FontWeight="Bold"/>
         <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" >
             <StackPanel Margin="2" Orientation="Vertical">
 
@@ -84,7 +86,5 @@
                 </controls:MetroAnimatedTabControl>
             </StackPanel>
         </ScrollViewer>
-        <Label FontSize="16" x:Name="EquippedLabel" Content="Currently Equipped:" HorizontalAlignment="Left" Margin="35,-69,0,0" VerticalAlignment="Top" Height="30" Width="168" FontWeight="Bold"/>
-        <Label FontSize="16" x:Name="CurrentlyEquippedName" Content="None" HorizontalAlignment="Left" Margin="180,-69,0,0" VerticalAlignment="Top" Width="286" FontWeight="Bold"/>
     </Grid>
 </controls:Flyout>
