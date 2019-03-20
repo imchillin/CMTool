@@ -11,13 +11,14 @@
         BorderThickness="1"              
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         mc:Ignorable="d"
-        Title="Load Window" Height="250.003" Width="286.244" ResizeMode="NoResize" Icon="/FFXIVTool;component/ffxivmeteorlogo.ico" WindowStartupLocation="CenterOwner">
+        Title="Load Window" Height="279.003" Width="349.244" ResizeMode="NoResize" Icon="/FFXIVTool;component/ffxivmeteorlogo.ico" WindowStartupLocation="CenterOwner">
     <Grid Margin="0,0,0,2">
-        <ListBox BorderThickness="1" FontSize="24" Margin="10,10,0,0" BorderBrush="Black" HorizontalAlignment="Left" VerticalAlignment="Top" Width="258" Height="188">
-            <ListBoxItem x:Name="All"  Content="Load All" Uid="1" KeyDown="All_KeyDown" PreviewMouseDown="All_PreviewMouseDown"/>
-            <ListBoxItem x:Name="App"  Content="Load Appearance"  BorderThickness="0,1,0,0" Uid="2" KeyDown="App_KeyDown" BorderBrush="Black" PreviewMouseDown="App_PreviewMouseDown"/>
-            <ListBoxItem x:Name="Xuip" Content="Load Equipment" BorderThickness="0,1,0,0" Uid="3" KeyDown="Xuip_KeyDown" BorderBrush="Black" PreviewMouseDown="Xuip_PreviewMouseDown"/>
+        <ListBox BorderThickness="1" FontSize="24" Margin="10,10,0,0" BorderBrush="Black" HorizontalAlignment="Left" VerticalAlignment="Top" Width="321" Height="222">
+            <ListBoxItem x:Name="All"  Content="Load All Character" Uid="1" KeyDown="All_KeyDown" PreviewMouseDown="All_PreviewMouseDown"/>
+            <ListBoxItem x:Name="App"  Content="Load All[Appearance]"  BorderThickness="0,1,0,0" Uid="2" KeyDown="App_KeyDown" BorderBrush="Black" PreviewMouseDown="App_PreviewMouseDown"/>
+            <ListBoxItem x:Name="Xuip" Content="Load All[Equipment]" BorderThickness="0,1,0,0" Uid="3" KeyDown="Xuip_KeyDown" BorderBrush="Black" PreviewMouseDown="Xuip_PreviewMouseDown"/>
             <ListBoxItem x:Name="Dat" Content="Load .Dat" BorderThickness="0,1,0,0" Uid="3" BorderBrush="Black" KeyDown="Dat_KeyDown" PreviewMouseDown="Dat_PreviewMouseDown" Height="41" />
+            <ListBoxItem x:Name="Gearset" Content="Load Gearset" BorderThickness="0,1,0,0" Uid="3" BorderBrush="Black" KeyDown="Gearset_KeyDown" PreviewMouseDown="Gearset_PreviewMouseDown" Height="41" />
 
         </ListBox>
     </Grid>

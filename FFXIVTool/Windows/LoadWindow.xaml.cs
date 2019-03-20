@@ -68,5 +68,19 @@ namespace FFXIVTool.Windows
             Choice = Dat.Name;
             Close();
         }
+
+        private void Gearset_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key != System.Windows.Input.Key.Enter) return;
+            e.Handled = true;
+            Choice = Gearset.Name;
+            Close();
+        }
+
+        private void Gearset_PreviewMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Choice = Gearset.Name;
+            Close();
+        }
     }
 }

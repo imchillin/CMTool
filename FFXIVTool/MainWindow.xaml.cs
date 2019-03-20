@@ -241,6 +241,67 @@ namespace FFXIVTool
             if (c.Choice == "App") Appereanco();
             if (c.Choice == "Xuip") Equipo();
             if (c.Choice == "Dat") LetsGoDats();
+            if (c.Choice == "Gearset") LetsgoGear();
+        }
+        private void LetsgoGear()
+        {
+            Windows.GearsetChooseWindow fam = new Windows.GearsetChooseWindow("Select the saved gearset you want to load.");
+            fam.Owner = Application.Current.MainWindow;
+            fam.ShowDialog();
+            if (fam.Choice != null)
+            {
+                EAoB(fam.Choice);
+            }
+            else return;
+        }
+        private void EAoB(GearSaves equpmentarray)
+        {
+            try
+            {
+                byte[] EquipmentArray;
+                EquipmentArray = MemoryManager.StringToByteArray(equpmentarray.EquipmentBytes.Replace(" ", string.Empty));
+                if (EquipmentArray == null) return;
+                if (CharacterDetails.HeadPiece.freeze == true) { CharacterDetails.HeadPiece.freeze = false; CharacterDetails.HeadPiece.Cantbeused = true; }
+                if (CharacterDetails.Chest.freeze == true) { CharacterDetails.Chest.freeze = false; CharacterDetails.Chest.Cantbeused = true; }
+                if (CharacterDetails.Arms.freeze == true) { CharacterDetails.Arms.freeze = false; CharacterDetails.Arms.Cantbeused = true; }
+                if (CharacterDetails.Legs.freeze == true) { CharacterDetails.Legs.freeze = false; CharacterDetails.Legs.Cantbeused = true; }
+                if (CharacterDetails.Feet.freeze == true) { CharacterDetails.Feet.freeze = false; CharacterDetails.Feet.Cantbeused = true; }
+                if (CharacterDetails.Neck.freeze == true) { CharacterDetails.Neck.freeze = false; CharacterDetails.Neck.Cantbeused = true; }
+                if (CharacterDetails.Ear.freeze == true) { CharacterDetails.Ear.freeze = false; CharacterDetails.Ear.Cantbeused = true; }
+                if (CharacterDetails.Wrist.freeze == true) { CharacterDetails.Wrist.freeze = false; CharacterDetails.Wrist.Cantbeused = true; }
+                if (CharacterDetails.RFinger.freeze == true) { CharacterDetails.RFinger.freeze = false; CharacterDetails.RFinger.Cantbeused = true; }
+                if (CharacterDetails.LFinger.freeze == true) { CharacterDetails.LFinger.freeze = false; CharacterDetails.LFinger.Cantbeused = true; }
+                if (CharacterDetails.Job.freeze == true) { CharacterDetails.Job.freeze = false; CharacterDetails.Job.Cantbeused = true; }
+                if (CharacterDetails.Offhand.freeze == true) { CharacterDetails.Offhand.freeze = false; CharacterDetails.Offhand.Cantbeused = true; }
+                MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HeadPiece), EquipmentArray);
+                System.Threading.Tasks.Task.Delay(25).Wait();
+                CharacterDetails.Job.value = equpmentarray.MainHand.Item1;
+                CharacterDetails.WeaponBase.value = (byte)equpmentarray.MainHand.Item2;
+                CharacterDetails.WeaponV.value = (byte)equpmentarray.MainHand.Item3;
+                CharacterDetails.WeaponDye.value = (byte)equpmentarray.MainHand.Item4;
+                MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Job), EquipmentFlyOut.WepTupleToByteAry(equpmentarray.MainHand));
+                CharacterDetails.Offhand.value = equpmentarray.OffHand.Item1;
+                CharacterDetails.OffhandBase.value = (byte)equpmentarray.OffHand.Item2;
+                CharacterDetails.OffhandV.value = (byte)equpmentarray.OffHand.Item3;
+                CharacterDetails.OffhandDye.value = (byte)equpmentarray.OffHand.Item4;
+                MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Offhand), EquipmentFlyOut.WepTupleToByteAry(equpmentarray.OffHand));
+                if (CharacterDetails.HeadPiece.Cantbeused == true) { CharacterDetails.HeadPiece.freeze = true; CharacterDetails.HeadPiece.Cantbeused = false; }
+                if (CharacterDetails.Chest.Cantbeused == true) { CharacterDetails.Chest.freeze = true; CharacterDetails.Chest.Cantbeused = false; }
+                if (CharacterDetails.Arms.Cantbeused == true) { CharacterDetails.Arms.freeze = true; CharacterDetails.Arms.Cantbeused = false; }
+                if (CharacterDetails.Legs.Cantbeused == true) { CharacterDetails.Legs.freeze = true; CharacterDetails.Legs.Cantbeused = false; }
+                if (CharacterDetails.Feet.Cantbeused == true) { CharacterDetails.Feet.freeze = true; CharacterDetails.Feet.Cantbeused = false; }
+                if (CharacterDetails.Neck.Cantbeused == true) { CharacterDetails.Neck.freeze = true; CharacterDetails.Neck.Cantbeused = false; }
+                if (CharacterDetails.Ear.Cantbeused == true) { CharacterDetails.Ear.freeze = true; CharacterDetails.Ear.Cantbeused = false; }
+                if (CharacterDetails.Wrist.Cantbeused == true) { CharacterDetails.Wrist.freeze = true; CharacterDetails.Wrist.Cantbeused = false; }
+                if (CharacterDetails.RFinger.Cantbeused == true) { CharacterDetails.RFinger.freeze = true; CharacterDetails.RFinger.Cantbeused = false; }
+                if (CharacterDetails.LFinger.Cantbeused == true) { CharacterDetails.LFinger.freeze = true; CharacterDetails.LFinger.Cantbeused = false; }
+                if (CharacterDetails.Job.Cantbeused == true) { CharacterDetails.Job.freeze = true; CharacterDetails.Job.Cantbeused = false; }
+                if (CharacterDetails.Offhand.Cantbeused == true) { CharacterDetails.Offhand.freeze = true; CharacterDetails.Offhand.Cantbeused = false; }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("One or more fields were not formatted correctly.\n\n" + exc, " Error " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version, MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
         private void LetsGoDats()
         {
