@@ -258,6 +258,7 @@ namespace FFXIVTool
         {
             try
             {
+                Load.IsEnabled = false;
                 byte[] EquipmentArray;
                 EquipmentArray = MemoryManager.StringToByteArray(equpmentarray.EquipmentBytes.Replace(" ", string.Empty));
                 if (EquipmentArray == null) return;
@@ -297,10 +298,12 @@ namespace FFXIVTool
                 if (CharacterDetails.LFinger.Cantbeused == true) { CharacterDetails.LFinger.freeze = true; CharacterDetails.LFinger.Cantbeused = false; }
                 if (CharacterDetails.Job.Cantbeused == true) { CharacterDetails.Job.freeze = true; CharacterDetails.Job.Cantbeused = false; }
                 if (CharacterDetails.Offhand.Cantbeused == true) { CharacterDetails.Offhand.freeze = true; CharacterDetails.Offhand.Cantbeused = false; }
+                Load.IsEnabled = true;
             }
             catch (Exception exc)
             {
                 MessageBox.Show("One or more fields were not formatted correctly.\n\n" + exc, " Error " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version, MessageBoxButton.OK, MessageBoxImage.Error);
+                Load.IsEnabled = true;
             }
         }
         private void LetsGoDats()
@@ -310,6 +313,7 @@ namespace FFXIVTool
             fam.ShowDialog();
             if (fam.Choice != null)
             {
+                Load.IsEnabled = false;
                 if (CharacterDetails.Highlights.Activated == true) { CharacterDetails.Highlights.freeze = true; CharacterDetails.Highlights.Activated = false; }
                 if (CharacterDetails.Race.freeze == true) { CharacterDetails.Race.freeze = false; CharacterDetails.Race.Activated = true; }
                 if (CharacterDetails.Gender.freeze == true) { CharacterDetails.Gender.freeze = false; CharacterDetails.Gender.Activated = true; }
@@ -367,6 +371,7 @@ namespace FFXIVTool
                 if (CharacterDetails.TailType.Activated == true) { CharacterDetails.TailType.freeze = true; CharacterDetails.TailType.Activated = false; }
                 if (CharacterDetails.FacialFeatures.Activated == true) { CharacterDetails.FacialFeatures.freeze = true; CharacterDetails.FacialFeatures.Activated = false; }
                 if (CharacterDetails.RBust.Activated == true) { CharacterDetails.RBust.freeze = true; CharacterDetails.RBust.Activated = false; }
+                Load.IsEnabled = true;
                 return;
             }
             MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Race), Haha);
@@ -396,6 +401,7 @@ namespace FFXIVTool
             if (CharacterDetails.TailType.Activated == true) { CharacterDetails.TailType.freeze = true; CharacterDetails.TailType.Activated = false; }
             if (CharacterDetails.FacialFeatures.Activated == true) { CharacterDetails.FacialFeatures.freeze = true; CharacterDetails.FacialFeatures.Activated = false; }
             if (CharacterDetails.RBust.Activated == true) { CharacterDetails.RBust.freeze = true; CharacterDetails.RBust.Activated = false; }
+            Load.IsEnabled = true;
         }
         private void AllSaves()
         {
@@ -434,7 +440,8 @@ namespace FFXIVTool
         {
             try
             {
-                if(savechoice==0 || savechoice==1)
+                Load.IsEnabled = false;
+                if (savechoice==0 || savechoice==1)
                 {
                     if (CharacterDetails.Highlights.Activated == true) { CharacterDetails.Highlights.freeze = true; CharacterDetails.Highlights.Activated = false; }
                     if (CharacterDetails.Race.freeze == true) { CharacterDetails.Race.freeze = false; CharacterDetails.Race.Activated = true; }
@@ -730,11 +737,13 @@ namespace FFXIVTool
                         if (CharacterDetails.OffhandBlue.Cantbeused == true) { CharacterDetails.OffhandBlue.freeze = true; CharacterDetails.OffhandBlue.Cantbeused = false; }
                         if (CharacterDetails.OffhandGreen.Cantbeused == true) { CharacterDetails.OffhandGreen.freeze = true; CharacterDetails.OffhandGreen.Cantbeused = false; }
                     }
+                    Load.IsEnabled = true;
                 }
             }
             catch (Exception exc)
             {
                 MessageBox.Show("One or more fields were not formatted correctly.\n\n" + exc, " Error " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version, MessageBoxButton.OK, MessageBoxImage.Error);
+                Load.IsEnabled = true;
             }
         }
 

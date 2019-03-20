@@ -782,7 +782,6 @@ namespace FFXIVTool.Views
         private void AnimatedTabControl_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             if(!UserDoneInteraction)Userinteraction2 = true;
-            else Userinteraction2 = true;
         }
     }
 }

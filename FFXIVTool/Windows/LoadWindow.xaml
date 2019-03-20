@@ -19,7 +19,6 @@
             <ListBoxItem x:Name="Xuip" Content="Load All[Equipment]" BorderThickness="0,1,0,0" Uid="3" KeyDown="Xuip_KeyDown" BorderBrush="Black" PreviewMouseDown="Xuip_PreviewMouseDown"/>
             <ListBoxItem x:Name="Dat" Content="Load .Dat" BorderThickness="0,1,0,0" Uid="3" BorderBrush="Black" KeyDown="Dat_KeyDown" PreviewMouseDown="Dat_PreviewMouseDown" Height="41" />
             <ListBoxItem x:Name="Gearset" Content="Load Gearset" BorderThickness="0,1,0,0" Uid="3" BorderBrush="Black" KeyDown="Gearset_KeyDown" PreviewMouseDown="Gearset_PreviewMouseDown" Height="41" />
-
         </ListBox>
     </Grid>
 </Window>
