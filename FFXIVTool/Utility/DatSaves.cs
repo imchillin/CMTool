@@ -44,7 +44,11 @@ namespace FFXIVTool.Utility
                 "FINAL FANTASY XIV - A Realm Reborn");
 
             if (!Directory.Exists(basePath))
-                throw new Exception("Could not find FFXIV Directory: " + basePath);
+            {
+                System.Windows.MessageBox.Show("Could not find FFXIV Directory: " + basePath);
+                return output;
+            }
+            
 
             var files = Directory.GetFiles(basePath, "FFXIV_CHARA*.dat");
 

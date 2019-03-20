@@ -38,7 +38,7 @@ namespace FFXIVTool.Windows
             InitializeComponent();
             GearDataGrid.ItemsSource = GearSave;
             GearSave = LoadeGearset();
-
+            Title = text;
             foreach (var GearSaves in GearSave)
             {
                 GearDataGrid.Items.Add(new GearSaves()
@@ -58,7 +58,10 @@ namespace FFXIVTool.Windows
             string PathX = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "SSTool", "Gearsets");
 
             if (!Directory.Exists(PathX))
-                throw new Exception("Could not find any gearset saves in:" + PathX);
+            {
+                System.Windows.MessageBox.Show("Could not find SSTool/Gearsets Directory: " + PathX);
+                return output;
+            }
 
             var files = Directory.GetFiles(PathX, "*.json*");
 
