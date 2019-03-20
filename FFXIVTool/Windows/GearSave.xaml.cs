@@ -20,9 +20,11 @@ namespace FFXIVTool.Windows
     public partial class GearSave : Window
     {
         public string Filename;
-        public GearSave()
+        public GearSave(string newtitle, string newwatermark)
         {
             InitializeComponent();
+            this.Title = newtitle;
+            RunText.Text = newwatermark;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
