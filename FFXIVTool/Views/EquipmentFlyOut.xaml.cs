@@ -757,7 +757,7 @@ namespace FFXIVTool.Views
 
         private void AnimatedTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (NPCTab.IsSelected && Userinteraction2&&UserDoneInteraction)
+            if (NPCTab.IsSelected && Userinteraction2)
             {
                 if (!CharacterDetailsView2.CheckResidentList())
                 {

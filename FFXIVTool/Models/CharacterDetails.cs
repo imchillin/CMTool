@@ -50,9 +50,9 @@ namespace FFXIVTool.Models
         public Address<float> TailSize { get; set; }
         [JsonIgnore] public Address<string> Name { get; set; }
         [JsonIgnore] public Address<int> EmoteX { get; set; }
-        public Address<byte> Race { get; set; }
-        public Address<byte> Clan { get; set; }
-        public Address<byte> Gender { get; set; }
+        [JsonIgnore] public Address<byte> Race { get; set; }
+        [JsonIgnore] public Address<byte> Clan { get; set; }
+        [JsonIgnore] public Address<byte> Gender { get; set; }
         [JsonIgnore] public Address<float> Wetness { get; set; }
         [JsonIgnore] public Address<float> SWetness { get; set; }
         public Address<float> Height { get; set; }
@@ -62,34 +62,34 @@ namespace FFXIVTool.Models
         [JsonIgnore] public Address<float> X { get; set; }
         [JsonIgnore] public Address<float> Y { get; set; }
         [JsonIgnore] public Address<float> Z { get; set; }
-        public Address<byte> Head { get; set; }
-        public Address<byte> Hair { get; set; }
-        public Address<byte> TailType { get; set; }
+        [JsonIgnore] public Address<byte> Head { get; set; }
+        [JsonIgnore] public Address<byte> Hair { get; set; }
+        [JsonIgnore] public Address<byte> TailType { get; set; }
         [JsonIgnore] public Address<float> ScaleX { get; set; }
         [JsonIgnore] public Address<float> ScaleY { get; set; }
         [JsonIgnore] public Address<float> ScaleZ { get; set; }
-        public Address<byte> Jaw { get; set; }
-        public Address<byte> RHeight { get; set; }
-        public Address<byte> RBust { get; set; }
-        public Address<byte> HairTone { get; set; }
-        public Address<byte> Highlights { get; set; }
-        public Address<byte> HighlightTone { get; set; }
-        public Address<byte> Skintone { get; set; }
-        public Address<byte> FacialFeatures { get; set; }
+        [JsonIgnore] public Address<byte> Jaw { get; set; }
+        [JsonIgnore] public Address<byte> RHeight { get; set; }
+        [JsonIgnore] public Address<byte> RBust { get; set; }
+        [JsonIgnore] public Address<byte> HairTone { get; set; }
+        [JsonIgnore] public Address<byte> Highlights { get; set; }
+        [JsonIgnore] public Address<byte> HighlightTone { get; set; }
+        [JsonIgnore] public Address<byte> Skintone { get; set; }
+        [JsonIgnore] public Address<byte> FacialFeatures { get; set; }
         [JsonIgnore] public Address<int> Emote { get; set; }
         [JsonIgnore] public Address<float> EmoteSpeed1 { get; set; }
         [JsonIgnore] public Address<float> EmoteSpeed2 { get; set; }
-        public Address<byte> Eye { get; set; }
-        public Address<byte> RightEye { get; set; }
-        public Address<byte> LeftEye { get; set; }
-        public Address<byte> FacePaint { get; set; }
-        public Address<byte> FacePaintColor { get; set; }
-        public Address<byte> Nose { get; set; }
-        public Address<byte> Lips { get; set; }
-        public Address<byte> LipsTone { get; set; }
-        public Address<byte> EyeBrowType { get; set; }
+        [JsonIgnore] public Address<byte> Eye { get; set; }
+        [JsonIgnore] public Address<byte> RightEye { get; set; }
+        [JsonIgnore] public Address<byte> LeftEye { get; set; }
+        [JsonIgnore] public Address<byte> FacePaint { get; set; }
+        [JsonIgnore] public Address<byte> FacePaintColor { get; set; }
+        [JsonIgnore] public Address<byte> Nose { get; set; }
+        [JsonIgnore] public Address<byte> Lips { get; set; }
+        [JsonIgnore] public Address<byte> LipsTone { get; set; }
+        [JsonIgnore] public Address<byte> EyeBrowType { get; set; }
         public Address<byte> Voices { get; set; }
-        public Address<byte> TailorMuscle { get; set; }
+        [JsonIgnore] public Address<byte> TailorMuscle { get; set; }
         [JsonIgnore] public Address<float> Rotation { get; set; }
         [JsonIgnore] public Address<float> Rotation2 { get; set; }
         [JsonIgnore] public Address<float> Rotation3 { get; set; }
@@ -106,48 +106,48 @@ namespace FFXIVTool.Models
         [JsonIgnore] public Address<float> FOVMAX { get; set; }
         [JsonIgnore] public Address<float> Transparency { get; set; }
         public Address<float> MuscleTone { get; set; }
-        public Address<int> Job { get; set; }
-        public Address<byte> WeaponBase { get; set; }
-        public Address<byte> WeaponV { get; set; }
-        public Address<byte> WeaponDye { get; set; }
+        [JsonIgnore] public Address<int> Job { get; set; }
+        [JsonIgnore] public Address<byte> WeaponBase { get; set; }
+        [JsonIgnore] public Address<byte> WeaponV { get; set; }
+        [JsonIgnore] public Address<byte> WeaponDye { get; set; }
         public Address<float> WeaponX { get; set; }
         public Address<float> WeaponY { get; set; }
         public Address<float> WeaponZ { get; set; }
-        public Address<int> HeadPiece { get; set; }
-        public Address<byte> HeadV { get; set; }
-        public Address<byte> HeadDye { get; set; }
-        public Address<int> Chest { get; set; }
-        public Address<byte> ChestV { get; set; }
-        public Address<byte> ChestDye { get; set; }
-        public Address<int> Arms { get; set; }
-        public Address<byte> ArmsV { get; set; }
-        public Address<byte> ArmsDye { get; set; }
-        public Address<int> Legs { get; set; }
-        public Address<byte> LegsV { get; set; }
-        public Address<byte> LegsDye { get; set; }
-        public Address<int> Feet { get; set; }
-        public Address<byte> FeetVa { get; set; }
-        public Address<byte> FeetDye { get; set; }
-        public Address<int> Ear { get; set; }
-        public Address<byte> EarVa { get; set; }
-        public Address<int> Neck { get; set; }
-        public Address<byte> NeckVa { get; set; }
-        public Address<int> Wrist { get; set; }
-        public Address<byte> WristVa { get; set; }
-        public Address<int> RFinger { get; set; }
-        public Address<byte> RFingerVa { get; set; }
-        public Address<int> LFinger { get; set; }
-        public Address<int> Offhand { get; set; }
-        public Address<byte> OffhandBase { get; set; }
-        public Address<byte> OffhandV { get; set; }
-        public Address<byte> OffhandDye { get; set; }
+        [JsonIgnore] public Address<int> HeadPiece { get; set; }
+        [JsonIgnore] public Address<byte> HeadV { get; set; }
+        [JsonIgnore] public Address<byte> HeadDye { get; set; }
+        [JsonIgnore] public Address<int> Chest { get; set; }
+        [JsonIgnore] public Address<byte> ChestV { get; set; }
+        [JsonIgnore] public Address<byte> ChestDye { get; set; }
+        [JsonIgnore] public Address<int> Arms { get; set; }
+        [JsonIgnore] public Address<byte> ArmsV { get; set; }
+        [JsonIgnore] public Address<byte> ArmsDye { get; set; }
+        [JsonIgnore] public Address<int> Legs { get; set; }
+        [JsonIgnore] public Address<byte> LegsV { get; set; }
+        [JsonIgnore] public Address<byte> LegsDye { get; set; }
+        [JsonIgnore] public Address<int> Feet { get; set; }
+        [JsonIgnore] public Address<byte> FeetVa { get; set; }
+        [JsonIgnore] public Address<byte> FeetDye { get; set; }
+        [JsonIgnore] public Address<int> Ear { get; set; }
+        [JsonIgnore] public Address<byte> EarVa { get; set; }
+        [JsonIgnore] public Address<int> Neck { get; set; }
+        [JsonIgnore] public Address<byte> NeckVa { get; set; }
+        [JsonIgnore] public Address<int> Wrist { get; set; }
+        [JsonIgnore] public Address<byte> WristVa { get; set; }
+        [JsonIgnore] public Address<int> RFinger { get; set; }
+        [JsonIgnore] public Address<byte> RFingerVa { get; set; }
+        [JsonIgnore] public Address<int> LFinger { get; set; }
+        [JsonIgnore] public Address<int> Offhand { get; set; }
+        [JsonIgnore] public Address<byte> OffhandBase { get; set; }
+        [JsonIgnore] public Address<byte> OffhandV { get; set; }
+        [JsonIgnore] public Address<byte> OffhandDye { get; set; }
         public Address<float> OffhandX { get; set; }
         public Address<float> OffhandY { get; set; }
         public Address<float> OffhandZ { get; set; }
         public Address<float> OffhandRed { get; set; }
         public Address<float> OffhandGreen { get; set; }
         public Address<float> OffhandBlue { get; set; }
-        public Address<byte> LFingerVa { get; set; }
+        [JsonIgnore] public Address<byte> LFingerVa { get; set; }
         public Address<float> WeaponRed { get; set; }
         public Address<float> WeaponGreen { get; set; }
         public Address<float> WeaponBlue { get; set; }
@@ -179,7 +179,7 @@ namespace FFXIVTool.Models
         public Address<float> LimbalR { get; set; }
         public Address<float> LimbalG { get; set; }
         public Address<float> LimbalB { get; set; }
-        public Address<byte> LimbalEyes { get; set; }
+        [JsonIgnore] public Address<byte> LimbalEyes { get; set; }
         [JsonIgnore] public Address<float> CameraYAMin { get; set; }
         [JsonIgnore] public Address<float> FOV2 { get; set; }
         [JsonIgnore] public Address<float> CameraYAMax { get; set; }
@@ -204,7 +204,7 @@ namespace FFXIVTool.Models
         [JsonIgnore] public Address<string> TestArray { get; set; } // Appereance
         [JsonIgnore] public Address<string> TestArray2 { get; set; } // Equipment
         [JsonIgnore] public Address<int> ModelType { get; set; } // Equipment
-        public Address<byte> BodyType { get; set; }
+        [JsonIgnore] public Address<byte> BodyType { get; set; }
         [JsonIgnore] public Address<float> HDR { get; set; }
         [JsonIgnore] public Address<float> Brightness { get; set; }
         [JsonIgnore] public Address<string> FilterAoB { get; set; }

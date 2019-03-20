@@ -725,7 +725,7 @@ namespace FFXIVTool.Views
         }
         private void SaveGearset_Click(object sender, RoutedEventArgs e)
         {
-            var c = new Windows.GearSave();
+            var c = new Windows.GearSave("Save Gearset", "Write Gearset name here...");
             c.Owner = Application.Current.MainWindow;
             c.ShowDialog();
             if (c.Filename == null) return;
@@ -742,20 +742,18 @@ namespace FFXIVTool.Views
                     Save1.EquipmentBytes = MemoryManager.ByteArrayToString(MemoryManager.Instance.MemLib.readBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HeadPiece), 26));
                     string details = JsonConvert.SerializeObject(Save1, Formatting.Indented);
                     File.WriteAllText(Path.Combine(path, c.Filename + ".json"), details);
-                   // Console.WriteLine(Path.Combine(path, c.Filename + ".json"));
-                    //Exists
                 }
                 else
                 {
                     System.IO.Directory.CreateDirectory(path);
                     GearSaves Save1 = new GearSaves(); // Gearsave is class with all address
-
+                                        Save1.Description = c.Filename;
+                    Save1.DateCreated = (DateTime.Today.ToString("dd-MM-yyyy") +"-"+ DateTime.Now.ToString("HH:mm:ss"));
                     Save1.MainHand = new WepTuple(CharacterDetails.Job.value, CharacterDetails.WeaponBase.value, CharacterDetails.WeaponV.value, CharacterDetails.WeaponDye.value);
                     Save1.OffHand = new WepTuple(CharacterDetails.Offhand.value, CharacterDetails.OffhandBase.value, CharacterDetails.OffhandV.value, CharacterDetails.OffhandDye.value);
                     Save1.EquipmentBytes = MemoryManager.ByteArrayToString(MemoryManager.Instance.MemLib.readBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HeadPiece), 26));
                     string details = JsonConvert.SerializeObject(Save1, Formatting.Indented);
                     File.WriteAllText(Path.Combine(path, c.Filename + ".json"), details);
-                    //Needs to be created
                 }
             }
         }
