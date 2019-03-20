@@ -399,7 +399,7 @@ namespace FFXIVTool
         }
         private void AllSaves()
         {
-            Windows.SaveChooseWindow fam = new Windows.SaveChooseWindow("Select the saved Character[All] Save you want to load.");
+            Windows.SaveChooseWindow fam = new Windows.SaveChooseWindow("Select saved Character[All].");
             fam.Owner = Application.Current.MainWindow;
             fam.ShowDialog();
             if (fam.Choice != null)
@@ -410,7 +410,7 @@ namespace FFXIVTool
         }
         private void Appereanco()
         {
-            Windows.SaveChooseWindow fam = new Windows.SaveChooseWindow("Select the saved Character[Appearance] Save you want to load.");
+            Windows.SaveChooseWindow fam = new Windows.SaveChooseWindow("Select saved Character[Appearance].");
             fam.Owner = Application.Current.MainWindow;
             fam.ShowDialog();
             if (fam.Choice != null)
@@ -421,7 +421,7 @@ namespace FFXIVTool
         }
         private void Equipo()
         {
-            Windows.SaveChooseWindow fam = new Windows.SaveChooseWindow("Select the saved Character[Equipment] Save you want to load.");
+            Windows.SaveChooseWindow fam = new Windows.SaveChooseWindow("Select the Character[Equipment].");
             fam.Owner = Application.Current.MainWindow;
             fam.ShowDialog();
             if (fam.Choice != null)
