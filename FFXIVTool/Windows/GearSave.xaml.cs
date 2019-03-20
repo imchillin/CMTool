@@ -37,5 +37,14 @@ namespace FFXIVTool.Windows
         {
             Close();
         }
+
+        private void FilenameText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key != Key.Enter) return;
+            e.Handled = true;
+            if (FilenameText.Text.Length<=0) return;
+            Filename = FilenameText.Text;
+            Close();
+        }
     }
 }
