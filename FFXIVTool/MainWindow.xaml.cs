@@ -262,20 +262,45 @@ namespace FFXIVTool
                 byte[] EquipmentArray;
                 EquipmentArray = MemoryManager.StringToByteArray(equpmentarray.EquipmentBytes.Replace(" ", string.Empty));
                 if (EquipmentArray == null) return;
-                if (CharacterDetails.HeadPiece.freeze == true) { CharacterDetails.HeadPiece.freeze = false; CharacterDetails.HeadPiece.Cantbeused = true; }
-                if (CharacterDetails.Chest.freeze == true) { CharacterDetails.Chest.freeze = false; CharacterDetails.Chest.Cantbeused = true; }
-                if (CharacterDetails.Arms.freeze == true) { CharacterDetails.Arms.freeze = false; CharacterDetails.Arms.Cantbeused = true; }
-                if (CharacterDetails.Legs.freeze == true) { CharacterDetails.Legs.freeze = false; CharacterDetails.Legs.Cantbeused = true; }
-                if (CharacterDetails.Feet.freeze == true) { CharacterDetails.Feet.freeze = false; CharacterDetails.Feet.Cantbeused = true; }
-                if (CharacterDetails.Neck.freeze == true) { CharacterDetails.Neck.freeze = false; CharacterDetails.Neck.Cantbeused = true; }
-                if (CharacterDetails.Ear.freeze == true) { CharacterDetails.Ear.freeze = false; CharacterDetails.Ear.Cantbeused = true; }
-                if (CharacterDetails.Wrist.freeze == true) { CharacterDetails.Wrist.freeze = false; CharacterDetails.Wrist.Cantbeused = true; }
-                if (CharacterDetails.RFinger.freeze == true) { CharacterDetails.RFinger.freeze = false; CharacterDetails.RFinger.Cantbeused = true; }
-                if (CharacterDetails.LFinger.freeze == true) { CharacterDetails.LFinger.freeze = false; CharacterDetails.LFinger.Cantbeused = true; }
-                if (CharacterDetails.Job.freeze == true) { CharacterDetails.Job.freeze = false; CharacterDetails.Job.Cantbeused = true; }
-                if (CharacterDetails.Offhand.freeze == true) { CharacterDetails.Offhand.freeze = false; CharacterDetails.Offhand.Cantbeused = true; }
-                MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HeadPiece), EquipmentArray);
+                CharacterDetails.Offhand.freeze = true;
+                CharacterDetails.Job.freeze = true;
+                CharacterDetails.HeadPiece.freeze = true;
+                CharacterDetails.Chest.freeze = true;
+                CharacterDetails.Arms.freeze = true;
+                CharacterDetails.Legs.freeze = true;
+                CharacterDetails.Feet.freeze = true;
+                CharacterDetails.Ear.freeze = true;
+                CharacterDetails.Neck.freeze = true;
+                CharacterDetails.Wrist.freeze = true;
+                CharacterDetails.RFinger.freeze = true;
+                CharacterDetails.LFinger.freeze = true;
                 System.Threading.Tasks.Task.Delay(25).Wait();
+                CharacterDetails.HeadPiece.value = (EquipmentArray[0] + EquipmentArray[1] * 256);
+                CharacterDetails.HeadV.value = EquipmentArray[2];
+                CharacterDetails.HeadDye.value = EquipmentArray[3];
+                CharacterDetails.Chest.value = (EquipmentArray[4] + EquipmentArray[5] * 256);
+                CharacterDetails.ChestV.value = EquipmentArray[6];
+                CharacterDetails.ChestDye.value = EquipmentArray[7];
+                CharacterDetails.Arms.value = (EquipmentArray[8] + EquipmentArray[9] * 256);
+                CharacterDetails.ArmsV.value = EquipmentArray[10];
+                CharacterDetails.ArmsDye.value = EquipmentArray[11];
+                CharacterDetails.Legs.value = (EquipmentArray[12] + EquipmentArray[13] * 256);
+                CharacterDetails.LegsV.value = EquipmentArray[14];
+                CharacterDetails.LegsDye.value = EquipmentArray[15];
+                CharacterDetails.Feet.value = (EquipmentArray[16] + EquipmentArray[17] * 256);
+                CharacterDetails.FeetVa.value = EquipmentArray[18];
+                CharacterDetails.FeetDye.value = EquipmentArray[19];
+                CharacterDetails.Ear.value = (EquipmentArray[20] + EquipmentArray[21] * 256);
+                CharacterDetails.EarVa.value = EquipmentArray[22];
+                CharacterDetails.Neck.value = (EquipmentArray[24] + EquipmentArray[25] * 256);
+                CharacterDetails.NeckVa.value = EquipmentArray[26];
+                CharacterDetails.Wrist.value = (EquipmentArray[28] + EquipmentArray[29] * 256);
+                CharacterDetails.WristVa.value = EquipmentArray[30];
+                CharacterDetails.RFinger.value = (EquipmentArray[32] + EquipmentArray[33] * 256);
+                CharacterDetails.RFingerVa.value = EquipmentArray[34];
+                CharacterDetails.LFinger.value = (EquipmentArray[36] + EquipmentArray[37] * 256);
+                CharacterDetails.LFingerVa.value = EquipmentArray[38];
+                MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HeadPiece), EquipmentArray);
                 CharacterDetails.Job.value = equpmentarray.MainHand.Item1;
                 CharacterDetails.WeaponBase.value = (byte)equpmentarray.MainHand.Item2;
                 CharacterDetails.WeaponV.value = (byte)equpmentarray.MainHand.Item3;
@@ -286,18 +311,6 @@ namespace FFXIVTool
                 CharacterDetails.OffhandV.value = (byte)equpmentarray.OffHand.Item3;
                 CharacterDetails.OffhandDye.value = (byte)equpmentarray.OffHand.Item4;
                 MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Offhand), EquipmentFlyOut.WepTupleToByteAry(equpmentarray.OffHand));
-                if (CharacterDetails.HeadPiece.Cantbeused == true) { CharacterDetails.HeadPiece.freeze = true; CharacterDetails.HeadPiece.Cantbeused = false; }
-                if (CharacterDetails.Chest.Cantbeused == true) { CharacterDetails.Chest.freeze = true; CharacterDetails.Chest.Cantbeused = false; }
-                if (CharacterDetails.Arms.Cantbeused == true) { CharacterDetails.Arms.freeze = true; CharacterDetails.Arms.Cantbeused = false; }
-                if (CharacterDetails.Legs.Cantbeused == true) { CharacterDetails.Legs.freeze = true; CharacterDetails.Legs.Cantbeused = false; }
-                if (CharacterDetails.Feet.Cantbeused == true) { CharacterDetails.Feet.freeze = true; CharacterDetails.Feet.Cantbeused = false; }
-                if (CharacterDetails.Neck.Cantbeused == true) { CharacterDetails.Neck.freeze = true; CharacterDetails.Neck.Cantbeused = false; }
-                if (CharacterDetails.Ear.Cantbeused == true) { CharacterDetails.Ear.freeze = true; CharacterDetails.Ear.Cantbeused = false; }
-                if (CharacterDetails.Wrist.Cantbeused == true) { CharacterDetails.Wrist.freeze = true; CharacterDetails.Wrist.Cantbeused = false; }
-                if (CharacterDetails.RFinger.Cantbeused == true) { CharacterDetails.RFinger.freeze = true; CharacterDetails.RFinger.Cantbeused = false; }
-                if (CharacterDetails.LFinger.Cantbeused == true) { CharacterDetails.LFinger.freeze = true; CharacterDetails.LFinger.Cantbeused = false; }
-                if (CharacterDetails.Job.Cantbeused == true) { CharacterDetails.Job.freeze = true; CharacterDetails.Job.Cantbeused = false; }
-                if (CharacterDetails.Offhand.Cantbeused == true) { CharacterDetails.Offhand.freeze = true; CharacterDetails.Offhand.Cantbeused = false; }
                 Load.IsEnabled = true;
             }
             catch (Exception exc)
@@ -314,94 +327,62 @@ namespace FFXIVTool
             if (fam.Choice != null)
             {
                 Load.IsEnabled = false;
-                if (CharacterDetails.Highlights.Activated == true) { CharacterDetails.Highlights.freeze = true; CharacterDetails.Highlights.Activated = false; }
-                if (CharacterDetails.Race.freeze == true) { CharacterDetails.Race.freeze = false; CharacterDetails.Race.Activated = true; }
-                if (CharacterDetails.Gender.freeze == true) { CharacterDetails.Gender.freeze = false; CharacterDetails.Gender.Activated = true; }
-                if (CharacterDetails.BodyType.freeze == true) { CharacterDetails.BodyType.freeze = false; CharacterDetails.BodyType.Activated = true; }
-                if (CharacterDetails.RHeight.freeze == true) { CharacterDetails.RHeight.freeze = false; CharacterDetails.RHeight.Activated = true; }
-                if (CharacterDetails.Clan.freeze == true) { CharacterDetails.Clan.freeze = false; CharacterDetails.Clan.Activated = true; }
-                if (CharacterDetails.Head.freeze == true) { CharacterDetails.Head.freeze = false; CharacterDetails.Head.Activated = true; }
-                if (CharacterDetails.Hair.freeze == true) { CharacterDetails.Hair.freeze = false; CharacterDetails.Hair.Activated = true; }
-                if (CharacterDetails.HighlightTone.freeze == true) { CharacterDetails.HighlightTone.freeze = false; CharacterDetails.HighlightTone.Activated = true; }
-                if (CharacterDetails.Skintone.freeze == true) { CharacterDetails.Skintone.freeze = false; CharacterDetails.Skintone.Activated = true; }
-                if (CharacterDetails.RightEye.freeze == true) { CharacterDetails.RightEye.freeze = false; CharacterDetails.RightEye.Activated = true; }
-                if (CharacterDetails.LeftEye.freeze == true) { CharacterDetails.LeftEye.freeze = false; CharacterDetails.LeftEye.Activated = true; }
-                if (CharacterDetails.HairTone.freeze == true) { CharacterDetails.HairTone.freeze = false; CharacterDetails.HairTone.Activated = true; }
-                if (CharacterDetails.FacePaint.freeze == true) { CharacterDetails.FacePaint.freeze = false; CharacterDetails.FacePaint.Activated = true; }
-                if (CharacterDetails.FacePaintColor.freeze == true) { CharacterDetails.FacePaintColor.freeze = false; CharacterDetails.FacePaintColor.Activated = true; }
-                if (CharacterDetails.EyeBrowType.freeze == true) { CharacterDetails.EyeBrowType.freeze = false; CharacterDetails.EyeBrowType.Activated = true; }
-                if (CharacterDetails.Nose.freeze == true) { CharacterDetails.Nose.freeze = false; CharacterDetails.Nose.Activated = true; }
-                if (CharacterDetails.Eye.freeze == true) { CharacterDetails.Eye.freeze = false; CharacterDetails.Eye.Activated = true; }
-                if (CharacterDetails.Jaw.freeze == true) { CharacterDetails.Jaw.freeze = false; CharacterDetails.Jaw.Activated = true; }
-                if (CharacterDetails.Lips.freeze == true) { CharacterDetails.Lips.freeze = false; CharacterDetails.Lips.Activated = true; }
-                if (CharacterDetails.LipsTone.freeze == true) { CharacterDetails.LipsTone.freeze = false; CharacterDetails.LipsTone.Activated = true; }
-                if (CharacterDetails.TailorMuscle.freeze == true) { CharacterDetails.TailorMuscle.freeze = false; CharacterDetails.TailorMuscle.Activated = true; }
-                if (CharacterDetails.TailType.freeze == true) { CharacterDetails.TailType.freeze = false; CharacterDetails.TailType.Activated = true; }
-                if (CharacterDetails.FacialFeatures.freeze == true) { CharacterDetails.FacialFeatures.freeze = false; CharacterDetails.FacialFeatures.Activated = true; }
-                if (CharacterDetails.RBust.freeze == true) { CharacterDetails.RBust.freeze = false; CharacterDetails.RBust.Activated = true; }
-                WriteCurrentCustomize(fam.Choice);
-            }
-        }
-        private void WriteCurrentCustomize(byte[] Haha)
-        {
-            if (Haha == null)
-            {
-                if (CharacterDetails.Highlights.Activated == true) { CharacterDetails.Highlights.freeze = true; CharacterDetails.Highlights.Activated = false; }
-                if (CharacterDetails.Race.Activated == true) { CharacterDetails.Race.freeze = true; CharacterDetails.Race.Activated = false; }
-                if (CharacterDetails.Gender.Activated == true) { CharacterDetails.Gender.freeze = true; CharacterDetails.Gender.Activated = false; }
-                if (CharacterDetails.BodyType.Activated == true) { CharacterDetails.BodyType.freeze = true; CharacterDetails.BodyType.Activated = false; }
-                if (CharacterDetails.RHeight.Activated == true) { CharacterDetails.RHeight.freeze = true; CharacterDetails.RHeight.Activated = false; }
-                if (CharacterDetails.Clan.Activated == true) { CharacterDetails.Clan.freeze = true; CharacterDetails.Clan.Activated = false; }
-                if (CharacterDetails.Head.Activated == true) { CharacterDetails.Head.freeze = true; CharacterDetails.Head.Activated = false; }
-                if (CharacterDetails.Hair.Activated == true) { CharacterDetails.Hair.freeze = true; CharacterDetails.Hair.Activated = false; }
-                if (CharacterDetails.HighlightTone.Activated == true) { CharacterDetails.HighlightTone.freeze = true; CharacterDetails.HighlightTone.Activated = false; }
-                if (CharacterDetails.Skintone.Activated == true) { CharacterDetails.Skintone.freeze = true; CharacterDetails.Skintone.Activated = false; }
-                if (CharacterDetails.RightEye.Activated == true) { CharacterDetails.RightEye.freeze = true; CharacterDetails.RightEye.Activated = false; }
-                if (CharacterDetails.LeftEye.Activated == true) { CharacterDetails.LeftEye.freeze = true; CharacterDetails.LeftEye.Activated = false; }
-                if (CharacterDetails.HairTone.Activated == true) { CharacterDetails.HairTone.freeze = true; CharacterDetails.HairTone.Activated = false; }
-                if (CharacterDetails.FacePaint.Activated == true) { CharacterDetails.FacePaint.freeze = true; CharacterDetails.FacePaint.Activated = false; }
-                if (CharacterDetails.FacePaintColor.Activated == true) { CharacterDetails.FacePaintColor.freeze = true; CharacterDetails.FacePaintColor.Activated = false; }
-                if (CharacterDetails.EyeBrowType.Activated == true) { CharacterDetails.EyeBrowType.freeze = true; CharacterDetails.EyeBrowType.Activated = false; }
-                if (CharacterDetails.Nose.Activated == true) { CharacterDetails.Nose.freeze = true; CharacterDetails.Nose.Activated = false; }
-                if (CharacterDetails.Eye.Activated == true) { CharacterDetails.Eye.freeze = true; CharacterDetails.Eye.Activated = false; }
-                if (CharacterDetails.Jaw.Activated == true) { CharacterDetails.Jaw.freeze = true; CharacterDetails.Jaw.Activated = false; }
-                if (CharacterDetails.Lips.Activated == true) { CharacterDetails.Lips.freeze = true; CharacterDetails.Lips.Activated = false; }
-                if (CharacterDetails.LipsTone.Activated == true) { CharacterDetails.LipsTone.freeze = true; CharacterDetails.LipsTone.Activated = false; }
-                if (CharacterDetails.TailorMuscle.Activated == true) { CharacterDetails.TailorMuscle.freeze = true; CharacterDetails.TailorMuscle.Activated = false; }
-                if (CharacterDetails.TailType.Activated == true) { CharacterDetails.TailType.freeze = true; CharacterDetails.TailType.Activated = false; }
-                if (CharacterDetails.FacialFeatures.Activated == true) { CharacterDetails.FacialFeatures.freeze = true; CharacterDetails.FacialFeatures.Activated = false; }
-                if (CharacterDetails.RBust.Activated == true) { CharacterDetails.RBust.freeze = true; CharacterDetails.RBust.Activated = false; }
+                CharacterDetails.Race.freeze = true;
+                CharacterDetails.Clan.freeze = true;
+                CharacterDetails.Gender.freeze = true;
+                CharacterDetails.Head.freeze = true;
+                CharacterDetails.TailType.freeze = true;
+                CharacterDetails.LimbalEyes.freeze = true;
+                CharacterDetails.Nose.freeze = true;
+                CharacterDetails.Lips.freeze = true;
+                CharacterDetails.BodyType.freeze = true;
+                CharacterDetails.Highlights.freeze = true;
+                CharacterDetails.Hair.freeze = true;
+                CharacterDetails.HairTone.freeze = true;
+                CharacterDetails.HighlightTone.freeze = true;
+                CharacterDetails.Jaw.freeze = true;
+                CharacterDetails.RBust.freeze = true;
+                CharacterDetails.RHeight.freeze = true;
+                CharacterDetails.LipsTone.freeze = true;
+                CharacterDetails.Skintone.freeze = true;
+                CharacterDetails.FacialFeatures.freeze = true;
+                CharacterDetails.TailorMuscle.freeze = true;
+                CharacterDetails.Eye.freeze = true;
+                CharacterDetails.RightEye.freeze = true;
+                CharacterDetails.EyeBrowType.freeze = true;
+                CharacterDetails.LeftEye.freeze = true;
+                CharacterDetails.FacePaint.freeze = true;
+                CharacterDetails.FacePaintColor.freeze = true;
+                Task.Delay(25).Wait();
+                CharacterDetails.Race.value = fam.Choice[0];
+                CharacterDetails.Gender.value = fam.Choice[1];
+                CharacterDetails.BodyType.value = fam.Choice[2];
+                CharacterDetails.RHeight.value = fam.Choice[3];
+                CharacterDetails.Clan.value = fam.Choice[4];
+                CharacterDetails.Head.value = fam.Choice[5];
+                CharacterDetails.Hair.value = fam.Choice[6];
+                CharacterDetails.Highlights.value = fam.Choice[7];
+                CharacterDetails.Skintone.value = fam.Choice[8];
+                CharacterDetails.RightEye.value = fam.Choice[9];
+                CharacterDetails.HairTone.value = fam.Choice[10];
+                CharacterDetails.HighlightTone.value = fam.Choice[11];
+                CharacterDetails.FacialFeatures.value = fam.Choice[12];
+                CharacterDetails.LimbalEyes.value = fam.Choice[13];
+                CharacterDetails.EyeBrowType.value = fam.Choice[14];
+                CharacterDetails.LeftEye.value = fam.Choice[15];
+                CharacterDetails.Eye.value = fam.Choice[16];
+                CharacterDetails.Nose.value = fam.Choice[17];
+                CharacterDetails.Jaw.value = fam.Choice[18];
+                CharacterDetails.Lips.value = fam.Choice[19];
+                CharacterDetails.LipsTone.value = fam.Choice[20];
+                CharacterDetails.TailorMuscle.value = fam.Choice[21];
+                CharacterDetails.TailType.value = fam.Choice[22];
+                CharacterDetails.RBust.value = fam.Choice[23];
+                CharacterDetails.FacePaint.value = fam.Choice[24];
+                CharacterDetails.FacePaintColor.value = fam.Choice[25];
+                MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Race), fam.Choice);
                 Load.IsEnabled = true;
-                return;
             }
-            MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Race), Haha);
-            Task.Delay(25).Wait();
-            if (CharacterDetails.Highlights.Activated == true) { CharacterDetails.Highlights.freeze = true; CharacterDetails.Highlights.Activated = false; }
-            if (CharacterDetails.Race.Activated == true) { CharacterDetails.Race.freeze = true; CharacterDetails.Race.Activated = false; }
-            if (CharacterDetails.Gender.Activated == true) { CharacterDetails.Gender.freeze = true; CharacterDetails.Gender.Activated = false; }
-            if (CharacterDetails.BodyType.Activated == true) { CharacterDetails.BodyType.freeze = true; CharacterDetails.BodyType.Activated = false; }
-            if (CharacterDetails.RHeight.Activated == true) { CharacterDetails.RHeight.freeze = true; CharacterDetails.RHeight.Activated = false; }
-            if (CharacterDetails.Clan.Activated == true) { CharacterDetails.Clan.freeze = true; CharacterDetails.Clan.Activated = false; }
-            if (CharacterDetails.Head.Activated == true) { CharacterDetails.Head.freeze = true; CharacterDetails.Head.Activated = false; }
-            if (CharacterDetails.Hair.Activated == true) { CharacterDetails.Hair.freeze = true; CharacterDetails.Hair.Activated = false; }
-            if (CharacterDetails.HighlightTone.Activated == true) { CharacterDetails.HighlightTone.freeze = true; CharacterDetails.HighlightTone.Activated = false; }
-            if (CharacterDetails.Skintone.Activated == true) { CharacterDetails.Skintone.freeze = true; CharacterDetails.Skintone.Activated = false; }
-            if (CharacterDetails.RightEye.Activated == true) { CharacterDetails.RightEye.freeze = true; CharacterDetails.RightEye.Activated = false; }
-            if (CharacterDetails.LeftEye.Activated == true) { CharacterDetails.LeftEye.freeze = true; CharacterDetails.LeftEye.Activated = false; }
-            if (CharacterDetails.HairTone.Activated == true) { CharacterDetails.HairTone.freeze = true; CharacterDetails.HairTone.Activated = false; }
-            if (CharacterDetails.FacePaint.Activated == true) { CharacterDetails.FacePaint.freeze = true; CharacterDetails.FacePaint.Activated = false; }
-            if (CharacterDetails.FacePaintColor.Activated == true) { CharacterDetails.FacePaintColor.freeze = true; CharacterDetails.FacePaintColor.Activated = false; }
-            if (CharacterDetails.EyeBrowType.Activated == true) { CharacterDetails.EyeBrowType.freeze = true; CharacterDetails.EyeBrowType.Activated = false; }
-            if (CharacterDetails.Nose.Activated == true) { CharacterDetails.Nose.freeze = true; CharacterDetails.Nose.Activated = false; }
-            if (CharacterDetails.Eye.Activated == true) { CharacterDetails.Eye.freeze = true; CharacterDetails.Eye.Activated = false; }
-            if (CharacterDetails.Jaw.Activated == true) { CharacterDetails.Jaw.freeze = true; CharacterDetails.Jaw.Activated = false; }
-            if (CharacterDetails.Lips.Activated == true) { CharacterDetails.Lips.freeze = true; CharacterDetails.Lips.Activated = false; }
-            if (CharacterDetails.LipsTone.Activated == true) { CharacterDetails.LipsTone.freeze = true; CharacterDetails.LipsTone.Activated = false; }
-            if (CharacterDetails.TailorMuscle.Activated == true) { CharacterDetails.TailorMuscle.freeze = true; CharacterDetails.TailorMuscle.Activated = false; }
-            if (CharacterDetails.TailType.Activated == true) { CharacterDetails.TailType.freeze = true; CharacterDetails.TailType.Activated = false; }
-            if (CharacterDetails.FacialFeatures.Activated == true) { CharacterDetails.FacialFeatures.freeze = true; CharacterDetails.FacialFeatures.Activated = false; }
-            if (CharacterDetails.RBust.Activated == true) { CharacterDetails.RBust.freeze = true; CharacterDetails.RBust.Activated = false; }
-            Load.IsEnabled = true;
         }
         private void AllSaves()
         {
@@ -441,33 +422,35 @@ namespace FFXIVTool
             try
             {
                 Load.IsEnabled = false;
-                if (savechoice==0 || savechoice==1)
+                if (savechoice==0 || savechoice == 1)
                 {
-                    if (CharacterDetails.Highlights.Activated == true) { CharacterDetails.Highlights.freeze = true; CharacterDetails.Highlights.Activated = false; }
-                    if (CharacterDetails.Race.freeze == true) { CharacterDetails.Race.freeze = false; CharacterDetails.Race.Activated = true; }
-                    if (CharacterDetails.Gender.freeze == true) { CharacterDetails.Gender.freeze = false; CharacterDetails.Gender.Activated = true; }
-                    if (CharacterDetails.BodyType.freeze == true) { CharacterDetails.BodyType.freeze = false; CharacterDetails.BodyType.Activated = true; }
-                    if (CharacterDetails.RHeight.freeze == true) { CharacterDetails.RHeight.freeze = false; CharacterDetails.RHeight.Activated = true; }
-                    if (CharacterDetails.Clan.freeze == true) { CharacterDetails.Clan.freeze = false; CharacterDetails.Clan.Activated = true; }
-                    if (CharacterDetails.Head.freeze == true) { CharacterDetails.Head.freeze = false; CharacterDetails.Head.Activated = true; }
-                    if (CharacterDetails.Hair.freeze == true) { CharacterDetails.Hair.freeze = false; CharacterDetails.Hair.Activated = true; }
-                    if (CharacterDetails.HighlightTone.freeze == true) { CharacterDetails.HighlightTone.freeze = false; CharacterDetails.HighlightTone.Activated = true; }
-                    if (CharacterDetails.Skintone.freeze == true) { CharacterDetails.Skintone.freeze = false; CharacterDetails.Skintone.Activated = true; }
-                    if (CharacterDetails.RightEye.freeze == true) { CharacterDetails.RightEye.freeze = false; CharacterDetails.RightEye.Activated = true; }
-                    if (CharacterDetails.LeftEye.freeze == true) { CharacterDetails.LeftEye.freeze = false; CharacterDetails.LeftEye.Activated = true; }
-                    if (CharacterDetails.HairTone.freeze == true) { CharacterDetails.HairTone.freeze = false; CharacterDetails.HairTone.Activated = true; }
-                    if (CharacterDetails.FacePaint.freeze == true) { CharacterDetails.FacePaint.freeze = false; CharacterDetails.FacePaint.Activated = true; }
-                    if (CharacterDetails.FacePaintColor.freeze == true) { CharacterDetails.FacePaintColor.freeze = false; CharacterDetails.FacePaintColor.Activated = true; }
-                    if (CharacterDetails.EyeBrowType.freeze == true) { CharacterDetails.EyeBrowType.freeze = false; CharacterDetails.EyeBrowType.Activated = true; }
-                    if (CharacterDetails.Nose.freeze == true) { CharacterDetails.Nose.freeze = false; CharacterDetails.Nose.Activated = true; }
-                    if (CharacterDetails.Eye.freeze == true) { CharacterDetails.Eye.freeze = false; CharacterDetails.Eye.Activated = true; }
-                    if (CharacterDetails.Jaw.freeze == true) { CharacterDetails.Jaw.freeze = false; CharacterDetails.Jaw.Activated = true; }
-                    if (CharacterDetails.Lips.freeze == true) { CharacterDetails.Lips.freeze = false; CharacterDetails.Lips.Activated = true; }
-                    if (CharacterDetails.LipsTone.freeze == true) { CharacterDetails.LipsTone.freeze = false; CharacterDetails.LipsTone.Activated = true; }
-                    if (CharacterDetails.TailorMuscle.freeze == true) { CharacterDetails.TailorMuscle.freeze = false; CharacterDetails.TailorMuscle.Activated = true; }
-                    if (CharacterDetails.TailType.freeze == true) { CharacterDetails.TailType.freeze = false; CharacterDetails.TailType.Activated = true; }
-                    if (CharacterDetails.FacialFeatures.freeze == true) { CharacterDetails.FacialFeatures.freeze = false; CharacterDetails.FacialFeatures.Activated = true; }
-                    if (CharacterDetails.RBust.freeze == true) { CharacterDetails.RBust.freeze = false; CharacterDetails.RBust.Activated = true; }
+                    CharacterDetails.Race.freeze = true;
+                    CharacterDetails.Clan.freeze = true;
+                    CharacterDetails.Gender.freeze = true;
+                    CharacterDetails.Head.freeze = true;
+                    CharacterDetails.TailType.freeze = true;
+                    CharacterDetails.LimbalEyes.freeze = true;
+                    CharacterDetails.Nose.freeze = true;
+                    CharacterDetails.Lips.freeze = true;
+                    CharacterDetails.BodyType.freeze = true;
+                    CharacterDetails.Highlights.freeze = true;
+                    CharacterDetails.Voices.freeze = true;
+                    CharacterDetails.Hair.freeze = true;
+                    CharacterDetails.HairTone.freeze = true;
+                    CharacterDetails.HighlightTone.freeze = true;
+                    CharacterDetails.Jaw.freeze = true;
+                    CharacterDetails.RBust.freeze = true;
+                    CharacterDetails.RHeight.freeze = true;
+                    CharacterDetails.LipsTone.freeze = true;
+                    CharacterDetails.Skintone.freeze = true;
+                    CharacterDetails.FacialFeatures.freeze = true;
+                    CharacterDetails.TailorMuscle.freeze = true;
+                    CharacterDetails.Eye.freeze = true;
+                    CharacterDetails.RightEye.freeze = true;
+                    CharacterDetails.EyeBrowType.freeze = true;
+                    CharacterDetails.LeftEye.freeze = true;
+                    CharacterDetails.FacePaint.freeze = true;
+                    CharacterDetails.FacePaintColor.freeze = true;
                     if (CharacterDetails.RightEyeBlue.freeze == true) { CharacterDetails.RightEyeBlue.freeze = false; CharacterDetails.RightEyeBlue.freezetest = true; }
                     if (CharacterDetails.RightEyeGreen.freeze == true) { CharacterDetails.RightEyeGreen.freeze = false; CharacterDetails.RightEyeGreen.freezetest = true; }
                     if (CharacterDetails.RightEyeRed.freeze == true) { CharacterDetails.RightEyeRed.freeze = false; CharacterDetails.RightEyeRed.freezetest = true; }
@@ -480,7 +463,6 @@ namespace FFXIVTool
                     if (CharacterDetails.LimbalB.freeze == true) { CharacterDetails.LimbalB.freeze = false; CharacterDetails.LimbalB.freezetest = true; }
                     if (CharacterDetails.LimbalG.freeze == true) { CharacterDetails.LimbalG.freeze = false; CharacterDetails.LimbalG.freezetest = true; }
                     if (CharacterDetails.LimbalR.freeze == true) { CharacterDetails.LimbalR.freeze = false; CharacterDetails.LimbalR.freezetest = true; }
-                    if (CharacterDetails.LimbalEyes.freeze == true) { CharacterDetails.LimbalEyes.freeze = false; CharacterDetails.LimbalEyes.freezetest = true; }
                     if (CharacterDetails.MuscleTone.freeze == true) { CharacterDetails.MuscleTone.freeze = false; CharacterDetails.MuscleTone.freezetest = true; }
                     if (CharacterDetails.TailSize.freeze == true) { CharacterDetails.TailSize.freeze = false; CharacterDetails.TailSize.freezetest = true; }
                     if (CharacterDetails.BustX.freeze == true) { CharacterDetails.BustX.freeze = false; CharacterDetails.BustX.freezetest = true; }
@@ -504,20 +486,20 @@ namespace FFXIVTool
                     if (CharacterDetails.HairRedPigment.freeze == true) { CharacterDetails.HairRedPigment.freeze = false; CharacterDetails.HairRedPigment.freezetest = true; }
                     if (CharacterDetails.Height.freeze == true) { CharacterDetails.Height.freeze = false; CharacterDetails.Height.freezetest = true; }
                 } // 0 = All ; 1= Appearance; 2=Equipment
-                if (savechoice==0 || savechoice==2)
+                if (savechoice==0 || savechoice == 2)
                 {
-                    if (CharacterDetails.HeadPiece.freeze == true) { CharacterDetails.HeadPiece.freeze = false; CharacterDetails.HeadPiece.Cantbeused = true; }
-                    if (CharacterDetails.Chest.freeze == true) { CharacterDetails.Chest.freeze = false; CharacterDetails.Chest.Cantbeused = true; }
-                    if (CharacterDetails.Arms.freeze == true) { CharacterDetails.Arms.freeze = false; CharacterDetails.Arms.Cantbeused = true; }
-                    if (CharacterDetails.Legs.freeze == true) { CharacterDetails.Legs.freeze = false; CharacterDetails.Legs.Cantbeused = true; }
-                    if (CharacterDetails.Feet.freeze == true) { CharacterDetails.Feet.freeze = false; CharacterDetails.Feet.Cantbeused = true; }
-                    if (CharacterDetails.Neck.freeze == true) { CharacterDetails.Neck.freeze = false; CharacterDetails.Neck.Cantbeused = true; }
-                    if (CharacterDetails.Ear.freeze == true) { CharacterDetails.Ear.freeze = false; CharacterDetails.Ear.Cantbeused = true; }
-                    if (CharacterDetails.Wrist.freeze == true) { CharacterDetails.Wrist.freeze = false; CharacterDetails.Wrist.Cantbeused = true; }
-                    if (CharacterDetails.RFinger.freeze == true) { CharacterDetails.RFinger.freeze = false; CharacterDetails.RFinger.Cantbeused = true; }
-                    if (CharacterDetails.LFinger.freeze == true) { CharacterDetails.LFinger.freeze = false; CharacterDetails.LFinger.Cantbeused = true; }
-                    if (CharacterDetails.Job.freeze == true) { CharacterDetails.Job.freeze = false; CharacterDetails.Job.Cantbeused = true; }
-                    if (CharacterDetails.Offhand.freeze == true) { CharacterDetails.Offhand.freeze = false; CharacterDetails.Offhand.Cantbeused = true; }
+                    CharacterDetails.Offhand.freeze = true;
+                    CharacterDetails.Job.freeze = true;
+                    CharacterDetails.HeadPiece.freeze = true;
+                    CharacterDetails.Chest.freeze = true;
+                    CharacterDetails.Arms.freeze = true;
+                    CharacterDetails.Legs.freeze = true;
+                    CharacterDetails.Feet.freeze = true;
+                    CharacterDetails.Ear.freeze = true;
+                    CharacterDetails.Neck.freeze = true;
+                    CharacterDetails.Wrist.freeze = true;
+                    CharacterDetails.RFinger.freeze = true;
+                    CharacterDetails.LFinger.freeze = true;
                     if (CharacterDetails.WeaponGreen.freeze == true) { CharacterDetails.WeaponGreen.freeze = false; CharacterDetails.WeaponGreen.Cantbeused = true; }
                     if (CharacterDetails.WeaponBlue.freeze == true) { CharacterDetails.WeaponBlue.freeze = false; CharacterDetails.WeaponBlue.Cantbeused = true; }
                     if (CharacterDetails.WeaponRed.freeze == true) { CharacterDetails.WeaponRed.freeze = false; CharacterDetails.WeaponRed.Cantbeused = true; }
@@ -533,10 +515,36 @@ namespace FFXIVTool
                 }
                 System.Threading.Tasks.Task.Delay(45).Wait();
                 {
-                    if(savechoice==0 || savechoice==1)
+                    if(savechoice == 0 || savechoice==1)
                     {
                         byte[] CharacterBytes;
                         CharacterBytes = MemoryManager.StringToByteArray(charSaves.CharacterBytes.Replace(" ", string.Empty));
+                        CharacterDetails.Race.value = CharacterBytes[0];
+                        CharacterDetails.Gender.value = CharacterBytes[1];
+                        CharacterDetails.BodyType.value = CharacterBytes[2];
+                        CharacterDetails.RHeight.value = CharacterBytes[3];
+                        CharacterDetails.Clan.value = CharacterBytes[4];
+                        CharacterDetails.Head.value = CharacterBytes[5];
+                        CharacterDetails.Hair.value = CharacterBytes[6];
+                        CharacterDetails.Highlights.value = CharacterBytes[7];
+                        CharacterDetails.Skintone.value = CharacterBytes[8];
+                        CharacterDetails.RightEye.value = CharacterBytes[9];
+                        CharacterDetails.HairTone.value = CharacterBytes[10];
+                        CharacterDetails.HighlightTone.value = CharacterBytes[11];
+                        CharacterDetails.FacialFeatures.value = CharacterBytes[12];
+                        CharacterDetails.LimbalEyes.value = CharacterBytes[13];
+                        CharacterDetails.EyeBrowType.value = CharacterBytes[14];
+                        CharacterDetails.LeftEye.value = CharacterBytes[15];
+                        CharacterDetails.Eye.value = CharacterBytes[16];
+                        CharacterDetails.Nose.value = CharacterBytes[17];
+                        CharacterDetails.Jaw.value = CharacterBytes[18];
+                        CharacterDetails.Lips.value = CharacterBytes[19];
+                        CharacterDetails.LipsTone.value = CharacterBytes[20];
+                        CharacterDetails.TailorMuscle.value = CharacterBytes[21];
+                        CharacterDetails.TailType.value = CharacterBytes[22];
+                        CharacterDetails.RBust.value = CharacterBytes[23];
+                        CharacterDetails.FacePaint.value = CharacterBytes[24];
+                        CharacterDetails.FacePaintColor.value = CharacterBytes[25];
                         MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Race), CharacterBytes);
                         if (charSaves.characterDetails.Height.value != 0.000)
                         {
@@ -611,33 +619,6 @@ namespace FFXIVTool
                         MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.RightEyeGreen), "float", charSaves.characterDetails.RightEyeGreen.value.ToString());
                         CharacterDetails.RightEyeBlue.value = charSaves.characterDetails.RightEyeBlue.value;
                         MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.RightEyeBlue), "float", charSaves.characterDetails.RightEyeBlue.value.ToString());
-                        if (CharacterDetails.Highlights.Activated == true) { CharacterDetails.Highlights.freeze = true; CharacterDetails.Highlights.Activated = false; }
-                        if (CharacterDetails.Race.Activated == true) { CharacterDetails.Race.freeze = true; CharacterDetails.Race.Activated = false; }
-                        if (CharacterDetails.Gender.Activated == true) { CharacterDetails.Gender.freeze = true; CharacterDetails.Gender.Activated = false; }
-                        if (CharacterDetails.BodyType.Activated == true) { CharacterDetails.BodyType.freeze = true; CharacterDetails.BodyType.Activated = false; }
-                        if (CharacterDetails.RHeight.Activated == true) { CharacterDetails.RHeight.freeze = true; CharacterDetails.RHeight.Activated = false; }
-                        if (CharacterDetails.Clan.Activated == true) { CharacterDetails.Clan.freeze = true; CharacterDetails.Clan.Activated = false; }
-                        if (CharacterDetails.Head.Activated == true) { CharacterDetails.Head.freeze = true; CharacterDetails.Head.Activated = false; }
-                        if (CharacterDetails.Hair.Activated == true) { CharacterDetails.Hair.freeze = true; CharacterDetails.Hair.Activated = false; }
-                        if (CharacterDetails.HighlightTone.Activated == true) { CharacterDetails.HighlightTone.freeze = true; CharacterDetails.HighlightTone.Activated = false; }
-                        if (CharacterDetails.Skintone.Activated == true) { CharacterDetails.Skintone.freeze = true; CharacterDetails.Skintone.Activated = false; }
-                        if (CharacterDetails.RightEye.Activated == true) { CharacterDetails.RightEye.freeze = true; CharacterDetails.RightEye.Activated = false; }
-                        if (CharacterDetails.LeftEye.Activated == true) { CharacterDetails.LeftEye.freeze = true; CharacterDetails.LeftEye.Activated = false; }
-                        if (CharacterDetails.HairTone.Activated == true) { CharacterDetails.HairTone.freeze = true; CharacterDetails.HairTone.Activated = false; }
-                        if (CharacterDetails.FacePaint.Activated == true) { CharacterDetails.FacePaint.freeze = true; CharacterDetails.FacePaint.Activated = false; }
-                        if (CharacterDetails.FacePaintColor.Activated == true) { CharacterDetails.FacePaintColor.freeze = true; CharacterDetails.FacePaintColor.Activated = false; }
-                        if (CharacterDetails.EyeBrowType.Activated == true) { CharacterDetails.EyeBrowType.freeze = true; CharacterDetails.EyeBrowType.Activated = false; }
-                        if (CharacterDetails.Nose.Activated == true) { CharacterDetails.Nose.freeze = true; CharacterDetails.Nose.Activated = false; }
-                        if (CharacterDetails.Eye.Activated == true) { CharacterDetails.Eye.freeze = true; CharacterDetails.Eye.Activated = false; }
-                        if (CharacterDetails.Jaw.Activated == true) { CharacterDetails.Jaw.freeze = true; CharacterDetails.Jaw.Activated = false; }
-                        if (CharacterDetails.Lips.Activated == true) { CharacterDetails.Lips.freeze = true; CharacterDetails.Lips.Activated = false; }
-                        if (CharacterDetails.LipsTone.Activated == true) { CharacterDetails.LipsTone.freeze = true; CharacterDetails.LipsTone.Activated = false; }
-                        if (CharacterDetails.TailorMuscle.Activated == true) { CharacterDetails.TailorMuscle.freeze = true; CharacterDetails.TailorMuscle.Activated = false; }
-                        if (CharacterDetails.TailType.Activated == true) { CharacterDetails.TailType.freeze = true; CharacterDetails.TailType.Activated = false; }
-                        if (CharacterDetails.FacialFeatures.Activated == true) { CharacterDetails.FacialFeatures.freeze = true; CharacterDetails.FacialFeatures.Activated = false; }
-                        if (CharacterDetails.RBust.Activated == true) { CharacterDetails.RBust.freeze = true; CharacterDetails.RBust.Activated = false; }
-                        if (CharacterDetails.LimbalEyes.freezetest == true) { CharacterDetails.LimbalEyes.freeze = false; CharacterDetails.LimbalEyes.freezetest = false; }
-                        if (CharacterDetails.Highlights.freezetest == true) { CharacterDetails.Highlights.freeze = false; CharacterDetails.Highlights.freezetest = false; }
                         if (CharacterDetails.MuscleTone.freezetest == true) { CharacterDetails.MuscleTone.freeze = true; CharacterDetails.MuscleTone.freezetest = false; }
                         if (CharacterDetails.TailSize.freezetest == true) { CharacterDetails.TailSize.freeze = true; CharacterDetails.TailSize.freezetest = false; }
                         if (CharacterDetails.BustX.freezetest == true) { CharacterDetails.BustX.freeze = true; CharacterDetails.BustX.freezetest = false; }
@@ -677,6 +658,31 @@ namespace FFXIVTool
                     {
                         byte[] EquipmentArray;
                         EquipmentArray = MemoryManager.StringToByteArray(charSaves.EquipmentBytes.Replace(" ", string.Empty));
+                        CharacterDetails.HeadPiece.value = (EquipmentArray[0] + EquipmentArray[1] * 256);
+                        CharacterDetails.HeadV.value = EquipmentArray[2];
+                        CharacterDetails.HeadDye.value = EquipmentArray[3];
+                        CharacterDetails.Chest.value = (EquipmentArray[4] + EquipmentArray[5] * 256);
+                        CharacterDetails.ChestV.value = EquipmentArray[6];
+                        CharacterDetails.ChestDye.value = EquipmentArray[7];
+                        CharacterDetails.Arms.value = (EquipmentArray[8] + EquipmentArray[9] * 256);
+                        CharacterDetails.ArmsV.value = EquipmentArray[10];
+                        CharacterDetails.ArmsDye.value = EquipmentArray[11];
+                        CharacterDetails.Legs.value = (EquipmentArray[12] + EquipmentArray[13] * 256);
+                        CharacterDetails.LegsV.value = EquipmentArray[14];
+                        CharacterDetails.LegsDye.value = EquipmentArray[15];
+                        CharacterDetails.Feet.value = (EquipmentArray[16] + EquipmentArray[17] * 256);
+                        CharacterDetails.FeetVa.value = EquipmentArray[18];
+                        CharacterDetails.FeetDye.value = EquipmentArray[19];
+                        CharacterDetails.Ear.value = (EquipmentArray[20] + EquipmentArray[21] * 256);
+                        CharacterDetails.EarVa.value = EquipmentArray[22];
+                        CharacterDetails.Neck.value = (EquipmentArray[24] + EquipmentArray[25] * 256);
+                        CharacterDetails.NeckVa.value = EquipmentArray[26];
+                        CharacterDetails.Wrist.value = (EquipmentArray[28] + EquipmentArray[29] * 256);
+                        CharacterDetails.WristVa.value = EquipmentArray[30];
+                        CharacterDetails.RFinger.value = (EquipmentArray[32] + EquipmentArray[33] * 256);
+                        CharacterDetails.RFingerVa.value = EquipmentArray[34];
+                        CharacterDetails.LFinger.value = (EquipmentArray[36] + EquipmentArray[37] * 256);
+                        CharacterDetails.LFingerVa.value = EquipmentArray[38];
                         MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HeadPiece), EquipmentArray);
                         CharacterDetails.Job.value = charSaves.MainHand.Item1;
                         CharacterDetails.WeaponBase.value = (byte)charSaves.MainHand.Item2;
@@ -712,18 +718,6 @@ namespace FFXIVTool
                         CharacterDetails.OffhandZ.value = charSaves.characterDetails.OffhandZ.value;
                         MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.OffhandZ), "float", charSaves.characterDetails.OffhandZ.value.ToString());
                         MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Offhand), EquipmentFlyOut.WepTupleToByteAry(charSaves.OffHand));
-                        if (CharacterDetails.HeadPiece.Cantbeused == true) { CharacterDetails.HeadPiece.freeze = true; CharacterDetails.HeadPiece.Cantbeused = false; }
-                        if (CharacterDetails.Chest.Cantbeused == true) { CharacterDetails.Chest.freeze = true; CharacterDetails.Chest.Cantbeused = false; }
-                        if (CharacterDetails.Arms.Cantbeused == true) { CharacterDetails.Arms.freeze = true; CharacterDetails.Arms.Cantbeused = false; }
-                        if (CharacterDetails.Legs.Cantbeused == true) { CharacterDetails.Legs.freeze = true; CharacterDetails.Legs.Cantbeused = false; }
-                        if (CharacterDetails.Feet.Cantbeused == true) { CharacterDetails.Feet.freeze = true; CharacterDetails.Feet.Cantbeused = false; }
-                        if (CharacterDetails.Neck.Cantbeused == true) { CharacterDetails.Neck.freeze = true; CharacterDetails.Neck.Cantbeused = false; }
-                        if (CharacterDetails.Ear.Cantbeused == true) { CharacterDetails.Ear.freeze = true; CharacterDetails.Ear.Cantbeused = false; }
-                        if (CharacterDetails.Wrist.Cantbeused == true) { CharacterDetails.Wrist.freeze = true; CharacterDetails.Wrist.Cantbeused = false; }
-                        if (CharacterDetails.RFinger.Cantbeused == true) { CharacterDetails.RFinger.freeze = true; CharacterDetails.RFinger.Cantbeused = false; }
-                        if (CharacterDetails.LFinger.Cantbeused == true) { CharacterDetails.LFinger.freeze = true; CharacterDetails.LFinger.Cantbeused = false; }
-                        if (CharacterDetails.Job.Cantbeused == true) { CharacterDetails.Job.freeze = true; CharacterDetails.Job.Cantbeused = false; }
-                        if (CharacterDetails.Offhand.Cantbeused == true) { CharacterDetails.Offhand.freeze = true; CharacterDetails.Offhand.Cantbeused = false; }
                         if (CharacterDetails.WeaponGreen.Cantbeused == true) { CharacterDetails.WeaponGreen.freeze = true; CharacterDetails.WeaponGreen.Cantbeused = false; }
                         if (CharacterDetails.WeaponBlue.Cantbeused == true) { CharacterDetails.WeaponBlue.freeze = true; CharacterDetails.WeaponBlue.Cantbeused = false; }
                         if (CharacterDetails.WeaponRed.Cantbeused == true) { CharacterDetails.WeaponRed.freeze = true; CharacterDetails.WeaponRed.Cantbeused = false; }
