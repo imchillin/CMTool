@@ -34,6 +34,7 @@ namespace FFXIVTool.Views
             _exdProvider.MakeWeatherRateList();
             _exdProvider.MakeTerritoryTypeList();
             ExdCsvReader.MonsterX = _exdProvider.Monsters.Values.ToArray();
+            CharacterDetailsViewModel.Viewtime = this;
             DispatcherTimer timer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(40) };
             timer.Tick += delegate
             {

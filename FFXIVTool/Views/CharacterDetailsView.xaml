@@ -177,8 +177,9 @@
         <mah:NumericUpDown x:Name="CamY" Value="{Binding Path=CharacterDetails.CamY.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="932,375,0,0" VerticalAlignment="Top" Width="166" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" TextAlignment="Right" SourceUpdated="CamY_SourceUpdated"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.CamZ.freeze}" Content="Cam Z" HorizontalAlignment="Left" Margin="846,408,0,0" VerticalAlignment="Top"/>
         <mah:NumericUpDown x:Name="CamZ" Value="{Binding Path=CharacterDetails.CamZ.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="932,406,0,0" VerticalAlignment="Top" Width="166" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" TextAlignment="Right" SourceUpdated="CamZ_SourceUpdated"/>
+        <Label x:Name="FrozenPlayaLabel" x:FieldModifier="public" Content="Targeted Player is ???" HorizontalAlignment="Left" Height="31" Margin="838,429,0,0" VerticalAlignment="Top" Width="260" FontWeight="Bold" FontSize="16"/>
         <Label Content="Emote Checker:" HorizontalAlignment="Left" Margin="540,314,0,0" VerticalAlignment="Top"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" IsEnabled="False" HorizontalAlignment="Left" Height="26" Margin="642,315,0,0" TextWrapping="Wrap" Text="{Binding Path=CharacterDetails.EmoteX.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="64" TextAlignment="Center"/>
-        <Views:SpecialControl x:Name="SpecialControl" Width="583" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Margin="531,0,0,-12"/>
+        <Views:SpecialControl x:Name="SpecialControl" Width="583" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Collapsed" Margin="531,0,0,-12"/>
     </Grid>
 </UserControl>

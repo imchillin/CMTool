@@ -422,7 +422,7 @@ namespace FFXIVTool
             try
             {
                 Load.IsEnabled = false;
-                if (savechoice==0 || savechoice == 1)
+                if (savechoice == 0 || savechoice == 1)
                 {
                     CharacterDetails.Race.freeze = true;
                     CharacterDetails.Clan.freeze = true;
@@ -486,7 +486,7 @@ namespace FFXIVTool
                     if (CharacterDetails.HairRedPigment.freeze == true) { CharacterDetails.HairRedPigment.freeze = false; CharacterDetails.HairRedPigment.freezetest = true; }
                     if (CharacterDetails.Height.freeze == true) { CharacterDetails.Height.freeze = false; CharacterDetails.Height.freezetest = true; }
                 } // 0 = All ; 1= Appearance; 2=Equipment
-                if (savechoice==0 || savechoice == 2)
+                if (savechoice == 0 || savechoice == 2)
                 {
                     CharacterDetails.Offhand.freeze = true;
                     CharacterDetails.Job.freeze = true;
@@ -515,7 +515,7 @@ namespace FFXIVTool
                 }
                 System.Threading.Tasks.Task.Delay(45).Wait();
                 {
-                    if(savechoice == 0 || savechoice==1)
+                    if (savechoice == 0 || savechoice == 1)
                     {
                         byte[] CharacterBytes;
                         CharacterBytes = MemoryManager.StringToByteArray(charSaves.CharacterBytes.Replace(" ", string.Empty));

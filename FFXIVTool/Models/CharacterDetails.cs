@@ -222,9 +222,11 @@ namespace FFXIVTool.Models
         [JsonIgnore] public Address<float> GRed { get; set; }
         [JsonIgnore] public Address<byte> FilterEnable { get; set; }
         [JsonIgnore] public Address<bool> LoadChecked { get; set; }
+        [JsonIgnore] public Address<byte> EmoteIsPlayerFrozen { get; set; }
 
         public CharacterDetails()
         {
+            EmoteIsPlayerFrozen = new Address<byte>();
             LoadChecked = new Address<bool>();
             HDR = new Address<float>();
             Brightness = new Address<float>();
