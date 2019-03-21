@@ -82,7 +82,7 @@ namespace FFXIVTool.Windows
                 return;
             }
 
-            Choice = GearSave[GearDataGrid.SelectedIndex];
+            Choice = (GearSaves)GearDataGrid.SelectedItem;
             Close();
         }
 

@@ -85,7 +85,7 @@ namespace FFXIVTool.Windows
                 return;
             }
 
-            Choice = CharSave[CharDataGrid.SelectedIndex];
+            Choice = (CharSaves)CharDataGrid.SelectedItem;
             Close();
         }
 
