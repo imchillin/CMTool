@@ -83,7 +83,7 @@ namespace FFXIVTool.ViewModel
                 ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
                 using (var HAH = new WebClient())
                 {
-                    xmlStr = HAH.DownloadString(@"https://raw.githubusercontent.com/Khyrou/SSTool/master/FFXIVTool/OffsetSettings.xml");
+                    xmlStr = HAH.DownloadString(@"https://raw.githubusercontent.com/imchillin/SSTool/master/FFXIVTool/OffsetSettings.xml");
                 }
                 var serializer = new XmlSerializer(typeof(Settings), "");
                 var xmlDoc = new System.Xml.XmlDocument();
