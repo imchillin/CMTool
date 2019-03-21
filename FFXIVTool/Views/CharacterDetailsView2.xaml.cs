@@ -739,7 +739,7 @@ namespace FFXIVTool.Views
                     Save1.DateCreated = (DateTime.Today.ToString("dd-MM-yyyy") +"-"+ DateTime.Now.ToString("HH:mm:ss"));
                     Save1.MainHand = new WepTuple(CharacterDetails.Job.value, CharacterDetails.WeaponBase.value, CharacterDetails.WeaponV.value, CharacterDetails.WeaponDye.value);
                     Save1.OffHand = new WepTuple(CharacterDetails.Offhand.value, CharacterDetails.OffhandBase.value, CharacterDetails.OffhandV.value, CharacterDetails.OffhandDye.value);
-                    Save1.EquipmentBytes = MemoryManager.ByteArrayToString(MemoryManager.Instance.MemLib.readBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HeadPiece), 26));
+                    Save1.EquipmentBytes = CharacterDetails.TestArray2.value;
                     string details = JsonConvert.SerializeObject(Save1, Formatting.Indented);
                     File.WriteAllText(Path.Combine(path, c.Filename + ".json"), details);
                 }
@@ -751,7 +751,7 @@ namespace FFXIVTool.Views
                     Save1.DateCreated = (DateTime.Today.ToString("dd-MM-yyyy") +"-"+ DateTime.Now.ToString("HH:mm:ss"));
                     Save1.MainHand = new WepTuple(CharacterDetails.Job.value, CharacterDetails.WeaponBase.value, CharacterDetails.WeaponV.value, CharacterDetails.WeaponDye.value);
                     Save1.OffHand = new WepTuple(CharacterDetails.Offhand.value, CharacterDetails.OffhandBase.value, CharacterDetails.OffhandV.value, CharacterDetails.OffhandDye.value);
-                    Save1.EquipmentBytes = MemoryManager.ByteArrayToString(MemoryManager.Instance.MemLib.readBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HeadPiece), 26));
+                    Save1.EquipmentBytes = CharacterDetails.TestArray2.value;
                     string details = JsonConvert.SerializeObject(Save1, Formatting.Indented);
                     File.WriteAllText(Path.Combine(path, c.Filename + ".json"), details);
                 }
