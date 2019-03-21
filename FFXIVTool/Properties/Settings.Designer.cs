@@ -96,5 +96,17 @@ namespace FFXIVTool.Properties {
                 this["UpgradeRequired"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool WindowsExplorer {
+            get {
+                return ((bool)(this["WindowsExplorer"]));
+            }
+            set {
+                this["WindowsExplorer"] = value;
+            }
+        }
     }
 }

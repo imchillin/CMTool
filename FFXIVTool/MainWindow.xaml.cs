@@ -245,14 +245,30 @@ namespace FFXIVTool
         }
         private void LetsgoGear()
         {
-            Windows.GearsetChooseWindow fam = new Windows.GearsetChooseWindow("Select the saved gearset you want to load.");
-            fam.Owner = Application.Current.MainWindow;
-            fam.ShowDialog();
-            if (fam.Choice != null)
+            if (!Properties.Settings.Default.WindowsExplorer)
             {
-                EAoB(fam.Choice);
+                Windows.GearsetChooseWindow fam = new Windows.GearsetChooseWindow("Select the saved gearset you want to load.");
+                fam.Owner = Application.Current.MainWindow;
+                fam.ShowDialog();
+                if (fam.Choice != null)
+                {
+                    EAoB(fam.Choice);
+                }
+                else return;
             }
-            else return;
+            else
+            {
+                OpenFileDialog dig = new OpenFileDialog();
+                dig.InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "SSTool", "Gearsets");
+                dig.Filter = "Json File(*.json)|*.json";
+                dig.DefaultExt = ".json";
+                if (dig.ShowDialog() == true)
+                {
+                    GearSaves load1 = JsonConvert.DeserializeObject<GearSaves>(File.ReadAllText(dig.FileName));
+                    EAoB(load1);
+                }
+                else return;
+            }
         }
         private void EAoB(GearSaves equpmentarray)
         {
@@ -386,36 +402,84 @@ namespace FFXIVTool
         }
         private void AllSaves()
         {
-            Windows.SaveChooseWindow fam = new Windows.SaveChooseWindow("Select saved Character[All].");
-            fam.Owner = Application.Current.MainWindow;
-            fam.ShowDialog();
-            if (fam.Choice != null)
+            if (!Properties.Settings.Default.WindowsExplorer)
             {
-                LoadTime(fam.Choice, 0);
+                Windows.SaveChooseWindow fam = new Windows.SaveChooseWindow("Select saved Character[All].");
+                fam.Owner = Application.Current.MainWindow;
+                fam.ShowDialog();
+                if (fam.Choice != null)
+                {
+                    LoadTime(fam.Choice, 0);
+                }
+                else return;
             }
-            else return;
+            else
+            {
+                OpenFileDialog dig = new OpenFileDialog();
+                dig.InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "SSTool", "Saves");
+                dig.Filter = "Json File(*.json)|*.json";
+                dig.DefaultExt = ".json";
+                if (dig.ShowDialog() == true)
+                {
+                    CharSaves load1 = JsonConvert.DeserializeObject<CharSaves>(File.ReadAllText(dig.FileName));
+                    LoadTime(load1, 0);
+                }
+                else return;
+            }
         }
         private void Appereanco()
         {
-            Windows.SaveChooseWindow fam = new Windows.SaveChooseWindow("Select saved Character[Appearance].");
-            fam.Owner = Application.Current.MainWindow;
-            fam.ShowDialog();
-            if (fam.Choice != null)
+            if (!Properties.Settings.Default.WindowsExplorer)
             {
-                LoadTime(fam.Choice, 1);
+                Windows.SaveChooseWindow fam = new Windows.SaveChooseWindow("Select saved Character[Appearance].");
+                fam.Owner = Application.Current.MainWindow;
+                fam.ShowDialog();
+                if (fam.Choice != null)
+                {
+                    LoadTime(fam.Choice, 1);
+                }
+                else return;
             }
-            else return;
+            else
+            {
+                OpenFileDialog dig = new OpenFileDialog();
+                dig.InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "SSTool", "Saves");
+                dig.Filter = "Json File(*.json)|*.json";
+                dig.DefaultExt = ".json";
+                if (dig.ShowDialog() == true)
+                {
+                    CharSaves load1 = JsonConvert.DeserializeObject<CharSaves>(File.ReadAllText(dig.FileName));
+                    LoadTime(load1, 1);
+                }
+                else return;
+            }
         }
         private void Equipo()
         {
-            Windows.SaveChooseWindow fam = new Windows.SaveChooseWindow("Select the Character[Equipment].");
-            fam.Owner = Application.Current.MainWindow;
-            fam.ShowDialog();
-            if (fam.Choice != null)
+            if (!Properties.Settings.Default.WindowsExplorer)
             {
-                LoadTime(fam.Choice, 2);
+                Windows.SaveChooseWindow fam = new Windows.SaveChooseWindow("Select the Character[Equipment].");
+                fam.Owner = Application.Current.MainWindow;
+                fam.ShowDialog();
+                if (fam.Choice != null)
+                {
+                    LoadTime(fam.Choice, 2);
+                }
+                else return;
             }
-            else return;
+            else
+            {
+                OpenFileDialog dig = new OpenFileDialog();
+                dig.InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "SSTool", "Saves");
+                dig.Filter = "Json File(*.json)|*.json";
+                dig.DefaultExt = ".json";
+                if (dig.ShowDialog() == true)
+                {
+                    CharSaves load1 = JsonConvert.DeserializeObject<CharSaves>(File.ReadAllText(dig.FileName));
+                    LoadTime(load1, 2);
+                }
+                else return;
+            }
         }
         private void LoadTime(CharSaves charSaves, int savechoice)
         {

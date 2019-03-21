@@ -11,6 +11,7 @@ namespace FFXIVTool.Windows
         public LoadWindow()
         {
             InitializeComponent();
+            if (Properties.Settings.Default.WindowsExplorer == true) Windowstoggled.IsChecked = true;
         }
 
         private void All_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -81,6 +82,24 @@ namespace FFXIVTool.Windows
         {
             Choice = Gearset.Name;
             Close();
+        }
+
+        private void Windowstoggled_Checked(object sender, RoutedEventArgs e)
+        {
+            if (Windowstoggled.IsKeyboardFocusWithin || Windowstoggled.IsMouseOver)
+            {
+                Properties.Settings.Default.WindowsExplorer = true;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void Windowstoggled_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (Windowstoggled.IsKeyboardFocusWithin || Windowstoggled.IsMouseOver)
+            {
+                Properties.Settings.Default.WindowsExplorer = false;
+                Properties.Settings.Default.Save();
+            }
         }
     }
 }

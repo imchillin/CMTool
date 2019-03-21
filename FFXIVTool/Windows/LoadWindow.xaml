@@ -11,7 +11,7 @@
         BorderThickness="1"              
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         mc:Ignorable="d"
-        Title="Load Window" Height="279.003" Width="349.244" ResizeMode="NoResize" Icon="/FFXIVTool;component/ffxivmeteorlogo.ico" WindowStartupLocation="CenterOwner">
+        Title="Load Window" Height="313.003" Width="349.244" ResizeMode="NoResize" Icon="/FFXIVTool;component/ffxivmeteorlogo.ico" WindowStartupLocation="CenterOwner">
     <Grid Margin="0,0,0,2">
         <ListBox BorderThickness="1" FontSize="24" Margin="10,10,0,0" BorderBrush="Black" HorizontalAlignment="Left" VerticalAlignment="Top" Width="321" Height="222">
             <ListBoxItem x:Name="All"  Content="Load All Character" Uid="1" KeyDown="All_KeyDown" PreviewMouseDown="All_PreviewMouseDown"/>
@@ -20,5 +20,9 @@
             <ListBoxItem x:Name="Dat" Content="Load .Dat" BorderThickness="0,1,0,0" Uid="3" BorderBrush="Black" KeyDown="Dat_KeyDown" PreviewMouseDown="Dat_PreviewMouseDown" Height="41" />
             <ListBoxItem x:Name="Gearset" Content="Load Gearset" BorderThickness="0,1,0,0" Uid="3" BorderBrush="Black" KeyDown="Gearset_KeyDown" PreviewMouseDown="Gearset_PreviewMouseDown" Height="41" />
         </ListBox>
+        <ToggleButton x:Name="Windowstoggled" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="Time Toggle Switch" Margin="202,248,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="22"  IsTabStop="False" Checked="Windowstoggled_Checked" Unchecked="Windowstoggled_Unchecked" />
+        <Label Content="No" HorizontalAlignment="Left" Margin="168,244,0,0" VerticalAlignment="Top"/>
+        <Label Content="Yes" HorizontalAlignment="Left" Margin="236,244,0,0" VerticalAlignment="Top"/>
+        <Label Content="Use Windows Explorer:" HorizontalAlignment="Left" Margin="10,244,0,0" VerticalAlignment="Top" FontSize="14"/>
     </Grid>
 </Window>
