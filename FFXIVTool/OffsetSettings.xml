@@ -86,6 +86,7 @@
     <FOV2>130</FOV2>
     <CameraUpDown>218</CameraUpDown>
     <EmoteIsPlayerFrozen>7C8</EmoteIsPlayerFrozen>
+    <AltCheckPlayerFrozen>CF0</AltCheckPlayerFrozen>
     <Emote>C70</Emote>
     <EmoteSpeed1>CE4</EmoteSpeed1>
     <EmoteSpeed2>CE8</EmoteSpeed2>

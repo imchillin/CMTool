@@ -283,10 +283,13 @@ namespace FFXIVTool.ViewModel
 
                 if (!CharacterDetails.ModelType.freeze) CharacterDetails.ModelType.value = (int)MemoryManager.Instance.MemLib.read2Byte((MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.ModelType)));
 
+                CharacterDetails.AltCheckPlayerFrozen.value = (float)MemoryManager.Instance.MemLib.readFloat((MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, Settings.Instance.Character.AltCheckPlayerFrozen)));
+
                 CharacterDetails.EmoteIsPlayerFrozen.value = (byte)MemoryManager.Instance.MemLib.readByte((MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, Settings.Instance.Character.EmoteIsPlayerFrozen)));
-                if (CharacterDetails.EmoteIsPlayerFrozen.value == 0 && CharacterDetails.Emote.value > 1) { Viewtime.FrozenPlayaLabel.Dispatcher.Invoke(new Action(() => { Viewtime.FrozenPlayaLabel.Content = "Targeted Player is frozen!"; Viewtime.FrozenPlayaLabel.Foreground = System.Windows.Media.Brushes.Red; })); }
-                else if (CharacterDetails.EmoteIsPlayerFrozen.value == 0 && CharacterDetails.CamZ.value == 0 && CharacterDetails.CameraHeight.value == 0 || CharacterDetails.Emote.value == 1 && CharacterDetails.EmoteX.value>1 && CharacterDetails.GposeMode.Activated == false) { Viewtime.FrozenPlayaLabel.Dispatcher.Invoke(new Action(() => { Viewtime.FrozenPlayaLabel.Content = "Currently not in gpose!"; if (Properties.Settings.Default.Theme == "Dark") Viewtime.FrozenPlayaLabel.Foreground = System.Windows.Media.Brushes.White; else Viewtime.FrozenPlayaLabel.Foreground = System.Windows.Media.Brushes.Black; })); }
-                else if (CharacterDetails.EmoteIsPlayerFrozen.value == 1) { Viewtime.FrozenPlayaLabel.Dispatcher.Invoke(new Action(() => { Viewtime.FrozenPlayaLabel.Content = "Targeted Player is animating!"; Viewtime.FrozenPlayaLabel.Foreground = System.Windows.Media.Brushes.Green; })); }
+
+                if (CharacterDetails.EmoteIsPlayerFrozen.value == 0 && CharacterDetails.AltCheckPlayerFrozen.value == 1) { Viewtime.FrozenPlayaLabel.Dispatcher.Invoke(new Action(() => { Viewtime.FrozenPlayaLabel.Content = "Targeted Player is frozen!"; Viewtime.FrozenPlayaLabel.Foreground = System.Windows.Media.Brushes.Red; })); }
+                else if (CharacterDetails.EmoteIsPlayerFrozen.value == 1 && CharacterDetails.AltCheckPlayerFrozen.value == 1) { Viewtime.FrozenPlayaLabel.Dispatcher.Invoke(new Action(() => { Viewtime.FrozenPlayaLabel.Content = "Targeted Player is animating!"; Viewtime.FrozenPlayaLabel.Foreground = System.Windows.Media.Brushes.Green; })); }
+                else if (CharacterDetails.AltCheckPlayerFrozen.value == 0) { Viewtime.FrozenPlayaLabel.Dispatcher.Invoke(new Action(() => { Viewtime.FrozenPlayaLabel.Content = "Currently not in gpose!"; if (Properties.Settings.Default.Theme == "Dark") Viewtime.FrozenPlayaLabel.Foreground = System.Windows.Media.Brushes.White; else Viewtime.FrozenPlayaLabel.Foreground = System.Windows.Media.Brushes.Black; })); }
 
                 if (!CharacterDetails.Emote.freeze) CharacterDetails.Emote.value = (int)MemoryManager.Instance.MemLib.read2Byte((MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, Settings.Instance.Character.Emote)));
 

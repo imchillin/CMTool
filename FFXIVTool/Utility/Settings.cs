@@ -45,6 +45,7 @@ namespace FFXIVTool.Utility
     [Serializable]
     public struct CharacterOffsets
     {
+        public string AltCheckPlayerFrozen{ get; set; }
         public string EmoteIsPlayerFrozen { get; set; }
         public string CharacterRender { get; set; }
         public string HDR { get; set; }
