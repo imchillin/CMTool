@@ -732,29 +732,15 @@ namespace FFXIVTool.Views
             else
             {
                 string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "SSTool", "Gearsets");
-                if (Directory.Exists(path))
-                {
-                    GearSaves Save1 = new GearSaves(); // Gearsave is class with all address
-                    Save1.Description = c.Filename;
-                    Save1.DateCreated = (DateTime.Today.ToString("dd-MM-yyyy") +"-"+ DateTime.Now.ToString("HH:mm:ss"));
-                    Save1.MainHand = new WepTuple(CharacterDetails.Job.value, CharacterDetails.WeaponBase.value, CharacterDetails.WeaponV.value, CharacterDetails.WeaponDye.value);
-                    Save1.OffHand = new WepTuple(CharacterDetails.Offhand.value, CharacterDetails.OffhandBase.value, CharacterDetails.OffhandV.value, CharacterDetails.OffhandDye.value);
-                    Save1.EquipmentBytes = CharacterDetails.TestArray2.value;
-                    string details = JsonConvert.SerializeObject(Save1, Formatting.Indented);
-                    File.WriteAllText(Path.Combine(path, c.Filename + ".json"), details);
-                }
-                else
-                {
-                    System.IO.Directory.CreateDirectory(path);
-                    GearSaves Save1 = new GearSaves(); // Gearsave is class with all address
-                                        Save1.Description = c.Filename;
-                    Save1.DateCreated = (DateTime.Today.ToString("dd-MM-yyyy") +"-"+ DateTime.Now.ToString("HH:mm:ss"));
-                    Save1.MainHand = new WepTuple(CharacterDetails.Job.value, CharacterDetails.WeaponBase.value, CharacterDetails.WeaponV.value, CharacterDetails.WeaponDye.value);
-                    Save1.OffHand = new WepTuple(CharacterDetails.Offhand.value, CharacterDetails.OffhandBase.value, CharacterDetails.OffhandV.value, CharacterDetails.OffhandDye.value);
-                    Save1.EquipmentBytes = CharacterDetails.TestArray2.value;
-                    string details = JsonConvert.SerializeObject(Save1, Formatting.Indented);
-                    File.WriteAllText(Path.Combine(path, c.Filename + ".json"), details);
-                }
+                if (!Directory.Exists(path)) System.IO.Directory.CreateDirectory(path);
+                GearSaves Save1 = new GearSaves(); // Gearsave is class with all address
+                Save1.Description = c.Filename;
+                Save1.DateCreated = DateTime.Now.ToLocalTime().ToString();
+                Save1.MainHand = new WepTuple(CharacterDetails.Job.value, CharacterDetails.WeaponBase.value, CharacterDetails.WeaponV.value, CharacterDetails.WeaponDye.value);
+                Save1.OffHand = new WepTuple(CharacterDetails.Offhand.value, CharacterDetails.OffhandBase.value, CharacterDetails.OffhandV.value, CharacterDetails.OffhandDye.value);
+                Save1.EquipmentBytes = CharacterDetails.TestArray2.value;
+                string details = JsonConvert.SerializeObject(Save1, Formatting.Indented);
+                File.WriteAllText(Path.Combine(path, c.Filename + ".json"), details);
             }
         }
 

@@ -193,33 +193,44 @@ namespace FFXIVTool
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             CurrentlySaving = true;
-            var c = new Windows.GearSave("Save Character Save", "Write Character Save name here...");
-            c.Owner = Application.Current.MainWindow;
-            c.ShowDialog();
-            if (c.Filename == null) { CurrentlySaving = false; return; }
-            else
+            if (Properties.Settings.Default.WindowsExplorer)
             {
                 string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "SSTool", "Saves");
-                if (Directory.Exists(path))
+                if (!Directory.Exists(path)) { System.IO.Directory.CreateDirectory(path); }
+                SaveFileDialog dig = new SaveFileDialog();
+                dig.Filter = "Json File(*.json)|*.json";
+                dig.InitialDirectory = path;
+                if (dig.ShowDialog() == true)
                 {
-                    CharSaves Save1 = new CharSaves(); // Gearsave is class with all address
-                    Save1.Description = c.Filename;
-                    Save1.DateCreated = (DateTime.Today.ToString("dd-MM-yyyy") + "-" + DateTime.Now.ToString("HH:mm:ss"));
+                    CharSaves Save1 = new CharSaves(); // Gearsave is class with all 
+                    string extension = System.IO.Path.GetExtension(".json");
+                    string result = dig.SafeFileName.Substring(0, dig.SafeFileName.Length - extension.Length);
+                    Save1.Description = result;
+                    Save1.DateCreated = DateTime.Now.ToLocalTime().ToString();
                     Save1.MainHand = new WepTuple(CharacterDetails.Job.value, CharacterDetails.WeaponBase.value, CharacterDetails.WeaponV.value, CharacterDetails.WeaponDye.value);
                     Save1.OffHand = new WepTuple(CharacterDetails.Offhand.value, CharacterDetails.OffhandBase.value, CharacterDetails.OffhandV.value, CharacterDetails.OffhandDye.value);
                     Save1.EquipmentBytes = CharacterDetails.TestArray2.value;
                     Save1.CharacterBytes = CharacterDetails.TestArray.value;
                     Save1.characterDetails = CharacterDetails;
                     string details = JsonConvert.SerializeObject(Save1, Formatting.Indented);
-                    File.WriteAllText(Path.Combine(path, c.Filename + ".json"), details);
+                    File.WriteAllText(dig.FileName, details);
                     CurrentlySaving = false;
                 }
+                else CurrentlySaving = false;
+            }
+            else
+            {
+                string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "SSTool", "Saves");
+                if (!Directory.Exists(path)) { System.IO.Directory.CreateDirectory(path); }
+                var c = new Windows.GearSave("Save Character Save", "Write Character Save name here...");
+                c.Owner = Application.Current.MainWindow;
+                c.ShowDialog();
+                if (c.Filename == null) { CurrentlySaving = false; return; }
                 else
                 {
-                    System.IO.Directory.CreateDirectory(path);
                     CharSaves Save1 = new CharSaves(); // Gearsave is class with all address
                     Save1.Description = c.Filename;
-                    Save1.DateCreated = (DateTime.Today.ToString("dd-MM-yyyy") + "-" + DateTime.Now.ToString("HH:mm:ss"));
+                    Save1.DateCreated = DateTime.Now.ToLocalTime().ToString();
                     Save1.MainHand = new WepTuple(CharacterDetails.Job.value, CharacterDetails.WeaponBase.value, CharacterDetails.WeaponV.value, CharacterDetails.WeaponDye.value);
                     Save1.OffHand = new WepTuple(CharacterDetails.Offhand.value, CharacterDetails.OffhandBase.value, CharacterDetails.OffhandV.value, CharacterDetails.OffhandDye.value);
                     Save1.EquipmentBytes = CharacterDetails.TestArray2.value;
@@ -259,7 +270,9 @@ namespace FFXIVTool
             else
             {
                 OpenFileDialog dig = new OpenFileDialog();
-                dig.InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "SSTool", "Gearsets");
+                string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "SSTool", "Gearsets");
+                if (!Directory.Exists(path)) { System.IO.Directory.CreateDirectory(path);  }
+                dig.InitialDirectory = path;
                 dig.Filter = "Json File(*.json)|*.json";
                 dig.DefaultExt = ".json";
                 if (dig.ShowDialog() == true)
