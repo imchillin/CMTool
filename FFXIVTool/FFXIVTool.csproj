@@ -363,6 +363,20 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <None Include="Resources\131067.tex.png" />
+    <None Include="Resources\131269.tex.png" />
+    <None Include="Resources\131566.tex.png" />
+    <None Include="Resources\131763.tex.png" />
+    <None Include="Resources\132062.tex.png" />
+    <None Include="Resources\132267.tex.png" />
+    <None Include="Resources\133063.tex.png" />
+    <None Include="Resources\133267.tex.png" />
+    <None Include="Resources\134061.tex.png" />
+    <None Include="Resources\134267.tex.png" />
+    <None Include="Resources\135068.tex.png" />
+    <None Include="Resources\135263.tex.png" />
+    <None Include="Resources\136061.tex.png" />
+    <None Include="Resources\136262.tex.png" />
     <None Include="Resources\136261.tex.png" />
     <None Include="Resources\136260.tex.png" />
     <None Include="Resources\136259.tex.png" />

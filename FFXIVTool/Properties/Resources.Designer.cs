@@ -723,6 +723,16 @@ namespace FFXIVTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _131067_tex {
+            get {
+                object obj = ResourceManager.GetObject("_131067_tex", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _131201_tex {
             get {
                 object obj = ResourceManager.GetObject("_131201_tex", resourceCulture);
@@ -1403,6 +1413,16 @@ namespace FFXIVTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _131269_tex {
+            get {
+                object obj = ResourceManager.GetObject("_131269_tex", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _131501_tex {
             get {
                 object obj = ResourceManager.GetObject("_131501_tex", resourceCulture);
@@ -2053,6 +2073,16 @@ namespace FFXIVTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _131566_tex {
+            get {
+                object obj = ResourceManager.GetObject("_131566_tex", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _131701_tex {
             get {
                 object obj = ResourceManager.GetObject("_131701_tex", resourceCulture);
@@ -2673,6 +2703,16 @@ namespace FFXIVTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _131763_tex {
+            get {
+                object obj = ResourceManager.GetObject("_131763_tex", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _132001_tex {
             get {
                 object obj = ResourceManager.GetObject("_132001_tex", resourceCulture);
@@ -3276,6 +3316,16 @@ namespace FFXIVTool.Properties {
         internal static System.Drawing.Bitmap _132061_tex {
             get {
                 object obj = ResourceManager.GetObject("_132061_tex", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _132062_tex {
+            get {
+                object obj = ResourceManager.GetObject("_132062_tex", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -3943,6 +3993,16 @@ namespace FFXIVTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _132267_tex {
+            get {
+                object obj = ResourceManager.GetObject("_132267_tex", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _133001_tex {
             get {
                 object obj = ResourceManager.GetObject("_133001_tex", resourceCulture);
@@ -4556,6 +4616,16 @@ namespace FFXIVTool.Properties {
         internal static System.Drawing.Bitmap _133062_tex {
             get {
                 object obj = ResourceManager.GetObject("_133062_tex", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _133063_tex {
+            get {
+                object obj = ResourceManager.GetObject("_133063_tex", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -5223,6 +5293,16 @@ namespace FFXIVTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _133267_tex {
+            get {
+                object obj = ResourceManager.GetObject("_133267_tex", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _134001_tex {
             get {
                 object obj = ResourceManager.GetObject("_134001_tex", resourceCulture);
@@ -5816,6 +5896,16 @@ namespace FFXIVTool.Properties {
         internal static System.Drawing.Bitmap _134060_tex {
             get {
                 object obj = ResourceManager.GetObject("_134060_tex", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _134061_tex {
+            get {
+                object obj = ResourceManager.GetObject("_134061_tex", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -6476,6 +6566,16 @@ namespace FFXIVTool.Properties {
         internal static System.Drawing.Bitmap _134266_tex {
             get {
                 object obj = ResourceManager.GetObject("_134266_tex", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _134267_tex {
+            get {
+                object obj = ResourceManager.GetObject("_134267_tex", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -7153,6 +7253,16 @@ namespace FFXIVTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _135068_tex {
+            get {
+                object obj = ResourceManager.GetObject("_135068_tex", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _135201_tex {
             get {
                 object obj = ResourceManager.GetObject("_135201_tex", resourceCulture);
@@ -7773,6 +7883,16 @@ namespace FFXIVTool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _135263_tex {
+            get {
+                object obj = ResourceManager.GetObject("_135263_tex", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _136001_tex {
             get {
                 object obj = ResourceManager.GetObject("_136001_tex", resourceCulture);
@@ -8366,6 +8486,16 @@ namespace FFXIVTool.Properties {
         internal static System.Drawing.Bitmap _136060_tex {
             get {
                 object obj = ResourceManager.GetObject("_136060_tex", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _136061_tex {
+            get {
+                object obj = ResourceManager.GetObject("_136061_tex", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -8981,6 +9111,16 @@ namespace FFXIVTool.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _136262_tex {
+            get {
+                object obj = ResourceManager.GetObject("_136262_tex", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Index,0 [STRING(0x0)][0x0],1
         ///0,&quot;&quot;
         ///1,&quot;normal/Battle Start&quot;
@@ -9063,11 +9203,11 @@ namespace FFXIVTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Index[00],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,&quot;0, 0, 0, 0&quot;,&quot;0, 0, 0, 0&quot;,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+        ///   Looks up a localized string similar to Index,0 [STRING(0x0)][0x0],1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,&quot;0, 0, 0, 0&quot;,&quot;0, 0, 0, 0&quot;,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
         ///1000000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,&quot;0, 0, 0, 0&quot;,&quot;0, 0, 0, 0&quot;,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
         ///1000001,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,&quot;0, 0, 0, 0&quot;,&quot;0, 0, 0, 0&quot;,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
         ///1000002,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,&quot;0, 0, 0, 0&quot;,&quot;0, 0, 0, 0&quot;,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-        ///1000003,0,0,0,0,0,0,0,0,0,0,0,0,0, [rest of string was truncated]&quot;;.
+        ///1000003,0,0,0,0,0,0,0,0,0,0,0 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string enpcbase_exh {
             get {
@@ -9076,49 +9216,17 @@ namespace FFXIVTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1000000,&quot;&quot;
-        ///1000001,&quot;&quot;
-        ///1000002,&quot;&quot;
-        ///1000003,&quot;&quot;
-        ///1000004,&quot;&quot;
-        ///1000005,&quot;&quot;
-        ///1000006,&quot;&quot;
-        ///1000007,&quot;&quot;
-        ///1000008,&quot;&quot;
-        ///1000009,&quot;&quot;
-        ///1000010,&quot;&quot;
-        ///1000011,&quot;&quot;
-        ///1000012,&quot;&quot;
-        ///1000013,&quot;&quot;
-        ///1000014,&quot;&quot;
-        ///1000015,&quot;&quot;
-        ///1000016,&quot;&quot;
-        ///1000017,&quot;&quot;
-        ///1000018,&quot;&quot;
-        ///1000019,&quot;&quot;
-        ///1000020,&quot;&quot;
-        ///1000021,&quot;&quot;
-        ///1000022,&quot;&quot;
-        ///1000023,&quot;&quot;
-        ///1000024,&quot;&quot;
-        ///1000025,&quot;&quot;
-        ///1000026,&quot;&quot;
-        ///1000027,&quot;&quot;
-        ///1000028,&quot;&quot;
-        ///1000029,&quot;&quot;
-        ///1000030,&quot;&quot;
-        ///1000031,&quot;&quot;
-        ///1000032,&quot;&quot;
-        ///1000033,&quot;&quot;
-        ///1000034,&quot;&quot;
-        ///1000035,&quot;&quot;
-        ///1000036,&quot;&quot;
-        ///1000037,&quot;&quot;
-        ///1000038,&quot;&quot;
-        ///1000039,&quot;&quot;
-        ///1000040,&quot;&quot;
-        ///1000041,&quot;&quot;
-        ///1000042, [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to Index,0 [0x0][0x0],1 [0x2][0xc],2 [0x0][0x4],3 [0x2][0xd],4 [0x2][0xe],5 [0x2][0xf],6 [0x2][0x10],7 [0x2][0x11],8 [0x0][0x8],9 [0x3][0x14],10 [0x19][0x15]
+        ///1000000,&quot;&quot;,0,&quot;&quot;,0,0,1,0,0,&quot;&quot;,3,false
+        ///1000001,&quot;&quot;,0,&quot;&quot;,0,0,0,0,0,&quot;&quot;,0,false
+        ///1000002,&quot;&quot;,0,&quot;&quot;,0,0,0,0,0,&quot;&quot;,0,false
+        ///1000003,&quot;&quot;,0,&quot;&quot;,0,0,0,0,0,&quot;&quot;,0,false
+        ///1000004,&quot;&quot;,0,&quot;&quot;,0,0,0,0,0,&quot;&quot;,0,false
+        ///1000005,&quot;&quot;,0,&quot;&quot;,0,0,0,0,0,&quot;&quot;,0,false
+        ///1000006,&quot;&quot;,0,&quot;&quot;,0,0,0,0,0,&quot;&quot;,0,false
+        ///1000007,&quot;&quot;,0,&quot;&quot;,0,0,0,0,0,&quot;&quot;,0,false
+        ///1000008,&quot;&quot;,0,&quot;&quot;,0,0,0,0,0,&quot;&quot;,0,false
+        ///1000009,&quot;&quot;,0,&quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string enpcresident_exh_en {
             get {
@@ -9137,20 +9245,17 @@ namespace FFXIVTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Index,0 [STRING(0x0)][0x0],1,0,0
-        ///0,&quot;&quot;,0,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
-        ///1,&quot;gil&quot;,63,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
-        ///2,&quot;fire shard&quot;,59,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
-        ///3,&quot;ice shard&quot;,59,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
-        ///4,&quot;wind shard&quot;,59,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
-        ///5,&quot;earth shard&quot;,59,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
-        ///6,&quot;lightning shard&quot;,59,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
-        ///7,&quot;water shard&quot;,59,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
-        ///8,&quot;fire crystal&quot;,59,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
-        ///9,&quot;ice crystal&quot;,59,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
-        ///10,&quot;wind crystal&quot;,59,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
-        ///11,&quot;earth crystal&quot;,59,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;
-        ///12,&quot;lightnin [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to Index,0 [STRING(0x0)][0x0],1,0,0,0
+        ///0,&quot;&quot;,0,&quot;0,0,0,0&quot;,&quot;0,0,0,0&quot;,0
+        ///1,&quot;Dated Bronze Gladius&quot;,2,&quot;201,1,4,0&quot;,&quot;0,0,0,0&quot;,2
+        ///2,&quot;Dated Bronze Dagger&quot;,2,&quot;201,40,1,0&quot;,&quot;0,0,0,0&quot;,2
+        ///3,&quot;Dated Bronze Spatha&quot;,2,&quot;201,39,2,0&quot;,&quot;0,0,0,0&quot;,2
+        ///4,&quot;Dated Blinding Dagger&quot;,2,&quot;201,40,5,0&quot;,&quot;0,0,0,0&quot;,2
+        ///5,&quot;Dated Silencing Dagger&quot;,2,&quot;201,40,5,0&quot;,&quot;0,0,0,0&quot;,2
+        ///6,&quot;Dated Brass Gladius&quot;,2,&quot;201,1,1,0&quot;,&quot;0,0,0,0&quot;,2
+        ///7,&quot;Dated Brass Dagger&quot;,2,&quot;201,40,3,0&quot;,&quot;0,0,0,0&quot;,2
+        ///8,&quot;Dated Paralyzing Dagger&quot;,2,&quot;201,40,5,0&quot;,&quot;0,0,0,0&quot;,2
+        ///9,&quot;Dated Sleeping Dagge [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Item {
             get {
