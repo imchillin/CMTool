@@ -15246,479 +15246,489 @@
 26070,"Leal Samurai's Tsutsu-hakama",36,"6082,1,0,0","0,0,0,0",0
 26072,"Leal Samurai's Geta",38,"6082,1,0,0","0,0,0,0",0
 26074,"Matoya's Hat",34,"5039,1,0,0","0,0,0,0",2
-26076,"Red Arum Corsage",34,"5044,1,0,0","0,0,0,0",2
-26078,"Blue Arum Corsage",34,"5044,2,0,0","0,0,0,0",2
-26080,"Yellow Arum Corsage",34,"5044,3,0,0","0,0,0,0",2
-26082,"Green Arum Corsage",34,"5044,4,0,0","0,0,0,0",2
-26084,"Orange Arum Corsage",34,"5044,5,0,0","0,0,0,0",2
-26086,"Purple Arum Corsage",34,"5044,6,0,0","0,0,0,0",2
-26088,"White Arum Corsage",34,"5044,7,0,0","0,0,0,0",2
-26090,"Black Arum Corsage",34,"5044,8,0,0","0,0,0,0",2
-26092,"Rainbow Arum Corsage",34,"5044,9,0,0","0,0,0,0",2
-26094,"Moddey Dhoo Helm",34,"562,2,0,0","0,0,0,0",2
-26096,"Moddey Dhoo Armor",35,"562,2,0,0","0,0,0,0",2
-26098,"Moddey Dhoo Gauntlets",37,"562,2,0,0","0,0,0,0",2
-26100,"Moddey Dhoo Cuisses",36,"562,2,0,0","0,0,0,0",2
-26102,"Moddey Dhoo Sabatons",38,"562,2,0,0","0,0,0,0",2
-26103,"Rooibos Tea",46,"9901,2,1,0","0,0,0,0",2
-26104,"Ginger Salad",46,"9901,9,1,0","0,0,0,0",2
-26105,"Laghman",46,"9901,12,1,0","0,0,0,0",2
-26106,"Imam Bayildi",46,"9901,9,1,0","0,0,0,0",2
-26107,"Papanasi",46,"9901,8,1,0","0,0,0,0",2
-26108,"Salmon Muffin",46,"9901,1,1,0","0,0,0,0",2
-26109,"Shakshouka",46,"9901,11,1,0","0,0,0,0",2
-26111,"Yanxian Merchant's Haori",35,"9141,2,0,0","0,0,0,0",2
-26112,"Seeing Horde Blade",2,"201,84,2,0","0,0,0,0",2
-26113,"Seeing Horde Knuckles",1,"323,9,2,0","373,9,2,0",2
-26114,"Seeing Horde Axe",3,"401,65,2,0","0,0,0,0",2
-26115,"Seeing Horde Spear",5,"501,54,2,0","0,0,0,0",2
-26116,"Seeing Horde Bow",4,"601,47,2,0","698,48,1,0",2
-26117,"Seeing Horde Daggers",84,"1801,56,2,0","1851,56,2,0",2
-26118,"Seeing Horde Guillotine",87,"1501,50,2,0","0,0,0,0",2
-26119,"Seeing Horde Handgonne",88,"2007,3,2,0","2099,1,1,0",2
-26120,"Seeing Horde Cane",9,"801,58,2,0","0,0,0,0",2
-26121,"Seeing Horde Rod",7,"1001,54,2,0","0,0,0,0",2
-26122,"Seeing Horde Grimoire",10,"1701,45,3,0","0,0,0,0",2
-26123,"Seeing Horde Codex",98,"1701,45,4,0","0,0,0,0",2
-26124,"Seeing Horde Star Globe",89,"2101,47,2,0","2199,1,66,0",2
-26125,"Seeing Horde Katana",96,"2201,1,4,0","2251,1,1,0",2
-26126,"Seeing Horde Rapier",97,"2301,6,2,0","2351,5,2,0",2
-26127,"Seeing Horde Shield",11,"101,55,2,0","0,0,0,0",2
-26129,"Catoblepas Horns",34,"5041,1,0,0","0,0,0,0",2
-26131,"Arch Demon Horns",34,"5042,1,0,0","0,0,0,0",2
-26133,"Archaeodemon Horns",34,"5043,1,0,0","0,0,0,0",2
-26135,"Alliance Helm of Fending",34,"587,1,0,0","0,0,0,0",2
-26137,"Alliance Coat of Fending",35,"587,1,0,0","0,0,0,0",2
-26139,"Alliance Armguards of Fending",37,"587,1,0,0","0,0,0,0",2
-26141,"Alliance Trousers of Fending",36,"587,1,0,0","0,0,0,0",2
-26143,"Alliance Boots of Fending",38,"587,1,0,0","0,0,0,0",2
-26145,"Alliance Visor of Maiming",34,"588,1,0,0","0,0,0,0",2
-26147,"Alliance Vest of Maiming",35,"588,1,0,0","0,0,0,0",2
-26149,"Alliance Armguards of Maiming",37,"587,2,0,0","0,0,0,0",2
-26151,"Alliance Trousers of Maiming",36,"587,2,0,0","0,0,0,0",2
-26153,"Alliance Boots of Maiming",38,"587,2,0,0","0,0,0,0",2
-26155,"Alliance Visor of Striking",34,"589,1,0,0","0,0,0,0",2
-26157,"Alliance Vest of Striking",35,"588,2,0,0","0,0,0,0",2
-26159,"Alliance Fingerless Gloves of Striking",37,"591,2,0,0","0,0,0,0",2
-26161,"Alliance Skirt of Striking",36,"591,2,0,0","0,0,0,0",2
-26163,"Alliance Shoes of Striking",38,"591,2,0,0","0,0,0,0",2
-26165,"Alliance Visor of Aiming",34,"588,3,0,0","0,0,0,0",2
-26167,"Alliance Jacket of Aiming",35,"590,1,0,0","0,0,0,0",2
-26169,"Alliance Armguards of Aiming",37,"587,3,0,0","0,0,0,0",2
-26171,"Alliance Trousers of Aiming",36,"587,3,0,0","0,0,0,0",2
-26173,"Alliance Shoes of Aiming",38,"591,3,0,0","0,0,0,0",2
-26175,"Alliance Helm of Scouting",34,"591,1,0,0","0,0,0,0",2
-26177,"Alliance Vest of Scouting",35,"591,1,0,0","0,0,0,0",2
-26179,"Alliance Fingerless Gloves of Scouting",37,"591,1,0,0","0,0,0,0",2
-26181,"Alliance Skirt of Scouting",36,"591,1,0,0","0,0,0,0",2
-26183,"Alliance Shoes of Scouting",38,"591,1,0,0","0,0,0,0",2
-26185,"Alliance Circlet of Healing",34,"592,1,0,0","0,0,0,0",2
-26187,"Alliance Coat of Healing",35,"592,1,0,0","0,0,0,0",2
-26189,"Alliance Fingerless Gloves of Healing",37,"592,1,0,0","0,0,0,0",2
-26191,"Alliance Bottoms of Healing",36,"592,1,0,0","0,0,0,0",2
-26193,"Alliance Boots of Healing",38,"592,1,0,0","0,0,0,0",2
-26195,"Alliance Circlet of Casting",34,"592,2,0,0","0,0,0,0",2
-26197,"Alliance Coat of Casting",35,"592,2,0,0","0,0,0,0",2
-26199,"Alliance Fingerless Gloves of Casting",37,"592,2,0,0","0,0,0,0",2
-26201,"Alliance Bottoms of Casting",36,"592,2,0,0","0,0,0,0",2
-26203,"Alliance Boots of Casting",38,"592,2,0,0","0,0,0,0",2
-26205,"Alliance Earring of Fending",41,"98,1,0,0","0,0,0,0",2
-26207,"Alliance Earring of Slaying",41,"98,1,0,0","0,0,0,0",2
-26209,"Alliance Earring of Aiming",41,"98,1,0,0","0,0,0,0",2
-26211,"Alliance Earring of Healing",41,"98,1,0,0","0,0,0,0",2
-26213,"Alliance Earring of Casting",41,"98,1,0,0","0,0,0,0",2
-26215,"Alliance Necklace of Fending",40,"98,1,0,0","0,0,0,0",2
-26217,"Alliance Necklace of Slaying",40,"98,1,0,0","0,0,0,0",2
-26219,"Alliance Necklace of Aiming",40,"98,1,0,0","0,0,0,0",2
-26221,"Alliance Necklace of Healing",40,"98,1,0,0","0,0,0,0",2
-26223,"Alliance Necklace of Casting",40,"98,1,0,0","0,0,0,0",2
-26225,"Alliance Bracelet of Fending",42,"98,1,0,0","0,0,0,0",2
-26227,"Alliance Bracelet of Slaying",42,"98,1,0,0","0,0,0,0",2
-26229,"Alliance Bracelet of Aiming",42,"98,1,0,0","0,0,0,0",2
-26231,"Alliance Bracelet of Healing",42,"98,1,0,0","0,0,0,0",2
-26233,"Alliance Bracelet of Casting",42,"98,1,0,0","0,0,0,0",2
-26235,"Alliance Ring of Fending",43,"98,1,0,0","0,0,0,0",2
-26237,"Alliance Ring of Slaying",43,"98,1,0,0","0,0,0,0",2
-26239,"Alliance Ring of Aiming",43,"98,1,0,0","0,0,0,0",2
-26241,"Alliance Ring of Healing",43,"98,1,0,0","0,0,0,0",2
-26243,"Alliance Ring of Casting",43,"98,1,0,0","0,0,0,0",2
-26245,"Ivalician Holy Knight's Circlet",34,"582,1,0,0","0,0,0,0",2
-26247,"Ivalician Holy Knight's Armor",35,"582,1,0,0","0,0,0,0",2
-26249,"Ivalician Holy Knight's Gloves",37,"582,1,0,0","0,0,0,0",2
-26251,"Ivalician Holy Knight's Trousers",36,"582,1,0,0","0,0,0,0",2
-26253,"Ivalician Holy Knight's Boots",38,"582,1,0,0","0,0,0,0",2
-26255,"Ivalician Royal Knight's Circlet",34,"582,2,0,0","0,0,0,0",2
-26257,"Ivalician Royal Knight's Armor",35,"582,2,0,0","0,0,0,0",2
-26259,"Ivalician Royal Knight's Gloves",37,"582,2,0,0","0,0,0,0",2
-26261,"Ivalician Royal Knight's Trousers",36,"582,2,0,0","0,0,0,0",2
-26263,"Ivalician Royal Knight's Boots",38,"582,2,0,0","0,0,0,0",2
-26265,"Ivalician Brave's Circlet",34,"583,1,0,0","0,0,0,0",2
-26267,"Ivalician Brave's Jacket",35,"583,1,0,0","0,0,0,0",2
-26269,"Ivalician Brave's Gauntlets",37,"583,1,0,0","0,0,0,0",2
-26271,"Ivalician Brave's Trousers",36,"583,1,0,0","0,0,0,0",2
-26273,"Ivalician Brave's Greaves",38,"583,1,0,0","0,0,0,0",2
-26275,"Ivalician Sky Pirate's Hat",34,"584,1,0,0","0,0,0,0",2
-26277,"Ivalician Sky Pirate's Jacket",35,"584,1,0,0","0,0,0,0",2
-26279,"Ivalician Sky Pirate's Plunder",37,"584,1,0,0","0,0,0,0",2
-26281,"Ivalician Sky Pirate's Trousers",36,"584,1,0,0","0,0,0,0",2
-26283,"Ivalician Sky Pirate's Shoes",38,"584,1,0,0","0,0,0,0",2
-26285,"Ivalician Mercenary's Circlet",34,"583,2,0,0","0,0,0,0",2
-26287,"Ivalician Mercenary's Jacket",35,"583,2,0,0","0,0,0,0",2
-26289,"Ivalician Mercenary's Gauntlets",37,"583,2,0,0","0,0,0,0",2
-26291,"Ivalician Mercenary's Trousers",36,"583,2,0,0","0,0,0,0",2
-26293,"Ivalician Mercenary's Greaves",38,"583,2,0,0","0,0,0,0",2
-26295,"Ivalician Mystic's Hat",34,"585,1,0,0","0,0,0,0",2
-26297,"Ivalician Mystic's Coat",35,"585,1,0,0","0,0,0,0",2
-26299,"Ivalician Mystic's Halfgloves",37,"585,1,0,0","0,0,0,0",2
-26301,"Ivalician Mystic's Bottoms",36,"585,1,0,0","0,0,0,0",2
-26303,"Ivalician Mystic's Shoes",38,"585,1,0,0","0,0,0,0",2
-26305,"Ivalician Oracle's Mask",34,"585,2,0,0","0,0,0,0",2
-26307,"Ivalician Oracle's Coat",35,"585,2,0,0","0,0,0,0",2
-26309,"Ivalician Oracle's Halfgloves",37,"585,2,0,0","0,0,0,0",2
-26311,"Ivalician Oracle's Bottoms",36,"585,2,0,0","0,0,0,0",2
-26313,"Ivalician Oracle's Shoes",38,"585,2,0,0","0,0,0,0",2
-26314,"Seiryu's Longsword",2,"201,111,1,0","0,0,0,0",2
-26315,"Seiryu's Bladed Tekko",1,"323,30,1,0","373,30,1,0",2
-26316,"Seiryu's War Axe",3,"401,84,1,0","0,0,0,0",2
-26317,"Seiryu's Lance",5,"501,77,1,0","0,0,0,0",2
-26318,"Seiryu's Greatbow",4,"601,67,1,0","698,74,1,0",2
-26319,"Seiryu's Daggers",84,"1801,79,1,0","1851,79,1,0",2
-26320,"Seiryu's Spine",87,"1510,1,1,0","0,0,0,0",2
-26321,"Seiryu's Revolver",88,"2001,56,1,0","2099,1,1,0",2
-26322,"Seiryu's Cane",9,"801,69,1,0","0,0,0,0",2
-26323,"Seiryu's Rod",7,"1001,75,1,0","0,0,0,0",2
-26324,"Seiryu's Grimoire",10,"1701,72,1,0","0,0,0,0",2
-26325,"Seiryu's Codex",98,"1701,72,2,0","0,0,0,0",2
-26326,"Seiryu's Ephemeris",89,"2101,64,1,0","2199,1,116,0",2
-26327,"Seiryu's Rippled Katana",96,"2201,38,1,0","2251,55,1,0",2
-26328,"Seiryu's Rapier",97,"2301,51,1,0","2351,45,1,0",2
-26329,"Seiryu's Shield",11,"101,77,1,0","0,0,0,0",2
-26330,"The Spirit of the Whalaqee",105,"2401,1,1,0","0,0,0,0",2
-26332,"Magus's Mask",34,"593,1,0,0","0,0,0,0",2
-26334,"Magus's Jacket",35,"593,1,0,0","0,0,0,0",2
-26336,"Magus's Gloves",37,"593,1,0,0","0,0,0,0",2
-26338,"Magus's Trousers",36,"593,1,0,0","0,0,0,0",2
-26340,"Magus's Shoes",38,"593,1,0,0","0,0,0,0",2
-26342,"True Blue Hat",34,"9,255,0,0","0,0,0,0",2
-26344,"True Blue Coat",35,"338,6,0,0","0,0,0,0",2
-26346,"True Blue Gloves",37,"338,6,0,0","0,0,0,0",2
-26348,"True Blue Trousers",36,"338,6,0,0","0,0,0,0",2
-26350,"True Blue Boots",38,"338,6,0,0","0,0,0,0",2
-26352,"Aetheryte Earring",41,"108,1,0,0","0,0,0,0",2
-26354,"Flower Crown",34,"5045,1,0,0","0,0,0,0",2
-26356,"Rain Hood",34,"6076,1,0,0","0,0,0,0",2
-26358,"Raincoat",35,"6076,1,0,0","0,0,0,0",2
-26360,"Rain Boots",38,"6076,1,0,0","0,0,0,0",2
-26362,"Far Eastern Schoolboy's Hat",34,"6084,1,0,0","0,0,0,0",0
-26364,"Far Eastern Schoolboy's Hakama",35,"6084,1,0,0","0,0,0,0",0
-26366,"Far Eastern Schoolboy's Zori",38,"6084,1,0,0","0,0,0,0",0
-26368,"Far Eastern Schoolgirl's Hair Ribbon",34,"6085,1,0,0","0,0,0,0",1
-26370,"Far Eastern Schoolgirl's Hakama",35,"6085,1,0,0","0,0,0,0",1
-26372,"Far Eastern Schoolgirl's Boots",38,"6085,1,0,0","0,0,0,0",1
-26374,"Spriggan Jacket",35,"6086,1,0,0","0,0,0,0",2
-26376,"Spriggan Bottoms",36,"6086,1,0,0","0,0,0,0",2
-26378,"Spriggan Boots",38,"6086,1,0,0","0,0,0,0",2
-26380,"Namazu Earring",41,"105,1,0,0","0,0,0,0",2
-26382,"Namazu Neckerchief",40,"105,1,0,0","0,0,0,0",2
-26384,"Mameshiba Earring",41,"109,1,0,0","0,0,0,0",2
-26386,"Mameshiba Neckerchief",40,"109,1,0,0","0,0,0,0",2
-26387,"Hydatos Sword",2,"201,106,2,0","0,0,0,0",2
-26388,"Hydatos Knuckles",1,"1602,2,2,0","8809,1,0,0",2
-26389,"Hydatos Battleaxe",3,"401,81,2,0","0,0,0,0",2
-26390,"Hydatos Lance",5,"501,75,2,0","0,0,0,0",2
-26391,"Hydatos Harp Bow",4,"620,1,2,0","698,70,1,0",2
-26392,"Hydatos Knives",84,"1801,76,2,0","1851,76,2,0",2
-26393,"Hydatos Guillotine",87,"1501,76,2,0","0,0,0,0",2
-26394,"Hydatos Handgonne",88,"2001,54,2,0","2099,1,1,0",2
-26395,"Hydatos Cane",9,"801,66,2,0","0,0,0,0",2
-26396,"Hydatos Rod",7,"1001,72,2,0","0,0,0,0",2
-26397,"Hydatos Grimoire",10,"1701,69,2,0","0,0,0,0",2
-26398,"Hydatos Codex",98,"1701,70,2,0","0,0,0,0",2
-26399,"Hydatos Astrometer",89,"2114,1,2,0","2199,1,105,0",2
-26400,"Hydatos Blade",96,"2202,11,2,0","2251,50,1,0",2
-26401,"Hydatos Tuck",97,"2305,1,2,0","2351,39,2,0",2
-26402,"Hydatos Shield",11,"101,73,2,0","0,0,0,0",2
-26403,"Hydatos Sword +1",2,"201,106,2,0","0,0,0,0",2
-26404,"Hydatos Knuckles +1",1,"1602,2,2,0","8809,1,0,0",2
-26405,"Hydatos Battleaxe +1",3,"401,81,2,0","0,0,0,0",2
-26406,"Hydatos Lance +1",5,"501,75,2,0","0,0,0,0",2
-26407,"Hydatos Harp Bow +1",4,"620,1,2,0","698,70,1,0",2
-26408,"Hydatos Knives +1",84,"1801,76,2,0","1851,76,2,0",2
-26409,"Hydatos Guillotine +1",87,"1501,76,2,0","0,0,0,0",2
-26410,"Hydatos Handgonne +1",88,"2001,54,2,0","2099,1,1,0",2
-26411,"Hydatos Cane +1",9,"801,66,2,0","0,0,0,0",2
-26412,"Hydatos Rod +1",7,"1001,72,2,0","0,0,0,0",2
-26413,"Hydatos Grimoire +1",10,"1701,69,2,0","0,0,0,0",2
-26414,"Hydatos Codex +1",98,"1701,70,2,0","0,0,0,0",2
-26415,"Hydatos Astrometer +1",89,"2114,1,2,0","2199,1,105,0",2
-26416,"Hydatos Blade +1",96,"2202,11,2,0","2251,50,1,0",2
-26417,"Hydatos Tuck +1",97,"2305,1,2,0","2351,39,2,0",2
-26418,"Hydatos Shield +1",11,"101,73,2,0","0,0,0,0",2
-26419,"Antea",2,"201,112,1,0","0,0,0,0",2
-26420,"Dumuzis",1,"330,1,1,0","380,1,1,0",2
-26421,"Shamash",3,"401,86,1,0","0,0,0,0",2
-26422,"Daboya",5,"520,1,1,0","0,0,0,0",2
-26423,"Circinae",4,"601,68,1,0","698,75,1,0",2
-26424,"Kasasagi",84,"1801,80,1,0","1851,80,1,0",2
-26425,"Xiphias",87,"1501,80,1,0","0,0,0,0",2
-26426,"Mollfrith",88,"2001,57,1,0","2099,1,1,0",2
-26427,"Rose Couverte",9,"801,70,1,0","0,0,0,0",2
-26428,"Paikea",7,"1001,78,1,0","0,0,0,0",2
-26429,"Tuah",10,"1701,75,1,0","0,0,0,0",2
-26430,"Jebat",98,"1711,2,1,0","0,0,0,0",2
-26431,"Albireo",89,"2101,65,1,0","2199,1,113,0",2
-26432,"Torigashira",96,"2201,39,1,0","2251,56,1,0",2
-26433,"Brunello",97,"2305,2,1,0","2365,1,1,0",2
-26434,"Bellerophon",11,"101,79,1,0","0,0,0,0",2
-26435,"Antea Eureka",2,"201,112,2,0","0,0,0,0",2
-26436,"Dumuzis Eureka",1,"330,1,2,0","380,1,2,0",2
-26437,"Shamash Eureka",3,"401,86,2,0","0,0,0,0",2
-26438,"Daboya Eureka",5,"520,1,2,0","0,0,0,0",2
-26439,"Circinae Eureka",4,"601,68,2,0","698,75,1,0",2
-26440,"Kasasagi Eureka",84,"1801,80,2,0","1851,80,2,0",2
-26441,"Xiphias Eureka",87,"1501,80,2,0","0,0,0,0",2
-26442,"Mollfrith Eureka",88,"2001,57,2,0","2099,1,1,0",2
-26443,"Rose Couverte Eureka",9,"801,70,2,0","0,0,0,0",2
-26444,"Paikea Eureka",7,"1001,78,2,0","0,0,0,0",2
-26445,"Tuah Eureka",10,"1701,75,2,0","0,0,0,0",2
-26446,"Jebat Eureka",98,"1711,2,2,0","0,0,0,0",2
-26447,"Albireo Eureka",89,"2101,65,2,0","2199,1,113,0",2
-26448,"Torigashira Eureka",96,"2201,39,2,0","2251,56,1,0",2
-26449,"Brunello Eureka",97,"2305,2,2,0","2365,1,2,0",2
-26450,"Bellerophon Eureka",11,"101,79,2,0","0,0,0,0",2
-26451,"Antea Physeos",2,"201,112,2,0","0,0,0,0",2
-26452,"Dumuzis Physeos",1,"330,1,2,0","380,1,2,0",2
-26453,"Shamash Physeos",3,"401,86,2,0","0,0,0,0",2
-26454,"Daboya Physeos",5,"520,1,2,0","0,0,0,0",2
-26455,"Circinae Physeos",4,"601,68,2,0","698,75,1,0",2
-26456,"Kasasagi Physeos",84,"1801,80,2,0","1851,80,2,0",2
-26457,"Xiphias Physeos",87,"1501,80,2,0","0,0,0,0",2
-26458,"Mollfrith Physeos",88,"2001,57,2,0","2099,1,1,0",2
-26459,"Rose Couverte Physeos",9,"801,70,2,0","0,0,0,0",2
-26460,"Paikea Physeos",7,"1001,78,2,0","0,0,0,0",2
-26461,"Tuah Physeos",10,"1701,75,2,0","0,0,0,0",2
-26462,"Jebat Physeos",98,"1711,2,2,0","0,0,0,0",2
-26463,"Albireo Physeos",89,"2101,65,2,0","2199,1,113,0",2
-26464,"Torigashira Physeos",96,"2201,39,2,0","2251,56,1,0",2
-26465,"Brunello Physeos",97,"2305,2,2,0","2365,1,2,0",2
-26466,"Bellerophon Physeos",11,"101,79,2,0","0,0,0,0",2
-26468,"Elemental Helm of Fending +1",34,"572,3,0,0","0,0,0,0",2
-26470,"Elemental Armor of Fending +1",35,"572,3,0,0","0,0,0,0",2
-26472,"Elemental Gauntlets of Fending +1",37,"572,3,0,0","0,0,0,0",2
-26474,"Elemental Trousers of Fending +1",36,"572,3,0,0","0,0,0,0",2
-26476,"Elemental Shoes of Fending +1",38,"572,3,0,0","0,0,0,0",2
-26478,"Elemental Helm of Maiming +1",34,"572,4,0,0","0,0,0,0",2
-26480,"Elemental Armor of Maiming +1",35,"572,4,0,0","0,0,0,0",2
-26482,"Elemental Gauntlets of Maiming +1",37,"572,4,0,0","0,0,0,0",2
-26484,"Elemental Trousers of Maiming +1",36,"572,4,0,0","0,0,0,0",2
-26486,"Elemental Shoes of Maiming +1",38,"572,4,0,0","0,0,0,0",2
-26488,"Elemental Hat of Striking +1",34,"573,5,0,0","0,0,0,0",2
-26490,"Elemental Jacket of Striking +1",35,"573,5,0,0","0,0,0,0",2
-26492,"Elemental Gloves of Striking +1",37,"573,5,0,0","0,0,0,0",2
-26494,"Elemental Breeches of Striking +1",36,"573,5,0,0","0,0,0,0",2
-26496,"Elemental Boots of Striking +1",38,"573,5,0,0","0,0,0,0",2
-26498,"Elemental Hat of Aiming +1",34,"573,4,0,0","0,0,0,0",2
-26500,"Elemental Jacket of Aiming +1",35,"573,4,0,0","0,0,0,0",2
-26502,"Elemental Gloves of Aiming +1",37,"573,4,0,0","0,0,0,0",2
-26504,"Elemental Breeches of Aiming +1",36,"573,4,0,0","0,0,0,0",2
-26506,"Elemental Boots of Aiming +1",38,"573,4,0,0","0,0,0,0",2
-26508,"Elemental Circlet of Scouting +1",34,"574,6,0,0","0,0,0,0",2
-26510,"Elemental Jacket of Scouting +1",35,"573,6,0,0","0,0,0,0",2
-26512,"Elemental Gloves of Scouting +1",37,"573,6,0,0","0,0,0,0",2
-26514,"Elemental Breeches of Scouting +1",36,"573,6,0,0","0,0,0,0",2
-26516,"Elemental Boots of Scouting +1",38,"573,6,0,0","0,0,0,0",2
-26518,"Elemental Circlet of Healing +1",34,"574,4,0,0","0,0,0,0",2
-26520,"Elemental Coat of Healing +1",35,"574,4,0,0","0,0,0,0",2
-26522,"Elemental Gloves of Healing +1",37,"574,4,0,0","0,0,0,0",2
-26524,"Elemental Bottoms of Healing +1",36,"574,4,0,0","0,0,0,0",2
-26526,"Elemental Shoes of Healing +1",38,"574,4,0,0","0,0,0,0",2
-26528,"Elemental Circlet of Casting +1",34,"574,5,0,0","0,0,0,0",2
-26530,"Elemental Coat of Casting +1",35,"574,5,0,0","0,0,0,0",2
-26532,"Elemental Gloves of Casting +1",37,"574,5,0,0","0,0,0,0",2
-26534,"Elemental Bottoms of Casting +1",36,"574,5,0,0","0,0,0,0",2
-26536,"Elemental Shoes of Casting +1",38,"574,5,0,0","0,0,0,0",2
-26538,"Elemental Helm of Fending +2",34,"572,3,0,0","0,0,0,0",2
-26540,"Elemental Armor of Fending +2",35,"572,3,0,0","0,0,0,0",2
-26542,"Elemental Gauntlets of Fending +2",37,"572,3,0,0","0,0,0,0",2
-26544,"Elemental Trousers of Fending +2",36,"572,3,0,0","0,0,0,0",2
-26546,"Elemental Shoes of Fending +2",38,"572,3,0,0","0,0,0,0",2
-26548,"Elemental Helm of Maiming +2",34,"572,4,0,0","0,0,0,0",2
-26550,"Elemental Armor of Maiming +2",35,"572,4,0,0","0,0,0,0",2
-26552,"Elemental Gauntlets of Maiming +2",37,"572,4,0,0","0,0,0,0",2
-26554,"Elemental Trousers of Maiming +2",36,"572,4,0,0","0,0,0,0",2
-26556,"Elemental Shoes of Maiming +2",38,"572,4,0,0","0,0,0,0",2
-26558,"Elemental Hat of Striking +2",34,"573,5,0,0","0,0,0,0",2
-26560,"Elemental Jacket of Striking +2",35,"573,5,0,0","0,0,0,0",2
-26562,"Elemental Gloves of Striking +2",37,"573,5,0,0","0,0,0,0",2
-26564,"Elemental Breeches of Striking +2",36,"573,5,0,0","0,0,0,0",2
-26566,"Elemental Boots of Striking +2",38,"573,5,0,0","0,0,0,0",2
-26568,"Elemental Hat of Aiming +2",34,"573,4,0,0","0,0,0,0",2
-26570,"Elemental Jacket of Aiming +2",35,"573,4,0,0","0,0,0,0",2
-26572,"Elemental Gloves of Aiming +2",37,"573,4,0,0","0,0,0,0",2
-26574,"Elemental Breeches of Aiming +2",36,"573,4,0,0","0,0,0,0",2
-26576,"Elemental Boots of Aiming +2",38,"573,4,0,0","0,0,0,0",2
-26578,"Elemental Circlet of Scouting +2",34,"574,6,0,0","0,0,0,0",2
-26580,"Elemental Jacket of Scouting +2",35,"573,6,0,0","0,0,0,0",2
-26582,"Elemental Gloves of Scouting +2",37,"573,6,0,0","0,0,0,0",2
-26584,"Elemental Breeches of Scouting +2",36,"573,6,0,0","0,0,0,0",2
-26586,"Elemental Boots of Scouting +2",38,"573,6,0,0","0,0,0,0",2
-26588,"Elemental Circlet of Healing +2",34,"574,4,0,0","0,0,0,0",2
-26590,"Elemental Coat of Healing +2",35,"574,4,0,0","0,0,0,0",2
-26592,"Elemental Gloves of Healing +2",37,"574,4,0,0","0,0,0,0",2
-26594,"Elemental Bottoms of Healing +2",36,"574,4,0,0","0,0,0,0",2
-26596,"Elemental Shoes of Healing +2",38,"574,4,0,0","0,0,0,0",2
-26598,"Elemental Circlet of Casting +2",34,"574,5,0,0","0,0,0,0",2
-26600,"Elemental Coat of Casting +2",35,"574,5,0,0","0,0,0,0",2
-26602,"Elemental Gloves of Casting +2",37,"574,5,0,0","0,0,0,0",2
-26604,"Elemental Bottoms of Casting +2",36,"574,5,0,0","0,0,0,0",2
-26606,"Elemental Shoes of Casting +2",38,"574,5,0,0","0,0,0,0",2
-26607,"Azulmagia",105,"2401,3,1,0","0,0,0,0",2
-26608,"Blessed Millking's Saw",12,"5005,1,2,0","5081,2,1,0",2
-26609,"Blessed Forgeking's Hammer",14,"5101,4,2,0","5181,2,1,0",2
-26610,"Blessed Hammerking's Beetle",16,"5201,6,2,0","5281,2,1,0",2
-26611,"Blessed Gemking's Mallet",18,"5301,5,2,0","5381,2,1,0",2
-26612,"Blessed Hideking's Knife",20,"5401,6,2,0","5481,2,1,0",2
-26613,"Blessed Boltking's Needle",22,"5501,4,2,0","0,0,0,0",2
-26614,"Blessed Cauldronking's Alembic",24,"5603,3,1,0","5682,1,3,0",2
-26615,"Blessed Galleyking's Frypan",26,"5701,7,2,0","5722,1,1,0",2
-26616,"Blessed Mineking's Pickaxe",28,"7001,6,2,0","0,0,0,0",2
-26617,"Blessed Fieldking's Hatchet",30,"7102,1,2,0","0,0,0,0",2
-26618,"Blessed Tackleking's Rod",32,"7201,6,2,0","7281,1,1,0",2
-26619,"Replica Pyros Sword",2,"201,106,2,0","0,0,0,0",2
-26620,"Replica Pyros Knuckles",1,"1602,2,2,0","8809,1,0,0",2
-26621,"Replica Pyros Battleaxe",3,"401,81,2,0","0,0,0,0",2
-26622,"Replica Pyros Lance",5,"501,75,2,0","0,0,0,0",2
-26623,"Replica Pyros Harp Bow",4,"620,1,2,0","698,70,1,0",2
-26624,"Replica Pyros Knives",84,"1801,76,2,0","1851,76,2,0",2
-26625,"Replica Pyros Guillotine",87,"1501,76,2,0","0,0,0,0",2
-26626,"Replica Pyros Handgonne",88,"2001,54,2,0","2099,1,1,0",2
-26627,"Replica Pyros Cane",9,"801,66,2,0","0,0,0,0",2
-26628,"Replica Pyros Rod",7,"1001,72,2,0","0,0,0,0",2
-26629,"Replica Pyros Grimoire",10,"1701,69,2,0","0,0,0,0",2
-26630,"Replica Pyros Codex",98,"1701,70,2,0","0,0,0,0",2
-26631,"Replica Pyros Astrometer",89,"2114,1,2,0","2199,1,105,0",2
-26632,"Replica Pyros Blade",96,"2202,11,2,0","2251,50,1,0",2
-26633,"Replica Pyros Tuck",97,"2305,1,2,0","2351,39,2,0",2
-26634,"Replica Pyros Shield",11,"101,73,2,0","0,0,0,0",2
-26636,"Kirin's Osode of Fending",35,"598,1,0,0","0,0,0,0",2
-26638,"Kirin's Osode of Maiming",35,"598,1,0,0","0,0,0,0",2
-26640,"Kirin's Osode of Striking",35,"598,1,0,0","0,0,0,0",2
-26642,"Kirin's Osode of Scouting",35,"598,1,0,0","0,0,0,0",2
-26644,"Kirin's Osode of Aiming",35,"598,1,0,0","0,0,0,0",2
-26646,"Vermilion Cloak of Casting",35,"6078,1,0,0","0,0,0,0",2
-26648,"Vermilion Cloak of Healing",35,"6078,1,0,0","0,0,0,0",2
-26649,"Shantotto's Staff",7,"1001,80,1,0","0,0,0,0",2
-26650,"Penthesilea's Spear",5,"501,80,1,0","0,0,0,0",2
-26652,"Red Lily of the Valley Corsage",34,"5047,1,0,0","0,0,0,0",2
-26654,"Blue Lily of the Valley Corsage",34,"5047,2,0,0","0,0,0,0",2
-26656,"Yellow Lily of the Valley Corsage",34,"5047,3,0,0","0,0,0,0",2
-26658,"Green Lily of the Valley Corsage",34,"5047,4,0,0","0,0,0,0",2
-26660,"Orange Lily of the Valley Corsage",34,"5047,5,0,0","0,0,0,0",2
-26662,"Purple Lily of the Valley Corsage",34,"5047,6,0,0","0,0,0,0",2
-26664,"White Lily of the Valley Corsage",34,"5047,7,0,0","0,0,0,0",2
-26666,"Black Lily of the Valley Corsage",34,"5047,8,0,0","0,0,0,0",2
-26668,"Rainbow Lily of the Valley Corsage",34,"5047,9,0,0","0,0,0,0",2
-26669,"Yama Blade",2,"201,64,3,0","0,0,0,0",2
-26670,"Yama Knuckles",1,"323,29,1,0","373,29,1,0",2
-26671,"Yama Axe",3,"401,43,4,0","0,0,0,0",2
-26672,"Yama Lance",5,"501,37,3,0","0,0,0,0",2
-26673,"Yama Greatbow",4,"601,31,3,0","698,31,3,0",2
-26674,"Yama Daggers",84,"1801,38,3,0","1851,38,3,0",2
-26675,"Yama Odachi",87,"1501,33,3,0","0,0,0,0",2
-26676,"Yama Revolver",88,"2001,29,3,0","2099,1,1,0",2
-26677,"Yama Cane",9,"801,37,3,0","0,0,0,0",2
-26678,"Yama Rod",7,"1001,33,3,0","0,0,0,0",2
-26679,"Yama Grimoire",10,"1701,30,5,0","0,0,0,0",2
-26680,"Yama Codex",98,"1701,30,6,0","0,0,0,0",2
-26681,"Yama Ephemeris",89,"2101,34,3,0","2199,1,110,0",2
-26682,"Yama Katana",96,"2202,9,3,0","2251,29,3,0",2
-26683,"Yama Rapier",97,"2301,34,3,0","2351,26,3,0",2
-26684,"Yama Greatshield",11,"101,37,3,0","0,0,0,0",2
-26686,"Yama Mask of Fending",34,"564,1,0,0","0,0,0,0",2
-26688,"Yama Kasaya of Fending",35,"564,1,0,0","0,0,0,0",2
-26690,"Yama Kote of Fending",37,"564,1,0,0","0,0,0,0",2
-26692,"Yama Tsutsu-Hakama of Fending",36,"564,1,0,0","0,0,0,0",2
-26694,"Yama Sune-Ate of Fending",38,"564,1,0,0","0,0,0,0",2
-26696,"Yama Mask of Maiming",34,"564,2,0,0","0,0,0,0",2
-26698,"Yama Kasaya of Maiming",35,"564,2,0,0","0,0,0,0",2
-26700,"Yama Kote of Maiming",37,"564,2,0,0","0,0,0,0",2
-26702,"Yama Tsutsu-Hakama of Maiming",36,"564,2,0,0","0,0,0,0",2
-26704,"Yama Sune-Ate of Maiming",38,"564,2,0,0","0,0,0,0",2
-26706,"Yama Gantai of Striking",34,"563,3,0,0","0,0,0,0",2
-26708,"Yama Haori of Striking",35,"563,3,0,0","0,0,0,0",2
-26710,"Yama Tekko of Striking",37,"563,3,0,0","0,0,0,0",2
-26712,"Yama Hakama of Striking",36,"563,3,0,0","0,0,0,0",2
-26714,"Yama Zori of Striking",38,"563,3,0,0","0,0,0,0",2
-26716,"Yama Gantai of Aiming",34,"563,1,0,0","0,0,0,0",2
-26718,"Yama Haori of Aiming",35,"563,1,0,0","0,0,0,0",2
-26720,"Yama Tekko of Aiming",37,"563,1,0,0","0,0,0,0",2
-26722,"Yama Hakama of Aiming",36,"563,1,0,0","0,0,0,0",2
-26724,"Yama Zori of Aiming",38,"563,1,0,0","0,0,0,0",2
-26726,"Yama Gantai of Scouting",34,"563,2,0,0","0,0,0,0",2
-26728,"Yama Haori of Scouting",35,"563,2,0,0","0,0,0,0",2
-26730,"Yama Tekko of Scouting",37,"563,2,0,0","0,0,0,0",2
-26732,"Yama Hakama of Scouting",36,"563,2,0,0","0,0,0,0",2
-26734,"Yama Zori of Scouting",38,"563,2,0,0","0,0,0,0",2
-26736,"Yama Kanmuri of Healing",34,"565,1,0,0","0,0,0,0",2
-26738,"Yama Dogi of Healing",35,"565,1,0,0","0,0,0,0",2
-26740,"Yama Tekko of Healing",37,"565,1,0,0","0,0,0,0",2
-26742,"Yama Tsutsu-Hakama of Healing",36,"565,1,0,0","0,0,0,0",2
-26744,"Yama Zori of Healing",38,"565,1,0,0","0,0,0,0",2
-26746,"Yama Kanmuri of Casting",34,"565,2,0,0","0,0,0,0",2
-26748,"Yama Dogi of Casting",35,"565,2,0,0","0,0,0,0",2
-26750,"Yama Tekko of Casting",37,"565,2,0,0","0,0,0,0",2
-26752,"Yama Tsutsu-Hakama of Casting",36,"565,2,0,0","0,0,0,0",2
-26754,"Yama Zori of Casting",38,"565,2,0,0","0,0,0,0",2
-26756,"Yama Earring of Fending",41,"88,2,0,0","0,0,0,0",2
-26758,"Yama Earring of Slaying",41,"88,2,0,0","0,0,0,0",2
-26760,"Yama Earring of Aiming",41,"88,2,0,0","0,0,0,0",2
-26762,"Yama Earring of Healing",41,"88,2,0,0","0,0,0,0",2
-26764,"Yama Earring of Casting",41,"88,2,0,0","0,0,0,0",2
-26766,"Yama Necklace of Fending",40,"83,3,0,0","0,0,0,0",2
-26768,"Yama Necklace of Slaying",40,"83,3,0,0","0,0,0,0",2
-26770,"Yama Necklace of Aiming",40,"83,3,0,0","0,0,0,0",2
-26772,"Yama Necklace of Healing",40,"83,3,0,0","0,0,0,0",2
-26774,"Yama Necklace of Casting",40,"83,3,0,0","0,0,0,0",2
-26776,"Yama Bracelet of Fending",42,"83,3,0,0","0,0,0,0",2
-26778,"Yama Bracelet of Slaying",42,"83,3,0,0","0,0,0,0",2
-26780,"Yama Bracelet of Aiming",42,"83,3,0,0","0,0,0,0",2
-26782,"Yama Bracelet of Healing",42,"83,3,0,0","0,0,0,0",2
-26784,"Yama Bracelet of Casting",42,"83,3,0,0","0,0,0,0",2
-26786,"Yama Ring of Fending",43,"83,3,0,0","0,0,0,0",2
-26788,"Yama Ring of Slaying",43,"83,3,0,0","0,0,0,0",2
-26790,"Yama Ring of Aiming",43,"83,3,0,0","0,0,0,0",2
-26792,"Yama Ring of Healing",43,"83,3,0,0","0,0,0,0",2
-26794,"Yama Ring of Casting",43,"83,3,0,0","0,0,0,0",2
-26795,"Great Shin-Zantetsuken",87,"1511,1,1,0","0,0,0,0",2
-26796,"Shin-Zantetsuken",96,"2212,1,1,0","2251,58,1,0",2
-26797,"Absolute Lance",5,"501,81,1,0","0,0,0,0",2
-26799,"Gown of Light",35,"6087,1,0,0","0,0,0,0",1
-26801,"Skirt of Light",36,"6087,1,0,0","0,0,0,0",1
-26803,"Ishgardian Gown",35,"9099,3,0,0","0,0,0,0",1
-26805,"Far Eastern Smock",35,"6088,1,0,0","0,0,0,0",0
-26806,"Gigas Shield",11,"101,80,1,0","0,0,0,0",2
-26807,"Halicarnassus Sword",2,"201,114,1,0","0,0,0,0",2
-26808,"Giant Axe",3,"401,87,1,0","0,0,0,0",2
-26809,"Faust Lance",5,"512,1,1,0","0,0,0,0",2
-26810,"Kum Kum Staff",7,"1001,79,1,0","0,0,0,0",2
-26811,"Bokuto",96,"2201,16,1,0","2251,58,1,0",2
-26812,"Colossus Guillotine",87,"1501,82,1,0","0,0,0,0",2
-26813,"Gigas Greatsword",87,"1501,83,1,0","0,0,0,0",2
-26814,"Tonberry Knife",27,"5741,3,1,0","5781,1,1,0",2
-26815,"Blade of the Goddess",2,"201,74,2,0","0,0,0,0",2
-26816,"Fists of the Goddess",1,"323,10,2,0","373,10,2,0",2
-26817,"Axe of the Goddess",3,"401,54,2,0","0,0,0,0",2
-26818,"Pike of the Goddess",5,"501,46,2,0","0,0,0,0",2
-26819,"Bow of the Goddess",4,"601,40,2,0","698,39,1,0",2
-26820,"Points of the Goddess",84,"1806,1,2,0","1856,1,2,0",2
-26821,"Edge of the Goddess",87,"1501,46,2,0","0,0,0,0",2
-26822,"Fire of the Goddess",88,"2013,1,2,0","2099,1,1,0",2
-26823,"Cane of the Goddess",9,"801,48,2,0","0,0,0,0",2
-26824,"Pole of the Goddess",7,"1001,40,2,0","0,0,0,0",2
-26825,"Word of the Goddess",10,"1701,36,3,0","0,0,0,0",2
-26826,"Song of the Goddess",98,"1701,36,4,0","0,0,0,0",2
-26827,"Star of the Goddess",89,"2101,39,2,0","2199,1,59,0",2
-26828,"Katana of the Goddess",96,"2202,5,2,0","2251,19,1,0",2
-26829,"Rapier of the Goddess",97,"2301,5,2,0","2351,4,2,0",2
-26830,"Shield of the Goddess",11,"101,47,2,0","0,0,0,0",2
-26831,"Exclusive Eastern Journey Battle Staff",5,"503,1,1,0","0,0,0,0",2
+26076,"Namazu Mask",34,"5040,1,0,0","0,0,0,0",2
+26078,"Red Arum Corsage",34,"5044,1,0,0","0,0,0,0",2
+26080,"Blue Arum Corsage",34,"5044,2,0,0","0,0,0,0",2
+26082,"Yellow Arum Corsage",34,"5044,3,0,0","0,0,0,0",2
+26084,"Green Arum Corsage",34,"5044,4,0,0","0,0,0,0",2
+26086,"Orange Arum Corsage",34,"5044,5,0,0","0,0,0,0",2
+26088,"Purple Arum Corsage",34,"5044,6,0,0","0,0,0,0",2
+26090,"White Arum Corsage",34,"5044,7,0,0","0,0,0,0",2
+26092,"Black Arum Corsage",34,"5044,8,0,0","0,0,0,0",2
+26094,"Rainbow Arum Corsage",34,"5044,9,0,0","0,0,0,0",2
+26096,"Moddey Dhoo Helm",34,"562,2,0,0","0,0,0,0",2
+26098,"Moddey Dhoo Armor",35,"562,2,0,0","0,0,0,0",2
+26100,"Moddey Dhoo Gauntlets",37,"562,2,0,0","0,0,0,0",2
+26102,"Moddey Dhoo Cuisses",36,"562,2,0,0","0,0,0,0",2
+26104,"Moddey Dhoo Sabatons",38,"562,2,0,0","0,0,0,0",2
+26105,"Rooibos Tea",46,"9901,2,1,0","0,0,0,0",2
+26106,"Ginger Salad",46,"9901,9,1,0","0,0,0,0",2
+26107,"Laghman",46,"9901,12,1,0","0,0,0,0",2
+26108,"Imam Bayildi",46,"9901,9,1,0","0,0,0,0",2
+26109,"Papanasi",46,"9901,8,1,0","0,0,0,0",2
+26110,"Salmon Muffin",46,"9901,1,1,0","0,0,0,0",2
+26111,"Shakshouka",46,"9901,11,1,0","0,0,0,0",2
+26113,"Yanxian Merchant's Haori",35,"9141,2,0,0","0,0,0,0",2
+26114,"Seeing Horde Blade",2,"201,84,2,0","0,0,0,0",2
+26115,"Seeing Horde Knuckles",1,"323,9,2,0","373,9,2,0",2
+26116,"Seeing Horde Axe",3,"401,65,2,0","0,0,0,0",2
+26117,"Seeing Horde Spear",5,"501,54,2,0","0,0,0,0",2
+26118,"Seeing Horde Bow",4,"601,47,2,0","698,48,1,0",2
+26119,"Seeing Horde Daggers",84,"1801,56,2,0","1851,56,2,0",2
+26120,"Seeing Horde Guillotine",87,"1501,50,2,0","0,0,0,0",2
+26121,"Seeing Horde Handgonne",88,"2007,3,2,0","2099,1,1,0",2
+26122,"Seeing Horde Cane",9,"801,58,2,0","0,0,0,0",2
+26123,"Seeing Horde Rod",7,"1001,54,2,0","0,0,0,0",2
+26124,"Seeing Horde Grimoire",10,"1701,45,3,0","0,0,0,0",2
+26125,"Seeing Horde Codex",98,"1701,45,4,0","0,0,0,0",2
+26126,"Seeing Horde Star Globe",89,"2101,47,2,0","2199,1,66,0",2
+26127,"Seeing Horde Katana",96,"2201,1,4,0","2251,1,1,0",2
+26128,"Seeing Horde Rapier",97,"2301,6,2,0","2351,5,2,0",2
+26129,"Seeing Horde Shield",11,"101,55,2,0","0,0,0,0",2
+26131,"Catoblepas Horns",34,"5041,1,0,0","0,0,0,0",2
+26133,"Arch Demon Horns",34,"5042,1,0,0","0,0,0,0",2
+26135,"Archaeodemon Horns",34,"5043,1,0,0","0,0,0,0",2
+26137,"Alliance Helm of Fending",34,"587,1,0,0","0,0,0,0",2
+26139,"Alliance Coat of Fending",35,"587,1,0,0","0,0,0,0",2
+26141,"Alliance Armguards of Fending",37,"587,1,0,0","0,0,0,0",2
+26143,"Alliance Trousers of Fending",36,"587,1,0,0","0,0,0,0",2
+26145,"Alliance Boots of Fending",38,"587,1,0,0","0,0,0,0",2
+26147,"Alliance Visor of Maiming",34,"588,1,0,0","0,0,0,0",2
+26149,"Alliance Vest of Maiming",35,"588,1,0,0","0,0,0,0",2
+26151,"Alliance Armguards of Maiming",37,"587,2,0,0","0,0,0,0",2
+26153,"Alliance Trousers of Maiming",36,"587,2,0,0","0,0,0,0",2
+26155,"Alliance Boots of Maiming",38,"587,2,0,0","0,0,0,0",2
+26157,"Alliance Visor of Striking",34,"589,1,0,0","0,0,0,0",2
+26159,"Alliance Vest of Striking",35,"588,2,0,0","0,0,0,0",2
+26161,"Alliance Fingerless Gloves of Striking",37,"591,2,0,0","0,0,0,0",2
+26163,"Alliance Skirt of Striking",36,"591,2,0,0","0,0,0,0",2
+26165,"Alliance Shoes of Striking",38,"591,2,0,0","0,0,0,0",2
+26167,"Alliance Visor of Aiming",34,"588,3,0,0","0,0,0,0",2
+26169,"Alliance Jacket of Aiming",35,"590,1,0,0","0,0,0,0",2
+26171,"Alliance Armguards of Aiming",37,"587,3,0,0","0,0,0,0",2
+26173,"Alliance Trousers of Aiming",36,"587,3,0,0","0,0,0,0",2
+26175,"Alliance Shoes of Aiming",38,"591,3,0,0","0,0,0,0",2
+26177,"Alliance Helm of Scouting",34,"591,1,0,0","0,0,0,0",2
+26179,"Alliance Vest of Scouting",35,"591,1,0,0","0,0,0,0",2
+26181,"Alliance Fingerless Gloves of Scouting",37,"591,1,0,0","0,0,0,0",2
+26183,"Alliance Skirt of Scouting",36,"591,1,0,0","0,0,0,0",2
+26185,"Alliance Shoes of Scouting",38,"591,1,0,0","0,0,0,0",2
+26187,"Alliance Circlet of Healing",34,"592,1,0,0","0,0,0,0",2
+26189,"Alliance Coat of Healing",35,"592,1,0,0","0,0,0,0",2
+26191,"Alliance Fingerless Gloves of Healing",37,"592,1,0,0","0,0,0,0",2
+26193,"Alliance Bottoms of Healing",36,"592,1,0,0","0,0,0,0",2
+26195,"Alliance Boots of Healing",38,"592,1,0,0","0,0,0,0",2
+26197,"Alliance Circlet of Casting",34,"592,2,0,0","0,0,0,0",2
+26199,"Alliance Coat of Casting",35,"592,2,0,0","0,0,0,0",2
+26201,"Alliance Fingerless Gloves of Casting",37,"592,2,0,0","0,0,0,0",2
+26203,"Alliance Bottoms of Casting",36,"592,2,0,0","0,0,0,0",2
+26205,"Alliance Boots of Casting",38,"592,2,0,0","0,0,0,0",2
+26207,"Alliance Earring of Fending",41,"98,1,0,0","0,0,0,0",2
+26209,"Alliance Earring of Slaying",41,"98,1,0,0","0,0,0,0",2
+26211,"Alliance Earring of Aiming",41,"98,1,0,0","0,0,0,0",2
+26213,"Alliance Earring of Healing",41,"98,1,0,0","0,0,0,0",2
+26215,"Alliance Earring of Casting",41,"98,1,0,0","0,0,0,0",2
+26217,"Alliance Necklace of Fending",40,"98,1,0,0","0,0,0,0",2
+26219,"Alliance Necklace of Slaying",40,"98,1,0,0","0,0,0,0",2
+26221,"Alliance Necklace of Aiming",40,"98,1,0,0","0,0,0,0",2
+26223,"Alliance Necklace of Healing",40,"98,1,0,0","0,0,0,0",2
+26225,"Alliance Necklace of Casting",40,"98,1,0,0","0,0,0,0",2
+26227,"Alliance Bracelet of Fending",42,"98,1,0,0","0,0,0,0",2
+26229,"Alliance Bracelet of Slaying",42,"98,1,0,0","0,0,0,0",2
+26231,"Alliance Bracelet of Aiming",42,"98,1,0,0","0,0,0,0",2
+26233,"Alliance Bracelet of Healing",42,"98,1,0,0","0,0,0,0",2
+26235,"Alliance Bracelet of Casting",42,"98,1,0,0","0,0,0,0",2
+26237,"Alliance Ring of Fending",43,"98,1,0,0","0,0,0,0",2
+26239,"Alliance Ring of Slaying",43,"98,1,0,0","0,0,0,0",2
+26241,"Alliance Ring of Aiming",43,"98,1,0,0","0,0,0,0",2
+26243,"Alliance Ring of Healing",43,"98,1,0,0","0,0,0,0",2
+26245,"Alliance Ring of Casting",43,"98,1,0,0","0,0,0,0",2
+26247,"Ivalician Holy Knight's Circlet",34,"582,1,0,0","0,0,0,0",2
+26249,"Ivalician Holy Knight's Armor",35,"582,1,0,0","0,0,0,0",2
+26251,"Ivalician Holy Knight's Gloves",37,"582,1,0,0","0,0,0,0",2
+26253,"Ivalician Holy Knight's Trousers",36,"582,1,0,0","0,0,0,0",2
+26255,"Ivalician Holy Knight's Boots",38,"582,1,0,0","0,0,0,0",2
+26257,"Ivalician Royal Knight's Circlet",34,"582,2,0,0","0,0,0,0",2
+26259,"Ivalician Royal Knight's Armor",35,"582,2,0,0","0,0,0,0",2
+26261,"Ivalician Royal Knight's Gloves",37,"582,2,0,0","0,0,0,0",2
+26263,"Ivalician Royal Knight's Trousers",36,"582,2,0,0","0,0,0,0",2
+26265,"Ivalician Royal Knight's Boots",38,"582,2,0,0","0,0,0,0",2
+26267,"Ivalician Brave's Circlet",34,"583,1,0,0","0,0,0,0",2
+26269,"Ivalician Brave's Jacket",35,"583,1,0,0","0,0,0,0",2
+26271,"Ivalician Brave's Gauntlets",37,"583,1,0,0","0,0,0,0",2
+26273,"Ivalician Brave's Trousers",36,"583,1,0,0","0,0,0,0",2
+26275,"Ivalician Brave's Greaves",38,"583,1,0,0","0,0,0,0",2
+26277,"Ivalician Sky Pirate's Hat",34,"584,1,0,0","0,0,0,0",2
+26279,"Ivalician Sky Pirate's Jacket",35,"584,1,0,0","0,0,0,0",2
+26281,"Ivalician Sky Pirate's Plunder",37,"584,1,0,0","0,0,0,0",2
+26283,"Ivalician Sky Pirate's Trousers",36,"584,1,0,0","0,0,0,0",2
+26285,"Ivalician Sky Pirate's Shoes",38,"584,1,0,0","0,0,0,0",2
+26287,"Ivalician Mercenary's Circlet",34,"583,2,0,0","0,0,0,0",2
+26289,"Ivalician Mercenary's Jacket",35,"583,2,0,0","0,0,0,0",2
+26291,"Ivalician Mercenary's Gauntlets",37,"583,2,0,0","0,0,0,0",2
+26293,"Ivalician Mercenary's Trousers",36,"583,2,0,0","0,0,0,0",2
+26295,"Ivalician Mercenary's Greaves",38,"583,2,0,0","0,0,0,0",2
+26297,"Ivalician Mystic's Hat",34,"585,1,0,0","0,0,0,0",2
+26299,"Ivalician Mystic's Coat",35,"585,1,0,0","0,0,0,0",2
+26301,"Ivalician Mystic's Halfgloves",37,"585,1,0,0","0,0,0,0",2
+26303,"Ivalician Mystic's Bottoms",36,"585,1,0,0","0,0,0,0",2
+26305,"Ivalician Mystic's Shoes",38,"585,1,0,0","0,0,0,0",2
+26307,"Ivalician Oracle's Mask",34,"585,2,0,0","0,0,0,0",2
+26309,"Ivalician Oracle's Coat",35,"585,2,0,0","0,0,0,0",2
+26311,"Ivalician Oracle's Halfgloves",37,"585,2,0,0","0,0,0,0",2
+26313,"Ivalician Oracle's Bottoms",36,"585,2,0,0","0,0,0,0",2
+26315,"Ivalician Oracle's Shoes",38,"585,2,0,0","0,0,0,0",2
+26316,"Seiryu's Longsword",2,"201,111,1,0","0,0,0,0",2
+26317,"Seiryu's Bladed Tekko",1,"323,30,1,0","373,30,1,0",2
+26318,"Seiryu's War Axe",3,"401,84,1,0","0,0,0,0",2
+26319,"Seiryu's Lance",5,"501,77,1,0","0,0,0,0",2
+26320,"Seiryu's Greatbow",4,"601,67,1,0","698,74,1,0",2
+26321,"Seiryu's Daggers",84,"1801,79,1,0","1851,79,1,0",2
+26322,"Seiryu's Spine",87,"1510,1,1,0","0,0,0,0",2
+26323,"Seiryu's Revolver",88,"2001,56,1,0","2099,1,1,0",2
+26324,"Seiryu's Cane",9,"801,69,1,0","0,0,0,0",2
+26325,"Seiryu's Rod",7,"1001,75,1,0","0,0,0,0",2
+26326,"Seiryu's Grimoire",10,"1701,72,1,0","0,0,0,0",2
+26327,"Seiryu's Codex",98,"1701,72,2,0","0,0,0,0",2
+26328,"Seiryu's Ephemeris",89,"2101,64,1,0","2199,1,116,0",2
+26329,"Seiryu's Rippled Katana",96,"2201,38,1,0","2251,55,1,0",2
+26330,"Seiryu's Rapier",97,"2301,51,1,0","2351,45,1,0",2
+26331,"Seiryu's Shield",11,"101,77,1,0","0,0,0,0",2
+26332,"The Spirit of the Whalaqee",105,"2401,1,1,0","0,0,0,0",2
+26334,"Magus's Mask",34,"593,1,0,0","0,0,0,0",2
+26336,"Magus's Jacket",35,"593,1,0,0","0,0,0,0",2
+26338,"Magus's Gloves",37,"593,1,0,0","0,0,0,0",2
+26340,"Magus's Trousers",36,"593,1,0,0","0,0,0,0",2
+26342,"Magus's Shoes",38,"593,1,0,0","0,0,0,0",2
+26344,"True Blue Hat",34,"9,255,0,0","0,0,0,0",2
+26346,"True Blue Coat",35,"338,6,0,0","0,0,0,0",2
+26348,"True Blue Gloves",37,"338,6,0,0","0,0,0,0",2
+26350,"True Blue Trousers",36,"338,6,0,0","0,0,0,0",2
+26352,"True Blue Boots",38,"338,6,0,0","0,0,0,0",2
+26354,"Aetheryte Earring",41,"108,1,0,0","0,0,0,0",2
+26356,"Flower Crown",34,"5045,1,0,0","0,0,0,0",2
+26358,"Rain Hood",34,"6076,1,0,0","0,0,0,0",2
+26360,"Raincoat",35,"6076,1,0,0","0,0,0,0",2
+26362,"Rain Boots",38,"6076,1,0,0","0,0,0,0",2
+26364,"Scion Traveler's Mask",34,"6083,1,0,0","0,0,0,0",2
+26366,"Scion Traveler's Jacket",35,"6083,1,0,0","0,0,0,0",2
+26368,"Scion Traveler's Gloves",37,"6083,1,0,0","0,0,0,0",2
+26370,"Scion Traveler's Trousers",36,"6083,1,0,0","0,0,0,0",2
+26372,"Scion Traveler's Boots",38,"6083,1,0,0","0,0,0,0",2
+26374,"Far Eastern Schoolboy's Hat",34,"6084,1,0,0","0,0,0,0",0
+26376,"Far Eastern Schoolboy's Hakama",35,"6084,1,0,0","0,0,0,0",0
+26378,"Far Eastern Schoolboy's Zori",38,"6084,1,0,0","0,0,0,0",0
+26380,"Far Eastern Schoolgirl's Hair Ribbon",34,"6085,1,0,0","0,0,0,0",1
+26382,"Far Eastern Schoolgirl's Hakama",35,"6085,1,0,0","0,0,0,0",1
+26384,"Far Eastern Schoolgirl's Boots",38,"6085,1,0,0","0,0,0,0",1
+26386,"Spriggan Jacket",35,"6086,1,0,0","0,0,0,0",2
+26388,"Spriggan Bottoms",36,"6086,1,0,0","0,0,0,0",2
+26390,"Spriggan Boots",38,"6086,1,0,0","0,0,0,0",2
+26392,"Lucian Prince's Jacket",35,"6062,1,0,0","0,0,0,0",2
+26394,"Lucian Prince's Fingerless Glove",37,"6062,1,0,0","0,0,0,0",2
+26396,"Lucian Prince's Bottoms",36,"6062,1,0,0","0,0,0,0",2
+26398,"Lucian Prince's Boots",38,"6062,1,0,0","0,0,0,0",2
+26400,"Namazu Earring",41,"105,1,0,0","0,0,0,0",2
+26402,"Namazu Neckerchief",40,"105,1,0,0","0,0,0,0",2
+26404,"Mameshiba Earring",41,"109,1,0,0","0,0,0,0",2
+26406,"Mameshiba Neckerchief",40,"109,1,0,0","0,0,0,0",2
+26407,"Hydatos Sword",2,"201,106,2,0","0,0,0,0",2
+26408,"Hydatos Knuckles",1,"1602,2,2,0","8809,1,0,0",2
+26409,"Hydatos Battleaxe",3,"401,81,2,0","0,0,0,0",2
+26410,"Hydatos Lance",5,"501,75,2,0","0,0,0,0",2
+26411,"Hydatos Harp Bow",4,"620,1,2,0","698,70,1,0",2
+26412,"Hydatos Knives",84,"1801,76,2,0","1851,76,2,0",2
+26413,"Hydatos Guillotine",87,"1501,76,2,0","0,0,0,0",2
+26414,"Hydatos Handgonne",88,"2001,54,2,0","2099,1,1,0",2
+26415,"Hydatos Cane",9,"801,66,2,0","0,0,0,0",2
+26416,"Hydatos Rod",7,"1001,72,2,0","0,0,0,0",2
+26417,"Hydatos Grimoire",10,"1701,69,2,0","0,0,0,0",2
+26418,"Hydatos Codex",98,"1701,70,2,0","0,0,0,0",2
+26419,"Hydatos Astrometer",89,"2114,1,2,0","2199,1,105,0",2
+26420,"Hydatos Blade",96,"2202,11,2,0","2251,50,1,0",2
+26421,"Hydatos Tuck",97,"2305,1,2,0","2351,39,2,0",2
+26422,"Hydatos Shield",11,"101,73,2,0","0,0,0,0",2
+26423,"Hydatos Sword +1",2,"201,106,2,0","0,0,0,0",2
+26424,"Hydatos Knuckles +1",1,"1602,2,2,0","8809,1,0,0",2
+26425,"Hydatos Battleaxe +1",3,"401,81,2,0","0,0,0,0",2
+26426,"Hydatos Lance +1",5,"501,75,2,0","0,0,0,0",2
+26427,"Hydatos Harp Bow +1",4,"620,1,2,0","698,70,1,0",2
+26428,"Hydatos Knives +1",84,"1801,76,2,0","1851,76,2,0",2
+26429,"Hydatos Guillotine +1",87,"1501,76,2,0","0,0,0,0",2
+26430,"Hydatos Handgonne +1",88,"2001,54,2,0","2099,1,1,0",2
+26431,"Hydatos Cane +1",9,"801,66,2,0","0,0,0,0",2
+26432,"Hydatos Rod +1",7,"1001,72,2,0","0,0,0,0",2
+26433,"Hydatos Grimoire +1",10,"1701,69,2,0","0,0,0,0",2
+26434,"Hydatos Codex +1",98,"1701,70,2,0","0,0,0,0",2
+26435,"Hydatos Astrometer +1",89,"2114,1,2,0","2199,1,105,0",2
+26436,"Hydatos Blade +1",96,"2202,11,2,0","2251,50,1,0",2
+26437,"Hydatos Tuck +1",97,"2305,1,2,0","2351,39,2,0",2
+26438,"Hydatos Shield +1",11,"101,73,2,0","0,0,0,0",2
+26439,"Antea",2,"201,112,1,0","0,0,0,0",2
+26440,"Dumuzis",1,"330,1,1,0","380,1,1,0",2
+26441,"Shamash",3,"401,86,1,0","0,0,0,0",2
+26442,"Daboya",5,"520,1,1,0","0,0,0,0",2
+26443,"Circinae",4,"601,68,1,0","698,75,1,0",2
+26444,"Kasasagi",84,"1801,80,1,0","1851,80,1,0",2
+26445,"Xiphias",87,"1501,80,1,0","0,0,0,0",2
+26446,"Mollfrith",88,"2001,57,1,0","2099,1,1,0",2
+26447,"Rose Couverte",9,"801,70,1,0","0,0,0,0",2
+26448,"Paikea",7,"1001,78,1,0","0,0,0,0",2
+26449,"Tuah",10,"1701,75,1,0","0,0,0,0",2
+26450,"Jebat",98,"1711,2,1,0","0,0,0,0",2
+26451,"Albireo",89,"2101,65,1,0","2199,1,113,0",2
+26452,"Torigashira",96,"2201,39,1,0","2251,56,1,0",2
+26453,"Brunello",97,"2305,2,1,0","2365,1,1,0",2
+26454,"Bellerophon",11,"101,79,1,0","0,0,0,0",2
+26455,"Antea Eureka",2,"201,112,2,0","0,0,0,0",2
+26456,"Dumuzis Eureka",1,"330,1,2,0","380,1,2,0",2
+26457,"Shamash Eureka",3,"401,86,2,0","0,0,0,0",2
+26458,"Daboya Eureka",5,"520,1,2,0","0,0,0,0",2
+26459,"Circinae Eureka",4,"601,68,2,0","698,75,1,0",2
+26460,"Kasasagi Eureka",84,"1801,80,2,0","1851,80,2,0",2
+26461,"Xiphias Eureka",87,"1501,80,2,0","0,0,0,0",2
+26462,"Mollfrith Eureka",88,"2001,57,2,0","2099,1,1,0",2
+26463,"Rose Couverte Eureka",9,"801,70,2,0","0,0,0,0",2
+26464,"Paikea Eureka",7,"1001,78,2,0","0,0,0,0",2
+26465,"Tuah Eureka",10,"1701,75,2,0","0,0,0,0",2
+26466,"Jebat Eureka",98,"1711,2,2,0","0,0,0,0",2
+26467,"Albireo Eureka",89,"2101,65,2,0","2199,1,113,0",2
+26468,"Torigashira Eureka",96,"2201,39,2,0","2251,56,1,0",2
+26469,"Brunello Eureka",97,"2305,2,2,0","2365,1,2,0",2
+26470,"Bellerophon Eureka",11,"101,79,2,0","0,0,0,0",2
+26471,"Antea Physeos",2,"201,112,2,0","0,0,0,0",2
+26472,"Dumuzis Physeos",1,"330,1,2,0","380,1,2,0",2
+26473,"Shamash Physeos",3,"401,86,2,0","0,0,0,0",2
+26474,"Daboya Physeos",5,"520,1,2,0","0,0,0,0",2
+26475,"Circinae Physeos",4,"601,68,2,0","698,75,1,0",2
+26476,"Kasasagi Physeos",84,"1801,80,2,0","1851,80,2,0",2
+26477,"Xiphias Physeos",87,"1501,80,2,0","0,0,0,0",2
+26478,"Mollfrith Physeos",88,"2001,57,2,0","2099,1,1,0",2
+26479,"Rose Couverte Physeos",9,"801,70,2,0","0,0,0,0",2
+26480,"Paikea Physeos",7,"1001,78,2,0","0,0,0,0",2
+26481,"Tuah Physeos",10,"1701,75,2,0","0,0,0,0",2
+26482,"Jebat Physeos",98,"1711,2,2,0","0,0,0,0",2
+26483,"Albireo Physeos",89,"2101,65,2,0","2199,1,113,0",2
+26484,"Torigashira Physeos",96,"2201,39,2,0","2251,56,1,0",2
+26485,"Brunello Physeos",97,"2305,2,2,0","2365,1,2,0",2
+26486,"Bellerophon Physeos",11,"101,79,2,0","0,0,0,0",2
+26488,"Elemental Helm of Fending +1",34,"572,3,0,0","0,0,0,0",2
+26490,"Elemental Armor of Fending +1",35,"572,3,0,0","0,0,0,0",2
+26492,"Elemental Gauntlets of Fending +1",37,"572,3,0,0","0,0,0,0",2
+26494,"Elemental Trousers of Fending +1",36,"572,3,0,0","0,0,0,0",2
+26496,"Elemental Shoes of Fending +1",38,"572,3,0,0","0,0,0,0",2
+26498,"Elemental Helm of Maiming +1",34,"572,4,0,0","0,0,0,0",2
+26500,"Elemental Armor of Maiming +1",35,"572,4,0,0","0,0,0,0",2
+26502,"Elemental Gauntlets of Maiming +1",37,"572,4,0,0","0,0,0,0",2
+26504,"Elemental Trousers of Maiming +1",36,"572,4,0,0","0,0,0,0",2
+26506,"Elemental Shoes of Maiming +1",38,"572,4,0,0","0,0,0,0",2
+26508,"Elemental Hat of Striking +1",34,"573,5,0,0","0,0,0,0",2
+26510,"Elemental Jacket of Striking +1",35,"573,5,0,0","0,0,0,0",2
+26512,"Elemental Gloves of Striking +1",37,"573,5,0,0","0,0,0,0",2
+26514,"Elemental Breeches of Striking +1",36,"573,5,0,0","0,0,0,0",2
+26516,"Elemental Boots of Striking +1",38,"573,5,0,0","0,0,0,0",2
+26518,"Elemental Hat of Aiming +1",34,"573,4,0,0","0,0,0,0",2
+26520,"Elemental Jacket of Aiming +1",35,"573,4,0,0","0,0,0,0",2
+26522,"Elemental Gloves of Aiming +1",37,"573,4,0,0","0,0,0,0",2
+26524,"Elemental Breeches of Aiming +1",36,"573,4,0,0","0,0,0,0",2
+26526,"Elemental Boots of Aiming +1",38,"573,4,0,0","0,0,0,0",2
+26528,"Elemental Circlet of Scouting +1",34,"574,6,0,0","0,0,0,0",2
+26530,"Elemental Jacket of Scouting +1",35,"573,6,0,0","0,0,0,0",2
+26532,"Elemental Gloves of Scouting +1",37,"573,6,0,0","0,0,0,0",2
+26534,"Elemental Breeches of Scouting +1",36,"573,6,0,0","0,0,0,0",2
+26536,"Elemental Boots of Scouting +1",38,"573,6,0,0","0,0,0,0",2
+26538,"Elemental Circlet of Healing +1",34,"574,4,0,0","0,0,0,0",2
+26540,"Elemental Coat of Healing +1",35,"574,4,0,0","0,0,0,0",2
+26542,"Elemental Gloves of Healing +1",37,"574,4,0,0","0,0,0,0",2
+26544,"Elemental Bottoms of Healing +1",36,"574,4,0,0","0,0,0,0",2
+26546,"Elemental Shoes of Healing +1",38,"574,4,0,0","0,0,0,0",2
+26548,"Elemental Circlet of Casting +1",34,"574,5,0,0","0,0,0,0",2
+26550,"Elemental Coat of Casting +1",35,"574,5,0,0","0,0,0,0",2
+26552,"Elemental Gloves of Casting +1",37,"574,5,0,0","0,0,0,0",2
+26554,"Elemental Bottoms of Casting +1",36,"574,5,0,0","0,0,0,0",2
+26556,"Elemental Shoes of Casting +1",38,"574,5,0,0","0,0,0,0",2
+26558,"Elemental Helm of Fending +2",34,"572,3,0,0","0,0,0,0",2
+26560,"Elemental Armor of Fending +2",35,"572,3,0,0","0,0,0,0",2
+26562,"Elemental Gauntlets of Fending +2",37,"572,3,0,0","0,0,0,0",2
+26564,"Elemental Trousers of Fending +2",36,"572,3,0,0","0,0,0,0",2
+26566,"Elemental Shoes of Fending +2",38,"572,3,0,0","0,0,0,0",2
+26568,"Elemental Helm of Maiming +2",34,"572,4,0,0","0,0,0,0",2
+26570,"Elemental Armor of Maiming +2",35,"572,4,0,0","0,0,0,0",2
+26572,"Elemental Gauntlets of Maiming +2",37,"572,4,0,0","0,0,0,0",2
+26574,"Elemental Trousers of Maiming +2",36,"572,4,0,0","0,0,0,0",2
+26576,"Elemental Shoes of Maiming +2",38,"572,4,0,0","0,0,0,0",2
+26578,"Elemental Hat of Striking +2",34,"573,5,0,0","0,0,0,0",2
+26580,"Elemental Jacket of Striking +2",35,"573,5,0,0","0,0,0,0",2
+26582,"Elemental Gloves of Striking +2",37,"573,5,0,0","0,0,0,0",2
+26584,"Elemental Breeches of Striking +2",36,"573,5,0,0","0,0,0,0",2
+26586,"Elemental Boots of Striking +2",38,"573,5,0,0","0,0,0,0",2
+26588,"Elemental Hat of Aiming +2",34,"573,4,0,0","0,0,0,0",2
+26590,"Elemental Jacket of Aiming +2",35,"573,4,0,0","0,0,0,0",2
+26592,"Elemental Gloves of Aiming +2",37,"573,4,0,0","0,0,0,0",2
+26594,"Elemental Breeches of Aiming +2",36,"573,4,0,0","0,0,0,0",2
+26596,"Elemental Boots of Aiming +2",38,"573,4,0,0","0,0,0,0",2
+26598,"Elemental Circlet of Scouting +2",34,"574,6,0,0","0,0,0,0",2
+26600,"Elemental Jacket of Scouting +2",35,"573,6,0,0","0,0,0,0",2
+26602,"Elemental Gloves of Scouting +2",37,"573,6,0,0","0,0,0,0",2
+26604,"Elemental Breeches of Scouting +2",36,"573,6,0,0","0,0,0,0",2
+26606,"Elemental Boots of Scouting +2",38,"573,6,0,0","0,0,0,0",2
+26608,"Elemental Circlet of Healing +2",34,"574,4,0,0","0,0,0,0",2
+26610,"Elemental Coat of Healing +2",35,"574,4,0,0","0,0,0,0",2
+26612,"Elemental Gloves of Healing +2",37,"574,4,0,0","0,0,0,0",2
+26614,"Elemental Bottoms of Healing +2",36,"574,4,0,0","0,0,0,0",2
+26616,"Elemental Shoes of Healing +2",38,"574,4,0,0","0,0,0,0",2
+26618,"Elemental Circlet of Casting +2",34,"574,5,0,0","0,0,0,0",2
+26620,"Elemental Coat of Casting +2",35,"574,5,0,0","0,0,0,0",2
+26622,"Elemental Gloves of Casting +2",37,"574,5,0,0","0,0,0,0",2
+26624,"Elemental Bottoms of Casting +2",36,"574,5,0,0","0,0,0,0",2
+26626,"Elemental Shoes of Casting +2",38,"574,5,0,0","0,0,0,0",2
+26627,"Azulmagia",105,"2401,3,1,0","0,0,0,0",2
+26628,"Blessed Millking's Saw",12,"5005,1,2,0","5081,2,1,0",2
+26629,"Blessed Forgeking's Hammer",14,"5101,4,2,0","5181,2,1,0",2
+26630,"Blessed Hammerking's Beetle",16,"5201,6,2,0","5281,2,1,0",2
+26631,"Blessed Gemking's Mallet",18,"5301,5,2,0","5381,2,1,0",2
+26632,"Blessed Hideking's Knife",20,"5401,6,2,0","5481,2,1,0",2
+26633,"Blessed Boltking's Needle",22,"5501,4,2,0","0,0,0,0",2
+26634,"Blessed Cauldronking's Alembic",24,"5603,3,1,0","5682,1,3,0",2
+26635,"Blessed Galleyking's Frypan",26,"5701,7,2,0","5722,1,1,0",2
+26636,"Blessed Mineking's Pickaxe",28,"7001,6,2,0","0,0,0,0",2
+26637,"Blessed Fieldking's Hatchet",30,"7102,1,2,0","0,0,0,0",2
+26638,"Blessed Tackleking's Rod",32,"7201,6,2,0","7281,1,1,0",2
+26639,"Replica Pyros Sword",2,"201,106,2,0","0,0,0,0",2
+26640,"Replica Pyros Knuckles",1,"1602,2,2,0","8809,1,0,0",2
+26641,"Replica Pyros Battleaxe",3,"401,81,2,0","0,0,0,0",2
+26642,"Replica Pyros Lance",5,"501,75,2,0","0,0,0,0",2
+26643,"Replica Pyros Harp Bow",4,"620,1,2,0","698,70,1,0",2
+26644,"Replica Pyros Knives",84,"1801,76,2,0","1851,76,2,0",2
+26645,"Replica Pyros Guillotine",87,"1501,76,2,0","0,0,0,0",2
+26646,"Replica Pyros Handgonne",88,"2001,54,2,0","2099,1,1,0",2
+26647,"Replica Pyros Cane",9,"801,66,2,0","0,0,0,0",2
+26648,"Replica Pyros Rod",7,"1001,72,2,0","0,0,0,0",2
+26649,"Replica Pyros Grimoire",10,"1701,69,2,0","0,0,0,0",2
+26650,"Replica Pyros Codex",98,"1701,70,2,0","0,0,0,0",2
+26651,"Replica Pyros Astrometer",89,"2114,1,2,0","2199,1,105,0",2
+26652,"Replica Pyros Blade",96,"2202,11,2,0","2251,50,1,0",2
+26653,"Replica Pyros Tuck",97,"2305,1,2,0","2351,39,2,0",2
+26654,"Replica Pyros Shield",11,"101,73,2,0","0,0,0,0",2
+26656,"Kirin's Osode of Fending",35,"598,1,0,0","0,0,0,0",2
+26658,"Kirin's Osode of Maiming",35,"598,1,0,0","0,0,0,0",2
+26660,"Kirin's Osode of Striking",35,"598,1,0,0","0,0,0,0",2
+26662,"Kirin's Osode of Scouting",35,"598,1,0,0","0,0,0,0",2
+26664,"Kirin's Osode of Aiming",35,"598,1,0,0","0,0,0,0",2
+26666,"Vermilion Cloak of Casting",35,"6078,1,0,0","0,0,0,0",2
+26668,"Vermilion Cloak of Healing",35,"6078,1,0,0","0,0,0,0",2
+26669,"Shantotto's Staff",7,"1001,80,1,0","0,0,0,0",2
+26670,"Penthesilea's Spear",5,"501,80,1,0","0,0,0,0",2
+26672,"Red Lily of the Valley Corsage",34,"5047,1,0,0","0,0,0,0",2
+26674,"Blue Lily of the Valley Corsage",34,"5047,2,0,0","0,0,0,0",2
+26676,"Yellow Lily of the Valley Corsage",34,"5047,3,0,0","0,0,0,0",2
+26678,"Green Lily of the Valley Corsage",34,"5047,4,0,0","0,0,0,0",2
+26680,"Orange Lily of the Valley Corsage",34,"5047,5,0,0","0,0,0,0",2
+26682,"Purple Lily of the Valley Corsage",34,"5047,6,0,0","0,0,0,0",2
+26684,"White Lily of the Valley Corsage",34,"5047,7,0,0","0,0,0,0",2
+26686,"Black Lily of the Valley Corsage",34,"5047,8,0,0","0,0,0,0",2
+26688,"Rainbow Lily of the Valley Corsage",34,"5047,9,0,0","0,0,0,0",2
+26689,"Yama Blade",2,"201,64,3,0","0,0,0,0",2
+26690,"Yama Knuckles",1,"323,29,1,0","373,29,1,0",2
+26691,"Yama Axe",3,"401,43,4,0","0,0,0,0",2
+26692,"Yama Lance",5,"501,37,3,0","0,0,0,0",2
+26693,"Yama Greatbow",4,"601,31,3,0","698,31,3,0",2
+26694,"Yama Daggers",84,"1801,38,3,0","1851,38,3,0",2
+26695,"Yama Odachi",87,"1501,33,3,0","0,0,0,0",2
+26696,"Yama Revolver",88,"2001,29,3,0","2099,1,1,0",2
+26697,"Yama Cane",9,"801,37,3,0","0,0,0,0",2
+26698,"Yama Rod",7,"1001,33,3,0","0,0,0,0",2
+26699,"Yama Grimoire",10,"1701,30,5,0","0,0,0,0",2
+26700,"Yama Codex",98,"1701,30,6,0","0,0,0,0",2
+26701,"Yama Ephemeris",89,"2101,34,3,0","2199,1,110,0",2
+26702,"Yama Katana",96,"2202,9,3,0","2251,29,3,0",2
+26703,"Yama Rapier",97,"2301,34,3,0","2351,26,3,0",2
+26704,"Yama Greatshield",11,"101,37,3,0","0,0,0,0",2
+26706,"Yama Mask of Fending",34,"564,1,0,0","0,0,0,0",2
+26708,"Yama Kasaya of Fending",35,"564,1,0,0","0,0,0,0",2
+26710,"Yama Kote of Fending",37,"564,1,0,0","0,0,0,0",2
+26712,"Yama Tsutsu-Hakama of Fending",36,"564,1,0,0","0,0,0,0",2
+26714,"Yama Sune-Ate of Fending",38,"564,1,0,0","0,0,0,0",2
+26716,"Yama Mask of Maiming",34,"564,2,0,0","0,0,0,0",2
+26718,"Yama Kasaya of Maiming",35,"564,2,0,0","0,0,0,0",2
+26720,"Yama Kote of Maiming",37,"564,2,0,0","0,0,0,0",2
+26722,"Yama Tsutsu-Hakama of Maiming",36,"564,2,0,0","0,0,0,0",2
+26724,"Yama Sune-Ate of Maiming",38,"564,2,0,0","0,0,0,0",2
+26726,"Yama Gantai of Striking",34,"563,3,0,0","0,0,0,0",2
+26728,"Yama Haori of Striking",35,"563,3,0,0","0,0,0,0",2
+26730,"Yama Tekko of Striking",37,"563,3,0,0","0,0,0,0",2
+26732,"Yama Hakama of Striking",36,"563,3,0,0","0,0,0,0",2
+26734,"Yama Zori of Striking",38,"563,3,0,0","0,0,0,0",2
+26736,"Yama Gantai of Aiming",34,"563,1,0,0","0,0,0,0",2
+26738,"Yama Haori of Aiming",35,"563,1,0,0","0,0,0,0",2
+26740,"Yama Tekko of Aiming",37,"563,1,0,0","0,0,0,0",2
+26742,"Yama Hakama of Aiming",36,"563,1,0,0","0,0,0,0",2
+26744,"Yama Zori of Aiming",38,"563,1,0,0","0,0,0,0",2
+26746,"Yama Gantai of Scouting",34,"563,2,0,0","0,0,0,0",2
+26748,"Yama Haori of Scouting",35,"563,2,0,0","0,0,0,0",2
+26750,"Yama Tekko of Scouting",37,"563,2,0,0","0,0,0,0",2
+26752,"Yama Hakama of Scouting",36,"563,2,0,0","0,0,0,0",2
+26754,"Yama Zori of Scouting",38,"563,2,0,0","0,0,0,0",2
+26756,"Yama Kanmuri of Healing",34,"565,1,0,0","0,0,0,0",2
+26758,"Yama Dogi of Healing",35,"565,1,0,0","0,0,0,0",2
+26760,"Yama Tekko of Healing",37,"565,1,0,0","0,0,0,0",2
+26762,"Yama Tsutsu-Hakama of Healing",36,"565,1,0,0","0,0,0,0",2
+26764,"Yama Zori of Healing",38,"565,1,0,0","0,0,0,0",2
+26766,"Yama Kanmuri of Casting",34,"565,2,0,0","0,0,0,0",2
+26768,"Yama Dogi of Casting",35,"565,2,0,0","0,0,0,0",2
+26770,"Yama Tekko of Casting",37,"565,2,0,0","0,0,0,0",2
+26772,"Yama Tsutsu-Hakama of Casting",36,"565,2,0,0","0,0,0,0",2
+26774,"Yama Zori of Casting",38,"565,2,0,0","0,0,0,0",2
+26776,"Yama Earring of Fending",41,"88,2,0,0","0,0,0,0",2
+26778,"Yama Earring of Slaying",41,"88,2,0,0","0,0,0,0",2
+26780,"Yama Earring of Aiming",41,"88,2,0,0","0,0,0,0",2
+26782,"Yama Earring of Healing",41,"88,2,0,0","0,0,0,0",2
+26784,"Yama Earring of Casting",41,"88,2,0,0","0,0,0,0",2
+26786,"Yama Necklace of Fending",40,"83,3,0,0","0,0,0,0",2
+26788,"Yama Necklace of Slaying",40,"83,3,0,0","0,0,0,0",2
+26790,"Yama Necklace of Aiming",40,"83,3,0,0","0,0,0,0",2
+26792,"Yama Necklace of Healing",40,"83,3,0,0","0,0,0,0",2
+26794,"Yama Necklace of Casting",40,"83,3,0,0","0,0,0,0",2
+26796,"Yama Bracelet of Fending",42,"83,3,0,0","0,0,0,0",2
+26798,"Yama Bracelet of Slaying",42,"83,3,0,0","0,0,0,0",2
+26800,"Yama Bracelet of Aiming",42,"83,3,0,0","0,0,0,0",2
+26802,"Yama Bracelet of Healing",42,"83,3,0,0","0,0,0,0",2
+26804,"Yama Bracelet of Casting",42,"83,3,0,0","0,0,0,0",2
+26806,"Yama Ring of Fending",43,"83,3,0,0","0,0,0,0",2
+26808,"Yama Ring of Slaying",43,"83,3,0,0","0,0,0,0",2
+26810,"Yama Ring of Aiming",43,"83,3,0,0","0,0,0,0",2
+26812,"Yama Ring of Healing",43,"83,3,0,0","0,0,0,0",2
+26814,"Yama Ring of Casting",43,"83,3,0,0","0,0,0,0",2
+26815,"Great Shin-Zantetsuken",87,"1511,1,1,0","0,0,0,0",2
+26816,"Shin-Zantetsuken",96,"2212,1,1,0","2251,58,1,0",2
+26817,"Absolute Lance",5,"501,81,1,0","0,0,0,0",2
+26819,"Gown of Light",35,"6087,1,0,0","0,0,0,0",1
+26821,"Skirt of Light",36,"6087,1,0,0","0,0,0,0",1
+26823,"Ishgardian Gown",35,"9099,3,0,0","0,0,0,0",1
+26825,"Far Eastern Smock",35,"6088,1,0,0","0,0,0,0",0
+26826,"Gigas Shield",11,"101,80,1,0","0,0,0,0",2
+26827,"Halicarnassus Sword",2,"201,114,1,0","0,0,0,0",2
+26828,"Giant Axe",3,"401,87,1,0","0,0,0,0",2
+26829,"Faust Lance",5,"512,1,1,0","0,0,0,0",2
+26830,"Kum Kum Staff",7,"1001,79,1,0","0,0,0,0",2
+26831,"Bokuto",96,"2201,16,1,0","2251,58,1,0",2
+26832,"Colossus Guillotine",87,"1501,82,1,0","0,0,0,0",2
+26833,"Gigas Greatsword",87,"1501,83,1,0","0,0,0,0",2
+26834,"Tonberry Knife",27,"5741,3,1,0","5781,1,1,0",2
+26835,"Blade of the Goddess",2,"201,74,2,0","0,0,0,0",2
+26836,"Fists of the Goddess",1,"323,10,2,0","373,10,2,0",2
+26837,"Axe of the Goddess",3,"401,54,2,0","0,0,0,0",2
+26838,"Pike of the Goddess",5,"501,46,2,0","0,0,0,0",2
+26839,"Bow of the Goddess",4,"601,40,2,0","698,39,1,0",2
+26840,"Points of the Goddess",84,"1806,1,2,0","1856,1,2,0",2
+26841,"Edge of the Goddess",87,"1501,46,2,0","0,0,0,0",2
+26842,"Fire of the Goddess",88,"2013,1,2,0","2099,1,1,0",2
+26843,"Cane of the Goddess",9,"801,48,2,0","0,0,0,0",2
+26844,"Pole of the Goddess",7,"1001,40,2,0","0,0,0,0",2
+26845,"Word of the Goddess",10,"1701,36,3,0","0,0,0,0",2
+26846,"Song of the Goddess",98,"1701,36,4,0","0,0,0,0",2
+26847,"Star of the Goddess",89,"2101,39,2,0","2199,1,59,0",2
+26848,"Katana of the Goddess",96,"2202,5,2,0","2251,19,1,0",2
+26849,"Rapier of the Goddess",97,"2301,5,2,0","2351,4,2,0",2
+26850,"Shield of the Goddess",11,"101,47,2,0","0,0,0,0",2
+26851,"Exclusive Eastern Journey Battle Staff",5,"503,1,1,0","0,0,0,0",2
