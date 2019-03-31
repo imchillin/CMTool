@@ -820,5 +820,25 @@ namespace FFXIVTool.Views
                 LoadGearSet.IsEnabled = true;
             }
         }
+
+        private void SettoZero2_Click(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.OffhandX.value = 0;
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.OffhandX), "float", "0");
+            CharacterDetails.OffhandY.value = 0;
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.OffhandY), "float", "0");
+            CharacterDetails.OffhandZ.value = 0;
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.OffhandZ), "float", "0");
+        }
+
+        private void SettoZero_Click(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.WeaponX.value = 0;
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.WeaponX), "float", "0");
+            CharacterDetails.WeaponY.value = 0;
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.WeaponY), "float", "0");
+            CharacterDetails.WeaponZ.value = 0;
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.WeaponZ), "float", "0");
+        }
     }
 }
