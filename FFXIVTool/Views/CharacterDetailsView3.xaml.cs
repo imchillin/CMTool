@@ -1002,12 +1002,12 @@ namespace FFXIVTool.Views
 
         private void RenderButton_Checked(object sender, RoutedEventArgs e)
         {
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.CharacterRenderAddress, "bytes", "0x90 0x90 0x90 0x90 0x90");
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.CharacterRenderAddress, "bytes", "0x00 0x00");
         }
 
         private void RenderButton_Unchecked(object sender, RoutedEventArgs e)
         {
-             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.CharacterRenderAddress, "bytes", "0xE9 0xB8 0x00 0x00 0x00");
+             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.CharacterRenderAddress, "bytes", "0x02 0x01");
         }
 
         private void TimeButton_Click(object sender, RoutedEventArgs e)

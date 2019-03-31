@@ -640,6 +640,7 @@ namespace FFXIVTool.Views
         private void Setto0_Click(object sender, RoutedEventArgs e)
         {
             CharacterDetails.EmoteSpeed1.value = 0;
+            CharacterDetails.EmoteSpeed2.value = 0;
         }
 
         private void FreezeXYZ_Click(object sender, RoutedEventArgs e)
