@@ -8,7 +8,7 @@ cache:
 
 before_build:
   - git submodule update --init
-  - nuget restore FFXIVTools.sln
+  - nuget restore FFXIVTool.sln
   - nuget restore lib/SaintCoinach/SaintCoinach.sln
   
 build:
