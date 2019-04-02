@@ -69,6 +69,7 @@ namespace FFXIVTool.Utility
             public string ModelOff { get; set; }
             public int Gender { get; set; }
             public ItemType Type { get; set; }
+            public ImageSource Icon { get; set; }
 
             public override string ToString()
             {
@@ -461,7 +462,7 @@ namespace FFXIVTool.Utility
                     SaintCoinach.Ex.Relational.IRelationalSheet sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet("Item");
                     foreach (SaintCoinach.Xiv.Item Parse in sheet)
                     {
-                        //   Console.WriteLine($"{Parse.Name},{Parse.ModelMain},{Parse.ItemUICategory}:{Parse.ItemUICategory.Key}");
+                        if (Parse.EquipSlotCategory <= 0)continue;
                         var item = new Item();
                         item.Index = Parse.Key;
                         item.Name = Parse.Name;
@@ -476,9 +477,10 @@ namespace FFXIVTool.Utility
                             item.ModelMain = Parse.ModelMain.ToString();
                             item.ModelOff = Parse.ModelSub.ToString();
                         }
+                        item.Icon = CreateSource(Parse.Icon);
                         if (Parse.Description.ToString().Contains("♀")) item.Gender = 1;
                         else if (Parse.Description.ToString().Contains("♂")) item.Gender = 0;
-                        else item.Gender = 2;
+                        item.Gender = 2;
                         Items.Add(item.Index, item);
                     }
                 }
@@ -523,7 +525,6 @@ namespace FFXIVTool.Utility
                     gear.Customize = customize.ToArray();
                     if (parse.NpcEquip.Key > 0)
                     {
-                        //(result[0] + result[1] * 256), result[2], 0
                         gear.MainWep = new WepTuple(parse.NpcEquip.ModelMain.Value1, parse.NpcEquip.ModelMain.Value2, parse.NpcEquip.ModelMain.Value3, parse.NpcEquip.DyeMain);
                         gear.OffWep = new WepTuple(parse.NpcEquip.ModelSub.Value1, parse.NpcEquip.ModelSub.Value2, parse.NpcEquip.ModelSub.Value3, parse.NpcEquip.DyeOff);
                         gear.HeadGear = new GearTuple((parse.NpcEquip.ModelHead[0] + parse.NpcEquip.ModelHead[1] * 256), parse.NpcEquip.ModelHead[2], parse.NpcEquip.DyeHead);

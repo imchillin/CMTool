@@ -48,7 +48,8 @@ namespace FFXIVTool.Views
                 {
                     Name = game.Name.ToString(),
                     ModelMain = game.ModelMain,
-                    ModelOff = game.ModelOff
+                    ModelOff = game.ModelOff,
+                    Icon = game.Icon
                 });
                 if(!found) // Only looking for a match once and will stop trying to match. 
                 {
@@ -744,7 +745,8 @@ namespace FFXIVTool.Views
                 {
                     Name = game.Name.ToString(),
                     ModelMain = game.ModelMain,
-                    ModelOff = game.ModelOff
+                    ModelOff = game.ModelOff,
+                    Icon = game.Icon
                 });
         }
 
