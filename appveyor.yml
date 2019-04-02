@@ -7,6 +7,7 @@ cache:
   - packages -> **\packages.config
 
 before_build:
+  - git submodule update --init
   - nuget restore FFXIVTool.sln
   
 build:
