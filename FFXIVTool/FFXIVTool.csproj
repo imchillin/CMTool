@@ -372,12 +372,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\SaintCoinach\SaintCoinach\SaintCoinach.csproj">
-      <Project>{8a7d65eb-3de3-4631-b286-cc73a3126002}</Project>
-      <Name>SaintCoinach</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
