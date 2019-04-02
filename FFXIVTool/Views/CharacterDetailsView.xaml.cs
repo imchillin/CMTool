@@ -539,7 +539,24 @@ namespace FFXIVTool.Views
                 SpecialControl.ClanBox.SelectedIndex = 6;
             }
         }
-
+        private void FaceSelectButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (SpecialControl.IsOpen)
+            {
+                if (!SpecialControl.PaintTab.IsSelected)
+                {
+                    SpecialControl.PaintTab.IsSelected = true;
+                    SpecialControl.CharaMakeFeatureSelector2(CharacterDetails.Clan.value, CharacterDetails.Gender.value, _exdProvider);
+                }
+                else SpecialControl.IsOpen = !SpecialControl.IsOpen;
+            }
+            else
+            {
+                SpecialControl.IsOpen = !SpecialControl.IsOpen;
+                SpecialControl.PaintTab.IsSelected = true;
+                SpecialControl.CharaMakeFeatureSelector2(CharacterDetails.Clan.value, CharacterDetails.Gender.value, _exdProvider);
+            }
+        }
         private void HairSelectButton_Click_1(object sender, RoutedEventArgs e)
         {
             if (SpecialControl.IsOpen)

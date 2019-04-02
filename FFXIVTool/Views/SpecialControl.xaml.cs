@@ -241,7 +241,16 @@ namespace FFXIVTool.Views
 
             FillHairStyle();
         }
+        public void CharaMakeFeatureSelector2(int tribe, int gender, ExdCsvReader reader)
+        {
+            if (DidUserInteract) return;
+            DidUserInteract = true;
+            _tribe = tribe;
+            _gender = gender;
+            _reader = reader;
 
+            FilleFacial();
+        }
         ExdCsvReader.CharaMakeCustomizeFeature GetFeature(int startIndex, int length, byte dataKey)
         {
             if (dataKey == 0)
@@ -288,7 +297,66 @@ namespace FFXIVTool.Views
 
             throw new NotImplementedException();
         }
+        int GetFacePaintByIndex(int tribeKey, bool isMale)
+        {
+            switch (tribeKey)
+            {
+                case 1: // Midlander
+                    return isMale ? 1400 : 1450;
+                case 2: // Highlander
+                    return isMale ? 1500 : 1550;
+                case 3: // Wildwood
+                    return isMale ? 1600 : 1650; 
+                case 4: // Duskwight
+                    return isMale ? 1700 : 1750;
+                case 5: // Plainsfolks
+                    return isMale ? 1800 : 1850;
+                case 6: // Dunesfolk
+                    return isMale ? 1900 : 1950;
+                case 7: // Seeker of the Sun
+                    return isMale ? 2000 : 2050; 
+                case 8: // Keeper of the Moon
+                    return isMale ? 2100 : 2150;
+                case 9: // Sea Wolf
+                    return isMale ? 2200 : 2250;
+                case 10: // Hellsguard
+                    return isMale ? 2300 : 2350;
+                case 11: // Raen
+                    return isMale ? 2400 : 2450;
+                case 12: // Xaela
+                    return isMale ? 2500 : 2550;
+            }
 
+            throw new NotImplementedException();
+        }
+        public void FilleFacial()
+        {
+            try
+            {
+                FacePaintFeature.Items.Clear();
+                int added = 0;
+                for (int i = 0; i < 200; i++)
+                {
+                    if (i == 0)
+                    {
+                        FacePaintFeature.Items.Add(new FeatureSelect() { ID = 0, FeatureImage = GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Nope")) });
+                        added++;
+                        continue;
+                    }
+                    var feature = GetFeature(GetFacePaintByIndex(_tribe, _gender == 0), 50, (byte)i);
+
+                    if (feature == null)
+                        continue;
+                    FacePaintFeature.Items.Add(new FeatureSelect() { ID = feature.FeatureID, FeatureImage = feature.Icon });
+                    added++;
+                }
+                DidUserInteract = false;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
         public void FillHairStyle()
         {
             try
@@ -339,7 +407,15 @@ namespace FFXIVTool.Views
             string hexValue = Value.ID.ToString("X");
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Hair),"byte", hexValue);
         }
-
+        private void CharacterFeature2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (FacePaintFeature.SelectedItem == null)
+                return;
+            var Value = (FeatureSelect)FacePaintFeature.SelectedItem;
+            CharacterDetails.FacePaint.value = (byte)Value.ID;
+            string hexValue = Value.ID.ToString("X");
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.FacePaint), "byte", hexValue);
+        }
         private void ModelBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ModelBox.SelectedCells.Count > 0)
@@ -372,6 +448,10 @@ namespace FFXIVTool.Views
             if (HairTab.IsSelected&&Userinteraction2)
             {
                 CharaMakeFeatureSelector(CharacterDetails.Clan.value, CharacterDetails.Gender.value, CharacterDetailsView._exdProvider);
+            }
+            else if (PaintTab.IsSelected && Userinteraction2)
+            {
+                CharaMakeFeatureSelector2(CharacterDetails.Clan.value, CharacterDetails.Gender.value, CharacterDetailsView._exdProvider);
             }
             Userinteraction2 = false;
         }

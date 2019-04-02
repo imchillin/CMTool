@@ -329,7 +329,6 @@
     </None>
     <None Include="Resources\actiontimeline.csv" />
     <None Include="Resources\BGM.csv" />
-    <None Include="Resources\charamakecustomize.exh.csv" />
     <None Include="Resources\human.cmp" />
     <None Include="Resources\MonsterList.csv" />
     <None Include="Resources\PropsList.csv" />
@@ -359,6 +358,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <Resource Include="Resources\Nope.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.2">

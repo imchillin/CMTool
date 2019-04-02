@@ -85,8 +85,7 @@ namespace FFXIVTool.Properties {
         ///20,&quot;normal/walk_end_l&quot;
         ///21,&quot;&quot;
         ///22,&quot;normal/Run&quot;
-        ///23,&quot;normal/Run Left&quot;
-        ///24,&quot;normal/Run Right&quot; [rest of string was truncated]&quot;;.
+        ///23,&quot;normal/Run Lef [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string actiontimeline {
             get {
@@ -104,7 +103,7 @@ namespace FFXIVTool.Properties {
         ///5,&quot;Behind Closed Doors&quot;,&quot;Inn&quot;,&quot;&quot;
         ///6,&quot;Wailers and Waterwheels&quot;,&quot;Gridania&quot;,&quot;Daytime Theme&quot;
         ///7,&quot;Dance of the Fireflies&quot;,&quot;Gridania&quot;,&quot;Nighttime Theme&quot;
-        ///8,&quot;Serenity&quot;,&quot;Central/North Shroud&quot;,&quot; [rest of string was truncated]&quot;;.
+        ///8,&quot;Serenity&quot;,&quot;Central/North  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string BGM {
             get {
@@ -157,13 +156,21 @@ namespace FFXIVTool.Properties {
         ///30,&quot;Funguar C (Blue)&quot;
         ///31,&quot;Galago&quot;
         ///32,&quot;Lemur&quot;
-        ///33,&quot;Galago (+ Collar)&quot;
-        ///34,&quot;Ochu&quot;
-        ///35,&quot;Micro [rest of string was truncated]&quot;;.
+        ///33,&quot;Gala [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string MonsterList {
             get {
                 return ResourceManager.GetString("MonsterList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Nope {
+            get {
+                object obj = ResourceManager.GetObject("Nope", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -182,7 +189,7 @@ namespace FFXIVTool.Properties {
         ///10,&quot;BIG TUNA&quot;,&quot;9001,216,1,0&quot;
         ///11,&quot;Bamboo Blowgun&quot;,&quot;9001,212,1,0&quot;
         ///12,&quot;Papers&quot;,&quot;9001,211,1,0&quot;
-        ///13,&quot;Spoon&quot;,&quot;9001,208,1, [rest of string was truncated]&quot;;.
+        ///13,&quot;Spoon [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string PropsList {
             get {

@@ -86,6 +86,30 @@
                             </ListView>
                         </Grid>
                     </TabItem>
+                    <TabItem Header="FacePaint Selector" Name="PaintTab">
+                        <Grid Margin="-7,0,-4,-5">
+                            <Grid.Background>
+                                <ImageBrush ImageSource="/FFXIVTool;component/Resources/Background.png">
+                                </ImageBrush>
+                            </Grid.Background>
+                            <ListView x:Name="FacePaintFeature" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="4,0,6,0" SelectionChanged="CharacterFeature2_SelectionChanged">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <Image Source="{Binding FeatureImage}" Height="95" Width="95" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                                            <TextBlock Text="{Binding ID}" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel Orientation="Horizontal">
+                                        </WrapPanel>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                            </ListView>
+                        </Grid>
+                    </TabItem>
                     <TabItem Header="Model List" Name="ModelType">
                         <Grid>
                             <DataGrid x:Name="ModelBox" HorizontalAlignment="Left" Height="310" Margin="0,2,0,0" VerticalAlignment="Top" Width="552" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden" SelectionChanged="ModelBox_SelectionChanged">
