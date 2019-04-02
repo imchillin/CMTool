@@ -24,17 +24,7 @@ namespace FFXIVTool.Views
         public CharacterDetailsView2()
         {
             InitializeComponent();
-            CharacterDetailsView._exdProvider.DyeList();
-            for (int i = 0; i < CharacterDetailsView._exdProvider.Dyes.Count; i++)
-            {
-                HeadDye.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
-                ChestBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
-                ArmBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
-                MHBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
-                OHBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
-                LegBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
-                FeetBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
-            }
+            MainViewModel.ViewTime2 = this;
         }
 
         private void XPos2_V(object sender, RoutedPropertyChangedEventArgs<double?> e)

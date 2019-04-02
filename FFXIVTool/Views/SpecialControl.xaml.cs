@@ -301,7 +301,7 @@ namespace FFXIVTool.Views
 
                     if (feature == null)
                         continue;
-                    CharacterFeature.Items.Add(new FeatureSelect() { ID = feature.FeatureID, FeatureImage = GetImageStream(feature.Icon) });
+                    CharacterFeature.Items.Add(new FeatureSelect() { ID = feature.FeatureID, FeatureImage = feature.Icon });
                     added++;
                 }
                 DidUserInteract = false;
@@ -397,7 +397,7 @@ namespace FFXIVTool.Views
 
                     if (feature == null)
                         continue;
-                    CharacterFeature.Items.Add(new FeatureSelect() { ID = feature.FeatureID, FeatureImage = GetImageStream(feature.Icon) });
+                    CharacterFeature.Items.Add(new FeatureSelect() { ID = feature.FeatureID, FeatureImage = feature.Icon });
                     added++;
                 }
                 DidUserInteract = false;

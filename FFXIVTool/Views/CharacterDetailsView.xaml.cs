@@ -26,26 +26,13 @@ namespace FFXIVTool.Views
         public CharacterDetailsView()
         {
             InitializeComponent();
-            _exdProvider.RaceList();
-            _exdProvider.TribeList();
-            _exdProvider.MakeCharaMakeFeatureList();
             _exdProvider.MonsterList();
-            _exdProvider.MakeWeatherList();
-            _exdProvider.MakeWeatherRateList();
-            _exdProvider.MakeTerritoryTypeList();
+            MainViewModel.ViewTime = this;
             ExdCsvReader.MonsterX = _exdProvider.Monsters.Values.ToArray();
             CharacterDetailsViewModel.Viewtime = this;
             DispatcherTimer timer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(40) };
             timer.Tick += delegate
             {
-                for (int i = 0; i < _exdProvider.Races.Count; i++)
-                {
-                    RaceBox.Items.Add(_exdProvider.Races[i].Name);
-                }
-                for (int i = 0; i < _exdProvider.Tribes.Count; i++)
-                {
-                    ClanBox.Items.Add(_exdProvider.Tribes[i].Name);
-                }
                 foreach (ExdCsvReader.Monster xD in ExdCsvReader.MonsterX)
                 {
                     if (xD.Real == true)
