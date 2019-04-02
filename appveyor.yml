@@ -8,7 +8,7 @@ cache:
 
 before_build:
   - git submodule update --init
-  - nuget restore FFXIVTool.sln
+  - nuget restore
   
 build:
   project: FFXIVTool.sln
