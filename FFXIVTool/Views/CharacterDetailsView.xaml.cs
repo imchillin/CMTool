@@ -546,6 +546,7 @@ namespace FFXIVTool.Views
                 if (!SpecialControl.PaintTab.IsSelected)
                 {
                     SpecialControl.PaintTab.IsSelected = true;
+                    SpecialControl.CheckIncluded.IsChecked = false;
                     SpecialControl.CharaMakeFeatureSelector2(CharacterDetails.Clan.value, CharacterDetails.Gender.value, _exdProvider);
                 }
                 else SpecialControl.IsOpen = !SpecialControl.IsOpen;
@@ -554,6 +555,7 @@ namespace FFXIVTool.Views
             {
                 SpecialControl.IsOpen = !SpecialControl.IsOpen;
                 SpecialControl.PaintTab.IsSelected = true;
+                SpecialControl.CheckIncluded.IsChecked = false;
                 SpecialControl.CharaMakeFeatureSelector2(CharacterDetails.Clan.value, CharacterDetails.Gender.value, _exdProvider);
             }
         }

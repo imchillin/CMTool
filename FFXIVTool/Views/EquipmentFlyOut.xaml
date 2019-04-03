@@ -37,8 +37,7 @@
                 <controls:MetroAnimatedTabControl x:Name="AnimatedTabControl" Height="386"
                                               Margin="2"
                                               controls:TabControlHelper.Underlined="TabPanel"
-                                              Background="{DynamicResource MaterialDesignPaper}" SelectionChanged="AnimatedTabControl_SelectionChanged" PreviewMouseDown="AnimatedTabControl_PreviewMouseDown"
-                                                  >
+                                              Background="{DynamicResource MaterialDesignPaper}" SelectionChanged="AnimatedTabControl_SelectionChanged">
                     <TabItem Header="Equipment Selector" Name="EquipTab">
                         <Grid>
                             <CheckBox Content="Include OffHand" Name="CheckIncluded" HorizontalAlignment="Left" Margin="181,11,0,0" VerticalAlignment="Top" Width="171"/>

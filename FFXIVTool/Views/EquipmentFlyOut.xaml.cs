@@ -759,31 +759,23 @@ namespace FFXIVTool.Views
 
         private void AnimatedTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (NPCTab.IsSelected && Userinteraction2)
+            if (e.OriginalSource is TabControl)
             {
-                if (!CharacterDetailsView2.CheckResidentList())
+                if (NPCTab.IsSelected)
                 {
-                    Userinteraction2 = false;
-                    return;
+                    if (!CharacterDetailsView2.CheckResidentList()) return;
+                    if(!UserDoneInteraction)ResidentSelector(CharacterDetailsView._exdProvider.Residents.Values.Where(c => c.IsGoodNpc()).ToArray());
+                    CurrentlyEquippedName.Visibility = Visibility.Hidden;
+                    EquippedLabel.Visibility = Visibility.Hidden;
                 }
-                ResidentSelector(CharacterDetailsView._exdProvider.Residents.Values.Where(c => c.IsGoodNpc()).ToArray());
+                else
+                {
+                    CurrentlyEquippedName.Visibility = Visibility.Visible;
+                    EquippedLabel.Visibility = Visibility.Visible;
+                }
             }
-            if (NPCTab.IsSelected)
-            {
-                CurrentlyEquippedName.Visibility = Visibility.Hidden;
-                EquippedLabel.Visibility = Visibility.Hidden;
-            }
-            else
-            {
-                CurrentlyEquippedName.Visibility = Visibility.Visible;
-                EquippedLabel.Visibility = Visibility.Visible;
-            }
-            Userinteraction2 = false;
-        }
-
-        private void AnimatedTabControl_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if(!UserDoneInteraction)Userinteraction2 = true;
+            else return;
+            e.Handled = true;
         }
     }
 }

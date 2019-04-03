@@ -18,7 +18,6 @@ namespace FFXIVTool.Views
     /// </summary>
     public partial class SpecialControl : Flyout
     {
-        private bool Userinteraction2 = false;
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
         private ExdCsvReader _reader;
         private int _tribe;
@@ -244,6 +243,7 @@ namespace FFXIVTool.Views
         public void CharaMakeFeatureSelector2(int tribe, int gender, ExdCsvReader reader)
         {
             if (DidUserInteract) return;
+            CheckIncluded.IsChecked = false;
             DidUserInteract = true;
             _tribe = tribe;
             _gender = gender;
@@ -412,6 +412,7 @@ namespace FFXIVTool.Views
             if (FacePaintFeature.SelectedItem == null)
                 return;
             var Value = (FeatureSelect)FacePaintFeature.SelectedItem;
+            if (CheckIncluded.IsChecked == true) Value.ID += 128;
             CharacterDetails.FacePaint.value = (byte)Value.ID;
             string hexValue = Value.ID.ToString("X");
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.FacePaint), "byte", hexValue);
@@ -445,19 +446,19 @@ namespace FFXIVTool.Views
 
         private void AnimatedTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (HairTab.IsSelected&&Userinteraction2)
+            if (e.OriginalSource is TabControl)
             {
-                CharaMakeFeatureSelector(CharacterDetails.Clan.value, CharacterDetails.Gender.value, CharacterDetailsView._exdProvider);
+                if (HairTab.IsSelected)
+                {
+                    CharaMakeFeatureSelector(CharacterDetails.Clan.value, CharacterDetails.Gender.value, CharacterDetailsView._exdProvider);
+                }
+                else if (PaintTab.IsSelected)
+                {
+                    CharaMakeFeatureSelector2(CharacterDetails.Clan.value, CharacterDetails.Gender.value, CharacterDetailsView._exdProvider);
+                }
             }
-            else if (PaintTab.IsSelected && Userinteraction2)
-            {
-                CharaMakeFeatureSelector2(CharacterDetails.Clan.value, CharacterDetails.Gender.value, CharacterDetailsView._exdProvider);
-            }
-            Userinteraction2 = false;
-        }
-        private void AnimatedTabControl_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            Userinteraction2 = true;
+            else return;
+            e.Handled = true;
         }
         public void HairRandomPick(int tribe, int gender, ExdCsvReader reader)
         {
