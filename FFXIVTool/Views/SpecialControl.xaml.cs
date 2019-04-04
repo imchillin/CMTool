@@ -545,6 +545,10 @@ namespace FFXIVTool.Views
             try
             {
                 FacialFeatureView.Items.Clear();
+                if (FaceKey > 3 && tribeKey >= 2 || 
+                    FaceKey >= 6 && tribeKey == 1 && gender == 0 || 
+                    FaceKey >= 5 && tribeKey == 1 && gender == 1)
+                { MessageBox.Show("Face Type is not recognizable!"); DidUserInteract = false; return; }
                 var valuesAsList = Enum.GetValues(typeof(FacialEnums)).Cast<FacialEnums>().ToList();
                 foreach (var CharaFeature in _reader.CharaMakeFeatures2)
                 {
