@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 using FFXIVTool.Properties;
+using FFXIVTool.Utility;
 
 namespace FFXIVTool.ViewModel
 {
@@ -26,22 +27,19 @@ namespace FFXIVTool.ViewModel
         private static void ApplyBase(bool isDark)
         {
             new PaletteHelper().SetLightDark(isDark);
-            Settings.Default.Theme = !isDark ? "Light" : "Dark";
-            Settings.Default.Save();
+            SaveSettings.Default.Theme = !isDark ? "Light" : "Dark";
         }
 
         private static void ApplyPrimary(Swatch swatch)
         {
             new PaletteHelper().ReplacePrimaryColor(swatch);
-            Settings.Default.Primary = swatch.Name;
-            Settings.Default.Save();
+            SaveSettings.Default.Primary = swatch.Name;
         }
 
         private static void ApplyAccent(Swatch swatch)
         {
             new PaletteHelper().ReplaceAccentColor(swatch);
-            Settings.Default.Accent = swatch.Name;
-            Settings.Default.Save();
+            SaveSettings.Default.Accent = swatch.Name;
         }
 
     }

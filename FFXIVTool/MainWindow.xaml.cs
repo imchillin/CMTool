@@ -25,6 +25,8 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Configuration;
 using WepTuple = System.Tuple<int, int, int, int>;
+using System.ComponentModel;
+
 namespace FFXIVTool
 {
     /// <summary>
@@ -122,15 +124,16 @@ namespace FFXIVTool
         {
             this.Title = "SSTool v" + version + " By: Johto & LeonBlade";
             DataContext = new MainViewModel();
-            var accentColor = Properties.Settings.Default.Accent;
+            var settings = SaveSettings.Default;
+            var accentColor = settings.Accent;
             new PaletteHelper().ReplaceAccentColor(accentColor);
-            var primaryColor = Properties.Settings.Default.Primary;
+            var primaryColor = settings.Primary;
             new PaletteHelper().ReplacePrimaryColor(primaryColor);
-            var theme = Properties.Settings.Default.Theme;
+            var theme = settings.Theme;
             new PaletteHelper().SetLightDark(theme != "Light");
-            this.Topmost = Properties.Settings.Default.TopApp;
+            this.Topmost = settings.TopApp;
 			// toggle status
-			(DataContext as MainViewModel).ToggleStatus(Properties.Settings.Default.TopApp);
+			(DataContext as MainViewModel).ToggleStatus(settings.TopApp);
 		}
 
         private void CharacterRefreshButton_Click(object sender, RoutedEventArgs e)
@@ -193,7 +196,7 @@ namespace FFXIVTool
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             CurrentlySaving = true;
-            if (Properties.Settings.Default.WindowsExplorer)
+            if (SaveSettings.Default.WindowsExplorer)
             {
                 string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "SSTool", "Saves");
                 if (!Directory.Exists(path)) { System.IO.Directory.CreateDirectory(path); }
@@ -256,7 +259,7 @@ namespace FFXIVTool
         }
         private void LetsgoGear()
         {
-            if (!Properties.Settings.Default.WindowsExplorer)
+            if (!SaveSettings.Default.WindowsExplorer)
             {
                 Windows.GearsetChooseWindow fam = new Windows.GearsetChooseWindow("Select the saved gearset you want to load.");
                 fam.Owner = Application.Current.MainWindow;
@@ -415,7 +418,7 @@ namespace FFXIVTool
         }
         private void AllSaves()
         {
-            if (!Properties.Settings.Default.WindowsExplorer)
+            if (!SaveSettings.Default.WindowsExplorer)
             {
                 Windows.SaveChooseWindow fam = new Windows.SaveChooseWindow("Select saved Character[All].");
                 fam.Owner = Application.Current.MainWindow;
@@ -442,7 +445,7 @@ namespace FFXIVTool
         }
         private void Appereanco()
         {
-            if (!Properties.Settings.Default.WindowsExplorer)
+            if (!SaveSettings.Default.WindowsExplorer)
             {
                 Windows.SaveChooseWindow fam = new Windows.SaveChooseWindow("Select saved Character[Appearance].");
                 fam.Owner = Application.Current.MainWindow;
@@ -469,7 +472,7 @@ namespace FFXIVTool
         }
         private void Equipo()
         {
-            if (!Properties.Settings.Default.WindowsExplorer)
+            if (!SaveSettings.Default.WindowsExplorer)
             {
                 Windows.SaveChooseWindow fam = new Windows.SaveChooseWindow("Select the Character[Equipment].");
                 fam.Owner = Application.Current.MainWindow;
@@ -943,17 +946,17 @@ namespace FFXIVTool
 
 		private void AlwaysOnTop_Click(object sender, RoutedEventArgs e)
         {
-            if ((bool)Properties.Settings.Default.TopApp == false)
+            if ((bool)SaveSettings.Default.TopApp == false)
             {
-                Properties.Settings.Default.TopApp = true;
-                Properties.Settings.Default.Save();
+                SaveSettings.Default.TopApp = true;
+             //   Properties.Settings.Default.Save();
                 this.Topmost = true;
 				(DataContext as MainViewModel).ToggleStatus(true);
             }
             else
             {
-                Properties.Settings.Default.TopApp = false;
-                Properties.Settings.Default.Save();
+                SaveSettings.Default.TopApp = false;
+            //    Properties.Settings.Default.Save();
                 this.Topmost = false;
 				(DataContext as MainViewModel).ToggleStatus(false);
 			}
@@ -999,16 +1002,6 @@ namespace FFXIVTool
             NPCRefresh.IsEnabled = true;
             if (TargetButton.IsKeyboardFocusWithin || TargetButton.IsMouseOver)
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Add(MemoryManager.Instance.BaseAddress, CharacterDetailsViewModel.eOffset);
-        }
-
-        private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            Properties.Settings.Default.FavoriteEmotes.Clear();
-            StringCollection collection = new StringCollection();
-            List<int> distinct = EmoteFlyOut.integers.Distinct().ToList(); //remove any repeaters
-            collection.AddRange(distinct.Select(x => x.ToString()).ToArray());
-            Properties.Settings.Default.FavoriteEmotes = collection;
-            Properties.Settings.Default.Save();
         }
 
         private void ActualDiscordButton_Click(object sender, RoutedEventArgs e)

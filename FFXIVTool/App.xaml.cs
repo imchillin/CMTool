@@ -1,5 +1,6 @@
 ﻿using Ookii.Dialogs.Wpf;
 using System;
+using System.ComponentModel;
 using System.IO;
 using System.Windows;
 
@@ -34,6 +35,7 @@ namespace FFXIVTool
         }
         private void App_Exit(object sender, ExitEventArgs e)
         {
+            Utility.SaveSettings.Default.Save();
         }
         private static bool RequestGamePath()
         {

@@ -163,6 +163,7 @@
     <Compile Include="Utility\Mediator.cs" />
     <Compile Include="Utility\Memory.cs" />
     <Compile Include="Utility\MemoryManager.cs" />
+    <Compile Include="Utility\SaveSettings.cs" />
     <Compile Include="Utility\Settings.cs" />
     <Compile Include="Utility\ThreadWriting.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />

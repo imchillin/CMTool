@@ -1,4 +1,5 @@
-﻿using FFXIVTool.ViewModel;
+﻿using FFXIVTool.Utility;
+using FFXIVTool.ViewModel;
 using MaterialDesignColors;
 using MaterialDesignThemes.Wpf;
 using System;
@@ -30,7 +31,7 @@ namespace FFXIVTool.Views
         {
             InitializeComponent();
             DataContext = new PaletteSelectorViewModel();
-            if (Properties.Settings.Default.Theme == "Dark") ThemeButton.IsChecked = true;
+            if (SaveSettings.Default.Theme == "Dark") ThemeButton.IsChecked = true;
         }
     }
 }
