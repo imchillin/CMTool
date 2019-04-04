@@ -25,68 +25,6 @@ namespace FFXIVTool.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Light")]
-        public string Theme {
-            get {
-                return ((string)(this["Theme"]));
-            }
-            set {
-                this["Theme"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Blue")]
-        public string Primary {
-            get {
-                return ((string)(this["Primary"]));
-            }
-            set {
-                this["Primary"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Blue")]
-        public string Accent {
-            get {
-                return ((string)(this["Accent"]));
-            }
-            set {
-                this["Accent"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool TopApp {
-            get {
-                return ((bool)(this["TopApp"]));
-            }
-            set {
-                this["TopApp"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\n<ArrayOfString xmlns:xsi=\"http://www.w3.o" +
-            "rg/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n  <str" +
-            "ing>1</string>\n  <string>2</string>\n  <string>3</string>\n</ArrayOfString>")]
-        public global::System.Collections.Specialized.StringCollection FavoriteEmotes {
-            get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["FavoriteEmotes"]));
-            }
-            set {
-                this["FavoriteEmotes"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool UpgradeRequired {
             get {
@@ -94,18 +32,6 @@ namespace FFXIVTool.Properties {
             }
             set {
                 this["UpgradeRequired"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool WindowsExplorer {
-            get {
-                return ((bool)(this["WindowsExplorer"]));
-            }
-            set {
-                this["WindowsExplorer"] = value;
             }
         }
         
