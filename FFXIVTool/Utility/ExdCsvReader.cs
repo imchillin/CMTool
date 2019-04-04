@@ -69,7 +69,7 @@ namespace FFXIVTool.Utility
             public string ModelOff { get; set; }
             public int Gender { get; set; }
             public ItemType Type { get; set; }
-            public ImageSource Icon { get; set; }
+            public SaintCoinach.Imaging.ImageFile Icon { get; set; }
 
             public override string ToString()
             {
@@ -508,7 +508,7 @@ namespace FFXIVTool.Utility
                     SaintCoinach.Ex.Relational.IRelationalSheet sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet("Item");
                     foreach (SaintCoinach.Xiv.Item Parse in sheet)
                     {
-                        if (Parse.EquipSlotCategory.Key <= 0)continue;
+                        if (Parse.EquipSlotCategory.Key <= 0) continue;
                         var item = new Item();
                         item.Index = Parse.Key;
                         item.Name = Parse.Name;
@@ -523,10 +523,10 @@ namespace FFXIVTool.Utility
                             item.ModelMain = Parse.ModelMain.ToString();
                             item.ModelOff = Parse.ModelSub.ToString();
                         }
-                        item.Icon = CreateSource(Parse.Icon);
+                        item.Icon = Parse.Icon;
                         if (Parse.Description.ToString().Contains("♀")) item.Gender = 1;
                         else if (Parse.Description.ToString().Contains("♂")) item.Gender = 0;
-                        item.Gender = 2;
+                        else item.Gender = 2;
                         Items.Add(item.Index, item);
                     }
                 }

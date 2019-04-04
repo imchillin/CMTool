@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using GearTuple = System.Tuple<int, int, int>;
 using WepTuple = System.Tuple<int, int, int, int>;
 
@@ -35,6 +36,23 @@ namespace FFXIVTool.Views
             CurrentlyEquippedName.Visibility = Visibility.Hidden;
             EquippedLabel.Visibility = Visibility.Hidden;
         }
+        private static ImageSource CreateSource(SaintCoinach.Imaging.ImageFile file)
+        {
+            var argb = SaintCoinach.Imaging.ImageConverter.GetA8R8G8B8(file);
+            return System.Windows.Media.Imaging.BitmapSource.Create(
+                                       file.Width, file.Height,
+                96, 96,
+                PixelFormats.Bgra32, null,
+                argb, file.Width * 4);
+        }
+        public class Itemx
+        {
+            public int Index { get; set; }
+            public string Name { get; set; }
+            public string ModelMain { get; set; }
+            public string ModelOff { get; set; }
+            public ImageSource Icon { get; set; }
+        }
         public void GearPicker(ExdCsvReader.Item[] items)
         {
             EquipBox.Items.Clear();
@@ -43,12 +61,12 @@ namespace FFXIVTool.Views
             bool found = false;
             foreach (ExdCsvReader.Item game in _items)
             {
-                EquipBox.Items.Add(new ExdCsvReader.Item
+                EquipBox.Items.Add(new Itemx
                 {
                     Name = game.Name.ToString(),
                     ModelMain = game.ModelMain,
                     ModelOff = game.ModelOff,
-                    Icon = game.Icon
+                    Icon = CreateSource(game.Icon)
                 });
                 if(!found) // Only looking for a match once and will stop trying to match. 
                 {
