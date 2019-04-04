@@ -508,7 +508,7 @@ namespace FFXIVTool.Utility
                     SaintCoinach.Ex.Relational.IRelationalSheet sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet("Item");
                     foreach (SaintCoinach.Xiv.Item Parse in sheet)
                     {
-                        if (Parse.EquipSlotCategory <= 0)continue;
+                        if (Parse.EquipSlotCategory.Key <= 0)continue;
                         var item = new Item();
                         item.Index = Parse.Key;
                         item.Name = Parse.Name;

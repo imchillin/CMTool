@@ -24,7 +24,6 @@ namespace FFXIVTool.Views
         private ExdCsvReader.Resident[] _residents;
         public ExdCsvReader.Resident Choice = null;
         private bool isUserInteraction = false;
-        private bool Userinteraction2 = false;
         public static bool UserDoneInteraction = false;
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
 
