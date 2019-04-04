@@ -86,7 +86,7 @@
                             </ListView>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="FacePaint Selector" Name="PaintTab">
+                    <TabItem Header="Face Paint" Name="PaintTab">
                         <Grid Margin="-7,0,-4,-5">
                             <Grid.Background>
                                 <ImageBrush ImageSource="/FFXIVTool;component/Resources/Background.png">
@@ -98,6 +98,30 @@
                                     <DataTemplate>
                                         <StackPanel>
                                             <Image Source="{Binding FeatureImage}" Height="76" Width="76" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                                            <TextBlock Text="{Binding ID}" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel Orientation="Horizontal">
+                                        </WrapPanel>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                            </ListView>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Facial Feature" Name="FacialTab">
+                        <Grid Margin="-7,0,-4,-5">
+                            <Grid.Background>
+                                <ImageBrush ImageSource="/FFXIVTool;component/Resources/Background.png">
+                                </ImageBrush>
+                            </Grid.Background>
+                            <ListView x:Name="FacialFeatureView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="3,22,6,0" SelectionMode="Multiple" SelectionChanged="FacialFeatureView_SelectionChanged">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <Image Source="{Binding FeatureImage}" Height="95" Width="95" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                                             <TextBlock Text="{Binding ID}" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15"/>
                                         </StackPanel>
                                     </DataTemplate>

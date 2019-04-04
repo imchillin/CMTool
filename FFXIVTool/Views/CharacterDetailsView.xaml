@@ -182,5 +182,6 @@
         <Label Content="Emote Checker:" HorizontalAlignment="Left" Margin="540,314,0,0" VerticalAlignment="Top"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" IsEnabled="False" HorizontalAlignment="Left" Height="26" Margin="642,315,0,0" TextWrapping="Wrap" Text="{Binding Path=CharacterDetails.EmoteX.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="64" TextAlignment="Center"/>
         <Views:SpecialControl x:Name="SpecialControl" Width="583" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Margin="531,0,0,-12"/>
+        <Button x:Name="FacialFeature" Content="Search" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="454,209,0,0" VerticalAlignment="Top" Width="75" Height="21" Padding="16,-1,16,4" Click="FacialFeature_Click"/>
     </Grid>
 </UserControl>

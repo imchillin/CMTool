@@ -122,6 +122,16 @@ namespace FFXIVTool.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Legacy {
+            get {
+                object obj = ResourceManager.GetObject("Legacy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Index,0 [STRING(0x0)][0x0],1
         ///0,&quot;Player&quot;
         ///1,&quot;Chocobo&quot;

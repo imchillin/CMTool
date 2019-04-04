@@ -819,5 +819,24 @@ namespace FFXIVTool.Views
 
             }
         }
+
+        private void FacialFeature_Click(object sender, RoutedEventArgs e)
+        {
+            if (SpecialControl.IsOpen)
+            {
+                if (!SpecialControl.FacialTab.IsSelected)
+                {
+                    SpecialControl.FacialTab.IsSelected = true;
+                    SpecialControl.CharaMakeFeatureSelector3(CharacterDetails.Head.value, CharacterDetails.Race.value, CharacterDetails.Clan.value, CharacterDetails.Gender.value, _exdProvider);
+                }
+                else SpecialControl.IsOpen = !SpecialControl.IsOpen;
+            }
+            else
+            {
+                SpecialControl.IsOpen = !SpecialControl.IsOpen;
+                SpecialControl.FacialTab.IsSelected = true;
+                SpecialControl.CharaMakeFeatureSelector3(CharacterDetails.Head.value, CharacterDetails.Race.value, CharacterDetails.Clan.value, CharacterDetails.Gender.value, _exdProvider);
+            }
+        }
     }
 }

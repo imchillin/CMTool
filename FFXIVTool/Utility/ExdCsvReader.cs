@@ -116,6 +116,19 @@ namespace FFXIVTool.Utility
             public int FeatureID { get; set; }
             public ImageSource Icon { get; set; }
         }
+        public class Features
+        {
+            public int FeatureID { get; set; }
+            public ImageSource Icon { get; set; }
+        }
+        public class CharaMakeCustomizeFeature2
+        {
+            public int Index { get; set; }
+            public int Race { get; set; }
+            public int Gender { get; set; }
+            public int Tribe { get; set; }
+            public List <Features> Features { get; set; }
+        }
         public class Dye
         {
             public int Index { get; set; }
@@ -180,6 +193,7 @@ namespace FFXIVTool.Utility
         public Dictionary<int, Emote> Emotes = null;
         public Dictionary<int, Resident> Residents = null;
         public Dictionary<int, CharaMakeCustomizeFeature> CharaMakeFeatures = null;
+        public Dictionary<int, CharaMakeCustomizeFeature2> CharaMakeFeatures2 = null;
         public Dictionary<int, Race> Races = null;
         public Dictionary<int, Tribe> Tribes = null;
         public Dictionary<int, Monster> Monsters = null;
@@ -194,7 +208,39 @@ namespace FFXIVTool.Utility
                 argb, file.Width * 4);
         }
 
-
+        public void MakeCharaMakeFeatureFacialList()
+        {
+            CharaMakeFeatures2 = new Dictionary<int, CharaMakeCustomizeFeature2>();
+            try
+            {
+                SaintCoinach.Ex.Relational.IRelationalSheet sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet("CharaMakeType");
+                foreach (var test in sheet)
+                {
+                 //   rowCount++;
+                    CharaMakeCustomizeFeature2 feature = new CharaMakeCustomizeFeature2();
+                    var testt = (SaintCoinach.Xiv.CharaMakeType)test;
+                    feature.Index = testt.Key;
+                    feature.Gender = testt.Gender;
+                    feature.Race = testt.Race.Key;
+                    feature.Tribe = testt.Tribe.Key;
+                    //Console.WriteLine($"{testt.Key},{testt.FeatureID}");
+                    feature.Features = new List<Features>();
+                    foreach (var Parse in testt.FacialFeatureIcon)
+                    {
+                      //  Console.WriteLine(Parse.FacialFeatureIcon.Height);
+                        feature.Features.Add(new Features {FeatureID=Parse.Count, Icon = CreateSource(Parse.FacialFeatureIcon)});
+                    }
+                    CharaMakeFeatures2.Add(testt.Key, feature);
+                }
+            }
+            catch (Exception exc)
+            {
+                CharaMakeFeatures2 = null;
+#if DEBUG
+                throw exc;
+#endif
+            }
+        }
         public void MakeCharaMakeFeatureList()
         {
             CharaMakeFeatures = new Dictionary<int, CharaMakeCustomizeFeature>();
