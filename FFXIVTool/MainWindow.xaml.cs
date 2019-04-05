@@ -977,6 +977,41 @@ namespace FFXIVTool
             if (TargetButton.IsChecked == true) TargetButton.IsChecked = false;
             CharacterRefreshButton.IsEnabled = false;
             NPCRefresh.IsEnabled = false;
+
+            MainViewModel.ViewTime.HairSelectButton.IsEnabled = false;
+            MainViewModel.ViewTime.HighLightButton.IsEnabled = false;
+            MainViewModel.ViewTime.ModelTypeButton.IsEnabled = false;
+            MainViewModel.ViewTime.HighlightcolorSearch.IsEnabled = false;
+            MainViewModel.ViewTime.LeftEyeSearch.IsEnabled = false;
+            MainViewModel.ViewTime.LimbalEyeSearch.IsEnabled = false;
+            MainViewModel.ViewTime.RightEyeSearch.IsEnabled = false;
+            MainViewModel.ViewTime.SkinSearch.IsEnabled = false;
+            MainViewModel.ViewTime.FacePaint_Color.IsEnabled = false;
+            MainViewModel.ViewTime.FacePaint_Color_Copy.IsEnabled = false;
+            MainViewModel.ViewTime.FacialFeature.IsEnabled = false;
+            MainViewModel.ViewTime.LipColorSearch.IsEnabled = false;
+            MainViewModel.ViewTime.HairColorSearch.IsEnabled = false;
+            MainViewModel.ViewTime.SpecialControl.IsOpen = false;
+            MainViewModel.ViewTime.SpecialControl.AnimatedTabControl.SelectedIndex = -1;
+
+            MainViewModel.ViewTime2.BodySearch.IsEnabled = false;
+            MainViewModel.ViewTime2.EarSearch.IsEnabled = false;
+            MainViewModel.ViewTime2.FeetSearch.IsEnabled = false;
+            MainViewModel.ViewTime2.HandSearch.IsEnabled = false;
+            MainViewModel.ViewTime2.HeadSearch.IsEnabled = false;
+            MainViewModel.ViewTime2.LeftSearch.IsEnabled = false;
+            MainViewModel.ViewTime2.LegsSearch.IsEnabled = false;
+            MainViewModel.ViewTime2.MainSearch.IsEnabled = false;
+            MainViewModel.ViewTime2.NeckSearch.IsEnabled = false;
+            MainViewModel.ViewTime2.OffSearch.IsEnabled = false;
+            MainViewModel.ViewTime2.PropSearch.IsEnabled = false;
+            MainViewModel.ViewTime2.PropSearchOH.IsEnabled = false;
+            MainViewModel.ViewTime2.RightSearch.IsEnabled = false;
+            MainViewModel.ViewTime2.WristSearch.IsEnabled = false;
+            MainViewModel.ViewTime2.NPC_Click.IsEnabled = false;
+            MainViewModel.ViewTime2.EquipmentControl.IsOpen = false;
+            MainViewModel.ViewTime2.EquipmentControl.AnimatedTabControl.SelectedIndex = -1;
+
             CharacterDetailsViewModel.baseAddr = MemoryManager.Instance.GposeAddress;
         }
 
@@ -984,6 +1019,34 @@ namespace FFXIVTool
         {
             CharacterRefreshButton.IsEnabled = true;
             NPCRefresh.IsEnabled = true;
+            MainViewModel.ViewTime.HairSelectButton.IsEnabled = true;
+            MainViewModel.ViewTime.HighLightButton.IsEnabled = true;
+            MainViewModel.ViewTime.ModelTypeButton.IsEnabled = true;
+            MainViewModel.ViewTime.HighlightcolorSearch.IsEnabled = true;
+            MainViewModel.ViewTime.LeftEyeSearch.IsEnabled = true;
+            MainViewModel.ViewTime.LimbalEyeSearch.IsEnabled = true;
+            MainViewModel.ViewTime.RightEyeSearch.IsEnabled = true;
+            MainViewModel.ViewTime.SkinSearch.IsEnabled = true;
+            MainViewModel.ViewTime.FacePaint_Color.IsEnabled = true;
+            MainViewModel.ViewTime.FacePaint_Color_Copy.IsEnabled = true;
+            MainViewModel.ViewTime.FacialFeature.IsEnabled = true;
+            MainViewModel.ViewTime.LipColorSearch.IsEnabled = true;
+            MainViewModel.ViewTime.HairColorSearch.IsEnabled = true;
+            MainViewModel.ViewTime2.BodySearch.IsEnabled = true;
+            MainViewModel.ViewTime2.EarSearch.IsEnabled = true;
+            MainViewModel.ViewTime2.FeetSearch.IsEnabled = true;
+            MainViewModel.ViewTime2.HandSearch.IsEnabled = true;
+            MainViewModel.ViewTime2.HeadSearch.IsEnabled = true;
+            MainViewModel.ViewTime2.LeftSearch.IsEnabled = true;
+            MainViewModel.ViewTime2.LegsSearch.IsEnabled = true;
+            MainViewModel.ViewTime2.MainSearch.IsEnabled = true;
+            MainViewModel.ViewTime2.NeckSearch.IsEnabled = true;
+            MainViewModel.ViewTime2.OffSearch.IsEnabled = true;
+            MainViewModel.ViewTime2.PropSearch.IsEnabled = true;
+            MainViewModel.ViewTime2.PropSearchOH.IsEnabled = true;
+            MainViewModel.ViewTime2.RightSearch.IsEnabled = true;
+            MainViewModel.ViewTime2.WristSearch.IsEnabled = true;
+            MainViewModel.ViewTime2.NPC_Click.IsEnabled = true;
             if (GposeButton.IsKeyboardFocusWithin || GposeButton.IsMouseOver)
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Add(MemoryManager.Instance.BaseAddress, CharacterDetailsViewModel.eOffset);
         }
