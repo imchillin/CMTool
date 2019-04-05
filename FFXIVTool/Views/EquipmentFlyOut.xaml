@@ -43,18 +43,18 @@
                             <CheckBox Content="Include OffHand" Name="CheckIncluded" HorizontalAlignment="Left" Margin="181,11,0,0" VerticalAlignment="Top" Width="171"/>
                             <DataGrid x:Name="EquipBox" HorizontalAlignment="Left" Height="270" Margin="-6,42,0,0" VerticalAlignment="Top" Width="478" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden" SelectionChanged="EquipBox_SelectionChanged">
                                 <DataGrid.Columns>
-                                    <DataGridTemplateColumn Width="58" CanUserSort="False" Header="Icon">
+                                    <DataGridTemplateColumn Width="68" CanUserSort="False" Header="Icon">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
                                                 <Image Source="{Binding Path=Icon}" Width="38" Height="38"/>
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
-                                    <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="1.9*" />
+                                    <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="2.4*" />
                                     <DataGridTextColumn Header="Model Values" Binding="{Binding Path=ModelMain}" Width="*"/>
                                 </DataGrid.Columns>
                             </DataGrid>
-                            <TextBox x:Name="SearchModelBox" materialDesign:HintAssist.Hint="Search..." Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="31" Margin="2,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="461" TextChanged="SearchModelBox_TextChanged" BorderThickness="0,1"/>
+                            <TextBox x:Name="SearchModelBox" materialDesign:HintAssist.Hint="Search..." VerticalAlignment="Top" Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Margin="2,313,0,0" TextWrapping="Wrap" Width="461" TextChanged="SearchModelBox_TextChanged" BorderThickness="0,1" Height="27"/>
                             <ComboBox materialDesign:HintAssist.Hint="Select Type" x:Name="EquipBoxC" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="154" SelectionChanged="EquipBoxC_SelectionChanged" PreviewMouseDown="EquipBoxC_PreviewMouseDown">
                                 <ComboBoxItem Content="Main Hand"/>
                                 <ComboBoxItem Content="Off Hand"/>
