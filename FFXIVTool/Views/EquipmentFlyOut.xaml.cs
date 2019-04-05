@@ -491,7 +491,7 @@ namespace FFXIVTool.Views
             {
                 if (EquipBox.SelectedItem == null)
                     return;
-                var Value = (ExdCsvReader.Item)EquipBox.SelectedItem;
+                var Value = (Itemx)EquipBox.SelectedItem;
                 if (EquipBoxC.SelectedIndex == 0)
                 {
                     CharacterDetails.WeaponSlot.value = Value.ModelMain;
