@@ -62,12 +62,12 @@ namespace FFXIVTool.ViewModel
         }
         private void Initialize(ARealmReversed realm)
         {
-            realm.Packs.GetPack(new SaintCoinach.IO.PackIdentifier("exd", SaintCoinach.IO.PackIdentifier.DefaultExpansion, 0)).KeepInMemory = true;
             if (!realm.IsCurrentVersion)
             {
                 const bool IncludeDataChanges = true;
                 var updateReport = realm.Update(IncludeDataChanges);
             }
+            realm.Packs.GetPack(new SaintCoinach.IO.PackIdentifier("exd", SaintCoinach.IO.PackIdentifier.DefaultExpansion, 0)).KeepInMemory = true;
             Realm = realm;
             CharacterDetailsView._exdProvider.RaceList();
             CharacterDetailsView._exdProvider.TribeList();

@@ -151,7 +151,7 @@ namespace FFXIVTool
             Processcheck = 0;
             foreach (Process theprocess in processlist)
             {
-                if (theprocess.ProcessName.Contains("ffxiv_dx11"))
+                if (theprocess.ProcessName.ToLower().Contains("ffxiv_dx11"))
                 {
                     Processcheck++;
                     GameList.Add(new ProcessLooker.Game() { ProcessName = theprocess.ProcessName, ID = theprocess.Id, StartTime = theprocess.StartTime, AppIcon = IconToImageSource(System.Drawing.Icon.ExtractAssociatedIcon(theprocess.MainModule.FileName)) });
