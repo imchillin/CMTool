@@ -3,6 +3,7 @@ using System;
 using System.ComponentModel;
 using System.IO;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace FFXIVTool
 {
@@ -13,6 +14,7 @@ namespace FFXIVTool
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+            Application.Current.DispatcherUnhandledException += Application_DispatcherUnhandledException;
             if (!RequestGamePath())
             {
                 MainWindow = null;
@@ -23,6 +25,27 @@ namespace FFXIVTool
 
             this.Exit += App_Exit;
         }
+        private void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            if (e.Exception != null)
+            {
+                using (StreamWriter writer = new StreamWriter("ErrorLog.txt", true))
+                {
+                    writer.WriteLine("-----------Start-----------" + DateTime.Now);
+                    writer.WriteLine("Error Message: " + e.Exception.Message);
+                    writer.WriteLine("Stack Trace: " + e.Exception.StackTrace);
+                    if (e.Exception.InnerException != null)
+                    {
+                        writer.WriteLine("-----------Inner Exception-----------" + DateTime.Now);
+                        writer.WriteLine("Inner Exception Message: " + e.Exception.InnerException.Message);
+                        writer.WriteLine("Inner Exception Message: " + e.Exception.InnerException.StackTrace);
+                    }
+                    writer.WriteLine("-----------End-----------" + DateTime.Now);
+                }
+            }
+            e.Handled = true;
+        }
+
         public static bool IsValidGamePath(string path)
         {
             if (string.IsNullOrWhiteSpace(path))
