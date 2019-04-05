@@ -38,6 +38,7 @@ namespace FFXIVTool.Views
         }
         private static ImageSource CreateSource(SaintCoinach.Imaging.ImageFile file)
         {
+            if (file == null) return null;
             var argb = SaintCoinach.Imaging.ImageConverter.GetA8R8G8B8(file);
             return System.Windows.Media.Imaging.BitmapSource.Create(
                                        file.Width, file.Height,
