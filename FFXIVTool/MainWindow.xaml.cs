@@ -979,7 +979,6 @@ namespace FFXIVTool
             NPCRefresh.IsEnabled = false;
 
             MainViewModel.ViewTime.HairSelectButton.IsEnabled = false;
-            MainViewModel.ViewTime.HighLightButton.IsEnabled = false;
             MainViewModel.ViewTime.ModelTypeButton.IsEnabled = false;
             MainViewModel.ViewTime.HighlightcolorSearch.IsEnabled = false;
             MainViewModel.ViewTime.LeftEyeSearch.IsEnabled = false;
@@ -1020,7 +1019,6 @@ namespace FFXIVTool
             CharacterRefreshButton.IsEnabled = true;
             NPCRefresh.IsEnabled = true;
             MainViewModel.ViewTime.HairSelectButton.IsEnabled = true;
-            MainViewModel.ViewTime.HighLightButton.IsEnabled = true;
             MainViewModel.ViewTime.ModelTypeButton.IsEnabled = true;
             MainViewModel.ViewTime.HighlightcolorSearch.IsEnabled = true;
             MainViewModel.ViewTime.LeftEyeSearch.IsEnabled = true;
