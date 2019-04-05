@@ -11,7 +11,7 @@ namespace FFXIVTool.Utility
         public static SaveSettings Default { get; } = Load();
 
         private static string FileName => Path.Combine(
-            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "FFXIVTools", "settings.json");
+            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "FFXIVTool", "settings.json");
 
         private static SaveSettings Load()
         {
