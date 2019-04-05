@@ -26,26 +26,13 @@ namespace FFXIVTool.Views
         public CharacterDetailsView()
         {
             InitializeComponent();
-            _exdProvider.RaceList();
-            _exdProvider.TribeList();
-            _exdProvider.MakeCharaMakeFeatureList();
             _exdProvider.MonsterList();
-            _exdProvider.MakeWeatherList();
-            _exdProvider.MakeWeatherRateList();
-            _exdProvider.MakeTerritoryTypeList();
+            MainViewModel.ViewTime = this;
             ExdCsvReader.MonsterX = _exdProvider.Monsters.Values.ToArray();
             CharacterDetailsViewModel.Viewtime = this;
             DispatcherTimer timer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(40) };
             timer.Tick += delegate
             {
-                for (int i = 0; i < _exdProvider.Races.Count; i++)
-                {
-                    RaceBox.Items.Add(_exdProvider.Races[i].Name);
-                }
-                for (int i = 0; i < _exdProvider.Tribes.Count; i++)
-                {
-                    ClanBox.Items.Add(_exdProvider.Tribes[i].Name);
-                }
                 foreach (ExdCsvReader.Monster xD in ExdCsvReader.MonsterX)
                 {
                     if (xD.Real == true)
@@ -552,7 +539,26 @@ namespace FFXIVTool.Views
                 SpecialControl.ClanBox.SelectedIndex = 6;
             }
         }
-
+        private void FaceSelectButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (SpecialControl.IsOpen)
+            {
+                if (!SpecialControl.PaintTab.IsSelected)
+                {
+                    SpecialControl.PaintTab.IsSelected = true;
+                    SpecialControl.CheckIncluded.IsChecked = false;
+                    SpecialControl.CharaMakeFeatureSelector2(CharacterDetails.Clan.value, CharacterDetails.Gender.value, _exdProvider);
+                }
+                else SpecialControl.IsOpen = !SpecialControl.IsOpen;
+            }
+            else
+            {
+                SpecialControl.IsOpen = !SpecialControl.IsOpen;
+                SpecialControl.PaintTab.IsSelected = true;
+                SpecialControl.CheckIncluded.IsChecked = false;
+                SpecialControl.CharaMakeFeatureSelector2(CharacterDetails.Clan.value, CharacterDetails.Gender.value, _exdProvider);
+            }
+        }
         private void HairSelectButton_Click_1(object sender, RoutedEventArgs e)
         {
             if (SpecialControl.IsOpen)
@@ -811,6 +817,25 @@ namespace FFXIVTool.Views
                 var line = frame.GetFileLineNumber();
                 System.Windows.MessageBox.Show(ex.Message + "\n" + ex.StackTrace + frame + line, "Oh no!");
 
+            }
+        }
+
+        private void FacialFeature_Click(object sender, RoutedEventArgs e)
+        {
+            if (SpecialControl.IsOpen)
+            {
+                if (!SpecialControl.FacialTab.IsSelected)
+                {
+                    SpecialControl.FacialTab.IsSelected = true;
+                    SpecialControl.CharaMakeFeatureSelector3(CharacterDetails.Head.value, CharacterDetails.Race.value, CharacterDetails.Clan.value, CharacterDetails.Gender.value, _exdProvider);
+                }
+                else SpecialControl.IsOpen = !SpecialControl.IsOpen;
+            }
+            else
+            {
+                SpecialControl.IsOpen = !SpecialControl.IsOpen;
+                SpecialControl.FacialTab.IsSelected = true;
+                SpecialControl.CharaMakeFeatureSelector3(CharacterDetails.Head.value, CharacterDetails.Race.value, CharacterDetails.Clan.value, CharacterDetails.Gender.value, _exdProvider);
             }
         }
     }

@@ -18,11 +18,12 @@ namespace FFXIVTool.Views
     /// </summary>
     public partial class SpecialControl : Flyout
     {
-        private bool Userinteraction2 = false;
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
         private ExdCsvReader _reader;
         private int _tribe;
         private int _gender;
+        private int _race;
+        private int _face;
         private int _startIndex;
         public int Choice = -1;
         private bool DidUserInteract = false;
@@ -32,6 +33,11 @@ namespace FFXIVTool.Views
         internal static extern bool DeleteObject(IntPtr value);
 
         public class FeatureSelect
+        {
+            public int ID { get; set; }
+            public ImageSource FeatureImage { get; set; }
+        }
+        public class Features
         {
             public int ID { get; set; }
             public ImageSource FeatureImage { get; set; }
@@ -241,7 +247,29 @@ namespace FFXIVTool.Views
 
             FillHairStyle();
         }
+        public void CharaMakeFeatureSelector2(int tribe, int gender, ExdCsvReader reader)
+        {
+            if (DidUserInteract) return;
+            CheckIncluded.IsChecked = false;
+            DidUserInteract = true;
+            _tribe = tribe;
+            _gender = gender;
+            _reader = reader;
 
+            FillFacePaint();
+        }
+        public void CharaMakeFeatureSelector3(int face ,int race, int tribe, int gender, ExdCsvReader reader)
+        {
+            if (DidUserInteract) return;
+            CheckIncluded.IsChecked = false;
+            DidUserInteract = true;
+            _tribe = tribe;
+            _gender = gender;
+            _reader = reader;
+            _race = race;
+            _face = face;
+            FillFacialFeature(_face, tribe, gender);
+        }
         ExdCsvReader.CharaMakeCustomizeFeature GetFeature(int startIndex, int length, byte dataKey)
         {
             if (dataKey == 0)
@@ -260,7 +288,24 @@ namespace FFXIVTool.Views
 
             return null; // Not found - custom.
         }
+        ExdCsvReader.CharaMakeCustomizeFeature2 GetFeature2(int startIndex, int length, byte dataKey)
+        {
+            if (dataKey == 0)
+                return null; // Custom or not specified.
 
+            for (var i = 1; i < length; i++)
+            {
+                // Debug.WriteLine(startIndex + i);
+                var feature = _reader.CharaMakeFeatures2[startIndex + i];
+
+                if (feature.Race == dataKey)
+                {
+                    return feature;
+                }
+            }
+
+            return null; // Not found - custom.
+        }
         int GetHairstyleCustomizeIndex(int tribeKey, bool isMale)
         {
             switch (tribeKey)
@@ -288,7 +333,66 @@ namespace FFXIVTool.Views
 
             throw new NotImplementedException();
         }
+        int GetFacePaintByIndex(int tribeKey, bool isMale)
+        {
+            switch (tribeKey)
+            {
+                case 1: // Midlander
+                    return isMale ? 1400 : 1450;
+                case 2: // Highlander
+                    return isMale ? 1500 : 1550;
+                case 3: // Wildwood
+                    return isMale ? 1600 : 1650; 
+                case 4: // Duskwight
+                    return isMale ? 1700 : 1750;
+                case 5: // Plainsfolks
+                    return isMale ? 1800 : 1850;
+                case 6: // Dunesfolk
+                    return isMale ? 1900 : 1950;
+                case 7: // Seeker of the Sun
+                    return isMale ? 2000 : 2050; 
+                case 8: // Keeper of the Moon
+                    return isMale ? 2100 : 2150;
+                case 9: // Sea Wolf
+                    return isMale ? 2200 : 2250;
+                case 10: // Hellsguard
+                    return isMale ? 2300 : 2350;
+                case 11: // Raen
+                    return isMale ? 2400 : 2450;
+                case 12: // Xaela
+                    return isMale ? 2500 : 2550;
+            }
 
+            throw new NotImplementedException();
+        }
+        public void FillFacePaint()
+        {
+            try
+            {
+                FacePaintFeature.Items.Clear();
+                int added = 0;
+                for (int i = 0; i < 200; i++)
+                {
+                    if (i == 0)
+                    {
+                        FacePaintFeature.Items.Add(new FeatureSelect() { ID = 0, FeatureImage = GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Nope")) });
+                        added++;
+                        continue;
+                    }
+                    var feature = GetFeature(GetFacePaintByIndex(_tribe, _gender == 0), 50, (byte)i);
+
+                    if (feature == null)
+                        continue;
+                    FacePaintFeature.Items.Add(new FeatureSelect() { ID = feature.FeatureID, FeatureImage = feature.Icon });
+                    added++;
+                }
+                DidUserInteract = false;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
         public void FillHairStyle()
         {
             try
@@ -301,7 +405,7 @@ namespace FFXIVTool.Views
 
                     if (feature == null)
                         continue;
-                    CharacterFeature.Items.Add(new FeatureSelect() { ID = feature.FeatureID, FeatureImage = GetImageStream(feature.Icon) });
+                    CharacterFeature.Items.Add(new FeatureSelect() { ID = feature.FeatureID, FeatureImage = feature.Icon });
                     added++;
                 }
                 DidUserInteract = false;
@@ -339,7 +443,16 @@ namespace FFXIVTool.Views
             string hexValue = Value.ID.ToString("X");
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Hair),"byte", hexValue);
         }
-
+        private void CharacterFeature2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (FacePaintFeature.SelectedItem == null)
+                return;
+            var Value = (FeatureSelect)FacePaintFeature.SelectedItem;
+            if (CheckIncluded.IsChecked == true) Value.ID += 128;
+            CharacterDetails.FacePaint.value = (byte)Value.ID;
+            string hexValue = Value.ID.ToString("X");
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.FacePaint), "byte", hexValue);
+        }
         private void ModelBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ModelBox.SelectedCells.Count > 0)
@@ -369,15 +482,20 @@ namespace FFXIVTool.Views
 
         private void AnimatedTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (HairTab.IsSelected&&Userinteraction2)
+            if (e.OriginalSource is TabControl)
             {
-                CharaMakeFeatureSelector(CharacterDetails.Clan.value, CharacterDetails.Gender.value, CharacterDetailsView._exdProvider);
+                if (HairTab.IsSelected)
+                {
+                    CharaMakeFeatureSelector(CharacterDetails.Clan.value, CharacterDetails.Gender.value, CharacterDetailsView._exdProvider);
+                }
+                else if (PaintTab.IsSelected)
+                {
+                    CheckIncluded.IsChecked = false;
+                    CharaMakeFeatureSelector2(CharacterDetails.Clan.value, CharacterDetails.Gender.value, CharacterDetailsView._exdProvider);
+                }
             }
-            Userinteraction2 = false;
-        }
-        private void AnimatedTabControl_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            Userinteraction2 = true;
+            else return;
+            e.Handled = true;
         }
         public void HairRandomPick(int tribe, int gender, ExdCsvReader reader)
         {
@@ -397,7 +515,7 @@ namespace FFXIVTool.Views
 
                     if (feature == null)
                         continue;
-                    CharacterFeature.Items.Add(new FeatureSelect() { ID = feature.FeatureID, FeatureImage = GetImageStream(feature.Icon) });
+                    CharacterFeature.Items.Add(new FeatureSelect() { ID = feature.FeatureID, FeatureImage = feature.Icon });
                     added++;
                 }
                 DidUserInteract = false;
@@ -411,6 +529,70 @@ namespace FFXIVTool.Views
             {
                 throw e;
             }
+        }
+        private enum FacialEnums
+        {
+            Feature1 = 1,
+            Feature2 = 2,
+            Feature3 = 4,
+            Feature4 = 8,
+            Feature5 = 16,
+            ExtraFeature = 32,
+            ExtraFeature2 = 64
+        }
+        public void FillFacialFeature(int FaceKey, int tribeKey, int gender)
+        {
+            try
+            {
+                FacialFeatureView.Items.Clear();
+                if (FaceKey > 3 && tribeKey >= 2 ||
+                    FaceKey >= 6 && tribeKey == 1 && gender == 0 ||
+                    FaceKey >= 5 && tribeKey == 1 && gender == 1) { FaceKey = 0; }
+                var valuesAsList = Enum.GetValues(typeof(FacialEnums)).Cast<FacialEnums>().ToList();
+                foreach (var CharaFeature in _reader.CharaMakeFeatures2)
+                {
+                    if (tribeKey != CharaFeature.Value.Tribe) continue;
+                    if (tribeKey == CharaFeature.Value.Tribe && gender == CharaFeature.Value.Gender)
+                    {
+                        FacialFeatureView.Items.Add(new Features() { ID = 0, FeatureImage = GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Nope")) });
+                        for (int i = 0; i < 7;)
+                        {
+                            int ki = FaceKey + (i * 6);
+                            int NewID = (int)valuesAsList[i];
+                            FacialFeatureView.Items.Add(new Features() { ID = NewID, FeatureImage = CharaFeature.Value.Features[ki].Icon });
+                            i++;
+                        }
+                        FacialFeatureView.Items.Add(new Features() { ID = 128, FeatureImage = GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Legacy")) });
+                    }
+                }
+                DidUserInteract = false;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        private void FacialFeatureView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (FacialFeatureView.SelectedItem == null)
+                return;
+            byte result = 0;
+            foreach (Features r in FacialFeatureView.SelectedItems)
+            {
+                if (r.ID == 0)
+                {
+                    FacialFeatureView.SelectedIndex = -1;
+                    CharacterDetails.FacialFeatures.value = 0;
+                    MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.FacialFeatures), "byte", "0");
+                    return;
+                }
+                else
+                    result += (byte)r.ID;
+            }
+            CharacterDetails.FacialFeatures.value = (byte)result;
+            string hexValue = result.ToString("X");
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.FacialFeatures), "byte", hexValue);
+            e.Handled = true;
         }
     }
 }

@@ -14,7 +14,7 @@
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:Views="clr-namespace:FFXIVTool.Views"
         mc:Ignorable="d"
-        Height="584" Width="1115" Loaded="MetroWindow_Loaded" Icon="ffxivmeteorlogo.ico" ResizeMode="CanMinimize" Closing="MetroWindow_Closing">
+        Height="584" Width="1115" Loaded="MetroWindow_Loaded" Icon="ffxivmeteorlogo.ico" ResizeMode="CanMinimize">
     <Grid>
         <TabControl TabStripPlacement="Top" Margin="0,48,0,0" Background="{DynamicResource MaterialDesignPaper}" DataContext="{Binding Path=CharacterDetails}">
             <TabItem Header="Character">

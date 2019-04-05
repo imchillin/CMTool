@@ -58,7 +58,8 @@ namespace FFXIVTool.Utility
             Ears,
             Neck,
             Wrists,
-            Ring
+            Ring,
+            Trash,
         }
         public class Item
         {
@@ -68,6 +69,7 @@ namespace FFXIVTool.Utility
             public string ModelOff { get; set; }
             public int Gender { get; set; }
             public ItemType Type { get; set; }
+            public SaintCoinach.Imaging.ImageFile Icon { get; set; }
 
             public override string ToString()
             {
@@ -112,7 +114,20 @@ namespace FFXIVTool.Utility
         {
             public int Index { get; set; }
             public int FeatureID { get; set; }
-            public Image Icon { get; set; }
+            public ImageSource Icon { get; set; }
+        }
+        public class Features
+        {
+            public int FeatureID { get; set; }
+            public ImageSource Icon { get; set; }
+        }
+        public class CharaMakeCustomizeFeature2
+        {
+            public int Index { get; set; }
+            public int Race { get; set; }
+            public int Gender { get; set; }
+            public int Tribe { get; set; }
+            public List <Features> Features { get; set; }
         }
         public class Dye
         {
@@ -178,55 +193,71 @@ namespace FFXIVTool.Utility
         public Dictionary<int, Emote> Emotes = null;
         public Dictionary<int, Resident> Residents = null;
         public Dictionary<int, CharaMakeCustomizeFeature> CharaMakeFeatures = null;
+        public Dictionary<int, CharaMakeCustomizeFeature2> CharaMakeFeatures2 = null;
         public Dictionary<int, Race> Races = null;
         public Dictionary<int, Tribe> Tribes = null;
         public Dictionary<int, Monster> Monsters = null;
         public Dictionary<int, BGM> BGMs = null;
+        private static ImageSource CreateSource(SaintCoinach.Imaging.ImageFile file)
+        {
+            var argb = SaintCoinach.Imaging.ImageConverter.GetA8R8G8B8(file);
+            return System.Windows.Media.Imaging.BitmapSource.Create(
+                                       file.Width, file.Height,
+                96, 96,
+                PixelFormats.Bgra32, null,
+                argb, file.Width * 4);
+        }
 
-
+        public void MakeCharaMakeFeatureFacialList()
+        {
+            CharaMakeFeatures2 = new Dictionary<int, CharaMakeCustomizeFeature2>();
+            try
+            {
+                SaintCoinach.Ex.Relational.IRelationalSheet sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet("CharaMakeType");
+                foreach (var test in sheet)
+                {
+                 //   rowCount++;
+                    CharaMakeCustomizeFeature2 feature = new CharaMakeCustomizeFeature2();
+                    var testt = (SaintCoinach.Xiv.CharaMakeType)test;
+                    feature.Index = testt.Key;
+                    feature.Gender = testt.Gender;
+                    feature.Race = testt.Race.Key;
+                    feature.Tribe = testt.Tribe.Key;
+                    //Console.WriteLine($"{testt.Key},{testt.FeatureID}");
+                    feature.Features = new List<Features>();
+                    foreach (var Parse in testt.FacialFeatureIcon)
+                    {
+                      //  Console.WriteLine(Parse.FacialFeatureIcon.Height);
+                        feature.Features.Add(new Features {FeatureID=Parse.Count, Icon = CreateSource(Parse.FacialFeatureIcon)});
+                    }
+                    CharaMakeFeatures2.Add(testt.Key, feature);
+                }
+            }
+            catch (Exception exc)
+            {
+                CharaMakeFeatures2 = null;
+#if DEBUG
+                throw exc;
+#endif
+            }
+        }
         public void MakeCharaMakeFeatureList()
         {
             CharaMakeFeatures = new Dictionary<int, CharaMakeCustomizeFeature>();
-
             try
             {
-                using (TextFieldParser parser = new TextFieldParser(new StringReader(Resources.charamakecustomize_exh)))
+                SaintCoinach.Ex.Relational.IRelationalSheet sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet("CharaMakeCustomize");
+                int rowCount = 0;
+                foreach (var test in sheet)
                 {
-                    parser.TextFieldType = FieldType.Delimited;
-                    parser.SetDelimiters(",");
-                    int rowCount = 0;
-                    parser.ReadFields();
-                    while (!parser.EndOfData)
-                    {
-                        CharaMakeCustomizeFeature feature = new CharaMakeCustomizeFeature();
-
-                        feature.Index = rowCount;
-                        //Processing row
-                        rowCount++;
-                        string[] fields = parser.ReadFields();
-                        int fCount = 0;
-
-                        foreach (string field in fields)
-                        {
-                            fCount++;
-
-                            if (fCount == 2)
-                            {
-                                feature.FeatureID = int.Parse(field);
-                            }
-
-                            if (fCount == 3)
-                            {
-                                object O = Properties.Resources.ResourceManager.GetObject($"_{field}_tex"); //Return an object from the image chan1.png in the project
-                                feature.Icon = (Image)O; //Set the Image property of channelPic to the returned object as Image
-                            }
-                        }
-
-                        //     Console.WriteLine($"{rowCount} - {feature.FeatureID}");
-                        CharaMakeFeatures.Add(rowCount, feature);
-                    }
-
-                    //    Console.WriteLine($"{rowCount} charaMakeFeatures read");
+                    rowCount++;
+                    CharaMakeCustomizeFeature feature = new CharaMakeCustomizeFeature();
+                    var testt = (SaintCoinach.Xiv.CharaMakeCustomize)test;
+                    //Console.WriteLine($"{testt.Key},{testt.FeatureID}");
+                    feature.Index = testt.Key;
+                    feature.FeatureID = testt.FeatureID;
+                    feature.Icon = CreateSource(testt.Icon);
+                    CharaMakeFeatures.Add(rowCount, feature);
                 }
             }
             catch (Exception exc)
@@ -241,52 +272,23 @@ namespace FFXIVTool.Utility
         {
             try
             {
-                using (TextFieldParser parser = new TextFieldParser(new StringReader(Resources.charamakecustomize_exh)))
+                SaintCoinach.Ex.Relational.IRelationalSheet sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet("CharaMakeCustomize");
+                int rowCount = 0;
+                foreach (var test in sheet)
                 {
-                    parser.TextFieldType = FieldType.Delimited;
-                    parser.SetDelimiters(",");
-                    int rowCount = 0;
-                    parser.ReadFields();
-                    while (!parser.EndOfData)
+                    if (rowCount != index)
                     {
-                        if (rowCount != index)
-                        {
-                            rowCount++;
-                            parser.ReadFields();
-                            continue;
-                        }
-
-                        CharaMakeCustomizeFeature feature = new CharaMakeCustomizeFeature();
-
-                        feature.Index = index;
-
-                        //Processing row
                         rowCount++;
-                        string[] fields = parser.ReadFields();
-                        int fCount = 0;
-
-                        foreach (string field in fields)
-                        {
-                            fCount++;
-
-                            if (fCount == 2)
-                            {
-                                feature.FeatureID = int.Parse(field);
-                            }
-
-                            if (fCount == 3)
-                            {
-                                if (getBitMap)
-                                {
-
-                                    object O = Properties.Resources.ResourceManager.GetObject($"_{field}_tex");
-                                    feature.Icon = (Image)O;
-                                }
-                            }
-                        }
-
-                        return feature;
+                        continue;
                     }
+                    rowCount++;
+                    CharaMakeCustomizeFeature feature = new CharaMakeCustomizeFeature();
+                    var testt = (SaintCoinach.Xiv.CharaMakeCustomize)test;
+                    //           Console.WriteLine($"{testt.Key},{testt.FeatureID}");
+                    feature.Index = testt.Key;
+                    feature.FeatureID = testt.FeatureID;
+                    if (getBitMap) { feature.Icon = CreateSource(testt.Icon); }
+                    return feature;
                 }
             }
             catch (Exception exc)
@@ -304,36 +306,15 @@ namespace FFXIVTool.Utility
             Tribes = new Dictionary<int, Tribe>();
             try
             {
-                using (TextFieldParser parser = new TextFieldParser(new StringReader(Resources.tribe_exh_en)))
+                SaintCoinach.Ex.Relational.IRelationalSheet sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet("Tribe");
+                foreach (SaintCoinach.Xiv.Tribe Parse in sheet)
                 {
-                    parser.TextFieldType = FieldType.Delimited;
-                    parser.SetDelimiters(",");
-                    int rowCount = 0;
-                    parser.ReadFields();
-                    while (!parser.EndOfData)
-                    {
-                        rowCount++;
-                        Tribe tribe = new Tribe();
-                        //Processing row
-                        string[] fields = parser.ReadFields();
-                        int fCount = 0;
-                        tribe.Index = int.Parse(fields[0]);
-
-                        foreach (string field in fields)
-                        {
-                            fCount++;
-
-                            if (fCount == 2)
-                            {
-                                tribe.Name = field;
-                            }
-                        }
-
-                        //      Console.WriteLine($"{rowCount} - {tribe.Name}");
-                        Tribes.Add(tribe.Index, tribe);
-                    }
-
-                    //        Console.WriteLine($"{rowCount} Tribes read");
+                    Tribe tribe = new Tribe();
+                    tribe.Index = Parse.Key;
+                    tribe.Name = Parse.Feminine;
+                    if (Parse.Key == 0) { tribe.Name = "None"; }
+                    Tribes.Add(tribe.Index, tribe);
+                    //    Console.WriteLine($"{Parse.Key} {Parse.Feminine}");
                 }
             }
 
@@ -350,39 +331,17 @@ namespace FFXIVTool.Utility
             Races = new Dictionary<int, Race>();
             try
             {
-                using (TextFieldParser parser = new TextFieldParser(new StringReader(Resources.raceEN)))
+                SaintCoinach.Ex.Relational.IRelationalSheet sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet("Race");
+                foreach (SaintCoinach.Xiv.Race Parse in sheet)
                 {
-                    parser.TextFieldType = FieldType.Delimited;
-                    parser.SetDelimiters(",");
-                    int rowCount = 0;
-                    parser.ReadFields();
-                    while (!parser.EndOfData)
-                    {
-                        rowCount++;
-                        Race race = new Race();
-                        //Processing row
-                        string[] fields = parser.ReadFields();
-                        int fCount = 0;
-                        race.Index = int.Parse(fields[0]);
-
-                        foreach (string field in fields)
-                        {
-                            fCount++;
-
-                            if (fCount == 2)
-                            {
-                                race.Name = field;
-                            }
-                        }
-
-                        //  Console.WriteLine($"{rowCount} - {race.Name}");
-                        Races.Add(race.Index, race);
-                    }
-
-                    //    Console.WriteLine($"{rowCount} Races read");
+                    Race race = new Race();
+                    race.Index = Parse.Key;
+                    race.Name = Parse.Feminine;
+                    if (Parse.Key == 0) { race.Name = "None"; }
+                    Races.Add(race.Index, race);
+                    //       Console.WriteLine($"{Parse.Key} {Parse.Feminine}");
                 }
             }
-
             catch (Exception exc)
             {
                 Races = null;
@@ -492,39 +451,17 @@ namespace FFXIVTool.Utility
             {
                 try
                 {
-                    using (TextFieldParser parser = new TextFieldParser(new StringReader(Resources.stain_exh_en)))
+                    SaintCoinach.Ex.Relational.IRelationalSheet sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet("Stain");
+                    foreach (SaintCoinach.Xiv.Stain Parse in sheet)
                     {
-                        parser.TextFieldType = FieldType.Delimited;
-                        parser.SetDelimiters(",");
-                        int rowCount = 0;
-                        parser.ReadFields();
-                        while (!parser.EndOfData)
-                        {
-                            rowCount++;
-                            Dye dye = new Dye();
-                            //Processing row
-                            string[] fields = parser.ReadFields();
-                            int fCount = 0;
-                            dye.Index = int.Parse(fields[0]);
-
-                            foreach (string field in fields)
-                            {
-                                fCount++;
-
-                                if (fCount == 4)
-                                {
-                                    dye.Name = field;
-                                }
-                            }
-
-                            //Console.WriteLine($"{rowCount} - {dye.Name}");
-                            Dyes.Add(dye.Index, dye);
-                        }
-
-                        //Console.WriteLine($"{rowCount} Dyes read");
+                        Dye dye = new Dye();
+                        dye.Index = Parse.Key;
+                        dye.Name = Parse.Name;
+                        if (Parse.Key == 0) { dye.Name = "None"; }
+                        Dyes.Add(dye.Index, dye);
+                        //     Console.WriteLine($"{Parse.Key} {Parse.Name}");
                     }
                 }
-
                 catch (Exception exc)
                 {
                     Dyes = null;
@@ -534,117 +471,63 @@ namespace FFXIVTool.Utility
                 }
             }
         }
+        ItemType Heh(int cat)
+        {
+            switch (cat)
+            {
+                case 34:
+                    return ItemType.Head;
+                case 35:
+                    return ItemType.Body;
+                case 37:
+                    return ItemType.Hands;
+                case 36:
+                    return ItemType.Legs;
+                case 38:
+                    return ItemType.Feet;
+                case 41:
+                    return ItemType.Ears;
+                case 40:
+                    return ItemType.Neck;
+                case 42:
+                    return ItemType.Wrists;
+                case 43:
+                    return ItemType.Ring;
+                case int n when (n >= 1 && n <= 32 || n == 84 || n >= 87 && n <= 89 || n >= 96 && n <= 99 || n == 105):
+                    return ItemType.Wep;
+                default:
+                    return ItemType.Trash;
+            }
+        }
         public void MakeItemList()
         {
             Items = new Dictionary<int, Item>();
             {
                 try
                 {
-                    using (TextFieldParser parser = new TextFieldParser(new StringReader(Resources.Item)))
+                    SaintCoinach.Ex.Relational.IRelationalSheet sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet("Item");
+                    foreach (SaintCoinach.Xiv.Item Parse in sheet)
                     {
-                        parser.TextFieldType = FieldType.Delimited;
-                        parser.SetDelimiters(",");
-                        int rowCount = 0;
-                        while (!parser.EndOfData)
+                        if (Parse.EquipSlotCategory.Key <= 0) continue;
+                        var item = new Item();
+                        item.Index = Parse.Key;
+                        item.Name = Parse.Name;
+                        item.Type = Heh(Parse.ItemUICategory.Key);
+                        if (item.Type == ItemType.Wep)
                         {
-                            //Processing row
-                            rowCount++;
-
-                            var item = new Item();
-                            string[] fields = parser.ReadFields();
-                            int fCount = 0;
-                            int index = 0;
-
-                            if (rowCount == 1)
-                                continue;
-
-                            foreach (string field in fields)
-                            {
-                                fCount++;
-
-
-                                if (fCount == 1)
-                                {
-                                    int.TryParse(field, out index);
-                                }
-
-                                if (fCount == 2)
-                                {
-                                    item.Name = field;
-                                }
-
-                                if (fCount == 3)
-                                {
-                                    int cat = int.Parse(field);
-                                    switch (cat)
-                                    {
-                                        case 34:
-                                            item.Type = ItemType.Head;
-                                            break;
-                                        case 35:
-                                            item.Type = ItemType.Body;
-                                            break;
-                                        case 37:
-                                            item.Type = ItemType.Hands;
-                                            break;
-                                        case 36:
-                                            item.Type = ItemType.Legs;
-                                            break;
-                                        case 38:
-                                            item.Type = ItemType.Feet;
-                                            break;
-                                        case 41:
-                                            item.Type = ItemType.Ears;
-                                            break;
-                                        case 40:
-                                            item.Type = ItemType.Neck;
-                                            break;
-                                        case 42:
-                                            item.Type = ItemType.Wrists;
-                                            break;
-                                        case 43:
-                                            item.Type = ItemType.Ring;
-                                            break;
-                                        default:
-                                            item.Type = ItemType.Wep;
-                                            break;
-                                    }
-                                }
-
-                                if (fCount == 4)
-                                {
-                                    var tfield = field.Replace(" ", "");
-                                    if (item.Type == ItemType.Wep)
-                                    {
-                                        item.ModelMain = tfield;
-                                    }
-                                    else
-                                    {
-                                        item.ModelMain = tfield;
-                                    }
-                                }
-
-                                if (fCount == 5)
-                                {
-                                    var tfield = field.Replace(" ", "");
-                                    if (item.Type == ItemType.Wep)
-                                    {
-                                        item.ModelOff = tfield;
-                                    }
-                                    else
-                                    {
-                                        item.ModelOff = tfield;
-                                    }
-                                }
-                                if(fCount == 6)
-                                {
-                                    item.Gender = int.Parse(field);
-                                }
-                            }
-                            //   Debug.WriteLine(item.Name + " - " + item.Type);
-                            Items.Add(index, item);
+                            item.ModelMain = Parse.ModelMain.ToString();
+                            item.ModelOff = Parse.ModelSub.ToString();
                         }
-                        //    Debug.WriteLine($"ExdCsvReader: {rowCount} items read");
+                        else
+                        {
+                            item.ModelMain = Parse.ModelMain.ToString();
+                            item.ModelOff = Parse.ModelSub.ToString();
+                        }
+                        item.Icon = Parse.Icon;
+                        if (Parse.Description.ToString().Contains("♀")) item.Gender = 1;
+                        else if (Parse.Description.ToString().Contains("♂")) item.Gender = 0;
+                        else item.Gender = 2;
+                        Items.Add(item.Index, item);
                     }
                 }
                 catch (Exception exc)
@@ -662,168 +545,69 @@ namespace FFXIVTool.Utility
 
             try
             {
-                using (TextFieldParser parser = new TextFieldParser(new StringReader(Resources.enpcresident_exh_en)))
+                SaintCoinach.Ex.Relational.IRelationalSheet sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet("ENpcResident");
+                foreach (SaintCoinach.Xiv.ENpcResident Parse in sheet)
                 {
-                    parser.TextFieldType = FieldType.Delimited;
-                    parser.SetDelimiters(",");
-                    int rowCount = 0;
-                    parser.ReadFields();
-                    while (!parser.EndOfData)
-                    {
-                        //Processing row
-                        rowCount++;
-                        string[] fields = parser.ReadFields();
-                        int fCount = 0;
-
-                        int id = 0;
-                        string name = "";
-
-                        foreach (string field in fields)
-                        {
-                            fCount++;
-
-                            if (fCount == 1)
-                            {
-                                id = int.Parse(field);
-                            }
-
-                            if (fCount == 2)
-                            {
-                                name = field;
-                            }
-                        }
-                        //  Console.WriteLine($"{id} - {name}");
-                        Residents.Add(id, new Resident { Index = id, Name = name });
-                    }
-                    //    Console.WriteLine($"{rowCount} residentNames read");
+                    Residents.Add(Parse.Key, new Resident { Index = Parse.Key, Name = Parse.Singular });
                 }
-                using (TextFieldParser parser = new TextFieldParser(new StringReader(Resources.enpcbase_exh)))
+                var eNpcBases = ViewModel.MainViewModel.Realm.GameData.GetSheet<SaintCoinach.Xiv.ENpcBase>();
+
+                foreach (var parse in eNpcBases)
                 {
-                    parser.TextFieldType = FieldType.Delimited;
-                    parser.SetDelimiters(",");
-                    int rowCount = 0;
-                    parser.ReadFields();
-                    while (!parser.EndOfData)
+                    //  Console.WriteLine($"{parse.NpcEquip.ModelHead[0]+ parse.NpcEquip.ModelHead[1]* 256},{parse.NpcEquip.ModelHead[2]}");
+                    //  Console.WriteLine(parse.NpcEquip.Key);
+                    int id = parse.Key;
+                    int modelid = parse.ModelID;
+                    GearSet gear = new GearSet();
+                    List<byte> customize = new List<byte>();
+                    customize.AddRange(new List<byte>() { Convert.ToByte(parse.Race), Convert.ToByte(parse.Gender)
+                       , Convert.ToByte(parse.BodyType), Convert.ToByte(parse.Height)
+                   , Convert.ToByte(parse.Tribe), Convert.ToByte(parse.Face) , Convert.ToByte(parse.HairStyle), Convert.ToByte(parse.HairHighlight)
+                   , Convert.ToByte(parse.SkinColor), Convert.ToByte(parse.EyeHeterochromia), Convert.ToByte(parse.HairColor), Convert.ToByte(parse.HairHighlightColor)
+                   , Convert.ToByte(parse.FacialFeature), Convert.ToByte(parse.FacialFeatureColor), Convert.ToByte(parse.Eyebrows), Convert.ToByte(parse.EyeColor)
+                   , Convert.ToByte(parse.EyeShape), Convert.ToByte(parse.Nose), Convert.ToByte(parse.Jaw), Convert.ToByte(parse.Mouth)
+                   , Convert.ToByte(parse.LipColor), Convert.ToByte(parse.BustOrTone1), Convert.ToByte(parse.ExtraFeature1), Convert.ToByte(parse.ExtraFeature2OrBust)
+                   , Convert.ToByte(parse.FacePaint), Convert.ToByte(parse.FacePaintColor) });
+                    gear.Customize = customize.ToArray();
+                    if (parse.NpcEquip.Key > 0)
                     {
-                        //Processing row
-                        rowCount++;
-                        string[] fields = parser.ReadFields();
-                        int fCount = 0;
-
-                        int id = 0;
-                        List<byte> customize = new List<byte>();
-                        GearSet gear = new GearSet();
-                        int dDataCount = 0;
-                        int modelId = 0;
-                        foreach (string field in fields)
-                        {
-                            fCount++;
-
-                            if (fCount == 1)
-                            {
-                                id = int.Parse(field);
-                            }
-
-                            if (fCount == 2)
-                            {
-                                modelId = int.Parse(field);
-                            }
-
-                            if (fCount >= 3 && fCount <= 28)
-                            {
-                                try
-                                {
-                                    customize.Add(byte.Parse(field));
-                                    dDataCount++;
-                                }
-                                catch (Exception exc)
-                                {
-                                    throw exc;
-                                    //Console.WriteLine("Invalid: " + field);
-                                }
-                            }
-                            if (fCount == 29)
-                            {
-                                gear.MainWep = EquipmentFlyOut.CommaToWepTuple(field);
-                            }
-
-                            if (fCount == 30)
-                            {
-                                gear.OffWep = EquipmentFlyOut.CommaToWepTuple(field);
-                            }
-
-                            if (fCount >= 31 && fCount <= 45)
-                            {
-                                Int32 fieldint = 0;
-                                fieldint = Int32.Parse(field);
-                                int[] result = convertToIntArray(BitConverter.GetBytes(fieldint));
-                                switch (fCount-1)
-                                {
-                                    case 30:
-                                        gear.HeadGear = new GearTuple((result[0] + result[1] * 256), result[2], 0);
-                                        break;
-                                    case 31:
-                                        gear.HeadGear = new GearTuple(gear.HeadGear.Item1, gear.HeadGear.Item2, int.Parse(field));
-                                        break;
-                                    case 32:
-                                        gear.BodyGear = new GearTuple((result[0] + result[1] * 256), result[2], 0);
-                                        break;
-                                    case 33:
-                                        gear.BodyGear = new GearTuple(gear.BodyGear.Item1, gear.BodyGear.Item2, int.Parse(field));
-                                        break;
-                                    case 34:
-                                        gear.HandsGear = new GearTuple((result[0] + result[1] * 256), result[2], 0);
-                                        break;
-                                    case 35:
-                                        gear.HandsGear = new GearTuple(gear.HandsGear.Item1, gear.HandsGear.Item2, int.Parse(field));
-                                        break;
-                                    case 36:
-                                        gear.LegsGear = new GearTuple((result[0] + result[1] * 256), result[2], 0);
-                                        break;
-                                    case 37:
-                                        gear.LegsGear = new GearTuple(gear.LegsGear.Item1, gear.LegsGear.Item2,int.Parse(field));
-                                        break;
-                                    case 38:
-                                        gear.FeetGear = new GearTuple((result[0] + result[1] * 256), result[2], 0);
-                                        break;
-                                    case 39:
-                                        gear.FeetGear = new GearTuple(gear.FeetGear.Item1, gear.FeetGear.Item2, int.Parse(field));
-                                        break;
-                                    case 40:
-                                        gear.EarGear = new GearTuple((result[0] + result[1] * 256), result[2], 0);
-                                        break;
-                                    case 41:
-                                        gear.NeckGear = new GearTuple((result[0] + result[1] * 256), result[2], 0);
-                                        break;
-                                    case 42:
-                                        gear.WristGear = new GearTuple((result[0] + result[1] * 256), result[2], 0);
-                                        break;
-                                    case 43:
-                                        gear.LRingGear = new GearTuple((result[0] + result[1] * 256), result[2], 0);
-                                        break;
-                                    case 44:
-                                        gear.RRingGear = new GearTuple((result[0] + result[1] * 256), result[2], 0);
-                                        break;
-                                }
-                            }
-                        }
-                        // Console.WriteLine($"{id} - {wepCSV} - {dDataCount}");
-
-                        gear.Customize = customize.ToArray();
-
-                        try
-                        {
-                            Residents[id].Gear = gear;
-                        }
-                        catch (KeyNotFoundException)
-                        {
-                            //Console.WriteLine("Did not find corresponding entry for: " + id);
-                        }
-
+                        gear.MainWep = new WepTuple(parse.NpcEquip.ModelMain.Value1, parse.NpcEquip.ModelMain.Value2, parse.NpcEquip.ModelMain.Value3, parse.NpcEquip.DyeMain);
+                        gear.OffWep = new WepTuple(parse.NpcEquip.ModelSub.Value1, parse.NpcEquip.ModelSub.Value2, parse.NpcEquip.ModelSub.Value3, parse.NpcEquip.DyeOff);
+                        gear.HeadGear = new GearTuple((parse.NpcEquip.ModelHead[0] + parse.NpcEquip.ModelHead[1] * 256), parse.NpcEquip.ModelHead[2], parse.NpcEquip.DyeHead);
+                        gear.BodyGear = new GearTuple((parse.NpcEquip.ModelBody[0] + parse.NpcEquip.ModelBody[1] * 256), parse.NpcEquip.ModelBody[2], parse.NpcEquip.DyeBody);
+                        gear.HandsGear = new GearTuple((parse.NpcEquip.ModelHands[0] + parse.NpcEquip.ModelHands[1] * 256), parse.NpcEquip.ModelHands[2], parse.NpcEquip.DyeHands);
+                        gear.LegsGear = new GearTuple((parse.NpcEquip.ModelLegs[0] + parse.NpcEquip.ModelLegs[1] * 256), parse.NpcEquip.ModelLegs[2], parse.NpcEquip.DyeLegs);
+                        gear.FeetGear = new GearTuple((parse.NpcEquip.ModelFeet[0] + parse.NpcEquip.ModelFeet[1] * 256), parse.NpcEquip.ModelFeet[2], parse.NpcEquip.DyeFeet);
+                        gear.EarGear = new GearTuple((parse.NpcEquip.ModelEars[0] + parse.NpcEquip.ModelEars[1] * 256), parse.NpcEquip.ModelEars[2], 0);
+                        gear.NeckGear = new GearTuple((parse.NpcEquip.ModelNeck[0] + parse.NpcEquip.ModelNeck[1] * 256), parse.NpcEquip.ModelNeck[2], 0);
+                        gear.WristGear = new GearTuple((parse.NpcEquip.ModelWrists[0] + parse.NpcEquip.ModelWrists[1] * 256), parse.NpcEquip.ModelWrists[2], 0);
+                        gear.RRingGear = new GearTuple((parse.NpcEquip.ModelRightRing[0] + parse.NpcEquip.ModelRightRing[1] * 256), parse.NpcEquip.ModelRightRing[2], 0);
+                        gear.LRingGear = new GearTuple((parse.NpcEquip.ModelLeftRing[0] + parse.NpcEquip.ModelLeftRing[1] * 256), parse.NpcEquip.ModelLeftRing[2], 0);
                     }
-                    //    Console.WriteLine($"{rowCount} idLookMappings read");
+                    else
+                    {
+                        gear.MainWep = new WepTuple(parse.ModelMain.Value1, parse.ModelMain.Value2, parse.ModelMain.Value3, parse.DyeMain);
+                        gear.OffWep = new WepTuple(parse.ModelSub.Value1, parse.ModelSub.Value2, parse.ModelSub.Value3, parse.DyeOff);
+                        gear.HeadGear = new GearTuple((parse.ModelHead[0] + parse.ModelHead[1] * 256), parse.ModelHead[2], parse.DyeHead);
+                        gear.BodyGear = new GearTuple((parse.ModelBody[0] + parse.ModelBody[1] * 256), parse.ModelBody[2], parse.DyeBody);
+                        gear.HandsGear = new GearTuple((parse.ModelHands[0] + parse.ModelHands[1] * 256), parse.ModelHands[2], parse.DyeHands);
+                        gear.LegsGear = new GearTuple((parse.ModelLegs[0] + parse.ModelLegs[1] * 256), parse.ModelLegs[2], parse.DyeLegs);
+                        gear.FeetGear = new GearTuple((parse.ModelFeet[0] + parse.ModelFeet[1] * 256), parse.ModelFeet[2], parse.DyeFeet);
+                        gear.EarGear = new GearTuple((parse.ModelEars[0] + parse.ModelEars[1] * 256), parse.ModelEars[2], 0);
+                        gear.NeckGear = new GearTuple((parse.ModelNeck[0] + parse.ModelNeck[1] * 256), parse.ModelNeck[2], 0);
+                        gear.WristGear = new GearTuple((parse.ModelWrists[0] + parse.ModelWrists[1] * 256), parse.ModelWrists[2], 0);
+                        gear.RRingGear = new GearTuple((parse.ModelRightRing[0] + parse.ModelRightRing[1] * 256), parse.ModelRightRing[2], 0);
+                        gear.LRingGear = new GearTuple((parse.ModelLeftRing[0] + parse.ModelLeftRing[1] * 256), parse.ModelLeftRing[2], 0);
+                    }
+                    try
+                    {
+                        Residents[id].Gear = gear;
+                    }
+                    catch (KeyNotFoundException)
+                    {
+                        //Console.WriteLine("Did not find corresponding entry for: " + id);
+                    }
                 }
-
             }
             catch (Exception exc)
             {
@@ -842,40 +626,20 @@ namespace FFXIVTool.Utility
 
             try
             {
-                using (TextFieldParser parser = new TextFieldParser(new StringReader(Resources.weatherrate_exh)))
+                SaintCoinach.Ex.Relational.IRelationalSheet sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet("WeatherRate");
+                foreach (SaintCoinach.Xiv.WeatherRate Parse in sheet)
                 {
-                    parser.TextFieldType = FieldType.Delimited;
-                    parser.SetDelimiters(",");
-                    int rowCount = 0;
-                    parser.ReadFields();
-                    while (!parser.EndOfData)
+                    WeatherRate rate = new WeatherRate();
+                    rate.Index = Parse.Key;
+                    rate.AllowedWeathers = new List<Weather>();
+                    foreach (var timetodothis in Parse.PossibleWeathers)
                     {
-                        WeatherRate rate = new WeatherRate();
 
-                        rate.AllowedWeathers = new List<Weather>();
-
-                        //Processing row
-                        rowCount++;
-                        string[] fields = parser.ReadFields();
-
-                        rate.Index = int.Parse(fields[0]);
-
-                        for (int i = 1; i < 17;)
-                        {
-                            int weatherId = int.Parse(fields[i]);
-
-                            if (weatherId == 0)
-                                break;
-
-                            rate.AllowedWeathers.Add(Weathers[weatherId]);
-
-                            i += 2;
-                        }
-
-                        WeatherRates.Add(rate.Index, rate);
+                        if (timetodothis.Key == 0)
+                            break;
+                        rate.AllowedWeathers.Add(Weathers[timetodothis.Key]);
                     }
-
-                 //   Console.WriteLine($"{rowCount} weatherRates read");
+                    WeatherRates.Add(rate.Index, rate);
                 }
             }
             catch (Exception exc)
@@ -896,38 +660,13 @@ namespace FFXIVTool.Utility
 
             try
             {
-                using (TextFieldParser parser = new TextFieldParser(new StringReader(Resources.territorytype_exh)))
+                SaintCoinach.Ex.Relational.IRelationalSheet sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet("TerritoryType");
+                foreach (SaintCoinach.Xiv.TerritoryType Parse in sheet)
                 {
-                    parser.TextFieldType = FieldType.Delimited;
-                    parser.SetDelimiters(",");
-                    int rowCount = 0;
-                    parser.ReadFields();
-                    while (!parser.EndOfData)
-                    {
-                        TerritoryType territory = new TerritoryType();
-
-                        //Processing row
-                        rowCount++;
-                        string[] fields = parser.ReadFields();
-                        int fCount = 0;
-
-                        territory.Index = int.Parse(fields[0]);
-
-                        foreach (string field in fields)
-                        {
-                            fCount++;
-
-                            if (fCount == 14)
-                            {
-                                if (field != "0")
-                                    territory.WeatherRate = WeatherRates[int.Parse(field)];
-                            }
-                        }
-
-                        TerritoryTypes.Add(territory.Index, territory);
-                    }
-
-                    //Console.WriteLine($"{rowCount} TerritoryTypes read");
+                    TerritoryType territory = new TerritoryType();
+                    territory.Index = Parse.Key;
+                    territory.WeatherRate = WeatherRates[Parse.WeatherRate.Key];
+                    TerritoryTypes.Add(territory.Index, territory);
                 }
             }
             catch (Exception exc)
@@ -944,41 +683,15 @@ namespace FFXIVTool.Utility
             {
                 try
                 {
-                    using (TextFieldParser parser = new TextFieldParser(new StringReader(Resources.weather_0_exh_en)))
+                    SaintCoinach.Ex.Relational.IRelationalSheet sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet("Weather");
+                    foreach (SaintCoinach.Xiv.Weather Parse in sheet)
                     {
-                        parser.TextFieldType = FieldType.Delimited;
-                        parser.SetDelimiters(",");
-                        int rowCount = 0;
-                        parser.ReadFields();
-                        while (!parser.EndOfData)
-                        {
-                            Weather weather = new Weather();
-
-                            //Processing row
-                            rowCount++;
-                            string[] fields = parser.ReadFields();
-                            int fCount = 0;
-
-                            weather.Index = int.Parse(fields[0]);
-
-                            foreach (string field in fields)
-                            {
-                                fCount++;
-
-                                if (fCount == 3)
-                                {
-                                    weather.Name = field;
-                                }
-                            }
-
-                          //  Console.WriteLine($"{rowCount} - {weather.Name}");
-                            Weathers.Add(weather.Index, weather);
-                        }
-
-                    //    Console.WriteLine($"{rowCount} weathers read");
+                        Weather weather = new Weather();
+                        weather.Index = Parse.Key;
+                        weather.Name = Parse.Name;
+                        Weathers.Add(weather.Index, weather);
                     }
                 }
-
                 catch (Exception exc)
                 {
                     Weathers = null;

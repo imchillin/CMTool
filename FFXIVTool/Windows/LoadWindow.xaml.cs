@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using FFXIVTool.Utility;
+using System.Windows;
 
 namespace FFXIVTool.Windows
 {
@@ -11,7 +12,7 @@ namespace FFXIVTool.Windows
         public LoadWindow()
         {
             InitializeComponent();
-            if (Properties.Settings.Default.WindowsExplorer == true) Windowstoggled.IsChecked = true;
+            if (SaveSettings.Default.WindowsExplorer == true) Windowstoggled.IsChecked = true;
         }
 
         private void All_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -88,8 +89,7 @@ namespace FFXIVTool.Windows
         {
             if (Windowstoggled.IsKeyboardFocusWithin || Windowstoggled.IsMouseOver)
             {
-                Properties.Settings.Default.WindowsExplorer = true;
-                Properties.Settings.Default.Save();
+                SaveSettings.Default.WindowsExplorer = true;
             }
         }
 
@@ -97,8 +97,7 @@ namespace FFXIVTool.Windows
         {
             if (Windowstoggled.IsKeyboardFocusWithin || Windowstoggled.IsMouseOver)
             {
-                Properties.Settings.Default.WindowsExplorer = false;
-                Properties.Settings.Default.Save();
+                SaveSettings.Default.WindowsExplorer = false;
             }
         }
     }

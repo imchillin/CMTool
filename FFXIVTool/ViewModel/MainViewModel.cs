@@ -1,5 +1,7 @@
 ﻿using FFXIVTool.Utility;
+using FFXIVTool.Views;
 using MaterialDesignThemes.Wpf;
+using SaintCoinach;
 using System;
 using System.ComponentModel;
 using System.Globalization;
@@ -18,8 +20,11 @@ namespace FFXIVTool.ViewModel
 
         private static BackgroundWorker worker;
         public Mem MemLib = new Mem();
+        public static ARealmReversed Realm;
         public static int gameProcId = 0;
         public static ThreadWriting ThreadTime;
+        public static CharacterDetailsView2 ViewTime2;
+        public static CharacterDetailsView ViewTime;
         private static CharacterDetailsViewModel characterDetails;
 
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -31,6 +36,10 @@ namespace FFXIVTool.ViewModel
 
 		public MainViewModel()
         {
+            if (!App.IsValidGamePath(Properties.Settings.Default.GamePath))
+                return;
+            var realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.English);
+            Initialize(realm);
             mediator = new Mediator();
             MemoryManager.Instance.MemLib.OpenProcess(gameProcId);
             LoadSettings();
@@ -51,7 +60,43 @@ namespace FFXIVTool.ViewModel
             mediator = null;
             ThreadTime = null;
         }
-        private void LoadSettings()
+        private void Initialize(ARealmReversed realm)
+        {
+            realm.Packs.GetPack(new SaintCoinach.IO.PackIdentifier("exd", SaintCoinach.IO.PackIdentifier.DefaultExpansion, 0)).KeepInMemory = true;
+            if (!realm.IsCurrentVersion)
+            {
+                const bool IncludeDataChanges = true;
+                var updateReport = realm.Update(IncludeDataChanges);
+            }
+            Realm = realm;
+            CharacterDetailsView._exdProvider.RaceList();
+            CharacterDetailsView._exdProvider.TribeList();
+            CharacterDetailsView._exdProvider.DyeList();
+            CharacterDetailsView._exdProvider.MakeWeatherList();
+            CharacterDetailsView._exdProvider.MakeWeatherRateList();
+            CharacterDetailsView._exdProvider.MakeTerritoryTypeList();
+            CharacterDetailsView._exdProvider.MakeCharaMakeFeatureList();
+            CharacterDetailsView._exdProvider.MakeCharaMakeFeatureFacialList();
+            for (int i = 0; i < CharacterDetailsView._exdProvider.Dyes.Count; i++)
+            {
+                ViewTime2.HeadDye.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
+                ViewTime2.ChestBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
+                ViewTime2.ArmBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
+                ViewTime2.MHBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
+                ViewTime2.OHBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
+                ViewTime2.LegBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
+                ViewTime2.FeetBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
+            }
+            for (int i = 0; i < CharacterDetailsView._exdProvider.Races.Count; i++)
+            {
+                ViewTime.RaceBox.Items.Add(CharacterDetailsView._exdProvider.Races[i].Name);
+            }
+            for (int i = 0; i < CharacterDetailsView._exdProvider.Tribes.Count; i++)
+            {
+                ViewTime.ClanBox.Items.Add(CharacterDetailsView._exdProvider.Tribes[i].Name);
+            }
+        }
+       private void LoadSettings()
         {
             // create an xml serializer
             var serializer = new XmlSerializer(typeof(Settings), "");
@@ -115,6 +160,7 @@ namespace FFXIVTool.ViewModel
             MemoryManager.Instance.MusicOffset = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.MusicOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.GposeFilters = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.GposeFilters, NumberStyles.HexNumber));
             MemoryManager.Instance.CharacterRenderAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.CharacterRenderOffset, NumberStyles.HexNumber));
+            MemoryManager.Instance.CharacterRenderAddress2 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.CharacterRenderOffset2, NumberStyles.HexNumber));
             while (true)
             {
                 if (worker.CancellationPending)

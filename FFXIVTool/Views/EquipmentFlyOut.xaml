@@ -37,14 +37,20 @@
                 <controls:MetroAnimatedTabControl x:Name="AnimatedTabControl" Height="386"
                                               Margin="2"
                                               controls:TabControlHelper.Underlined="TabPanel"
-                                              Background="{DynamicResource MaterialDesignPaper}" SelectionChanged="AnimatedTabControl_SelectionChanged" PreviewMouseDown="AnimatedTabControl_PreviewMouseDown"
-                                                  >
+                                              Background="{DynamicResource MaterialDesignPaper}" SelectionChanged="AnimatedTabControl_SelectionChanged">
                     <TabItem Header="Equipment Selector" Name="EquipTab">
                         <Grid>
                             <CheckBox Content="Include OffHand" Name="CheckIncluded" HorizontalAlignment="Left" Margin="181,11,0,0" VerticalAlignment="Top" Width="171"/>
                             <DataGrid x:Name="EquipBox" HorizontalAlignment="Left" Height="270" Margin="-6,42,0,0" VerticalAlignment="Top" Width="478" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden" SelectionChanged="EquipBox_SelectionChanged">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="300"/>
+                                    <DataGridTemplateColumn Width="58" CanUserSort="False" Header="Icon">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Image Source="{Binding Path=Icon}" Width="38" Height="38"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="1.9*" />
                                     <DataGridTextColumn Header="Model Values" Binding="{Binding Path=ModelMain}" Width="*"/>
                                 </DataGrid.Columns>
                             </DataGrid>

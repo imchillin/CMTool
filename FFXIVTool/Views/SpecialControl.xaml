@@ -35,7 +35,7 @@
                 <controls:MetroAnimatedTabControl x:Name="AnimatedTabControl" Height="386"
                                               Margin="2"
                                               controls:TabControlHelper.Underlined="TabPanel"
-                                              Background="{DynamicResource MaterialDesignPaper}" SelectionChanged="AnimatedTabControl_SelectionChanged" PreviewMouseDown="AnimatedTabControl_PreviewMouseDown"
+                                              Background="{DynamicResource MaterialDesignPaper}" SelectionChanged="AnimatedTabControl_SelectionChanged"
                                                   >
                     <TabItem Header="Color Selector" Name="ColorTab">
                         <Grid>
@@ -69,6 +69,55 @@
                                 </ImageBrush>
                             </Grid.Background>
                             <ListView x:Name="CharacterFeature" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" SelectionChanged="CharacterFeature_SelectionChanged" Margin="4,0,6,0">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <Image Source="{Binding FeatureImage}" Height="95" Width="95" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                                            <TextBlock Text="{Binding ID}" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel Orientation="Horizontal">
+                                        </WrapPanel>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                            </ListView>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Face Paint" Name="PaintTab">
+                        <Grid Margin="-7,0,-4,-5">
+                            <Grid.Background>
+                                <ImageBrush ImageSource="/FFXIVTool;component/Resources/Background.png">
+                                </ImageBrush>
+                            </Grid.Background>
+                            <CheckBox Content="Reverse FacePaint" x:Name="CheckIncluded" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="171" FontWeight="Bold" FontSize="14" Height="17"/>
+                            <ListView x:Name="FacePaintFeature" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="3,22,6,0" SelectionChanged="CharacterFeature2_SelectionChanged">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <Image Source="{Binding FeatureImage}" Height="76" Width="76" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                                            <TextBlock Text="{Binding ID}" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="15"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel Orientation="Horizontal">
+                                        </WrapPanel>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+                            </ListView>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Facial Feature" Name="FacialTab">
+                        <Grid Margin="-7,0,-4,-5">
+                            <Grid.Background>
+                                <ImageBrush ImageSource="/FFXIVTool;component/Resources/Background.png">
+                                </ImageBrush>
+                            </Grid.Background>
+                            <ListView x:Name="FacialFeatureView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="3,22,6,0" SelectionMode="Multiple" SelectionChanged="FacialFeatureView_SelectionChanged">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel>
