@@ -137,13 +137,13 @@
                     </TabItem>
                     <TabItem Header="Model List" Name="ModelType">
                         <Grid>
-                            <DataGrid x:Name="ModelBox" HorizontalAlignment="Left" Height="310" Margin="0,2,0,0" VerticalAlignment="Top" Width="552" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden" SelectionChanged="ModelBox_SelectionChanged">
+                            <DataGrid x:Name="ModelBox" HorizontalAlignment="Left" Height="267" Margin="0,2,0,0" VerticalAlignment="Top" Width="562" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden" SelectionChanged="ModelBox_SelectionChanged">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="ID" Binding="{Binding Path=Index}" Width="56"/>
                                     <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="*"/>
                                 </DataGrid.Columns>
                             </DataGrid>
-                            <TextBox x:Name="SearchModelBox" materialDesign:HintAssist.Hint="Search..." Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="31" Margin="2,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="550" TextChanged="SearchModelBox_TextChanged" BorderThickness="0,1"/>
+                            <TextBox x:Name="SearchModelBox" materialDesign:HintAssist.Hint="Search..." Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="36" Margin="2,268,0,-4" TextWrapping="Wrap" VerticalAlignment="Top" Width="560" TextChanged="SearchModelBox_TextChanged" BorderThickness="0,1"/>
                         </Grid>
                     </TabItem>
                 </controls:MetroAnimatedTabControl>
