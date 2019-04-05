@@ -758,12 +758,12 @@ namespace FFXIVTool.Views
             string filter = SearchModelBox.Text.ToLower();
             EquipBox.Items.Clear();
             foreach (ExdCsvReader.Item game in _items.Where(g => g.Name.ToLower().Contains(filter)))
-                EquipBox.Items.Add(new ExdCsvReader.Item
+                EquipBox.Items.Add(new Itemx
                 {
                     Name = game.Name.ToString(),
                     ModelMain = game.ModelMain,
                     ModelOff = game.ModelOff,
-                    Icon = game.Icon
+                    Icon = CreateSource(game.Icon)
                 });
         }
 
