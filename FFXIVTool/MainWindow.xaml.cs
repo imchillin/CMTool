@@ -100,12 +100,6 @@ namespace FFXIVTool
                 }
                 MainViewModel.gameProcId = f.Choice.ID;
             }
-            if (Properties.Settings.Default.UpgradeRequired)
-            {
-                Properties.Settings.Default.Upgrade();
-                Properties.Settings.Default.UpgradeRequired = false;
-                Properties.Settings.Default.Save();
-            }
             var path = Path.Combine(Directory.GetCurrentDirectory(), "FFXIVTool.zip");
             var path2 = Path.Combine(Directory.GetCurrentDirectory(), "ZipExtractor.exe");
             if (File.Exists(path)) File.Delete(path);

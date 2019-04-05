@@ -15,6 +15,12 @@ namespace FFXIVTool
         protected override void OnStartup(StartupEventArgs e)
         {
             Application.Current.DispatcherUnhandledException += Application_DispatcherUnhandledException;
+            if (FFXIVTool.Properties.Settings.Default.UpgradeRequired)
+            {
+                FFXIVTool.Properties.Settings.Default.Upgrade();
+                FFXIVTool.Properties.Settings.Default.UpgradeRequired = false;
+                FFXIVTool.Properties.Settings.Default.Save();
+            }
             if (!RequestGamePath())
             {
                 MainWindow = null;
