@@ -64,7 +64,7 @@ namespace FFXIVTool.Views
             {
                 EquipBox.Items.Add(new Itemx
                 {
-                    Name = game.Name.ToString(),
+                    Name = game.Name,
                     ModelMain = game.ModelMain,
                     ModelOff = game.ModelOff,
                     Icon = CreateSource(game.Icon)

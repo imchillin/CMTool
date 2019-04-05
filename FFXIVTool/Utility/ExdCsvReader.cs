@@ -236,9 +236,9 @@ namespace FFXIVTool.Utility
             catch (Exception exc)
             {
                 CharaMakeFeatures2 = null;
-#if DEBUG
-                throw exc;
-#endif
+
+                throw;
+
             }
         }
         public void MakeCharaMakeFeatureList()
@@ -263,9 +263,9 @@ namespace FFXIVTool.Utility
             catch (Exception exc)
             {
                 CharaMakeFeatures = null;
-#if DEBUG
-                throw exc;
-#endif
+
+                throw;
+
             }
         }
         public CharaMakeCustomizeFeature GetCharaMakeCustomizeFeature(int index, bool getBitMap)
@@ -293,10 +293,9 @@ namespace FFXIVTool.Utility
             }
             catch (Exception exc)
             {
-#if DEBUG
-                throw exc;
 
-#endif
+                throw;
+
             }
 
             return null;
@@ -321,9 +320,9 @@ namespace FFXIVTool.Utility
             catch (Exception exc)
             {
                 Tribes = null;
-#if DEBUG
-                throw exc;
-#endif
+
+                throw;
+
             }
         }
         public void RaceList()
@@ -345,9 +344,9 @@ namespace FFXIVTool.Utility
             catch (Exception exc)
             {
                 Races = null;
-#if DEBUG
-                throw exc;
-#endif
+
+                throw;
+
             }
         }
         public void EmoteList()
@@ -393,9 +392,9 @@ namespace FFXIVTool.Utility
                 catch (Exception exc)
                 {
                     Emotes = null;
-#if DEBUG
-                    throw exc;
-#endif
+
+                    throw;
+
                 }
             }
         }
@@ -439,9 +438,9 @@ namespace FFXIVTool.Utility
                 catch (Exception exc)
                 {
                     Monsters = null;
-#if DEBUG
-                    throw exc;
-#endif
+
+                    throw;
+
                 }
             }
         }
@@ -465,9 +464,9 @@ namespace FFXIVTool.Utility
                 catch (Exception exc)
                 {
                     Dyes = null;
-#if DEBUG
-                    throw exc;
-#endif
+
+                    throw;
+
                 }
             }
         }
@@ -513,16 +512,8 @@ namespace FFXIVTool.Utility
                         item.Index = Parse.Key;
                         item.Name = Parse.Name;
                         item.Type = Heh(Parse.ItemUICategory.Key);
-                        if (item.Type == ItemType.Wep)
-                        {
-                            item.ModelMain = Parse.ModelMain.ToString();
-                            item.ModelOff = Parse.ModelSub.ToString();
-                        }
-                        else
-                        {
-                            item.ModelMain = Parse.ModelMain.ToString();
-                            item.ModelOff = Parse.ModelSub.ToString();
-                        }
+                        item.ModelMain = Parse.ModelMain.ToString();
+                        item.ModelOff = Parse.ModelSub.ToString();
                         item.Icon = Parse.Icon;
                         if (Parse.Description.ToString().Contains("♀")) item.Gender = 1;
                         else if (Parse.Description.ToString().Contains("♂")) item.Gender = 0;
@@ -533,9 +524,9 @@ namespace FFXIVTool.Utility
                 catch (Exception exc)
                 {
                     Items = null;
-#if DEBUG
-                    throw exc;
-#endif
+
+                    throw;
+
                 }
             }
         }
@@ -612,9 +603,9 @@ namespace FFXIVTool.Utility
             catch (Exception exc)
             {
                 Residents = null;
-#if DEBUG
-                throw exc;
-#endif
+
+                throw;
+
             }
         }
         public void MakeWeatherRateList()
@@ -645,9 +636,9 @@ namespace FFXIVTool.Utility
             catch (Exception exc)
             {
                 WeatherRates = null;
-#if DEBUG
-                throw exc;
-#endif
+
+                throw;
+
             }
         }
 
@@ -672,9 +663,9 @@ namespace FFXIVTool.Utility
             catch (Exception exc)
             {
                 TerritoryTypes = null;
-#if DEBUG
-                throw exc;
-#endif
+
+                throw;
+
             }
         }
         public void MakeWeatherList()
@@ -695,9 +686,9 @@ namespace FFXIVTool.Utility
                 catch (Exception exc)
                 {
                     Weathers = null;
-#if DEBUG
-                    throw exc;
-#endif
+
+                    throw;
+
                 }
             }
         }
@@ -754,9 +745,9 @@ namespace FFXIVTool.Utility
                 catch (Exception exc)
                 {
                     ItemsProps = null;
-#if DEBUG
-                    throw exc;
-#endif
+
+                    throw;
+
                 }
             }
         }
@@ -805,9 +796,9 @@ namespace FFXIVTool.Utility
                 catch (Exception exc)
                 {
                     BGMs = null;
-#if DEBUG
-                    throw exc;
-#endif
+
+                    throw;
+
                 }
             }
         }
