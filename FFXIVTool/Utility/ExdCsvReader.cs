@@ -213,24 +213,23 @@ namespace FFXIVTool.Utility
             CharaMakeFeatures2 = new Dictionary<int, CharaMakeCustomizeFeature2>();
             try
             {
-                SaintCoinach.Ex.Relational.IRelationalSheet sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet("CharaMakeType");
+                var sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet<SaintCoinach.Xiv.CharaMakeType>();
                 foreach (var test in sheet)
                 {
                  //   rowCount++;
-                    CharaMakeCustomizeFeature2 feature = new CharaMakeCustomizeFeature2();
-                    var testt = (SaintCoinach.Xiv.CharaMakeType)test;
-                    feature.Index = testt.Key;
-                    feature.Gender = testt.Gender;
-                    feature.Race = testt.Race.Key;
-                    feature.Tribe = testt.Tribe.Key;
+                    CharaMakeCustomizeFeature2 feature = new CharaMakeCustomizeFeature2();;
+                    feature.Index = test.Key;
+                    feature.Gender = test.Gender;
+                    feature.Race = test.Race.Key;
+                    feature.Tribe = test.Tribe.Key;
                     //Console.WriteLine($"{testt.Key},{testt.FeatureID}");
                     feature.Features = new List<Features>();
-                    foreach (var Parse in testt.FacialFeatureIcon)
+                    foreach (var Parse in test.FacialFeatureIcon)
                     {
                       //  Console.WriteLine(Parse.FacialFeatureIcon.Height);
                         feature.Features.Add(new Features {FeatureID=Parse.Count, Icon = CreateSource(Parse.FacialFeatureIcon)});
                     }
-                    CharaMakeFeatures2.Add(testt.Key, feature);
+                    CharaMakeFeatures2.Add(test.Key, feature);
                 }
             }
             catch (Exception exc)
@@ -246,17 +245,16 @@ namespace FFXIVTool.Utility
             CharaMakeFeatures = new Dictionary<int, CharaMakeCustomizeFeature>();
             try
             {
-                SaintCoinach.Ex.Relational.IRelationalSheet sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet("CharaMakeCustomize");
+                var sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet<SaintCoinach.Xiv.CharaMakeCustomize>();
                 int rowCount = 0;
                 foreach (var test in sheet)
                 {
                     rowCount++;
                     CharaMakeCustomizeFeature feature = new CharaMakeCustomizeFeature();
-                    var testt = (SaintCoinach.Xiv.CharaMakeCustomize)test;
                     //Console.WriteLine($"{testt.Key},{testt.FeatureID}");
-                    feature.Index = testt.Key;
-                    feature.FeatureID = testt.FeatureID;
-                    feature.Icon = CreateSource(testt.Icon);
+                    feature.Index = test.Key;
+                    feature.FeatureID = test.FeatureID;
+                    feature.Icon = CreateSource(test.Icon);
                     CharaMakeFeatures.Add(rowCount, feature);
                 }
             }
@@ -272,7 +270,7 @@ namespace FFXIVTool.Utility
         {
             try
             {
-                SaintCoinach.Ex.Relational.IRelationalSheet sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet("CharaMakeCustomize");
+                var sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet<SaintCoinach.Xiv.CharaMakeCustomize>();
                 int rowCount = 0;
                 foreach (var test in sheet)
                 {
@@ -283,11 +281,10 @@ namespace FFXIVTool.Utility
                     }
                     rowCount++;
                     CharaMakeCustomizeFeature feature = new CharaMakeCustomizeFeature();
-                    var testt = (SaintCoinach.Xiv.CharaMakeCustomize)test;
                     //           Console.WriteLine($"{testt.Key},{testt.FeatureID}");
-                    feature.Index = testt.Key;
-                    feature.FeatureID = testt.FeatureID;
-                    if (getBitMap) { feature.Icon = CreateSource(testt.Icon); }
+                    feature.Index = test.Key;
+                    feature.FeatureID = test.FeatureID;
+                    if (getBitMap) { feature.Icon = CreateSource(test.Icon); }
                     return feature;
                 }
             }
@@ -305,14 +302,14 @@ namespace FFXIVTool.Utility
             Tribes = new Dictionary<int, Tribe>();
             try
             {
-                SaintCoinach.Ex.Relational.IRelationalSheet sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet("Tribe");
-                foreach (SaintCoinach.Xiv.Tribe Parse in sheet)
+                var TribeSheet = ViewModel.MainViewModel.Realm.GameData.GetSheet<SaintCoinach.Xiv.Tribe>();
+                foreach (var Parse in TribeSheet)
                 {
                     Tribe tribe = new Tribe();
                     tribe.Index = Parse.Key;
                     tribe.Name = Parse.Feminine;
                     if (Parse.Key == 0) { tribe.Name = "None"; }
-                    Tribes.Add(tribe.Index, tribe);
+                    Tribes.Add(Parse.Key, tribe);
                     //    Console.WriteLine($"{Parse.Key} {Parse.Feminine}");
                 }
             }
@@ -330,15 +327,14 @@ namespace FFXIVTool.Utility
             Races = new Dictionary<int, Race>();
             try
             {
-                SaintCoinach.Ex.Relational.IRelationalSheet sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet("Race");
-                foreach (SaintCoinach.Xiv.Race Parse in sheet)
+                var RaceSheet = ViewModel.MainViewModel.Realm.GameData.GetSheet<SaintCoinach.Xiv.Race>();
+                foreach (var Parse in RaceSheet)
                 {
                     Race race = new Race();
                     race.Index = Parse.Key;
                     race.Name = Parse.Feminine;
                     if (Parse.Key == 0) { race.Name = "None"; }
-                    Races.Add(race.Index, race);
-                    //       Console.WriteLine($"{Parse.Key} {Parse.Feminine}");
+                    Races.Add(Parse.Key, race);
                 }
             }
             catch (Exception exc)
@@ -450,14 +446,14 @@ namespace FFXIVTool.Utility
             {
                 try
                 {
-                    SaintCoinach.Ex.Relational.IRelationalSheet sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet("Stain");
-                    foreach (SaintCoinach.Xiv.Stain Parse in sheet)
+                    var sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet<SaintCoinach.Xiv.Stain>();
+                    foreach (var Parse in sheet)
                     {
                         Dye dye = new Dye();
                         dye.Index = Parse.Key;
                         dye.Name = Parse.Name;
                         if (Parse.Key == 0) { dye.Name = "None"; }
-                        Dyes.Add(dye.Index, dye);
+                        Dyes.Add(Parse.Key, dye);
                         //     Console.WriteLine($"{Parse.Key} {Parse.Name}");
                     }
                 }
@@ -504,8 +500,8 @@ namespace FFXIVTool.Utility
             {
                 try
                 {
-                    SaintCoinach.Ex.Relational.IRelationalSheet sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet("Item");
-                    foreach (SaintCoinach.Xiv.Item Parse in sheet)
+                    var sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet<SaintCoinach.Xiv.Item>();
+                    foreach (var Parse in sheet)
                     {
                         if (Parse.EquipSlotCategory.Key <= 0) continue;
                         var item = new Item();
@@ -518,7 +514,7 @@ namespace FFXIVTool.Utility
                         if (Parse.Description.ToString().Contains("♀")) item.Gender = 1;
                         else if (Parse.Description.ToString().Contains("♂")) item.Gender = 0;
                         else item.Gender = 2;
-                        Items.Add(item.Index, item);
+                        Items.Add(Parse.Key, item);
                     }
                 }
                 catch (Exception exc)
@@ -536,8 +532,8 @@ namespace FFXIVTool.Utility
 
             try
             {
-                SaintCoinach.Ex.Relational.IRelationalSheet sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet("ENpcResident");
-                foreach (SaintCoinach.Xiv.ENpcResident Parse in sheet)
+                var sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet<SaintCoinach.Xiv.ENpcResident>();
+                foreach (var Parse in sheet)
                 {
                     Residents.Add(Parse.Key, new Resident { Index = Parse.Key, Name = Parse.Singular });
                 }
@@ -617,8 +613,8 @@ namespace FFXIVTool.Utility
 
             try
             {
-                SaintCoinach.Ex.Relational.IRelationalSheet sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet("WeatherRate");
-                foreach (SaintCoinach.Xiv.WeatherRate Parse in sheet)
+                var sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet<SaintCoinach.Xiv.WeatherRate>();
+                foreach (var Parse in sheet)
                 {
                     WeatherRate rate = new WeatherRate();
                     rate.Index = Parse.Key;
@@ -630,7 +626,7 @@ namespace FFXIVTool.Utility
                             break;
                         rate.AllowedWeathers.Add(Weathers[timetodothis.Key]);
                     }
-                    WeatherRates.Add(rate.Index, rate);
+                    WeatherRates.Add(Parse.Key, rate);
                 }
             }
             catch (Exception exc)
@@ -651,13 +647,14 @@ namespace FFXIVTool.Utility
 
             try
             {
-                SaintCoinach.Ex.Relational.IRelationalSheet sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet("TerritoryType");
-                foreach (SaintCoinach.Xiv.TerritoryType Parse in sheet)
+
+                var sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet<SaintCoinach.Xiv.TerritoryType>();
+                foreach (var Parse in sheet)
                 {
                     TerritoryType territory = new TerritoryType();
                     territory.Index = Parse.Key;
                     territory.WeatherRate = WeatherRates[Parse.WeatherRate.Key];
-                    TerritoryTypes.Add(territory.Index, territory);
+                    TerritoryTypes.Add(Parse.Key, territory);
                 }
             }
             catch (Exception exc)
@@ -674,13 +671,13 @@ namespace FFXIVTool.Utility
             {
                 try
                 {
-                    SaintCoinach.Ex.Relational.IRelationalSheet sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet("Weather");
-                    foreach (SaintCoinach.Xiv.Weather Parse in sheet)
+                    var sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet<SaintCoinach.Xiv.Weather>();
+                    foreach (var Parse in sheet)
                     {
                         Weather weather = new Weather();
                         weather.Index = Parse.Key;
                         weather.Name = Parse.Name;
-                        Weathers.Add(weather.Index, weather);
+                        Weathers.Add(Parse.Key, weather);
                     }
                 }
                 catch (Exception exc)
