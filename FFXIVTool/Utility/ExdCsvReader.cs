@@ -213,7 +213,7 @@ namespace FFXIVTool.Utility
             CharaMakeFeatures2 = new Dictionary<int, CharaMakeCustomizeFeature2>();
             try
             {
-                var sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet<SaintCoinach.Xiv.CharaMakeType>();
+                var sheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.CharaMakeType>();
                 foreach (var test in sheet)
                 {
                  //   rowCount++;
@@ -245,7 +245,7 @@ namespace FFXIVTool.Utility
             CharaMakeFeatures = new Dictionary<int, CharaMakeCustomizeFeature>();
             try
             {
-                var sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet<SaintCoinach.Xiv.CharaMakeCustomize>();
+                var sheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.CharaMakeCustomize>();
                 int rowCount = 0;
                 foreach (var test in sheet)
                 {
@@ -270,7 +270,7 @@ namespace FFXIVTool.Utility
         {
             try
             {
-                var sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet<SaintCoinach.Xiv.CharaMakeCustomize>();
+                var sheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.CharaMakeCustomize>();
                 int rowCount = 0;
                 foreach (var test in sheet)
                 {
@@ -302,7 +302,7 @@ namespace FFXIVTool.Utility
             Tribes = new Dictionary<int, Tribe>();
             try
             {
-                var TribeSheet = ViewModel.MainViewModel.Realm.GameData.GetSheet<SaintCoinach.Xiv.Tribe>();
+                var TribeSheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Tribe>();
                 foreach (var Parse in TribeSheet)
                 {
                     Tribe tribe = new Tribe();
@@ -327,7 +327,7 @@ namespace FFXIVTool.Utility
             Races = new Dictionary<int, Race>();
             try
             {
-                var RaceSheet = ViewModel.MainViewModel.Realm.GameData.GetSheet<SaintCoinach.Xiv.Race>();
+                var RaceSheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Race>();
                 foreach (var Parse in RaceSheet)
                 {
                     Race race = new Race();
@@ -446,7 +446,7 @@ namespace FFXIVTool.Utility
             {
                 try
                 {
-                    var sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet<SaintCoinach.Xiv.Stain>();
+                    var sheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Stain>();
                     foreach (var Parse in sheet)
                     {
                         Dye dye = new Dye();
@@ -500,7 +500,7 @@ namespace FFXIVTool.Utility
             {
                 try
                 {
-                    var sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet<SaintCoinach.Xiv.Item>();
+                    var sheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Item>();
                     foreach (var Parse in sheet)
                     {
                         if (Parse.EquipSlotCategory.Key <= 0) continue;
@@ -532,12 +532,12 @@ namespace FFXIVTool.Utility
 
             try
             {
-                var sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet<SaintCoinach.Xiv.ENpcResident>();
+                var sheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.ENpcResident>();
                 foreach (var Parse in sheet)
                 {
                     Residents.Add(Parse.Key, new Resident { Index = Parse.Key, Name = Parse.Singular });
                 }
-                var eNpcBases = ViewModel.MainViewModel.Realm.GameData.GetSheet<SaintCoinach.Xiv.ENpcBase>();
+                var eNpcBases = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.ENpcBase>();
 
                 foreach (var parse in eNpcBases)
                 {
@@ -613,7 +613,7 @@ namespace FFXIVTool.Utility
 
             try
             {
-                var sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet<SaintCoinach.Xiv.WeatherRate>();
+                var sheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.WeatherRate>();
                 foreach (var Parse in sheet)
                 {
                     WeatherRate rate = new WeatherRate();
@@ -648,7 +648,7 @@ namespace FFXIVTool.Utility
             try
             {
 
-                var sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet<SaintCoinach.Xiv.TerritoryType>();
+                var sheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.TerritoryType>();
                 foreach (var Parse in sheet)
                 {
                     TerritoryType territory = new TerritoryType();
@@ -671,7 +671,7 @@ namespace FFXIVTool.Utility
             {
                 try
                 {
-                    var sheet = ViewModel.MainViewModel.Realm.GameData.GetSheet<SaintCoinach.Xiv.Weather>();
+                    var sheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Weather>();
                     foreach (var Parse in sheet)
                     {
                         Weather weather = new Weather();

@@ -26,6 +26,7 @@ using System.Linq;
 using System.Configuration;
 using WepTuple = System.Tuple<int, int, int, int>;
 using System.ComponentModel;
+using SaintCoinach;
 
 namespace FFXIVTool
 {
@@ -36,6 +37,8 @@ namespace FFXIVTool
     {
 
         public int Processcheck = 0;
+        public static bool HasRead = false;
+        public static ARealmReversed Realm;
         public static bool CurrentlySaving = false;
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
         Version version = Assembly.GetExecutingAssembly().GetName().Version;

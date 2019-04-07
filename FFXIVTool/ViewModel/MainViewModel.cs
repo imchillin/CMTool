@@ -20,7 +20,6 @@ namespace FFXIVTool.ViewModel
 
         private static BackgroundWorker worker;
         public Mem MemLib = new Mem();
-        public static ARealmReversed Realm;
         public static int gameProcId = 0;
         public static ThreadWriting ThreadTime;
         public static CharacterDetailsView2 ViewTime2;
@@ -36,10 +35,14 @@ namespace FFXIVTool.ViewModel
 
 		public MainViewModel()
         {
-            if (!App.IsValidGamePath(Properties.Settings.Default.GamePath))
-                return;
-            var realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.English);
-            Initialize(realm);
+            if (!MainWindow.HasRead)
+            {
+                if (!App.IsValidGamePath(Properties.Settings.Default.GamePath))
+                    return;
+                var realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.English);
+                Initialize(realm);
+                MainWindow.HasRead = true;
+            }
             mediator = new Mediator();
             MemoryManager.Instance.MemLib.OpenProcess(gameProcId);
             LoadSettings();
@@ -68,7 +71,7 @@ namespace FFXIVTool.ViewModel
                 var updateReport = realm.Update(IncludeDataChanges);
             }
             realm.Packs.GetPack(new SaintCoinach.IO.PackIdentifier("exd", SaintCoinach.IO.PackIdentifier.DefaultExpansion, 0)).KeepInMemory = true;
-            Realm = realm;
+            MainWindow.Realm = realm;
             CharacterDetailsView._exdProvider.RaceList();
             CharacterDetailsView._exdProvider.TribeList();
             CharacterDetailsView._exdProvider.DyeList();
