@@ -131,7 +131,9 @@ namespace FFXIVTool
             this.Topmost = settings.TopApp;
 			// toggle status
 			(DataContext as MainViewModel).ToggleStatus(settings.TopApp);
-		}
+            CharacterDetailsView._exdProvider.MakeCharaMakeFeatureList();
+            CharacterDetailsView._exdProvider.MakeCharaMakeFeatureFacialList();
+        }
 
         private void CharacterRefreshButton_Click(object sender, RoutedEventArgs e)
         {
