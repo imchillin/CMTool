@@ -240,6 +240,11 @@ namespace FFXIVTool.Views
         public void CharaMakeFeatureSelector(int tribe, int gender, ExdCsvReader reader)
         {
             if (DidUserInteract) return;
+            if (tribe == 0)
+            {
+                MessageBox.Show("You can't have Clan Set to None when using this!", "Oh no!");
+                return;
+            }
             DidUserInteract = true;
             _tribe = tribe;
             _gender = gender;
@@ -250,10 +255,15 @@ namespace FFXIVTool.Views
         public void CharaMakeFeatureSelector2(int tribe, int gender, ExdCsvReader reader)
         {
             if (DidUserInteract) return;
+            if (tribe == 0)
+            {
+                MessageBox.Show("You can't have Clan Set to None when using this!", "Oh no!");
+                return;
+            }
             CheckIncluded.IsChecked = false;
             DidUserInteract = true;
             _tribe = tribe;
-            _gender = gender;
+            _gender = gender; 
             _reader = reader;
 
             FillFacePaint();
@@ -261,7 +271,11 @@ namespace FFXIVTool.Views
         public void CharaMakeFeatureSelector3(int face ,int race, int tribe, int gender, ExdCsvReader reader)
         {
             if (DidUserInteract) return;
-            CheckIncluded.IsChecked = false;
+            if (tribe == 0)
+            {
+                MessageBox.Show("You can't have Clan Set to None when using this!", "Oh no!");
+                return;
+            }
             DidUserInteract = true;
             _tribe = tribe;
             _gender = gender;
@@ -499,12 +513,16 @@ namespace FFXIVTool.Views
         }
         public void HairRandomPick(int tribe, int gender, ExdCsvReader reader)
         {
+            if (tribe == 0)
+            {
+                MessageBox.Show("You can't have Clan Set to None when using this!", "Oh no!");
+                return;
+            }
             if (DidUserInteract) return;
             DidUserInteract = true;
             _tribe = tribe;
             _gender = gender;
             _reader = reader;
-
             try
             {
                 CharacterFeature.Items.Clear();
