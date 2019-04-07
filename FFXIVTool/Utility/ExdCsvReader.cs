@@ -238,12 +238,21 @@ namespace FFXIVTool.Utility
                     CharaMakeFeatures2.Add(test.Key, feature);
                 }
             }
-            catch (Exception exc)
+            catch (Exception e)
             {
-                //CharaMakeFeatures2 = null;
-
-                throw;
-
+                using (StreamWriter writer = new StreamWriter("ErrorLog.txt", true))
+                {
+                    writer.WriteLine("-----------CharaMakeType Error Sheet-----------" + DateTime.Now);
+                    writer.WriteLine("Error Message: " + e.Message);
+                    writer.WriteLine("Stack Trace: " + e.StackTrace);
+                    if (e.InnerException != null)
+                    {
+                        writer.WriteLine("-----------Inner Exception-----------" + DateTime.Now);
+                        writer.WriteLine("Inner Exception Message: " + e.InnerException.Message);
+                        writer.WriteLine("Inner Exception Message: " + e.InnerException.StackTrace);
+                    }
+                    writer.WriteLine("-----------End-----------" + DateTime.Now);
+                }
             }
         }
         public void MakeCharaMakeFeatureList()
@@ -271,12 +280,21 @@ namespace FFXIVTool.Utility
                     CharaMakeFeatures.Add(rowCount, feature);
                 }
             }
-            catch (Exception exc)
+            catch (Exception e)
             {
-               // CharaMakeFeatures = null;
-
-                throw;
-
+                using (StreamWriter writer = new StreamWriter("ErrorLog.txt", true))
+                {
+                    writer.WriteLine("-----------CharaMakeCustomize Error Sheet-----------" + DateTime.Now);
+                    writer.WriteLine("Error Message: " + e.Message);
+                    writer.WriteLine("Stack Trace: " + e.StackTrace);
+                    if (e.InnerException != null)
+                    {
+                        writer.WriteLine("-----------Inner Exception-----------" + DateTime.Now);
+                        writer.WriteLine("Inner Exception Message: " + e.InnerException.Message);
+                        writer.WriteLine("Inner Exception Message: " + e.InnerException.StackTrace);
+                    }
+                    writer.WriteLine("-----------End-----------" + DateTime.Now);
+                }
             }
         }
         public CharaMakeCustomizeFeature GetCharaMakeCustomizeFeature(int index, bool getBitMap)
@@ -304,7 +322,7 @@ namespace FFXIVTool.Utility
             catch (Exception exc)
             {
 
-                throw;
+            //    throw;
 
             }
 
@@ -538,12 +556,21 @@ namespace FFXIVTool.Utility
                         Items.Add(Parse.Key, item);
                     }
                 }
-                catch (Exception exc)
+                catch(Exception e)
                 {
-             //       Items = null;
-
-                    throw;
-
+                    using (StreamWriter writer = new StreamWriter("ErrorLog.txt", true))
+                    {
+                        writer.WriteLine("-----------Equipment Error Sheet-----------" + DateTime.Now);
+                        writer.WriteLine("Error Message: " + e.Message);
+                        writer.WriteLine("Stack Trace: " + e.StackTrace);
+                        if (e.InnerException != null)
+                        {
+                            writer.WriteLine("-----------Inner Exception-----------" + DateTime.Now);
+                            writer.WriteLine("Inner Exception Message: " + e.InnerException.Message);
+                            writer.WriteLine("Inner Exception Message: " + e.InnerException.StackTrace);
+                        }
+                        writer.WriteLine("-----------End-----------" + DateTime.Now);
+                    }
                 }
             }
         }
@@ -621,7 +648,7 @@ namespace FFXIVTool.Utility
             {
                 Residents = null;
 
-                throw;
+         //       throw;
 
             }
         }
