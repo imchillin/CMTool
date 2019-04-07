@@ -317,7 +317,7 @@ namespace FFXIVTool.Utility
                     return feature;
                 }
             }
-            catch (Exception exc)
+            catch (Exception)
             {
 
             //    throw;
@@ -343,7 +343,7 @@ namespace FFXIVTool.Utility
                 }
             }
 
-            catch (Exception exc)
+            catch (Exception)
             {
                 Tribes = null;
 
@@ -366,7 +366,7 @@ namespace FFXIVTool.Utility
                     Races.Add(Parse.Key, race);
                 }
             }
-            catch (Exception exc)
+            catch (Exception)
             {
                 Races = null;
 
@@ -414,7 +414,7 @@ namespace FFXIVTool.Utility
                     }
                 }
 
-                catch (Exception exc)
+                catch (Exception)
                 {
                     Emotes = null;
 
@@ -460,7 +460,7 @@ namespace FFXIVTool.Utility
                     }
                 }
 
-                catch (Exception exc)
+                catch (Exception)
                 {
                     Monsters = null;
 
@@ -486,7 +486,7 @@ namespace FFXIVTool.Utility
                         //     Console.WriteLine($"{Parse.Key} {Parse.Name}");
                     }
                 }
-                catch (Exception exc)
+                catch (Exception)
                 {
                     Dyes = null;
 
@@ -642,7 +642,7 @@ namespace FFXIVTool.Utility
                     }
                 }
             }
-            catch (Exception exc)
+            catch (Exception)
             {
                 Residents = null;
 
@@ -673,7 +673,7 @@ namespace FFXIVTool.Utility
                     TerritoryTypes.Add(Parse.Key, territory);
                 }
             }
-            catch (Exception exc)
+            catch (Exception)
             {
                 TerritoryTypes = null;
 
@@ -731,7 +731,7 @@ namespace FFXIVTool.Utility
                            //. Debug.WriteLine($"ExdCsvReader: {rowCount} items read");
                     }
                 }
-                catch (Exception exc)
+                catch (Exception)
                 {
                     ItemsProps = null;
 
@@ -782,7 +782,7 @@ namespace FFXIVTool.Utility
                     }
                 }
 
-                catch (Exception exc)
+                catch (Exception)
                 {
                     BGMs = null;
 
