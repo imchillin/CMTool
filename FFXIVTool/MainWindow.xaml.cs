@@ -133,6 +133,7 @@ namespace FFXIVTool
 			(DataContext as MainViewModel).ToggleStatus(settings.TopApp);
             CharacterDetailsView._exdProvider.MakeCharaMakeFeatureList();
             CharacterDetailsView._exdProvider.MakeCharaMakeFeatureFacialList();
+            CharacterDetailsView._exdProvider.MakeTerritoryTypeList();
         }
 
         private void CharacterRefreshButton_Click(object sender, RoutedEventArgs e)

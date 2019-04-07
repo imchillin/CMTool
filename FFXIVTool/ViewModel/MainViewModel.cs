@@ -75,9 +75,6 @@ namespace FFXIVTool.ViewModel
             CharacterDetailsView._exdProvider.RaceList();
             CharacterDetailsView._exdProvider.TribeList();
             CharacterDetailsView._exdProvider.DyeList();
-            CharacterDetailsView._exdProvider.MakeWeatherList();
-            CharacterDetailsView._exdProvider.MakeWeatherRateList();
-            CharacterDetailsView._exdProvider.MakeTerritoryTypeList();
             for (int i = 0; i < CharacterDetailsView._exdProvider.Dyes.Count; i++)
             {
                 ViewTime2.HeadDye.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);

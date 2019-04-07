@@ -296,7 +296,8 @@ namespace FFXIVTool.Views
 
                 Choice = AllowedWeathers[WeatherBox.SelectedIndex];
                 CharacterDetails.Weather.value = (byte)AllowedWeathers[WeatherBox.SelectedIndex].Index;
-                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.WeatherAddress, Settings.Instance.Character.Weather), "byte", Choice.Index.ToString());
+                string hexValue = AllowedWeathers[WeatherBox.SelectedIndex].Index.ToString("X");
+                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.WeatherAddress, Settings.Instance.Character.Weather), "byte", hexValue);
 
             }
             isUserInteraction = false;

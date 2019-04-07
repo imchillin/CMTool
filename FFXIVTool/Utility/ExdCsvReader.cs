@@ -181,8 +181,6 @@ namespace FFXIVTool.Utility
         public static Dye[] DyesX;
         public Dictionary<int, Item> Items = null;
         public Dictionary<int, Item> ItemsProps = null;
-        public Dictionary<int, Weather> Weathers = null;
-        public Dictionary<int, WeatherRate> WeatherRates = null;
         public Dictionary<int, TerritoryType> TerritoryTypes = null;
         public Dictionary<int, Dye> Dyes = null;
         public Dictionary<int, Emote> Emotes = null;
@@ -652,45 +650,8 @@ namespace FFXIVTool.Utility
 
             }
         }
-        public void MakeWeatherRateList()
-        {
-            if (Weathers == null)
-                throw new Exception("Weathers has to be loaded for WeatherRates to be read");
-
-            WeatherRates = new Dictionary<int, WeatherRate>();
-
-            try
-            {
-                var sheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.WeatherRate>();
-                foreach (var Parse in sheet)
-                {
-                    WeatherRate rate = new WeatherRate();
-                    rate.Index = Parse.Key;
-                    rate.AllowedWeathers = new List<Weather>();
-                    foreach (var timetodothis in Parse.PossibleWeathers)
-                    {
-
-                        if (timetodothis.Key == 0)
-                            break;
-                        rate.AllowedWeathers.Add(Weathers[timetodothis.Key]);
-                    }
-                    WeatherRates.Add(Parse.Key, rate);
-                }
-            }
-            catch (Exception exc)
-            {
-                WeatherRates = null;
-
-                throw;
-
-            }
-        }
-
         public void MakeTerritoryTypeList()
         {
-            if (WeatherRates == null)
-                throw new Exception("WeatherRates has to be loaded for TerritoryTypes to be read");
-
             TerritoryTypes = new Dictionary<int, TerritoryType>();
 
             try
@@ -701,7 +662,14 @@ namespace FFXIVTool.Utility
                 {
                     TerritoryType territory = new TerritoryType();
                     territory.Index = Parse.Key;
-                    territory.WeatherRate = WeatherRates[Parse.WeatherRate.Key];
+                    territory.WeatherRate = new WeatherRate();
+                    territory.WeatherRate.AllowedWeathers = new List<Weather>();
+                    foreach (var Test in Parse.WeatherRate.PossibleWeathers)
+                    {
+                        territory.WeatherRate.Index = Test.Key;
+                        if(Test.Key!=0) territory.WeatherRate.AllowedWeathers.Add(new Weather() { Index= Test.Key, Name=Test.Name });
+                        else territory.WeatherRate.AllowedWeathers.Add(new Weather() { Index = Test.Key, Name = "None" });
+                    }
                     TerritoryTypes.Add(Parse.Key, territory);
                 }
             }
@@ -711,30 +679,6 @@ namespace FFXIVTool.Utility
 
                 throw;
 
-            }
-        }
-        public void MakeWeatherList()
-        {
-            Weathers = new Dictionary<int, Weather>();
-            {
-                try
-                {
-                    var sheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Weather>();
-                    foreach (var Parse in sheet)
-                    {
-                        Weather weather = new Weather();
-                        weather.Index = Parse.Key;
-                        weather.Name = Parse.Name;
-                        Weathers.Add(Parse.Key, weather);
-                    }
-                }
-                catch (Exception exc)
-                {
-                    Weathers = null;
-
-                    throw;
-
-                }
             }
         }
         public void MakePropList()

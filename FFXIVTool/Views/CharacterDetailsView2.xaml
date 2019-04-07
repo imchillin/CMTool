@@ -18,7 +18,7 @@
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <ComboBox x:Name="MHBox" SelectedIndex="{Binding Path=CharacterDetails.WeaponDye.value}" materialDesign:HintAssist.Hint="Dyes" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="304,3,0,0" VerticalAlignment="Top" Width="166">
+        <ComboBox x:Name="MHBox" SelectedIndex="{Binding Path=CharacterDetails.WeaponDye.value}" materialDesign:HintAssist.Hint="Dyes" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="304,3,0,0" VerticalAlignment="Top" Width="166" IsEditable="True" StaysOpenOnEdit="True">
             <ComboBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel />
@@ -63,7 +63,7 @@
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <ComboBox x:Name="OHBox" SelectedIndex="{Binding Path=CharacterDetails.OffhandDye.value}" materialDesign:HintAssist.Hint="Dyes" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="304,47,0,0" VerticalAlignment="Top" Width="166">
+        <ComboBox x:Name="OHBox" SelectedIndex="{Binding Path=CharacterDetails.OffhandDye.value}" materialDesign:HintAssist.Hint="Dyes" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="304,47,0,0" VerticalAlignment="Top" Width="166" StaysOpenOnEdit="True" IsEditable="True">
             <ComboBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel />
@@ -87,7 +87,7 @@
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <ComboBox x:Name="HeadDye" SelectedIndex="{Binding Path=CharacterDetails.HeadDye.value}" materialDesign:HintAssist.Hint="Dyes" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="243,94,0,0" VerticalAlignment="Top" Width="166">
+        <ComboBox x:Name="HeadDye" SelectedIndex="{Binding Path=CharacterDetails.HeadDye.value}" materialDesign:HintAssist.Hint="Dyes" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="243,94,0,0" VerticalAlignment="Top" Width="166" IsEditable="True" StaysOpenOnEdit="True">
             <ComboBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel />
@@ -110,7 +110,7 @@
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <ComboBox x:Name="ChestBox" SelectedIndex="{Binding Path=CharacterDetails.ChestDye.value}" materialDesign:HintAssist.Hint="Dyes" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="243,141,0,0" VerticalAlignment="Top" Width="166">
+        <ComboBox x:Name="ChestBox" SelectedIndex="{Binding Path=CharacterDetails.ChestDye.value}" materialDesign:HintAssist.Hint="Dyes" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="243,141,0,0" VerticalAlignment="Top" Width="166" StaysOpenOnEdit="True" IsEditable="True">
             <ComboBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel />
@@ -133,7 +133,7 @@
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <ComboBox x:Name="ArmBox" SelectedIndex="{Binding Path=CharacterDetails.ArmsDye.value}" materialDesign:HintAssist.Hint="Dyes" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="243,188,0,0" VerticalAlignment="Top" Width="166">
+        <ComboBox x:Name="ArmBox" SelectedIndex="{Binding Path=CharacterDetails.ArmsDye.value}" materialDesign:HintAssist.Hint="Dyes" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="243,188,0,0" VerticalAlignment="Top" Width="166" StaysOpenOnEdit="True" IsEditable="True">
             <ComboBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel />
@@ -156,7 +156,7 @@
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <ComboBox x:Name="LegBox" SelectedIndex="{Binding Path=CharacterDetails.LegsDye.value}" materialDesign:HintAssist.Hint="Dyes" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="243,235,0,0" VerticalAlignment="Top" Width="166">
+        <ComboBox x:Name="LegBox" SelectedIndex="{Binding Path=CharacterDetails.LegsDye.value}" materialDesign:HintAssist.Hint="Dyes" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="243,235,0,0" VerticalAlignment="Top" Width="166" IsEditable="True" StaysOpenOnEdit="True">
             <ComboBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel />
@@ -179,7 +179,7 @@
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <ComboBox x:Name="FeetBox" SelectedIndex="{Binding Path=CharacterDetails.FeetDye.value}" materialDesign:HintAssist.Hint="Dyes" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="243,282,0,0" VerticalAlignment="Top" Width="166">
+        <ComboBox x:Name="FeetBox" SelectedIndex="{Binding Path=CharacterDetails.FeetDye.value}" materialDesign:HintAssist.Hint="Dyes" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="243,282,0,0" VerticalAlignment="Top" Width="166" IsEditable="True" StaysOpenOnEdit="True">
             <ComboBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel />
