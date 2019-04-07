@@ -36,9 +36,26 @@ namespace FFXIVTool.Views
             CurrentlyEquippedName.Visibility = Visibility.Hidden;
             EquippedLabel.Visibility = Visibility.Hidden;
         }
+
         private static ImageSource CreateSource(SaintCoinach.Imaging.ImageFile file)
         {
-            if (file == null) return null;
+            if (file == null)
+            {
+                var bitmap = new System.Drawing.Bitmap((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Corrupted"));
+                IntPtr bmpPt = bitmap.GetHbitmap();
+                System.Windows.Media.Imaging.BitmapSource bitmapSource =
+                 System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
+                       bmpPt,
+                       IntPtr.Zero,
+                       Int32Rect.Empty,
+                       System.Windows.Media.Imaging.BitmapSizeOptions.FromEmptyOptions());
+
+                //freeze bitmapSource and clear memory to avoid memory leaks
+                bitmapSource.Freeze();
+                SpecialControl.DeleteObject(bmpPt);
+                return bitmapSource;
+            }
+                   
             var argb = SaintCoinach.Imaging.ImageConverter.GetA8R8G8B8(file);
             return System.Windows.Media.Imaging.BitmapSource.Create(
                                        file.Width, file.Height,

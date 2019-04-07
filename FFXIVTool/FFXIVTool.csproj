@@ -359,6 +359,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <Resource Include="Resources\Corrupted.png" />
     <Resource Include="Resources\Legacy.png" />
     <Resource Include="Resources\Nope.png" />
   </ItemGroup>

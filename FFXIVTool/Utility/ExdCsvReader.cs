@@ -4,12 +4,7 @@ using Microsoft.VisualBasic.FileIO;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 using GearTuple = System.Tuple<int, int, int>;
 using WepTuple = System.Tuple<int, int, int, int>;
@@ -207,7 +202,23 @@ namespace FFXIVTool.Utility
                 PixelFormats.Bgra32, null,
                 argb, file.Width * 4);
         }
-
+       private List<Features> FeatureD(IEnumerable<SaintCoinach.Xiv.CharaMakeType.CharaMakeFeatureIcon> parse)
+        {
+            List<Features> NewList = new List<Features>();
+           foreach(var Parse in parse)
+            {
+                try
+                {
+                    var testw = Parse.FacialFeatureIcon.CommonHeader;
+                    NewList.Add(new Features { FeatureID = Parse.Count, Icon = CreateSource(Parse.FacialFeatureIcon) });
+                }
+                catch
+                {
+                    NewList.Add(new Features { FeatureID = Parse.Count, Icon = SpecialControl.GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Corrupted")) });
+                }
+            }
+            return NewList;
+        }
         public void MakeCharaMakeFeatureFacialList()
         {
             CharaMakeFeatures2 = new Dictionary<int, CharaMakeCustomizeFeature2>();
@@ -223,18 +234,13 @@ namespace FFXIVTool.Utility
                     feature.Race = test.Race.Key;
                     feature.Tribe = test.Tribe.Key;
                     //Console.WriteLine($"{testt.Key},{testt.FeatureID}");
-                    feature.Features = new List<Features>();
-                    foreach (var Parse in test.FacialFeatureIcon)
-                    {
-                      //  Console.WriteLine(Parse.FacialFeatureIcon.Height);
-                        feature.Features.Add(new Features {FeatureID=Parse.Count, Icon = CreateSource(Parse.FacialFeatureIcon)});
-                    }
+                    feature.Features=FeatureD(test.FacialFeatureIcon);
                     CharaMakeFeatures2.Add(test.Key, feature);
                 }
             }
             catch (Exception exc)
             {
-                CharaMakeFeatures2 = null;
+                //CharaMakeFeatures2 = null;
 
                 throw;
 
@@ -254,13 +260,20 @@ namespace FFXIVTool.Utility
                     //Console.WriteLine($"{testt.Key},{testt.FeatureID}");
                     feature.Index = test.Key;
                     feature.FeatureID = test.FeatureID;
-                    feature.Icon = CreateSource(test.Icon);
+                    try
+                    {
+                        feature.Icon = CreateSource(test.Icon);
+                    }
+                    catch
+                    {
+                        feature.Icon = SpecialControl.GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Corrupted"));
+                    }
                     CharaMakeFeatures.Add(rowCount, feature);
                 }
             }
             catch (Exception exc)
             {
-                CharaMakeFeatures = null;
+               // CharaMakeFeatures = null;
 
                 throw;
 
@@ -510,16 +523,24 @@ namespace FFXIVTool.Utility
                         item.Type = Heh(Parse.ItemUICategory.Key);
                         item.ModelMain = Parse.ModelMain.ToString();
                         item.ModelOff = Parse.ModelSub.ToString();
-                        item.Icon = Parse.Icon;
                         if (Parse.Description.ToString().Contains("♀")) item.Gender = 1;
                         else if (Parse.Description.ToString().Contains("♂")) item.Gender = 0;
                         else item.Gender = 2;
+                        try
+                        {
+                            item.Icon = Parse.Icon;
+
+                        }
+                        catch
+                        {
+                            item.Icon = null;
+                        }
                         Items.Add(Parse.Key, item);
                     }
                 }
                 catch (Exception exc)
                 {
-                    Items = null;
+             //       Items = null;
 
                     throw;
 
