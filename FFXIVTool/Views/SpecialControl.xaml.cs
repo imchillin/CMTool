@@ -507,6 +507,10 @@ namespace FFXIVTool.Views
                     CheckIncluded.IsChecked = false;
                     CharaMakeFeatureSelector2(CharacterDetails.Clan.value, CharacterDetails.Gender.value, CharacterDetailsView._exdProvider);
                 }
+                else if(FacialTab.IsSelected)
+                {
+                    CharaMakeFeatureSelector3(CharacterDetails.Head.value, CharacterDetails.Race.value, CharacterDetails.Clan.value, CharacterDetails.Gender.value, CharacterDetailsView._exdProvider);
+                }
             }
             else return;
             e.Handled = true;
