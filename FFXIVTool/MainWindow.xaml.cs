@@ -991,6 +991,13 @@ namespace FFXIVTool
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
+            if (File.Exists(exepath + "\\SSToolsUpdater.exe"))
+            {
+                Uri urlv = new Uri("https://raw.githubusercontent.com/imchillin/SSTool/master/version.txt");
+                WebClient wc2 = new WebClient();
+                wc2.DownloadFileAsync(urlv, exepath + "\\version.txt");
+                wc2.DownloadFileCompleted += subwc_DownloadFileCompleted;
+            }
         }
 
         private void GposeButton_Checked(object sender, RoutedEventArgs e)
