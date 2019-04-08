@@ -30,7 +30,7 @@ namespace FFXIVTool.ViewModel
 
 		public CharacterDetailsViewModel CharacterDetails { get => characterDetails; set => characterDetails = value; }
 
-		public PackIconKind AOTToggleStatus { get; set; } = PackIconKind.ToggleSwitchOffOutline;
+        public PackIconKind AOTToggleStatus { get; set; } = PackIconKind.ToggleSwitchOffOutline;
 		public Brush ToggleForeground { get; set; } = new SolidColorBrush(Color.FromArgb(0x75, 0xFF, 0xFF, 0xFF));
 
 		public MainViewModel()

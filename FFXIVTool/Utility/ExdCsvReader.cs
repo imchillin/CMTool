@@ -212,6 +212,10 @@ namespace FFXIVTool.Utility
                 }
                 catch
                 {
+                    using (StreamWriter writer = new StreamWriter("ErrorLog.txt", true))
+                    {
+                        writer.WriteLine($"FacialFeature Image File ID Corrupted: {Parse.Count}");
+                    }
                     NewList.Add(new Features { FeatureID = Parse.Count, Icon = SpecialControl.GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Corrupted")) });
                 }
             }
@@ -238,19 +242,6 @@ namespace FFXIVTool.Utility
             }
             catch (Exception e)
             {
-                using (StreamWriter writer = new StreamWriter("ErrorLog.txt", true))
-                {
-                    writer.WriteLine("-----------CharaMakeType Error Sheet-----------" + DateTime.Now);
-                    writer.WriteLine("Error Message: " + e.Message);
-                    writer.WriteLine("Stack Trace: " + e.StackTrace);
-                    if (e.InnerException != null)
-                    {
-                        writer.WriteLine("-----------Inner Exception-----------" + DateTime.Now);
-                        writer.WriteLine("Inner Exception Message: " + e.InnerException.Message);
-                        writer.WriteLine("Inner Exception Message: " + e.InnerException.StackTrace);
-                    }
-                    writer.WriteLine("-----------End-----------" + DateTime.Now);
-                }
             }
         }
         public void MakeCharaMakeFeatureList()
@@ -273,6 +264,11 @@ namespace FFXIVTool.Utility
                     }
                     catch
                     {
+                        using (StreamWriter writer = new StreamWriter("ErrorLog.txt", true))
+                        {
+                            writer.WriteLine($"Feature Image File ID Corrupted: {test.Key}");
+                        }
+
                         feature.Icon = SpecialControl.GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Corrupted"));
                     }
                     CharaMakeFeatures.Add(rowCount, feature);
@@ -280,19 +276,6 @@ namespace FFXIVTool.Utility
             }
             catch (Exception e)
             {
-                using (StreamWriter writer = new StreamWriter("ErrorLog.txt", true))
-                {
-                    writer.WriteLine("-----------CharaMakeCustomize Error Sheet-----------" + DateTime.Now);
-                    writer.WriteLine("Error Message: " + e.Message);
-                    writer.WriteLine("Stack Trace: " + e.StackTrace);
-                    if (e.InnerException != null)
-                    {
-                        writer.WriteLine("-----------Inner Exception-----------" + DateTime.Now);
-                        writer.WriteLine("Inner Exception Message: " + e.InnerException.Message);
-                        writer.WriteLine("Inner Exception Message: " + e.InnerException.StackTrace);
-                    }
-                    writer.WriteLine("-----------End-----------" + DateTime.Now);
-                }
             }
         }
         public CharaMakeCustomizeFeature GetCharaMakeCustomizeFeature(int index, bool getBitMap)
@@ -317,7 +300,7 @@ namespace FFXIVTool.Utility
                     return feature;
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
             //    throw;
@@ -343,7 +326,7 @@ namespace FFXIVTool.Utility
                 }
             }
 
-            catch (Exception)
+            catch (Exception e)
             {
                 Tribes = null;
 
@@ -366,7 +349,7 @@ namespace FFXIVTool.Utility
                     Races.Add(Parse.Key, race);
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 Races = null;
 
@@ -414,7 +397,7 @@ namespace FFXIVTool.Utility
                     }
                 }
 
-                catch (Exception)
+                catch (Exception e)
                 {
                     Emotes = null;
 
@@ -460,7 +443,7 @@ namespace FFXIVTool.Utility
                     }
                 }
 
-                catch (Exception)
+                catch (Exception e)
                 {
                     Monsters = null;
 
@@ -486,7 +469,7 @@ namespace FFXIVTool.Utility
                         //     Console.WriteLine($"{Parse.Key} {Parse.Name}");
                     }
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
                     Dyes = null;
 
@@ -549,6 +532,10 @@ namespace FFXIVTool.Utility
                         }
                         catch
                         {
+                            using (StreamWriter writer = new StreamWriter("ErrorLog.txt", true))
+                            {
+                                writer.WriteLine($"Equipment Image File ID Corrupted: {Parse.Key}, {Parse.Name}, {Parse.ModelMain.ToString()}, {Parse.ModelSub.ToString()}");
+                            }
                             item.Icon = null;
                         }
                         Items.Add(Parse.Key, item);
@@ -556,19 +543,6 @@ namespace FFXIVTool.Utility
                 }
                 catch(Exception e)
                 {
-                    using (StreamWriter writer = new StreamWriter("ErrorLog.txt", true))
-                    {
-                        writer.WriteLine("-----------Equipment Error Sheet-----------" + DateTime.Now);
-                        writer.WriteLine("Error Message: " + e.Message);
-                        writer.WriteLine("Stack Trace: " + e.StackTrace);
-                        if (e.InnerException != null)
-                        {
-                            writer.WriteLine("-----------Inner Exception-----------" + DateTime.Now);
-                            writer.WriteLine("Inner Exception Message: " + e.InnerException.Message);
-                            writer.WriteLine("Inner Exception Message: " + e.InnerException.StackTrace);
-                        }
-                        writer.WriteLine("-----------End-----------" + DateTime.Now);
-                    }
                 }
             }
         }
@@ -642,7 +616,7 @@ namespace FFXIVTool.Utility
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 Residents = null;
 
@@ -782,7 +756,7 @@ namespace FFXIVTool.Utility
                     }
                 }
 
-                catch (Exception)
+                catch (Exception e)
                 {
                     BGMs = null;
 
