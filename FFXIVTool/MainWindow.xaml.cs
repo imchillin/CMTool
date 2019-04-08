@@ -16,16 +16,9 @@ using FFXIVTool.Models;
 using Newtonsoft.Json;
 using System.IO;
 using MaterialDesignThemes.Wpf;
-using AutoUpdaterDotNET;
 using System.Net;
-using System.Runtime.InteropServices;
-using System.Windows.Data;
 using FFXIVTool.Views;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Configuration;
 using WepTuple = System.Tuple<int, int, int, int>;
-using System.ComponentModel;
 using SaintCoinach;
 
 namespace FFXIVTool
@@ -40,14 +33,34 @@ namespace FFXIVTool
         public static bool HasRead = false;
         public static ARealmReversed Realm;
         public static bool CurrentlySaving = false;
+        string exepath = Directory.GetParent(Assembly.GetExecutingAssembly().Location).FullName;
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
         Version version = Assembly.GetExecutingAssembly().GetName().Version;
+        void subwc_DownloadFileCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+            string Newversion = File.ReadAllText(exepath + "\\version.txt").Trim();
+            if (!string.IsNullOrWhiteSpace(Newversion) && version.ToString().Replace(',', '.').CompareTo(Newversion) != 0)
+            {
+                Process p = new Process();
+                p.StartInfo.FileName = exepath + "\\SSToolsUpdater.exe";
+                p.StartInfo.Arguments = "-autolaunch";
+                if (AdminNeeded())
+                    p.StartInfo.Verb = "runas";
+
+                try { p.Start(); Process.GetCurrentProcess().Kill(); }
+                catch { }
+            }
+        }
         public MainWindow()
         {
             ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
-            AutoUpdater.RunUpdateAsAdmin = true;
-            AutoUpdater.DownloadPath = Environment.CurrentDirectory;
-            AutoUpdater.Start("https://raw.githubusercontent.com/imchillin/SSTool/master/UpdateLog.xml");
+            if (File.Exists(exepath + "\\SSToolsUpdater.exe"))
+            {
+                Uri urlv = new Uri("https://raw.githubusercontent.com/imchillin/SSTool/master/version.txt");
+                WebClient wc2 = new WebClient();
+                wc2.DownloadFileAsync(urlv, exepath + "\\version.txt");
+                wc2.DownloadFileCompleted += subwc_DownloadFileCompleted;
+            }
             if (!File.Exists(@"./OffsetSettings.xml"))
             {
                 try
@@ -109,6 +122,19 @@ namespace FFXIVTool
             if (File.Exists(path2)) File.Delete(path2);
 
 			InitializeComponent();
+        }
+        public bool AdminNeeded()
+        {
+            try
+            {
+                File.WriteAllText(exepath + "\\test.txt", "test");
+                File.Delete(exepath + "\\test.txt");
+                return false;
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return true;
+            }
         }
         public static ImageSource IconToImageSource(System.Drawing.Icon icon)
         {
@@ -965,11 +991,6 @@ namespace FFXIVTool
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
-            AutoUpdater.RunUpdateAsAdmin = true;
-            AutoUpdater.DownloadPath = Environment.CurrentDirectory;
-            AutoUpdater.Mandatory = true;
-            AutoUpdater.ShowRemindLaterButton = false;
-            AutoUpdater.Start("https://raw.githubusercontent.com/imchillin/SSTool/master/UpdateLog.xml");
         }
 
         private void GposeButton_Checked(object sender, RoutedEventArgs e)
