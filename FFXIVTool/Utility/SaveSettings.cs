@@ -54,6 +54,7 @@ namespace FFXIVTool.Utility
         public string Accent { get; set; } = "Blue";
         public bool TopApp { get; set; }  = false;
         public bool WindowsExplorer { get; set; } = false;
+        public bool KeepDyes { get; set; } = true;
         public List<ExdCsvReader.Emote> FavoriteEmotes { get; set; } = new List<ExdCsvReader.Emote>();
     }
 }

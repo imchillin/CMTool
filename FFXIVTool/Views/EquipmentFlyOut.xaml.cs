@@ -69,6 +69,7 @@ namespace FFXIVTool.Views
             public string Name { get; set; }
             public string ModelMain { get; set; }
             public string ModelOff { get; set; }
+            public ExdCsvReader.ItemType Type { get; set; }
             public ImageSource Icon { get; set; }
         }
         public void GearPicker(ExdCsvReader.Item[] items)
@@ -84,6 +85,7 @@ namespace FFXIVTool.Views
                     Name = game.Name,
                     ModelMain = game.ModelMain,
                     ModelOff = game.ModelOff,
+                    Type = game.Type,
                     Icon = CreateSource(game.Icon)
                 });
                 if(!found) // Only looking for a match once and will stop trying to match. 
@@ -427,7 +429,7 @@ namespace FFXIVTool.Views
         private void EquipBoxC_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             CheckIncluded.IsChecked = false;
-            KeepDyes.IsChecked = false;
+            KeepDyes.IsChecked = SaveSettings.Default.KeepDyes;
             CheckIncluded.Visibility = Visibility.Hidden;
             KeepDyes.Visibility = Visibility.Hidden;
             CurrentlyEquippedName.Visibility = Visibility.Hidden;
@@ -443,14 +445,14 @@ namespace FFXIVTool.Views
                     CheckIncluded.Visibility = Visibility.Visible;
                     KeepDyes.Visibility = Visibility.Visible;
                     CheckIncluded.Content = "Include OffHand";
-                    GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep && !c.ModelMain.Contains("0,0,0,0")).ToArray());
+                    GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep && !c.ModelMain.Contains("0,0,0,0") || c.Type == ExdCsvReader.ItemType.Shield && !c.ModelMain.Contains("0,0,0,0")).ToArray());
                 }
                 if (EquipBoxC.SelectedIndex == 1)
                 {
                     CheckIncluded.Visibility = Visibility.Visible;
                     KeepDyes.Visibility = Visibility.Visible;
                     CheckIncluded.Content = "Non-Offhand Aesthetics";
-                    GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep && !c.ModelMain.Contains("0,0,0,0")).ToArray());
+                    GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep && !c.ModelMain.Contains("0,0,0,0") || c.Type == ExdCsvReader.ItemType.Shield && !c.ModelMain.Contains("0,0,0,0")).ToArray());
                 }
                 if (EquipBoxC.SelectedIndex == 2)
                 {
@@ -513,13 +515,13 @@ namespace FFXIVTool.Views
                 if (EquipBoxC.SelectedIndex == 0)
                 {
                     CharacterDetails.WeaponSlot.value = Value.ModelMain;
-                    if (CheckIncluded.IsChecked == true) CharacterDetails.OffhandSlot.value = Value.ModelOff;
+                    if (CheckIncluded.IsChecked == true && Value.Type != ExdCsvReader.ItemType.Shield) CharacterDetails.OffhandSlot.value = Value.ModelOff;
                     WriteGear_Click();
                 }
                 if (EquipBoxC.SelectedIndex == 1)
                 {
-                    CharacterDetails.OffhandSlot.value = Value.ModelOff;
                     if (CheckIncluded.IsChecked == true) CharacterDetails.OffhandSlot.value = Value.ModelMain;
+                    else CharacterDetails.OffhandSlot.value = Value.ModelOff;
                     WriteGear_Click();
                 }
                 if (EquipBoxC.SelectedIndex == 2)
@@ -781,6 +783,7 @@ namespace FFXIVTool.Views
                     Name = game.Name.ToString(),
                     ModelMain = game.ModelMain,
                     ModelOff = game.ModelOff,
+                    Type = game.Type,
                     Icon = CreateSource(game.Icon)
                 });
         }
@@ -811,6 +814,16 @@ namespace FFXIVTool.Views
             }
             else return;
             e.Handled = true;
+        }
+
+        private void KeepDyes_Checked(object sender, RoutedEventArgs e)
+        {
+            SaveSettings.Default.KeepDyes = true;
+        }
+
+        private void KeepDyes_Unchecked(object sender, RoutedEventArgs e)
+        {
+            SaveSettings.Default.KeepDyes = false;
         }
     }
 }

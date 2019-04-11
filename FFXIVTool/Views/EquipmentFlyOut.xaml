@@ -71,7 +71,7 @@
                                 <ComboBoxItem Content="Props Main Hand"/>
                                 <ComboBoxItem Content="Props Off Hand"/>
                             </ComboBox>
-                            <CheckBox Content="Keep Dyes" x:Name="KeepDyes" HorizontalAlignment="Left" Margin="365,11,0,0" VerticalAlignment="Top" Width="98"/>
+                            <CheckBox Content="Keep Dyes" x:Name="KeepDyes" HorizontalAlignment="Left" Margin="365,11,0,0" VerticalAlignment="Top" Width="98" Checked="KeepDyes_Checked" Unchecked="KeepDyes_Unchecked"/>
                         </Grid>
                     </TabItem>
                     <TabItem Header="NPC Selector" Name="NPCTab">
