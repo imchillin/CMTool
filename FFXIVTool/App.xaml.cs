@@ -1,10 +1,8 @@
-﻿using Ookii.Dialogs.Wpf;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.IO;
 using System.Windows;
 using System.Windows.Threading;
-
 namespace FFXIVTool
 {
     /// <summary>
@@ -94,24 +92,22 @@ namespace FFXIVTool
                 }
             }
 
-            VistaFolderBrowserDialog dlg = null;
-
+            System.Windows.Forms.FolderBrowserDialog dig = null;
             while (!IsValidGamePath(path))
             {
-                var result = (dlg ?? (dlg = new VistaFolderBrowserDialog
+                var result = (dig ?? (dig = new System.Windows.Forms.FolderBrowserDialog
                 {
                     Description = "Please select the directory of your FFXIV:ARR game installation (should contain 'boot' and 'game' directories).",
                     ShowNewFolderButton = false,
                 })).ShowDialog();
 
-                if (!result.GetValueOrDefault(false))
+                if (result!=System.Windows.Forms.DialogResult.OK&&result!=System.Windows.Forms.DialogResult.Yes)
                 {
                     var msgResult = System.Windows.MessageBox.Show("Cannot continue without a valid game installation, quit the program?", "That's no good", MessageBoxButton.YesNo, MessageBoxImage.Error, MessageBoxResult.No);
                     if (msgResult == MessageBoxResult.Yes)
                         return false;
                 }
-
-                path = dlg.SelectedPath;
+                path = dig.SelectedPath;
             }
 
             FFXIVTool.Properties.Settings.Default.GamePath = path;
