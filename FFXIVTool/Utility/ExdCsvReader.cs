@@ -54,6 +54,7 @@ namespace FFXIVTool.Utility
             Neck,
             Wrists,
             Ring,
+            Shield,
             Trash,
         }
         public class Item
@@ -500,7 +501,9 @@ namespace FFXIVTool.Utility
                     return ItemType.Wrists;
                 case 43:
                     return ItemType.Ring;
-                case int n when (n >= 1 && n <= 32 || n == 84 || n >= 87 && n <= 89 || n >= 96 && n <= 99 || n == 105):
+                case 11:
+                    return ItemType.Shield;
+                case int n when (n >= 1 && n<=10 || n>=11 && n <= 32 || n == 84 || n >= 87 && n <= 89 || n >= 96 && n <= 99 || n == 105):
                     return ItemType.Wep;
                 default:
                     return ItemType.Trash;
@@ -520,8 +523,16 @@ namespace FFXIVTool.Utility
                         item.Index = Parse.Key;
                         item.Name = Parse.Name;
                         item.Type = Heh(Parse.ItemUICategory.Key);
-                        item.ModelMain = Parse.ModelMain.ToString();
-                        item.ModelOff = Parse.ModelSub.ToString();
+                        if (Parse.ItemUICategory.Key == 11)
+                        {
+                            item.ModelMain = Parse.ModelMain.ToString();
+                            item.ModelOff = Parse.ModelMain.ToString();
+                        }
+                        else
+                        {
+                            item.ModelMain = Parse.ModelMain.ToString();
+                            item.ModelOff = Parse.ModelSub.ToString();
+                        }
                         if (Parse.Description.ToString().Contains("♀")) item.Gender = 1;
                         else if (Parse.Description.ToString().Contains("♂")) item.Gender = 0;
                         else item.Gender = 2;

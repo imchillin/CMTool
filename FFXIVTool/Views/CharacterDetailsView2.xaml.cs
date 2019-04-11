@@ -254,7 +254,7 @@ namespace FFXIVTool.Views
                     EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
                     EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                     EquipmentControl.CheckIncluded.Content = "Include OffHand";
-                    EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep && !c.ModelMain.Contains("0,0,0,0")).ToArray());
+                    EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep && !c.ModelMain.Contains("0,0,0,0") || c.Type == ExdCsvReader.ItemType.Shield && !c.ModelMain.Contains("0,0,0,0")).ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
             }
@@ -268,7 +268,7 @@ namespace FFXIVTool.Views
                 EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
                 EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                 EquipmentControl.CheckIncluded.Content = "Include OffHand";
-                EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep && !c.ModelMain.Contains("0,0,0,0")).ToArray());
+                EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep && !c.ModelMain.Contains("0,0,0,0") || c.Type == ExdCsvReader.ItemType.Shield && !c.ModelMain.Contains("0,0,0,0")).ToArray());
             }
         }
 
@@ -287,7 +287,7 @@ namespace FFXIVTool.Views
                     EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
                     EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                     EquipmentControl.CheckIncluded.Content = "Non-Offhand Aesthetics";
-                    EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep && !c.ModelMain.Contains("0,0,0,0")).ToArray());
+                    EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep && !c.ModelMain.Contains("0,0,0,0") || c.Type == ExdCsvReader.ItemType.Shield && !c.ModelMain.Contains("0,0,0,0")).ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
             }
@@ -301,7 +301,7 @@ namespace FFXIVTool.Views
                 EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
                 EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                 EquipmentControl.CheckIncluded.Content = "Non-Offhand Aesthetics";
-                EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep && !c.ModelMain.Contains("0,0,0,0")).ToArray());
+                EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep && !c.ModelMain.Contains("0,0,0,0") || c.Type == ExdCsvReader.ItemType.Shield && !c.ModelMain.Contains("0,0,0,0")).ToArray());
             }
         }
 
