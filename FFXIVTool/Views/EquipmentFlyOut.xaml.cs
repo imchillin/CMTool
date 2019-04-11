@@ -445,14 +445,14 @@ namespace FFXIVTool.Views
                     CheckIncluded.Visibility = Visibility.Visible;
                     KeepDyes.Visibility = Visibility.Visible;
                     CheckIncluded.Content = "Include OffHand";
-                    GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep && !c.ModelMain.Contains("0,0,0,0") || c.Type == ExdCsvReader.ItemType.Shield && !c.ModelMain.Contains("0,0,0,0")).ToArray());
+                    GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray());
                 }
                 if (EquipBoxC.SelectedIndex == 1)
                 {
                     CheckIncluded.Visibility = Visibility.Visible;
                     KeepDyes.Visibility = Visibility.Visible;
                     CheckIncluded.Content = "Non-Offhand Aesthetics";
-                    GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep && !c.ModelMain.Contains("0,0,0,0") || c.Type == ExdCsvReader.ItemType.Shield && !c.ModelMain.Contains("0,0,0,0")).ToArray());
+                    GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray());
                 }
                 if (EquipBoxC.SelectedIndex == 2)
                 {
