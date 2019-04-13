@@ -145,7 +145,7 @@ namespace FFXIVTool
         }
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            this.Title = "SSTool v" + version + " By: Johto & LeonBlade";
+            this.Title = "SSTool v" + version + " By: Khyrou & LeonBlade";
             DataContext = new MainViewModel();
             var settings = SaveSettings.Default;
             var accentColor = settings.Accent;
