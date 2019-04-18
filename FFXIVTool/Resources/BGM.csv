@@ -1,4 +1,4 @@
-Index,0 [STRING(0x0)][0x0],1 [STRING(0x0)][0x0],2 [STRING(0x0)][0x0],3
+Index, Name, Location, Other
 0,"Default","Current Location BGM playing",""
 1,"N/A","N/A",""
 2,"Prelude ~ Rebirth","Start-up (ARR)","Intro/Title music"

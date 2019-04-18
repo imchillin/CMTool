@@ -1,4 +1,4 @@
-Index,0 [STRING(0x0)][0x0],1 [STRING(0x0)][0x0],2
+Index, Name, Model IDs
 0,"Target","9001,228,1,0"
 1,"Japanese Fan","9001,227,1,0"
 2,"Japanese Bell","9001,226,1,0"
