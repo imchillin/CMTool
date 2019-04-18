@@ -272,7 +272,13 @@ namespace SSToolsUpdater
                 catch { }
 
                 string[] files = Directory.GetFiles(exepath + "\\Update Files");
-
+                string version = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion;
+                if (File.Exists(exepath + "\\Update Files\\SSToolsUpdater.exe")
+                    && FileVersionInfo.GetVersionInfo(exepath + "\\Update Files\\SSToolsUpdater.exe").FileVersion.CompareTo(version) >= 0)
+                {
+                    App.Current.Shutdown();
+                    return;
+                }
                 for (int i = files.Length - 1; i >= 0; i--)
                 {
                     if (Path.GetFileNameWithoutExtension(files[i]) != "SSToolsUpdater")
