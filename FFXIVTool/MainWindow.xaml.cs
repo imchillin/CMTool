@@ -39,7 +39,7 @@ namespace FFXIVTool
         void subwc_DownloadFileCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
             string Newversion = File.ReadAllText(exepath + "\\version.txt").Trim();
-            if (!string.IsNullOrWhiteSpace(Newversion) && version.ToString().Replace(',', '.').CompareTo(Newversion) >= 0)
+            if (!string.IsNullOrWhiteSpace(Newversion) && version.ToString().Replace(',', '.').CompareTo(Newversion) != 0)
             {
                 Process p = new Process();
                 p.StartInfo.FileName = exepath + "\\SSToolsUpdater.exe";

@@ -40,7 +40,7 @@ namespace SSToolsUpdater
 
                 string version = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion;
                 if (!OpeningXIV && File.Exists(exepath + "\\Update Files\\SSToolsUpdater.exe")
-                    && FileVersionInfo.GetVersionInfo(exepath + "\\Update Files\\SSToolsUpdater.exe").FileVersion.CompareTo(version) >= 0)
+                    && FileVersionInfo.GetVersionInfo(exepath + "\\Update Files\\SSToolsUpdater.exe").FileVersion.CompareTo(version) != 0)
                 {
                     File.Move(exepath + "\\Update Files\\SSToolsUpdater.exe", exepath + "\\SSToolsUpdater NEW.exe");
                     Directory.Delete(exepath + "\\Update Files", true);
