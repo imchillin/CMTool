@@ -292,8 +292,8 @@ namespace SSToolsUpdater
                     sstoolwinversion == newversion.Trim())
                 {
                     label1.Content = $"FFXIVTool has been updated to v{newversion}";
-                    Directory.Delete(exepath + "\\Update Files", true);
-                    Directory.Delete(exepath + "\\Updates", true);
+                   // Directory.Delete(exepath + "\\Update Files", true);
+                   // Directory.Delete(exepath + "\\Updates", true);
                 }
                 else if (File.Exists(exepath + "\\FFXIVTool.exe"))
                 {
