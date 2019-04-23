@@ -1,27 +1,24 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <Settings>
   <LastUpdated>4.57</LastUpdated>
-  <CameraOffset>1AA81A0</CameraOffset>
-  <GposeOffset>1AA8398</GposeOffset>
+  <CameraOffset>1AA91A0</CameraOffset>
+  <GposeOffset>1AA9398</GposeOffset>
   <AoBOffset>1AAA7B8</AoBOffset>
-  <TargetOffset>1AA83B0</TargetOffset>
-  <TimeOffset>1A8D3C0</TimeOffset>
-  <WeatherOffset>1A62448</WeatherOffset>
-  <TerritoryOffset>1AE5A88</TerritoryOffset>
-  <GposeFilters>1A8B278</GposeFilters>
-  <MusicOffset>1AC1158</MusicOffset>
+  <TargetOffset>1AA93B0</TargetOffset>
+  <TimeOffset>1A8E3C0</TimeOffset>
+  <WeatherOffset>1A63448</WeatherOffset>
+  <TerritoryOffset>1AE6A88</TerritoryOffset>
+  <GposeFilters>1A8C278</GposeFilters>
+  <MusicOffset>1AC2158</MusicOffset>
   <CharacterRenderOffset>41FAF4</CharacterRenderOffset>
   <CharacterRenderOffset2>41FB00</CharacterRenderOffset2>
-  
   <Character>
     <Name>30</Name>
     <Race>1690</Race>
     <Gender>1691</Gender>
     <Clan>1694</Clan>
     <Voices>1778</Voices>
-
     <Body Base="F0">
-
       <Position>
         <X>50</X>
         <Y>54</Y>
