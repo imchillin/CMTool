@@ -67,9 +67,16 @@ namespace FFXIVTool.ViewModel
         {
             if (!realm.IsCurrentVersion)
             {
-                if (File.Exists("SaintCoinach.History.zip"))
-                    File.Delete("SaintCoinach.History.zip");
-                realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.English);
+                try
+                {
+                    if (File.Exists("SaintCoinach.History.zip"))
+                        File.Delete("SaintCoinach.History.zip");
+                    realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.English);
+                }
+                catch
+                {
+                    System.Windows.MessageBox.Show("Unable to delete SaintCoinach.History.zip! Please don't open zip or use it.", "Oh wow!");
+                }
             }
             realm.Packs.GetPack(new SaintCoinach.IO.PackIdentifier("exd", SaintCoinach.IO.PackIdentifier.DefaultExpansion, 0)).KeepInMemory = true;
             MainWindow.Realm = realm;
