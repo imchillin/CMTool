@@ -14,7 +14,7 @@ using System.Xml.Serialization;
 
 namespace FFXIVTool.ViewModel
 {
-	public class MainViewModel : INotifyPropertyChanged
+    public class MainViewModel : INotifyPropertyChanged
     {
         private static Mediator mediator;
 
@@ -67,8 +67,9 @@ namespace FFXIVTool.ViewModel
         {
             if (!realm.IsCurrentVersion)
             {
-                const bool IncludeDataChanges = true;
-                var updateReport = realm.Update(IncludeDataChanges);
+                if (File.Exists("SaintCoinach.History.zip"))
+                    File.Delete("SaintCoinach.History.zip");
+                realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.English);
             }
             realm.Packs.GetPack(new SaintCoinach.IO.PackIdentifier("exd", SaintCoinach.IO.PackIdentifier.DefaultExpansion, 0)).KeepInMemory = true;
             MainWindow.Realm = realm;
