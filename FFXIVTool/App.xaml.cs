@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Threading;
@@ -13,6 +15,7 @@ namespace FFXIVTool
         protected override void OnStartup(StartupEventArgs e)
         {
             Application.Current.DispatcherUnhandledException += Application_DispatcherUnhandledException;
+            GetDotNetFromRegistry();
             if (FFXIVTool.Properties.Settings.Default.UpgradeRequired)
             {
                 FFXIVTool.Properties.Settings.Default.Upgrade();
@@ -28,6 +31,38 @@ namespace FFXIVTool
             base.OnStartup(e);
 
             this.Exit += App_Exit;
+        }
+
+        private static void GetDotNetFromRegistry()
+        {
+            const string subkey = @"SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\";
+
+            using (var ndpKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(subkey))
+            {
+                if (ndpKey != null && ndpKey.GetValue("Release") != null)
+                {
+                    if ((int)ndpKey.GetValue("Release") <= 394801)
+                    {
+                        var msgResult = System.Windows.MessageBox.Show(".NET Framework Version 4.6.2 or later is not detected. Please install", ".Net Framework not installed", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes);
+                        if (msgResult == MessageBoxResult.Yes)
+                        {
+
+                            Process.Start("https://dotnet.microsoft.com/download/dotnet-framework/net472");
+                            Application.Current.Shutdown();
+                        }
+                    }
+                }
+                else
+                {
+                    var msgResult = System.Windows.MessageBox.Show(".NET Framework Version 4.6.2 or later is not detected. Please install", ".Net Framework not installed", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes);
+                    if (msgResult == MessageBoxResult.Yes)
+                    {
+
+                        Process.Start("https://dotnet.microsoft.com/download/dotnet-framework/net472");
+                        Application.Current.Shutdown();
+                    }
+                }
+            }
         }
         private void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
