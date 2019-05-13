@@ -56,14 +56,31 @@ namespace FFXIVTool.ViewModel
 
                 // clear the entity list
                 CharacterDetails.Names.Clear();
-
                 // loop over entity list size
+                float x1 = 0;
+                float y1 = 0;
+                float z1 = 0;
                 for (var i = 0; i < CharacterDetails.Size; i++)
                 {
+                    int Test = 0;
                     var addr = MemoryManager.GetAddressString(MemoryManager.Add(MemoryManager.Instance.BaseAddress, ((i + 1) * 8).ToString("X")), Settings.Instance.Character.Name);
+                    var x2 = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(MemoryManager.Add(MemoryManager.Instance.BaseAddress, ((i + 1) * 8).ToString("X")), Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.X));
+                    var y2 = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(MemoryManager.Add(MemoryManager.Instance.BaseAddress, ((i + 1) * 8).ToString("X")), Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.Y));
+                    var z2 = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(MemoryManager.Add(MemoryManager.Instance.BaseAddress, ((i + 1) * 8).ToString("X")), Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.Z));
+                    if (i == 0)
+                    {
+                        x1 = x2;
+                        y1 = y2;
+                        z1 = z2;
+                    }
+                    else
+                    {
+                        Test = (int)Math.Round(Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2) + Math.Pow(z2 - z1, 2)));
+                    }
                     var name = MemoryManager.Instance.MemLib.readString(addr);
                     if (name.IndexOf('\0') != -1)
                         name = name.Substring(0, name.IndexOf('\0'));
+                    name += $" ({Test})";
                     CharacterDetails.Names.Add(name);
                 }
 
