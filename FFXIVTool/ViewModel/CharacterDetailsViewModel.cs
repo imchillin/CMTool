@@ -80,7 +80,7 @@ namespace FFXIVTool.ViewModel
                     var name = MemoryManager.Instance.MemLib.readString(addr);
                     if (name.IndexOf('\0') != -1)
                         name = name.Substring(0, name.IndexOf('\0'));
-                    name += $" ({Test})";
+                    if(i!=0) name += $" ({Test})";
                     CharacterDetails.Names.Add(name);
                 }
 
