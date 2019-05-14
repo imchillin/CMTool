@@ -152,6 +152,20 @@ namespace FFXIVTool
             this.Topmost = settings.TopApp;
 			// toggle status
 			(DataContext as MainViewModel).ToggleStatus(settings.TopApp);
+            if (settings.ReminderTool == false)
+            {
+                var msgResult = System.Windows.MessageBox.Show("This is reminder to anyone who may not know that we have a discord or isn't in our discord to know that we have one for reports/support/help and general discussion! If you wish to join click Yes, otherwise click No.", "Reminder!", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes);
+                if (msgResult == MessageBoxResult.Yes)
+                {
+                     
+                    System.Diagnostics.Process.Start("https://discord.gg/hq3DnBa");
+                    SaveSettings.Default.ReminderTool = true;
+                }
+                else
+                {
+                    SaveSettings.Default.ReminderTool = true;
+                }
+            }
             CharacterDetailsView._exdProvider.MakeCharaMakeFeatureList();
             CharacterDetailsView._exdProvider.MakeCharaMakeFeatureFacialList();
             CharacterDetailsView._exdProvider.MakeTerritoryTypeList();
