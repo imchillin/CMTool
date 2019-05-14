@@ -1037,5 +1037,29 @@ namespace FFXIVTool.Views
         {
             istimeLocked = false;
         }
+
+        private void ResetCams_Click(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.CameraHeight2.value = 0;
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CameraHeight2), "float", "0");
+            CharacterDetails.CameraYAMax.value = -1.48353f;
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CameraYAMax), "float", CharacterDetails.CameraYAMax.value.ToString());
+            CharacterDetails.CameraYAMin.value = 0.78540f;
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CameraYAMin), "float", CharacterDetails.CameraYAMin.value.ToString());
+            CharacterDetails.FOV2.value = 0;
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.FOV2), "float", "0");
+            CharacterDetails.Max.value = 20;
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.Max), "float", "20");
+            CharacterDetails.Min.value = 1.50f;
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.Min), "float", "1.50");
+            CharacterDetails.CZoom.value = 20;
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CZoom), "float", "20");
+            CharacterDetails.FOVC.value = 0.78f;
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.FOVC), "float", CharacterDetails.FOVC.value.ToString());
+            CharacterDetails.FOVMAX.value = 0.78f;
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.FOVMAX), "float", CharacterDetails.FOVMAX.value.ToString());
+            CharacterDetails.CameraUpDown.value = -0.21952191f;
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CameraUpDown), "float", CharacterDetails.CameraUpDown.value.ToString());
+        }
     }
 }
