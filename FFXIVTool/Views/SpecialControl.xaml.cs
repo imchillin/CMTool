@@ -175,14 +175,13 @@ namespace FFXIVTool.Views
                 case 10: //Hellsguard
                     return !Gender ? 27648 : 26368;
                 case 11: //Raen
-                    return !Gender ? 30208 : 28928;
+                    return !Gender ? 28928 : 30208;
                 case 12: //Xaela
-                    return !Gender ? 32768 : 31488;
+                    return !Gender ? 31488 : 32768;
                 default:
                     throw new NotImplementedException();
             }
         }
-
         public static int GetHair(int clan, bool gender)
         {
             switch (clan)
