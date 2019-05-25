@@ -342,6 +342,12 @@ namespace FFXIVTool.Views
                 case 11: // Raen
                 case 12: // Xaela
                     return isMale ? 1200 : 1300;
+                case 13: // The Lost/Helions
+                case 14: // The Lost/Helions
+                    return 1400;
+                case 15: // Rava
+                case 16: // Veena
+                    return 1500;
             }
 
             throw new NotImplementedException();
@@ -374,6 +380,44 @@ namespace FFXIVTool.Views
                     return isMale ? 2400 : 2450;
                 case 12: // Xaela
                     return isMale ? 2500 : 2550;
+                    /*Delete the above ^^ and uncomment this when expansion is released
+                                     case 1: // Midlander
+                                        return isMale ? 1600 : 1650;
+                                    case 2: // Highlander
+                                        return isMale ? 1700 : 1750;
+                                    case 3: // Wildwood
+                                        return isMale ? 1800 : 1850; 
+                                    case 4: // Duskwight
+                                        return isMale ? 1900 : 1950;
+                                    case 5: // Plainsfolks
+                                        return isMale ? 2000 : 2050;
+                                    case 6: // Dunesfolk
+                                        return isMale ? 2100 : 2150;
+                                    case 7: // Seeker of the Sun
+                                        return isMale ? 2200 : 2250; 
+                                    case 8: // Keeper of the Moon
+                                        return isMale ? 2300 : 2350;
+                                    case 9: // Sea Wolf
+                                        return isMale ? 2400 : 2450;
+                                    case 10: // Hellsguard
+                                        return isMale ? 2500 : 2550;
+                                    case 11: // Raen
+                                        return isMale ? 2600 : 2650;
+                                    case 12: // Xaela
+                                        return isMale ? 2700 : 2750;
+                                    case 13: // Helions
+                                        return 2800;
+                                    case 14: // The Lost
+                                        return 2850;
+                                    case 15: // Rava
+                                        return 2900;
+                                    case 16: // Veena
+                                        return 2950;
+                     * 
+                     * 
+                     * 
+                     * 
+                     * */
             }
 
             throw new NotImplementedException();
@@ -593,6 +637,30 @@ namespace FFXIVTool.Views
                 throw e;
             }
         }
+/* Delete above ^^ when next expansion is out
+ *                 FacialFeatureView.Items.Clear();
+                if (FaceKey > 3 && tribeKey >= 2 && tribeKey!=13 && tribeKey != 14 ||
+                    FaceKey >= 6 && tribeKey == 1 && gender == 0 ||
+                    FaceKey >= 5 && tribeKey == 1 && gender == 1) { FaceKey = 0; }
+                if (tribeKey == 13 || tribeKey == 14) gender = 0;
+                if (tribeKey == 15 || tribeKey == 16) gender = 1;
+                var valuesAsList = Enum.GetValues(typeof(FacialEnums)).Cast<FacialEnums>().ToList();
+                foreach (var CharaFeature in _reader.CharaMakeFeatures2)
+                {
+                    if (tribeKey != CharaFeature.Value.Tribe) continue;
+                    if (tribeKey == CharaFeature.Value.Tribe && gender == CharaFeature.Value.Gender)
+                    {
+                        FacialFeatureView.Items.Add(new Features() { ID = 0, FeatureImage = GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Nope")) });
+                        for (int i = 0; i < 9;)
+                        {
+                            int ki = FaceKey + (i * 8);
+                            int NewID = (int)valuesAsList[i];
+                            FacialFeatureView.Items.Add(new Features() { ID = NewID, FeatureImage = CharaFeature.Value.Features[ki].Icon });
+                            i++;
+                        }
+                        FacialFeatureView.Items.Add(new Features() { ID = 128, FeatureImage = GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Legacy")) });
+                    }
+                }*/
         private void FacialFeatureView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (FacialFeatureView.SelectedItem == null)
