@@ -279,37 +279,6 @@ namespace FFXIVTool.Utility
             {
             }
         }
-        public CharaMakeCustomizeFeature GetCharaMakeCustomizeFeature(int index, bool getBitMap)
-        {
-            try
-            {
-                var sheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.CharaMakeCustomize>();
-                int rowCount = 0;
-                foreach (var test in sheet)
-                {
-                    if (rowCount != index)
-                    {
-                        rowCount++;
-                        continue;
-                    }
-                    rowCount++;
-                    CharaMakeCustomizeFeature feature = new CharaMakeCustomizeFeature();
-                    //           Console.WriteLine($"{testt.Key},{testt.FeatureID}");
-                    feature.Index = test.Key;
-                    feature.FeatureID = test.FeatureID;
-                    if (getBitMap) { feature.Icon = CreateSource(test.Icon); }
-                    return feature;
-                }
-            }
-            catch (Exception e)
-            {
-
-            //    throw;
-
-            }
-
-            return null;
-        }
         public void TribeList()
         {
             Tribes = new Dictionary<int, Tribe>();
@@ -775,15 +744,6 @@ namespace FFXIVTool.Utility
 
                 }
             }
-        }
-        public static int[] convertToIntArray(byte[] input)
-        {
-            int[] NewArray = new int[input.Length];
-            for (int i = 0; i < input.Length; i++)
-            {
-                NewArray[i] = input[i] & 0xff;
-            }
-            return NewArray;
         }
     }
 }
