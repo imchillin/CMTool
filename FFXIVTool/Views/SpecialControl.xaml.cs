@@ -301,24 +301,6 @@ namespace FFXIVTool.Views
 
             return null; // Not found - custom.
         }
-        ExdCsvReader.CharaMakeCustomizeFeature2 GetFeature2(int startIndex, int length, byte dataKey)
-        {
-            if (dataKey == 0)
-                return null; // Custom or not specified.
-
-            for (var i = 1; i < length; i++)
-            {
-                // Debug.WriteLine(startIndex + i);
-                var feature = _reader.CharaMakeFeatures2[startIndex + i];
-
-                if (feature.Race == dataKey)
-                {
-                    return feature;
-                }
-            }
-
-            return null; // Not found - custom.
-        }
         int GetHairstyleCustomizeIndex(int tribeKey, bool isMale)
         {
             switch (tribeKey)
@@ -620,12 +602,11 @@ namespace FFXIVTool.Views
                     if (tribeKey == CharaFeature.Value.Tribe && gender == CharaFeature.Value.Gender)
                     {
                         FacialFeatureView.Items.Add(new Features() { ID = 0, FeatureImage = GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Nope")) });
-                        for (int i = 0; i < 7;)
+                        for (int i = 0; i < 7; i++)
                         {
-                            int ki = FaceKey + (i * 6);
+                            int IconUIID = FaceKey + (i * 6);
                             int NewID = (int)valuesAsList[i];
-                            FacialFeatureView.Items.Add(new Features() { ID = NewID, FeatureImage = CharaFeature.Value.Features[ki].Icon });
-                            i++;
+                            FacialFeatureView.Items.Add(new Features() { ID = NewID, FeatureImage = CharaFeature.Value.Features[IconUIID].Icon });
                         }
                         FacialFeatureView.Items.Add(new Features() { ID = 128, FeatureImage = GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Legacy")) });
                     }
@@ -637,30 +618,29 @@ namespace FFXIVTool.Views
                 throw e;
             }
         }
-/* Delete above ^^ when next expansion is out
- *                 FacialFeatureView.Items.Clear();
-                if (FaceKey > 3 && tribeKey >= 2 && tribeKey!=13 && tribeKey != 14 ||
-                    FaceKey >= 6 && tribeKey == 1 && gender == 0 ||
-                    FaceKey >= 5 && tribeKey == 1 && gender == 1) { FaceKey = 0; }
-                if (tribeKey == 13 || tribeKey == 14) gender = 0;
-                if (tribeKey == 15 || tribeKey == 16) gender = 1;
-                var valuesAsList = Enum.GetValues(typeof(FacialEnums)).Cast<FacialEnums>().ToList();
-                foreach (var CharaFeature in _reader.CharaMakeFeatures2)
-                {
-                    if (tribeKey != CharaFeature.Value.Tribe) continue;
-                    if (tribeKey == CharaFeature.Value.Tribe && gender == CharaFeature.Value.Gender)
-                    {
-                        FacialFeatureView.Items.Add(new Features() { ID = 0, FeatureImage = GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Nope")) });
-                        for (int i = 0; i < 9;)
+        /* Delete above ^^ when next expansion is out
+         *                 FacialFeatureView.Items.Clear();
+                        if (FaceKey > 3 && tribeKey >= 2 && tribeKey!=13 && tribeKey != 14 ||
+                            FaceKey >= 6 && tribeKey == 1 && gender == 0 ||
+                            FaceKey >= 5 && tribeKey == 1 && gender == 1) { FaceKey = 0; }
+                        if (tribeKey == 13 || tribeKey == 14) gender = 0; //Hrothgar
+                        if (tribeKey == 15 || tribeKey == 16) gender = 1; // Veria
+                        var valuesAsList = Enum.GetValues(typeof(FacialEnums)).Cast<FacialEnums>().ToList();
+                        foreach (var CharaFeature in _reader.CharaMakeFeatures2)
                         {
-                            int ki = FaceKey + (i * 8);
-                            int NewID = (int)valuesAsList[i];
-                            FacialFeatureView.Items.Add(new Features() { ID = NewID, FeatureImage = CharaFeature.Value.Features[ki].Icon });
-                            i++;
-                        }
-                        FacialFeatureView.Items.Add(new Features() { ID = 128, FeatureImage = GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Legacy")) });
-                    }
-                }*/
+                            if (tribeKey != CharaFeature.Value.Tribe) continue;
+                            if (tribeKey == CharaFeature.Value.Tribe && gender == CharaFeature.Value.Gender)
+                            {
+                                FacialFeatureView.Items.Add(new Features() { ID = 0, FeatureImage = GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Nope")) });
+                                for (int i = 0; i < 9; i++)
+                                {
+                                    int IconUIID = FaceKey + (i * 8);
+                                    int NewID = (int)valuesAsList[i];
+                                    FacialFeatureView.Items.Add(new Features() { ID = NewID, FeatureImage = CharaFeature.Value.Features[IconUIID].Icon });
+                                }
+                                FacialFeatureView.Items.Add(new Features() { ID = 128, FeatureImage = GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Legacy")) });
+                            }
+                        }*/
         private void FacialFeatureView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (FacialFeatureView.SelectedItem == null)
