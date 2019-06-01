@@ -1003,14 +1003,12 @@ namespace FFXIVTool.Views
 
         private void RenderButton_Checked(object sender, RoutedEventArgs e)
         {
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.CharacterRenderAddress, "bytes", "0x00 0x00");
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.CharacterRenderAddress2, "bytes", "0x90 0x90 0x90 0x90 0x90");
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.CharacterRenderAddress, "bytes", "0x90 0x90 0x90 0x90 0x90");
         }
 
         private void RenderButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.CharacterRenderAddress, "bytes", "0x02 0x01");
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.CharacterRenderAddress2, "bytes", "0xE9 0xB8 0x00 0x00 0x00");
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.CharacterRenderAddress, "bytes", "0xE9 0xB8 0x00 0x00 0x00");
         }
 
         private void TimeButton_Click(object sender, RoutedEventArgs e)
@@ -1060,6 +1058,14 @@ namespace FFXIVTool.Views
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.FOVMAX), "float", CharacterDetails.FOVMAX.value.ToString());
             CharacterDetails.CameraUpDown.value = -0.21952191f;
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CameraUpDown), "float", CharacterDetails.CameraUpDown.value.ToString());
+        }
+
+        private void Renda_Click(object sender, RoutedEventArgs e)
+        {
+            var Old= System.BitConverter.GetBytes(MemoryManager.Instance.MemLib.read2Byte(MemoryManager.Instance.CharacterRenderAddress2));
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.CharacterRenderAddress2, "bytes", "0x00 0x00");
+            System.Threading.Tasks.Task.Delay(50).Wait();
+            MemoryManager.Instance.MemLib.writeBytes(MemoryManager.Instance.CharacterRenderAddress2, Old);
         }
     }
 }
