@@ -14,9 +14,6 @@
   <CharacterRenderOffset2>41F626</CharacterRenderOffset2>
   <Character>
     <Name>30</Name>
-    <Race>1690</Race>
-    <Gender>1691</Gender>
-    <Clan>1694</Clan>
     <Voices>1778</Voices>
     <Body Base="F0">
       <Position>
@@ -46,29 +43,44 @@
       <MuscleTone>240,28,20,C</MuscleTone>
       <TailSize>140,70</TailSize>
     </Body>
+    <TimeControl>10,8,28,80</TimeControl>
+    <Weather>20</Weather>
+    <Music>C0,116</Music>
+    <Music2>C0,114</Music2>
     <NameHeight>164</NameHeight>
-    <TailType>16A6</TailType>
-    <Head>1695</Head>
-    <Jaw>16A2</Jaw>
+    <RenderToggle>104</RenderToggle>
+    <Transparency>15EC</Transparency>
+    <EntityType>8C</EntityType>
+    <ModelType>1750</ModelType>
+    <!--Character Appearance-->
+    <Race>1690</Race>
+    <Gender>1691</Gender>
+    <BodyType>1692</BodyType>
     <RHeight>1693</RHeight>
-    <RBust>16A7</RBust>
+    <Clan>1694</Clan>
+    <Head>1695</Head>
     <Hair>1696</Hair>
-    <HairTone>169A</HairTone>
     <Highlights>1697</Highlights>
-    <HighlightTone>169B</HighlightTone>
     <Skintone>1698</Skintone>
-    <FacialFeatures>169C</FacialFeatures>
-    <Eye>16A0</Eye>
-    <LimbalEyes>169D</LimbalEyes>
-    <TailorMuscle>16A5</TailorMuscle>
     <RightEye>1699</RightEye>
-    <LeftEye>169F</LeftEye>
+    <HairTone>169A</HairTone>
+    <HighlightTone>169B</HighlightTone>
+    <FacialFeatures>169C</FacialFeatures>
+    <LimbalEyes>169D</LimbalEyes>
     <EyeBrowType>169E</EyeBrowType>
-    <FacePaint>16A8</FacePaint>
-    <FacePaintColor>16A9</FacePaintColor>
+    <LeftEye>169F</LeftEye>
+    <Eye>16A0</Eye>
     <Nose>16A1</Nose>
+    <Jaw>16A2</Jaw>
     <Lips>16A3</Lips>
     <LipsTone>16A4</LipsTone>
+    <TailorMuscle>16A5</TailorMuscle>
+    <TailType>16A6</TailType>
+    <RBust>16A7</RBust>
+    <FacePaint>16A8</FacePaint>
+    <FacePaintColor>16A9</FacePaintColor>
+    
+    
     <CameraYAMin>150</CameraYAMin>
     <CameraYAMax>14C</CameraYAMax>
     <CameraHeight>174</CameraHeight>
@@ -89,6 +101,17 @@
     <EmoteSpeed1>CE4</EmoteSpeed1>
     <EmoteSpeed2>CE8</EmoteSpeed2>
     <FreezeFacial>CEC</FreezeFacial>
+    <Territory>5A8</Territory>
+
+    <!--Character Equipment-->
+    <Job>1340</Job>
+    <WeaponBase>1342</WeaponBase>
+    <WeaponV>1344</WeaponV>
+    <WeaponDye>1346</WeaponDye>
+    <Offhand>13A8</Offhand>
+    <OffhandBase>13AA</OffhandBase>
+    <OffhandV>13AC</OffhandV>
+    <OffhandDye>13AE</OffhandDye>
     <HeadPiece>15F0</HeadPiece>
     <HeadV>15F2</HeadV>
     <HeadDye>15F3</HeadDye>
@@ -96,7 +119,6 @@
     <ChestV>15F6</ChestV>
     <ChestDye>15F7</ChestDye>
     <Arms>15F8</Arms>
-    <Territory>5A8</Territory>
     <ArmsV>15FA</ArmsV>
     <ArmsDye>15FB</ArmsDye>
     <Legs>15FC</Legs>
@@ -115,20 +137,14 @@
     <RFingerVa>1612</RFingerVa>
     <LFinger>1614</LFinger>
     <LFingerVa>1616</LFingerVa>
-    <Job>1340</Job>
-    <WeaponBase>1342</WeaponBase>
-    <WeaponV>1344</WeaponV>
-    <WeaponDye>1346</WeaponDye>
+
+
     <WeaponX>F0,30,70</WeaponX>
     <WeaponY>F0,30,74</WeaponY>
     <WeaponZ>F0,30,78</WeaponZ>
     <WeaponRed>F0,30,258</WeaponRed>
     <WeaponGreen>F0,30,25C</WeaponGreen>
     <WeaponBlue>F0,30,260</WeaponBlue>
-    <Offhand>13A8</Offhand>
-    <OffhandBase>13AA</OffhandBase>
-    <OffhandV>13AC</OffhandV>
-    <OffhandDye>13AE</OffhandDye>
     <OffhandX>F0,30,28,70</OffhandX>
     <OffhandY>F0,30,28,74</OffhandY>
     <OffhandZ>F0,30,28,78</OffhandZ>
@@ -160,17 +176,10 @@
     <LipsR>F0,240,28,20,20</LipsR>
     <LipsG>F0,240,28,20,24</LipsG>
     <LipsB>F0,240,28,20,28</LipsB>
-    <TimeControl>10,8,28,80</TimeControl>
-    <Weather>20</Weather>
     <LimbalR>F0,240,28,20,80</LimbalR>
     <LimbalG>F0,240,28,20,84</LimbalG>
     <LimbalB>F0,240,28,20,88</LimbalB>
     <RenderDistance>C0</RenderDistance>
-    <RenderToggle>104</RenderToggle>
-    <Transparency>15EC</Transparency>
-    <EntityType>8C</EntityType>
-    <BodyType>1692</BodyType>
-    <ModelType>1750</ModelType>
     <FilterEnable>37B</FilterEnable>
     <FilterAoB>318</FilterAoB>
     <HDR>350</HDR>
@@ -187,8 +196,6 @@
     <GBlue>340</GBlue>
     <GGreens>33C</GGreens>
     <GRed>338</GRed>
-    <Music>C0,116</Music>
-    <Music2>C0,114</Music2>
   </Character>
   
 </Settings>
