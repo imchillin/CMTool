@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Settings>
-  <LastUpdated>5.00</LastUpdated>
+  <LastUpdated>5.00x1</LastUpdated>
   <CameraOffset>1B28530</CameraOffset>
   <GposeOffset>1B28728</GposeOffset>
   <AoBOffset>1B29B40</AoBOffset>
@@ -129,8 +129,8 @@
     <FeetDye>1753</FeetDye>
     <Ear>1754</Ear>
     <EarVa>1756</EarVa>
-    <Neck>1754</Neck>
-    <NeckVa>1758</NeckVa>
+    <Neck>1758</Neck>
+    <NeckVa>175A</NeckVa>
     <Wrist>175C</Wrist>
     <WristVa>175E</WristVa>
     <RFinger>1760</RFinger>
