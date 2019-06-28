@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Settings>
-  <LastUpdated>4.57</LastUpdated>
-  <CameraOffset>1AA91A0</CameraOffset>
-  <GposeOffset>1AA9398</GposeOffset>
+  <LastUpdated>5.00</LastUpdated>
+  <CameraOffset>1B28530</CameraOffset>
+  <GposeOffset>1B28728</GposeOffset>
   <AoBOffset>1B29B40</AoBOffset>
-  <TargetOffset>1AA93B0</TargetOffset>
-  <TimeOffset>1A8E3C0</TimeOffset>
+  <TargetOffset>1B287E4</TargetOffset>
+  <TimeOffset>1B0D6F0</TimeOffset>
   <WeatherOffset>1A63448</WeatherOffset>
   <TerritoryOffset>1AE6A88</TerritoryOffset>
-  <GposeFilters>1A8C278</GposeFilters>
-  <MusicOffset>1AC2158</MusicOffset>
-  <CharacterRenderOffset>41F630</CharacterRenderOffset>
-  <CharacterRenderOffset2>41F626</CharacterRenderOffset2>
+  <GposeFilters>1B0B5A8</GposeFilters>
+  <MusicOffset>1B49448</MusicOffset>
+  <CharacterRenderOffset>429360</CharacterRenderOffset>
+  <CharacterRenderOffset2>429356</CharacterRenderOffset2>
   <Character>
     <Name>30</Name>
     <Voices>1778</Voices>
@@ -95,12 +95,12 @@
     <FOVMAX>12C</FOVMAX>
     <FOV2>130</FOV2>
     <CameraUpDown>218</CameraUpDown>
-    <EmoteIsPlayerFrozen>7C8</EmoteIsPlayerFrozen>
-    <AltCheckPlayerFrozen>CF0</AltCheckPlayerFrozen>
-    <Emote>C70</Emote>
-    <EmoteSpeed1>CE4</EmoteSpeed1>
-    <EmoteSpeed2>CE8</EmoteSpeed2>
-    <FreezeFacial>CEC</FreezeFacial>
+    <EmoteIsPlayerFrozen>918</EmoteIsPlayerFrozen>
+    <AltCheckPlayerFrozen>E40</AltCheckPlayerFrozen>
+    <Emote>DC0</Emote>
+    <EmoteSpeed1>E34</EmoteSpeed1>
+    <EmoteSpeed2>E38</EmoteSpeed2>
+    <FreezeFacial>E3C</FreezeFacial>
     <Territory>5A8</Territory>
 
     <!--Character Equipment-->
