@@ -472,7 +472,7 @@ namespace FFXIVTool.Utility
                     return ItemType.Ring;
                 case 11:
                     return ItemType.Shield;
-                case int n when (n >= 1 && n<=10 || n>=11 && n <= 32 || n == 84 || n >= 87 && n <= 89 || n >= 96 && n <= 99 || n == 105):
+                case int n when (n >= 1 && n<=10 || n>=11 && n <= 32 || n == 84 || n >= 87 && n <= 89 || n >= 96 && n <= 99 || n >=105 && n <= 107):
                     return ItemType.Wep;
                 default:
                     return ItemType.Trash;
