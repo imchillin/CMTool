@@ -3,7 +3,7 @@
   <LastUpdated>4.57</LastUpdated>
   <CameraOffset>1AA91A0</CameraOffset>
   <GposeOffset>1AA9398</GposeOffset>
-  <AoBOffset>1AAA7B8</AoBOffset>
+  <AoBOffset>1B29B40</AoBOffset>
   <TargetOffset>1AA93B0</TargetOffset>
   <TimeOffset>1A8E3C0</TimeOffset>
   <WeatherOffset>1A63448</WeatherOffset>
@@ -53,32 +53,32 @@
     <EntityType>8C</EntityType>
     <ModelType>1750</ModelType>
     <!--Character Appearance-->
-    <Race>1690</Race>
-    <Gender>1691</Gender>
-    <BodyType>1692</BodyType>
-    <RHeight>1693</RHeight>
-    <Clan>1694</Clan>
-    <Head>1695</Head>
-    <Hair>1696</Hair>
-    <Highlights>1697</Highlights>
-    <Skintone>1698</Skintone>
-    <RightEye>1699</RightEye>
-    <HairTone>169A</HairTone>
-    <HighlightTone>169B</HighlightTone>
-    <FacialFeatures>169C</FacialFeatures>
-    <LimbalEyes>169D</LimbalEyes>
-    <EyeBrowType>169E</EyeBrowType>
-    <LeftEye>169F</LeftEye>
-    <Eye>16A0</Eye>
-    <Nose>16A1</Nose>
-    <Jaw>16A2</Jaw>
-    <Lips>16A3</Lips>
-    <LipsTone>16A4</LipsTone>
-    <TailorMuscle>16A5</TailorMuscle>
-    <TailType>16A6</TailType>
-    <RBust>16A7</RBust>
-    <FacePaint>16A8</FacePaint>
-    <FacePaintColor>16A9</FacePaintColor>
+    <Race>17E0</Race>
+    <Gender>17E1</Gender>
+    <BodyType>17E2</BodyType>
+    <RHeight>17E3</RHeight>
+    <Clan>17E4</Clan>
+    <Head>17E5</Head>
+    <Hair>17E6</Hair>
+    <Highlights>17E7</Highlights>
+    <Skintone>17E8</Skintone>
+    <RightEye>17E9</RightEye>
+    <HairTone>17EA</HairTone>
+    <HighlightTone>17EB</HighlightTone>
+    <FacialFeatures>17EC</FacialFeatures>
+    <LimbalEyes>17ED</LimbalEyes>
+    <EyeBrowType>17EE</EyeBrowType>
+    <LeftEye>17EF</LeftEye>
+    <Eye>17F0</Eye>
+    <Nose>17F1</Nose>
+    <Jaw>17F2</Jaw>
+    <Lips>17F3</Lips>
+    <LipsTone>17F4</LipsTone>
+    <TailorMuscle>17F5</TailorMuscle>
+    <TailType>17F6</TailType>
+    <RBust>17F7</RBust>
+    <FacePaint>17F8</FacePaint>
+    <FacePaintColor>17F9</FacePaintColor>
     
     
     <CameraYAMin>150</CameraYAMin>
