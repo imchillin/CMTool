@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Settings>
-  <LastUpdated>5.00x1</LastUpdated>
+  <LastUpdated>5.00x2</LastUpdated>
   <CameraOffset>1B28530</CameraOffset>
   <GposeOffset>1B28728</GposeOffset>
   <AoBOffset>1B29B40</AoBOffset>
@@ -51,7 +51,7 @@
     <RenderToggle>104</RenderToggle>
     <Transparency>15EC</Transparency>
     <EntityType>8C</EntityType>
-    <ModelType>1750</ModelType>
+    <ModelType>189C</ModelType>
     <!--Character Appearance-->
     <Race>17E0</Race>
     <Gender>17E1</Gender>
@@ -95,12 +95,12 @@
     <FOVMAX>12C</FOVMAX>
     <FOV2>130</FOV2>
     <CameraUpDown>218</CameraUpDown>
-    <EmoteIsPlayerFrozen>918</EmoteIsPlayerFrozen>
-    <AltCheckPlayerFrozen>E40</AltCheckPlayerFrozen>
-    <Emote>DC0</Emote>
-    <EmoteSpeed1>E34</EmoteSpeed1>
-    <EmoteSpeed2>E38</EmoteSpeed2>
-    <FreezeFacial>E3C</FreezeFacial>
+    <EmoteIsPlayerFrozen>948</EmoteIsPlayerFrozen>
+    <AltCheckPlayerFrozen>D20</AltCheckPlayerFrozen>
+    <Emote>CA0</Emote>
+    <EmoteSpeed1>D14</EmoteSpeed1>
+    <EmoteSpeed2>D18</EmoteSpeed2>
+    <FreezeFacial>D1C</FreezeFacial>
     <Territory>5A8</Territory>
 
     <!--Character Equipment-->
