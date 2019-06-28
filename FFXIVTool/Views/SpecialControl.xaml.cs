@@ -178,6 +178,14 @@ namespace FFXIVTool.Views
                     return !Gender ? 28928 : 30208;
                 case 12: //Xaela
                     return !Gender ? 31488 : 32768;
+                case 13: //Helions
+                    return 34048;
+                case 14: //The Lost
+                    return 35840;
+                case 15: // Rava
+                    return 40448;
+                case 16: // Veena
+                    return 43008;
                 default:
                     throw new NotImplementedException();
             }
@@ -210,6 +218,14 @@ namespace FFXIVTool.Views
                     return !gender ? 30464 : 29184;
                 case 12: // Xaela
                     return !gender ? 33024 : 31744;
+                case 13: //Helions
+                    return 34304;
+                case 14: //The Lost
+                    return 36608;
+                case 15: // Rava
+                    return 40704;
+                case 16: // Veena
+                    return 43264;
                 default:
                     throw new NotImplementedException();
             }
