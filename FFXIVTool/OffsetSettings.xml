@@ -33,15 +33,15 @@
       </Scale>
 
       <Bust Base="140">
-        <X>64</X>
-        <Y>68</Y>
-        <Z>6C</Z>
+        <X>68</X>
+        <Y>6C</Y>
+        <Z>70</Z>
       </Bust>
       <Wetness>2B0</Wetness>
       <SWetness>2BC</SWetness>
       <Height>26C</Height>
       <MuscleTone>240,28,20,C</MuscleTone>
-      <TailSize>140,70</TailSize>
+      <TailSize>140,74</TailSize>
     </Body>
     <TimeControl>10,8,28,80</TimeControl>
     <Weather>20</Weather>
@@ -49,7 +49,7 @@
     <Music2>C0,114</Music2>
     <NameHeight>164</NameHeight>
     <RenderToggle>104</RenderToggle>
-    <Transparency>15EC</Transparency>
+    <Transparency>173C</Transparency>
     <EntityType>8C</EntityType>
     <ModelType>189C</ModelType>
     <!--Character Appearance-->
