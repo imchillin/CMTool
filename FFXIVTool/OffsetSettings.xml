@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Settings>
-  <LastUpdated>5.00x3</LastUpdated>
+  <LastUpdated>5.00x4</LastUpdated>
   <CameraOffset>1B28530</CameraOffset>
   <GposeOffset>1B28728</GposeOffset>
   <AoBOffset>1B29B40</AoBOffset>
   <TargetOffset>1B287E4</TargetOffset>
   <TimeOffset>1B0D6F0</TimeOffset>
-  <WeatherOffset>1A63448</WeatherOffset>
-  <TerritoryOffset>1AE6A88</TerritoryOffset>
+  <WeatherOffset>1AE4728</WeatherOffset>
+  <TerritoryOffset>1B666D8</TerritoryOffset>
   <GposeFilters>1B0B5A8</GposeFilters>
   <MusicOffset>1B49448</MusicOffset>
   <CharacterRenderOffset>429360</CharacterRenderOffset>
   <CharacterRenderOffset2>429356</CharacterRenderOffset2>
   <Character>
     <Name>30</Name>
-    <Voices>1778</Voices>
+    <Voices>18C4</Voices>
     <Body Base="F0">
       <Position>
         <X>50</X>
@@ -101,7 +101,7 @@
     <EmoteSpeed1>D14</EmoteSpeed1>
     <EmoteSpeed2>D18</EmoteSpeed2>
     <FreezeFacial>D1C</FreezeFacial>
-    <Territory>5A8</Territory>
+    <Territory>674</Territory>
 
     <!--Character Equipment-->
     <Job>1490</Job>
