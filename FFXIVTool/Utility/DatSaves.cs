@@ -29,7 +29,7 @@ namespace FFXIVTool.Utility
 
                      stream.Seek(0x30, SeekOrigin.Begin);
 
-                    Description = "none";
+                    Description = Regex.Replace(Encoding.ASCII.GetString(reader.ReadBytes(164)), @"(?![ -~]|\r|\n).", "");
                     if (Description.Length <= 0) Description = "No Description.";
                 }
             }
