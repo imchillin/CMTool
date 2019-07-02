@@ -20,6 +20,8 @@ namespace FFXIVTool.Windows
 
             foreach (var saveDat in _dats)
             {
+                System.Console.WriteLine($"Race: {saveDat.CustomizeBytes[0]}");
+                System.Console.WriteLine($"Tribe: {saveDat.CustomizeBytes[4]}");
                 var gender = saveDat.CustomizeBytes[1] == 1 ? "♀️" : "♂️";
                 CharacterListbox.Items.Add(
                     $"Save #{saveDat.CharacterSaveNumber}: {ByteToRaceDict[saveDat.CustomizeBytes[0]]} - {ByteToTribeDict[saveDat.CustomizeBytes[4]]} {gender} - {saveDat.Description}");
@@ -33,7 +35,9 @@ namespace FFXIVTool.Windows
             {3, "Lalafell" },
             {4, "Miqo'te" },
             {5, "Roegadyn"},
-            {6, "Au Ra"}
+            {6, "Au Ra"},
+            {7, "Hrothgar"},
+            {8, "Viera"},
         };
         private readonly Dictionary<byte, string> ByteToTribeDict = new Dictionary<byte, string>
         {
@@ -50,6 +54,10 @@ namespace FFXIVTool.Windows
             {10, "Hellsguard"},
             {11, "Raen"},
             {12, "Xaela"},
+            {13, "Helions"},
+            {14, "The Lost"},
+            {15, "Rava"},
+            {16, "Veena"}
         };
         private void CharacterListbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

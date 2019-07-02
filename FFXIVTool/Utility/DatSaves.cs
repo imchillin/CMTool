@@ -21,18 +21,25 @@ namespace FFXIVTool.Utility
                 using (BinaryReader reader = new BinaryReader(stream))
                 {
                     CharacterSaveNumber = filenum;
-                    stream.Seek(0x10, SeekOrigin.Begin);
-
+                    Console.WriteLine(ToReadableByteArray(reader.ReadBytes(255)));
+                    //    Console.WriteLine(filenum);
+                     stream.Seek(0x10, SeekOrigin.Begin);
+                    ///  Console.WriteLine(ToReadableByteArray(reader.ReadBytes(26)));
                     CustomizeBytes = reader.ReadBytes(26);
 
-                    stream.Seek(0x30, SeekOrigin.Begin);
+                     stream.Seek(0x30, SeekOrigin.Begin);
 
-                    Description = Regex.Replace(Encoding.ASCII.GetString(reader.ReadBytes(164)), @"(?![ -~]|\r|\n).", "");
+                    Description = "none";
                     if (Description.Length <= 0) Description = "No Description.";
                 }
             }
         }
+        static public string ToReadableByteArray(byte[] bytes)
+        {
+            return string.Join(", ", bytes);
+        }
     }
+
     static class MakeSaveDatList
     {
 
@@ -50,7 +57,7 @@ namespace FFXIVTool.Utility
             }
             
 
-            var files = Directory.GetFiles(basePath, "FFXIV_CHARA*.dat");
+            var files = Directory.GetFiles(basePath, "FFXIV_CHARA_*.dat");
 
             foreach (var file in files)
             {
