@@ -590,7 +590,7 @@ namespace FFXIVTool.Views
                     if (tribeKey == CharaFeature.Value.Tribe && gender == CharaFeature.Value.Gender)
                     {
                         FacialFeatureView.Items.Add(new Features() { ID = 0, FeatureImage = GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Nope")) });
-                        for (int i = 0; i < 9; i++)
+                        for (int i = 0; i < 7; i++)
                         {
                             int IconUIID = FaceKey + (i * 8);
                             int NewID = (int)valuesAsList[i];
