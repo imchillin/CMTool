@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Settings>
-  <LastUpdated>5.00x5</LastUpdated>
+  <LastUpdated>5.00x6 </LastUpdated>
   <CameraOffset>1B28530</CameraOffset>
   <GposeOffset>1B28728</GposeOffset>
   <AoBOffset>1B29B40</AoBOffset>
@@ -10,8 +10,8 @@
   <TerritoryOffset>1B666D8</TerritoryOffset>
   <GposeFilters>1B0B5A8</GposeFilters>
   <MusicOffset>1B49448</MusicOffset>
-  <CharacterRenderOffset>429360</CharacterRenderOffset>
-  <CharacterRenderOffset2>429356</CharacterRenderOffset2>
+  <CharacterRenderOffset>429230</CharacterRenderOffset>
+  <CharacterRenderOffset2>429226</CharacterRenderOffset2>
   <Character>
     <Name>30</Name>
     <Voices>18C4</Voices>
@@ -95,7 +95,7 @@
     <FOVMAX>12C</FOVMAX>
     <FOV2>130</FOV2>
     <CameraUpDown>218</CameraUpDown>
-    <EmoteIsPlayerFrozen>948</EmoteIsPlayerFrozen>
+    <EmoteIsPlayerFrozen>7C8</EmoteIsPlayerFrozen>
     <AltCheckPlayerFrozen>D20</AltCheckPlayerFrozen>
     <Emote>CA0</Emote>
     <EmoteSpeed1>D14</EmoteSpeed1>
