@@ -20,8 +20,8 @@ namespace FFXIVTool.Windows
 
             foreach (var saveDat in _dats)
             {
-                System.Console.WriteLine($"Race: {saveDat.CustomizeBytes[0]}");
-                System.Console.WriteLine($"Tribe: {saveDat.CustomizeBytes[4]}");
+               // System.Console.WriteLine($"Race: {saveDat.CustomizeBytes[0]}");
+               // System.Console.WriteLine($"Tribe: {saveDat.CustomizeBytes[4]}");
                 var gender = saveDat.CustomizeBytes[1] == 1 ? "♀️" : "♂️";
                 CharacterListbox.Items.Add(
                     $"Save #{saveDat.CharacterSaveNumber}: {ByteToRaceDict[saveDat.CustomizeBytes[0]]} - {ByteToTribeDict[saveDat.CustomizeBytes[4]]} {gender} - {saveDat.Description}");

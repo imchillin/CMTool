@@ -21,7 +21,7 @@ namespace FFXIVTool.Utility
                 using (BinaryReader reader = new BinaryReader(stream))
                 {
                     CharacterSaveNumber = filenum;
-                    Console.WriteLine(ToReadableByteArray(reader.ReadBytes(255)));
+               //     Console.WriteLine(ToReadableByteArray(reader.ReadBytes(255)));
                     //    Console.WriteLine(filenum);
                      stream.Seek(0x10, SeekOrigin.Begin);
                     ///  Console.WriteLine(ToReadableByteArray(reader.ReadBytes(26)));
