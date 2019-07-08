@@ -577,6 +577,8 @@ namespace FFXIVTool.Views
         {
             try
             {
+                FaceKey--;
+                if (FaceKey < 0) FaceKey = 0;
                 FacialFeatureView.Items.Clear();
                 if (FaceKey > 3 && tribeKey >= 2 && tribeKey != 13 && tribeKey != 14 ||
                     FaceKey >= 6 && tribeKey == 1 && gender == 0 ||
