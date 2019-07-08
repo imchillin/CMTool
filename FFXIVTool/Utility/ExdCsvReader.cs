@@ -208,8 +208,8 @@ namespace FFXIVTool.Utility
             {
                 try
                 {
-                    var testw = Parse.FacialFeatureIcon.CommonHeader;
-                    NewList.Add(new Features { FeatureID = Parse.Count, Icon = CreateSource(Parse.FacialFeatureIcon) });
+                    if (Parse.FacialFeatureIcon == null) NewList.Add(new Features { FeatureID = Parse.Count, Icon = SpecialControl.GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Corrupted")) });
+                    else NewList.Add(new Features { FeatureID = Parse.Count, Icon = CreateSource(Parse.FacialFeatureIcon) });
                 }
                 catch
                 {
@@ -236,7 +236,7 @@ namespace FFXIVTool.Utility
                     feature.Gender = test.Gender;
                     feature.Race = test.Race.Key;
                     feature.Tribe = test.Tribe.Key;
-                    //Console.WriteLine($"{testt.Key},{testt.FeatureID}");
+                  //  Console.WriteLine($"{test.Key}");
                     feature.Features=FeatureD(test.FacialFeatureIcon);
                     CharaMakeFeatures2.Add(test.Key, feature);
                 }
@@ -256,12 +256,13 @@ namespace FFXIVTool.Utility
                 {
                     rowCount++;
                     CharaMakeCustomizeFeature feature = new CharaMakeCustomizeFeature();
-                    //Console.WriteLine($"{testt.Key},{testt.FeatureID}");
+                 //   Console.WriteLine($"{test.Key},{test.FeatureID}");
                     feature.Index = test.Key;
                     feature.FeatureID = test.FeatureID;
                     try
                     {
-                        feature.Icon = CreateSource(test.Icon);
+                        if (test.Icon == null) feature.Icon = SpecialControl.GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Corrupted"));
+                        else feature.Icon = CreateSource(test.Icon);
                     }
                     catch
                     {
@@ -507,8 +508,8 @@ namespace FFXIVTool.Utility
                         else item.Gender = 2;
                         try
                         {
-                            item.Icon = Parse.Icon;
-
+                            if (Parse.Icon == null) item.Icon = null;
+                            else item.Icon = Parse.Icon;
                         }
                         catch
                         {
