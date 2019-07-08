@@ -249,6 +249,7 @@ namespace SSToolsUpdater
                     File.Delete(exepath + "\\LICENSE.txt");
                     File.Delete(exepath + "\\README.txt");
                     File.Delete(exepath + "\\OffsetSettings.xml");
+                    Directory.Delete(exepath + "\\Definitions", true);
                     Directory.Delete(exepath + "\\Update Files", true);
                 }
                 catch { }
