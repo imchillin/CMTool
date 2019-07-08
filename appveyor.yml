@@ -7,7 +7,7 @@ cache:
   - packages -> **\packages.config
 
 before_build:
-  - git submodule update --init
+  - git submodule update --init --recursive --remote
   - nuget restore FFXIVTool.sln
   - nuget restore lib/SaintCoinach/SaintCoinach.sln
   
@@ -15,7 +15,7 @@ build:
   project: FFXIVTool.sln
     
 after_build:
-  7z a FFXIVTool.zip %APPVEYOR_BUILD_FOLDER%\FFXIVTool\bin\%CONFIGURATION%\*.exe %APPVEYOR_BUILD_FOLDER%\FFXIVTool\bin\%CONFIGURATION%\*.txt %APPVEYOR_BUILD_FOLDER%\FFXIVTool\bin\%CONFIGURATION%\OffsetSettings.xml %APPVEYOR_BUILD_FOLDER%\FFXIVTool\bin\%CONFIGURATION%\ex.json %APPVEYOR_BUILD_FOLDER%\FFXIVTool\bin\%CONFIGURATION%\exview.json %APPVEYOR_BUILD_FOLDER%\FFXIVTool\bin\%CONFIGURATION%\SSToolsUpdater.exe
+  7z a FFXIVTool.zip %APPVEYOR_BUILD_FOLDER%\FFXIVTool\bin\%CONFIGURATION%\*.exe %APPVEYOR_BUILD_FOLDER%\FFXIVTool\bin\%CONFIGURATION%\*.txt %APPVEYOR_BUILD_FOLDER%\FFXIVTool\bin\%CONFIGURATION%\OffsetSettings.xml %APPVEYOR_BUILD_FOLDER%\FFXIVTool\bin\%CONFIGURATION%\SSToolsUpdater.exe %APPVEYOR_BUILD_FOLDER%\FFXIVTool\bin\%CONFIGURATION%\Definitions\*.json
     
 artifacts:
   - path: FFXIVTool.zip
