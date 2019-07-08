@@ -281,7 +281,6 @@ namespace SSToolsUpdater
                     return;
                 }
    
-                Directory.Move(exepath + "\\Update Files\\Definitions", exepath+"\\Definitions");
                 for (int i = files.Length - 1; i >= 0; i--)
                 {
                     if (Path.GetFileNameWithoutExtension(files[i]) != "SSToolsUpdater")
@@ -295,6 +294,7 @@ namespace SSToolsUpdater
                         File.Move(files[i], tempDestPath);
                     }
                 }
+                Directory.Move(exepath + "\\Update Files\\Definitions", exepath + "\\Definitions");
 
                 string sstoolwinversion = FileVersionInfo.GetVersionInfo(exepath + "\\FFXIVTool.exe").FileVersion;
                 if ((File.Exists(exepath + "\\FFXIVTool.exe")) &&
