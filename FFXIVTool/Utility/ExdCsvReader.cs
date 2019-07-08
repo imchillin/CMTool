@@ -542,14 +542,14 @@ namespace FFXIVTool.Utility
                 foreach (var parse in eNpcBases)
                 {
                     //  Console.WriteLine($"{parse.NpcEquip.ModelHead[0]+ parse.NpcEquip.ModelHead[1]* 256},{parse.NpcEquip.ModelHead[2]}");
-                    //  Console.WriteLine(parse.NpcEquip.Key);
+                   //   Console.WriteLine(parse.NpcEquip.Key);
                     int id = parse.Key;
-                    int modelid = parse.ModelID;
+                  //  int modelid = parse.ModelID;
                     GearSet gear = new GearSet();
                     List<byte> customize = new List<byte>();
-                    customize.AddRange(new List<byte>() { Convert.ToByte(parse.Race), Convert.ToByte(parse.Gender)
+                    customize.AddRange(new List<byte>() { Convert.ToByte(parse.Race.Key), Convert.ToByte(parse.Gender)
                        , Convert.ToByte(parse.BodyType), Convert.ToByte(parse.Height)
-                   , Convert.ToByte(parse.Tribe), Convert.ToByte(parse.Face) , Convert.ToByte(parse.HairStyle), Convert.ToByte(parse.HairHighlight)
+                   , Convert.ToByte(parse.Tribe.Key), Convert.ToByte(parse.Face) , Convert.ToByte(parse.HairStyle), Convert.ToByte(parse.HairHighlight)
                    , Convert.ToByte(parse.SkinColor), Convert.ToByte(parse.EyeHeterochromia), Convert.ToByte(parse.HairColor), Convert.ToByte(parse.HairHighlightColor)
                    , Convert.ToByte(parse.FacialFeature), Convert.ToByte(parse.FacialFeatureColor), Convert.ToByte(parse.Eyebrows), Convert.ToByte(parse.EyeColor)
                    , Convert.ToByte(parse.EyeShape), Convert.ToByte(parse.Nose), Convert.ToByte(parse.Jaw), Convert.ToByte(parse.Mouth)
@@ -558,13 +558,13 @@ namespace FFXIVTool.Utility
                     gear.Customize = customize.ToArray();
                     if (parse.NpcEquip.Key > 0)
                     {
-                        gear.MainWep = new WepTuple(parse.NpcEquip.ModelMain.Value1, parse.NpcEquip.ModelMain.Value2, parse.NpcEquip.ModelMain.Value3, parse.NpcEquip.DyeMain.Shade);
-                        gear.OffWep = new WepTuple(parse.NpcEquip.ModelSub.Value1, parse.NpcEquip.ModelSub.Value2, parse.NpcEquip.ModelSub.Value3, parse.NpcEquip.DyeOff.Shade);
-                        gear.HeadGear = new GearTuple((parse.NpcEquip.ModelHead[0] + parse.NpcEquip.ModelHead[1] * 256), parse.NpcEquip.ModelHead[2], parse.NpcEquip.DyeHead.Shade);
-                        gear.BodyGear = new GearTuple((parse.NpcEquip.ModelBody[0] + parse.NpcEquip.ModelBody[1] * 256), parse.NpcEquip.ModelBody[2], parse.NpcEquip.DyeBody.Shade);
-                        gear.HandsGear = new GearTuple((parse.NpcEquip.ModelHands[0] + parse.NpcEquip.ModelHands[1] * 256), parse.NpcEquip.ModelHands[2], parse.NpcEquip.DyeHands.Shade);
-                        gear.LegsGear = new GearTuple((parse.NpcEquip.ModelLegs[0] + parse.NpcEquip.ModelLegs[1] * 256), parse.NpcEquip.ModelLegs[2], parse.NpcEquip.DyeLegs.Shade);
-                        gear.FeetGear = new GearTuple((parse.NpcEquip.ModelFeet[0] + parse.NpcEquip.ModelFeet[1] * 256), parse.NpcEquip.ModelFeet[2], parse.NpcEquip.DyeFeet.Shade);
+                        gear.MainWep = new WepTuple(parse.NpcEquip.ModelMain.Value1, parse.NpcEquip.ModelMain.Value2, parse.NpcEquip.ModelMain.Value3, parse.NpcEquip.DyeMain.Key);
+                        gear.OffWep = new WepTuple(parse.NpcEquip.ModelSub.Value1, parse.NpcEquip.ModelSub.Value2, parse.NpcEquip.ModelSub.Value3, parse.NpcEquip.DyeOff.Key);
+                        gear.HeadGear = new GearTuple((parse.NpcEquip.ModelHead[0] + parse.NpcEquip.ModelHead[1] * 256), parse.NpcEquip.ModelHead[2], parse.NpcEquip.DyeHead.Key);
+                        gear.BodyGear = new GearTuple((parse.NpcEquip.ModelBody[0] + parse.NpcEquip.ModelBody[1] * 256), parse.NpcEquip.ModelBody[2], parse.NpcEquip.DyeBody.Key);
+                        gear.HandsGear = new GearTuple((parse.NpcEquip.ModelHands[0] + parse.NpcEquip.ModelHands[1] * 256), parse.NpcEquip.ModelHands[2], parse.NpcEquip.DyeHands.Key);
+                        gear.LegsGear = new GearTuple((parse.NpcEquip.ModelLegs[0] + parse.NpcEquip.ModelLegs[1] * 256), parse.NpcEquip.ModelLegs[2], parse.NpcEquip.DyeLegs.Key);
+                        gear.FeetGear = new GearTuple((parse.NpcEquip.ModelFeet[0] + parse.NpcEquip.ModelFeet[1] * 256), parse.NpcEquip.ModelFeet[2], parse.NpcEquip.DyeFeet.Key);
                         gear.EarGear = new GearTuple((parse.NpcEquip.ModelEars[0] + parse.NpcEquip.ModelEars[1] * 256), parse.NpcEquip.ModelEars[2], 0);
                         gear.NeckGear = new GearTuple((parse.NpcEquip.ModelNeck[0] + parse.NpcEquip.ModelNeck[1] * 256), parse.NpcEquip.ModelNeck[2], 0);
                         gear.WristGear = new GearTuple((parse.NpcEquip.ModelWrists[0] + parse.NpcEquip.ModelWrists[1] * 256), parse.NpcEquip.ModelWrists[2], 0);
@@ -573,13 +573,13 @@ namespace FFXIVTool.Utility
                     }
                     else
                     {
-                        gear.MainWep = new WepTuple(parse.ModelMain.Value1, parse.ModelMain.Value2, parse.ModelMain.Value3, parse.DyeMain.Shade);
-                        gear.OffWep = new WepTuple(parse.ModelSub.Value1, parse.ModelSub.Value2, parse.ModelSub.Value3, parse.DyeOff.Shade);
-                        gear.HeadGear = new GearTuple((parse.ModelHead[0] + parse.ModelHead[1] * 256), parse.ModelHead[2], parse.DyeHead.Shade);
-                        gear.BodyGear = new GearTuple((parse.ModelBody[0] + parse.ModelBody[1] * 256), parse.ModelBody[2], parse.DyeBody.Shade);
-                        gear.HandsGear = new GearTuple((parse.ModelHands[0] + parse.ModelHands[1] * 256), parse.ModelHands[2], parse.DyeHands.Shade);
-                        gear.LegsGear = new GearTuple((parse.ModelLegs[0] + parse.ModelLegs[1] * 256), parse.ModelLegs[2], parse.DyeLegs.Shade);
-                        gear.FeetGear = new GearTuple((parse.ModelFeet[0] + parse.ModelFeet[1] * 256), parse.ModelFeet[2], parse.DyeFeet.Shade);
+                        gear.MainWep = new WepTuple(parse.ModelMain.Value1, parse.ModelMain.Value2, parse.ModelMain.Value3, parse.DyeMain.Key);
+                        gear.OffWep = new WepTuple(parse.ModelSub.Value1, parse.ModelSub.Value2, parse.ModelSub.Value3, parse.DyeOff.Key);
+                        gear.HeadGear = new GearTuple((parse.ModelHead[0] + parse.ModelHead[1] * 256), parse.ModelHead[2], parse.DyeHead.Key);
+                        gear.BodyGear = new GearTuple((parse.ModelBody[0] + parse.ModelBody[1] * 256), parse.ModelBody[2], parse.DyeBody.Key);
+                        gear.HandsGear = new GearTuple((parse.ModelHands[0] + parse.ModelHands[1] * 256), parse.ModelHands[2], parse.DyeHands.Key);
+                        gear.LegsGear = new GearTuple((parse.ModelLegs[0] + parse.ModelLegs[1] * 256), parse.ModelLegs[2], parse.DyeLegs.Key);
+                        gear.FeetGear = new GearTuple((parse.ModelFeet[0] + parse.ModelFeet[1] * 256), parse.ModelFeet[2], parse.DyeFeet.Key);
                         gear.EarGear = new GearTuple((parse.ModelEars[0] + parse.ModelEars[1] * 256), parse.ModelEars[2], 0);
                         gear.NeckGear = new GearTuple((parse.ModelNeck[0] + parse.ModelNeck[1] * 256), parse.ModelNeck[2], 0);
                         gear.WristGear = new GearTuple((parse.ModelWrists[0] + parse.ModelWrists[1] * 256), parse.ModelWrists[2], 0);
@@ -590,9 +590,9 @@ namespace FFXIVTool.Utility
                     {
                         Residents[id].Gear = gear;
                     }
-                    catch (KeyNotFoundException)
+                    catch (Exception e)
                     {
-                        //Console.WriteLine("Did not find corresponding entry for: " + id);
+                        throw e;
                     }
                 }
             }
