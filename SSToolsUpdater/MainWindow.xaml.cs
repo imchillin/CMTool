@@ -280,6 +280,8 @@ namespace SSToolsUpdater
                     App.Current.Shutdown();
                     return;
                 }
+   
+                Directory.Move(exepath + "\\Update Files\\Definitions", exepath+"\\Definitions");
                 for (int i = files.Length - 1; i >= 0; i--)
                 {
                     if (Path.GetFileNameWithoutExtension(files[i]) != "SSToolsUpdater")
