@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Settings>
-  <LastUpdated>5.00x6 </LastUpdated>
+  <LastUpdated>5.00x7</LastUpdated>
   <CameraOffset>1B28530</CameraOffset>
   <GposeOffset>1B28728</GposeOffset>
   <AoBOffset>1B29B40</AoBOffset>
@@ -111,7 +111,7 @@
     <Offhand>14F8</Offhand>
     <OffhandBase>14FA</OffhandBase>
     <OffhandV>14FC</OffhandV>
-    <OffhandDye>14FF</OffhandDye>
+    <OffhandDye>14FE</OffhandDye>
     <HeadPiece>1740</HeadPiece>
     <HeadV>1742</HeadV>
     <HeadDye>1743</HeadDye>
