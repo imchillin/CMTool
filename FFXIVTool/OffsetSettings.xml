@@ -7,11 +7,11 @@
   <TargetOffset>1B28738</TargetOffset>
   <TimeOffset>1B0D6F0</TimeOffset>
   <WeatherOffset>1AE4728</WeatherOffset>
-  <TerritoryOffset>1B666D8</TerritoryOffset>
+  <TerritoryOffset>1B66768</TerritoryOffset>
   <GposeFilters>1B0B5A8</GposeFilters>
   <MusicOffset>1B49448</MusicOffset>
-  <CharacterRenderOffset>429230</CharacterRenderOffset>
-  <CharacterRenderOffset2>429226</CharacterRenderOffset2>
+  <CharacterRenderOffset>4291E0</CharacterRenderOffset>
+  <CharacterRenderOffset2>4291D6</CharacterRenderOffset2>
   <Character>
     <Name>30</Name>
     <Voices>18C4</Voices>
