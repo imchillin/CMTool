@@ -625,6 +625,11 @@ namespace FFXIVTool.Utility
                         if(Test.Key!=0) territory.WeatherRate.AllowedWeathers.Add(new Weather() { Index= Test.Key, Name=Test.Name });
                         else territory.WeatherRate.AllowedWeathers.Add(new Weather() { Index = Test.Key, Name = "None" });
                     }
+                    if (Parse.RegionPlaceName.Name == "Norvrandt")
+                    {
+                        territory.WeatherRate.AllowedWeathers.Add(new Weather() { Index = 118, Name = "Everlasting Light #1" });
+                        territory.WeatherRate.AllowedWeathers.Add(new Weather() { Index = 129, Name = "Everlasting Light #2" });
+                    }
                     TerritoryTypes.Add(Parse.Key, territory);
                 }
             }
