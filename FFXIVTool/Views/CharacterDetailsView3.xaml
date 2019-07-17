@@ -118,7 +118,7 @@
         </Button>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.Weather.freeze}" Content="Weather" HorizontalAlignment="Left" Margin="10,350,0,0" VerticalAlignment="Top"/>
         <mah:NumericUpDown x:Name="Weather" Maximum="140" Minimum="1" Value="{Binding Path=CharacterDetails.Weather.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="86,346,0,0" VerticalAlignment="Top" Width="116" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" Interval="1" TextAlignment="Right" NumericInputMode="Numbers" SourceUpdated="Weather_SourceUpdated" Speedup="False"/>
-        <ComboBox x:Name="WeatherBox" materialDesign:HintAssist.Hint="Weather Select" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="86,377,0,0" VerticalAlignment="Top" Width="116" SelectionChanged="WeatherBox_SelectionChanged" PreviewMouseDown="WeatherBox_PreviewMouseDown">
+        <ComboBox x:Name="WeatherBox" materialDesign:HintAssist.Hint="Weather Select" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="43,377,0,0" VerticalAlignment="Top" Width="159" SelectionChanged="WeatherBox_SelectionChanged" PreviewMouseDown="WeatherBox_PreviewMouseDown">
             <ComboBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel />
