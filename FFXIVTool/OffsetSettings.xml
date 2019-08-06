@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Settings>
-  <LastUpdated>5.00x7</LastUpdated>
+  <LastUpdated>5.05</LastUpdated>
   <CameraOffset>1B28530</CameraOffset>
   <GposeOffset>1B28728</GposeOffset>
   <AoBOffset>1B29B40</AoBOffset>
   <TargetOffset>1B28738</TargetOffset>
   <TimeOffset>1B0D6F0</TimeOffset>
   <WeatherOffset>1AE4728</WeatherOffset>
-  <TerritoryOffset>1B66768</TerritoryOffset>
+  <TerritoryOffset>1B66808</TerritoryOffset>
   <GposeFilters>1B0B5A8</GposeFilters>
   <MusicOffset>1B49448</MusicOffset>
   <CharacterRenderOffset>4291E0</CharacterRenderOffset>
