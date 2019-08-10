@@ -29,6 +29,44 @@
     </controls:Flyout.Resources>
 
     <Grid>
+        <ComboBox SelectedIndex="0" Visibility="Visible" materialDesign:HintAssist.Hint="Select Type" x:Name="ClassBox" HorizontalAlignment="Left" Margin="282,-38,0,0" VerticalAlignment="Top" Width="184" SelectionChanged="ClassBox_SelectionChanged">
+            <ComboBoxItem Content="Include Everything"/>
+            <ComboBoxItem Content="All Classes"/>
+            <ComboBoxItem Content="Disciple of War"/>
+            <ComboBoxItem Content="Disciple of Magic"/>
+            <ComboBoxItem Content="Disciples of War or Magic"/>
+            <ComboBoxItem Content="Disciple of the Hand"/>
+            <ComboBoxItem Content="Disciple of the Land"/>
+            <ComboBoxItem Content="PLD"/>
+            <ComboBoxItem Content="WAR"/>
+            <ComboBoxItem Content="DRK"/>
+            <ComboBoxItem Content="GNB"/>
+            <ComboBoxItem Content="WHM"/>
+            <ComboBoxItem Content="SCH"/>
+            <ComboBoxItem Content="AST"/>
+            <ComboBoxItem Content="MNK"/>
+            <ComboBoxItem Content="DRG"/>
+            <ComboBoxItem Content="NIN"/>
+            <ComboBoxItem Content="SAM"/>
+            <ComboBoxItem Content="BLM"/>
+            <ComboBoxItem Content="SMN"/>
+            <ComboBoxItem Content="RDM"/>
+            <ComboBoxItem Content="BRD"/>
+            <ComboBoxItem Content="MCH"/>
+            <ComboBoxItem Content="DNC"/>
+            <ComboBoxItem Content="CRP"/>
+            <ComboBoxItem Content="BSM"/>
+            <ComboBoxItem Content="ARM"/>
+            <ComboBoxItem Content="GSM"/>
+            <ComboBoxItem Content="LTW"/>
+            <ComboBoxItem Content="WVR"/>
+            <ComboBoxItem Content="ALC"/>
+            <ComboBoxItem Content="CUL"/>
+            <ComboBoxItem Content="MIN"/>
+            <ComboBoxItem Content="BTN"/>
+            <ComboBoxItem Content="FSH"/>
+        </ComboBox>
+
         <Label FontSize="16" x:Name="EquippedLabel" Content="Currently Equipped:" HorizontalAlignment="Left" Margin="35,-69,0,0" VerticalAlignment="Top" Height="30" Width="168" FontWeight="Bold"/>
         <Label FontSize="16" x:Name="CurrentlyEquippedName" Content="None" HorizontalAlignment="Left" Margin="180,-69,0,0" VerticalAlignment="Top" Width="286" FontWeight="Bold"/>
         <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" >

@@ -56,6 +56,7 @@ namespace FFXIVTool.Utility
         public bool WindowsExplorer { get; set; } = false;
         public bool KeepDyes { get; set; } = true;
         public bool ReminderTool { get; set; } = false;
+        public int ClassIndex { get; set; } = 0;
         public List<ExdCsvReader.Emote> FavoriteEmotes { get; set; } = new List<ExdCsvReader.Emote>();
     }
 }

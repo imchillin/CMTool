@@ -35,6 +35,7 @@ namespace FFXIVTool.Views
             KeepDyes.Visibility = Visibility.Hidden;
             CurrentlyEquippedName.Visibility = Visibility.Hidden;
             EquippedLabel.Visibility = Visibility.Hidden;
+            ClassBox.Visibility = Visibility.Hidden;
         }
 
         private static ImageSource CreateSource(SaintCoinach.Imaging.ImageFile file)
@@ -96,6 +97,21 @@ namespace FFXIVTool.Views
             {
                 foreach (ExdCsvReader.Item game in _items)
                 {
+                    if (ClassBox.SelectedIndex != 0)
+                    {
+                        if (EquipBoxC.SelectedIndex != 0 && EquipBoxC.SelectedIndex != 1)
+                        {
+                            if (ClassBox.SelectedIndex == 4)
+                            {
+                                if (!game.ClassJobListStringName.Equals(ClassBox.Text)) continue;
+                            }
+                            else if (!game.ClassJobListStringName.Contains(ClassBox.Text)) continue;
+                        }
+                        else if (ClassBox.SelectedIndex >= 7)
+                        {
+                            if (!game.ClassJobListStringName.Equals(ClassBox.Text)) continue;
+                        }
+                    }
                     EquipBox.Items.Add(new Itemx
                     {
                         Name = game.Name,
@@ -447,6 +463,7 @@ namespace FFXIVTool.Views
         {
             CheckIncluded.IsChecked = false;
             KeepDyes.IsChecked = SaveSettings.Default.KeepDyes;
+            ClassBox.SelectedIndex = SaveSettings.Default.ClassIndex;
             CheckIncluded.Visibility = Visibility.Hidden;
             KeepDyes.Visibility = Visibility.Hidden;
             CurrentlyEquippedName.Visibility = Visibility.Hidden;
@@ -457,6 +474,7 @@ namespace FFXIVTool.Views
                     return;
                 CurrentlyEquippedName.Visibility = Visibility.Visible;
                 EquippedLabel.Visibility = Visibility.Visible;
+                ClassBox.Visibility = Visibility.Visible;
                 if (EquipBoxC.SelectedIndex == 0)
                 {
                     CheckIncluded.Visibility = Visibility.Visible;
@@ -795,6 +813,22 @@ namespace FFXIVTool.Views
             string filter = SearchModelBox.Text.ToLower();
             EquipBox.Items.Clear();
             foreach (ExdCsvReader.Item game in _items.Where(g => g.Name.ToLower().Contains(filter)))
+            {
+                if (ClassBox.SelectedIndex != 0)
+                {
+                    if (EquipBoxC.SelectedIndex != 0 && EquipBoxC.SelectedIndex != 1)
+                    {
+                        if (ClassBox.SelectedIndex == 4)
+                        {
+                            if (!game.ClassJobListStringName.Equals(ClassBox.Text)) continue;
+                        }
+                        else if (!game.ClassJobListStringName.Contains(ClassBox.Text)) continue;
+                    }
+                    else if (ClassBox.SelectedIndex >= 7)
+                    {
+                        if (!game.ClassJobListStringName.Equals(ClassBox.Text)) continue;
+                    }
+                }
                 EquipBox.Items.Add(new Itemx
                 {
                     Name = game.Name.ToString(),
@@ -803,6 +837,7 @@ namespace FFXIVTool.Views
                     Type = game.Type,
                     Icon = CreateSource(game.Icon)
                 });
+            }
         }
 
         private void SearchModelBox2_TextChanged(object sender, TextChangedEventArgs e)
@@ -822,11 +857,13 @@ namespace FFXIVTool.Views
                     if(!UserDoneInteraction)ResidentSelector(CharacterDetailsView._exdProvider.Residents.Values.Where(c => c.IsGoodNpc()).ToArray());
                     CurrentlyEquippedName.Visibility = Visibility.Hidden;
                     EquippedLabel.Visibility = Visibility.Hidden;
+                    ClassBox.Visibility = Visibility.Hidden;
                 }
                 else
                 {
                     CurrentlyEquippedName.Visibility = Visibility.Visible;
                     EquippedLabel.Visibility = Visibility.Visible;
+                    ClassBox.Visibility = Visibility.Visible;
                 }
             }
             else return;
@@ -841,6 +878,15 @@ namespace FFXIVTool.Views
         private void KeepDyes_Unchecked(object sender, RoutedEventArgs e)
         {
             SaveSettings.Default.KeepDyes = false;
+        }
+
+        private void ClassBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ClassBox.IsKeyboardFocusWithin || ClassBox.IsMouseOver)
+            {
+                if (ClassBox.SelectedIndex < 0) return;
+                SaveSettings.Default.ClassIndex = ClassBox.SelectedIndex;
+            }
         }
     }
 }

@@ -65,6 +65,7 @@ namespace FFXIVTool.Utility
             public string ModelOff { get; set; }
             public int Gender { get; set; }
             public ItemType Type { get; set; }
+            public string ClassJobListStringName { get; set; }
             public SaintCoinach.Imaging.ImageFile Icon { get; set; }
 
             public override string ToString()
@@ -492,6 +493,8 @@ namespace FFXIVTool.Utility
                         var item = new Item();
                         item.Index = Parse.Key;
                         item.Name = Parse.Name;
+                    //    item.ClassJobCategory = new List<ClassJobCategory>();
+                        item.ClassJobListStringName = Parse.ClassJobCategory.ToString();
                         item.Type = Heh(Parse.ItemUICategory.Key);
                         if (Parse.ItemUICategory.Key == 11)
                         {
