@@ -992,6 +992,7 @@ namespace FFXIVTool.Views
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
+            CharacterDetails.MusicBGM.value = int.Parse(BGMTEXT.Text);
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.MusicOffset, Settings.Instance.Character.Music2), "int", BGMTEXT.Text);
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.MusicOffset, Settings.Instance.Character.Music), "int", BGMTEXT.Text);
         }

@@ -49,6 +49,7 @@ namespace FFXIVTool.Views
                 if (BGMBox.SelectedItem == null)
                     return;
                 var Value = (ExdCsvReader.BGM)BGMBox.SelectedItem;
+                CharacterDetails.MusicBGM.value = Value.Index;
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.MusicOffset, Settings.Instance.Character.Music2), "int", Value.Index.ToString());
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.MusicOffset, Settings.Instance.Character.Music), "int", Value.Index.ToString());
             }

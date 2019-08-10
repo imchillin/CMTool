@@ -151,5 +151,6 @@
         <Button x:Name="Renda" Content="Render 2" HorizontalAlignment="Left" Margin="321,421,0,0" VerticalAlignment="Top" Width="92" Height="29" Click="Renda_Click"/>
         <Views:WorldFlyOut x:Name="WorldFlyout" Width="667" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Margin="0,-5,0,0"/>
         <Button x:Name="SearchBGM" Content="Search" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="1007,373,0,0" VerticalAlignment="Top" Width="77" Click="SearchBGM_Click"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.MusicBGM.freeze}" x:Name="BGMCheckBox" Content="Freeze BGM" HorizontalAlignment="Left" Margin="990,413,0,0" VerticalAlignment="Top" Width="94"/>
     </Grid>
 </UserControl>

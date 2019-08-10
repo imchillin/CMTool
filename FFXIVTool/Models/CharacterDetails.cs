@@ -224,9 +224,10 @@ namespace FFXIVTool.Models
         [JsonIgnore] public Address<bool> LoadChecked { get; set; }
         [JsonIgnore] public Address<byte> EmoteIsPlayerFrozen { get; set; }
         [JsonIgnore] public Address<float> AltCheckPlayerFrozen { get; set; }
-
+        [JsonIgnore] public Address<int> MusicBGM { get; set; }
         public CharacterDetails()
         {
+            MusicBGM = new Address<int>();
             AltCheckPlayerFrozen = new Address<float>();
             EmoteIsPlayerFrozen = new Address<byte>();
             LoadChecked = new Address<bool>();
