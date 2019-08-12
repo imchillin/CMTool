@@ -808,6 +808,7 @@ namespace FFXIVTool
                         CharacterDetails.OffhandBase.value = (byte)charSaves.OffHand.Item2;
                         CharacterDetails.OffhandV.value = (byte)charSaves.OffHand.Item3;
                         CharacterDetails.OffhandDye.value = (byte)charSaves.OffHand.Item4;
+                        MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Offhand), EquipmentFlyOut.WepTupleToByteAry(charSaves.OffHand));
                         CharacterDetails.WeaponX.value = charSaves.characterDetails.WeaponX.value;
                         MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.WeaponX), "float", charSaves.characterDetails.WeaponX.value.ToString());
                         CharacterDetails.WeaponY.value = charSaves.characterDetails.WeaponY.value;
@@ -832,7 +833,6 @@ namespace FFXIVTool
                         MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.OffhandY), "float", charSaves.characterDetails.OffhandY.value.ToString());
                         CharacterDetails.OffhandZ.value = charSaves.characterDetails.OffhandZ.value;
                         MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.OffhandZ), "float", charSaves.characterDetails.OffhandZ.value.ToString());
-                        MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Offhand), EquipmentFlyOut.WepTupleToByteAry(charSaves.OffHand));
                         if (CharacterDetails.WeaponGreen.Cantbeused == true) { CharacterDetails.WeaponGreen.freeze = true; CharacterDetails.WeaponGreen.Cantbeused = false; }
                         if (CharacterDetails.WeaponBlue.Cantbeused == true) { CharacterDetails.WeaponBlue.freeze = true; CharacterDetails.WeaponBlue.Cantbeused = false; }
                         if (CharacterDetails.WeaponRed.Cantbeused == true) { CharacterDetails.WeaponRed.freeze = true; CharacterDetails.WeaponRed.Cantbeused = false; }
@@ -1105,6 +1105,127 @@ namespace FFXIVTool
         private void ActualDiscordButton_Click(object sender, RoutedEventArgs e)
         {
             Process.Start("https://discord.gg/hq3DnBa");
+        }
+
+        private void SavePoint_Click(object sender, RoutedEventArgs e)
+        {
+            SaveSettings.Default.MainHandQuads = new WepTuple(CharacterDetails.Job.value, CharacterDetails.WeaponBase.value, CharacterDetails.WeaponV.value, CharacterDetails.WeaponDye.value);
+            SaveSettings.Default.OffHandQuads = new WepTuple(CharacterDetails.Offhand.value, CharacterDetails.OffhandBase.value, CharacterDetails.OffhandV.value, CharacterDetails.OffhandDye.value);
+            SaveSettings.Default.EquipmentBytes = CharacterDetails.TestArray2.value;
+            SaveSettings.Default.CharacterAoBBytes = CharacterDetails.TestArray.value;
+            MessageBox.Show($"Main Hand Values: {CharacterDetails.Job.value},{CharacterDetails.WeaponBase.value},{CharacterDetails.WeaponV.value},{CharacterDetails.WeaponDye.value}" + Environment.NewLine + 
+                $"Off Hand Values: {CharacterDetails.Offhand.value},{CharacterDetails.OffhandBase.value},{CharacterDetails.OffhandV.value},{CharacterDetails.OffhandDye.value}" + Environment.NewLine + 
+                $"Equipment AoB {CharacterDetails.TestArray2.value}" + Environment.NewLine + $"Character AoB {CharacterDetails.TestArray.value}", "Save Point Made!");
+        }
+
+        private void LoadSavePoint_Click(object sender, RoutedEventArgs e)
+        {
+            if (SaveSettings.Default.CharacterAoBBytes.Length <= 0) return;
+            CharacterDetails.Race.freeze = true;
+            CharacterDetails.Clan.freeze = true;
+            CharacterDetails.Gender.freeze = true;
+            CharacterDetails.Head.freeze = true;
+            CharacterDetails.TailType.freeze = true;
+            CharacterDetails.LimbalEyes.freeze = true;
+            CharacterDetails.Nose.freeze = true;
+            CharacterDetails.Lips.freeze = true;
+            CharacterDetails.BodyType.freeze = true;
+            CharacterDetails.Highlights.freeze = true;
+            CharacterDetails.Hair.freeze = true;
+            CharacterDetails.HairTone.freeze = true;
+            CharacterDetails.HighlightTone.freeze = true;
+            CharacterDetails.Jaw.freeze = true;
+            CharacterDetails.RBust.freeze = true;
+            CharacterDetails.RHeight.freeze = true;
+            CharacterDetails.LipsTone.freeze = true;
+            CharacterDetails.Skintone.freeze = true;
+            CharacterDetails.FacialFeatures.freeze = true;
+            CharacterDetails.TailorMuscle.freeze = true;
+            CharacterDetails.Eye.freeze = true;
+            CharacterDetails.RightEye.freeze = true;
+            CharacterDetails.EyeBrowType.freeze = true;
+            CharacterDetails.LeftEye.freeze = true;
+            CharacterDetails.FacePaint.freeze = true;
+            CharacterDetails.FacePaintColor.freeze = true;
+            CharacterDetails.Offhand.freeze = true;
+            CharacterDetails.Job.freeze = true;
+            CharacterDetails.HeadPiece.freeze = true;
+            CharacterDetails.Chest.freeze = true;
+            CharacterDetails.Arms.freeze = true;
+            CharacterDetails.Legs.freeze = true;
+            CharacterDetails.Feet.freeze = true;
+            CharacterDetails.Ear.freeze = true;
+            CharacterDetails.Neck.freeze = true;
+            CharacterDetails.Wrist.freeze = true;
+            CharacterDetails.RFinger.freeze = true;
+            CharacterDetails.LFinger.freeze = true;
+            byte[] CharacterBytes;
+            CharacterBytes = MemoryManager.StringToByteArray(SaveSettings.Default.CharacterAoBBytes.Replace(" ", string.Empty));
+            CharacterDetails.Race.value = CharacterBytes[0];
+            CharacterDetails.Gender.value = CharacterBytes[1];
+            CharacterDetails.BodyType.value = CharacterBytes[2];
+            CharacterDetails.RHeight.value = CharacterBytes[3];
+            CharacterDetails.Clan.value = CharacterBytes[4];
+            CharacterDetails.Head.value = CharacterBytes[5];
+            CharacterDetails.Hair.value = CharacterBytes[6];
+            CharacterDetails.Highlights.value = CharacterBytes[7];
+            CharacterDetails.Skintone.value = CharacterBytes[8];
+            CharacterDetails.RightEye.value = CharacterBytes[9];
+            CharacterDetails.HairTone.value = CharacterBytes[10];
+            CharacterDetails.HighlightTone.value = CharacterBytes[11];
+            CharacterDetails.FacialFeatures.value = CharacterBytes[12];
+            CharacterDetails.LimbalEyes.value = CharacterBytes[13];
+            CharacterDetails.EyeBrowType.value = CharacterBytes[14];
+            CharacterDetails.LeftEye.value = CharacterBytes[15];
+            CharacterDetails.Eye.value = CharacterBytes[16];
+            CharacterDetails.Nose.value = CharacterBytes[17];
+            CharacterDetails.Jaw.value = CharacterBytes[18];
+            CharacterDetails.Lips.value = CharacterBytes[19];
+            CharacterDetails.LipsTone.value = CharacterBytes[20];
+            CharacterDetails.TailorMuscle.value = CharacterBytes[21];
+            CharacterDetails.TailType.value = CharacterBytes[22];
+            CharacterDetails.RBust.value = CharacterBytes[23];
+            CharacterDetails.FacePaint.value = CharacterBytes[24];
+            CharacterDetails.FacePaintColor.value = CharacterBytes[25];
+            MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Race), CharacterBytes);
+            byte[] EquipmentArray;
+            EquipmentArray = MemoryManager.StringToByteArray(SaveSettings.Default.EquipmentBytes.Replace(" ", string.Empty));
+            CharacterDetails.HeadPiece.value = (EquipmentArray[0] + EquipmentArray[1] * 256);
+            CharacterDetails.HeadV.value = EquipmentArray[2];
+            CharacterDetails.HeadDye.value = EquipmentArray[3];
+            CharacterDetails.Chest.value = (EquipmentArray[4] + EquipmentArray[5] * 256);
+            CharacterDetails.ChestV.value = EquipmentArray[6];
+            CharacterDetails.ChestDye.value = EquipmentArray[7];
+            CharacterDetails.Arms.value = (EquipmentArray[8] + EquipmentArray[9] * 256);
+            CharacterDetails.ArmsV.value = EquipmentArray[10];
+            CharacterDetails.ArmsDye.value = EquipmentArray[11];
+            CharacterDetails.Legs.value = (EquipmentArray[12] + EquipmentArray[13] * 256);
+            CharacterDetails.LegsV.value = EquipmentArray[14];
+            CharacterDetails.LegsDye.value = EquipmentArray[15];
+            CharacterDetails.Feet.value = (EquipmentArray[16] + EquipmentArray[17] * 256);
+            CharacterDetails.FeetVa.value = EquipmentArray[18];
+            CharacterDetails.FeetDye.value = EquipmentArray[19];
+            CharacterDetails.Ear.value = (EquipmentArray[20] + EquipmentArray[21] * 256);
+            CharacterDetails.EarVa.value = EquipmentArray[22];
+            CharacterDetails.Neck.value = (EquipmentArray[24] + EquipmentArray[25] * 256);
+            CharacterDetails.NeckVa.value = EquipmentArray[26];
+            CharacterDetails.Wrist.value = (EquipmentArray[28] + EquipmentArray[29] * 256);
+            CharacterDetails.WristVa.value = EquipmentArray[30];
+            CharacterDetails.RFinger.value = (EquipmentArray[32] + EquipmentArray[33] * 256);
+            CharacterDetails.RFingerVa.value = EquipmentArray[34];
+            CharacterDetails.LFinger.value = (EquipmentArray[36] + EquipmentArray[37] * 256);
+            CharacterDetails.LFingerVa.value = EquipmentArray[38];
+            MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HeadPiece), EquipmentArray);
+            CharacterDetails.Job.value = SaveSettings.Default.MainHandQuads.Item1;
+            CharacterDetails.WeaponBase.value = (byte)SaveSettings.Default.MainHandQuads.Item2;
+            CharacterDetails.WeaponV.value = (byte)SaveSettings.Default.MainHandQuads.Item3;
+            CharacterDetails.WeaponDye.value = (byte)SaveSettings.Default.MainHandQuads.Item4;
+            MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Job), EquipmentFlyOut.WepTupleToByteAry(SaveSettings.Default.MainHandQuads));
+            CharacterDetails.Offhand.value = SaveSettings.Default.OffHandQuads.Item1;
+            CharacterDetails.OffhandBase.value = (byte)SaveSettings.Default.OffHandQuads.Item2;
+            CharacterDetails.OffhandV.value = (byte)SaveSettings.Default.OffHandQuads.Item3;
+            CharacterDetails.OffhandDye.value = (byte)SaveSettings.Default.OffHandQuads.Item4;
+            MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Offhand), EquipmentFlyOut.WepTupleToByteAry(SaveSettings.Default.OffHandQuads));
         }
     }
 }

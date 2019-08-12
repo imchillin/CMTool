@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using WepTuple = System.Tuple<int, int, int, int>;
 
 namespace FFXIVTool.Utility
 {
@@ -49,7 +50,7 @@ namespace FFXIVTool.Utility
         }
         #endregion
 
-        public string Theme { get; set; } = "Light";
+        public string Theme { get; set; } = "Dark";
         public string Primary { get; set; } = "Blue";
         public string Accent { get; set; } = "Blue";
         public bool TopApp { get; set; }  = false;
@@ -57,6 +58,10 @@ namespace FFXIVTool.Utility
         public bool KeepDyes { get; set; } = true;
         public bool ReminderTool { get; set; } = false;
         public int ClassIndex { get; set; } = 0;
+        public string CharacterAoBBytes { get; set; } = "";
+        public string EquipmentBytes { get; set; } = "";
+        public WepTuple MainHandQuads { get; set; }
+        public WepTuple OffHandQuads { get; set; }
         public List<ExdCsvReader.Emote> FavoriteEmotes { get; set; } = new List<ExdCsvReader.Emote>();
     }
 }
