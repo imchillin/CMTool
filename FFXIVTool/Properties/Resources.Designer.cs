@@ -61,7 +61,7 @@ namespace FFXIVTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Index,0 [STRING(0x0)][0x0],1
+        ///   Looks up a localized string similar to Index, Name
         ///0,&quot;&quot;
         ///1,&quot;normal/Battle Start&quot;
         ///2,&quot;normal/Battle End&quot;
@@ -85,7 +85,8 @@ namespace FFXIVTool.Properties {
         ///20,&quot;normal/walk_end_l&quot;
         ///21,&quot;&quot;
         ///22,&quot;normal/Run&quot;
-        ///23,&quot;normal/Run Lef [rest of string was truncated]&quot;;.
+        ///23,&quot;normal/Run Left&quot;
+        ///24,&quot;normal/Ru [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string actiontimeline {
             get {
@@ -94,8 +95,8 @@ namespace FFXIVTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Index,0 [STRING(0x0)][0x0],1 [STRING(0x0)][0x0],2 [STRING(0x0)][0x0],3
-        ///0,&quot;Default&quot;,&quot;Current Location BGM playing&quot;,&quot;&quot;
+        ///   Looks up a localized string similar to Index, Name, Location, Other
+        ///0,&quot;Default&quot;,&quot;your Current BGM playing&quot;,&quot;&quot;
         ///1,&quot;N/A&quot;,&quot;N/A&quot;,&quot;&quot;
         ///2,&quot;Prelude ~ Rebirth&quot;,&quot;Start-up (ARR)&quot;,&quot;Intro/Title music&quot;
         ///3,&quot;Dreams Aloft&quot;,&quot;1.0/Old launcher theme&quot;,&quot;Heroic-ish music is in game&quot;
@@ -103,7 +104,8 @@ namespace FFXIVTool.Properties {
         ///5,&quot;Behind Closed Doors&quot;,&quot;Inn&quot;,&quot;&quot;
         ///6,&quot;Wailers and Waterwheels&quot;,&quot;Gridania&quot;,&quot;Daytime Theme&quot;
         ///7,&quot;Dance of the Fireflies&quot;,&quot;Gridania&quot;,&quot;Nighttime Theme&quot;
-        ///8,&quot;Serenity&quot;,&quot;Central/North  [rest of string was truncated]&quot;;.
+        ///8,&quot;Serenity&quot;,&quot;Central/North Shroud&quot;,&quot;Intro/Daybreak&quot;
+        ///9,&quot;Serenity&quot;,&quot;Black  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string BGM {
             get {
@@ -142,7 +144,7 @@ namespace FFXIVTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Index,0 [STRING(0x0)][0x0],1
+        ///   Looks up a localized string similar to Index, Name
         ///0,&quot;Player&quot;
         ///1,&quot;Chocobo&quot;
         ///2,&quot;Magitek Reaper&quot;
@@ -176,7 +178,8 @@ namespace FFXIVTool.Properties {
         ///30,&quot;Funguar C (Blue)&quot;
         ///31,&quot;Galago&quot;
         ///32,&quot;Lemur&quot;
-        ///33,&quot;Gala [rest of string was truncated]&quot;;.
+        ///33,&quot;Galago (+ Collar)&quot;
+        ///3 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string MonsterList {
             get {
@@ -195,7 +198,7 @@ namespace FFXIVTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Index,0 [STRING(0x0)][0x0],1 [STRING(0x0)][0x0],2
+        ///   Looks up a localized string similar to Index, Name, Model IDs
         ///0,&quot;Target&quot;,&quot;9001,228,1,0&quot;
         ///1,&quot;Japanese Fan&quot;,&quot;9001,227,1,0&quot;
         ///2,&quot;Japanese Bell&quot;,&quot;9001,226,1,0&quot;
@@ -209,11 +212,22 @@ namespace FFXIVTool.Properties {
         ///10,&quot;BIG TUNA&quot;,&quot;9001,216,1,0&quot;
         ///11,&quot;Bamboo Blowgun&quot;,&quot;9001,212,1,0&quot;
         ///12,&quot;Papers&quot;,&quot;9001,211,1,0&quot;
-        ///13,&quot;Spoon [rest of string was truncated]&quot;;.
+        ///13,&quot;Spoon&quot;,&quot;9001,208,1,0&quot;
+        ///14,&quot;Empty [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string PropsList {
             get {
                 return ResourceManager.GetString("PropsList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Step1 {
+            get {
+                object obj = ResourceManager.GetObject("Step1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

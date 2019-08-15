@@ -207,6 +207,9 @@
     <Compile Include="Windows\GearsetChooseWindow.xaml.cs">
       <DependentUpon>GearsetChooseWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\GuideWindow.xaml.cs">
+      <DependentUpon>GuideWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\LoadWindow.xaml.cs">
       <DependentUpon>LoadWindow.xaml</DependentUpon>
     </Compile>
@@ -288,6 +291,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\GuideWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\LoadWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -351,6 +358,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <Resource Include="Resources\Step1.png" />
     <Resource Include="Resources\Corrupted.png" />
     <Resource Include="Resources\Legacy.png" />
     <Resource Include="Resources\Nope.png" />
