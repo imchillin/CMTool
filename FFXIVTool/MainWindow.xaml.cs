@@ -56,7 +56,7 @@ namespace FFXIVTool
             ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
             if (File.Exists(exepath + "\\SSToolsUpdater.exe"))
             {
-                Uri urlv = new Uri("https://raw.githubusercontent.com/imchillin/SSTool/master/version.txt");
+                Uri urlv = new Uri("https://raw.githubusercontent.com/KrisanThyme/CMTool/master/version.txt");
                 WebClient wc2 = new WebClient();
                 wc2.DownloadFileAsync(urlv, exepath + "\\version.txt");
                 wc2.DownloadFileCompleted += subwc_DownloadFileCompleted;
@@ -68,7 +68,7 @@ namespace FFXIVTool
                     string xmlStr;
                     using (var wc = new WebClient())
                     {
-                        xmlStr = wc.DownloadString(@"https://raw.githubusercontent.com/imchillin/SSTool/master/FFXIVTool/OffsetSettings.xml");
+                        xmlStr = wc.DownloadString(@"https://raw.githubusercontent.com/KrisanThyme/CMTool/master/FFXIVTool/OffsetSettings.xml");
                     }
                     var xmlDoc = new System.Xml.XmlDocument();
                     xmlDoc.LoadXml(xmlStr);
@@ -140,7 +140,7 @@ namespace FFXIVTool
         }
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            this.Title = "SSTool v" + version + " By: Johto & LeonBlade";
+            this.Title = "Concept Matrix (CMTool) v" + version;
             DataContext = new MainViewModel();
             var settings = SaveSettings.Default;
             var accentColor = settings.Accent;
@@ -152,20 +152,20 @@ namespace FFXIVTool
             this.Topmost = settings.TopApp;
 			// toggle status
 			(DataContext as MainViewModel).ToggleStatus(settings.TopApp);
-            if (settings.ReminderTool == false)
-            {
-                var msgResult = System.Windows.MessageBox.Show("This is reminder to anyone who may not know that we have a discord or isn't in our discord to know that we have one for reports/support/help and general discussion! If you wish to join click Yes, otherwise click No.", "Reminder!", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes);
-                if (msgResult == MessageBoxResult.Yes)
-                {
-                     
-                    System.Diagnostics.Process.Start("https://discord.gg/hq3DnBa");
-                    SaveSettings.Default.ReminderTool = true;
-                }
-                else
-                {
-                    SaveSettings.Default.ReminderTool = true;
-                }
-            }
+//            if (settings.ReminderTool == false)
+//            {
+//                var msgResult = System.Windows.MessageBox.Show("This is reminder to anyone who may not know that we have a discord or isn't in our discord to know that we have one for reports/support/help and general discussion! If you wish to join click Yes, otherwise click No.", "Reminder!", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes);
+//                if (msgResult == MessageBoxResult.Yes)
+//                {
+//                     
+//                    System.Diagnostics.Process.Start("https://discord.gg/hq3DnBa");
+//                    SaveSettings.Default.ReminderTool = true;
+//                }
+//                else
+//                {
+//                    SaveSettings.Default.ReminderTool = true;
+//                }
+//            }
             CharacterDetailsView._exdProvider.MakeCharaMakeFeatureList();
             CharacterDetailsView._exdProvider.MakeCharaMakeFeatureFacialList();
             CharacterDetailsView._exdProvider.MakeTerritoryTypeList();
@@ -226,7 +226,7 @@ namespace FFXIVTool
 
         private void DiscordButton_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://twitter.com/ffxivsstool");
+            Process.Start("https://twitter.com/KrisanThyme");
         }
         private void Save_Click(object sender, RoutedEventArgs e)
         {
@@ -873,7 +873,6 @@ namespace FFXIVTool
             CharacterDetails.CamZ.freeze = false;
             CharacterDetails.CamY.freeze = false;
             CharacterDetails.CamX.freeze = false;
-            CharacterDetails.CameraHeight.freeze = false;
             CharacterDetails.EmoteSpeed1.freeze = false;
             CharacterDetails.Emote.freeze = false;
             CharacterDetails.MuscleTone.freeze = false;
@@ -975,6 +974,12 @@ namespace FFXIVTool
             CharacterDetails.Rotation2.freeze = false;
             CharacterDetails.Rotation3.freeze = false;
             CharacterDetails.Rotation4.freeze = false;
+            CharacterDetails.FCTag.freeze = false;
+            CharacterDetails.Title.freeze = false;
+            CharacterDetails.JobIco.freeze = false;
+            CharacterDetails.EmoteOld.freeze = false;
+            CharacterDetails.EntityType.freeze = false;
+            CharacterDetails.DataPath.freeze = false;
             CharacterDetailsView.xyzcheck = false;
             CharacterDetailsView.numbcheck = false;
         }
@@ -1002,7 +1007,7 @@ namespace FFXIVTool
             ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
             if (File.Exists(exepath + "\\SSToolsUpdater.exe"))
             {
-                Uri urlv = new Uri("https://raw.githubusercontent.com/imchillin/SSTool/master/version.txt");
+                Uri urlv = new Uri("https://raw.githubusercontent.com/KrisanThyme/CMTool/master/version.txt");
                 WebClient wc2 = new WebClient();
                 wc2.DownloadFileAsync(urlv, exepath + "\\version.txt");
                 wc2.DownloadFileCompleted += subwc_DownloadFileCompleted;
@@ -1217,12 +1222,12 @@ namespace FFXIVTool
             CharacterDetails.LFingerVa.value = EquipmentArray[38];
             MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HeadPiece), EquipmentArray);
             CharacterDetails.Job.value = SaveSettings.Default.MainHandQuads.Item1;
-            CharacterDetails.WeaponBase.value = (byte)SaveSettings.Default.MainHandQuads.Item2;
+            CharacterDetails.WeaponBase.value = SaveSettings.Default.MainHandQuads.Item2;
             CharacterDetails.WeaponV.value = (byte)SaveSettings.Default.MainHandQuads.Item3;
             CharacterDetails.WeaponDye.value = (byte)SaveSettings.Default.MainHandQuads.Item4;
             MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Job), EquipmentFlyOut.WepTupleToByteAry(SaveSettings.Default.MainHandQuads));
             CharacterDetails.Offhand.value = SaveSettings.Default.OffHandQuads.Item1;
-            CharacterDetails.OffhandBase.value = (byte)SaveSettings.Default.OffHandQuads.Item2;
+            CharacterDetails.OffhandBase.value = SaveSettings.Default.OffHandQuads.Item2;
             CharacterDetails.OffhandV.value = (byte)SaveSettings.Default.OffHandQuads.Item3;
             CharacterDetails.OffhandDye.value = (byte)SaveSettings.Default.OffHandQuads.Item4;
             MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Offhand), EquipmentFlyOut.WepTupleToByteAry(SaveSettings.Default.OffHandQuads));

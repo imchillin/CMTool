@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Windows.Input;
 using System.Windows.Controls;
 
 namespace FFXIVTool.Views
@@ -130,8 +131,16 @@ namespace FFXIVTool.Views
             {
                 if (SocialBox.SelectedItem == null)
                     return;
-                var Value = (ExdCsvReader.Emote)SocialBox.SelectedItem;
-                CharacterDetails.Emote.value = (int)Value.Index;
+                if (AnimBox.SelectedIndex == 0)
+                {
+                    var Value = (ExdCsvReader.Emote)SocialBox.SelectedItem;
+                    CharacterDetails.Emote.value = (int)Value.Index;
+                }
+                if (AnimBox.SelectedIndex == 1)
+                {
+                    var Value = (ExdCsvReader.Emote)SocialBox.SelectedItem;
+                    CharacterDetails.EmoteOld.value = (int)Value.Index;
+                }
             }
         }
 
@@ -141,8 +150,16 @@ namespace FFXIVTool.Views
             {
                 if (BattleBox.SelectedItem == null)
                     return;
-                var Value = (ExdCsvReader.Emote)BattleBox.SelectedItem;
-                CharacterDetails.Emote.value = (int)Value.Index;
+                if (AnimBox.SelectedIndex == 0)
+                {
+                    var Value = (ExdCsvReader.Emote)BattleBox.SelectedItem;
+                    CharacterDetails.Emote.value = (int)Value.Index;
+                }
+                if (AnimBox.SelectedIndex == 1)
+                {
+                    var Value = (ExdCsvReader.Emote)BattleBox.SelectedItem;
+                    CharacterDetails.EmoteOld.value = (int)Value.Index;
+                }
             }
         }
 
@@ -152,8 +169,16 @@ namespace FFXIVTool.Views
             {
                 if (MonsterBox.SelectedItem == null)
                     return;
-                var Value = (ExdCsvReader.Emote)MonsterBox.SelectedItem;
-                CharacterDetails.Emote.value = (int)Value.Index;
+                if (AnimBox.SelectedIndex == 0)
+                {
+                    var Value = (ExdCsvReader.Emote)MonsterBox.SelectedItem;
+                    CharacterDetails.Emote.value = (int)Value.Index;
+                }
+                if (AnimBox.SelectedIndex == 1)
+                {
+                    var Value = (ExdCsvReader.Emote)MonsterBox.SelectedItem;
+                    CharacterDetails.EmoteOld.value = (int)Value.Index;
+                }
             }
         }
 
@@ -163,8 +188,16 @@ namespace FFXIVTool.Views
             {
                 if (AllBox.SelectedItem == null)
                     return;
-                var Value = (ExdCsvReader.Emote)AllBox.SelectedItem;
-                CharacterDetails.Emote.value = (int)Value.Index;
+                if (AnimBox.SelectedIndex == 0)
+                {
+                    var Value = (ExdCsvReader.Emote)AllBox.SelectedItem;
+                    CharacterDetails.Emote.value = (int)Value.Index;
+                }
+                if (AnimBox.SelectedIndex == 1)
+                {
+                    var Value = (ExdCsvReader.Emote)AllBox.SelectedItem;
+                    CharacterDetails.EmoteOld.value = (int)Value.Index;
+                }
             }
         }
 
@@ -202,8 +235,16 @@ namespace FFXIVTool.Views
             {
                 if (FavoriteBox.SelectedItem == null)
                     return;
-                var Value = (ExdCsvReader.Emote)FavoriteBox.SelectedItem;
-                CharacterDetails.Emote.value = (int)Value.Index;
+                if (AnimBox.SelectedIndex == 0)
+                {
+                    var Value = (ExdCsvReader.Emote)FavoriteBox.SelectedItem;
+                    CharacterDetails.Emote.value = (int)Value.Index;
+                }
+                if (AnimBox.SelectedIndex == 1)
+                {
+                    var Value = (ExdCsvReader.Emote)FavoriteBox.SelectedItem;
+                    CharacterDetails.EmoteOld.value = (int)Value.Index;
+                }
             }
         }
 

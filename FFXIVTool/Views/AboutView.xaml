@@ -20,10 +20,9 @@
                     <ColumnDefinition Width="200" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Image Source="/FFXIVTool;component/Resources/ffxivmeteorimage.png" Grid.RowSpan="3" StretchDirection="Both" VerticalAlignment="Stretch" Stretch="UniformToFill" Margin="0,34,10,10" />
-                <TextBlock Grid.Column="1" Style="{StaticResource MaterialDesignHeadlineTextBlock}" Margin="16 16 16 2">Get In Touch</TextBlock>
+                <TextBlock Grid.Column="1" Style="{StaticResource MaterialDesignHeadlineTextBlock}" Margin="16 16 16 2" Text="Open Source"/>
                 <TextBlock Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Margin="16 0 16 8" Foreground="{DynamicResource MaterialDesignBodyLight}"
-                                       VerticalAlignment="Center">Say hello, make a feature request, or raise a bug through one of these channels:</TextBlock>
+                                       VerticalAlignment="Center" Text="This project is completely open source. If you like it and want to say thanks you could hit the GitHub Star button and message us your thanks."/>
                 <Border Grid.Row="2" BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}" Grid.Column="1">
                     <Grid Margin="8">
                         <Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
@@ -33,27 +32,13 @@
                                 <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" FontSize="18" Width="68"><Run Text="GitHub"/></TextBlock>
                             </StackPanel>
                         </Button>
-                        <Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
-                                            x:Name="ChatButton" Click="ChatButton_Click" Margin="108,0,0,0" Width="106">
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Twitter" />
-                                <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" FontSize="16"><Run Text="Twitter"/></TextBlock>
-                            </StackPanel>
-                        </Button>
                     </Grid>
                 </Border>
                 <Border Grid.Row="3" BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}" Grid.Column="1">
-                    <Grid Margin="8">
-                        <Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
-                                            x:Name="ActualDiscordButton" Click="ActualDiscordButton_Click" Width="117">
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Discord" />
-                                <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" FontSize="18" Width="68"><Run Text="Discord"/></TextBlock>
-                            </StackPanel>
-                        </Button>
-                    </Grid>
+                    <Grid Margin="8"/>
 
                 </Border>
+                <materialDesign:PackIcon Kind="GithubCircle" Width="160" Height="160" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,47,18.94,46.075" Grid.RowSpan="3" />
             </Grid>
         </materialDesign:Card>
         <materialDesign:Card Width="531" Margin="435,166,0,0" Height="270" HorizontalAlignment="Left" VerticalAlignment="Top">
@@ -66,23 +51,31 @@
                     <ColumnDefinition Width="200" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <materialDesign:PackIcon Kind="GithubCircle" Width="160" Height="160" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <Border Grid.Row="1" BorderThickness="0 1 0 1" BorderBrush="{DynamicResource MaterialDesignDivider}" Margin="7.075,92.679,7.925,-108.679" Grid.Column="1">
+                    <Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Center"
+                            x:Name="GitHubButton1_Copy" Width="auto" Click="DonateButton_OnClick3">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Donate" />
+                            <TextBlock Margin="0 0 0 0" VerticalAlignment="Center" FontSize="14" Width="auto" Text="Donate to Krisan Thyme"/>
+                        </StackPanel>
+                    </Button>
+                </Border>
                 <StackPanel Grid.Column="1">
-                    <TextBlock Style="{StaticResource MaterialDesignHeadlineTextBlock}" Margin="16 16 16 8">Open Source</TextBlock>
+                    <TextBlock Style="{StaticResource MaterialDesignHeadlineTextBlock}" Margin="16 16 16 8" Text="Donate to the Devs!"/>
                     <TextBlock TextWrapping="Wrap" Margin="16 0 16 8" Foreground="{DynamicResource MaterialDesignBodyLight}"
-                                           VerticalAlignment="Top" Text="This project is completely open source. If you like it and want to say thanks you could hit the GitHub Star button and message us your thanks."/>
+                                           VerticalAlignment="Top"><Run/><LineBreak/><Run Text="Feel like you want to make a donation? It would be gratefully received. Click any of the buttons below to donate via Ko-fi."/></TextBlock>
                 </StackPanel>
-                <Border Grid.Row="1" BorderThickness="0 1 0 1" BorderBrush="{DynamicResource MaterialDesignDivider}" Margin="6,8,9,-24" Grid.Column="1">
+                <Border Grid.Row="1" BorderThickness="0 1 0 1" BorderBrush="{DynamicResource MaterialDesignDivider}" Margin="7.075,58.679,7.925,-74.679" Grid.Column="1">
                     <Grid Margin="0">
                         <Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
-                            x:Name="GitHubButton1" Width="auto" Click="DonateButton_OnClick">
+                            x:Name="GitHubButton1" Width="auto" Click="DonateButton_OnClick" Margin="165.273,0,0,0">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Donate" />
                                 <TextBlock Margin="0 0 0 0" VerticalAlignment="Center" FontSize="14" Width="auto"><Run Text="Donate to Johto"/></TextBlock>
                             </StackPanel>
                         </Button>
                         <Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Right"
-                            x:Name="ChatButton1" Click="DonateButton_OnClick2" Margin="110,0,0,0" Width="auto">
+                            x:Name="ChatButton1" Click="DonateButton_OnClick2" Margin="0,0,134.566,0" Width="auto">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Donate" />
                                 <TextBlock Margin="0 0 0 0" VerticalAlignment="Center" FontSize="14"><Run Text="Donate to LeonBlade"/></TextBlock>
@@ -92,8 +85,8 @@
                 </Border>
             </Grid>
         </materialDesign:Card>
-        <GroupBox Header="About"  HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" Margin="10,10,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="151" Width="420" />
-        <TextBlock HorizontalAlignment="Left" Margin="15,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="114" Width="415"><Run FontSize="14" Text="This trainer's base code was made by LeonBlade and then the project continued with Johto working on it. This application uses the following libraries in this project: MaterialDesignInXAML, MahApps, Fody, AutoUpdater.Net, Newtonsoft.Json and Memory.dll. This project uses portions of the code from the Wardrobe, thanks to Goat helping out."/></TextBlock>
-        <TextBlock Foreground="{DynamicResource MaterialDesignBodyLight}" TextWrapping="Wrap" Margin="445,329,498,57" VerticalAlignment="Center" Text="Feel like you want to make a donation? It would be gratefully received. Click the button to donate via Ko-fi." Height="74"/>
+        <GroupBox Header="About"  HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" Margin="10,10,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="135" Width="420" />
+        <TextBlock HorizontalAlignment="Left" Margin="15,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="95" Width="415" FontSize="10"><Run/><LineBreak/><Run Text="This trainer and its base code was originally made and written by LeonBlade. "/><LineBreak/><Run Text="The SSTools project has since been updated and maintained by Johto. "/><LineBreak/><Run Text="CMTools and all new features associated to it are by Krisan Thyme. "/><LineBreak/><Run Text="Special Thanks to Goat for his help with the original project."/><LineBreak/><Run Text="This application uses the following libraries in this project: MaterialDesignInXAML, MahApps, Fody, AutoUpdater.Net, Newtonsoft.Json and Memory.dll."/></TextBlock>
+        <Image Source="/FFXIVTool;component/Resources/ffxivmeteorimage.png" StretchDirection="Both" VerticalAlignment="Stretch" Stretch="UniformToFill" Margin="450,200,505.974,78.398" Width="160" Height="160" />
     </Grid>
 </UserControl>

@@ -27,7 +27,7 @@ namespace FFXIVTool.Views
         }
         private void GitHubButton_OnClick(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://github.com/imchillin/SSTool");
+            Process.Start("https://github.com/KrisanThyme/CMTool");
         }
         private void DonateButton_OnClick(object sender, RoutedEventArgs e)
         {
@@ -37,6 +37,11 @@ namespace FFXIVTool.Views
         private void DonateButton_OnClick2(object sender, RoutedEventArgs e)
         {
             Process.Start("http://ko-fi.com/leonblade");
+        }
+
+        private void DonateButton_OnClick3(object sender, RoutedEventArgs e)
+        {
+            Process.Start("http://ko-fi.com/krisanthyme");
         }
 
         private void ChatButton_Click(object sender, RoutedEventArgs e)

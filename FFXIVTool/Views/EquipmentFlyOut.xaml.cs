@@ -391,7 +391,7 @@ namespace FFXIVTool.Views
             if (_cGearSet.HeadGear == null)
                 return;
             CharacterDetails.Job.value = _cGearSet.MainWep.Item1;
-            CharacterDetails.WeaponBase.value = (byte)_cGearSet.MainWep.Item2;
+            CharacterDetails.WeaponBase.value = _cGearSet.MainWep.Item2;
             CharacterDetails.WeaponV.value = (byte)_cGearSet.MainWep.Item3;
             if (KeepDyes.IsChecked == false)
             {
@@ -399,7 +399,7 @@ namespace FFXIVTool.Views
             }
             else _cGearSet.MainWep = new WepTuple(_cGearSet.MainWep.Item1, _cGearSet.MainWep.Item2, _cGearSet.MainWep.Item3, CharacterDetails.WeaponDye.value);
             CharacterDetails.Offhand.value = _cGearSet.OffWep.Item1;
-            CharacterDetails.OffhandBase.value = (byte)_cGearSet.OffWep.Item2;
+            CharacterDetails.OffhandBase.value = _cGearSet.OffWep.Item2;
             CharacterDetails.OffhandV.value = (byte)_cGearSet.OffWep.Item3;
             if (KeepDyes.IsChecked == false) CharacterDetails.OffhandDye.value = (byte)_cGearSet.OffWep.Item4;
             else _cGearSet.OffWep = new WepTuple(_cGearSet.OffWep.Item1, _cGearSet.OffWep.Item2, _cGearSet.OffWep.Item3, CharacterDetails.OffhandDye.value);

@@ -49,7 +49,10 @@ namespace FFXIVTool.Models
         [JsonIgnore] public Address<float> TargetMode { get; set; }
         public Address<float> TailSize { get; set; }
         [JsonIgnore] public Address<string> Name { get; set; }
-        [JsonIgnore] public Address<int> EmoteX { get; set; }
+        [JsonIgnore] public Address<string> FCTag { get; set; }
+        [JsonIgnore] public Address<int> Title { get; set; }
+        [JsonIgnore] public Address<byte> JobIco { get; set; }
+        [JsonIgnore] public Address<int> EmoteOld { get; set; }
         [JsonIgnore] public Address<byte> Race { get; set; }
         [JsonIgnore] public Address<byte> Clan { get; set; }
         [JsonIgnore] public Address<byte> Gender { get; set; }
@@ -94,7 +97,6 @@ namespace FFXIVTool.Models
         [JsonIgnore] public Address<float> Rotation2 { get; set; }
         [JsonIgnore] public Address<float> Rotation3 { get; set; }
         [JsonIgnore] public Address<float> Rotation4 { get; set; }
-        [JsonIgnore] public Address<float> CameraHeight { get; set; }
         [JsonIgnore] public Address<float> CameraHeight2 { get; set; }
         [JsonIgnore] public Address<float> CamX { get; set; }
         [JsonIgnore] public Address<float> CamY { get; set; }
@@ -107,7 +109,7 @@ namespace FFXIVTool.Models
         [JsonIgnore] public Address<float> Transparency { get; set; }
         public Address<float> MuscleTone { get; set; }
         [JsonIgnore] public Address<int> Job { get; set; }
-        [JsonIgnore] public Address<byte> WeaponBase { get; set; }
+        [JsonIgnore] public Address<int> WeaponBase { get; set; }
         [JsonIgnore] public Address<byte> WeaponV { get; set; }
         [JsonIgnore] public Address<byte> WeaponDye { get; set; }
         public Address<float> WeaponX { get; set; }
@@ -138,7 +140,7 @@ namespace FFXIVTool.Models
         [JsonIgnore] public Address<byte> RFingerVa { get; set; }
         [JsonIgnore] public Address<int> LFinger { get; set; }
         [JsonIgnore] public Address<int> Offhand { get; set; }
-        [JsonIgnore] public Address<byte> OffhandBase { get; set; }
+        [JsonIgnore] public Address<int> OffhandBase { get; set; }
         [JsonIgnore] public Address<byte> OffhandV { get; set; }
         [JsonIgnore] public Address<byte> OffhandDye { get; set; }
         public Address<float> OffhandX { get; set; }
@@ -200,6 +202,9 @@ namespace FFXIVTool.Models
         [JsonIgnore] public Address<byte> Weather { get; set; }
         [JsonIgnore] public Address<byte> EntityType { get; set; }
         [JsonIgnore] public Address<int> Territoryxd { get; set; }
+        [JsonIgnore] public Address<short> DataPath { get; set; }
+        [JsonIgnore] public Address<short> NPCName { get; set; }
+        [JsonIgnore] public Address<short> NPCModel { get; set; }
         [JsonIgnore] public Address<float> FreezeFacial { get; set; }
         [JsonIgnore] public Address<string> TestArray { get; set; } // Appereance
         [JsonIgnore] public Address<string> TestArray2 { get; set; } // Equipment
@@ -255,6 +260,9 @@ namespace FFXIVTool.Models
             EntityType = new Address<byte>();
             FreezeFacial = new Address<float>();
             Territoryxd = new Address<int>();
+            DataPath = new Address<short>();
+            NPCName = new Address<short>();
+            NPCModel = new Address<short>();
             ScaleX = new Address<float>();
             ScaleY = new Address<float>();
             ScaleZ = new Address<float>();
@@ -281,7 +289,7 @@ namespace FFXIVTool.Models
             BodySlot = new Address<string>();
             ArmSlot = new Address<string>();
             HeadSlot = new Address<string>();
-            OffhandBase = new Address<byte>();
+            OffhandBase = new Address<int>();
             OffhandV = new Address<byte>();
             EyeBrowType = new Address<byte>();
             OffhandDye = new Address<byte>();
@@ -353,7 +361,7 @@ namespace FFXIVTool.Models
             WeaponX = new Address<float>();
             WeaponY = new Address<float>();
             WeaponZ = new Address<float>();
-            WeaponBase = new Address<byte>();
+            WeaponBase = new Address<int>();
             WeaponV = new Address<byte>();
             WeaponDye = new Address<byte>();
             Job = new Address<int>();
@@ -366,7 +374,6 @@ namespace FFXIVTool.Models
             CamX = new Address<float>();
             CamY = new Address<float>();
             CamZ = new Address<float>();
-            CameraHeight = new Address<float>();
             CameraHeight2 = new Address<float>();
             GposeMode = new Address<float>();
             CharacterRender = new Address<float>();
@@ -376,6 +383,9 @@ namespace FFXIVTool.Models
             Height = new Address<float>();
             TailSize = new Address<float>();
             Name = new Address<string>();
+            FCTag = new Address<string>();
+            Title = new Address<int>();
+            JobIco = new Address<byte>();
             Head = new Address<byte>();
             Hair = new Address<byte>();
             Race = new Address<byte>();
@@ -396,7 +406,7 @@ namespace FFXIVTool.Models
             HairTone = new Address<byte>();
             Highlights = new Address<byte>();
             HighlightTone = new Address<byte>();
-            EmoteX = new Address<int>();
+            EmoteOld = new Address<int>();
             Skintone = new Address<byte>();
             FacialFeatures = new Address<byte>();
             Eye = new Address<byte>();

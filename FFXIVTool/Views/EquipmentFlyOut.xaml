@@ -14,7 +14,7 @@
     Header="Equipment"
     Position="Right"
     mc:Ignorable="d"
-    d:DesignHeight="470" d:DesignWidth="480">
+    d:DesignHeight="470" d:DesignWidth="480" Height="530">
 
     <controls:Flyout.Resources>
         <ResourceDictionary>
@@ -28,7 +28,7 @@
         </ResourceDictionary>
     </controls:Flyout.Resources>
 
-    <Grid>
+    <Grid Height="450">
         <ComboBox SelectedIndex="0" Visibility="Visible" materialDesign:HintAssist.Hint="Select Type" x:Name="ClassBox" HorizontalAlignment="Left" Margin="282,-38,0,0" VerticalAlignment="Top" Width="184" SelectionChanged="ClassBox_SelectionChanged">
             <ComboBoxItem Content="Include Everything"/>
             <ComboBoxItem Content="All Classes"/>
@@ -67,19 +67,19 @@
             <ComboBoxItem Content="FSH"/>
         </ComboBox>
 
-        <Label FontSize="16" x:Name="EquippedLabel" Content="Currently Equipped:" HorizontalAlignment="Left" Margin="35,-69,0,0" VerticalAlignment="Top" Height="30" Width="168" FontWeight="Bold"/>
-        <Label FontSize="16" x:Name="CurrentlyEquippedName" Content="None" HorizontalAlignment="Left" Margin="180,-69,0,0" VerticalAlignment="Top" Width="286" FontWeight="Bold"/>
+        <Label FontSize="16" x:Name="EquippedLabel" Content="Currently Equipped:" HorizontalAlignment="Left" Margin="35,-75,0,0" VerticalAlignment="Top" Height="30" Width="168" FontWeight="Bold"/>
+        <Label FontSize="16" x:Name="CurrentlyEquippedName" Content="None" HorizontalAlignment="Left" Margin="180,-75,0,0" VerticalAlignment="Top" Width="286" FontWeight="Bold" Height="30"/>
         <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" >
             <StackPanel Margin="2" Orientation="Vertical">
 
-                <controls:MetroAnimatedTabControl x:Name="AnimatedTabControl" Height="386"
+                <controls:MetroAnimatedTabControl x:Name="AnimatedTabControl" Height="450"
                                               Margin="2"
                                               controls:TabControlHelper.Underlined="TabPanel"
                                               Background="{DynamicResource MaterialDesignPaper}" SelectionChanged="AnimatedTabControl_SelectionChanged">
                     <TabItem Header="Equipment Selector" Name="EquipTab">
                         <Grid>
                             <CheckBox Content="Include OffHand" Name="CheckIncluded" HorizontalAlignment="Left" Margin="181,11,0,0" VerticalAlignment="Top" Width="171"/>
-                            <DataGrid x:Name="EquipBox" HorizontalAlignment="Left" Height="270" Margin="-6,42,0,0" VerticalAlignment="Top" Width="478" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden" SelectionChanged="EquipBox_SelectionChanged">
+                            <DataGrid x:Name="EquipBox" HorizontalAlignment="Left" Height="325" Margin="-6,42,0,0" VerticalAlignment="Top" Width="478" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden" SelectionChanged="EquipBox_SelectionChanged">
                                 <DataGrid.Columns>
                                     <DataGridTemplateColumn Width="68" CanUserSort="False" Header="Icon">
                                         <DataGridTemplateColumn.CellTemplate>
@@ -92,7 +92,7 @@
                                     <DataGridTextColumn Header="Model Values" Binding="{Binding Path=ModelMain}" Width="*"/>
                                 </DataGrid.Columns>
                             </DataGrid>
-                            <TextBox x:Name="SearchModelBox" materialDesign:HintAssist.Hint="Search..." VerticalAlignment="Top" Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Margin="2,313,0,0" TextWrapping="Wrap" Width="461" TextChanged="SearchModelBox_TextChanged" BorderThickness="0,1" Height="27"/>
+                            <TextBox x:Name="SearchModelBox" materialDesign:HintAssist.Hint="Search..." VerticalAlignment="Top" Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Margin="2,370,0,0" TextWrapping="Wrap" Width="461" TextChanged="SearchModelBox_TextChanged" BorderThickness="0,1" Height="27"/>
                             <ComboBox materialDesign:HintAssist.Hint="Select Type" x:Name="EquipBoxC" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="154" SelectionChanged="EquipBoxC_SelectionChanged" PreviewMouseDown="EquipBoxC_PreviewMouseDown">
                                 <ComboBoxItem Content="Main Hand"/>
                                 <ComboBoxItem Content="Off Hand"/>
@@ -114,12 +114,12 @@
                     </TabItem>
                     <TabItem Header="NPC Selector" Name="NPCTab">
                         <Grid>
-                            <DataGrid x:Name="residentlist" HorizontalAlignment="Left" Height="270" Margin="-6,42,0,0" VerticalAlignment="Top" Width="478" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden" SelectionChanged="residentlist_SelectionChanged">
+                            <DataGrid x:Name="residentlist" HorizontalAlignment="Left" Height="325" Margin="-6,42,0,0" VerticalAlignment="Top" Width="478" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden" SelectionChanged="residentlist_SelectionChanged">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="*"/>
                                 </DataGrid.Columns>
                             </DataGrid>
-                            <TextBox x:Name="SearchModelBox2" materialDesign:HintAssist.Hint="Search..." Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="31" Margin="2,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="461" TextChanged="SearchModelBox2_TextChanged" BorderThickness="0,1"/>
+                            <TextBox x:Name="SearchModelBox2" materialDesign:HintAssist.Hint="Search..." Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="31" Margin="2,370,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="461" TextChanged="SearchModelBox2_TextChanged" BorderThickness="0,1"/>
                             <ComboBox SelectedIndex="0" materialDesign:HintAssist.Hint="Select Type" x:Name="LoadType" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="146">
                                 <ComboBoxItem Content="All"/>
                                 <ComboBoxItem Content="Appearance Only"/>

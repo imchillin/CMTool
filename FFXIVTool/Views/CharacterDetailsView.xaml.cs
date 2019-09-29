@@ -323,24 +323,36 @@ namespace FFXIVTool.Views
 
         private void EmoteSearch_Click(object sender, RoutedEventArgs e)
         {
-            EmoteFlyouts.IsOpen = !EmoteFlyouts.IsOpen;
-        }
-
-        private void CameraHeight_SourceUpdated(object sender, DataTransferEventArgs e)
-        {
-            if (CameraHeight.IsMouseOver || CameraHeight.IsKeyboardFocusWithin)
+            if (EmoteFlyouts.IsOpen)
             {
-                CameraHeight.ValueChanged -= CameraHeight_;
-                CameraHeight.ValueChanged += CameraHeight_;
+                if (EmoteFlyouts.AnimBox.SelectedIndex != 0)
+                {
+                    EmoteFlyouts.AnimBox.SelectedIndex = 0;
+                }
+                else EmoteFlyouts.IsOpen = !EmoteFlyouts.IsOpen;
+            }
+            else
+            {
+                EmoteFlyouts.IsOpen = !EmoteFlyouts.IsOpen;
+                EmoteFlyouts.AnimBox.SelectedIndex = 0;
             }
         }
 
-        private void CameraHeight_(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void EmoteOldSearch_Click(object sender, RoutedEventArgs e)
         {
-            if (CameraHeight.Value.HasValue)
-                if (CameraHeight.IsMouseOver || CameraHeight.IsKeyboardFocusWithin)
-                    MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, Settings.Instance.Character.CameraHeight), "float", CameraHeight.Value.ToString());
-            CameraHeight.ValueChanged -= CameraHeight_;
+            if (EmoteFlyouts.IsOpen)
+            {
+                if (EmoteFlyouts.AnimBox.SelectedIndex != 1)
+                {
+                    EmoteFlyouts.AnimBox.SelectedIndex = 1;
+                }
+                else EmoteFlyouts.IsOpen = !EmoteFlyouts.IsOpen;
+            }
+            else
+            {
+                EmoteFlyouts.IsOpen = !EmoteFlyouts.IsOpen;
+                EmoteFlyouts.AnimBox.SelectedIndex = 1;
+            }
         }
 
         private void CamX_SourceUpdated(object sender, DataTransferEventArgs e)
@@ -356,7 +368,7 @@ namespace FFXIVTool.Views
         {
             if (CamX.Value.HasValue)
                 if (CamX.IsMouseOver || CamX.IsKeyboardFocusWithin)
-                    MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, Settings.Instance.Character.CamX), "float", CamX.Value.ToString());
+                    MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.CamX), "float", CamX.Value.ToString());
             CamX.ValueChanged -= CamX_;
         }
 
@@ -373,7 +385,7 @@ namespace FFXIVTool.Views
         {
             if (CamY.Value.HasValue)
                 if (CamY.IsMouseOver || CamY.IsKeyboardFocusWithin)
-                    MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, Settings.Instance.Character.CamY), "float", CamY.Value.ToString());
+                    MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.CamY), "float", CamY.Value.ToString());
             CamY.ValueChanged -= CamY_;
         }
 
@@ -390,7 +402,7 @@ namespace FFXIVTool.Views
         {
             if (CamZ.Value.HasValue)
                 if (CamZ.IsMouseOver || CamZ.IsKeyboardFocusWithin)
-                    MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, Settings.Instance.Character.CamZ), "float", CamZ.Value.ToString());
+                    MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.CamZ), "float", CamZ.Value.ToString());
             CamZ.ValueChanged -= CamZ_;
         }
 

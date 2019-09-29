@@ -14,7 +14,7 @@
              Header="Character"
              Position="Right"
              mc:Ignorable="d" 
-             d:DesignHeight="470" d:DesignWidth="570">
+             d:DesignHeight="470" d:DesignWidth="570" Height="530">
 
     <controls:Flyout.Resources>
         <ResourceDictionary>
@@ -32,15 +32,15 @@
         <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" >
             <StackPanel Margin="2" Orientation="Vertical">
 
-                <controls:MetroAnimatedTabControl x:Name="AnimatedTabControl" Height="386"
+                <controls:MetroAnimatedTabControl x:Name="AnimatedTabControl" Height="450"
                                               Margin="2"
                                               controls:TabControlHelper.Underlined="TabPanel"
                                               Background="{DynamicResource MaterialDesignPaper}" SelectionChanged="AnimatedTabControl_SelectionChanged"
                                                   >
                     <TabItem Header="Color Selector" Name="ColorTab">
-                        <Grid>
+                        <Grid Height="360">
                             <Button Content="Button" HorizontalAlignment="Left" Margin="746,294,-251,0" VerticalAlignment="Top" Width="75"/>
-                            <ListView x:Name="colorListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,42,0,0" SelectionChanged="colorListView_SelectionChanged">
+                            <ListView x:Name="colorListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,42,0,0" SelectionChanged="colorListView_SelectionChanged" Height="315">
                                 <ListView.ItemsPanel>
                                     <ItemsPanelTemplate>
 
@@ -63,7 +63,7 @@
                         </Grid>
                     </TabItem>
                     <TabItem Header="Hair Selector" Name="HairTab">
-                        <Grid Margin="-7,0,-4,-5">
+                        <Grid Margin="-7,0,-4,-5" Height="360">
                             <Grid.Background>
                                 <ImageBrush ImageSource="/FFXIVTool;component/Resources/Background.png">
                                 </ImageBrush>
@@ -87,7 +87,7 @@
                         </Grid>
                     </TabItem>
                     <TabItem Header="Face Paint" Name="PaintTab">
-                        <Grid Margin="-7,0,-4,-5">
+                        <Grid Margin="-7,0,-4,-5" Height="360">
                             <Grid.Background>
                                 <ImageBrush ImageSource="/FFXIVTool;component/Resources/Background.png">
                                 </ImageBrush>
@@ -112,7 +112,7 @@
                         </Grid>
                     </TabItem>
                     <TabItem Header="Facial Feature" Name="FacialTab">
-                        <Grid Margin="-7,0,-4,-5">
+                        <Grid Margin="-7,0,-4,-5" Height="360">
                             <Grid.Background>
                                 <ImageBrush ImageSource="/FFXIVTool;component/Resources/Background.png">
                                 </ImageBrush>
@@ -136,14 +136,14 @@
                         </Grid>
                     </TabItem>
                     <TabItem Header="Model List" Name="ModelType">
-                        <Grid>
-                            <DataGrid x:Name="ModelBox" HorizontalAlignment="Left" Height="267" Margin="0,2,0,0" VerticalAlignment="Top" Width="562" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden" SelectionChanged="ModelBox_SelectionChanged">
+                        <Grid Height="360">
+                            <DataGrid x:Name="ModelBox" HorizontalAlignment="Left" Height="315" Margin="0,2,0,0" VerticalAlignment="Top" Width="562" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden" SelectionChanged="ModelBox_SelectionChanged">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="ID" Binding="{Binding Path=Index}" Width="56"/>
                                     <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="*"/>
                                 </DataGrid.Columns>
                             </DataGrid>
-                            <TextBox x:Name="SearchModelBox" materialDesign:HintAssist.Hint="Search..." Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="36" Margin="2,268,0,-4" TextWrapping="Wrap" VerticalAlignment="Top" Width="560" TextChanged="SearchModelBox_TextChanged" BorderThickness="0,1"/>
+                            <TextBox x:Name="SearchModelBox" materialDesign:HintAssist.Hint="Search..." Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="36" Margin="2,320,0,-4" TextWrapping="Wrap" VerticalAlignment="Top" Width="560" TextChanged="SearchModelBox_TextChanged" BorderThickness="0,1"/>
                         </Grid>
                     </TabItem>
                 </controls:MetroAnimatedTabControl>

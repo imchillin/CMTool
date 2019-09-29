@@ -104,12 +104,24 @@ namespace FFXIVTool.ViewModel
                 if (CharacterDetails.GposeMode.Activated) baseAddr = MemoryManager.Instance.GposeAddress;
                 if (CharacterDetails.TargetMode.Activated) baseAddr = MemoryManager.Instance.TargetAddress;
                 var nameAddr = MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.Name);
+                var fcnameAddr = MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.FCTag);
+                var xdad = (byte)MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.EntityType));
                 if (!CharacterDetails.Name.freeze)
                 {
                     var name = MemoryManager.Instance.MemLib.readString(nameAddr);
                     if (name.IndexOf('\0') != -1)
                         name = name.Substring(0, name.IndexOf('\0'));
                     CharacterDetails.Name.value = name;
+                }
+                if (!CharacterDetails.FCTag.freeze)
+                {
+                    var fcname = MemoryManager.Instance.MemLib.readString(fcnameAddr);
+                    if (fcname.IndexOf('\0') != -1)
+                        fcname = fcname.Substring(0, fcname.IndexOf('\0'));
+                    if (xdad == 1)
+                        CharacterDetails.FCTag.value = fcname;
+                    if (xdad != 1)
+                        CharacterDetails.FCTag.value = string.Empty;
                 }
                 if (!CurrentlySavingFilter)
                 {
@@ -211,6 +223,10 @@ namespace FFXIVTool.ViewModel
 
                 if (!CharacterDetails.Height.freeze) CharacterDetails.Height.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Height));
 
+                if (!CharacterDetails.Title.freeze) CharacterDetails.Title.value = (int)MemoryManager.Instance.MemLib.read2Byte((MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.Title)));
+
+                if (!CharacterDetails.JobIco.freeze) CharacterDetails.JobIco.value = (byte)MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.JobIco));
+
                 if (!CharacterDetails.Race.freeze) CharacterDetails.Race.value = (byte)MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.Race));
 
                 if (!CharacterDetails.Clan.freeze) CharacterDetails.Clan.value = (byte)MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.Clan));
@@ -300,38 +316,45 @@ namespace FFXIVTool.ViewModel
 
                 if (!CharacterDetails.ModelType.freeze) CharacterDetails.ModelType.value = (int)MemoryManager.Instance.MemLib.read2Byte((MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.ModelType)));
 
-                CharacterDetails.AltCheckPlayerFrozen.value = (float)MemoryManager.Instance.MemLib.readFloat((MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, Settings.Instance.Character.AltCheckPlayerFrozen)));
+                if (!CharacterDetails.DataPath.freeze) CharacterDetails.DataPath.value = (short)MemoryManager.Instance.MemLib.read2Byte((MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.DataPath)));
 
-                CharacterDetails.EmoteIsPlayerFrozen.value = (byte)MemoryManager.Instance.MemLib.readByte((MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, Settings.Instance.Character.EmoteIsPlayerFrozen)));
+                if (!CharacterDetails.NPCName.freeze) CharacterDetails.NPCName.value = (short)MemoryManager.Instance.MemLib.read2Byte((MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.NPCName)));
 
-                if (CharacterDetails.AltCheckPlayerFrozen.value == 0) { Viewtime.FrozenPlayaLabel.Dispatcher.Invoke(new Action(() => { Viewtime.FrozenPlayaLabel.Content = "Currently not in gpose!"; if (SaveSettings.Default.Theme == "Dark") Viewtime.FrozenPlayaLabel.Foreground = System.Windows.Media.Brushes.White; else Viewtime.FrozenPlayaLabel.Foreground = System.Windows.Media.Brushes.Black; })); }
-                else if (CharacterDetails.EmoteIsPlayerFrozen.value == 0 && CharacterDetails.AltCheckPlayerFrozen.value == 1) { Viewtime.FrozenPlayaLabel.Dispatcher.Invoke(new Action(() => { Viewtime.FrozenPlayaLabel.Content = "Targeted Player is frozen!"; Viewtime.FrozenPlayaLabel.Foreground = System.Windows.Media.Brushes.Red; })); }
-                else if (CharacterDetails.EmoteIsPlayerFrozen.value == 1 && CharacterDetails.AltCheckPlayerFrozen.value == 1) { Viewtime.FrozenPlayaLabel.Dispatcher.Invoke(new Action(() => { Viewtime.FrozenPlayaLabel.Content = "Targeted Player is animating!"; Viewtime.FrozenPlayaLabel.Foreground = System.Windows.Media.Brushes.Green; })); }
+                if (!CharacterDetails.NPCModel.freeze) CharacterDetails.NPCModel.value = (short)MemoryManager.Instance.MemLib.read2Byte((MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.NPCModel)));
 
-                if (!CharacterDetails.Emote.freeze) CharacterDetails.Emote.value = (int)MemoryManager.Instance.MemLib.read2Byte((MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, Settings.Instance.Character.Emote)));
+                CharacterDetails.AltCheckPlayerFrozen.value = (float)MemoryManager.Instance.MemLib.readFloat((MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.AltCheckPlayerFrozen)));
 
-                if (!CharacterDetails.EmoteX.freeze) CharacterDetails.EmoteX.value = (int)MemoryManager.Instance.MemLib.read2Byte((MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.Emote)));
+                CharacterDetails.EmoteIsPlayerFrozen.value = (byte)MemoryManager.Instance.MemLib.readByte((MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.EmoteIsPlayerFrozen)));
 
-                if (!CharacterDetails.EmoteSpeed1.freeze) CharacterDetails.EmoteSpeed1.value = (float)MemoryManager.Instance.MemLib.readFloat((MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, Settings.Instance.Character.EmoteSpeed1)));
+                if (CharacterDetails.AltCheckPlayerFrozen.value == 0) { Viewtime.FrozenPlayaLabel.Dispatcher.Invoke(new Action(() => { Viewtime.FrozenPlayaLabel.Content = "Currently not Targeting a Valid Actor!"; if (SaveSettings.Default.Theme == "Dark") Viewtime.FrozenPlayaLabel.Foreground = System.Windows.Media.Brushes.White; else Viewtime.FrozenPlayaLabel.Foreground = System.Windows.Media.Brushes.Black; })); }
+                else if (CharacterDetails.EmoteIsPlayerFrozen.value == 0 && CharacterDetails.AltCheckPlayerFrozen.value == 1) { Viewtime.FrozenPlayaLabel.Dispatcher.Invoke(new Action(() => { Viewtime.FrozenPlayaLabel.Content = "Targeted Actor is Frozen!"; Viewtime.FrozenPlayaLabel.Foreground = System.Windows.Media.Brushes.Red; })); }
+                else if (CharacterDetails.EmoteIsPlayerFrozen.value == 1 && CharacterDetails.AltCheckPlayerFrozen.value == 1) { Viewtime.FrozenPlayaLabel.Dispatcher.Invoke(new Action(() => { Viewtime.FrozenPlayaLabel.Content = "Targeted Actor is Animating!"; Viewtime.FrozenPlayaLabel.Foreground = System.Windows.Media.Brushes.Green; })); }
 
-                if (!CharacterDetails.CamZ.freeze) CharacterDetails.CamZ.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, Settings.Instance.Character.CamZ));
+                if (!CharacterDetails.Emote.freeze) CharacterDetails.Emote.value = (int)MemoryManager.Instance.MemLib.read2Byte((MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.Emote)));
 
-                if (!CharacterDetails.CamY.freeze) CharacterDetails.CamY.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, Settings.Instance.Character.CamY));
+                if (!CharacterDetails.EntityType.freeze) CharacterDetails.EntityType.value = (byte)MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.EntityType));
 
-                if (!CharacterDetails.CamX.freeze) CharacterDetails.CamX.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, Settings.Instance.Character.CamX));
+                if (!CharacterDetails.EmoteOld.freeze) CharacterDetails.EmoteOld.value = (int)MemoryManager.Instance.MemLib.read2Byte((MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.EmoteOld)));
 
-                if (!CharacterDetails.CameraHeight.freeze) CharacterDetails.CameraHeight.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, Settings.Instance.Character.CameraHeight));
+                if (!CharacterDetails.EmoteSpeed1.freeze) CharacterDetails.EmoteSpeed1.value = (float)MemoryManager.Instance.MemLib.readFloat((MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.EmoteSpeed1)));
+
+                if (!CharacterDetails.CamZ.freeze) CharacterDetails.CamZ.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.CamZ));
+
+                if (!CharacterDetails.CamY.freeze) CharacterDetails.CamY.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.CamY));
+
+                if (!CharacterDetails.CamX.freeze) CharacterDetails.CamX.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.CamX));
+
                 if (!CharacterDetails.Job.freeze && !CharacterDetails.Job.Activated)
                 {
                     CharacterDetails.Job.value = (int)MemoryManager.Instance.MemLib.read2Byte(MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.Job));
-                    CharacterDetails.WeaponBase.value = (byte)MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.WeaponBase));
+                    CharacterDetails.WeaponBase.value = (int)MemoryManager.Instance.MemLib.read2Byte(MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.WeaponBase));
                     CharacterDetails.WeaponV.value = (byte)MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.WeaponV));
                     CharacterDetails.WeaponDye.value = (byte)MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.WeaponDye));
                 }
                 if (!CharacterDetails.Offhand.freeze && !CharacterDetails.Offhand.Activated)
                 {
                     CharacterDetails.Offhand.value = (int)MemoryManager.Instance.MemLib.read2Byte(MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.Offhand));
-                    CharacterDetails.OffhandBase.value = (byte)MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.OffhandBase));
+                    CharacterDetails.OffhandBase.value = (int)MemoryManager.Instance.MemLib.read2Byte(MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.OffhandBase));
                     CharacterDetails.OffhandV.value = (byte)MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.OffhandV));
                     CharacterDetails.OffhandDye.value = (byte)MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.OffhandDye));
                 }
@@ -497,13 +520,11 @@ namespace FFXIVTool.ViewModel
 
                 if (!CharacterDetails.Max.freeze) CharacterDetails.Max.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.Max));
 
-                if (!CharacterDetails.CamZ.freeze) CharacterDetails.CamZ.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, Settings.Instance.Character.CamZ));
+                if (!CharacterDetails.CamZ.freeze) CharacterDetails.CamZ.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.CamZ));
 
-                if (!CharacterDetails.CamY.freeze) CharacterDetails.CamY.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, Settings.Instance.Character.CamY));
+                if (!CharacterDetails.CamY.freeze) CharacterDetails.CamY.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.CamY));
 
-                if (!CharacterDetails.CamX.freeze) CharacterDetails.CamX.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, Settings.Instance.Character.CamX));
-
-                if (!CharacterDetails.CameraHeight.freeze) CharacterDetails.CameraHeight.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, Settings.Instance.Character.CameraHeight));
+                if (!CharacterDetails.CamX.freeze) CharacterDetails.CamX.value = MemoryManager.Instance.MemLib.readFloat(MemoryManager.GetAddressString(baseAddr, Settings.Instance.Character.CamX));
 
                 if (!CharacterDetails.Weather.freeze) CharacterDetails.Weather.value = (byte)MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.WeatherAddress, Settings.Instance.Character.Weather));
                 CharacterDetails.TimeControl.value = (int)MemoryManager.Instance.MemLib.readInt(MemoryManager.GetAddressString(MemoryManager.Instance.TimeAddress, Settings.Instance.Character.TimeControl));

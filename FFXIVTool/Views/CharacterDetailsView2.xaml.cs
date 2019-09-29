@@ -823,12 +823,12 @@ namespace FFXIVTool.Views
                 CharacterDetails.LFingerVa.value = EquipmentArray[38];
                 MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HeadPiece), EquipmentArray);
                 CharacterDetails.Job.value = equpmentarray.MainHand.Item1;
-                CharacterDetails.WeaponBase.value = (byte)equpmentarray.MainHand.Item2;
+                CharacterDetails.WeaponBase.value = equpmentarray.MainHand.Item2;
                 CharacterDetails.WeaponV.value = (byte)equpmentarray.MainHand.Item3;
                 CharacterDetails.WeaponDye.value = (byte)equpmentarray.MainHand.Item4;
                 MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Job), EquipmentFlyOut.WepTupleToByteAry(equpmentarray.MainHand));
                 CharacterDetails.Offhand.value = equpmentarray.OffHand.Item1;
-                CharacterDetails.OffhandBase.value = (byte)equpmentarray.OffHand.Item2;
+                CharacterDetails.OffhandBase.value = equpmentarray.OffHand.Item2;
                 CharacterDetails.OffhandV.value = (byte)equpmentarray.OffHand.Item3;
                 CharacterDetails.OffhandDye.value = (byte)equpmentarray.OffHand.Item4;
                 MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Offhand), EquipmentFlyOut.WepTupleToByteAry(equpmentarray.OffHand));

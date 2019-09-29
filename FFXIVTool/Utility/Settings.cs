@@ -66,6 +66,9 @@ namespace FFXIVTool.Utility
         public string GGreens { get; set; }
         public string GRed { get; set; }
         public string Name { get; set; }
+        public string FCTag { get; set; }
+        public string Title { get; set; }
+        public string JobIco { get; set; }
         public string Race { get; set; }
         public string RenderDistance { get; set; }
         public string TimeControl { get; set; }
@@ -77,6 +80,9 @@ namespace FFXIVTool.Utility
         public string EntityType { get; set; }
         public string FreezeFacial { get; set; }
         public string Territory { get; set; }
+        public string DataPath { get; set; }
+        public string NPCName { get; set; }
+        public string NPCModel { get; set; }
         public BodyOffsets Body { get; set; }
         public string TailorMuscle { get; set; }
         public string NameHeight { get; set; }
@@ -110,9 +116,9 @@ namespace FFXIVTool.Utility
         public string FacePaintColor { get; set; }
         public string FacialFeatures { get; set; }
         public string Emote { get; set; }
+        public string EmoteOld { get; set; }
         public string EmoteSpeed1 { get; set; }
         public string EmoteSpeed2 { get; set; }
-        public string CameraHeight { get; set; }
         public string CameraHeight2 { get; set; }
         public string CameraYAMin { get; set; }
         public string CameraYAMax { get; set; }

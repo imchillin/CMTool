@@ -12,7 +12,7 @@
              TextElement.FontSize="13.25"
              mc:Ignorable="d"
              Header="Emotes"
-             Position="Left" Height="470" Width="541">
+             Position="Left" Height="530" Width="541">
 
     <controls:Flyout.Resources>
         <ResourceDictionary>
@@ -29,14 +29,14 @@
     <Grid>
         <StackPanel Margin="2" Orientation="Vertical">
 
-            <controls:MetroAnimatedTabControl Height="386"
+            <controls:MetroAnimatedTabControl Height="450"
                                               Margin="2"
                                               controls:TabControlHelper.Underlined="TabPanel"
                                               Background="{DynamicResource MaterialDesignPaper}"
                                                   >
                 <TabItem Header="Player">
                     <Grid>
-                        <DataGrid x:Name="SocialBox" HorizontalAlignment="Left" Height="310" Margin="0,2,0,0" VerticalAlignment="Top" Width="499" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden" SelectionChanged="BoxSelectionChanged">
+                        <DataGrid x:Name="SocialBox" HorizontalAlignment="Left" Height="360" Margin="0,2,0,0" VerticalAlignment="Top" Width="499" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden" SelectionChanged="BoxSelectionChanged">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding Path=Index}" Width="56"/>
                                 <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="*"/>
@@ -47,12 +47,12 @@
                                 </ContextMenu>
                             </DataGrid.ContextMenu>
                         </DataGrid>
-                        <TextBox x:Name="searchTextBox" materialDesign:HintAssist.Hint="Search..." Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="31" Margin="2,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="497" TextChanged="TextBox_TextChanged" BorderThickness="0,1"/>
+                        <TextBox x:Name="searchTextBox" materialDesign:HintAssist.Hint="Search..." Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="31" Margin="2,370,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="497" TextChanged="TextBox_TextChanged" BorderThickness="0,1"/>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Battle">
                     <Grid>
-                        <DataGrid x:Name="BattleBox" HorizontalAlignment="Left" Height="310" Margin="0,2,0,0" VerticalAlignment="Top" Width="499" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden" SelectionChanged="BattleBox_SelectionChanged" Grid.ColumnSpan="2">
+                        <DataGrid x:Name="BattleBox" HorizontalAlignment="Left" Height="360" Margin="0,2,0,0" VerticalAlignment="Top" Width="499" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden" SelectionChanged="BattleBox_SelectionChanged" Grid.ColumnSpan="2">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding Path=Index}" Width="56"/>
                                 <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="*"/>
@@ -63,12 +63,12 @@
                                 </ContextMenu>
                             </DataGrid.ContextMenu>
                         </DataGrid>
-                        <TextBox x:Name="BattleTextBox" materialDesign:HintAssist.Hint="Search..." Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="31" Margin="2,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="497" TextChanged="BattleTextBox_TextChanged" Grid.ColumnSpan="2" BorderThickness="0,1"/>
+                        <TextBox x:Name="BattleTextBox" materialDesign:HintAssist.Hint="Search..." Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="31" Margin="2,370,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="497" TextChanged="BattleTextBox_TextChanged" Grid.ColumnSpan="2" BorderThickness="0,1"/>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Monster">
                     <Grid>
-                        <DataGrid x:Name="MonsterBox" HorizontalAlignment="Left" Height="310" Margin="0,2,0,0" VerticalAlignment="Top" Width="499" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden" SelectionChanged="MonsterBox_SelectionChanged">
+                        <DataGrid x:Name="MonsterBox" HorizontalAlignment="Left" Height="360" Margin="0,2,0,0" VerticalAlignment="Top" Width="499" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden" SelectionChanged="MonsterBox_SelectionChanged">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding Path=Index}" Width="56"/>
                                 <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="*"/>
@@ -80,13 +80,13 @@
                             </DataGrid.ContextMenu>
                         </DataGrid>
 
-                        <TextBox x:Name="SearchTextBoxMonster" materialDesign:HintAssist.Hint="Search..." Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="31" Margin="2,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="497" TextChanged="SearchTextBoxMonster_TextChanged"/>
+                        <TextBox x:Name="SearchTextBoxMonster" materialDesign:HintAssist.Hint="Search..." Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="31" Margin="2,370,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="497" TextChanged="SearchTextBoxMonster_TextChanged" BorderThickness="0,1"/>
                     </Grid>
 
                 </TabItem>
                 <TabItem Header="All">
                     <Grid>
-                        <DataGrid x:Name="AllBox" HorizontalAlignment="Left" Height="310" Margin="0,2,0,0" VerticalAlignment="Top" Width="499" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden" SelectionChanged="AllBox_SelectionChanged">
+                        <DataGrid x:Name="AllBox" HorizontalAlignment="Left" Height="360" Margin="0,2,0,0" VerticalAlignment="Top" Width="499" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden" SelectionChanged="AllBox_SelectionChanged">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding Path=Index}" Width="56"/>
                                 <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="*"/>
@@ -97,13 +97,13 @@
                                 </ContextMenu>
                             </DataGrid.ContextMenu>
                         </DataGrid>
-                        <TextBox x:Name="SearchTextBoxAll" materialDesign:HintAssist.Hint="Search..." Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="31" Margin="2,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="497" TextChanged="SearchTextBoxAll_TextChanged"/>
+                        <TextBox x:Name="SearchTextBoxAll" materialDesign:HintAssist.Hint="Search..." Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="31" Margin="2,370,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="497" TextChanged="SearchTextBoxAll_TextChanged" BorderThickness="0,1"/>
                     </Grid>
 
                 </TabItem>
                 <TabItem Header="Favorite">
                     <Grid>
-                        <DataGrid x:Name="FavoriteBox" HorizontalAlignment="Left" Height="310" Margin="0,2,0,0" VerticalAlignment="Top" Width="499" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden" SelectionChanged="FavoriteBox_SelectionChanged">
+                        <DataGrid x:Name="FavoriteBox" HorizontalAlignment="Left" Height="360" Margin="0,2,0,0" VerticalAlignment="Top" Width="499" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden" SelectionChanged="FavoriteBox_SelectionChanged">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding Path=Index}" Width="56"/>
                                 <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="*"/>
@@ -114,12 +114,16 @@
                                 </ContextMenu>
                             </DataGrid.ContextMenu>
                         </DataGrid>
-                        <TextBox x:Name="SearchTextBoxFav" materialDesign:HintAssist.Hint="Search..." Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="31" Margin="2,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="497" TextChanged="SearchTextBoxFav_TextChanged"/>
+                        <TextBox x:Name="SearchTextBoxFav" materialDesign:HintAssist.Hint="Search..." Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="31" Margin="2,370,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="497" TextChanged="SearchTextBoxFav_TextChanged" BorderThickness="0,1"/>
                     </Grid>
 
                 </TabItem>
             </controls:MetroAnimatedTabControl>
 
         </StackPanel>
+        <ComboBox materialDesign:HintAssist.Hint="Select Type" x:Name="AnimBox" HorizontalAlignment="Left" Margin="340,58,0,0" VerticalAlignment="Top" Width="146" VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling">
+            <ComboBoxItem Content="Idle Animation"/>
+            <ComboBoxItem Content="Force Animation"/>
+        </ComboBox>
     </Grid>
 </controls:Flyout>

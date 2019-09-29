@@ -95,9 +95,9 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Row="1" VerticalAlignment="Center">Light</TextBlock>
-            <ToggleButton x:Name="ThemeButton" Grid.Row="1" Grid.Column="1" Margin="8 4 16 4" Command="{Binding ToggleBaseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked}" />
-            <TextBlock Grid.Row="1" Grid.Column="2" VerticalAlignment="Center">Dark</TextBlock>
+            <TextBlock Grid.Row="1" VerticalAlignment="Center" Text="Hydaelyn Theme"/>
+            <ToggleButton x:Name="ThemeButton" Grid.Row="1" Grid.Column="1" Margin="10,4.797,9.999,3.203" Command="{Binding ToggleBaseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Text="Zodiark Theme"/>
         </Grid>
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
             <ItemsControl ItemsSource="{Binding Swatches, Mode=OneTime}">

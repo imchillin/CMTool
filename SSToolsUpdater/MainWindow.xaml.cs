@@ -86,7 +86,7 @@ namespace SSToolsUpdater
                 }
                 else
                 {
-                    Uri urlv = new Uri("https://raw.githubusercontent.com/imchillin/SSTool/master/version.txt");
+                    Uri urlv = new Uri("https://raw.githubusercontent.com/KrisanThyme/CMTool/master/version.txt");
                     WebClient wc2 = new WebClient();
                     downloading = true;
                     subwc.DownloadFileAsync(urlv, exepath + "\\version.txt");
@@ -96,7 +96,7 @@ namespace SSToolsUpdater
 
                 if (!downloading && version.Replace(',', '.').CompareTo(newversion) != 0)
                 {
-                    Uri url = new Uri($"https://github.com/imchillin/SSTool/releases/download/{newversion}/FFXIVTool.zip");
+                    Uri url = new Uri($"https://github.com/KrisanThyme/CMTool/releases/download/{newversion}/FFXIVTool.zip");
                     sw.Start();
                     outputUpdatePath = Path.Combine(updatesFolder, $"FFXIVTool.zip");
                     try { wc.DownloadFileAsync(url, outputUpdatePath); }
@@ -137,7 +137,7 @@ namespace SSToolsUpdater
             File.Delete(exepath + "\\version.txt");
             if (version.Replace(',', '.').CompareTo(newversion) != 0)
             {
-                Uri url = new Uri($"https://github.com/imchillin/SSTool/releases/download/{newversion}/FFXIVTool.zip");
+                Uri url = new Uri($"https://github.com/KrisanThyme/CMTool/releases/download/{newversion}/FFXIVTool.zip");
                 sw.Start();
                 outputUpdatePath = Path.Combine(updatesFolder, $"FFXIVTool.zip");
                 try { wc.DownloadFileAsync(url, outputUpdatePath); }
@@ -330,7 +330,7 @@ namespace SSToolsUpdater
             }
             else if (!backup)
             {
-                Uri url = new Uri($"https://github.com/imchillin/SSTool/releases/download/{newversion}/FFXIVTool.zip");
+                Uri url = new Uri($"https://github.com/KrisanThyme/CMTool/releases/download/{newversion}/FFXIVTool.zip");
 
                 sw.Start();
                 outputUpdatePath = Path.Combine(updatesFolder, $"FFXIVTool.zip");
@@ -358,7 +358,7 @@ namespace SSToolsUpdater
 
         private void GithubBTN_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://github.com/imchillin/SSTool");
+            Process.Start("https://github.com/KrisanThyme/CMTool");
         }
 
         private void OpenXIVBTN_Click(object sender, RoutedEventArgs e)
