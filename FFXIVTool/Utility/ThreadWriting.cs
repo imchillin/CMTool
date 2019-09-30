@@ -68,7 +68,11 @@ namespace FFXIVTool.Utility
                     if (CharacterDetails.DataPath.freeze && !CharacterDetails.DataPath.Activated)
                     {
                         MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.DataPath), CharacterDetails.DataPath.GetBytes());
-                        MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.DataHead), "byte", "1");
+                        if (CharacterDetails.Clan.value == 1 || CharacterDetails.Clan.value == 3 || CharacterDetails.Clan.value == 5 || CharacterDetails.Clan.value == 7 || CharacterDetails.Clan.value == 9 || CharacterDetails.Clan.value == 11 || CharacterDetails.Clan.value == 13 || CharacterDetails.Clan.value == 15)
+                        {
+                            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.DataHead), "byte", "0x01");
+                        }
+                        else MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.DataHead), "byte", "0x65");
                     }
                     if (CharacterDetails.NPCName.freeze && !CharacterDetails.NPCName.Activated) MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.NPCName), CharacterDetails.NPCName.GetBytes());
                     if (CharacterDetails.NPCModel.freeze && !CharacterDetails.NPCModel.Activated) MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.NPCModel), CharacterDetails.NPCModel.GetBytes());
