@@ -81,6 +81,7 @@ namespace FFXIVTool.Utility
         public string FreezeFacial { get; set; }
         public string Territory { get; set; }
         public string DataPath { get; set; }
+        public string DataHead { get; set; }
         public string NPCName { get; set; }
         public string NPCModel { get; set; }
         public BodyOffsets Body { get; set; }

@@ -203,6 +203,7 @@ namespace FFXIVTool.Models
         [JsonIgnore] public Address<byte> EntityType { get; set; }
         [JsonIgnore] public Address<int> Territoryxd { get; set; }
         [JsonIgnore] public Address<short> DataPath { get; set; }
+        [JsonIgnore] public Address<byte> DataHead { get; set; }
         [JsonIgnore] public Address<short> NPCName { get; set; }
         [JsonIgnore] public Address<short> NPCModel { get; set; }
         [JsonIgnore] public Address<float> FreezeFacial { get; set; }
@@ -261,6 +262,7 @@ namespace FFXIVTool.Models
             FreezeFacial = new Address<float>();
             Territoryxd = new Address<int>();
             DataPath = new Address<short>();
+            DataHead = new Address<byte>();
             NPCName = new Address<short>();
             NPCModel = new Address<short>();
             ScaleX = new Address<float>();
