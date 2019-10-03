@@ -55,19 +55,18 @@
             </DockPanel>
         </Button>
         <Button x:Name="CharacterRefreshButton" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Actor Refresh" HorizontalAlignment="Left" Margin="225,7,0,0" VerticalAlignment="Top" Width="125" Click="CharacterRefreshButton_Click" IsTabStop="False"/>
-        <Button x:Name="FindProcess" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Find New Process" HorizontalAlignment="Left" Margin="946,7,0,0" VerticalAlignment="Top" Width="151" Click="FindProcess_Click" IsTabStop="False"/>
-        <Button x:Name="NPCRefresh" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="NPC Actor Refresh" HorizontalAlignment="Left" Margin="355,7,0,0" VerticalAlignment="Top" Width="150" Click="NPCRefresh_Click" IsTabStop="False"/>
-        <ToggleButton x:Name="GposeButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding Path=CharacterDetails.CharacterDetails.GposeMode}" Margin="625,3,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="21" Checked="GposeButton_Checked" Unchecked="GposeButton_Unchecked" IsTabStop="False" />
-        <Label Content="GPose Mode:" HorizontalAlignment="Left" Margin="520,0,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Button x:Name="FindProcess" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Find New Process" HorizontalAlignment="Left" Margin="953,7,0,0" VerticalAlignment="Top" Width="151" Click="FindProcess_Click" IsTabStop="False"/>
+        <ToggleButton x:Name="GposeButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding Path=CharacterDetails.CharacterDetails.GposeMode}" Margin="455,3,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="21" Checked="GposeButton_Checked" Unchecked="GposeButton_Unchecked" IsTabStop="False" />
+        <Label Content="GPose Mode:" HorizontalAlignment="Left" Margin="360,0,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Button HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}" VerticalAlignment="Top" x:Name="TwitterButton" Margin="910,-45,0,0" Width="131" Click="TwitterButton_Click" Height="45" Foreground="White" BorderBrush="#7F000000" BorderThickness="1,0" Padding="16,20,16,4" IsTabStop="False">
             <StackPanel Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="Twitter" Padding="0" />
                 <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0"><Run Text="Our Twitter"/></TextBlock>
             </StackPanel>
         </Button>
-        <Button x:Name="Save" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Save" HorizontalAlignment="Left" Margin="866,7,0,0" VerticalAlignment="Top" Width="70" Click="Save_Click" IsTabStop="False"/>
-        <Button x:Name="Load" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Load" HorizontalAlignment="Left" Margin="791,7,0,0" VerticalAlignment="Top" Width="70" Click="Load_Click" IsTabStop="False"/>
-        <Button x:Name="Uncheck" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Uncheck All" HorizontalAlignment="Left" Margin="690,7,0,0" VerticalAlignment="Top" Width="94" Click="Uncheck_Click" Padding="15,4,16,4" FontSize="12" IsTabStop="False"/>
+        <Button x:Name="Save" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Save Appearance" HorizontalAlignment="Left" Margin="755,7,0,0" VerticalAlignment="Top" Width="145" Click="Save_Click" IsTabStop="False"/>
+        <Button x:Name="Load" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Load Appearance" HorizontalAlignment="Left" Margin="605,7,0,0" VerticalAlignment="Top" Width="145" Click="Load_Click" IsTabStop="False"/>
+        <Button x:Name="Uncheck" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Unfreeze All" HorizontalAlignment="Left" Margin="500,7,0,0" VerticalAlignment="Top" Width="100" Click="Uncheck_Click" Padding="15,4,16,4" FontSize="12" IsTabStop="False"/>
         <Button HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}" VerticalAlignment="Top" x:Name="AlwaysOnTop" Margin="626,-45,0,0" Width="153" Click="AlwaysOnTop_Click" Height="45" Foreground="White" BorderBrush="#7F000000" BorderThickness="1,0" Padding="16,20,16,4" IsTabStop="False">
             <StackPanel Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="{Binding Path=AOTToggleStatus, FallbackValue=ToggleSwitchOffOutline}" Padding="0" Foreground="{Binding ToggleForeground, FallbackValue=#7FFFFFFF}" />
@@ -86,9 +85,9 @@
                 <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="Our Discord"/>
             </StackPanel>
         </Button>
-		<ToggleButton x:Name="TargetButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.CharacterDetails.TargetModeActive}" Margin="625,25,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="21" Checked="TargetButton_Checked" Unchecked="TargetButton_Unchecked" IsTabStop="False" />
-        <Label Content="Target Mode:" HorizontalAlignment="Left" Margin="520,23,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Button x:Name="SavePoint" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Save Point" HorizontalAlignment="Left" Margin="990,50,0,0" VerticalAlignment="Top" Width="106" IsTabStop="False" Click="SavePoint_Click"/>
-        <Button x:Name="LoadSavePoint" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Revert" HorizontalAlignment="Left" Margin="910,50,0,0" VerticalAlignment="Top" Width="75" IsTabStop="False" Click="LoadSavePoint_Click"/>
+        <ToggleButton x:Name="TargetButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.CharacterDetails.TargetModeActive}" Margin="455,25,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="21" Checked="TargetButton_Checked" Unchecked="TargetButton_Unchecked" IsTabStop="False" />
+        <Label Content="Target Mode:" HorizontalAlignment="Left" Margin="360,23,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Button x:Name="SavePoint" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Save State" HorizontalAlignment="Left" Margin="1005,50,0,0" VerticalAlignment="Top" Width="100" IsTabStop="False" Click="SavePoint_Click"/>
+        <Button x:Name="LoadSavePoint" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Load State" HorizontalAlignment="Left" Margin="900,50,0,0" VerticalAlignment="Top" Width="100" IsTabStop="False" Click="LoadSavePoint_Click"/>
     </Grid>
 </controls:MetroWindow>

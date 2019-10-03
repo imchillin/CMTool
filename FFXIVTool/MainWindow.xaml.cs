@@ -181,9 +181,26 @@ namespace FFXIVTool
 
         private void CharacterRefreshButton_Click(object sender, RoutedEventArgs e)
         {
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.RenderToggle), "int", "2");
-            Task.Delay(50).Wait();
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.RenderToggle), "int", "0");
+            var m = MemoryManager.Instance.MemLib;
+            var c = Settings.Instance.Character;
+
+            string GAS(params string[] args) => MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, args);
+            var xdad = (byte)MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.EntityType));
+            if (xdad == 1)
+            {
+                m.writeMemory(GAS(c.EntityType), "byte", "2");
+                m.writeMemory(GAS(c.RenderToggle), "int", "2");
+                Task.Delay(50).Wait();
+                m.writeMemory(GAS(c.RenderToggle), "int", "0");
+                Task.Delay(50).Wait();
+                m.writeMemory(GAS(c.EntityType), "byte", "1");
+            }
+            else
+            {
+                m.writeMemory(GAS(c.RenderToggle), "int", "2");
+                Task.Delay(50).Wait();
+                m.writeMemory(GAS(c.RenderToggle), "int", "0");
+            }
         }
 
         private void FindProcess_Click(object sender, RoutedEventArgs e)
@@ -215,20 +232,6 @@ namespace FFXIVTool
                 MainViewModel.ShutDownStuff();
                 MainViewModel.gameProcId = GameList[0].ID;
                 DataContext = new MainViewModel();
-            }
-        }
-
-        private void NPCRefresh_Click(object sender, RoutedEventArgs e)
-        {
-            var xdad = (byte)MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.EntityType));
-            if (xdad == 1)
-            {
-                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.EntityType), "byte", "2");
-                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.RenderToggle), "int", "2");
-                Task.Delay(50).Wait();
-                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.RenderToggle), "int", "0");
-                Task.Delay(50).Wait();
-                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.EntityType), "byte", "1");
             }
         }
 
@@ -1018,7 +1021,6 @@ namespace FFXIVTool
         private void GposeButton_Checked(object sender, RoutedEventArgs e)
         {
             CharacterRefreshButton.IsEnabled = false;
-            NPCRefresh.IsEnabled = false;
 
             MainViewModel.ViewTime.CamX.IsEnabled = true;
             MainViewModel.ViewTime.CamY.IsEnabled = true;
@@ -1066,7 +1068,6 @@ namespace FFXIVTool
         private void GposeButton_Unchecked(object sender, RoutedEventArgs e)
         {
             CharacterRefreshButton.IsEnabled = true;
-            NPCRefresh.IsEnabled = true;
 
             MainViewModel.ViewTime.CamX.IsEnabled = false;
             MainViewModel.ViewTime.CamY.IsEnabled = false;
@@ -1112,14 +1113,12 @@ namespace FFXIVTool
         private void TargetButton_Checked(object sender, RoutedEventArgs e)
         {
             CharacterRefreshButton.IsEnabled = false;
-            NPCRefresh.IsEnabled = false;
             CharacterDetailsViewModel.baseAddr = MemoryManager.Instance.TargetAddress;
         }
 
         private void TargetButton_Unchecked(object sender, RoutedEventArgs e)
         {
             CharacterRefreshButton.IsEnabled = true;
-            NPCRefresh.IsEnabled = true;
             if (TargetButton.IsKeyboardFocusWithin || TargetButton.IsMouseOver)
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Add(MemoryManager.Instance.BaseAddress, CharacterDetailsViewModel.eOffset);
         }

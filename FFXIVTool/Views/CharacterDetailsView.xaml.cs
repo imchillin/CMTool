@@ -544,11 +544,20 @@ namespace FFXIVTool.Views
 			Transparency.ValueChanged -= Transps;
 		}
 
-		#endregion
+        #endregion
 
-		#region Emote
+        #region Entity
 
-		private void EmoteSearch_Click(object sender, RoutedEventArgs e)
+        private void Entity_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        #region Emote
+
+        private void EmoteSearch_Click(object sender, RoutedEventArgs e)
 		{
 			if (EmoteFlyouts.IsOpen)
 			{
