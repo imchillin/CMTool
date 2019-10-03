@@ -8,7 +8,7 @@ Every release of CMTools should be considered an early beta of SSTools or as an 
 
 
      +-----------------------------------------------------+
-     �             Contact & Donations		             �
+     �             Contact & Donations		           �
 ------------------------------------------------------------------------------------------------------------------
 
 [ Offical Twitter] -> https://twitter.com/ffxivsstool
