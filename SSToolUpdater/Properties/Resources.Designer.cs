@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SSToolsUpdater.Properties {
+namespace SSToolUpdater.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace SSToolsUpdater.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SSToolsUpdater.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SSToolUpdater.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,26 +57,6 @@ namespace SSToolsUpdater.Properties {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        internal static System.Drawing.Icon ffxivmeteorlogo {
-            get {
-                object obj = ResourceManager.GetObject("ffxivmeteorlogo", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        internal static System.Drawing.Icon ffxivmeteorlogo2 {
-            get {
-                object obj = ResourceManager.GetObject("ffxivmeteorlogo2", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
             }
         }
     }

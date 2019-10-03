@@ -13,7 +13,7 @@
              d:DesignHeight="460" d:DesignWidth="1115" Height="530">
     <Grid Height="530">
         <GroupBox Header="Group Pose Filters" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" Margin="402,10,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="330" Width="703"/>
-        <GroupBox Header="Camera Settings" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" Margin="10,10,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="330" Width="387"/>
+        <GroupBox Header="Camera Settings" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" Margin="10,10,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="395" Width="387"/>
         <Button x:Name="ResetCams" Content="Reset to Default" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth1" HorizontalAlignment="Left" Margin="245,14,0,0" VerticalAlignment="Top" Width="147" Height="28" FontWeight="Bold" Click="ResetCams_Click"/>
         <CheckBox IsEnabled="{Binding Path=CharacterDetails.Max.Checker}" IsChecked="{Binding Path=CharacterDetails.Max.freeze}" Content="Max Zoom:" HorizontalAlignment="Left" Margin="16,55,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown  x:Name="MaxZoom" Value="{Binding Path=CharacterDetails.Max.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="130,55,0,0" VerticalAlignment="Top" Width="142" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F5" Interval="0.01"  TextAlignment="Right" SourceUpdated="MaxZoom_SourceUpdated" Height="28"/>
@@ -36,6 +36,20 @@
         <mah:NumericUpDown x:Name="CamYMax" Value="{Binding Path=CharacterDetails.CameraYAMax.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="130,265,0,0" VerticalAlignment="Top" Width="142" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F5" Interval="0.01"  TextAlignment="Right" SourceUpdated="CamYMax_SourceUpdated" Height="28"/>
         <CheckBox  IsChecked="{Binding Path=CharacterDetails.CameraUpDown.freeze}" Content="Cam Up/Down:" HorizontalAlignment="Left" Margin="16,295,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="CamUpDown" Value="{Binding Path=CharacterDetails.CameraUpDown.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="130,295,0,0" VerticalAlignment="Top" Width="142" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F5" Interval="0.01"  TextAlignment="Right" SourceUpdated="CamUpDown_SourceUpdated" Height="28"/>
+        <CheckBox  IsChecked="{Binding Path=CharacterDetails.CamAngleX.freeze}" Content="Cam Angle X:" HorizontalAlignment="Left" Margin="16,325,0,0" VerticalAlignment="Top" Height="28"/>
+        <mah:NumericUpDown x:Name="CamAngleX" Value="{Binding Path=CharacterDetails.CamAngleX.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="130,325,0,0" VerticalAlignment="Top" Width="142" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F5" Interval="0.01"  TextAlignment="Right" SourceUpdated="CamAngleX_SourceUpdated" Height="28"/>
+        <CheckBox  IsChecked="{Binding Path=CharacterDetails.CamAngleY.freeze}" Content="Cam Angle Y:" HorizontalAlignment="Left" Margin="16,355,0,0" VerticalAlignment="Top" Height="28"/>
+        <mah:NumericUpDown x:Name="CamAngleY" Value="{Binding Path=CharacterDetails.CamAngleY.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="130,355,0,0" VerticalAlignment="Top" Width="142" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F5" Interval="0.01"  TextAlignment="Right" SourceUpdated="CamAngleY_SourceUpdated" Height="28"/>
+        <Button x:Name="SaveCamView" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Save" HorizontalAlignment="Left" Margin="282,325,0,0" VerticalAlignment="Top" Width="60" Height="23" FontSize="12" Click="SaveCamAngle_Click" RenderTransformOrigin="0.5,0.5">
+            <Button.LayoutTransform>
+                <RotateTransform Angle="-90" />
+            </Button.LayoutTransform>
+        </Button>
+        <Button x:Name="LoadCamView" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Load" HorizontalAlignment="Left" Margin="318,325,0,0" VerticalAlignment="Top" Width="60" Height="23" FontSize="12" Click="LoadCamAngle_Click" RenderTransformOrigin="0.5,0.5">
+            <Button.LayoutTransform>
+                <RotateTransform Angle="-90" />
+            </Button.LayoutTransform>
+        </Button>
         <Label Content="Brightness:" HorizontalAlignment="Left" Margin="410,55,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
         <Slider x:Name="BrightSlider" Value="{Binding Path=CharacterDetails.Brightness.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="488,55,0,0" VerticalAlignment="Top" Width="100" Height="28" Maximum="1" Minimum="-1" LargeChange="0.2" TickFrequency="0.1" IsSnapToTickEnabled="True" SourceUpdated="BrightSlider_SourceUpdated" TickPlacement="BottomRight"/>
         <mah:NumericUpDown x:Name="BrightUpDown" Value="{Binding Path=CharacterDetails.Brightness.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="593,55,0,0" VerticalAlignment="Top" Width="142" Maximum="1" Minimum="-1" Speedup="False" StringFormat="F5" Interval="0.1" SourceUpdated="BrightSlider_SourceUpdated" BorderThickness="0,0,0,1" BorderBrush="#8A000000" Background="{x:Null}" Height="28"/>
@@ -115,22 +129,22 @@
         <Button x:Name="Load_Button" HorizontalAlignment="Left" Margin="1035.837,248,0,0" VerticalAlignment="Top" Width="51" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" ToolTip="Load" Height="50" Padding="0" Click="Load_Button_Click">
             <materialDesign:PackIcon Kind="Upload" Height="24" Width="24"/>
         </Button>
-        <CheckBox IsChecked="{Binding Path=CharacterDetails.Weather.freeze}" Content="Weather:" HorizontalAlignment="Left" Margin="10,345,0,0" VerticalAlignment="Top" Height="28"/>
-        <mah:NumericUpDown x:Name="Weather" Maximum="140" Minimum="1" Value="{Binding Path=CharacterDetails.Weather.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="86,345,0,0" VerticalAlignment="Top" Width="116" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" Interval="1" TextAlignment="Right" NumericInputMode="Numbers" SourceUpdated="Weather_SourceUpdated" Speedup="False" Height="28"/>
-        <ComboBox x:Name="WeatherBox" materialDesign:HintAssist.Hint="Weather Select" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="10,377,0,0" VerticalAlignment="Top" Width="192" SelectionChanged="WeatherBox_SelectionChanged" PreviewMouseDown="WeatherBox_PreviewMouseDown" Height="40">
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.Weather.freeze}" Content="Weather:" HorizontalAlignment="Left" Margin="10,410,0,0" VerticalAlignment="Top" Height="28"/>
+        <mah:NumericUpDown x:Name="Weather" Maximum="140" Minimum="1" Value="{Binding Path=CharacterDetails.Weather.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="86,410,0,0" VerticalAlignment="Top" Width="116" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" Interval="1" TextAlignment="Right" NumericInputMode="Numbers" SourceUpdated="Weather_SourceUpdated" Speedup="False" Height="28"/>
+        <ComboBox x:Name="WeatherBox" materialDesign:HintAssist.Hint="Weather Select" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="10,442,0,0" VerticalAlignment="Top" Width="192" SelectionChanged="WeatherBox_SelectionChanged" PreviewMouseDown="WeatherBox_PreviewMouseDown" Height="40">
             <ComboBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel />
                 </ItemsPanelTemplate>
             </ComboBox.ItemsPanel>
         </ComboBox>
-        <Button Content="Refresh" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="207,377,0,0" VerticalAlignment="Top" Width="85" Click="Button_Click" Height="40"/>
-        <Slider x:Name="Timexd" Value="{Binding Path=CharacterDetails.TimeControl.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="450,345,0,0" VerticalAlignment="Top" Width="234" Maximum="90000" SmallChange="1" Interval="1" Height="28" SourceUpdated="Timexd_SourceUpdated" Minimum="-90000" TickPlacement="BottomRight"/>
-        <Button x:Name="TimeButton" Content="Default Time" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="690,345,0,0" VerticalAlignment="Top" Width="150" Height="28" FontSize="12" Click="TimeButton_Click"/>
-        <mah:NumericUpDown x:Name="TimeControlUpDown" Value="{Binding Path=CharacterDetails.TimeControl.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="450,389,0,0" VerticalAlignment="Top" Width="142" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" Interval="1"  TextAlignment="Right" SourceUpdated="Timexd_SourceUpdated" NumericInputMode="Numbers" Maximum="2147483647" Minimum="-2147483648"/>
-        <Label Content="Time Control:" HorizontalAlignment="Left" Margin="360,345,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="TimeButtonLock" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="Time Toggle Switch" Margin="690,390,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"  IsTabStop="False" Checked="TimeButtonLock_Checked" Unchecked="TimeButtonLock_Unchecked" />
-        <Label Content="Lock Time:" HorizontalAlignment="Left" Margin="609,389,0,0" VerticalAlignment="Top" FontSize="14" Height="28"/>
+        <Button Content="Refresh" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="207,442,0,0" VerticalAlignment="Top" Width="85" Click="Button_Click" Height="40"/>
+        <Slider x:Name="Timexd" Value="{Binding Path=CharacterDetails.TimeControl.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="504,344,0,0" VerticalAlignment="Top" Width="234" Maximum="90000" SmallChange="1" Interval="1" Height="28" SourceUpdated="Timexd_SourceUpdated" Minimum="-90000" TickPlacement="BottomRight"/>
+        <Button x:Name="TimeButton" Content="Default Time" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="744,344,0,0" VerticalAlignment="Top" Width="150" Height="28" FontSize="12" Click="TimeButton_Click"/>
+        <mah:NumericUpDown x:Name="TimeControlUpDown" Value="{Binding Path=CharacterDetails.TimeControl.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="504,388,0,0" VerticalAlignment="Top" Width="142" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" Interval="1"  TextAlignment="Right" SourceUpdated="Timexd_SourceUpdated" NumericInputMode="Numbers" Maximum="2147483647" Minimum="-2147483648"/>
+        <Label Content="Time Control:" HorizontalAlignment="Left" Margin="414,344,0,0" VerticalAlignment="Top" Height="28"/>
+        <ToggleButton x:Name="TimeButtonLock" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="Time Toggle Switch" Margin="744,389,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"  IsTabStop="False" Checked="TimeButtonLock_Checked" Unchecked="TimeButtonLock_Unchecked" />
+        <Label Content="Lock Time:" HorizontalAlignment="Left" Margin="663,388,0,0" VerticalAlignment="Top" FontSize="14" Height="28"/>
         <TextBox x:Name="BGMTEXT" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="925,377,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="90" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Text="0" Height="40">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
@@ -139,10 +153,10 @@
             </materialDesign:HintAssist.Hint>
         </TextBox>
         <Button x:Name="ApplyButton" Content="Apply" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="1025,345,0,0" VerticalAlignment="Top" Width="80" Click="ApplyButton_Click" Height="28"/>
-        <ToggleButton x:Name="RenderButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding Path=CharacterDetails.CharacterRender.Activated}" ToolTip="Render Toggle Switch" Margin="578,482,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"  IsTabStop="False" Checked="RenderButton_Checked" Unchecked="RenderButton_Unchecked" />
-        <Label Content="Remove Character Render Limit:" HorizontalAlignment="Left" Margin="368,480,0,0" VerticalAlignment="Top" FontSize="14" Height="28"/>
-        <Button x:Name="Renda" Content="Render 2" HorizontalAlignment="Left" Margin="621,480,0,0" VerticalAlignment="Top" Width="92" Height="28" Click="Renda_Click"/>
-        <Views:WorldFlyOut x:Name="WorldFlyout" Width="667" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Margin="0" Height="530" Padding="0"/>
+        <ToggleButton x:Name="RenderButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding Path=CharacterDetails.CharacterRender.Activated}" ToolTip="Render Toggle Switch" Margin="629,444,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"  IsTabStop="False" Checked="RenderButton_Checked" Unchecked="RenderButton_Unchecked" />
+        <Label Content="Remove Character Render Limit:" HorizontalAlignment="Left" Margin="419,442,0,0" VerticalAlignment="Top" FontSize="14" Height="28"/>
+        <Button x:Name="Renda" Content="Render 2" HorizontalAlignment="Left" Margin="672,442,0,0" VerticalAlignment="Top" Width="92" Height="28" Click="Renda_Click"/>
+        <Views:WorldFlyOut x:Name="WorldFlyout" Width="667" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Margin="0,500,0,0" Height="530" Padding="0"/>
         <Button x:Name="SearchBGM" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="1025,377,0,0" VerticalAlignment="Top" Width="80" Click="SearchBGM_Click" Height="40"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.MusicBGM.freeze}" x:Name="BGMCheckBox" Content="Freeze BGM" HorizontalAlignment="Left" Margin="925,345,0,0" VerticalAlignment="Top" Width="94" Height="28"/>
     </Grid>

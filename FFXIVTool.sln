@@ -1,19 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.28729.10
+VisualStudioVersion = 16.0.29230.47
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FFXIVTool", "FFXIVTool\FFXIVTool.csproj", "{E226AAB7-5918-4E9F-B0EB-8D1AD9AC7BB9}"
-	ProjectSection(ProjectDependencies) = postProject
-		{67CF62F2-4EE4-4517-8826-5FD6DC5CEA6A} = {67CF62F2-4EE4-4517-8826-5FD6DC5CEA6A}
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Release", "Release", "{92AFC387-0D61-4C2B-8450-436D5DF23097}"
 	ProjectSection(SolutionItems) = preProject
 		LICENSE.txt = LICENSE.txt
 		README.txt = README.txt
-		UpdateLog.xml = UpdateLog.xml
-		version.txt = version.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaintCoinach", "lib\SaintCoinach\SaintCoinach\SaintCoinach.csproj", "{8A7D65EB-3DE3-4631-B286-CC73A3126002}"
@@ -22,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotSquish", "lib\SaintCoina
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YamlDotNet", "lib\SaintCoinach\YamlDotNet\YamlDotNet.csproj", "{BF32DE1B-6276-4341-B212-F8862ADBBA7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSToolsUpdater", "SSToolsUpdater\SSToolsUpdater.csproj", "{67CF62F2-4EE4-4517-8826-5FD6DC5CEA6A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSToolUpdater", "SSToolUpdater\SSToolUpdater.csproj", "{A19E57D4-2858-4C84-A916-E4591C8AFCD7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -82,18 +77,18 @@ Global
 		{BF32DE1B-6276-4341-B212-F8862ADBBA7A}.Release-Unsigned|Any CPU.Build.0 = Release-Unsigned|Any CPU
 		{BF32DE1B-6276-4341-B212-F8862ADBBA7A}.Release-Unsigned|x64.ActiveCfg = Release-Unsigned|Any CPU
 		{BF32DE1B-6276-4341-B212-F8862ADBBA7A}.Release-Unsigned|x64.Build.0 = Release-Unsigned|Any CPU
-		{67CF62F2-4EE4-4517-8826-5FD6DC5CEA6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{67CF62F2-4EE4-4517-8826-5FD6DC5CEA6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{67CF62F2-4EE4-4517-8826-5FD6DC5CEA6A}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{67CF62F2-4EE4-4517-8826-5FD6DC5CEA6A}.Debug|x64.Build.0 = Debug|Any CPU
-		{67CF62F2-4EE4-4517-8826-5FD6DC5CEA6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{67CF62F2-4EE4-4517-8826-5FD6DC5CEA6A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{67CF62F2-4EE4-4517-8826-5FD6DC5CEA6A}.Release|x64.ActiveCfg = Release|Any CPU
-		{67CF62F2-4EE4-4517-8826-5FD6DC5CEA6A}.Release|x64.Build.0 = Release|Any CPU
-		{67CF62F2-4EE4-4517-8826-5FD6DC5CEA6A}.Release-Unsigned|Any CPU.ActiveCfg = Release|Any CPU
-		{67CF62F2-4EE4-4517-8826-5FD6DC5CEA6A}.Release-Unsigned|Any CPU.Build.0 = Release|Any CPU
-		{67CF62F2-4EE4-4517-8826-5FD6DC5CEA6A}.Release-Unsigned|x64.ActiveCfg = Release|Any CPU
-		{67CF62F2-4EE4-4517-8826-5FD6DC5CEA6A}.Release-Unsigned|x64.Build.0 = Release|Any CPU
+		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Debug|x64.ActiveCfg = Debug|x64
+		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Debug|x64.Build.0 = Debug|x64
+		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Release|x64.ActiveCfg = Release|x64
+		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Release|x64.Build.0 = Release|x64
+		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Release-Unsigned|Any CPU.ActiveCfg = Release|Any CPU
+		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Release-Unsigned|Any CPU.Build.0 = Release|Any CPU
+		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Release-Unsigned|x64.ActiveCfg = Release|x64
+		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Release-Unsigned|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

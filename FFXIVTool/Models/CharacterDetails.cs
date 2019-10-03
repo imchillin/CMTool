@@ -44,9 +44,24 @@ namespace FFXIVTool.Models
 
 
         [JsonIgnore] public bool IsEnabled { get; set; }
-        [JsonIgnore] public Address<float> GposeMode { get; set; }
+        [JsonIgnore] public bool GposeMode { get; set; }
         [JsonIgnore] public Address<float> CharacterRender { get; set; }
-        [JsonIgnore] public Address<float> TargetMode { get; set; }
+
+		// Target Mode
+		[JsonIgnore] private bool TargetMode { get; set; }
+		[JsonIgnore] private bool GPoseTargetMode { get; set; } = true;
+		[JsonIgnore] public bool TargetModeActive
+		{
+			get => GposeMode ? GPoseTargetMode : TargetMode;
+			set
+			{
+				if (GposeMode)
+					GPoseTargetMode = value;
+				else
+					TargetMode = value;
+			}
+		}
+
         public Address<float> TailSize { get; set; }
         [JsonIgnore] public Address<string> Name { get; set; }
         [JsonIgnore] public Address<string> FCTag { get; set; }
@@ -62,9 +77,14 @@ namespace FFXIVTool.Models
         public Address<float> BustX { get; set; }
         public Address<float> BustY { get; set; }
         public Address<float> BustZ { get; set; }
+
+		// Position.
         [JsonIgnore] public Address<float> X { get; set; }
         [JsonIgnore] public Address<float> Y { get; set; }
         [JsonIgnore] public Address<float> Z { get; set; }
+		// Advance move tool.
+		[JsonIgnore] public bool AdvancedMove { get; set; } = false;
+
         [JsonIgnore] public Address<byte> Head { get; set; }
         [JsonIgnore] public Address<byte> Hair { get; set; }
         [JsonIgnore] public Address<byte> TailType { get; set; }
@@ -101,6 +121,9 @@ namespace FFXIVTool.Models
         [JsonIgnore] public Address<float> CamX { get; set; }
         [JsonIgnore] public Address<float> CamY { get; set; }
         [JsonIgnore] public Address<float> CamZ { get; set; }
+        [JsonIgnore] public Address<float> CamViewX { get; set; }
+        [JsonIgnore] public Address<float> CamViewY { get; set; }
+        [JsonIgnore] public Address<float> CamViewZ { get; set; }
         [JsonIgnore] public Address<float> Max { get; set; }
         [JsonIgnore] public Address<float> Min { get; set; }
         [JsonIgnore] public Address<float> CZoom { get; set; }
@@ -203,7 +226,6 @@ namespace FFXIVTool.Models
         [JsonIgnore] public Address<byte> EntityType { get; set; }
         [JsonIgnore] public Address<int> Territoryxd { get; set; }
         [JsonIgnore] public Address<short> DataPath { get; set; }
-        [JsonIgnore] public Address<byte> DataHead { get; set; }
         [JsonIgnore] public Address<short> NPCName { get; set; }
         [JsonIgnore] public Address<short> NPCModel { get; set; }
         [JsonIgnore] public Address<float> FreezeFacial { get; set; }
@@ -231,8 +253,18 @@ namespace FFXIVTool.Models
         [JsonIgnore] public Address<byte> EmoteIsPlayerFrozen { get; set; }
         [JsonIgnore] public Address<float> AltCheckPlayerFrozen { get; set; }
         [JsonIgnore] public Address<int> MusicBGM { get; set; }
-        public CharacterDetails()
+        [JsonIgnore] public Address<float> CamAngleX { get; set; }
+        [JsonIgnore] public Address<float> CamAngleY { get; set; }
+        [JsonIgnore] public Address<byte> DataHead { get; set; }
+        [JsonIgnore] public float RotateX { get; set; }
+		[JsonIgnore] public float RotateY { get; set; }
+		[JsonIgnore] public float RotateZ { get; set; }
+		[JsonIgnore] public bool RotateFreeze { get; set; }
+
+		public CharacterDetails()
         {
+            CamAngleX = new Address<float>();
+            CamAngleY = new Address<float>();
             MusicBGM = new Address<int>();
             AltCheckPlayerFrozen = new Address<float>();
             EmoteIsPlayerFrozen = new Address<byte>();
@@ -262,7 +294,6 @@ namespace FFXIVTool.Models
             FreezeFacial = new Address<float>();
             Territoryxd = new Address<int>();
             DataPath = new Address<short>();
-            DataHead = new Address<byte>();
             NPCName = new Address<short>();
             NPCModel = new Address<short>();
             ScaleX = new Address<float>();
@@ -376,10 +407,11 @@ namespace FFXIVTool.Models
             CamX = new Address<float>();
             CamY = new Address<float>();
             CamZ = new Address<float>();
+            CamViewX = new Address<float>();
+            CamViewY = new Address<float>();
+            CamViewZ = new Address<float>();
             CameraHeight2 = new Address<float>();
-            GposeMode = new Address<float>();
             CharacterRender = new Address<float>();
-            TargetMode = new Address<float>();
             Wetness = new Address<float>();
             SWetness = new Address<float>();
             Height = new Address<float>();

@@ -36,31 +36,12 @@ namespace FFXIVTool
         string exepath = Directory.GetParent(Assembly.GetExecutingAssembly().Location).FullName;
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
         Version version = Assembly.GetExecutingAssembly().GetName().Version;
-        void subwc_DownloadFileCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
-        {
-            string Newversion = File.ReadAllText(exepath + "\\version.txt").Trim();
-            if (!string.IsNullOrWhiteSpace(Newversion) && version.ToString().Replace(',', '.').CompareTo(Newversion) != 0)
-            {
-                Process p = new Process();
-                p.StartInfo.FileName = exepath + "\\SSToolsUpdater.exe";
-                p.StartInfo.Arguments = "-autolaunch";
-                if (AdminNeeded())
-                    p.StartInfo.Verb = "runas";
-
-                try { p.Start(); Process.GetCurrentProcess().Kill(); }
-                catch { }
-            }
-        }
         public MainWindow()
         {
+			// Call the update method.
+			UpdateProgram();
+
             ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
-            if (File.Exists(exepath + "\\SSToolsUpdater.exe"))
-            {
-                Uri urlv = new Uri("https://raw.githubusercontent.com/KrisanThyme/CMTool/master/version.txt");
-                WebClient wc2 = new WebClient();
-                wc2.DownloadFileAsync(urlv, exepath + "\\version.txt");
-                wc2.DownloadFileCompleted += subwc_DownloadFileCompleted;
-            }
             if (!File.Exists(@"./OffsetSettings.xml"))
             {
                 try
@@ -118,6 +99,33 @@ namespace FFXIVTool
             }
 			InitializeComponent();
         }
+
+		private void UpdateProgram()
+		{
+			// Delete hte old updater file.
+			if (File.Exists(".SSTU.old"))
+				File.Delete(".SSTU.old");
+			try
+			{
+				Process.Start("SSToolUpdater.exe");
+			}
+			catch (Exception)
+			{
+				var result = MessageBox.Show(
+					"Couldn't run the updater. Would you like to visit the releases page to check for a new update manually?",
+					"SSTool", 
+					MessageBoxButton.YesNo, 
+					MessageBoxImage.Error
+				);
+
+				// Launch the web browser to the latest release.
+				if (result == MessageBoxResult.Yes)
+				{
+					Process.Start("https://github.com/KrisanThyme/CMTool/releases/latest");
+				}
+			}
+		}
+
         public bool AdminNeeded()
         {
             try
@@ -140,7 +148,7 @@ namespace FFXIVTool
         }
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            this.Title = "Concept Matrix (CMTool) v" + version;
+            Title = $"Concept Matrix v1.1 (SSTool Dev Build: v{version})";
             DataContext = new MainViewModel();
             var settings = SaveSettings.Default;
             var accentColor = settings.Accent;
@@ -152,21 +160,21 @@ namespace FFXIVTool
             this.Topmost = settings.TopApp;
 			// toggle status
 			(DataContext as MainViewModel).ToggleStatus(settings.TopApp);
-//            if (settings.ReminderTool == false)
-//            {
-//                var msgResult = System.Windows.MessageBox.Show("This is reminder to anyone who may not know that we have a discord or isn't in our discord to know that we have one for reports/support/help and general discussion! If you wish to join click Yes, otherwise click No.", "Reminder!", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes);
-//                if (msgResult == MessageBoxResult.Yes)
-//                {
-//                     
-//                    System.Diagnostics.Process.Start("https://discord.gg/hq3DnBa");
-//                    SaveSettings.Default.ReminderTool = true;
-//                }
-//                else
-//                {
-//                    SaveSettings.Default.ReminderTool = true;
-//                }
-//            }
-            CharacterDetailsView._exdProvider.MakeCharaMakeFeatureList();
+			if (settings.ReminderTool == false)
+			{
+				var msgResult = System.Windows.MessageBox.Show("This is reminder to anyone who may not know that we have a discord or isn't in our discord to know that we have one for reports/support/help and general discussion! If you wish to join click Yes, otherwise click No.", "Reminder!", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes);
+				if (msgResult == MessageBoxResult.Yes)
+				{
+
+					System.Diagnostics.Process.Start("https://discord.gg/hq3DnBa");
+					SaveSettings.Default.ReminderTool = true;
+				}
+				else
+				{
+					SaveSettings.Default.ReminderTool = true;
+				}
+			}
+			CharacterDetailsView._exdProvider.MakeCharaMakeFeatureList();
             CharacterDetailsView._exdProvider.MakeCharaMakeFeatureFacialList();
             CharacterDetailsView._exdProvider.MakeTerritoryTypeList();
         }
@@ -224,9 +232,9 @@ namespace FFXIVTool
             }
         }
 
-        private void DiscordButton_Click(object sender, RoutedEventArgs e)
+        private void TwitterButton_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://twitter.com/KrisanThyme");
+            Process.Start("https://twitter.com/ffxivsstool");
         }
         private void Save_Click(object sender, RoutedEventArgs e)
         {
@@ -1005,20 +1013,19 @@ namespace FFXIVTool
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
-            if (File.Exists(exepath + "\\SSToolsUpdater.exe"))
-            {
-                Uri urlv = new Uri("https://raw.githubusercontent.com/KrisanThyme/CMTool/master/version.txt");
-                WebClient wc2 = new WebClient();
-                wc2.DownloadFileAsync(urlv, exepath + "\\version.txt");
-                wc2.DownloadFileCompleted += subwc_DownloadFileCompleted;
-            }
         }
 
         private void GposeButton_Checked(object sender, RoutedEventArgs e)
         {
-            if (TargetButton.IsChecked == true) TargetButton.IsChecked = false;
             CharacterRefreshButton.IsEnabled = false;
             NPCRefresh.IsEnabled = false;
+
+            MainViewModel.ViewTime.CamX.IsEnabled = true;
+            MainViewModel.ViewTime.CamY.IsEnabled = true;
+            MainViewModel.ViewTime.CamZ.IsEnabled = true;
+            MainViewModel.ViewTime.CamXCheck.IsEnabled = true;
+            MainViewModel.ViewTime.CamYCheck.IsEnabled = true;
+            MainViewModel.ViewTime.CamZCheck.IsEnabled = true;
 
             MainViewModel.ViewTime.HairSelectButton.IsEnabled = false;
             MainViewModel.ViewTime.ModelTypeButton.IsEnabled = false;
@@ -1053,13 +1060,24 @@ namespace FFXIVTool
             MainViewModel.ViewTime2.EquipmentControl.IsOpen = false;
             MainViewModel.ViewTime2.EquipmentControl.AnimatedTabControl.SelectedIndex = -1;
 
-            CharacterDetailsViewModel.baseAddr = MemoryManager.Instance.GposeAddress;
+            CharacterDetailsViewModel.baseAddr = MemoryManager.Instance.GposeEntityOffset;
         }
 
         private void GposeButton_Unchecked(object sender, RoutedEventArgs e)
         {
             CharacterRefreshButton.IsEnabled = true;
             NPCRefresh.IsEnabled = true;
+
+            MainViewModel.ViewTime.CamX.IsEnabled = false;
+            MainViewModel.ViewTime.CamY.IsEnabled = false;
+            MainViewModel.ViewTime.CamZ.IsEnabled = false;
+            MainViewModel.ViewTime.CamXCheck.IsEnabled = false;
+            MainViewModel.ViewTime.CamYCheck.IsEnabled = false;
+            MainViewModel.ViewTime.CamZCheck.IsEnabled = false;
+            CharacterDetails.CamX.freeze = false;
+            CharacterDetails.CamY.freeze = false;
+            CharacterDetails.CamZ.freeze = false;
+
             MainViewModel.ViewTime.HairSelectButton.IsEnabled = true;
             MainViewModel.ViewTime.ModelTypeButton.IsEnabled = true;
             MainViewModel.ViewTime.HighlightcolorSearch.IsEnabled = true;
@@ -1093,7 +1111,6 @@ namespace FFXIVTool
 
         private void TargetButton_Checked(object sender, RoutedEventArgs e)
         {
-            if (GposeButton.IsChecked == true) GposeButton.IsChecked = false;
             CharacterRefreshButton.IsEnabled = false;
             NPCRefresh.IsEnabled = false;
             CharacterDetailsViewModel.baseAddr = MemoryManager.Instance.TargetAddress;
@@ -1107,7 +1124,7 @@ namespace FFXIVTool
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Add(MemoryManager.Instance.BaseAddress, CharacterDetailsViewModel.eOffset);
         }
 
-        private void ActualDiscordButton_Click(object sender, RoutedEventArgs e)
+        private void DiscordButton_Click(object sender, RoutedEventArgs e)
         {
             Process.Start("https://discord.gg/hq3DnBa");
         }

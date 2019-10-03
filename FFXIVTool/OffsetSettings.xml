@@ -3,6 +3,7 @@
   <LastUpdated>5.08</LastUpdated>
   <CameraOffset>1B28530</CameraOffset>
   <GposeOffset>1B28728</GposeOffset>
+  <GposeEntityOffset>1B2B5D0</GposeEntityOffset>
   <AoBOffset>1B29B40</AoBOffset>
   <TargetOffset>1B28738</TargetOffset>
   <TimeOffset>1B0D6F0</TimeOffset>
@@ -82,14 +83,21 @@
     <RBust>17F7</RBust>
     <FacePaint>17F8</FacePaint>
     <FacePaintColor>17F9</FacePaintColor>
-    
-    
+
+    <CamAngleX>134</CamAngleX>
+    <CamAngleY>138</CamAngleY>
     <CameraYAMin>150</CameraYAMin>
     <CameraYAMax>14C</CameraYAMax>
     <CameraHeight2>164</CameraHeight2>
-    <CamX>170</CamX>
-    <CamY>174</CamY>
-    <CamZ>178</CamZ>
+    
+    <CamViewX>170</CamViewX>
+    <CamViewY>174</CamViewY>
+    <CamViewZ>178</CamViewZ>
+    
+    <CamX>A0</CamX>
+    <CamY>A4</CamY>
+    <CamZ>A8</CamZ>
+    
     <Max>120</Max>
     <Min>11C</Min>
     <CZoom>118</CZoom>
@@ -203,6 +211,7 @@
     <GBlue>340</GBlue>
     <GGreens>33C</GGreens>
     <GRed>338</GRed>
-  </Character>
+  
+</Character>
   
 </Settings>

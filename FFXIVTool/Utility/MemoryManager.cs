@@ -45,7 +45,7 @@ namespace FFXIVTool.Utility
         public string GposeFilters { get; set; }
         public string CharacterRenderAddress { get; set; }
         public string CharacterRenderAddress2 { get; set; }
-
+        public string GposeEntityOffset { get; set; }
         /// <summary>
         /// Constructor for the singleton memory manager
         /// </summary>
@@ -95,6 +95,16 @@ namespace FFXIVTool.Utility
         {
             return (long.Parse(a, NumberStyles.HexNumber) + long.Parse(b, NumberStyles.HexNumber)).ToString("X");
         }
+
+		public static string GetAddressString(string baseAddr, params string[] addr)
+		{
+			var ret = baseAddr + ",";
+
+			foreach (var a in addr)
+				ret += a + ",";
+
+			return ret.TrimEnd(',');
+		}
 
         public static string GetAddressString(params string[] addr)
         {

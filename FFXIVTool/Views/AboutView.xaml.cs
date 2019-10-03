@@ -27,7 +27,7 @@ namespace FFXIVTool.Views
         }
         private void GitHubButton_OnClick(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://github.com/KrisanThyme/CMTool");
+            Process.Start("https://github.com/imchillin/SSTool");
         }
         private void DonateButton_OnClick(object sender, RoutedEventArgs e)
         {

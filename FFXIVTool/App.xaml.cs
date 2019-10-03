@@ -125,6 +125,39 @@ namespace FFXIVTool
 
                     path = null;
                 }
+                else
+                {
+                    path = System.IO.Path.Combine(programDir, "Steam", "steamapps", "common", "FINAL FANTASY XIV Online");
+                    if (IsValidGamePath(path))
+                    {
+                        var msgResult = System.Windows.MessageBox.Show(string.Format("Found game installation at \"{0}\". Is this correct?", path), "Confirm game installation", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes);
+                        if (msgResult == MessageBoxResult.Yes)
+                        {
+                            FFXIVTool.Properties.Settings.Default.GamePath = path;
+                            FFXIVTool.Properties.Settings.Default.Save();
+
+                            return true;
+                        }
+                        path = null;
+                    }
+                    else
+                    {
+                        path = System.IO.Path.Combine(programDir, "Steam", "steamapps", "common", "FINAL FANTASY XIV - A Realm Reborn");
+                        if (IsValidGamePath(path))
+                        {
+                            var msgResult = System.Windows.MessageBox.Show(string.Format("Found game installation at \"{0}\". Is this correct?", path), "Confirm game installation", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes);
+                            if (msgResult == MessageBoxResult.Yes)
+                            {
+                                FFXIVTool.Properties.Settings.Default.GamePath = path;
+                                FFXIVTool.Properties.Settings.Default.Save();
+
+                                return true;
+                            }
+                            path = null;
+                        }
+                    }
+                }
+
             }
 
             System.Windows.Forms.FolderBrowserDialog dig = null;

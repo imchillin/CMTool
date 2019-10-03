@@ -305,13 +305,13 @@
                 <RotateTransform Angle="-90" />
             </Button.LayoutTransform>
         </Button>
+        <Button x:Name="SaveGearset" Content="Save Gearset" HorizontalAlignment="Left" Margin="974,455,0,0" VerticalAlignment="Top" Width="122" Click="SaveGearset_Click" IsTabStop="False"/>
+        <Button x:Name="LoadGearSet" Content="Load Gearset" HorizontalAlignment="Left" Margin="837,455,0,0" VerticalAlignment="Top" Width="122" Click="LoadGearSet_Click"/>
         <Views:EquipmentFlyOut x:Name="EquipmentControl" Width="480" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Margin="634,0,0,0"/>
         <Button x:Name="NPC_Click" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="NPC Outfits &amp; Appearances" HorizontalAlignment="Left" Margin="320,455,0,0" VerticalAlignment="Top" Width="298" Height="38" Click="NPC_Click2">
             <Button.LayoutTransform>
                 <RotateTransform Angle="0" />
             </Button.LayoutTransform>
         </Button>
-        <Button x:Name="SaveGearset" Content="Save Gearset" HorizontalAlignment="Left" Margin="974,455,0,0" VerticalAlignment="Top" Width="122" Click="SaveGearset_Click" IsTabStop="False"/>
-        <Button x:Name="LoadGearSet" Content="Load Gearset" HorizontalAlignment="Left" Margin="837,455,0,0" VerticalAlignment="Top" Width="122" Click="LoadGearSet_Click"/>
     </Grid>
 </UserControl>

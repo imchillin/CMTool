@@ -141,7 +141,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\RefreshEntitiesCommand.cs" />
-    <Compile Include="Converters\QuaternionConverter.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\CharacterDetails.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -149,9 +148,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Utility\QuaternionConverter.cs" />
     <Compile Include="Utility\CmpReader.cs" />
     <Compile Include="Utility\DatSaves.cs" />
     <Compile Include="Utility\ExdCsvReader.cs" />
+    <Compile Include="Utility\Extensions.cs" />
     <Compile Include="Utility\Mediator.cs" />
     <Compile Include="Utility\Memory.cs" />
     <Compile Include="Utility\MemoryManager.cs" />

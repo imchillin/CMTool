@@ -1068,5 +1068,49 @@ namespace FFXIVTool.Views
             System.Threading.Tasks.Task.Delay(50).Wait();
             MemoryManager.Instance.MemLib.writeBytes(MemoryManager.Instance.CharacterRenderAddress2, Old);
         }
+        private void CamAngleVC(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            if (CamAngleY.Value.HasValue)
+            {
+                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CamAngleY), "float", CamAngleY.Value.ToString());
+            }
+            CamAngleY.ValueChanged -= CamAngleVC;
+        }
+        private void CamAngleY_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
+        {
+            if (CamAngleY.IsMouseOver || CamAngleY.IsKeyboardFocusWithin)
+            {
+                CamAngleY.ValueChanged -= CamAngleVC;
+                CamAngleY.ValueChanged += CamAngleVC;
+            }
+        }
+        private void CamAngleVC2(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            if (CamAngleX.Value.HasValue)
+            {
+                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CamAngleX), "float", CamAngleX.Value.ToString());
+            }
+            CamAngleX.ValueChanged -= CamAngleVC2;
+        }
+        private void CamAngleX_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
+        {
+            if (CamAngleX.IsMouseOver || CamAngleX.IsKeyboardFocusWithin)
+            {
+                CamAngleX.ValueChanged -= CamAngleVC2;
+                CamAngleX.ValueChanged += CamAngleVC2;
+            }
+        }
+
+        private void SaveCamAngle_Click(object sender, RoutedEventArgs e)
+        {
+            SaveSettings.Default.CamAngleX = (float)CamAngleX.Value;
+            SaveSettings.Default.CamAngleY = (float)CamAngleY.Value;
+        }
+
+        private void LoadCamAngle_Click(object sender, RoutedEventArgs e)
+        {
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CamAngleX), "float", SaveSettings.Default.CamAngleX.ToString());
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CamAngleY), "float", SaveSettings.Default.CamAngleY.ToString());
+        }
     }
 }

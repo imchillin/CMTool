@@ -101,6 +101,13 @@ namespace FFXIVTool.ViewModel
             {
                 ViewTime.ClanBox.Items.Add(CharacterDetailsView._exdProvider.Tribes[i].Name);
             }
+            var TitleSheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Title>();
+            foreach (SaintCoinach.Xiv.Title title in TitleSheet)
+            {
+                string Title = title.Feminine;
+                if (Title.Length <= 0) Title = "No Title";
+                ViewTime.TitleBox.Items.Add(Title);
+            }
         }
        private void LoadSettings()
         {
@@ -134,7 +141,7 @@ namespace FFXIVTool.ViewModel
                 ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
                 using (var HAH = new WebClient())
                 {
-                    xmlStr = HAH.DownloadString(@"https://raw.githubusercontent.com/KrisanThyme/CMTool/master/FFXIVTool/OffsetSettings.xml");
+                    xmlStr = HAH.DownloadString(@"https://raw.githubusercontent.com/imchillin/SSTool/master/FFXIVTool/OffsetSettings.xml");
                 }
                 var serializer = new XmlSerializer(typeof(Settings), "");
                 var xmlDoc = new System.Xml.XmlDocument();
@@ -167,6 +174,7 @@ namespace FFXIVTool.ViewModel
             MemoryManager.Instance.GposeFilters = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.GposeFilters, NumberStyles.HexNumber));
             MemoryManager.Instance.CharacterRenderAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.CharacterRenderOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.CharacterRenderAddress2 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.CharacterRenderOffset2, NumberStyles.HexNumber));
+            MemoryManager.Instance.GposeEntityOffset = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.GposeEntityOffset, NumberStyles.HexNumber));
             while (true)
             {
                 if (worker.CancellationPending)

@@ -19,11 +19,15 @@
     </UserControl.Resources>
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
         <Border BorderBrush="Black" BorderThickness="0,0,1,0" HorizontalAlignment="Left" Height="530" Margin="-110,0,0,0" VerticalAlignment="Top" Width="645"/>
         <CheckBox  IsChecked="{Binding CharacterDetails.FCTag.freeze}" Content="Free Company Tag:" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Style="{StaticResource MaterialDesignTextBox}" x:Name="FCTagBox" HorizontalAlignment="Left" Height="23" Margin="168,35,0,0" Text="{Binding CharacterDetails.FCTag.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="128"  materialDesign:HintAssist.Hint="Free Company Tag" FontSize="10" MaxLength="6"/>
+        <TextBox Style="{StaticResource MaterialDesignTextBox}" x:Name="FCTagBox" HorizontalAlignment="Left" Height="23" Margin="168,35,0,0" Text="{Binding CharacterDetails.FCTag.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="128"  materialDesign:HintAssist.Hint="Free Company Tag" FontSize="11.35" MaxLength="6"/>
         <CheckBox IsChecked="{Binding CharacterDetails.JobIco.freeze}" Content="Job Icon:" HorizontalAlignment="Left" Margin="311,35,0,0" VerticalAlignment="Top" Height="23"/>
-        <ComboBox SelectedIndex="{Binding CharacterDetails.JobIco.value}" HorizontalAlignment="Left" Margin="396,35,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="10">
+        <ComboBox SelectedIndex="{Binding CharacterDetails.JobIco.value}" HorizontalAlignment="Left" Margin="396,35,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="11.35">
             <ComboBoxItem Content="None" Background="{x:Null}"/>
             <ComboBoxItem Content="Gladiator" Background="{x:Null}"/>
             <ComboBoxItem Content="Pugilist" Background="{x:Null}"/>
@@ -69,595 +73,133 @@
             <ComboBoxItem Content="All Roles" Background="{x:Null}"/>
         </ComboBox>
         <CheckBox IsChecked="{Binding CharacterDetails.Title.freeze}" Content="Title:" HorizontalAlignment="Left" Margin="311,5,0,0" VerticalAlignment="Top" Height="23"/>
-        <ComboBox SelectedIndex="{Binding CharacterDetails.Title.value}" HorizontalAlignment="Left" Margin="396,5,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="10">
-            <ComboBoxItem Content="No Title" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Insatiable" Background="{x:Null}"/>
-            <ComboBoxItem Content="The True" Background="{x:Null}"/>
-            <ComboBoxItem Content="Coeurlfist" Background="{x:Null}"/>
-            <ComboBoxItem Content="Ironeater" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Vengeful Lance" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Godsbow" Background="{x:Null}"/>
-            <ComboBoxItem Content="The White" Background="{x:Null}"/>
-            <ComboBoxItem Content="Starcaller" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Exterminator" Background="{x:Null}"/>
-            <ComboBoxItem Content="Notorious Monster Hunter" Background="{x:Null}"/>
-            <ComboBoxItem Content="Honest Gillionaire" Background="{x:Null}"/>
-            <ComboBoxItem Content="Ruthless Gillionaire" Background="{x:Null}"/>
-            <ComboBoxItem Content="Warmonger" Background="{x:Null}"/>
-            <ComboBoxItem Content="Archmage" Background="{x:Null}"/>
-            <ComboBoxItem Content="Builder of the Realm" Background="{x:Null}"/>
-            <ComboBoxItem Content="Provider of the Realm" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Golden Saw" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Golden Anvil" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Golden Hammer" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Golden Leaf" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Golden Hide" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Golden Needle" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Golden Lead" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Golden Ladle" Background="{x:Null}"/>
-            <ComboBoxItem Content="Meadowbreaker" Background="{x:Null}"/>
-            <ComboBoxItem Content="Forestbreaker" Background="{x:Null}"/>
-            <ComboBoxItem Content="Desertbreaker" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Meadow Mines" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Forest Mines" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Desert Mines" Background="{x:Null}"/>
-            <ComboBoxItem Content="Meadowreaper" Background="{x:Null}"/>
-            <ComboBoxItem Content="Forestreaper" Background="{x:Null}"/>
-            <ComboBoxItem Content="Desertreaper" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Meadow Grasses" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Forest Grasses" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Desert Grasses" Background="{x:Null}"/>
-            <ComboBoxItem Content="Meadowcaster" Background="{x:Null}"/>
-            <ComboBoxItem Content="Forestcaster" Background="{x:Null}"/>
-            <ComboBoxItem Content="Desertcaster" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Meadow Pools" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Forest Pools" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Desert Pools" Background="{x:Null}"/>
-            <ComboBoxItem Content="Carrier of the Cauldron" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Assimilator" Background="{x:Null}"/>
-            <ComboBoxItem Content="Seeker of Blood" Background="{x:Null}"/>
-            <ComboBoxItem Content="Seeker of Truth" Background="{x:Null}"/>
-            <ComboBoxItem Content="Seeker of Skill" Background="{x:Null}"/>
-            <ComboBoxItem Content="Seeker of Bounty" Background="{x:Null}"/>
-            <ComboBoxItem Content="Sidestepper" Background="{x:Null}"/>
-            <ComboBoxItem Content="Lord Protector" Background="{x:Null}"/>
-            <ComboBoxItem Content="Lord Creator" Background="{x:Null}"/>
-            <ComboBoxItem Content="Peacemaker" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Last Resort" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Sword of La Noscea" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Sword of the Shroud" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Sword of Thanalan" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Sword of Eorzea" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Shield of La Noscea" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Shield of the Shroud" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Shield of Thanalan" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Shield of Eorzea" Background="{x:Null}"/>
-            <ComboBoxItem Content="Brother of the Broken Blade" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Warden's Wall" Background="{x:Null}"/>
-            <ComboBoxItem Content="Bearer of the Horn" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Uncommitted" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Professional" Background="{x:Null}"/>
-            <ComboBoxItem Content="Inquisitor" Background="{x:Null}"/>
-            <ComboBoxItem Content="Divine Crusher" Background="{x:Null}"/>
-            <ComboBoxItem Content="Stonesplitter" Background="{x:Null}"/>
-            <ComboBoxItem Content="A Kobold's Worst Nightmare" Background="{x:Null}"/>
-            <ComboBoxItem Content="An Ixal's Worst Nightmare" Background="{x:Null}"/>
-            <ComboBoxItem Content="An Amalj'aa's Worst Nightmare" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Guardian of Aleport" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Guardian of Hyrstmill" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Guardian of the Golden Bazaar" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Wind of Aleport" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Wind of Hyrstmill" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Wind of the Golden Bazaar" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Hand of Aleport" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Hand of Hyrstmill" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Hand of the Golden Bazaar" Background="{x:Null}"/>
-            <ComboBoxItem Content="Wild Thing" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Winter Wyrm" Background="{x:Null}"/>
-            <ComboBoxItem Content="Messenger of Love" Background="{x:Null}"/>
-            <ComboBoxItem Content="Royal Seneschal" Background="{x:Null}"/>
-            <ComboBoxItem Content="Dreamseeker" Background="{x:Null}"/>
-            <ComboBoxItem Content="Cascadier" Background="{x:Null}"/>
-            <ComboBoxItem Content="Crystal Bearer" Background="{x:Null}"/>
-            <ComboBoxItem Content="Stormlord" Background="{x:Null}"/>
-            <ComboBoxItem Content="Serpentlord" Background="{x:Null}"/>
-            <ComboBoxItem Content="Flamelord" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Stormsworn" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Serpentsworn" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Flamesworn" Background="{x:Null}"/>
-            <ComboBoxItem Content="Stormcarrier" Background="{x:Null}"/>
-            <ComboBoxItem Content="Serpentcarrier" Background="{x:Null}"/>
-            <ComboBoxItem Content="Flamecarrier" Background="{x:Null}"/>
-            <ComboBoxItem Content="Stormbringer" Background="{x:Null}"/>
-            <ComboBoxItem Content="Serpentbringer" Background="{x:Null}"/>
-            <ComboBoxItem Content="Flamebringer" Background="{x:Null}"/>
-            <ComboBoxItem Content="Featherfoot" Background="{x:Null}"/>
-            <ComboBoxItem Content="A Bo's Best Friend" Background="{x:Null}"/>
-            <ComboBoxItem Content="Lightning" Background="{x:Null}"/>
-            <ComboBoxItem Content="Cavalier" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Wanderer's Shadow" Background="{x:Null}"/>
-            <ComboBoxItem Content="Green Eyes" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Strategist" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Reaper" Background="{x:Null}"/>
-            <ComboBoxItem Content="Dungeon Master" Background="{x:Null}"/>
-            <ComboBoxItem Content="Tempter of Fate" Background="{x:Null}"/>
-            <ComboBoxItem Content="Elite Cascadier" Background="{x:Null}"/>
-            <ComboBoxItem Content="Storm Puppy" Background="{x:Null}"/>
-            <ComboBoxItem Content="Storm Howler" Background="{x:Null}"/>
-            <ComboBoxItem Content="Storm Growler" Background="{x:Null}"/>
-            <ComboBoxItem Content="Storm Hound" Background="{x:Null}"/>
-            <ComboBoxItem Content="Storm Stalker" Background="{x:Null}"/>
-            <ComboBoxItem Content="Storm Chaser" Background="{x:Null}"/>
-            <ComboBoxItem Content="Naago's Friend" Background="{x:Null}"/>
-            <ComboBoxItem Content="Naago's Partner" Background="{x:Null}"/>
-            <ComboBoxItem Content="Wings of Steel" Background="{x:Null}"/>
-            <ComboBoxItem Content="Wings of Fire" Background="{x:Null}"/>
-            <ComboBoxItem Content="Serpent Puppy" Background="{x:Null}"/>
-            <ComboBoxItem Content="Serpent Howler" Background="{x:Null}"/>
-            <ComboBoxItem Content="Serpent Growler" Background="{x:Null}"/>
-            <ComboBoxItem Content="Serpent Hound" Background="{x:Null}"/>
-            <ComboBoxItem Content="Serpent Stalker" Background="{x:Null}"/>
-            <ComboBoxItem Content="Serpent Chaser" Background="{x:Null}"/>
-            <ComboBoxItem Content="Deep Canal Raider" Background="{x:Null}"/>
-            <ComboBoxItem Content="Deep Canal Dweller" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Luckiest of Lords" Background="{x:Null}"/>
-            <ComboBoxItem Content="Crimson Explorer" Background="{x:Null}"/>
-            <ComboBoxItem Content="Flame Puppy" Background="{x:Null}"/>
-            <ComboBoxItem Content="Flame Howler" Background="{x:Null}"/>
-            <ComboBoxItem Content="Flame Growler" Background="{x:Null}"/>
-            <ComboBoxItem Content="Flame Hound" Background="{x:Null}"/>
-            <ComboBoxItem Content="Flame Stalker" Background="{x:Null}"/>
-            <ComboBoxItem Content="Flame Chaser" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Legend" Background="{x:Null}"/>
-            <ComboBoxItem Content="Raubahn's Left Arm" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Blue" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fashion Leader" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Ravenous Wolf" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Alpha Wolf" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Heart of the Party" Background="{x:Null}"/>
-            <ComboBoxItem Content="Brother of Ash" Background="{x:Null}"/>
-            <ComboBoxItem Content="Sylph-Friend" Background="{x:Null}"/>
-            <ComboBoxItem Content="Treasure Hunter" Background="{x:Null}"/>
-            <ComboBoxItem Content="789th Order Champion" Background="{x:Null}"/>
-            <ComboBoxItem Content="Novv Clutchmate" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Ambitious Angler" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Meat Shield" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Meat Axe" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Stalwart Shield" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Stalwart Axe" Background="{x:Null}"/>
-            <ComboBoxItem Content="Frontline Forerunner" Background="{x:Null}"/>
-            <ComboBoxItem Content="Storm Forerunner" Background="{x:Null}"/>
-            <ComboBoxItem Content="Flame Forerunner" Background="{x:Null}"/>
-            <ComboBoxItem Content="Serpent Forerunner" Background="{x:Null}"/>
-            <ComboBoxItem Content="Drone Sniper" Background="{x:Null}"/>
-            <ComboBoxItem Content="Heliodrome Hero" Background="{x:Null}"/>
-            <ComboBoxItem Content="Hunter for Hire" Background="{x:Null}"/>
-            <ComboBoxItem Content="Seeker of Fortune" Background="{x:Null}"/>
-            <ComboBoxItem Content="Seasoned Tracker" Background="{x:Null}"/>
-            <ComboBoxItem Content="Bounty Hunter" Background="{x:Null}"/>
-            <ComboBoxItem Content="Soldier of Fortune" Background="{x:Null}"/>
-            <ComboBoxItem Content="Captain of the Hunt" Background="{x:Null}"/>
-            <ComboBoxItem Content="Rafflesia Reaper" Background="{x:Null}"/>
-            <ComboBoxItem Content="Melusine Mauler" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Avatar" Background="{x:Null}"/>
-            <ComboBoxItem Content="Domitor" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Disassembler" Background="{x:Null}"/>
-            <ComboBoxItem Content="Eversharp" Background="{x:Null}"/>
-            <ComboBoxItem Content="Bearer of the Coffer" Background="{x:Null}"/>
-            <ComboBoxItem Content="Defender of Eorzea" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Postman" Background="{x:Null}"/>
-            <ComboBoxItem Content="Ehcatl Blackguard" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Negotiator" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Final Witness" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of Dragons Deep" Background="{x:Null}"/>
-            <ComboBoxItem Content="Master Caster" Background="{x:Null}"/>
-            <ComboBoxItem Content="The New Sun" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Shadow" Background="{x:Null}"/>
-            <ComboBoxItem Content="Icebreaker" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Silver Lining" Background="{x:Null}"/>
-            <ComboBoxItem Content="Gentleman" Background="{x:Null}"/>
-            <ComboBoxItem Content="Cupid" Background="{x:Null}"/>
-            <ComboBoxItem Content="Tamer of Steeds" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Unsevered" Background="{x:Null}"/>
-            <ComboBoxItem Content="Slaughterhouse" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Hand of Mercy" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Light in Hand" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Light of the Land" Background="{x:Null}"/>
-            <ComboBoxItem Content="Z" Background="{x:Null}"/>
-            <ComboBoxItem Content="Golemancer" Background="{x:Null}"/>
-            <ComboBoxItem Content="Gambler" Background="{x:Null}"/>
-            <ComboBoxItem Content="High Roller" Background="{x:Null}"/>
-            <ComboBoxItem Content="Chocobo Breeder" Background="{x:Null}"/>
-            <ComboBoxItem Content="Chocobo Trainer" Background="{x:Null}"/>
-            <ComboBoxItem Content="Bug Boy" Background="{x:Null}"/>
-            <ComboBoxItem Content="Senior Jockey" Background="{x:Null}"/>
-            <ComboBoxItem Content="Veteran Jockey" Background="{x:Null}"/>
-            <ComboBoxItem Content="The First Across" Background="{x:Null}"/>
-            <ComboBoxItem Content="Deck Holder" Background="{x:Null}"/>
-            <ComboBoxItem Content="Deck Hoarder" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Trinity" Background="{x:Null}"/>
-            <ComboBoxItem Content="Duelist" Background="{x:Null}"/>
-            <ComboBoxItem Content="Keymaster" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Fungah" Background="{x:Null}"/>
-            <ComboBoxItem Content="Moneybags" Background="{x:Null}"/>
-            <ComboBoxItem Content="Raiser of Mountains" Background="{x:Null}"/>
-            <ComboBoxItem Content="Bearer of the Torch" Background="{x:Null}"/>
-            <ComboBoxItem Content="Postmaster" Background="{x:Null}"/>
-            <ComboBoxItem Content="Half-boiled Hero" Background="{x:Null}"/>
-            <ComboBoxItem Content="Unbeliever" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Redeemed" Background="{x:Null}"/>
-            <ComboBoxItem Content="Nidhogg Slayer" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Silver Fuller" Background="{x:Null}"/>
-            <ComboBoxItem Content="Imperial Nuisance" Background="{x:Null}"/>
-            <ComboBoxItem Content="Under-archon" Background="{x:Null}"/>
-            <ComboBoxItem Content="The End of Ascalon" Background="{x:Null}"/>
-            <ComboBoxItem Content="Snake in the Grass" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Oathkeeper" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the 14th Chakra" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Mythril Heart" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Azure Dragoon" Background="{x:Null}"/>
-            <ComboBoxItem Content="Skysinger" Background="{x:Null}"/>
-            <ComboBoxItem Content="Pure White" Background="{x:Null}"/>
-            <ComboBoxItem Content="Annihilator" Background="{x:Null}"/>
-            <ComboBoxItem Content="Dreadspawn" Background="{x:Null}"/>
-            <ComboBoxItem Content="Nymian Marine" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Darkest Shadow" Background="{x:Null}"/>
-            <ComboBoxItem Content="Blackblood" Background="{x:Null}"/>
-            <ComboBoxItem Content="Liberator" Background="{x:Null}"/>
-            <ComboBoxItem Content="Stargazer" Background="{x:Null}"/>
-            <ComboBoxItem Content="Illuminati Quencher" Background="{x:Null}"/>
-            <ComboBoxItem Content="Finder of False Gods" Background="{x:Null}"/>
-            <ComboBoxItem Content="Lighter than Air" Background="{x:Null}"/>
-            <ComboBoxItem Content="(Blank)" Background="{x:Null}"/>
-            <ComboBoxItem Content="Grandmaster of War" Background="{x:Null}"/>
-            <ComboBoxItem Content="Grandmaster of Magic" Background="{x:Null}"/>
-            <ComboBoxItem Content="Dark Driver" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Stalwart Sword" Background="{x:Null}"/>
-            <ComboBoxItem Content="Keeper of Knowledge" Background="{x:Null}"/>
-            <ComboBoxItem Content="Canal Dweller" Background="{x:Null}"/>
-            <ComboBoxItem Content="Canal Lord" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Necromancer" Background="{x:Null}"/>
-            <ComboBoxItem Content="(Blank)" Background="{x:Null}"/>
-            <ComboBoxItem Content="Grandmaster of the Hand" Background="{x:Null}"/>
-            <ComboBoxItem Content="Grandmaster of the Land" Background="{x:Null}"/>
-            <ComboBoxItem Content="Molder of Masterpieces" Background="{x:Null}"/>
-            <ComboBoxItem Content="Amasser of Masterpieces" Background="{x:Null}"/>
-            <ComboBoxItem Content="Business Associate" Background="{x:Null}"/>
-            <ComboBoxItem Content="Master Carpenter" Background="{x:Null}"/>
-            <ComboBoxItem Content="Master Blacksmith" Background="{x:Null}"/>
-            <ComboBoxItem Content="Master Armorer" Background="{x:Null}"/>
-            <ComboBoxItem Content="Master Goldsmith" Background="{x:Null}"/>
-            <ComboBoxItem Content="Master Leatherworker" Background="{x:Null}"/>
-            <ComboBoxItem Content="Master Weaver" Background="{x:Null}"/>
-            <ComboBoxItem Content="Master Alchemist" Background="{x:Null}"/>
-            <ComboBoxItem Content="Master Culinarian" Background="{x:Null}"/>
-            <ComboBoxItem Content="Master Miner" Background="{x:Null}"/>
-            <ComboBoxItem Content="Master Botanist" Background="{x:Null}"/>
-            <ComboBoxItem Content="Master Fisher" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Fortunate" Background="{x:Null}"/>
-            <ComboBoxItem Content="Good Samaritan" Background="{x:Null}"/>
-            <ComboBoxItem Content="Minion Collector" Background="{x:Null}"/>
-            <ComboBoxItem Content="Minion Master" Background="{x:Null}"/>
-            <ComboBoxItem Content="Mammeteer" Background="{x:Null}"/>
-            <ComboBoxItem Content="Prince of Verminion" Background="{x:Null}"/>
-            <ComboBoxItem Content="Lord of Verminion" Background="{x:Null}"/>
-            <ComboBoxItem Content="House Fortemps Knight" Background="{x:Null}"/>
-            <ComboBoxItem Content="Sky Pirate" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Noumenon" Background="{x:Null}"/>
-            <ComboBoxItem Content="Sundrop Dancer" Background="{x:Null}"/>
-            <ComboBoxItem Content="Myth Breaker" Background="{x:Null}"/>
-            <ComboBoxItem Content="Veteran Explorer" Background="{x:Null}"/>
-            <ComboBoxItem Content="Special Advisor" Background="{x:Null}"/>
-            <ComboBoxItem Content="Notorious Monster Slayer" Background="{x:Null}"/>
-            <ComboBoxItem Content="Hungry Wolf" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Devourer" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Unmoving" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Unrelenting" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Unseen" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Unleashed" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Undamaged" Background="{x:Null}"/>
-            <ComboBoxItem Content="Mentor" Background="{x:Null}"/>
-            <ComboBoxItem Content="Mentor of Mentors" Background="{x:Null}"/>
-            <ComboBoxItem Content="Carrier of the Kettle" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Gear of Change" Background="{x:Null}"/>
-            <ComboBoxItem Content="Allthoughts" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Newmind" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Dragonsong" Background="{x:Null}"/>
-            <ComboBoxItem Content="Polis Raider" Background="{x:Null}"/>
-            <ComboBoxItem Content="Polis Dweller" Background="{x:Null}"/>
-            <ComboBoxItem Content="Polis Lord" Background="{x:Null}"/>
-            <ComboBoxItem Content="Pom Friend" Background="{x:Null}"/>
-            <ComboBoxItem Content="Leader of the Pack" Background="{x:Null}"/>
-            <ComboBoxItem Content="Beta Wolf" Background="{x:Null}"/>
-            <ComboBoxItem Content="Hunter Wolf" Background="{x:Null}"/>
-            <ComboBoxItem Content="Bronze Wolf" Background="{x:Null}"/>
-            <ComboBoxItem Content="Silver Wolf" Background="{x:Null}"/>
-            <ComboBoxItem Content="Gold Wolf" Background="{x:Null}"/>
-            <ComboBoxItem Content="Platinum Wolf" Background="{x:Null}"/>
-            <ComboBoxItem Content="Diamond Wolf" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the First Pack" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Second Pack" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Hungry Pack" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Bronze Pack" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Silver Pack" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Gold Pack" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Platinum Pack" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Diamond Pack" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Knight of Glory" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Chief Mourner" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Wings of Time" Background="{x:Null}"/>
-            <ComboBoxItem Content="Surrenderer of Souls" Background="{x:Null}"/>
-            <ComboBoxItem Content="Khloe's Friend" Background="{x:Null}"/>
-            <ComboBoxItem Content="Khloe's Best Friend" Background="{x:Null}"/>
-            <ComboBoxItem Content="Hero of Gelmorra" Background="{x:Null}"/>
-            <ComboBoxItem Content="Lightbringer" Background="{x:Null}"/>
-            <ComboBoxItem Content="Lonely Explorer" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Lucky" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Sixth Sense" Background="{x:Null}"/>
-            <ComboBoxItem Content="Corpse Dancer" Background="{x:Null}"/>
-            <ComboBoxItem Content="Makai Master" Background="{x:Null}"/>
-            <ComboBoxItem Content="Garo" Background="{x:Null}"/>
-            <ComboBoxItem Content="Makai Monk" Background="{x:Null}"/>
-            <ComboBoxItem Content="Barago" Background="{x:Null}"/>
-            <ComboBoxItem Content="Dan" Background="{x:Null}"/>
-            <ComboBoxItem Content="Makai Bard" Background="{x:Null}"/>
-            <ComboBoxItem Content="Makai Black Mage" Background="{x:Null}"/>
-            <ComboBoxItem Content="Makai White Mage" Background="{x:Null}"/>
-            <ComboBoxItem Content="Zero" Background="{x:Null}"/>
-            <ComboBoxItem Content="Makai Summoner" Background="{x:Null}"/>
-            <ComboBoxItem Content="Makai Scholar" Background="{x:Null}"/>
-            <ComboBoxItem Content="Kiba" Background="{x:Null}"/>
-            <ComboBoxItem Content="Makai Machinist" Background="{x:Null}"/>
-            <ComboBoxItem Content="Makai Astrologian" Background="{x:Null}"/>
-            <ComboBoxItem Content="Moonlifter" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Finest Pupil's Ally" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fatewalker" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Holy Body" Background="{x:Null}"/>
-            <ComboBoxItem Content="Gigi's Best Friend" Background="{x:Null}"/>
-            <ComboBoxItem Content="Tamer of the Undying Flame" Background="{x:Null}"/>
-            <ComboBoxItem Content="Mortal Fist" Background="{x:Null}"/>
-            <ComboBoxItem Content="Rhalgr's Right Fist" Background="{x:Null}"/>
-            <ComboBoxItem Content="Tablesetter" Background="{x:Null}"/>
-            <ComboBoxItem Content="Halone's Cup Bearer" Background="{x:Null}"/>
-            <ComboBoxItem Content="Zhloe's Friend" Background="{x:Null}"/>
-            <ComboBoxItem Content="Zhloe's Best Friend" Background="{x:Null}"/>
-            <ComboBoxItem Content="Survivor of the Song" Background="{x:Null}"/>
-            <ComboBoxItem Content="Ijin Traveler" Background="{x:Null}"/>
-            <ComboBoxItem Content="Confederate" Background="{x:Null}"/>
-            <ComboBoxItem Content="Adversary" Background="{x:Null}"/>
-            <ComboBoxItem Content="Steppe Warrior" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Returned" Background="{x:Null}"/>
-            <ComboBoxItem Content="Lyse's Right Fist" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Liberator" Background="{x:Null}"/>
-            <ComboBoxItem Content="Deltascape Deleter" Background="{x:Null}"/>
-            <ComboBoxItem Content="Ul Cup Champion" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Fistful" Background="{x:Null}"/>
-            <ComboBoxItem Content="Loved by the Axe" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Blood Dragoon" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the True Autumn" Background="{x:Null}"/>
-            <ComboBoxItem Content="Padjal Protector" Background="{x:Null}"/>
-            <ComboBoxItem Content="Gembreaker" Background="{x:Null}"/>
-            <ComboBoxItem Content="The First Caller" Background="{x:Null}"/>
-            <ComboBoxItem Content="Keeper of the Lilacs" Background="{x:Null}"/>
-            <ComboBoxItem Content="Eorzean Ninja" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Swirling Abyss" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Howler" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Eastern Skies" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Red" Background="{x:Null}"/>
-            <ComboBoxItem Content="Muso" Background="{x:Null}"/>
-            <ComboBoxItem Content="God of War" Background="{x:Null}"/>
-            <ComboBoxItem Content="God of Magic" Background="{x:Null}"/>
-            <ComboBoxItem Content="God of the Hand" Background="{x:Null}"/>
-            <ComboBoxItem Content="God of the Land" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Longest Hunt" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Endless Hunt" Background="{x:Null}"/>
-            <ComboBoxItem Content="Thrillseeker" Background="{x:Null}"/>
-            <ComboBoxItem Content="Ultimate Thrillseeker" Background="{x:Null}"/>
-            <ComboBoxItem Content="Canal Raider" Background="{x:Null}"/>
-            <ComboBoxItem Content="Hiruko Hunter" Background="{x:Null}"/>
-            <ComboBoxItem Content="Heavenly Gate Crasher" Background="{x:Null}"/>
-            <ComboBoxItem Content="True Hero" Background="{x:Null}"/>
-            <ComboBoxItem Content="Lone Hero" Background="{x:Null}"/>
-            <ComboBoxItem Content="Hoarder" Background="{x:Null}"/>
-            <ComboBoxItem Content="Vanguard" Background="{x:Null}"/>
-            <ComboBoxItem Content="Kurenai's Best Friend" Background="{x:Null}"/>
-            <ComboBoxItem Content="Kurenai's Partner" Background="{x:Null}"/>
-            <ComboBoxItem Content="Under the Moonlight" Background="{x:Null}"/>
-            <ComboBoxItem Content="Siltwater Socialite" Background="{x:Null}"/>
-            <ComboBoxItem Content="Matchmaker" Background="{x:Null}"/>
-            <ComboBoxItem Content="Eorzean Ninja Warrior" Background="{x:Null}"/>
-            <ComboBoxItem Content="Calamatologist" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Ultimate Legend" Background="{x:Null}"/>
-            <ComboBoxItem Content="Monster Hunter" Background="{x:Null}"/>
-            <ComboBoxItem Content="FRC 2018 Champion" Background="{x:Null}"/>
-            <ComboBoxItem Content="FRC 2018 Finalist" Background="{x:Null}"/>
-            <ComboBoxItem Content="FRC 2018 Ranker" Background="{x:Null}"/>
-            <ComboBoxItem Content="Prelude in Violet" Background="{x:Null}"/>
-            <ComboBoxItem Content="Philanthropist" Background="{x:Null}"/>
-            <ComboBoxItem Content="Altar Boy" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Devout" Background="{x:Null}"/>
-            <ComboBoxItem Content="Invoker of Gods" Background="{x:Null}"/>
-            <ComboBoxItem Content="Grandmaster Caster" Background="{x:Null}"/>
-            <ComboBoxItem Content="Kyubi Tamer" Background="{x:Null}"/>
-            <ComboBoxItem Content="Mahjong Enthusiast" Background="{x:Null}"/>
-            <ComboBoxItem Content="Mahjong Master" Background="{x:Null}"/>
-            <ComboBoxItem Content="Little Piggy" Background="{x:Null}"/>
-            <ComboBoxItem Content="Tough Customer" Background="{x:Null}"/>
-            <ComboBoxItem Content="Blue Blood" Background="{x:Null}"/>
-            <ComboBoxItem Content="Mask of the Blue" Background="{x:Null}"/>
-            <ComboBoxItem Content="Perfect Blue" Background="{x:Null}"/>
-            <ComboBoxItem Content="Eurekan Explorer" Background="{x:Null}"/>
-            <ComboBoxItem Content="A Requiem For Heroes" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Soboro" Background="{x:Null}"/>
-            <ComboBoxItem Content="Kageyama Killer" Background="{x:Null}"/>
-            <ComboBoxItem Content="Kingsglaive" Background="{x:Null}"/>
-            <ComboBoxItem Content="Lord of the Fetch" Background="{x:Null}"/>
-            <ComboBoxItem Content="Soul of War" Background="{x:Null}"/>
-            <ComboBoxItem Content="Soul of Magic" Background="{x:Null}"/>
-            <ComboBoxItem Content="Soul of the Craft" Background="{x:Null}"/>
-            <ComboBoxItem Content="Soul of the Harvest" Background="{x:Null}"/>
-            <ComboBoxItem Content="Outlander" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Fae-touched" Background="{x:Null}"/>
-            <ComboBoxItem Content="Seeker of Hidden Truths" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of the Sunless Sea" Background="{x:Null}"/>
-            <ComboBoxItem Content="Enemy of Innocence" Background="{x:Null}"/>
-            <ComboBoxItem Content="Shadowbringer" Background="{x:Null}"/>
-            <ComboBoxItem Content="Sworn Protector" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Heart's Beat" Background="{x:Null}"/>
-            <ComboBoxItem Content="Living Memory" Background="{x:Null}"/>
-            <ComboBoxItem Content="Bulwark between Worlds" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Transcendent" Background="{x:Null}"/>
-            <ComboBoxItem Content="Worldcleaver" Background="{x:Null}"/>
-            <ComboBoxItem Content="Bolt from the Black" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Song upon the Wind" Background="{x:Null}"/>
-            <ComboBoxItem Content="Firstblessed" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of Stranger Shadow" Background="{x:Null}"/>
-            <ComboBoxItem Content="Farcaller" Background="{x:Null}"/>
-            <ComboBoxItem Content="Knower of Twin Worlds" Background="{x:Null}"/>
-            <ComboBoxItem Content="Shadow of the Other" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Boundless Dark" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Shot Heard Across Worlds" Background="{x:Null}"/>
-            <ComboBoxItem Content="Distant Stargazer" Background="{x:Null}"/>
-            <ComboBoxItem Content="Dualistic Duelist" Background="{x:Null}"/>
-            <ComboBoxItem Content="Samurai in a Strange Land" Background="{x:Null}"/>
-            <ComboBoxItem Content="Wandering Vanguard" Background="{x:Null}"/>
-            <ComboBoxItem Content="Riftdancer" Background="{x:Null}"/>
-            <ComboBoxItem Content="Otherworld Smith" Background="{x:Null}"/>
-            <ComboBoxItem Content="Otherworld Artisan" Background="{x:Null}"/>
-            <ComboBoxItem Content="Otherworld Apothecary" Background="{x:Null}"/>
-            <ComboBoxItem Content="Otherworld Seeker" Background="{x:Null}"/>
-            <ComboBoxItem Content="Otherworld Angler" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Multifaceted" Background="{x:Null}"/>
-            <ComboBoxItem Content="Trusted Friend" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Invisible Hand" Background="{x:Null}"/>
-            <ComboBoxItem Content="Charming Brute" Background="{x:Null}"/>
-            <ComboBoxItem Content="The Fabulously Feral" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of Unyielding Oath" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of Unyielding Steel" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of Unyielding Principle" Background="{x:Null}"/>
-            <ComboBoxItem Content="Of Unyielding Lealty" Background="{x:Null}"/>
-            <ComboBoxItem Content="Dungeon Raider" Background="{x:Null}"/>
-            <ComboBoxItem Content="Dungeon Dweller" Background="{x:Null}"/>
-            <ComboBoxItem Content="Dungeon Lord" Background="{x:Null}"/>
-        </ComboBox>
+        <ComboBox x:Name="TitleBox" SelectedIndex="{Binding CharacterDetails.Title.value}" HorizontalAlignment="Left" Margin="396,5,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="11.35"/>
         <Border BorderBrush="Black" BorderThickness="0,1,0,0" HorizontalAlignment="Left" Height="462" Margin="0,68,0,0" VerticalAlignment="Top" Width="535"/>
         <CheckBox  IsChecked="{Binding CharacterDetails.Name.freeze}" Content="Name:" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Style="{StaticResource MaterialDesignTextBox}" x:Name="NameBox" HorizontalAlignment="Left" Height="23" Margin="168,5,0,0" Text="{Binding CharacterDetails.Name.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="128"  materialDesign:HintAssist.Hint="Name" KeyUp="NameBox_KeyUp" FontSize="10"/>
+        <TextBox Style="{StaticResource MaterialDesignTextBox}" x:Name="NameBox" HorizontalAlignment="Left" Height="23" Margin="168,5,0,0" Text="{Binding CharacterDetails.Name.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="128"  materialDesign:HintAssist.Hint="Name" KeyUp="NameBox_KeyUp" FontSize="11.35"/>
         <CheckBox IsChecked="{Binding CharacterDetails.Race.freeze}" Content="Race:" HorizontalAlignment="Left" Margin="10,77.118,0,0" VerticalAlignment="Top" Height="23"/>
-        <ComboBox x:Name="RaceBox" SelectedIndex="{Binding CharacterDetails.Race.value}" HorizontalAlignment="Left" Margin="168,77.118,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="10"/>
+        <ComboBox x:Name="RaceBox" SelectedIndex="{Binding CharacterDetails.Race.value}" HorizontalAlignment="Left" Margin="168,77.118,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="11.35"/>
         <CheckBox IsChecked="{Binding CharacterDetails.Clan.freeze}" Content="Clan:" HorizontalAlignment="Left" Margin="10,107.118,0,0" VerticalAlignment="Top" Height="23"/>
-        <ComboBox x:Name="ClanBox" SelectedIndex="{Binding CharacterDetails.Clan.value}" HorizontalAlignment="Left" Margin="168,107.118,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="10"/>
+        <ComboBox x:Name="ClanBox" SelectedIndex="{Binding CharacterDetails.Clan.value}" HorizontalAlignment="Left" Margin="168,107.118,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="11.35"/>
         <CheckBox IsChecked="{Binding CharacterDetails.Gender.freeze}" Content="Gender:" HorizontalAlignment="Left" Margin="10,137.118,0,0" VerticalAlignment="Top" Height="23"/>
-        <ComboBox SelectedIndex="{Binding CharacterDetails.Gender.value}" HorizontalAlignment="Left" Margin="168,137.118,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="10">
+        <ComboBox SelectedIndex="{Binding CharacterDetails.Gender.value}" HorizontalAlignment="Left" Margin="168,137.118,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="11.35">
             <ComboBoxItem Content="Male" Background="{x:Null}"/>
             <ComboBoxItem Content="Female" Background="{x:Null}"/>
         </ComboBox>
         <CheckBox IsChecked="{Binding CharacterDetails.BodyType.freeze}" Content="Body Type:" HorizontalAlignment="Left" Margin="311,137.118,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="23" Margin="469,137.118,0,0" Text="{Binding CharacterDetails.BodyType.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" PreviewTextInput="DigitCheckInput" FontSize="10"/>
+        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="23" Margin="469,137.118,0,0" Text="{Binding CharacterDetails.BodyType.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" PreviewTextInput="DigitCheckInput" FontSize="11.35"/>
         <CheckBox IsChecked="{Binding CharacterDetails.RHeight.freeze}" Content="Height:" HorizontalAlignment="Left" Margin="311,77.118,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="23" Margin="469,77.118,0,0" Text="{Binding CharacterDetails.RHeight.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" PreviewTextInput="DigitCheckInput" FontSize="10"/>
+        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="23" Margin="469,77.118,0,0" Text="{Binding CharacterDetails.RHeight.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" PreviewTextInput="DigitCheckInput" FontSize="11.35"/>
         <CheckBox IsChecked="{Binding CharacterDetails.RBust.freeze}" Content="Bust Size:" HorizontalAlignment="Left" Margin="311,107.118,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="23"  PreviewTextInput="DigitCheckInput"  Margin="469,107.118,0,0" Text="{Binding CharacterDetails.RBust.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="10"/>
+        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="23"  PreviewTextInput="DigitCheckInput"  Margin="469,107.118,0,0" Text="{Binding CharacterDetails.RBust.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35"/>
         <CheckBox IsChecked="{Binding CharacterDetails.Skintone.freeze}" Content="Skintone:" HorizontalAlignment="Left" Margin="10,167.118,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="23"  PreviewTextInput="DigitCheckInput" Margin="168,167.118,0,0" Text="{Binding CharacterDetails.Skintone.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="10"/>
+        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="23"  PreviewTextInput="DigitCheckInput" Margin="168,167.118,0,0" Text="{Binding CharacterDetails.Skintone.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35"/>
         <Button x:Name="SkinSearch" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,167.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="SkinSearch_Click"/>
         <CheckBox IsChecked="{Binding CharacterDetails.Head.freeze}" Content="Head Type:" HorizontalAlignment="Left" Margin="311,167.118,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="23"  PreviewTextInput="DigitCheckInput" Margin="469,167.118,0,0" Text="{Binding CharacterDetails.Head.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="10"/>
+        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="23"  PreviewTextInput="DigitCheckInput" Margin="469,167.118,0,0" Text="{Binding CharacterDetails.Head.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35"/>
         <CheckBox IsChecked="{Binding CharacterDetails.Hair.freeze}" Content="Hairstyle:" HorizontalAlignment="Left" Margin="10,407.118,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="23"  PreviewTextInput="DigitCheckInput" Margin="168,407.118,0,0" Text="{Binding CharacterDetails.Hair.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="10"/>
+        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="23"  PreviewTextInput="DigitCheckInput" Margin="168,407.118,0,0" Text="{Binding CharacterDetails.Hair.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35"/>
         <Button x:Name="HairSelectButton" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,407.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="HairSelectButton_Click_1"/>
         <CheckBox IsChecked="{Binding CharacterDetails.HairTone.freeze}" Content="Hair Color:" HorizontalAlignment="Left" Margin="10,437.118,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left"  PreviewTextInput="DigitCheckInput" Height="23" Margin="168,437.118,0,0" Text="{Binding CharacterDetails.HairTone.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="10"/>
+        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left"  PreviewTextInput="DigitCheckInput" Height="23" Margin="168,437.118,0,0" Text="{Binding CharacterDetails.HairTone.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35"/>
         <Button x:Name="HairColorSearch"  Content="View" HorizontalAlignment="Left" materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="231,437.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="HairSelectButton_Click"/>
         <CheckBox IsChecked="{Binding CharacterDetails.Highlights.freeze}" Content="" HorizontalAlignment="Left" Margin="105,467.118,0,0" VerticalAlignment="Top" Height="23"/>
         <ToggleButton x:Name="HighLightButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.Highlights.SpecialActivate}" ToolTip="Highlight Toggle Switch" Margin="130,467.118,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="23" Checked="HighLightButton_Checked" Unchecked="HighLightButton_Unchecked" />
         <CheckBox IsChecked="{Binding CharacterDetails.HighlightTone.freeze}" Content="Highlights:" HorizontalAlignment="Left" Margin="10,467.118,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left"  PreviewTextInput="DigitCheckInput" Height="23" Margin="168,467.118,0,0" Text="{Binding CharacterDetails.HighlightTone.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="10"/>
+        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left"  PreviewTextInput="DigitCheckInput" Height="23" Margin="168,467.118,0,0" Text="{Binding CharacterDetails.HighlightTone.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35"/>
         <Button x:Name="HighlightcolorSearch" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,467.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="HighlightcolorSearch_Click"/>
         <CheckBox IsChecked="{Binding CharacterDetails.Lips.freeze}" Content="Mouth Type:" HorizontalAlignment="Left" Margin="311,317.118,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left"  PreviewTextInput="DigitCheckInput" Height="23" Margin="469,317.118,0,0" Text="{Binding CharacterDetails.Lips.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="10"/>
+        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left"  PreviewTextInput="DigitCheckInput" Height="23" Margin="469,317.118,0,0" Text="{Binding CharacterDetails.Lips.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35"/>
         <CheckBox IsChecked="{Binding CharacterDetails.LipsTone.freeze}" Content="Lips Color:" HorizontalAlignment="Left" Margin="10,287.118,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left"  PreviewTextInput="DigitCheckInput" Height="23" Margin="168,287.118,0,0" Text="{Binding CharacterDetails.LipsTone.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="10"/>
+        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left"  PreviewTextInput="DigitCheckInput" Height="23" Margin="168,287.118,0,0" Text="{Binding CharacterDetails.LipsTone.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35"/>
         <Button x:Name="LipColorSearch" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,287.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="Button_Click"/>
         <CheckBox IsChecked="{Binding CharacterDetails.Jaw.freeze}" Content="Jaw Type:" HorizontalAlignment="Left" Margin="311,197.118,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,197.118,0,0" Text="{Binding CharacterDetails.Jaw.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="10"/>
+        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,197.118,0,0" Text="{Binding CharacterDetails.Jaw.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35"/>
         <CheckBox IsChecked="{Binding CharacterDetails.Nose.freeze}" Content="Nose Type:" HorizontalAlignment="Left" Margin="311,287.118,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,287.118,0,0" Text="{Binding CharacterDetails.Nose.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="10"/>
+        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,287.118,0,0" Text="{Binding CharacterDetails.Nose.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35"/>
         <CheckBox IsChecked="{Binding CharacterDetails.Eye.freeze}" Content="Eye Type:" HorizontalAlignment="Left" Margin="311,257.118,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,257.118,0,0" Text="{Binding CharacterDetails.Eye.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="10"/>
+        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,257.118,0,0" Text="{Binding CharacterDetails.Eye.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35"/>
         <CheckBox IsChecked="{Binding CharacterDetails.EyeBrowType.freeze}" Content="Eyebrows Type:" HorizontalAlignment="Left" Margin="311,227.118,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,227.118,0,0" Text="{Binding CharacterDetails.EyeBrowType.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="10"/>
+        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,227.118,0,0" Text="{Binding CharacterDetails.EyeBrowType.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35"/>
         <CheckBox IsChecked="{Binding CharacterDetails.RightEye.freeze}" Content="Eye Color (Right):" HorizontalAlignment="Left" Margin="10,227.118,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="168,227.118,0,0" Text="{Binding CharacterDetails.RightEye.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="10"/>
+        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="168,227.118,0,0" Text="{Binding CharacterDetails.RightEye.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35"/>
         <Button x:Name="RightEyeSearch" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,227.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="RightEyeSearch_Click"/>
         <CheckBox IsChecked="{Binding CharacterDetails.LeftEye.freeze}" Content="Eye Color (Left):" HorizontalAlignment="Left" Margin="10,197.118,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="168,197.118,0,0" Text="{Binding CharacterDetails.LeftEye.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="10"/>
+        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="168,197.118,0,0" Text="{Binding CharacterDetails.LeftEye.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35"/>
         <Button x:Name="LeftEyeSearch" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,197.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="LeftEyeSearch_Click" BorderThickness="1"/>
         <CheckBox IsChecked="{Binding CharacterDetails.LimbalEyes.freeze}" Content="Limbal/Tattoo Color:" HorizontalAlignment="Left" Margin="10,377.118,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="168,377.118,0,0" Text="{Binding CharacterDetails.LimbalEyes.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="10"/>
+        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="168,377.118,0,0" Text="{Binding CharacterDetails.LimbalEyes.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35"/>
         <Button x:Name="LimbalEyeSearch" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,377.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="LimbalEyeSearch_Click"/>
         <CheckBox IsChecked="{Binding CharacterDetails.FacialFeatures.freeze}" Content="Facial Features:" HorizontalAlignment="Left" Margin="10,257.118,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="168,257.118,0,0" Text="{Binding CharacterDetails.FacialFeatures.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="10"/>
+        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="168,257.118,0,0" Text="{Binding CharacterDetails.FacialFeatures.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35"/>
         <Button x:Name="FacialFeature" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,257.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="FacialFeature_Click"/>
         <CheckBox IsChecked="{Binding CharacterDetails.TailType.freeze}" Content="Ear/Tail Type:" HorizontalAlignment="Left" Margin="311,347.118,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,347.118,0,0" Text="{Binding CharacterDetails.TailType.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="10"/>
+        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,347.118,0,0" Text="{Binding CharacterDetails.TailType.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35"/>
         <CheckBox IsChecked="{Binding CharacterDetails.TailorMuscle.freeze}" Content="Ear/Muscle/Tail Size:" HorizontalAlignment="Left" Margin="311,377.118,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,377.118,0,0" Text="{Binding CharacterDetails.TailorMuscle.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="10"/>
+        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,377.118,0,0" Text="{Binding CharacterDetails.TailorMuscle.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35"/>
         <CheckBox IsChecked="{Binding CharacterDetails.FacePaint.freeze}" Content="Face Paint/Tattoo:" HorizontalAlignment="Left" Margin="10,317.118,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="168,317.118,0,0" Text="{Binding CharacterDetails.FacePaint.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="10"/>
+        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="168,317.118,0,0" Text="{Binding CharacterDetails.FacePaint.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35"/>
         <Button x:Name="FacePaint_Color_Copy" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,317.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="FaceSelectButton_Click"/>
         <CheckBox IsChecked="{Binding CharacterDetails.FacePaintColor.freeze}" Content="Face Paint Color:" HorizontalAlignment="Left" Margin="10,347.118,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="168,347.118,0,0" Text="{Binding CharacterDetails.FacePaintColor.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="10"/>
+        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="168,347.118,0,0" Text="{Binding CharacterDetails.FacePaintColor.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35"/>
         <Button x:Name="FacePaint_Color" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,347.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="FacePaint_Color_Click"/>
         <CheckBox IsChecked="{Binding CharacterDetails.Voices.freeze}" Content="Voice Type:" HorizontalAlignment="Left" Margin="311,407.118,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,407.118,0,0" Text="{Binding CharacterDetails.Voices.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" BorderThickness="0,0,0,1" FontSize="10"/>
+        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,407.118,0,0" Text="{Binding CharacterDetails.Voices.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" BorderThickness="0,0,0,1" FontSize="11.35"/>
         <CheckBox IsChecked="{Binding CharacterDetails.ModelType.freeze}" Content="Model Type:" HorizontalAlignment="Left" Margin="311,437.118,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,437.118,0,0" Text="{Binding CharacterDetails.ModelType.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="10"/>
+        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,437.118,0,0" Text="{Binding CharacterDetails.ModelType.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35"/>
         <Button x:Name="ModelTypeButton" Content="Model List" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="311,467.118,0,0" VerticalAlignment="Top" Width="213" Height="23" Click="ModelTypeButton_Click"/>
         <Button Content="Randomize Appearance" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="10,497.118,0,0" VerticalAlignment="Top" Width="514" Click="Button_Click_1" Height="23"/>
         <CheckBox IsChecked="{Binding CharacterDetails.Height.freeze}" Content="Model Scale:" HorizontalAlignment="Left" Margin="545,35,0,0" VerticalAlignment="Top" Height="28"/>
-        <mah:NumericUpDown Maximum="99999" x:Name="Height2x" Value="{Binding CharacterDetails.Height.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,35,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Minimum="0.0001" SourceUpdated="Height2x_SourceUpdated" Interval="0.01" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="10" FontFamily="Segoe UI"/>
-        <Slider x:Name="HeightSlider" Value="{Binding CharacterDetails.Height.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="797.947,35,0,0" VerticalAlignment="Top" Width="120" IsMoveToPointEnabled="True" TickFrequency="0.1" Maximum="30" LargeChange="0.1" SourceUpdated="Height2x_SourceUpdated" Height="28" TickPlacement="BottomRight" />
+        <mah:NumericUpDown Maximum="99999" x:Name="Height2x" Value="{Binding CharacterDetails.Height.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,35,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Minimum="0.0001" SourceUpdated="Height2x_SourceUpdated" Interval="0.01" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
+        <Slider x:Name="HeightSlider" Value="{Binding CharacterDetails.Height.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="798,40,0,0" VerticalAlignment="Top" Width="120" IsMoveToPointEnabled="True" TickFrequency="0.1" Maximum="30" LargeChange="0.1" SourceUpdated="Height2x_SourceUpdated" Height="28" />
         <CheckBox IsChecked="{Binding CharacterDetails.BustX.freeze}" Content="Bust X Scale:" HorizontalAlignment="Left" Margin="545,65,0,0" VerticalAlignment="Top" Height="28"/>
-        <mah:NumericUpDown x:Name="BustXUpDown" Value="{Binding CharacterDetails.BustX.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,65,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Minimum="0" SourceUpdated="BustXUpDown_SourceUpdated" Interval="0.01" TextAlignment="Right" MinHeight="0" MinWidth="0" Height="28" FontSize="10" FontFamily="Segoe UI"/>
-        <Slider x:Name="BustXSlider" Value="{Binding CharacterDetails.BustX.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="797.947,65,0,0" VerticalAlignment="Top" Width="120" IsMoveToPointEnabled="True" TickFrequency="0.1" Maximum="30" LargeChange="0.1" SourceUpdated="BustXUpDown_SourceUpdated" Height="28" TickPlacement="BottomRight" />
+        <mah:NumericUpDown x:Name="BustXUpDown" Value="{Binding CharacterDetails.BustX.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,65,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Minimum="0" SourceUpdated="BustXUpDown_SourceUpdated" Interval="0.01" TextAlignment="Right" MinHeight="0" MinWidth="0" Height="28" FontSize="11.35" FontFamily="Segoe UI"/>
+        <Slider x:Name="BustXSlider" Value="{Binding CharacterDetails.BustX.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="798,70,0,0" VerticalAlignment="Top" Width="120" IsMoveToPointEnabled="True" TickFrequency="0.1" Maximum="30" LargeChange="0.1" SourceUpdated="BustXUpDown_SourceUpdated" Height="28" />
         <CheckBox IsChecked="{Binding CharacterDetails.BustY.freeze}" Content="Bust Y Scale:" HorizontalAlignment="Left" Margin="545,95,0,0" VerticalAlignment="Top" Height="28"/>
-        <mah:NumericUpDown x:Name="BustYUpDown" Value="{Binding CharacterDetails.BustY.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,95,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Minimum="0" Interval="0.01" SourceUpdated="BustYUpDown_SourceUpdated" TextAlignment="Right" MinHeight="0" MinWidth="0" Height="28" FontSize="10" FontFamily="Segoe UI"/>
-        <Slider x:Name="BustYSlider" Value="{Binding CharacterDetails.BustY.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="797.947,95,0,0" VerticalAlignment="Top" Width="120" IsMoveToPointEnabled="True" TickFrequency="0.1" Maximum="30" LargeChange="0.1" SourceUpdated="BustYUpDown_SourceUpdated" Height="28" TickPlacement="BottomRight" />
+        <mah:NumericUpDown x:Name="BustYUpDown" Value="{Binding CharacterDetails.BustY.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,95,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Minimum="0" Interval="0.01" SourceUpdated="BustYUpDown_SourceUpdated" TextAlignment="Right" MinHeight="0" MinWidth="0" Height="28" FontSize="11.35" FontFamily="Segoe UI"/>
+        <Slider x:Name="BustYSlider" Value="{Binding CharacterDetails.BustY.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="798,100,0,0" VerticalAlignment="Top" Width="120" IsMoveToPointEnabled="True" TickFrequency="0.1" Maximum="30" LargeChange="0.1" SourceUpdated="BustYUpDown_SourceUpdated" Height="28" />
         <CheckBox IsChecked="{Binding CharacterDetails.BustZ.freeze}" Content="Bust Z Scale:" HorizontalAlignment="Left" Margin="545,125,0,0" VerticalAlignment="Top" Height="28"/>
-        <mah:NumericUpDown x:Name="BustZUpDown" Value="{Binding CharacterDetails.BustZ.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,125,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Minimum="0" Interval="0.01" SourceUpdated="BustZUpDown_SourceUpdated" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="10" FontFamily="Segoe UI"/>
-        <Slider x:Name="BustZSlider" Value="{Binding CharacterDetails.BustZ.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="797.947,125,0,0" VerticalAlignment="Top" Width="120" IsMoveToPointEnabled="True" TickFrequency="0.1" Maximum="30" LargeChange="0.1" SourceUpdated="BustZUpDown_SourceUpdated" Height="28" TickPlacement="BottomRight" />
-        <CheckBox IsChecked="{Binding CharacterDetails.Rotation.freeze}" Content="X Rotation:" HorizontalAlignment="Left" Margin="844,185,0,0" VerticalAlignment="Top" Height="28"/>
-        <mah:NumericUpDown Minimum="-3" Maximum="3" x:Name="RotationUpDown" Value="{Binding CharacterDetails.Rotation.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="938,185,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" SourceUpdated="RotationUpDown_SourceUpdated" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="10" FontFamily="Segoe UI"/>
-        <CheckBox IsChecked="{Binding CharacterDetails.Rotation2.freeze}" Content="Y Rotation:" HorizontalAlignment="Left" Margin="844,215,0,0" VerticalAlignment="Top" Height="28"/>
-        <mah:NumericUpDown Minimum="-3" Maximum="3" x:Name="RotationUpDown2" Value="{Binding CharacterDetails.Rotation2.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="938,215,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" SourceUpdated="RotationUpDown2_SourceUpdated" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="10" FontFamily="Segoe UI"/>
-        <CheckBox IsChecked="{Binding CharacterDetails.Rotation3.freeze}" Content="Z Rotation:" HorizontalAlignment="Left" Margin="844,245,0,0" VerticalAlignment="Top" Height="28"/>
-        <mah:NumericUpDown Minimum="-3" Maximum="3" x:Name="RotationUpDown3" Value="{Binding CharacterDetails.Rotation3.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="938,245,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" SourceUpdated="RotationUpDown3_SourceUpdated" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="10" FontFamily="Segoe UI"/>
-        <CheckBox IsChecked="{Binding CharacterDetails.Rotation4.freeze}" Content="S Rotation:" HorizontalAlignment="Left" Margin="844,275,0,0" VerticalAlignment="Top" Height="28"/>
-        <mah:NumericUpDown Minimum="-3" Maximum="3" x:Name="RotationUpDown4" Value="{Binding CharacterDetails.Rotation4.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="938,275,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" SourceUpdated="RotationUpDown4_SourceUpdated" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="10" FontFamily="Segoe UI"/>
+        <mah:NumericUpDown x:Name="BustZUpDown" Value="{Binding CharacterDetails.BustZ.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,125,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Minimum="0" Interval="0.01"  SourceUpdated="BustZUpDown_SourceUpdated" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
+        <Slider x:Name="BustZSlider" Value="{Binding CharacterDetails.BustZ.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="798,130,0,0" VerticalAlignment="Top" Width="120" IsMoveToPointEnabled="True" TickFrequency="0.1" Maximum="30" LargeChange="0.1" SourceUpdated="BustZUpDown_SourceUpdated" Height="28" />
+
+        <CheckBox IsChecked="{Binding CharacterDetails.RotateFreeze}" Content="" HorizontalAlignment="Left" Margin="844,215,0,0" VerticalAlignment="Top" Height="28" IsEnabled="False"/>
+        <mah:NumericUpDown Minimum="-180" Maximum="180" x:Name="RotationUpDown" Value="{Binding CharacterDetails.RotateX, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="935,215,0,0" VerticalAlignment="Top" Width="145" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.5" SourceUpdated="RotationUpDown_SourceUpdated" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
+
+        <CheckBox IsChecked="{Binding CharacterDetails.RotateFreeze}" Content="" HorizontalAlignment="Left" Margin="844,245,0,0" VerticalAlignment="Top" Height="28" IsEnabled="False"/>
+        <mah:NumericUpDown Minimum="-180" Maximum="180" x:Name="RotationUpDown2" Value="{Binding CharacterDetails.RotateY, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="935,245,0,0" VerticalAlignment="Top" Width="145" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.5" SourceUpdated="RotationUpDown2_SourceUpdated" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
+
+        <CheckBox IsChecked="{Binding CharacterDetails.RotateFreeze}" Content="" HorizontalAlignment="Left" Margin="844,275,0,0" VerticalAlignment="Top" Height="28" IsEnabled="False"/>
+        <mah:NumericUpDown Minimum="-180" Maximum="180" x:Name="RotationUpDown3" Value="{Binding CharacterDetails.RotateZ, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="935,275,0,0" VerticalAlignment="Top" Width="145" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.5" SourceUpdated="RotationUpDown3_SourceUpdated" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
+        <Slider Name="RotationSlider" Value="{Binding CharacterDetails.RotateX, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left"  Margin="938,219,0,0" VerticalAlignment="Top" Width="145" Minimum="-180" Maximum="180" TickFrequency="0.5"  Visibility="Hidden" IsEnabled="False" SourceUpdated="RotationUpDown_SourceUpdated"/>
+        <Slider Name="RotationSlider2" Value="{Binding CharacterDetails.RotateY, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="938,249,0,0" VerticalAlignment="Top" Width="145" Minimum="-180" Maximum="180" TickFrequency="0.5"  Visibility="Hidden" IsEnabled="False" SourceUpdated="RotationUpDown2_SourceUpdated"/>
+        <Slider Name="RotationSlider3" Value="{Binding CharacterDetails.RotateZ, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="938,279,0,0" VerticalAlignment="Top" Width="145" Minimum="-180" Maximum="180" TickFrequency="0.5"  Visibility="Hidden" IsEnabled="False" SourceUpdated="RotationUpDown3_SourceUpdated"/>
+
+        <ToggleButton Name="RotSliderButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1073,188,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Checked="RotSliderButton_Checked" Unchecked="RotSliderButton_Unchecked" />
+        <Label Content="Rotation Sliders:" HorizontalAlignment="Left" Margin="962,188,0,0" VerticalAlignment="Top" Height="28"/>
+
         <CheckBox IsChecked="{Binding CharacterDetails.X.freeze}" Content="X Position:" HorizontalAlignment="Left" Margin="545,215,0,0" VerticalAlignment="Top" Height="28"/>
-        <mah:NumericUpDown x:Name="PosX" Value="{Binding CharacterDetails.X.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,215,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" SourceUpdated="PosX_SourceUpdated" TextAlignment="Right" MinWidth="0" MinHeight="0" Height="28" FontSize="10" FontFamily="Segoe UI"/>
+        <mah:NumericUpDown x:Name="PosX" Value="{Binding CharacterDetails.X.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,215,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" SourceUpdated="PosX_SourceUpdated" TextAlignment="Right" MinWidth="0" MinHeight="0" Height="28" FontSize="11.35" FontFamily="Segoe UI"/>
         <CheckBox IsChecked="{Binding CharacterDetails.Y.freeze}" Content="Y Position:" HorizontalAlignment="Left" Margin="545,245,0,0" VerticalAlignment="Top" Height="28"/>
-        <mah:NumericUpDown x:Name="PosY" Value="{Binding CharacterDetails.Y.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,245,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" SourceUpdated="PosY_SourceUpdated" TextAlignment="Right" MinWidth="0" MinHeight="0" Height="28" FontSize="10" FontFamily="Segoe UI"/>
+        <mah:NumericUpDown x:Name="PosY" Value="{Binding CharacterDetails.Y.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,245,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" SourceUpdated="PosY_SourceUpdated" TextAlignment="Right" MinWidth="0" MinHeight="0" Height="28" FontSize="11.35" FontFamily="Segoe UI"/>
         <CheckBox IsChecked="{Binding CharacterDetails.Z.freeze}" Content="Z Position:" HorizontalAlignment="Left" Margin="545,275,0,0" VerticalAlignment="Top" Height="28"/>
-        <mah:NumericUpDown x:Name="PosZ" Value="{Binding CharacterDetails.Z.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,275,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" SourceUpdated="PosZ_SourceUpdated" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="10" FontFamily="Segoe UI"/>
+        <mah:NumericUpDown x:Name="PosZ" Value="{Binding CharacterDetails.Z.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,275,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" SourceUpdated="PosZ_SourceUpdated" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
         <Button x:Name="FreezeXYZ" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Freeze" HorizontalAlignment="Left" Margin="800,215,0,0" VerticalAlignment="Top" Width="88" Height="23" FontSize="12" Click="FreezeXYZ_Click" RenderTransformOrigin="0.5,0.5">
             <Button.LayoutTransform>
                 <RotateTransform Angle="-90" />
             </Button.LayoutTransform>
         </Button>
-        <Button x:Name="Freeze1234" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Freeze" HorizontalAlignment="Left" Margin="1085,185,-67,0" VerticalAlignment="Top" Width="118" Height="23" FontSize="12" Click="Freeze1234_Click">
+        <Button x:Name="Freeze1234" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Freeze" HorizontalAlignment="Left" Margin="1085,215,-61,0" VerticalAlignment="Top" Width="88" Height="23" FontSize="12" Click="Freeze1234_Click" Grid.ColumnSpan="2">
             <Button.LayoutTransform>
                 <RotateTransform Angle="-90" />
             </Button.LayoutTransform>
         </Button>
         <CheckBox IsChecked="{Binding CharacterDetails.TailSize.freeze}" Content="Ear/Tail Scale:" HorizontalAlignment="Left" Margin="545,155,0,0" VerticalAlignment="Top" Height="28"/>
-        <mah:NumericUpDown x:Name="TailSize" Value="{Binding CharacterDetails.TailSize.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,155,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" TextAlignment="Right" SourceUpdated="TailSize_SourceUpdated" Height="28" MinWidth="0" MinHeight="0" FontSize="10" FontFamily="Segoe UI"/>
+        <mah:NumericUpDown x:Name="TailSize" Value="{Binding CharacterDetails.TailSize.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,155,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" TextAlignment="Right" SourceUpdated="TailSize_SourceUpdated" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
         <CheckBox IsChecked="{Binding CharacterDetails.MuscleTone.freeze}" Content="Muscle Tone:" HorizontalAlignment="Left" Margin="545,185,0,0" VerticalAlignment="Top" Height="28"/>
-        <mah:NumericUpDown x:Name="Muscletone" Value="{Binding CharacterDetails.MuscleTone.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,185,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F3" Interval="0.25" TextAlignment="Right" SourceUpdated="Muscletone_SourceUpdated" Height="28" MinWidth="0" MinHeight="0" FontSize="10" FontFamily="Segoe UI"/>
+        <mah:NumericUpDown x:Name="Muscletone" Value="{Binding CharacterDetails.MuscleTone.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,185,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F3" Interval="0.25" TextAlignment="Right" SourceUpdated="Muscletone_SourceUpdated" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
         <CheckBox IsChecked="{Binding CharacterDetails.Transparency.freeze}" Content="Transparency:" HorizontalAlignment="Left" Margin="545,305,0,0" VerticalAlignment="Top" Height="28"/>
-        <mah:NumericUpDown x:Name="Transparency" Value="{Binding CharacterDetails.Transparency.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,305,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F3" Interval="0.25" TextAlignment="Right" SourceUpdated="Transparency_SourceUpdated" Height="28" MinWidth="0" MinHeight="0" FontSize="10" FontFamily="Segoe UI"/>
-        <Border BorderBrush="Black" BorderThickness="1,1,1,0" HorizontalAlignment="Left" Height="185" Margin="534,345,-1,0" VerticalAlignment="Top" Width="582"/>
+        <mah:NumericUpDown x:Name="Transparency" Value="{Binding CharacterDetails.Transparency.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,305,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F3" Interval="0.25" TextAlignment="Right" SourceUpdated="Transparency_SourceUpdated" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
+        <Border BorderBrush="Black" BorderThickness="1,1,1,0" HorizontalAlignment="Left" Height="190" Margin="534,340,-1,0" VerticalAlignment="Top" Width="582" Grid.ColumnSpan="2"/>
         <Border BorderBrush="Black" BorderThickness="3" HorizontalAlignment="Left" Height="151" Margin="925,25,0,0" VerticalAlignment="Top" Width="183" Background="#FF2E2E2E">
             <Views:RotationView Height="Auto" Width="Auto">
                 <Views:RotationView.DataContext>
@@ -671,33 +213,39 @@
             </Views:RotationView>
         </Border>
         <Label Content="Realtime Rotation:" HorizontalAlignment="Left" Margin="945,-4,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.Wetness.Activated}" Margin="920,308,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" BorderThickness="1" />
-        <Label Content="Wet Effect:" HorizontalAlignment="Left" Margin="844,308,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="0" Height="28"/>
-        <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.SWetness.Activated}" Margin="1055,308,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" />
-        <Label Content="Soaked Effect:" HorizontalAlignment="Left" Margin="960,308,0,0" VerticalAlignment="Top" Height="28"/>
-        <CheckBox IsChecked="{Binding CharacterDetails.Emote.freeze}" Content="Idle Anim:" HorizontalAlignment="Left" Margin="545,385,0,0" VerticalAlignment="Top" Height="28"/>
-        <mah:NumericUpDown x:Name="EmoteBox" Maximum="7736" Minimum="1" Value="{Binding CharacterDetails.Emote.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,385,0,0" VerticalAlignment="Top" Width="115" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" TextAlignment="Right" NumericInputMode="Numbers" SourceUpdated="EmoteBox_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="10"/>
-        <Button x:Name="EmoteSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="View" HorizontalAlignment="Left" Margin="773,385,0,0" VerticalAlignment="Top" Width="65" Height="28" Click="EmoteSearch_Click"/>
-        <CheckBox IsChecked="{Binding CharacterDetails.FreezeFacial.freeze}" Content="Lock Facial Animation:" HorizontalAlignment="Left" Margin="545,475,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.FreezeFacial.Activated}" Margin="705,477,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" />
-        <CheckBox IsChecked="{Binding CharacterDetails.EmoteSpeed1.freeze}" Content="Anim Speed:" HorizontalAlignment="Left" Margin="545,445,0,0" VerticalAlignment="Top" Height="28"/>
-        <mah:NumericUpDown x:Name="EmoteSpeed" Value="{Binding CharacterDetails.EmoteSpeed1.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,445,0,0" VerticalAlignment="Top" Width="115" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F3" Interval="0.10" TextAlignment="Right" FontFamily="Segoe UI" FontSize="10" Height="28"/>
-        <CheckBox IsChecked="{Binding CharacterDetails.CamX.freeze}" Content="Camera X Pos:" HorizontalAlignment="Left" Margin="854,355,0,0" VerticalAlignment="Top" Height="28"/>
-        <mah:NumericUpDown x:Name="CamX" Value="{Binding CharacterDetails.CamX.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="970,355,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" TextAlignment="Right" SourceUpdated="CamX_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="10"/>
-        <CheckBox IsChecked="{Binding CharacterDetails.CamY.freeze}" Content="Camera Y Pos:" HorizontalAlignment="Left" Margin="854,385,0,0" VerticalAlignment="Top" Height="28"/>
-        <mah:NumericUpDown x:Name="CamY" Value="{Binding CharacterDetails.CamY.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="970,385,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" TextAlignment="Right" SourceUpdated="CamY_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="10"/>
-        <CheckBox IsChecked="{Binding CharacterDetails.CamZ.freeze}" Content="Camera Z Pos:" HorizontalAlignment="Left" Margin="854,415,0,0" VerticalAlignment="Top" Height="28"/>
-        <mah:NumericUpDown x:Name="CamZ" Value="{Binding CharacterDetails.CamZ.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="970,415,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" TextAlignment="Right" SourceUpdated="CamZ_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="10"/>
-        <Label x:Name="FrozenPlayaLabel" x:FieldModifier="public" Content="Targeted Actor is ???" HorizontalAlignment="Left" Height="28" Margin="845,492,0,0" VerticalAlignment="Top" Width="260" FontWeight="Bold" FontSize="14"/>
+        <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.Wetness.Activated}" Margin="928,308,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" BorderThickness="1" />
+        <Label Content="Wet Effect:" HorizontalAlignment="Left" Margin="849,308,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="0" Height="28"/>
+        <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.SWetness.Activated}" Margin="1073,308,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" />
+        <Label Content="Soaked Effect:" HorizontalAlignment="Left" Margin="975,308,0,0" VerticalAlignment="Top" Height="28"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.Emote.freeze}" Content="Idle Anim:" HorizontalAlignment="Left" Margin="545,375,0,0" VerticalAlignment="Top" Height="28"/>
+        <mah:NumericUpDown x:Name="EmoteBox" Maximum="7736" Minimum="1" Value="{Binding CharacterDetails.Emote.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,375,0,0" VerticalAlignment="Top" Width="115" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" TextAlignment="Right" NumericInputMode="Numbers" SourceUpdated="EmoteBox_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="11.35"/>
+        <Button x:Name="EmoteSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="View" HorizontalAlignment="Left" Margin="773,375,0,0" VerticalAlignment="Top" Width="65" Height="28" Click="EmoteSearch_Click"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.FreezeFacial.freeze}" Content="Lock Facial Animation:" HorizontalAlignment="Left" Margin="545,465,0,0" VerticalAlignment="Top" Height="28"/>
+        <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.FreezeFacial.Activated}" Margin="705,467,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" />
+        <CheckBox IsChecked="{Binding CharacterDetails.EmoteSpeed1.freeze}" Content="Anim Speed:" HorizontalAlignment="Left" Margin="545,435,0,0" VerticalAlignment="Top" Height="28"/>
+        <mah:NumericUpDown x:Name="EmoteSpeed" Value="{Binding CharacterDetails.EmoteSpeed1.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,435,0,0" VerticalAlignment="Top" Width="115" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F3" Interval="0.10" TextAlignment="Right" FontFamily="Segoe UI" FontSize="11.35" Height="28"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.CamViewX.freeze}" Content="Camera View X:" HorizontalAlignment="Left" Margin="848,347,0,0" VerticalAlignment="Top" Height="28"/>
+        <mah:NumericUpDown x:Name="CamViewX" Value="{Binding CharacterDetails.CamViewX.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="966,347,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" TextAlignment="Right" Height="28" FontFamily="Segoe UI" FontSize="11.35" SourceUpdated="CamViewX_SourceUpdated"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.CamViewY.freeze}" Content="Camera View Y:" HorizontalAlignment="Left" Margin="848,377,0,0" VerticalAlignment="Top" Height="28"/>
+        <mah:NumericUpDown x:Name="CamViewY" Value="{Binding CharacterDetails.CamViewY.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="966,377,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" TextAlignment="Right" Height="28" FontFamily="Segoe UI" FontSize="11.35" SourceUpdated="CamViewY_SourceUpdated"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.CamViewZ.freeze}" Content="Camera View Z:" HorizontalAlignment="Left" Margin="848,407,0,0" VerticalAlignment="Top" Height="28"/>
+        <mah:NumericUpDown x:Name="CamViewZ" Value="{Binding CharacterDetails.CamViewZ.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="966,407,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" TextAlignment="Right" Height="28" FontFamily="Segoe UI" FontSize="11.35" SourceUpdated="CamViewZ_SourceUpdated"/>
+        <CheckBox x:Name="CamXCheck" IsChecked="{Binding CharacterDetails.CamX.freeze}" Content="Camera X Pos:" HorizontalAlignment="Left" Margin="848,437,0,0" VerticalAlignment="Top" Height="28" IsEnabled="False"/>
+        <mah:NumericUpDown x:Name="CamX" Value="{Binding CharacterDetails.CamX.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="966,437,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" TextAlignment="Right" SourceUpdated="CamX_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="11.35" IsEnabled="False"/>
+        <CheckBox x:Name="CamYCheck" IsChecked="{Binding CharacterDetails.CamY.freeze}" Content="Camera Y Pos:" HorizontalAlignment="Left" Margin="848,467,0,0" VerticalAlignment="Top" Height="28" IsEnabled="False"/>
+        <mah:NumericUpDown x:Name="CamY" Value="{Binding CharacterDetails.CamY.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="966,467,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" TextAlignment="Right" SourceUpdated="CamY_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="11.35" IsEnabled="False"/>
+        <CheckBox x:Name="CamZCheck" IsChecked="{Binding CharacterDetails.CamZ.freeze}" Content="Camera Z Pos:" HorizontalAlignment="Left" Margin="848,497,0,0" VerticalAlignment="Top" Height="28" IsEnabled="False"/>
+        <mah:NumericUpDown x:Name="CamZ" Value="{Binding CharacterDetails.CamZ.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="966,497,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" TextAlignment="Right" SourceUpdated="CamZ_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="11.35" IsEnabled="False"/>
+        <Label x:Name="FrozenPlayaLabel" x:FieldModifier="public" Content="Targeted Actor is ???" HorizontalAlignment="Left" Height="28" Margin="540,495,0,0" VerticalAlignment="Top" Width="260" FontWeight="Bold" FontSize="14"/>
         <CheckBox IsChecked="{Binding CharacterDetails.EntityType.freeze}" Content="Entity Type:" HorizontalAlignment="Left" Margin="545,5,0,0" VerticalAlignment="Top" Height="28"/>
-        <TextBox Text="{Binding CharacterDetails.EntityType.value, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,5,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" TextAlignment="Center" SourceUpdated="Transparency_SourceUpdated" Height="28" FontSize="10" FontFamily="Segoe UI" MinHeight="0"/>
-        <CheckBox IsChecked="{Binding CharacterDetails.EmoteOld.freeze}" Content="Force Anim:" HorizontalAlignment="Left" Margin="545,415,0,0" VerticalAlignment="Top" Height="28"/>
-        <mah:NumericUpDown x:Name="EmoteBox_Copy" Maximum="7736" Minimum="1" Value="{Binding CharacterDetails.EmoteOld.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,415,0,0" VerticalAlignment="Top" Width="115" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" TextAlignment="Right" NumericInputMode="Numbers" SourceUpdated="EmoteBox_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="10"/>
-        <Button x:Name="EmoteSearch_Copy" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="View" HorizontalAlignment="Left" Margin="773,415,0,0" VerticalAlignment="Top" Width="65" Height="28" Click="EmoteOldSearch_Click"/>
-        <Button x:Name="Setto0" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Zero" HorizontalAlignment="Left" Margin="773,445,0,0" VerticalAlignment="Top" Width="65" Height="28" FontSize="14" Click="Setto0_Click"/>
-        <Views:EmoteFlyOut x:Name="EmoteFlyouts" Width="535" HorizontalAlignment="Left" VerticalAlignment="Top" Height="530" Visibility="Hidden" Margin="0"/>
-        <CheckBox IsChecked="{Binding CharacterDetails.DataPath.freeze}" Content="Data Path:" HorizontalAlignment="Left" Margin="545,355,0,0" VerticalAlignment="Top" Height="28"/>
-        <ComboBox x:Name="DataPathBox" SelectedValuePath="Tag" SelectedValue="{Binding CharacterDetails.DataPath.value}" HorizontalAlignment="Left" Margin="654,355,0,0" VerticalAlignment="Top" Width="184" Height="28" FontSize="10" SelectedIndex="0">
+        <TextBox Style="{StaticResource MaterialDesignTextBox}" Text="{Binding CharacterDetails.EntityType.value, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,5,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" TextAlignment="Center" SourceUpdated="Transparency_SourceUpdated" Height="28" FontSize="11.35" FontFamily="Segoe UI" MinHeight="0"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.EmoteOld.freeze}" Content="Force Anim:" HorizontalAlignment="Left" Margin="545,405,0,0" VerticalAlignment="Top" Height="28"/>
+        <mah:NumericUpDown x:Name="EmoteBox_Copy" Maximum="7736" Minimum="1" Value="{Binding CharacterDetails.EmoteOld.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,405,0,0" VerticalAlignment="Top" Width="115" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" TextAlignment="Right" NumericInputMode="Numbers" SourceUpdated="EmoteBox_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="11.35"/>
+        <Button x:Name="EmoteSearch_Copy" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="View" HorizontalAlignment="Left" Margin="773,405,0,0" VerticalAlignment="Top" Width="65" Height="28" Click="EmoteOldSearch_Click"/>
+        <Button x:Name="Setto0" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Zero" HorizontalAlignment="Left" Margin="773,435,0,0" VerticalAlignment="Top" Width="65" Height="28" FontSize="14" Click="Setto0_Click"/>
+        <Views:EmoteFlyOut x:Name="EmoteFlyouts" Width="534" HorizontalAlignment="Left" VerticalAlignment="Top" Height="Auto" Visibility="Hidden" Margin="0"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.DataPath.freeze}" Content="Data Path:" HorizontalAlignment="Left" Margin="545,345,0,0" VerticalAlignment="Top" Height="28"/>
+        <ComboBox x:Name="DataPathBox" SelectedValuePath="Tag" SelectedValue="{Binding CharacterDetails.DataPath.value}" HorizontalAlignment="Left" Margin="654,345,0,0" VerticalAlignment="Top" Width="184" Height="28" FontSize="11.35" SelectedIndex="0" SelectionChanged="DataPathBox_SelectionChanged">
             <ComboBoxItem Visibility="Collapsed" Content="None" Tag="0"/>
             <ComboBoxItem Content="c101 - Hyur Male" Tag="101" Background="{x:Null}"/>
             <ComboBoxItem Content="c104 - Hyur Male (Child)" Tag="104" Background="{x:Null}"/>
@@ -724,6 +272,15 @@
             <ComboBoxItem Content="c9104 - Padjal Male" Tag="9104" Background="{x:Null}"/>
             <ComboBoxItem Content="c9204 - Padjal Female" Tag="9204" Background="{x:Null}"/>
         </ComboBox>
-        <Views:SpecialControl x:Name="SpecialControl" Width="582" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Margin="534,0,0.5,0" Height="530"/>
+
+        <!-- Advanced Move Toggle -->
+        <Label Content="Relative XYZ Pos:" HorizontalAlignment="Left" Margin="813,188,0,0" VerticalAlignment="Top" Height="28"/>
+        <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.AdvancedMove}" Click="AdvancedMoveToggleClick" Margin="928,188,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" BorderThickness="1" />
+
+        <Label HorizontalAlignment="Left" Height="28" Margin="860,218,0,0" VerticalAlignment="Top" FontSize="13" Content="X Rotation:"/>
+        <Label HorizontalAlignment="Left" Height="28" Margin="860,248,0,0" VerticalAlignment="Top" FontSize="13" Content="Y Rotation:"/>
+        <Label HorizontalAlignment="Left" Height="28" Margin="860,278,0,0" VerticalAlignment="Top" FontSize="13" Content="Z Rotation:"/>
+
+        <Views:SpecialControl x:Name="SpecialControl" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Margin="536,0,-3,0" Height="Auto" Grid.ColumnSpan="2"/>
     </Grid>
 </UserControl>
