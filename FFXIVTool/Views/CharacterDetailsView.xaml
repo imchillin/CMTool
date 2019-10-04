@@ -231,11 +231,11 @@
         <CheckBox IsChecked="{Binding CharacterDetails.CamViewZ.freeze}" Content="Camera View Z:" HorizontalAlignment="Left" Margin="848,407,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="CamViewZ" Value="{Binding CharacterDetails.CamViewZ.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="966,407,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" TextAlignment="Right" Height="28" FontFamily="Segoe UI" FontSize="11.35" SourceUpdated="CamViewZ_SourceUpdated"/>
         <CheckBox x:Name="CamXCheck" IsChecked="{Binding CharacterDetails.CamX.freeze}" Content="Camera X Pos:" HorizontalAlignment="Left" Margin="848,437,0,0" VerticalAlignment="Top" Height="28" IsEnabled="False"/>
-        <mah:NumericUpDown x:Name="CamX" Value="{Binding CharacterDetails.CamX.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="966,437,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" TextAlignment="Right" SourceUpdated="CamX_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="11.35" IsEnabled="False"/>
+        <mah:NumericUpDown x:Name="CamX" Value="{Binding CharacterDetails.CamX.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="966,437,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" TextAlignment="Right" SourceUpdated="CamX_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="11.35"/>
         <CheckBox x:Name="CamYCheck" IsChecked="{Binding CharacterDetails.CamY.freeze}" Content="Camera Y Pos:" HorizontalAlignment="Left" Margin="848,467,0,0" VerticalAlignment="Top" Height="28" IsEnabled="False"/>
-        <mah:NumericUpDown x:Name="CamY" Value="{Binding CharacterDetails.CamY.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="966,467,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" TextAlignment="Right" SourceUpdated="CamY_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="11.35" IsEnabled="False"/>
+        <mah:NumericUpDown x:Name="CamY" Value="{Binding CharacterDetails.CamY.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="966,467,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" TextAlignment="Right" SourceUpdated="CamY_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="11.35"/>
         <CheckBox x:Name="CamZCheck" IsChecked="{Binding CharacterDetails.CamZ.freeze}" Content="Camera Z Pos:" HorizontalAlignment="Left" Margin="848,497,0,0" VerticalAlignment="Top" Height="28" IsEnabled="False"/>
-        <mah:NumericUpDown x:Name="CamZ" Value="{Binding CharacterDetails.CamZ.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="966,497,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" TextAlignment="Right" SourceUpdated="CamZ_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="11.35" IsEnabled="False"/>
+        <mah:NumericUpDown x:Name="CamZ" Value="{Binding CharacterDetails.CamZ.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="966,497,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" TextAlignment="Right" SourceUpdated="CamZ_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="11.35"/>
         <Label x:Name="FrozenPlayaLabel" x:FieldModifier="public" Content="Targeted Actor is ???" HorizontalAlignment="Left" Height="28" Margin="540,495,0,0" VerticalAlignment="Top" Width="260" FontWeight="Bold" FontSize="14"/>
         <CheckBox IsChecked="{Binding CharacterDetails.EntityType.freeze}" Content="Entity Type:" HorizontalAlignment="Left" Margin="545,5,0,0" VerticalAlignment="Top" Height="28"/>
         <TextBox x:Name="EntityBox" Style="{StaticResource MaterialDesignTextBox}" Text="{Binding CharacterDetails.EntityType.value, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,5,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" TextAlignment="Center" SourceUpdated="Entity_SourceUpdated" Height="28" FontSize="11.35" FontFamily="Segoe UI" MinHeight="0"/>
@@ -250,8 +250,8 @@
             <ComboBoxItem Content="c101 - Hyur Male" Tag="101" Background="{x:Null}"/>
             <ComboBoxItem Content="c104 - Hyur Male (Child)" Tag="104" Background="{x:Null}"/>
             <ComboBoxItem Content="c201 - Hyur Female" Tag="201" Background="{x:Null}"/>
-            <ComboBoxItem Content="c301 - Hyur Male (Highlander)" Tag="301" Background="{x:Null}"/>
-            <ComboBoxItem Content="c401 - Hyur Female (Highlander)" Tag="401" Background="{x:Null}"/>
+            <ComboBoxItem Content="c301 - Highlander Male" Tag="301" Background="{x:Null}"/>
+            <ComboBoxItem Content="c401 - Highlander Female" Tag="401" Background="{x:Null}"/>
             <ComboBoxItem Content="c501 - Elezen Male" Tag="501" Background="{x:Null}"/>
             <ComboBoxItem Content="c504 - Elezen Male (Child)" Tag="504" Background="{x:Null}"/>
             <ComboBoxItem Content="c601 - Elezen Female" Tag="601" Background="{x:Null}"/>
@@ -266,8 +266,6 @@
             <ComboBoxItem Content="c1301 - Au Ra Male" Tag="1301" Background="{x:Null}"/>
             <ComboBoxItem Content="c1401 - Au Ra Female" Tag="1401" Background="{x:Null}"/>
             <ComboBoxItem Content="c1501 - Hrothgar Male" Tag="1501" Background="{x:Null}"/>
-            <ComboBoxItem Content="c1601 - Hrothgar Female (Unused)" Tag="1601" Background="{x:Null}"/>
-            <ComboBoxItem Content="c1701 - Viera Male (Unused)" Tag="1701" Background="{x:Null}"/>
             <ComboBoxItem Content="c1801 - Viera Female" Tag="1801" Background="{x:Null}"/>
             <ComboBoxItem Content="c9104 - Padjal Male" Tag="9104" Background="{x:Null}"/>
             <ComboBoxItem Content="c9204 - Padjal Female" Tag="9204" Background="{x:Null}"/>

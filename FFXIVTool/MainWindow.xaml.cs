@@ -1022,9 +1022,6 @@ namespace FFXIVTool
         {
             CharacterRefreshButton.IsEnabled = false;
 
-            MainViewModel.ViewTime.CamX.IsEnabled = true;
-            MainViewModel.ViewTime.CamY.IsEnabled = true;
-            MainViewModel.ViewTime.CamZ.IsEnabled = true;
             MainViewModel.ViewTime.CamXCheck.IsEnabled = true;
             MainViewModel.ViewTime.CamYCheck.IsEnabled = true;
             MainViewModel.ViewTime.CamZCheck.IsEnabled = true;
@@ -1069,9 +1066,6 @@ namespace FFXIVTool
         {
             CharacterRefreshButton.IsEnabled = true;
 
-            MainViewModel.ViewTime.CamX.IsEnabled = false;
-            MainViewModel.ViewTime.CamY.IsEnabled = false;
-            MainViewModel.ViewTime.CamZ.IsEnabled = false;
             MainViewModel.ViewTime.CamXCheck.IsEnabled = false;
             MainViewModel.ViewTime.CamYCheck.IsEnabled = false;
             MainViewModel.ViewTime.CamZCheck.IsEnabled = false;
