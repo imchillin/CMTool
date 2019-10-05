@@ -1155,7 +1155,7 @@ namespace FFXIVTool.Views
                     }
                     else
                     {
-                        if (CharacterDetails.Clan.value != 12)
+                        if (CharacterDetails.Clan.value == 2 || CharacterDetails.Clan.value == 4 || CharacterDetails.Clan.value == 6 || CharacterDetails.Clan.value == 8 || CharacterDetails.Clan.value == 10)
                         {
                             if (CharacterDetails.DataPath.value == 101)
                             {

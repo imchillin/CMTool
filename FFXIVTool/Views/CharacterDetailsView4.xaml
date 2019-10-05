@@ -91,9 +91,9 @@
         <CheckBox IsChecked="{Binding CharacterDetails.EntityType.freeze}" Content="Entity Type:" HorizontalAlignment="Left" Margin="840,356,0,0" VerticalAlignment="Top" Height="28"/>
         <TextBox x:Name="EntityBox" Style="{StaticResource MaterialDesignTextBox}" Text="{Binding CharacterDetails.EntityType.value, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="950,356,0,0" VerticalAlignment="Top" Width="138" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" TextAlignment="Center" Height="28" FontSize="11.35" FontFamily="Segoe UI" MinHeight="0"/>
         <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.Wetness.Activated}" Margin="232,462,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" BorderThickness="1" />
-        <Label Content="Wet:" HorizontalAlignment="Left" Margin="153,462,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="0" Height="28"/>
+        <Label Content="Wet:" HorizontalAlignment="Left" Margin="153,464,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="0" Height="28"/>
         <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.SWetness.Activated}" Margin="232,492,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" />
-        <Label Content="Drenched:" HorizontalAlignment="Left" Margin="151,492,0,0" VerticalAlignment="Top" Height="28"/>
+        <Label Content="Drenched:" HorizontalAlignment="Left" Margin="151,494,0,0" VerticalAlignment="Top" Height="28"/>
         <Label Content="Visual Effects" HorizontalAlignment="Left" Margin="10,468,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="0" Height="28" FontSize="18" FontWeight="Bold"/>
 
     </Grid>
