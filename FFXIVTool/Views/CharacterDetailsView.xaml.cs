@@ -546,15 +546,6 @@ namespace FFXIVTool.Views
 
         #endregion
 
-        #region Entity
-
-        private void Entity_SourceUpdated(object sender, DataTransferEventArgs e)
-        {
-
-        }
-
-        #endregion
-
         #region Emote
 
         private void EmoteSearch_Click(object sender, RoutedEventArgs e)
@@ -1163,15 +1154,40 @@ namespace FFXIVTool.Views
                         else m.writeMemory(GAS(c.DataHead), "byte", "0x01");
                     }
                     else
-                        if (CharacterDetails.DataPath.value == 101)
+                    {
+                        if (CharacterDetails.Clan.value != 12)
                         {
-                        m.writeMemory(GAS(c.DataHead), "byte", "0x01");
+                            if (CharacterDetails.DataPath.value == 101)
+                            {
+                                m.writeMemory(GAS(c.DataHead), "byte", "0x01");
+                            }
+                            else if (CharacterDetails.DataPath.value == 201)
+                            {
+                                m.writeMemory(GAS(c.DataHead), "byte", "0x01");
+                            }
+                            else m.writeMemory(GAS(c.DataHead), "byte", "0x65");
                         }
-                        else if (CharacterDetails.DataPath.value == 201)
+                        else
                         {
-                        m.writeMemory(GAS(c.DataHead), "byte", "0x01");
+                            if (CharacterDetails.DataPath.value == 101)
+                            {
+                                m.writeMemory(GAS(c.DataHead), "byte", "0x65");
+                            }
+                            else if (CharacterDetails.DataPath.value == 201)
+                            {
+                                m.writeMemory(GAS(c.DataHead), "byte", "0x65");
+                            }
+                            if (CharacterDetails.DataPath.value == 301)
+                            {
+                                m.writeMemory(GAS(c.DataHead), "byte", "0xC9");
+                            }
+                            else if (CharacterDetails.DataPath.value == 401)
+                            {
+                                m.writeMemory(GAS(c.DataHead), "byte", "0xC9");
+                            }
+                            else m.writeMemory(GAS(c.DataHead), "byte", "0x65");
                         }
-                        else m.writeMemory(GAS(c.DataHead), "byte", "0x65");
+                    }
                 }
             }
         }

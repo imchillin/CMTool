@@ -88,15 +88,40 @@ namespace FFXIVTool.Utility
                             else m.writeMemory(GAS(c.DataHead), "byte", "0x01");
                         }
                         else
-                            if (CharacterDetails.DataPath.value == 101)
+                        {
+                            if (CharacterDetails.Clan.value != 12)
                             {
-                                m.writeMemory(GAS(c.DataHead), "byte", "0x01");
+                                if (CharacterDetails.DataPath.value == 101)
+                                {
+                                    m.writeMemory(GAS(c.DataHead), "byte", "0x01");
+                                }
+                                else if (CharacterDetails.DataPath.value == 201)
+                                {
+                                    m.writeMemory(GAS(c.DataHead), "byte", "0x01");
+                                }
+                                else m.writeMemory(GAS(c.DataHead), "byte", "0x65");
                             }
-                            else if (CharacterDetails.DataPath.value == 201)
+                            else
                             {
-                                m.writeMemory(GAS(c.DataHead), "byte", "0x01");
+                                if (CharacterDetails.DataPath.value == 101)
+                                {
+                                    m.writeMemory(GAS(c.DataHead), "byte", "0x65");
+                                }
+                                else if (CharacterDetails.DataPath.value == 201)
+                                {
+                                    m.writeMemory(GAS(c.DataHead), "byte", "0x65");
+                                }
+                                if (CharacterDetails.DataPath.value == 301)
+                                {
+                                    m.writeMemory(GAS(c.DataHead), "byte", "0xC9");
+                                }
+                                else if (CharacterDetails.DataPath.value == 401)
+                                {
+                                    m.writeMemory(GAS(c.DataHead), "byte", "0xC9");
+                                }
+                                else m.writeMemory(GAS(c.DataHead), "byte", "0x65");
                             }
-                            else m.writeMemory(GAS(c.DataHead), "byte", "0x65");
+                        }
                     }
 
                     if (CharacterDetails.NPCName.freeze && !CharacterDetails.NPCName.Activated) m.writeBytes(GAS(c.NPCName), CharacterDetails.NPCName.GetBytes());

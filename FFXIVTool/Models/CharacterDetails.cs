@@ -294,6 +294,7 @@ namespace FFXIVTool.Models
             FreezeFacial = new Address<float>();
             Territoryxd = new Address<int>();
             DataPath = new Address<short>();
+            DataHead = new Address<byte>();
             NPCName = new Address<short>();
             NPCModel = new Address<short>();
             ScaleX = new Address<float>();
