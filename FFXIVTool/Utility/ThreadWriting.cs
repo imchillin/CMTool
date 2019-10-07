@@ -3,6 +3,7 @@ using FFXIVTool.ViewModel;
 using System;
 using System.ComponentModel;
 using System.Threading;
+using System.Windows.Media.Media3D;
 
 namespace FFXIVTool.Utility
 {
@@ -141,10 +142,15 @@ namespace FFXIVTool.Utility
                     if (CharacterDetails.BustY.freeze) m.writeBytes(GAS(c.Body.Base, c.Body.Bust.Base, c.Body.Bust.Y), CharacterDetails.BustY.GetBytes());
                     if (CharacterDetails.BustX.freeze) m.writeBytes(GAS(c.Body.Base, c.Body.Bust.Base, c.Body.Bust.X), CharacterDetails.BustX.GetBytes());
 
-					// Rotation.
 					if (CharacterDetails.RotateFreeze)
 					{
-						m.writeBytes(GAS(c.Body.Base, c.Body.Position.Rotation), CharacterDetails.Rotation.GetBytes());
+                        var q = new Vector3D(CharacterDetails.RotateX.value, CharacterDetails.RotateY.value, CharacterDetails.RotateZ.value).ToQuaternion();
+
+                        CharacterDetails.Rotation.value = (float)q.X;
+                        CharacterDetails.Rotation2.value = (float)q.Y;
+                        CharacterDetails.Rotation3.value = (float)q.Z;
+                        CharacterDetails.Rotation4.value = (float)q.W;
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.Rotation), CharacterDetails.Rotation.GetBytes());
 						m.writeBytes(GAS(c.Body.Base, c.Body.Position.Rotation2), CharacterDetails.Rotation2.GetBytes());
 						m.writeBytes(GAS(c.Body.Base, c.Body.Position.Rotation3), CharacterDetails.Rotation3.GetBytes());
 						m.writeBytes(GAS(c.Body.Base, c.Body.Position.Rotation4), CharacterDetails.Rotation4.GetBytes());
@@ -172,6 +178,7 @@ namespace FFXIVTool.Utility
                     if (CharacterDetails.CameraYAMin.freeze) m.writeBytes(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, c.CameraYAMin), CharacterDetails.CameraYAMin.GetBytes());
                     if (CharacterDetails.CameraHeight2.freeze) m.writeBytes(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, c.CameraHeight2), CharacterDetails.CameraHeight2.GetBytes());
                     if (CharacterDetails.Weather.freeze) m.writeBytes(MemoryManager.GetAddressString(MemoryManager.Instance.WeatherAddress, c.Weather), CharacterDetails.Weather.GetBytes());
+                    if (CharacterDetails.ForceWeather.freeze) m.writeBytes(MemoryManager.GetAddressString(MemoryManager.Instance.GposeFilters, c.ForceWeather), CharacterDetails.ForceWeather.GetBytes());
                     if (CharacterDetails.SkinRedPigment.freeze) m.writeBytes(GAS(c.SkinRedPigment), CharacterDetails.SkinRedPigment.GetBytes());
                     if (CharacterDetails.SkinGreenPigment.freeze) m.writeBytes(GAS(c.SkinGreenPigment), CharacterDetails.SkinGreenPigment.GetBytes());
                     if (CharacterDetails.SkinBluePigment.freeze) m.writeBytes(GAS(c.SkinBluePigment), CharacterDetails.SkinBluePigment.GetBytes());

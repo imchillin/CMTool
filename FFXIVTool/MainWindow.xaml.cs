@@ -148,7 +148,7 @@ namespace FFXIVTool
         }
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            Title = $"Concept Matrix v1.1.2 (SSTool Dev Build: v{version})";
+            Title = $"Concept Matrix v1.1.3 (SSTool Dev Build: v{version})";
             DataContext = new MainViewModel();
             var settings = SaveSettings.Default;
             var accentColor = settings.Accent;

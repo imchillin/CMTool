@@ -9,7 +9,6 @@ namespace FFXIVTool.ViewModel
 	public class CharacterDetailsViewModel : BaseViewModel
 	{
 		public CharacterDetails CharacterDetails { get => (CharacterDetails)model; set => model = value; }
-		private RefreshEntitiesCommand refreshEntitiesCommand;
 		public static string eOffset = "8";
 		public static bool FreezeAll = false;
 		public static bool EnabledEditing = false;
@@ -22,18 +21,15 @@ namespace FFXIVTool.ViewModel
 		private CharacterOffsets c = Settings.Instance.Character;
 		private string GAS(params string[] args) => MemoryManager.GetAddressString(args);
 
-		public RefreshEntitiesCommand RefreshEntitiesCommand
-		{
-			get => refreshEntitiesCommand;
-		}
-		public CharacterDetailsViewModel(Mediator mediator) : base(mediator)
+        public RefreshEntitiesCommand RefreshEntitiesCommand { get; }
+        public CharacterDetailsViewModel(Mediator mediator) : base(mediator)
 		{
 			model = new CharacterDetails();
 			model.PropertyChanged += Model_PropertyChanged;
-			refreshEntitiesCommand = new RefreshEntitiesCommand(this);
-			// refresh the list initially
-			this.Refresh();
-			mediator.Work += Work;
+            RefreshEntitiesCommand = new RefreshEntitiesCommand(this);
+            // refresh the list initially
+            Refresh();
+            mediator.Work += Work;
 
 			mediator.EntitySelection += (offset) => eOffset = offset;
 		}
@@ -345,10 +341,10 @@ namespace FFXIVTool.ViewModel
 						CharacterDetails.Rotation4.value
 					).ToEulerAngles();
 
-					CharacterDetails.RotateX = (float)euler.X;
-					CharacterDetails.RotateY = (float)euler.Y;
-					CharacterDetails.RotateZ = (float)euler.Z;
-				}
+                    CharacterDetails.RotateX.value = (float)euler.X;
+                    CharacterDetails.RotateY.value = (float)euler.Y;
+                    CharacterDetails.RotateZ.value = (float)euler.Z;
+                }
 
 				if (!CharacterDetails.X.freeze) CharacterDetails.X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.X));
 
@@ -591,7 +587,8 @@ namespace FFXIVTool.ViewModel
                 if (!CharacterDetails.CamViewX.freeze) CharacterDetails.CamViewX.value = m.readFloat(GAS(baseAddr, c.CamViewX));
 
                 if (!CharacterDetails.Weather.freeze) CharacterDetails.Weather.value = (byte)m.readByte(GAS(MemoryManager.Instance.WeatherAddress, c.Weather));
-				CharacterDetails.TimeControl.value = (int)m.readInt(GAS(MemoryManager.Instance.TimeAddress, c.TimeControl));
+                if (!CharacterDetails.ForceWeather.freeze) CharacterDetails.ForceWeather.value = (ushort)m.read2Byte(GAS(MemoryManager.Instance.GposeFilters, c.ForceWeather));
+                CharacterDetails.TimeControl.value = (int)m.readInt(GAS(MemoryManager.Instance.TimeAddress, c.TimeControl));
 				if (!CharacterDetails.HeadPiece.Activated) CharacterDetails.HeadSlot.value = CharacterDetails.HeadPiece.value + "," + CharacterDetails.HeadV.value + "," + CharacterDetails.HeadDye.value;
 				if (!CharacterDetails.Chest.Activated) CharacterDetails.BodySlot.value = CharacterDetails.Chest.value + "," + CharacterDetails.ChestV.value + "," + CharacterDetails.ChestDye.value;
 				if (!CharacterDetails.Arms.Activated) CharacterDetails.ArmSlot.value = CharacterDetails.Arms.value + "," + CharacterDetails.ArmsV.value + "," + CharacterDetails.ArmsDye.value;

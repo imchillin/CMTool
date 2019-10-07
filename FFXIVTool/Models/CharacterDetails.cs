@@ -223,6 +223,7 @@ namespace FFXIVTool.Models
         [JsonIgnore] public Address<string> ArmSlot { get; set; }
         [JsonIgnore] public Address<int> TimeControl { get; set; }
         [JsonIgnore] public Address<byte> Weather { get; set; }
+        [JsonIgnore] public Address<ushort> ForceWeather { get; set; }
         [JsonIgnore] public Address<byte> EntityType { get; set; }
         [JsonIgnore] public Address<int> Territoryxd { get; set; }
         [JsonIgnore] public Address<short> DataPath { get; set; }
@@ -256,9 +257,9 @@ namespace FFXIVTool.Models
         [JsonIgnore] public Address<float> CamAngleX { get; set; }
         [JsonIgnore] public Address<float> CamAngleY { get; set; }
         [JsonIgnore] public Address<byte> DataHead { get; set; }
-        [JsonIgnore] public float RotateX { get; set; }
-		[JsonIgnore] public float RotateY { get; set; }
-		[JsonIgnore] public float RotateZ { get; set; }
+        [JsonIgnore] public Address<float> RotateX { get; set; }
+		[JsonIgnore] public Address<float> RotateY { get; set; }
+		[JsonIgnore] public Address<float> RotateZ { get; set; }
 		[JsonIgnore] public bool RotateFreeze { get; set; }
 
 		public CharacterDetails()
@@ -311,6 +312,7 @@ namespace FFXIVTool.Models
             Jaw = new Address<byte>();
             TimeControl = new Address<int>();
             Weather = new Address<byte>();
+            ForceWeather = new Address<ushort>();
             LFingerSlot = new Address<string>();
             RFingerSlot = new Address<string>();
             NeckSlot = new Address<string>();
@@ -459,6 +461,9 @@ namespace FFXIVTool.Models
             Max.Checker = true;
             Min.Checker = true;
             CZoom.Checker = true;
+            RotateX = new Address<float>();
+            RotateY = new Address<float>();
+            RotateZ = new Address<float>();
         }
     }
 }

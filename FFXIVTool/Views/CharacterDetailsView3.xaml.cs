@@ -1112,5 +1112,22 @@ namespace FFXIVTool.Views
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CamAngleX), "float", SaveSettings.Default.CamAngleX.ToString());
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CamAngleY), "float", SaveSettings.Default.CamAngleY.ToString());
         }
+
+        private void ForceWeatherBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var m = MemoryManager.Instance.MemLib;
+            var c = Settings.Instance.Character;
+
+            string GAS(params string[] args) => MemoryManager.GetAddressString(args);
+
+            if (ForceWeatherBox.IsKeyboardFocusWithin || ForceWeatherBox.IsMouseOver)
+            {
+                if (ForceWeatherBox.SelectedIndex >= 0)
+                {
+                    CharacterDetails.ForceWeather.value = ushort.Parse(((ComboBoxItem)ForceWeatherBox.SelectedItem).Tag.ToString());
+                    m.writeMemory(GAS(MemoryManager.Instance.GposeFilters, c.ForceWeather), "int", ((ComboBoxItem)ForceWeatherBox.SelectedItem).Tag.ToString());
+                }
+            }
+        }
     }
 }

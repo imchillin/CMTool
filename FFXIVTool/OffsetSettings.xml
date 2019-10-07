@@ -49,6 +49,7 @@
     </Body>
     <TimeControl>10,8,28,80</TimeControl>
     <Weather>20</Weather>
+    <ForceWeather>26</ForceWeather>
     <Music>C0,116</Music>
     <Music2>C0,114</Music2>
     <NameHeight>164</NameHeight>
