@@ -148,7 +148,7 @@ namespace FFXIVTool
         }
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            Title = $"Concept Matrix v1.1.3 (SSTool Dev Build: v{version})";
+            Title = $"Concept Matrix v1.1.4 (SSTool Dev Build: v{version})";
             DataContext = new MainViewModel();
             var settings = SaveSettings.Default;
             var accentColor = settings.Accent;
@@ -991,6 +991,8 @@ namespace FFXIVTool
             CharacterDetails.EmoteOld.freeze = false;
             CharacterDetails.EntityType.freeze = false;
             CharacterDetails.DataPath.freeze = false;
+            CharacterDetails.ForceWeather.freeze = false;
+            CharacterDetails.RotateFreeze = false;
             CharacterDetailsView.xyzcheck = false;
             CharacterDetailsView.numbcheck = false;
         }
@@ -1059,6 +1061,11 @@ namespace FFXIVTool
             MainViewModel.ViewTime2.EquipmentControl.IsOpen = false;
             MainViewModel.ViewTime2.EquipmentControl.AnimatedTabControl.SelectedIndex = -1;
 
+            MainViewModel.ViewTime4.StatusEffectBox.IsReadOnly = false;
+            MainViewModel.ViewTime4.StatusEffectBox2.IsReadOnly = false;
+            MainViewModel.ViewTime4.StatusEffectZero.IsEnabled = true;
+            MainViewModel.ViewTime4.StatusEffectText.IsEnabled = true;
+
             CharacterDetailsViewModel.baseAddr = MemoryManager.Instance.GposeEntityOffset;
         }
 
@@ -1100,6 +1107,12 @@ namespace FFXIVTool
             MainViewModel.ViewTime2.RightSearch.IsEnabled = true;
             MainViewModel.ViewTime2.WristSearch.IsEnabled = true;
             MainViewModel.ViewTime2.NPC_Click.IsEnabled = true;
+
+            MainViewModel.ViewTime4.StatusEffectBox.IsReadOnly = true;
+            MainViewModel.ViewTime4.StatusEffectBox2.IsReadOnly = true;
+            MainViewModel.ViewTime4.StatusEffectZero.IsEnabled = false;
+            MainViewModel.ViewTime4.StatusEffectText.IsEnabled = false;
+
             if (GposeButton.IsKeyboardFocusWithin || GposeButton.IsMouseOver)
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Add(MemoryManager.Instance.BaseAddress, CharacterDetailsViewModel.eOffset);
         }

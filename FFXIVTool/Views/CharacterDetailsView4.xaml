@@ -94,7 +94,131 @@
         <Label Content="Wet:" HorizontalAlignment="Left" Margin="153,464,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="0" Height="28"/>
         <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.SWetness.Activated}" Margin="232,492,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" />
         <Label Content="Drenched:" HorizontalAlignment="Left" Margin="151,494,0,0" VerticalAlignment="Top" Height="28"/>
-        <Label Content="Visual Effects" HorizontalAlignment="Left" Margin="10,468,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="0" Height="28" FontSize="18" FontWeight="Bold"/>
+        <Label Content="Visual Effects" HorizontalAlignment="Left" Margin="10,474,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="0" Height="40" FontSize="18" FontWeight="Bold"/>
+        <mah:NumericUpDown x:Name="StatusEffectBox" Maximum="2130" Minimum="0" Value="{Binding Path=CharacterDetails.StatusEffect.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="865,464,0,0" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" Interval="1" TextAlignment="Right" NumericInputMode="Numbers" SourceUpdated="StatusEffectBox_SourceUpdated" Speedup="False" Height="28" IsReadOnly="True"/>
+        <Button x:Name="StatusEffectZero" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Reset" HorizontalAlignment="Left" Margin="1025,477,0,0" VerticalAlignment="Top" Width="70" Height="28" FontSize="14" Click="StatusEffectZero_Click" IsEnabled="False"/>
+        <Label x:Name="StatusEffectText" Content="GPose&#xD;&#xA;Status Effects:" HorizontalAlignment="Left" Margin="765,472,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="0" IsEnabled="False"/>
+        <ComboBox x:Name="StatusEffectBox2" SelectedValuePath="Tag" SelectedValue="{Binding CharacterDetails.StatusEffect.value}" HorizontalAlignment="Left" Margin="865,497,0,0" VerticalAlignment="Top" Width="150" Height="28" FontSize="11.35" SelectedIndex="0" SelectionChanged="StatusEffectBox2_SelectionChanged" IsReadOnly="True">
+            <ComboBoxItem Content="None" Tag="0" Background="{x:Null}"/>
+            <ComboBoxItem Content="Petrification" Tag="1" Background="{x:Null}"/>
+            <ComboBoxItem Content="Stun" Tag="2" Background="{x:Null}"/>
+            <ComboBoxItem Content="Sleep" Tag="3" Background="{x:Null}"/>
+            <ComboBoxItem Content="Levitation" Tag="12" Background="{x:Null}"/>
+            <ComboBoxItem Content="Bind" Tag="13" Background="{x:Null}"/>
+            <ComboBoxItem Content="Heavy" Tag="14" Background="{x:Null}"/>
+            <ComboBoxItem Content="Infuriated" Tag="97" Background="{x:Null}"/>
+            <ComboBoxItem Content="Greased Lightning" Tag="111" Background="{x:Null}"/>
+            <ComboBoxItem Content="Greased Lightning II" Tag="112" Background="{x:Null}"/>
+            <ComboBoxItem Content="Greased Lightning III" Tag="113" Background="{x:Null}"/>
+            <ComboBoxItem Content="Astral Fire" Tag="173" Background="{x:Null}"/>
+            <ComboBoxItem Content="Astral Fire II" Tag="174" Background="{x:Null}"/>
+            <ComboBoxItem Content="Astral Fire III" Tag="175" Background="{x:Null}"/>
+            <ComboBoxItem Content="Umbral Ice" Tag="176" Background="{x:Null}"/>
+            <ComboBoxItem Content="Umbral Ice II" Tag="177" Background="{x:Null}"/>
+            <ComboBoxItem Content="Umbral Ice III" Tag="178" Background="{x:Null}"/>
+            <ComboBoxItem Content="Seduced" Tag="227" Background="{x:Null}"/>
+            <ComboBoxItem Content="Full-grown" Tag="391" Background="{x:Null}"/>
+            <ComboBoxItem Content="Deep Freeze" Tag="487" Background="{x:Null}"/>
+            <ComboBoxItem Content="Mummification" Tag="603" Background="{x:Null}"/>
+            <ComboBoxItem Content="Pyretic" Tag="639" Background="{x:Null}"/>
+            <ComboBoxItem Content="Abandonment" Tag="646" Background="{x:Null}"/>
+            <ComboBoxItem Content="Uncontrollable" Tag="734" Background="{x:Null}"/>
+            <ComboBoxItem Content="Blood of the Dragon" Tag="736" Background="{x:Null}"/>
+            <ComboBoxItem Content="Darkside" Tag="751" Background="{x:Null}"/>
+            <ComboBoxItem Content="Earthern Accord" Tag="778" Background="{x:Null}"/>
+            <ComboBoxItem Content="Fetters" Tag="822" Background="{x:Null}"/>
+            <ComboBoxItem Content="Unwilling Host" Tag="937" Background="{x:Null}"/>
+            <ComboBoxItem Content="Acceleration Bomb" Tag="1072" Background="{x:Null}"/>
+            <ComboBoxItem Content="Shadow Links" Tag="1147" Background="{x:Null}"/>
+            <ComboBoxItem Content="Inner Release" Tag="1177" Background="{x:Null}"/>
+            <ComboBoxItem Content="Ten Chi Jin" Tag="1186" Background="{x:Null}"/>
+            <ComboBoxItem Content="Prey" Tag="1253" Background="{x:Null}"/>
+            <ComboBoxItem Content="Wounded" Tag="1256" Background="{x:Null}"/>
+            <ComboBoxItem Content="In Event" Tag="1268" Background="{x:Null}"/>
+            <ComboBoxItem Content="Churnning" Tag="1270" Background="{x:Null}"/>
+            <ComboBoxItem Content="Vril" Tag="1290" Background="{x:Null}"/>
+            <ComboBoxItem Content="Stun" Tag="1343" Background="{x:Null}"/>
+            <ComboBoxItem Content="Heavy" Tag="1344" Background="{x:Null}"/>
+            <ComboBoxItem Content="Silence" Tag="1347" Background="{x:Null}"/>
+            <ComboBoxItem Content="Magitek Levitation" Tag="1361" Background="{x:Null}"/>
+            <ComboBoxItem Content="Temporary Misdirection" Tag="1422" Background="{x:Null}"/>
+            <ComboBoxItem Content="Drenched" Tag="1427" Background="{x:Null}"/>
+            <ComboBoxItem Content="Resonant" Tag="1438" Background="{x:Null}"/>
+            <ComboBoxItem Content="Fetters" Tag="1460" Background="{x:Null}"/>
+            <ComboBoxItem Content="Yellow Paint" Tag="1467" Background="{x:Null}"/>
+            <ComboBoxItem Content="Blue Paint" Tag="1468" Background="{x:Null}"/>
+            <ComboBoxItem Content="Black Paint" Tag="1469" Background="{x:Null}"/>
+            <ComboBoxItem Content="Red Paint" Tag="1470" Background="{x:Null}"/>
+            <ComboBoxItem Content="Aether Rot" Tag="1475" Background="{x:Null}"/>
+            <ComboBoxItem Content="Aether Rot Immunity" Tag="1476" Background="{x:Null}"/>
+            <ComboBoxItem Content="Falling" Tag="1479" Background="{x:Null}"/>
+            <ComboBoxItem Content="Unrelenting Anguish" Tag="1480" Background="{x:Null}"/>
+            <ComboBoxItem Content="Ominous Wind" Tag="1481" Background="{x:Null}"/>
+            <ComboBoxItem Content="Jester's Antics" Tag="1486" Background="{x:Null}"/>
+            <ComboBoxItem Content="Jester's Truths" Tag="1487" Background="{x:Null}"/>
+            <ComboBoxItem Content="Fetters" Tag="1497" Background="{x:Null}"/>
+            <ComboBoxItem Content="Stun" Tag="1521" Background="{x:Null}"/>
+            <ComboBoxItem Content="Moonlit" Tag="1538" Background="{x:Null}"/>
+            <ComboBoxItem Content="Moonshadowed" Tag="1539" Background="{x:Null}"/>
+            <ComboBoxItem Content="Haunt" Tag="1542" Background="{x:Null}"/>
+            <ComboBoxItem Content="Magnetic Lysis +" Tag="1550" Background="{x:Null}"/>
+            <ComboBoxItem Content="Magnetic Lysis -" Tag="1551" Background="{x:Null}"/>
+            <ComboBoxItem Content="The One Dragon" Tag="1553" Background="{x:Null}"/>
+            <ComboBoxItem Content="Borne Heart" Tag="1554" Background="{x:Null}"/>
+            <ComboBoxItem Content="Heartless" Tag="1555" Background="{x:Null}"/>
+            <ComboBoxItem Content="Threatened" Tag="1556" Background="{x:Null}"/>
+            <ComboBoxItem Content="Grudge" Tag="1573" Background="{x:Null}"/>
+            <ComboBoxItem Content="Sleep" Tag="1596" Background="{x:Null}"/>
+            <ComboBoxItem Content="Arcane Bulwwark" Tag="1611" Background="{x:Null}"/>
+            <ComboBoxItem Content="Defenseless" Tag="1612" Background="{x:Null}"/>
+            <ComboBoxItem Content="Fetters" Tag="1614" Background="{x:Null}"/>
+            <ComboBoxItem Content="Crumbling Bulwark" Tag="1615" Background="{x:Null}"/>
+            <ComboBoxItem Content="Looper" Tag="1624" Background="{x:Null}"/>
+            <ComboBoxItem Content="Local Resonance" Tag="1662" Background="{x:Null}"/>
+            <ComboBoxItem Content="Remote Resonance" Tag="1663" Background="{x:Null}"/>
+            <ComboBoxItem Content="Sleeping Dark" Tag="1682" Background="{x:Null}"/>
+            <ComboBoxItem Content="Sleeping Light" Tag="1683" Background="{x:Null}"/>
+            <ComboBoxItem Content="Guardian Spirit" Tag="1692" Background="{x:Null}"/>
+            <ComboBoxItem Content="Right Unseen" Tag="1707" Background="{x:Null}"/>
+            <ComboBoxItem Content="Left Unseen" Tag="1708" Background="{x:Null}"/>
+            <ComboBoxItem Content="Back Unseen" Tag="1709" Background="{x:Null}"/>
+            <ComboBoxItem Content="Astral Essence" Tag="1710" Background="{x:Null}"/>
+            <ComboBoxItem Content="Umbral Essence" Tag="1711" Background="{x:Null}"/>
+            <ComboBoxItem Content="Waxing Nocturne" Tag="1718" Background="{x:Null}"/>
+            <ComboBoxItem Content="Diamondback" Tag="1722" Background="{x:Null}"/>
+            <ComboBoxItem Content="Cursekeeper" Tag="1725" Background="{x:Null}"/>
+            <ComboBoxItem Content="Fetters" Tag="1726" Background="{x:Null}"/>
+            <ComboBoxItem Content="Shieldbearer" Tag="1733" Background="{x:Null}"/>
+            <ComboBoxItem Content="Swordbearer" Tag="1734" Background="{x:Null}"/>
+            <ComboBoxItem Content="Heavenly Shield" Tag="1735" Background="{x:Null}"/>
+            <ComboBoxItem Content="Soul of Fire" Tag="1751" Background="{x:Null}"/>
+            <ComboBoxItem Content="Soul of Ice" Tag="1752" Background="{x:Null}"/>
+            <ComboBoxItem Content="Fetters" Tag="1757" Background="{x:Null}"/>
+            <ComboBoxItem Content="Artificially Enhanced" Tag="1764" Background="{x:Null}"/>
+            <ComboBoxItem Content="Artificially Enhanced" Tag="1765" Background="{x:Null}"/>
+            <ComboBoxItem Content="Damage Up" Tag="1781" Background="{x:Null}"/>
+            <ComboBoxItem Content="Vulnerability Down" Tag="1782" Background="{x:Null}"/>
+            <ComboBoxItem Content="Soul of Fire" Tag="1783" Background="{x:Null}"/>
+            <ComboBoxItem Content="Soul of Ice" Tag="1784" Background="{x:Null}"/>
+            <ComboBoxItem Content="Heated Up" Tag="1794" Background="{x:Null}"/>
+            <ComboBoxItem Content="Heated Up" Tag="1795" Background="{x:Null}"/>
+            <ComboBoxItem Content="Spell-in-Waiting" Tag="1808" Background="{x:Null}"/>
+            <ComboBoxItem Content="Nascent Flash" Tag="1857" Background="{x:Null}"/>
+            <ComboBoxItem Content="Temperance" Tag="1872" Background="{x:Null}"/>
+            <ComboBoxItem Content="Neutral Sect" Tag="1892" Background="{x:Null}"/>
+            <ComboBoxItem Content="Phantasmal" Tag="1903" Background="{x:Null}"/>
+            <ComboBoxItem Content="Light in the Dark" Tag="1904" Background="{x:Null}"/>
+            <ComboBoxItem Content="Perfect Deception" Tag="1906" Background="{x:Null}"/>
+            <ComboBoxItem Content="Vauthry's Blessing" Tag="1913" Background="{x:Null}"/>
+            <ComboBoxItem Content="Vauthry's Blessing" Tag="1925" Background="{x:Null}"/>
+            <ComboBoxItem Content="Paradise Regained" Tag="1974" Background="{x:Null}"/>
+            <ComboBoxItem Content="" Tag="2057" Background="{x:Null}"/>
+            <ComboBoxItem Content="" Tag="2058" Background="{x:Null}"/>
+            <ComboBoxItem Content="" Tag="2059" Background="{x:Null}"/>
+            <ComboBoxItem Content="" Tag="2060" Background="{x:Null}"/>
+            <ComboBoxItem Content="" Tag="2107" Background="{x:Null}"/>
+            <ComboBoxItem Content="Prey" Tag="2112" Background="{x:Null}"/>
+        </ComboBox>
 
     </Grid>
 </UserControl>

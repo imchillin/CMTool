@@ -29,6 +29,7 @@ namespace FFXIVTool.Views
         public CharacterDetailsView4()
         {
             InitializeComponent();
+            MainViewModel.ViewTime4 = this;
         }
 
         private void RedPxD(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -535,6 +536,53 @@ namespace FFXIVTool.Views
                 e.Handled = true;
                 return;
             }
+        }
+
+        private void StatusEff(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            var m = MemoryManager.Instance.MemLib;
+            var c = Settings.Instance.Character;
+
+            string GASG(params string[] args) => MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, args);
+
+            m.writeMemory(GASG(c.StatusEffect), "2bytes", (CharacterDetails.StatusEffect.value).ToString());
+            StatusEffectBox.ValueChanged -= StatusEff;
+        }
+
+        private void StatusEffectBox_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
+        {
+            if (StatusEffectBox.IsMouseOver || StatusEffectBox.IsKeyboardFocusWithin)
+            {
+                StatusEffectBox.ValueChanged -= StatusEff;
+                StatusEffectBox.ValueChanged += StatusEff;
+            }
+        }
+
+        private void StatusEffectBox2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var m = MemoryManager.Instance.MemLib;
+            var c = Settings.Instance.Character;
+
+            string GASG(params string[] args) => MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, args);
+
+            if (StatusEffectBox2.IsKeyboardFocusWithin || StatusEffectBox2.IsMouseOver)
+            {
+                if (StatusEffectBox2.SelectedIndex >= 0)
+                {
+                    CharacterDetails.StatusEffect.value = short.Parse(((ComboBoxItem)StatusEffectBox2.SelectedItem).Tag.ToString());
+                    m.writeMemory(GASG(c.StatusEffect), "int", ((ComboBoxItem)StatusEffectBox2.SelectedItem).Tag.ToString());
+                }
+            }
+        }
+
+        private void StatusEffectZero_Click(object sender, RoutedEventArgs e)
+        {
+            var m = MemoryManager.Instance.MemLib;
+            var c = Settings.Instance.Character;
+
+            string GASG(params string[] args) => MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, args);
+
+            m.writeMemory(GASG(c.StatusEffect), "2bytes", "0");
         }
 
         private void AoBButton_Click(object sender, RoutedEventArgs e)

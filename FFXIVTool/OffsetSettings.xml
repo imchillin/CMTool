@@ -118,6 +118,7 @@
     <DataHead>F0,83C</DataHead>
     <NPCName>1884</NPCName>
     <NPCModel>1902</NPCModel>
+    <StatusEffect>1C2C</StatusEffect>
 
     <!--Character Equipment-->
     <Job>1490</Job>

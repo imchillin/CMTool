@@ -3,7 +3,6 @@ using FFXIVTool.ViewModel;
 using System;
 using System.ComponentModel;
 using System.Threading;
-using System.Windows.Media.Media3D;
 
 namespace FFXIVTool.Utility
 {
@@ -144,14 +143,8 @@ namespace FFXIVTool.Utility
 
 					if (CharacterDetails.RotateFreeze)
 					{
-                        var q = new Vector3D(CharacterDetails.RotateX.value, CharacterDetails.RotateY.value, CharacterDetails.RotateZ.value).ToQuaternion();
-
-                        CharacterDetails.Rotation.value = (float)q.X;
-                        CharacterDetails.Rotation2.value = (float)q.Y;
-                        CharacterDetails.Rotation3.value = (float)q.Z;
-                        CharacterDetails.Rotation4.value = (float)q.W;
                         m.writeBytes(GAS(c.Body.Base, c.Body.Position.Rotation), CharacterDetails.Rotation.GetBytes());
-						m.writeBytes(GAS(c.Body.Base, c.Body.Position.Rotation2), CharacterDetails.Rotation2.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.Rotation2), CharacterDetails.Rotation2.GetBytes());
 						m.writeBytes(GAS(c.Body.Base, c.Body.Position.Rotation3), CharacterDetails.Rotation3.GetBytes());
 						m.writeBytes(GAS(c.Body.Base, c.Body.Position.Rotation4), CharacterDetails.Rotation4.GetBytes());
 					}
@@ -172,6 +165,7 @@ namespace FFXIVTool.Utility
                     if (CharacterDetails.CamViewY.freeze) m.writeBytes(GAS(c.CamViewY), CharacterDetails.CamViewY.GetBytes());
                     if (CharacterDetails.CamViewZ.freeze) m.writeBytes(GAS(c.CamViewZ), CharacterDetails.CamViewZ.GetBytes());
 
+                    if (CharacterDetails.StatusEffect.freeze) m.writeBytes(GASG(c.StatusEffect), CharacterDetails.StatusEffect.GetBytes());
                     if (CharacterDetails.CameraUpDown.freeze) m.writeBytes(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, c.CameraUpDown), CharacterDetails.CameraUpDown.GetBytes());
                     if (CharacterDetails.FOV2.freeze) m.writeBytes(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, c.FOV2), CharacterDetails.FOV2.GetBytes());
                     if (CharacterDetails.CameraYAMax.freeze) m.writeBytes(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, c.CameraYAMax), CharacterDetails.CameraYAMax.GetBytes());

@@ -229,6 +229,7 @@ namespace FFXIVTool.Models
         [JsonIgnore] public Address<short> DataPath { get; set; }
         [JsonIgnore] public Address<short> NPCName { get; set; }
         [JsonIgnore] public Address<short> NPCModel { get; set; }
+        [JsonIgnore] public Address<short> StatusEffect { get; set; }
         [JsonIgnore] public Address<float> FreezeFacial { get; set; }
         [JsonIgnore] public Address<string> TestArray { get; set; } // Appereance
         [JsonIgnore] public Address<string> TestArray2 { get; set; } // Equipment
@@ -257,10 +258,10 @@ namespace FFXIVTool.Models
         [JsonIgnore] public Address<float> CamAngleX { get; set; }
         [JsonIgnore] public Address<float> CamAngleY { get; set; }
         [JsonIgnore] public Address<byte> DataHead { get; set; }
-        [JsonIgnore] public Address<float> RotateX { get; set; }
-		[JsonIgnore] public Address<float> RotateY { get; set; }
-		[JsonIgnore] public Address<float> RotateZ { get; set; }
-		[JsonIgnore] public bool RotateFreeze { get; set; }
+        [JsonIgnore] public float RotateX { get; set; }
+        [JsonIgnore] public float RotateY { get; set; }
+        [JsonIgnore] public float RotateZ { get; set; }
+        [JsonIgnore] public bool RotateFreeze { get; set; }
 
 		public CharacterDetails()
         {
@@ -298,6 +299,7 @@ namespace FFXIVTool.Models
             DataHead = new Address<byte>();
             NPCName = new Address<short>();
             NPCModel = new Address<short>();
+            StatusEffect = new Address<short>();
             ScaleX = new Address<float>();
             ScaleY = new Address<float>();
             ScaleZ = new Address<float>();
@@ -461,9 +463,6 @@ namespace FFXIVTool.Models
             Max.Checker = true;
             Min.Checker = true;
             CZoom.Checker = true;
-            RotateX = new Address<float>();
-            RotateY = new Address<float>();
-            RotateZ = new Address<float>();
         }
     }
 }
