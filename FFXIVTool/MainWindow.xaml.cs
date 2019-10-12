@@ -38,30 +38,6 @@ namespace FFXIVTool
         Version version = Assembly.GetExecutingAssembly().GetName().Version;
         public MainWindow()
         {
-			// Call the update method.
-			UpdateProgram();
-
-            ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
-            if (!File.Exists(@"./OffsetSettings.xml"))
-            {
-                try
-                {
-                    string xmlStr;
-                    using (var wc = new WebClient())
-                    {
-                        xmlStr = wc.DownloadString(@"https://raw.githubusercontent.com/KrisanThyme/CMTool/master/FFXIVTool/OffsetSettings.xml");
-                    }
-                    var xmlDoc = new System.Xml.XmlDocument();
-                    xmlDoc.LoadXml(xmlStr);
-                    File.WriteAllText(@"./OffsetSettings.xml", xmlDoc.InnerXml);
-                }
-                catch
-                {
-                    System.Windows.MessageBox.Show("Unable to connect to the remote server - No connection could be made because the target machine actively refused it! \n If you wish to pursue using this application please download an updated OffsetSettings via discord.", "Oh no!");
-                    Close();
-                    return;
-                }
-            }
             List<ProcessLooker.Game> GameList = new  List<ProcessLooker.Game>();
             Process[] processlist = Process.GetProcesses();
             Processcheck = 0;
@@ -100,32 +76,6 @@ namespace FFXIVTool
 			InitializeComponent();
         }
 
-		private void UpdateProgram()
-		{
-			// Delete hte old updater file.
-			if (File.Exists(".SSTU.old"))
-				File.Delete(".SSTU.old");
-			try
-			{
-				Process.Start("SSToolUpdater.exe");
-			}
-			catch (Exception)
-			{
-				var result = MessageBox.Show(
-					"Couldn't run the updater. Would you like to visit the releases page to check for a new update manually?",
-					"SSTool", 
-					MessageBoxButton.YesNo, 
-					MessageBoxImage.Error
-				);
-
-				// Launch the web browser to the latest release.
-				if (result == MessageBoxResult.Yes)
-				{
-					Process.Start("https://github.com/KrisanThyme/CMTool/releases/latest");
-				}
-			}
-		}
-
         public bool AdminNeeded()
         {
             try
@@ -148,7 +98,7 @@ namespace FFXIVTool
         }
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            Title = $"Concept Matrix v1.1.5 (SSTool Dev Build: v{version})";
+            Title = $"Concept Matrix v{version} (By: Krisan Thyme)";
             DataContext = new MainViewModel();
             var settings = SaveSettings.Default;
             var accentColor = settings.Accent;
@@ -237,7 +187,7 @@ namespace FFXIVTool
 
         private void TwitterButton_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://twitter.com/ffxivsstool");
+            Process.Start("https://twitter.com/KrisanThyme");
         }
         private void Save_Click(object sender, RoutedEventArgs e)
         {
@@ -1017,7 +967,7 @@ namespace FFXIVTool
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
+            Process.Start("https://github.com/KrisanThyme/CMTool/releases");
         }
 
         private void GposeButton_Checked(object sender, RoutedEventArgs e)

@@ -17,8 +17,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotSquish", "lib\SaintCoina
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YamlDotNet", "lib\SaintCoinach\YamlDotNet\YamlDotNet.csproj", "{BF32DE1B-6276-4341-B212-F8862ADBBA7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSToolUpdater", "SSToolUpdater\SSToolUpdater.csproj", "{A19E57D4-2858-4C84-A916-E4591C8AFCD7}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,18 +75,6 @@ Global
 		{BF32DE1B-6276-4341-B212-F8862ADBBA7A}.Release-Unsigned|Any CPU.Build.0 = Release-Unsigned|Any CPU
 		{BF32DE1B-6276-4341-B212-F8862ADBBA7A}.Release-Unsigned|x64.ActiveCfg = Release-Unsigned|Any CPU
 		{BF32DE1B-6276-4341-B212-F8862ADBBA7A}.Release-Unsigned|x64.Build.0 = Release-Unsigned|Any CPU
-		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Debug|x64.ActiveCfg = Debug|x64
-		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Debug|x64.Build.0 = Debug|x64
-		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Release|x64.ActiveCfg = Release|x64
-		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Release|x64.Build.0 = Release|x64
-		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Release-Unsigned|Any CPU.ActiveCfg = Release|Any CPU
-		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Release-Unsigned|Any CPU.Build.0 = Release|Any CPU
-		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Release-Unsigned|x64.ActiveCfg = Release|x64
-		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Release-Unsigned|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

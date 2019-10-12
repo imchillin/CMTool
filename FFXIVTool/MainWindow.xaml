@@ -73,7 +73,7 @@
                 <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0">Always on Top</TextBlock>
             </StackPanel>
         </Button>
-        <Button HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}" VerticalAlignment="Top" x:Name="UpdateButton" Margin="520,-45,0,0" Width="107" Click="UpdateButton_Click" Height="45" Foreground="White" BorderBrush="#7F000000" BorderThickness="1,0" Padding="16,20,16,4" IsTabStop="False" IsEnabled="False">
+        <Button HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}" VerticalAlignment="Top" x:Name="UpdateButton" Margin="520,-45,0,0" Width="107" Click="UpdateButton_Click" Height="45" Foreground="White" BorderBrush="#7F000000" BorderThickness="1,0" Padding="16,20,16,4" IsTabStop="False">
             <StackPanel Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="Update" Padding="0" />
                 <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0"><Run Text="Update"/></TextBlock>
