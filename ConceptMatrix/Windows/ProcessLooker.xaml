@@ -10,7 +10,7 @@
         BorderThickness="1"              
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         mc:Ignorable="d"
-        Title="Process Finder" Height="400.781" Width="379.244" ResizeMode="NoResize" Icon="/ConceptMatrix;component/ffxivmeteorlogo.ico" WindowStartupLocation="CenterScreen">
+        Title="Process Finder" Height="400.781" Width="379.244" ResizeMode="NoResize" Icon="/ConceptMatrix;component/cmtool-icon.ico" WindowStartupLocation="CenterScreen">
     <Grid>
         <DataGrid x:Name="ProcessGrid" HorizontalAlignment="Left" Height="310" Margin="10,10,0,0" VerticalAlignment="Top" Width="353" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" ItemsSource="{Binding Path=Game}" IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" MouseDoubleClick="ProcessGrid_MouseDoubleClick" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden">
             <DataGrid.Columns>

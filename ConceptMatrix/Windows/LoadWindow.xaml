@@ -11,7 +11,7 @@
         BorderThickness="1"              
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         mc:Ignorable="d"
-        Title="Load Window" Height="313.003" Width="349.244" ResizeMode="NoResize" Icon="/ConceptMatrix;component/ffxivmeteorlogo.ico" WindowStartupLocation="CenterOwner">
+        Title="Load Window" Height="313.003" Width="349.244" ResizeMode="NoResize" Icon="/ConceptMatrix;component/cmtool-icon.ico" WindowStartupLocation="CenterOwner">
     <Grid Margin="0,0,0,2">
         <ListBox BorderThickness="1" FontSize="24" Margin="10,10,0,0" BorderBrush="Black" HorizontalAlignment="Left" VerticalAlignment="Top" Width="321" Height="222">
             <ListBoxItem x:Name="All"  Content="Load All Character" Uid="1" KeyDown="All_KeyDown" PreviewMouseDown="All_PreviewMouseDown"/>

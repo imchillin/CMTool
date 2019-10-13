@@ -1,15 +1,8 @@
 
 \.vs/
 
-FFXIVTool/obj/
+ConceptMatrix/obj/
 
 packages/
 
-FFXIVTool/bin/
-
-SSToolsUpdater/bin/
-
-SSToolsUpdater/obj/
-SSToolUpdater/bin/
-
-SSToolUpdater/obj/
+ConceptMatrix/bin/

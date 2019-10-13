@@ -1,9 +1,0 @@
-{
-  "sheet": "AetheryteSystemDefine",
-  "defaultColumn": "name",
-  "definitions": [
-    {
-      "name": "Text"
-    }
-  ]
-}

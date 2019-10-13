@@ -40,7 +40,7 @@
             </TabItem>
         </TabControl>
         <ComboBox HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="131" ItemsSource="{Binding Path=CharacterDetails.CharacterDetails.Names}" SelectedIndex="{Binding Path=CharacterDetails.CharacterDetails.SelectedIndex}" IsTabStop="False"/>
-        <Button HorizontalAlignment="Left" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="146,7,0,0" VerticalAlignment="Top" Width="74" Command="{Binding Path=CharacterDetails.RefreshEntitiesCommand}" IsTabStop="False">
+        <Button HorizontalAlignment="Left" Style="{StaticResource MaterialDesignRaisedAccentButton}" ToolTip="Reload the entity list, refreshing the available entries to select from." materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="146,7,0,0" VerticalAlignment="Top" Width="74" Command="{Binding Path=CharacterDetails.RefreshEntitiesCommand}" IsTabStop="False">
             <DockPanel>
                 <Image Source="Resources/Refresh.png" RenderTransformOrigin="0.5,0.5">
                     <Image.RenderTransform>
@@ -54,14 +54,14 @@
                 </Image>
             </DockPanel>
         </Button>
-        <Button x:Name="CharacterRefreshButton" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Actor Refresh" HorizontalAlignment="Left" Margin="225,7,0,0" VerticalAlignment="Top" Width="125" Click="CharacterRefreshButton_Click" IsTabStop="False"/>
+        <Button x:Name="CharacterRefreshButton" ToolTip="Refresh the selected actor, reloading it based on the changes you've made." Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Actor Refresh" HorizontalAlignment="Left" Margin="225,7,0,0" VerticalAlignment="Top" Width="125" Click="CharacterRefreshButton_Click" IsTabStop="False"/>
         <Button x:Name="FindProcess" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Find New Process" HorizontalAlignment="Left" Margin="953,7,0,0" VerticalAlignment="Top" Width="151" Click="FindProcess_Click" IsTabStop="False"/>
         <ToggleButton x:Name="GposeButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding Path=CharacterDetails.CharacterDetails.GposeMode}" Margin="455,3,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="21" Checked="GposeButton_Checked" Unchecked="GposeButton_Unchecked" IsTabStop="False" />
         <Label Content="GPose Mode:" HorizontalAlignment="Left" Margin="360,0,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Button HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}" VerticalAlignment="Top" x:Name="TwitterButton" Margin="910,-45,0,0" Width="131" Click="TwitterButton_Click" Height="45" Foreground="White" BorderBrush="#7F000000" BorderThickness="1,0" Padding="16,20,16,4" IsTabStop="False">
             <StackPanel Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="Twitter" Padding="0" />
-                <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0"><Run Text="Our Twitter"/></TextBlock>
+                <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0"><Run Text="Twitter"/></TextBlock>
             </StackPanel>
         </Button>
         <Button x:Name="Save" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Save Appearance" HorizontalAlignment="Left" Margin="755,7,0,0" VerticalAlignment="Top" Width="145" Click="Save_Click" IsTabStop="False"/>
@@ -82,7 +82,7 @@
         <Button HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}" VerticalAlignment="Top" x:Name="DiscordButton" Margin="778,-45,0,0" Width="133" Click="DiscordButton_Click" Height="45" Foreground="White" BorderBrush="#7F000000" BorderThickness="1,0" Padding="16,20,16,4" IsTabStop="False">
             <StackPanel Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="Discord" Padding="0" />
-                <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="Our Discord"/>
+                <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="Discord"/>
             </StackPanel>
         </Button>
         <ToggleButton x:Name="TargetButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.CharacterDetails.TargetModeActive}" Margin="455,25,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="21" Checked="TargetButton_Checked" Unchecked="TargetButton_Unchecked" IsTabStop="False" />
