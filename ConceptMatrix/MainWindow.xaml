@@ -39,7 +39,7 @@
                 <Views:Beta Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
             </TabItem>
         </TabControl>
-        <ComboBox HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="131" ItemsSource="{Binding Path=CharacterDetails.CharacterDetails.Names}" SelectedIndex="{Binding Path=CharacterDetails.CharacterDetails.SelectedIndex}" IsTabStop="False"/>
+        <ComboBox ToolTip="Displays the list of targetable entities in the area around you.&#xD;&#xA;&#x2022; This list is populated based on distance from the player, and can potentially shift if any entities change positions, including minions." HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="131" ItemsSource="{Binding Path=CharacterDetails.CharacterDetails.Names}" SelectedIndex="{Binding Path=CharacterDetails.CharacterDetails.SelectedIndex}" IsTabStop="False"/>
         <Button HorizontalAlignment="Left" Style="{StaticResource MaterialDesignRaisedAccentButton}" ToolTip="Reload the entity list, refreshing the available entries to select from." materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="146,7,0,0" VerticalAlignment="Top" Width="74" Command="{Binding Path=CharacterDetails.RefreshEntitiesCommand}" IsTabStop="False">
             <DockPanel>
                 <Image Source="Resources/Refresh.png" RenderTransformOrigin="0.5,0.5">
@@ -57,7 +57,7 @@
         <Button x:Name="CharacterRefreshButton" ToolTip="Refresh the selected actor, reloading it based on the changes you've made." Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Actor Refresh" HorizontalAlignment="Left" Margin="225,7,0,0" VerticalAlignment="Top" Width="125" Click="CharacterRefreshButton_Click" IsTabStop="False"/>
         <Button x:Name="FindProcess" ToolTip="Reload the Final Fantasy XIV process." Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Reload Process" HorizontalAlignment="Left" Margin="953,7,0,0" VerticalAlignment="Top" Width="151" Click="FindProcess_Click" IsTabStop="False"/>
         <ToggleButton x:Name="GposeButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding Path=CharacterDetails.CharacterDetails.GposeMode}" Margin="455,3,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="21" Checked="GposeButton_Checked" Unchecked="GposeButton_Unchecked" IsTabStop="False" />
-        <Label Content="GPose Mode:" HorizontalAlignment="Left" Margin="360,0,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="GPose Mode:" ToolTip="Allows for certain values such as XYZ Position, Rotation and Animation to be changed for your currently selected entity in GPose.&#xD;&#xA;&#x2022; GPose mode and Target Mode both toggle on at the same time. Make sure not to have Target Mode already toggled on, or it will toggle off instead." HorizontalAlignment="Left" Margin="360,0,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Button HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}" VerticalAlignment="Top" x:Name="TwitterButton" Margin="910,-45,0,0" Width="131" Click="TwitterButton_Click" Height="45" Foreground="White" BorderBrush="#7F000000" BorderThickness="1,0" Padding="16,20,16,4" IsTabStop="False">
             <StackPanel Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="Twitter" Padding="0" />
@@ -65,7 +65,7 @@
             </StackPanel>
         </Button>
         <Button x:Name="Save" ToolTip="Save Appearance to a JSON file." Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Save Appearance" HorizontalAlignment="Left" Margin="755,7,0,0" VerticalAlignment="Top" Width="145" Click="Save_Click" IsTabStop="False"/>
-        <Button x:Name="Load" ToolTip="Load Appearance from a user-generated JSON file." Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Load Appearance" HorizontalAlignment="Left" Margin="605,7,0,0" VerticalAlignment="Top" Width="145" Click="Load_Click" IsTabStop="False"/>
+        <Button x:Name="Load" ToolTip="Load Appearance from a user-generated JSON file.&#xD;&#xA;&#x2022; You can load data you have saved from the Character Creator in-game using the 'Load .DAT' option." Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Load Appearance" HorizontalAlignment="Left" Margin="605,7,0,0" VerticalAlignment="Top" Width="145" Click="Load_Click" IsTabStop="False"/>
         <Button x:Name="Uncheck" ToolTip="Uncheck and unfreeze all selections." Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Unfreeze All" HorizontalAlignment="Left" Margin="500,7,0,0" VerticalAlignment="Top" Width="100" Click="Uncheck_Click" Padding="15,4,16,4" FontSize="12" IsTabStop="False"/>
         <Button HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}" VerticalAlignment="Top" x:Name="AlwaysOnTop" Margin="626,-45,0,0" Width="153" Click="AlwaysOnTop_Click" Height="45" Foreground="White" BorderBrush="#7F000000" BorderThickness="1,0" Padding="16,20,16,4" IsTabStop="False">
             <StackPanel Orientation="Horizontal">
@@ -86,8 +86,8 @@
             </StackPanel>
         </Button>
         <ToggleButton x:Name="TargetButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.CharacterDetails.TargetModeActive}" Margin="455,25,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="21" Checked="TargetButton_Checked" Unchecked="TargetButton_Unchecked" IsTabStop="False" />
-        <Label Content="Target Mode:" HorizontalAlignment="Left" Margin="360,23,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Button x:Name="SavePoint" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Save State" HorizontalAlignment="Left" Margin="1005,50,0,0" VerticalAlignment="Top" Width="100" IsTabStop="False" Click="SavePoint_Click"/>
-        <Button x:Name="LoadSavePoint" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Load State" HorizontalAlignment="Left" Margin="900,50,0,0" VerticalAlignment="Top" Width="100" IsTabStop="False" Click="LoadSavePoint_Click"/>
+        <Label Content="Target Mode:" ToolTip="Allows you to change values for your selected target without using the Entity List&#xD;&#xA;&#x2022; This is handy for busy areas where the Entity List constantly shifting. You will need to uncheck this and use the normal method to apply the changes you make, though." HorizontalAlignment="Left" Margin="360,23,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Button x:Name="SavePoint" ToolTip="Creates a 'Backup' state that you can load later." Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Save State" HorizontalAlignment="Left" Margin="1005,50,0,0" VerticalAlignment="Top" Width="100" IsTabStop="False" Click="SavePoint_Click"/>
+        <Button x:Name="LoadSavePoint" ToolTip="Reverts back to your 'Backup' state." Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Load State" HorizontalAlignment="Left" Margin="900,50,0,0" VerticalAlignment="Top" Width="100" IsTabStop="False" Click="LoadSavePoint_Click"/>
     </Grid>
 </controls:MetroWindow>

@@ -53,8 +53,9 @@ namespace ConceptMatrix.ViewModel
 			try
 			{
 				// get the array size
-				if (CharacterDetails.GposeMode) CharacterDetails.Size = m.readLong(MemoryManager.Instance.GposeEntityOffset);
-				else CharacterDetails.Size = m.readLong(MemoryManager.Instance.BaseAddress);
+				if (CharacterDetails.GposeMode || CharacterDetails.TargetModeActive) CharacterDetails.Size = m.readLong(MemoryManager.Instance.GposeAddress);
+                if (CharacterDetails.GposeMode || !CharacterDetails.TargetModeActive) CharacterDetails.Size = m.readLong(MemoryManager.Instance.GposeEntityOffset);
+                if (!CharacterDetails.GposeMode) CharacterDetails.Size = m.readLong(MemoryManager.Instance.BaseAddress);
 
 				// clear the entity list
 				CharacterDetails.Names.Clear();
@@ -88,15 +89,15 @@ namespace ConceptMatrix.ViewModel
 						CharacterDetails.Names.Add(name);
 					}
 				}
-				else
-				{
+				if (CharacterDetails.GposeMode || CharacterDetails.TargetModeActive)
+                {
 					for (var i = 0; i < CharacterDetails.Size; i++)
 					{
 						int Test = 0;
 						var addr = GAS(MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, ((i + 1) * 8).ToString("X")), c.Name);
-						var x2 = m.readFloat(GAS(MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, ((i + 1) * 8).ToString("X")), c.Body.Base, c.Body.Position.X));
-						var y2 = m.readFloat(GAS(MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, ((i + 1) * 8).ToString("X")), c.Body.Base, c.Body.Position.Y));
-						var z2 = m.readFloat(GAS(MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, ((i + 1) * 8).ToString("X")), c.Body.Base, c.Body.Position.Z));
+						var x2 = m.readFloat(GAS(MemoryManager.Add(MemoryManager.Instance.GposeAddress, ((i + 1) * 8).ToString("X")), c.Body.Base, c.Body.Position.X));
+						var y2 = m.readFloat(GAS(MemoryManager.Add(MemoryManager.Instance.GposeAddress, ((i + 1) * 8).ToString("X")), c.Body.Base, c.Body.Position.Y));
+						var z2 = m.readFloat(GAS(MemoryManager.Add(MemoryManager.Instance.GposeAddress, ((i + 1) * 8).ToString("X")), c.Body.Base, c.Body.Position.Z));
 						if (i == 0)
 						{
 							x1 = x2;
@@ -114,8 +115,34 @@ namespace ConceptMatrix.ViewModel
 						CharacterDetails.Names.Add(name);
 					}
 				}
-				// set the enable state
-				CharacterDetails.IsEnabled = true;
+                if (CharacterDetails.GposeMode || !CharacterDetails.TargetModeActive)
+                {
+                    for (var i = 0; i < CharacterDetails.Size; i++)
+                    {
+                        int Test = 0;
+                        var addr = GAS(MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, ((i + 1) * 8).ToString("X")), c.Name);
+                        var x2 = m.readFloat(GAS(MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, ((i + 1) * 8).ToString("X")), c.Body.Base, c.Body.Position.X));
+                        var y2 = m.readFloat(GAS(MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, ((i + 1) * 8).ToString("X")), c.Body.Base, c.Body.Position.Y));
+                        var z2 = m.readFloat(GAS(MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, ((i + 1) * 8).ToString("X")), c.Body.Base, c.Body.Position.Z));
+                        if (i == 0)
+                        {
+                            x1 = x2;
+                            y1 = y2;
+                            z1 = z2;
+                        }
+                        else
+                        {
+                            Test = (int)Math.Round(Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2) + Math.Pow(z2 - z1, 2)));
+                        }
+                        var name = m.readString(addr);
+                        if (name.IndexOf('\0') != -1)
+                            name = name.Substring(0, name.IndexOf('\0'));
+                        if (i != 0) name += $" ({Test})";
+                        CharacterDetails.Names.Add(name);
+                    }
+                }
+                // set the enable state
+                CharacterDetails.IsEnabled = true;
 				// set the index if its under 0
 				if (CharacterDetails.SelectedIndex < 0)
 					CharacterDetails.SelectedIndex = 0;
@@ -130,13 +157,14 @@ namespace ConceptMatrix.ViewModel
 			try
 			{
 				CharacterDetails.Territoryxd.value = m.readInt(GAS(MemoryManager.Instance.TerritoryAddress, c.Territory));
-				if (CharacterDetails.GposeMode) baseAddr = MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, eOffset);
-				else baseAddr = MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset);
+				if (CharacterDetails.GposeMode || CharacterDetails.TargetModeActive) baseAddr = MemoryManager.Add(MemoryManager.Instance.GposeAddress, eOffset);
+                if (CharacterDetails.GposeMode || !CharacterDetails.TargetModeActive) baseAddr = MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, eOffset);
+                if (!CharacterDetails.GposeMode) baseAddr = MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset);
 
 				if (CharacterDetails.TargetModeActive)
 				{
-					if (CharacterDetails.GposeMode) baseAddr = MemoryManager.Instance.GposeAddress;
-					else baseAddr = MemoryManager.Instance.TargetAddress;
+                    if (!CharacterDetails.GposeMode) baseAddr = MemoryManager.Instance.TargetAddress;
+                    if (CharacterDetails.GposeMode) baseAddr = MemoryManager.Instance.GposeAddress;
 				}
 				var nameAddr = GAS(baseAddr, c.Name);
 				var fcnameAddr = GAS(baseAddr, c.FCTag);

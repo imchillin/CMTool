@@ -10,7 +10,7 @@
              mc:Ignorable="d" d:DesignWidth="1115" Height="530">
     <Grid Height="530">
         <Border BorderBrush="Black" BorderThickness="0,0,1,0" HorizontalAlignment="Left" Height="530" Margin="-185,0,0,0" VerticalAlignment="Top" Width="828"/>
-        <CheckBox IsChecked="{Binding Path=CharacterDetails.Job.freeze}" Content="Main Hand:" HorizontalAlignment="Left" Margin="8,5,0,0" VerticalAlignment="Top" Height="38"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.Job.freeze}" Content="Main Hand:" ToolTip="Allows you to equip any weapon on the selected entity.&#xD;&#xA;&#x2022; If you want their hands to be empty, either equip the 'Emperor's New Fists', or use Main Hand Scale and/or Off Hand Scale in the Right Pane." HorizontalAlignment="Left" Margin="8,5,0,0" VerticalAlignment="Top" Height="38"/>
         <TextBox Text="{Binding Path=CharacterDetails.Job.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="235,5,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="65" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Height="38">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
@@ -41,7 +41,7 @@
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <CheckBox IsChecked="{Binding Path=CharacterDetails.Offhand.freeze}" Content="Off Hand:" HorizontalAlignment="Left" Margin="8,55,0,0" VerticalAlignment="Top" Height="38"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.Offhand.freeze}" Content="Off Hand:" ToolTip="Allows you to equip an off hand weapon. &#xD;&#xA;&#x2022; In order to find an applicable off hand (except for shields), you need to search for the main hand equipment using the off hand 'View' button. For example to find a Sheath or Quiver, you need to search for the Katana or Bow that goes with it." HorizontalAlignment="Left" Margin="8,55,0,0" VerticalAlignment="Top" Height="38"/>
         <TextBox Text="{Binding Path=CharacterDetails.Offhand.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="235,55,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="65" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Height="38">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
@@ -269,7 +269,7 @@
         <Button Name="LeftSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="View" HorizontalAlignment="Left" Margin="560,355,0,0" VerticalAlignment="Top" Width="65" Click="LeftSearch_Click" Height="38"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.WeaponX.freeze}" Content="X" HorizontalAlignment="Left" Margin="648,22,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="XPos2" Value="{Binding Path=CharacterDetails.WeaponX.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="683,22,0,0" VerticalAlignment="Top" Width="160" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01"  TextAlignment="Right" SourceUpdated="XPos2_SourceUpdated" Height="28"/>
-        <Label Content="Main Hand Scale" HorizontalAlignment="Left" Margin="690,-6,0,0" VerticalAlignment="Top"/>
+        <Label Content="Main Hand Scale" ToolTip="Controls the XYZ Scale of the entity's main hand weapon." HorizontalAlignment="Left" Margin="690,-6,0,0" VerticalAlignment="Top"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.WeaponY.freeze}" Content="Y" HorizontalAlignment="Left" Margin="648,52,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="XPos2_Copy" Value="{Binding Path=CharacterDetails.WeaponY.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="683,52,0,0" VerticalAlignment="Top" Width="160" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01"  TextAlignment="Right" SourceUpdated="XPos2_Copy_SourceUpdated" Height="28"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.WeaponZ.freeze}" Content="Z" HorizontalAlignment="Left" Margin="648,82,0,0" VerticalAlignment="Top" Height="28"/>
@@ -283,7 +283,7 @@
         <mah:NumericUpDown x:Name="WeaponBlue" Value="{Binding Path=CharacterDetails.WeaponBlue.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="936,82,0,0" VerticalAlignment="Top" Width="160" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01"  TextAlignment="Right" SourceUpdated="WeaponBlue_SourceUpdated" Height="28"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.OffhandX.freeze}" Content="X" HorizontalAlignment="Left" Margin="648,154,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="OXPos" Value="{Binding Path=CharacterDetails.OffhandX.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="683,154,0,0" VerticalAlignment="Top" Width="160" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01"  TextAlignment="Right" SourceUpdated="OXPos_SourceUpdated" Height="28"/>
-        <Label Content="Off Hand Scale" HorizontalAlignment="Left" Margin="690,125,0,0" VerticalAlignment="Top"/>
+        <Label Content="Off Hand Scale" ToolTip="Controls the XYZ Scale of the entity's off hand weapon.&#xD;&#xA;&#x2022; This affects equipment such as a Shield, Quiver, Aetherpack, Sleeve, Katana Sheath, Focus and Left Hand Dagger or Fist." HorizontalAlignment="Left" Margin="690,125,0,0" VerticalAlignment="Top"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.OffhandY.freeze}" Content="Y" HorizontalAlignment="Left" Margin="648,184,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="OYPos" Value="{Binding Path=CharacterDetails.OffhandY.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="683,184,0,0" VerticalAlignment="Top" Width="160" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01"  TextAlignment="Right" SourceUpdated="OYPos_SourceUpdated" Height="28"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.OffhandZ.freeze}" Content="Z" HorizontalAlignment="Left" Margin="648,214,0,0" VerticalAlignment="Top" Height="28"/>
@@ -295,12 +295,12 @@
         <mah:NumericUpDown x:Name="OffGreen" Value="{Binding Path=CharacterDetails.OffhandGreen.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="936,184,0,0" VerticalAlignment="Top" Width="160" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01"  TextAlignment="Right" SourceUpdated="OffGreen_SourceUpdated" Height="28"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.OffhandBlue.freeze}" Content="B" HorizontalAlignment="Left" Margin="901,214,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="OffBlue" Value="{Binding Path=CharacterDetails.OffhandBlue.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="936,214,0,0" VerticalAlignment="Top" Width="160" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01"  TextAlignment="Right" SourceUpdated="OffBlue_SourceUpdated" Height="28"/>
-        <Button x:Name="SettoZero" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Zero" HorizontalAlignment="Left" Margin="856,22,0,0" VerticalAlignment="Top" Width="88" Height="28" FontSize="14" Click="SettoZero_Click" IsTabStop="False">
+        <Button x:Name="SettoZero" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Zero" ToolTip="Sets the XYZ Scale to 0, effectively rendering it invisible. You can undo this by inputing '1.0' in each of the fields." HorizontalAlignment="Left" Margin="856,22,0,0" VerticalAlignment="Top" Width="88" Height="28" FontSize="14" Click="SettoZero_Click" IsTabStop="False">
             <Button.LayoutTransform>
                 <RotateTransform Angle="-90" />
             </Button.LayoutTransform>
         </Button>
-        <Button x:Name="SettoZero2" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Zero" HorizontalAlignment="Left" Margin="856,151,0,0" VerticalAlignment="Top" Width="88" Height="28" FontSize="14" Click="SettoZero2_Click" IsTabStop="False">
+        <Button x:Name="SettoZero2" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Zero" ToolTip="Sets the XYZ Scale to 0, effectively rendering it invisible. You can undo this by inputing '1.0' in each of the fields." HorizontalAlignment="Left" Margin="856,151,0,0" VerticalAlignment="Top" Width="88" Height="28" FontSize="14" Click="SettoZero2_Click" IsTabStop="False">
             <Button.LayoutTransform>
                 <RotateTransform Angle="-90" />
             </Button.LayoutTransform>

@@ -26,6 +26,7 @@ namespace ConceptMatrix.ViewModel
         public static CharacterDetailsView3 ViewTime3;
         public static CharacterDetailsView2 ViewTime2;
         public static CharacterDetailsView ViewTime;
+        public static MainWindow MainTime;
         private static CharacterDetailsViewModel characterDetails;
 
 		public event PropertyChangedEventHandler PropertyChanged;
