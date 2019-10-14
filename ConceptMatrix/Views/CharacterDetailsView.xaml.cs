@@ -269,7 +269,7 @@ namespace ConceptMatrix.Views
             var m = MemoryManager.Instance.MemLib;
             var c = Settings.Instance.Character;
 
-            string GAS(params string[] args) => MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, args);
+            //string GAS(params string[] args) => MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, args);
 
             CharacterDetails.Rotation.value = (float)quat.X;
             CharacterDetails.Rotation2.value = (float)quat.Y;

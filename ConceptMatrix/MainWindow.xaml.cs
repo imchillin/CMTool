@@ -20,6 +20,7 @@ using System.Net;
 using ConceptMatrix.Views;
 using WepTuple = System.Tuple<int, int, int, int>;
 using SaintCoinach;
+using System.Windows.Controls;
 
 namespace ConceptMatrix
 {
@@ -74,6 +75,8 @@ namespace ConceptMatrix
                 MainViewModel.gameProcId = f.Choice.ID;
             }
 			InitializeComponent();
+            ToolTipService.ShowDurationProperty.OverrideMetadata(
+                typeof(DependencyObject), new FrameworkPropertyMetadata(Int32.MaxValue));
         }
 
         public bool AdminNeeded()
