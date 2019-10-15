@@ -1061,21 +1061,23 @@ namespace ConceptMatrix
 
         private void TargetButton_Checked(object sender, RoutedEventArgs e)
         {
-            CharacterRefreshButton.IsEnabled = false;
             if (GposeButton.IsEnabled == false)
+                CharacterRefreshButton.IsEnabled = true;
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Instance.TargetAddress;
             if (GposeButton.IsEnabled == true)
+                CharacterRefreshButton.IsEnabled = false;
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Instance.GposeAddress;
         }
 
         private void TargetButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            CharacterRefreshButton.IsEnabled = true;
             if (TargetButton.IsKeyboardFocusWithin || TargetButton.IsMouseOver)
             {
                 if (GposeButton.IsEnabled == false)
+                    CharacterRefreshButton.IsEnabled = true;
                     CharacterDetailsViewModel.baseAddr = MemoryManager.Add(MemoryManager.Instance.BaseAddress, CharacterDetailsViewModel.eOffset);
                 if (GposeButton.IsEnabled == true)
+                    CharacterRefreshButton.IsEnabled = false;
                     CharacterDetailsViewModel.baseAddr = MemoryManager.Instance.GposeEntityOffset;
             }
         }

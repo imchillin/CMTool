@@ -174,8 +174,8 @@
         <Slider Name="RotationSlider2" SourceUpdated="RotationUpDown2_SourceUpdated" Value="{Binding CharacterDetails.RotateY, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="938,250,0,0" VerticalAlignment="Top" Width="145" Minimum="0" Maximum="360" TickFrequency="0.5"  Visibility="Hidden" IsEnabled="False"/>
         <Slider Name="RotationSlider3" SourceUpdated="RotationUpDown3_SourceUpdated" Value="{Binding CharacterDetails.RotateZ, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="938,280,0,0" VerticalAlignment="Top" Width="145" Minimum="0" Maximum="360" TickFrequency="0.5"  Visibility="Hidden" IsEnabled="False"/>
 
-        <ToggleButton Name="RotSliderButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1067,305,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Checked="RotSliderButton_Checked" Unchecked="RotSliderButton_Unchecked" />
-        <Label Content="Rotation Sliders:" HorizontalAlignment="Left" Margin="956,307,0,0" VerticalAlignment="Top" Height="28"/>
+        <ToggleButton Name="RotSliderButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1067,185,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Checked="RotSliderButton_Checked" Unchecked="RotSliderButton_Unchecked" />
+        <Label Content="Rotation Sliders:" HorizontalAlignment="Left" Margin="956,187,0,0" VerticalAlignment="Top" Height="28"/>
 
         <CheckBox IsChecked="{Binding CharacterDetails.X.freeze}" Content="X Position:" HorizontalAlignment="Left" Margin="545,215,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="PosX" Value="{Binding CharacterDetails.X.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,215,0,0" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C000000" StringFormat="F10" Interval="0.01" SourceUpdated="PosX_SourceUpdated" TextAlignment="Right" MinWidth="0" MinHeight="0" Height="28" FontSize="11.35" FontFamily="Segoe UI"/>
@@ -263,8 +263,9 @@
         <Label HorizontalAlignment="Left" Height="28" Margin="864,218,0,0" VerticalAlignment="Top" FontSize="13" Content="X Rotation:"/>
         <Label HorizontalAlignment="Left" Height="28" Margin="864,248,0,0" VerticalAlignment="Top" FontSize="13" Content="Y Rotation:"/>
         <Label HorizontalAlignment="Left" Height="28" Margin="864,278,0,0" VerticalAlignment="Top" FontSize="13" Content="Z Rotation:"/>
-
-        <Views:SpecialControl x:Name="SpecialControl" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Margin="536,0,0,0" Height="Auto" Grid.ColumnSpan="2"/>
         <Views:EmoteFlyOut x:Name="EmoteFlyouts" Width="534" HorizontalAlignment="Left" VerticalAlignment="Top" Height="Auto" Visibility="Hidden" Margin="0,0,0,0"/>
+        <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1067,305,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsChecked="{Binding CharacterDetails.AltRotate}" />
+        <Label Content="Relative XYZ Rot:" ToolTip="This toggle will make all XYZ rotations relative to the entity being targeted, and not absolute based on the gameworld." HorizontalAlignment="Left" Margin="956,307,0,0" VerticalAlignment="Top" Height="28"/>
+        <Views:SpecialControl x:Name="SpecialControl" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Margin="536,0,0,0" Height="Auto" Grid.ColumnSpan="2"/>
     </Grid>
 </UserControl>
