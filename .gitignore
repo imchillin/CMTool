@@ -1,8 +1,6 @@
 
 \.vs/
-
 ConceptMatrix/obj/
-
-packages/
-
 ConceptMatrix/bin/
+ConceptMatrix/lib/SaintCoinach
+packages/
