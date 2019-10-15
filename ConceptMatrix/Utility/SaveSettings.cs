@@ -61,6 +61,8 @@ namespace ConceptMatrix.Utility
         public float CamAngleX { get; set; } = 0;
         public float CamAngleY { get; set; } = 0;
         public bool RotationSliders { get; set; } = true;
+        public bool AdvancedMove { get; set; } = true;
+        public bool AltRotate { get; set; } = true;
         public string CharacterAoBBytes { get; set; } = "";
         public string EquipmentBytes { get; set; } = "";
         public WepTuple MainHandQuads { get; set; }

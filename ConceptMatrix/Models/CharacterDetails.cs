@@ -82,8 +82,6 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<float> X { get; set; }
         [JsonIgnore] public Address<float> Y { get; set; }
         [JsonIgnore] public Address<float> Z { get; set; }
-		// Advance move tool.
-		[JsonIgnore] public bool AdvancedMove { get; set; } = false;
 
         [JsonIgnore] public Address<byte> Head { get; set; }
         [JsonIgnore] public Address<byte> Hair { get; set; }
@@ -262,7 +260,6 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public float RotateY { get; set; }
         [JsonIgnore] public float RotateZ { get; set; }
         [JsonIgnore] public bool RotateFreeze { get; set; }
-        [JsonIgnore] public bool AltRotate { get; set; }
 
         public CharacterDetails()
         {
@@ -465,7 +462,6 @@ namespace ConceptMatrix.Models
             Min.Checker = true;
             CZoom.Checker = true;
             RotateFreeze = false;
-            AltRotate = false;
         }
     }
 }

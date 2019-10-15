@@ -22,6 +22,7 @@ namespace ConceptMatrix.ViewModel
         public Mem MemLib = new Mem();
         public static int gameProcId = 0;
         public static ThreadWriting ThreadTime;
+        public static RotationView RotTime;
         public static CharacterDetailsView4 ViewTime4;
         public static CharacterDetailsView3 ViewTime3;
         public static CharacterDetailsView2 ViewTime2;

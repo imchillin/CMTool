@@ -22,13 +22,15 @@ namespace ConceptMatrix.Views
 		public static ExdCsvReader _exdProvider = new ExdCsvReader();
 		public static bool xyzcheck = false;
 		public static bool numbcheck = false;
+        public bool AltRotate;
+        public bool AdvancedMove;
 
-		public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
+        public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
 		public CharacterDetailsView()
 		{
 			InitializeComponent();
 			_exdProvider.MonsterList();
-			MainViewModel.ViewTime = this;
+            MainViewModel.ViewTime = this;
 			ExdCsvReader.MonsterX = _exdProvider.Monsters.Values.ToArray();
 			CharacterDetailsViewModel.Viewtime = this;
 			DispatcherTimer timer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(40) };
@@ -80,6 +82,14 @@ namespace ConceptMatrix.Views
                 RotationSlider2.IsEnabled = false;
                 RotationSlider3.Visibility = Visibility.Hidden;
                 RotationSlider3.IsEnabled = false;
+            }
+            if (SaveSettings.Default.AdvancedMove == true)
+            {
+                PosRelButton.IsChecked = true;
+            }
+            if (SaveSettings.Default.AltRotate == true)
+            {
+                RotRelButton.IsChecked = true;
             }
 
         }
@@ -266,19 +276,10 @@ namespace ConceptMatrix.Views
             // Get the euler angles from UI.	
             var quat = GetEulerAngles().ToQuaternion();
 
-            var m = MemoryManager.Instance.MemLib;
-            var c = Settings.Instance.Character;
-
-            //string GAS(params string[] args) => MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, args);
-
             CharacterDetails.Rotation.value = (float)quat.X;
             CharacterDetails.Rotation2.value = (float)quat.Y;
             CharacterDetails.Rotation3.value = (float)quat.Z;
             CharacterDetails.Rotation4.value = (float)quat.W;
-            //m.writeMemory(GAS(c.Body.Base, c.Body.Position.Rotation), "float", quat.X.ToString());	
-            //m.writeMemory(GAS(c.Body.Base, c.Body.Position.Rotation2), "float", quat.Y.ToString());	
-            //m.writeMemory(GAS(c.Body.Base, c.Body.Position.Rotation3), "float", quat.Z.ToString());	
-            //m.writeMemory(GAS(c.Body.Base, c.Body.Position.Rotation4), "float", quat.W.ToString());	
             // Remove listeners for value changed.	
             RotationUpDown.ValueChanged -= RotV;
             RotationUpDown2.ValueChanged -= RotV;
@@ -289,21 +290,10 @@ namespace ConceptMatrix.Views
             // Get the euler angles from UI.	
             var quat = GetEulerAngles().ToQuaternion();
 
-
-            var m = MemoryManager.Instance.MemLib;
-            var c = Settings.Instance.Character;
-
-
-            //string GAS(params string[] args) => MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, args);
-
             CharacterDetails.Rotation.value = (float)quat.X;
             CharacterDetails.Rotation2.value = (float)quat.Y;
             CharacterDetails.Rotation3.value = (float)quat.Z;
             CharacterDetails.Rotation4.value = (float)quat.W;
-            //m.writeMemory(GAS(c.Body.Base, c.Body.Position.Rotation), "float", quat.X.ToString());	
-            //m.writeMemory(GAS(c.Body.Base, c.Body.Position.Rotation2), "float", quat.Y.ToString());	
-            //m.writeMemory(GAS(c.Body.Base, c.Body.Position.Rotation3), "float", quat.Z.ToString());	
-            //m.writeMemory(GAS(c.Body.Base, c.Body.Position.Rotation4), "float", quat.W.ToString());	
             // Remove listeners for value changed.	
             RotationSlider.ValueChanged -= RotV2;
             RotationSlider2.ValueChanged -= RotV2;
@@ -346,6 +336,29 @@ namespace ConceptMatrix.Views
             RotationSlider3.Visibility = Visibility.Hidden;
             RotationSlider3.IsEnabled = false;
         }
+
+        private void RotRelButton_Checked(object sender, RoutedEventArgs e)
+        {
+            SaveSettings.Default.AltRotate = true;
+            AltRotate = true;
+        }
+        private void RotRelButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            SaveSettings.Default.AltRotate = false;
+            AltRotate = false;
+        }
+
+        private void PosRelButton_Checked(object sender, RoutedEventArgs e)
+        {
+            SaveSettings.Default.AdvancedMove = true;
+            AdvancedMove = true;
+        }
+        private void PosRelButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            SaveSettings.Default.AdvancedMove = false;
+            AdvancedMove = false;
+        }
+
         private void Freeze1234_Click(object sender, RoutedEventArgs e)
 		{
 			numbcheck = !numbcheck;
@@ -367,7 +380,7 @@ namespace ConceptMatrix.Views
 
 		private void Pos_SourceUpdated(MahApps.Metro.Controls.NumericUpDown control, RoutedPropertyChangedEventHandler<double?> handler)
 		{
-			if (CharacterDetails.AdvancedMove && control.Name != PosY.Name)
+			if (AdvancedMove && control.Name != PosY.Name)
 			{
 				// Ensure not in an existing event.
 				if (!PosAdvancedWorking)
