@@ -72,7 +72,7 @@ namespace ConceptMatrixUpdater
 							// Create HTML out of the markdown in body.
 							var html = Markdown.ToHtml(json["body"].Value<string>());
 							// Set the update string
-							UpdateString = $"Concept Matrix {releaseVersion.VersionString()} is now available, you have {CurrentVersion.VersionString()}. Would you like to download it now?";
+							UpdateString = $"CMTools {releaseVersion.VersionString()} is now available, you have {CurrentVersion.VersionString()}. Would you like to download it now?";
 							// Set HTML in the window.
 							HTML = "<style>body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;margin:10px 20px;padding:0;font-size:12px;}ul{margin:0;padding:0;list-style-position:inside;}</style>" + html;
 						}

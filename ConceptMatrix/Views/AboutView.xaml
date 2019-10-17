@@ -27,7 +27,7 @@
 				<materialDesign:PackIcon Kind="Chat" Height="96" Width="96" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="8">
 					<TextBlock Style="{StaticResource MaterialDesignHeadlineTextBlock}" Text="Get in Touch" Margin="8 8 8 0" />
-                    <TextBlock Foreground="{DynamicResource MaterialDesignBodyLight}" Text="Say hello, submit a feature request or raise a bug." Margin="8" />
+                    <TextBlock Foreground="{DynamicResource MaterialDesignBodyLight}" Text="Say Hello, submit a feature request or report a bug." Margin="8" />
 					<Border BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}" Grid.Column="1">
 						<Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
                             x:Name="DiscordBtn" Click="AboutDiscordBtn_Click">
@@ -59,7 +59,7 @@
 
 				<StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="8">
 					<TextBlock Grid.Column="1" Style="{StaticResource MaterialDesignHeadlineTextBlock}" Margin="8 8 8 0"  Text="Proudly Open Source"/>
-					<TextBlock Grid.Column="1" Grid.Row="1" Margin="8" TextWrapping="Wrap" Foreground="{DynamicResource MaterialDesignBodyLight}" Text="This project is completely open source. If you like it and want to say thanks you could hit the GitHub Star button and message us your thanks."/>
+					<TextBlock Grid.Column="1" Grid.Row="1" Margin="8" TextWrapping="Wrap" Foreground="{DynamicResource MaterialDesignBodyLight}" Text="This project is completely open source. If you like it and want to say thanks you could hit the GitHub Star button and message me your thanks."/>
 					<Border BorderThickness="0 1 0 1" BorderBrush="{DynamicResource MaterialDesignDivider}">
 						<Grid>
 							<Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
@@ -141,8 +141,8 @@
 					<TextBlock TextWrapping="Wrap" Foreground="{DynamicResource MaterialDesignBodyLight}" FontSize="12" Margin="8">
 						This trainer and its base code was originally created by LeonBlade.
 					</TextBlock>
-                    <TextBlock TextWrapping="Wrap" Foreground="{DynamicResource MaterialDesignBodyLight}" FontSize="12" Margin="8" Text="In the early ages of the project, Johto took over for most of it's current life maintaining and updating the project."/>
-                    <TextBlock TextWrapping="Wrap" Foreground="{DynamicResource MaterialDesignBodyLight}" FontSize="12" Margin="8"><Run Text="The project is now in active development by Krisan Thyme."/><LineBreak/><Run Text="Both Johto and LeonBlade have moved on to work on a new SSTool."/></TextBlock>
+                    <TextBlock TextWrapping="Wrap" Foreground="{DynamicResource MaterialDesignBodyLight}" FontSize="12" Margin="8"><Run Text="The current base code including much of the framework for the UI"/><LineBreak/><Run Text="and its various elements was created by Johto."/></TextBlock>
+                    <TextBlock TextWrapping="Wrap" Foreground="{DynamicResource MaterialDesignBodyLight}" FontSize="12" Margin="8" Text="This branch of SSTools was created by Krisan Thyme and is maintained solely by him. The original project is still maintained by Johto and Leon."/>
                     <TextBlock TextWrapping="Wrap" Foreground="{DynamicResource MaterialDesignBodyLight}" FontSize="12" Margin="8">
 						Special thanks to Goat for his contributions!
 					</TextBlock>

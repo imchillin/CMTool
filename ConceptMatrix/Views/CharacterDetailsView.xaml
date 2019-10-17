@@ -24,8 +24,13 @@
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
         <Border BorderBrush="Black" BorderThickness="0,0,1,0" HorizontalAlignment="Left" Height="530" Margin="-110,0,0,0" VerticalAlignment="Top" Width="645"/>
+        <Border BorderBrush="Black" BorderThickness="1,1,1,0" HorizontalAlignment="Left" Height="190" Margin="534,340,-1,0" VerticalAlignment="Top" Width="582" Grid.ColumnSpan="2"/>
+
+        <!-- FC Tag -->
         <CheckBox  IsChecked="{Binding CharacterDetails.FCTag.freeze}" Content="Free Company Tag:" ToolTip="Modifies the Free Company Tag of the selected actor." HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" x:Name="FCTagBox" HorizontalAlignment="Left" Height="23" Margin="168,35,0,0" Text="{Binding CharacterDetails.FCTag.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="128"  materialDesign:HintAssist.Hint="Free Company Tag" FontSize="11.35" MaxLength="6" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+
+        <!-- Job Icon -->
         <CheckBox IsChecked="{Binding CharacterDetails.JobIco.freeze}" Content="Job Icon:" ToolTip="Changes the Job Icon of the selected party member in your party list." HorizontalAlignment="Left" Margin="311,35,0,0" VerticalAlignment="Top" Height="23"/>
         <ComboBox SelectedIndex="{Binding CharacterDetails.JobIco.value}" HorizontalAlignment="Left" Margin="396,35,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <ComboBoxItem Content="None" Background="{x:Null}"/>
@@ -72,126 +77,219 @@
             <ComboBoxItem Content="Other Role" Background="{x:Null}"/>
             <ComboBoxItem Content="All Roles" Background="{x:Null}"/>
         </ComboBox>
+
+        <!-- Title -->
         <CheckBox IsChecked="{Binding CharacterDetails.Title.freeze}" Content="Title:" ToolTip="Changes the Title of the selected actor." HorizontalAlignment="Left" Margin="311,5,0,0" VerticalAlignment="Top" Height="23"/>
         <ComboBox x:Name="TitleBox" SelectedIndex="{Binding CharacterDetails.Title.value}" HorizontalAlignment="Left" Margin="396,5,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+        
         <Border BorderBrush="Black" BorderThickness="0,1,0,0" HorizontalAlignment="Left" Height="462" Margin="0,68,0,0" VerticalAlignment="Top" Width="535"/>
+        
+        <!-- Name -->
         <CheckBox  IsChecked="{Binding CharacterDetails.Name.freeze}" Content="Name:" ToolTip="Modifies the display name of the selected actor." HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" x:Name="NameBox" HorizontalAlignment="Left" Height="23" Margin="168,5,0,0" Text="{Binding CharacterDetails.Name.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="128"  materialDesign:HintAssist.Hint="Name" KeyUp="NameBox_KeyUp" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+
+        <!-- Race -->
         <CheckBox IsChecked="{Binding CharacterDetails.Race.freeze}" Content="Race:" ToolTip="Changes the Race of the selected actor." HorizontalAlignment="Left" Margin="10,77.118,0,0" VerticalAlignment="Top" Height="23"/>
         <ComboBox x:Name="RaceBox" SelectedIndex="{Binding CharacterDetails.Race.value}" HorizontalAlignment="Left" Margin="168,77.118,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+
+        <!-- Clan -->
         <CheckBox IsChecked="{Binding CharacterDetails.Clan.freeze}" Content="Clan:" ToolTip="Changes the Clan of the selected actor." HorizontalAlignment="Left" Margin="10,107.118,0,0" VerticalAlignment="Top" Height="23"/>
         <ComboBox x:Name="ClanBox" SelectedIndex="{Binding CharacterDetails.Clan.value}" HorizontalAlignment="Left" Margin="168,107.118,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+
+        <!-- Gender -->
         <CheckBox IsChecked="{Binding CharacterDetails.Gender.freeze}" Content="Gender:" ToolTip="Changes the Gender of the selected actor." HorizontalAlignment="Left" Margin="10,137.118,0,0" VerticalAlignment="Top" Height="23"/>
         <ComboBox SelectedIndex="{Binding CharacterDetails.Gender.value}" HorizontalAlignment="Left" Margin="168,137.118,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <ComboBoxItem Content="Male" Background="{x:Null}"/>
             <ComboBoxItem Content="Female" Background="{x:Null}"/>
         </ComboBox>
+
+        <!-- Body Type -->
         <CheckBox IsChecked="{Binding CharacterDetails.BodyType.freeze}" Content="Body Type:" ToolTip="Changes the Body Type of the selected actor." HorizontalAlignment="Left" Margin="311,137.118,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="23" Margin="469,137.118,0,0" Text="{Binding CharacterDetails.BodyType.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" PreviewTextInput="DigitCheckInput" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+
+        <!-- Height -->
         <CheckBox IsChecked="{Binding CharacterDetails.RHeight.freeze}" Content="Height:" ToolTip="Changes the Height of the selected actor." HorizontalAlignment="Left" Margin="311,77.118,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="23" Margin="469,77.118,0,0" Text="{Binding CharacterDetails.RHeight.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" PreviewTextInput="DigitCheckInput" FontSize="11.35" CaretBrush="#FF3F51B5" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+
+        <!-- Bust Size -->
         <CheckBox IsChecked="{Binding CharacterDetails.RBust.freeze}" Content="Bust Size:" ToolTip="Changes the Bust Size of the selected actor." HorizontalAlignment="Left" Margin="311,107.118,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="23"  PreviewTextInput="DigitCheckInput"  Margin="469,107.118,0,0" Text="{Binding CharacterDetails.RBust.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+
+        <!-- Skintone -->
         <CheckBox IsChecked="{Binding CharacterDetails.Skintone.freeze}" Content="Skintone:" ToolTip="Changes the Skintone of the selected actor." HorizontalAlignment="Left" Margin="10,167.118,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="23"  PreviewTextInput="DigitCheckInput" Margin="168,167.118,0,0" Text="{Binding CharacterDetails.Skintone.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
         <Button x:Name="SkinSearch" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,167.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="SkinSearch_Click"/>
+
+        <!-- Head Type -->
         <CheckBox IsChecked="{Binding CharacterDetails.Head.freeze}" Content="Head Type:" ToolTip="Changes the Head Type of the selected actor." HorizontalAlignment="Left" Margin="311,167.118,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="23"  PreviewTextInput="DigitCheckInput" Margin="469,167.118,0,0" Text="{Binding CharacterDetails.Head.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+
+        <!-- Hairstyle -->
         <CheckBox IsChecked="{Binding CharacterDetails.Hair.freeze}" Content="Hairstyle:" ToolTip="Changes the Hairstyle of the selected actor." HorizontalAlignment="Left" Margin="10,407.118,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="23"  PreviewTextInput="DigitCheckInput" Margin="168,407.118,0,0" Text="{Binding CharacterDetails.Hair.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
         <Button x:Name="HairSelectButton" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,407.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="HairSelectButton_Click_1"/>
+
+        <!-- Hair Color -->
         <CheckBox IsChecked="{Binding CharacterDetails.HairTone.freeze}" Content="Hair Color:" ToolTip="Changes the Hair Color of the selected actor." HorizontalAlignment="Left" Margin="10,437.118,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left"  PreviewTextInput="DigitCheckInput" Height="23" Margin="168,437.118,0,0" Text="{Binding CharacterDetails.HairTone.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
         <Button x:Name="HairColorSearch"  Content="View" HorizontalAlignment="Left" materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="231,437.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="HairSelectButton_Click"/>
+
+        <!-- Highlights -->
         <CheckBox IsChecked="{Binding CharacterDetails.Highlights.freeze}" Content="" HorizontalAlignment="Left" Margin="105,467.118,0,0" VerticalAlignment="Top" Height="23"/>
         <ToggleButton x:Name="HighLightButton" ToolTip="Toggles Highlights for the selected actor." Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.Highlights.SpecialActivate}" Margin="130,467.118,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="23" Checked="HighLightButton_Checked" Unchecked="HighLightButton_Unchecked" />
         <CheckBox IsChecked="{Binding CharacterDetails.HighlightTone.freeze}" Content="Highlights:" ToolTip="Changes the Highlights Color of the selected actor." HorizontalAlignment="Left" Margin="10,467.118,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left"  PreviewTextInput="DigitCheckInput" Height="23" Margin="168,467.118,0,0" Text="{Binding CharacterDetails.HighlightTone.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
         <Button x:Name="HighlightcolorSearch" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,467.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="HighlightcolorSearch_Click"/>
+
+        <!-- Mouth Type -->
         <CheckBox IsChecked="{Binding CharacterDetails.Lips.freeze}" Content="Mouth Type:" ToolTip="Changes the Mouth Type of the selected actor." HorizontalAlignment="Left" Margin="311,317.118,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left"  PreviewTextInput="DigitCheckInput" Height="23" Margin="469,317.118,0,0" Text="{Binding CharacterDetails.Lips.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+
+        <!-- Lips Color -->
         <CheckBox IsChecked="{Binding CharacterDetails.LipsTone.freeze}" Content="Lips Color:" ToolTip="Changes the Lips Color of the selected actor." HorizontalAlignment="Left" Margin="10,287.118,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left"  PreviewTextInput="DigitCheckInput" Height="23" Margin="168,287.118,0,0" Text="{Binding CharacterDetails.LipsTone.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
         <Button x:Name="LipColorSearch" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,287.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="Button_Click"/>
+
+        <!-- Jaw Type -->
         <CheckBox IsChecked="{Binding CharacterDetails.Jaw.freeze}" Content="Jaw Type:" ToolTip="Changes the Jaw Type of the selected actor." HorizontalAlignment="Left" Margin="311,197.118,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,197.118,0,0" Text="{Binding CharacterDetails.Jaw.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+
+        <!-- Nose Type -->
         <CheckBox IsChecked="{Binding CharacterDetails.Nose.freeze}" Content="Nose Type:" ToolTip="Changes the Nose Type of the selected actor." HorizontalAlignment="Left" Margin="311,287.118,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,287.118,0,0" Text="{Binding CharacterDetails.Nose.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+
+        <!-- Eyes -->
         <CheckBox IsChecked="{Binding CharacterDetails.Eye.freeze}" Content="Eyes Type:" ToolTip="Changes the Eyes Type of the selected actor." HorizontalAlignment="Left" Margin="311,257.118,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,257.118,0,0" Text="{Binding CharacterDetails.Eye.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+
+        <!-- Eyebrows Type -->
         <CheckBox IsChecked="{Binding CharacterDetails.EyeBrowType.freeze}" Content="Eyebrows Type:" ToolTip="Changes the Eyebrows Type of the selected actor." HorizontalAlignment="Left" Margin="311,227.118,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,227.118,0,0" Text="{Binding CharacterDetails.EyeBrowType.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+
+        <!-- Eye Color (Right) -->
         <CheckBox IsChecked="{Binding CharacterDetails.RightEye.freeze}" Content="Eye Color (Right):" ToolTip="Changes the Right Eye Color of the selected actor." HorizontalAlignment="Left" Margin="10,227.118,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="168,227.118,0,0" Text="{Binding CharacterDetails.RightEye.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
         <Button x:Name="RightEyeSearch" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,227.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="RightEyeSearch_Click"/>
+
+        <!-- Eye Color (Left) -->
         <CheckBox IsChecked="{Binding CharacterDetails.LeftEye.freeze}" Content="Eye Color (Left):" ToolTip="Changes the Left Eye Color of the selected actor." HorizontalAlignment="Left" Margin="10,197.118,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="168,197.118,0,0" Text="{Binding CharacterDetails.LeftEye.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
         <Button x:Name="LeftEyeSearch" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,197.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="LeftEyeSearch_Click" BorderThickness="1"/>
+
+        <!-- Limbal Eye/Tattoo Color -->
         <CheckBox IsChecked="{Binding CharacterDetails.LimbalEyes.freeze}" Content="Limbal/Tattoo Color:" ToolTip="Changes the Limbal Ring and Tattoo Color of the selected actor." HorizontalAlignment="Left" Margin="10,377.118,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="168,377.118,0,0" Text="{Binding CharacterDetails.LimbalEyes.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
         <Button x:Name="LimbalEyeSearch" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,377.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="LimbalEyeSearch_Click"/>
+
+        <!-- Facial Features -->
         <CheckBox IsChecked="{Binding CharacterDetails.FacialFeatures.freeze}" Content="Facial Features:" ToolTip="Changes the Facial Features of the selected actor." HorizontalAlignment="Left" Margin="10,257.118,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="168,257.118,0,0" Text="{Binding CharacterDetails.FacialFeatures.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
         <Button x:Name="FacialFeature" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,257.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="FacialFeature_Click"/>
+
+        <!-- Ear/Tail Type -->
         <CheckBox IsChecked="{Binding CharacterDetails.TailType.freeze}" Content="Ear/Tail Type:" ToolTip="Changes the Ear and Tail of the selected actor." HorizontalAlignment="Left" Margin="311,347.118,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,347.118,0,0" Text="{Binding CharacterDetails.TailType.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+
+        <!-- Ear/Muscle/Tail Size -->
         <CheckBox IsChecked="{Binding CharacterDetails.TailorMuscle.freeze}" Content="Ear/Muscle/Tail Size:" ToolTip="Changes the Ear, Muscle, and Tail Size of the selected actor." HorizontalAlignment="Left" Margin="311,377.118,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,377.118,0,0" Text="{Binding CharacterDetails.TailorMuscle.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+
+        <!-- Face Paint/Tattoos -->
         <CheckBox IsChecked="{Binding CharacterDetails.FacePaint.freeze}" Content="Face Paint/Tattoo:" ToolTip="Changes the Face Paint and Tattoos of the selected actor." HorizontalAlignment="Left" Margin="10,317.118,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="168,317.118,0,0" Text="{Binding CharacterDetails.FacePaint.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
         <Button x:Name="FacePaint_Color_Copy" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,317.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="FaceSelectButton_Click"/>
+
+        <!-- Face Paint Color -->
         <CheckBox IsChecked="{Binding CharacterDetails.FacePaintColor.freeze}" Content="Face Paint Color:" ToolTip="Changes the Face Paint Color of the selected actor." HorizontalAlignment="Left" Margin="10,347.118,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="168,347.118,0,0" Text="{Binding CharacterDetails.FacePaintColor.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
         <Button x:Name="FacePaint_Color" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,347.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="FacePaint_Color_Click"/>
+
+        <!-- Voice Type -->
         <CheckBox IsChecked="{Binding CharacterDetails.Voices.freeze}" Content="Voice Type:" ToolTip="Changes the Voice Type of the selected actor." HorizontalAlignment="Left" Margin="311,407.118,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,407.118,0,0" Text="{Binding CharacterDetails.Voices.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" BorderThickness="0,0,0,1" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+
+        <!-- Model Type -->
         <CheckBox IsChecked="{Binding CharacterDetails.ModelType.freeze}" Content="Model Type:" ToolTip="Changes the Model Type of the selected actor." HorizontalAlignment="Left" Margin="311,437.118,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,437.118,0,0" Text="{Binding CharacterDetails.ModelType.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
-        <Button x:Name="ModelTypeButton" Content="Model List" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="311,467.118,0,0" VerticalAlignment="Top" Width="213" Height="23" Click="ModelTypeButton_Click"/>
+        <Button x:Name="ModelTypeButton" ToolTip="Opens a flyout menu on the right side that allows you to search for Monsters, Demi-Humans, Prop Entities and Entity-Based Effects.&#xD;&#xA;&#x2022; Some NPCs are found under this selection because they are classified as Demi-Humans, such as Beast Tribes, Zenos, Thordan/Knights, etc.&#xD;&#xA;&#x2022; If you become invisible after changing to a Demi-Human, change all of your Equipment to Base 0, Variant 0. If this doesn't work, try 1,0 or 1,1." Content="Model List" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="311,467.118,0,0" VerticalAlignment="Top" Width="213" Height="23" Click="ModelTypeButton_Click"/>
+
+        <!-- Random Appearance -->
         <Button Content="Randomize Appearance" ToolTip="Will create a random appearance." materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="10,497.118,0,0" VerticalAlignment="Top" Width="514" Click="Button_Click_1" Height="23"/>
+
+        <!-- Overall Scale -->
         <CheckBox IsChecked="{Binding CharacterDetails.Height.freeze}" Content="Overall Scale:" ToolTip="Modifies the Overall Scale of the selected actor." HorizontalAlignment="Left" Margin="545,5,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown Maximum="99999" x:Name="Height2x" Value="{Binding CharacterDetails.Height.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,5,0,0" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Minimum="0.0001" SourceUpdated="Height2x_SourceUpdated" Interval="0.01" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
         <Slider x:Name="HeightSlider" Value="{Binding CharacterDetails.Height.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="810,10,0,0" VerticalAlignment="Top" Width="120" IsMoveToPointEnabled="True" TickFrequency="0.1" Maximum="30" LargeChange="0.1" SourceUpdated="Height2x_SourceUpdated" Height="28" />
-        <CheckBox IsChecked="{Binding CharacterDetails.BustX.freeze}" Content="Bust X Scale:" HorizontalAlignment="Left" Margin="545,35,0,0" VerticalAlignment="Top" Height="28"/>
+
+        <!-- Bust X -->
+        <CheckBox IsChecked="{Binding CharacterDetails.BustX.freeze}" Content="Bust X Scale:" ToolTip="Modifies the X Scale of the selected actors Bust.&#xD;&#xA;&#x2022; This option is Female only." HorizontalAlignment="Left" Margin="545,35,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="BustXUpDown" Value="{Binding CharacterDetails.BustX.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,35,0,0" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Minimum="0" SourceUpdated="BustXUpDown_SourceUpdated" Interval="0.01" TextAlignment="Right" MinHeight="0" MinWidth="0" Height="28" FontSize="11.35" FontFamily="Segoe UI"/>
         <Slider x:Name="BustXSlider" Value="{Binding CharacterDetails.BustX.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="810,40,0,0" VerticalAlignment="Top" Width="120" IsMoveToPointEnabled="True" TickFrequency="0.1" Maximum="30" LargeChange="0.1" SourceUpdated="BustXUpDown_SourceUpdated" Height="28" />
-        <CheckBox IsChecked="{Binding CharacterDetails.BustY.freeze}" Content="Bust Y Scale:" HorizontalAlignment="Left" Margin="545,65,0,0" VerticalAlignment="Top" Height="28"/>
+
+        <!-- Bust Y -->
+        <CheckBox IsChecked="{Binding CharacterDetails.BustY.freeze}" Content="Bust Y Scale:" ToolTip="Modifies the Y Scale of the selected actors Bust.&#xD;&#xA;&#x2022; This option is Female only." HorizontalAlignment="Left" Margin="545,65,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="BustYUpDown" Value="{Binding CharacterDetails.BustY.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,65,0,0" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Minimum="0" Interval="0.01" SourceUpdated="BustYUpDown_SourceUpdated" TextAlignment="Right" MinHeight="0" MinWidth="0" Height="28" FontSize="11.35" FontFamily="Segoe UI"/>
         <Slider x:Name="BustYSlider" Value="{Binding CharacterDetails.BustY.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="810,70,0,0" VerticalAlignment="Top" Width="120" IsMoveToPointEnabled="True" TickFrequency="0.1" Maximum="30" LargeChange="0.1" SourceUpdated="BustYUpDown_SourceUpdated" Height="28" />
-        <CheckBox IsChecked="{Binding CharacterDetails.BustZ.freeze}" Content="Bust Z Scale:" HorizontalAlignment="Left" Margin="545,95,0,0" VerticalAlignment="Top" Height="28"/>
+
+        <!-- Bust Z -->
+        <CheckBox IsChecked="{Binding CharacterDetails.BustZ.freeze}" Content="Bust Z Scale:" ToolTip="Modifies the Z Scale of the selected actors Bust.&#xD;&#xA;&#x2022; This option is Female only." HorizontalAlignment="Left" Margin="545,95,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="BustZUpDown" Value="{Binding CharacterDetails.BustZ.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,95,0,0" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Minimum="0" Interval="0.01"  SourceUpdated="BustZUpDown_SourceUpdated" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
         <Slider x:Name="BustZSlider" Value="{Binding CharacterDetails.BustZ.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="810,100,0,0" VerticalAlignment="Top" Width="120" IsMoveToPointEnabled="True" TickFrequency="0.1" Maximum="30" LargeChange="0.1" SourceUpdated="BustZUpDown_SourceUpdated" Height="28" />
 
+        <!-- X Rot -->
         <CheckBox IsChecked="{Binding CharacterDetails.RotateFreeze}" Content="" HorizontalAlignment="Left" Margin="848,215,0,0" VerticalAlignment="Top" Height="28" IsEnabled="False"/>
         <mah:NumericUpDown Minimum="0" Maximum="360" x:Name="RotationUpDown" SourceUpdated="RotationUpDown_SourceUpdated" Value="{Binding CharacterDetails.RotateX, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="956,215,0,0" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C0000FF" StringFormat="F10" Interval="0.5" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
+        <Label ToolTip="Modifies the X Rotation of the selected actor.&#xD;&#xA;&#x2022; You may need to Freeze the animations of your actor to properly apply this in GPose.&#xD;&#xA;&#x2022; Both Rotation Sliders and Numerical direct input require Rotation to be frozen." HorizontalAlignment="Left" Height="28" Margin="864,218,0,0" VerticalAlignment="Top" FontSize="13" Content="X Rotation:"/>
+        <Slider Name="RotationSlider" SourceUpdated="RotationUpDown_SourceUpdated" Value="{Binding CharacterDetails.RotateX, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left"  Margin="956,220,0,0" VerticalAlignment="Top" Width="145" Minimum="0" Maximum="360" TickFrequency="0.5"  Visibility="Hidden" IsEnabled="False"/>
 
+        <!-- Y Rot -->
         <CheckBox IsChecked="{Binding CharacterDetails.RotateFreeze}" Content="" HorizontalAlignment="Left" Margin="848,245,0,0" VerticalAlignment="Top" Height="28" IsEnabled="False"/>
         <mah:NumericUpDown Minimum="0" Maximum="360" x:Name="RotationUpDown2" SourceUpdated="RotationUpDown2_SourceUpdated" Value="{Binding CharacterDetails.RotateY, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="956,245,0,0" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C008000" StringFormat="F10" Interval="0.5" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
+        <Label ToolTip="Modifies the Y Rotation of the selected actor.&#xD;&#xA;&#x2022; You may need to Freeze the animations of your actor to properly apply this in GPose.&#xD;&#xA;&#x2022; Both Rotation Sliders and Numerical direct input require Rotation to be frozen." HorizontalAlignment="Left" Height="28" Margin="864,248,0,0" VerticalAlignment="Top" FontSize="13" Content="Y Rotation:"/>
+        <Slider Name="RotationSlider2" SourceUpdated="RotationUpDown2_SourceUpdated" Value="{Binding CharacterDetails.RotateY, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="956,250,0,0" VerticalAlignment="Top" Width="145" Minimum="0" Maximum="360" TickFrequency="0.5"  Visibility="Hidden" IsEnabled="False"/>
 
+        <!-- Z Rot -->
         <CheckBox IsChecked="{Binding CharacterDetails.RotateFreeze}" Content="" HorizontalAlignment="Left" Margin="848,275,0,0" VerticalAlignment="Top" Height="28" IsEnabled="False"/>
         <mah:NumericUpDown Minimum="0" Maximum="360" x:Name="RotationUpDown3" SourceUpdated="RotationUpDown3_SourceUpdated" Value="{Binding CharacterDetails.RotateZ, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="956,275,0,0" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8CFF0000" StringFormat="F10" Interval="0.5" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
-        <Slider Name="RotationSlider" SourceUpdated="RotationUpDown_SourceUpdated" Value="{Binding CharacterDetails.RotateX, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left"  Margin="956,220,0,0" VerticalAlignment="Top" Width="145" Minimum="0" Maximum="360" TickFrequency="0.5"  Visibility="Hidden" IsEnabled="False"/>
-        <Slider Name="RotationSlider2" SourceUpdated="RotationUpDown2_SourceUpdated" Value="{Binding CharacterDetails.RotateY, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="956,250,0,0" VerticalAlignment="Top" Width="145" Minimum="0" Maximum="360" TickFrequency="0.5"  Visibility="Hidden" IsEnabled="False"/>
+        <Label ToolTip="Modifies the Z Rotation of the selected actor.&#xD;&#xA;&#x2022; You may need to Freeze the animations of your actor to properly apply this in GPose.&#xD;&#xA;&#x2022; Both Rotation Sliders and Numerical direct input require Rotation to be frozen." HorizontalAlignment="Left" Height="28" Margin="864,278,0,0" VerticalAlignment="Top" FontSize="13" Content="Z Rotation:"/>
         <Slider Name="RotationSlider3" SourceUpdated="RotationUpDown3_SourceUpdated" Value="{Binding CharacterDetails.RotateZ, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="956,280,0,0" VerticalAlignment="Top" Width="145" Minimum="0" Maximum="360" TickFrequency="0.5"  Visibility="Hidden" IsEnabled="False"/>
 
+        <!-- Rotation Sliders Toggle -->
         <ToggleButton Name="RotSliderButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1067,187,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Checked="RotSliderButton_Checked" Unchecked="RotSliderButton_Unchecked" />
         <Label Content="Rotation Sliders:" ToolTip="This toggle will switch between Rotation Sliders and Numerical direct input.&#xD;&#xA;&#x2022; This setting is defaulted to on, and its state is saved between sessions.&#xD;&#xA;&#x2022; Turning it off will turn the XYZ Rotation sliders into numerical values.&#xD;&#xA;&#x2022; Each input will accept a value between 0 and 360.&#xD;&#xA;&#x2022; Both Rotation Sliders and Numerical direct input require Rotation to be frozen." HorizontalAlignment="Left" Margin="956,189,0,0" VerticalAlignment="Top" Height="28"/>
 
-        <CheckBox IsChecked="{Binding CharacterDetails.X.freeze}" Content="X Position:" HorizontalAlignment="Left" Margin="545,215,0,0" VerticalAlignment="Top" Height="28"/>
+        <!-- X Pos -->
+        <CheckBox IsChecked="{Binding CharacterDetails.X.freeze}" Content="X Position:" ToolTip="Modifies the X Position of the selected actor.&#xD;&#xA;&#x2022; You may need to Freeze the animations of your actor to properly apply this in GPose." HorizontalAlignment="Left" Margin="545,215,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="PosX" Value="{Binding CharacterDetails.X.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,215,0,0" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C0000FF" StringFormat="F10" Interval="0.01" SourceUpdated="PosX_SourceUpdated" TextAlignment="Right" MinWidth="0" MinHeight="0" Height="28" FontSize="11.35" FontFamily="Segoe UI"/>
-        <CheckBox IsChecked="{Binding CharacterDetails.Y.freeze}" Content="Y Position:" HorizontalAlignment="Left" Margin="545,245,0,0" VerticalAlignment="Top" Height="28"/>
+
+        <!-- Y Pos -->
+        <CheckBox IsChecked="{Binding CharacterDetails.Y.freeze}" Content="Y Position:" ToolTip="Modifies the Y Position of the selected actor.&#xD;&#xA;&#x2022; You may need to Freeze the animations of your actor to properly apply this in GPose." HorizontalAlignment="Left" Margin="545,245,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="PosY" Value="{Binding CharacterDetails.Y.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,245,0,0" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C008000" StringFormat="F10" Interval="0.01" SourceUpdated="PosY_SourceUpdated" TextAlignment="Right" MinWidth="0" MinHeight="0" Height="28" FontSize="11.35" FontFamily="Segoe UI"/>
-        <CheckBox IsChecked="{Binding CharacterDetails.Z.freeze}" Content="Z Position:" HorizontalAlignment="Left" Margin="545,275,0,0" VerticalAlignment="Top" Height="28"/>
+
+        <!-- Z Post -->
+        <CheckBox IsChecked="{Binding CharacterDetails.Z.freeze}" Content="Z Position:" ToolTip="Modifies the Z Position of the selected actor.&#xD;&#xA;&#x2022; You may need to Freeze the animations of your actor to properly apply this in GPose." HorizontalAlignment="Left" Margin="545,275,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="PosZ" Value="{Binding CharacterDetails.Z.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,275,0,0" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8CFF0000" StringFormat="F10" Interval="0.01" SourceUpdated="PosZ_SourceUpdated" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
+
+        <!-- Freeze XYZ -->
         <Button x:Name="FreezeXYZ" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Freeze Pos" ToolTip="Freezes the position of the selected entity.&#xD;&#xA;&#x2022; This is useful for moving entities in GPose, as it will prevent them from snapping back to their original position when their emote changes or you use face camera.&#xD;&#xA;&#x2022; Make sure to press this button again before clicking or tabbing to a new entity, or it will snap them to the same position." HorizontalAlignment="Left" Margin="545,308,0,0" VerticalAlignment="Top" Width="100" Height="23" FontSize="12" Click="FreezeXYZ_Click"/>
+
+        <!-- Freeze Rot -->
         <Button x:Name="Freeze1234" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Freeze Rot" ToolTip="Freezes the rotation of the selected entity.&#xD;&#xA;&#x2022; This is useful in conjunction with Freeze Pos for preserving the position and rotation of an entity in GPose.&#xD;&#xA;&#x2022; You can use this along with the 'Face Camera' toggle in-game (Default: Space Bar) to turn the entity's head without turning the entire body.&#xD;&#xA;&#x2022; Same as Freeze Pos, make sure to toggle off Freeze Rot before switching entities in GPose. &#xD;&#xA;&#x2022; Required for using Numerical direct input or Rotation Sliders." HorizontalAlignment="Left" Margin="848,308,0,0" VerticalAlignment="Top" Width="100" Height="23" FontSize="12" Click="Freeze1234_Click"/>
+
+        <!-- Ear/Tail Scale -->
         <CheckBox IsChecked="{Binding CharacterDetails.TailSize.freeze}" Content="Ear/Tail Scale:" ToolTip="Modifies the Ear and Tail Scale of the selected actor." HorizontalAlignment="Left" Margin="545,125,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="TailSize" Value="{Binding CharacterDetails.TailSize.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,125,0,0" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Interval="0.01" TextAlignment="Right" SourceUpdated="TailSize_SourceUpdated" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
+
+        <!-- Muscle Tone -->
         <CheckBox IsChecked="{Binding CharacterDetails.MuscleTone.freeze}" Content="Muscle Tone:" ToolTip="Modifies the Muscle Tone of the selected actor." HorizontalAlignment="Left" Margin="545,155,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="Muscletone" Value="{Binding CharacterDetails.MuscleTone.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,155,0,0" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F3" Interval="0.25" TextAlignment="Right" SourceUpdated="Muscletone_SourceUpdated" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
+
+        <!-- Transparency -->
         <CheckBox IsChecked="{Binding CharacterDetails.Transparency.freeze}" Content="Transparency:" ToolTip="Modifies the transparency of the selected entity.&#xD;&#xA;&#x2022; Reducing the transparency of an actor does not affect their main or offhand weapons. You can set the XYZ scale of their weapons to 0 in the Equipment tab.&#xD;&#xA;&#x2022; Setting this to 0 for an entity in GPose can cause the system to forget that they're targetable. If you plan to still use them, set it to 0.03." HorizontalAlignment="Left" Margin="545,185,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="Transparency" Value="{Binding CharacterDetails.Transparency.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,185,0,0" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F3" Interval="0.25" TextAlignment="Right" SourceUpdated="Transparency_SourceUpdated" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
-        <Border BorderBrush="Black" BorderThickness="1,1,1,0" HorizontalAlignment="Left" Height="190" Margin="534,340,-1,0" VerticalAlignment="Top" Width="582" Grid.ColumnSpan="2"/>
+        
+        <!-- Rotation Cube -->
+        <Label Content="Realtime Rotation:" ToolTip="Use your mouse buttons to control the cube. &#xD;&#xA;All rotations are relative to the direction that the entity is currently facing.&#xD;&#xA;&#x2022; RMB controls X-axis rotation.&#xD;&#xA;&#x2022; LMB controls Y-axis rotation.&#xD;&#xA;&#x2022; MMB controls Z-axis rotation." HorizontalAlignment="Left" Margin="958,5,0,0" VerticalAlignment="Top" FontSize="16"/>
         <Border BorderBrush="Black" BorderThickness="3" HorizontalAlignment="Left" Height="150" Margin="955,35,0,0" VerticalAlignment="Top" Width="150" Background="#FF2E2E2E">
             <Views:RotationView Height="Auto" Width="Auto">
                 <Views:RotationView.DataContext>
@@ -204,31 +302,48 @@
                 </Views:RotationView.DataContext>
             </Views:RotationView>
         </Border>
-        <Label Content="Realtime Rotation:" ToolTip="Use your mouse buttons to control the cube. &#xD;&#xA;All rotations are relative to the direction that the entity is currently facing.&#xD;&#xA;RMB controls X-axis rotation&#xD;&#xA;LMB controls Y-axis rotation&#xD;&#xA;MMB controls Z-axis rotation" HorizontalAlignment="Left" Margin="958,5,0,0" VerticalAlignment="Top" FontSize="16"/>
+
+        <!-- Idle Anim -->
         <CheckBox IsChecked="{Binding CharacterDetails.Emote.freeze}" Content="Idle Anim:" ToolTip="Changes the Idle Animation of the selected entity.&#xD;&#xA;&#x2022; This can be used both in and out of GPose.&#xD;&#xA;&#x2022; If you plan to use this in GPose, you will need to sit/stand, then use /cpose until your Idle Anim reads '3'&#xD;&#xA;&#x2022; This can be used on Pets, Minions, Chocobos and most NPCs!" HorizontalAlignment="Left" Margin="545,375,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="EmoteBox" Maximum="7736" Minimum="1" Value="{Binding CharacterDetails.Emote.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,375,0,0" VerticalAlignment="Top" Width="115" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" TextAlignment="Right" NumericInputMode="Numbers" SourceUpdated="EmoteBox_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="11.35"/>
         <Button x:Name="EmoteSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="View" HorizontalAlignment="Left" Margin="773,375,0,0" VerticalAlignment="Top" Width="65" Height="28" Click="EmoteSearch_Click"/>
-        <CheckBox IsChecked="{Binding CharacterDetails.FreezeFacial.freeze}" Content="Lock Facial Animation:" ToolTip="Locks the Facial Animation of the selected actor.&#xD;&#xA;&#x2022; To properly lock the facial animation of the selected actor, you need to toggle this on, freeze the option, and then set Anim Speed to Zero." HorizontalAlignment="Left" Margin="545,465,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.FreezeFacial.Activated}" Margin="705,467,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" />
-        <CheckBox IsChecked="{Binding CharacterDetails.EmoteSpeed1.freeze}" Content="Anim Speed:" ToolTip="Modifies the Animation Speed of the selected actor." HorizontalAlignment="Left" Margin="545,435,0,0" VerticalAlignment="Top" Height="28"/>
-        <mah:NumericUpDown x:Name="EmoteSpeed" Value="{Binding CharacterDetails.EmoteSpeed1.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,435,0,0" VerticalAlignment="Top" Width="115" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F3" Interval="0.10" TextAlignment="Right" FontFamily="Segoe UI" FontSize="11.35" Height="28"/>
-        <CheckBox IsChecked="{Binding CharacterDetails.CamViewX.freeze}" Content="Camera View X:" HorizontalAlignment="Left" Margin="848,347,0,0" VerticalAlignment="Top" Height="28"/>
-        <mah:NumericUpDown x:Name="CamViewX" Value="{Binding CharacterDetails.CamViewX.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="966,347,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Interval="0.01" TextAlignment="Right" Height="28" FontFamily="Segoe UI" FontSize="11.35" SourceUpdated="CamViewX_SourceUpdated"/>
-        <CheckBox IsChecked="{Binding CharacterDetails.CamViewY.freeze}" Content="Camera View Y:" HorizontalAlignment="Left" Margin="848,377,0,0" VerticalAlignment="Top" Height="28"/>
-        <mah:NumericUpDown x:Name="CamViewY" Value="{Binding CharacterDetails.CamViewY.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="966,377,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Interval="0.01" TextAlignment="Right" Height="28" FontFamily="Segoe UI" FontSize="11.35" SourceUpdated="CamViewY_SourceUpdated"/>
-        <CheckBox IsChecked="{Binding CharacterDetails.CamViewZ.freeze}" Content="Camera View Z:" HorizontalAlignment="Left" Margin="848,407,0,0" VerticalAlignment="Top" Height="28"/>
-        <mah:NumericUpDown x:Name="CamViewZ" Value="{Binding CharacterDetails.CamViewZ.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="966,407,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Interval="0.01" TextAlignment="Right" Height="28" FontFamily="Segoe UI" FontSize="11.35" SourceUpdated="CamViewZ_SourceUpdated"/>
-        <CheckBox x:Name="CamXCheck" IsChecked="{Binding CharacterDetails.CamX.freeze}" Content="Camera X Pos:" HorizontalAlignment="Left" Margin="848,437,0,0" VerticalAlignment="Top" Height="28" IsEnabled="False"/>
-        <mah:NumericUpDown x:Name="CamX" Value="{Binding CharacterDetails.CamX.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="966,437,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Interval="0.01" TextAlignment="Right" SourceUpdated="CamX_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="11.35"/>
-        <CheckBox x:Name="CamYCheck" IsChecked="{Binding CharacterDetails.CamY.freeze}" Content="Camera Y Pos:" HorizontalAlignment="Left" Margin="848,467,0,0" VerticalAlignment="Top" Height="28" IsEnabled="False"/>
-        <mah:NumericUpDown x:Name="CamY" Value="{Binding CharacterDetails.CamY.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="966,467,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Interval="0.01" TextAlignment="Right" SourceUpdated="CamY_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="11.35"/>
-        <CheckBox x:Name="CamZCheck" IsChecked="{Binding CharacterDetails.CamZ.freeze}" Content="Camera Z Pos:" HorizontalAlignment="Left" Margin="848,497,0,0" VerticalAlignment="Top" Height="28" IsEnabled="False"/>
-        <mah:NumericUpDown x:Name="CamZ" Value="{Binding CharacterDetails.CamZ.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="966,497,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Interval="0.01" TextAlignment="Right" SourceUpdated="CamZ_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="11.35"/>
-        <Label x:Name="FrozenPlayaLabel" x:FieldModifier="public" Content="Targeted Actor is ???" HorizontalAlignment="Left" Height="28" Margin="540,495,0,0" VerticalAlignment="Top" Width="260" FontWeight="Bold" FontSize="14"/>
+
+        <!-- Force Anim -->
         <CheckBox IsChecked="{Binding CharacterDetails.EmoteOld.freeze}" Content="Force Anim:" ToolTip="Forces the selected entity to perform an animation.&#xD;&#xA;&#x2022; This can only be used in GPose.&#xD;&#xA;&#x2022; In order to use this, you need to do a non-looping emote, suchs as /wave before entering GPose.&#xD;&#xA;&#x2022; Some animations have a specific race/gender requirement in order to perform. You may need to use a different Data Path if your character is just twitching.&#xD;&#xA;&#x2022; Does not work on NPCs!" HorizontalAlignment="Left" Margin="545,405,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="EmoteBox_Copy" Maximum="7736" Minimum="1" Value="{Binding CharacterDetails.EmoteOld.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,405,0,0" VerticalAlignment="Top" Width="115" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" TextAlignment="Right" NumericInputMode="Numbers" SourceUpdated="EmoteBox_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="11.35"/>
         <Button x:Name="EmoteSearch_Copy" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="View" HorizontalAlignment="Left" Margin="773,405,0,0" VerticalAlignment="Top" Width="65" Height="28" Click="EmoteOldSearch_Click"/>
+        
+        <!-- Lock Facial Anim -->
+        <CheckBox IsChecked="{Binding CharacterDetails.FreezeFacial.freeze}" Content="Lock Facial Animation:" ToolTip="Locks the Facial Animation of the selected actor.&#xD;&#xA;&#x2022; To properly lock the facial animation of the selected actor, you need to toggle this on, freeze the option, and then set Anim Speed to Zero." HorizontalAlignment="Left" Margin="545,465,0,0" VerticalAlignment="Top" Height="28"/>
+        <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.FreezeFacial.Activated}" Margin="705,467,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" />
+
+        <!-- Anim Speed -->
+        <CheckBox IsChecked="{Binding CharacterDetails.EmoteSpeed1.freeze}" Content="Anim Speed:" ToolTip="Modifies the Animation Speed of the selected actor." HorizontalAlignment="Left" Margin="545,435,0,0" VerticalAlignment="Top" Height="28"/>
+        <mah:NumericUpDown x:Name="EmoteSpeed" Value="{Binding CharacterDetails.EmoteSpeed1.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,435,0,0" VerticalAlignment="Top" Width="115" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F3" Interval="0.10" TextAlignment="Right" FontFamily="Segoe UI" FontSize="11.35" Height="28"/>
         <Button x:Name="Setto0" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Zero" HorizontalAlignment="Left" Margin="773,435,0,0" VerticalAlignment="Top" Width="65" Height="28" FontSize="14" Click="Setto0_Click"/>
+        
+        <CheckBox IsChecked="{Binding CharacterDetails.CamViewX.freeze}" Content="Camera View X:" HorizontalAlignment="Left" Margin="848,347,0,0" VerticalAlignment="Top" Height="28"/>
+        <mah:NumericUpDown x:Name="CamViewX" Value="{Binding CharacterDetails.CamViewX.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="966,347,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Interval="0.01" TextAlignment="Right" Height="28" FontFamily="Segoe UI" FontSize="11.35" SourceUpdated="CamViewX_SourceUpdated"/>
+        
+        <CheckBox IsChecked="{Binding CharacterDetails.CamViewY.freeze}" Content="Camera View Y:" HorizontalAlignment="Left" Margin="848,377,0,0" VerticalAlignment="Top" Height="28"/>
+        <mah:NumericUpDown x:Name="CamViewY" Value="{Binding CharacterDetails.CamViewY.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="966,377,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Interval="0.01" TextAlignment="Right" Height="28" FontFamily="Segoe UI" FontSize="11.35" SourceUpdated="CamViewY_SourceUpdated"/>
+        
+        <CheckBox IsChecked="{Binding CharacterDetails.CamViewZ.freeze}" Content="Camera View Z:" HorizontalAlignment="Left" Margin="848,407,0,0" VerticalAlignment="Top" Height="28"/>
+        <mah:NumericUpDown x:Name="CamViewZ" Value="{Binding CharacterDetails.CamViewZ.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="966,407,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Interval="0.01" TextAlignment="Right" Height="28" FontFamily="Segoe UI" FontSize="11.35" SourceUpdated="CamViewZ_SourceUpdated"/>
+        
+        <CheckBox x:Name="CamXCheck" IsChecked="{Binding CharacterDetails.CamX.freeze}" Content="Camera X Pos:" HorizontalAlignment="Left" Margin="848,437,0,0" VerticalAlignment="Top" Height="28" IsEnabled="False"/>
+        <mah:NumericUpDown x:Name="CamX" Value="{Binding CharacterDetails.CamX.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="966,437,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Interval="0.01" TextAlignment="Right" SourceUpdated="CamX_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="11.35"/>
+        
+        <CheckBox x:Name="CamYCheck" IsChecked="{Binding CharacterDetails.CamY.freeze}" Content="Camera Y Pos:" HorizontalAlignment="Left" Margin="848,467,0,0" VerticalAlignment="Top" Height="28" IsEnabled="False"/>
+        <mah:NumericUpDown x:Name="CamY" Value="{Binding CharacterDetails.CamY.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="966,467,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Interval="0.01" TextAlignment="Right" SourceUpdated="CamY_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="11.35"/>
+        
+        <CheckBox x:Name="CamZCheck" IsChecked="{Binding CharacterDetails.CamZ.freeze}" Content="Camera Z Pos:" HorizontalAlignment="Left" Margin="848,497,0,0" VerticalAlignment="Top" Height="28" IsEnabled="False"/>
+        <mah:NumericUpDown x:Name="CamZ" Value="{Binding CharacterDetails.CamZ.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="966,497,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Interval="0.01" TextAlignment="Right" SourceUpdated="CamZ_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="11.35"/>
+
+        <!-- Target Status Label -->
+        <Label x:Name="FrozenPlayaLabel" x:FieldModifier="public" Content="Targeted Actor is ???" HorizontalAlignment="Left" Height="28" Margin="540,495,0,0" VerticalAlignment="Top" Width="260" FontWeight="Bold" FontSize="14"/>
+
+        <!-- Data Path -->
         <CheckBox IsChecked="{Binding CharacterDetails.DataPath.freeze}" Content="Data Path:" ToolTip="Changes the Data Path of the selected entity. &#xD;&#xA;This will allow you use the animations of other Races or Genders.&#xD;&#xA;&#x2022; Does not require an Actor Refresh, and can be used in and out of GPose.&#xD;&#xA;&#x2022; The entity's skeleton will be morphed to fit the selected race. This stretching or shrinking is unavoidable.&#xD;&#xA;&#x2022; You can use Actor Refresh if you want to become an abomination for fun." HorizontalAlignment="Left" Margin="545,345,0,0" VerticalAlignment="Top" Height="28"/>
         <ComboBox x:Name="DataPathBox" SelectedValuePath="Tag" SelectedValue="{Binding CharacterDetails.DataPath.value}" HorizontalAlignment="Left" Margin="654,345,0,0" VerticalAlignment="Top" Width="184" Height="28" FontSize="11.35" SelectedIndex="0" SelectionChanged="DataPathBox_SelectionChanged" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <ComboBoxItem Visibility="Collapsed" Content="None" Tag="0"/>
@@ -256,14 +371,14 @@
             <ComboBoxItem Content="c9204 - Padjal Female" Tag="9204" Background="{x:Null}"/>
         </ComboBox>
 
+        <!-- Relative Pos -->
         <Label Content="Relative XYZ Pos:" ToolTip="This toggle will make all XYZ movements relative to the entity being targeted, and not absolute based on the gameworld.&#xD;&#xA;&#x2022; This setting is defaulted to on, and its state is saved between sessions." HorizontalAlignment="Left" Margin="654,307,0,0" VerticalAlignment="Top" Height="28"/>
         <ToggleButton Name="PosRelButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="769,305,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" BorderThickness="1" Checked="PosRelButton_Checked" Unchecked="PosRelButton_Unchecked" />
 
-        <Label HorizontalAlignment="Left" Height="28" Margin="864,218,0,0" VerticalAlignment="Top" FontSize="13" Content="X Rotation:"/>
-        <Label HorizontalAlignment="Left" Height="28" Margin="864,248,0,0" VerticalAlignment="Top" FontSize="13" Content="Y Rotation:"/>
-        <Label HorizontalAlignment="Left" Height="28" Margin="864,278,0,0" VerticalAlignment="Top" FontSize="13" Content="Z Rotation:"/>
+        <!-- Relative Rot -->
         <ToggleButton Name="RotRelButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1067,305,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Checked="RotRelButton_Checked" Unchecked="RotRelButton_Unchecked" />
         <Label Content="Relative XYZ Rot:" ToolTip="This toggle will make all XYZ rotations relative to the entity being targeted, and not absolute based on the gameworld.&#xD;&#xA;&#x2022; This setting is defaulted to on, and its state is saved between sessions. &#xD;&#xA;&#x2022; Only affects the Realtime Rotation Cube." HorizontalAlignment="Left" Margin="956,307,0,0" VerticalAlignment="Top" Height="28"/>
+
         <Views:SpecialControl x:Name="SpecialControl" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Margin="536,0,0,0" Height="Auto" Grid.ColumnSpan="2"/>
         <Views:EmoteFlyOut x:Name="EmoteFlyouts" Width="534" HorizontalAlignment="Left" VerticalAlignment="Top" Height="Auto" Visibility="Hidden" Margin="0,0,0,0"/>
     </Grid>

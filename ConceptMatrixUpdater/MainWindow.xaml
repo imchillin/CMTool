@@ -8,7 +8,7 @@
 		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="Concept Matrix Updater"
-        Width="630"
+        Width="640"
         Height="350"
         ResizeMode="NoResize"
         SizeToContent="WidthAndHeight"
@@ -19,8 +19,8 @@
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
 		Icon="cmupdater-icon.ico">
 	<StackPanel Orientation="Horizontal">
-        <Image Margin="20 20 10 0" Width="50" Height="50" VerticalAlignment="Top" Source="/ConceptMatrixUpdater;component/cmupdater-icon.ico" />
-		<StackPanel Margin="10" Width="520">
+        <Image Margin="0,20,10,0" Width="100" Height="100" VerticalAlignment="Top" Source="/ConceptMatrixUpdater;component/cmupdater-largeicon.ico" />
+		<StackPanel Margin="-12,10,10,10" Width="530">
 			<Label Content="A new version of Concept Matrix is available!" FontWeight="Bold" FontSize="14" />
 			<Label Content="{Binding UpdateString, FallbackValue='Would you like to download it now?'}" />
 			<ProgressBar Name="DownloadProgress" Style="{DynamicResource MaterialDesignLinearProgressBar}" Height="10" Value="0" Maximum="100" />
