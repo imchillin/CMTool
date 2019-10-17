@@ -36,34 +36,36 @@ namespace ConceptMatrix
         public static bool CurrentlySaving = false;
         string exepath = Directory.GetParent(Assembly.GetExecutingAssembly().Location).FullName;
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
-        Version version = Assembly.GetExecutingAssembly().GetName().Version;
+
+        readonly Version version = Assembly.GetExecutingAssembly().GetName().Version;
         public MainWindow()
         {
-			// Call the update method.	
-			UpdateProgram();	
+            ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
 
-            ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);	
-            if (!File.Exists(@"./OffsetSettings.xml"))	
-            {	
-                try	
-                {	
-                    string xmlStr;	
-                    using (var wc = new WebClient())	
-                    {	
-                        xmlStr = wc.DownloadString(@"https://raw.githubusercontent.com/KrisanThyme/CMTool/master/ConceptMatrix/OffsetSettings.xml");	
-                    }	
-                    var xmlDoc = new System.Xml.XmlDocument();	
-                    xmlDoc.LoadXml(xmlStr);	
-                    File.WriteAllText(@"./OffsetSettings.xml", xmlDoc.InnerXml);	
-                }	
-                catch	
-                {	
-                    System.Windows.MessageBox.Show("Unable to connect to the remote server - No connection could be made because the target machine actively refused it! \n If you wish to pursue using this application please download an updated OffsetSettings via discord.", "Oh no!");	
-                    Close();	
-                    return;	
-                }	
+            // Call the update method.
+            UpdateProgram();
+
+            if (!File.Exists(@"./OffsetSettings.xml"))
+            {
+                try
+                {
+                    string xmlStr;
+                    using (var wc = new WebClient())
+                    {
+                        xmlStr = wc.DownloadString(@"https://raw.githubusercontent.com/KrisanThyme/CMTool/master/ConceptMatrix/OffsetSettings.xml");
+                    }
+                    var xmlDoc = new System.Xml.XmlDocument();
+                    xmlDoc.LoadXml(xmlStr);
+                    File.WriteAllText(@"./OffsetSettings.xml", xmlDoc.InnerXml);
+                }
+                catch
+                {
+                    MessageBox.Show("Unable to connect to the remote server - No connection could be made because the target machine actively refused it! \n If you wish to pursue using this application please download an updated OffsetSettings via discord.", "Oh no!");
+                    Close();
+                    return;
+                }
             }
-            List<ProcessLooker.Game> GameList = new  List<ProcessLooker.Game>();
+            List<ProcessLooker.Game> GameList = new List<ProcessLooker.Game>();
             Process[] processlist = Process.GetProcesses();
             Processcheck = 0;
             foreach (Process theprocess in processlist)
@@ -98,36 +100,42 @@ namespace ConceptMatrix
                 }
                 MainViewModel.gameProcId = f.Choice.ID;
             }
-			InitializeComponent();
-            ToolTipService.ShowDurationProperty.OverrideMetadata(
-                typeof(DependencyObject), new FrameworkPropertyMetadata(Int32.MaxValue));
+            InitializeComponent();
         }
-		
-		private void UpdateProgram()	
-		{	
-			// Delete the old updater file.	
-			if (File.Exists(".CMTU.old"))	
-				File.Delete(".CMTU.old");	
-			try	
-			{	
-				Process.Start("ConceptMatrixUpdater.exe");	
-			}	
-			catch (Exception)	
-			{	
-				var result = MessageBox.Show(	
-					"Couldn't run the updater. Would you like to visit the releases page to check for a new update manually?",	
-					"Concept Matrix", 	
-					MessageBoxButton.YesNo, 	
-					MessageBoxImage.Error	
-				);	
 
-				// Launch the web browser to the latest release.	
-				if (result == MessageBoxResult.Yes)	
-				{	
-					Process.Start("https://github.com/KrisanThyme/CMTool/releases/latest");	
-				}	
-			}	
-		}
+        private void UpdateProgram()
+        {
+            ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
+
+            // Delete the old updater file.
+            if (File.Exists(".CMTU.old"))
+                File.Delete(".CMTU.old");
+            try
+            {
+                var proc = new Process();
+                proc.StartInfo.FileName = Path.Combine(Environment.CurrentDirectory, "ConceptMatrixUpdater.exe");
+                proc.StartInfo.UseShellExecute = true;
+                proc.StartInfo.Verb = "runas";
+                proc.Start();
+                proc.WaitForExit();
+                proc.Dispose();
+            }
+            catch (Exception)
+            {
+                var result = MessageBox.Show(
+                    "Couldn't run the updater. Would you like to visit the releases page to check for a new update manually?",
+                    "Concept Matrix",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Error
+                );
+
+                // Launch the web browser to the latest release.
+                if (result == MessageBoxResult.Yes)
+                {
+                    Process.Start("https://github.com/KrisanThyme/CMTool/releases/latest");
+                }
+            }
+        }
 
         public bool AdminNeeded()
         {
