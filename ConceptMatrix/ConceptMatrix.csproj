@@ -373,6 +373,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ConceptMatrixUpdater\ConceptMatrixUpdater.csproj">
+      <Project>{a19e57d4-2858-4c84-a916-e4591c8afcd7}</Project>
+      <Name>ConceptMatrixUpdater</Name>
+    </ProjectReference>
     <ProjectReference Include="..\lib\SaintCoinach\SaintCoinach\SaintCoinach.csproj">
       <Project>{8a7d65eb-3de3-4631-b286-cc73a3126002}</Project>
       <Name>SaintCoinach</Name>

@@ -39,6 +39,30 @@ namespace ConceptMatrix
         Version version = Assembly.GetExecutingAssembly().GetName().Version;
         public MainWindow()
         {
+			// Call the update method.	
+			UpdateProgram();	
+
+            ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);	
+            if (!File.Exists(@"./OffsetSettings.xml"))	
+            {	
+                try	
+                {	
+                    string xmlStr;	
+                    using (var wc = new WebClient())	
+                    {	
+                        xmlStr = wc.DownloadString(@"https://raw.githubusercontent.com/KrisanThyme/CMTool/master/ConceptMatrix/OffsetSettings.xml");	
+                    }	
+                    var xmlDoc = new System.Xml.XmlDocument();	
+                    xmlDoc.LoadXml(xmlStr);	
+                    File.WriteAllText(@"./OffsetSettings.xml", xmlDoc.InnerXml);	
+                }	
+                catch	
+                {	
+                    System.Windows.MessageBox.Show("Unable to connect to the remote server - No connection could be made because the target machine actively refused it! \n If you wish to pursue using this application please download an updated OffsetSettings via discord.", "Oh no!");	
+                    Close();	
+                    return;	
+                }	
+            }
             List<ProcessLooker.Game> GameList = new  List<ProcessLooker.Game>();
             Process[] processlist = Process.GetProcesses();
             Processcheck = 0;
@@ -78,6 +102,32 @@ namespace ConceptMatrix
             ToolTipService.ShowDurationProperty.OverrideMetadata(
                 typeof(DependencyObject), new FrameworkPropertyMetadata(Int32.MaxValue));
         }
+		
+		private void UpdateProgram()	
+		{	
+			// Delete the old updater file.	
+			if (File.Exists(".CMTU.old"))	
+				File.Delete(".CMTU.old");	
+			try	
+			{	
+				Process.Start("ConceptMatrixUpdater.exe");	
+			}	
+			catch (Exception)	
+			{	
+				var result = MessageBox.Show(	
+					"Couldn't run the updater. Would you like to visit the releases page to check for a new update manually?",	
+					"Concept Matrix", 	
+					MessageBoxButton.YesNo, 	
+					MessageBoxImage.Error	
+				);	
+
+				// Launch the web browser to the latest release.	
+				if (result == MessageBoxResult.Yes)	
+				{	
+					Process.Start("https://github.com/KrisanThyme/CMTool/releases/latest");	
+				}	
+			}	
+		}
 
         public bool AdminNeeded()
         {
@@ -183,7 +233,7 @@ namespace ConceptMatrix
             CurrentlySaving = true;
             if (SaveSettings.Default.WindowsExplorer)
             {
-                string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "SSTool", "Saves");
+                string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "CMTool", "Saves");
                 if (!Directory.Exists(path)) { System.IO.Directory.CreateDirectory(path); }
                 SaveFileDialog dig = new SaveFileDialog();
                 dig.Filter = "Json File(*.json)|*.json";
@@ -208,7 +258,7 @@ namespace ConceptMatrix
             }
             else
             {
-                string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "SSTool", "Saves");
+                string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "CMTool", "Saves");
                 if (!Directory.Exists(path)) { System.IO.Directory.CreateDirectory(path); }
                 var c = new Windows.GearSave("Save Character Save", "Write Character Save name here...");
                 c.Owner = Application.Current.MainWindow;
@@ -258,7 +308,7 @@ namespace ConceptMatrix
             else
             {
                 OpenFileDialog dig = new OpenFileDialog();
-                string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "SSTool", "Gearsets");
+                string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "CMTool", "Gearsets");
                 if (!Directory.Exists(path)) { System.IO.Directory.CreateDirectory(path);  }
                 dig.InitialDirectory = path;
                 dig.Filter = "Json File(*.json)|*.json";
@@ -417,7 +467,7 @@ namespace ConceptMatrix
             else
             {
                 OpenFileDialog dig = new OpenFileDialog();
-                dig.InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "SSTool", "Saves");
+                dig.InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "CMTool", "Saves");
                 dig.Filter = "Json File(*.json)|*.json";
                 dig.DefaultExt = ".json";
                 if (dig.ShowDialog() == true)
@@ -444,7 +494,7 @@ namespace ConceptMatrix
             else
             {
                 OpenFileDialog dig = new OpenFileDialog();
-                dig.InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "SSTool", "Saves");
+                dig.InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "CMTool", "Saves");
                 dig.Filter = "Json File(*.json)|*.json";
                 dig.DefaultExt = ".json";
                 if (dig.ShowDialog() == true)
@@ -471,7 +521,7 @@ namespace ConceptMatrix
             else
             {
                 OpenFileDialog dig = new OpenFileDialog();
-                dig.InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "SSTool", "Saves");
+                dig.InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "CMTool", "Saves");
                 dig.Filter = "Json File(*.json)|*.json";
                 dig.DefaultExt = ".json";
                 if (dig.ShowDialog() == true)
@@ -956,7 +1006,7 @@ namespace ConceptMatrix
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://github.com/KrisanThyme/CMTool/releases");
+            ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
         }
 
         private void GposeButton_Checked(object sender, RoutedEventArgs e)
