@@ -348,17 +348,6 @@ namespace ConceptMatrix.Views
             AltRotate = false;
         }
 
-        private void PosRelButton_Checked(object sender, RoutedEventArgs e)
-        {
-            SaveSettings.Default.AdvancedMove = true;
-            AdvancedMove = true;
-        }
-        private void PosRelButton_Unchecked(object sender, RoutedEventArgs e)
-        {
-            SaveSettings.Default.AdvancedMove = false;
-            AdvancedMove = false;
-        }
-
         private void Freeze1234_Click(object sender, RoutedEventArgs e)
 		{
 			numbcheck = !numbcheck;
@@ -498,11 +487,22 @@ namespace ConceptMatrix.Views
 			CharacterDetails.Z.freeze = xyzcheck;
 		}
 
-		#endregion
+        private void PosRelButton_Checked(object sender, RoutedEventArgs e)
+        {
+            SaveSettings.Default.AdvancedMove = true;
+            AdvancedMove = true;
+        }
+        private void PosRelButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            SaveSettings.Default.AdvancedMove = false;
+            AdvancedMove = false;
+        }
 
-		#region Tail
+        #endregion
 
-		private void TailSz(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        #region Tail
+
+        private void TailSz(object sender, RoutedPropertyChangedEventArgs<double?> e)
 		{
 			if (TailSize.Value.HasValue)
 				MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.TailSize), "float", TailSize.Value.ToString());
