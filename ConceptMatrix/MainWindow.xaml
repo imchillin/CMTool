@@ -26,14 +26,14 @@
             <TabItem Header="Equipment">
                 <Views:CharacterDetailsView2 Margin="0,4,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
             </TabItem>
+            <TabItem Header="Posing Matrix">
+                <Views:CharacterDetailsView5 Margin="0,4,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
+            </TabItem>
             <TabItem Header="World">
                 <Views:CharacterDetailsView3 Margin="0,4,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
             </TabItem>
-            <TabItem Header="Theme Editor">
-                <Views:PaletteView Margin="0,4,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-            </TabItem>
             <TabItem Header="About">
-                <Views:AboutView Margin="0,4,-1,-1" VerticalAlignment="Top" HorizontalAlignment="Left" Height="460"/>
+                <Views:AboutView Margin="0" HorizontalAlignment="Left" Width="1102" Height="530"/>
             </TabItem>
             <TabItem Header="Beta" IsEnabled="False" Visibility="Hidden">
                 <Views:Beta Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />

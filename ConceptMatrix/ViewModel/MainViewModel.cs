@@ -23,6 +23,7 @@ namespace ConceptMatrix.ViewModel
         public static int gameProcId = 0;
         public static ThreadWriting ThreadTime;
         public static RotationView RotTime;
+        public static CharacterDetailsView5 ViewTime5;
         public static CharacterDetailsView4 ViewTime4;
         public static CharacterDetailsView3 ViewTime3;
         public static CharacterDetailsView2 ViewTime2;
@@ -176,6 +177,9 @@ namespace ConceptMatrix.ViewModel
             MemoryManager.Instance.TerritoryAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.TerritoryOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.MusicOffset = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.MusicOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.GposeFilters = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.GposeFilters, NumberStyles.HexNumber));
+            MemoryManager.Instance.SkeletonAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.SkeletonOffset, NumberStyles.HexNumber));
+            MemoryManager.Instance.SkeletonAddress2 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.SkeletonOffset2, NumberStyles.HexNumber));
+            MemoryManager.Instance.SkeletonAddress3 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.SkeletonOffset3, NumberStyles.HexNumber));
             MemoryManager.Instance.CharacterRenderAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.CharacterRenderOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.CharacterRenderAddress2 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.CharacterRenderOffset2, NumberStyles.HexNumber));
             MemoryManager.Instance.GposeEntityOffset = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.GposeEntityOffset, NumberStyles.HexNumber));

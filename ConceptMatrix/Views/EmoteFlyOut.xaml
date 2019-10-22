@@ -12,7 +12,7 @@
              TextElement.FontSize="13.25"
              mc:Ignorable="d"
              Header="Emotes"
-             Position="Left" Height="530" Width="541">
+             Position="Left" Height="530" Width="534">
 
     <controls:Flyout.Resources>
         <ResourceDictionary>

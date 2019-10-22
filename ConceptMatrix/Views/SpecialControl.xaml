@@ -14,7 +14,7 @@
              Header="Character"
              Position="Right"
              mc:Ignorable="d" 
-             d:DesignHeight="470" d:DesignWidth="570" Height="530" Width="582">
+             d:DesignHeight="470" d:DesignWidth="579" Height="530" Width="579">
 
     <controls:Flyout.Resources>
         <ResourceDictionary>

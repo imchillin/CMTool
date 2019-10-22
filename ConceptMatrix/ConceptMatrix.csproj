@@ -181,6 +181,9 @@
     <Compile Include="Views\CharacterDetailsView3.xaml.cs">
       <DependentUpon>CharacterDetailsView3.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CharacterDetailsView5.xaml.cs">
+      <DependentUpon>CharacterDetailsView5.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CharacterDetailsView4.xaml.cs">
       <DependentUpon>CharacterDetailsView4.xaml</DependentUpon>
     </Compile>
@@ -192,6 +195,9 @@
     </Compile>
     <Compile Include="Views\PaletteView.xaml.cs">
       <DependentUpon>PaletteView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RotationView2.xaml.cs">
+      <DependentUpon>RotationView2.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RotationView.xaml.cs">
       <DependentUpon>RotationView.xaml</DependentUpon>
@@ -252,6 +258,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\CharacterDetailsView5.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\CharacterDetailsView4.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -267,6 +277,10 @@
     <Page Include="Views\PaletteView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RotationView2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\RotationView.xaml">
       <SubType>Designer</SubType>
@@ -373,10 +387,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ConceptMatrixUpdater\ConceptMatrixUpdater.csproj">
-      <Project>{a19e57d4-2858-4c84-a916-e4591c8afcd7}</Project>
-      <Name>ConceptMatrixUpdater</Name>
-    </ProjectReference>
     <ProjectReference Include="..\lib\SaintCoinach\SaintCoinach\SaintCoinach.csproj">
       <Project>{8a7d65eb-3de3-4631-b286-cc73a3126002}</Project>
       <Name>SaintCoinach</Name>

@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:ConceptMatrix.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignWidth="1115" d:DesignHeight="460">
-    <Grid>
+             d:DesignWidth="1115" d:DesignHeight="530" Width="1102">
+    <Grid Margin="0,0,0,40" Height="490" Width="1102">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
@@ -24,109 +24,109 @@
                     <ColumnDefinition Width="150" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-				<materialDesign:PackIcon Kind="Chat" Height="96" Width="96" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <materialDesign:PackIcon Kind="Chat" Height="96" Width="96" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="8">
-					<TextBlock Style="{StaticResource MaterialDesignHeadlineTextBlock}" Text="Get in Touch" Margin="8 8 8 0" />
+                    <TextBlock Style="{StaticResource MaterialDesignHeadlineTextBlock}" Text="Get in Touch" Margin="8 8 8 0" />
                     <TextBlock Foreground="{DynamicResource MaterialDesignBodyLight}" Text="Say Hello, submit a feature request or report a bug." Margin="8" />
-					<Border BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}" Grid.Column="1">
-						<Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
+                    <Border BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}" Grid.Column="1">
+                        <Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
                             x:Name="DiscordBtn" Click="AboutDiscordBtn_Click">
-							<StackPanel Orientation="Horizontal">
-								<materialDesign:PackIcon Kind="Link" Margin="0,2,8,0" />
-								<TextBlock Margin="0 0 0 0" VerticalAlignment="Center" FontSize="14"><Run Text="Discord"/></TextBlock>
-							</StackPanel>
-						</Button>
-					</Border>
-					<Border BorderThickness="0 1 0 1" BorderBrush="{DynamicResource MaterialDesignDivider}" Grid.Column="1">
-						<Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Link" Margin="0,2,8,0" />
+                                <TextBlock Margin="0 0 0 0" VerticalAlignment="Center" FontSize="14"><Run Text="Discord"/></TextBlock>
+                            </StackPanel>
+                        </Button>
+                    </Border>
+                    <Border BorderThickness="0 1 0 1" BorderBrush="{DynamicResource MaterialDesignDivider}" Grid.Column="1">
+                        <Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
                             x:Name="TwitterBtn" Click="ChatButton_Click">
-							<StackPanel Orientation="Horizontal">
-								<materialDesign:PackIcon Kind="Link" Margin="0,2,8,0" />
-								<TextBlock Margin="0 0 0 0" VerticalAlignment="Center" FontSize="14"><Run Text="Twitter"/></TextBlock>
-							</StackPanel>
-						</Button>
-					</Border>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Link" Margin="0,2,8,0" />
+                                <TextBlock Margin="0 0 0 0" VerticalAlignment="Center" FontSize="14"><Run Text="Twitter"/></TextBlock>
+                            </StackPanel>
+                        </Button>
+                    </Border>
                 </StackPanel>
             </Grid>
         </materialDesign:Card>
 
         <materialDesign:Card Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4">
-			<Grid VerticalAlignment="Stretch" >
-				<Grid.ColumnDefinitions>
+            <Grid VerticalAlignment="Stretch" >
+                <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="150" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-				<StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="8">
-					<TextBlock Grid.Column="1" Style="{StaticResource MaterialDesignHeadlineTextBlock}" Margin="8 8 8 0"  Text="Proudly Open Source"/>
-					<TextBlock Grid.Column="1" Grid.Row="1" Margin="8" TextWrapping="Wrap" Foreground="{DynamicResource MaterialDesignBodyLight}" Text="This project is completely open source. If you like it and want to say thanks you could hit the GitHub Star button and message me your thanks."/>
-					<Border BorderThickness="0 1 0 1" BorderBrush="{DynamicResource MaterialDesignDivider}">
-						<Grid>
-							<Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
+                <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="8">
+                    <TextBlock Grid.Column="1" Style="{StaticResource MaterialDesignHeadlineTextBlock}" Margin="8 8 8 0"  Text="Proudly Open Source"/>
+                    <TextBlock Grid.Column="1" Grid.Row="1" Margin="8" TextWrapping="Wrap" Foreground="{DynamicResource MaterialDesignBodyLight}" Text="This project is completely open source. If you like it and want to say thanks you could hit the GitHub Star button and message me your thanks."/>
+                    <Border BorderThickness="0 1 0 1" BorderBrush="{DynamicResource MaterialDesignDivider}">
+                        <Grid>
+                            <Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
                                             x:Name="GitHubButton" Click="GitHubButton_OnClick">
-								<StackPanel Orientation="Horizontal">
-									<materialDesign:PackIcon Kind="Link" Margin="0,2,8,0" />
-									<TextBlock VerticalAlignment="Center" FontSize="14" Width="auto" Text="Github"/>
-								</StackPanel>
-							</Button>
-						</Grid>
-					</Border>
-				</StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Link" Margin="0,2,8,0" />
+                                    <TextBlock VerticalAlignment="Center" FontSize="14" Width="auto" Text="Github"/>
+                                </StackPanel>
+                            </Button>
+                        </Grid>
+                    </Border>
+                </StackPanel>
 
-				<materialDesign:PackIcon Kind="GithubCircle" Width="96" Height="96" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.RowSpan="3" />
+                <materialDesign:PackIcon Kind="GithubCircle" Width="96" Height="96" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.RowSpan="3" />
             </Grid>
         </materialDesign:Card>
 
         <materialDesign:Card Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4">
-			<Grid VerticalAlignment="Stretch">
-				<Grid.ColumnDefinitions>
+            <Grid VerticalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="150" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
                 <!-- Donations -->
-				<StackPanel Grid.Column="1" Grid.Row="1" Margin="8" VerticalAlignment="Center">
+                <StackPanel Grid.Column="1" Grid.Row="1" Margin="8" VerticalAlignment="Center">
 
-						<TextBlock Style="{StaticResource MaterialDesignHeadlineTextBlock}" Margin="8 8 8 0" Text="Donate to the Devs!"/>
-						<TextBlock Margin="8" TextWrapping="Wrap" Foreground="{DynamicResource MaterialDesignBodyLight}" VerticalAlignment="Top">
+                    <TextBlock Style="{StaticResource MaterialDesignHeadlineTextBlock}" Margin="8 8 8 0" Text="Donate to the Devs!"/>
+                    <TextBlock Margin="8" TextWrapping="Wrap" Foreground="{DynamicResource MaterialDesignBodyLight}" VerticalAlignment="Top">
 							<Run Text="Feel like you want to make a donation? It would be gratefully received. Click any of the buttons below to donate via Ko-fi."/>
-						</TextBlock>
+                    </TextBlock>
 
-					<!-- LeonBlade Donate -->
-					<Border BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}" Grid.Column="1">
-						<Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
+                    <!-- LeonBlade Donate -->
+                    <Border BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}" Grid.Column="1">
+                        <Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
                             x:Name="ChatButton1" Click="DonateButton_OnClick2">
-							<StackPanel Orientation="Horizontal">
-								<materialDesign:PackIcon Kind="Link" Margin="0,2,8,0" />
-								<TextBlock Margin="0 0 0 0" VerticalAlignment="Center" FontSize="14"><Run Text="Donate to LeonBlade"/></TextBlock>
-							</StackPanel>
-						</Button>
-					</Border>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Link" Margin="0,2,8,0" />
+                                <TextBlock Margin="0 0 0 0" VerticalAlignment="Center" FontSize="14"><Run Text="Donate to LeonBlade"/></TextBlock>
+                            </StackPanel>
+                        </Button>
+                    </Border>
 
-					<!-- Johto Donate -->
-					<Border BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}" Grid.Column="1">
-						<Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
+                    <!-- Johto Donate -->
+                    <Border BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}" Grid.Column="1">
+                        <Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
                             x:Name="GitHubButton1" Width="auto" Click="DonateButton_OnClick">
-							<StackPanel Orientation="Horizontal">
-								<materialDesign:PackIcon Kind="Link" Margin="0,2,8,0" />
-								<TextBlock Margin="0 0 0 0" VerticalAlignment="Center" FontSize="14" Width="auto"><Run Text="Donate to Johto"/></TextBlock>
-							</StackPanel>
-						</Button>
-					</Border>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Link" Margin="0,2,8,0" />
+                                <TextBlock Margin="0 0 0 0" VerticalAlignment="Center" FontSize="14" Width="auto"><Run Text="Donate to Johto"/></TextBlock>
+                            </StackPanel>
+                        </Button>
+                    </Border>
 
-					<!-- Krisan Donate -->
-					<Border BorderThickness="0 1 0 1" BorderBrush="{DynamicResource MaterialDesignDivider}" Grid.Column="1">
-						<Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
+                    <!-- Krisan Donate -->
+                    <Border BorderThickness="0 1 0 1" BorderBrush="{DynamicResource MaterialDesignDivider}" Grid.Column="1">
+                        <Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
                             x:Name="GitHubButton1_Copy" Width="auto" Click="DonateButton_OnClick3">
-							<StackPanel Orientation="Horizontal">
-								<materialDesign:PackIcon Kind="Link" Margin="0,2,8,0" />
-								<TextBlock Margin="0 0 0 0" VerticalAlignment="Center" FontSize="14" Width="auto" Text="Donate to Krisan Thyme"/>
-							</StackPanel>
-						</Button>
-					</Border>
-				</StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Link" Margin="0,2,8,0" />
+                                <TextBlock Margin="0 0 0 0" VerticalAlignment="Center" FontSize="14" Width="auto" Text="Donate to Krisan Thyme"/>
+                            </StackPanel>
+                        </Button>
+                    </Border>
+                </StackPanel>
 
-				<materialDesign:PackIcon Grid.Column="0"  Kind="Donate" Width="96" Height="96" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.RowSpan="3" />
+                <materialDesign:PackIcon Grid.Column="0"  Kind="Donate" Width="96" Height="96" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.RowSpan="3" />
             </Grid>
         </materialDesign:Card>
 
@@ -136,22 +136,36 @@
                     <ColumnDefinition Width="150" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-				<materialDesign:PackIcon Kind="About" Height="96" Width="96" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="31,65,35,65" />
-				<StackPanel Grid.Column="1" VerticalAlignment="Center">
-					<TextBlock TextWrapping="Wrap" Foreground="{DynamicResource MaterialDesignBodyLight}" FontSize="12" Margin="8">
+                <materialDesign:PackIcon Kind="About" Height="96" Width="96" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="31,65,35,65" />
+                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                    <TextBlock TextWrapping="Wrap" Foreground="{DynamicResource MaterialDesignBodyLight}" FontSize="12" Margin="8">
 						This trainer and its base code was originally created by LeonBlade.
-					</TextBlock>
+                    </TextBlock>
                     <TextBlock TextWrapping="Wrap" Foreground="{DynamicResource MaterialDesignBodyLight}" FontSize="12" Margin="8"><Run Text="The current base code including much of the framework for the UI"/><LineBreak/><Run Text="and its various elements was created by Johto."/></TextBlock>
-                    <TextBlock TextWrapping="Wrap" Foreground="{DynamicResource MaterialDesignBodyLight}" FontSize="12" Margin="8" Text="This branch of SSTools was created by Krisan Thyme and is maintained solely by him. The original project is still maintained by Johto and Leon."/>
+                    <TextBlock TextWrapping="Wrap" Foreground="{DynamicResource MaterialDesignBodyLight}" FontSize="12" Margin="8" Text="This branch of SSTool - Concept Matrix - was created by Krisan Thyme and is maintained solely by him. The original SSTool project is still being maintained by Johto and Leon."/>
                     <TextBlock TextWrapping="Wrap" Foreground="{DynamicResource MaterialDesignBodyLight}" FontSize="12" Margin="8">
 						Special thanks to Goat for his contributions!
-					</TextBlock>
-					<TextBlock TextWrapping="Wrap" Foreground="{DynamicResource MaterialDesignBodyLight}" FontSize="12" Margin="8">
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" Foreground="{DynamicResource MaterialDesignBodyLight}" FontSize="12" Margin="8">
 						This project is powered by MaterialDesignInXAML, MahApps, Fody, Newtonsoft.Json and Memory.dll
-					</TextBlock>
-				</StackPanel>
-                
+                    </TextBlock>
+                </StackPanel>
+
             </Grid>
         </materialDesign:Card>
+        <Grid HorizontalAlignment="Left" Margin="428,220,0,-35" Grid.ColumnSpan="2" Grid.Row="1" Height="60">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="1" VerticalAlignment="Center" Text="Hydaelyn Theme"/>
+            <ToggleButton x:Name="ThemeButton" Grid.Row="1" Grid.Column="1" Margin="10,4.797,9.999,3.203" Command="{Binding ToggleBaseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Text="Zodiark Theme"/>
+        </Grid>
     </Grid>
 </UserControl>

@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using ConceptMatrix.ViewModel;
+using Microsoft.Win32;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -98,6 +99,7 @@ namespace ConceptMatrix
         private void App_Exit(object sender, ExitEventArgs e)
         {
             Utility.SaveSettings.Default.Save();
+            if (MainViewModel.ViewTime5.EditMode) MainViewModel.ViewTime5.EditModeButton.IsChecked = false;
         }
         private static bool RequestGamePath()
         {
