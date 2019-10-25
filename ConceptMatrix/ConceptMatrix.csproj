@@ -169,9 +169,6 @@
     <Compile Include="Views\AboutView.xaml.cs">
       <DependentUpon>AboutView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Beta.xaml.cs">
-      <DependentUpon>Beta.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\CharacterDetailsView.xaml.cs">
       <DependentUpon>CharacterDetailsView.xaml</DependentUpon>
     </Compile>
@@ -195,9 +192,6 @@
     </Compile>
     <Compile Include="Views\PaletteView.xaml.cs">
       <DependentUpon>PaletteView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\RotationView2.xaml.cs">
-      <DependentUpon>RotationView2.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RotationView.xaml.cs">
       <DependentUpon>RotationView.xaml</DependentUpon>
@@ -242,10 +236,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Beta.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\CharacterDetailsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -277,10 +267,6 @@
     <Page Include="Views\PaletteView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\RotationView2.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\RotationView.xaml">
       <SubType>Designer</SubType>

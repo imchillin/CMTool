@@ -14,6 +14,7 @@
   <SkeletonOffset>1294B00</SkeletonOffset>
   <SkeletonOffset2>1295C2D</SkeletonOffset2>
   <SkeletonOffset3>12A3894</SkeletonOffset3>
+  <PhysicsOffset>373028</PhysicsOffset>
   <CharacterRenderOffset>4293D0</CharacterRenderOffset>
   <CharacterRenderOffset2>4293C6</CharacterRenderOffset2>
   <Character>
@@ -32,6 +33,11 @@
         <Rotation3>68</Rotation3>
         <Rotation4>6C</Rotation4>
 
+        <DebugX>98,68,300,18,10</DebugX>
+        <DebugY>98,68,300,18,14</DebugY>
+        <DebugZ>98,68,300,18,18</DebugZ>
+        <DebugW>98,68,300,18,1C</DebugW>
+        
         <PelvisX>98,68,140,18,A0</PelvisX>
         <PelvisY>98,68,140,18,A4</PelvisY>
         <PelvisZ>98,68,140,18,A8</PelvisZ>
@@ -152,6 +158,14 @@
         <RHandY>98,68,140,18,C44</RHandY>
         <RHandZ>98,68,140,18,C48</RHandZ>
         <RHandW>98,68,140,18,C4C</RHandW>
+        <LEarringX>98,68,140,18,CD0</LEarringX>
+        <LEarringY>98,68,140,18,CD4</LEarringY>
+        <LEarringZ>98,68,140,18,CD8</LEarringZ>
+        <LEarringW>98,68,140,18,CDC</LEarringW>
+        <REarringX>98,68,140,18,D00</REarringX>
+        <REarringY>98,68,140,18,D04</REarringY>
+        <REarringZ>98,68,140,18,D08</REarringZ>
+        <REarringW>98,68,140,18,D0C</REarringW>
         <LElbowX>98,68,140,18,D30</LElbowX>
         <LElbowY>98,68,140,18,D34</LElbowY>
         <LElbowZ>98,68,140,18,D38</LElbowZ>
@@ -168,6 +182,14 @@
         <RWristY>98,68,140,18,E24</RWristY>
         <RWristZ>98,68,140,18,E28</RWristZ>
         <RWristW>98,68,140,18,E2C</RWristW>
+        <LEarring2X>98,68,140,18,1090</LEarring2X>
+        <LEarring2Y>98,68,140,18,1094</LEarring2Y>
+        <LEarring2Z>98,68,140,18,1098</LEarring2Z>
+        <LEarring2W>98,68,140,18,109C</LEarring2W>
+        <REarring2X>98,68,140,18,10C0</REarring2X>
+        <REarring2Y>98,68,140,18,10C4</REarring2Y>
+        <REarring2Z>98,68,140,18,10C8</REarring2Z>
+        <REarring2W>98,68,140,18,10CC</REarring2W>
         <LIndexX>98,68,140,18,E50</LIndexX>
         <LIndexY>98,68,140,18,E54</LIndexY>
         <LIndexZ>98,68,140,18,E58</LIndexZ>
@@ -252,6 +274,18 @@
         <TailY>98,68,140,18,12D4</TailY>
         <TailZ>98,68,140,18,12D8</TailZ>
         <TailW>98,68,140,18,12DC</TailW>
+        <Tail2X>98,68,140,18,1300</Tail2X>
+        <Tail2Y>98,68,140,18,1304</Tail2Y>
+        <Tail2Z>98,68,140,18,1308</Tail2Z>
+        <Tail2W>98,68,140,18,130C</Tail2W>
+        <Tail3X>98,68,140,18,1330</Tail3X>
+        <Tail3Y>98,68,140,18,1334</Tail3Y>
+        <Tail3Z>98,68,140,18,1338</Tail3Z>
+        <Tail3W>98,68,140,18,133C</Tail3W>
+        <Tail4X>98,68,140,18,1360</Tail4X>
+        <Tail4Y>98,68,140,18,1364</Tail4Y>
+        <Tail4Z>98,68,140,18,1368</Tail4Z>
+        <Tail4W>98,68,140,18,136C</Tail4W>
         <ChinX>98,68,300,18,40</ChinX>
         <ChinY>98,68,300,18,44</ChinY>
         <ChinZ>98,68,300,18,48</ChinZ>

@@ -89,132 +89,132 @@
         <TextBox Style="{StaticResource MaterialDesignTextBox}" x:Name="NameBox" HorizontalAlignment="Left" Height="23" Margin="168,5,0,0" Text="{Binding CharacterDetails.Name.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="128"  materialDesign:HintAssist.Hint="Name" KeyUp="NameBox_KeyUp" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
 
         <!-- Race -->
-        <CheckBox IsChecked="{Binding CharacterDetails.Race.freeze}" Content="Race:" ToolTip="Changes the Race of the selected actor." HorizontalAlignment="Left" Margin="10,77.118,0,0" VerticalAlignment="Top" Height="23"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.Race.freeze}" Content="Race:" ToolTip="Changes the Race of the selected actor." HorizontalAlignment="Left" Margin="8,77,0,0" VerticalAlignment="Top" Height="23"/>
         <ComboBox x:Name="RaceBox" SelectedIndex="{Binding CharacterDetails.Race.value}" HorizontalAlignment="Left" Margin="168,77.118,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
 
         <!-- Clan -->
-        <CheckBox IsChecked="{Binding CharacterDetails.Clan.freeze}" Content="Clan:" ToolTip="Changes the Clan of the selected actor." HorizontalAlignment="Left" Margin="10,107.118,0,0" VerticalAlignment="Top" Height="23"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.Clan.freeze}" Content="Clan:" ToolTip="Changes the Clan of the selected actor." HorizontalAlignment="Left" Margin="8,107,0,0" VerticalAlignment="Top" Height="23"/>
         <ComboBox x:Name="ClanBox" SelectedIndex="{Binding CharacterDetails.Clan.value}" HorizontalAlignment="Left" Margin="168,107.118,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
 
         <!-- Gender -->
-        <CheckBox IsChecked="{Binding CharacterDetails.Gender.freeze}" Content="Gender:" ToolTip="Changes the Gender of the selected actor." HorizontalAlignment="Left" Margin="10,137.118,0,0" VerticalAlignment="Top" Height="23"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.Gender.freeze}" Content="Gender:" ToolTip="Changes the Gender of the selected actor." HorizontalAlignment="Left" Margin="8,137,0,0" VerticalAlignment="Top" Height="23"/>
         <ComboBox SelectedIndex="{Binding CharacterDetails.Gender.value}" HorizontalAlignment="Left" Margin="168,137.118,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <ComboBoxItem Content="Male" Background="{x:Null}"/>
             <ComboBoxItem Content="Female" Background="{x:Null}"/>
         </ComboBox>
 
         <!-- Body Type -->
-        <CheckBox IsChecked="{Binding CharacterDetails.BodyType.freeze}" Content="Body Type:" ToolTip="Changes the Body Type of the selected actor." HorizontalAlignment="Left" Margin="311,137.118,0,0" VerticalAlignment="Top" Height="23"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.BodyType.freeze}" Content="Body Type:" ToolTip="Changes the Body Type of the selected actor." HorizontalAlignment="Left" Margin="311,137,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="23" Margin="469,137.118,0,0" Text="{Binding CharacterDetails.BodyType.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" PreviewTextInput="DigitCheckInput" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
 
         <!-- Height -->
-        <CheckBox IsChecked="{Binding CharacterDetails.RHeight.freeze}" Content="Height:" ToolTip="Changes the Height of the selected actor." HorizontalAlignment="Left" Margin="311,77.118,0,0" VerticalAlignment="Top" Height="23"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.RHeight.freeze}" Content="Height:" ToolTip="Changes the Height of the selected actor." HorizontalAlignment="Left" Margin="311,77,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="23" Margin="469,77.118,0,0" Text="{Binding CharacterDetails.RHeight.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" PreviewTextInput="DigitCheckInput" FontSize="11.35" CaretBrush="#FF3F51B5" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
 
         <!-- Bust Size -->
-        <CheckBox IsChecked="{Binding CharacterDetails.RBust.freeze}" Content="Bust Size:" ToolTip="Changes the Bust Size of the selected actor." HorizontalAlignment="Left" Margin="311,107.118,0,0" VerticalAlignment="Top" Height="23"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.RBust.freeze}" Content="Bust Size:" ToolTip="Changes the Bust Size of the selected actor." HorizontalAlignment="Left" Margin="311,107,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="23"  PreviewTextInput="DigitCheckInput"  Margin="469,107.118,0,0" Text="{Binding CharacterDetails.RBust.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
 
         <!-- Skintone -->
-        <CheckBox IsChecked="{Binding CharacterDetails.Skintone.freeze}" Content="Skintone:" ToolTip="Changes the Skintone of the selected actor." HorizontalAlignment="Left" Margin="10,167.118,0,0" VerticalAlignment="Top" Height="23"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.Skintone.freeze}" Content="Skintone:" ToolTip="Changes the Skintone of the selected actor." HorizontalAlignment="Left" Margin="8,167,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="23"  PreviewTextInput="DigitCheckInput" Margin="168,167.118,0,0" Text="{Binding CharacterDetails.Skintone.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
         <Button x:Name="SkinSearch" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,167.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="SkinSearch_Click"/>
 
         <!-- Head Type -->
-        <CheckBox IsChecked="{Binding CharacterDetails.Head.freeze}" Content="Head Type:" ToolTip="Changes the Head Type of the selected actor." HorizontalAlignment="Left" Margin="311,167.118,0,0" VerticalAlignment="Top" Height="23"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.Head.freeze}" Content="Head Type:" ToolTip="Changes the Head Type of the selected actor." HorizontalAlignment="Left" Margin="311,167,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="23"  PreviewTextInput="DigitCheckInput" Margin="469,167.118,0,0" Text="{Binding CharacterDetails.Head.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
 
         <!-- Hairstyle -->
-        <CheckBox IsChecked="{Binding CharacterDetails.Hair.freeze}" Content="Hairstyle:" ToolTip="Changes the Hairstyle of the selected actor." HorizontalAlignment="Left" Margin="10,407.118,0,0" VerticalAlignment="Top" Height="23"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.Hair.freeze}" Content="Hairstyle:" ToolTip="Changes the Hairstyle of the selected actor." HorizontalAlignment="Left" Margin="8,407,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="23"  PreviewTextInput="DigitCheckInput" Margin="168,407.118,0,0" Text="{Binding CharacterDetails.Hair.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
         <Button x:Name="HairSelectButton" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,407.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="HairSelectButton_Click_1"/>
 
         <!-- Hair Color -->
-        <CheckBox IsChecked="{Binding CharacterDetails.HairTone.freeze}" Content="Hair Color:" ToolTip="Changes the Hair Color of the selected actor." HorizontalAlignment="Left" Margin="10,437.118,0,0" VerticalAlignment="Top" Height="23"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.HairTone.freeze}" Content="Hair Color:" ToolTip="Changes the Hair Color of the selected actor." HorizontalAlignment="Left" Margin="8,437,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left"  PreviewTextInput="DigitCheckInput" Height="23" Margin="168,437.118,0,0" Text="{Binding CharacterDetails.HairTone.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
         <Button x:Name="HairColorSearch"  Content="View" HorizontalAlignment="Left" materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="231,437.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="HairSelectButton_Click"/>
 
         <!-- Highlights -->
-        <CheckBox IsChecked="{Binding CharacterDetails.Highlights.freeze}" Content="" HorizontalAlignment="Left" Margin="105,467.118,0,0" VerticalAlignment="Top" Height="23"/>
-        <ToggleButton x:Name="HighLightButton" ToolTip="Toggles Highlights for the selected actor." Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.Highlights.SpecialActivate}" Margin="130,467.118,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="23" Checked="HighLightButton_Checked" Unchecked="HighLightButton_Unchecked" />
-        <CheckBox IsChecked="{Binding CharacterDetails.HighlightTone.freeze}" Content="Highlights:" ToolTip="Changes the Highlights Color of the selected actor." HorizontalAlignment="Left" Margin="10,467.118,0,0" VerticalAlignment="Top" Height="23"/>
+        <CheckBox Name="HighlightCheckbox" IsChecked="{Binding CharacterDetails.Highlights.freeze}" Content="" HorizontalAlignment="Left" Margin="103,467,0,0" VerticalAlignment="Top" Height="23" Visibility="Hidden" IsEnabled="False"/>
+        <ToggleButton x:Name="HighLightButton" ToolTip="Toggles Highlights for the selected actor." Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.Highlights.SpecialActivate}" Margin="128,467,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="23" Checked="HighLightButton_Checked" Unchecked="HighLightButton_Unchecked" />
+        <CheckBox IsChecked="{Binding CharacterDetails.HighlightTone.freeze}" Content="Highlights:" ToolTip="Changes the Highlights Color of the selected actor." HorizontalAlignment="Left" Margin="8,467,0,0" VerticalAlignment="Top" Height="23" Checked="HighlightCheckbox_Checked" Unchecked="HighlightCheckbox_Unchecked"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left"  PreviewTextInput="DigitCheckInput" Height="23" Margin="168,467.118,0,0" Text="{Binding CharacterDetails.HighlightTone.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
         <Button x:Name="HighlightcolorSearch" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,467.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="HighlightcolorSearch_Click"/>
 
         <!-- Mouth Type -->
-        <CheckBox IsChecked="{Binding CharacterDetails.Lips.freeze}" Content="Mouth Type:" ToolTip="Changes the Mouth Type of the selected actor." HorizontalAlignment="Left" Margin="311,317.118,0,0" VerticalAlignment="Top" Height="23"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.Lips.freeze}" Content="Mouth Type:" ToolTip="Changes the Mouth Type of the selected actor." HorizontalAlignment="Left" Margin="311,317,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left"  PreviewTextInput="DigitCheckInput" Height="23" Margin="469,317.118,0,0" Text="{Binding CharacterDetails.Lips.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
 
         <!-- Lips Color -->
-        <CheckBox IsChecked="{Binding CharacterDetails.LipsTone.freeze}" Content="Lips Color:" ToolTip="Changes the Lips Color of the selected actor." HorizontalAlignment="Left" Margin="10,287.118,0,0" VerticalAlignment="Top" Height="23"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.LipsTone.freeze}" Content="Lips Color/Fur Pattern:" ToolTip="Changes the Lips Color of the selected actor." HorizontalAlignment="Left" Margin="8,287,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left"  PreviewTextInput="DigitCheckInput" Height="23" Margin="168,287.118,0,0" Text="{Binding CharacterDetails.LipsTone.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
         <Button x:Name="LipColorSearch" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,287.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="Button_Click"/>
 
         <!-- Jaw Type -->
-        <CheckBox IsChecked="{Binding CharacterDetails.Jaw.freeze}" Content="Jaw Type:" ToolTip="Changes the Jaw Type of the selected actor." HorizontalAlignment="Left" Margin="311,197.118,0,0" VerticalAlignment="Top" Height="23"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.Jaw.freeze}" Content="Jaw Type:" ToolTip="Changes the Jaw Type of the selected actor." HorizontalAlignment="Left" Margin="311,197,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,197.118,0,0" Text="{Binding CharacterDetails.Jaw.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
 
         <!-- Nose Type -->
-        <CheckBox IsChecked="{Binding CharacterDetails.Nose.freeze}" Content="Nose Type:" ToolTip="Changes the Nose Type of the selected actor." HorizontalAlignment="Left" Margin="311,287.118,0,0" VerticalAlignment="Top" Height="23"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.Nose.freeze}" Content="Nose Type:" ToolTip="Changes the Nose Type of the selected actor." HorizontalAlignment="Left" Margin="311,287,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,287.118,0,0" Text="{Binding CharacterDetails.Nose.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
 
         <!-- Eyes -->
-        <CheckBox IsChecked="{Binding CharacterDetails.Eye.freeze}" Content="Eyes Type:" ToolTip="Changes the Eyes Type of the selected actor." HorizontalAlignment="Left" Margin="311,257.118,0,0" VerticalAlignment="Top" Height="23"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.Eye.freeze}" Content="Eyes Type:" ToolTip="Changes the Eyes Type of the selected actor." HorizontalAlignment="Left" Margin="311,257,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,257.118,0,0" Text="{Binding CharacterDetails.Eye.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
 
         <!-- Eyebrows Type -->
-        <CheckBox IsChecked="{Binding CharacterDetails.EyeBrowType.freeze}" Content="Eyebrows Type:" ToolTip="Changes the Eyebrows Type of the selected actor." HorizontalAlignment="Left" Margin="311,227.118,0,0" VerticalAlignment="Top" Height="23"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.EyeBrowType.freeze}" Content="Eyebrows Type:" ToolTip="Changes the Eyebrows Type of the selected actor." HorizontalAlignment="Left" Margin="311,227,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,227.118,0,0" Text="{Binding CharacterDetails.EyeBrowType.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
 
         <!-- Eye Color (Right) -->
-        <CheckBox IsChecked="{Binding CharacterDetails.RightEye.freeze}" Content="Eye Color (Right):" ToolTip="Changes the Right Eye Color of the selected actor." HorizontalAlignment="Left" Margin="10,227.118,0,0" VerticalAlignment="Top" Height="23"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.RightEye.freeze}" Content="Eye Color (Right):" ToolTip="Changes the Right Eye Color of the selected actor." HorizontalAlignment="Left" Margin="8,227,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="168,227.118,0,0" Text="{Binding CharacterDetails.RightEye.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
         <Button x:Name="RightEyeSearch" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,227.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="RightEyeSearch_Click"/>
 
         <!-- Eye Color (Left) -->
-        <CheckBox IsChecked="{Binding CharacterDetails.LeftEye.freeze}" Content="Eye Color (Left):" ToolTip="Changes the Left Eye Color of the selected actor." HorizontalAlignment="Left" Margin="10,197.118,0,0" VerticalAlignment="Top" Height="23"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.LeftEye.freeze}" Content="Eye Color (Left):" ToolTip="Changes the Left Eye Color of the selected actor." HorizontalAlignment="Left" Margin="8,197,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="168,197.118,0,0" Text="{Binding CharacterDetails.LeftEye.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
         <Button x:Name="LeftEyeSearch" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,197.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="LeftEyeSearch_Click" BorderThickness="1"/>
 
         <!-- Limbal Eye/Tattoo Color -->
-        <CheckBox IsChecked="{Binding CharacterDetails.LimbalEyes.freeze}" Content="Limbal/Tattoo Color:" ToolTip="Changes the Limbal Ring and Tattoo Color of the selected actor." HorizontalAlignment="Left" Margin="10,377.118,0,0" VerticalAlignment="Top" Height="23"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.LimbalEyes.freeze}" Content="Limbal/Tattoo Color:" ToolTip="Changes the Limbal Ring and Tattoo Color of the selected actor." HorizontalAlignment="Left" Margin="8,377,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="168,377.118,0,0" Text="{Binding CharacterDetails.LimbalEyes.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
         <Button x:Name="LimbalEyeSearch" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,377.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="LimbalEyeSearch_Click"/>
 
         <!-- Facial Features -->
-        <CheckBox IsChecked="{Binding CharacterDetails.FacialFeatures.freeze}" Content="Facial Features:" ToolTip="Changes the Facial Features of the selected actor." HorizontalAlignment="Left" Margin="10,257.118,0,0" VerticalAlignment="Top" Height="23"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.FacialFeatures.freeze}" Content="Facial Features:" ToolTip="Changes the Facial Features of the selected actor." HorizontalAlignment="Left" Margin="8,257,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="168,257.118,0,0" Text="{Binding CharacterDetails.FacialFeatures.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
         <Button x:Name="FacialFeature" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,257.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="FacialFeature_Click"/>
 
         <!-- Ear/Tail Type -->
-        <CheckBox IsChecked="{Binding CharacterDetails.TailType.freeze}" Content="Ear/Tail Type:" ToolTip="Changes the Ear and Tail of the selected actor." HorizontalAlignment="Left" Margin="311,347.118,0,0" VerticalAlignment="Top" Height="23"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.TailType.freeze}" Content="Ear/Tail Type:" ToolTip="Changes the Ear and Tail of the selected actor." HorizontalAlignment="Left" Margin="311,347,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,347.118,0,0" Text="{Binding CharacterDetails.TailType.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
 
         <!-- Ear/Muscle/Tail Size -->
-        <CheckBox IsChecked="{Binding CharacterDetails.TailorMuscle.freeze}" Content="Ear/Muscle/Tail Size:" ToolTip="Changes the Ear, Muscle, and Tail Size of the selected actor." HorizontalAlignment="Left" Margin="311,377.118,0,0" VerticalAlignment="Top" Height="23"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.TailorMuscle.freeze}" Content="Ear/Muscle/Tail Size:" ToolTip="Changes the Ear, Muscle, and Tail Size of the selected actor." HorizontalAlignment="Left" Margin="311,377,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,377.118,0,0" Text="{Binding CharacterDetails.TailorMuscle.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
 
         <!-- Face Paint/Tattoos -->
-        <CheckBox IsChecked="{Binding CharacterDetails.FacePaint.freeze}" Content="Face Paint/Tattoo:" ToolTip="Changes the Face Paint and Tattoos of the selected actor." HorizontalAlignment="Left" Margin="10,317.118,0,0" VerticalAlignment="Top" Height="23"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.FacePaint.freeze}" Content="Face Paint/Tattoo:" ToolTip="Changes the Face Paint and Tattoos of the selected actor." HorizontalAlignment="Left" Margin="8,317,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="168,317.118,0,0" Text="{Binding CharacterDetails.FacePaint.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
         <Button x:Name="FacePaint_Color_Copy" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,317.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="FaceSelectButton_Click"/>
 
         <!-- Face Paint Color -->
-        <CheckBox IsChecked="{Binding CharacterDetails.FacePaintColor.freeze}" Content="Face Paint Color:" ToolTip="Changes the Face Paint Color of the selected actor." HorizontalAlignment="Left" Margin="10,347.118,0,0" VerticalAlignment="Top" Height="23"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.FacePaintColor.freeze}" Content="Face Paint Color:" ToolTip="Changes the Face Paint Color of the selected actor." HorizontalAlignment="Left" Margin="8,347,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="168,347.118,0,0" Text="{Binding CharacterDetails.FacePaintColor.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
         <Button x:Name="FacePaint_Color" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,347.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="FacePaint_Color_Click"/>
 
         <!-- Voice Type -->
-        <CheckBox IsChecked="{Binding CharacterDetails.Voices.freeze}" Content="Voice Type:" ToolTip="Changes the Voice Type of the selected actor." HorizontalAlignment="Left" Margin="311,407.118,0,0" VerticalAlignment="Top" Height="23"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.Voices.freeze}" Content="Voice Type:" ToolTip="Changes the Voice Type of the selected actor." HorizontalAlignment="Left" Margin="311,407,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,407.118,0,0" Text="{Binding CharacterDetails.Voices.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" BorderThickness="0,0,0,1" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
 
         <!-- Model Type -->
-        <CheckBox IsChecked="{Binding CharacterDetails.ModelType.freeze}" Content="Model Type:" ToolTip="Changes the Model Type of the selected actor." HorizontalAlignment="Left" Margin="311,437.118,0,0" VerticalAlignment="Top" Height="23"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.ModelType.freeze}" Content="Model Type:" ToolTip="Changes the Model Type of the selected actor." HorizontalAlignment="Left" Margin="311,437,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,437.118,0,0" Text="{Binding CharacterDetails.ModelType.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
         <Button x:Name="ModelTypeButton" ToolTip="Opens a flyout menu on the right side that allows you to search for Monsters, Demi-Humans, Prop Entities and Entity-Based Effects.&#xD;&#xA;&#x2022; Some NPCs are found under this selection because they are classified as Demi-Humans, such as Beast Tribes, Zenos, Thordan/Knights, etc.&#xD;&#xA;&#x2022; If you become invisible after changing to a Demi-Human, change all of your Equipment to Base 0, Variant 0. If this doesn't work, try 1,0 or 1,1." Content="Model List" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="311,467.118,0,0" VerticalAlignment="Top" Width="213" Height="23" Click="ModelTypeButton_Click"/>
 
         <!-- Random Appearance -->
-        <Button Content="Randomize Appearance" ToolTip="Will create a random appearance." materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="10,497.118,0,0" VerticalAlignment="Top" Width="514" Click="Button_Click_1" Height="23"/>
+        <Button Content="Randomize Appearance" ToolTip="Will create a random appearance." materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="8,497,0,0" VerticalAlignment="Top" Width="516" Click="Button_Click_1" Height="23"/>
 
         <!-- Overall Scale -->
         <CheckBox IsChecked="{Binding CharacterDetails.Height.freeze}" Content="Overall Scale:" ToolTip="Modifies the Overall Scale of the selected actor." HorizontalAlignment="Left" Margin="545,5,0,0" VerticalAlignment="Top" Height="28"/>
@@ -379,7 +379,7 @@
         <ToggleButton Name="RotRelButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1067,305,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Checked="RotRelButton_Checked" Unchecked="RotRelButton_Unchecked" />
         <Label Content="Relative XYZ Rot:" ToolTip="This toggle will make all XYZ rotations relative to the entity being targeted, and not absolute based on the gameworld.&#xD;&#xA;&#x2022; This setting is defaulted to on, and its state is saved between sessions. &#xD;&#xA;&#x2022; Only affects the Realtime Rotation Cube." HorizontalAlignment="Left" Margin="956,307,0,0" VerticalAlignment="Top" Height="28"/>
 
-        <Views:SpecialControl x:Name="SpecialControl" Width="579" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Margin="536,0,0,0" Height="Auto"/>
+        <Views:SpecialControl x:Name="SpecialControl" Width="579" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Margin="536,0,0,0"/>
         <Views:EmoteFlyOut x:Name="EmoteFlyouts" Width="534" HorizontalAlignment="Left" VerticalAlignment="Top" Height="Auto" Visibility="Hidden" Margin="0,0,0,0"/>
     </Grid>
 </UserControl>

@@ -46,6 +46,7 @@ namespace ConceptMatrix.Utility
         public string SkeletonAddress { get; set; }
         public string SkeletonAddress2 { get; set; }
         public string SkeletonAddress3 { get; set; }
+        public string PhysicsAddress { get; set; }
         public string CharacterRenderAddress { get; set; }
         public string CharacterRenderAddress2 { get; set; }
         public string GposeEntityOffset { get; set; }

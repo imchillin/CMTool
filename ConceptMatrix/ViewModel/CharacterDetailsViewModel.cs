@@ -281,6 +281,15 @@ namespace ConceptMatrix.ViewModel
                     if (CharacterDetails.FilterAoB.value.Contains("00 00 80 3E 00 00 00 3F CD CC CC BE CD CC 4C BE 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"))
                         CharacterDetails.FilterAoB.Selected = 23;
                 }
+
+                #region Skeletal Rotations
+                HeadRotations();
+                UpperBodyRotations();
+                FingerRotations();
+                LowerBodyRotations();
+                MiscRotations();
+                #endregion
+
                 if (!CharacterDetails.Voices.freeze) CharacterDetails.Voices.value = (byte)m.readByte(GAS(baseAddr, c.Voices));
 
                 if (!CharacterDetails.Height.freeze) CharacterDetails.Height.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Height));
@@ -357,7 +366,7 @@ namespace ConceptMatrix.ViewModel
                 if (!CharacterDetails.BustZ.freeze) CharacterDetails.BustZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bust.Base, c.Body.Bust.Z));
 
                 // Reading rotation values.
-                if (!CharacterDetails.RotateFreeze && !CharacterDetails.BoneFreeze)
+                if (!CharacterDetails.RotateFreeze && !CharacterDetails.BoneEditMode)
                 {
                     CharacterDetails.Rotation.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Rotation));
                     CharacterDetails.Rotation2.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Rotation2));
@@ -375,15 +384,6 @@ namespace ConceptMatrix.ViewModel
                     CharacterDetails.RotateX = (float)euler.X;
                     CharacterDetails.RotateY = (float)euler.Y;
                     CharacterDetails.RotateZ = (float)euler.Z;
-                }
-
-                if (CharacterDetails.BoneFreeze)
-                {
-                    HeadBoneWork();
-                    BodyBoneWork();
-                    ArmBoneWork();
-                    FingerBoneWork();
-                    LegBoneWork();
                 }
 
                 if (!CharacterDetails.X.freeze) CharacterDetails.X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.X));
@@ -649,9 +649,9 @@ namespace ConceptMatrix.ViewModel
                 mediator.Work -= Work;
             }
         }
-        private void HeadBoneWork()
+        private void HeadRotations()
         {
-            if (MainViewModel.ViewTime5.HeadCheck)
+            if (CharacterDetails.HeadCheck)
             {
                 CharacterDetails.HeadX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.HeadX));
                 CharacterDetails.HeadY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.HeadY));
@@ -669,9 +669,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.HeadCheck = false;
+                CharacterDetails.HeadRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.NoseCheck)
+            if (CharacterDetails.NoseCheck)
             {
                 CharacterDetails.NoseX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NoseX));
                 CharacterDetails.NoseY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NoseY));
@@ -689,9 +692,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.NoseCheck = false;
+                CharacterDetails.NoseRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.NostrilsCheck)
+            if (CharacterDetails.NostrilsCheck)
             {
                 CharacterDetails.NostrilsX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NostrilsX));
                 CharacterDetails.NostrilsY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NostrilsY));
@@ -709,9 +715,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.NostrilsCheck = false;
+                CharacterDetails.NostrilsRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.ChinCheck)
+            if (CharacterDetails.ChinCheck)
             {
                 CharacterDetails.ChinX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.ChinX));
                 CharacterDetails.ChinY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.ChinY));
@@ -729,9 +738,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.ChinCheck = false;
+                CharacterDetails.ChinRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LOutEyebrowCheck)
+            if (CharacterDetails.LOutEyebrowCheck)
             {
                 CharacterDetails.LOutEyebrowX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LOutEyebrowX));
                 CharacterDetails.LOutEyebrowY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LOutEyebrowY));
@@ -749,9 +761,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LOutEyebrowCheck = false;
+                CharacterDetails.LOutEyebrowRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.ROutEyebrowCheck)
+            if (CharacterDetails.ROutEyebrowCheck)
             {
                 CharacterDetails.ROutEyebrowX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.ROutEyebrowX));
                 CharacterDetails.ROutEyebrowY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.ROutEyebrowY));
@@ -769,9 +784,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.ROutEyebrowCheck = false;
+                CharacterDetails.ROutEyebrowRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LInEyebrowCheck)
+            if (CharacterDetails.LInEyebrowCheck)
             {
                 CharacterDetails.LInEyebrowX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LInEyebrowX));
                 CharacterDetails.LInEyebrowY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LInEyebrowY));
@@ -789,9 +807,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LInEyebrowCheck = false;
+                CharacterDetails.LInEyebrowRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.RInEyebrowCheck)
+            if (CharacterDetails.RInEyebrowCheck)
             {
                 CharacterDetails.RInEyebrowX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RInEyebrowX));
                 CharacterDetails.RInEyebrowY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RInEyebrowY));
@@ -809,9 +830,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.RInEyebrowCheck = false;
+                CharacterDetails.RInEyebrowRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LEyeCheck)
+            if (CharacterDetails.LEyeCheck)
             {
                 CharacterDetails.LEyeX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEyeX));
                 CharacterDetails.LEyeY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEyeY));
@@ -829,9 +853,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LEyeCheck = false;
+                CharacterDetails.LEyeRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.REyeCheck)
+            if (CharacterDetails.REyeCheck)
             {
                 CharacterDetails.REyeX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REyeX));
                 CharacterDetails.REyeY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REyeY));
@@ -849,9 +876,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.REyeCheck = false;
+                CharacterDetails.REyeRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LEyelidCheck)
+            if (CharacterDetails.LEyelidCheck)
             {
                 CharacterDetails.LEyelidX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEyelidX));
                 CharacterDetails.LEyelidY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEyelidY));
@@ -869,9 +899,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LEyelidCheck = false;
+                CharacterDetails.LEyelidRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.REyelidCheck)
+            if (CharacterDetails.REyelidCheck)
             {
                 CharacterDetails.REyelidX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REyelidX));
                 CharacterDetails.REyelidY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REyelidY));
@@ -889,9 +922,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.REyelidCheck = false;
+                CharacterDetails.REyelidRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LLowEyelidCheck)
+            if (CharacterDetails.LLowEyelidCheck)
             {
                 CharacterDetails.LLowEyelidX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LLowEyelidX));
                 CharacterDetails.LLowEyelidY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LLowEyelidY));
@@ -909,9 +945,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LLowEyelidCheck = false;
+                CharacterDetails.LLowEyelidRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.RLowEyelidCheck)
+            if (CharacterDetails.RLowEyelidCheck)
             {
                 CharacterDetails.RLowEyelidX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RLowEyelidX));
                 CharacterDetails.RLowEyelidY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RLowEyelidY));
@@ -929,9 +968,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.RLowEyelidCheck = false;
+                CharacterDetails.RLowEyelidRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LEarCheck)
+            if (CharacterDetails.LEarCheck)
             {
                 CharacterDetails.LEarX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEarX));
                 CharacterDetails.LEarY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEarY));
@@ -949,9 +991,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LEarCheck = false;
+                CharacterDetails.LEarRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.REarCheck)
+            if (CharacterDetails.REarCheck)
             {
                 CharacterDetails.REarX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REarX));
                 CharacterDetails.REarY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REarY));
@@ -969,9 +1014,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.REarCheck = false;
+                CharacterDetails.REarRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LCheekCheck)
+            if (CharacterDetails.LCheekCheck)
             {
                 CharacterDetails.LCheekX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LCheekX));
                 CharacterDetails.LCheekY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LCheekY));
@@ -989,9 +1037,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LCheekCheck = false;
+                CharacterDetails.LCheekRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.RCheekCheck)
+            if (CharacterDetails.RCheekCheck)
             {
                 CharacterDetails.RCheekX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RCheekX));
                 CharacterDetails.RCheekY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RCheekY));
@@ -1009,9 +1060,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.RCheekCheck = false;
+                CharacterDetails.RCheekRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LMouthCheck)
+            if (CharacterDetails.LMouthCheck)
             {
                 CharacterDetails.LMouthX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LMouthX));
                 CharacterDetails.LMouthY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LMouthY));
@@ -1029,9 +1083,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LMouthCheck = false;
+                CharacterDetails.LMouthRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.RMouthCheck)
+            if (CharacterDetails.RMouthCheck)
             {
                 CharacterDetails.RMouthX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RMouthX));
                 CharacterDetails.RMouthY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RMouthY));
@@ -1049,9 +1106,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.RMouthCheck = false;
+                CharacterDetails.RMouthRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LUpLipCheck)
+            if (CharacterDetails.LUpLipCheck)
             {
                 CharacterDetails.LUpLipX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LUpLipX));
                 CharacterDetails.LUpLipY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LUpLipY));
@@ -1069,9 +1129,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LUpLipCheck = false;
+                CharacterDetails.LUpLipRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.RUpLipCheck)
+            if (CharacterDetails.RUpLipCheck)
             {
                 CharacterDetails.RUpLipX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RUpLipX));
                 CharacterDetails.RUpLipY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RUpLipY));
@@ -1089,9 +1152,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.RUpLipCheck = false;
+                CharacterDetails.RUpLipRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LLowLipCheck)
+            if (CharacterDetails.LLowLipCheck)
             {
                 CharacterDetails.LLowLipX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LLowLipX));
                 CharacterDetails.LLowLipY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LLowLipY));
@@ -1109,9 +1175,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LLowLipCheck = false;
+                CharacterDetails.LLowLipRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.RLowLipCheck)
+            if (CharacterDetails.RLowLipCheck)
             {
                 CharacterDetails.RLowLipX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RLowLipX));
                 CharacterDetails.RLowLipY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RLowLipY));
@@ -1129,12 +1198,15 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
-            }
-        }
 
-        private void BodyBoneWork()
+                CharacterDetails.RLowLipCheck = false;
+                CharacterDetails.RLowLipRotate = true;
+            }
+
+        }
+        private void UpperBodyRotations()
         {
-            if (MainViewModel.ViewTime5.NeckCheck)
+            if (CharacterDetails.NeckCheck)
             {
                 CharacterDetails.NeckX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NeckX));
                 CharacterDetails.NeckY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NeckY));
@@ -1152,9 +1224,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.NeckCheck = false;
+                CharacterDetails.NeckRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.SternumCheck)
+            if (CharacterDetails.SternumCheck)
             {
                 CharacterDetails.SternumX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.SternumX));
                 CharacterDetails.SternumY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.SternumY));
@@ -1172,9 +1247,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.SternumCheck = false;
+                CharacterDetails.SternumRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.TorsoCheck)
+            if (CharacterDetails.TorsoCheck)
             {
                 CharacterDetails.TorsoX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.TorsoX));
                 CharacterDetails.TorsoY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.TorsoY));
@@ -1192,9 +1270,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.TorsoCheck = false;
+                CharacterDetails.TorsoRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.WaistCheck)
+            if (CharacterDetails.WaistCheck)
             {
                 CharacterDetails.WaistX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.WaistX));
                 CharacterDetails.WaistY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.WaistY));
@@ -1212,9 +1293,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.WaistCheck = false;
+                CharacterDetails.WaistRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LShoulderCheck)
+            if (CharacterDetails.LShoulderCheck)
             {
                 CharacterDetails.LShoulderX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LShoulderX));
                 CharacterDetails.LShoulderY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LShoulderY));
@@ -1232,9 +1316,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LShoulderCheck = false;
+                CharacterDetails.LShoulderRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.RShoulderCheck)
+            if (CharacterDetails.RShoulderCheck)
             {
                 CharacterDetails.RShoulderX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RShoulderX));
                 CharacterDetails.RShoulderY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RShoulderY));
@@ -1252,9 +1339,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.RShoulderCheck = false;
+                CharacterDetails.RShoulderRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LClavicleCheck)
+            if (CharacterDetails.LClavicleCheck)
             {
                 CharacterDetails.LClavicleX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LClavicleX));
                 CharacterDetails.LClavicleY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LClavicleY));
@@ -1272,9 +1362,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LClavicleCheck = false;
+                CharacterDetails.LClavicleRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.RClavicleCheck)
+            if (CharacterDetails.RClavicleCheck)
             {
                 CharacterDetails.RClavicleX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RClavicleX));
                 CharacterDetails.RClavicleY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RClavicleY));
@@ -1292,9 +1385,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.RClavicleCheck = false;
+                CharacterDetails.RClavicleRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LBreastCheck)
+            if (CharacterDetails.LBreastCheck)
             {
                 CharacterDetails.LBreastX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LBreastX));
                 CharacterDetails.LBreastY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LBreastY));
@@ -1312,9 +1408,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LBreastCheck = false;
+                CharacterDetails.LBreastRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.RBreastCheck)
+            if (CharacterDetails.RBreastCheck)
             {
                 CharacterDetails.RBreastX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RBreastX));
                 CharacterDetails.RBreastY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RBreastY));
@@ -1332,12 +1431,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
-            }
-        }
 
-        private void ArmBoneWork()
-        {
-            if (MainViewModel.ViewTime5.LArmCheck)
+                CharacterDetails.RBreastCheck = false;
+                CharacterDetails.RBreastRotate = true;
+            }
+
+            if (CharacterDetails.LArmCheck)
             {
                 CharacterDetails.LArmX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LArmX));
                 CharacterDetails.LArmY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LArmY));
@@ -1355,9 +1454,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LArmCheck = false;
+                CharacterDetails.LArmRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.RArmCheck)
+            if (CharacterDetails.RArmCheck)
             {
                 CharacterDetails.RArmX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RArmX));
                 CharacterDetails.RArmY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RArmY));
@@ -1375,9 +1477,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.RArmCheck = false;
+                CharacterDetails.RArmRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LElbowCheck)
+            if (CharacterDetails.LElbowCheck)
             {
                 CharacterDetails.LElbowX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LElbowX));
                 CharacterDetails.LElbowY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LElbowY));
@@ -1395,9 +1500,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LElbowCheck = false;
+                CharacterDetails.LElbowRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.RElbowCheck)
+            if (CharacterDetails.RElbowCheck)
             {
                 CharacterDetails.RElbowX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RElbowX));
                 CharacterDetails.RElbowY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RElbowY));
@@ -1415,9 +1523,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.RElbowCheck = false;
+                CharacterDetails.RElbowRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LForearmCheck)
+            if (CharacterDetails.LForearmCheck)
             {
                 CharacterDetails.LForearmX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LForearmX));
                 CharacterDetails.LForearmY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LForearmY));
@@ -1435,9 +1546,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LForearmCheck = false;
+                CharacterDetails.LForearmRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.RForearmCheck)
+            if (CharacterDetails.RForearmCheck)
             {
                 CharacterDetails.RForearmX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RForearmX));
                 CharacterDetails.RForearmY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RForearmY));
@@ -1455,9 +1569,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.RForearmCheck = false;
+                CharacterDetails.RForearmRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LWristCheck)
+            if (CharacterDetails.LWristCheck)
             {
                 CharacterDetails.LWristX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LWristX));
                 CharacterDetails.LWristY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LWristY));
@@ -1475,9 +1592,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LWristCheck = false;
+                CharacterDetails.LWristRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.RWristCheck)
+            if (CharacterDetails.RWristCheck)
             {
                 CharacterDetails.RWristX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RWristX));
                 CharacterDetails.RWristY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RWristY));
@@ -1495,9 +1615,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.RWristCheck = false;
+                CharacterDetails.RWristRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LHandCheck)
+            if (CharacterDetails.LHandCheck)
             {
                 CharacterDetails.LHandX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LHandX));
                 CharacterDetails.LHandY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LHandY));
@@ -1515,9 +1638,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LHandCheck = false;
+                CharacterDetails.LHandRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.RHandCheck)
+            if (CharacterDetails.RHandCheck)
             {
                 CharacterDetails.RHandX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RHandX));
                 CharacterDetails.RHandY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RHandY));
@@ -1535,12 +1661,14 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.RHandCheck = false;
+                CharacterDetails.RHandRotate = true;
             }
         }
-
-        private void FingerBoneWork()
+        private void FingerRotations()
         {
-            if (MainViewModel.ViewTime5.LThumbCheck)
+            if (CharacterDetails.LThumbCheck)
             {
                 CharacterDetails.LThumbX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThumbX));
                 CharacterDetails.LThumbY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThumbY));
@@ -1558,9 +1686,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LThumbCheck = false;
+                CharacterDetails.LThumbRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.RThumbCheck)
+            if (CharacterDetails.RThumbCheck)
             {
                 CharacterDetails.RThumbX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RThumbX));
                 CharacterDetails.RThumbY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RThumbY));
@@ -1578,9 +1709,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.RThumbCheck = false;
+                CharacterDetails.RThumbRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LThumb2Check)
+            if (CharacterDetails.LThumb2Check)
             {
                 CharacterDetails.LThumb2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThumb2X));
                 CharacterDetails.LThumb2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThumb2Y));
@@ -1598,9 +1732,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LThumb2Check = false;
+                CharacterDetails.LThumb2Rotate = true;
             }
 
-            if (MainViewModel.ViewTime5.RThumb2Check)
+            if (CharacterDetails.RThumb2Check)
             {
                 CharacterDetails.RThumb2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RThumb2X));
                 CharacterDetails.RThumb2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RThumb2Y));
@@ -1618,9 +1755,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.RThumb2Check = false;
+                CharacterDetails.RThumb2Rotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LIndexCheck)
+            if (CharacterDetails.LIndexCheck)
             {
                 CharacterDetails.LIndexX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LIndexX));
                 CharacterDetails.LIndexY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LIndexY));
@@ -1638,9 +1778,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LIndexCheck = false;
+                CharacterDetails.LIndexRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.RIndexCheck)
+            if (CharacterDetails.RIndexCheck)
             {
                 CharacterDetails.RIndexX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RIndexX));
                 CharacterDetails.RIndexY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RIndexY));
@@ -1658,9 +1801,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.RIndexCheck = false;
+                CharacterDetails.RIndexRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LIndex2Check)
+            if (CharacterDetails.LIndex2Check)
             {
                 CharacterDetails.LIndex2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LIndex2X));
                 CharacterDetails.LIndex2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LIndex2Y));
@@ -1678,9 +1824,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LIndex2Check = false;
+                CharacterDetails.LIndex2Rotate = true;
             }
 
-            if (MainViewModel.ViewTime5.RIndex2Check)
+            if (CharacterDetails.RIndex2Check)
             {
                 CharacterDetails.RIndex2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RIndex2X));
                 CharacterDetails.RIndex2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RIndex2Y));
@@ -1698,9 +1847,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.RIndex2Check = false;
+                CharacterDetails.RIndex2Rotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LMiddleCheck)
+            if (CharacterDetails.LMiddleCheck)
             {
                 CharacterDetails.LMiddleX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LMiddleX));
                 CharacterDetails.LMiddleY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LMiddleY));
@@ -1718,9 +1870,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LMiddleCheck = false;
+                CharacterDetails.LMiddleRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.RMiddleCheck)
+            if (CharacterDetails.RMiddleCheck)
             {
                 CharacterDetails.RMiddleX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RMiddleX));
                 CharacterDetails.RMiddleY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RMiddleY));
@@ -1738,9 +1893,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.RMiddleCheck = false;
+                CharacterDetails.RMiddleRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LMiddle2Check)
+            if (CharacterDetails.LMiddle2Check)
             {
                 CharacterDetails.LMiddle2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LMiddle2X));
                 CharacterDetails.LMiddle2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LMiddle2Y));
@@ -1758,9 +1916,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LMiddle2Check = false;
+                CharacterDetails.LMiddle2Rotate = true;
             }
 
-            if (MainViewModel.ViewTime5.RMiddle2Check)
+            if (CharacterDetails.RMiddle2Check)
             {
                 CharacterDetails.RMiddle2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RMiddle2X));
                 CharacterDetails.RMiddle2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RMiddle2Y));
@@ -1778,9 +1939,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.RMiddle2Check = false;
+                CharacterDetails.RMiddle2Rotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LRingCheck)
+            if (CharacterDetails.LRingCheck)
             {
                 CharacterDetails.LRingX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LRingX));
                 CharacterDetails.LRingY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LRingY));
@@ -1798,9 +1962,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LRingCheck = false;
+                CharacterDetails.LRingRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.RRingCheck)
+            if (CharacterDetails.RRingCheck)
             {
                 CharacterDetails.RRingX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RRingX));
                 CharacterDetails.RRingY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RRingY));
@@ -1818,9 +1985,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.RRingCheck = false;
+                CharacterDetails.RRingRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LRing2Check)
+            if (CharacterDetails.LRing2Check)
             {
                 CharacterDetails.LRing2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LRing2X));
                 CharacterDetails.LRing2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LRing2Y));
@@ -1838,9 +2008,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LRing2Check = false;
+                CharacterDetails.LRing2Rotate = true;
             }
 
-            if (MainViewModel.ViewTime5.RRing2Check)
+            if (CharacterDetails.RRing2Check)
             {
                 CharacterDetails.RRing2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RRing2X));
                 CharacterDetails.RRing2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RRing2Y));
@@ -1858,9 +2031,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.RRing2Check = false;
+                CharacterDetails.RRing2Rotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LPinkyCheck)
+            if (CharacterDetails.LPinkyCheck)
             {
                 CharacterDetails.LPinkyX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LPinkyX));
                 CharacterDetails.LPinkyY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LPinkyY));
@@ -1878,9 +2054,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LPinkyCheck = false;
+                CharacterDetails.LPinkyRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.RPinkyCheck)
+            if (CharacterDetails.RPinkyCheck)
             {
                 CharacterDetails.RPinkyX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RPinkyX));
                 CharacterDetails.RPinkyY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RPinkyY));
@@ -1898,9 +2077,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.RPinkyCheck = false;
+                CharacterDetails.RPinkyRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LPinky2Check)
+            if (CharacterDetails.LPinky2Check)
             {
                 CharacterDetails.LPinky2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LPinky2X));
                 CharacterDetails.LPinky2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LPinky2Y));
@@ -1918,9 +2100,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LPinky2Check = false;
+                CharacterDetails.LPinky2Rotate = true;
             }
 
-            if (MainViewModel.ViewTime5.RPinky2Check)
+            if (CharacterDetails.RPinky2Check)
             {
                 CharacterDetails.RPinky2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RPinky2X));
                 CharacterDetails.RPinky2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RPinky2Y));
@@ -1938,12 +2123,14 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.RPinky2Check = false;
+                CharacterDetails.RPinky2Rotate = true;
             }
         }
-
-        private void LegBoneWork()
+        private void LowerBodyRotations()
         {
-            if (MainViewModel.ViewTime5.PelvisCheck)
+            if (CharacterDetails.PelvisCheck)
             {
                 CharacterDetails.PelvisX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.PelvisX));
                 CharacterDetails.PelvisY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.PelvisY));
@@ -1961,9 +2148,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.PelvisCheck = false;
+                CharacterDetails.PelvisRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.TailCheck)
+            if (CharacterDetails.TailCheck)
             {
                 CharacterDetails.TailX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.TailX));
                 CharacterDetails.TailY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.TailY));
@@ -1981,9 +2171,81 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.TailCheck = false;
+                CharacterDetails.TailRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LThighCheck)
+            if (CharacterDetails.Tail2Check)
+            {
+                CharacterDetails.Tail2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail2X));
+                CharacterDetails.Tail2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail2Y));
+                CharacterDetails.Tail2Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail2Z));
+                CharacterDetails.Tail2W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail2W));
+
+                // Create euler angles from the quaternion.
+                var euler = new System.Windows.Media.Media3D.Quaternion(
+                    CharacterDetails.Tail2X.value,
+                    CharacterDetails.Tail2Y.value,
+                    CharacterDetails.Tail2Z.value,
+                    CharacterDetails.Tail2W.value
+                ).ToEulerAngles();
+
+                CharacterDetails.BoneX = (float)euler.X;
+                CharacterDetails.BoneY = (float)euler.Y;
+                CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.Tail2Check = false;
+                CharacterDetails.Tail2Rotate = true;
+            }
+
+            if (CharacterDetails.Tail3Check)
+            {
+                CharacterDetails.Tail3X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail3X));
+                CharacterDetails.Tail3Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail3Y));
+                CharacterDetails.Tail3Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail3Z));
+                CharacterDetails.Tail3W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail3W));
+
+                // Create euler angles from the quaternion.
+                var euler = new System.Windows.Media.Media3D.Quaternion(
+                    CharacterDetails.Tail3X.value,
+                    CharacterDetails.Tail3Y.value,
+                    CharacterDetails.Tail3Z.value,
+                    CharacterDetails.Tail3W.value
+                ).ToEulerAngles();
+
+                CharacterDetails.BoneX = (float)euler.X;
+                CharacterDetails.BoneY = (float)euler.Y;
+                CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.Tail3Check = false;
+                CharacterDetails.Tail3Rotate = true;
+            }
+
+            if (CharacterDetails.Tail4Check)
+            {
+                CharacterDetails.Tail4X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail4X));
+                CharacterDetails.Tail4Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail4Y));
+                CharacterDetails.Tail4Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail4Z));
+                CharacterDetails.Tail4W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail4W));
+
+                // Create euler angles from the quaternion.
+                var euler = new System.Windows.Media.Media3D.Quaternion(
+                    CharacterDetails.Tail4X.value,
+                    CharacterDetails.Tail4Y.value,
+                    CharacterDetails.Tail4Z.value,
+                    CharacterDetails.Tail4W.value
+                ).ToEulerAngles();
+
+                CharacterDetails.BoneX = (float)euler.X;
+                CharacterDetails.BoneY = (float)euler.Y;
+                CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.Tail4Check = false;
+                CharacterDetails.Tail4Rotate = true;
+            }
+
+            if (CharacterDetails.LThighCheck)
             {
                 CharacterDetails.LThighX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThighX));
                 CharacterDetails.LThighY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThighY));
@@ -2001,9 +2263,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LThighCheck = false;
+                CharacterDetails.LThighRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.RThighCheck)
+            if (CharacterDetails.RThighCheck)
             {
                 CharacterDetails.RThighX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RThighX));
                 CharacterDetails.RThighY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RThighY));
@@ -2021,9 +2286,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.RThighCheck = false;
+                CharacterDetails.RThighRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LKneeCheck)
+            if (CharacterDetails.LKneeCheck)
             {
                 CharacterDetails.LKneeX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LKneeX));
                 CharacterDetails.LKneeY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LKneeY));
@@ -2041,9 +2309,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LKneeCheck = false;
+                CharacterDetails.LKneeRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.RKneeCheck)
+            if (CharacterDetails.RKneeCheck)
             {
                 CharacterDetails.RKneeX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RKneeX));
                 CharacterDetails.RKneeY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RKneeY));
@@ -2061,9 +2332,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.RKneeCheck = false;
+                CharacterDetails.RKneeRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LCalfCheck)
+            if (CharacterDetails.LCalfCheck)
             {
                 CharacterDetails.LCalfX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LCalfX));
                 CharacterDetails.LCalfY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LCalfY));
@@ -2081,9 +2355,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LCalfCheck = false;
+                CharacterDetails.LCalfRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.RCalfCheck)
+            if (CharacterDetails.RCalfCheck)
             {
                 CharacterDetails.RCalfX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RCalfX));
                 CharacterDetails.RCalfY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RCalfY));
@@ -2101,9 +2378,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.RCalfCheck = false;
+                CharacterDetails.RCalfRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LFootCheck)
+            if (CharacterDetails.LFootCheck)
             {
                 CharacterDetails.LFootX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LFootX));
                 CharacterDetails.LFootY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LFootY));
@@ -2121,9 +2401,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LFootCheck = false;
+                CharacterDetails.LFootRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.RFootCheck)
+            if (CharacterDetails.RFootCheck)
             {
                 CharacterDetails.RFootX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RFootX));
                 CharacterDetails.RFootY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RFootY));
@@ -2141,9 +2424,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.RFootCheck = false;
+                CharacterDetails.RFootRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.LToesCheck)
+            if (CharacterDetails.LToesCheck)
             {
                 CharacterDetails.LToesX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LToesX));
                 CharacterDetails.LToesY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LToesY));
@@ -2161,9 +2447,12 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LToesCheck = false;
+                CharacterDetails.LToesRotate = true;
             }
 
-            if (MainViewModel.ViewTime5.RToesCheck)
+            if (CharacterDetails.RToesCheck)
             {
                 CharacterDetails.RToesX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RToesX));
                 CharacterDetails.RToesY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RToesY));
@@ -2181,6 +2470,126 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetails.BoneX = (float)euler.X;
                 CharacterDetails.BoneY = (float)euler.Y;
                 CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.RToesCheck = false;
+                CharacterDetails.RToesRotate = true;
+            }
+
+            if (CharacterDetails.DebugCheck)
+            {
+                CharacterDetails.DebugX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.DebugX));
+                CharacterDetails.DebugY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.DebugY));
+                CharacterDetails.DebugZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.DebugZ));
+                CharacterDetails.DebugW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.DebugW));
+
+                // Create euler angles from the quaternion.
+                var euler = new System.Windows.Media.Media3D.Quaternion(
+                    CharacterDetails.DebugX.value,
+                    CharacterDetails.DebugY.value,
+                    CharacterDetails.DebugZ.value,
+                    CharacterDetails.DebugW.value
+                ).ToEulerAngles();
+
+                CharacterDetails.BoneX = (float)euler.X;
+                CharacterDetails.BoneY = (float)euler.Y;
+                CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.DebugCheck = false;
+                CharacterDetails.DebugRotate = true;
+            }
+        }
+        private void MiscRotations()
+        {
+            if (CharacterDetails.LEarringCheck)
+            {
+                CharacterDetails.LEarringX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEarringX));
+                CharacterDetails.LEarringY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEarringY));
+                CharacterDetails.LEarringZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEarringZ));
+                CharacterDetails.LEarringW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEarringW));
+
+                // Create euler angles from the quaternion.
+                var euler = new System.Windows.Media.Media3D.Quaternion(
+                    CharacterDetails.LEarringX.value,
+                    CharacterDetails.LEarringY.value,
+                    CharacterDetails.LEarringZ.value,
+                    CharacterDetails.LEarringW.value
+                ).ToEulerAngles();
+
+                CharacterDetails.BoneX = (float)euler.X;
+                CharacterDetails.BoneY = (float)euler.Y;
+                CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LEarringCheck = false;
+                CharacterDetails.LEarringRotate = true;
+            }
+
+            if (CharacterDetails.REarringCheck)
+            {
+                CharacterDetails.REarringX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REarringX));
+                CharacterDetails.REarringY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REarringY));
+                CharacterDetails.REarringZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REarringZ));
+                CharacterDetails.REarringW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REarringW));
+
+                // Create euler angles from the quaternion.
+                var euler = new System.Windows.Media.Media3D.Quaternion(
+                    CharacterDetails.REarringX.value,
+                    CharacterDetails.REarringY.value,
+                    CharacterDetails.REarringZ.value,
+                    CharacterDetails.REarringW.value
+                ).ToEulerAngles();
+
+                CharacterDetails.BoneX = (float)euler.X;
+                CharacterDetails.BoneY = (float)euler.Y;
+                CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.REarringCheck = false;
+                CharacterDetails.REarringRotate = true;
+            }
+
+            if (CharacterDetails.LEarring2Check)
+            {
+                CharacterDetails.LEarring2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEarring2X));
+                CharacterDetails.LEarring2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEarring2Y));
+                CharacterDetails.LEarring2Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEarring2Z));
+                CharacterDetails.LEarring2W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEarring2W));
+
+                // Create euler angles from the quaternion.
+                var euler = new System.Windows.Media.Media3D.Quaternion(
+                    CharacterDetails.LEarring2X.value,
+                    CharacterDetails.LEarring2Y.value,
+                    CharacterDetails.LEarring2Z.value,
+                    CharacterDetails.LEarring2W.value
+                ).ToEulerAngles();
+
+                CharacterDetails.BoneX = (float)euler.X;
+                CharacterDetails.BoneY = (float)euler.Y;
+                CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.LEarring2Check = false;
+                CharacterDetails.LEarring2Rotate = true;
+            }
+
+            if (CharacterDetails.REarring2Check)
+            {
+                CharacterDetails.REarring2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REarring2X));
+                CharacterDetails.REarring2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REarring2Y));
+                CharacterDetails.REarring2Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REarring2Z));
+                CharacterDetails.REarring2W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REarring2W));
+
+                // Create euler angles from the quaternion.
+                var euler = new System.Windows.Media.Media3D.Quaternion(
+                    CharacterDetails.REarring2X.value,
+                    CharacterDetails.REarring2Y.value,
+                    CharacterDetails.REarring2Z.value,
+                    CharacterDetails.REarring2W.value
+                ).ToEulerAngles();
+
+                CharacterDetails.BoneX = (float)euler.X;
+                CharacterDetails.BoneY = (float)euler.Y;
+                CharacterDetails.BoneZ = (float)euler.Z;
+
+                CharacterDetails.REarring2Check = false;
+                CharacterDetails.REarring2Rotate = true;
             }
         }
     }

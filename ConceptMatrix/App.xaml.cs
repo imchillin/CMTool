@@ -1,4 +1,5 @@
-﻿using ConceptMatrix.ViewModel;
+﻿using ConceptMatrix.Models;
+using ConceptMatrix.ViewModel;
 using Microsoft.Win32;
 using System;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ namespace ConceptMatrix
     /// </summary>
     public partial class App : Application
     {
+        public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
         protected override void OnStartup(StartupEventArgs e)
         {
             Application.Current.DispatcherUnhandledException += Application_DispatcherUnhandledException;
@@ -99,7 +101,7 @@ namespace ConceptMatrix
         private void App_Exit(object sender, ExitEventArgs e)
         {
             Utility.SaveSettings.Default.Save();
-            if (MainViewModel.ViewTime5.EditMode) MainViewModel.ViewTime5.EditModeButton.IsChecked = false;
+            if (CharacterDetails.BoneEditMode) MainViewModel.ViewTime5.EditModeButton.IsChecked = false;
         }
         private static bool RequestGamePath()
         {

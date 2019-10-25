@@ -348,6 +348,15 @@ namespace ConceptMatrix.Views
             AltRotate = false;
         }
 
+        private void HighlightCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            HighlightCheckbox.IsChecked = true;
+        }
+        private void HighlightCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            HighlightCheckbox.IsChecked = false;
+        }
+
         private void Freeze1234_Click(object sender, RoutedEventArgs e)
 		{
 			numbcheck = !numbcheck;

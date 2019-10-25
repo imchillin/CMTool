@@ -26,162 +26,16 @@ namespace ConceptMatrix.Views
     /// </summary>
     public partial class CharacterDetailsView5 : UserControl
     {
-        public bool HeadRotate;
-        public bool NoseRotate;
-        public bool NostrilsRotate;
-        public bool ChinRotate;
-        public bool LOutEyebrowRotate;
-        public bool ROutEyebrowRotate;
-        public bool LInEyebrowRotate;
-        public bool RInEyebrowRotate;
-        public bool LEyeRotate;
-        public bool REyeRotate;
-        public bool LEyelidRotate;
-        public bool REyelidRotate;
-        public bool LLowEyelidRotate;
-        public bool RLowEyelidRotate;
-        public bool LEarRotate;
-        public bool REarRotate;
-        public bool LCheekRotate;
-        public bool RCheekRotate;
-        public bool LMouthRotate;
-        public bool RMouthRotate;
-        public bool LUpLipRotate;
-        public bool RUpLipRotate;
-        public bool LLowLipRotate;
-        public bool RLowLipRotate;
-        public bool NeckRotate;
-        public bool SternumRotate;
-        public bool TorsoRotate;
-        public bool WaistRotate;
-        public bool LShoulderRotate;
-        public bool RShoulderRotate;
-        public bool LClavicleRotate;
-        public bool RClavicleRotate;
-        public bool LBreastRotate;
-        public bool RBreastRotate;
-        public bool LArmRotate;
-        public bool RArmRotate;
-        public bool LElbowRotate;
-        public bool RElbowRotate;
-        public bool LForearmRotate;
-        public bool RForearmRotate;
-        public bool LWristRotate;
-        public bool RWristRotate;
-        public bool LHandRotate;
-        public bool RHandRotate;
-        public bool LThumbRotate;
-        public bool RThumbRotate;
-        public bool LThumb2Rotate;
-        public bool RThumb2Rotate;
-        public bool LIndexRotate;
-        public bool RIndexRotate;
-        public bool LIndex2Rotate;
-        public bool RIndex2Rotate;
-        public bool LMiddleRotate;
-        public bool RMiddleRotate;
-        public bool LMiddle2Rotate;
-        public bool RMiddle2Rotate;
-        public bool LRingRotate;
-        public bool RRingRotate;
-        public bool LRing2Rotate;
-        public bool RRing2Rotate;
-        public bool LPinkyRotate;
-        public bool RPinkyRotate;
-        public bool LPinky2Rotate;
-        public bool RPinky2Rotate;
-        public bool PelvisRotate;
-        public bool TailRotate;
-        public bool LThighRotate;
-        public bool RThighRotate;
-        public bool LKneeRotate;
-        public bool RKneeRotate;
-        public bool LCalfRotate;
-        public bool RCalfRotate;
-        public bool LFootRotate;
-        public bool RFootRotate;
-        public bool LToesRotate;
-        public bool RToesRotate;
-        public bool HeadCheck;
-        public bool NoseCheck;
-        public bool NostrilsCheck;
-        public bool ChinCheck;
-        public bool LOutEyebrowCheck;
-        public bool ROutEyebrowCheck;
-        public bool LInEyebrowCheck;
-        public bool RInEyebrowCheck;
-        public bool LEyeCheck;
-        public bool REyeCheck;
-        public bool LEyelidCheck;
-        public bool REyelidCheck;
-        public bool LLowEyelidCheck;
-        public bool RLowEyelidCheck;
-        public bool LEarCheck;
-        public bool REarCheck;
-        public bool LCheekCheck;
-        public bool RCheekCheck;
-        public bool LMouthCheck;
-        public bool RMouthCheck;
-        public bool LUpLipCheck;
-        public bool RUpLipCheck;
-        public bool LLowLipCheck;
-        public bool RLowLipCheck;
-        public bool NeckCheck;
-        public bool SternumCheck;
-        public bool TorsoCheck;
-        public bool WaistCheck;
-        public bool LShoulderCheck;
-        public bool RShoulderCheck;
-        public bool LClavicleCheck;
-        public bool RClavicleCheck;
-        public bool LBreastCheck;
-        public bool RBreastCheck;
-        public bool LArmCheck;
-        public bool RArmCheck;
-        public bool LElbowCheck;
-        public bool RElbowCheck;
-        public bool LForearmCheck;
-        public bool RForearmCheck;
-        public bool LWristCheck;
-        public bool RWristCheck;
-        public bool LHandCheck;
-        public bool RHandCheck;
-        public bool LThumbCheck;
-        public bool RThumbCheck;
-        public bool LThumb2Check;
-        public bool RThumb2Check;
-        public bool LIndexCheck;
-        public bool RIndexCheck;
-        public bool LIndex2Check;
-        public bool RIndex2Check;
-        public bool LMiddleCheck;
-        public bool RMiddleCheck;
-        public bool LMiddle2Check;
-        public bool RMiddle2Check;
-        public bool LRingCheck;
-        public bool RRingCheck;
-        public bool LRing2Check;
-        public bool RRing2Check;
-        public bool LPinkyCheck;
-        public bool RPinkyCheck;
-        public bool LPinky2Check;
-        public bool RPinky2Check;
-        public bool PelvisCheck;
-        public bool TailCheck;
-        public bool LThighCheck;
-        public bool RThighCheck;
-        public bool LKneeCheck;
-        public bool RKneeCheck;
-        public bool LCalfCheck;
-        public bool RCalfCheck;
-        public bool LFootCheck;
-        public bool RFootCheck;
-        public bool LToesCheck;
-        public bool RToesCheck;
-        public bool EditMode = false;
+        private readonly Mem m = MemoryManager.Instance.MemLib;
+        private CharacterOffsets c = Settings.Instance.Character;
+
+        private string GAS(params string[] args) => MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, args);
+
+        public bool EditMode;
         public byte[] SkeletonValue;
         public byte[] SkeletonValue2;
         public byte[] SkeletonValue3;
+        public byte[] PhysicsValue;
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
         public CharacterDetailsView5()
         {
@@ -195,7 +49,16 @@ namespace ConceptMatrix.Views
         #region Sliders
         private void BoneSliders_SourceUpdated(object sender, DataTransferEventArgs e)
         {
-            if (HeadRotate)
+            if (CharacterDetails.DebugRotate)
+            {
+                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider.ValueChanged -= DebugRot;
+                    BoneSlider.ValueChanged += DebugRot;
+                }
+            }
+
+            if (CharacterDetails.HeadRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -204,6 +67,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
+            if (CharacterDetails.NoseRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -212,7 +76,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (NostrilsRotate)
+            if (CharacterDetails.NostrilsRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -221,7 +85,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (ChinRotate)
+            if (CharacterDetails.ChinRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -230,7 +94,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LOutEyebrowRotate)
+            if (CharacterDetails.LOutEyebrowRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -239,7 +103,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (ROutEyebrowRotate)
+            if (CharacterDetails.ROutEyebrowRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -248,7 +112,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LInEyebrowRotate)
+            if (CharacterDetails.LInEyebrowRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -257,7 +121,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RInEyebrowRotate)
+            if (CharacterDetails.RInEyebrowRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -266,7 +130,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LEyeRotate)
+            if (CharacterDetails.LEyeRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -275,7 +139,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (REyeRotate)
+            if (CharacterDetails.REyeRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -284,7 +148,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LEyelidRotate)
+            if (CharacterDetails.LEyelidRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -293,7 +157,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (REyelidRotate)
+            if (CharacterDetails.REyelidRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -302,7 +166,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LLowEyelidRotate)
+            if (CharacterDetails.LLowEyelidRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -311,7 +175,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RLowEyelidRotate)
+            if (CharacterDetails.RLowEyelidRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -320,7 +184,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LEarRotate)
+            if (CharacterDetails.LEarRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -329,7 +193,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (REarRotate)
+            if (CharacterDetails.REarRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -338,7 +202,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LCheekRotate)
+            if (CharacterDetails.LCheekRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -347,7 +211,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RCheekRotate)
+            if (CharacterDetails.RCheekRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -356,7 +220,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LMouthRotate)
+            if (CharacterDetails.LMouthRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -365,7 +229,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RMouthRotate)
+            if (CharacterDetails.RMouthRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -374,7 +238,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LUpLipRotate)
+            if (CharacterDetails.LUpLipRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -383,7 +247,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RUpLipRotate)
+            if (CharacterDetails.RUpLipRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -392,7 +256,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LLowLipRotate)
+            if (CharacterDetails.LLowLipRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -401,7 +265,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RLowLipRotate)
+            if (CharacterDetails.RLowLipRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -410,7 +274,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (NeckRotate)
+            if (CharacterDetails.NeckRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -419,7 +283,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (SternumRotate)
+            if (CharacterDetails.SternumRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -428,7 +292,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (TorsoRotate)
+            if (CharacterDetails.TorsoRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -437,7 +301,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (WaistRotate)
+            if (CharacterDetails.WaistRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -446,7 +310,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LShoulderRotate)
+            if (CharacterDetails.LShoulderRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -455,7 +319,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RShoulderRotate)
+            if (CharacterDetails.RShoulderRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -464,7 +328,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LClavicleRotate)
+            if (CharacterDetails.LClavicleRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -473,7 +337,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RClavicleRotate)
+            if (CharacterDetails.RClavicleRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -482,7 +346,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LBreastRotate)
+            if (CharacterDetails.LBreastRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -491,7 +355,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RBreastRotate)
+            if (CharacterDetails.RBreastRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -500,7 +364,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LArmRotate)
+            if (CharacterDetails.LArmRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -509,7 +373,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RArmRotate)
+            if (CharacterDetails.RArmRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -518,7 +382,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LElbowRotate)
+            if (CharacterDetails.LElbowRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -527,7 +391,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RElbowRotate)
+            if (CharacterDetails.RElbowRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -536,7 +400,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LForearmRotate)
+            if (CharacterDetails.LForearmRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -545,7 +409,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RForearmRotate)
+            if (CharacterDetails.RForearmRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -554,7 +418,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LWristRotate)
+            if (CharacterDetails.LWristRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -563,7 +427,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RWristRotate)
+            if (CharacterDetails.RWristRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -572,7 +436,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LHandRotate)
+            if (CharacterDetails.LHandRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -581,7 +445,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RHandRotate)
+            if (CharacterDetails.RHandRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -590,7 +454,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LThumbRotate)
+            if (CharacterDetails.LThumbRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -599,7 +463,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RThumbRotate)
+            if (CharacterDetails.RThumbRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -608,7 +472,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LThumb2Rotate)
+            if (CharacterDetails.LThumb2Rotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -617,7 +481,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RThumb2Rotate)
+            if (CharacterDetails.RThumb2Rotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -626,7 +490,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LIndexRotate)
+            if (CharacterDetails.LIndexRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -635,7 +499,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RIndexRotate)
+            if (CharacterDetails.RIndexRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -644,7 +508,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LIndex2Rotate)
+            if (CharacterDetails.LIndex2Rotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -653,7 +517,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RIndex2Rotate)
+            if (CharacterDetails.RIndex2Rotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -662,7 +526,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LMiddleRotate)
+            if (CharacterDetails.LMiddleRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -671,7 +535,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RMiddleRotate)
+            if (CharacterDetails.RMiddleRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -680,7 +544,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LMiddle2Rotate)
+            if (CharacterDetails.LMiddle2Rotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -689,7 +553,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RMiddle2Rotate)
+            if (CharacterDetails.RMiddle2Rotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -698,7 +562,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LRingRotate)
+            if (CharacterDetails.LRingRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -707,7 +571,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RRingRotate)
+            if (CharacterDetails.RRingRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -716,7 +580,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LRing2Rotate)
+            if (CharacterDetails.LRing2Rotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -725,7 +589,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RRing2Rotate)
+            if (CharacterDetails.RRing2Rotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -734,7 +598,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LPinkyRotate)
+            if (CharacterDetails.LPinkyRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -743,7 +607,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RPinkyRotate)
+            if (CharacterDetails.RPinkyRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -752,7 +616,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LPinky2Rotate)
+            if (CharacterDetails.LPinky2Rotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -761,7 +625,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RPinky2Rotate)
+            if (CharacterDetails.RPinky2Rotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -770,7 +634,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (PelvisRotate)
+            if (CharacterDetails.PelvisRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -779,7 +643,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (TailRotate)
+            if (CharacterDetails.TailRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -788,7 +652,34 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LThighRotate)
+            if (CharacterDetails.Tail2Rotate)
+            {
+                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider.ValueChanged -= Tail2Rot;
+                    BoneSlider.ValueChanged += Tail2Rot;
+                }
+            }
+
+            if (CharacterDetails.Tail3Rotate)
+            {
+                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider.ValueChanged -= Tail3Rot;
+                    BoneSlider.ValueChanged += Tail3Rot;
+                }
+            }
+
+            if (CharacterDetails.Tail4Rotate)
+            {
+                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider.ValueChanged -= Tail4Rot;
+                    BoneSlider.ValueChanged += Tail4Rot;
+                }
+            }
+
+            if (CharacterDetails.LThighRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -797,7 +688,16 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RThighRotate)
+            if (CharacterDetails.Tail4Rotate)
+            {
+                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider.ValueChanged -= Tail4Rot;
+                    BoneSlider.ValueChanged += Tail4Rot;
+                }
+            }
+
+            if (CharacterDetails.RThighRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -806,7 +706,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LKneeRotate)
+            if (CharacterDetails.LKneeRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -815,7 +715,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RKneeRotate)
+            if (CharacterDetails.RKneeRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -824,7 +724,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LCalfRotate)
+            if (CharacterDetails.LCalfRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -833,7 +733,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RCalfRotate)
+            if (CharacterDetails.RCalfRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -842,7 +742,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LFootRotate)
+            if (CharacterDetails.LFootRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -851,7 +751,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RFootRotate)
+            if (CharacterDetails.RFootRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -860,7 +760,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LToesRotate)
+            if (CharacterDetails.LToesRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -869,7 +769,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RToesRotate)
+            if (CharacterDetails.RToesRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -877,12 +777,57 @@ namespace ConceptMatrix.Views
                     BoneSlider.ValueChanged += RToesRot;
                 }
             }
+
+            if (CharacterDetails.LEarringRotate)
+            {
+                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider.ValueChanged -= LEarringRot;
+                    BoneSlider.ValueChanged += LEarringRot;
+                }
+            }
+
+            if (CharacterDetails.REarringRotate)
+            {
+                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider.ValueChanged -= REarringRot;
+                    BoneSlider.ValueChanged += REarringRot;
+                }
+            }
+
+            if (CharacterDetails.LEarring2Rotate)
+            {
+                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider.ValueChanged -= LEarring2Rot;
+                    BoneSlider.ValueChanged += LEarring2Rot;
+                }
+            }
+
+            if (CharacterDetails.REarring2Rotate)
+            {
+                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider.ValueChanged -= REarring2Rot;
+                    BoneSlider.ValueChanged += REarring2Rot;
+                }
+            }
         }
 
 
         private void BoneSliders2_SourceUpdated(object sender, DataTransferEventArgs e)
         {
-            if (HeadRotate)
+            if (CharacterDetails.DebugRotate)
+            {
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider2.ValueChanged -= DebugRot;
+                    BoneSlider2.ValueChanged += DebugRot;
+                }
+            }
+
+            if (CharacterDetails.HeadRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -891,7 +836,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (NoseRotate)
+            if (CharacterDetails.NoseRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -900,7 +845,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (NostrilsRotate)
+            if (CharacterDetails.NostrilsRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -909,7 +854,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (ChinRotate)
+            if (CharacterDetails.ChinRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -918,7 +863,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LOutEyebrowRotate)
+            if (CharacterDetails.LOutEyebrowRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -927,7 +872,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (ROutEyebrowRotate)
+            if (CharacterDetails.ROutEyebrowRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -936,7 +881,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LInEyebrowRotate)
+            if (CharacterDetails.LInEyebrowRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -945,7 +890,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RInEyebrowRotate)
+            if (CharacterDetails.RInEyebrowRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -954,7 +899,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LEyeRotate)
+            if (CharacterDetails.LEyeRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -963,7 +908,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (REyeRotate)
+            if (CharacterDetails.REyeRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -972,7 +917,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LEyelidRotate)
+            if (CharacterDetails.LEyelidRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -981,7 +926,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (REyelidRotate)
+            if (CharacterDetails.REyelidRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -990,7 +935,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LLowEyelidRotate)
+            if (CharacterDetails.LLowEyelidRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -999,7 +944,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RLowEyelidRotate)
+            if (CharacterDetails.RLowEyelidRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1008,7 +953,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LEarRotate)
+            if (CharacterDetails.LEarRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1017,7 +962,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (REarRotate)
+            if (CharacterDetails.REarRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1026,7 +971,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LCheekRotate)
+            if (CharacterDetails.LCheekRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1035,7 +980,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RCheekRotate)
+            if (CharacterDetails.RCheekRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1044,7 +989,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LMouthRotate)
+            if (CharacterDetails.LMouthRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1053,7 +998,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RMouthRotate)
+            if (CharacterDetails.RMouthRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1062,7 +1007,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LUpLipRotate)
+            if (CharacterDetails.LUpLipRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1071,7 +1016,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RUpLipRotate)
+            if (CharacterDetails.RUpLipRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1080,7 +1025,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LLowLipRotate)
+            if (CharacterDetails.LLowLipRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1089,7 +1034,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RLowLipRotate)
+            if (CharacterDetails.RLowLipRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1098,7 +1043,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (NeckRotate)
+            if (CharacterDetails.NeckRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1107,7 +1052,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (SternumRotate)
+            if (CharacterDetails.SternumRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1116,7 +1061,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (TorsoRotate)
+            if (CharacterDetails.TorsoRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1125,7 +1070,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (WaistRotate)
+            if (CharacterDetails.WaistRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1134,7 +1079,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LShoulderRotate)
+            if (CharacterDetails.LShoulderRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1143,7 +1088,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RShoulderRotate)
+            if (CharacterDetails.RShoulderRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1152,7 +1097,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LClavicleRotate)
+            if (CharacterDetails.LClavicleRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1161,7 +1106,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RClavicleRotate)
+            if (CharacterDetails.RClavicleRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1170,7 +1115,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LBreastRotate)
+            if (CharacterDetails.LBreastRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1179,7 +1124,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RBreastRotate)
+            if (CharacterDetails.RBreastRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1188,7 +1133,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LArmRotate)
+            if (CharacterDetails.LArmRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1197,7 +1142,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RArmRotate)
+            if (CharacterDetails.RArmRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1206,7 +1151,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LElbowRotate)
+            if (CharacterDetails.LElbowRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1215,7 +1160,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RElbowRotate)
+            if (CharacterDetails.RElbowRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1224,7 +1169,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LForearmRotate)
+            if (CharacterDetails.LForearmRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1233,7 +1178,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RForearmRotate)
+            if (CharacterDetails.RForearmRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1242,7 +1187,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LWristRotate)
+            if (CharacterDetails.LWristRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1251,7 +1196,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RWristRotate)
+            if (CharacterDetails.RWristRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1260,7 +1205,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LHandRotate)
+            if (CharacterDetails.LHandRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1269,7 +1214,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RHandRotate)
+            if (CharacterDetails.RHandRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1278,7 +1223,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LThumbRotate)
+            if (CharacterDetails.LThumbRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1287,7 +1232,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RThumbRotate)
+            if (CharacterDetails.RThumbRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1296,7 +1241,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LThumb2Rotate)
+            if (CharacterDetails.LThumb2Rotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1305,7 +1250,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RThumb2Rotate)
+            if (CharacterDetails.RThumb2Rotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1314,7 +1259,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LIndexRotate)
+            if (CharacterDetails.LIndexRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1323,7 +1268,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RIndexRotate)
+            if (CharacterDetails.RIndexRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1332,7 +1277,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LIndex2Rotate)
+            if (CharacterDetails.LIndex2Rotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1341,7 +1286,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RIndex2Rotate)
+            if (CharacterDetails.RIndex2Rotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1350,7 +1295,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LMiddleRotate)
+            if (CharacterDetails.LMiddleRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1359,7 +1304,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RMiddleRotate)
+            if (CharacterDetails.RMiddleRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1368,7 +1313,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LMiddle2Rotate)
+            if (CharacterDetails.LMiddle2Rotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1377,7 +1322,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RMiddle2Rotate)
+            if (CharacterDetails.RMiddle2Rotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1386,7 +1331,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LRingRotate)
+            if (CharacterDetails.LRingRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1395,7 +1340,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RRingRotate)
+            if (CharacterDetails.RRingRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1404,7 +1349,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LRing2Rotate)
+            if (CharacterDetails.LRing2Rotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1413,7 +1358,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RRing2Rotate)
+            if (CharacterDetails.RRing2Rotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1422,7 +1367,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LPinkyRotate)
+            if (CharacterDetails.LPinkyRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1431,7 +1376,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RPinkyRotate)
+            if (CharacterDetails.RPinkyRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1440,7 +1385,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LPinky2Rotate)
+            if (CharacterDetails.LPinky2Rotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1449,7 +1394,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RPinky2Rotate)
+            if (CharacterDetails.RPinky2Rotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1458,7 +1403,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (PelvisRotate)
+            if (CharacterDetails.PelvisRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1467,7 +1412,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (TailRotate)
+            if (CharacterDetails.TailRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1476,7 +1421,34 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LThighRotate)
+            if (CharacterDetails.Tail2Rotate)
+            {
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider2.ValueChanged -= Tail2Rot;
+                    BoneSlider2.ValueChanged += Tail2Rot;
+                }
+            }
+
+            if (CharacterDetails.Tail3Rotate)
+            {
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider2.ValueChanged -= Tail3Rot;
+                    BoneSlider2.ValueChanged += Tail3Rot;
+                }
+            }
+
+            if (CharacterDetails.Tail4Rotate)
+            {
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider2.ValueChanged -= Tail4Rot;
+                    BoneSlider2.ValueChanged += Tail4Rot;
+                }
+            }
+
+            if (CharacterDetails.LThighRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1485,7 +1457,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RThighRotate)
+            if (CharacterDetails.RThighRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1494,7 +1466,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LKneeRotate)
+            if (CharacterDetails.LKneeRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1503,7 +1475,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RKneeRotate)
+            if (CharacterDetails.RKneeRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1512,7 +1484,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LCalfRotate)
+            if (CharacterDetails.LCalfRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1521,7 +1493,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RCalfRotate)
+            if (CharacterDetails.RCalfRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1530,7 +1502,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LFootRotate)
+            if (CharacterDetails.LFootRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1539,7 +1511,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RFootRotate)
+            if (CharacterDetails.RFootRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1548,7 +1520,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LToesRotate)
+            if (CharacterDetails.LToesRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1557,7 +1529,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RToesRotate)
+            if (CharacterDetails.RToesRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1565,12 +1537,57 @@ namespace ConceptMatrix.Views
                     BoneSlider2.ValueChanged += RToesRot;
                 }
             }
+
+            if (CharacterDetails.LEarringRotate)
+            {
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider2.ValueChanged -= LEarringRot;
+                    BoneSlider2.ValueChanged += LEarringRot;
+                }
+            }
+
+            if (CharacterDetails.REarringRotate)
+            {
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider2.ValueChanged -= REarringRot;
+                    BoneSlider2.ValueChanged += REarringRot;
+                }
+            }
+
+            if (CharacterDetails.LEarring2Rotate)
+            {
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider2.ValueChanged -= LEarring2Rot;
+                    BoneSlider2.ValueChanged += LEarring2Rot;
+                }
+            }
+
+            if (CharacterDetails.REarring2Rotate)
+            {
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider2.ValueChanged -= REarring2Rot;
+                    BoneSlider2.ValueChanged += REarring2Rot;
+                }
+            }
         }
 
 
         private void BoneSliders3_SourceUpdated(object sender, DataTransferEventArgs e)
         {
-            if (HeadRotate)
+            if (CharacterDetails.DebugRotate)
+            {
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider3.ValueChanged -= DebugRot;
+                    BoneSlider3.ValueChanged += DebugRot;
+                }
+            }
+
+            if (CharacterDetails.HeadRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1579,7 +1596,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (NoseRotate)
+            if (CharacterDetails.NoseRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1588,7 +1605,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (NostrilsRotate)
+            if (CharacterDetails.NostrilsRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1597,7 +1614,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (ChinRotate)
+            if (CharacterDetails.ChinRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1606,7 +1623,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LOutEyebrowRotate)
+            if (CharacterDetails.LOutEyebrowRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1615,7 +1632,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (ROutEyebrowRotate)
+            if (CharacterDetails.ROutEyebrowRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1624,7 +1641,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LInEyebrowRotate)
+            if (CharacterDetails.LInEyebrowRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1633,7 +1650,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RInEyebrowRotate)
+            if (CharacterDetails.RInEyebrowRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1642,7 +1659,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LEyeRotate)
+            if (CharacterDetails.LEyeRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1651,7 +1668,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (REyeRotate)
+            if (CharacterDetails.REyeRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1660,7 +1677,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LEyelidRotate)
+            if (CharacterDetails.LEyelidRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1669,7 +1686,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (REyelidRotate)
+            if (CharacterDetails.REyelidRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1678,7 +1695,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LLowEyelidRotate)
+            if (CharacterDetails.LLowEyelidRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1687,7 +1704,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RLowEyelidRotate)
+            if (CharacterDetails.RLowEyelidRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1696,7 +1713,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LEarRotate)
+            if (CharacterDetails.LEarRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1705,7 +1722,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (REarRotate)
+            if (CharacterDetails.REarRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1714,7 +1731,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LCheekRotate)
+            if (CharacterDetails.LCheekRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1723,7 +1740,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RCheekRotate)
+            if (CharacterDetails.RCheekRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1732,7 +1749,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LMouthRotate)
+            if (CharacterDetails.LMouthRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1741,7 +1758,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RMouthRotate)
+            if (CharacterDetails.RMouthRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1750,7 +1767,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LUpLipRotate)
+            if (CharacterDetails.LUpLipRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1759,7 +1776,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RUpLipRotate)
+            if (CharacterDetails.RUpLipRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1768,7 +1785,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LLowLipRotate)
+            if (CharacterDetails.LLowLipRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1777,7 +1794,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RLowLipRotate)
+            if (CharacterDetails.RLowLipRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1786,7 +1803,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (NeckRotate)
+            if (CharacterDetails.NeckRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1795,7 +1812,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (SternumRotate)
+            if (CharacterDetails.SternumRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1804,7 +1821,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (TorsoRotate)
+            if (CharacterDetails.TorsoRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1813,7 +1830,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (WaistRotate)
+            if (CharacterDetails.WaistRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1822,7 +1839,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LShoulderRotate)
+            if (CharacterDetails.LShoulderRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1831,7 +1848,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RShoulderRotate)
+            if (CharacterDetails.RShoulderRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1840,7 +1857,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LClavicleRotate)
+            if (CharacterDetails.LClavicleRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1849,7 +1866,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RClavicleRotate)
+            if (CharacterDetails.RClavicleRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1858,7 +1875,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LBreastRotate)
+            if (CharacterDetails.LBreastRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1867,7 +1884,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RBreastRotate)
+            if (CharacterDetails.RBreastRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1876,7 +1893,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LArmRotate)
+            if (CharacterDetails.LArmRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1885,7 +1902,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RArmRotate)
+            if (CharacterDetails.RArmRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1894,7 +1911,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LElbowRotate)
+            if (CharacterDetails.LElbowRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1903,7 +1920,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RElbowRotate)
+            if (CharacterDetails.RElbowRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1912,7 +1929,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LForearmRotate)
+            if (CharacterDetails.LForearmRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1921,7 +1938,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RForearmRotate)
+            if (CharacterDetails.RForearmRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1930,7 +1947,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LWristRotate)
+            if (CharacterDetails.LWristRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1939,7 +1956,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RWristRotate)
+            if (CharacterDetails.RWristRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1948,7 +1965,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LHandRotate)
+            if (CharacterDetails.LHandRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1957,7 +1974,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RHandRotate)
+            if (CharacterDetails.RHandRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1966,7 +1983,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LThumbRotate)
+            if (CharacterDetails.LThumbRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1975,7 +1992,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RThumbRotate)
+            if (CharacterDetails.RThumbRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1984,7 +2001,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LThumb2Rotate)
+            if (CharacterDetails.LThumb2Rotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -1993,7 +2010,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RThumb2Rotate)
+            if (CharacterDetails.RThumb2Rotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -2002,7 +2019,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LIndexRotate)
+            if (CharacterDetails.LIndexRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -2011,7 +2028,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RIndexRotate)
+            if (CharacterDetails.RIndexRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -2020,7 +2037,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LIndex2Rotate)
+            if (CharacterDetails.LIndex2Rotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -2029,7 +2046,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RIndex2Rotate)
+            if (CharacterDetails.RIndex2Rotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -2038,7 +2055,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LMiddleRotate)
+            if (CharacterDetails.LMiddleRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -2047,7 +2064,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RMiddleRotate)
+            if (CharacterDetails.RMiddleRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -2056,7 +2073,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LMiddle2Rotate)
+            if (CharacterDetails.LMiddle2Rotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -2065,7 +2082,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RMiddle2Rotate)
+            if (CharacterDetails.RMiddle2Rotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -2074,7 +2091,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LRingRotate)
+            if (CharacterDetails.LRingRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -2083,7 +2100,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RRingRotate)
+            if (CharacterDetails.RRingRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -2092,7 +2109,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LRing2Rotate)
+            if (CharacterDetails.LRing2Rotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -2101,7 +2118,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RRing2Rotate)
+            if (CharacterDetails.RRing2Rotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -2110,7 +2127,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LPinkyRotate)
+            if (CharacterDetails.LPinkyRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -2119,7 +2136,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RPinkyRotate)
+            if (CharacterDetails.RPinkyRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -2128,7 +2145,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LPinky2Rotate)
+            if (CharacterDetails.LPinky2Rotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -2137,7 +2154,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RPinky2Rotate)
+            if (CharacterDetails.RPinky2Rotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -2146,7 +2163,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (PelvisRotate)
+            if (CharacterDetails.PelvisRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -2155,7 +2172,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (TailRotate)
+            if (CharacterDetails.TailRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -2164,7 +2181,34 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LThighRotate)
+            if (CharacterDetails.Tail2Rotate)
+            {
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider3.ValueChanged -= Tail2Rot;
+                    BoneSlider3.ValueChanged += Tail2Rot;
+                }
+            }
+
+            if (CharacterDetails.Tail3Rotate)
+            {
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider3.ValueChanged -= Tail3Rot;
+                    BoneSlider3.ValueChanged += Tail3Rot;
+                }
+            }
+
+            if (CharacterDetails.Tail4Rotate)
+            {
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider3.ValueChanged -= Tail4Rot;
+                    BoneSlider3.ValueChanged += Tail4Rot;
+                }
+            }
+
+            if (CharacterDetails.LThighRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -2173,7 +2217,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RThighRotate)
+            if (CharacterDetails.RThighRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -2182,7 +2226,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LKneeRotate)
+            if (CharacterDetails.LKneeRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -2191,7 +2235,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RKneeRotate)
+            if (CharacterDetails.RKneeRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -2200,7 +2244,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LCalfRotate)
+            if (CharacterDetails.LCalfRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -2209,7 +2253,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RCalfRotate)
+            if (CharacterDetails.RCalfRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -2218,7 +2262,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LFootRotate)
+            if (CharacterDetails.LFootRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -2227,7 +2271,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RFootRotate)
+            if (CharacterDetails.RFootRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -2236,7 +2280,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LToesRotate)
+            if (CharacterDetails.LToesRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
@@ -2245,12 +2289,48 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RToesRotate)
+            if (CharacterDetails.RToesRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= RToesRot;
                     BoneSlider3.ValueChanged += RToesRot;
+                }
+            }
+
+            if (CharacterDetails.LEarringRotate)
+            {
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider3.ValueChanged -= LEarringRot;
+                    BoneSlider3.ValueChanged += LEarringRot;
+                }
+            }
+
+            if (CharacterDetails.REarringRotate)
+            {
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider3.ValueChanged -= REarringRot;
+                    BoneSlider3.ValueChanged += REarringRot;
+                }
+            }
+
+            if (CharacterDetails.LEarring2Rotate)
+            {
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider3.ValueChanged -= LEarring2Rot;
+                    BoneSlider3.ValueChanged += LEarring2Rot;
+                }
+            }
+
+            if (CharacterDetails.REarring2Rotate)
+            {
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider3.ValueChanged -= REarring2Rot;
+                    BoneSlider3.ValueChanged += REarring2Rot;
                 }
             }
         }
@@ -2260,7 +2340,16 @@ namespace ConceptMatrix.Views
         #region UpDowns
         private void BoneUpDown_SourceUpdated(object sender, DataTransferEventArgs e)
         {
-            if (HeadRotate)
+            if (CharacterDetails.DebugRotate)
+            {
+                if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown.ValueChanged -= DebugRot2;
+                    BoneUpDown.ValueChanged += DebugRot2;
+                }
+            }
+
+            if (CharacterDetails.HeadRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2269,6 +2358,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
+            if (CharacterDetails.NoseRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2277,7 +2367,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (NostrilsRotate)
+            if (CharacterDetails.NostrilsRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2286,7 +2376,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (ChinRotate)
+            if (CharacterDetails.ChinRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2295,7 +2385,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LOutEyebrowRotate)
+            if (CharacterDetails.LOutEyebrowRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2304,7 +2394,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (ROutEyebrowRotate)
+            if (CharacterDetails.ROutEyebrowRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2313,7 +2403,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LInEyebrowRotate)
+            if (CharacterDetails.LInEyebrowRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2322,7 +2412,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RInEyebrowRotate)
+            if (CharacterDetails.RInEyebrowRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2331,7 +2421,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LEyeRotate)
+            if (CharacterDetails.LEyeRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2340,7 +2430,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (REyeRotate)
+            if (CharacterDetails.REyeRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2349,7 +2439,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LEyelidRotate)
+            if (CharacterDetails.LEyelidRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2358,7 +2448,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (REyelidRotate)
+            if (CharacterDetails.REyelidRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2367,7 +2457,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LLowEyelidRotate)
+            if (CharacterDetails.LLowEyelidRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2376,7 +2466,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RLowEyelidRotate)
+            if (CharacterDetails.RLowEyelidRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2385,7 +2475,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LEarRotate)
+            if (CharacterDetails.LEarRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2394,7 +2484,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (REarRotate)
+            if (CharacterDetails.REarRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2403,7 +2493,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LCheekRotate)
+            if (CharacterDetails.LCheekRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2412,7 +2502,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RCheekRotate)
+            if (CharacterDetails.RCheekRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2421,7 +2511,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LMouthRotate)
+            if (CharacterDetails.LMouthRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2430,7 +2520,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RMouthRotate)
+            if (CharacterDetails.RMouthRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2439,7 +2529,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LUpLipRotate)
+            if (CharacterDetails.LUpLipRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2448,7 +2538,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RUpLipRotate)
+            if (CharacterDetails.RUpLipRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2457,7 +2547,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LLowLipRotate)
+            if (CharacterDetails.LLowLipRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2466,7 +2556,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RLowLipRotate)
+            if (CharacterDetails.RLowLipRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2475,7 +2565,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (NeckRotate)
+            if (CharacterDetails.NeckRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2484,7 +2574,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (SternumRotate)
+            if (CharacterDetails.SternumRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2493,7 +2583,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (TorsoRotate)
+            if (CharacterDetails.TorsoRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2502,7 +2592,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (WaistRotate)
+            if (CharacterDetails.WaistRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2511,7 +2601,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LShoulderRotate)
+            if (CharacterDetails.LShoulderRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2520,7 +2610,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RShoulderRotate)
+            if (CharacterDetails.RShoulderRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2529,7 +2619,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LClavicleRotate)
+            if (CharacterDetails.LClavicleRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2538,7 +2628,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RClavicleRotate)
+            if (CharacterDetails.RClavicleRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2547,7 +2637,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LBreastRotate)
+            if (CharacterDetails.LBreastRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2556,7 +2646,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RBreastRotate)
+            if (CharacterDetails.RBreastRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2565,7 +2655,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LArmRotate)
+            if (CharacterDetails.LArmRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2574,7 +2664,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RArmRotate)
+            if (CharacterDetails.RArmRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2583,7 +2673,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LElbowRotate)
+            if (CharacterDetails.LElbowRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2592,7 +2682,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RElbowRotate)
+            if (CharacterDetails.RElbowRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2601,7 +2691,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LForearmRotate)
+            if (CharacterDetails.LForearmRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2610,7 +2700,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RForearmRotate)
+            if (CharacterDetails.RForearmRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2619,7 +2709,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LWristRotate)
+            if (CharacterDetails.LWristRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2628,7 +2718,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RWristRotate)
+            if (CharacterDetails.RWristRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2637,7 +2727,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LHandRotate)
+            if (CharacterDetails.LHandRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2646,7 +2736,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RHandRotate)
+            if (CharacterDetails.RHandRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2655,7 +2745,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LThumbRotate)
+            if (CharacterDetails.LThumbRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2664,7 +2754,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RThumbRotate)
+            if (CharacterDetails.RThumbRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2673,7 +2763,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LThumb2Rotate)
+            if (CharacterDetails.LThumb2Rotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2682,7 +2772,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RThumb2Rotate)
+            if (CharacterDetails.RThumb2Rotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2691,7 +2781,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LIndexRotate)
+            if (CharacterDetails.LIndexRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2700,7 +2790,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RIndexRotate)
+            if (CharacterDetails.RIndexRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2709,7 +2799,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LIndex2Rotate)
+            if (CharacterDetails.LIndex2Rotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2718,7 +2808,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RIndex2Rotate)
+            if (CharacterDetails.RIndex2Rotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2727,7 +2817,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LMiddleRotate)
+            if (CharacterDetails.LMiddleRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2736,7 +2826,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RMiddleRotate)
+            if (CharacterDetails.RMiddleRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2745,7 +2835,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LMiddle2Rotate)
+            if (CharacterDetails.LMiddle2Rotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2754,7 +2844,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RMiddle2Rotate)
+            if (CharacterDetails.RMiddle2Rotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2763,7 +2853,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LRingRotate)
+            if (CharacterDetails.LRingRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2772,7 +2862,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RRingRotate)
+            if (CharacterDetails.RRingRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2781,7 +2871,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LRing2Rotate)
+            if (CharacterDetails.LRing2Rotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2790,7 +2880,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RRing2Rotate)
+            if (CharacterDetails.RRing2Rotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2799,7 +2889,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LPinkyRotate)
+            if (CharacterDetails.LPinkyRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2808,7 +2898,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RPinkyRotate)
+            if (CharacterDetails.RPinkyRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2817,7 +2907,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LPinky2Rotate)
+            if (CharacterDetails.LPinky2Rotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2826,7 +2916,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RPinky2Rotate)
+            if (CharacterDetails.RPinky2Rotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2835,7 +2925,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (PelvisRotate)
+            if (CharacterDetails.PelvisRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2844,7 +2934,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (TailRotate)
+            if (CharacterDetails.TailRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2853,7 +2943,34 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LThighRotate)
+            if (CharacterDetails.Tail2Rotate)
+            {
+                if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown.ValueChanged -= Tail2Rot2;
+                    BoneUpDown.ValueChanged += Tail2Rot2;
+                }
+            }
+
+            if (CharacterDetails.Tail3Rotate)
+            {
+                if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown.ValueChanged -= Tail3Rot2;
+                    BoneUpDown.ValueChanged += Tail3Rot2;
+                }
+            }
+
+            if (CharacterDetails.Tail4Rotate)
+            {
+                if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown.ValueChanged -= Tail4Rot2;
+                    BoneUpDown.ValueChanged += Tail4Rot2;
+                }
+            }
+
+            if (CharacterDetails.LThighRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2862,7 +2979,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RThighRotate)
+            if (CharacterDetails.RThighRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2871,7 +2988,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LKneeRotate)
+            if (CharacterDetails.LKneeRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2880,7 +2997,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RKneeRotate)
+            if (CharacterDetails.RKneeRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2889,7 +3006,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LCalfRotate)
+            if (CharacterDetails.LCalfRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2898,7 +3015,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RCalfRotate)
+            if (CharacterDetails.RCalfRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2907,7 +3024,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LFootRotate)
+            if (CharacterDetails.LFootRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2916,7 +3033,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RFootRotate)
+            if (CharacterDetails.RFootRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2925,7 +3042,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LToesRotate)
+            if (CharacterDetails.LToesRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2934,7 +3051,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RToesRotate)
+            if (CharacterDetails.RToesRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2942,12 +3059,57 @@ namespace ConceptMatrix.Views
                     BoneUpDown.ValueChanged += RToesRot2;
                 }
             }
+
+            if (CharacterDetails.LEarringRotate)
+            {
+                if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown.ValueChanged -= LEarringRot2;
+                    BoneUpDown.ValueChanged += LEarringRot2;
+                }
+            }
+
+            if (CharacterDetails.REarringRotate)
+            {
+                if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown.ValueChanged -= REarringRot2;
+                    BoneUpDown.ValueChanged += REarringRot2;
+                }
+            }
+
+            if (CharacterDetails.LEarring2Rotate)
+            {
+                if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown.ValueChanged -= LEarring2Rot2;
+                    BoneUpDown.ValueChanged += LEarring2Rot2;
+                }
+            }
+
+            if (CharacterDetails.REarring2Rotate)
+            {
+                if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown.ValueChanged -= REarring2Rot2;
+                    BoneUpDown.ValueChanged += REarring2Rot2;
+                }
+            }
         }
 
 
         private void BoneUpDown2_SourceUpdated(object sender, DataTransferEventArgs e)
         {
-            if (HeadRotate)
+            if (CharacterDetails.DebugRotate)
+            {
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown2.ValueChanged -= DebugRot2;
+                    BoneUpDown2.ValueChanged += DebugRot2;
+                }
+            }
+
+            if (CharacterDetails.HeadRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2956,7 +3118,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (NoseRotate)
+            if (CharacterDetails.NoseRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2965,7 +3127,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (NostrilsRotate)
+            if (CharacterDetails.NostrilsRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2974,7 +3136,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (ChinRotate)
+            if (CharacterDetails.ChinRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2983,7 +3145,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LOutEyebrowRotate)
+            if (CharacterDetails.LOutEyebrowRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -2992,7 +3154,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (ROutEyebrowRotate)
+            if (CharacterDetails.ROutEyebrowRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3001,7 +3163,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LInEyebrowRotate)
+            if (CharacterDetails.LInEyebrowRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3010,7 +3172,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RInEyebrowRotate)
+            if (CharacterDetails.RInEyebrowRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3019,7 +3181,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LEyeRotate)
+            if (CharacterDetails.LEyeRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3028,7 +3190,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (REyeRotate)
+            if (CharacterDetails.REyeRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3037,7 +3199,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LEyelidRotate)
+            if (CharacterDetails.LEyelidRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3046,7 +3208,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (REyelidRotate)
+            if (CharacterDetails.REyelidRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3055,7 +3217,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LLowEyelidRotate)
+            if (CharacterDetails.LLowEyelidRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3064,7 +3226,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RLowEyelidRotate)
+            if (CharacterDetails.RLowEyelidRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3073,7 +3235,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LEarRotate)
+            if (CharacterDetails.LEarRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3082,7 +3244,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (REarRotate)
+            if (CharacterDetails.REarRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3091,7 +3253,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LCheekRotate)
+            if (CharacterDetails.LCheekRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3100,7 +3262,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RCheekRotate)
+            if (CharacterDetails.RCheekRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3109,7 +3271,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LMouthRotate)
+            if (CharacterDetails.LMouthRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3118,7 +3280,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RMouthRotate)
+            if (CharacterDetails.RMouthRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3127,7 +3289,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LUpLipRotate)
+            if (CharacterDetails.LUpLipRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3136,7 +3298,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RUpLipRotate)
+            if (CharacterDetails.RUpLipRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3145,7 +3307,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LLowLipRotate)
+            if (CharacterDetails.LLowLipRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3154,7 +3316,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RLowLipRotate)
+            if (CharacterDetails.RLowLipRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3163,7 +3325,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (NeckRotate)
+            if (CharacterDetails.NeckRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3172,7 +3334,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (SternumRotate)
+            if (CharacterDetails.SternumRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3181,7 +3343,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (TorsoRotate)
+            if (CharacterDetails.TorsoRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3190,7 +3352,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (WaistRotate)
+            if (CharacterDetails.WaistRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3199,7 +3361,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LShoulderRotate)
+            if (CharacterDetails.LShoulderRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3208,7 +3370,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RShoulderRotate)
+            if (CharacterDetails.RShoulderRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3217,7 +3379,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LClavicleRotate)
+            if (CharacterDetails.LClavicleRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3226,7 +3388,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RClavicleRotate)
+            if (CharacterDetails.RClavicleRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3235,7 +3397,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LBreastRotate)
+            if (CharacterDetails.LBreastRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3244,7 +3406,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RBreastRotate)
+            if (CharacterDetails.RBreastRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3253,7 +3415,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LArmRotate)
+            if (CharacterDetails.LArmRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3262,7 +3424,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RArmRotate)
+            if (CharacterDetails.RArmRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3271,7 +3433,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LElbowRotate)
+            if (CharacterDetails.LElbowRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3280,7 +3442,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RElbowRotate)
+            if (CharacterDetails.RElbowRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3289,7 +3451,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LForearmRotate)
+            if (CharacterDetails.LForearmRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3298,7 +3460,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RForearmRotate)
+            if (CharacterDetails.RForearmRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3307,7 +3469,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LWristRotate)
+            if (CharacterDetails.LWristRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3316,7 +3478,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RWristRotate)
+            if (CharacterDetails.RWristRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3325,7 +3487,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LHandRotate)
+            if (CharacterDetails.LHandRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3334,7 +3496,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RHandRotate)
+            if (CharacterDetails.RHandRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3343,7 +3505,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LThumbRotate)
+            if (CharacterDetails.LThumbRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3352,7 +3514,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RThumbRotate)
+            if (CharacterDetails.RThumbRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3361,7 +3523,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LThumb2Rotate)
+            if (CharacterDetails.LThumb2Rotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3370,7 +3532,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RThumb2Rotate)
+            if (CharacterDetails.RThumb2Rotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3379,7 +3541,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LIndexRotate)
+            if (CharacterDetails.LIndexRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3388,7 +3550,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RIndexRotate)
+            if (CharacterDetails.RIndexRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3397,7 +3559,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LIndex2Rotate)
+            if (CharacterDetails.LIndex2Rotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3406,7 +3568,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RIndex2Rotate)
+            if (CharacterDetails.RIndex2Rotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3415,7 +3577,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LMiddleRotate)
+            if (CharacterDetails.LMiddleRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3424,7 +3586,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RMiddleRotate)
+            if (CharacterDetails.RMiddleRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3433,7 +3595,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LMiddle2Rotate)
+            if (CharacterDetails.LMiddle2Rotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3442,7 +3604,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RMiddle2Rotate)
+            if (CharacterDetails.RMiddle2Rotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3451,7 +3613,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LRingRotate)
+            if (CharacterDetails.LRingRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3460,7 +3622,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RRingRotate)
+            if (CharacterDetails.RRingRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3469,7 +3631,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LRing2Rotate)
+            if (CharacterDetails.LRing2Rotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3478,7 +3640,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RRing2Rotate)
+            if (CharacterDetails.RRing2Rotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3487,7 +3649,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LPinkyRotate)
+            if (CharacterDetails.LPinkyRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3496,7 +3658,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RPinkyRotate)
+            if (CharacterDetails.RPinkyRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3505,7 +3667,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LPinky2Rotate)
+            if (CharacterDetails.LPinky2Rotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3514,7 +3676,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RPinky2Rotate)
+            if (CharacterDetails.RPinky2Rotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3523,7 +3685,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (PelvisRotate)
+            if (CharacterDetails.PelvisRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3532,7 +3694,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (TailRotate)
+            if (CharacterDetails.TailRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3541,7 +3703,34 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LThighRotate)
+            if (CharacterDetails.Tail2Rotate)
+            {
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown2.ValueChanged -= Tail2Rot2;
+                    BoneUpDown2.ValueChanged += Tail2Rot2;
+                }
+            }
+
+            if (CharacterDetails.Tail3Rotate)
+            {
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown2.ValueChanged -= Tail3Rot2;
+                    BoneUpDown2.ValueChanged += Tail3Rot2;
+                }
+            }
+
+            if (CharacterDetails.Tail4Rotate)
+            {
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown2.ValueChanged -= Tail4Rot2;
+                    BoneUpDown2.ValueChanged += Tail4Rot2;
+                }
+            }
+
+            if (CharacterDetails.LThighRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3550,7 +3739,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RThighRotate)
+            if (CharacterDetails.RThighRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3559,7 +3748,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LKneeRotate)
+            if (CharacterDetails.LKneeRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3568,7 +3757,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RKneeRotate)
+            if (CharacterDetails.RKneeRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3577,7 +3766,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LCalfRotate)
+            if (CharacterDetails.LCalfRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3586,7 +3775,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RCalfRotate)
+            if (CharacterDetails.RCalfRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3595,7 +3784,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LFootRotate)
+            if (CharacterDetails.LFootRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3604,7 +3793,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RFootRotate)
+            if (CharacterDetails.RFootRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3613,7 +3802,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LToesRotate)
+            if (CharacterDetails.LToesRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3622,7 +3811,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RToesRotate)
+            if (CharacterDetails.RToesRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3630,12 +3819,57 @@ namespace ConceptMatrix.Views
                     BoneUpDown2.ValueChanged += RToesRot2;
                 }
             }
+
+            if (CharacterDetails.LEarringRotate)
+            {
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown2.ValueChanged -= LEarringRot2;
+                    BoneUpDown2.ValueChanged += LEarringRot2;
+                }
+            }
+
+            if (CharacterDetails.REarringRotate)
+            {
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown2.ValueChanged -= REarringRot2;
+                    BoneUpDown2.ValueChanged += REarringRot2;
+                }
+            }
+
+            if (CharacterDetails.LEarring2Rotate)
+            {
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown2.ValueChanged -= LEarring2Rot2;
+                    BoneUpDown2.ValueChanged += LEarring2Rot2;
+                }
+            }
+
+            if (CharacterDetails.REarring2Rotate)
+            {
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown2.ValueChanged -= REarring2Rot2;
+                    BoneUpDown2.ValueChanged += REarring2Rot2;
+                }
+            }
         }
 
 
         private void BoneUpDown3_SourceUpdated(object sender, DataTransferEventArgs e)
         {
-            if (HeadRotate)
+            if (CharacterDetails.DebugRotate)
+            {
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown3.ValueChanged -= DebugRot2;
+                    BoneUpDown3.ValueChanged += DebugRot2;
+                }
+            }
+
+            if (CharacterDetails.HeadRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3644,7 +3878,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (NoseRotate)
+            if (CharacterDetails.NoseRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3653,7 +3887,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (NostrilsRotate)
+            if (CharacterDetails.NostrilsRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3662,7 +3896,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (ChinRotate)
+            if (CharacterDetails.ChinRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3671,7 +3905,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LOutEyebrowRotate)
+            if (CharacterDetails.LOutEyebrowRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3680,7 +3914,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (ROutEyebrowRotate)
+            if (CharacterDetails.ROutEyebrowRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3689,7 +3923,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LInEyebrowRotate)
+            if (CharacterDetails.LInEyebrowRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3698,7 +3932,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RInEyebrowRotate)
+            if (CharacterDetails.RInEyebrowRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3707,7 +3941,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LEyeRotate)
+            if (CharacterDetails.LEyeRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3716,7 +3950,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (REyeRotate)
+            if (CharacterDetails.REyeRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3725,7 +3959,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LEyelidRotate)
+            if (CharacterDetails.LEyelidRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3734,7 +3968,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (REyelidRotate)
+            if (CharacterDetails.REyelidRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3743,7 +3977,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LLowEyelidRotate)
+            if (CharacterDetails.LLowEyelidRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3752,7 +3986,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RLowEyelidRotate)
+            if (CharacterDetails.RLowEyelidRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3761,7 +3995,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LEarRotate)
+            if (CharacterDetails.LEarRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3770,7 +4004,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (REarRotate)
+            if (CharacterDetails.REarRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3779,7 +4013,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LCheekRotate)
+            if (CharacterDetails.LCheekRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3788,7 +4022,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RCheekRotate)
+            if (CharacterDetails.RCheekRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3797,7 +4031,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LMouthRotate)
+            if (CharacterDetails.LMouthRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3806,7 +4040,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RMouthRotate)
+            if (CharacterDetails.RMouthRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3815,7 +4049,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LUpLipRotate)
+            if (CharacterDetails.LUpLipRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3824,7 +4058,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RUpLipRotate)
+            if (CharacterDetails.RUpLipRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3833,7 +4067,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LLowLipRotate)
+            if (CharacterDetails.LLowLipRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3842,7 +4076,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RLowLipRotate)
+            if (CharacterDetails.RLowLipRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3851,7 +4085,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (NeckRotate)
+            if (CharacterDetails.NeckRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3860,7 +4094,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (SternumRotate)
+            if (CharacterDetails.SternumRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3869,7 +4103,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (TorsoRotate)
+            if (CharacterDetails.TorsoRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3878,7 +4112,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (WaistRotate)
+            if (CharacterDetails.WaistRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3887,7 +4121,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LShoulderRotate)
+            if (CharacterDetails.LShoulderRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3896,7 +4130,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RShoulderRotate)
+            if (CharacterDetails.RShoulderRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3905,7 +4139,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LClavicleRotate)
+            if (CharacterDetails.LClavicleRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3914,7 +4148,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RClavicleRotate)
+            if (CharacterDetails.RClavicleRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3923,7 +4157,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LBreastRotate)
+            if (CharacterDetails.LBreastRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3932,7 +4166,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RBreastRotate)
+            if (CharacterDetails.RBreastRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3941,7 +4175,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LArmRotate)
+            if (CharacterDetails.LArmRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3950,7 +4184,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RArmRotate)
+            if (CharacterDetails.RArmRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3959,7 +4193,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LElbowRotate)
+            if (CharacterDetails.LElbowRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3968,7 +4202,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RElbowRotate)
+            if (CharacterDetails.RElbowRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3977,7 +4211,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LForearmRotate)
+            if (CharacterDetails.LForearmRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3986,7 +4220,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RForearmRotate)
+            if (CharacterDetails.RForearmRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -3995,7 +4229,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LWristRotate)
+            if (CharacterDetails.LWristRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4004,7 +4238,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RWristRotate)
+            if (CharacterDetails.RWristRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4013,7 +4247,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LHandRotate)
+            if (CharacterDetails.LHandRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4022,7 +4256,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RHandRotate)
+            if (CharacterDetails.RHandRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4031,7 +4265,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LThumbRotate)
+            if (CharacterDetails.LThumbRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4040,7 +4274,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RThumbRotate)
+            if (CharacterDetails.RThumbRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4049,7 +4283,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LThumb2Rotate)
+            if (CharacterDetails.LThumb2Rotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4058,7 +4292,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RThumb2Rotate)
+            if (CharacterDetails.RThumb2Rotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4067,7 +4301,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LIndexRotate)
+            if (CharacterDetails.LIndexRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4076,7 +4310,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RIndexRotate)
+            if (CharacterDetails.RIndexRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4085,7 +4319,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LIndex2Rotate)
+            if (CharacterDetails.LIndex2Rotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4094,7 +4328,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RIndex2Rotate)
+            if (CharacterDetails.RIndex2Rotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4103,7 +4337,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LMiddleRotate)
+            if (CharacterDetails.LMiddleRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4112,7 +4346,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RMiddleRotate)
+            if (CharacterDetails.RMiddleRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4121,7 +4355,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LMiddle2Rotate)
+            if (CharacterDetails.LMiddle2Rotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4130,7 +4364,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RMiddle2Rotate)
+            if (CharacterDetails.RMiddle2Rotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4139,7 +4373,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LRingRotate)
+            if (CharacterDetails.LRingRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4148,7 +4382,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RRingRotate)
+            if (CharacterDetails.RRingRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4157,7 +4391,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LRing2Rotate)
+            if (CharacterDetails.LRing2Rotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4166,7 +4400,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RRing2Rotate)
+            if (CharacterDetails.RRing2Rotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4175,7 +4409,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LPinkyRotate)
+            if (CharacterDetails.LPinkyRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4184,7 +4418,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RPinkyRotate)
+            if (CharacterDetails.RPinkyRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4193,7 +4427,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LPinky2Rotate)
+            if (CharacterDetails.LPinky2Rotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4202,7 +4436,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RPinky2Rotate)
+            if (CharacterDetails.RPinky2Rotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4211,7 +4445,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (PelvisRotate)
+            if (CharacterDetails.PelvisRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4220,7 +4454,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (TailRotate)
+            if (CharacterDetails.TailRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4229,7 +4463,34 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LThighRotate)
+            if (CharacterDetails.Tail2Rotate)
+            {
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown3.ValueChanged -= Tail2Rot2;
+                    BoneUpDown3.ValueChanged += Tail2Rot2;
+                }
+            }
+
+            if (CharacterDetails.Tail3Rotate)
+            {
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown3.ValueChanged -= Tail3Rot2;
+                    BoneUpDown3.ValueChanged += Tail3Rot2;
+                }
+            }
+
+            if (CharacterDetails.TailRotate)
+            {
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown3.ValueChanged -= Tail4Rot2;
+                    BoneUpDown3.ValueChanged += Tail4Rot2;
+                }
+            }
+
+            if (CharacterDetails.LThighRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4238,7 +4499,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RThighRotate)
+            if (CharacterDetails.RThighRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4247,7 +4508,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LKneeRotate)
+            if (CharacterDetails.LKneeRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4256,7 +4517,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RKneeRotate)
+            if (CharacterDetails.RKneeRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4265,7 +4526,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LCalfRotate)
+            if (CharacterDetails.LCalfRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4274,7 +4535,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RCalfRotate)
+            if (CharacterDetails.RCalfRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4283,7 +4544,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LFootRotate)
+            if (CharacterDetails.LFootRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4292,7 +4553,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RFootRotate)
+            if (CharacterDetails.RFootRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4301,7 +4562,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (LToesRotate)
+            if (CharacterDetails.LToesRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4310,7 +4571,7 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (RToesRotate)
+            if (CharacterDetails.RToesRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
@@ -4318,8 +4579,171 @@ namespace ConceptMatrix.Views
                     BoneUpDown3.ValueChanged += RToesRot2;
                 }
             }
+
+            if (CharacterDetails.LEarringRotate)
+            {
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown3.ValueChanged -= LEarringRot2;
+                    BoneUpDown3.ValueChanged += LEarringRot2;
+                }
+            }
+
+            if (CharacterDetails.REarringRotate)
+            {
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown3.ValueChanged -= REarringRot2;
+                    BoneUpDown3.ValueChanged += REarringRot2;
+                }
+            }
+
+            if (CharacterDetails.LEarring2Rotate)
+            {
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown3.ValueChanged -= LEarring2Rot2;
+                    BoneUpDown3.ValueChanged += LEarring2Rot2;
+                }
+            }
+
+            if (CharacterDetails.REarring2Rotate)
+            {
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown3.ValueChanged -= REarring2Rot2;
+                    BoneUpDown3.ValueChanged += REarring2Rot2;
+                }
+            }
         }
 
+        #endregion
+
+        #region Debug
+        private void DebugRot(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.DebugX.value = (float)quat.X;
+            CharacterDetails.DebugY.value = (float)quat.Y;
+            CharacterDetails.DebugZ.value = (float)quat.Z;
+            CharacterDetails.DebugW.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneSlider.ValueChanged -= DebugRot;
+            BoneSlider2.ValueChanged -= DebugRot;
+            BoneSlider3.ValueChanged -= DebugRot;
+        }
+
+        private void DebugRot2(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.DebugX.value = (float)quat.X;
+            CharacterDetails.DebugY.value = (float)quat.Y;
+            CharacterDetails.DebugZ.value = (float)quat.Z;
+            CharacterDetails.DebugW.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneUpDown.ValueChanged -= DebugRot2;
+            BoneUpDown2.ValueChanged -= DebugRot2;
+            BoneUpDown3.ValueChanged -= DebugRot2;
+        }
+
+        private void DebugButton_Checked(object sender, RoutedEventArgs e)
+        {
+            //Disable Other Selections
+            HeadButton.IsChecked = false;
+            NoseButton.IsChecked = false;
+            NostrilsButton.IsChecked = false;
+            ChinButton.IsChecked = false;
+            LOutEyebrowButton.IsChecked = false;
+            ROutEyebrowButton.IsChecked = false;
+            LInEyebrowButton.IsChecked = false;
+            RInEyebrowButton.IsChecked = false;
+            LEyeButton.IsChecked = false;
+            REyeButton.IsChecked = false;
+            LEyelidButton.IsChecked = false;
+            REyelidButton.IsChecked = false;
+            LLowEyelidButton.IsChecked = false;
+            RLowEyelidButton.IsChecked = false;
+            LEarButton.IsChecked = false;
+            REarButton.IsChecked = false;
+            LCheekButton.IsChecked = false;
+            RCheekButton.IsChecked = false;
+            LMouthButton.IsChecked = false;
+            RMouthButton.IsChecked = false;
+            LUpLipButton.IsChecked = false;
+            RUpLipButton.IsChecked = false;
+            LLowLipButton.IsChecked = false;
+            RLowLipButton.IsChecked = false;
+            NeckButton.IsChecked = false;
+            SternumButton.IsChecked = false;
+            TorsoButton.IsChecked = false;
+            WaistButton.IsChecked = false;
+            LShoulderButton.IsChecked = false;
+            RShoulderButton.IsChecked = false;
+            LClavicleButton.IsChecked = false;
+            RClavicleButton.IsChecked = false;
+            LBreastButton.IsChecked = false;
+            RBreastButton.IsChecked = false;
+            LArmButton.IsChecked = false;
+            RArmButton.IsChecked = false;
+            LElbowButton.IsChecked = false;
+            RElbowButton.IsChecked = false;
+            LForearmButton.IsChecked = false;
+            RForearmButton.IsChecked = false;
+            LWristButton.IsChecked = false;
+            RWristButton.IsChecked = false;
+            LHandButton.IsChecked = false;
+            RHandButton.IsChecked = false;
+            LThumbButton.IsChecked = false;
+            RThumbButton.IsChecked = false;
+            LThumb2Button.IsChecked = false;
+            RThumb2Button.IsChecked = false;
+            LIndexButton.IsChecked = false;
+            RIndexButton.IsChecked = false;
+            LIndex2Button.IsChecked = false;
+            RIndex2Button.IsChecked = false;
+            LMiddleButton.IsChecked = false;
+            RMiddleButton.IsChecked = false;
+            LMiddle2Button.IsChecked = false;
+            RMiddle2Button.IsChecked = false;
+            LRingButton.IsChecked = false;
+            RRingButton.IsChecked = false;
+            LRing2Button.IsChecked = false;
+            RRing2Button.IsChecked = false;
+            LPinkyButton.IsChecked = false;
+            RPinkyButton.IsChecked = false;
+            LPinky2Button.IsChecked = false;
+            RPinky2Button.IsChecked = false;
+            PelvisButton.IsChecked = false;
+            TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
+            LThighButton.IsChecked = false;
+            RThighButton.IsChecked = false;
+            LKneeButton.IsChecked = false;
+            RKneeButton.IsChecked = false;
+            LCalfButton.IsChecked = false;
+            RCalfButton.IsChecked = false;
+            LFootButton.IsChecked = false;
+            RFootButton.IsChecked = false;
+            LToesButton.IsChecked = false;
+            RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
+
+            //Load Current Values for Slider
+            CharacterDetails.DebugCheck = true;
+        }
+        private void DebugButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.DebugRotate = false;
+        }
         #endregion
 
         #region Head
@@ -4353,7 +4777,7 @@ namespace ConceptMatrix.Views
             BoneUpDown3.ValueChanged -= HeadRot2;
         }
 
-        private void HeadButton_Checked(object sender, RoutedEventArgs e)
+        public void HeadButton_Checked(object sender, RoutedEventArgs e)
         {
             //Disable Other Selections
             NoseButton.IsChecked = false;
@@ -4421,6 +4845,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -4431,17 +4858,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            HeadCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            HeadCheck = false;
-
-            HeadRotate = true;
+            CharacterDetails.HeadCheck = true;
         }
         private void HeadButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            HeadRotate = false;
+            CharacterDetails.HeadRotate = false;
         }
         #endregion
 
@@ -4544,6 +4971,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -4554,17 +4984,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            NoseCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            NoseCheck = false;
-
-            NoseRotate = true;
+            CharacterDetails.NoseCheck = true;
         }
         private void NoseButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            NoseRotate = false;
+            CharacterDetails.NoseRotate = false;
         }
         #endregion
 
@@ -4667,6 +5097,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -4677,17 +5110,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            NostrilsCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            NostrilsCheck = false;
-
-            NostrilsRotate = true;
+            CharacterDetails.NostrilsCheck = true;
         }
         private void NostrilsButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            NostrilsRotate = false;
+            CharacterDetails.NostrilsRotate = false;
         }
         #endregion
 
@@ -4790,6 +5223,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -4800,17 +5236,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            ChinCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            ChinCheck = false;
-
-            ChinRotate = true;
+            CharacterDetails.ChinCheck = true;
         }
         private void ChinButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            ChinRotate = false;
+            CharacterDetails.ChinRotate = false;
         }
         #endregion
 
@@ -4913,6 +5349,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -4923,17 +5362,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LOutEyebrowCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LOutEyebrowCheck = false;
-
-            LOutEyebrowRotate = true;
+            CharacterDetails.LOutEyebrowCheck = true;
         }
         private void LOutEyebrowButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            LOutEyebrowRotate = false;
+            CharacterDetails.LOutEyebrowRotate = false;
         }
         #endregion
 
@@ -5036,6 +5475,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -5046,17 +5488,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            ROutEyebrowCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            ROutEyebrowCheck = false;
-
-            ROutEyebrowRotate = true;
+            CharacterDetails.ROutEyebrowCheck = true;
         }
         private void ROutEyebrowButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            ROutEyebrowRotate = false;
+            CharacterDetails.ROutEyebrowRotate = false;
         }
         #endregion
 
@@ -5159,6 +5601,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -5169,17 +5614,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LInEyebrowCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LInEyebrowCheck = false;
-
-            LInEyebrowRotate = true;
+            CharacterDetails.LInEyebrowCheck = true;
         }
         private void LInEyebrowButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            LInEyebrowRotate = false;
+            CharacterDetails.LInEyebrowRotate = false;
         }
         #endregion
 
@@ -5282,6 +5727,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -5292,17 +5740,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            RInEyebrowCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            RInEyebrowCheck = false;
-
-            RInEyebrowRotate = true;
+            CharacterDetails.RInEyebrowCheck = true;
         }
         private void RInEyebrowButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            RInEyebrowRotate = false;
+            CharacterDetails.RInEyebrowRotate = false;
         }
         #endregion
 
@@ -5405,6 +5853,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -5415,17 +5866,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LEyeCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LEyeCheck = false;
-
-            LEyeRotate = true;
+            CharacterDetails.LEyeCheck = true;
         }
         private void LEyeButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            LEyeRotate = false;
+            CharacterDetails.LEyeRotate = false;
         }
         #endregion
 
@@ -5529,6 +5980,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -5539,17 +5993,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            REyeCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            REyeCheck = false;
-
-            REyeRotate = true;
+            CharacterDetails.REyeCheck = true;
         }
         private void REyeButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            REyeRotate = false;
+            CharacterDetails.REyeRotate = false;
         }
         #endregion
 
@@ -5652,6 +6106,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -5662,17 +6119,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LEyelidCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LEyelidCheck = false;
-
-            LEyelidRotate = true;
+            CharacterDetails.LEyelidCheck = true;
         }
         private void LEyelidButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            LEyelidRotate = false;
+            CharacterDetails.LEyelidRotate = false;
         }
         #endregion
 
@@ -5775,6 +6232,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -5785,17 +6245,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            REyelidCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            REyelidCheck = false;
-
-            REyelidRotate = true;
+            CharacterDetails.REyelidCheck = true;
         }
         private void REyelidButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            REyelidRotate = false;
+            CharacterDetails.REyelidRotate = false;
         }
         #endregion
 
@@ -5898,6 +6358,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -5908,17 +6371,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LLowEyelidCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LLowEyelidCheck = false;
-
-            LLowEyelidRotate = true;
+            CharacterDetails.LLowEyelidCheck = true;
         }
         private void LLowEyelidButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            LLowEyelidRotate = false;
+            CharacterDetails.LLowEyelidRotate = false;
         }
         #endregion
 
@@ -6021,6 +6484,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -6031,17 +6497,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            RLowEyelidCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            RLowEyelidCheck = false;
-
-            RLowEyelidRotate = true;
+            CharacterDetails.RLowEyelidCheck = true;
         }
         private void RLowEyelidButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            RLowEyelidRotate = false;
+            CharacterDetails.RLowEyelidRotate = false;
         }
         #endregion
 
@@ -6144,6 +6610,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -6154,17 +6623,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LEarCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LEarCheck = false;
-
-            LEarRotate = true;
+            CharacterDetails.LEarCheck = true;
         }
         private void LEarButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            LEarRotate = false;
+            CharacterDetails.LEarRotate = false;
         }
         #endregion
 
@@ -6267,6 +6736,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -6277,17 +6749,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            REarCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            REarCheck = false;
-
-            REarRotate = true;
+            CharacterDetails.REarCheck = true;
         }
         private void REarButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            REarRotate = false;
+            CharacterDetails.REarRotate = false;
         }
         #endregion
 
@@ -6390,6 +6862,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -6400,17 +6875,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LCheekCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LCheekCheck = false;
-
-            LCheekRotate = true;
+            CharacterDetails.LCheekCheck = true;
         }
         private void LCheekButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            LCheekRotate = false;
+            CharacterDetails.LCheekRotate = false;
         }
         #endregion
 
@@ -6513,6 +6988,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -6523,17 +7001,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            RCheekCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            RCheekCheck = false;
-
-            RCheekRotate = true;
+            CharacterDetails.RCheekCheck = true;
         }
         private void RCheekButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            RCheekRotate = false;
+            CharacterDetails.RCheekRotate = false;
         }
         #endregion
 
@@ -6636,6 +7114,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -6646,17 +7127,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LMouthCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LMouthCheck = false;
-
-            LMouthRotate = true;
+            CharacterDetails.LMouthCheck = true;
         }
         private void LMouthButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            LMouthRotate = false;
+            CharacterDetails.LMouthRotate = false;
         }
         #endregion
 
@@ -6759,6 +7240,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -6769,17 +7253,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            RMouthCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            RMouthCheck = false;
-
-            RMouthRotate = true;
+            CharacterDetails.RMouthCheck = true;
         }
         private void RMouthButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            RMouthRotate = false;
+            CharacterDetails.RMouthRotate = false;
         }
         #endregion
 
@@ -6882,6 +7366,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -6892,17 +7379,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LUpLipCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LUpLipCheck = false;
-
-            LUpLipRotate = true;
+            CharacterDetails.LUpLipCheck = true;
         }
         private void LUpLipButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            LUpLipRotate = false;
+            CharacterDetails.LUpLipRotate = false;
         }
         #endregion
 
@@ -7005,6 +7492,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -7015,17 +7505,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            RUpLipCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            RUpLipCheck = false;
-
-            RUpLipRotate = true;
+            CharacterDetails.RUpLipCheck = true;
         }
         private void RUpLipButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            RUpLipRotate = false;
+            CharacterDetails.RUpLipRotate = false;
         }
         #endregion
 
@@ -7128,6 +7618,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -7138,17 +7631,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LLowLipCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LLowLipCheck = false;
-
-            LLowLipRotate = true;
+            CharacterDetails.LLowLipCheck = true;
         }
         private void LLowLipButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            LLowLipRotate = false;
+            CharacterDetails.LLowLipRotate = false;
         }
         #endregion
 
@@ -7252,6 +7745,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -7262,17 +7758,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            RLowLipCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            RLowLipCheck = false;
-
-            RLowLipRotate = true;
+            CharacterDetails.RLowLipCheck = true;
         }
         private void RLowLipButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            RLowLipRotate = false;
+            CharacterDetails.RLowLipRotate = false;
         }
         #endregion
 
@@ -7375,6 +7871,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -7385,17 +7884,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            NeckCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            NeckCheck = false;
-
-            NeckRotate = true;
+            CharacterDetails.NeckCheck = true;
         }
         private void NeckButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            NeckRotate = false;
+            CharacterDetails.NeckRotate = false;
         }
         #endregion
 
@@ -7498,6 +7997,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -7508,17 +8010,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            SternumCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            SternumCheck = false;
-
-            SternumRotate = true;
+            CharacterDetails.SternumCheck = true;
         }
         private void SternumButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            SternumRotate = false;
+            CharacterDetails.SternumRotate = false;
         }
         #endregion
 
@@ -7621,6 +8123,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -7631,17 +8136,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            TorsoCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            TorsoCheck = false;
-
-            TorsoRotate = true;
+            CharacterDetails.TorsoCheck = true;
         }
         private void TorsoButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            TorsoRotate = false;
+            CharacterDetails.TorsoRotate = false;
         }
         #endregion
 
@@ -7744,6 +8249,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -7754,17 +8262,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            WaistCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            WaistCheck = false;
-
-            WaistRotate = true;
+            CharacterDetails.WaistCheck = true;
         }
         private void WaistButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            WaistRotate = false;
+            CharacterDetails.WaistRotate = false;
         }
         #endregion
 
@@ -7867,6 +8375,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -7877,17 +8388,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LShoulderCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LShoulderCheck = false;
-
-            LShoulderRotate = true;
+            CharacterDetails.LShoulderCheck = true;
         }
         private void LShoulderButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            LShoulderRotate = false;
+            CharacterDetails.LShoulderRotate = false;
         }
         #endregion
 
@@ -7990,6 +8501,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -8000,17 +8514,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            RShoulderCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            RShoulderCheck = false;
-
-            RShoulderRotate = true;
+            CharacterDetails.RShoulderCheck = true;
         }
         private void RShoulderButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            RShoulderRotate = false;
+            CharacterDetails.RShoulderRotate = false;
         }
         #endregion
 
@@ -8113,6 +8627,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -8123,17 +8640,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LClavicleCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LClavicleCheck = false;
-
-            LClavicleRotate = true;
+            CharacterDetails.LClavicleCheck = true;
         }
         private void LClavicleButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            LClavicleRotate = false;
+            CharacterDetails.LClavicleRotate = false;
         }
         #endregion
 
@@ -8236,6 +8753,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -8246,17 +8766,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            RClavicleCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            RClavicleCheck = false;
-
-            RClavicleRotate = true;
+            CharacterDetails.RClavicleCheck = true;
         }
         private void RClavicleButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            RClavicleRotate = false;
+            CharacterDetails.RClavicleRotate = false;
         }
         #endregion
 
@@ -8359,6 +8879,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -8369,17 +8892,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LBreastCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LBreastCheck = false;
-
-            LBreastRotate = true;
+            CharacterDetails.LBreastCheck = true;
         }
         private void LBreastButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            LBreastRotate = false;
+            CharacterDetails.LBreastRotate = false;
         }
         #endregion
 
@@ -8482,6 +9005,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -8492,17 +9018,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            RBreastCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            RBreastCheck = false;
-
-            RBreastRotate = true;
+            CharacterDetails.RBreastCheck = true;
         }
         private void RBreastButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            RBreastRotate = false;
+            CharacterDetails.RBreastRotate = false;
         }
         #endregion
 
@@ -8605,6 +9131,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -8615,17 +9144,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LArmCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LArmCheck = false;
-
-            LArmRotate = true;
+            CharacterDetails.LArmCheck = true;
         }
         private void LArmButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            LArmRotate = false;
+            CharacterDetails.LArmRotate = false;
         }
         #endregion
 
@@ -8728,6 +9257,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -8738,17 +9270,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            RArmCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            RArmCheck = false;
-
-            RArmRotate = true;
+            CharacterDetails.RArmCheck = true;
         }
         private void RArmButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            RArmRotate = false;
+            CharacterDetails.RArmRotate = false;
         }
         #endregion
 
@@ -8851,6 +9383,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -8861,17 +9396,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LElbowCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LElbowCheck = false;
-
-            LElbowRotate = true;
+            CharacterDetails.LElbowCheck = true;
         }
         private void LElbowButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            LElbowRotate = false;
+            CharacterDetails.LElbowRotate = false;
         }
         #endregion
 
@@ -8974,6 +9509,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -8984,17 +9522,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            RElbowCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            RElbowCheck = false;
-
-            RElbowRotate = true;
+            CharacterDetails.RElbowCheck = true;
         }
         private void RElbowButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            RElbowRotate = false;
+            CharacterDetails.RElbowRotate = false;
         }
         #endregion
 
@@ -9097,6 +9635,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -9107,17 +9648,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LForearmCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LForearmCheck = false;
-
-            LForearmRotate = true;
+            CharacterDetails.LForearmCheck = true;
         }
         private void LForearmButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            LForearmRotate = false;
+            CharacterDetails.LForearmRotate = false;
         }
         #endregion
 
@@ -9220,6 +9761,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -9230,17 +9774,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            RForearmCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            RForearmCheck = false;
-
-            RForearmRotate = true;
+            CharacterDetails.RForearmCheck = true;
         }
         private void RForearmButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            RForearmRotate = false;
+            CharacterDetails.RForearmRotate = false;
         }
         #endregion
 
@@ -9343,6 +9887,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -9353,17 +9900,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LWristCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LWristCheck = false;
-
-            LWristRotate = true;
+            CharacterDetails.LWristCheck = true;
         }
         private void LWristButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            LWristRotate = false;
+            CharacterDetails.LWristRotate = false;
         }
         #endregion
 
@@ -9466,6 +10013,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -9476,17 +10026,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            RWristCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            RWristCheck = false;
-
-            RWristRotate = true;
+            CharacterDetails.RWristCheck = true;
         }
         private void RWristButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            RWristRotate = false;
+            CharacterDetails.RWristRotate = false;
         }
         #endregion
 
@@ -9589,6 +10139,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -9599,17 +10152,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LHandCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LHandCheck = false;
-
-            LHandRotate = true;
+            CharacterDetails.LHandCheck = true;
         }
         private void LHandButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            LHandRotate = false;
+            CharacterDetails.LHandRotate = false;
         }
         #endregion
 
@@ -9712,6 +10265,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -9722,17 +10278,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            RHandCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            RHandCheck = false;
-
-            RHandRotate = true;
+            CharacterDetails.RHandCheck = true;
         }
         private void RHandButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            RHandRotate = false;
+            CharacterDetails.RHandRotate = false;
         }
         #endregion
 
@@ -9835,6 +10391,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -9845,17 +10404,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LThumbCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LThumbCheck = false;
-
-            LThumbRotate = true;
+            CharacterDetails.LThumbCheck = true;
         }
         private void LThumbButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            LThumbRotate = false;
+            CharacterDetails.LThumbRotate = false;
         }
         #endregion
 
@@ -9958,6 +10517,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -9968,17 +10530,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            RThumbCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            RThumbCheck = false;
-
-            RThumbRotate = true;
+            CharacterDetails.RThumbCheck = true;
         }
         private void RThumbButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            RThumbRotate = false;
+            CharacterDetails.RThumbRotate = false;
         }
         #endregion
 
@@ -10081,6 +10643,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -10091,17 +10656,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LThumb2Check = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LThumb2Check = false;
-
-            LThumb2Rotate = true;
+            CharacterDetails.LThumb2Check = true;
         }
         private void LThumb2Button_Unchecked(object sender, RoutedEventArgs e)
         {
-            LThumb2Rotate = false;
+            CharacterDetails.LThumb2Rotate = false;
         }
         #endregion
 
@@ -10204,6 +10769,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -10214,17 +10782,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            RThumb2Check = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            RThumb2Check = false;
-
-            RThumb2Rotate = true;
+            CharacterDetails.RThumb2Check = true;
         }
         private void RThumb2Button_Unchecked(object sender, RoutedEventArgs e)
         {
-            RThumb2Rotate = false;
+            CharacterDetails.RThumb2Rotate = false;
         }
         #endregion
 
@@ -10327,6 +10895,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -10337,17 +10908,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LIndexCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LIndexCheck = false;
-
-            LIndexRotate = true;
+            CharacterDetails.LIndexCheck = true;
         }
         private void LIndexButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            LIndexRotate = false;
+            CharacterDetails.LIndexRotate = false;
         }
         #endregion
 
@@ -10450,6 +11021,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -10460,17 +11034,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            RIndexCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            RIndexCheck = false;
-
-            RIndexRotate = true;
+            CharacterDetails.RIndexCheck = true;
         }
         private void RIndexButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            RIndexRotate = false;
+            CharacterDetails.RIndexRotate = false;
         }
         #endregion
 
@@ -10573,6 +11147,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -10583,17 +11160,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LIndex2Check = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LIndex2Check = false;
-
-            LIndex2Rotate = true;
+            CharacterDetails.LIndex2Check = true;
         }
         private void LIndex2Button_Unchecked(object sender, RoutedEventArgs e)
         {
-            LIndex2Rotate = false;
+            CharacterDetails.LIndex2Rotate = false;
         }
         #endregion
 
@@ -10696,6 +11273,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -10706,17 +11286,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            RIndex2Check = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            RIndex2Check = false;
-
-            RIndex2Rotate = true;
+            CharacterDetails.RIndex2Check = true;
         }
         private void RIndex2Button_Unchecked(object sender, RoutedEventArgs e)
         {
-            RIndex2Rotate = false;
+            CharacterDetails.RIndex2Rotate = false;
         }
         #endregion
 
@@ -10819,6 +11399,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -10829,17 +11412,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LMiddleCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LMiddleCheck = false;
-
-            LMiddleRotate = true;
+            CharacterDetails.LMiddleCheck = true;
         }
         private void LMiddleButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            LMiddleRotate = false;
+            CharacterDetails.LMiddleRotate = false;
         }
         #endregion
 
@@ -10942,6 +11525,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -10952,17 +11538,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            RMiddleCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            RMiddleCheck = false;
-
-            RMiddleRotate = true;
+            CharacterDetails.RMiddleCheck = true;
         }
         private void RMiddleButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            RMiddleRotate = false;
+            CharacterDetails.RMiddleRotate = false;
         }
         #endregion
 
@@ -11065,6 +11651,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -11075,17 +11664,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LMiddle2Check = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LMiddle2Check = false;
-
-            LMiddle2Rotate = true;
+            CharacterDetails.LMiddle2Check = true;
         }
         private void LMiddle2Button_Unchecked(object sender, RoutedEventArgs e)
         {
-            LMiddle2Rotate = false;
+            CharacterDetails.LMiddle2Rotate = false;
         }
         #endregion
 
@@ -11188,6 +11777,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -11198,17 +11790,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            RMiddle2Check = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            RMiddle2Check = false;
-
-            RMiddle2Rotate = true;
+            CharacterDetails.RMiddle2Check = true;
         }
         private void RMiddle2Button_Unchecked(object sender, RoutedEventArgs e)
         {
-            RMiddle2Rotate = false;
+            CharacterDetails.RMiddle2Rotate = false;
         }
         #endregion
 
@@ -11311,6 +11903,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -11321,17 +11916,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LRingCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LRingCheck = false;
-
-            LRingRotate = true;
+            CharacterDetails.LRingCheck = true;
         }
         private void LRingButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            LRingRotate = false;
+            CharacterDetails.LRingRotate = false;
         }
         #endregion
 
@@ -11434,6 +12029,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -11444,17 +12042,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            RRingCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            RRingCheck = false;
-
-            RRingRotate = true;
+            CharacterDetails.RRingCheck = true;
         }
         private void RRingButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            RRingRotate = false;
+            CharacterDetails.RRingRotate = false;
         }
         #endregion
 
@@ -11557,6 +12155,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -11567,17 +12168,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LRing2Check = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LRing2Check = false;
-
-            LRing2Rotate = true;
+            CharacterDetails.LRing2Check = true;
         }
         private void LRing2Button_Unchecked(object sender, RoutedEventArgs e)
         {
-            LRing2Rotate = false;
+            CharacterDetails.LRing2Rotate = false;
         }
         #endregion
 
@@ -11680,6 +12281,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -11690,17 +12294,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            RRing2Check = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            RRing2Check = false;
-
-            RRing2Rotate = true;
+            CharacterDetails.RRing2Check = true;
         }
         private void RRing2Button_Unchecked(object sender, RoutedEventArgs e)
         {
-            RRing2Rotate = false;
+            CharacterDetails.RRing2Rotate = false;
         }
         #endregion
 
@@ -11803,6 +12407,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -11813,17 +12420,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LPinkyCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LPinkyCheck = false;
-
-            LPinkyRotate = true;
+            CharacterDetails.LPinkyCheck = true;
         }
         private void LPinkyButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            LPinkyRotate = false;
+            CharacterDetails.LPinkyRotate = false;
         }
         #endregion
 
@@ -11926,6 +12533,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -11936,17 +12546,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            RPinkyCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            RPinkyCheck = false;
-
-            RPinkyRotate = true;
+            CharacterDetails.RPinkyCheck = true;
         }
         private void RPinkyButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            RPinkyRotate = false;
+            CharacterDetails.RPinkyRotate = false;
         }
         #endregion
 
@@ -12049,6 +12659,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -12059,17 +12672,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LPinky2Check = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LPinky2Check = false;
-
-            LPinky2Rotate = true;
+            CharacterDetails.LPinky2Check = true;
         }
         private void LPinky2Button_Unchecked(object sender, RoutedEventArgs e)
         {
-            LPinky2Rotate = false;
+            CharacterDetails.LPinky2Rotate = false;
         }
         #endregion
 
@@ -12172,6 +12785,9 @@ namespace ConceptMatrix.Views
             LPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -12182,17 +12798,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            RPinky2Check = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            RPinky2Check = false;
-
-            RPinky2Rotate = true;
+            CharacterDetails.RPinky2Check = true;
         }
         private void RPinky2Button_Unchecked(object sender, RoutedEventArgs e)
         {
-            RPinky2Rotate = false;
+            CharacterDetails.RPinky2Rotate = false;
         }
         #endregion
 
@@ -12295,6 +12911,9 @@ namespace ConceptMatrix.Views
             LPinky2Button.IsChecked = false;
             RPinky2Button.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -12305,17 +12924,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            PelvisCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            PelvisCheck = false;
-
-            PelvisRotate = true;
+            CharacterDetails.PelvisCheck = true;
         }
         private void PelvisButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            PelvisRotate = false;
+            CharacterDetails.PelvisRotate = false;
         }
         #endregion
 
@@ -12418,6 +13037,9 @@ namespace ConceptMatrix.Views
             LPinky2Button.IsChecked = false;
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -12428,17 +13050,395 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            TailCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            TailCheck = false;
-
-            TailRotate = true;
+            CharacterDetails.TailCheck = true;
         }
         private void TailButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            TailRotate = false;
+            CharacterDetails.TailRotate = false;
+        }
+        #endregion
+
+        #region Tail2
+        private void Tail2Rot(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.Tail2X.value = (float)quat.X;
+            CharacterDetails.Tail2Y.value = (float)quat.Y;
+            CharacterDetails.Tail2Z.value = (float)quat.Z;
+            CharacterDetails.Tail2W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneSlider.ValueChanged -= Tail2Rot;
+            BoneSlider2.ValueChanged -= Tail2Rot;
+            BoneSlider3.ValueChanged -= Tail2Rot;
+        }
+
+        private void Tail2Rot2(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.Tail2X.value = (float)quat.X;
+            CharacterDetails.Tail2Y.value = (float)quat.Y;
+            CharacterDetails.Tail2Z.value = (float)quat.Z;
+            CharacterDetails.Tail2W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneUpDown.ValueChanged -= Tail2Rot2;
+            BoneUpDown2.ValueChanged -= Tail2Rot2;
+            BoneUpDown3.ValueChanged -= Tail2Rot2;
+        }
+
+        private void Tail2Button_Checked(object sender, RoutedEventArgs e)
+        {
+            //Disable Other Selections
+            HeadButton.IsChecked = false;
+            NoseButton.IsChecked = false;
+            NostrilsButton.IsChecked = false;
+            ChinButton.IsChecked = false;
+            LOutEyebrowButton.IsChecked = false;
+            ROutEyebrowButton.IsChecked = false;
+            LInEyebrowButton.IsChecked = false;
+            RInEyebrowButton.IsChecked = false;
+            LEyeButton.IsChecked = false;
+            REyeButton.IsChecked = false;
+            LEyelidButton.IsChecked = false;
+            REyelidButton.IsChecked = false;
+            LLowEyelidButton.IsChecked = false;
+            RLowEyelidButton.IsChecked = false;
+            LEarButton.IsChecked = false;
+            REarButton.IsChecked = false;
+            LCheekButton.IsChecked = false;
+            RCheekButton.IsChecked = false;
+            LMouthButton.IsChecked = false;
+            RMouthButton.IsChecked = false;
+            LUpLipButton.IsChecked = false;
+            RUpLipButton.IsChecked = false;
+            LLowLipButton.IsChecked = false;
+            RLowLipButton.IsChecked = false;
+            NeckButton.IsChecked = false;
+            SternumButton.IsChecked = false;
+            TorsoButton.IsChecked = false;
+            WaistButton.IsChecked = false;
+            LShoulderButton.IsChecked = false;
+            RShoulderButton.IsChecked = false;
+            LClavicleButton.IsChecked = false;
+            RClavicleButton.IsChecked = false;
+            LBreastButton.IsChecked = false;
+            RBreastButton.IsChecked = false;
+            LArmButton.IsChecked = false;
+            RArmButton.IsChecked = false;
+            LElbowButton.IsChecked = false;
+            RElbowButton.IsChecked = false;
+            LForearmButton.IsChecked = false;
+            RForearmButton.IsChecked = false;
+            LWristButton.IsChecked = false;
+            RWristButton.IsChecked = false;
+            LHandButton.IsChecked = false;
+            RHandButton.IsChecked = false;
+            LThumbButton.IsChecked = false;
+            RThumbButton.IsChecked = false;
+            LThumb2Button.IsChecked = false;
+            RThumb2Button.IsChecked = false;
+            LIndexButton.IsChecked = false;
+            RIndexButton.IsChecked = false;
+            LIndex2Button.IsChecked = false;
+            RIndex2Button.IsChecked = false;
+            LMiddleButton.IsChecked = false;
+            RMiddleButton.IsChecked = false;
+            LMiddle2Button.IsChecked = false;
+            RMiddle2Button.IsChecked = false;
+            LRingButton.IsChecked = false;
+            RRingButton.IsChecked = false;
+            LRing2Button.IsChecked = false;
+            RRing2Button.IsChecked = false;
+            LPinkyButton.IsChecked = false;
+            RPinkyButton.IsChecked = false;
+            LPinky2Button.IsChecked = false;
+            RPinky2Button.IsChecked = false;
+            PelvisButton.IsChecked = false;
+            TailButton.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
+            LThighButton.IsChecked = false;
+            RThighButton.IsChecked = false;
+            LKneeButton.IsChecked = false;
+            RKneeButton.IsChecked = false;
+            LCalfButton.IsChecked = false;
+            RCalfButton.IsChecked = false;
+            LFootButton.IsChecked = false;
+            RFootButton.IsChecked = false;
+            LToesButton.IsChecked = false;
+            RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
+
+            //Load Current Values for Slider
+            CharacterDetails.Tail2Check = true;
+        }
+        private void Tail2Button_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.Tail2Rotate = false;
+        }
+        #endregion
+
+        #region Tail3
+        private void Tail3Rot(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.Tail3X.value = (float)quat.X;
+            CharacterDetails.Tail3Y.value = (float)quat.Y;
+            CharacterDetails.Tail3Z.value = (float)quat.Z;
+            CharacterDetails.Tail3W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneSlider.ValueChanged -= Tail3Rot;
+            BoneSlider2.ValueChanged -= Tail3Rot;
+            BoneSlider3.ValueChanged -= Tail3Rot;
+        }
+
+        private void Tail3Rot2(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.Tail3X.value = (float)quat.X;
+            CharacterDetails.Tail3Y.value = (float)quat.Y;
+            CharacterDetails.Tail3Z.value = (float)quat.Z;
+            CharacterDetails.Tail3W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneUpDown.ValueChanged -= Tail3Rot2;
+            BoneUpDown2.ValueChanged -= Tail3Rot2;
+            BoneUpDown3.ValueChanged -= Tail3Rot2;
+        }
+
+        private void Tail3Button_Checked(object sender, RoutedEventArgs e)
+        {
+            //Disable Other Selections
+            HeadButton.IsChecked = false;
+            NoseButton.IsChecked = false;
+            NostrilsButton.IsChecked = false;
+            ChinButton.IsChecked = false;
+            LOutEyebrowButton.IsChecked = false;
+            ROutEyebrowButton.IsChecked = false;
+            LInEyebrowButton.IsChecked = false;
+            RInEyebrowButton.IsChecked = false;
+            LEyeButton.IsChecked = false;
+            REyeButton.IsChecked = false;
+            LEyelidButton.IsChecked = false;
+            REyelidButton.IsChecked = false;
+            LLowEyelidButton.IsChecked = false;
+            RLowEyelidButton.IsChecked = false;
+            LEarButton.IsChecked = false;
+            REarButton.IsChecked = false;
+            LCheekButton.IsChecked = false;
+            RCheekButton.IsChecked = false;
+            LMouthButton.IsChecked = false;
+            RMouthButton.IsChecked = false;
+            LUpLipButton.IsChecked = false;
+            RUpLipButton.IsChecked = false;
+            LLowLipButton.IsChecked = false;
+            RLowLipButton.IsChecked = false;
+            NeckButton.IsChecked = false;
+            SternumButton.IsChecked = false;
+            TorsoButton.IsChecked = false;
+            WaistButton.IsChecked = false;
+            LShoulderButton.IsChecked = false;
+            RShoulderButton.IsChecked = false;
+            LClavicleButton.IsChecked = false;
+            RClavicleButton.IsChecked = false;
+            LBreastButton.IsChecked = false;
+            RBreastButton.IsChecked = false;
+            LArmButton.IsChecked = false;
+            RArmButton.IsChecked = false;
+            LElbowButton.IsChecked = false;
+            RElbowButton.IsChecked = false;
+            LForearmButton.IsChecked = false;
+            RForearmButton.IsChecked = false;
+            LWristButton.IsChecked = false;
+            RWristButton.IsChecked = false;
+            LHandButton.IsChecked = false;
+            RHandButton.IsChecked = false;
+            LThumbButton.IsChecked = false;
+            RThumbButton.IsChecked = false;
+            LThumb2Button.IsChecked = false;
+            RThumb2Button.IsChecked = false;
+            LIndexButton.IsChecked = false;
+            RIndexButton.IsChecked = false;
+            LIndex2Button.IsChecked = false;
+            RIndex2Button.IsChecked = false;
+            LMiddleButton.IsChecked = false;
+            RMiddleButton.IsChecked = false;
+            LMiddle2Button.IsChecked = false;
+            RMiddle2Button.IsChecked = false;
+            LRingButton.IsChecked = false;
+            RRingButton.IsChecked = false;
+            LRing2Button.IsChecked = false;
+            RRing2Button.IsChecked = false;
+            LPinkyButton.IsChecked = false;
+            RPinkyButton.IsChecked = false;
+            LPinky2Button.IsChecked = false;
+            RPinky2Button.IsChecked = false;
+            PelvisButton.IsChecked = false;
+            TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
+            LThighButton.IsChecked = false;
+            RThighButton.IsChecked = false;
+            LKneeButton.IsChecked = false;
+            RKneeButton.IsChecked = false;
+            LCalfButton.IsChecked = false;
+            RCalfButton.IsChecked = false;
+            LFootButton.IsChecked = false;
+            RFootButton.IsChecked = false;
+            LToesButton.IsChecked = false;
+            RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
+
+            //Load Current Values for Slider
+            CharacterDetails.Tail3Check = true;
+        }
+        private void Tail3Button_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.Tail3Rotate = false;
+        }
+        #endregion
+
+        #region Tail4
+        private void Tail4Rot(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.Tail4X.value = (float)quat.X;
+            CharacterDetails.Tail4Y.value = (float)quat.Y;
+            CharacterDetails.Tail4Z.value = (float)quat.Z;
+            CharacterDetails.Tail4W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneSlider.ValueChanged -= Tail4Rot;
+            BoneSlider2.ValueChanged -= Tail4Rot;
+            BoneSlider3.ValueChanged -= Tail4Rot;
+        }
+
+        private void Tail4Rot2(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.Tail4X.value = (float)quat.X;
+            CharacterDetails.Tail4Y.value = (float)quat.Y;
+            CharacterDetails.Tail4Z.value = (float)quat.Z;
+            CharacterDetails.Tail4W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneUpDown.ValueChanged -= Tail4Rot2;
+            BoneUpDown2.ValueChanged -= Tail4Rot2;
+            BoneUpDown3.ValueChanged -= Tail4Rot2;
+        }
+
+        private void Tail4Button_Checked(object sender, RoutedEventArgs e)
+        {
+            //Disable Other Selections
+            HeadButton.IsChecked = false;
+            NoseButton.IsChecked = false;
+            NostrilsButton.IsChecked = false;
+            ChinButton.IsChecked = false;
+            LOutEyebrowButton.IsChecked = false;
+            ROutEyebrowButton.IsChecked = false;
+            LInEyebrowButton.IsChecked = false;
+            RInEyebrowButton.IsChecked = false;
+            LEyeButton.IsChecked = false;
+            REyeButton.IsChecked = false;
+            LEyelidButton.IsChecked = false;
+            REyelidButton.IsChecked = false;
+            LLowEyelidButton.IsChecked = false;
+            RLowEyelidButton.IsChecked = false;
+            LEarButton.IsChecked = false;
+            REarButton.IsChecked = false;
+            LCheekButton.IsChecked = false;
+            RCheekButton.IsChecked = false;
+            LMouthButton.IsChecked = false;
+            RMouthButton.IsChecked = false;
+            LUpLipButton.IsChecked = false;
+            RUpLipButton.IsChecked = false;
+            LLowLipButton.IsChecked = false;
+            RLowLipButton.IsChecked = false;
+            NeckButton.IsChecked = false;
+            SternumButton.IsChecked = false;
+            TorsoButton.IsChecked = false;
+            WaistButton.IsChecked = false;
+            LShoulderButton.IsChecked = false;
+            RShoulderButton.IsChecked = false;
+            LClavicleButton.IsChecked = false;
+            RClavicleButton.IsChecked = false;
+            LBreastButton.IsChecked = false;
+            RBreastButton.IsChecked = false;
+            LArmButton.IsChecked = false;
+            RArmButton.IsChecked = false;
+            LElbowButton.IsChecked = false;
+            RElbowButton.IsChecked = false;
+            LForearmButton.IsChecked = false;
+            RForearmButton.IsChecked = false;
+            LWristButton.IsChecked = false;
+            RWristButton.IsChecked = false;
+            LHandButton.IsChecked = false;
+            RHandButton.IsChecked = false;
+            LThumbButton.IsChecked = false;
+            RThumbButton.IsChecked = false;
+            LThumb2Button.IsChecked = false;
+            RThumb2Button.IsChecked = false;
+            LIndexButton.IsChecked = false;
+            RIndexButton.IsChecked = false;
+            LIndex2Button.IsChecked = false;
+            RIndex2Button.IsChecked = false;
+            LMiddleButton.IsChecked = false;
+            RMiddleButton.IsChecked = false;
+            LMiddle2Button.IsChecked = false;
+            RMiddle2Button.IsChecked = false;
+            LRingButton.IsChecked = false;
+            RRingButton.IsChecked = false;
+            LRing2Button.IsChecked = false;
+            RRing2Button.IsChecked = false;
+            LPinkyButton.IsChecked = false;
+            RPinkyButton.IsChecked = false;
+            LPinky2Button.IsChecked = false;
+            RPinky2Button.IsChecked = false;
+            PelvisButton.IsChecked = false;
+            TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            LThighButton.IsChecked = false;
+            RThighButton.IsChecked = false;
+            LKneeButton.IsChecked = false;
+            RKneeButton.IsChecked = false;
+            LCalfButton.IsChecked = false;
+            RCalfButton.IsChecked = false;
+            LFootButton.IsChecked = false;
+            RFootButton.IsChecked = false;
+            LToesButton.IsChecked = false;
+            RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
+
+            //Load Current Values for Slider
+            CharacterDetails.Tail4Check = true;
+        }
+        private void Tail4Button_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.Tail4Rotate = false;
         }
         #endregion
 
@@ -12542,6 +13542,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
             RKneeButton.IsChecked = false;
@@ -12551,17 +13554,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LThighCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LThighCheck = false;
-
-            LThighRotate = true;
+            CharacterDetails.LThighCheck = true;
         }
         private void LThighButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            LThighRotate = false;
+            CharacterDetails.LThighRotate = false;
         }
         #endregion
 
@@ -12665,6 +13668,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
             RKneeButton.IsChecked = false;
@@ -12674,17 +13680,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            RThighCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            RThighCheck = false;
-
-            RThighRotate = true;
+            CharacterDetails.RThighCheck = true;
         }
         private void RThighButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            RThighRotate = false;
+            CharacterDetails.RThighRotate = false;
         }
         #endregion
 
@@ -12788,6 +13794,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             RKneeButton.IsChecked = false;
@@ -12797,17 +13806,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LKneeCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LKneeCheck = false;
-
-            LKneeRotate = true;
+            CharacterDetails.LKneeCheck = true;
         }
         private void LKneeButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            LKneeRotate = false;
+            CharacterDetails.LKneeRotate = false;
         }
         #endregion
 
@@ -12911,6 +13920,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -12920,17 +13932,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            RKneeCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            RKneeCheck = false;
-
-            RKneeRotate = true;
+            CharacterDetails.RKneeCheck = true;
         }
         private void RKneeButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            RKneeRotate = false;
+            CharacterDetails.RKneeRotate = false;
         }
         #endregion
 
@@ -13034,6 +14046,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -13043,17 +14058,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LCalfCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LCalfCheck = false;
-
-            LCalfRotate = true;
+            CharacterDetails.LCalfCheck = true;
         }
         private void LCalfButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            LCalfRotate = false;
+            CharacterDetails.LCalfRotate = false;
         }
         #endregion
 
@@ -13157,6 +14172,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -13166,17 +14184,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            RCalfCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            RCalfCheck = false;
-
-            RCalfRotate = true;
+            CharacterDetails.RCalfCheck = true;
         }
         private void RCalfButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            RCalfRotate = false;
+            CharacterDetails.RCalfRotate = false;
         }
         #endregion
 
@@ -13280,6 +14298,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -13289,17 +14310,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LFootCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LFootCheck = false;
-
-            LFootRotate = true;
+            CharacterDetails.LFootCheck = true;
         }
         private void LFootButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            LFootRotate = false;
+            CharacterDetails.LFootRotate = false;
         }
         #endregion
 
@@ -13403,6 +14424,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -13412,17 +14436,17 @@ namespace ConceptMatrix.Views
             LFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            RFootCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            RFootCheck = false;
-
-            RFootRotate = true;
+            CharacterDetails.RFootCheck = true;
         }
         private void RFootButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            RFootRotate = false;
+            CharacterDetails.RFootRotate = false;
         }
         #endregion
 
@@ -13526,6 +14550,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -13535,17 +14562,17 @@ namespace ConceptMatrix.Views
             LFootButton.IsChecked = false;
             RFootButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            LToesCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            LToesCheck = false;
-
-            LToesRotate = true;
+            CharacterDetails.LToesCheck = true;
         }
         private void LToesButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            LToesRotate = false;
+            CharacterDetails.LToesRotate = false;
         }
         #endregion
 
@@ -13649,6 +14676,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -13658,97 +14688,54 @@ namespace ConceptMatrix.Views
             LFootButton.IsChecked = false;
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            RToesCheck = true;
-            System.Threading.Tasks.Task.Delay(150).Wait();
-            RToesCheck = false;
-
-            RToesRotate = true;
+            CharacterDetails.RToesCheck = true;
         }
         private void RToesButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            RToesRotate = false;
+            CharacterDetails.RToesRotate = false;
         }
         #endregion
 
-
-        private void EditModeButton_Checked(object sender, RoutedEventArgs e)
+        #region LEarring
+        private void LEarringRot(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            var seklval1 = System.BitConverter.GetBytes(MemoryManager.Instance.MemLib.readLong(MemoryManager.Instance.SkeletonAddress));
-            var seklval2 = System.BitConverter.GetBytes(MemoryManager.Instance.MemLib.readLong(MemoryManager.Instance.SkeletonAddress2));
-            var seklval3 = System.BitConverter.GetBytes(MemoryManager.Instance.MemLib.readLong(MemoryManager.Instance.SkeletonAddress3));
-            SkeletonValue = seklval1;
-            SkeletonValue2 = seklval2;
-            SkeletonValue3 = seklval3;
-            CharacterDetails.BoneFreeze = true;
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress, "bytes", "0x90 0x90 0x90 0x90 0x90 0x90");
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress2, "bytes", "0x90 0x90 0x90 0x90 0x90 0x90");
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress3, "bytes", "0x90 0x90 0x90 0x90");
-            EditMode = true;
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
 
-            EnableAll();
-        }
-        private void EditModeButton_Unchecked(object sender, RoutedEventArgs e)
-        {
-            CharacterDetails.BoneFreeze = false;
-            MemoryManager.Instance.MemLib.writeBytes(MemoryManager.Instance.SkeletonAddress, SkeletonValue);
-            MemoryManager.Instance.MemLib.writeBytes(MemoryManager.Instance.SkeletonAddress2, SkeletonValue2);
-            MemoryManager.Instance.MemLib.writeBytes(MemoryManager.Instance.SkeletonAddress3, SkeletonValue3);
-            EditMode = false;
-
-            //Clear Slider Values
-            CharacterDetails.BoneX = 0;
-            CharacterDetails.BoneY = 0;
-            CharacterDetails.BoneZ = 0;
-
-            UncheckAll();
-            DisableAll();
+            CharacterDetails.LEarringX.value = (float)quat.X;
+            CharacterDetails.LEarringY.value = (float)quat.Y;
+            CharacterDetails.LEarringZ.value = (float)quat.Z;
+            CharacterDetails.LEarringW.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneSlider.ValueChanged -= LEarringRot;
+            BoneSlider2.ValueChanged -= LEarringRot;
+            BoneSlider3.ValueChanged -= LEarringRot;
         }
 
-        private void BoneSliderButton_Checked(object sender, RoutedEventArgs e)
+        private void LEarringRot2(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            BoneUpDown.Visibility = Visibility.Hidden;
-            BoneUpDown.IsEnabled = false;
-            BoneUpDown2.Visibility = Visibility.Hidden;
-            BoneUpDown2.IsEnabled = false;
-            BoneUpDown3.Visibility = Visibility.Hidden;
-            BoneUpDown3.IsEnabled = false;
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
 
-            BoneSlider.Visibility = Visibility.Visible;
-            BoneSlider.IsEnabled = true;
-            BoneSlider2.Visibility = Visibility.Visible;
-            BoneSlider2.IsEnabled = true;
-            BoneSlider3.Visibility = Visibility.Visible;
-            BoneSlider3.IsEnabled = true;
-        }
-        private void BoneSliderButton_Unchecked(object sender, RoutedEventArgs e)
-        {
-            BoneUpDown.Visibility = Visibility.Visible;
-            BoneUpDown.IsEnabled = true;
-            BoneUpDown2.Visibility = Visibility.Visible;
-            BoneUpDown2.IsEnabled = true;
-            BoneUpDown3.Visibility = Visibility.Visible;
-            BoneUpDown3.IsEnabled = true;
-
-            BoneSlider.Visibility = Visibility.Hidden;
-            BoneSlider.IsEnabled = false;
-            BoneSlider2.Visibility = Visibility.Hidden;
-            BoneSlider2.IsEnabled = false;
-            BoneSlider3.Visibility = Visibility.Hidden;
-            BoneSlider3.IsEnabled = false;
+            CharacterDetails.LEarringX.value = (float)quat.X;
+            CharacterDetails.LEarringY.value = (float)quat.Y;
+            CharacterDetails.LEarringZ.value = (float)quat.Z;
+            CharacterDetails.LEarringW.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneUpDown.ValueChanged -= LEarringRot2;
+            BoneUpDown2.ValueChanged -= LEarringRot2;
+            BoneUpDown3.ValueChanged -= LEarringRot2;
         }
 
-        private void TPoseButton_Click(object sender, RoutedEventArgs e)
+        private void LEarringButton_Checked(object sender, RoutedEventArgs e)
         {
-            TPoseX();
-            TPoseY();
-            TPoseZ();
-            TPoseW();
-        }
-
-        private void UncheckAll()
-        {
+            //Disable Other Selections
             HeadButton.IsChecked = false;
             NoseButton.IsChecked = false;
             NostrilsButton.IsChecked = false;
@@ -13815,6 +14802,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsChecked = false;
             PelvisButton.IsChecked = false;
             TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -13825,11 +14815,585 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
+
+            //Load Current Values for Slider
+            CharacterDetails.LEarringCheck = true;
+        }
+        private void LEarringButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.LEarringRotate = false;
+        }
+        #endregion
+
+        #region REarring
+        private void REarringRot(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.REarringX.value = (float)quat.X;
+            CharacterDetails.REarringY.value = (float)quat.Y;
+            CharacterDetails.REarringZ.value = (float)quat.Z;
+            CharacterDetails.REarringW.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneSlider.ValueChanged -= REarringRot;
+            BoneSlider2.ValueChanged -= REarringRot;
+            BoneSlider3.ValueChanged -= REarringRot;
+        }
+
+        private void REarringRot2(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.REarringX.value = (float)quat.X;
+            CharacterDetails.REarringY.value = (float)quat.Y;
+            CharacterDetails.REarringZ.value = (float)quat.Z;
+            CharacterDetails.REarringW.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneUpDown.ValueChanged -= REarringRot2;
+            BoneUpDown2.ValueChanged -= REarringRot2;
+            BoneUpDown3.ValueChanged -= REarringRot2;
+        }
+
+        private void REarringButton_Checked(object sender, RoutedEventArgs e)
+        {
+            //Disable Other Selections
+            HeadButton.IsChecked = false;
+            NoseButton.IsChecked = false;
+            NostrilsButton.IsChecked = false;
+            ChinButton.IsChecked = false;
+            LOutEyebrowButton.IsChecked = false;
+            ROutEyebrowButton.IsChecked = false;
+            LInEyebrowButton.IsChecked = false;
+            RInEyebrowButton.IsChecked = false;
+            LEyeButton.IsChecked = false;
+            REyeButton.IsChecked = false;
+            LEyelidButton.IsChecked = false;
+            REyelidButton.IsChecked = false;
+            LLowEyelidButton.IsChecked = false;
+            RLowEyelidButton.IsChecked = false;
+            LEarButton.IsChecked = false;
+            REarButton.IsChecked = false;
+            LCheekButton.IsChecked = false;
+            RCheekButton.IsChecked = false;
+            LMouthButton.IsChecked = false;
+            RMouthButton.IsChecked = false;
+            LUpLipButton.IsChecked = false;
+            RUpLipButton.IsChecked = false;
+            LLowLipButton.IsChecked = false;
+            RLowLipButton.IsChecked = false;
+            NeckButton.IsChecked = false;
+            SternumButton.IsChecked = false;
+            TorsoButton.IsChecked = false;
+            WaistButton.IsChecked = false;
+            LShoulderButton.IsChecked = false;
+            RShoulderButton.IsChecked = false;
+            LClavicleButton.IsChecked = false;
+            RClavicleButton.IsChecked = false;
+            LBreastButton.IsChecked = false;
+            RBreastButton.IsChecked = false;
+            LArmButton.IsChecked = false;
+            RArmButton.IsChecked = false;
+            LElbowButton.IsChecked = false;
+            RElbowButton.IsChecked = false;
+            LForearmButton.IsChecked = false;
+            RForearmButton.IsChecked = false;
+            LWristButton.IsChecked = false;
+            RWristButton.IsChecked = false;
+            LHandButton.IsChecked = false;
+            RHandButton.IsChecked = false;
+            LThumbButton.IsChecked = false;
+            RThumbButton.IsChecked = false;
+            LThumb2Button.IsChecked = false;
+            RThumb2Button.IsChecked = false;
+            LIndexButton.IsChecked = false;
+            RIndexButton.IsChecked = false;
+            LIndex2Button.IsChecked = false;
+            RIndex2Button.IsChecked = false;
+            LMiddleButton.IsChecked = false;
+            RMiddleButton.IsChecked = false;
+            LMiddle2Button.IsChecked = false;
+            RMiddle2Button.IsChecked = false;
+            LRingButton.IsChecked = false;
+            RRingButton.IsChecked = false;
+            LRing2Button.IsChecked = false;
+            RRing2Button.IsChecked = false;
+            LPinkyButton.IsChecked = false;
+            RPinkyButton.IsChecked = false;
+            LPinky2Button.IsChecked = false;
+            RPinky2Button.IsChecked = false;
+            PelvisButton.IsChecked = false;
+            TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
+            LThighButton.IsChecked = false;
+            RThighButton.IsChecked = false;
+            LKneeButton.IsChecked = false;
+            RKneeButton.IsChecked = false;
+            LCalfButton.IsChecked = false;
+            RCalfButton.IsChecked = false;
+            LFootButton.IsChecked = false;
+            RFootButton.IsChecked = false;
+            LToesButton.IsChecked = false;
+            RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
+
+            //Load Current Values for Slider
+            CharacterDetails.REarringCheck = true;
+        }
+        private void REarringButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.REarringRotate = false;
+        }
+        #endregion
+
+        #region LEarring2
+        private void LEarring2Rot(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.LEarring2X.value = (float)quat.X;
+            CharacterDetails.LEarring2Y.value = (float)quat.Y;
+            CharacterDetails.LEarring2Z.value = (float)quat.Z;
+            CharacterDetails.LEarring2W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneSlider.ValueChanged -= LEarring2Rot;
+            BoneSlider2.ValueChanged -= LEarring2Rot;
+            BoneSlider3.ValueChanged -= LEarring2Rot;
+        }
+
+        private void LEarring2Rot2(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.LEarring2X.value = (float)quat.X;
+            CharacterDetails.LEarring2Y.value = (float)quat.Y;
+            CharacterDetails.LEarring2Z.value = (float)quat.Z;
+            CharacterDetails.LEarring2W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneUpDown.ValueChanged -= LEarring2Rot2;
+            BoneUpDown2.ValueChanged -= LEarring2Rot2;
+            BoneUpDown3.ValueChanged -= LEarring2Rot2;
+        }
+
+        private void LEarring2Button_Checked(object sender, RoutedEventArgs e)
+        {
+            //Disable Other Selections
+            HeadButton.IsChecked = false;
+            NoseButton.IsChecked = false;
+            NostrilsButton.IsChecked = false;
+            ChinButton.IsChecked = false;
+            LOutEyebrowButton.IsChecked = false;
+            ROutEyebrowButton.IsChecked = false;
+            LInEyebrowButton.IsChecked = false;
+            RInEyebrowButton.IsChecked = false;
+            LEyeButton.IsChecked = false;
+            REyeButton.IsChecked = false;
+            LEyelidButton.IsChecked = false;
+            REyelidButton.IsChecked = false;
+            LLowEyelidButton.IsChecked = false;
+            RLowEyelidButton.IsChecked = false;
+            LEarButton.IsChecked = false;
+            REarButton.IsChecked = false;
+            LCheekButton.IsChecked = false;
+            RCheekButton.IsChecked = false;
+            LMouthButton.IsChecked = false;
+            RMouthButton.IsChecked = false;
+            LUpLipButton.IsChecked = false;
+            RUpLipButton.IsChecked = false;
+            LLowLipButton.IsChecked = false;
+            RLowLipButton.IsChecked = false;
+            NeckButton.IsChecked = false;
+            SternumButton.IsChecked = false;
+            TorsoButton.IsChecked = false;
+            WaistButton.IsChecked = false;
+            LShoulderButton.IsChecked = false;
+            RShoulderButton.IsChecked = false;
+            LClavicleButton.IsChecked = false;
+            RClavicleButton.IsChecked = false;
+            LBreastButton.IsChecked = false;
+            RBreastButton.IsChecked = false;
+            LArmButton.IsChecked = false;
+            RArmButton.IsChecked = false;
+            LElbowButton.IsChecked = false;
+            RElbowButton.IsChecked = false;
+            LForearmButton.IsChecked = false;
+            RForearmButton.IsChecked = false;
+            LWristButton.IsChecked = false;
+            RWristButton.IsChecked = false;
+            LHandButton.IsChecked = false;
+            RHandButton.IsChecked = false;
+            LThumbButton.IsChecked = false;
+            RThumbButton.IsChecked = false;
+            LThumb2Button.IsChecked = false;
+            RThumb2Button.IsChecked = false;
+            LIndexButton.IsChecked = false;
+            RIndexButton.IsChecked = false;
+            LIndex2Button.IsChecked = false;
+            RIndex2Button.IsChecked = false;
+            LMiddleButton.IsChecked = false;
+            RMiddleButton.IsChecked = false;
+            LMiddle2Button.IsChecked = false;
+            RMiddle2Button.IsChecked = false;
+            LRingButton.IsChecked = false;
+            RRingButton.IsChecked = false;
+            LRing2Button.IsChecked = false;
+            RRing2Button.IsChecked = false;
+            LPinkyButton.IsChecked = false;
+            RPinkyButton.IsChecked = false;
+            LPinky2Button.IsChecked = false;
+            RPinky2Button.IsChecked = false;
+            PelvisButton.IsChecked = false;
+            TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
+            LThighButton.IsChecked = false;
+            RThighButton.IsChecked = false;
+            LKneeButton.IsChecked = false;
+            RKneeButton.IsChecked = false;
+            LCalfButton.IsChecked = false;
+            RCalfButton.IsChecked = false;
+            LFootButton.IsChecked = false;
+            RFootButton.IsChecked = false;
+            LToesButton.IsChecked = false;
+            RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            REarring2Button.IsChecked = false;
+
+            //Load Current Values for Slider
+            CharacterDetails.LEarring2Check = true;
+        }
+        private void LEarring2Button_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.LEarring2Rotate = false;
+        }
+        #endregion
+
+        #region REarring2
+        private void REarring2Rot(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.REarring2X.value = (float)quat.X;
+            CharacterDetails.REarring2Y.value = (float)quat.Y;
+            CharacterDetails.REarring2Z.value = (float)quat.Z;
+            CharacterDetails.REarring2W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneSlider.ValueChanged -= REarring2Rot;
+            BoneSlider2.ValueChanged -= REarring2Rot;
+            BoneSlider3.ValueChanged -= REarring2Rot;
+        }
+
+        private void REarring2Rot2(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.REarring2X.value = (float)quat.X;
+            CharacterDetails.REarring2Y.value = (float)quat.Y;
+            CharacterDetails.REarring2Z.value = (float)quat.Z;
+            CharacterDetails.REarring2W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneUpDown.ValueChanged -= REarring2Rot2;
+            BoneUpDown2.ValueChanged -= REarring2Rot2;
+            BoneUpDown3.ValueChanged -= REarring2Rot2;
+        }
+
+        private void REarring2Button_Checked(object sender, RoutedEventArgs e)
+        {
+            //Disable Other Selections
+            HeadButton.IsChecked = false;
+            NoseButton.IsChecked = false;
+            NostrilsButton.IsChecked = false;
+            ChinButton.IsChecked = false;
+            LOutEyebrowButton.IsChecked = false;
+            ROutEyebrowButton.IsChecked = false;
+            LInEyebrowButton.IsChecked = false;
+            RInEyebrowButton.IsChecked = false;
+            LEyeButton.IsChecked = false;
+            REyeButton.IsChecked = false;
+            LEyelidButton.IsChecked = false;
+            REyelidButton.IsChecked = false;
+            LLowEyelidButton.IsChecked = false;
+            RLowEyelidButton.IsChecked = false;
+            LEarButton.IsChecked = false;
+            REarButton.IsChecked = false;
+            LCheekButton.IsChecked = false;
+            RCheekButton.IsChecked = false;
+            LMouthButton.IsChecked = false;
+            RMouthButton.IsChecked = false;
+            LUpLipButton.IsChecked = false;
+            RUpLipButton.IsChecked = false;
+            LLowLipButton.IsChecked = false;
+            RLowLipButton.IsChecked = false;
+            NeckButton.IsChecked = false;
+            SternumButton.IsChecked = false;
+            TorsoButton.IsChecked = false;
+            WaistButton.IsChecked = false;
+            LShoulderButton.IsChecked = false;
+            RShoulderButton.IsChecked = false;
+            LClavicleButton.IsChecked = false;
+            RClavicleButton.IsChecked = false;
+            LBreastButton.IsChecked = false;
+            RBreastButton.IsChecked = false;
+            LArmButton.IsChecked = false;
+            RArmButton.IsChecked = false;
+            LElbowButton.IsChecked = false;
+            RElbowButton.IsChecked = false;
+            LForearmButton.IsChecked = false;
+            RForearmButton.IsChecked = false;
+            LWristButton.IsChecked = false;
+            RWristButton.IsChecked = false;
+            LHandButton.IsChecked = false;
+            RHandButton.IsChecked = false;
+            LThumbButton.IsChecked = false;
+            RThumbButton.IsChecked = false;
+            LThumb2Button.IsChecked = false;
+            RThumb2Button.IsChecked = false;
+            LIndexButton.IsChecked = false;
+            RIndexButton.IsChecked = false;
+            LIndex2Button.IsChecked = false;
+            RIndex2Button.IsChecked = false;
+            LMiddleButton.IsChecked = false;
+            RMiddleButton.IsChecked = false;
+            LMiddle2Button.IsChecked = false;
+            RMiddle2Button.IsChecked = false;
+            LRingButton.IsChecked = false;
+            RRingButton.IsChecked = false;
+            LRing2Button.IsChecked = false;
+            RRing2Button.IsChecked = false;
+            LPinkyButton.IsChecked = false;
+            RPinkyButton.IsChecked = false;
+            LPinky2Button.IsChecked = false;
+            RPinky2Button.IsChecked = false;
+            PelvisButton.IsChecked = false;
+            TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
+            LThighButton.IsChecked = false;
+            RThighButton.IsChecked = false;
+            LKneeButton.IsChecked = false;
+            RKneeButton.IsChecked = false;
+            LCalfButton.IsChecked = false;
+            RCalfButton.IsChecked = false;
+            LFootButton.IsChecked = false;
+            RFootButton.IsChecked = false;
+            LToesButton.IsChecked = false;
+            RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+
+            //Load Current Values for Slider
+            CharacterDetails.REarring2Check = true;
+        }
+        private void REarring2Button_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.REarring2Rotate = false;
+        }
+        #endregion
+
+
+        private void EditModeButton_Checked(object sender, RoutedEventArgs e)
+        {
+            EditMode = true;
+            EnableAll();
+
+            var seklval1 = System.BitConverter.GetBytes(MemoryManager.Instance.MemLib.readLong(MemoryManager.Instance.SkeletonAddress));
+            var seklval2 = System.BitConverter.GetBytes(MemoryManager.Instance.MemLib.readLong(MemoryManager.Instance.SkeletonAddress2));
+            var seklval3 = System.BitConverter.GetBytes(MemoryManager.Instance.MemLib.readLong(MemoryManager.Instance.SkeletonAddress3));
+            var physval = System.BitConverter.GetBytes(MemoryManager.Instance.MemLib.readLong(MemoryManager.Instance.PhysicsAddress));
+            SkeletonValue = seklval1;
+            SkeletonValue2 = seklval2;
+            SkeletonValue3 = seklval3;
+            PhysicsValue = physval;
+
+            CharacterDetails.BoneEditMode = true;
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress, "bytes", "0x90 0x90 0x90 0x90 0x90 0x90");
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress2, "bytes", "0x90 0x90 0x90 0x90 0x90 0x90");
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress3, "bytes", "0x90 0x90 0x90 0x90");
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.PhysicsAddress, "bytes", "0x90 0x90 0x90 0x90");
+        }
+        private void EditModeButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            EditMode = false;
+            UncheckAll();
+            DisableAll();
+
+            CharacterDetails.BoneEditMode = false;
+            MemoryManager.Instance.MemLib.writeBytes(MemoryManager.Instance.SkeletonAddress, SkeletonValue);
+            MemoryManager.Instance.MemLib.writeBytes(MemoryManager.Instance.SkeletonAddress2, SkeletonValue2);
+            MemoryManager.Instance.MemLib.writeBytes(MemoryManager.Instance.SkeletonAddress3, SkeletonValue3);
+            MemoryManager.Instance.MemLib.writeBytes(MemoryManager.Instance.PhysicsAddress, PhysicsValue);
+
+            //Clear Slider Values
+            CharacterDetails.BoneX = 0;
+            CharacterDetails.BoneY = 0;
+            CharacterDetails.BoneZ = 0;
+        }
+
+        private void PhysicsButton_Checked(object sender, RoutedEventArgs e)
+        {
+            MemoryManager.Instance.MemLib.writeBytes(MemoryManager.Instance.PhysicsAddress, PhysicsValue);
+        }
+        private void PhysicsButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (EditMode)
+            {
+                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.PhysicsAddress, "bytes", "0x90 0x90 0x90 0x90");
+            }
+        }
+
+        private void BoneSliderButton_Checked(object sender, RoutedEventArgs e)
+        {
+            BoneUpDown.Visibility = Visibility.Hidden;
+            BoneUpDown.IsEnabled = false;
+            BoneUpDown2.Visibility = Visibility.Hidden;
+            BoneUpDown2.IsEnabled = false;
+            BoneUpDown3.Visibility = Visibility.Hidden;
+            BoneUpDown3.IsEnabled = false;
+
+            BoneSlider.Visibility = Visibility.Visible;
+            BoneSlider.IsEnabled = true;
+            BoneSlider2.Visibility = Visibility.Visible;
+            BoneSlider2.IsEnabled = true;
+            BoneSlider3.Visibility = Visibility.Visible;
+            BoneSlider3.IsEnabled = true;
+        }
+        private void BoneSliderButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            BoneUpDown.Visibility = Visibility.Visible;
+            BoneUpDown.IsEnabled = true;
+            BoneUpDown2.Visibility = Visibility.Visible;
+            BoneUpDown2.IsEnabled = true;
+            BoneUpDown3.Visibility = Visibility.Visible;
+            BoneUpDown3.IsEnabled = true;
+
+            BoneSlider.Visibility = Visibility.Hidden;
+            BoneSlider.IsEnabled = false;
+            BoneSlider2.Visibility = Visibility.Hidden;
+            BoneSlider2.IsEnabled = false;
+            BoneSlider3.Visibility = Visibility.Hidden;
+            BoneSlider3.IsEnabled = false;
+        }
+
+        private void TPoseButton_Click(object sender, RoutedEventArgs e)
+        {
+            EnableRotations();
+            TPoseX();
+            TPoseY();
+            TPoseZ();
+            TPoseW();
+            DisableRotations();
+        }
+
+        private void UncheckAll()
+        {
+            PhysicsButton.IsChecked = false;
+            //DebugButton.IsChecked = false;
+            HeadButton.IsChecked = false;
+            NoseButton.IsChecked = false;
+            NostrilsButton.IsChecked = false;
+            ChinButton.IsChecked = false;
+            LOutEyebrowButton.IsChecked = false;
+            ROutEyebrowButton.IsChecked = false;
+            LInEyebrowButton.IsChecked = false;
+            RInEyebrowButton.IsChecked = false;
+            LEyeButton.IsChecked = false;
+            REyeButton.IsChecked = false;
+            LEyelidButton.IsChecked = false;
+            REyelidButton.IsChecked = false;
+            LLowEyelidButton.IsChecked = false;
+            RLowEyelidButton.IsChecked = false;
+            LEarButton.IsChecked = false;
+            REarButton.IsChecked = false;
+            LCheekButton.IsChecked = false;
+            RCheekButton.IsChecked = false;
+            LMouthButton.IsChecked = false;
+            RMouthButton.IsChecked = false;
+            LUpLipButton.IsChecked = false;
+            RUpLipButton.IsChecked = false;
+            LLowLipButton.IsChecked = false;
+            RLowLipButton.IsChecked = false;
+            NeckButton.IsChecked = false;
+            SternumButton.IsChecked = false;
+            TorsoButton.IsChecked = false;
+            WaistButton.IsChecked = false;
+            LShoulderButton.IsChecked = false;
+            RShoulderButton.IsChecked = false;
+            LClavicleButton.IsChecked = false;
+            RClavicleButton.IsChecked = false;
+            LBreastButton.IsChecked = false;
+            RBreastButton.IsChecked = false;
+            LArmButton.IsChecked = false;
+            RArmButton.IsChecked = false;
+            LElbowButton.IsChecked = false;
+            RElbowButton.IsChecked = false;
+            LForearmButton.IsChecked = false;
+            RForearmButton.IsChecked = false;
+            LWristButton.IsChecked = false;
+            RWristButton.IsChecked = false;
+            LHandButton.IsChecked = false;
+            RHandButton.IsChecked = false;
+            LThumbButton.IsChecked = false;
+            RThumbButton.IsChecked = false;
+            LThumb2Button.IsChecked = false;
+            RThumb2Button.IsChecked = false;
+            LIndexButton.IsChecked = false;
+            RIndexButton.IsChecked = false;
+            LIndex2Button.IsChecked = false;
+            RIndex2Button.IsChecked = false;
+            LMiddleButton.IsChecked = false;
+            RMiddleButton.IsChecked = false;
+            LMiddle2Button.IsChecked = false;
+            RMiddle2Button.IsChecked = false;
+            LRingButton.IsChecked = false;
+            RRingButton.IsChecked = false;
+            LRing2Button.IsChecked = false;
+            RRing2Button.IsChecked = false;
+            LPinkyButton.IsChecked = false;
+            RPinkyButton.IsChecked = false;
+            LPinky2Button.IsChecked = false;
+            RPinky2Button.IsChecked = false;
+            PelvisButton.IsChecked = false;
+            TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
+            LThighButton.IsChecked = false;
+            RThighButton.IsChecked = false;
+            LKneeButton.IsChecked = false;
+            RKneeButton.IsChecked = false;
+            LCalfButton.IsChecked = false;
+            RCalfButton.IsChecked = false;
+            LFootButton.IsChecked = false;
+            RFootButton.IsChecked = false;
+            LToesButton.IsChecked = false;
+            RToesButton.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
         }
 
         private void EnableAll()
         {
+            PhysicsButton.IsEnabled = true;
             TPoseButton.IsEnabled = true;
+            //DebugButton.IsEnabled = true;
             HeadButton.IsEnabled = true;
             NoseButton.IsEnabled = true;
             NostrilsButton.IsEnabled = true;
@@ -13896,6 +15460,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsEnabled = true;
             PelvisButton.IsEnabled = true;
             TailButton.IsEnabled = true;
+            Tail2Button.IsEnabled = true;
+            Tail3Button.IsEnabled = true;
+            Tail4Button.IsEnabled = true;
             LThighButton.IsEnabled = true;
             RThighButton.IsEnabled = true;
             LKneeButton.IsEnabled = true;
@@ -13906,11 +15473,17 @@ namespace ConceptMatrix.Views
             RFootButton.IsEnabled = true;
             LToesButton.IsEnabled = true;
             RToesButton.IsEnabled = true;
+            LEarringButton.IsEnabled = true;
+            REarringButton.IsEnabled = true;
+            LEarring2Button.IsEnabled = true;
+            REarring2Button.IsEnabled = true;
         }
 
         private void DisableAll()
         {
+            PhysicsButton.IsEnabled = false;
             TPoseButton.IsEnabled = false;
+            //DebugButton.IsEnabled = false;
             HeadButton.IsEnabled = false;
             NoseButton.IsEnabled = false;
             NostrilsButton.IsEnabled = false;
@@ -13977,6 +15550,9 @@ namespace ConceptMatrix.Views
             RPinky2Button.IsEnabled = false;
             PelvisButton.IsEnabled = false;
             TailButton.IsEnabled = false;
+            Tail2Button.IsEnabled = false;
+            Tail3Button.IsEnabled = false;
+            Tail4Button.IsEnabled = false;
             LThighButton.IsEnabled = false;
             RThighButton.IsEnabled = false;
             LKneeButton.IsEnabled = false;
@@ -13987,346 +15563,506 @@ namespace ConceptMatrix.Views
             RFootButton.IsEnabled = false;
             LToesButton.IsEnabled = false;
             RToesButton.IsEnabled = false;
+            LEarringButton.IsEnabled = false;
+            REarringButton.IsEnabled = false;
+            LEarring2Button.IsEnabled = false;
+            REarring2Button.IsEnabled = false;
         }
 
         private void TPoseX()
         {
-            var m = MemoryManager.Instance.MemLib;
-            var c = Settings.Instance.Character;
-
-            string GAS(params string[] args) => MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, args);
-
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.HeadX), "float", "0.7071064711");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.NoseX), "float", "0.7071064711");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.NostrilsX), "float", "0.7071064711");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.ChinX), "float", "0.7010570765");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LOutEyebrowX), "float", "0.803856492");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.ROutEyebrowX), "float", "0.594822526");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LInEyebrowX), "float", "0.7071064711");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RInEyebrowX), "float", "0.7071064711");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LEyeX), "float", "0.7071064711");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.REyeX), "float", "0.7071064711");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LEyelidX), "float", "0.731854558");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.REyelidX), "float", "0.6589646935");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LLowEyelidX), "float", "0.7395583391");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RLowEyelidX), "float", "0.6428881288");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LEarX), "float", "-0.3030564189");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.REarX), "float", "0.3502247632");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LCheekX), "float", "0.7933529615");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RCheekX), "float", "0.6087611914");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LMouthX), "float", "0.8191515803");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RMouthX), "float", "0.5735763311");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LUpLipX), "float", "0.7070794702");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RUpLipX), "float", "0.7071062922");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LLowLipX), "float", "0.7071064711");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RLowLipX), "float", "0.7018356919");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.NeckX), "float", "0.6045512557");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.SternumX), "float", "0.5119624138");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.TorsoX), "float", "0.4947781861");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.WaistX), "float", "0.4738240242");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LShoulderX), "float", "-0.6383195519");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RShoulderX), "float", "-0.2362460941");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LClavicleX), "float", "2.980232239E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RClavicleX), "float", "-1.490116119E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LBreastX), "float", "-0.03088223934");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RBreastX), "float", "-0.03088220209");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LArmX), "float", "-0.6383193135");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RArmX), "float", "-0.236246109");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LElbowX), "float", "-0.6540370584");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RElbowX), "float", "0.2724279761");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LForearmX), "float", "-0.6677876711");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RForearmX), "float", "0.3077905476");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LWristX), "float", "-0.6532810926");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RWristX), "float", "-0.2705979645");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LHandX), "float", "-0.6532812119");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RHandX), "float", "-0.2705982924");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LThumbX), "float", "0.4309564829");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RThumbX), "float", "0.2627345026");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LThumb2X), "float", "0.4309564829");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RThumb2X), "float", "0.2627344429");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LIndexX), "float", "2.980232239E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RIndexX), "float", "-0.3826832771");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LIndex2X), "float", "1.149457951E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RIndex2X), "float", "-0.3826832473");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LMiddleX), "float", "2.980232239E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RMiddleX), "float", "-0.3826832771");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LMiddle2X), "float", "1.149457951E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RMiddle2X), "float", "-0.3826832473");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LRingX), "float", "0");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RRingX), "float", "-0.3826832175");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LRing2X), "float", "6.836367028E-10");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RRing2X), "float", "-0.3826831877");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LPinkyX), "float", "0");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RPinkyX), "float", "-0.3826832175");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LPinky2X), "float", "6.836367028E-10");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RPinky2X), "float", "-0.3826831877");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.PelvisX), "float", "0.550806284");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.TailX), "float", "-0.184204489");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LThighX), "float", "0.5075724125");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RThighX), "float", "0.5075724125");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LKneeX), "float", "-0.4967896044");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RKneeX), "float", "-0.4967896044");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LCalfX), "float", "-0.4709248245");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RCalfX), "float", "-0.4709248245");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LFootX), "float", "0.6834150553");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RFootX), "float", "0.6834150553");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LToesX), "float", "0.7071067095");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RToesX), "float", "0.7071067095");
+            //CharacterDetails.HeadX.value = 0.7071064711f;
+            //CharacterDetails.NoseX.value = 0.7071064711f;
+            //CharacterDetails.NostrilsX.value = 0.7071064711f;
+            //CharacterDetails.ChinX.value = 0.7010570765f;
+            //CharacterDetails.LOutEyebrowX.value = 0.803856492f;
+            //CharacterDetails.ROutEyebrowX.value = 0.594822526f;
+            //CharacterDetails.LInEyebrowX.value = 0.7071064711f;
+            //CharacterDetails.RInEyebrowX.value = 0.7071064711f;
+            //CharacterDetails.LEyeX.value = 0.7071064711f;
+            //CharacterDetails.REyeX.value = 0.7071064711f;
+            //CharacterDetails.LEyelidX.value = 0.731854558f;
+            //CharacterDetails.REyelidX.value = 0.6589646935f;
+            //CharacterDetails.LLowEyelidX.value = 0.7395583391f;
+            //CharacterDetails.RLowEyelidX.value = 0.6428881288f;
+            //CharacterDetails.LEarX.value = -0.3030564189f;
+            //CharacterDetails.REarX.value = 0.3502247632f;
+            //CharacterDetails.LCheekX.value = 0.7933529615f;
+            //CharacterDetails.RCheekX.value = 0.6087611914f;
+            //CharacterDetails.LMouthX.value = 0.8191515803f;
+            //CharacterDetails.RMouthX.value = 0.5735763311f;
+            //CharacterDetails.LUpLipX.value = 0.7070794702f;
+            //CharacterDetails.RUpLipX.value = 0.7071062922f;
+            //CharacterDetails.LLowLipX.value = 0.7071064711f;
+            //CharacterDetails.RLowLipX.value = 0.7018356919f;
+            CharacterDetails.NeckX.value = 0.6045512557f;
+            CharacterDetails.SternumX.value = 0.5119624138f;
+            CharacterDetails.TorsoX.value = 0.4947781861f;
+            CharacterDetails.WaistX.value = 0.4738240242f;
+            CharacterDetails.LShoulderX.value = -0.6383195519f;
+            CharacterDetails.RShoulderX.value = -0.2362460941f;
+            CharacterDetails.LClavicleX.value = 2.980232239E-8f;
+            CharacterDetails.RClavicleX.value = -1.490116119E-8f;
+            CharacterDetails.LBreastX.value = -0.03088223934f;
+            CharacterDetails.RBreastX.value = -0.03088220209f;
+            CharacterDetails.LArmX.value = -0.6383193135f;
+            CharacterDetails.RArmX.value = -0.236246109f;
+            CharacterDetails.LElbowX.value = -0.6540370584f;
+            CharacterDetails.RElbowX.value = 0.2724279761f;
+            CharacterDetails.LForearmX.value = -0.6677876711f;
+            CharacterDetails.RForearmX.value = 0.3077905476f;
+            CharacterDetails.LWristX.value = -0.6532810926f;
+            CharacterDetails.RWristX.value = -0.2705979645f;
+            CharacterDetails.LHandX.value = -0.6532812119f;
+            CharacterDetails.RHandX.value = -0.2705982924f;
+            CharacterDetails.LThumbX.value = 0.4309564829f;
+            CharacterDetails.RThumbX.value = 0.2627345026f;
+            CharacterDetails.LThumb2X.value = 0.4309564829f;
+            CharacterDetails.RThumb2X.value = 0.2627344429f;
+            CharacterDetails.LIndexX.value = 2.980232239E-8f;
+            CharacterDetails.RIndexX.value = -0.3826832771f;
+            CharacterDetails.LIndex2X.value = 1.149457951E-8f;
+            CharacterDetails.RIndex2X.value = -0.3826832473f;
+            CharacterDetails.LMiddleX.value = 2.980232239E-8f;
+            CharacterDetails.RMiddleX.value = -0.3826832771f;
+            CharacterDetails.LMiddle2X.value = 1.149457951E-8f;
+            CharacterDetails.RMiddle2X.value = -0.3826832473f;
+            CharacterDetails.LRingX.value = 0f;
+            CharacterDetails.RRingX.value = -0.3826832175f;
+            CharacterDetails.LRing2X.value = 6.836367028E-10f;
+            CharacterDetails.RRing2X.value = -0.3826831877f;
+            CharacterDetails.LPinkyX.value = 0f;
+            CharacterDetails.RPinkyX.value = -0.3826832175f;
+            CharacterDetails.LPinky2X.value = 6.836367028E-10f;
+            CharacterDetails.RPinky2X.value = -0.3826831877f;
+            CharacterDetails.PelvisX.value = 0.550806284f;
+            CharacterDetails.TailX.value = -0.184204489f;
+            CharacterDetails.LThighX.value = 0.5075724125f;
+            CharacterDetails.RThighX.value = 0.5075724125f;
+            CharacterDetails.LKneeX.value = -0.4967896044f;
+            CharacterDetails.RKneeX.value = -0.4967896044f;
+            CharacterDetails.LCalfX.value = -0.4709248245f;
+            CharacterDetails.RCalfX.value = -0.4709248245f;
+            CharacterDetails.LFootX.value = 0.6834150553f;
+            CharacterDetails.RFootX.value = 0.6834150553f;
+            CharacterDetails.LToesX.value = 0.7071067095f;
+            CharacterDetails.RToesX.value = 0.7071067095f;
         }
 
         private void TPoseY()
         {
-            var m = MemoryManager.Instance.MemLib;
-            var c = Settings.Instance.Character;
-
-            string GAS(params string[] args) => MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, args);
-
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.HeadY), "float", "2.980232239E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.NoseY), "float", "2.967532708E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.NostrilsY), "float", "2.967532708E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.ChinY), "float", "-0.09229586273");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LOutEyebrowY), "float", "2.367235652E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.ROutEyebrowY), "float", "3.493174816E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LInEyebrowY), "float", "2.967532708E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RInEyebrowY), "float", "2.967532708E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LEyeY), "float", "2.967532708E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.REyeY), "float", "2.967532708E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LEyelidY), "float", "0.1290455163");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.REyelidY), "float", "0.1161931232");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LLowEyelidY), "float", "-0.1504644901");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RLowEyelidY), "float", "-0.1307967603");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LEarY), "float", "0.2961898446");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.REarY), "float", "0.8353264332");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LCheekY), "float", "2.427711721E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RCheekY), "float", "3.451231834E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LMouthY), "float", "2.549330702E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RMouthY), "float", "3.55409604E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LUpLipY), "float", "0.006170331966");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RUpLipY), "float", "3.026798368E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LLowLipY), "float", "2.980232239E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RLowLipY), "float", "-0.08617512882");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.NeckY), "float", "0.366766274");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.SternumY), "float", "0.4877440631");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.TorsoY), "float", "0.5051676631");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.WaistY), "float", "0.5248720646");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LShoulderY), "float", "0.3042170703");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RShoulderY), "float", "0.6664740443");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LClavicleY), "float", "0");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RClavicleY), "float", "0.9999997616");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LBreastY), "float", "-0.6213850379");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RBreastY), "float", "-0.782286942");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LArmY), "float", "0.3042170107");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RArmY), "float", "0.6664740443");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LElbowY), "float", "0.2687657475");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RElbowY), "float", "-0.6525203586");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LForearmY), "float", "0.2325061858");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RForearmY), "float", "-0.6366041303");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LWristY), "float", "0.2705978751");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RWristY), "float", "0.6532813907");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LHandY), "float", "0.2705976069");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RHandY), "float", "0.6532812119");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LThumbY), "float", "-0.5649164915");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RThumbY), "float", "-0.6527751088");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LThumb2Y), "float", "-0.5649165511");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RThumb2Y), "float", "-0.6527751684");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LIndexY), "float", "-4.917383194E-7");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RIndexY), "float", "0.9238792062");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LIndex2Y), "float", "-4.648088918E-7");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RIndex2Y), "float", "0.9238791466");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LMiddleY), "float", "-4.917383194E-7");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RMiddleY), "float", "0.9238792062");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LMiddle2Y), "float", "-4.648088918E-7");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RMiddle2Y), "float", "0.9238791466");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LRingY), "float", "-1.490116119E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RRingY), "float", "0.923879087");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LRing2Y), "float", "-1.625886092E-9");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RRing2Y), "float", "0.9238790274");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LPinkyY), "float", "-1.490116119E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RPinkyY), "float", "0.923879087");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LPinky2Y), "float", "-1.625886092E-9");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RPinky2Y), "float", "0.9238790274");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.PelvisY), "float", "-0.4434098899");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.TailY), "float", "0.6826921701");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LThighY), "float", "-0.4923109114");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RThighY), "float", "-0.4923109114");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LKneeY), "float", "0.503189683");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RKneeY), "float", "0.503189683");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LCalfY), "float", "0.5274748206");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RCalfY), "float", "0.5274748206");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LFootY), "float", "-0.181504041");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RFootY), "float", "-0.181504041");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LToesY), "float", "-1.490116119E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RToesY), "float", "-1.490116119E-8");
+            //CharacterDetails.HeadY.value = 2.980232239E-8f;
+            //CharacterDetails.NoseY.value = 2.967532708E-8f;
+            //CharacterDetails.NostrilsY.value = 2.967532708E-8f;
+            //CharacterDetails.ChinY.value = -0.09229586273f;
+            //CharacterDetails.LOutEyebrowY.value = 2.367235652E-8f;
+            //CharacterDetails.ROutEyebrowY.value = 3.493174816E-8f;
+            //CharacterDetails.LInEyebrowY.value = 2.967532708E-8f;
+            //CharacterDetails.RInEyebrowY.value = 2.967532708E-8f;
+            //CharacterDetails.LEyeY.value = 2.967532708E-8f;
+            //CharacterDetails.REyeY.value = 2.967532708E-8f;
+            //CharacterDetails.LEyelidY.value = 0.1290455163f;
+            //CharacterDetails.REyelidY.value = 0.1161931232f;
+            //CharacterDetails.LLowEyelidY.value = -0.1504644901f;
+            //CharacterDetails.RLowEyelidY.value = -0.1307967603f;
+            //CharacterDetails.LEarY.value = 0.2961898446f;
+            //CharacterDetails.REarY.value = 0.8353264332f;
+            //CharacterDetails.LCheekY.value = 2.427711721E-8f;
+            //CharacterDetails.RCheekY.value = 3.451231834E-8f;
+            //CharacterDetails.LMouthY.value = 2.549330702E-8f;
+            //CharacterDetails.RMouthY.value = 3.55409604E-8f;
+            //CharacterDetails.LUpLipY.value = 0.006170331966f;
+            //CharacterDetails.RUpLipY.value = 3.026798368E-8f;
+            //CharacterDetails.LLowLipY.value = 2.980232239E-8f;
+            //CharacterDetails.RLowLipY.value = -0.08617512882f;
+            CharacterDetails.NeckY.value = 0.366766274f;
+            CharacterDetails.SternumY.value = 0.4877440631f;
+            CharacterDetails.TorsoY.value = 0.5051676631f;
+            CharacterDetails.WaistY.value = 0.5248720646f;
+            CharacterDetails.LShoulderY.value = 0.3042170703f;
+            CharacterDetails.RShoulderY.value = 0.6664740443f;
+            CharacterDetails.LClavicleY.value = 0f;
+            CharacterDetails.RClavicleY.value = 0.9999997616f;
+            CharacterDetails.LBreastY.value = -0.6213850379f;
+            CharacterDetails.RBreastY.value = -0.782286942f;
+            CharacterDetails.LArmY.value = 0.3042170107f;
+            CharacterDetails.RArmY.value = 0.6664740443f;
+            CharacterDetails.LElbowY.value = 0.2687657475f;
+            CharacterDetails.RElbowY.value = -0.6525203586f;
+            CharacterDetails.LForearmY.value = 0.2325061858f;
+            CharacterDetails.RForearmY.value = -0.6366041303f;
+            CharacterDetails.LWristY.value = 0.2705978751f;
+            CharacterDetails.RWristY.value = 0.6532813907f;
+            CharacterDetails.LHandY.value = 0.2705976069f;
+            CharacterDetails.RHandY.value = 0.6532812119f;
+            CharacterDetails.LThumbY.value = -0.5649164915f;
+            CharacterDetails.RThumbY.value = -0.6527751088f;
+            CharacterDetails.LThumb2Y.value = -0.5649165511f;
+            CharacterDetails.RThumb2Y.value = -0.6527751684f;
+            CharacterDetails.LIndexY.value = -4.917383194E-7f;
+            CharacterDetails.RIndexY.value = 0.9238792062f;
+            CharacterDetails.LIndex2Y.value = -4.648088918E-7f;
+            CharacterDetails.RIndex2Y.value = 0.9238791466f;
+            CharacterDetails.LMiddleY.value = -4.917383194E-7f;
+            CharacterDetails.RMiddleY.value = 0.9238792062f;
+            CharacterDetails.LMiddle2Y.value = -4.648088918E-7f;
+            CharacterDetails.RMiddle2Y.value = 0.9238791466f;
+            CharacterDetails.LRingY.value = -1.490116119E-8f;
+            CharacterDetails.RRingY.value = 0.923879087f;
+            CharacterDetails.LRing2Y.value = -1.625886092E-9f;
+            CharacterDetails.RRing2Y.value = 0.9238790274f;
+            CharacterDetails.LPinkyY.value = -1.490116119E-8f;
+            CharacterDetails.RPinkyY.value = 0.923879087f;
+            CharacterDetails.LPinky2Y.value = -1.625886092E-9f;
+            CharacterDetails.RPinky2Y.value = 0.9238790274f;
+            CharacterDetails.PelvisY.value = -0.4434098899f;
+            CharacterDetails.TailY.value = 0.6826921701f;
+            CharacterDetails.LThighY.value = -0.4923109114f;
+            CharacterDetails.RThighY.value = -0.4923109114f;
+            CharacterDetails.LKneeY.value = 0.503189683f;
+            CharacterDetails.RKneeY.value = 0.503189683f;
+            CharacterDetails.LCalfY.value = 0.5274748206f;
+            CharacterDetails.RCalfY.value = 0.5274748206f;
+            CharacterDetails.LFootY.value = -0.181504041f;
+            CharacterDetails.RFootY.value = -0.181504041f;
+            CharacterDetails.LToesY.value = -1.490116119E-8f;
+            CharacterDetails.RToesY.value = -1.490116119E-8f;
         }
 
         private void TPoseZ()
         {
-            var m = MemoryManager.Instance.MemLib;
-            var c = Settings.Instance.Character;
-
-            string GAS(params string[] args) => MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, args);
-
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.HeadZ), "float", "0.7071065903");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.NoseZ), "float", "0.7071065903");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.NostrilsZ), "float", "0.7071065903");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.ChinZ), "float", "0.7010571957");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LOutEyebrowZ), "float", "0.5948226452");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.ROutEyebrowZ), "float", "0.8038566113");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LInEyebrowZ), "float", "0.7071065903");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RInEyebrowZ), "float", "0.7071065903");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LEyeZ), "float", "0.7071065903");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.REyeZ), "float", "0.7071065903");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LEyelidZ), "float", "0.6589648724");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.REyelidZ), "float", "0.7318546176");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LLowEyelidZ), "float", "0.6428883076");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RLowEyelidZ), "float", "0.7395585179");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LEarZ), "float", "0.3502247334");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.REarZ), "float", "-0.3030564487");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LCheekZ), "float", "0.6087613106");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RCheekZ), "float", "0.7933530807");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LMouthZ), "float", "0.5735765696");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RMouthZ), "float", "0.8191516399");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LUpLipZ), "float", "0.7070795894");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RUpLipZ), "float", "0.7071064115");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LLowLipZ), "float", "0.7071065903");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RLowLipZ), "float", "0.7018358111");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.NeckZ), "float", "0.6045513153");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.SternumZ), "float", "0.5119624734");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.TorsoZ), "float", "0.4947781861");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.WaistZ), "float", "0.4738240242");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LShoulderZ), "float", "-0.2362460047");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RShoulderZ), "float", "-0.6383191943");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LClavicleZ), "float", "0");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RClavicleZ), "float", "2.980232239E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LBreastZ), "float", "0.03088222817");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RBreastZ), "float", "0.03088220209");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LArmZ), "float", "-0.236246109");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RArmZ), "float", "-0.6383193135");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LElbowZ), "float", "-0.2724279761");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RElbowZ), "float", "0.6540369987");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LForearmZ), "float", "-0.3077905178");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RForearmZ), "float", "0.6677876711");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LWristZ), "float", "-0.2705979943");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RWristZ), "float", "-0.6532810926");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LHandZ), "float", "-0.2705982327");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RHandZ), "float", "-0.6532812119");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LThumbZ), "float", "-0.2627345026");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RThumbZ), "float", "-0.4309565127");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LThumb2Z), "float", "-0.2627344728");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RThumb2Z), "float", "-0.4309565723");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LIndexZ), "float", "-0.3826832771");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RIndexZ), "float", "0");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LIndex2Z), "float", "-0.3826832473");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RIndex2Z), "float", "1.752551704E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LMiddleZ), "float", "-0.3826832771");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RMiddleZ), "float", "0");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LMiddle2Z), "float", "-0.3826832473");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RMiddle2Z), "float", "1.752551704E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LRingZ), "float", "-0.3826832175");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RRingZ), "float", "0");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LRing2Z), "float", "-0.3826832175");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RRing2Z), "float", "-6.725038304E-10");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LPinkyZ), "float", "-0.3826832175");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RPinkyZ), "float", "0");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LPinky2Z), "float", "-0.3826832175");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RPinky2Z), "float", "-6.725038304E-10");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.PelvisZ), "float", "0.550806284");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.TailZ), "float", "-0.184204489");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LThighZ), "float", "0.5075724125");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RThighZ), "float", "0.5075724125");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LKneeZ), "float", "-0.496789515");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RKneeZ), "float", "-0.496789515");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LCalfZ), "float", "-0.4709247351");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RCalfZ), "float", "-0.4709247351");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LFootZ), "float", "0.6834150553");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RFootZ), "float", "0.6834150553");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LToesZ), "float", "0.7071067691");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RToesZ), "float", "0.7071067691");
+            //CharacterDetails.HeadZ.value = 0.7071065903f;
+            //CharacterDetails.NoseZ.value = 0.7071065903f;
+            //CharacterDetails.NostrilsZ.value = 0.7071065903f;
+            //CharacterDetails.ChinZ.value = 0.7010571957f;
+            //CharacterDetails.LOutEyebrowZ.value = 0.5948226452f;
+            //CharacterDetails.ROutEyebrowZ.value = 0.8038566113f;
+            //CharacterDetails.LInEyebrowZ.value = 0.7071065903f;
+            //CharacterDetails.RInEyebrowZ.value = 0.7071065903f;
+            //CharacterDetails.LEyeZ.value = 0.7071065903f;
+            //CharacterDetails.REyeZ.value = 0.7071065903f;
+            //CharacterDetails.LEyelidZ.value = 0.6589648724f;
+            //CharacterDetails.REyelidZ.value = 0.7318546176f;
+            //CharacterDetails.LLowEyelidZ.value = 0.6428883076f;
+            //CharacterDetails.RLowEyelidZ.value = 0.7395585179f;
+            //CharacterDetails.LEarZ.value = 0.3502247334f;
+            //CharacterDetails.REarZ.value = -0.3030564487f;
+            //CharacterDetails.LCheekZ.value = 0.6087613106f;
+            //CharacterDetails.RCheekZ.value = 0.7933530807f;
+            //CharacterDetails.LMouthZ.value = 0.5735765696f;
+            //CharacterDetails.RMouthZ.value = 0.8191516399f;
+            //CharacterDetails.LUpLipZ.value = 0.7070795894f;
+            //CharacterDetails.RUpLipZ.value = 0.7071064115f;
+            //CharacterDetails.LLowLipZ.value = 0.7071065903f;
+            //CharacterDetails.RLowLipZ.value = 0.7018358111f;
+            CharacterDetails.NeckZ.value = 0.6045513153f;
+            CharacterDetails.SternumZ.value = 0.5119624734f;
+            CharacterDetails.TorsoZ.value = 0.4947781861f;
+            CharacterDetails.WaistZ.value = 0.4738240242f;
+            CharacterDetails.LShoulderZ.value = -0.2362460047f;
+            CharacterDetails.RShoulderZ.value = -0.6383191943f;
+            CharacterDetails.LClavicleZ.value = 0f;
+            CharacterDetails.RClavicleZ.value = 2.980232239E-8f;
+            CharacterDetails.LBreastZ.value = 0.03088222817f;
+            CharacterDetails.RBreastZ.value = 0.03088220209f;
+            CharacterDetails.LArmZ.value = -0.236246109f;
+            CharacterDetails.RArmZ.value = -0.6383193135f;
+            CharacterDetails.LElbowZ.value = -0.2724279761f;
+            CharacterDetails.RElbowZ.value = 0.6540369987f;
+            CharacterDetails.LForearmZ.value = -0.3077905178f;
+            CharacterDetails.RForearmZ.value = 0.6677876711f;
+            CharacterDetails.LWristZ.value = -0.2705979943f;
+            CharacterDetails.RWristZ.value = -0.6532810926f;
+            CharacterDetails.LHandZ.value = -0.2705982327f;
+            CharacterDetails.RHandZ.value = -0.6532812119f;
+            CharacterDetails.LThumbZ.value = -0.2627345026f;
+            CharacterDetails.RThumbZ.value = -0.4309565127f;
+            CharacterDetails.LThumb2Z.value = -0.2627344728f;
+            CharacterDetails.RThumb2Z.value = -0.4309565723f;
+            CharacterDetails.LIndexZ.value = -0.3826832771f;
+            CharacterDetails.RIndexZ.value = 0f;
+            CharacterDetails.LIndex2Z.value = -0.3826832473f;
+            CharacterDetails.RIndex2Z.value = 1.752551704E-8f;
+            CharacterDetails.LMiddleZ.value = -0.3826832771f;
+            CharacterDetails.RMiddleZ.value = 0f;
+            CharacterDetails.LMiddle2Z.value = -0.3826832473f;
+            CharacterDetails.RMiddle2Z.value = 1.752551704E-8f;
+            CharacterDetails.LRingZ.value = -0.3826832175f;
+            CharacterDetails.RRingZ.value = 0f;
+            CharacterDetails.LRing2Z.value = -0.3826832175f;
+            CharacterDetails.RRing2Z.value = -6.725038304E-10f;
+            CharacterDetails.LPinkyZ.value = -0.3826832175f;
+            CharacterDetails.RPinkyZ.value = 0f;
+            CharacterDetails.LPinky2Z.value = -0.3826832175f;
+            CharacterDetails.RPinky2Z.value = -6.725038304E-10f;
+            CharacterDetails.PelvisZ.value = 0.550806284f;
+            CharacterDetails.TailZ.value = -0.184204489f;
+            CharacterDetails.LThighZ.value = 0.5075724125f;
+            CharacterDetails.RThighZ.value = 0.5075724125f;
+            CharacterDetails.LKneeZ.value = -0.496789515f;
+            CharacterDetails.RKneeZ.value = -0.496789515f;
+            CharacterDetails.LCalfZ.value = -0.4709247351f;
+            CharacterDetails.RCalfZ.value = -0.4709247351f;
+            CharacterDetails.LFootZ.value = 0.6834150553f;
+            CharacterDetails.RFootZ.value = 0.6834150553f;
+            CharacterDetails.LToesZ.value = 0.7071067691f;
+            CharacterDetails.RToesZ.value = 0.7071067691f;
         }
 
         private void TPoseW()
         {
-            var m = MemoryManager.Instance.MemLib;
-            var c = Settings.Instance.Character;
+            //CharacterDetails.HeadW.value = 2.980232239E-8f;
+            //CharacterDetails.NoseW.value = 2.967532708E-8f;
+            //CharacterDetails.NostrilsW.value = 2.967532708E-8f;
+            //CharacterDetails.ChinW.value = -0.09229589254f;
+            //CharacterDetails.LOutEyebrowW.value = 3.28294476E-8f;
+            //CharacterDetails.ROutEyebrowW.value = 2.646828356E-8f;
+            //CharacterDetails.LInEyebrowW.value = 2.967532708E-8f;
+            //CharacterDetails.RInEyebrowW.value = 2.967532708E-8f;
+            //CharacterDetails.LEyeW.value = 2.967532708E-8f;
+            //CharacterDetails.REyeW.value = 2.967532708E-8f;
+            //CharacterDetails.LEyelidW.value = 0.1161931381f;
+            //CharacterDetails.REyelidW.value = 0.129045561f;
+            //CharacterDetails.LLowEyelidW.value = -0.1307968199f;
+            //CharacterDetails.RLowEyelidW.value = -0.150464505f;
+            //CharacterDetails.LEarW.value = 0.8353263736f;
+            //CharacterDetails.REarW.value = 0.2961899042f;
+            //CharacterDetails.LCheekW.value = 3.236348078E-8f;
+            //CharacterDetails.RCheekW.value = 2.703848878E-8f;
+            //CharacterDetails.LMouthW.value = 3.539162208E-8f;
+            //CharacterDetails.RMouthW.value = 2.559784917E-8f;
+            //CharacterDetails.LUpLipW.value = 0.006170333829f;
+            //CharacterDetails.RUpLipW.value = 3.026798368E-8f;
+            //CharacterDetails.LLowLipW.value = 2.980232239E-8f;
+            //CharacterDetails.RLowLipW.value = -0.08617514372f;
+            CharacterDetails.NeckW.value = 0.3667662442f;
+            CharacterDetails.SternumW.value = 0.4877440631f;
+            CharacterDetails.TorsoW.value = 0.5051677227f;
+            CharacterDetails.WaistW.value = 0.5248720646f;
+            CharacterDetails.LShoulderW.value = 0.6664738059f;
+            CharacterDetails.RShoulderW.value = 0.3042169213f;
+            CharacterDetails.LClavicleW.value = 0.9999997616f;
+            CharacterDetails.RClavicleW.value = 1.490116119E-8f;
+            CharacterDetails.LBreastW.value = 0.7822870016f;
+            CharacterDetails.RBreastW.value = 0.6213850975f;
+            CharacterDetails.LArmW.value = 0.6664740443f;
+            CharacterDetails.RArmW.value = 0.3042169809f;
+            CharacterDetails.LElbowW.value = 0.652520299f;
+            CharacterDetails.RElbowW.value = -0.2687657475f;
+            CharacterDetails.LForearmW.value = 0.6366040707f;
+            CharacterDetails.RForearmW.value = -0.232506156f;
+            CharacterDetails.LWristW.value = 0.6532813907f;
+            CharacterDetails.RWristW.value = 0.2705978751f;
+            CharacterDetails.LHandW.value = 0.6532812119f;
+            CharacterDetails.RHandW.value = 0.2705976367f;
+            CharacterDetails.LThumbW.value = 0.652775228f;
+            CharacterDetails.RThumbW.value = 0.5649167299f;
+            CharacterDetails.LThumb2W.value = 0.6527751684f;
+            CharacterDetails.RThumb2W.value = 0.5649166703f;
+            CharacterDetails.LIndexW.value = 0.9238791466f;
+            CharacterDetails.RIndexW.value = -4.768371582E-7f;
+            CharacterDetails.LIndex2W.value = 0.9238791466f;
+            CharacterDetails.RIndex2W.value = -4.644691955E-7f;
+            CharacterDetails.LMiddleW.value = 0.9238791466f;
+            CharacterDetails.RMiddleW.value = -4.768371582E-7f;
+            CharacterDetails.LMiddle2W.value = 0.9238791466f;
+            CharacterDetails.RMiddle2W.value = -4.644691955E-7f;
+            CharacterDetails.LRingW.value = 0.9238790274f;
+            CharacterDetails.RRingW.value = -1.490116119E-8f;
+            CharacterDetails.LRing2W.value = 0.9238790274f;
+            CharacterDetails.RRing2W.value = 1.644958836E-9f;
+            CharacterDetails.LPinkyW.value = 0.9238790274f;
+            CharacterDetails.RPinkyW.value = -1.490116119E-8f;
+            CharacterDetails.LPinky2W.value = 0.9238790274f;
+            CharacterDetails.RPinky2W.value = 1.644958836E-9f;
+            CharacterDetails.PelvisW.value = -0.4434098899f;
+            CharacterDetails.TailW.value = 0.6826921701f;
+            CharacterDetails.LThighW.value = -0.4923109114f;
+            CharacterDetails.RThighW.value = -0.4923109114f;
+            CharacterDetails.LKneeW.value = 0.5031898022f;
+            CharacterDetails.RKneeW.value = 0.5031898022f;
+            CharacterDetails.LCalfW.value = 0.5274748206f;
+            CharacterDetails.RCalfW.value = 0.5274748206f;
+            CharacterDetails.LFootW.value = -0.1815040112f;
+            CharacterDetails.RFootW.value = -0.1815040112f;
+            CharacterDetails.LToesW.value = -1.490116119E-8f;
+            CharacterDetails.RToesW.value = -1.490116119E-8f;
+        }
 
-            string GAS(params string[] args) => MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, args);
+        private void EnableRotations()
+        {
+            CharacterDetails.DebugRotate = true;
+            CharacterDetails.HeadRotate = true;
+            CharacterDetails.NoseRotate = true;
+            CharacterDetails.NostrilsRotate = true;
+            CharacterDetails.ChinRotate = true;
+            CharacterDetails.LOutEyebrowRotate = true;
+            CharacterDetails.ROutEyebrowRotate = true;
+            CharacterDetails.LInEyebrowRotate = true;
+            CharacterDetails.RInEyebrowRotate = true;
+            CharacterDetails.LEyeRotate = true;
+            CharacterDetails.REyeRotate = true;
+            CharacterDetails.LEyelidRotate = true;
+            CharacterDetails.REyelidRotate = true;
+            CharacterDetails.LLowEyelidRotate = true;
+            CharacterDetails.RLowEyelidRotate = true;
+            CharacterDetails.LEarRotate = true;
+            CharacterDetails.REarRotate = true;
+            CharacterDetails.LCheekRotate = true;
+            CharacterDetails.RCheekRotate = true;
+            CharacterDetails.LMouthRotate = true;
+            CharacterDetails.RMouthRotate = true;
+            CharacterDetails.LUpLipRotate = true;
+            CharacterDetails.RUpLipRotate = true;
+            CharacterDetails.LLowLipRotate = true;
+            CharacterDetails.RLowLipRotate = true;
+            CharacterDetails.NeckRotate = true;
+            CharacterDetails.SternumRotate = true;
+            CharacterDetails.TorsoRotate = true;
+            CharacterDetails.WaistRotate = true;
+            CharacterDetails.LShoulderRotate = true;
+            CharacterDetails.RShoulderRotate = true;
+            CharacterDetails.LClavicleRotate = true;
+            CharacterDetails.RClavicleRotate = true;
+            CharacterDetails.LBreastRotate = true;
+            CharacterDetails.RBreastRotate = true;
+            CharacterDetails.LArmRotate = true;
+            CharacterDetails.RArmRotate = true;
+            CharacterDetails.LElbowRotate = true;
+            CharacterDetails.RElbowRotate = true;
+            CharacterDetails.LForearmRotate = true;
+            CharacterDetails.RForearmRotate = true;
+            CharacterDetails.LWristRotate = true;
+            CharacterDetails.RWristRotate = true;
+            CharacterDetails.LHandRotate = true;
+            CharacterDetails.RHandRotate = true;
+            CharacterDetails.LThumbRotate = true;
+            CharacterDetails.RThumbRotate = true;
+            CharacterDetails.LThumb2Rotate = true;
+            CharacterDetails.RThumb2Rotate = true;
+            CharacterDetails.LIndexRotate = true;
+            CharacterDetails.RIndexRotate = true;
+            CharacterDetails.LIndex2Rotate = true;
+            CharacterDetails.RIndex2Rotate = true;
+            CharacterDetails.LMiddleRotate = true;
+            CharacterDetails.RMiddleRotate = true;
+            CharacterDetails.LMiddle2Rotate = true;
+            CharacterDetails.RMiddle2Rotate = true;
+            CharacterDetails.LRingRotate = true;
+            CharacterDetails.RRingRotate = true;
+            CharacterDetails.LRing2Rotate = true;
+            CharacterDetails.RRing2Rotate = true;
+            CharacterDetails.LPinkyRotate = true;
+            CharacterDetails.RPinkyRotate = true;
+            CharacterDetails.LPinky2Rotate = true;
+            CharacterDetails.RPinky2Rotate = true;
+            CharacterDetails.PelvisRotate = true;
+            CharacterDetails.TailRotate = true;
+            CharacterDetails.Tail2Rotate = true;
+            CharacterDetails.Tail3Rotate = true;
+            CharacterDetails.Tail4Rotate = true;
+            CharacterDetails.LThighRotate = true;
+            CharacterDetails.RThighRotate = true;
+            CharacterDetails.LKneeRotate = true;
+            CharacterDetails.RKneeRotate = true;
+            CharacterDetails.LCalfRotate = true;
+            CharacterDetails.RCalfRotate = true;
+            CharacterDetails.LFootRotate = true;
+            CharacterDetails.RFootRotate = true;
+            CharacterDetails.LToesRotate = true;
+            CharacterDetails.RToesRotate = true;
+            CharacterDetails.LEarringRotate = true;
+            CharacterDetails.REarringRotate = true;
+            CharacterDetails.LEarring2Rotate = true;
+            CharacterDetails.REarring2Rotate = true;
+        }
 
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.HeadW), "float", "2.980232239E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.NoseW), "float", "2.967532708E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.NostrilsW), "float", "2.967532708E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.ChinW), "float", "-0.09229589254");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LOutEyebrowW), "float", "3.28294476E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.ROutEyebrowW), "float", "2.646828356E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LInEyebrowW), "float", "2.967532708E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RInEyebrowW), "float", "2.967532708E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LEyeW), "float", "2.967532708E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.REyeW), "float", "2.967532708E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LEyelidW), "float", "0.1161931381");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.REyelidW), "float", "0.129045561");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LLowEyelidW), "float", "-0.1307968199");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RLowEyelidW), "float", "-0.150464505");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LEarW), "float", "0.8353263736");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.REarW), "float", "0.2961899042");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LCheekW), "float", "3.236348078E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RCheekW), "float", "2.703848878E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LMouthW), "float", "3.539162208E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RMouthW), "float", "2.559784917E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LUpLipW), "float", "0.006170333829");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RUpLipW), "float", "3.026798368E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LLowLipW), "float", "2.980232239E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RLowLipW), "float", "-0.08617514372");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.NeckW), "float", "0.3667662442");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.SternumW), "float", "0.4877440631");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.TorsoW), "float", "0.5051677227");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.WaistW), "float", "0.5248720646");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LShoulderW), "float", "0.6664738059");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RShoulderW), "float", "0.3042169213");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LClavicleW), "float", "0.9999997616");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RClavicleW), "float", "1.490116119E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LBreastW), "float", "0.7822870016");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RBreastW), "float", "0.6213850975");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LArmW), "float", "0.6664740443");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RArmW), "float", "0.3042169809");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LElbowW), "float", "0.652520299");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RElbowW), "float", "-0.2687657475");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LForearmW), "float", "0.6366040707");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RForearmW), "float", "-0.232506156");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LWristW), "float", "0.6532813907");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RWristW), "float", "0.2705978751");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LHandW), "float", "0.6532812119");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RHandW), "float", "0.2705976367");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LThumbW), "float", "0.652775228");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RThumbW), "float", "0.5649167299");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LThumb2W), "float", "0.6527751684");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RThumb2W), "float", "0.5649166703");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LIndexW), "float", "0.9238791466");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RIndexW), "float", "-4.768371582E-7");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LIndex2W), "float", "0.9238791466");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RIndex2W), "float", "-4.644691955E-7");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LMiddleW), "float", "0.9238791466");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RMiddleW), "float", "-4.768371582E-7");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LMiddle2W), "float", "0.9238791466");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RMiddle2W), "float", "-4.644691955E-7");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LRingW), "float", "0.9238790274");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RRingW), "float", "-1.490116119E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LRing2W), "float", "0.9238790274");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RRing2W), "float", "1.644958836E-9");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LPinkyW), "float", "0.9238790274");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RPinkyW), "float", "-1.490116119E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LPinky2W), "float", "0.9238790274");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RPinky2W), "float", "1.644958836E-9");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.PelvisW), "float", "-0.4434098899");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.TailW), "float", "0.6826921701");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LThighW), "float", "-0.4923109114");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RThighW), "float", "-0.4923109114");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LKneeW), "float", "0.5031898022");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RKneeW), "float", "0.5031898022");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LCalfW), "float", "0.5274748206");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RCalfW), "float", "0.5274748206");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LFootW), "float", "-0.1815040112");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RFootW), "float", "-0.1815040112");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.LToesW), "float", "-1.490116119E-8");
-            m.writeMemory(GAS(c.Body.Base, c.Body.Position.RToesW), "float", "-1.490116119E-8");
+        private void DisableRotations()
+        {
+            CharacterDetails.DebugRotate = false;
+            CharacterDetails.HeadRotate = false;
+            CharacterDetails.NoseRotate = false;
+            CharacterDetails.NostrilsRotate = false;
+            CharacterDetails.ChinRotate = false;
+            CharacterDetails.LOutEyebrowRotate = false;
+            CharacterDetails.ROutEyebrowRotate = false;
+            CharacterDetails.LInEyebrowRotate = false;
+            CharacterDetails.RInEyebrowRotate = false;
+            CharacterDetails.LEyeRotate = false;
+            CharacterDetails.REyeRotate = false;
+            CharacterDetails.LEyelidRotate = false;
+            CharacterDetails.REyelidRotate = false;
+            CharacterDetails.LLowEyelidRotate = false;
+            CharacterDetails.RLowEyelidRotate = false;
+            CharacterDetails.LEarRotate = false;
+            CharacterDetails.REarRotate = false;
+            CharacterDetails.LCheekRotate = false;
+            CharacterDetails.RCheekRotate = false;
+            CharacterDetails.LMouthRotate = false;
+            CharacterDetails.RMouthRotate = false;
+            CharacterDetails.LUpLipRotate = false;
+            CharacterDetails.RUpLipRotate = false;
+            CharacterDetails.LLowLipRotate = false;
+            CharacterDetails.RLowLipRotate = false;
+            CharacterDetails.NeckRotate = false;
+            CharacterDetails.SternumRotate = false;
+            CharacterDetails.TorsoRotate = false;
+            CharacterDetails.WaistRotate = false;
+            CharacterDetails.LShoulderRotate = false;
+            CharacterDetails.RShoulderRotate = false;
+            CharacterDetails.LClavicleRotate = false;
+            CharacterDetails.RClavicleRotate = false;
+            CharacterDetails.LBreastRotate = false;
+            CharacterDetails.RBreastRotate = false;
+            CharacterDetails.LArmRotate = false;
+            CharacterDetails.RArmRotate = false;
+            CharacterDetails.LElbowRotate = false;
+            CharacterDetails.RElbowRotate = false;
+            CharacterDetails.LForearmRotate = false;
+            CharacterDetails.RForearmRotate = false;
+            CharacterDetails.LWristRotate = false;
+            CharacterDetails.RWristRotate = false;
+            CharacterDetails.LHandRotate = false;
+            CharacterDetails.RHandRotate = false;
+            CharacterDetails.LThumbRotate = false;
+            CharacterDetails.RThumbRotate = false;
+            CharacterDetails.LThumb2Rotate = false;
+            CharacterDetails.RThumb2Rotate = false;
+            CharacterDetails.LIndexRotate = false;
+            CharacterDetails.RIndexRotate = false;
+            CharacterDetails.LIndex2Rotate = false;
+            CharacterDetails.RIndex2Rotate = false;
+            CharacterDetails.LMiddleRotate = false;
+            CharacterDetails.RMiddleRotate = false;
+            CharacterDetails.LMiddle2Rotate = false;
+            CharacterDetails.RMiddle2Rotate = false;
+            CharacterDetails.LRingRotate = false;
+            CharacterDetails.RRingRotate = false;
+            CharacterDetails.LRing2Rotate = false;
+            CharacterDetails.RRing2Rotate = false;
+            CharacterDetails.LPinkyRotate = false;
+            CharacterDetails.RPinkyRotate = false;
+            CharacterDetails.LPinky2Rotate = false;
+            CharacterDetails.RPinky2Rotate = false;
+            CharacterDetails.PelvisRotate = false;
+            CharacterDetails.TailRotate = false;
+            CharacterDetails.Tail2Rotate = false;
+            CharacterDetails.Tail3Rotate = false;
+            CharacterDetails.Tail4Rotate = false;
+            CharacterDetails.LThighRotate = false;
+            CharacterDetails.RThighRotate = false;
+            CharacterDetails.LKneeRotate = false;
+            CharacterDetails.RKneeRotate = false;
+            CharacterDetails.LCalfRotate = false;
+            CharacterDetails.RCalfRotate = false;
+            CharacterDetails.LFootRotate = false;
+            CharacterDetails.RFootRotate = false;
+            CharacterDetails.LToesRotate = false;
+            CharacterDetails.RToesRotate = false;
+            CharacterDetails.LEarringRotate = false;
+            CharacterDetails.REarringRotate = false;
+            CharacterDetails.LEarring2Rotate = false;
+            CharacterDetails.REarring2Rotate = false;
         }
     }
 }

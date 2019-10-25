@@ -1061,7 +1061,6 @@ namespace ConceptMatrix
             MainViewModel.ViewTime4.StatusEffectBox.IsReadOnly = false;
             MainViewModel.ViewTime4.StatusEffectBox2.IsReadOnly = false;
             MainViewModel.ViewTime4.StatusEffectZero.IsEnabled = true;
-            MainViewModel.ViewTime4.StatusEffectText.IsEnabled = true;
 
             if (TargetButton.IsEnabled == true)
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Instance.GposeAddress;
@@ -1111,7 +1110,6 @@ namespace ConceptMatrix
             MainViewModel.ViewTime4.StatusEffectBox.IsReadOnly = true;
             MainViewModel.ViewTime4.StatusEffectBox2.IsReadOnly = true;
             MainViewModel.ViewTime4.StatusEffectZero.IsEnabled = false;
-            MainViewModel.ViewTime4.StatusEffectText.IsEnabled = false;
 
             if (GposeButton.IsKeyboardFocusWithin || GposeButton.IsMouseOver)
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Add(MemoryManager.Instance.BaseAddress, CharacterDetailsViewModel.eOffset);

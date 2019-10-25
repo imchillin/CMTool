@@ -41,6 +41,7 @@ namespace ConceptMatrix.Utility
         public string SkeletonOffset { get; set; }
         public string SkeletonOffset2 { get; set; }
         public string SkeletonOffset3 { get; set; }
+        public string PhysicsOffset { get; set; }
         public string CharacterRenderOffset { get; set; }
         public string CharacterRenderOffset2 { get; set; }
         public string GposeEntityOffset { get; set; }
@@ -244,6 +245,11 @@ namespace ConceptMatrix.Utility
         public string Rotation3 { get; set; }
         public string Rotation4 { get; set; }
 
+        public string DebugX { get; set; }
+        public string DebugY { get; set; }
+        public string DebugZ { get; set; }
+        public string DebugW { get; set; }
+
         public string HeadX { get; set; }
         public string NoseX { get; set; }
         public string NostrilsX { get; set; }
@@ -310,6 +316,9 @@ namespace ConceptMatrix.Utility
         public string RPinky2X { get; set; }
         public string PelvisX { get; set; }
         public string TailX { get; set; }
+        public string Tail2X { get; set; }
+        public string Tail3X { get; set; }
+        public string Tail4X { get; set; }
         public string LThighX { get; set; }
         public string RThighX { get; set; }
         public string LKneeX { get; set; }
@@ -320,6 +329,11 @@ namespace ConceptMatrix.Utility
         public string RFootX { get; set; }
         public string LToesX { get; set; }
         public string RToesX { get; set; }
+        public string LEarringX { get; set; }
+        public string REarringX { get; set; }
+        public string LEarring2X { get; set; }
+        public string REarring2X { get; set; }
+
         public string HeadY { get; set; }
         public string NoseY { get; set; }
         public string NostrilsY { get; set; }
@@ -386,6 +400,9 @@ namespace ConceptMatrix.Utility
         public string RPinky2Y { get; set; }
         public string PelvisY { get; set; }
         public string TailY { get; set; }
+        public string Tail2Y { get; set; }
+        public string Tail3Y { get; set; }
+        public string Tail4Y { get; set; }
         public string LThighY { get; set; }
         public string RThighY { get; set; }
         public string LKneeY { get; set; }
@@ -396,6 +413,11 @@ namespace ConceptMatrix.Utility
         public string RFootY { get; set; }
         public string LToesY { get; set; }
         public string RToesY { get; set; }
+        public string LEarringY { get; set; }
+        public string REarringY { get; set; }
+        public string LEarring2Y { get; set; }
+        public string REarring2Y { get; set; }
+
         public string HeadZ { get; set; }
         public string NoseZ { get; set; }
         public string NostrilsZ { get; set; }
@@ -462,6 +484,9 @@ namespace ConceptMatrix.Utility
         public string RPinky2Z { get; set; }
         public string PelvisZ { get; set; }
         public string TailZ { get; set; }
+        public string Tail2Z { get; set; }
+        public string Tail3Z { get; set; }
+        public string Tail4Z { get; set; }
         public string LThighZ { get; set; }
         public string RThighZ { get; set; }
         public string LKneeZ { get; set; }
@@ -472,6 +497,11 @@ namespace ConceptMatrix.Utility
         public string RFootZ { get; set; }
         public string LToesZ { get; set; }
         public string RToesZ { get; set; }
+        public string LEarringZ { get; set; }
+        public string REarringZ { get; set; }
+        public string LEarring2Z { get; set; }
+        public string REarring2Z { get; set; }
+
         public string HeadW { get; set; }
         public string NoseW { get; set; }
         public string NostrilsW { get; set; }
@@ -538,6 +568,9 @@ namespace ConceptMatrix.Utility
         public string RPinky2W { get; set; }
         public string PelvisW { get; set; }
         public string TailW { get; set; }
+        public string Tail2W { get; set; }
+        public string Tail3W { get; set; }
+        public string Tail4W { get; set; }
         public string LThighW { get; set; }
         public string RThighW { get; set; }
         public string LKneeW { get; set; }
@@ -548,6 +581,10 @@ namespace ConceptMatrix.Utility
         public string RFootW { get; set; }
         public string LToesW { get; set; }
         public string RToesW { get; set; }
+        public string LEarringW { get; set; }
+        public string REarringW { get; set; }
+        public string LEarring2W { get; set; }
+        public string REarring2W { get; set; }
     }
 
     [Serializable]

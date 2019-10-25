@@ -35,9 +35,6 @@
             <TabItem Header="About">
                 <Views:AboutView Margin="0" HorizontalAlignment="Left" Width="1102" Height="530"/>
             </TabItem>
-            <TabItem Header="Beta" IsEnabled="False" Visibility="Hidden">
-                <Views:Beta Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
-            </TabItem>
         </TabControl>
         <ComboBox ToolTip="Displays the list of targetable entities in the area around you.&#xD;&#xA;&#x2022; This list is populated based on distance from the player, and can potentially shift if any entities change positions, including minions." HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="131" ItemsSource="{Binding Path=CharacterDetails.CharacterDetails.Names}" SelectedIndex="{Binding Path=CharacterDetails.CharacterDetails.SelectedIndex}" IsTabStop="False"/>
         <Button HorizontalAlignment="Left" Style="{StaticResource MaterialDesignRaisedAccentButton}" ToolTip="Reload the entity list, refreshing the available entries to select from." materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="146,7,0,0" VerticalAlignment="Top" Width="74" Command="{Binding Path=CharacterDetails.RefreshEntitiesCommand}" IsTabStop="False">

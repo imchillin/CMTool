@@ -117,6 +117,11 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<float> Rotation3 { get; set; }
         [JsonIgnore] public Address<float> Rotation4 { get; set; }
 
+        [JsonIgnore] public Address<float> DebugX { get; set; }
+        [JsonIgnore] public Address<float> DebugY { get; set; }
+        [JsonIgnore] public Address<float> DebugZ { get; set; }
+        [JsonIgnore] public Address<float> DebugW { get; set; }
+
         [JsonIgnore] public Address<float> HeadX { get; set; }
         [JsonIgnore] public Address<float> NoseX { get; set; }
         [JsonIgnore] public Address<float> NostrilsX { get; set; }
@@ -183,6 +188,9 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<float> RPinky2X { get; set; }
         [JsonIgnore] public Address<float> PelvisX { get; set; }
         [JsonIgnore] public Address<float> TailX { get; set; }
+        [JsonIgnore] public Address<float> Tail2X { get; set; }
+        [JsonIgnore] public Address<float> Tail3X { get; set; }
+        [JsonIgnore] public Address<float> Tail4X { get; set; }
         [JsonIgnore] public Address<float> LThighX { get; set; }
         [JsonIgnore] public Address<float> RThighX { get; set; }
         [JsonIgnore] public Address<float> LKneeX { get; set; }
@@ -193,6 +201,11 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<float> RFootX { get; set; }
         [JsonIgnore] public Address<float> LToesX { get; set; }
         [JsonIgnore] public Address<float> RToesX { get; set; }
+        [JsonIgnore] public Address<float> LEarringX { get; set; }
+        [JsonIgnore] public Address<float> REarringX { get; set; }
+        [JsonIgnore] public Address<float> LEarring2X { get; set; }
+        [JsonIgnore] public Address<float> REarring2X { get; set; }
+
         [JsonIgnore] public Address<float> HeadY { get; set; }
         [JsonIgnore] public Address<float> NoseY { get; set; }
         [JsonIgnore] public Address<float> NostrilsY { get; set; }
@@ -259,6 +272,9 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<float> RPinky2Y { get; set; }
         [JsonIgnore] public Address<float> PelvisY { get; set; }
         [JsonIgnore] public Address<float> TailY { get; set; }
+        [JsonIgnore] public Address<float> Tail2Y { get; set; }
+        [JsonIgnore] public Address<float> Tail3Y { get; set; }
+        [JsonIgnore] public Address<float> Tail4Y { get; set; }
         [JsonIgnore] public Address<float> LThighY { get; set; }
         [JsonIgnore] public Address<float> RThighY { get; set; }
         [JsonIgnore] public Address<float> LKneeY { get; set; }
@@ -269,6 +285,11 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<float> RFootY { get; set; }
         [JsonIgnore] public Address<float> LToesY { get; set; }
         [JsonIgnore] public Address<float> RToesY { get; set; }
+        [JsonIgnore] public Address<float> LEarringY { get; set; }
+        [JsonIgnore] public Address<float> REarringY { get; set; }
+        [JsonIgnore] public Address<float> LEarring2Y { get; set; }
+        [JsonIgnore] public Address<float> REarring2Y { get; set; }
+
         [JsonIgnore] public Address<float> HeadZ { get; set; }
         [JsonIgnore] public Address<float> NoseZ { get; set; }
         [JsonIgnore] public Address<float> NostrilsZ { get; set; }
@@ -335,6 +356,9 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<float> RPinky2Z { get; set; }
         [JsonIgnore] public Address<float> PelvisZ { get; set; }
         [JsonIgnore] public Address<float> TailZ { get; set; }
+        [JsonIgnore] public Address<float> Tail2Z { get; set; }
+        [JsonIgnore] public Address<float> Tail3Z { get; set; }
+        [JsonIgnore] public Address<float> Tail4Z { get; set; }
         [JsonIgnore] public Address<float> LThighZ { get; set; }
         [JsonIgnore] public Address<float> RThighZ { get; set; }
         [JsonIgnore] public Address<float> LKneeZ { get; set; }
@@ -345,6 +369,11 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<float> RFootZ { get; set; }
         [JsonIgnore] public Address<float> LToesZ { get; set; }
         [JsonIgnore] public Address<float> RToesZ { get; set; }
+        [JsonIgnore] public Address<float> LEarringZ { get; set; }
+        [JsonIgnore] public Address<float> REarringZ { get; set; }
+        [JsonIgnore] public Address<float> LEarring2Z { get; set; }
+        [JsonIgnore] public Address<float> REarring2Z { get; set; }
+
         [JsonIgnore] public Address<float> HeadW { get; set; }
         [JsonIgnore] public Address<float> NoseW { get; set; }
         [JsonIgnore] public Address<float> NostrilsW { get; set; }
@@ -411,6 +440,9 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<float> RPinky2W { get; set; }
         [JsonIgnore] public Address<float> PelvisW { get; set; }
         [JsonIgnore] public Address<float> TailW { get; set; }
+        [JsonIgnore] public Address<float> Tail2W { get; set; }
+        [JsonIgnore] public Address<float> Tail3W { get; set; }
+        [JsonIgnore] public Address<float> Tail4W { get; set; }
         [JsonIgnore] public Address<float> LThighW { get; set; }
         [JsonIgnore] public Address<float> RThighW { get; set; }
         [JsonIgnore] public Address<float> LKneeW { get; set; }
@@ -421,6 +453,10 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<float> RFootW { get; set; }
         [JsonIgnore] public Address<float> LToesW { get; set; }
         [JsonIgnore] public Address<float> RToesW { get; set; }
+        [JsonIgnore] public Address<float> LEarringW { get; set; }
+        [JsonIgnore] public Address<float> REarringW { get; set; }
+        [JsonIgnore] public Address<float> LEarring2W { get; set; }
+        [JsonIgnore] public Address<float> REarring2W { get; set; }
 
         [JsonIgnore] public Address<float> CameraHeight2 { get; set; }
         [JsonIgnore] public Address<float> CamX { get; set; }
@@ -569,8 +605,179 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public float BoneX { get; set; }
         [JsonIgnore] public float BoneY { get; set; }
         [JsonIgnore] public float BoneZ { get; set; }
+
         [JsonIgnore] public bool RotateFreeze { get; set; }
-        [JsonIgnore] public bool BoneFreeze { get; set; }
+        [JsonIgnore] public bool BoneEditMode { get; set; }
+
+        [JsonIgnore] public bool DebugRotate { get; set; }
+        [JsonIgnore] public bool HeadRotate { get; set; }
+        [JsonIgnore] public bool NoseRotate { get; set; }
+        [JsonIgnore] public bool NostrilsRotate { get; set; }
+        [JsonIgnore] public bool ChinRotate { get; set; }
+        [JsonIgnore] public bool LOutEyebrowRotate { get; set; }
+        [JsonIgnore] public bool ROutEyebrowRotate { get; set; }
+        [JsonIgnore] public bool LInEyebrowRotate { get; set; }
+        [JsonIgnore] public bool RInEyebrowRotate { get; set; }
+        [JsonIgnore] public bool LEyeRotate { get; set; }
+        [JsonIgnore] public bool REyeRotate { get; set; }
+        [JsonIgnore] public bool LEyelidRotate { get; set; }
+        [JsonIgnore] public bool REyelidRotate { get; set; }
+        [JsonIgnore] public bool LLowEyelidRotate { get; set; }
+        [JsonIgnore] public bool RLowEyelidRotate { get; set; }
+        [JsonIgnore] public bool LEarRotate { get; set; }
+        [JsonIgnore] public bool REarRotate { get; set; }
+        [JsonIgnore] public bool LCheekRotate { get; set; }
+        [JsonIgnore] public bool RCheekRotate { get; set; }
+        [JsonIgnore] public bool LMouthRotate { get; set; }
+        [JsonIgnore] public bool RMouthRotate { get; set; }
+        [JsonIgnore] public bool LUpLipRotate { get; set; }
+        [JsonIgnore] public bool RUpLipRotate { get; set; }
+        [JsonIgnore] public bool LLowLipRotate { get; set; }
+        [JsonIgnore] public bool RLowLipRotate { get; set; }
+        [JsonIgnore] public bool NeckRotate { get; set; }
+        [JsonIgnore] public bool SternumRotate { get; set; }
+        [JsonIgnore] public bool TorsoRotate { get; set; }
+        [JsonIgnore] public bool WaistRotate { get; set; }
+        [JsonIgnore] public bool LShoulderRotate { get; set; }
+        [JsonIgnore] public bool RShoulderRotate { get; set; }
+        [JsonIgnore] public bool LClavicleRotate { get; set; }
+        [JsonIgnore] public bool RClavicleRotate { get; set; }
+        [JsonIgnore] public bool LBreastRotate { get; set; }
+        [JsonIgnore] public bool RBreastRotate { get; set; }
+        [JsonIgnore] public bool LArmRotate { get; set; }
+        [JsonIgnore] public bool RArmRotate { get; set; }
+        [JsonIgnore] public bool LElbowRotate { get; set; }
+        [JsonIgnore] public bool RElbowRotate { get; set; }
+        [JsonIgnore] public bool LForearmRotate { get; set; }
+        [JsonIgnore] public bool RForearmRotate { get; set; }
+        [JsonIgnore] public bool LWristRotate { get; set; }
+        [JsonIgnore] public bool RWristRotate { get; set; }
+        [JsonIgnore] public bool LHandRotate { get; set; }
+        [JsonIgnore] public bool RHandRotate { get; set; }
+        [JsonIgnore] public bool LThumbRotate { get; set; }
+        [JsonIgnore] public bool RThumbRotate { get; set; }
+        [JsonIgnore] public bool LThumb2Rotate { get; set; }
+        [JsonIgnore] public bool RThumb2Rotate { get; set; }
+        [JsonIgnore] public bool LIndexRotate { get; set; }
+        [JsonIgnore] public bool RIndexRotate { get; set; }
+        [JsonIgnore] public bool LIndex2Rotate { get; set; }
+        [JsonIgnore] public bool RIndex2Rotate { get; set; }
+        [JsonIgnore] public bool LMiddleRotate { get; set; }
+        [JsonIgnore] public bool RMiddleRotate { get; set; }
+        [JsonIgnore] public bool LMiddle2Rotate { get; set; }
+        [JsonIgnore] public bool RMiddle2Rotate { get; set; }
+        [JsonIgnore] public bool LRingRotate { get; set; }
+        [JsonIgnore] public bool RRingRotate { get; set; }
+        [JsonIgnore] public bool LRing2Rotate { get; set; }
+        [JsonIgnore] public bool RRing2Rotate { get; set; }
+        [JsonIgnore] public bool LPinkyRotate { get; set; }
+        [JsonIgnore] public bool RPinkyRotate { get; set; }
+        [JsonIgnore] public bool LPinky2Rotate { get; set; }
+        [JsonIgnore] public bool RPinky2Rotate { get; set; }
+        [JsonIgnore] public bool PelvisRotate { get; set; }
+        [JsonIgnore] public bool TailRotate { get; set; }
+        [JsonIgnore] public bool Tail2Rotate { get; set; }
+        [JsonIgnore] public bool Tail3Rotate { get; set; }
+        [JsonIgnore] public bool Tail4Rotate { get; set; }
+        [JsonIgnore] public bool LThighRotate { get; set; }
+        [JsonIgnore] public bool RThighRotate { get; set; }
+        [JsonIgnore] public bool LKneeRotate { get; set; }
+        [JsonIgnore] public bool RKneeRotate { get; set; }
+        [JsonIgnore] public bool LCalfRotate { get; set; }
+        [JsonIgnore] public bool RCalfRotate { get; set; }
+        [JsonIgnore] public bool LFootRotate { get; set; }
+        [JsonIgnore] public bool RFootRotate { get; set; }
+        [JsonIgnore] public bool LToesRotate { get; set; }
+        [JsonIgnore] public bool RToesRotate { get; set; }
+        [JsonIgnore] public bool LEarringRotate { get; set; }
+        [JsonIgnore] public bool REarringRotate { get; set; }
+        [JsonIgnore] public bool LEarring2Rotate { get; set; }
+        [JsonIgnore] public bool REarring2Rotate { get; set; }
+
+        [JsonIgnore] public bool DebugCheck { get; set; }
+        [JsonIgnore] public bool HeadCheck { get; set; }
+        [JsonIgnore] public bool NoseCheck { get; set; }
+        [JsonIgnore] public bool NostrilsCheck { get; set; }
+        [JsonIgnore] public bool ChinCheck { get; set; }
+        [JsonIgnore] public bool LOutEyebrowCheck { get; set; }
+        [JsonIgnore] public bool ROutEyebrowCheck { get; set; }
+        [JsonIgnore] public bool LInEyebrowCheck { get; set; }
+        [JsonIgnore] public bool RInEyebrowCheck { get; set; }
+        [JsonIgnore] public bool LEyeCheck { get; set; }
+        [JsonIgnore] public bool REyeCheck { get; set; }
+        [JsonIgnore] public bool LEyelidCheck { get; set; }
+        [JsonIgnore] public bool REyelidCheck { get; set; }
+        [JsonIgnore] public bool LLowEyelidCheck { get; set; }
+        [JsonIgnore] public bool RLowEyelidCheck { get; set; }
+        [JsonIgnore] public bool LEarCheck { get; set; }
+        [JsonIgnore] public bool REarCheck { get; set; }
+        [JsonIgnore] public bool LCheekCheck { get; set; }
+        [JsonIgnore] public bool RCheekCheck { get; set; }
+        [JsonIgnore] public bool LMouthCheck { get; set; }
+        [JsonIgnore] public bool RMouthCheck { get; set; }
+        [JsonIgnore] public bool LUpLipCheck { get; set; }
+        [JsonIgnore] public bool RUpLipCheck { get; set; }
+        [JsonIgnore] public bool LLowLipCheck { get; set; }
+        [JsonIgnore] public bool RLowLipCheck { get; set; }
+        [JsonIgnore] public bool NeckCheck { get; set; }
+        [JsonIgnore] public bool SternumCheck { get; set; }
+        [JsonIgnore] public bool TorsoCheck { get; set; }
+        [JsonIgnore] public bool WaistCheck { get; set; }
+        [JsonIgnore] public bool LShoulderCheck { get; set; }
+        [JsonIgnore] public bool RShoulderCheck { get; set; }
+        [JsonIgnore] public bool LClavicleCheck { get; set; }
+        [JsonIgnore] public bool RClavicleCheck { get; set; }
+        [JsonIgnore] public bool LBreastCheck { get; set; }
+        [JsonIgnore] public bool RBreastCheck { get; set; }
+        [JsonIgnore] public bool LArmCheck { get; set; }
+        [JsonIgnore] public bool RArmCheck { get; set; }
+        [JsonIgnore] public bool LElbowCheck { get; set; }
+        [JsonIgnore] public bool RElbowCheck { get; set; }
+        [JsonIgnore] public bool LForearmCheck { get; set; }
+        [JsonIgnore] public bool RForearmCheck { get; set; }
+        [JsonIgnore] public bool LWristCheck { get; set; }
+        [JsonIgnore] public bool RWristCheck { get; set; }
+        [JsonIgnore] public bool LHandCheck { get; set; }
+        [JsonIgnore] public bool RHandCheck { get; set; }
+        [JsonIgnore] public bool LThumbCheck { get; set; }
+        [JsonIgnore] public bool RThumbCheck { get; set; }
+        [JsonIgnore] public bool LThumb2Check { get; set; }
+        [JsonIgnore] public bool RThumb2Check { get; set; }
+        [JsonIgnore] public bool LIndexCheck { get; set; }
+        [JsonIgnore] public bool RIndexCheck { get; set; }
+        [JsonIgnore] public bool LIndex2Check { get; set; }
+        [JsonIgnore] public bool RIndex2Check { get; set; }
+        [JsonIgnore] public bool LMiddleCheck { get; set; }
+        [JsonIgnore] public bool RMiddleCheck { get; set; }
+        [JsonIgnore] public bool LMiddle2Check { get; set; }
+        [JsonIgnore] public bool RMiddle2Check { get; set; }
+        [JsonIgnore] public bool LRingCheck { get; set; }
+        [JsonIgnore] public bool RRingCheck { get; set; }
+        [JsonIgnore] public bool LRing2Check { get; set; }
+        [JsonIgnore] public bool RRing2Check { get; set; }
+        [JsonIgnore] public bool LPinkyCheck { get; set; }
+        [JsonIgnore] public bool RPinkyCheck { get; set; }
+        [JsonIgnore] public bool LPinky2Check { get; set; }
+        [JsonIgnore] public bool RPinky2Check { get; set; }
+        [JsonIgnore] public bool PelvisCheck { get; set; }
+        [JsonIgnore] public bool TailCheck { get; set; }
+        [JsonIgnore] public bool Tail2Check { get; set; }
+        [JsonIgnore] public bool Tail3Check { get; set; }
+        [JsonIgnore] public bool Tail4Check { get; set; }
+        [JsonIgnore] public bool LThighCheck { get; set; }
+        [JsonIgnore] public bool RThighCheck { get; set; }
+        [JsonIgnore] public bool LKneeCheck { get; set; }
+        [JsonIgnore] public bool RKneeCheck { get; set; }
+        [JsonIgnore] public bool LCalfCheck { get; set; }
+        [JsonIgnore] public bool RCalfCheck { get; set; }
+        [JsonIgnore] public bool LFootCheck { get; set; }
+        [JsonIgnore] public bool RFootCheck { get; set; }
+        [JsonIgnore] public bool LToesCheck { get; set; }
+        [JsonIgnore] public bool RToesCheck { get; set; }
+        [JsonIgnore] public bool LEarringCheck { get; set; }
+        [JsonIgnore] public bool REarringCheck { get; set; }
+        [JsonIgnore] public bool LEarring2Check { get; set; }
+        [JsonIgnore] public bool REarring2Check { get; set; }
 
         public CharacterDetails()
         {
@@ -751,6 +958,11 @@ namespace ConceptMatrix.Models
             Rotation3 = new Address<float>();
             Rotation4 = new Address<float>();
 
+            DebugX = new Address<float>();
+            DebugY = new Address<float>();
+            DebugZ = new Address<float>();
+            DebugW = new Address<float>();
+
             HeadX = new Address<float>();
             NoseX = new Address<float>();
             NostrilsX = new Address<float>();
@@ -817,6 +1029,9 @@ namespace ConceptMatrix.Models
             RPinky2X = new Address<float>();
             PelvisX = new Address<float>();
             TailX = new Address<float>();
+            Tail2X = new Address<float>();
+            Tail3X = new Address<float>();
+            Tail4X = new Address<float>();
             LThighX = new Address<float>();
             RThighX = new Address<float>();
             LKneeX = new Address<float>();
@@ -827,6 +1042,11 @@ namespace ConceptMatrix.Models
             RFootX = new Address<float>();
             LToesX = new Address<float>();
             RToesX = new Address<float>();
+            LEarringX = new Address<float>();
+            REarringX = new Address<float>();
+            LEarring2X = new Address<float>();
+            REarring2X = new Address<float>();
+
             HeadY = new Address<float>();
             NoseY = new Address<float>();
             NostrilsY = new Address<float>();
@@ -893,6 +1113,9 @@ namespace ConceptMatrix.Models
             RPinky2Y = new Address<float>();
             PelvisY = new Address<float>();
             TailY = new Address<float>();
+            Tail2Y = new Address<float>();
+            Tail3Y = new Address<float>();
+            Tail4Y = new Address<float>();
             LThighY = new Address<float>();
             RThighY = new Address<float>();
             LKneeY = new Address<float>();
@@ -903,6 +1126,11 @@ namespace ConceptMatrix.Models
             RFootY = new Address<float>();
             LToesY = new Address<float>();
             RToesY = new Address<float>();
+            LEarringY = new Address<float>();
+            REarringY = new Address<float>();
+            LEarring2Y = new Address<float>();
+            REarring2Y = new Address<float>();
+
             HeadZ = new Address<float>();
             NoseZ = new Address<float>();
             NostrilsZ = new Address<float>();
@@ -969,6 +1197,9 @@ namespace ConceptMatrix.Models
             RPinky2Z = new Address<float>();
             PelvisZ = new Address<float>();
             TailZ = new Address<float>();
+            Tail2Z = new Address<float>();
+            Tail3Z = new Address<float>();
+            Tail4Z = new Address<float>();
             LThighZ = new Address<float>();
             RThighZ = new Address<float>();
             LKneeZ = new Address<float>();
@@ -979,6 +1210,11 @@ namespace ConceptMatrix.Models
             RFootZ = new Address<float>();
             LToesZ = new Address<float>();
             RToesZ = new Address<float>();
+            LEarringZ = new Address<float>();
+            REarringZ = new Address<float>();
+            LEarring2Z = new Address<float>();
+            REarring2Z = new Address<float>();
+
             HeadW = new Address<float>();
             NoseW = new Address<float>();
             NostrilsW = new Address<float>();
@@ -1045,6 +1281,9 @@ namespace ConceptMatrix.Models
             RPinky2W = new Address<float>();
             PelvisW = new Address<float>();
             TailW = new Address<float>();
+            Tail2W = new Address<float>();
+            Tail3W = new Address<float>();
+            Tail4W = new Address<float>();
             LThighW = new Address<float>();
             RThighW = new Address<float>();
             LKneeW = new Address<float>();
@@ -1055,6 +1294,10 @@ namespace ConceptMatrix.Models
             RFootW = new Address<float>();
             LToesW = new Address<float>();
             RToesW = new Address<float>();
+            LEarringW = new Address<float>();
+            REarringW = new Address<float>();
+            LEarring2W = new Address<float>();
+            REarring2W = new Address<float>();
 
             HairTone = new Address<byte>();
             HairTone = new Address<byte>();
@@ -1079,6 +1322,7 @@ namespace ConceptMatrix.Models
             Min.Checker = true;
             CZoom.Checker = true;
             RotateFreeze = false;
+            BoneEditMode = false;
         }
     }
 }
