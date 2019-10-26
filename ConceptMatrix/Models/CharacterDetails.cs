@@ -608,6 +608,20 @@ namespace ConceptMatrix.Models
 
         [JsonIgnore] public bool RotateFreeze { get; set; }
         [JsonIgnore] public bool BoneEditMode { get; set; }
+        [JsonIgnore] public bool WriteHeadBones { get; set; }
+        [JsonIgnore] public bool WriteTorsoBones { get; set; }
+        [JsonIgnore] public bool WriteLeftArmBones { get; set; }
+        [JsonIgnore] public bool WriteRightArmBones { get; set; }
+        [JsonIgnore] public bool WriteLeftLegBones { get; set; }
+        [JsonIgnore] public bool WriteRightLegBones { get; set; }
+        [JsonIgnore] public bool WriteAllBones { get; set; }
+        [JsonIgnore] public bool SaveHeadBones { get; set; }
+        [JsonIgnore] public bool SaveTorsoBones { get; set; }
+        [JsonIgnore] public bool SaveLeftArmBones { get; set; }
+        [JsonIgnore] public bool SaveRightArmBones { get; set; }
+        [JsonIgnore] public bool SaveLeftLegBones { get; set; }
+        [JsonIgnore] public bool SaveRightLegBones { get; set; }
+        [JsonIgnore] public bool SaveAllBones { get; set; }
 
         [JsonIgnore] public bool DebugRotate { get; set; }
         [JsonIgnore] public bool HeadRotate { get; set; }
@@ -1323,6 +1337,7 @@ namespace ConceptMatrix.Models
             CZoom.Checker = true;
             RotateFreeze = false;
             BoneEditMode = false;
+            WriteAllBones = false;
         }
     }
 }

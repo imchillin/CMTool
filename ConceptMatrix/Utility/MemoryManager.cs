@@ -37,6 +37,8 @@ namespace ConceptMatrix.Utility
         public string BaseAddress { get; set; }
         public string CameraAddress { get; set; }
         public string GposeAddress { get; set; }
+        public string GposeEntityOffset { get; set; }
+        public string GposeCheckAddress { get; set; }
         public string TargetAddress { get; set; }
         public string WeatherAddress { get; set; }
         public string TimeAddress { get; set; }
@@ -49,7 +51,6 @@ namespace ConceptMatrix.Utility
         public string PhysicsAddress { get; set; }
         public string CharacterRenderAddress { get; set; }
         public string CharacterRenderAddress2 { get; set; }
-        public string GposeEntityOffset { get; set; }
         /// <summary>
         /// Constructor for the singleton memory manager
         /// </summary>

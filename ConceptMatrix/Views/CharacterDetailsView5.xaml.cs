@@ -26,23 +26,424 @@ namespace ConceptMatrix.Views
     /// </summary>
     public partial class CharacterDetailsView5 : UserControl
     {
-        private readonly Mem m = MemoryManager.Instance.MemLib;
-        private CharacterOffsets c = Settings.Instance.Character;
+        #region floats
+        public float HeadXSav;
+        public float HeadYSav;
+        public float HeadZSav;
+        public float HeadWSav;
 
-        private string GAS(params string[] args) => MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, args);
+        public float NoseXSav;
+        public float NoseYSav;
+        public float NoseZSav;
+        public float NoseWSav;
 
-        public bool EditMode;
+        public float NostrilsXSav;
+        public float NostrilsYSav;
+        public float NostrilsZSav;
+        public float NostrilsWSav;
+
+        public float ChinXSav;
+        public float ChinYSav;
+        public float ChinZSav;
+        public float ChinWSav;
+
+        public float LOutEyebrowXSav;
+        public float LOutEyebrowYSav;
+        public float LOutEyebrowZSav;
+        public float LOutEyebrowWSav;
+
+        public float ROutEyebrowXSav;
+        public float ROutEyebrowYSav;
+        public float ROutEyebrowZSav;
+        public float ROutEyebrowWSav;
+
+        public float LInEyebrowXSav;
+        public float LInEyebrowYSav;
+        public float LInEyebrowZSav;
+        public float LInEyebrowWSav;
+
+        public float RInEyebrowXSav;
+        public float RInEyebrowYSav;
+        public float RInEyebrowZSav;
+        public float RInEyebrowWSav;
+
+        public float LEyeXSav;
+        public float LEyeYSav;
+        public float LEyeZSav;
+        public float LEyeWSav;
+
+        public float REyeXSav;
+        public float REyeYSav;
+        public float REyeZSav;
+        public float REyeWSav;
+
+        public float LEyelidXSav;
+        public float LEyelidYSav;
+        public float LEyelidZSav;
+        public float LEyelidWSav;
+
+        public float REyelidXSav;
+        public float REyelidYSav;
+        public float REyelidZSav;
+        public float REyelidWSav;
+
+        public float LLowEyelidXSav;
+        public float LLowEyelidYSav;
+        public float LLowEyelidZSav;
+        public float LLowEyelidWSav;
+
+        public float RLowEyelidXSav;
+        public float RLowEyelidYSav;
+        public float RLowEyelidZSav;
+        public float RLowEyelidWSav;
+
+        public float LEarXSav;
+        public float LEarYSav;
+        public float LEarZSav;
+        public float LEarWSav;
+
+        public float REarXSav;
+        public float REarYSav;
+        public float REarZSav;
+        public float REarWSav;
+
+        public float LCheekXSav;
+        public float LCheekYSav;
+        public float LCheekZSav;
+        public float LCheekWSav;
+
+        public float RCheekXSav;
+        public float RCheekYSav;
+        public float RCheekZSav;
+        public float RCheekWSav;
+
+        public float LMouthXSav;
+        public float LMouthYSav;
+        public float LMouthZSav;
+        public float LMouthWSav;
+
+        public float RMouthXSav;
+        public float RMouthYSav;
+        public float RMouthZSav;
+        public float RMouthWSav;
+
+        public float LUpLipXSav;
+        public float LUpLipYSav;
+        public float LUpLipZSav;
+        public float LUpLipWSav;
+
+        public float RUpLipXSav;
+        public float RUpLipYSav;
+        public float RUpLipZSav;
+        public float RUpLipWSav;
+
+        public float LLowLipXSav;
+        public float LLowLipYSav;
+        public float LLowLipZSav;
+        public float LLowLipWSav;
+
+        public float RLowLipXSav;
+        public float RLowLipYSav;
+        public float RLowLipZSav;
+        public float RLowLipWSav;
+
+        public float NeckXSav;
+        public float NeckYSav;
+        public float NeckZSav;
+        public float NeckWSav;
+
+        public float SternumXSav;
+        public float SternumYSav;
+        public float SternumZSav;
+        public float SternumWSav;
+
+        public float TorsoXSav;
+        public float TorsoYSav;
+        public float TorsoZSav;
+        public float TorsoWSav;
+
+        public float WaistXSav;
+        public float WaistYSav;
+        public float WaistZSav;
+        public float WaistWSav;
+
+        public float LBreastXSav;
+        public float LBreastYSav;
+        public float LBreastZSav;
+        public float LBreastWSav;
+
+        public float RBreastXSav;
+        public float RBreastYSav;
+        public float RBreastZSav;
+        public float RBreastWSav;
+
+        public float PelvisXSav;
+        public float PelvisYSav;
+        public float PelvisZSav;
+        public float PelvisWSav;
+
+        public float TailXSav;
+        public float TailYSav;
+        public float TailZSav;
+        public float TailWSav;
+
+        public float Tail2XSav;
+        public float Tail2YSav;
+        public float Tail2ZSav;
+        public float Tail2WSav;
+
+        public float Tail3XSav;
+        public float Tail3YSav;
+        public float Tail3ZSav;
+        public float Tail3WSav;
+
+        public float Tail4XSav;
+        public float Tail4YSav;
+        public float Tail4ZSav;
+        public float Tail4WSav;
+
+        public float LShoulderXSav;
+        public float LShoulderYSav;
+        public float LShoulderZSav;
+        public float LShoulderWSav;
+
+        public float LClavicleXSav;
+        public float LClavicleYSav;
+        public float LClavicleZSav;
+        public float LClavicleWSav;
+
+        public float LArmXSav;
+        public float LArmYSav;
+        public float LArmZSav;
+        public float LArmWSav;
+
+        public float LElbowXSav;
+        public float LElbowYSav;
+        public float LElbowZSav;
+        public float LElbowWSav;
+
+        public float LForearmXSav;
+        public float LForearmYSav;
+        public float LForearmZSav;
+        public float LForearmWSav;
+
+        public float LWristXSav;
+        public float LWristYSav;
+        public float LWristZSav;
+        public float LWristWSav;
+
+        public float LHandXSav;
+        public float LHandYSav;
+        public float LHandZSav;
+        public float LHandWSav;
+
+        public float LThumbXSav;
+        public float LThumbYSav;
+        public float LThumbZSav;
+        public float LThumbWSav;
+
+        public float LThumb2XSav;
+        public float LThumb2YSav;
+        public float LThumb2ZSav;
+        public float LThumb2WSav;
+
+        public float LIndexXSav;
+        public float LIndexYSav;
+        public float LIndexZSav;
+        public float LIndexWSav;
+
+        public float LIndex2XSav;
+        public float LIndex2YSav;
+        public float LIndex2ZSav;
+        public float LIndex2WSav;
+
+        public float LMiddleXSav;
+        public float LMiddleYSav;
+        public float LMiddleZSav;
+        public float LMiddleWSav;
+
+        public float LMiddle2XSav;
+        public float LMiddle2YSav;
+        public float LMiddle2ZSav;
+        public float LMiddle2WSav;
+
+        public float LRingXSav;
+        public float LRingYSav;
+        public float LRingZSav;
+        public float LRingWSav;
+
+        public float LRing2XSav;
+        public float LRing2YSav;
+        public float LRing2ZSav;
+        public float LRing2WSav;
+
+        public float LPinkyXSav;
+        public float LPinkyYSav;
+        public float LPinkyZSav;
+        public float LPinkyWSav;
+
+        public float LPinky2XSav;
+        public float LPinky2YSav;
+        public float LPinky2ZSav;
+        public float LPinky2WSav;
+
+        public float RShoulderXSav;
+        public float RShoulderYSav;
+        public float RShoulderZSav;
+        public float RShoulderWSav;
+
+        public float RClavicleXSav;
+        public float RClavicleYSav;
+        public float RClavicleZSav;
+        public float RClavicleWSav;
+
+        public float RArmXSav;
+        public float RArmYSav;
+        public float RArmZSav;
+        public float RArmWSav;
+
+        public float RElbowXSav;
+        public float RElbowYSav;
+        public float RElbowZSav;
+        public float RElbowWSav;
+
+        public float RForearmXSav;
+        public float RForearmYSav;
+        public float RForearmZSav;
+        public float RForearmWSav;
+
+        public float RWristXSav;
+        public float RWristYSav;
+        public float RWristZSav;
+        public float RWristWSav;
+
+        public float RHandXSav;
+        public float RHandYSav;
+        public float RHandZSav;
+        public float RHandWSav;
+
+        public float RThumbXSav;
+        public float RThumbYSav;
+        public float RThumbZSav;
+        public float RThumbWSav;
+
+        public float RThumb2XSav;
+        public float RThumb2YSav;
+        public float RThumb2ZSav;
+        public float RThumb2WSav;
+
+        public float RIndexXSav;
+        public float RIndexYSav;
+        public float RIndexZSav;
+        public float RIndexWSav;
+
+        public float RIndex2XSav;
+        public float RIndex2YSav;
+        public float RIndex2ZSav;
+        public float RIndex2WSav;
+
+        public float RMiddleXSav;
+        public float RMiddleYSav;
+        public float RMiddleZSav;
+        public float RMiddleWSav;
+
+        public float RMiddle2XSav;
+        public float RMiddle2YSav;
+        public float RMiddle2ZSav;
+        public float RMiddle2WSav;
+
+        public float RRingXSav;
+        public float RRingYSav;
+        public float RRingZSav;
+        public float RRingWSav;
+
+        public float RRing2XSav;
+        public float RRing2YSav;
+        public float RRing2ZSav;
+        public float RRing2WSav;
+
+        public float RPinkyXSav;
+        public float RPinkyYSav;
+        public float RPinkyZSav;
+        public float RPinkyWSav;
+
+        public float RPinky2XSav;
+        public float RPinky2YSav;
+        public float RPinky2ZSav;
+        public float RPinky2WSav;
+
+        public float LThighXSav;
+        public float LThighYSav;
+        public float LThighZSav;
+        public float LThighWSav;
+
+        public float LKneeXSav;
+        public float LKneeYSav;
+        public float LKneeZSav;
+        public float LKneeWSav;
+
+        public float LCalfXSav;
+        public float LCalfYSav;
+        public float LCalfZSav;
+        public float LCalfWSav;
+
+        public float LFootXSav;
+        public float LFootYSav;
+        public float LFootZSav;
+        public float LFootWSav;
+
+        public float LToesXSav;
+        public float LToesYSav;
+        public float LToesZSav;
+        public float LToesWSav;
+
+        public float RThighXSav;
+        public float RThighYSav;
+        public float RThighZSav;
+        public float RThighWSav;
+
+        public float RKneeXSav;
+        public float RKneeYSav;
+        public float RKneeZSav;
+        public float RKneeWSav;
+
+        public float RCalfXSav;
+        public float RCalfYSav;
+        public float RCalfZSav;
+        public float RCalfWSav;
+
+        public float RFootXSav;
+        public float RFootYSav;
+        public float RFootZSav;
+        public float RFootWSav;
+
+        public float RToesXSav;
+        public float RToesYSav;
+        public float RToesZSav;
+        public float RToesWSav;
+#endregion
+
         public byte[] SkeletonValue;
         public byte[] SkeletonValue2;
         public byte[] SkeletonValue3;
         public byte[] PhysicsValue;
+
+        public bool HeadSaved;
+        public bool TorsoSaved;
+        public bool LeftArmSaved;
+        public bool RightArmSaved;
+        public bool LeftLegSaved;
+        public bool RightLegSaved;
+
+        private readonly Mem m = MemoryManager.Instance.MemLib;
+        private CharacterOffsets c = Settings.Instance.Character;
+        private string GAS(params string[] args) => MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, args);
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
         public CharacterDetailsView5()
         {
             InitializeComponent();
             MainViewModel.ViewTime5 = this;
         }
-
 
         private Vector3D GetEulerAngles() => new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
 
@@ -15209,7 +15610,7 @@ namespace ConceptMatrix.Views
 
         private void EditModeButton_Checked(object sender, RoutedEventArgs e)
         {
-            EditMode = true;
+            CharacterDetails.BoneEditMode = true;
             EnableAll();
 
             var seklval1 = System.BitConverter.GetBytes(MemoryManager.Instance.MemLib.readLong(MemoryManager.Instance.SkeletonAddress));
@@ -15221,7 +15622,6 @@ namespace ConceptMatrix.Views
             SkeletonValue3 = seklval3;
             PhysicsValue = physval;
 
-            CharacterDetails.BoneEditMode = true;
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress, "bytes", "0x90 0x90 0x90 0x90 0x90 0x90");
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress2, "bytes", "0x90 0x90 0x90 0x90 0x90 0x90");
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress3, "bytes", "0x90 0x90 0x90 0x90");
@@ -15229,11 +15629,10 @@ namespace ConceptMatrix.Views
         }
         private void EditModeButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            EditMode = false;
+            CharacterDetails.BoneEditMode = false;
             UncheckAll();
             DisableAll();
 
-            CharacterDetails.BoneEditMode = false;
             MemoryManager.Instance.MemLib.writeBytes(MemoryManager.Instance.SkeletonAddress, SkeletonValue);
             MemoryManager.Instance.MemLib.writeBytes(MemoryManager.Instance.SkeletonAddress2, SkeletonValue2);
             MemoryManager.Instance.MemLib.writeBytes(MemoryManager.Instance.SkeletonAddress3, SkeletonValue3);
@@ -15251,7 +15650,7 @@ namespace ConceptMatrix.Views
         }
         private void PhysicsButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            if (EditMode)
+            if (CharacterDetails.BoneEditMode)
             {
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.PhysicsAddress, "bytes", "0x90 0x90 0x90 0x90");
             }
@@ -15292,12 +15691,787 @@ namespace ConceptMatrix.Views
 
         private void TPoseButton_Click(object sender, RoutedEventArgs e)
         {
-            EnableRotations();
-            TPoseX();
-            TPoseY();
-            TPoseZ();
-            TPoseW();
-            DisableRotations();
+            CharacterDetails.WriteAllBones = true;
+
+            //X Rotations
+            //CharacterDetails.HeadX.value = 0.7071064711f;
+            //CharacterDetails.NoseX.value = 0.7071064711f;
+            //CharacterDetails.NostrilsX.value = 0.7071064711f;
+            //CharacterDetails.ChinX.value = 0.7010570765f;
+            //CharacterDetails.LOutEyebrowX.value = 0.803856492f;
+            //CharacterDetails.ROutEyebrowX.value = 0.594822526f;
+            //CharacterDetails.LInEyebrowX.value = 0.7071064711f;
+            //CharacterDetails.RInEyebrowX.value = 0.7071064711f;
+            //CharacterDetails.LEyeX.value = 0.7071064711f;
+            //CharacterDetails.REyeX.value = 0.7071064711f;
+            //CharacterDetails.LEyelidX.value = 0.731854558f;
+            //CharacterDetails.REyelidX.value = 0.6589646935f;
+            //CharacterDetails.LLowEyelidX.value = 0.7395583391f;
+            //CharacterDetails.RLowEyelidX.value = 0.6428881288f;
+            //CharacterDetails.LEarX.value = -0.3030564189f;
+            //CharacterDetails.REarX.value = 0.3502247632f;
+            //CharacterDetails.LCheekX.value = 0.7933529615f;
+            //CharacterDetails.RCheekX.value = 0.6087611914f;
+            //CharacterDetails.LMouthX.value = 0.8191515803f;
+            //CharacterDetails.RMouthX.value = 0.5735763311f;
+            //CharacterDetails.LUpLipX.value = 0.7070794702f;
+            //CharacterDetails.RUpLipX.value = 0.7071062922f;
+            //CharacterDetails.LLowLipX.value = 0.7071064711f;
+            //CharacterDetails.RLowLipX.value = 0.7018356919f;
+            CharacterDetails.NeckX.value = 0.6045512557f;
+            CharacterDetails.SternumX.value = 0.5119624138f;
+            CharacterDetails.TorsoX.value = 0.4947781861f;
+            CharacterDetails.WaistX.value = 0.4738240242f;
+            CharacterDetails.LShoulderX.value = -0.6383195519f;
+            CharacterDetails.RShoulderX.value = -0.2362460941f;
+            CharacterDetails.LClavicleX.value = 2.980232239E-8f;
+            CharacterDetails.RClavicleX.value = -1.490116119E-8f;
+            CharacterDetails.LBreastX.value = -0.03088223934f;
+            CharacterDetails.RBreastX.value = -0.03088220209f;
+            CharacterDetails.LArmX.value = -0.6383193135f;
+            CharacterDetails.RArmX.value = -0.236246109f;
+            CharacterDetails.LElbowX.value = -0.6540370584f;
+            CharacterDetails.RElbowX.value = 0.2724279761f;
+            CharacterDetails.LForearmX.value = -0.6677876711f;
+            CharacterDetails.RForearmX.value = 0.3077905476f;
+            CharacterDetails.LWristX.value = -0.6532810926f;
+            CharacterDetails.RWristX.value = -0.2705979645f;
+            CharacterDetails.LHandX.value = -0.6532812119f;
+            CharacterDetails.RHandX.value = -0.2705982924f;
+            CharacterDetails.LThumbX.value = 0.4309564829f;
+            CharacterDetails.RThumbX.value = 0.2627345026f;
+            CharacterDetails.LThumb2X.value = 0.4309564829f;
+            CharacterDetails.RThumb2X.value = 0.2627344429f;
+            CharacterDetails.LIndexX.value = 2.980232239E-8f;
+            CharacterDetails.RIndexX.value = -0.3826832771f;
+            CharacterDetails.LIndex2X.value = 1.149457951E-8f;
+            CharacterDetails.RIndex2X.value = -0.3826832473f;
+            CharacterDetails.LMiddleX.value = 2.980232239E-8f;
+            CharacterDetails.RMiddleX.value = -0.3826832771f;
+            CharacterDetails.LMiddle2X.value = 1.149457951E-8f;
+            CharacterDetails.RMiddle2X.value = -0.3826832473f;
+            CharacterDetails.LRingX.value = 0f;
+            CharacterDetails.RRingX.value = -0.3826832175f;
+            CharacterDetails.LRing2X.value = 6.836367028E-10f;
+            CharacterDetails.RRing2X.value = -0.3826831877f;
+            CharacterDetails.LPinkyX.value = 0f;
+            CharacterDetails.RPinkyX.value = -0.3826832175f;
+            CharacterDetails.LPinky2X.value = 6.836367028E-10f;
+            CharacterDetails.RPinky2X.value = -0.3826831877f;
+            CharacterDetails.PelvisX.value = 0.550806284f;
+            CharacterDetails.TailX.value = -0.184204489f;
+            CharacterDetails.LThighX.value = 0.5075724125f;
+            CharacterDetails.RThighX.value = 0.5075724125f;
+            CharacterDetails.LKneeX.value = -0.4967896044f;
+            CharacterDetails.RKneeX.value = -0.4967896044f;
+            CharacterDetails.LCalfX.value = -0.4709248245f;
+            CharacterDetails.RCalfX.value = -0.4709248245f;
+            CharacterDetails.LFootX.value = 0.6834150553f;
+            CharacterDetails.RFootX.value = 0.6834150553f;
+            CharacterDetails.LToesX.value = 0.7071067095f;
+            CharacterDetails.RToesX.value = 0.7071067095f;
+
+            //Y Rotations
+            //CharacterDetails.HeadY.value = 2.980232239E-8f;
+            //CharacterDetails.NoseY.value = 2.967532708E-8f;
+            //CharacterDetails.NostrilsY.value = 2.967532708E-8f;
+            //CharacterDetails.ChinY.value = -0.09229586273f;
+            //CharacterDetails.LOutEyebrowY.value = 2.367235652E-8f;
+            //CharacterDetails.ROutEyebrowY.value = 3.493174816E-8f;
+            //CharacterDetails.LInEyebrowY.value = 2.967532708E-8f;
+            //CharacterDetails.RInEyebrowY.value = 2.967532708E-8f;
+            //CharacterDetails.LEyeY.value = 2.967532708E-8f;
+            //CharacterDetails.REyeY.value = 2.967532708E-8f;
+            //CharacterDetails.LEyelidY.value = 0.1290455163f;
+            //CharacterDetails.REyelidY.value = 0.1161931232f;
+            //CharacterDetails.LLowEyelidY.value = -0.1504644901f;
+            //CharacterDetails.RLowEyelidY.value = -0.1307967603f;
+            //CharacterDetails.LEarY.value = 0.2961898446f;
+            //CharacterDetails.REarY.value = 0.8353264332f;
+            //CharacterDetails.LCheekY.value = 2.427711721E-8f;
+            //CharacterDetails.RCheekY.value = 3.451231834E-8f;
+            //CharacterDetails.LMouthY.value = 2.549330702E-8f;
+            //CharacterDetails.RMouthY.value = 3.55409604E-8f;
+            //CharacterDetails.LUpLipY.value = 0.006170331966f;
+            //CharacterDetails.RUpLipY.value = 3.026798368E-8f;
+            //CharacterDetails.LLowLipY.value = 2.980232239E-8f;
+            //CharacterDetails.RLowLipY.value = -0.08617512882f;
+            CharacterDetails.NeckY.value = 0.366766274f;
+            CharacterDetails.SternumY.value = 0.4877440631f;
+            CharacterDetails.TorsoY.value = 0.5051676631f;
+            CharacterDetails.WaistY.value = 0.5248720646f;
+            CharacterDetails.LShoulderY.value = 0.3042170703f;
+            CharacterDetails.RShoulderY.value = 0.6664740443f;
+            CharacterDetails.LClavicleY.value = 0f;
+            CharacterDetails.RClavicleY.value = 0.9999997616f;
+            CharacterDetails.LBreastY.value = -0.6213850379f;
+            CharacterDetails.RBreastY.value = -0.782286942f;
+            CharacterDetails.LArmY.value = 0.3042170107f;
+            CharacterDetails.RArmY.value = 0.6664740443f;
+            CharacterDetails.LElbowY.value = 0.2687657475f;
+            CharacterDetails.RElbowY.value = -0.6525203586f;
+            CharacterDetails.LForearmY.value = 0.2325061858f;
+            CharacterDetails.RForearmY.value = -0.6366041303f;
+            CharacterDetails.LWristY.value = 0.2705978751f;
+            CharacterDetails.RWristY.value = 0.6532813907f;
+            CharacterDetails.LHandY.value = 0.2705976069f;
+            CharacterDetails.RHandY.value = 0.6532812119f;
+            CharacterDetails.LThumbY.value = -0.5649164915f;
+            CharacterDetails.RThumbY.value = -0.6527751088f;
+            CharacterDetails.LThumb2Y.value = -0.5649165511f;
+            CharacterDetails.RThumb2Y.value = -0.6527751684f;
+            CharacterDetails.LIndexY.value = -4.917383194E-7f;
+            CharacterDetails.RIndexY.value = 0.9238792062f;
+            CharacterDetails.LIndex2Y.value = -4.648088918E-7f;
+            CharacterDetails.RIndex2Y.value = 0.9238791466f;
+            CharacterDetails.LMiddleY.value = -4.917383194E-7f;
+            CharacterDetails.RMiddleY.value = 0.9238792062f;
+            CharacterDetails.LMiddle2Y.value = -4.648088918E-7f;
+            CharacterDetails.RMiddle2Y.value = 0.9238791466f;
+            CharacterDetails.LRingY.value = -1.490116119E-8f;
+            CharacterDetails.RRingY.value = 0.923879087f;
+            CharacterDetails.LRing2Y.value = -1.625886092E-9f;
+            CharacterDetails.RRing2Y.value = 0.9238790274f;
+            CharacterDetails.LPinkyY.value = -1.490116119E-8f;
+            CharacterDetails.RPinkyY.value = 0.923879087f;
+            CharacterDetails.LPinky2Y.value = -1.625886092E-9f;
+            CharacterDetails.RPinky2Y.value = 0.9238790274f;
+            CharacterDetails.PelvisY.value = -0.4434098899f;
+            CharacterDetails.TailY.value = 0.6826921701f;
+            CharacterDetails.LThighY.value = -0.4923109114f;
+            CharacterDetails.RThighY.value = -0.4923109114f;
+            CharacterDetails.LKneeY.value = 0.503189683f;
+            CharacterDetails.RKneeY.value = 0.503189683f;
+            CharacterDetails.LCalfY.value = 0.5274748206f;
+            CharacterDetails.RCalfY.value = 0.5274748206f;
+            CharacterDetails.LFootY.value = -0.181504041f;
+            CharacterDetails.RFootY.value = -0.181504041f;
+            CharacterDetails.LToesY.value = -1.490116119E-8f;
+            CharacterDetails.RToesY.value = -1.490116119E-8f;
+
+            //Z Rotations
+            //CharacterDetails.HeadZ.value = 0.7071065903f;
+            //CharacterDetails.NoseZ.value = 0.7071065903f;
+            //CharacterDetails.NostrilsZ.value = 0.7071065903f;
+            //CharacterDetails.ChinZ.value = 0.7010571957f;
+            //CharacterDetails.LOutEyebrowZ.value = 0.5948226452f;
+            //CharacterDetails.ROutEyebrowZ.value = 0.8038566113f;
+            //CharacterDetails.LInEyebrowZ.value = 0.7071065903f;
+            //CharacterDetails.RInEyebrowZ.value = 0.7071065903f;
+            //CharacterDetails.LEyeZ.value = 0.7071065903f;
+            //CharacterDetails.REyeZ.value = 0.7071065903f;
+            //CharacterDetails.LEyelidZ.value = 0.6589648724f;
+            //CharacterDetails.REyelidZ.value = 0.7318546176f;
+            //CharacterDetails.LLowEyelidZ.value = 0.6428883076f;
+            //CharacterDetails.RLowEyelidZ.value = 0.7395585179f;
+            //CharacterDetails.LEarZ.value = 0.3502247334f;
+            //CharacterDetails.REarZ.value = -0.3030564487f;
+            //CharacterDetails.LCheekZ.value = 0.6087613106f;
+            //CharacterDetails.RCheekZ.value = 0.7933530807f;
+            //CharacterDetails.LMouthZ.value = 0.5735765696f;
+            //CharacterDetails.RMouthZ.value = 0.8191516399f;
+            //CharacterDetails.LUpLipZ.value = 0.7070795894f;
+            //CharacterDetails.RUpLipZ.value = 0.7071064115f;
+            //CharacterDetails.LLowLipZ.value = 0.7071065903f;
+            //CharacterDetails.RLowLipZ.value = 0.7018358111f;
+            CharacterDetails.NeckZ.value = 0.6045513153f;
+            CharacterDetails.SternumZ.value = 0.5119624734f;
+            CharacterDetails.TorsoZ.value = 0.4947781861f;
+            CharacterDetails.WaistZ.value = 0.4738240242f;
+            CharacterDetails.LShoulderZ.value = -0.2362460047f;
+            CharacterDetails.RShoulderZ.value = -0.6383191943f;
+            CharacterDetails.LClavicleZ.value = 0f;
+            CharacterDetails.RClavicleZ.value = 2.980232239E-8f;
+            CharacterDetails.LBreastZ.value = 0.03088222817f;
+            CharacterDetails.RBreastZ.value = 0.03088220209f;
+            CharacterDetails.LArmZ.value = -0.236246109f;
+            CharacterDetails.RArmZ.value = -0.6383193135f;
+            CharacterDetails.LElbowZ.value = -0.2724279761f;
+            CharacterDetails.RElbowZ.value = 0.6540369987f;
+            CharacterDetails.LForearmZ.value = -0.3077905178f;
+            CharacterDetails.RForearmZ.value = 0.6677876711f;
+            CharacterDetails.LWristZ.value = -0.2705979943f;
+            CharacterDetails.RWristZ.value = -0.6532810926f;
+            CharacterDetails.LHandZ.value = -0.2705982327f;
+            CharacterDetails.RHandZ.value = -0.6532812119f;
+            CharacterDetails.LThumbZ.value = -0.2627345026f;
+            CharacterDetails.RThumbZ.value = -0.4309565127f;
+            CharacterDetails.LThumb2Z.value = -0.2627344728f;
+            CharacterDetails.RThumb2Z.value = -0.4309565723f;
+            CharacterDetails.LIndexZ.value = -0.3826832771f;
+            CharacterDetails.RIndexZ.value = 0f;
+            CharacterDetails.LIndex2Z.value = -0.3826832473f;
+            CharacterDetails.RIndex2Z.value = 1.752551704E-8f;
+            CharacterDetails.LMiddleZ.value = -0.3826832771f;
+            CharacterDetails.RMiddleZ.value = 0f;
+            CharacterDetails.LMiddle2Z.value = -0.3826832473f;
+            CharacterDetails.RMiddle2Z.value = 1.752551704E-8f;
+            CharacterDetails.LRingZ.value = -0.3826832175f;
+            CharacterDetails.RRingZ.value = 0f;
+            CharacterDetails.LRing2Z.value = -0.3826832175f;
+            CharacterDetails.RRing2Z.value = -6.725038304E-10f;
+            CharacterDetails.LPinkyZ.value = -0.3826832175f;
+            CharacterDetails.RPinkyZ.value = 0f;
+            CharacterDetails.LPinky2Z.value = -0.3826832175f;
+            CharacterDetails.RPinky2Z.value = -6.725038304E-10f;
+            CharacterDetails.PelvisZ.value = 0.550806284f;
+            CharacterDetails.TailZ.value = -0.184204489f;
+            CharacterDetails.LThighZ.value = 0.5075724125f;
+            CharacterDetails.RThighZ.value = 0.5075724125f;
+            CharacterDetails.LKneeZ.value = -0.496789515f;
+            CharacterDetails.RKneeZ.value = -0.496789515f;
+            CharacterDetails.LCalfZ.value = -0.4709247351f;
+            CharacterDetails.RCalfZ.value = -0.4709247351f;
+            CharacterDetails.LFootZ.value = 0.6834150553f;
+            CharacterDetails.RFootZ.value = 0.6834150553f;
+            CharacterDetails.LToesZ.value = 0.7071067691f;
+            CharacterDetails.RToesZ.value = 0.7071067691f;
+
+            //W Rotations
+            //CharacterDetails.HeadW.value = 2.980232239E-8f;
+            //CharacterDetails.NoseW.value = 2.967532708E-8f;
+            //CharacterDetails.NostrilsW.value = 2.967532708E-8f;
+            //CharacterDetails.ChinW.value = -0.09229589254f;
+            //CharacterDetails.LOutEyebrowW.value = 3.28294476E-8f;
+            //CharacterDetails.ROutEyebrowW.value = 2.646828356E-8f;
+            //CharacterDetails.LInEyebrowW.value = 2.967532708E-8f;
+            //CharacterDetails.RInEyebrowW.value = 2.967532708E-8f;
+            //CharacterDetails.LEyeW.value = 2.967532708E-8f;
+            //CharacterDetails.REyeW.value = 2.967532708E-8f;
+            //CharacterDetails.LEyelidW.value = 0.1161931381f;
+            //CharacterDetails.REyelidW.value = 0.129045561f;
+            //CharacterDetails.LLowEyelidW.value = -0.1307968199f;
+            //CharacterDetails.RLowEyelidW.value = -0.150464505f;
+            //CharacterDetails.LEarW.value = 0.8353263736f;
+            //CharacterDetails.REarW.value = 0.2961899042f;
+            //CharacterDetails.LCheekW.value = 3.236348078E-8f;
+            //CharacterDetails.RCheekW.value = 2.703848878E-8f;
+            //CharacterDetails.LMouthW.value = 3.539162208E-8f;
+            //CharacterDetails.RMouthW.value = 2.559784917E-8f;
+            //CharacterDetails.LUpLipW.value = 0.006170333829f;
+            //CharacterDetails.RUpLipW.value = 3.026798368E-8f;
+            //CharacterDetails.LLowLipW.value = 2.980232239E-8f;
+            //CharacterDetails.RLowLipW.value = -0.08617514372f;
+            CharacterDetails.NeckW.value = 0.3667662442f;
+            CharacterDetails.SternumW.value = 0.4877440631f;
+            CharacterDetails.TorsoW.value = 0.5051677227f;
+            CharacterDetails.WaistW.value = 0.5248720646f;
+            CharacterDetails.LShoulderW.value = 0.6664738059f;
+            CharacterDetails.RShoulderW.value = 0.3042169213f;
+            CharacterDetails.LClavicleW.value = 0.9999997616f;
+            CharacterDetails.RClavicleW.value = 1.490116119E-8f;
+            CharacterDetails.LBreastW.value = 0.7822870016f;
+            CharacterDetails.RBreastW.value = 0.6213850975f;
+            CharacterDetails.LArmW.value = 0.6664740443f;
+            CharacterDetails.RArmW.value = 0.3042169809f;
+            CharacterDetails.LElbowW.value = 0.652520299f;
+            CharacterDetails.RElbowW.value = -0.2687657475f;
+            CharacterDetails.LForearmW.value = 0.6366040707f;
+            CharacterDetails.RForearmW.value = -0.232506156f;
+            CharacterDetails.LWristW.value = 0.6532813907f;
+            CharacterDetails.RWristW.value = 0.2705978751f;
+            CharacterDetails.LHandW.value = 0.6532812119f;
+            CharacterDetails.RHandW.value = 0.2705976367f;
+            CharacterDetails.LThumbW.value = 0.652775228f;
+            CharacterDetails.RThumbW.value = 0.5649167299f;
+            CharacterDetails.LThumb2W.value = 0.6527751684f;
+            CharacterDetails.RThumb2W.value = 0.5649166703f;
+            CharacterDetails.LIndexW.value = 0.9238791466f;
+            CharacterDetails.RIndexW.value = -4.768371582E-7f;
+            CharacterDetails.LIndex2W.value = 0.9238791466f;
+            CharacterDetails.RIndex2W.value = -4.644691955E-7f;
+            CharacterDetails.LMiddleW.value = 0.9238791466f;
+            CharacterDetails.RMiddleW.value = -4.768371582E-7f;
+            CharacterDetails.LMiddle2W.value = 0.9238791466f;
+            CharacterDetails.RMiddle2W.value = -4.644691955E-7f;
+            CharacterDetails.LRingW.value = 0.9238790274f;
+            CharacterDetails.RRingW.value = -1.490116119E-8f;
+            CharacterDetails.LRing2W.value = 0.9238790274f;
+            CharacterDetails.RRing2W.value = 1.644958836E-9f;
+            CharacterDetails.LPinkyW.value = 0.9238790274f;
+            CharacterDetails.RPinkyW.value = -1.490116119E-8f;
+            CharacterDetails.LPinky2W.value = 0.9238790274f;
+            CharacterDetails.RPinky2W.value = 1.644958836E-9f;
+            CharacterDetails.PelvisW.value = -0.4434098899f;
+            CharacterDetails.TailW.value = 0.6826921701f;
+            CharacterDetails.LThighW.value = -0.4923109114f;
+            CharacterDetails.RThighW.value = -0.4923109114f;
+            CharacterDetails.LKneeW.value = 0.5031898022f;
+            CharacterDetails.RKneeW.value = 0.5031898022f;
+            CharacterDetails.LCalfW.value = 0.5274748206f;
+            CharacterDetails.RCalfW.value = 0.5274748206f;
+            CharacterDetails.LFootW.value = -0.1815040112f;
+            CharacterDetails.RFootW.value = -0.1815040112f;
+            CharacterDetails.LToesW.value = -1.490116119E-8f;
+            CharacterDetails.RToesW.value = -1.490116119E-8f;
+        }
+
+        private void SaveHeadButton_Click(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.SaveHeadBones = true;
+            HeadSaved = true;
+
+            if (CharacterDetails.BoneEditMode) LoadHeadButton.IsEnabled = true;
+        }
+
+        private void LoadHeadButton_Click(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.WriteHeadBones = true;
+
+            CharacterDetails.HeadX.value = HeadXSav;
+            CharacterDetails.HeadY.value = HeadYSav;
+            CharacterDetails.HeadZ.value = HeadZSav;
+            CharacterDetails.HeadW.value = HeadWSav;
+
+            CharacterDetails.NoseX.value = NoseXSav;
+            CharacterDetails.NoseY.value = NoseYSav;
+            CharacterDetails.NoseZ.value = NoseZSav;
+            CharacterDetails.NoseW.value = NoseWSav;
+
+            CharacterDetails.NostrilsX.value = NostrilsXSav;
+            CharacterDetails.NostrilsY.value = NostrilsYSav;
+            CharacterDetails.NostrilsZ.value = NostrilsZSav;
+            CharacterDetails.NostrilsW.value = NostrilsWSav;
+
+            CharacterDetails.ChinX.value = ChinXSav;
+            CharacterDetails.ChinY.value = ChinYSav;
+            CharacterDetails.ChinZ.value = ChinZSav;
+            CharacterDetails.ChinW.value = ChinWSav;
+
+            CharacterDetails.LOutEyebrowX.value = LOutEyebrowXSav;
+            CharacterDetails.LOutEyebrowY.value = LOutEyebrowYSav;
+            CharacterDetails.LOutEyebrowZ.value = LOutEyebrowZSav;
+            CharacterDetails.LOutEyebrowW.value = LOutEyebrowWSav;
+
+            CharacterDetails.ROutEyebrowX.value = ROutEyebrowXSav;
+            CharacterDetails.ROutEyebrowY.value = ROutEyebrowYSav;
+            CharacterDetails.ROutEyebrowZ.value = ROutEyebrowZSav;
+            CharacterDetails.ROutEyebrowW.value = ROutEyebrowWSav;
+
+            CharacterDetails.LInEyebrowX.value = LInEyebrowXSav;
+            CharacterDetails.LInEyebrowY.value = LInEyebrowYSav;
+            CharacterDetails.LInEyebrowZ.value = LInEyebrowZSav;
+            CharacterDetails.LInEyebrowW.value = LInEyebrowWSav;
+
+            CharacterDetails.RInEyebrowX.value = RInEyebrowXSav;
+            CharacterDetails.RInEyebrowY.value = RInEyebrowYSav;
+            CharacterDetails.RInEyebrowZ.value = RInEyebrowZSav;
+            CharacterDetails.RInEyebrowW.value = RInEyebrowWSav;
+
+            CharacterDetails.LEyeX.value = LEyeXSav;
+            CharacterDetails.LEyeY.value = LEyeYSav;
+            CharacterDetails.LEyeZ.value = LEyeZSav;
+            CharacterDetails.LEyeW.value = LEyeWSav;
+
+            CharacterDetails.REyeX.value = REyeXSav;
+            CharacterDetails.REyeY.value = REyeYSav;
+            CharacterDetails.REyeZ.value = REyeZSav;
+            CharacterDetails.REyeW.value = REyeWSav;
+
+            CharacterDetails.LEyelidX.value = LEyelidXSav;
+            CharacterDetails.LEyelidY.value = LEyelidYSav;
+            CharacterDetails.LEyelidZ.value = LEyelidZSav;
+            CharacterDetails.LEyelidW.value = LEyelidWSav;
+
+            CharacterDetails.REyelidX.value = REyelidXSav;
+            CharacterDetails.REyelidY.value = REyelidYSav;
+            CharacterDetails.REyelidZ.value = REyelidZSav;
+            CharacterDetails.REyelidW.value = REyelidWSav;
+
+            CharacterDetails.LLowEyelidX.value = LLowEyelidXSav;
+            CharacterDetails.LLowEyelidY.value = LLowEyelidYSav;
+            CharacterDetails.LLowEyelidZ.value = LLowEyelidZSav;
+            CharacterDetails.LLowEyelidW.value = LLowEyelidWSav;
+
+            CharacterDetails.RLowEyelidX.value = RLowEyelidXSav;
+            CharacterDetails.RLowEyelidY.value = RLowEyelidYSav;
+            CharacterDetails.RLowEyelidZ.value = RLowEyelidZSav;
+            CharacterDetails.RLowEyelidW.value = RLowEyelidWSav;
+
+            CharacterDetails.LEarX.value = LEarXSav;
+            CharacterDetails.LEarY.value = LEarYSav;
+            CharacterDetails.LEarZ.value = LEarZSav;
+            CharacterDetails.LEarW.value = LEarWSav;
+
+            CharacterDetails.REarX.value = REarXSav;
+            CharacterDetails.REarY.value = REarYSav;
+            CharacterDetails.REarZ.value = REarZSav;
+            CharacterDetails.REarW.value = REarWSav;
+
+            CharacterDetails.LCheekX.value = LCheekXSav;
+            CharacterDetails.LCheekY.value = LCheekYSav;
+            CharacterDetails.LCheekZ.value = LCheekZSav;
+            CharacterDetails.LCheekW.value = LCheekWSav;
+
+            CharacterDetails.RCheekX.value = RCheekXSav;
+            CharacterDetails.RCheekY.value = RCheekYSav;
+            CharacterDetails.RCheekZ.value = RCheekZSav;
+            CharacterDetails.RCheekW.value = RCheekWSav;
+
+            CharacterDetails.LMouthX.value = LMouthXSav;
+            CharacterDetails.LMouthY.value = LMouthYSav;
+            CharacterDetails.LMouthZ.value = LMouthZSav;
+            CharacterDetails.LMouthW.value = LMouthWSav;
+
+            CharacterDetails.RMouthX.value = RMouthXSav;
+            CharacterDetails.RMouthY.value = RMouthYSav;
+            CharacterDetails.RMouthZ.value = RMouthZSav;
+            CharacterDetails.RMouthW.value = RMouthWSav;
+
+            CharacterDetails.LUpLipX.value = LUpLipXSav;
+            CharacterDetails.LUpLipY.value = LUpLipYSav;
+            CharacterDetails.LUpLipZ.value = LUpLipZSav;
+            CharacterDetails.LUpLipW.value = LUpLipWSav;
+
+            CharacterDetails.RUpLipX.value = RUpLipXSav;
+            CharacterDetails.RUpLipY.value = RUpLipYSav;
+            CharacterDetails.RUpLipZ.value = RUpLipZSav;
+            CharacterDetails.RUpLipW.value = RUpLipWSav;
+
+            CharacterDetails.LLowLipX.value = LLowLipXSav;
+            CharacterDetails.LLowLipY.value = LLowLipYSav;
+            CharacterDetails.LLowLipZ.value = LLowLipZSav;
+            CharacterDetails.LLowLipW.value = LLowLipWSav;
+
+            CharacterDetails.RLowLipX.value = RLowLipXSav;
+            CharacterDetails.RLowLipY.value = RLowLipYSav;
+            CharacterDetails.RLowLipZ.value = RLowLipZSav;
+            CharacterDetails.RLowLipW.value = RLowLipWSav;
+
+            CharacterDetails.NeckX.value = NeckXSav;
+            CharacterDetails.NeckY.value = NeckYSav;
+            CharacterDetails.NeckZ.value = NeckZSav;
+            CharacterDetails.NeckW.value = NeckWSav;
+        }
+
+        private void SaveTorsoButton_Click(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.SaveTorsoBones = true;
+            TorsoSaved = true;
+            if (CharacterDetails.BoneEditMode) LoadTorsoButton.IsEnabled = true;
+        }
+
+        private void LoadTorsoButton_Click(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.WriteTorsoBones = true;
+
+            CharacterDetails.SternumX.value = SternumXSav;
+            CharacterDetails.SternumY.value = SternumYSav;
+            CharacterDetails.SternumZ.value = SternumZSav;
+            CharacterDetails.SternumW.value = SternumWSav;
+
+            CharacterDetails.TorsoX.value = TorsoXSav;
+            CharacterDetails.TorsoY.value = TorsoYSav;
+            CharacterDetails.TorsoZ.value = TorsoZSav;
+            CharacterDetails.TorsoW.value = TorsoWSav;
+
+            CharacterDetails.WaistX.value = WaistXSav;
+            CharacterDetails.WaistY.value = WaistYSav;
+            CharacterDetails.WaistZ.value = WaistZSav;
+            CharacterDetails.WaistW.value = WaistWSav;
+
+            CharacterDetails.LBreastX.value = LBreastXSav;
+            CharacterDetails.LBreastY.value = LBreastYSav;
+            CharacterDetails.LBreastZ.value = LBreastZSav;
+            CharacterDetails.LBreastW.value = LBreastWSav;
+
+            CharacterDetails.RBreastX.value = RBreastXSav;
+            CharacterDetails.RBreastY.value = RBreastYSav;
+            CharacterDetails.RBreastZ.value = RBreastZSav;
+            CharacterDetails.RBreastW.value = RBreastWSav;
+
+            CharacterDetails.PelvisX.value = PelvisXSav;
+            CharacterDetails.PelvisY.value = PelvisYSav;
+            CharacterDetails.PelvisZ.value = PelvisZSav;
+            CharacterDetails.PelvisW.value = PelvisWSav;
+
+            CharacterDetails.TailX.value = TailXSav;
+            CharacterDetails.TailY.value = TailYSav;
+            CharacterDetails.TailZ.value = TailZSav;
+            CharacterDetails.TailW.value = TailWSav;
+
+            CharacterDetails.Tail2X.value = Tail2XSav;
+            CharacterDetails.Tail2Y.value = Tail2YSav;
+            CharacterDetails.Tail2Z.value = Tail2ZSav;
+            CharacterDetails.Tail2W.value = Tail2WSav;
+
+            CharacterDetails.Tail3X.value = Tail3XSav;
+            CharacterDetails.Tail3Y.value = Tail3YSav;
+            CharacterDetails.Tail3Z.value = Tail3ZSav;
+            CharacterDetails.Tail3W.value = Tail3WSav;
+
+            CharacterDetails.Tail4X.value = Tail4XSav;
+            CharacterDetails.Tail4Y.value = Tail4YSav;
+            CharacterDetails.Tail4Z.value = Tail4ZSav;
+            CharacterDetails.Tail4W.value = Tail4WSav;
+        }
+
+        private void SaveLArmButton_Click(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.SaveLeftArmBones = true;
+            LeftArmSaved = true;
+            if (CharacterDetails.BoneEditMode) LoadLArmButton.IsEnabled = true;
+        }
+
+        private void LoadLArmButton_Click(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.WriteLeftArmBones = true;
+
+            CharacterDetails.LShoulderX.value = LShoulderXSav;
+            CharacterDetails.LShoulderY.value = LShoulderYSav;
+            CharacterDetails.LShoulderZ.value = LShoulderZSav;
+            CharacterDetails.LShoulderW.value = LShoulderWSav;
+
+            CharacterDetails.LClavicleX.value = LClavicleXSav;
+            CharacterDetails.LClavicleY.value = LClavicleYSav;
+            CharacterDetails.LClavicleZ.value = LClavicleZSav;
+            CharacterDetails.LClavicleW.value = LClavicleWSav;
+
+            CharacterDetails.LArmX.value = LArmXSav;
+            CharacterDetails.LArmY.value = LArmYSav;
+            CharacterDetails.LArmZ.value = LArmZSav;
+            CharacterDetails.LArmW.value = LArmWSav;
+
+            CharacterDetails.LElbowX.value = LElbowXSav;
+            CharacterDetails.LElbowY.value = LElbowYSav;
+            CharacterDetails.LElbowZ.value = LElbowZSav;
+            CharacterDetails.LElbowW.value = LElbowWSav;
+
+            CharacterDetails.LForearmX.value = LForearmXSav;
+            CharacterDetails.LForearmY.value = LForearmYSav;
+            CharacterDetails.LForearmZ.value = LForearmZSav;
+            CharacterDetails.LForearmW.value = LForearmWSav;
+
+            CharacterDetails.LWristX.value = LWristXSav;
+            CharacterDetails.LWristY.value = LWristYSav;
+            CharacterDetails.LWristZ.value = LWristZSav;
+            CharacterDetails.LWristW.value = LWristWSav;
+
+            CharacterDetails.LHandX.value = LHandXSav;
+            CharacterDetails.LHandY.value = LHandYSav;
+            CharacterDetails.LHandZ.value = LHandZSav;
+            CharacterDetails.LHandW.value = LHandWSav;
+
+            CharacterDetails.LThumbX.value = LThumbXSav;
+            CharacterDetails.LThumbY.value = LThumbYSav;
+            CharacterDetails.LThumbZ.value = LThumbZSav;
+            CharacterDetails.LThumbW.value = LThumbWSav;
+
+            CharacterDetails.LThumb2X.value = LThumb2XSav;
+            CharacterDetails.LThumb2Y.value = LThumb2YSav;
+            CharacterDetails.LThumb2Z.value = LThumb2ZSav;
+            CharacterDetails.LThumb2W.value = LThumb2WSav;
+
+            CharacterDetails.LIndexX.value = LIndexXSav;
+            CharacterDetails.LIndexY.value = LIndexYSav;
+            CharacterDetails.LIndexZ.value = LIndexZSav;
+            CharacterDetails.LIndexW.value = LIndexWSav;
+
+            CharacterDetails.LIndex2X.value = LIndex2XSav;
+            CharacterDetails.LIndex2Y.value = LIndex2YSav;
+            CharacterDetails.LIndex2Z.value = LIndex2ZSav;
+            CharacterDetails.LIndex2W.value = LIndex2WSav;
+
+            CharacterDetails.LMiddleX.value = LMiddleXSav;
+            CharacterDetails.LMiddleY.value = LMiddleYSav;
+            CharacterDetails.LMiddleZ.value = LMiddleZSav;
+            CharacterDetails.LMiddleW.value = LMiddleWSav;
+
+            CharacterDetails.LMiddle2X.value = LMiddle2XSav;
+            CharacterDetails.LMiddle2Y.value = LMiddle2YSav;
+            CharacterDetails.LMiddle2Z.value = LMiddle2ZSav;
+            CharacterDetails.LMiddle2W.value = LMiddle2WSav;
+
+            CharacterDetails.LRingX.value = LRingXSav;
+            CharacterDetails.LRingY.value = LRingYSav;
+            CharacterDetails.LRingZ.value = LRingZSav;
+            CharacterDetails.LRingW.value = LRingWSav;
+
+            CharacterDetails.LRing2X.value = LRing2XSav;
+            CharacterDetails.LRing2Y.value = LRing2YSav;
+            CharacterDetails.LRing2Z.value = LRing2ZSav;
+            CharacterDetails.LRing2W.value = LRing2WSav;
+
+            CharacterDetails.LPinkyX.value = LPinkyXSav;
+            CharacterDetails.LPinkyY.value = LPinkyYSav;
+            CharacterDetails.LPinkyZ.value = LPinkyZSav;
+            CharacterDetails.LPinkyW.value = LPinkyWSav;
+
+            CharacterDetails.LPinky2X.value = LPinky2XSav;
+            CharacterDetails.LPinky2Y.value = LPinky2YSav;
+            CharacterDetails.LPinky2Z.value = LPinky2ZSav;
+            CharacterDetails.LPinky2W.value = LPinky2WSav;
+        }
+
+        private void SaveRArmButton_Click(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.SaveRightArmBones = true;
+            RightArmSaved = true;
+            if (CharacterDetails.BoneEditMode) LoadRArmButton.IsEnabled = true;
+        }
+
+        private void LoadRArmButton_Click(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.WriteRightArmBones = true;
+
+            CharacterDetails.RShoulderX.value = RShoulderXSav;
+            CharacterDetails.RShoulderY.value = RShoulderYSav;
+            CharacterDetails.RShoulderZ.value = RShoulderZSav;
+            CharacterDetails.RShoulderW.value = RShoulderWSav;
+
+            CharacterDetails.RClavicleX.value = RClavicleXSav;
+            CharacterDetails.RClavicleY.value = RClavicleYSav;
+            CharacterDetails.RClavicleZ.value = RClavicleZSav;
+            CharacterDetails.RClavicleW.value = RClavicleWSav;
+
+            CharacterDetails.RArmX.value = RArmXSav;
+            CharacterDetails.RArmY.value = RArmYSav;
+            CharacterDetails.RArmZ.value = RArmZSav;
+            CharacterDetails.RArmW.value = RArmWSav;
+
+            CharacterDetails.RElbowX.value = RElbowXSav;
+            CharacterDetails.RElbowY.value = RElbowYSav;
+            CharacterDetails.RElbowZ.value = RElbowZSav;
+            CharacterDetails.RElbowW.value = RElbowWSav;
+
+            CharacterDetails.RForearmX.value = RForearmXSav;
+            CharacterDetails.RForearmY.value = RForearmYSav;
+            CharacterDetails.RForearmZ.value = RForearmZSav;
+            CharacterDetails.RForearmW.value = RForearmWSav;
+
+            CharacterDetails.RWristX.value = RWristXSav;
+            CharacterDetails.RWristY.value = RWristYSav;
+            CharacterDetails.RWristZ.value = RWristZSav;
+            CharacterDetails.RWristW.value = RWristWSav;
+
+            CharacterDetails.RHandX.value = RHandXSav;
+            CharacterDetails.RHandY.value = RHandYSav;
+            CharacterDetails.RHandZ.value = RHandZSav;
+            CharacterDetails.RHandW.value = RHandWSav;
+
+            CharacterDetails.RThumbX.value = RThumbXSav;
+            CharacterDetails.RThumbY.value = RThumbYSav;
+            CharacterDetails.RThumbZ.value = RThumbZSav;
+            CharacterDetails.RThumbW.value = RThumbWSav;
+
+            CharacterDetails.RThumb2X.value = RThumb2XSav;
+            CharacterDetails.RThumb2Y.value = RThumb2YSav;
+            CharacterDetails.RThumb2Z.value = RThumb2ZSav;
+            CharacterDetails.RThumb2W.value = RThumb2WSav;
+
+            CharacterDetails.RIndexX.value = RIndexXSav;
+            CharacterDetails.RIndexY.value = RIndexYSav;
+            CharacterDetails.RIndexZ.value = RIndexZSav;
+            CharacterDetails.RIndexW.value = RIndexWSav;
+
+            CharacterDetails.RIndex2X.value = RIndex2XSav;
+            CharacterDetails.RIndex2Y.value = RIndex2YSav;
+            CharacterDetails.RIndex2Z.value = RIndex2ZSav;
+            CharacterDetails.RIndex2W.value = RIndex2WSav;
+
+            CharacterDetails.RMiddleX.value = RMiddleXSav;
+            CharacterDetails.RMiddleY.value = RMiddleYSav;
+            CharacterDetails.RMiddleZ.value = RMiddleZSav;
+            CharacterDetails.RMiddleW.value = RMiddleWSav;
+
+            CharacterDetails.RMiddle2X.value = RMiddle2XSav;
+            CharacterDetails.RMiddle2Y.value = RMiddle2YSav;
+            CharacterDetails.RMiddle2Z.value = RMiddle2ZSav;
+            CharacterDetails.RMiddle2W.value = RMiddle2WSav;
+
+            CharacterDetails.RRingX.value = RRingXSav;
+            CharacterDetails.RRingY.value = RRingYSav;
+            CharacterDetails.RRingZ.value = RRingZSav;
+            CharacterDetails.RRingW.value = RRingWSav;
+
+            CharacterDetails.RRing2X.value = RRing2XSav;
+            CharacterDetails.RRing2Y.value = RRing2YSav;
+            CharacterDetails.RRing2Z.value = RRing2ZSav;
+            CharacterDetails.RRing2W.value = RRing2WSav;
+
+            CharacterDetails.RPinkyX.value = RPinkyXSav;
+            CharacterDetails.RPinkyY.value = RPinkyYSav;
+            CharacterDetails.RPinkyZ.value = RPinkyZSav;
+            CharacterDetails.RPinkyW.value = RPinkyWSav;
+
+            CharacterDetails.RPinky2X.value = RPinky2XSav;
+            CharacterDetails.RPinky2Y.value = RPinky2YSav;
+            CharacterDetails.RPinky2Z.value = RPinky2ZSav;
+            CharacterDetails.RPinky2W.value = RPinky2WSav;
+        }
+
+        private void SaveLLegButton_Click(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.SaveLeftLegBones = true;
+            LeftLegSaved = true;
+            if (CharacterDetails.BoneEditMode) LoadLLegButton.IsEnabled = true;
+        }
+
+        private void LoadLLegButton_Click(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.WriteLeftLegBones = true;
+
+            CharacterDetails.LThighX.value = LThighXSav;
+            CharacterDetails.LThighY.value = LThighYSav;
+            CharacterDetails.LThighZ.value = LThighZSav;
+            CharacterDetails.LThighW.value = LThighWSav;
+
+            CharacterDetails.LKneeX.value = LKneeXSav;
+            CharacterDetails.LKneeY.value = LKneeYSav;
+            CharacterDetails.LKneeZ.value = LKneeZSav;
+            CharacterDetails.LKneeW.value = LKneeWSav;
+
+            CharacterDetails.LCalfX.value = LCalfXSav;
+            CharacterDetails.LCalfY.value = LCalfYSav;
+            CharacterDetails.LCalfZ.value = LCalfZSav;
+            CharacterDetails.LCalfW.value = LCalfWSav;
+
+            CharacterDetails.LFootX.value = LFootXSav;
+            CharacterDetails.LFootY.value = LFootYSav;
+            CharacterDetails.LFootZ.value = LFootZSav;
+            CharacterDetails.LFootW.value = LFootWSav;
+
+            CharacterDetails.LToesX.value = LToesXSav;
+            CharacterDetails.LToesY.value = LToesYSav;
+            CharacterDetails.LToesZ.value = LToesZSav;
+            CharacterDetails.LToesW.value = LToesWSav;
+        }
+
+        private void SaveRLegButton_Click(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.SaveRightLegBones = true;
+            RightLegSaved = true;
+            if (CharacterDetails.BoneEditMode) LoadRLegButton.IsEnabled = true;
+        }
+
+        private void LoadRLegButton_Click(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.WriteRightLegBones = true;
+
+            CharacterDetails.RThighX.value = RThighXSav;
+            CharacterDetails.RThighY.value = RThighYSav;
+            CharacterDetails.RThighZ.value = RThighZSav;
+            CharacterDetails.RThighW.value = RThighWSav;
+
+            CharacterDetails.RKneeX.value = RKneeXSav;
+            CharacterDetails.RKneeY.value = RKneeYSav;
+            CharacterDetails.RKneeZ.value = RKneeZSav;
+            CharacterDetails.RKneeW.value = RKneeWSav;
+
+            CharacterDetails.RCalfX.value = RCalfXSav;
+            CharacterDetails.RCalfY.value = RCalfYSav;
+            CharacterDetails.RCalfZ.value = RCalfZSav;
+            CharacterDetails.RCalfW.value = RCalfWSav;
+
+            CharacterDetails.RFootX.value = RFootXSav;
+            CharacterDetails.RFootY.value = RFootYSav;
+            CharacterDetails.RFootZ.value = RFootZSav;
+            CharacterDetails.RFootW.value = RFootWSav;
+
+            CharacterDetails.RToesX.value = RToesXSav;
+            CharacterDetails.RToesY.value = RToesYSav;
+            CharacterDetails.RToesZ.value = RToesZSav;
+            CharacterDetails.RToesW.value = RToesWSav;
         }
 
         private void UncheckAll()
@@ -15477,6 +16651,13 @@ namespace ConceptMatrix.Views
             REarringButton.IsEnabled = true;
             LEarring2Button.IsEnabled = true;
             REarring2Button.IsEnabled = true;
+
+            if (HeadSaved) LoadHeadButton.IsEnabled = true;
+            if (TorsoSaved) LoadTorsoButton.IsEnabled = true;
+            if (LeftArmSaved) LoadLArmButton.IsEnabled = true;
+            if (RightArmSaved) LoadRArmButton.IsEnabled = true;
+            if (LeftLegSaved) LoadLLegButton.IsEnabled = true;
+            if (RightLegSaved) LoadRLegButton.IsEnabled = true;
         }
 
         private void DisableAll()
@@ -15567,502 +16748,14 @@ namespace ConceptMatrix.Views
             REarringButton.IsEnabled = false;
             LEarring2Button.IsEnabled = false;
             REarring2Button.IsEnabled = false;
+
+            LoadHeadButton.IsEnabled = false;
+            LoadTorsoButton.IsEnabled = false;
+            LoadLArmButton.IsEnabled = false;
+            LoadRArmButton.IsEnabled = false;
+            LoadLLegButton.IsEnabled = false;
+            LoadRLegButton.IsEnabled = false;
         }
 
-        private void TPoseX()
-        {
-            //CharacterDetails.HeadX.value = 0.7071064711f;
-            //CharacterDetails.NoseX.value = 0.7071064711f;
-            //CharacterDetails.NostrilsX.value = 0.7071064711f;
-            //CharacterDetails.ChinX.value = 0.7010570765f;
-            //CharacterDetails.LOutEyebrowX.value = 0.803856492f;
-            //CharacterDetails.ROutEyebrowX.value = 0.594822526f;
-            //CharacterDetails.LInEyebrowX.value = 0.7071064711f;
-            //CharacterDetails.RInEyebrowX.value = 0.7071064711f;
-            //CharacterDetails.LEyeX.value = 0.7071064711f;
-            //CharacterDetails.REyeX.value = 0.7071064711f;
-            //CharacterDetails.LEyelidX.value = 0.731854558f;
-            //CharacterDetails.REyelidX.value = 0.6589646935f;
-            //CharacterDetails.LLowEyelidX.value = 0.7395583391f;
-            //CharacterDetails.RLowEyelidX.value = 0.6428881288f;
-            //CharacterDetails.LEarX.value = -0.3030564189f;
-            //CharacterDetails.REarX.value = 0.3502247632f;
-            //CharacterDetails.LCheekX.value = 0.7933529615f;
-            //CharacterDetails.RCheekX.value = 0.6087611914f;
-            //CharacterDetails.LMouthX.value = 0.8191515803f;
-            //CharacterDetails.RMouthX.value = 0.5735763311f;
-            //CharacterDetails.LUpLipX.value = 0.7070794702f;
-            //CharacterDetails.RUpLipX.value = 0.7071062922f;
-            //CharacterDetails.LLowLipX.value = 0.7071064711f;
-            //CharacterDetails.RLowLipX.value = 0.7018356919f;
-            CharacterDetails.NeckX.value = 0.6045512557f;
-            CharacterDetails.SternumX.value = 0.5119624138f;
-            CharacterDetails.TorsoX.value = 0.4947781861f;
-            CharacterDetails.WaistX.value = 0.4738240242f;
-            CharacterDetails.LShoulderX.value = -0.6383195519f;
-            CharacterDetails.RShoulderX.value = -0.2362460941f;
-            CharacterDetails.LClavicleX.value = 2.980232239E-8f;
-            CharacterDetails.RClavicleX.value = -1.490116119E-8f;
-            CharacterDetails.LBreastX.value = -0.03088223934f;
-            CharacterDetails.RBreastX.value = -0.03088220209f;
-            CharacterDetails.LArmX.value = -0.6383193135f;
-            CharacterDetails.RArmX.value = -0.236246109f;
-            CharacterDetails.LElbowX.value = -0.6540370584f;
-            CharacterDetails.RElbowX.value = 0.2724279761f;
-            CharacterDetails.LForearmX.value = -0.6677876711f;
-            CharacterDetails.RForearmX.value = 0.3077905476f;
-            CharacterDetails.LWristX.value = -0.6532810926f;
-            CharacterDetails.RWristX.value = -0.2705979645f;
-            CharacterDetails.LHandX.value = -0.6532812119f;
-            CharacterDetails.RHandX.value = -0.2705982924f;
-            CharacterDetails.LThumbX.value = 0.4309564829f;
-            CharacterDetails.RThumbX.value = 0.2627345026f;
-            CharacterDetails.LThumb2X.value = 0.4309564829f;
-            CharacterDetails.RThumb2X.value = 0.2627344429f;
-            CharacterDetails.LIndexX.value = 2.980232239E-8f;
-            CharacterDetails.RIndexX.value = -0.3826832771f;
-            CharacterDetails.LIndex2X.value = 1.149457951E-8f;
-            CharacterDetails.RIndex2X.value = -0.3826832473f;
-            CharacterDetails.LMiddleX.value = 2.980232239E-8f;
-            CharacterDetails.RMiddleX.value = -0.3826832771f;
-            CharacterDetails.LMiddle2X.value = 1.149457951E-8f;
-            CharacterDetails.RMiddle2X.value = -0.3826832473f;
-            CharacterDetails.LRingX.value = 0f;
-            CharacterDetails.RRingX.value = -0.3826832175f;
-            CharacterDetails.LRing2X.value = 6.836367028E-10f;
-            CharacterDetails.RRing2X.value = -0.3826831877f;
-            CharacterDetails.LPinkyX.value = 0f;
-            CharacterDetails.RPinkyX.value = -0.3826832175f;
-            CharacterDetails.LPinky2X.value = 6.836367028E-10f;
-            CharacterDetails.RPinky2X.value = -0.3826831877f;
-            CharacterDetails.PelvisX.value = 0.550806284f;
-            CharacterDetails.TailX.value = -0.184204489f;
-            CharacterDetails.LThighX.value = 0.5075724125f;
-            CharacterDetails.RThighX.value = 0.5075724125f;
-            CharacterDetails.LKneeX.value = -0.4967896044f;
-            CharacterDetails.RKneeX.value = -0.4967896044f;
-            CharacterDetails.LCalfX.value = -0.4709248245f;
-            CharacterDetails.RCalfX.value = -0.4709248245f;
-            CharacterDetails.LFootX.value = 0.6834150553f;
-            CharacterDetails.RFootX.value = 0.6834150553f;
-            CharacterDetails.LToesX.value = 0.7071067095f;
-            CharacterDetails.RToesX.value = 0.7071067095f;
-        }
-
-        private void TPoseY()
-        {
-            //CharacterDetails.HeadY.value = 2.980232239E-8f;
-            //CharacterDetails.NoseY.value = 2.967532708E-8f;
-            //CharacterDetails.NostrilsY.value = 2.967532708E-8f;
-            //CharacterDetails.ChinY.value = -0.09229586273f;
-            //CharacterDetails.LOutEyebrowY.value = 2.367235652E-8f;
-            //CharacterDetails.ROutEyebrowY.value = 3.493174816E-8f;
-            //CharacterDetails.LInEyebrowY.value = 2.967532708E-8f;
-            //CharacterDetails.RInEyebrowY.value = 2.967532708E-8f;
-            //CharacterDetails.LEyeY.value = 2.967532708E-8f;
-            //CharacterDetails.REyeY.value = 2.967532708E-8f;
-            //CharacterDetails.LEyelidY.value = 0.1290455163f;
-            //CharacterDetails.REyelidY.value = 0.1161931232f;
-            //CharacterDetails.LLowEyelidY.value = -0.1504644901f;
-            //CharacterDetails.RLowEyelidY.value = -0.1307967603f;
-            //CharacterDetails.LEarY.value = 0.2961898446f;
-            //CharacterDetails.REarY.value = 0.8353264332f;
-            //CharacterDetails.LCheekY.value = 2.427711721E-8f;
-            //CharacterDetails.RCheekY.value = 3.451231834E-8f;
-            //CharacterDetails.LMouthY.value = 2.549330702E-8f;
-            //CharacterDetails.RMouthY.value = 3.55409604E-8f;
-            //CharacterDetails.LUpLipY.value = 0.006170331966f;
-            //CharacterDetails.RUpLipY.value = 3.026798368E-8f;
-            //CharacterDetails.LLowLipY.value = 2.980232239E-8f;
-            //CharacterDetails.RLowLipY.value = -0.08617512882f;
-            CharacterDetails.NeckY.value = 0.366766274f;
-            CharacterDetails.SternumY.value = 0.4877440631f;
-            CharacterDetails.TorsoY.value = 0.5051676631f;
-            CharacterDetails.WaistY.value = 0.5248720646f;
-            CharacterDetails.LShoulderY.value = 0.3042170703f;
-            CharacterDetails.RShoulderY.value = 0.6664740443f;
-            CharacterDetails.LClavicleY.value = 0f;
-            CharacterDetails.RClavicleY.value = 0.9999997616f;
-            CharacterDetails.LBreastY.value = -0.6213850379f;
-            CharacterDetails.RBreastY.value = -0.782286942f;
-            CharacterDetails.LArmY.value = 0.3042170107f;
-            CharacterDetails.RArmY.value = 0.6664740443f;
-            CharacterDetails.LElbowY.value = 0.2687657475f;
-            CharacterDetails.RElbowY.value = -0.6525203586f;
-            CharacterDetails.LForearmY.value = 0.2325061858f;
-            CharacterDetails.RForearmY.value = -0.6366041303f;
-            CharacterDetails.LWristY.value = 0.2705978751f;
-            CharacterDetails.RWristY.value = 0.6532813907f;
-            CharacterDetails.LHandY.value = 0.2705976069f;
-            CharacterDetails.RHandY.value = 0.6532812119f;
-            CharacterDetails.LThumbY.value = -0.5649164915f;
-            CharacterDetails.RThumbY.value = -0.6527751088f;
-            CharacterDetails.LThumb2Y.value = -0.5649165511f;
-            CharacterDetails.RThumb2Y.value = -0.6527751684f;
-            CharacterDetails.LIndexY.value = -4.917383194E-7f;
-            CharacterDetails.RIndexY.value = 0.9238792062f;
-            CharacterDetails.LIndex2Y.value = -4.648088918E-7f;
-            CharacterDetails.RIndex2Y.value = 0.9238791466f;
-            CharacterDetails.LMiddleY.value = -4.917383194E-7f;
-            CharacterDetails.RMiddleY.value = 0.9238792062f;
-            CharacterDetails.LMiddle2Y.value = -4.648088918E-7f;
-            CharacterDetails.RMiddle2Y.value = 0.9238791466f;
-            CharacterDetails.LRingY.value = -1.490116119E-8f;
-            CharacterDetails.RRingY.value = 0.923879087f;
-            CharacterDetails.LRing2Y.value = -1.625886092E-9f;
-            CharacterDetails.RRing2Y.value = 0.9238790274f;
-            CharacterDetails.LPinkyY.value = -1.490116119E-8f;
-            CharacterDetails.RPinkyY.value = 0.923879087f;
-            CharacterDetails.LPinky2Y.value = -1.625886092E-9f;
-            CharacterDetails.RPinky2Y.value = 0.9238790274f;
-            CharacterDetails.PelvisY.value = -0.4434098899f;
-            CharacterDetails.TailY.value = 0.6826921701f;
-            CharacterDetails.LThighY.value = -0.4923109114f;
-            CharacterDetails.RThighY.value = -0.4923109114f;
-            CharacterDetails.LKneeY.value = 0.503189683f;
-            CharacterDetails.RKneeY.value = 0.503189683f;
-            CharacterDetails.LCalfY.value = 0.5274748206f;
-            CharacterDetails.RCalfY.value = 0.5274748206f;
-            CharacterDetails.LFootY.value = -0.181504041f;
-            CharacterDetails.RFootY.value = -0.181504041f;
-            CharacterDetails.LToesY.value = -1.490116119E-8f;
-            CharacterDetails.RToesY.value = -1.490116119E-8f;
-        }
-
-        private void TPoseZ()
-        {
-            //CharacterDetails.HeadZ.value = 0.7071065903f;
-            //CharacterDetails.NoseZ.value = 0.7071065903f;
-            //CharacterDetails.NostrilsZ.value = 0.7071065903f;
-            //CharacterDetails.ChinZ.value = 0.7010571957f;
-            //CharacterDetails.LOutEyebrowZ.value = 0.5948226452f;
-            //CharacterDetails.ROutEyebrowZ.value = 0.8038566113f;
-            //CharacterDetails.LInEyebrowZ.value = 0.7071065903f;
-            //CharacterDetails.RInEyebrowZ.value = 0.7071065903f;
-            //CharacterDetails.LEyeZ.value = 0.7071065903f;
-            //CharacterDetails.REyeZ.value = 0.7071065903f;
-            //CharacterDetails.LEyelidZ.value = 0.6589648724f;
-            //CharacterDetails.REyelidZ.value = 0.7318546176f;
-            //CharacterDetails.LLowEyelidZ.value = 0.6428883076f;
-            //CharacterDetails.RLowEyelidZ.value = 0.7395585179f;
-            //CharacterDetails.LEarZ.value = 0.3502247334f;
-            //CharacterDetails.REarZ.value = -0.3030564487f;
-            //CharacterDetails.LCheekZ.value = 0.6087613106f;
-            //CharacterDetails.RCheekZ.value = 0.7933530807f;
-            //CharacterDetails.LMouthZ.value = 0.5735765696f;
-            //CharacterDetails.RMouthZ.value = 0.8191516399f;
-            //CharacterDetails.LUpLipZ.value = 0.7070795894f;
-            //CharacterDetails.RUpLipZ.value = 0.7071064115f;
-            //CharacterDetails.LLowLipZ.value = 0.7071065903f;
-            //CharacterDetails.RLowLipZ.value = 0.7018358111f;
-            CharacterDetails.NeckZ.value = 0.6045513153f;
-            CharacterDetails.SternumZ.value = 0.5119624734f;
-            CharacterDetails.TorsoZ.value = 0.4947781861f;
-            CharacterDetails.WaistZ.value = 0.4738240242f;
-            CharacterDetails.LShoulderZ.value = -0.2362460047f;
-            CharacterDetails.RShoulderZ.value = -0.6383191943f;
-            CharacterDetails.LClavicleZ.value = 0f;
-            CharacterDetails.RClavicleZ.value = 2.980232239E-8f;
-            CharacterDetails.LBreastZ.value = 0.03088222817f;
-            CharacterDetails.RBreastZ.value = 0.03088220209f;
-            CharacterDetails.LArmZ.value = -0.236246109f;
-            CharacterDetails.RArmZ.value = -0.6383193135f;
-            CharacterDetails.LElbowZ.value = -0.2724279761f;
-            CharacterDetails.RElbowZ.value = 0.6540369987f;
-            CharacterDetails.LForearmZ.value = -0.3077905178f;
-            CharacterDetails.RForearmZ.value = 0.6677876711f;
-            CharacterDetails.LWristZ.value = -0.2705979943f;
-            CharacterDetails.RWristZ.value = -0.6532810926f;
-            CharacterDetails.LHandZ.value = -0.2705982327f;
-            CharacterDetails.RHandZ.value = -0.6532812119f;
-            CharacterDetails.LThumbZ.value = -0.2627345026f;
-            CharacterDetails.RThumbZ.value = -0.4309565127f;
-            CharacterDetails.LThumb2Z.value = -0.2627344728f;
-            CharacterDetails.RThumb2Z.value = -0.4309565723f;
-            CharacterDetails.LIndexZ.value = -0.3826832771f;
-            CharacterDetails.RIndexZ.value = 0f;
-            CharacterDetails.LIndex2Z.value = -0.3826832473f;
-            CharacterDetails.RIndex2Z.value = 1.752551704E-8f;
-            CharacterDetails.LMiddleZ.value = -0.3826832771f;
-            CharacterDetails.RMiddleZ.value = 0f;
-            CharacterDetails.LMiddle2Z.value = -0.3826832473f;
-            CharacterDetails.RMiddle2Z.value = 1.752551704E-8f;
-            CharacterDetails.LRingZ.value = -0.3826832175f;
-            CharacterDetails.RRingZ.value = 0f;
-            CharacterDetails.LRing2Z.value = -0.3826832175f;
-            CharacterDetails.RRing2Z.value = -6.725038304E-10f;
-            CharacterDetails.LPinkyZ.value = -0.3826832175f;
-            CharacterDetails.RPinkyZ.value = 0f;
-            CharacterDetails.LPinky2Z.value = -0.3826832175f;
-            CharacterDetails.RPinky2Z.value = -6.725038304E-10f;
-            CharacterDetails.PelvisZ.value = 0.550806284f;
-            CharacterDetails.TailZ.value = -0.184204489f;
-            CharacterDetails.LThighZ.value = 0.5075724125f;
-            CharacterDetails.RThighZ.value = 0.5075724125f;
-            CharacterDetails.LKneeZ.value = -0.496789515f;
-            CharacterDetails.RKneeZ.value = -0.496789515f;
-            CharacterDetails.LCalfZ.value = -0.4709247351f;
-            CharacterDetails.RCalfZ.value = -0.4709247351f;
-            CharacterDetails.LFootZ.value = 0.6834150553f;
-            CharacterDetails.RFootZ.value = 0.6834150553f;
-            CharacterDetails.LToesZ.value = 0.7071067691f;
-            CharacterDetails.RToesZ.value = 0.7071067691f;
-        }
-
-        private void TPoseW()
-        {
-            //CharacterDetails.HeadW.value = 2.980232239E-8f;
-            //CharacterDetails.NoseW.value = 2.967532708E-8f;
-            //CharacterDetails.NostrilsW.value = 2.967532708E-8f;
-            //CharacterDetails.ChinW.value = -0.09229589254f;
-            //CharacterDetails.LOutEyebrowW.value = 3.28294476E-8f;
-            //CharacterDetails.ROutEyebrowW.value = 2.646828356E-8f;
-            //CharacterDetails.LInEyebrowW.value = 2.967532708E-8f;
-            //CharacterDetails.RInEyebrowW.value = 2.967532708E-8f;
-            //CharacterDetails.LEyeW.value = 2.967532708E-8f;
-            //CharacterDetails.REyeW.value = 2.967532708E-8f;
-            //CharacterDetails.LEyelidW.value = 0.1161931381f;
-            //CharacterDetails.REyelidW.value = 0.129045561f;
-            //CharacterDetails.LLowEyelidW.value = -0.1307968199f;
-            //CharacterDetails.RLowEyelidW.value = -0.150464505f;
-            //CharacterDetails.LEarW.value = 0.8353263736f;
-            //CharacterDetails.REarW.value = 0.2961899042f;
-            //CharacterDetails.LCheekW.value = 3.236348078E-8f;
-            //CharacterDetails.RCheekW.value = 2.703848878E-8f;
-            //CharacterDetails.LMouthW.value = 3.539162208E-8f;
-            //CharacterDetails.RMouthW.value = 2.559784917E-8f;
-            //CharacterDetails.LUpLipW.value = 0.006170333829f;
-            //CharacterDetails.RUpLipW.value = 3.026798368E-8f;
-            //CharacterDetails.LLowLipW.value = 2.980232239E-8f;
-            //CharacterDetails.RLowLipW.value = -0.08617514372f;
-            CharacterDetails.NeckW.value = 0.3667662442f;
-            CharacterDetails.SternumW.value = 0.4877440631f;
-            CharacterDetails.TorsoW.value = 0.5051677227f;
-            CharacterDetails.WaistW.value = 0.5248720646f;
-            CharacterDetails.LShoulderW.value = 0.6664738059f;
-            CharacterDetails.RShoulderW.value = 0.3042169213f;
-            CharacterDetails.LClavicleW.value = 0.9999997616f;
-            CharacterDetails.RClavicleW.value = 1.490116119E-8f;
-            CharacterDetails.LBreastW.value = 0.7822870016f;
-            CharacterDetails.RBreastW.value = 0.6213850975f;
-            CharacterDetails.LArmW.value = 0.6664740443f;
-            CharacterDetails.RArmW.value = 0.3042169809f;
-            CharacterDetails.LElbowW.value = 0.652520299f;
-            CharacterDetails.RElbowW.value = -0.2687657475f;
-            CharacterDetails.LForearmW.value = 0.6366040707f;
-            CharacterDetails.RForearmW.value = -0.232506156f;
-            CharacterDetails.LWristW.value = 0.6532813907f;
-            CharacterDetails.RWristW.value = 0.2705978751f;
-            CharacterDetails.LHandW.value = 0.6532812119f;
-            CharacterDetails.RHandW.value = 0.2705976367f;
-            CharacterDetails.LThumbW.value = 0.652775228f;
-            CharacterDetails.RThumbW.value = 0.5649167299f;
-            CharacterDetails.LThumb2W.value = 0.6527751684f;
-            CharacterDetails.RThumb2W.value = 0.5649166703f;
-            CharacterDetails.LIndexW.value = 0.9238791466f;
-            CharacterDetails.RIndexW.value = -4.768371582E-7f;
-            CharacterDetails.LIndex2W.value = 0.9238791466f;
-            CharacterDetails.RIndex2W.value = -4.644691955E-7f;
-            CharacterDetails.LMiddleW.value = 0.9238791466f;
-            CharacterDetails.RMiddleW.value = -4.768371582E-7f;
-            CharacterDetails.LMiddle2W.value = 0.9238791466f;
-            CharacterDetails.RMiddle2W.value = -4.644691955E-7f;
-            CharacterDetails.LRingW.value = 0.9238790274f;
-            CharacterDetails.RRingW.value = -1.490116119E-8f;
-            CharacterDetails.LRing2W.value = 0.9238790274f;
-            CharacterDetails.RRing2W.value = 1.644958836E-9f;
-            CharacterDetails.LPinkyW.value = 0.9238790274f;
-            CharacterDetails.RPinkyW.value = -1.490116119E-8f;
-            CharacterDetails.LPinky2W.value = 0.9238790274f;
-            CharacterDetails.RPinky2W.value = 1.644958836E-9f;
-            CharacterDetails.PelvisW.value = -0.4434098899f;
-            CharacterDetails.TailW.value = 0.6826921701f;
-            CharacterDetails.LThighW.value = -0.4923109114f;
-            CharacterDetails.RThighW.value = -0.4923109114f;
-            CharacterDetails.LKneeW.value = 0.5031898022f;
-            CharacterDetails.RKneeW.value = 0.5031898022f;
-            CharacterDetails.LCalfW.value = 0.5274748206f;
-            CharacterDetails.RCalfW.value = 0.5274748206f;
-            CharacterDetails.LFootW.value = -0.1815040112f;
-            CharacterDetails.RFootW.value = -0.1815040112f;
-            CharacterDetails.LToesW.value = -1.490116119E-8f;
-            CharacterDetails.RToesW.value = -1.490116119E-8f;
-        }
-
-        private void EnableRotations()
-        {
-            CharacterDetails.DebugRotate = true;
-            CharacterDetails.HeadRotate = true;
-            CharacterDetails.NoseRotate = true;
-            CharacterDetails.NostrilsRotate = true;
-            CharacterDetails.ChinRotate = true;
-            CharacterDetails.LOutEyebrowRotate = true;
-            CharacterDetails.ROutEyebrowRotate = true;
-            CharacterDetails.LInEyebrowRotate = true;
-            CharacterDetails.RInEyebrowRotate = true;
-            CharacterDetails.LEyeRotate = true;
-            CharacterDetails.REyeRotate = true;
-            CharacterDetails.LEyelidRotate = true;
-            CharacterDetails.REyelidRotate = true;
-            CharacterDetails.LLowEyelidRotate = true;
-            CharacterDetails.RLowEyelidRotate = true;
-            CharacterDetails.LEarRotate = true;
-            CharacterDetails.REarRotate = true;
-            CharacterDetails.LCheekRotate = true;
-            CharacterDetails.RCheekRotate = true;
-            CharacterDetails.LMouthRotate = true;
-            CharacterDetails.RMouthRotate = true;
-            CharacterDetails.LUpLipRotate = true;
-            CharacterDetails.RUpLipRotate = true;
-            CharacterDetails.LLowLipRotate = true;
-            CharacterDetails.RLowLipRotate = true;
-            CharacterDetails.NeckRotate = true;
-            CharacterDetails.SternumRotate = true;
-            CharacterDetails.TorsoRotate = true;
-            CharacterDetails.WaistRotate = true;
-            CharacterDetails.LShoulderRotate = true;
-            CharacterDetails.RShoulderRotate = true;
-            CharacterDetails.LClavicleRotate = true;
-            CharacterDetails.RClavicleRotate = true;
-            CharacterDetails.LBreastRotate = true;
-            CharacterDetails.RBreastRotate = true;
-            CharacterDetails.LArmRotate = true;
-            CharacterDetails.RArmRotate = true;
-            CharacterDetails.LElbowRotate = true;
-            CharacterDetails.RElbowRotate = true;
-            CharacterDetails.LForearmRotate = true;
-            CharacterDetails.RForearmRotate = true;
-            CharacterDetails.LWristRotate = true;
-            CharacterDetails.RWristRotate = true;
-            CharacterDetails.LHandRotate = true;
-            CharacterDetails.RHandRotate = true;
-            CharacterDetails.LThumbRotate = true;
-            CharacterDetails.RThumbRotate = true;
-            CharacterDetails.LThumb2Rotate = true;
-            CharacterDetails.RThumb2Rotate = true;
-            CharacterDetails.LIndexRotate = true;
-            CharacterDetails.RIndexRotate = true;
-            CharacterDetails.LIndex2Rotate = true;
-            CharacterDetails.RIndex2Rotate = true;
-            CharacterDetails.LMiddleRotate = true;
-            CharacterDetails.RMiddleRotate = true;
-            CharacterDetails.LMiddle2Rotate = true;
-            CharacterDetails.RMiddle2Rotate = true;
-            CharacterDetails.LRingRotate = true;
-            CharacterDetails.RRingRotate = true;
-            CharacterDetails.LRing2Rotate = true;
-            CharacterDetails.RRing2Rotate = true;
-            CharacterDetails.LPinkyRotate = true;
-            CharacterDetails.RPinkyRotate = true;
-            CharacterDetails.LPinky2Rotate = true;
-            CharacterDetails.RPinky2Rotate = true;
-            CharacterDetails.PelvisRotate = true;
-            CharacterDetails.TailRotate = true;
-            CharacterDetails.Tail2Rotate = true;
-            CharacterDetails.Tail3Rotate = true;
-            CharacterDetails.Tail4Rotate = true;
-            CharacterDetails.LThighRotate = true;
-            CharacterDetails.RThighRotate = true;
-            CharacterDetails.LKneeRotate = true;
-            CharacterDetails.RKneeRotate = true;
-            CharacterDetails.LCalfRotate = true;
-            CharacterDetails.RCalfRotate = true;
-            CharacterDetails.LFootRotate = true;
-            CharacterDetails.RFootRotate = true;
-            CharacterDetails.LToesRotate = true;
-            CharacterDetails.RToesRotate = true;
-            CharacterDetails.LEarringRotate = true;
-            CharacterDetails.REarringRotate = true;
-            CharacterDetails.LEarring2Rotate = true;
-            CharacterDetails.REarring2Rotate = true;
-        }
-
-        private void DisableRotations()
-        {
-            CharacterDetails.DebugRotate = false;
-            CharacterDetails.HeadRotate = false;
-            CharacterDetails.NoseRotate = false;
-            CharacterDetails.NostrilsRotate = false;
-            CharacterDetails.ChinRotate = false;
-            CharacterDetails.LOutEyebrowRotate = false;
-            CharacterDetails.ROutEyebrowRotate = false;
-            CharacterDetails.LInEyebrowRotate = false;
-            CharacterDetails.RInEyebrowRotate = false;
-            CharacterDetails.LEyeRotate = false;
-            CharacterDetails.REyeRotate = false;
-            CharacterDetails.LEyelidRotate = false;
-            CharacterDetails.REyelidRotate = false;
-            CharacterDetails.LLowEyelidRotate = false;
-            CharacterDetails.RLowEyelidRotate = false;
-            CharacterDetails.LEarRotate = false;
-            CharacterDetails.REarRotate = false;
-            CharacterDetails.LCheekRotate = false;
-            CharacterDetails.RCheekRotate = false;
-            CharacterDetails.LMouthRotate = false;
-            CharacterDetails.RMouthRotate = false;
-            CharacterDetails.LUpLipRotate = false;
-            CharacterDetails.RUpLipRotate = false;
-            CharacterDetails.LLowLipRotate = false;
-            CharacterDetails.RLowLipRotate = false;
-            CharacterDetails.NeckRotate = false;
-            CharacterDetails.SternumRotate = false;
-            CharacterDetails.TorsoRotate = false;
-            CharacterDetails.WaistRotate = false;
-            CharacterDetails.LShoulderRotate = false;
-            CharacterDetails.RShoulderRotate = false;
-            CharacterDetails.LClavicleRotate = false;
-            CharacterDetails.RClavicleRotate = false;
-            CharacterDetails.LBreastRotate = false;
-            CharacterDetails.RBreastRotate = false;
-            CharacterDetails.LArmRotate = false;
-            CharacterDetails.RArmRotate = false;
-            CharacterDetails.LElbowRotate = false;
-            CharacterDetails.RElbowRotate = false;
-            CharacterDetails.LForearmRotate = false;
-            CharacterDetails.RForearmRotate = false;
-            CharacterDetails.LWristRotate = false;
-            CharacterDetails.RWristRotate = false;
-            CharacterDetails.LHandRotate = false;
-            CharacterDetails.RHandRotate = false;
-            CharacterDetails.LThumbRotate = false;
-            CharacterDetails.RThumbRotate = false;
-            CharacterDetails.LThumb2Rotate = false;
-            CharacterDetails.RThumb2Rotate = false;
-            CharacterDetails.LIndexRotate = false;
-            CharacterDetails.RIndexRotate = false;
-            CharacterDetails.LIndex2Rotate = false;
-            CharacterDetails.RIndex2Rotate = false;
-            CharacterDetails.LMiddleRotate = false;
-            CharacterDetails.RMiddleRotate = false;
-            CharacterDetails.LMiddle2Rotate = false;
-            CharacterDetails.RMiddle2Rotate = false;
-            CharacterDetails.LRingRotate = false;
-            CharacterDetails.RRingRotate = false;
-            CharacterDetails.LRing2Rotate = false;
-            CharacterDetails.RRing2Rotate = false;
-            CharacterDetails.LPinkyRotate = false;
-            CharacterDetails.RPinkyRotate = false;
-            CharacterDetails.LPinky2Rotate = false;
-            CharacterDetails.RPinky2Rotate = false;
-            CharacterDetails.PelvisRotate = false;
-            CharacterDetails.TailRotate = false;
-            CharacterDetails.Tail2Rotate = false;
-            CharacterDetails.Tail3Rotate = false;
-            CharacterDetails.Tail4Rotate = false;
-            CharacterDetails.LThighRotate = false;
-            CharacterDetails.RThighRotate = false;
-            CharacterDetails.LKneeRotate = false;
-            CharacterDetails.RKneeRotate = false;
-            CharacterDetails.LCalfRotate = false;
-            CharacterDetails.RCalfRotate = false;
-            CharacterDetails.LFootRotate = false;
-            CharacterDetails.RFootRotate = false;
-            CharacterDetails.LToesRotate = false;
-            CharacterDetails.RToesRotate = false;
-            CharacterDetails.LEarringRotate = false;
-            CharacterDetails.REarringRotate = false;
-            CharacterDetails.LEarring2Rotate = false;
-            CharacterDetails.REarring2Rotate = false;
-        }
     }
 }

@@ -31,8 +31,6 @@ namespace ConceptMatrix.Views
 		public AboutView()
 		{
 			InitializeComponent();
-            DataContext = new PaletteSelectorViewModel();
-            if (SaveSettings.Default.Theme == "Dark") ThemeButton.IsChecked = true;
         }
 		private void GitHubButton_OnClick(object sender, RoutedEventArgs e)
 		{

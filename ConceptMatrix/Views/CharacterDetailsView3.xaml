@@ -14,7 +14,7 @@
     <Grid Height="530">
         <GroupBox Header="Group Pose Filters" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" Margin="402,10,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="330" Width="703"/>
         <GroupBox Header="Camera Settings" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" Margin="10,10,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="395" Width="387"/>
-        <Button x:Name="ResetCams" Content="Reset to Default" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth1" HorizontalAlignment="Left" Margin="245,14,0,0" VerticalAlignment="Top" Width="147" Height="28" FontWeight="Bold" Click="ResetCams_Click"/>
+        <Button x:Name="ResetCams" Content="Reset to Default" Style="{StaticResource MaterialDesignRaisedAccentButton}" HorizontalAlignment="Left" Margin="245,12,0,0" VerticalAlignment="Top" Width="147" Height="28" FontWeight="Bold" Click="ResetCams_Click"/>
         <CheckBox IsEnabled="{Binding Path=CharacterDetails.Max.Checker}" IsChecked="{Binding Path=CharacterDetails.Max.freeze}" Content="Max Zoom:" HorizontalAlignment="Left" Margin="16,55,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown  x:Name="MaxZoom" Value="{Binding Path=CharacterDetails.Max.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="130,55,0,0" VerticalAlignment="Top" Width="142" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F5" Interval="0.01"  TextAlignment="Right" SourceUpdated="MaxZoom_SourceUpdated" Height="28"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.Min.freeze}" IsEnabled="{Binding Path=CharacterDetails.Min.Checker}" Content="Min Zoom:" HorizontalAlignment="Left" Margin="16,85,0,0" VerticalAlignment="Top" Height="28"/>
@@ -121,7 +121,7 @@
             </materialDesign:PackIcon>
         </Button>
         <Button x:Name="Load_Button" HorizontalAlignment="Left" Margin="1035.837,248,0,0" VerticalAlignment="Top" Width="51" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" ToolTip="Load" Height="50" Padding="0" Click="Load_Button_Click">
-            <materialDesign:PackIcon Kind="Upload" Height="24" Width="24"/>
+            <materialDesign:PackIcon Kind="Download" Height="24" Width="24"/>
         </Button>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.Weather.freeze}" Content="Weather:" ToolTip="Controls the current weather for your zone. &#xD;&#xA;This method uses natural transitions and may a bit of time to take effect." HorizontalAlignment="Left" Margin="10,410,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="Weather" Maximum="140" Minimum="1" Value="{Binding Path=CharacterDetails.Weather.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="130,410,0,0" VerticalAlignment="Top" Width="142" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Interval="1" TextAlignment="Right" NumericInputMode="Numbers" SourceUpdated="Weather_SourceUpdated" Speedup="False" Height="28"/>

@@ -1145,7 +1145,7 @@ namespace ConceptMatrix.Views
 				var frame = st.GetFrame(0);
 				// Get the line number from the stack frame
 				var line = frame.GetFileLineNumber();
-				System.Windows.MessageBox.Show(ex.Message + "\n" + ex.StackTrace + frame + line, "Oh no!");
+				//System.Windows.MessageBox.Show(ex.Message + "\n" + ex.StackTrace + frame + line, "Oh no!");
 
 			}
 		}

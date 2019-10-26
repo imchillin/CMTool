@@ -31,6 +31,8 @@ namespace ConceptMatrix.Utility
         public string LastUpdated { get; set; }
         public string AoBOffset { get; set; }
         public string GposeOffset { get; set; }
+        public string GposeEntityOffset { get; set; }
+        public string GposeCheckOffset { get; set; }
         public string CameraOffset { get; set; }
         public string TimeOffset { get; set; }
         public string WeatherOffset { get; set; }
@@ -44,7 +46,6 @@ namespace ConceptMatrix.Utility
         public string PhysicsOffset { get; set; }
         public string CharacterRenderOffset { get; set; }
         public string CharacterRenderOffset2 { get; set; }
-        public string GposeEntityOffset { get; set; }
         public CharacterOffsets Character { get; set; }
         public PositionOffsets Position { get; set; }
     }

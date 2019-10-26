@@ -146,7 +146,7 @@
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left"  PreviewTextInput="DigitCheckInput" Height="23" Margin="469,317.118,0,0" Text="{Binding CharacterDetails.Lips.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
 
         <!-- Lips Color -->
-        <CheckBox IsChecked="{Binding CharacterDetails.LipsTone.freeze}" Content="Lips Color/Fur Pattern:" ToolTip="Changes the Lips Color of the selected actor." HorizontalAlignment="Left" Margin="8,287,0,0" VerticalAlignment="Top" Height="23"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.LipsTone.freeze}" Content="Lips Color/Fur Pattern:" ToolTip="Changes the Lips Color and Fur Pattern of the selected actor." HorizontalAlignment="Left" Margin="8,287,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left"  PreviewTextInput="DigitCheckInput" Height="23" Margin="168,287.118,0,0" Text="{Binding CharacterDetails.LipsTone.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
         <Button x:Name="LipColorSearch" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,287.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="Button_Click"/>
 
