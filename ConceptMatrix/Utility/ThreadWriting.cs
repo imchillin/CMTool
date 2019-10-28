@@ -72,6 +72,7 @@ namespace ConceptMatrix.Utility
                     if (CharacterDetails.Jaw.freeze && !CharacterDetails.Jaw.Activated) m.writeBytes(GAS(c.Jaw), CharacterDetails.Jaw.GetBytes());
                     if (CharacterDetails.TailorMuscle.freeze && !CharacterDetails.TailorMuscle.Activated) m.writeBytes(GAS(c.TailorMuscle), CharacterDetails.TailorMuscle.GetBytes());
                     if (CharacterDetails.FreezeFacial.Activated) m.writeMemory(GAS(c.FreezeFacial), "float", "0");
+
                     if (CharacterDetails.DataPath.freeze && !CharacterDetails.DataPath.Activated)
                     {
                         m.writeBytes(GAS(c.DataPath), CharacterDetails.DataPath.GetBytes());
@@ -702,6 +703,14 @@ namespace ConceptMatrix.Utility
                         m.writeBytes(GAS(c.Body.Base, c.Body.Position.Tail4W), CharacterDetails.Tail4W.GetBytes());
                     }
 
+                    if (CharacterDetails.Tail5Rotate)
+                    {
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.Tail5X), CharacterDetails.Tail5X.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.Tail5Y), CharacterDetails.Tail5Y.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.Tail5Z), CharacterDetails.Tail5Z.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.Tail5W), CharacterDetails.Tail5W.GetBytes());
+                    }
+
                     if (CharacterDetails.LThighRotate)
                     {
                         m.writeBytes(GAS(c.Body.Base, c.Body.Position.LThighX), CharacterDetails.LThighX.GetBytes());
@@ -790,6 +799,70 @@ namespace ConceptMatrix.Utility
                         m.writeBytes(GAS(c.Body.Base, c.Body.Position.DebugW), CharacterDetails.DebugW.GetBytes());
                     }
 
+                    if (CharacterDetails.LVEarRotate)
+                    {
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEarX), CharacterDetails.LVEarX.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEarY), CharacterDetails.LVEarY.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEarZ), CharacterDetails.LVEarZ.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEarW), CharacterDetails.LVEarW.GetBytes());
+                    }
+
+                    if (CharacterDetails.RVEarRotate)
+                    {
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEarX), CharacterDetails.RVEarX.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEarY), CharacterDetails.RVEarY.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEarZ), CharacterDetails.RVEarZ.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEarW), CharacterDetails.RVEarW.GetBytes());
+                    }
+
+                    if (CharacterDetails.LVEar2Rotate)
+                    {
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEar2X), CharacterDetails.LVEar2X.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEar2Y), CharacterDetails.LVEar2Y.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEar2Z), CharacterDetails.LVEar2Z.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEar2W), CharacterDetails.LVEar2W.GetBytes());
+                    }
+
+                    if (CharacterDetails.RVEar2Rotate)
+                    {
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEar2X), CharacterDetails.RVEar2X.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEar2Y), CharacterDetails.RVEar2Y.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEar2Z), CharacterDetails.RVEar2Z.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEar2W), CharacterDetails.RVEar2W.GetBytes());
+                    }
+
+                    if (CharacterDetails.LVEar3Rotate)
+                    {
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEar3X), CharacterDetails.LVEar3X.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEar3Y), CharacterDetails.LVEar3Y.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEar3Z), CharacterDetails.LVEar3Z.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEar3W), CharacterDetails.LVEar3W.GetBytes());
+                    }
+
+                    if (CharacterDetails.RVEar3Rotate)
+                    {
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEar3X), CharacterDetails.RVEar3X.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEar3Y), CharacterDetails.RVEar3Y.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEar3Z), CharacterDetails.RVEar3Z.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEar3W), CharacterDetails.RVEar3W.GetBytes());
+                    }
+
+                    if (CharacterDetails.LVEar4Rotate)
+                    {
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEar4X), CharacterDetails.LVEar4X.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEar4Y), CharacterDetails.LVEar4Y.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEar4Z), CharacterDetails.LVEar4Z.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEar4W), CharacterDetails.LVEar4W.GetBytes());
+                    }
+
+                    if (CharacterDetails.RVEar4Rotate)
+                    {
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEar4X), CharacterDetails.RVEar4X.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEar4Y), CharacterDetails.RVEar4Y.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEar4Z), CharacterDetails.RVEar4Z.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEar4W), CharacterDetails.RVEar4W.GetBytes());
+                    }
+
                     if (CharacterDetails.LEarringRotate)
                     {
                         m.writeBytes(GAS(c.Body.Base, c.Body.Position.LEarringX), CharacterDetails.LEarringX.GetBytes());
@@ -820,6 +893,70 @@ namespace ConceptMatrix.Utility
                         m.writeBytes(GAS(c.Body.Base, c.Body.Position.REarring2Y), CharacterDetails.REarring2Y.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Position.REarring2Z), CharacterDetails.REarring2Z.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Position.REarring2W), CharacterDetails.REarring2W.GetBytes());
+                    }
+
+                    if (CharacterDetails.LVLowLipRotate)
+                    {
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVLowLipX), CharacterDetails.LVLowLipX.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVLowLipY), CharacterDetails.LVLowLipY.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVLowLipZ), CharacterDetails.LVLowLipZ.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVLowLipW), CharacterDetails.LVLowLipW.GetBytes());
+                    }
+
+                    if (CharacterDetails.RVUpLipRotate)
+                    {
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVUpLipX), CharacterDetails.RVUpLipX.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVUpLipY), CharacterDetails.RVUpLipY.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVUpLipZ), CharacterDetails.RVUpLipZ.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVUpLipW), CharacterDetails.RVUpLipW.GetBytes());
+                    }
+
+                    if (CharacterDetails.RVLowLipRotate)
+                    {
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowLipX), CharacterDetails.RVLowLipX.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowLipY), CharacterDetails.RVLowLipY.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowLipZ), CharacterDetails.RVLowLipZ.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowLipW), CharacterDetails.RVLowLipW.GetBytes());
+                    }
+
+                    if (CharacterDetails.RVLowEar2Rotate)
+                    {
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowEar2X), CharacterDetails.RVLowEar2X.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowEar2Y), CharacterDetails.RVLowEar2Y.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowEar2Z), CharacterDetails.RVLowEar2Z.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowEar2W), CharacterDetails.RVLowEar2W.GetBytes());
+                    }
+
+                    if (CharacterDetails.LVLowEar3Rotate)
+                    {
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVLowEar3X), CharacterDetails.LVLowEar3X.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVLowEar3Y), CharacterDetails.LVLowEar3Y.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVLowEar3Z), CharacterDetails.LVLowEar3Z.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVLowEar3W), CharacterDetails.LVLowEar3W.GetBytes());
+                    }
+
+                    if (CharacterDetails.RVLowEar3Rotate)
+                    {
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowEar3X), CharacterDetails.RVLowEar3X.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowEar3Y), CharacterDetails.RVLowEar3Y.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowEar3Z), CharacterDetails.RVLowEar3Z.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowEar3W), CharacterDetails.RVLowEar3W.GetBytes());
+                    }
+
+                    if (CharacterDetails.LVLowEar4Rotate)
+                    {
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVLowEar4X), CharacterDetails.LVLowEar4X.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVLowEar4Y), CharacterDetails.LVLowEar4Y.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVLowEar4Z), CharacterDetails.LVLowEar4Z.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVLowEar4W), CharacterDetails.LVLowEar4W.GetBytes());
+                    }
+
+                    if (CharacterDetails.RVLowEar4Rotate)
+                    {
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowEar4X), CharacterDetails.RVLowEar4X.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowEar4Y), CharacterDetails.RVLowEar4Y.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowEar4Z), CharacterDetails.RVLowEar4Z.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowEar4W), CharacterDetails.RVLowEar4W.GetBytes());
                     }
 
 
@@ -950,6 +1087,87 @@ namespace ConceptMatrix.Utility
                         m.writeBytes(GAS(c.Body.Base, c.Body.Position.NeckZ), CharacterDetails.NeckZ.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Position.NeckW), CharacterDetails.NeckW.GetBytes());
 
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEarX), CharacterDetails.LVEarX.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEarY), CharacterDetails.LVEarY.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEarZ), CharacterDetails.LVEarZ.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEarW), CharacterDetails.LVEarW.GetBytes());
+
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEarX), CharacterDetails.RVEarX.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEarY), CharacterDetails.RVEarY.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEarZ), CharacterDetails.RVEarZ.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEarW), CharacterDetails.RVEarW.GetBytes());
+
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEar2X), CharacterDetails.LVEar2X.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEar2Y), CharacterDetails.LVEar2Y.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEar2Z), CharacterDetails.LVEar2Z.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEar2W), CharacterDetails.LVEar2W.GetBytes());
+
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEar2X), CharacterDetails.RVEar2X.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEar2Y), CharacterDetails.RVEar2Y.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEar2Z), CharacterDetails.RVEar2Z.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEar2W), CharacterDetails.RVEar2W.GetBytes());
+
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEar3X), CharacterDetails.LVEar3X.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEar3Y), CharacterDetails.LVEar3Y.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEar3Z), CharacterDetails.LVEar3Z.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEar3W), CharacterDetails.LVEar3W.GetBytes());
+
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEar3X), CharacterDetails.RVEar3X.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEar3Y), CharacterDetails.RVEar3Y.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEar3Z), CharacterDetails.RVEar3Z.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEar3W), CharacterDetails.RVEar3W.GetBytes());
+
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEar4X), CharacterDetails.LVEar4X.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEar4Y), CharacterDetails.LVEar4Y.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEar4Z), CharacterDetails.LVEar4Z.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEar4W), CharacterDetails.LVEar4W.GetBytes());
+
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEar4X), CharacterDetails.RVEar4X.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEar4Y), CharacterDetails.RVEar4Y.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEar4Z), CharacterDetails.RVEar4Z.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVEar4W), CharacterDetails.RVEar4W.GetBytes());
+
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVLowLipX), CharacterDetails.LVLowLipX.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVLowLipY), CharacterDetails.LVLowLipY.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVLowLipZ), CharacterDetails.LVLowLipZ.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVLowLipW), CharacterDetails.LVLowLipW.GetBytes());
+
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVUpLipX), CharacterDetails.RVUpLipX.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVUpLipY), CharacterDetails.RVUpLipY.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVUpLipZ), CharacterDetails.RVUpLipZ.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVUpLipW), CharacterDetails.RVUpLipW.GetBytes());
+
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowLipX), CharacterDetails.RVLowLipX.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowLipY), CharacterDetails.RVLowLipY.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowLipZ), CharacterDetails.RVLowLipZ.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowLipW), CharacterDetails.RVLowLipW.GetBytes());
+
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowEar2X), CharacterDetails.RVLowEar2X.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowEar2Y), CharacterDetails.RVLowEar2Y.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowEar2Z), CharacterDetails.RVLowEar2Z.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowEar2W), CharacterDetails.RVLowEar2W.GetBytes());
+
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVLowEar3X), CharacterDetails.LVLowEar3X.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVLowEar3Y), CharacterDetails.LVLowEar3Y.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVLowEar3Z), CharacterDetails.LVLowEar3Z.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVLowEar3W), CharacterDetails.LVLowEar3W.GetBytes());
+
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowEar3X), CharacterDetails.RVLowEar3X.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowEar3Y), CharacterDetails.RVLowEar3Y.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowEar3Z), CharacterDetails.RVLowEar3Z.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowEar3W), CharacterDetails.RVLowEar3W.GetBytes());
+
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVLowEar4X), CharacterDetails.LVLowEar4X.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVLowEar4Y), CharacterDetails.LVLowEar4Y.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVLowEar4Z), CharacterDetails.LVLowEar4Z.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVLowEar4W), CharacterDetails.LVLowEar4W.GetBytes());
+
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowEar4X), CharacterDetails.RVLowEar4X.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowEar4Y), CharacterDetails.RVLowEar4Y.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowEar4Z), CharacterDetails.RVLowEar4Z.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowEar4W), CharacterDetails.RVLowEar4W.GetBytes());
+
+
                         CharacterDetails.WriteHeadBones = false;
                     }
 
@@ -1004,6 +1222,11 @@ namespace ConceptMatrix.Utility
                         m.writeBytes(GAS(c.Body.Base, c.Body.Position.Tail4Y), CharacterDetails.Tail4Y.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Position.Tail4Z), CharacterDetails.Tail4Z.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Position.Tail4W), CharacterDetails.Tail4W.GetBytes());
+
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.Tail5X), CharacterDetails.Tail5X.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.Tail5Y), CharacterDetails.Tail5Y.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.Tail5Z), CharacterDetails.Tail5Z.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.Tail5W), CharacterDetails.Tail5W.GetBytes());
 
                         CharacterDetails.WriteTorsoBones = false;
                     }

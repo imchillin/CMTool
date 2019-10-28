@@ -191,6 +191,7 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<float> Tail2X { get; set; }
         [JsonIgnore] public Address<float> Tail3X { get; set; }
         [JsonIgnore] public Address<float> Tail4X { get; set; }
+        [JsonIgnore] public Address<float> Tail5X { get; set; }
         [JsonIgnore] public Address<float> LThighX { get; set; }
         [JsonIgnore] public Address<float> RThighX { get; set; }
         [JsonIgnore] public Address<float> LKneeX { get; set; }
@@ -201,10 +202,26 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<float> RFootX { get; set; }
         [JsonIgnore] public Address<float> LToesX { get; set; }
         [JsonIgnore] public Address<float> RToesX { get; set; }
+        [JsonIgnore] public Address<float> LVEarX { get; set; }
+        [JsonIgnore] public Address<float> RVEarX { get; set; }
+        [JsonIgnore] public Address<float> LVEar2X { get; set; }
+        [JsonIgnore] public Address<float> RVEar2X { get; set; }
+        [JsonIgnore] public Address<float> LVEar3X { get; set; }
+        [JsonIgnore] public Address<float> RVEar3X { get; set; }
+        [JsonIgnore] public Address<float> LVEar4X { get; set; }
+        [JsonIgnore] public Address<float> RVEar4X { get; set; }
         [JsonIgnore] public Address<float> LEarringX { get; set; }
         [JsonIgnore] public Address<float> REarringX { get; set; }
         [JsonIgnore] public Address<float> LEarring2X { get; set; }
         [JsonIgnore] public Address<float> REarring2X { get; set; }
+        [JsonIgnore] public Address<float> LVLowLipX { get; set; }
+        [JsonIgnore] public Address<float> RVUpLipX { get; set; }
+        [JsonIgnore] public Address<float> RVLowLipX { get; set; }
+        [JsonIgnore] public Address<float> RVLowEar2X { get; set; }
+        [JsonIgnore] public Address<float> LVLowEar3X { get; set; }
+        [JsonIgnore] public Address<float> RVLowEar3X { get; set; }
+        [JsonIgnore] public Address<float> LVLowEar4X { get; set; }
+        [JsonIgnore] public Address<float> RVLowEar4X { get; set; }
 
         [JsonIgnore] public Address<float> HeadY { get; set; }
         [JsonIgnore] public Address<float> NoseY { get; set; }
@@ -275,6 +292,7 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<float> Tail2Y { get; set; }
         [JsonIgnore] public Address<float> Tail3Y { get; set; }
         [JsonIgnore] public Address<float> Tail4Y { get; set; }
+        [JsonIgnore] public Address<float> Tail5Y { get; set; }
         [JsonIgnore] public Address<float> LThighY { get; set; }
         [JsonIgnore] public Address<float> RThighY { get; set; }
         [JsonIgnore] public Address<float> LKneeY { get; set; }
@@ -285,10 +303,26 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<float> RFootY { get; set; }
         [JsonIgnore] public Address<float> LToesY { get; set; }
         [JsonIgnore] public Address<float> RToesY { get; set; }
+        [JsonIgnore] public Address<float> LVEarY { get; set; }
+        [JsonIgnore] public Address<float> RVEarY { get; set; }
+        [JsonIgnore] public Address<float> LVEar2Y { get; set; }
+        [JsonIgnore] public Address<float> RVEar2Y { get; set; }
+        [JsonIgnore] public Address<float> LVEar3Y { get; set; }
+        [JsonIgnore] public Address<float> RVEar3Y { get; set; }
+        [JsonIgnore] public Address<float> LVEar4Y { get; set; }
+        [JsonIgnore] public Address<float> RVEar4Y { get; set; }
         [JsonIgnore] public Address<float> LEarringY { get; set; }
         [JsonIgnore] public Address<float> REarringY { get; set; }
         [JsonIgnore] public Address<float> LEarring2Y { get; set; }
         [JsonIgnore] public Address<float> REarring2Y { get; set; }
+        [JsonIgnore] public Address<float> LVLowLipY { get; set; }
+        [JsonIgnore] public Address<float> RVUpLipY { get; set; }
+        [JsonIgnore] public Address<float> RVLowLipY { get; set; }
+        [JsonIgnore] public Address<float> RVLowEar2Y { get; set; }
+        [JsonIgnore] public Address<float> LVLowEar3Y { get; set; }
+        [JsonIgnore] public Address<float> RVLowEar3Y { get; set; }
+        [JsonIgnore] public Address<float> LVLowEar4Y { get; set; }
+        [JsonIgnore] public Address<float> RVLowEar4Y { get; set; }
 
         [JsonIgnore] public Address<float> HeadZ { get; set; }
         [JsonIgnore] public Address<float> NoseZ { get; set; }
@@ -359,6 +393,7 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<float> Tail2Z { get; set; }
         [JsonIgnore] public Address<float> Tail3Z { get; set; }
         [JsonIgnore] public Address<float> Tail4Z { get; set; }
+        [JsonIgnore] public Address<float> Tail5Z { get; set; }
         [JsonIgnore] public Address<float> LThighZ { get; set; }
         [JsonIgnore] public Address<float> RThighZ { get; set; }
         [JsonIgnore] public Address<float> LKneeZ { get; set; }
@@ -369,10 +404,26 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<float> RFootZ { get; set; }
         [JsonIgnore] public Address<float> LToesZ { get; set; }
         [JsonIgnore] public Address<float> RToesZ { get; set; }
+        [JsonIgnore] public Address<float> LVEarZ { get; set; }
+        [JsonIgnore] public Address<float> RVEarZ { get; set; }
+        [JsonIgnore] public Address<float> LVEar2Z { get; set; }
+        [JsonIgnore] public Address<float> RVEar2Z { get; set; }
+        [JsonIgnore] public Address<float> LVEar3Z { get; set; }
+        [JsonIgnore] public Address<float> RVEar3Z { get; set; }
+        [JsonIgnore] public Address<float> LVEar4Z { get; set; }
+        [JsonIgnore] public Address<float> RVEar4Z { get; set; }
         [JsonIgnore] public Address<float> LEarringZ { get; set; }
         [JsonIgnore] public Address<float> REarringZ { get; set; }
         [JsonIgnore] public Address<float> LEarring2Z { get; set; }
         [JsonIgnore] public Address<float> REarring2Z { get; set; }
+        [JsonIgnore] public Address<float> LVLowLipZ { get; set; }
+        [JsonIgnore] public Address<float> RVUpLipZ { get; set; }
+        [JsonIgnore] public Address<float> RVLowLipZ { get; set; }
+        [JsonIgnore] public Address<float> RVLowEar2Z { get; set; }
+        [JsonIgnore] public Address<float> LVLowEar3Z { get; set; }
+        [JsonIgnore] public Address<float> RVLowEar3Z { get; set; }
+        [JsonIgnore] public Address<float> LVLowEar4Z { get; set; }
+        [JsonIgnore] public Address<float> RVLowEar4Z { get; set; }
 
         [JsonIgnore] public Address<float> HeadW { get; set; }
         [JsonIgnore] public Address<float> NoseW { get; set; }
@@ -443,6 +494,7 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<float> Tail2W { get; set; }
         [JsonIgnore] public Address<float> Tail3W { get; set; }
         [JsonIgnore] public Address<float> Tail4W { get; set; }
+        [JsonIgnore] public Address<float> Tail5W { get; set; }
         [JsonIgnore] public Address<float> LThighW { get; set; }
         [JsonIgnore] public Address<float> RThighW { get; set; }
         [JsonIgnore] public Address<float> LKneeW { get; set; }
@@ -453,10 +505,26 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<float> RFootW { get; set; }
         [JsonIgnore] public Address<float> LToesW { get; set; }
         [JsonIgnore] public Address<float> RToesW { get; set; }
+        [JsonIgnore] public Address<float> LVEarW { get; set; }
+        [JsonIgnore] public Address<float> RVEarW { get; set; }
+        [JsonIgnore] public Address<float> LVEar2W { get; set; }
+        [JsonIgnore] public Address<float> RVEar2W { get; set; }
+        [JsonIgnore] public Address<float> LVEar3W { get; set; }
+        [JsonIgnore] public Address<float> RVEar3W { get; set; }
+        [JsonIgnore] public Address<float> LVEar4W { get; set; }
+        [JsonIgnore] public Address<float> RVEar4W { get; set; }
         [JsonIgnore] public Address<float> LEarringW { get; set; }
         [JsonIgnore] public Address<float> REarringW { get; set; }
         [JsonIgnore] public Address<float> LEarring2W { get; set; }
         [JsonIgnore] public Address<float> REarring2W { get; set; }
+        [JsonIgnore] public Address<float> LVLowLipW { get; set; }
+        [JsonIgnore] public Address<float> RVUpLipW { get; set; }
+        [JsonIgnore] public Address<float> RVLowLipW { get; set; }
+        [JsonIgnore] public Address<float> RVLowEar2W { get; set; }
+        [JsonIgnore] public Address<float> LVLowEar3W { get; set; }
+        [JsonIgnore] public Address<float> RVLowEar3W { get; set; }
+        [JsonIgnore] public Address<float> LVLowEar4W { get; set; }
+        [JsonIgnore] public Address<float> RVLowEar4W { get; set; }
 
         [JsonIgnore] public Address<float> CameraHeight2 { get; set; }
         [JsonIgnore] public Address<float> CamX { get; set; }
@@ -693,6 +761,7 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public bool Tail2Rotate { get; set; }
         [JsonIgnore] public bool Tail3Rotate { get; set; }
         [JsonIgnore] public bool Tail4Rotate { get; set; }
+        [JsonIgnore] public bool Tail5Rotate { get; set; }
         [JsonIgnore] public bool LThighRotate { get; set; }
         [JsonIgnore] public bool RThighRotate { get; set; }
         [JsonIgnore] public bool LKneeRotate { get; set; }
@@ -703,10 +772,26 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public bool RFootRotate { get; set; }
         [JsonIgnore] public bool LToesRotate { get; set; }
         [JsonIgnore] public bool RToesRotate { get; set; }
+        [JsonIgnore] public bool LVEarRotate { get; set; }
+        [JsonIgnore] public bool RVEarRotate { get; set; }
+        [JsonIgnore] public bool LVEar2Rotate { get; set; }
+        [JsonIgnore] public bool RVEar2Rotate { get; set; }
+        [JsonIgnore] public bool LVEar3Rotate { get; set; }
+        [JsonIgnore] public bool RVEar3Rotate { get; set; }
+        [JsonIgnore] public bool LVEar4Rotate { get; set; }
+        [JsonIgnore] public bool RVEar4Rotate { get; set; }
         [JsonIgnore] public bool LEarringRotate { get; set; }
         [JsonIgnore] public bool REarringRotate { get; set; }
         [JsonIgnore] public bool LEarring2Rotate { get; set; }
         [JsonIgnore] public bool REarring2Rotate { get; set; }
+        [JsonIgnore] public bool LVLowLipRotate { get; set; }
+        [JsonIgnore] public bool RVUpLipRotate { get; set; }
+        [JsonIgnore] public bool RVLowLipRotate { get; set; }
+        [JsonIgnore] public bool RVLowEar2Rotate { get; set; }
+        [JsonIgnore] public bool LVLowEar3Rotate { get; set; }
+        [JsonIgnore] public bool RVLowEar3Rotate { get; set; }
+        [JsonIgnore] public bool LVLowEar4Rotate { get; set; }
+        [JsonIgnore] public bool RVLowEar4Rotate { get; set; }
 
         [JsonIgnore] public bool DebugCheck { get; set; }
         [JsonIgnore] public bool HeadCheck { get; set; }
@@ -778,6 +863,7 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public bool Tail2Check { get; set; }
         [JsonIgnore] public bool Tail3Check { get; set; }
         [JsonIgnore] public bool Tail4Check { get; set; }
+        [JsonIgnore] public bool Tail5Check { get; set; }
         [JsonIgnore] public bool LThighCheck { get; set; }
         [JsonIgnore] public bool RThighCheck { get; set; }
         [JsonIgnore] public bool LKneeCheck { get; set; }
@@ -788,10 +874,26 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public bool RFootCheck { get; set; }
         [JsonIgnore] public bool LToesCheck { get; set; }
         [JsonIgnore] public bool RToesCheck { get; set; }
+        [JsonIgnore] public bool LVEarCheck { get; set; }
+        [JsonIgnore] public bool RVEarCheck { get; set; }
+        [JsonIgnore] public bool LVEar2Check { get; set; }
+        [JsonIgnore] public bool RVEar2Check { get; set; }
+        [JsonIgnore] public bool LVEar3Check { get; set; }
+        [JsonIgnore] public bool RVEar3Check { get; set; }
+        [JsonIgnore] public bool LVEar4Check { get; set; }
+        [JsonIgnore] public bool RVEar4Check { get; set; }
         [JsonIgnore] public bool LEarringCheck { get; set; }
         [JsonIgnore] public bool REarringCheck { get; set; }
         [JsonIgnore] public bool LEarring2Check { get; set; }
         [JsonIgnore] public bool REarring2Check { get; set; }
+        [JsonIgnore] public bool LVLowLipCheck { get; set; }
+        [JsonIgnore] public bool RVUpLipCheck { get; set; }
+        [JsonIgnore] public bool RVLowLipCheck { get; set; }
+        [JsonIgnore] public bool RVLowEar2Check { get; set; }
+        [JsonIgnore] public bool LVLowEar3Check { get; set; }
+        [JsonIgnore] public bool RVLowEar3Check { get; set; }
+        [JsonIgnore] public bool LVLowEar4Check { get; set; }
+        [JsonIgnore] public bool RVLowEar4Check { get; set; }
 
         public CharacterDetails()
         {
@@ -1046,6 +1148,7 @@ namespace ConceptMatrix.Models
             Tail2X = new Address<float>();
             Tail3X = new Address<float>();
             Tail4X = new Address<float>();
+            Tail5X = new Address<float>();
             LThighX = new Address<float>();
             RThighX = new Address<float>();
             LKneeX = new Address<float>();
@@ -1056,10 +1159,26 @@ namespace ConceptMatrix.Models
             RFootX = new Address<float>();
             LToesX = new Address<float>();
             RToesX = new Address<float>();
+            LVEarX = new Address<float>();
+            RVEarX = new Address<float>();
+            LVEar2X = new Address<float>();
+            RVEar2X = new Address<float>();
+            LVEar3X = new Address<float>();
+            RVEar3X = new Address<float>();
+            LVEar4X = new Address<float>();
+            RVEar4X = new Address<float>();
             LEarringX = new Address<float>();
             REarringX = new Address<float>();
             LEarring2X = new Address<float>();
             REarring2X = new Address<float>();
+            LVLowLipX = new Address<float>();
+            RVUpLipX = new Address<float>();
+            RVLowLipX = new Address<float>();
+            RVLowEar2X = new Address<float>();
+            LVLowEar3X = new Address<float>();
+            RVLowEar3X = new Address<float>();
+            LVLowEar4X = new Address<float>();
+            RVLowEar4X = new Address<float>();
 
             HeadY = new Address<float>();
             NoseY = new Address<float>();
@@ -1130,6 +1249,7 @@ namespace ConceptMatrix.Models
             Tail2Y = new Address<float>();
             Tail3Y = new Address<float>();
             Tail4Y = new Address<float>();
+            Tail5Y = new Address<float>();
             LThighY = new Address<float>();
             RThighY = new Address<float>();
             LKneeY = new Address<float>();
@@ -1140,10 +1260,26 @@ namespace ConceptMatrix.Models
             RFootY = new Address<float>();
             LToesY = new Address<float>();
             RToesY = new Address<float>();
+            LVEarY = new Address<float>();
+            RVEarY = new Address<float>();
+            LVEar2Y = new Address<float>();
+            RVEar2Y = new Address<float>();
+            LVEar3Y = new Address<float>();
+            RVEar3Y = new Address<float>();
+            LVEar4Y = new Address<float>();
+            RVEar4Y = new Address<float>();
             LEarringY = new Address<float>();
             REarringY = new Address<float>();
             LEarring2Y = new Address<float>();
             REarring2Y = new Address<float>();
+            LVLowLipY = new Address<float>();
+            RVUpLipY = new Address<float>();
+            RVLowLipY = new Address<float>();
+            RVLowEar2Y = new Address<float>();
+            LVLowEar3Y = new Address<float>();
+            RVLowEar3Y = new Address<float>();
+            LVLowEar4Y = new Address<float>();
+            RVLowEar4Y = new Address<float>();
 
             HeadZ = new Address<float>();
             NoseZ = new Address<float>();
@@ -1214,6 +1350,7 @@ namespace ConceptMatrix.Models
             Tail2Z = new Address<float>();
             Tail3Z = new Address<float>();
             Tail4Z = new Address<float>();
+            Tail5Z = new Address<float>();
             LThighZ = new Address<float>();
             RThighZ = new Address<float>();
             LKneeZ = new Address<float>();
@@ -1224,10 +1361,26 @@ namespace ConceptMatrix.Models
             RFootZ = new Address<float>();
             LToesZ = new Address<float>();
             RToesZ = new Address<float>();
+            LVEarZ = new Address<float>();
+            RVEarZ = new Address<float>();
+            LVEar2Z = new Address<float>();
+            RVEar2Z = new Address<float>();
+            LVEar3Z = new Address<float>();
+            RVEar3Z = new Address<float>();
+            LVEar4Z = new Address<float>();
+            RVEar4Z = new Address<float>();
             LEarringZ = new Address<float>();
             REarringZ = new Address<float>();
             LEarring2Z = new Address<float>();
             REarring2Z = new Address<float>();
+            LVLowLipZ = new Address<float>();
+            RVUpLipZ = new Address<float>();
+            RVLowLipZ = new Address<float>();
+            RVLowEar2Z = new Address<float>();
+            LVLowEar3Z = new Address<float>();
+            RVLowEar3Z = new Address<float>();
+            LVLowEar4Z = new Address<float>();
+            RVLowEar4Z = new Address<float>();
 
             HeadW = new Address<float>();
             NoseW = new Address<float>();
@@ -1298,6 +1451,7 @@ namespace ConceptMatrix.Models
             Tail2W = new Address<float>();
             Tail3W = new Address<float>();
             Tail4W = new Address<float>();
+            Tail5W = new Address<float>();
             LThighW = new Address<float>();
             RThighW = new Address<float>();
             LKneeW = new Address<float>();
@@ -1308,10 +1462,26 @@ namespace ConceptMatrix.Models
             RFootW = new Address<float>();
             LToesW = new Address<float>();
             RToesW = new Address<float>();
+            LVEarW = new Address<float>();
+            RVEarW = new Address<float>();
+            LVEar2W = new Address<float>();
+            RVEar2W = new Address<float>();
+            LVEar3W = new Address<float>();
+            RVEar3W = new Address<float>();
+            LVEar4W = new Address<float>();
+            RVEar4W = new Address<float>();
             LEarringW = new Address<float>();
             REarringW = new Address<float>();
             LEarring2W = new Address<float>();
             REarring2W = new Address<float>();
+            LVLowLipW = new Address<float>();
+            RVUpLipW = new Address<float>();
+            RVLowLipW = new Address<float>();
+            RVLowEar2W = new Address<float>();
+            LVLowEar3W = new Address<float>();
+            RVLowEar3W = new Address<float>();
+            LVLowEar4W = new Address<float>();
+            RVLowEar4W = new Address<float>();
 
             HairTone = new Address<byte>();
             HairTone = new Address<byte>();

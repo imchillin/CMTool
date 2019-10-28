@@ -320,6 +320,7 @@ namespace ConceptMatrix.Utility
         public string Tail2X { get; set; }
         public string Tail3X { get; set; }
         public string Tail4X { get; set; }
+        public string Tail5X { get; set; }
         public string LThighX { get; set; }
         public string RThighX { get; set; }
         public string LKneeX { get; set; }
@@ -330,10 +331,26 @@ namespace ConceptMatrix.Utility
         public string RFootX { get; set; }
         public string LToesX { get; set; }
         public string RToesX { get; set; }
+        public string LVEarX { get; set; }
+        public string RVEarX { get; set; }
+        public string LVEar2X { get; set; }
+        public string RVEar2X { get; set; }
+        public string LVEar3X { get; set; }
+        public string RVEar3X { get; set; }
+        public string LVEar4X { get; set; }
+        public string RVEar4X { get; set; }
         public string LEarringX { get; set; }
         public string REarringX { get; set; }
         public string LEarring2X { get; set; }
         public string REarring2X { get; set; }
+        public string LVLowLipX { get; set; }
+        public string RVUpLipX { get; set; }
+        public string RVLowLipX { get; set; }
+        public string RVLowEar2X { get; set; }
+        public string LVLowEar3X { get; set; }
+        public string RVLowEar3X { get; set; }
+        public string LVLowEar4X { get; set; }
+        public string RVLowEar4X { get; set; }
 
         public string HeadY { get; set; }
         public string NoseY { get; set; }
@@ -404,6 +421,7 @@ namespace ConceptMatrix.Utility
         public string Tail2Y { get; set; }
         public string Tail3Y { get; set; }
         public string Tail4Y { get; set; }
+        public string Tail5Y { get; set; }
         public string LThighY { get; set; }
         public string RThighY { get; set; }
         public string LKneeY { get; set; }
@@ -414,10 +432,26 @@ namespace ConceptMatrix.Utility
         public string RFootY { get; set; }
         public string LToesY { get; set; }
         public string RToesY { get; set; }
+        public string LVEarY { get; set; }
+        public string RVEarY { get; set; }
+        public string LVEar2Y { get; set; }
+        public string RVEar2Y { get; set; }
+        public string LVEar3Y { get; set; }
+        public string RVEar3Y { get; set; }
+        public string LVEar4Y { get; set; }
+        public string RVEar4Y { get; set; }
         public string LEarringY { get; set; }
         public string REarringY { get; set; }
         public string LEarring2Y { get; set; }
         public string REarring2Y { get; set; }
+        public string LVLowLipY { get; set; }
+        public string RVUpLipY { get; set; }
+        public string RVLowLipY { get; set; }
+        public string RVLowEar2Y { get; set; }
+        public string LVLowEar3Y { get; set; }
+        public string RVLowEar3Y { get; set; }
+        public string LVLowEar4Y { get; set; }
+        public string RVLowEar4Y { get; set; }
 
         public string HeadZ { get; set; }
         public string NoseZ { get; set; }
@@ -488,6 +522,7 @@ namespace ConceptMatrix.Utility
         public string Tail2Z { get; set; }
         public string Tail3Z { get; set; }
         public string Tail4Z { get; set; }
+        public string Tail5Z { get; set; }
         public string LThighZ { get; set; }
         public string RThighZ { get; set; }
         public string LKneeZ { get; set; }
@@ -498,10 +533,26 @@ namespace ConceptMatrix.Utility
         public string RFootZ { get; set; }
         public string LToesZ { get; set; }
         public string RToesZ { get; set; }
+        public string LVEarZ { get; set; }
+        public string RVEarZ { get; set; }
+        public string LVEar2Z { get; set; }
+        public string RVEar2Z { get; set; }
+        public string LVEar3Z { get; set; }
+        public string RVEar3Z { get; set; }
+        public string LVEar4Z { get; set; }
+        public string RVEar4Z { get; set; }
         public string LEarringZ { get; set; }
         public string REarringZ { get; set; }
         public string LEarring2Z { get; set; }
         public string REarring2Z { get; set; }
+        public string LVLowLipZ { get; set; }
+        public string RVUpLipZ { get; set; }
+        public string RVLowLipZ { get; set; }
+        public string RVLowEar2Z { get; set; }
+        public string LVLowEar3Z { get; set; }
+        public string RVLowEar3Z { get; set; }
+        public string LVLowEar4Z { get; set; }
+        public string RVLowEar4Z { get; set; }
 
         public string HeadW { get; set; }
         public string NoseW { get; set; }
@@ -572,6 +623,7 @@ namespace ConceptMatrix.Utility
         public string Tail2W { get; set; }
         public string Tail3W { get; set; }
         public string Tail4W { get; set; }
+        public string Tail5W { get; set; }
         public string LThighW { get; set; }
         public string RThighW { get; set; }
         public string LKneeW { get; set; }
@@ -582,10 +634,26 @@ namespace ConceptMatrix.Utility
         public string RFootW { get; set; }
         public string LToesW { get; set; }
         public string RToesW { get; set; }
+        public string LVEarW { get; set; }
+        public string RVEarW { get; set; }
+        public string LVEar2W { get; set; }
+        public string RVEar2W { get; set; }
+        public string LVEar3W { get; set; }
+        public string RVEar3W { get; set; }
+        public string LVEar4W { get; set; }
+        public string RVEar4W { get; set; }
         public string LEarringW { get; set; }
         public string REarringW { get; set; }
         public string LEarring2W { get; set; }
         public string REarring2W { get; set; }
+        public string LVLowLipW { get; set; }
+        public string RVUpLipW { get; set; }
+        public string RVLowLipW { get; set; }
+        public string RVLowEar2W { get; set; }
+        public string LVLowEar3W { get; set; }
+        public string RVLowEar3W { get; set; }
+        public string LVLowEar4W { get; set; }
+        public string RVLowEar4W { get; set; }
     }
 
     [Serializable]

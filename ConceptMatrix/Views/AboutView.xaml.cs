@@ -58,7 +58,7 @@ namespace ConceptMatrix.Views
 
 		private void AboutDiscordBtn_Click(object sender, RoutedEventArgs e)
 		{
-			Process.Start("https://discord.gg/hq3DnBa");
+			Process.Start("https://discord.gg/MfV8uwt");
 		}
 	}
 }

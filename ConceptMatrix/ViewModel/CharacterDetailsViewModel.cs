@@ -3,6 +3,8 @@ using ConceptMatrix.Models;
 using ConceptMatrix.Utility;
 using System;
 using System.ComponentModel;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace ConceptMatrix.ViewModel
 {
@@ -14,6 +16,8 @@ namespace ConceptMatrix.ViewModel
         public static bool FreezeAll = false;
         public static bool EnabledEditing = false;
         public static bool CurrentlySavingFilter = false;
+        public static bool CheckingGPose = false;
+        public bool InGpose = false;
         public int WritingCheck = 0;
         public static string baseAddr;
         public static Views.CharacterDetailsView Viewtime;
@@ -280,6 +284,34 @@ namespace ConceptMatrix.ViewModel
                         CharacterDetails.FilterAoB.Selected = 22;
                     if (CharacterDetails.FilterAoB.value.Contains("00 00 80 3E 00 00 00 3F CD CC CC BE CD CC 4C BE 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"))
                         CharacterDetails.FilterAoB.Selected = 23;
+                }
+
+                if (!CheckingGPose)
+                {
+                    if (m.readByte(GAS(MemoryManager.Instance.GposeCheckAddress)) == 0)
+                    {
+                        if (InGpose)
+                        {
+                            CharacterDetails.GposeMode = false;
+                            InGpose = false;
+                        }
+                        //Console.WriteLine("Not in GPose");
+                        Thread.Sleep(350);
+                    }
+                    else if (m.readByte(GAS(MemoryManager.Instance.GposeCheckAddress)) == 1)
+                    {
+                        if (!InGpose)
+                        {
+                            CharacterDetails.GposeMode = false;
+                            m.writeMemory(GAS(baseAddr, c.EntityType), "byte", "0x02");
+                            Task.Delay(1250).Wait();
+                            m.writeMemory(GAS(baseAddr, c.EntityType), "byte", "0x01");
+                            CharacterDetails.GposeMode = true;
+                            InGpose = true;
+                        }
+                        //Console.WriteLine("Currently in GPose");
+                        Thread.Sleep(350);
+                    }
                 }
 
                 if (!CharacterDetails.Voices.freeze) CharacterDetails.Voices.value = (byte)m.readByte(GAS(baseAddr, c.Voices));
@@ -1966,6 +1998,29 @@ namespace ConceptMatrix.ViewModel
                     CharacterDetails.Tail4Rotate = true;
                 }
 
+                if (CharacterDetails.Tail5Check)
+                {
+                    CharacterDetails.Tail5X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail5X));
+                    CharacterDetails.Tail5Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail5Y));
+                    CharacterDetails.Tail5Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail5Z));
+                    CharacterDetails.Tail5W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail5W));
+
+                    // Create euler angles from the quaternion.
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.Tail5X.value,
+                        CharacterDetails.Tail5Y.value,
+                        CharacterDetails.Tail5Z.value,
+                        CharacterDetails.Tail5W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.Tail5Check = false;
+                    CharacterDetails.Tail5Rotate = true;
+                }
+
                 if (CharacterDetails.LThighCheck)
                 {
                     CharacterDetails.LThighX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThighX));
@@ -2196,6 +2251,190 @@ namespace ConceptMatrix.ViewModel
                     CharacterDetails.RToesRotate = true;
                 }
 
+                if (CharacterDetails.LVEarCheck)
+                {
+                    CharacterDetails.LVEarX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEarX));
+                    CharacterDetails.LVEarY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEarY));
+                    CharacterDetails.LVEarZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEarZ));
+                    CharacterDetails.LVEarW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEarW));
+
+                    // Create euler angles from the quaternion.
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.LVEarX.value,
+                        CharacterDetails.LVEarY.value,
+                        CharacterDetails.LVEarZ.value,
+                        CharacterDetails.LVEarW.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.LVEarCheck = false;
+                    CharacterDetails.LVEarRotate = true;
+                }
+
+                if (CharacterDetails.RVEarCheck)
+                {
+                    CharacterDetails.RVEarX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEarX));
+                    CharacterDetails.RVEarY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEarY));
+                    CharacterDetails.RVEarZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEarZ));
+                    CharacterDetails.RVEarW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEarW));
+
+                    // Create euler angles from the quaternion.
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.RVEarX.value,
+                        CharacterDetails.RVEarY.value,
+                        CharacterDetails.RVEarZ.value,
+                        CharacterDetails.RVEarW.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.RVEarCheck = false;
+                    CharacterDetails.RVEarRotate = true;
+                }
+
+                if (CharacterDetails.LVEar2Check)
+                {
+                    CharacterDetails.LVEar2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar2X));
+                    CharacterDetails.LVEar2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar2Y));
+                    CharacterDetails.LVEar2Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar2Z));
+                    CharacterDetails.LVEar2W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar2W));
+
+                    // Create euler angles from the quaternion.
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.LVEar2X.value,
+                        CharacterDetails.LVEar2Y.value,
+                        CharacterDetails.LVEar2Z.value,
+                        CharacterDetails.LVEar2W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.LVEar2Check = false;
+                    CharacterDetails.LVEar2Rotate = true;
+                }
+
+                if (CharacterDetails.RVEar2Check)
+                {
+                    CharacterDetails.RVEar2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar2X));
+                    CharacterDetails.RVEar2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar2Y));
+                    CharacterDetails.RVEar2Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar2Z));
+                    CharacterDetails.RVEar2W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar2W));
+
+                    // Create euler angles from the quaternion.
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.RVEar2X.value,
+                        CharacterDetails.RVEar2Y.value,
+                        CharacterDetails.RVEar2Z.value,
+                        CharacterDetails.RVEar2W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.RVEar2Check = false;
+                    CharacterDetails.RVEar2Rotate = true;
+                }
+
+                if (CharacterDetails.LVEar3Check)
+                {
+                    CharacterDetails.LVEar3X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar3X));
+                    CharacterDetails.LVEar3Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar3Y));
+                    CharacterDetails.LVEar3Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar3Z));
+                    CharacterDetails.LVEar3W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar3W));
+
+                    // Create euler angles from the quaternion.
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.LVEar3X.value,
+                        CharacterDetails.LVEar3Y.value,
+                        CharacterDetails.LVEar3Z.value,
+                        CharacterDetails.LVEar3W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.LVEar3Check = false;
+                    CharacterDetails.LVEar3Rotate = true;
+                }
+
+                if (CharacterDetails.RVEar3Check)
+                {
+                    CharacterDetails.RVEar3X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar3X));
+                    CharacterDetails.RVEar3Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar3Y));
+                    CharacterDetails.RVEar3Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar3Z));
+                    CharacterDetails.RVEar3W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar3W));
+
+                    // Create euler angles from the quaternion.
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.RVEar3X.value,
+                        CharacterDetails.RVEar3Y.value,
+                        CharacterDetails.RVEar3Z.value,
+                        CharacterDetails.RVEar3W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.RVEar3Check = false;
+                    CharacterDetails.RVEar3Rotate = true;
+                }
+
+                if (CharacterDetails.LVEar4Check)
+                {
+                    CharacterDetails.LVEar4X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar4X));
+                    CharacterDetails.LVEar4Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar4Y));
+                    CharacterDetails.LVEar4Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar4Z));
+                    CharacterDetails.LVEar4W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar4W));
+
+                    // Create euler angles from the quaternion.
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.LVEar4X.value,
+                        CharacterDetails.LVEar4Y.value,
+                        CharacterDetails.LVEar4Z.value,
+                        CharacterDetails.LVEar4W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.LVEar4Check = false;
+                    CharacterDetails.LVEar4Rotate = true;
+                }
+
+                if (CharacterDetails.RVEar4Check)
+                {
+                    CharacterDetails.RVEar4X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar4X));
+                    CharacterDetails.RVEar4Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar4Y));
+                    CharacterDetails.RVEar4Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar4Z));
+                    CharacterDetails.RVEar4W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar4W));
+
+                    // Create euler angles from the quaternion.
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.RVEar4X.value,
+                        CharacterDetails.RVEar4Y.value,
+                        CharacterDetails.RVEar4Z.value,
+                        CharacterDetails.RVEar4W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.RVEar4Check = false;
+                    CharacterDetails.RVEar4Rotate = true;
+                }
+
                 if (CharacterDetails.DebugCheck)
                 {
                     CharacterDetails.DebugX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.DebugX));
@@ -2309,6 +2548,190 @@ namespace ConceptMatrix.ViewModel
 
                     CharacterDetails.REarring2Check = false;
                     CharacterDetails.REarring2Rotate = true;
+                }
+
+                if (CharacterDetails.LVLowLipCheck)
+                {
+                    CharacterDetails.LVLowLipX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowLipX));
+                    CharacterDetails.LVLowLipY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowLipY));
+                    CharacterDetails.LVLowLipZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowLipZ));
+                    CharacterDetails.LVLowLipW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowLipW));
+
+                    // Create euler angles from the quaternion.
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.LVLowLipX.value,
+                        CharacterDetails.LVLowLipY.value,
+                        CharacterDetails.LVLowLipZ.value,
+                        CharacterDetails.LVLowLipW.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.LVLowLipCheck = false;
+                    CharacterDetails.LVLowLipRotate = true;
+                }
+
+                if (CharacterDetails.RVUpLipCheck)
+                {
+                    CharacterDetails.RVUpLipX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVUpLipX));
+                    CharacterDetails.RVUpLipY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVUpLipY));
+                    CharacterDetails.RVUpLipZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVUpLipZ));
+                    CharacterDetails.RVUpLipW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVUpLipW));
+
+                    // Create euler angles from the quaternion.
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.RVUpLipX.value,
+                        CharacterDetails.RVUpLipY.value,
+                        CharacterDetails.RVUpLipZ.value,
+                        CharacterDetails.RVUpLipW.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.RVUpLipCheck = false;
+                    CharacterDetails.RVUpLipRotate = true;
+                }
+
+                if (CharacterDetails.RVLowLipCheck)
+                {
+                    CharacterDetails.RVLowLipX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowLipX));
+                    CharacterDetails.RVLowLipY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowLipY));
+                    CharacterDetails.RVLowLipZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowLipZ));
+                    CharacterDetails.RVLowLipW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowLipW));
+
+                    // Create euler angles from the quaternion.
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.RVLowLipX.value,
+                        CharacterDetails.RVLowLipY.value,
+                        CharacterDetails.RVLowLipZ.value,
+                        CharacterDetails.RVLowLipW.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.RVLowLipCheck = false;
+                    CharacterDetails.RVLowLipRotate = true;
+                }
+
+                if (CharacterDetails.RVLowEar2Check)
+                {
+                    CharacterDetails.RVLowEar2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar2X));
+                    CharacterDetails.RVLowEar2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar2Y));
+                    CharacterDetails.RVLowEar2Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar2Z));
+                    CharacterDetails.RVLowEar2W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar2W));
+
+                    // Create euler angles from the quaternion.
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.RVLowEar2X.value,
+                        CharacterDetails.RVLowEar2Y.value,
+                        CharacterDetails.RVLowEar2Z.value,
+                        CharacterDetails.RVLowEar2W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.RVLowEar2Check = false;
+                    CharacterDetails.RVLowEar2Rotate = true;
+                }
+
+                if (CharacterDetails.LVLowEar3Check)
+                {
+                    CharacterDetails.LVLowEar3X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar3X));
+                    CharacterDetails.LVLowEar3Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar3Y));
+                    CharacterDetails.LVLowEar3Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar3Z));
+                    CharacterDetails.LVLowEar3W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar3W));
+
+                    // Create euler angles from the quaternion.
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.LVLowEar3X.value,
+                        CharacterDetails.LVLowEar3Y.value,
+                        CharacterDetails.LVLowEar3Z.value,
+                        CharacterDetails.LVLowEar3W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.LVLowEar3Check = false;
+                    CharacterDetails.LVLowEar3Rotate = true;
+                }
+
+                if (CharacterDetails.RVLowEar3Check)
+                {
+                    CharacterDetails.RVLowEar3X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar3X));
+                    CharacterDetails.RVLowEar3Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar3Y));
+                    CharacterDetails.RVLowEar3Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar3Z));
+                    CharacterDetails.RVLowEar3W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar3W));
+
+                    // Create euler angles from the quaternion.
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.RVLowEar3X.value,
+                        CharacterDetails.RVLowEar3Y.value,
+                        CharacterDetails.RVLowEar3Z.value,
+                        CharacterDetails.RVLowEar3W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.RVLowEar3Check = false;
+                    CharacterDetails.RVLowEar3Rotate = true;
+                }
+
+                if (CharacterDetails.LVLowEar4Check)
+                {
+                    CharacterDetails.LVLowEar4X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar4X));
+                    CharacterDetails.LVLowEar4Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar4Y));
+                    CharacterDetails.LVLowEar4Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar4Z));
+                    CharacterDetails.LVLowEar4W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar4W));
+
+                    // Create euler angles from the quaternion.
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.LVLowEar4X.value,
+                        CharacterDetails.LVLowEar4Y.value,
+                        CharacterDetails.LVLowEar4Z.value,
+                        CharacterDetails.LVLowEar4W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.LVLowEar4Check = false;
+                    CharacterDetails.LVLowEar4Rotate = true;
+                }
+
+                if (CharacterDetails.RVLowEar4Check)
+                {
+                    CharacterDetails.RVLowEar4X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar4X));
+                    CharacterDetails.RVLowEar4Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar4Y));
+                    CharacterDetails.RVLowEar4Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar4Z));
+                    CharacterDetails.RVLowEar4W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar4W));
+
+                    // Create euler angles from the quaternion.
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.RVLowEar4X.value,
+                        CharacterDetails.RVLowEar4Y.value,
+                        CharacterDetails.RVLowEar4Z.value,
+                        CharacterDetails.RVLowEar4W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.RVLowEar4Check = false;
+                    CharacterDetails.RVLowEar4Rotate = true;
                 }
                 #endregion
 
@@ -2440,6 +2863,88 @@ namespace ConceptMatrix.ViewModel
                     MainViewModel.ViewTime5.NeckZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NeckZ));
                     MainViewModel.ViewTime5.NeckWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NeckW));
 
+                    MainViewModel.ViewTime5.LVEarXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEarX));
+                    MainViewModel.ViewTime5.LVEarYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEarY));
+                    MainViewModel.ViewTime5.LVEarZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEarZ));
+                    MainViewModel.ViewTime5.LVEarWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEarW));
+
+                    MainViewModel.ViewTime5.RVEarXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEarX));
+                    MainViewModel.ViewTime5.RVEarYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEarY));
+                    MainViewModel.ViewTime5.RVEarZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEarZ));
+                    MainViewModel.ViewTime5.RVEarWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEarW));
+
+                    MainViewModel.ViewTime5.LVEar2XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar2X));
+                    MainViewModel.ViewTime5.LVEar2YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar2Y));
+                    MainViewModel.ViewTime5.LVEar2ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar2Z));
+                    MainViewModel.ViewTime5.LVEar2WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar2W));
+
+                    MainViewModel.ViewTime5.RVEar2XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar2X));
+                    MainViewModel.ViewTime5.RVEar2YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar2Y));
+                    MainViewModel.ViewTime5.RVEar2ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar2Z));
+                    MainViewModel.ViewTime5.RVEar2WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar2W));
+
+                    MainViewModel.ViewTime5.LVEar3XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar3X));
+                    MainViewModel.ViewTime5.LVEar3YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar3Y));
+                    MainViewModel.ViewTime5.LVEar3ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar3Z));
+                    MainViewModel.ViewTime5.LVEar3WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar3W));
+
+                    MainViewModel.ViewTime5.RVEar3XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar3X));
+                    MainViewModel.ViewTime5.RVEar3YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar3Y));
+                    MainViewModel.ViewTime5.RVEar3ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar3Z));
+                    MainViewModel.ViewTime5.RVEar3WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar3W));
+
+                    MainViewModel.ViewTime5.LVEar4XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar4X));
+                    MainViewModel.ViewTime5.LVEar4YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar4Y));
+                    MainViewModel.ViewTime5.LVEar4ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar4Z));
+                    MainViewModel.ViewTime5.LVEar4WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar4W));
+
+                    MainViewModel.ViewTime5.RVEar4XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar4X));
+                    MainViewModel.ViewTime5.RVEar4YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar4Y));
+                    MainViewModel.ViewTime5.RVEar4ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar4Z));
+                    MainViewModel.ViewTime5.RVEar4WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar4W));
+
+                    MainViewModel.ViewTime5.LVLowLipXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowLipX));
+                    MainViewModel.ViewTime5.LVLowLipYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowLipY));
+                    MainViewModel.ViewTime5.LVLowLipZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowLipZ));
+                    MainViewModel.ViewTime5.LVLowLipWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowLipW));
+
+                    MainViewModel.ViewTime5.RVUpLipXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVUpLipX));
+                    MainViewModel.ViewTime5.RVUpLipYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVUpLipY));
+                    MainViewModel.ViewTime5.RVUpLipZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVUpLipZ));
+                    MainViewModel.ViewTime5.RVUpLipWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVUpLipW));
+
+                    MainViewModel.ViewTime5.RVLowLipXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowLipX));
+                    MainViewModel.ViewTime5.RVLowLipYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowLipY));
+                    MainViewModel.ViewTime5.RVLowLipZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowLipZ));
+                    MainViewModel.ViewTime5.RVLowLipWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowLipW));
+
+                    MainViewModel.ViewTime5.RVLowEar2XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar2X));
+                    MainViewModel.ViewTime5.RVLowEar2YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar2Y));
+                    MainViewModel.ViewTime5.RVLowEar2ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar2Z));
+                    MainViewModel.ViewTime5.RVLowEar2WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar2W));
+
+                    MainViewModel.ViewTime5.LVLowEar3XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar3X));
+                    MainViewModel.ViewTime5.LVLowEar3YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar3Y));
+                    MainViewModel.ViewTime5.LVLowEar3ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar3Z));
+                    MainViewModel.ViewTime5.LVLowEar3WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar3W));
+
+                    MainViewModel.ViewTime5.RVLowEar3XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar3X));
+                    MainViewModel.ViewTime5.RVLowEar3YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar3Y));
+                    MainViewModel.ViewTime5.RVLowEar3ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar3Z));
+                    MainViewModel.ViewTime5.RVLowEar3WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar3W));
+
+                    MainViewModel.ViewTime5.LVLowEar4XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar4X));
+                    MainViewModel.ViewTime5.LVLowEar4YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar4Y));
+                    MainViewModel.ViewTime5.LVLowEar4ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar4Z));
+                    MainViewModel.ViewTime5.LVLowEar4WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar4W));
+
+                    MainViewModel.ViewTime5.RVLowEar4XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar4X));
+                    MainViewModel.ViewTime5.RVLowEar4YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar4Y));
+                    MainViewModel.ViewTime5.RVLowEar4ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar4Z));
+                    MainViewModel.ViewTime5.RVLowEar4WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar4W));
+
+
+
                     CharacterDetails.SaveHeadBones = false;
                 }
 
@@ -2494,6 +2999,11 @@ namespace ConceptMatrix.ViewModel
                     MainViewModel.ViewTime5.Tail4YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail4Y));
                     MainViewModel.ViewTime5.Tail4ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail4Z));
                     MainViewModel.ViewTime5.Tail4WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail4W));
+
+                    MainViewModel.ViewTime5.Tail5XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail5X));
+                    MainViewModel.ViewTime5.Tail5YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail5Y));
+                    MainViewModel.ViewTime5.Tail5ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail5Z));
+                    MainViewModel.ViewTime5.Tail5WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail5W));
 
                     CharacterDetails.SaveTorsoBones = false;
                 }

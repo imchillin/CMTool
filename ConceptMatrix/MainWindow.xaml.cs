@@ -183,20 +183,23 @@ namespace ConceptMatrix
 
             string GAS(params string[] args) => MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, args);
             var xdad = (byte)MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.EntityType));
-            if (xdad == 1)
+            if (m.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheckAddress)) == 0)
             {
-                m.writeMemory(GAS(c.EntityType), "byte", "2");
-                m.writeMemory(GAS(c.RenderToggle), "int", "2");
-                Task.Delay(50).Wait();
-                m.writeMemory(GAS(c.RenderToggle), "int", "0");
-                Task.Delay(50).Wait();
-                m.writeMemory(GAS(c.EntityType), "byte", "1");
-            }
-            else
-            {
-                m.writeMemory(GAS(c.RenderToggle), "int", "2");
-                Task.Delay(50).Wait();
-                m.writeMemory(GAS(c.RenderToggle), "int", "0");
+                if (xdad == 1)
+                {
+                    m.writeMemory(GAS(c.EntityType), "byte", "2");
+                    m.writeMemory(GAS(c.RenderToggle), "int", "2");
+                    Task.Delay(50).Wait();
+                    m.writeMemory(GAS(c.RenderToggle), "int", "0");
+                    Task.Delay(50).Wait();
+                    m.writeMemory(GAS(c.EntityType), "byte", "1");
+                }
+                else
+                {
+                    m.writeMemory(GAS(c.RenderToggle), "int", "2");
+                    Task.Delay(50).Wait();
+                    m.writeMemory(GAS(c.RenderToggle), "int", "0");
+                }
             }
         }
 
@@ -1140,7 +1143,7 @@ namespace ConceptMatrix
 
         private void DiscordButton_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://discord.gg/hq3DnBa");
+            Process.Start("https://discord.gg/MfV8uwt");
         }
 
         private void SavePoint_Click(object sender, RoutedEventArgs e)

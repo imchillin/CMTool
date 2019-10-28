@@ -202,6 +202,11 @@ namespace ConceptMatrix.Views
         public float Tail4ZSav;
         public float Tail4WSav;
 
+        public float Tail5XSav;
+        public float Tail5YSav;
+        public float Tail5ZSav;
+        public float Tail5WSav;
+
         public float LShoulderXSav;
         public float LShoulderYSav;
         public float LShoulderZSav;
@@ -421,7 +426,87 @@ namespace ConceptMatrix.Views
         public float RToesYSav;
         public float RToesZSav;
         public float RToesWSav;
-#endregion
+
+        public float LVEarXSav;
+        public float LVEarYSav;
+        public float LVEarZSav;
+        public float LVEarWSav;
+
+        public float RVEarXSav;
+        public float RVEarYSav;
+        public float RVEarZSav;
+        public float RVEarWSav;
+
+        public float LVEar2XSav;
+        public float LVEar2YSav;
+        public float LVEar2ZSav;
+        public float LVEar2WSav;
+
+        public float RVEar2XSav;
+        public float RVEar2YSav;
+        public float RVEar2ZSav;
+        public float RVEar2WSav;
+
+        public float LVEar3XSav;
+        public float LVEar3YSav;
+        public float LVEar3ZSav;
+        public float LVEar3WSav;
+
+        public float RVEar3XSav;
+        public float RVEar3YSav;
+        public float RVEar3ZSav;
+        public float RVEar3WSav;
+
+        public float LVEar4XSav;
+        public float LVEar4YSav;
+        public float LVEar4ZSav;
+        public float LVEar4WSav;
+
+        public float RVEar4XSav;
+        public float RVEar4YSav;
+        public float RVEar4ZSav;
+        public float RVEar4WSav;
+
+        public float LVLowLipXSav;
+        public float LVLowLipYSav;
+        public float LVLowLipZSav;
+        public float LVLowLipWSav;
+
+        public float RVUpLipXSav;
+        public float RVUpLipYSav;
+        public float RVUpLipZSav;
+        public float RVUpLipWSav;
+
+        public float RVLowLipXSav;
+        public float RVLowLipYSav;
+        public float RVLowLipZSav;
+        public float RVLowLipWSav;
+
+        public float RVLowEar2XSav;
+        public float RVLowEar2YSav;
+        public float RVLowEar2ZSav;
+        public float RVLowEar2WSav;
+
+        public float LVLowEar3XSav;
+        public float LVLowEar3YSav;
+        public float LVLowEar3ZSav;
+        public float LVLowEar3WSav;
+
+        public float RVLowEar3XSav;
+        public float RVLowEar3YSav;
+        public float RVLowEar3ZSav;
+        public float RVLowEar3WSav;
+
+        public float LVLowEar4XSav;
+        public float LVLowEar4YSav;
+        public float LVLowEar4ZSav;
+        public float LVLowEar4WSav;
+
+        public float RVLowEar4XSav;
+        public float RVLowEar4YSav;
+        public float RVLowEar4ZSav;
+        public float RVLowEar4WSav;
+        #endregion
 
         public byte[] SkeletonValue;
         public byte[] SkeletonValue2;
@@ -1080,6 +1165,15 @@ namespace ConceptMatrix.Views
                 }
             }
 
+            if (CharacterDetails.Tail5Rotate)
+            {
+                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider.ValueChanged -= Tail5Rot;
+                    BoneSlider.ValueChanged += Tail5Rot;
+                }
+            }
+
             if (CharacterDetails.LThighRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
@@ -1179,6 +1273,78 @@ namespace ConceptMatrix.Views
                 }
             }
 
+            if (CharacterDetails.LVEarRotate)
+            {
+                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider.ValueChanged -= LVEarRot;
+                    BoneSlider.ValueChanged += LVEarRot;
+                }
+            }
+
+            if (CharacterDetails.RVEarRotate)
+            {
+                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider.ValueChanged -= RVEarRot;
+                    BoneSlider.ValueChanged += RVEarRot;
+                }
+            }
+
+            if (CharacterDetails.LVEar2Rotate)
+            {
+                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider.ValueChanged -= LVEar2Rot;
+                    BoneSlider.ValueChanged += LVEar2Rot;
+                }
+            }
+
+            if (CharacterDetails.RVEar2Rotate)
+            {
+                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider.ValueChanged -= RVEar2Rot;
+                    BoneSlider.ValueChanged += RVEar2Rot;
+                }
+            }
+
+            if (CharacterDetails.LVEar3Rotate)
+            {
+                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider.ValueChanged -= LVEar3Rot;
+                    BoneSlider.ValueChanged += LVEar3Rot;
+                }
+            }
+
+            if (CharacterDetails.RVEar3Rotate)
+            {
+                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider.ValueChanged -= RVEar3Rot;
+                    BoneSlider.ValueChanged += RVEar3Rot;
+                }
+            }
+
+            if (CharacterDetails.LVEar4Rotate)
+            {
+                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider.ValueChanged -= LVEar4Rot;
+                    BoneSlider.ValueChanged += LVEar4Rot;
+                }
+            }
+
+            if (CharacterDetails.RVEar4Rotate)
+            {
+                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider.ValueChanged -= RVEar4Rot;
+                    BoneSlider.ValueChanged += RVEar4Rot;
+                }
+            }
+
             if (CharacterDetails.LEarringRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
@@ -1212,6 +1378,78 @@ namespace ConceptMatrix.Views
                 {
                     BoneSlider.ValueChanged -= REarring2Rot;
                     BoneSlider.ValueChanged += REarring2Rot;
+                }
+            }
+
+            if (CharacterDetails.LVLowLipRotate)
+            {
+                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider.ValueChanged -= LVLowLipRot;
+                    BoneSlider.ValueChanged += LVLowLipRot;
+                }
+            }
+
+            if (CharacterDetails.RVUpLipRotate)
+            {
+                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider.ValueChanged -= RVUpLipRot;
+                    BoneSlider.ValueChanged += RVUpLipRot;
+                }
+            }
+
+            if (CharacterDetails.RVLowLipRotate)
+            {
+                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider.ValueChanged -= RVLowLipRot;
+                    BoneSlider.ValueChanged += RVLowLipRot;
+                }
+            }
+
+            if (CharacterDetails.LVLowEar3Rotate)
+            {
+                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider.ValueChanged -= LVEarLow3Rot;
+                    BoneSlider.ValueChanged += LVEarLow3Rot;
+                }
+            }
+
+            if (CharacterDetails.LVLowEar4Rotate)
+            {
+                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider.ValueChanged -= LVEarLow4Rot;
+                    BoneSlider.ValueChanged += LVEarLow4Rot;
+                }
+            }
+
+            if (CharacterDetails.RVLowEar2Rotate)
+            {
+                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider.ValueChanged -= RVEarLow2Rot;
+                    BoneSlider.ValueChanged += RVEarLow2Rot;
+                }
+            }
+
+            if (CharacterDetails.RVLowEar3Rotate)
+            {
+                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider.ValueChanged -= RVEarLow3Rot;
+                    BoneSlider.ValueChanged += RVEarLow3Rot;
+                }
+            }
+
+            if (CharacterDetails.RVLowEar4Rotate)
+            {
+                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider.ValueChanged -= RVEarLow4Rot;
+                    BoneSlider.ValueChanged += RVEarLow4Rot;
                 }
             }
         }
@@ -1849,6 +2087,15 @@ namespace ConceptMatrix.Views
                 }
             }
 
+            if (CharacterDetails.Tail5Rotate)
+            {
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider2.ValueChanged -= Tail5Rot;
+                    BoneSlider2.ValueChanged += Tail5Rot;
+                }
+            }
+
             if (CharacterDetails.LThighRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
@@ -1939,6 +2186,78 @@ namespace ConceptMatrix.Views
                 }
             }
 
+            if (CharacterDetails.LVEarRotate)
+            {
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
+                {
+                    BoneSlider2.ValueChanged -= LVEarRot;
+                    BoneSlider2.ValueChanged += LVEarRot;
+                }
+            }
+
+            if (CharacterDetails.RVEarRotate)
+            {
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
+                {
+                    BoneSlider2.ValueChanged -= RVEarRot;
+                    BoneSlider2.ValueChanged += RVEarRot;
+                }
+            }
+
+            if (CharacterDetails.LVEar2Rotate)
+            {
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
+                {
+                    BoneSlider2.ValueChanged -= LVEar2Rot;
+                    BoneSlider2.ValueChanged += LVEar2Rot;
+                }
+            }
+
+            if (CharacterDetails.RVEar2Rotate)
+            {
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
+                {
+                    BoneSlider2.ValueChanged -= RVEar2Rot;
+                    BoneSlider2.ValueChanged += RVEar2Rot;
+                }
+            }
+
+            if (CharacterDetails.LVEar3Rotate)
+            {
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
+                {
+                    BoneSlider2.ValueChanged -= LVEar3Rot;
+                    BoneSlider2.ValueChanged += LVEar3Rot;
+                }
+            }
+
+            if (CharacterDetails.RVEar3Rotate)
+            {
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
+                {
+                    BoneSlider2.ValueChanged -= RVEar3Rot;
+                    BoneSlider2.ValueChanged += RVEar3Rot;
+                }
+            }
+
+            if (CharacterDetails.LVEar4Rotate)
+            {
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
+                {
+                    BoneSlider2.ValueChanged -= LVEar4Rot;
+                    BoneSlider2.ValueChanged += LVEar4Rot;
+                }
+            }
+
+            if (CharacterDetails.RVEar4Rotate)
+            {
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
+                {
+                    BoneSlider2.ValueChanged -= RVEar4Rot;
+                    BoneSlider2.ValueChanged += RVEar4Rot;
+                }
+            }
+
             if (CharacterDetails.LEarringRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
@@ -1972,6 +2291,78 @@ namespace ConceptMatrix.Views
                 {
                     BoneSlider2.ValueChanged -= REarring2Rot;
                     BoneSlider2.ValueChanged += REarring2Rot;
+                }
+            }
+
+            if (CharacterDetails.LVLowLipRotate)
+            {
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
+                {
+                    BoneSlider2.ValueChanged -= LVLowLipRot;
+                    BoneSlider2.ValueChanged += LVLowLipRot;
+                }
+            }
+
+            if (CharacterDetails.RVUpLipRotate)
+            {
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
+                {
+                    BoneSlider2.ValueChanged -= RVUpLipRot;
+                    BoneSlider2.ValueChanged += RVUpLipRot;
+                }
+            }
+
+            if (CharacterDetails.RVLowLipRotate)
+            {
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
+                {
+                    BoneSlider2.ValueChanged -= RVLowLipRot;
+                    BoneSlider2.ValueChanged += RVLowLipRot;
+                }
+            }
+
+            if (CharacterDetails.LVLowEar3Rotate)
+            {
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
+                {
+                    BoneSlider2.ValueChanged -= LVEarLow3Rot;
+                    BoneSlider2.ValueChanged += LVEarLow3Rot;
+                }
+            }
+
+            if (CharacterDetails.LVLowEar4Rotate)
+            {
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
+                {
+                    BoneSlider2.ValueChanged -= LVEarLow4Rot;
+                    BoneSlider2.ValueChanged += LVEarLow4Rot;
+                }
+            }
+
+            if (CharacterDetails.RVLowEar2Rotate)
+            {
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
+                {
+                    BoneSlider2.ValueChanged -= RVEarLow2Rot;
+                    BoneSlider2.ValueChanged += RVEarLow2Rot;
+                }
+            }
+
+            if (CharacterDetails.RVLowEar3Rotate)
+            {
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
+                {
+                    BoneSlider2.ValueChanged -= RVEarLow3Rot;
+                    BoneSlider2.ValueChanged += RVEarLow3Rot;
+                }
+            }
+
+            if (CharacterDetails.RVLowEar4Rotate)
+            {
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
+                {
+                    BoneSlider2.ValueChanged -= RVEarLow4Rot;
+                    BoneSlider2.ValueChanged += RVEarLow4Rot;
                 }
             }
         }
@@ -2609,6 +3000,15 @@ namespace ConceptMatrix.Views
                 }
             }
 
+            if (CharacterDetails.Tail5Rotate)
+            {
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider3.ValueChanged -= Tail5Rot;
+                    BoneSlider3.ValueChanged += Tail5Rot;
+                }
+            }
+
             if (CharacterDetails.LThighRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
@@ -2699,6 +3099,78 @@ namespace ConceptMatrix.Views
                 }
             }
 
+            if (CharacterDetails.LVEarRotate)
+            {
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
+                {
+                    BoneSlider3.ValueChanged -= LVEarRot;
+                    BoneSlider3.ValueChanged += LVEarRot;
+                }
+            }
+
+            if (CharacterDetails.RVEarRotate)
+            {
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
+                {
+                    BoneSlider3.ValueChanged -= RVEarRot;
+                    BoneSlider3.ValueChanged += RVEarRot;
+                }
+            }
+
+            if (CharacterDetails.LVEar2Rotate)
+            {
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
+                {
+                    BoneSlider3.ValueChanged -= LVEar2Rot;
+                    BoneSlider3.ValueChanged += LVEar2Rot;
+                }
+            }
+
+            if (CharacterDetails.RVEar2Rotate)
+            {
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
+                {
+                    BoneSlider3.ValueChanged -= RVEar2Rot;
+                    BoneSlider3.ValueChanged += RVEar2Rot;
+                }
+            }
+
+            if (CharacterDetails.LVEar3Rotate)
+            {
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
+                {
+                    BoneSlider3.ValueChanged -= LVEar3Rot;
+                    BoneSlider3.ValueChanged += LVEar3Rot;
+                }
+            }
+
+            if (CharacterDetails.RVEar3Rotate)
+            {
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
+                {
+                    BoneSlider3.ValueChanged -= RVEar3Rot;
+                    BoneSlider3.ValueChanged += RVEar3Rot;
+                }
+            }
+
+            if (CharacterDetails.LVEar4Rotate)
+            {
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
+                {
+                    BoneSlider3.ValueChanged -= LVEar4Rot;
+                    BoneSlider3.ValueChanged += LVEar4Rot;
+                }
+            }
+
+            if (CharacterDetails.RVEar4Rotate)
+            {
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
+                {
+                    BoneSlider3.ValueChanged -= RVEar4Rot;
+                    BoneSlider3.ValueChanged += RVEar4Rot;
+                }
+            }
+
             if (CharacterDetails.LEarringRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
@@ -2732,6 +3204,78 @@ namespace ConceptMatrix.Views
                 {
                     BoneSlider3.ValueChanged -= REarring2Rot;
                     BoneSlider3.ValueChanged += REarring2Rot;
+                }
+            }
+
+            if (CharacterDetails.LVLowLipRotate)
+            {
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
+                {
+                    BoneSlider3.ValueChanged -= LVLowLipRot;
+                    BoneSlider3.ValueChanged += LVLowLipRot;
+                }
+            }
+
+            if (CharacterDetails.RVUpLipRotate)
+            {
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
+                {
+                    BoneSlider3.ValueChanged -= RVUpLipRot;
+                    BoneSlider3.ValueChanged += RVUpLipRot;
+                }
+            }
+
+            if (CharacterDetails.RVLowLipRotate)
+            {
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
+                {
+                    BoneSlider3.ValueChanged -= RVLowLipRot;
+                    BoneSlider3.ValueChanged += RVLowLipRot;
+                }
+            }
+
+            if (CharacterDetails.LVLowEar3Rotate)
+            {
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
+                {
+                    BoneSlider3.ValueChanged -= LVEarLow3Rot;
+                    BoneSlider3.ValueChanged += LVEarLow3Rot;
+                }
+            }
+
+            if (CharacterDetails.LVLowEar4Rotate)
+            {
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
+                {
+                    BoneSlider3.ValueChanged -= LVEarLow4Rot;
+                    BoneSlider3.ValueChanged += LVEarLow4Rot;
+                }
+            }
+
+            if (CharacterDetails.RVLowEar2Rotate)
+            {
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
+                {
+                    BoneSlider3.ValueChanged -= RVEarLow2Rot;
+                    BoneSlider3.ValueChanged += RVEarLow2Rot;
+                }
+            }
+
+            if (CharacterDetails.RVLowEar3Rotate)
+            {
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
+                {
+                    BoneSlider3.ValueChanged -= RVEarLow3Rot;
+                    BoneSlider3.ValueChanged += RVEarLow3Rot;
+                }
+            }
+
+            if (CharacterDetails.RVLowEar4Rotate)
+            {
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
+                {
+                    BoneSlider3.ValueChanged -= RVEarLow4Rot;
+                    BoneSlider3.ValueChanged += RVEarLow4Rot;
                 }
             }
         }
@@ -3371,6 +3915,15 @@ namespace ConceptMatrix.Views
                 }
             }
 
+            if (CharacterDetails.Tail5Rotate)
+            {
+                if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown.ValueChanged -= Tail5Rot2;
+                    BoneUpDown.ValueChanged += Tail5Rot2;
+                }
+            }
+
             if (CharacterDetails.LThighRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
@@ -3461,6 +4014,78 @@ namespace ConceptMatrix.Views
                 }
             }
 
+            if (CharacterDetails.LVEarRotate)
+            {
+                if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown.ValueChanged -= LVEarRot2;
+                    BoneUpDown.ValueChanged += LVEarRot2;
+                }
+            }
+
+            if (CharacterDetails.RVEarRotate)
+            {
+                if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown.ValueChanged -= RVEarRot2;
+                    BoneUpDown.ValueChanged += RVEarRot2;
+                }
+            }
+
+            if (CharacterDetails.LVEar2Rotate)
+            {
+                if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown.ValueChanged -= LVEar2Rot2;
+                    BoneUpDown.ValueChanged += LVEar2Rot2;
+                }
+            }
+
+            if (CharacterDetails.RVEar2Rotate)
+            {
+                if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown.ValueChanged -= RVEar2Rot2;
+                    BoneUpDown.ValueChanged += RVEar2Rot2;
+                }
+            }
+
+            if (CharacterDetails.LVEar3Rotate)
+            {
+                if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown.ValueChanged -= LVEar3Rot2;
+                    BoneUpDown.ValueChanged += LVEar3Rot2;
+                }
+            }
+
+            if (CharacterDetails.RVEar3Rotate)
+            {
+                if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown.ValueChanged -= RVEar3Rot2;
+                    BoneUpDown.ValueChanged += RVEar3Rot2;
+                }
+            }
+
+            if (CharacterDetails.LVEar4Rotate)
+            {
+                if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown.ValueChanged -= LVEar4Rot2;
+                    BoneUpDown.ValueChanged += LVEar4Rot2;
+                }
+            }
+
+            if (CharacterDetails.RVEar4Rotate)
+            {
+                if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown.ValueChanged -= RVEar4Rot2;
+                    BoneUpDown.ValueChanged += RVEar4Rot2;
+                }
+            }
+
             if (CharacterDetails.LEarringRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
@@ -3494,6 +4119,78 @@ namespace ConceptMatrix.Views
                 {
                     BoneUpDown.ValueChanged -= REarring2Rot2;
                     BoneUpDown.ValueChanged += REarring2Rot2;
+                }
+            }
+
+            if (CharacterDetails.LVLowLipRotate)
+            {
+                if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown.ValueChanged -= LVLowLipRot2;
+                    BoneUpDown.ValueChanged += LVLowLipRot2;
+                }
+            }
+
+            if (CharacterDetails.RVUpLipRotate)
+            {
+                if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown.ValueChanged -= RVUpLipRot2;
+                    BoneUpDown.ValueChanged += RVUpLipRot2;
+                }
+            }
+
+            if (CharacterDetails.RVLowLipRotate)
+            {
+                if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown.ValueChanged -= RVLowLipRot2;
+                    BoneUpDown.ValueChanged += RVLowLipRot2;
+                }
+            }
+
+            if (CharacterDetails.LVLowEar3Rotate)
+            {
+                if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown.ValueChanged -= LVEarLow3Rot2;
+                    BoneUpDown.ValueChanged += LVEarLow3Rot2;
+                }
+            }
+
+            if (CharacterDetails.LVLowEar4Rotate)
+            {
+                if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown.ValueChanged -= LVEarLow4Rot2;
+                    BoneUpDown.ValueChanged += LVEarLow4Rot2;
+                }
+            }
+
+            if (CharacterDetails.RVLowEar2Rotate)
+            {
+                if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown.ValueChanged -= RVEarLow2Rot2;
+                    BoneUpDown.ValueChanged += RVEarLow2Rot2;
+                }
+            }
+
+            if (CharacterDetails.RVLowEar3Rotate)
+            {
+                if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown.ValueChanged -= RVEarLow3Rot2;
+                    BoneUpDown.ValueChanged += RVEarLow3Rot2;
+                }
+            }
+
+            if (CharacterDetails.RVLowEar4Rotate)
+            {
+                if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown.ValueChanged -= RVEarLow4Rot2;
+                    BoneUpDown.ValueChanged += RVEarLow4Rot2;
                 }
             }
         }
@@ -4131,6 +4828,15 @@ namespace ConceptMatrix.Views
                 }
             }
 
+            if (CharacterDetails.Tail5Rotate)
+            {
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown2.ValueChanged -= Tail5Rot2;
+                    BoneUpDown2.ValueChanged += Tail5Rot2;
+                }
+            }
+
             if (CharacterDetails.LThighRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
@@ -4221,6 +4927,78 @@ namespace ConceptMatrix.Views
                 }
             }
 
+            if (CharacterDetails.LVEarRotate)
+            {
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
+                {
+                    BoneUpDown2.ValueChanged -= LVEarRot2;
+                    BoneUpDown2.ValueChanged += LVEarRot2;
+                }
+            }
+
+            if (CharacterDetails.RVEarRotate)
+            {
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
+                {
+                    BoneUpDown2.ValueChanged -= RVEarRot2;
+                    BoneUpDown2.ValueChanged += RVEarRot2;
+                }
+            }
+
+            if (CharacterDetails.LVEar2Rotate)
+            {
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
+                {
+                    BoneUpDown2.ValueChanged -= LVEar2Rot2;
+                    BoneUpDown2.ValueChanged += LVEar2Rot2;
+                }
+            }
+
+            if (CharacterDetails.RVEar2Rotate)
+            {
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
+                {
+                    BoneUpDown2.ValueChanged -= RVEar2Rot2;
+                    BoneUpDown2.ValueChanged += RVEar2Rot2;
+                }
+            }
+
+            if (CharacterDetails.LVEar3Rotate)
+            {
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
+                {
+                    BoneUpDown2.ValueChanged -= LVEar3Rot2;
+                    BoneUpDown2.ValueChanged += LVEar3Rot2;
+                }
+            }
+
+            if (CharacterDetails.RVEar3Rotate)
+            {
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
+                {
+                    BoneUpDown2.ValueChanged -= RVEar3Rot2;
+                    BoneUpDown2.ValueChanged += RVEar3Rot2;
+                }
+            }
+
+            if (CharacterDetails.LVEar4Rotate)
+            {
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
+                {
+                    BoneUpDown2.ValueChanged -= LVEar4Rot2;
+                    BoneUpDown2.ValueChanged += LVEar4Rot2;
+                }
+            }
+
+            if (CharacterDetails.RVEar4Rotate)
+            {
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
+                {
+                    BoneUpDown2.ValueChanged -= RVEar4Rot2;
+                    BoneUpDown2.ValueChanged += RVEar4Rot2;
+                }
+            }
+
             if (CharacterDetails.LEarringRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
@@ -4254,6 +5032,78 @@ namespace ConceptMatrix.Views
                 {
                     BoneUpDown2.ValueChanged -= REarring2Rot2;
                     BoneUpDown2.ValueChanged += REarring2Rot2;
+                }
+            }
+
+            if (CharacterDetails.LVLowLipRotate)
+            {
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
+                {
+                    BoneUpDown2.ValueChanged -= LVLowLipRot2;
+                    BoneUpDown2.ValueChanged += LVLowLipRot2;
+                }
+            }
+
+            if (CharacterDetails.RVUpLipRotate)
+            {
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
+                {
+                    BoneUpDown2.ValueChanged -= RVUpLipRot2;
+                    BoneUpDown2.ValueChanged += RVUpLipRot2;
+                }
+            }
+
+            if (CharacterDetails.RVLowLipRotate)
+            {
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
+                {
+                    BoneUpDown2.ValueChanged -= RVLowLipRot2;
+                    BoneUpDown2.ValueChanged += RVLowLipRot2;
+                }
+            }
+
+            if (CharacterDetails.LVLowEar3Rotate)
+            {
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
+                {
+                    BoneUpDown2.ValueChanged -= LVEarLow3Rot2;
+                    BoneUpDown2.ValueChanged += LVEarLow3Rot2;
+                }
+            }
+
+            if (CharacterDetails.LVLowEar4Rotate)
+            {
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
+                {
+                    BoneUpDown2.ValueChanged -= LVEarLow4Rot2;
+                    BoneUpDown2.ValueChanged += LVEarLow4Rot2;
+                }
+            }
+
+            if (CharacterDetails.RVLowEar2Rotate)
+            {
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
+                {
+                    BoneUpDown2.ValueChanged -= RVEarLow2Rot2;
+                    BoneUpDown2.ValueChanged += RVEarLow2Rot2;
+                }
+            }
+
+            if (CharacterDetails.RVLowEar3Rotate)
+            {
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
+                {
+                    BoneUpDown2.ValueChanged -= RVEarLow3Rot2;
+                    BoneUpDown2.ValueChanged += RVEarLow3Rot2;
+                }
+            }
+
+            if (CharacterDetails.RVLowEar4Rotate)
+            {
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
+                {
+                    BoneUpDown2.ValueChanged -= RVEarLow4Rot2;
+                    BoneUpDown2.ValueChanged += RVEarLow4Rot2;
                 }
             }
         }
@@ -4882,12 +5732,21 @@ namespace ConceptMatrix.Views
                 }
             }
 
-            if (CharacterDetails.TailRotate)
+            if (CharacterDetails.Tail4Rotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= Tail4Rot2;
                     BoneUpDown3.ValueChanged += Tail4Rot2;
+                }
+            }
+
+            if (CharacterDetails.Tail5Rotate)
+            {
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown3.ValueChanged -= Tail5Rot2;
+                    BoneUpDown3.ValueChanged += Tail5Rot2;
                 }
             }
 
@@ -4981,6 +5840,78 @@ namespace ConceptMatrix.Views
                 }
             }
 
+            if (CharacterDetails.LVEarRotate)
+            {
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
+                {
+                    BoneUpDown3.ValueChanged -= LVEarRot2;
+                    BoneUpDown3.ValueChanged += LVEarRot2;
+                }
+            }
+
+            if (CharacterDetails.RVEarRotate)
+            {
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
+                {
+                    BoneUpDown3.ValueChanged -= RVEarRot2;
+                    BoneUpDown3.ValueChanged += RVEarRot2;
+                }
+            }
+
+            if (CharacterDetails.LVEar2Rotate)
+            {
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
+                {
+                    BoneUpDown3.ValueChanged -= LVEar2Rot2;
+                    BoneUpDown3.ValueChanged += LVEar2Rot2;
+                }
+            }
+
+            if (CharacterDetails.RVEar2Rotate)
+            {
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
+                {
+                    BoneUpDown3.ValueChanged -= RVEar2Rot2;
+                    BoneUpDown3.ValueChanged += RVEar2Rot2;
+                }
+            }
+
+            if (CharacterDetails.LVEar3Rotate)
+            {
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
+                {
+                    BoneUpDown3.ValueChanged -= LVEar3Rot2;
+                    BoneUpDown3.ValueChanged += LVEar3Rot2;
+                }
+            }
+
+            if (CharacterDetails.RVEar3Rotate)
+            {
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
+                {
+                    BoneUpDown3.ValueChanged -= RVEar3Rot2;
+                    BoneUpDown3.ValueChanged += RVEar3Rot2;
+                }
+            }
+
+            if (CharacterDetails.LVEar4Rotate)
+            {
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
+                {
+                    BoneUpDown3.ValueChanged -= LVEar4Rot2;
+                    BoneUpDown3.ValueChanged += LVEar4Rot2;
+                }
+            }
+
+            if (CharacterDetails.RVEar4Rotate)
+            {
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
+                {
+                    BoneUpDown3.ValueChanged -= RVEar4Rot2;
+                    BoneUpDown3.ValueChanged += RVEar4Rot2;
+                }
+            }
+
             if (CharacterDetails.LEarringRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
@@ -5014,6 +5945,78 @@ namespace ConceptMatrix.Views
                 {
                     BoneUpDown3.ValueChanged -= REarring2Rot2;
                     BoneUpDown3.ValueChanged += REarring2Rot2;
+                }
+            }
+
+            if (CharacterDetails.LVLowLipRotate)
+            {
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
+                {
+                    BoneUpDown3.ValueChanged -= LVLowLipRot2;
+                    BoneUpDown3.ValueChanged += LVLowLipRot2;
+                }
+            }
+
+            if (CharacterDetails.RVUpLipRotate)
+            {
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
+                {
+                    BoneUpDown3.ValueChanged -= RVUpLipRot2;
+                    BoneUpDown3.ValueChanged += RVUpLipRot2;
+                }
+            }
+
+            if (CharacterDetails.RVLowLipRotate)
+            {
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
+                {
+                    BoneUpDown3.ValueChanged -= RVLowLipRot2;
+                    BoneUpDown3.ValueChanged += RVLowLipRot2;
+                }
+            }
+
+            if (CharacterDetails.LVLowEar3Rotate)
+            {
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
+                {
+                    BoneUpDown3.ValueChanged -= LVEarLow3Rot2;
+                    BoneUpDown3.ValueChanged += LVEarLow3Rot2;
+                }
+            }
+
+            if (CharacterDetails.LVLowEar4Rotate)
+            {
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
+                {
+                    BoneUpDown3.ValueChanged -= LVEarLow4Rot2;
+                    BoneUpDown3.ValueChanged += LVEarLow4Rot2;
+                }
+            }
+
+            if (CharacterDetails.RVLowEar2Rotate)
+            {
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
+                {
+                    BoneUpDown3.ValueChanged -= RVEarLow2Rot2;
+                    BoneUpDown3.ValueChanged += RVEarLow2Rot2;
+                }
+            }
+
+            if (CharacterDetails.RVLowEar3Rotate)
+            {
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
+                {
+                    BoneUpDown3.ValueChanged -= RVEarLow3Rot2;
+                    BoneUpDown3.ValueChanged += RVEarLow3Rot2;
+                }
+            }
+
+            if (CharacterDetails.RVLowEar4Rotate)
+            {
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
+                {
+                    BoneUpDown3.ValueChanged -= RVEarLow4Rot2;
+                    BoneUpDown3.ValueChanged += RVEarLow4Rot2;
                 }
             }
         }
@@ -5249,6 +6252,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -5259,6 +6263,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -5375,6 +6383,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -5385,17 +6394,23 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            CharacterDetails.NoseCheck = true;
+            if (CharacterDetails.Race.value != 7) CharacterDetails.NoseCheck = true;
+            if (CharacterDetails.Race.value == 7) CharacterDetails.LOutEyebrowCheck = true;
         }
         private void NoseButton_Unchecked(object sender, RoutedEventArgs e)
         {
             CharacterDetails.NoseRotate = false;
+            CharacterDetails.LOutEyebrowRotate = false;
         }
         #endregion
 
@@ -5501,6 +6516,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -5511,6 +6527,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -5627,6 +6647,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -5637,6 +6658,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -5753,6 +6778,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -5763,17 +6789,23 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            CharacterDetails.LOutEyebrowCheck = true;
+            if (CharacterDetails.Race.value != 7) CharacterDetails.LOutEyebrowCheck = true;
+            if (CharacterDetails.Race.value == 7) CharacterDetails.LMouthCheck = true;
         }
         private void LOutEyebrowButton_Unchecked(object sender, RoutedEventArgs e)
         {
             CharacterDetails.LOutEyebrowRotate = false;
+            CharacterDetails.LMouthRotate = false;
         }
         #endregion
 
@@ -5879,6 +6911,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -5889,17 +6922,23 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            CharacterDetails.ROutEyebrowCheck = true;
+            if (CharacterDetails.Race.value != 7) CharacterDetails.ROutEyebrowCheck = true;
+            if (CharacterDetails.Race.value == 7) CharacterDetails.RMouthCheck = true;
         }
         private void ROutEyebrowButton_Unchecked(object sender, RoutedEventArgs e)
         {
             CharacterDetails.ROutEyebrowRotate = false;
+            CharacterDetails.RMouthRotate = false;
         }
         #endregion
 
@@ -6005,6 +7044,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -6015,17 +7055,23 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            CharacterDetails.LInEyebrowCheck = true;
+            if (CharacterDetails.Race.value != 7) CharacterDetails.LInEyebrowCheck = true;
+            if (CharacterDetails.Race.value == 7) CharacterDetails.ROutEyebrowCheck = true;
         }
         private void LInEyebrowButton_Unchecked(object sender, RoutedEventArgs e)
         {
             CharacterDetails.LInEyebrowRotate = false;
+            CharacterDetails.ROutEyebrowRotate = false;
         }
         #endregion
 
@@ -6131,6 +7177,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -6141,17 +7188,23 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            CharacterDetails.RInEyebrowCheck = true;
+            if (CharacterDetails.Race.value != 7) CharacterDetails.RInEyebrowCheck = true;
+            if (CharacterDetails.Race.value == 7) CharacterDetails.NoseCheck = true;
         }
         private void RInEyebrowButton_Unchecked(object sender, RoutedEventArgs e)
         {
             CharacterDetails.RInEyebrowRotate = false;
+            CharacterDetails.NoseRotate = false;
         }
         #endregion
 
@@ -6257,6 +7310,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -6267,6 +7321,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -6384,6 +7442,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -6394,6 +7453,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -6510,6 +7573,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -6520,17 +7584,23 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            CharacterDetails.LEyelidCheck = true;
+            if (CharacterDetails.Race.value != 7) CharacterDetails.LEyelidCheck = true;
+            if (CharacterDetails.Race.value == 7) CharacterDetails.LUpLipCheck = true;
         }
         private void LEyelidButton_Unchecked(object sender, RoutedEventArgs e)
         {
             CharacterDetails.LEyelidRotate = false;
+            CharacterDetails.LUpLipRotate = false;
         }
         #endregion
 
@@ -6636,6 +7706,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -6646,17 +7717,23 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            CharacterDetails.REyelidCheck = true;
+            if (CharacterDetails.Race.value != 7) CharacterDetails.REyelidCheck = true;
+            if (CharacterDetails.Race.value == 7) CharacterDetails.LEyelidCheck = true;
         }
         private void REyelidButton_Unchecked(object sender, RoutedEventArgs e)
         {
             CharacterDetails.REyelidRotate = false;
+            CharacterDetails.LEyelidRotate = false;
         }
         #endregion
 
@@ -6762,6 +7839,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -6772,6 +7850,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -6888,6 +7970,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -6898,6 +7981,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -7014,6 +8101,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -7024,6 +8112,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -7140,6 +8232,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -7150,6 +8243,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -7266,6 +8363,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -7276,17 +8374,23 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            CharacterDetails.LCheekCheck = true;
+            if (CharacterDetails.Race.value != 7) CharacterDetails.LCheekCheck = true;
+            if (CharacterDetails.Race.value == 7) CharacterDetails.REyelidCheck = true;
         }
         private void LCheekButton_Unchecked(object sender, RoutedEventArgs e)
         {
             CharacterDetails.LCheekRotate = false;
+            CharacterDetails.REyelidRotate = false;
         }
         #endregion
 
@@ -7392,6 +8496,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -7402,17 +8507,23 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            CharacterDetails.RCheekCheck = true;
+            if (CharacterDetails.Race.value != 7) CharacterDetails.RCheekCheck = true;
+            if (CharacterDetails.Race.value == 7) CharacterDetails.LLowLipCheck = true;
         }
         private void RCheekButton_Unchecked(object sender, RoutedEventArgs e)
         {
             CharacterDetails.RCheekRotate = false;
+            CharacterDetails.LLowLipRotate = false;
         }
         #endregion
 
@@ -7518,6 +8629,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -7528,17 +8640,23 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            CharacterDetails.LMouthCheck = true;
+            if (CharacterDetails.Race.value != 7) CharacterDetails.LMouthCheck = true;
+            if (CharacterDetails.Race.value == 7) CharacterDetails.RUpLipCheck = true;
         }
         private void LMouthButton_Unchecked(object sender, RoutedEventArgs e)
         {
             CharacterDetails.LMouthRotate = false;
+            CharacterDetails.RUpLipRotate = false;
         }
         #endregion
 
@@ -7644,6 +8762,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -7654,17 +8773,23 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            CharacterDetails.RMouthCheck = true;
+            if (CharacterDetails.Race.value != 7) CharacterDetails.RMouthCheck = true;
+            if (CharacterDetails.Race.value == 7) CharacterDetails.RLowLipCheck = true;
         }
         private void RMouthButton_Unchecked(object sender, RoutedEventArgs e)
         {
             CharacterDetails.RMouthRotate = false;
+            CharacterDetails.RLowLipRotate = false;
         }
         #endregion
 
@@ -7770,6 +8895,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -7780,17 +8906,23 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            CharacterDetails.LUpLipCheck = true;
+            if (CharacterDetails.Race.value != 7) CharacterDetails.LUpLipCheck = true;
+            if (CharacterDetails.Race.value == 7) CharacterDetails.LInEyebrowCheck = true;
         }
         private void LUpLipButton_Unchecked(object sender, RoutedEventArgs e)
         {
             CharacterDetails.LUpLipRotate = false;
+            CharacterDetails.LInEyebrowRotate = false;
         }
         #endregion
 
@@ -7823,6 +8955,36 @@ namespace ConceptMatrix.Views
             BoneUpDown.ValueChanged -= RUpLipRot2;
             BoneUpDown2.ValueChanged -= RUpLipRot2;
             BoneUpDown3.ValueChanged -= RUpLipRot2;
+        }
+
+        private void RVUpLipRot(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.RVUpLipX.value = (float)quat.X;
+            CharacterDetails.RVUpLipY.value = (float)quat.Y;
+            CharacterDetails.RVUpLipZ.value = (float)quat.Z;
+            CharacterDetails.RVUpLipW.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneSlider.ValueChanged -= RVUpLipRot;
+            BoneSlider2.ValueChanged -= RVUpLipRot;
+            BoneSlider3.ValueChanged -= RVUpLipRot;
+        }
+
+        private void RVUpLipRot2(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.RVUpLipX.value = (float)quat.X;
+            CharacterDetails.RVUpLipY.value = (float)quat.Y;
+            CharacterDetails.RVUpLipZ.value = (float)quat.Z;
+            CharacterDetails.RVUpLipW.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneUpDown.ValueChanged -= RVUpLipRot2;
+            BoneUpDown2.ValueChanged -= RVUpLipRot2;
+            BoneUpDown3.ValueChanged -= RVUpLipRot2;
         }
 
         private void RUpLipButton_Checked(object sender, RoutedEventArgs e)
@@ -7896,6 +9058,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -7906,17 +9069,25 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            CharacterDetails.RUpLipCheck = true;
+            if (CharacterDetails.Race.value < 7) CharacterDetails.RUpLipCheck = true;
+            if (CharacterDetails.Race.value == 7) CharacterDetails.RInEyebrowCheck = true;
+            if (CharacterDetails.Race.value == 8) CharacterDetails.RVUpLipCheck = true;
         }
         private void RUpLipButton_Unchecked(object sender, RoutedEventArgs e)
         {
             CharacterDetails.RUpLipRotate = false;
+            CharacterDetails.RInEyebrowRotate = false;
+            CharacterDetails.RVUpLipRotate = false;
         }
         #endregion
 
@@ -7949,6 +9120,36 @@ namespace ConceptMatrix.Views
             BoneUpDown.ValueChanged -= LLowLipRot2;
             BoneUpDown2.ValueChanged -= LLowLipRot2;
             BoneUpDown3.ValueChanged -= LLowLipRot2;
+        }
+
+        private void LVLowLipRot(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.LVLowLipX.value = (float)quat.X;
+            CharacterDetails.LVLowLipY.value = (float)quat.Y;
+            CharacterDetails.LVLowLipZ.value = (float)quat.Z;
+            CharacterDetails.LVLowLipW.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneSlider.ValueChanged -= LVLowLipRot;
+            BoneSlider2.ValueChanged -= LVLowLipRot;
+            BoneSlider3.ValueChanged -= LVLowLipRot;
+        }
+
+        private void LVLowLipRot2(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.LVLowLipX.value = (float)quat.X;
+            CharacterDetails.LVLowLipY.value = (float)quat.Y;
+            CharacterDetails.LVLowLipZ.value = (float)quat.Z;
+            CharacterDetails.LVLowLipW.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneUpDown.ValueChanged -= LVLowLipRot2;
+            BoneUpDown2.ValueChanged -= LVLowLipRot2;
+            BoneUpDown3.ValueChanged -= LVLowLipRot2;
         }
 
         private void LLowLipButton_Checked(object sender, RoutedEventArgs e)
@@ -8022,6 +9223,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -8032,17 +9234,25 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            CharacterDetails.LLowLipCheck = true;
+            if (CharacterDetails.Race.value < 7) CharacterDetails.LLowLipCheck = true;
+            if (CharacterDetails.Race.value == 7) CharacterDetails.RVLowEar2Check = true;
+            if (CharacterDetails.Race.value == 8) CharacterDetails.LVLowLipCheck = true;
         }
         private void LLowLipButton_Unchecked(object sender, RoutedEventArgs e)
         {
             CharacterDetails.LLowLipRotate = false;
+            CharacterDetails.RVLowEar2Rotate = false;
+            CharacterDetails.LVLowLipRotate = false;
         }
         #endregion
 
@@ -8075,6 +9285,37 @@ namespace ConceptMatrix.Views
             BoneUpDown.ValueChanged -= RLowLipRot2;
             BoneUpDown2.ValueChanged -= RLowLipRot2;
             BoneUpDown3.ValueChanged -= RLowLipRot2;
+            //  Console.WriteLine(CharacterDetails.RotateY);	
+        }
+
+        private void RVLowLipRot(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.RVLowLipX.value = (float)quat.X;
+            CharacterDetails.RVLowLipY.value = (float)quat.Y;
+            CharacterDetails.RVLowLipZ.value = (float)quat.Z;
+            CharacterDetails.RVLowLipW.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneSlider.ValueChanged -= RVLowLipRot;
+            BoneSlider2.ValueChanged -= RVLowLipRot;
+            BoneSlider3.ValueChanged -= RVLowLipRot;
+        }
+
+        private void RVLowLipRot2(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.RVLowLipX.value = (float)quat.X;
+            CharacterDetails.RVLowLipY.value = (float)quat.Y;
+            CharacterDetails.RVLowLipZ.value = (float)quat.Z;
+            CharacterDetails.RVLowLipW.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneUpDown.ValueChanged -= RVLowLipRot2;
+            BoneUpDown2.ValueChanged -= RVLowLipRot2;
+            BoneUpDown3.ValueChanged -= RVLowLipRot2;
             //  Console.WriteLine(CharacterDetails.RotateY);	
         }
 
@@ -8149,6 +9390,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -8159,17 +9401,23 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
 
             //Load Current Values for Slider
-            CharacterDetails.RLowLipCheck = true;
+            if (CharacterDetails.Race.value < 7) CharacterDetails.RLowLipCheck = true;
+            if (CharacterDetails.Race.value == 8) CharacterDetails.RVLowLipCheck = true;
         }
         private void RLowLipButton_Unchecked(object sender, RoutedEventArgs e)
         {
             CharacterDetails.RLowLipRotate = false;
+            CharacterDetails.RVLowLipRotate = false;
         }
         #endregion
 
@@ -8275,6 +9523,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -8285,6 +9534,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -8401,6 +9654,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -8411,6 +9665,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -8527,6 +9785,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -8537,6 +9796,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -8653,6 +9916,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -8663,6 +9927,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -8779,6 +10047,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -8789,6 +10058,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -8905,6 +10178,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -8915,6 +10189,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -9031,6 +10309,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -9041,6 +10320,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -9157,6 +10440,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -9167,6 +10451,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -9283,6 +10571,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -9293,6 +10582,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -9409,6 +10702,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -9419,6 +10713,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -9535,6 +10833,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -9545,6 +10844,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -9661,6 +10964,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -9671,6 +10975,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -9787,6 +11095,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -9797,6 +11106,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -9913,6 +11226,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -9923,6 +11237,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -10039,6 +11357,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -10049,6 +11368,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -10165,6 +11488,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -10175,6 +11499,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -10291,6 +11619,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -10301,6 +11630,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -10417,6 +11750,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -10427,6 +11761,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -10543,6 +11881,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -10553,6 +11892,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -10669,6 +12012,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -10679,6 +12023,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -10795,6 +12143,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -10805,6 +12154,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -10921,6 +12274,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -10931,6 +12285,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -11047,6 +12405,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -11057,6 +12416,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -11173,6 +12536,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -11183,6 +12547,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -11299,6 +12667,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -11309,6 +12678,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -11425,6 +12798,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -11435,6 +12809,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -11551,6 +12929,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -11561,6 +12940,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -11677,6 +13060,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -11687,6 +13071,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -11803,6 +13191,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -11813,6 +13202,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -11929,6 +13322,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -11939,6 +13333,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -12055,6 +13453,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -12065,6 +13464,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -12181,6 +13584,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -12191,6 +13595,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -12307,6 +13715,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -12317,6 +13726,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -12433,6 +13846,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -12443,6 +13857,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -12559,6 +13977,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -12569,6 +13988,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -12685,6 +14108,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -12695,6 +14119,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -12811,6 +14239,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -12821,6 +14250,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -12937,6 +14370,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -12947,6 +14381,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -13063,6 +14501,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -13073,6 +14512,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -13189,6 +14632,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -13199,6 +14643,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -13315,6 +14763,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -13325,6 +14774,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -13441,6 +14894,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -13451,6 +14905,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -13567,6 +15025,7 @@ namespace ConceptMatrix.Views
             TailButton.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -13577,6 +15036,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -13693,6 +15156,7 @@ namespace ConceptMatrix.Views
             TailButton.IsChecked = false;
             Tail2Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -13703,6 +15167,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -13819,6 +15287,7 @@ namespace ConceptMatrix.Views
             TailButton.IsChecked = false;
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -13829,6 +15298,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -13840,6 +15313,137 @@ namespace ConceptMatrix.Views
         private void Tail4Button_Unchecked(object sender, RoutedEventArgs e)
         {
             CharacterDetails.Tail4Rotate = false;
+        }
+        #endregion
+
+        #region Tail5
+        private void Tail5Rot(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.Tail5X.value = (float)quat.X;
+            CharacterDetails.Tail5Y.value = (float)quat.Y;
+            CharacterDetails.Tail5Z.value = (float)quat.Z;
+            CharacterDetails.Tail5W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneSlider.ValueChanged -= Tail5Rot;
+            BoneSlider2.ValueChanged -= Tail5Rot;
+            BoneSlider3.ValueChanged -= Tail5Rot;
+        }
+
+        private void Tail5Rot2(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.Tail5X.value = (float)quat.X;
+            CharacterDetails.Tail5Y.value = (float)quat.Y;
+            CharacterDetails.Tail5Z.value = (float)quat.Z;
+            CharacterDetails.Tail5W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneUpDown.ValueChanged -= Tail5Rot2;
+            BoneUpDown2.ValueChanged -= Tail5Rot2;
+            BoneUpDown3.ValueChanged -= Tail5Rot2;
+        }
+
+        private void Tail5Button_Checked(object sender, RoutedEventArgs e)
+        {
+            //Disable Other Selections
+            HeadButton.IsChecked = false;
+            NoseButton.IsChecked = false;
+            NostrilsButton.IsChecked = false;
+            ChinButton.IsChecked = false;
+            LOutEyebrowButton.IsChecked = false;
+            ROutEyebrowButton.IsChecked = false;
+            LInEyebrowButton.IsChecked = false;
+            RInEyebrowButton.IsChecked = false;
+            LEyeButton.IsChecked = false;
+            REyeButton.IsChecked = false;
+            LEyelidButton.IsChecked = false;
+            REyelidButton.IsChecked = false;
+            LLowEyelidButton.IsChecked = false;
+            RLowEyelidButton.IsChecked = false;
+            LEarButton.IsChecked = false;
+            REarButton.IsChecked = false;
+            LCheekButton.IsChecked = false;
+            RCheekButton.IsChecked = false;
+            LMouthButton.IsChecked = false;
+            RMouthButton.IsChecked = false;
+            LUpLipButton.IsChecked = false;
+            RUpLipButton.IsChecked = false;
+            LLowLipButton.IsChecked = false;
+            RLowLipButton.IsChecked = false;
+            NeckButton.IsChecked = false;
+            SternumButton.IsChecked = false;
+            TorsoButton.IsChecked = false;
+            WaistButton.IsChecked = false;
+            LShoulderButton.IsChecked = false;
+            RShoulderButton.IsChecked = false;
+            LClavicleButton.IsChecked = false;
+            RClavicleButton.IsChecked = false;
+            LBreastButton.IsChecked = false;
+            RBreastButton.IsChecked = false;
+            LArmButton.IsChecked = false;
+            RArmButton.IsChecked = false;
+            LElbowButton.IsChecked = false;
+            RElbowButton.IsChecked = false;
+            LForearmButton.IsChecked = false;
+            RForearmButton.IsChecked = false;
+            LWristButton.IsChecked = false;
+            RWristButton.IsChecked = false;
+            LHandButton.IsChecked = false;
+            RHandButton.IsChecked = false;
+            LThumbButton.IsChecked = false;
+            RThumbButton.IsChecked = false;
+            LThumb2Button.IsChecked = false;
+            RThumb2Button.IsChecked = false;
+            LIndexButton.IsChecked = false;
+            RIndexButton.IsChecked = false;
+            LIndex2Button.IsChecked = false;
+            RIndex2Button.IsChecked = false;
+            LMiddleButton.IsChecked = false;
+            RMiddleButton.IsChecked = false;
+            LMiddle2Button.IsChecked = false;
+            RMiddle2Button.IsChecked = false;
+            LRingButton.IsChecked = false;
+            RRingButton.IsChecked = false;
+            LRing2Button.IsChecked = false;
+            RRing2Button.IsChecked = false;
+            LPinkyButton.IsChecked = false;
+            RPinkyButton.IsChecked = false;
+            LPinky2Button.IsChecked = false;
+            RPinky2Button.IsChecked = false;
+            PelvisButton.IsChecked = false;
+            TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
+            LThighButton.IsChecked = false;
+            RThighButton.IsChecked = false;
+            LKneeButton.IsChecked = false;
+            RKneeButton.IsChecked = false;
+            LCalfButton.IsChecked = false;
+            RCalfButton.IsChecked = false;
+            LFootButton.IsChecked = false;
+            RFootButton.IsChecked = false;
+            LToesButton.IsChecked = false;
+            RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
+
+            //Load Current Values for Slider
+            CharacterDetails.Tail5Check = true;
+        }
+        private void Tail5Button_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.Tail5Rotate = false;
         }
         #endregion
 
@@ -13946,6 +15550,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
             RKneeButton.IsChecked = false;
@@ -13955,6 +15560,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -14072,6 +15681,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
             RKneeButton.IsChecked = false;
@@ -14081,6 +15691,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -14198,6 +15812,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             RKneeButton.IsChecked = false;
@@ -14207,6 +15822,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -14324,6 +15943,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -14333,6 +15953,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -14450,6 +16074,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -14459,6 +16084,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -14576,6 +16205,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -14585,6 +16215,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -14702,6 +16336,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -14711,6 +16346,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -14828,6 +16467,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -14837,6 +16477,10 @@ namespace ConceptMatrix.Views
             LFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -14954,6 +16598,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -14963,6 +16608,10 @@ namespace ConceptMatrix.Views
             LFootButton.IsChecked = false;
             RFootButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -15080,6 +16729,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -15089,6 +16739,10 @@ namespace ConceptMatrix.Views
             LFootButton.IsChecked = false;
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -15100,6 +16754,828 @@ namespace ConceptMatrix.Views
         private void RToesButton_Unchecked(object sender, RoutedEventArgs e)
         {
             CharacterDetails.RToesRotate = false;
+        }
+        #endregion
+
+        #region LVEar
+        private void LVEarRot(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.LVEarX.value = (float)quat.X;
+            CharacterDetails.LVEarY.value = (float)quat.Y;
+            CharacterDetails.LVEarZ.value = (float)quat.Z;
+            CharacterDetails.LVEarW.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneSlider.ValueChanged -= LVEarRot;
+            BoneSlider2.ValueChanged -= LVEarRot;
+            BoneSlider3.ValueChanged -= LVEarRot;
+        }
+
+        private void LVEarRot2(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.LVEarX.value = (float)quat.X;
+            CharacterDetails.LVEarY.value = (float)quat.Y;
+            CharacterDetails.LVEarZ.value = (float)quat.Z;
+            CharacterDetails.LVEarW.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneUpDown.ValueChanged -= LVEarRot2;
+            BoneUpDown2.ValueChanged -= LVEarRot2;
+            BoneUpDown3.ValueChanged -= LVEarRot2;
+        }
+
+        private void LVEar2Rot(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.LVEar2X.value = (float)quat.X;
+            CharacterDetails.LVEar2Y.value = (float)quat.Y;
+            CharacterDetails.LVEar2Z.value = (float)quat.Z;
+            CharacterDetails.LVEar2W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneSlider.ValueChanged -= LVEar2Rot;
+            BoneSlider2.ValueChanged -= LVEar2Rot;
+            BoneSlider3.ValueChanged -= LVEar2Rot;
+        }
+
+        private void LVEar2Rot2(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.LVEar2X.value = (float)quat.X;
+            CharacterDetails.LVEar2Y.value = (float)quat.Y;
+            CharacterDetails.LVEar2Z.value = (float)quat.Z;
+            CharacterDetails.LVEar2W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneUpDown.ValueChanged -= LVEar2Rot2;
+            BoneUpDown2.ValueChanged -= LVEar2Rot2;
+            BoneUpDown3.ValueChanged -= LVEar2Rot2;
+        }
+
+        private void LVEar3Rot(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.LVEar3X.value = (float)quat.X;
+            CharacterDetails.LVEar3Y.value = (float)quat.Y;
+            CharacterDetails.LVEar3Z.value = (float)quat.Z;
+            CharacterDetails.LVEar3W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneSlider.ValueChanged -= LVEar3Rot;
+            BoneSlider2.ValueChanged -= LVEar3Rot;
+            BoneSlider3.ValueChanged -= LVEar3Rot;
+        }
+
+        private void LVEar3Rot2(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.LVEar3X.value = (float)quat.X;
+            CharacterDetails.LVEar3Y.value = (float)quat.Y;
+            CharacterDetails.LVEar3Z.value = (float)quat.Z;
+            CharacterDetails.LVEar3W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneUpDown.ValueChanged -= LVEar3Rot2;
+            BoneUpDown2.ValueChanged -= LVEar3Rot2;
+            BoneUpDown3.ValueChanged -= LVEar3Rot2;
+        }
+
+        private void LVEar4Rot(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.LVEar4X.value = (float)quat.X;
+            CharacterDetails.LVEar4Y.value = (float)quat.Y;
+            CharacterDetails.LVEar4Z.value = (float)quat.Z;
+            CharacterDetails.LVEar4W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneSlider.ValueChanged -= LVEar4Rot;
+            BoneSlider2.ValueChanged -= LVEar4Rot;
+            BoneSlider3.ValueChanged -= LVEar4Rot;
+        }
+
+        private void LVEar4Rot2(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.LVEar4X.value = (float)quat.X;
+            CharacterDetails.LVEar4Y.value = (float)quat.Y;
+            CharacterDetails.LVEar4Z.value = (float)quat.Z;
+            CharacterDetails.LVEar4W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneUpDown.ValueChanged -= LVEar4Rot2;
+            BoneUpDown2.ValueChanged -= LVEar4Rot2;
+            BoneUpDown3.ValueChanged -= LVEar4Rot2;
+        }
+
+        private void LVEarButton_Checked(object sender, RoutedEventArgs e)
+        {
+            //Disable Other Selections
+            HeadButton.IsChecked = false;
+            NoseButton.IsChecked = false;
+            NostrilsButton.IsChecked = false;
+            ChinButton.IsChecked = false;
+            LOutEyebrowButton.IsChecked = false;
+            ROutEyebrowButton.IsChecked = false;
+            LInEyebrowButton.IsChecked = false;
+            RInEyebrowButton.IsChecked = false;
+            LEyeButton.IsChecked = false;
+            REyeButton.IsChecked = false;
+            LEyelidButton.IsChecked = false;
+            REyelidButton.IsChecked = false;
+            LLowEyelidButton.IsChecked = false;
+            RLowEyelidButton.IsChecked = false;
+            LEarButton.IsChecked = false;
+            REarButton.IsChecked = false;
+            LCheekButton.IsChecked = false;
+            RCheekButton.IsChecked = false;
+            LMouthButton.IsChecked = false;
+            RMouthButton.IsChecked = false;
+            LUpLipButton.IsChecked = false;
+            RUpLipButton.IsChecked = false;
+            LLowLipButton.IsChecked = false;
+            RLowLipButton.IsChecked = false;
+            NeckButton.IsChecked = false;
+            SternumButton.IsChecked = false;
+            TorsoButton.IsChecked = false;
+            WaistButton.IsChecked = false;
+            LShoulderButton.IsChecked = false;
+            RShoulderButton.IsChecked = false;
+            LClavicleButton.IsChecked = false;
+            RClavicleButton.IsChecked = false;
+            LBreastButton.IsChecked = false;
+            RBreastButton.IsChecked = false;
+            LArmButton.IsChecked = false;
+            RArmButton.IsChecked = false;
+            LElbowButton.IsChecked = false;
+            RElbowButton.IsChecked = false;
+            LForearmButton.IsChecked = false;
+            RForearmButton.IsChecked = false;
+            LWristButton.IsChecked = false;
+            RWristButton.IsChecked = false;
+            LHandButton.IsChecked = false;
+            RHandButton.IsChecked = false;
+            LThumbButton.IsChecked = false;
+            RThumbButton.IsChecked = false;
+            LThumb2Button.IsChecked = false;
+            RThumb2Button.IsChecked = false;
+            LIndexButton.IsChecked = false;
+            RIndexButton.IsChecked = false;
+            LIndex2Button.IsChecked = false;
+            RIndex2Button.IsChecked = false;
+            LMiddleButton.IsChecked = false;
+            RMiddleButton.IsChecked = false;
+            LMiddle2Button.IsChecked = false;
+            RMiddle2Button.IsChecked = false;
+            LRingButton.IsChecked = false;
+            RRingButton.IsChecked = false;
+            LRing2Button.IsChecked = false;
+            RRing2Button.IsChecked = false;
+            LPinkyButton.IsChecked = false;
+            RPinkyButton.IsChecked = false;
+            LPinky2Button.IsChecked = false;
+            RPinky2Button.IsChecked = false;
+            PelvisButton.IsChecked = false;
+            TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
+            LThighButton.IsChecked = false;
+            RThighButton.IsChecked = false;
+            LKneeButton.IsChecked = false;
+            RKneeButton.IsChecked = false;
+            LCalfButton.IsChecked = false;
+            RCalfButton.IsChecked = false;
+            LFootButton.IsChecked = false;
+            RFootButton.IsChecked = false;
+            LToesButton.IsChecked = false;
+            RToesButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
+
+            //Load Current Values for Slider
+            if (CharacterDetails.TailType.value == 0) CharacterDetails.LVEarCheck = true;
+            if (CharacterDetails.TailType.value == 1) CharacterDetails.LVEarCheck = true;
+            if (CharacterDetails.TailType.value == 2) CharacterDetails.LVEar2Check = true;
+            if (CharacterDetails.TailType.value == 3) CharacterDetails.LVEar3Check = true;
+            if (CharacterDetails.TailType.value == 4) CharacterDetails.LVEar4Check = true;
+        }
+        private void LVEarButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.LVEarRotate = false;
+            CharacterDetails.LVEar2Rotate = false;
+            CharacterDetails.LVEar3Rotate = false;
+            CharacterDetails.LVEar4Rotate = false;
+        }
+        #endregion
+
+        #region RVEar
+        private void RVEarRot(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.RVEarX.value = (float)quat.X;
+            CharacterDetails.RVEarY.value = (float)quat.Y;
+            CharacterDetails.RVEarZ.value = (float)quat.Z;
+            CharacterDetails.RVEarW.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneSlider.ValueChanged -= RVEarRot;
+            BoneSlider2.ValueChanged -= RVEarRot;
+            BoneSlider3.ValueChanged -= RVEarRot;
+        }
+
+        private void RVEarRot2(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.RVEarX.value = (float)quat.X;
+            CharacterDetails.RVEarY.value = (float)quat.Y;
+            CharacterDetails.RVEarZ.value = (float)quat.Z;
+            CharacterDetails.RVEarW.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneUpDown.ValueChanged -= RVEarRot2;
+            BoneUpDown2.ValueChanged -= RVEarRot2;
+            BoneUpDown3.ValueChanged -= RVEarRot2;
+        }
+
+        private void RVEar2Rot(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.RVEar2X.value = (float)quat.X;
+            CharacterDetails.RVEar2Y.value = (float)quat.Y;
+            CharacterDetails.RVEar2Z.value = (float)quat.Z;
+            CharacterDetails.RVEar2W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneSlider.ValueChanged -= RVEar2Rot;
+            BoneSlider2.ValueChanged -= RVEar2Rot;
+            BoneSlider3.ValueChanged -= RVEar2Rot;
+        }
+
+        private void RVEar2Rot2(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.RVEar2X.value = (float)quat.X;
+            CharacterDetails.RVEar2Y.value = (float)quat.Y;
+            CharacterDetails.RVEar2Z.value = (float)quat.Z;
+            CharacterDetails.RVEar2W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneUpDown.ValueChanged -= RVEar2Rot2;
+            BoneUpDown2.ValueChanged -= RVEar2Rot2;
+            BoneUpDown3.ValueChanged -= RVEar2Rot2;
+        }
+
+        private void RVEar3Rot(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.RVEar3X.value = (float)quat.X;
+            CharacterDetails.RVEar3Y.value = (float)quat.Y;
+            CharacterDetails.RVEar3Z.value = (float)quat.Z;
+            CharacterDetails.RVEar3W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneSlider.ValueChanged -= RVEar3Rot;
+            BoneSlider2.ValueChanged -= RVEar3Rot;
+            BoneSlider3.ValueChanged -= RVEar3Rot;
+        }
+
+        private void RVEar3Rot2(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.RVEar3X.value = (float)quat.X;
+            CharacterDetails.RVEar3Y.value = (float)quat.Y;
+            CharacterDetails.RVEar3Z.value = (float)quat.Z;
+            CharacterDetails.RVEar3W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneUpDown.ValueChanged -= RVEar3Rot2;
+            BoneUpDown2.ValueChanged -= RVEar3Rot2;
+            BoneUpDown3.ValueChanged -= RVEar3Rot2;
+        }
+
+        private void RVEar4Rot(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.RVEar4X.value = (float)quat.X;
+            CharacterDetails.RVEar4Y.value = (float)quat.Y;
+            CharacterDetails.RVEar4Z.value = (float)quat.Z;
+            CharacterDetails.RVEar4W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneSlider.ValueChanged -= RVEar4Rot;
+            BoneSlider2.ValueChanged -= RVEar4Rot;
+            BoneSlider3.ValueChanged -= RVEar4Rot;
+        }
+
+        private void RVEar4Rot2(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.RVEar4X.value = (float)quat.X;
+            CharacterDetails.RVEar4Y.value = (float)quat.Y;
+            CharacterDetails.RVEar4Z.value = (float)quat.Z;
+            CharacterDetails.RVEar4W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneUpDown.ValueChanged -= RVEar4Rot2;
+            BoneUpDown2.ValueChanged -= RVEar4Rot2;
+            BoneUpDown3.ValueChanged -= RVEar4Rot2;
+        }
+
+        private void RVEarButton_Checked(object sender, RoutedEventArgs e)
+        {
+            //Disable Other Selections
+            HeadButton.IsChecked = false;
+            NoseButton.IsChecked = false;
+            NostrilsButton.IsChecked = false;
+            ChinButton.IsChecked = false;
+            LOutEyebrowButton.IsChecked = false;
+            ROutEyebrowButton.IsChecked = false;
+            LInEyebrowButton.IsChecked = false;
+            RInEyebrowButton.IsChecked = false;
+            LEyeButton.IsChecked = false;
+            REyeButton.IsChecked = false;
+            LEyelidButton.IsChecked = false;
+            REyelidButton.IsChecked = false;
+            LLowEyelidButton.IsChecked = false;
+            RLowEyelidButton.IsChecked = false;
+            LEarButton.IsChecked = false;
+            REarButton.IsChecked = false;
+            LCheekButton.IsChecked = false;
+            RCheekButton.IsChecked = false;
+            LMouthButton.IsChecked = false;
+            RMouthButton.IsChecked = false;
+            LUpLipButton.IsChecked = false;
+            RUpLipButton.IsChecked = false;
+            LLowLipButton.IsChecked = false;
+            RLowLipButton.IsChecked = false;
+            NeckButton.IsChecked = false;
+            SternumButton.IsChecked = false;
+            TorsoButton.IsChecked = false;
+            WaistButton.IsChecked = false;
+            LShoulderButton.IsChecked = false;
+            RShoulderButton.IsChecked = false;
+            LClavicleButton.IsChecked = false;
+            RClavicleButton.IsChecked = false;
+            LBreastButton.IsChecked = false;
+            RBreastButton.IsChecked = false;
+            LArmButton.IsChecked = false;
+            RArmButton.IsChecked = false;
+            LElbowButton.IsChecked = false;
+            RElbowButton.IsChecked = false;
+            LForearmButton.IsChecked = false;
+            RForearmButton.IsChecked = false;
+            LWristButton.IsChecked = false;
+            RWristButton.IsChecked = false;
+            LHandButton.IsChecked = false;
+            RHandButton.IsChecked = false;
+            LThumbButton.IsChecked = false;
+            RThumbButton.IsChecked = false;
+            LThumb2Button.IsChecked = false;
+            RThumb2Button.IsChecked = false;
+            LIndexButton.IsChecked = false;
+            RIndexButton.IsChecked = false;
+            LIndex2Button.IsChecked = false;
+            RIndex2Button.IsChecked = false;
+            LMiddleButton.IsChecked = false;
+            RMiddleButton.IsChecked = false;
+            LMiddle2Button.IsChecked = false;
+            RMiddle2Button.IsChecked = false;
+            LRingButton.IsChecked = false;
+            RRingButton.IsChecked = false;
+            LRing2Button.IsChecked = false;
+            RRing2Button.IsChecked = false;
+            LPinkyButton.IsChecked = false;
+            RPinkyButton.IsChecked = false;
+            LPinky2Button.IsChecked = false;
+            RPinky2Button.IsChecked = false;
+            PelvisButton.IsChecked = false;
+            TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
+            LThighButton.IsChecked = false;
+            RThighButton.IsChecked = false;
+            LKneeButton.IsChecked = false;
+            RKneeButton.IsChecked = false;
+            LCalfButton.IsChecked = false;
+            RCalfButton.IsChecked = false;
+            LFootButton.IsChecked = false;
+            RFootButton.IsChecked = false;
+            LToesButton.IsChecked = false;
+            RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
+
+            //Load Current Values for Slider
+            if (CharacterDetails.TailType.value == 0) CharacterDetails.RVEarCheck = true;
+            if (CharacterDetails.TailType.value == 1) CharacterDetails.RVEarCheck = true;
+            if (CharacterDetails.TailType.value == 2) CharacterDetails.RVEar2Check = true;
+            if (CharacterDetails.TailType.value == 3) CharacterDetails.RVEar3Check = true;
+            if (CharacterDetails.TailType.value == 4) CharacterDetails.RVEar4Check = true;
+        }
+        private void RVEarButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.RVEarRotate = false;
+            CharacterDetails.RVEar2Rotate = false;
+            CharacterDetails.RVEar3Rotate = false;
+            CharacterDetails.RVEar4Rotate = false;
+        }
+        #endregion
+
+        #region LVEar2
+        private void LVEarLow3Rot(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.LVLowEar3X.value = (float)quat.X;
+            CharacterDetails.LVLowEar3Y.value = (float)quat.Y;
+            CharacterDetails.LVLowEar3Z.value = (float)quat.Z;
+            CharacterDetails.LVLowEar3W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneSlider.ValueChanged -= LVEarLow3Rot;
+            BoneSlider2.ValueChanged -= LVEarLow3Rot;
+            BoneSlider3.ValueChanged -= LVEarLow3Rot;
+        }
+
+        private void LVEarLow3Rot2(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.LVLowEar3X.value = (float)quat.X;
+            CharacterDetails.LVLowEar3Y.value = (float)quat.Y;
+            CharacterDetails.LVLowEar3Z.value = (float)quat.Z;
+            CharacterDetails.LVLowEar3W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneUpDown.ValueChanged -= LVEarLow3Rot2;
+            BoneUpDown2.ValueChanged -= LVEarLow3Rot2;
+            BoneUpDown3.ValueChanged -= LVEarLow3Rot2;
+        }
+
+        private void LVEarLow4Rot(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.LVLowEar4X.value = (float)quat.X;
+            CharacterDetails.LVLowEar4Y.value = (float)quat.Y;
+            CharacterDetails.LVLowEar4Z.value = (float)quat.Z;
+            CharacterDetails.LVLowEar4W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneSlider.ValueChanged -= LVEarLow4Rot;
+            BoneSlider2.ValueChanged -= LVEarLow4Rot;
+            BoneSlider3.ValueChanged -= LVEarLow4Rot;
+        }
+
+        private void LVEarLow4Rot2(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.LVLowEar4X.value = (float)quat.X;
+            CharacterDetails.LVLowEar4Y.value = (float)quat.Y;
+            CharacterDetails.LVLowEar4Z.value = (float)quat.Z;
+            CharacterDetails.LVLowEar4W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneUpDown.ValueChanged -= LVEarLow4Rot2;
+            BoneUpDown2.ValueChanged -= LVEarLow4Rot2;
+            BoneUpDown3.ValueChanged -= LVEarLow4Rot2;
+        }
+
+        private void LVEar2Button_Checked(object sender, RoutedEventArgs e)
+        {
+            //Disable Other Selections
+            HeadButton.IsChecked = false;
+            NoseButton.IsChecked = false;
+            NostrilsButton.IsChecked = false;
+            ChinButton.IsChecked = false;
+            LOutEyebrowButton.IsChecked = false;
+            ROutEyebrowButton.IsChecked = false;
+            LInEyebrowButton.IsChecked = false;
+            RInEyebrowButton.IsChecked = false;
+            LEyeButton.IsChecked = false;
+            REyeButton.IsChecked = false;
+            LEyelidButton.IsChecked = false;
+            REyelidButton.IsChecked = false;
+            LLowEyelidButton.IsChecked = false;
+            RLowEyelidButton.IsChecked = false;
+            LEarButton.IsChecked = false;
+            REarButton.IsChecked = false;
+            LCheekButton.IsChecked = false;
+            RCheekButton.IsChecked = false;
+            LMouthButton.IsChecked = false;
+            RMouthButton.IsChecked = false;
+            LUpLipButton.IsChecked = false;
+            RUpLipButton.IsChecked = false;
+            LLowLipButton.IsChecked = false;
+            RLowLipButton.IsChecked = false;
+            NeckButton.IsChecked = false;
+            SternumButton.IsChecked = false;
+            TorsoButton.IsChecked = false;
+            WaistButton.IsChecked = false;
+            LShoulderButton.IsChecked = false;
+            RShoulderButton.IsChecked = false;
+            LClavicleButton.IsChecked = false;
+            RClavicleButton.IsChecked = false;
+            LBreastButton.IsChecked = false;
+            RBreastButton.IsChecked = false;
+            LArmButton.IsChecked = false;
+            RArmButton.IsChecked = false;
+            LElbowButton.IsChecked = false;
+            RElbowButton.IsChecked = false;
+            LForearmButton.IsChecked = false;
+            RForearmButton.IsChecked = false;
+            LWristButton.IsChecked = false;
+            RWristButton.IsChecked = false;
+            LHandButton.IsChecked = false;
+            RHandButton.IsChecked = false;
+            LThumbButton.IsChecked = false;
+            RThumbButton.IsChecked = false;
+            LThumb2Button.IsChecked = false;
+            RThumb2Button.IsChecked = false;
+            LIndexButton.IsChecked = false;
+            RIndexButton.IsChecked = false;
+            LIndex2Button.IsChecked = false;
+            RIndex2Button.IsChecked = false;
+            LMiddleButton.IsChecked = false;
+            RMiddleButton.IsChecked = false;
+            LMiddle2Button.IsChecked = false;
+            RMiddle2Button.IsChecked = false;
+            LRingButton.IsChecked = false;
+            RRingButton.IsChecked = false;
+            LRing2Button.IsChecked = false;
+            RRing2Button.IsChecked = false;
+            LPinkyButton.IsChecked = false;
+            RPinkyButton.IsChecked = false;
+            LPinky2Button.IsChecked = false;
+            RPinky2Button.IsChecked = false;
+            PelvisButton.IsChecked = false;
+            TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
+            LThighButton.IsChecked = false;
+            RThighButton.IsChecked = false;
+            LKneeButton.IsChecked = false;
+            RKneeButton.IsChecked = false;
+            LCalfButton.IsChecked = false;
+            RCalfButton.IsChecked = false;
+            LFootButton.IsChecked = false;
+            RFootButton.IsChecked = false;
+            LToesButton.IsChecked = false;
+            RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            RVEar2Button.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
+
+            //Load Current Values for Slider
+            if (CharacterDetails.TailType.value == 0) CharacterDetails.LLowLipCheck = true;
+            if (CharacterDetails.TailType.value == 1) CharacterDetails.LLowLipCheck = true;
+            if (CharacterDetails.TailType.value == 2) CharacterDetails.RLowLipCheck = true;
+            if (CharacterDetails.TailType.value == 3) CharacterDetails.LVLowEar3Check = true;
+            if (CharacterDetails.TailType.value == 4) CharacterDetails.LVLowEar4Check = true;
+        }
+        private void LVEar2Button_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.LLowLipRotate = false;
+            CharacterDetails.RLowLipRotate = false;
+            CharacterDetails.LVLowEar3Rotate = false;
+            CharacterDetails.LVLowEar4Rotate = false;
+        }
+        #endregion
+
+        #region RVEar2
+        private void RVEarLow2Rot(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.RVLowEar2X.value = (float)quat.X;
+            CharacterDetails.RVLowEar2Y.value = (float)quat.Y;
+            CharacterDetails.RVLowEar2Z.value = (float)quat.Z;
+            CharacterDetails.RVLowEar2W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneSlider.ValueChanged -= RVEarLow2Rot;
+            BoneSlider2.ValueChanged -= RVEarLow2Rot;
+            BoneSlider3.ValueChanged -= RVEarLow2Rot;
+        }
+
+        private void RVEarLow2Rot2(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.RVLowEar2X.value = (float)quat.X;
+            CharacterDetails.RVLowEar2Y.value = (float)quat.Y;
+            CharacterDetails.RVLowEar2Z.value = (float)quat.Z;
+            CharacterDetails.RVLowEar2W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneUpDown.ValueChanged -= RVEarLow2Rot2;
+            BoneUpDown2.ValueChanged -= RVEarLow2Rot2;
+            BoneUpDown3.ValueChanged -= RVEarLow2Rot2;
+        }
+
+        private void RVEarLow3Rot(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.RVLowEar3X.value = (float)quat.X;
+            CharacterDetails.RVLowEar3Y.value = (float)quat.Y;
+            CharacterDetails.RVLowEar3Z.value = (float)quat.Z;
+            CharacterDetails.RVLowEar3W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneSlider.ValueChanged -= RVEarLow3Rot;
+            BoneSlider2.ValueChanged -= RVEarLow3Rot;
+            BoneSlider3.ValueChanged -= RVEarLow3Rot;
+        }
+
+        private void RVEarLow3Rot2(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.RVLowEar3X.value = (float)quat.X;
+            CharacterDetails.RVLowEar3Y.value = (float)quat.Y;
+            CharacterDetails.RVLowEar3Z.value = (float)quat.Z;
+            CharacterDetails.RVLowEar3W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneUpDown.ValueChanged -= RVEarLow3Rot2;
+            BoneUpDown2.ValueChanged -= RVEarLow3Rot2;
+            BoneUpDown3.ValueChanged -= RVEarLow3Rot2;
+        }
+
+        private void RVEarLow4Rot(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.RVLowEar4X.value = (float)quat.X;
+            CharacterDetails.RVLowEar4Y.value = (float)quat.Y;
+            CharacterDetails.RVLowEar4Z.value = (float)quat.Z;
+            CharacterDetails.RVLowEar4W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneSlider.ValueChanged -= RVEarLow4Rot;
+            BoneSlider2.ValueChanged -= RVEarLow4Rot;
+            BoneSlider3.ValueChanged -= RVEarLow4Rot;
+        }
+
+        private void RVEarLow4Rot2(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.RVLowEar4X.value = (float)quat.X;
+            CharacterDetails.RVLowEar4Y.value = (float)quat.Y;
+            CharacterDetails.RVLowEar4Z.value = (float)quat.Z;
+            CharacterDetails.RVLowEar4W.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneUpDown.ValueChanged -= RVEarLow4Rot2;
+            BoneUpDown2.ValueChanged -= RVEarLow4Rot2;
+            BoneUpDown3.ValueChanged -= RVEarLow4Rot2;
+        }
+
+        private void RVEar2Button_Checked(object sender, RoutedEventArgs e)
+        {
+            //Disable Other Selections
+            HeadButton.IsChecked = false;
+            NoseButton.IsChecked = false;
+            NostrilsButton.IsChecked = false;
+            ChinButton.IsChecked = false;
+            LOutEyebrowButton.IsChecked = false;
+            ROutEyebrowButton.IsChecked = false;
+            LInEyebrowButton.IsChecked = false;
+            RInEyebrowButton.IsChecked = false;
+            LEyeButton.IsChecked = false;
+            REyeButton.IsChecked = false;
+            LEyelidButton.IsChecked = false;
+            REyelidButton.IsChecked = false;
+            LLowEyelidButton.IsChecked = false;
+            RLowEyelidButton.IsChecked = false;
+            LEarButton.IsChecked = false;
+            REarButton.IsChecked = false;
+            LCheekButton.IsChecked = false;
+            RCheekButton.IsChecked = false;
+            LMouthButton.IsChecked = false;
+            RMouthButton.IsChecked = false;
+            LUpLipButton.IsChecked = false;
+            RUpLipButton.IsChecked = false;
+            LLowLipButton.IsChecked = false;
+            RLowLipButton.IsChecked = false;
+            NeckButton.IsChecked = false;
+            SternumButton.IsChecked = false;
+            TorsoButton.IsChecked = false;
+            WaistButton.IsChecked = false;
+            LShoulderButton.IsChecked = false;
+            RShoulderButton.IsChecked = false;
+            LClavicleButton.IsChecked = false;
+            RClavicleButton.IsChecked = false;
+            LBreastButton.IsChecked = false;
+            RBreastButton.IsChecked = false;
+            LArmButton.IsChecked = false;
+            RArmButton.IsChecked = false;
+            LElbowButton.IsChecked = false;
+            RElbowButton.IsChecked = false;
+            LForearmButton.IsChecked = false;
+            RForearmButton.IsChecked = false;
+            LWristButton.IsChecked = false;
+            RWristButton.IsChecked = false;
+            LHandButton.IsChecked = false;
+            RHandButton.IsChecked = false;
+            LThumbButton.IsChecked = false;
+            RThumbButton.IsChecked = false;
+            LThumb2Button.IsChecked = false;
+            RThumb2Button.IsChecked = false;
+            LIndexButton.IsChecked = false;
+            RIndexButton.IsChecked = false;
+            LIndex2Button.IsChecked = false;
+            RIndex2Button.IsChecked = false;
+            LMiddleButton.IsChecked = false;
+            RMiddleButton.IsChecked = false;
+            LMiddle2Button.IsChecked = false;
+            RMiddle2Button.IsChecked = false;
+            LRingButton.IsChecked = false;
+            RRingButton.IsChecked = false;
+            LRing2Button.IsChecked = false;
+            RRing2Button.IsChecked = false;
+            LPinkyButton.IsChecked = false;
+            RPinkyButton.IsChecked = false;
+            LPinky2Button.IsChecked = false;
+            RPinky2Button.IsChecked = false;
+            PelvisButton.IsChecked = false;
+            TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
+            LThighButton.IsChecked = false;
+            RThighButton.IsChecked = false;
+            LKneeButton.IsChecked = false;
+            RKneeButton.IsChecked = false;
+            LCalfButton.IsChecked = false;
+            RCalfButton.IsChecked = false;
+            LFootButton.IsChecked = false;
+            RFootButton.IsChecked = false;
+            LToesButton.IsChecked = false;
+            RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
+
+            //Load Current Values for Slider
+            if (CharacterDetails.TailType.value == 0) CharacterDetails.RUpLipCheck = true;
+            if (CharacterDetails.TailType.value == 1) CharacterDetails.RUpLipCheck = true;
+            if (CharacterDetails.TailType.value == 2) CharacterDetails.RVLowEar2Check = true;
+            if (CharacterDetails.TailType.value == 3) CharacterDetails.RVLowEar3Check = true;
+            if (CharacterDetails.TailType.value == 4) CharacterDetails.RVLowEar4Check = true;
+        }
+        private void RVEar2Button_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.RUpLipRotate = false;
+            CharacterDetails.RVLowEar2Rotate = false;
+            CharacterDetails.RVLowEar3Rotate = false;
+            CharacterDetails.RVLowEar4Rotate = false;
         }
         #endregion
 
@@ -15206,6 +17682,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -15216,6 +17693,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
@@ -15332,6 +17813,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -15342,6 +17824,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
@@ -15458,6 +17944,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -15468,6 +17955,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             REarring2Button.IsChecked = false;
@@ -15584,6 +18075,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -15594,6 +18086,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -16142,6 +18638,86 @@ namespace ConceptMatrix.Views
             CharacterDetails.NeckY.value = NeckYSav;
             CharacterDetails.NeckZ.value = NeckZSav;
             CharacterDetails.NeckW.value = NeckWSav;
+
+            CharacterDetails.LVEarX.value = LVEarXSav;
+            CharacterDetails.LVEarY.value = LVEarYSav;
+            CharacterDetails.LVEarZ.value = LVEarZSav;
+            CharacterDetails.LVEarW.value = LVEarWSav;
+
+            CharacterDetails.RVEarX.value = RVEarXSav;
+            CharacterDetails.RVEarY.value = RVEarYSav;
+            CharacterDetails.RVEarZ.value = RVEarZSav;
+            CharacterDetails.RVEarW.value = RVEarWSav;
+
+            CharacterDetails.LVEar2X.value = LVEar2XSav;
+            CharacterDetails.LVEar2Y.value = LVEar2YSav;
+            CharacterDetails.LVEar2Z.value = LVEar2ZSav;
+            CharacterDetails.LVEar2W.value = LVEar2WSav;
+
+            CharacterDetails.RVEar2X.value = RVEar2XSav;
+            CharacterDetails.RVEar2Y.value = RVEar2YSav;
+            CharacterDetails.RVEar2Z.value = RVEar2ZSav;
+            CharacterDetails.RVEar2W.value = RVEar2WSav;
+
+            CharacterDetails.LVEar3X.value = LVEar3XSav;
+            CharacterDetails.LVEar3Y.value = LVEar3YSav;
+            CharacterDetails.LVEar3Z.value = LVEar3ZSav;
+            CharacterDetails.LVEar3W.value = LVEar3WSav;
+
+            CharacterDetails.RVEar3X.value = RVEar3XSav;
+            CharacterDetails.RVEar3Y.value = RVEar3YSav;
+            CharacterDetails.RVEar3Z.value = RVEar3ZSav;
+            CharacterDetails.RVEar3W.value = RVEar3WSav;
+
+            CharacterDetails.LVEar4X.value = LVEar4XSav;
+            CharacterDetails.LVEar4Y.value = LVEar4YSav;
+            CharacterDetails.LVEar4Z.value = LVEar4ZSav;
+            CharacterDetails.LVEar4W.value = LVEar4WSav;
+
+            CharacterDetails.RVEar4X.value = RVEar4XSav;
+            CharacterDetails.RVEar4Y.value = RVEar4YSav;
+            CharacterDetails.RVEar4Z.value = RVEar4ZSav;
+            CharacterDetails.RVEar4W.value = RVEar4WSav;
+
+            CharacterDetails.LVLowLipX.value = LVLowLipXSav;
+            CharacterDetails.LVLowLipY.value = LVLowLipYSav;
+            CharacterDetails.LVLowLipZ.value = LVLowLipZSav;
+            CharacterDetails.LVLowLipW.value = LVLowLipWSav;
+
+            CharacterDetails.RVUpLipX.value = RVUpLipXSav;
+            CharacterDetails.RVUpLipY.value = RVUpLipYSav;
+            CharacterDetails.RVUpLipZ.value = RVUpLipZSav;
+            CharacterDetails.RVUpLipW.value = RVUpLipWSav;
+
+            CharacterDetails.RVLowLipX.value = RVLowLipXSav;
+            CharacterDetails.RVLowLipY.value = RVLowLipYSav;
+            CharacterDetails.RVLowLipZ.value = RVLowLipZSav;
+            CharacterDetails.RVLowLipW.value = RVLowLipWSav;
+
+            CharacterDetails.RVLowEar2X.value = RVLowEar2XSav;
+            CharacterDetails.RVLowEar2Y.value = RVLowEar2YSav;
+            CharacterDetails.RVLowEar2Z.value = RVLowEar2ZSav;
+            CharacterDetails.RVLowEar2W.value = RVLowEar2WSav;
+
+            CharacterDetails.LVLowEar3X.value = LVLowEar3XSav;
+            CharacterDetails.LVLowEar3Y.value = LVLowEar3YSav;
+            CharacterDetails.LVLowEar3Z.value = LVLowEar3ZSav;
+            CharacterDetails.LVLowEar3W.value = LVLowEar3WSav;
+
+            CharacterDetails.RVLowEar3X.value = RVLowEar3XSav;
+            CharacterDetails.RVLowEar3Y.value = RVLowEar3YSav;
+            CharacterDetails.RVLowEar3Z.value = RVLowEar3ZSav;
+            CharacterDetails.RVLowEar3W.value = RVLowEar3WSav;
+
+            CharacterDetails.LVLowEar4X.value = LVLowEar4XSav;
+            CharacterDetails.LVLowEar4Y.value = LVLowEar4YSav;
+            CharacterDetails.LVLowEar4Z.value = LVLowEar4ZSav;
+            CharacterDetails.LVLowEar4W.value = LVLowEar4WSav;
+
+            CharacterDetails.RVLowEar4X.value = RVLowEar4XSav;
+            CharacterDetails.RVLowEar4Y.value = RVLowEar4YSav;
+            CharacterDetails.RVLowEar4Z.value = RVLowEar4ZSav;
+            CharacterDetails.RVLowEar4W.value = RVLowEar4WSav;
         }
 
         private void SaveTorsoButton_Click(object sender, RoutedEventArgs e)
@@ -16204,6 +18780,11 @@ namespace ConceptMatrix.Views
             CharacterDetails.Tail4Y.value = Tail4YSav;
             CharacterDetails.Tail4Z.value = Tail4ZSav;
             CharacterDetails.Tail4W.value = Tail4WSav;
+
+            CharacterDetails.Tail5X.value = Tail5XSav;
+            CharacterDetails.Tail5Y.value = Tail5YSav;
+            CharacterDetails.Tail5Z.value = Tail5ZSav;
+            CharacterDetails.Tail5W.value = Tail5WSav;
         }
 
         private void SaveLArmButton_Click(object sender, RoutedEventArgs e)
@@ -16547,6 +19128,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsChecked = false;
             Tail3Button.IsChecked = false;
             Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
             LThighButton.IsChecked = false;
             RThighButton.IsChecked = false;
             LKneeButton.IsChecked = false;
@@ -16557,6 +19139,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsChecked = false;
             LToesButton.IsChecked = false;
             RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
@@ -16637,6 +19223,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsEnabled = true;
             Tail3Button.IsEnabled = true;
             Tail4Button.IsEnabled = true;
+            Tail5Button.IsEnabled = true;
             LThighButton.IsEnabled = true;
             RThighButton.IsEnabled = true;
             LKneeButton.IsEnabled = true;
@@ -16647,6 +19234,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsEnabled = true;
             LToesButton.IsEnabled = true;
             RToesButton.IsEnabled = true;
+            LVEarButton.IsEnabled = true;
+            RVEarButton.IsEnabled = true;
+            LVEar2Button.IsEnabled = true;
+            RVEar2Button.IsEnabled = true;
             LEarringButton.IsEnabled = true;
             REarringButton.IsEnabled = true;
             LEarring2Button.IsEnabled = true;
@@ -16734,6 +19325,7 @@ namespace ConceptMatrix.Views
             Tail2Button.IsEnabled = false;
             Tail3Button.IsEnabled = false;
             Tail4Button.IsEnabled = false;
+            Tail5Button.IsEnabled = false;
             LThighButton.IsEnabled = false;
             RThighButton.IsEnabled = false;
             LKneeButton.IsEnabled = false;
@@ -16744,6 +19336,10 @@ namespace ConceptMatrix.Views
             RFootButton.IsEnabled = false;
             LToesButton.IsEnabled = false;
             RToesButton.IsEnabled = false;
+            LVEarButton.IsEnabled = false;
+            RVEarButton.IsEnabled = false;
+            LVEar2Button.IsEnabled = false;
+            RVEar2Button.IsEnabled = false;
             LEarringButton.IsEnabled = false;
             REarringButton.IsEnabled = false;
             LEarring2Button.IsEnabled = false;

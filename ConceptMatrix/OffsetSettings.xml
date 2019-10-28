@@ -287,6 +287,10 @@
         <Tail4Y>98,68,140,18,1364</Tail4Y>
         <Tail4Z>98,68,140,18,1368</Tail4Z>
         <Tail4W>98,68,140,18,136C</Tail4W>
+        <Tail5X>98,68,140,18,1390</Tail5X>
+        <Tail5Y>98,68,140,18,1394</Tail5Y>
+        <Tail5Z>98,68,140,18,1398</Tail5Z>
+        <Tail5W>98,68,140,18,139C</Tail5W>
         <ChinX>98,68,300,18,40</ChinX>
         <ChinY>98,68,300,18,44</ChinY>
         <ChinZ>98,68,300,18,48</ChinZ>
@@ -371,6 +375,70 @@
         <RLowLipY>98,68,300,18,404</RLowLipY>
         <RLowLipZ>98,68,300,18,408</RLowLipZ>
         <RLowLipW>98,68,300,18,40C</RLowLipW>
+        <RVLowEar2X>98,68,300,18,430</RVLowEar2X>
+        <RVLowEar2Y>98,68,300,18,434</RVLowEar2Y>
+        <RVLowEar2Z>98,68,300,18,438</RVLowEar2Z>
+        <RVLowEar2W>98,68,300,18,43C</RVLowEar2W>
+        <LVLowEar3X>98,68,300,18,460</LVLowEar3X>
+        <LVLowEar3Y>98,68,300,18,464</LVLowEar3Y>
+        <LVLowEar3Z>98,68,300,18,468</LVLowEar3Z>
+        <LVLowEar3W>98,68,300,18,46C</LVLowEar3W>
+        <RVLowEar3X>98,68,300,18,490</RVLowEar3X>
+        <RVLowEar3Y>98,68,300,18,494</RVLowEar3Y>
+        <RVLowEar3Z>98,68,300,18,498</RVLowEar3Z>
+        <RVLowEar3W>98,68,300,18,49C</RVLowEar3W>
+        <LVLowEar4X>98,68,300,18,4C0</LVLowEar4X>
+        <LVLowEar4Y>98,68,300,18,4C4</LVLowEar4Y>
+        <LVLowEar4Z>98,68,300,18,4C8</LVLowEar4Z>
+        <LVLowEar4W>98,68,300,18,4CC</LVLowEar4W>
+        <RVLowEar4X>98,68,300,18,4F0</RVLowEar4X>
+        <RVLowEar4Y>98,68,300,18,4F4</RVLowEar4Y>
+        <RVLowEar4Z>98,68,300,18,4F8</RVLowEar4Z>
+        <RVLowEar4W>98,68,300,18,4FC</RVLowEar4W>
+        <LVLowLipX>98,68,300,18,520</LVLowLipX>
+        <LVLowLipY>98,68,300,18,524</LVLowLipY>
+        <LVLowLipZ>98,68,300,18,528</LVLowLipZ>
+        <LVLowLipW>98,68,300,18,52C</LVLowLipW>
+        <RVUpLipX>98,68,300,18,550</RVUpLipX>
+        <RVUpLipY>98,68,300,18,554</RVUpLipY>
+        <RVUpLipZ>98,68,300,18,558</RVUpLipZ>
+        <RVUpLipW>98,68,300,18,55C</RVUpLipW>
+        <LVEarX>98,68,300,18,580</LVEarX>
+        <LVEarY>98,68,300,18,584</LVEarY>
+        <LVEarZ>98,68,300,18,588</LVEarZ>
+        <LVEarW>98,68,300,18,58C</LVEarW>
+        <RVEarX>98,68,300,18,5B0</RVEarX>
+        <RVEarY>98,68,300,18,5B4</RVEarY>
+        <RVEarZ>98,68,300,18,5B8</RVEarZ>
+        <RVEarW>98,68,300,18,5BC</RVEarW>
+        <LVEar2X>98,68,300,18,5E0</LVEar2X>
+        <LVEar2Y>98,68,300,18,5E4</LVEar2Y>
+        <LVEar2Z>98,68,300,18,5E8</LVEar2Z>
+        <LVEar2W>98,68,300,18,5EC</LVEar2W>
+        <RVEar2X>98,68,300,18,610</RVEar2X>
+        <RVEar2Y>98,68,300,18,614</RVEar2Y>
+        <RVEar2Z>98,68,300,18,618</RVEar2Z>
+        <RVEar2W>98,68,300,18,61C</RVEar2W>
+        <LVEar3X>98,68,300,18,640</LVEar3X>
+        <LVEar3Y>98,68,300,18,644</LVEar3Y>
+        <LVEar3Z>98,68,300,18,648</LVEar3Z>
+        <LVEar3W>98,68,300,18,64C</LVEar3W>
+        <RVEar3X>98,68,300,18,670</RVEar3X>
+        <RVEar3Y>98,68,300,18,674</RVEar3Y>
+        <RVEar3Z>98,68,300,18,678</RVEar3Z>
+        <RVEar3W>98,68,300,18,67C</RVEar3W>
+        <LVEar4X>98,68,300,18,6A0</LVEar4X>
+        <LVEar4Y>98,68,300,18,6A4</LVEar4Y>
+        <LVEar4Z>98,68,300,18,6A8</LVEar4Z>
+        <LVEar4W>98,68,300,18,6AC</LVEar4W>
+        <RVEar4X>98,68,300,18,6D0</RVEar4X>
+        <RVEar4Y>98,68,300,18,6D4</RVEar4Y>
+        <RVEar4Z>98,68,300,18,6D8</RVEar4Z>
+        <RVEar4W>98,68,300,18,6DC</RVEar4W>
+        <RVLowLipX>98,68,300,18,700</RVLowLipX>
+        <RVLowLipY>98,68,300,18,704</RVLowLipY>
+        <RVLowLipZ>98,68,300,18,708</RVLowLipZ>
+        <RVLowLipW>98,68,300,18,70C</RVLowLipW>
 
       </Position>
 
