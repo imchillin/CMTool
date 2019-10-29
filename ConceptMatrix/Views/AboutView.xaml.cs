@@ -38,17 +38,17 @@ namespace ConceptMatrix.Views
 		}
 		private void DonateButton_OnClick(object sender, RoutedEventArgs e)
 		{
-			Process.Start("https://ko-fi.com/seibanaut");
+			Process.Start("http://ko-fi.com/krisanthyme");
 		}
 
 		private void DonateButton_OnClick2(object sender, RoutedEventArgs e)
 		{
-			Process.Start("http://ko-fi.com/leonblade");
+			Process.Start("https://www.patreon.com/krisanthyme");
 		}
 
 		private void DonateButton_OnClick3(object sender, RoutedEventArgs e)
 		{
-			Process.Start("http://ko-fi.com/krisanthyme");
+			Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MPB9SS72FZHVU&source=url");
 		}
 
 		private void ChatButton_Click(object sender, RoutedEventArgs e)
@@ -58,7 +58,7 @@ namespace ConceptMatrix.Views
 
 		private void AboutDiscordBtn_Click(object sender, RoutedEventArgs e)
 		{
-			Process.Start("https://discord.gg/MfV8uwt");
+			Process.Start("https://discord.gg/P9FWWAr");
 		}
 	}
 }

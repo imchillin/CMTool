@@ -295,8 +295,6 @@ namespace ConceptMatrix.ViewModel
                             CharacterDetails.GposeMode = false;
                             InGpose = false;
                         }
-                        //Console.WriteLine("Not in GPose");
-                        Thread.Sleep(350);
                     }
                     else if (m.readByte(GAS(MemoryManager.Instance.GposeCheckAddress)) == 1)
                     {
@@ -304,13 +302,13 @@ namespace ConceptMatrix.ViewModel
                         {
                             CharacterDetails.GposeMode = false;
                             m.writeMemory(GAS(baseAddr, c.EntityType), "byte", "0x02");
-                            Task.Delay(1250).Wait();
+                            Task.Delay(1500).Wait();
                             m.writeMemory(GAS(baseAddr, c.EntityType), "byte", "0x01");
                             CharacterDetails.GposeMode = true;
+                            Task.Delay(50).Wait();
+                            m.writeMemory(GAS(baseAddr, c.EntityType), "byte", "0x01");
                             InGpose = true;
                         }
-                        //Console.WriteLine("Currently in GPose");
-                        Thread.Sleep(350);
                     }
                 }
 
