@@ -1,234 +1,389 @@
-﻿using Ionic.Zip;
-using MahApps.Metro.Controls;
-using Markdig;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using MahApps.Metro.Controls;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
+using System.IO.Compression;
 using System.Net;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Security.Principal;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Shell;
 
 namespace ConceptMatrixUpdater
 {
-	/// <summary>
-	/// Interaction logic for MainWindow.xaml
-	/// </summary>
-	public partial class MainWindow : MetroWindow
-	{
-		public string UpdateString { get; set; }
-		public string HTML { get; set; }
-		private readonly JObject json;
-		public string ApplicationPath;
-		private readonly string temp = Path.Combine(Path.GetTempPath(), "CMTool");
-		public int ProgressValue { get; set; }
-		private BackgroundWorker bw;
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : MetroWindow
+    {
+        WebClient wc = new WebClient(), subwc = new WebClient();
+        protected string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\FFXIVTool";
+        string exepath = Directory.GetParent(Assembly.GetExecutingAssembly().Location).FullName;
+        string version = "0", newversion = "0";
+        bool downloading = false;
+        private int round = 1;
+        public bool downloadLang = false;
+        private bool backup;
+        private string outputUpdatePath = "";
+        private string updatesFolder = "";
+        public bool autoLaunchXIV = false;
+        [DllImport("Shell32.dll")]
+        private static extern int SHGetKnownFolderPath(
+        [MarshalAs(UnmanagedType.LPStruct)]Guid rfid, uint dwFlags, IntPtr hToken,
+        out IntPtr ppszPath);
+        public MainWindow()
+        {
+            InitializeComponent();
 
-		public MainWindow()
-		{
-			InitializeComponent();
+            ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
+            if (File.Exists(exepath + "\\ConceptMatrix.exe"))
+                version = FileVersionInfo.GetVersionInfo(exepath + "\\ConceptMatrix.exe").FileVersion;
 
-			DataContext = this;
+            if (AdminNeeded())
+                label1.Content = "Please re-run with admin rights";
+            else
+            {
+                try
+                {
+                    string[] files = Directory.GetFiles(exepath);
 
-			// Initialize variable for the current PP version.
-			bool forceCheckUpdate = false;
+                    for (int i = 0, arlen = files.Length; i < arlen; i++)
+                    {
+                        string tempFile = Path.GetFileName(files[i]);
+                        if ("ConceptMatrix.zip" == tempFile)
+                        {
+                            File.Delete(files[i]);
+                        }
+                    }
 
-			// Get the current version of the application.
-			var result = Version.TryParse(FileVersionInfo.GetVersionInfo(Path.Combine(Environment.CurrentDirectory, "ConceptMatrix.exe")).FileVersion, out Version CurrentVersion);
-			if (!result)
-			{
-				MessageBox.Show(
-					"There was an error when trying to read the current version of Concept Matrix, you will be prompted to download the latest version.",
-					"Concept Matrix Updater",
-					MessageBoxButton.OK,
-					MessageBoxImage.Error
-				);
-				// Force to check the update.
-				forceCheckUpdate = true;
-			}
+                    if (Directory.Exists(exepath + "\\Update Files"))
+                        Directory.Delete(exepath + "\\Update Files", true);
 
-			// Create request for Github REST API for the latest release of Paisley Park.
-			if (WebRequest.Create("https://api.github.com/repos/KrisanThyme/CMTool/releases/latest") is HttpWebRequest request)
-			{
-				request.Method = "GET";
-				request.UserAgent = "CMTool";
-				request.ServicePoint.Expect100Continue = false;
+                    if (!Directory.Exists(Path.Combine(exepath, "Updates")))
+                        Directory.CreateDirectory(Path.Combine(exepath, "Updates"));
 
-				try
-				{
-					using (var r = new StreamReader(request.GetResponse().GetResponseStream()))
-					{
-						// Get the JSON as a JObject to get the properties dynamically.
-						json = JsonConvert.DeserializeObject<JObject>(r.ReadToEnd());
-						// Get tag name and remove the v in front.
-						var tag_name = json["tag_name"].Value<string>();
-						// Form release version from this string.
-						var releaseVersion = new Version(tag_name);
-						// Check if the release is newer.
-						if (releaseVersion > CurrentVersion || forceCheckUpdate)
-						{
-							// Create HTML out of the markdown in body.
-							var html = Markdown.ToHtml(json["body"].Value<string>());
-							// Set the update string
-							UpdateString = $"CMTools {releaseVersion.VersionString()} is now available, you have {CurrentVersion.VersionString()}. Would you like to download it now?";
-							// Set HTML in the window.
-							HTML = "<style>body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;margin:10px 20px;padding:0;font-size:12px;}ul{margin:0;padding:0;list-style-position:inside;}</style>" + html;
-						}
-						else
-						{
-                            // MessageBox.Show("You're up to date!", "Concept Matrix Updater", MessageBoxButton.OK, MessageBoxImage.Information);
-                            Close();
-						}
-					}
-				}
-				catch (Exception ex)
-				{
-					MessageBox.Show(ex.Message);
-					var response = MessageBox.Show(
-						"Failed to fetch the latest version! Would you like to visit the page manually to check for the latest release manually?",
-                        "Concept Matrix Updater",
-						MessageBoxButton.YesNo,
-						MessageBoxImage.Error
-					);
-					if (response == MessageBoxResult.Yes)
-					{
-						// Visit the latest releases page on GitHub to download the latest Paisley Park.
-						Process.Start("https://github.com/KrisanThyme/CMTool/releases/latest");
-					}
-				}
-			}
-		}
+                    updatesFolder = Path.Combine(exepath, "Updates");
+                }
+                catch (IOException) { label1.Content = "Cannot save download at this time"; return; }
 
-		/// <summary>
-		/// Ensure the temp path exists.
-		/// </summary>
-		private void ValidateTempPath()
-		{
-			// Create temp diretory if it doesn't exist.
-			if (!Directory.Exists(temp))
-				Directory.CreateDirectory(temp);
-		}
+                if (File.Exists(exepath + "\\Profiles.xml"))
+                    path = exepath;
 
-		/// <summary>
-		/// When clicking the install button.
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void OnInstallClick(object sender, RoutedEventArgs e)
-		{
-			Dispatcher.BeginInvoke(new Action(() =>
-			{
-				// Use web client to download the update.
-				using (var wc = new WebClient())
-				{
-					// Ensure the temp path exists.
-					ValidateTempPath();
+                if (File.Exists(path + "\\version.txt"))
+                {
+                    newversion = File.ReadAllText(path + "\\version.txt");
+                    newversion = newversion.Trim();
+                }
+                else if (File.Exists(exepath + "\\version.txt"))
+                {
+                    newversion = File.ReadAllText(exepath + "\\version.txt");
+                    newversion = newversion.Trim();
+                }
+                else
+                {
+                    Uri urlv = new Uri("https://raw.githubusercontent.com/imchillin/SSTool/master/version.txt");
+                    WebClient wc2 = new WebClient();
+                    downloading = true;
+                    subwc.DownloadFileAsync(urlv, exepath + "\\version.txt");
+                    subwc.DownloadFileCompleted += subwc_DownloadFileCompleted;
+                    label1.Content = "Getting Update info";
+                }
 
-					// Temporary Paisley Park zip path.
-					var tPPZip = Path.Combine(temp, "CMTool.zip");
+                if (!downloading && version.Replace(',', '.').CompareTo(newversion) != 0)
+                {
+                    Uri url = new Uri($"https://github.com/imchillin/SSTool/releases/download/{newversion}/FFXIVTool.zip");
+                    sw.Start();
+                    outputUpdatePath = Path.Combine(updatesFolder, $"ConceptMatrix.zip");
+                    try { wc.DownloadFileAsync(url, outputUpdatePath); }
+                    catch (Exception e) { label1.Content = e.Message; }
+                    wc.DownloadFileCompleted += wc_DownloadFileCompleted;
+                    wc.DownloadProgressChanged += wc_DownloadProgressChanged;
+                }
+                else if (!downloading)
+                {
+                    label1.Content = "ConceptMatrix is up to date";
+                    try
+                    {
+                        File.Delete(path + "\\version.txt");
+                        File.Delete(exepath + "\\version.txt");
+                    }
+                    catch { }
+                    OpenXIVBTN.IsEnabled = true;
+                }
+            }
+        }
+        public bool AdminNeeded()
+        {
+            try
+            {
+                File.WriteAllText(exepath + "\\test.txt", "test");
+                File.Delete(exepath + "\\test.txt");
+                return false;
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return true;
+            }
+        }
+        void subwc_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
+        {
+            newversion = File.ReadAllText(exepath + "\\version.txt");
+            newversion = newversion.Trim();
+            File.Delete(exepath + "\\version.txt");
+            if (version.Replace(',', '.').CompareTo(newversion) != 0)
+            {
+                Uri url = new Uri($"https://github.com/imchillin/CMTool/releases/download/{newversion}/ConceptMatrix.zip");
+                sw.Start();
+                outputUpdatePath = Path.Combine(updatesFolder, $"ConceptMatrix.zip");
+                try { wc.DownloadFileAsync(url, outputUpdatePath); }
+                catch (Exception ec) { label1.Content = ec.Message; }
+                wc.DownloadFileCompleted += wc_DownloadFileCompleted;
+                wc.DownloadProgressChanged += wc_DownloadProgressChanged;
+            }
+            else
+            {
+                label1.Content = "ConceptMatrix is up to date";
+                try
+                {
+                    File.Delete(path + "\\version.txt");
+                    File.Delete(exepath + "\\version.txt");
+                    Directory.Delete(exepath + "\\Updates", true);
+                }
+                catch { }
 
-					// Delete existing zip file.
-					if (File.Exists(tPPZip))
-						File.Delete(tPPZip);
+                if (autoLaunchXIV)
+                {
+                    label1.Content = "Launching ConceptMatrix soon";
+                    OpenXIVBTN.IsEnabled = false;
+                    Task.Delay(7500).ContinueWith((t) =>
+                    {
+                        AutoOpenXIV();
+                    });
+                }
+                else
+                {
+                    OpenXIVBTN.IsEnabled = true;
+                }
+            }
+        }
 
-					// Download the file. 
-					wc.DownloadFileAsync(new Uri(json["assets"][0]["browser_download_url"].Value<string>()), tPPZip);
+        private bool IsAdministrator()
+        {
+            var identity = WindowsIdentity.GetCurrent();
+            var principal = new WindowsPrincipal(identity);
+            return principal.IsInRole(WindowsBuiltInRole.Administrator);
+        }
 
-					// When the download changes.
-					wc.DownloadProgressChanged += UpdateDownloadProgressChanged;
-					wc.DownloadFileCompleted += DownloadFileCompleted;
-				}
-			}), System.Windows.Threading.DispatcherPriority.ContextIdle);
-		}
+        Stopwatch sw = new Stopwatch();
+        private void wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            label2.Opacity = 1;
+            double speed = e.BytesReceived / sw.Elapsed.TotalSeconds;
+            double timeleft = (e.TotalBytesToReceive - e.BytesReceived) / speed;
+            if (timeleft > 3660)
+                label2.Content = (int)timeleft / 3600 + "h left";
+            else if (timeleft > 90)
+                label2.Content = (int)timeleft / 60 + "m left";
+            else
+                label2.Content = (int)timeleft + "s left";
 
-		private void DownloadFileCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
-		{
-			// Temporary Paisley Park zip path.
-			var tPPZip = Path.Combine(temp, "CMTool.zip");
+            UpdaterBar.Value = e.ProgressPercentage;
+            TaskbarItemInfo.ProgressValue = UpdaterBar.Value / 106d;
+            string convertedrev, convertedtotal;
+            if (e.BytesReceived > 1024 * 1024 * 5) convertedrev = (int)(e.BytesReceived / 1024d / 1024d) + "MB";
+            else convertedrev = (int)(e.BytesReceived / 1024d) + "kB";
 
-			// Create a background worker.
-			bw = new BackgroundWorker() { WorkerReportsProgress = true };
+            if (e.TotalBytesToReceive > 1024 * 1024 * 5) convertedtotal = (int)(e.TotalBytesToReceive / 1024d / 1024d) + "MB";
+            else convertedtotal = (int)(e.TotalBytesToReceive / 1024d) + "kB";
 
-			// Reset the download progress.
-			DownloadProgress.Value = 0;
-			// Add the work loop.
-			bw.DoWork += UnzipWorker;
-			// Add the progress changed listener.
-			bw.ProgressChanged += (s, _e) => Dispatcher.Invoke(() => DownloadProgress.Value = _e.ProgressPercentage);
+            if (round == 1) label1.Content = "Downloading update: " + convertedrev + " / " + convertedtotal;
+            else label1.Content = "Downloading Laugauge Pack: " + convertedrev + " / " + convertedtotal;
+        }
 
-			try
-			{
-				// Close Paisley Park if it's running.
-				var pp = Process.GetProcessesByName("FFXIVTool")[0];
-				// Close the mainwindow shutting down the process.
-				pp.CloseMainWindow();
-				// Try to wait for it to shut down gracefully.
-				if (!pp.WaitForExit(10000))
-				{
-					// Kill the process.
-					pp.Kill();
-				}
-			}
-			catch (Exception) { }
+        private void wc_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
+        {
+            sw.Reset();
+            string lang = CultureInfo.CurrentCulture.ToString();
 
-			// Temporary name.
-			var tempName = ".CMTU.old";
+            if (new FileInfo(outputUpdatePath).Length > 0)
+            {
+                Process[] processes = Process.GetProcessesByName("ConceptMatrix");
+                label1.Content = "Download Complete";
+                if (processes.Length > 0)
+                {
+                    if (MessageBox.Show("It will be closed to continue this update.", "ConceptMatrix is still running", MessageBoxButton.OKCancel, MessageBoxImage.Exclamation) == MessageBoxResult.OK)
+                    {
+                        label1.Content = "Deleting old files";
+                        foreach (Process p in processes)
+                            p.Kill();
+                        System.Threading.Thread.Sleep(5000);
+                    }
+                    else
+                    {
+                        this.Close();
+                        return;
+                    }
+                }
 
-			// Rename the updater file to allow for overwrite.
-			if (File.Exists(Path.Combine(Environment.CurrentDirectory, tempName)))
-				File.Delete(Path.Combine(Environment.CurrentDirectory, tempName));
-			File.Move(Path.Combine(Environment.CurrentDirectory, "ConceptMatrixUpdater.exe"), Path.Combine(Environment.CurrentDirectory, tempName));
+                while (processes.Length > 0)
+                {
+                    label1.Content = "Waiting for ConceptMatrix to close";
+                    processes = Process.GetProcessesByName("ConceptMatrix");
+                    System.Threading.Thread.Sleep(10);
+                }
 
-			// Run the worker.
-			bw.RunWorkerAsync(tPPZip);
+                label2.Opacity = 0;
+                label1.Content = "Deleting old files";
+                UpdaterBar.Value = 102;
+                TaskbarItemInfo.ProgressValue = UpdaterBar.Value / 106d;
+                try
+                {
+                    File.Delete(exepath + "\\ConceptMatrix.exe");
+                    File.Delete(exepath + "\\ex.json");
+                    File.Delete(exepath + "\\exview.json");
+                    File.Delete(exepath + "\\LICENSE.txt");
+                    File.Delete(exepath + "\\README.txt");
+                    File.Delete(exepath + "\\OffsetSettings.xml");
+                    Directory.Delete(exepath + "\\Definitions", true);
+                    Directory.Delete(exepath + "\\Update Files", true);
+                }
+                catch { }
 
-			bw.RunWorkerCompleted += (_, __) =>
-			{
-				// Start the tool.
-				Process.Start(Path.Combine(Environment.CurrentDirectory, "FFXIVTool.exe"));
+                label1.Content = "Installing new files";
+                UpdaterBar.Value = 104;
+                TaskbarItemInfo.ProgressValue = UpdaterBar.Value / 106d;
 
-				// Dispose of the worker.
-				bw.Dispose();
+                try
+                {
+                    Directory.CreateDirectory(exepath + "\\Update Files");
+                    ZipFile.ExtractToDirectory(outputUpdatePath, exepath + "\\Update Files");
+                }
+                catch (IOException) { }
 
-				// Shutdown the application we're done here.
-				Close();
-			};
-		}
+                try
+                {
+                    File.Delete(exepath + "\\version.txt");
+                    File.Delete(path + "\\version.txt");
+                }
+                catch { }
 
-		private void UnzipWorker(object sender, DoWorkEventArgs e)
-		{
-			// Unzip and overwrite all files.
-			using (var zip = ZipFile.Read(e.Argument as string))
-			{
-				for (var i = 0; i < zip.Count; i++)
-				{
-					zip[i].Extract(Environment.CurrentDirectory, ExtractExistingFileAction.OverwriteSilently);
-					bw.ReportProgress((i + 1) / zip.Count * 100);
-				}
-			}
-		}
+                string[] files = Directory.GetFiles(exepath + "\\Update Files");
+                string version = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion;
+                if (File.Exists(exepath + "\\Update Files\\ConceptMatrixUpdater.exe")
+                    && FileVersionInfo.GetVersionInfo(exepath + "\\Update Files\\ConceptMatrixUpdater.exe").FileVersion.CompareTo(version) != 0)
+                {
+                    App.Current.Shutdown();
+                    return;
+                }
+   
+                for (int i = files.Length - 1; i >= 0; i--)
+                {
+                    if (Path.GetFileNameWithoutExtension(files[i]) != "ConceptMatrixUpdater")
+                    {
+                        string tempDestPath = $"{exepath}\\{Path.GetFileName(files[i])}";
+                        if (File.Exists(tempDestPath))
+                        {
+                            File.Delete(tempDestPath);
+                        }
 
-		/// <summary>
-		/// Progress from webclient updates.
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void UpdateDownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-		{
-			DownloadProgress.Value = e.ProgressPercentage;
-		}
+                        File.Move(files[i], tempDestPath);
+                    }
+                }
+                Directory.Move(exepath + "\\Update Files\\Definitions", exepath + "\\Definitions");
 
-		/// <summary>
-		/// Clicking the no button.
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void OnNoClick(object sender, RoutedEventArgs e)
-		{
-			// Close the updater.
-			Application.Current.Shutdown();
-		}
-	}
+                string sstoolwinversion = FileVersionInfo.GetVersionInfo(exepath + "\\ConceptMatrix.exe").FileVersion;
+                if ((File.Exists(exepath + "\\ConceptMatrix.exe")) &&
+                    sstoolwinversion == newversion.Trim())
+                {
+                    label1.Content = $"ConceptMatrix has been updated to v{newversion}";
+                   // Directory.Delete(exepath + "\\Update Files", true);
+                   // Directory.Delete(exepath + "\\Updates", true);
+                }
+                else if (File.Exists(exepath + "\\ConceptMatrix.exe"))
+                {
+                    label1.Content = "Could not replace ConceptMatrix, please manually unzip";
+                }
+                else
+                    label1.Content = "Could not unpack zip, please manually unzip";
+
+                UpdaterBar.Value = 106;
+                TaskbarItemInfo.ProgressState = TaskbarItemProgressState.None;
+
+                if (autoLaunchXIV)
+                {
+                    label1.Content = "Launching ConceptMatrix soon";
+                    OpenXIVBTN.IsEnabled = false;
+                    Task.Delay(7500).ContinueWith((t) =>
+                    {
+                        AutoOpenXIV();
+                    });
+                }
+                else
+                {
+                    OpenXIVBTN.IsEnabled = true;
+                }
+            }
+            else if (!backup)
+            {
+                Uri url = new Uri($"https://github.com/imchillin/CMTool/releases/download/{newversion}/ConceptMatrix.zip");
+
+                sw.Start();
+                outputUpdatePath = Path.Combine(updatesFolder, $"ConceptMatrix.zip");
+                try { wc.DownloadFileAsync(url, outputUpdatePath); }
+                catch (Exception ex) { label1.Content = ex.Message; }
+                backup = true;
+            }
+            else
+            {
+                label1.Content = "Could not download update";
+                try
+                {
+                    File.Delete(exepath + "\\version.txt");
+                    File.Delete(path + "\\version.txt");
+                }
+                catch { }
+                OpenXIVBTN.IsEnabled = true;
+            }
+        }
+
+        private void DiscordBTN_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://discord.gg/hq3DnBa");
+        }
+
+        private void GithubBTN_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://github.com/imchillin/SSTool");
+        }
+
+        private void OpenXIVBTN_Click(object sender, RoutedEventArgs e)
+        {
+            if (File.Exists(exepath + "\\ConceptMatrix.exe"))
+                Process.Start(exepath + "\\ConceptMatrix.exe");
+            else
+                Process.Start(exepath);
+
+            App.OpeningXIV = true;
+            this.Close();
+        }
+
+        private void AutoOpenXIV()
+        {
+            if (File.Exists(exepath + "\\ConceptMatrix.exe"))
+                Process.Start(exepath + "\\ConceptMatrix.exe");
+            else
+                Process.Start(exepath);
+
+            App.OpeningXIV = true;
+            Dispatcher.BeginInvoke((Action)(() =>
+            {
+                this.Close();
+            }));
+        }
+    }
 }

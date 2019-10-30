@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29230.47
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.902
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConceptMatrix", "ConceptMatrix\ConceptMatrix.csproj", "{E226AAB7-5918-4E9F-B0EB-8D1AD9AC7BB9}"
 EndProject
@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotSquish", "lib\SaintCoina
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YamlDotNet", "lib\SaintCoinach\YamlDotNet\YamlDotNet.csproj", "{BF32DE1B-6276-4341-B212-F8862ADBBA7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConceptMatrixUpdater", "ConceptMatrixUpdater\ConceptMatrixUpdater.csproj", "{A19E57D4-2858-4C84-A916-E4591C8AFCD7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConceptMatrixUpdater", "ConceptMatrixUpdater\ConceptMatrixUpdater.csproj", "{67CF62F2-4EE4-4517-8826-5FD6DC5CEA6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,18 +77,18 @@ Global
 		{BF32DE1B-6276-4341-B212-F8862ADBBA7A}.Release-Unsigned|Any CPU.Build.0 = Release-Unsigned|Any CPU
 		{BF32DE1B-6276-4341-B212-F8862ADBBA7A}.Release-Unsigned|x64.ActiveCfg = Release-Unsigned|Any CPU
 		{BF32DE1B-6276-4341-B212-F8862ADBBA7A}.Release-Unsigned|x64.Build.0 = Release-Unsigned|Any CPU
-		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Debug|x64.ActiveCfg = Debug|x64
-		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Debug|x64.Build.0 = Debug|x64
-		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Release|x64.ActiveCfg = Release|x64
-		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Release|x64.Build.0 = Release|x64
-		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Release-Unsigned|Any CPU.ActiveCfg = Release|Any CPU
-		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Release-Unsigned|Any CPU.Build.0 = Release|Any CPU
-		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Release-Unsigned|x64.ActiveCfg = Release|x64
-		{A19E57D4-2858-4C84-A916-E4591C8AFCD7}.Release-Unsigned|x64.Build.0 = Release|x64
+		{67CF62F2-4EE4-4517-8826-5FD6DC5CEA6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67CF62F2-4EE4-4517-8826-5FD6DC5CEA6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67CF62F2-4EE4-4517-8826-5FD6DC5CEA6A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{67CF62F2-4EE4-4517-8826-5FD6DC5CEA6A}.Debug|x64.Build.0 = Debug|Any CPU
+		{67CF62F2-4EE4-4517-8826-5FD6DC5CEA6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67CF62F2-4EE4-4517-8826-5FD6DC5CEA6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67CF62F2-4EE4-4517-8826-5FD6DC5CEA6A}.Release|x64.ActiveCfg = Release|Any CPU
+		{67CF62F2-4EE4-4517-8826-5FD6DC5CEA6A}.Release|x64.Build.0 = Release|Any CPU
+		{67CF62F2-4EE4-4517-8826-5FD6DC5CEA6A}.Release-Unsigned|Any CPU.ActiveCfg = Release|Any CPU
+		{67CF62F2-4EE4-4517-8826-5FD6DC5CEA6A}.Release-Unsigned|Any CPU.Build.0 = Release|Any CPU
+		{67CF62F2-4EE4-4517-8826-5FD6DC5CEA6A}.Release-Unsigned|x64.ActiveCfg = Release|Any CPU
+		{67CF62F2-4EE4-4517-8826-5FD6DC5CEA6A}.Release-Unsigned|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
