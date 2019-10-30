@@ -34,7 +34,7 @@ build:
   project: Concept Matrix.sln
     
 after_build:
-  7z a CMTool.zip %APPVEYOR_BUILD_FOLDER%\ConceptMatrix\bin\%CONFIGURATION%\*.exe %APPVEYOR_BUILD_FOLDER%\ConceptMatrix\bin\%CONFIGURATION%\*.txt %APPVEYOR_BUILD_FOLDER%\ConceptMatrix\bin\%CONFIGURATION%\OffsetSettings.xml %APPVEYOR_BUILD_FOLDER%\FFXIVTool\bin\%CONFIGURATION%\ConceptMatrixUpdater.exe %APPVEYOR_BUILD_FOLDER%\ConceptMatrix\bin\%CONFIGURATION%\Definitions\
+  7z a CMTool.zip %APPVEYOR_BUILD_FOLDER%\ConceptMatrix\bin\%CONFIGURATION%\*.exe %APPVEYOR_BUILD_FOLDER%\ConceptMatrix\bin\%CONFIGURATION%\*.txt %APPVEYOR_BUILD_FOLDER%\ConceptMatrix\bin\%CONFIGURATION%\OffsetSettings.xml %APPVEYOR_BUILD_FOLDER%\ConceptMatrix\bin\%CONFIGURATION%\ConceptMatrixUpdater.exe %APPVEYOR_BUILD_FOLDER%\ConceptMatrix\bin\%CONFIGURATION%\Definitions\
     
 artifacts:
   - path: CMTool.zip
