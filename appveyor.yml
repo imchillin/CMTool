@@ -27,7 +27,7 @@ assembly_info:
 
 before_build:
   - git submodule update --init --recursive --remote
-  - nuget restore Concept Matrix.sln
+  - nuget restore "Concept Matrix.sln"
   - nuget restore lib/SaintCoinach/SaintCoinach.sln
   
 build:
