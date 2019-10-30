@@ -1,34 +1,53 @@
 configuration: Release
 
+# Don't build unless it's tagged
+# skip_non_tags: true
+
 image:
   - Visual Studio 2017
   
 cache:
   - packages -> **\packages.config
 
+# Get the version from the tag name (strips v from the start)
+init:
+  - ps: >-
+      if ($env:APPVEYOR_REPO_TAG -eq "true")
+      {
+          Update-AppveyorBuild -Version $env:APPVEYOR_REPO_TAG_NAME
+      }
+
+# Patch the Assembly Info file to have the version based on the tag name
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
+
 before_build:
   - git submodule update --init --recursive --remote
-  - nuget restore FFXIVTool.sln
+  - nuget restore Concept Matrix.sln
   - nuget restore lib/SaintCoinach/SaintCoinach.sln
   
 build:
-  project: FFXIVTool.sln
+  project: Concept Matrix.sln
     
 after_build:
-  7z a FFXIVTool.zip %APPVEYOR_BUILD_FOLDER%\FFXIVTool\bin\%CONFIGURATION%\*.exe %APPVEYOR_BUILD_FOLDER%\FFXIVTool\bin\%CONFIGURATION%\*.txt %APPVEYOR_BUILD_FOLDER%\FFXIVTool\bin\%CONFIGURATION%\OffsetSettings.xml %APPVEYOR_BUILD_FOLDER%\FFXIVTool\bin\%CONFIGURATION%\SSToolsUpdater.exe %APPVEYOR_BUILD_FOLDER%\FFXIVTool\bin\%CONFIGURATION%\Definitions\
+  7z a CMTool.zip %APPVEYOR_BUILD_FOLDER%\ConceptMatrix\bin\%CONFIGURATION%\*.exe %APPVEYOR_BUILD_FOLDER%\ConceptMatrix\bin\%CONFIGURATION%\*.txt %APPVEYOR_BUILD_FOLDER%\ConceptMatrix\bin\%CONFIGURATION%\OffsetSettings.xml %APPVEYOR_BUILD_FOLDER%\FFXIVTool\bin\%CONFIGURATION%\ConceptMatrixUpdater.exe %APPVEYOR_BUILD_FOLDER%\ConceptMatrix\bin\%CONFIGURATION%\Definitions\
     
 artifacts:
-  - path: FFXIVTool.zip
-    name: FFXIVTool
+  - path: CMTool.zip
+    name: CMTool
 
 deploy:
   tag: $(appveyor_repo_tag_name)
-  release: Screenshot Helper $(appveyor_repo_tag_name)
+  release: Concept Matrix $(appveyor_repo_tag_name)
   provider: GitHub
   draft: true
   auth_token:
     secure: O6Rsj+hoS5X7Q1u7TjtFwjRN53ohwjF8Mik/BpVidoefAag5FfpxoWqS5GTdJECG
-  artifact: FFXIVTool.zip
+  artifact: CMTool.zip
   on:
     branch: master
     appveyor_repo_tag: true
