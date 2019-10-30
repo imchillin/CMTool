@@ -494,7 +494,7 @@ namespace ConceptMatrix.Utility
                         item.Index = Parse.Key;
                         item.Name = Parse.Name;
                     //    item.ClassJobCategory = new List<ClassJobCategory>();
-                        item.ClassJobListStringName = Parse.ClassJobCategory.ToString();
+                    //    item.ClassJobListStringName = Parse.ClassJobCategory.ToString();
                         item.Type = Heh(Parse.ItemUICategory.Key);
                         if (Parse.ItemUICategory.Key == 11)
                         {

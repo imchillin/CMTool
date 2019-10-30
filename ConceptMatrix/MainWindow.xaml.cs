@@ -1143,7 +1143,7 @@ namespace ConceptMatrix
 
         private void DiscordButton_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://discord.gg/P9FWWAr");
+            Process.Start("https://discord.gg/4GJvaM");
         }
 
         private void SavePoint_Click(object sender, RoutedEventArgs e)
