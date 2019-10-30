@@ -3,7 +3,7 @@
 ------------------------------------------------------------------------------------------------------------------
 
 This is a special Branch of SSTools dubbed Concept Matrix (CMTools), maintained by Krisan Thyme.
-Includes in-development features from Krisan Thyme, including things not available in the official SSTools build.
+Includes in-development features from Krisan Thyme that are not available in the official SSTools branch.
 
 
      +-----------------------------------------------------+
@@ -12,6 +12,6 @@ Includes in-development features from Krisan Thyme, including things not availab
 
 [ Offical Twitter] -> https://twitter.com/KrisanThyme
 
-[ Discord] -> https://discord.gg/hq3DnBa
+[ Discord] -> https://discord.gg/4GJvaM
 
 [ Ko-Fi (Donate) ] -> https://ko-fi.com/krisanthyme
