@@ -20,7 +20,6 @@ using System.Net;
 using ConceptMatrix.Views;
 using WepTuple = System.Tuple<int, int, int, int>;
 using SaintCoinach;
-using System.Windows.Controls;
 
 namespace ConceptMatrix
 {
@@ -159,7 +158,7 @@ namespace ConceptMatrix
         }
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            Title = $"Concept Matrix v{version} (By: Krisan Thyme)";
+            Title = $"Concept Matrix v{version}";
             DataContext = new MainViewModel();
             var settings = SaveSettings.Default;
             var accentColor = settings.Accent;
