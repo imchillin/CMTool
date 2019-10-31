@@ -270,8 +270,23 @@ namespace ConceptMatrix.Views
             }
         }
 
+        public static bool CheckTerritoryList()
+        {
+            if (CharacterDetailsView._exdProvider.TerritoryTypes == null)
+            {
+                CharacterDetailsView._exdProvider.MakeTerritoryTypeList();
+                if (CharacterDetailsView._exdProvider.TerritoryTypes == null)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (!CheckTerritoryList()) return;
+
             int territory = MemoryManager.Instance.MemLib.readInt(MemoryManager.GetAddressString(MemoryManager.Instance.TerritoryAddress, Settings.Instance.Character.Territory));
 
             if (!CharacterDetailsView._exdProvider.TerritoryTypes.ContainsKey(territory))

@@ -251,15 +251,41 @@ namespace ConceptMatrix.Views
         {
             isUserInteraction = true;
         }
-
+        public static bool CheckCustomizeList(ExdCsvReader reader)
+        {
+            if (reader.CharaMakeFeatures == null)
+            {
+                reader.MakeCharaMakeFeatureList();
+                if (reader.CharaMakeFeatures == null)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        public static bool CheckCustomizeList2(ExdCsvReader reader)
+        {
+            if (reader.CharaMakeFeatures2 == null)
+            {
+                reader.MakeCharaMakeFeatureFacialList();
+                if (reader.CharaMakeFeatures2 == null)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         public void CharaMakeFeatureSelector(int tribe, int gender, ExdCsvReader reader)
         {
+
             if (DidUserInteract) return;
             if (tribe == 0)
             {
                 MessageBox.Show("You can't have Clan Set to None when using this!", "Oh no!");
                 return;
             }
+            if (!CheckCustomizeList(reader))
+                return;
             DidUserInteract = true;
             _tribe = tribe;
             _gender = gender;
@@ -275,6 +301,8 @@ namespace ConceptMatrix.Views
                 MessageBox.Show("You can't have Clan Set to None when using this!", "Oh no!");
                 return;
             }
+            if (!CheckCustomizeList(reader))
+                return;
             CheckIncluded.IsChecked = false;
             DidUserInteract = true;
             _tribe = tribe;
@@ -291,6 +319,8 @@ namespace ConceptMatrix.Views
                 MessageBox.Show("You can't have Clan Set to None when using this!", "Oh no!");
                 return;
             }
+            if (!CheckCustomizeList2(reader))
+                return;
             DidUserInteract = true;
             _tribe = tribe;
             _gender = gender;
@@ -535,6 +565,7 @@ namespace ConceptMatrix.Views
             }
             if (DidUserInteract) return;
             DidUserInteract = true;
+            if (!CheckCustomizeList(reader)) return;
             _tribe = tribe;
             _gender = gender;
             _reader = reader;

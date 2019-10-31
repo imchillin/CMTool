@@ -792,10 +792,9 @@ namespace ConceptMatrix.Views
 				SpecialControl.ClanBox.SelectedIndex = 2;
 			}
 		}
-
-		private void HairSelectButton_Click_1(object sender, RoutedEventArgs e)
+        private void HairSelectButton_Click_1(object sender, RoutedEventArgs e)
 		{
-			if (SpecialControl.IsOpen)
+            if (SpecialControl.IsOpen)
 			{
 				if (!SpecialControl.HairTab.IsSelected)
 				{
