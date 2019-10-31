@@ -615,7 +615,7 @@ namespace ConceptMatrix.Views
 		private void Emotexd(object sender, RoutedPropertyChangedEventArgs<double?> e)
 		{
 			if (EmoteBox.Value.HasValue)
-				if (EmoteBox.Value <= 7736) CharacterDetails.Emote.value = (int)EmoteBox.Value;
+				if (EmoteBox.Value <= 7756) CharacterDetails.Emote.value = (int)EmoteBox.Value;
 			EmoteBox.ValueChanged -= Emotexd;
 		}
 
@@ -792,10 +792,9 @@ namespace ConceptMatrix.Views
 				SpecialControl.ClanBox.SelectedIndex = 2;
 			}
 		}
-
-		private void HairSelectButton_Click_1(object sender, RoutedEventArgs e)
+        private void HairSelectButton_Click_1(object sender, RoutedEventArgs e)
 		{
-			if (SpecialControl.IsOpen)
+            if (SpecialControl.IsOpen)
 			{
 				if (!SpecialControl.HairTab.IsSelected)
 				{

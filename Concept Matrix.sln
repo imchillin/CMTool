@@ -4,11 +4,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.28307.902
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConceptMatrix", "ConceptMatrix\ConceptMatrix.csproj", "{E226AAB7-5918-4E9F-B0EB-8D1AD9AC7BB9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{67CF62F2-4EE4-4517-8826-5FD6DC5CEA6A} = {67CF62F2-4EE4-4517-8826-5FD6DC5CEA6A}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Release", "Release", "{92AFC387-0D61-4C2B-8450-436D5DF23097}"
 	ProjectSection(SolutionItems) = preProject
 		LICENSE.txt = LICENSE.txt
 		README.txt = README.txt
+		version.txt = version.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaintCoinach", "lib\SaintCoinach\SaintCoinach\SaintCoinach.csproj", "{8A7D65EB-3DE3-4631-B286-CC73A3126002}"

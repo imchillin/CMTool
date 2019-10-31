@@ -37,21 +37,21 @@
             <ComboBoxItem Content="Disciples of War or Magic"/>
             <ComboBoxItem Content="Disciple of the Hand"/>
             <ComboBoxItem Content="Disciple of the Land"/>
-            <ComboBoxItem Content="PLD"/>
-            <ComboBoxItem Content="WAR"/>
+            <ComboBoxItem Content="PLD" Tag="GLA"/>
+            <ComboBoxItem Content="WAR" Tag="MRD"/>
             <ComboBoxItem Content="DRK"/>
             <ComboBoxItem Content="GNB"/>
-            <ComboBoxItem Content="WHM"/>
-            <ComboBoxItem Content="SCH"/>
+            <ComboBoxItem Content="WHM" Tag="CNJ"/>
+            <ComboBoxItem Content="SCH" Tag="ACN"/>
             <ComboBoxItem Content="AST"/>
-            <ComboBoxItem Content="MNK"/>
-            <ComboBoxItem Content="DRG"/>
-            <ComboBoxItem Content="NIN"/>
+            <ComboBoxItem Content="MNK" Tag="PGL"/>
+            <ComboBoxItem Content="DRG" Tag="LNC"/>
+            <ComboBoxItem Content="NIN" Tag="ROG"/>
             <ComboBoxItem Content="SAM"/>
-            <ComboBoxItem Content="BLM"/>
-            <ComboBoxItem Content="SMN"/>
+            <ComboBoxItem Content="BLM" Tag="THM"/>
+            <ComboBoxItem Content="SMN" Tag="ACN"/>
             <ComboBoxItem Content="RDM"/>
-            <ComboBoxItem Content="BRD"/>
+            <ComboBoxItem Content="BRD" Tag="ARC"/>
             <ComboBoxItem Content="MCH"/>
             <ComboBoxItem Content="DNC"/>
             <ComboBoxItem Content="CRP"/>

@@ -39,25 +39,25 @@ namespace ConceptMatrixUpdater
             {
 
                 string version = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion;
-                if (!OpeningXIV && File.Exists(exepath + "\\Update Files\\SSToolsUpdater.exe")
-                    && FileVersionInfo.GetVersionInfo(exepath + "\\Update Files\\SSToolsUpdater.exe").FileVersion.CompareTo(version) != 0)
+                if (!OpeningXIV && File.Exists(exepath + "\\Update Files\\ConceptMatrixUpdater.exe")
+                    && FileVersionInfo.GetVersionInfo(exepath + "\\Update Files\\ConceptMatrixUpdater.exe").FileVersion.CompareTo(version) != 0)
                 {
-                    File.Move(exepath + "\\Update Files\\SSToolsUpdater.exe", exepath + "\\SSToolsUpdater NEW.exe");
+                    File.Move(exepath + "\\Update Files\\ConceptMatrixUpdater.exe", exepath + "\\ConceptMatrixUpdater NEW.exe");
                     Directory.Delete(exepath + "\\Update Files", true);
                     StreamWriter w = new StreamWriter(exepath + "\\UpdateReplacer.bat");
                     w.WriteLine("@echo off"); // Turn off echo
                     w.WriteLine("@echo Attempting to replace updater, please wait...");
                     w.WriteLine("@ping -n 4 127.0.0.1 > nul"); //Its silly but its the most compatible way to call for a timeout in a batch file, used to give the main updater time to cleanup and exit.
-                    w.WriteLine("@del \"" + exepath + "\\SSToolsUpdater.exe" + "\"");
-                    w.WriteLine("@ren \"" + exepath + "\\SSToolsUpdater NEW.exe" + "\" \"SSToolsUpdater.exe\"");
-                    w.WriteLine("@start " + exepath + "\\SSToolsUpdater.exe"); // Attempt to delete myself without opening a time paradox.
+                    w.WriteLine("@del \"" + exepath + "\\ConceptMatrixUpdater.exe" + "\"");
+                    w.WriteLine("@ren \"" + exepath + "\\ConceptMatrixUpdater NEW.exe" + "\" \"ConceptMatrixUpdater.exe\"");
+                    w.WriteLine("@start " + exepath + "\\ConceptMatrixUpdater.exe"); // Attempt to delete myself without opening a time paradox.
                     w.WriteLine("@DEL \"%~f0\"&exit /b"); // Attempt to delete myself without opening a time paradox.
                     w.Close();
 
                     Process.Start(exepath + "\\UpdateReplacer.bat");
                 }
-                else if (File.Exists(exepath + "\\SSToolsUpdater NEW.exe"))
-                    File.Delete(exepath + "\\SSToolsUpdater NEW.exe");
+                else if (File.Exists(exepath + "\\ConceptMatrixUpdater NEW.exe"))
+                    File.Delete(exepath + "\\ConceptMatrixUpdater NEW.exe");
                 if (Directory.Exists(exepath + "\\Update Files"))
                     Directory.Delete(exepath + "\\Update Files", true);
                 if (Directory.Exists(exepath + "\\Updates"))

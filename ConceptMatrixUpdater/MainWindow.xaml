@@ -13,12 +13,12 @@
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="FFXIVTool's Updater" ResizeMode="CanMinimize" Height="444.5" Width="637" Icon="Resources/ffxivmeteorlogo2.ico">
+        Title="ConceptMatrixUpdater's Updater" ResizeMode="CanMinimize" Height="444.5" Width="637" Icon="Resources/ffxivmeteorlogo2.ico">
     <Window.TaskbarItemInfo>
         <TaskbarItemInfo ProgressValue="0" ProgressState="Normal"/>
     </Window.TaskbarItemInfo>
     <Grid>
-        <Button x:Name="OpenXIVBTN" Content="Open FFXIVTool" HorizontalAlignment="Left" Margin="482,373,0,0" VerticalAlignment="Top" Width="139" IsEnabled="False" Background="#FF714E9C" Click="OpenXIVBTN_Click"/>
+        <Button x:Name="OpenXIVBTN" Content="Open CMTool" HorizontalAlignment="Left" Margin="482,373,0,0" VerticalAlignment="Top" Width="139" IsEnabled="False" Background="#FF714E9C" Click="OpenXIVBTN_Click"/>
         <ProgressBar x:Name="UpdaterBar" HorizontalAlignment="Left" Height="25" Margin="10,36,0,0" VerticalAlignment="Top" Width="611" Maximum="106" Foreground="#FF62309F" BorderBrush="#FF714E9C" Background="#FF714E9C"/>
         <Label x:Name="label1" Content="Fetching Download" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label x:Name="label2" Content="time left" HorizontalAlignment="Left" Margin="263,5,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Right" Opacity="0" FontSize="14"/>

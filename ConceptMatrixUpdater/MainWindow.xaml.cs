@@ -22,7 +22,7 @@ namespace ConceptMatrixUpdater
     public partial class MainWindow : MetroWindow
     {
         WebClient wc = new WebClient(), subwc = new WebClient();
-        protected string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\FFXIVTool";
+        protected string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\ConceptMatrix";
         string exepath = Directory.GetParent(Assembly.GetExecutingAssembly().Location).FullName;
         string version = "0", newversion = "0";
         bool downloading = false;
@@ -55,7 +55,7 @@ namespace ConceptMatrixUpdater
                     for (int i = 0, arlen = files.Length; i < arlen; i++)
                     {
                         string tempFile = Path.GetFileName(files[i]);
-                        if ("ConceptMatrix.zip" == tempFile)
+                        if ("CMTool.zip" == tempFile)
                         {
                             File.Delete(files[i]);
                         }
@@ -86,7 +86,7 @@ namespace ConceptMatrixUpdater
                 }
                 else
                 {
-                    Uri urlv = new Uri("https://raw.githubusercontent.com/imchillin/SSTool/master/version.txt");
+                    Uri urlv = new Uri("https://raw.githubusercontent.com/imchillin/CMTool/master/version.txt");
                     WebClient wc2 = new WebClient();
                     downloading = true;
                     subwc.DownloadFileAsync(urlv, exepath + "\\version.txt");
@@ -96,9 +96,9 @@ namespace ConceptMatrixUpdater
 
                 if (!downloading && version.Replace(',', '.').CompareTo(newversion) != 0)
                 {
-                    Uri url = new Uri($"https://github.com/imchillin/SSTool/releases/download/{newversion}/FFXIVTool.zip");
+                    Uri url = new Uri($"https://github.com/imchillin/CMTool/releases/download/{newversion}/CMTool.zip");
                     sw.Start();
-                    outputUpdatePath = Path.Combine(updatesFolder, $"ConceptMatrix.zip");
+                    outputUpdatePath = Path.Combine(updatesFolder, $"CMTool.zip");
                     try { wc.DownloadFileAsync(url, outputUpdatePath); }
                     catch (Exception e) { label1.Content = e.Message; }
                     wc.DownloadFileCompleted += wc_DownloadFileCompleted;
@@ -137,9 +137,9 @@ namespace ConceptMatrixUpdater
             File.Delete(exepath + "\\version.txt");
             if (version.Replace(',', '.').CompareTo(newversion) != 0)
             {
-                Uri url = new Uri($"https://github.com/imchillin/CMTool/releases/download/{newversion}/ConceptMatrix.zip");
+                Uri url = new Uri($"https://github.com/imchillin/CMTool/releases/download/{newversion}/CMTool.zip");
                 sw.Start();
-                outputUpdatePath = Path.Combine(updatesFolder, $"ConceptMatrix.zip");
+                outputUpdatePath = Path.Combine(updatesFolder, $"CMTool.zip");
                 try { wc.DownloadFileAsync(url, outputUpdatePath); }
                 catch (Exception ec) { label1.Content = ec.Message; }
                 wc.DownloadFileCompleted += wc_DownloadFileCompleted;
@@ -330,10 +330,10 @@ namespace ConceptMatrixUpdater
             }
             else if (!backup)
             {
-                Uri url = new Uri($"https://github.com/imchillin/CMTool/releases/download/{newversion}/ConceptMatrix.zip");
+                Uri url = new Uri($"https://github.com/imchillin/CMTool/releases/download/{newversion}/CMTool.zip");
 
                 sw.Start();
-                outputUpdatePath = Path.Combine(updatesFolder, $"ConceptMatrix.zip");
+                outputUpdatePath = Path.Combine(updatesFolder, $"CMTool.zip");
                 try { wc.DownloadFileAsync(url, outputUpdatePath); }
                 catch (Exception ex) { label1.Content = ex.Message; }
                 backup = true;
@@ -358,7 +358,7 @@ namespace ConceptMatrixUpdater
 
         private void GithubBTN_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://github.com/imchillin/SSTool");
+            Process.Start("https://github.com/imchillin/CMTool");
         }
 
         private void OpenXIVBTN_Click(object sender, RoutedEventArgs e)
