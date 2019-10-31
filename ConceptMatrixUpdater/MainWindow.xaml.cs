@@ -22,7 +22,7 @@ namespace ConceptMatrixUpdater
     public partial class MainWindow : MetroWindow
     {
         WebClient wc = new WebClient(), subwc = new WebClient();
-        protected string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\FFXIVTool";
+        protected string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\ConceptMatrix";
         string exepath = Directory.GetParent(Assembly.GetExecutingAssembly().Location).FullName;
         string version = "0", newversion = "0";
         bool downloading = false;
@@ -86,7 +86,7 @@ namespace ConceptMatrixUpdater
                 }
                 else
                 {
-                    Uri urlv = new Uri("https://raw.githubusercontent.com/imchillin/SSTool/master/version.txt");
+                    Uri urlv = new Uri("https://raw.githubusercontent.com/imchillin/CMTool/master/version.txt");
                     WebClient wc2 = new WebClient();
                     downloading = true;
                     subwc.DownloadFileAsync(urlv, exepath + "\\version.txt");
@@ -96,7 +96,7 @@ namespace ConceptMatrixUpdater
 
                 if (!downloading && version.Replace(',', '.').CompareTo(newversion) != 0)
                 {
-                    Uri url = new Uri($"https://github.com/imchillin/SSTool/releases/download/{newversion}/FFXIVTool.zip");
+                    Uri url = new Uri($"https://github.com/imchillin/CMTool/releases/download/{newversion}/ConceptMatrix.zip");
                     sw.Start();
                     outputUpdatePath = Path.Combine(updatesFolder, $"ConceptMatrix.zip");
                     try { wc.DownloadFileAsync(url, outputUpdatePath); }
@@ -358,7 +358,7 @@ namespace ConceptMatrixUpdater
 
         private void GithubBTN_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://github.com/imchillin/SSTool");
+            Process.Start("https://github.com/imchillin/CMTool");
         }
 
         private void OpenXIVBTN_Click(object sender, RoutedEventArgs e)
