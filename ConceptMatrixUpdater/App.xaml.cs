@@ -14,7 +14,7 @@ namespace ConceptMatrixUpdater
 		/// <param name="e"></param>
 		private void Application_Startup(object sender, StartupEventArgs e)
 		{
-			// Create MainWindow instance.
+			// Create MainWindow.
 			var window = new MainWindow();
 
 			// Loop over the arguments.
@@ -35,6 +35,9 @@ namespace ConceptMatrixUpdater
 
 			// Display the MainWindow.
 			window.Show();
+
+			// Initialize the update process.
+			window.Initialize();
 		}
 	}
 }

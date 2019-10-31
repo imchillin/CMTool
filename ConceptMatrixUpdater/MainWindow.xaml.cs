@@ -15,7 +15,7 @@ namespace ConceptMatrixUpdater
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
-	public partial class MainWindow : MetroWindow
+	public partial class MainWindow : MetroWindow, INotifyPropertyChanged
 	{
 		// Constants for the tool to make it easier to update and swap out.
 		private const string ToolBin = "ConceptMatrix";
@@ -30,10 +30,12 @@ namespace ConceptMatrixUpdater
 		public string HTML { get; set; }
 		public int ProgressValue { get; set; }
 
-		private readonly JObject json;
+		private JObject json;
 		private readonly string temp = Path.Combine(Path.GetTempPath(), ToolBin);
-		public bool AlertUpToDate = false;
+		public bool AlertUpToDate = true;
 		public bool ForceCheckUpdate = false;
+
+		public event PropertyChangedEventHandler PropertyChanged;
 
 		public MainWindow()
 		{
@@ -44,7 +46,10 @@ namespace ConceptMatrixUpdater
 
 			// Set data context to this.
 			DataContext = this;
+		}
 
+		public void Initialize()
+		{
 			// Get the current version of the application.
 			var result = Version.TryParse(FileVersionInfo.GetVersionInfo(Path.Combine(Environment.CurrentDirectory, $"{ToolBin}.exe")).FileVersion, out Version CurrentVersion);
 			if (!result)
@@ -86,7 +91,7 @@ namespace ConceptMatrixUpdater
 							// Set the update string
 							StatusLabel = $"{ToolName} {releaseVersion.VersionString()} is now available, you have {CurrentVersion.VersionString()}. Would you like to download it now?";
 							// Set HTML in the window.
-							HTML = "<style>body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;margin:10px 20px;padding:0;font-size:12px;}ul{margin:0;padding:0;list-style-position:inside;}</style>" + html;
+							HTML = "<style>body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;margin:8px 10px;padding:0;font-size:12px;}ul{margin:0;padding:0;list-style-position:inside;}</style>" + html;
 						}
 						else
 						{
@@ -94,7 +99,6 @@ namespace ConceptMatrixUpdater
 							if (AlertUpToDate)
 								MessageBox.Show("You're up to date!", UpdaterName, MessageBoxButton.OK, MessageBoxImage.Information);
 
-							// Close the window.
 							Close();
 						}
 					}
@@ -112,6 +116,9 @@ namespace ConceptMatrixUpdater
 					{
 						// Visit the latest releases page on GitHub to download the latest version.
 						Process.Start($"https://github.com/{GithubRepo}/releases/latest");
+
+						// Close the updater.
+						Close();
 					}
 				}
 			}
