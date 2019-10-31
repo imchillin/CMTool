@@ -152,6 +152,9 @@ namespace ConceptMatrixUpdater
 					if (File.Exists(tZip))
 						File.Delete(tZip);
 
+					// Update status label.
+					StatusLabel = "Downloading update...";
+
 					// Download the file. 
 					wc.DownloadFileAsync(new Uri(json["assets"][0]["browser_download_url"].Value<string>()), tZip);
 
@@ -168,10 +171,10 @@ namespace ConceptMatrixUpdater
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
+		private void DownloadFileCompleted(object sender, AsyncCompletedEventArgs _)
 		{
 			// Set status label to inform the download is complete.
-			StatusLabel = "Download complete! Unzipping files...";
+			StatusLabel = "Unzipping files...";
 
 			// Temporary zip path.
 			var tZip = Path.Combine(temp, App.ZipName);
@@ -186,7 +189,7 @@ namespace ConceptMatrixUpdater
 			// Add the work loop.
 			bw.DoWork += UnzipWorker;
 			// Add the progress changed listener.
-			bw.ProgressChanged += (s, _e) => Dispatcher.Invoke(() => DownloadProgress.Value = _e.ProgressPercentage);
+			bw.ProgressChanged += (__, e) => Dispatcher.Invoke(() => DownloadProgress.Value = e.ProgressPercentage);
 
 			try
 			{
@@ -217,13 +220,13 @@ namespace ConceptMatrixUpdater
 			bw.RunWorkerAsync(tZip);
 
 			// Worker is completed.
-			bw.RunWorkerCompleted += (_, __) =>
+			bw.RunWorkerCompleted += async (__, ___) =>
 			{
 				// Update label for the unzip completion and tool startup.
-				StatusLabel = $"Unzip complete! Starting {App.ToolName}";
+				StatusLabel = $"Update complete! Starting {App.ToolName}...";
 
 				// Wait 5 seconds before doing anything.
-				Task.Delay(5000);
+				await Task.Delay(5000);
 
 				// Start the tool.
 				Process.Start(Path.Combine(Environment.CurrentDirectory, $"{App.ToolBin}.exe"));
