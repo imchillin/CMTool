@@ -2,58 +2,39 @@
 
 namespace ConceptMatrixUpdater
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App : Application
-    {
-        string exepath = Directory.GetParent(Assembly.GetExecutingAssembly().Location).FullName;
-        public static bool OpeningXIV;
-        private void Application_Startup(object sender, StartupEventArgs e)
-        {
-            MainWindow mwd = new MainWindow();
-            for (int i = 0, arlen = e.Args.Length; i < arlen; i++)
-            {
-                string temp = e.Args[i];
-                if (temp.Contains("-skipLang"))
-                    mwd.downloadLang = false;
-                else if (temp.Equals("-autolaunch"))
-                    mwd.autoLaunchXIV = true;
-            }
+	/// <summary>
+	/// Interaction logic for App.xaml
+	/// </summary>
+	public partial class App : Application
+	{
+		/// <summary>
+		/// Application startup event.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void Application_Startup(object sender, StartupEventArgs e)
+		{
+			// Create MainWindow instance.
+			var window = new MainWindow();
 
-            mwd.Show();
-        }
-        public App()
-        {
-            //Console.WriteLine(CultureInfo.CurrentCulture);
-            this.Exit += (s, e) =>
-            {
+			// Loop over the arguments.
+			foreach (var arg in e.Args)
+			{
+				// Used in the tool, avoids the "Up to date" message.
+				if (arg.Contains("--checkUpdate"))
+					window.AlertUpToDate = false;
+				// Force an update even if the tool is up to date.
+				if (arg.Contains("--forceUpdate"))
+					window.ForceCheckUpdate = true;
+			}
 
-                string version = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion;
-                if (!OpeningXIV && File.Exists(exepath + "\\Update Files\\ConceptMatrixUpdater.exe")
-                    && FileVersionInfo.GetVersionInfo(exepath + "\\Update Files\\ConceptMatrixUpdater.exe").FileVersion.CompareTo(version) != 0)
-                {
-                    File.Move(exepath + "\\Update Files\\ConceptMatrixUpdater.exe", exepath + "\\ConceptMatrixUpdater NEW.exe");
-                    Directory.Delete(exepath + "\\Update Files", true);
-                    StreamWriter w = new StreamWriter(exepath + "\\UpdateReplacer.bat");
-                    w.WriteLine("@echo off"); // Turn off echo
-                    w.WriteLine("@echo Attempting to replace updater, please wait...");
-                    w.WriteLine("@ping -n 4 127.0.0.1 > nul"); //Its silly but its the most compatible way to call for a timeout in a batch file, used to give the main updater time to cleanup and exit.
-                    w.WriteLine("@del \"" + exepath + "\\ConceptMatrixUpdater.exe" + "\"");
-                    w.WriteLine("@ren \"" + exepath + "\\ConceptMatrixUpdater NEW.exe" + "\" \"ConceptMatrixUpdater.exe\"");
-                    w.WriteLine("@start " + exepath + "\\ConceptMatrixUpdater.exe"); // Attempt to delete myself without opening a time paradox.
-                    w.WriteLine("@DEL \"%~f0\"&exit /b"); // Attempt to delete myself without opening a time paradox.
-                    w.Close();
+#if DEBUG
+			// Force check update while in debug.
+			window.ForceCheckUpdate = true;
+#endif
 
-                    Process.Start(exepath + "\\UpdateReplacer.bat");
-                }
-                else if (File.Exists(exepath + "\\ConceptMatrixUpdater NEW.exe"))
-                    File.Delete(exepath + "\\ConceptMatrixUpdater NEW.exe");
-                if (Directory.Exists(exepath + "\\Update Files"))
-                    Directory.Delete(exepath + "\\Update Files", true);
-                if (Directory.Exists(exepath + "\\Updates"))
-                    Directory.Delete(exepath + "\\Updates", true);
-            };
-        }
-    }
+			// Display the MainWindow.
+			window.Show();
+		}
+	}
 }

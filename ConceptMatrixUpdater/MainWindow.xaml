@@ -8,7 +8,7 @@
 		xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="Concept Matrix Updater"
-        Width="640"
+        Width="657"
         Height="350"
         ResizeMode="NoResize"
         SizeToContent="WidthAndHeight"
@@ -19,7 +19,7 @@
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
 		Icon="cmupdater-icon.ico">
 	<StackPanel Orientation="Horizontal">
-        <Image Margin="0,20,10,0" Width="100" Height="100" VerticalAlignment="Top" Source="/ConceptMatrixUpdater;component/cmupdater-largeicon.ico" />
+        <Image Margin="10,20,20,0" Width="80" Height="80" VerticalAlignment="Top" Source="/ConceptMatrixUpdater;component/cmupdater-largeicon.ico" />
 		<StackPanel Margin="-12,10,10,10" Width="530">
 			<Label Content="A new version of Concept Matrix is available!" FontWeight="Bold" FontSize="14" />
 			<Label Content="{Binding UpdateString, FallbackValue='Would you like to download it now?'}" />
@@ -30,7 +30,7 @@
 			</Border>
 			<DockPanel>
 				<StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-					<Button Style="{DynamicResource MaterialDesignFlatButton}" Margin="0 0 2 0" Padding="20 2" Click="OnNoClick">No</Button>
+					<Button Style="{DynamicResource MaterialDesignFlatButton}" Margin="0 0 2 0" Padding="20 2" Click="OnNoClick">No thanks</Button>
 					<Button Margin="10 0 0 0" Padding="20 2" Click="OnInstallClick">Install Update</Button>
 				</StackPanel>
 			</DockPanel>
