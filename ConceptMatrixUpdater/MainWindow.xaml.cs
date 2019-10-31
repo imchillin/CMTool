@@ -48,7 +48,7 @@ namespace ConceptMatrixUpdater
 			DataContext = this;
 		}
 
-		public void Initialize()
+		public bool Initialize()
 		{
 			// Get the current version of the application.
 			var result = Version.TryParse(FileVersionInfo.GetVersionInfo(Path.Combine(Environment.CurrentDirectory, $"{ToolBin}.exe")).FileVersion, out Version CurrentVersion);
@@ -99,7 +99,8 @@ namespace ConceptMatrixUpdater
 							if (AlertUpToDate)
 								MessageBox.Show("You're up to date!", UpdaterName, MessageBoxButton.OK, MessageBoxImage.Information);
 
-							Close();
+							// Do not show.
+							return false;
 						}
 					}
 				}
@@ -117,11 +118,13 @@ namespace ConceptMatrixUpdater
 						// Visit the latest releases page on GitHub to download the latest version.
 						Process.Start($"https://github.com/{GithubRepo}/releases/latest");
 
-						// Close the updater.
-						Close();
+						// Do not show.
+						return false;
 					}
 				}
 			}
+
+			return true;
 		}
 
 		/// <summary>

@@ -33,11 +33,17 @@ namespace ConceptMatrixUpdater
 			window.ForceCheckUpdate = true;
 #endif
 
-			// Display the MainWindow.
-			window.Show();
-
 			// Initialize the update process.
-			window.Initialize();
+			if (window.Initialize())
+			{
+				// Display the MainWindow.
+				window.Show();
+			}
+			else
+			{
+				// Shut down the updater.
+				Current.Shutdown();
+			}
 		}
 	}
 }
