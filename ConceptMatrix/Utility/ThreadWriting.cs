@@ -2119,12 +2119,12 @@ namespace ConceptMatrix.Utility
                     }
                     if (CharacterDetails.Emote.freeze)
                     {
-                        if (CharacterDetails.Emote.value > 7736) CharacterDetails.Emote.value = 7736;
+                        if (CharacterDetails.Emote.value > 7756) CharacterDetails.Emote.value = 7756;
                         m.writeBytes(GAS(c.Emote), CharacterDetails.Emote.GetBytes());
                     }
                     if (CharacterDetails.EmoteOld.freeze)
                     {
-                        if (CharacterDetails.EmoteOld.value > 7736) CharacterDetails.EmoteOld.value = 7736;
+                        if (CharacterDetails.EmoteOld.value > 7756) CharacterDetails.EmoteOld.value = 7756;
                         m.writeBytes(GAS(c.EmoteOld), CharacterDetails.EmoteOld.GetBytes());
                     }
                     Thread.Sleep(9);
