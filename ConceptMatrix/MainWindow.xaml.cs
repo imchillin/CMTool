@@ -51,7 +51,7 @@ namespace ConceptMatrix
                     string xmlStr;
                     using (var wc = new WebClient())
                     {
-                        xmlStr = wc.DownloadString(@"https://raw.githubusercontent.com/imchillin/CMTool/master/ConceptMatrix/OffsetSettings.xml");
+                        xmlStr = wc.DownloadString(@"https://raw.githubusercontent.com/" + App.GithubRepo + "/master/" + App.ToolName + "/OffsetSettings.xml");
                     }
                     var xmlDoc = new System.Xml.XmlDocument();
                     xmlDoc.LoadXml(xmlStr);
@@ -59,7 +59,7 @@ namespace ConceptMatrix
                 }
                 catch
                 {
-                    MessageBox.Show("Unable to connect to the remote server - No connection could be made because the target machine actively refused it! \n If you wish to pursue using this application please download an updated OffsetSettings via discord.", "Oh no!");
+                    MessageBox.Show("Unable to connect to the remote server. No connection could be made because the target machine actively refused it! \n If you wish to pursue using this application please download an updated OffsetSettings via Discord.", App.ToolName, MessageBoxButton.OK, MessageBoxImage.Error);
                     Close();
                     return;
                 }
@@ -102,19 +102,16 @@ namespace ConceptMatrix
             InitializeComponent();
         }
 
-        private void UpdateProgram()
+        private void UpdateProgram(bool alertWhenUpToDate = false)
         {
             ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
-
-            // Delete the old updater file.
-            if (File.Exists(".CMTU.old"))
-                File.Delete(".CMTU.old");
             try
             {
                 var proc = new Process();
-                proc.StartInfo.FileName = Path.Combine(Environment.CurrentDirectory, "ConceptMatrixUpdater.exe");
+                proc.StartInfo.FileName = Path.Combine(Environment.CurrentDirectory, $"{App.UpdaterBin}.exe");
                 proc.StartInfo.UseShellExecute = true;
                 proc.StartInfo.Verb = "runas";
+				proc.StartInfo.Arguments = alertWhenUpToDate ? "" : "--checkUpdate";
                 proc.Start();
                 proc.WaitForExit();
                 proc.Dispose();
@@ -123,7 +120,7 @@ namespace ConceptMatrix
             {
                 var result = MessageBox.Show(
                     "Couldn't run the updater. Would you like to visit the releases page to check for a new update manually?",
-                    "Concept Matrix",
+                    App.ToolName,
                     MessageBoxButton.YesNo,
                     MessageBoxImage.Error
                 );
@@ -131,24 +128,11 @@ namespace ConceptMatrix
                 // Launch the web browser to the latest release.
                 if (result == MessageBoxResult.Yes)
                 {
-                    Process.Start("https://github.com/KrisanThyme/CMTool/releases/latest");
+                    Process.Start($"https://github.com/{App.GithubRepo}/releases/latest");
                 }
             }
         }
 
-        public bool AdminNeeded()
-        {
-            try
-            {
-                File.WriteAllText(exepath + "\\test.txt", "test");
-                File.Delete(exepath + "\\test.txt");
-                return false;
-            }
-            catch (UnauthorizedAccessException)
-            {
-                return true;
-            }
-        }
         public static ImageSource IconToImageSource(System.Drawing.Icon icon)
         {
             return Imaging.CreateBitmapSourceFromHIcon(
@@ -158,7 +142,7 @@ namespace ConceptMatrix
         }
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            Title = $"Concept Matrix v{version}";
+            Title = $"{App.ToolName} v{version}";
             DataContext = new MainViewModel();
             var settings = SaveSettings.Default;
             var accentColor = settings.Accent;
@@ -170,9 +154,9 @@ namespace ConceptMatrix
             this.Topmost = settings.TopApp;
 			// toggle status
 			(DataContext as MainViewModel).ToggleStatus(settings.TopApp);
-	        //CharacterDetailsView._exdProvider.MakeCharaMakeFeatureList();
-           // CharacterDetailsView._exdProvider.MakeCharaMakeFeatureFacialList();
-       //     CharacterDetailsView._exdProvider.MakeTerritoryTypeList();
+	        // CharacterDetailsView._exdProvider.MakeCharaMakeFeatureList();
+            // CharacterDetailsView._exdProvider.MakeCharaMakeFeatureFacialList();
+            // CharacterDetailsView._exdProvider.MakeTerritoryTypeList();
         }
 
         private void CharacterRefreshButton_Click(object sender, RoutedEventArgs e)
@@ -236,14 +220,15 @@ namespace ConceptMatrix
 
         private void TwitterButton_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://twitter.com/ffxivsstool");
+            Process.Start($"https://twitter.com/{App.TwitterHandle}");
         }
+
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             CurrentlySaving = true;
             if (SaveSettings.Default.WindowsExplorer)
             {
-                string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "CMTool", "Saves");
+                string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Saves");
                 if (!Directory.Exists(path)) { System.IO.Directory.CreateDirectory(path); }
                 SaveFileDialog dig = new SaveFileDialog();
                 dig.Filter = "Json File(*.json)|*.json";
@@ -268,7 +253,7 @@ namespace ConceptMatrix
             }
             else
             {
-                string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "CMTool", "Saves");
+                string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Saves");
                 if (!Directory.Exists(path)) { System.IO.Directory.CreateDirectory(path); }
                 var c = new Windows.GearSave("Save Character Save", "Write Character Save name here...");
                 c.Owner = Application.Current.MainWindow;
@@ -318,7 +303,7 @@ namespace ConceptMatrix
             else
             {
                 OpenFileDialog dig = new OpenFileDialog();
-                string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "CMTool", "Gearsets");
+                string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Gearsets");
                 if (!Directory.Exists(path)) { System.IO.Directory.CreateDirectory(path);  }
                 dig.InitialDirectory = path;
                 dig.Filter = "Json File(*.json)|*.json";
@@ -477,7 +462,7 @@ namespace ConceptMatrix
             else
             {
                 OpenFileDialog dig = new OpenFileDialog();
-                dig.InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "CMTool", "Saves");
+                dig.InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Saves");
                 dig.Filter = "Json File(*.json)|*.json";
                 dig.DefaultExt = ".json";
                 if (dig.ShowDialog() == true)
@@ -504,7 +489,7 @@ namespace ConceptMatrix
             else
             {
                 OpenFileDialog dig = new OpenFileDialog();
-                dig.InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "CMTool", "Saves");
+                dig.InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Saves");
                 dig.Filter = "Json File(*.json)|*.json";
                 dig.DefaultExt = ".json";
                 if (dig.ShowDialog() == true)
@@ -531,7 +516,7 @@ namespace ConceptMatrix
             else
             {
                 OpenFileDialog dig = new OpenFileDialog();
-                dig.InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "CMTool", "Saves");
+                dig.InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Saves");
                 dig.Filter = "Json File(*.json)|*.json";
                 dig.DefaultExt = ".json";
                 if (dig.ShowDialog() == true)
@@ -998,28 +983,25 @@ namespace ConceptMatrix
 
 		private void AlwaysOnTop_Click(object sender, RoutedEventArgs e)
         {
-            if ((bool)SaveSettings.Default.TopApp == false)
+            if (SaveSettings.Default.TopApp == false)
             {
                 SaveSettings.Default.TopApp = true;
-             //   Properties.Settings.Default.Save();
-                this.Topmost = true;
+                // Properties.Settings.Default.Save();
+                Topmost = true;
 				(DataContext as MainViewModel).ToggleStatus(true);
             }
             else
             {
                 SaveSettings.Default.TopApp = false;
-            //    Properties.Settings.Default.Save();
-                this.Topmost = false;
+                // Properties.Settings.Default.Save();
+                Topmost = false;
 				(DataContext as MainViewModel).ToggleStatus(false);
 			}
         }
 
-        private void UpdateButton_Click(object sender, RoutedEventArgs e)
-        {
-            ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
-        }
+        private void UpdateButton_Click(object sender, RoutedEventArgs e) => UpdateProgram(true);
 
-        private void GposeButton_Checked(object sender, RoutedEventArgs e)
+		private void GposeButton_Checked(object sender, RoutedEventArgs e)
         {
             CharacterRefreshButton.IsEnabled = false;
 
@@ -1142,7 +1124,7 @@ namespace ConceptMatrix
 
         private void DiscordButton_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://discord.gg/hq3DnBa");
+            Process.Start($"https://discord.gg/{App.DiscordCode}");
         }
 
         private void SavePoint_Click(object sender, RoutedEventArgs e)

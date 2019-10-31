@@ -281,7 +281,7 @@ namespace ConceptMatrix.Views
             if (DidUserInteract) return;
             if (tribe == 0)
             {
-                MessageBox.Show("You can't have Clan Set to None when using this!", "Oh no!");
+                MessageBox.Show("You can't have Clan set to None when using this!", App.ToolName, MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             if (!CheckCustomizeList(reader))
@@ -298,7 +298,7 @@ namespace ConceptMatrix.Views
             if (DidUserInteract) return;
             if (tribe == 0)
             {
-                MessageBox.Show("You can't have Clan Set to None when using this!", "Oh no!");
+                MessageBox.Show("You can't have Clan set to None when using this!", App.ToolName, MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             if (!CheckCustomizeList(reader))
@@ -316,7 +316,7 @@ namespace ConceptMatrix.Views
             if (DidUserInteract) return;
             if (tribe == 0)
             {
-                MessageBox.Show("You can't have Clan Set to None when using this!", "Oh no!");
+                MessageBox.Show("You can't have Clan set to None when using this!", App.ToolName, MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             if (!CheckCustomizeList2(reader))
@@ -560,7 +560,7 @@ namespace ConceptMatrix.Views
         {
             if (tribe == 0)
             {
-                MessageBox.Show("You can't have Clan Set to None when using this!", "Oh no!");
+                MessageBox.Show("You can't have Clan set to None when using this!", App.ToolName, MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             if (DidUserInteract) return;

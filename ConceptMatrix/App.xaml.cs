@@ -2,7 +2,6 @@
 using ConceptMatrix.ViewModel;
 using Microsoft.Win32;
 using System;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
@@ -14,7 +13,15 @@ namespace ConceptMatrix
     /// </summary>
     public partial class App : Application
     {
-        public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
+		public static readonly string ToolName = "Concept Matrix";
+		public static readonly string ToolBin = "CMTool";
+		public static readonly string UpdaterName = "Concept Matrix Updater";
+		public static readonly string UpdaterBin = "ConceptMatrixUpdater";
+		public static readonly string GithubRepo = "imchillin/CMTool";
+		public static readonly string TwitterHandle = "ffxivsstool";
+		public static readonly string DiscordCode = "hq3DnBa";
+
+		public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
         protected override void OnStartup(StartupEventArgs e)
         {
             Application.Current.DispatcherUnhandledException += Application_DispatcherUnhandledException;

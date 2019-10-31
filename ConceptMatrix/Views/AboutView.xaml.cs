@@ -15,7 +15,7 @@ namespace ConceptMatrix.Views
 		}
 		private void GitHubButton_OnClick(object sender, RoutedEventArgs e)
 		{
-			Process.Start("https://github.com/imchillin/CMTool");
+			Process.Start($"https://github.com/{App.GithubRepo}");
 		}
 		private void DonateButton_OnClick(object sender, RoutedEventArgs e)
 		{
@@ -34,12 +34,12 @@ namespace ConceptMatrix.Views
 
 		private void ChatButton_Click(object sender, RoutedEventArgs e)
 		{
-			Process.Start("https://twitter.com/ffxivsstool");
+			Process.Start($"https://twitter.com/{App.TwitterHandle}");
 		}
 
 		private void AboutDiscordBtn_Click(object sender, RoutedEventArgs e)
 		{
-			Process.Start("https://discord.gg/hq3DnBa");
+			Process.Start($"https://discord.gg/{App.DiscordCode}");
 		}
 	}
 }

@@ -291,13 +291,13 @@ namespace ConceptMatrix.Views
 
             if (!CharacterDetailsView._exdProvider.TerritoryTypes.ContainsKey(territory))
             {
-                MessageBox.Show("Could not find your current zone. Make sure you are using the latest version.", "Oh no!");
+                MessageBox.Show("Could not find your current zone. Make sure you are using the latest version.", App.ToolName, MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
             if (CharacterDetailsView._exdProvider.TerritoryTypes[territory].WeatherRate == null)
             {
-                MessageBox.Show("Setting weather is not supported for your current zone.", "Oh no!");
+                MessageBox.Show("Setting weather is not supported for your current zone.", App.ToolName, MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             WeatherSelector(CharacterDetailsView._exdProvider.TerritoryTypes[territory].WeatherRate.AllowedWeathers, MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.WeatherAddress, Settings.Instance.Character.Weather)));

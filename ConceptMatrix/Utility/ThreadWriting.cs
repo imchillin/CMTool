@@ -2132,8 +2132,8 @@ namespace ConceptMatrix.Utility
             }
             catch (System.Exception ex)
             {
-                //System.Windows.MessageBox.Show(ex.Message + "\n" + ex.StackTrace, "Oh no!");
-                worker.CancelAsync();
+				//System.Windows.MessageBox.Show(ex.Message + "\n" + ex.StackTrace, App.ToolName, MessageBoxButton.OK, MessageBoxImage.Error);
+				worker.CancelAsync();
             }
         }
     }
