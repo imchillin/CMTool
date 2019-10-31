@@ -2130,7 +2130,7 @@ namespace ConceptMatrix.Utility
                     Thread.Sleep(9);
                 }
             }
-            catch (System.Exception ex)
+            catch (Exception)
             {
 				//System.Windows.MessageBox.Show(ex.Message + "\n" + ex.StackTrace, App.ToolName, MessageBoxButton.OK, MessageBoxImage.Error);
 				worker.CancelAsync();

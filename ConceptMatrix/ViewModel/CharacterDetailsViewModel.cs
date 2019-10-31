@@ -11,8 +11,8 @@ namespace ConceptMatrix.ViewModel
     public class CharacterDetailsViewModel : BaseViewModel
     {
         public CharacterDetails CharacterDetails { get => (CharacterDetails)model; set => model = value; }
-        private RefreshEntitiesCommand refreshEntitiesCommand;
-        public static string eOffset = "8";
+
+		public static string eOffset = "8";
         public static bool FreezeAll = false;
         public static bool EnabledEditing = false;
         public static bool CurrentlySavingFilter = false;
@@ -26,17 +26,14 @@ namespace ConceptMatrix.ViewModel
         private CharacterOffsets c = Settings.Instance.Character;
         private string GAS(params string[] args) => MemoryManager.GetAddressString(args);
 
-        public RefreshEntitiesCommand RefreshEntitiesCommand
-        {
-            get => refreshEntitiesCommand;
-        }
-        public CharacterDetailsViewModel(Mediator mediator) : base(mediator)
+		public RefreshEntitiesCommand RefreshEntitiesCommand { get; }
+		public CharacterDetailsViewModel(Mediator mediator) : base(mediator)
         {
             model = new CharacterDetails();
             model.PropertyChanged += Model_PropertyChanged;
-            refreshEntitiesCommand = new RefreshEntitiesCommand(this);
+            RefreshEntitiesCommand = new RefreshEntitiesCommand(this);
             // refresh the list initially
-            this.Refresh();
+            Refresh();
             mediator.Work += Work;
 
             mediator.EntitySelection += (offset) => eOffset = offset;
@@ -3504,7 +3501,7 @@ namespace ConceptMatrix.ViewModel
                 if (!CharacterDetails.LFinger.Activated) CharacterDetails.LFingerSlot.value = CharacterDetails.LFinger.value + "," + CharacterDetails.LFingerVa.value + ",0";
                 if (!CharacterDetails.RFinger.Activated) CharacterDetails.RFingerSlot.value = CharacterDetails.RFinger.value + "," + CharacterDetails.RFingerVa.value + ",0";
             }
-            catch (System.Exception ex)
+            catch (Exception)
             {
 				//System.Windows.MessageBox.Show(ex.Message + "\n" + ex.StackTrace, App.ToolName, MessageBoxButton.OK, MessageBoxImage.Error);
 				mediator.Work -= Work;
