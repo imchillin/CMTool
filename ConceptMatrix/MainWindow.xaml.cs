@@ -64,7 +64,7 @@ namespace ConceptMatrix
                     string xmlStr;
                     using (var wc = new WebClient())
                     {
-                        xmlStr = wc.DownloadString(@"https://raw.githubusercontent.com/KrisanThyme/CMTool/master/ConceptMatrix/OffsetSettings.xml");
+                        xmlStr = wc.DownloadString(@"https://raw.githubusercontent.com/imchillin/CMTool/master/ConceptMatrix/OffsetSettings.xml");
                     }
                     var xmlDoc = new System.Xml.XmlDocument();
                     xmlDoc.LoadXml(xmlStr);
@@ -246,7 +246,7 @@ namespace ConceptMatrix
 
         private void TwitterButton_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://twitter.com/KrisanThyme");
+            Process.Start("https://twitter.com/ffxivsstool");
         }
         private void Save_Click(object sender, RoutedEventArgs e)
         {
@@ -1152,7 +1152,7 @@ namespace ConceptMatrix
 
         private void DiscordButton_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://discord.gg/4GJvaM");
+            Process.Start("https://discord.gg/hq3DnBa");
         }
 
         private void SavePoint_Click(object sender, RoutedEventArgs e)
