@@ -30,8 +30,8 @@
 			</Border>
 			<DockPanel>
 				<StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-					<Button Style="{DynamicResource MaterialDesignFlatButton}" Margin="0 0 2 0" Padding="20 2" Click="OnNoClick">No thanks</Button>
-					<Button Margin="10 0 0 0" Padding="20 2" Click="OnInstallClick">Install Update</Button>
+					<Button Style="{DynamicResource MaterialDesignFlatButton}" Margin="0 0 2 0" Padding="20 2" IsEnabled="{Binding ButtonEnabled}" Click="OnNoClick">No thanks</Button>
+					<Button Margin="10 0 0 0" Padding="20 2" IsEnabled="{Binding ButtonEnabled}" Click="OnInstallClick">Install Update</Button>
 				</StackPanel>
 			</DockPanel>
 		</StackPanel>

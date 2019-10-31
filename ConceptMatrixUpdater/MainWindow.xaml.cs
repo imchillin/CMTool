@@ -22,6 +22,7 @@ namespace ConceptMatrixUpdater
 		public string StatusLabel { get; set; }
 		public string HTML { get; set; }
 		public int ProgressValue { get; set; }
+		public bool ButtonEnabled { get; set; } = true;
 
 		private JObject json;
 		private readonly string temp = Path.Combine(Path.GetTempPath(), App.ToolBin);
@@ -139,6 +140,9 @@ namespace ConceptMatrixUpdater
 		{
 			Dispatcher.BeginInvoke(new Action(() =>
 			{
+				// Disable the buttons to install or not.
+				ButtonEnabled = false;
+
 				// Use web client to download the update.
 				using (var wc = new WebClient())
 				{
