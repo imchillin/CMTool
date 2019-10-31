@@ -29,7 +29,9 @@ namespace ConceptMatrixUpdater
 		public bool AlertUpToDate = true;
 		public bool ForceCheckUpdate = false;
 
+#pragma warning disable 67
 		public event PropertyChangedEventHandler PropertyChanged;
+#pragma warning restore 67
 
 		public MainWindow()
 		{
