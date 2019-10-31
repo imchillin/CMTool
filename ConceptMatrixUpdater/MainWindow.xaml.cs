@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace ConceptMatrixUpdater
@@ -17,21 +18,13 @@ namespace ConceptMatrixUpdater
 	/// </summary>
 	public partial class MainWindow : MetroWindow, INotifyPropertyChanged
 	{
-		// Constants for the tool to make it easier to update and swap out.
-		private const string ToolBin = "ConceptMatrix";
-		private const string ToolName = "Concept Matrix";
-		private const string UpdaterName = "Concept Matrix Updater";
-		private const string UpdaterBin = "ConceptMatrixUpdater";
-		private const string GithubRepo = "imchillin/CMTool";
-		private const string ZipName = "CMTool.zip";
-
 		// Properties for the UI.
 		public string StatusLabel { get; set; }
 		public string HTML { get; set; }
 		public int ProgressValue { get; set; }
 
 		private JObject json;
-		private readonly string temp = Path.Combine(Path.GetTempPath(), ToolBin);
+		private readonly string temp = Path.Combine(Path.GetTempPath(), App.ToolBin);
 		public bool AlertUpToDate = true;
 		public bool ForceCheckUpdate = false;
 
@@ -51,12 +44,12 @@ namespace ConceptMatrixUpdater
 		public bool Initialize()
 		{
 			// Get the current version of the application.
-			var result = Version.TryParse(FileVersionInfo.GetVersionInfo(Path.Combine(Environment.CurrentDirectory, $"{ToolBin}.exe")).FileVersion, out Version CurrentVersion);
+			var result = Version.TryParse(FileVersionInfo.GetVersionInfo(Path.Combine(Environment.CurrentDirectory, $"{App.ToolBin}.exe")).FileVersion, out Version CurrentVersion);
 			if (!result)
 			{
 				MessageBox.Show(
-					$"There was an error when trying to read the current version of {ToolName}, you will be prompted to download the latest version.",
-					UpdaterName,
+					$"There was an error when trying to read the current version of {App.ToolName}, you will be prompted to download the latest version.",
+					App.UpdaterName,
 					MessageBoxButton.OK,
 					MessageBoxImage.Error
 				);
@@ -65,10 +58,10 @@ namespace ConceptMatrixUpdater
 			}
 
 			// Create request for Github REST API for the latest release of tool.
-			if (WebRequest.Create($"https://api.github.com/repos/{GithubRepo}/releases/latest") is HttpWebRequest request)
+			if (WebRequest.Create($"https://api.github.com/repos/{App.GithubRepo}/releases/latest") is HttpWebRequest request)
 			{
 				request.Method = "GET";
-				request.UserAgent = ToolName;
+				request.UserAgent = App.ToolName;
 				request.ServicePoint.Expect100Continue = false;
 
 				try
@@ -89,7 +82,7 @@ namespace ConceptMatrixUpdater
 							// Create HTML out of the markdown in body.
 							var html = Markdown.ToHtml(json["body"].Value<string>());
 							// Set the update string
-							StatusLabel = $"{ToolName} {releaseVersion.VersionString()} is now available, you have {CurrentVersion.VersionString()}. Would you like to download it now?";
+							StatusLabel = $"{App.ToolName} {releaseVersion.VersionString()} is now available, you have {CurrentVersion.VersionString()}. Would you like to download it now?";
 							// Set HTML in the window.
 							HTML = "<style>body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;margin:8px 10px;padding:0;font-size:12px;}ul{margin:0;padding:0;list-style-position:inside;}</style>" + html;
 						}
@@ -97,7 +90,7 @@ namespace ConceptMatrixUpdater
 						{
 							// Alerts that you're up to date.
 							if (AlertUpToDate)
-								MessageBox.Show("You're up to date!", UpdaterName, MessageBoxButton.OK, MessageBoxImage.Information);
+								MessageBox.Show("You're up to date!", App.UpdaterName, MessageBoxButton.OK, MessageBoxImage.Information);
 
 							// Do not show.
 							return false;
@@ -109,14 +102,14 @@ namespace ConceptMatrixUpdater
 					MessageBox.Show(ex.Message);
 					var response = MessageBox.Show(
 						"Failed to fetch the latest version! Would you like to visit the page manually to check for the latest release manually?",
-						UpdaterName,
+						App.UpdaterName,
 						MessageBoxButton.YesNo,
 						MessageBoxImage.Error
 					);
 					if (response == MessageBoxResult.Yes)
 					{
 						// Visit the latest releases page on GitHub to download the latest version.
-						Process.Start($"https://github.com/{GithubRepo}/releases/latest");
+						Process.Start($"https://github.com/{App.GithubRepo}/releases/latest");
 
 						// Do not show.
 						return false;
@@ -153,7 +146,7 @@ namespace ConceptMatrixUpdater
 					ValidateTempPath();
 
 					// Temporary zip path.
-					var tZip = Path.Combine(temp, ZipName);
+					var tZip = Path.Combine(temp, App.ZipName);
 
 					// Delete existing zip file.
 					if (File.Exists(tZip))
@@ -181,7 +174,7 @@ namespace ConceptMatrixUpdater
 			StatusLabel = "Download complete! Unzipping files...";
 
 			// Temporary zip path.
-			var tZip = Path.Combine(temp, ZipName);
+			var tZip = Path.Combine(temp, App.ZipName);
 
 			// Create a background worker.
 #pragma warning disable IDE0067 // Dispose objects before losing scope
@@ -198,7 +191,7 @@ namespace ConceptMatrixUpdater
 			try
 			{
 				// Get any tools open.
-				var procs = Process.GetProcessesByName(ToolBin);
+				var procs = Process.GetProcessesByName(App.ToolBin);
 				// Iterate over each.
 				foreach (var p in procs)
 				{
@@ -209,15 +202,16 @@ namespace ConceptMatrixUpdater
 			}
 			catch (Exception) { }
 
-			// Temporary name.
-			var tempName = "DELETE";
+			// Old updater path.
+			var tempFile = Path.Combine(Environment.CurrentDirectory, $"{App.UpdaterBin}.exe.old");
 
-			// Delete existing old updaters from temp folder.
-			if (File.Exists(Path.Combine(temp, tempName)))
-				File.Delete(Path.Combine(temp, tempName));
+			// Delete potential existing old updater.
+			if (File.Exists(tempFile))
+				File.Delete(tempFile);
 
+			// Remove any existing old updater.
 			// Move the updater (this executable) into the temp folder.
-			File.Move(Path.Combine(Environment.CurrentDirectory, $"{UpdaterBin}.exe"), Path.Combine(temp, tempName));
+			File.Move(Path.Combine(Environment.CurrentDirectory, $"{App.UpdaterBin}.exe"), tempFile);
 
 			// Run the worker.
 			bw.RunWorkerAsync(tZip);
@@ -226,10 +220,14 @@ namespace ConceptMatrixUpdater
 			bw.RunWorkerCompleted += (_, __) =>
 			{
 				// Update label for the unzip completion and tool startup.
-				StatusLabel = $"Unzip complete! Starting {ToolName}";
+				StatusLabel = $"Unzip complete! Starting {App.ToolName}";
+
+				// Wait 5 seconds before doing anything.
+				Task.Delay(5000);
 
 				// Start the tool.
-				Process.Start(Path.Combine(Environment.CurrentDirectory, $"{ToolBin}.exe"));
+				Process.Start(Path.Combine(Environment.CurrentDirectory, $"{App.ToolBin}.exe"));
+
 				// Shutdown the application, we're done here.
 				Close();
 			};
