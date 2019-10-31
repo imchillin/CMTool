@@ -28,27 +28,14 @@ namespace ConceptMatrix
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+
         public int Processcheck = 0;
         public static bool HasRead = false;
         public static ARealmReversed Realm;
         public static bool CurrentlySaving = false;
         string exepath = Directory.GetParent(Assembly.GetExecutingAssembly().Location).FullName;
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
-        void subwc_DownloadFileCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
-        {
-            string Newversion = File.ReadAllText(exepath + "\\version.txt").Trim();
-            if (!string.IsNullOrWhiteSpace(Newversion) && version.ToString().Replace(',', '.').CompareTo(Newversion) != 0)
-            {
-                Process p = new Process();
-                p.StartInfo.FileName = exepath + "\\ConceptMatrixUpdater.exe";
-                p.StartInfo.Arguments = "-autolaunch";
-                if (AdminNeeded())
-                    p.StartInfo.Verb = "runas";
 
-                try { p.Start(); Process.GetCurrentProcess().Kill(); }
-                catch { }
-            }
-        }
         readonly Version version = Assembly.GetExecutingAssembly().GetName().Version;
         public MainWindow()
         {
@@ -118,16 +105,19 @@ namespace ConceptMatrix
         private void UpdateProgram()
         {
             ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
+
+            // Delete the old updater file.
+            if (File.Exists(".CMTU.old"))
+                File.Delete(".CMTU.old");
             try
             {
-                ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
-                if (File.Exists(exepath + "\\ConceptMatrixUpdater.exe"))
-                {
-                    Uri urlv = new Uri("https://raw.githubusercontent.com/imchillin/CMTool/master/version.txt");
-                    WebClient wc2 = new WebClient();
-                    wc2.DownloadFileAsync(urlv, exepath + "\\version.txt");
-                    wc2.DownloadFileCompleted += subwc_DownloadFileCompleted;
-                }
+                var proc = new Process();
+                proc.StartInfo.FileName = Path.Combine(Environment.CurrentDirectory, "ConceptMatrixUpdater.exe");
+                proc.StartInfo.UseShellExecute = true;
+                proc.StartInfo.Verb = "runas";
+                proc.Start();
+                proc.WaitForExit();
+                proc.Dispose();
             }
             catch (Exception)
             {
@@ -141,7 +131,7 @@ namespace ConceptMatrix
                 // Launch the web browser to the latest release.
                 if (result == MessageBoxResult.Yes)
                 {
-                    Process.Start("https://github.com/imchillin/CMTool/releases/latest");
+                    Process.Start("https://github.com/KrisanThyme/CMTool/releases/latest");
                 }
             }
         }
