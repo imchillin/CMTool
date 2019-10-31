@@ -55,7 +55,7 @@ namespace ConceptMatrixUpdater
                     for (int i = 0, arlen = files.Length; i < arlen; i++)
                     {
                         string tempFile = Path.GetFileName(files[i]);
-                        if ("ConceptMatrix.zip" == tempFile)
+                        if ("CMTool.zip" == tempFile)
                         {
                             File.Delete(files[i]);
                         }
@@ -96,9 +96,9 @@ namespace ConceptMatrixUpdater
 
                 if (!downloading && version.Replace(',', '.').CompareTo(newversion) != 0)
                 {
-                    Uri url = new Uri($"https://github.com/imchillin/CMTool/releases/download/{newversion}/ConceptMatrix.zip");
+                    Uri url = new Uri($"https://github.com/imchillin/CMTool/releases/download/{newversion}/CMTool.zip");
                     sw.Start();
-                    outputUpdatePath = Path.Combine(updatesFolder, $"ConceptMatrix.zip");
+                    outputUpdatePath = Path.Combine(updatesFolder, $"CMTool.zip");
                     try { wc.DownloadFileAsync(url, outputUpdatePath); }
                     catch (Exception e) { label1.Content = e.Message; }
                     wc.DownloadFileCompleted += wc_DownloadFileCompleted;
@@ -137,9 +137,9 @@ namespace ConceptMatrixUpdater
             File.Delete(exepath + "\\version.txt");
             if (version.Replace(',', '.').CompareTo(newversion) != 0)
             {
-                Uri url = new Uri($"https://github.com/imchillin/CMTool/releases/download/{newversion}/ConceptMatrix.zip");
+                Uri url = new Uri($"https://github.com/imchillin/CMTool/releases/download/{newversion}/CMTool.zip");
                 sw.Start();
-                outputUpdatePath = Path.Combine(updatesFolder, $"ConceptMatrix.zip");
+                outputUpdatePath = Path.Combine(updatesFolder, $"CMTool.zip");
                 try { wc.DownloadFileAsync(url, outputUpdatePath); }
                 catch (Exception ec) { label1.Content = ec.Message; }
                 wc.DownloadFileCompleted += wc_DownloadFileCompleted;
@@ -330,10 +330,10 @@ namespace ConceptMatrixUpdater
             }
             else if (!backup)
             {
-                Uri url = new Uri($"https://github.com/imchillin/CMTool/releases/download/{newversion}/ConceptMatrix.zip");
+                Uri url = new Uri($"https://github.com/imchillin/CMTool/releases/download/{newversion}/CMTool.zip");
 
                 sw.Start();
-                outputUpdatePath = Path.Combine(updatesFolder, $"ConceptMatrix.zip");
+                outputUpdatePath = Path.Combine(updatesFolder, $"CMTool.zip");
                 try { wc.DownloadFileAsync(url, outputUpdatePath); }
                 catch (Exception ex) { label1.Content = ex.Message; }
                 backup = true;

@@ -121,7 +121,7 @@ namespace ConceptMatrix
             try
             {
                 ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
-                if (File.Exists(exepath + "\\SSToolsUpdater.exe"))
+                if (File.Exists(exepath + "\\ConceptMatrixUpdater.exe"))
                 {
                     Uri urlv = new Uri("https://raw.githubusercontent.com/imchillin/CMTool/master/version.txt");
                     WebClient wc2 = new WebClient();
