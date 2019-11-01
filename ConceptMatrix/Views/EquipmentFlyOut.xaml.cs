@@ -109,7 +109,7 @@ namespace ConceptMatrix.Views
                         }
                         else if (ClassBox.SelectedIndex >= 7)
                         {
-                            if (!game.ClassJobListStringName.Equals(ClassBox.Text)) continue;
+                            if (!game.ClassJobListStringName.Contains(ClassBox.Text)) continue;
                         }
                     }
                     EquipBox.Items.Add(new Itemx
@@ -826,7 +826,7 @@ namespace ConceptMatrix.Views
                     }
                     else if (ClassBox.SelectedIndex >= 7)
                     {
-                        if (!game.ClassJobListStringName.Equals(ClassBox.Text) && !game.ClassJobListStringName.Equals(ClassBox.Tag)) continue;
+                        if (!game.ClassJobListStringName.Contains(ClassBox.Text)) continue;
                     }
                 }
                 EquipBox.Items.Add(new Itemx

@@ -498,7 +498,7 @@ namespace ConceptMatrix.Utility
 							ClassJobListStringName = Parse.ClassJobCategory.ToString(),
 							Type = Heh(Parse.ItemUICategory.Key)
 						};
-						if (Parse.ItemUICategory.Key == 11)
+                        if (Parse.ItemUICategory.Key == 11)
 						{
 							item.ModelMain = Parse.ModelMain.ToString();
 							item.ModelOff = Parse.ModelMain.ToString();
