@@ -168,7 +168,7 @@ namespace ConceptMatrix
             var xdad = (byte)MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.EntityType));
             if (m.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheckAddress)) == 0)
             {
-                if (xdad == 1)
+                if (xdad == 1 && CharacterDetails.Race.value != 7)
                 {
                     m.writeMemory(GAS(c.EntityType), "byte", "2");
                     m.writeMemory(GAS(c.RenderToggle), "int", "2");
