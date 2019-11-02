@@ -55,11 +55,11 @@ namespace ConceptMatrix.Windows
         {
             List<GearSaves> output = new List<GearSaves>();
 
-            string PathX = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "SSTool", "Gearsets");
+            string PathX = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), App.ToolBin, "Gearsets");
 
             if (!Directory.Exists(PathX))
             {
-                System.Windows.MessageBox.Show("Could not find SSTool/Gearsets Directory: " + PathX);
+                System.Windows.MessageBox.Show("Could not find CMTool/Gearsets Directory: " + PathX);
                 return output;
             }
 

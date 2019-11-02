@@ -58,11 +58,11 @@ namespace ConceptMatrix.Windows
         {
             List<CharSaves> output = new List<CharSaves>();
 
-            string PathX = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "SSTool", "Saves");
+            string PathX = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), App.ToolBin, "Saves");
 
             if (!Directory.Exists(PathX))
             {
-                System.Windows.MessageBox.Show("Could not find SSTool/Saves Directory: " + PathX);
+                System.Windows.MessageBox.Show("Could not find CMTool/Saves Directory: " + PathX);
                 return output;
             }
 
