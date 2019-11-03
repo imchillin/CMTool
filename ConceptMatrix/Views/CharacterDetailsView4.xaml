@@ -125,6 +125,7 @@
             <ComboBoxItem Content="Levitation" Tag="12" Background="{x:Null}"/>
             <ComboBoxItem Content="Bind" Tag="13" Background="{x:Null}"/>
             <ComboBoxItem Content="Heavy" Tag="14" Background="{x:Null}"/>
+            <ComboBoxItem Content="Sneak" Tag="47" Background="{x:Null}"/>
             <ComboBoxItem Content="Infuriated" Tag="97" Background="{x:Null}"/>
             <ComboBoxItem Content="Greased Lightning" Tag="111" Background="{x:Null}"/>
             <ComboBoxItem Content="Greased Lightning II" Tag="112" Background="{x:Null}"/>
@@ -237,6 +238,7 @@
             <ComboBoxItem Content="" Tag="2060" Background="{x:Null}"/>
             <ComboBoxItem Content="" Tag="2107" Background="{x:Null}"/>
             <ComboBoxItem Content="Prey" Tag="2112" Background="{x:Null}"/>
+            <ComboBoxItem Content="Shadow of the Dragon" Tag="2219" Background="{x:Null}"/>
         </ComboBox>
 
     </Grid>
