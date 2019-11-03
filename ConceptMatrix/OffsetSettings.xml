@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Settings>
-  <LastUpdated>5.1</LastUpdated>
+  <LastUpdated>5.1x1</LastUpdated>
   <CameraOffset>1C007A0</CameraOffset>
   <GposeOffset>1C00988</GposeOffset>
   <GposeEntityOffset>1C02AD8</GposeEntityOffset>
@@ -23,7 +23,7 @@
     <FCTag>17FA</FCTag>
     <Title>18D2</Title>
     <JobIco>18F4</JobIco>
-    <Voices>18C4</Voices>
+    <Voices>18D8</Voices>
     <Body Base="F0">
       <Position>
         <X>50</X>
