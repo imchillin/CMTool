@@ -171,7 +171,7 @@
 
         <!-- Settings -->
         <GroupBox Header="Settings" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" Margin="820,295,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="105" Width="255"/>
-        <ToggleButton x:Name="EditModeButton" Checked="EditModeButton_Checked" Unchecked="EditModeButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="981,338,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" />
+        <ToggleButton x:Name="EditModeButton" Checked="EditModeButton_Checked" Unchecked="EditModeButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="981,338,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" />
         <Label Content="Enable Editing:" HorizontalAlignment="Left" Margin="877,338,0,0" VerticalAlignment="Top" Height="28"/>
         <Button x:Name="TPoseButton" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="T-Pose Actor" HorizontalAlignment="Left" Margin="105,479,0,0" VerticalAlignment="Top" Width="115" Click="TPoseButton_Click" IsEnabled="False" RenderTransformOrigin="0.522,-0.219"/>
         <Label Content="Tail:" HorizontalAlignment="Left" Margin="848,84,0,0" VerticalAlignment="Top" Height="28"/>

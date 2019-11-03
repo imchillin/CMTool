@@ -520,9 +520,6 @@ namespace ConceptMatrix.Views
         public bool LeftLegSaved;
         public bool RightLegSaved;
 
-        private readonly Mem m = MemoryManager.Instance.MemLib;
-        private CharacterOffsets c = Settings.Instance.Character;
-        private string GAS(params string[] args) => MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, args);
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
         public CharacterDetailsView5()
         {
