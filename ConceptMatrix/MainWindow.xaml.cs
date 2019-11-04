@@ -1050,6 +1050,10 @@ namespace ConceptMatrix
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Instance.GposeAddress;
             if (TargetButton.IsEnabled == false)
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Instance.GposeEntityOffset;
+            if (MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheckAddress)) == 1)
+            {
+                MainViewModel.ViewTime5.EditModeButton.IsEnabled = true;
+            }
         }
 
         private void GposeButton_Unchecked(object sender, RoutedEventArgs e)
@@ -1097,6 +1101,11 @@ namespace ConceptMatrix
 
             if (GposeButton.IsKeyboardFocusWithin || GposeButton.IsMouseOver)
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Add(MemoryManager.Instance.BaseAddress, CharacterDetailsViewModel.eOffset);
+            if (MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheckAddress)) == 0)
+            {
+                MainViewModel.ViewTime5.EditModeButton.IsChecked = false;
+                MainViewModel.ViewTime5.EditModeButton.IsEnabled = false;
+            }
         }
 
         private void TargetButton_Checked(object sender, RoutedEventArgs e)
