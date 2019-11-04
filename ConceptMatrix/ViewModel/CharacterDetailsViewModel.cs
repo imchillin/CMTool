@@ -297,12 +297,10 @@ namespace ConceptMatrix.ViewModel
                     {
                         if (!InGpose)
                         {
-                            CharacterDetails.GposeMode = false;
                             m.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.EntityType), "byte", "0x02");
                             Task.Delay(1500).Wait();
                             m.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.EntityType), "byte", "0x01");
                             CharacterDetails.GposeMode = true;
-                            Task.Delay(50).Wait();
                             m.writeMemory(GAS(MemoryManager.Instance.GposeAddress, c.EntityType), "byte", "0x01");
                             InGpose = true;
                         }
