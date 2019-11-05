@@ -176,7 +176,7 @@ namespace ConceptMatrix
             {
                 var result = (dig ?? (dig = new System.Windows.Forms.FolderBrowserDialog
                 {
-                    Description = "Please select the directory of your FFXIV:ARR game installation (should contain 'boot' and 'game' directories).",
+                    Description = "Please select where FFXIV is installed (should contain boot and game directories).",
                     ShowNewFolderButton = false,
                 })).ShowDialog();
 
