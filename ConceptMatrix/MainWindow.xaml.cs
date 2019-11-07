@@ -1008,6 +1008,9 @@ namespace ConceptMatrix
             MainViewModel.ViewTime.CamXCheck.IsEnabled = true;
             MainViewModel.ViewTime.CamYCheck.IsEnabled = true;
             MainViewModel.ViewTime.CamZCheck.IsEnabled = true;
+            MainViewModel.ViewTime.FaceCamXCheck.IsEnabled = true;
+            MainViewModel.ViewTime.FaceCamYCheck.IsEnabled = true;
+            MainViewModel.ViewTime.FaceCamZCheck.IsEnabled = true;
 
             MainViewModel.ViewTime.HairSelectButton.IsEnabled = false;
             MainViewModel.ViewTime.ModelTypeButton.IsEnabled = false;
@@ -1063,9 +1066,15 @@ namespace ConceptMatrix
             MainViewModel.ViewTime.CamXCheck.IsEnabled = false;
             MainViewModel.ViewTime.CamYCheck.IsEnabled = false;
             MainViewModel.ViewTime.CamZCheck.IsEnabled = false;
+            MainViewModel.ViewTime.FaceCamXCheck.IsEnabled = false;
+            MainViewModel.ViewTime.FaceCamYCheck.IsEnabled = false;
+            MainViewModel.ViewTime.FaceCamZCheck.IsEnabled = false;
             CharacterDetails.CamX.freeze = false;
             CharacterDetails.CamY.freeze = false;
             CharacterDetails.CamZ.freeze = false;
+            CharacterDetails.FaceCamX.freeze = false;
+            CharacterDetails.FaceCamY.freeze = false;
+            CharacterDetails.FaceCamZ.freeze = false;
 
             MainViewModel.ViewTime.HairSelectButton.IsEnabled = true;
             MainViewModel.ViewTime.ModelTypeButton.IsEnabled = true;

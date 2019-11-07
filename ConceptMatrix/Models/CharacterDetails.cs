@@ -533,6 +533,9 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<float> CamViewX { get; set; }
         [JsonIgnore] public Address<float> CamViewY { get; set; }
         [JsonIgnore] public Address<float> CamViewZ { get; set; }
+        [JsonIgnore] public Address<float> FaceCamX { get; set; }
+        [JsonIgnore] public Address<float> FaceCamY { get; set; }
+        [JsonIgnore] public Address<float> FaceCamZ { get; set; }
         [JsonIgnore] public Address<float> Max { get; set; }
         [JsonIgnore] public Address<float> Min { get; set; }
         [JsonIgnore] public Address<float> CZoom { get; set; }
@@ -1047,6 +1050,9 @@ namespace ConceptMatrix.Models
             CamViewX = new Address<float>();
             CamViewY = new Address<float>();
             CamViewZ = new Address<float>();
+            FaceCamX = new Address<float>();
+            FaceCamY = new Address<float>();
+            FaceCamZ = new Address<float>();
             CameraHeight2 = new Address<float>();
             CharacterRender = new Address<float>();
             Wetness = new Address<float>();

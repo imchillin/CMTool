@@ -1974,6 +1974,10 @@ namespace ConceptMatrix.Utility
                     if (CharacterDetails.CamViewY.freeze) m.writeBytes(GAS(c.CamViewY), CharacterDetails.CamViewY.GetBytes());
                     if (CharacterDetails.CamViewZ.freeze) m.writeBytes(GAS(c.CamViewZ), CharacterDetails.CamViewZ.GetBytes());
 
+                    if (CharacterDetails.FaceCamX.freeze) m.writeBytes(GASG(MemoryManager.Instance.GposeAddress, c.FaceCamX), CharacterDetails.FaceCamX.GetBytes());
+                    if (CharacterDetails.FaceCamY.freeze) m.writeBytes(GASG(MemoryManager.Instance.GposeAddress, c.FaceCamY), CharacterDetails.FaceCamY.GetBytes());
+                    if (CharacterDetails.FaceCamZ.freeze) m.writeBytes(GASG(MemoryManager.Instance.GposeAddress, c.FaceCamZ), CharacterDetails.FaceCamZ.GetBytes());
+
                     if (CharacterDetails.StatusEffect.freeze) m.writeBytes(GASG(c.StatusEffect), CharacterDetails.StatusEffect.GetBytes());
                     if (CharacterDetails.CameraUpDown.freeze) m.writeBytes(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, c.CameraUpDown), CharacterDetails.CameraUpDown.GetBytes());
                     if (CharacterDetails.FOV2.freeze) m.writeBytes(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, c.FOV2), CharacterDetails.FOV2.GetBytes());

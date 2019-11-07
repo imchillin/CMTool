@@ -511,6 +511,10 @@
     <CamY>A4</CamY>
     <CamZ>A8</CamZ>
 
+    <FaceCamX>3E8</FaceCamX>
+    <FaceCamY>3EC</FaceCamY>
+    <FaceCamZ>3F0</FaceCamZ>
+
     <Max>120</Max>
     <Min>11C</Min>
     <CZoom>118</CZoom>

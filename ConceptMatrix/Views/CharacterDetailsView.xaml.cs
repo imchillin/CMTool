@@ -628,53 +628,7 @@ namespace ConceptMatrix.Views
         #endregion
 
         #region Camera
-        private void CamViewX_SourceUpdated(object sender, DataTransferEventArgs e)
-        {
-            if (CamViewX.IsMouseOver || CamViewX.IsKeyboardFocusWithin)
-            {
-                CamViewX.ValueChanged -= CamViewX_;
-                CamViewX.ValueChanged += CamViewX_;
-            }
-        }
-        private void CamViewX_(object sender, RoutedPropertyChangedEventArgs<double?> e)
-        {
-            if (CamViewX.Value.HasValue)
-                if (CamViewX.IsMouseOver || CamViewX.IsKeyboardFocusWithin)
-                    MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.CamViewX), "float", CamViewX.Value.ToString());
-            CamViewX.ValueChanged -= CamViewX_;
-        }
 
-        private void CamViewY_SourceUpdated(object sender, DataTransferEventArgs e)
-        {
-            if (CamViewY.IsMouseOver || CamViewY.IsKeyboardFocusWithin)
-            {
-                CamViewY.ValueChanged -= CamViewY_;
-                CamViewY.ValueChanged += CamViewY_;
-            }
-        }
-        private void CamViewY_(object sender, RoutedPropertyChangedEventArgs<double?> e)
-        {
-            if (CamViewY.Value.HasValue)
-                if (CamViewY.IsMouseOver || CamViewY.IsKeyboardFocusWithin)
-                    MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.CamViewY), "float", CamViewY.Value.ToString());
-            CamViewY.ValueChanged -= CamViewY_;
-        }
-
-        private void CamViewZ_SourceUpdated(object sender, DataTransferEventArgs e)
-        {
-            if (CamViewZ.IsMouseOver || CamViewZ.IsKeyboardFocusWithin)
-            {
-                CamViewZ.ValueChanged -= CamViewZ_;
-                CamViewZ.ValueChanged += CamViewZ_;
-            }
-        }
-        private void CamViewZ_(object sender, RoutedPropertyChangedEventArgs<double?> e)
-        {
-            if (CamViewZ.Value.HasValue)
-                if (CamViewZ.IsMouseOver || CamViewZ.IsKeyboardFocusWithin)
-                    MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.CamViewZ), "float", CamViewZ.Value.ToString());
-            CamViewZ.ValueChanged -= CamViewZ_;
-        }
         private void CamX_SourceUpdated(object sender, DataTransferEventArgs e)
 		{
 			if (CamX.IsMouseOver || CamX.IsKeyboardFocusWithin)
@@ -726,9 +680,60 @@ namespace ConceptMatrix.Views
 			CamZ.ValueChanged -= CamZ_;
 		}
 
-		#endregion
+        private void FaceCamX_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+            if (FaceCamX.IsMouseOver || FaceCamX.IsKeyboardFocusWithin)
+            {
+                FaceCamX.ValueChanged -= FaceCamX_;
+                FaceCamX.ValueChanged += FaceCamX_;
+            }
+        }
 
-		private void SkinSearch_Click(object sender, RoutedEventArgs e)
+        private void FaceCamX_(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            if (FaceCamX.Value.HasValue)
+                if (FaceCamX.IsMouseOver || FaceCamX.IsKeyboardFocusWithin)
+                    MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, Settings.Instance.Character.FaceCamX), "float", FaceCamX.Value.ToString());
+            FaceCamX.ValueChanged -= FaceCamX_;
+        }
+
+        private void FaceCamY_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+            if (FaceCamY.IsMouseOver || FaceCamY.IsKeyboardFocusWithin)
+            {
+                FaceCamY.ValueChanged -= FaceCamY_;
+                FaceCamY.ValueChanged += FaceCamY_;
+            }
+        }
+
+        private void FaceCamY_(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            if (FaceCamY.Value.HasValue)
+                if (FaceCamY.IsMouseOver || FaceCamY.IsKeyboardFocusWithin)
+                    MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, Settings.Instance.Character.FaceCamY), "float", FaceCamY.Value.ToString());
+            FaceCamY.ValueChanged -= FaceCamY_;
+        }
+
+        private void FaceCamZ_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+            if (FaceCamZ.IsMouseOver || FaceCamZ.IsKeyboardFocusWithin)
+            {
+                FaceCamZ.ValueChanged -= FaceCamZ_;
+                FaceCamZ.ValueChanged += FaceCamZ_;
+            }
+        }
+
+        private void FaceCamZ_(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            if (FaceCamZ.Value.HasValue)
+                if (FaceCamZ.IsMouseOver || FaceCamZ.IsKeyboardFocusWithin)
+                    MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, Settings.Instance.Character.FaceCamZ), "float", FaceCamZ.Value.ToString());
+            FaceCamZ.ValueChanged -= FaceCamZ_;
+        }
+
+        #endregion
+
+        private void SkinSearch_Click(object sender, RoutedEventArgs e)
 		{
 			if (SpecialControl.IsOpen)
 			{

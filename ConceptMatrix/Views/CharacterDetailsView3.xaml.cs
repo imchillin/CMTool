@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace ConceptMatrix.Views
@@ -29,6 +30,55 @@ namespace ConceptMatrix.Views
             InitializeComponent();
             MainViewModel.ViewTime3 = this;
         }
+
+        private void CamViewX_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+            if (CamViewX.IsMouseOver || CamViewX.IsKeyboardFocusWithin)
+            {
+                CamViewX.ValueChanged -= CamViewX_;
+                CamViewX.ValueChanged += CamViewX_;
+            }
+        }
+        private void CamViewX_(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            if (CamViewX.Value.HasValue)
+                if (CamViewX.IsMouseOver || CamViewX.IsKeyboardFocusWithin)
+                    MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.CamViewX), "float", CamViewX.Value.ToString());
+            CamViewX.ValueChanged -= CamViewX_;
+        }
+
+        private void CamViewY_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+            if (CamViewY.IsMouseOver || CamViewY.IsKeyboardFocusWithin)
+            {
+                CamViewY.ValueChanged -= CamViewY_;
+                CamViewY.ValueChanged += CamViewY_;
+            }
+        }
+        private void CamViewY_(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            if (CamViewY.Value.HasValue)
+                if (CamViewY.IsMouseOver || CamViewY.IsKeyboardFocusWithin)
+                    MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.CamViewY), "float", CamViewY.Value.ToString());
+            CamViewY.ValueChanged -= CamViewY_;
+        }
+
+        private void CamViewZ_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+            if (CamViewZ.IsMouseOver || CamViewZ.IsKeyboardFocusWithin)
+            {
+                CamViewZ.ValueChanged -= CamViewZ_;
+                CamViewZ.ValueChanged += CamViewZ_;
+            }
+        }
+        private void CamViewZ_(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            if (CamViewZ.Value.HasValue)
+                if (CamViewZ.IsMouseOver || CamViewZ.IsKeyboardFocusWithin)
+                    MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.CamViewZ), "float", CamViewZ.Value.ToString());
+            CamViewZ.ValueChanged -= CamViewZ_;
+        }
+
         private void MaxZoomXD(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (MaxZoom.Value.HasValue)
