@@ -854,6 +854,7 @@ namespace ConceptMatrix
         private void Uncheck_Click(object sender, RoutedEventArgs e)
         {
             CharacterDetails.TimeControl.freeze = false;
+            CharacterDetails.MusicBGM.freeze = false;
             CharacterDetails.Weather.freeze = false;
             CharacterDetails.CZoom.freeze = false;
             CharacterDetails.CameraYAMax.freeze = false;
