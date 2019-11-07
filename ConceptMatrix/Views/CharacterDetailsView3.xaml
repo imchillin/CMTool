@@ -289,6 +289,6 @@
         <CheckBox IsChecked="{Binding CharacterDetails.CamViewZ.freeze}" Content="Camera Pos Z:" HorizontalAlignment="Left" Margin="16,115,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="CamViewZ" Value="{Binding CharacterDetails.CamViewZ.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="132,115,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Interval="0.01" TextAlignment="Right" Height="28" FontFamily="Segoe UI" FontSize="11.35" SourceUpdated="CamViewZ_SourceUpdated"/>
 
-        <Views:WorldFlyOut x:Name="WorldFlyout" Width="667" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Margin="0,530,0,0" Height="530" Padding="0"/>
+        <Views:WorldFlyOut x:Name="WorldFlyout" Width="667" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Margin="0,0,0,0" Height="530" Padding="0"/>
     </Grid>
 </UserControl>
