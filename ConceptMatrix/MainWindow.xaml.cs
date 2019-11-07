@@ -868,6 +868,12 @@ namespace ConceptMatrix
             CharacterDetails.CamZ.freeze = false;
             CharacterDetails.CamY.freeze = false;
             CharacterDetails.CamX.freeze = false;
+            CharacterDetails.CamViewZ.freeze = false;
+            CharacterDetails.CamViewY.freeze = false;
+            CharacterDetails.CamViewX.freeze = false;
+            CharacterDetails.FaceCamZ.freeze = false;
+            CharacterDetails.FaceCamY.freeze = false;
+            CharacterDetails.FaceCamX.freeze = false;
             CharacterDetails.EmoteSpeed1.freeze = false;
             CharacterDetails.Emote.freeze = false;
             CharacterDetails.MuscleTone.freeze = false;
