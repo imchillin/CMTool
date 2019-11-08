@@ -39,6 +39,7 @@ namespace ConceptMatrix.Utility
         public string GposeAddress { get; set; }
         public string GposeEntityOffset { get; set; }
         public string GposeCheckAddress { get; set; }
+        public string GposeCheck2Address { get; set; }
         public string TargetAddress { get; set; }
         public string WeatherAddress { get; set; }
         public string TimeAddress { get; set; }

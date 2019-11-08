@@ -33,6 +33,7 @@ namespace ConceptMatrix.Utility
         public string GposeOffset { get; set; }
         public string GposeEntityOffset { get; set; }
         public string GposeCheckOffset { get; set; }
+        public string GposeCheck2Offset { get; set; }
         public string CameraOffset { get; set; }
         public string TimeOffset { get; set; }
         public string WeatherOffset { get; set; }

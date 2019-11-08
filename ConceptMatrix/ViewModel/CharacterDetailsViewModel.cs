@@ -293,7 +293,7 @@ namespace ConceptMatrix.ViewModel
                             InGpose = false;
                         }
                     }
-                    else if (m.readByte(GAS(MemoryManager.Instance.GposeCheckAddress)) == 1)
+                    else if (m.readByte(GAS(MemoryManager.Instance.GposeCheckAddress)) == 1 && m.readByte(GAS(MemoryManager.Instance.GposeCheck2Address)) == 4)
                     {
                         if (!InGpose)
                         {
