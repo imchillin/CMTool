@@ -142,13 +142,13 @@
 						This trainer and its base code was originally created by LeonBlade.
 					</TextBlock>
 					<TextBlock TextWrapping="Wrap" Foreground="{DynamicResource MaterialDesignBodyLight}" FontSize="12" Margin="8">
-						In the early ages of the project, Johto took over for most of it's current life maintaining and updating the project to where it is today.
+						In the early ages of the trainer Johto took over, maintaining and updating the SSTools project.
 					</TextBlock>
 					<TextBlock TextWrapping="Wrap" Foreground="{DynamicResource MaterialDesignBodyLight}" FontSize="12" Margin="8">
-						The project is now in active developement by LeonBlade, Johto and Krisan Thyme.
+						Later on Krisan Thyme began work on a new branch - CMTools - which has since been merged into the main repo.
 					</TextBlock>
 					<TextBlock TextWrapping="Wrap" Foreground="{DynamicResource MaterialDesignBodyLight}" FontSize="12" Margin="8">
-						Special thanks to Goat for his contributions!
+						Special thanks to Goat and Seria Myouna for their contributions!
 					</TextBlock>
 					<TextBlock TextWrapping="Wrap" Foreground="{DynamicResource MaterialDesignBodyLight}" FontSize="12" Margin="8">
 						This project is powered by MaterialDesignInXAML, MahApps, Fody, Newtonsoft.Json and Memory.dll
