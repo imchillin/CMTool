@@ -45336,6 +45336,7 @@ namespace ConceptMatrix.Views
             if (dig.ShowDialog() == true)
             {
                 UncheckAll();
+                EditModeButton.IsChecked = true;
                 BoneSaves BoneLoader = JsonConvert.DeserializeObject<BoneSaves>(File.ReadAllText(dig.FileName));
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.PelvisX),
 MemoryManager.StringToByteArray(BoneLoader.Pelvis.Replace(" ", string.Empty)));
