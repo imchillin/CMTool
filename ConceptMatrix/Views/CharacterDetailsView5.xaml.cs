@@ -45209,44 +45209,80 @@ namespace ConceptMatrix.Views
                 BoneSaves BoneSaver = new BoneSaves();
                 BoneSaver.Description = result;
                 BoneSaver.DateCreated = DateTime.Now.ToLocalTime().ToString();
-                BoneSaver.Pelvis = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.PelvisX), 16));
-                BoneSaver.Waist = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.WaistX), 16));
-                BoneSaver.LeftThigh = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LThighX), 16));
-                BoneSaver.RightThigh = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RThighX), 16));
-                BoneSaver.Torso = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.TorsoX), 16));
-                BoneSaver.LeftKnee = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LKneeX), 16));
-                BoneSaver.RightKnee = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RKneeX), 16));
-                BoneSaver.RightBreast = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RBreastX), 16));
-                BoneSaver.LeftBreast = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LBreastX), 16));
-                BoneSaver.Sternum = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.SternumX), 16));
-                BoneSaver.LeftCalf = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LCalfX), 16));
-                BoneSaver.RightCalf = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RCalfX), 16));
-                BoneSaver.Neck = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.NeckX), 16));
-                BoneSaver.LeftClavicle = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LClavicleX), 16));
-                BoneSaver.RightClavicle = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RClavicleX), 16));
-                BoneSaver.LeftFoot = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LFootX), 16));
-                BoneSaver.RightFoot = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RFootX), 16));
+
+                #region Head, Face Features(Nostrils/Cheek/Mouth/Nose/Chin)
                 BoneSaver.Head = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.HeadX), 16));
-                BoneSaver.LeftArm = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LArmX), 16));
-                BoneSaver.RightArm = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RArmX), 16));
-                BoneSaver.LeftToes = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LToesX), 16));
-                BoneSaver.RightToes = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RToesX), 16));
-                BoneSaver.LeftEar = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEarX), 16));
-                BoneSaver.RightEar = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REarX), 16));
+                BoneSaver.Chin = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.ChinX), 16));
+                BoneSaver.Nostrils = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.NostrilsX), 16));
+                BoneSaver.LeftCheek = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LCheekX), 16));
+                BoneSaver.RightCheek = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RCheekX), 16));
+                BoneSaver.LeftMouth = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LMouthX), 16));
+                BoneSaver.RightMouth = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RMouthX), 16));
+                BoneSaver.Nose = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.NoseX), 16));
+                #endregion
+
+                #region Arms, Elbow, Forearms,Hands and Shoulders + Wrist
+
+                BoneSaver.LeftElbow = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LElbowX), 16));
+                BoneSaver.RightElbow = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RElbowX), 16));
+                BoneSaver.LeftWrist = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LWristX), 16));
+                BoneSaver.RightWrist = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RWristX), 16));
                 BoneSaver.LeftForearm = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LForearmX), 16));
                 BoneSaver.RightForearm = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RForearmX), 16));
                 BoneSaver.LeftShoulder = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LShoulderX), 16));
                 BoneSaver.RightShoulder = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RShoulderX), 16));
                 BoneSaver.LeftHand = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LHandX), 16));
                 BoneSaver.RightHand = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RHandX), 16));
+                BoneSaver.LeftArm = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LArmX), 16));
+                BoneSaver.RightArm = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RArmX), 16));
+
+
+                #endregion
+
+                #region Torso / Chest / Neck / Clavicle / Breast and Sternum
+                BoneSaver.Neck = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.NeckX), 16));
+                BoneSaver.LeftClavicle = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LClavicleX), 16));
+                BoneSaver.RightClavicle = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RClavicleX), 16));
+                BoneSaver.RightBreast = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RBreastX), 16));
+                BoneSaver.LeftBreast = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LBreastX), 16));
+                BoneSaver.Sternum = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.SternumX), 16));
+                BoneSaver.Torso = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.TorsoX), 16));
+
+                #endregion
+
+                #region Lower Body, Hips, Calf/calves, Knee, Pelvis and Thigh
+                BoneSaver.Pelvis = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.PelvisX), 16));
+                BoneSaver.Waist = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.WaistX), 16));
+                BoneSaver.LeftThigh = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LThighX), 16));
+                BoneSaver.RightThigh = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RThighX), 16));
+                BoneSaver.LeftKnee = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LKneeX), 16));
+                BoneSaver.RightKnee = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RKneeX), 16));
+
+                BoneSaver.LeftCalf = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LCalfX), 16));
+                BoneSaver.RightCalf = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RCalfX), 16));
+
+                #endregion
+
+                #region Foot / Toes
+                BoneSaver.LeftFoot = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LFootX), 16));
+                BoneSaver.RightFoot = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RFootX), 16));
+
+                BoneSaver.LeftToes = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LToesX), 16));
+                BoneSaver.RightToes = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RToesX), 16));
+
+                #endregion
+
+                #region Ears/Earring
                 BoneSaver.LeftEarring = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEarringX), 16));
                 BoneSaver.LeftEarring_2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEarring2X), 16));
                 BoneSaver.RightEarring = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REarringX), 16));
                 BoneSaver.RightEarring_2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REarring2X), 16));
-                BoneSaver.LeftElbow = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LElbowX), 16));
-                BoneSaver.RightElbow = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RElbowX), 16));
-                BoneSaver.LeftWrist = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LWristX), 16));
-                BoneSaver.RightWrist = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RWristX), 16));
+                BoneSaver.LeftEar = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEarX), 16));
+                BoneSaver.RightEar = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REarX), 16));
+
+                #endregion
+
+                #region Finger Bones
                 BoneSaver.LeftIndex = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LIndexX), 16));
                 BoneSaver.RightIndex = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RIndexX), 16));
                 BoneSaver.LeftPinky = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LPinkyX), 16));
@@ -45269,43 +45305,68 @@ namespace ConceptMatrix.Views
                 BoneSaver.LeftThumb_2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LThumb2X), 16));
                 BoneSaver.RightThumb_2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RThumb2X), 16));
 
+                #endregion
+
+                #region Tails
+
                 BoneSaver.Tail = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.TailX), 16));
                 BoneSaver.Tail_2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.Tail2X), 16));
                 BoneSaver.Tail_3 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.Tail3X), 16));
                 BoneSaver.Tail_4 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.Tail4X), 16));
                 BoneSaver.Tail_5 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.Tail5X), 16));
 
-                BoneSaver.Chin = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.ChinX), 16));
-                BoneSaver.LeftLowEyeLid = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LLowEyelidX), 16));
-                BoneSaver.RightLowEyeLid = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RLowEyelidX), 16));
-                BoneSaver.LeftInEyebrow = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LInEyebrowX), 16));
-                BoneSaver.RightInEyebrow = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RInEyebrowX), 16));
-                BoneSaver.LeftEyeLid = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEyelidX), 16));
-                BoneSaver.RightEyeLid = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REyelidX), 16));
+                #endregion
+
+                #region Eyes
                 BoneSaver.LeftEye = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEyeX), 16));
                 BoneSaver.RightEye = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REyeX), 16));
-                BoneSaver.Nostrils = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.NostrilsX), 16));
-                BoneSaver.LeftCheek = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LCheekX), 16));
-                BoneSaver.RightCheek = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RCheekX), 16));
-                BoneSaver.LeftMouth = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LMouthX), 16));
-                BoneSaver.RightMouth = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RMouthX), 16));
+                #endregion
+           
+                #region EyeLids
+                BoneSaver.LeftLowEyeLid = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LLowEyelidX), 16));
+                BoneSaver.RightLowEyeLid = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RLowEyelidX), 16));
+
+                BoneSaver.LeftEyeLid = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEyelidX), 16));
+                BoneSaver.RightEyeLid = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REyelidX), 16));
+
+                #endregion
+
+                #region Eyebrows (In & Out)
                 BoneSaver.LeftOutEyebrow = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LOutEyebrowX), 16));
                 BoneSaver.RightOutEyebrow = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.ROutEyebrowX), 16));
-                BoneSaver.Nose = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.NoseX), 16));
+                BoneSaver.LeftInEyebrow = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LInEyebrowX), 16));
+                BoneSaver.RightInEyebrow = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RInEyebrowX), 16));
+
+                #endregion
+
+                #region Lips (Up & Low)
                 BoneSaver.LeftLowLip = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LLowLipX), 16));
                 BoneSaver.RightLowLip = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RLowLipX), 16));
                 BoneSaver.LeftUpLip = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LUpLipX), 16));
                 BoneSaver.RightUpLip = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RUpLipX), 16));
+
+                #endregion
+          
+                #region Viera Ears (Low)
                 BoneSaver.LeftVieraLowEar3 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVLowEar3X), 16));
                 BoneSaver.RightVieraLowEar3 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowEar2X), 16));
                 BoneSaver.LeftVieraLowEar4 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVLowEar4X), 16));
                 BoneSaver.RightVieraLowEar4 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowEar3X), 16));
                 BoneSaver.RightVieraLowEar5 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowEar4X), 16));
+
+                #endregion
+              
+                #region Viera Lips (Up & Low)
                 BoneSaver.LeftVieraLowLip = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVLowLipX), 16));
                 ///       BoneSaver.LeftVieraUpLip = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVUpLipX), 16));
                 ///        Not Added in as offset?
                 BoneSaver.RightVieraUpLip = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVUpLipX), 16));
                 BoneSaver.RightVieraLowLip = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowLipX), 16));
+
+                #endregion
+
+                #region Viera Ears (Left & Right)
+
                 BoneSaver.RightVieraEar = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVEarX), 16));
                 BoneSaver.RightVieraEar2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVEar2X), 16));
                 BoneSaver.RightVieraEar3 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVEar3X), 16));
@@ -45314,7 +45375,8 @@ namespace ConceptMatrix.Views
                 BoneSaver.LeftVieraEar2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVEar2X), 16));
                 BoneSaver.LeftVieraEar3 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVEar3X), 16));
                 BoneSaver.LeftVieraEar4 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVEar4X), 16));
-
+         
+                #endregion
 
                 string details = JsonConvert.SerializeObject(BoneSaver, Formatting.Indented, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
                 File.WriteAllText(dig.FileName, details);
@@ -45333,6 +45395,27 @@ namespace ConceptMatrix.Views
                 UncheckAll();
                 EditModeButton.IsChecked = true;
                 BoneSaves BoneLoader = JsonConvert.DeserializeObject<BoneSaves>(File.ReadAllText(dig.FileName));
+                #region Head, Face Features (Nostrils/Cheek/Nose/Chin)
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.HeadX),
+MemoryManager.StringToByteArray(BoneLoader.Head.Replace(" ", string.Empty)));
+
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.NostrilsX),
+MemoryManager.StringToByteArray(BoneLoader.Nostrils.Replace(" ", string.Empty)));
+
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LCheekX),
+    MemoryManager.StringToByteArray(BoneLoader.LeftCheek.Replace(" ", string.Empty)));
+
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RCheekX),
+    MemoryManager.StringToByteArray(BoneLoader.RightCheek.Replace(" ", string.Empty)));
+
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.NoseX),
+    MemoryManager.StringToByteArray(BoneLoader.Nose.Replace(" ", string.Empty)));
+
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.ChinX),
+MemoryManager.StringToByteArray(BoneLoader.Chin.Replace(" ", string.Empty)));
+                #endregion
+
+                #region Lower Body, Hips, Calf/calves, Knee, Pelvis and Thigh
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.PelvisX),
 MemoryManager.StringToByteArray(BoneLoader.Pelvis.Replace(" ", string.Empty)));
 
@@ -45345,23 +45428,12 @@ MemoryManager.StringToByteArray(BoneLoader.LeftThigh.Replace(" ", string.Empty))
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RThighX),
     MemoryManager.StringToByteArray(BoneLoader.RightThigh.Replace(" ", string.Empty)));
 
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.TorsoX),
-MemoryManager.StringToByteArray(BoneLoader.Torso.Replace(" ", string.Empty)));
-
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LKneeX),
     MemoryManager.StringToByteArray(BoneLoader.LeftKnee.Replace(" ", string.Empty)));
 
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RKneeX),
 MemoryManager.StringToByteArray(BoneLoader.RightKnee.Replace(" ", string.Empty)));
 
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RBreastX),
-    MemoryManager.StringToByteArray(BoneLoader.RightBreast.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LBreastX),
-MemoryManager.StringToByteArray(BoneLoader.LeftBreast.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.SternumX),
-    MemoryManager.StringToByteArray(BoneLoader.Sternum.Replace(" ", string.Empty)));
 
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LCalfX),
 MemoryManager.StringToByteArray(BoneLoader.LeftCalf.Replace(" ", string.Empty)));
@@ -45369,14 +45441,32 @@ MemoryManager.StringToByteArray(BoneLoader.LeftCalf.Replace(" ", string.Empty)))
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RCalfX),
     MemoryManager.StringToByteArray(BoneLoader.RightCalf.Replace(" ", string.Empty)));
 
+                #endregion
+
+                #region Torso / Chest / Neck / Clavicle / Breast and Sternum
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.NeckX),
 MemoryManager.StringToByteArray(BoneLoader.Neck.Replace(" ", string.Empty)));
 
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.TorsoX),
+MemoryManager.StringToByteArray(BoneLoader.Torso.Replace(" ", string.Empty)));
+
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LClavicleX),
-    MemoryManager.StringToByteArray(BoneLoader.LeftClavicle.Replace(" ", string.Empty)));
+MemoryManager.StringToByteArray(BoneLoader.LeftClavicle.Replace(" ", string.Empty)));
 
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RClavicleX),
 MemoryManager.StringToByteArray(BoneLoader.RightClavicle.Replace(" ", string.Empty)));
+
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RBreastX),
+MemoryManager.StringToByteArray(BoneLoader.RightBreast.Replace(" ", string.Empty)));
+
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LBreastX),
+MemoryManager.StringToByteArray(BoneLoader.LeftBreast.Replace(" ", string.Empty)));
+
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.SternumX),
+    MemoryManager.StringToByteArray(BoneLoader.Sternum.Replace(" ", string.Empty)));
+                #endregion
+
+                #region Foot / Toes
 
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LFootX),
     MemoryManager.StringToByteArray(BoneLoader.LeftFoot.Replace(" ", string.Empty)));
@@ -45384,26 +45474,39 @@ MemoryManager.StringToByteArray(BoneLoader.RightClavicle.Replace(" ", string.Emp
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RFootX),
 MemoryManager.StringToByteArray(BoneLoader.RightFoot.Replace(" ", string.Empty)));
 
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.HeadX),
-    MemoryManager.StringToByteArray(BoneLoader.Head.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LArmX),
-MemoryManager.StringToByteArray(BoneLoader.LeftArm.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RArmX),
-    MemoryManager.StringToByteArray(BoneLoader.RightArm.Replace(" ", string.Empty)));
-
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LToesX),
 MemoryManager.StringToByteArray(BoneLoader.LeftToes.Replace(" ", string.Empty)));
 
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RToesX),
     MemoryManager.StringToByteArray(BoneLoader.RightToes.Replace(" ", string.Empty)));
+                #endregion
 
+                #region Ears / Earring
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEarX),
 MemoryManager.StringToByteArray(BoneLoader.LeftEar.Replace(" ", string.Empty)));
 
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REarX),
     MemoryManager.StringToByteArray(BoneLoader.RightEar.Replace(" ", string.Empty)));
+
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEarringX),
+MemoryManager.StringToByteArray(BoneLoader.LeftEarring.Replace(" ", string.Empty)));
+
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEarring2X),
+    MemoryManager.StringToByteArray(BoneLoader.LeftEarring_2.Replace(" ", string.Empty)));
+
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REarringX),
+MemoryManager.StringToByteArray(BoneLoader.RightEarring.Replace(" ", string.Empty)));
+
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REarring2X),
+    MemoryManager.StringToByteArray(BoneLoader.RightEarring_2.Replace(" ", string.Empty)));
+                #endregion
+
+                #region Arms / Forearms / Elbow / Hands and Shoulders + Wrist
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LArmX),
+MemoryManager.StringToByteArray(BoneLoader.LeftArm.Replace(" ", string.Empty)));
+
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RArmX),
+    MemoryManager.StringToByteArray(BoneLoader.RightArm.Replace(" ", string.Empty)));
 
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LForearmX),
 MemoryManager.StringToByteArray(BoneLoader.LeftForearm.Replace(" ", string.Empty)));
@@ -45423,18 +45526,6 @@ MemoryManager.StringToByteArray(BoneLoader.LeftHand.Replace(" ", string.Empty)))
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RHandX),
     MemoryManager.StringToByteArray(BoneLoader.RightHand.Replace(" ", string.Empty)));
 
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEarringX),
-MemoryManager.StringToByteArray(BoneLoader.LeftEarring.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEarring2X),
-    MemoryManager.StringToByteArray(BoneLoader.LeftEarring_2.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REarringX),
-MemoryManager.StringToByteArray(BoneLoader.RightEarring.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REarring2X),
-    MemoryManager.StringToByteArray(BoneLoader.RightEarring_2.Replace(" ", string.Empty)));
-
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LElbowX),
 MemoryManager.StringToByteArray(BoneLoader.LeftElbow.Replace(" ", string.Empty)));
 
@@ -45446,7 +45537,9 @@ MemoryManager.StringToByteArray(BoneLoader.LeftWrist.Replace(" ", string.Empty))
 
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RWristX),
     MemoryManager.StringToByteArray(BoneLoader.RightWrist.Replace(" ", string.Empty)));
+                #endregion
 
+                #region Finger Bones
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LIndexX),
 MemoryManager.StringToByteArray(BoneLoader.LeftIndex.Replace(" ", string.Empty)));
 
@@ -45506,9 +45599,11 @@ MemoryManager.StringToByteArray(BoneLoader.RightMiddle_2.Replace(" ", string.Emp
 
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RThumb2X),
 MemoryManager.StringToByteArray(BoneLoader.RightThumb_2.Replace(" ", string.Empty)));
+                #endregion
 
+                #region Tails
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.TailX),
-    MemoryManager.StringToByteArray(BoneLoader.Tail.Replace(" ", string.Empty)));
+MemoryManager.StringToByteArray(BoneLoader.Tail.Replace(" ", string.Empty)));
 
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.Tail2X),
     MemoryManager.StringToByteArray(BoneLoader.Tail_2.Replace(" ", string.Empty)));
@@ -45521,16 +45616,31 @@ MemoryManager.StringToByteArray(BoneLoader.Tail_4.Replace(" ", string.Empty)));
 
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.Tail5X),
 MemoryManager.StringToByteArray(BoneLoader.Tail_5.Replace(" ", string.Empty)));
+                #endregion
 
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.ChinX),
-    MemoryManager.StringToByteArray(BoneLoader.Chin.Replace(" ", string.Empty)));
-
+                #region Eyelids
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LLowEyelidX),
-    MemoryManager.StringToByteArray(BoneLoader.LeftLowEyeLid.Replace(" ", string.Empty)));
+MemoryManager.StringToByteArray(BoneLoader.LeftLowEyeLid.Replace(" ", string.Empty)));
 
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RLowEyelidX),
     MemoryManager.StringToByteArray(BoneLoader.RightLowEyeLid.Replace(" ", string.Empty)));
 
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEyelidX),
+    MemoryManager.StringToByteArray(BoneLoader.LeftEyeLid.Replace(" ", string.Empty)));
+
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REyelidX),
+    MemoryManager.StringToByteArray(BoneLoader.RightEyeLid.Replace(" ", string.Empty)));
+                #endregion
+
+                #region Eyes (Left & Right)
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEyeX),
+MemoryManager.StringToByteArray(BoneLoader.LeftEye.Replace(" ", string.Empty)));
+
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REyeX),
+MemoryManager.StringToByteArray(BoneLoader.RightEye.Replace(" ", string.Empty)));
+                #endregion
+
+                #region Eyebrows (In & Out)
 
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LInEyebrowX),
 MemoryManager.StringToByteArray(BoneLoader.LeftInEyebrow.Replace(" ", string.Empty)));
@@ -45538,44 +45648,16 @@ MemoryManager.StringToByteArray(BoneLoader.LeftInEyebrow.Replace(" ", string.Emp
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RInEyebrowX),
 MemoryManager.StringToByteArray(BoneLoader.RightInEyebrow.Replace(" ", string.Empty)));
 
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEyelidX),
-    MemoryManager.StringToByteArray(BoneLoader.LeftEyeLid.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REyelidX),
-    MemoryManager.StringToByteArray(BoneLoader.RightEyeLid.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEyeX),
-    MemoryManager.StringToByteArray(BoneLoader.LeftEye.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REyeX),
-MemoryManager.StringToByteArray(BoneLoader.RightEye.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.NostrilsX),
-MemoryManager.StringToByteArray(BoneLoader.Nostrils.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LCheekX),
-    MemoryManager.StringToByteArray(BoneLoader.LeftCheek.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RCheekX),
-    MemoryManager.StringToByteArray(BoneLoader.RightCheek.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LMouthX),
-    MemoryManager.StringToByteArray(BoneLoader.LeftMouth.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RMouthX),
-MemoryManager.StringToByteArray(BoneLoader.RightMouth.Replace(" ", string.Empty)));
-
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LOutEyebrowX),
 MemoryManager.StringToByteArray(BoneLoader.LeftOutEyebrow.Replace(" ", string.Empty)));
 
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.ROutEyebrowX),
     MemoryManager.StringToByteArray(BoneLoader.RightOutEyebrow.Replace(" ", string.Empty)));
+                #endregion
 
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.NoseX),
-    MemoryManager.StringToByteArray(BoneLoader.Nose.Replace(" ", string.Empty)));
-
+                #region Lips (Low & Up)
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LLowLipX),
-    MemoryManager.StringToByteArray(BoneLoader.LeftLowLip.Replace(" ", string.Empty)));
+MemoryManager.StringToByteArray(BoneLoader.LeftLowLip.Replace(" ", string.Empty)));
 
 
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RLowLipX),
@@ -45586,31 +45668,20 @@ MemoryManager.StringToByteArray(BoneLoader.LeftUpLip.Replace(" ", string.Empty))
 
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RUpLipX),
     MemoryManager.StringToByteArray(BoneLoader.RightUpLip.Replace(" ", string.Empty)));
+                #endregion
 
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVLowEar3X),
-    MemoryManager.StringToByteArray(BoneLoader.LeftVieraLowEar3.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowEar2X),
-    MemoryManager.StringToByteArray(BoneLoader.RightVieraLowEar3.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVLowEar4X),
-MemoryManager.StringToByteArray(BoneLoader.LeftVieraLowEar4.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowEar3X),
-MemoryManager.StringToByteArray(BoneLoader.RightVieraLowEar4.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowEar4X),
-    MemoryManager.StringToByteArray(BoneLoader.RightVieraLowEar5.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVLowLipX),
-    MemoryManager.StringToByteArray(BoneLoader.LeftVieraLowLip.Replace(" ", string.Empty)));
-
+                #region Viera Lips (Low & Up)
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVUpLipX),
-    MemoryManager.StringToByteArray(BoneLoader.RightVieraUpLip.Replace(" ", string.Empty)));
+MemoryManager.StringToByteArray(BoneLoader.RightVieraUpLip.Replace(" ", string.Empty)));
 
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowLipX),
 MemoryManager.StringToByteArray(BoneLoader.RightVieraLowLip.Replace(" ", string.Empty)));
 
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVLowLipX),
+MemoryManager.StringToByteArray(BoneLoader.LeftVieraLowLip.Replace(" ", string.Empty)));
+                #endregion
+
+                #region Viera Ears(Right & Left)
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVEarX),
 MemoryManager.StringToByteArray(BoneLoader.RightVieraEar.Replace(" ", string.Empty)));
 
@@ -45634,6 +45705,31 @@ MemoryManager.StringToByteArray(BoneLoader.LeftVieraEar2.Replace(" ", string.Emp
 
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVEar4X),
     MemoryManager.StringToByteArray(BoneLoader.LeftVieraEar4.Replace(" ", string.Empty)));
+                #endregion
+
+                #region Viera Ears (Low)
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVLowEar3X),
+MemoryManager.StringToByteArray(BoneLoader.LeftVieraLowEar3.Replace(" ", string.Empty)));
+
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowEar2X),
+    MemoryManager.StringToByteArray(BoneLoader.RightVieraLowEar3.Replace(" ", string.Empty)));
+
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVLowEar4X),
+MemoryManager.StringToByteArray(BoneLoader.LeftVieraLowEar4.Replace(" ", string.Empty)));
+
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowEar3X),
+MemoryManager.StringToByteArray(BoneLoader.RightVieraLowEar4.Replace(" ", string.Empty)));
+
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowEar4X),
+    MemoryManager.StringToByteArray(BoneLoader.RightVieraLowEar5.Replace(" ", string.Empty)));
+                #endregion
+
+                #region Mouths
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RMouthX),
+MemoryManager.StringToByteArray(BoneLoader.RightMouth.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LMouthX),
+MemoryManager.StringToByteArray(BoneLoader.LeftMouth.Replace(" ", string.Empty)));
+                #endregion
             }
             else return;
         }
