@@ -668,7 +668,34 @@ namespace ConceptMatrix.Views
                 if (CharacterDetails.RBust.Activated == true) { CharacterDetails.RBust.freeze = true; CharacterDetails.RBust.Activated = false; }
                 return;
             }
-            MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Race), _cGearSet.Customize);
+            byte[] CharacterBytes = _cGearSet.Customize;
+            CharacterDetails.Race.value = CharacterBytes[0];
+            CharacterDetails.Gender.value = CharacterBytes[1];
+            CharacterDetails.BodyType.value = CharacterBytes[2];
+            CharacterDetails.RHeight.value = CharacterBytes[3];
+            CharacterDetails.Clan.value = CharacterBytes[4];
+            CharacterDetails.Head.value = CharacterBytes[5];
+            CharacterDetails.Hair.value = CharacterBytes[6];
+            CharacterDetails.Highlights.value = CharacterBytes[7];
+            CharacterDetails.Skintone.value = CharacterBytes[8];
+            CharacterDetails.RightEye.value = CharacterBytes[9];
+            CharacterDetails.HairTone.value = CharacterBytes[10];
+            CharacterDetails.HighlightTone.value = CharacterBytes[11];
+            CharacterDetails.FacialFeatures.value = CharacterBytes[12];
+            CharacterDetails.LimbalEyes.value = CharacterBytes[13];
+            CharacterDetails.EyeBrowType.value = CharacterBytes[14];
+            CharacterDetails.LeftEye.value = CharacterBytes[15];
+            CharacterDetails.Eye.value = CharacterBytes[16];
+            CharacterDetails.Nose.value = CharacterBytes[17];
+            CharacterDetails.Jaw.value = CharacterBytes[18];
+            CharacterDetails.Lips.value = CharacterBytes[19];
+            CharacterDetails.LipsTone.value = CharacterBytes[20];
+            CharacterDetails.TailorMuscle.value = CharacterBytes[21];
+            CharacterDetails.TailType.value = CharacterBytes[22];
+            CharacterDetails.RBust.value = CharacterBytes[23];
+            CharacterDetails.FacePaint.value = CharacterBytes[24];
+            CharacterDetails.FacePaintColor.value = CharacterBytes[25];
+            MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Race), CharacterBytes);
             Task.Delay(25).Wait();
             if (CharacterDetails.LimbalEyes.Activated == true) { CharacterDetails.LimbalEyes.freeze = true; CharacterDetails.LimbalEyes.Activated = false; }
             if (CharacterDetails.Highlights.Activated == true) { CharacterDetails.Highlights.freeze = true; CharacterDetails.Highlights.Activated = false; }
