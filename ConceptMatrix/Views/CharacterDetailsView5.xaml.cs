@@ -45394,6 +45394,7 @@ namespace ConceptMatrix.Views
             {
                 UncheckAll();
                 EditModeButton.IsChecked = true;
+                PhysicsButton.IsChecked = true;
                 BoneSaves BoneLoader = JsonConvert.DeserializeObject<BoneSaves>(File.ReadAllText(dig.FileName));
                 #region Head, Face Features (Nostrils/Cheek/Nose/Chin)
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.HeadX),
@@ -45730,6 +45731,9 @@ MemoryManager.StringToByteArray(BoneLoader.RightMouth.Replace(" ", string.Empty)
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LMouthX),
 MemoryManager.StringToByteArray(BoneLoader.LeftMouth.Replace(" ", string.Empty)));
                 #endregion
+
+                Task.Delay(1000).Wait();
+                PhysicsButton.IsChecked = false;
             }
             else return;
         }
