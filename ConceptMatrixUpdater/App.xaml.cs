@@ -39,10 +39,10 @@ namespace ConceptMatrixUpdater
 					window.ForceCheckUpdate = true;
 			}
 
-#if DEBUG
+/*#if DEBUG
 			// Force check update while in debug.
 			window.ForceCheckUpdate = true;
-#endif
+#endif*/
 
 			// Initialize the update process.
 			if (window.Initialize())
