@@ -45199,13 +45199,9 @@ namespace ConceptMatrix.Views
 
         private void SaveBones_Click(object sender, RoutedEventArgs e)
         {
-            DisableAll();
             MainWindow.CurrentlySaving = true;
-            string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Saves");
-            if (!Directory.Exists(path)) { System.IO.Directory.CreateDirectory(path); }
             SaveFileDialog dig = new SaveFileDialog();
             dig.Filter = "Json File(*.json)|*.json";
-            dig.InitialDirectory = path;
             if (dig.ShowDialog() == true)
             {
                 string extension = System.IO.Path.GetExtension(".json");
@@ -45330,7 +45326,6 @@ namespace ConceptMatrix.Views
         private void LoadBones_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dig = new OpenFileDialog();
-            dig.InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Saves");
             dig.Filter = "Json File(*.json)|*.json";
             dig.DefaultExt = ".json";
             if (dig.ShowDialog() == true)
