@@ -160,6 +160,14 @@
         <RHandY>98,68,140,18,C44</RHandY>
         <RHandZ>98,68,140,18,C48</RHandZ>
         <RHandW>98,68,140,18,C4C</RHandW>
+        <LShieldX>98,68,140,18,C70</LShieldX>
+        <LShieldY>98,68,140,18,C74</LShieldY>
+        <LShieldZ>98,68,140,18,C78</LShieldZ>
+        <LShieldW>98,68,140,18,C7C</LShieldW>
+        <RShieldX>98,68,140,18,CA0</RShieldX>
+        <RShieldY>98,68,140,18,CA4</RShieldY>
+        <RShieldZ>98,68,140,18,CA8</RShieldZ>
+        <RShieldW>98,68,140,18,CAC</RShieldW>
         <LEarringX>98,68,140,18,CD0</LEarringX>
         <LEarringY>98,68,140,18,CD4</LEarringY>
         <LEarringZ>98,68,140,18,CD8</LEarringZ>
@@ -272,6 +280,14 @@
         <RThumb2Y>98,68,140,18,12A4</RThumb2Y>
         <RThumb2Z>98,68,140,18,12A8</RThumb2Z>
         <RThumb2W>98,68,140,18,12AC</RThumb2W>
+        <LWeaponX>98,68,140,18,1030</LWeaponX>
+        <LWeaponY>98,68,140,18,1034</LWeaponY>
+        <LWeaponZ>98,68,140,18,1038</LWeaponZ>
+        <LWeaponW>98,68,140,18,103C</LWeaponW>
+        <RWeaponX>98,68,140,18,1060</RWeaponX>
+        <RWeaponY>98,68,140,18,1064</RWeaponY>
+        <RWeaponZ>98,68,140,18,1068</RWeaponZ>
+        <RWeaponW>98,68,140,18,106C</RWeaponW>
         <TailX>98,68,140,18,12D0</TailX>
         <TailY>98,68,140,18,12D4</TailY>
         <TailZ>98,68,140,18,12D8</TailZ>
