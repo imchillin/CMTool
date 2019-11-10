@@ -45201,10 +45201,10 @@ namespace ConceptMatrix.Views
         {
             MainWindow.CurrentlySaving = true;
             SaveFileDialog dig = new SaveFileDialog();
-            dig.Filter = "Json File(*.json)|*.json";
+            dig.Filter = "Concept Matrix Pose File(*.cmp)|*.cmp";
             if (dig.ShowDialog() == true)
             {
-                string extension = System.IO.Path.GetExtension(".json");
+                string extension = System.IO.Path.GetExtension(".cmp");
                 string result = dig.SafeFileName.Substring(0, dig.SafeFileName.Length - extension.Length);
                 BoneSaves BoneSaver = new BoneSaves();
                 BoneSaver.Description = result;
@@ -45388,8 +45388,8 @@ namespace ConceptMatrix.Views
         private void LoadBones_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dig = new OpenFileDialog();
-            dig.Filter = "Json File(*.json)|*.json";
-            dig.DefaultExt = ".json";
+            dig.Filter = "Concept Matrix Pose File(*.cmp)|*.cmp";
+            dig.DefaultExt = ".cmp";
             if (dig.ShowDialog() == true)
             {
                 UncheckAll();

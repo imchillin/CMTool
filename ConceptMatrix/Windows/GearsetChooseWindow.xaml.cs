@@ -63,7 +63,7 @@ namespace ConceptMatrix.Windows
                 return output;
             }
 
-            var files = Directory.GetFiles(PathX, "*.json*");
+            var files = Directory.GetFiles(PathX, "*.cma*").Union(Directory.GetFiles(PathX, "*.json*")).ToArray();
 
             foreach (var file in files)
             {

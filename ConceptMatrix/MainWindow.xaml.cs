@@ -231,12 +231,12 @@ namespace ConceptMatrix
                 string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Saves");
                 if (!Directory.Exists(path)) { System.IO.Directory.CreateDirectory(path); }
                 SaveFileDialog dig = new SaveFileDialog();
-                dig.Filter = "Json File(*.json)|*.json";
+                dig.Filter = "Concept Matrix Appearance File(*.cma)|*.cma";
                 dig.InitialDirectory = path;
                 if (dig.ShowDialog() == true)
                 {
                     CharSaves Save1 = new CharSaves(); // Gearsave is class with all 
-                    string extension = System.IO.Path.GetExtension(".json");
+                    string extension = System.IO.Path.GetExtension(".cma");
                     string result = dig.SafeFileName.Substring(0, dig.SafeFileName.Length - extension.Length);
                     Save1.Description = result;
                     Save1.DateCreated = DateTime.Now.ToLocalTime().ToString();
@@ -255,7 +255,7 @@ namespace ConceptMatrix
             {
                 string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Saves");
                 if (!Directory.Exists(path)) { System.IO.Directory.CreateDirectory(path); }
-                var c = new Windows.GearSave("Save Character Save", "Write Character Save name here...");
+                var c = new Windows.GearSave("Save Concept Matrix Appearance File", "Write Character Save name here...");
                 c.Owner = Application.Current.MainWindow;
                 c.ShowDialog();
                 if (c.Filename == null) { CurrentlySaving = false; return; }
@@ -270,7 +270,7 @@ namespace ConceptMatrix
                     Save1.CharacterBytes = CharacterDetails.TestArray.value;
                     Save1.characterDetails = CharacterDetails;
                     string details = JsonConvert.SerializeObject(Save1, Formatting.Indented);
-                    File.WriteAllText(Path.Combine(path, c.Filename + ".json"), details);
+                    File.WriteAllText(Path.Combine(path, c.Filename + ".cma"), details);
                     CurrentlySaving = false;
                 }
             }
@@ -306,8 +306,8 @@ namespace ConceptMatrix
                 string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Gearsets");
                 if (!Directory.Exists(path)) { System.IO.Directory.CreateDirectory(path);  }
                 dig.InitialDirectory = path;
-                dig.Filter = "Json File(*.json)|*.json";
-                dig.DefaultExt = ".json";
+                dig.Filter = "Concept Matrix Appearance File(*.cma;*.json)|*.cma;*.json";
+                dig.DefaultExt = ".cma";
                 if (dig.ShowDialog() == true)
                 {
                     GearSaves load1 = JsonConvert.DeserializeObject<GearSaves>(File.ReadAllText(dig.FileName));
@@ -463,8 +463,8 @@ namespace ConceptMatrix
             {
                 OpenFileDialog dig = new OpenFileDialog();
                 dig.InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Saves");
-                dig.Filter = "Json File(*.json)|*.json";
-                dig.DefaultExt = ".json";
+                dig.Filter = "Concept Matrix Appearance File(*.cma;*.json)|*.cma;*.json";
+                dig.DefaultExt = ".cma";
                 if (dig.ShowDialog() == true)
                 {
                     CharSaves load1 = JsonConvert.DeserializeObject<CharSaves>(File.ReadAllText(dig.FileName));
@@ -490,8 +490,8 @@ namespace ConceptMatrix
             {
                 OpenFileDialog dig = new OpenFileDialog();
                 dig.InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Saves");
-                dig.Filter = "Json File(*.json)|*.json";
-                dig.DefaultExt = ".json";
+                dig.Filter = "Concept Matrix Appearance File(*.cma;*.json)|*.cma;*.json";
+                dig.DefaultExt = ".cma";
                 if (dig.ShowDialog() == true)
                 {
                     CharSaves load1 = JsonConvert.DeserializeObject<CharSaves>(File.ReadAllText(dig.FileName));
@@ -517,8 +517,8 @@ namespace ConceptMatrix
             {
                 OpenFileDialog dig = new OpenFileDialog();
                 dig.InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Saves");
-                dig.Filter = "Json File(*.json)|*.json";
-                dig.DefaultExt = ".json";
+                dig.Filter = "Concept Matrix Appearance File(*.cma;*.json)|*.cma;*.json";
+                dig.DefaultExt = ".cma";
                 if (dig.ShowDialog() == true)
                 {
                     CharSaves load1 = JsonConvert.DeserializeObject<CharSaves>(File.ReadAllText(dig.FileName));
