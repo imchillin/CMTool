@@ -45175,11 +45175,10 @@ namespace ConceptMatrix.Views
 
             public string LeftVieraLowEar3 { get; set; }
             public string LeftVieraLowEar4 { get; set; }
-        //    public string LeftVieraLowEar5 { get; set; }
 
+            public string RightVieraLowEar2 { get; set; }
             public string RightVieraLowEar3 { get; set; }
             public string RightVieraLowEar4 { get; set; }
-            public string RightVieraLowEar5 { get; set; }
 
             public string LeftVieraEar { get; set; }
             public string LeftVieraEar2 { get; set; }
@@ -45192,7 +45191,6 @@ namespace ConceptMatrix.Views
             public string RightVieraEar4 { get; set; }
 
             public string LeftVieraLowLip { get; set; }
-     //       public string LeftVieraUpLip { get; set; }
             public string RightVieraUpLip { get; set; }
             public string RightVieraLowLip { get; set; }
         }
@@ -45350,17 +45348,15 @@ namespace ConceptMatrix.Views
           
                 #region Viera Ears (Low)
                 BoneSaver.LeftVieraLowEar3 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVLowEar3X), 16));
-                BoneSaver.RightVieraLowEar3 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowEar2X), 16));
+                BoneSaver.RightVieraLowEar2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowEar2X), 16));
                 BoneSaver.LeftVieraLowEar4 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVLowEar4X), 16));
-                BoneSaver.RightVieraLowEar4 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowEar3X), 16));
-                BoneSaver.RightVieraLowEar5 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowEar4X), 16));
+                BoneSaver.RightVieraLowEar3 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowEar3X), 16));
+                BoneSaver.RightVieraLowEar4 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowEar4X), 16));
 
                 #endregion
               
                 #region Viera Lips (Up & Low)
                 BoneSaver.LeftVieraLowLip = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVLowLipX), 16));
-                ///       BoneSaver.LeftVieraUpLip = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVUpLipX), 16));
-                ///        Not Added in as offset?
                 BoneSaver.RightVieraUpLip = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVUpLipX), 16));
                 BoneSaver.RightVieraLowLip = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowLipX), 16));
 
@@ -45715,16 +45711,16 @@ MemoryManager.StringToByteArray(BoneLoader.LeftVieraEar2.Replace(" ", string.Emp
 MemoryManager.StringToByteArray(BoneLoader.LeftVieraLowEar3.Replace(" ", string.Empty)));
 
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowEar2X),
-    MemoryManager.StringToByteArray(BoneLoader.RightVieraLowEar3.Replace(" ", string.Empty)));
+    MemoryManager.StringToByteArray(BoneLoader.RightVieraLowEar2.Replace(" ", string.Empty)));
 
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVLowEar4X),
 MemoryManager.StringToByteArray(BoneLoader.LeftVieraLowEar4.Replace(" ", string.Empty)));
 
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowEar3X),
-MemoryManager.StringToByteArray(BoneLoader.RightVieraLowEar4.Replace(" ", string.Empty)));
+MemoryManager.StringToByteArray(BoneLoader.RightVieraLowEar3.Replace(" ", string.Empty)));
 
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowEar4X),
-    MemoryManager.StringToByteArray(BoneLoader.RightVieraLowEar5.Replace(" ", string.Empty)));
+    MemoryManager.StringToByteArray(BoneLoader.RightVieraLowEar4.Replace(" ", string.Empty)));
                 #endregion
 
                 #region Mouths
