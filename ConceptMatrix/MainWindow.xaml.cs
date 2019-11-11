@@ -107,6 +107,7 @@ namespace ConceptMatrix
             ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
             try
             {
+                if (!File.Exists($"{App.UpdaterBin}.exe")) return;
                 var proc = new Process();
                 proc.StartInfo.FileName = Path.Combine(Environment.CurrentDirectory, $"{App.UpdaterBin}.exe");
                 proc.StartInfo.UseShellExecute = true;
