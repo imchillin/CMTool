@@ -2527,29 +2527,6 @@ namespace ConceptMatrix.ViewModel
                     CharacterDetails.RVEar4Rotate = true;
                 }
 
-                if (CharacterDetails.DebugCheck)
-                {
-                    CharacterDetails.DebugX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.DebugX));
-                    CharacterDetails.DebugY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.DebugY));
-                    CharacterDetails.DebugZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.DebugZ));
-                    CharacterDetails.DebugW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.DebugW));
-
-                    // Create euler angles from the quaternion.
-                    var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.DebugX.value,
-                        CharacterDetails.DebugY.value,
-                        CharacterDetails.DebugZ.value,
-                        CharacterDetails.DebugW.value
-                    ).ToEulerAngles();
-
-                    CharacterDetails.BoneX = (float)euler.X;
-                    CharacterDetails.BoneY = (float)euler.Y;
-                    CharacterDetails.BoneZ = (float)euler.Z;
-
-                    CharacterDetails.DebugCheck = false;
-                    CharacterDetails.DebugRotate = true;
-                }
-
                 if (CharacterDetails.LEarringCheck)
                 {
                     CharacterDetails.LEarringX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEarringX));
@@ -2824,6 +2801,98 @@ namespace ConceptMatrix.ViewModel
 
                     CharacterDetails.RVLowEar4Check = false;
                     CharacterDetails.RVLowEar4Rotate = true;
+                }
+
+                if (CharacterDetails.LShieldCheck)
+                {
+                    CharacterDetails.LShieldX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LShieldX));
+                    CharacterDetails.LShieldY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LShieldY));
+                    CharacterDetails.LShieldZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LShieldZ));
+                    CharacterDetails.LShieldW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LShieldW));
+
+                    // Create euler angles from the quaternion.
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.LShieldX.value,
+                        CharacterDetails.LShieldY.value,
+                        CharacterDetails.LShieldZ.value,
+                        CharacterDetails.LShieldW.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.LShieldCheck = false;
+                    CharacterDetails.LShieldRotate = true;
+                }
+
+                if (CharacterDetails.RShieldCheck)
+                {
+                    CharacterDetails.RShieldX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RShieldX));
+                    CharacterDetails.RShieldY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RShieldY));
+                    CharacterDetails.RShieldZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RShieldZ));
+                    CharacterDetails.RShieldW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RShieldW));
+
+                    // Create euler angles from the quaternion.
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.RShieldX.value,
+                        CharacterDetails.RShieldY.value,
+                        CharacterDetails.RShieldZ.value,
+                        CharacterDetails.RShieldW.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.RShieldCheck = false;
+                    CharacterDetails.RShieldRotate = true;
+                }
+
+                if (CharacterDetails.LWeaponCheck)
+                {
+                    CharacterDetails.LWeaponX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LWeaponX));
+                    CharacterDetails.LWeaponY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LWeaponY));
+                    CharacterDetails.LWeaponZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LWeaponZ));
+                    CharacterDetails.LWeaponW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LWeaponW));
+
+                    // Create euler angles from the quaternion.
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.LWeaponX.value,
+                        CharacterDetails.LWeaponY.value,
+                        CharacterDetails.LWeaponZ.value,
+                        CharacterDetails.LWeaponW.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.LWeaponCheck = false;
+                    CharacterDetails.LWeaponRotate = true;
+                }
+
+                if (CharacterDetails.RWeaponCheck)
+                {
+                    CharacterDetails.RWeaponX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RWeaponX));
+                    CharacterDetails.RWeaponY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RWeaponY));
+                    CharacterDetails.RWeaponZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RWeaponZ));
+                    CharacterDetails.RWeaponW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RWeaponW));
+
+                    // Create euler angles from the quaternion.
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.RWeaponX.value,
+                        CharacterDetails.RWeaponY.value,
+                        CharacterDetails.RWeaponZ.value,
+                        CharacterDetails.RWeaponW.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.RWeaponCheck = false;
+                    CharacterDetails.RWeaponRotate = true;
                 }
                 #endregion
 

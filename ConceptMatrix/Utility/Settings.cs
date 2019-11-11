@@ -250,11 +250,6 @@ namespace ConceptMatrix.Utility
         public string Rotation3 { get; set; }
         public string Rotation4 { get; set; }
 
-        public string DebugX { get; set; }
-        public string DebugY { get; set; }
-        public string DebugZ { get; set; }
-        public string DebugW { get; set; }
-
         public string HeadX { get; set; }
         public string NoseX { get; set; }
         public string NostrilsX { get; set; }
@@ -355,6 +350,10 @@ namespace ConceptMatrix.Utility
         public string RVLowEar3X { get; set; }
         public string LVLowEar4X { get; set; }
         public string RVLowEar4X { get; set; }
+        public string LShieldX { get; set; }
+        public string RShieldX { get; set; }
+        public string LWeaponX { get; set; }
+        public string RWeaponX { get; set; }
 
         public string HeadY { get; set; }
         public string NoseY { get; set; }
@@ -456,6 +455,10 @@ namespace ConceptMatrix.Utility
         public string RVLowEar3Y { get; set; }
         public string LVLowEar4Y { get; set; }
         public string RVLowEar4Y { get; set; }
+        public string LShieldY { get; set; }
+        public string RShieldY { get; set; }
+        public string LWeaponY { get; set; }
+        public string RWeaponY { get; set; }
 
         public string HeadZ { get; set; }
         public string NoseZ { get; set; }
@@ -557,6 +560,10 @@ namespace ConceptMatrix.Utility
         public string RVLowEar3Z { get; set; }
         public string LVLowEar4Z { get; set; }
         public string RVLowEar4Z { get; set; }
+        public string LShieldZ { get; set; }
+        public string RShieldZ { get; set; }
+        public string LWeaponZ { get; set; }
+        public string RWeaponZ { get; set; }
 
         public string HeadW { get; set; }
         public string NoseW { get; set; }
@@ -658,6 +665,10 @@ namespace ConceptMatrix.Utility
         public string RVLowEar3W { get; set; }
         public string LVLowEar4W { get; set; }
         public string RVLowEar4W { get; set; }
+        public string LShieldW { get; set; }
+        public string RShieldW { get; set; }
+        public string LWeaponW { get; set; }
+        public string RWeaponW { get; set; }
     }
 
     [Serializable]

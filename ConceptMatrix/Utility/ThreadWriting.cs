@@ -791,14 +791,6 @@ namespace ConceptMatrix.Utility
                         m.writeBytes(GAS(c.Body.Base, c.Body.Position.RToesW), CharacterDetails.RToesW.GetBytes());
                     }
 
-                    if (CharacterDetails.DebugRotate)
-                    {
-                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.DebugX), CharacterDetails.DebugX.GetBytes());
-                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.DebugY), CharacterDetails.DebugY.GetBytes());
-                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.DebugZ), CharacterDetails.DebugZ.GetBytes());
-                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.DebugW), CharacterDetails.DebugW.GetBytes());
-                    }
-
                     if (CharacterDetails.LVEarRotate)
                     {
                         m.writeBytes(GAS(c.Body.Base, c.Body.Position.LVEarX), CharacterDetails.LVEarX.GetBytes());
@@ -957,6 +949,38 @@ namespace ConceptMatrix.Utility
                         m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowEar4Y), CharacterDetails.RVLowEar4Y.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowEar4Z), CharacterDetails.RVLowEar4Z.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Position.RVLowEar4W), CharacterDetails.RVLowEar4W.GetBytes());
+                    }
+
+                    if (CharacterDetails.LShieldRotate)
+                    {
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LShieldX), CharacterDetails.LShieldX.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LShieldY), CharacterDetails.LShieldY.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LShieldZ), CharacterDetails.LShieldZ.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LShieldW), CharacterDetails.LShieldW.GetBytes());
+                    }
+
+                    if (CharacterDetails.RShieldRotate)
+                    {
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RShieldX), CharacterDetails.RShieldX.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RShieldY), CharacterDetails.RShieldY.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RShieldZ), CharacterDetails.RShieldZ.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RShieldW), CharacterDetails.RShieldW.GetBytes());
+                    }
+
+                    if (CharacterDetails.LWeaponRotate)
+                    {
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LWeaponX), CharacterDetails.LWeaponX.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LWeaponY), CharacterDetails.LWeaponY.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LWeaponZ), CharacterDetails.LWeaponZ.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.LWeaponW), CharacterDetails.LWeaponW.GetBytes());
+                    }
+
+                    if (CharacterDetails.RWeaponRotate)
+                    {
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RWeaponX), CharacterDetails.RWeaponX.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RWeaponY), CharacterDetails.RWeaponY.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RWeaponZ), CharacterDetails.RWeaponZ.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.RWeaponW), CharacterDetails.RWeaponW.GetBytes());
                     }
 
 

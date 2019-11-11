@@ -35,11 +35,6 @@
         <Rotation3>68</Rotation3>
         <Rotation4>6C</Rotation4>
 
-        <DebugX>98,68,300,18,10</DebugX>
-        <DebugY>98,68,300,18,14</DebugY>
-        <DebugZ>98,68,300,18,18</DebugZ>
-        <DebugW>98,68,300,18,1C</DebugW>
-        
         <PelvisX>98,68,140,18,A0</PelvisX>
         <PelvisY>98,68,140,18,A4</PelvisY>
         <PelvisZ>98,68,140,18,A8</PelvisZ>

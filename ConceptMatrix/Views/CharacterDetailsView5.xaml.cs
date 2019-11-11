@@ -539,15 +539,6 @@ namespace ConceptMatrix.Views
         #region Sliders
         private void BoneSliders_SourceUpdated(object sender, DataTransferEventArgs e)
         {
-            if (CharacterDetails.DebugRotate)
-            {
-                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
-                {
-                    BoneSlider.ValueChanged -= DebugRot;
-                    BoneSlider.ValueChanged += DebugRot;
-                }
-            }
-
             if (CharacterDetails.HeadRotate)
             {
                 if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
@@ -1461,15 +1452,6 @@ namespace ConceptMatrix.Views
 
         private void BoneSliders2_SourceUpdated(object sender, DataTransferEventArgs e)
         {
-            if (CharacterDetails.DebugRotate)
-            {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
-                {
-                    BoneSlider2.ValueChanged -= DebugRot;
-                    BoneSlider2.ValueChanged += DebugRot;
-                }
-            }
-
             if (CharacterDetails.HeadRotate)
             {
                 if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
@@ -2374,15 +2356,6 @@ namespace ConceptMatrix.Views
 
         private void BoneSliders3_SourceUpdated(object sender, DataTransferEventArgs e)
         {
-            if (CharacterDetails.DebugRotate)
-            {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
-                {
-                    BoneSlider3.ValueChanged -= DebugRot;
-                    BoneSlider3.ValueChanged += DebugRot;
-                }
-            }
-
             if (CharacterDetails.HeadRotate)
             {
                 if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
@@ -3289,15 +3262,6 @@ namespace ConceptMatrix.Views
         #region UpDowns
         private void BoneUpDown_SourceUpdated(object sender, DataTransferEventArgs e)
         {
-            if (CharacterDetails.DebugRotate)
-            {
-                if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
-                {
-                    BoneUpDown.ValueChanged -= DebugRot2;
-                    BoneUpDown.ValueChanged += DebugRot2;
-                }
-            }
-
             if (CharacterDetails.HeadRotate)
             {
                 if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
@@ -4202,15 +4166,6 @@ namespace ConceptMatrix.Views
 
         private void BoneUpDown2_SourceUpdated(object sender, DataTransferEventArgs e)
         {
-            if (CharacterDetails.DebugRotate)
-            {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
-                {
-                    BoneUpDown2.ValueChanged -= DebugRot2;
-                    BoneUpDown2.ValueChanged += DebugRot2;
-                }
-            }
-
             if (CharacterDetails.HeadRotate)
             {
                 if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
@@ -5115,15 +5070,6 @@ namespace ConceptMatrix.Views
 
         private void BoneUpDown3_SourceUpdated(object sender, DataTransferEventArgs e)
         {
-            if (CharacterDetails.DebugRotate)
-            {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
-                {
-                    BoneUpDown3.ValueChanged -= DebugRot2;
-                    BoneUpDown3.ValueChanged += DebugRot2;
-                }
-            }
-
             if (CharacterDetails.HeadRotate)
             {
                 if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
@@ -6025,133 +5971,6 @@ namespace ConceptMatrix.Views
             }
         }
 
-        #endregion
-
-        #region Debug
-        private void DebugRot(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            // Get the euler angles from UI.	
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.DebugX.value = (float)quat.X;
-            CharacterDetails.DebugY.value = (float)quat.Y;
-            CharacterDetails.DebugZ.value = (float)quat.Z;
-            CharacterDetails.DebugW.value = (float)quat.W;
-            // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= DebugRot;
-            BoneSlider2.ValueChanged -= DebugRot;
-            BoneSlider3.ValueChanged -= DebugRot;
-        }
-
-        private void DebugRot2(object sender, RoutedPropertyChangedEventArgs<double?> e)
-        {
-            // Get the euler angles from UI.	
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.DebugX.value = (float)quat.X;
-            CharacterDetails.DebugY.value = (float)quat.Y;
-            CharacterDetails.DebugZ.value = (float)quat.Z;
-            CharacterDetails.DebugW.value = (float)quat.W;
-            // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= DebugRot2;
-            BoneUpDown2.ValueChanged -= DebugRot2;
-            BoneUpDown3.ValueChanged -= DebugRot2;
-        }
-
-        private void DebugButton_Checked(object sender, RoutedEventArgs e)
-        {
-            //Disable Other Selections
-            HeadButton.IsChecked = false;
-            NoseButton.IsChecked = false;
-            NostrilsButton.IsChecked = false;
-            ChinButton.IsChecked = false;
-            LOutEyebrowButton.IsChecked = false;
-            ROutEyebrowButton.IsChecked = false;
-            LInEyebrowButton.IsChecked = false;
-            RInEyebrowButton.IsChecked = false;
-            LEyeButton.IsChecked = false;
-            REyeButton.IsChecked = false;
-            LEyelidButton.IsChecked = false;
-            REyelidButton.IsChecked = false;
-            LLowEyelidButton.IsChecked = false;
-            RLowEyelidButton.IsChecked = false;
-            LEarButton.IsChecked = false;
-            REarButton.IsChecked = false;
-            LCheekButton.IsChecked = false;
-            RCheekButton.IsChecked = false;
-            LMouthButton.IsChecked = false;
-            RMouthButton.IsChecked = false;
-            LUpLipButton.IsChecked = false;
-            RUpLipButton.IsChecked = false;
-            LLowLipButton.IsChecked = false;
-            RLowLipButton.IsChecked = false;
-            NeckButton.IsChecked = false;
-            SternumButton.IsChecked = false;
-            TorsoButton.IsChecked = false;
-            WaistButton.IsChecked = false;
-            LShoulderButton.IsChecked = false;
-            RShoulderButton.IsChecked = false;
-            LClavicleButton.IsChecked = false;
-            RClavicleButton.IsChecked = false;
-            LBreastButton.IsChecked = false;
-            RBreastButton.IsChecked = false;
-            LArmButton.IsChecked = false;
-            RArmButton.IsChecked = false;
-            LElbowButton.IsChecked = false;
-            RElbowButton.IsChecked = false;
-            LForearmButton.IsChecked = false;
-            RForearmButton.IsChecked = false;
-            LWristButton.IsChecked = false;
-            RWristButton.IsChecked = false;
-            LHandButton.IsChecked = false;
-            RHandButton.IsChecked = false;
-            LThumbButton.IsChecked = false;
-            RThumbButton.IsChecked = false;
-            LThumb2Button.IsChecked = false;
-            RThumb2Button.IsChecked = false;
-            LIndexButton.IsChecked = false;
-            RIndexButton.IsChecked = false;
-            LIndex2Button.IsChecked = false;
-            RIndex2Button.IsChecked = false;
-            LMiddleButton.IsChecked = false;
-            RMiddleButton.IsChecked = false;
-            LMiddle2Button.IsChecked = false;
-            RMiddle2Button.IsChecked = false;
-            LRingButton.IsChecked = false;
-            RRingButton.IsChecked = false;
-            LRing2Button.IsChecked = false;
-            RRing2Button.IsChecked = false;
-            LPinkyButton.IsChecked = false;
-            RPinkyButton.IsChecked = false;
-            LPinky2Button.IsChecked = false;
-            RPinky2Button.IsChecked = false;
-            PelvisButton.IsChecked = false;
-            TailButton.IsChecked = false;
-            Tail2Button.IsChecked = false;
-            Tail3Button.IsChecked = false;
-            Tail4Button.IsChecked = false;
-            LThighButton.IsChecked = false;
-            RThighButton.IsChecked = false;
-            LKneeButton.IsChecked = false;
-            RKneeButton.IsChecked = false;
-            LCalfButton.IsChecked = false;
-            RCalfButton.IsChecked = false;
-            LFootButton.IsChecked = false;
-            RFootButton.IsChecked = false;
-            LToesButton.IsChecked = false;
-            RToesButton.IsChecked = false;
-            LEarringButton.IsChecked = false;
-            REarringButton.IsChecked = false;
-            LEarring2Button.IsChecked = false;
-            REarring2Button.IsChecked = false;
-
-            //Load Current Values for Slider
-            CharacterDetails.DebugCheck = true;
-        }
-        private void DebugButton_Unchecked(object sender, RoutedEventArgs e)
-        {
-            CharacterDetails.DebugRotate = false;
-        }
         #endregion
 
         #region Head
@@ -44774,7 +44593,6 @@ namespace ConceptMatrix.Views
         private void UncheckAll()
         {
             PhysicsButton.IsChecked = false;
-            //DebugButton.IsChecked = false;
             HeadButton.IsChecked = false;
             NoseButton.IsChecked = false;
             NostrilsButton.IsChecked = false;
@@ -44869,7 +44687,6 @@ namespace ConceptMatrix.Views
         {
             PhysicsButton.IsEnabled = true;
             TPoseButton.IsEnabled = true;
-            //DebugButton.IsEnabled = true;
             HeadButton.IsEnabled = true;
             NoseButton.IsEnabled = true;
             NostrilsButton.IsEnabled = true;
@@ -44971,7 +44788,6 @@ namespace ConceptMatrix.Views
         {
             PhysicsButton.IsEnabled = false;
             TPoseButton.IsEnabled = false;
-            //DebugButton.IsEnabled = false;
             HeadButton.IsEnabled = false;
             NoseButton.IsEnabled = false;
             NostrilsButton.IsEnabled = false;

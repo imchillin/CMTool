@@ -186,7 +186,12 @@
 
         <!-- Other -->
         <GroupBox HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" Margin="300,345,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="5,1" Height="55" Width="515" Padding="0"/>
-
+        <Label Content="Weapons:" HorizontalAlignment="Left" Margin="319,346,0,0" VerticalAlignment="Top" Height="28"/>
+        <ToggleButton x:Name="LWeaponButton" Checked="LEarringButton_Checked" Unchecked="LEarringButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="323,369,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
+        <ToggleButton x:Name="RWeaponButton" Checked="REarringButton_Checked" Unchecked="REarringButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="362,369,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
+        <Label Content="Shields:" HorizontalAlignment="Left" Margin="454,346,0,0" VerticalAlignment="Top" Height="28"/>
+        <ToggleButton x:Name="LShieldButton" Checked="LEarring2Button_Checked" Unchecked="LEarring2Button_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="459,369,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
+        <ToggleButton x:Name="RShieldButton" Checked="REarring2Button_Checked" Unchecked="REarring2Button_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="498,369,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
         <Label Content="Upper Earrings:" HorizontalAlignment="Left" Margin="574,346,0,0" VerticalAlignment="Top" Height="28"/>
         <ToggleButton x:Name="LEarringButton" Checked="LEarringButton_Checked" Unchecked="LEarringButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="583,369,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
         <ToggleButton x:Name="REarringButton" Checked="REarringButton_Checked" Unchecked="REarringButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="622,369,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
@@ -249,11 +254,5 @@
                 <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="Load Posing Matrix" />
             </StackPanel>
         </Button>
-        <Label Content="Weapons:" HorizontalAlignment="Left" Margin="319,346,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LWeaponButton" Checked="LEarringButton_Checked" Unchecked="LEarringButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="323,369,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <ToggleButton x:Name="RWeaponButton" Checked="REarringButton_Checked" Unchecked="REarringButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="362,369,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
-        <Label Content="Shields:" HorizontalAlignment="Left" Margin="454,346,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LShieldButton" Checked="LEarring2Button_Checked" Unchecked="LEarring2Button_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="459,369,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <ToggleButton x:Name="RShieldButton" Checked="REarring2Button_Checked" Unchecked="REarring2Button_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="498,369,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
     </Grid>
 </UserControl>

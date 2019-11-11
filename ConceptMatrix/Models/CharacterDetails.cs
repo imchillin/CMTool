@@ -117,11 +117,6 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<float> Rotation3 { get; set; }
         [JsonIgnore] public Address<float> Rotation4 { get; set; }
 
-        [JsonIgnore] public Address<float> DebugX { get; set; }
-        [JsonIgnore] public Address<float> DebugY { get; set; }
-        [JsonIgnore] public Address<float> DebugZ { get; set; }
-        [JsonIgnore] public Address<float> DebugW { get; set; }
-
         [JsonIgnore] public Address<float> HeadX { get; set; }
         [JsonIgnore] public Address<float> NoseX { get; set; }
         [JsonIgnore] public Address<float> NostrilsX { get; set; }
@@ -222,6 +217,10 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<float> RVLowEar3X { get; set; }
         [JsonIgnore] public Address<float> LVLowEar4X { get; set; }
         [JsonIgnore] public Address<float> RVLowEar4X { get; set; }
+        [JsonIgnore] public Address<float> LShieldX { get; set; }
+        [JsonIgnore] public Address<float> RShieldX { get; set; }
+        [JsonIgnore] public Address<float> LWeaponX { get; set; }
+        [JsonIgnore] public Address<float> RWeaponX { get; set; }
 
         [JsonIgnore] public Address<float> HeadY { get; set; }
         [JsonIgnore] public Address<float> NoseY { get; set; }
@@ -323,6 +322,10 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<float> RVLowEar3Y { get; set; }
         [JsonIgnore] public Address<float> LVLowEar4Y { get; set; }
         [JsonIgnore] public Address<float> RVLowEar4Y { get; set; }
+        [JsonIgnore] public Address<float> LShieldY { get; set; }
+        [JsonIgnore] public Address<float> RShieldY { get; set; }
+        [JsonIgnore] public Address<float> LWeaponY { get; set; }
+        [JsonIgnore] public Address<float> RWeaponY { get; set; }
 
         [JsonIgnore] public Address<float> HeadZ { get; set; }
         [JsonIgnore] public Address<float> NoseZ { get; set; }
@@ -424,6 +427,10 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<float> RVLowEar3Z { get; set; }
         [JsonIgnore] public Address<float> LVLowEar4Z { get; set; }
         [JsonIgnore] public Address<float> RVLowEar4Z { get; set; }
+        [JsonIgnore] public Address<float> LShieldZ { get; set; }
+        [JsonIgnore] public Address<float> RShieldZ { get; set; }
+        [JsonIgnore] public Address<float> LWeaponZ { get; set; }
+        [JsonIgnore] public Address<float> RWeaponZ { get; set; }
 
         [JsonIgnore] public Address<float> HeadW { get; set; }
         [JsonIgnore] public Address<float> NoseW { get; set; }
@@ -525,6 +532,10 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<float> RVLowEar3W { get; set; }
         [JsonIgnore] public Address<float> LVLowEar4W { get; set; }
         [JsonIgnore] public Address<float> RVLowEar4W { get; set; }
+        [JsonIgnore] public Address<float> LShieldW { get; set; }
+        [JsonIgnore] public Address<float> RShieldW { get; set; }
+        [JsonIgnore] public Address<float> LWeaponW { get; set; }
+        [JsonIgnore] public Address<float> RWeaponW { get; set; }
 
         [JsonIgnore] public Address<float> CameraHeight2 { get; set; }
         [JsonIgnore] public Address<float> CamX { get; set; }
@@ -694,7 +705,6 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public bool SaveRightLegBones { get; set; }
         [JsonIgnore] public bool SaveAllBones { get; set; }
 
-        [JsonIgnore] public bool DebugRotate { get; set; }
         [JsonIgnore] public bool HeadRotate { get; set; }
         [JsonIgnore] public bool NoseRotate { get; set; }
         [JsonIgnore] public bool NostrilsRotate { get; set; }
@@ -795,8 +805,11 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public bool RVLowEar3Rotate { get; set; }
         [JsonIgnore] public bool LVLowEar4Rotate { get; set; }
         [JsonIgnore] public bool RVLowEar4Rotate { get; set; }
+        [JsonIgnore] public bool LShieldRotate { get; set; }
+        [JsonIgnore] public bool RShieldRotate { get; set; }
+        [JsonIgnore] public bool LWeaponRotate { get; set; }
+        [JsonIgnore] public bool RWeaponRotate { get; set; }
 
-        [JsonIgnore] public bool DebugCheck { get; set; }
         [JsonIgnore] public bool HeadCheck { get; set; }
         [JsonIgnore] public bool NoseCheck { get; set; }
         [JsonIgnore] public bool NostrilsCheck { get; set; }
@@ -897,6 +910,10 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public bool RVLowEar3Check { get; set; }
         [JsonIgnore] public bool LVLowEar4Check { get; set; }
         [JsonIgnore] public bool RVLowEar4Check { get; set; }
+        [JsonIgnore] public bool LShieldCheck { get; set; }
+        [JsonIgnore] public bool RShieldCheck { get; set; }
+        [JsonIgnore] public bool LWeaponCheck { get; set; }
+        [JsonIgnore] public bool RWeaponCheck { get; set; }
 
         public CharacterDetails()
         {
@@ -1080,11 +1097,6 @@ namespace ConceptMatrix.Models
             Rotation3 = new Address<float>();
             Rotation4 = new Address<float>();
 
-            DebugX = new Address<float>();
-            DebugY = new Address<float>();
-            DebugZ = new Address<float>();
-            DebugW = new Address<float>();
-
             HeadX = new Address<float>();
             NoseX = new Address<float>();
             NostrilsX = new Address<float>();
@@ -1185,6 +1197,10 @@ namespace ConceptMatrix.Models
             RVLowEar3X = new Address<float>();
             LVLowEar4X = new Address<float>();
             RVLowEar4X = new Address<float>();
+            LShieldX = new Address<float>();
+            RShieldX = new Address<float>();
+            LWeaponX = new Address<float>();
+            RWeaponX = new Address<float>();
 
             HeadY = new Address<float>();
             NoseY = new Address<float>();
@@ -1286,6 +1302,10 @@ namespace ConceptMatrix.Models
             RVLowEar3Y = new Address<float>();
             LVLowEar4Y = new Address<float>();
             RVLowEar4Y = new Address<float>();
+            LShieldY = new Address<float>();
+            RShieldY = new Address<float>();
+            LWeaponY = new Address<float>();
+            RWeaponY = new Address<float>();
 
             HeadZ = new Address<float>();
             NoseZ = new Address<float>();
@@ -1387,6 +1407,10 @@ namespace ConceptMatrix.Models
             RVLowEar3Z = new Address<float>();
             LVLowEar4Z = new Address<float>();
             RVLowEar4Z = new Address<float>();
+            LShieldZ = new Address<float>();
+            RShieldZ = new Address<float>();
+            LWeaponZ = new Address<float>();
+            RWeaponZ = new Address<float>();
 
             HeadW = new Address<float>();
             NoseW = new Address<float>();
@@ -1488,6 +1512,10 @@ namespace ConceptMatrix.Models
             RVLowEar3W = new Address<float>();
             LVLowEar4W = new Address<float>();
             RVLowEar4W = new Address<float>();
+            LShieldW = new Address<float>();
+            RShieldW = new Address<float>();
+            LWeaponW = new Address<float>();
+            RWeaponW = new Address<float>();
 
             HairTone = new Address<byte>();
             HairTone = new Address<byte>();
