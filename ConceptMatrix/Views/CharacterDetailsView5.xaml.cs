@@ -1447,6 +1447,42 @@ namespace ConceptMatrix.Views
                     BoneSlider.ValueChanged += RVEarLow4Rot;
                 }
             }
+
+            if (CharacterDetails.LShieldRotate)
+            {
+                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider.ValueChanged -= LShieldRot;
+                    BoneSlider.ValueChanged += LShieldRot;
+                }
+            }
+
+            if (CharacterDetails.RShieldRotate)
+            {
+                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider.ValueChanged -= RShieldRot;
+                    BoneSlider.ValueChanged += RShieldRot;
+                }
+            }
+
+            if (CharacterDetails.LWeaponRotate)
+            {
+                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider.ValueChanged -= LWeaponRot;
+                    BoneSlider.ValueChanged += LWeaponRot;
+                }
+            }
+
+            if (CharacterDetails.RWeaponRotate)
+            {
+                if (BoneSlider.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                {
+                    BoneSlider.ValueChanged -= RWeaponRot;
+                    BoneSlider.ValueChanged += RWeaponRot;
+                }
+            }
         }
 
 
@@ -1454,7 +1490,7 @@ namespace ConceptMatrix.Views
         {
             if (CharacterDetails.HeadRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= HeadRot;
                     BoneSlider2.ValueChanged += HeadRot;
@@ -1463,7 +1499,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.NoseRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= NoseRot;
                     BoneSlider2.ValueChanged += NoseRot;
@@ -1472,7 +1508,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.NostrilsRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= NostrilsRot;
                     BoneSlider2.ValueChanged += NostrilsRot;
@@ -1481,7 +1517,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.ChinRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= ChinRot;
                     BoneSlider2.ValueChanged += ChinRot;
@@ -1490,7 +1526,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LOutEyebrowRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LOutEyebrowRot;
                     BoneSlider2.ValueChanged += LOutEyebrowRot;
@@ -1499,7 +1535,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.ROutEyebrowRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= ROutEyebrowRot;
                     BoneSlider2.ValueChanged += ROutEyebrowRot;
@@ -1508,7 +1544,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LInEyebrowRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LInEyebrowRot;
                     BoneSlider2.ValueChanged += LInEyebrowRot;
@@ -1517,7 +1553,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RInEyebrowRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= RInEyebrowRot;
                     BoneSlider2.ValueChanged += RInEyebrowRot;
@@ -1526,7 +1562,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LEyeRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LEyeRot;
                     BoneSlider2.ValueChanged += LEyeRot;
@@ -1535,7 +1571,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.REyeRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= REyeRot;
                     BoneSlider2.ValueChanged += REyeRot;
@@ -1544,7 +1580,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LEyelidRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LEyelidRot;
                     BoneSlider2.ValueChanged += LEyelidRot;
@@ -1553,7 +1589,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.REyelidRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= REyelidRot;
                     BoneSlider2.ValueChanged += REyelidRot;
@@ -1562,7 +1598,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LLowEyelidRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LLowEyelidRot;
                     BoneSlider2.ValueChanged += LLowEyelidRot;
@@ -1571,7 +1607,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RLowEyelidRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= RLowEyelidRot;
                     BoneSlider2.ValueChanged += RLowEyelidRot;
@@ -1580,7 +1616,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LEarRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LEarRot;
                     BoneSlider2.ValueChanged += LEarRot;
@@ -1589,7 +1625,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.REarRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= REarRot;
                     BoneSlider2.ValueChanged += REarRot;
@@ -1598,7 +1634,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LCheekRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LCheekRot;
                     BoneSlider2.ValueChanged += LCheekRot;
@@ -1607,7 +1643,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RCheekRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= RCheekRot;
                     BoneSlider2.ValueChanged += RCheekRot;
@@ -1616,7 +1652,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LMouthRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LMouthRot;
                     BoneSlider2.ValueChanged += LMouthRot;
@@ -1625,7 +1661,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RMouthRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= RMouthRot;
                     BoneSlider2.ValueChanged += RMouthRot;
@@ -1634,7 +1670,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LUpLipRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LUpLipRot;
                     BoneSlider2.ValueChanged += LUpLipRot;
@@ -1643,7 +1679,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RUpLipRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= RUpLipRot;
                     BoneSlider2.ValueChanged += RUpLipRot;
@@ -1652,7 +1688,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LLowLipRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LLowLipRot;
                     BoneSlider2.ValueChanged += LLowLipRot;
@@ -1661,7 +1697,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RLowLipRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= RLowLipRot;
                     BoneSlider2.ValueChanged += RLowLipRot;
@@ -1670,7 +1706,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.NeckRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= NeckRot;
                     BoneSlider2.ValueChanged += NeckRot;
@@ -1679,7 +1715,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.SternumRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= SternumRot;
                     BoneSlider2.ValueChanged += SternumRot;
@@ -1688,7 +1724,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.TorsoRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= TorsoRot;
                     BoneSlider2.ValueChanged += TorsoRot;
@@ -1697,7 +1733,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.WaistRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= WaistRot;
                     BoneSlider2.ValueChanged += WaistRot;
@@ -1706,7 +1742,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LShoulderRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LShoulderRot;
                     BoneSlider2.ValueChanged += LShoulderRot;
@@ -1715,7 +1751,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RShoulderRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= RShoulderRot;
                     BoneSlider2.ValueChanged += RShoulderRot;
@@ -1724,7 +1760,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LClavicleRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LClavicleRot;
                     BoneSlider2.ValueChanged += LClavicleRot;
@@ -1733,7 +1769,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RClavicleRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= RClavicleRot;
                     BoneSlider2.ValueChanged += RClavicleRot;
@@ -1742,7 +1778,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LBreastRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LBreastRot;
                     BoneSlider2.ValueChanged += LBreastRot;
@@ -1751,7 +1787,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RBreastRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= RBreastRot;
                     BoneSlider2.ValueChanged += RBreastRot;
@@ -1760,7 +1796,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LArmRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LArmRot;
                     BoneSlider2.ValueChanged += LArmRot;
@@ -1769,7 +1805,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RArmRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= RArmRot;
                     BoneSlider2.ValueChanged += RArmRot;
@@ -1778,7 +1814,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LElbowRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LElbowRot;
                     BoneSlider2.ValueChanged += LElbowRot;
@@ -1787,7 +1823,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RElbowRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= RElbowRot;
                     BoneSlider2.ValueChanged += RElbowRot;
@@ -1796,7 +1832,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LForearmRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LForearmRot;
                     BoneSlider2.ValueChanged += LForearmRot;
@@ -1805,7 +1841,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RForearmRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= RForearmRot;
                     BoneSlider2.ValueChanged += RForearmRot;
@@ -1814,7 +1850,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LWristRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LWristRot;
                     BoneSlider2.ValueChanged += LWristRot;
@@ -1823,7 +1859,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RWristRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= RWristRot;
                     BoneSlider2.ValueChanged += RWristRot;
@@ -1832,7 +1868,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LHandRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LHandRot;
                     BoneSlider2.ValueChanged += LHandRot;
@@ -1841,7 +1877,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RHandRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= RHandRot;
                     BoneSlider2.ValueChanged += RHandRot;
@@ -1850,7 +1886,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LThumbRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LThumbRot;
                     BoneSlider2.ValueChanged += LThumbRot;
@@ -1859,7 +1895,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RThumbRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= RThumbRot;
                     BoneSlider2.ValueChanged += RThumbRot;
@@ -1868,7 +1904,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LThumb2Rotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LThumb2Rot;
                     BoneSlider2.ValueChanged += LThumb2Rot;
@@ -1877,7 +1913,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RThumb2Rotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= RThumb2Rot;
                     BoneSlider2.ValueChanged += RThumb2Rot;
@@ -1886,7 +1922,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LIndexRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LIndexRot;
                     BoneSlider2.ValueChanged += LIndexRot;
@@ -1895,7 +1931,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RIndexRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= RIndexRot;
                     BoneSlider2.ValueChanged += RIndexRot;
@@ -1904,7 +1940,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LIndex2Rotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LIndex2Rot;
                     BoneSlider2.ValueChanged += LIndex2Rot;
@@ -1913,7 +1949,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RIndex2Rotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= RIndex2Rot;
                     BoneSlider2.ValueChanged += RIndex2Rot;
@@ -1922,7 +1958,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LMiddleRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LMiddleRot;
                     BoneSlider2.ValueChanged += LMiddleRot;
@@ -1931,7 +1967,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RMiddleRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= RMiddleRot;
                     BoneSlider2.ValueChanged += RMiddleRot;
@@ -1940,7 +1976,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LMiddle2Rotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LMiddle2Rot;
                     BoneSlider2.ValueChanged += LMiddle2Rot;
@@ -1949,7 +1985,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RMiddle2Rotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= RMiddle2Rot;
                     BoneSlider2.ValueChanged += RMiddle2Rot;
@@ -1958,7 +1994,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LRingRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LRingRot;
                     BoneSlider2.ValueChanged += LRingRot;
@@ -1967,7 +2003,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RRingRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= RRingRot;
                     BoneSlider2.ValueChanged += RRingRot;
@@ -1976,7 +2012,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LRing2Rotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LRing2Rot;
                     BoneSlider2.ValueChanged += LRing2Rot;
@@ -1985,7 +2021,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RRing2Rotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= RRing2Rot;
                     BoneSlider2.ValueChanged += RRing2Rot;
@@ -1994,7 +2030,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LPinkyRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LPinkyRot;
                     BoneSlider2.ValueChanged += LPinkyRot;
@@ -2003,7 +2039,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RPinkyRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= RPinkyRot;
                     BoneSlider2.ValueChanged += RPinkyRot;
@@ -2012,7 +2048,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LPinky2Rotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LPinky2Rot;
                     BoneSlider2.ValueChanged += LPinky2Rot;
@@ -2021,7 +2057,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RPinky2Rotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= RPinky2Rot;
                     BoneSlider2.ValueChanged += RPinky2Rot;
@@ -2030,7 +2066,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.PelvisRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= PelvisRot;
                     BoneSlider2.ValueChanged += PelvisRot;
@@ -2039,7 +2075,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.TailRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= TailRot;
                     BoneSlider2.ValueChanged += TailRot;
@@ -2048,7 +2084,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.Tail2Rotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= Tail2Rot;
                     BoneSlider2.ValueChanged += Tail2Rot;
@@ -2057,7 +2093,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.Tail3Rotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= Tail3Rot;
                     BoneSlider2.ValueChanged += Tail3Rot;
@@ -2066,7 +2102,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.Tail4Rotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= Tail4Rot;
                     BoneSlider2.ValueChanged += Tail4Rot;
@@ -2075,7 +2111,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.Tail5Rotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= Tail5Rot;
                     BoneSlider2.ValueChanged += Tail5Rot;
@@ -2084,7 +2120,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LThighRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LThighRot;
                     BoneSlider2.ValueChanged += LThighRot;
@@ -2093,7 +2129,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RThighRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= RThighRot;
                     BoneSlider2.ValueChanged += RThighRot;
@@ -2102,7 +2138,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LKneeRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LKneeRot;
                     BoneSlider2.ValueChanged += LKneeRot;
@@ -2111,7 +2147,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RKneeRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= RKneeRot;
                     BoneSlider2.ValueChanged += RKneeRot;
@@ -2120,7 +2156,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LCalfRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LCalfRot;
                     BoneSlider2.ValueChanged += LCalfRot;
@@ -2129,7 +2165,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RCalfRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= RCalfRot;
                     BoneSlider2.ValueChanged += RCalfRot;
@@ -2138,7 +2174,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LFootRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LFootRot;
                     BoneSlider2.ValueChanged += LFootRot;
@@ -2147,7 +2183,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RFootRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= RFootRot;
                     BoneSlider2.ValueChanged += RFootRot;
@@ -2156,7 +2192,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LToesRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LToesRot;
                     BoneSlider2.ValueChanged += LToesRot;
@@ -2165,7 +2201,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RToesRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= RToesRot;
                     BoneSlider2.ValueChanged += RToesRot;
@@ -2246,7 +2282,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LEarringRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LEarringRot;
                     BoneSlider2.ValueChanged += LEarringRot;
@@ -2255,7 +2291,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.REarringRotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= REarringRot;
                     BoneSlider2.ValueChanged += REarringRot;
@@ -2264,7 +2300,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LEarring2Rotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= LEarring2Rot;
                     BoneSlider2.ValueChanged += LEarring2Rot;
@@ -2273,7 +2309,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.REarring2Rotate)
             {
-                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
                 {
                     BoneSlider2.ValueChanged -= REarring2Rot;
                     BoneSlider2.ValueChanged += REarring2Rot;
@@ -2351,6 +2387,42 @@ namespace ConceptMatrix.Views
                     BoneSlider2.ValueChanged += RVEarLow4Rot;
                 }
             }
+
+            if (CharacterDetails.LShieldRotate)
+            {
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
+                {
+                    BoneSlider2.ValueChanged -= LShieldRot;
+                    BoneSlider2.ValueChanged += LShieldRot;
+                }
+            }
+
+            if (CharacterDetails.RShieldRotate)
+            {
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
+                {
+                    BoneSlider2.ValueChanged -= RShieldRot;
+                    BoneSlider2.ValueChanged += RShieldRot;
+                }
+            }
+
+            if (CharacterDetails.LWeaponRotate)
+            {
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
+                {
+                    BoneSlider2.ValueChanged -= LWeaponRot;
+                    BoneSlider2.ValueChanged += LWeaponRot;
+                }
+            }
+
+            if (CharacterDetails.RWeaponRotate)
+            {
+                if (BoneSlider2.IsKeyboardFocusWithin || BoneSlider2.IsMouseOver)
+                {
+                    BoneSlider2.ValueChanged -= RWeaponRot;
+                    BoneSlider2.ValueChanged += RWeaponRot;
+                }
+            }
         }
 
 
@@ -2358,7 +2430,7 @@ namespace ConceptMatrix.Views
         {
             if (CharacterDetails.HeadRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= HeadRot;
                     BoneSlider3.ValueChanged += HeadRot;
@@ -2367,7 +2439,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.NoseRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= NoseRot;
                     BoneSlider3.ValueChanged += NoseRot;
@@ -2376,7 +2448,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.NostrilsRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= NostrilsRot;
                     BoneSlider3.ValueChanged += NostrilsRot;
@@ -2385,7 +2457,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.ChinRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= ChinRot;
                     BoneSlider3.ValueChanged += ChinRot;
@@ -2394,7 +2466,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LOutEyebrowRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LOutEyebrowRot;
                     BoneSlider3.ValueChanged += LOutEyebrowRot;
@@ -2403,7 +2475,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.ROutEyebrowRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= ROutEyebrowRot;
                     BoneSlider3.ValueChanged += ROutEyebrowRot;
@@ -2412,7 +2484,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LInEyebrowRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LInEyebrowRot;
                     BoneSlider3.ValueChanged += LInEyebrowRot;
@@ -2421,7 +2493,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RInEyebrowRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= RInEyebrowRot;
                     BoneSlider3.ValueChanged += RInEyebrowRot;
@@ -2430,7 +2502,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LEyeRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LEyeRot;
                     BoneSlider3.ValueChanged += LEyeRot;
@@ -2439,7 +2511,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.REyeRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= REyeRot;
                     BoneSlider3.ValueChanged += REyeRot;
@@ -2448,7 +2520,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LEyelidRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LEyelidRot;
                     BoneSlider3.ValueChanged += LEyelidRot;
@@ -2457,7 +2529,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.REyelidRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= REyelidRot;
                     BoneSlider3.ValueChanged += REyelidRot;
@@ -2466,7 +2538,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LLowEyelidRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LLowEyelidRot;
                     BoneSlider3.ValueChanged += LLowEyelidRot;
@@ -2475,7 +2547,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RLowEyelidRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= RLowEyelidRot;
                     BoneSlider3.ValueChanged += RLowEyelidRot;
@@ -2484,7 +2556,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LEarRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LEarRot;
                     BoneSlider3.ValueChanged += LEarRot;
@@ -2493,7 +2565,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.REarRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= REarRot;
                     BoneSlider3.ValueChanged += REarRot;
@@ -2502,7 +2574,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LCheekRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LCheekRot;
                     BoneSlider3.ValueChanged += LCheekRot;
@@ -2511,7 +2583,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RCheekRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= RCheekRot;
                     BoneSlider3.ValueChanged += RCheekRot;
@@ -2520,7 +2592,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LMouthRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LMouthRot;
                     BoneSlider3.ValueChanged += LMouthRot;
@@ -2529,7 +2601,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RMouthRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= RMouthRot;
                     BoneSlider3.ValueChanged += RMouthRot;
@@ -2538,7 +2610,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LUpLipRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LUpLipRot;
                     BoneSlider3.ValueChanged += LUpLipRot;
@@ -2547,7 +2619,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RUpLipRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= RUpLipRot;
                     BoneSlider3.ValueChanged += RUpLipRot;
@@ -2556,7 +2628,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LLowLipRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LLowLipRot;
                     BoneSlider3.ValueChanged += LLowLipRot;
@@ -2565,7 +2637,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RLowLipRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= RLowLipRot;
                     BoneSlider3.ValueChanged += RLowLipRot;
@@ -2574,7 +2646,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.NeckRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= NeckRot;
                     BoneSlider3.ValueChanged += NeckRot;
@@ -2583,7 +2655,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.SternumRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= SternumRot;
                     BoneSlider3.ValueChanged += SternumRot;
@@ -2592,7 +2664,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.TorsoRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= TorsoRot;
                     BoneSlider3.ValueChanged += TorsoRot;
@@ -2601,7 +2673,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.WaistRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= WaistRot;
                     BoneSlider3.ValueChanged += WaistRot;
@@ -2610,7 +2682,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LShoulderRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LShoulderRot;
                     BoneSlider3.ValueChanged += LShoulderRot;
@@ -2619,7 +2691,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RShoulderRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= RShoulderRot;
                     BoneSlider3.ValueChanged += RShoulderRot;
@@ -2628,7 +2700,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LClavicleRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LClavicleRot;
                     BoneSlider3.ValueChanged += LClavicleRot;
@@ -2637,7 +2709,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RClavicleRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= RClavicleRot;
                     BoneSlider3.ValueChanged += RClavicleRot;
@@ -2646,7 +2718,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LBreastRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LBreastRot;
                     BoneSlider3.ValueChanged += LBreastRot;
@@ -2655,7 +2727,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RBreastRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= RBreastRot;
                     BoneSlider3.ValueChanged += RBreastRot;
@@ -2664,7 +2736,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LArmRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LArmRot;
                     BoneSlider3.ValueChanged += LArmRot;
@@ -2673,7 +2745,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RArmRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= RArmRot;
                     BoneSlider3.ValueChanged += RArmRot;
@@ -2682,7 +2754,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LElbowRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LElbowRot;
                     BoneSlider3.ValueChanged += LElbowRot;
@@ -2691,7 +2763,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RElbowRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= RElbowRot;
                     BoneSlider3.ValueChanged += RElbowRot;
@@ -2700,7 +2772,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LForearmRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LForearmRot;
                     BoneSlider3.ValueChanged += LForearmRot;
@@ -2709,7 +2781,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RForearmRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= RForearmRot;
                     BoneSlider3.ValueChanged += RForearmRot;
@@ -2718,7 +2790,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LWristRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LWristRot;
                     BoneSlider3.ValueChanged += LWristRot;
@@ -2727,7 +2799,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RWristRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= RWristRot;
                     BoneSlider3.ValueChanged += RWristRot;
@@ -2736,7 +2808,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LHandRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LHandRot;
                     BoneSlider3.ValueChanged += LHandRot;
@@ -2745,7 +2817,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RHandRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= RHandRot;
                     BoneSlider3.ValueChanged += RHandRot;
@@ -2754,7 +2826,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LThumbRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LThumbRot;
                     BoneSlider3.ValueChanged += LThumbRot;
@@ -2763,7 +2835,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RThumbRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= RThumbRot;
                     BoneSlider3.ValueChanged += RThumbRot;
@@ -2772,7 +2844,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LThumb2Rotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LThumb2Rot;
                     BoneSlider3.ValueChanged += LThumb2Rot;
@@ -2781,7 +2853,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RThumb2Rotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= RThumb2Rot;
                     BoneSlider3.ValueChanged += RThumb2Rot;
@@ -2790,7 +2862,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LIndexRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LIndexRot;
                     BoneSlider3.ValueChanged += LIndexRot;
@@ -2799,7 +2871,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RIndexRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= RIndexRot;
                     BoneSlider3.ValueChanged += RIndexRot;
@@ -2808,7 +2880,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LIndex2Rotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LIndex2Rot;
                     BoneSlider3.ValueChanged += LIndex2Rot;
@@ -2817,7 +2889,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RIndex2Rotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= RIndex2Rot;
                     BoneSlider3.ValueChanged += RIndex2Rot;
@@ -2826,7 +2898,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LMiddleRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LMiddleRot;
                     BoneSlider3.ValueChanged += LMiddleRot;
@@ -2835,7 +2907,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RMiddleRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= RMiddleRot;
                     BoneSlider3.ValueChanged += RMiddleRot;
@@ -2844,7 +2916,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LMiddle2Rotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LMiddle2Rot;
                     BoneSlider3.ValueChanged += LMiddle2Rot;
@@ -2853,7 +2925,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RMiddle2Rotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= RMiddle2Rot;
                     BoneSlider3.ValueChanged += RMiddle2Rot;
@@ -2862,7 +2934,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LRingRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LRingRot;
                     BoneSlider3.ValueChanged += LRingRot;
@@ -2871,7 +2943,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RRingRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= RRingRot;
                     BoneSlider3.ValueChanged += RRingRot;
@@ -2880,7 +2952,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LRing2Rotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LRing2Rot;
                     BoneSlider3.ValueChanged += LRing2Rot;
@@ -2889,7 +2961,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RRing2Rotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= RRing2Rot;
                     BoneSlider3.ValueChanged += RRing2Rot;
@@ -2898,7 +2970,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LPinkyRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LPinkyRot;
                     BoneSlider3.ValueChanged += LPinkyRot;
@@ -2907,7 +2979,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RPinkyRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= RPinkyRot;
                     BoneSlider3.ValueChanged += RPinkyRot;
@@ -2916,7 +2988,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LPinky2Rotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LPinky2Rot;
                     BoneSlider3.ValueChanged += LPinky2Rot;
@@ -2925,7 +2997,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RPinky2Rotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= RPinky2Rot;
                     BoneSlider3.ValueChanged += RPinky2Rot;
@@ -2934,7 +3006,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.PelvisRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= PelvisRot;
                     BoneSlider3.ValueChanged += PelvisRot;
@@ -2943,7 +3015,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.TailRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= TailRot;
                     BoneSlider3.ValueChanged += TailRot;
@@ -2952,7 +3024,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.Tail2Rotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= Tail2Rot;
                     BoneSlider3.ValueChanged += Tail2Rot;
@@ -2961,7 +3033,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.Tail3Rotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= Tail3Rot;
                     BoneSlider3.ValueChanged += Tail3Rot;
@@ -2970,7 +3042,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.Tail4Rotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= Tail4Rot;
                     BoneSlider3.ValueChanged += Tail4Rot;
@@ -2979,7 +3051,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.Tail5Rotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= Tail5Rot;
                     BoneSlider3.ValueChanged += Tail5Rot;
@@ -2988,7 +3060,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LThighRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LThighRot;
                     BoneSlider3.ValueChanged += LThighRot;
@@ -2997,7 +3069,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RThighRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= RThighRot;
                     BoneSlider3.ValueChanged += RThighRot;
@@ -3006,7 +3078,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LKneeRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LKneeRot;
                     BoneSlider3.ValueChanged += LKneeRot;
@@ -3015,7 +3087,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RKneeRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= RKneeRot;
                     BoneSlider3.ValueChanged += RKneeRot;
@@ -3024,7 +3096,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LCalfRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LCalfRot;
                     BoneSlider3.ValueChanged += LCalfRot;
@@ -3033,7 +3105,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RCalfRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= RCalfRot;
                     BoneSlider3.ValueChanged += RCalfRot;
@@ -3042,7 +3114,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LFootRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LFootRot;
                     BoneSlider3.ValueChanged += LFootRot;
@@ -3051,7 +3123,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RFootRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= RFootRot;
                     BoneSlider3.ValueChanged += RFootRot;
@@ -3060,7 +3132,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LToesRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LToesRot;
                     BoneSlider3.ValueChanged += LToesRot;
@@ -3069,7 +3141,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RToesRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= RToesRot;
                     BoneSlider3.ValueChanged += RToesRot;
@@ -3150,7 +3222,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LEarringRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LEarringRot;
                     BoneSlider3.ValueChanged += LEarringRot;
@@ -3159,7 +3231,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.REarringRotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= REarringRot;
                     BoneSlider3.ValueChanged += REarringRot;
@@ -3168,7 +3240,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LEarring2Rotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= LEarring2Rot;
                     BoneSlider3.ValueChanged += LEarring2Rot;
@@ -3177,7 +3249,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.REarring2Rotate)
             {
-                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider.IsMouseOver)
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
                 {
                     BoneSlider3.ValueChanged -= REarring2Rot;
                     BoneSlider3.ValueChanged += REarring2Rot;
@@ -3253,6 +3325,42 @@ namespace ConceptMatrix.Views
                 {
                     BoneSlider3.ValueChanged -= RVEarLow4Rot;
                     BoneSlider3.ValueChanged += RVEarLow4Rot;
+                }
+            }
+
+            if (CharacterDetails.LShieldRotate)
+            {
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
+                {
+                    BoneSlider3.ValueChanged -= LShieldRot;
+                    BoneSlider3.ValueChanged += LShieldRot;
+                }
+            }
+
+            if (CharacterDetails.RShieldRotate)
+            {
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
+                {
+                    BoneSlider3.ValueChanged -= RShieldRot;
+                    BoneSlider3.ValueChanged += RShieldRot;
+                }
+            }
+
+            if (CharacterDetails.LWeaponRotate)
+            {
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
+                {
+                    BoneSlider3.ValueChanged -= LWeaponRot;
+                    BoneSlider3.ValueChanged += LWeaponRot;
+                }
+            }
+
+            if (CharacterDetails.RWeaponRotate)
+            {
+                if (BoneSlider3.IsKeyboardFocusWithin || BoneSlider3.IsMouseOver)
+                {
+                    BoneSlider3.ValueChanged -= RWeaponRot;
+                    BoneSlider3.ValueChanged += RWeaponRot;
                 }
             }
         }
@@ -4161,6 +4269,42 @@ namespace ConceptMatrix.Views
                     BoneUpDown.ValueChanged += RVEarLow4Rot2;
                 }
             }
+
+            if (CharacterDetails.LShieldRotate)
+            {
+                if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown.ValueChanged -= LShieldRot2;
+                    BoneUpDown.ValueChanged += LShieldRot2;
+                }
+            }
+
+            if (CharacterDetails.RShieldRotate)
+            {
+                if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown.ValueChanged -= RShieldRot2;
+                    BoneUpDown.ValueChanged += RShieldRot2;
+                }
+            }
+
+            if (CharacterDetails.LWeaponRotate)
+            {
+                if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown.ValueChanged -= LWeaponRot2;
+                    BoneUpDown.ValueChanged += LWeaponRot2;
+                }
+            }
+
+            if (CharacterDetails.RWeaponRotate)
+            {
+                if (BoneUpDown.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown.ValueChanged -= RWeaponRot2;
+                    BoneUpDown.ValueChanged += RWeaponRot2;
+                }
+            }
         }
 
 
@@ -4168,7 +4312,7 @@ namespace ConceptMatrix.Views
         {
             if (CharacterDetails.HeadRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= HeadRot2;
                     BoneUpDown2.ValueChanged += HeadRot2;
@@ -4177,7 +4321,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.NoseRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= NoseRot2;
                     BoneUpDown2.ValueChanged += NoseRot2;
@@ -4186,7 +4330,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.NostrilsRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= NostrilsRot2;
                     BoneUpDown2.ValueChanged += NostrilsRot2;
@@ -4195,7 +4339,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.ChinRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= ChinRot2;
                     BoneUpDown2.ValueChanged += ChinRot2;
@@ -4204,7 +4348,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LOutEyebrowRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LOutEyebrowRot2;
                     BoneUpDown2.ValueChanged += LOutEyebrowRot2;
@@ -4213,7 +4357,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.ROutEyebrowRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= ROutEyebrowRot2;
                     BoneUpDown2.ValueChanged += ROutEyebrowRot2;
@@ -4222,7 +4366,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LInEyebrowRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LInEyebrowRot2;
                     BoneUpDown2.ValueChanged += LInEyebrowRot2;
@@ -4231,7 +4375,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RInEyebrowRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= RInEyebrowRot2;
                     BoneUpDown2.ValueChanged += RInEyebrowRot2;
@@ -4240,7 +4384,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LEyeRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LEyeRot2;
                     BoneUpDown2.ValueChanged += LEyeRot2;
@@ -4249,7 +4393,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.REyeRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= REyeRot2;
                     BoneUpDown2.ValueChanged += REyeRot2;
@@ -4258,7 +4402,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LEyelidRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LEyelidRot2;
                     BoneUpDown2.ValueChanged += LEyelidRot2;
@@ -4267,7 +4411,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.REyelidRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= REyelidRot2;
                     BoneUpDown2.ValueChanged += REyelidRot2;
@@ -4276,7 +4420,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LLowEyelidRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LLowEyelidRot2;
                     BoneUpDown2.ValueChanged += LLowEyelidRot2;
@@ -4285,7 +4429,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RLowEyelidRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= RLowEyelidRot2;
                     BoneUpDown2.ValueChanged += RLowEyelidRot2;
@@ -4294,7 +4438,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LEarRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LEarRot2;
                     BoneUpDown2.ValueChanged += LEarRot2;
@@ -4303,7 +4447,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.REarRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= REarRot2;
                     BoneUpDown2.ValueChanged += REarRot2;
@@ -4312,7 +4456,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LCheekRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LCheekRot2;
                     BoneUpDown2.ValueChanged += LCheekRot2;
@@ -4321,7 +4465,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RCheekRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= RCheekRot2;
                     BoneUpDown2.ValueChanged += RCheekRot2;
@@ -4330,7 +4474,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LMouthRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LMouthRot2;
                     BoneUpDown2.ValueChanged += LMouthRot2;
@@ -4339,7 +4483,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RMouthRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= RMouthRot2;
                     BoneUpDown2.ValueChanged += RMouthRot2;
@@ -4348,7 +4492,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LUpLipRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LUpLipRot2;
                     BoneUpDown2.ValueChanged += LUpLipRot2;
@@ -4357,7 +4501,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RUpLipRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= RUpLipRot2;
                     BoneUpDown2.ValueChanged += RUpLipRot2;
@@ -4366,7 +4510,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LLowLipRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LLowLipRot2;
                     BoneUpDown2.ValueChanged += LLowLipRot2;
@@ -4375,7 +4519,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RLowLipRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= RLowLipRot2;
                     BoneUpDown2.ValueChanged += RLowLipRot2;
@@ -4384,7 +4528,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.NeckRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= NeckRot2;
                     BoneUpDown2.ValueChanged += NeckRot2;
@@ -4393,7 +4537,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.SternumRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= SternumRot2;
                     BoneUpDown2.ValueChanged += SternumRot2;
@@ -4402,7 +4546,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.TorsoRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= TorsoRot2;
                     BoneUpDown2.ValueChanged += TorsoRot2;
@@ -4411,7 +4555,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.WaistRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= WaistRot2;
                     BoneUpDown2.ValueChanged += WaistRot2;
@@ -4420,7 +4564,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LShoulderRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LShoulderRot2;
                     BoneUpDown2.ValueChanged += LShoulderRot2;
@@ -4429,7 +4573,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RShoulderRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= RShoulderRot2;
                     BoneUpDown2.ValueChanged += RShoulderRot2;
@@ -4438,7 +4582,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LClavicleRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LClavicleRot2;
                     BoneUpDown2.ValueChanged += LClavicleRot2;
@@ -4447,7 +4591,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RClavicleRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= RClavicleRot2;
                     BoneUpDown2.ValueChanged += RClavicleRot2;
@@ -4456,7 +4600,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LBreastRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LBreastRot2;
                     BoneUpDown2.ValueChanged += LBreastRot2;
@@ -4465,7 +4609,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RBreastRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= RBreastRot2;
                     BoneUpDown2.ValueChanged += RBreastRot2;
@@ -4474,7 +4618,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LArmRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LArmRot2;
                     BoneUpDown2.ValueChanged += LArmRot2;
@@ -4483,7 +4627,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RArmRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= RArmRot2;
                     BoneUpDown2.ValueChanged += RArmRot2;
@@ -4492,7 +4636,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LElbowRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LElbowRot2;
                     BoneUpDown2.ValueChanged += LElbowRot2;
@@ -4501,7 +4645,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RElbowRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= RElbowRot2;
                     BoneUpDown2.ValueChanged += RElbowRot2;
@@ -4510,7 +4654,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LForearmRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LForearmRot2;
                     BoneUpDown2.ValueChanged += LForearmRot2;
@@ -4519,7 +4663,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RForearmRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= RForearmRot2;
                     BoneUpDown2.ValueChanged += RForearmRot2;
@@ -4528,7 +4672,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LWristRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LWristRot2;
                     BoneUpDown2.ValueChanged += LWristRot2;
@@ -4537,7 +4681,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RWristRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= RWristRot2;
                     BoneUpDown2.ValueChanged += RWristRot2;
@@ -4546,7 +4690,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LHandRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LHandRot2;
                     BoneUpDown2.ValueChanged += LHandRot2;
@@ -4555,7 +4699,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RHandRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= RHandRot2;
                     BoneUpDown2.ValueChanged += RHandRot2;
@@ -4564,7 +4708,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LThumbRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LThumbRot2;
                     BoneUpDown2.ValueChanged += LThumbRot2;
@@ -4573,7 +4717,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RThumbRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= RThumbRot2;
                     BoneUpDown2.ValueChanged += RThumbRot2;
@@ -4582,7 +4726,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LThumb2Rotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LThumb2Rot2;
                     BoneUpDown2.ValueChanged += LThumb2Rot2;
@@ -4591,7 +4735,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RThumb2Rotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= RThumb2Rot2;
                     BoneUpDown2.ValueChanged += RThumb2Rot2;
@@ -4600,7 +4744,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LIndexRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LIndexRot2;
                     BoneUpDown2.ValueChanged += LIndexRot2;
@@ -4609,7 +4753,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RIndexRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= RIndexRot2;
                     BoneUpDown2.ValueChanged += RIndexRot2;
@@ -4618,7 +4762,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LIndex2Rotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LIndex2Rot2;
                     BoneUpDown2.ValueChanged += LIndex2Rot2;
@@ -4627,7 +4771,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RIndex2Rotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= RIndex2Rot2;
                     BoneUpDown2.ValueChanged += RIndex2Rot2;
@@ -4636,7 +4780,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LMiddleRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LMiddleRot2;
                     BoneUpDown2.ValueChanged += LMiddleRot2;
@@ -4645,7 +4789,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RMiddleRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= RMiddleRot2;
                     BoneUpDown2.ValueChanged += RMiddleRot2;
@@ -4654,7 +4798,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LMiddle2Rotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LMiddle2Rot2;
                     BoneUpDown2.ValueChanged += LMiddle2Rot2;
@@ -4663,7 +4807,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RMiddle2Rotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= RMiddle2Rot2;
                     BoneUpDown2.ValueChanged += RMiddle2Rot2;
@@ -4672,7 +4816,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LRingRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LRingRot2;
                     BoneUpDown2.ValueChanged += LRingRot2;
@@ -4681,7 +4825,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RRingRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= RRingRot2;
                     BoneUpDown2.ValueChanged += RRingRot2;
@@ -4690,7 +4834,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LRing2Rotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LRing2Rot2;
                     BoneUpDown2.ValueChanged += LRing2Rot2;
@@ -4699,7 +4843,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RRing2Rotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= RRing2Rot2;
                     BoneUpDown2.ValueChanged += RRing2Rot2;
@@ -4708,7 +4852,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LPinkyRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LPinkyRot2;
                     BoneUpDown2.ValueChanged += LPinkyRot2;
@@ -4717,7 +4861,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RPinkyRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= RPinkyRot2;
                     BoneUpDown2.ValueChanged += RPinkyRot2;
@@ -4726,7 +4870,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LPinky2Rotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LPinky2Rot2;
                     BoneUpDown2.ValueChanged += LPinky2Rot2;
@@ -4735,7 +4879,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RPinky2Rotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= RPinky2Rot2;
                     BoneUpDown2.ValueChanged += RPinky2Rot2;
@@ -4744,7 +4888,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.PelvisRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= PelvisRot2;
                     BoneUpDown2.ValueChanged += PelvisRot2;
@@ -4753,7 +4897,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.TailRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= TailRot2;
                     BoneUpDown2.ValueChanged += TailRot2;
@@ -4762,7 +4906,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.Tail2Rotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= Tail2Rot2;
                     BoneUpDown2.ValueChanged += Tail2Rot2;
@@ -4771,7 +4915,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.Tail3Rotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= Tail3Rot2;
                     BoneUpDown2.ValueChanged += Tail3Rot2;
@@ -4780,7 +4924,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.Tail4Rotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= Tail4Rot2;
                     BoneUpDown2.ValueChanged += Tail4Rot2;
@@ -4789,7 +4933,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.Tail5Rotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= Tail5Rot2;
                     BoneUpDown2.ValueChanged += Tail5Rot2;
@@ -4798,7 +4942,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LThighRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LThighRot2;
                     BoneUpDown2.ValueChanged += LThighRot2;
@@ -4807,7 +4951,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RThighRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= RThighRot2;
                     BoneUpDown2.ValueChanged += RThighRot2;
@@ -4816,7 +4960,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LKneeRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LKneeRot2;
                     BoneUpDown2.ValueChanged += LKneeRot2;
@@ -4825,7 +4969,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RKneeRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= RKneeRot2;
                     BoneUpDown2.ValueChanged += RKneeRot2;
@@ -4834,7 +4978,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LCalfRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LCalfRot2;
                     BoneUpDown2.ValueChanged += LCalfRot2;
@@ -4843,7 +4987,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RCalfRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= RCalfRot2;
                     BoneUpDown2.ValueChanged += RCalfRot2;
@@ -4852,7 +4996,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LFootRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LFootRot2;
                     BoneUpDown2.ValueChanged += LFootRot2;
@@ -4861,7 +5005,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RFootRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= RFootRot2;
                     BoneUpDown2.ValueChanged += RFootRot2;
@@ -4870,7 +5014,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LToesRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LToesRot2;
                     BoneUpDown2.ValueChanged += LToesRot2;
@@ -4879,7 +5023,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RToesRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= RToesRot2;
                     BoneUpDown2.ValueChanged += RToesRot2;
@@ -4960,7 +5104,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LEarringRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LEarringRot2;
                     BoneUpDown2.ValueChanged += LEarringRot2;
@@ -4969,7 +5113,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.REarringRotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= REarringRot2;
                     BoneUpDown2.ValueChanged += REarringRot2;
@@ -4978,7 +5122,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LEarring2Rotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= LEarring2Rot2;
                     BoneUpDown2.ValueChanged += LEarring2Rot2;
@@ -4987,7 +5131,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.REarring2Rotate)
             {
-                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
                 {
                     BoneUpDown2.ValueChanged -= REarring2Rot2;
                     BoneUpDown2.ValueChanged += REarring2Rot2;
@@ -5065,6 +5209,42 @@ namespace ConceptMatrix.Views
                     BoneUpDown2.ValueChanged += RVEarLow4Rot2;
                 }
             }
+
+            if (CharacterDetails.LShieldRotate)
+            {
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
+                {
+                    BoneUpDown2.ValueChanged -= LShieldRot2;
+                    BoneUpDown2.ValueChanged += LShieldRot2;
+                }
+            }
+
+            if (CharacterDetails.RShieldRotate)
+            {
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
+                {
+                    BoneUpDown2.ValueChanged -= RShieldRot2;
+                    BoneUpDown2.ValueChanged += RShieldRot2;
+                }
+            }
+
+            if (CharacterDetails.LWeaponRotate)
+            {
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
+                {
+                    BoneUpDown2.ValueChanged -= LWeaponRot2;
+                    BoneUpDown2.ValueChanged += LWeaponRot2;
+                }
+            }
+
+            if (CharacterDetails.RWeaponRotate)
+            {
+                if (BoneUpDown2.IsKeyboardFocusWithin || BoneUpDown2.IsMouseOver)
+                {
+                    BoneUpDown2.ValueChanged -= RWeaponRot2;
+                    BoneUpDown2.ValueChanged += RWeaponRot2;
+                }
+            }
         }
 
 
@@ -5072,7 +5252,7 @@ namespace ConceptMatrix.Views
         {
             if (CharacterDetails.HeadRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= HeadRot2;
                     BoneUpDown3.ValueChanged += HeadRot2;
@@ -5081,7 +5261,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.NoseRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= NoseRot2;
                     BoneUpDown3.ValueChanged += NoseRot2;
@@ -5090,7 +5270,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.NostrilsRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= NostrilsRot2;
                     BoneUpDown3.ValueChanged += NostrilsRot2;
@@ -5099,7 +5279,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.ChinRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= ChinRot2;
                     BoneUpDown3.ValueChanged += ChinRot2;
@@ -5108,7 +5288,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LOutEyebrowRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LOutEyebrowRot2;
                     BoneUpDown3.ValueChanged += LOutEyebrowRot2;
@@ -5117,7 +5297,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.ROutEyebrowRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= ROutEyebrowRot2;
                     BoneUpDown3.ValueChanged += ROutEyebrowRot2;
@@ -5126,7 +5306,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LInEyebrowRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LInEyebrowRot2;
                     BoneUpDown3.ValueChanged += LInEyebrowRot2;
@@ -5135,7 +5315,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RInEyebrowRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= RInEyebrowRot2;
                     BoneUpDown3.ValueChanged += RInEyebrowRot2;
@@ -5144,7 +5324,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LEyeRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LEyeRot2;
                     BoneUpDown3.ValueChanged += LEyeRot2;
@@ -5153,7 +5333,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.REyeRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= REyeRot2;
                     BoneUpDown3.ValueChanged += REyeRot2;
@@ -5162,7 +5342,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LEyelidRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LEyelidRot2;
                     BoneUpDown3.ValueChanged += LEyelidRot2;
@@ -5171,7 +5351,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.REyelidRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= REyelidRot2;
                     BoneUpDown3.ValueChanged += REyelidRot2;
@@ -5180,7 +5360,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LLowEyelidRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LLowEyelidRot2;
                     BoneUpDown3.ValueChanged += LLowEyelidRot2;
@@ -5189,7 +5369,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RLowEyelidRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= RLowEyelidRot2;
                     BoneUpDown3.ValueChanged += RLowEyelidRot2;
@@ -5198,7 +5378,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LEarRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LEarRot2;
                     BoneUpDown3.ValueChanged += LEarRot2;
@@ -5207,7 +5387,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.REarRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= REarRot2;
                     BoneUpDown3.ValueChanged += REarRot2;
@@ -5216,7 +5396,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LCheekRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LCheekRot2;
                     BoneUpDown3.ValueChanged += LCheekRot2;
@@ -5225,7 +5405,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RCheekRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= RCheekRot2;
                     BoneUpDown3.ValueChanged += RCheekRot2;
@@ -5234,7 +5414,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LMouthRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LMouthRot2;
                     BoneUpDown3.ValueChanged += LMouthRot2;
@@ -5243,7 +5423,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RMouthRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= RMouthRot2;
                     BoneUpDown3.ValueChanged += RMouthRot2;
@@ -5252,7 +5432,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LUpLipRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LUpLipRot2;
                     BoneUpDown3.ValueChanged += LUpLipRot2;
@@ -5261,7 +5441,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RUpLipRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= RUpLipRot2;
                     BoneUpDown3.ValueChanged += RUpLipRot2;
@@ -5270,7 +5450,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LLowLipRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LLowLipRot2;
                     BoneUpDown3.ValueChanged += LLowLipRot2;
@@ -5279,7 +5459,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RLowLipRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= RLowLipRot2;
                     BoneUpDown3.ValueChanged += RLowLipRot2;
@@ -5288,7 +5468,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.NeckRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= NeckRot2;
                     BoneUpDown3.ValueChanged += NeckRot2;
@@ -5297,7 +5477,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.SternumRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= SternumRot2;
                     BoneUpDown3.ValueChanged += SternumRot2;
@@ -5306,7 +5486,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.TorsoRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= TorsoRot2;
                     BoneUpDown3.ValueChanged += TorsoRot2;
@@ -5315,7 +5495,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.WaistRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= WaistRot2;
                     BoneUpDown3.ValueChanged += WaistRot2;
@@ -5324,7 +5504,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LShoulderRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LShoulderRot2;
                     BoneUpDown3.ValueChanged += LShoulderRot2;
@@ -5333,7 +5513,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RShoulderRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= RShoulderRot2;
                     BoneUpDown3.ValueChanged += RShoulderRot2;
@@ -5342,7 +5522,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LClavicleRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LClavicleRot2;
                     BoneUpDown3.ValueChanged += LClavicleRot2;
@@ -5351,7 +5531,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RClavicleRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= RClavicleRot2;
                     BoneUpDown3.ValueChanged += RClavicleRot2;
@@ -5360,7 +5540,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LBreastRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LBreastRot2;
                     BoneUpDown3.ValueChanged += LBreastRot2;
@@ -5369,7 +5549,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RBreastRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= RBreastRot2;
                     BoneUpDown3.ValueChanged += RBreastRot2;
@@ -5378,7 +5558,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LArmRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LArmRot2;
                     BoneUpDown3.ValueChanged += LArmRot2;
@@ -5387,7 +5567,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RArmRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= RArmRot2;
                     BoneUpDown3.ValueChanged += RArmRot2;
@@ -5396,7 +5576,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LElbowRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LElbowRot2;
                     BoneUpDown3.ValueChanged += LElbowRot2;
@@ -5405,7 +5585,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RElbowRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= RElbowRot2;
                     BoneUpDown3.ValueChanged += RElbowRot2;
@@ -5414,7 +5594,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LForearmRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LForearmRot2;
                     BoneUpDown3.ValueChanged += LForearmRot2;
@@ -5423,7 +5603,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RForearmRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= RForearmRot2;
                     BoneUpDown3.ValueChanged += RForearmRot2;
@@ -5432,7 +5612,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LWristRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LWristRot2;
                     BoneUpDown3.ValueChanged += LWristRot2;
@@ -5441,7 +5621,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RWristRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= RWristRot2;
                     BoneUpDown3.ValueChanged += RWristRot2;
@@ -5450,7 +5630,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LHandRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LHandRot2;
                     BoneUpDown3.ValueChanged += LHandRot2;
@@ -5459,7 +5639,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RHandRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= RHandRot2;
                     BoneUpDown3.ValueChanged += RHandRot2;
@@ -5468,7 +5648,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LThumbRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LThumbRot2;
                     BoneUpDown3.ValueChanged += LThumbRot2;
@@ -5477,7 +5657,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RThumbRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= RThumbRot2;
                     BoneUpDown3.ValueChanged += RThumbRot2;
@@ -5486,7 +5666,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LThumb2Rotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LThumb2Rot2;
                     BoneUpDown3.ValueChanged += LThumb2Rot2;
@@ -5495,7 +5675,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RThumb2Rotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= RThumb2Rot2;
                     BoneUpDown3.ValueChanged += RThumb2Rot2;
@@ -5504,7 +5684,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LIndexRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LIndexRot2;
                     BoneUpDown3.ValueChanged += LIndexRot2;
@@ -5513,7 +5693,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RIndexRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= RIndexRot2;
                     BoneUpDown3.ValueChanged += RIndexRot2;
@@ -5522,7 +5702,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LIndex2Rotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LIndex2Rot2;
                     BoneUpDown3.ValueChanged += LIndex2Rot2;
@@ -5531,7 +5711,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RIndex2Rotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= RIndex2Rot2;
                     BoneUpDown3.ValueChanged += RIndex2Rot2;
@@ -5540,7 +5720,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LMiddleRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LMiddleRot2;
                     BoneUpDown3.ValueChanged += LMiddleRot2;
@@ -5549,7 +5729,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RMiddleRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= RMiddleRot2;
                     BoneUpDown3.ValueChanged += RMiddleRot2;
@@ -5558,7 +5738,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LMiddle2Rotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LMiddle2Rot2;
                     BoneUpDown3.ValueChanged += LMiddle2Rot2;
@@ -5567,7 +5747,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RMiddle2Rotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= RMiddle2Rot2;
                     BoneUpDown3.ValueChanged += RMiddle2Rot2;
@@ -5576,7 +5756,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LRingRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LRingRot2;
                     BoneUpDown3.ValueChanged += LRingRot2;
@@ -5585,7 +5765,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RRingRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= RRingRot2;
                     BoneUpDown3.ValueChanged += RRingRot2;
@@ -5594,7 +5774,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LRing2Rotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LRing2Rot2;
                     BoneUpDown3.ValueChanged += LRing2Rot2;
@@ -5603,7 +5783,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RRing2Rotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= RRing2Rot2;
                     BoneUpDown3.ValueChanged += RRing2Rot2;
@@ -5612,7 +5792,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LPinkyRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LPinkyRot2;
                     BoneUpDown3.ValueChanged += LPinkyRot2;
@@ -5621,7 +5801,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RPinkyRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= RPinkyRot2;
                     BoneUpDown3.ValueChanged += RPinkyRot2;
@@ -5630,7 +5810,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LPinky2Rotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LPinky2Rot2;
                     BoneUpDown3.ValueChanged += LPinky2Rot2;
@@ -5639,7 +5819,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RPinky2Rotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= RPinky2Rot2;
                     BoneUpDown3.ValueChanged += RPinky2Rot2;
@@ -5648,7 +5828,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.PelvisRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= PelvisRot2;
                     BoneUpDown3.ValueChanged += PelvisRot2;
@@ -5657,7 +5837,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.TailRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= TailRot2;
                     BoneUpDown3.ValueChanged += TailRot2;
@@ -5666,7 +5846,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.Tail2Rotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= Tail2Rot2;
                     BoneUpDown3.ValueChanged += Tail2Rot2;
@@ -5675,7 +5855,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.Tail3Rotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= Tail3Rot2;
                     BoneUpDown3.ValueChanged += Tail3Rot2;
@@ -5684,7 +5864,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.Tail4Rotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= Tail4Rot2;
                     BoneUpDown3.ValueChanged += Tail4Rot2;
@@ -5693,7 +5873,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.Tail5Rotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= Tail5Rot2;
                     BoneUpDown3.ValueChanged += Tail5Rot2;
@@ -5702,7 +5882,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LThighRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LThighRot2;
                     BoneUpDown3.ValueChanged += LThighRot2;
@@ -5711,7 +5891,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RThighRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= RThighRot2;
                     BoneUpDown3.ValueChanged += RThighRot2;
@@ -5720,7 +5900,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LKneeRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LKneeRot2;
                     BoneUpDown3.ValueChanged += LKneeRot2;
@@ -5729,7 +5909,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RKneeRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= RKneeRot2;
                     BoneUpDown3.ValueChanged += RKneeRot2;
@@ -5738,7 +5918,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LCalfRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LCalfRot2;
                     BoneUpDown3.ValueChanged += LCalfRot2;
@@ -5747,7 +5927,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RCalfRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= RCalfRot2;
                     BoneUpDown3.ValueChanged += RCalfRot2;
@@ -5756,7 +5936,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LFootRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LFootRot2;
                     BoneUpDown3.ValueChanged += LFootRot2;
@@ -5765,7 +5945,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RFootRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= RFootRot2;
                     BoneUpDown3.ValueChanged += RFootRot2;
@@ -5774,7 +5954,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LToesRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LToesRot2;
                     BoneUpDown3.ValueChanged += LToesRot2;
@@ -5783,7 +5963,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.RToesRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= RToesRot2;
                     BoneUpDown3.ValueChanged += RToesRot2;
@@ -5864,7 +6044,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LEarringRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LEarringRot2;
                     BoneUpDown3.ValueChanged += LEarringRot2;
@@ -5873,7 +6053,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.REarringRotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= REarringRot2;
                     BoneUpDown3.ValueChanged += REarringRot2;
@@ -5882,7 +6062,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.LEarring2Rotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= LEarring2Rot2;
                     BoneUpDown3.ValueChanged += LEarring2Rot2;
@@ -5891,7 +6071,7 @@ namespace ConceptMatrix.Views
 
             if (CharacterDetails.REarring2Rotate)
             {
-                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown3.IsMouseOver)
                 {
                     BoneUpDown3.ValueChanged -= REarring2Rot2;
                     BoneUpDown3.ValueChanged += REarring2Rot2;
@@ -5967,6 +6147,42 @@ namespace ConceptMatrix.Views
                 {
                     BoneUpDown3.ValueChanged -= RVEarLow4Rot2;
                     BoneUpDown3.ValueChanged += RVEarLow4Rot2;
+                }
+            }
+
+            if (CharacterDetails.LShieldRotate)
+            {
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown3.ValueChanged -= LShieldRot2;
+                    BoneUpDown3.ValueChanged += LShieldRot2;
+                }
+            }
+
+            if (CharacterDetails.RShieldRotate)
+            {
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown3.ValueChanged -= RShieldRot2;
+                    BoneUpDown3.ValueChanged += RShieldRot2;
+                }
+            }
+
+            if (CharacterDetails.LWeaponRotate)
+            {
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown3.ValueChanged -= LWeaponRot2;
+                    BoneUpDown3.ValueChanged += LWeaponRot2;
+                }
+            }
+
+            if (CharacterDetails.RWeaponRotate)
+            {
+                if (BoneUpDown3.IsKeyboardFocusWithin || BoneUpDown.IsMouseOver)
+                {
+                    BoneUpDown3.ValueChanged -= RWeaponRot2;
+                    BoneUpDown3.ValueChanged += RWeaponRot2;
                 }
             }
         }
@@ -6094,6 +6310,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.HeadCheck = true;
@@ -6225,6 +6446,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             if (CharacterDetails.Race.value != 7) CharacterDetails.NoseCheck = true;
@@ -6358,6 +6584,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.NostrilsCheck = true;
@@ -6489,6 +6720,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.ChinCheck = true;
@@ -6620,6 +6856,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             if (CharacterDetails.Race.value != 7) CharacterDetails.LOutEyebrowCheck = true;
@@ -6753,6 +6994,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             if (CharacterDetails.Race.value != 7) CharacterDetails.ROutEyebrowCheck = true;
@@ -6886,6 +7132,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             if (CharacterDetails.Race.value != 7) CharacterDetails.LInEyebrowCheck = true;
@@ -7019,6 +7270,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             if (CharacterDetails.Race.value != 7) CharacterDetails.RInEyebrowCheck = true;
@@ -7152,6 +7408,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.LEyeCheck = true;
@@ -7284,6 +7545,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.REyeCheck = true;
@@ -7415,6 +7681,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             if (CharacterDetails.Race.value != 7) CharacterDetails.LEyelidCheck = true;
@@ -7548,6 +7819,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             if (CharacterDetails.Race.value != 7) CharacterDetails.REyelidCheck = true;
@@ -7681,6 +7957,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.LLowEyelidCheck = true;
@@ -7812,6 +8093,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.RLowEyelidCheck = true;
@@ -7943,6 +8229,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.LEarCheck = true;
@@ -8074,6 +8365,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.REarCheck = true;
@@ -8205,6 +8501,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             if (CharacterDetails.Race.value != 7) CharacterDetails.LCheekCheck = true;
@@ -8338,6 +8639,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             if (CharacterDetails.Race.value != 7) CharacterDetails.RCheekCheck = true;
@@ -8471,6 +8777,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             if (CharacterDetails.Race.value != 7) CharacterDetails.LMouthCheck = true;
@@ -8604,6 +8915,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             if (CharacterDetails.Race.value != 7) CharacterDetails.RMouthCheck = true;
@@ -8737,6 +9053,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             if (CharacterDetails.Race.value != 7) CharacterDetails.LUpLipCheck = true;
@@ -8900,6 +9221,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             if (CharacterDetails.Race.value < 7) CharacterDetails.RUpLipCheck = true;
@@ -9065,6 +9391,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             if (CharacterDetails.Race.value < 7) CharacterDetails.LLowLipCheck = true;
@@ -9232,6 +9563,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             if (CharacterDetails.Race.value < 7) CharacterDetails.RLowLipCheck = true;
@@ -9365,6 +9701,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.NeckCheck = true;
@@ -9496,6 +9837,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.SternumCheck = true;
@@ -9627,6 +9973,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.TorsoCheck = true;
@@ -9758,6 +10109,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.WaistCheck = true;
@@ -9889,6 +10245,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.LShoulderCheck = true;
@@ -10020,6 +10381,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.RShoulderCheck = true;
@@ -10151,6 +10517,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.LClavicleCheck = true;
@@ -10282,6 +10653,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.RClavicleCheck = true;
@@ -10413,6 +10789,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.LBreastCheck = true;
@@ -10544,6 +10925,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.RBreastCheck = true;
@@ -10675,6 +11061,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.LArmCheck = true;
@@ -10806,6 +11197,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.RArmCheck = true;
@@ -10937,6 +11333,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.LElbowCheck = true;
@@ -11068,6 +11469,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.RElbowCheck = true;
@@ -11199,6 +11605,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.LForearmCheck = true;
@@ -11330,6 +11741,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.RForearmCheck = true;
@@ -11461,6 +11877,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.LWristCheck = true;
@@ -11592,6 +12013,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.RWristCheck = true;
@@ -11723,6 +12149,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.LHandCheck = true;
@@ -11854,6 +12285,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.RHandCheck = true;
@@ -11985,6 +12421,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.LThumbCheck = true;
@@ -12116,6 +12557,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.RThumbCheck = true;
@@ -12247,6 +12693,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.LThumb2Check = true;
@@ -12378,6 +12829,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.RThumb2Check = true;
@@ -12509,6 +12965,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.LIndexCheck = true;
@@ -12640,6 +13101,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.RIndexCheck = true;
@@ -12771,6 +13237,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.LIndex2Check = true;
@@ -12902,6 +13373,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.RIndex2Check = true;
@@ -13033,6 +13509,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.LMiddleCheck = true;
@@ -13164,6 +13645,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.RMiddleCheck = true;
@@ -13295,6 +13781,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.LMiddle2Check = true;
@@ -13426,6 +13917,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.RMiddle2Check = true;
@@ -13557,6 +14053,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.LRingCheck = true;
@@ -13688,6 +14189,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.RRingCheck = true;
@@ -13819,6 +14325,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.LRing2Check = true;
@@ -13950,6 +14461,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.RRing2Check = true;
@@ -14081,6 +14597,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.LPinkyCheck = true;
@@ -14212,6 +14733,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.RPinkyCheck = true;
@@ -14343,6 +14869,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.LPinky2Check = true;
@@ -14474,6 +15005,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.RPinky2Check = true;
@@ -14605,6 +15141,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.PelvisCheck = true;
@@ -14736,6 +15277,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.TailCheck = true;
@@ -14867,6 +15413,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.Tail2Check = true;
@@ -14998,6 +15549,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.Tail3Check = true;
@@ -15129,6 +15685,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.Tail4Check = true;
@@ -15260,6 +15821,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.Tail5Check = true;
@@ -15391,6 +15957,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.LThighCheck = true;
@@ -15522,6 +16093,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.RThighCheck = true;
@@ -15653,6 +16229,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.LKneeCheck = true;
@@ -15784,6 +16365,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.RKneeCheck = true;
@@ -15915,6 +16501,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.LCalfCheck = true;
@@ -16046,6 +16637,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.RCalfCheck = true;
@@ -16177,6 +16773,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.LFootCheck = true;
@@ -16308,6 +16909,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.RFootCheck = true;
@@ -16439,6 +17045,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.LToesCheck = true;
@@ -16570,6 +17181,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.RToesCheck = true;
@@ -16791,6 +17407,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             if (CharacterDetails.TailType.value == 0) CharacterDetails.LVEarCheck = true;
@@ -17019,6 +17640,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             if (CharacterDetails.TailType.value == 0) CharacterDetails.RVEarCheck = true;
@@ -17187,6 +17813,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             if (CharacterDetails.TailType.value == 0) CharacterDetails.LLowLipCheck = true;
@@ -17385,6 +18016,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             if (CharacterDetails.TailType.value == 0) CharacterDetails.RUpLipCheck = true;
@@ -17523,6 +18159,11 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.LEarringCheck = true;
@@ -17654,6 +18295,11 @@ namespace ConceptMatrix.Views
             LEarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.REarringCheck = true;
@@ -17785,6 +18431,11 @@ namespace ConceptMatrix.Views
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
 
             //Load Current Values for Slider
             CharacterDetails.LEarring2Check = true;
@@ -17916,6 +18567,10 @@ namespace ConceptMatrix.Views
             LEarringButton.IsChecked = false;
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
 
             //Load Current Values for Slider
             CharacterDetails.REarring2Check = true;
@@ -17923,6 +18578,546 @@ namespace ConceptMatrix.Views
         private void REarring2Button_Unchecked(object sender, RoutedEventArgs e)
         {
             CharacterDetails.REarring2Rotate = false;
+        }
+        #endregion
+
+        #region LShield
+        private void LShieldRot(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.LShieldX.value = (float)quat.X;
+            CharacterDetails.LShieldY.value = (float)quat.Y;
+            CharacterDetails.LShieldZ.value = (float)quat.Z;
+            CharacterDetails.LShieldW.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneSlider.ValueChanged -= LShieldRot;
+            BoneSlider2.ValueChanged -= LShieldRot;
+            BoneSlider3.ValueChanged -= LShieldRot;
+        }
+
+        private void LShieldRot2(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.LShieldX.value = (float)quat.X;
+            CharacterDetails.LShieldY.value = (float)quat.Y;
+            CharacterDetails.LShieldZ.value = (float)quat.Z;
+            CharacterDetails.LShieldW.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneUpDown.ValueChanged -= LShieldRot2;
+            BoneUpDown2.ValueChanged -= LShieldRot2;
+            BoneUpDown3.ValueChanged -= LShieldRot2;
+        }
+
+        private void LShieldButton_Checked(object sender, RoutedEventArgs e)
+        {
+            //Disable Other Selections
+            HeadButton.IsChecked = false;
+            NoseButton.IsChecked = false;
+            NostrilsButton.IsChecked = false;
+            ChinButton.IsChecked = false;
+            LOutEyebrowButton.IsChecked = false;
+            ROutEyebrowButton.IsChecked = false;
+            LInEyebrowButton.IsChecked = false;
+            RInEyebrowButton.IsChecked = false;
+            LEyeButton.IsChecked = false;
+            REyeButton.IsChecked = false;
+            LEyelidButton.IsChecked = false;
+            REyelidButton.IsChecked = false;
+            LLowEyelidButton.IsChecked = false;
+            RLowEyelidButton.IsChecked = false;
+            LEarButton.IsChecked = false;
+            REarButton.IsChecked = false;
+            LCheekButton.IsChecked = false;
+            RCheekButton.IsChecked = false;
+            LMouthButton.IsChecked = false;
+            RMouthButton.IsChecked = false;
+            LUpLipButton.IsChecked = false;
+            RUpLipButton.IsChecked = false;
+            LLowLipButton.IsChecked = false;
+            RLowLipButton.IsChecked = false;
+            NeckButton.IsChecked = false;
+            SternumButton.IsChecked = false;
+            TorsoButton.IsChecked = false;
+            WaistButton.IsChecked = false;
+            LShoulderButton.IsChecked = false;
+            RShoulderButton.IsChecked = false;
+            LClavicleButton.IsChecked = false;
+            RClavicleButton.IsChecked = false;
+            LBreastButton.IsChecked = false;
+            RBreastButton.IsChecked = false;
+            LArmButton.IsChecked = false;
+            RArmButton.IsChecked = false;
+            LElbowButton.IsChecked = false;
+            RElbowButton.IsChecked = false;
+            LForearmButton.IsChecked = false;
+            RForearmButton.IsChecked = false;
+            LWristButton.IsChecked = false;
+            RWristButton.IsChecked = false;
+            LHandButton.IsChecked = false;
+            RHandButton.IsChecked = false;
+            LThumbButton.IsChecked = false;
+            RThumbButton.IsChecked = false;
+            LThumb2Button.IsChecked = false;
+            RThumb2Button.IsChecked = false;
+            LIndexButton.IsChecked = false;
+            RIndexButton.IsChecked = false;
+            LIndex2Button.IsChecked = false;
+            RIndex2Button.IsChecked = false;
+            LMiddleButton.IsChecked = false;
+            RMiddleButton.IsChecked = false;
+            LMiddle2Button.IsChecked = false;
+            RMiddle2Button.IsChecked = false;
+            LRingButton.IsChecked = false;
+            RRingButton.IsChecked = false;
+            LRing2Button.IsChecked = false;
+            RRing2Button.IsChecked = false;
+            LPinkyButton.IsChecked = false;
+            RPinkyButton.IsChecked = false;
+            LPinky2Button.IsChecked = false;
+            RPinky2Button.IsChecked = false;
+            PelvisButton.IsChecked = false;
+            TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
+            LThighButton.IsChecked = false;
+            RThighButton.IsChecked = false;
+            LKneeButton.IsChecked = false;
+            RKneeButton.IsChecked = false;
+            LCalfButton.IsChecked = false;
+            RCalfButton.IsChecked = false;
+            LFootButton.IsChecked = false;
+            RFootButton.IsChecked = false;
+            LToesButton.IsChecked = false;
+            RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
+            //Load Current Values for Slider
+            CharacterDetails.LShieldCheck = true;
+        }
+        private void LShieldButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.LShieldRotate = false;
+        }
+        #endregion
+
+        #region RShield
+        private void RShieldRot(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.RShieldX.value = (float)quat.X;
+            CharacterDetails.RShieldY.value = (float)quat.Y;
+            CharacterDetails.RShieldZ.value = (float)quat.Z;
+            CharacterDetails.RShieldW.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneSlider.ValueChanged -= RShieldRot;
+            BoneSlider2.ValueChanged -= RShieldRot;
+            BoneSlider3.ValueChanged -= RShieldRot;
+        }
+
+        private void RShieldRot2(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.RShieldX.value = (float)quat.X;
+            CharacterDetails.RShieldY.value = (float)quat.Y;
+            CharacterDetails.RShieldZ.value = (float)quat.Z;
+            CharacterDetails.RShieldW.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneUpDown.ValueChanged -= RShieldRot2;
+            BoneUpDown2.ValueChanged -= RShieldRot2;
+            BoneUpDown3.ValueChanged -= RShieldRot2;
+        }
+
+        private void RShieldButton_Checked(object sender, RoutedEventArgs e)
+        {
+            //Disable Other Selections
+            HeadButton.IsChecked = false;
+            NoseButton.IsChecked = false;
+            NostrilsButton.IsChecked = false;
+            ChinButton.IsChecked = false;
+            LOutEyebrowButton.IsChecked = false;
+            ROutEyebrowButton.IsChecked = false;
+            LInEyebrowButton.IsChecked = false;
+            RInEyebrowButton.IsChecked = false;
+            LEyeButton.IsChecked = false;
+            REyeButton.IsChecked = false;
+            LEyelidButton.IsChecked = false;
+            REyelidButton.IsChecked = false;
+            LLowEyelidButton.IsChecked = false;
+            RLowEyelidButton.IsChecked = false;
+            LEarButton.IsChecked = false;
+            REarButton.IsChecked = false;
+            LCheekButton.IsChecked = false;
+            RCheekButton.IsChecked = false;
+            LMouthButton.IsChecked = false;
+            RMouthButton.IsChecked = false;
+            LUpLipButton.IsChecked = false;
+            RUpLipButton.IsChecked = false;
+            LLowLipButton.IsChecked = false;
+            RLowLipButton.IsChecked = false;
+            NeckButton.IsChecked = false;
+            SternumButton.IsChecked = false;
+            TorsoButton.IsChecked = false;
+            WaistButton.IsChecked = false;
+            LShoulderButton.IsChecked = false;
+            RShoulderButton.IsChecked = false;
+            LClavicleButton.IsChecked = false;
+            RClavicleButton.IsChecked = false;
+            LBreastButton.IsChecked = false;
+            RBreastButton.IsChecked = false;
+            LArmButton.IsChecked = false;
+            RArmButton.IsChecked = false;
+            LElbowButton.IsChecked = false;
+            RElbowButton.IsChecked = false;
+            LForearmButton.IsChecked = false;
+            RForearmButton.IsChecked = false;
+            LWristButton.IsChecked = false;
+            RWristButton.IsChecked = false;
+            LHandButton.IsChecked = false;
+            RHandButton.IsChecked = false;
+            LThumbButton.IsChecked = false;
+            RThumbButton.IsChecked = false;
+            LThumb2Button.IsChecked = false;
+            RThumb2Button.IsChecked = false;
+            LIndexButton.IsChecked = false;
+            RIndexButton.IsChecked = false;
+            LIndex2Button.IsChecked = false;
+            RIndex2Button.IsChecked = false;
+            LMiddleButton.IsChecked = false;
+            RMiddleButton.IsChecked = false;
+            LMiddle2Button.IsChecked = false;
+            RMiddle2Button.IsChecked = false;
+            LRingButton.IsChecked = false;
+            RRingButton.IsChecked = false;
+            LRing2Button.IsChecked = false;
+            RRing2Button.IsChecked = false;
+            LPinkyButton.IsChecked = false;
+            RPinkyButton.IsChecked = false;
+            LPinky2Button.IsChecked = false;
+            RPinky2Button.IsChecked = false;
+            PelvisButton.IsChecked = false;
+            TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
+            LThighButton.IsChecked = false;
+            RThighButton.IsChecked = false;
+            LKneeButton.IsChecked = false;
+            RKneeButton.IsChecked = false;
+            LCalfButton.IsChecked = false;
+            RCalfButton.IsChecked = false;
+            LFootButton.IsChecked = false;
+            RFootButton.IsChecked = false;
+            LToesButton.IsChecked = false;
+            RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
+            //Load Current Values for Slider
+            CharacterDetails.RShieldCheck = true;
+        }
+        private void RShieldButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.RShieldRotate = false;
+        }
+        #endregion
+
+        #region LWeapon
+        private void LWeaponRot(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.LWeaponX.value = (float)quat.X;
+            CharacterDetails.LWeaponY.value = (float)quat.Y;
+            CharacterDetails.LWeaponZ.value = (float)quat.Z;
+            CharacterDetails.LWeaponW.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneSlider.ValueChanged -= LWeaponRot;
+            BoneSlider2.ValueChanged -= LWeaponRot;
+            BoneSlider3.ValueChanged -= LWeaponRot;
+        }
+
+        private void LWeaponRot2(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.LWeaponX.value = (float)quat.X;
+            CharacterDetails.LWeaponY.value = (float)quat.Y;
+            CharacterDetails.LWeaponZ.value = (float)quat.Z;
+            CharacterDetails.LWeaponW.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneUpDown.ValueChanged -= LWeaponRot2;
+            BoneUpDown2.ValueChanged -= LWeaponRot2;
+            BoneUpDown3.ValueChanged -= LWeaponRot2;
+        }
+
+        private void LWeaponButton_Checked(object sender, RoutedEventArgs e)
+        {
+            //Disable Other Selections
+            HeadButton.IsChecked = false;
+            NoseButton.IsChecked = false;
+            NostrilsButton.IsChecked = false;
+            ChinButton.IsChecked = false;
+            LOutEyebrowButton.IsChecked = false;
+            ROutEyebrowButton.IsChecked = false;
+            LInEyebrowButton.IsChecked = false;
+            RInEyebrowButton.IsChecked = false;
+            LEyeButton.IsChecked = false;
+            REyeButton.IsChecked = false;
+            LEyelidButton.IsChecked = false;
+            REyelidButton.IsChecked = false;
+            LLowEyelidButton.IsChecked = false;
+            RLowEyelidButton.IsChecked = false;
+            LEarButton.IsChecked = false;
+            REarButton.IsChecked = false;
+            LCheekButton.IsChecked = false;
+            RCheekButton.IsChecked = false;
+            LMouthButton.IsChecked = false;
+            RMouthButton.IsChecked = false;
+            LUpLipButton.IsChecked = false;
+            RUpLipButton.IsChecked = false;
+            LLowLipButton.IsChecked = false;
+            RLowLipButton.IsChecked = false;
+            NeckButton.IsChecked = false;
+            SternumButton.IsChecked = false;
+            TorsoButton.IsChecked = false;
+            WaistButton.IsChecked = false;
+            LShoulderButton.IsChecked = false;
+            RShoulderButton.IsChecked = false;
+            LClavicleButton.IsChecked = false;
+            RClavicleButton.IsChecked = false;
+            LBreastButton.IsChecked = false;
+            RBreastButton.IsChecked = false;
+            LArmButton.IsChecked = false;
+            RArmButton.IsChecked = false;
+            LElbowButton.IsChecked = false;
+            RElbowButton.IsChecked = false;
+            LForearmButton.IsChecked = false;
+            RForearmButton.IsChecked = false;
+            LWristButton.IsChecked = false;
+            RWristButton.IsChecked = false;
+            LHandButton.IsChecked = false;
+            RHandButton.IsChecked = false;
+            LThumbButton.IsChecked = false;
+            RThumbButton.IsChecked = false;
+            LThumb2Button.IsChecked = false;
+            RThumb2Button.IsChecked = false;
+            LIndexButton.IsChecked = false;
+            RIndexButton.IsChecked = false;
+            LIndex2Button.IsChecked = false;
+            RIndex2Button.IsChecked = false;
+            LMiddleButton.IsChecked = false;
+            RMiddleButton.IsChecked = false;
+            LMiddle2Button.IsChecked = false;
+            RMiddle2Button.IsChecked = false;
+            LRingButton.IsChecked = false;
+            RRingButton.IsChecked = false;
+            LRing2Button.IsChecked = false;
+            RRing2Button.IsChecked = false;
+            LPinkyButton.IsChecked = false;
+            RPinkyButton.IsChecked = false;
+            LPinky2Button.IsChecked = false;
+            RPinky2Button.IsChecked = false;
+            PelvisButton.IsChecked = false;
+            TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
+            LThighButton.IsChecked = false;
+            RThighButton.IsChecked = false;
+            LKneeButton.IsChecked = false;
+            RKneeButton.IsChecked = false;
+            LCalfButton.IsChecked = false;
+            RCalfButton.IsChecked = false;
+            LFootButton.IsChecked = false;
+            RFootButton.IsChecked = false;
+            LToesButton.IsChecked = false;
+            RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
+
+            //Load Current Values for Slider
+            CharacterDetails.LWeaponCheck = true;
+        }
+        private void LWeaponButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.LWeaponRotate = false;
+        }
+        #endregion
+
+        #region RWeapon
+        private void RWeaponRot(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.RWeaponX.value = (float)quat.X;
+            CharacterDetails.RWeaponY.value = (float)quat.Y;
+            CharacterDetails.RWeaponZ.value = (float)quat.Z;
+            CharacterDetails.RWeaponW.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneSlider.ValueChanged -= RWeaponRot;
+            BoneSlider2.ValueChanged -= RWeaponRot;
+            BoneSlider3.ValueChanged -= RWeaponRot;
+        }
+
+        private void RWeaponRot2(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            CharacterDetails.RWeaponX.value = (float)quat.X;
+            CharacterDetails.RWeaponY.value = (float)quat.Y;
+            CharacterDetails.RWeaponZ.value = (float)quat.Z;
+            CharacterDetails.RWeaponW.value = (float)quat.W;
+            // Remove listeners for value changed.	
+            BoneUpDown.ValueChanged -= RWeaponRot2;
+            BoneUpDown2.ValueChanged -= RWeaponRot2;
+            BoneUpDown3.ValueChanged -= RWeaponRot2;
+        }
+
+        private void RWeaponButton_Checked(object sender, RoutedEventArgs e)
+        {
+            //Disable Other Selections
+            HeadButton.IsChecked = false;
+            NoseButton.IsChecked = false;
+            NostrilsButton.IsChecked = false;
+            ChinButton.IsChecked = false;
+            LOutEyebrowButton.IsChecked = false;
+            ROutEyebrowButton.IsChecked = false;
+            LInEyebrowButton.IsChecked = false;
+            RInEyebrowButton.IsChecked = false;
+            LEyeButton.IsChecked = false;
+            REyeButton.IsChecked = false;
+            LEyelidButton.IsChecked = false;
+            REyelidButton.IsChecked = false;
+            LLowEyelidButton.IsChecked = false;
+            RLowEyelidButton.IsChecked = false;
+            LEarButton.IsChecked = false;
+            REarButton.IsChecked = false;
+            LCheekButton.IsChecked = false;
+            RCheekButton.IsChecked = false;
+            LMouthButton.IsChecked = false;
+            RMouthButton.IsChecked = false;
+            LUpLipButton.IsChecked = false;
+            RUpLipButton.IsChecked = false;
+            LLowLipButton.IsChecked = false;
+            RLowLipButton.IsChecked = false;
+            NeckButton.IsChecked = false;
+            SternumButton.IsChecked = false;
+            TorsoButton.IsChecked = false;
+            WaistButton.IsChecked = false;
+            LShoulderButton.IsChecked = false;
+            RShoulderButton.IsChecked = false;
+            LClavicleButton.IsChecked = false;
+            RClavicleButton.IsChecked = false;
+            LBreastButton.IsChecked = false;
+            RBreastButton.IsChecked = false;
+            LArmButton.IsChecked = false;
+            RArmButton.IsChecked = false;
+            LElbowButton.IsChecked = false;
+            RElbowButton.IsChecked = false;
+            LForearmButton.IsChecked = false;
+            RForearmButton.IsChecked = false;
+            LWristButton.IsChecked = false;
+            RWristButton.IsChecked = false;
+            LHandButton.IsChecked = false;
+            RHandButton.IsChecked = false;
+            LThumbButton.IsChecked = false;
+            RThumbButton.IsChecked = false;
+            LThumb2Button.IsChecked = false;
+            RThumb2Button.IsChecked = false;
+            LIndexButton.IsChecked = false;
+            RIndexButton.IsChecked = false;
+            LIndex2Button.IsChecked = false;
+            RIndex2Button.IsChecked = false;
+            LMiddleButton.IsChecked = false;
+            RMiddleButton.IsChecked = false;
+            LMiddle2Button.IsChecked = false;
+            RMiddle2Button.IsChecked = false;
+            LRingButton.IsChecked = false;
+            RRingButton.IsChecked = false;
+            LRing2Button.IsChecked = false;
+            RRing2Button.IsChecked = false;
+            LPinkyButton.IsChecked = false;
+            RPinkyButton.IsChecked = false;
+            LPinky2Button.IsChecked = false;
+            RPinky2Button.IsChecked = false;
+            PelvisButton.IsChecked = false;
+            TailButton.IsChecked = false;
+            Tail2Button.IsChecked = false;
+            Tail3Button.IsChecked = false;
+            Tail4Button.IsChecked = false;
+            Tail5Button.IsChecked = false;
+            LThighButton.IsChecked = false;
+            RThighButton.IsChecked = false;
+            LKneeButton.IsChecked = false;
+            RKneeButton.IsChecked = false;
+            LCalfButton.IsChecked = false;
+            RCalfButton.IsChecked = false;
+            LFootButton.IsChecked = false;
+            RFootButton.IsChecked = false;
+            LToesButton.IsChecked = false;
+            RToesButton.IsChecked = false;
+            LVEarButton.IsChecked = false;
+            RVEarButton.IsChecked = false;
+            LVEar2Button.IsChecked = false;
+            RVEar2Button.IsChecked = false;
+            LEarringButton.IsChecked = false;
+            REarringButton.IsChecked = false;
+            LEarring2Button.IsChecked = false;
+            REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+
+            //Load Current Values for Slider
+            CharacterDetails.RWeaponCheck = true;
+        }
+        private void RWeaponButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CharacterDetails.RWeaponRotate = false;
         }
         #endregion
 
@@ -44681,6 +45876,10 @@ namespace ConceptMatrix.Views
             REarringButton.IsChecked = false;
             LEarring2Button.IsChecked = false;
             REarring2Button.IsChecked = false;
+            LShieldButton.IsChecked = false;
+            RShieldButton.IsChecked = false;
+            LWeaponButton.IsChecked = false;
+            RWeaponButton.IsChecked = false;
         }
 
         private void EnableAll()
@@ -44775,6 +45974,10 @@ namespace ConceptMatrix.Views
             REarringButton.IsEnabled = true;
             LEarring2Button.IsEnabled = true;
             REarring2Button.IsEnabled = true;
+            LShieldButton.IsEnabled = true;
+            RShieldButton.IsEnabled = true;
+            LWeaponButton.IsEnabled = true;
+            RWeaponButton.IsEnabled = true;
 
             if (HeadSaved) LoadHeadButton.IsEnabled = true;
             if (TorsoSaved) LoadTorsoButton.IsEnabled = true;
@@ -44876,6 +46079,10 @@ namespace ConceptMatrix.Views
             REarringButton.IsEnabled = false;
             LEarring2Button.IsEnabled = false;
             REarring2Button.IsEnabled = false;
+            LShieldButton.IsEnabled = false;
+            RShieldButton.IsEnabled = false;
+            LWeaponButton.IsEnabled = false;
+            RWeaponButton.IsEnabled = false;
 
             LoadHeadButton.IsEnabled = false;
             LoadTorsoButton.IsEnabled = false;
@@ -44889,90 +46096,40 @@ namespace ConceptMatrix.Views
         {
             public string Description { get; set; }
             public string DateCreated { get; set; }
-            public string Pelvis { get; set; }
-            public string Waist { get; set; }
-            public string LeftThigh { get; set; }
-            public string RightThigh { get; set; }
-            public string Torso { get; set; }
 
-            public string LeftKnee { get; set; }
-            public string RightKnee { get; set; }
-            public string LeftBreast { get; set; }
-            public string RightBreast { get; set; }
-            public string Sternum { get; set; }
-            public string LeftCalf { get; set; }
-            public string RightCalf { get; set; }
-            public string Neck { get; set; }
-            public string LeftClavicle { get; set; }
-            public string RightClavicle { get; set; }
-            public string LeftFoot { get; set; }
-            public string RightFoot { get; set; }
             public string Head { get; set; }
-            public string LeftArm { get; set; }
-            public string RightArm { get; set; }
-            public string LeftToes { get; set; }
-            public string RightToes { get; set; }
 
             public string LeftEar { get; set; }
             public string RightEar { get; set; }
-            public string LeftForearm { get; set; }
-            public string RightForearm { get; set; }
-            public string LeftShoulder { get; set; }
-            public string RightShoulder { get; set; }
-            public string LeftHand { get; set; }
-            public string RightHand { get; set; }
-            public string LeftEarring { get; set; }
-            public string RightEarring { get; set; }
-            public string LeftEarring_2 { get; set; }
-            public string RightEarring_2 { get; set; }
-            public string LeftElbow { get; set; }
-            public string RightElbow { get; set; }
-            public string LeftWrist { get; set; }
-            public string RightWrist { get; set; }
-            public string LeftIndex { get; set; }
-            public string RightIndex { get; set; }
-            public string LeftPinky { get; set; }
-            public string RightPinky { get; set; }
-            public string LeftRing { get; set; }
-            public string RightRing { get; set; }
-            public string LeftMiddle { get; set; }
-            public string RightMiddle { get; set; }
-            public string LeftThumb { get; set; }
-            public string RightThumb { get; set; }
 
-            public string LeftIndex_2 { get; set; }
-            public string RightIndex_2 { get; set; }
-            public string LeftPinky_2 { get; set; }
-            public string RightPinky_2 { get; set; }
-            public string LeftRing_2 { get; set; }
-            public string RightRing_2 { get; set; }
-            public string LeftMiddle_2 { get; set; }
-            public string RightMiddle_2 { get; set; }
-            public string LeftThumb_2 { get; set; }
-            public string RightThumb_2 { get; set; }
-
-            public string Tail { get; set; }
-            public string Tail_2 { get; set; }
-            public string Tail_3 { get; set; }
-            public string Tail_4 { get; set; }
-            public string Tail_5 { get; set; }
-
-            public string Chin { get; set; }
-
-            public string LeftLowEyeLid { get; set; }
-            public string RightLowEyeLid { get; set; }
+            public string LeftVieraEar { get; set; }
+            public string LeftVieraEar2 { get; set; }
+            public string LeftVieraEar3 { get; set; }
+            public string LeftVieraEar4 { get; set; }
+            public string RightVieraEar { get; set; }
+            public string RightVieraEar2 { get; set; }
+            public string RightVieraEar3 { get; set; }
+            public string RightVieraEar4 { get; set; }
+            public string LeftVieraLowEar3 { get; set; }
+            public string LeftVieraLowEar4 { get; set; }
+            public string RightVieraLowEar2 { get; set; }
+            public string RightVieraLowEar3 { get; set; }
+            public string RightVieraLowEar4 { get; set; }
 
             public string LeftInEyebrow { get; set; }
             public string RightInEyebrow { get; set; }
             public string LeftOutEyebrow { get; set; }
             public string RightOutEyebrow { get; set; }
 
-            public string LeftEyeLid { get; set; }
-            public string RightEyeLid { get; set; }
-
             public string LeftEye { get; set; }
             public string RightEye { get; set; }
 
+            public string LeftEyeLid { get; set; }
+            public string RightEyeLid { get; set; }
+            public string LeftLowEyeLid { get; set; }
+            public string RightLowEyeLid { get; set; }
+
+            public string Nose { get; set; }
             public string Nostrils { get; set; }
 
             public string LeftCheek { get; set; }
@@ -44981,34 +46138,94 @@ namespace ConceptMatrix.Views
             public string LeftMouth { get; set; }
             public string RightMouth { get; set; }
 
-            public string LeftLowLip { get; set; }
-            public string RightLowLip { get; set; }
-
             public string LeftUpLip { get; set; }
             public string RightUpLip { get; set; }
-
-            public string Nose { get; set; }
-
-            public string LeftVieraLowEar3 { get; set; }
-            public string LeftVieraLowEar4 { get; set; }
-
-            public string RightVieraLowEar2 { get; set; }
-            public string RightVieraLowEar3 { get; set; }
-            public string RightVieraLowEar4 { get; set; }
-
-            public string LeftVieraEar { get; set; }
-            public string LeftVieraEar2 { get; set; }
-            public string LeftVieraEar3 { get; set; }
-            public string LeftVieraEar4 { get; set; }
-
-            public string RightVieraEar { get; set; }
-            public string RightVieraEar2 { get; set; }
-            public string RightVieraEar3 { get; set; }
-            public string RightVieraEar4 { get; set; }
+            public string LeftLowLip { get; set; }
+            public string RightLowLip { get; set; }
 
             public string LeftVieraLowLip { get; set; }
             public string RightVieraUpLip { get; set; }
             public string RightVieraLowLip { get; set; }
+
+            public string Chin { get; set; }
+
+
+            public string Neck { get; set; }
+            public string Sternum { get; set; }
+            public string LeftClavicle { get; set; }
+            public string RightClavicle { get; set; }
+            public string Torso { get; set; }
+            public string LeftBreast { get; set; }
+            public string RightBreast { get; set; }
+
+            public string LeftShoulder { get; set; }
+            public string RightShoulder { get; set; }
+            public string LeftArm { get; set; }
+            public string RightArm { get; set; }
+            public string LeftElbow { get; set; }
+            public string RightElbow { get; set; }
+            public string LeftForearm { get; set; }
+            public string RightForearm { get; set; }
+            public string LeftWrist { get; set; }
+            public string RightWrist { get; set; }
+            public string LeftHand { get; set; }
+            public string RightHand { get; set; }
+
+            public string LeftThumb { get; set; }
+            public string RightThumb { get; set; }
+            public string LeftIndex { get; set; }
+            public string RightIndex { get; set; }
+            public string LeftMiddle { get; set; }
+            public string RightMiddle { get; set; }
+            public string LeftRing { get; set; }
+            public string RightRing { get; set; }
+            public string LeftPinky { get; set; }
+            public string RightPinky { get; set; }
+
+            public string LeftThumb_2 { get; set; }
+            public string RightThumb_2 { get; set; }
+            public string LeftIndex_2 { get; set; }
+            public string RightIndex_2 { get; set; }
+            public string LeftMiddle_2 { get; set; }
+            public string RightMiddle_2 { get; set; }
+            public string LeftRing_2 { get; set; }
+            public string RightRing_2 { get; set; }
+            public string LeftPinky_2 { get; set; }
+            public string RightPinky_2 { get; set; }
+
+
+            public string Pelvis { get; set; }
+            public string Waist { get; set; }
+
+            public string Tail { get; set; }
+            public string Tail_2 { get; set; }
+            public string Tail_3 { get; set; }
+            public string Tail_4 { get; set; }
+            public string Tail_5 { get; set; }
+
+            public string LeftThigh { get; set; }
+            public string RightThigh { get; set; }
+            public string LeftKnee { get; set; }
+            public string RightKnee { get; set; }
+            public string LeftCalf { get; set; }
+            public string RightCalf { get; set; }
+
+            public string LeftFoot { get; set; }
+            public string RightFoot { get; set; }
+            public string LeftToes { get; set; }
+            public string RightToes { get; set; }
+
+
+            public string LeftEarring { get; set; }
+            public string RightEarring { get; set; }
+            public string LeftEarring_2 { get; set; }
+            public string RightEarring_2 { get; set; }
+
+            public string LeftWeapon { get; set; }
+            public string RightWeapon { get; set; }
+            public string LeftShield { get; set; }
+            public string RightShield { get; set; }
+
         }
 
         private void SaveBones_Click(object sender, RoutedEventArgs e)
@@ -45025,104 +46242,108 @@ namespace ConceptMatrix.Views
                 BoneSaver.Description = result;
                 BoneSaver.DateCreated = DateTime.Now.ToLocalTime().ToString();
 
-                #region Head, Face Features(Nostrils/Cheek/Mouth/Nose/Chin)
+                #region Head
                 BoneSaver.Head = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.HeadX), 16));
-                BoneSaver.Chin = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.ChinX), 16));
+
+                BoneSaver.LeftEar = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEarX), 16));
+                BoneSaver.RightEar = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REarX), 16));
+
+                BoneSaver.LeftVieraEar = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVEarX), 16));
+                BoneSaver.LeftVieraEar2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVEar2X), 16));
+                BoneSaver.LeftVieraEar3 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVEar3X), 16));
+                BoneSaver.LeftVieraEar4 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVEar4X), 16));
+                BoneSaver.RightVieraEar = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVEarX), 16));
+                BoneSaver.RightVieraEar2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVEar2X), 16));
+                BoneSaver.RightVieraEar3 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVEar3X), 16));
+                BoneSaver.RightVieraEar4 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVEar4X), 16));
+                BoneSaver.LeftVieraLowEar3 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVLowEar3X), 16));
+                BoneSaver.LeftVieraLowEar4 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVLowEar4X), 16));
+                BoneSaver.RightVieraLowEar2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowEar2X), 16));
+                BoneSaver.RightVieraLowEar3 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowEar3X), 16));
+                BoneSaver.RightVieraLowEar4 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowEar4X), 16));
+
+                BoneSaver.LeftInEyebrow = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LInEyebrowX), 16));
+                BoneSaver.RightInEyebrow = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RInEyebrowX), 16));
+                BoneSaver.LeftOutEyebrow = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LOutEyebrowX), 16));
+                BoneSaver.RightOutEyebrow = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.ROutEyebrowX), 16));
+
+                BoneSaver.LeftEye = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEyeX), 16));
+                BoneSaver.RightEye = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REyeX), 16));
+
+                BoneSaver.LeftEyeLid = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEyelidX), 16));
+                BoneSaver.RightEyeLid = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REyelidX), 16));
+                BoneSaver.LeftLowEyeLid = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LLowEyelidX), 16));
+                BoneSaver.RightLowEyeLid = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RLowEyelidX), 16));
+
+                BoneSaver.Nose = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.NoseX), 16));
                 BoneSaver.Nostrils = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.NostrilsX), 16));
+
                 BoneSaver.LeftCheek = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LCheekX), 16));
                 BoneSaver.RightCheek = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RCheekX), 16));
+
                 BoneSaver.LeftMouth = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LMouthX), 16));
                 BoneSaver.RightMouth = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RMouthX), 16));
-                BoneSaver.Nose = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.NoseX), 16));
+
+                BoneSaver.LeftUpLip = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LUpLipX), 16));
+                BoneSaver.RightUpLip = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RUpLipX), 16));
+                BoneSaver.LeftLowLip = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LLowLipX), 16));
+                BoneSaver.RightLowLip = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RLowLipX), 16));
+
+                BoneSaver.LeftVieraLowLip = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVLowLipX), 16));
+                BoneSaver.RightVieraUpLip = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVUpLipX), 16));
+                BoneSaver.RightVieraLowLip = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowLipX), 16));
+
+                BoneSaver.Chin = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.ChinX), 16));
                 #endregion
 
-                #region Arms, Elbow, Forearms,Hands and Shoulders + Wrist
+                #region Upper Body
+                BoneSaver.Neck = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.NeckX), 16));
+                BoneSaver.Sternum = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.SternumX), 16));
+                BoneSaver.LeftClavicle = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LClavicleX), 16));
+                BoneSaver.RightClavicle = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RClavicleX), 16));
+                BoneSaver.Torso = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.TorsoX), 16));
+                BoneSaver.LeftBreast = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LBreastX), 16));
+                BoneSaver.RightBreast = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RBreastX), 16));
 
+                BoneSaver.LeftShoulder = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LShoulderX), 16));
+                BoneSaver.RightShoulder = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RShoulderX), 16));
+                BoneSaver.LeftArm = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LArmX), 16));
+                BoneSaver.RightArm = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RArmX), 16));
                 BoneSaver.LeftElbow = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LElbowX), 16));
                 BoneSaver.RightElbow = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RElbowX), 16));
                 BoneSaver.LeftWrist = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LWristX), 16));
                 BoneSaver.RightWrist = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RWristX), 16));
                 BoneSaver.LeftForearm = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LForearmX), 16));
                 BoneSaver.RightForearm = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RForearmX), 16));
-                BoneSaver.LeftShoulder = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LShoulderX), 16));
-                BoneSaver.RightShoulder = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RShoulderX), 16));
                 BoneSaver.LeftHand = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LHandX), 16));
                 BoneSaver.RightHand = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RHandX), 16));
-                BoneSaver.LeftArm = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LArmX), 16));
-                BoneSaver.RightArm = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RArmX), 16));
 
-
-                #endregion
-
-                #region Torso / Chest / Neck / Clavicle / Breast and Sternum
-                BoneSaver.Neck = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.NeckX), 16));
-                BoneSaver.LeftClavicle = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LClavicleX), 16));
-                BoneSaver.RightClavicle = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RClavicleX), 16));
-                BoneSaver.RightBreast = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RBreastX), 16));
-                BoneSaver.LeftBreast = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LBreastX), 16));
-                BoneSaver.Sternum = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.SternumX), 16));
-                BoneSaver.Torso = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.TorsoX), 16));
-
-                #endregion
-
-                #region Lower Body, Hips, Calf/calves, Knee, Pelvis and Thigh
-                BoneSaver.Pelvis = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.PelvisX), 16));
-                BoneSaver.Waist = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.WaistX), 16));
-                BoneSaver.LeftThigh = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LThighX), 16));
-                BoneSaver.RightThigh = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RThighX), 16));
-                BoneSaver.LeftKnee = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LKneeX), 16));
-                BoneSaver.RightKnee = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RKneeX), 16));
-
-                BoneSaver.LeftCalf = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LCalfX), 16));
-                BoneSaver.RightCalf = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RCalfX), 16));
-
-                #endregion
-
-                #region Foot / Toes
-                BoneSaver.LeftFoot = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LFootX), 16));
-                BoneSaver.RightFoot = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RFootX), 16));
-
-                BoneSaver.LeftToes = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LToesX), 16));
-                BoneSaver.RightToes = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RToesX), 16));
-
-                #endregion
-
-                #region Ears/Earring
-                BoneSaver.LeftEarring = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEarringX), 16));
-                BoneSaver.LeftEarring_2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEarring2X), 16));
-                BoneSaver.RightEarring = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REarringX), 16));
-                BoneSaver.RightEarring_2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REarring2X), 16));
-                BoneSaver.LeftEar = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEarX), 16));
-                BoneSaver.RightEar = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REarX), 16));
-
-                #endregion
-
-                #region Finger Bones
-                BoneSaver.LeftIndex = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LIndexX), 16));
-                BoneSaver.RightIndex = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RIndexX), 16));
-                BoneSaver.LeftPinky = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LPinkyX), 16));
-                BoneSaver.RightPinky = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RPinkyX), 16));
-                BoneSaver.LeftRing = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LRingX), 16));
-                BoneSaver.RightRing = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RRingX), 16));
-                BoneSaver.LeftMiddle = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LMiddleX), 16));
-                BoneSaver.RightMiddle = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RMiddleX), 16));
                 BoneSaver.LeftThumb = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LThumbX), 16));
                 BoneSaver.RightThumb = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RThumbX), 16));
+                BoneSaver.LeftIndex = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LIndexX), 16));
+                BoneSaver.RightIndex = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RIndexX), 16));
+                BoneSaver.LeftMiddle = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LMiddleX), 16));
+                BoneSaver.RightMiddle = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RMiddleX), 16));
+                BoneSaver.LeftRing = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LRingX), 16));
+                BoneSaver.RightRing = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RRingX), 16));
+                BoneSaver.LeftPinky = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LPinkyX), 16));
+                BoneSaver.RightPinky = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RPinkyX), 16));
 
-                BoneSaver.LeftIndex_2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LIndex2X), 16));
-                BoneSaver.RightIndex_2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RIndex2X), 16));
-                BoneSaver.LeftPinky_2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LPinky2X), 16));
-                BoneSaver.RightPinky_2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RPinky2X), 16));
-                BoneSaver.LeftRing_2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LRing2X), 16));
-                BoneSaver.RightRing_2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RRing2X), 16));
-                BoneSaver.LeftMiddle_2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LMiddle2X), 16));
-                BoneSaver.RightMiddle_2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RMiddle2X), 16));
                 BoneSaver.LeftThumb_2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LThumb2X), 16));
                 BoneSaver.RightThumb_2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RThumb2X), 16));
-
+                BoneSaver.LeftIndex_2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LIndex2X), 16));
+                BoneSaver.RightIndex_2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RIndex2X), 16));
+                BoneSaver.LeftMiddle_2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LMiddle2X), 16));
+                BoneSaver.RightMiddle_2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RMiddle2X), 16));
+                BoneSaver.LeftRing_2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LRing2X), 16));
+                BoneSaver.RightRing_2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RRing2X), 16));
+                BoneSaver.LeftPinky_2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LPinky2X), 16));
+                BoneSaver.RightPinky_2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RPinky2X), 16));
                 #endregion
 
-                #region Tails
+                #region Lower Body
+                BoneSaver.Pelvis = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.PelvisX), 16));
+                BoneSaver.Waist = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.WaistX), 16));
 
                 BoneSaver.Tail = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.TailX), 16));
                 BoneSaver.Tail_2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.Tail2X), 16));
@@ -45130,66 +46351,31 @@ namespace ConceptMatrix.Views
                 BoneSaver.Tail_4 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.Tail4X), 16));
                 BoneSaver.Tail_5 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.Tail5X), 16));
 
+                BoneSaver.LeftThigh = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LThighX), 16));
+                BoneSaver.RightThigh = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RThighX), 16));
+                BoneSaver.LeftKnee = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LKneeX), 16));
+                BoneSaver.RightKnee = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RKneeX), 16));
+                BoneSaver.LeftCalf = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LCalfX), 16));
+                BoneSaver.RightCalf = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RCalfX), 16));
+
+                BoneSaver.LeftFoot = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LFootX), 16));
+                BoneSaver.RightFoot = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RFootX), 16));
+                BoneSaver.LeftToes = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LToesX), 16));
+                BoneSaver.RightToes = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RToesX), 16));
                 #endregion
 
-                #region Eyes
-                BoneSaver.LeftEye = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEyeX), 16));
-                BoneSaver.RightEye = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REyeX), 16));
-                #endregion
-           
-                #region EyeLids
-                BoneSaver.LeftLowEyeLid = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LLowEyelidX), 16));
-                BoneSaver.RightLowEyeLid = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RLowEyelidX), 16));
+                #region Equipment
+                BoneSaver.LeftEarring = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEarringX), 16));
+                BoneSaver.LeftEarring_2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEarring2X), 16));
+                BoneSaver.RightEarring = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REarringX), 16));
+                BoneSaver.RightEarring_2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REarring2X), 16));
 
-                BoneSaver.LeftEyeLid = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEyelidX), 16));
-                BoneSaver.RightEyeLid = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REyelidX), 16));
-
+                BoneSaver.LeftWeapon = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LWeaponX), 16));
+                BoneSaver.RightWeapon = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RWeaponX), 16));
+                BoneSaver.LeftShield = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LShieldX), 16));
+                BoneSaver.RightShield = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RShieldX), 16));
                 #endregion
 
-                #region Eyebrows (In & Out)
-                BoneSaver.LeftOutEyebrow = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LOutEyebrowX), 16));
-                BoneSaver.RightOutEyebrow = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.ROutEyebrowX), 16));
-                BoneSaver.LeftInEyebrow = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LInEyebrowX), 16));
-                BoneSaver.RightInEyebrow = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RInEyebrowX), 16));
-
-                #endregion
-
-                #region Lips (Up & Low)
-                BoneSaver.LeftLowLip = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LLowLipX), 16));
-                BoneSaver.RightLowLip = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RLowLipX), 16));
-                BoneSaver.LeftUpLip = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LUpLipX), 16));
-                BoneSaver.RightUpLip = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RUpLipX), 16));
-
-                #endregion
-          
-                #region Viera Ears (Low)
-                BoneSaver.LeftVieraLowEar3 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVLowEar3X), 16));
-                BoneSaver.RightVieraLowEar2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowEar2X), 16));
-                BoneSaver.LeftVieraLowEar4 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVLowEar4X), 16));
-                BoneSaver.RightVieraLowEar3 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowEar3X), 16));
-                BoneSaver.RightVieraLowEar4 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowEar4X), 16));
-
-                #endregion
-              
-                #region Viera Lips (Up & Low)
-                BoneSaver.LeftVieraLowLip = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVLowLipX), 16));
-                BoneSaver.RightVieraUpLip = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVUpLipX), 16));
-                BoneSaver.RightVieraLowLip = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowLipX), 16));
-
-                #endregion
-
-                #region Viera Ears (Left & Right)
-
-                BoneSaver.RightVieraEar = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVEarX), 16));
-                BoneSaver.RightVieraEar2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVEar2X), 16));
-                BoneSaver.RightVieraEar3 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVEar3X), 16));
-                BoneSaver.RightVieraEar4 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVEar4X), 16));
-                BoneSaver.LeftVieraEar = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVEarX), 16));
-                BoneSaver.LeftVieraEar2 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVEar2X), 16));
-                BoneSaver.LeftVieraEar3 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVEar3X), 16));
-                BoneSaver.LeftVieraEar4 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVEar4X), 16));
-         
-                #endregion
 
                 string details = JsonConvert.SerializeObject(BoneSaver, Formatting.Indented, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
                 File.WriteAllText(dig.FileName, details);
@@ -45210,340 +46396,139 @@ namespace ConceptMatrix.Views
                 EditModeButton.IsChecked = true;
                 PhysicsButton.IsChecked = true;
                 BoneSaves BoneLoader = JsonConvert.DeserializeObject<BoneSaves>(File.ReadAllText(dig.FileName));
-                #region Head, Face Features (Nostrils/Cheek/Nose/Chin)
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.HeadX),
-MemoryManager.StringToByteArray(BoneLoader.Head.Replace(" ", string.Empty)));
 
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.NostrilsX),
-MemoryManager.StringToByteArray(BoneLoader.Nostrils.Replace(" ", string.Empty)));
+                #region Head
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.HeadX),MemoryManager.StringToByteArray(BoneLoader.Head.Replace(" ", string.Empty)));
 
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LCheekX),
-    MemoryManager.StringToByteArray(BoneLoader.LeftCheek.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEarX),MemoryManager.StringToByteArray(BoneLoader.LeftEar.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REarX),MemoryManager.StringToByteArray(BoneLoader.RightEar.Replace(" ", string.Empty)));
 
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RCheekX),
-    MemoryManager.StringToByteArray(BoneLoader.RightCheek.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVEarX),MemoryManager.StringToByteArray(BoneLoader.RightVieraEar.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVEar2X),MemoryManager.StringToByteArray(BoneLoader.RightVieraEar2.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVEar3X),MemoryManager.StringToByteArray(BoneLoader.RightVieraEar3.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVEar4X),MemoryManager.StringToByteArray(BoneLoader.RightVieraEar4.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVEarX),MemoryManager.StringToByteArray(BoneLoader.LeftVieraEar.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVEar2X),MemoryManager.StringToByteArray(BoneLoader.LeftVieraEar2.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVEar3X),MemoryManager.StringToByteArray(BoneLoader.LeftVieraEar3.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVEar4X),MemoryManager.StringToByteArray(BoneLoader.LeftVieraEar4.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVLowEar3X),MemoryManager.StringToByteArray(BoneLoader.LeftVieraLowEar3.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVLowEar4X),MemoryManager.StringToByteArray(BoneLoader.LeftVieraLowEar4.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowEar2X),MemoryManager.StringToByteArray(BoneLoader.RightVieraLowEar2.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowEar3X),MemoryManager.StringToByteArray(BoneLoader.RightVieraLowEar3.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowEar4X),MemoryManager.StringToByteArray(BoneLoader.RightVieraLowEar4.Replace(" ", string.Empty)));
 
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.NoseX),
-    MemoryManager.StringToByteArray(BoneLoader.Nose.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LInEyebrowX),MemoryManager.StringToByteArray(BoneLoader.LeftInEyebrow.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RInEyebrowX),MemoryManager.StringToByteArray(BoneLoader.RightInEyebrow.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LOutEyebrowX),MemoryManager.StringToByteArray(BoneLoader.LeftOutEyebrow.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.ROutEyebrowX),MemoryManager.StringToByteArray(BoneLoader.RightOutEyebrow.Replace(" ", string.Empty)));
 
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.ChinX),
-MemoryManager.StringToByteArray(BoneLoader.Chin.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEyeX),MemoryManager.StringToByteArray(BoneLoader.LeftEye.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REyeX),MemoryManager.StringToByteArray(BoneLoader.RightEye.Replace(" ", string.Empty)));
+
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEyelidX), MemoryManager.StringToByteArray(BoneLoader.LeftEyeLid.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REyelidX), MemoryManager.StringToByteArray(BoneLoader.RightEyeLid.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LLowEyelidX), MemoryManager.StringToByteArray(BoneLoader.LeftLowEyeLid.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RLowEyelidX), MemoryManager.StringToByteArray(BoneLoader.RightLowEyeLid.Replace(" ", string.Empty)));
+
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.NoseX),MemoryManager.StringToByteArray(BoneLoader.Nose.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.NostrilsX),MemoryManager.StringToByteArray(BoneLoader.Nostrils.Replace(" ", string.Empty)));
+
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LCheekX),MemoryManager.StringToByteArray(BoneLoader.LeftCheek.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RCheekX),MemoryManager.StringToByteArray(BoneLoader.RightCheek.Replace(" ", string.Empty)));
+
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LMouthX), MemoryManager.StringToByteArray(BoneLoader.LeftMouth.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RMouthX), MemoryManager.StringToByteArray(BoneLoader.RightMouth.Replace(" ", string.Empty)));
+
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LUpLipX), MemoryManager.StringToByteArray(BoneLoader.LeftUpLip.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RUpLipX), MemoryManager.StringToByteArray(BoneLoader.RightUpLip.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LLowLipX), MemoryManager.StringToByteArray(BoneLoader.LeftLowLip.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RLowLipX), MemoryManager.StringToByteArray(BoneLoader.RightLowLip.Replace(" ", string.Empty)));
+
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVLowLipX), MemoryManager.StringToByteArray(BoneLoader.LeftVieraLowLip.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVUpLipX), MemoryManager.StringToByteArray(BoneLoader.RightVieraUpLip.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowLipX), MemoryManager.StringToByteArray(BoneLoader.RightVieraLowLip.Replace(" ", string.Empty)));
+
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.ChinX),MemoryManager.StringToByteArray(BoneLoader.Chin.Replace(" ", string.Empty)));
                 #endregion
 
-                #region Lower Body, Hips, Calf/calves, Knee, Pelvis and Thigh
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.PelvisX),
-MemoryManager.StringToByteArray(BoneLoader.Pelvis.Replace(" ", string.Empty)));
+                #region Upper Body
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.NeckX), MemoryManager.StringToByteArray(BoneLoader.Neck.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.SternumX), MemoryManager.StringToByteArray(BoneLoader.Sternum.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LClavicleX), MemoryManager.StringToByteArray(BoneLoader.LeftClavicle.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RClavicleX), MemoryManager.StringToByteArray(BoneLoader.RightClavicle.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.TorsoX), MemoryManager.StringToByteArray(BoneLoader.Torso.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RBreastX), MemoryManager.StringToByteArray(BoneLoader.RightBreast.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LBreastX), MemoryManager.StringToByteArray(BoneLoader.LeftBreast.Replace(" ", string.Empty)));
 
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.WaistX),
-    MemoryManager.StringToByteArray(BoneLoader.Waist.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LShoulderX), MemoryManager.StringToByteArray(BoneLoader.LeftShoulder.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RShoulderX), MemoryManager.StringToByteArray(BoneLoader.RightShoulder.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LArmX), MemoryManager.StringToByteArray(BoneLoader.LeftArm.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RArmX), MemoryManager.StringToByteArray(BoneLoader.RightArm.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LElbowX), MemoryManager.StringToByteArray(BoneLoader.LeftElbow.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RElbowX), MemoryManager.StringToByteArray(BoneLoader.RightElbow.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LForearmX), MemoryManager.StringToByteArray(BoneLoader.LeftForearm.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RForearmX), MemoryManager.StringToByteArray(BoneLoader.RightForearm.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LWristX), MemoryManager.StringToByteArray(BoneLoader.LeftWrist.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RWristX), MemoryManager.StringToByteArray(BoneLoader.RightWrist.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LHandX), MemoryManager.StringToByteArray(BoneLoader.LeftHand.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RHandX), MemoryManager.StringToByteArray(BoneLoader.RightHand.Replace(" ", string.Empty)));
 
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LThighX),
-MemoryManager.StringToByteArray(BoneLoader.LeftThigh.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LThumbX), MemoryManager.StringToByteArray(BoneLoader.LeftThumb.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RThumbX), MemoryManager.StringToByteArray(BoneLoader.RightThumb.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LIndexX), MemoryManager.StringToByteArray(BoneLoader.LeftIndex.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RIndexX), MemoryManager.StringToByteArray(BoneLoader.RightIndex.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LMiddleX), MemoryManager.StringToByteArray(BoneLoader.LeftMiddle.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RMiddleX), MemoryManager.StringToByteArray(BoneLoader.RightMiddle.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LRingX), MemoryManager.StringToByteArray(BoneLoader.LeftRing.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RRingX), MemoryManager.StringToByteArray(BoneLoader.RightRing.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LPinkyX), MemoryManager.StringToByteArray(BoneLoader.LeftPinky.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RPinkyX), MemoryManager.StringToByteArray(BoneLoader.RightPinky.Replace(" ", string.Empty)));
 
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RThighX),
-    MemoryManager.StringToByteArray(BoneLoader.RightThigh.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LKneeX),
-    MemoryManager.StringToByteArray(BoneLoader.LeftKnee.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RKneeX),
-MemoryManager.StringToByteArray(BoneLoader.RightKnee.Replace(" ", string.Empty)));
-
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LCalfX),
-MemoryManager.StringToByteArray(BoneLoader.LeftCalf.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RCalfX),
-    MemoryManager.StringToByteArray(BoneLoader.RightCalf.Replace(" ", string.Empty)));
-
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LThumb2X), MemoryManager.StringToByteArray(BoneLoader.LeftThumb_2.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RThumb2X), MemoryManager.StringToByteArray(BoneLoader.RightThumb_2.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LIndex2X), MemoryManager.StringToByteArray(BoneLoader.LeftIndex_2.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RIndex2X), MemoryManager.StringToByteArray(BoneLoader.RightIndex_2.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LMiddle2X), MemoryManager.StringToByteArray(BoneLoader.LeftMiddle_2.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RMiddle2X), MemoryManager.StringToByteArray(BoneLoader.RightMiddle_2.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LRing2X), MemoryManager.StringToByteArray(BoneLoader.LeftRing_2.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RRing2X), MemoryManager.StringToByteArray(BoneLoader.RightRing_2.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LPinky2X), MemoryManager.StringToByteArray(BoneLoader.LeftPinky_2.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RPinky2X), MemoryManager.StringToByteArray(BoneLoader.RightPinky_2.Replace(" ", string.Empty)));
                 #endregion
 
-                #region Torso / Chest / Neck / Clavicle / Breast and Sternum
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.NeckX),
-MemoryManager.StringToByteArray(BoneLoader.Neck.Replace(" ", string.Empty)));
+                #region Lower Body
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.PelvisX),MemoryManager.StringToByteArray(BoneLoader.Pelvis.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.WaistX),MemoryManager.StringToByteArray(BoneLoader.Waist.Replace(" ", string.Empty)));
 
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.TorsoX),
-MemoryManager.StringToByteArray(BoneLoader.Torso.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.TailX), MemoryManager.StringToByteArray(BoneLoader.Tail.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.Tail2X), MemoryManager.StringToByteArray(BoneLoader.Tail_2.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.Tail3X), MemoryManager.StringToByteArray(BoneLoader.Tail_3.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.Tail4X), MemoryManager.StringToByteArray(BoneLoader.Tail_4.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.Tail5X), MemoryManager.StringToByteArray(BoneLoader.Tail_5.Replace(" ", string.Empty)));
 
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LClavicleX),
-MemoryManager.StringToByteArray(BoneLoader.LeftClavicle.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LThighX),MemoryManager.StringToByteArray(BoneLoader.LeftThigh.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RThighX),MemoryManager.StringToByteArray(BoneLoader.RightThigh.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LKneeX),MemoryManager.StringToByteArray(BoneLoader.LeftKnee.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RKneeX),MemoryManager.StringToByteArray(BoneLoader.RightKnee.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LCalfX),MemoryManager.StringToByteArray(BoneLoader.LeftCalf.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RCalfX),MemoryManager.StringToByteArray(BoneLoader.RightCalf.Replace(" ", string.Empty)));
 
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RClavicleX),
-MemoryManager.StringToByteArray(BoneLoader.RightClavicle.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RBreastX),
-MemoryManager.StringToByteArray(BoneLoader.RightBreast.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LBreastX),
-MemoryManager.StringToByteArray(BoneLoader.LeftBreast.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.SternumX),
-    MemoryManager.StringToByteArray(BoneLoader.Sternum.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LFootX), MemoryManager.StringToByteArray(BoneLoader.LeftFoot.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RFootX), MemoryManager.StringToByteArray(BoneLoader.RightFoot.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LToesX), MemoryManager.StringToByteArray(BoneLoader.LeftToes.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RToesX), MemoryManager.StringToByteArray(BoneLoader.RightToes.Replace(" ", string.Empty)));
                 #endregion
 
-                #region Foot / Toes
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LFootX),
-    MemoryManager.StringToByteArray(BoneLoader.LeftFoot.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RFootX),
-MemoryManager.StringToByteArray(BoneLoader.RightFoot.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LToesX),
-MemoryManager.StringToByteArray(BoneLoader.LeftToes.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RToesX),
-    MemoryManager.StringToByteArray(BoneLoader.RightToes.Replace(" ", string.Empty)));
-                #endregion
-
-                #region Ears / Earring
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEarX),
-MemoryManager.StringToByteArray(BoneLoader.LeftEar.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REarX),
-    MemoryManager.StringToByteArray(BoneLoader.RightEar.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEarringX),
-MemoryManager.StringToByteArray(BoneLoader.LeftEarring.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEarring2X),
-    MemoryManager.StringToByteArray(BoneLoader.LeftEarring_2.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REarringX),
-MemoryManager.StringToByteArray(BoneLoader.RightEarring.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REarring2X),
-    MemoryManager.StringToByteArray(BoneLoader.RightEarring_2.Replace(" ", string.Empty)));
-                #endregion
-
-                #region Arms / Forearms / Elbow / Hands and Shoulders + Wrist
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LArmX),
-MemoryManager.StringToByteArray(BoneLoader.LeftArm.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RArmX),
-    MemoryManager.StringToByteArray(BoneLoader.RightArm.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LForearmX),
-MemoryManager.StringToByteArray(BoneLoader.LeftForearm.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RForearmX),
-    MemoryManager.StringToByteArray(BoneLoader.RightForearm.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LShoulderX),
-MemoryManager.StringToByteArray(BoneLoader.LeftShoulder.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RShoulderX),
-    MemoryManager.StringToByteArray(BoneLoader.RightShoulder.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LHandX),
-MemoryManager.StringToByteArray(BoneLoader.LeftHand.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RHandX),
-    MemoryManager.StringToByteArray(BoneLoader.RightHand.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LElbowX),
-MemoryManager.StringToByteArray(BoneLoader.LeftElbow.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RElbowX),
-    MemoryManager.StringToByteArray(BoneLoader.RightElbow.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LWristX),
-MemoryManager.StringToByteArray(BoneLoader.LeftWrist.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RWristX),
-    MemoryManager.StringToByteArray(BoneLoader.RightWrist.Replace(" ", string.Empty)));
-                #endregion
-
-                #region Finger Bones
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LIndexX),
-MemoryManager.StringToByteArray(BoneLoader.LeftIndex.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RIndexX),
-    MemoryManager.StringToByteArray(BoneLoader.RightIndex.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LPinkyX),
-MemoryManager.StringToByteArray(BoneLoader.LeftPinky.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RPinkyX),
-    MemoryManager.StringToByteArray(BoneLoader.RightPinky.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LRingX),
-MemoryManager.StringToByteArray(BoneLoader.LeftRing.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RRingX),
-    MemoryManager.StringToByteArray(BoneLoader.RightRing.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LMiddleX),
-MemoryManager.StringToByteArray(BoneLoader.LeftMiddle.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RMiddleX),
-    MemoryManager.StringToByteArray(BoneLoader.RightMiddle.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LThumbX),
-MemoryManager.StringToByteArray(BoneLoader.LeftThumb.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RThumbX),
-    MemoryManager.StringToByteArray(BoneLoader.RightThumb.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LIndex2X),
-MemoryManager.StringToByteArray(BoneLoader.LeftIndex_2.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RIndex2X),
-    MemoryManager.StringToByteArray(BoneLoader.RightIndex_2.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LPinky2X),
-    MemoryManager.StringToByteArray(BoneLoader.LeftPinky_2.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RPinky2X),
-    MemoryManager.StringToByteArray(BoneLoader.RightPinky_2.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LRing2X),
-MemoryManager.StringToByteArray(BoneLoader.LeftRing_2.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RRing2X),
-MemoryManager.StringToByteArray(BoneLoader.RightRing_2.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LMiddle2X),
-    MemoryManager.StringToByteArray(BoneLoader.LeftMiddle_2.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RMiddle2X),
-MemoryManager.StringToByteArray(BoneLoader.RightMiddle_2.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LThumb2X),
-    MemoryManager.StringToByteArray(BoneLoader.LeftThumb_2.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RThumb2X),
-MemoryManager.StringToByteArray(BoneLoader.RightThumb_2.Replace(" ", string.Empty)));
-                #endregion
-
-                #region Tails
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.TailX),
-MemoryManager.StringToByteArray(BoneLoader.Tail.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.Tail2X),
-    MemoryManager.StringToByteArray(BoneLoader.Tail_2.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.Tail3X),
-    MemoryManager.StringToByteArray(BoneLoader.Tail_3.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.Tail4X),
-MemoryManager.StringToByteArray(BoneLoader.Tail_4.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.Tail5X),
-MemoryManager.StringToByteArray(BoneLoader.Tail_5.Replace(" ", string.Empty)));
-                #endregion
-
-                #region Eyelids
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LLowEyelidX),
-MemoryManager.StringToByteArray(BoneLoader.LeftLowEyeLid.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RLowEyelidX),
-    MemoryManager.StringToByteArray(BoneLoader.RightLowEyeLid.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEyelidX),
-    MemoryManager.StringToByteArray(BoneLoader.LeftEyeLid.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REyelidX),
-    MemoryManager.StringToByteArray(BoneLoader.RightEyeLid.Replace(" ", string.Empty)));
-                #endregion
-
-                #region Eyes (Left & Right)
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEyeX),
-MemoryManager.StringToByteArray(BoneLoader.LeftEye.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REyeX),
-MemoryManager.StringToByteArray(BoneLoader.RightEye.Replace(" ", string.Empty)));
-                #endregion
-
-                #region Eyebrows (In & Out)
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LInEyebrowX),
-MemoryManager.StringToByteArray(BoneLoader.LeftInEyebrow.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RInEyebrowX),
-MemoryManager.StringToByteArray(BoneLoader.RightInEyebrow.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LOutEyebrowX),
-MemoryManager.StringToByteArray(BoneLoader.LeftOutEyebrow.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.ROutEyebrowX),
-    MemoryManager.StringToByteArray(BoneLoader.RightOutEyebrow.Replace(" ", string.Empty)));
-                #endregion
-
-                #region Lips (Low & Up)
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LLowLipX),
-MemoryManager.StringToByteArray(BoneLoader.LeftLowLip.Replace(" ", string.Empty)));
-
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RLowLipX),
-MemoryManager.StringToByteArray(BoneLoader.RightLowLip.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LUpLipX),
-MemoryManager.StringToByteArray(BoneLoader.LeftUpLip.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RUpLipX),
-    MemoryManager.StringToByteArray(BoneLoader.RightUpLip.Replace(" ", string.Empty)));
-                #endregion
-
-                #region Viera Lips (Low & Up)
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVUpLipX),
-MemoryManager.StringToByteArray(BoneLoader.RightVieraUpLip.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowLipX),
-MemoryManager.StringToByteArray(BoneLoader.RightVieraLowLip.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVLowLipX),
-MemoryManager.StringToByteArray(BoneLoader.LeftVieraLowLip.Replace(" ", string.Empty)));
-                #endregion
-
-                #region Viera Ears(Right & Left)
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVEarX),
-MemoryManager.StringToByteArray(BoneLoader.RightVieraEar.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVEar2X),
-    MemoryManager.StringToByteArray(BoneLoader.RightVieraEar2.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVEar3X),
-    MemoryManager.StringToByteArray(BoneLoader.RightVieraEar3.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVEar4X),
-    MemoryManager.StringToByteArray(BoneLoader.RightVieraEar4.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVEarX),
-MemoryManager.StringToByteArray(BoneLoader.LeftVieraEar.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVEar2X),
-MemoryManager.StringToByteArray(BoneLoader.LeftVieraEar2.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVEar3X),
-    MemoryManager.StringToByteArray(BoneLoader.LeftVieraEar3.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVEar4X),
-    MemoryManager.StringToByteArray(BoneLoader.LeftVieraEar4.Replace(" ", string.Empty)));
-                #endregion
-
-                #region Viera Ears (Low)
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVLowEar3X),
-MemoryManager.StringToByteArray(BoneLoader.LeftVieraLowEar3.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowEar2X),
-    MemoryManager.StringToByteArray(BoneLoader.RightVieraLowEar2.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LVLowEar4X),
-MemoryManager.StringToByteArray(BoneLoader.LeftVieraLowEar4.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowEar3X),
-MemoryManager.StringToByteArray(BoneLoader.RightVieraLowEar3.Replace(" ", string.Empty)));
-
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RVLowEar4X),
-    MemoryManager.StringToByteArray(BoneLoader.RightVieraLowEar4.Replace(" ", string.Empty)));
-                #endregion
-
-                #region Mouths
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RMouthX),
-MemoryManager.StringToByteArray(BoneLoader.RightMouth.Replace(" ", string.Empty)));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LMouthX),
-MemoryManager.StringToByteArray(BoneLoader.LeftMouth.Replace(" ", string.Empty)));
+                #region Equipment
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEarringX),MemoryManager.StringToByteArray(BoneLoader.LeftEarring.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LEarring2X),MemoryManager.StringToByteArray(BoneLoader.LeftEarring_2.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REarringX),MemoryManager.StringToByteArray(BoneLoader.RightEarring.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.REarring2X),MemoryManager.StringToByteArray(BoneLoader.RightEarring_2.Replace(" ", string.Empty)));
+
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LWeaponX), MemoryManager.StringToByteArray(BoneLoader.LeftWeapon.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RWeaponX), MemoryManager.StringToByteArray(BoneLoader.RightWeapon.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.LShieldX), MemoryManager.StringToByteArray(BoneLoader.LeftShield.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.RShieldX), MemoryManager.StringToByteArray(BoneLoader.RightShield.Replace(" ", string.Empty)));
                 #endregion
 
                 Task.Delay(1000).Wait();
