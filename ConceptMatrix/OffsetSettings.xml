@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Settings>
-  <LastUpdated>5.1x2</LastUpdated>
+  <LastUpdated>5.1x3</LastUpdated>
   <CameraOffset>1BFB7A0</CameraOffset>
   <GposeOffset>1BFB988</GposeOffset>
   <GposeEntityOffset>1BFE820</GposeEntityOffset>
@@ -12,13 +12,13 @@
   <WeatherOffset>1BB3548</WeatherOffset>
   <TerritoryOffset>1BF8100</TerritoryOffset>
   <GposeFilters>1BDA728</GposeFilters>
-  <MusicOffset>0</MusicOffset>
+  <MusicOffset>1BFE770</MusicOffset>
   <SkeletonOffset>1330420</SkeletonOffset>
   <SkeletonOffset2>133154D</SkeletonOffset2>
   <SkeletonOffset3>133F1B4</SkeletonOffset3>
   <PhysicsOffset>39EF68</PhysicsOffset>
-  <CharacterRenderOffset>0</CharacterRenderOffset>
-  <CharacterRenderOffset2>0</CharacterRenderOffset2>
+  <CharacterRenderOffset>455450</CharacterRenderOffset>
+  <CharacterRenderOffset2>455446</CharacterRenderOffset2>
   <Character>
     <Name>30</Name>
     <FCTag>17FA</FCTag>
