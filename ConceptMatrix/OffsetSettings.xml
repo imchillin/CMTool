@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Settings>
-  <LastUpdated>5.1x1</LastUpdated>
-  <CameraOffset>1C007A0</CameraOffset>
-  <GposeOffset>1C00988</GposeOffset>
-  <GposeEntityOffset>1C03820</GposeEntityOffset>
-  <GposeCheckOffset>1C5147A</GposeCheckOffset>
-  <GposeCheck2Offset>1C04570</GposeCheck2Offset>
-  <AoBOffset>1C01D90</AoBOffset>
-  <TargetOffset>1C009F0</TargetOffset>
-  <TimeOffset>1BE17C8</TimeOffset>
-  <WeatherOffset>1BB8548</WeatherOffset>
-  <TerritoryOffset>1BFD100</TerritoryOffset>
-  <GposeFilters>1BDF728</GposeFilters>
-  <MusicOffset>1C03758</MusicOffset>
-  <SkeletonOffset>13301D0</SkeletonOffset>
-  <SkeletonOffset2>13312FD</SkeletonOffset2>
-  <SkeletonOffset3>133EF64</SkeletonOffset3>
-  <PhysicsOffset>39EDA8</PhysicsOffset>
-  <CharacterRenderOffset>455290</CharacterRenderOffset>
-  <CharacterRenderOffset2>455286</CharacterRenderOffset2>
+  <LastUpdated>5.1x2</LastUpdated>
+  <CameraOffset>1BFB7A0</CameraOffset>
+  <GposeOffset>1BFB988</GposeOffset>
+  <GposeEntityOffset>1BFE820</GposeEntityOffset>
+  <GposeCheckOffset>1C4C47A</GposeCheckOffset>
+  <GposeCheck2Offset>1BFF570</GposeCheck2Offset>
+  <AoBOffset>1BFCD90</AoBOffset>
+  <TargetOffset>1BFB9F0</TargetOffset>
+  <TimeOffset>1BDC7C8</TimeOffset>
+  <WeatherOffset>1BB3548</WeatherOffset>
+  <TerritoryOffset>1BF8100</TerritoryOffset>
+  <GposeFilters>1BDA728</GposeFilters>
+  <MusicOffset>0</MusicOffset>
+  <SkeletonOffset>1330420</SkeletonOffset>
+  <SkeletonOffset2>133154D</SkeletonOffset2>
+  <SkeletonOffset3>133F1B4</SkeletonOffset3>
+  <PhysicsOffset>39EF68</PhysicsOffset>
+  <CharacterRenderOffset>0</CharacterRenderOffset>
+  <CharacterRenderOffset2>0</CharacterRenderOffset2>
   <Character>
     <Name>30</Name>
     <FCTag>17FA</FCTag>
