@@ -7,7 +7,10 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignWidth="1115" d:DesignHeight="460">
-	<Grid>
+    <UserControl.Background>
+        <ImageBrush ImageSource="/ConceptMatrix;component/Resources/aboutbg.png"/>
+    </UserControl.Background>
+    <Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition />
 			<ColumnDefinition />
@@ -18,7 +21,7 @@
 			<RowDefinition />
 		</Grid.RowDefinitions>
 
-		<materialDesign:Card Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4">
+		<materialDesign:Card Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4" Background="{x:Null}">
 			<Grid>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="150" />
@@ -50,7 +53,7 @@
 			</Grid>
 		</materialDesign:Card>
 
-		<materialDesign:Card Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4">
+		<materialDesign:Card Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4" Background="{x:Null}">
 			<Grid VerticalAlignment="Stretch" >
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="150" />
@@ -77,7 +80,7 @@
 			</Grid>
 		</materialDesign:Card>
 
-		<materialDesign:Card Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4">
+		<materialDesign:Card Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4" Background="{x:Null}">
 			<Grid VerticalAlignment="Stretch">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="150" />
@@ -130,7 +133,7 @@
 			</Grid>
 		</materialDesign:Card>
 
-		<materialDesign:Card HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4">
+		<materialDesign:Card HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4" Background="{x:Null}">
 			<Grid>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="150" />

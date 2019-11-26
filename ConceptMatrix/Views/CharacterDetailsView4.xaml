@@ -9,6 +9,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="460" d:DesignWidth="1115" Height="530">
     <Grid Height="530">
+        <Grid.Background>
+            <ImageBrush ImageSource="/ConceptMatrix;component/Resources/propertiesbg.png"/>
+        </Grid.Background>
         <GroupBox Header="Skin Color" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" Margin="10,10,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="233" Width="263"></GroupBox>
         <CheckBox  IsChecked="{Binding Path=CharacterDetails.SkinRedPigment.freeze}" Content="Red:" HorizontalAlignment="Left" Margin="16,55,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown  x:Name="RedP" Value="{Binding Path=CharacterDetails.SkinRedPigment.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="106,55,0,0" VerticalAlignment="Top" Width="160" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F8" Interval="0.01"  TextAlignment="Right" SourceUpdated="RedP_SourceUpdated" Height="28"/>

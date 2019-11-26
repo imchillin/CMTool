@@ -184,6 +184,7 @@ namespace ConceptMatrix.ViewModel
             MemoryManager.Instance.SkeletonAddress2 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.SkeletonOffset2, NumberStyles.HexNumber));
             MemoryManager.Instance.SkeletonAddress3 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.SkeletonOffset3, NumberStyles.HexNumber));
             MemoryManager.Instance.PhysicsAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.PhysicsOffset, NumberStyles.HexNumber));
+            MemoryManager.Instance.PhysicsAddress2 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.PhysicsOffset2, NumberStyles.HexNumber));
             MemoryManager.Instance.CharacterRenderAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.CharacterRenderOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.CharacterRenderAddress2 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.CharacterRenderOffset2, NumberStyles.HexNumber));
             while (true)

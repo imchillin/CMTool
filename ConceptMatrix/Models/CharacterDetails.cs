@@ -116,427 +116,6 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<float> Rotation2 { get; set; }
         [JsonIgnore] public Address<float> Rotation3 { get; set; }
         [JsonIgnore] public Address<float> Rotation4 { get; set; }
-
-        [JsonIgnore] public Address<float> HeadX { get; set; }
-        [JsonIgnore] public Address<float> NoseX { get; set; }
-        [JsonIgnore] public Address<float> NostrilsX { get; set; }
-        [JsonIgnore] public Address<float> ChinX { get; set; }
-        [JsonIgnore] public Address<float> LOutEyebrowX { get; set; }
-        [JsonIgnore] public Address<float> ROutEyebrowX { get; set; }
-        [JsonIgnore] public Address<float> LInEyebrowX { get; set; }
-        [JsonIgnore] public Address<float> RInEyebrowX { get; set; }
-        [JsonIgnore] public Address<float> LEyeX { get; set; }
-        [JsonIgnore] public Address<float> REyeX { get; set; }
-        [JsonIgnore] public Address<float> LEyelidX { get; set; }
-        [JsonIgnore] public Address<float> REyelidX { get; set; }
-        [JsonIgnore] public Address<float> LLowEyelidX { get; set; }
-        [JsonIgnore] public Address<float> RLowEyelidX { get; set; }
-        [JsonIgnore] public Address<float> LEarX { get; set; }
-        [JsonIgnore] public Address<float> REarX { get; set; }
-        [JsonIgnore] public Address<float> LCheekX { get; set; }
-        [JsonIgnore] public Address<float> RCheekX { get; set; }
-        [JsonIgnore] public Address<float> LMouthX { get; set; }
-        [JsonIgnore] public Address<float> RMouthX { get; set; }
-        [JsonIgnore] public Address<float> LUpLipX { get; set; }
-        [JsonIgnore] public Address<float> RUpLipX { get; set; }
-        [JsonIgnore] public Address<float> LLowLipX { get; set; }
-        [JsonIgnore] public Address<float> RLowLipX { get; set; }
-        [JsonIgnore] public Address<float> NeckX { get; set; }
-        [JsonIgnore] public Address<float> SternumX { get; set; }
-        [JsonIgnore] public Address<float> TorsoX { get; set; }
-        [JsonIgnore] public Address<float> WaistX { get; set; }
-        [JsonIgnore] public Address<float> LShoulderX { get; set; }
-        [JsonIgnore] public Address<float> RShoulderX { get; set; }
-        [JsonIgnore] public Address<float> LClavicleX { get; set; }
-        [JsonIgnore] public Address<float> RClavicleX { get; set; }
-        [JsonIgnore] public Address<float> LBreastX { get; set; }
-        [JsonIgnore] public Address<float> RBreastX { get; set; }
-        [JsonIgnore] public Address<float> LArmX { get; set; }
-        [JsonIgnore] public Address<float> RArmX { get; set; }
-        [JsonIgnore] public Address<float> LElbowX { get; set; }
-        [JsonIgnore] public Address<float> RElbowX { get; set; }
-        [JsonIgnore] public Address<float> LForearmX { get; set; }
-        [JsonIgnore] public Address<float> RForearmX { get; set; }
-        [JsonIgnore] public Address<float> LWristX { get; set; }
-        [JsonIgnore] public Address<float> RWristX { get; set; }
-        [JsonIgnore] public Address<float> LHandX { get; set; }
-        [JsonIgnore] public Address<float> RHandX { get; set; }
-        [JsonIgnore] public Address<float> LThumbX { get; set; }
-        [JsonIgnore] public Address<float> RThumbX { get; set; }
-        [JsonIgnore] public Address<float> LThumb2X { get; set; }
-        [JsonIgnore] public Address<float> RThumb2X { get; set; }
-        [JsonIgnore] public Address<float> LIndexX { get; set; }
-        [JsonIgnore] public Address<float> RIndexX { get; set; }
-        [JsonIgnore] public Address<float> LIndex2X { get; set; }
-        [JsonIgnore] public Address<float> RIndex2X { get; set; }
-        [JsonIgnore] public Address<float> LMiddleX { get; set; }
-        [JsonIgnore] public Address<float> RMiddleX { get; set; }
-        [JsonIgnore] public Address<float> LMiddle2X { get; set; }
-        [JsonIgnore] public Address<float> RMiddle2X { get; set; }
-        [JsonIgnore] public Address<float> LRingX { get; set; }
-        [JsonIgnore] public Address<float> RRingX { get; set; }
-        [JsonIgnore] public Address<float> LRing2X { get; set; }
-        [JsonIgnore] public Address<float> RRing2X { get; set; }
-        [JsonIgnore] public Address<float> LPinkyX { get; set; }
-        [JsonIgnore] public Address<float> RPinkyX { get; set; }
-        [JsonIgnore] public Address<float> LPinky2X { get; set; }
-        [JsonIgnore] public Address<float> RPinky2X { get; set; }
-        [JsonIgnore] public Address<float> PelvisX { get; set; }
-        [JsonIgnore] public Address<float> TailX { get; set; }
-        [JsonIgnore] public Address<float> Tail2X { get; set; }
-        [JsonIgnore] public Address<float> Tail3X { get; set; }
-        [JsonIgnore] public Address<float> Tail4X { get; set; }
-        [JsonIgnore] public Address<float> Tail5X { get; set; }
-        [JsonIgnore] public Address<float> LThighX { get; set; }
-        [JsonIgnore] public Address<float> RThighX { get; set; }
-        [JsonIgnore] public Address<float> LKneeX { get; set; }
-        [JsonIgnore] public Address<float> RKneeX { get; set; }
-        [JsonIgnore] public Address<float> LCalfX { get; set; }
-        [JsonIgnore] public Address<float> RCalfX { get; set; }
-        [JsonIgnore] public Address<float> LFootX { get; set; }
-        [JsonIgnore] public Address<float> RFootX { get; set; }
-        [JsonIgnore] public Address<float> LToesX { get; set; }
-        [JsonIgnore] public Address<float> RToesX { get; set; }
-        [JsonIgnore] public Address<float> LVEarX { get; set; }
-        [JsonIgnore] public Address<float> RVEarX { get; set; }
-        [JsonIgnore] public Address<float> LVEar2X { get; set; }
-        [JsonIgnore] public Address<float> RVEar2X { get; set; }
-        [JsonIgnore] public Address<float> LVEar3X { get; set; }
-        [JsonIgnore] public Address<float> RVEar3X { get; set; }
-        [JsonIgnore] public Address<float> LVEar4X { get; set; }
-        [JsonIgnore] public Address<float> RVEar4X { get; set; }
-        [JsonIgnore] public Address<float> LEarringX { get; set; }
-        [JsonIgnore] public Address<float> REarringX { get; set; }
-        [JsonIgnore] public Address<float> LEarring2X { get; set; }
-        [JsonIgnore] public Address<float> REarring2X { get; set; }
-        [JsonIgnore] public Address<float> LVLowLipX { get; set; }
-        [JsonIgnore] public Address<float> RVUpLipX { get; set; }
-        [JsonIgnore] public Address<float> RVLowLipX { get; set; }
-        [JsonIgnore] public Address<float> RVLowEar2X { get; set; }
-        [JsonIgnore] public Address<float> LVLowEar3X { get; set; }
-        [JsonIgnore] public Address<float> RVLowEar3X { get; set; }
-        [JsonIgnore] public Address<float> LVLowEar4X { get; set; }
-        [JsonIgnore] public Address<float> RVLowEar4X { get; set; }
-        [JsonIgnore] public Address<float> LShieldX { get; set; }
-        [JsonIgnore] public Address<float> RShieldX { get; set; }
-        [JsonIgnore] public Address<float> LWeaponX { get; set; }
-        [JsonIgnore] public Address<float> RWeaponX { get; set; }
-
-        [JsonIgnore] public Address<float> HeadY { get; set; }
-        [JsonIgnore] public Address<float> NoseY { get; set; }
-        [JsonIgnore] public Address<float> NostrilsY { get; set; }
-        [JsonIgnore] public Address<float> ChinY { get; set; }
-        [JsonIgnore] public Address<float> LOutEyebrowY { get; set; }
-        [JsonIgnore] public Address<float> ROutEyebrowY { get; set; }
-        [JsonIgnore] public Address<float> LInEyebrowY { get; set; }
-        [JsonIgnore] public Address<float> RInEyebrowY { get; set; }
-        [JsonIgnore] public Address<float> LEyeY { get; set; }
-        [JsonIgnore] public Address<float> REyeY { get; set; }
-        [JsonIgnore] public Address<float> LEyelidY { get; set; }
-        [JsonIgnore] public Address<float> REyelidY { get; set; }
-        [JsonIgnore] public Address<float> LLowEyelidY { get; set; }
-        [JsonIgnore] public Address<float> RLowEyelidY { get; set; }
-        [JsonIgnore] public Address<float> LEarY { get; set; }
-        [JsonIgnore] public Address<float> REarY { get; set; }
-        [JsonIgnore] public Address<float> LCheekY { get; set; }
-        [JsonIgnore] public Address<float> RCheekY { get; set; }
-        [JsonIgnore] public Address<float> LMouthY { get; set; }
-        [JsonIgnore] public Address<float> RMouthY { get; set; }
-        [JsonIgnore] public Address<float> LUpLipY { get; set; }
-        [JsonIgnore] public Address<float> RUpLipY { get; set; }
-        [JsonIgnore] public Address<float> LLowLipY { get; set; }
-        [JsonIgnore] public Address<float> RLowLipY { get; set; }
-        [JsonIgnore] public Address<float> NeckY { get; set; }
-        [JsonIgnore] public Address<float> SternumY { get; set; }
-        [JsonIgnore] public Address<float> TorsoY { get; set; }
-        [JsonIgnore] public Address<float> WaistY { get; set; }
-        [JsonIgnore] public Address<float> LShoulderY { get; set; }
-        [JsonIgnore] public Address<float> RShoulderY { get; set; }
-        [JsonIgnore] public Address<float> LClavicleY { get; set; }
-        [JsonIgnore] public Address<float> RClavicleY { get; set; }
-        [JsonIgnore] public Address<float> LBreastY { get; set; }
-        [JsonIgnore] public Address<float> RBreastY { get; set; }
-        [JsonIgnore] public Address<float> LArmY { get; set; }
-        [JsonIgnore] public Address<float> RArmY { get; set; }
-        [JsonIgnore] public Address<float> LElbowY { get; set; }
-        [JsonIgnore] public Address<float> RElbowY { get; set; }
-        [JsonIgnore] public Address<float> LForearmY { get; set; }
-        [JsonIgnore] public Address<float> RForearmY { get; set; }
-        [JsonIgnore] public Address<float> LWristY { get; set; }
-        [JsonIgnore] public Address<float> RWristY { get; set; }
-        [JsonIgnore] public Address<float> LHandY { get; set; }
-        [JsonIgnore] public Address<float> RHandY { get; set; }
-        [JsonIgnore] public Address<float> LThumbY { get; set; }
-        [JsonIgnore] public Address<float> RThumbY { get; set; }
-        [JsonIgnore] public Address<float> LThumb2Y { get; set; }
-        [JsonIgnore] public Address<float> RThumb2Y { get; set; }
-        [JsonIgnore] public Address<float> LIndexY { get; set; }
-        [JsonIgnore] public Address<float> RIndexY { get; set; }
-        [JsonIgnore] public Address<float> LIndex2Y { get; set; }
-        [JsonIgnore] public Address<float> RIndex2Y { get; set; }
-        [JsonIgnore] public Address<float> LMiddleY { get; set; }
-        [JsonIgnore] public Address<float> RMiddleY { get; set; }
-        [JsonIgnore] public Address<float> LMiddle2Y { get; set; }
-        [JsonIgnore] public Address<float> RMiddle2Y { get; set; }
-        [JsonIgnore] public Address<float> LRingY { get; set; }
-        [JsonIgnore] public Address<float> RRingY { get; set; }
-        [JsonIgnore] public Address<float> LRing2Y { get; set; }
-        [JsonIgnore] public Address<float> RRing2Y { get; set; }
-        [JsonIgnore] public Address<float> LPinkyY { get; set; }
-        [JsonIgnore] public Address<float> RPinkyY { get; set; }
-        [JsonIgnore] public Address<float> LPinky2Y { get; set; }
-        [JsonIgnore] public Address<float> RPinky2Y { get; set; }
-        [JsonIgnore] public Address<float> PelvisY { get; set; }
-        [JsonIgnore] public Address<float> TailY { get; set; }
-        [JsonIgnore] public Address<float> Tail2Y { get; set; }
-        [JsonIgnore] public Address<float> Tail3Y { get; set; }
-        [JsonIgnore] public Address<float> Tail4Y { get; set; }
-        [JsonIgnore] public Address<float> Tail5Y { get; set; }
-        [JsonIgnore] public Address<float> LThighY { get; set; }
-        [JsonIgnore] public Address<float> RThighY { get; set; }
-        [JsonIgnore] public Address<float> LKneeY { get; set; }
-        [JsonIgnore] public Address<float> RKneeY { get; set; }
-        [JsonIgnore] public Address<float> LCalfY { get; set; }
-        [JsonIgnore] public Address<float> RCalfY { get; set; }
-        [JsonIgnore] public Address<float> LFootY { get; set; }
-        [JsonIgnore] public Address<float> RFootY { get; set; }
-        [JsonIgnore] public Address<float> LToesY { get; set; }
-        [JsonIgnore] public Address<float> RToesY { get; set; }
-        [JsonIgnore] public Address<float> LVEarY { get; set; }
-        [JsonIgnore] public Address<float> RVEarY { get; set; }
-        [JsonIgnore] public Address<float> LVEar2Y { get; set; }
-        [JsonIgnore] public Address<float> RVEar2Y { get; set; }
-        [JsonIgnore] public Address<float> LVEar3Y { get; set; }
-        [JsonIgnore] public Address<float> RVEar3Y { get; set; }
-        [JsonIgnore] public Address<float> LVEar4Y { get; set; }
-        [JsonIgnore] public Address<float> RVEar4Y { get; set; }
-        [JsonIgnore] public Address<float> LEarringY { get; set; }
-        [JsonIgnore] public Address<float> REarringY { get; set; }
-        [JsonIgnore] public Address<float> LEarring2Y { get; set; }
-        [JsonIgnore] public Address<float> REarring2Y { get; set; }
-        [JsonIgnore] public Address<float> LVLowLipY { get; set; }
-        [JsonIgnore] public Address<float> RVUpLipY { get; set; }
-        [JsonIgnore] public Address<float> RVLowLipY { get; set; }
-        [JsonIgnore] public Address<float> RVLowEar2Y { get; set; }
-        [JsonIgnore] public Address<float> LVLowEar3Y { get; set; }
-        [JsonIgnore] public Address<float> RVLowEar3Y { get; set; }
-        [JsonIgnore] public Address<float> LVLowEar4Y { get; set; }
-        [JsonIgnore] public Address<float> RVLowEar4Y { get; set; }
-        [JsonIgnore] public Address<float> LShieldY { get; set; }
-        [JsonIgnore] public Address<float> RShieldY { get; set; }
-        [JsonIgnore] public Address<float> LWeaponY { get; set; }
-        [JsonIgnore] public Address<float> RWeaponY { get; set; }
-
-        [JsonIgnore] public Address<float> HeadZ { get; set; }
-        [JsonIgnore] public Address<float> NoseZ { get; set; }
-        [JsonIgnore] public Address<float> NostrilsZ { get; set; }
-        [JsonIgnore] public Address<float> ChinZ { get; set; }
-        [JsonIgnore] public Address<float> LOutEyebrowZ { get; set; }
-        [JsonIgnore] public Address<float> ROutEyebrowZ { get; set; }
-        [JsonIgnore] public Address<float> LInEyebrowZ { get; set; }
-        [JsonIgnore] public Address<float> RInEyebrowZ { get; set; }
-        [JsonIgnore] public Address<float> LEyeZ { get; set; }
-        [JsonIgnore] public Address<float> REyeZ { get; set; }
-        [JsonIgnore] public Address<float> LEyelidZ { get; set; }
-        [JsonIgnore] public Address<float> REyelidZ { get; set; }
-        [JsonIgnore] public Address<float> LLowEyelidZ { get; set; }
-        [JsonIgnore] public Address<float> RLowEyelidZ { get; set; }
-        [JsonIgnore] public Address<float> LEarZ { get; set; }
-        [JsonIgnore] public Address<float> REarZ { get; set; }
-        [JsonIgnore] public Address<float> LCheekZ { get; set; }
-        [JsonIgnore] public Address<float> RCheekZ { get; set; }
-        [JsonIgnore] public Address<float> LMouthZ { get; set; }
-        [JsonIgnore] public Address<float> RMouthZ { get; set; }
-        [JsonIgnore] public Address<float> LUpLipZ { get; set; }
-        [JsonIgnore] public Address<float> RUpLipZ { get; set; }
-        [JsonIgnore] public Address<float> LLowLipZ { get; set; }
-        [JsonIgnore] public Address<float> RLowLipZ { get; set; }
-        [JsonIgnore] public Address<float> NeckZ { get; set; }
-        [JsonIgnore] public Address<float> SternumZ { get; set; }
-        [JsonIgnore] public Address<float> TorsoZ { get; set; }
-        [JsonIgnore] public Address<float> WaistZ { get; set; }
-        [JsonIgnore] public Address<float> LShoulderZ { get; set; }
-        [JsonIgnore] public Address<float> RShoulderZ { get; set; }
-        [JsonIgnore] public Address<float> LClavicleZ { get; set; }
-        [JsonIgnore] public Address<float> RClavicleZ { get; set; }
-        [JsonIgnore] public Address<float> LBreastZ { get; set; }
-        [JsonIgnore] public Address<float> RBreastZ { get; set; }
-        [JsonIgnore] public Address<float> LArmZ { get; set; }
-        [JsonIgnore] public Address<float> RArmZ { get; set; }
-        [JsonIgnore] public Address<float> LElbowZ { get; set; }
-        [JsonIgnore] public Address<float> RElbowZ { get; set; }
-        [JsonIgnore] public Address<float> LForearmZ { get; set; }
-        [JsonIgnore] public Address<float> RForearmZ { get; set; }
-        [JsonIgnore] public Address<float> LWristZ { get; set; }
-        [JsonIgnore] public Address<float> RWristZ { get; set; }
-        [JsonIgnore] public Address<float> LHandZ { get; set; }
-        [JsonIgnore] public Address<float> RHandZ { get; set; }
-        [JsonIgnore] public Address<float> LThumbZ { get; set; }
-        [JsonIgnore] public Address<float> RThumbZ { get; set; }
-        [JsonIgnore] public Address<float> LThumb2Z { get; set; }
-        [JsonIgnore] public Address<float> RThumb2Z { get; set; }
-        [JsonIgnore] public Address<float> LIndexZ { get; set; }
-        [JsonIgnore] public Address<float> RIndexZ { get; set; }
-        [JsonIgnore] public Address<float> LIndex2Z { get; set; }
-        [JsonIgnore] public Address<float> RIndex2Z { get; set; }
-        [JsonIgnore] public Address<float> LMiddleZ { get; set; }
-        [JsonIgnore] public Address<float> RMiddleZ { get; set; }
-        [JsonIgnore] public Address<float> LMiddle2Z { get; set; }
-        [JsonIgnore] public Address<float> RMiddle2Z { get; set; }
-        [JsonIgnore] public Address<float> LRingZ { get; set; }
-        [JsonIgnore] public Address<float> RRingZ { get; set; }
-        [JsonIgnore] public Address<float> LRing2Z { get; set; }
-        [JsonIgnore] public Address<float> RRing2Z { get; set; }
-        [JsonIgnore] public Address<float> LPinkyZ { get; set; }
-        [JsonIgnore] public Address<float> RPinkyZ { get; set; }
-        [JsonIgnore] public Address<float> LPinky2Z { get; set; }
-        [JsonIgnore] public Address<float> RPinky2Z { get; set; }
-        [JsonIgnore] public Address<float> PelvisZ { get; set; }
-        [JsonIgnore] public Address<float> TailZ { get; set; }
-        [JsonIgnore] public Address<float> Tail2Z { get; set; }
-        [JsonIgnore] public Address<float> Tail3Z { get; set; }
-        [JsonIgnore] public Address<float> Tail4Z { get; set; }
-        [JsonIgnore] public Address<float> Tail5Z { get; set; }
-        [JsonIgnore] public Address<float> LThighZ { get; set; }
-        [JsonIgnore] public Address<float> RThighZ { get; set; }
-        [JsonIgnore] public Address<float> LKneeZ { get; set; }
-        [JsonIgnore] public Address<float> RKneeZ { get; set; }
-        [JsonIgnore] public Address<float> LCalfZ { get; set; }
-        [JsonIgnore] public Address<float> RCalfZ { get; set; }
-        [JsonIgnore] public Address<float> LFootZ { get; set; }
-        [JsonIgnore] public Address<float> RFootZ { get; set; }
-        [JsonIgnore] public Address<float> LToesZ { get; set; }
-        [JsonIgnore] public Address<float> RToesZ { get; set; }
-        [JsonIgnore] public Address<float> LVEarZ { get; set; }
-        [JsonIgnore] public Address<float> RVEarZ { get; set; }
-        [JsonIgnore] public Address<float> LVEar2Z { get; set; }
-        [JsonIgnore] public Address<float> RVEar2Z { get; set; }
-        [JsonIgnore] public Address<float> LVEar3Z { get; set; }
-        [JsonIgnore] public Address<float> RVEar3Z { get; set; }
-        [JsonIgnore] public Address<float> LVEar4Z { get; set; }
-        [JsonIgnore] public Address<float> RVEar4Z { get; set; }
-        [JsonIgnore] public Address<float> LEarringZ { get; set; }
-        [JsonIgnore] public Address<float> REarringZ { get; set; }
-        [JsonIgnore] public Address<float> LEarring2Z { get; set; }
-        [JsonIgnore] public Address<float> REarring2Z { get; set; }
-        [JsonIgnore] public Address<float> LVLowLipZ { get; set; }
-        [JsonIgnore] public Address<float> RVUpLipZ { get; set; }
-        [JsonIgnore] public Address<float> RVLowLipZ { get; set; }
-        [JsonIgnore] public Address<float> RVLowEar2Z { get; set; }
-        [JsonIgnore] public Address<float> LVLowEar3Z { get; set; }
-        [JsonIgnore] public Address<float> RVLowEar3Z { get; set; }
-        [JsonIgnore] public Address<float> LVLowEar4Z { get; set; }
-        [JsonIgnore] public Address<float> RVLowEar4Z { get; set; }
-        [JsonIgnore] public Address<float> LShieldZ { get; set; }
-        [JsonIgnore] public Address<float> RShieldZ { get; set; }
-        [JsonIgnore] public Address<float> LWeaponZ { get; set; }
-        [JsonIgnore] public Address<float> RWeaponZ { get; set; }
-
-        [JsonIgnore] public Address<float> HeadW { get; set; }
-        [JsonIgnore] public Address<float> NoseW { get; set; }
-        [JsonIgnore] public Address<float> NostrilsW { get; set; }
-        [JsonIgnore] public Address<float> ChinW { get; set; }
-        [JsonIgnore] public Address<float> LOutEyebrowW { get; set; }
-        [JsonIgnore] public Address<float> ROutEyebrowW { get; set; }
-        [JsonIgnore] public Address<float> LInEyebrowW { get; set; }
-        [JsonIgnore] public Address<float> RInEyebrowW { get; set; }
-        [JsonIgnore] public Address<float> LEyeW { get; set; }
-        [JsonIgnore] public Address<float> REyeW { get; set; }
-        [JsonIgnore] public Address<float> LEyelidW { get; set; }
-        [JsonIgnore] public Address<float> REyelidW { get; set; }
-        [JsonIgnore] public Address<float> LLowEyelidW { get; set; }
-        [JsonIgnore] public Address<float> RLowEyelidW { get; set; }
-        [JsonIgnore] public Address<float> LEarW { get; set; }
-        [JsonIgnore] public Address<float> REarW { get; set; }
-        [JsonIgnore] public Address<float> LCheekW { get; set; }
-        [JsonIgnore] public Address<float> RCheekW { get; set; }
-        [JsonIgnore] public Address<float> LMouthW { get; set; }
-        [JsonIgnore] public Address<float> RMouthW { get; set; }
-        [JsonIgnore] public Address<float> LUpLipW { get; set; }
-        [JsonIgnore] public Address<float> RUpLipW { get; set; }
-        [JsonIgnore] public Address<float> LLowLipW { get; set; }
-        [JsonIgnore] public Address<float> RLowLipW { get; set; }
-        [JsonIgnore] public Address<float> NeckW { get; set; }
-        [JsonIgnore] public Address<float> SternumW { get; set; }
-        [JsonIgnore] public Address<float> TorsoW { get; set; }
-        [JsonIgnore] public Address<float> WaistW { get; set; }
-        [JsonIgnore] public Address<float> LShoulderW { get; set; }
-        [JsonIgnore] public Address<float> RShoulderW { get; set; }
-        [JsonIgnore] public Address<float> LClavicleW { get; set; }
-        [JsonIgnore] public Address<float> RClavicleW { get; set; }
-        [JsonIgnore] public Address<float> LBreastW { get; set; }
-        [JsonIgnore] public Address<float> RBreastW { get; set; }
-        [JsonIgnore] public Address<float> LArmW { get; set; }
-        [JsonIgnore] public Address<float> RArmW { get; set; }
-        [JsonIgnore] public Address<float> LElbowW { get; set; }
-        [JsonIgnore] public Address<float> RElbowW { get; set; }
-        [JsonIgnore] public Address<float> LForearmW { get; set; }
-        [JsonIgnore] public Address<float> RForearmW { get; set; }
-        [JsonIgnore] public Address<float> LWristW { get; set; }
-        [JsonIgnore] public Address<float> RWristW { get; set; }
-        [JsonIgnore] public Address<float> LHandW { get; set; }
-        [JsonIgnore] public Address<float> RHandW { get; set; }
-        [JsonIgnore] public Address<float> LThumbW { get; set; }
-        [JsonIgnore] public Address<float> RThumbW { get; set; }
-        [JsonIgnore] public Address<float> LThumb2W { get; set; }
-        [JsonIgnore] public Address<float> RThumb2W { get; set; }
-        [JsonIgnore] public Address<float> LIndexW { get; set; }
-        [JsonIgnore] public Address<float> RIndexW { get; set; }
-        [JsonIgnore] public Address<float> LIndex2W { get; set; }
-        [JsonIgnore] public Address<float> RIndex2W { get; set; }
-        [JsonIgnore] public Address<float> LMiddleW { get; set; }
-        [JsonIgnore] public Address<float> RMiddleW { get; set; }
-        [JsonIgnore] public Address<float> LMiddle2W { get; set; }
-        [JsonIgnore] public Address<float> RMiddle2W { get; set; }
-        [JsonIgnore] public Address<float> LRingW { get; set; }
-        [JsonIgnore] public Address<float> RRingW { get; set; }
-        [JsonIgnore] public Address<float> LRing2W { get; set; }
-        [JsonIgnore] public Address<float> RRing2W { get; set; }
-        [JsonIgnore] public Address<float> LPinkyW { get; set; }
-        [JsonIgnore] public Address<float> RPinkyW { get; set; }
-        [JsonIgnore] public Address<float> LPinky2W { get; set; }
-        [JsonIgnore] public Address<float> RPinky2W { get; set; }
-        [JsonIgnore] public Address<float> PelvisW { get; set; }
-        [JsonIgnore] public Address<float> TailW { get; set; }
-        [JsonIgnore] public Address<float> Tail2W { get; set; }
-        [JsonIgnore] public Address<float> Tail3W { get; set; }
-        [JsonIgnore] public Address<float> Tail4W { get; set; }
-        [JsonIgnore] public Address<float> Tail5W { get; set; }
-        [JsonIgnore] public Address<float> LThighW { get; set; }
-        [JsonIgnore] public Address<float> RThighW { get; set; }
-        [JsonIgnore] public Address<float> LKneeW { get; set; }
-        [JsonIgnore] public Address<float> RKneeW { get; set; }
-        [JsonIgnore] public Address<float> LCalfW { get; set; }
-        [JsonIgnore] public Address<float> RCalfW { get; set; }
-        [JsonIgnore] public Address<float> LFootW { get; set; }
-        [JsonIgnore] public Address<float> RFootW { get; set; }
-        [JsonIgnore] public Address<float> LToesW { get; set; }
-        [JsonIgnore] public Address<float> RToesW { get; set; }
-        [JsonIgnore] public Address<float> LVEarW { get; set; }
-        [JsonIgnore] public Address<float> RVEarW { get; set; }
-        [JsonIgnore] public Address<float> LVEar2W { get; set; }
-        [JsonIgnore] public Address<float> RVEar2W { get; set; }
-        [JsonIgnore] public Address<float> LVEar3W { get; set; }
-        [JsonIgnore] public Address<float> RVEar3W { get; set; }
-        [JsonIgnore] public Address<float> LVEar4W { get; set; }
-        [JsonIgnore] public Address<float> RVEar4W { get; set; }
-        [JsonIgnore] public Address<float> LEarringW { get; set; }
-        [JsonIgnore] public Address<float> REarringW { get; set; }
-        [JsonIgnore] public Address<float> LEarring2W { get; set; }
-        [JsonIgnore] public Address<float> REarring2W { get; set; }
-        [JsonIgnore] public Address<float> LVLowLipW { get; set; }
-        [JsonIgnore] public Address<float> RVUpLipW { get; set; }
-        [JsonIgnore] public Address<float> RVLowLipW { get; set; }
-        [JsonIgnore] public Address<float> RVLowEar2W { get; set; }
-        [JsonIgnore] public Address<float> LVLowEar3W { get; set; }
-        [JsonIgnore] public Address<float> RVLowEar3W { get; set; }
-        [JsonIgnore] public Address<float> LVLowEar4W { get; set; }
-        [JsonIgnore] public Address<float> RVLowEar4W { get; set; }
-        [JsonIgnore] public Address<float> LShieldW { get; set; }
-        [JsonIgnore] public Address<float> RShieldW { get; set; }
-        [JsonIgnore] public Address<float> LWeaponW { get; set; }
-        [JsonIgnore] public Address<float> RWeaponW { get; set; }
-
         [JsonIgnore] public Address<float> CameraHeight2 { get; set; }
         [JsonIgnore] public Address<float> CamX { get; set; }
         [JsonIgnore] public Address<float> CamY { get; set; }
@@ -690,230 +269,1287 @@ namespace ConceptMatrix.Models
 
         [JsonIgnore] public bool RotateFreeze { get; set; }
         [JsonIgnore] public bool BoneEditMode { get; set; }
-        [JsonIgnore] public bool WriteHeadBones { get; set; }
-        [JsonIgnore] public bool WriteTorsoBones { get; set; }
-        [JsonIgnore] public bool WriteLeftArmBones { get; set; }
-        [JsonIgnore] public bool WriteRightArmBones { get; set; }
-        [JsonIgnore] public bool WriteLeftLegBones { get; set; }
-        [JsonIgnore] public bool WriteRightLegBones { get; set; }
-        [JsonIgnore] public bool WriteAllBones { get; set; }
-        [JsonIgnore] public bool SaveHeadBones { get; set; }
-        [JsonIgnore] public bool SaveTorsoBones { get; set; }
-        [JsonIgnore] public bool SaveLeftArmBones { get; set; }
-        [JsonIgnore] public bool SaveRightArmBones { get; set; }
-        [JsonIgnore] public bool SaveLeftLegBones { get; set; }
-        [JsonIgnore] public bool SaveRightLegBones { get; set; }
-        [JsonIgnore] public bool SaveAllBones { get; set; }
+        [JsonIgnore] public bool WriteHead { get; set; }
+        [JsonIgnore] public bool WriteHair { get; set; }
+        [JsonIgnore] public bool WriteEarrings { get; set; }
+        [JsonIgnore] public bool WriteBody { get; set; }
+        [JsonIgnore] public bool WriteLeftArm { get; set; }
+        [JsonIgnore] public bool WriteRightArm { get; set; }
+        [JsonIgnore] public bool WriteClothes { get; set; }
+        [JsonIgnore] public bool WriteWeapons { get; set; }
+        [JsonIgnore] public bool WriteLeftHand { get; set; }
+        [JsonIgnore] public bool WriteRightHand { get; set; }
+        [JsonIgnore] public bool WriteWaist { get; set; }
+        [JsonIgnore] public bool WriteLeftLeg { get; set; }
+        [JsonIgnore] public bool WriteRightLeg { get; set; }
+        [JsonIgnore] public bool WriteHelm { get; set; }
+        [JsonIgnore] public bool WriteTop { get; set; }
+        [JsonIgnore] public bool SaveHead01 { get; set; }
+        [JsonIgnore] public bool SaveHair01 { get; set; }
+        [JsonIgnore] public bool SaveEarrings01 { get; set; }
+        [JsonIgnore] public bool SaveBody01 { get; set; }
+        [JsonIgnore] public bool SaveLeftArm01 { get; set; }
+        [JsonIgnore] public bool SaveRightArm01 { get; set; }
+        [JsonIgnore] public bool SaveClothes01 { get; set; }
+        [JsonIgnore] public bool SaveWeapons01 { get; set; }
+        [JsonIgnore] public bool SaveLeftHand01 { get; set; }
+        [JsonIgnore] public bool SaveRightHand01 { get; set; }
+        [JsonIgnore] public bool SaveWaist01 { get; set; }
+        [JsonIgnore] public bool SaveLeftLeg01 { get; set; }
+        [JsonIgnore] public bool SaveRightLeg01 { get; set; }
+        [JsonIgnore] public bool SaveHelm01 { get; set; }
+        [JsonIgnore] public bool SaveTop01 { get; set; }
+        [JsonIgnore] public bool SaveHead02 { get; set; }
+        [JsonIgnore] public bool SaveHair02 { get; set; }
+        [JsonIgnore] public bool SaveEarrings02 { get; set; }
+        [JsonIgnore] public bool SaveBody02 { get; set; }
+        [JsonIgnore] public bool SaveLeftArm02 { get; set; }
+        [JsonIgnore] public bool SaveRightArm02 { get; set; }
+        [JsonIgnore] public bool SaveClothes02 { get; set; }
+        [JsonIgnore] public bool SaveWeapons02 { get; set; }
+        [JsonIgnore] public bool SaveLeftHand02 { get; set; }
+        [JsonIgnore] public bool SaveRightHand02 { get; set; }
+        [JsonIgnore] public bool SaveWaist02 { get; set; }
+        [JsonIgnore] public bool SaveLeftLeg02 { get; set; }
+        [JsonIgnore] public bool SaveRightLeg02 { get; set; }
+        [JsonIgnore] public bool SaveHelm02 { get; set; }
+        [JsonIgnore] public bool SaveTop02 { get; set; }
 
-        [JsonIgnore] public bool HeadRotate { get; set; }
-        [JsonIgnore] public bool NoseRotate { get; set; }
-        [JsonIgnore] public bool NostrilsRotate { get; set; }
-        [JsonIgnore] public bool ChinRotate { get; set; }
-        [JsonIgnore] public bool LOutEyebrowRotate { get; set; }
-        [JsonIgnore] public bool ROutEyebrowRotate { get; set; }
-        [JsonIgnore] public bool LInEyebrowRotate { get; set; }
-        [JsonIgnore] public bool RInEyebrowRotate { get; set; }
-        [JsonIgnore] public bool LEyeRotate { get; set; }
-        [JsonIgnore] public bool REyeRotate { get; set; }
-        [JsonIgnore] public bool LEyelidRotate { get; set; }
-        [JsonIgnore] public bool REyelidRotate { get; set; }
-        [JsonIgnore] public bool LLowEyelidRotate { get; set; }
-        [JsonIgnore] public bool RLowEyelidRotate { get; set; }
-        [JsonIgnore] public bool LEarRotate { get; set; }
-        [JsonIgnore] public bool REarRotate { get; set; }
-        [JsonIgnore] public bool LCheekRotate { get; set; }
-        [JsonIgnore] public bool RCheekRotate { get; set; }
-        [JsonIgnore] public bool LMouthRotate { get; set; }
-        [JsonIgnore] public bool RMouthRotate { get; set; }
-        [JsonIgnore] public bool LUpLipRotate { get; set; }
-        [JsonIgnore] public bool RUpLipRotate { get; set; }
-        [JsonIgnore] public bool LLowLipRotate { get; set; }
-        [JsonIgnore] public bool RLowLipRotate { get; set; }
-        [JsonIgnore] public bool NeckRotate { get; set; }
-        [JsonIgnore] public bool SternumRotate { get; set; }
-        [JsonIgnore] public bool TorsoRotate { get; set; }
-        [JsonIgnore] public bool WaistRotate { get; set; }
-        [JsonIgnore] public bool LShoulderRotate { get; set; }
-        [JsonIgnore] public bool RShoulderRotate { get; set; }
-        [JsonIgnore] public bool LClavicleRotate { get; set; }
-        [JsonIgnore] public bool RClavicleRotate { get; set; }
-        [JsonIgnore] public bool LBreastRotate { get; set; }
-        [JsonIgnore] public bool RBreastRotate { get; set; }
-        [JsonIgnore] public bool LArmRotate { get; set; }
-        [JsonIgnore] public bool RArmRotate { get; set; }
-        [JsonIgnore] public bool LElbowRotate { get; set; }
-        [JsonIgnore] public bool RElbowRotate { get; set; }
-        [JsonIgnore] public bool LForearmRotate { get; set; }
-        [JsonIgnore] public bool RForearmRotate { get; set; }
-        [JsonIgnore] public bool LWristRotate { get; set; }
-        [JsonIgnore] public bool RWristRotate { get; set; }
-        [JsonIgnore] public bool LHandRotate { get; set; }
-        [JsonIgnore] public bool RHandRotate { get; set; }
-        [JsonIgnore] public bool LThumbRotate { get; set; }
-        [JsonIgnore] public bool RThumbRotate { get; set; }
-        [JsonIgnore] public bool LThumb2Rotate { get; set; }
-        [JsonIgnore] public bool RThumb2Rotate { get; set; }
-        [JsonIgnore] public bool LIndexRotate { get; set; }
-        [JsonIgnore] public bool RIndexRotate { get; set; }
-        [JsonIgnore] public bool LIndex2Rotate { get; set; }
-        [JsonIgnore] public bool RIndex2Rotate { get; set; }
-        [JsonIgnore] public bool LMiddleRotate { get; set; }
-        [JsonIgnore] public bool RMiddleRotate { get; set; }
-        [JsonIgnore] public bool LMiddle2Rotate { get; set; }
-        [JsonIgnore] public bool RMiddle2Rotate { get; set; }
-        [JsonIgnore] public bool LRingRotate { get; set; }
-        [JsonIgnore] public bool RRingRotate { get; set; }
-        [JsonIgnore] public bool LRing2Rotate { get; set; }
-        [JsonIgnore] public bool RRing2Rotate { get; set; }
-        [JsonIgnore] public bool LPinkyRotate { get; set; }
-        [JsonIgnore] public bool RPinkyRotate { get; set; }
-        [JsonIgnore] public bool LPinky2Rotate { get; set; }
-        [JsonIgnore] public bool RPinky2Rotate { get; set; }
-        [JsonIgnore] public bool PelvisRotate { get; set; }
-        [JsonIgnore] public bool TailRotate { get; set; }
-        [JsonIgnore] public bool Tail2Rotate { get; set; }
-        [JsonIgnore] public bool Tail3Rotate { get; set; }
-        [JsonIgnore] public bool Tail4Rotate { get; set; }
-        [JsonIgnore] public bool Tail5Rotate { get; set; }
-        [JsonIgnore] public bool LThighRotate { get; set; }
-        [JsonIgnore] public bool RThighRotate { get; set; }
-        [JsonIgnore] public bool LKneeRotate { get; set; }
-        [JsonIgnore] public bool RKneeRotate { get; set; }
-        [JsonIgnore] public bool LCalfRotate { get; set; }
-        [JsonIgnore] public bool RCalfRotate { get; set; }
-        [JsonIgnore] public bool LFootRotate { get; set; }
-        [JsonIgnore] public bool RFootRotate { get; set; }
-        [JsonIgnore] public bool LToesRotate { get; set; }
-        [JsonIgnore] public bool RToesRotate { get; set; }
-        [JsonIgnore] public bool LVEarRotate { get; set; }
-        [JsonIgnore] public bool RVEarRotate { get; set; }
-        [JsonIgnore] public bool LVEar2Rotate { get; set; }
-        [JsonIgnore] public bool RVEar2Rotate { get; set; }
-        [JsonIgnore] public bool LVEar3Rotate { get; set; }
-        [JsonIgnore] public bool RVEar3Rotate { get; set; }
-        [JsonIgnore] public bool LVEar4Rotate { get; set; }
-        [JsonIgnore] public bool RVEar4Rotate { get; set; }
-        [JsonIgnore] public bool LEarringRotate { get; set; }
-        [JsonIgnore] public bool REarringRotate { get; set; }
-        [JsonIgnore] public bool LEarring2Rotate { get; set; }
-        [JsonIgnore] public bool REarring2Rotate { get; set; }
-        [JsonIgnore] public bool LVLowLipRotate { get; set; }
-        [JsonIgnore] public bool RVUpLipRotate { get; set; }
-        [JsonIgnore] public bool RVLowLipRotate { get; set; }
-        [JsonIgnore] public bool RVLowEar2Rotate { get; set; }
-        [JsonIgnore] public bool LVLowEar3Rotate { get; set; }
-        [JsonIgnore] public bool RVLowEar3Rotate { get; set; }
-        [JsonIgnore] public bool LVLowEar4Rotate { get; set; }
-        [JsonIgnore] public bool RVLowEar4Rotate { get; set; }
-        [JsonIgnore] public bool LShieldRotate { get; set; }
-        [JsonIgnore] public bool RShieldRotate { get; set; }
-        [JsonIgnore] public bool LWeaponRotate { get; set; }
-        [JsonIgnore] public bool RWeaponRotate { get; set; }
+        #region Bone
+        [JsonIgnore] public Address<float> CubeBone_X { get; set; }
+        [JsonIgnore] public Address<float> CubeBone_Y { get; set; }
+        [JsonIgnore] public Address<float> CubeBone_Z { get; set; }
+        [JsonIgnore] public Address<float> CubeBone_W { get; set; }
 
-        [JsonIgnore] public bool HeadCheck { get; set; }
-        [JsonIgnore] public bool NoseCheck { get; set; }
-        [JsonIgnore] public bool NostrilsCheck { get; set; }
-        [JsonIgnore] public bool ChinCheck { get; set; }
-        [JsonIgnore] public bool LOutEyebrowCheck { get; set; }
-        [JsonIgnore] public bool ROutEyebrowCheck { get; set; }
-        [JsonIgnore] public bool LInEyebrowCheck { get; set; }
-        [JsonIgnore] public bool RInEyebrowCheck { get; set; }
-        [JsonIgnore] public bool LEyeCheck { get; set; }
-        [JsonIgnore] public bool REyeCheck { get; set; }
-        [JsonIgnore] public bool LEyelidCheck { get; set; }
-        [JsonIgnore] public bool REyelidCheck { get; set; }
-        [JsonIgnore] public bool LLowEyelidCheck { get; set; }
-        [JsonIgnore] public bool RLowEyelidCheck { get; set; }
-        [JsonIgnore] public bool LEarCheck { get; set; }
-        [JsonIgnore] public bool REarCheck { get; set; }
-        [JsonIgnore] public bool LCheekCheck { get; set; }
-        [JsonIgnore] public bool RCheekCheck { get; set; }
-        [JsonIgnore] public bool LMouthCheck { get; set; }
-        [JsonIgnore] public bool RMouthCheck { get; set; }
-        [JsonIgnore] public bool LUpLipCheck { get; set; }
-        [JsonIgnore] public bool RUpLipCheck { get; set; }
-        [JsonIgnore] public bool LLowLipCheck { get; set; }
-        [JsonIgnore] public bool RLowLipCheck { get; set; }
-        [JsonIgnore] public bool NeckCheck { get; set; }
-        [JsonIgnore] public bool SternumCheck { get; set; }
-        [JsonIgnore] public bool TorsoCheck { get; set; }
-        [JsonIgnore] public bool WaistCheck { get; set; }
-        [JsonIgnore] public bool LShoulderCheck { get; set; }
-        [JsonIgnore] public bool RShoulderCheck { get; set; }
-        [JsonIgnore] public bool LClavicleCheck { get; set; }
-        [JsonIgnore] public bool RClavicleCheck { get; set; }
-        [JsonIgnore] public bool LBreastCheck { get; set; }
-        [JsonIgnore] public bool RBreastCheck { get; set; }
-        [JsonIgnore] public bool LArmCheck { get; set; }
-        [JsonIgnore] public bool RArmCheck { get; set; }
-        [JsonIgnore] public bool LElbowCheck { get; set; }
-        [JsonIgnore] public bool RElbowCheck { get; set; }
-        [JsonIgnore] public bool LForearmCheck { get; set; }
-        [JsonIgnore] public bool RForearmCheck { get; set; }
-        [JsonIgnore] public bool LWristCheck { get; set; }
-        [JsonIgnore] public bool RWristCheck { get; set; }
-        [JsonIgnore] public bool LHandCheck { get; set; }
-        [JsonIgnore] public bool RHandCheck { get; set; }
-        [JsonIgnore] public bool LThumbCheck { get; set; }
-        [JsonIgnore] public bool RThumbCheck { get; set; }
-        [JsonIgnore] public bool LThumb2Check { get; set; }
-        [JsonIgnore] public bool RThumb2Check { get; set; }
-        [JsonIgnore] public bool LIndexCheck { get; set; }
-        [JsonIgnore] public bool RIndexCheck { get; set; }
-        [JsonIgnore] public bool LIndex2Check { get; set; }
-        [JsonIgnore] public bool RIndex2Check { get; set; }
-        [JsonIgnore] public bool LMiddleCheck { get; set; }
-        [JsonIgnore] public bool RMiddleCheck { get; set; }
-        [JsonIgnore] public bool LMiddle2Check { get; set; }
-        [JsonIgnore] public bool RMiddle2Check { get; set; }
-        [JsonIgnore] public bool LRingCheck { get; set; }
-        [JsonIgnore] public bool RRingCheck { get; set; }
-        [JsonIgnore] public bool LRing2Check { get; set; }
-        [JsonIgnore] public bool RRing2Check { get; set; }
-        [JsonIgnore] public bool LPinkyCheck { get; set; }
-        [JsonIgnore] public bool RPinkyCheck { get; set; }
-        [JsonIgnore] public bool LPinky2Check { get; set; }
-        [JsonIgnore] public bool RPinky2Check { get; set; }
-        [JsonIgnore] public bool PelvisCheck { get; set; }
-        [JsonIgnore] public bool TailCheck { get; set; }
-        [JsonIgnore] public bool Tail2Check { get; set; }
-        [JsonIgnore] public bool Tail3Check { get; set; }
-        [JsonIgnore] public bool Tail4Check { get; set; }
-        [JsonIgnore] public bool Tail5Check { get; set; }
-        [JsonIgnore] public bool LThighCheck { get; set; }
-        [JsonIgnore] public bool RThighCheck { get; set; }
-        [JsonIgnore] public bool LKneeCheck { get; set; }
-        [JsonIgnore] public bool RKneeCheck { get; set; }
-        [JsonIgnore] public bool LCalfCheck { get; set; }
-        [JsonIgnore] public bool RCalfCheck { get; set; }
-        [JsonIgnore] public bool LFootCheck { get; set; }
-        [JsonIgnore] public bool RFootCheck { get; set; }
-        [JsonIgnore] public bool LToesCheck { get; set; }
-        [JsonIgnore] public bool RToesCheck { get; set; }
-        [JsonIgnore] public bool LVEarCheck { get; set; }
-        [JsonIgnore] public bool RVEarCheck { get; set; }
-        [JsonIgnore] public bool LVEar2Check { get; set; }
-        [JsonIgnore] public bool RVEar2Check { get; set; }
-        [JsonIgnore] public bool LVEar3Check { get; set; }
-        [JsonIgnore] public bool RVEar3Check { get; set; }
-        [JsonIgnore] public bool LVEar4Check { get; set; }
-        [JsonIgnore] public bool RVEar4Check { get; set; }
-        [JsonIgnore] public bool LEarringCheck { get; set; }
-        [JsonIgnore] public bool REarringCheck { get; set; }
-        [JsonIgnore] public bool LEarring2Check { get; set; }
-        [JsonIgnore] public bool REarring2Check { get; set; }
-        [JsonIgnore] public bool LVLowLipCheck { get; set; }
-        [JsonIgnore] public bool RVUpLipCheck { get; set; }
-        [JsonIgnore] public bool RVLowLipCheck { get; set; }
-        [JsonIgnore] public bool RVLowEar2Check { get; set; }
-        [JsonIgnore] public bool LVLowEar3Check { get; set; }
-        [JsonIgnore] public bool RVLowEar3Check { get; set; }
-        [JsonIgnore] public bool LVLowEar4Check { get; set; }
-        [JsonIgnore] public bool RVLowEar4Check { get; set; }
-        [JsonIgnore] public bool LShieldCheck { get; set; }
-        [JsonIgnore] public bool RShieldCheck { get; set; }
-        [JsonIgnore] public bool LWeaponCheck { get; set; }
-        [JsonIgnore] public bool RWeaponCheck { get; set; }
+        [JsonIgnore] public Address<float> Root_X { get; set; }
+        [JsonIgnore] public Address<float> Root_Y { get; set; }
+        [JsonIgnore] public Address<float> Root_Z { get; set; }
+        [JsonIgnore] public Address<float> Root_W { get; set; }
+        [JsonIgnore] public Address<float> Abdomen_X { get; set; }
+        [JsonIgnore] public Address<float> Abdomen_Y { get; set; }
+        [JsonIgnore] public Address<float> Abdomen_Z { get; set; }
+        [JsonIgnore] public Address<float> Abdomen_W { get; set; }
+        [JsonIgnore] public Address<float> Throw_X { get; set; }
+        [JsonIgnore] public Address<float> Throw_Y { get; set; }
+        [JsonIgnore] public Address<float> Throw_Z { get; set; }
+        [JsonIgnore] public Address<float> Throw_W { get; set; }
+        [JsonIgnore] public Address<float> Waist_X { get; set; }
+        [JsonIgnore] public Address<float> Waist_Y { get; set; }
+        [JsonIgnore] public Address<float> Waist_Z { get; set; }
+        [JsonIgnore] public Address<float> Waist_W { get; set; }
+        [JsonIgnore] public Address<float> SpineA_X { get; set; }
+        [JsonIgnore] public Address<float> SpineA_Y { get; set; }
+        [JsonIgnore] public Address<float> SpineA_Z { get; set; }
+        [JsonIgnore] public Address<float> SpineA_W { get; set; }
+        [JsonIgnore] public Address<float> LegLeft_X { get; set; }
+        [JsonIgnore] public Address<float> LegLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> LegLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> LegLeft_W { get; set; }
+        [JsonIgnore] public Address<float> LegRight_X { get; set; }
+        [JsonIgnore] public Address<float> LegRight_Y { get; set; }
+        [JsonIgnore] public Address<float> LegRight_Z { get; set; }
+        [JsonIgnore] public Address<float> LegRight_W { get; set; }
+        [JsonIgnore] public Address<float> HolsterLeft_X { get; set; }
+        [JsonIgnore] public Address<float> HolsterLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> HolsterLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> HolsterLeft_W { get; set; }
+        [JsonIgnore] public Address<float> HolsterRight_X { get; set; }
+        [JsonIgnore] public Address<float> HolsterRight_Y { get; set; }
+        [JsonIgnore] public Address<float> HolsterRight_Z { get; set; }
+        [JsonIgnore] public Address<float> HolsterRight_W { get; set; }
+        [JsonIgnore] public Address<float> SheatheLeft_X { get; set; }
+        [JsonIgnore] public Address<float> SheatheLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> SheatheLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> SheatheLeft_W { get; set; }
+        [JsonIgnore] public Address<float> SheatheRight_X { get; set; }
+        [JsonIgnore] public Address<float> SheatheRight_Y { get; set; }
+        [JsonIgnore] public Address<float> SheatheRight_Z { get; set; }
+        [JsonIgnore] public Address<float> SheatheRight_W { get; set; }
+        [JsonIgnore] public Address<float> SpineB_X { get; set; }
+        [JsonIgnore] public Address<float> SpineB_Y { get; set; }
+        [JsonIgnore] public Address<float> SpineB_Z { get; set; }
+        [JsonIgnore] public Address<float> SpineB_W { get; set; }
+        [JsonIgnore] public Address<float> ClothBackALeft_X { get; set; }
+        [JsonIgnore] public Address<float> ClothBackALeft_Y { get; set; }
+        [JsonIgnore] public Address<float> ClothBackALeft_Z { get; set; }
+        [JsonIgnore] public Address<float> ClothBackALeft_W { get; set; }
+        [JsonIgnore] public Address<float> ClothBackARight_X { get; set; }
+        [JsonIgnore] public Address<float> ClothBackARight_Y { get; set; }
+        [JsonIgnore] public Address<float> ClothBackARight_Z { get; set; }
+        [JsonIgnore] public Address<float> ClothBackARight_W { get; set; }
+        [JsonIgnore] public Address<float> ClothFrontALeft_X { get; set; }
+        [JsonIgnore] public Address<float> ClothFrontALeft_Y { get; set; }
+        [JsonIgnore] public Address<float> ClothFrontALeft_Z { get; set; }
+        [JsonIgnore] public Address<float> ClothFrontALeft_W { get; set; }
+        [JsonIgnore] public Address<float> ClothFrontARight_X { get; set; }
+        [JsonIgnore] public Address<float> ClothFrontARight_Y { get; set; }
+        [JsonIgnore] public Address<float> ClothFrontARight_Z { get; set; }
+        [JsonIgnore] public Address<float> ClothFrontARight_W { get; set; }
+        [JsonIgnore] public Address<float> ClothSideALeft_X { get; set; }
+        [JsonIgnore] public Address<float> ClothSideALeft_Y { get; set; }
+        [JsonIgnore] public Address<float> ClothSideALeft_Z { get; set; }
+        [JsonIgnore] public Address<float> ClothSideALeft_W { get; set; }
+        [JsonIgnore] public Address<float> ClothSideARight_X { get; set; }
+        [JsonIgnore] public Address<float> ClothSideARight_Y { get; set; }
+        [JsonIgnore] public Address<float> ClothSideARight_Z { get; set; }
+        [JsonIgnore] public Address<float> ClothSideARight_W { get; set; }
+        [JsonIgnore] public Address<float> KneeLeft_X { get; set; }
+        [JsonIgnore] public Address<float> KneeLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> KneeLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> KneeLeft_W { get; set; }
+        [JsonIgnore] public Address<float> KneeRight_X { get; set; }
+        [JsonIgnore] public Address<float> KneeRight_Y { get; set; }
+        [JsonIgnore] public Address<float> KneeRight_Z { get; set; }
+        [JsonIgnore] public Address<float> KneeRight_W { get; set; }
+        [JsonIgnore] public Address<float> BreastLeft_X { get; set; }
+        [JsonIgnore] public Address<float> BreastLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> BreastLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> BreastLeft_W { get; set; }
+        [JsonIgnore] public Address<float> BreastRight_X { get; set; }
+        [JsonIgnore] public Address<float> BreastRight_Y { get; set; }
+        [JsonIgnore] public Address<float> BreastRight_Z { get; set; }
+        [JsonIgnore] public Address<float> BreastRight_W { get; set; }
+        [JsonIgnore] public Address<float> SpineC_X { get; set; }
+        [JsonIgnore] public Address<float> SpineC_Y { get; set; }
+        [JsonIgnore] public Address<float> SpineC_Z { get; set; }
+        [JsonIgnore] public Address<float> SpineC_W { get; set; }
+        [JsonIgnore] public Address<float> ClothBackBLeft_X { get; set; }
+        [JsonIgnore] public Address<float> ClothBackBLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> ClothBackBLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> ClothBackBLeft_W { get; set; }
+        [JsonIgnore] public Address<float> ClothBackBRight_X { get; set; }
+        [JsonIgnore] public Address<float> ClothBackBRight_Y { get; set; }
+        [JsonIgnore] public Address<float> ClothBackBRight_Z { get; set; }
+        [JsonIgnore] public Address<float> ClothBackBRight_W { get; set; }
+        [JsonIgnore] public Address<float> ClothFrontBLeft_X { get; set; }
+        [JsonIgnore] public Address<float> ClothFrontBLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> ClothFrontBLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> ClothFrontBLeft_W { get; set; }
+        [JsonIgnore] public Address<float> ClothFrontBRight_X { get; set; }
+        [JsonIgnore] public Address<float> ClothFrontBRight_Y { get; set; }
+        [JsonIgnore] public Address<float> ClothFrontBRight_Z { get; set; }
+        [JsonIgnore] public Address<float> ClothFrontBRight_W { get; set; }
+        [JsonIgnore] public Address<float> ClothSideBLeft_X { get; set; }
+        [JsonIgnore] public Address<float> ClothSideBLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> ClothSideBLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> ClothSideBLeft_W { get; set; }
+        [JsonIgnore] public Address<float> ClothSideBRight_X { get; set; }
+        [JsonIgnore] public Address<float> ClothSideBRight_Y { get; set; }
+        [JsonIgnore] public Address<float> ClothSideBRight_Z { get; set; }
+        [JsonIgnore] public Address<float> ClothSideBRight_W { get; set; }
+        [JsonIgnore] public Address<float> CalfLeft_X { get; set; }
+        [JsonIgnore] public Address<float> CalfLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> CalfLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> CalfLeft_W { get; set; }
+        [JsonIgnore] public Address<float> CalfRight_X { get; set; }
+        [JsonIgnore] public Address<float> CalfRight_Y { get; set; }
+        [JsonIgnore] public Address<float> CalfRight_Z { get; set; }
+        [JsonIgnore] public Address<float> CalfRight_W { get; set; }
+        [JsonIgnore] public Address<float> ScabbardLeft_X { get; set; }
+        [JsonIgnore] public Address<float> ScabbardLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> ScabbardLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> ScabbardLeft_W { get; set; }
+        [JsonIgnore] public Address<float> ScabbardRight_X { get; set; }
+        [JsonIgnore] public Address<float> ScabbardRight_Y { get; set; }
+        [JsonIgnore] public Address<float> ScabbardRight_Z { get; set; }
+        [JsonIgnore] public Address<float> ScabbardRight_W { get; set; }
+        [JsonIgnore] public Address<float> Neck_X { get; set; }
+        [JsonIgnore] public Address<float> Neck_Y { get; set; }
+        [JsonIgnore] public Address<float> Neck_Z { get; set; }
+        [JsonIgnore] public Address<float> Neck_W { get; set; }
+        [JsonIgnore] public Address<float> ClavicleLeft_X { get; set; }
+        [JsonIgnore] public Address<float> ClavicleLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> ClavicleLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> ClavicleLeft_W { get; set; }
+        [JsonIgnore] public Address<float> ClavicleRight_X { get; set; }
+        [JsonIgnore] public Address<float> ClavicleRight_Y { get; set; }
+        [JsonIgnore] public Address<float> ClavicleRight_Z { get; set; }
+        [JsonIgnore] public Address<float> ClavicleRight_W { get; set; }
+        [JsonIgnore] public Address<float> ClothBackCLeft_X { get; set; }
+        [JsonIgnore] public Address<float> ClothBackCLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> ClothBackCLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> ClothBackCLeft_W { get; set; }
+        [JsonIgnore] public Address<float> ClothBackCRight_X { get; set; }
+        [JsonIgnore] public Address<float> ClothBackCRight_Y { get; set; }
+        [JsonIgnore] public Address<float> ClothBackCRight_Z { get; set; }
+        [JsonIgnore] public Address<float> ClothBackCRight_W { get; set; }
+        [JsonIgnore] public Address<float> ClothFrontCLeft_X { get; set; }
+        [JsonIgnore] public Address<float> ClothFrontCLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> ClothFrontCLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> ClothFrontCLeft_W { get; set; }
+        [JsonIgnore] public Address<float> ClothFrontCRight_X { get; set; }
+        [JsonIgnore] public Address<float> ClothFrontCRight_Y { get; set; }
+        [JsonIgnore] public Address<float> ClothFrontCRight_Z { get; set; }
+        [JsonIgnore] public Address<float> ClothFrontCRight_W { get; set; }
+        [JsonIgnore] public Address<float> ClothSideCLeft_X { get; set; }
+        [JsonIgnore] public Address<float> ClothSideCLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> ClothSideCLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> ClothSideCLeft_W { get; set; }
+        [JsonIgnore] public Address<float> ClothSideCRight_X { get; set; }
+        [JsonIgnore] public Address<float> ClothSideCRight_Y { get; set; }
+        [JsonIgnore] public Address<float> ClothSideCRight_Z { get; set; }
+        [JsonIgnore] public Address<float> ClothSideCRight_W { get; set; }
+        [JsonIgnore] public Address<float> PoleynLeft_X { get; set; }
+        [JsonIgnore] public Address<float> PoleynLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> PoleynLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> PoleynLeft_W { get; set; }
+        [JsonIgnore] public Address<float> PoleynRight_X { get; set; }
+        [JsonIgnore] public Address<float> PoleynRight_Y { get; set; }
+        [JsonIgnore] public Address<float> PoleynRight_Z { get; set; }
+        [JsonIgnore] public Address<float> PoleynRight_W { get; set; }
+        [JsonIgnore] public Address<float> FootLeft_X { get; set; }
+        [JsonIgnore] public Address<float> FootLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> FootLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> FootLeft_W { get; set; }
+        [JsonIgnore] public Address<float> FootRight_X { get; set; }
+        [JsonIgnore] public Address<float> FootRight_Y { get; set; }
+        [JsonIgnore] public Address<float> FootRight_Z { get; set; }
+        [JsonIgnore] public Address<float> FootRight_W { get; set; }
+        [JsonIgnore] public Address<float> Head_X { get; set; }
+        [JsonIgnore] public Address<float> Head_Y { get; set; }
+        [JsonIgnore] public Address<float> Head_Z { get; set; }
+        [JsonIgnore] public Address<float> Head_W { get; set; }
+        [JsonIgnore] public Address<float> ArmLeft_X { get; set; }
+        [JsonIgnore] public Address<float> ArmLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> ArmLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> ArmLeft_W { get; set; }
+        [JsonIgnore] public Address<float> ArmRight_X { get; set; }
+        [JsonIgnore] public Address<float> ArmRight_Y { get; set; }
+        [JsonIgnore] public Address<float> ArmRight_Z { get; set; }
+        [JsonIgnore] public Address<float> ArmRight_W { get; set; }
+        [JsonIgnore] public Address<float> PauldronLeft_X { get; set; }
+        [JsonIgnore] public Address<float> PauldronLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> PauldronLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> PauldronLeft_W { get; set; }
+        [JsonIgnore] public Address<float> PauldronRight_X { get; set; }
+        [JsonIgnore] public Address<float> PauldronRight_Y { get; set; }
+        [JsonIgnore] public Address<float> PauldronRight_Z { get; set; }
+        [JsonIgnore] public Address<float> PauldronRight_W { get; set; }
+        [JsonIgnore] public Address<float> Unknown00_X { get; set; }
+        [JsonIgnore] public Address<float> Unknown00_Y { get; set; }
+        [JsonIgnore] public Address<float> Unknown00_Z { get; set; }
+        [JsonIgnore] public Address<float> Unknown00_W { get; set; }
+        [JsonIgnore] public Address<float> ToesLeft_X { get; set; }
+        [JsonIgnore] public Address<float> ToesLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> ToesLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> ToesLeft_W { get; set; }
+        [JsonIgnore] public Address<float> ToesRight_X { get; set; }
+        [JsonIgnore] public Address<float> ToesRight_Y { get; set; }
+        [JsonIgnore] public Address<float> ToesRight_Z { get; set; }
+        [JsonIgnore] public Address<float> ToesRight_W { get; set; }
+        [JsonIgnore] public Address<float> HairA_X { get; set; }
+        [JsonIgnore] public Address<float> HairA_Y { get; set; }
+        [JsonIgnore] public Address<float> HairA_Z { get; set; }
+        [JsonIgnore] public Address<float> HairA_W { get; set; }
+        [JsonIgnore] public Address<float> HairFrontLeft_X { get; set; }
+        [JsonIgnore] public Address<float> HairFrontLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> HairFrontLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> HairFrontLeft_W { get; set; }
+        [JsonIgnore] public Address<float> HairFrontRight_X { get; set; }
+        [JsonIgnore] public Address<float> HairFrontRight_Y { get; set; }
+        [JsonIgnore] public Address<float> HairFrontRight_Z { get; set; }
+        [JsonIgnore] public Address<float> HairFrontRight_W { get; set; }
+        [JsonIgnore] public Address<float> EarLeft_X { get; set; }
+        [JsonIgnore] public Address<float> EarLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> EarLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> EarLeft_W { get; set; }
+        [JsonIgnore] public Address<float> EarRight_X { get; set; }
+        [JsonIgnore] public Address<float> EarRight_Y { get; set; }
+        [JsonIgnore] public Address<float> EarRight_Z { get; set; }
+        [JsonIgnore] public Address<float> EarRight_W { get; set; }
+        [JsonIgnore] public Address<float> ForearmLeft_X { get; set; }
+        [JsonIgnore] public Address<float> ForearmLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> ForearmLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> ForearmLeft_W { get; set; }
+        [JsonIgnore] public Address<float> ForearmRight_X { get; set; }
+        [JsonIgnore] public Address<float> ForearmRight_Y { get; set; }
+        [JsonIgnore] public Address<float> ForearmRight_Z { get; set; }
+        [JsonIgnore] public Address<float> ForearmRight_W { get; set; }
+        [JsonIgnore] public Address<float> ShoulderLeft_X { get; set; }
+        [JsonIgnore] public Address<float> ShoulderLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> ShoulderLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> ShoulderLeft_W { get; set; }
+        [JsonIgnore] public Address<float> ShoulderRight_X { get; set; }
+        [JsonIgnore] public Address<float> ShoulderRight_Y { get; set; }
+        [JsonIgnore] public Address<float> ShoulderRight_Z { get; set; }
+        [JsonIgnore] public Address<float> ShoulderRight_W { get; set; }
+        [JsonIgnore] public Address<float> HairB_X { get; set; }
+        [JsonIgnore] public Address<float> HairB_Y { get; set; }
+        [JsonIgnore] public Address<float> HairB_Z { get; set; }
+        [JsonIgnore] public Address<float> HairB_W { get; set; }
+        [JsonIgnore] public Address<float> HandLeft_X { get; set; }
+        [JsonIgnore] public Address<float> HandLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> HandLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> HandLeft_W { get; set; }
+        [JsonIgnore] public Address<float> HandRight_X { get; set; }
+        [JsonIgnore] public Address<float> HandRight_Y { get; set; }
+        [JsonIgnore] public Address<float> HandRight_Z { get; set; }
+        [JsonIgnore] public Address<float> HandRight_W { get; set; }
+        [JsonIgnore] public Address<float> ShieldLeft_X { get; set; }
+        [JsonIgnore] public Address<float> ShieldLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> ShieldLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> ShieldLeft_W { get; set; }
+        [JsonIgnore] public Address<float> ShieldRight_X { get; set; }
+        [JsonIgnore] public Address<float> ShieldRight_Y { get; set; }
+        [JsonIgnore] public Address<float> ShieldRight_Z { get; set; }
+        [JsonIgnore] public Address<float> ShieldRight_W { get; set; }
+        [JsonIgnore] public Address<float> EarringALeft_X { get; set; }
+        [JsonIgnore] public Address<float> EarringALeft_Y { get; set; }
+        [JsonIgnore] public Address<float> EarringALeft_Z { get; set; }
+        [JsonIgnore] public Address<float> EarringALeft_W { get; set; }
+        [JsonIgnore] public Address<float> EarringARight_X { get; set; }
+        [JsonIgnore] public Address<float> EarringARight_Y { get; set; }
+        [JsonIgnore] public Address<float> EarringARight_Z { get; set; }
+        [JsonIgnore] public Address<float> EarringARight_W { get; set; }
+        [JsonIgnore] public Address<float> ElbowLeft_X { get; set; }
+        [JsonIgnore] public Address<float> ElbowLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> ElbowLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> ElbowLeft_W { get; set; }
+        [JsonIgnore] public Address<float> ElbowRight_X { get; set; }
+        [JsonIgnore] public Address<float> ElbowRight_Y { get; set; }
+        [JsonIgnore] public Address<float> ElbowRight_Z { get; set; }
+        [JsonIgnore] public Address<float> ElbowRight_W { get; set; }
+        [JsonIgnore] public Address<float> CouterLeft_X { get; set; }
+        [JsonIgnore] public Address<float> CouterLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> CouterLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> CouterLeft_W { get; set; }
+        [JsonIgnore] public Address<float> CouterRight_X { get; set; }
+        [JsonIgnore] public Address<float> CouterRight_Y { get; set; }
+        [JsonIgnore] public Address<float> CouterRight_Z { get; set; }
+        [JsonIgnore] public Address<float> CouterRight_W { get; set; }
+        [JsonIgnore] public Address<float> WristLeft_X { get; set; }
+        [JsonIgnore] public Address<float> WristLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> WristLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> WristLeft_W { get; set; }
+        [JsonIgnore] public Address<float> WristRight_X { get; set; }
+        [JsonIgnore] public Address<float> WristRight_Y { get; set; }
+        [JsonIgnore] public Address<float> WristRight_Z { get; set; }
+        [JsonIgnore] public Address<float> WristRight_W { get; set; }
+        [JsonIgnore] public Address<float> IndexALeft_X { get; set; }
+        [JsonIgnore] public Address<float> IndexALeft_Y { get; set; }
+        [JsonIgnore] public Address<float> IndexALeft_Z { get; set; }
+        [JsonIgnore] public Address<float> IndexALeft_W { get; set; }
+        [JsonIgnore] public Address<float> IndexARight_X { get; set; }
+        [JsonIgnore] public Address<float> IndexARight_Y { get; set; }
+        [JsonIgnore] public Address<float> IndexARight_Z { get; set; }
+        [JsonIgnore] public Address<float> IndexARight_W { get; set; }
+        [JsonIgnore] public Address<float> PinkyALeft_X { get; set; }
+        [JsonIgnore] public Address<float> PinkyALeft_Y { get; set; }
+        [JsonIgnore] public Address<float> PinkyALeft_Z { get; set; }
+        [JsonIgnore] public Address<float> PinkyALeft_W { get; set; }
+        [JsonIgnore] public Address<float> PinkyARight_X { get; set; }
+        [JsonIgnore] public Address<float> PinkyARight_Y { get; set; }
+        [JsonIgnore] public Address<float> PinkyARight_Z { get; set; }
+        [JsonIgnore] public Address<float> PinkyARight_W { get; set; }
+        [JsonIgnore] public Address<float> RingALeft_X { get; set; }
+        [JsonIgnore] public Address<float> RingALeft_Y { get; set; }
+        [JsonIgnore] public Address<float> RingALeft_Z { get; set; }
+        [JsonIgnore] public Address<float> RingALeft_W { get; set; }
+        [JsonIgnore] public Address<float> RingARight_X { get; set; }
+        [JsonIgnore] public Address<float> RingARight_Y { get; set; }
+        [JsonIgnore] public Address<float> RingARight_Z { get; set; }
+        [JsonIgnore] public Address<float> RingARight_W { get; set; }
+        [JsonIgnore] public Address<float> MiddleALeft_X { get; set; }
+        [JsonIgnore] public Address<float> MiddleALeft_Y { get; set; }
+        [JsonIgnore] public Address<float> MiddleALeft_Z { get; set; }
+        [JsonIgnore] public Address<float> MiddleALeft_W { get; set; }
+        [JsonIgnore] public Address<float> MiddleARight_X { get; set; }
+        [JsonIgnore] public Address<float> MiddleARight_Y { get; set; }
+        [JsonIgnore] public Address<float> MiddleARight_Z { get; set; }
+        [JsonIgnore] public Address<float> MiddleARight_W { get; set; }
+        [JsonIgnore] public Address<float> ThumbALeft_X { get; set; }
+        [JsonIgnore] public Address<float> ThumbALeft_Y { get; set; }
+        [JsonIgnore] public Address<float> ThumbALeft_Z { get; set; }
+        [JsonIgnore] public Address<float> ThumbALeft_W { get; set; }
+        [JsonIgnore] public Address<float> ThumbARight_X { get; set; }
+        [JsonIgnore] public Address<float> ThumbARight_Y { get; set; }
+        [JsonIgnore] public Address<float> ThumbARight_Z { get; set; }
+        [JsonIgnore] public Address<float> ThumbARight_W { get; set; }
+        [JsonIgnore] public Address<float> WeaponLeft_X { get; set; }
+        [JsonIgnore] public Address<float> WeaponLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> WeaponLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> WeaponLeft_W { get; set; }
+        [JsonIgnore] public Address<float> WeaponRight_X { get; set; }
+        [JsonIgnore] public Address<float> WeaponRight_Y { get; set; }
+        [JsonIgnore] public Address<float> WeaponRight_Z { get; set; }
+        [JsonIgnore] public Address<float> WeaponRight_W { get; set; }
+        [JsonIgnore] public Address<float> EarringBLeft_X { get; set; }
+        [JsonIgnore] public Address<float> EarringBLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> EarringBLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> EarringBLeft_W { get; set; }
+        [JsonIgnore] public Address<float> EarringBRight_X { get; set; }
+        [JsonIgnore] public Address<float> EarringBRight_Y { get; set; }
+        [JsonIgnore] public Address<float> EarringBRight_Z { get; set; }
+        [JsonIgnore] public Address<float> EarringBRight_W { get; set; }
+        [JsonIgnore] public Address<float> IndexBLeft_X { get; set; }
+        [JsonIgnore] public Address<float> IndexBLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> IndexBLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> IndexBLeft_W { get; set; }
+        [JsonIgnore] public Address<float> IndexBRight_X { get; set; }
+        [JsonIgnore] public Address<float> IndexBRight_Y { get; set; }
+        [JsonIgnore] public Address<float> IndexBRight_Z { get; set; }
+        [JsonIgnore] public Address<float> IndexBRight_W { get; set; }
+        [JsonIgnore] public Address<float> PinkyBLeft_X { get; set; }
+        [JsonIgnore] public Address<float> PinkyBLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> PinkyBLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> PinkyBLeft_W { get; set; }
+        [JsonIgnore] public Address<float> PinkyBRight_X { get; set; }
+        [JsonIgnore] public Address<float> PinkyBRight_Y { get; set; }
+        [JsonIgnore] public Address<float> PinkyBRight_Z { get; set; }
+        [JsonIgnore] public Address<float> PinkyBRight_W { get; set; }
+        [JsonIgnore] public Address<float> RingBLeft_X { get; set; }
+        [JsonIgnore] public Address<float> RingBLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> RingBLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> RingBLeft_W { get; set; }
+        [JsonIgnore] public Address<float> RingBRight_X { get; set; }
+        [JsonIgnore] public Address<float> RingBRight_Y { get; set; }
+        [JsonIgnore] public Address<float> RingBRight_Z { get; set; }
+        [JsonIgnore] public Address<float> RingBRight_W { get; set; }
+        [JsonIgnore] public Address<float> MiddleBLeft_X { get; set; }
+        [JsonIgnore] public Address<float> MiddleBLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> MiddleBLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> MiddleBLeft_W { get; set; }
+        [JsonIgnore] public Address<float> MiddleBRight_X { get; set; }
+        [JsonIgnore] public Address<float> MiddleBRight_Y { get; set; }
+        [JsonIgnore] public Address<float> MiddleBRight_Z { get; set; }
+        [JsonIgnore] public Address<float> MiddleBRight_W { get; set; }
+        [JsonIgnore] public Address<float> ThumbBLeft_X { get; set; }
+        [JsonIgnore] public Address<float> ThumbBLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> ThumbBLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> ThumbBLeft_W { get; set; }
+        [JsonIgnore] public Address<float> ThumbBRight_X { get; set; }
+        [JsonIgnore] public Address<float> ThumbBRight_Y { get; set; }
+        [JsonIgnore] public Address<float> ThumbBRight_Z { get; set; }
+        [JsonIgnore] public Address<float> ThumbBRight_W { get; set; }
+        [JsonIgnore] public Address<float> TailA_X { get; set; }
+        [JsonIgnore] public Address<float> TailA_Y { get; set; }
+        [JsonIgnore] public Address<float> TailA_Z { get; set; }
+        [JsonIgnore] public Address<float> TailA_W { get; set; }
+        [JsonIgnore] public Address<float> TailB_X { get; set; }
+        [JsonIgnore] public Address<float> TailB_Y { get; set; }
+        [JsonIgnore] public Address<float> TailB_Z { get; set; }
+        [JsonIgnore] public Address<float> TailB_W { get; set; }
+        [JsonIgnore] public Address<float> TailC_X { get; set; }
+        [JsonIgnore] public Address<float> TailC_Y { get; set; }
+        [JsonIgnore] public Address<float> TailC_Z { get; set; }
+        [JsonIgnore] public Address<float> TailC_W { get; set; }
+        [JsonIgnore] public Address<float> TailD_X { get; set; }
+        [JsonIgnore] public Address<float> TailD_Y { get; set; }
+        [JsonIgnore] public Address<float> TailD_Z { get; set; }
+        [JsonIgnore] public Address<float> TailD_W { get; set; }
+        [JsonIgnore] public Address<float> TailE_X { get; set; }
+        [JsonIgnore] public Address<float> TailE_Y { get; set; }
+        [JsonIgnore] public Address<float> TailE_Z { get; set; }
+        [JsonIgnore] public Address<float> TailE_W { get; set; }
+        [JsonIgnore] public Address<float> RootHead_X { get; set; }
+        [JsonIgnore] public Address<float> RootHead_Y { get; set; }
+        [JsonIgnore] public Address<float> RootHead_Z { get; set; }
+        [JsonIgnore] public Address<float> RootHead_W { get; set; }
+        [JsonIgnore] public Address<float> Jaw_X { get; set; }
+        [JsonIgnore] public Address<float> Jaw_Y { get; set; }
+        [JsonIgnore] public Address<float> Jaw_Z { get; set; }
+        [JsonIgnore] public Address<float> Jaw_W { get; set; }
+        [JsonIgnore] public Address<float> EyelidLowerLeft_X { get; set; }
+        [JsonIgnore] public Address<float> EyelidLowerLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> EyelidLowerLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> EyelidLowerLeft_W { get; set; }
+        [JsonIgnore] public Address<float> EyelidLowerRight_X { get; set; }
+        [JsonIgnore] public Address<float> EyelidLowerRight_Y { get; set; }
+        [JsonIgnore] public Address<float> EyelidLowerRight_Z { get; set; }
+        [JsonIgnore] public Address<float> EyelidLowerRight_W { get; set; }
+        [JsonIgnore] public Address<float> EyeLeft_X { get; set; }
+        [JsonIgnore] public Address<float> EyeLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> EyeLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> EyeLeft_W { get; set; }
+        [JsonIgnore] public Address<float> EyeRight_X { get; set; }
+        [JsonIgnore] public Address<float> EyeRight_Y { get; set; }
+        [JsonIgnore] public Address<float> EyeRight_Z { get; set; }
+        [JsonIgnore] public Address<float> EyeRight_W { get; set; }
+        [JsonIgnore] public Address<float> Nose_X { get; set; }
+        [JsonIgnore] public Address<float> Nose_Y { get; set; }
+        [JsonIgnore] public Address<float> Nose_Z { get; set; }
+        [JsonIgnore] public Address<float> Nose_W { get; set; }
+        [JsonIgnore] public Address<float> CheekLeft_X { get; set; }
+        [JsonIgnore] public Address<float> CheekLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> CheekLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> CheekLeft_W { get; set; }
+        [JsonIgnore] public Address<float> HrothWhiskersLeft_X { get; set; }
+        [JsonIgnore] public Address<float> HrothWhiskersLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> HrothWhiskersLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> HrothWhiskersLeft_W { get; set; }
+        [JsonIgnore] public Address<float> CheekRight_X { get; set; }
+        [JsonIgnore] public Address<float> CheekRight_Y { get; set; }
+        [JsonIgnore] public Address<float> CheekRight_Z { get; set; }
+        [JsonIgnore] public Address<float> CheekRight_W { get; set; }
+        [JsonIgnore] public Address<float> HrothWhiskersRight_X { get; set; }
+        [JsonIgnore] public Address<float> HrothWhiskersRight_Y { get; set; }
+        [JsonIgnore] public Address<float> HrothWhiskersRight_Z { get; set; }
+        [JsonIgnore] public Address<float> HrothWhiskersRight_W { get; set; }
+        [JsonIgnore] public Address<float> LipsLeft_X { get; set; }
+        [JsonIgnore] public Address<float> LipsLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> LipsLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> LipsLeft_W { get; set; }
+        [JsonIgnore] public Address<float> HrothEyebrowLeft_X { get; set; }
+        [JsonIgnore] public Address<float> HrothEyebrowLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> HrothEyebrowLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> HrothEyebrowLeft_W { get; set; }
+        [JsonIgnore] public Address<float> LipsRight_X { get; set; }
+        [JsonIgnore] public Address<float> LipsRight_Y { get; set; }
+        [JsonIgnore] public Address<float> LipsRight_Z { get; set; }
+        [JsonIgnore] public Address<float> LipsRight_W { get; set; }
+        [JsonIgnore] public Address<float> HrothEyebrowRight_X { get; set; }
+        [JsonIgnore] public Address<float> HrothEyebrowRight_Y { get; set; }
+        [JsonIgnore] public Address<float> HrothEyebrowRight_Z { get; set; }
+        [JsonIgnore] public Address<float> HrothEyebrowRight_W { get; set; }
+        [JsonIgnore] public Address<float> EyebrowLeft_X { get; set; }
+        [JsonIgnore] public Address<float> EyebrowLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> EyebrowLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> EyebrowLeft_W { get; set; }
+        [JsonIgnore] public Address<float> HrothBridge_X { get; set; }
+        [JsonIgnore] public Address<float> HrothBridge_Y { get; set; }
+        [JsonIgnore] public Address<float> HrothBridge_Z { get; set; }
+        [JsonIgnore] public Address<float> HrothBridge_W { get; set; }
+        [JsonIgnore] public Address<float> EyebrowRight_X { get; set; }
+        [JsonIgnore] public Address<float> EyebrowRight_Y { get; set; }
+        [JsonIgnore] public Address<float> EyebrowRight_Z { get; set; }
+        [JsonIgnore] public Address<float> EyebrowRight_W { get; set; }
+        [JsonIgnore] public Address<float> HrothBrowLeft_X { get; set; }
+        [JsonIgnore] public Address<float> HrothBrowLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> HrothBrowLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> HrothBrowLeft_W { get; set; }
+        [JsonIgnore] public Address<float> Bridge_X { get; set; }
+        [JsonIgnore] public Address<float> Bridge_Y { get; set; }
+        [JsonIgnore] public Address<float> Bridge_Z { get; set; }
+        [JsonIgnore] public Address<float> Bridge_W { get; set; }
+        [JsonIgnore] public Address<float> HrothBrowRight_X { get; set; }
+        [JsonIgnore] public Address<float> HrothBrowRight_Y { get; set; }
+        [JsonIgnore] public Address<float> HrothBrowRight_Z { get; set; }
+        [JsonIgnore] public Address<float> HrothBrowRight_W { get; set; }
+        [JsonIgnore] public Address<float> BrowLeft_X { get; set; }
+        [JsonIgnore] public Address<float> BrowLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> BrowLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> BrowLeft_W { get; set; }
+        [JsonIgnore] public Address<float> HrothJawUpper_X { get; set; }
+        [JsonIgnore] public Address<float> HrothJawUpper_Y { get; set; }
+        [JsonIgnore] public Address<float> HrothJawUpper_Z { get; set; }
+        [JsonIgnore] public Address<float> HrothJawUpper_W { get; set; }
+        [JsonIgnore] public Address<float> BrowRight_X { get; set; }
+        [JsonIgnore] public Address<float> BrowRight_Y { get; set; }
+        [JsonIgnore] public Address<float> BrowRight_Z { get; set; }
+        [JsonIgnore] public Address<float> BrowRight_W { get; set; }
+        [JsonIgnore] public Address<float> HrothLipUpper_X { get; set; }
+        [JsonIgnore] public Address<float> HrothLipUpper_Y { get; set; }
+        [JsonIgnore] public Address<float> HrothLipUpper_Z { get; set; }
+        [JsonIgnore] public Address<float> HrothLipUpper_W { get; set; }
+        [JsonIgnore] public Address<float> LipUpperA_X { get; set; }
+        [JsonIgnore] public Address<float> LipUpperA_Y { get; set; }
+        [JsonIgnore] public Address<float> LipUpperA_Z { get; set; }
+        [JsonIgnore] public Address<float> LipUpperA_W { get; set; }
+        [JsonIgnore] public Address<float> HrothEyelidUpperLeft_X { get; set; }
+        [JsonIgnore] public Address<float> HrothEyelidUpperLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> HrothEyelidUpperLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> HrothEyelidUpperLeft_W { get; set; }
+        [JsonIgnore] public Address<float> EyelidUpperLeft_X { get; set; }
+        [JsonIgnore] public Address<float> EyelidUpperLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> EyelidUpperLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> EyelidUpperLeft_W { get; set; }
+        [JsonIgnore] public Address<float> HrothEyelidUpperRight_X { get; set; }
+        [JsonIgnore] public Address<float> HrothEyelidUpperRight_Y { get; set; }
+        [JsonIgnore] public Address<float> HrothEyelidUpperRight_Z { get; set; }
+        [JsonIgnore] public Address<float> HrothEyelidUpperRight_W { get; set; }
+        [JsonIgnore] public Address<float> EyelidUpperRight_X { get; set; }
+        [JsonIgnore] public Address<float> EyelidUpperRight_Y { get; set; }
+        [JsonIgnore] public Address<float> EyelidUpperRight_Z { get; set; }
+        [JsonIgnore] public Address<float> EyelidUpperRight_W { get; set; }
+        [JsonIgnore] public Address<float> HrothLipsLeft_X { get; set; }
+        [JsonIgnore] public Address<float> HrothLipsLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> HrothLipsLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> HrothLipsLeft_W { get; set; }
+        [JsonIgnore] public Address<float> LipLowerA_X { get; set; }
+        [JsonIgnore] public Address<float> LipLowerA_Y { get; set; }
+        [JsonIgnore] public Address<float> LipLowerA_Z { get; set; }
+        [JsonIgnore] public Address<float> LipLowerA_W { get; set; }
+        [JsonIgnore] public Address<float> HrothLipsRight_X { get; set; }
+        [JsonIgnore] public Address<float> HrothLipsRight_Y { get; set; }
+        [JsonIgnore] public Address<float> HrothLipsRight_Z { get; set; }
+        [JsonIgnore] public Address<float> HrothLipsRight_W { get; set; }
+        [JsonIgnore] public Address<float> VieraEar01ALeft_X { get; set; }
+        [JsonIgnore] public Address<float> VieraEar01ALeft_Y { get; set; }
+        [JsonIgnore] public Address<float> VieraEar01ALeft_Z { get; set; }
+        [JsonIgnore] public Address<float> VieraEar01ALeft_W { get; set; }
+        [JsonIgnore] public Address<float> LipUpperB_X { get; set; }
+        [JsonIgnore] public Address<float> LipUpperB_Y { get; set; }
+        [JsonIgnore] public Address<float> LipUpperB_Z { get; set; }
+        [JsonIgnore] public Address<float> LipUpperB_W { get; set; }
+        [JsonIgnore] public Address<float> HrothLipUpperLeft_X { get; set; }
+        [JsonIgnore] public Address<float> HrothLipUpperLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> HrothLipUpperLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> HrothLipUpperLeft_W { get; set; }
+        [JsonIgnore] public Address<float> VieraEar01ARight_X { get; set; }
+        [JsonIgnore] public Address<float> VieraEar01ARight_Y { get; set; }
+        [JsonIgnore] public Address<float> VieraEar01ARight_Z { get; set; }
+        [JsonIgnore] public Address<float> VieraEar01ARight_W { get; set; }
+        [JsonIgnore] public Address<float> LipLowerB_X { get; set; }
+        [JsonIgnore] public Address<float> LipLowerB_Y { get; set; }
+        [JsonIgnore] public Address<float> LipLowerB_Z { get; set; }
+        [JsonIgnore] public Address<float> LipLowerB_W { get; set; }
+        [JsonIgnore] public Address<float> HrothLipUpperRight_X { get; set; }
+        [JsonIgnore] public Address<float> HrothLipUpperRight_Y { get; set; }
+        [JsonIgnore] public Address<float> HrothLipUpperRight_Z { get; set; }
+        [JsonIgnore] public Address<float> HrothLipUpperRight_W { get; set; }
+        [JsonIgnore] public Address<float> VieraEar02ALeft_X { get; set; }
+        [JsonIgnore] public Address<float> VieraEar02ALeft_Y { get; set; }
+        [JsonIgnore] public Address<float> VieraEar02ALeft_Z { get; set; }
+        [JsonIgnore] public Address<float> VieraEar02ALeft_W { get; set; }
+        [JsonIgnore] public Address<float> HrothLipLower_X { get; set; }
+        [JsonIgnore] public Address<float> HrothLipLower_Y { get; set; }
+        [JsonIgnore] public Address<float> HrothLipLower_Z { get; set; }
+        [JsonIgnore] public Address<float> HrothLipLower_W { get; set; }
+        [JsonIgnore] public Address<float> VieraEar02ARight_X { get; set; }
+        [JsonIgnore] public Address<float> VieraEar02ARight_Y { get; set; }
+        [JsonIgnore] public Address<float> VieraEar02ARight_Z { get; set; }
+        [JsonIgnore] public Address<float> VieraEar02ARight_W { get; set; }
+        [JsonIgnore] public Address<float> VieraEar03ALeft_X { get; set; }
+        [JsonIgnore] public Address<float> VieraEar03ALeft_Y { get; set; }
+        [JsonIgnore] public Address<float> VieraEar03ALeft_Z { get; set; }
+        [JsonIgnore] public Address<float> VieraEar03ALeft_W { get; set; }
+        [JsonIgnore] public Address<float> VieraEar03ARight_X { get; set; }
+        [JsonIgnore] public Address<float> VieraEar03ARight_Y { get; set; }
+        [JsonIgnore] public Address<float> VieraEar03ARight_Z { get; set; }
+        [JsonIgnore] public Address<float> VieraEar03ARight_W { get; set; }
+        [JsonIgnore] public Address<float> VieraEar04ALeft_X { get; set; }
+        [JsonIgnore] public Address<float> VieraEar04ALeft_Y { get; set; }
+        [JsonIgnore] public Address<float> VieraEar04ALeft_Z { get; set; }
+        [JsonIgnore] public Address<float> VieraEar04ALeft_W { get; set; }
+        [JsonIgnore] public Address<float> VieraEar04ARight_X { get; set; }
+        [JsonIgnore] public Address<float> VieraEar04ARight_Y { get; set; }
+        [JsonIgnore] public Address<float> VieraEar04ARight_Z { get; set; }
+        [JsonIgnore] public Address<float> VieraEar04ARight_W { get; set; }
+        [JsonIgnore] public Address<float> VieraLipLowerA_X { get; set; }
+        [JsonIgnore] public Address<float> VieraLipLowerA_Y { get; set; }
+        [JsonIgnore] public Address<float> VieraLipLowerA_Z { get; set; }
+        [JsonIgnore] public Address<float> VieraLipLowerA_W { get; set; }
+        [JsonIgnore] public Address<float> VieraLipUpperB_X { get; set; }
+        [JsonIgnore] public Address<float> VieraLipUpperB_Y { get; set; }
+        [JsonIgnore] public Address<float> VieraLipUpperB_Z { get; set; }
+        [JsonIgnore] public Address<float> VieraLipUpperB_W { get; set; }
+        [JsonIgnore] public Address<float> VieraEar01BLeft_X { get; set; }
+        [JsonIgnore] public Address<float> VieraEar01BLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> VieraEar01BLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> VieraEar01BLeft_W { get; set; }
+        [JsonIgnore] public Address<float> VieraEar01BRight_X { get; set; }
+        [JsonIgnore] public Address<float> VieraEar01BRight_Y { get; set; }
+        [JsonIgnore] public Address<float> VieraEar01BRight_Z { get; set; }
+        [JsonIgnore] public Address<float> VieraEar01BRight_W { get; set; }
+        [JsonIgnore] public Address<float> VieraEar02BLeft_X { get; set; }
+        [JsonIgnore] public Address<float> VieraEar02BLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> VieraEar02BLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> VieraEar02BLeft_W { get; set; }
+        [JsonIgnore] public Address<float> VieraEar02BRight_X { get; set; }
+        [JsonIgnore] public Address<float> VieraEar02BRight_Y { get; set; }
+        [JsonIgnore] public Address<float> VieraEar02BRight_Z { get; set; }
+        [JsonIgnore] public Address<float> VieraEar02BRight_W { get; set; }
+        [JsonIgnore] public Address<float> VieraEar03BLeft_X { get; set; }
+        [JsonIgnore] public Address<float> VieraEar03BLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> VieraEar03BLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> VieraEar03BLeft_W { get; set; }
+        [JsonIgnore] public Address<float> VieraEar03BRight_X { get; set; }
+        [JsonIgnore] public Address<float> VieraEar03BRight_Y { get; set; }
+        [JsonIgnore] public Address<float> VieraEar03BRight_Z { get; set; }
+        [JsonIgnore] public Address<float> VieraEar03BRight_W { get; set; }
+        [JsonIgnore] public Address<float> VieraEar04BLeft_X { get; set; }
+        [JsonIgnore] public Address<float> VieraEar04BLeft_Y { get; set; }
+        [JsonIgnore] public Address<float> VieraEar04BLeft_Z { get; set; }
+        [JsonIgnore] public Address<float> VieraEar04BLeft_W { get; set; }
+        [JsonIgnore] public Address<float> VieraEar04BRight_X { get; set; }
+        [JsonIgnore] public Address<float> VieraEar04BRight_Y { get; set; }
+        [JsonIgnore] public Address<float> VieraEar04BRight_Z { get; set; }
+        [JsonIgnore] public Address<float> VieraEar04BRight_W { get; set; }
+        [JsonIgnore] public Address<float> VieraLipLowerB_X { get; set; }
+        [JsonIgnore] public Address<float> VieraLipLowerB_Y { get; set; }
+        [JsonIgnore] public Address<float> VieraLipLowerB_Z { get; set; }
+        [JsonIgnore] public Address<float> VieraLipLowerB_W { get; set; }
+        [JsonIgnore] public Address<float> ExRootHair_X { get; set; }
+        [JsonIgnore] public Address<float> ExRootHair_Y { get; set; }
+        [JsonIgnore] public Address<float> ExRootHair_Z { get; set; }
+        [JsonIgnore] public Address<float> ExRootHair_W { get; set; }
+        [JsonIgnore] public Address<float> ExHairA_X { get; set; }
+        [JsonIgnore] public Address<float> ExHairA_Y { get; set; }
+        [JsonIgnore] public Address<float> ExHairA_Z { get; set; }
+        [JsonIgnore] public Address<float> ExHairA_W { get; set; }
+        [JsonIgnore] public Address<float> ExHairB_X { get; set; }
+        [JsonIgnore] public Address<float> ExHairB_Y { get; set; }
+        [JsonIgnore] public Address<float> ExHairB_Z { get; set; }
+        [JsonIgnore] public Address<float> ExHairB_W { get; set; }
+        [JsonIgnore] public Address<float> ExHairC_X { get; set; }
+        [JsonIgnore] public Address<float> ExHairC_Y { get; set; }
+        [JsonIgnore] public Address<float> ExHairC_Z { get; set; }
+        [JsonIgnore] public Address<float> ExHairC_W { get; set; }
+        [JsonIgnore] public Address<float> ExHairD_X { get; set; }
+        [JsonIgnore] public Address<float> ExHairD_Y { get; set; }
+        [JsonIgnore] public Address<float> ExHairD_Z { get; set; }
+        [JsonIgnore] public Address<float> ExHairD_W { get; set; }
+        [JsonIgnore] public Address<float> ExHairE_X { get; set; }
+        [JsonIgnore] public Address<float> ExHairE_Y { get; set; }
+        [JsonIgnore] public Address<float> ExHairE_Z { get; set; }
+        [JsonIgnore] public Address<float> ExHairE_W { get; set; }
+        [JsonIgnore] public Address<float> ExHairF_X { get; set; }
+        [JsonIgnore] public Address<float> ExHairF_Y { get; set; }
+        [JsonIgnore] public Address<float> ExHairF_Z { get; set; }
+        [JsonIgnore] public Address<float> ExHairF_W { get; set; }
+        [JsonIgnore] public Address<float> ExHairG_X { get; set; }
+        [JsonIgnore] public Address<float> ExHairG_Y { get; set; }
+        [JsonIgnore] public Address<float> ExHairG_Z { get; set; }
+        [JsonIgnore] public Address<float> ExHairG_W { get; set; }
+        [JsonIgnore] public Address<float> ExHairH_X { get; set; }
+        [JsonIgnore] public Address<float> ExHairH_Y { get; set; }
+        [JsonIgnore] public Address<float> ExHairH_Z { get; set; }
+        [JsonIgnore] public Address<float> ExHairH_W { get; set; }
+        [JsonIgnore] public Address<float> ExHairI_X { get; set; }
+        [JsonIgnore] public Address<float> ExHairI_Y { get; set; }
+        [JsonIgnore] public Address<float> ExHairI_Z { get; set; }
+        [JsonIgnore] public Address<float> ExHairI_W { get; set; }
+        [JsonIgnore] public Address<float> ExHairJ_X { get; set; }
+        [JsonIgnore] public Address<float> ExHairJ_Y { get; set; }
+        [JsonIgnore] public Address<float> ExHairJ_Z { get; set; }
+        [JsonIgnore] public Address<float> ExHairJ_W { get; set; }
+        [JsonIgnore] public Address<float> ExHairK_X { get; set; }
+        [JsonIgnore] public Address<float> ExHairK_Y { get; set; }
+        [JsonIgnore] public Address<float> ExHairK_Z { get; set; }
+        [JsonIgnore] public Address<float> ExHairK_W { get; set; }
+        [JsonIgnore] public Address<float> ExHairL_X { get; set; }
+        [JsonIgnore] public Address<float> ExHairL_Y { get; set; }
+        [JsonIgnore] public Address<float> ExHairL_Z { get; set; }
+        [JsonIgnore] public Address<float> ExHairL_W { get; set; }
+        [JsonIgnore] public Address<float> ExRootMet_X { get; set; }
+        [JsonIgnore] public Address<float> ExRootMet_Y { get; set; }
+        [JsonIgnore] public Address<float> ExRootMet_Z { get; set; }
+        [JsonIgnore] public Address<float> ExRootMet_W { get; set; }
+        [JsonIgnore] public Address<float> ExMetA_X { get; set; }
+        [JsonIgnore] public Address<float> ExMetA_Y { get; set; }
+        [JsonIgnore] public Address<float> ExMetA_Z { get; set; }
+        [JsonIgnore] public Address<float> ExMetA_W { get; set; }
+        [JsonIgnore] public Address<float> ExMetB_X { get; set; }
+        [JsonIgnore] public Address<float> ExMetB_Y { get; set; }
+        [JsonIgnore] public Address<float> ExMetB_Z { get; set; }
+        [JsonIgnore] public Address<float> ExMetB_W { get; set; }
+        [JsonIgnore] public Address<float> ExMetC_X { get; set; }
+        [JsonIgnore] public Address<float> ExMetC_Y { get; set; }
+        [JsonIgnore] public Address<float> ExMetC_Z { get; set; }
+        [JsonIgnore] public Address<float> ExMetC_W { get; set; }
+        [JsonIgnore] public Address<float> ExMetD_X { get; set; }
+        [JsonIgnore] public Address<float> ExMetD_Y { get; set; }
+        [JsonIgnore] public Address<float> ExMetD_Z { get; set; }
+        [JsonIgnore] public Address<float> ExMetD_W { get; set; }
+        [JsonIgnore] public Address<float> ExMetE_X { get; set; }
+        [JsonIgnore] public Address<float> ExMetE_Y { get; set; }
+        [JsonIgnore] public Address<float> ExMetE_Z { get; set; }
+        [JsonIgnore] public Address<float> ExMetE_W { get; set; }
+        [JsonIgnore] public Address<float> ExMetF_X { get; set; }
+        [JsonIgnore] public Address<float> ExMetF_Y { get; set; }
+        [JsonIgnore] public Address<float> ExMetF_Z { get; set; }
+        [JsonIgnore] public Address<float> ExMetF_W { get; set; }
+        [JsonIgnore] public Address<float> ExMetG_X { get; set; }
+        [JsonIgnore] public Address<float> ExMetG_Y { get; set; }
+        [JsonIgnore] public Address<float> ExMetG_Z { get; set; }
+        [JsonIgnore] public Address<float> ExMetG_W { get; set; }
+        [JsonIgnore] public Address<float> ExMetH_X { get; set; }
+        [JsonIgnore] public Address<float> ExMetH_Y { get; set; }
+        [JsonIgnore] public Address<float> ExMetH_Z { get; set; }
+        [JsonIgnore] public Address<float> ExMetH_W { get; set; }
+        [JsonIgnore] public Address<float> ExMetI_X { get; set; }
+        [JsonIgnore] public Address<float> ExMetI_Y { get; set; }
+        [JsonIgnore] public Address<float> ExMetI_Z { get; set; }
+        [JsonIgnore] public Address<float> ExMetI_W { get; set; }
+        [JsonIgnore] public Address<float> ExMetJ_X { get; set; }
+        [JsonIgnore] public Address<float> ExMetJ_Y { get; set; }
+        [JsonIgnore] public Address<float> ExMetJ_Z { get; set; }
+        [JsonIgnore] public Address<float> ExMetJ_W { get; set; }
+        [JsonIgnore] public Address<float> ExMetK_X { get; set; }
+        [JsonIgnore] public Address<float> ExMetK_Y { get; set; }
+        [JsonIgnore] public Address<float> ExMetK_Z { get; set; }
+        [JsonIgnore] public Address<float> ExMetK_W { get; set; }
+        [JsonIgnore] public Address<float> ExMetL_X { get; set; }
+        [JsonIgnore] public Address<float> ExMetL_Y { get; set; }
+        [JsonIgnore] public Address<float> ExMetL_Z { get; set; }
+        [JsonIgnore] public Address<float> ExMetL_W { get; set; }
+        [JsonIgnore] public Address<float> ExMetM_X { get; set; }
+        [JsonIgnore] public Address<float> ExMetM_Y { get; set; }
+        [JsonIgnore] public Address<float> ExMetM_Z { get; set; }
+        [JsonIgnore] public Address<float> ExMetM_W { get; set; }
+        [JsonIgnore] public Address<float> ExMetN_X { get; set; }
+        [JsonIgnore] public Address<float> ExMetN_Y { get; set; }
+        [JsonIgnore] public Address<float> ExMetN_Z { get; set; }
+        [JsonIgnore] public Address<float> ExMetN_W { get; set; }
+        [JsonIgnore] public Address<float> ExMetO_X { get; set; }
+        [JsonIgnore] public Address<float> ExMetO_Y { get; set; }
+        [JsonIgnore] public Address<float> ExMetO_Z { get; set; }
+        [JsonIgnore] public Address<float> ExMetO_W { get; set; }
+        [JsonIgnore] public Address<float> ExMetP_X { get; set; }
+        [JsonIgnore] public Address<float> ExMetP_Y { get; set; }
+        [JsonIgnore] public Address<float> ExMetP_Z { get; set; }
+        [JsonIgnore] public Address<float> ExMetP_W { get; set; }
+        [JsonIgnore] public Address<float> ExMetQ_X { get; set; }
+        [JsonIgnore] public Address<float> ExMetQ_Y { get; set; }
+        [JsonIgnore] public Address<float> ExMetQ_Z { get; set; }
+        [JsonIgnore] public Address<float> ExMetQ_W { get; set; }
+        [JsonIgnore] public Address<float> ExMetR_X { get; set; }
+        [JsonIgnore] public Address<float> ExMetR_Y { get; set; }
+        [JsonIgnore] public Address<float> ExMetR_Z { get; set; }
+        [JsonIgnore] public Address<float> ExMetR_W { get; set; }
+        [JsonIgnore] public Address<float> ExRootTop_X { get; set; }
+        [JsonIgnore] public Address<float> ExRootTop_Y { get; set; }
+        [JsonIgnore] public Address<float> ExRootTop_Z { get; set; }
+        [JsonIgnore] public Address<float> ExRootTop_W { get; set; }
+        [JsonIgnore] public Address<float> ExTopA_X { get; set; }
+        [JsonIgnore] public Address<float> ExTopA_Y { get; set; }
+        [JsonIgnore] public Address<float> ExTopA_Z { get; set; }
+        [JsonIgnore] public Address<float> ExTopA_W { get; set; }
+        [JsonIgnore] public Address<float> ExTopB_X { get; set; }
+        [JsonIgnore] public Address<float> ExTopB_Y { get; set; }
+        [JsonIgnore] public Address<float> ExTopB_Z { get; set; }
+        [JsonIgnore] public Address<float> ExTopB_W { get; set; }
+        [JsonIgnore] public Address<float> ExTopC_X { get; set; }
+        [JsonIgnore] public Address<float> ExTopC_Y { get; set; }
+        [JsonIgnore] public Address<float> ExTopC_Z { get; set; }
+        [JsonIgnore] public Address<float> ExTopC_W { get; set; }
+        [JsonIgnore] public Address<float> ExTopD_X { get; set; }
+        [JsonIgnore] public Address<float> ExTopD_Y { get; set; }
+        [JsonIgnore] public Address<float> ExTopD_Z { get; set; }
+        [JsonIgnore] public Address<float> ExTopD_W { get; set; }
+        [JsonIgnore] public Address<float> ExTopE_X { get; set; }
+        [JsonIgnore] public Address<float> ExTopE_Y { get; set; }
+        [JsonIgnore] public Address<float> ExTopE_Z { get; set; }
+        [JsonIgnore] public Address<float> ExTopE_W { get; set; }
+        [JsonIgnore] public Address<float> ExTopF_X { get; set; }
+        [JsonIgnore] public Address<float> ExTopF_Y { get; set; }
+        [JsonIgnore] public Address<float> ExTopF_Z { get; set; }
+        [JsonIgnore] public Address<float> ExTopF_W { get; set; }
+        [JsonIgnore] public Address<float> ExTopG_X { get; set; }
+        [JsonIgnore] public Address<float> ExTopG_Y { get; set; }
+        [JsonIgnore] public Address<float> ExTopG_Z { get; set; }
+        [JsonIgnore] public Address<float> ExTopG_W { get; set; }
+        [JsonIgnore] public Address<float> ExTopH_X { get; set; }
+        [JsonIgnore] public Address<float> ExTopH_Y { get; set; }
+        [JsonIgnore] public Address<float> ExTopH_Z { get; set; }
+        [JsonIgnore] public Address<float> ExTopH_W { get; set; }
+        [JsonIgnore] public Address<float> ExTopI_X { get; set; }
+        [JsonIgnore] public Address<float> ExTopI_Y { get; set; }
+        [JsonIgnore] public Address<float> ExTopI_Z { get; set; }
+        [JsonIgnore] public Address<float> ExTopI_W { get; set; }
+        #endregion
+        #region Bone Rotate
+        [JsonIgnore] public bool Root_Rotate { get; set; }
+        [JsonIgnore] public bool Abdomen_Rotate { get; set; }
+        [JsonIgnore] public bool Throw_Rotate { get; set; }
+        [JsonIgnore] public bool Waist_Rotate { get; set; }
+        [JsonIgnore] public bool SpineA_Rotate { get; set; }
+        [JsonIgnore] public bool LegLeft_Rotate { get; set; }
+        [JsonIgnore] public bool LegRight_Rotate { get; set; }
+        [JsonIgnore] public bool HolsterLeft_Rotate { get; set; }
+        [JsonIgnore] public bool HolsterRight_Rotate { get; set; }
+        [JsonIgnore] public bool SheatheLeft_Rotate { get; set; }
+        [JsonIgnore] public bool SheatheRight_Rotate { get; set; }
+        [JsonIgnore] public bool SpineB_Rotate { get; set; }
+        [JsonIgnore] public bool ClothBackALeft_Rotate { get; set; }
+        [JsonIgnore] public bool ClothBackARight_Rotate { get; set; }
+        [JsonIgnore] public bool ClothFrontALeft_Rotate { get; set; }
+        [JsonIgnore] public bool ClothFrontARight_Rotate { get; set; }
+        [JsonIgnore] public bool ClothSideALeft_Rotate { get; set; }
+        [JsonIgnore] public bool ClothSideARight_Rotate { get; set; }
+        [JsonIgnore] public bool KneeLeft_Rotate { get; set; }
+        [JsonIgnore] public bool KneeRight_Rotate { get; set; }
+        [JsonIgnore] public bool BreastLeft_Rotate { get; set; }
+        [JsonIgnore] public bool BreastRight_Rotate { get; set; }
+        [JsonIgnore] public bool SpineC_Rotate { get; set; }
+        [JsonIgnore] public bool ClothBackBLeft_Rotate { get; set; }
+        [JsonIgnore] public bool ClothBackBRight_Rotate { get; set; }
+        [JsonIgnore] public bool ClothFrontBLeft_Rotate { get; set; }
+        [JsonIgnore] public bool ClothFrontBRight_Rotate { get; set; }
+        [JsonIgnore] public bool ClothSideBLeft_Rotate { get; set; }
+        [JsonIgnore] public bool ClothSideBRight_Rotate { get; set; }
+        [JsonIgnore] public bool CalfLeft_Rotate { get; set; }
+        [JsonIgnore] public bool CalfRight_Rotate { get; set; }
+        [JsonIgnore] public bool ScabbardLeft_Rotate { get; set; }
+        [JsonIgnore] public bool ScabbardRight_Rotate { get; set; }
+        [JsonIgnore] public bool Neck_Rotate { get; set; }
+        [JsonIgnore] public bool ClavicleLeft_Rotate { get; set; }
+        [JsonIgnore] public bool ClavicleRight_Rotate { get; set; }
+        [JsonIgnore] public bool ClothBackCLeft_Rotate { get; set; }
+        [JsonIgnore] public bool ClothBackCRight_Rotate { get; set; }
+        [JsonIgnore] public bool ClothFrontCLeft_Rotate { get; set; }
+        [JsonIgnore] public bool ClothFrontCRight_Rotate { get; set; }
+        [JsonIgnore] public bool ClothSideCLeft_Rotate { get; set; }
+        [JsonIgnore] public bool ClothSideCRight_Rotate { get; set; }
+        [JsonIgnore] public bool PoleynLeft_Rotate { get; set; }
+        [JsonIgnore] public bool PoleynRight_Rotate { get; set; }
+        [JsonIgnore] public bool FootLeft_Rotate { get; set; }
+        [JsonIgnore] public bool FootRight_Rotate { get; set; }
+        [JsonIgnore] public bool Head_Rotate { get; set; }
+        [JsonIgnore] public bool ArmLeft_Rotate { get; set; }
+        [JsonIgnore] public bool ArmRight_Rotate { get; set; }
+        [JsonIgnore] public bool PauldronLeft_Rotate { get; set; }
+        [JsonIgnore] public bool PauldronRight_Rotate { get; set; }
+        [JsonIgnore] public bool Unknown00_Rotate { get; set; }
+        [JsonIgnore] public bool ToesLeft_Rotate { get; set; }
+        [JsonIgnore] public bool ToesRight_Rotate { get; set; }
+        [JsonIgnore] public bool HairA_Rotate { get; set; }
+        [JsonIgnore] public bool HairFrontLeft_Rotate { get; set; }
+        [JsonIgnore] public bool HairFrontRight_Rotate { get; set; }
+        [JsonIgnore] public bool EarLeft_Rotate { get; set; }
+        [JsonIgnore] public bool EarRight_Rotate { get; set; }
+        [JsonIgnore] public bool ForearmLeft_Rotate { get; set; }
+        [JsonIgnore] public bool ForearmRight_Rotate { get; set; }
+        [JsonIgnore] public bool ShoulderLeft_Rotate { get; set; }
+        [JsonIgnore] public bool ShoulderRight_Rotate { get; set; }
+        [JsonIgnore] public bool HairB_Rotate { get; set; }
+        [JsonIgnore] public bool HandLeft_Rotate { get; set; }
+        [JsonIgnore] public bool HandRight_Rotate { get; set; }
+        [JsonIgnore] public bool ShieldLeft_Rotate { get; set; }
+        [JsonIgnore] public bool ShieldRight_Rotate { get; set; }
+        [JsonIgnore] public bool EarringALeft_Rotate { get; set; }
+        [JsonIgnore] public bool EarringARight_Rotate { get; set; }
+        [JsonIgnore] public bool ElbowLeft_Rotate { get; set; }
+        [JsonIgnore] public bool ElbowRight_Rotate { get; set; }
+        [JsonIgnore] public bool CouterLeft_Rotate { get; set; }
+        [JsonIgnore] public bool CouterRight_Rotate { get; set; }
+        [JsonIgnore] public bool WristLeft_Rotate { get; set; }
+        [JsonIgnore] public bool WristRight_Rotate { get; set; }
+        [JsonIgnore] public bool IndexALeft_Rotate { get; set; }
+        [JsonIgnore] public bool IndexARight_Rotate { get; set; }
+        [JsonIgnore] public bool PinkyALeft_Rotate { get; set; }
+        [JsonIgnore] public bool PinkyARight_Rotate { get; set; }
+        [JsonIgnore] public bool RingALeft_Rotate { get; set; }
+        [JsonIgnore] public bool RingARight_Rotate { get; set; }
+        [JsonIgnore] public bool MiddleALeft_Rotate { get; set; }
+        [JsonIgnore] public bool MiddleARight_Rotate { get; set; }
+        [JsonIgnore] public bool ThumbALeft_Rotate { get; set; }
+        [JsonIgnore] public bool ThumbARight_Rotate { get; set; }
+        [JsonIgnore] public bool WeaponLeft_Rotate { get; set; }
+        [JsonIgnore] public bool WeaponRight_Rotate { get; set; }
+        [JsonIgnore] public bool EarringBLeft_Rotate { get; set; }
+        [JsonIgnore] public bool EarringBRight_Rotate { get; set; }
+        [JsonIgnore] public bool IndexBLeft_Rotate { get; set; }
+        [JsonIgnore] public bool IndexBRight_Rotate { get; set; }
+        [JsonIgnore] public bool PinkyBLeft_Rotate { get; set; }
+        [JsonIgnore] public bool PinkyBRight_Rotate { get; set; }
+        [JsonIgnore] public bool RingBLeft_Rotate { get; set; }
+        [JsonIgnore] public bool RingBRight_Rotate { get; set; }
+        [JsonIgnore] public bool MiddleBLeft_Rotate { get; set; }
+        [JsonIgnore] public bool MiddleBRight_Rotate { get; set; }
+        [JsonIgnore] public bool ThumbBLeft_Rotate { get; set; }
+        [JsonIgnore] public bool ThumbBRight_Rotate { get; set; }
+        [JsonIgnore] public bool TailA_Rotate { get; set; }
+        [JsonIgnore] public bool TailB_Rotate { get; set; }
+        [JsonIgnore] public bool TailC_Rotate { get; set; }
+        [JsonIgnore] public bool TailD_Rotate { get; set; }
+        [JsonIgnore] public bool TailE_Rotate { get; set; }
+        [JsonIgnore] public bool RootHead_Rotate { get; set; }
+        [JsonIgnore] public bool Jaw_Rotate { get; set; }
+        [JsonIgnore] public bool EyelidLowerLeft_Rotate { get; set; }
+        [JsonIgnore] public bool EyelidLowerRight_Rotate { get; set; }
+        [JsonIgnore] public bool EyeLeft_Rotate { get; set; }
+        [JsonIgnore] public bool EyeRight_Rotate { get; set; }
+        [JsonIgnore] public bool Nose_Rotate { get; set; }
+        [JsonIgnore] public bool CheekLeft_Rotate { get; set; }
+        [JsonIgnore] public bool HrothWhiskersLeft_Rotate { get; set; }
+        [JsonIgnore] public bool CheekRight_Rotate { get; set; }
+        [JsonIgnore] public bool HrothWhiskersRight_Rotate { get; set; }
+        [JsonIgnore] public bool LipsLeft_Rotate { get; set; }
+        [JsonIgnore] public bool HrothEyebrowLeft_Rotate { get; set; }
+        [JsonIgnore] public bool LipsRight_Rotate { get; set; }
+        [JsonIgnore] public bool HrothEyebrowRight_Rotate { get; set; }
+        [JsonIgnore] public bool EyebrowLeft_Rotate { get; set; }
+        [JsonIgnore] public bool HrothBridge_Rotate { get; set; }
+        [JsonIgnore] public bool EyebrowRight_Rotate { get; set; }
+        [JsonIgnore] public bool HrothBrowLeft_Rotate { get; set; }
+        [JsonIgnore] public bool Bridge_Rotate { get; set; }
+        [JsonIgnore] public bool HrothBrowRight_Rotate { get; set; }
+        [JsonIgnore] public bool BrowLeft_Rotate { get; set; }
+        [JsonIgnore] public bool HrothJawUpper_Rotate { get; set; }
+        [JsonIgnore] public bool BrowRight_Rotate { get; set; }
+        [JsonIgnore] public bool HrothLipUpper_Rotate { get; set; }
+        [JsonIgnore] public bool LipUpperA_Rotate { get; set; }
+        [JsonIgnore] public bool HrothEyelidUpperLeft_Rotate { get; set; }
+        [JsonIgnore] public bool EyelidUpperLeft_Rotate { get; set; }
+        [JsonIgnore] public bool HrothEyelidUpperRight_Rotate { get; set; }
+        [JsonIgnore] public bool EyelidUpperRight_Rotate { get; set; }
+        [JsonIgnore] public bool HrothLipsLeft_Rotate { get; set; }
+        [JsonIgnore] public bool LipLowerA_Rotate { get; set; }
+        [JsonIgnore] public bool HrothLipsRight_Rotate { get; set; }
+        [JsonIgnore] public bool VieraEar01ALeft_Rotate { get; set; }
+        [JsonIgnore] public bool LipUpperB_Rotate { get; set; }
+        [JsonIgnore] public bool HrothLipUpperLeft_Rotate { get; set; }
+        [JsonIgnore] public bool VieraEar01ARight_Rotate { get; set; }
+        [JsonIgnore] public bool LipLowerB_Rotate { get; set; }
+        [JsonIgnore] public bool HrothLipUpperRight_Rotate { get; set; }
+        [JsonIgnore] public bool VieraEar02ALeft_Rotate { get; set; }
+        [JsonIgnore] public bool HrothLipLower_Rotate { get; set; }
+        [JsonIgnore] public bool VieraEar02ARight_Rotate { get; set; }
+        [JsonIgnore] public bool VieraEar03ALeft_Rotate { get; set; }
+        [JsonIgnore] public bool VieraEar03ARight_Rotate { get; set; }
+        [JsonIgnore] public bool VieraEar04ALeft_Rotate { get; set; }
+        [JsonIgnore] public bool VieraEar04ARight_Rotate { get; set; }
+        [JsonIgnore] public bool VieraLipLowerA_Rotate { get; set; }
+        [JsonIgnore] public bool VieraLipUpperB_Rotate { get; set; }
+        [JsonIgnore] public bool VieraEar01BLeft_Rotate { get; set; }
+        [JsonIgnore] public bool VieraEar01BRight_Rotate { get; set; }
+        [JsonIgnore] public bool VieraEar02BLeft_Rotate { get; set; }
+        [JsonIgnore] public bool VieraEar02BRight_Rotate { get; set; }
+        [JsonIgnore] public bool VieraEar03BLeft_Rotate { get; set; }
+        [JsonIgnore] public bool VieraEar03BRight_Rotate { get; set; }
+        [JsonIgnore] public bool VieraEar04BLeft_Rotate { get; set; }
+        [JsonIgnore] public bool VieraEar04BRight_Rotate { get; set; }
+        [JsonIgnore] public bool VieraLipLowerB_Rotate { get; set; }
+        [JsonIgnore] public bool ExRootHair_Rotate { get; set; }
+        [JsonIgnore] public bool ExHairA_Rotate { get; set; }
+        [JsonIgnore] public bool ExHairB_Rotate { get; set; }
+        [JsonIgnore] public bool ExHairC_Rotate { get; set; }
+        [JsonIgnore] public bool ExHairD_Rotate { get; set; }
+        [JsonIgnore] public bool ExHairE_Rotate { get; set; }
+        [JsonIgnore] public bool ExHairF_Rotate { get; set; }
+        [JsonIgnore] public bool ExHairG_Rotate { get; set; }
+        [JsonIgnore] public bool ExHairH_Rotate { get; set; }
+        [JsonIgnore] public bool ExHairI_Rotate { get; set; }
+        [JsonIgnore] public bool ExHairJ_Rotate { get; set; }
+        [JsonIgnore] public bool ExHairK_Rotate { get; set; }
+        [JsonIgnore] public bool ExHairL_Rotate { get; set; }
+        [JsonIgnore] public bool ExRootMet_Rotate { get; set; }
+        [JsonIgnore] public bool ExMetA_Rotate { get; set; }
+        [JsonIgnore] public bool ExMetB_Rotate { get; set; }
+        [JsonIgnore] public bool ExMetC_Rotate { get; set; }
+        [JsonIgnore] public bool ExMetD_Rotate { get; set; }
+        [JsonIgnore] public bool ExMetE_Rotate { get; set; }
+        [JsonIgnore] public bool ExMetF_Rotate { get; set; }
+        [JsonIgnore] public bool ExMetG_Rotate { get; set; }
+        [JsonIgnore] public bool ExMetH_Rotate { get; set; }
+        [JsonIgnore] public bool ExMetI_Rotate { get; set; }
+        [JsonIgnore] public bool ExMetJ_Rotate { get; set; }
+        [JsonIgnore] public bool ExMetK_Rotate { get; set; }
+        [JsonIgnore] public bool ExMetL_Rotate { get; set; }
+        [JsonIgnore] public bool ExMetM_Rotate { get; set; }
+        [JsonIgnore] public bool ExMetN_Rotate { get; set; }
+        [JsonIgnore] public bool ExMetO_Rotate { get; set; }
+        [JsonIgnore] public bool ExMetP_Rotate { get; set; }
+        [JsonIgnore] public bool ExMetQ_Rotate { get; set; }
+        [JsonIgnore] public bool ExMetR_Rotate { get; set; }
+        [JsonIgnore] public bool ExRootTop_Rotate { get; set; }
+        [JsonIgnore] public bool ExTopA_Rotate { get; set; }
+        [JsonIgnore] public bool ExTopB_Rotate { get; set; }
+        [JsonIgnore] public bool ExTopC_Rotate { get; set; }
+        [JsonIgnore] public bool ExTopD_Rotate { get; set; }
+        [JsonIgnore] public bool ExTopE_Rotate { get; set; }
+        [JsonIgnore] public bool ExTopF_Rotate { get; set; }
+        [JsonIgnore] public bool ExTopG_Rotate { get; set; }
+        [JsonIgnore] public bool ExTopH_Rotate { get; set; }
+        [JsonIgnore] public bool ExTopI_Rotate { get; set; }
+        #endregion
+        #region Bone Toggle
+        [JsonIgnore] public bool Root_Toggle { get; set; }
+        [JsonIgnore] public bool Abdomen_Toggle { get; set; }
+        [JsonIgnore] public bool Throw_Toggle { get; set; }
+        [JsonIgnore] public bool Waist_Toggle { get; set; }
+        [JsonIgnore] public bool SpineA_Toggle { get; set; }
+        [JsonIgnore] public bool LegLeft_Toggle { get; set; }
+        [JsonIgnore] public bool LegRight_Toggle { get; set; }
+        [JsonIgnore] public bool HolsterLeft_Toggle { get; set; }
+        [JsonIgnore] public bool HolsterRight_Toggle { get; set; }
+        [JsonIgnore] public bool SheatheLeft_Toggle { get; set; }
+        [JsonIgnore] public bool SheatheRight_Toggle { get; set; }
+        [JsonIgnore] public bool SpineB_Toggle { get; set; }
+        [JsonIgnore] public bool ClothBackALeft_Toggle { get; set; }
+        [JsonIgnore] public bool ClothBackARight_Toggle { get; set; }
+        [JsonIgnore] public bool ClothFrontALeft_Toggle { get; set; }
+        [JsonIgnore] public bool ClothFrontARight_Toggle { get; set; }
+        [JsonIgnore] public bool ClothSideALeft_Toggle { get; set; }
+        [JsonIgnore] public bool ClothSideARight_Toggle { get; set; }
+        [JsonIgnore] public bool KneeLeft_Toggle { get; set; }
+        [JsonIgnore] public bool KneeRight_Toggle { get; set; }
+        [JsonIgnore] public bool BreastLeft_Toggle { get; set; }
+        [JsonIgnore] public bool BreastRight_Toggle { get; set; }
+        [JsonIgnore] public bool SpineC_Toggle { get; set; }
+        [JsonIgnore] public bool ClothBackBLeft_Toggle { get; set; }
+        [JsonIgnore] public bool ClothBackBRight_Toggle { get; set; }
+        [JsonIgnore] public bool ClothFrontBLeft_Toggle { get; set; }
+        [JsonIgnore] public bool ClothFrontBRight_Toggle { get; set; }
+        [JsonIgnore] public bool ClothSideBLeft_Toggle { get; set; }
+        [JsonIgnore] public bool ClothSideBRight_Toggle { get; set; }
+        [JsonIgnore] public bool CalfLeft_Toggle { get; set; }
+        [JsonIgnore] public bool CalfRight_Toggle { get; set; }
+        [JsonIgnore] public bool ScabbardLeft_Toggle { get; set; }
+        [JsonIgnore] public bool ScabbardRight_Toggle { get; set; }
+        [JsonIgnore] public bool Neck_Toggle { get; set; }
+        [JsonIgnore] public bool ClavicleLeft_Toggle { get; set; }
+        [JsonIgnore] public bool ClavicleRight_Toggle { get; set; }
+        [JsonIgnore] public bool ClothBackCLeft_Toggle { get; set; }
+        [JsonIgnore] public bool ClothBackCRight_Toggle { get; set; }
+        [JsonIgnore] public bool ClothFrontCLeft_Toggle { get; set; }
+        [JsonIgnore] public bool ClothFrontCRight_Toggle { get; set; }
+        [JsonIgnore] public bool ClothSideCLeft_Toggle { get; set; }
+        [JsonIgnore] public bool ClothSideCRight_Toggle { get; set; }
+        [JsonIgnore] public bool PoleynLeft_Toggle { get; set; }
+        [JsonIgnore] public bool PoleynRight_Toggle { get; set; }
+        [JsonIgnore] public bool FootLeft_Toggle { get; set; }
+        [JsonIgnore] public bool FootRight_Toggle { get; set; }
+        [JsonIgnore] public bool Head_Toggle { get; set; }
+        [JsonIgnore] public bool ArmLeft_Toggle { get; set; }
+        [JsonIgnore] public bool ArmRight_Toggle { get; set; }
+        [JsonIgnore] public bool PauldronLeft_Toggle { get; set; }
+        [JsonIgnore] public bool PauldronRight_Toggle { get; set; }
+        [JsonIgnore] public bool Unknown00_Toggle { get; set; }
+        [JsonIgnore] public bool ToesLeft_Toggle { get; set; }
+        [JsonIgnore] public bool ToesRight_Toggle { get; set; }
+        [JsonIgnore] public bool HairA_Toggle { get; set; }
+        [JsonIgnore] public bool HairFrontLeft_Toggle { get; set; }
+        [JsonIgnore] public bool HairFrontRight_Toggle { get; set; }
+        [JsonIgnore] public bool EarLeft_Toggle { get; set; }
+        [JsonIgnore] public bool EarRight_Toggle { get; set; }
+        [JsonIgnore] public bool ForearmLeft_Toggle { get; set; }
+        [JsonIgnore] public bool ForearmRight_Toggle { get; set; }
+        [JsonIgnore] public bool ShoulderLeft_Toggle { get; set; }
+        [JsonIgnore] public bool ShoulderRight_Toggle { get; set; }
+        [JsonIgnore] public bool HairB_Toggle { get; set; }
+        [JsonIgnore] public bool HandLeft_Toggle { get; set; }
+        [JsonIgnore] public bool HandRight_Toggle { get; set; }
+        [JsonIgnore] public bool ShieldLeft_Toggle { get; set; }
+        [JsonIgnore] public bool ShieldRight_Toggle { get; set; }
+        [JsonIgnore] public bool EarringALeft_Toggle { get; set; }
+        [JsonIgnore] public bool EarringARight_Toggle { get; set; }
+        [JsonIgnore] public bool ElbowLeft_Toggle { get; set; }
+        [JsonIgnore] public bool ElbowRight_Toggle { get; set; }
+        [JsonIgnore] public bool CouterLeft_Toggle { get; set; }
+        [JsonIgnore] public bool CouterRight_Toggle { get; set; }
+        [JsonIgnore] public bool WristLeft_Toggle { get; set; }
+        [JsonIgnore] public bool WristRight_Toggle { get; set; }
+        [JsonIgnore] public bool IndexALeft_Toggle { get; set; }
+        [JsonIgnore] public bool IndexARight_Toggle { get; set; }
+        [JsonIgnore] public bool PinkyALeft_Toggle { get; set; }
+        [JsonIgnore] public bool PinkyARight_Toggle { get; set; }
+        [JsonIgnore] public bool RingALeft_Toggle { get; set; }
+        [JsonIgnore] public bool RingARight_Toggle { get; set; }
+        [JsonIgnore] public bool MiddleALeft_Toggle { get; set; }
+        [JsonIgnore] public bool MiddleARight_Toggle { get; set; }
+        [JsonIgnore] public bool ThumbALeft_Toggle { get; set; }
+        [JsonIgnore] public bool ThumbARight_Toggle { get; set; }
+        [JsonIgnore] public bool WeaponLeft_Toggle { get; set; }
+        [JsonIgnore] public bool WeaponRight_Toggle { get; set; }
+        [JsonIgnore] public bool EarringBLeft_Toggle { get; set; }
+        [JsonIgnore] public bool EarringBRight_Toggle { get; set; }
+        [JsonIgnore] public bool IndexBLeft_Toggle { get; set; }
+        [JsonIgnore] public bool IndexBRight_Toggle { get; set; }
+        [JsonIgnore] public bool PinkyBLeft_Toggle { get; set; }
+        [JsonIgnore] public bool PinkyBRight_Toggle { get; set; }
+        [JsonIgnore] public bool RingBLeft_Toggle { get; set; }
+        [JsonIgnore] public bool RingBRight_Toggle { get; set; }
+        [JsonIgnore] public bool MiddleBLeft_Toggle { get; set; }
+        [JsonIgnore] public bool MiddleBRight_Toggle { get; set; }
+        [JsonIgnore] public bool ThumbBLeft_Toggle { get; set; }
+        [JsonIgnore] public bool ThumbBRight_Toggle { get; set; }
+        [JsonIgnore] public bool TailA_Toggle { get; set; }
+        [JsonIgnore] public bool TailB_Toggle { get; set; }
+        [JsonIgnore] public bool TailC_Toggle { get; set; }
+        [JsonIgnore] public bool TailD_Toggle { get; set; }
+        [JsonIgnore] public bool TailE_Toggle { get; set; }
+        [JsonIgnore] public bool RootHead_Toggle { get; set; }
+        [JsonIgnore] public bool Jaw_Toggle { get; set; }
+        [JsonIgnore] public bool EyelidLowerLeft_Toggle { get; set; }
+        [JsonIgnore] public bool EyelidLowerRight_Toggle { get; set; }
+        [JsonIgnore] public bool EyeLeft_Toggle { get; set; }
+        [JsonIgnore] public bool EyeRight_Toggle { get; set; }
+        [JsonIgnore] public bool Nose_Toggle { get; set; }
+        [JsonIgnore] public bool CheekLeft_Toggle { get; set; }
+        [JsonIgnore] public bool HrothWhiskersLeft_Toggle { get; set; }
+        [JsonIgnore] public bool CheekRight_Toggle { get; set; }
+        [JsonIgnore] public bool HrothWhiskersRight_Toggle { get; set; }
+        [JsonIgnore] public bool LipsLeft_Toggle { get; set; }
+        [JsonIgnore] public bool HrothEyebrowLeft_Toggle { get; set; }
+        [JsonIgnore] public bool LipsRight_Toggle { get; set; }
+        [JsonIgnore] public bool HrothEyebrowRight_Toggle { get; set; }
+        [JsonIgnore] public bool EyebrowLeft_Toggle { get; set; }
+        [JsonIgnore] public bool HrothBridge_Toggle { get; set; }
+        [JsonIgnore] public bool EyebrowRight_Toggle { get; set; }
+        [JsonIgnore] public bool HrothBrowLeft_Toggle { get; set; }
+        [JsonIgnore] public bool Bridge_Toggle { get; set; }
+        [JsonIgnore] public bool HrothBrowRight_Toggle { get; set; }
+        [JsonIgnore] public bool BrowLeft_Toggle { get; set; }
+        [JsonIgnore] public bool HrothJawUpper_Toggle { get; set; }
+        [JsonIgnore] public bool BrowRight_Toggle { get; set; }
+        [JsonIgnore] public bool HrothLipUpper_Toggle { get; set; }
+        [JsonIgnore] public bool LipUpperA_Toggle { get; set; }
+        [JsonIgnore] public bool HrothEyelidUpperLeft_Toggle { get; set; }
+        [JsonIgnore] public bool EyelidUpperLeft_Toggle { get; set; }
+        [JsonIgnore] public bool HrothEyelidUpperRight_Toggle { get; set; }
+        [JsonIgnore] public bool EyelidUpperRight_Toggle { get; set; }
+        [JsonIgnore] public bool HrothLipsLeft_Toggle { get; set; }
+        [JsonIgnore] public bool LipLowerA_Toggle { get; set; }
+        [JsonIgnore] public bool HrothLipsRight_Toggle { get; set; }
+        [JsonIgnore] public bool VieraEar01ALeft_Toggle { get; set; }
+        [JsonIgnore] public bool LipUpperB_Toggle { get; set; }
+        [JsonIgnore] public bool HrothLipUpperLeft_Toggle { get; set; }
+        [JsonIgnore] public bool VieraEar01ARight_Toggle { get; set; }
+        [JsonIgnore] public bool LipLowerB_Toggle { get; set; }
+        [JsonIgnore] public bool HrothLipUpperRight_Toggle { get; set; }
+        [JsonIgnore] public bool VieraEar02ALeft_Toggle { get; set; }
+        [JsonIgnore] public bool HrothLipLower_Toggle { get; set; }
+        [JsonIgnore] public bool VieraEar02ARight_Toggle { get; set; }
+        [JsonIgnore] public bool VieraEar03ALeft_Toggle { get; set; }
+        [JsonIgnore] public bool VieraEar03ARight_Toggle { get; set; }
+        [JsonIgnore] public bool VieraEar04ALeft_Toggle { get; set; }
+        [JsonIgnore] public bool VieraEar04ARight_Toggle { get; set; }
+        [JsonIgnore] public bool VieraLipLowerA_Toggle { get; set; }
+        [JsonIgnore] public bool VieraLipUpperB_Toggle { get; set; }
+        [JsonIgnore] public bool VieraEar01BLeft_Toggle { get; set; }
+        [JsonIgnore] public bool VieraEar01BRight_Toggle { get; set; }
+        [JsonIgnore] public bool VieraEar02BLeft_Toggle { get; set; }
+        [JsonIgnore] public bool VieraEar02BRight_Toggle { get; set; }
+        [JsonIgnore] public bool VieraEar03BLeft_Toggle { get; set; }
+        [JsonIgnore] public bool VieraEar03BRight_Toggle { get; set; }
+        [JsonIgnore] public bool VieraEar04BLeft_Toggle { get; set; }
+        [JsonIgnore] public bool VieraEar04BRight_Toggle { get; set; }
+        [JsonIgnore] public bool VieraLipLowerB_Toggle { get; set; }
+        [JsonIgnore] public bool ExRootHair_Toggle { get; set; }
+        [JsonIgnore] public bool ExHairA_Toggle { get; set; }
+        [JsonIgnore] public bool ExHairB_Toggle { get; set; }
+        [JsonIgnore] public bool ExHairC_Toggle { get; set; }
+        [JsonIgnore] public bool ExHairD_Toggle { get; set; }
+        [JsonIgnore] public bool ExHairE_Toggle { get; set; }
+        [JsonIgnore] public bool ExHairF_Toggle { get; set; }
+        [JsonIgnore] public bool ExHairG_Toggle { get; set; }
+        [JsonIgnore] public bool ExHairH_Toggle { get; set; }
+        [JsonIgnore] public bool ExHairI_Toggle { get; set; }
+        [JsonIgnore] public bool ExHairJ_Toggle { get; set; }
+        [JsonIgnore] public bool ExHairK_Toggle { get; set; }
+        [JsonIgnore] public bool ExHairL_Toggle { get; set; }
+        [JsonIgnore] public bool ExRootMet_Toggle { get; set; }
+        [JsonIgnore] public bool ExMetA_Toggle { get; set; }
+        [JsonIgnore] public bool ExMetB_Toggle { get; set; }
+        [JsonIgnore] public bool ExMetC_Toggle { get; set; }
+        [JsonIgnore] public bool ExMetD_Toggle { get; set; }
+        [JsonIgnore] public bool ExMetE_Toggle { get; set; }
+        [JsonIgnore] public bool ExMetF_Toggle { get; set; }
+        [JsonIgnore] public bool ExMetG_Toggle { get; set; }
+        [JsonIgnore] public bool ExMetH_Toggle { get; set; }
+        [JsonIgnore] public bool ExMetI_Toggle { get; set; }
+        [JsonIgnore] public bool ExMetJ_Toggle { get; set; }
+        [JsonIgnore] public bool ExMetK_Toggle { get; set; }
+        [JsonIgnore] public bool ExMetL_Toggle { get; set; }
+        [JsonIgnore] public bool ExMetM_Toggle { get; set; }
+        [JsonIgnore] public bool ExMetN_Toggle { get; set; }
+        [JsonIgnore] public bool ExMetO_Toggle { get; set; }
+        [JsonIgnore] public bool ExMetP_Toggle { get; set; }
+        [JsonIgnore] public bool ExMetQ_Toggle { get; set; }
+        [JsonIgnore] public bool ExMetR_Toggle { get; set; }
+        [JsonIgnore] public bool ExRootTop_Toggle { get; set; }
+        [JsonIgnore] public bool ExTopA_Toggle { get; set; }
+        [JsonIgnore] public bool ExTopB_Toggle { get; set; }
+        [JsonIgnore] public bool ExTopC_Toggle { get; set; }
+        [JsonIgnore] public bool ExTopD_Toggle { get; set; }
+        [JsonIgnore] public bool ExTopE_Toggle { get; set; }
+        [JsonIgnore] public bool ExTopF_Toggle { get; set; }
+        [JsonIgnore] public bool ExTopG_Toggle { get; set; }
+        [JsonIgnore] public bool ExTopH_Toggle { get; set; }
+        [JsonIgnore] public bool ExTopI_Toggle { get; set; }
+        #endregion
 
         public CharacterDetails()
         {
@@ -1096,427 +1732,6 @@ namespace ConceptMatrix.Models
             Rotation2 = new Address<float>();
             Rotation3 = new Address<float>();
             Rotation4 = new Address<float>();
-
-            HeadX = new Address<float>();
-            NoseX = new Address<float>();
-            NostrilsX = new Address<float>();
-            ChinX = new Address<float>();
-            LOutEyebrowX = new Address<float>();
-            ROutEyebrowX = new Address<float>();
-            LInEyebrowX = new Address<float>();
-            RInEyebrowX = new Address<float>();
-            LEyeX = new Address<float>();
-            REyeX = new Address<float>();
-            LEyelidX = new Address<float>();
-            REyelidX = new Address<float>();
-            LLowEyelidX = new Address<float>();
-            RLowEyelidX = new Address<float>();
-            LEarX = new Address<float>();
-            REarX = new Address<float>();
-            LCheekX = new Address<float>();
-            RCheekX = new Address<float>();
-            LMouthX = new Address<float>();
-            RMouthX = new Address<float>();
-            LUpLipX = new Address<float>();
-            RUpLipX = new Address<float>();
-            LLowLipX = new Address<float>();
-            RLowLipX = new Address<float>();
-            NeckX = new Address<float>();
-            SternumX = new Address<float>();
-            TorsoX = new Address<float>();
-            WaistX = new Address<float>();
-            LShoulderX = new Address<float>();
-            RShoulderX = new Address<float>();
-            LClavicleX = new Address<float>();
-            RClavicleX = new Address<float>();
-            LBreastX = new Address<float>();
-            RBreastX = new Address<float>();
-            LArmX = new Address<float>();
-            RArmX = new Address<float>();
-            LElbowX = new Address<float>();
-            RElbowX = new Address<float>();
-            LForearmX = new Address<float>();
-            RForearmX = new Address<float>();
-            LWristX = new Address<float>();
-            RWristX = new Address<float>();
-            LHandX = new Address<float>();
-            RHandX = new Address<float>();
-            LThumbX = new Address<float>();
-            RThumbX = new Address<float>();
-            LThumb2X = new Address<float>();
-            RThumb2X = new Address<float>();
-            LIndexX = new Address<float>();
-            RIndexX = new Address<float>();
-            LIndex2X = new Address<float>();
-            RIndex2X = new Address<float>();
-            LMiddleX = new Address<float>();
-            RMiddleX = new Address<float>();
-            LMiddle2X = new Address<float>();
-            RMiddle2X = new Address<float>();
-            LRingX = new Address<float>();
-            RRingX = new Address<float>();
-            LRing2X = new Address<float>();
-            RRing2X = new Address<float>();
-            LPinkyX = new Address<float>();
-            RPinkyX = new Address<float>();
-            LPinky2X = new Address<float>();
-            RPinky2X = new Address<float>();
-            PelvisX = new Address<float>();
-            TailX = new Address<float>();
-            Tail2X = new Address<float>();
-            Tail3X = new Address<float>();
-            Tail4X = new Address<float>();
-            Tail5X = new Address<float>();
-            LThighX = new Address<float>();
-            RThighX = new Address<float>();
-            LKneeX = new Address<float>();
-            RKneeX = new Address<float>();
-            LCalfX = new Address<float>();
-            RCalfX = new Address<float>();
-            LFootX = new Address<float>();
-            RFootX = new Address<float>();
-            LToesX = new Address<float>();
-            RToesX = new Address<float>();
-            LVEarX = new Address<float>();
-            RVEarX = new Address<float>();
-            LVEar2X = new Address<float>();
-            RVEar2X = new Address<float>();
-            LVEar3X = new Address<float>();
-            RVEar3X = new Address<float>();
-            LVEar4X = new Address<float>();
-            RVEar4X = new Address<float>();
-            LEarringX = new Address<float>();
-            REarringX = new Address<float>();
-            LEarring2X = new Address<float>();
-            REarring2X = new Address<float>();
-            LVLowLipX = new Address<float>();
-            RVUpLipX = new Address<float>();
-            RVLowLipX = new Address<float>();
-            RVLowEar2X = new Address<float>();
-            LVLowEar3X = new Address<float>();
-            RVLowEar3X = new Address<float>();
-            LVLowEar4X = new Address<float>();
-            RVLowEar4X = new Address<float>();
-            LShieldX = new Address<float>();
-            RShieldX = new Address<float>();
-            LWeaponX = new Address<float>();
-            RWeaponX = new Address<float>();
-
-            HeadY = new Address<float>();
-            NoseY = new Address<float>();
-            NostrilsY = new Address<float>();
-            ChinY = new Address<float>();
-            LOutEyebrowY = new Address<float>();
-            ROutEyebrowY = new Address<float>();
-            LInEyebrowY = new Address<float>();
-            RInEyebrowY = new Address<float>();
-            LEyeY = new Address<float>();
-            REyeY = new Address<float>();
-            LEyelidY = new Address<float>();
-            REyelidY = new Address<float>();
-            LLowEyelidY = new Address<float>();
-            RLowEyelidY = new Address<float>();
-            LEarY = new Address<float>();
-            REarY = new Address<float>();
-            LCheekY = new Address<float>();
-            RCheekY = new Address<float>();
-            LMouthY = new Address<float>();
-            RMouthY = new Address<float>();
-            LUpLipY = new Address<float>();
-            RUpLipY = new Address<float>();
-            LLowLipY = new Address<float>();
-            RLowLipY = new Address<float>();
-            NeckY = new Address<float>();
-            SternumY = new Address<float>();
-            TorsoY = new Address<float>();
-            WaistY = new Address<float>();
-            LShoulderY = new Address<float>();
-            RShoulderY = new Address<float>();
-            LClavicleY = new Address<float>();
-            RClavicleY = new Address<float>();
-            LBreastY = new Address<float>();
-            RBreastY = new Address<float>();
-            LArmY = new Address<float>();
-            RArmY = new Address<float>();
-            LElbowY = new Address<float>();
-            RElbowY = new Address<float>();
-            LForearmY = new Address<float>();
-            RForearmY = new Address<float>();
-            LWristY = new Address<float>();
-            RWristY = new Address<float>();
-            LHandY = new Address<float>();
-            RHandY = new Address<float>();
-            LThumbY = new Address<float>();
-            RThumbY = new Address<float>();
-            LThumb2Y = new Address<float>();
-            RThumb2Y = new Address<float>();
-            LIndexY = new Address<float>();
-            RIndexY = new Address<float>();
-            LIndex2Y = new Address<float>();
-            RIndex2Y = new Address<float>();
-            LMiddleY = new Address<float>();
-            RMiddleY = new Address<float>();
-            LMiddle2Y = new Address<float>();
-            RMiddle2Y = new Address<float>();
-            LRingY = new Address<float>();
-            RRingY = new Address<float>();
-            LRing2Y = new Address<float>();
-            RRing2Y = new Address<float>();
-            LPinkyY = new Address<float>();
-            RPinkyY = new Address<float>();
-            LPinky2Y = new Address<float>();
-            RPinky2Y = new Address<float>();
-            PelvisY = new Address<float>();
-            TailY = new Address<float>();
-            Tail2Y = new Address<float>();
-            Tail3Y = new Address<float>();
-            Tail4Y = new Address<float>();
-            Tail5Y = new Address<float>();
-            LThighY = new Address<float>();
-            RThighY = new Address<float>();
-            LKneeY = new Address<float>();
-            RKneeY = new Address<float>();
-            LCalfY = new Address<float>();
-            RCalfY = new Address<float>();
-            LFootY = new Address<float>();
-            RFootY = new Address<float>();
-            LToesY = new Address<float>();
-            RToesY = new Address<float>();
-            LVEarY = new Address<float>();
-            RVEarY = new Address<float>();
-            LVEar2Y = new Address<float>();
-            RVEar2Y = new Address<float>();
-            LVEar3Y = new Address<float>();
-            RVEar3Y = new Address<float>();
-            LVEar4Y = new Address<float>();
-            RVEar4Y = new Address<float>();
-            LEarringY = new Address<float>();
-            REarringY = new Address<float>();
-            LEarring2Y = new Address<float>();
-            REarring2Y = new Address<float>();
-            LVLowLipY = new Address<float>();
-            RVUpLipY = new Address<float>();
-            RVLowLipY = new Address<float>();
-            RVLowEar2Y = new Address<float>();
-            LVLowEar3Y = new Address<float>();
-            RVLowEar3Y = new Address<float>();
-            LVLowEar4Y = new Address<float>();
-            RVLowEar4Y = new Address<float>();
-            LShieldY = new Address<float>();
-            RShieldY = new Address<float>();
-            LWeaponY = new Address<float>();
-            RWeaponY = new Address<float>();
-
-            HeadZ = new Address<float>();
-            NoseZ = new Address<float>();
-            NostrilsZ = new Address<float>();
-            ChinZ = new Address<float>();
-            LOutEyebrowZ = new Address<float>();
-            ROutEyebrowZ = new Address<float>();
-            LInEyebrowZ = new Address<float>();
-            RInEyebrowZ = new Address<float>();
-            LEyeZ = new Address<float>();
-            REyeZ = new Address<float>();
-            LEyelidZ = new Address<float>();
-            REyelidZ = new Address<float>();
-            LLowEyelidZ = new Address<float>();
-            RLowEyelidZ = new Address<float>();
-            LEarZ = new Address<float>();
-            REarZ = new Address<float>();
-            LCheekZ = new Address<float>();
-            RCheekZ = new Address<float>();
-            LMouthZ = new Address<float>();
-            RMouthZ = new Address<float>();
-            LUpLipZ = new Address<float>();
-            RUpLipZ = new Address<float>();
-            LLowLipZ = new Address<float>();
-            RLowLipZ = new Address<float>();
-            NeckZ = new Address<float>();
-            SternumZ = new Address<float>();
-            TorsoZ = new Address<float>();
-            WaistZ = new Address<float>();
-            LShoulderZ = new Address<float>();
-            RShoulderZ = new Address<float>();
-            LClavicleZ = new Address<float>();
-            RClavicleZ = new Address<float>();
-            LBreastZ = new Address<float>();
-            RBreastZ = new Address<float>();
-            LArmZ = new Address<float>();
-            RArmZ = new Address<float>();
-            LElbowZ = new Address<float>();
-            RElbowZ = new Address<float>();
-            LForearmZ = new Address<float>();
-            RForearmZ = new Address<float>();
-            LWristZ = new Address<float>();
-            RWristZ = new Address<float>();
-            LHandZ = new Address<float>();
-            RHandZ = new Address<float>();
-            LThumbZ = new Address<float>();
-            RThumbZ = new Address<float>();
-            LThumb2Z = new Address<float>();
-            RThumb2Z = new Address<float>();
-            LIndexZ = new Address<float>();
-            RIndexZ = new Address<float>();
-            LIndex2Z = new Address<float>();
-            RIndex2Z = new Address<float>();
-            LMiddleZ = new Address<float>();
-            RMiddleZ = new Address<float>();
-            LMiddle2Z = new Address<float>();
-            RMiddle2Z = new Address<float>();
-            LRingZ = new Address<float>();
-            RRingZ = new Address<float>();
-            LRing2Z = new Address<float>();
-            RRing2Z = new Address<float>();
-            LPinkyZ = new Address<float>();
-            RPinkyZ = new Address<float>();
-            LPinky2Z = new Address<float>();
-            RPinky2Z = new Address<float>();
-            PelvisZ = new Address<float>();
-            TailZ = new Address<float>();
-            Tail2Z = new Address<float>();
-            Tail3Z = new Address<float>();
-            Tail4Z = new Address<float>();
-            Tail5Z = new Address<float>();
-            LThighZ = new Address<float>();
-            RThighZ = new Address<float>();
-            LKneeZ = new Address<float>();
-            RKneeZ = new Address<float>();
-            LCalfZ = new Address<float>();
-            RCalfZ = new Address<float>();
-            LFootZ = new Address<float>();
-            RFootZ = new Address<float>();
-            LToesZ = new Address<float>();
-            RToesZ = new Address<float>();
-            LVEarZ = new Address<float>();
-            RVEarZ = new Address<float>();
-            LVEar2Z = new Address<float>();
-            RVEar2Z = new Address<float>();
-            LVEar3Z = new Address<float>();
-            RVEar3Z = new Address<float>();
-            LVEar4Z = new Address<float>();
-            RVEar4Z = new Address<float>();
-            LEarringZ = new Address<float>();
-            REarringZ = new Address<float>();
-            LEarring2Z = new Address<float>();
-            REarring2Z = new Address<float>();
-            LVLowLipZ = new Address<float>();
-            RVUpLipZ = new Address<float>();
-            RVLowLipZ = new Address<float>();
-            RVLowEar2Z = new Address<float>();
-            LVLowEar3Z = new Address<float>();
-            RVLowEar3Z = new Address<float>();
-            LVLowEar4Z = new Address<float>();
-            RVLowEar4Z = new Address<float>();
-            LShieldZ = new Address<float>();
-            RShieldZ = new Address<float>();
-            LWeaponZ = new Address<float>();
-            RWeaponZ = new Address<float>();
-
-            HeadW = new Address<float>();
-            NoseW = new Address<float>();
-            NostrilsW = new Address<float>();
-            ChinW = new Address<float>();
-            LOutEyebrowW = new Address<float>();
-            ROutEyebrowW = new Address<float>();
-            LInEyebrowW = new Address<float>();
-            RInEyebrowW = new Address<float>();
-            LEyeW = new Address<float>();
-            REyeW = new Address<float>();
-            LEyelidW = new Address<float>();
-            REyelidW = new Address<float>();
-            LLowEyelidW = new Address<float>();
-            RLowEyelidW = new Address<float>();
-            LEarW = new Address<float>();
-            REarW = new Address<float>();
-            LCheekW = new Address<float>();
-            RCheekW = new Address<float>();
-            LMouthW = new Address<float>();
-            RMouthW = new Address<float>();
-            LUpLipW = new Address<float>();
-            RUpLipW = new Address<float>();
-            LLowLipW = new Address<float>();
-            RLowLipW = new Address<float>();
-            NeckW = new Address<float>();
-            SternumW = new Address<float>();
-            TorsoW = new Address<float>();
-            WaistW = new Address<float>();
-            LShoulderW = new Address<float>();
-            RShoulderW = new Address<float>();
-            LClavicleW = new Address<float>();
-            RClavicleW = new Address<float>();
-            LBreastW = new Address<float>();
-            RBreastW = new Address<float>();
-            LArmW = new Address<float>();
-            RArmW = new Address<float>();
-            LElbowW = new Address<float>();
-            RElbowW = new Address<float>();
-            LForearmW = new Address<float>();
-            RForearmW = new Address<float>();
-            LWristW = new Address<float>();
-            RWristW = new Address<float>();
-            LHandW = new Address<float>();
-            RHandW = new Address<float>();
-            LThumbW = new Address<float>();
-            RThumbW = new Address<float>();
-            LThumb2W = new Address<float>();
-            RThumb2W = new Address<float>();
-            LIndexW = new Address<float>();
-            RIndexW = new Address<float>();
-            LIndex2W = new Address<float>();
-            RIndex2W = new Address<float>();
-            LMiddleW = new Address<float>();
-            RMiddleW = new Address<float>();
-            LMiddle2W = new Address<float>();
-            RMiddle2W = new Address<float>();
-            LRingW = new Address<float>();
-            RRingW = new Address<float>();
-            LRing2W = new Address<float>();
-            RRing2W = new Address<float>();
-            LPinkyW = new Address<float>();
-            RPinkyW = new Address<float>();
-            LPinky2W = new Address<float>();
-            RPinky2W = new Address<float>();
-            PelvisW = new Address<float>();
-            TailW = new Address<float>();
-            Tail2W = new Address<float>();
-            Tail3W = new Address<float>();
-            Tail4W = new Address<float>();
-            Tail5W = new Address<float>();
-            LThighW = new Address<float>();
-            RThighW = new Address<float>();
-            LKneeW = new Address<float>();
-            RKneeW = new Address<float>();
-            LCalfW = new Address<float>();
-            RCalfW = new Address<float>();
-            LFootW = new Address<float>();
-            RFootW = new Address<float>();
-            LToesW = new Address<float>();
-            RToesW = new Address<float>();
-            LVEarW = new Address<float>();
-            RVEarW = new Address<float>();
-            LVEar2W = new Address<float>();
-            RVEar2W = new Address<float>();
-            LVEar3W = new Address<float>();
-            RVEar3W = new Address<float>();
-            LVEar4W = new Address<float>();
-            RVEar4W = new Address<float>();
-            LEarringW = new Address<float>();
-            REarringW = new Address<float>();
-            LEarring2W = new Address<float>();
-            REarring2W = new Address<float>();
-            LVLowLipW = new Address<float>();
-            RVUpLipW = new Address<float>();
-            RVLowLipW = new Address<float>();
-            RVLowEar2W = new Address<float>();
-            LVLowEar3W = new Address<float>();
-            RVLowEar3W = new Address<float>();
-            LVLowEar4W = new Address<float>();
-            RVLowEar4W = new Address<float>();
-            LShieldW = new Address<float>();
-            RShieldW = new Address<float>();
-            LWeaponW = new Address<float>();
-            RWeaponW = new Address<float>();
-
             HairTone = new Address<byte>();
             HairTone = new Address<byte>();
             Highlights = new Address<byte>();
@@ -1541,7 +1756,830 @@ namespace ConceptMatrix.Models
             CZoom.Checker = true;
             RotateFreeze = false;
             BoneEditMode = false;
-            WriteAllBones = false;
+
+            #region Bones
+            CubeBone_X = new Address<float>();
+            CubeBone_Y = new Address<float>();
+            CubeBone_Z = new Address<float>();
+            CubeBone_W = new Address<float>();
+
+            Root_X = new Address<float>();
+            Root_Y = new Address<float>();
+            Root_Z = new Address<float>();
+            Root_W = new Address<float>();
+            Abdomen_X = new Address<float>();
+            Abdomen_Y = new Address<float>();
+            Abdomen_Z = new Address<float>();
+            Abdomen_W = new Address<float>();
+            Throw_X = new Address<float>();
+            Throw_Y = new Address<float>();
+            Throw_Z = new Address<float>();
+            Throw_W = new Address<float>();
+            Waist_X = new Address<float>();
+            Waist_Y = new Address<float>();
+            Waist_Z = new Address<float>();
+            Waist_W = new Address<float>();
+            SpineA_X = new Address<float>();
+            SpineA_Y = new Address<float>();
+            SpineA_Z = new Address<float>();
+            SpineA_W = new Address<float>();
+            LegLeft_X = new Address<float>();
+            LegLeft_Y = new Address<float>();
+            LegLeft_Z = new Address<float>();
+            LegLeft_W = new Address<float>();
+            LegRight_X = new Address<float>();
+            LegRight_Y = new Address<float>();
+            LegRight_Z = new Address<float>();
+            LegRight_W = new Address<float>();
+            HolsterLeft_X = new Address<float>();
+            HolsterLeft_Y = new Address<float>();
+            HolsterLeft_Z = new Address<float>();
+            HolsterLeft_W = new Address<float>();
+            HolsterRight_X = new Address<float>();
+            HolsterRight_Y = new Address<float>();
+            HolsterRight_Z = new Address<float>();
+            HolsterRight_W = new Address<float>();
+            SheatheLeft_X = new Address<float>();
+            SheatheLeft_Y = new Address<float>();
+            SheatheLeft_Z = new Address<float>();
+            SheatheLeft_W = new Address<float>();
+            SheatheRight_X = new Address<float>();
+            SheatheRight_Y = new Address<float>();
+            SheatheRight_Z = new Address<float>();
+            SheatheRight_W = new Address<float>();
+            SpineB_X = new Address<float>();
+            SpineB_Y = new Address<float>();
+            SpineB_Z = new Address<float>();
+            SpineB_W = new Address<float>();
+            ClothBackALeft_X = new Address<float>();
+            ClothBackALeft_Y = new Address<float>();
+            ClothBackALeft_Z = new Address<float>();
+            ClothBackALeft_W = new Address<float>();
+            ClothBackARight_X = new Address<float>();
+            ClothBackARight_Y = new Address<float>();
+            ClothBackARight_Z = new Address<float>();
+            ClothBackARight_W = new Address<float>();
+            ClothFrontALeft_X = new Address<float>();
+            ClothFrontALeft_Y = new Address<float>();
+            ClothFrontALeft_Z = new Address<float>();
+            ClothFrontALeft_W = new Address<float>();
+            ClothFrontARight_X = new Address<float>();
+            ClothFrontARight_Y = new Address<float>();
+            ClothFrontARight_Z = new Address<float>();
+            ClothFrontARight_W = new Address<float>();
+            ClothSideALeft_X = new Address<float>();
+            ClothSideALeft_Y = new Address<float>();
+            ClothSideALeft_Z = new Address<float>();
+            ClothSideALeft_W = new Address<float>();
+            ClothSideARight_X = new Address<float>();
+            ClothSideARight_Y = new Address<float>();
+            ClothSideARight_Z = new Address<float>();
+            ClothSideARight_W = new Address<float>();
+            KneeLeft_X = new Address<float>();
+            KneeLeft_Y = new Address<float>();
+            KneeLeft_Z = new Address<float>();
+            KneeLeft_W = new Address<float>();
+            KneeRight_X = new Address<float>();
+            KneeRight_Y = new Address<float>();
+            KneeRight_Z = new Address<float>();
+            KneeRight_W = new Address<float>();
+            BreastLeft_X = new Address<float>();
+            BreastLeft_Y = new Address<float>();
+            BreastLeft_Z = new Address<float>();
+            BreastLeft_W = new Address<float>();
+            BreastRight_X = new Address<float>();
+            BreastRight_Y = new Address<float>();
+            BreastRight_Z = new Address<float>();
+            BreastRight_W = new Address<float>();
+            SpineC_X = new Address<float>();
+            SpineC_Y = new Address<float>();
+            SpineC_Z = new Address<float>();
+            SpineC_W = new Address<float>();
+            ClothBackBLeft_X = new Address<float>();
+            ClothBackBLeft_Y = new Address<float>();
+            ClothBackBLeft_Z = new Address<float>();
+            ClothBackBLeft_W = new Address<float>();
+            ClothBackBRight_X = new Address<float>();
+            ClothBackBRight_Y = new Address<float>();
+            ClothBackBRight_Z = new Address<float>();
+            ClothBackBRight_W = new Address<float>();
+            ClothFrontBLeft_X = new Address<float>();
+            ClothFrontBLeft_Y = new Address<float>();
+            ClothFrontBLeft_Z = new Address<float>();
+            ClothFrontBLeft_W = new Address<float>();
+            ClothFrontBRight_X = new Address<float>();
+            ClothFrontBRight_Y = new Address<float>();
+            ClothFrontBRight_Z = new Address<float>();
+            ClothFrontBRight_W = new Address<float>();
+            ClothSideBLeft_X = new Address<float>();
+            ClothSideBLeft_Y = new Address<float>();
+            ClothSideBLeft_Z = new Address<float>();
+            ClothSideBLeft_W = new Address<float>();
+            ClothSideBRight_X = new Address<float>();
+            ClothSideBRight_Y = new Address<float>();
+            ClothSideBRight_Z = new Address<float>();
+            ClothSideBRight_W = new Address<float>();
+            CalfLeft_X = new Address<float>();
+            CalfLeft_Y = new Address<float>();
+            CalfLeft_Z = new Address<float>();
+            CalfLeft_W = new Address<float>();
+            CalfRight_X = new Address<float>();
+            CalfRight_Y = new Address<float>();
+            CalfRight_Z = new Address<float>();
+            CalfRight_W = new Address<float>();
+            ScabbardLeft_X = new Address<float>();
+            ScabbardLeft_Y = new Address<float>();
+            ScabbardLeft_Z = new Address<float>();
+            ScabbardLeft_W = new Address<float>();
+            ScabbardRight_X = new Address<float>();
+            ScabbardRight_Y = new Address<float>();
+            ScabbardRight_Z = new Address<float>();
+            ScabbardRight_W = new Address<float>();
+            Neck_X = new Address<float>();
+            Neck_Y = new Address<float>();
+            Neck_Z = new Address<float>();
+            Neck_W = new Address<float>();
+            ClavicleLeft_X = new Address<float>();
+            ClavicleLeft_Y = new Address<float>();
+            ClavicleLeft_Z = new Address<float>();
+            ClavicleLeft_W = new Address<float>();
+            ClavicleRight_X = new Address<float>();
+            ClavicleRight_Y = new Address<float>();
+            ClavicleRight_Z = new Address<float>();
+            ClavicleRight_W = new Address<float>();
+            ClothBackCLeft_X = new Address<float>();
+            ClothBackCLeft_Y = new Address<float>();
+            ClothBackCLeft_Z = new Address<float>();
+            ClothBackCLeft_W = new Address<float>();
+            ClothBackCRight_X = new Address<float>();
+            ClothBackCRight_Y = new Address<float>();
+            ClothBackCRight_Z = new Address<float>();
+            ClothBackCRight_W = new Address<float>();
+            ClothFrontCLeft_X = new Address<float>();
+            ClothFrontCLeft_Y = new Address<float>();
+            ClothFrontCLeft_Z = new Address<float>();
+            ClothFrontCLeft_W = new Address<float>();
+            ClothFrontCRight_X = new Address<float>();
+            ClothFrontCRight_Y = new Address<float>();
+            ClothFrontCRight_Z = new Address<float>();
+            ClothFrontCRight_W = new Address<float>();
+            ClothSideCLeft_X = new Address<float>();
+            ClothSideCLeft_Y = new Address<float>();
+            ClothSideCLeft_Z = new Address<float>();
+            ClothSideCLeft_W = new Address<float>();
+            ClothSideCRight_X = new Address<float>();
+            ClothSideCRight_Y = new Address<float>();
+            ClothSideCRight_Z = new Address<float>();
+            ClothSideCRight_W = new Address<float>();
+            PoleynLeft_X = new Address<float>();
+            PoleynLeft_Y = new Address<float>();
+            PoleynLeft_Z = new Address<float>();
+            PoleynLeft_W = new Address<float>();
+            PoleynRight_X = new Address<float>();
+            PoleynRight_Y = new Address<float>();
+            PoleynRight_Z = new Address<float>();
+            PoleynRight_W = new Address<float>();
+            FootLeft_X = new Address<float>();
+            FootLeft_Y = new Address<float>();
+            FootLeft_Z = new Address<float>();
+            FootLeft_W = new Address<float>();
+            FootRight_X = new Address<float>();
+            FootRight_Y = new Address<float>();
+            FootRight_Z = new Address<float>();
+            FootRight_W = new Address<float>();
+            Head_X = new Address<float>();
+            Head_Y = new Address<float>();
+            Head_Z = new Address<float>();
+            Head_W = new Address<float>();
+            ArmLeft_X = new Address<float>();
+            ArmLeft_Y = new Address<float>();
+            ArmLeft_Z = new Address<float>();
+            ArmLeft_W = new Address<float>();
+            ArmRight_X = new Address<float>();
+            ArmRight_Y = new Address<float>();
+            ArmRight_Z = new Address<float>();
+            ArmRight_W = new Address<float>();
+            PauldronLeft_X = new Address<float>();
+            PauldronLeft_Y = new Address<float>();
+            PauldronLeft_Z = new Address<float>();
+            PauldronLeft_W = new Address<float>();
+            PauldronRight_X = new Address<float>();
+            PauldronRight_Y = new Address<float>();
+            PauldronRight_Z = new Address<float>();
+            PauldronRight_W = new Address<float>();
+            Unknown00_X = new Address<float>();
+            Unknown00_Y = new Address<float>();
+            Unknown00_Z = new Address<float>();
+            Unknown00_W = new Address<float>();
+            ToesLeft_X = new Address<float>();
+            ToesLeft_Y = new Address<float>();
+            ToesLeft_Z = new Address<float>();
+            ToesLeft_W = new Address<float>();
+            ToesRight_X = new Address<float>();
+            ToesRight_Y = new Address<float>();
+            ToesRight_Z = new Address<float>();
+            ToesRight_W = new Address<float>();
+            HairA_X = new Address<float>();
+            HairA_Y = new Address<float>();
+            HairA_Z = new Address<float>();
+            HairA_W = new Address<float>();
+            HairFrontLeft_X = new Address<float>();
+            HairFrontLeft_Y = new Address<float>();
+            HairFrontLeft_Z = new Address<float>();
+            HairFrontLeft_W = new Address<float>();
+            HairFrontRight_X = new Address<float>();
+            HairFrontRight_Y = new Address<float>();
+            HairFrontRight_Z = new Address<float>();
+            HairFrontRight_W = new Address<float>();
+            EarLeft_X = new Address<float>();
+            EarLeft_Y = new Address<float>();
+            EarLeft_Z = new Address<float>();
+            EarLeft_W = new Address<float>();
+            EarRight_X = new Address<float>();
+            EarRight_Y = new Address<float>();
+            EarRight_Z = new Address<float>();
+            EarRight_W = new Address<float>();
+            ForearmLeft_X = new Address<float>();
+            ForearmLeft_Y = new Address<float>();
+            ForearmLeft_Z = new Address<float>();
+            ForearmLeft_W = new Address<float>();
+            ForearmRight_X = new Address<float>();
+            ForearmRight_Y = new Address<float>();
+            ForearmRight_Z = new Address<float>();
+            ForearmRight_W = new Address<float>();
+            ShoulderLeft_X = new Address<float>();
+            ShoulderLeft_Y = new Address<float>();
+            ShoulderLeft_Z = new Address<float>();
+            ShoulderLeft_W = new Address<float>();
+            ShoulderRight_X = new Address<float>();
+            ShoulderRight_Y = new Address<float>();
+            ShoulderRight_Z = new Address<float>();
+            ShoulderRight_W = new Address<float>();
+            HairB_X = new Address<float>();
+            HairB_Y = new Address<float>();
+            HairB_Z = new Address<float>();
+            HairB_W = new Address<float>();
+            HandLeft_X = new Address<float>();
+            HandLeft_Y = new Address<float>();
+            HandLeft_Z = new Address<float>();
+            HandLeft_W = new Address<float>();
+            HandRight_X = new Address<float>();
+            HandRight_Y = new Address<float>();
+            HandRight_Z = new Address<float>();
+            HandRight_W = new Address<float>();
+            ShieldLeft_X = new Address<float>();
+            ShieldLeft_Y = new Address<float>();
+            ShieldLeft_Z = new Address<float>();
+            ShieldLeft_W = new Address<float>();
+            ShieldRight_X = new Address<float>();
+            ShieldRight_Y = new Address<float>();
+            ShieldRight_Z = new Address<float>();
+            ShieldRight_W = new Address<float>();
+            EarringALeft_X = new Address<float>();
+            EarringALeft_Y = new Address<float>();
+            EarringALeft_Z = new Address<float>();
+            EarringALeft_W = new Address<float>();
+            EarringARight_X = new Address<float>();
+            EarringARight_Y = new Address<float>();
+            EarringARight_Z = new Address<float>();
+            EarringARight_W = new Address<float>();
+            ElbowLeft_X = new Address<float>();
+            ElbowLeft_Y = new Address<float>();
+            ElbowLeft_Z = new Address<float>();
+            ElbowLeft_W = new Address<float>();
+            ElbowRight_X = new Address<float>();
+            ElbowRight_Y = new Address<float>();
+            ElbowRight_Z = new Address<float>();
+            ElbowRight_W = new Address<float>();
+            CouterLeft_X = new Address<float>();
+            CouterLeft_Y = new Address<float>();
+            CouterLeft_Z = new Address<float>();
+            CouterLeft_W = new Address<float>();
+            CouterRight_X = new Address<float>();
+            CouterRight_Y = new Address<float>();
+            CouterRight_Z = new Address<float>();
+            CouterRight_W = new Address<float>();
+            WristLeft_X = new Address<float>();
+            WristLeft_Y = new Address<float>();
+            WristLeft_Z = new Address<float>();
+            WristLeft_W = new Address<float>();
+            WristRight_X = new Address<float>();
+            WristRight_Y = new Address<float>();
+            WristRight_Z = new Address<float>();
+            WristRight_W = new Address<float>();
+            IndexALeft_X = new Address<float>();
+            IndexALeft_Y = new Address<float>();
+            IndexALeft_Z = new Address<float>();
+            IndexALeft_W = new Address<float>();
+            IndexARight_X = new Address<float>();
+            IndexARight_Y = new Address<float>();
+            IndexARight_Z = new Address<float>();
+            IndexARight_W = new Address<float>();
+            PinkyALeft_X = new Address<float>();
+            PinkyALeft_Y = new Address<float>();
+            PinkyALeft_Z = new Address<float>();
+            PinkyALeft_W = new Address<float>();
+            PinkyARight_X = new Address<float>();
+            PinkyARight_Y = new Address<float>();
+            PinkyARight_Z = new Address<float>();
+            PinkyARight_W = new Address<float>();
+            RingALeft_X = new Address<float>();
+            RingALeft_Y = new Address<float>();
+            RingALeft_Z = new Address<float>();
+            RingALeft_W = new Address<float>();
+            RingARight_X = new Address<float>();
+            RingARight_Y = new Address<float>();
+            RingARight_Z = new Address<float>();
+            RingARight_W = new Address<float>();
+            MiddleALeft_X = new Address<float>();
+            MiddleALeft_Y = new Address<float>();
+            MiddleALeft_Z = new Address<float>();
+            MiddleALeft_W = new Address<float>();
+            MiddleARight_X = new Address<float>();
+            MiddleARight_Y = new Address<float>();
+            MiddleARight_Z = new Address<float>();
+            MiddleARight_W = new Address<float>();
+            ThumbALeft_X = new Address<float>();
+            ThumbALeft_Y = new Address<float>();
+            ThumbALeft_Z = new Address<float>();
+            ThumbALeft_W = new Address<float>();
+            ThumbARight_X = new Address<float>();
+            ThumbARight_Y = new Address<float>();
+            ThumbARight_Z = new Address<float>();
+            ThumbARight_W = new Address<float>();
+            WeaponLeft_X = new Address<float>();
+            WeaponLeft_Y = new Address<float>();
+            WeaponLeft_Z = new Address<float>();
+            WeaponLeft_W = new Address<float>();
+            WeaponRight_X = new Address<float>();
+            WeaponRight_Y = new Address<float>();
+            WeaponRight_Z = new Address<float>();
+            WeaponRight_W = new Address<float>();
+            EarringBLeft_X = new Address<float>();
+            EarringBLeft_Y = new Address<float>();
+            EarringBLeft_Z = new Address<float>();
+            EarringBLeft_W = new Address<float>();
+            EarringBRight_X = new Address<float>();
+            EarringBRight_Y = new Address<float>();
+            EarringBRight_Z = new Address<float>();
+            EarringBRight_W = new Address<float>();
+            IndexBLeft_X = new Address<float>();
+            IndexBLeft_Y = new Address<float>();
+            IndexBLeft_Z = new Address<float>();
+            IndexBLeft_W = new Address<float>();
+            IndexBRight_X = new Address<float>();
+            IndexBRight_Y = new Address<float>();
+            IndexBRight_Z = new Address<float>();
+            IndexBRight_W = new Address<float>();
+            PinkyBLeft_X = new Address<float>();
+            PinkyBLeft_Y = new Address<float>();
+            PinkyBLeft_Z = new Address<float>();
+            PinkyBLeft_W = new Address<float>();
+            PinkyBRight_X = new Address<float>();
+            PinkyBRight_Y = new Address<float>();
+            PinkyBRight_Z = new Address<float>();
+            PinkyBRight_W = new Address<float>();
+            RingBLeft_X = new Address<float>();
+            RingBLeft_Y = new Address<float>();
+            RingBLeft_Z = new Address<float>();
+            RingBLeft_W = new Address<float>();
+            RingBRight_X = new Address<float>();
+            RingBRight_Y = new Address<float>();
+            RingBRight_Z = new Address<float>();
+            RingBRight_W = new Address<float>();
+            MiddleBLeft_X = new Address<float>();
+            MiddleBLeft_Y = new Address<float>();
+            MiddleBLeft_Z = new Address<float>();
+            MiddleBLeft_W = new Address<float>();
+            MiddleBRight_X = new Address<float>();
+            MiddleBRight_Y = new Address<float>();
+            MiddleBRight_Z = new Address<float>();
+            MiddleBRight_W = new Address<float>();
+            ThumbBLeft_X = new Address<float>();
+            ThumbBLeft_Y = new Address<float>();
+            ThumbBLeft_Z = new Address<float>();
+            ThumbBLeft_W = new Address<float>();
+            ThumbBRight_X = new Address<float>();
+            ThumbBRight_Y = new Address<float>();
+            ThumbBRight_Z = new Address<float>();
+            ThumbBRight_W = new Address<float>();
+            TailA_X = new Address<float>();
+            TailA_Y = new Address<float>();
+            TailA_Z = new Address<float>();
+            TailA_W = new Address<float>();
+            TailB_X = new Address<float>();
+            TailB_Y = new Address<float>();
+            TailB_Z = new Address<float>();
+            TailB_W = new Address<float>();
+            TailC_X = new Address<float>();
+            TailC_Y = new Address<float>();
+            TailC_Z = new Address<float>();
+            TailC_W = new Address<float>();
+            TailD_X = new Address<float>();
+            TailD_Y = new Address<float>();
+            TailD_Z = new Address<float>();
+            TailD_W = new Address<float>();
+            TailE_X = new Address<float>();
+            TailE_Y = new Address<float>();
+            TailE_Z = new Address<float>();
+            TailE_W = new Address<float>();
+            RootHead_X = new Address<float>();
+            RootHead_Y = new Address<float>();
+            RootHead_Z = new Address<float>();
+            RootHead_W = new Address<float>();
+            Jaw_X = new Address<float>();
+            Jaw_Y = new Address<float>();
+            Jaw_Z = new Address<float>();
+            Jaw_W = new Address<float>();
+            EyelidLowerLeft_X = new Address<float>();
+            EyelidLowerLeft_Y = new Address<float>();
+            EyelidLowerLeft_Z = new Address<float>();
+            EyelidLowerLeft_W = new Address<float>();
+            EyelidLowerRight_X = new Address<float>();
+            EyelidLowerRight_Y = new Address<float>();
+            EyelidLowerRight_Z = new Address<float>();
+            EyelidLowerRight_W = new Address<float>();
+            EyeLeft_X = new Address<float>();
+            EyeLeft_Y = new Address<float>();
+            EyeLeft_Z = new Address<float>();
+            EyeLeft_W = new Address<float>();
+            EyeRight_X = new Address<float>();
+            EyeRight_Y = new Address<float>();
+            EyeRight_Z = new Address<float>();
+            EyeRight_W = new Address<float>();
+            Nose_X = new Address<float>();
+            Nose_Y = new Address<float>();
+            Nose_Z = new Address<float>();
+            Nose_W = new Address<float>();
+            CheekLeft_X = new Address<float>();
+            CheekLeft_Y = new Address<float>();
+            CheekLeft_Z = new Address<float>();
+            CheekLeft_W = new Address<float>();
+            HrothWhiskersLeft_X = new Address<float>();
+            HrothWhiskersLeft_Y = new Address<float>();
+            HrothWhiskersLeft_Z = new Address<float>();
+            HrothWhiskersLeft_W = new Address<float>();
+            CheekRight_X = new Address<float>();
+            CheekRight_Y = new Address<float>();
+            CheekRight_Z = new Address<float>();
+            CheekRight_W = new Address<float>();
+            HrothWhiskersRight_X = new Address<float>();
+            HrothWhiskersRight_Y = new Address<float>();
+            HrothWhiskersRight_Z = new Address<float>();
+            HrothWhiskersRight_W = new Address<float>();
+            LipsLeft_X = new Address<float>();
+            LipsLeft_Y = new Address<float>();
+            LipsLeft_Z = new Address<float>();
+            LipsLeft_W = new Address<float>();
+            HrothEyebrowLeft_X = new Address<float>();
+            HrothEyebrowLeft_Y = new Address<float>();
+            HrothEyebrowLeft_Z = new Address<float>();
+            HrothEyebrowLeft_W = new Address<float>();
+            LipsRight_X = new Address<float>();
+            LipsRight_Y = new Address<float>();
+            LipsRight_Z = new Address<float>();
+            LipsRight_W = new Address<float>();
+            HrothEyebrowRight_X = new Address<float>();
+            HrothEyebrowRight_Y = new Address<float>();
+            HrothEyebrowRight_Z = new Address<float>();
+            HrothEyebrowRight_W = new Address<float>();
+            EyebrowLeft_X = new Address<float>();
+            EyebrowLeft_Y = new Address<float>();
+            EyebrowLeft_Z = new Address<float>();
+            EyebrowLeft_W = new Address<float>();
+            HrothBridge_X = new Address<float>();
+            HrothBridge_Y = new Address<float>();
+            HrothBridge_Z = new Address<float>();
+            HrothBridge_W = new Address<float>();
+            EyebrowRight_X = new Address<float>();
+            EyebrowRight_Y = new Address<float>();
+            EyebrowRight_Z = new Address<float>();
+            EyebrowRight_W = new Address<float>();
+            HrothBrowLeft_X = new Address<float>();
+            HrothBrowLeft_Y = new Address<float>();
+            HrothBrowLeft_Z = new Address<float>();
+            HrothBrowLeft_W = new Address<float>();
+            Bridge_X = new Address<float>();
+            Bridge_Y = new Address<float>();
+            Bridge_Z = new Address<float>();
+            Bridge_W = new Address<float>();
+            HrothBrowRight_X = new Address<float>();
+            HrothBrowRight_Y = new Address<float>();
+            HrothBrowRight_Z = new Address<float>();
+            HrothBrowRight_W = new Address<float>();
+            BrowLeft_X = new Address<float>();
+            BrowLeft_Y = new Address<float>();
+            BrowLeft_Z = new Address<float>();
+            BrowLeft_W = new Address<float>();
+            HrothJawUpper_X = new Address<float>();
+            HrothJawUpper_Y = new Address<float>();
+            HrothJawUpper_Z = new Address<float>();
+            HrothJawUpper_W = new Address<float>();
+            BrowRight_X = new Address<float>();
+            BrowRight_Y = new Address<float>();
+            BrowRight_Z = new Address<float>();
+            BrowRight_W = new Address<float>();
+            HrothLipUpper_X = new Address<float>();
+            HrothLipUpper_Y = new Address<float>();
+            HrothLipUpper_Z = new Address<float>();
+            HrothLipUpper_W = new Address<float>();
+            LipUpperA_X = new Address<float>();
+            LipUpperA_Y = new Address<float>();
+            LipUpperA_Z = new Address<float>();
+            LipUpperA_W = new Address<float>();
+            HrothEyelidUpperLeft_X = new Address<float>();
+            HrothEyelidUpperLeft_Y = new Address<float>();
+            HrothEyelidUpperLeft_Z = new Address<float>();
+            HrothEyelidUpperLeft_W = new Address<float>();
+            EyelidUpperLeft_X = new Address<float>();
+            EyelidUpperLeft_Y = new Address<float>();
+            EyelidUpperLeft_Z = new Address<float>();
+            EyelidUpperLeft_W = new Address<float>();
+            HrothEyelidUpperRight_X = new Address<float>();
+            HrothEyelidUpperRight_Y = new Address<float>();
+            HrothEyelidUpperRight_Z = new Address<float>();
+            HrothEyelidUpperRight_W = new Address<float>();
+            EyelidUpperRight_X = new Address<float>();
+            EyelidUpperRight_Y = new Address<float>();
+            EyelidUpperRight_Z = new Address<float>();
+            EyelidUpperRight_W = new Address<float>();
+            HrothLipsLeft_X = new Address<float>();
+            HrothLipsLeft_Y = new Address<float>();
+            HrothLipsLeft_Z = new Address<float>();
+            HrothLipsLeft_W = new Address<float>();
+            LipLowerA_X = new Address<float>();
+            LipLowerA_Y = new Address<float>();
+            LipLowerA_Z = new Address<float>();
+            LipLowerA_W = new Address<float>();
+            HrothLipsRight_X = new Address<float>();
+            HrothLipsRight_Y = new Address<float>();
+            HrothLipsRight_Z = new Address<float>();
+            HrothLipsRight_W = new Address<float>();
+            VieraEar01ALeft_X = new Address<float>();
+            VieraEar01ALeft_Y = new Address<float>();
+            VieraEar01ALeft_Z = new Address<float>();
+            VieraEar01ALeft_W = new Address<float>();
+            LipUpperB_X = new Address<float>();
+            LipUpperB_Y = new Address<float>();
+            LipUpperB_Z = new Address<float>();
+            LipUpperB_W = new Address<float>();
+            HrothLipUpperLeft_X = new Address<float>();
+            HrothLipUpperLeft_Y = new Address<float>();
+            HrothLipUpperLeft_Z = new Address<float>();
+            HrothLipUpperLeft_W = new Address<float>();
+            VieraEar01ARight_X = new Address<float>();
+            VieraEar01ARight_Y = new Address<float>();
+            VieraEar01ARight_Z = new Address<float>();
+            VieraEar01ARight_W = new Address<float>();
+            LipLowerB_X = new Address<float>();
+            LipLowerB_Y = new Address<float>();
+            LipLowerB_Z = new Address<float>();
+            LipLowerB_W = new Address<float>();
+            HrothLipUpperRight_X = new Address<float>();
+            HrothLipUpperRight_Y = new Address<float>();
+            HrothLipUpperRight_Z = new Address<float>();
+            HrothLipUpperRight_W = new Address<float>();
+            VieraEar02ALeft_X = new Address<float>();
+            VieraEar02ALeft_Y = new Address<float>();
+            VieraEar02ALeft_Z = new Address<float>();
+            VieraEar02ALeft_W = new Address<float>();
+            HrothLipLower_X = new Address<float>();
+            HrothLipLower_Y = new Address<float>();
+            HrothLipLower_Z = new Address<float>();
+            HrothLipLower_W = new Address<float>();
+            VieraEar02ARight_X = new Address<float>();
+            VieraEar02ARight_Y = new Address<float>();
+            VieraEar02ARight_Z = new Address<float>();
+            VieraEar02ARight_W = new Address<float>();
+            VieraEar03ALeft_X = new Address<float>();
+            VieraEar03ALeft_Y = new Address<float>();
+            VieraEar03ALeft_Z = new Address<float>();
+            VieraEar03ALeft_W = new Address<float>();
+            VieraEar03ARight_X = new Address<float>();
+            VieraEar03ARight_Y = new Address<float>();
+            VieraEar03ARight_Z = new Address<float>();
+            VieraEar03ARight_W = new Address<float>();
+            VieraEar04ALeft_X = new Address<float>();
+            VieraEar04ALeft_Y = new Address<float>();
+            VieraEar04ALeft_Z = new Address<float>();
+            VieraEar04ALeft_W = new Address<float>();
+            VieraEar04ARight_X = new Address<float>();
+            VieraEar04ARight_Y = new Address<float>();
+            VieraEar04ARight_Z = new Address<float>();
+            VieraEar04ARight_W = new Address<float>();
+            VieraLipLowerA_X = new Address<float>();
+            VieraLipLowerA_Y = new Address<float>();
+            VieraLipLowerA_Z = new Address<float>();
+            VieraLipLowerA_W = new Address<float>();
+            VieraLipUpperB_X = new Address<float>();
+            VieraLipUpperB_Y = new Address<float>();
+            VieraLipUpperB_Z = new Address<float>();
+            VieraLipUpperB_W = new Address<float>();
+            VieraEar01BLeft_X = new Address<float>();
+            VieraEar01BLeft_Y = new Address<float>();
+            VieraEar01BLeft_Z = new Address<float>();
+            VieraEar01BLeft_W = new Address<float>();
+            VieraEar01BRight_X = new Address<float>();
+            VieraEar01BRight_Y = new Address<float>();
+            VieraEar01BRight_Z = new Address<float>();
+            VieraEar01BRight_W = new Address<float>();
+            VieraEar02BLeft_X = new Address<float>();
+            VieraEar02BLeft_Y = new Address<float>();
+            VieraEar02BLeft_Z = new Address<float>();
+            VieraEar02BLeft_W = new Address<float>();
+            VieraEar02BRight_X = new Address<float>();
+            VieraEar02BRight_Y = new Address<float>();
+            VieraEar02BRight_Z = new Address<float>();
+            VieraEar02BRight_W = new Address<float>();
+            VieraEar03BLeft_X = new Address<float>();
+            VieraEar03BLeft_Y = new Address<float>();
+            VieraEar03BLeft_Z = new Address<float>();
+            VieraEar03BLeft_W = new Address<float>();
+            VieraEar03BRight_X = new Address<float>();
+            VieraEar03BRight_Y = new Address<float>();
+            VieraEar03BRight_Z = new Address<float>();
+            VieraEar03BRight_W = new Address<float>();
+            VieraEar04BLeft_X = new Address<float>();
+            VieraEar04BLeft_Y = new Address<float>();
+            VieraEar04BLeft_Z = new Address<float>();
+            VieraEar04BLeft_W = new Address<float>();
+            VieraEar04BRight_X = new Address<float>();
+            VieraEar04BRight_Y = new Address<float>();
+            VieraEar04BRight_Z = new Address<float>();
+            VieraEar04BRight_W = new Address<float>();
+            VieraLipLowerB_X = new Address<float>();
+            VieraLipLowerB_Y = new Address<float>();
+            VieraLipLowerB_Z = new Address<float>();
+            VieraLipLowerB_W = new Address<float>();
+            ExRootHair_X = new Address<float>();
+            ExRootHair_Y = new Address<float>();
+            ExRootHair_Z = new Address<float>();
+            ExRootHair_W = new Address<float>();
+            ExHairA_X = new Address<float>();
+            ExHairA_Y = new Address<float>();
+            ExHairA_Z = new Address<float>();
+            ExHairA_W = new Address<float>();
+            ExHairB_X = new Address<float>();
+            ExHairB_Y = new Address<float>();
+            ExHairB_Z = new Address<float>();
+            ExHairB_W = new Address<float>();
+            ExHairC_X = new Address<float>();
+            ExHairC_Y = new Address<float>();
+            ExHairC_Z = new Address<float>();
+            ExHairC_W = new Address<float>();
+            ExHairD_X = new Address<float>();
+            ExHairD_Y = new Address<float>();
+            ExHairD_Z = new Address<float>();
+            ExHairD_W = new Address<float>();
+            ExHairE_X = new Address<float>();
+            ExHairE_Y = new Address<float>();
+            ExHairE_Z = new Address<float>();
+            ExHairE_W = new Address<float>();
+            ExHairF_X = new Address<float>();
+            ExHairF_Y = new Address<float>();
+            ExHairF_Z = new Address<float>();
+            ExHairF_W = new Address<float>();
+            ExHairG_X = new Address<float>();
+            ExHairG_Y = new Address<float>();
+            ExHairG_Z = new Address<float>();
+            ExHairG_W = new Address<float>();
+            ExHairH_X = new Address<float>();
+            ExHairH_Y = new Address<float>();
+            ExHairH_Z = new Address<float>();
+            ExHairH_W = new Address<float>();
+            ExHairI_X = new Address<float>();
+            ExHairI_Y = new Address<float>();
+            ExHairI_Z = new Address<float>();
+            ExHairI_W = new Address<float>();
+            ExHairJ_X = new Address<float>();
+            ExHairJ_Y = new Address<float>();
+            ExHairJ_Z = new Address<float>();
+            ExHairJ_W = new Address<float>();
+            ExHairK_X = new Address<float>();
+            ExHairK_Y = new Address<float>();
+            ExHairK_Z = new Address<float>();
+            ExHairK_W = new Address<float>();
+            ExHairL_X = new Address<float>();
+            ExHairL_Y = new Address<float>();
+            ExHairL_Z = new Address<float>();
+            ExHairL_W = new Address<float>();
+            ExRootMet_X = new Address<float>();
+            ExRootMet_Y = new Address<float>();
+            ExRootMet_Z = new Address<float>();
+            ExRootMet_W = new Address<float>();
+            ExMetA_X = new Address<float>();
+            ExMetA_Y = new Address<float>();
+            ExMetA_Z = new Address<float>();
+            ExMetA_W = new Address<float>();
+            ExMetB_X = new Address<float>();
+            ExMetB_Y = new Address<float>();
+            ExMetB_Z = new Address<float>();
+            ExMetB_W = new Address<float>();
+            ExMetC_X = new Address<float>();
+            ExMetC_Y = new Address<float>();
+            ExMetC_Z = new Address<float>();
+            ExMetC_W = new Address<float>();
+            ExMetD_X = new Address<float>();
+            ExMetD_Y = new Address<float>();
+            ExMetD_Z = new Address<float>();
+            ExMetD_W = new Address<float>();
+            ExMetE_X = new Address<float>();
+            ExMetE_Y = new Address<float>();
+            ExMetE_Z = new Address<float>();
+            ExMetE_W = new Address<float>();
+            ExMetF_X = new Address<float>();
+            ExMetF_Y = new Address<float>();
+            ExMetF_Z = new Address<float>();
+            ExMetF_W = new Address<float>();
+            ExMetG_X = new Address<float>();
+            ExMetG_Y = new Address<float>();
+            ExMetG_Z = new Address<float>();
+            ExMetG_W = new Address<float>();
+            ExMetH_X = new Address<float>();
+            ExMetH_Y = new Address<float>();
+            ExMetH_Z = new Address<float>();
+            ExMetH_W = new Address<float>();
+            ExMetI_X = new Address<float>();
+            ExMetI_Y = new Address<float>();
+            ExMetI_Z = new Address<float>();
+            ExMetI_W = new Address<float>();
+            ExMetJ_X = new Address<float>();
+            ExMetJ_Y = new Address<float>();
+            ExMetJ_Z = new Address<float>();
+            ExMetJ_W = new Address<float>();
+            ExMetK_X = new Address<float>();
+            ExMetK_Y = new Address<float>();
+            ExMetK_Z = new Address<float>();
+            ExMetK_W = new Address<float>();
+            ExMetL_X = new Address<float>();
+            ExMetL_Y = new Address<float>();
+            ExMetL_Z = new Address<float>();
+            ExMetL_W = new Address<float>();
+            ExMetM_X = new Address<float>();
+            ExMetM_Y = new Address<float>();
+            ExMetM_Z = new Address<float>();
+            ExMetM_W = new Address<float>();
+            ExMetN_X = new Address<float>();
+            ExMetN_Y = new Address<float>();
+            ExMetN_Z = new Address<float>();
+            ExMetN_W = new Address<float>();
+            ExMetO_X = new Address<float>();
+            ExMetO_Y = new Address<float>();
+            ExMetO_Z = new Address<float>();
+            ExMetO_W = new Address<float>();
+            ExMetP_X = new Address<float>();
+            ExMetP_Y = new Address<float>();
+            ExMetP_Z = new Address<float>();
+            ExMetP_W = new Address<float>();
+            ExMetQ_X = new Address<float>();
+            ExMetQ_Y = new Address<float>();
+            ExMetQ_Z = new Address<float>();
+            ExMetQ_W = new Address<float>();
+            ExMetR_X = new Address<float>();
+            ExMetR_Y = new Address<float>();
+            ExMetR_Z = new Address<float>();
+            ExMetR_W = new Address<float>();
+            ExRootTop_X = new Address<float>();
+            ExRootTop_Y = new Address<float>();
+            ExRootTop_Z = new Address<float>();
+            ExRootTop_W = new Address<float>();
+            ExTopA_X = new Address<float>();
+            ExTopA_Y = new Address<float>();
+            ExTopA_Z = new Address<float>();
+            ExTopA_W = new Address<float>();
+            ExTopB_X = new Address<float>();
+            ExTopB_Y = new Address<float>();
+            ExTopB_Z = new Address<float>();
+            ExTopB_W = new Address<float>();
+            ExTopC_X = new Address<float>();
+            ExTopC_Y = new Address<float>();
+            ExTopC_Z = new Address<float>();
+            ExTopC_W = new Address<float>();
+            ExTopD_X = new Address<float>();
+            ExTopD_Y = new Address<float>();
+            ExTopD_Z = new Address<float>();
+            ExTopD_W = new Address<float>();
+            ExTopE_X = new Address<float>();
+            ExTopE_Y = new Address<float>();
+            ExTopE_Z = new Address<float>();
+            ExTopE_W = new Address<float>();
+            ExTopF_X = new Address<float>();
+            ExTopF_Y = new Address<float>();
+            ExTopF_Z = new Address<float>();
+            ExTopF_W = new Address<float>();
+            ExTopG_X = new Address<float>();
+            ExTopG_Y = new Address<float>();
+            ExTopG_Z = new Address<float>();
+            ExTopG_W = new Address<float>();
+            ExTopH_X = new Address<float>();
+            ExTopH_Y = new Address<float>();
+            ExTopH_Z = new Address<float>();
+            ExTopH_W = new Address<float>();
+            ExTopI_X = new Address<float>();
+            ExTopI_Y = new Address<float>();
+            ExTopI_Z = new Address<float>();
+            ExTopI_W = new Address<float>();
+            #endregion
         }
     }
 }

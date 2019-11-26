@@ -300,7 +300,7 @@ namespace ConceptMatrix.ViewModel
                             CharacterDetails.SelectedIndex = 0;
                             CharacterDetails.GposeMode = true;
 
-                            #region Equipment stuff
+                            #region Equipment Fix
 
                             if (m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Job)) <= 0)
                             {
@@ -502,2911 +502,7629 @@ namespace ConceptMatrix.ViewModel
                     CharacterDetails.RotateZ = (float)euler.Z;
                 }
 
-                #region Skeletal Rotations
-                if (CharacterDetails.HeadCheck)
+                #region Bone Rotations
+                if (CharacterDetails.Root_Toggle)
                 {
-                    CharacterDetails.HeadX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.HeadX));
-                    CharacterDetails.HeadY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.HeadY));
-                    CharacterDetails.HeadZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.HeadZ));
-                    CharacterDetails.HeadW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.HeadW));
+                    CharacterDetails.Root_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Root_X));
+                    CharacterDetails.Root_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Root_Y));
+                    CharacterDetails.Root_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Root_Z));
+                    CharacterDetails.Root_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Root_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.HeadX.value,
-                        CharacterDetails.HeadY.value,
-                        CharacterDetails.HeadZ.value,
-                        CharacterDetails.HeadW.value
+                        CharacterDetails.Root_X.value,
+                        CharacterDetails.Root_Y.value,
+                        CharacterDetails.Root_Z.value,
+                        CharacterDetails.Root_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.HeadCheck = false;
-                    CharacterDetails.HeadRotate = true;
+                    CharacterDetails.Root_Toggle = false;
+                    CharacterDetails.Root_Rotate = true;
                 }
 
-                if (CharacterDetails.NoseCheck)
+                if (CharacterDetails.Abdomen_Toggle)
                 {
-                    CharacterDetails.NoseX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NoseX));
-                    CharacterDetails.NoseY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NoseY));
-                    CharacterDetails.NoseZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NoseZ));
-                    CharacterDetails.NoseW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NoseW));
+                    CharacterDetails.Abdomen_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Abdomen_X));
+                    CharacterDetails.Abdomen_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Abdomen_Y));
+                    CharacterDetails.Abdomen_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Abdomen_Z));
+                    CharacterDetails.Abdomen_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Abdomen_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.NoseX.value,
-                        CharacterDetails.NoseY.value,
-                        CharacterDetails.NoseZ.value,
-                        CharacterDetails.NoseW.value
+                        CharacterDetails.Abdomen_X.value,
+                        CharacterDetails.Abdomen_Y.value,
+                        CharacterDetails.Abdomen_Z.value,
+                        CharacterDetails.Abdomen_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.NoseCheck = false;
-                    CharacterDetails.NoseRotate = true;
+                    CharacterDetails.Abdomen_Toggle = false;
+                    CharacterDetails.Abdomen_Rotate = true;
                 }
 
-                if (CharacterDetails.NostrilsCheck)
+                if (CharacterDetails.Throw_Toggle)
                 {
-                    CharacterDetails.NostrilsX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NostrilsX));
-                    CharacterDetails.NostrilsY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NostrilsY));
-                    CharacterDetails.NostrilsZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NostrilsZ));
-                    CharacterDetails.NostrilsW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NostrilsW));
+                    CharacterDetails.Throw_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Throw_X));
+                    CharacterDetails.Throw_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Throw_Y));
+                    CharacterDetails.Throw_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Throw_Z));
+                    CharacterDetails.Throw_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Throw_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.NostrilsX.value,
-                        CharacterDetails.NostrilsY.value,
-                        CharacterDetails.NostrilsZ.value,
-                        CharacterDetails.NostrilsW.value
+                        CharacterDetails.Throw_X.value,
+                        CharacterDetails.Throw_Y.value,
+                        CharacterDetails.Throw_Z.value,
+                        CharacterDetails.Throw_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.NostrilsCheck = false;
-                    CharacterDetails.NostrilsRotate = true;
+                    CharacterDetails.Throw_Toggle = false;
+                    CharacterDetails.Throw_Rotate = true;
                 }
 
-                if (CharacterDetails.ChinCheck)
+                if (CharacterDetails.Waist_Toggle)
                 {
-                    CharacterDetails.ChinX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.ChinX));
-                    CharacterDetails.ChinY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.ChinY));
-                    CharacterDetails.ChinZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.ChinZ));
-                    CharacterDetails.ChinW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.ChinW));
+                    CharacterDetails.Waist_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Waist_X));
+                    CharacterDetails.Waist_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Waist_Y));
+                    CharacterDetails.Waist_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Waist_Z));
+                    CharacterDetails.Waist_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Waist_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.ChinX.value,
-                        CharacterDetails.ChinY.value,
-                        CharacterDetails.ChinZ.value,
-                        CharacterDetails.ChinW.value
+                        CharacterDetails.Waist_X.value,
+                        CharacterDetails.Waist_Y.value,
+                        CharacterDetails.Waist_Z.value,
+                        CharacterDetails.Waist_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.ChinCheck = false;
-                    CharacterDetails.ChinRotate = true;
+                    CharacterDetails.Waist_Toggle = false;
+                    CharacterDetails.Waist_Rotate = true;
                 }
 
-                if (CharacterDetails.LOutEyebrowCheck)
+                if (CharacterDetails.SpineA_Toggle)
                 {
-                    CharacterDetails.LOutEyebrowX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LOutEyebrowX));
-                    CharacterDetails.LOutEyebrowY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LOutEyebrowY));
-                    CharacterDetails.LOutEyebrowZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LOutEyebrowZ));
-                    CharacterDetails.LOutEyebrowW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LOutEyebrowW));
+                    CharacterDetails.SpineA_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineA_X));
+                    CharacterDetails.SpineA_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineA_Y));
+                    CharacterDetails.SpineA_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineA_Z));
+                    CharacterDetails.SpineA_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineA_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LOutEyebrowX.value,
-                        CharacterDetails.LOutEyebrowY.value,
-                        CharacterDetails.LOutEyebrowZ.value,
-                        CharacterDetails.LOutEyebrowW.value
+                        CharacterDetails.SpineA_X.value,
+                        CharacterDetails.SpineA_Y.value,
+                        CharacterDetails.SpineA_Z.value,
+                        CharacterDetails.SpineA_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LOutEyebrowCheck = false;
-                    CharacterDetails.LOutEyebrowRotate = true;
+                    CharacterDetails.SpineA_Toggle = false;
+                    CharacterDetails.SpineA_Rotate = true;
                 }
 
-                if (CharacterDetails.ROutEyebrowCheck)
+                if (CharacterDetails.LegLeft_Toggle)
                 {
-                    CharacterDetails.ROutEyebrowX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.ROutEyebrowX));
-                    CharacterDetails.ROutEyebrowY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.ROutEyebrowY));
-                    CharacterDetails.ROutEyebrowZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.ROutEyebrowZ));
-                    CharacterDetails.ROutEyebrowW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.ROutEyebrowW));
+                    CharacterDetails.LegLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegLeft_X));
+                    CharacterDetails.LegLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegLeft_Y));
+                    CharacterDetails.LegLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegLeft_Z));
+                    CharacterDetails.LegLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.ROutEyebrowX.value,
-                        CharacterDetails.ROutEyebrowY.value,
-                        CharacterDetails.ROutEyebrowZ.value,
-                        CharacterDetails.ROutEyebrowW.value
+                        CharacterDetails.LegLeft_X.value,
+                        CharacterDetails.LegLeft_Y.value,
+                        CharacterDetails.LegLeft_Z.value,
+                        CharacterDetails.LegLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.ROutEyebrowCheck = false;
-                    CharacterDetails.ROutEyebrowRotate = true;
+                    CharacterDetails.LegLeft_Toggle = false;
+                    CharacterDetails.LegLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.LInEyebrowCheck)
+                if (CharacterDetails.LegRight_Toggle)
                 {
-                    CharacterDetails.LInEyebrowX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LInEyebrowX));
-                    CharacterDetails.LInEyebrowY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LInEyebrowY));
-                    CharacterDetails.LInEyebrowZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LInEyebrowZ));
-                    CharacterDetails.LInEyebrowW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LInEyebrowW));
+                    CharacterDetails.LegRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegRight_X));
+                    CharacterDetails.LegRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegRight_Y));
+                    CharacterDetails.LegRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegRight_Z));
+                    CharacterDetails.LegRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LInEyebrowX.value,
-                        CharacterDetails.LInEyebrowY.value,
-                        CharacterDetails.LInEyebrowZ.value,
-                        CharacterDetails.LInEyebrowW.value
+                        CharacterDetails.LegRight_X.value,
+                        CharacterDetails.LegRight_Y.value,
+                        CharacterDetails.LegRight_Z.value,
+                        CharacterDetails.LegRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LInEyebrowCheck = false;
-                    CharacterDetails.LInEyebrowRotate = true;
+                    CharacterDetails.LegRight_Toggle = false;
+                    CharacterDetails.LegRight_Rotate = true;
                 }
 
-                if (CharacterDetails.RInEyebrowCheck)
+                if (CharacterDetails.HolsterLeft_Toggle)
                 {
-                    CharacterDetails.RInEyebrowX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RInEyebrowX));
-                    CharacterDetails.RInEyebrowY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RInEyebrowY));
-                    CharacterDetails.RInEyebrowZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RInEyebrowZ));
-                    CharacterDetails.RInEyebrowW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RInEyebrowW));
+                    CharacterDetails.HolsterLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterLeft_X));
+                    CharacterDetails.HolsterLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterLeft_Y));
+                    CharacterDetails.HolsterLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterLeft_Z));
+                    CharacterDetails.HolsterLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RInEyebrowX.value,
-                        CharacterDetails.RInEyebrowY.value,
-                        CharacterDetails.RInEyebrowZ.value,
-                        CharacterDetails.RInEyebrowW.value
+                        CharacterDetails.HolsterLeft_X.value,
+                        CharacterDetails.HolsterLeft_Y.value,
+                        CharacterDetails.HolsterLeft_Z.value,
+                        CharacterDetails.HolsterLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RInEyebrowCheck = false;
-                    CharacterDetails.RInEyebrowRotate = true;
+                    CharacterDetails.HolsterLeft_Toggle = false;
+                    CharacterDetails.HolsterLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.LEyeCheck)
+                if (CharacterDetails.HolsterRight_Toggle)
                 {
-                    CharacterDetails.LEyeX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEyeX));
-                    CharacterDetails.LEyeY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEyeY));
-                    CharacterDetails.LEyeZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEyeZ));
-                    CharacterDetails.LEyeW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEyeW));
+                    CharacterDetails.HolsterRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterRight_X));
+                    CharacterDetails.HolsterRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterRight_Y));
+                    CharacterDetails.HolsterRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterRight_Z));
+                    CharacterDetails.HolsterRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LEyeX.value,
-                        CharacterDetails.LEyeY.value,
-                        CharacterDetails.LEyeZ.value,
-                        CharacterDetails.LEyeW.value
+                        CharacterDetails.HolsterRight_X.value,
+                        CharacterDetails.HolsterRight_Y.value,
+                        CharacterDetails.HolsterRight_Z.value,
+                        CharacterDetails.HolsterRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LEyeCheck = false;
-                    CharacterDetails.LEyeRotate = true;
+                    CharacterDetails.HolsterRight_Toggle = false;
+                    CharacterDetails.HolsterRight_Rotate = true;
                 }
 
-                if (CharacterDetails.REyeCheck)
+                if (CharacterDetails.SheatheLeft_Toggle)
                 {
-                    CharacterDetails.REyeX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REyeX));
-                    CharacterDetails.REyeY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REyeY));
-                    CharacterDetails.REyeZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REyeZ));
-                    CharacterDetails.REyeW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REyeW));
+                    CharacterDetails.SheatheLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheLeft_X));
+                    CharacterDetails.SheatheLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheLeft_Y));
+                    CharacterDetails.SheatheLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheLeft_Z));
+                    CharacterDetails.SheatheLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.REyeX.value,
-                        CharacterDetails.REyeY.value,
-                        CharacterDetails.REyeZ.value,
-                        CharacterDetails.REyeW.value
+                        CharacterDetails.SheatheLeft_X.value,
+                        CharacterDetails.SheatheLeft_Y.value,
+                        CharacterDetails.SheatheLeft_Z.value,
+                        CharacterDetails.SheatheLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.REyeCheck = false;
-                    CharacterDetails.REyeRotate = true;
+                    CharacterDetails.SheatheLeft_Toggle = false;
+                    CharacterDetails.SheatheLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.LEyelidCheck)
+                if (CharacterDetails.SheatheRight_Toggle)
                 {
-                    CharacterDetails.LEyelidX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEyelidX));
-                    CharacterDetails.LEyelidY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEyelidY));
-                    CharacterDetails.LEyelidZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEyelidZ));
-                    CharacterDetails.LEyelidW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEyelidW));
+                    CharacterDetails.SheatheRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheRight_X));
+                    CharacterDetails.SheatheRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheRight_Y));
+                    CharacterDetails.SheatheRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheRight_Z));
+                    CharacterDetails.SheatheRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LEyelidX.value,
-                        CharacterDetails.LEyelidY.value,
-                        CharacterDetails.LEyelidZ.value,
-                        CharacterDetails.LEyelidW.value
+                        CharacterDetails.SheatheRight_X.value,
+                        CharacterDetails.SheatheRight_Y.value,
+                        CharacterDetails.SheatheRight_Z.value,
+                        CharacterDetails.SheatheRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LEyelidCheck = false;
-                    CharacterDetails.LEyelidRotate = true;
+                    CharacterDetails.SheatheRight_Toggle = false;
+                    CharacterDetails.SheatheRight_Rotate = true;
                 }
 
-                if (CharacterDetails.REyelidCheck)
+                if (CharacterDetails.SpineB_Toggle)
                 {
-                    CharacterDetails.REyelidX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REyelidX));
-                    CharacterDetails.REyelidY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REyelidY));
-                    CharacterDetails.REyelidZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REyelidZ));
-                    CharacterDetails.REyelidW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REyelidW));
+                    CharacterDetails.SpineB_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineB_X));
+                    CharacterDetails.SpineB_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineB_Y));
+                    CharacterDetails.SpineB_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineB_Z));
+                    CharacterDetails.SpineB_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineB_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.REyelidX.value,
-                        CharacterDetails.REyelidY.value,
-                        CharacterDetails.REyelidZ.value,
-                        CharacterDetails.REyelidW.value
+                        CharacterDetails.SpineB_X.value,
+                        CharacterDetails.SpineB_Y.value,
+                        CharacterDetails.SpineB_Z.value,
+                        CharacterDetails.SpineB_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.REyelidCheck = false;
-                    CharacterDetails.REyelidRotate = true;
+                    CharacterDetails.SpineB_Toggle = false;
+                    CharacterDetails.SpineB_Rotate = true;
                 }
 
-                if (CharacterDetails.LLowEyelidCheck)
+                if (CharacterDetails.ClothBackALeft_Toggle)
                 {
-                    CharacterDetails.LLowEyelidX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LLowEyelidX));
-                    CharacterDetails.LLowEyelidY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LLowEyelidY));
-                    CharacterDetails.LLowEyelidZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LLowEyelidZ));
-                    CharacterDetails.LLowEyelidW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LLowEyelidW));
+                    CharacterDetails.ClothBackALeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackALeft_X));
+                    CharacterDetails.ClothBackALeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackALeft_Y));
+                    CharacterDetails.ClothBackALeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackALeft_Z));
+                    CharacterDetails.ClothBackALeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackALeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LLowEyelidX.value,
-                        CharacterDetails.LLowEyelidY.value,
-                        CharacterDetails.LLowEyelidZ.value,
-                        CharacterDetails.LLowEyelidW.value
+                        CharacterDetails.ClothBackALeft_X.value,
+                        CharacterDetails.ClothBackALeft_Y.value,
+                        CharacterDetails.ClothBackALeft_Z.value,
+                        CharacterDetails.ClothBackALeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LLowEyelidCheck = false;
-                    CharacterDetails.LLowEyelidRotate = true;
+                    CharacterDetails.ClothBackALeft_Toggle = false;
+                    CharacterDetails.ClothBackALeft_Rotate = true;
                 }
 
-                if (CharacterDetails.RLowEyelidCheck)
+                if (CharacterDetails.ClothBackARight_Toggle)
                 {
-                    CharacterDetails.RLowEyelidX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RLowEyelidX));
-                    CharacterDetails.RLowEyelidY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RLowEyelidY));
-                    CharacterDetails.RLowEyelidZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RLowEyelidZ));
-                    CharacterDetails.RLowEyelidW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RLowEyelidW));
+                    CharacterDetails.ClothBackARight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackARight_X));
+                    CharacterDetails.ClothBackARight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackARight_Y));
+                    CharacterDetails.ClothBackARight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackARight_Z));
+                    CharacterDetails.ClothBackARight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackARight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RLowEyelidX.value,
-                        CharacterDetails.RLowEyelidY.value,
-                        CharacterDetails.RLowEyelidZ.value,
-                        CharacterDetails.RLowEyelidW.value
+                        CharacterDetails.ClothBackARight_X.value,
+                        CharacterDetails.ClothBackARight_Y.value,
+                        CharacterDetails.ClothBackARight_Z.value,
+                        CharacterDetails.ClothBackARight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RLowEyelidCheck = false;
-                    CharacterDetails.RLowEyelidRotate = true;
+                    CharacterDetails.ClothBackARight_Toggle = false;
+                    CharacterDetails.ClothBackARight_Rotate = true;
                 }
 
-                if (CharacterDetails.LEarCheck)
+                if (CharacterDetails.ClothFrontALeft_Toggle)
                 {
-                    CharacterDetails.LEarX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEarX));
-                    CharacterDetails.LEarY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEarY));
-                    CharacterDetails.LEarZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEarZ));
-                    CharacterDetails.LEarW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEarW));
+                    CharacterDetails.ClothFrontALeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontALeft_X));
+                    CharacterDetails.ClothFrontALeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontALeft_Y));
+                    CharacterDetails.ClothFrontALeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontALeft_Z));
+                    CharacterDetails.ClothFrontALeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontALeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LEarX.value,
-                        CharacterDetails.LEarY.value,
-                        CharacterDetails.LEarZ.value,
-                        CharacterDetails.LEarW.value
+                        CharacterDetails.ClothFrontALeft_X.value,
+                        CharacterDetails.ClothFrontALeft_Y.value,
+                        CharacterDetails.ClothFrontALeft_Z.value,
+                        CharacterDetails.ClothFrontALeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LEarCheck = false;
-                    CharacterDetails.LEarRotate = true;
+                    CharacterDetails.ClothFrontALeft_Toggle = false;
+                    CharacterDetails.ClothFrontALeft_Rotate = true;
                 }
 
-                if (CharacterDetails.REarCheck)
+                if (CharacterDetails.ClothFrontARight_Toggle)
                 {
-                    CharacterDetails.REarX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REarX));
-                    CharacterDetails.REarY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REarY));
-                    CharacterDetails.REarZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REarZ));
-                    CharacterDetails.REarW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REarW));
+                    CharacterDetails.ClothFrontARight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontARight_X));
+                    CharacterDetails.ClothFrontARight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontARight_Y));
+                    CharacterDetails.ClothFrontARight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontARight_Z));
+                    CharacterDetails.ClothFrontARight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontARight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.REarX.value,
-                        CharacterDetails.REarY.value,
-                        CharacterDetails.REarZ.value,
-                        CharacterDetails.REarW.value
+                        CharacterDetails.ClothFrontARight_X.value,
+                        CharacterDetails.ClothFrontARight_Y.value,
+                        CharacterDetails.ClothFrontARight_Z.value,
+                        CharacterDetails.ClothFrontARight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.REarCheck = false;
-                    CharacterDetails.REarRotate = true;
+                    CharacterDetails.ClothFrontARight_Toggle = false;
+                    CharacterDetails.ClothFrontARight_Rotate = true;
                 }
 
-                if (CharacterDetails.LCheekCheck)
+                if (CharacterDetails.ClothSideALeft_Toggle)
                 {
-                    CharacterDetails.LCheekX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LCheekX));
-                    CharacterDetails.LCheekY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LCheekY));
-                    CharacterDetails.LCheekZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LCheekZ));
-                    CharacterDetails.LCheekW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LCheekW));
+                    CharacterDetails.ClothSideALeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideALeft_X));
+                    CharacterDetails.ClothSideALeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideALeft_Y));
+                    CharacterDetails.ClothSideALeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideALeft_Z));
+                    CharacterDetails.ClothSideALeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideALeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LCheekX.value,
-                        CharacterDetails.LCheekY.value,
-                        CharacterDetails.LCheekZ.value,
-                        CharacterDetails.LCheekW.value
+                        CharacterDetails.ClothSideALeft_X.value,
+                        CharacterDetails.ClothSideALeft_Y.value,
+                        CharacterDetails.ClothSideALeft_Z.value,
+                        CharacterDetails.ClothSideALeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LCheekCheck = false;
-                    CharacterDetails.LCheekRotate = true;
+                    CharacterDetails.ClothSideALeft_Toggle = false;
+                    CharacterDetails.ClothSideALeft_Rotate = true;
                 }
 
-                if (CharacterDetails.RCheekCheck)
+                if (CharacterDetails.ClothSideARight_Toggle)
                 {
-                    CharacterDetails.RCheekX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RCheekX));
-                    CharacterDetails.RCheekY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RCheekY));
-                    CharacterDetails.RCheekZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RCheekZ));
-                    CharacterDetails.RCheekW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RCheekW));
+                    CharacterDetails.ClothSideARight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideARight_X));
+                    CharacterDetails.ClothSideARight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideARight_Y));
+                    CharacterDetails.ClothSideARight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideARight_Z));
+                    CharacterDetails.ClothSideARight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideARight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RCheekX.value,
-                        CharacterDetails.RCheekY.value,
-                        CharacterDetails.RCheekZ.value,
-                        CharacterDetails.RCheekW.value
+                        CharacterDetails.ClothSideARight_X.value,
+                        CharacterDetails.ClothSideARight_Y.value,
+                        CharacterDetails.ClothSideARight_Z.value,
+                        CharacterDetails.ClothSideARight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RCheekCheck = false;
-                    CharacterDetails.RCheekRotate = true;
+                    CharacterDetails.ClothSideARight_Toggle = false;
+                    CharacterDetails.ClothSideARight_Rotate = true;
                 }
 
-                if (CharacterDetails.LMouthCheck)
+                if (CharacterDetails.KneeLeft_Toggle)
                 {
-                    CharacterDetails.LMouthX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LMouthX));
-                    CharacterDetails.LMouthY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LMouthY));
-                    CharacterDetails.LMouthZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LMouthZ));
-                    CharacterDetails.LMouthW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LMouthW));
+                    CharacterDetails.KneeLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeLeft_X));
+                    CharacterDetails.KneeLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeLeft_Y));
+                    CharacterDetails.KneeLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeLeft_Z));
+                    CharacterDetails.KneeLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LMouthX.value,
-                        CharacterDetails.LMouthY.value,
-                        CharacterDetails.LMouthZ.value,
-                        CharacterDetails.LMouthW.value
+                        CharacterDetails.KneeLeft_X.value,
+                        CharacterDetails.KneeLeft_Y.value,
+                        CharacterDetails.KneeLeft_Z.value,
+                        CharacterDetails.KneeLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LMouthCheck = false;
-                    CharacterDetails.LMouthRotate = true;
+                    CharacterDetails.KneeLeft_Toggle = false;
+                    CharacterDetails.KneeLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.RMouthCheck)
+                if (CharacterDetails.KneeRight_Toggle)
                 {
-                    CharacterDetails.RMouthX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RMouthX));
-                    CharacterDetails.RMouthY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RMouthY));
-                    CharacterDetails.RMouthZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RMouthZ));
-                    CharacterDetails.RMouthW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RMouthW));
+                    CharacterDetails.KneeRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeRight_X));
+                    CharacterDetails.KneeRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeRight_Y));
+                    CharacterDetails.KneeRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeRight_Z));
+                    CharacterDetails.KneeRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RMouthX.value,
-                        CharacterDetails.RMouthY.value,
-                        CharacterDetails.RMouthZ.value,
-                        CharacterDetails.RMouthW.value
+                        CharacterDetails.KneeRight_X.value,
+                        CharacterDetails.KneeRight_Y.value,
+                        CharacterDetails.KneeRight_Z.value,
+                        CharacterDetails.KneeRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RMouthCheck = false;
-                    CharacterDetails.RMouthRotate = true;
+                    CharacterDetails.KneeRight_Toggle = false;
+                    CharacterDetails.KneeRight_Rotate = true;
                 }
 
-                if (CharacterDetails.LUpLipCheck)
+                if (CharacterDetails.BreastLeft_Toggle)
                 {
-                    CharacterDetails.LUpLipX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LUpLipX));
-                    CharacterDetails.LUpLipY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LUpLipY));
-                    CharacterDetails.LUpLipZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LUpLipZ));
-                    CharacterDetails.LUpLipW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LUpLipW));
+                    CharacterDetails.BreastLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastLeft_X));
+                    CharacterDetails.BreastLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastLeft_Y));
+                    CharacterDetails.BreastLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastLeft_Z));
+                    CharacterDetails.BreastLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LUpLipX.value,
-                        CharacterDetails.LUpLipY.value,
-                        CharacterDetails.LUpLipZ.value,
-                        CharacterDetails.LUpLipW.value
+                        CharacterDetails.BreastLeft_X.value,
+                        CharacterDetails.BreastLeft_Y.value,
+                        CharacterDetails.BreastLeft_Z.value,
+                        CharacterDetails.BreastLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LUpLipCheck = false;
-                    CharacterDetails.LUpLipRotate = true;
+                    CharacterDetails.BreastLeft_Toggle = false;
+                    CharacterDetails.BreastLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.RUpLipCheck)
+                if (CharacterDetails.BreastRight_Toggle)
                 {
-                    CharacterDetails.RUpLipX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RUpLipX));
-                    CharacterDetails.RUpLipY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RUpLipY));
-                    CharacterDetails.RUpLipZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RUpLipZ));
-                    CharacterDetails.RUpLipW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RUpLipW));
+                    CharacterDetails.BreastRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastRight_X));
+                    CharacterDetails.BreastRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastRight_Y));
+                    CharacterDetails.BreastRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastRight_Z));
+                    CharacterDetails.BreastRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RUpLipX.value,
-                        CharacterDetails.RUpLipY.value,
-                        CharacterDetails.RUpLipZ.value,
-                        CharacterDetails.RUpLipW.value
+                        CharacterDetails.BreastRight_X.value,
+                        CharacterDetails.BreastRight_Y.value,
+                        CharacterDetails.BreastRight_Z.value,
+                        CharacterDetails.BreastRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RUpLipCheck = false;
-                    CharacterDetails.RUpLipRotate = true;
+                    CharacterDetails.BreastRight_Toggle = false;
+                    CharacterDetails.BreastRight_Rotate = true;
                 }
 
-                if (CharacterDetails.LLowLipCheck)
+                if (CharacterDetails.SpineC_Toggle)
                 {
-                    CharacterDetails.LLowLipX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LLowLipX));
-                    CharacterDetails.LLowLipY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LLowLipY));
-                    CharacterDetails.LLowLipZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LLowLipZ));
-                    CharacterDetails.LLowLipW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LLowLipW));
+                    CharacterDetails.SpineC_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineC_X));
+                    CharacterDetails.SpineC_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineC_Y));
+                    CharacterDetails.SpineC_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineC_Z));
+                    CharacterDetails.SpineC_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineC_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LLowLipX.value,
-                        CharacterDetails.LLowLipY.value,
-                        CharacterDetails.LLowLipZ.value,
-                        CharacterDetails.LLowLipW.value
+                        CharacterDetails.SpineC_X.value,
+                        CharacterDetails.SpineC_Y.value,
+                        CharacterDetails.SpineC_Z.value,
+                        CharacterDetails.SpineC_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LLowLipCheck = false;
-                    CharacterDetails.LLowLipRotate = true;
+                    CharacterDetails.SpineC_Toggle = false;
+                    CharacterDetails.SpineC_Rotate = true;
                 }
 
-                if (CharacterDetails.RLowLipCheck)
+                if (CharacterDetails.ClothBackBLeft_Toggle)
                 {
-                    CharacterDetails.RLowLipX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RLowLipX));
-                    CharacterDetails.RLowLipY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RLowLipY));
-                    CharacterDetails.RLowLipZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RLowLipZ));
-                    CharacterDetails.RLowLipW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RLowLipW));
+                    CharacterDetails.ClothBackBLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBLeft_X));
+                    CharacterDetails.ClothBackBLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBLeft_Y));
+                    CharacterDetails.ClothBackBLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBLeft_Z));
+                    CharacterDetails.ClothBackBLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RLowLipX.value,
-                        CharacterDetails.RLowLipY.value,
-                        CharacterDetails.RLowLipZ.value,
-                        CharacterDetails.RLowLipW.value
+                        CharacterDetails.ClothBackBLeft_X.value,
+                        CharacterDetails.ClothBackBLeft_Y.value,
+                        CharacterDetails.ClothBackBLeft_Z.value,
+                        CharacterDetails.ClothBackBLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RLowLipCheck = false;
-                    CharacterDetails.RLowLipRotate = true;
+                    CharacterDetails.ClothBackBLeft_Toggle = false;
+                    CharacterDetails.ClothBackBLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.NeckCheck)
+                if (CharacterDetails.ClothBackBRight_Toggle)
                 {
-                    CharacterDetails.NeckX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NeckX));
-                    CharacterDetails.NeckY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NeckY));
-                    CharacterDetails.NeckZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NeckZ));
-                    CharacterDetails.NeckW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NeckW));
+                    CharacterDetails.ClothBackBRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBRight_X));
+                    CharacterDetails.ClothBackBRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBRight_Y));
+                    CharacterDetails.ClothBackBRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBRight_Z));
+                    CharacterDetails.ClothBackBRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.NeckX.value,
-                        CharacterDetails.NeckY.value,
-                        CharacterDetails.NeckZ.value,
-                        CharacterDetails.NeckW.value
+                        CharacterDetails.ClothBackBRight_X.value,
+                        CharacterDetails.ClothBackBRight_Y.value,
+                        CharacterDetails.ClothBackBRight_Z.value,
+                        CharacterDetails.ClothBackBRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.NeckCheck = false;
-                    CharacterDetails.NeckRotate = true;
+                    CharacterDetails.ClothBackBRight_Toggle = false;
+                    CharacterDetails.ClothBackBRight_Rotate = true;
                 }
 
-                if (CharacterDetails.SternumCheck)
+                if (CharacterDetails.ClothFrontBLeft_Toggle)
                 {
-                    CharacterDetails.SternumX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.SternumX));
-                    CharacterDetails.SternumY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.SternumY));
-                    CharacterDetails.SternumZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.SternumZ));
-                    CharacterDetails.SternumW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.SternumW));
+                    CharacterDetails.ClothFrontBLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBLeft_X));
+                    CharacterDetails.ClothFrontBLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBLeft_Y));
+                    CharacterDetails.ClothFrontBLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBLeft_Z));
+                    CharacterDetails.ClothFrontBLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.SternumX.value,
-                        CharacterDetails.SternumY.value,
-                        CharacterDetails.SternumZ.value,
-                        CharacterDetails.SternumW.value
+                        CharacterDetails.ClothFrontBLeft_X.value,
+                        CharacterDetails.ClothFrontBLeft_Y.value,
+                        CharacterDetails.ClothFrontBLeft_Z.value,
+                        CharacterDetails.ClothFrontBLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.SternumCheck = false;
-                    CharacterDetails.SternumRotate = true;
+                    CharacterDetails.ClothFrontBLeft_Toggle = false;
+                    CharacterDetails.ClothFrontBLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.TorsoCheck)
+                if (CharacterDetails.ClothFrontBRight_Toggle)
                 {
-                    CharacterDetails.TorsoX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.TorsoX));
-                    CharacterDetails.TorsoY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.TorsoY));
-                    CharacterDetails.TorsoZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.TorsoZ));
-                    CharacterDetails.TorsoW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.TorsoW));
+                    CharacterDetails.ClothFrontBRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBRight_X));
+                    CharacterDetails.ClothFrontBRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBRight_Y));
+                    CharacterDetails.ClothFrontBRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBRight_Z));
+                    CharacterDetails.ClothFrontBRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.TorsoX.value,
-                        CharacterDetails.TorsoY.value,
-                        CharacterDetails.TorsoZ.value,
-                        CharacterDetails.TorsoW.value
+                        CharacterDetails.ClothFrontBRight_X.value,
+                        CharacterDetails.ClothFrontBRight_Y.value,
+                        CharacterDetails.ClothFrontBRight_Z.value,
+                        CharacterDetails.ClothFrontBRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.TorsoCheck = false;
-                    CharacterDetails.TorsoRotate = true;
+                    CharacterDetails.ClothFrontBRight_Toggle = false;
+                    CharacterDetails.ClothFrontBRight_Rotate = true;
                 }
 
-                if (CharacterDetails.WaistCheck)
+                if (CharacterDetails.ClothSideBLeft_Toggle)
                 {
-                    CharacterDetails.WaistX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.WaistX));
-                    CharacterDetails.WaistY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.WaistY));
-                    CharacterDetails.WaistZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.WaistZ));
-                    CharacterDetails.WaistW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.WaistW));
+                    CharacterDetails.ClothSideBLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBLeft_X));
+                    CharacterDetails.ClothSideBLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBLeft_Y));
+                    CharacterDetails.ClothSideBLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBLeft_Z));
+                    CharacterDetails.ClothSideBLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.WaistX.value,
-                        CharacterDetails.WaistY.value,
-                        CharacterDetails.WaistZ.value,
-                        CharacterDetails.WaistW.value
+                        CharacterDetails.ClothSideBLeft_X.value,
+                        CharacterDetails.ClothSideBLeft_Y.value,
+                        CharacterDetails.ClothSideBLeft_Z.value,
+                        CharacterDetails.ClothSideBLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.WaistCheck = false;
-                    CharacterDetails.WaistRotate = true;
+                    CharacterDetails.ClothSideBLeft_Toggle = false;
+                    CharacterDetails.ClothSideBLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.LShoulderCheck)
+                if (CharacterDetails.ClothSideBRight_Toggle)
                 {
-                    CharacterDetails.LShoulderX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LShoulderX));
-                    CharacterDetails.LShoulderY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LShoulderY));
-                    CharacterDetails.LShoulderZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LShoulderZ));
-                    CharacterDetails.LShoulderW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LShoulderW));
+                    CharacterDetails.ClothSideBRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBRight_X));
+                    CharacterDetails.ClothSideBRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBRight_Y));
+                    CharacterDetails.ClothSideBRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBRight_Z));
+                    CharacterDetails.ClothSideBRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LShoulderX.value,
-                        CharacterDetails.LShoulderY.value,
-                        CharacterDetails.LShoulderZ.value,
-                        CharacterDetails.LShoulderW.value
+                        CharacterDetails.ClothSideBRight_X.value,
+                        CharacterDetails.ClothSideBRight_Y.value,
+                        CharacterDetails.ClothSideBRight_Z.value,
+                        CharacterDetails.ClothSideBRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LShoulderCheck = false;
-                    CharacterDetails.LShoulderRotate = true;
+                    CharacterDetails.ClothSideBRight_Toggle = false;
+                    CharacterDetails.ClothSideBRight_Rotate = true;
                 }
 
-                if (CharacterDetails.RShoulderCheck)
+                if (CharacterDetails.CalfLeft_Toggle)
                 {
-                    CharacterDetails.RShoulderX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RShoulderX));
-                    CharacterDetails.RShoulderY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RShoulderY));
-                    CharacterDetails.RShoulderZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RShoulderZ));
-                    CharacterDetails.RShoulderW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RShoulderW));
+                    CharacterDetails.CalfLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfLeft_X));
+                    CharacterDetails.CalfLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfLeft_Y));
+                    CharacterDetails.CalfLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfLeft_Z));
+                    CharacterDetails.CalfLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RShoulderX.value,
-                        CharacterDetails.RShoulderY.value,
-                        CharacterDetails.RShoulderZ.value,
-                        CharacterDetails.RShoulderW.value
+                        CharacterDetails.CalfLeft_X.value,
+                        CharacterDetails.CalfLeft_Y.value,
+                        CharacterDetails.CalfLeft_Z.value,
+                        CharacterDetails.CalfLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RShoulderCheck = false;
-                    CharacterDetails.RShoulderRotate = true;
+                    CharacterDetails.CalfLeft_Toggle = false;
+                    CharacterDetails.CalfLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.LClavicleCheck)
+                if (CharacterDetails.CalfRight_Toggle)
                 {
-                    CharacterDetails.LClavicleX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LClavicleX));
-                    CharacterDetails.LClavicleY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LClavicleY));
-                    CharacterDetails.LClavicleZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LClavicleZ));
-                    CharacterDetails.LClavicleW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LClavicleW));
+                    CharacterDetails.CalfRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfRight_X));
+                    CharacterDetails.CalfRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfRight_Y));
+                    CharacterDetails.CalfRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfRight_Z));
+                    CharacterDetails.CalfRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LClavicleX.value,
-                        CharacterDetails.LClavicleY.value,
-                        CharacterDetails.LClavicleZ.value,
-                        CharacterDetails.LClavicleW.value
+                        CharacterDetails.CalfRight_X.value,
+                        CharacterDetails.CalfRight_Y.value,
+                        CharacterDetails.CalfRight_Z.value,
+                        CharacterDetails.CalfRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LClavicleCheck = false;
-                    CharacterDetails.LClavicleRotate = true;
+                    CharacterDetails.CalfRight_Toggle = false;
+                    CharacterDetails.CalfRight_Rotate = true;
                 }
 
-                if (CharacterDetails.RClavicleCheck)
+                if (CharacterDetails.ScabbardLeft_Toggle)
                 {
-                    CharacterDetails.RClavicleX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RClavicleX));
-                    CharacterDetails.RClavicleY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RClavicleY));
-                    CharacterDetails.RClavicleZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RClavicleZ));
-                    CharacterDetails.RClavicleW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RClavicleW));
+                    CharacterDetails.ScabbardLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardLeft_X));
+                    CharacterDetails.ScabbardLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardLeft_Y));
+                    CharacterDetails.ScabbardLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardLeft_Z));
+                    CharacterDetails.ScabbardLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RClavicleX.value,
-                        CharacterDetails.RClavicleY.value,
-                        CharacterDetails.RClavicleZ.value,
-                        CharacterDetails.RClavicleW.value
+                        CharacterDetails.ScabbardLeft_X.value,
+                        CharacterDetails.ScabbardLeft_Y.value,
+                        CharacterDetails.ScabbardLeft_Z.value,
+                        CharacterDetails.ScabbardLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RClavicleCheck = false;
-                    CharacterDetails.RClavicleRotate = true;
+                    CharacterDetails.ScabbardLeft_Toggle = false;
+                    CharacterDetails.ScabbardLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.LBreastCheck)
+                if (CharacterDetails.ScabbardRight_Toggle)
                 {
-                    CharacterDetails.LBreastX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LBreastX));
-                    CharacterDetails.LBreastY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LBreastY));
-                    CharacterDetails.LBreastZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LBreastZ));
-                    CharacterDetails.LBreastW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LBreastW));
+                    CharacterDetails.ScabbardRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardRight_X));
+                    CharacterDetails.ScabbardRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardRight_Y));
+                    CharacterDetails.ScabbardRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardRight_Z));
+                    CharacterDetails.ScabbardRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LBreastX.value,
-                        CharacterDetails.LBreastY.value,
-                        CharacterDetails.LBreastZ.value,
-                        CharacterDetails.LBreastW.value
+                        CharacterDetails.ScabbardRight_X.value,
+                        CharacterDetails.ScabbardRight_Y.value,
+                        CharacterDetails.ScabbardRight_Z.value,
+                        CharacterDetails.ScabbardRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LBreastCheck = false;
-                    CharacterDetails.LBreastRotate = true;
+                    CharacterDetails.ScabbardRight_Toggle = false;
+                    CharacterDetails.ScabbardRight_Rotate = true;
                 }
 
-                if (CharacterDetails.RBreastCheck)
+                if (CharacterDetails.Neck_Toggle)
                 {
-                    CharacterDetails.RBreastX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RBreastX));
-                    CharacterDetails.RBreastY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RBreastY));
-                    CharacterDetails.RBreastZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RBreastZ));
-                    CharacterDetails.RBreastW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RBreastW));
+                    CharacterDetails.Neck_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Neck_X));
+                    CharacterDetails.Neck_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Neck_Y));
+                    CharacterDetails.Neck_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Neck_Z));
+                    CharacterDetails.Neck_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Neck_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RBreastX.value,
-                        CharacterDetails.RBreastY.value,
-                        CharacterDetails.RBreastZ.value,
-                        CharacterDetails.RBreastW.value
+                        CharacterDetails.Neck_X.value,
+                        CharacterDetails.Neck_Y.value,
+                        CharacterDetails.Neck_Z.value,
+                        CharacterDetails.Neck_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RBreastCheck = false;
-                    CharacterDetails.RBreastRotate = true;
+                    CharacterDetails.Neck_Toggle = false;
+                    CharacterDetails.Neck_Rotate = true;
                 }
 
-                if (CharacterDetails.LArmCheck)
+                if (CharacterDetails.ClavicleLeft_Toggle)
                 {
-                    CharacterDetails.LArmX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LArmX));
-                    CharacterDetails.LArmY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LArmY));
-                    CharacterDetails.LArmZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LArmZ));
-                    CharacterDetails.LArmW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LArmW));
+                    CharacterDetails.ClavicleLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleLeft_X));
+                    CharacterDetails.ClavicleLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleLeft_Y));
+                    CharacterDetails.ClavicleLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleLeft_Z));
+                    CharacterDetails.ClavicleLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LArmX.value,
-                        CharacterDetails.LArmY.value,
-                        CharacterDetails.LArmZ.value,
-                        CharacterDetails.LArmW.value
+                        CharacterDetails.ClavicleLeft_X.value,
+                        CharacterDetails.ClavicleLeft_Y.value,
+                        CharacterDetails.ClavicleLeft_Z.value,
+                        CharacterDetails.ClavicleLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LArmCheck = false;
-                    CharacterDetails.LArmRotate = true;
+                    CharacterDetails.ClavicleLeft_Toggle = false;
+                    CharacterDetails.ClavicleLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.RArmCheck)
+                if (CharacterDetails.ClavicleRight_Toggle)
                 {
-                    CharacterDetails.RArmX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RArmX));
-                    CharacterDetails.RArmY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RArmY));
-                    CharacterDetails.RArmZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RArmZ));
-                    CharacterDetails.RArmW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RArmW));
+                    CharacterDetails.ClavicleRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleRight_X));
+                    CharacterDetails.ClavicleRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleRight_Y));
+                    CharacterDetails.ClavicleRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleRight_Z));
+                    CharacterDetails.ClavicleRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RArmX.value,
-                        CharacterDetails.RArmY.value,
-                        CharacterDetails.RArmZ.value,
-                        CharacterDetails.RArmW.value
+                        CharacterDetails.ClavicleRight_X.value,
+                        CharacterDetails.ClavicleRight_Y.value,
+                        CharacterDetails.ClavicleRight_Z.value,
+                        CharacterDetails.ClavicleRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RArmCheck = false;
-                    CharacterDetails.RArmRotate = true;
+                    CharacterDetails.ClavicleRight_Toggle = false;
+                    CharacterDetails.ClavicleRight_Rotate = true;
                 }
 
-                if (CharacterDetails.LElbowCheck)
+                if (CharacterDetails.ClothBackCLeft_Toggle)
                 {
-                    CharacterDetails.LElbowX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LElbowX));
-                    CharacterDetails.LElbowY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LElbowY));
-                    CharacterDetails.LElbowZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LElbowZ));
-                    CharacterDetails.LElbowW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LElbowW));
+                    CharacterDetails.ClothBackCLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCLeft_X));
+                    CharacterDetails.ClothBackCLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCLeft_Y));
+                    CharacterDetails.ClothBackCLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCLeft_Z));
+                    CharacterDetails.ClothBackCLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LElbowX.value,
-                        CharacterDetails.LElbowY.value,
-                        CharacterDetails.LElbowZ.value,
-                        CharacterDetails.LElbowW.value
+                        CharacterDetails.ClothBackCLeft_X.value,
+                        CharacterDetails.ClothBackCLeft_Y.value,
+                        CharacterDetails.ClothBackCLeft_Z.value,
+                        CharacterDetails.ClothBackCLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LElbowCheck = false;
-                    CharacterDetails.LElbowRotate = true;
+                    CharacterDetails.ClothBackCLeft_Toggle = false;
+                    CharacterDetails.ClothBackCLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.RElbowCheck)
+                if (CharacterDetails.ClothBackCRight_Toggle)
                 {
-                    CharacterDetails.RElbowX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RElbowX));
-                    CharacterDetails.RElbowY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RElbowY));
-                    CharacterDetails.RElbowZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RElbowZ));
-                    CharacterDetails.RElbowW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RElbowW));
+                    CharacterDetails.ClothBackCRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCRight_X));
+                    CharacterDetails.ClothBackCRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCRight_Y));
+                    CharacterDetails.ClothBackCRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCRight_Z));
+                    CharacterDetails.ClothBackCRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RElbowX.value,
-                        CharacterDetails.RElbowY.value,
-                        CharacterDetails.RElbowZ.value,
-                        CharacterDetails.RElbowW.value
+                        CharacterDetails.ClothBackCRight_X.value,
+                        CharacterDetails.ClothBackCRight_Y.value,
+                        CharacterDetails.ClothBackCRight_Z.value,
+                        CharacterDetails.ClothBackCRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RElbowCheck = false;
-                    CharacterDetails.RElbowRotate = true;
+                    CharacterDetails.ClothBackCRight_Toggle = false;
+                    CharacterDetails.ClothBackCRight_Rotate = true;
                 }
 
-                if (CharacterDetails.LForearmCheck)
+                if (CharacterDetails.ClothFrontCLeft_Toggle)
                 {
-                    CharacterDetails.LForearmX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LForearmX));
-                    CharacterDetails.LForearmY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LForearmY));
-                    CharacterDetails.LForearmZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LForearmZ));
-                    CharacterDetails.LForearmW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LForearmW));
+                    CharacterDetails.ClothFrontCLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCLeft_X));
+                    CharacterDetails.ClothFrontCLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCLeft_Y));
+                    CharacterDetails.ClothFrontCLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCLeft_Z));
+                    CharacterDetails.ClothFrontCLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LForearmX.value,
-                        CharacterDetails.LForearmY.value,
-                        CharacterDetails.LForearmZ.value,
-                        CharacterDetails.LForearmW.value
+                        CharacterDetails.ClothFrontCLeft_X.value,
+                        CharacterDetails.ClothFrontCLeft_Y.value,
+                        CharacterDetails.ClothFrontCLeft_Z.value,
+                        CharacterDetails.ClothFrontCLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LForearmCheck = false;
-                    CharacterDetails.LForearmRotate = true;
+                    CharacterDetails.ClothFrontCLeft_Toggle = false;
+                    CharacterDetails.ClothFrontCLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.RForearmCheck)
+                if (CharacterDetails.ClothFrontCRight_Toggle)
                 {
-                    CharacterDetails.RForearmX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RForearmX));
-                    CharacterDetails.RForearmY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RForearmY));
-                    CharacterDetails.RForearmZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RForearmZ));
-                    CharacterDetails.RForearmW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RForearmW));
+                    CharacterDetails.ClothFrontCRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCRight_X));
+                    CharacterDetails.ClothFrontCRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCRight_Y));
+                    CharacterDetails.ClothFrontCRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCRight_Z));
+                    CharacterDetails.ClothFrontCRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RForearmX.value,
-                        CharacterDetails.RForearmY.value,
-                        CharacterDetails.RForearmZ.value,
-                        CharacterDetails.RForearmW.value
+                        CharacterDetails.ClothFrontCRight_X.value,
+                        CharacterDetails.ClothFrontCRight_Y.value,
+                        CharacterDetails.ClothFrontCRight_Z.value,
+                        CharacterDetails.ClothFrontCRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RForearmCheck = false;
-                    CharacterDetails.RForearmRotate = true;
+                    CharacterDetails.ClothFrontCRight_Toggle = false;
+                    CharacterDetails.ClothFrontCRight_Rotate = true;
                 }
 
-                if (CharacterDetails.LWristCheck)
+                if (CharacterDetails.ClothSideCLeft_Toggle)
                 {
-                    CharacterDetails.LWristX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LWristX));
-                    CharacterDetails.LWristY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LWristY));
-                    CharacterDetails.LWristZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LWristZ));
-                    CharacterDetails.LWristW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LWristW));
+                    CharacterDetails.ClothSideCLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCLeft_X));
+                    CharacterDetails.ClothSideCLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCLeft_Y));
+                    CharacterDetails.ClothSideCLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCLeft_Z));
+                    CharacterDetails.ClothSideCLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LWristX.value,
-                        CharacterDetails.LWristY.value,
-                        CharacterDetails.LWristZ.value,
-                        CharacterDetails.LWristW.value
+                        CharacterDetails.ClothSideCLeft_X.value,
+                        CharacterDetails.ClothSideCLeft_Y.value,
+                        CharacterDetails.ClothSideCLeft_Z.value,
+                        CharacterDetails.ClothSideCLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LWristCheck = false;
-                    CharacterDetails.LWristRotate = true;
+                    CharacterDetails.ClothSideCLeft_Toggle = false;
+                    CharacterDetails.ClothSideCLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.RWristCheck)
+                if (CharacterDetails.ClothSideCRight_Toggle)
                 {
-                    CharacterDetails.RWristX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RWristX));
-                    CharacterDetails.RWristY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RWristY));
-                    CharacterDetails.RWristZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RWristZ));
-                    CharacterDetails.RWristW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RWristW));
+                    CharacterDetails.ClothSideCRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCRight_X));
+                    CharacterDetails.ClothSideCRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCRight_Y));
+                    CharacterDetails.ClothSideCRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCRight_Z));
+                    CharacterDetails.ClothSideCRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RWristX.value,
-                        CharacterDetails.RWristY.value,
-                        CharacterDetails.RWristZ.value,
-                        CharacterDetails.RWristW.value
+                        CharacterDetails.ClothSideCRight_X.value,
+                        CharacterDetails.ClothSideCRight_Y.value,
+                        CharacterDetails.ClothSideCRight_Z.value,
+                        CharacterDetails.ClothSideCRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RWristCheck = false;
-                    CharacterDetails.RWristRotate = true;
+                    CharacterDetails.ClothSideCRight_Toggle = false;
+                    CharacterDetails.ClothSideCRight_Rotate = true;
                 }
 
-                if (CharacterDetails.LHandCheck)
+                if (CharacterDetails.PoleynLeft_Toggle)
                 {
-                    CharacterDetails.LHandX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LHandX));
-                    CharacterDetails.LHandY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LHandY));
-                    CharacterDetails.LHandZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LHandZ));
-                    CharacterDetails.LHandW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LHandW));
+                    CharacterDetails.PoleynLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynLeft_X));
+                    CharacterDetails.PoleynLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynLeft_Y));
+                    CharacterDetails.PoleynLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynLeft_Z));
+                    CharacterDetails.PoleynLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LHandX.value,
-                        CharacterDetails.LHandY.value,
-                        CharacterDetails.LHandZ.value,
-                        CharacterDetails.LHandW.value
+                        CharacterDetails.PoleynLeft_X.value,
+                        CharacterDetails.PoleynLeft_Y.value,
+                        CharacterDetails.PoleynLeft_Z.value,
+                        CharacterDetails.PoleynLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LHandCheck = false;
-                    CharacterDetails.LHandRotate = true;
+                    CharacterDetails.PoleynLeft_Toggle = false;
+                    CharacterDetails.PoleynLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.RHandCheck)
+                if (CharacterDetails.PoleynRight_Toggle)
                 {
-                    CharacterDetails.RHandX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RHandX));
-                    CharacterDetails.RHandY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RHandY));
-                    CharacterDetails.RHandZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RHandZ));
-                    CharacterDetails.RHandW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RHandW));
+                    CharacterDetails.PoleynRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynRight_X));
+                    CharacterDetails.PoleynRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynRight_Y));
+                    CharacterDetails.PoleynRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynRight_Z));
+                    CharacterDetails.PoleynRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RHandX.value,
-                        CharacterDetails.RHandY.value,
-                        CharacterDetails.RHandZ.value,
-                        CharacterDetails.RHandW.value
+                        CharacterDetails.PoleynRight_X.value,
+                        CharacterDetails.PoleynRight_Y.value,
+                        CharacterDetails.PoleynRight_Z.value,
+                        CharacterDetails.PoleynRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RHandCheck = false;
-                    CharacterDetails.RHandRotate = true;
+                    CharacterDetails.PoleynRight_Toggle = false;
+                    CharacterDetails.PoleynRight_Rotate = true;
                 }
 
-                if (CharacterDetails.LThumbCheck)
+                if (CharacterDetails.FootLeft_Toggle)
                 {
-                    CharacterDetails.LThumbX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThumbX));
-                    CharacterDetails.LThumbY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThumbY));
-                    CharacterDetails.LThumbZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThumbZ));
-                    CharacterDetails.LThumbW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThumbW));
+                    CharacterDetails.FootLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootLeft_X));
+                    CharacterDetails.FootLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootLeft_Y));
+                    CharacterDetails.FootLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootLeft_Z));
+                    CharacterDetails.FootLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LThumbX.value,
-                        CharacterDetails.LThumbY.value,
-                        CharacterDetails.LThumbZ.value,
-                        CharacterDetails.LThumbW.value
+                        CharacterDetails.FootLeft_X.value,
+                        CharacterDetails.FootLeft_Y.value,
+                        CharacterDetails.FootLeft_Z.value,
+                        CharacterDetails.FootLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LThumbCheck = false;
-                    CharacterDetails.LThumbRotate = true;
+                    CharacterDetails.FootLeft_Toggle = false;
+                    CharacterDetails.FootLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.RThumbCheck)
+                if (CharacterDetails.FootRight_Toggle)
                 {
-                    CharacterDetails.RThumbX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RThumbX));
-                    CharacterDetails.RThumbY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RThumbY));
-                    CharacterDetails.RThumbZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RThumbZ));
-                    CharacterDetails.RThumbW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RThumbW));
+                    CharacterDetails.FootRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootRight_X));
+                    CharacterDetails.FootRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootRight_Y));
+                    CharacterDetails.FootRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootRight_Z));
+                    CharacterDetails.FootRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RThumbX.value,
-                        CharacterDetails.RThumbY.value,
-                        CharacterDetails.RThumbZ.value,
-                        CharacterDetails.RThumbW.value
+                        CharacterDetails.FootRight_X.value,
+                        CharacterDetails.FootRight_Y.value,
+                        CharacterDetails.FootRight_Z.value,
+                        CharacterDetails.FootRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RThumbCheck = false;
-                    CharacterDetails.RThumbRotate = true;
+                    CharacterDetails.FootRight_Toggle = false;
+                    CharacterDetails.FootRight_Rotate = true;
                 }
 
-                if (CharacterDetails.LThumb2Check)
+                if (CharacterDetails.Head_Toggle)
                 {
-                    CharacterDetails.LThumb2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThumb2X));
-                    CharacterDetails.LThumb2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThumb2Y));
-                    CharacterDetails.LThumb2Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThumb2Z));
-                    CharacterDetails.LThumb2W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThumb2W));
+                    CharacterDetails.Head_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Head_X));
+                    CharacterDetails.Head_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Head_Y));
+                    CharacterDetails.Head_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Head_Z));
+                    CharacterDetails.Head_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Head_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LThumb2X.value,
-                        CharacterDetails.LThumb2Y.value,
-                        CharacterDetails.LThumb2Z.value,
-                        CharacterDetails.LThumb2W.value
+                        CharacterDetails.Head_X.value,
+                        CharacterDetails.Head_Y.value,
+                        CharacterDetails.Head_Z.value,
+                        CharacterDetails.Head_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LThumb2Check = false;
-                    CharacterDetails.LThumb2Rotate = true;
+                    CharacterDetails.Head_Toggle = false;
+                    CharacterDetails.Head_Rotate = true;
                 }
 
-                if (CharacterDetails.RThumb2Check)
+                if (CharacterDetails.ArmLeft_Toggle)
                 {
-                    CharacterDetails.RThumb2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RThumb2X));
-                    CharacterDetails.RThumb2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RThumb2Y));
-                    CharacterDetails.RThumb2Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RThumb2Z));
-                    CharacterDetails.RThumb2W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RThumb2W));
+                    CharacterDetails.ArmLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmLeft_X));
+                    CharacterDetails.ArmLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmLeft_Y));
+                    CharacterDetails.ArmLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmLeft_Z));
+                    CharacterDetails.ArmLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RThumb2X.value,
-                        CharacterDetails.RThumb2Y.value,
-                        CharacterDetails.RThumb2Z.value,
-                        CharacterDetails.RThumb2W.value
+                        CharacterDetails.ArmLeft_X.value,
+                        CharacterDetails.ArmLeft_Y.value,
+                        CharacterDetails.ArmLeft_Z.value,
+                        CharacterDetails.ArmLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RThumb2Check = false;
-                    CharacterDetails.RThumb2Rotate = true;
+                    CharacterDetails.ArmLeft_Toggle = false;
+                    CharacterDetails.ArmLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.LIndexCheck)
+                if (CharacterDetails.ArmRight_Toggle)
                 {
-                    CharacterDetails.LIndexX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LIndexX));
-                    CharacterDetails.LIndexY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LIndexY));
-                    CharacterDetails.LIndexZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LIndexZ));
-                    CharacterDetails.LIndexW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LIndexW));
+                    CharacterDetails.ArmRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_X));
+                    CharacterDetails.ArmRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_Y));
+                    CharacterDetails.ArmRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_Z));
+                    CharacterDetails.ArmRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LIndexX.value,
-                        CharacterDetails.LIndexY.value,
-                        CharacterDetails.LIndexZ.value,
-                        CharacterDetails.LIndexW.value
+                        CharacterDetails.ArmRight_X.value,
+                        CharacterDetails.ArmRight_Y.value,
+                        CharacterDetails.ArmRight_Z.value,
+                        CharacterDetails.ArmRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LIndexCheck = false;
-                    CharacterDetails.LIndexRotate = true;
+                    CharacterDetails.ArmRight_Toggle = false;
+                    CharacterDetails.ArmRight_Rotate = true;
                 }
 
-                if (CharacterDetails.RIndexCheck)
+                if (CharacterDetails.PauldronLeft_Toggle)
                 {
-                    CharacterDetails.RIndexX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RIndexX));
-                    CharacterDetails.RIndexY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RIndexY));
-                    CharacterDetails.RIndexZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RIndexZ));
-                    CharacterDetails.RIndexW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RIndexW));
+                    CharacterDetails.PauldronLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronLeft_X));
+                    CharacterDetails.PauldronLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronLeft_Y));
+                    CharacterDetails.PauldronLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronLeft_Z));
+                    CharacterDetails.PauldronLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RIndexX.value,
-                        CharacterDetails.RIndexY.value,
-                        CharacterDetails.RIndexZ.value,
-                        CharacterDetails.RIndexW.value
+                        CharacterDetails.PauldronLeft_X.value,
+                        CharacterDetails.PauldronLeft_Y.value,
+                        CharacterDetails.PauldronLeft_Z.value,
+                        CharacterDetails.PauldronLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RIndexCheck = false;
-                    CharacterDetails.RIndexRotate = true;
+                    CharacterDetails.PauldronLeft_Toggle = false;
+                    CharacterDetails.PauldronLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.LIndex2Check)
+                if (CharacterDetails.PauldronRight_Toggle)
                 {
-                    CharacterDetails.LIndex2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LIndex2X));
-                    CharacterDetails.LIndex2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LIndex2Y));
-                    CharacterDetails.LIndex2Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LIndex2Z));
-                    CharacterDetails.LIndex2W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LIndex2W));
+                    CharacterDetails.PauldronRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronRight_X));
+                    CharacterDetails.PauldronRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronRight_Y));
+                    CharacterDetails.PauldronRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronRight_Z));
+                    CharacterDetails.PauldronRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LIndex2X.value,
-                        CharacterDetails.LIndex2Y.value,
-                        CharacterDetails.LIndex2Z.value,
-                        CharacterDetails.LIndex2W.value
+                        CharacterDetails.PauldronRight_X.value,
+                        CharacterDetails.PauldronRight_Y.value,
+                        CharacterDetails.PauldronRight_Z.value,
+                        CharacterDetails.PauldronRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LIndex2Check = false;
-                    CharacterDetails.LIndex2Rotate = true;
+                    CharacterDetails.PauldronRight_Toggle = false;
+                    CharacterDetails.PauldronRight_Rotate = true;
                 }
 
-                if (CharacterDetails.RIndex2Check)
+                if (CharacterDetails.Unknown00_Toggle)
                 {
-                    CharacterDetails.RIndex2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RIndex2X));
-                    CharacterDetails.RIndex2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RIndex2Y));
-                    CharacterDetails.RIndex2Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RIndex2Z));
-                    CharacterDetails.RIndex2W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RIndex2W));
+                    CharacterDetails.Unknown00_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Unknown00_X));
+                    CharacterDetails.Unknown00_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Unknown00_Y));
+                    CharacterDetails.Unknown00_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Unknown00_Z));
+                    CharacterDetails.Unknown00_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Unknown00_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RIndex2X.value,
-                        CharacterDetails.RIndex2Y.value,
-                        CharacterDetails.RIndex2Z.value,
-                        CharacterDetails.RIndex2W.value
+                        CharacterDetails.Unknown00_X.value,
+                        CharacterDetails.Unknown00_Y.value,
+                        CharacterDetails.Unknown00_Z.value,
+                        CharacterDetails.Unknown00_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RIndex2Check = false;
-                    CharacterDetails.RIndex2Rotate = true;
+                    CharacterDetails.Unknown00_Toggle = false;
+                    CharacterDetails.Unknown00_Rotate = true;
                 }
 
-                if (CharacterDetails.LMiddleCheck)
+                if (CharacterDetails.ToesLeft_Toggle)
                 {
-                    CharacterDetails.LMiddleX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LMiddleX));
-                    CharacterDetails.LMiddleY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LMiddleY));
-                    CharacterDetails.LMiddleZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LMiddleZ));
-                    CharacterDetails.LMiddleW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LMiddleW));
+                    CharacterDetails.ToesLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesLeft_X));
+                    CharacterDetails.ToesLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesLeft_Y));
+                    CharacterDetails.ToesLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesLeft_Z));
+                    CharacterDetails.ToesLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LMiddleX.value,
-                        CharacterDetails.LMiddleY.value,
-                        CharacterDetails.LMiddleZ.value,
-                        CharacterDetails.LMiddleW.value
+                        CharacterDetails.ToesLeft_X.value,
+                        CharacterDetails.ToesLeft_Y.value,
+                        CharacterDetails.ToesLeft_Z.value,
+                        CharacterDetails.ToesLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LMiddleCheck = false;
-                    CharacterDetails.LMiddleRotate = true;
+                    CharacterDetails.ToesLeft_Toggle = false;
+                    CharacterDetails.ToesLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.RMiddleCheck)
+                if (CharacterDetails.ToesRight_Toggle)
                 {
-                    CharacterDetails.RMiddleX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RMiddleX));
-                    CharacterDetails.RMiddleY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RMiddleY));
-                    CharacterDetails.RMiddleZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RMiddleZ));
-                    CharacterDetails.RMiddleW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RMiddleW));
+                    CharacterDetails.ToesRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesRight_X));
+                    CharacterDetails.ToesRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesRight_Y));
+                    CharacterDetails.ToesRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesRight_Z));
+                    CharacterDetails.ToesRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RMiddleX.value,
-                        CharacterDetails.RMiddleY.value,
-                        CharacterDetails.RMiddleZ.value,
-                        CharacterDetails.RMiddleW.value
+                        CharacterDetails.ToesRight_X.value,
+                        CharacterDetails.ToesRight_Y.value,
+                        CharacterDetails.ToesRight_Z.value,
+                        CharacterDetails.ToesRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RMiddleCheck = false;
-                    CharacterDetails.RMiddleRotate = true;
+                    CharacterDetails.ToesRight_Toggle = false;
+                    CharacterDetails.ToesRight_Rotate = true;
                 }
 
-                if (CharacterDetails.LMiddle2Check)
+                if (CharacterDetails.HairA_Toggle)
                 {
-                    CharacterDetails.LMiddle2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LMiddle2X));
-                    CharacterDetails.LMiddle2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LMiddle2Y));
-                    CharacterDetails.LMiddle2Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LMiddle2Z));
-                    CharacterDetails.LMiddle2W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LMiddle2W));
+                    CharacterDetails.HairA_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairA_X));
+                    CharacterDetails.HairA_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairA_Y));
+                    CharacterDetails.HairA_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairA_Z));
+                    CharacterDetails.HairA_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairA_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LMiddle2X.value,
-                        CharacterDetails.LMiddle2Y.value,
-                        CharacterDetails.LMiddle2Z.value,
-                        CharacterDetails.LMiddle2W.value
+                        CharacterDetails.HairA_X.value,
+                        CharacterDetails.HairA_Y.value,
+                        CharacterDetails.HairA_Z.value,
+                        CharacterDetails.HairA_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LMiddle2Check = false;
-                    CharacterDetails.LMiddle2Rotate = true;
+                    CharacterDetails.HairA_Toggle = false;
+                    CharacterDetails.HairA_Rotate = true;
                 }
 
-                if (CharacterDetails.RMiddle2Check)
+                if (CharacterDetails.HairFrontLeft_Toggle)
                 {
-                    CharacterDetails.RMiddle2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RMiddle2X));
-                    CharacterDetails.RMiddle2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RMiddle2Y));
-                    CharacterDetails.RMiddle2Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RMiddle2Z));
-                    CharacterDetails.RMiddle2W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RMiddle2W));
+                    CharacterDetails.HairFrontLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontLeft_X));
+                    CharacterDetails.HairFrontLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontLeft_Y));
+                    CharacterDetails.HairFrontLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontLeft_Z));
+                    CharacterDetails.HairFrontLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RMiddle2X.value,
-                        CharacterDetails.RMiddle2Y.value,
-                        CharacterDetails.RMiddle2Z.value,
-                        CharacterDetails.RMiddle2W.value
+                        CharacterDetails.HairFrontLeft_X.value,
+                        CharacterDetails.HairFrontLeft_Y.value,
+                        CharacterDetails.HairFrontLeft_Z.value,
+                        CharacterDetails.HairFrontLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RMiddle2Check = false;
-                    CharacterDetails.RMiddle2Rotate = true;
+                    CharacterDetails.HairFrontLeft_Toggle = false;
+                    CharacterDetails.HairFrontLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.LRingCheck)
+                if (CharacterDetails.HairFrontRight_Toggle)
                 {
-                    CharacterDetails.LRingX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LRingX));
-                    CharacterDetails.LRingY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LRingY));
-                    CharacterDetails.LRingZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LRingZ));
-                    CharacterDetails.LRingW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LRingW));
+                    CharacterDetails.HairFrontRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontRight_X));
+                    CharacterDetails.HairFrontRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontRight_Y));
+                    CharacterDetails.HairFrontRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontRight_Z));
+                    CharacterDetails.HairFrontRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LRingX.value,
-                        CharacterDetails.LRingY.value,
-                        CharacterDetails.LRingZ.value,
-                        CharacterDetails.LRingW.value
+                        CharacterDetails.HairFrontRight_X.value,
+                        CharacterDetails.HairFrontRight_Y.value,
+                        CharacterDetails.HairFrontRight_Z.value,
+                        CharacterDetails.HairFrontRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LRingCheck = false;
-                    CharacterDetails.LRingRotate = true;
+                    CharacterDetails.HairFrontRight_Toggle = false;
+                    CharacterDetails.HairFrontRight_Rotate = true;
                 }
 
-                if (CharacterDetails.RRingCheck)
+                if (CharacterDetails.EarLeft_Toggle)
                 {
-                    CharacterDetails.RRingX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RRingX));
-                    CharacterDetails.RRingY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RRingY));
-                    CharacterDetails.RRingZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RRingZ));
-                    CharacterDetails.RRingW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RRingW));
+                    CharacterDetails.EarLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarLeft_X));
+                    CharacterDetails.EarLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarLeft_Y));
+                    CharacterDetails.EarLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarLeft_Z));
+                    CharacterDetails.EarLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RRingX.value,
-                        CharacterDetails.RRingY.value,
-                        CharacterDetails.RRingZ.value,
-                        CharacterDetails.RRingW.value
+                        CharacterDetails.EarLeft_X.value,
+                        CharacterDetails.EarLeft_Y.value,
+                        CharacterDetails.EarLeft_Z.value,
+                        CharacterDetails.EarLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RRingCheck = false;
-                    CharacterDetails.RRingRotate = true;
+                    CharacterDetails.EarLeft_Toggle = false;
+                    CharacterDetails.EarLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.LRing2Check)
+                if (CharacterDetails.EarRight_Toggle)
                 {
-                    CharacterDetails.LRing2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LRing2X));
-                    CharacterDetails.LRing2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LRing2Y));
-                    CharacterDetails.LRing2Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LRing2Z));
-                    CharacterDetails.LRing2W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LRing2W));
+                    CharacterDetails.EarRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarRight_X));
+                    CharacterDetails.EarRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarRight_Y));
+                    CharacterDetails.EarRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarRight_Z));
+                    CharacterDetails.EarRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LRing2X.value,
-                        CharacterDetails.LRing2Y.value,
-                        CharacterDetails.LRing2Z.value,
-                        CharacterDetails.LRing2W.value
+                        CharacterDetails.EarRight_X.value,
+                        CharacterDetails.EarRight_Y.value,
+                        CharacterDetails.EarRight_Z.value,
+                        CharacterDetails.EarRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LRing2Check = false;
-                    CharacterDetails.LRing2Rotate = true;
+                    CharacterDetails.EarRight_Toggle = false;
+                    CharacterDetails.EarRight_Rotate = true;
                 }
 
-                if (CharacterDetails.RRing2Check)
+                if (CharacterDetails.ForearmLeft_Toggle)
                 {
-                    CharacterDetails.RRing2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RRing2X));
-                    CharacterDetails.RRing2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RRing2Y));
-                    CharacterDetails.RRing2Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RRing2Z));
-                    CharacterDetails.RRing2W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RRing2W));
+                    CharacterDetails.ForearmLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmLeft_X));
+                    CharacterDetails.ForearmLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmLeft_Y));
+                    CharacterDetails.ForearmLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmLeft_Z));
+                    CharacterDetails.ForearmLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RRing2X.value,
-                        CharacterDetails.RRing2Y.value,
-                        CharacterDetails.RRing2Z.value,
-                        CharacterDetails.RRing2W.value
+                        CharacterDetails.ForearmLeft_X.value,
+                        CharacterDetails.ForearmLeft_Y.value,
+                        CharacterDetails.ForearmLeft_Z.value,
+                        CharacterDetails.ForearmLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RRing2Check = false;
-                    CharacterDetails.RRing2Rotate = true;
+                    CharacterDetails.ForearmLeft_Toggle = false;
+                    CharacterDetails.ForearmLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.LPinkyCheck)
+                if (CharacterDetails.ForearmRight_Toggle)
                 {
-                    CharacterDetails.LPinkyX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LPinkyX));
-                    CharacterDetails.LPinkyY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LPinkyY));
-                    CharacterDetails.LPinkyZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LPinkyZ));
-                    CharacterDetails.LPinkyW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LPinkyW));
+                    CharacterDetails.ForearmRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmRight_X));
+                    CharacterDetails.ForearmRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmRight_Y));
+                    CharacterDetails.ForearmRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmRight_Z));
+                    CharacterDetails.ForearmRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LPinkyX.value,
-                        CharacterDetails.LPinkyY.value,
-                        CharacterDetails.LPinkyZ.value,
-                        CharacterDetails.LPinkyW.value
+                        CharacterDetails.ForearmRight_X.value,
+                        CharacterDetails.ForearmRight_Y.value,
+                        CharacterDetails.ForearmRight_Z.value,
+                        CharacterDetails.ForearmRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LPinkyCheck = false;
-                    CharacterDetails.LPinkyRotate = true;
+                    CharacterDetails.ForearmRight_Toggle = false;
+                    CharacterDetails.ForearmRight_Rotate = true;
                 }
 
-                if (CharacterDetails.RPinkyCheck)
+                if (CharacterDetails.ShoulderLeft_Toggle)
                 {
-                    CharacterDetails.RPinkyX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RPinkyX));
-                    CharacterDetails.RPinkyY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RPinkyY));
-                    CharacterDetails.RPinkyZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RPinkyZ));
-                    CharacterDetails.RPinkyW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RPinkyW));
+                    CharacterDetails.ShoulderLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderLeft_X));
+                    CharacterDetails.ShoulderLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderLeft_Y));
+                    CharacterDetails.ShoulderLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderLeft_Z));
+                    CharacterDetails.ShoulderLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RPinkyX.value,
-                        CharacterDetails.RPinkyY.value,
-                        CharacterDetails.RPinkyZ.value,
-                        CharacterDetails.RPinkyW.value
+                        CharacterDetails.ShoulderLeft_X.value,
+                        CharacterDetails.ShoulderLeft_Y.value,
+                        CharacterDetails.ShoulderLeft_Z.value,
+                        CharacterDetails.ShoulderLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RPinkyCheck = false;
-                    CharacterDetails.RPinkyRotate = true;
+                    CharacterDetails.ShoulderLeft_Toggle = false;
+                    CharacterDetails.ShoulderLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.LPinky2Check)
+                if (CharacterDetails.ShoulderRight_Toggle)
                 {
-                    CharacterDetails.LPinky2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LPinky2X));
-                    CharacterDetails.LPinky2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LPinky2Y));
-                    CharacterDetails.LPinky2Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LPinky2Z));
-                    CharacterDetails.LPinky2W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LPinky2W));
+                    CharacterDetails.ShoulderRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderRight_X));
+                    CharacterDetails.ShoulderRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderRight_Y));
+                    CharacterDetails.ShoulderRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderRight_Z));
+                    CharacterDetails.ShoulderRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LPinky2X.value,
-                        CharacterDetails.LPinky2Y.value,
-                        CharacterDetails.LPinky2Z.value,
-                        CharacterDetails.LPinky2W.value
+                        CharacterDetails.ShoulderRight_X.value,
+                        CharacterDetails.ShoulderRight_Y.value,
+                        CharacterDetails.ShoulderRight_Z.value,
+                        CharacterDetails.ShoulderRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LPinky2Check = false;
-                    CharacterDetails.LPinky2Rotate = true;
+                    CharacterDetails.ShoulderRight_Toggle = false;
+                    CharacterDetails.ShoulderRight_Rotate = true;
                 }
 
-                if (CharacterDetails.RPinky2Check)
+                if (CharacterDetails.HairB_Toggle)
                 {
-                    CharacterDetails.RPinky2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RPinky2X));
-                    CharacterDetails.RPinky2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RPinky2Y));
-                    CharacterDetails.RPinky2Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RPinky2Z));
-                    CharacterDetails.RPinky2W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RPinky2W));
+                    CharacterDetails.HairB_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairB_X));
+                    CharacterDetails.HairB_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairB_Y));
+                    CharacterDetails.HairB_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairB_Z));
+                    CharacterDetails.HairB_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairB_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RPinky2X.value,
-                        CharacterDetails.RPinky2Y.value,
-                        CharacterDetails.RPinky2Z.value,
-                        CharacterDetails.RPinky2W.value
+                        CharacterDetails.HairB_X.value,
+                        CharacterDetails.HairB_Y.value,
+                        CharacterDetails.HairB_Z.value,
+                        CharacterDetails.HairB_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RPinky2Check = false;
-                    CharacterDetails.RPinky2Rotate = true;
+                    CharacterDetails.HairB_Toggle = false;
+                    CharacterDetails.HairB_Rotate = true;
                 }
 
-                if (CharacterDetails.PelvisCheck)
+                if (CharacterDetails.HandLeft_Toggle)
                 {
-                    CharacterDetails.PelvisX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.PelvisX));
-                    CharacterDetails.PelvisY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.PelvisY));
-                    CharacterDetails.PelvisZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.PelvisZ));
-                    CharacterDetails.PelvisW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.PelvisW));
+                    CharacterDetails.HandLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandLeft_X));
+                    CharacterDetails.HandLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandLeft_Y));
+                    CharacterDetails.HandLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandLeft_Z));
+                    CharacterDetails.HandLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.PelvisX.value,
-                        CharacterDetails.PelvisY.value,
-                        CharacterDetails.PelvisZ.value,
-                        CharacterDetails.PelvisW.value
+                        CharacterDetails.HandLeft_X.value,
+                        CharacterDetails.HandLeft_Y.value,
+                        CharacterDetails.HandLeft_Z.value,
+                        CharacterDetails.HandLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.PelvisCheck = false;
-                    CharacterDetails.PelvisRotate = true;
+                    CharacterDetails.HandLeft_Toggle = false;
+                    CharacterDetails.HandLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.TailCheck)
+                if (CharacterDetails.HandRight_Toggle)
                 {
-                    CharacterDetails.TailX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.TailX));
-                    CharacterDetails.TailY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.TailY));
-                    CharacterDetails.TailZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.TailZ));
-                    CharacterDetails.TailW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.TailW));
+                    CharacterDetails.HandRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandRight_X));
+                    CharacterDetails.HandRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandRight_Y));
+                    CharacterDetails.HandRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandRight_Z));
+                    CharacterDetails.HandRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.TailX.value,
-                        CharacterDetails.TailY.value,
-                        CharacterDetails.TailZ.value,
-                        CharacterDetails.TailW.value
+                        CharacterDetails.HandRight_X.value,
+                        CharacterDetails.HandRight_Y.value,
+                        CharacterDetails.HandRight_Z.value,
+                        CharacterDetails.HandRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.TailCheck = false;
-                    CharacterDetails.TailRotate = true;
+                    CharacterDetails.HandRight_Toggle = false;
+                    CharacterDetails.HandRight_Rotate = true;
                 }
 
-                if (CharacterDetails.Tail2Check)
+                if (CharacterDetails.ShieldLeft_Toggle)
                 {
-                    CharacterDetails.Tail2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail2X));
-                    CharacterDetails.Tail2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail2Y));
-                    CharacterDetails.Tail2Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail2Z));
-                    CharacterDetails.Tail2W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail2W));
+                    CharacterDetails.ShieldLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldLeft_X));
+                    CharacterDetails.ShieldLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldLeft_Y));
+                    CharacterDetails.ShieldLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldLeft_Z));
+                    CharacterDetails.ShieldLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.Tail2X.value,
-                        CharacterDetails.Tail2Y.value,
-                        CharacterDetails.Tail2Z.value,
-                        CharacterDetails.Tail2W.value
+                        CharacterDetails.ShieldLeft_X.value,
+                        CharacterDetails.ShieldLeft_Y.value,
+                        CharacterDetails.ShieldLeft_Z.value,
+                        CharacterDetails.ShieldLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.Tail2Check = false;
-                    CharacterDetails.Tail2Rotate = true;
+                    CharacterDetails.ShieldLeft_Toggle = false;
+                    CharacterDetails.ShieldLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.Tail3Check)
+                if (CharacterDetails.ShieldRight_Toggle)
                 {
-                    CharacterDetails.Tail3X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail3X));
-                    CharacterDetails.Tail3Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail3Y));
-                    CharacterDetails.Tail3Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail3Z));
-                    CharacterDetails.Tail3W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail3W));
+                    CharacterDetails.ShieldRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldRight_X));
+                    CharacterDetails.ShieldRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldRight_Y));
+                    CharacterDetails.ShieldRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldRight_Z));
+                    CharacterDetails.ShieldRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.Tail3X.value,
-                        CharacterDetails.Tail3Y.value,
-                        CharacterDetails.Tail3Z.value,
-                        CharacterDetails.Tail3W.value
+                        CharacterDetails.ShieldRight_X.value,
+                        CharacterDetails.ShieldRight_Y.value,
+                        CharacterDetails.ShieldRight_Z.value,
+                        CharacterDetails.ShieldRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.Tail3Check = false;
-                    CharacterDetails.Tail3Rotate = true;
+                    CharacterDetails.ShieldRight_Toggle = false;
+                    CharacterDetails.ShieldRight_Rotate = true;
                 }
 
-                if (CharacterDetails.Tail4Check)
+                if (CharacterDetails.EarringALeft_Toggle)
                 {
-                    CharacterDetails.Tail4X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail4X));
-                    CharacterDetails.Tail4Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail4Y));
-                    CharacterDetails.Tail4Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail4Z));
-                    CharacterDetails.Tail4W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail4W));
+                    CharacterDetails.EarringALeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringALeft_X));
+                    CharacterDetails.EarringALeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringALeft_Y));
+                    CharacterDetails.EarringALeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringALeft_Z));
+                    CharacterDetails.EarringALeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringALeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.Tail4X.value,
-                        CharacterDetails.Tail4Y.value,
-                        CharacterDetails.Tail4Z.value,
-                        CharacterDetails.Tail4W.value
+                        CharacterDetails.EarringALeft_X.value,
+                        CharacterDetails.EarringALeft_Y.value,
+                        CharacterDetails.EarringALeft_Z.value,
+                        CharacterDetails.EarringALeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.Tail4Check = false;
-                    CharacterDetails.Tail4Rotate = true;
+                    CharacterDetails.EarringALeft_Toggle = false;
+                    CharacterDetails.EarringALeft_Rotate = true;
                 }
 
-                if (CharacterDetails.Tail5Check)
+                if (CharacterDetails.EarringARight_Toggle)
                 {
-                    CharacterDetails.Tail5X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail5X));
-                    CharacterDetails.Tail5Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail5Y));
-                    CharacterDetails.Tail5Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail5Z));
-                    CharacterDetails.Tail5W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail5W));
+                    CharacterDetails.EarringARight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringARight_X));
+                    CharacterDetails.EarringARight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringARight_Y));
+                    CharacterDetails.EarringARight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringARight_Z));
+                    CharacterDetails.EarringARight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringARight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.Tail5X.value,
-                        CharacterDetails.Tail5Y.value,
-                        CharacterDetails.Tail5Z.value,
-                        CharacterDetails.Tail5W.value
+                        CharacterDetails.EarringARight_X.value,
+                        CharacterDetails.EarringARight_Y.value,
+                        CharacterDetails.EarringARight_Z.value,
+                        CharacterDetails.EarringARight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.Tail5Check = false;
-                    CharacterDetails.Tail5Rotate = true;
+                    CharacterDetails.EarringARight_Toggle = false;
+                    CharacterDetails.EarringARight_Rotate = true;
                 }
 
-                if (CharacterDetails.LThighCheck)
+                if (CharacterDetails.ElbowLeft_Toggle)
                 {
-                    CharacterDetails.LThighX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThighX));
-                    CharacterDetails.LThighY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThighY));
-                    CharacterDetails.LThighZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThighZ));
-                    CharacterDetails.LThighW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThighW));
+                    CharacterDetails.ElbowLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowLeft_X));
+                    CharacterDetails.ElbowLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowLeft_Y));
+                    CharacterDetails.ElbowLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowLeft_Z));
+                    CharacterDetails.ElbowLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LThighX.value,
-                        CharacterDetails.LThighY.value,
-                        CharacterDetails.LThighZ.value,
-                        CharacterDetails.LThighW.value
+                        CharacterDetails.ElbowLeft_X.value,
+                        CharacterDetails.ElbowLeft_Y.value,
+                        CharacterDetails.ElbowLeft_Z.value,
+                        CharacterDetails.ElbowLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LThighCheck = false;
-                    CharacterDetails.LThighRotate = true;
+                    CharacterDetails.ElbowLeft_Toggle = false;
+                    CharacterDetails.ElbowLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.RThighCheck)
+                if (CharacterDetails.ElbowRight_Toggle)
                 {
-                    CharacterDetails.RThighX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RThighX));
-                    CharacterDetails.RThighY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RThighY));
-                    CharacterDetails.RThighZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RThighZ));
-                    CharacterDetails.RThighW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RThighW));
+                    CharacterDetails.ElbowRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowRight_X));
+                    CharacterDetails.ElbowRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowRight_Y));
+                    CharacterDetails.ElbowRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowRight_Z));
+                    CharacterDetails.ElbowRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RThighX.value,
-                        CharacterDetails.RThighY.value,
-                        CharacterDetails.RThighZ.value,
-                        CharacterDetails.RThighW.value
+                        CharacterDetails.ElbowRight_X.value,
+                        CharacterDetails.ElbowRight_Y.value,
+                        CharacterDetails.ElbowRight_Z.value,
+                        CharacterDetails.ElbowRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RThighCheck = false;
-                    CharacterDetails.RThighRotate = true;
+                    CharacterDetails.ElbowRight_Toggle = false;
+                    CharacterDetails.ElbowRight_Rotate = true;
                 }
 
-                if (CharacterDetails.LKneeCheck)
+                if (CharacterDetails.CouterLeft_Toggle)
                 {
-                    CharacterDetails.LKneeX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LKneeX));
-                    CharacterDetails.LKneeY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LKneeY));
-                    CharacterDetails.LKneeZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LKneeZ));
-                    CharacterDetails.LKneeW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LKneeW));
+                    CharacterDetails.CouterLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterLeft_X));
+                    CharacterDetails.CouterLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterLeft_Y));
+                    CharacterDetails.CouterLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterLeft_Z));
+                    CharacterDetails.CouterLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LKneeX.value,
-                        CharacterDetails.LKneeY.value,
-                        CharacterDetails.LKneeZ.value,
-                        CharacterDetails.LKneeW.value
+                        CharacterDetails.CouterLeft_X.value,
+                        CharacterDetails.CouterLeft_Y.value,
+                        CharacterDetails.CouterLeft_Z.value,
+                        CharacterDetails.CouterLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LKneeCheck = false;
-                    CharacterDetails.LKneeRotate = true;
+                    CharacterDetails.CouterLeft_Toggle = false;
+                    CharacterDetails.CouterLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.RKneeCheck)
+                if (CharacterDetails.CouterRight_Toggle)
                 {
-                    CharacterDetails.RKneeX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RKneeX));
-                    CharacterDetails.RKneeY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RKneeY));
-                    CharacterDetails.RKneeZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RKneeZ));
-                    CharacterDetails.RKneeW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RKneeW));
+                    CharacterDetails.CouterRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterRight_X));
+                    CharacterDetails.CouterRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterRight_Y));
+                    CharacterDetails.CouterRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterRight_Z));
+                    CharacterDetails.CouterRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RKneeX.value,
-                        CharacterDetails.RKneeY.value,
-                        CharacterDetails.RKneeZ.value,
-                        CharacterDetails.RKneeW.value
+                        CharacterDetails.CouterRight_X.value,
+                        CharacterDetails.CouterRight_Y.value,
+                        CharacterDetails.CouterRight_Z.value,
+                        CharacterDetails.CouterRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RKneeCheck = false;
-                    CharacterDetails.RKneeRotate = true;
+                    CharacterDetails.CouterRight_Toggle = false;
+                    CharacterDetails.CouterRight_Rotate = true;
                 }
 
-                if (CharacterDetails.LCalfCheck)
+                if (CharacterDetails.WristLeft_Toggle)
                 {
-                    CharacterDetails.LCalfX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LCalfX));
-                    CharacterDetails.LCalfY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LCalfY));
-                    CharacterDetails.LCalfZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LCalfZ));
-                    CharacterDetails.LCalfW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LCalfW));
+                    CharacterDetails.WristLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_X));
+                    CharacterDetails.WristLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_Y));
+                    CharacterDetails.WristLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_Z));
+                    CharacterDetails.WristLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LCalfX.value,
-                        CharacterDetails.LCalfY.value,
-                        CharacterDetails.LCalfZ.value,
-                        CharacterDetails.LCalfW.value
+                        CharacterDetails.WristLeft_X.value,
+                        CharacterDetails.WristLeft_Y.value,
+                        CharacterDetails.WristLeft_Z.value,
+                        CharacterDetails.WristLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LCalfCheck = false;
-                    CharacterDetails.LCalfRotate = true;
+                    CharacterDetails.WristLeft_Toggle = false;
+                    CharacterDetails.WristLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.RCalfCheck)
+                if (CharacterDetails.WristRight_Toggle)
                 {
-                    CharacterDetails.RCalfX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RCalfX));
-                    CharacterDetails.RCalfY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RCalfY));
-                    CharacterDetails.RCalfZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RCalfZ));
-                    CharacterDetails.RCalfW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RCalfW));
+                    CharacterDetails.WristRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_X));
+                    CharacterDetails.WristRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_Y));
+                    CharacterDetails.WristRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_Z));
+                    CharacterDetails.WristRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RCalfX.value,
-                        CharacterDetails.RCalfY.value,
-                        CharacterDetails.RCalfZ.value,
-                        CharacterDetails.RCalfW.value
+                        CharacterDetails.WristRight_X.value,
+                        CharacterDetails.WristRight_Y.value,
+                        CharacterDetails.WristRight_Z.value,
+                        CharacterDetails.WristRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RCalfCheck = false;
-                    CharacterDetails.RCalfRotate = true;
+                    CharacterDetails.WristRight_Toggle = false;
+                    CharacterDetails.WristRight_Rotate = true;
                 }
 
-                if (CharacterDetails.LFootCheck)
+                if (CharacterDetails.IndexALeft_Toggle)
                 {
-                    CharacterDetails.LFootX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LFootX));
-                    CharacterDetails.LFootY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LFootY));
-                    CharacterDetails.LFootZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LFootZ));
-                    CharacterDetails.LFootW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LFootW));
+                    CharacterDetails.IndexALeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexALeft_X));
+                    CharacterDetails.IndexALeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexALeft_Y));
+                    CharacterDetails.IndexALeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexALeft_Z));
+                    CharacterDetails.IndexALeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexALeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LFootX.value,
-                        CharacterDetails.LFootY.value,
-                        CharacterDetails.LFootZ.value,
-                        CharacterDetails.LFootW.value
+                        CharacterDetails.IndexALeft_X.value,
+                        CharacterDetails.IndexALeft_Y.value,
+                        CharacterDetails.IndexALeft_Z.value,
+                        CharacterDetails.IndexALeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LFootCheck = false;
-                    CharacterDetails.LFootRotate = true;
+                    CharacterDetails.IndexALeft_Toggle = false;
+                    CharacterDetails.IndexALeft_Rotate = true;
                 }
 
-                if (CharacterDetails.RFootCheck)
+                if (CharacterDetails.IndexARight_Toggle)
                 {
-                    CharacterDetails.RFootX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RFootX));
-                    CharacterDetails.RFootY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RFootY));
-                    CharacterDetails.RFootZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RFootZ));
-                    CharacterDetails.RFootW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RFootW));
+                    CharacterDetails.IndexARight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexARight_X));
+                    CharacterDetails.IndexARight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexARight_Y));
+                    CharacterDetails.IndexARight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexARight_Z));
+                    CharacterDetails.IndexARight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexARight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RFootX.value,
-                        CharacterDetails.RFootY.value,
-                        CharacterDetails.RFootZ.value,
-                        CharacterDetails.RFootW.value
+                        CharacterDetails.IndexARight_X.value,
+                        CharacterDetails.IndexARight_Y.value,
+                        CharacterDetails.IndexARight_Z.value,
+                        CharacterDetails.IndexARight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RFootCheck = false;
-                    CharacterDetails.RFootRotate = true;
+                    CharacterDetails.IndexARight_Toggle = false;
+                    CharacterDetails.IndexARight_Rotate = true;
                 }
 
-                if (CharacterDetails.LToesCheck)
+                if (CharacterDetails.PinkyALeft_Toggle)
                 {
-                    CharacterDetails.LToesX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LToesX));
-                    CharacterDetails.LToesY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LToesY));
-                    CharacterDetails.LToesZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LToesZ));
-                    CharacterDetails.LToesW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LToesW));
+                    CharacterDetails.PinkyALeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyALeft_X));
+                    CharacterDetails.PinkyALeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyALeft_Y));
+                    CharacterDetails.PinkyALeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyALeft_Z));
+                    CharacterDetails.PinkyALeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyALeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LToesX.value,
-                        CharacterDetails.LToesY.value,
-                        CharacterDetails.LToesZ.value,
-                        CharacterDetails.LToesW.value
+                        CharacterDetails.PinkyALeft_X.value,
+                        CharacterDetails.PinkyALeft_Y.value,
+                        CharacterDetails.PinkyALeft_Z.value,
+                        CharacterDetails.PinkyALeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LToesCheck = false;
-                    CharacterDetails.LToesRotate = true;
+                    CharacterDetails.PinkyALeft_Toggle = false;
+                    CharacterDetails.PinkyALeft_Rotate = true;
                 }
 
-                if (CharacterDetails.RToesCheck)
+                if (CharacterDetails.PinkyARight_Toggle)
                 {
-                    CharacterDetails.RToesX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RToesX));
-                    CharacterDetails.RToesY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RToesY));
-                    CharacterDetails.RToesZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RToesZ));
-                    CharacterDetails.RToesW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RToesW));
+                    CharacterDetails.PinkyARight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyARight_X));
+                    CharacterDetails.PinkyARight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyARight_Y));
+                    CharacterDetails.PinkyARight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyARight_Z));
+                    CharacterDetails.PinkyARight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyARight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RToesX.value,
-                        CharacterDetails.RToesY.value,
-                        CharacterDetails.RToesZ.value,
-                        CharacterDetails.RToesW.value
+                        CharacterDetails.PinkyARight_X.value,
+                        CharacterDetails.PinkyARight_Y.value,
+                        CharacterDetails.PinkyARight_Z.value,
+                        CharacterDetails.PinkyARight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RToesCheck = false;
-                    CharacterDetails.RToesRotate = true;
+                    CharacterDetails.PinkyARight_Toggle = false;
+                    CharacterDetails.PinkyARight_Rotate = true;
                 }
 
-                if (CharacterDetails.LVEarCheck)
+                if (CharacterDetails.RingALeft_Toggle)
                 {
-                    CharacterDetails.LVEarX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEarX));
-                    CharacterDetails.LVEarY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEarY));
-                    CharacterDetails.LVEarZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEarZ));
-                    CharacterDetails.LVEarW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEarW));
+                    CharacterDetails.RingALeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingALeft_X));
+                    CharacterDetails.RingALeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingALeft_Y));
+                    CharacterDetails.RingALeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingALeft_Z));
+                    CharacterDetails.RingALeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingALeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LVEarX.value,
-                        CharacterDetails.LVEarY.value,
-                        CharacterDetails.LVEarZ.value,
-                        CharacterDetails.LVEarW.value
+                        CharacterDetails.RingALeft_X.value,
+                        CharacterDetails.RingALeft_Y.value,
+                        CharacterDetails.RingALeft_Z.value,
+                        CharacterDetails.RingALeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LVEarCheck = false;
-                    CharacterDetails.LVEarRotate = true;
+                    CharacterDetails.RingALeft_Toggle = false;
+                    CharacterDetails.RingALeft_Rotate = true;
                 }
 
-                if (CharacterDetails.RVEarCheck)
+                if (CharacterDetails.RingARight_Toggle)
                 {
-                    CharacterDetails.RVEarX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEarX));
-                    CharacterDetails.RVEarY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEarY));
-                    CharacterDetails.RVEarZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEarZ));
-                    CharacterDetails.RVEarW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEarW));
+                    CharacterDetails.RingARight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingARight_X));
+                    CharacterDetails.RingARight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingARight_Y));
+                    CharacterDetails.RingARight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingARight_Z));
+                    CharacterDetails.RingARight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingARight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RVEarX.value,
-                        CharacterDetails.RVEarY.value,
-                        CharacterDetails.RVEarZ.value,
-                        CharacterDetails.RVEarW.value
+                        CharacterDetails.RingARight_X.value,
+                        CharacterDetails.RingARight_Y.value,
+                        CharacterDetails.RingARight_Z.value,
+                        CharacterDetails.RingARight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RVEarCheck = false;
-                    CharacterDetails.RVEarRotate = true;
+                    CharacterDetails.RingARight_Toggle = false;
+                    CharacterDetails.RingARight_Rotate = true;
                 }
 
-                if (CharacterDetails.LVEar2Check)
+                if (CharacterDetails.MiddleALeft_Toggle)
                 {
-                    CharacterDetails.LVEar2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar2X));
-                    CharacterDetails.LVEar2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar2Y));
-                    CharacterDetails.LVEar2Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar2Z));
-                    CharacterDetails.LVEar2W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar2W));
+                    CharacterDetails.MiddleALeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleALeft_X));
+                    CharacterDetails.MiddleALeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleALeft_Y));
+                    CharacterDetails.MiddleALeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleALeft_Z));
+                    CharacterDetails.MiddleALeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleALeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LVEar2X.value,
-                        CharacterDetails.LVEar2Y.value,
-                        CharacterDetails.LVEar2Z.value,
-                        CharacterDetails.LVEar2W.value
+                        CharacterDetails.MiddleALeft_X.value,
+                        CharacterDetails.MiddleALeft_Y.value,
+                        CharacterDetails.MiddleALeft_Z.value,
+                        CharacterDetails.MiddleALeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LVEar2Check = false;
-                    CharacterDetails.LVEar2Rotate = true;
+                    CharacterDetails.MiddleALeft_Toggle = false;
+                    CharacterDetails.MiddleALeft_Rotate = true;
                 }
 
-                if (CharacterDetails.RVEar2Check)
+                if (CharacterDetails.MiddleARight_Toggle)
                 {
-                    CharacterDetails.RVEar2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar2X));
-                    CharacterDetails.RVEar2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar2Y));
-                    CharacterDetails.RVEar2Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar2Z));
-                    CharacterDetails.RVEar2W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar2W));
+                    CharacterDetails.MiddleARight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleARight_X));
+                    CharacterDetails.MiddleARight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleARight_Y));
+                    CharacterDetails.MiddleARight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleARight_Z));
+                    CharacterDetails.MiddleARight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleARight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RVEar2X.value,
-                        CharacterDetails.RVEar2Y.value,
-                        CharacterDetails.RVEar2Z.value,
-                        CharacterDetails.RVEar2W.value
+                        CharacterDetails.MiddleARight_X.value,
+                        CharacterDetails.MiddleARight_Y.value,
+                        CharacterDetails.MiddleARight_Z.value,
+                        CharacterDetails.MiddleARight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RVEar2Check = false;
-                    CharacterDetails.RVEar2Rotate = true;
+                    CharacterDetails.MiddleARight_Toggle = false;
+                    CharacterDetails.MiddleARight_Rotate = true;
                 }
 
-                if (CharacterDetails.LVEar3Check)
+                if (CharacterDetails.ThumbALeft_Toggle)
                 {
-                    CharacterDetails.LVEar3X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar3X));
-                    CharacterDetails.LVEar3Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar3Y));
-                    CharacterDetails.LVEar3Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar3Z));
-                    CharacterDetails.LVEar3W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar3W));
+                    CharacterDetails.ThumbALeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbALeft_X));
+                    CharacterDetails.ThumbALeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbALeft_Y));
+                    CharacterDetails.ThumbALeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbALeft_Z));
+                    CharacterDetails.ThumbALeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbALeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LVEar3X.value,
-                        CharacterDetails.LVEar3Y.value,
-                        CharacterDetails.LVEar3Z.value,
-                        CharacterDetails.LVEar3W.value
+                        CharacterDetails.ThumbALeft_X.value,
+                        CharacterDetails.ThumbALeft_Y.value,
+                        CharacterDetails.ThumbALeft_Z.value,
+                        CharacterDetails.ThumbALeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LVEar3Check = false;
-                    CharacterDetails.LVEar3Rotate = true;
+                    CharacterDetails.ThumbALeft_Toggle = false;
+                    CharacterDetails.ThumbALeft_Rotate = true;
                 }
 
-                if (CharacterDetails.RVEar3Check)
+                if (CharacterDetails.ThumbARight_Toggle)
                 {
-                    CharacterDetails.RVEar3X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar3X));
-                    CharacterDetails.RVEar3Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar3Y));
-                    CharacterDetails.RVEar3Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar3Z));
-                    CharacterDetails.RVEar3W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar3W));
+                    CharacterDetails.ThumbARight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbARight_X));
+                    CharacterDetails.ThumbARight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbARight_Y));
+                    CharacterDetails.ThumbARight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbARight_Z));
+                    CharacterDetails.ThumbARight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbARight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RVEar3X.value,
-                        CharacterDetails.RVEar3Y.value,
-                        CharacterDetails.RVEar3Z.value,
-                        CharacterDetails.RVEar3W.value
+                        CharacterDetails.ThumbARight_X.value,
+                        CharacterDetails.ThumbARight_Y.value,
+                        CharacterDetails.ThumbARight_Z.value,
+                        CharacterDetails.ThumbARight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RVEar3Check = false;
-                    CharacterDetails.RVEar3Rotate = true;
+                    CharacterDetails.ThumbARight_Toggle = false;
+                    CharacterDetails.ThumbARight_Rotate = true;
                 }
 
-                if (CharacterDetails.LVEar4Check)
+                if (CharacterDetails.WeaponLeft_Toggle)
                 {
-                    CharacterDetails.LVEar4X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar4X));
-                    CharacterDetails.LVEar4Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar4Y));
-                    CharacterDetails.LVEar4Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar4Z));
-                    CharacterDetails.LVEar4W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar4W));
+                    CharacterDetails.WeaponLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponLeft_X));
+                    CharacterDetails.WeaponLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponLeft_Y));
+                    CharacterDetails.WeaponLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponLeft_Z));
+                    CharacterDetails.WeaponLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LVEar4X.value,
-                        CharacterDetails.LVEar4Y.value,
-                        CharacterDetails.LVEar4Z.value,
-                        CharacterDetails.LVEar4W.value
+                        CharacterDetails.WeaponLeft_X.value,
+                        CharacterDetails.WeaponLeft_Y.value,
+                        CharacterDetails.WeaponLeft_Z.value,
+                        CharacterDetails.WeaponLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LVEar4Check = false;
-                    CharacterDetails.LVEar4Rotate = true;
+                    CharacterDetails.WeaponLeft_Toggle = false;
+                    CharacterDetails.WeaponLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.RVEar4Check)
+                if (CharacterDetails.WeaponRight_Toggle)
                 {
-                    CharacterDetails.RVEar4X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar4X));
-                    CharacterDetails.RVEar4Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar4Y));
-                    CharacterDetails.RVEar4Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar4Z));
-                    CharacterDetails.RVEar4W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar4W));
+                    CharacterDetails.WeaponRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponRight_X));
+                    CharacterDetails.WeaponRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponRight_Y));
+                    CharacterDetails.WeaponRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponRight_Z));
+                    CharacterDetails.WeaponRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RVEar4X.value,
-                        CharacterDetails.RVEar4Y.value,
-                        CharacterDetails.RVEar4Z.value,
-                        CharacterDetails.RVEar4W.value
+                        CharacterDetails.WeaponRight_X.value,
+                        CharacterDetails.WeaponRight_Y.value,
+                        CharacterDetails.WeaponRight_Z.value,
+                        CharacterDetails.WeaponRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RVEar4Check = false;
-                    CharacterDetails.RVEar4Rotate = true;
+                    CharacterDetails.WeaponRight_Toggle = false;
+                    CharacterDetails.WeaponRight_Rotate = true;
                 }
 
-                if (CharacterDetails.LEarringCheck)
+                if (CharacterDetails.EarringBLeft_Toggle)
                 {
-                    CharacterDetails.LEarringX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEarringX));
-                    CharacterDetails.LEarringY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEarringY));
-                    CharacterDetails.LEarringZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEarringZ));
-                    CharacterDetails.LEarringW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEarringW));
+                    CharacterDetails.EarringBLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBLeft_X));
+                    CharacterDetails.EarringBLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBLeft_Y));
+                    CharacterDetails.EarringBLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBLeft_Z));
+                    CharacterDetails.EarringBLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LEarringX.value,
-                        CharacterDetails.LEarringY.value,
-                        CharacterDetails.LEarringZ.value,
-                        CharacterDetails.LEarringW.value
+                        CharacterDetails.EarringBLeft_X.value,
+                        CharacterDetails.EarringBLeft_Y.value,
+                        CharacterDetails.EarringBLeft_Z.value,
+                        CharacterDetails.EarringBLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LEarringCheck = false;
-                    CharacterDetails.LEarringRotate = true;
+                    CharacterDetails.EarringBLeft_Toggle = false;
+                    CharacterDetails.EarringBLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.REarringCheck)
+                if (CharacterDetails.EarringBRight_Toggle)
                 {
-                    CharacterDetails.REarringX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REarringX));
-                    CharacterDetails.REarringY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REarringY));
-                    CharacterDetails.REarringZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REarringZ));
-                    CharacterDetails.REarringW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REarringW));
+                    CharacterDetails.EarringBRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBRight_X));
+                    CharacterDetails.EarringBRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBRight_Y));
+                    CharacterDetails.EarringBRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBRight_Z));
+                    CharacterDetails.EarringBRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.REarringX.value,
-                        CharacterDetails.REarringY.value,
-                        CharacterDetails.REarringZ.value,
-                        CharacterDetails.REarringW.value
+                        CharacterDetails.EarringBRight_X.value,
+                        CharacterDetails.EarringBRight_Y.value,
+                        CharacterDetails.EarringBRight_Z.value,
+                        CharacterDetails.EarringBRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.REarringCheck = false;
-                    CharacterDetails.REarringRotate = true;
+                    CharacterDetails.EarringBRight_Toggle = false;
+                    CharacterDetails.EarringBRight_Rotate = true;
                 }
 
-                if (CharacterDetails.LEarring2Check)
+                if (CharacterDetails.IndexBLeft_Toggle)
                 {
-                    CharacterDetails.LEarring2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEarring2X));
-                    CharacterDetails.LEarring2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEarring2Y));
-                    CharacterDetails.LEarring2Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEarring2Z));
-                    CharacterDetails.LEarring2W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEarring2W));
+                    CharacterDetails.IndexBLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBLeft_X));
+                    CharacterDetails.IndexBLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBLeft_Y));
+                    CharacterDetails.IndexBLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBLeft_Z));
+                    CharacterDetails.IndexBLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LEarring2X.value,
-                        CharacterDetails.LEarring2Y.value,
-                        CharacterDetails.LEarring2Z.value,
-                        CharacterDetails.LEarring2W.value
+                        CharacterDetails.IndexBLeft_X.value,
+                        CharacterDetails.IndexBLeft_Y.value,
+                        CharacterDetails.IndexBLeft_Z.value,
+                        CharacterDetails.IndexBLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LEarring2Check = false;
-                    CharacterDetails.LEarring2Rotate = true;
+                    CharacterDetails.IndexBLeft_Toggle = false;
+                    CharacterDetails.IndexBLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.REarring2Check)
+                if (CharacterDetails.IndexBRight_Toggle)
                 {
-                    CharacterDetails.REarring2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REarring2X));
-                    CharacterDetails.REarring2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REarring2Y));
-                    CharacterDetails.REarring2Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REarring2Z));
-                    CharacterDetails.REarring2W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REarring2W));
+                    CharacterDetails.IndexBRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBRight_X));
+                    CharacterDetails.IndexBRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBRight_Y));
+                    CharacterDetails.IndexBRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBRight_Z));
+                    CharacterDetails.IndexBRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.REarring2X.value,
-                        CharacterDetails.REarring2Y.value,
-                        CharacterDetails.REarring2Z.value,
-                        CharacterDetails.REarring2W.value
+                        CharacterDetails.IndexBRight_X.value,
+                        CharacterDetails.IndexBRight_Y.value,
+                        CharacterDetails.IndexBRight_Z.value,
+                        CharacterDetails.IndexBRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.REarring2Check = false;
-                    CharacterDetails.REarring2Rotate = true;
+                    CharacterDetails.IndexBRight_Toggle = false;
+                    CharacterDetails.IndexBRight_Rotate = true;
                 }
 
-                if (CharacterDetails.LVLowLipCheck)
+                if (CharacterDetails.PinkyBLeft_Toggle)
                 {
-                    CharacterDetails.LVLowLipX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowLipX));
-                    CharacterDetails.LVLowLipY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowLipY));
-                    CharacterDetails.LVLowLipZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowLipZ));
-                    CharacterDetails.LVLowLipW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowLipW));
+                    CharacterDetails.PinkyBLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBLeft_X));
+                    CharacterDetails.PinkyBLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBLeft_Y));
+                    CharacterDetails.PinkyBLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBLeft_Z));
+                    CharacterDetails.PinkyBLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LVLowLipX.value,
-                        CharacterDetails.LVLowLipY.value,
-                        CharacterDetails.LVLowLipZ.value,
-                        CharacterDetails.LVLowLipW.value
+                        CharacterDetails.PinkyBLeft_X.value,
+                        CharacterDetails.PinkyBLeft_Y.value,
+                        CharacterDetails.PinkyBLeft_Z.value,
+                        CharacterDetails.PinkyBLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LVLowLipCheck = false;
-                    CharacterDetails.LVLowLipRotate = true;
+                    CharacterDetails.PinkyBLeft_Toggle = false;
+                    CharacterDetails.PinkyBLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.RVUpLipCheck)
+                if (CharacterDetails.PinkyBRight_Toggle)
                 {
-                    CharacterDetails.RVUpLipX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVUpLipX));
-                    CharacterDetails.RVUpLipY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVUpLipY));
-                    CharacterDetails.RVUpLipZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVUpLipZ));
-                    CharacterDetails.RVUpLipW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVUpLipW));
+                    CharacterDetails.PinkyBRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBRight_X));
+                    CharacterDetails.PinkyBRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBRight_Y));
+                    CharacterDetails.PinkyBRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBRight_Z));
+                    CharacterDetails.PinkyBRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RVUpLipX.value,
-                        CharacterDetails.RVUpLipY.value,
-                        CharacterDetails.RVUpLipZ.value,
-                        CharacterDetails.RVUpLipW.value
+                        CharacterDetails.PinkyBRight_X.value,
+                        CharacterDetails.PinkyBRight_Y.value,
+                        CharacterDetails.PinkyBRight_Z.value,
+                        CharacterDetails.PinkyBRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RVUpLipCheck = false;
-                    CharacterDetails.RVUpLipRotate = true;
+                    CharacterDetails.PinkyBRight_Toggle = false;
+                    CharacterDetails.PinkyBRight_Rotate = true;
                 }
 
-                if (CharacterDetails.RVLowLipCheck)
+                if (CharacterDetails.RingBLeft_Toggle)
                 {
-                    CharacterDetails.RVLowLipX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowLipX));
-                    CharacterDetails.RVLowLipY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowLipY));
-                    CharacterDetails.RVLowLipZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowLipZ));
-                    CharacterDetails.RVLowLipW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowLipW));
+                    CharacterDetails.RingBLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBLeft_X));
+                    CharacterDetails.RingBLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBLeft_Y));
+                    CharacterDetails.RingBLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBLeft_Z));
+                    CharacterDetails.RingBLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RVLowLipX.value,
-                        CharacterDetails.RVLowLipY.value,
-                        CharacterDetails.RVLowLipZ.value,
-                        CharacterDetails.RVLowLipW.value
+                        CharacterDetails.RingBLeft_X.value,
+                        CharacterDetails.RingBLeft_Y.value,
+                        CharacterDetails.RingBLeft_Z.value,
+                        CharacterDetails.RingBLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RVLowLipCheck = false;
-                    CharacterDetails.RVLowLipRotate = true;
+                    CharacterDetails.RingBLeft_Toggle = false;
+                    CharacterDetails.RingBLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.RVLowEar2Check)
+                if (CharacterDetails.RingBRight_Toggle)
                 {
-                    CharacterDetails.RVLowEar2X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar2X));
-                    CharacterDetails.RVLowEar2Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar2Y));
-                    CharacterDetails.RVLowEar2Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar2Z));
-                    CharacterDetails.RVLowEar2W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar2W));
+                    CharacterDetails.RingBRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBRight_X));
+                    CharacterDetails.RingBRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBRight_Y));
+                    CharacterDetails.RingBRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBRight_Z));
+                    CharacterDetails.RingBRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RVLowEar2X.value,
-                        CharacterDetails.RVLowEar2Y.value,
-                        CharacterDetails.RVLowEar2Z.value,
-                        CharacterDetails.RVLowEar2W.value
+                        CharacterDetails.RingBRight_X.value,
+                        CharacterDetails.RingBRight_Y.value,
+                        CharacterDetails.RingBRight_Z.value,
+                        CharacterDetails.RingBRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RVLowEar2Check = false;
-                    CharacterDetails.RVLowEar2Rotate = true;
+                    CharacterDetails.RingBRight_Toggle = false;
+                    CharacterDetails.RingBRight_Rotate = true;
                 }
 
-                if (CharacterDetails.LVLowEar3Check)
+                if (CharacterDetails.MiddleBLeft_Toggle)
                 {
-                    CharacterDetails.LVLowEar3X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar3X));
-                    CharacterDetails.LVLowEar3Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar3Y));
-                    CharacterDetails.LVLowEar3Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar3Z));
-                    CharacterDetails.LVLowEar3W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar3W));
+                    CharacterDetails.MiddleBLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBLeft_X));
+                    CharacterDetails.MiddleBLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBLeft_Y));
+                    CharacterDetails.MiddleBLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBLeft_Z));
+                    CharacterDetails.MiddleBLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LVLowEar3X.value,
-                        CharacterDetails.LVLowEar3Y.value,
-                        CharacterDetails.LVLowEar3Z.value,
-                        CharacterDetails.LVLowEar3W.value
+                        CharacterDetails.MiddleBLeft_X.value,
+                        CharacterDetails.MiddleBLeft_Y.value,
+                        CharacterDetails.MiddleBLeft_Z.value,
+                        CharacterDetails.MiddleBLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LVLowEar3Check = false;
-                    CharacterDetails.LVLowEar3Rotate = true;
+                    CharacterDetails.MiddleBLeft_Toggle = false;
+                    CharacterDetails.MiddleBLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.RVLowEar3Check)
+                if (CharacterDetails.MiddleBRight_Toggle)
                 {
-                    CharacterDetails.RVLowEar3X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar3X));
-                    CharacterDetails.RVLowEar3Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar3Y));
-                    CharacterDetails.RVLowEar3Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar3Z));
-                    CharacterDetails.RVLowEar3W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar3W));
+                    CharacterDetails.MiddleBRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBRight_X));
+                    CharacterDetails.MiddleBRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBRight_Y));
+                    CharacterDetails.MiddleBRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBRight_Z));
+                    CharacterDetails.MiddleBRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RVLowEar3X.value,
-                        CharacterDetails.RVLowEar3Y.value,
-                        CharacterDetails.RVLowEar3Z.value,
-                        CharacterDetails.RVLowEar3W.value
+                        CharacterDetails.MiddleBRight_X.value,
+                        CharacterDetails.MiddleBRight_Y.value,
+                        CharacterDetails.MiddleBRight_Z.value,
+                        CharacterDetails.MiddleBRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RVLowEar3Check = false;
-                    CharacterDetails.RVLowEar3Rotate = true;
+                    CharacterDetails.MiddleBRight_Toggle = false;
+                    CharacterDetails.MiddleBRight_Rotate = true;
                 }
 
-                if (CharacterDetails.LVLowEar4Check)
+                if (CharacterDetails.ThumbBLeft_Toggle)
                 {
-                    CharacterDetails.LVLowEar4X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar4X));
-                    CharacterDetails.LVLowEar4Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar4Y));
-                    CharacterDetails.LVLowEar4Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar4Z));
-                    CharacterDetails.LVLowEar4W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar4W));
+                    CharacterDetails.ThumbBLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBLeft_X));
+                    CharacterDetails.ThumbBLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBLeft_Y));
+                    CharacterDetails.ThumbBLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBLeft_Z));
+                    CharacterDetails.ThumbBLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBLeft_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LVLowEar4X.value,
-                        CharacterDetails.LVLowEar4Y.value,
-                        CharacterDetails.LVLowEar4Z.value,
-                        CharacterDetails.LVLowEar4W.value
+                        CharacterDetails.ThumbBLeft_X.value,
+                        CharacterDetails.ThumbBLeft_Y.value,
+                        CharacterDetails.ThumbBLeft_Z.value,
+                        CharacterDetails.ThumbBLeft_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LVLowEar4Check = false;
-                    CharacterDetails.LVLowEar4Rotate = true;
+                    CharacterDetails.ThumbBLeft_Toggle = false;
+                    CharacterDetails.ThumbBLeft_Rotate = true;
                 }
 
-                if (CharacterDetails.RVLowEar4Check)
+                if (CharacterDetails.ThumbBRight_Toggle)
                 {
-                    CharacterDetails.RVLowEar4X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar4X));
-                    CharacterDetails.RVLowEar4Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar4Y));
-                    CharacterDetails.RVLowEar4Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar4Z));
-                    CharacterDetails.RVLowEar4W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar4W));
+                    CharacterDetails.ThumbBRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBRight_X));
+                    CharacterDetails.ThumbBRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBRight_Y));
+                    CharacterDetails.ThumbBRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBRight_Z));
+                    CharacterDetails.ThumbBRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBRight_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RVLowEar4X.value,
-                        CharacterDetails.RVLowEar4Y.value,
-                        CharacterDetails.RVLowEar4Z.value,
-                        CharacterDetails.RVLowEar4W.value
+                        CharacterDetails.ThumbBRight_X.value,
+                        CharacterDetails.ThumbBRight_Y.value,
+                        CharacterDetails.ThumbBRight_Z.value,
+                        CharacterDetails.ThumbBRight_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RVLowEar4Check = false;
-                    CharacterDetails.RVLowEar4Rotate = true;
+                    CharacterDetails.ThumbBRight_Toggle = false;
+                    CharacterDetails.ThumbBRight_Rotate = true;
                 }
 
-                if (CharacterDetails.LShieldCheck)
+                if (CharacterDetails.TailA_Toggle)
                 {
-                    CharacterDetails.LShieldX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LShieldX));
-                    CharacterDetails.LShieldY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LShieldY));
-                    CharacterDetails.LShieldZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LShieldZ));
-                    CharacterDetails.LShieldW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LShieldW));
+                    CharacterDetails.TailA_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailA_X));
+                    CharacterDetails.TailA_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailA_Y));
+                    CharacterDetails.TailA_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailA_Z));
+                    CharacterDetails.TailA_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailA_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LShieldX.value,
-                        CharacterDetails.LShieldY.value,
-                        CharacterDetails.LShieldZ.value,
-                        CharacterDetails.LShieldW.value
+                        CharacterDetails.TailA_X.value,
+                        CharacterDetails.TailA_Y.value,
+                        CharacterDetails.TailA_Z.value,
+                        CharacterDetails.TailA_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LShieldCheck = false;
-                    CharacterDetails.LShieldRotate = true;
+                    CharacterDetails.TailA_Toggle = false;
+                    CharacterDetails.TailA_Rotate = true;
                 }
 
-                if (CharacterDetails.RShieldCheck)
+                if (CharacterDetails.TailB_Toggle)
                 {
-                    CharacterDetails.RShieldX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RShieldX));
-                    CharacterDetails.RShieldY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RShieldY));
-                    CharacterDetails.RShieldZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RShieldZ));
-                    CharacterDetails.RShieldW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RShieldW));
+                    CharacterDetails.TailB_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailB_X));
+                    CharacterDetails.TailB_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailB_Y));
+                    CharacterDetails.TailB_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailB_Z));
+                    CharacterDetails.TailB_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailB_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RShieldX.value,
-                        CharacterDetails.RShieldY.value,
-                        CharacterDetails.RShieldZ.value,
-                        CharacterDetails.RShieldW.value
+                        CharacterDetails.TailB_X.value,
+                        CharacterDetails.TailB_Y.value,
+                        CharacterDetails.TailB_Z.value,
+                        CharacterDetails.TailB_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RShieldCheck = false;
-                    CharacterDetails.RShieldRotate = true;
+                    CharacterDetails.TailB_Toggle = false;
+                    CharacterDetails.TailB_Rotate = true;
                 }
 
-                if (CharacterDetails.LWeaponCheck)
+                if (CharacterDetails.TailC_Toggle)
                 {
-                    CharacterDetails.LWeaponX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LWeaponX));
-                    CharacterDetails.LWeaponY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LWeaponY));
-                    CharacterDetails.LWeaponZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LWeaponZ));
-                    CharacterDetails.LWeaponW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LWeaponW));
+                    CharacterDetails.TailC_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailC_X));
+                    CharacterDetails.TailC_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailC_Y));
+                    CharacterDetails.TailC_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailC_Z));
+                    CharacterDetails.TailC_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailC_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.LWeaponX.value,
-                        CharacterDetails.LWeaponY.value,
-                        CharacterDetails.LWeaponZ.value,
-                        CharacterDetails.LWeaponW.value
+                        CharacterDetails.TailC_X.value,
+                        CharacterDetails.TailC_Y.value,
+                        CharacterDetails.TailC_Z.value,
+                        CharacterDetails.TailC_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.LWeaponCheck = false;
-                    CharacterDetails.LWeaponRotate = true;
+                    CharacterDetails.TailC_Toggle = false;
+                    CharacterDetails.TailC_Rotate = true;
                 }
 
-                if (CharacterDetails.RWeaponCheck)
+                if (CharacterDetails.TailD_Toggle)
                 {
-                    CharacterDetails.RWeaponX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RWeaponX));
-                    CharacterDetails.RWeaponY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RWeaponY));
-                    CharacterDetails.RWeaponZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RWeaponZ));
-                    CharacterDetails.RWeaponW.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RWeaponW));
+                    CharacterDetails.TailD_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailD_X));
+                    CharacterDetails.TailD_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailD_Y));
+                    CharacterDetails.TailD_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailD_Z));
+                    CharacterDetails.TailD_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailD_W));
 
-                    // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
-                        CharacterDetails.RWeaponX.value,
-                        CharacterDetails.RWeaponY.value,
-                        CharacterDetails.RWeaponZ.value,
-                        CharacterDetails.RWeaponW.value
+                        CharacterDetails.TailD_X.value,
+                        CharacterDetails.TailD_Y.value,
+                        CharacterDetails.TailD_Z.value,
+                        CharacterDetails.TailD_W.value
                     ).ToEulerAngles();
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
 
-                    CharacterDetails.RWeaponCheck = false;
-                    CharacterDetails.RWeaponRotate = true;
+                    CharacterDetails.TailD_Toggle = false;
+                    CharacterDetails.TailD_Rotate = true;
+                }
+
+                if (CharacterDetails.TailE_Toggle)
+                {
+                    CharacterDetails.TailE_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailE_X));
+                    CharacterDetails.TailE_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailE_Y));
+                    CharacterDetails.TailE_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailE_Z));
+                    CharacterDetails.TailE_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailE_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.TailE_X.value,
+                        CharacterDetails.TailE_Y.value,
+                        CharacterDetails.TailE_Z.value,
+                        CharacterDetails.TailE_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.TailE_Toggle = false;
+                    CharacterDetails.TailE_Rotate = true;
+                }
+
+                if (CharacterDetails.RootHead_Toggle)
+                {
+                    CharacterDetails.RootHead_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RootHead_X));
+                    CharacterDetails.RootHead_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RootHead_Y));
+                    CharacterDetails.RootHead_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RootHead_Z));
+                    CharacterDetails.RootHead_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RootHead_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.RootHead_X.value,
+                        CharacterDetails.RootHead_Y.value,
+                        CharacterDetails.RootHead_Z.value,
+                        CharacterDetails.RootHead_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.RootHead_Toggle = false;
+                    CharacterDetails.RootHead_Rotate = true;
+                }
+
+                if (CharacterDetails.Jaw_Toggle)
+                {
+                    CharacterDetails.Jaw_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Jaw_X));
+                    CharacterDetails.Jaw_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Jaw_Y));
+                    CharacterDetails.Jaw_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Jaw_Z));
+                    CharacterDetails.Jaw_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Jaw_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.Jaw_X.value,
+                        CharacterDetails.Jaw_Y.value,
+                        CharacterDetails.Jaw_Z.value,
+                        CharacterDetails.Jaw_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.Jaw_Toggle = false;
+                    CharacterDetails.Jaw_Rotate = true;
+                }
+
+                if (CharacterDetails.EyelidLowerLeft_Toggle)
+                {
+                    CharacterDetails.EyelidLowerLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerLeft_X));
+                    CharacterDetails.EyelidLowerLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerLeft_Y));
+                    CharacterDetails.EyelidLowerLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerLeft_Z));
+                    CharacterDetails.EyelidLowerLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerLeft_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.EyelidLowerLeft_X.value,
+                        CharacterDetails.EyelidLowerLeft_Y.value,
+                        CharacterDetails.EyelidLowerLeft_Z.value,
+                        CharacterDetails.EyelidLowerLeft_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.EyelidLowerLeft_Toggle = false;
+                    CharacterDetails.EyelidLowerLeft_Rotate = true;
+                }
+
+                if (CharacterDetails.EyelidLowerRight_Toggle)
+                {
+                    CharacterDetails.EyelidLowerRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerRight_X));
+                    CharacterDetails.EyelidLowerRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerRight_Y));
+                    CharacterDetails.EyelidLowerRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerRight_Z));
+                    CharacterDetails.EyelidLowerRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerRight_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.EyelidLowerRight_X.value,
+                        CharacterDetails.EyelidLowerRight_Y.value,
+                        CharacterDetails.EyelidLowerRight_Z.value,
+                        CharacterDetails.EyelidLowerRight_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.EyelidLowerRight_Toggle = false;
+                    CharacterDetails.EyelidLowerRight_Rotate = true;
+                }
+
+                if (CharacterDetails.EyeLeft_Toggle)
+                {
+                    CharacterDetails.EyeLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeLeft_X));
+                    CharacterDetails.EyeLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeLeft_Y));
+                    CharacterDetails.EyeLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeLeft_Z));
+                    CharacterDetails.EyeLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeLeft_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.EyeLeft_X.value,
+                        CharacterDetails.EyeLeft_Y.value,
+                        CharacterDetails.EyeLeft_Z.value,
+                        CharacterDetails.EyeLeft_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.EyeLeft_Toggle = false;
+                    CharacterDetails.EyeLeft_Rotate = true;
+                }
+
+                if (CharacterDetails.EyeRight_Toggle)
+                {
+                    CharacterDetails.EyeRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeRight_X));
+                    CharacterDetails.EyeRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeRight_Y));
+                    CharacterDetails.EyeRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeRight_Z));
+                    CharacterDetails.EyeRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeRight_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.EyeRight_X.value,
+                        CharacterDetails.EyeRight_Y.value,
+                        CharacterDetails.EyeRight_Z.value,
+                        CharacterDetails.EyeRight_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.EyeRight_Toggle = false;
+                    CharacterDetails.EyeRight_Rotate = true;
+                }
+
+                if (CharacterDetails.Nose_Toggle)
+                {
+                    CharacterDetails.Nose_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Nose_X));
+                    CharacterDetails.Nose_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Nose_Y));
+                    CharacterDetails.Nose_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Nose_Z));
+                    CharacterDetails.Nose_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Nose_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.Nose_X.value,
+                        CharacterDetails.Nose_Y.value,
+                        CharacterDetails.Nose_Z.value,
+                        CharacterDetails.Nose_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.Nose_Toggle = false;
+                    CharacterDetails.Nose_Rotate = true;
+                }
+
+                if (CharacterDetails.CheekLeft_Toggle)
+                {
+                    CharacterDetails.CheekLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekLeft_X));
+                    CharacterDetails.CheekLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekLeft_Y));
+                    CharacterDetails.CheekLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekLeft_Z));
+                    CharacterDetails.CheekLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekLeft_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.CheekLeft_X.value,
+                        CharacterDetails.CheekLeft_Y.value,
+                        CharacterDetails.CheekLeft_Z.value,
+                        CharacterDetails.CheekLeft_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.CheekLeft_Toggle = false;
+                    CharacterDetails.CheekLeft_Rotate = true;
+                }
+
+                if (CharacterDetails.HrothWhiskersLeft_Toggle)
+                {
+                    CharacterDetails.HrothWhiskersLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersLeft_X));
+                    CharacterDetails.HrothWhiskersLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersLeft_Y));
+                    CharacterDetails.HrothWhiskersLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersLeft_Z));
+                    CharacterDetails.HrothWhiskersLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersLeft_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.HrothWhiskersLeft_X.value,
+                        CharacterDetails.HrothWhiskersLeft_Y.value,
+                        CharacterDetails.HrothWhiskersLeft_Z.value,
+                        CharacterDetails.HrothWhiskersLeft_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.HrothWhiskersLeft_Toggle = false;
+                    CharacterDetails.HrothWhiskersLeft_Rotate = true;
+                }
+
+                if (CharacterDetails.CheekRight_Toggle)
+                {
+                    CharacterDetails.CheekRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekRight_X));
+                    CharacterDetails.CheekRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekRight_Y));
+                    CharacterDetails.CheekRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekRight_Z));
+                    CharacterDetails.CheekRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekRight_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.CheekRight_X.value,
+                        CharacterDetails.CheekRight_Y.value,
+                        CharacterDetails.CheekRight_Z.value,
+                        CharacterDetails.CheekRight_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.CheekRight_Toggle = false;
+                    CharacterDetails.CheekRight_Rotate = true;
+                }
+
+                if (CharacterDetails.HrothWhiskersRight_Toggle)
+                {
+                    CharacterDetails.HrothWhiskersRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersRight_X));
+                    CharacterDetails.HrothWhiskersRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersRight_Y));
+                    CharacterDetails.HrothWhiskersRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersRight_Z));
+                    CharacterDetails.HrothWhiskersRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersRight_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.HrothWhiskersRight_X.value,
+                        CharacterDetails.HrothWhiskersRight_Y.value,
+                        CharacterDetails.HrothWhiskersRight_Z.value,
+                        CharacterDetails.HrothWhiskersRight_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.HrothWhiskersRight_Toggle = false;
+                    CharacterDetails.HrothWhiskersRight_Rotate = true;
+                }
+
+                if (CharacterDetails.LipsLeft_Toggle)
+                {
+                    CharacterDetails.LipsLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsLeft_X));
+                    CharacterDetails.LipsLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsLeft_Y));
+                    CharacterDetails.LipsLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsLeft_Z));
+                    CharacterDetails.LipsLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsLeft_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.LipsLeft_X.value,
+                        CharacterDetails.LipsLeft_Y.value,
+                        CharacterDetails.LipsLeft_Z.value,
+                        CharacterDetails.LipsLeft_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.LipsLeft_Toggle = false;
+                    CharacterDetails.LipsLeft_Rotate = true;
+                }
+
+                if (CharacterDetails.HrothEyebrowLeft_Toggle)
+                {
+                    CharacterDetails.HrothEyebrowLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowLeft_X));
+                    CharacterDetails.HrothEyebrowLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowLeft_Y));
+                    CharacterDetails.HrothEyebrowLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowLeft_Z));
+                    CharacterDetails.HrothEyebrowLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowLeft_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.HrothEyebrowLeft_X.value,
+                        CharacterDetails.HrothEyebrowLeft_Y.value,
+                        CharacterDetails.HrothEyebrowLeft_Z.value,
+                        CharacterDetails.HrothEyebrowLeft_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.HrothEyebrowLeft_Toggle = false;
+                    CharacterDetails.HrothEyebrowLeft_Rotate = true;
+                }
+
+                if (CharacterDetails.LipsRight_Toggle)
+                {
+                    CharacterDetails.LipsRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsRight_X));
+                    CharacterDetails.LipsRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsRight_Y));
+                    CharacterDetails.LipsRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsRight_Z));
+                    CharacterDetails.LipsRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsRight_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.LipsRight_X.value,
+                        CharacterDetails.LipsRight_Y.value,
+                        CharacterDetails.LipsRight_Z.value,
+                        CharacterDetails.LipsRight_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.LipsRight_Toggle = false;
+                    CharacterDetails.LipsRight_Rotate = true;
+                }
+
+                if (CharacterDetails.HrothEyebrowRight_Toggle)
+                {
+                    CharacterDetails.HrothEyebrowRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowRight_X));
+                    CharacterDetails.HrothEyebrowRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowRight_Y));
+                    CharacterDetails.HrothEyebrowRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowRight_Z));
+                    CharacterDetails.HrothEyebrowRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowRight_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.HrothEyebrowRight_X.value,
+                        CharacterDetails.HrothEyebrowRight_Y.value,
+                        CharacterDetails.HrothEyebrowRight_Z.value,
+                        CharacterDetails.HrothEyebrowRight_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.HrothEyebrowRight_Toggle = false;
+                    CharacterDetails.HrothEyebrowRight_Rotate = true;
+                }
+
+                if (CharacterDetails.EyebrowLeft_Toggle)
+                {
+                    CharacterDetails.EyebrowLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowLeft_X));
+                    CharacterDetails.EyebrowLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowLeft_Y));
+                    CharacterDetails.EyebrowLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowLeft_Z));
+                    CharacterDetails.EyebrowLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowLeft_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.EyebrowLeft_X.value,
+                        CharacterDetails.EyebrowLeft_Y.value,
+                        CharacterDetails.EyebrowLeft_Z.value,
+                        CharacterDetails.EyebrowLeft_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.EyebrowLeft_Toggle = false;
+                    CharacterDetails.EyebrowLeft_Rotate = true;
+                }
+
+                if (CharacterDetails.HrothBridge_Toggle)
+                {
+                    CharacterDetails.HrothBridge_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBridge_X));
+                    CharacterDetails.HrothBridge_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBridge_Y));
+                    CharacterDetails.HrothBridge_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBridge_Z));
+                    CharacterDetails.HrothBridge_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBridge_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.HrothBridge_X.value,
+                        CharacterDetails.HrothBridge_Y.value,
+                        CharacterDetails.HrothBridge_Z.value,
+                        CharacterDetails.HrothBridge_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.HrothBridge_Toggle = false;
+                    CharacterDetails.HrothBridge_Rotate = true;
+                }
+
+                if (CharacterDetails.EyebrowRight_Toggle)
+                {
+                    CharacterDetails.EyebrowRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowRight_X));
+                    CharacterDetails.EyebrowRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowRight_Y));
+                    CharacterDetails.EyebrowRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowRight_Z));
+                    CharacterDetails.EyebrowRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowRight_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.EyebrowRight_X.value,
+                        CharacterDetails.EyebrowRight_Y.value,
+                        CharacterDetails.EyebrowRight_Z.value,
+                        CharacterDetails.EyebrowRight_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.EyebrowRight_Toggle = false;
+                    CharacterDetails.EyebrowRight_Rotate = true;
+                }
+
+                if (CharacterDetails.HrothBrowLeft_Toggle)
+                {
+                    CharacterDetails.HrothBrowLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowLeft_X));
+                    CharacterDetails.HrothBrowLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowLeft_Y));
+                    CharacterDetails.HrothBrowLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowLeft_Z));
+                    CharacterDetails.HrothBrowLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowLeft_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.HrothBrowLeft_X.value,
+                        CharacterDetails.HrothBrowLeft_Y.value,
+                        CharacterDetails.HrothBrowLeft_Z.value,
+                        CharacterDetails.HrothBrowLeft_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.HrothBrowLeft_Toggle = false;
+                    CharacterDetails.HrothBrowLeft_Rotate = true;
+                }
+
+                if (CharacterDetails.Bridge_Toggle)
+                {
+                    CharacterDetails.Bridge_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Bridge_X));
+                    CharacterDetails.Bridge_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Bridge_Y));
+                    CharacterDetails.Bridge_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Bridge_Z));
+                    CharacterDetails.Bridge_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Bridge_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.Bridge_X.value,
+                        CharacterDetails.Bridge_Y.value,
+                        CharacterDetails.Bridge_Z.value,
+                        CharacterDetails.Bridge_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.Bridge_Toggle = false;
+                    CharacterDetails.Bridge_Rotate = true;
+                }
+
+                if (CharacterDetails.HrothBrowRight_Toggle)
+                {
+                    CharacterDetails.HrothBrowRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowRight_X));
+                    CharacterDetails.HrothBrowRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowRight_Y));
+                    CharacterDetails.HrothBrowRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowRight_Z));
+                    CharacterDetails.HrothBrowRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowRight_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.HrothBrowRight_X.value,
+                        CharacterDetails.HrothBrowRight_Y.value,
+                        CharacterDetails.HrothBrowRight_Z.value,
+                        CharacterDetails.HrothBrowRight_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.HrothBrowRight_Toggle = false;
+                    CharacterDetails.HrothBrowRight_Rotate = true;
+                }
+
+                if (CharacterDetails.BrowLeft_Toggle)
+                {
+                    CharacterDetails.BrowLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowLeft_X));
+                    CharacterDetails.BrowLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowLeft_Y));
+                    CharacterDetails.BrowLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowLeft_Z));
+                    CharacterDetails.BrowLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowLeft_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.BrowLeft_X.value,
+                        CharacterDetails.BrowLeft_Y.value,
+                        CharacterDetails.BrowLeft_Z.value,
+                        CharacterDetails.BrowLeft_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.BrowLeft_Toggle = false;
+                    CharacterDetails.BrowLeft_Rotate = true;
+                }
+
+                if (CharacterDetails.HrothJawUpper_Toggle)
+                {
+                    CharacterDetails.HrothJawUpper_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothJawUpper_X));
+                    CharacterDetails.HrothJawUpper_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothJawUpper_Y));
+                    CharacterDetails.HrothJawUpper_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothJawUpper_Z));
+                    CharacterDetails.HrothJawUpper_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothJawUpper_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.HrothJawUpper_X.value,
+                        CharacterDetails.HrothJawUpper_Y.value,
+                        CharacterDetails.HrothJawUpper_Z.value,
+                        CharacterDetails.HrothJawUpper_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.HrothJawUpper_Toggle = false;
+                    CharacterDetails.HrothJawUpper_Rotate = true;
+                }
+
+                if (CharacterDetails.BrowRight_Toggle)
+                {
+                    CharacterDetails.BrowRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowRight_X));
+                    CharacterDetails.BrowRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowRight_Y));
+                    CharacterDetails.BrowRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowRight_Z));
+                    CharacterDetails.BrowRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowRight_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.BrowRight_X.value,
+                        CharacterDetails.BrowRight_Y.value,
+                        CharacterDetails.BrowRight_Z.value,
+                        CharacterDetails.BrowRight_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.BrowRight_Toggle = false;
+                    CharacterDetails.BrowRight_Rotate = true;
+                }
+
+                if (CharacterDetails.HrothLipUpper_Toggle)
+                {
+                    CharacterDetails.HrothLipUpper_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpper_X));
+                    CharacterDetails.HrothLipUpper_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpper_Y));
+                    CharacterDetails.HrothLipUpper_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpper_Z));
+                    CharacterDetails.HrothLipUpper_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpper_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.HrothLipUpper_X.value,
+                        CharacterDetails.HrothLipUpper_Y.value,
+                        CharacterDetails.HrothLipUpper_Z.value,
+                        CharacterDetails.HrothLipUpper_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.HrothLipUpper_Toggle = false;
+                    CharacterDetails.HrothLipUpper_Rotate = true;
+                }
+
+                if (CharacterDetails.LipUpperA_Toggle)
+                {
+                    CharacterDetails.LipUpperA_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperA_X));
+                    CharacterDetails.LipUpperA_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperA_Y));
+                    CharacterDetails.LipUpperA_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperA_Z));
+                    CharacterDetails.LipUpperA_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperA_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.LipUpperA_X.value,
+                        CharacterDetails.LipUpperA_Y.value,
+                        CharacterDetails.LipUpperA_Z.value,
+                        CharacterDetails.LipUpperA_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.LipUpperA_Toggle = false;
+                    CharacterDetails.LipUpperA_Rotate = true;
+                }
+
+                if (CharacterDetails.HrothEyelidUpperLeft_Toggle)
+                {
+                    CharacterDetails.HrothEyelidUpperLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperLeft_X));
+                    CharacterDetails.HrothEyelidUpperLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperLeft_Y));
+                    CharacterDetails.HrothEyelidUpperLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperLeft_Z));
+                    CharacterDetails.HrothEyelidUpperLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperLeft_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.HrothEyelidUpperLeft_X.value,
+                        CharacterDetails.HrothEyelidUpperLeft_Y.value,
+                        CharacterDetails.HrothEyelidUpperLeft_Z.value,
+                        CharacterDetails.HrothEyelidUpperLeft_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.HrothEyelidUpperLeft_Toggle = false;
+                    CharacterDetails.HrothEyelidUpperLeft_Rotate = true;
+                }
+
+                if (CharacterDetails.EyelidUpperLeft_Toggle)
+                {
+                    CharacterDetails.EyelidUpperLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperLeft_X));
+                    CharacterDetails.EyelidUpperLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperLeft_Y));
+                    CharacterDetails.EyelidUpperLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperLeft_Z));
+                    CharacterDetails.EyelidUpperLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperLeft_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.EyelidUpperLeft_X.value,
+                        CharacterDetails.EyelidUpperLeft_Y.value,
+                        CharacterDetails.EyelidUpperLeft_Z.value,
+                        CharacterDetails.EyelidUpperLeft_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.EyelidUpperLeft_Toggle = false;
+                    CharacterDetails.EyelidUpperLeft_Rotate = true;
+                }
+
+                if (CharacterDetails.HrothEyelidUpperRight_Toggle)
+                {
+                    CharacterDetails.HrothEyelidUpperRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperRight_X));
+                    CharacterDetails.HrothEyelidUpperRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperRight_Y));
+                    CharacterDetails.HrothEyelidUpperRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperRight_Z));
+                    CharacterDetails.HrothEyelidUpperRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperRight_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.HrothEyelidUpperRight_X.value,
+                        CharacterDetails.HrothEyelidUpperRight_Y.value,
+                        CharacterDetails.HrothEyelidUpperRight_Z.value,
+                        CharacterDetails.HrothEyelidUpperRight_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.HrothEyelidUpperRight_Toggle = false;
+                    CharacterDetails.HrothEyelidUpperRight_Rotate = true;
+                }
+
+                if (CharacterDetails.EyelidUpperRight_Toggle)
+                {
+                    CharacterDetails.EyelidUpperRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperRight_X));
+                    CharacterDetails.EyelidUpperRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperRight_Y));
+                    CharacterDetails.EyelidUpperRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperRight_Z));
+                    CharacterDetails.EyelidUpperRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperRight_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.EyelidUpperRight_X.value,
+                        CharacterDetails.EyelidUpperRight_Y.value,
+                        CharacterDetails.EyelidUpperRight_Z.value,
+                        CharacterDetails.EyelidUpperRight_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.EyelidUpperRight_Toggle = false;
+                    CharacterDetails.EyelidUpperRight_Rotate = true;
+                }
+
+                if (CharacterDetails.HrothLipsLeft_Toggle)
+                {
+                    CharacterDetails.HrothLipsLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsLeft_X));
+                    CharacterDetails.HrothLipsLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsLeft_Y));
+                    CharacterDetails.HrothLipsLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsLeft_Z));
+                    CharacterDetails.HrothLipsLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsLeft_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.HrothLipsLeft_X.value,
+                        CharacterDetails.HrothLipsLeft_Y.value,
+                        CharacterDetails.HrothLipsLeft_Z.value,
+                        CharacterDetails.HrothLipsLeft_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.HrothLipsLeft_Toggle = false;
+                    CharacterDetails.HrothLipsLeft_Rotate = true;
+                }
+
+                if (CharacterDetails.LipLowerA_Toggle)
+                {
+                    CharacterDetails.LipLowerA_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerA_X));
+                    CharacterDetails.LipLowerA_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerA_Y));
+                    CharacterDetails.LipLowerA_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerA_Z));
+                    CharacterDetails.LipLowerA_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerA_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.LipLowerA_X.value,
+                        CharacterDetails.LipLowerA_Y.value,
+                        CharacterDetails.LipLowerA_Z.value,
+                        CharacterDetails.LipLowerA_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.LipLowerA_Toggle = false;
+                    CharacterDetails.LipLowerA_Rotate = true;
+                }
+
+                if (CharacterDetails.HrothLipsRight_Toggle)
+                {
+                    CharacterDetails.HrothLipsRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsRight_X));
+                    CharacterDetails.HrothLipsRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsRight_Y));
+                    CharacterDetails.HrothLipsRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsRight_Z));
+                    CharacterDetails.HrothLipsRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsRight_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.HrothLipsRight_X.value,
+                        CharacterDetails.HrothLipsRight_Y.value,
+                        CharacterDetails.HrothLipsRight_Z.value,
+                        CharacterDetails.HrothLipsRight_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.HrothLipsRight_Toggle = false;
+                    CharacterDetails.HrothLipsRight_Rotate = true;
+                }
+
+                if (CharacterDetails.VieraEar01ALeft_Toggle)
+                {
+                    CharacterDetails.VieraEar01ALeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ALeft_X));
+                    CharacterDetails.VieraEar01ALeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ALeft_Y));
+                    CharacterDetails.VieraEar01ALeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ALeft_Z));
+                    CharacterDetails.VieraEar01ALeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ALeft_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.VieraEar01ALeft_X.value,
+                        CharacterDetails.VieraEar01ALeft_Y.value,
+                        CharacterDetails.VieraEar01ALeft_Z.value,
+                        CharacterDetails.VieraEar01ALeft_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.VieraEar01ALeft_Toggle = false;
+                    CharacterDetails.VieraEar01ALeft_Rotate = true;
+                }
+
+                if (CharacterDetails.LipUpperB_Toggle)
+                {
+                    CharacterDetails.LipUpperB_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperB_X));
+                    CharacterDetails.LipUpperB_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperB_Y));
+                    CharacterDetails.LipUpperB_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperB_Z));
+                    CharacterDetails.LipUpperB_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperB_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.LipUpperB_X.value,
+                        CharacterDetails.LipUpperB_Y.value,
+                        CharacterDetails.LipUpperB_Z.value,
+                        CharacterDetails.LipUpperB_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.LipUpperB_Toggle = false;
+                    CharacterDetails.LipUpperB_Rotate = true;
+                }
+
+                if (CharacterDetails.HrothLipUpperLeft_Toggle)
+                {
+                    CharacterDetails.HrothLipUpperLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperLeft_X));
+                    CharacterDetails.HrothLipUpperLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperLeft_Y));
+                    CharacterDetails.HrothLipUpperLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperLeft_Z));
+                    CharacterDetails.HrothLipUpperLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperLeft_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.HrothLipUpperLeft_X.value,
+                        CharacterDetails.HrothLipUpperLeft_Y.value,
+                        CharacterDetails.HrothLipUpperLeft_Z.value,
+                        CharacterDetails.HrothLipUpperLeft_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.HrothLipUpperLeft_Toggle = false;
+                    CharacterDetails.HrothLipUpperLeft_Rotate = true;
+                }
+
+                if (CharacterDetails.VieraEar01ARight_Toggle)
+                {
+                    CharacterDetails.VieraEar01ARight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ARight_X));
+                    CharacterDetails.VieraEar01ARight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ARight_Y));
+                    CharacterDetails.VieraEar01ARight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ARight_Z));
+                    CharacterDetails.VieraEar01ARight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ARight_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.VieraEar01ARight_X.value,
+                        CharacterDetails.VieraEar01ARight_Y.value,
+                        CharacterDetails.VieraEar01ARight_Z.value,
+                        CharacterDetails.VieraEar01ARight_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.VieraEar01ARight_Toggle = false;
+                    CharacterDetails.VieraEar01ARight_Rotate = true;
+                }
+
+                if (CharacterDetails.LipLowerB_Toggle)
+                {
+                    CharacterDetails.LipLowerB_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerB_X));
+                    CharacterDetails.LipLowerB_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerB_Y));
+                    CharacterDetails.LipLowerB_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerB_Z));
+                    CharacterDetails.LipLowerB_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerB_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.LipLowerB_X.value,
+                        CharacterDetails.LipLowerB_Y.value,
+                        CharacterDetails.LipLowerB_Z.value,
+                        CharacterDetails.LipLowerB_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.LipLowerB_Toggle = false;
+                    CharacterDetails.LipLowerB_Rotate = true;
+                }
+
+                if (CharacterDetails.HrothLipUpperRight_Toggle)
+                {
+                    CharacterDetails.HrothLipUpperRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperRight_X));
+                    CharacterDetails.HrothLipUpperRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperRight_Y));
+                    CharacterDetails.HrothLipUpperRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperRight_Z));
+                    CharacterDetails.HrothLipUpperRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperRight_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.HrothLipUpperRight_X.value,
+                        CharacterDetails.HrothLipUpperRight_Y.value,
+                        CharacterDetails.HrothLipUpperRight_Z.value,
+                        CharacterDetails.HrothLipUpperRight_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.HrothLipUpperRight_Toggle = false;
+                    CharacterDetails.HrothLipUpperRight_Rotate = true;
+                }
+
+                if (CharacterDetails.VieraEar02ALeft_Toggle)
+                {
+                    CharacterDetails.VieraEar02ALeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ALeft_X));
+                    CharacterDetails.VieraEar02ALeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ALeft_Y));
+                    CharacterDetails.VieraEar02ALeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ALeft_Z));
+                    CharacterDetails.VieraEar02ALeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ALeft_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.VieraEar02ALeft_X.value,
+                        CharacterDetails.VieraEar02ALeft_Y.value,
+                        CharacterDetails.VieraEar02ALeft_Z.value,
+                        CharacterDetails.VieraEar02ALeft_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.VieraEar02ALeft_Toggle = false;
+                    CharacterDetails.VieraEar02ALeft_Rotate = true;
+                }
+
+                if (CharacterDetails.HrothLipLower_Toggle)
+                {
+                    CharacterDetails.HrothLipLower_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipLower_X));
+                    CharacterDetails.HrothLipLower_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipLower_Y));
+                    CharacterDetails.HrothLipLower_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipLower_Z));
+                    CharacterDetails.HrothLipLower_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipLower_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.HrothLipLower_X.value,
+                        CharacterDetails.HrothLipLower_Y.value,
+                        CharacterDetails.HrothLipLower_Z.value,
+                        CharacterDetails.HrothLipLower_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.HrothLipLower_Toggle = false;
+                    CharacterDetails.HrothLipLower_Rotate = true;
+                }
+
+                if (CharacterDetails.VieraEar02ARight_Toggle)
+                {
+                    CharacterDetails.VieraEar02ARight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ARight_X));
+                    CharacterDetails.VieraEar02ARight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ARight_Y));
+                    CharacterDetails.VieraEar02ARight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ARight_Z));
+                    CharacterDetails.VieraEar02ARight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ARight_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.VieraEar02ARight_X.value,
+                        CharacterDetails.VieraEar02ARight_Y.value,
+                        CharacterDetails.VieraEar02ARight_Z.value,
+                        CharacterDetails.VieraEar02ARight_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.VieraEar02ARight_Toggle = false;
+                    CharacterDetails.VieraEar02ARight_Rotate = true;
+                }
+
+                if (CharacterDetails.VieraEar03ALeft_Toggle)
+                {
+                    CharacterDetails.VieraEar03ALeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ALeft_X));
+                    CharacterDetails.VieraEar03ALeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ALeft_Y));
+                    CharacterDetails.VieraEar03ALeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ALeft_Z));
+                    CharacterDetails.VieraEar03ALeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ALeft_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.VieraEar03ALeft_X.value,
+                        CharacterDetails.VieraEar03ALeft_Y.value,
+                        CharacterDetails.VieraEar03ALeft_Z.value,
+                        CharacterDetails.VieraEar03ALeft_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.VieraEar03ALeft_Toggle = false;
+                    CharacterDetails.VieraEar03ALeft_Rotate = true;
+                }
+
+                if (CharacterDetails.VieraEar03ARight_Toggle)
+                {
+                    CharacterDetails.VieraEar03ARight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ARight_X));
+                    CharacterDetails.VieraEar03ARight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ARight_Y));
+                    CharacterDetails.VieraEar03ARight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ARight_Z));
+                    CharacterDetails.VieraEar03ARight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ARight_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.VieraEar03ARight_X.value,
+                        CharacterDetails.VieraEar03ARight_Y.value,
+                        CharacterDetails.VieraEar03ARight_Z.value,
+                        CharacterDetails.VieraEar03ARight_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.VieraEar03ARight_Toggle = false;
+                    CharacterDetails.VieraEar03ARight_Rotate = true;
+                }
+
+                if (CharacterDetails.VieraEar04ALeft_Toggle)
+                {
+                    CharacterDetails.VieraEar04ALeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ALeft_X));
+                    CharacterDetails.VieraEar04ALeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ALeft_Y));
+                    CharacterDetails.VieraEar04ALeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ALeft_Z));
+                    CharacterDetails.VieraEar04ALeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ALeft_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.VieraEar04ALeft_X.value,
+                        CharacterDetails.VieraEar04ALeft_Y.value,
+                        CharacterDetails.VieraEar04ALeft_Z.value,
+                        CharacterDetails.VieraEar04ALeft_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.VieraEar04ALeft_Toggle = false;
+                    CharacterDetails.VieraEar04ALeft_Rotate = true;
+                }
+
+                if (CharacterDetails.VieraEar04ARight_Toggle)
+                {
+                    CharacterDetails.VieraEar04ARight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ARight_X));
+                    CharacterDetails.VieraEar04ARight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ARight_Y));
+                    CharacterDetails.VieraEar04ARight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ARight_Z));
+                    CharacterDetails.VieraEar04ARight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ARight_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.VieraEar04ARight_X.value,
+                        CharacterDetails.VieraEar04ARight_Y.value,
+                        CharacterDetails.VieraEar04ARight_Z.value,
+                        CharacterDetails.VieraEar04ARight_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.VieraEar04ARight_Toggle = false;
+                    CharacterDetails.VieraEar04ARight_Rotate = true;
+                }
+
+                if (CharacterDetails.VieraLipLowerA_Toggle)
+                {
+                    CharacterDetails.VieraLipLowerA_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerA_X));
+                    CharacterDetails.VieraLipLowerA_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerA_Y));
+                    CharacterDetails.VieraLipLowerA_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerA_Z));
+                    CharacterDetails.VieraLipLowerA_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerA_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.VieraLipLowerA_X.value,
+                        CharacterDetails.VieraLipLowerA_Y.value,
+                        CharacterDetails.VieraLipLowerA_Z.value,
+                        CharacterDetails.VieraLipLowerA_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.VieraLipLowerA_Toggle = false;
+                    CharacterDetails.VieraLipLowerA_Rotate = true;
+                }
+
+                if (CharacterDetails.VieraLipUpperB_Toggle)
+                {
+                    CharacterDetails.VieraLipUpperB_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipUpperB_X));
+                    CharacterDetails.VieraLipUpperB_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipUpperB_Y));
+                    CharacterDetails.VieraLipUpperB_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipUpperB_Z));
+                    CharacterDetails.VieraLipUpperB_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipUpperB_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.VieraLipUpperB_X.value,
+                        CharacterDetails.VieraLipUpperB_Y.value,
+                        CharacterDetails.VieraLipUpperB_Z.value,
+                        CharacterDetails.VieraLipUpperB_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.VieraLipUpperB_Toggle = false;
+                    CharacterDetails.VieraLipUpperB_Rotate = true;
+                }
+
+                if (CharacterDetails.VieraEar01BLeft_Toggle)
+                {
+                    CharacterDetails.VieraEar01BLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BLeft_X));
+                    CharacterDetails.VieraEar01BLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BLeft_Y));
+                    CharacterDetails.VieraEar01BLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BLeft_Z));
+                    CharacterDetails.VieraEar01BLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BLeft_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.VieraEar01BLeft_X.value,
+                        CharacterDetails.VieraEar01BLeft_Y.value,
+                        CharacterDetails.VieraEar01BLeft_Z.value,
+                        CharacterDetails.VieraEar01BLeft_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.VieraEar01BLeft_Toggle = false;
+                    CharacterDetails.VieraEar01BLeft_Rotate = true;
+                }
+
+                if (CharacterDetails.VieraEar01BRight_Toggle)
+                {
+                    CharacterDetails.VieraEar01BRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BRight_X));
+                    CharacterDetails.VieraEar01BRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BRight_Y));
+                    CharacterDetails.VieraEar01BRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BRight_Z));
+                    CharacterDetails.VieraEar01BRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BRight_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.VieraEar01BRight_X.value,
+                        CharacterDetails.VieraEar01BRight_Y.value,
+                        CharacterDetails.VieraEar01BRight_Z.value,
+                        CharacterDetails.VieraEar01BRight_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.VieraEar01BRight_Toggle = false;
+                    CharacterDetails.VieraEar01BRight_Rotate = true;
+                }
+
+                if (CharacterDetails.VieraEar02BLeft_Toggle)
+                {
+                    CharacterDetails.VieraEar02BLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BLeft_X));
+                    CharacterDetails.VieraEar02BLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BLeft_Y));
+                    CharacterDetails.VieraEar02BLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BLeft_Z));
+                    CharacterDetails.VieraEar02BLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BLeft_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.VieraEar02BLeft_X.value,
+                        CharacterDetails.VieraEar02BLeft_Y.value,
+                        CharacterDetails.VieraEar02BLeft_Z.value,
+                        CharacterDetails.VieraEar02BLeft_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.VieraEar02BLeft_Toggle = false;
+                    CharacterDetails.VieraEar02BLeft_Rotate = true;
+                }
+
+                if (CharacterDetails.VieraEar02BRight_Toggle)
+                {
+                    CharacterDetails.VieraEar02BRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BRight_X));
+                    CharacterDetails.VieraEar02BRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BRight_Y));
+                    CharacterDetails.VieraEar02BRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BRight_Z));
+                    CharacterDetails.VieraEar02BRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BRight_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.VieraEar02BRight_X.value,
+                        CharacterDetails.VieraEar02BRight_Y.value,
+                        CharacterDetails.VieraEar02BRight_Z.value,
+                        CharacterDetails.VieraEar02BRight_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.VieraEar02BRight_Toggle = false;
+                    CharacterDetails.VieraEar02BRight_Rotate = true;
+                }
+
+                if (CharacterDetails.VieraEar03BLeft_Toggle)
+                {
+                    CharacterDetails.VieraEar03BLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BLeft_X));
+                    CharacterDetails.VieraEar03BLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BLeft_Y));
+                    CharacterDetails.VieraEar03BLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BLeft_Z));
+                    CharacterDetails.VieraEar03BLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BLeft_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.VieraEar03BLeft_X.value,
+                        CharacterDetails.VieraEar03BLeft_Y.value,
+                        CharacterDetails.VieraEar03BLeft_Z.value,
+                        CharacterDetails.VieraEar03BLeft_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.VieraEar03BLeft_Toggle = false;
+                    CharacterDetails.VieraEar03BLeft_Rotate = true;
+                }
+
+                if (CharacterDetails.VieraEar03BRight_Toggle)
+                {
+                    CharacterDetails.VieraEar03BRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BRight_X));
+                    CharacterDetails.VieraEar03BRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BRight_Y));
+                    CharacterDetails.VieraEar03BRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BRight_Z));
+                    CharacterDetails.VieraEar03BRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BRight_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.VieraEar03BRight_X.value,
+                        CharacterDetails.VieraEar03BRight_Y.value,
+                        CharacterDetails.VieraEar03BRight_Z.value,
+                        CharacterDetails.VieraEar03BRight_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.VieraEar03BRight_Toggle = false;
+                    CharacterDetails.VieraEar03BRight_Rotate = true;
+                }
+
+                if (CharacterDetails.VieraEar04BLeft_Toggle)
+                {
+                    CharacterDetails.VieraEar04BLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BLeft_X));
+                    CharacterDetails.VieraEar04BLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BLeft_Y));
+                    CharacterDetails.VieraEar04BLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BLeft_Z));
+                    CharacterDetails.VieraEar04BLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BLeft_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.VieraEar04BLeft_X.value,
+                        CharacterDetails.VieraEar04BLeft_Y.value,
+                        CharacterDetails.VieraEar04BLeft_Z.value,
+                        CharacterDetails.VieraEar04BLeft_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.VieraEar04BLeft_Toggle = false;
+                    CharacterDetails.VieraEar04BLeft_Rotate = true;
+                }
+
+                if (CharacterDetails.VieraEar04BRight_Toggle)
+                {
+                    CharacterDetails.VieraEar04BRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BRight_X));
+                    CharacterDetails.VieraEar04BRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BRight_Y));
+                    CharacterDetails.VieraEar04BRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BRight_Z));
+                    CharacterDetails.VieraEar04BRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BRight_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.VieraEar04BRight_X.value,
+                        CharacterDetails.VieraEar04BRight_Y.value,
+                        CharacterDetails.VieraEar04BRight_Z.value,
+                        CharacterDetails.VieraEar04BRight_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.VieraEar04BRight_Toggle = false;
+                    CharacterDetails.VieraEar04BRight_Rotate = true;
+                }
+
+                if (CharacterDetails.VieraLipLowerB_Toggle)
+                {
+                    CharacterDetails.VieraLipLowerB_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerB_X));
+                    CharacterDetails.VieraLipLowerB_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerB_Y));
+                    CharacterDetails.VieraLipLowerB_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerB_Z));
+                    CharacterDetails.VieraLipLowerB_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerB_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.VieraLipLowerB_X.value,
+                        CharacterDetails.VieraLipLowerB_Y.value,
+                        CharacterDetails.VieraLipLowerB_Z.value,
+                        CharacterDetails.VieraLipLowerB_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.VieraLipLowerB_Toggle = false;
+                    CharacterDetails.VieraLipLowerB_Rotate = true;
+                }
+
+                if (CharacterDetails.ExRootHair_Toggle)
+                {
+                    CharacterDetails.ExRootHair_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExRootHair_X));
+                    CharacterDetails.ExRootHair_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExRootHair_Y));
+                    CharacterDetails.ExRootHair_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExRootHair_Z));
+                    CharacterDetails.ExRootHair_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExRootHair_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExRootHair_X.value,
+                        CharacterDetails.ExRootHair_Y.value,
+                        CharacterDetails.ExRootHair_Z.value,
+                        CharacterDetails.ExRootHair_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExRootHair_Toggle = false;
+                    CharacterDetails.ExRootHair_Rotate = true;
+                }
+
+                if (CharacterDetails.ExHairA_Toggle)
+                {
+                    CharacterDetails.ExHairA_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairA_X));
+                    CharacterDetails.ExHairA_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairA_Y));
+                    CharacterDetails.ExHairA_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairA_Z));
+                    CharacterDetails.ExHairA_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairA_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExHairA_X.value,
+                        CharacterDetails.ExHairA_Y.value,
+                        CharacterDetails.ExHairA_Z.value,
+                        CharacterDetails.ExHairA_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExHairA_Toggle = false;
+                    CharacterDetails.ExHairA_Rotate = true;
+                }
+
+                if (CharacterDetails.ExHairB_Toggle)
+                {
+                    CharacterDetails.ExHairB_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairB_X));
+                    CharacterDetails.ExHairB_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairB_Y));
+                    CharacterDetails.ExHairB_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairB_Z));
+                    CharacterDetails.ExHairB_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairB_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExHairB_X.value,
+                        CharacterDetails.ExHairB_Y.value,
+                        CharacterDetails.ExHairB_Z.value,
+                        CharacterDetails.ExHairB_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExHairB_Toggle = false;
+                    CharacterDetails.ExHairB_Rotate = true;
+                }
+
+                if (CharacterDetails.ExHairC_Toggle)
+                {
+                    CharacterDetails.ExHairC_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairC_X));
+                    CharacterDetails.ExHairC_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairC_Y));
+                    CharacterDetails.ExHairC_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairC_Z));
+                    CharacterDetails.ExHairC_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairC_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExHairC_X.value,
+                        CharacterDetails.ExHairC_Y.value,
+                        CharacterDetails.ExHairC_Z.value,
+                        CharacterDetails.ExHairC_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExHairC_Toggle = false;
+                    CharacterDetails.ExHairC_Rotate = true;
+                }
+
+                if (CharacterDetails.ExHairD_Toggle)
+                {
+                    CharacterDetails.ExHairD_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairD_X));
+                    CharacterDetails.ExHairD_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairD_Y));
+                    CharacterDetails.ExHairD_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairD_Z));
+                    CharacterDetails.ExHairD_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairD_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExHairD_X.value,
+                        CharacterDetails.ExHairD_Y.value,
+                        CharacterDetails.ExHairD_Z.value,
+                        CharacterDetails.ExHairD_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExHairD_Toggle = false;
+                    CharacterDetails.ExHairD_Rotate = true;
+                }
+
+                if (CharacterDetails.ExHairE_Toggle)
+                {
+                    CharacterDetails.ExHairE_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairE_X));
+                    CharacterDetails.ExHairE_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairE_Y));
+                    CharacterDetails.ExHairE_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairE_Z));
+                    CharacterDetails.ExHairE_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairE_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExHairE_X.value,
+                        CharacterDetails.ExHairE_Y.value,
+                        CharacterDetails.ExHairE_Z.value,
+                        CharacterDetails.ExHairE_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExHairE_Toggle = false;
+                    CharacterDetails.ExHairE_Rotate = true;
+                }
+
+                if (CharacterDetails.ExHairF_Toggle)
+                {
+                    CharacterDetails.ExHairF_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairF_X));
+                    CharacterDetails.ExHairF_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairF_Y));
+                    CharacterDetails.ExHairF_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairF_Z));
+                    CharacterDetails.ExHairF_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairF_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExHairF_X.value,
+                        CharacterDetails.ExHairF_Y.value,
+                        CharacterDetails.ExHairF_Z.value,
+                        CharacterDetails.ExHairF_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExHairF_Toggle = false;
+                    CharacterDetails.ExHairF_Rotate = true;
+                }
+
+                if (CharacterDetails.ExHairG_Toggle)
+                {
+                    CharacterDetails.ExHairG_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairG_X));
+                    CharacterDetails.ExHairG_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairG_Y));
+                    CharacterDetails.ExHairG_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairG_Z));
+                    CharacterDetails.ExHairG_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairG_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExHairG_X.value,
+                        CharacterDetails.ExHairG_Y.value,
+                        CharacterDetails.ExHairG_Z.value,
+                        CharacterDetails.ExHairG_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExHairG_Toggle = false;
+                    CharacterDetails.ExHairG_Rotate = true;
+                }
+
+                if (CharacterDetails.ExHairH_Toggle)
+                {
+                    CharacterDetails.ExHairH_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairH_X));
+                    CharacterDetails.ExHairH_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairH_Y));
+                    CharacterDetails.ExHairH_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairH_Z));
+                    CharacterDetails.ExHairH_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairH_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExHairH_X.value,
+                        CharacterDetails.ExHairH_Y.value,
+                        CharacterDetails.ExHairH_Z.value,
+                        CharacterDetails.ExHairH_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExHairH_Toggle = false;
+                    CharacterDetails.ExHairH_Rotate = true;
+                }
+
+                if (CharacterDetails.ExHairI_Toggle)
+                {
+                    CharacterDetails.ExHairI_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairI_X));
+                    CharacterDetails.ExHairI_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairI_Y));
+                    CharacterDetails.ExHairI_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairI_Z));
+                    CharacterDetails.ExHairI_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairI_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExHairI_X.value,
+                        CharacterDetails.ExHairI_Y.value,
+                        CharacterDetails.ExHairI_Z.value,
+                        CharacterDetails.ExHairI_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExHairI_Toggle = false;
+                    CharacterDetails.ExHairI_Rotate = true;
+                }
+
+                if (CharacterDetails.ExHairJ_Toggle)
+                {
+                    CharacterDetails.ExHairJ_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairJ_X));
+                    CharacterDetails.ExHairJ_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairJ_Y));
+                    CharacterDetails.ExHairJ_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairJ_Z));
+                    CharacterDetails.ExHairJ_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairJ_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExHairJ_X.value,
+                        CharacterDetails.ExHairJ_Y.value,
+                        CharacterDetails.ExHairJ_Z.value,
+                        CharacterDetails.ExHairJ_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExHairJ_Toggle = false;
+                    CharacterDetails.ExHairJ_Rotate = true;
+                }
+
+                if (CharacterDetails.ExHairK_Toggle)
+                {
+                    CharacterDetails.ExHairK_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairK_X));
+                    CharacterDetails.ExHairK_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairK_Y));
+                    CharacterDetails.ExHairK_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairK_Z));
+                    CharacterDetails.ExHairK_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairK_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExHairK_X.value,
+                        CharacterDetails.ExHairK_Y.value,
+                        CharacterDetails.ExHairK_Z.value,
+                        CharacterDetails.ExHairK_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExHairK_Toggle = false;
+                    CharacterDetails.ExHairK_Rotate = true;
+                }
+
+                if (CharacterDetails.ExHairL_Toggle)
+                {
+                    CharacterDetails.ExHairL_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairL_X));
+                    CharacterDetails.ExHairL_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairL_Y));
+                    CharacterDetails.ExHairL_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairL_Z));
+                    CharacterDetails.ExHairL_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairL_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExHairL_X.value,
+                        CharacterDetails.ExHairL_Y.value,
+                        CharacterDetails.ExHairL_Z.value,
+                        CharacterDetails.ExHairL_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExHairL_Toggle = false;
+                    CharacterDetails.ExHairL_Rotate = true;
+                }
+
+                if (CharacterDetails.ExRootMet_Toggle)
+                {
+                    CharacterDetails.ExRootMet_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExRootMet_X));
+                    CharacterDetails.ExRootMet_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExRootMet_Y));
+                    CharacterDetails.ExRootMet_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExRootMet_Z));
+                    CharacterDetails.ExRootMet_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExRootMet_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExRootMet_X.value,
+                        CharacterDetails.ExRootMet_Y.value,
+                        CharacterDetails.ExRootMet_Z.value,
+                        CharacterDetails.ExRootMet_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExRootMet_Toggle = false;
+                    CharacterDetails.ExRootMet_Rotate = true;
+                }
+
+                if (CharacterDetails.ExMetA_Toggle)
+                {
+                    CharacterDetails.ExMetA_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetA_X));
+                    CharacterDetails.ExMetA_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetA_Y));
+                    CharacterDetails.ExMetA_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetA_Z));
+                    CharacterDetails.ExMetA_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetA_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExMetA_X.value,
+                        CharacterDetails.ExMetA_Y.value,
+                        CharacterDetails.ExMetA_Z.value,
+                        CharacterDetails.ExMetA_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExMetA_Toggle = false;
+                    CharacterDetails.ExMetA_Rotate = true;
+                }
+
+                if (CharacterDetails.ExMetB_Toggle)
+                {
+                    CharacterDetails.ExMetB_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetB_X));
+                    CharacterDetails.ExMetB_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetB_Y));
+                    CharacterDetails.ExMetB_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetB_Z));
+                    CharacterDetails.ExMetB_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetB_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExMetB_X.value,
+                        CharacterDetails.ExMetB_Y.value,
+                        CharacterDetails.ExMetB_Z.value,
+                        CharacterDetails.ExMetB_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExMetB_Toggle = false;
+                    CharacterDetails.ExMetB_Rotate = true;
+                }
+
+                if (CharacterDetails.ExMetC_Toggle)
+                {
+                    CharacterDetails.ExMetC_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetC_X));
+                    CharacterDetails.ExMetC_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetC_Y));
+                    CharacterDetails.ExMetC_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetC_Z));
+                    CharacterDetails.ExMetC_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetC_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExMetC_X.value,
+                        CharacterDetails.ExMetC_Y.value,
+                        CharacterDetails.ExMetC_Z.value,
+                        CharacterDetails.ExMetC_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExMetC_Toggle = false;
+                    CharacterDetails.ExMetC_Rotate = true;
+                }
+
+                if (CharacterDetails.ExMetD_Toggle)
+                {
+                    CharacterDetails.ExMetD_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetD_X));
+                    CharacterDetails.ExMetD_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetD_Y));
+                    CharacterDetails.ExMetD_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetD_Z));
+                    CharacterDetails.ExMetD_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetD_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExMetD_X.value,
+                        CharacterDetails.ExMetD_Y.value,
+                        CharacterDetails.ExMetD_Z.value,
+                        CharacterDetails.ExMetD_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExMetD_Toggle = false;
+                    CharacterDetails.ExMetD_Rotate = true;
+                }
+
+                if (CharacterDetails.ExMetE_Toggle)
+                {
+                    CharacterDetails.ExMetE_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetE_X));
+                    CharacterDetails.ExMetE_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetE_Y));
+                    CharacterDetails.ExMetE_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetE_Z));
+                    CharacterDetails.ExMetE_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetE_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExMetE_X.value,
+                        CharacterDetails.ExMetE_Y.value,
+                        CharacterDetails.ExMetE_Z.value,
+                        CharacterDetails.ExMetE_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExMetE_Toggle = false;
+                    CharacterDetails.ExMetE_Rotate = true;
+                }
+
+                if (CharacterDetails.ExMetF_Toggle)
+                {
+                    CharacterDetails.ExMetF_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetF_X));
+                    CharacterDetails.ExMetF_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetF_Y));
+                    CharacterDetails.ExMetF_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetF_Z));
+                    CharacterDetails.ExMetF_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetF_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExMetF_X.value,
+                        CharacterDetails.ExMetF_Y.value,
+                        CharacterDetails.ExMetF_Z.value,
+                        CharacterDetails.ExMetF_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExMetF_Toggle = false;
+                    CharacterDetails.ExMetF_Rotate = true;
+                }
+
+                if (CharacterDetails.ExMetG_Toggle)
+                {
+                    CharacterDetails.ExMetG_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetG_X));
+                    CharacterDetails.ExMetG_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetG_Y));
+                    CharacterDetails.ExMetG_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetG_Z));
+                    CharacterDetails.ExMetG_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetG_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExMetG_X.value,
+                        CharacterDetails.ExMetG_Y.value,
+                        CharacterDetails.ExMetG_Z.value,
+                        CharacterDetails.ExMetG_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExMetG_Toggle = false;
+                    CharacterDetails.ExMetG_Rotate = true;
+                }
+
+                if (CharacterDetails.ExMetH_Toggle)
+                {
+                    CharacterDetails.ExMetH_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetH_X));
+                    CharacterDetails.ExMetH_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetH_Y));
+                    CharacterDetails.ExMetH_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetH_Z));
+                    CharacterDetails.ExMetH_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetH_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExMetH_X.value,
+                        CharacterDetails.ExMetH_Y.value,
+                        CharacterDetails.ExMetH_Z.value,
+                        CharacterDetails.ExMetH_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExMetH_Toggle = false;
+                    CharacterDetails.ExMetH_Rotate = true;
+                }
+
+                if (CharacterDetails.ExMetI_Toggle)
+                {
+                    CharacterDetails.ExMetI_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetI_X));
+                    CharacterDetails.ExMetI_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetI_Y));
+                    CharacterDetails.ExMetI_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetI_Z));
+                    CharacterDetails.ExMetI_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetI_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExMetI_X.value,
+                        CharacterDetails.ExMetI_Y.value,
+                        CharacterDetails.ExMetI_Z.value,
+                        CharacterDetails.ExMetI_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExMetI_Toggle = false;
+                    CharacterDetails.ExMetI_Rotate = true;
+                }
+
+                if (CharacterDetails.ExMetJ_Toggle)
+                {
+                    CharacterDetails.ExMetJ_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetJ_X));
+                    CharacterDetails.ExMetJ_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetJ_Y));
+                    CharacterDetails.ExMetJ_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetJ_Z));
+                    CharacterDetails.ExMetJ_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetJ_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExMetJ_X.value,
+                        CharacterDetails.ExMetJ_Y.value,
+                        CharacterDetails.ExMetJ_Z.value,
+                        CharacterDetails.ExMetJ_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExMetJ_Toggle = false;
+                    CharacterDetails.ExMetJ_Rotate = true;
+                }
+
+                if (CharacterDetails.ExMetK_Toggle)
+                {
+                    CharacterDetails.ExMetK_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetK_X));
+                    CharacterDetails.ExMetK_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetK_Y));
+                    CharacterDetails.ExMetK_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetK_Z));
+                    CharacterDetails.ExMetK_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetK_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExMetK_X.value,
+                        CharacterDetails.ExMetK_Y.value,
+                        CharacterDetails.ExMetK_Z.value,
+                        CharacterDetails.ExMetK_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExMetK_Toggle = false;
+                    CharacterDetails.ExMetK_Rotate = true;
+                }
+
+                if (CharacterDetails.ExMetL_Toggle)
+                {
+                    CharacterDetails.ExMetL_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetL_X));
+                    CharacterDetails.ExMetL_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetL_Y));
+                    CharacterDetails.ExMetL_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetL_Z));
+                    CharacterDetails.ExMetL_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetL_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExMetL_X.value,
+                        CharacterDetails.ExMetL_Y.value,
+                        CharacterDetails.ExMetL_Z.value,
+                        CharacterDetails.ExMetL_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExMetL_Toggle = false;
+                    CharacterDetails.ExMetL_Rotate = true;
+                }
+
+                if (CharacterDetails.ExMetM_Toggle)
+                {
+                    CharacterDetails.ExMetM_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetM_X));
+                    CharacterDetails.ExMetM_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetM_Y));
+                    CharacterDetails.ExMetM_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetM_Z));
+                    CharacterDetails.ExMetM_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetM_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExMetM_X.value,
+                        CharacterDetails.ExMetM_Y.value,
+                        CharacterDetails.ExMetM_Z.value,
+                        CharacterDetails.ExMetM_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExMetM_Toggle = false;
+                    CharacterDetails.ExMetM_Rotate = true;
+                }
+
+                if (CharacterDetails.ExMetN_Toggle)
+                {
+                    CharacterDetails.ExMetN_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetN_X));
+                    CharacterDetails.ExMetN_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetN_Y));
+                    CharacterDetails.ExMetN_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetN_Z));
+                    CharacterDetails.ExMetN_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetN_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExMetN_X.value,
+                        CharacterDetails.ExMetN_Y.value,
+                        CharacterDetails.ExMetN_Z.value,
+                        CharacterDetails.ExMetN_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExMetN_Toggle = false;
+                    CharacterDetails.ExMetN_Rotate = true;
+                }
+
+                if (CharacterDetails.ExMetO_Toggle)
+                {
+                    CharacterDetails.ExMetO_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetO_X));
+                    CharacterDetails.ExMetO_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetO_Y));
+                    CharacterDetails.ExMetO_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetO_Z));
+                    CharacterDetails.ExMetO_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetO_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExMetO_X.value,
+                        CharacterDetails.ExMetO_Y.value,
+                        CharacterDetails.ExMetO_Z.value,
+                        CharacterDetails.ExMetO_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExMetO_Toggle = false;
+                    CharacterDetails.ExMetO_Rotate = true;
+                }
+
+                if (CharacterDetails.ExMetP_Toggle)
+                {
+                    CharacterDetails.ExMetP_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetP_X));
+                    CharacterDetails.ExMetP_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetP_Y));
+                    CharacterDetails.ExMetP_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetP_Z));
+                    CharacterDetails.ExMetP_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetP_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExMetP_X.value,
+                        CharacterDetails.ExMetP_Y.value,
+                        CharacterDetails.ExMetP_Z.value,
+                        CharacterDetails.ExMetP_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExMetP_Toggle = false;
+                    CharacterDetails.ExMetP_Rotate = true;
+                }
+
+                if (CharacterDetails.ExMetQ_Toggle)
+                {
+                    CharacterDetails.ExMetQ_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetQ_X));
+                    CharacterDetails.ExMetQ_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetQ_Y));
+                    CharacterDetails.ExMetQ_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetQ_Z));
+                    CharacterDetails.ExMetQ_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetQ_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExMetQ_X.value,
+                        CharacterDetails.ExMetQ_Y.value,
+                        CharacterDetails.ExMetQ_Z.value,
+                        CharacterDetails.ExMetQ_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExMetQ_Toggle = false;
+                    CharacterDetails.ExMetQ_Rotate = true;
+                }
+
+                if (CharacterDetails.ExMetR_Toggle)
+                {
+                    CharacterDetails.ExMetR_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetR_X));
+                    CharacterDetails.ExMetR_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetR_Y));
+                    CharacterDetails.ExMetR_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetR_Z));
+                    CharacterDetails.ExMetR_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetR_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExMetR_X.value,
+                        CharacterDetails.ExMetR_Y.value,
+                        CharacterDetails.ExMetR_Z.value,
+                        CharacterDetails.ExMetR_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExMetR_Toggle = false;
+                    CharacterDetails.ExMetR_Rotate = true;
+                }
+
+                if (CharacterDetails.ExRootTop_Toggle)
+                {
+                    CharacterDetails.ExRootTop_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExRootTop_X));
+                    CharacterDetails.ExRootTop_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExRootTop_Y));
+                    CharacterDetails.ExRootTop_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExRootTop_Z));
+                    CharacterDetails.ExRootTop_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExRootTop_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExRootTop_X.value,
+                        CharacterDetails.ExRootTop_Y.value,
+                        CharacterDetails.ExRootTop_Z.value,
+                        CharacterDetails.ExRootTop_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExRootTop_Toggle = false;
+                    CharacterDetails.ExRootTop_Rotate = true;
+                }
+
+                if (CharacterDetails.ExTopA_Toggle)
+                {
+                    CharacterDetails.ExTopA_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopA_X));
+                    CharacterDetails.ExTopA_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopA_Y));
+                    CharacterDetails.ExTopA_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopA_Z));
+                    CharacterDetails.ExTopA_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopA_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExTopA_X.value,
+                        CharacterDetails.ExTopA_Y.value,
+                        CharacterDetails.ExTopA_Z.value,
+                        CharacterDetails.ExTopA_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExTopA_Toggle = false;
+                    CharacterDetails.ExTopA_Rotate = true;
+                }
+
+                if (CharacterDetails.ExTopB_Toggle)
+                {
+                    CharacterDetails.ExTopB_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopB_X));
+                    CharacterDetails.ExTopB_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopB_Y));
+                    CharacterDetails.ExTopB_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopB_Z));
+                    CharacterDetails.ExTopB_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopB_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExTopB_X.value,
+                        CharacterDetails.ExTopB_Y.value,
+                        CharacterDetails.ExTopB_Z.value,
+                        CharacterDetails.ExTopB_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExTopB_Toggle = false;
+                    CharacterDetails.ExTopB_Rotate = true;
+                }
+
+                if (CharacterDetails.ExTopC_Toggle)
+                {
+                    CharacterDetails.ExTopC_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopC_X));
+                    CharacterDetails.ExTopC_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopC_Y));
+                    CharacterDetails.ExTopC_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopC_Z));
+                    CharacterDetails.ExTopC_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopC_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExTopC_X.value,
+                        CharacterDetails.ExTopC_Y.value,
+                        CharacterDetails.ExTopC_Z.value,
+                        CharacterDetails.ExTopC_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExTopC_Toggle = false;
+                    CharacterDetails.ExTopC_Rotate = true;
+                }
+
+                if (CharacterDetails.ExTopD_Toggle)
+                {
+                    CharacterDetails.ExTopD_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopD_X));
+                    CharacterDetails.ExTopD_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopD_Y));
+                    CharacterDetails.ExTopD_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopD_Z));
+                    CharacterDetails.ExTopD_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopD_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExTopD_X.value,
+                        CharacterDetails.ExTopD_Y.value,
+                        CharacterDetails.ExTopD_Z.value,
+                        CharacterDetails.ExTopD_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExTopD_Toggle = false;
+                    CharacterDetails.ExTopD_Rotate = true;
+                }
+
+                if (CharacterDetails.ExTopE_Toggle)
+                {
+                    CharacterDetails.ExTopE_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopE_X));
+                    CharacterDetails.ExTopE_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopE_Y));
+                    CharacterDetails.ExTopE_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopE_Z));
+                    CharacterDetails.ExTopE_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopE_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExTopE_X.value,
+                        CharacterDetails.ExTopE_Y.value,
+                        CharacterDetails.ExTopE_Z.value,
+                        CharacterDetails.ExTopE_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExTopE_Toggle = false;
+                    CharacterDetails.ExTopE_Rotate = true;
+                }
+
+                if (CharacterDetails.ExTopF_Toggle)
+                {
+                    CharacterDetails.ExTopF_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopF_X));
+                    CharacterDetails.ExTopF_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopF_Y));
+                    CharacterDetails.ExTopF_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopF_Z));
+                    CharacterDetails.ExTopF_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopF_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExTopF_X.value,
+                        CharacterDetails.ExTopF_Y.value,
+                        CharacterDetails.ExTopF_Z.value,
+                        CharacterDetails.ExTopF_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExTopF_Toggle = false;
+                    CharacterDetails.ExTopF_Rotate = true;
+                }
+
+                if (CharacterDetails.ExTopG_Toggle)
+                {
+                    CharacterDetails.ExTopG_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopG_X));
+                    CharacterDetails.ExTopG_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopG_Y));
+                    CharacterDetails.ExTopG_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopG_Z));
+                    CharacterDetails.ExTopG_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopG_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExTopG_X.value,
+                        CharacterDetails.ExTopG_Y.value,
+                        CharacterDetails.ExTopG_Z.value,
+                        CharacterDetails.ExTopG_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExTopG_Toggle = false;
+                    CharacterDetails.ExTopG_Rotate = true;
+                }
+
+                if (CharacterDetails.ExTopH_Toggle)
+                {
+                    CharacterDetails.ExTopH_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopH_X));
+                    CharacterDetails.ExTopH_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopH_Y));
+                    CharacterDetails.ExTopH_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopH_Z));
+                    CharacterDetails.ExTopH_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopH_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExTopH_X.value,
+                        CharacterDetails.ExTopH_Y.value,
+                        CharacterDetails.ExTopH_Z.value,
+                        CharacterDetails.ExTopH_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExTopH_Toggle = false;
+                    CharacterDetails.ExTopH_Rotate = true;
+                }
+
+                if (CharacterDetails.ExTopI_Toggle)
+                {
+                    CharacterDetails.ExTopI_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopI_X));
+                    CharacterDetails.ExTopI_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopI_Y));
+                    CharacterDetails.ExTopI_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopI_Z));
+                    CharacterDetails.ExTopI_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopI_W));
+
+                    var euler = new System.Windows.Media.Media3D.Quaternion(
+                        CharacterDetails.ExTopI_X.value,
+                        CharacterDetails.ExTopI_Y.value,
+                        CharacterDetails.ExTopI_Z.value,
+                        CharacterDetails.ExTopI_W.value
+                    ).ToEulerAngles();
+
+                    CharacterDetails.BoneX = (float)euler.X;
+                    CharacterDetails.BoneY = (float)euler.Y;
+                    CharacterDetails.BoneZ = (float)euler.Z;
+
+                    CharacterDetails.ExTopI_Toggle = false;
+                    CharacterDetails.ExTopI_Rotate = true;
                 }
                 #endregion
-
-                #region Saving Skeletal Rotations
-                if (CharacterDetails.SaveHeadBones)
+                #region Bone Savestate Reading
+                if (CharacterDetails.SaveHead01 == true)
                 {
-                    MainViewModel.ViewTime5.HeadXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.HeadX));
-                    MainViewModel.ViewTime5.HeadYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.HeadY));
-                    MainViewModel.ViewTime5.HeadZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.HeadZ));
-                    MainViewModel.ViewTime5.HeadWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.HeadW));
-
-                    MainViewModel.ViewTime5.NoseXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NoseX));
-                    MainViewModel.ViewTime5.NoseYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NoseY));
-                    MainViewModel.ViewTime5.NoseZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NoseZ));
-                    MainViewModel.ViewTime5.NoseWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NoseW));
-
-                    MainViewModel.ViewTime5.NostrilsXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NostrilsX));
-                    MainViewModel.ViewTime5.NostrilsYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NostrilsY));
-                    MainViewModel.ViewTime5.NostrilsZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NostrilsZ));
-                    MainViewModel.ViewTime5.NostrilsWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NostrilsW));
-
-                    MainViewModel.ViewTime5.ChinXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.ChinX));
-                    MainViewModel.ViewTime5.ChinYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.ChinY));
-                    MainViewModel.ViewTime5.ChinZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.ChinZ));
-                    MainViewModel.ViewTime5.ChinWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.ChinW));
-
-                    MainViewModel.ViewTime5.LOutEyebrowXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LOutEyebrowX));
-                    MainViewModel.ViewTime5.LOutEyebrowYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LOutEyebrowY));
-                    MainViewModel.ViewTime5.LOutEyebrowZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LOutEyebrowZ));
-                    MainViewModel.ViewTime5.LOutEyebrowWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LOutEyebrowW));
-
-                    MainViewModel.ViewTime5.ROutEyebrowXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.ROutEyebrowX));
-                    MainViewModel.ViewTime5.ROutEyebrowYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.ROutEyebrowY));
-                    MainViewModel.ViewTime5.ROutEyebrowZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.ROutEyebrowZ));
-                    MainViewModel.ViewTime5.ROutEyebrowWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.ROutEyebrowW));
-
-                    MainViewModel.ViewTime5.LInEyebrowXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LInEyebrowX));
-                    MainViewModel.ViewTime5.LInEyebrowYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LInEyebrowY));
-                    MainViewModel.ViewTime5.LInEyebrowZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LInEyebrowZ));
-                    MainViewModel.ViewTime5.LInEyebrowWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LInEyebrowW));
-
-                    MainViewModel.ViewTime5.RInEyebrowXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RInEyebrowX));
-                    MainViewModel.ViewTime5.RInEyebrowYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RInEyebrowY));
-                    MainViewModel.ViewTime5.RInEyebrowZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RInEyebrowZ));
-                    MainViewModel.ViewTime5.RInEyebrowWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RInEyebrowW));
-
-                    MainViewModel.ViewTime5.LEyeXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEyeX));
-                    MainViewModel.ViewTime5.LEyeYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEyeY));
-                    MainViewModel.ViewTime5.LEyeZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEyeZ));
-                    MainViewModel.ViewTime5.LEyeWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEyeW));
-
-                    MainViewModel.ViewTime5.REyeXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REyeX));
-                    MainViewModel.ViewTime5.REyeYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REyeY));
-                    MainViewModel.ViewTime5.REyeZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REyeZ));
-                    MainViewModel.ViewTime5.REyeWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REyeW));
-
-                    MainViewModel.ViewTime5.LEyelidXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEyelidX));
-                    MainViewModel.ViewTime5.LEyelidYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEyelidY));
-                    MainViewModel.ViewTime5.LEyelidZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEyelidZ));
-                    MainViewModel.ViewTime5.LEyelidWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEyelidW));
-
-                    MainViewModel.ViewTime5.REyelidXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REyelidX));
-                    MainViewModel.ViewTime5.REyelidYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REyelidY));
-                    MainViewModel.ViewTime5.REyelidZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REyelidZ));
-                    MainViewModel.ViewTime5.REyelidWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REyelidW));
-
-                    MainViewModel.ViewTime5.LLowEyelidXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LLowEyelidX));
-                    MainViewModel.ViewTime5.LLowEyelidYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LLowEyelidY));
-                    MainViewModel.ViewTime5.LLowEyelidZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LLowEyelidZ));
-                    MainViewModel.ViewTime5.LLowEyelidWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LLowEyelidW));
-
-                    MainViewModel.ViewTime5.RLowEyelidXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RLowEyelidX));
-                    MainViewModel.ViewTime5.RLowEyelidYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RLowEyelidY));
-                    MainViewModel.ViewTime5.RLowEyelidZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RLowEyelidZ));
-                    MainViewModel.ViewTime5.RLowEyelidWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RLowEyelidW));
-
-                    MainViewModel.ViewTime5.LEarXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEarX));
-                    MainViewModel.ViewTime5.LEarYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEarY));
-                    MainViewModel.ViewTime5.LEarZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEarZ));
-                    MainViewModel.ViewTime5.LEarWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LEarW));
-
-                    MainViewModel.ViewTime5.REarXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REarX));
-                    MainViewModel.ViewTime5.REarYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REarY));
-                    MainViewModel.ViewTime5.REarZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REarZ));
-                    MainViewModel.ViewTime5.REarWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.REarW));
-
-                    MainViewModel.ViewTime5.LCheekXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LCheekX));
-                    MainViewModel.ViewTime5.LCheekYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LCheekY));
-                    MainViewModel.ViewTime5.LCheekZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LCheekZ));
-                    MainViewModel.ViewTime5.LCheekWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LCheekW));
-
-                    MainViewModel.ViewTime5.RCheekXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RCheekX));
-                    MainViewModel.ViewTime5.RCheekYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RCheekY));
-                    MainViewModel.ViewTime5.RCheekZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RCheekZ));
-                    MainViewModel.ViewTime5.RCheekWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RCheekW));
-
-                    MainViewModel.ViewTime5.LMouthXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LMouthX));
-                    MainViewModel.ViewTime5.LMouthYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LMouthY));
-                    MainViewModel.ViewTime5.LMouthZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LMouthZ));
-                    MainViewModel.ViewTime5.LMouthWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LMouthW));
-
-                    MainViewModel.ViewTime5.RMouthXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RMouthX));
-                    MainViewModel.ViewTime5.RMouthYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RMouthY));
-                    MainViewModel.ViewTime5.RMouthZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RMouthZ));
-                    MainViewModel.ViewTime5.RMouthWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RMouthW));
-
-                    MainViewModel.ViewTime5.LUpLipXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LUpLipX));
-                    MainViewModel.ViewTime5.LUpLipYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LUpLipY));
-                    MainViewModel.ViewTime5.LUpLipZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LUpLipZ));
-                    MainViewModel.ViewTime5.LUpLipWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LUpLipW));
-
-                    MainViewModel.ViewTime5.RUpLipXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RUpLipX));
-                    MainViewModel.ViewTime5.RUpLipYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RUpLipY));
-                    MainViewModel.ViewTime5.RUpLipZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RUpLipZ));
-                    MainViewModel.ViewTime5.RUpLipWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RUpLipW));
-
-                    MainViewModel.ViewTime5.LLowLipXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LLowLipX));
-                    MainViewModel.ViewTime5.LLowLipYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LLowLipY));
-                    MainViewModel.ViewTime5.LLowLipZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LLowLipZ));
-                    MainViewModel.ViewTime5.LLowLipWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LLowLipW));
-
-                    MainViewModel.ViewTime5.RLowLipXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RLowLipX));
-                    MainViewModel.ViewTime5.RLowLipYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RLowLipY));
-                    MainViewModel.ViewTime5.RLowLipZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RLowLipZ));
-                    MainViewModel.ViewTime5.RLowLipWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RLowLipW));
-
-                    MainViewModel.ViewTime5.NeckXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NeckX));
-                    MainViewModel.ViewTime5.NeckYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NeckY));
-                    MainViewModel.ViewTime5.NeckZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NeckZ));
-                    MainViewModel.ViewTime5.NeckWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.NeckW));
-
-                    MainViewModel.ViewTime5.LVEarXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEarX));
-                    MainViewModel.ViewTime5.LVEarYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEarY));
-                    MainViewModel.ViewTime5.LVEarZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEarZ));
-                    MainViewModel.ViewTime5.LVEarWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEarW));
-
-                    MainViewModel.ViewTime5.RVEarXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEarX));
-                    MainViewModel.ViewTime5.RVEarYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEarY));
-                    MainViewModel.ViewTime5.RVEarZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEarZ));
-                    MainViewModel.ViewTime5.RVEarWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEarW));
-
-                    MainViewModel.ViewTime5.LVEar2XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar2X));
-                    MainViewModel.ViewTime5.LVEar2YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar2Y));
-                    MainViewModel.ViewTime5.LVEar2ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar2Z));
-                    MainViewModel.ViewTime5.LVEar2WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar2W));
-
-                    MainViewModel.ViewTime5.RVEar2XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar2X));
-                    MainViewModel.ViewTime5.RVEar2YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar2Y));
-                    MainViewModel.ViewTime5.RVEar2ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar2Z));
-                    MainViewModel.ViewTime5.RVEar2WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar2W));
-
-                    MainViewModel.ViewTime5.LVEar3XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar3X));
-                    MainViewModel.ViewTime5.LVEar3YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar3Y));
-                    MainViewModel.ViewTime5.LVEar3ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar3Z));
-                    MainViewModel.ViewTime5.LVEar3WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar3W));
-
-                    MainViewModel.ViewTime5.RVEar3XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar3X));
-                    MainViewModel.ViewTime5.RVEar3YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar3Y));
-                    MainViewModel.ViewTime5.RVEar3ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar3Z));
-                    MainViewModel.ViewTime5.RVEar3WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar3W));
-
-                    MainViewModel.ViewTime5.LVEar4XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar4X));
-                    MainViewModel.ViewTime5.LVEar4YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar4Y));
-                    MainViewModel.ViewTime5.LVEar4ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar4Z));
-                    MainViewModel.ViewTime5.LVEar4WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVEar4W));
-
-                    MainViewModel.ViewTime5.RVEar4XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar4X));
-                    MainViewModel.ViewTime5.RVEar4YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar4Y));
-                    MainViewModel.ViewTime5.RVEar4ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar4Z));
-                    MainViewModel.ViewTime5.RVEar4WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVEar4W));
-
-                    MainViewModel.ViewTime5.LVLowLipXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowLipX));
-                    MainViewModel.ViewTime5.LVLowLipYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowLipY));
-                    MainViewModel.ViewTime5.LVLowLipZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowLipZ));
-                    MainViewModel.ViewTime5.LVLowLipWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowLipW));
-
-                    MainViewModel.ViewTime5.RVUpLipXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVUpLipX));
-                    MainViewModel.ViewTime5.RVUpLipYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVUpLipY));
-                    MainViewModel.ViewTime5.RVUpLipZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVUpLipZ));
-                    MainViewModel.ViewTime5.RVUpLipWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVUpLipW));
-
-                    MainViewModel.ViewTime5.RVLowLipXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowLipX));
-                    MainViewModel.ViewTime5.RVLowLipYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowLipY));
-                    MainViewModel.ViewTime5.RVLowLipZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowLipZ));
-                    MainViewModel.ViewTime5.RVLowLipWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowLipW));
-
-                    MainViewModel.ViewTime5.RVLowEar2XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar2X));
-                    MainViewModel.ViewTime5.RVLowEar2YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar2Y));
-                    MainViewModel.ViewTime5.RVLowEar2ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar2Z));
-                    MainViewModel.ViewTime5.RVLowEar2WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar2W));
-
-                    MainViewModel.ViewTime5.LVLowEar3XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar3X));
-                    MainViewModel.ViewTime5.LVLowEar3YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar3Y));
-                    MainViewModel.ViewTime5.LVLowEar3ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar3Z));
-                    MainViewModel.ViewTime5.LVLowEar3WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar3W));
-
-                    MainViewModel.ViewTime5.RVLowEar3XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar3X));
-                    MainViewModel.ViewTime5.RVLowEar3YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar3Y));
-                    MainViewModel.ViewTime5.RVLowEar3ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar3Z));
-                    MainViewModel.ViewTime5.RVLowEar3WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar3W));
-
-                    MainViewModel.ViewTime5.LVLowEar4XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar4X));
-                    MainViewModel.ViewTime5.LVLowEar4YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar4Y));
-                    MainViewModel.ViewTime5.LVLowEar4ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar4Z));
-                    MainViewModel.ViewTime5.LVLowEar4WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LVLowEar4W));
-
-                    MainViewModel.ViewTime5.RVLowEar4XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar4X));
-                    MainViewModel.ViewTime5.RVLowEar4YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar4Y));
-                    MainViewModel.ViewTime5.RVLowEar4ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar4Z));
-                    MainViewModel.ViewTime5.RVLowEar4WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RVLowEar4W));
-
-
-
-                    CharacterDetails.SaveHeadBones = false;
+                    MainViewModel.ViewTime5.Head_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Head_X));
+                    MainViewModel.ViewTime5.Head_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Head_Y));
+                    MainViewModel.ViewTime5.Head_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Head_Z));
+                    MainViewModel.ViewTime5.Head_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Head_W));
+                    MainViewModel.ViewTime5.EarLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarLeft_X));
+                    MainViewModel.ViewTime5.EarLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarLeft_Y));
+                    MainViewModel.ViewTime5.EarLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarLeft_Z));
+                    MainViewModel.ViewTime5.EarLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarLeft_W));
+                    MainViewModel.ViewTime5.EarRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarRight_X));
+                    MainViewModel.ViewTime5.EarRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarRight_Y));
+                    MainViewModel.ViewTime5.EarRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarRight_Z));
+                    MainViewModel.ViewTime5.EarRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarRight_W));
+                    MainViewModel.ViewTime5.Jaw_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Jaw_X));
+                    MainViewModel.ViewTime5.Jaw_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Jaw_Y));
+                    MainViewModel.ViewTime5.Jaw_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Jaw_Z));
+                    MainViewModel.ViewTime5.Jaw_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Jaw_W));
+                    MainViewModel.ViewTime5.EyelidLowerLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerLeft_X));
+                    MainViewModel.ViewTime5.EyelidLowerLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerLeft_Y));
+                    MainViewModel.ViewTime5.EyelidLowerLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerLeft_Z));
+                    MainViewModel.ViewTime5.EyelidLowerLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerLeft_W));
+                    MainViewModel.ViewTime5.EyelidLowerRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerRight_X));
+                    MainViewModel.ViewTime5.EyelidLowerRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerRight_Y));
+                    MainViewModel.ViewTime5.EyelidLowerRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerRight_Z));
+                    MainViewModel.ViewTime5.EyelidLowerRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerRight_W));
+                    MainViewModel.ViewTime5.EyeLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeLeft_X));
+                    MainViewModel.ViewTime5.EyeLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeLeft_Y));
+                    MainViewModel.ViewTime5.EyeLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeLeft_Z));
+                    MainViewModel.ViewTime5.EyeLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeLeft_W));
+                    MainViewModel.ViewTime5.EyeRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeRight_X));
+                    MainViewModel.ViewTime5.EyeRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeRight_Y));
+                    MainViewModel.ViewTime5.EyeRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeRight_Z));
+                    MainViewModel.ViewTime5.EyeRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeRight_W));
+                    MainViewModel.ViewTime5.Nose_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Nose_X));
+                    MainViewModel.ViewTime5.Nose_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Nose_Y));
+                    MainViewModel.ViewTime5.Nose_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Nose_Z));
+                    MainViewModel.ViewTime5.Nose_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Nose_W));
+                    MainViewModel.ViewTime5.CheekLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekLeft_X));
+                    MainViewModel.ViewTime5.CheekLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekLeft_Y));
+                    MainViewModel.ViewTime5.CheekLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekLeft_Z));
+                    MainViewModel.ViewTime5.CheekLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekLeft_W));
+                    MainViewModel.ViewTime5.CheekRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekRight_X));
+                    MainViewModel.ViewTime5.CheekRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekRight_Y));
+                    MainViewModel.ViewTime5.CheekRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekRight_Z));
+                    MainViewModel.ViewTime5.CheekRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekRight_W));
+                    MainViewModel.ViewTime5.LipsLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsLeft_X));
+                    MainViewModel.ViewTime5.LipsLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsLeft_Y));
+                    MainViewModel.ViewTime5.LipsLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsLeft_Z));
+                    MainViewModel.ViewTime5.LipsLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsLeft_W));
+                    MainViewModel.ViewTime5.HrothEyebrowLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowLeft_X));
+                    MainViewModel.ViewTime5.HrothEyebrowLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowLeft_Y));
+                    MainViewModel.ViewTime5.HrothEyebrowLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowLeft_Z));
+                    MainViewModel.ViewTime5.HrothEyebrowLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowLeft_W));
+                    MainViewModel.ViewTime5.LipsRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsRight_X));
+                    MainViewModel.ViewTime5.LipsRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsRight_Y));
+                    MainViewModel.ViewTime5.LipsRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsRight_Z));
+                    MainViewModel.ViewTime5.LipsRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsRight_W));
+                    MainViewModel.ViewTime5.HrothEyebrowRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowRight_X));
+                    MainViewModel.ViewTime5.HrothEyebrowRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowRight_Y));
+                    MainViewModel.ViewTime5.HrothEyebrowRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowRight_Z));
+                    MainViewModel.ViewTime5.HrothEyebrowRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowRight_W));
+                    MainViewModel.ViewTime5.EyebrowLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowLeft_X));
+                    MainViewModel.ViewTime5.EyebrowLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowLeft_Y));
+                    MainViewModel.ViewTime5.EyebrowLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowLeft_Z));
+                    MainViewModel.ViewTime5.EyebrowLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowLeft_W));
+                    MainViewModel.ViewTime5.HrothBridge_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBridge_X));
+                    MainViewModel.ViewTime5.HrothBridge_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBridge_Y));
+                    MainViewModel.ViewTime5.HrothBridge_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBridge_Z));
+                    MainViewModel.ViewTime5.HrothBridge_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBridge_W));
+                    MainViewModel.ViewTime5.EyebrowRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowRight_X));
+                    MainViewModel.ViewTime5.EyebrowRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowRight_Y));
+                    MainViewModel.ViewTime5.EyebrowRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowRight_Z));
+                    MainViewModel.ViewTime5.EyebrowRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowRight_W));
+                    MainViewModel.ViewTime5.HrothBrowLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowLeft_X));
+                    MainViewModel.ViewTime5.HrothBrowLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowLeft_Y));
+                    MainViewModel.ViewTime5.HrothBrowLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowLeft_Z));
+                    MainViewModel.ViewTime5.HrothBrowLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowLeft_W));
+                    MainViewModel.ViewTime5.Bridge_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Bridge_X));
+                    MainViewModel.ViewTime5.Bridge_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Bridge_Y));
+                    MainViewModel.ViewTime5.Bridge_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Bridge_Z));
+                    MainViewModel.ViewTime5.Bridge_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Bridge_W));
+                    MainViewModel.ViewTime5.HrothBrowRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowRight_X));
+                    MainViewModel.ViewTime5.HrothBrowRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowRight_Y));
+                    MainViewModel.ViewTime5.HrothBrowRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowRight_Z));
+                    MainViewModel.ViewTime5.HrothBrowRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowRight_W));
+                    MainViewModel.ViewTime5.BrowLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowLeft_X));
+                    MainViewModel.ViewTime5.BrowLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowLeft_Y));
+                    MainViewModel.ViewTime5.BrowLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowLeft_Z));
+                    MainViewModel.ViewTime5.BrowLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowLeft_W));
+                    MainViewModel.ViewTime5.HrothJawUpper_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothJawUpper_X));
+                    MainViewModel.ViewTime5.HrothJawUpper_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothJawUpper_Y));
+                    MainViewModel.ViewTime5.HrothJawUpper_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothJawUpper_Z));
+                    MainViewModel.ViewTime5.HrothJawUpper_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothJawUpper_W));
+                    MainViewModel.ViewTime5.BrowRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowRight_X));
+                    MainViewModel.ViewTime5.BrowRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowRight_Y));
+                    MainViewModel.ViewTime5.BrowRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowRight_Z));
+                    MainViewModel.ViewTime5.BrowRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowRight_W));
+                    MainViewModel.ViewTime5.HrothLipUpper_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpper_X));
+                    MainViewModel.ViewTime5.HrothLipUpper_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpper_Y));
+                    MainViewModel.ViewTime5.HrothLipUpper_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpper_Z));
+                    MainViewModel.ViewTime5.HrothLipUpper_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpper_W));
+                    MainViewModel.ViewTime5.LipUpperA_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperA_X));
+                    MainViewModel.ViewTime5.LipUpperA_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperA_Y));
+                    MainViewModel.ViewTime5.LipUpperA_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperA_Z));
+                    MainViewModel.ViewTime5.LipUpperA_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperA_W));
+                    MainViewModel.ViewTime5.HrothEyelidUpperLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperLeft_X));
+                    MainViewModel.ViewTime5.HrothEyelidUpperLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperLeft_Y));
+                    MainViewModel.ViewTime5.HrothEyelidUpperLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperLeft_Z));
+                    MainViewModel.ViewTime5.HrothEyelidUpperLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperLeft_W));
+                    MainViewModel.ViewTime5.EyelidUpperLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperLeft_X));
+                    MainViewModel.ViewTime5.EyelidUpperLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperLeft_Y));
+                    MainViewModel.ViewTime5.EyelidUpperLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperLeft_Z));
+                    MainViewModel.ViewTime5.EyelidUpperLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperLeft_W));
+                    MainViewModel.ViewTime5.HrothEyelidUpperRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperRight_X));
+                    MainViewModel.ViewTime5.HrothEyelidUpperRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperRight_Y));
+                    MainViewModel.ViewTime5.HrothEyelidUpperRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperRight_Z));
+                    MainViewModel.ViewTime5.HrothEyelidUpperRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperRight_W));
+                    MainViewModel.ViewTime5.EyelidUpperRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperRight_X));
+                    MainViewModel.ViewTime5.EyelidUpperRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperRight_Y));
+                    MainViewModel.ViewTime5.EyelidUpperRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperRight_Z));
+                    MainViewModel.ViewTime5.EyelidUpperRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperRight_W));
+                    MainViewModel.ViewTime5.HrothLipsLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsLeft_X));
+                    MainViewModel.ViewTime5.HrothLipsLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsLeft_Y));
+                    MainViewModel.ViewTime5.HrothLipsLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsLeft_Z));
+                    MainViewModel.ViewTime5.HrothLipsLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsLeft_W));
+                    MainViewModel.ViewTime5.LipLowerA_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerA_X));
+                    MainViewModel.ViewTime5.LipLowerA_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerA_Y));
+                    MainViewModel.ViewTime5.LipLowerA_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerA_Z));
+                    MainViewModel.ViewTime5.LipLowerA_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerA_W));
+                    MainViewModel.ViewTime5.HrothLipsRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsRight_X));
+                    MainViewModel.ViewTime5.HrothLipsRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsRight_Y));
+                    MainViewModel.ViewTime5.HrothLipsRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsRight_Z));
+                    MainViewModel.ViewTime5.HrothLipsRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsRight_W));
+                    MainViewModel.ViewTime5.VieraEar01ALeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ALeft_X));
+                    MainViewModel.ViewTime5.VieraEar01ALeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ALeft_Y));
+                    MainViewModel.ViewTime5.VieraEar01ALeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ALeft_Z));
+                    MainViewModel.ViewTime5.VieraEar01ALeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ALeft_W));
+                    MainViewModel.ViewTime5.LipUpperB_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperB_X));
+                    MainViewModel.ViewTime5.LipUpperB_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperB_Y));
+                    MainViewModel.ViewTime5.LipUpperB_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperB_Z));
+                    MainViewModel.ViewTime5.LipUpperB_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperB_W));
+                    MainViewModel.ViewTime5.HrothLipUpperLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperLeft_X));
+                    MainViewModel.ViewTime5.HrothLipUpperLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperLeft_Y));
+                    MainViewModel.ViewTime5.HrothLipUpperLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperLeft_Z));
+                    MainViewModel.ViewTime5.HrothLipUpperLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperLeft_W));
+                    MainViewModel.ViewTime5.VieraEar01ARight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ARight_X));
+                    MainViewModel.ViewTime5.VieraEar01ARight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ARight_Y));
+                    MainViewModel.ViewTime5.VieraEar01ARight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ARight_Z));
+                    MainViewModel.ViewTime5.VieraEar01ARight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ARight_W));
+                    MainViewModel.ViewTime5.LipLowerB_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerB_X));
+                    MainViewModel.ViewTime5.LipLowerB_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerB_Y));
+                    MainViewModel.ViewTime5.LipLowerB_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerB_Z));
+                    MainViewModel.ViewTime5.LipLowerB_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerB_W));
+                    MainViewModel.ViewTime5.HrothLipUpperRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperRight_X));
+                    MainViewModel.ViewTime5.HrothLipUpperRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperRight_Y));
+                    MainViewModel.ViewTime5.HrothLipUpperRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperRight_Z));
+                    MainViewModel.ViewTime5.HrothLipUpperRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperRight_W));
+                    MainViewModel.ViewTime5.VieraEar02ALeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ALeft_X));
+                    MainViewModel.ViewTime5.VieraEar02ALeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ALeft_Y));
+                    MainViewModel.ViewTime5.VieraEar02ALeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ALeft_Z));
+                    MainViewModel.ViewTime5.VieraEar02ALeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ALeft_W));
+                    MainViewModel.ViewTime5.HrothLipLower_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipLower_X));
+                    MainViewModel.ViewTime5.HrothLipLower_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipLower_Y));
+                    MainViewModel.ViewTime5.HrothLipLower_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipLower_Z));
+                    MainViewModel.ViewTime5.HrothLipLower_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipLower_W));
+                    MainViewModel.ViewTime5.VieraEar02ARight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ARight_X));
+                    MainViewModel.ViewTime5.VieraEar02ARight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ARight_Y));
+                    MainViewModel.ViewTime5.VieraEar02ARight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ARight_Z));
+                    MainViewModel.ViewTime5.VieraEar02ARight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ARight_W));
+                    MainViewModel.ViewTime5.VieraEar03ALeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ALeft_X));
+                    MainViewModel.ViewTime5.VieraEar03ALeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ALeft_Y));
+                    MainViewModel.ViewTime5.VieraEar03ALeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ALeft_Z));
+                    MainViewModel.ViewTime5.VieraEar03ALeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ALeft_W));
+                    MainViewModel.ViewTime5.VieraEar03ARight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ARight_X));
+                    MainViewModel.ViewTime5.VieraEar03ARight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ARight_Y));
+                    MainViewModel.ViewTime5.VieraEar03ARight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ARight_Z));
+                    MainViewModel.ViewTime5.VieraEar03ARight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ARight_W));
+                    MainViewModel.ViewTime5.VieraEar04ALeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ALeft_X));
+                    MainViewModel.ViewTime5.VieraEar04ALeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ALeft_Y));
+                    MainViewModel.ViewTime5.VieraEar04ALeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ALeft_Z));
+                    MainViewModel.ViewTime5.VieraEar04ALeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ALeft_W));
+                    MainViewModel.ViewTime5.VieraEar04ARight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ARight_X));
+                    MainViewModel.ViewTime5.VieraEar04ARight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ARight_Y));
+                    MainViewModel.ViewTime5.VieraEar04ARight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ARight_Z));
+                    MainViewModel.ViewTime5.VieraEar04ARight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ARight_W));
+                    MainViewModel.ViewTime5.VieraLipLowerA_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerA_X));
+                    MainViewModel.ViewTime5.VieraLipLowerA_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerA_Y));
+                    MainViewModel.ViewTime5.VieraLipLowerA_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerA_Z));
+                    MainViewModel.ViewTime5.VieraLipLowerA_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerA_W));
+                    MainViewModel.ViewTime5.VieraLipUpperB_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipUpperB_X));
+                    MainViewModel.ViewTime5.VieraLipUpperB_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipUpperB_Y));
+                    MainViewModel.ViewTime5.VieraLipUpperB_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipUpperB_Z));
+                    MainViewModel.ViewTime5.VieraLipUpperB_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipUpperB_W));
+                    MainViewModel.ViewTime5.VieraEar01BLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BLeft_X));
+                    MainViewModel.ViewTime5.VieraEar01BLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BLeft_Y));
+                    MainViewModel.ViewTime5.VieraEar01BLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BLeft_Z));
+                    MainViewModel.ViewTime5.VieraEar01BLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BLeft_W));
+                    MainViewModel.ViewTime5.VieraEar01BRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BRight_X));
+                    MainViewModel.ViewTime5.VieraEar01BRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BRight_Y));
+                    MainViewModel.ViewTime5.VieraEar01BRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BRight_Z));
+                    MainViewModel.ViewTime5.VieraEar01BRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BRight_W));
+                    MainViewModel.ViewTime5.VieraEar02BLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BLeft_X));
+                    MainViewModel.ViewTime5.VieraEar02BLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BLeft_Y));
+                    MainViewModel.ViewTime5.VieraEar02BLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BLeft_Z));
+                    MainViewModel.ViewTime5.VieraEar02BLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BLeft_W));
+                    MainViewModel.ViewTime5.VieraEar02BRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BRight_X));
+                    MainViewModel.ViewTime5.VieraEar02BRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BRight_Y));
+                    MainViewModel.ViewTime5.VieraEar02BRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BRight_Z));
+                    MainViewModel.ViewTime5.VieraEar02BRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BRight_W));
+                    MainViewModel.ViewTime5.VieraEar03BLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BLeft_X));
+                    MainViewModel.ViewTime5.VieraEar03BLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BLeft_Y));
+                    MainViewModel.ViewTime5.VieraEar03BLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BLeft_Z));
+                    MainViewModel.ViewTime5.VieraEar03BLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BLeft_W));
+                    MainViewModel.ViewTime5.VieraEar03BRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BRight_X));
+                    MainViewModel.ViewTime5.VieraEar03BRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BRight_Y));
+                    MainViewModel.ViewTime5.VieraEar03BRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BRight_Z));
+                    MainViewModel.ViewTime5.VieraEar03BRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BRight_W));
+                    MainViewModel.ViewTime5.VieraEar04BLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BLeft_X));
+                    MainViewModel.ViewTime5.VieraEar04BLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BLeft_Y));
+                    MainViewModel.ViewTime5.VieraEar04BLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BLeft_Z));
+                    MainViewModel.ViewTime5.VieraEar04BLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BLeft_W));
+                    MainViewModel.ViewTime5.VieraEar04BRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BRight_X));
+                    MainViewModel.ViewTime5.VieraEar04BRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BRight_Y));
+                    MainViewModel.ViewTime5.VieraEar04BRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BRight_Z));
+                    MainViewModel.ViewTime5.VieraEar04BRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BRight_W));
+                    MainViewModel.ViewTime5.VieraLipLowerB_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerB_X));
+                    MainViewModel.ViewTime5.VieraLipLowerB_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerB_Y));
+                    MainViewModel.ViewTime5.VieraLipLowerB_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerB_Z));
+                    MainViewModel.ViewTime5.VieraLipLowerB_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerB_W));
+                    CharacterDetails.SaveHead01 = false;
                 }
-
-                if (CharacterDetails.SaveTorsoBones)
+                if (CharacterDetails.SaveHead02 == true)
                 {
-                    MainViewModel.ViewTime5.SternumXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.SternumX));
-                    MainViewModel.ViewTime5.SternumYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.SternumY));
-                    MainViewModel.ViewTime5.SternumZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.SternumZ));
-                    MainViewModel.ViewTime5.SternumWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.SternumW));
-
-                    MainViewModel.ViewTime5.TorsoXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.TorsoX));
-                    MainViewModel.ViewTime5.TorsoYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.TorsoY));
-                    MainViewModel.ViewTime5.TorsoZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.TorsoZ));
-                    MainViewModel.ViewTime5.TorsoWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.TorsoW));
-
-                    MainViewModel.ViewTime5.WaistXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.WaistX));
-                    MainViewModel.ViewTime5.WaistYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.WaistY));
-                    MainViewModel.ViewTime5.WaistZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.WaistZ));
-                    MainViewModel.ViewTime5.WaistWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.WaistW));
-
-                    MainViewModel.ViewTime5.LBreastXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LBreastX));
-                    MainViewModel.ViewTime5.LBreastYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LBreastY));
-                    MainViewModel.ViewTime5.LBreastZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LBreastZ));
-                    MainViewModel.ViewTime5.LBreastWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LBreastW));
-
-                    MainViewModel.ViewTime5.RBreastXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RBreastX));
-                    MainViewModel.ViewTime5.RBreastYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RBreastY));
-                    MainViewModel.ViewTime5.RBreastZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RBreastZ));
-                    MainViewModel.ViewTime5.RBreastWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RBreastW));
-
-                    MainViewModel.ViewTime5.PelvisXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.PelvisX));
-                    MainViewModel.ViewTime5.PelvisYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.PelvisY));
-                    MainViewModel.ViewTime5.PelvisZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.PelvisZ));
-                    MainViewModel.ViewTime5.PelvisWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.PelvisW));
-
-                    MainViewModel.ViewTime5.TailXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.TailX));
-                    MainViewModel.ViewTime5.TailYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.TailY));
-                    MainViewModel.ViewTime5.TailZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.TailZ));
-                    MainViewModel.ViewTime5.TailWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.TailW));
-
-                    MainViewModel.ViewTime5.Tail2XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail2X));
-                    MainViewModel.ViewTime5.Tail2YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail2Y));
-                    MainViewModel.ViewTime5.Tail2ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail2Z));
-                    MainViewModel.ViewTime5.Tail2WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail2W));
-
-                    MainViewModel.ViewTime5.Tail3XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail3X));
-                    MainViewModel.ViewTime5.Tail3YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail3Y));
-                    MainViewModel.ViewTime5.Tail3ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail3Z));
-                    MainViewModel.ViewTime5.Tail3WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail3W));
-
-                    MainViewModel.ViewTime5.Tail4XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail4X));
-                    MainViewModel.ViewTime5.Tail4YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail4Y));
-                    MainViewModel.ViewTime5.Tail4ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail4Z));
-                    MainViewModel.ViewTime5.Tail4WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail4W));
-
-                    MainViewModel.ViewTime5.Tail5XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail5X));
-                    MainViewModel.ViewTime5.Tail5YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail5Y));
-                    MainViewModel.ViewTime5.Tail5ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail5Z));
-                    MainViewModel.ViewTime5.Tail5WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Tail5W));
-
-                    CharacterDetails.SaveTorsoBones = false;
+                    MainViewModel.ViewTime5.Head_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Head_X));
+                    MainViewModel.ViewTime5.Head_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Head_Y));
+                    MainViewModel.ViewTime5.Head_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Head_Z));
+                    MainViewModel.ViewTime5.Head_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Head_W));
+                    MainViewModel.ViewTime5.EarLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarLeft_X));
+                    MainViewModel.ViewTime5.EarLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarLeft_Y));
+                    MainViewModel.ViewTime5.EarLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarLeft_Z));
+                    MainViewModel.ViewTime5.EarLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarLeft_W));
+                    MainViewModel.ViewTime5.EarRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarRight_X));
+                    MainViewModel.ViewTime5.EarRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarRight_Y));
+                    MainViewModel.ViewTime5.EarRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarRight_Z));
+                    MainViewModel.ViewTime5.EarRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarRight_W));
+                    MainViewModel.ViewTime5.Jaw_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Jaw_X));
+                    MainViewModel.ViewTime5.Jaw_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Jaw_Y));
+                    MainViewModel.ViewTime5.Jaw_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Jaw_Z));
+                    MainViewModel.ViewTime5.Jaw_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Jaw_W));
+                    MainViewModel.ViewTime5.EyelidLowerLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerLeft_X));
+                    MainViewModel.ViewTime5.EyelidLowerLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerLeft_Y));
+                    MainViewModel.ViewTime5.EyelidLowerLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerLeft_Z));
+                    MainViewModel.ViewTime5.EyelidLowerLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerLeft_W));
+                    MainViewModel.ViewTime5.EyelidLowerRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerRight_X));
+                    MainViewModel.ViewTime5.EyelidLowerRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerRight_Y));
+                    MainViewModel.ViewTime5.EyelidLowerRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerRight_Z));
+                    MainViewModel.ViewTime5.EyelidLowerRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerRight_W));
+                    MainViewModel.ViewTime5.EyeLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeLeft_X));
+                    MainViewModel.ViewTime5.EyeLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeLeft_Y));
+                    MainViewModel.ViewTime5.EyeLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeLeft_Z));
+                    MainViewModel.ViewTime5.EyeLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeLeft_W));
+                    MainViewModel.ViewTime5.EyeRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeRight_X));
+                    MainViewModel.ViewTime5.EyeRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeRight_Y));
+                    MainViewModel.ViewTime5.EyeRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeRight_Z));
+                    MainViewModel.ViewTime5.EyeRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeRight_W));
+                    MainViewModel.ViewTime5.Nose_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Nose_X));
+                    MainViewModel.ViewTime5.Nose_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Nose_Y));
+                    MainViewModel.ViewTime5.Nose_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Nose_Z));
+                    MainViewModel.ViewTime5.Nose_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Nose_W));
+                    MainViewModel.ViewTime5.CheekLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekLeft_X));
+                    MainViewModel.ViewTime5.CheekLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekLeft_Y));
+                    MainViewModel.ViewTime5.CheekLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekLeft_Z));
+                    MainViewModel.ViewTime5.CheekLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekLeft_W));
+                    MainViewModel.ViewTime5.CheekRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekRight_X));
+                    MainViewModel.ViewTime5.CheekRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekRight_Y));
+                    MainViewModel.ViewTime5.CheekRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekRight_Z));
+                    MainViewModel.ViewTime5.CheekRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekRight_W));
+                    MainViewModel.ViewTime5.LipsLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsLeft_X));
+                    MainViewModel.ViewTime5.LipsLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsLeft_Y));
+                    MainViewModel.ViewTime5.LipsLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsLeft_Z));
+                    MainViewModel.ViewTime5.LipsLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsLeft_W));
+                    MainViewModel.ViewTime5.HrothEyebrowLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowLeft_X));
+                    MainViewModel.ViewTime5.HrothEyebrowLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowLeft_Y));
+                    MainViewModel.ViewTime5.HrothEyebrowLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowLeft_Z));
+                    MainViewModel.ViewTime5.HrothEyebrowLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowLeft_W));
+                    MainViewModel.ViewTime5.LipsRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsRight_X));
+                    MainViewModel.ViewTime5.LipsRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsRight_Y));
+                    MainViewModel.ViewTime5.LipsRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsRight_Z));
+                    MainViewModel.ViewTime5.LipsRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsRight_W));
+                    MainViewModel.ViewTime5.HrothEyebrowRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowRight_X));
+                    MainViewModel.ViewTime5.HrothEyebrowRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowRight_Y));
+                    MainViewModel.ViewTime5.HrothEyebrowRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowRight_Z));
+                    MainViewModel.ViewTime5.HrothEyebrowRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowRight_W));
+                    MainViewModel.ViewTime5.EyebrowLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowLeft_X));
+                    MainViewModel.ViewTime5.EyebrowLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowLeft_Y));
+                    MainViewModel.ViewTime5.EyebrowLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowLeft_Z));
+                    MainViewModel.ViewTime5.EyebrowLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowLeft_W));
+                    MainViewModel.ViewTime5.HrothBridge_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBridge_X));
+                    MainViewModel.ViewTime5.HrothBridge_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBridge_Y));
+                    MainViewModel.ViewTime5.HrothBridge_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBridge_Z));
+                    MainViewModel.ViewTime5.HrothBridge_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBridge_W));
+                    MainViewModel.ViewTime5.EyebrowRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowRight_X));
+                    MainViewModel.ViewTime5.EyebrowRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowRight_Y));
+                    MainViewModel.ViewTime5.EyebrowRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowRight_Z));
+                    MainViewModel.ViewTime5.EyebrowRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowRight_W));
+                    MainViewModel.ViewTime5.HrothBrowLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowLeft_X));
+                    MainViewModel.ViewTime5.HrothBrowLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowLeft_Y));
+                    MainViewModel.ViewTime5.HrothBrowLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowLeft_Z));
+                    MainViewModel.ViewTime5.HrothBrowLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowLeft_W));
+                    MainViewModel.ViewTime5.Bridge_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Bridge_X));
+                    MainViewModel.ViewTime5.Bridge_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Bridge_Y));
+                    MainViewModel.ViewTime5.Bridge_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Bridge_Z));
+                    MainViewModel.ViewTime5.Bridge_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Bridge_W));
+                    MainViewModel.ViewTime5.HrothBrowRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowRight_X));
+                    MainViewModel.ViewTime5.HrothBrowRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowRight_Y));
+                    MainViewModel.ViewTime5.HrothBrowRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowRight_Z));
+                    MainViewModel.ViewTime5.HrothBrowRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowRight_W));
+                    MainViewModel.ViewTime5.BrowLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowLeft_X));
+                    MainViewModel.ViewTime5.BrowLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowLeft_Y));
+                    MainViewModel.ViewTime5.BrowLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowLeft_Z));
+                    MainViewModel.ViewTime5.BrowLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowLeft_W));
+                    MainViewModel.ViewTime5.HrothJawUpper_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothJawUpper_X));
+                    MainViewModel.ViewTime5.HrothJawUpper_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothJawUpper_Y));
+                    MainViewModel.ViewTime5.HrothJawUpper_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothJawUpper_Z));
+                    MainViewModel.ViewTime5.HrothJawUpper_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothJawUpper_W));
+                    MainViewModel.ViewTime5.BrowRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowRight_X));
+                    MainViewModel.ViewTime5.BrowRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowRight_Y));
+                    MainViewModel.ViewTime5.BrowRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowRight_Z));
+                    MainViewModel.ViewTime5.BrowRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowRight_W));
+                    MainViewModel.ViewTime5.HrothLipUpper_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpper_X));
+                    MainViewModel.ViewTime5.HrothLipUpper_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpper_Y));
+                    MainViewModel.ViewTime5.HrothLipUpper_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpper_Z));
+                    MainViewModel.ViewTime5.HrothLipUpper_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpper_W));
+                    MainViewModel.ViewTime5.LipUpperA_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperA_X));
+                    MainViewModel.ViewTime5.LipUpperA_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperA_Y));
+                    MainViewModel.ViewTime5.LipUpperA_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperA_Z));
+                    MainViewModel.ViewTime5.LipUpperA_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperA_W));
+                    MainViewModel.ViewTime5.HrothEyelidUpperLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperLeft_X));
+                    MainViewModel.ViewTime5.HrothEyelidUpperLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperLeft_Y));
+                    MainViewModel.ViewTime5.HrothEyelidUpperLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperLeft_Z));
+                    MainViewModel.ViewTime5.HrothEyelidUpperLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperLeft_W));
+                    MainViewModel.ViewTime5.EyelidUpperLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperLeft_X));
+                    MainViewModel.ViewTime5.EyelidUpperLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperLeft_Y));
+                    MainViewModel.ViewTime5.EyelidUpperLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperLeft_Z));
+                    MainViewModel.ViewTime5.EyelidUpperLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperLeft_W));
+                    MainViewModel.ViewTime5.HrothEyelidUpperRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperRight_X));
+                    MainViewModel.ViewTime5.HrothEyelidUpperRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperRight_Y));
+                    MainViewModel.ViewTime5.HrothEyelidUpperRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperRight_Z));
+                    MainViewModel.ViewTime5.HrothEyelidUpperRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperRight_W));
+                    MainViewModel.ViewTime5.EyelidUpperRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperRight_X));
+                    MainViewModel.ViewTime5.EyelidUpperRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperRight_Y));
+                    MainViewModel.ViewTime5.EyelidUpperRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperRight_Z));
+                    MainViewModel.ViewTime5.EyelidUpperRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperRight_W));
+                    MainViewModel.ViewTime5.HrothLipsLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsLeft_X));
+                    MainViewModel.ViewTime5.HrothLipsLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsLeft_Y));
+                    MainViewModel.ViewTime5.HrothLipsLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsLeft_Z));
+                    MainViewModel.ViewTime5.HrothLipsLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsLeft_W));
+                    MainViewModel.ViewTime5.LipLowerA_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerA_X));
+                    MainViewModel.ViewTime5.LipLowerA_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerA_Y));
+                    MainViewModel.ViewTime5.LipLowerA_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerA_Z));
+                    MainViewModel.ViewTime5.LipLowerA_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerA_W));
+                    MainViewModel.ViewTime5.HrothLipsRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsRight_X));
+                    MainViewModel.ViewTime5.HrothLipsRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsRight_Y));
+                    MainViewModel.ViewTime5.HrothLipsRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsRight_Z));
+                    MainViewModel.ViewTime5.HrothLipsRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsRight_W));
+                    MainViewModel.ViewTime5.VieraEar01ALeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ALeft_X));
+                    MainViewModel.ViewTime5.VieraEar01ALeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ALeft_Y));
+                    MainViewModel.ViewTime5.VieraEar01ALeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ALeft_Z));
+                    MainViewModel.ViewTime5.VieraEar01ALeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ALeft_W));
+                    MainViewModel.ViewTime5.LipUpperB_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperB_X));
+                    MainViewModel.ViewTime5.LipUpperB_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperB_Y));
+                    MainViewModel.ViewTime5.LipUpperB_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperB_Z));
+                    MainViewModel.ViewTime5.LipUpperB_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperB_W));
+                    MainViewModel.ViewTime5.HrothLipUpperLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperLeft_X));
+                    MainViewModel.ViewTime5.HrothLipUpperLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperLeft_Y));
+                    MainViewModel.ViewTime5.HrothLipUpperLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperLeft_Z));
+                    MainViewModel.ViewTime5.HrothLipUpperLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperLeft_W));
+                    MainViewModel.ViewTime5.VieraEar01ARight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ARight_X));
+                    MainViewModel.ViewTime5.VieraEar01ARight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ARight_Y));
+                    MainViewModel.ViewTime5.VieraEar01ARight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ARight_Z));
+                    MainViewModel.ViewTime5.VieraEar01ARight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ARight_W));
+                    MainViewModel.ViewTime5.LipLowerB_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerB_X));
+                    MainViewModel.ViewTime5.LipLowerB_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerB_Y));
+                    MainViewModel.ViewTime5.LipLowerB_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerB_Z));
+                    MainViewModel.ViewTime5.LipLowerB_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerB_W));
+                    MainViewModel.ViewTime5.HrothLipUpperRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperRight_X));
+                    MainViewModel.ViewTime5.HrothLipUpperRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperRight_Y));
+                    MainViewModel.ViewTime5.HrothLipUpperRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperRight_Z));
+                    MainViewModel.ViewTime5.HrothLipUpperRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperRight_W));
+                    MainViewModel.ViewTime5.VieraEar02ALeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ALeft_X));
+                    MainViewModel.ViewTime5.VieraEar02ALeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ALeft_Y));
+                    MainViewModel.ViewTime5.VieraEar02ALeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ALeft_Z));
+                    MainViewModel.ViewTime5.VieraEar02ALeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ALeft_W));
+                    MainViewModel.ViewTime5.HrothLipLower_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipLower_X));
+                    MainViewModel.ViewTime5.HrothLipLower_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipLower_Y));
+                    MainViewModel.ViewTime5.HrothLipLower_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipLower_Z));
+                    MainViewModel.ViewTime5.HrothLipLower_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipLower_W));
+                    MainViewModel.ViewTime5.VieraEar02ARight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ARight_X));
+                    MainViewModel.ViewTime5.VieraEar02ARight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ARight_Y));
+                    MainViewModel.ViewTime5.VieraEar02ARight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ARight_Z));
+                    MainViewModel.ViewTime5.VieraEar02ARight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ARight_W));
+                    MainViewModel.ViewTime5.VieraEar03ALeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ALeft_X));
+                    MainViewModel.ViewTime5.VieraEar03ALeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ALeft_Y));
+                    MainViewModel.ViewTime5.VieraEar03ALeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ALeft_Z));
+                    MainViewModel.ViewTime5.VieraEar03ALeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ALeft_W));
+                    MainViewModel.ViewTime5.VieraEar03ARight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ARight_X));
+                    MainViewModel.ViewTime5.VieraEar03ARight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ARight_Y));
+                    MainViewModel.ViewTime5.VieraEar03ARight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ARight_Z));
+                    MainViewModel.ViewTime5.VieraEar03ARight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ARight_W));
+                    MainViewModel.ViewTime5.VieraEar04ALeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ALeft_X));
+                    MainViewModel.ViewTime5.VieraEar04ALeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ALeft_Y));
+                    MainViewModel.ViewTime5.VieraEar04ALeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ALeft_Z));
+                    MainViewModel.ViewTime5.VieraEar04ALeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ALeft_W));
+                    MainViewModel.ViewTime5.VieraEar04ARight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ARight_X));
+                    MainViewModel.ViewTime5.VieraEar04ARight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ARight_Y));
+                    MainViewModel.ViewTime5.VieraEar04ARight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ARight_Z));
+                    MainViewModel.ViewTime5.VieraEar04ARight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ARight_W));
+                    MainViewModel.ViewTime5.VieraLipLowerA_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerA_X));
+                    MainViewModel.ViewTime5.VieraLipLowerA_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerA_Y));
+                    MainViewModel.ViewTime5.VieraLipLowerA_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerA_Z));
+                    MainViewModel.ViewTime5.VieraLipLowerA_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerA_W));
+                    MainViewModel.ViewTime5.VieraLipUpperB_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipUpperB_X));
+                    MainViewModel.ViewTime5.VieraLipUpperB_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipUpperB_Y));
+                    MainViewModel.ViewTime5.VieraLipUpperB_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipUpperB_Z));
+                    MainViewModel.ViewTime5.VieraLipUpperB_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipUpperB_W));
+                    MainViewModel.ViewTime5.VieraEar01BLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BLeft_X));
+                    MainViewModel.ViewTime5.VieraEar01BLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BLeft_Y));
+                    MainViewModel.ViewTime5.VieraEar01BLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BLeft_Z));
+                    MainViewModel.ViewTime5.VieraEar01BLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BLeft_W));
+                    MainViewModel.ViewTime5.VieraEar01BRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BRight_X));
+                    MainViewModel.ViewTime5.VieraEar01BRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BRight_Y));
+                    MainViewModel.ViewTime5.VieraEar01BRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BRight_Z));
+                    MainViewModel.ViewTime5.VieraEar01BRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BRight_W));
+                    MainViewModel.ViewTime5.VieraEar02BLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BLeft_X));
+                    MainViewModel.ViewTime5.VieraEar02BLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BLeft_Y));
+                    MainViewModel.ViewTime5.VieraEar02BLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BLeft_Z));
+                    MainViewModel.ViewTime5.VieraEar02BLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BLeft_W));
+                    MainViewModel.ViewTime5.VieraEar02BRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BRight_X));
+                    MainViewModel.ViewTime5.VieraEar02BRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BRight_Y));
+                    MainViewModel.ViewTime5.VieraEar02BRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BRight_Z));
+                    MainViewModel.ViewTime5.VieraEar02BRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BRight_W));
+                    MainViewModel.ViewTime5.VieraEar03BLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BLeft_X));
+                    MainViewModel.ViewTime5.VieraEar03BLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BLeft_Y));
+                    MainViewModel.ViewTime5.VieraEar03BLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BLeft_Z));
+                    MainViewModel.ViewTime5.VieraEar03BLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BLeft_W));
+                    MainViewModel.ViewTime5.VieraEar03BRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BRight_X));
+                    MainViewModel.ViewTime5.VieraEar03BRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BRight_Y));
+                    MainViewModel.ViewTime5.VieraEar03BRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BRight_Z));
+                    MainViewModel.ViewTime5.VieraEar03BRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BRight_W));
+                    MainViewModel.ViewTime5.VieraEar04BLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BLeft_X));
+                    MainViewModel.ViewTime5.VieraEar04BLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BLeft_Y));
+                    MainViewModel.ViewTime5.VieraEar04BLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BLeft_Z));
+                    MainViewModel.ViewTime5.VieraEar04BLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BLeft_W));
+                    MainViewModel.ViewTime5.VieraEar04BRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BRight_X));
+                    MainViewModel.ViewTime5.VieraEar04BRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BRight_Y));
+                    MainViewModel.ViewTime5.VieraEar04BRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BRight_Z));
+                    MainViewModel.ViewTime5.VieraEar04BRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BRight_W));
+                    MainViewModel.ViewTime5.VieraLipLowerB_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerB_X));
+                    MainViewModel.ViewTime5.VieraLipLowerB_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerB_Y));
+                    MainViewModel.ViewTime5.VieraLipLowerB_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerB_Z));
+                    MainViewModel.ViewTime5.VieraLipLowerB_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerB_W));
+                    CharacterDetails.SaveHead02 = false;
                 }
-
-                if (CharacterDetails.SaveLeftArmBones)
+                if (CharacterDetails.SaveHair01 == true)
                 {
-                    MainViewModel.ViewTime5.LShoulderXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LShoulderX));
-                    MainViewModel.ViewTime5.LShoulderYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LShoulderY));
-                    MainViewModel.ViewTime5.LShoulderZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LShoulderZ));
-                    MainViewModel.ViewTime5.LShoulderWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LShoulderW));
-
-                    MainViewModel.ViewTime5.LClavicleXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LClavicleX));
-                    MainViewModel.ViewTime5.LClavicleYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LClavicleY));
-                    MainViewModel.ViewTime5.LClavicleZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LClavicleZ));
-                    MainViewModel.ViewTime5.LClavicleWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LClavicleW));
-
-                    MainViewModel.ViewTime5.LArmXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LArmX));
-                    MainViewModel.ViewTime5.LArmYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LArmY));
-                    MainViewModel.ViewTime5.LArmZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LArmZ));
-                    MainViewModel.ViewTime5.LArmWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LArmW));
-
-                    MainViewModel.ViewTime5.LElbowXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LElbowX));
-                    MainViewModel.ViewTime5.LElbowYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LElbowY));
-                    MainViewModel.ViewTime5.LElbowZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LElbowZ));
-                    MainViewModel.ViewTime5.LElbowWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LElbowW));
-
-                    MainViewModel.ViewTime5.LForearmXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LForearmX));
-                    MainViewModel.ViewTime5.LForearmYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LForearmY));
-                    MainViewModel.ViewTime5.LForearmZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LForearmZ));
-                    MainViewModel.ViewTime5.LForearmWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LForearmW));
-
-                    MainViewModel.ViewTime5.LWristXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LWristX));
-                    MainViewModel.ViewTime5.LWristYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LWristY));
-                    MainViewModel.ViewTime5.LWristZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LWristZ));
-                    MainViewModel.ViewTime5.LWristWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LWristW));
-
-                    MainViewModel.ViewTime5.LHandXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LHandX));
-                    MainViewModel.ViewTime5.LHandYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LHandY));
-                    MainViewModel.ViewTime5.LHandZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LHandZ));
-                    MainViewModel.ViewTime5.LHandWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LHandW));
-
-                    MainViewModel.ViewTime5.LThumbXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThumbX));
-                    MainViewModel.ViewTime5.LThumbYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThumbY));
-                    MainViewModel.ViewTime5.LThumbZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThumbZ));
-                    MainViewModel.ViewTime5.LThumbWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThumbW));
-
-                    MainViewModel.ViewTime5.LThumb2XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThumb2X));
-                    MainViewModel.ViewTime5.LThumb2YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThumb2Y));
-                    MainViewModel.ViewTime5.LThumb2ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThumb2Z));
-                    MainViewModel.ViewTime5.LThumb2WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThumb2W));
-
-                    MainViewModel.ViewTime5.LIndexXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LIndexX));
-                    MainViewModel.ViewTime5.LIndexYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LIndexY));
-                    MainViewModel.ViewTime5.LIndexZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LIndexZ));
-                    MainViewModel.ViewTime5.LIndexWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LIndexW));
-
-                    MainViewModel.ViewTime5.LIndex2XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LIndex2X));
-                    MainViewModel.ViewTime5.LIndex2YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LIndex2Y));
-                    MainViewModel.ViewTime5.LIndex2ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LIndex2Z));
-                    MainViewModel.ViewTime5.LIndex2WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LIndex2W));
-
-                    MainViewModel.ViewTime5.LMiddleXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LMiddleX));
-                    MainViewModel.ViewTime5.LMiddleYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LMiddleY));
-                    MainViewModel.ViewTime5.LMiddleZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LMiddleZ));
-                    MainViewModel.ViewTime5.LMiddleWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LMiddleW));
-
-                    MainViewModel.ViewTime5.LMiddle2XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LMiddle2X));
-                    MainViewModel.ViewTime5.LMiddle2YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LMiddle2Y));
-                    MainViewModel.ViewTime5.LMiddle2ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LMiddle2Z));
-                    MainViewModel.ViewTime5.LMiddle2WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LMiddle2W));
-
-                    MainViewModel.ViewTime5.LRingXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LRingX));
-                    MainViewModel.ViewTime5.LRingYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LRingY));
-                    MainViewModel.ViewTime5.LRingZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LRingZ));
-                    MainViewModel.ViewTime5.LRingWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LRingW));
-
-                    MainViewModel.ViewTime5.LRing2XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LRing2X));
-                    MainViewModel.ViewTime5.LRing2YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LRing2Y));
-                    MainViewModel.ViewTime5.LRing2ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LRing2Z));
-                    MainViewModel.ViewTime5.LRing2WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LRing2W));
-
-                    MainViewModel.ViewTime5.LPinkyXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LPinkyX));
-                    MainViewModel.ViewTime5.LPinkyYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LPinkyY));
-                    MainViewModel.ViewTime5.LPinkyZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LPinkyZ));
-                    MainViewModel.ViewTime5.LPinkyWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LPinkyW));
-
-                    MainViewModel.ViewTime5.LPinky2XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LPinky2X));
-                    MainViewModel.ViewTime5.LPinky2YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LPinky2Y));
-                    MainViewModel.ViewTime5.LPinky2ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LPinky2Z));
-                    MainViewModel.ViewTime5.LPinky2WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LPinky2W));
-
-                    CharacterDetails.SaveLeftArmBones = false;
+                    MainViewModel.ViewTime5.HairA_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairA_X));
+                    MainViewModel.ViewTime5.HairA_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairA_Y));
+                    MainViewModel.ViewTime5.HairA_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairA_Z));
+                    MainViewModel.ViewTime5.HairA_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairA_W));
+                    MainViewModel.ViewTime5.HairFrontLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontLeft_X));
+                    MainViewModel.ViewTime5.HairFrontLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontLeft_Y));
+                    MainViewModel.ViewTime5.HairFrontLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontLeft_Z));
+                    MainViewModel.ViewTime5.HairFrontLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontLeft_W));
+                    MainViewModel.ViewTime5.HairFrontRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontRight_X));
+                    MainViewModel.ViewTime5.HairFrontRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontRight_Y));
+                    MainViewModel.ViewTime5.HairFrontRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontRight_Z));
+                    MainViewModel.ViewTime5.HairFrontRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontRight_W));
+                    MainViewModel.ViewTime5.HairB_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairB_X));
+                    MainViewModel.ViewTime5.HairB_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairB_Y));
+                    MainViewModel.ViewTime5.HairB_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairB_Z));
+                    MainViewModel.ViewTime5.HairB_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairB_W));
+                    MainViewModel.ViewTime5.HrothWhiskersLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersLeft_X));
+                    MainViewModel.ViewTime5.HrothWhiskersLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersLeft_Y));
+                    MainViewModel.ViewTime5.HrothWhiskersLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersLeft_Z));
+                    MainViewModel.ViewTime5.HrothWhiskersLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersLeft_W));
+                    MainViewModel.ViewTime5.HrothWhiskersRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersRight_X));
+                    MainViewModel.ViewTime5.HrothWhiskersRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersRight_Y));
+                    MainViewModel.ViewTime5.HrothWhiskersRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersRight_Z));
+                    MainViewModel.ViewTime5.HrothWhiskersRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersRight_W));
+                    MainViewModel.ViewTime5.ExHairA_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairA_X));
+                    MainViewModel.ViewTime5.ExHairA_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairA_Y));
+                    MainViewModel.ViewTime5.ExHairA_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairA_Z));
+                    MainViewModel.ViewTime5.ExHairA_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairA_W));
+                    MainViewModel.ViewTime5.ExHairB_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairB_X));
+                    MainViewModel.ViewTime5.ExHairB_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairB_Y));
+                    MainViewModel.ViewTime5.ExHairB_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairB_Z));
+                    MainViewModel.ViewTime5.ExHairB_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairB_W));
+                    MainViewModel.ViewTime5.ExHairC_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairC_X));
+                    MainViewModel.ViewTime5.ExHairC_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairC_Y));
+                    MainViewModel.ViewTime5.ExHairC_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairC_Z));
+                    MainViewModel.ViewTime5.ExHairC_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairC_W));
+                    MainViewModel.ViewTime5.ExHairD_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairD_X));
+                    MainViewModel.ViewTime5.ExHairD_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairD_Y));
+                    MainViewModel.ViewTime5.ExHairD_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairD_Z));
+                    MainViewModel.ViewTime5.ExHairD_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairD_W));
+                    MainViewModel.ViewTime5.ExHairE_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairE_X));
+                    MainViewModel.ViewTime5.ExHairE_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairE_Y));
+                    MainViewModel.ViewTime5.ExHairE_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairE_Z));
+                    MainViewModel.ViewTime5.ExHairE_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairE_W));
+                    MainViewModel.ViewTime5.ExHairF_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairF_X));
+                    MainViewModel.ViewTime5.ExHairF_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairF_Y));
+                    MainViewModel.ViewTime5.ExHairF_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairF_Z));
+                    MainViewModel.ViewTime5.ExHairF_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairF_W));
+                    MainViewModel.ViewTime5.ExHairG_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairG_X));
+                    MainViewModel.ViewTime5.ExHairG_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairG_Y));
+                    MainViewModel.ViewTime5.ExHairG_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairG_Z));
+                    MainViewModel.ViewTime5.ExHairG_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairG_W));
+                    MainViewModel.ViewTime5.ExHairH_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairH_X));
+                    MainViewModel.ViewTime5.ExHairH_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairH_Y));
+                    MainViewModel.ViewTime5.ExHairH_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairH_Z));
+                    MainViewModel.ViewTime5.ExHairH_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairH_W));
+                    MainViewModel.ViewTime5.ExHairI_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairI_X));
+                    MainViewModel.ViewTime5.ExHairI_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairI_Y));
+                    MainViewModel.ViewTime5.ExHairI_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairI_Z));
+                    MainViewModel.ViewTime5.ExHairI_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairI_W));
+                    MainViewModel.ViewTime5.ExHairJ_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairJ_X));
+                    MainViewModel.ViewTime5.ExHairJ_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairJ_Y));
+                    MainViewModel.ViewTime5.ExHairJ_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairJ_Z));
+                    MainViewModel.ViewTime5.ExHairJ_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairJ_W));
+                    MainViewModel.ViewTime5.ExHairK_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairK_X));
+                    MainViewModel.ViewTime5.ExHairK_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairK_Y));
+                    MainViewModel.ViewTime5.ExHairK_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairK_Z));
+                    MainViewModel.ViewTime5.ExHairK_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairK_W));
+                    MainViewModel.ViewTime5.ExHairL_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairL_X));
+                    MainViewModel.ViewTime5.ExHairL_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairL_Y));
+                    MainViewModel.ViewTime5.ExHairL_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairL_Z));
+                    MainViewModel.ViewTime5.ExHairL_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairL_W));
+                    CharacterDetails.SaveHair01 = false;
                 }
-
-                if (CharacterDetails.SaveRightArmBones)
+                if (CharacterDetails.SaveHair02 == true)
                 {
-                    MainViewModel.ViewTime5.RShoulderXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RShoulderX));
-                    MainViewModel.ViewTime5.RShoulderYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RShoulderY));
-                    MainViewModel.ViewTime5.RShoulderZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RShoulderZ));
-                    MainViewModel.ViewTime5.RShoulderWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RShoulderW));
-
-                    MainViewModel.ViewTime5.RClavicleXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RClavicleX));
-                    MainViewModel.ViewTime5.RClavicleYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RClavicleY));
-                    MainViewModel.ViewTime5.RClavicleZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RClavicleZ));
-                    MainViewModel.ViewTime5.RClavicleWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RClavicleW));
-
-                    MainViewModel.ViewTime5.RArmXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RArmX));
-                    MainViewModel.ViewTime5.RArmYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RArmY));
-                    MainViewModel.ViewTime5.RArmZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RArmZ));
-                    MainViewModel.ViewTime5.RArmWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RArmW));
-
-                    MainViewModel.ViewTime5.RElbowXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RElbowX));
-                    MainViewModel.ViewTime5.RElbowYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RElbowY));
-                    MainViewModel.ViewTime5.RElbowZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RElbowZ));
-                    MainViewModel.ViewTime5.RElbowWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RElbowW));
-
-                    MainViewModel.ViewTime5.RForearmXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RForearmX));
-                    MainViewModel.ViewTime5.RForearmYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RForearmY));
-                    MainViewModel.ViewTime5.RForearmZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RForearmZ));
-                    MainViewModel.ViewTime5.RForearmWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RForearmW));
-
-                    MainViewModel.ViewTime5.RWristXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RWristX));
-                    MainViewModel.ViewTime5.RWristYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RWristY));
-                    MainViewModel.ViewTime5.RWristZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RWristZ));
-                    MainViewModel.ViewTime5.RWristWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RWristW));
-
-                    MainViewModel.ViewTime5.RHandXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RHandX));
-                    MainViewModel.ViewTime5.RHandYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RHandY));
-                    MainViewModel.ViewTime5.RHandZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RHandZ));
-                    MainViewModel.ViewTime5.RHandWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RHandW));
-
-                    MainViewModel.ViewTime5.RThumbXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RThumbX));
-                    MainViewModel.ViewTime5.RThumbYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RThumbY));
-                    MainViewModel.ViewTime5.RThumbZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RThumbZ));
-                    MainViewModel.ViewTime5.RThumbWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RThumbW));
-
-                    MainViewModel.ViewTime5.RThumb2XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RThumb2X));
-                    MainViewModel.ViewTime5.RThumb2YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RThumb2Y));
-                    MainViewModel.ViewTime5.RThumb2ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RThumb2Z));
-                    MainViewModel.ViewTime5.RThumb2WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RThumb2W));
-
-                    MainViewModel.ViewTime5.RIndexXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RIndexX));
-                    MainViewModel.ViewTime5.RIndexYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RIndexY));
-                    MainViewModel.ViewTime5.RIndexZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RIndexZ));
-                    MainViewModel.ViewTime5.RIndexWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RIndexW));
-
-                    MainViewModel.ViewTime5.RIndex2XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RIndex2X));
-                    MainViewModel.ViewTime5.RIndex2YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RIndex2Y));
-                    MainViewModel.ViewTime5.RIndex2ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RIndex2Z));
-                    MainViewModel.ViewTime5.RIndex2WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RIndex2W));
-
-                    MainViewModel.ViewTime5.RMiddleXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RMiddleX));
-                    MainViewModel.ViewTime5.RMiddleYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RMiddleY));
-                    MainViewModel.ViewTime5.RMiddleZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RMiddleZ));
-                    MainViewModel.ViewTime5.RMiddleWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RMiddleW));
-
-                    MainViewModel.ViewTime5.RMiddle2XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RMiddle2X));
-                    MainViewModel.ViewTime5.RMiddle2YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RMiddle2Y));
-                    MainViewModel.ViewTime5.RMiddle2ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RMiddle2Z));
-                    MainViewModel.ViewTime5.RMiddle2WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RMiddle2W));
-
-                    MainViewModel.ViewTime5.RRingXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RRingX));
-                    MainViewModel.ViewTime5.RRingYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RRingY));
-                    MainViewModel.ViewTime5.RRingZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RRingZ));
-                    MainViewModel.ViewTime5.RRingWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RRingW));
-
-                    MainViewModel.ViewTime5.RRing2XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RRing2X));
-                    MainViewModel.ViewTime5.RRing2YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RRing2Y));
-                    MainViewModel.ViewTime5.RRing2ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RRing2Z));
-                    MainViewModel.ViewTime5.RRing2WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RRing2W));
-
-                    MainViewModel.ViewTime5.RPinkyXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RPinkyX));
-                    MainViewModel.ViewTime5.RPinkyYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RPinkyY));
-                    MainViewModel.ViewTime5.RPinkyZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RPinkyZ));
-                    MainViewModel.ViewTime5.RPinkyWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RPinkyW));
-
-                    MainViewModel.ViewTime5.RPinky2XSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RPinky2X));
-                    MainViewModel.ViewTime5.RPinky2YSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RPinky2Y));
-                    MainViewModel.ViewTime5.RPinky2ZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RPinky2Z));
-                    MainViewModel.ViewTime5.RPinky2WSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RPinky2W));
-
-                    CharacterDetails.SaveRightArmBones = false;
+                    MainViewModel.ViewTime5.HairA_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairA_X));
+                    MainViewModel.ViewTime5.HairA_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairA_Y));
+                    MainViewModel.ViewTime5.HairA_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairA_Z));
+                    MainViewModel.ViewTime5.HairA_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairA_W));
+                    MainViewModel.ViewTime5.HairFrontLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontLeft_X));
+                    MainViewModel.ViewTime5.HairFrontLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontLeft_Y));
+                    MainViewModel.ViewTime5.HairFrontLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontLeft_Z));
+                    MainViewModel.ViewTime5.HairFrontLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontLeft_W));
+                    MainViewModel.ViewTime5.HairFrontRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontRight_X));
+                    MainViewModel.ViewTime5.HairFrontRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontRight_Y));
+                    MainViewModel.ViewTime5.HairFrontRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontRight_Z));
+                    MainViewModel.ViewTime5.HairFrontRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontRight_W));
+                    MainViewModel.ViewTime5.HairB_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairB_X));
+                    MainViewModel.ViewTime5.HairB_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairB_Y));
+                    MainViewModel.ViewTime5.HairB_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairB_Z));
+                    MainViewModel.ViewTime5.HairB_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairB_W));
+                    MainViewModel.ViewTime5.HrothWhiskersLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersLeft_X));
+                    MainViewModel.ViewTime5.HrothWhiskersLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersLeft_Y));
+                    MainViewModel.ViewTime5.HrothWhiskersLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersLeft_Z));
+                    MainViewModel.ViewTime5.HrothWhiskersLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersLeft_W));
+                    MainViewModel.ViewTime5.HrothWhiskersRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersRight_X));
+                    MainViewModel.ViewTime5.HrothWhiskersRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersRight_Y));
+                    MainViewModel.ViewTime5.HrothWhiskersRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersRight_Z));
+                    MainViewModel.ViewTime5.HrothWhiskersRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersRight_W));
+                    MainViewModel.ViewTime5.ExHairA_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairA_X));
+                    MainViewModel.ViewTime5.ExHairA_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairA_Y));
+                    MainViewModel.ViewTime5.ExHairA_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairA_Z));
+                    MainViewModel.ViewTime5.ExHairA_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairA_W));
+                    MainViewModel.ViewTime5.ExHairB_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairB_X));
+                    MainViewModel.ViewTime5.ExHairB_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairB_Y));
+                    MainViewModel.ViewTime5.ExHairB_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairB_Z));
+                    MainViewModel.ViewTime5.ExHairB_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairB_W));
+                    MainViewModel.ViewTime5.ExHairC_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairC_X));
+                    MainViewModel.ViewTime5.ExHairC_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairC_Y));
+                    MainViewModel.ViewTime5.ExHairC_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairC_Z));
+                    MainViewModel.ViewTime5.ExHairC_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairC_W));
+                    MainViewModel.ViewTime5.ExHairD_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairD_X));
+                    MainViewModel.ViewTime5.ExHairD_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairD_Y));
+                    MainViewModel.ViewTime5.ExHairD_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairD_Z));
+                    MainViewModel.ViewTime5.ExHairD_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairD_W));
+                    MainViewModel.ViewTime5.ExHairE_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairE_X));
+                    MainViewModel.ViewTime5.ExHairE_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairE_Y));
+                    MainViewModel.ViewTime5.ExHairE_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairE_Z));
+                    MainViewModel.ViewTime5.ExHairE_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairE_W));
+                    MainViewModel.ViewTime5.ExHairF_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairF_X));
+                    MainViewModel.ViewTime5.ExHairF_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairF_Y));
+                    MainViewModel.ViewTime5.ExHairF_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairF_Z));
+                    MainViewModel.ViewTime5.ExHairF_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairF_W));
+                    MainViewModel.ViewTime5.ExHairG_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairG_X));
+                    MainViewModel.ViewTime5.ExHairG_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairG_Y));
+                    MainViewModel.ViewTime5.ExHairG_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairG_Z));
+                    MainViewModel.ViewTime5.ExHairG_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairG_W));
+                    MainViewModel.ViewTime5.ExHairH_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairH_X));
+                    MainViewModel.ViewTime5.ExHairH_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairH_Y));
+                    MainViewModel.ViewTime5.ExHairH_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairH_Z));
+                    MainViewModel.ViewTime5.ExHairH_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairH_W));
+                    MainViewModel.ViewTime5.ExHairI_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairI_X));
+                    MainViewModel.ViewTime5.ExHairI_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairI_Y));
+                    MainViewModel.ViewTime5.ExHairI_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairI_Z));
+                    MainViewModel.ViewTime5.ExHairI_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairI_W));
+                    MainViewModel.ViewTime5.ExHairJ_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairJ_X));
+                    MainViewModel.ViewTime5.ExHairJ_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairJ_Y));
+                    MainViewModel.ViewTime5.ExHairJ_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairJ_Z));
+                    MainViewModel.ViewTime5.ExHairJ_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairJ_W));
+                    MainViewModel.ViewTime5.ExHairK_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairK_X));
+                    MainViewModel.ViewTime5.ExHairK_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairK_Y));
+                    MainViewModel.ViewTime5.ExHairK_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairK_Z));
+                    MainViewModel.ViewTime5.ExHairK_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairK_W));
+                    MainViewModel.ViewTime5.ExHairL_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairL_X));
+                    MainViewModel.ViewTime5.ExHairL_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairL_Y));
+                    MainViewModel.ViewTime5.ExHairL_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairL_Z));
+                    MainViewModel.ViewTime5.ExHairL_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairL_W));
+                    CharacterDetails.SaveHair02 = false;
                 }
-
-                if (CharacterDetails.SaveLeftLegBones)
+                if (CharacterDetails.SaveEarrings01 == true)
                 {
-                    MainViewModel.ViewTime5.LThighXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThighX));
-                    MainViewModel.ViewTime5.LThighYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThighY));
-                    MainViewModel.ViewTime5.LThighZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThighZ));
-                    MainViewModel.ViewTime5.LThighWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LThighW));
-
-                    MainViewModel.ViewTime5.LKneeXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LKneeX));
-                    MainViewModel.ViewTime5.LKneeYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LKneeY));
-                    MainViewModel.ViewTime5.LKneeZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LKneeZ));
-                    MainViewModel.ViewTime5.LKneeWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LKneeW));
-
-                    MainViewModel.ViewTime5.LCalfXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LCalfX));
-                    MainViewModel.ViewTime5.LCalfYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LCalfY));
-                    MainViewModel.ViewTime5.LCalfZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LCalfZ));
-                    MainViewModel.ViewTime5.LCalfWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LCalfW));
-
-                    MainViewModel.ViewTime5.LFootXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LFootX));
-                    MainViewModel.ViewTime5.LFootYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LFootY));
-                    MainViewModel.ViewTime5.LFootZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LFootZ));
-                    MainViewModel.ViewTime5.LFootWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LFootW));
-
-                    MainViewModel.ViewTime5.LToesXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LToesX));
-                    MainViewModel.ViewTime5.LToesYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LToesY));
-                    MainViewModel.ViewTime5.LToesZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LToesZ));
-                    MainViewModel.ViewTime5.LToesWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.LToesW));
-
-                    CharacterDetails.SaveLeftLegBones = false;
+                    MainViewModel.ViewTime5.EarringALeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringALeft_X));
+                    MainViewModel.ViewTime5.EarringALeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringALeft_Y));
+                    MainViewModel.ViewTime5.EarringALeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringALeft_Z));
+                    MainViewModel.ViewTime5.EarringALeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringALeft_W));
+                    MainViewModel.ViewTime5.EarringARight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringARight_X));
+                    MainViewModel.ViewTime5.EarringARight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringARight_Y));
+                    MainViewModel.ViewTime5.EarringARight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringARight_Z));
+                    MainViewModel.ViewTime5.EarringARight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringARight_W));
+                    MainViewModel.ViewTime5.EarringBLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBLeft_X));
+                    MainViewModel.ViewTime5.EarringBLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBLeft_Y));
+                    MainViewModel.ViewTime5.EarringBLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBLeft_Z));
+                    MainViewModel.ViewTime5.EarringBLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBLeft_W));
+                    MainViewModel.ViewTime5.EarringBRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBRight_X));
+                    MainViewModel.ViewTime5.EarringBRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBRight_Y));
+                    MainViewModel.ViewTime5.EarringBRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBRight_Z));
+                    MainViewModel.ViewTime5.EarringBRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBRight_W));
+                    CharacterDetails.SaveEarrings01 = false;
                 }
-
-                if (CharacterDetails.SaveRightLegBones)
+                if (CharacterDetails.SaveEarrings02 == true)
                 {
-                    MainViewModel.ViewTime5.RThighXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RThighX));
-                    MainViewModel.ViewTime5.RThighYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RThighY));
-                    MainViewModel.ViewTime5.RThighZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RThighZ));
-                    MainViewModel.ViewTime5.RThighWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RThighW));
-
-                    MainViewModel.ViewTime5.RKneeXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RKneeX));
-                    MainViewModel.ViewTime5.RKneeYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RKneeY));
-                    MainViewModel.ViewTime5.RKneeZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RKneeZ));
-                    MainViewModel.ViewTime5.RKneeWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RKneeW));
-
-                    MainViewModel.ViewTime5.RCalfXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RCalfX));
-                    MainViewModel.ViewTime5.RCalfYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RCalfY));
-                    MainViewModel.ViewTime5.RCalfZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RCalfZ));
-                    MainViewModel.ViewTime5.RCalfWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RCalfW));
-
-                    MainViewModel.ViewTime5.RFootXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RFootX));
-                    MainViewModel.ViewTime5.RFootYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RFootY));
-                    MainViewModel.ViewTime5.RFootZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RFootZ));
-                    MainViewModel.ViewTime5.RFootWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RFootW));
-
-                    MainViewModel.ViewTime5.RToesXSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RToesX));
-                    MainViewModel.ViewTime5.RToesYSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RToesY));
-                    MainViewModel.ViewTime5.RToesZSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RToesZ));
-                    MainViewModel.ViewTime5.RToesWSav = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.RToesW));
-
-                    CharacterDetails.SaveRightLegBones = false;
+                    MainViewModel.ViewTime5.EarringALeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringALeft_X));
+                    MainViewModel.ViewTime5.EarringALeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringALeft_Y));
+                    MainViewModel.ViewTime5.EarringALeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringALeft_Z));
+                    MainViewModel.ViewTime5.EarringALeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringALeft_W));
+                    MainViewModel.ViewTime5.EarringARight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringARight_X));
+                    MainViewModel.ViewTime5.EarringARight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringARight_Y));
+                    MainViewModel.ViewTime5.EarringARight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringARight_Z));
+                    MainViewModel.ViewTime5.EarringARight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringARight_W));
+                    MainViewModel.ViewTime5.EarringBLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBLeft_X));
+                    MainViewModel.ViewTime5.EarringBLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBLeft_Y));
+                    MainViewModel.ViewTime5.EarringBLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBLeft_Z));
+                    MainViewModel.ViewTime5.EarringBLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBLeft_W));
+                    MainViewModel.ViewTime5.EarringBRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBRight_X));
+                    MainViewModel.ViewTime5.EarringBRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBRight_Y));
+                    MainViewModel.ViewTime5.EarringBRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBRight_Z));
+                    MainViewModel.ViewTime5.EarringBRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBRight_W));
+                    CharacterDetails.SaveEarrings02 = false;
+                }
+                if (CharacterDetails.SaveBody01 == true)
+                {
+                    MainViewModel.ViewTime5.SpineA_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineA_X));
+                    MainViewModel.ViewTime5.SpineA_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineA_Y));
+                    MainViewModel.ViewTime5.SpineA_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineA_Z));
+                    MainViewModel.ViewTime5.SpineA_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineA_W));
+                    MainViewModel.ViewTime5.SpineB_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineB_X));
+                    MainViewModel.ViewTime5.SpineB_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineB_Y));
+                    MainViewModel.ViewTime5.SpineB_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineB_Z));
+                    MainViewModel.ViewTime5.SpineB_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineB_W));
+                    MainViewModel.ViewTime5.BreastLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastLeft_X));
+                    MainViewModel.ViewTime5.BreastLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastLeft_Y));
+                    MainViewModel.ViewTime5.BreastLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastLeft_Z));
+                    MainViewModel.ViewTime5.BreastLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastLeft_W));
+                    MainViewModel.ViewTime5.BreastRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastRight_X));
+                    MainViewModel.ViewTime5.BreastRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastRight_Y));
+                    MainViewModel.ViewTime5.BreastRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastRight_Z));
+                    MainViewModel.ViewTime5.BreastRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastRight_W));
+                    MainViewModel.ViewTime5.SpineC_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineC_X));
+                    MainViewModel.ViewTime5.SpineC_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineC_Y));
+                    MainViewModel.ViewTime5.SpineC_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineC_Z));
+                    MainViewModel.ViewTime5.SpineC_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineC_W));
+                    MainViewModel.ViewTime5.ScabbardLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardLeft_X));
+                    MainViewModel.ViewTime5.ScabbardLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardLeft_Y));
+                    MainViewModel.ViewTime5.ScabbardLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardLeft_Z));
+                    MainViewModel.ViewTime5.ScabbardLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardLeft_W));
+                    MainViewModel.ViewTime5.ScabbardRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardRight_X));
+                    MainViewModel.ViewTime5.ScabbardRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardRight_Y));
+                    MainViewModel.ViewTime5.ScabbardRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardRight_Z));
+                    MainViewModel.ViewTime5.ScabbardRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardRight_W));
+                    MainViewModel.ViewTime5.Neck_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Neck_X));
+                    MainViewModel.ViewTime5.Neck_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Neck_Y));
+                    MainViewModel.ViewTime5.Neck_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Neck_Z));
+                    MainViewModel.ViewTime5.Neck_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Neck_W));
+                    CharacterDetails.SaveBody01 = false;
+                }
+                if (CharacterDetails.SaveBody02 == true)
+                {
+                    MainViewModel.ViewTime5.SpineA_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineA_X));
+                    MainViewModel.ViewTime5.SpineA_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineA_Y));
+                    MainViewModel.ViewTime5.SpineA_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineA_Z));
+                    MainViewModel.ViewTime5.SpineA_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineA_W));
+                    MainViewModel.ViewTime5.SpineB_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineB_X));
+                    MainViewModel.ViewTime5.SpineB_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineB_Y));
+                    MainViewModel.ViewTime5.SpineB_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineB_Z));
+                    MainViewModel.ViewTime5.SpineB_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineB_W));
+                    MainViewModel.ViewTime5.BreastLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastLeft_X));
+                    MainViewModel.ViewTime5.BreastLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastLeft_Y));
+                    MainViewModel.ViewTime5.BreastLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastLeft_Z));
+                    MainViewModel.ViewTime5.BreastLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastLeft_W));
+                    MainViewModel.ViewTime5.BreastRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastRight_X));
+                    MainViewModel.ViewTime5.BreastRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastRight_Y));
+                    MainViewModel.ViewTime5.BreastRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastRight_Z));
+                    MainViewModel.ViewTime5.BreastRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastRight_W));
+                    MainViewModel.ViewTime5.SpineC_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineC_X));
+                    MainViewModel.ViewTime5.SpineC_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineC_Y));
+                    MainViewModel.ViewTime5.SpineC_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineC_Z));
+                    MainViewModel.ViewTime5.SpineC_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineC_W));
+                    MainViewModel.ViewTime5.ScabbardLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardLeft_X));
+                    MainViewModel.ViewTime5.ScabbardLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardLeft_Y));
+                    MainViewModel.ViewTime5.ScabbardLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardLeft_Z));
+                    MainViewModel.ViewTime5.ScabbardLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardLeft_W));
+                    MainViewModel.ViewTime5.ScabbardRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardRight_X));
+                    MainViewModel.ViewTime5.ScabbardRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardRight_Y));
+                    MainViewModel.ViewTime5.ScabbardRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardRight_Z));
+                    MainViewModel.ViewTime5.ScabbardRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardRight_W));
+                    MainViewModel.ViewTime5.Neck_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Neck_X));
+                    MainViewModel.ViewTime5.Neck_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Neck_Y));
+                    MainViewModel.ViewTime5.Neck_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Neck_Z));
+                    MainViewModel.ViewTime5.Neck_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Neck_W));
+                    CharacterDetails.SaveBody02 = false;
+                }
+                if (CharacterDetails.SaveLeftArm01 == true)
+                {
+                    MainViewModel.ViewTime5.ClavicleLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleLeft_X));
+                    MainViewModel.ViewTime5.ClavicleLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleLeft_Y));
+                    MainViewModel.ViewTime5.ClavicleLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleLeft_Z));
+                    MainViewModel.ViewTime5.ClavicleLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleLeft_W));
+                    MainViewModel.ViewTime5.ArmLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmLeft_X));
+                    MainViewModel.ViewTime5.ArmLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmLeft_Y));
+                    MainViewModel.ViewTime5.ArmLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmLeft_Z));
+                    MainViewModel.ViewTime5.ArmLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmLeft_W));
+                    MainViewModel.ViewTime5.ArmRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_X));
+                    MainViewModel.ViewTime5.ArmRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_Y));
+                    MainViewModel.ViewTime5.ArmRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_Z));
+                    MainViewModel.ViewTime5.ArmRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_W));
+                    MainViewModel.ViewTime5.PauldronLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronLeft_X));
+                    MainViewModel.ViewTime5.PauldronLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronLeft_Y));
+                    MainViewModel.ViewTime5.PauldronLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronLeft_Z));
+                    MainViewModel.ViewTime5.PauldronLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronLeft_W));
+                    MainViewModel.ViewTime5.ForearmLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmLeft_X));
+                    MainViewModel.ViewTime5.ForearmLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmLeft_Y));
+                    MainViewModel.ViewTime5.ForearmLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmLeft_Z));
+                    MainViewModel.ViewTime5.ForearmLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmLeft_W));
+                    MainViewModel.ViewTime5.ShoulderLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderLeft_X));
+                    MainViewModel.ViewTime5.ShoulderLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderLeft_Y));
+                    MainViewModel.ViewTime5.ShoulderLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderLeft_Z));
+                    MainViewModel.ViewTime5.ShoulderLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderLeft_W));
+                    MainViewModel.ViewTime5.ShieldLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldLeft_X));
+                    MainViewModel.ViewTime5.ShieldLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldLeft_Y));
+                    MainViewModel.ViewTime5.ShieldLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldLeft_Z));
+                    MainViewModel.ViewTime5.ShieldLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldLeft_W));
+                    MainViewModel.ViewTime5.ElbowLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowLeft_X));
+                    MainViewModel.ViewTime5.ElbowLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowLeft_Y));
+                    MainViewModel.ViewTime5.ElbowLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowLeft_Z));
+                    MainViewModel.ViewTime5.ElbowLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowLeft_W));
+                    MainViewModel.ViewTime5.CouterLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterLeft_X));
+                    MainViewModel.ViewTime5.CouterLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterLeft_Y));
+                    MainViewModel.ViewTime5.CouterLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterLeft_Z));
+                    MainViewModel.ViewTime5.CouterLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterLeft_W));
+                    CharacterDetails.SaveLeftArm01 = false;
+                }
+                if (CharacterDetails.SaveLeftArm02 == true)
+                {
+                    MainViewModel.ViewTime5.ClavicleLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleLeft_X));
+                    MainViewModel.ViewTime5.ClavicleLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleLeft_Y));
+                    MainViewModel.ViewTime5.ClavicleLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleLeft_Z));
+                    MainViewModel.ViewTime5.ClavicleLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleLeft_W));
+                    MainViewModel.ViewTime5.ArmLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmLeft_X));
+                    MainViewModel.ViewTime5.ArmLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmLeft_Y));
+                    MainViewModel.ViewTime5.ArmLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmLeft_Z));
+                    MainViewModel.ViewTime5.ArmLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmLeft_W));
+                    MainViewModel.ViewTime5.ArmRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_X));
+                    MainViewModel.ViewTime5.ArmRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_Y));
+                    MainViewModel.ViewTime5.ArmRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_Z));
+                    MainViewModel.ViewTime5.ArmRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_W));
+                    MainViewModel.ViewTime5.PauldronLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronLeft_X));
+                    MainViewModel.ViewTime5.PauldronLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronLeft_Y));
+                    MainViewModel.ViewTime5.PauldronLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronLeft_Z));
+                    MainViewModel.ViewTime5.PauldronLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronLeft_W));
+                    MainViewModel.ViewTime5.ForearmLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmLeft_X));
+                    MainViewModel.ViewTime5.ForearmLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmLeft_Y));
+                    MainViewModel.ViewTime5.ForearmLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmLeft_Z));
+                    MainViewModel.ViewTime5.ForearmLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmLeft_W));
+                    MainViewModel.ViewTime5.ShoulderLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderLeft_X));
+                    MainViewModel.ViewTime5.ShoulderLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderLeft_Y));
+                    MainViewModel.ViewTime5.ShoulderLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderLeft_Z));
+                    MainViewModel.ViewTime5.ShoulderLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderLeft_W));
+                    MainViewModel.ViewTime5.ShieldLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldLeft_X));
+                    MainViewModel.ViewTime5.ShieldLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldLeft_Y));
+                    MainViewModel.ViewTime5.ShieldLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldLeft_Z));
+                    MainViewModel.ViewTime5.ShieldLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldLeft_W));
+                    MainViewModel.ViewTime5.ElbowLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowLeft_X));
+                    MainViewModel.ViewTime5.ElbowLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowLeft_Y));
+                    MainViewModel.ViewTime5.ElbowLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowLeft_Z));
+                    MainViewModel.ViewTime5.ElbowLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowLeft_W));
+                    MainViewModel.ViewTime5.CouterLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterLeft_X));
+                    MainViewModel.ViewTime5.CouterLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterLeft_Y));
+                    MainViewModel.ViewTime5.CouterLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterLeft_Z));
+                    MainViewModel.ViewTime5.CouterLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterLeft_W));
+                    CharacterDetails.SaveLeftArm02 = false;
+                }
+                if (CharacterDetails.SaveRightArm01 == true)
+                {
+                    MainViewModel.ViewTime5.ClavicleRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleRight_X));
+                    MainViewModel.ViewTime5.ClavicleRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleRight_Y));
+                    MainViewModel.ViewTime5.ClavicleRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleRight_Z));
+                    MainViewModel.ViewTime5.ClavicleRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleRight_W));
+                    MainViewModel.ViewTime5.ArmRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_X));
+                    MainViewModel.ViewTime5.ArmRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_Y));
+                    MainViewModel.ViewTime5.ArmRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_Z));
+                    MainViewModel.ViewTime5.ArmRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_W));
+                    MainViewModel.ViewTime5.ArmRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_X));
+                    MainViewModel.ViewTime5.ArmRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_Y));
+                    MainViewModel.ViewTime5.ArmRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_Z));
+                    MainViewModel.ViewTime5.ArmRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_W));
+                    MainViewModel.ViewTime5.PauldronRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronRight_X));
+                    MainViewModel.ViewTime5.PauldronRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronRight_Y));
+                    MainViewModel.ViewTime5.PauldronRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronRight_Z));
+                    MainViewModel.ViewTime5.PauldronRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronRight_W));
+                    MainViewModel.ViewTime5.ForearmRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmRight_X));
+                    MainViewModel.ViewTime5.ForearmRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmRight_Y));
+                    MainViewModel.ViewTime5.ForearmRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmRight_Z));
+                    MainViewModel.ViewTime5.ForearmRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmRight_W));
+                    MainViewModel.ViewTime5.ShoulderRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderRight_X));
+                    MainViewModel.ViewTime5.ShoulderRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderRight_Y));
+                    MainViewModel.ViewTime5.ShoulderRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderRight_Z));
+                    MainViewModel.ViewTime5.ShoulderRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderRight_W));
+                    MainViewModel.ViewTime5.ShieldRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldRight_X));
+                    MainViewModel.ViewTime5.ShieldRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldRight_Y));
+                    MainViewModel.ViewTime5.ShieldRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldRight_Z));
+                    MainViewModel.ViewTime5.ShieldRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldRight_W));
+                    MainViewModel.ViewTime5.ElbowRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowRight_X));
+                    MainViewModel.ViewTime5.ElbowRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowRight_Y));
+                    MainViewModel.ViewTime5.ElbowRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowRight_Z));
+                    MainViewModel.ViewTime5.ElbowRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowRight_W));
+                    MainViewModel.ViewTime5.CouterRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterRight_X));
+                    MainViewModel.ViewTime5.CouterRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterRight_Y));
+                    MainViewModel.ViewTime5.CouterRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterRight_Z));
+                    MainViewModel.ViewTime5.CouterRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterRight_W));
+                    CharacterDetails.SaveRightArm01 = false;
+                }
+                if (CharacterDetails.SaveRightArm02 == true)
+                {
+                    MainViewModel.ViewTime5.ClavicleRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleRight_X));
+                    MainViewModel.ViewTime5.ClavicleRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleRight_Y));
+                    MainViewModel.ViewTime5.ClavicleRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleRight_Z));
+                    MainViewModel.ViewTime5.ClavicleRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleRight_W));
+                    MainViewModel.ViewTime5.ArmRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_X));
+                    MainViewModel.ViewTime5.ArmRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_Y));
+                    MainViewModel.ViewTime5.ArmRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_Z));
+                    MainViewModel.ViewTime5.ArmRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_W));
+                    MainViewModel.ViewTime5.ArmRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_X));
+                    MainViewModel.ViewTime5.ArmRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_Y));
+                    MainViewModel.ViewTime5.ArmRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_Z));
+                    MainViewModel.ViewTime5.ArmRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_W));
+                    MainViewModel.ViewTime5.PauldronRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronRight_X));
+                    MainViewModel.ViewTime5.PauldronRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronRight_Y));
+                    MainViewModel.ViewTime5.PauldronRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronRight_Z));
+                    MainViewModel.ViewTime5.PauldronRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronRight_W));
+                    MainViewModel.ViewTime5.ForearmRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmRight_X));
+                    MainViewModel.ViewTime5.ForearmRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmRight_Y));
+                    MainViewModel.ViewTime5.ForearmRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmRight_Z));
+                    MainViewModel.ViewTime5.ForearmRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmRight_W));
+                    MainViewModel.ViewTime5.ShoulderRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderRight_X));
+                    MainViewModel.ViewTime5.ShoulderRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderRight_Y));
+                    MainViewModel.ViewTime5.ShoulderRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderRight_Z));
+                    MainViewModel.ViewTime5.ShoulderRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderRight_W));
+                    MainViewModel.ViewTime5.ShieldRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldRight_X));
+                    MainViewModel.ViewTime5.ShieldRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldRight_Y));
+                    MainViewModel.ViewTime5.ShieldRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldRight_Z));
+                    MainViewModel.ViewTime5.ShieldRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldRight_W));
+                    MainViewModel.ViewTime5.ElbowRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowRight_X));
+                    MainViewModel.ViewTime5.ElbowRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowRight_Y));
+                    MainViewModel.ViewTime5.ElbowRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowRight_Z));
+                    MainViewModel.ViewTime5.ElbowRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowRight_W));
+                    MainViewModel.ViewTime5.CouterRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterRight_X));
+                    MainViewModel.ViewTime5.CouterRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterRight_Y));
+                    MainViewModel.ViewTime5.CouterRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterRight_Z));
+                    MainViewModel.ViewTime5.CouterRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterRight_W));
+                    CharacterDetails.SaveRightArm02 = false;
+                }
+                if (CharacterDetails.SaveClothes01 == true)
+                {
+                    MainViewModel.ViewTime5.ClothBackALeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackALeft_X));
+                    MainViewModel.ViewTime5.ClothBackALeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackALeft_Y));
+                    MainViewModel.ViewTime5.ClothBackALeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackALeft_Z));
+                    MainViewModel.ViewTime5.ClothBackALeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackALeft_W));
+                    MainViewModel.ViewTime5.ClothBackARight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackARight_X));
+                    MainViewModel.ViewTime5.ClothBackARight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackARight_Y));
+                    MainViewModel.ViewTime5.ClothBackARight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackARight_Z));
+                    MainViewModel.ViewTime5.ClothBackARight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackARight_W));
+                    MainViewModel.ViewTime5.ClothFrontALeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontALeft_X));
+                    MainViewModel.ViewTime5.ClothFrontALeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontALeft_Y));
+                    MainViewModel.ViewTime5.ClothFrontALeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontALeft_Z));
+                    MainViewModel.ViewTime5.ClothFrontALeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontALeft_W));
+                    MainViewModel.ViewTime5.ClothFrontARight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontARight_X));
+                    MainViewModel.ViewTime5.ClothFrontARight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontARight_Y));
+                    MainViewModel.ViewTime5.ClothFrontARight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontARight_Z));
+                    MainViewModel.ViewTime5.ClothFrontARight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontARight_W));
+                    MainViewModel.ViewTime5.ClothSideALeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideALeft_X));
+                    MainViewModel.ViewTime5.ClothSideALeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideALeft_Y));
+                    MainViewModel.ViewTime5.ClothSideALeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideALeft_Z));
+                    MainViewModel.ViewTime5.ClothSideALeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideALeft_W));
+                    MainViewModel.ViewTime5.ClothSideARight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideARight_X));
+                    MainViewModel.ViewTime5.ClothSideARight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideARight_Y));
+                    MainViewModel.ViewTime5.ClothSideARight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideARight_Z));
+                    MainViewModel.ViewTime5.ClothSideARight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideARight_W));
+                    MainViewModel.ViewTime5.ClothBackBLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBLeft_X));
+                    MainViewModel.ViewTime5.ClothBackBLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBLeft_Y));
+                    MainViewModel.ViewTime5.ClothBackBLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBLeft_Z));
+                    MainViewModel.ViewTime5.ClothBackBLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBLeft_W));
+                    MainViewModel.ViewTime5.ClothBackBRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBRight_X));
+                    MainViewModel.ViewTime5.ClothBackBRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBRight_Y));
+                    MainViewModel.ViewTime5.ClothBackBRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBRight_Z));
+                    MainViewModel.ViewTime5.ClothBackBRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBRight_W));
+                    MainViewModel.ViewTime5.ClothFrontBLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBLeft_X));
+                    MainViewModel.ViewTime5.ClothFrontBLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBLeft_Y));
+                    MainViewModel.ViewTime5.ClothFrontBLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBLeft_Z));
+                    MainViewModel.ViewTime5.ClothFrontBLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBLeft_W));
+                    MainViewModel.ViewTime5.ClothFrontBRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBRight_X));
+                    MainViewModel.ViewTime5.ClothFrontBRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBRight_Y));
+                    MainViewModel.ViewTime5.ClothFrontBRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBRight_Z));
+                    MainViewModel.ViewTime5.ClothFrontBRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBRight_W));
+                    MainViewModel.ViewTime5.ClothSideBLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBLeft_X));
+                    MainViewModel.ViewTime5.ClothSideBLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBLeft_Y));
+                    MainViewModel.ViewTime5.ClothSideBLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBLeft_Z));
+                    MainViewModel.ViewTime5.ClothSideBLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBLeft_W));
+                    MainViewModel.ViewTime5.ClothSideBRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBRight_X));
+                    MainViewModel.ViewTime5.ClothSideBRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBRight_Y));
+                    MainViewModel.ViewTime5.ClothSideBRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBRight_Z));
+                    MainViewModel.ViewTime5.ClothSideBRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBRight_W));
+                    MainViewModel.ViewTime5.ClothBackCLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCLeft_X));
+                    MainViewModel.ViewTime5.ClothBackCLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCLeft_Y));
+                    MainViewModel.ViewTime5.ClothBackCLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCLeft_Z));
+                    MainViewModel.ViewTime5.ClothBackCLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCLeft_W));
+                    MainViewModel.ViewTime5.ClothBackCRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCRight_X));
+                    MainViewModel.ViewTime5.ClothBackCRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCRight_Y));
+                    MainViewModel.ViewTime5.ClothBackCRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCRight_Z));
+                    MainViewModel.ViewTime5.ClothBackCRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCRight_W));
+                    MainViewModel.ViewTime5.ClothFrontCLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCLeft_X));
+                    MainViewModel.ViewTime5.ClothFrontCLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCLeft_Y));
+                    MainViewModel.ViewTime5.ClothFrontCLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCLeft_Z));
+                    MainViewModel.ViewTime5.ClothFrontCLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCLeft_W));
+                    MainViewModel.ViewTime5.ClothFrontCRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCRight_X));
+                    MainViewModel.ViewTime5.ClothFrontCRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCRight_Y));
+                    MainViewModel.ViewTime5.ClothFrontCRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCRight_Z));
+                    MainViewModel.ViewTime5.ClothFrontCRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCRight_W));
+                    MainViewModel.ViewTime5.ClothSideCLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCLeft_X));
+                    MainViewModel.ViewTime5.ClothSideCLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCLeft_Y));
+                    MainViewModel.ViewTime5.ClothSideCLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCLeft_Z));
+                    MainViewModel.ViewTime5.ClothSideCLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCLeft_W));
+                    MainViewModel.ViewTime5.ClothSideCRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCRight_X));
+                    MainViewModel.ViewTime5.ClothSideCRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCRight_Y));
+                    MainViewModel.ViewTime5.ClothSideCRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCRight_Z));
+                    MainViewModel.ViewTime5.ClothSideCRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCRight_W));
+                    CharacterDetails.SaveClothes01 = false;
+                }
+                if (CharacterDetails.SaveClothes02 == true)
+                {
+                    MainViewModel.ViewTime5.ClothBackALeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackALeft_X));
+                    MainViewModel.ViewTime5.ClothBackALeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackALeft_Y));
+                    MainViewModel.ViewTime5.ClothBackALeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackALeft_Z));
+                    MainViewModel.ViewTime5.ClothBackALeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackALeft_W));
+                    MainViewModel.ViewTime5.ClothBackARight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackARight_X));
+                    MainViewModel.ViewTime5.ClothBackARight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackARight_Y));
+                    MainViewModel.ViewTime5.ClothBackARight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackARight_Z));
+                    MainViewModel.ViewTime5.ClothBackARight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackARight_W));
+                    MainViewModel.ViewTime5.ClothFrontALeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontALeft_X));
+                    MainViewModel.ViewTime5.ClothFrontALeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontALeft_Y));
+                    MainViewModel.ViewTime5.ClothFrontALeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontALeft_Z));
+                    MainViewModel.ViewTime5.ClothFrontALeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontALeft_W));
+                    MainViewModel.ViewTime5.ClothFrontARight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontARight_X));
+                    MainViewModel.ViewTime5.ClothFrontARight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontARight_Y));
+                    MainViewModel.ViewTime5.ClothFrontARight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontARight_Z));
+                    MainViewModel.ViewTime5.ClothFrontARight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontARight_W));
+                    MainViewModel.ViewTime5.ClothSideALeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideALeft_X));
+                    MainViewModel.ViewTime5.ClothSideALeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideALeft_Y));
+                    MainViewModel.ViewTime5.ClothSideALeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideALeft_Z));
+                    MainViewModel.ViewTime5.ClothSideALeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideALeft_W));
+                    MainViewModel.ViewTime5.ClothSideARight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideARight_X));
+                    MainViewModel.ViewTime5.ClothSideARight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideARight_Y));
+                    MainViewModel.ViewTime5.ClothSideARight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideARight_Z));
+                    MainViewModel.ViewTime5.ClothSideARight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideARight_W));
+                    MainViewModel.ViewTime5.ClothBackBLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBLeft_X));
+                    MainViewModel.ViewTime5.ClothBackBLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBLeft_Y));
+                    MainViewModel.ViewTime5.ClothBackBLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBLeft_Z));
+                    MainViewModel.ViewTime5.ClothBackBLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBLeft_W));
+                    MainViewModel.ViewTime5.ClothBackBRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBRight_X));
+                    MainViewModel.ViewTime5.ClothBackBRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBRight_Y));
+                    MainViewModel.ViewTime5.ClothBackBRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBRight_Z));
+                    MainViewModel.ViewTime5.ClothBackBRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBRight_W));
+                    MainViewModel.ViewTime5.ClothFrontBLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBLeft_X));
+                    MainViewModel.ViewTime5.ClothFrontBLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBLeft_Y));
+                    MainViewModel.ViewTime5.ClothFrontBLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBLeft_Z));
+                    MainViewModel.ViewTime5.ClothFrontBLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBLeft_W));
+                    MainViewModel.ViewTime5.ClothFrontBRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBRight_X));
+                    MainViewModel.ViewTime5.ClothFrontBRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBRight_Y));
+                    MainViewModel.ViewTime5.ClothFrontBRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBRight_Z));
+                    MainViewModel.ViewTime5.ClothFrontBRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBRight_W));
+                    MainViewModel.ViewTime5.ClothSideBLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBLeft_X));
+                    MainViewModel.ViewTime5.ClothSideBLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBLeft_Y));
+                    MainViewModel.ViewTime5.ClothSideBLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBLeft_Z));
+                    MainViewModel.ViewTime5.ClothSideBLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBLeft_W));
+                    MainViewModel.ViewTime5.ClothSideBRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBRight_X));
+                    MainViewModel.ViewTime5.ClothSideBRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBRight_Y));
+                    MainViewModel.ViewTime5.ClothSideBRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBRight_Z));
+                    MainViewModel.ViewTime5.ClothSideBRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBRight_W));
+                    MainViewModel.ViewTime5.ClothBackCLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCLeft_X));
+                    MainViewModel.ViewTime5.ClothBackCLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCLeft_Y));
+                    MainViewModel.ViewTime5.ClothBackCLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCLeft_Z));
+                    MainViewModel.ViewTime5.ClothBackCLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCLeft_W));
+                    MainViewModel.ViewTime5.ClothBackCRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCRight_X));
+                    MainViewModel.ViewTime5.ClothBackCRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCRight_Y));
+                    MainViewModel.ViewTime5.ClothBackCRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCRight_Z));
+                    MainViewModel.ViewTime5.ClothBackCRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCRight_W));
+                    MainViewModel.ViewTime5.ClothFrontCLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCLeft_X));
+                    MainViewModel.ViewTime5.ClothFrontCLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCLeft_Y));
+                    MainViewModel.ViewTime5.ClothFrontCLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCLeft_Z));
+                    MainViewModel.ViewTime5.ClothFrontCLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCLeft_W));
+                    MainViewModel.ViewTime5.ClothFrontCRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCRight_X));
+                    MainViewModel.ViewTime5.ClothFrontCRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCRight_Y));
+                    MainViewModel.ViewTime5.ClothFrontCRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCRight_Z));
+                    MainViewModel.ViewTime5.ClothFrontCRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCRight_W));
+                    MainViewModel.ViewTime5.ClothSideCLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCLeft_X));
+                    MainViewModel.ViewTime5.ClothSideCLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCLeft_Y));
+                    MainViewModel.ViewTime5.ClothSideCLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCLeft_Z));
+                    MainViewModel.ViewTime5.ClothSideCLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCLeft_W));
+                    MainViewModel.ViewTime5.ClothSideCRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCRight_X));
+                    MainViewModel.ViewTime5.ClothSideCRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCRight_Y));
+                    MainViewModel.ViewTime5.ClothSideCRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCRight_Z));
+                    MainViewModel.ViewTime5.ClothSideCRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCRight_W));
+                    CharacterDetails.SaveClothes02 = false;
+                }
+                if (CharacterDetails.SaveWeapons01 == true)
+                {
+                    MainViewModel.ViewTime5.WeaponLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponLeft_X));
+                    MainViewModel.ViewTime5.WeaponLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponLeft_Y));
+                    MainViewModel.ViewTime5.WeaponLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponLeft_Z));
+                    MainViewModel.ViewTime5.WeaponLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponLeft_W));
+                    MainViewModel.ViewTime5.WeaponRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponRight_X));
+                    MainViewModel.ViewTime5.WeaponRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponRight_Y));
+                    MainViewModel.ViewTime5.WeaponRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponRight_Z));
+                    MainViewModel.ViewTime5.WeaponRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponRight_W));
+                    CharacterDetails.SaveWeapons01 = false;
+                }
+                if (CharacterDetails.SaveWeapons02 == true)
+                {
+                    MainViewModel.ViewTime5.WeaponLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponLeft_X));
+                    MainViewModel.ViewTime5.WeaponLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponLeft_Y));
+                    MainViewModel.ViewTime5.WeaponLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponLeft_Z));
+                    MainViewModel.ViewTime5.WeaponLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponLeft_W));
+                    MainViewModel.ViewTime5.WeaponRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponRight_X));
+                    MainViewModel.ViewTime5.WeaponRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponRight_Y));
+                    MainViewModel.ViewTime5.WeaponRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponRight_Z));
+                    MainViewModel.ViewTime5.WeaponRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponRight_W));
+                    CharacterDetails.SaveWeapons02 = false;
+                }
+                if (CharacterDetails.SaveLeftHand01 == true)
+                {
+                    MainViewModel.ViewTime5.HandLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandLeft_X));
+                    MainViewModel.ViewTime5.HandLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandLeft_Y));
+                    MainViewModel.ViewTime5.HandLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandLeft_Z));
+                    MainViewModel.ViewTime5.HandLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandLeft_W));
+                    MainViewModel.ViewTime5.WristLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_X));
+                    MainViewModel.ViewTime5.WristLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_Y));
+                    MainViewModel.ViewTime5.WristLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_Z));
+                    MainViewModel.ViewTime5.WristLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_W));
+                    MainViewModel.ViewTime5.IndexALeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexALeft_X));
+                    MainViewModel.ViewTime5.IndexALeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexALeft_Y));
+                    MainViewModel.ViewTime5.IndexALeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexALeft_Z));
+                    MainViewModel.ViewTime5.IndexALeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexALeft_W));
+                    MainViewModel.ViewTime5.PinkyALeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyALeft_X));
+                    MainViewModel.ViewTime5.PinkyALeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyALeft_Y));
+                    MainViewModel.ViewTime5.PinkyALeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyALeft_Z));
+                    MainViewModel.ViewTime5.PinkyALeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyALeft_W));
+                    MainViewModel.ViewTime5.RingALeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingALeft_X));
+                    MainViewModel.ViewTime5.RingALeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingALeft_Y));
+                    MainViewModel.ViewTime5.RingALeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingALeft_Z));
+                    MainViewModel.ViewTime5.RingALeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingALeft_W));
+                    MainViewModel.ViewTime5.MiddleALeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleALeft_X));
+                    MainViewModel.ViewTime5.MiddleALeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleALeft_Y));
+                    MainViewModel.ViewTime5.MiddleALeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleALeft_Z));
+                    MainViewModel.ViewTime5.MiddleALeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleALeft_W));
+                    MainViewModel.ViewTime5.ThumbALeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbALeft_X));
+                    MainViewModel.ViewTime5.ThumbALeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbALeft_Y));
+                    MainViewModel.ViewTime5.ThumbALeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbALeft_Z));
+                    MainViewModel.ViewTime5.ThumbALeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbALeft_W));
+                    MainViewModel.ViewTime5.IndexBLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBLeft_X));
+                    MainViewModel.ViewTime5.IndexBLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBLeft_Y));
+                    MainViewModel.ViewTime5.IndexBLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBLeft_Z));
+                    MainViewModel.ViewTime5.IndexBLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBLeft_W));
+                    MainViewModel.ViewTime5.PinkyBLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBLeft_X));
+                    MainViewModel.ViewTime5.PinkyBLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBLeft_Y));
+                    MainViewModel.ViewTime5.PinkyBLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBLeft_Z));
+                    MainViewModel.ViewTime5.PinkyBLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBLeft_W));
+                    MainViewModel.ViewTime5.RingBLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBLeft_X));
+                    MainViewModel.ViewTime5.RingBLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBLeft_Y));
+                    MainViewModel.ViewTime5.RingBLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBLeft_Z));
+                    MainViewModel.ViewTime5.RingBLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBLeft_W));
+                    MainViewModel.ViewTime5.MiddleBLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBLeft_X));
+                    MainViewModel.ViewTime5.MiddleBLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBLeft_Y));
+                    MainViewModel.ViewTime5.MiddleBLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBLeft_Z));
+                    MainViewModel.ViewTime5.MiddleBLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBLeft_W));
+                    MainViewModel.ViewTime5.ThumbBLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBLeft_X));
+                    MainViewModel.ViewTime5.ThumbBLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBLeft_Y));
+                    MainViewModel.ViewTime5.ThumbBLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBLeft_Z));
+                    MainViewModel.ViewTime5.ThumbBLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBLeft_W));
+                    CharacterDetails.SaveLeftHand01 = false;
+                }
+                if (CharacterDetails.SaveLeftHand02 == true)
+                {
+                    MainViewModel.ViewTime5.HandLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandLeft_X));
+                    MainViewModel.ViewTime5.HandLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandLeft_Y));
+                    MainViewModel.ViewTime5.HandLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandLeft_Z));
+                    MainViewModel.ViewTime5.HandLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandLeft_W));
+                    MainViewModel.ViewTime5.WristLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_X));
+                    MainViewModel.ViewTime5.WristLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_Y));
+                    MainViewModel.ViewTime5.WristLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_Z));
+                    MainViewModel.ViewTime5.WristLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_W));
+                    MainViewModel.ViewTime5.IndexALeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexALeft_X));
+                    MainViewModel.ViewTime5.IndexALeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexALeft_Y));
+                    MainViewModel.ViewTime5.IndexALeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexALeft_Z));
+                    MainViewModel.ViewTime5.IndexALeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexALeft_W));
+                    MainViewModel.ViewTime5.PinkyALeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyALeft_X));
+                    MainViewModel.ViewTime5.PinkyALeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyALeft_Y));
+                    MainViewModel.ViewTime5.PinkyALeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyALeft_Z));
+                    MainViewModel.ViewTime5.PinkyALeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyALeft_W));
+                    MainViewModel.ViewTime5.RingALeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingALeft_X));
+                    MainViewModel.ViewTime5.RingALeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingALeft_Y));
+                    MainViewModel.ViewTime5.RingALeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingALeft_Z));
+                    MainViewModel.ViewTime5.RingALeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingALeft_W));
+                    MainViewModel.ViewTime5.MiddleALeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleALeft_X));
+                    MainViewModel.ViewTime5.MiddleALeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleALeft_Y));
+                    MainViewModel.ViewTime5.MiddleALeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleALeft_Z));
+                    MainViewModel.ViewTime5.MiddleALeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleALeft_W));
+                    MainViewModel.ViewTime5.ThumbALeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbALeft_X));
+                    MainViewModel.ViewTime5.ThumbALeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbALeft_Y));
+                    MainViewModel.ViewTime5.ThumbALeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbALeft_Z));
+                    MainViewModel.ViewTime5.ThumbALeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbALeft_W));
+                    MainViewModel.ViewTime5.IndexBLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBLeft_X));
+                    MainViewModel.ViewTime5.IndexBLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBLeft_Y));
+                    MainViewModel.ViewTime5.IndexBLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBLeft_Z));
+                    MainViewModel.ViewTime5.IndexBLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBLeft_W));
+                    MainViewModel.ViewTime5.PinkyBLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBLeft_X));
+                    MainViewModel.ViewTime5.PinkyBLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBLeft_Y));
+                    MainViewModel.ViewTime5.PinkyBLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBLeft_Z));
+                    MainViewModel.ViewTime5.PinkyBLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBLeft_W));
+                    MainViewModel.ViewTime5.RingBLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBLeft_X));
+                    MainViewModel.ViewTime5.RingBLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBLeft_Y));
+                    MainViewModel.ViewTime5.RingBLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBLeft_Z));
+                    MainViewModel.ViewTime5.RingBLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBLeft_W));
+                    MainViewModel.ViewTime5.MiddleBLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBLeft_X));
+                    MainViewModel.ViewTime5.MiddleBLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBLeft_Y));
+                    MainViewModel.ViewTime5.MiddleBLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBLeft_Z));
+                    MainViewModel.ViewTime5.MiddleBLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBLeft_W));
+                    MainViewModel.ViewTime5.ThumbBLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBLeft_X));
+                    MainViewModel.ViewTime5.ThumbBLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBLeft_Y));
+                    MainViewModel.ViewTime5.ThumbBLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBLeft_Z));
+                    MainViewModel.ViewTime5.ThumbBLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBLeft_W));
+                    CharacterDetails.SaveLeftHand02 = false;
+                }
+                if (CharacterDetails.SaveRightHand01 == true)
+                {
+                    MainViewModel.ViewTime5.HandRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandRight_X));
+                    MainViewModel.ViewTime5.HandRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandRight_Y));
+                    MainViewModel.ViewTime5.HandRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandRight_Z));
+                    MainViewModel.ViewTime5.HandRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandRight_W));
+                    MainViewModel.ViewTime5.WristRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_X));
+                    MainViewModel.ViewTime5.WristRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_Y));
+                    MainViewModel.ViewTime5.WristRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_Z));
+                    MainViewModel.ViewTime5.WristRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_W));
+                    MainViewModel.ViewTime5.IndexARight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexARight_X));
+                    MainViewModel.ViewTime5.IndexARight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexARight_Y));
+                    MainViewModel.ViewTime5.IndexARight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexARight_Z));
+                    MainViewModel.ViewTime5.IndexARight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexARight_W));
+                    MainViewModel.ViewTime5.PinkyARight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyARight_X));
+                    MainViewModel.ViewTime5.PinkyARight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyARight_Y));
+                    MainViewModel.ViewTime5.PinkyARight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyARight_Z));
+                    MainViewModel.ViewTime5.PinkyARight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyARight_W));
+                    MainViewModel.ViewTime5.RingARight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingARight_X));
+                    MainViewModel.ViewTime5.RingARight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingARight_Y));
+                    MainViewModel.ViewTime5.RingARight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingARight_Z));
+                    MainViewModel.ViewTime5.RingARight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingARight_W));
+                    MainViewModel.ViewTime5.MiddleARight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleARight_X));
+                    MainViewModel.ViewTime5.MiddleARight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleARight_Y));
+                    MainViewModel.ViewTime5.MiddleARight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleARight_Z));
+                    MainViewModel.ViewTime5.MiddleARight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleARight_W));
+                    MainViewModel.ViewTime5.ThumbARight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbARight_X));
+                    MainViewModel.ViewTime5.ThumbARight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbARight_Y));
+                    MainViewModel.ViewTime5.ThumbARight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbARight_Z));
+                    MainViewModel.ViewTime5.ThumbARight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbARight_W));
+                    MainViewModel.ViewTime5.IndexBRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBRight_X));
+                    MainViewModel.ViewTime5.IndexBRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBRight_Y));
+                    MainViewModel.ViewTime5.IndexBRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBRight_Z));
+                    MainViewModel.ViewTime5.IndexBRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBRight_W));
+                    MainViewModel.ViewTime5.PinkyBRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBRight_X));
+                    MainViewModel.ViewTime5.PinkyBRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBRight_Y));
+                    MainViewModel.ViewTime5.PinkyBRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBRight_Z));
+                    MainViewModel.ViewTime5.PinkyBRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBRight_W));
+                    MainViewModel.ViewTime5.RingBRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBRight_X));
+                    MainViewModel.ViewTime5.RingBRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBRight_Y));
+                    MainViewModel.ViewTime5.RingBRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBRight_Z));
+                    MainViewModel.ViewTime5.RingBRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBRight_W));
+                    MainViewModel.ViewTime5.MiddleBRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBRight_X));
+                    MainViewModel.ViewTime5.MiddleBRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBRight_Y));
+                    MainViewModel.ViewTime5.MiddleBRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBRight_Z));
+                    MainViewModel.ViewTime5.MiddleBRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBRight_W));
+                    MainViewModel.ViewTime5.ThumbBRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBRight_X));
+                    MainViewModel.ViewTime5.ThumbBRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBRight_Y));
+                    MainViewModel.ViewTime5.ThumbBRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBRight_Z));
+                    MainViewModel.ViewTime5.ThumbBRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBRight_W));
+                    CharacterDetails.SaveRightHand01 = false;
+                }
+                if (CharacterDetails.SaveRightHand02 == true)
+                {
+                    MainViewModel.ViewTime5.HandRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandRight_X));
+                    MainViewModel.ViewTime5.HandRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandRight_Y));
+                    MainViewModel.ViewTime5.HandRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandRight_Z));
+                    MainViewModel.ViewTime5.HandRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandRight_W));
+                    MainViewModel.ViewTime5.WristRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_X));
+                    MainViewModel.ViewTime5.WristRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_Y));
+                    MainViewModel.ViewTime5.WristRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_Z));
+                    MainViewModel.ViewTime5.WristRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_W));
+                    MainViewModel.ViewTime5.IndexARight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexARight_X));
+                    MainViewModel.ViewTime5.IndexARight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexARight_Y));
+                    MainViewModel.ViewTime5.IndexARight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexARight_Z));
+                    MainViewModel.ViewTime5.IndexARight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexARight_W));
+                    MainViewModel.ViewTime5.PinkyARight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyARight_X));
+                    MainViewModel.ViewTime5.PinkyARight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyARight_Y));
+                    MainViewModel.ViewTime5.PinkyARight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyARight_Z));
+                    MainViewModel.ViewTime5.PinkyARight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyARight_W));
+                    MainViewModel.ViewTime5.RingARight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingARight_X));
+                    MainViewModel.ViewTime5.RingARight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingARight_Y));
+                    MainViewModel.ViewTime5.RingARight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingARight_Z));
+                    MainViewModel.ViewTime5.RingARight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingARight_W));
+                    MainViewModel.ViewTime5.MiddleARight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleARight_X));
+                    MainViewModel.ViewTime5.MiddleARight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleARight_Y));
+                    MainViewModel.ViewTime5.MiddleARight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleARight_Z));
+                    MainViewModel.ViewTime5.MiddleARight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleARight_W));
+                    MainViewModel.ViewTime5.ThumbARight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbARight_X));
+                    MainViewModel.ViewTime5.ThumbARight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbARight_Y));
+                    MainViewModel.ViewTime5.ThumbARight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbARight_Z));
+                    MainViewModel.ViewTime5.ThumbARight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbARight_W));
+                    MainViewModel.ViewTime5.IndexBRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBRight_X));
+                    MainViewModel.ViewTime5.IndexBRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBRight_Y));
+                    MainViewModel.ViewTime5.IndexBRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBRight_Z));
+                    MainViewModel.ViewTime5.IndexBRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBRight_W));
+                    MainViewModel.ViewTime5.PinkyBRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBRight_X));
+                    MainViewModel.ViewTime5.PinkyBRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBRight_Y));
+                    MainViewModel.ViewTime5.PinkyBRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBRight_Z));
+                    MainViewModel.ViewTime5.PinkyBRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBRight_W));
+                    MainViewModel.ViewTime5.RingBRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBRight_X));
+                    MainViewModel.ViewTime5.RingBRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBRight_Y));
+                    MainViewModel.ViewTime5.RingBRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBRight_Z));
+                    MainViewModel.ViewTime5.RingBRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBRight_W));
+                    MainViewModel.ViewTime5.MiddleBRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBRight_X));
+                    MainViewModel.ViewTime5.MiddleBRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBRight_Y));
+                    MainViewModel.ViewTime5.MiddleBRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBRight_Z));
+                    MainViewModel.ViewTime5.MiddleBRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBRight_W));
+                    MainViewModel.ViewTime5.ThumbBRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBRight_X));
+                    MainViewModel.ViewTime5.ThumbBRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBRight_Y));
+                    MainViewModel.ViewTime5.ThumbBRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBRight_Z));
+                    MainViewModel.ViewTime5.ThumbBRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBRight_W));
+                    CharacterDetails.SaveRightHand02 = false;
+                }
+                if (CharacterDetails.SaveWaist01 == true)
+                {
+                    MainViewModel.ViewTime5.Waist_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Waist_X));
+                    MainViewModel.ViewTime5.Waist_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Waist_Y));
+                    MainViewModel.ViewTime5.Waist_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Waist_Z));
+                    MainViewModel.ViewTime5.Waist_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Waist_W));
+                    MainViewModel.ViewTime5.HolsterLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterLeft_X));
+                    MainViewModel.ViewTime5.HolsterLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterLeft_Y));
+                    MainViewModel.ViewTime5.HolsterLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterLeft_Z));
+                    MainViewModel.ViewTime5.HolsterLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterLeft_W));
+                    MainViewModel.ViewTime5.HolsterRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterRight_X));
+                    MainViewModel.ViewTime5.HolsterRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterRight_Y));
+                    MainViewModel.ViewTime5.HolsterRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterRight_Z));
+                    MainViewModel.ViewTime5.HolsterRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterRight_W));
+                    MainViewModel.ViewTime5.SheatheLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheLeft_X));
+                    MainViewModel.ViewTime5.SheatheLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheLeft_Y));
+                    MainViewModel.ViewTime5.SheatheLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheLeft_Z));
+                    MainViewModel.ViewTime5.SheatheLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheLeft_W));
+                    MainViewModel.ViewTime5.SheatheRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheRight_X));
+                    MainViewModel.ViewTime5.SheatheRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheRight_Y));
+                    MainViewModel.ViewTime5.SheatheRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheRight_Z));
+                    MainViewModel.ViewTime5.SheatheRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheRight_W));
+                    MainViewModel.ViewTime5.TailA_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailA_X));
+                    MainViewModel.ViewTime5.TailA_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailA_Y));
+                    MainViewModel.ViewTime5.TailA_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailA_Z));
+                    MainViewModel.ViewTime5.TailA_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailA_W));
+                    MainViewModel.ViewTime5.TailB_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailB_X));
+                    MainViewModel.ViewTime5.TailB_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailB_Y));
+                    MainViewModel.ViewTime5.TailB_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailB_Z));
+                    MainViewModel.ViewTime5.TailB_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailB_W));
+                    MainViewModel.ViewTime5.TailC_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailC_X));
+                    MainViewModel.ViewTime5.TailC_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailC_Y));
+                    MainViewModel.ViewTime5.TailC_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailC_Z));
+                    MainViewModel.ViewTime5.TailC_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailC_W));
+                    MainViewModel.ViewTime5.TailD_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailD_X));
+                    MainViewModel.ViewTime5.TailD_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailD_Y));
+                    MainViewModel.ViewTime5.TailD_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailD_Z));
+                    MainViewModel.ViewTime5.TailD_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailD_W));
+                    MainViewModel.ViewTime5.TailE_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailE_X));
+                    MainViewModel.ViewTime5.TailE_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailE_Y));
+                    MainViewModel.ViewTime5.TailE_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailE_Z));
+                    MainViewModel.ViewTime5.TailE_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailE_W));
+                    CharacterDetails.SaveWaist01 = false;
+                }
+                if (CharacterDetails.SaveWaist02 == true)
+                {
+                    MainViewModel.ViewTime5.Waist_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Waist_X));
+                    MainViewModel.ViewTime5.Waist_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Waist_Y));
+                    MainViewModel.ViewTime5.Waist_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Waist_Z));
+                    MainViewModel.ViewTime5.Waist_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Waist_W));
+                    MainViewModel.ViewTime5.HolsterLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterLeft_X));
+                    MainViewModel.ViewTime5.HolsterLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterLeft_Y));
+                    MainViewModel.ViewTime5.HolsterLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterLeft_Z));
+                    MainViewModel.ViewTime5.HolsterLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterLeft_W));
+                    MainViewModel.ViewTime5.HolsterRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterRight_X));
+                    MainViewModel.ViewTime5.HolsterRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterRight_Y));
+                    MainViewModel.ViewTime5.HolsterRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterRight_Z));
+                    MainViewModel.ViewTime5.HolsterRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterRight_W));
+                    MainViewModel.ViewTime5.SheatheLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheLeft_X));
+                    MainViewModel.ViewTime5.SheatheLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheLeft_Y));
+                    MainViewModel.ViewTime5.SheatheLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheLeft_Z));
+                    MainViewModel.ViewTime5.SheatheLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheLeft_W));
+                    MainViewModel.ViewTime5.SheatheRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheRight_X));
+                    MainViewModel.ViewTime5.SheatheRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheRight_Y));
+                    MainViewModel.ViewTime5.SheatheRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheRight_Z));
+                    MainViewModel.ViewTime5.SheatheRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheRight_W));
+                    MainViewModel.ViewTime5.TailA_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailA_X));
+                    MainViewModel.ViewTime5.TailA_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailA_Y));
+                    MainViewModel.ViewTime5.TailA_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailA_Z));
+                    MainViewModel.ViewTime5.TailA_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailA_W));
+                    MainViewModel.ViewTime5.TailB_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailB_X));
+                    MainViewModel.ViewTime5.TailB_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailB_Y));
+                    MainViewModel.ViewTime5.TailB_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailB_Z));
+                    MainViewModel.ViewTime5.TailB_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailB_W));
+                    MainViewModel.ViewTime5.TailC_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailC_X));
+                    MainViewModel.ViewTime5.TailC_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailC_Y));
+                    MainViewModel.ViewTime5.TailC_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailC_Z));
+                    MainViewModel.ViewTime5.TailC_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailC_W));
+                    MainViewModel.ViewTime5.TailD_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailD_X));
+                    MainViewModel.ViewTime5.TailD_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailD_Y));
+                    MainViewModel.ViewTime5.TailD_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailD_Z));
+                    MainViewModel.ViewTime5.TailD_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailD_W));
+                    MainViewModel.ViewTime5.TailE_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailE_X));
+                    MainViewModel.ViewTime5.TailE_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailE_Y));
+                    MainViewModel.ViewTime5.TailE_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailE_Z));
+                    MainViewModel.ViewTime5.TailE_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailE_W));
+                    CharacterDetails.SaveWaist02 = false;
+                }
+                if (CharacterDetails.SaveLeftLeg01 == true)
+                {
+                    MainViewModel.ViewTime5.LegLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegLeft_X));
+                    MainViewModel.ViewTime5.LegLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegLeft_Y));
+                    MainViewModel.ViewTime5.LegLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegLeft_Z));
+                    MainViewModel.ViewTime5.LegLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegLeft_W));
+                    MainViewModel.ViewTime5.KneeLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeLeft_X));
+                    MainViewModel.ViewTime5.KneeLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeLeft_Y));
+                    MainViewModel.ViewTime5.KneeLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeLeft_Z));
+                    MainViewModel.ViewTime5.KneeLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeLeft_W));
+                    MainViewModel.ViewTime5.CalfLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfLeft_X));
+                    MainViewModel.ViewTime5.CalfLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfLeft_Y));
+                    MainViewModel.ViewTime5.CalfLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfLeft_Z));
+                    MainViewModel.ViewTime5.CalfLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfLeft_W));
+                    MainViewModel.ViewTime5.PoleynLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynLeft_X));
+                    MainViewModel.ViewTime5.PoleynLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynLeft_Y));
+                    MainViewModel.ViewTime5.PoleynLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynLeft_Z));
+                    MainViewModel.ViewTime5.PoleynLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynLeft_W));
+                    MainViewModel.ViewTime5.FootLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootLeft_X));
+                    MainViewModel.ViewTime5.FootLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootLeft_Y));
+                    MainViewModel.ViewTime5.FootLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootLeft_Z));
+                    MainViewModel.ViewTime5.FootLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootLeft_W));
+                    MainViewModel.ViewTime5.ToesLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesLeft_X));
+                    MainViewModel.ViewTime5.ToesLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesLeft_Y));
+                    MainViewModel.ViewTime5.ToesLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesLeft_Z));
+                    MainViewModel.ViewTime5.ToesLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesLeft_W));
+                    CharacterDetails.SaveLeftLeg01 = false;
+                }
+                if (CharacterDetails.SaveLeftLeg02 == true)
+                {
+                    MainViewModel.ViewTime5.LegLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegLeft_X));
+                    MainViewModel.ViewTime5.LegLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegLeft_Y));
+                    MainViewModel.ViewTime5.LegLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegLeft_Z));
+                    MainViewModel.ViewTime5.LegLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegLeft_W));
+                    MainViewModel.ViewTime5.KneeLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeLeft_X));
+                    MainViewModel.ViewTime5.KneeLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeLeft_Y));
+                    MainViewModel.ViewTime5.KneeLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeLeft_Z));
+                    MainViewModel.ViewTime5.KneeLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeLeft_W));
+                    MainViewModel.ViewTime5.CalfLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfLeft_X));
+                    MainViewModel.ViewTime5.CalfLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfLeft_Y));
+                    MainViewModel.ViewTime5.CalfLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfLeft_Z));
+                    MainViewModel.ViewTime5.CalfLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfLeft_W));
+                    MainViewModel.ViewTime5.PoleynLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynLeft_X));
+                    MainViewModel.ViewTime5.PoleynLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynLeft_Y));
+                    MainViewModel.ViewTime5.PoleynLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynLeft_Z));
+                    MainViewModel.ViewTime5.PoleynLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynLeft_W));
+                    MainViewModel.ViewTime5.FootLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootLeft_X));
+                    MainViewModel.ViewTime5.FootLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootLeft_Y));
+                    MainViewModel.ViewTime5.FootLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootLeft_Z));
+                    MainViewModel.ViewTime5.FootLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootLeft_W));
+                    MainViewModel.ViewTime5.ToesLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesLeft_X));
+                    MainViewModel.ViewTime5.ToesLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesLeft_Y));
+                    MainViewModel.ViewTime5.ToesLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesLeft_Z));
+                    MainViewModel.ViewTime5.ToesLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesLeft_W));
+                    CharacterDetails.SaveLeftLeg02 = false;
+                }
+                if (CharacterDetails.SaveRightLeg01 == true)
+                {
+                    MainViewModel.ViewTime5.LegRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegRight_X));
+                    MainViewModel.ViewTime5.LegRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegRight_Y));
+                    MainViewModel.ViewTime5.LegRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegRight_Z));
+                    MainViewModel.ViewTime5.LegRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegRight_W));
+                    MainViewModel.ViewTime5.KneeRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeRight_X));
+                    MainViewModel.ViewTime5.KneeRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeRight_Y));
+                    MainViewModel.ViewTime5.KneeRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeRight_Z));
+                    MainViewModel.ViewTime5.KneeRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeRight_W));
+                    MainViewModel.ViewTime5.CalfRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfRight_X));
+                    MainViewModel.ViewTime5.CalfRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfRight_Y));
+                    MainViewModel.ViewTime5.CalfRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfRight_Z));
+                    MainViewModel.ViewTime5.CalfRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfRight_W));
+                    MainViewModel.ViewTime5.PoleynRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynRight_X));
+                    MainViewModel.ViewTime5.PoleynRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynRight_Y));
+                    MainViewModel.ViewTime5.PoleynRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynRight_Z));
+                    MainViewModel.ViewTime5.PoleynRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynRight_W));
+                    MainViewModel.ViewTime5.FootRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootRight_X));
+                    MainViewModel.ViewTime5.FootRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootRight_Y));
+                    MainViewModel.ViewTime5.FootRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootRight_Z));
+                    MainViewModel.ViewTime5.FootRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootRight_W));
+                    MainViewModel.ViewTime5.ToesRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesRight_X));
+                    MainViewModel.ViewTime5.ToesRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesRight_Y));
+                    MainViewModel.ViewTime5.ToesRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesRight_Z));
+                    MainViewModel.ViewTime5.ToesRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesRight_W));
+                    CharacterDetails.SaveRightLeg01 = false;
+                }
+                if (CharacterDetails.SaveRightLeg02 == true)
+                {
+                    MainViewModel.ViewTime5.LegRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegRight_X));
+                    MainViewModel.ViewTime5.LegRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegRight_Y));
+                    MainViewModel.ViewTime5.LegRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegRight_Z));
+                    MainViewModel.ViewTime5.LegRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegRight_W));
+                    MainViewModel.ViewTime5.KneeRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeRight_X));
+                    MainViewModel.ViewTime5.KneeRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeRight_Y));
+                    MainViewModel.ViewTime5.KneeRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeRight_Z));
+                    MainViewModel.ViewTime5.KneeRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeRight_W));
+                    MainViewModel.ViewTime5.CalfRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfRight_X));
+                    MainViewModel.ViewTime5.CalfRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfRight_Y));
+                    MainViewModel.ViewTime5.CalfRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfRight_Z));
+                    MainViewModel.ViewTime5.CalfRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfRight_W));
+                    MainViewModel.ViewTime5.PoleynRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynRight_X));
+                    MainViewModel.ViewTime5.PoleynRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynRight_Y));
+                    MainViewModel.ViewTime5.PoleynRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynRight_Z));
+                    MainViewModel.ViewTime5.PoleynRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynRight_W));
+                    MainViewModel.ViewTime5.FootRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootRight_X));
+                    MainViewModel.ViewTime5.FootRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootRight_Y));
+                    MainViewModel.ViewTime5.FootRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootRight_Z));
+                    MainViewModel.ViewTime5.FootRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootRight_W));
+                    MainViewModel.ViewTime5.ToesRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesRight_X));
+                    MainViewModel.ViewTime5.ToesRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesRight_Y));
+                    MainViewModel.ViewTime5.ToesRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesRight_Z));
+                    MainViewModel.ViewTime5.ToesRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesRight_W));
+                    CharacterDetails.SaveRightLeg02 = false;
+                }
+                if (CharacterDetails.SaveHelm01 == true)
+                {
+                    MainViewModel.ViewTime5.ExMetA_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetA_X));
+                    MainViewModel.ViewTime5.ExMetA_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetA_Y));
+                    MainViewModel.ViewTime5.ExMetA_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetA_Z));
+                    MainViewModel.ViewTime5.ExMetA_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetA_W));
+                    MainViewModel.ViewTime5.ExMetB_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetB_X));
+                    MainViewModel.ViewTime5.ExMetB_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetB_Y));
+                    MainViewModel.ViewTime5.ExMetB_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetB_Z));
+                    MainViewModel.ViewTime5.ExMetB_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetB_W));
+                    MainViewModel.ViewTime5.ExMetC_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetC_X));
+                    MainViewModel.ViewTime5.ExMetC_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetC_Y));
+                    MainViewModel.ViewTime5.ExMetC_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetC_Z));
+                    MainViewModel.ViewTime5.ExMetC_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetC_W));
+                    MainViewModel.ViewTime5.ExMetD_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetD_X));
+                    MainViewModel.ViewTime5.ExMetD_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetD_Y));
+                    MainViewModel.ViewTime5.ExMetD_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetD_Z));
+                    MainViewModel.ViewTime5.ExMetD_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetD_W));
+                    MainViewModel.ViewTime5.ExMetE_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetE_X));
+                    MainViewModel.ViewTime5.ExMetE_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetE_Y));
+                    MainViewModel.ViewTime5.ExMetE_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetE_Z));
+                    MainViewModel.ViewTime5.ExMetE_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetE_W));
+                    MainViewModel.ViewTime5.ExMetF_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetF_X));
+                    MainViewModel.ViewTime5.ExMetF_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetF_Y));
+                    MainViewModel.ViewTime5.ExMetF_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetF_Z));
+                    MainViewModel.ViewTime5.ExMetF_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetF_W));
+                    MainViewModel.ViewTime5.ExMetG_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetG_X));
+                    MainViewModel.ViewTime5.ExMetG_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetG_Y));
+                    MainViewModel.ViewTime5.ExMetG_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetG_Z));
+                    MainViewModel.ViewTime5.ExMetG_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetG_W));
+                    MainViewModel.ViewTime5.ExMetH_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetH_X));
+                    MainViewModel.ViewTime5.ExMetH_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetH_Y));
+                    MainViewModel.ViewTime5.ExMetH_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetH_Z));
+                    MainViewModel.ViewTime5.ExMetH_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetH_W));
+                    MainViewModel.ViewTime5.ExMetI_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetI_X));
+                    MainViewModel.ViewTime5.ExMetI_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetI_Y));
+                    MainViewModel.ViewTime5.ExMetI_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetI_Z));
+                    MainViewModel.ViewTime5.ExMetI_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetI_W));
+                    MainViewModel.ViewTime5.ExMetJ_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetJ_X));
+                    MainViewModel.ViewTime5.ExMetJ_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetJ_Y));
+                    MainViewModel.ViewTime5.ExMetJ_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetJ_Z));
+                    MainViewModel.ViewTime5.ExMetJ_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetJ_W));
+                    MainViewModel.ViewTime5.ExMetK_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetK_X));
+                    MainViewModel.ViewTime5.ExMetK_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetK_Y));
+                    MainViewModel.ViewTime5.ExMetK_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetK_Z));
+                    MainViewModel.ViewTime5.ExMetK_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetK_W));
+                    MainViewModel.ViewTime5.ExMetL_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetL_X));
+                    MainViewModel.ViewTime5.ExMetL_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetL_Y));
+                    MainViewModel.ViewTime5.ExMetL_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetL_Z));
+                    MainViewModel.ViewTime5.ExMetL_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetL_W));
+                    MainViewModel.ViewTime5.ExMetM_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetM_X));
+                    MainViewModel.ViewTime5.ExMetM_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetM_Y));
+                    MainViewModel.ViewTime5.ExMetM_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetM_Z));
+                    MainViewModel.ViewTime5.ExMetM_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetM_W));
+                    MainViewModel.ViewTime5.ExMetN_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetN_X));
+                    MainViewModel.ViewTime5.ExMetN_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetN_Y));
+                    MainViewModel.ViewTime5.ExMetN_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetN_Z));
+                    MainViewModel.ViewTime5.ExMetN_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetN_W));
+                    MainViewModel.ViewTime5.ExMetO_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetO_X));
+                    MainViewModel.ViewTime5.ExMetO_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetO_Y));
+                    MainViewModel.ViewTime5.ExMetO_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetO_Z));
+                    MainViewModel.ViewTime5.ExMetO_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetO_W));
+                    MainViewModel.ViewTime5.ExMetP_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetP_X));
+                    MainViewModel.ViewTime5.ExMetP_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetP_Y));
+                    MainViewModel.ViewTime5.ExMetP_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetP_Z));
+                    MainViewModel.ViewTime5.ExMetP_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetP_W));
+                    MainViewModel.ViewTime5.ExMetQ_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetQ_X));
+                    MainViewModel.ViewTime5.ExMetQ_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetQ_Y));
+                    MainViewModel.ViewTime5.ExMetQ_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetQ_Z));
+                    MainViewModel.ViewTime5.ExMetQ_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetQ_W));
+                    MainViewModel.ViewTime5.ExMetR_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetR_X));
+                    MainViewModel.ViewTime5.ExMetR_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetR_Y));
+                    MainViewModel.ViewTime5.ExMetR_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetR_Z));
+                    MainViewModel.ViewTime5.ExMetR_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetR_W));
+                    CharacterDetails.SaveHelm01 = false;
+                }
+                if (CharacterDetails.SaveHelm02 == true)
+                {
+                    MainViewModel.ViewTime5.ExMetA_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetA_X));
+                    MainViewModel.ViewTime5.ExMetA_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetA_Y));
+                    MainViewModel.ViewTime5.ExMetA_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetA_Z));
+                    MainViewModel.ViewTime5.ExMetA_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetA_W));
+                    MainViewModel.ViewTime5.ExMetB_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetB_X));
+                    MainViewModel.ViewTime5.ExMetB_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetB_Y));
+                    MainViewModel.ViewTime5.ExMetB_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetB_Z));
+                    MainViewModel.ViewTime5.ExMetB_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetB_W));
+                    MainViewModel.ViewTime5.ExMetC_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetC_X));
+                    MainViewModel.ViewTime5.ExMetC_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetC_Y));
+                    MainViewModel.ViewTime5.ExMetC_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetC_Z));
+                    MainViewModel.ViewTime5.ExMetC_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetC_W));
+                    MainViewModel.ViewTime5.ExMetD_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetD_X));
+                    MainViewModel.ViewTime5.ExMetD_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetD_Y));
+                    MainViewModel.ViewTime5.ExMetD_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetD_Z));
+                    MainViewModel.ViewTime5.ExMetD_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetD_W));
+                    MainViewModel.ViewTime5.ExMetE_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetE_X));
+                    MainViewModel.ViewTime5.ExMetE_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetE_Y));
+                    MainViewModel.ViewTime5.ExMetE_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetE_Z));
+                    MainViewModel.ViewTime5.ExMetE_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetE_W));
+                    MainViewModel.ViewTime5.ExMetF_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetF_X));
+                    MainViewModel.ViewTime5.ExMetF_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetF_Y));
+                    MainViewModel.ViewTime5.ExMetF_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetF_Z));
+                    MainViewModel.ViewTime5.ExMetF_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetF_W));
+                    MainViewModel.ViewTime5.ExMetG_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetG_X));
+                    MainViewModel.ViewTime5.ExMetG_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetG_Y));
+                    MainViewModel.ViewTime5.ExMetG_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetG_Z));
+                    MainViewModel.ViewTime5.ExMetG_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetG_W));
+                    MainViewModel.ViewTime5.ExMetH_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetH_X));
+                    MainViewModel.ViewTime5.ExMetH_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetH_Y));
+                    MainViewModel.ViewTime5.ExMetH_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetH_Z));
+                    MainViewModel.ViewTime5.ExMetH_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetH_W));
+                    MainViewModel.ViewTime5.ExMetI_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetI_X));
+                    MainViewModel.ViewTime5.ExMetI_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetI_Y));
+                    MainViewModel.ViewTime5.ExMetI_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetI_Z));
+                    MainViewModel.ViewTime5.ExMetI_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetI_W));
+                    MainViewModel.ViewTime5.ExMetJ_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetJ_X));
+                    MainViewModel.ViewTime5.ExMetJ_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetJ_Y));
+                    MainViewModel.ViewTime5.ExMetJ_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetJ_Z));
+                    MainViewModel.ViewTime5.ExMetJ_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetJ_W));
+                    MainViewModel.ViewTime5.ExMetK_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetK_X));
+                    MainViewModel.ViewTime5.ExMetK_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetK_Y));
+                    MainViewModel.ViewTime5.ExMetK_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetK_Z));
+                    MainViewModel.ViewTime5.ExMetK_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetK_W));
+                    MainViewModel.ViewTime5.ExMetL_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetL_X));
+                    MainViewModel.ViewTime5.ExMetL_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetL_Y));
+                    MainViewModel.ViewTime5.ExMetL_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetL_Z));
+                    MainViewModel.ViewTime5.ExMetL_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetL_W));
+                    MainViewModel.ViewTime5.ExMetM_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetM_X));
+                    MainViewModel.ViewTime5.ExMetM_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetM_Y));
+                    MainViewModel.ViewTime5.ExMetM_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetM_Z));
+                    MainViewModel.ViewTime5.ExMetM_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetM_W));
+                    MainViewModel.ViewTime5.ExMetN_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetN_X));
+                    MainViewModel.ViewTime5.ExMetN_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetN_Y));
+                    MainViewModel.ViewTime5.ExMetN_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetN_Z));
+                    MainViewModel.ViewTime5.ExMetN_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetN_W));
+                    MainViewModel.ViewTime5.ExMetO_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetO_X));
+                    MainViewModel.ViewTime5.ExMetO_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetO_Y));
+                    MainViewModel.ViewTime5.ExMetO_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetO_Z));
+                    MainViewModel.ViewTime5.ExMetO_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetO_W));
+                    MainViewModel.ViewTime5.ExMetP_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetP_X));
+                    MainViewModel.ViewTime5.ExMetP_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetP_Y));
+                    MainViewModel.ViewTime5.ExMetP_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetP_Z));
+                    MainViewModel.ViewTime5.ExMetP_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetP_W));
+                    MainViewModel.ViewTime5.ExMetQ_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetQ_X));
+                    MainViewModel.ViewTime5.ExMetQ_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetQ_Y));
+                    MainViewModel.ViewTime5.ExMetQ_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetQ_Z));
+                    MainViewModel.ViewTime5.ExMetQ_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetQ_W));
+                    MainViewModel.ViewTime5.ExMetR_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetR_X));
+                    MainViewModel.ViewTime5.ExMetR_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetR_Y));
+                    MainViewModel.ViewTime5.ExMetR_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetR_Z));
+                    MainViewModel.ViewTime5.ExMetR_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetR_W));
+                    CharacterDetails.SaveHelm02 = false;
+                }
+                if (CharacterDetails.SaveTop01 == true)
+                {
+                    MainViewModel.ViewTime5.ExTopA_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopA_X));
+                    MainViewModel.ViewTime5.ExTopA_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopA_Y));
+                    MainViewModel.ViewTime5.ExTopA_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopA_Z));
+                    MainViewModel.ViewTime5.ExTopA_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopA_W));
+                    MainViewModel.ViewTime5.ExTopB_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopB_X));
+                    MainViewModel.ViewTime5.ExTopB_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopB_Y));
+                    MainViewModel.ViewTime5.ExTopB_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopB_Z));
+                    MainViewModel.ViewTime5.ExTopB_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopB_W));
+                    MainViewModel.ViewTime5.ExTopC_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopC_X));
+                    MainViewModel.ViewTime5.ExTopC_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopC_Y));
+                    MainViewModel.ViewTime5.ExTopC_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopC_Z));
+                    MainViewModel.ViewTime5.ExTopC_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopC_W));
+                    MainViewModel.ViewTime5.ExTopD_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopD_X));
+                    MainViewModel.ViewTime5.ExTopD_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopD_Y));
+                    MainViewModel.ViewTime5.ExTopD_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopD_Z));
+                    MainViewModel.ViewTime5.ExTopD_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopD_W));
+                    MainViewModel.ViewTime5.ExTopE_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopE_X));
+                    MainViewModel.ViewTime5.ExTopE_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopE_Y));
+                    MainViewModel.ViewTime5.ExTopE_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopE_Z));
+                    MainViewModel.ViewTime5.ExTopE_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopE_W));
+                    MainViewModel.ViewTime5.ExTopF_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopF_X));
+                    MainViewModel.ViewTime5.ExTopF_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopF_Y));
+                    MainViewModel.ViewTime5.ExTopF_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopF_Z));
+                    MainViewModel.ViewTime5.ExTopF_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopF_W));
+                    MainViewModel.ViewTime5.ExTopG_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopG_X));
+                    MainViewModel.ViewTime5.ExTopG_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopG_Y));
+                    MainViewModel.ViewTime5.ExTopG_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopG_Z));
+                    MainViewModel.ViewTime5.ExTopG_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopG_W));
+                    MainViewModel.ViewTime5.ExTopH_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopH_X));
+                    MainViewModel.ViewTime5.ExTopH_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopH_Y));
+                    MainViewModel.ViewTime5.ExTopH_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopH_Z));
+                    MainViewModel.ViewTime5.ExTopH_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopH_W));
+                    MainViewModel.ViewTime5.ExTopI_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopI_X));
+                    MainViewModel.ViewTime5.ExTopI_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopI_Y));
+                    MainViewModel.ViewTime5.ExTopI_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopI_Z));
+                    MainViewModel.ViewTime5.ExTopI_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopI_W));
+                    CharacterDetails.SaveTop01 = false;
+                }
+                if (CharacterDetails.SaveTop02 == true)
+                {
+                    MainViewModel.ViewTime5.ExTopA_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopA_X));
+                    MainViewModel.ViewTime5.ExTopA_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopA_Y));
+                    MainViewModel.ViewTime5.ExTopA_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopA_Z));
+                    MainViewModel.ViewTime5.ExTopA_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopA_W));
+                    MainViewModel.ViewTime5.ExTopB_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopB_X));
+                    MainViewModel.ViewTime5.ExTopB_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopB_Y));
+                    MainViewModel.ViewTime5.ExTopB_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopB_Z));
+                    MainViewModel.ViewTime5.ExTopB_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopB_W));
+                    MainViewModel.ViewTime5.ExTopC_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopC_X));
+                    MainViewModel.ViewTime5.ExTopC_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopC_Y));
+                    MainViewModel.ViewTime5.ExTopC_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopC_Z));
+                    MainViewModel.ViewTime5.ExTopC_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopC_W));
+                    MainViewModel.ViewTime5.ExTopD_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopD_X));
+                    MainViewModel.ViewTime5.ExTopD_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopD_Y));
+                    MainViewModel.ViewTime5.ExTopD_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopD_Z));
+                    MainViewModel.ViewTime5.ExTopD_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopD_W));
+                    MainViewModel.ViewTime5.ExTopE_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopE_X));
+                    MainViewModel.ViewTime5.ExTopE_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopE_Y));
+                    MainViewModel.ViewTime5.ExTopE_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopE_Z));
+                    MainViewModel.ViewTime5.ExTopE_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopE_W));
+                    MainViewModel.ViewTime5.ExTopF_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopF_X));
+                    MainViewModel.ViewTime5.ExTopF_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopF_Y));
+                    MainViewModel.ViewTime5.ExTopF_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopF_Z));
+                    MainViewModel.ViewTime5.ExTopF_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopF_W));
+                    MainViewModel.ViewTime5.ExTopG_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopG_X));
+                    MainViewModel.ViewTime5.ExTopG_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopG_Y));
+                    MainViewModel.ViewTime5.ExTopG_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopG_Z));
+                    MainViewModel.ViewTime5.ExTopG_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopG_W));
+                    MainViewModel.ViewTime5.ExTopH_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopH_X));
+                    MainViewModel.ViewTime5.ExTopH_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopH_Y));
+                    MainViewModel.ViewTime5.ExTopH_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopH_Z));
+                    MainViewModel.ViewTime5.ExTopH_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopH_W));
+                    MainViewModel.ViewTime5.ExTopI_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopI_X));
+                    MainViewModel.ViewTime5.ExTopI_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopI_Y));
+                    MainViewModel.ViewTime5.ExTopI_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopI_Z));
+                    MainViewModel.ViewTime5.ExTopI_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopI_W));
+                    CharacterDetails.SaveTop02 = false;
+                }
+                #endregion
+                #region Cube Updates
+                if (CharacterDetails.Root_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.Root_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.Root_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.Root_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.Root_W.value;
+                }
+                if (CharacterDetails.Abdomen_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.Abdomen_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.Abdomen_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.Abdomen_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.Abdomen_W.value;
+                }
+                if (CharacterDetails.Throw_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.Throw_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.Throw_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.Throw_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.Throw_W.value;
+                }
+                if (CharacterDetails.Waist_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.Waist_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.Waist_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.Waist_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.Waist_W.value;
+                }
+                if (CharacterDetails.SpineA_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.SpineA_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.SpineA_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.SpineA_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.SpineA_W.value;
+                }
+                if (CharacterDetails.LegLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.LegLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.LegLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.LegLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.LegLeft_W.value;
+                }
+                if (CharacterDetails.LegRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.LegRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.LegRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.LegRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.LegRight_W.value;
+                }
+                if (CharacterDetails.HolsterLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.HolsterLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.HolsterLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.HolsterLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.HolsterLeft_W.value;
+                }
+                if (CharacterDetails.HolsterRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.HolsterRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.HolsterRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.HolsterRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.HolsterRight_W.value;
+                }
+                if (CharacterDetails.SheatheLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.SheatheLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.SheatheLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.SheatheLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.SheatheLeft_W.value;
+                }
+                if (CharacterDetails.SheatheRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.SheatheRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.SheatheRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.SheatheRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.SheatheRight_W.value;
+                }
+                if (CharacterDetails.SpineB_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.SpineB_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.SpineB_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.SpineB_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.SpineB_W.value;
+                }
+                if (CharacterDetails.ClothBackALeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ClothBackALeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ClothBackALeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ClothBackALeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ClothBackALeft_W.value;
+                }
+                if (CharacterDetails.ClothBackARight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ClothBackARight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ClothBackARight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ClothBackARight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ClothBackARight_W.value;
+                }
+                if (CharacterDetails.ClothFrontALeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ClothFrontALeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ClothFrontALeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ClothFrontALeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ClothFrontALeft_W.value;
+                }
+                if (CharacterDetails.ClothFrontARight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ClothFrontARight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ClothFrontARight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ClothFrontARight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ClothFrontARight_W.value;
+                }
+                if (CharacterDetails.ClothSideALeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ClothSideALeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ClothSideALeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ClothSideALeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ClothSideALeft_W.value;
+                }
+                if (CharacterDetails.ClothSideARight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ClothSideARight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ClothSideARight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ClothSideARight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ClothSideARight_W.value;
+                }
+                if (CharacterDetails.KneeLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.KneeLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.KneeLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.KneeLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.KneeLeft_W.value;
+                }
+                if (CharacterDetails.KneeRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.KneeRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.KneeRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.KneeRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.KneeRight_W.value;
+                }
+                if (CharacterDetails.BreastLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.BreastLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.BreastLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.BreastLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.BreastLeft_W.value;
+                }
+                if (CharacterDetails.BreastRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.BreastRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.BreastRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.BreastRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.BreastRight_W.value;
+                }
+                if (CharacterDetails.SpineC_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.SpineC_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.SpineC_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.SpineC_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.SpineC_W.value;
+                }
+                if (CharacterDetails.ClothBackBLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ClothBackBLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ClothBackBLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ClothBackBLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ClothBackBLeft_W.value;
+                }
+                if (CharacterDetails.ClothBackBRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ClothBackBRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ClothBackBRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ClothBackBRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ClothBackBRight_W.value;
+                }
+                if (CharacterDetails.ClothFrontBLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ClothFrontBLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ClothFrontBLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ClothFrontBLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ClothFrontBLeft_W.value;
+                }
+                if (CharacterDetails.ClothFrontBRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ClothFrontBRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ClothFrontBRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ClothFrontBRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ClothFrontBRight_W.value;
+                }
+                if (CharacterDetails.ClothSideBLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ClothSideBLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ClothSideBLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ClothSideBLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ClothSideBLeft_W.value;
+                }
+                if (CharacterDetails.ClothSideBRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ClothSideBRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ClothSideBRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ClothSideBRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ClothSideBRight_W.value;
+                }
+                if (CharacterDetails.CalfLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.CalfLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.CalfLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.CalfLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.CalfLeft_W.value;
+                }
+                if (CharacterDetails.CalfRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.CalfRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.CalfRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.CalfRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.CalfRight_W.value;
+                }
+                if (CharacterDetails.ScabbardLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ScabbardLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ScabbardLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ScabbardLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ScabbardLeft_W.value;
+                }
+                if (CharacterDetails.ScabbardRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ScabbardRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ScabbardRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ScabbardRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ScabbardRight_W.value;
+                }
+                if (CharacterDetails.Neck_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.Neck_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.Neck_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.Neck_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.Neck_W.value;
+                }
+                if (CharacterDetails.ClavicleLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ClavicleLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ClavicleLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ClavicleLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ClavicleLeft_W.value;
+                }
+                if (CharacterDetails.ClavicleRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ClavicleRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ClavicleRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ClavicleRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ClavicleRight_W.value;
+                }
+                if (CharacterDetails.ClothBackCLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ClothBackCLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ClothBackCLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ClothBackCLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ClothBackCLeft_W.value;
+                }
+                if (CharacterDetails.ClothBackCRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ClothBackCRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ClothBackCRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ClothBackCRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ClothBackCRight_W.value;
+                }
+                if (CharacterDetails.ClothFrontCLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ClothFrontCLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ClothFrontCLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ClothFrontCLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ClothFrontCLeft_W.value;
+                }
+                if (CharacterDetails.ClothFrontCRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ClothFrontCRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ClothFrontCRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ClothFrontCRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ClothFrontCRight_W.value;
+                }
+                if (CharacterDetails.ClothSideCLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ClothSideCLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ClothSideCLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ClothSideCLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ClothSideCLeft_W.value;
+                }
+                if (CharacterDetails.ClothSideCRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ClothSideCRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ClothSideCRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ClothSideCRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ClothSideCRight_W.value;
+                }
+                if (CharacterDetails.PoleynLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.PoleynLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.PoleynLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.PoleynLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.PoleynLeft_W.value;
+                }
+                if (CharacterDetails.PoleynRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.PoleynRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.PoleynRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.PoleynRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.PoleynRight_W.value;
+                }
+                if (CharacterDetails.FootLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.FootLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.FootLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.FootLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.FootLeft_W.value;
+                }
+                if (CharacterDetails.FootRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.FootRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.FootRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.FootRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.FootRight_W.value;
+                }
+                if (CharacterDetails.Head_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.Head_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.Head_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.Head_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.Head_W.value;
+                }
+                if (CharacterDetails.ArmLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ArmLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ArmLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ArmLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ArmLeft_W.value;
+                }
+                if (CharacterDetails.ArmRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ArmRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ArmRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ArmRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ArmRight_W.value;
+                }
+                if (CharacterDetails.PauldronLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.PauldronLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.PauldronLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.PauldronLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.PauldronLeft_W.value;
+                }
+                if (CharacterDetails.PauldronRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.PauldronRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.PauldronRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.PauldronRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.PauldronRight_W.value;
+                }
+                if (CharacterDetails.Unknown00_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.Unknown00_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.Unknown00_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.Unknown00_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.Unknown00_W.value;
+                }
+                if (CharacterDetails.ToesLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ToesLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ToesLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ToesLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ToesLeft_W.value;
+                }
+                if (CharacterDetails.ToesRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ToesRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ToesRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ToesRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ToesRight_W.value;
+                }
+                if (CharacterDetails.HairA_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.HairA_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.HairA_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.HairA_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.HairA_W.value;
+                }
+                if (CharacterDetails.HairFrontLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.HairFrontLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.HairFrontLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.HairFrontLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.HairFrontLeft_W.value;
+                }
+                if (CharacterDetails.HairFrontRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.HairFrontRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.HairFrontRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.HairFrontRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.HairFrontRight_W.value;
+                }
+                if (CharacterDetails.EarLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.EarLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.EarLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.EarLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.EarLeft_W.value;
+                }
+                if (CharacterDetails.EarRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.EarRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.EarRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.EarRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.EarRight_W.value;
+                }
+                if (CharacterDetails.ForearmLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ForearmLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ForearmLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ForearmLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ForearmLeft_W.value;
+                }
+                if (CharacterDetails.ForearmRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ForearmRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ForearmRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ForearmRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ForearmRight_W.value;
+                }
+                if (CharacterDetails.ShoulderLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ShoulderLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ShoulderLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ShoulderLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ShoulderLeft_W.value;
+                }
+                if (CharacterDetails.ShoulderRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ShoulderRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ShoulderRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ShoulderRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ShoulderRight_W.value;
+                }
+                if (CharacterDetails.HairB_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.HairB_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.HairB_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.HairB_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.HairB_W.value;
+                }
+                if (CharacterDetails.HandLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.HandLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.HandLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.HandLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.HandLeft_W.value;
+                }
+                if (CharacterDetails.HandRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.HandRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.HandRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.HandRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.HandRight_W.value;
+                }
+                if (CharacterDetails.ShieldLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ShieldLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ShieldLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ShieldLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ShieldLeft_W.value;
+                }
+                if (CharacterDetails.ShieldRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ShieldRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ShieldRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ShieldRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ShieldRight_W.value;
+                }
+                if (CharacterDetails.EarringALeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.EarringALeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.EarringALeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.EarringALeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.EarringALeft_W.value;
+                }
+                if (CharacterDetails.EarringARight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.EarringARight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.EarringARight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.EarringARight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.EarringARight_W.value;
+                }
+                if (CharacterDetails.ElbowLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ElbowLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ElbowLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ElbowLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ElbowLeft_W.value;
+                }
+                if (CharacterDetails.ElbowRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ElbowRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ElbowRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ElbowRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ElbowRight_W.value;
+                }
+                if (CharacterDetails.CouterLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.CouterLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.CouterLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.CouterLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.CouterLeft_W.value;
+                }
+                if (CharacterDetails.CouterRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.CouterRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.CouterRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.CouterRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.CouterRight_W.value;
+                }
+                if (CharacterDetails.WristLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.WristLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.WristLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.WristLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.WristLeft_W.value;
+                }
+                if (CharacterDetails.WristRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.WristRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.WristRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.WristRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.WristRight_W.value;
+                }
+                if (CharacterDetails.IndexALeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.IndexALeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.IndexALeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.IndexALeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.IndexALeft_W.value;
+                }
+                if (CharacterDetails.IndexARight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.IndexARight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.IndexARight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.IndexARight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.IndexARight_W.value;
+                }
+                if (CharacterDetails.PinkyALeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.PinkyALeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.PinkyALeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.PinkyALeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.PinkyALeft_W.value;
+                }
+                if (CharacterDetails.PinkyARight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.PinkyARight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.PinkyARight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.PinkyARight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.PinkyARight_W.value;
+                }
+                if (CharacterDetails.RingALeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.RingALeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.RingALeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.RingALeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.RingALeft_W.value;
+                }
+                if (CharacterDetails.RingARight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.RingARight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.RingARight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.RingARight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.RingARight_W.value;
+                }
+                if (CharacterDetails.MiddleALeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.MiddleALeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.MiddleALeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.MiddleALeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.MiddleALeft_W.value;
+                }
+                if (CharacterDetails.MiddleARight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.MiddleARight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.MiddleARight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.MiddleARight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.MiddleARight_W.value;
+                }
+                if (CharacterDetails.ThumbALeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ThumbALeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ThumbALeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ThumbALeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ThumbALeft_W.value;
+                }
+                if (CharacterDetails.ThumbARight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ThumbARight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ThumbARight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ThumbARight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ThumbARight_W.value;
+                }
+                if (CharacterDetails.WeaponLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.WeaponLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.WeaponLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.WeaponLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.WeaponLeft_W.value;
+                }
+                if (CharacterDetails.WeaponRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.WeaponRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.WeaponRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.WeaponRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.WeaponRight_W.value;
+                }
+                if (CharacterDetails.EarringBLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.EarringBLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.EarringBLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.EarringBLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.EarringBLeft_W.value;
+                }
+                if (CharacterDetails.EarringBRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.EarringBRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.EarringBRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.EarringBRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.EarringBRight_W.value;
+                }
+                if (CharacterDetails.IndexBLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.IndexBLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.IndexBLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.IndexBLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.IndexBLeft_W.value;
+                }
+                if (CharacterDetails.IndexBRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.IndexBRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.IndexBRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.IndexBRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.IndexBRight_W.value;
+                }
+                if (CharacterDetails.PinkyBLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.PinkyBLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.PinkyBLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.PinkyBLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.PinkyBLeft_W.value;
+                }
+                if (CharacterDetails.PinkyBRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.PinkyBRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.PinkyBRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.PinkyBRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.PinkyBRight_W.value;
+                }
+                if (CharacterDetails.RingBLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.RingBLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.RingBLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.RingBLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.RingBLeft_W.value;
+                }
+                if (CharacterDetails.RingBRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.RingBRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.RingBRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.RingBRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.RingBRight_W.value;
+                }
+                if (CharacterDetails.MiddleBLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.MiddleBLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.MiddleBLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.MiddleBLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.MiddleBLeft_W.value;
+                }
+                if (CharacterDetails.MiddleBRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.MiddleBRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.MiddleBRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.MiddleBRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.MiddleBRight_W.value;
+                }
+                if (CharacterDetails.ThumbBLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ThumbBLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ThumbBLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ThumbBLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ThumbBLeft_W.value;
+                }
+                if (CharacterDetails.ThumbBRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ThumbBRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ThumbBRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ThumbBRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ThumbBRight_W.value;
+                }
+                if (CharacterDetails.TailA_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.TailA_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.TailA_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.TailA_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.TailA_W.value;
+                }
+                if (CharacterDetails.TailB_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.TailB_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.TailB_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.TailB_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.TailB_W.value;
+                }
+                if (CharacterDetails.TailC_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.TailC_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.TailC_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.TailC_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.TailC_W.value;
+                }
+                if (CharacterDetails.TailD_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.TailD_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.TailD_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.TailD_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.TailD_W.value;
+                }
+                if (CharacterDetails.TailE_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.TailE_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.TailE_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.TailE_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.TailE_W.value;
+                }
+                if (CharacterDetails.RootHead_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.RootHead_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.RootHead_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.RootHead_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.RootHead_W.value;
+                }
+                if (CharacterDetails.Jaw_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.Jaw_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.Jaw_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.Jaw_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.Jaw_W.value;
+                }
+                if (CharacterDetails.EyelidLowerLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.EyelidLowerLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.EyelidLowerLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.EyelidLowerLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.EyelidLowerLeft_W.value;
+                }
+                if (CharacterDetails.EyelidLowerRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.EyelidLowerRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.EyelidLowerRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.EyelidLowerRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.EyelidLowerRight_W.value;
+                }
+                if (CharacterDetails.EyeLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.EyeLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.EyeLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.EyeLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.EyeLeft_W.value;
+                }
+                if (CharacterDetails.EyeRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.EyeRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.EyeRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.EyeRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.EyeRight_W.value;
+                }
+                if (CharacterDetails.Nose_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.Nose_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.Nose_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.Nose_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.Nose_W.value;
+                }
+                if (CharacterDetails.CheekLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.CheekLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.CheekLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.CheekLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.CheekLeft_W.value;
+                }
+                if (CharacterDetails.HrothWhiskersLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.HrothWhiskersLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.HrothWhiskersLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.HrothWhiskersLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.HrothWhiskersLeft_W.value;
+                }
+                if (CharacterDetails.CheekRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.CheekRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.CheekRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.CheekRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.CheekRight_W.value;
+                }
+                if (CharacterDetails.HrothWhiskersRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.HrothWhiskersRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.HrothWhiskersRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.HrothWhiskersRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.HrothWhiskersRight_W.value;
+                }
+                if (CharacterDetails.LipsLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.LipsLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.LipsLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.LipsLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.LipsLeft_W.value;
+                }
+                if (CharacterDetails.HrothEyebrowLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.HrothEyebrowLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.HrothEyebrowLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.HrothEyebrowLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.HrothEyebrowLeft_W.value;
+                }
+                if (CharacterDetails.LipsRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.LipsRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.LipsRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.LipsRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.LipsRight_W.value;
+                }
+                if (CharacterDetails.HrothEyebrowRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.HrothEyebrowRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.HrothEyebrowRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.HrothEyebrowRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.HrothEyebrowRight_W.value;
+                }
+                if (CharacterDetails.EyebrowLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.EyebrowLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.EyebrowLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.EyebrowLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.EyebrowLeft_W.value;
+                }
+                if (CharacterDetails.HrothBridge_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.HrothBridge_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.HrothBridge_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.HrothBridge_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.HrothBridge_W.value;
+                }
+                if (CharacterDetails.EyebrowRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.EyebrowRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.EyebrowRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.EyebrowRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.EyebrowRight_W.value;
+                }
+                if (CharacterDetails.HrothBrowLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.HrothBrowLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.HrothBrowLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.HrothBrowLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.HrothBrowLeft_W.value;
+                }
+                if (CharacterDetails.Bridge_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.Bridge_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.Bridge_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.Bridge_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.Bridge_W.value;
+                }
+                if (CharacterDetails.HrothBrowRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.HrothBrowRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.HrothBrowRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.HrothBrowRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.HrothBrowRight_W.value;
+                }
+                if (CharacterDetails.BrowLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.BrowLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.BrowLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.BrowLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.BrowLeft_W.value;
+                }
+                if (CharacterDetails.HrothJawUpper_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.HrothJawUpper_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.HrothJawUpper_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.HrothJawUpper_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.HrothJawUpper_W.value;
+                }
+                if (CharacterDetails.BrowRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.BrowRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.BrowRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.BrowRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.BrowRight_W.value;
+                }
+                if (CharacterDetails.HrothLipUpper_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.HrothLipUpper_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.HrothLipUpper_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.HrothLipUpper_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.HrothLipUpper_W.value;
+                }
+                if (CharacterDetails.LipUpperA_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.LipUpperA_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.LipUpperA_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.LipUpperA_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.LipUpperA_W.value;
+                }
+                if (CharacterDetails.HrothEyelidUpperLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.HrothEyelidUpperLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.HrothEyelidUpperLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.HrothEyelidUpperLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.HrothEyelidUpperLeft_W.value;
+                }
+                if (CharacterDetails.EyelidUpperLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.EyelidUpperLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.EyelidUpperLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.EyelidUpperLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.EyelidUpperLeft_W.value;
+                }
+                if (CharacterDetails.HrothEyelidUpperRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.HrothEyelidUpperRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.HrothEyelidUpperRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.HrothEyelidUpperRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.HrothEyelidUpperRight_W.value;
+                }
+                if (CharacterDetails.EyelidUpperRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.EyelidUpperRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.EyelidUpperRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.EyelidUpperRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.EyelidUpperRight_W.value;
+                }
+                if (CharacterDetails.HrothLipsLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.HrothLipsLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.HrothLipsLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.HrothLipsLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.HrothLipsLeft_W.value;
+                }
+                if (CharacterDetails.LipLowerA_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.LipLowerA_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.LipLowerA_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.LipLowerA_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.LipLowerA_W.value;
+                }
+                if (CharacterDetails.HrothLipsRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.HrothLipsRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.HrothLipsRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.HrothLipsRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.HrothLipsRight_W.value;
+                }
+                if (CharacterDetails.VieraEar01ALeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.VieraEar01ALeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.VieraEar01ALeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.VieraEar01ALeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.VieraEar01ALeft_W.value;
+                }
+                if (CharacterDetails.LipUpperB_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.LipUpperB_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.LipUpperB_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.LipUpperB_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.LipUpperB_W.value;
+                }
+                if (CharacterDetails.HrothLipUpperLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.HrothLipUpperLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.HrothLipUpperLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.HrothLipUpperLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.HrothLipUpperLeft_W.value;
+                }
+                if (CharacterDetails.VieraEar01ARight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.VieraEar01ARight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.VieraEar01ARight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.VieraEar01ARight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.VieraEar01ARight_W.value;
+                }
+                if (CharacterDetails.LipLowerB_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.LipLowerB_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.LipLowerB_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.LipLowerB_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.LipLowerB_W.value;
+                }
+                if (CharacterDetails.HrothLipUpperRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.HrothLipUpperRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.HrothLipUpperRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.HrothLipUpperRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.HrothLipUpperRight_W.value;
+                }
+                if (CharacterDetails.VieraEar02ALeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.VieraEar02ALeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.VieraEar02ALeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.VieraEar02ALeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.VieraEar02ALeft_W.value;
+                }
+                if (CharacterDetails.HrothLipLower_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.HrothLipLower_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.HrothLipLower_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.HrothLipLower_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.HrothLipLower_W.value;
+                }
+                if (CharacterDetails.VieraEar02ARight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.VieraEar02ARight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.VieraEar02ARight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.VieraEar02ARight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.VieraEar02ARight_W.value;
+                }
+                if (CharacterDetails.VieraEar03ALeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.VieraEar03ALeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.VieraEar03ALeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.VieraEar03ALeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.VieraEar03ALeft_W.value;
+                }
+                if (CharacterDetails.VieraEar03ARight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.VieraEar03ARight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.VieraEar03ARight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.VieraEar03ARight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.VieraEar03ARight_W.value;
+                }
+                if (CharacterDetails.VieraEar04ALeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.VieraEar04ALeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.VieraEar04ALeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.VieraEar04ALeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.VieraEar04ALeft_W.value;
+                }
+                if (CharacterDetails.VieraEar04ARight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.VieraEar04ARight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.VieraEar04ARight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.VieraEar04ARight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.VieraEar04ARight_W.value;
+                }
+                if (CharacterDetails.VieraLipLowerA_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.VieraLipLowerA_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.VieraLipLowerA_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.VieraLipLowerA_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.VieraLipLowerA_W.value;
+                }
+                if (CharacterDetails.VieraLipUpperB_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.VieraLipUpperB_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.VieraLipUpperB_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.VieraLipUpperB_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.VieraLipUpperB_W.value;
+                }
+                if (CharacterDetails.VieraEar01BLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.VieraEar01BLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.VieraEar01BLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.VieraEar01BLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.VieraEar01BLeft_W.value;
+                }
+                if (CharacterDetails.VieraEar01BRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.VieraEar01BRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.VieraEar01BRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.VieraEar01BRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.VieraEar01BRight_W.value;
+                }
+                if (CharacterDetails.VieraEar02BLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.VieraEar02BLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.VieraEar02BLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.VieraEar02BLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.VieraEar02BLeft_W.value;
+                }
+                if (CharacterDetails.VieraEar02BRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.VieraEar02BRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.VieraEar02BRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.VieraEar02BRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.VieraEar02BRight_W.value;
+                }
+                if (CharacterDetails.VieraEar03BLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.VieraEar03BLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.VieraEar03BLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.VieraEar03BLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.VieraEar03BLeft_W.value;
+                }
+                if (CharacterDetails.VieraEar03BRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.VieraEar03BRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.VieraEar03BRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.VieraEar03BRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.VieraEar03BRight_W.value;
+                }
+                if (CharacterDetails.VieraEar04BLeft_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.VieraEar04BLeft_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.VieraEar04BLeft_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.VieraEar04BLeft_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.VieraEar04BLeft_W.value;
+                }
+                if (CharacterDetails.VieraEar04BRight_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.VieraEar04BRight_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.VieraEar04BRight_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.VieraEar04BRight_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.VieraEar04BRight_W.value;
+                }
+                if (CharacterDetails.VieraLipLowerB_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.VieraLipLowerB_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.VieraLipLowerB_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.VieraLipLowerB_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.VieraLipLowerB_W.value;
+                }
+                if (CharacterDetails.ExRootHair_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExRootHair_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExRootHair_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExRootHair_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExRootHair_W.value;
+                }
+                if (CharacterDetails.ExHairA_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExHairA_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExHairA_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExHairA_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExHairA_W.value;
+                }
+                if (CharacterDetails.ExHairB_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExHairB_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExHairB_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExHairB_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExHairB_W.value;
+                }
+                if (CharacterDetails.ExHairC_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExHairC_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExHairC_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExHairC_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExHairC_W.value;
+                }
+                if (CharacterDetails.ExHairD_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExHairD_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExHairD_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExHairD_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExHairD_W.value;
+                }
+                if (CharacterDetails.ExHairE_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExHairE_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExHairE_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExHairE_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExHairE_W.value;
+                }
+                if (CharacterDetails.ExHairF_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExHairF_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExHairF_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExHairF_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExHairF_W.value;
+                }
+                if (CharacterDetails.ExHairG_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExHairG_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExHairG_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExHairG_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExHairG_W.value;
+                }
+                if (CharacterDetails.ExHairH_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExHairH_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExHairH_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExHairH_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExHairH_W.value;
+                }
+                if (CharacterDetails.ExHairI_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExHairI_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExHairI_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExHairI_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExHairI_W.value;
+                }
+                if (CharacterDetails.ExHairJ_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExHairJ_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExHairJ_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExHairJ_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExHairJ_W.value;
+                }
+                if (CharacterDetails.ExHairK_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExHairK_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExHairK_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExHairK_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExHairK_W.value;
+                }
+                if (CharacterDetails.ExHairL_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExHairL_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExHairL_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExHairL_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExHairL_W.value;
+                }
+                if (CharacterDetails.ExRootMet_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExRootMet_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExRootMet_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExRootMet_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExRootMet_W.value;
+                }
+                if (CharacterDetails.ExMetA_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExMetA_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExMetA_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExMetA_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExMetA_W.value;
+                }
+                if (CharacterDetails.ExMetB_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExMetB_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExMetB_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExMetB_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExMetB_W.value;
+                }
+                if (CharacterDetails.ExMetC_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExMetC_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExMetC_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExMetC_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExMetC_W.value;
+                }
+                if (CharacterDetails.ExMetD_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExMetD_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExMetD_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExMetD_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExMetD_W.value;
+                }
+                if (CharacterDetails.ExMetE_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExMetE_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExMetE_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExMetE_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExMetE_W.value;
+                }
+                if (CharacterDetails.ExMetF_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExMetF_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExMetF_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExMetF_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExMetF_W.value;
+                }
+                if (CharacterDetails.ExMetG_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExMetG_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExMetG_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExMetG_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExMetG_W.value;
+                }
+                if (CharacterDetails.ExMetH_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExMetH_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExMetH_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExMetH_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExMetH_W.value;
+                }
+                if (CharacterDetails.ExMetI_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExMetI_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExMetI_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExMetI_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExMetI_W.value;
+                }
+                if (CharacterDetails.ExMetJ_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExMetJ_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExMetJ_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExMetJ_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExMetJ_W.value;
+                }
+                if (CharacterDetails.ExMetK_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExMetK_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExMetK_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExMetK_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExMetK_W.value;
+                }
+                if (CharacterDetails.ExMetL_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExMetL_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExMetL_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExMetL_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExMetL_W.value;
+                }
+                if (CharacterDetails.ExMetM_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExMetM_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExMetM_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExMetM_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExMetM_W.value;
+                }
+                if (CharacterDetails.ExMetN_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExMetN_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExMetN_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExMetN_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExMetN_W.value;
+                }
+                if (CharacterDetails.ExMetO_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExMetO_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExMetO_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExMetO_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExMetO_W.value;
+                }
+                if (CharacterDetails.ExMetP_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExMetP_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExMetP_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExMetP_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExMetP_W.value;
+                }
+                if (CharacterDetails.ExMetQ_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExMetQ_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExMetQ_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExMetQ_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExMetQ_W.value;
+                }
+                if (CharacterDetails.ExMetR_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExMetR_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExMetR_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExMetR_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExMetR_W.value;
+                }
+                if (CharacterDetails.ExRootTop_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExRootTop_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExRootTop_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExRootTop_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExRootTop_W.value;
+                }
+                if (CharacterDetails.ExTopA_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExTopA_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExTopA_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExTopA_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExTopA_W.value;
+                }
+                if (CharacterDetails.ExTopB_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExTopB_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExTopB_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExTopB_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExTopB_W.value;
+                }
+                if (CharacterDetails.ExTopC_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExTopC_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExTopC_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExTopC_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExTopC_W.value;
+                }
+                if (CharacterDetails.ExTopD_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExTopD_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExTopD_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExTopD_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExTopD_W.value;
+                }
+                if (CharacterDetails.ExTopE_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExTopE_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExTopE_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExTopE_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExTopE_W.value;
+                }
+                if (CharacterDetails.ExTopF_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExTopF_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExTopF_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExTopF_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExTopF_W.value;
+                }
+                if (CharacterDetails.ExTopG_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExTopG_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExTopG_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExTopG_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExTopG_W.value;
+                }
+                if (CharacterDetails.ExTopH_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExTopH_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExTopH_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExTopH_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExTopH_W.value;
+                }
+                if (CharacterDetails.ExTopI_Rotate == true)
+                {
+                    CharacterDetails.CubeBone_X.value = CharacterDetails.ExTopI_X.value;
+                    CharacterDetails.CubeBone_Y.value = CharacterDetails.ExTopI_Y.value;
+                    CharacterDetails.CubeBone_Z.value = CharacterDetails.ExTopI_Z.value;
+                    CharacterDetails.CubeBone_W.value = CharacterDetails.ExTopI_W.value;
                 }
                 #endregion
 

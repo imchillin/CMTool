@@ -13,246 +13,749 @@
     <UserControl.Resources>
         <Converters:QuaternionConverter x:Key="QuaternionConverter" />
     </UserControl.Resources>
-    <Grid Height="530">
+    <Grid Height="530" Width="1119">
+        <Grid.Background>
+            <ImageBrush ImageSource="/ConceptMatrix;component/Resources/posebg.png"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Realtime Rotation:" ToolTip="Use your mouse buttons to control the cube. &#xD;&#xA;All rotations are relative to the direction that the entity is currently facing.&#xD;&#xA;&#x2022; RMB controls X-axis rotation.&#xD;&#xA;&#x2022; LMB controls Y-axis rotation.&#xD;&#xA;&#x2022; MMB controls Z-axis rotation." HorizontalAlignment="Left" Margin="958,5,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Border BorderBrush="Black" BorderThickness="3" HorizontalAlignment="Left" Height="150" Margin="955,35,0,0" VerticalAlignment="Top" Width="150" Background="#FF2E2E2E">
+            <local:PoseRotationView Height="Auto" Width="Auto">
+                <local:PoseRotationView.DataContext>
+                    <MultiBinding Converter="{StaticResource ResourceKey=QuaternionConverter}">
+                        <Binding Path="CharacterDetails.CubeBone_X.value" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
+                        <Binding Path="CharacterDetails.CubeBone_Y.value" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
+                        <Binding Path="CharacterDetails.CubeBone_Z.value" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
+                        <Binding Path="CharacterDetails.CubeBone_W.value" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
+                    </MultiBinding>
+                </local:PoseRotationView.DataContext>
+            </local:PoseRotationView>
+        </Border>
+
+        <mah:MetroAnimatedTabControl TabStripPlacement="Left" Margin="11,10,278,10" Background="{x:Null}" Width="830">
+            <TabItem Header="Head &#x26; Hair" Width="200" Height="40" Background="{x:Null}">
+                <Grid Margin="0">
+                    <GroupBox Header="Head" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="175" Width="630"/>
+                    <GroupBox Header="Hair &amp; Accessories" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="175" Width="630" Margin="0,255,0,0"/>
+                    <ToggleButton x:Name="Head" Checked="Head_Checked" Unchecked="Head_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="108,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" />
+                    <Label Content="Face:" HorizontalAlignment="Left" Margin="33,45,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="Bridge" Checked="Bridge_Checked" Unchecked="Bridge_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="108,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" />
+                    <Label Content="Bridge:" HorizontalAlignment="Left" Margin="33,75,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="Nose" Checked="Nose_Checked" Unchecked="Nose_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="108,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" />
+                    <Label Content="Nose:" HorizontalAlignment="Left" Margin="33,105,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="Jaw" Checked="Jaw_Checked" Unchecked="Jaw_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="108,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" />
+                    <Label Content="Jaw:" HorizontalAlignment="Left" Margin="33,135,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="EyebrowLeft" Checked="EyebrowLeft_Checked" Unchecked="EyebrowLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="220,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
+                    <Label Content="Eyebrows:" HorizontalAlignment="Left" Margin="145,45,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="BrowLeft" Checked="BrowLeft_Checked" Unchecked="BrowLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="220,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
+                    <Label Content="Brows:" HorizontalAlignment="Left" Margin="145,75,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="EyelidUpperLeft" Checked="EyelidUpperLeft_Checked" Unchecked="EyelidUpperLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="220,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
+                    <Label Content="Eyelids:" HorizontalAlignment="Left" Margin="145,105,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="EyelidLowerLeft" Checked="EyelidLowerLeft_Checked" Unchecked="EyelidLowerLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="220,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
+                    <Label Content="Lower Lids:" HorizontalAlignment="Left" Margin="145,135,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="EyebrowRight" Checked="EyebrowRight_Checked" Unchecked="EyebrowRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="259,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <ToggleButton x:Name="BrowRight" Checked="BrowRight_Checked" Unchecked="BrowRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="259,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <ToggleButton x:Name="EyelidUpperRight" Checked="EyelidUpperRight_Checked" Unchecked="EyelidUpperRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="259,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <ToggleButton x:Name="EyelidLowerRight" Checked="EyelidLowerRight_Checked" Unchecked="EyelidLowerRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="259,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <ToggleButton x:Name="EyeLeft" Checked="EyeLeft_Checked" Unchecked="EyeLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="371,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
+                    <Label Content="Eyes:" HorizontalAlignment="Left" Margin="296,45,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="EarLeft" Checked="EarLeft_Checked" Unchecked="EarLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="371,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
+                    <Label Content="Ears:" HorizontalAlignment="Left" Margin="296,75,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="VieraEarALeft" Checked="VieraEarALeft_Checked" Unchecked="VieraEarALeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="371,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L1" />
+                    <Label Content="Viera Ears:" HorizontalAlignment="Left" Margin="296,105,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="VieraEarBLeft" Checked="VieraEarBLeft_Checked" Unchecked="VieraEarBLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="371,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L2" />
+                    <ToggleButton x:Name="EyeRight" Checked="EyeRight_Checked" Unchecked="EyeRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="410,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <ToggleButton x:Name="EarRight" Checked="EarRight_Checked" Unchecked="EarRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="410,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <ToggleButton x:Name="VieraEarARight" Checked="VieraEarARight_Checked" Unchecked="VieraEarARight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="410,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R1" />
+                    <ToggleButton x:Name="VieraEarBRight" Checked="VieraEarBRight_Checked" Unchecked="VieraEarBRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="410,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R2" />
+                    <ToggleButton x:Name="CheekLeft" Checked="CheekLeft_Checked" Unchecked="CheekLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="522,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
+                    <Label Content="Cheeks:" HorizontalAlignment="Left" Margin="447,45,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="LipsLeft" Checked="LipsLeft_Checked" Unchecked="LipsLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="522,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
+                    <Label Content="Mouth:" HorizontalAlignment="Left" Margin="447,75,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="LipUpperA" Checked="LipUpperA_Checked" Unchecked="LipUpperA_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="522,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="1" />
+                    <Label Content="Upper Lip:" HorizontalAlignment="Left" Margin="447,105,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="LipLowerA" Checked="LipLowerA_Checked" Unchecked="LipLowerA_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="522,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="1" />
+                    <Label Content="Lower Lip:" HorizontalAlignment="Left" Margin="447,135,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="CheekRight" Checked="CheekRight_Checked" Unchecked="CheekRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="561,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <ToggleButton x:Name="LipsRight" Checked="LipsRight_Checked" Unchecked="LipsRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="561,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <ToggleButton x:Name="LipUpperB" Checked="LipUpperB_Checked" Unchecked="LipUpperB_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="561,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="2" />
+                    <ToggleButton x:Name="LipLowerB" Checked="LipLowerB_Checked" Unchecked="LipLowerB_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="561,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="2" />
+                    <ToggleButton x:Name="HairFrontLeft" Checked="HairFrontLeft_Checked" Unchecked="HairFrontLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="137,302,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="L" />
+                    <Label Content="General:" HorizontalAlignment="Left" Margin="62,302,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="HairFrontRight" Checked="HairFrontRight_Checked" Unchecked="HairFrontRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="176,302,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="R" />
+                    <ToggleButton x:Name="HairA" Checked="HairA_Checked" Unchecked="HairA_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="137,332,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="1" />
+                    <ToggleButton x:Name="HairB" Checked="HairB_Checked" Unchecked="HairB_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="176,332,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="2" />
+                    <ToggleButton x:Name="ExHairA" Checked="ExHairA_Checked" Unchecked="ExHairA_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="219,360,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="1" />
+                    <Label Content="Unique:" HorizontalAlignment="Left" Margin="144,360,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="ExHairB" Checked="ExHairB_Checked" Unchecked="ExHairB_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="258,360,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="2" />
+                    <ToggleButton x:Name="ExHairC" Checked="ExHairC_Checked" Unchecked="ExHairC_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="297,360,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="3" />
+                    <ToggleButton x:Name="ExHairD" Checked="ExHairD_Checked" Unchecked="ExHairD_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="336,360,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="4" />
+                    <ToggleButton x:Name="ExHairE" Checked="ExHairE_Checked" Unchecked="ExHairE_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="375,360,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="5" />
+                    <ToggleButton x:Name="ExHairF" Checked="ExHairF_Checked" Unchecked="ExHairF_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="414,360,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="6" />
+                    <ToggleButton x:Name="ExHairG" Checked="ExHairG_Checked" Unchecked="ExHairG_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="219,390,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="7" />
+                    <ToggleButton x:Name="ExHairH" Checked="ExHairH_Checked" Unchecked="ExHairH_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="258,390,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="8" />
+                    <ToggleButton x:Name="ExHairI" Checked="ExHairI_Checked" Unchecked="ExHairI_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="297,390,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="9" />
+                    <ToggleButton x:Name="ExHairJ" Checked="ExHairJ_Checked" Unchecked="ExHairJ_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="336,390,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="10" />
+                    <ToggleButton x:Name="ExHairK" Checked="ExHairK_Checked" Unchecked="ExHairK_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="375,390,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="11" />
+                    <ToggleButton x:Name="ExHairL" Checked="ExHairL_Checked" Unchecked="ExHairL_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="414,390,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="12" RenderTransformOrigin="0.412,1.143" />
+                    <ToggleButton x:Name="EarringALeft" Checked="EarringALeft_Checked" Unchecked="EarringALeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="492,302,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L1" />
+                    <Label Content="Earrings:" HorizontalAlignment="Left" Margin="417,302,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="EarringBLeft" Checked="EarringBLeft_Checked" Unchecked="EarringBLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="492,332,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L2" />
+                    <ToggleButton x:Name="EarringARight" Checked="EarringARight_Checked" Unchecked="EarringARight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="531,302,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R1" />
+                    <ToggleButton x:Name="EarringBRight" Checked="EarringBRight_Checked" Unchecked="EarringBRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="531,332,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R2" />
+                    <Label Content="Earrings:" HorizontalAlignment="Left" Margin="409,435,0,0" VerticalAlignment="Top" Height="28"/>
+                    <Label Content="Head:" HorizontalAlignment="Left" Margin="224,180,0,0" VerticalAlignment="Top" Height="28"/>
+                    <Label Content="Hair:" HorizontalAlignment="Left" Margin="39,435,0,0" VerticalAlignment="Top" Height="28"/>
+                    <Button x:Name="SavestateEarrings01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="486,435,0,0" VerticalAlignment="Top" Width="50" Click="SavestateEarrings01_Click" Height="28" Padding="0">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="SavestateEarrings02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="541,435,0,0" VerticalAlignment="Top" Width="50" Click="SavestateEarrings02_Click" Height="28" Padding="0">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="SavestateHead01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="299,180,0,0" VerticalAlignment="Top" Width="50" Click="SavestateHead01_Click" Height="28" Padding="0">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="SavestateHead02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="354,180,0,0" VerticalAlignment="Top" Width="50" Click="SavestateHead02_Click" Height="28" Padding="0">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadstateEarrings01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="486,477,0,0" VerticalAlignment="Top" Width="50" Click="LoadstateEarrings01_Click" Height="28" Padding="0" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadstateEarrings02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="541,477,0,0" VerticalAlignment="Top" Width="50" Click="LoadstateEarrings02_Click" Height="28" Padding="0" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadstateHead01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="299,222,0,0" VerticalAlignment="Top" Width="50" Click="LoadstateHead01_Click" Height="28" Padding="0" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadstateHead02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="354,222,0,0" VerticalAlignment="Top" Width="50" Click="LoadstateHead02_Click" Height="28" Padding="0" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="SavestateHair01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="114,435,0,0" VerticalAlignment="Top" Width="50" Click="SavestateHair01_Click" Height="28" Padding="0">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="SavestateHair02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="169,435,0,0" VerticalAlignment="Top" Width="50" Click="SavestateHair02_Click" Height="28" Padding="0">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadstateHair01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="114,477,0,0" VerticalAlignment="Top" Width="50" Click="LoadstateHair01_Click" Height="28" Padding="0" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadstateHair02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="169,477,0,0" VerticalAlignment="Top" Width="50" Click="LoadstateHair02_Click" Height="28" Padding="0" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <ToggleButton x:Name="HrothWhiskersLeft" Checked="HrothWhiskersLeft_Checked" Unchecked="HrothWhiskersLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="341,302,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="L" />
+                    <Label Content="Hrothgar Whiskers:" HorizontalAlignment="Left" Margin="215,302,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="HrothWhiskersRight" Checked="HrothWhiskersRight_Checked" Unchecked="HrothWhiskersRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="380,302,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="R" />
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Body &#x26; Clothes" Width="200" Height="40" Background="{x:Null}">
+                <Grid>
+                    <GroupBox Header="Body" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="175" Width="630"/>
+                    <GroupBox Header="Clothes" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="175" Width="630" Margin="0,255,0,0"/>
+                    <ToggleButton x:Name="Neck" Checked="Neck_Checked" Unchecked="Neck_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="108,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" />
+                    <Label Content="Neck:" HorizontalAlignment="Left" Margin="33,45,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="SpineC" Checked="SpineC_Checked" Unchecked="SpineC_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="108,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" />
+                    <Label Content="Cervical:" HorizontalAlignment="Left" Margin="33,75,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="SpineB" Checked="SpineB_Checked" Unchecked="SpineB_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="108,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" />
+                    <Label Content="Thoracic:" HorizontalAlignment="Left" Margin="33,105,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="SpineA" Checked="SpineA_Checked" Unchecked="SpineA_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="108,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" />
+                    <Label Content="Lumbar:" HorizontalAlignment="Left" Margin="33,135,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="ScabbardLeft" Checked="ScabbardLeft_Checked" Unchecked="ScabbardLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="220,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
+                    <Label Content="Scabbards:" HorizontalAlignment="Left" Margin="145,45,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="ClavicleLeft" Checked="ClavicleLeft_Checked" Unchecked="ClavicleLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="220,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
+                    <Label Content="Clavicles:" HorizontalAlignment="Left" Margin="145,75,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="BreastLeft" Checked="BreastLeft_Checked" Unchecked="BreastLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="220,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
+                    <Label Content="Breasts:" HorizontalAlignment="Left" Margin="145,105,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="ScabbardRight" Checked="ScabbardRight_Checked" Unchecked="ScabbardRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="259,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <ToggleButton x:Name="ClavicleRight" Checked="ClavicleRight_Checked" Unchecked="ClavicleRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="259,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <ToggleButton x:Name="BreastRight" Checked="BreastRight_Checked" Unchecked="BreastRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="259,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <ToggleButton x:Name="PauldronLeft" Checked="PauldronLeft_Checked" Unchecked="PauldronLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="371,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
+                    <Label Content="Pauldrons:" HorizontalAlignment="Left" Margin="296,45,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="ShoulderLeft" Checked="ShoulderLeft_Checked" Unchecked="ShoulderLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="371,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
+                    <Label Content="Shoulders:" HorizontalAlignment="Left" Margin="296,75,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="ArmLeft" Checked="ArmLeft_Checked" Unchecked="ArmLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="371,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
+                    <Label Content="Arms:" HorizontalAlignment="Left" Margin="296,105,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="PauldronRight" Checked="PauldronRight_Checked" Unchecked="PauldronRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="410,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <ToggleButton x:Name="ShoulderRight" Checked="ShoulderRight_Checked" Unchecked="ShoulderRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="410,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <ToggleButton x:Name="ArmRight" Checked="ArmRight_Checked" Unchecked="ArmRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="410,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <ToggleButton x:Name="CouterLeft" Checked="CouterLeft_Checked" Unchecked="CouterLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="522,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
+                    <Label Content="Couters:" HorizontalAlignment="Left" Margin="447,45,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="ElbowLeft" Checked="ElbowLeft_Checked" Unchecked="ElbowLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="522,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
+                    <Label Content="Elbows:" HorizontalAlignment="Left" Margin="447,75,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="ForearmLeft" Checked="ForearmLeft_Checked" Unchecked="ForearmLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="522,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
+                    <Label Content="Forearms:" HorizontalAlignment="Left" Margin="447,105,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="ShieldLeft" Checked="ShieldLeft_Checked" Unchecked="ShieldLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="522,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
+                    <Label Content="Shields:" HorizontalAlignment="Left" Margin="447,135,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="CouterRight" Checked="CouterRight_Checked" Unchecked="CouterRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="561,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <ToggleButton x:Name="ElbowRight" Checked="ElbowRight_Checked" Unchecked="ElbowRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="561,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <ToggleButton x:Name="ForearmRight" Checked="ForearmRight_Checked" Unchecked="ForearmRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="561,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <ToggleButton x:Name="ShieldRight" Checked="ShieldRight_Checked" Unchecked="ShieldRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="561,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <ToggleButton x:Name="ClothFrontALeft" Checked="ClothFrontALeft_Checked" Unchecked="ClothFrontALeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="181,300,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="L1" />
+                    <Label Content="Front:" HorizontalAlignment="Left" Margin="106,300,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="ClothFrontARight" Checked="ClothFrontARight_Checked" Unchecked="ClothFrontARight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="220,300,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="R1" />
+                    <ToggleButton x:Name="ClothFrontBLeft" Checked="ClothFrontBLeft_Checked" Unchecked="ClothFrontBLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="181,330,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="L2" />
+                    <ToggleButton x:Name="ClothFrontBRight" Checked="ClothFrontBRight_Checked" Unchecked="ClothFrontBRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="220,330,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="R2" />
+                    <ToggleButton x:Name="ClothFrontCLeft" Checked="ClothFrontCLeft_Checked" Unchecked="ClothFrontCLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="181,360,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="L3" />
+                    <ToggleButton x:Name="ClothFrontCRight" Checked="ClothFrontCRight_Checked" Unchecked="ClothFrontCRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="220,360,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="R3" />
+                    <ToggleButton x:Name="ClothSideALeft" Checked="ClothSideALeft_Checked" Unchecked="ClothSideALeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="332,300,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="L1" />
+                    <Label Content="Sides:" HorizontalAlignment="Left" Margin="257,300,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="ClothSideARight" Checked="ClothSideARight_Checked" Unchecked="ClothSideARight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="371,300,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="R1" />
+                    <ToggleButton x:Name="ClothSideBLeft" Checked="ClothSideBLeft_Checked" Unchecked="ClothSideBLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="332,330,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="L2" />
+                    <ToggleButton x:Name="ClothSideBRight" Checked="ClothSideBRight_Checked" Unchecked="ClothSideBRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="371,330,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="R2" />
+                    <ToggleButton x:Name="ClothSideCLeft" Checked="ClothSideCLeft_Checked" Unchecked="ClothSideCLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="332,360,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="L3" />
+                    <ToggleButton x:Name="ClothSideCRight" Checked="ClothSideCRight_Checked" Unchecked="ClothSideCRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="371,360,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="R3" />
+                    <ToggleButton x:Name="ClothBackALeft" Checked="ClothBackALeft_Checked" Unchecked="ClothBackALeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="483,300,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="L1" />
+                    <Label Content="Back:" HorizontalAlignment="Left" Margin="408,300,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="ClothBackARight" Checked="ClothBackARight_Checked" Unchecked="ClothBackARight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="522,300,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="R1" />
+                    <ToggleButton x:Name="ClothBackBLeft" Checked="ClothBackBLeft_Checked" Unchecked="ClothBackBLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="483,330,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="L2" />
+                    <ToggleButton x:Name="ClothBackBRight" Checked="ClothBackBRight_Checked" Unchecked="ClothBackBRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="522,330,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="R2" />
+                    <ToggleButton x:Name="ClothBackCLeft" Checked="ClothBackCLeft_Checked" Unchecked="ClothBackCLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="483,360,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="L3" />
+                    <ToggleButton x:Name="ClothBackCRight" Checked="ClothBackCRight_Checked" Unchecked="ClothBackCRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="522,360,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="R3" />
+                    <Label Content="Body:" HorizontalAlignment="Left" Margin="39,180,0,0" VerticalAlignment="Top" Height="28"/>
+                    <Label Content="Left Arm:" HorizontalAlignment="Left" Margin="224,180,0,0" VerticalAlignment="Top" Height="28"/>
+                    <Label Content="Right Arm:" HorizontalAlignment="Left" Margin="409,180,0,0" VerticalAlignment="Top" Height="28"/>
+                    <Label Content="Clothes:" HorizontalAlignment="Left" Margin="224,435,0,0" VerticalAlignment="Top" Height="28"/>
+                    <Button x:Name="SavestateBody01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="114,180,0,0" VerticalAlignment="Top" Width="50" Click="SavestateBody01_Click" Height="28" Padding="0">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="SavestateBody02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="169,180,0,0" VerticalAlignment="Top" Width="50" Click="SavestateBody02_Click" Height="28" Padding="0">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="SavestateLeftArm01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="299,180,0,0" VerticalAlignment="Top" Width="50" Click="SavestateLeftArm01_Click" Height="28" Padding="0">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="SavestateLeftArm02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="354,180,0,0" VerticalAlignment="Top" Width="50" Click="SavestateLeftArm02_Click" Height="28" Padding="0">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="SavestateRightArm01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="483,180,0,0" VerticalAlignment="Top" Width="50" Click="SavestateRightArm01_Click" Height="28" Padding="0">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="SavestateRightArm02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="538,180,0,0" VerticalAlignment="Top" Width="50" Click="SavestateRightArm02_Click" Height="28" Padding="0">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadstateBody01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="114,222,0,0" VerticalAlignment="Top" Width="50" Click="LoadstateBody01_Click" Height="28" Padding="0" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadstateBody02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="169,222,0,0" VerticalAlignment="Top" Width="50" Click="LoadstateBody02_Click" Height="28" Padding="0" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadstateLeftArm01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="299,222,0,0" VerticalAlignment="Top" Width="50" Click="LoadstateLeftArm01_Click" Height="28" Padding="0" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadstateLeftArm02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="354,222,0,0" VerticalAlignment="Top" Width="50" Click="LoadstateLeftArm02_Click" Height="28" Padding="0" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadstateRightArm01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="483,222,0,0" VerticalAlignment="Top" Width="50" Click="LoadstateRightArm01_Click" Height="28" Padding="0" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadstateRightArm02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="538,222,0,0" VerticalAlignment="Top" Width="50" Click="LoadstateRightArm02_Click" Height="28" Padding="0" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="SavestateClothes01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="299,435,0,0" VerticalAlignment="Top" Width="50" Click="SavestateClothes01_Click" Height="28" Padding="0">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="SavestateClothes02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="354,435,0,0" VerticalAlignment="Top" Width="50" Click="SavestateClothes02_Click" Height="28" Padding="0">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadstateClothes01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="299,477,0,0" VerticalAlignment="Top" Width="50" Click="LoadstateClothes01_Click" Height="28" Padding="0" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadstateClothes02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="354,477,0,0" VerticalAlignment="Top" Width="50" Click="LoadstateClothes02_Click" Height="28" Padding="0" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Hands &#x26; Legs" Width="200" Height="40" Background="{x:Null}">
+                <Grid>
+                    <GroupBox Header="Hands" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="175" Width="630"/>
+                    <GroupBox Header="Waist &amp; Legs" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="175" Width="630" Margin="0,255,0,0"/>
+                    <ToggleButton x:Name="ThumbALeft" Checked="ThumbALeft_Checked" Unchecked="ThumbALeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="239,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L1" />
+                    <Label Content="Thumb:" HorizontalAlignment="Left" Margin="164,45,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="ThumbBLeft" Checked="ThumbBLeft_Checked" Unchecked="ThumbBLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="239,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L2" />
+                    <ToggleButton x:Name="IndexALeft" Checked="IndexALeft_Checked" Unchecked="IndexALeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="390,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L1" />
+                    <Label Content="Index:" HorizontalAlignment="Left" Margin="315,45,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="RingALeft" Checked="RingALeft_Checked" Unchecked="RingALeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="390,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L1" />
+                    <Label Content="Ring:" HorizontalAlignment="Left" Margin="315,105,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="IndexBLeft" Checked="IndexBLeft_Checked" Unchecked="IndexBLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="390,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L2" />
+                    <ToggleButton x:Name="RingBLeft" Checked="RingBLeft_Checked" Unchecked="RingBLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="390,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L2" />
+                    <ToggleButton x:Name="MiddleALeft" Checked="MiddleALeft_Checked" Unchecked="MiddleALeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="541,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L1" />
+                    <Label Content="Middle:" HorizontalAlignment="Left" Margin="466,45,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="PinkyALeft" Checked="PinkyALeft_Checked" Unchecked="PinkyALeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="541,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L1" />
+                    <Label Content="Pinky:" HorizontalAlignment="Left" Margin="466,105,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="MiddleBLeft" Checked="MiddleBLeft_Checked" Unchecked="MiddleBLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="541,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L2" />
+                    <ToggleButton x:Name="PinkyBLeft" Checked="PinkyBLeft_Checked" Unchecked="PinkyBLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="541,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L2" />
+                    <Label Content="Waist:" HorizontalAlignment="Left" Margin="33,300,0,0" VerticalAlignment="Top" Height="28"/>
+                    <Label Content="Tail:" HorizontalAlignment="Left" Margin="33,360,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="ThumbARight" Checked="ThumbARight_Checked" Unchecked="ThumbARight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="278,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R1" />
+                    <ToggleButton x:Name="ThumbBRight" Checked="ThumbBRight_Checked" Unchecked="ThumbBRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="278,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R2" />
+                    <ToggleButton x:Name="IndexARight" Checked="IndexARight_Checked" Unchecked="IndexARight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="429,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R1" />
+                    <ToggleButton x:Name="RingARight" Checked="RingARight_Checked" Unchecked="RingARight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="429,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R1" />
+                    <ToggleButton x:Name="IndexBRight" Checked="IndexBRight_Checked" Unchecked="IndexBRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="429,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R2" />
+                    <ToggleButton x:Name="RingBRight" Checked="RingBRight_Checked" Unchecked="RingBRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="429,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R2" />
+                    <ToggleButton x:Name="MiddleARight" Checked="MiddleARight_Checked" Unchecked="MiddleARight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="580,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R1" />
+                    <ToggleButton x:Name="PinkyARight" Checked="PinkyARight_Checked" Unchecked="PinkyARight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="580,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R1" />
+                    <ToggleButton x:Name="MiddleBRight" Checked="MiddleBRight_Checked" Unchecked="MiddleBRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="580,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R2" />
+                    <ToggleButton x:Name="PinkyBRight" Checked="PinkyBRight_Checked" Unchecked="PinkyBRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="580,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R2" />
+                    <ToggleButton x:Name="WristLeft" Checked="WristLeft_Checked" Unchecked="WristLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="88,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
+                    <Label Content="Wrists:" HorizontalAlignment="Left" Margin="13,45,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="WristRight" Checked="WristRight_Checked" Unchecked="WristRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="127,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <ToggleButton x:Name="HandLeft" Checked="HandLeft_Checked" Unchecked="HandLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="88,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
+                    <Label Content="Hands:" HorizontalAlignment="Left" Margin="13,75,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="HandRight" Checked="HandRight_Checked" Unchecked="HandRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="127,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <ToggleButton x:Name="WeaponLeft" Checked="WeaponLeft_Checked" Unchecked="WeaponLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="88,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
+                    <Label Content="Weapons:" HorizontalAlignment="Left" Margin="13,105,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="WeaponRight" Checked="WeaponRight_Checked" Unchecked="WeaponRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="127,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <ToggleButton x:Name="Waist" Checked="Waist_Checked" Unchecked="Waist_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="101,300,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="" />
+                    <ToggleButton x:Name="SheatheLeft" Checked="SheatheLeft_Checked" Unchecked="SheatheLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="218,300,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
+                    <Label Content="Sheathes:" HorizontalAlignment="Left" Margin="143,300,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="SheatheRight" Checked="SheatheRight_Checked" Unchecked="SheatheRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="257,300,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <ToggleButton x:Name="HolsterLeft" Checked="HolsterLeft_Checked" Unchecked="HolsterLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="371,300,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
+                    <Label Content="Holsters:" HorizontalAlignment="Left" Margin="296,300,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="HolsterRight" Checked="HolsterRight_Checked" Unchecked="HolsterRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="410,300,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <ToggleButton x:Name="PoleynLeft" Checked="PoleynLeft_Checked" Unchecked="PoleynLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="522,300,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
+                    <Label Content="Poleyns:" HorizontalAlignment="Left" Margin="447,300,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="PoleynRight" Checked="PoleynRight_Checked" Unchecked="PoleynRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="561,300,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <ToggleButton x:Name="LegLeft" Checked="LegLeft_Checked" Unchecked="LegLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="218,330,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
+                    <Label Content="Legs:" HorizontalAlignment="Left" Margin="143,330,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="LegRight" Checked="LegRight_Checked" Unchecked="LegRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="257,330,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <ToggleButton x:Name="KneeLeft" Checked="KneeLeft_Checked" Unchecked="KneeLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="371,330,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
+                    <Label Content="Knees:" HorizontalAlignment="Left" Margin="296,330,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="KneeRight" Checked="KneeRight_Checked" Unchecked="KneeRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="410,330,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <ToggleButton x:Name="CalfLeft" Checked="CalfLeft_Checked" Unchecked="CalfLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="522,330,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
+                    <Label Content="Calves:" HorizontalAlignment="Left" Margin="447,330,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="CalfRight" Checked="CalfRight_Checked" Unchecked="CalfRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="561,330,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <ToggleButton x:Name="FootLeft" Checked="FootLeft_Checked" Unchecked="FootLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="371,360,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
+                    <Label Content="Feet:" HorizontalAlignment="Left" Margin="296,360,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="FootRight" Checked="FootRight_Checked" Unchecked="FootRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="410,360,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <ToggleButton x:Name="ToesLeft" Checked="ToesLeft_Checked" Unchecked="ToesLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="522,360,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
+                    <Label Content="Toes:" HorizontalAlignment="Left" Margin="447,360,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="ToesRight" Checked="ToesRight_Checked" Unchecked="ToesRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="561,360,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <ToggleButton x:Name="TailA" Checked="TailA_Checked" Unchecked="TailA_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="101,360,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="1" />
+                    <ToggleButton x:Name="TailB" Checked="TailB_Checked" Unchecked="TailB_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="140,360,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="2" />
+                    <ToggleButton x:Name="TailC" Checked="TailC_Checked" Unchecked="TailC_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="179,360,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="3" />
+                    <ToggleButton x:Name="TailD" Checked="TailD_Checked" Unchecked="TailD_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="218,360,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="4" />
+                    <ToggleButton x:Name="TailE" Checked="TailE_Checked" Unchecked="TailE_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="257,360,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="5" />
+                    <Label Content="Weapons:" HorizontalAlignment="Left" Margin="39,180,0,0" VerticalAlignment="Top" Height="28"/>
+                    <Label Content="Left Hand:" HorizontalAlignment="Left" Margin="224,180,0,0" VerticalAlignment="Top" Height="28"/>
+                    <Label Content="Right Hand:" HorizontalAlignment="Left" Margin="409,180,0,0" VerticalAlignment="Top" Height="28"/>
+                    <Label Content="Waist:" HorizontalAlignment="Left" Margin="39,435,0,0" VerticalAlignment="Top" Height="28"/>
+                    <Button x:Name="SavestateWeapons01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="114,180,0,0" VerticalAlignment="Top" Width="50" Click="SavestateWeapons01_Click" Height="28" Padding="0">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="SavestateWeapons02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="169,180,0,0" VerticalAlignment="Top" Width="50" Click="SavestateWeapons02_Click" Height="28" Padding="0">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="SavestateLeftHand01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="299,180,0,0" VerticalAlignment="Top" Width="50" Click="SavestateLeftHand01_Click" Height="28" Padding="0">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="SavestateLeftHand02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="354,180,0,0" VerticalAlignment="Top" Width="50" Click="SavestateLeftHand02_Click" Height="28" Padding="0">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="SavestateRightHand01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="486,180,0,0" VerticalAlignment="Top" Width="50" Click="SavestateRightHand01_Click" Height="28" Padding="0">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="SavestateRightHand02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="541,180,0,0" VerticalAlignment="Top" Width="50" Click="SavestateRightHand02_Click" Height="28" Padding="0">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadstateWeapons01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="114,222,0,0" VerticalAlignment="Top" Width="50" Click="LoadstateWeapons01_Click" Height="28" Padding="0" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadstateWeapons02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="169,222,0,0" VerticalAlignment="Top" Width="50" Click="LoadstateWeapons02_Click" Height="28" Padding="0" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadstateLeftHand01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="299,222,0,0" VerticalAlignment="Top" Width="50" Click="LoadstateLeftHand01_Click" Height="28" Padding="0" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadstateLeftHand02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="354,222,0,0" VerticalAlignment="Top" Width="50" Click="LoadstateLeftHand02_Click" Height="28" Padding="0" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadstateRightHand01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="486,222,0,0" VerticalAlignment="Top" Width="50" Click="LoadstateRightHand01_Click" Height="28" Padding="0" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadstateRightHand02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="541,222,0,0" VerticalAlignment="Top" Width="50" Click="LoadstateRightHand02_Click" Height="28" Padding="0" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="SavestateWaist01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="114,435,0,0" VerticalAlignment="Top" Width="50" Click="SavestateWaist01_Click" Height="28" Padding="0">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="SavestateWaist02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="169,435,0,0" VerticalAlignment="Top" Width="50" Click="SavestateWaist02_Click" Height="28" Padding="0">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadstateWaist01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="114,477,0,0" VerticalAlignment="Top" Width="50" Click="LoadstateWaist01_Click" Height="28" Padding="0" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadstateWaist02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="169,477,0,0" VerticalAlignment="Top" Width="50" Click="LoadstateWaist02_Click" Height="28" Padding="0" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Label Content="Left Leg:" HorizontalAlignment="Left" Margin="224,435,0,0" VerticalAlignment="Top" Height="28"/>
+                    <Button x:Name="SavestateLeftLeg01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="299,435,0,0" VerticalAlignment="Top" Width="50" Click="SavestateLeftLeg01_Click" Height="28" Padding="0">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="SavestateLeftLeg02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="354,435,0,0" VerticalAlignment="Top" Width="50" Click="SavestateLeftLeg02_Click" Height="28" Padding="0">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadstateLeftLeg01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="299,477,0,0" VerticalAlignment="Top" Width="50" Click="LoadstateLeftLeg01_Click" Height="28" Padding="0" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadstateLeftLeg02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="354,477,0,0" VerticalAlignment="Top" Width="50" Click="LoadstateLeftLeg02_Click" Height="28" Padding="0" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Label Content="Right Leg:" HorizontalAlignment="Left" Margin="409,435,0,0" VerticalAlignment="Top" Height="28"/>
+                    <Button x:Name="SavestateRightLeg01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="486,435,0,0" VerticalAlignment="Top" Width="50" Click="SavestateRightLeg01_Click" Height="28" Padding="0">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="SavestateRightLeg02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="541,435,0,0" VerticalAlignment="Top" Width="50" Click="SavestateRightLeg02_Click" Height="28" Padding="0">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadstateRightLeg01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="486,477,0,0" VerticalAlignment="Top" Width="50" Click="LoadstateRightLeg01_Click" Height="28" Padding="0" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadstateRightLeg02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="541,477,0,0" VerticalAlignment="Top" Width="50" Click="LoadstateRightLeg02_Click" Height="28" Padding="0" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                </Grid>
+
+            </TabItem>
+            <TabItem Header="Equip &#x26; Other" Width="200" Height="40" Background="{x:Null}">
+                <Grid>
+                    <GroupBox Header="Equipment" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="175" Width="630"/>
+                    <GroupBox Header="Other" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="175" Width="630" Margin="0,255,0,0"/>
+                    <ToggleButton x:Name="ExTopA" Checked="ExTopA_Checked" Unchecked="ExTopA_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="478,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="1" />
+                    <Label Content="Top:" HorizontalAlignment="Left" Margin="403,45,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="ExTopB" Checked="ExTopB_Checked" Unchecked="ExTopB_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="517,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="2" />
+                    <ToggleButton x:Name="ExTopD" Checked="ExTopD_Checked" Unchecked="ExTopD_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="478,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="4" />
+                    <ToggleButton x:Name="ExTopE" Checked="ExTopE_Checked" Unchecked="ExTopE_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="517,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="5" />
+                    <ToggleButton x:Name="ExTopG" Checked="ExTopG_Checked" Unchecked="ExTopG_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="478,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="7" />
+                    <ToggleButton x:Name="ExTopH" Checked="ExTopH_Checked" Unchecked="ExTopH_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="517,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="8" />
+                    <ToggleButton x:Name="ExTopC" Checked="ExTopC_Checked" Unchecked="ExTopC_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="556,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="3" />
+                    <ToggleButton x:Name="ExTopF" Checked="ExTopF_Checked" Unchecked="ExTopF_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="556,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="6" />
+                    <ToggleButton x:Name="ExTopI" Checked="ExTopI_Checked" Unchecked="ExTopI_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="556,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="9" />
+                    <Label Content="Top:" HorizontalAlignment="Left" Margin="409,180,0,0" VerticalAlignment="Top" Height="28"/>
+                    <Label Content="Helm:" HorizontalAlignment="Left" Margin="39,180,0,0" VerticalAlignment="Top" Height="28"/>
+                    <Button x:Name="SavestateTop01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="486,180,0,0" VerticalAlignment="Top" Width="50" Click="SavestateTop01_Click" Height="28" Padding="0">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="SavestateTop02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="541,180,0,0" VerticalAlignment="Top" Width="50" Click="SavestateTop02_Click" Height="28" Padding="0">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="SavestateHelm01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="114,180,0,0" VerticalAlignment="Top" Width="50" Click="SavestateHelm01_Click" Height="28" Padding="0">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="SavestateHelm02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="169,180,0,0" VerticalAlignment="Top" Width="50" Click="SavestateHelm02_Click" Height="28" Padding="0">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadstateTop01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="486,222,0,0" VerticalAlignment="Top" Width="50" Click="LoadstateTop01_Click" Height="28" Padding="0" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadstateTop02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="541,222,0,0" VerticalAlignment="Top" Width="50" Click="LoadstateTop02_Click" Height="28" Padding="0" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadstateHelm01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="114,222,0,0" VerticalAlignment="Top" Width="50" Click="LoadstateHelm01_Click" Height="28" Padding="0" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadstateHelm02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="169,222,0,0" VerticalAlignment="Top" Width="50" Click="LoadstateHelm02_Click" Height="28" Padding="0" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                            <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                            <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                        </StackPanel>
+                    </Button>
+                    <ToggleButton x:Name="ExMetA" Checked="ExMetA_Checked" Unchecked="ExMetA_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="108,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="1" />
+                    <Label Content="Helm:" HorizontalAlignment="Left" Margin="33,45,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="ExMetB" Checked="ExMetB_Checked" Unchecked="ExMetB_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="147,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="2" />
+                    <ToggleButton x:Name="ExMetG" Checked="ExMetG_Checked" Unchecked="ExMetG_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="108,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="7" />
+                    <ToggleButton x:Name="ExMetH" Checked="ExMetH_Checked" Unchecked="ExMetH_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="147,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="8" />
+                    <ToggleButton x:Name="ExMetM" Checked="ExMetM_Checked" Unchecked="ExMetM_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="108,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="13" />
+                    <ToggleButton x:Name="ExMetN" Checked="ExMetN_Checked" Unchecked="ExMetN_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="147,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="14" />
+                    <ToggleButton x:Name="ExMetC" Checked="ExMetC_Checked" Unchecked="ExMetC_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="186,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="3" />
+                    <ToggleButton x:Name="ExMetD" Checked="ExMetD_Checked" Unchecked="ExMetD_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="225,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="4" />
+                    <ToggleButton x:Name="ExMetQ" Checked="ExMetQ_Checked" Unchecked="ExMetQ_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="264,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="17" />
+                    <ToggleButton x:Name="ExMetR" Checked="ExMetR_Checked" Unchecked="ExMetR_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="303,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="18" />
+                    <ToggleButton x:Name="ExMetI" Checked="ExMetI_Checked" Unchecked="ExMetI_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="186,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="9" />
+                    <ToggleButton x:Name="ExMetJ" Checked="ExMetJ_Checked" Unchecked="ExMetJ_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="225,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="10" />
+                    <ToggleButton x:Name="ExMetO" Checked="ExMetO_Checked" Unchecked="ExMetO_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="186,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="15" />
+                    <ToggleButton x:Name="ExMetP" Checked="ExMetP_Checked" Unchecked="ExMetP_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="225,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="16" RenderTransformOrigin="0.412,1.143" />
+                    <ToggleButton x:Name="ExMetE" Checked="ExMetE_Checked" Unchecked="ExMetE_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="264,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="5" />
+                    <ToggleButton x:Name="ExMetK" Checked="ExMetK_Checked" Unchecked="ExMetK_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="264,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="11" />
+                    <ToggleButton x:Name="ExMetF" Checked="ExMetF_Checked" Unchecked="ExMetF_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="303,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="6" />
+                    <ToggleButton x:Name="ExMetL" Checked="ExMetL_Checked" Unchecked="ExMetL_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="303,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="12" />
+                    <Label Content="Abdomen:" HorizontalAlignment="Left" Margin="145,300,0,0" VerticalAlignment="Top" Height="28" IsEnabled="False"/>
+                    <ToggleButton x:Name="Abdomen" Checked="Abdomen_Checked" Unchecked="Abdomen_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="220,300,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" />
+                    <Label Content="Root:" HorizontalAlignment="Left" Margin="33,300,0,0" VerticalAlignment="Top" Height="28" IsEnabled="False"/>
+                    <ToggleButton x:Name="Root" Checked="Root_Checked" Unchecked="Root_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="108,300,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" />
+                    <Label Content="Throw:" HorizontalAlignment="Left" Margin="257,300,0,0" VerticalAlignment="Top" Height="28" IsEnabled="False"/>
+                    <ToggleButton x:Name="Throw" Checked="Throw_Checked" Unchecked="Throw_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="332,300,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" />
+                    <Label Content="Head:" HorizontalAlignment="Left" Margin="369,300,0,0" VerticalAlignment="Top" Height="28" IsEnabled="False"/>
+                    <ToggleButton x:Name="RootHead" Checked="RootHead_Checked" Unchecked="RootHead_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="444,300,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" />
+                    <Label Content="Unknown:" HorizontalAlignment="Left" Margin="481,300,0,0" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="Unknown00" Checked="Unknown00_Checked" Unchecked="Unknown00_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="556,300,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" />
+                    <ToggleButton x:Name="Weapon01" Checked="Head_Checked" Unchecked="Head_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="266,360,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="1" />
+                    <Label Content="Weapon:" HorizontalAlignment="Left" Margin="191,360,0,0" VerticalAlignment="Top" Height="28" IsEnabled="False"/>
+                    <ToggleButton x:Name="Weapon02" Checked="Head_Checked" Unchecked="Head_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="305,360,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="2" />
+                    <ToggleButton x:Name="Weapon03" Checked="Head_Checked" Unchecked="Head_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="344,360,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="3" />
+                    <ToggleButton x:Name="Weapon04" Checked="Head_Checked" Unchecked="Head_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="383,360,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="4" />
+                </Grid>
+
+            </TabItem>
+            <TabItem Header="Save &#x26; Load" Width="200" Height="40" Background="{x:Null}">
+                <Grid>
+                    <GroupBox Header="Standard Saving &#x26; Loading" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="175" Width="630"/>
+                    <GroupBox Header="Advanced Loading" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="175" Width="630" Margin="0,255,0,0"/>
+                    <Button x:Name="SaveCMP" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="225,70,0,0" VerticalAlignment="Top" Width="180" Click="SaveCMP_Click" Height="28">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ContentSave" Padding="0" Margin="0,2,0,0" />
+                            <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="Save CMP File" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadCMP" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="225,103,0,0" VerticalAlignment="Top" Width="180" Click="LoadCMP_Click" Height="28" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Download" Padding="0" Margin="0,3,0,0" />
+                            <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="Load CMP File" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="AdvLoadCMP" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="225,395,0,0" VerticalAlignment="Top" Width="180" Click="AdvLoadCMP_Click" Height="28" IsEnabled="False">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Download" Padding="0" Margin="0,3,0,0" />
+                            <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="Adv. Load CMP File" />
+                        </StackPanel>
+                    </Button>
+                    <CheckBox x:Name="LoadHead" Content="Head" HorizontalAlignment="Left" Margin="75,300,0,0" VerticalAlignment="Top" FontSize="13.25" Checked="LoadHead_Checked" Unchecked="LoadHead_Unchecked" Height="28"/>
+                    <CheckBox x:Name="LoadHair" Content="Hair" HorizontalAlignment="Left" Margin="75,330,0,0" VerticalAlignment="Top" FontSize="13.25" Checked="LoadHair_Checked" Unchecked="LoadHair_Unchecked" Height="28"/>
+                    <CheckBox x:Name="LoadEarrings" Content="Earrings" HorizontalAlignment="Left" Margin="75,360,0,0" VerticalAlignment="Top" FontSize="13.25" Checked="LoadEarrings_Checked" Unchecked="LoadEarrings_Unchecked" Height="28"/>
+                    <CheckBox x:Name="LoadBody" Content="Body" HorizontalAlignment="Left" Margin="175,300,0,0" VerticalAlignment="Top" FontSize="13.25" Checked="LoadBody_Checked" Unchecked="LoadBody_Unchecked" Height="28"/>
+                    <CheckBox x:Name="LoadLeftArm" Content="Left Arm" HorizontalAlignment="Left" Margin="175,330,0,0" VerticalAlignment="Top" FontSize="13.25" Checked="LoadLeftArm_Checked" Unchecked="LoadLeftArm_Unchecked" Height="28"/>
+                    <CheckBox x:Name="LoadRightArm" Content="Right Arm" HorizontalAlignment="Left" Margin="175,360,0,0" VerticalAlignment="Top" FontSize="13.25" Checked="LoadRightArm_Checked" Unchecked="LoadRightArm_Unchecked" Height="28"/>
+                    <CheckBox x:Name="LoadClothes" Content="Clothes" HorizontalAlignment="Left" Margin="275,300,0,0" VerticalAlignment="Top" FontSize="13.25" Checked="LoadClothes_Checked" Unchecked="LoadClothes_Unchecked" Height="28"/>
+                    <CheckBox x:Name="LoadHelm" Content="Helm" HorizontalAlignment="Left" Margin="275,330,0,0" VerticalAlignment="Top" FontSize="13.25" Checked="LoadHelm_Checked" Unchecked="LoadHelm_Unchecked" Height="28"/>
+                    <CheckBox x:Name="LoadTop" Content="Top" HorizontalAlignment="Left" Margin="275,360,0,0" VerticalAlignment="Top" FontSize="13.25" Checked="LoadTop_Checked" Unchecked="LoadTop_Unchecked" Height="28"/>
+                    <CheckBox x:Name="LoadWeapons" Content="Weapons" HorizontalAlignment="Left" Margin="375,300,0,0" VerticalAlignment="Top" FontSize="13.25" Checked="LoadWeapons_Checked" Unchecked="LoadWeapons_Unchecked" Height="28"/>
+                    <CheckBox x:Name="LoadLeftHand" Content="Left Hand" HorizontalAlignment="Left" Margin="375,330,0,0" VerticalAlignment="Top" FontSize="13.25" Checked="LoadLeftHand_Checked" Unchecked="LoadLeftHand_Unchecked" Height="28"/>
+                    <CheckBox x:Name="LoadRightHand" Content="Right Hand" HorizontalAlignment="Left" Margin="375,360,0,0" VerticalAlignment="Top" FontSize="13.25" Checked="LoadRightHand_Checked" Unchecked="LoadRightHand_Unchecked" Height="28"/>
+                    <CheckBox x:Name="LoadWaist" Content="Waist" HorizontalAlignment="Left" Margin="475,300,0,0" VerticalAlignment="Top" FontSize="13.25" Checked="LoadWaist_Checked" Unchecked="LoadWaist_Unchecked" Height="28"/>
+                    <CheckBox x:Name="LoadLeftLeg" Content="Left Leg" HorizontalAlignment="Left" Margin="475,330,0,0" VerticalAlignment="Top" FontSize="13.25" Checked="LoadLeftLeg_Checked" Unchecked="LoadLeftLeg_Unchecked" Height="28"/>
+                    <CheckBox x:Name="LoadRightLeg" Content="Right Leg" HorizontalAlignment="Left" Margin="475,360,0,0" VerticalAlignment="Top" FontSize="13.25" Checked="LoadRightLeg_Checked" Unchecked="LoadRightLeg_Unchecked" Height="28"/>
+                </Grid>
+
+            </TabItem>
+        </mah:MetroAnimatedTabControl>
 
         <!-- Lowwer Body Bones -->
-        <GroupBox Header="Lower Body Bones" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" Margin="820,5,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="280" Width="255"/>
-        <ToggleButton x:Name="PelvisButton" Checked="PelvisButton_Checked" Unchecked="PelvisButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="882,51,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" IsEnabled="False" />
-        <Label Content="Pelvis:" HorizontalAlignment="Left" Margin="835,51,0,0" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.667,0.607"/>
-        <ToggleButton x:Name="TailButton" Checked="TailButton_Checked" Unchecked="TailButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="882,79,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" IsEnabled="False" Content="" />
-        <Label Content="Tail Joints:" HorizontalAlignment="Left" Margin="829,245,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LThighButton" Checked="LThighButton_Checked" Unchecked="LThighButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="979,79,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <ToggleButton x:Name="Tail2Button" Checked="Tail2Button_Checked" Unchecked="Tail2Button_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="901,245,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" IsEnabled="False" Content="1" />
-        <ToggleButton x:Name="Tail3Button" Checked="Tail3Button_Checked" Unchecked="Tail3Button_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="940,245,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" IsEnabled="False" Content="2" />
-        <ToggleButton x:Name="Tail4Button" Checked="Tail4Button_Checked" Unchecked="Tail4Button_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="979,245,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" IsEnabled="False" Content="3" />
-        <ToggleButton x:Name="Tail5Button" Checked="Tail5Button_Checked" Unchecked="Tail5Button_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1018,245,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" IsEnabled="False" Content="4" />
-        <Label Content="Legs:" HorizontalAlignment="Left" Margin="974,58,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="RThighButton" Checked="RThighButton_Checked" Unchecked="RThighButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1018,79,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
-        <ToggleButton x:Name="LKneeButton" Checked="LKneeButton_Checked" Unchecked="LKneeButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="843,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <Label Content="Knees:" HorizontalAlignment="Left" Margin="838,114,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="RKneeButton" Checked="RKneeButton_Checked" Unchecked="RKneeButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="882,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
-        <ToggleButton x:Name="LCalfButton" Checked="LCalfButton_Checked" Unchecked="LCalfButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="979,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <Label Content="Calves:" HorizontalAlignment="Left" Margin="974,114,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="RCalfButton" Checked="RCalfButton_Checked" Unchecked="RCalfButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1018,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
-        <ToggleButton x:Name="LFootButton" Checked="LFootButton_Checked" Unchecked="LFootButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="843,189,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <Label Content="Feet:" HorizontalAlignment="Left" Margin="838,168,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="RFootButton" Checked="RFootButton_Checked" Unchecked="RFootButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="882,189,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
-        <ToggleButton x:Name="LToesButton" Checked="LToesButton_Checked" Unchecked="LToesButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="979,189,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <Label Content="Toes:" HorizontalAlignment="Left" Margin="974,168,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="RToesButton" Checked="RToesButton_Checked" Unchecked="RToesButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1018,189,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
 
         <!-- Finger Bones -->
-        <GroupBox Header="Finger Bones" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" Margin="560,5,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="335" Width="255"/>
-        <ToggleButton x:Name="LThumbButton" Checked="LThumbButton_Checked" Unchecked="LThumbButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="583,79,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <Label Content="Thumb:" HorizontalAlignment="Left" Margin="578,58,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LIndexButton" Checked="LIndexButton_Checked" Unchecked="LIndexButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="583,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <Label Content="Index Finger:" HorizontalAlignment="Left" Margin="578,114,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LMiddleButton" Checked="LMiddleButton_Checked" Unchecked="LMiddleButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="583,189,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <Label Content="Middle Finger:" HorizontalAlignment="Left" Margin="578,168,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LRingButton" Checked="LRingButton_Checked" Unchecked="LRingButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="583,245,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <Label Content="Ring Finger:" HorizontalAlignment="Left" Margin="578,222,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LPinkyButton" Checked="LPinkyButton_Checked" Unchecked="LPinkyButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="583,301,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <Label Content="Pinky Finger:" HorizontalAlignment="Left" Margin="578,278,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LThumb2Button" Checked="LThumb2Button_Checked" Unchecked="LThumb2Button_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="714,79,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <Label Content="Thumb Joint:" HorizontalAlignment="Left" Margin="709,58,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LIndex2Button" Checked="LIndex2Button_Checked" Unchecked="LIndex2Button_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="714,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <Label Content="Index Joint:" HorizontalAlignment="Left" Margin="709,114,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LMiddle2Button" Checked="LMiddle2Button_Checked" Unchecked="LMiddle2Button_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="714,189,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <Label Content="Middle Joint:" HorizontalAlignment="Left" Margin="709,168,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LRing2Button" Checked="LRing2Button_Checked" Unchecked="LRing2Button_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="714,245,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <Label Content="Ring Joint:" HorizontalAlignment="Left" Margin="709,222,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LPinky2Button" Checked="LPinky2Button_Checked" Unchecked="LPinky2Button_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="714,301,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <Label Content="Pinky Joint:" HorizontalAlignment="Left" Margin="709,278,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="RThumbButton" Checked="RThumbButton_Checked" Unchecked="RThumbButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="622,79,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
-        <ToggleButton x:Name="RIndexButton" Checked="RIndexButton_Checked" Unchecked="RIndexButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="622,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
-        <ToggleButton x:Name="RMiddleButton" Checked="RMiddleButton_Checked" Unchecked="RMiddleButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="622,189,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
-        <ToggleButton x:Name="RRingButton" Checked="RRingButton_Checked" Unchecked="RRingButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="622,245,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
-        <ToggleButton x:Name="RPinkyButton" Checked="RPinkyButton_Checked" Unchecked="RPinkyButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="622,301,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
-        <ToggleButton x:Name="RThumb2Button" Checked="RThumb2Button_Checked" Unchecked="RThumb2Button_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="753,79,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
-        <ToggleButton x:Name="RIndex2Button" Checked="RIndex2Button_Checked" Unchecked="RIndex2Button_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="753,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
-        <ToggleButton x:Name="RMiddle2Button" Checked="RMiddle2Button_Checked" Unchecked="RMiddle2Button_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="753,189,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
-        <ToggleButton x:Name="RRing2Button" Checked="RRing2Button_Checked" Unchecked="RRing2Button_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="753,245,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
-        <ToggleButton x:Name="RPinky2Button" Checked="RPinky2Button_Checked" Unchecked="RPinky2Button_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="753,301,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
 
         <!-- Upper Body -->
-        <GroupBox Header="Upper Body Bones" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" Margin="300,5,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="335" Width="255"/>
-        <ToggleButton x:Name="NeckButton" Checked="NeckButton_Checked" Unchecked="NeckButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="362,51,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" IsEnabled="False" />
-        <Label Content="Neck:" HorizontalAlignment="Left" Margin="315,51,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="SternumButton" Checked="SternumButton_Checked" Unchecked="SternumButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="498,51,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" IsEnabled="False" />
-        <Label Content="Sternum:" HorizontalAlignment="Left" Margin="436,51,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="TorsoButton" Checked="TorsoButton_Checked" Unchecked="TorsoButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="362,79,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" IsEnabled="False" />
-        <Label Content="Chest:" HorizontalAlignment="Left" Margin="313,79,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="WaistButton" Checked="WaistButton_Checked" Unchecked="WaistButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="498,79,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" IsEnabled="False" />
-        <Label Content="Waist:" HorizontalAlignment="Left" Margin="451,79,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LShoulderButton" Checked="LShoulderButton_Checked" Unchecked="LShoulderButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="323,189,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <Label Content="Shoulders:" HorizontalAlignment="Left" Margin="318,168,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LClavicleButton" Checked="LClavicleButton_Checked" Unchecked="LClavicleButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="459,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <Label Content="Clavicles:" HorizontalAlignment="Left" Margin="454,114,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LBreastButton" Checked="LBreastButton_Checked" Unchecked="LBreastButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="323,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <Label Content="Breasts:" HorizontalAlignment="Left" Margin="318,114,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="RShoulderButton" Checked="RShoulderButton_Checked" Unchecked="RShoulderButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="362,189,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
-        <ToggleButton x:Name="RClavicleButton" Checked="RClavicleButton_Checked" Unchecked="RClavicleButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="498,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
-        <ToggleButton x:Name="RBreastButton" Checked="RBreastButton_Checked" Unchecked="RBreastButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="362,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
-        <ToggleButton x:Name="LArmButton" Checked="LArmButton_Checked" Unchecked="LArmButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="459,189,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <Label Content="Arms:" HorizontalAlignment="Left" Margin="454,168,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LElbowButton" Checked="LElbowButton_Checked" Unchecked="LElbowButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="323,245,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <Label Content="Elbows:" HorizontalAlignment="Left" Margin="318,222,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LForearmButton" Checked="LForearmButton_Checked" Unchecked="LForearmButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="459,245,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <Label Content="Forearms:" HorizontalAlignment="Left" Margin="454,222,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LWristButton" Checked="LWristButton_Checked" Unchecked="LWristButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="323,301,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <Label Content="Wrists:" HorizontalAlignment="Left" Margin="318,278,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LHandButton" Checked="LHandButton_Checked" Unchecked="LHandButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="459,301,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <Label Content="Hands:" HorizontalAlignment="Left" Margin="454,278,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="RArmButton" Checked="RArmButton_Checked" Unchecked="RArmButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="498,189,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
-        <ToggleButton x:Name="RElbowButton" Checked="RElbowButton_Checked" Unchecked="RElbowButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="362,245,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
-        <ToggleButton x:Name="RForearmButton" Checked="RForearmButton_Checked" Unchecked="RForearmButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="498,245,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
-        <ToggleButton x:Name="RWristButton" Checked="RWristButton_Checked" Unchecked="RWristButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="362,301,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
-        <ToggleButton x:Name="RHandButton" Checked="RHandButton_Checked" Unchecked="RHandButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="498,301,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
 
         <!-- Head Bones -->
-        <GroupBox Header="Head Bones" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" Margin="40,5,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="440" Width="255"/>
-        <ToggleButton x:Name="LOutEyebrowButton" Checked="LOutEyebrowButton_Checked" Unchecked="LOutEyebrowButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="66,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Content="L" IsEnabled="False" />
-        <Label Content="Outer Brows:" HorizontalAlignment="Left" Margin="58,114,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.741,0.548" Height="28"/>
-        <ToggleButton x:Name="LInEyebrowButton" Checked="LInEyebrowButton_Checked" Unchecked="LInEyebrowButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="194,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="-0.324,0.786" Content="L" IsEnabled="False" />
-        <Label Content="Inner Brows:" HorizontalAlignment="Left" Margin="189,114,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LEyeButton" Checked="LEyeButton_Checked" Unchecked="LEyeButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="194,189,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Content="L" IsEnabled="False" />
-        <Label Content="Eyes:" HorizontalAlignment="Left" Margin="189,168,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LEyelidButton" Checked="LEyelidButton_Checked" Unchecked="LEyelidButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="66,245,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Content="L" IsEnabled="False" />
-        <Label Content="Eyelids:" HorizontalAlignment="Left" Margin="61,222,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LLowEyelidButton" Checked="LLowEyelidButton_Checked" Unchecked="LLowEyelidButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="194,245,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Content="L" IsEnabled="False" />
-        <Label Content="Lower Eyelids:" HorizontalAlignment="Left" Margin="189,222,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LEarButton" Checked="LEarButton_Checked" Unchecked="LEarButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="66,189,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Content="L" IsEnabled="False" />
-        <Label Content="Ears:" HorizontalAlignment="Left" Margin="61,168,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LCheekButton" Checked="LCheekButton_Checked" Unchecked="LCheekButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="66,301,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Content="L" IsEnabled="False" />
-        <Label Content="Cheeks:" HorizontalAlignment="Left" Margin="61,278,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LMouthButton" Checked="LMouthButton_Checked" Unchecked="LMouthButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="194,301,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Content="L" IsEnabled="False" />
-        <Label Content="Mouth:" HorizontalAlignment="Left" Margin="189,278,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LUpLipButton" Checked="LUpLipButton_Checked" Unchecked="LUpLipButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="66,357,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Content="1" IsEnabled="False" />
-        <Label Content="Upper Lip:" HorizontalAlignment="Left" Margin="61,334,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LLowLipButton" Checked="LLowLipButton_Checked" Unchecked="LLowLipButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="194,357,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Content="1" IsEnabled="False" />
-        <Label Content="Lower Lip:" HorizontalAlignment="Left" Margin="189,334,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="ROutEyebrowButton" Checked="ROutEyebrowButton_Checked" Unchecked="ROutEyebrowButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="105,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Content="R" IsEnabled="False" />
-        <ToggleButton x:Name="RInEyebrowButton" Checked="RInEyebrowButton_Checked" Unchecked="RInEyebrowButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="233,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="-0.324,0.786" Content="R" IsEnabled="False" />
-        <ToggleButton x:Name="REyeButton" Checked="REyeButton_Checked" Unchecked="REyeButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="233,189,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Content="R" IsEnabled="False" />
-        <ToggleButton x:Name="REyelidButton" Checked="REyelidButton_Checked" Unchecked="REyelidButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="105,245,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Content="R" IsEnabled="False" />
-        <ToggleButton x:Name="RLowEyelidButton" Checked="RLowEyelidButton_Checked" Unchecked="RLowEyelidButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="233,245,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Content="R" IsEnabled="False" />
-        <ToggleButton x:Name="REarButton" Checked="REarButton_Checked" Unchecked="REarButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="105,189,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Content="R" IsEnabled="False" />
-        <ToggleButton x:Name="RCheekButton" Checked="RCheekButton_Checked" Unchecked="RCheekButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="105,301,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Content="R" IsEnabled="False" />
-        <ToggleButton x:Name="RMouthButton" Checked="RMouthButton_Checked" Unchecked="RMouthButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="233,301,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Content="R" IsEnabled="False" />
-        <ToggleButton x:Name="RUpLipButton" Checked="RUpLipButton_Checked" Unchecked="RUpLipButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="105,357,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Content="2" IsEnabled="False" />
-        <ToggleButton x:Name="RLowLipButton" Checked="RLowLipButton_Checked" Unchecked="RLowLipButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="233,357,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Content="2" IsEnabled="False" />
-        <ToggleButton x:Name="HeadButton" Checked="HeadButton_Checked" Unchecked="HeadButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="105,51,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" IsEnabled="False" />
-        <Label Content="Face:" HorizontalAlignment="Left" Margin="61,51,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="NoseButton" Checked="NoseButton_Checked" Unchecked="NoseButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="233,51,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" IsEnabled="False" />
-        <Label Content="Nose:" HorizontalAlignment="Left" Margin="188,51,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="NostrilsButton" Checked="NostrilsButton_Checked" Unchecked="NostrilsButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="105,79,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" IsEnabled="False" />
-        <Label Content="Nostrils:" HorizontalAlignment="Left" Margin="44,79,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="ChinButton" Checked="ChinButton_Checked" Unchecked="ChinButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="233,79,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" IsEnabled="False" />
-        <Label Content="Jaw:" HorizontalAlignment="Left" Margin="194,79,0,0" VerticalAlignment="Top" Height="28"/>
-        <Label Content="Viera Upper Ears:" HorizontalAlignment="Left" Margin="51,390,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LVEarButton" Checked="LVEarButton_Checked" Unchecked="LVEarButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="66,412,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <ToggleButton x:Name="RVEarButton" Checked="RVEarButton_Checked" Unchecked="RVEarButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="105,412,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
-        <Label Content="Viera Lower Ears:" HorizontalAlignment="Left" Margin="179,390,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LVEar2Button" Checked="LVEar2Button_Checked" Unchecked="LVEar2Button_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="194,412,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <ToggleButton x:Name="RVEar2Button" Checked="RVEar2Button_Checked" Unchecked="RVEar2Button_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="233,412,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
 
         <!-- X Rot -->
-        <mah:NumericUpDown Minimum="0" Maximum="360" x:Name="BoneUpDown" SourceUpdated="BoneUpDown_SourceUpdated" Value="{Binding CharacterDetails.BoneX, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="483,404,0,0" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C0000FF" StringFormat="F10" Interval="0.5" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
-        <Label ToolTip="Modifies the X Rotation of the selected joint." HorizontalAlignment="Left" Height="28" Margin="391,407,0,0" VerticalAlignment="Top" FontSize="13" Content="X Rotation:"/>
-        <Slider x:Name="BoneSlider" SourceUpdated="BoneSliders_SourceUpdated" Value="{Binding CharacterDetails.BoneX, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left"  Margin="491,410,0,0" VerticalAlignment="Top" Width="145" Minimum="0" Maximum="360" TickFrequency="0.5"  Visibility="Hidden" IsEnabled="False"/>
+        <mah:NumericUpDown Minimum="0" Maximum="360" x:Name="BoneUpDown" SourceUpdated="BoneUpDown_SourceUpdated" Value="{Binding CharacterDetails.BoneX, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="956,215,0,0" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C0000FF" StringFormat="F10" Interval="0.5" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
+        <Label ToolTip="Modifies the X Rotation of the selected joint." HorizontalAlignment="Left" Height="28" Margin="864,218,0,0" VerticalAlignment="Top" FontSize="13" Content="X Rotation:"/>
+        <Slider x:Name="BoneSlider" SourceUpdated="BoneSliders_SourceUpdated" Value="{Binding CharacterDetails.BoneX, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left"  Margin="956,220,0,0" VerticalAlignment="Top" Width="145" Minimum="0" Maximum="360" TickFrequency="0.5" IsEnabled="False" Visibility="Hidden"/>
 
         <!-- Y Rot -->
-        <mah:NumericUpDown Minimum="0" Maximum="360" x:Name="BoneUpDown2" SourceUpdated="BoneUpDown2_SourceUpdated" Value="{Binding CharacterDetails.BoneY, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="483,434,0,0" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C008000" StringFormat="F10" Interval="0.5" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
-        <Label ToolTip="Modifies the Y Rotation of the selected joint." HorizontalAlignment="Left" Height="28" Margin="391,437,0,0" VerticalAlignment="Top" FontSize="13" Content="Y Rotation:"/>
-        <Slider x:Name="BoneSlider2" SourceUpdated="BoneSliders2_SourceUpdated" Value="{Binding CharacterDetails.BoneY, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="491,440,0,0" VerticalAlignment="Top" Width="145" Minimum="0" Maximum="360" TickFrequency="0.5"  Visibility="Hidden" IsEnabled="False"/>
+        <mah:NumericUpDown Minimum="0" Maximum="360" x:Name="BoneUpDown2" SourceUpdated="BoneUpDown2_SourceUpdated" Value="{Binding CharacterDetails.BoneY, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="956,245,0,0" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C008000" StringFormat="F10" Interval="0.5" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
+        <Label ToolTip="Modifies the Y Rotation of the selected joint." HorizontalAlignment="Left" Height="28" Margin="864,248,0,0" VerticalAlignment="Top" FontSize="13" Content="Y Rotation:"/>
+        <Slider x:Name="BoneSlider2" SourceUpdated="BoneSliders2_SourceUpdated" Value="{Binding CharacterDetails.BoneY, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="956,250,0,0" VerticalAlignment="Top" Width="145" Minimum="0" Maximum="360" TickFrequency="0.5" IsEnabled="False" Visibility="Hidden"/>
 
         <!-- Z Rot -->
-        <mah:NumericUpDown Minimum="0" Maximum="360" x:Name="BoneUpDown3" SourceUpdated="BoneUpDown3_SourceUpdated" Value="{Binding CharacterDetails.BoneZ, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="483,464,0,0" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8CFF0000" StringFormat="F10" Interval="0.5" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
-        <Label ToolTip="Modifies the Z Rotation of the selected joint." HorizontalAlignment="Left" Height="28" Margin="391,467,0,0" VerticalAlignment="Top" FontSize="13" Content="Z Rotation:"/>
-        <Slider x:Name="BoneSlider3" SourceUpdated="BoneSliders3_SourceUpdated" Value="{Binding CharacterDetails.BoneZ, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="491,470,0,0" VerticalAlignment="Top" Width="145" Minimum="0" Maximum="360" TickFrequency="0.5"  Visibility="Hidden" IsEnabled="False"/>
+        <mah:NumericUpDown Minimum="0" Maximum="360" x:Name="BoneUpDown3" SourceUpdated="BoneUpDown3_SourceUpdated" Value="{Binding CharacterDetails.BoneZ, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="956,275,0,0" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8CFF0000" StringFormat="F10" Interval="0.5" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
+        <Label ToolTip="Modifies the Z Rotation of the selected joint." HorizontalAlignment="Left" Height="28" Margin="864,278,0,0" VerticalAlignment="Top" FontSize="13" Content="Z Rotation:"/>
+        <Slider x:Name="BoneSlider3" SourceUpdated="BoneSliders3_SourceUpdated" Value="{Binding CharacterDetails.BoneZ, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="956,280,0,0" VerticalAlignment="Top" Width="145" Minimum="0" Maximum="360" TickFrequency="0.5" IsEnabled="False" Visibility="Hidden"/>
 
         <!-- Rotation Sliders Toggle -->
-        <ToggleButton x:Name="BoneSliderButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="599,497,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Checked="BoneSliderButton_Checked" Unchecked="BoneSliderButton_Unchecked" />
-        <Label Content="Rotation Sliders:" ToolTip="This toggle will switch between Rotation Sliders and Numerical direct input.&#xA;• Turning it off will turn the XYZ Rotation sliders into numerical values.&#xA;• Each input will accept a value between 0 and 360." HorizontalAlignment="Left" Margin="483,497,0,0" VerticalAlignment="Top" Height="28"/>
+        <ToggleButton x:Name="BoneSliderButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1067,187,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Checked="BoneSliderButton_Checked" Unchecked="BoneSliderButton_Unchecked" />
+        <Label Content="Rotation Sliders:" ToolTip="This toggle will switch between Rotation Sliders and Numerical direct input.&#xA;• Turning it off will turn the XYZ Rotation sliders into numerical values.&#xA;• Each input will accept a value between 0 and 360." HorizontalAlignment="Left" Margin="956,189,0,0" VerticalAlignment="Top" Height="28"/>
 
         <!-- Settings -->
-        <GroupBox Header="Settings" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" Margin="820,290,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="110" Width="255"/>
-        <ToggleButton x:Name="EditModeButton" Checked="EditModeButton_Checked" Unchecked="EditModeButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="981,337,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" />
-        <Label Content="Enable Editing:" HorizontalAlignment="Left" Margin="877,337,0,0" VerticalAlignment="Top" Height="28"/>
-        <Button x:Name="TPoseButton" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="T-Pose Actor" HorizontalAlignment="Left" Margin="233,467,0,0" VerticalAlignment="Top" Width="115" Click="TPoseButton_Click" IsEnabled="False" RenderTransformOrigin="0.522,-0.219" Height="28"/>
-        <Label Content="Tail:" HorizontalAlignment="Left" Margin="848,79,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="PhysicsButton" Checked="PhysicsButton_Checked" Unchecked="PhysicsButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="981,363,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" />
-        <Label Content="Enable Physics:" HorizontalAlignment="Left" Margin="877,363,0,0" VerticalAlignment="Top" Height="28"/>
+        <GroupBox Header="Pose Matrix Settings" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" Margin="850,330,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="110" Width="255"/>
+        <ToggleButton x:Name="EditModeButton" Checked="EditModeButton_Checked" Unchecked="EditModeButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1011,375,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" />
+        <Label Content="Enable Editing:" HorizontalAlignment="Left" Margin="907,375,0,0" VerticalAlignment="Top" Height="28"/>
+        <ToggleButton x:Name="PhysicsButton" Checked="PhysicsButton_Checked" Unchecked="PhysicsButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1011,405,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" />
+        <Label Content="Enable Physics:" HorizontalAlignment="Left" Margin="907,405,0,0" VerticalAlignment="Top" Height="28"/>
 
         <!-- Other -->
-        <GroupBox HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" Margin="300,345,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="5,1" Height="55" Width="515" Padding="0"/>
-        <Label Content="Weapons:" HorizontalAlignment="Left" Margin="319,346,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LWeaponButton" Checked="LWeaponButton_Checked" Unchecked="LWeaponButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="323,369,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <ToggleButton x:Name="RWeaponButton" Checked="RWeaponButton_Checked" Unchecked="RWeaponButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="362,369,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
-        <Label Content="Shields:" HorizontalAlignment="Left" Margin="454,346,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LShieldButton" Checked="LShieldButton_Checked" Unchecked="LShieldButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="459,369,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <ToggleButton x:Name="RShieldButton" Checked="RShieldButton_Checked" Unchecked="RShieldButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="498,369,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
-        <Label Content="Earring Claspes:" HorizontalAlignment="Left" Margin="574,346,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LEarringButton" Checked="LEarringButton_Checked" Unchecked="LEarringButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="583,369,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <ToggleButton x:Name="REarringButton" Checked="REarringButton_Checked" Unchecked="REarringButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="622,369,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
-        <Label Content="Earring Dangles:" HorizontalAlignment="Left" Margin="705,346,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="LEarring2Button" Checked="LEarring2Button_Checked" Unchecked="LEarring2Button_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="714,369,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="L" IsEnabled="False" />
-        <ToggleButton x:Name="REarring2Button" Checked="REarring2Button_Checked" Unchecked="REarring2Button_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="753,369,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.059,0.607" Content="R" IsEnabled="False" />
 
         <!-- Savestate Buttons -->
-        <Button x:Name="SaveHeadButton" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="747,417,0,0" VerticalAlignment="Top" Width="55" Click="SaveHeadButton_Click" Height="28">
-            <materialDesign:PackIcon Kind="ContentSave" Height="16" Width="16" Margin="0"/>
-        </Button>
-        <Button x:Name="LoadHeadButton" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="812,417,0,0" VerticalAlignment="Top" Width="55" Click="LoadHeadButton_Click" Height="28" IsEnabled="False">
-            <materialDesign:PackIcon Kind="Download" Height="16" Width="16" Margin="0,1,0,0"/>
-        </Button>
-        <Button x:Name="SaveLArmButton" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="747,450,0,0" VerticalAlignment="Top" Width="55" Click="SaveLArmButton_Click" Height="28">
-            <materialDesign:PackIcon Kind="ContentSave" Height="16" Width="16" Margin="0"/>
-        </Button>
-        <Button x:Name="LoadLArmButton" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="812,450,0,0" VerticalAlignment="Top" Width="55" Click="LoadLArmButton_Click" Height="28" IsEnabled="False">
-            <materialDesign:PackIcon Kind="Download" Height="16" Width="16" Margin="0,1,0,0"/>
-        </Button>
-        <Button x:Name="SaveLLegButton" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="747,483,0,0" VerticalAlignment="Top" Width="55" Click="SaveLLegButton_Click" Height="28">
-            <materialDesign:PackIcon Kind="ContentSave" Height="16" Width="16" Margin="0"/>
-        </Button>
-        <Button x:Name="LoadLLegButton" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="812,483,0,0" VerticalAlignment="Top" Width="55" Click="LoadLLegButton_Click" Height="28" IsEnabled="False">
-            <materialDesign:PackIcon Kind="Download" Height="16" Width="16" Margin="0,1,0,0"/>
-        </Button>
-        <Button x:Name="SaveTorsoButton" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="955,417,0,0" VerticalAlignment="Top" Width="55" Click="SaveTorsoButton_Click" Height="28">
-            <materialDesign:PackIcon Kind="ContentSave" Height="16" Width="16" Margin="0"/>
-        </Button>
-        <Button x:Name="LoadTorsoButton" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="1020,417,0,0" VerticalAlignment="Top" Width="55" Click="LoadTorsoButton_Click" Height="28" IsEnabled="False">
-            <materialDesign:PackIcon Kind="Download" Height="16" Width="16" Margin="0,1,0,0"/>
-        </Button>
-        <Button x:Name="SaveRArmButton" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="955,450,0,0" VerticalAlignment="Top" Width="55" Click="SaveRArmButton_Click" Height="28">
-            <materialDesign:PackIcon Kind="ContentSave" Height="16" Width="16" Margin="0"/>
-        </Button>
-        <Button x:Name="LoadRArmButton" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="1020,450,0,0" VerticalAlignment="Top" Width="55" Click="LoadRArmButton_Click" Height="28" IsEnabled="False">
-            <materialDesign:PackIcon Kind="Download" Height="16" Width="16" Margin="0,1,0,0"/>
-        </Button>
-        <Button x:Name="SaveRLegButton" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="955,483,0,0" VerticalAlignment="Top" Width="55" Click="SaveRLegButton_Click" Height="28">
-            <materialDesign:PackIcon Kind="ContentSave" Height="16" Width="16" Margin="0"/>
-        </Button>
-        <Button x:Name="LoadRLegButton" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="1020,483,0,0" VerticalAlignment="Top" Width="55" Click="LoadRLegButton_Click" Height="28" IsEnabled="False">
-            <materialDesign:PackIcon Kind="Download" Height="16" Width="16" Margin="0,1,0,0"/>
-        </Button>
-        <Label Content="Head:" HorizontalAlignment="Left" Margin="699,417,0,0" VerticalAlignment="Top" Height="28"/>
-        <Label Content="Torso:" HorizontalAlignment="Left" Margin="907,417,0,0" VerticalAlignment="Top" Height="28"/>
-        <Label Content="Left Arm:" HorizontalAlignment="Left" Margin="682,450,0,0" VerticalAlignment="Top" Height="28"/>
-        <Label Content="Right Arm:" HorizontalAlignment="Left" Margin="882,450,0,0" VerticalAlignment="Top" Height="28"/>
-        <Label Content="Left Leg:" HorizontalAlignment="Left" Margin="685,483,0,0" VerticalAlignment="Top" Height="28"/>
-        <Label Content="Right Leg:" HorizontalAlignment="Left" Margin="885,483,0,0" VerticalAlignment="Top" Height="28"/>
-        <Button x:Name="SaveBones" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="40,450,0,0" VerticalAlignment="Top" Width="178" Click="SaveBones_Click" Height="28">
-            <StackPanel Orientation="Horizontal">
-                <materialDesign:PackIcon Kind="ContentSave" Padding="0" />
-                <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="Save Posing Matrix" />
-            </StackPanel>
-        </Button>
-        <Button x:Name="LoadBones" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="40,483,0,0" VerticalAlignment="Top" Width="178" Click="LoadBones_Click" Height="28" IsEnabled="False">
-            <StackPanel Orientation="Horizontal">
-                <materialDesign:PackIcon Kind="Download" Padding="0" />
-                <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="Load Posing Matrix" />
-            </StackPanel>
-        </Button>
+
+
     </Grid>
 </UserControl>

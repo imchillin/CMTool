@@ -164,6 +164,9 @@
     <Compile Include="Views\PaletteView.xaml.cs">
       <DependentUpon>PaletteView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PoseRotationView.xaml.cs">
+      <DependentUpon>PoseRotationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RotationView.xaml.cs">
       <DependentUpon>RotationView.xaml</DependentUpon>
     </Compile>
@@ -238,6 +241,10 @@
     <Page Include="Views\PaletteView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PoseRotationView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\RotationView.xaml">
       <SubType>Designer</SubType>
@@ -326,6 +333,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <Resource Include="Resources\worldbg.png" />
+    <Resource Include="Resources\propertiesbg.png" />
+    <Resource Include="Resources\equipbg.png" />
+    <Resource Include="Resources\actorbg.png" />
+    <Resource Include="Resources\aboutbg.png" />
+    <Resource Include="Resources\posebg.png" />
     <Resource Include="Resources\Corrupted.png" />
     <Resource Include="Resources\Legacy.png" />
     <Resource Include="Resources\Nope.png" />

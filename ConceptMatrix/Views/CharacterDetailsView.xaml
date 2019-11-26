@@ -17,6 +17,9 @@
     <UserControl.Resources>
         <Converters:QuaternionConverter x:Key="QuaternionConverter" />
     </UserControl.Resources>
+    <UserControl.Background>
+        <ImageBrush ImageSource="/ConceptMatrix;component/Resources/actorbg.png"/>
+    </UserControl.Background>
 
     <Grid>
         <Grid.ColumnDefinitions>

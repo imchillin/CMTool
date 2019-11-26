@@ -8,6 +8,9 @@
              xmlns:Views="clr-namespace:ConceptMatrix.Views"
              TextElement.FontSize="13.25"
              mc:Ignorable="d" d:DesignWidth="1115" Height="530">
+    <UserControl.Background>
+        <ImageBrush ImageSource="/ConceptMatrix;component/Resources/equipbg.png"/>
+    </UserControl.Background>
     <Grid Height="530">
         <Border BorderBrush="Black" BorderThickness="0,0,1,0" HorizontalAlignment="Left" Height="530" Margin="-185,0,0,0" VerticalAlignment="Top" Width="828"/>
         

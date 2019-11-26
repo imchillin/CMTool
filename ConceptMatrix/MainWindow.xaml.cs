@@ -1064,7 +1064,8 @@ namespace ConceptMatrix
             if (MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheckAddress)) == 1 && MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheck2Address)) == 4)
             {
                 MainViewModel.ViewTime5.EditModeButton.IsEnabled = true;
-                MainViewModel.ViewTime5.LoadBones.IsEnabled = true;
+                MainViewModel.ViewTime5.LoadCMP.IsEnabled = true;
+                MainViewModel.ViewTime5.AdvLoadCMP.IsEnabled = true;
             }
         }
 
@@ -1123,7 +1124,8 @@ namespace ConceptMatrix
             {
                 MainViewModel.ViewTime5.EditModeButton.IsChecked = false;
                 MainViewModel.ViewTime5.EditModeButton.IsEnabled = false;
-                MainViewModel.ViewTime5.LoadBones.IsEnabled = false;
+                MainViewModel.ViewTime5.LoadCMP.IsEnabled = false;
+                MainViewModel.ViewTime5.AdvLoadCMP.IsEnabled = false;
             }
         }
 
