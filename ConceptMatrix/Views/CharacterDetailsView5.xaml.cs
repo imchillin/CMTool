@@ -20045,11 +20045,6 @@ namespace ConceptMatrix.Views
             }
         }
 
-        private void TPoseButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         #region Savestate\Loadstate Head
         private void SavestateHead01_Click(object sender, RoutedEventArgs e)
         {
@@ -20110,10 +20105,18 @@ namespace ConceptMatrix.Views
             CharacterDetails.CheekLeft_Y.value = CheekLeft_Y_Sav01;
             CharacterDetails.CheekLeft_Z.value = CheekLeft_Z_Sav01;
             CharacterDetails.CheekLeft_W.value = CheekLeft_W_Sav01;
+            CharacterDetails.HrothWhiskersLeft_X.value = HrothWhiskersLeft_X_Sav01;
+            CharacterDetails.HrothWhiskersLeft_Y.value = HrothWhiskersLeft_Y_Sav01;
+            CharacterDetails.HrothWhiskersLeft_Z.value = HrothWhiskersLeft_Z_Sav01;
+            CharacterDetails.HrothWhiskersLeft_W.value = HrothWhiskersLeft_W_Sav01;
             CharacterDetails.CheekRight_X.value = CheekRight_X_Sav01;
             CharacterDetails.CheekRight_Y.value = CheekRight_Y_Sav01;
             CharacterDetails.CheekRight_Z.value = CheekRight_Z_Sav01;
             CharacterDetails.CheekRight_W.value = CheekRight_W_Sav01;
+            CharacterDetails.HrothWhiskersRight_X.value = HrothWhiskersRight_X_Sav01;
+            CharacterDetails.HrothWhiskersRight_Y.value = HrothWhiskersRight_Y_Sav01;
+            CharacterDetails.HrothWhiskersRight_Z.value = HrothWhiskersRight_Z_Sav01;
+            CharacterDetails.HrothWhiskersRight_W.value = HrothWhiskersRight_W_Sav01;
             CharacterDetails.LipsLeft_X.value = LipsLeft_X_Sav01;
             CharacterDetails.LipsLeft_Y.value = LipsLeft_Y_Sav01;
             CharacterDetails.LipsLeft_Z.value = LipsLeft_Z_Sav01;
@@ -20340,14 +20343,18 @@ namespace ConceptMatrix.Views
             CharacterDetails.Nose_Y.value = Nose_Y_Sav02;
             CharacterDetails.Nose_Z.value = Nose_Z_Sav02;
             CharacterDetails.Nose_W.value = Nose_W_Sav02;
-            CharacterDetails.CheekLeft_X.value = CheekLeft_X_Sav02;
-            CharacterDetails.CheekLeft_Y.value = CheekLeft_Y_Sav02;
-            CharacterDetails.CheekLeft_Z.value = CheekLeft_Z_Sav02;
-            CharacterDetails.CheekLeft_W.value = CheekLeft_W_Sav02;
+            CharacterDetails.HrothWhiskersLeft_X.value = HrothWhiskersLeft_X_Sav02;
+            CharacterDetails.HrothWhiskersLeft_Y.value = HrothWhiskersLeft_Y_Sav02;
+            CharacterDetails.HrothWhiskersLeft_Z.value = HrothWhiskersLeft_Z_Sav02;
+            CharacterDetails.HrothWhiskersLeft_W.value = HrothWhiskersLeft_W_Sav02;
             CharacterDetails.CheekRight_X.value = CheekRight_X_Sav02;
             CharacterDetails.CheekRight_Y.value = CheekRight_Y_Sav02;
             CharacterDetails.CheekRight_Z.value = CheekRight_Z_Sav02;
             CharacterDetails.CheekRight_W.value = CheekRight_W_Sav02;
+            CharacterDetails.HrothWhiskersRight_X.value = HrothWhiskersRight_X_Sav02;
+            CharacterDetails.HrothWhiskersRight_Y.value = HrothWhiskersRight_Y_Sav02;
+            CharacterDetails.HrothWhiskersRight_Z.value = HrothWhiskersRight_Z_Sav02;
+            CharacterDetails.HrothWhiskersRight_W.value = HrothWhiskersRight_W_Sav02;
             CharacterDetails.LipsLeft_X.value = LipsLeft_X_Sav02;
             CharacterDetails.LipsLeft_Y.value = LipsLeft_Y_Sav02;
             CharacterDetails.LipsLeft_Z.value = LipsLeft_Z_Sav02;
@@ -20570,14 +20577,6 @@ namespace ConceptMatrix.Views
             CharacterDetails.HairB_Y.value = HairB_Y_Sav01;
             CharacterDetails.HairB_Z.value = HairB_Z_Sav01;
             CharacterDetails.HairB_W.value = HairB_W_Sav01;
-            CharacterDetails.HrothWhiskersLeft_X.value = HrothWhiskersLeft_X_Sav01;
-            CharacterDetails.HrothWhiskersLeft_Y.value = HrothWhiskersLeft_Y_Sav01;
-            CharacterDetails.HrothWhiskersLeft_Z.value = HrothWhiskersLeft_Z_Sav01;
-            CharacterDetails.HrothWhiskersLeft_W.value = HrothWhiskersLeft_W_Sav01;
-            CharacterDetails.HrothWhiskersRight_X.value = HrothWhiskersRight_X_Sav01;
-            CharacterDetails.HrothWhiskersRight_Y.value = HrothWhiskersRight_Y_Sav01;
-            CharacterDetails.HrothWhiskersRight_Z.value = HrothWhiskersRight_Z_Sav01;
-            CharacterDetails.HrothWhiskersRight_W.value = HrothWhiskersRight_W_Sav01;
             CharacterDetails.ExHairA_X.value = ExHairA_X_Sav01;
             CharacterDetails.ExHairA_Y.value = ExHairA_Y_Sav01;
             CharacterDetails.ExHairA_Z.value = ExHairA_Z_Sav01;
@@ -20648,14 +20647,6 @@ namespace ConceptMatrix.Views
             CharacterDetails.HairB_Y.value = HairB_Y_Sav02;
             CharacterDetails.HairB_Z.value = HairB_Z_Sav02;
             CharacterDetails.HairB_W.value = HairB_W_Sav02;
-            CharacterDetails.HrothWhiskersLeft_X.value = HrothWhiskersLeft_X_Sav02;
-            CharacterDetails.HrothWhiskersLeft_Y.value = HrothWhiskersLeft_Y_Sav02;
-            CharacterDetails.HrothWhiskersLeft_Z.value = HrothWhiskersLeft_Z_Sav02;
-            CharacterDetails.HrothWhiskersLeft_W.value = HrothWhiskersLeft_W_Sav02;
-            CharacterDetails.HrothWhiskersRight_X.value = HrothWhiskersRight_X_Sav02;
-            CharacterDetails.HrothWhiskersRight_Y.value = HrothWhiskersRight_Y_Sav02;
-            CharacterDetails.HrothWhiskersRight_Z.value = HrothWhiskersRight_Z_Sav02;
-            CharacterDetails.HrothWhiskersRight_W.value = HrothWhiskersRight_W_Sav02;
             CharacterDetails.ExHairA_X.value = ExHairA_X_Sav02;
             CharacterDetails.ExHairA_Y.value = ExHairA_Y_Sav02;
             CharacterDetails.ExHairA_Z.value = ExHairA_Z_Sav02;
@@ -23152,7 +23143,9 @@ namespace ConceptMatrix.Views
                 BoneSaver.EyeRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyeRight_X), 16));
                 BoneSaver.Nose = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Nose_X), 16));
                 BoneSaver.CheekLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekLeft_X), 16));
+                BoneSaver.HrothWhiskersLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersLeft_X), 16));
                 BoneSaver.CheekRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekRight_X), 16));
+                BoneSaver.HrothWhiskersRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersRight_X), 16));
                 BoneSaver.LipsLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsLeft_X), 16));
                 BoneSaver.HrothEyebrowLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyebrowLeft_X), 16));
                 BoneSaver.LipsRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsRight_X), 16));
@@ -23205,8 +23198,6 @@ namespace ConceptMatrix.Views
                 BoneSaver.HairFrontLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontLeft_X), 16));
                 BoneSaver.HairFrontRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontRight_X), 16));
                 BoneSaver.HairB = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairB_X), 16));
-                BoneSaver.HrothWhiskersLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersLeft_X), 16));
-                BoneSaver.HrothWhiskersRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersRight_X), 16));
                 BoneSaver.ExHairA = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairA_X), 16));
                 BoneSaver.ExHairB = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairB_X), 16));
                 BoneSaver.ExHairC = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairC_X), 16));
@@ -23410,7 +23401,9 @@ namespace ConceptMatrix.Views
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyeRight_X), MemoryManager.StringToByteArray(BoneLoader.EyeRight.Replace(" ", string.Empty)));
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Nose_X), MemoryManager.StringToByteArray(BoneLoader.Nose.Replace(" ", string.Empty)));
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekLeft_X), MemoryManager.StringToByteArray(BoneLoader.CheekLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersLeft_X), MemoryManager.StringToByteArray(BoneLoader.HrothWhiskersLeft.Replace(" ", string.Empty)));
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekRight_X), MemoryManager.StringToByteArray(BoneLoader.CheekRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersRight_X), MemoryManager.StringToByteArray(BoneLoader.HrothWhiskersRight.Replace(" ", string.Empty)));
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsLeft_X), MemoryManager.StringToByteArray(BoneLoader.LipsLeft.Replace(" ", string.Empty)));
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyebrowLeft_X), MemoryManager.StringToByteArray(BoneLoader.HrothEyebrowLeft.Replace(" ", string.Empty)));
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsRight_X), MemoryManager.StringToByteArray(BoneLoader.LipsRight.Replace(" ", string.Empty)));
@@ -23463,8 +23456,6 @@ namespace ConceptMatrix.Views
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontLeft_X), MemoryManager.StringToByteArray(BoneLoader.HairFrontLeft.Replace(" ", string.Empty)));
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontRight_X), MemoryManager.StringToByteArray(BoneLoader.HairFrontRight.Replace(" ", string.Empty)));
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairB_X), MemoryManager.StringToByteArray(BoneLoader.HairB.Replace(" ", string.Empty)));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersLeft_X), MemoryManager.StringToByteArray(BoneLoader.HrothWhiskersLeft.Replace(" ", string.Empty)));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersRight_X), MemoryManager.StringToByteArray(BoneLoader.HrothWhiskersRight.Replace(" ", string.Empty)));
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairA_X), MemoryManager.StringToByteArray(BoneLoader.ExHairA.Replace(" ", string.Empty)));
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairB_X), MemoryManager.StringToByteArray(BoneLoader.ExHairB.Replace(" ", string.Empty)));
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairC_X), MemoryManager.StringToByteArray(BoneLoader.ExHairC.Replace(" ", string.Empty)));
@@ -23676,7 +23667,9 @@ namespace ConceptMatrix.Views
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyeRight_X), MemoryManager.StringToByteArray(BoneLoader.EyeRight.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Nose_X), MemoryManager.StringToByteArray(BoneLoader.Nose.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekLeft_X), MemoryManager.StringToByteArray(BoneLoader.CheekLeft.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersLeft_X), MemoryManager.StringToByteArray(BoneLoader.HrothWhiskersLeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekRight_X), MemoryManager.StringToByteArray(BoneLoader.CheekRight.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersRight_X), MemoryManager.StringToByteArray(BoneLoader.HrothWhiskersRight.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsLeft_X), MemoryManager.StringToByteArray(BoneLoader.LipsLeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyebrowLeft_X), MemoryManager.StringToByteArray(BoneLoader.HrothEyebrowLeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsRight_X), MemoryManager.StringToByteArray(BoneLoader.LipsRight.Replace(" ", string.Empty)));
@@ -23732,8 +23725,6 @@ namespace ConceptMatrix.Views
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontLeft_X), MemoryManager.StringToByteArray(BoneLoader.HairFrontLeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontRight_X), MemoryManager.StringToByteArray(BoneLoader.HairFrontRight.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairB_X), MemoryManager.StringToByteArray(BoneLoader.HairB.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersLeft_X), MemoryManager.StringToByteArray(BoneLoader.HrothWhiskersLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersRight_X), MemoryManager.StringToByteArray(BoneLoader.HrothWhiskersRight.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairA_X), MemoryManager.StringToByteArray(BoneLoader.ExHairA.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairB_X), MemoryManager.StringToByteArray(BoneLoader.ExHairB.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairC_X), MemoryManager.StringToByteArray(BoneLoader.ExHairC.Replace(" ", string.Empty)));
