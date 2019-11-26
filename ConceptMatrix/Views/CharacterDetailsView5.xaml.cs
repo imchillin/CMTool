@@ -20915,6 +20915,10 @@ namespace ConceptMatrix.Views
             CharacterDetails.CouterLeft_Y.value = CouterLeft_Y_Sav01;
             CharacterDetails.CouterLeft_Z.value = CouterLeft_Z_Sav01;
             CharacterDetails.CouterLeft_W.value = CouterLeft_W_Sav01;
+            CharacterDetails.WristLeft_X.value = WristLeft_X_Sav01;
+            CharacterDetails.WristLeft_Y.value = WristLeft_Y_Sav01;
+            CharacterDetails.WristLeft_Z.value = WristLeft_Z_Sav01;
+            CharacterDetails.WristLeft_W.value = WristLeft_W_Sav01;
         }
         private void LoadstateLeftArm02_Click(object sender, RoutedEventArgs e)
         {
@@ -20957,6 +20961,10 @@ namespace ConceptMatrix.Views
             CharacterDetails.CouterLeft_Y.value = CouterLeft_Y_Sav02;
             CharacterDetails.CouterLeft_Z.value = CouterLeft_Z_Sav02;
             CharacterDetails.CouterLeft_W.value = CouterLeft_W_Sav02;
+            CharacterDetails.WristLeft_X.value = WristLeft_X_Sav02;
+            CharacterDetails.WristLeft_Y.value = WristLeft_Y_Sav02;
+            CharacterDetails.WristLeft_Z.value = WristLeft_Z_Sav02;
+            CharacterDetails.WristLeft_W.value = WristLeft_W_Sav02;
         }
         #endregion
         #region Savestate\Loadstate RightArm
@@ -21015,6 +21023,10 @@ namespace ConceptMatrix.Views
             CharacterDetails.CouterRight_Y.value = CouterRight_Y_Sav01;
             CharacterDetails.CouterRight_Z.value = CouterRight_Z_Sav01;
             CharacterDetails.CouterRight_W.value = CouterRight_W_Sav01;
+            CharacterDetails.WristRight_X.value = WristRight_X_Sav01;
+            CharacterDetails.WristRight_Y.value = WristRight_Y_Sav01;
+            CharacterDetails.WristRight_Z.value = WristRight_Z_Sav01;
+            CharacterDetails.WristRight_W.value = WristRight_W_Sav01;
         }
         private void LoadstateRightArm02_Click(object sender, RoutedEventArgs e)
         {
@@ -21057,6 +21069,10 @@ namespace ConceptMatrix.Views
             CharacterDetails.CouterRight_Y.value = CouterRight_Y_Sav02;
             CharacterDetails.CouterRight_Z.value = CouterRight_Z_Sav02;
             CharacterDetails.CouterRight_W.value = CouterRight_W_Sav02;
+            CharacterDetails.WristRight_X.value = WristRight_X_Sav02;
+            CharacterDetails.WristRight_Y.value = WristRight_Y_Sav02;
+            CharacterDetails.WristRight_Z.value = WristRight_Z_Sav02;
+            CharacterDetails.WristRight_W.value = WristRight_W_Sav02;
         }
         #endregion
         #region Savestate\Loadstate Clothes
@@ -21299,10 +21315,6 @@ namespace ConceptMatrix.Views
             CharacterDetails.HandLeft_Y.value = HandLeft_Y_Sav01;
             CharacterDetails.HandLeft_Z.value = HandLeft_Z_Sav01;
             CharacterDetails.HandLeft_W.value = HandLeft_W_Sav01;
-            CharacterDetails.WristLeft_X.value = WristLeft_X_Sav01;
-            CharacterDetails.WristLeft_Y.value = WristLeft_Y_Sav01;
-            CharacterDetails.WristLeft_Z.value = WristLeft_Z_Sav01;
-            CharacterDetails.WristLeft_W.value = WristLeft_W_Sav01;
             CharacterDetails.IndexALeft_X.value = IndexALeft_X_Sav01;
             CharacterDetails.IndexALeft_Y.value = IndexALeft_Y_Sav01;
             CharacterDetails.IndexALeft_Z.value = IndexALeft_Z_Sav01;
@@ -21353,10 +21365,6 @@ namespace ConceptMatrix.Views
             CharacterDetails.HandLeft_Y.value = HandLeft_Y_Sav02;
             CharacterDetails.HandLeft_Z.value = HandLeft_Z_Sav02;
             CharacterDetails.HandLeft_W.value = HandLeft_W_Sav02;
-            CharacterDetails.WristLeft_X.value = WristLeft_X_Sav02;
-            CharacterDetails.WristLeft_Y.value = WristLeft_Y_Sav02;
-            CharacterDetails.WristLeft_Z.value = WristLeft_Z_Sav02;
-            CharacterDetails.WristLeft_W.value = WristLeft_W_Sav02;
             CharacterDetails.IndexALeft_X.value = IndexALeft_X_Sav02;
             CharacterDetails.IndexALeft_Y.value = IndexALeft_Y_Sav02;
             CharacterDetails.IndexALeft_Z.value = IndexALeft_Z_Sav02;
@@ -21423,10 +21431,6 @@ namespace ConceptMatrix.Views
             CharacterDetails.HandRight_Y.value = HandRight_Y_Sav01;
             CharacterDetails.HandRight_Z.value = HandRight_Z_Sav01;
             CharacterDetails.HandRight_W.value = HandRight_W_Sav01;
-            CharacterDetails.WristRight_X.value = WristRight_X_Sav01;
-            CharacterDetails.WristRight_Y.value = WristRight_Y_Sav01;
-            CharacterDetails.WristRight_Z.value = WristRight_Z_Sav01;
-            CharacterDetails.WristRight_W.value = WristRight_W_Sav01;
             CharacterDetails.IndexARight_X.value = IndexARight_X_Sav01;
             CharacterDetails.IndexARight_Y.value = IndexARight_Y_Sav01;
             CharacterDetails.IndexARight_Z.value = IndexARight_Z_Sav01;
@@ -21477,10 +21481,6 @@ namespace ConceptMatrix.Views
             CharacterDetails.HandRight_Y.value = HandRight_Y_Sav02;
             CharacterDetails.HandRight_Z.value = HandRight_Z_Sav02;
             CharacterDetails.HandRight_W.value = HandRight_W_Sav02;
-            CharacterDetails.WristRight_X.value = WristRight_X_Sav02;
-            CharacterDetails.WristRight_Y.value = WristRight_Y_Sav02;
-            CharacterDetails.WristRight_Z.value = WristRight_Z_Sav02;
-            CharacterDetails.WristRight_W.value = WristRight_W_Sav02;
             CharacterDetails.IndexARight_X.value = IndexARight_X_Sav02;
             CharacterDetails.IndexARight_Y.value = IndexARight_Y_Sav02;
             CharacterDetails.IndexARight_Z.value = IndexARight_Z_Sav02;
@@ -23246,6 +23246,7 @@ namespace ConceptMatrix.Views
                 BoneSaver.ShieldLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShieldLeft_X), 16));
                 BoneSaver.ElbowLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ElbowLeft_X), 16));
                 BoneSaver.CouterLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CouterLeft_X), 16));
+                BoneSaver.WristLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristLeft_X), 16));
                 #endregion
                 #region RightArm
                 BoneSaver.ClavicleRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClavicleRight_X), 16));
@@ -23257,6 +23258,7 @@ namespace ConceptMatrix.Views
                 BoneSaver.ShieldRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShieldRight_X), 16));
                 BoneSaver.ElbowRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ElbowRight_X), 16));
                 BoneSaver.CouterRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CouterRight_X), 16));
+                BoneSaver.WristRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristRight_X), 16));
                 #endregion
                 #region Clothes
                 BoneSaver.ClothBackALeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackALeft_X), 16));
@@ -23284,7 +23286,6 @@ namespace ConceptMatrix.Views
                 #endregion
                 #region LeftHand
                 BoneSaver.HandLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HandLeft_X), 16));
-                BoneSaver.WristLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristLeft_X), 16));
                 BoneSaver.IndexALeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexALeft_X), 16));
                 BoneSaver.PinkyALeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyALeft_X), 16));
                 BoneSaver.RingALeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingALeft_X), 16));
@@ -23298,7 +23299,6 @@ namespace ConceptMatrix.Views
                 #endregion
                 #region RightHand
                 BoneSaver.HandRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HandRight_X), 16));
-                BoneSaver.WristRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristRight_X), 16));
                 BoneSaver.IndexARight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexARight_X), 16));
                 BoneSaver.PinkyARight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyARight_X), 16));
                 BoneSaver.RingARight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingARight_X), 16));
@@ -23504,6 +23504,7 @@ namespace ConceptMatrix.Views
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShieldLeft_X), MemoryManager.StringToByteArray(BoneLoader.ShieldLeft.Replace(" ", string.Empty)));
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ElbowLeft_X), MemoryManager.StringToByteArray(BoneLoader.ElbowLeft.Replace(" ", string.Empty)));
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CouterLeft_X), MemoryManager.StringToByteArray(BoneLoader.CouterLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristLeft_X), MemoryManager.StringToByteArray(BoneLoader.WristLeft.Replace(" ", string.Empty)));
                 #endregion
                 #region RightArm
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClavicleRight_X), MemoryManager.StringToByteArray(BoneLoader.ClavicleRight.Replace(" ", string.Empty)));
@@ -23515,6 +23516,7 @@ namespace ConceptMatrix.Views
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShieldRight_X), MemoryManager.StringToByteArray(BoneLoader.ShieldRight.Replace(" ", string.Empty)));
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ElbowRight_X), MemoryManager.StringToByteArray(BoneLoader.ElbowRight.Replace(" ", string.Empty)));
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CouterRight_X), MemoryManager.StringToByteArray(BoneLoader.CouterRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristRight_X), MemoryManager.StringToByteArray(BoneLoader.WristRight.Replace(" ", string.Empty)));
                 #endregion
                 #region Clothes
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackALeft_X), MemoryManager.StringToByteArray(BoneLoader.ClothBackALeft.Replace(" ", string.Empty)));
@@ -23542,7 +23544,6 @@ namespace ConceptMatrix.Views
                 #endregion
                 #region LeftHand
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HandLeft_X), MemoryManager.StringToByteArray(BoneLoader.HandLeft.Replace(" ", string.Empty)));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristLeft_X), MemoryManager.StringToByteArray(BoneLoader.WristLeft.Replace(" ", string.Empty)));
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexALeft_X), MemoryManager.StringToByteArray(BoneLoader.IndexALeft.Replace(" ", string.Empty)));
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyALeft_X), MemoryManager.StringToByteArray(BoneLoader.PinkyALeft.Replace(" ", string.Empty)));
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingALeft_X), MemoryManager.StringToByteArray(BoneLoader.RingALeft.Replace(" ", string.Empty)));
@@ -23556,7 +23557,6 @@ namespace ConceptMatrix.Views
                 #endregion
                 #region RightHand
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HandRight_X), MemoryManager.StringToByteArray(BoneLoader.HandRight.Replace(" ", string.Empty)));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristRight_X), MemoryManager.StringToByteArray(BoneLoader.WristRight.Replace(" ", string.Empty)));
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexARight_X), MemoryManager.StringToByteArray(BoneLoader.IndexARight.Replace(" ", string.Empty)));
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyARight_X), MemoryManager.StringToByteArray(BoneLoader.PinkyARight.Replace(" ", string.Empty)));
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingARight_X), MemoryManager.StringToByteArray(BoneLoader.RingARight.Replace(" ", string.Empty)));
@@ -23782,6 +23782,7 @@ namespace ConceptMatrix.Views
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShieldLeft_X), MemoryManager.StringToByteArray(BoneLoader.ShieldLeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ElbowLeft_X), MemoryManager.StringToByteArray(BoneLoader.ElbowLeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CouterLeft_X), MemoryManager.StringToByteArray(BoneLoader.CouterLeft.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristLeft_X), MemoryManager.StringToByteArray(BoneLoader.WristLeft.Replace(" ", string.Empty)));
                 }
                 #endregion
                 #region RightArm
@@ -23796,6 +23797,7 @@ namespace ConceptMatrix.Views
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShieldRight_X), MemoryManager.StringToByteArray(BoneLoader.ShieldRight.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ElbowRight_X), MemoryManager.StringToByteArray(BoneLoader.ElbowRight.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CouterRight_X), MemoryManager.StringToByteArray(BoneLoader.CouterRight.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristRight_X), MemoryManager.StringToByteArray(BoneLoader.WristRight.Replace(" ", string.Empty)));
                 }
                 #endregion
                 #region Clothes
@@ -23822,7 +23824,7 @@ namespace ConceptMatrix.Views
                 }
                 #endregion
                 #region Weapons
-                if (WeaponsAdvLoad = true)
+                if (WeaponsAdvLoad == true)
                 {
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WeaponLeft_X), MemoryManager.StringToByteArray(BoneLoader.WeaponLeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WeaponRight_X), MemoryManager.StringToByteArray(BoneLoader.WeaponRight.Replace(" ", string.Empty)));
@@ -23832,7 +23834,6 @@ namespace ConceptMatrix.Views
                 if (LeftHandAdvLoad == true)
                 {
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HandLeft_X), MemoryManager.StringToByteArray(BoneLoader.HandLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristLeft_X), MemoryManager.StringToByteArray(BoneLoader.WristLeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexALeft_X), MemoryManager.StringToByteArray(BoneLoader.IndexALeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyALeft_X), MemoryManager.StringToByteArray(BoneLoader.PinkyALeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingALeft_X), MemoryManager.StringToByteArray(BoneLoader.RingALeft.Replace(" ", string.Empty)));
@@ -23849,7 +23850,6 @@ namespace ConceptMatrix.Views
                 if (RightHandAdvLoad == true)
                 {
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HandRight_X), MemoryManager.StringToByteArray(BoneLoader.HandRight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristRight_X), MemoryManager.StringToByteArray(BoneLoader.WristRight.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexARight_X), MemoryManager.StringToByteArray(BoneLoader.IndexARight.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyARight_X), MemoryManager.StringToByteArray(BoneLoader.PinkyARight.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingARight_X), MemoryManager.StringToByteArray(BoneLoader.RingARight.Replace(" ", string.Empty)));

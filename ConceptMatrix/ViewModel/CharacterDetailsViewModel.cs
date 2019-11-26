@@ -5758,6 +5758,10 @@ namespace ConceptMatrix.ViewModel
                     MainViewModel.ViewTime5.CouterLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterLeft_Y));
                     MainViewModel.ViewTime5.CouterLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterLeft_Z));
                     MainViewModel.ViewTime5.CouterLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterLeft_W));
+                    MainViewModel.ViewTime5.WristLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_X));
+                    MainViewModel.ViewTime5.WristLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_Y));
+                    MainViewModel.ViewTime5.WristLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_Z));
+                    MainViewModel.ViewTime5.WristLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_W));
                     CharacterDetails.SaveLeftArm01 = false;
                 }
                 if (CharacterDetails.SaveLeftArm02 == true)
@@ -5798,6 +5802,10 @@ namespace ConceptMatrix.ViewModel
                     MainViewModel.ViewTime5.CouterLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterLeft_Y));
                     MainViewModel.ViewTime5.CouterLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterLeft_Z));
                     MainViewModel.ViewTime5.CouterLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterLeft_W));
+                    MainViewModel.ViewTime5.WristLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_X));
+                    MainViewModel.ViewTime5.WristLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_Y));
+                    MainViewModel.ViewTime5.WristLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_Z));
+                    MainViewModel.ViewTime5.WristLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_W));
                     CharacterDetails.SaveLeftArm02 = false;
                 }
                 if (CharacterDetails.SaveRightArm01 == true)
@@ -5838,6 +5846,10 @@ namespace ConceptMatrix.ViewModel
                     MainViewModel.ViewTime5.CouterRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterRight_Y));
                     MainViewModel.ViewTime5.CouterRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterRight_Z));
                     MainViewModel.ViewTime5.CouterRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterRight_W));
+                    MainViewModel.ViewTime5.WristRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_X));
+                    MainViewModel.ViewTime5.WristRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_Y));
+                    MainViewModel.ViewTime5.WristRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_Z));
+                    MainViewModel.ViewTime5.WristRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_W));
                     CharacterDetails.SaveRightArm01 = false;
                 }
                 if (CharacterDetails.SaveRightArm02 == true)
@@ -5878,6 +5890,10 @@ namespace ConceptMatrix.ViewModel
                     MainViewModel.ViewTime5.CouterRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterRight_Y));
                     MainViewModel.ViewTime5.CouterRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterRight_Z));
                     MainViewModel.ViewTime5.CouterRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterRight_W));
+                    MainViewModel.ViewTime5.WristRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_X));
+                    MainViewModel.ViewTime5.WristRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_Y));
+                    MainViewModel.ViewTime5.WristRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_Z));
+                    MainViewModel.ViewTime5.WristRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_W));
                     CharacterDetails.SaveRightArm02 = false;
                 }
                 if (CharacterDetails.SaveClothes01 == true)
@@ -6062,10 +6078,6 @@ namespace ConceptMatrix.ViewModel
                     MainViewModel.ViewTime5.HandLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandLeft_Y));
                     MainViewModel.ViewTime5.HandLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandLeft_Z));
                     MainViewModel.ViewTime5.HandLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandLeft_W));
-                    MainViewModel.ViewTime5.WristLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_X));
-                    MainViewModel.ViewTime5.WristLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_Y));
-                    MainViewModel.ViewTime5.WristLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_Z));
-                    MainViewModel.ViewTime5.WristLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_W));
                     MainViewModel.ViewTime5.IndexALeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexALeft_X));
                     MainViewModel.ViewTime5.IndexALeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexALeft_Y));
                     MainViewModel.ViewTime5.IndexALeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexALeft_Z));
@@ -6114,10 +6126,6 @@ namespace ConceptMatrix.ViewModel
                     MainViewModel.ViewTime5.HandLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandLeft_Y));
                     MainViewModel.ViewTime5.HandLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandLeft_Z));
                     MainViewModel.ViewTime5.HandLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandLeft_W));
-                    MainViewModel.ViewTime5.WristLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_X));
-                    MainViewModel.ViewTime5.WristLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_Y));
-                    MainViewModel.ViewTime5.WristLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_Z));
-                    MainViewModel.ViewTime5.WristLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_W));
                     MainViewModel.ViewTime5.IndexALeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexALeft_X));
                     MainViewModel.ViewTime5.IndexALeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexALeft_Y));
                     MainViewModel.ViewTime5.IndexALeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexALeft_Z));
@@ -6166,10 +6174,6 @@ namespace ConceptMatrix.ViewModel
                     MainViewModel.ViewTime5.HandRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandRight_Y));
                     MainViewModel.ViewTime5.HandRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandRight_Z));
                     MainViewModel.ViewTime5.HandRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandRight_W));
-                    MainViewModel.ViewTime5.WristRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_X));
-                    MainViewModel.ViewTime5.WristRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_Y));
-                    MainViewModel.ViewTime5.WristRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_Z));
-                    MainViewModel.ViewTime5.WristRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_W));
                     MainViewModel.ViewTime5.IndexARight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexARight_X));
                     MainViewModel.ViewTime5.IndexARight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexARight_Y));
                     MainViewModel.ViewTime5.IndexARight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexARight_Z));
@@ -6218,10 +6222,6 @@ namespace ConceptMatrix.ViewModel
                     MainViewModel.ViewTime5.HandRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandRight_Y));
                     MainViewModel.ViewTime5.HandRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandRight_Z));
                     MainViewModel.ViewTime5.HandRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandRight_W));
-                    MainViewModel.ViewTime5.WristRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_X));
-                    MainViewModel.ViewTime5.WristRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_Y));
-                    MainViewModel.ViewTime5.WristRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_Z));
-                    MainViewModel.ViewTime5.WristRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_W));
                     MainViewModel.ViewTime5.IndexARight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexARight_X));
                     MainViewModel.ViewTime5.IndexARight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexARight_Y));
                     MainViewModel.ViewTime5.IndexARight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexARight_Z));

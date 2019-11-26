@@ -2187,6 +2187,10 @@ namespace ConceptMatrix.Utility
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.CouterLeft_Y), CharacterDetails.CouterLeft_Y.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.CouterLeft_Z), CharacterDetails.CouterLeft_Z.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.CouterLeft_W), CharacterDetails.CouterLeft_W.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Bones.WristLeft_X), CharacterDetails.WristLeft_X.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Bones.WristLeft_Y), CharacterDetails.WristLeft_Y.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Bones.WristLeft_Z), CharacterDetails.WristLeft_Z.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Bones.WristLeft_W), CharacterDetails.WristLeft_W.GetBytes());
                         CharacterDetails.WriteLeftArm = false;
                     }
                     if (CharacterDetails.WriteRightArm == true)
@@ -2227,6 +2231,10 @@ namespace ConceptMatrix.Utility
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.CouterRight_Y), CharacterDetails.CouterRight_Y.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.CouterRight_Z), CharacterDetails.CouterRight_Z.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.CouterRight_W), CharacterDetails.CouterRight_W.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Bones.WristRight_X), CharacterDetails.WristRight_X.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Bones.WristRight_Y), CharacterDetails.WristRight_Y.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Bones.WristRight_Z), CharacterDetails.WristRight_Z.GetBytes());
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Bones.WristRight_W), CharacterDetails.WristRight_W.GetBytes());
                         CharacterDetails.WriteRightArm = false;
                     }
                     if (CharacterDetails.WriteClothes == true)
@@ -2323,10 +2331,6 @@ namespace ConceptMatrix.Utility
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.HandLeft_Y), CharacterDetails.HandLeft_Y.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.HandLeft_Z), CharacterDetails.HandLeft_Z.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.HandLeft_W), CharacterDetails.HandLeft_W.GetBytes());
-                        m.writeBytes(GAS(c.Body.Base, c.Body.Bones.WristLeft_X), CharacterDetails.WristLeft_X.GetBytes());
-                        m.writeBytes(GAS(c.Body.Base, c.Body.Bones.WristLeft_Y), CharacterDetails.WristLeft_Y.GetBytes());
-                        m.writeBytes(GAS(c.Body.Base, c.Body.Bones.WristLeft_Z), CharacterDetails.WristLeft_Z.GetBytes());
-                        m.writeBytes(GAS(c.Body.Base, c.Body.Bones.WristLeft_W), CharacterDetails.WristLeft_W.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.IndexALeft_X), CharacterDetails.IndexALeft_X.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.IndexALeft_Y), CharacterDetails.IndexALeft_Y.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.IndexALeft_Z), CharacterDetails.IndexALeft_Z.GetBytes());
@@ -2375,10 +2379,6 @@ namespace ConceptMatrix.Utility
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.HandRight_Y), CharacterDetails.HandRight_Y.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.HandRight_Z), CharacterDetails.HandRight_Z.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.HandRight_W), CharacterDetails.HandRight_W.GetBytes());
-                        m.writeBytes(GAS(c.Body.Base, c.Body.Bones.WristRight_X), CharacterDetails.WristRight_X.GetBytes());
-                        m.writeBytes(GAS(c.Body.Base, c.Body.Bones.WristRight_Y), CharacterDetails.WristRight_Y.GetBytes());
-                        m.writeBytes(GAS(c.Body.Base, c.Body.Bones.WristRight_Z), CharacterDetails.WristRight_Z.GetBytes());
-                        m.writeBytes(GAS(c.Body.Base, c.Body.Bones.WristRight_W), CharacterDetails.WristRight_W.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.IndexARight_X), CharacterDetails.IndexARight_X.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.IndexARight_Y), CharacterDetails.IndexARight_Y.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.IndexARight_Z), CharacterDetails.IndexARight_Z.GetBytes());
