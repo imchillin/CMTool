@@ -23950,5 +23950,41 @@ namespace ConceptMatrix.Views
             }
             else return;
         }
+        private void SelectAll_Click(object sender, RoutedEventArgs e)
+        {
+            LoadHead.IsChecked = true;
+            LoadHair.IsChecked = true;
+            LoadEarrings.IsChecked = true;
+            LoadBody.IsChecked = true;
+            LoadLeftArm.IsChecked = true;
+            LoadRightArm.IsChecked = true;
+            LoadClothes.IsChecked = true;
+            LoadWeapons.IsChecked = true;
+            LoadLeftHand.IsChecked = true;
+            LoadRightHand.IsChecked = true;
+            LoadWaist.IsChecked = true;
+            LoadLeftLeg.IsChecked = true;
+            LoadRightLeg.IsChecked = true;
+            LoadHelm.IsChecked = true;
+            LoadTop.IsChecked = true;
+        }
+        private void SelectNone_Click(object sender, RoutedEventArgs e)
+        {
+            LoadHead.IsChecked = false;
+            LoadHair.IsChecked = false;
+            LoadEarrings.IsChecked = false;
+            LoadBody.IsChecked = false;
+            LoadLeftArm.IsChecked = false;
+            LoadRightArm.IsChecked = false;
+            LoadClothes.IsChecked = false;
+            LoadWeapons.IsChecked = false;
+            LoadLeftHand.IsChecked = false;
+            LoadRightHand.IsChecked = false;
+            LoadWaist.IsChecked = false;
+            LoadLeftLeg.IsChecked = false;
+            LoadRightLeg.IsChecked = false;
+            LoadHelm.IsChecked = false;
+            LoadTop.IsChecked = false;
+        }
     }
 }

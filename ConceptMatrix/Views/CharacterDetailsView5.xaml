@@ -713,6 +713,8 @@
                     <CheckBox x:Name="LoadWaist" Content="Waist" HorizontalAlignment="Left" Margin="475,300,0,0" VerticalAlignment="Top" FontSize="13.25" Checked="LoadWaist_Checked" Unchecked="LoadWaist_Unchecked" Height="28"/>
                     <CheckBox x:Name="LoadLeftLeg" Content="Left Leg" HorizontalAlignment="Left" Margin="475,330,0,0" VerticalAlignment="Top" FontSize="13.25" Checked="LoadLeftLeg_Checked" Unchecked="LoadLeftLeg_Unchecked" Height="28"/>
                     <CheckBox x:Name="LoadRightLeg" Content="Right Leg" HorizontalAlignment="Left" Margin="475,360,0,0" VerticalAlignment="Top" FontSize="13.25" Checked="LoadRightLeg_Checked" Unchecked="LoadRightLeg_Unchecked" Height="28"/>
+                    <Button x:Name="SelectAll" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="203,435,0,0" VerticalAlignment="Top" Width="110" Click="SelectAll_Click" Height="28" Content="Select All"/>
+                    <Button x:Name="SelectNone" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="318,435,0,0" VerticalAlignment="Top" Width="110" Click="SelectNone_Click" Height="28" Content="Select None"/>
                 </Grid>
 
             </TabItem>
