@@ -13,13 +13,12 @@
   <TerritoryOffset>1BF8100</TerritoryOffset>
   <GposeFilters>1BDA728</GposeFilters>
   <MusicOffset>1BFE770</MusicOffset>
-  <SkeletonOffset>1330670</SkeletonOffset>
-  <SkeletonOffset2>133179D</SkeletonOffset2>
-  <SkeletonOffset3>133F404</SkeletonOffset3>
-  <PhysicsOffset>39F038</PhysicsOffset>
-  <PhysicsOffset2>39F02F</PhysicsOffset2>
-  <CharacterRenderOffset>455450</CharacterRenderOffset>
-  <CharacterRenderOffset2>455446</CharacterRenderOffset2>
+  <SkeletonOffset>1330420</SkeletonOffset>
+  <SkeletonOffset2>133154D</SkeletonOffset2>
+  <SkeletonOffset3>133F1B4</SkeletonOffset3>
+  <PhysicsOffset>39EF68</PhysicsOffset>
+  <CharacterRenderOffset>455520</CharacterRenderOffset>
+  <CharacterRenderOffset2>455516</CharacterRenderOffset2>
   <Character>
     <Name>30</Name>
     <FCTag>17FA</FCTag>
