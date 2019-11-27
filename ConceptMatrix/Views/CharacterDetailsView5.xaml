@@ -680,13 +680,13 @@
                 <Grid>
                     <GroupBox Header="Standard Saving &#x26; Loading" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="175" Width="630"/>
                     <GroupBox Header="Advanced Loading" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="175" Width="630" Margin="0,255,0,0"/>
-                    <Button x:Name="SaveCMP" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="225,70,0,0" VerticalAlignment="Top" Width="180" Click="SaveCMP_Click" Height="28">
+                    <Button x:Name="SaveCMP" ToolTip="Save Pose to a CMP file." materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="225,70,0,0" VerticalAlignment="Top" Width="180" Click="SaveCMP_Click" Height="28">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="ContentSave" Padding="0" Margin="0,2,0,0" />
                             <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="Save CMP File" />
                         </StackPanel>
                     </Button>
-                    <Button x:Name="LoadCMP" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="225,103,0,0" VerticalAlignment="Top" Width="180" Click="LoadCMP_Click" Height="28" IsEnabled="False">
+                    <Button x:Name="LoadCMP" ToolTip="Load Pose from a user-generated CMP file." materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="225,103,0,0" VerticalAlignment="Top" Width="180" Click="LoadCMP_Click" Height="28" IsEnabled="False">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Download" Padding="0" Margin="0,3,0,0" />
                             <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="Load CMP File" />
@@ -753,7 +753,7 @@
         <Label Content="Enable Editing:" HorizontalAlignment="Left" Margin="907,375,0,0" VerticalAlignment="Top" Height="28"/>
         <ToggleButton x:Name="PhysicsButton" Checked="PhysicsButton_Checked" Unchecked="PhysicsButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1011,405,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" />
         <Label Content="Enable Physics:" HorizontalAlignment="Left" Margin="907,405,0,0" VerticalAlignment="Top" Height="28"/>
-        <Button x:Name="TertiaryButton" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="890,445,0,0" VerticalAlignment="Top" Width="175" Click="EnableTertiary" Height="28" Content="Detect Tertiary Bones" IsEnabled="False"/>
+        <Button x:Name="TertiaryButton" ToolTip="Detect Race, Hair, and Equipment exclusive Bones for the selected actor." materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="890,445,0,0" VerticalAlignment="Top" Width="175" Click="EnableTertiary" Height="28" Content="Detect Tertiary Bones" IsEnabled="False"/>
 
         <!-- Other -->
 
