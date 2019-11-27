@@ -22653,9 +22653,7 @@ namespace ConceptMatrix.Views
             EyeRight.IsEnabled = true;
             Nose.IsEnabled = true;
             CheekLeft.IsEnabled = true;
-            HrothWhiskersLeft.IsEnabled = true;
             CheekRight.IsEnabled = true;
-            HrothWhiskersRight.IsEnabled = true;
             LipsLeft.IsEnabled = true;
             LipsRight.IsEnabled = true;
             EyebrowLeft.IsEnabled = true;
