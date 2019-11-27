@@ -19980,7 +19980,7 @@ namespace ConceptMatrix.Views
             if (TopSaved01 == true) LoadstateTop01.IsEnabled = true;
             if (TopSaved02 == true) LoadstateTop02.IsEnabled = true;
         }
-        private void EditModeButton_Unchecked(object sender, RoutedEventArgs e)
+     private void EditModeButton_Unchecked(object sender, RoutedEventArgs e)
         {
             CharacterDetails.BoneEditMode = false;
             PhysicsButton.IsChecked = false;
@@ -22539,6 +22539,7 @@ namespace ConceptMatrix.Views
         private void EnableAll()
         {
             PhysicsButton.IsEnabled = true;
+            TertiaryButton.IsEnabled = true;
             //Root.IsEnabled = true;
             //Abdomen.IsEnabled = true;
             //Throw.IsEnabled = true;
@@ -22639,11 +22640,11 @@ namespace ConceptMatrix.Views
             MiddleBRight.IsEnabled = true;
             ThumbBLeft.IsEnabled = true;
             ThumbBRight.IsEnabled = true;
-            TailA.IsEnabled = true;
-            TailB.IsEnabled = true;
-            TailC.IsEnabled = true;
-            TailD.IsEnabled = true;
-            TailE.IsEnabled = true;
+            //TailA.IsEnabled = true;
+            //TailB.IsEnabled = true;
+            //TailC.IsEnabled = true;
+            //TailD.IsEnabled = true;
+            //TailE.IsEnabled = true;
             //RootHead.IsEnabled = true;
             Jaw.IsEnabled = true;
             EyelidLowerLeft.IsEnabled = true;
@@ -22668,51 +22669,51 @@ namespace ConceptMatrix.Views
             LipLowerA.IsEnabled = true;
             LipUpperB.IsEnabled = true;
             LipLowerB.IsEnabled = true;
-            HrothWhiskersLeft.IsEnabled = true;
-            HrothWhiskersRight.IsEnabled = true;
-            VieraEarALeft.IsEnabled = true;
-            VieraEarARight.IsEnabled = true;
-            VieraEarBLeft.IsEnabled = true;
-            VieraEarBRight.IsEnabled = true;
-            ExHairA.IsEnabled = true;
-            ExHairB.IsEnabled = true;
-            ExHairC.IsEnabled = true;
-            ExHairD.IsEnabled = true;
-            ExHairE.IsEnabled = true;
-            ExHairF.IsEnabled = true;
-            ExHairG.IsEnabled = true;
-            ExHairH.IsEnabled = true;
-            ExHairI.IsEnabled = true;
-            ExHairJ.IsEnabled = true;
-            ExHairK.IsEnabled = true;
-            ExHairL.IsEnabled = true;
-            ExMetA.IsEnabled = true;
-            ExMetB.IsEnabled = true;
-            ExMetC.IsEnabled = true;
-            ExMetD.IsEnabled = true;
-            ExMetE.IsEnabled = true;
-            ExMetF.IsEnabled = true;
-            ExMetG.IsEnabled = true;
-            ExMetH.IsEnabled = true;
-            ExMetI.IsEnabled = true;
-            ExMetJ.IsEnabled = true;
-            ExMetK.IsEnabled = true;
-            ExMetL.IsEnabled = true;
-            ExMetM.IsEnabled = true;
-            ExMetN.IsEnabled = true;
-            ExMetO.IsEnabled = true;
-            ExMetP.IsEnabled = true;
-            ExMetQ.IsEnabled = true;
-            ExMetR.IsEnabled = true;
-            ExTopA.IsEnabled = true;
-            ExTopB.IsEnabled = true;
-            ExTopC.IsEnabled = true;
-            ExTopD.IsEnabled = true;
-            ExTopE.IsEnabled = true;
-            ExTopF.IsEnabled = true;
-            ExTopG.IsEnabled = true;
-            ExTopH.IsEnabled = true;
-            ExTopI.IsEnabled = true;
+            //HrothWhiskersLeft.IsEnabled = true;
+            //HrothWhiskersRight.IsEnabled = true;
+            //VieraEarALeft.IsEnabled = true;
+            //VieraEarARight.IsEnabled = true;
+            //VieraEarBLeft.IsEnabled = true;
+            //VieraEarBRight.IsEnabled = true;
+            //ExHairA.IsEnabled = true;
+            //ExHairB.IsEnabled = true;
+            //ExHairC.IsEnabled = true;
+            //ExHairD.IsEnabled = true;
+            //ExHairE.IsEnabled = true;
+            //ExHairF.IsEnabled = true;
+            //ExHairG.IsEnabled = true;
+            //ExHairH.IsEnabled = true;
+            //ExHairI.IsEnabled = true;
+            //ExHairJ.IsEnabled = true;
+            //ExHairK.IsEnabled = true;
+            //ExHairL.IsEnabled = true;
+            //ExMetA.IsEnabled = true;
+            //ExMetB.IsEnabled = true;
+            //ExMetC.IsEnabled = true;
+            //ExMetD.IsEnabled = true;
+            //ExMetE.IsEnabled = true;
+            //ExMetF.IsEnabled = true;
+            //ExMetG.IsEnabled = true;
+            //ExMetH.IsEnabled = true;
+            //ExMetI.IsEnabled = true;
+            //ExMetJ.IsEnabled = true;
+            //ExMetK.IsEnabled = true;
+            //ExMetL.IsEnabled = true;
+            //ExMetM.IsEnabled = true;
+            //ExMetN.IsEnabled = true;
+            //ExMetO.IsEnabled = true;
+            //ExMetP.IsEnabled = true;
+            //ExMetQ.IsEnabled = true;
+            //ExMetR.IsEnabled = true;
+            //ExTopA.IsEnabled = true;
+            //ExTopB.IsEnabled = true;
+            //ExTopC.IsEnabled = true;
+            //ExTopD.IsEnabled = true;
+            //ExTopE.IsEnabled = true;
+            //ExTopF.IsEnabled = true;
+            //ExTopG.IsEnabled = true;
+            //ExTopH.IsEnabled = true;
+            //ExTopI.IsEnabled = true;
 
             //if (HeadSaved) LoadHeadButton.IsEnabled = true;
             //if (TorsoSaved) LoadTorsoButton.IsEnabled = true;
@@ -22724,6 +22725,7 @@ namespace ConceptMatrix.Views
         private void DisableAll()
         {
             PhysicsButton.IsEnabled = false;
+            TertiaryButton.IsEnabled = false;
             Root.IsEnabled = false;
             Abdomen.IsEnabled = false;
             Throw.IsEnabled = false;
@@ -22905,6 +22907,240 @@ namespace ConceptMatrix.Views
             //LoadRArmButton.IsEnabled = false;
             //LoadLLegButton.IsEnabled = false;
             //LoadRLegButton.IsEnabled = false;
+        }
+        private void EnableTertiary(object sender, RoutedEventArgs e)
+        {
+            DisableTertiary();
+
+            if (CharacterDetails.Race.value == 4 || CharacterDetails.Race.value == 6 || CharacterDetails.Race.value == 7)
+            {
+                TailA.IsEnabled = true;
+                TailB.IsEnabled = true;
+                TailC.IsEnabled = true;
+                TailD.IsEnabled = true;
+                TailE.IsEnabled = true;
+            }
+            if (CharacterDetails.Race.value == 7)
+            {
+                HrothWhiskersLeft.IsEnabled = true;
+                HrothWhiskersRight.IsEnabled = true;
+            }
+            if (CharacterDetails.Race.value == 8)
+            {
+                VieraEarALeft.IsEnabled = true;
+                VieraEarARight.IsEnabled = true;
+                VieraEarBLeft.IsEnabled = true;
+                VieraEarBRight.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 2)
+            {
+                ExHairA.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 3)
+            {
+                ExHairB.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 4)
+            {
+                ExHairC.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 5)
+            {
+                ExHairD.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 6)
+            {
+                ExHairE.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 7)
+            {
+                ExHairF.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 8)
+            {
+                ExHairG.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 9)
+            {
+                ExHairH.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 10)
+            {
+                ExHairI.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 11)
+            {
+                ExHairJ.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 12)
+            {
+                ExHairK.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 13)
+            {
+                ExHairL.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 2)
+            {
+                ExMetA.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 3)
+            {
+                ExMetB.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 4)
+            {
+                ExMetC.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 5)
+            {
+                ExMetD.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 6)
+            {
+                ExMetE.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 7)
+            {
+                ExMetF.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 8)
+            {
+                ExMetG.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 9)
+            {
+                ExMetH.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 10)
+            {
+                ExMetI.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 11)
+            {
+                ExMetJ.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 12)
+            {
+                ExMetK.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 13)
+            {
+                ExMetL.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 14)
+            {
+                ExMetM.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 15)
+            {
+                ExMetN.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 16)
+            {
+                ExMetO.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 17)
+            {
+                ExMetP.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 18)
+            {
+                ExMetQ.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 19)
+            {
+                ExMetR.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 2)
+            {
+                ExTopA.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 3)
+            {
+                ExTopB.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 4)
+            {
+                ExTopC.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 5)
+            {
+                ExTopD.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 6)
+            {
+                ExTopE.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 7)
+            {
+                ExTopF.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 8)
+            {
+                ExTopG.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 9)
+            {
+                ExTopH.IsEnabled = true;
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 10)
+            {
+                ExTopI.IsEnabled = true;
+            }
+        }
+        private void DisableTertiary()
+        {
+            TailA.IsEnabled = false;
+            TailB.IsEnabled = false;
+            TailC.IsEnabled = false;
+            TailD.IsEnabled = false;
+            TailE.IsEnabled = false;
+            HrothWhiskersLeft.IsEnabled = false;
+            HrothWhiskersRight.IsEnabled = false;
+            VieraEarALeft.IsEnabled = false;
+            VieraEarARight.IsEnabled = false;
+            VieraEarBLeft.IsEnabled = false;
+            VieraEarBRight.IsEnabled = false;
+            ExHairA.IsEnabled = false;
+            ExHairB.IsEnabled = false;
+            ExHairC.IsEnabled = false;
+            ExHairD.IsEnabled = false;
+            ExHairE.IsEnabled = false;
+            ExHairF.IsEnabled = false;
+            ExHairG.IsEnabled = false;
+            ExHairH.IsEnabled = false;
+            ExHairI.IsEnabled = false;
+            ExHairJ.IsEnabled = false;
+            ExHairK.IsEnabled = false;
+            ExHairL.IsEnabled = false;
+            ExMetA.IsEnabled = false;
+            ExMetB.IsEnabled = false;
+            ExMetC.IsEnabled = false;
+            ExMetD.IsEnabled = false;
+            ExMetE.IsEnabled = false;
+            ExMetF.IsEnabled = false;
+            ExMetG.IsEnabled = false;
+            ExMetH.IsEnabled = false;
+            ExMetI.IsEnabled = false;
+            ExMetJ.IsEnabled = false;
+            ExMetK.IsEnabled = false;
+            ExMetL.IsEnabled = false;
+            ExMetM.IsEnabled = false;
+            ExMetN.IsEnabled = false;
+            ExMetO.IsEnabled = false;
+            ExMetP.IsEnabled = false;
+            ExMetQ.IsEnabled = false;
+            ExMetR.IsEnabled = false;
+            ExTopA.IsEnabled = false;
+            ExTopB.IsEnabled = false;
+            ExTopC.IsEnabled = false;
+            ExTopD.IsEnabled = false;
+            ExTopE.IsEnabled = false;
+            ExTopF.IsEnabled = false;
+            ExTopG.IsEnabled = false;
+            ExTopH.IsEnabled = false;
+            ExTopI.IsEnabled = false;
         }
 
         public class BoneSaves
@@ -23205,19 +23441,58 @@ namespace ConceptMatrix.Views
                 BoneSaver.HairFrontLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontLeft_X), 16));
                 BoneSaver.HairFrontRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontRight_X), 16));
                 BoneSaver.HairB = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairB_X), 16));
-                BoneSaver.ExRootHair = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExRootHair_X), 16));
-                BoneSaver.ExHairA = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairA_X), 16));
-                BoneSaver.ExHairB = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairB_X), 16));
-                BoneSaver.ExHairC = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairC_X), 16));
-                BoneSaver.ExHairD = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairD_X), 16));
-                BoneSaver.ExHairE = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairE_X), 16));
-                BoneSaver.ExHairF = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairF_X), 16));
-                BoneSaver.ExHairG = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairG_X), 16));
-                BoneSaver.ExHairH = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairH_X), 16));
-                BoneSaver.ExHairI = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairI_X), 16));
-                BoneSaver.ExHairJ = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairJ_X), 16));
-                BoneSaver.ExHairK = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairK_X), 16));
-                BoneSaver.ExHairL = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairL_X), 16));
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 1)
+                {
+                    BoneSaver.ExRootHair = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExRootHair_X), 16));
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 2)
+                {
+                    BoneSaver.ExHairA = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairA_X), 16));
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 3)
+                {
+                    BoneSaver.ExHairB = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairB_X), 16));
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 4)
+                {
+                    BoneSaver.ExHairC = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairC_X), 16));
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 5)
+                {
+                    BoneSaver.ExHairD = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairD_X), 16));
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 6)
+                {
+                    BoneSaver.ExHairE = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairE_X), 16));
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 7)
+                {
+                    BoneSaver.ExHairF = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairF_X), 16));
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 8)
+                {
+                    BoneSaver.ExHairG = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairG_X), 16));
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 9)
+                {
+                    BoneSaver.ExHairH = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairH_X), 16));
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 10)
+                {
+                    BoneSaver.ExHairI = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairI_X), 16));
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 11)
+                {
+                    BoneSaver.ExHairJ = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairJ_X), 16));
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 12)
+                {
+                    BoneSaver.ExHairK = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairK_X), 16));
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 13)
+                {
+                    BoneSaver.ExHairL = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairL_X), 16));
+                }
                 #endregion
                 #region Earrings
                 BoneSaver.EarringALeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringALeft_X), 16));
@@ -23343,40 +23618,127 @@ namespace ConceptMatrix.Views
                 #region Helm
                 if (m.readInt(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExRootMet_W)) > 0)
                 {
-                    BoneSaver.ExRootMet = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExRootMet_X), 16));
-                    BoneSaver.ExMetA = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetA_X), 16));
-                    BoneSaver.ExMetB = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetB_X), 16));
-                    BoneSaver.ExMetC = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetC_X), 16));
-                    BoneSaver.ExMetD = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetD_X), 16));
-                    BoneSaver.ExMetE = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetE_X), 16));
-                    BoneSaver.ExMetF = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetF_X), 16));
-                    BoneSaver.ExMetG = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetG_X), 16));
-                    BoneSaver.ExMetH = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetH_X), 16));
-                    BoneSaver.ExMetI = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetI_X), 16));
-                    BoneSaver.ExMetJ = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetJ_X), 16));
-                    BoneSaver.ExMetK = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetK_X), 16));
-                    BoneSaver.ExMetL = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetL_X), 16));
-                    BoneSaver.ExMetM = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetM_X), 16));
-                    BoneSaver.ExMetN = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetN_X), 16));
-                    BoneSaver.ExMetO = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetO_X), 16));
-                    BoneSaver.ExMetP = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetP_X), 16));
-                    BoneSaver.ExMetQ = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetQ_X), 16));
-                    BoneSaver.ExMetR = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetR_X), 16));
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 1)
+                    {
+                        BoneSaver.ExRootMet = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExRootMet_X), 16));
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 2)
+                    {
+                        BoneSaver.ExMetA = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetA_X), 16));
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 3)
+                    {
+                        BoneSaver.ExMetB = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetB_X), 16));
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 4)
+                    {
+                        BoneSaver.ExMetC = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetC_X), 16));
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 5)
+                    {
+                        BoneSaver.ExMetD = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetD_X), 16));
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 6)
+                    {
+                        BoneSaver.ExMetE = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetE_X), 16));
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 7)
+                    {
+                        BoneSaver.ExMetF = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetF_X), 16));
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 8)
+                    {
+                        BoneSaver.ExMetG = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetG_X), 16));
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 9)
+                    {
+                        BoneSaver.ExMetH = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetH_X), 16));
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 10)
+                    {
+                        BoneSaver.ExMetI = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetI_X), 16));
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 11)
+                    {
+                        BoneSaver.ExMetJ = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetJ_X), 16));
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 12)
+                    {
+                        BoneSaver.ExMetK = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetK_X), 16));
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 13)
+                    {
+                        BoneSaver.ExMetL = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetL_X), 16));
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 14)
+                    {
+                        BoneSaver.ExMetM = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetM_X), 16));
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 15)
+                    {
+                        BoneSaver.ExMetN = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetN_X), 16));
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 16)
+                    {
+                        BoneSaver.ExMetO = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetO_X), 16));
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 17)
+                    {
+                        BoneSaver.ExMetP = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetP_X), 16));
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 18)
+                    {
+                        BoneSaver.ExMetQ = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetQ_X), 16));
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 19)
+                    {
+                        BoneSaver.ExMetR = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetR_X), 16));
+                    }
                 }
                 #endregion
                 #region Top
                 if (m.readInt(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExRootTop_W)) > 0)
                 {
-                    BoneSaver.ExRootTop = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExRootTop_X), 16));
-                    BoneSaver.ExTopA = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopA_X), 16));
-                    BoneSaver.ExTopB = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopB_X), 16));
-                    BoneSaver.ExTopC = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopC_X), 16));
-                    BoneSaver.ExTopD = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopD_X), 16));
-                    BoneSaver.ExTopE = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopE_X), 16));
-                    BoneSaver.ExTopF = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopF_X), 16));
-                    BoneSaver.ExTopG = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopG_X), 16));
-                    BoneSaver.ExTopH = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopH_X), 16));
-                    BoneSaver.ExTopI = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopI_X), 16));
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 1)
+                    {
+                        BoneSaver.ExRootTop = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExRootTop_X), 16));
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 2)
+                    {
+                        BoneSaver.ExTopA = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopA_X), 16));
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 3)
+                    {
+                        BoneSaver.ExTopB = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopB_X), 16));
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 4)
+                    {
+                        BoneSaver.ExTopC = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopC_X), 16));
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 5)
+                    {
+                        BoneSaver.ExTopD = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopD_X), 16));
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 6)
+                    {
+                        BoneSaver.ExTopE = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopE_X), 16));
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 7)
+                    {
+                        BoneSaver.ExTopF = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopF_X), 16));
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 8)
+                    {
+                        BoneSaver.ExTopG = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopG_X), 16));
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 9)
+                    {
+                        BoneSaver.ExTopH = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopH_X), 16));
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 10)
+                    {
+                        BoneSaver.ExTopI = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopI_X), 16));
+                    }
                 }
                 #endregion
                 #region Other
@@ -23477,18 +23839,90 @@ namespace ConceptMatrix.Views
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontLeft_X), MemoryManager.StringToByteArray(BoneLoader.HairFrontLeft.Replace(" ", string.Empty)));
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontRight_X), MemoryManager.StringToByteArray(BoneLoader.HairFrontRight.Replace(" ", string.Empty)));
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairB_X), MemoryManager.StringToByteArray(BoneLoader.HairB.Replace(" ", string.Empty)));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairA_X), MemoryManager.StringToByteArray(BoneLoader.ExHairA.Replace(" ", string.Empty)));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairB_X), MemoryManager.StringToByteArray(BoneLoader.ExHairB.Replace(" ", string.Empty)));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairC_X), MemoryManager.StringToByteArray(BoneLoader.ExHairC.Replace(" ", string.Empty)));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairD_X), MemoryManager.StringToByteArray(BoneLoader.ExHairD.Replace(" ", string.Empty)));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairE_X), MemoryManager.StringToByteArray(BoneLoader.ExHairE.Replace(" ", string.Empty)));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairF_X), MemoryManager.StringToByteArray(BoneLoader.ExHairF.Replace(" ", string.Empty)));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairG_X), MemoryManager.StringToByteArray(BoneLoader.ExHairG.Replace(" ", string.Empty)));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairH_X), MemoryManager.StringToByteArray(BoneLoader.ExHairH.Replace(" ", string.Empty)));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairI_X), MemoryManager.StringToByteArray(BoneLoader.ExHairI.Replace(" ", string.Empty)));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairJ_X), MemoryManager.StringToByteArray(BoneLoader.ExHairJ.Replace(" ", string.Empty)));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairK_X), MemoryManager.StringToByteArray(BoneLoader.ExHairK.Replace(" ", string.Empty)));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairL_X), MemoryManager.StringToByteArray(BoneLoader.ExHairL.Replace(" ", string.Empty)));
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 2)
+                {
+                    if (BoneLoader.ExHairA != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairA_X), MemoryManager.StringToByteArray(BoneLoader.ExHairA.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 3)
+                {
+                    if (BoneLoader.ExHairB != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairB_X), MemoryManager.StringToByteArray(BoneLoader.ExHairB.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 4)
+                {
+                    if (BoneLoader.ExHairC != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairC_X), MemoryManager.StringToByteArray(BoneLoader.ExHairC.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 5)
+                {
+                    if (BoneLoader.ExHairD != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairD_X), MemoryManager.StringToByteArray(BoneLoader.ExHairD.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 6)
+                {
+                    if (BoneLoader.ExHairE != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairE_X), MemoryManager.StringToByteArray(BoneLoader.ExHairE.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 7)
+                {
+                    if (BoneLoader.ExHairF != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairF_X), MemoryManager.StringToByteArray(BoneLoader.ExHairF.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 8)
+                {
+                    if (BoneLoader.ExHairG != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairG_X), MemoryManager.StringToByteArray(BoneLoader.ExHairG.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 9)
+                {
+                    if (BoneLoader.ExHairH != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairH_X), MemoryManager.StringToByteArray(BoneLoader.ExHairH.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 10)
+                {
+                    if (BoneLoader.ExHairI != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairI_X), MemoryManager.StringToByteArray(BoneLoader.ExHairI.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 11)
+                {
+                    if (BoneLoader.ExHairJ != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairJ_X), MemoryManager.StringToByteArray(BoneLoader.ExHairJ.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 12)
+                {
+                    if (BoneLoader.ExHairK != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairK_X), MemoryManager.StringToByteArray(BoneLoader.ExHairK.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 13)
+                {
+                    if (BoneLoader.ExHairL != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairL_X), MemoryManager.StringToByteArray(BoneLoader.ExHairL.Replace(" ", string.Empty)));
+                    }
+                }
                 #endregion
                 #region Earrings
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringALeft_X), MemoryManager.StringToByteArray(BoneLoader.EarringALeft.Replace(" ", string.Empty)));
@@ -23612,40 +24046,196 @@ namespace ConceptMatrix.Views
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ToesRight_X), MemoryManager.StringToByteArray(BoneLoader.ToesRight.Replace(" ", string.Empty)));
                 #endregion
                 #region Helm
-                if (BoneLoader.ExMetA != null)
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 2)
                 {
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetA_X), MemoryManager.StringToByteArray(BoneLoader.ExMetA.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetB_X), MemoryManager.StringToByteArray(BoneLoader.ExMetB.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetC_X), MemoryManager.StringToByteArray(BoneLoader.ExMetC.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetD_X), MemoryManager.StringToByteArray(BoneLoader.ExMetD.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetE_X), MemoryManager.StringToByteArray(BoneLoader.ExMetE.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetF_X), MemoryManager.StringToByteArray(BoneLoader.ExMetF.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetG_X), MemoryManager.StringToByteArray(BoneLoader.ExMetG.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetH_X), MemoryManager.StringToByteArray(BoneLoader.ExMetH.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetI_X), MemoryManager.StringToByteArray(BoneLoader.ExMetI.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetJ_X), MemoryManager.StringToByteArray(BoneLoader.ExMetJ.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetK_X), MemoryManager.StringToByteArray(BoneLoader.ExMetK.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetL_X), MemoryManager.StringToByteArray(BoneLoader.ExMetL.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetM_X), MemoryManager.StringToByteArray(BoneLoader.ExMetM.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetN_X), MemoryManager.StringToByteArray(BoneLoader.ExMetN.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetO_X), MemoryManager.StringToByteArray(BoneLoader.ExMetO.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetP_X), MemoryManager.StringToByteArray(BoneLoader.ExMetP.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetQ_X), MemoryManager.StringToByteArray(BoneLoader.ExMetQ.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetR_X), MemoryManager.StringToByteArray(BoneLoader.ExMetR.Replace(" ", string.Empty)));
+                    if (BoneLoader.ExMetA != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetA_X), MemoryManager.StringToByteArray(BoneLoader.ExMetA.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 3)
+                {
+                    if (BoneLoader.ExMetB != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetB_X), MemoryManager.StringToByteArray(BoneLoader.ExMetB.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 4)
+                {
+                    if (BoneLoader.ExMetC != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetC_X), MemoryManager.StringToByteArray(BoneLoader.ExMetC.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 5)
+                {
+                    if (BoneLoader.ExMetD != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetD_X), MemoryManager.StringToByteArray(BoneLoader.ExMetD.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 6)
+                {
+                    if (BoneLoader.ExMetE != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetE_X), MemoryManager.StringToByteArray(BoneLoader.ExMetE.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 7)
+                {
+                    if (BoneLoader.ExMetF != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetF_X), MemoryManager.StringToByteArray(BoneLoader.ExMetF.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 8)
+                {
+                    if (BoneLoader.ExMetG != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetG_X), MemoryManager.StringToByteArray(BoneLoader.ExMetG.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 9)
+                {
+                    if (BoneLoader.ExMetH != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetH_X), MemoryManager.StringToByteArray(BoneLoader.ExMetH.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 10)
+                {
+                    if (BoneLoader.ExMetI != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetI_X), MemoryManager.StringToByteArray(BoneLoader.ExMetI.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 11)
+                {
+                    if (BoneLoader.ExMetJ != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetJ_X), MemoryManager.StringToByteArray(BoneLoader.ExMetJ.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 12)
+                {
+                    if (BoneLoader.ExMetK != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetK_X), MemoryManager.StringToByteArray(BoneLoader.ExMetK.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 13)
+                {
+                    if (BoneLoader.ExMetL != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetL_X), MemoryManager.StringToByteArray(BoneLoader.ExMetL.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 14)
+                {
+                    if (BoneLoader.ExMetM != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetM_X), MemoryManager.StringToByteArray(BoneLoader.ExMetM.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 15)
+                {
+                    if (BoneLoader.ExMetN != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetN_X), MemoryManager.StringToByteArray(BoneLoader.ExMetN.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 16)
+                {
+                    if (BoneLoader.ExMetO != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetO_X), MemoryManager.StringToByteArray(BoneLoader.ExMetO.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 17)
+                {
+                    if (BoneLoader.ExMetP != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetP_X), MemoryManager.StringToByteArray(BoneLoader.ExMetP.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 18)
+                {
+                    if (BoneLoader.ExMetQ != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetQ_X), MemoryManager.StringToByteArray(BoneLoader.ExMetQ.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 19)
+                {
+                    if (BoneLoader.ExMetR != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetR_X), MemoryManager.StringToByteArray(BoneLoader.ExMetR.Replace(" ", string.Empty)));
+                    }
                 }
                 #endregion
                 #region Top
-                if (BoneLoader.ExTopA != null)
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 2)
                 {
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopA_X), MemoryManager.StringToByteArray(BoneLoader.ExTopA.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopB_X), MemoryManager.StringToByteArray(BoneLoader.ExTopB.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopC_X), MemoryManager.StringToByteArray(BoneLoader.ExTopC.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopD_X), MemoryManager.StringToByteArray(BoneLoader.ExTopD.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopE_X), MemoryManager.StringToByteArray(BoneLoader.ExTopE.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopF_X), MemoryManager.StringToByteArray(BoneLoader.ExTopF.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopG_X), MemoryManager.StringToByteArray(BoneLoader.ExTopG.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopH_X), MemoryManager.StringToByteArray(BoneLoader.ExTopH.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopI_X), MemoryManager.StringToByteArray(BoneLoader.ExTopI.Replace(" ", string.Empty)));
+                    if (BoneLoader.ExTopA != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopA_X), MemoryManager.StringToByteArray(BoneLoader.ExTopA.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 3)
+                {
+                    if (BoneLoader.ExTopB != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopB_X), MemoryManager.StringToByteArray(BoneLoader.ExTopB.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 4)
+                {
+                    if (BoneLoader.ExTopC != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopC_X), MemoryManager.StringToByteArray(BoneLoader.ExTopC.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 5)
+                {
+                    if (BoneLoader.ExTopD != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopD_X), MemoryManager.StringToByteArray(BoneLoader.ExTopD.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 6)
+                {
+                    if (BoneLoader.ExTopE != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopE_X), MemoryManager.StringToByteArray(BoneLoader.ExTopE.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 7)
+                {
+                    if (BoneLoader.ExTopF != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopF_X), MemoryManager.StringToByteArray(BoneLoader.ExTopF.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 8)
+                {
+                    if (BoneLoader.ExTopG != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopG_X), MemoryManager.StringToByteArray(BoneLoader.ExTopG.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 9)
+                {
+                    if (BoneLoader.ExTopH != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopH_X), MemoryManager.StringToByteArray(BoneLoader.ExTopH.Replace(" ", string.Empty)));
+                    }
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 10)
+                {
+                    if (BoneLoader.ExTopI != null)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopI_X), MemoryManager.StringToByteArray(BoneLoader.ExTopI.Replace(" ", string.Empty)));
+                    }
                 }
                 #endregion
             }
@@ -23741,18 +24331,90 @@ namespace ConceptMatrix.Views
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontLeft_X), MemoryManager.StringToByteArray(BoneLoader.HairFrontLeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontRight_X), MemoryManager.StringToByteArray(BoneLoader.HairFrontRight.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairB_X), MemoryManager.StringToByteArray(BoneLoader.HairB.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairA_X), MemoryManager.StringToByteArray(BoneLoader.ExHairA.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairB_X), MemoryManager.StringToByteArray(BoneLoader.ExHairB.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairC_X), MemoryManager.StringToByteArray(BoneLoader.ExHairC.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairD_X), MemoryManager.StringToByteArray(BoneLoader.ExHairD.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairE_X), MemoryManager.StringToByteArray(BoneLoader.ExHairE.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairF_X), MemoryManager.StringToByteArray(BoneLoader.ExHairF.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairG_X), MemoryManager.StringToByteArray(BoneLoader.ExHairG.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairH_X), MemoryManager.StringToByteArray(BoneLoader.ExHairH.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairI_X), MemoryManager.StringToByteArray(BoneLoader.ExHairI.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairJ_X), MemoryManager.StringToByteArray(BoneLoader.ExHairJ.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairK_X), MemoryManager.StringToByteArray(BoneLoader.ExHairK.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairL_X), MemoryManager.StringToByteArray(BoneLoader.ExHairL.Replace(" ", string.Empty)));
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 2)
+                    {
+                        if (BoneLoader.ExHairA != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairA_X), MemoryManager.StringToByteArray(BoneLoader.ExHairA.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 3)
+                    {
+                        if (BoneLoader.ExHairB != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairB_X), MemoryManager.StringToByteArray(BoneLoader.ExHairB.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 4)
+                    {
+                        if (BoneLoader.ExHairC != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairC_X), MemoryManager.StringToByteArray(BoneLoader.ExHairC.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 5)
+                    {
+                        if (BoneLoader.ExHairD != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairD_X), MemoryManager.StringToByteArray(BoneLoader.ExHairD.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 6)
+                    {
+                        if (BoneLoader.ExHairE != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairE_X), MemoryManager.StringToByteArray(BoneLoader.ExHairE.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 7)
+                    {
+                        if (BoneLoader.ExHairF != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairF_X), MemoryManager.StringToByteArray(BoneLoader.ExHairF.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 8)
+                    {
+                        if (BoneLoader.ExHairG != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairG_X), MemoryManager.StringToByteArray(BoneLoader.ExHairG.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 9)
+                    {
+                        if (BoneLoader.ExHairH != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairH_X), MemoryManager.StringToByteArray(BoneLoader.ExHairH.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 10)
+                    {
+                        if (BoneLoader.ExHairI != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairI_X), MemoryManager.StringToByteArray(BoneLoader.ExHairI.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 11)
+                    {
+                        if (BoneLoader.ExHairJ != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairJ_X), MemoryManager.StringToByteArray(BoneLoader.ExHairJ.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 12)
+                    {
+                        if (BoneLoader.ExHairK != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairK_X), MemoryManager.StringToByteArray(BoneLoader.ExHairK.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 13)
+                    {
+                        if (BoneLoader.ExHairL != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairL_X), MemoryManager.StringToByteArray(BoneLoader.ExHairL.Replace(" ", string.Empty)));
+                        }
+                    }
                 }
                 #endregion
                 #region Earrings
@@ -23912,43 +24574,199 @@ namespace ConceptMatrix.Views
                 #region Helm
                 if (HelmAdvLoad == true)
                 {
-                    if (BoneLoader.ExMetA != null)
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 2)
                     {
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetA_X), MemoryManager.StringToByteArray(BoneLoader.ExMetA.Replace(" ", string.Empty)));
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetB_X), MemoryManager.StringToByteArray(BoneLoader.ExMetB.Replace(" ", string.Empty)));
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetC_X), MemoryManager.StringToByteArray(BoneLoader.ExMetC.Replace(" ", string.Empty)));
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetD_X), MemoryManager.StringToByteArray(BoneLoader.ExMetD.Replace(" ", string.Empty)));
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetE_X), MemoryManager.StringToByteArray(BoneLoader.ExMetE.Replace(" ", string.Empty)));
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetF_X), MemoryManager.StringToByteArray(BoneLoader.ExMetF.Replace(" ", string.Empty)));
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetG_X), MemoryManager.StringToByteArray(BoneLoader.ExMetG.Replace(" ", string.Empty)));
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetH_X), MemoryManager.StringToByteArray(BoneLoader.ExMetH.Replace(" ", string.Empty)));
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetI_X), MemoryManager.StringToByteArray(BoneLoader.ExMetI.Replace(" ", string.Empty)));
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetJ_X), MemoryManager.StringToByteArray(BoneLoader.ExMetJ.Replace(" ", string.Empty)));
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetK_X), MemoryManager.StringToByteArray(BoneLoader.ExMetK.Replace(" ", string.Empty)));
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetL_X), MemoryManager.StringToByteArray(BoneLoader.ExMetL.Replace(" ", string.Empty)));
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetM_X), MemoryManager.StringToByteArray(BoneLoader.ExMetM.Replace(" ", string.Empty)));
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetN_X), MemoryManager.StringToByteArray(BoneLoader.ExMetN.Replace(" ", string.Empty)));
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetO_X), MemoryManager.StringToByteArray(BoneLoader.ExMetO.Replace(" ", string.Empty)));
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetP_X), MemoryManager.StringToByteArray(BoneLoader.ExMetP.Replace(" ", string.Empty)));
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetQ_X), MemoryManager.StringToByteArray(BoneLoader.ExMetQ.Replace(" ", string.Empty)));
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetR_X), MemoryManager.StringToByteArray(BoneLoader.ExMetR.Replace(" ", string.Empty)));
+                        if (BoneLoader.ExMetA != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetA_X), MemoryManager.StringToByteArray(BoneLoader.ExMetA.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 3)
+                    {
+                        if (BoneLoader.ExMetB != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetB_X), MemoryManager.StringToByteArray(BoneLoader.ExMetB.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 4)
+                    {
+                        if (BoneLoader.ExMetC != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetC_X), MemoryManager.StringToByteArray(BoneLoader.ExMetC.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 5)
+                    {
+                        if (BoneLoader.ExMetD != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetD_X), MemoryManager.StringToByteArray(BoneLoader.ExMetD.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 6)
+                    {
+                        if (BoneLoader.ExMetE != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetE_X), MemoryManager.StringToByteArray(BoneLoader.ExMetE.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 7)
+                    {
+                        if (BoneLoader.ExMetF != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetF_X), MemoryManager.StringToByteArray(BoneLoader.ExMetF.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 8)
+                    {
+                        if (BoneLoader.ExMetG != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetG_X), MemoryManager.StringToByteArray(BoneLoader.ExMetG.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 9)
+                    {
+                        if (BoneLoader.ExMetH != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetH_X), MemoryManager.StringToByteArray(BoneLoader.ExMetH.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 10)
+                    {
+                        if (BoneLoader.ExMetI != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetI_X), MemoryManager.StringToByteArray(BoneLoader.ExMetI.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 11)
+                    {
+                        if (BoneLoader.ExMetJ != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetJ_X), MemoryManager.StringToByteArray(BoneLoader.ExMetJ.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 12)
+                    {
+                        if (BoneLoader.ExMetK != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetK_X), MemoryManager.StringToByteArray(BoneLoader.ExMetK.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 13)
+                    {
+                        if (BoneLoader.ExMetL != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetL_X), MemoryManager.StringToByteArray(BoneLoader.ExMetL.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 14)
+                    {
+                        if (BoneLoader.ExMetM != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetM_X), MemoryManager.StringToByteArray(BoneLoader.ExMetM.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 15)
+                    {
+                        if (BoneLoader.ExMetN != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetN_X), MemoryManager.StringToByteArray(BoneLoader.ExMetN.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 16)
+                    {
+                        if (BoneLoader.ExMetO != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetO_X), MemoryManager.StringToByteArray(BoneLoader.ExMetO.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 17)
+                    {
+                        if (BoneLoader.ExMetP != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetP_X), MemoryManager.StringToByteArray(BoneLoader.ExMetP.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 18)
+                    {
+                        if (BoneLoader.ExMetQ != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetQ_X), MemoryManager.StringToByteArray(BoneLoader.ExMetQ.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 19)
+                    {
+                        if (BoneLoader.ExMetR != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetR_X), MemoryManager.StringToByteArray(BoneLoader.ExMetR.Replace(" ", string.Empty)));
+                        }
                     }
                 }
                 #endregion
                 #region Top
                 if (TopAdvLoad == true)
                 {
-                    if (BoneLoader.ExTopA != null)
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 2)
                     {
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopA_X), MemoryManager.StringToByteArray(BoneLoader.ExTopA.Replace(" ", string.Empty)));
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopB_X), MemoryManager.StringToByteArray(BoneLoader.ExTopB.Replace(" ", string.Empty)));
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopC_X), MemoryManager.StringToByteArray(BoneLoader.ExTopC.Replace(" ", string.Empty)));
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopD_X), MemoryManager.StringToByteArray(BoneLoader.ExTopD.Replace(" ", string.Empty)));
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopE_X), MemoryManager.StringToByteArray(BoneLoader.ExTopE.Replace(" ", string.Empty)));
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopF_X), MemoryManager.StringToByteArray(BoneLoader.ExTopF.Replace(" ", string.Empty)));
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopG_X), MemoryManager.StringToByteArray(BoneLoader.ExTopG.Replace(" ", string.Empty)));
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopH_X), MemoryManager.StringToByteArray(BoneLoader.ExTopH.Replace(" ", string.Empty)));
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopI_X), MemoryManager.StringToByteArray(BoneLoader.ExTopI.Replace(" ", string.Empty)));
+                        if (BoneLoader.ExTopA != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopA_X), MemoryManager.StringToByteArray(BoneLoader.ExTopA.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 3)
+                    {
+                        if (BoneLoader.ExTopB != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopB_X), MemoryManager.StringToByteArray(BoneLoader.ExTopB.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 4)
+                    {
+                        if (BoneLoader.ExTopC != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopC_X), MemoryManager.StringToByteArray(BoneLoader.ExTopC.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 5)
+                    {
+                        if (BoneLoader.ExTopD != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopD_X), MemoryManager.StringToByteArray(BoneLoader.ExTopD.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 6)
+                    {
+                        if (BoneLoader.ExTopE != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopE_X), MemoryManager.StringToByteArray(BoneLoader.ExTopE.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 7)
+                    {
+                        if (BoneLoader.ExTopF != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopF_X), MemoryManager.StringToByteArray(BoneLoader.ExTopF.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 8)
+                    {
+                        if (BoneLoader.ExTopG != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopG_X), MemoryManager.StringToByteArray(BoneLoader.ExTopG.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 9)
+                    {
+                        if (BoneLoader.ExTopH != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopH_X), MemoryManager.StringToByteArray(BoneLoader.ExTopH.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 10)
+                    {
+                        if (BoneLoader.ExTopI != null)
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopI_X), MemoryManager.StringToByteArray(BoneLoader.ExTopI.Replace(" ", string.Empty)));
+                        }
                     }
                 }
                 #endregion

@@ -904,6 +904,7 @@ namespace ConceptMatrix.Utility
         public string VieraLipLowerB_Y { get; set; }
         public string VieraLipLowerB_Z { get; set; }
         public string VieraLipLowerB_W { get; set; }
+        public string ExHair_Value { get; set; }
         public string ExRootHair_X { get; set; }
         public string ExRootHair_Y { get; set; }
         public string ExRootHair_Z { get; set; }
@@ -956,6 +957,7 @@ namespace ConceptMatrix.Utility
         public string ExHairL_Y { get; set; }
         public string ExHairL_Z { get; set; }
         public string ExHairL_W { get; set; }
+        public string ExMet_Value { get; set; }
         public string ExRootMet_X { get; set; }
         public string ExRootMet_Y { get; set; }
         public string ExRootMet_Z { get; set; }
@@ -1032,6 +1034,7 @@ namespace ConceptMatrix.Utility
         public string ExMetR_Y { get; set; }
         public string ExMetR_Z { get; set; }
         public string ExMetR_W { get; set; }
+        public string ExTop_Value { get; set; }
         public string ExRootTop_X { get; set; }
         public string ExRootTop_Y { get; set; }
         public string ExRootTop_Z { get; set; }

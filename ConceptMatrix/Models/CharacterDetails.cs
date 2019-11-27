@@ -1138,6 +1138,11 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<float> ExTopI_Z { get; set; }
         [JsonIgnore] public Address<float> ExTopI_W { get; set; }
         #endregion
+        #region Bone Values
+        [JsonIgnore] public Address<byte> ExHair_Value { get; set; }
+        [JsonIgnore] public Address<byte> ExMet_Value { get; set; }
+        [JsonIgnore] public Address<byte> ExTop_Value { get; set; }
+        #endregion
         #region Bone Rotate
         [JsonIgnore] public bool Root_Rotate { get; set; }
         [JsonIgnore] public bool Abdomen_Rotate { get; set; }
@@ -2579,6 +2584,11 @@ namespace ConceptMatrix.Models
             ExTopI_Y = new Address<float>();
             ExTopI_Z = new Address<float>();
             ExTopI_W = new Address<float>();
+            #endregion
+            #region Bone Values
+            ExHair_Value = new Address<byte>();
+            ExMet_Value = new Address<byte>();
+            ExTop_Value = new Address<byte>();
             #endregion
         }
     }

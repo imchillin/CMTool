@@ -753,6 +753,7 @@
         <Label Content="Enable Editing:" HorizontalAlignment="Left" Margin="907,375,0,0" VerticalAlignment="Top" Height="28"/>
         <ToggleButton x:Name="PhysicsButton" Checked="PhysicsButton_Checked" Unchecked="PhysicsButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1011,405,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" />
         <Label Content="Enable Physics:" HorizontalAlignment="Left" Margin="907,405,0,0" VerticalAlignment="Top" Height="28"/>
+        <Button x:Name="TertiaryButton" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="890,445,0,0" VerticalAlignment="Top" Width="175" Click="EnableTertiary" Height="28" Content="Detect Tertiary Bones" IsEnabled="False"/>
 
         <!-- Other -->
 

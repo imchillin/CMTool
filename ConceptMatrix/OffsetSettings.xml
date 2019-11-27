@@ -1245,6 +1245,7 @@
         <VieraLipLowerB_Z>98,68,300,18,708</VieraLipLowerB_Z>
         <VieraLipLowerB_W>98,68,300,18,70C</VieraLipLowerB_W>
 
+        <ExHair_Value>98,68,4C0,10</ExHair_Value>
         <ExRootHair_X>98,68,4C0,18,10</ExRootHair_X>
         <ExRootHair_Y>98,68,4C0,18,14</ExRootHair_Y>
         <ExRootHair_Z>98,68,4C0,18,18</ExRootHair_Z>
@@ -1310,6 +1311,7 @@
         <ExHairL_Z>98,68,4C0,18,258</ExHairL_Z>
         <ExHairL_W>98,68,4C0,18,25C</ExHairL_W>
 
+        <ExMet_Value>98,68,680,10</ExMet_Value>
         <ExRootMet_X>98,68,680,18,10</ExRootMet_X>
         <ExRootMet_Y>98,68,680,18,14</ExRootMet_Y>
         <ExRootMet_Z>98,68,680,18,18</ExRootMet_Z>
@@ -1405,6 +1407,7 @@
         <ExMetR_Z>98,68,680,18,378</ExMetR_Z>
         <ExMetR_W>98,68,680,18,37C</ExMetR_W>
 
+        <ExTop_Value>98,68,840,10</ExTop_Value>
         <ExRootTop_X>98,68,840,18,10</ExRootTop_X>
         <ExRootTop_Y>98,68,840,18,14</ExRootTop_Y>
         <ExRootTop_Z>98,68,840,18,18</ExRootTop_Z>
