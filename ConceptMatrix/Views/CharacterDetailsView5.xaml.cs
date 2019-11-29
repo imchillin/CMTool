@@ -23192,6 +23192,7 @@ namespace ConceptMatrix.Views
 
             public string Race { get; set; }
             public string Clan { get; set; }
+            public string Body { get; set; }
 
             public string Root { get; set; }
             public string Abdomen { get; set; }
@@ -23416,6 +23417,7 @@ namespace ConceptMatrix.Views
 
                 BoneSaver.Race = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Race), 1));
                 BoneSaver.Clan = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Clan), 1));
+                BoneSaver.Body = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.BodyType), 1));
 
                 #region Head
                 BoneSaver.Head = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Head_X), 16));
