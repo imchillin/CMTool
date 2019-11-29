@@ -35,7 +35,7 @@
             </local:PoseRotationView>
         </Border>
 
-        <mah:MetroAnimatedTabControl TabStripPlacement="Left" Margin="11,10,278,10" Background="{x:Null}" Width="830">
+        <mah:MetroAnimatedTabControl x:Name="MatrixTabControl" TabStripPlacement="Left" Margin="11,10,278,10" Background="{x:Null}" Width="830">
             <TabItem Header="Head &#x26; Hair" Width="200" Height="40" Background="{x:Null}">
                 <Grid Margin="0">
                     <GroupBox Header="Head" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="175" Width="630"/>
@@ -754,6 +754,56 @@
         <ToggleButton x:Name="PhysicsButton" Checked="PhysicsButton_Checked" Unchecked="PhysicsButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1011,405,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" />
         <Label Content="Enable Physics:" HorizontalAlignment="Left" Margin="907,405,0,0" VerticalAlignment="Top" Height="28"/>
         <Button x:Name="TertiaryButton" ToolTip="Detect Race, Hair, and Equipment exclusive Bones for the selected actor." materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="890,445,0,0" VerticalAlignment="Top" Width="175" Click="EnableTertiary" Height="28" Content="Detect Tertiary Bones" IsEnabled="False"/>
+        <Button x:Name="HeadShortcut" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="863,11,0,0" VerticalAlignment="Top" Width="33" Click="HeadShortcut_Click" Height="33" IsEnabled="true" Padding="0">
+            <Button.Background>
+                <ImageBrush ImageSource="/ConceptMatrix;component/Resources/head.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="HairShortcut" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="902,11,0,0" VerticalAlignment="Top" Width="33" Click="HairShortcut_Click" Height="33" IsEnabled="true" Padding="0">
+            <Button.Background>
+                <ImageBrush ImageSource="/ConceptMatrix;component/Resources/hair.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="BodyShortcut" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="863,46,0,0" VerticalAlignment="Top" Width="33" Click="BodyShortcut_Click" Height="33" IsEnabled="true" Padding="0">
+            <Button.Background>
+                <ImageBrush ImageSource="/ConceptMatrix;component/Resources/body.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="ClothesShortcut" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="902,46,0,0" VerticalAlignment="Top" Width="33" Click="ClothesShortcut_Click" Height="33" IsEnabled="true" Padding="0">
+            <Button.Background>
+                <ImageBrush ImageSource="/ConceptMatrix;component/Resources/clothes.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="HandsShortcut" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="863,81,0,0" VerticalAlignment="Top" Width="33" Click="HandsShortcut_Click" Height="33" IsEnabled="true" Padding="0">
+            <Button.Background>
+                <ImageBrush ImageSource="/ConceptMatrix;component/Resources/hands.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="PantsShortcut" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="902,81,0,0" VerticalAlignment="Top" Width="33" Click="PantsShortcut_Click" Height="33" IsEnabled="true" Padding="0">
+            <Button.Background>
+                <ImageBrush ImageSource="/ConceptMatrix;component/Resources/legs.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="EquipShortcut" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="863,116,0,0" VerticalAlignment="Top" Width="33" Click="EquipShortcut_Click" Height="33" IsEnabled="true" Padding="0">
+            <Button.Background>
+                <ImageBrush ImageSource="/ConceptMatrix;component/Resources/equip.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="OtherShortcut" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="902,116,0,0" VerticalAlignment="Top" Width="33" Click="OtherShortcut_Click" Height="33" IsEnabled="true" Padding="0">
+            <Button.Background>
+                <ImageBrush ImageSource="/ConceptMatrix;component/Resources/other.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="SaveShortcut" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="863,151,0,0" VerticalAlignment="Top" Width="33" Click="SaveShortcut_Click" Height="33" IsEnabled="true" Padding="0">
+            <Button.Background>
+                <ImageBrush ImageSource="/ConceptMatrix;component/Resources/save.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="LoadShortcut" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="902,151,0,0" VerticalAlignment="Top" Width="33" Click="LoadShortcut_Click" Height="33" IsEnabled="true" Padding="0">
+            <Button.Background>
+                <ImageBrush ImageSource="/ConceptMatrix;component/Resources/load.png"/>
+            </Button.Background>
+        </Button>
 
         <!-- Other -->
 

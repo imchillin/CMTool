@@ -19980,7 +19980,7 @@ namespace ConceptMatrix.Views
             if (TopSaved01 == true) LoadstateTop01.IsEnabled = true;
             if (TopSaved02 == true) LoadstateTop02.IsEnabled = true;
         }
-     private void EditModeButton_Unchecked(object sender, RoutedEventArgs e)
+        private void EditModeButton_Unchecked(object sender, RoutedEventArgs e)
         {
             CharacterDetails.BoneEditMode = false;
             PhysicsButton.IsChecked = false;
@@ -22181,6 +22181,49 @@ namespace ConceptMatrix.Views
         private void LoadRightLeg_Unchecked(object sender, RoutedEventArgs e)
         {
             RightLegAdvLoad = false;
+        }
+        #endregion
+
+        #region Shortcuts
+        private void HeadShortcut_Click(object sender, RoutedEventArgs e)
+        {
+            MatrixTabControl.SelectedIndex = 0;
+        }
+        private void HairShortcut_Click(object sender, RoutedEventArgs e)
+        {
+            MatrixTabControl.SelectedIndex = 0;
+        }
+        private void BodyShortcut_Click(object sender, RoutedEventArgs e)
+        {
+            MatrixTabControl.SelectedIndex = 1;
+        }
+        private void ClothesShortcut_Click(object sender, RoutedEventArgs e)
+        {
+            MatrixTabControl.SelectedIndex = 1;
+        }
+        private void HandsShortcut_Click(object sender, RoutedEventArgs e)
+        {
+            MatrixTabControl.SelectedIndex = 2;
+        }
+        private void PantsShortcut_Click(object sender, RoutedEventArgs e)
+        {
+            MatrixTabControl.SelectedIndex = 2;
+        }
+        private void EquipShortcut_Click(object sender, RoutedEventArgs e)
+        {
+            MatrixTabControl.SelectedIndex = 3;
+        }
+        private void OtherShortcut_Click(object sender, RoutedEventArgs e)
+        {
+            MatrixTabControl.SelectedIndex = 3;
+        }
+        private void SaveShortcut_Click(object sender, RoutedEventArgs e)
+        {
+            MatrixTabControl.SelectedIndex = 4;
+        }
+        private void LoadShortcut_Click(object sender, RoutedEventArgs e)
+        {
+            MatrixTabControl.SelectedIndex = 4;
         }
         #endregion
 

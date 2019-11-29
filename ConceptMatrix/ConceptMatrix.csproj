@@ -333,6 +333,16 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <Resource Include="Resources\body.png" />
+    <Resource Include="Resources\clothes.png" />
+    <Resource Include="Resources\equip.png" />
+    <Resource Include="Resources\hair.png" />
+    <Resource Include="Resources\hands.png" />
+    <Resource Include="Resources\head.png" />
+    <Resource Include="Resources\legs.png" />
+    <Resource Include="Resources\load.png" />
+    <Resource Include="Resources\other.png" />
+    <Resource Include="Resources\save.png" />
     <Resource Include="Resources\worldbg.png" />
     <Resource Include="Resources\propertiesbg.png" />
     <Resource Include="Resources\equipbg.png" />
