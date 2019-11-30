@@ -98,6 +98,9 @@
             <TextBlock Grid.Row="1" VerticalAlignment="Center" Text="Hydaelyn Theme"/>
             <ToggleButton x:Name="ThemeButton" Grid.Row="1" Grid.Column="1" Margin="10,4.797,9.999,3.203" Command="{Binding ToggleBaseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked}" HorizontalAlignment="Center" VerticalAlignment="Center" />
             <TextBlock Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Text="Zodiark Theme"/>
+            <TextBlock Grid.Row="1" VerticalAlignment="Center" Text="Disable Background" Margin="127.467,5,-139.467,5" Grid.Column="2"/>
+            <ToggleButton x:Name="BackgroundButton" Grid.Row="1" Grid.Column="2" Margin="234.467,5,-189.467,3" Command="{Binding ToggleBackground}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Text="Enable Background" Margin="285.467,5,-285.567,5"/>
         </Grid>
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
             <ItemsControl ItemsSource="{Binding Swatches, Mode=OneTime}">

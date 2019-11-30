@@ -24,6 +24,7 @@ namespace ConceptMatrix.Views
         public CharacterDetailsView2()
         {
             InitializeComponent();
+            if (SaveSettings.Default.HasBackground == false) EquipBG.Opacity = 0;
             MainViewModel.ViewTime2 = this;
         }
 

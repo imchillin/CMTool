@@ -15,7 +15,7 @@
     </UserControl.Resources>
     <Grid Height="530" Width="1119">
         <Grid.Background>
-            <ImageBrush ImageSource="/ConceptMatrix;component/Resources/posebg.png"/>
+            <ImageBrush x:Name="PoseBG" ImageSource="/ConceptMatrix;component/Resources/posebg.png"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

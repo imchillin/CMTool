@@ -29,6 +29,7 @@ namespace ConceptMatrix.Views
         public CharacterDetailsView4()
         {
             InitializeComponent();
+            if (SaveSettings.Default.HasBackground == false) PropBG.Opacity = 0;
             MainViewModel.ViewTime4 = this;
         }
 

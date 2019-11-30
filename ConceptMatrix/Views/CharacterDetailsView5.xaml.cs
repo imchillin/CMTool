@@ -504,6 +504,7 @@ namespace ConceptMatrix.Views
         public CharacterDetailsView5()
         {
             InitializeComponent();
+            if (SaveSettings.Default.HasBackground == false) PoseBG.Opacity = 0;
             MainViewModel.ViewTime5 = this;
         }
 

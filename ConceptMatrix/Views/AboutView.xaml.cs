@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿using ConceptMatrix.Utility;
+using ConceptMatrix.ViewModel;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -12,7 +14,9 @@ namespace ConceptMatrix.Views
 		public AboutView()
 		{
 			InitializeComponent();
-		}
+            MainViewModel.AboutTime = this;
+            if (SaveSettings.Default.HasBackground == false) AboutBG.Opacity = 0;
+        }
 		private void GitHubButton_OnClick(object sender, RoutedEventArgs e)
 		{
 			Process.Start($"https://github.com/{App.GithubRepo}");

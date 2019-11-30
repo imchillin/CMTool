@@ -28,6 +28,7 @@ namespace ConceptMatrix.Views
         public CharacterDetailsView3()
         {
             InitializeComponent();
+            if (SaveSettings.Default.HasBackground == false) WorldBG.Opacity = 0;
             MainViewModel.ViewTime3 = this;
         }
 

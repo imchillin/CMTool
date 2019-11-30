@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignWidth="1115" d:DesignHeight="460">
     <UserControl.Background>
-        <ImageBrush ImageSource="/ConceptMatrix;component/Resources/aboutbg.png"/>
+        <ImageBrush x:Name="AboutBG" ImageSource="/ConceptMatrix;component/Resources/aboutbg.png"/>
     </UserControl.Background>
     <Grid>
 		<Grid.ColumnDefinitions>

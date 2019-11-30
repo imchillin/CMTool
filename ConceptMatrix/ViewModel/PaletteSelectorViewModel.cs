@@ -15,6 +15,7 @@ namespace ConceptMatrix.ViewModel
         {
             Swatches = new SwatchesProvider().Swatches;
         }
+        public ICommand ToggleBackground { get; } = new AnotherCommandImplementation(o => ApplyBG((bool)o));
 
         public ICommand ToggleBaseCommand { get; } = new AnotherCommandImplementation(o => ApplyBase((bool)o));
 
@@ -23,6 +24,29 @@ namespace ConceptMatrix.ViewModel
         public ICommand ApplyPrimaryCommand { get; } = new AnotherCommandImplementation(o => ApplyPrimary((Swatch)o));
 
         public ICommand ApplyAccentCommand { get; } = new AnotherCommandImplementation(o => ApplyAccent((Swatch)o));
+
+        private static void ApplyBG(bool isBG)
+        {
+            if (!isBG)
+            {
+                MainViewModel.ViewTime.ActorBG.Opacity = 0;
+                MainViewModel.ViewTime2.EquipBG.Opacity = 0;
+                MainViewModel.ViewTime3.WorldBG.Opacity = 0;
+                MainViewModel.ViewTime4.PropBG.Opacity = 0;
+                MainViewModel.ViewTime5.PoseBG.Opacity = 0;
+                MainViewModel.AboutTime.AboutBG.Opacity = 0;
+            }
+            else
+            {
+                MainViewModel.ViewTime.ActorBG.Opacity = 100;
+                MainViewModel.ViewTime2.EquipBG.Opacity = 100;
+                MainViewModel.ViewTime3.WorldBG.Opacity = 100;
+                MainViewModel.ViewTime4.PropBG.Opacity = 100;
+                MainViewModel.ViewTime5.PoseBG.Opacity = 100;
+                MainViewModel.AboutTime.AboutBG.Opacity = 100;
+            }
+            SaveSettings.Default.HasBackground = isBG;
+        }
 
         private static void ApplyBase(bool isDark)
         {
