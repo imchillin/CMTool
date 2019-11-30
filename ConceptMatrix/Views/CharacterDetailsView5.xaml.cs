@@ -30,1640 +30,421 @@ namespace ConceptMatrix.Views
     /// </summary>
     public partial class CharacterDetailsView5 : UserControl
     {
-        #region Save Floats
-        public float Root_X_Sav01;
-        public float Root_Y_Sav01;
-        public float Root_Z_Sav01;
-        public float Root_W_Sav01;
-        public float Abdomen_X_Sav01;
-        public float Abdomen_Y_Sav01;
-        public float Abdomen_Z_Sav01;
-        public float Abdomen_W_Sav01;
-        public float Throw_X_Sav01;
-        public float Throw_Y_Sav01;
-        public float Throw_Z_Sav01;
-        public float Throw_W_Sav01;
-        public float Waist_X_Sav01;
-        public float Waist_Y_Sav01;
-        public float Waist_Z_Sav01;
-        public float Waist_W_Sav01;
-        public float SpineA_X_Sav01;
-        public float SpineA_Y_Sav01;
-        public float SpineA_Z_Sav01;
-        public float SpineA_W_Sav01;
-        public float LegLeft_X_Sav01;
-        public float LegLeft_Y_Sav01;
-        public float LegLeft_Z_Sav01;
-        public float LegLeft_W_Sav01;
-        public float LegRight_X_Sav01;
-        public float LegRight_Y_Sav01;
-        public float LegRight_Z_Sav01;
-        public float LegRight_W_Sav01;
-        public float HolsterLeft_X_Sav01;
-        public float HolsterLeft_Y_Sav01;
-        public float HolsterLeft_Z_Sav01;
-        public float HolsterLeft_W_Sav01;
-        public float HolsterRight_X_Sav01;
-        public float HolsterRight_Y_Sav01;
-        public float HolsterRight_Z_Sav01;
-        public float HolsterRight_W_Sav01;
-        public float SheatheLeft_X_Sav01;
-        public float SheatheLeft_Y_Sav01;
-        public float SheatheLeft_Z_Sav01;
-        public float SheatheLeft_W_Sav01;
-        public float SheatheRight_X_Sav01;
-        public float SheatheRight_Y_Sav01;
-        public float SheatheRight_Z_Sav01;
-        public float SheatheRight_W_Sav01;
-        public float SpineB_X_Sav01;
-        public float SpineB_Y_Sav01;
-        public float SpineB_Z_Sav01;
-        public float SpineB_W_Sav01;
-        public float ClothBackALeft_X_Sav01;
-        public float ClothBackALeft_Y_Sav01;
-        public float ClothBackALeft_Z_Sav01;
-        public float ClothBackALeft_W_Sav01;
-        public float ClothBackARight_X_Sav01;
-        public float ClothBackARight_Y_Sav01;
-        public float ClothBackARight_Z_Sav01;
-        public float ClothBackARight_W_Sav01;
-        public float ClothFrontALeft_X_Sav01;
-        public float ClothFrontALeft_Y_Sav01;
-        public float ClothFrontALeft_Z_Sav01;
-        public float ClothFrontALeft_W_Sav01;
-        public float ClothFrontARight_X_Sav01;
-        public float ClothFrontARight_Y_Sav01;
-        public float ClothFrontARight_Z_Sav01;
-        public float ClothFrontARight_W_Sav01;
-        public float ClothSideALeft_X_Sav01;
-        public float ClothSideALeft_Y_Sav01;
-        public float ClothSideALeft_Z_Sav01;
-        public float ClothSideALeft_W_Sav01;
-        public float ClothSideARight_X_Sav01;
-        public float ClothSideARight_Y_Sav01;
-        public float ClothSideARight_Z_Sav01;
-        public float ClothSideARight_W_Sav01;
-        public float KneeLeft_X_Sav01;
-        public float KneeLeft_Y_Sav01;
-        public float KneeLeft_Z_Sav01;
-        public float KneeLeft_W_Sav01;
-        public float KneeRight_X_Sav01;
-        public float KneeRight_Y_Sav01;
-        public float KneeRight_Z_Sav01;
-        public float KneeRight_W_Sav01;
-        public float BreastLeft_X_Sav01;
-        public float BreastLeft_Y_Sav01;
-        public float BreastLeft_Z_Sav01;
-        public float BreastLeft_W_Sav01;
-        public float BreastRight_X_Sav01;
-        public float BreastRight_Y_Sav01;
-        public float BreastRight_Z_Sav01;
-        public float BreastRight_W_Sav01;
-        public float SpineC_X_Sav01;
-        public float SpineC_Y_Sav01;
-        public float SpineC_Z_Sav01;
-        public float SpineC_W_Sav01;
-        public float ClothBackBLeft_X_Sav01;
-        public float ClothBackBLeft_Y_Sav01;
-        public float ClothBackBLeft_Z_Sav01;
-        public float ClothBackBLeft_W_Sav01;
-        public float ClothBackBRight_X_Sav01;
-        public float ClothBackBRight_Y_Sav01;
-        public float ClothBackBRight_Z_Sav01;
-        public float ClothBackBRight_W_Sav01;
-        public float ClothFrontBLeft_X_Sav01;
-        public float ClothFrontBLeft_Y_Sav01;
-        public float ClothFrontBLeft_Z_Sav01;
-        public float ClothFrontBLeft_W_Sav01;
-        public float ClothFrontBRight_X_Sav01;
-        public float ClothFrontBRight_Y_Sav01;
-        public float ClothFrontBRight_Z_Sav01;
-        public float ClothFrontBRight_W_Sav01;
-        public float ClothSideBLeft_X_Sav01;
-        public float ClothSideBLeft_Y_Sav01;
-        public float ClothSideBLeft_Z_Sav01;
-        public float ClothSideBLeft_W_Sav01;
-        public float ClothSideBRight_X_Sav01;
-        public float ClothSideBRight_Y_Sav01;
-        public float ClothSideBRight_Z_Sav01;
-        public float ClothSideBRight_W_Sav01;
-        public float CalfLeft_X_Sav01;
-        public float CalfLeft_Y_Sav01;
-        public float CalfLeft_Z_Sav01;
-        public float CalfLeft_W_Sav01;
-        public float CalfRight_X_Sav01;
-        public float CalfRight_Y_Sav01;
-        public float CalfRight_Z_Sav01;
-        public float CalfRight_W_Sav01;
-        public float ScabbardLeft_X_Sav01;
-        public float ScabbardLeft_Y_Sav01;
-        public float ScabbardLeft_Z_Sav01;
-        public float ScabbardLeft_W_Sav01;
-        public float ScabbardRight_X_Sav01;
-        public float ScabbardRight_Y_Sav01;
-        public float ScabbardRight_Z_Sav01;
-        public float ScabbardRight_W_Sav01;
-        public float Neck_X_Sav01;
-        public float Neck_Y_Sav01;
-        public float Neck_Z_Sav01;
-        public float Neck_W_Sav01;
-        public float ClavicleLeft_X_Sav01;
-        public float ClavicleLeft_Y_Sav01;
-        public float ClavicleLeft_Z_Sav01;
-        public float ClavicleLeft_W_Sav01;
-        public float ClavicleRight_X_Sav01;
-        public float ClavicleRight_Y_Sav01;
-        public float ClavicleRight_Z_Sav01;
-        public float ClavicleRight_W_Sav01;
-        public float ClothBackCLeft_X_Sav01;
-        public float ClothBackCLeft_Y_Sav01;
-        public float ClothBackCLeft_Z_Sav01;
-        public float ClothBackCLeft_W_Sav01;
-        public float ClothBackCRight_X_Sav01;
-        public float ClothBackCRight_Y_Sav01;
-        public float ClothBackCRight_Z_Sav01;
-        public float ClothBackCRight_W_Sav01;
-        public float ClothFrontCLeft_X_Sav01;
-        public float ClothFrontCLeft_Y_Sav01;
-        public float ClothFrontCLeft_Z_Sav01;
-        public float ClothFrontCLeft_W_Sav01;
-        public float ClothFrontCRight_X_Sav01;
-        public float ClothFrontCRight_Y_Sav01;
-        public float ClothFrontCRight_Z_Sav01;
-        public float ClothFrontCRight_W_Sav01;
-        public float ClothSideCLeft_X_Sav01;
-        public float ClothSideCLeft_Y_Sav01;
-        public float ClothSideCLeft_Z_Sav01;
-        public float ClothSideCLeft_W_Sav01;
-        public float ClothSideCRight_X_Sav01;
-        public float ClothSideCRight_Y_Sav01;
-        public float ClothSideCRight_Z_Sav01;
-        public float ClothSideCRight_W_Sav01;
-        public float PoleynLeft_X_Sav01;
-        public float PoleynLeft_Y_Sav01;
-        public float PoleynLeft_Z_Sav01;
-        public float PoleynLeft_W_Sav01;
-        public float PoleynRight_X_Sav01;
-        public float PoleynRight_Y_Sav01;
-        public float PoleynRight_Z_Sav01;
-        public float PoleynRight_W_Sav01;
-        public float FootLeft_X_Sav01;
-        public float FootLeft_Y_Sav01;
-        public float FootLeft_Z_Sav01;
-        public float FootLeft_W_Sav01;
-        public float FootRight_X_Sav01;
-        public float FootRight_Y_Sav01;
-        public float FootRight_Z_Sav01;
-        public float FootRight_W_Sav01;
-        public float Head_X_Sav01;
-        public float Head_Y_Sav01;
-        public float Head_Z_Sav01;
-        public float Head_W_Sav01;
-        public float ArmLeft_X_Sav01;
-        public float ArmLeft_Y_Sav01;
-        public float ArmLeft_Z_Sav01;
-        public float ArmLeft_W_Sav01;
-        public float ArmRight_X_Sav01;
-        public float ArmRight_Y_Sav01;
-        public float ArmRight_Z_Sav01;
-        public float ArmRight_W_Sav01;
-        public float PauldronLeft_X_Sav01;
-        public float PauldronLeft_Y_Sav01;
-        public float PauldronLeft_Z_Sav01;
-        public float PauldronLeft_W_Sav01;
-        public float PauldronRight_X_Sav01;
-        public float PauldronRight_Y_Sav01;
-        public float PauldronRight_Z_Sav01;
-        public float PauldronRight_W_Sav01;
-        public float Unknown00_X_Sav01;
-        public float Unknown00_Y_Sav01;
-        public float Unknown00_Z_Sav01;
-        public float Unknown00_W_Sav01;
-        public float ToesLeft_X_Sav01;
-        public float ToesLeft_Y_Sav01;
-        public float ToesLeft_Z_Sav01;
-        public float ToesLeft_W_Sav01;
-        public float ToesRight_X_Sav01;
-        public float ToesRight_Y_Sav01;
-        public float ToesRight_Z_Sav01;
-        public float ToesRight_W_Sav01;
-        public float HairA_X_Sav01;
-        public float HairA_Y_Sav01;
-        public float HairA_Z_Sav01;
-        public float HairA_W_Sav01;
-        public float HairFrontLeft_X_Sav01;
-        public float HairFrontLeft_Y_Sav01;
-        public float HairFrontLeft_Z_Sav01;
-        public float HairFrontLeft_W_Sav01;
-        public float HairFrontRight_X_Sav01;
-        public float HairFrontRight_Y_Sav01;
-        public float HairFrontRight_Z_Sav01;
-        public float HairFrontRight_W_Sav01;
-        public float EarLeft_X_Sav01;
-        public float EarLeft_Y_Sav01;
-        public float EarLeft_Z_Sav01;
-        public float EarLeft_W_Sav01;
-        public float EarRight_X_Sav01;
-        public float EarRight_Y_Sav01;
-        public float EarRight_Z_Sav01;
-        public float EarRight_W_Sav01;
-        public float ForearmLeft_X_Sav01;
-        public float ForearmLeft_Y_Sav01;
-        public float ForearmLeft_Z_Sav01;
-        public float ForearmLeft_W_Sav01;
-        public float ForearmRight_X_Sav01;
-        public float ForearmRight_Y_Sav01;
-        public float ForearmRight_Z_Sav01;
-        public float ForearmRight_W_Sav01;
-        public float ShoulderLeft_X_Sav01;
-        public float ShoulderLeft_Y_Sav01;
-        public float ShoulderLeft_Z_Sav01;
-        public float ShoulderLeft_W_Sav01;
-        public float ShoulderRight_X_Sav01;
-        public float ShoulderRight_Y_Sav01;
-        public float ShoulderRight_Z_Sav01;
-        public float ShoulderRight_W_Sav01;
-        public float HairB_X_Sav01;
-        public float HairB_Y_Sav01;
-        public float HairB_Z_Sav01;
-        public float HairB_W_Sav01;
-        public float HandLeft_X_Sav01;
-        public float HandLeft_Y_Sav01;
-        public float HandLeft_Z_Sav01;
-        public float HandLeft_W_Sav01;
-        public float HandRight_X_Sav01;
-        public float HandRight_Y_Sav01;
-        public float HandRight_Z_Sav01;
-        public float HandRight_W_Sav01;
-        public float ShieldLeft_X_Sav01;
-        public float ShieldLeft_Y_Sav01;
-        public float ShieldLeft_Z_Sav01;
-        public float ShieldLeft_W_Sav01;
-        public float ShieldRight_X_Sav01;
-        public float ShieldRight_Y_Sav01;
-        public float ShieldRight_Z_Sav01;
-        public float ShieldRight_W_Sav01;
-        public float EarringALeft_X_Sav01;
-        public float EarringALeft_Y_Sav01;
-        public float EarringALeft_Z_Sav01;
-        public float EarringALeft_W_Sav01;
-        public float EarringARight_X_Sav01;
-        public float EarringARight_Y_Sav01;
-        public float EarringARight_Z_Sav01;
-        public float EarringARight_W_Sav01;
-        public float ElbowLeft_X_Sav01;
-        public float ElbowLeft_Y_Sav01;
-        public float ElbowLeft_Z_Sav01;
-        public float ElbowLeft_W_Sav01;
-        public float ElbowRight_X_Sav01;
-        public float ElbowRight_Y_Sav01;
-        public float ElbowRight_Z_Sav01;
-        public float ElbowRight_W_Sav01;
-        public float CouterLeft_X_Sav01;
-        public float CouterLeft_Y_Sav01;
-        public float CouterLeft_Z_Sav01;
-        public float CouterLeft_W_Sav01;
-        public float CouterRight_X_Sav01;
-        public float CouterRight_Y_Sav01;
-        public float CouterRight_Z_Sav01;
-        public float CouterRight_W_Sav01;
-        public float WristLeft_X_Sav01;
-        public float WristLeft_Y_Sav01;
-        public float WristLeft_Z_Sav01;
-        public float WristLeft_W_Sav01;
-        public float WristRight_X_Sav01;
-        public float WristRight_Y_Sav01;
-        public float WristRight_Z_Sav01;
-        public float WristRight_W_Sav01;
-        public float IndexALeft_X_Sav01;
-        public float IndexALeft_Y_Sav01;
-        public float IndexALeft_Z_Sav01;
-        public float IndexALeft_W_Sav01;
-        public float IndexARight_X_Sav01;
-        public float IndexARight_Y_Sav01;
-        public float IndexARight_Z_Sav01;
-        public float IndexARight_W_Sav01;
-        public float PinkyALeft_X_Sav01;
-        public float PinkyALeft_Y_Sav01;
-        public float PinkyALeft_Z_Sav01;
-        public float PinkyALeft_W_Sav01;
-        public float PinkyARight_X_Sav01;
-        public float PinkyARight_Y_Sav01;
-        public float PinkyARight_Z_Sav01;
-        public float PinkyARight_W_Sav01;
-        public float RingALeft_X_Sav01;
-        public float RingALeft_Y_Sav01;
-        public float RingALeft_Z_Sav01;
-        public float RingALeft_W_Sav01;
-        public float RingARight_X_Sav01;
-        public float RingARight_Y_Sav01;
-        public float RingARight_Z_Sav01;
-        public float RingARight_W_Sav01;
-        public float MiddleALeft_X_Sav01;
-        public float MiddleALeft_Y_Sav01;
-        public float MiddleALeft_Z_Sav01;
-        public float MiddleALeft_W_Sav01;
-        public float MiddleARight_X_Sav01;
-        public float MiddleARight_Y_Sav01;
-        public float MiddleARight_Z_Sav01;
-        public float MiddleARight_W_Sav01;
-        public float ThumbALeft_X_Sav01;
-        public float ThumbALeft_Y_Sav01;
-        public float ThumbALeft_Z_Sav01;
-        public float ThumbALeft_W_Sav01;
-        public float ThumbARight_X_Sav01;
-        public float ThumbARight_Y_Sav01;
-        public float ThumbARight_Z_Sav01;
-        public float ThumbARight_W_Sav01;
-        public float WeaponLeft_X_Sav01;
-        public float WeaponLeft_Y_Sav01;
-        public float WeaponLeft_Z_Sav01;
-        public float WeaponLeft_W_Sav01;
-        public float WeaponRight_X_Sav01;
-        public float WeaponRight_Y_Sav01;
-        public float WeaponRight_Z_Sav01;
-        public float WeaponRight_W_Sav01;
-        public float EarringBLeft_X_Sav01;
-        public float EarringBLeft_Y_Sav01;
-        public float EarringBLeft_Z_Sav01;
-        public float EarringBLeft_W_Sav01;
-        public float EarringBRight_X_Sav01;
-        public float EarringBRight_Y_Sav01;
-        public float EarringBRight_Z_Sav01;
-        public float EarringBRight_W_Sav01;
-        public float IndexBLeft_X_Sav01;
-        public float IndexBLeft_Y_Sav01;
-        public float IndexBLeft_Z_Sav01;
-        public float IndexBLeft_W_Sav01;
-        public float IndexBRight_X_Sav01;
-        public float IndexBRight_Y_Sav01;
-        public float IndexBRight_Z_Sav01;
-        public float IndexBRight_W_Sav01;
-        public float PinkyBLeft_X_Sav01;
-        public float PinkyBLeft_Y_Sav01;
-        public float PinkyBLeft_Z_Sav01;
-        public float PinkyBLeft_W_Sav01;
-        public float PinkyBRight_X_Sav01;
-        public float PinkyBRight_Y_Sav01;
-        public float PinkyBRight_Z_Sav01;
-        public float PinkyBRight_W_Sav01;
-        public float RingBLeft_X_Sav01;
-        public float RingBLeft_Y_Sav01;
-        public float RingBLeft_Z_Sav01;
-        public float RingBLeft_W_Sav01;
-        public float RingBRight_X_Sav01;
-        public float RingBRight_Y_Sav01;
-        public float RingBRight_Z_Sav01;
-        public float RingBRight_W_Sav01;
-        public float MiddleBLeft_X_Sav01;
-        public float MiddleBLeft_Y_Sav01;
-        public float MiddleBLeft_Z_Sav01;
-        public float MiddleBLeft_W_Sav01;
-        public float MiddleBRight_X_Sav01;
-        public float MiddleBRight_Y_Sav01;
-        public float MiddleBRight_Z_Sav01;
-        public float MiddleBRight_W_Sav01;
-        public float ThumbBLeft_X_Sav01;
-        public float ThumbBLeft_Y_Sav01;
-        public float ThumbBLeft_Z_Sav01;
-        public float ThumbBLeft_W_Sav01;
-        public float ThumbBRight_X_Sav01;
-        public float ThumbBRight_Y_Sav01;
-        public float ThumbBRight_Z_Sav01;
-        public float ThumbBRight_W_Sav01;
-        public float TailA_X_Sav01;
-        public float TailA_Y_Sav01;
-        public float TailA_Z_Sav01;
-        public float TailA_W_Sav01;
-        public float TailB_X_Sav01;
-        public float TailB_Y_Sav01;
-        public float TailB_Z_Sav01;
-        public float TailB_W_Sav01;
-        public float TailC_X_Sav01;
-        public float TailC_Y_Sav01;
-        public float TailC_Z_Sav01;
-        public float TailC_W_Sav01;
-        public float TailD_X_Sav01;
-        public float TailD_Y_Sav01;
-        public float TailD_Z_Sav01;
-        public float TailD_W_Sav01;
-        public float TailE_X_Sav01;
-        public float TailE_Y_Sav01;
-        public float TailE_Z_Sav01;
-        public float TailE_W_Sav01;
-        public float RootHead_X_Sav01;
-        public float RootHead_Y_Sav01;
-        public float RootHead_Z_Sav01;
-        public float RootHead_W_Sav01;
-        public float Jaw_X_Sav01;
-        public float Jaw_Y_Sav01;
-        public float Jaw_Z_Sav01;
-        public float Jaw_W_Sav01;
-        public float EyelidLowerLeft_X_Sav01;
-        public float EyelidLowerLeft_Y_Sav01;
-        public float EyelidLowerLeft_Z_Sav01;
-        public float EyelidLowerLeft_W_Sav01;
-        public float EyelidLowerRight_X_Sav01;
-        public float EyelidLowerRight_Y_Sav01;
-        public float EyelidLowerRight_Z_Sav01;
-        public float EyelidLowerRight_W_Sav01;
-        public float EyeLeft_X_Sav01;
-        public float EyeLeft_Y_Sav01;
-        public float EyeLeft_Z_Sav01;
-        public float EyeLeft_W_Sav01;
-        public float EyeRight_X_Sav01;
-        public float EyeRight_Y_Sav01;
-        public float EyeRight_Z_Sav01;
-        public float EyeRight_W_Sav01;
-        public float Nose_X_Sav01;
-        public float Nose_Y_Sav01;
-        public float Nose_Z_Sav01;
-        public float Nose_W_Sav01;
-        public float CheekLeft_X_Sav01;
-        public float CheekLeft_Y_Sav01;
-        public float CheekLeft_Z_Sav01;
-        public float CheekLeft_W_Sav01;
-        public float HrothWhiskersLeft_X_Sav01;
-        public float HrothWhiskersLeft_Y_Sav01;
-        public float HrothWhiskersLeft_Z_Sav01;
-        public float HrothWhiskersLeft_W_Sav01;
-        public float CheekRight_X_Sav01;
-        public float CheekRight_Y_Sav01;
-        public float CheekRight_Z_Sav01;
-        public float CheekRight_W_Sav01;
-        public float HrothWhiskersRight_X_Sav01;
-        public float HrothWhiskersRight_Y_Sav01;
-        public float HrothWhiskersRight_Z_Sav01;
-        public float HrothWhiskersRight_W_Sav01;
-        public float LipsLeft_X_Sav01;
-        public float LipsLeft_Y_Sav01;
-        public float LipsLeft_Z_Sav01;
-        public float LipsLeft_W_Sav01;
-        public float HrothEyebrowLeft_X_Sav01;
-        public float HrothEyebrowLeft_Y_Sav01;
-        public float HrothEyebrowLeft_Z_Sav01;
-        public float HrothEyebrowLeft_W_Sav01;
-        public float LipsRight_X_Sav01;
-        public float LipsRight_Y_Sav01;
-        public float LipsRight_Z_Sav01;
-        public float LipsRight_W_Sav01;
-        public float HrothEyebrowRight_X_Sav01;
-        public float HrothEyebrowRight_Y_Sav01;
-        public float HrothEyebrowRight_Z_Sav01;
-        public float HrothEyebrowRight_W_Sav01;
-        public float EyebrowLeft_X_Sav01;
-        public float EyebrowLeft_Y_Sav01;
-        public float EyebrowLeft_Z_Sav01;
-        public float EyebrowLeft_W_Sav01;
-        public float HrothBridge_X_Sav01;
-        public float HrothBridge_Y_Sav01;
-        public float HrothBridge_Z_Sav01;
-        public float HrothBridge_W_Sav01;
-        public float EyebrowRight_X_Sav01;
-        public float EyebrowRight_Y_Sav01;
-        public float EyebrowRight_Z_Sav01;
-        public float EyebrowRight_W_Sav01;
-        public float HrothBrowLeft_X_Sav01;
-        public float HrothBrowLeft_Y_Sav01;
-        public float HrothBrowLeft_Z_Sav01;
-        public float HrothBrowLeft_W_Sav01;
-        public float Bridge_X_Sav01;
-        public float Bridge_Y_Sav01;
-        public float Bridge_Z_Sav01;
-        public float Bridge_W_Sav01;
-        public float HrothBrowRight_X_Sav01;
-        public float HrothBrowRight_Y_Sav01;
-        public float HrothBrowRight_Z_Sav01;
-        public float HrothBrowRight_W_Sav01;
-        public float BrowLeft_X_Sav01;
-        public float BrowLeft_Y_Sav01;
-        public float BrowLeft_Z_Sav01;
-        public float BrowLeft_W_Sav01;
-        public float HrothJawUpper_X_Sav01;
-        public float HrothJawUpper_Y_Sav01;
-        public float HrothJawUpper_Z_Sav01;
-        public float HrothJawUpper_W_Sav01;
-        public float BrowRight_X_Sav01;
-        public float BrowRight_Y_Sav01;
-        public float BrowRight_Z_Sav01;
-        public float BrowRight_W_Sav01;
-        public float HrothLipUpper_X_Sav01;
-        public float HrothLipUpper_Y_Sav01;
-        public float HrothLipUpper_Z_Sav01;
-        public float HrothLipUpper_W_Sav01;
-        public float LipUpperA_X_Sav01;
-        public float LipUpperA_Y_Sav01;
-        public float LipUpperA_Z_Sav01;
-        public float LipUpperA_W_Sav01;
-        public float HrothEyelidUpperLeft_X_Sav01;
-        public float HrothEyelidUpperLeft_Y_Sav01;
-        public float HrothEyelidUpperLeft_Z_Sav01;
-        public float HrothEyelidUpperLeft_W_Sav01;
-        public float EyelidUpperLeft_X_Sav01;
-        public float EyelidUpperLeft_Y_Sav01;
-        public float EyelidUpperLeft_Z_Sav01;
-        public float EyelidUpperLeft_W_Sav01;
-        public float HrothEyelidUpperRight_X_Sav01;
-        public float HrothEyelidUpperRight_Y_Sav01;
-        public float HrothEyelidUpperRight_Z_Sav01;
-        public float HrothEyelidUpperRight_W_Sav01;
-        public float EyelidUpperRight_X_Sav01;
-        public float EyelidUpperRight_Y_Sav01;
-        public float EyelidUpperRight_Z_Sav01;
-        public float EyelidUpperRight_W_Sav01;
-        public float HrothLipsLeft_X_Sav01;
-        public float HrothLipsLeft_Y_Sav01;
-        public float HrothLipsLeft_Z_Sav01;
-        public float HrothLipsLeft_W_Sav01;
-        public float LipLowerA_X_Sav01;
-        public float LipLowerA_Y_Sav01;
-        public float LipLowerA_Z_Sav01;
-        public float LipLowerA_W_Sav01;
-        public float HrothLipsRight_X_Sav01;
-        public float HrothLipsRight_Y_Sav01;
-        public float HrothLipsRight_Z_Sav01;
-        public float HrothLipsRight_W_Sav01;
-        public float VieraEar01ALeft_X_Sav01;
-        public float VieraEar01ALeft_Y_Sav01;
-        public float VieraEar01ALeft_Z_Sav01;
-        public float VieraEar01ALeft_W_Sav01;
-        public float LipUpperB_X_Sav01;
-        public float LipUpperB_Y_Sav01;
-        public float LipUpperB_Z_Sav01;
-        public float LipUpperB_W_Sav01;
-        public float HrothLipUpperLeft_X_Sav01;
-        public float HrothLipUpperLeft_Y_Sav01;
-        public float HrothLipUpperLeft_Z_Sav01;
-        public float HrothLipUpperLeft_W_Sav01;
-        public float VieraEar01ARight_X_Sav01;
-        public float VieraEar01ARight_Y_Sav01;
-        public float VieraEar01ARight_Z_Sav01;
-        public float VieraEar01ARight_W_Sav01;
-        public float LipLowerB_X_Sav01;
-        public float LipLowerB_Y_Sav01;
-        public float LipLowerB_Z_Sav01;
-        public float LipLowerB_W_Sav01;
-        public float HrothLipUpperRight_X_Sav01;
-        public float HrothLipUpperRight_Y_Sav01;
-        public float HrothLipUpperRight_Z_Sav01;
-        public float HrothLipUpperRight_W_Sav01;
-        public float VieraEar02ALeft_X_Sav01;
-        public float VieraEar02ALeft_Y_Sav01;
-        public float VieraEar02ALeft_Z_Sav01;
-        public float VieraEar02ALeft_W_Sav01;
-        public float HrothLipLower_X_Sav01;
-        public float HrothLipLower_Y_Sav01;
-        public float HrothLipLower_Z_Sav01;
-        public float HrothLipLower_W_Sav01;
-        public float VieraEar02ARight_X_Sav01;
-        public float VieraEar02ARight_Y_Sav01;
-        public float VieraEar02ARight_Z_Sav01;
-        public float VieraEar02ARight_W_Sav01;
-        public float VieraEar03ALeft_X_Sav01;
-        public float VieraEar03ALeft_Y_Sav01;
-        public float VieraEar03ALeft_Z_Sav01;
-        public float VieraEar03ALeft_W_Sav01;
-        public float VieraEar03ARight_X_Sav01;
-        public float VieraEar03ARight_Y_Sav01;
-        public float VieraEar03ARight_Z_Sav01;
-        public float VieraEar03ARight_W_Sav01;
-        public float VieraEar04ALeft_X_Sav01;
-        public float VieraEar04ALeft_Y_Sav01;
-        public float VieraEar04ALeft_Z_Sav01;
-        public float VieraEar04ALeft_W_Sav01;
-        public float VieraEar04ARight_X_Sav01;
-        public float VieraEar04ARight_Y_Sav01;
-        public float VieraEar04ARight_Z_Sav01;
-        public float VieraEar04ARight_W_Sav01;
-        public float VieraLipLowerA_X_Sav01;
-        public float VieraLipLowerA_Y_Sav01;
-        public float VieraLipLowerA_Z_Sav01;
-        public float VieraLipLowerA_W_Sav01;
-        public float VieraLipUpperB_X_Sav01;
-        public float VieraLipUpperB_Y_Sav01;
-        public float VieraLipUpperB_Z_Sav01;
-        public float VieraLipUpperB_W_Sav01;
-        public float VieraEar01BLeft_X_Sav01;
-        public float VieraEar01BLeft_Y_Sav01;
-        public float VieraEar01BLeft_Z_Sav01;
-        public float VieraEar01BLeft_W_Sav01;
-        public float VieraEar01BRight_X_Sav01;
-        public float VieraEar01BRight_Y_Sav01;
-        public float VieraEar01BRight_Z_Sav01;
-        public float VieraEar01BRight_W_Sav01;
-        public float VieraEar02BLeft_X_Sav01;
-        public float VieraEar02BLeft_Y_Sav01;
-        public float VieraEar02BLeft_Z_Sav01;
-        public float VieraEar02BLeft_W_Sav01;
-        public float VieraEar02BRight_X_Sav01;
-        public float VieraEar02BRight_Y_Sav01;
-        public float VieraEar02BRight_Z_Sav01;
-        public float VieraEar02BRight_W_Sav01;
-        public float VieraEar03BLeft_X_Sav01;
-        public float VieraEar03BLeft_Y_Sav01;
-        public float VieraEar03BLeft_Z_Sav01;
-        public float VieraEar03BLeft_W_Sav01;
-        public float VieraEar03BRight_X_Sav01;
-        public float VieraEar03BRight_Y_Sav01;
-        public float VieraEar03BRight_Z_Sav01;
-        public float VieraEar03BRight_W_Sav01;
-        public float VieraEar04BLeft_X_Sav01;
-        public float VieraEar04BLeft_Y_Sav01;
-        public float VieraEar04BLeft_Z_Sav01;
-        public float VieraEar04BLeft_W_Sav01;
-        public float VieraEar04BRight_X_Sav01;
-        public float VieraEar04BRight_Y_Sav01;
-        public float VieraEar04BRight_Z_Sav01;
-        public float VieraEar04BRight_W_Sav01;
-        public float VieraLipLowerB_X_Sav01;
-        public float VieraLipLowerB_Y_Sav01;
-        public float VieraLipLowerB_Z_Sav01;
-        public float VieraLipLowerB_W_Sav01;
-        public float ExRootHair_X_Sav01;
-        public float ExRootHair_Y_Sav01;
-        public float ExRootHair_Z_Sav01;
-        public float ExRootHair_W_Sav01;
-        public float ExHairA_X_Sav01;
-        public float ExHairA_Y_Sav01;
-        public float ExHairA_Z_Sav01;
-        public float ExHairA_W_Sav01;
-        public float ExHairB_X_Sav01;
-        public float ExHairB_Y_Sav01;
-        public float ExHairB_Z_Sav01;
-        public float ExHairB_W_Sav01;
-        public float ExHairC_X_Sav01;
-        public float ExHairC_Y_Sav01;
-        public float ExHairC_Z_Sav01;
-        public float ExHairC_W_Sav01;
-        public float ExHairD_X_Sav01;
-        public float ExHairD_Y_Sav01;
-        public float ExHairD_Z_Sav01;
-        public float ExHairD_W_Sav01;
-        public float ExHairE_X_Sav01;
-        public float ExHairE_Y_Sav01;
-        public float ExHairE_Z_Sav01;
-        public float ExHairE_W_Sav01;
-        public float ExHairF_X_Sav01;
-        public float ExHairF_Y_Sav01;
-        public float ExHairF_Z_Sav01;
-        public float ExHairF_W_Sav01;
-        public float ExHairG_X_Sav01;
-        public float ExHairG_Y_Sav01;
-        public float ExHairG_Z_Sav01;
-        public float ExHairG_W_Sav01;
-        public float ExHairH_X_Sav01;
-        public float ExHairH_Y_Sav01;
-        public float ExHairH_Z_Sav01;
-        public float ExHairH_W_Sav01;
-        public float ExHairI_X_Sav01;
-        public float ExHairI_Y_Sav01;
-        public float ExHairI_Z_Sav01;
-        public float ExHairI_W_Sav01;
-        public float ExHairJ_X_Sav01;
-        public float ExHairJ_Y_Sav01;
-        public float ExHairJ_Z_Sav01;
-        public float ExHairJ_W_Sav01;
-        public float ExHairK_X_Sav01;
-        public float ExHairK_Y_Sav01;
-        public float ExHairK_Z_Sav01;
-        public float ExHairK_W_Sav01;
-        public float ExHairL_X_Sav01;
-        public float ExHairL_Y_Sav01;
-        public float ExHairL_Z_Sav01;
-        public float ExHairL_W_Sav01;
-        public float ExRootMet_X_Sav01;
-        public float ExRootMet_Y_Sav01;
-        public float ExRootMet_Z_Sav01;
-        public float ExRootMet_W_Sav01;
-        public float ExMetA_X_Sav01;
-        public float ExMetA_Y_Sav01;
-        public float ExMetA_Z_Sav01;
-        public float ExMetA_W_Sav01;
-        public float ExMetB_X_Sav01;
-        public float ExMetB_Y_Sav01;
-        public float ExMetB_Z_Sav01;
-        public float ExMetB_W_Sav01;
-        public float ExMetC_X_Sav01;
-        public float ExMetC_Y_Sav01;
-        public float ExMetC_Z_Sav01;
-        public float ExMetC_W_Sav01;
-        public float ExMetD_X_Sav01;
-        public float ExMetD_Y_Sav01;
-        public float ExMetD_Z_Sav01;
-        public float ExMetD_W_Sav01;
-        public float ExMetE_X_Sav01;
-        public float ExMetE_Y_Sav01;
-        public float ExMetE_Z_Sav01;
-        public float ExMetE_W_Sav01;
-        public float ExMetF_X_Sav01;
-        public float ExMetF_Y_Sav01;
-        public float ExMetF_Z_Sav01;
-        public float ExMetF_W_Sav01;
-        public float ExMetG_X_Sav01;
-        public float ExMetG_Y_Sav01;
-        public float ExMetG_Z_Sav01;
-        public float ExMetG_W_Sav01;
-        public float ExMetH_X_Sav01;
-        public float ExMetH_Y_Sav01;
-        public float ExMetH_Z_Sav01;
-        public float ExMetH_W_Sav01;
-        public float ExMetI_X_Sav01;
-        public float ExMetI_Y_Sav01;
-        public float ExMetI_Z_Sav01;
-        public float ExMetI_W_Sav01;
-        public float ExMetJ_X_Sav01;
-        public float ExMetJ_Y_Sav01;
-        public float ExMetJ_Z_Sav01;
-        public float ExMetJ_W_Sav01;
-        public float ExMetK_X_Sav01;
-        public float ExMetK_Y_Sav01;
-        public float ExMetK_Z_Sav01;
-        public float ExMetK_W_Sav01;
-        public float ExMetL_X_Sav01;
-        public float ExMetL_Y_Sav01;
-        public float ExMetL_Z_Sav01;
-        public float ExMetL_W_Sav01;
-        public float ExMetM_X_Sav01;
-        public float ExMetM_Y_Sav01;
-        public float ExMetM_Z_Sav01;
-        public float ExMetM_W_Sav01;
-        public float ExMetN_X_Sav01;
-        public float ExMetN_Y_Sav01;
-        public float ExMetN_Z_Sav01;
-        public float ExMetN_W_Sav01;
-        public float ExMetO_X_Sav01;
-        public float ExMetO_Y_Sav01;
-        public float ExMetO_Z_Sav01;
-        public float ExMetO_W_Sav01;
-        public float ExMetP_X_Sav01;
-        public float ExMetP_Y_Sav01;
-        public float ExMetP_Z_Sav01;
-        public float ExMetP_W_Sav01;
-        public float ExMetQ_X_Sav01;
-        public float ExMetQ_Y_Sav01;
-        public float ExMetQ_Z_Sav01;
-        public float ExMetQ_W_Sav01;
-        public float ExMetR_X_Sav01;
-        public float ExMetR_Y_Sav01;
-        public float ExMetR_Z_Sav01;
-        public float ExMetR_W_Sav01;
-        public float ExRootTop_X_Sav01;
-        public float ExRootTop_Y_Sav01;
-        public float ExRootTop_Z_Sav01;
-        public float ExRootTop_W_Sav01;
-        public float ExTopA_X_Sav01;
-        public float ExTopA_Y_Sav01;
-        public float ExTopA_Z_Sav01;
-        public float ExTopA_W_Sav01;
-        public float ExTopB_X_Sav01;
-        public float ExTopB_Y_Sav01;
-        public float ExTopB_Z_Sav01;
-        public float ExTopB_W_Sav01;
-        public float ExTopC_X_Sav01;
-        public float ExTopC_Y_Sav01;
-        public float ExTopC_Z_Sav01;
-        public float ExTopC_W_Sav01;
-        public float ExTopD_X_Sav01;
-        public float ExTopD_Y_Sav01;
-        public float ExTopD_Z_Sav01;
-        public float ExTopD_W_Sav01;
-        public float ExTopE_X_Sav01;
-        public float ExTopE_Y_Sav01;
-        public float ExTopE_Z_Sav01;
-        public float ExTopE_W_Sav01;
-        public float ExTopF_X_Sav01;
-        public float ExTopF_Y_Sav01;
-        public float ExTopF_Z_Sav01;
-        public float ExTopF_W_Sav01;
-        public float ExTopG_X_Sav01;
-        public float ExTopG_Y_Sav01;
-        public float ExTopG_Z_Sav01;
-        public float ExTopG_W_Sav01;
-        public float ExTopH_X_Sav01;
-        public float ExTopH_Y_Sav01;
-        public float ExTopH_Z_Sav01;
-        public float ExTopH_W_Sav01;
-        public float ExTopI_X_Sav01;
-        public float ExTopI_Y_Sav01;
-        public float ExTopI_Z_Sav01;
-        public float ExTopI_W_Sav01;
+        #region Savestate01 Strings
+        public string Race_Sav01;
 
-        public float Root_X_Sav02;
-        public float Root_Y_Sav02;
-        public float Root_Z_Sav02;
-        public float Root_W_Sav02;
-        public float Abdomen_X_Sav02;
-        public float Abdomen_Y_Sav02;
-        public float Abdomen_Z_Sav02;
-        public float Abdomen_W_Sav02;
-        public float Throw_X_Sav02;
-        public float Throw_Y_Sav02;
-        public float Throw_Z_Sav02;
-        public float Throw_W_Sav02;
-        public float Waist_X_Sav02;
-        public float Waist_Y_Sav02;
-        public float Waist_Z_Sav02;
-        public float Waist_W_Sav02;
-        public float SpineA_X_Sav02;
-        public float SpineA_Y_Sav02;
-        public float SpineA_Z_Sav02;
-        public float SpineA_W_Sav02;
-        public float LegLeft_X_Sav02;
-        public float LegLeft_Y_Sav02;
-        public float LegLeft_Z_Sav02;
-        public float LegLeft_W_Sav02;
-        public float LegRight_X_Sav02;
-        public float LegRight_Y_Sav02;
-        public float LegRight_Z_Sav02;
-        public float LegRight_W_Sav02;
-        public float HolsterLeft_X_Sav02;
-        public float HolsterLeft_Y_Sav02;
-        public float HolsterLeft_Z_Sav02;
-        public float HolsterLeft_W_Sav02;
-        public float HolsterRight_X_Sav02;
-        public float HolsterRight_Y_Sav02;
-        public float HolsterRight_Z_Sav02;
-        public float HolsterRight_W_Sav02;
-        public float SheatheLeft_X_Sav02;
-        public float SheatheLeft_Y_Sav02;
-        public float SheatheLeft_Z_Sav02;
-        public float SheatheLeft_W_Sav02;
-        public float SheatheRight_X_Sav02;
-        public float SheatheRight_Y_Sav02;
-        public float SheatheRight_Z_Sav02;
-        public float SheatheRight_W_Sav02;
-        public float SpineB_X_Sav02;
-        public float SpineB_Y_Sav02;
-        public float SpineB_Z_Sav02;
-        public float SpineB_W_Sav02;
-        public float ClothBackALeft_X_Sav02;
-        public float ClothBackALeft_Y_Sav02;
-        public float ClothBackALeft_Z_Sav02;
-        public float ClothBackALeft_W_Sav02;
-        public float ClothBackARight_X_Sav02;
-        public float ClothBackARight_Y_Sav02;
-        public float ClothBackARight_Z_Sav02;
-        public float ClothBackARight_W_Sav02;
-        public float ClothFrontALeft_X_Sav02;
-        public float ClothFrontALeft_Y_Sav02;
-        public float ClothFrontALeft_Z_Sav02;
-        public float ClothFrontALeft_W_Sav02;
-        public float ClothFrontARight_X_Sav02;
-        public float ClothFrontARight_Y_Sav02;
-        public float ClothFrontARight_Z_Sav02;
-        public float ClothFrontARight_W_Sav02;
-        public float ClothSideALeft_X_Sav02;
-        public float ClothSideALeft_Y_Sav02;
-        public float ClothSideALeft_Z_Sav02;
-        public float ClothSideALeft_W_Sav02;
-        public float ClothSideARight_X_Sav02;
-        public float ClothSideARight_Y_Sav02;
-        public float ClothSideARight_Z_Sav02;
-        public float ClothSideARight_W_Sav02;
-        public float KneeLeft_X_Sav02;
-        public float KneeLeft_Y_Sav02;
-        public float KneeLeft_Z_Sav02;
-        public float KneeLeft_W_Sav02;
-        public float KneeRight_X_Sav02;
-        public float KneeRight_Y_Sav02;
-        public float KneeRight_Z_Sav02;
-        public float KneeRight_W_Sav02;
-        public float BreastLeft_X_Sav02;
-        public float BreastLeft_Y_Sav02;
-        public float BreastLeft_Z_Sav02;
-        public float BreastLeft_W_Sav02;
-        public float BreastRight_X_Sav02;
-        public float BreastRight_Y_Sav02;
-        public float BreastRight_Z_Sav02;
-        public float BreastRight_W_Sav02;
-        public float SpineC_X_Sav02;
-        public float SpineC_Y_Sav02;
-        public float SpineC_Z_Sav02;
-        public float SpineC_W_Sav02;
-        public float ClothBackBLeft_X_Sav02;
-        public float ClothBackBLeft_Y_Sav02;
-        public float ClothBackBLeft_Z_Sav02;
-        public float ClothBackBLeft_W_Sav02;
-        public float ClothBackBRight_X_Sav02;
-        public float ClothBackBRight_Y_Sav02;
-        public float ClothBackBRight_Z_Sav02;
-        public float ClothBackBRight_W_Sav02;
-        public float ClothFrontBLeft_X_Sav02;
-        public float ClothFrontBLeft_Y_Sav02;
-        public float ClothFrontBLeft_Z_Sav02;
-        public float ClothFrontBLeft_W_Sav02;
-        public float ClothFrontBRight_X_Sav02;
-        public float ClothFrontBRight_Y_Sav02;
-        public float ClothFrontBRight_Z_Sav02;
-        public float ClothFrontBRight_W_Sav02;
-        public float ClothSideBLeft_X_Sav02;
-        public float ClothSideBLeft_Y_Sav02;
-        public float ClothSideBLeft_Z_Sav02;
-        public float ClothSideBLeft_W_Sav02;
-        public float ClothSideBRight_X_Sav02;
-        public float ClothSideBRight_Y_Sav02;
-        public float ClothSideBRight_Z_Sav02;
-        public float ClothSideBRight_W_Sav02;
-        public float CalfLeft_X_Sav02;
-        public float CalfLeft_Y_Sav02;
-        public float CalfLeft_Z_Sav02;
-        public float CalfLeft_W_Sav02;
-        public float CalfRight_X_Sav02;
-        public float CalfRight_Y_Sav02;
-        public float CalfRight_Z_Sav02;
-        public float CalfRight_W_Sav02;
-        public float ScabbardLeft_X_Sav02;
-        public float ScabbardLeft_Y_Sav02;
-        public float ScabbardLeft_Z_Sav02;
-        public float ScabbardLeft_W_Sav02;
-        public float ScabbardRight_X_Sav02;
-        public float ScabbardRight_Y_Sav02;
-        public float ScabbardRight_Z_Sav02;
-        public float ScabbardRight_W_Sav02;
-        public float Neck_X_Sav02;
-        public float Neck_Y_Sav02;
-        public float Neck_Z_Sav02;
-        public float Neck_W_Sav02;
-        public float ClavicleLeft_X_Sav02;
-        public float ClavicleLeft_Y_Sav02;
-        public float ClavicleLeft_Z_Sav02;
-        public float ClavicleLeft_W_Sav02;
-        public float ClavicleRight_X_Sav02;
-        public float ClavicleRight_Y_Sav02;
-        public float ClavicleRight_Z_Sav02;
-        public float ClavicleRight_W_Sav02;
-        public float ClothBackCLeft_X_Sav02;
-        public float ClothBackCLeft_Y_Sav02;
-        public float ClothBackCLeft_Z_Sav02;
-        public float ClothBackCLeft_W_Sav02;
-        public float ClothBackCRight_X_Sav02;
-        public float ClothBackCRight_Y_Sav02;
-        public float ClothBackCRight_Z_Sav02;
-        public float ClothBackCRight_W_Sav02;
-        public float ClothFrontCLeft_X_Sav02;
-        public float ClothFrontCLeft_Y_Sav02;
-        public float ClothFrontCLeft_Z_Sav02;
-        public float ClothFrontCLeft_W_Sav02;
-        public float ClothFrontCRight_X_Sav02;
-        public float ClothFrontCRight_Y_Sav02;
-        public float ClothFrontCRight_Z_Sav02;
-        public float ClothFrontCRight_W_Sav02;
-        public float ClothSideCLeft_X_Sav02;
-        public float ClothSideCLeft_Y_Sav02;
-        public float ClothSideCLeft_Z_Sav02;
-        public float ClothSideCLeft_W_Sav02;
-        public float ClothSideCRight_X_Sav02;
-        public float ClothSideCRight_Y_Sav02;
-        public float ClothSideCRight_Z_Sav02;
-        public float ClothSideCRight_W_Sav02;
-        public float PoleynLeft_X_Sav02;
-        public float PoleynLeft_Y_Sav02;
-        public float PoleynLeft_Z_Sav02;
-        public float PoleynLeft_W_Sav02;
-        public float PoleynRight_X_Sav02;
-        public float PoleynRight_Y_Sav02;
-        public float PoleynRight_Z_Sav02;
-        public float PoleynRight_W_Sav02;
-        public float FootLeft_X_Sav02;
-        public float FootLeft_Y_Sav02;
-        public float FootLeft_Z_Sav02;
-        public float FootLeft_W_Sav02;
-        public float FootRight_X_Sav02;
-        public float FootRight_Y_Sav02;
-        public float FootRight_Z_Sav02;
-        public float FootRight_W_Sav02;
-        public float Head_X_Sav02;
-        public float Head_Y_Sav02;
-        public float Head_Z_Sav02;
-        public float Head_W_Sav02;
-        public float ArmLeft_X_Sav02;
-        public float ArmLeft_Y_Sav02;
-        public float ArmLeft_Z_Sav02;
-        public float ArmLeft_W_Sav02;
-        public float ArmRight_X_Sav02;
-        public float ArmRight_Y_Sav02;
-        public float ArmRight_Z_Sav02;
-        public float ArmRight_W_Sav02;
-        public float PauldronLeft_X_Sav02;
-        public float PauldronLeft_Y_Sav02;
-        public float PauldronLeft_Z_Sav02;
-        public float PauldronLeft_W_Sav02;
-        public float PauldronRight_X_Sav02;
-        public float PauldronRight_Y_Sav02;
-        public float PauldronRight_Z_Sav02;
-        public float PauldronRight_W_Sav02;
-        public float Unknown00_X_Sav02;
-        public float Unknown00_Y_Sav02;
-        public float Unknown00_Z_Sav02;
-        public float Unknown00_W_Sav02;
-        public float ToesLeft_X_Sav02;
-        public float ToesLeft_Y_Sav02;
-        public float ToesLeft_Z_Sav02;
-        public float ToesLeft_W_Sav02;
-        public float ToesRight_X_Sav02;
-        public float ToesRight_Y_Sav02;
-        public float ToesRight_Z_Sav02;
-        public float ToesRight_W_Sav02;
-        public float HairA_X_Sav02;
-        public float HairA_Y_Sav02;
-        public float HairA_Z_Sav02;
-        public float HairA_W_Sav02;
-        public float HairFrontLeft_X_Sav02;
-        public float HairFrontLeft_Y_Sav02;
-        public float HairFrontLeft_Z_Sav02;
-        public float HairFrontLeft_W_Sav02;
-        public float HairFrontRight_X_Sav02;
-        public float HairFrontRight_Y_Sav02;
-        public float HairFrontRight_Z_Sav02;
-        public float HairFrontRight_W_Sav02;
-        public float EarLeft_X_Sav02;
-        public float EarLeft_Y_Sav02;
-        public float EarLeft_Z_Sav02;
-        public float EarLeft_W_Sav02;
-        public float EarRight_X_Sav02;
-        public float EarRight_Y_Sav02;
-        public float EarRight_Z_Sav02;
-        public float EarRight_W_Sav02;
-        public float ForearmLeft_X_Sav02;
-        public float ForearmLeft_Y_Sav02;
-        public float ForearmLeft_Z_Sav02;
-        public float ForearmLeft_W_Sav02;
-        public float ForearmRight_X_Sav02;
-        public float ForearmRight_Y_Sav02;
-        public float ForearmRight_Z_Sav02;
-        public float ForearmRight_W_Sav02;
-        public float ShoulderLeft_X_Sav02;
-        public float ShoulderLeft_Y_Sav02;
-        public float ShoulderLeft_Z_Sav02;
-        public float ShoulderLeft_W_Sav02;
-        public float ShoulderRight_X_Sav02;
-        public float ShoulderRight_Y_Sav02;
-        public float ShoulderRight_Z_Sav02;
-        public float ShoulderRight_W_Sav02;
-        public float HairB_X_Sav02;
-        public float HairB_Y_Sav02;
-        public float HairB_Z_Sav02;
-        public float HairB_W_Sav02;
-        public float HandLeft_X_Sav02;
-        public float HandLeft_Y_Sav02;
-        public float HandLeft_Z_Sav02;
-        public float HandLeft_W_Sav02;
-        public float HandRight_X_Sav02;
-        public float HandRight_Y_Sav02;
-        public float HandRight_Z_Sav02;
-        public float HandRight_W_Sav02;
-        public float ShieldLeft_X_Sav02;
-        public float ShieldLeft_Y_Sav02;
-        public float ShieldLeft_Z_Sav02;
-        public float ShieldLeft_W_Sav02;
-        public float ShieldRight_X_Sav02;
-        public float ShieldRight_Y_Sav02;
-        public float ShieldRight_Z_Sav02;
-        public float ShieldRight_W_Sav02;
-        public float EarringALeft_X_Sav02;
-        public float EarringALeft_Y_Sav02;
-        public float EarringALeft_Z_Sav02;
-        public float EarringALeft_W_Sav02;
-        public float EarringARight_X_Sav02;
-        public float EarringARight_Y_Sav02;
-        public float EarringARight_Z_Sav02;
-        public float EarringARight_W_Sav02;
-        public float ElbowLeft_X_Sav02;
-        public float ElbowLeft_Y_Sav02;
-        public float ElbowLeft_Z_Sav02;
-        public float ElbowLeft_W_Sav02;
-        public float ElbowRight_X_Sav02;
-        public float ElbowRight_Y_Sav02;
-        public float ElbowRight_Z_Sav02;
-        public float ElbowRight_W_Sav02;
-        public float CouterLeft_X_Sav02;
-        public float CouterLeft_Y_Sav02;
-        public float CouterLeft_Z_Sav02;
-        public float CouterLeft_W_Sav02;
-        public float CouterRight_X_Sav02;
-        public float CouterRight_Y_Sav02;
-        public float CouterRight_Z_Sav02;
-        public float CouterRight_W_Sav02;
-        public float WristLeft_X_Sav02;
-        public float WristLeft_Y_Sav02;
-        public float WristLeft_Z_Sav02;
-        public float WristLeft_W_Sav02;
-        public float WristRight_X_Sav02;
-        public float WristRight_Y_Sav02;
-        public float WristRight_Z_Sav02;
-        public float WristRight_W_Sav02;
-        public float IndexALeft_X_Sav02;
-        public float IndexALeft_Y_Sav02;
-        public float IndexALeft_Z_Sav02;
-        public float IndexALeft_W_Sav02;
-        public float IndexARight_X_Sav02;
-        public float IndexARight_Y_Sav02;
-        public float IndexARight_Z_Sav02;
-        public float IndexARight_W_Sav02;
-        public float PinkyALeft_X_Sav02;
-        public float PinkyALeft_Y_Sav02;
-        public float PinkyALeft_Z_Sav02;
-        public float PinkyALeft_W_Sav02;
-        public float PinkyARight_X_Sav02;
-        public float PinkyARight_Y_Sav02;
-        public float PinkyARight_Z_Sav02;
-        public float PinkyARight_W_Sav02;
-        public float RingALeft_X_Sav02;
-        public float RingALeft_Y_Sav02;
-        public float RingALeft_Z_Sav02;
-        public float RingALeft_W_Sav02;
-        public float RingARight_X_Sav02;
-        public float RingARight_Y_Sav02;
-        public float RingARight_Z_Sav02;
-        public float RingARight_W_Sav02;
-        public float MiddleALeft_X_Sav02;
-        public float MiddleALeft_Y_Sav02;
-        public float MiddleALeft_Z_Sav02;
-        public float MiddleALeft_W_Sav02;
-        public float MiddleARight_X_Sav02;
-        public float MiddleARight_Y_Sav02;
-        public float MiddleARight_Z_Sav02;
-        public float MiddleARight_W_Sav02;
-        public float ThumbALeft_X_Sav02;
-        public float ThumbALeft_Y_Sav02;
-        public float ThumbALeft_Z_Sav02;
-        public float ThumbALeft_W_Sav02;
-        public float ThumbARight_X_Sav02;
-        public float ThumbARight_Y_Sav02;
-        public float ThumbARight_Z_Sav02;
-        public float ThumbARight_W_Sav02;
-        public float WeaponLeft_X_Sav02;
-        public float WeaponLeft_Y_Sav02;
-        public float WeaponLeft_Z_Sav02;
-        public float WeaponLeft_W_Sav02;
-        public float WeaponRight_X_Sav02;
-        public float WeaponRight_Y_Sav02;
-        public float WeaponRight_Z_Sav02;
-        public float WeaponRight_W_Sav02;
-        public float EarringBLeft_X_Sav02;
-        public float EarringBLeft_Y_Sav02;
-        public float EarringBLeft_Z_Sav02;
-        public float EarringBLeft_W_Sav02;
-        public float EarringBRight_X_Sav02;
-        public float EarringBRight_Y_Sav02;
-        public float EarringBRight_Z_Sav02;
-        public float EarringBRight_W_Sav02;
-        public float IndexBLeft_X_Sav02;
-        public float IndexBLeft_Y_Sav02;
-        public float IndexBLeft_Z_Sav02;
-        public float IndexBLeft_W_Sav02;
-        public float IndexBRight_X_Sav02;
-        public float IndexBRight_Y_Sav02;
-        public float IndexBRight_Z_Sav02;
-        public float IndexBRight_W_Sav02;
-        public float PinkyBLeft_X_Sav02;
-        public float PinkyBLeft_Y_Sav02;
-        public float PinkyBLeft_Z_Sav02;
-        public float PinkyBLeft_W_Sav02;
-        public float PinkyBRight_X_Sav02;
-        public float PinkyBRight_Y_Sav02;
-        public float PinkyBRight_Z_Sav02;
-        public float PinkyBRight_W_Sav02;
-        public float RingBLeft_X_Sav02;
-        public float RingBLeft_Y_Sav02;
-        public float RingBLeft_Z_Sav02;
-        public float RingBLeft_W_Sav02;
-        public float RingBRight_X_Sav02;
-        public float RingBRight_Y_Sav02;
-        public float RingBRight_Z_Sav02;
-        public float RingBRight_W_Sav02;
-        public float MiddleBLeft_X_Sav02;
-        public float MiddleBLeft_Y_Sav02;
-        public float MiddleBLeft_Z_Sav02;
-        public float MiddleBLeft_W_Sav02;
-        public float MiddleBRight_X_Sav02;
-        public float MiddleBRight_Y_Sav02;
-        public float MiddleBRight_Z_Sav02;
-        public float MiddleBRight_W_Sav02;
-        public float ThumbBLeft_X_Sav02;
-        public float ThumbBLeft_Y_Sav02;
-        public float ThumbBLeft_Z_Sav02;
-        public float ThumbBLeft_W_Sav02;
-        public float ThumbBRight_X_Sav02;
-        public float ThumbBRight_Y_Sav02;
-        public float ThumbBRight_Z_Sav02;
-        public float ThumbBRight_W_Sav02;
-        public float TailA_X_Sav02;
-        public float TailA_Y_Sav02;
-        public float TailA_Z_Sav02;
-        public float TailA_W_Sav02;
-        public float TailB_X_Sav02;
-        public float TailB_Y_Sav02;
-        public float TailB_Z_Sav02;
-        public float TailB_W_Sav02;
-        public float TailC_X_Sav02;
-        public float TailC_Y_Sav02;
-        public float TailC_Z_Sav02;
-        public float TailC_W_Sav02;
-        public float TailD_X_Sav02;
-        public float TailD_Y_Sav02;
-        public float TailD_Z_Sav02;
-        public float TailD_W_Sav02;
-        public float TailE_X_Sav02;
-        public float TailE_Y_Sav02;
-        public float TailE_Z_Sav02;
-        public float TailE_W_Sav02;
-        public float RootHead_X_Sav02;
-        public float RootHead_Y_Sav02;
-        public float RootHead_Z_Sav02;
-        public float RootHead_W_Sav02;
-        public float Jaw_X_Sav02;
-        public float Jaw_Y_Sav02;
-        public float Jaw_Z_Sav02;
-        public float Jaw_W_Sav02;
-        public float EyelidLowerLeft_X_Sav02;
-        public float EyelidLowerLeft_Y_Sav02;
-        public float EyelidLowerLeft_Z_Sav02;
-        public float EyelidLowerLeft_W_Sav02;
-        public float EyelidLowerRight_X_Sav02;
-        public float EyelidLowerRight_Y_Sav02;
-        public float EyelidLowerRight_Z_Sav02;
-        public float EyelidLowerRight_W_Sav02;
-        public float EyeLeft_X_Sav02;
-        public float EyeLeft_Y_Sav02;
-        public float EyeLeft_Z_Sav02;
-        public float EyeLeft_W_Sav02;
-        public float EyeRight_X_Sav02;
-        public float EyeRight_Y_Sav02;
-        public float EyeRight_Z_Sav02;
-        public float EyeRight_W_Sav02;
-        public float Nose_X_Sav02;
-        public float Nose_Y_Sav02;
-        public float Nose_Z_Sav02;
-        public float Nose_W_Sav02;
-        public float CheekLeft_X_Sav02;
-        public float CheekLeft_Y_Sav02;
-        public float CheekLeft_Z_Sav02;
-        public float CheekLeft_W_Sav02;
-        public float HrothWhiskersLeft_X_Sav02;
-        public float HrothWhiskersLeft_Y_Sav02;
-        public float HrothWhiskersLeft_Z_Sav02;
-        public float HrothWhiskersLeft_W_Sav02;
-        public float CheekRight_X_Sav02;
-        public float CheekRight_Y_Sav02;
-        public float CheekRight_Z_Sav02;
-        public float CheekRight_W_Sav02;
-        public float HrothWhiskersRight_X_Sav02;
-        public float HrothWhiskersRight_Y_Sav02;
-        public float HrothWhiskersRight_Z_Sav02;
-        public float HrothWhiskersRight_W_Sav02;
-        public float LipsLeft_X_Sav02;
-        public float LipsLeft_Y_Sav02;
-        public float LipsLeft_Z_Sav02;
-        public float LipsLeft_W_Sav02;
-        public float HrothEyebrowLeft_X_Sav02;
-        public float HrothEyebrowLeft_Y_Sav02;
-        public float HrothEyebrowLeft_Z_Sav02;
-        public float HrothEyebrowLeft_W_Sav02;
-        public float LipsRight_X_Sav02;
-        public float LipsRight_Y_Sav02;
-        public float LipsRight_Z_Sav02;
-        public float LipsRight_W_Sav02;
-        public float HrothEyebrowRight_X_Sav02;
-        public float HrothEyebrowRight_Y_Sav02;
-        public float HrothEyebrowRight_Z_Sav02;
-        public float HrothEyebrowRight_W_Sav02;
-        public float EyebrowLeft_X_Sav02;
-        public float EyebrowLeft_Y_Sav02;
-        public float EyebrowLeft_Z_Sav02;
-        public float EyebrowLeft_W_Sav02;
-        public float HrothBridge_X_Sav02;
-        public float HrothBridge_Y_Sav02;
-        public float HrothBridge_Z_Sav02;
-        public float HrothBridge_W_Sav02;
-        public float EyebrowRight_X_Sav02;
-        public float EyebrowRight_Y_Sav02;
-        public float EyebrowRight_Z_Sav02;
-        public float EyebrowRight_W_Sav02;
-        public float HrothBrowLeft_X_Sav02;
-        public float HrothBrowLeft_Y_Sav02;
-        public float HrothBrowLeft_Z_Sav02;
-        public float HrothBrowLeft_W_Sav02;
-        public float Bridge_X_Sav02;
-        public float Bridge_Y_Sav02;
-        public float Bridge_Z_Sav02;
-        public float Bridge_W_Sav02;
-        public float HrothBrowRight_X_Sav02;
-        public float HrothBrowRight_Y_Sav02;
-        public float HrothBrowRight_Z_Sav02;
-        public float HrothBrowRight_W_Sav02;
-        public float BrowLeft_X_Sav02;
-        public float BrowLeft_Y_Sav02;
-        public float BrowLeft_Z_Sav02;
-        public float BrowLeft_W_Sav02;
-        public float HrothJawUpper_X_Sav02;
-        public float HrothJawUpper_Y_Sav02;
-        public float HrothJawUpper_Z_Sav02;
-        public float HrothJawUpper_W_Sav02;
-        public float BrowRight_X_Sav02;
-        public float BrowRight_Y_Sav02;
-        public float BrowRight_Z_Sav02;
-        public float BrowRight_W_Sav02;
-        public float HrothLipUpper_X_Sav02;
-        public float HrothLipUpper_Y_Sav02;
-        public float HrothLipUpper_Z_Sav02;
-        public float HrothLipUpper_W_Sav02;
-        public float LipUpperA_X_Sav02;
-        public float LipUpperA_Y_Sav02;
-        public float LipUpperA_Z_Sav02;
-        public float LipUpperA_W_Sav02;
-        public float HrothEyelidUpperLeft_X_Sav02;
-        public float HrothEyelidUpperLeft_Y_Sav02;
-        public float HrothEyelidUpperLeft_Z_Sav02;
-        public float HrothEyelidUpperLeft_W_Sav02;
-        public float EyelidUpperLeft_X_Sav02;
-        public float EyelidUpperLeft_Y_Sav02;
-        public float EyelidUpperLeft_Z_Sav02;
-        public float EyelidUpperLeft_W_Sav02;
-        public float HrothEyelidUpperRight_X_Sav02;
-        public float HrothEyelidUpperRight_Y_Sav02;
-        public float HrothEyelidUpperRight_Z_Sav02;
-        public float HrothEyelidUpperRight_W_Sav02;
-        public float EyelidUpperRight_X_Sav02;
-        public float EyelidUpperRight_Y_Sav02;
-        public float EyelidUpperRight_Z_Sav02;
-        public float EyelidUpperRight_W_Sav02;
-        public float HrothLipsLeft_X_Sav02;
-        public float HrothLipsLeft_Y_Sav02;
-        public float HrothLipsLeft_Z_Sav02;
-        public float HrothLipsLeft_W_Sav02;
-        public float LipLowerA_X_Sav02;
-        public float LipLowerA_Y_Sav02;
-        public float LipLowerA_Z_Sav02;
-        public float LipLowerA_W_Sav02;
-        public float HrothLipsRight_X_Sav02;
-        public float HrothLipsRight_Y_Sav02;
-        public float HrothLipsRight_Z_Sav02;
-        public float HrothLipsRight_W_Sav02;
-        public float VieraEar01ALeft_X_Sav02;
-        public float VieraEar01ALeft_Y_Sav02;
-        public float VieraEar01ALeft_Z_Sav02;
-        public float VieraEar01ALeft_W_Sav02;
-        public float LipUpperB_X_Sav02;
-        public float LipUpperB_Y_Sav02;
-        public float LipUpperB_Z_Sav02;
-        public float LipUpperB_W_Sav02;
-        public float HrothLipUpperLeft_X_Sav02;
-        public float HrothLipUpperLeft_Y_Sav02;
-        public float HrothLipUpperLeft_Z_Sav02;
-        public float HrothLipUpperLeft_W_Sav02;
-        public float VieraEar01ARight_X_Sav02;
-        public float VieraEar01ARight_Y_Sav02;
-        public float VieraEar01ARight_Z_Sav02;
-        public float VieraEar01ARight_W_Sav02;
-        public float LipLowerB_X_Sav02;
-        public float LipLowerB_Y_Sav02;
-        public float LipLowerB_Z_Sav02;
-        public float LipLowerB_W_Sav02;
-        public float HrothLipUpperRight_X_Sav02;
-        public float HrothLipUpperRight_Y_Sav02;
-        public float HrothLipUpperRight_Z_Sav02;
-        public float HrothLipUpperRight_W_Sav02;
-        public float VieraEar02ALeft_X_Sav02;
-        public float VieraEar02ALeft_Y_Sav02;
-        public float VieraEar02ALeft_Z_Sav02;
-        public float VieraEar02ALeft_W_Sav02;
-        public float HrothLipLower_X_Sav02;
-        public float HrothLipLower_Y_Sav02;
-        public float HrothLipLower_Z_Sav02;
-        public float HrothLipLower_W_Sav02;
-        public float VieraEar02ARight_X_Sav02;
-        public float VieraEar02ARight_Y_Sav02;
-        public float VieraEar02ARight_Z_Sav02;
-        public float VieraEar02ARight_W_Sav02;
-        public float VieraEar03ALeft_X_Sav02;
-        public float VieraEar03ALeft_Y_Sav02;
-        public float VieraEar03ALeft_Z_Sav02;
-        public float VieraEar03ALeft_W_Sav02;
-        public float VieraEar03ARight_X_Sav02;
-        public float VieraEar03ARight_Y_Sav02;
-        public float VieraEar03ARight_Z_Sav02;
-        public float VieraEar03ARight_W_Sav02;
-        public float VieraEar04ALeft_X_Sav02;
-        public float VieraEar04ALeft_Y_Sav02;
-        public float VieraEar04ALeft_Z_Sav02;
-        public float VieraEar04ALeft_W_Sav02;
-        public float VieraEar04ARight_X_Sav02;
-        public float VieraEar04ARight_Y_Sav02;
-        public float VieraEar04ARight_Z_Sav02;
-        public float VieraEar04ARight_W_Sav02;
-        public float VieraLipLowerA_X_Sav02;
-        public float VieraLipLowerA_Y_Sav02;
-        public float VieraLipLowerA_Z_Sav02;
-        public float VieraLipLowerA_W_Sav02;
-        public float VieraLipUpperB_X_Sav02;
-        public float VieraLipUpperB_Y_Sav02;
-        public float VieraLipUpperB_Z_Sav02;
-        public float VieraLipUpperB_W_Sav02;
-        public float VieraEar01BLeft_X_Sav02;
-        public float VieraEar01BLeft_Y_Sav02;
-        public float VieraEar01BLeft_Z_Sav02;
-        public float VieraEar01BLeft_W_Sav02;
-        public float VieraEar01BRight_X_Sav02;
-        public float VieraEar01BRight_Y_Sav02;
-        public float VieraEar01BRight_Z_Sav02;
-        public float VieraEar01BRight_W_Sav02;
-        public float VieraEar02BLeft_X_Sav02;
-        public float VieraEar02BLeft_Y_Sav02;
-        public float VieraEar02BLeft_Z_Sav02;
-        public float VieraEar02BLeft_W_Sav02;
-        public float VieraEar02BRight_X_Sav02;
-        public float VieraEar02BRight_Y_Sav02;
-        public float VieraEar02BRight_Z_Sav02;
-        public float VieraEar02BRight_W_Sav02;
-        public float VieraEar03BLeft_X_Sav02;
-        public float VieraEar03BLeft_Y_Sav02;
-        public float VieraEar03BLeft_Z_Sav02;
-        public float VieraEar03BLeft_W_Sav02;
-        public float VieraEar03BRight_X_Sav02;
-        public float VieraEar03BRight_Y_Sav02;
-        public float VieraEar03BRight_Z_Sav02;
-        public float VieraEar03BRight_W_Sav02;
-        public float VieraEar04BLeft_X_Sav02;
-        public float VieraEar04BLeft_Y_Sav02;
-        public float VieraEar04BLeft_Z_Sav02;
-        public float VieraEar04BLeft_W_Sav02;
-        public float VieraEar04BRight_X_Sav02;
-        public float VieraEar04BRight_Y_Sav02;
-        public float VieraEar04BRight_Z_Sav02;
-        public float VieraEar04BRight_W_Sav02;
-        public float VieraLipLowerB_X_Sav02;
-        public float VieraLipLowerB_Y_Sav02;
-        public float VieraLipLowerB_Z_Sav02;
-        public float VieraLipLowerB_W_Sav02;
-        public float ExRootHair_X_Sav02;
-        public float ExRootHair_Y_Sav02;
-        public float ExRootHair_Z_Sav02;
-        public float ExRootHair_W_Sav02;
-        public float ExHairA_X_Sav02;
-        public float ExHairA_Y_Sav02;
-        public float ExHairA_Z_Sav02;
-        public float ExHairA_W_Sav02;
-        public float ExHairB_X_Sav02;
-        public float ExHairB_Y_Sav02;
-        public float ExHairB_Z_Sav02;
-        public float ExHairB_W_Sav02;
-        public float ExHairC_X_Sav02;
-        public float ExHairC_Y_Sav02;
-        public float ExHairC_Z_Sav02;
-        public float ExHairC_W_Sav02;
-        public float ExHairD_X_Sav02;
-        public float ExHairD_Y_Sav02;
-        public float ExHairD_Z_Sav02;
-        public float ExHairD_W_Sav02;
-        public float ExHairE_X_Sav02;
-        public float ExHairE_Y_Sav02;
-        public float ExHairE_Z_Sav02;
-        public float ExHairE_W_Sav02;
-        public float ExHairF_X_Sav02;
-        public float ExHairF_Y_Sav02;
-        public float ExHairF_Z_Sav02;
-        public float ExHairF_W_Sav02;
-        public float ExHairG_X_Sav02;
-        public float ExHairG_Y_Sav02;
-        public float ExHairG_Z_Sav02;
-        public float ExHairG_W_Sav02;
-        public float ExHairH_X_Sav02;
-        public float ExHairH_Y_Sav02;
-        public float ExHairH_Z_Sav02;
-        public float ExHairH_W_Sav02;
-        public float ExHairI_X_Sav02;
-        public float ExHairI_Y_Sav02;
-        public float ExHairI_Z_Sav02;
-        public float ExHairI_W_Sav02;
-        public float ExHairJ_X_Sav02;
-        public float ExHairJ_Y_Sav02;
-        public float ExHairJ_Z_Sav02;
-        public float ExHairJ_W_Sav02;
-        public float ExHairK_X_Sav02;
-        public float ExHairK_Y_Sav02;
-        public float ExHairK_Z_Sav02;
-        public float ExHairK_W_Sav02;
-        public float ExHairL_X_Sav02;
-        public float ExHairL_Y_Sav02;
-        public float ExHairL_Z_Sav02;
-        public float ExHairL_W_Sav02;
-        public float ExRootMet_X_Sav02;
-        public float ExRootMet_Y_Sav02;
-        public float ExRootMet_Z_Sav02;
-        public float ExRootMet_W_Sav02;
-        public float ExMetA_X_Sav02;
-        public float ExMetA_Y_Sav02;
-        public float ExMetA_Z_Sav02;
-        public float ExMetA_W_Sav02;
-        public float ExMetB_X_Sav02;
-        public float ExMetB_Y_Sav02;
-        public float ExMetB_Z_Sav02;
-        public float ExMetB_W_Sav02;
-        public float ExMetC_X_Sav02;
-        public float ExMetC_Y_Sav02;
-        public float ExMetC_Z_Sav02;
-        public float ExMetC_W_Sav02;
-        public float ExMetD_X_Sav02;
-        public float ExMetD_Y_Sav02;
-        public float ExMetD_Z_Sav02;
-        public float ExMetD_W_Sav02;
-        public float ExMetE_X_Sav02;
-        public float ExMetE_Y_Sav02;
-        public float ExMetE_Z_Sav02;
-        public float ExMetE_W_Sav02;
-        public float ExMetF_X_Sav02;
-        public float ExMetF_Y_Sav02;
-        public float ExMetF_Z_Sav02;
-        public float ExMetF_W_Sav02;
-        public float ExMetG_X_Sav02;
-        public float ExMetG_Y_Sav02;
-        public float ExMetG_Z_Sav02;
-        public float ExMetG_W_Sav02;
-        public float ExMetH_X_Sav02;
-        public float ExMetH_Y_Sav02;
-        public float ExMetH_Z_Sav02;
-        public float ExMetH_W_Sav02;
-        public float ExMetI_X_Sav02;
-        public float ExMetI_Y_Sav02;
-        public float ExMetI_Z_Sav02;
-        public float ExMetI_W_Sav02;
-        public float ExMetJ_X_Sav02;
-        public float ExMetJ_Y_Sav02;
-        public float ExMetJ_Z_Sav02;
-        public float ExMetJ_W_Sav02;
-        public float ExMetK_X_Sav02;
-        public float ExMetK_Y_Sav02;
-        public float ExMetK_Z_Sav02;
-        public float ExMetK_W_Sav02;
-        public float ExMetL_X_Sav02;
-        public float ExMetL_Y_Sav02;
-        public float ExMetL_Z_Sav02;
-        public float ExMetL_W_Sav02;
-        public float ExMetM_X_Sav02;
-        public float ExMetM_Y_Sav02;
-        public float ExMetM_Z_Sav02;
-        public float ExMetM_W_Sav02;
-        public float ExMetN_X_Sav02;
-        public float ExMetN_Y_Sav02;
-        public float ExMetN_Z_Sav02;
-        public float ExMetN_W_Sav02;
-        public float ExMetO_X_Sav02;
-        public float ExMetO_Y_Sav02;
-        public float ExMetO_Z_Sav02;
-        public float ExMetO_W_Sav02;
-        public float ExMetP_X_Sav02;
-        public float ExMetP_Y_Sav02;
-        public float ExMetP_Z_Sav02;
-        public float ExMetP_W_Sav02;
-        public float ExMetQ_X_Sav02;
-        public float ExMetQ_Y_Sav02;
-        public float ExMetQ_Z_Sav02;
-        public float ExMetQ_W_Sav02;
-        public float ExMetR_X_Sav02;
-        public float ExMetR_Y_Sav02;
-        public float ExMetR_Z_Sav02;
-        public float ExMetR_W_Sav02;
-        public float ExRootTop_X_Sav02;
-        public float ExRootTop_Y_Sav02;
-        public float ExRootTop_Z_Sav02;
-        public float ExRootTop_W_Sav02;
-        public float ExTopA_X_Sav02;
-        public float ExTopA_Y_Sav02;
-        public float ExTopA_Z_Sav02;
-        public float ExTopA_W_Sav02;
-        public float ExTopB_X_Sav02;
-        public float ExTopB_Y_Sav02;
-        public float ExTopB_Z_Sav02;
-        public float ExTopB_W_Sav02;
-        public float ExTopC_X_Sav02;
-        public float ExTopC_Y_Sav02;
-        public float ExTopC_Z_Sav02;
-        public float ExTopC_W_Sav02;
-        public float ExTopD_X_Sav02;
-        public float ExTopD_Y_Sav02;
-        public float ExTopD_Z_Sav02;
-        public float ExTopD_W_Sav02;
-        public float ExTopE_X_Sav02;
-        public float ExTopE_Y_Sav02;
-        public float ExTopE_Z_Sav02;
-        public float ExTopE_W_Sav02;
-        public float ExTopF_X_Sav02;
-        public float ExTopF_Y_Sav02;
-        public float ExTopF_Z_Sav02;
-        public float ExTopF_W_Sav02;
-        public float ExTopG_X_Sav02;
-        public float ExTopG_Y_Sav02;
-        public float ExTopG_Z_Sav02;
-        public float ExTopG_W_Sav02;
-        public float ExTopH_X_Sav02;
-        public float ExTopH_Y_Sav02;
-        public float ExTopH_Z_Sav02;
-        public float ExTopH_W_Sav02;
-        public float ExTopI_X_Sav02;
-        public float ExTopI_Y_Sav02;
-        public float ExTopI_Z_Sav02;
-        public float ExTopI_W_Sav02;
+        public string Root_Sav01;
+        public string Abdomen_Sav01;
+        public string Throw_Sav01;
+        public string Waist_Sav01;
+        public string SpineA_Sav01;
+        public string LegLeft_Sav01;
+        public string LegRight_Sav01;
+        public string HolsterLeft_Sav01;
+        public string HolsterRight_Sav01;
+        public string SheatheLeft_Sav01;
+        public string SheatheRight_Sav01;
+        public string SpineB_Sav01;
+        public string ClothBackALeft_Sav01;
+        public string ClothBackARight_Sav01;
+        public string ClothFrontALeft_Sav01;
+        public string ClothFrontARight_Sav01;
+        public string ClothSideALeft_Sav01;
+        public string ClothSideARight_Sav01;
+        public string KneeLeft_Sav01;
+        public string KneeRight_Sav01;
+        public string BreastLeft_Sav01;
+        public string BreastRight_Sav01;
+        public string SpineC_Sav01;
+        public string ClothBackBLeft_Sav01;
+        public string ClothBackBRight_Sav01;
+        public string ClothFrontBLeft_Sav01;
+        public string ClothFrontBRight_Sav01;
+        public string ClothSideBLeft_Sav01;
+        public string ClothSideBRight_Sav01;
+        public string CalfLeft_Sav01;
+        public string CalfRight_Sav01;
+        public string ScabbardLeft_Sav01;
+        public string ScabbardRight_Sav01;
+        public string Neck_Sav01;
+        public string ClavicleLeft_Sav01;
+        public string ClavicleRight_Sav01;
+        public string ClothBackCLeft_Sav01;
+        public string ClothBackCRight_Sav01;
+        public string ClothFrontCLeft_Sav01;
+        public string ClothFrontCRight_Sav01;
+        public string ClothSideCLeft_Sav01;
+        public string ClothSideCRight_Sav01;
+        public string PoleynLeft_Sav01;
+        public string PoleynRight_Sav01;
+        public string FootLeft_Sav01;
+        public string FootRight_Sav01;
+        public string Head_Sav01;
+        public string ArmLeft_Sav01;
+        public string ArmRight_Sav01;
+        public string PauldronLeft_Sav01;
+        public string PauldronRight_Sav01;
+        public string Unknown00_Sav01;
+        public string ToesLeft_Sav01;
+        public string ToesRight_Sav01;
+        public string HairA_Sav01;
+        public string HairFrontLeft_Sav01;
+        public string HairFrontRight_Sav01;
+        public string EarLeft_Sav01;
+        public string EarRight_Sav01;
+        public string ForearmLeft_Sav01;
+        public string ForearmRight_Sav01;
+        public string ShoulderLeft_Sav01;
+        public string ShoulderRight_Sav01;
+        public string HairB_Sav01;
+        public string HandLeft_Sav01;
+        public string HandRight_Sav01;
+        public string ShieldLeft_Sav01;
+        public string ShieldRight_Sav01;
+        public string EarringALeft_Sav01;
+        public string EarringARight_Sav01;
+        public string ElbowLeft_Sav01;
+        public string ElbowRight_Sav01;
+        public string CouterLeft_Sav01;
+        public string CouterRight_Sav01;
+        public string WristLeft_Sav01;
+        public string WristRight_Sav01;
+        public string IndexALeft_Sav01;
+        public string IndexARight_Sav01;
+        public string PinkyALeft_Sav01;
+        public string PinkyARight_Sav01;
+        public string RingALeft_Sav01;
+        public string RingARight_Sav01;
+        public string MiddleALeft_Sav01;
+        public string MiddleARight_Sav01;
+        public string ThumbALeft_Sav01;
+        public string ThumbARight_Sav01;
+        public string WeaponLeft_Sav01;
+        public string WeaponRight_Sav01;
+        public string EarringBLeft_Sav01;
+        public string EarringBRight_Sav01;
+        public string IndexBLeft_Sav01;
+        public string IndexBRight_Sav01;
+        public string PinkyBLeft_Sav01;
+        public string PinkyBRight_Sav01;
+        public string RingBLeft_Sav01;
+        public string RingBRight_Sav01;
+        public string MiddleBLeft_Sav01;
+        public string MiddleBRight_Sav01;
+        public string ThumbBLeft_Sav01;
+        public string ThumbBRight_Sav01;
+        public string TailA_Sav01;
+        public string TailB_Sav01;
+        public string TailC_Sav01;
+        public string TailD_Sav01;
+        public string TailE_Sav01;
+        public string RootHead_Sav01;
+        public string Jaw_Sav01;
+        public string EyelidLowerLeft_Sav01;
+        public string EyelidLowerRight_Sav01;
+        public string EyeLeft_Sav01;
+        public string EyeRight_Sav01;
+        public string Nose_Sav01;
+        public string CheekLeft_Sav01;
+        public string HrothWhiskersLeft_Sav01;
+        public string CheekRight_Sav01;
+        public string HrothWhiskersRight_Sav01;
+        public string LipsLeft_Sav01;
+        public string HrothEyebrowLeft_Sav01;
+        public string LipsRight_Sav01;
+        public string HrothEyebrowRight_Sav01;
+        public string EyebrowLeft_Sav01;
+        public string HrothBridge_Sav01;
+        public string EyebrowRight_Sav01;
+        public string HrothBrowLeft_Sav01;
+        public string Bridge_Sav01;
+        public string HrothBrowRight_Sav01;
+        public string BrowLeft_Sav01;
+        public string HrothJawUpper_Sav01;
+        public string BrowRight_Sav01;
+        public string HrothLipUpper_Sav01;
+        public string LipUpperA_Sav01;
+        public string HrothEyelidUpperLeft_Sav01;
+        public string EyelidUpperLeft_Sav01;
+        public string HrothEyelidUpperRight_Sav01;
+        public string EyelidUpperRight_Sav01;
+        public string HrothLipsLeft_Sav01;
+        public string LipLowerA_Sav01;
+        public string HrothLipsRight_Sav01;
+        public string VieraEar01ALeft_Sav01;
+        public string LipUpperB_Sav01;
+        public string HrothLipUpperLeft_Sav01;
+        public string VieraEar01ARight_Sav01;
+        public string LipLowerB_Sav01;
+        public string HrothLipUpperRight_Sav01;
+        public string VieraEar02ALeft_Sav01;
+        public string HrothLipLower_Sav01;
+        public string VieraEar02ARight_Sav01;
+        public string VieraEar03ALeft_Sav01;
+        public string VieraEar03ARight_Sav01;
+        public string VieraEar04ALeft_Sav01;
+        public string VieraEar04ARight_Sav01;
+        public string VieraLipLowerA_Sav01;
+        public string VieraLipUpperB_Sav01;
+        public string VieraEar01BLeft_Sav01;
+        public string VieraEar01BRight_Sav01;
+        public string VieraEar02BLeft_Sav01;
+        public string VieraEar02BRight_Sav01;
+        public string VieraEar03BLeft_Sav01;
+        public string VieraEar03BRight_Sav01;
+        public string VieraEar04BLeft_Sav01;
+        public string VieraEar04BRight_Sav01;
+        public string VieraLipLowerB_Sav01;
+        public string ExRootHair_Sav01;
+        public string ExHairA_Sav01;
+        public string ExHairB_Sav01;
+        public string ExHairC_Sav01;
+        public string ExHairD_Sav01;
+        public string ExHairE_Sav01;
+        public string ExHairF_Sav01;
+        public string ExHairG_Sav01;
+        public string ExHairH_Sav01;
+        public string ExHairI_Sav01;
+        public string ExHairJ_Sav01;
+        public string ExHairK_Sav01;
+        public string ExHairL_Sav01;
+        public string ExRootMet_Sav01;
+        public string ExMetA_Sav01;
+        public string ExMetB_Sav01;
+        public string ExMetC_Sav01;
+        public string ExMetD_Sav01;
+        public string ExMetE_Sav01;
+        public string ExMetF_Sav01;
+        public string ExMetG_Sav01;
+        public string ExMetH_Sav01;
+        public string ExMetI_Sav01;
+        public string ExMetJ_Sav01;
+        public string ExMetK_Sav01;
+        public string ExMetL_Sav01;
+        public string ExMetM_Sav01;
+        public string ExMetN_Sav01;
+        public string ExMetO_Sav01;
+        public string ExMetP_Sav01;
+        public string ExMetQ_Sav01;
+        public string ExMetR_Sav01;
+        public string ExRootTop_Sav01;
+        public string ExTopA_Sav01;
+        public string ExTopB_Sav01;
+        public string ExTopC_Sav01;
+        public string ExTopD_Sav01;
+        public string ExTopE_Sav01;
+        public string ExTopF_Sav01;
+        public string ExTopG_Sav01;
+        public string ExTopH_Sav01;
+        public string ExTopI_Sav01;
+        #endregion
+        #region Savestate02 Strings
+        public string Race_Sav02;
+
+        public string Root_Sav02;
+        public string Abdomen_Sav02;
+        public string Throw_Sav02;
+        public string Waist_Sav02;
+        public string SpineA_Sav02;
+        public string LegLeft_Sav02;
+        public string LegRight_Sav02;
+        public string HolsterLeft_Sav02;
+        public string HolsterRight_Sav02;
+        public string SheatheLeft_Sav02;
+        public string SheatheRight_Sav02;
+        public string SpineB_Sav02;
+        public string ClothBackALeft_Sav02;
+        public string ClothBackARight_Sav02;
+        public string ClothFrontALeft_Sav02;
+        public string ClothFrontARight_Sav02;
+        public string ClothSideALeft_Sav02;
+        public string ClothSideARight_Sav02;
+        public string KneeLeft_Sav02;
+        public string KneeRight_Sav02;
+        public string BreastLeft_Sav02;
+        public string BreastRight_Sav02;
+        public string SpineC_Sav02;
+        public string ClothBackBLeft_Sav02;
+        public string ClothBackBRight_Sav02;
+        public string ClothFrontBLeft_Sav02;
+        public string ClothFrontBRight_Sav02;
+        public string ClothSideBLeft_Sav02;
+        public string ClothSideBRight_Sav02;
+        public string CalfLeft_Sav02;
+        public string CalfRight_Sav02;
+        public string ScabbardLeft_Sav02;
+        public string ScabbardRight_Sav02;
+        public string Neck_Sav02;
+        public string ClavicleLeft_Sav02;
+        public string ClavicleRight_Sav02;
+        public string ClothBackCLeft_Sav02;
+        public string ClothBackCRight_Sav02;
+        public string ClothFrontCLeft_Sav02;
+        public string ClothFrontCRight_Sav02;
+        public string ClothSideCLeft_Sav02;
+        public string ClothSideCRight_Sav02;
+        public string PoleynLeft_Sav02;
+        public string PoleynRight_Sav02;
+        public string FootLeft_Sav02;
+        public string FootRight_Sav02;
+        public string Head_Sav02;
+        public string ArmLeft_Sav02;
+        public string ArmRight_Sav02;
+        public string PauldronLeft_Sav02;
+        public string PauldronRight_Sav02;
+        public string Unknown00_Sav02;
+        public string ToesLeft_Sav02;
+        public string ToesRight_Sav02;
+        public string HairA_Sav02;
+        public string HairFrontLeft_Sav02;
+        public string HairFrontRight_Sav02;
+        public string EarLeft_Sav02;
+        public string EarRight_Sav02;
+        public string ForearmLeft_Sav02;
+        public string ForearmRight_Sav02;
+        public string ShoulderLeft_Sav02;
+        public string ShoulderRight_Sav02;
+        public string HairB_Sav02;
+        public string HandLeft_Sav02;
+        public string HandRight_Sav02;
+        public string ShieldLeft_Sav02;
+        public string ShieldRight_Sav02;
+        public string EarringALeft_Sav02;
+        public string EarringARight_Sav02;
+        public string ElbowLeft_Sav02;
+        public string ElbowRight_Sav02;
+        public string CouterLeft_Sav02;
+        public string CouterRight_Sav02;
+        public string WristLeft_Sav02;
+        public string WristRight_Sav02;
+        public string IndexALeft_Sav02;
+        public string IndexARight_Sav02;
+        public string PinkyALeft_Sav02;
+        public string PinkyARight_Sav02;
+        public string RingALeft_Sav02;
+        public string RingARight_Sav02;
+        public string MiddleALeft_Sav02;
+        public string MiddleARight_Sav02;
+        public string ThumbALeft_Sav02;
+        public string ThumbARight_Sav02;
+        public string WeaponLeft_Sav02;
+        public string WeaponRight_Sav02;
+        public string EarringBLeft_Sav02;
+        public string EarringBRight_Sav02;
+        public string IndexBLeft_Sav02;
+        public string IndexBRight_Sav02;
+        public string PinkyBLeft_Sav02;
+        public string PinkyBRight_Sav02;
+        public string RingBLeft_Sav02;
+        public string RingBRight_Sav02;
+        public string MiddleBLeft_Sav02;
+        public string MiddleBRight_Sav02;
+        public string ThumbBLeft_Sav02;
+        public string ThumbBRight_Sav02;
+        public string TailA_Sav02;
+        public string TailB_Sav02;
+        public string TailC_Sav02;
+        public string TailD_Sav02;
+        public string TailE_Sav02;
+        public string RootHead_Sav02;
+        public string Jaw_Sav02;
+        public string EyelidLowerLeft_Sav02;
+        public string EyelidLowerRight_Sav02;
+        public string EyeLeft_Sav02;
+        public string EyeRight_Sav02;
+        public string Nose_Sav02;
+        public string CheekLeft_Sav02;
+        public string HrothWhiskersLeft_Sav02;
+        public string CheekRight_Sav02;
+        public string HrothWhiskersRight_Sav02;
+        public string LipsLeft_Sav02;
+        public string HrothEyebrowLeft_Sav02;
+        public string LipsRight_Sav02;
+        public string HrothEyebrowRight_Sav02;
+        public string EyebrowLeft_Sav02;
+        public string HrothBridge_Sav02;
+        public string EyebrowRight_Sav02;
+        public string HrothBrowLeft_Sav02;
+        public string Bridge_Sav02;
+        public string HrothBrowRight_Sav02;
+        public string BrowLeft_Sav02;
+        public string HrothJawUpper_Sav02;
+        public string BrowRight_Sav02;
+        public string HrothLipUpper_Sav02;
+        public string LipUpperA_Sav02;
+        public string HrothEyelidUpperLeft_Sav02;
+        public string EyelidUpperLeft_Sav02;
+        public string HrothEyelidUpperRight_Sav02;
+        public string EyelidUpperRight_Sav02;
+        public string HrothLipsLeft_Sav02;
+        public string LipLowerA_Sav02;
+        public string HrothLipsRight_Sav02;
+        public string VieraEar01ALeft_Sav02;
+        public string LipUpperB_Sav02;
+        public string HrothLipUpperLeft_Sav02;
+        public string VieraEar01ARight_Sav02;
+        public string LipLowerB_Sav02;
+        public string HrothLipUpperRight_Sav02;
+        public string VieraEar02ALeft_Sav02;
+        public string HrothLipLower_Sav02;
+        public string VieraEar02ARight_Sav02;
+        public string VieraEar03ALeft_Sav02;
+        public string VieraEar03ARight_Sav02;
+        public string VieraEar04ALeft_Sav02;
+        public string VieraEar04ARight_Sav02;
+        public string VieraLipLowerA_Sav02;
+        public string VieraLipUpperB_Sav02;
+        public string VieraEar01BLeft_Sav02;
+        public string VieraEar01BRight_Sav02;
+        public string VieraEar02BLeft_Sav02;
+        public string VieraEar02BRight_Sav02;
+        public string VieraEar03BLeft_Sav02;
+        public string VieraEar03BRight_Sav02;
+        public string VieraEar04BLeft_Sav02;
+        public string VieraEar04BRight_Sav02;
+        public string VieraLipLowerB_Sav02;
+        public string ExRootHair_Sav02;
+        public string ExHairA_Sav02;
+        public string ExHairB_Sav02;
+        public string ExHairC_Sav02;
+        public string ExHairD_Sav02;
+        public string ExHairE_Sav02;
+        public string ExHairF_Sav02;
+        public string ExHairG_Sav02;
+        public string ExHairH_Sav02;
+        public string ExHairI_Sav02;
+        public string ExHairJ_Sav02;
+        public string ExHairK_Sav02;
+        public string ExHairL_Sav02;
+        public string ExRootMet_Sav02;
+        public string ExMetA_Sav02;
+        public string ExMetB_Sav02;
+        public string ExMetC_Sav02;
+        public string ExMetD_Sav02;
+        public string ExMetE_Sav02;
+        public string ExMetF_Sav02;
+        public string ExMetG_Sav02;
+        public string ExMetH_Sav02;
+        public string ExMetI_Sav02;
+        public string ExMetJ_Sav02;
+        public string ExMetK_Sav02;
+        public string ExMetL_Sav02;
+        public string ExMetM_Sav02;
+        public string ExMetN_Sav02;
+        public string ExMetO_Sav02;
+        public string ExMetP_Sav02;
+        public string ExMetQ_Sav02;
+        public string ExMetR_Sav02;
+        public string ExRootTop_Sav02;
+        public string ExTopA_Sav02;
+        public string ExTopB_Sav02;
+        public string ExTopC_Sav02;
+        public string ExTopD_Sav02;
+        public string ExTopE_Sav02;
+        public string ExTopF_Sav02;
+        public string ExTopG_Sav02;
+        public string ExTopH_Sav02;
+        public string ExTopI_Sav02;
         #endregion
         #region Bools
         public bool HeadSaved01;
@@ -20048,1986 +18829,2661 @@ namespace ConceptMatrix.Views
         #region Savestate\Loadstate Head
         private void SavestateHead01_Click(object sender, RoutedEventArgs e)
         {
-            CharacterDetails.SaveHead01 = true;
             HeadSaved01 = true;
-
             if (CharacterDetails.BoneEditMode) LoadstateHead01.IsEnabled = true;
+            Race_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Race), 1));
+
+            Head_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Head_X), 16));
+            EarLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarLeft_X), 16));
+            EarRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarRight_X), 16));
+            RootHead_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RootHead_X), 16));
+            Jaw_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Jaw_X), 16));
+            EyelidLowerLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidLowerLeft_X), 16));
+            EyelidLowerRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidLowerRight_X), 16));
+            EyeLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyeLeft_X), 16));
+            EyeRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyeRight_X), 16));
+            Nose_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Nose_X), 16));
+            CheekLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekLeft_X), 16));
+            HrothWhiskersLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersLeft_X), 16));
+            CheekRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekRight_X), 16));
+            HrothWhiskersRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersRight_X), 16));
+            LipsLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsLeft_X), 16));
+            HrothEyebrowLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyebrowLeft_X), 16));
+            LipsRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsRight_X), 16));
+            HrothEyebrowRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyebrowRight_X), 16));
+            EyebrowLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowLeft_X), 16));
+            HrothBridge_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothBridge_X), 16));
+            EyebrowRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowRight_X), 16));
+            HrothBrowLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothBrowLeft_X), 16));
+            Bridge_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Bridge_X), 16));
+            HrothBrowRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothBrowRight_X), 16));
+            BrowLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowLeft_X), 16));
+            HrothJawUpper_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothJawUpper_X), 16));
+            BrowRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowRight_X), 16));
+            HrothLipUpper_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipUpper_X), 16));
+            LipUpperA_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperA_X), 16));
+            HrothEyelidUpperLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyelidUpperLeft_X), 16));
+            EyelidUpperLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperLeft_X), 16));
+            HrothEyelidUpperRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyelidUpperRight_X), 16));
+            EyelidUpperRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperRight_X), 16));
+            HrothLipsLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipsLeft_X), 16));
+            LipLowerA_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipLowerA_X), 16));
+            HrothLipsRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipsRight_X), 16));
+            VieraEar01ALeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01ALeft_X), 16));
+            LipUpperB_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperB_X), 16));
+            HrothLipUpperLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipUpperLeft_X), 16));
+            VieraEar01ARight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01ARight_X), 16));
+            LipLowerB_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipLowerB_X), 16));
+            HrothLipUpperRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipUpperRight_X), 16));
+            VieraEar02ALeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02ALeft_X), 16));
+            if (CharacterDetails.Race.value == 7 || CharacterDetails.Race.value == 8)
+            {
+                HrothLipLower_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipLower_X), 16));
+                VieraEar02ARight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02ARight_X), 16));
+            }
+            else
+            {
+                HrothLipLower_Sav01 = "null";
+                VieraEar02ARight_Sav01 = "null";
+            }
+            if (CharacterDetails.Race.value == 8)
+            {
+                VieraEar03ALeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar03ALeft_X), 16));
+                VieraEar03ARight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar03ARight_X), 16));
+                VieraEar04ALeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar04ALeft_X), 16));
+                VieraEar04ARight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar04ARight_X), 16));
+                VieraLipLowerA_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraLipLowerA_X), 16));
+                VieraLipUpperB_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraLipUpperB_X), 16));
+                VieraEar01BLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01BLeft_X), 16));
+                VieraEar01BRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01BRight_X), 16));
+                VieraEar02BLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02BLeft_X), 16));
+                VieraEar02BRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02BRight_X), 16));
+                VieraEar03BLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar03BLeft_X), 16));
+                VieraEar03BRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar03BRight_X), 16));
+                VieraEar04BLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar04BLeft_X), 16));
+                VieraEar04BRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar04BRight_X), 16));
+                VieraLipLowerB_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraLipLowerB_X), 16));
+            }
+            else
+            {
+                VieraEar03ALeft_Sav01 = "null";
+                VieraEar03ARight_Sav01 = "null";
+                VieraEar04ALeft_Sav01 = "null";
+                VieraEar04ARight_Sav01 = "null";
+                VieraLipLowerA_Sav01 = "null";
+                VieraLipUpperB_Sav01 = "null";
+                VieraEar01BLeft_Sav01 = "null";
+                VieraEar01BRight_Sav01 = "null";
+                VieraEar02BLeft_Sav01 = "null";
+                VieraEar02BRight_Sav01 = "null";
+                VieraEar03BLeft_Sav01 = "null";
+                VieraEar03BRight_Sav01 = "null";
+                VieraEar04BLeft_Sav01 = "null";
+                VieraEar04BRight_Sav01 = "null";
+                VieraLipLowerB_Sav01 = "null";
+            }
         }
         private void SavestateHead02_Click(object sender, RoutedEventArgs e)
         {
-            CharacterDetails.SaveHead02 = true;
             HeadSaved02 = true;
+            if (CharacterDetails.BoneEditMode) LoadstateHead02.IsEnabled = true;
+            Race_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Race), 1));
 
-            if (CharacterDetails.BoneEditMode) SavestateHead02.IsEnabled = true;
+            Head_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Head_X), 16));
+            EarLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarLeft_X), 16));
+            EarRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarRight_X), 16));
+            RootHead_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RootHead_X), 16));
+            Jaw_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Jaw_X), 16));
+            EyelidLowerLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidLowerLeft_X), 16));
+            EyelidLowerRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidLowerRight_X), 16));
+            EyeLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyeLeft_X), 16));
+            EyeRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyeRight_X), 16));
+            Nose_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Nose_X), 16));
+            CheekLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekLeft_X), 16));
+            HrothWhiskersLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersLeft_X), 16));
+            CheekRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekRight_X), 16));
+            HrothWhiskersRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersRight_X), 16));
+            LipsLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsLeft_X), 16));
+            HrothEyebrowLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyebrowLeft_X), 16));
+            LipsRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsRight_X), 16));
+            HrothEyebrowRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyebrowRight_X), 16));
+            EyebrowLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowLeft_X), 16));
+            HrothBridge_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothBridge_X), 16));
+            EyebrowRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowRight_X), 16));
+            HrothBrowLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothBrowLeft_X), 16));
+            Bridge_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Bridge_X), 16));
+            HrothBrowRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothBrowRight_X), 16));
+            BrowLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowLeft_X), 16));
+            HrothJawUpper_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothJawUpper_X), 16));
+            BrowRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowRight_X), 16));
+            HrothLipUpper_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipUpper_X), 16));
+            LipUpperA_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperA_X), 16));
+            HrothEyelidUpperLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyelidUpperLeft_X), 16));
+            EyelidUpperLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperLeft_X), 16));
+            HrothEyelidUpperRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyelidUpperRight_X), 16));
+            EyelidUpperRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperRight_X), 16));
+            HrothLipsLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipsLeft_X), 16));
+            LipLowerA_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipLowerA_X), 16));
+            HrothLipsRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipsRight_X), 16));
+            VieraEar01ALeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01ALeft_X), 16));
+            LipUpperB_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperB_X), 16));
+            HrothLipUpperLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipUpperLeft_X), 16));
+            VieraEar01ARight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01ARight_X), 16));
+            LipLowerB_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipLowerB_X), 16));
+            HrothLipUpperRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipUpperRight_X), 16));
+            VieraEar02ALeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02ALeft_X), 16));
+            if (CharacterDetails.Race.value == 7 || CharacterDetails.Race.value == 8)
+            {
+                HrothLipLower_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipLower_X), 16));
+                VieraEar02ARight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02ARight_X), 16));
+            }
+            else
+            {
+                HrothLipLower_Sav02 = "null";
+                VieraEar02ARight_Sav02 = "null";
+            }
+            if (CharacterDetails.Race.value == 8)
+            {
+                VieraEar03ALeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar03ALeft_X), 16));
+                VieraEar03ARight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar03ARight_X), 16));
+                VieraEar04ALeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar04ALeft_X), 16));
+                VieraEar04ARight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar04ARight_X), 16));
+                VieraLipLowerA_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraLipLowerA_X), 16));
+                VieraLipUpperB_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraLipUpperB_X), 16));
+                VieraEar01BLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01BLeft_X), 16));
+                VieraEar01BRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01BRight_X), 16));
+                VieraEar02BLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02BLeft_X), 16));
+                VieraEar02BRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02BRight_X), 16));
+                VieraEar03BLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar03BLeft_X), 16));
+                VieraEar03BRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar03BRight_X), 16));
+                VieraEar04BLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar04BLeft_X), 16));
+                VieraEar04BRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar04BRight_X), 16));
+                VieraLipLowerB_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraLipLowerB_X), 16));
+            }
+            else
+            {
+                VieraEar03ALeft_Sav02 = "null";
+                VieraEar03ARight_Sav02 = "null";
+                VieraEar04ALeft_Sav02 = "null";
+                VieraEar04ARight_Sav02 = "null";
+                VieraLipLowerA_Sav02 = "null";
+                VieraLipUpperB_Sav02 = "null";
+                VieraEar01BLeft_Sav02 = "null";
+                VieraEar01BRight_Sav02 = "null";
+                VieraEar02BLeft_Sav02 = "null";
+                VieraEar02BRight_Sav02 = "null";
+                VieraEar03BLeft_Sav02 = "null";
+                VieraEar03BRight_Sav02 = "null";
+                VieraEar04BLeft_Sav02 = "null";
+                VieraEar04BRight_Sav02 = "null";
+                VieraLipLowerB_Sav02 = "null";
+            }
         }
         private void LoadstateHead01_Click(object sender, RoutedEventArgs e)
         {
             UncheckAll();
-            CharacterDetails.WriteHead = true;
-
-            CharacterDetails.Head_X.value = Head_X_Sav01;
-            CharacterDetails.Head_Y.value = Head_Y_Sav01;
-            CharacterDetails.Head_Z.value = Head_Z_Sav01;
-            CharacterDetails.Head_W.value = Head_W_Sav01;
-            CharacterDetails.EarLeft_X.value = EarLeft_X_Sav01;
-            CharacterDetails.EarLeft_Y.value = EarLeft_Y_Sav01;
-            CharacterDetails.EarLeft_Z.value = EarLeft_Z_Sav01;
-            CharacterDetails.EarLeft_W.value = EarLeft_W_Sav01;
-            CharacterDetails.EarRight_X.value = EarRight_X_Sav01;
-            CharacterDetails.EarRight_Y.value = EarRight_Y_Sav01;
-            CharacterDetails.EarRight_Z.value = EarRight_Z_Sav01;
-            CharacterDetails.EarRight_W.value = EarRight_W_Sav01;
-            CharacterDetails.Jaw_X.value = Jaw_X_Sav01;
-            CharacterDetails.Jaw_Y.value = Jaw_Y_Sav01;
-            CharacterDetails.Jaw_Z.value = Jaw_Z_Sav01;
-            CharacterDetails.Jaw_W.value = Jaw_W_Sav01;
-            CharacterDetails.EyelidLowerLeft_X.value = EyelidLowerLeft_X_Sav01;
-            CharacterDetails.EyelidLowerLeft_Y.value = EyelidLowerLeft_Y_Sav01;
-            CharacterDetails.EyelidLowerLeft_Z.value = EyelidLowerLeft_Z_Sav01;
-            CharacterDetails.EyelidLowerLeft_W.value = EyelidLowerLeft_W_Sav01;
-            CharacterDetails.EyelidLowerRight_X.value = EyelidLowerRight_X_Sav01;
-            CharacterDetails.EyelidLowerRight_Y.value = EyelidLowerRight_Y_Sav01;
-            CharacterDetails.EyelidLowerRight_Z.value = EyelidLowerRight_Z_Sav01;
-            CharacterDetails.EyelidLowerRight_W.value = EyelidLowerRight_W_Sav01;
-            CharacterDetails.EyeLeft_X.value = EyeLeft_X_Sav01;
-            CharacterDetails.EyeLeft_Y.value = EyeLeft_Y_Sav01;
-            CharacterDetails.EyeLeft_Z.value = EyeLeft_Z_Sav01;
-            CharacterDetails.EyeLeft_W.value = EyeLeft_W_Sav01;
-            CharacterDetails.EyeRight_X.value = EyeRight_X_Sav01;
-            CharacterDetails.EyeRight_Y.value = EyeRight_Y_Sav01;
-            CharacterDetails.EyeRight_Z.value = EyeRight_Z_Sav01;
-            CharacterDetails.EyeRight_W.value = EyeRight_W_Sav01;
-            CharacterDetails.Nose_X.value = Nose_X_Sav01;
-            CharacterDetails.Nose_Y.value = Nose_Y_Sav01;
-            CharacterDetails.Nose_Z.value = Nose_Z_Sav01;
-            CharacterDetails.Nose_W.value = Nose_W_Sav01;
-            CharacterDetails.CheekLeft_X.value = CheekLeft_X_Sav01;
-            CharacterDetails.CheekLeft_Y.value = CheekLeft_Y_Sav01;
-            CharacterDetails.CheekLeft_Z.value = CheekLeft_Z_Sav01;
-            CharacterDetails.CheekLeft_W.value = CheekLeft_W_Sav01;
-            CharacterDetails.HrothWhiskersLeft_X.value = HrothWhiskersLeft_X_Sav01;
-            CharacterDetails.HrothWhiskersLeft_Y.value = HrothWhiskersLeft_Y_Sav01;
-            CharacterDetails.HrothWhiskersLeft_Z.value = HrothWhiskersLeft_Z_Sav01;
-            CharacterDetails.HrothWhiskersLeft_W.value = HrothWhiskersLeft_W_Sav01;
-            CharacterDetails.CheekRight_X.value = CheekRight_X_Sav01;
-            CharacterDetails.CheekRight_Y.value = CheekRight_Y_Sav01;
-            CharacterDetails.CheekRight_Z.value = CheekRight_Z_Sav01;
-            CharacterDetails.CheekRight_W.value = CheekRight_W_Sav01;
-            CharacterDetails.HrothWhiskersRight_X.value = HrothWhiskersRight_X_Sav01;
-            CharacterDetails.HrothWhiskersRight_Y.value = HrothWhiskersRight_Y_Sav01;
-            CharacterDetails.HrothWhiskersRight_Z.value = HrothWhiskersRight_Z_Sav01;
-            CharacterDetails.HrothWhiskersRight_W.value = HrothWhiskersRight_W_Sav01;
-            CharacterDetails.LipsLeft_X.value = LipsLeft_X_Sav01;
-            CharacterDetails.LipsLeft_Y.value = LipsLeft_Y_Sav01;
-            CharacterDetails.LipsLeft_Z.value = LipsLeft_Z_Sav01;
-            CharacterDetails.LipsLeft_W.value = LipsLeft_W_Sav01;
-            CharacterDetails.HrothEyebrowLeft_X.value = HrothEyebrowLeft_X_Sav01;
-            CharacterDetails.HrothEyebrowLeft_Y.value = HrothEyebrowLeft_Y_Sav01;
-            CharacterDetails.HrothEyebrowLeft_Z.value = HrothEyebrowLeft_Z_Sav01;
-            CharacterDetails.HrothEyebrowLeft_W.value = HrothEyebrowLeft_W_Sav01;
-            CharacterDetails.LipsRight_X.value = LipsRight_X_Sav01;
-            CharacterDetails.LipsRight_Y.value = LipsRight_Y_Sav01;
-            CharacterDetails.LipsRight_Z.value = LipsRight_Z_Sav01;
-            CharacterDetails.LipsRight_W.value = LipsRight_W_Sav01;
-            CharacterDetails.HrothEyebrowRight_X.value = HrothEyebrowRight_X_Sav01;
-            CharacterDetails.HrothEyebrowRight_Y.value = HrothEyebrowRight_Y_Sav01;
-            CharacterDetails.HrothEyebrowRight_Z.value = HrothEyebrowRight_Z_Sav01;
-            CharacterDetails.HrothEyebrowRight_W.value = HrothEyebrowRight_W_Sav01;
-            CharacterDetails.EyebrowLeft_X.value = EyebrowLeft_X_Sav01;
-            CharacterDetails.EyebrowLeft_Y.value = EyebrowLeft_Y_Sav01;
-            CharacterDetails.EyebrowLeft_Z.value = EyebrowLeft_Z_Sav01;
-            CharacterDetails.EyebrowLeft_W.value = EyebrowLeft_W_Sav01;
-            CharacterDetails.HrothBridge_X.value = HrothBridge_X_Sav01;
-            CharacterDetails.HrothBridge_Y.value = HrothBridge_Y_Sav01;
-            CharacterDetails.HrothBridge_Z.value = HrothBridge_Z_Sav01;
-            CharacterDetails.HrothBridge_W.value = HrothBridge_W_Sav01;
-            CharacterDetails.EyebrowRight_X.value = EyebrowRight_X_Sav01;
-            CharacterDetails.EyebrowRight_Y.value = EyebrowRight_Y_Sav01;
-            CharacterDetails.EyebrowRight_Z.value = EyebrowRight_Z_Sav01;
-            CharacterDetails.EyebrowRight_W.value = EyebrowRight_W_Sav01;
-            CharacterDetails.HrothBrowLeft_X.value = HrothBrowLeft_X_Sav01;
-            CharacterDetails.HrothBrowLeft_Y.value = HrothBrowLeft_Y_Sav01;
-            CharacterDetails.HrothBrowLeft_Z.value = HrothBrowLeft_Z_Sav01;
-            CharacterDetails.HrothBrowLeft_W.value = HrothBrowLeft_W_Sav01;
-            CharacterDetails.Bridge_X.value = Bridge_X_Sav01;
-            CharacterDetails.Bridge_Y.value = Bridge_Y_Sav01;
-            CharacterDetails.Bridge_Z.value = Bridge_Z_Sav01;
-            CharacterDetails.Bridge_W.value = Bridge_W_Sav01;
-            CharacterDetails.HrothBrowRight_X.value = HrothBrowRight_X_Sav01;
-            CharacterDetails.HrothBrowRight_Y.value = HrothBrowRight_Y_Sav01;
-            CharacterDetails.HrothBrowRight_Z.value = HrothBrowRight_Z_Sav01;
-            CharacterDetails.HrothBrowRight_W.value = HrothBrowRight_W_Sav01;
-            CharacterDetails.BrowLeft_X.value = BrowLeft_X_Sav01;
-            CharacterDetails.BrowLeft_Y.value = BrowLeft_Y_Sav01;
-            CharacterDetails.BrowLeft_Z.value = BrowLeft_Z_Sav01;
-            CharacterDetails.BrowLeft_W.value = BrowLeft_W_Sav01;
-            CharacterDetails.HrothJawUpper_X.value = HrothJawUpper_X_Sav01;
-            CharacterDetails.HrothJawUpper_Y.value = HrothJawUpper_Y_Sav01;
-            CharacterDetails.HrothJawUpper_Z.value = HrothJawUpper_Z_Sav01;
-            CharacterDetails.HrothJawUpper_W.value = HrothJawUpper_W_Sav01;
-            CharacterDetails.BrowRight_X.value = BrowRight_X_Sav01;
-            CharacterDetails.BrowRight_Y.value = BrowRight_Y_Sav01;
-            CharacterDetails.BrowRight_Z.value = BrowRight_Z_Sav01;
-            CharacterDetails.BrowRight_W.value = BrowRight_W_Sav01;
-            CharacterDetails.HrothLipUpper_X.value = HrothLipUpper_X_Sav01;
-            CharacterDetails.HrothLipUpper_Y.value = HrothLipUpper_Y_Sav01;
-            CharacterDetails.HrothLipUpper_Z.value = HrothLipUpper_Z_Sav01;
-            CharacterDetails.HrothLipUpper_W.value = HrothLipUpper_W_Sav01;
-            CharacterDetails.LipUpperA_X.value = LipUpperA_X_Sav01;
-            CharacterDetails.LipUpperA_Y.value = LipUpperA_Y_Sav01;
-            CharacterDetails.LipUpperA_Z.value = LipUpperA_Z_Sav01;
-            CharacterDetails.LipUpperA_W.value = LipUpperA_W_Sav01;
-            CharacterDetails.HrothEyelidUpperLeft_X.value = HrothEyelidUpperLeft_X_Sav01;
-            CharacterDetails.HrothEyelidUpperLeft_Y.value = HrothEyelidUpperLeft_Y_Sav01;
-            CharacterDetails.HrothEyelidUpperLeft_Z.value = HrothEyelidUpperLeft_Z_Sav01;
-            CharacterDetails.HrothEyelidUpperLeft_W.value = HrothEyelidUpperLeft_W_Sav01;
-            CharacterDetails.EyelidUpperLeft_X.value = EyelidUpperLeft_X_Sav01;
-            CharacterDetails.EyelidUpperLeft_Y.value = EyelidUpperLeft_Y_Sav01;
-            CharacterDetails.EyelidUpperLeft_Z.value = EyelidUpperLeft_Z_Sav01;
-            CharacterDetails.EyelidUpperLeft_W.value = EyelidUpperLeft_W_Sav01;
-            CharacterDetails.HrothEyelidUpperRight_X.value = HrothEyelidUpperRight_X_Sav01;
-            CharacterDetails.HrothEyelidUpperRight_Y.value = HrothEyelidUpperRight_Y_Sav01;
-            CharacterDetails.HrothEyelidUpperRight_Z.value = HrothEyelidUpperRight_Z_Sav01;
-            CharacterDetails.HrothEyelidUpperRight_W.value = HrothEyelidUpperRight_W_Sav01;
-            CharacterDetails.EyelidUpperRight_X.value = EyelidUpperRight_X_Sav01;
-            CharacterDetails.EyelidUpperRight_Y.value = EyelidUpperRight_Y_Sav01;
-            CharacterDetails.EyelidUpperRight_Z.value = EyelidUpperRight_Z_Sav01;
-            CharacterDetails.EyelidUpperRight_W.value = EyelidUpperRight_W_Sav01;
-            CharacterDetails.HrothLipsLeft_X.value = HrothLipsLeft_X_Sav01;
-            CharacterDetails.HrothLipsLeft_Y.value = HrothLipsLeft_Y_Sav01;
-            CharacterDetails.HrothLipsLeft_Z.value = HrothLipsLeft_Z_Sav01;
-            CharacterDetails.HrothLipsLeft_W.value = HrothLipsLeft_W_Sav01;
-            CharacterDetails.LipLowerA_X.value = LipLowerA_X_Sav01;
-            CharacterDetails.LipLowerA_Y.value = LipLowerA_Y_Sav01;
-            CharacterDetails.LipLowerA_Z.value = LipLowerA_Z_Sav01;
-            CharacterDetails.LipLowerA_W.value = LipLowerA_W_Sav01;
-            CharacterDetails.HrothLipsRight_X.value = HrothLipsRight_X_Sav01;
-            CharacterDetails.HrothLipsRight_Y.value = HrothLipsRight_Y_Sav01;
-            CharacterDetails.HrothLipsRight_Z.value = HrothLipsRight_Z_Sav01;
-            CharacterDetails.HrothLipsRight_W.value = HrothLipsRight_W_Sav01;
-            CharacterDetails.VieraEar01ALeft_X.value = VieraEar01ALeft_X_Sav01;
-            CharacterDetails.VieraEar01ALeft_Y.value = VieraEar01ALeft_Y_Sav01;
-            CharacterDetails.VieraEar01ALeft_Z.value = VieraEar01ALeft_Z_Sav01;
-            CharacterDetails.VieraEar01ALeft_W.value = VieraEar01ALeft_W_Sav01;
-            CharacterDetails.LipUpperB_X.value = LipUpperB_X_Sav01;
-            CharacterDetails.LipUpperB_Y.value = LipUpperB_Y_Sav01;
-            CharacterDetails.LipUpperB_Z.value = LipUpperB_Z_Sav01;
-            CharacterDetails.LipUpperB_W.value = LipUpperB_W_Sav01;
-            CharacterDetails.HrothLipUpperLeft_X.value = HrothLipUpperLeft_X_Sav01;
-            CharacterDetails.HrothLipUpperLeft_Y.value = HrothLipUpperLeft_Y_Sav01;
-            CharacterDetails.HrothLipUpperLeft_Z.value = HrothLipUpperLeft_Z_Sav01;
-            CharacterDetails.HrothLipUpperLeft_W.value = HrothLipUpperLeft_W_Sav01;
-            CharacterDetails.VieraEar01ARight_X.value = VieraEar01ARight_X_Sav01;
-            CharacterDetails.VieraEar01ARight_Y.value = VieraEar01ARight_Y_Sav01;
-            CharacterDetails.VieraEar01ARight_Z.value = VieraEar01ARight_Z_Sav01;
-            CharacterDetails.VieraEar01ARight_W.value = VieraEar01ARight_W_Sav01;
-            CharacterDetails.LipLowerB_X.value = LipLowerB_X_Sav01;
-            CharacterDetails.LipLowerB_Y.value = LipLowerB_Y_Sav01;
-            CharacterDetails.LipLowerB_Z.value = LipLowerB_Z_Sav01;
-            CharacterDetails.LipLowerB_W.value = LipLowerB_W_Sav01;
-            CharacterDetails.HrothLipUpperRight_X.value = HrothLipUpperRight_X_Sav01;
-            CharacterDetails.HrothLipUpperRight_Y.value = HrothLipUpperRight_Y_Sav01;
-            CharacterDetails.HrothLipUpperRight_Z.value = HrothLipUpperRight_Z_Sav01;
-            CharacterDetails.HrothLipUpperRight_W.value = HrothLipUpperRight_W_Sav01;
-            CharacterDetails.VieraEar02ALeft_X.value = VieraEar02ALeft_X_Sav01;
-            CharacterDetails.VieraEar02ALeft_Y.value = VieraEar02ALeft_Y_Sav01;
-            CharacterDetails.VieraEar02ALeft_Z.value = VieraEar02ALeft_Z_Sav01;
-            CharacterDetails.VieraEar02ALeft_W.value = VieraEar02ALeft_W_Sav01;
-            CharacterDetails.HrothLipLower_X.value = HrothLipLower_X_Sav01;
-            CharacterDetails.HrothLipLower_Y.value = HrothLipLower_Y_Sav01;
-            CharacterDetails.HrothLipLower_Z.value = HrothLipLower_Z_Sav01;
-            CharacterDetails.HrothLipLower_W.value = HrothLipLower_W_Sav01;
-            CharacterDetails.VieraEar02ARight_X.value = VieraEar02ARight_X_Sav01;
-            CharacterDetails.VieraEar02ARight_Y.value = VieraEar02ARight_Y_Sav01;
-            CharacterDetails.VieraEar02ARight_Z.value = VieraEar02ARight_Z_Sav01;
-            CharacterDetails.VieraEar02ARight_W.value = VieraEar02ARight_W_Sav01;
-            CharacterDetails.VieraEar03ALeft_X.value = VieraEar03ALeft_X_Sav01;
-            CharacterDetails.VieraEar03ALeft_Y.value = VieraEar03ALeft_Y_Sav01;
-            CharacterDetails.VieraEar03ALeft_Z.value = VieraEar03ALeft_Z_Sav01;
-            CharacterDetails.VieraEar03ALeft_W.value = VieraEar03ALeft_W_Sav01;
-            CharacterDetails.VieraEar03ARight_X.value = VieraEar03ARight_X_Sav01;
-            CharacterDetails.VieraEar03ARight_Y.value = VieraEar03ARight_Y_Sav01;
-            CharacterDetails.VieraEar03ARight_Z.value = VieraEar03ARight_Z_Sav01;
-            CharacterDetails.VieraEar03ARight_W.value = VieraEar03ARight_W_Sav01;
-            CharacterDetails.VieraEar04ALeft_X.value = VieraEar04ALeft_X_Sav01;
-            CharacterDetails.VieraEar04ALeft_Y.value = VieraEar04ALeft_Y_Sav01;
-            CharacterDetails.VieraEar04ALeft_Z.value = VieraEar04ALeft_Z_Sav01;
-            CharacterDetails.VieraEar04ALeft_W.value = VieraEar04ALeft_W_Sav01;
-            CharacterDetails.VieraEar04ARight_X.value = VieraEar04ARight_X_Sav01;
-            CharacterDetails.VieraEar04ARight_Y.value = VieraEar04ARight_Y_Sav01;
-            CharacterDetails.VieraEar04ARight_Z.value = VieraEar04ARight_Z_Sav01;
-            CharacterDetails.VieraEar04ARight_W.value = VieraEar04ARight_W_Sav01;
-            CharacterDetails.VieraLipLowerA_X.value = VieraLipLowerA_X_Sav01;
-            CharacterDetails.VieraLipLowerA_Y.value = VieraLipLowerA_Y_Sav01;
-            CharacterDetails.VieraLipLowerA_Z.value = VieraLipLowerA_Z_Sav01;
-            CharacterDetails.VieraLipLowerA_W.value = VieraLipLowerA_W_Sav01;
-            CharacterDetails.VieraLipUpperB_X.value = VieraLipUpperB_X_Sav01;
-            CharacterDetails.VieraLipUpperB_Y.value = VieraLipUpperB_Y_Sav01;
-            CharacterDetails.VieraLipUpperB_Z.value = VieraLipUpperB_Z_Sav01;
-            CharacterDetails.VieraLipUpperB_W.value = VieraLipUpperB_W_Sav01;
-            CharacterDetails.VieraEar01BLeft_X.value = VieraEar01BLeft_X_Sav01;
-            CharacterDetails.VieraEar01BLeft_Y.value = VieraEar01BLeft_Y_Sav01;
-            CharacterDetails.VieraEar01BLeft_Z.value = VieraEar01BLeft_Z_Sav01;
-            CharacterDetails.VieraEar01BLeft_W.value = VieraEar01BLeft_W_Sav01;
-            CharacterDetails.VieraEar01BRight_X.value = VieraEar01BRight_X_Sav01;
-            CharacterDetails.VieraEar01BRight_Y.value = VieraEar01BRight_Y_Sav01;
-            CharacterDetails.VieraEar01BRight_Z.value = VieraEar01BRight_Z_Sav01;
-            CharacterDetails.VieraEar01BRight_W.value = VieraEar01BRight_W_Sav01;
-            CharacterDetails.VieraEar02BLeft_X.value = VieraEar02BLeft_X_Sav01;
-            CharacterDetails.VieraEar02BLeft_Y.value = VieraEar02BLeft_Y_Sav01;
-            CharacterDetails.VieraEar02BLeft_Z.value = VieraEar02BLeft_Z_Sav01;
-            CharacterDetails.VieraEar02BLeft_W.value = VieraEar02BLeft_W_Sav01;
-            CharacterDetails.VieraEar02BRight_X.value = VieraEar02BRight_X_Sav01;
-            CharacterDetails.VieraEar02BRight_Y.value = VieraEar02BRight_Y_Sav01;
-            CharacterDetails.VieraEar02BRight_Z.value = VieraEar02BRight_Z_Sav01;
-            CharacterDetails.VieraEar02BRight_W.value = VieraEar02BRight_W_Sav01;
-            CharacterDetails.VieraEar03BLeft_X.value = VieraEar03BLeft_X_Sav01;
-            CharacterDetails.VieraEar03BLeft_Y.value = VieraEar03BLeft_Y_Sav01;
-            CharacterDetails.VieraEar03BLeft_Z.value = VieraEar03BLeft_Z_Sav01;
-            CharacterDetails.VieraEar03BLeft_W.value = VieraEar03BLeft_W_Sav01;
-            CharacterDetails.VieraEar03BRight_X.value = VieraEar03BRight_X_Sav01;
-            CharacterDetails.VieraEar03BRight_Y.value = VieraEar03BRight_Y_Sav01;
-            CharacterDetails.VieraEar03BRight_Z.value = VieraEar03BRight_Z_Sav01;
-            CharacterDetails.VieraEar03BRight_W.value = VieraEar03BRight_W_Sav01;
-            CharacterDetails.VieraEar04BLeft_X.value = VieraEar04BLeft_X_Sav01;
-            CharacterDetails.VieraEar04BLeft_Y.value = VieraEar04BLeft_Y_Sav01;
-            CharacterDetails.VieraEar04BLeft_Z.value = VieraEar04BLeft_Z_Sav01;
-            CharacterDetails.VieraEar04BLeft_W.value = VieraEar04BLeft_W_Sav01;
-            CharacterDetails.VieraEar04BRight_X.value = VieraEar04BRight_X_Sav01;
-            CharacterDetails.VieraEar04BRight_Y.value = VieraEar04BRight_Y_Sav01;
-            CharacterDetails.VieraEar04BRight_Z.value = VieraEar04BRight_Z_Sav01;
-            CharacterDetails.VieraEar04BRight_W.value = VieraEar04BRight_W_Sav01;
-            CharacterDetails.VieraLipLowerB_X.value = VieraLipLowerB_X_Sav01;
-            CharacterDetails.VieraLipLowerB_Y.value = VieraLipLowerB_Y_Sav01;
-            CharacterDetails.VieraLipLowerB_Z.value = VieraLipLowerB_Z_Sav01;
-            CharacterDetails.VieraLipLowerB_W.value = VieraLipLowerB_W_Sav01;
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Head_X), MemoryManager.StringToByteArray(Head_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarLeft_X), MemoryManager.StringToByteArray(EarLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarRight_X), MemoryManager.StringToByteArray(EarRight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Jaw_X), MemoryManager.StringToByteArray(Jaw_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidLowerLeft_X), MemoryManager.StringToByteArray(EyelidLowerLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidLowerRight_X), MemoryManager.StringToByteArray(EyelidLowerRight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyeLeft_X), MemoryManager.StringToByteArray(EyeLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyeRight_X), MemoryManager.StringToByteArray(EyeRight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Nose_X), MemoryManager.StringToByteArray(Nose_Sav01.Replace(" ", string.Empty)));
+            if (CharacterDetails.Race.value < 7)
+            {
+                if (Race_Sav01 == "01" || Race_Sav01 == "02" || Race_Sav01 == "03" || Race_Sav01 == "04" || Race_Sav01 == "05" || Race_Sav01 == "06")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekLeft_X), MemoryManager.StringToByteArray(CheekLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekRight_X), MemoryManager.StringToByteArray(CheekRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsLeft_X), MemoryManager.StringToByteArray(LipsLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsRight_X), MemoryManager.StringToByteArray(LipsRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowLeft_X), MemoryManager.StringToByteArray(EyebrowLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowRight_X), MemoryManager.StringToByteArray(EyebrowRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Bridge_X), MemoryManager.StringToByteArray(Bridge_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowLeft_X), MemoryManager.StringToByteArray(BrowLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowRight_X), MemoryManager.StringToByteArray(BrowRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperA_X), MemoryManager.StringToByteArray(LipUpperA_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperLeft_X), MemoryManager.StringToByteArray(EyelidUpperLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperRight_X), MemoryManager.StringToByteArray(EyelidUpperRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipLowerA_X), MemoryManager.StringToByteArray(LipLowerA_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperB_X), MemoryManager.StringToByteArray(LipUpperB_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipLowerB_X), MemoryManager.StringToByteArray(LipLowerB_Sav01.Replace(" ", string.Empty)));
+                }
+                if (Race_Sav01 == "07")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekLeft_X), MemoryManager.StringToByteArray(HrothLipUpperLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekRight_X), MemoryManager.StringToByteArray(HrothLipUpperRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsLeft_X), MemoryManager.StringToByteArray(HrothLipsLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsRight_X), MemoryManager.StringToByteArray(HrothLipsRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowLeft_X), MemoryManager.StringToByteArray(HrothEyebrowLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowRight_X), MemoryManager.StringToByteArray(HrothEyebrowRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Bridge_X), MemoryManager.StringToByteArray(HrothBridge_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowLeft_X), MemoryManager.StringToByteArray(HrothBrowLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowRight_X), MemoryManager.StringToByteArray(HrothBrowRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperA_X), MemoryManager.StringToByteArray(HrothLipUpper_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperLeft_X), MemoryManager.StringToByteArray(HrothEyelidUpperLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperRight_X), MemoryManager.StringToByteArray(HrothEyelidUpperRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperB_X), MemoryManager.StringToByteArray(HrothJawUpper_Sav01.Replace(" ", string.Empty)));
+                }
+                if (Race_Sav01 == "08")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekLeft_X), MemoryManager.StringToByteArray(CheekLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekRight_X), MemoryManager.StringToByteArray(CheekRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsLeft_X), MemoryManager.StringToByteArray(LipsLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsRight_X), MemoryManager.StringToByteArray(LipsRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowLeft_X), MemoryManager.StringToByteArray(EyebrowLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowRight_X), MemoryManager.StringToByteArray(EyebrowRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Bridge_X), MemoryManager.StringToByteArray(Bridge_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowLeft_X), MemoryManager.StringToByteArray(BrowLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowRight_X), MemoryManager.StringToByteArray(BrowRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperA_X), MemoryManager.StringToByteArray(LipUpperA_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperLeft_X), MemoryManager.StringToByteArray(EyelidUpperLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperRight_X), MemoryManager.StringToByteArray(EyelidUpperRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipLowerA_X), MemoryManager.StringToByteArray(VieraLipLowerA_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperB_X), MemoryManager.StringToByteArray(VieraLipUpperB_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipLowerB_X), MemoryManager.StringToByteArray(VieraLipLowerB_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (CharacterDetails.Race.value == 7)
+            {
+                if (Race_Sav01 == "01" || Race_Sav01 == "02" || Race_Sav01 == "03" || Race_Sav01 == "04" || Race_Sav01 == "05" || Race_Sav01 == "06")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyebrowLeft_X), MemoryManager.StringToByteArray(EyebrowLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyebrowRight_X), MemoryManager.StringToByteArray(EyebrowRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothBridge_X), MemoryManager.StringToByteArray(Bridge_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothBrowLeft_X), MemoryManager.StringToByteArray(BrowLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothBrowRight_X), MemoryManager.StringToByteArray(BrowRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothJawUpper_X), MemoryManager.StringToByteArray(LipUpperB_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipUpper_X), MemoryManager.StringToByteArray(LipUpperA_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyelidUpperLeft_X), MemoryManager.StringToByteArray(EyelidUpperLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyelidUpperRight_X), MemoryManager.StringToByteArray(EyelidUpperRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipsLeft_X), MemoryManager.StringToByteArray(LipsLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipsRight_X), MemoryManager.StringToByteArray(LipsRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipUpperLeft_X), MemoryManager.StringToByteArray(CheekLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipUpperRight_X), MemoryManager.StringToByteArray(CheekRight_Sav01.Replace(" ", string.Empty)));
+                }
+                if (Race_Sav01 == "07")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersLeft_X), MemoryManager.StringToByteArray(HrothWhiskersLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersRight_X), MemoryManager.StringToByteArray(HrothWhiskersRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyebrowLeft_X), MemoryManager.StringToByteArray(HrothEyebrowLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyebrowRight_X), MemoryManager.StringToByteArray(HrothEyebrowRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothBridge_X), MemoryManager.StringToByteArray(HrothBridge_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothBrowLeft_X), MemoryManager.StringToByteArray(HrothBrowLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothBrowRight_X), MemoryManager.StringToByteArray(HrothBrowRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothJawUpper_X), MemoryManager.StringToByteArray(HrothJawUpper_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipUpper_X), MemoryManager.StringToByteArray(HrothLipUpper_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyelidUpperLeft_X), MemoryManager.StringToByteArray(HrothEyelidUpperLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyelidUpperRight_X), MemoryManager.StringToByteArray(HrothEyelidUpperRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipsLeft_X), MemoryManager.StringToByteArray(HrothLipsLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipsRight_X), MemoryManager.StringToByteArray(HrothLipsRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipUpperLeft_X), MemoryManager.StringToByteArray(HrothLipUpperLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipUpperRight_X), MemoryManager.StringToByteArray(HrothLipUpperRight_Sav01.Replace(" ", string.Empty)));
+                }
+                if (Race_Sav01 == "08")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyebrowLeft_X), MemoryManager.StringToByteArray(EyebrowLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyebrowRight_X), MemoryManager.StringToByteArray(EyebrowRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothBridge_X), MemoryManager.StringToByteArray(Bridge_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothBrowLeft_X), MemoryManager.StringToByteArray(BrowLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothBrowRight_X), MemoryManager.StringToByteArray(BrowRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothJawUpper_X), MemoryManager.StringToByteArray(VieraLipUpperB_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipUpper_X), MemoryManager.StringToByteArray(LipUpperA_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyelidUpperLeft_X), MemoryManager.StringToByteArray(EyelidUpperLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyelidUpperRight_X), MemoryManager.StringToByteArray(EyelidUpperRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipsLeft_X), MemoryManager.StringToByteArray(LipsLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipsRight_X), MemoryManager.StringToByteArray(LipsRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipUpperLeft_X), MemoryManager.StringToByteArray(CheekLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipUpperRight_X), MemoryManager.StringToByteArray(CheekRight_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (CharacterDetails.Race.value == 8)
+            {
+                if (Race_Sav01 == "01" || Race_Sav01 == "02" || Race_Sav01 == "03" || Race_Sav01 == "04" || Race_Sav01 == "05" || Race_Sav01 == "06")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekLeft_X), MemoryManager.StringToByteArray(CheekLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekRight_X), MemoryManager.StringToByteArray(CheekRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsLeft_X), MemoryManager.StringToByteArray(LipsLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsRight_X), MemoryManager.StringToByteArray(LipsRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowLeft_X), MemoryManager.StringToByteArray(EyebrowLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowRight_X), MemoryManager.StringToByteArray(EyebrowRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Bridge_X), MemoryManager.StringToByteArray(Bridge_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowLeft_X), MemoryManager.StringToByteArray(BrowLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowRight_X), MemoryManager.StringToByteArray(BrowRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperA_X), MemoryManager.StringToByteArray(LipUpperA_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperLeft_X), MemoryManager.StringToByteArray(EyelidUpperLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperRight_X), MemoryManager.StringToByteArray(EyelidUpperRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraLipLowerA_X), MemoryManager.StringToByteArray(VieraEar01ALeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraLipUpperB_X), MemoryManager.StringToByteArray(VieraEar01ARight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraLipLowerB_X), MemoryManager.StringToByteArray(VieraEar02ALeft_Sav01.Replace(" ", string.Empty)));
+                }
+                if (Race_Sav01 == "07")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekLeft_X), MemoryManager.StringToByteArray(HrothLipUpperLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekRight_X), MemoryManager.StringToByteArray(HrothLipUpperRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsLeft_X), MemoryManager.StringToByteArray(HrothLipsLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsRight_X), MemoryManager.StringToByteArray(HrothLipsRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowLeft_X), MemoryManager.StringToByteArray(HrothEyebrowLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowRight_X), MemoryManager.StringToByteArray(HrothEyebrowRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Bridge_X), MemoryManager.StringToByteArray(HrothBridge_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowLeft_X), MemoryManager.StringToByteArray(HrothBrowLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowRight_X), MemoryManager.StringToByteArray(HrothBrowRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperA_X), MemoryManager.StringToByteArray(HrothLipUpper_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperLeft_X), MemoryManager.StringToByteArray(HrothEyelidUpperLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperRight_X), MemoryManager.StringToByteArray(HrothEyelidUpperRight_Sav01.Replace(" ", string.Empty)));
+                }
+                if (Race_Sav01 == "08")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekLeft_X), MemoryManager.StringToByteArray(CheekLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekRight_X), MemoryManager.StringToByteArray(CheekRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsLeft_X), MemoryManager.StringToByteArray(LipsLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsRight_X), MemoryManager.StringToByteArray(LipsRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowLeft_X), MemoryManager.StringToByteArray(EyebrowLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowRight_X), MemoryManager.StringToByteArray(EyebrowRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Bridge_X), MemoryManager.StringToByteArray(Bridge_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowLeft_X), MemoryManager.StringToByteArray(BrowLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowRight_X), MemoryManager.StringToByteArray(BrowRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperA_X), MemoryManager.StringToByteArray(LipUpperA_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperLeft_X), MemoryManager.StringToByteArray(EyelidUpperLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperRight_X), MemoryManager.StringToByteArray(EyelidUpperRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01ALeft_X), MemoryManager.StringToByteArray(VieraEar01ALeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01ARight_X), MemoryManager.StringToByteArray(VieraEar01ARight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02ALeft_X), MemoryManager.StringToByteArray(VieraEar02ALeft_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (HrothLipLower_Sav01 != "null" || VieraEar02ARight_Sav01 != "null")
+            {
+                if (CharacterDetails.Race.value == 7)
+                {
+                    if (Race_Sav01 == "07")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipLower_X), MemoryManager.StringToByteArray(HrothLipLower_Sav01.Replace(" ", string.Empty)));
+                    }
+                }
+                if (CharacterDetails.Race.value == 8)
+                {
+                    if (Race_Sav01 == "08")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02ARight_X), MemoryManager.StringToByteArray(VieraEar02ARight_Sav01.Replace(" ", string.Empty)));
+                    }
+                }
+            }
+            if (VieraEar03ALeft_Sav01 != "null")
+            {
+                if (CharacterDetails.Race.value < 7)
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipLowerA_X), MemoryManager.StringToByteArray(VieraLipLowerA_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperB_X), MemoryManager.StringToByteArray(VieraLipUpperB_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipLowerB_X), MemoryManager.StringToByteArray(VieraLipLowerB_Sav01.Replace(" ", string.Empty)));
+                }
+                if (CharacterDetails.Race.value == 8)
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar03ALeft_X), MemoryManager.StringToByteArray(VieraEar03ALeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar03ARight_X), MemoryManager.StringToByteArray(VieraEar03ARight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar04ALeft_X), MemoryManager.StringToByteArray(VieraEar04ALeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar04ARight_X), MemoryManager.StringToByteArray(VieraEar04ARight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraLipLowerA_X), MemoryManager.StringToByteArray(VieraLipLowerA_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraLipUpperB_X), MemoryManager.StringToByteArray(VieraLipUpperB_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01BLeft_X), MemoryManager.StringToByteArray(VieraEar01BLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01BRight_X), MemoryManager.StringToByteArray(VieraEar01BRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02BLeft_X), MemoryManager.StringToByteArray(VieraEar02BLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02BRight_X), MemoryManager.StringToByteArray(VieraEar02BRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar03BLeft_X), MemoryManager.StringToByteArray(VieraEar03BLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar03BRight_X), MemoryManager.StringToByteArray(VieraEar03BRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar04BLeft_X), MemoryManager.StringToByteArray(VieraEar04BLeft_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar04BRight_X), MemoryManager.StringToByteArray(VieraEar04BRight_Sav01.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraLipLowerB_X), MemoryManager.StringToByteArray(VieraLipLowerB_Sav01.Replace(" ", string.Empty)));
+                }
+            }
         }
         private void LoadstateHead02_Click(object sender, RoutedEventArgs e)
         {
             UncheckAll();
-            CharacterDetails.WriteHead = true;
-
-            CharacterDetails.Head_X.value = Head_X_Sav02;
-            CharacterDetails.Head_Y.value = Head_Y_Sav02;
-            CharacterDetails.Head_Z.value = Head_Z_Sav02;
-            CharacterDetails.Head_W.value = Head_W_Sav02;
-            CharacterDetails.EarLeft_X.value = EarLeft_X_Sav02;
-            CharacterDetails.EarLeft_Y.value = EarLeft_Y_Sav02;
-            CharacterDetails.EarLeft_Z.value = EarLeft_Z_Sav02;
-            CharacterDetails.EarLeft_W.value = EarLeft_W_Sav02;
-            CharacterDetails.EarRight_X.value = EarRight_X_Sav02;
-            CharacterDetails.EarRight_Y.value = EarRight_Y_Sav02;
-            CharacterDetails.EarRight_Z.value = EarRight_Z_Sav02;
-            CharacterDetails.EarRight_W.value = EarRight_W_Sav02;
-            CharacterDetails.Jaw_X.value = Jaw_X_Sav02;
-            CharacterDetails.Jaw_Y.value = Jaw_Y_Sav02;
-            CharacterDetails.Jaw_Z.value = Jaw_Z_Sav02;
-            CharacterDetails.Jaw_W.value = Jaw_W_Sav02;
-            CharacterDetails.EyelidLowerLeft_X.value = EyelidLowerLeft_X_Sav02;
-            CharacterDetails.EyelidLowerLeft_Y.value = EyelidLowerLeft_Y_Sav02;
-            CharacterDetails.EyelidLowerLeft_Z.value = EyelidLowerLeft_Z_Sav02;
-            CharacterDetails.EyelidLowerLeft_W.value = EyelidLowerLeft_W_Sav02;
-            CharacterDetails.EyelidLowerRight_X.value = EyelidLowerRight_X_Sav02;
-            CharacterDetails.EyelidLowerRight_Y.value = EyelidLowerRight_Y_Sav02;
-            CharacterDetails.EyelidLowerRight_Z.value = EyelidLowerRight_Z_Sav02;
-            CharacterDetails.EyelidLowerRight_W.value = EyelidLowerRight_W_Sav02;
-            CharacterDetails.EyeLeft_X.value = EyeLeft_X_Sav02;
-            CharacterDetails.EyeLeft_Y.value = EyeLeft_Y_Sav02;
-            CharacterDetails.EyeLeft_Z.value = EyeLeft_Z_Sav02;
-            CharacterDetails.EyeLeft_W.value = EyeLeft_W_Sav02;
-            CharacterDetails.EyeRight_X.value = EyeRight_X_Sav02;
-            CharacterDetails.EyeRight_Y.value = EyeRight_Y_Sav02;
-            CharacterDetails.EyeRight_Z.value = EyeRight_Z_Sav02;
-            CharacterDetails.EyeRight_W.value = EyeRight_W_Sav02;
-            CharacterDetails.Nose_X.value = Nose_X_Sav02;
-            CharacterDetails.Nose_Y.value = Nose_Y_Sav02;
-            CharacterDetails.Nose_Z.value = Nose_Z_Sav02;
-            CharacterDetails.Nose_W.value = Nose_W_Sav02;
-            CharacterDetails.HrothWhiskersLeft_X.value = HrothWhiskersLeft_X_Sav02;
-            CharacterDetails.HrothWhiskersLeft_Y.value = HrothWhiskersLeft_Y_Sav02;
-            CharacterDetails.HrothWhiskersLeft_Z.value = HrothWhiskersLeft_Z_Sav02;
-            CharacterDetails.HrothWhiskersLeft_W.value = HrothWhiskersLeft_W_Sav02;
-            CharacterDetails.CheekRight_X.value = CheekRight_X_Sav02;
-            CharacterDetails.CheekRight_Y.value = CheekRight_Y_Sav02;
-            CharacterDetails.CheekRight_Z.value = CheekRight_Z_Sav02;
-            CharacterDetails.CheekRight_W.value = CheekRight_W_Sav02;
-            CharacterDetails.HrothWhiskersRight_X.value = HrothWhiskersRight_X_Sav02;
-            CharacterDetails.HrothWhiskersRight_Y.value = HrothWhiskersRight_Y_Sav02;
-            CharacterDetails.HrothWhiskersRight_Z.value = HrothWhiskersRight_Z_Sav02;
-            CharacterDetails.HrothWhiskersRight_W.value = HrothWhiskersRight_W_Sav02;
-            CharacterDetails.LipsLeft_X.value = LipsLeft_X_Sav02;
-            CharacterDetails.LipsLeft_Y.value = LipsLeft_Y_Sav02;
-            CharacterDetails.LipsLeft_Z.value = LipsLeft_Z_Sav02;
-            CharacterDetails.LipsLeft_W.value = LipsLeft_W_Sav02;
-            CharacterDetails.HrothEyebrowLeft_X.value = HrothEyebrowLeft_X_Sav02;
-            CharacterDetails.HrothEyebrowLeft_Y.value = HrothEyebrowLeft_Y_Sav02;
-            CharacterDetails.HrothEyebrowLeft_Z.value = HrothEyebrowLeft_Z_Sav02;
-            CharacterDetails.HrothEyebrowLeft_W.value = HrothEyebrowLeft_W_Sav02;
-            CharacterDetails.LipsRight_X.value = LipsRight_X_Sav02;
-            CharacterDetails.LipsRight_Y.value = LipsRight_Y_Sav02;
-            CharacterDetails.LipsRight_Z.value = LipsRight_Z_Sav02;
-            CharacterDetails.LipsRight_W.value = LipsRight_W_Sav02;
-            CharacterDetails.HrothEyebrowRight_X.value = HrothEyebrowRight_X_Sav02;
-            CharacterDetails.HrothEyebrowRight_Y.value = HrothEyebrowRight_Y_Sav02;
-            CharacterDetails.HrothEyebrowRight_Z.value = HrothEyebrowRight_Z_Sav02;
-            CharacterDetails.HrothEyebrowRight_W.value = HrothEyebrowRight_W_Sav02;
-            CharacterDetails.EyebrowLeft_X.value = EyebrowLeft_X_Sav02;
-            CharacterDetails.EyebrowLeft_Y.value = EyebrowLeft_Y_Sav02;
-            CharacterDetails.EyebrowLeft_Z.value = EyebrowLeft_Z_Sav02;
-            CharacterDetails.EyebrowLeft_W.value = EyebrowLeft_W_Sav02;
-            CharacterDetails.HrothBridge_X.value = HrothBridge_X_Sav02;
-            CharacterDetails.HrothBridge_Y.value = HrothBridge_Y_Sav02;
-            CharacterDetails.HrothBridge_Z.value = HrothBridge_Z_Sav02;
-            CharacterDetails.HrothBridge_W.value = HrothBridge_W_Sav02;
-            CharacterDetails.EyebrowRight_X.value = EyebrowRight_X_Sav02;
-            CharacterDetails.EyebrowRight_Y.value = EyebrowRight_Y_Sav02;
-            CharacterDetails.EyebrowRight_Z.value = EyebrowRight_Z_Sav02;
-            CharacterDetails.EyebrowRight_W.value = EyebrowRight_W_Sav02;
-            CharacterDetails.HrothBrowLeft_X.value = HrothBrowLeft_X_Sav02;
-            CharacterDetails.HrothBrowLeft_Y.value = HrothBrowLeft_Y_Sav02;
-            CharacterDetails.HrothBrowLeft_Z.value = HrothBrowLeft_Z_Sav02;
-            CharacterDetails.HrothBrowLeft_W.value = HrothBrowLeft_W_Sav02;
-            CharacterDetails.Bridge_X.value = Bridge_X_Sav02;
-            CharacterDetails.Bridge_Y.value = Bridge_Y_Sav02;
-            CharacterDetails.Bridge_Z.value = Bridge_Z_Sav02;
-            CharacterDetails.Bridge_W.value = Bridge_W_Sav02;
-            CharacterDetails.HrothBrowRight_X.value = HrothBrowRight_X_Sav02;
-            CharacterDetails.HrothBrowRight_Y.value = HrothBrowRight_Y_Sav02;
-            CharacterDetails.HrothBrowRight_Z.value = HrothBrowRight_Z_Sav02;
-            CharacterDetails.HrothBrowRight_W.value = HrothBrowRight_W_Sav02;
-            CharacterDetails.BrowLeft_X.value = BrowLeft_X_Sav02;
-            CharacterDetails.BrowLeft_Y.value = BrowLeft_Y_Sav02;
-            CharacterDetails.BrowLeft_Z.value = BrowLeft_Z_Sav02;
-            CharacterDetails.BrowLeft_W.value = BrowLeft_W_Sav02;
-            CharacterDetails.HrothJawUpper_X.value = HrothJawUpper_X_Sav02;
-            CharacterDetails.HrothJawUpper_Y.value = HrothJawUpper_Y_Sav02;
-            CharacterDetails.HrothJawUpper_Z.value = HrothJawUpper_Z_Sav02;
-            CharacterDetails.HrothJawUpper_W.value = HrothJawUpper_W_Sav02;
-            CharacterDetails.BrowRight_X.value = BrowRight_X_Sav02;
-            CharacterDetails.BrowRight_Y.value = BrowRight_Y_Sav02;
-            CharacterDetails.BrowRight_Z.value = BrowRight_Z_Sav02;
-            CharacterDetails.BrowRight_W.value = BrowRight_W_Sav02;
-            CharacterDetails.HrothLipUpper_X.value = HrothLipUpper_X_Sav02;
-            CharacterDetails.HrothLipUpper_Y.value = HrothLipUpper_Y_Sav02;
-            CharacterDetails.HrothLipUpper_Z.value = HrothLipUpper_Z_Sav02;
-            CharacterDetails.HrothLipUpper_W.value = HrothLipUpper_W_Sav02;
-            CharacterDetails.LipUpperA_X.value = LipUpperA_X_Sav02;
-            CharacterDetails.LipUpperA_Y.value = LipUpperA_Y_Sav02;
-            CharacterDetails.LipUpperA_Z.value = LipUpperA_Z_Sav02;
-            CharacterDetails.LipUpperA_W.value = LipUpperA_W_Sav02;
-            CharacterDetails.HrothEyelidUpperLeft_X.value = HrothEyelidUpperLeft_X_Sav02;
-            CharacterDetails.HrothEyelidUpperLeft_Y.value = HrothEyelidUpperLeft_Y_Sav02;
-            CharacterDetails.HrothEyelidUpperLeft_Z.value = HrothEyelidUpperLeft_Z_Sav02;
-            CharacterDetails.HrothEyelidUpperLeft_W.value = HrothEyelidUpperLeft_W_Sav02;
-            CharacterDetails.EyelidUpperLeft_X.value = EyelidUpperLeft_X_Sav02;
-            CharacterDetails.EyelidUpperLeft_Y.value = EyelidUpperLeft_Y_Sav02;
-            CharacterDetails.EyelidUpperLeft_Z.value = EyelidUpperLeft_Z_Sav02;
-            CharacterDetails.EyelidUpperLeft_W.value = EyelidUpperLeft_W_Sav02;
-            CharacterDetails.HrothEyelidUpperRight_X.value = HrothEyelidUpperRight_X_Sav02;
-            CharacterDetails.HrothEyelidUpperRight_Y.value = HrothEyelidUpperRight_Y_Sav02;
-            CharacterDetails.HrothEyelidUpperRight_Z.value = HrothEyelidUpperRight_Z_Sav02;
-            CharacterDetails.HrothEyelidUpperRight_W.value = HrothEyelidUpperRight_W_Sav02;
-            CharacterDetails.EyelidUpperRight_X.value = EyelidUpperRight_X_Sav02;
-            CharacterDetails.EyelidUpperRight_Y.value = EyelidUpperRight_Y_Sav02;
-            CharacterDetails.EyelidUpperRight_Z.value = EyelidUpperRight_Z_Sav02;
-            CharacterDetails.EyelidUpperRight_W.value = EyelidUpperRight_W_Sav02;
-            CharacterDetails.HrothLipsLeft_X.value = HrothLipsLeft_X_Sav02;
-            CharacterDetails.HrothLipsLeft_Y.value = HrothLipsLeft_Y_Sav02;
-            CharacterDetails.HrothLipsLeft_Z.value = HrothLipsLeft_Z_Sav02;
-            CharacterDetails.HrothLipsLeft_W.value = HrothLipsLeft_W_Sav02;
-            CharacterDetails.LipLowerA_X.value = LipLowerA_X_Sav02;
-            CharacterDetails.LipLowerA_Y.value = LipLowerA_Y_Sav02;
-            CharacterDetails.LipLowerA_Z.value = LipLowerA_Z_Sav02;
-            CharacterDetails.LipLowerA_W.value = LipLowerA_W_Sav02;
-            CharacterDetails.HrothLipsRight_X.value = HrothLipsRight_X_Sav02;
-            CharacterDetails.HrothLipsRight_Y.value = HrothLipsRight_Y_Sav02;
-            CharacterDetails.HrothLipsRight_Z.value = HrothLipsRight_Z_Sav02;
-            CharacterDetails.HrothLipsRight_W.value = HrothLipsRight_W_Sav02;
-            CharacterDetails.VieraEar01ALeft_X.value = VieraEar01ALeft_X_Sav02;
-            CharacterDetails.VieraEar01ALeft_Y.value = VieraEar01ALeft_Y_Sav02;
-            CharacterDetails.VieraEar01ALeft_Z.value = VieraEar01ALeft_Z_Sav02;
-            CharacterDetails.VieraEar01ALeft_W.value = VieraEar01ALeft_W_Sav02;
-            CharacterDetails.LipUpperB_X.value = LipUpperB_X_Sav02;
-            CharacterDetails.LipUpperB_Y.value = LipUpperB_Y_Sav02;
-            CharacterDetails.LipUpperB_Z.value = LipUpperB_Z_Sav02;
-            CharacterDetails.LipUpperB_W.value = LipUpperB_W_Sav02;
-            CharacterDetails.HrothLipUpperLeft_X.value = HrothLipUpperLeft_X_Sav02;
-            CharacterDetails.HrothLipUpperLeft_Y.value = HrothLipUpperLeft_Y_Sav02;
-            CharacterDetails.HrothLipUpperLeft_Z.value = HrothLipUpperLeft_Z_Sav02;
-            CharacterDetails.HrothLipUpperLeft_W.value = HrothLipUpperLeft_W_Sav02;
-            CharacterDetails.VieraEar01ARight_X.value = VieraEar01ARight_X_Sav02;
-            CharacterDetails.VieraEar01ARight_Y.value = VieraEar01ARight_Y_Sav02;
-            CharacterDetails.VieraEar01ARight_Z.value = VieraEar01ARight_Z_Sav02;
-            CharacterDetails.VieraEar01ARight_W.value = VieraEar01ARight_W_Sav02;
-            CharacterDetails.LipLowerB_X.value = LipLowerB_X_Sav02;
-            CharacterDetails.LipLowerB_Y.value = LipLowerB_Y_Sav02;
-            CharacterDetails.LipLowerB_Z.value = LipLowerB_Z_Sav02;
-            CharacterDetails.LipLowerB_W.value = LipLowerB_W_Sav02;
-            CharacterDetails.HrothLipUpperRight_X.value = HrothLipUpperRight_X_Sav02;
-            CharacterDetails.HrothLipUpperRight_Y.value = HrothLipUpperRight_Y_Sav02;
-            CharacterDetails.HrothLipUpperRight_Z.value = HrothLipUpperRight_Z_Sav02;
-            CharacterDetails.HrothLipUpperRight_W.value = HrothLipUpperRight_W_Sav02;
-            CharacterDetails.VieraEar02ALeft_X.value = VieraEar02ALeft_X_Sav02;
-            CharacterDetails.VieraEar02ALeft_Y.value = VieraEar02ALeft_Y_Sav02;
-            CharacterDetails.VieraEar02ALeft_Z.value = VieraEar02ALeft_Z_Sav02;
-            CharacterDetails.VieraEar02ALeft_W.value = VieraEar02ALeft_W_Sav02;
-            CharacterDetails.HrothLipLower_X.value = HrothLipLower_X_Sav02;
-            CharacterDetails.HrothLipLower_Y.value = HrothLipLower_Y_Sav02;
-            CharacterDetails.HrothLipLower_Z.value = HrothLipLower_Z_Sav02;
-            CharacterDetails.HrothLipLower_W.value = HrothLipLower_W_Sav02;
-            CharacterDetails.VieraEar02ARight_X.value = VieraEar02ARight_X_Sav02;
-            CharacterDetails.VieraEar02ARight_Y.value = VieraEar02ARight_Y_Sav02;
-            CharacterDetails.VieraEar02ARight_Z.value = VieraEar02ARight_Z_Sav02;
-            CharacterDetails.VieraEar02ARight_W.value = VieraEar02ARight_W_Sav02;
-            CharacterDetails.VieraEar03ALeft_X.value = VieraEar03ALeft_X_Sav02;
-            CharacterDetails.VieraEar03ALeft_Y.value = VieraEar03ALeft_Y_Sav02;
-            CharacterDetails.VieraEar03ALeft_Z.value = VieraEar03ALeft_Z_Sav02;
-            CharacterDetails.VieraEar03ALeft_W.value = VieraEar03ALeft_W_Sav02;
-            CharacterDetails.VieraEar03ARight_X.value = VieraEar03ARight_X_Sav02;
-            CharacterDetails.VieraEar03ARight_Y.value = VieraEar03ARight_Y_Sav02;
-            CharacterDetails.VieraEar03ARight_Z.value = VieraEar03ARight_Z_Sav02;
-            CharacterDetails.VieraEar03ARight_W.value = VieraEar03ARight_W_Sav02;
-            CharacterDetails.VieraEar04ALeft_X.value = VieraEar04ALeft_X_Sav02;
-            CharacterDetails.VieraEar04ALeft_Y.value = VieraEar04ALeft_Y_Sav02;
-            CharacterDetails.VieraEar04ALeft_Z.value = VieraEar04ALeft_Z_Sav02;
-            CharacterDetails.VieraEar04ALeft_W.value = VieraEar04ALeft_W_Sav02;
-            CharacterDetails.VieraEar04ARight_X.value = VieraEar04ARight_X_Sav02;
-            CharacterDetails.VieraEar04ARight_Y.value = VieraEar04ARight_Y_Sav02;
-            CharacterDetails.VieraEar04ARight_Z.value = VieraEar04ARight_Z_Sav02;
-            CharacterDetails.VieraEar04ARight_W.value = VieraEar04ARight_W_Sav02;
-            CharacterDetails.VieraLipLowerA_X.value = VieraLipLowerA_X_Sav02;
-            CharacterDetails.VieraLipLowerA_Y.value = VieraLipLowerA_Y_Sav02;
-            CharacterDetails.VieraLipLowerA_Z.value = VieraLipLowerA_Z_Sav02;
-            CharacterDetails.VieraLipLowerA_W.value = VieraLipLowerA_W_Sav02;
-            CharacterDetails.VieraLipUpperB_X.value = VieraLipUpperB_X_Sav02;
-            CharacterDetails.VieraLipUpperB_Y.value = VieraLipUpperB_Y_Sav02;
-            CharacterDetails.VieraLipUpperB_Z.value = VieraLipUpperB_Z_Sav02;
-            CharacterDetails.VieraLipUpperB_W.value = VieraLipUpperB_W_Sav02;
-            CharacterDetails.VieraEar01BLeft_X.value = VieraEar01BLeft_X_Sav02;
-            CharacterDetails.VieraEar01BLeft_Y.value = VieraEar01BLeft_Y_Sav02;
-            CharacterDetails.VieraEar01BLeft_Z.value = VieraEar01BLeft_Z_Sav02;
-            CharacterDetails.VieraEar01BLeft_W.value = VieraEar01BLeft_W_Sav02;
-            CharacterDetails.VieraEar01BRight_X.value = VieraEar01BRight_X_Sav02;
-            CharacterDetails.VieraEar01BRight_Y.value = VieraEar01BRight_Y_Sav02;
-            CharacterDetails.VieraEar01BRight_Z.value = VieraEar01BRight_Z_Sav02;
-            CharacterDetails.VieraEar01BRight_W.value = VieraEar01BRight_W_Sav02;
-            CharacterDetails.VieraEar02BLeft_X.value = VieraEar02BLeft_X_Sav02;
-            CharacterDetails.VieraEar02BLeft_Y.value = VieraEar02BLeft_Y_Sav02;
-            CharacterDetails.VieraEar02BLeft_Z.value = VieraEar02BLeft_Z_Sav02;
-            CharacterDetails.VieraEar02BLeft_W.value = VieraEar02BLeft_W_Sav02;
-            CharacterDetails.VieraEar02BRight_X.value = VieraEar02BRight_X_Sav02;
-            CharacterDetails.VieraEar02BRight_Y.value = VieraEar02BRight_Y_Sav02;
-            CharacterDetails.VieraEar02BRight_Z.value = VieraEar02BRight_Z_Sav02;
-            CharacterDetails.VieraEar02BRight_W.value = VieraEar02BRight_W_Sav02;
-            CharacterDetails.VieraEar03BLeft_X.value = VieraEar03BLeft_X_Sav02;
-            CharacterDetails.VieraEar03BLeft_Y.value = VieraEar03BLeft_Y_Sav02;
-            CharacterDetails.VieraEar03BLeft_Z.value = VieraEar03BLeft_Z_Sav02;
-            CharacterDetails.VieraEar03BLeft_W.value = VieraEar03BLeft_W_Sav02;
-            CharacterDetails.VieraEar03BRight_X.value = VieraEar03BRight_X_Sav02;
-            CharacterDetails.VieraEar03BRight_Y.value = VieraEar03BRight_Y_Sav02;
-            CharacterDetails.VieraEar03BRight_Z.value = VieraEar03BRight_Z_Sav02;
-            CharacterDetails.VieraEar03BRight_W.value = VieraEar03BRight_W_Sav02;
-            CharacterDetails.VieraEar04BLeft_X.value = VieraEar04BLeft_X_Sav02;
-            CharacterDetails.VieraEar04BLeft_Y.value = VieraEar04BLeft_Y_Sav02;
-            CharacterDetails.VieraEar04BLeft_Z.value = VieraEar04BLeft_Z_Sav02;
-            CharacterDetails.VieraEar04BLeft_W.value = VieraEar04BLeft_W_Sav02;
-            CharacterDetails.VieraEar04BRight_X.value = VieraEar04BRight_X_Sav02;
-            CharacterDetails.VieraEar04BRight_Y.value = VieraEar04BRight_Y_Sav02;
-            CharacterDetails.VieraEar04BRight_Z.value = VieraEar04BRight_Z_Sav02;
-            CharacterDetails.VieraEar04BRight_W.value = VieraEar04BRight_W_Sav02;
-            CharacterDetails.VieraLipLowerB_X.value = VieraLipLowerB_X_Sav02;
-            CharacterDetails.VieraLipLowerB_Y.value = VieraLipLowerB_Y_Sav02;
-            CharacterDetails.VieraLipLowerB_Z.value = VieraLipLowerB_Z_Sav02;
-            CharacterDetails.VieraLipLowerB_W.value = VieraLipLowerB_W_Sav02;
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Head_X), MemoryManager.StringToByteArray(Head_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarLeft_X), MemoryManager.StringToByteArray(EarLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarRight_X), MemoryManager.StringToByteArray(EarRight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Jaw_X), MemoryManager.StringToByteArray(Jaw_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidLowerLeft_X), MemoryManager.StringToByteArray(EyelidLowerLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidLowerRight_X), MemoryManager.StringToByteArray(EyelidLowerRight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyeLeft_X), MemoryManager.StringToByteArray(EyeLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyeRight_X), MemoryManager.StringToByteArray(EyeRight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Nose_X), MemoryManager.StringToByteArray(Nose_Sav02.Replace(" ", string.Empty)));
+            if (CharacterDetails.Race.value < 7)
+            {
+                if (Race_Sav02 == "01" || Race_Sav02 == "02" || Race_Sav02 == "03" || Race_Sav02 == "04" || Race_Sav02 == "05" || Race_Sav02 == "06")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekLeft_X), MemoryManager.StringToByteArray(CheekLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekRight_X), MemoryManager.StringToByteArray(CheekRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsLeft_X), MemoryManager.StringToByteArray(LipsLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsRight_X), MemoryManager.StringToByteArray(LipsRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowLeft_X), MemoryManager.StringToByteArray(EyebrowLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowRight_X), MemoryManager.StringToByteArray(EyebrowRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Bridge_X), MemoryManager.StringToByteArray(Bridge_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowLeft_X), MemoryManager.StringToByteArray(BrowLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowRight_X), MemoryManager.StringToByteArray(BrowRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperA_X), MemoryManager.StringToByteArray(LipUpperA_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperLeft_X), MemoryManager.StringToByteArray(EyelidUpperLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperRight_X), MemoryManager.StringToByteArray(EyelidUpperRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipLowerA_X), MemoryManager.StringToByteArray(LipLowerA_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperB_X), MemoryManager.StringToByteArray(LipUpperB_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipLowerB_X), MemoryManager.StringToByteArray(LipLowerB_Sav02.Replace(" ", string.Empty)));
+                }
+                if (Race_Sav02 == "07")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekLeft_X), MemoryManager.StringToByteArray(HrothLipUpperLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekRight_X), MemoryManager.StringToByteArray(HrothLipUpperRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsLeft_X), MemoryManager.StringToByteArray(HrothLipsLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsRight_X), MemoryManager.StringToByteArray(HrothLipsRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowLeft_X), MemoryManager.StringToByteArray(HrothEyebrowLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowRight_X), MemoryManager.StringToByteArray(HrothEyebrowRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Bridge_X), MemoryManager.StringToByteArray(HrothBridge_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowLeft_X), MemoryManager.StringToByteArray(HrothBrowLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowRight_X), MemoryManager.StringToByteArray(HrothBrowRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperA_X), MemoryManager.StringToByteArray(HrothLipUpper_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperLeft_X), MemoryManager.StringToByteArray(HrothEyelidUpperLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperRight_X), MemoryManager.StringToByteArray(HrothEyelidUpperRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperB_X), MemoryManager.StringToByteArray(HrothJawUpper_Sav02.Replace(" ", string.Empty)));
+                }
+                if (Race_Sav02 == "08")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekLeft_X), MemoryManager.StringToByteArray(CheekLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekRight_X), MemoryManager.StringToByteArray(CheekRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsLeft_X), MemoryManager.StringToByteArray(LipsLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsRight_X), MemoryManager.StringToByteArray(LipsRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowLeft_X), MemoryManager.StringToByteArray(EyebrowLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowRight_X), MemoryManager.StringToByteArray(EyebrowRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Bridge_X), MemoryManager.StringToByteArray(Bridge_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowLeft_X), MemoryManager.StringToByteArray(BrowLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowRight_X), MemoryManager.StringToByteArray(BrowRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperA_X), MemoryManager.StringToByteArray(LipUpperA_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperLeft_X), MemoryManager.StringToByteArray(EyelidUpperLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperRight_X), MemoryManager.StringToByteArray(EyelidUpperRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipLowerA_X), MemoryManager.StringToByteArray(VieraLipLowerA_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperB_X), MemoryManager.StringToByteArray(VieraLipUpperB_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipLowerB_X), MemoryManager.StringToByteArray(VieraLipLowerB_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (CharacterDetails.Race.value == 7)
+            {
+                if (Race_Sav02 == "01" || Race_Sav02 == "02" || Race_Sav02 == "03" || Race_Sav02 == "04" || Race_Sav02 == "05" || Race_Sav02 == "06")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyebrowLeft_X), MemoryManager.StringToByteArray(EyebrowLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyebrowRight_X), MemoryManager.StringToByteArray(EyebrowRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothBridge_X), MemoryManager.StringToByteArray(Bridge_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothBrowLeft_X), MemoryManager.StringToByteArray(BrowLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothBrowRight_X), MemoryManager.StringToByteArray(BrowRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothJawUpper_X), MemoryManager.StringToByteArray(LipUpperB_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipUpper_X), MemoryManager.StringToByteArray(LipUpperA_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyelidUpperLeft_X), MemoryManager.StringToByteArray(EyelidUpperLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyelidUpperRight_X), MemoryManager.StringToByteArray(EyelidUpperRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipsLeft_X), MemoryManager.StringToByteArray(LipsLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipsRight_X), MemoryManager.StringToByteArray(LipsRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipUpperLeft_X), MemoryManager.StringToByteArray(CheekLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipUpperRight_X), MemoryManager.StringToByteArray(CheekRight_Sav02.Replace(" ", string.Empty)));
+                }
+                if (Race_Sav02 == "07")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersLeft_X), MemoryManager.StringToByteArray(HrothWhiskersLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersRight_X), MemoryManager.StringToByteArray(HrothWhiskersRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyebrowLeft_X), MemoryManager.StringToByteArray(HrothEyebrowLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyebrowRight_X), MemoryManager.StringToByteArray(HrothEyebrowRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothBridge_X), MemoryManager.StringToByteArray(HrothBridge_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothBrowLeft_X), MemoryManager.StringToByteArray(HrothBrowLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothBrowRight_X), MemoryManager.StringToByteArray(HrothBrowRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothJawUpper_X), MemoryManager.StringToByteArray(HrothJawUpper_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipUpper_X), MemoryManager.StringToByteArray(HrothLipUpper_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyelidUpperLeft_X), MemoryManager.StringToByteArray(HrothEyelidUpperLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyelidUpperRight_X), MemoryManager.StringToByteArray(HrothEyelidUpperRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipsLeft_X), MemoryManager.StringToByteArray(HrothLipsLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipsRight_X), MemoryManager.StringToByteArray(HrothLipsRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipUpperLeft_X), MemoryManager.StringToByteArray(HrothLipUpperLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipUpperRight_X), MemoryManager.StringToByteArray(HrothLipUpperRight_Sav02.Replace(" ", string.Empty)));
+                }
+                if (Race_Sav02 == "08")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyebrowLeft_X), MemoryManager.StringToByteArray(EyebrowLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyebrowRight_X), MemoryManager.StringToByteArray(EyebrowRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothBridge_X), MemoryManager.StringToByteArray(Bridge_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothBrowLeft_X), MemoryManager.StringToByteArray(BrowLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothBrowRight_X), MemoryManager.StringToByteArray(BrowRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothJawUpper_X), MemoryManager.StringToByteArray(VieraLipUpperB_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipUpper_X), MemoryManager.StringToByteArray(LipUpperA_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyelidUpperLeft_X), MemoryManager.StringToByteArray(EyelidUpperLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothEyelidUpperRight_X), MemoryManager.StringToByteArray(EyelidUpperRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipsLeft_X), MemoryManager.StringToByteArray(LipsLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipsRight_X), MemoryManager.StringToByteArray(LipsRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipUpperLeft_X), MemoryManager.StringToByteArray(CheekLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipUpperRight_X), MemoryManager.StringToByteArray(CheekRight_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (CharacterDetails.Race.value == 8)
+            {
+                if (Race_Sav02 == "01" || Race_Sav02 == "02" || Race_Sav02 == "03" || Race_Sav02 == "04" || Race_Sav02 == "05" || Race_Sav02 == "06")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekLeft_X), MemoryManager.StringToByteArray(CheekLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekRight_X), MemoryManager.StringToByteArray(CheekRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsLeft_X), MemoryManager.StringToByteArray(LipsLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsRight_X), MemoryManager.StringToByteArray(LipsRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowLeft_X), MemoryManager.StringToByteArray(EyebrowLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowRight_X), MemoryManager.StringToByteArray(EyebrowRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Bridge_X), MemoryManager.StringToByteArray(Bridge_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowLeft_X), MemoryManager.StringToByteArray(BrowLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowRight_X), MemoryManager.StringToByteArray(BrowRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperA_X), MemoryManager.StringToByteArray(LipUpperA_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperLeft_X), MemoryManager.StringToByteArray(EyelidUpperLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperRight_X), MemoryManager.StringToByteArray(EyelidUpperRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraLipLowerA_X), MemoryManager.StringToByteArray(VieraEar01ALeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraLipUpperB_X), MemoryManager.StringToByteArray(VieraEar01ARight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraLipLowerB_X), MemoryManager.StringToByteArray(VieraEar02ALeft_Sav02.Replace(" ", string.Empty)));
+                }
+                if (Race_Sav02 == "07")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekLeft_X), MemoryManager.StringToByteArray(HrothLipUpperLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekRight_X), MemoryManager.StringToByteArray(HrothLipUpperRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsLeft_X), MemoryManager.StringToByteArray(HrothLipsLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsRight_X), MemoryManager.StringToByteArray(HrothLipsRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowLeft_X), MemoryManager.StringToByteArray(HrothEyebrowLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowRight_X), MemoryManager.StringToByteArray(HrothEyebrowRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Bridge_X), MemoryManager.StringToByteArray(HrothBridge_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowLeft_X), MemoryManager.StringToByteArray(HrothBrowLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowRight_X), MemoryManager.StringToByteArray(HrothBrowRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperA_X), MemoryManager.StringToByteArray(HrothLipUpper_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperLeft_X), MemoryManager.StringToByteArray(HrothEyelidUpperLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperRight_X), MemoryManager.StringToByteArray(HrothEyelidUpperRight_Sav02.Replace(" ", string.Empty)));
+                }
+                if (Race_Sav02 == "08")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekLeft_X), MemoryManager.StringToByteArray(CheekLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekRight_X), MemoryManager.StringToByteArray(CheekRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsLeft_X), MemoryManager.StringToByteArray(LipsLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsRight_X), MemoryManager.StringToByteArray(LipsRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowLeft_X), MemoryManager.StringToByteArray(EyebrowLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowRight_X), MemoryManager.StringToByteArray(EyebrowRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Bridge_X), MemoryManager.StringToByteArray(Bridge_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowLeft_X), MemoryManager.StringToByteArray(BrowLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowRight_X), MemoryManager.StringToByteArray(BrowRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperA_X), MemoryManager.StringToByteArray(LipUpperA_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperLeft_X), MemoryManager.StringToByteArray(EyelidUpperLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperRight_X), MemoryManager.StringToByteArray(EyelidUpperRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01ALeft_X), MemoryManager.StringToByteArray(VieraEar01ALeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01ARight_X), MemoryManager.StringToByteArray(VieraEar01ARight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02ALeft_X), MemoryManager.StringToByteArray(VieraEar02ALeft_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (HrothLipLower_Sav02 != "null" || VieraEar02ARight_Sav02 != "null")
+            {
+                if (CharacterDetails.Race.value == 7)
+                {
+                    if (Race_Sav02 == "07")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothLipLower_X), MemoryManager.StringToByteArray(HrothLipLower_Sav02.Replace(" ", string.Empty)));
+                    }
+                }
+                if (CharacterDetails.Race.value == 8)
+                {
+                    if (Race_Sav02 == "08")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02ARight_X), MemoryManager.StringToByteArray(VieraEar02ARight_Sav02.Replace(" ", string.Empty)));
+                    }
+                }
+            }
+            if (VieraEar03ALeft_Sav02 != "null")
+            {
+                if (CharacterDetails.Race.value < 7)
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipLowerA_X), MemoryManager.StringToByteArray(VieraLipLowerA_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperB_X), MemoryManager.StringToByteArray(VieraLipUpperB_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipLowerB_X), MemoryManager.StringToByteArray(VieraLipLowerB_Sav02.Replace(" ", string.Empty)));
+                }
+                if (CharacterDetails.Race.value == 8)
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar03ALeft_X), MemoryManager.StringToByteArray(VieraEar03ALeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar03ARight_X), MemoryManager.StringToByteArray(VieraEar03ARight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar04ALeft_X), MemoryManager.StringToByteArray(VieraEar04ALeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar04ARight_X), MemoryManager.StringToByteArray(VieraEar04ARight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraLipLowerA_X), MemoryManager.StringToByteArray(VieraLipLowerA_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraLipUpperB_X), MemoryManager.StringToByteArray(VieraLipUpperB_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01BLeft_X), MemoryManager.StringToByteArray(VieraEar01BLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01BRight_X), MemoryManager.StringToByteArray(VieraEar01BRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02BLeft_X), MemoryManager.StringToByteArray(VieraEar02BLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02BRight_X), MemoryManager.StringToByteArray(VieraEar02BRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar03BLeft_X), MemoryManager.StringToByteArray(VieraEar03BLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar03BRight_X), MemoryManager.StringToByteArray(VieraEar03BRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar04BLeft_X), MemoryManager.StringToByteArray(VieraEar04BLeft_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar04BRight_X), MemoryManager.StringToByteArray(VieraEar04BRight_Sav02.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraLipLowerB_X), MemoryManager.StringToByteArray(VieraLipLowerB_Sav02.Replace(" ", string.Empty)));
+                }
+            }
         }
         #endregion
         #region Savestate\Loadstate Hair
         private void SavestateHair01_Click(object sender, RoutedEventArgs e)
         {
-            CharacterDetails.SaveHair01 = true;
             HairSaved01 = true;
-
             if (CharacterDetails.BoneEditMode) LoadstateHair01.IsEnabled = true;
+
+            HairA_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairA_X), 16));
+            HairFrontLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontLeft_X), 16));
+            HairFrontRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontRight_X), 16));
+            HairB_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairB_X), 16));
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 1)
+            {
+                ExRootHair_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExRootHair_X), 16));
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 2)
+            {
+                ExHairA_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairA_X), 16));
+            }
+            else
+            {
+                ExHairA_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 3)
+            {
+                ExHairB_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairB_X), 16));
+            }
+            else
+            {
+                ExHairB_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 4)
+            {
+                ExHairC_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairC_X), 16));
+            }
+            else
+            {
+                ExHairC_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 5)
+            {
+                ExHairD_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairD_X), 16));
+            }
+            else
+            {
+                ExHairD_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 6)
+            {
+                ExHairE_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairE_X), 16));
+            }
+            else
+            {
+                ExHairE_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 7)
+            {
+                ExHairF_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairF_X), 16));
+            }
+            else
+            {
+                ExHairF_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 8)
+            {
+                ExHairG_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairG_X), 16));
+            }
+            else
+            {
+                ExHairG_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 9)
+            {
+                ExHairH_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairH_X), 16));
+            }
+            else
+            {
+                ExHairH_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 10)
+            {
+                ExHairI_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairI_X), 16));
+            }
+            else
+            {
+                ExHairI_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 11)
+            {
+                ExHairJ_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairJ_X), 16));
+            }
+            else
+            {
+                ExHairJ_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 12)
+            {
+                ExHairK_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairK_X), 16));
+            }
+            else
+            {
+                ExHairK_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 13)
+            {
+                ExHairL_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairL_X), 16));
+            }
+            else
+            {
+                ExHairL_Sav01 = "null";
+            }
+            if (ExRootHair_Sav01 == null)
+            {
+                ExRootHair_Sav01 = "null";
+                ExHairA_Sav01 = "null";
+                ExHairB_Sav01 = "null";
+                ExHairC_Sav01 = "null";
+                ExHairD_Sav01 = "null";
+                ExHairE_Sav01 = "null";
+                ExHairF_Sav01 = "null";
+                ExHairG_Sav01 = "null";
+                ExHairH_Sav01 = "null";
+                ExHairI_Sav01 = "null";
+                ExHairJ_Sav01 = "null";
+                ExHairK_Sav01 = "null";
+                ExHairL_Sav01 = "null";
+            }
         }
         private void SavestateHair02_Click(object sender, RoutedEventArgs e)
         {
-            CharacterDetails.SaveHair02 = true;
             HairSaved02 = true;
-
             if (CharacterDetails.BoneEditMode) LoadstateHair02.IsEnabled = true;
+
+            HairA_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairA_X), 16));
+            HairFrontLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontLeft_X), 16));
+            HairFrontRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontRight_X), 16));
+            HairB_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairB_X), 16));
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 1)
+            {
+                ExRootHair_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExRootHair_X), 16));
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 2)
+            {
+                ExHairA_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairA_X), 16));
+            }
+            else
+            {
+                ExHairA_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 3)
+            {
+                ExHairB_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairB_X), 16));
+            }
+            else
+            {
+                ExHairB_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 4)
+            {
+                ExHairC_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairC_X), 16));
+            }
+            else
+            {
+                ExHairC_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 5)
+            {
+                ExHairD_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairD_X), 16));
+            }
+            else
+            {
+                ExHairD_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 6)
+            {
+                ExHairE_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairE_X), 16));
+            }
+            else
+            {
+                ExHairE_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 7)
+            {
+                ExHairF_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairF_X), 16));
+            }
+            else
+            {
+                ExHairF_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 8)
+            {
+                ExHairG_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairG_X), 16));
+            }
+            else
+            {
+                ExHairG_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 9)
+            {
+                ExHairH_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairH_X), 16));
+            }
+            else
+            {
+                ExHairH_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 10)
+            {
+                ExHairI_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairI_X), 16));
+            }
+            else
+            {
+                ExHairI_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 11)
+            {
+                ExHairJ_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairJ_X), 16));
+            }
+            else
+            {
+                ExHairJ_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 12)
+            {
+                ExHairK_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairK_X), 16));
+            }
+            else
+            {
+                ExHairK_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 13)
+            {
+                ExHairL_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairL_X), 16));
+            }
+            else
+            {
+                ExHairL_Sav02 = "null";
+            }
+            if (ExRootHair_Sav02 == null)
+            {
+                ExRootHair_Sav02 = "null";
+                ExHairA_Sav02 = "null";
+                ExHairB_Sav02 = "null";
+                ExHairC_Sav02 = "null";
+                ExHairD_Sav02 = "null";
+                ExHairE_Sav02 = "null";
+                ExHairF_Sav02 = "null";
+                ExHairG_Sav02 = "null";
+                ExHairH_Sav02 = "null";
+                ExHairI_Sav02 = "null";
+                ExHairJ_Sav02 = "null";
+                ExHairK_Sav02 = "null";
+                ExHairL_Sav02 = "null";
+            }
         }
         private void LoadstateHair01_Click(object sender, RoutedEventArgs e)
         {
             UncheckAll();
-            CharacterDetails.WriteHair = true;
-
-            CharacterDetails.HairA_X.value = HairA_X_Sav01;
-            CharacterDetails.HairA_Y.value = HairA_Y_Sav01;
-            CharacterDetails.HairA_Z.value = HairA_Z_Sav01;
-            CharacterDetails.HairA_W.value = HairA_W_Sav01;
-            CharacterDetails.HairFrontLeft_X.value = HairFrontLeft_X_Sav01;
-            CharacterDetails.HairFrontLeft_Y.value = HairFrontLeft_Y_Sav01;
-            CharacterDetails.HairFrontLeft_Z.value = HairFrontLeft_Z_Sav01;
-            CharacterDetails.HairFrontLeft_W.value = HairFrontLeft_W_Sav01;
-            CharacterDetails.HairFrontRight_X.value = HairFrontRight_X_Sav01;
-            CharacterDetails.HairFrontRight_Y.value = HairFrontRight_Y_Sav01;
-            CharacterDetails.HairFrontRight_Z.value = HairFrontRight_Z_Sav01;
-            CharacterDetails.HairFrontRight_W.value = HairFrontRight_W_Sav01;
-            CharacterDetails.HairB_X.value = HairB_X_Sav01;
-            CharacterDetails.HairB_Y.value = HairB_Y_Sav01;
-            CharacterDetails.HairB_Z.value = HairB_Z_Sav01;
-            CharacterDetails.HairB_W.value = HairB_W_Sav01;
-            CharacterDetails.ExHairA_X.value = ExHairA_X_Sav01;
-            CharacterDetails.ExHairA_Y.value = ExHairA_Y_Sav01;
-            CharacterDetails.ExHairA_Z.value = ExHairA_Z_Sav01;
-            CharacterDetails.ExHairA_W.value = ExHairA_W_Sav01;
-            CharacterDetails.ExHairB_X.value = ExHairB_X_Sav01;
-            CharacterDetails.ExHairB_Y.value = ExHairB_Y_Sav01;
-            CharacterDetails.ExHairB_Z.value = ExHairB_Z_Sav01;
-            CharacterDetails.ExHairB_W.value = ExHairB_W_Sav01;
-            CharacterDetails.ExHairC_X.value = ExHairC_X_Sav01;
-            CharacterDetails.ExHairC_Y.value = ExHairC_Y_Sav01;
-            CharacterDetails.ExHairC_Z.value = ExHairC_Z_Sav01;
-            CharacterDetails.ExHairC_W.value = ExHairC_W_Sav01;
-            CharacterDetails.ExHairD_X.value = ExHairD_X_Sav01;
-            CharacterDetails.ExHairD_Y.value = ExHairD_Y_Sav01;
-            CharacterDetails.ExHairD_Z.value = ExHairD_Z_Sav01;
-            CharacterDetails.ExHairD_W.value = ExHairD_W_Sav01;
-            CharacterDetails.ExHairE_X.value = ExHairE_X_Sav01;
-            CharacterDetails.ExHairE_Y.value = ExHairE_Y_Sav01;
-            CharacterDetails.ExHairE_Z.value = ExHairE_Z_Sav01;
-            CharacterDetails.ExHairE_W.value = ExHairE_W_Sav01;
-            CharacterDetails.ExHairF_X.value = ExHairF_X_Sav01;
-            CharacterDetails.ExHairF_Y.value = ExHairF_Y_Sav01;
-            CharacterDetails.ExHairF_Z.value = ExHairF_Z_Sav01;
-            CharacterDetails.ExHairF_W.value = ExHairF_W_Sav01;
-            CharacterDetails.ExHairG_X.value = ExHairG_X_Sav01;
-            CharacterDetails.ExHairG_Y.value = ExHairG_Y_Sav01;
-            CharacterDetails.ExHairG_Z.value = ExHairG_Z_Sav01;
-            CharacterDetails.ExHairG_W.value = ExHairG_W_Sav01;
-            CharacterDetails.ExHairH_X.value = ExHairH_X_Sav01;
-            CharacterDetails.ExHairH_Y.value = ExHairH_Y_Sav01;
-            CharacterDetails.ExHairH_Z.value = ExHairH_Z_Sav01;
-            CharacterDetails.ExHairH_W.value = ExHairH_W_Sav01;
-            CharacterDetails.ExHairI_X.value = ExHairI_X_Sav01;
-            CharacterDetails.ExHairI_Y.value = ExHairI_Y_Sav01;
-            CharacterDetails.ExHairI_Z.value = ExHairI_Z_Sav01;
-            CharacterDetails.ExHairI_W.value = ExHairI_W_Sav01;
-            CharacterDetails.ExHairJ_X.value = ExHairJ_X_Sav01;
-            CharacterDetails.ExHairJ_Y.value = ExHairJ_Y_Sav01;
-            CharacterDetails.ExHairJ_Z.value = ExHairJ_Z_Sav01;
-            CharacterDetails.ExHairJ_W.value = ExHairJ_W_Sav01;
-            CharacterDetails.ExHairK_X.value = ExHairK_X_Sav01;
-            CharacterDetails.ExHairK_Y.value = ExHairK_Y_Sav01;
-            CharacterDetails.ExHairK_Z.value = ExHairK_Z_Sav01;
-            CharacterDetails.ExHairK_W.value = ExHairK_W_Sav01;
-            CharacterDetails.ExHairL_X.value = ExHairL_X_Sav01;
-            CharacterDetails.ExHairL_Y.value = ExHairL_Y_Sav01;
-            CharacterDetails.ExHairL_Z.value = ExHairL_Z_Sav01;
-            CharacterDetails.ExHairL_W.value = ExHairL_W_Sav01;
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairA_X), MemoryManager.StringToByteArray(HairA_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontLeft_X), MemoryManager.StringToByteArray(HairFrontLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontRight_X), MemoryManager.StringToByteArray(HairFrontRight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairB_X), MemoryManager.StringToByteArray(HairB_Sav01.Replace(" ", string.Empty)));
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 2)
+            {
+                if (ExHairA_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairA_X), MemoryManager.StringToByteArray(ExHairA_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 3)
+            {
+                if (ExHairB_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairB_X), MemoryManager.StringToByteArray(ExHairB_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 4)
+            {
+                if (ExHairC_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairC_X), MemoryManager.StringToByteArray(ExHairC_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 5)
+            {
+                if (ExHairD_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairD_X), MemoryManager.StringToByteArray(ExHairD_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 6)
+            {
+                if (ExHairE_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairE_X), MemoryManager.StringToByteArray(ExHairE_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 7)
+            {
+                if (ExHairF_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairF_X), MemoryManager.StringToByteArray(ExHairF_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 8)
+            {
+                if (ExHairG_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairG_X), MemoryManager.StringToByteArray(ExHairG_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 9)
+            {
+                if (ExHairH_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairH_X), MemoryManager.StringToByteArray(ExHairH_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 10)
+            {
+                if (ExHairI_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairI_X), MemoryManager.StringToByteArray(ExHairI_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 11)
+            {
+                if (ExHairJ_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairJ_X), MemoryManager.StringToByteArray(ExHairJ_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 12)
+            {
+                if (ExHairK_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairK_X), MemoryManager.StringToByteArray(ExHairK_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 13)
+            {
+                if (ExHairL_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairL_X), MemoryManager.StringToByteArray(ExHairL_Sav01.Replace(" ", string.Empty)));
+                }
+            }
         }
         private void LoadstateHair02_Click(object sender, RoutedEventArgs e)
         {
             UncheckAll();
-            CharacterDetails.WriteHair = true;
-
-            CharacterDetails.HairA_X.value = HairA_X_Sav02;
-            CharacterDetails.HairA_Y.value = HairA_Y_Sav02;
-            CharacterDetails.HairA_Z.value = HairA_Z_Sav02;
-            CharacterDetails.HairA_W.value = HairA_W_Sav02;
-            CharacterDetails.HairFrontLeft_X.value = HairFrontLeft_X_Sav02;
-            CharacterDetails.HairFrontLeft_Y.value = HairFrontLeft_Y_Sav02;
-            CharacterDetails.HairFrontLeft_Z.value = HairFrontLeft_Z_Sav02;
-            CharacterDetails.HairFrontLeft_W.value = HairFrontLeft_W_Sav02;
-            CharacterDetails.HairFrontRight_X.value = HairFrontRight_X_Sav02;
-            CharacterDetails.HairFrontRight_Y.value = HairFrontRight_Y_Sav02;
-            CharacterDetails.HairFrontRight_Z.value = HairFrontRight_Z_Sav02;
-            CharacterDetails.HairFrontRight_W.value = HairFrontRight_W_Sav02;
-            CharacterDetails.HairB_X.value = HairB_X_Sav02;
-            CharacterDetails.HairB_Y.value = HairB_Y_Sav02;
-            CharacterDetails.HairB_Z.value = HairB_Z_Sav02;
-            CharacterDetails.HairB_W.value = HairB_W_Sav02;
-            CharacterDetails.ExHairA_X.value = ExHairA_X_Sav02;
-            CharacterDetails.ExHairA_Y.value = ExHairA_Y_Sav02;
-            CharacterDetails.ExHairA_Z.value = ExHairA_Z_Sav02;
-            CharacterDetails.ExHairA_W.value = ExHairA_W_Sav02;
-            CharacterDetails.ExHairB_X.value = ExHairB_X_Sav02;
-            CharacterDetails.ExHairB_Y.value = ExHairB_Y_Sav02;
-            CharacterDetails.ExHairB_Z.value = ExHairB_Z_Sav02;
-            CharacterDetails.ExHairB_W.value = ExHairB_W_Sav02;
-            CharacterDetails.ExHairC_X.value = ExHairC_X_Sav02;
-            CharacterDetails.ExHairC_Y.value = ExHairC_Y_Sav02;
-            CharacterDetails.ExHairC_Z.value = ExHairC_Z_Sav02;
-            CharacterDetails.ExHairC_W.value = ExHairC_W_Sav02;
-            CharacterDetails.ExHairD_X.value = ExHairD_X_Sav02;
-            CharacterDetails.ExHairD_Y.value = ExHairD_Y_Sav02;
-            CharacterDetails.ExHairD_Z.value = ExHairD_Z_Sav02;
-            CharacterDetails.ExHairD_W.value = ExHairD_W_Sav02;
-            CharacterDetails.ExHairE_X.value = ExHairE_X_Sav02;
-            CharacterDetails.ExHairE_Y.value = ExHairE_Y_Sav02;
-            CharacterDetails.ExHairE_Z.value = ExHairE_Z_Sav02;
-            CharacterDetails.ExHairE_W.value = ExHairE_W_Sav02;
-            CharacterDetails.ExHairF_X.value = ExHairF_X_Sav02;
-            CharacterDetails.ExHairF_Y.value = ExHairF_Y_Sav02;
-            CharacterDetails.ExHairF_Z.value = ExHairF_Z_Sav02;
-            CharacterDetails.ExHairF_W.value = ExHairF_W_Sav02;
-            CharacterDetails.ExHairG_X.value = ExHairG_X_Sav02;
-            CharacterDetails.ExHairG_Y.value = ExHairG_Y_Sav02;
-            CharacterDetails.ExHairG_Z.value = ExHairG_Z_Sav02;
-            CharacterDetails.ExHairG_W.value = ExHairG_W_Sav02;
-            CharacterDetails.ExHairH_X.value = ExHairH_X_Sav02;
-            CharacterDetails.ExHairH_Y.value = ExHairH_Y_Sav02;
-            CharacterDetails.ExHairH_Z.value = ExHairH_Z_Sav02;
-            CharacterDetails.ExHairH_W.value = ExHairH_W_Sav02;
-            CharacterDetails.ExHairI_X.value = ExHairI_X_Sav02;
-            CharacterDetails.ExHairI_Y.value = ExHairI_Y_Sav02;
-            CharacterDetails.ExHairI_Z.value = ExHairI_Z_Sav02;
-            CharacterDetails.ExHairI_W.value = ExHairI_W_Sav02;
-            CharacterDetails.ExHairJ_X.value = ExHairJ_X_Sav02;
-            CharacterDetails.ExHairJ_Y.value = ExHairJ_Y_Sav02;
-            CharacterDetails.ExHairJ_Z.value = ExHairJ_Z_Sav02;
-            CharacterDetails.ExHairJ_W.value = ExHairJ_W_Sav02;
-            CharacterDetails.ExHairK_X.value = ExHairK_X_Sav02;
-            CharacterDetails.ExHairK_Y.value = ExHairK_Y_Sav02;
-            CharacterDetails.ExHairK_Z.value = ExHairK_Z_Sav02;
-            CharacterDetails.ExHairK_W.value = ExHairK_W_Sav02;
-            CharacterDetails.ExHairL_X.value = ExHairL_X_Sav02;
-            CharacterDetails.ExHairL_Y.value = ExHairL_Y_Sav02;
-            CharacterDetails.ExHairL_Z.value = ExHairL_Z_Sav02;
-            CharacterDetails.ExHairL_W.value = ExHairL_W_Sav02;
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairA_X), MemoryManager.StringToByteArray(HairA_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontLeft_X), MemoryManager.StringToByteArray(HairFrontLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontRight_X), MemoryManager.StringToByteArray(HairFrontRight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairB_X), MemoryManager.StringToByteArray(HairB_Sav02.Replace(" ", string.Empty)));
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 2)
+            {
+                if (ExHairA_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairA_X), MemoryManager.StringToByteArray(ExHairA_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 3)
+            {
+                if (ExHairB_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairB_X), MemoryManager.StringToByteArray(ExHairB_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 4)
+            {
+                if (ExHairC_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairC_X), MemoryManager.StringToByteArray(ExHairC_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 5)
+            {
+                if (ExHairD_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairD_X), MemoryManager.StringToByteArray(ExHairD_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 6)
+            {
+                if (ExHairE_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairE_X), MemoryManager.StringToByteArray(ExHairE_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 7)
+            {
+                if (ExHairF_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairF_X), MemoryManager.StringToByteArray(ExHairF_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 8)
+            {
+                if (ExHairG_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairG_X), MemoryManager.StringToByteArray(ExHairG_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 9)
+            {
+                if (ExHairH_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairH_X), MemoryManager.StringToByteArray(ExHairH_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 10)
+            {
+                if (ExHairI_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairI_X), MemoryManager.StringToByteArray(ExHairI_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 11)
+            {
+                if (ExHairJ_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairJ_X), MemoryManager.StringToByteArray(ExHairJ_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 12)
+            {
+                if (ExHairK_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairK_X), MemoryManager.StringToByteArray(ExHairK_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 13)
+            {
+                if (ExHairL_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairL_X), MemoryManager.StringToByteArray(ExHairL_Sav02.Replace(" ", string.Empty)));
+                }
+            }
         }
         #endregion
         #region Savestate\Loadstate Earrings
         private void SavestateEarrings01_Click(object sender, RoutedEventArgs e)
         {
-            CharacterDetails.SaveEarrings01 = true;
             EarringsSaved01 = true;
-
             if (CharacterDetails.BoneEditMode) LoadstateEarrings01.IsEnabled = true;
+
+            EarringALeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringALeft_X), 16));
+            EarringARight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringARight_X), 16));
+            EarringBLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringBLeft_X), 16));
+            EarringBRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringBRight_X), 16));
         }
         private void SavestateEarrings02_Click(object sender, RoutedEventArgs e)
         {
-            CharacterDetails.SaveEarrings02 = true;
             EarringsSaved02 = true;
-
             if (CharacterDetails.BoneEditMode) LoadstateEarrings02.IsEnabled = true;
+
+            EarringALeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringALeft_X), 16));
+            EarringARight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringARight_X), 16));
+            EarringBLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringBLeft_X), 16));
+            EarringBRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringBRight_X), 16));
         }
         private void LoadstateEarrings01_Click(object sender, RoutedEventArgs e)
         {
             UncheckAll();
-            CharacterDetails.WriteEarrings = true;
-
-            CharacterDetails.EarringALeft_X.value = EarringALeft_X_Sav01;
-            CharacterDetails.EarringALeft_Y.value = EarringALeft_Y_Sav01;
-            CharacterDetails.EarringALeft_Z.value = EarringALeft_Z_Sav01;
-            CharacterDetails.EarringALeft_W.value = EarringALeft_W_Sav01;
-            CharacterDetails.EarringARight_X.value = EarringARight_X_Sav01;
-            CharacterDetails.EarringARight_Y.value = EarringARight_Y_Sav01;
-            CharacterDetails.EarringARight_Z.value = EarringARight_Z_Sav01;
-            CharacterDetails.EarringARight_W.value = EarringARight_W_Sav01;
-            CharacterDetails.EarringBLeft_X.value = EarringBLeft_X_Sav01;
-            CharacterDetails.EarringBLeft_Y.value = EarringBLeft_Y_Sav01;
-            CharacterDetails.EarringBLeft_Z.value = EarringBLeft_Z_Sav01;
-            CharacterDetails.EarringBLeft_W.value = EarringBLeft_W_Sav01;
-            CharacterDetails.EarringBRight_X.value = EarringBRight_X_Sav01;
-            CharacterDetails.EarringBRight_Y.value = EarringBRight_Y_Sav01;
-            CharacterDetails.EarringBRight_Z.value = EarringBRight_Z_Sav01;
-            CharacterDetails.EarringBRight_W.value = EarringBRight_W_Sav01;
-
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringALeft_X), MemoryManager.StringToByteArray(EarringALeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringARight_X), MemoryManager.StringToByteArray(EarringARight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringBLeft_X), MemoryManager.StringToByteArray(EarringBLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringBRight_X), MemoryManager.StringToByteArray(EarringBRight_Sav01.Replace(" ", string.Empty)));
         }
         private void LoadstateEarrings02_Click(object sender, RoutedEventArgs e)
         {
             UncheckAll();
-            CharacterDetails.WriteEarrings = true;
-
-            CharacterDetails.EarringALeft_X.value = EarringALeft_X_Sav02;
-            CharacterDetails.EarringALeft_Y.value = EarringALeft_Y_Sav02;
-            CharacterDetails.EarringALeft_Z.value = EarringALeft_Z_Sav02;
-            CharacterDetails.EarringALeft_W.value = EarringALeft_W_Sav02;
-            CharacterDetails.EarringARight_X.value = EarringARight_X_Sav02;
-            CharacterDetails.EarringARight_Y.value = EarringARight_Y_Sav02;
-            CharacterDetails.EarringARight_Z.value = EarringARight_Z_Sav02;
-            CharacterDetails.EarringARight_W.value = EarringARight_W_Sav02;
-            CharacterDetails.EarringBLeft_X.value = EarringBLeft_X_Sav02;
-            CharacterDetails.EarringBLeft_Y.value = EarringBLeft_Y_Sav02;
-            CharacterDetails.EarringBLeft_Z.value = EarringBLeft_Z_Sav02;
-            CharacterDetails.EarringBLeft_W.value = EarringBLeft_W_Sav02;
-            CharacterDetails.EarringBRight_X.value = EarringBRight_X_Sav02;
-            CharacterDetails.EarringBRight_Y.value = EarringBRight_Y_Sav02;
-            CharacterDetails.EarringBRight_Z.value = EarringBRight_Z_Sav02;
-            CharacterDetails.EarringBRight_W.value = EarringBRight_W_Sav02;
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringALeft_X), MemoryManager.StringToByteArray(EarringALeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringARight_X), MemoryManager.StringToByteArray(EarringARight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringBLeft_X), MemoryManager.StringToByteArray(EarringBLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringBRight_X), MemoryManager.StringToByteArray(EarringBRight_Sav02.Replace(" ", string.Empty)));
         }
         #endregion
         #region Savestate\Loadstate Body
         private void SavestateBody01_Click(object sender, RoutedEventArgs e)
         {
-            CharacterDetails.SaveBody01 = true;
             BodySaved01 = true;
-
             if (CharacterDetails.BoneEditMode) LoadstateBody01.IsEnabled = true;
+
+            SpineA_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SpineA_X), 16));
+            SpineB_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SpineB_X), 16));
+            BreastLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BreastLeft_X), 16));
+            BreastRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BreastRight_X), 16));
+            SpineC_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SpineC_X), 16));
+            ScabbardLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ScabbardLeft_X), 16));
+            ScabbardRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ScabbardRight_X), 16));
+            Neck_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Neck_X), 16));
         }
         private void SavestateBody02_Click(object sender, RoutedEventArgs e)
         {
-            CharacterDetails.SaveBody02 = true;
             BodySaved02 = true;
-
             if (CharacterDetails.BoneEditMode) LoadstateBody02.IsEnabled = true;
+
+            SpineA_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SpineA_X), 16));
+            SpineB_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SpineB_X), 16));
+            BreastLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BreastLeft_X), 16));
+            BreastRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BreastRight_X), 16));
+            SpineC_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SpineC_X), 16));
+            ScabbardLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ScabbardLeft_X), 16));
+            ScabbardRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ScabbardRight_X), 16));
+            Neck_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Neck_X), 16));
         }
         private void LoadstateBody01_Click(object sender, RoutedEventArgs e)
         {
             UncheckAll();
-            CharacterDetails.WriteBody = true;
-
-            CharacterDetails.SpineA_X.value = SpineA_X_Sav01;
-            CharacterDetails.SpineA_Y.value = SpineA_Y_Sav01;
-            CharacterDetails.SpineA_Z.value = SpineA_Z_Sav01;
-            CharacterDetails.SpineA_W.value = SpineA_W_Sav01;
-            CharacterDetails.SpineB_X.value = SpineB_X_Sav01;
-            CharacterDetails.SpineB_Y.value = SpineB_Y_Sav01;
-            CharacterDetails.SpineB_Z.value = SpineB_Z_Sav01;
-            CharacterDetails.SpineB_W.value = SpineB_W_Sav01;
-            CharacterDetails.BreastLeft_X.value = BreastLeft_X_Sav01;
-            CharacterDetails.BreastLeft_Y.value = BreastLeft_Y_Sav01;
-            CharacterDetails.BreastLeft_Z.value = BreastLeft_Z_Sav01;
-            CharacterDetails.BreastLeft_W.value = BreastLeft_W_Sav01;
-            CharacterDetails.BreastRight_X.value = BreastRight_X_Sav01;
-            CharacterDetails.BreastRight_Y.value = BreastRight_Y_Sav01;
-            CharacterDetails.BreastRight_Z.value = BreastRight_Z_Sav01;
-            CharacterDetails.BreastRight_W.value = BreastRight_W_Sav01;
-            CharacterDetails.SpineC_X.value = SpineC_X_Sav01;
-            CharacterDetails.SpineC_Y.value = SpineC_Y_Sav01;
-            CharacterDetails.SpineC_Z.value = SpineC_Z_Sav01;
-            CharacterDetails.SpineC_W.value = SpineC_W_Sav01;
-            CharacterDetails.ScabbardLeft_X.value = ScabbardLeft_X_Sav01;
-            CharacterDetails.ScabbardLeft_Y.value = ScabbardLeft_Y_Sav01;
-            CharacterDetails.ScabbardLeft_Z.value = ScabbardLeft_Z_Sav01;
-            CharacterDetails.ScabbardLeft_W.value = ScabbardLeft_W_Sav01;
-            CharacterDetails.ScabbardRight_X.value = ScabbardRight_X_Sav01;
-            CharacterDetails.ScabbardRight_Y.value = ScabbardRight_Y_Sav01;
-            CharacterDetails.ScabbardRight_Z.value = ScabbardRight_Z_Sav01;
-            CharacterDetails.ScabbardRight_W.value = ScabbardRight_W_Sav01;
-            CharacterDetails.Neck_X.value = Neck_X_Sav01;
-            CharacterDetails.Neck_Y.value = Neck_Y_Sav01;
-            CharacterDetails.Neck_Z.value = Neck_Z_Sav01;
-            CharacterDetails.Neck_W.value = Neck_W_Sav01;
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SpineA_X), MemoryManager.StringToByteArray(SpineA_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SpineB_X), MemoryManager.StringToByteArray(SpineB_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BreastLeft_X), MemoryManager.StringToByteArray(BreastLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BreastRight_X), MemoryManager.StringToByteArray(BreastRight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SpineC_X), MemoryManager.StringToByteArray(SpineC_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ScabbardLeft_X), MemoryManager.StringToByteArray(ScabbardLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ScabbardRight_X), MemoryManager.StringToByteArray(ScabbardRight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Neck_X), MemoryManager.StringToByteArray(Neck_Sav01.Replace(" ", string.Empty)));
         }
         private void LoadstateBody02_Click(object sender, RoutedEventArgs e)
         {
             UncheckAll();
-            CharacterDetails.WriteBody = true;
-
-            CharacterDetails.SpineA_X.value = SpineA_X_Sav02;
-            CharacterDetails.SpineA_Y.value = SpineA_Y_Sav02;
-            CharacterDetails.SpineA_Z.value = SpineA_Z_Sav02;
-            CharacterDetails.SpineA_W.value = SpineA_W_Sav02;
-            CharacterDetails.SpineB_X.value = SpineB_X_Sav02;
-            CharacterDetails.SpineB_Y.value = SpineB_Y_Sav02;
-            CharacterDetails.SpineB_Z.value = SpineB_Z_Sav02;
-            CharacterDetails.SpineB_W.value = SpineB_W_Sav02;
-            CharacterDetails.BreastLeft_X.value = BreastLeft_X_Sav02;
-            CharacterDetails.BreastLeft_Y.value = BreastLeft_Y_Sav02;
-            CharacterDetails.BreastLeft_Z.value = BreastLeft_Z_Sav02;
-            CharacterDetails.BreastLeft_W.value = BreastLeft_W_Sav02;
-            CharacterDetails.BreastRight_X.value = BreastRight_X_Sav02;
-            CharacterDetails.BreastRight_Y.value = BreastRight_Y_Sav02;
-            CharacterDetails.BreastRight_Z.value = BreastRight_Z_Sav02;
-            CharacterDetails.BreastRight_W.value = BreastRight_W_Sav02;
-            CharacterDetails.SpineC_X.value = SpineC_X_Sav02;
-            CharacterDetails.SpineC_Y.value = SpineC_Y_Sav02;
-            CharacterDetails.SpineC_Z.value = SpineC_Z_Sav02;
-            CharacterDetails.SpineC_W.value = SpineC_W_Sav02;
-            CharacterDetails.ScabbardLeft_X.value = ScabbardLeft_X_Sav02;
-            CharacterDetails.ScabbardLeft_Y.value = ScabbardLeft_Y_Sav02;
-            CharacterDetails.ScabbardLeft_Z.value = ScabbardLeft_Z_Sav02;
-            CharacterDetails.ScabbardLeft_W.value = ScabbardLeft_W_Sav02;
-            CharacterDetails.ScabbardRight_X.value = ScabbardRight_X_Sav02;
-            CharacterDetails.ScabbardRight_Y.value = ScabbardRight_Y_Sav02;
-            CharacterDetails.ScabbardRight_Z.value = ScabbardRight_Z_Sav02;
-            CharacterDetails.ScabbardRight_W.value = ScabbardRight_W_Sav02;
-            CharacterDetails.Neck_X.value = Neck_X_Sav02;
-            CharacterDetails.Neck_Y.value = Neck_Y_Sav02;
-            CharacterDetails.Neck_Z.value = Neck_Z_Sav02;
-            CharacterDetails.Neck_W.value = Neck_W_Sav02;
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SpineA_X), MemoryManager.StringToByteArray(SpineA_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SpineB_X), MemoryManager.StringToByteArray(SpineB_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BreastLeft_X), MemoryManager.StringToByteArray(BreastLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BreastRight_X), MemoryManager.StringToByteArray(BreastRight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SpineC_X), MemoryManager.StringToByteArray(SpineC_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ScabbardLeft_X), MemoryManager.StringToByteArray(ScabbardLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ScabbardRight_X), MemoryManager.StringToByteArray(ScabbardRight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Neck_X), MemoryManager.StringToByteArray(Neck_Sav02.Replace(" ", string.Empty)));
         }
         #endregion
         #region Savestate\Loadstate LeftArm
         private void SavestateLeftArm01_Click(object sender, RoutedEventArgs e)
         {
-            CharacterDetails.SaveLeftArm01 = true;
             LeftArmSaved01 = true;
-
             if (CharacterDetails.BoneEditMode) LoadstateLeftArm01.IsEnabled = true;
+
+            ClavicleLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClavicleLeft_X), 16));
+            ArmLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ArmLeft_X), 16));
+            ArmRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ArmRight_X), 16));
+            PauldronLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PauldronLeft_X), 16));
+            ForearmLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ForearmLeft_X), 16));
+            ShoulderLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShoulderLeft_X), 16));
+            ShieldLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShieldLeft_X), 16));
+            ElbowLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ElbowLeft_X), 16));
+            CouterLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CouterLeft_X), 16));
+            WristLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristLeft_X), 16));
         }
         private void SavestateLeftArm02_Click(object sender, RoutedEventArgs e)
         {
-            CharacterDetails.SaveLeftArm02 = true;
             LeftArmSaved02 = true;
-
             if (CharacterDetails.BoneEditMode) LoadstateLeftArm02.IsEnabled = true;
+
+            ClavicleLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClavicleLeft_X), 16));
+            ArmLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ArmLeft_X), 16));
+            ArmRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ArmRight_X), 16));
+            PauldronLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PauldronLeft_X), 16));
+            ForearmLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ForearmLeft_X), 16));
+            ShoulderLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShoulderLeft_X), 16));
+            ShieldLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShieldLeft_X), 16));
+            ElbowLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ElbowLeft_X), 16));
+            CouterLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CouterLeft_X), 16));
+            WristLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristLeft_X), 16));
         }
         private void LoadstateLeftArm01_Click(object sender, RoutedEventArgs e)
         {
             UncheckAll();
-            CharacterDetails.WriteLeftArm = true;
-
-            CharacterDetails.ClavicleLeft_X.value = ClavicleLeft_X_Sav01;
-            CharacterDetails.ClavicleLeft_Y.value = ClavicleLeft_Y_Sav01;
-            CharacterDetails.ClavicleLeft_Z.value = ClavicleLeft_Z_Sav01;
-            CharacterDetails.ClavicleLeft_W.value = ClavicleLeft_W_Sav01;
-            CharacterDetails.ArmLeft_X.value = ArmLeft_X_Sav01;
-            CharacterDetails.ArmLeft_Y.value = ArmLeft_Y_Sav01;
-            CharacterDetails.ArmLeft_Z.value = ArmLeft_Z_Sav01;
-            CharacterDetails.ArmLeft_W.value = ArmLeft_W_Sav01;
-            CharacterDetails.PauldronLeft_X.value = PauldronLeft_X_Sav01;
-            CharacterDetails.PauldronLeft_Y.value = PauldronLeft_Y_Sav01;
-            CharacterDetails.PauldronLeft_Z.value = PauldronLeft_Z_Sav01;
-            CharacterDetails.PauldronLeft_W.value = PauldronLeft_W_Sav01;
-            CharacterDetails.ForearmLeft_X.value = ForearmLeft_X_Sav01;
-            CharacterDetails.ForearmLeft_Y.value = ForearmLeft_Y_Sav01;
-            CharacterDetails.ForearmLeft_Z.value = ForearmLeft_Z_Sav01;
-            CharacterDetails.ForearmLeft_W.value = ForearmLeft_W_Sav01;
-            CharacterDetails.ShoulderLeft_X.value = ShoulderLeft_X_Sav01;
-            CharacterDetails.ShoulderLeft_Y.value = ShoulderLeft_Y_Sav01;
-            CharacterDetails.ShoulderLeft_Z.value = ShoulderLeft_Z_Sav01;
-            CharacterDetails.ShoulderLeft_W.value = ShoulderLeft_W_Sav01;
-            CharacterDetails.ShieldLeft_X.value = ShieldLeft_X_Sav01;
-            CharacterDetails.ShieldLeft_Y.value = ShieldLeft_Y_Sav01;
-            CharacterDetails.ShieldLeft_Z.value = ShieldLeft_Z_Sav01;
-            CharacterDetails.ShieldLeft_W.value = ShieldLeft_W_Sav01;
-            CharacterDetails.ElbowLeft_X.value = ElbowLeft_X_Sav01;
-            CharacterDetails.ElbowLeft_Y.value = ElbowLeft_Y_Sav01;
-            CharacterDetails.ElbowLeft_Z.value = ElbowLeft_Z_Sav01;
-            CharacterDetails.ElbowLeft_W.value = ElbowLeft_W_Sav01;
-            CharacterDetails.CouterLeft_X.value = CouterLeft_X_Sav01;
-            CharacterDetails.CouterLeft_Y.value = CouterLeft_Y_Sav01;
-            CharacterDetails.CouterLeft_Z.value = CouterLeft_Z_Sav01;
-            CharacterDetails.CouterLeft_W.value = CouterLeft_W_Sav01;
-            CharacterDetails.WristLeft_X.value = WristLeft_X_Sav01;
-            CharacterDetails.WristLeft_Y.value = WristLeft_Y_Sav01;
-            CharacterDetails.WristLeft_Z.value = WristLeft_Z_Sav01;
-            CharacterDetails.WristLeft_W.value = WristLeft_W_Sav01;
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClavicleLeft_X), MemoryManager.StringToByteArray(ClavicleLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ArmLeft_X), MemoryManager.StringToByteArray(ArmLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PauldronLeft_X), MemoryManager.StringToByteArray(PauldronLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ForearmLeft_X), MemoryManager.StringToByteArray(ForearmLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShoulderLeft_X), MemoryManager.StringToByteArray(ShoulderLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShieldLeft_X), MemoryManager.StringToByteArray(ShieldLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ElbowLeft_X), MemoryManager.StringToByteArray(ElbowLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CouterLeft_X), MemoryManager.StringToByteArray(CouterLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristLeft_X), MemoryManager.StringToByteArray(WristLeft_Sav01.Replace(" ", string.Empty)));
         }
         private void LoadstateLeftArm02_Click(object sender, RoutedEventArgs e)
         {
             UncheckAll();
-            CharacterDetails.WriteLeftArm = true;
-
-            CharacterDetails.ClavicleLeft_X.value = ClavicleLeft_X_Sav02;
-            CharacterDetails.ClavicleLeft_Y.value = ClavicleLeft_Y_Sav02;
-            CharacterDetails.ClavicleLeft_Z.value = ClavicleLeft_Z_Sav02;
-            CharacterDetails.ClavicleLeft_W.value = ClavicleLeft_W_Sav02;
-            CharacterDetails.ArmLeft_X.value = ArmLeft_X_Sav02;
-            CharacterDetails.ArmLeft_Y.value = ArmLeft_Y_Sav02;
-            CharacterDetails.ArmLeft_Z.value = ArmLeft_Z_Sav02;
-            CharacterDetails.ArmLeft_W.value = ArmLeft_W_Sav02;
-            CharacterDetails.PauldronLeft_X.value = PauldronLeft_X_Sav02;
-            CharacterDetails.PauldronLeft_Y.value = PauldronLeft_Y_Sav02;
-            CharacterDetails.PauldronLeft_Z.value = PauldronLeft_Z_Sav02;
-            CharacterDetails.PauldronLeft_W.value = PauldronLeft_W_Sav02;
-            CharacterDetails.ForearmLeft_X.value = ForearmLeft_X_Sav02;
-            CharacterDetails.ForearmLeft_Y.value = ForearmLeft_Y_Sav02;
-            CharacterDetails.ForearmLeft_Z.value = ForearmLeft_Z_Sav02;
-            CharacterDetails.ForearmLeft_W.value = ForearmLeft_W_Sav02;
-            CharacterDetails.ShoulderLeft_X.value = ShoulderLeft_X_Sav02;
-            CharacterDetails.ShoulderLeft_Y.value = ShoulderLeft_Y_Sav02;
-            CharacterDetails.ShoulderLeft_Z.value = ShoulderLeft_Z_Sav02;
-            CharacterDetails.ShoulderLeft_W.value = ShoulderLeft_W_Sav02;
-            CharacterDetails.ShieldLeft_X.value = ShieldLeft_X_Sav02;
-            CharacterDetails.ShieldLeft_Y.value = ShieldLeft_Y_Sav02;
-            CharacterDetails.ShieldLeft_Z.value = ShieldLeft_Z_Sav02;
-            CharacterDetails.ShieldLeft_W.value = ShieldLeft_W_Sav02;
-            CharacterDetails.ElbowLeft_X.value = ElbowLeft_X_Sav02;
-            CharacterDetails.ElbowLeft_Y.value = ElbowLeft_Y_Sav02;
-            CharacterDetails.ElbowLeft_Z.value = ElbowLeft_Z_Sav02;
-            CharacterDetails.ElbowLeft_W.value = ElbowLeft_W_Sav02;
-            CharacterDetails.CouterLeft_X.value = CouterLeft_X_Sav02;
-            CharacterDetails.CouterLeft_Y.value = CouterLeft_Y_Sav02;
-            CharacterDetails.CouterLeft_Z.value = CouterLeft_Z_Sav02;
-            CharacterDetails.CouterLeft_W.value = CouterLeft_W_Sav02;
-            CharacterDetails.WristLeft_X.value = WristLeft_X_Sav02;
-            CharacterDetails.WristLeft_Y.value = WristLeft_Y_Sav02;
-            CharacterDetails.WristLeft_Z.value = WristLeft_Z_Sav02;
-            CharacterDetails.WristLeft_W.value = WristLeft_W_Sav02;
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClavicleLeft_X), MemoryManager.StringToByteArray(ClavicleLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ArmLeft_X), MemoryManager.StringToByteArray(ArmLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PauldronLeft_X), MemoryManager.StringToByteArray(PauldronLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ForearmLeft_X), MemoryManager.StringToByteArray(ForearmLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShoulderLeft_X), MemoryManager.StringToByteArray(ShoulderLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShieldLeft_X), MemoryManager.StringToByteArray(ShieldLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ElbowLeft_X), MemoryManager.StringToByteArray(ElbowLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CouterLeft_X), MemoryManager.StringToByteArray(CouterLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristLeft_X), MemoryManager.StringToByteArray(WristLeft_Sav02.Replace(" ", string.Empty)));
         }
         #endregion
         #region Savestate\Loadstate RightArm
         private void SavestateRightArm01_Click(object sender, RoutedEventArgs e)
         {
-            CharacterDetails.SaveRightArm01 = true;
             RightArmSaved01 = true;
-
             if (CharacterDetails.BoneEditMode) LoadstateRightArm01.IsEnabled = true;
+
+            ClavicleRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClavicleRight_X), 16));
+            ArmRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ArmRight_X), 16));
+            ArmRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ArmRight_X), 16));
+            PauldronRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PauldronRight_X), 16));
+            ForearmRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ForearmRight_X), 16));
+            ShoulderRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShoulderRight_X), 16));
+            ShieldRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShieldRight_X), 16));
+            ElbowRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ElbowRight_X), 16));
+            CouterRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CouterRight_X), 16));
+            WristRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristRight_X), 16));
         }
         private void SavestateRightArm02_Click(object sender, RoutedEventArgs e)
         {
-            CharacterDetails.SaveRightArm02 = true;
             RightArmSaved02 = true;
-
             if (CharacterDetails.BoneEditMode) LoadstateRightArm02.IsEnabled = true;
+
+            ClavicleRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClavicleRight_X), 16));
+            ArmRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ArmRight_X), 16));
+            ArmRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ArmRight_X), 16));
+            PauldronRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PauldronRight_X), 16));
+            ForearmRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ForearmRight_X), 16));
+            ShoulderRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShoulderRight_X), 16));
+            ShieldRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShieldRight_X), 16));
+            ElbowRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ElbowRight_X), 16));
+            CouterRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CouterRight_X), 16));
+            WristRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristRight_X), 16));
         }
         private void LoadstateRightArm01_Click(object sender, RoutedEventArgs e)
         {
             UncheckAll();
-            CharacterDetails.WriteRightArm = true;
-
-            CharacterDetails.ClavicleRight_X.value = ClavicleRight_X_Sav01;
-            CharacterDetails.ClavicleRight_Y.value = ClavicleRight_Y_Sav01;
-            CharacterDetails.ClavicleRight_Z.value = ClavicleRight_Z_Sav01;
-            CharacterDetails.ClavicleRight_W.value = ClavicleRight_W_Sav01;
-            CharacterDetails.ArmRight_X.value = ArmRight_X_Sav01;
-            CharacterDetails.ArmRight_Y.value = ArmRight_Y_Sav01;
-            CharacterDetails.ArmRight_Z.value = ArmRight_Z_Sav01;
-            CharacterDetails.ArmRight_W.value = ArmRight_W_Sav01;
-            CharacterDetails.PauldronRight_X.value = PauldronRight_X_Sav01;
-            CharacterDetails.PauldronRight_Y.value = PauldronRight_Y_Sav01;
-            CharacterDetails.PauldronRight_Z.value = PauldronRight_Z_Sav01;
-            CharacterDetails.PauldronRight_W.value = PauldronRight_W_Sav01;
-            CharacterDetails.ForearmRight_X.value = ForearmRight_X_Sav01;
-            CharacterDetails.ForearmRight_Y.value = ForearmRight_Y_Sav01;
-            CharacterDetails.ForearmRight_Z.value = ForearmRight_Z_Sav01;
-            CharacterDetails.ForearmRight_W.value = ForearmRight_W_Sav01;
-            CharacterDetails.ShoulderRight_X.value = ShoulderRight_X_Sav01;
-            CharacterDetails.ShoulderRight_Y.value = ShoulderRight_Y_Sav01;
-            CharacterDetails.ShoulderRight_Z.value = ShoulderRight_Z_Sav01;
-            CharacterDetails.ShoulderRight_W.value = ShoulderRight_W_Sav01;
-            CharacterDetails.ShieldRight_X.value = ShieldRight_X_Sav01;
-            CharacterDetails.ShieldRight_Y.value = ShieldRight_Y_Sav01;
-            CharacterDetails.ShieldRight_Z.value = ShieldRight_Z_Sav01;
-            CharacterDetails.ShieldRight_W.value = ShieldRight_W_Sav01;
-            CharacterDetails.ElbowRight_X.value = ElbowRight_X_Sav01;
-            CharacterDetails.ElbowRight_Y.value = ElbowRight_Y_Sav01;
-            CharacterDetails.ElbowRight_Z.value = ElbowRight_Z_Sav01;
-            CharacterDetails.ElbowRight_W.value = ElbowRight_W_Sav01;
-            CharacterDetails.CouterRight_X.value = CouterRight_X_Sav01;
-            CharacterDetails.CouterRight_Y.value = CouterRight_Y_Sav01;
-            CharacterDetails.CouterRight_Z.value = CouterRight_Z_Sav01;
-            CharacterDetails.CouterRight_W.value = CouterRight_W_Sav01;
-            CharacterDetails.WristRight_X.value = WristRight_X_Sav01;
-            CharacterDetails.WristRight_Y.value = WristRight_Y_Sav01;
-            CharacterDetails.WristRight_Z.value = WristRight_Z_Sav01;
-            CharacterDetails.WristRight_W.value = WristRight_W_Sav01;
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClavicleRight_X), MemoryManager.StringToByteArray(ClavicleRight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ArmRight_X), MemoryManager.StringToByteArray(ArmRight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PauldronRight_X), MemoryManager.StringToByteArray(PauldronRight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ForearmRight_X), MemoryManager.StringToByteArray(ForearmRight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShoulderRight_X), MemoryManager.StringToByteArray(ShoulderRight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShieldRight_X), MemoryManager.StringToByteArray(ShieldRight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ElbowRight_X), MemoryManager.StringToByteArray(ElbowRight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CouterRight_X), MemoryManager.StringToByteArray(CouterRight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristRight_X), MemoryManager.StringToByteArray(WristRight_Sav01.Replace(" ", string.Empty)));
         }
         private void LoadstateRightArm02_Click(object sender, RoutedEventArgs e)
         {
             UncheckAll();
-            CharacterDetails.WriteRightArm = true;
-
-            CharacterDetails.ClavicleRight_X.value = ClavicleRight_X_Sav02;
-            CharacterDetails.ClavicleRight_Y.value = ClavicleRight_Y_Sav02;
-            CharacterDetails.ClavicleRight_Z.value = ClavicleRight_Z_Sav02;
-            CharacterDetails.ClavicleRight_W.value = ClavicleRight_W_Sav02;
-            CharacterDetails.ArmRight_X.value = ArmRight_X_Sav02;
-            CharacterDetails.ArmRight_Y.value = ArmRight_Y_Sav02;
-            CharacterDetails.ArmRight_Z.value = ArmRight_Z_Sav02;
-            CharacterDetails.ArmRight_W.value = ArmRight_W_Sav02;
-            CharacterDetails.PauldronRight_X.value = PauldronRight_X_Sav02;
-            CharacterDetails.PauldronRight_Y.value = PauldronRight_Y_Sav02;
-            CharacterDetails.PauldronRight_Z.value = PauldronRight_Z_Sav02;
-            CharacterDetails.PauldronRight_W.value = PauldronRight_W_Sav02;
-            CharacterDetails.ForearmRight_X.value = ForearmRight_X_Sav02;
-            CharacterDetails.ForearmRight_Y.value = ForearmRight_Y_Sav02;
-            CharacterDetails.ForearmRight_Z.value = ForearmRight_Z_Sav02;
-            CharacterDetails.ForearmRight_W.value = ForearmRight_W_Sav02;
-            CharacterDetails.ShoulderRight_X.value = ShoulderRight_X_Sav02;
-            CharacterDetails.ShoulderRight_Y.value = ShoulderRight_Y_Sav02;
-            CharacterDetails.ShoulderRight_Z.value = ShoulderRight_Z_Sav02;
-            CharacterDetails.ShoulderRight_W.value = ShoulderRight_W_Sav02;
-            CharacterDetails.ShieldRight_X.value = ShieldRight_X_Sav02;
-            CharacterDetails.ShieldRight_Y.value = ShieldRight_Y_Sav02;
-            CharacterDetails.ShieldRight_Z.value = ShieldRight_Z_Sav02;
-            CharacterDetails.ShieldRight_W.value = ShieldRight_W_Sav02;
-            CharacterDetails.ElbowRight_X.value = ElbowRight_X_Sav02;
-            CharacterDetails.ElbowRight_Y.value = ElbowRight_Y_Sav02;
-            CharacterDetails.ElbowRight_Z.value = ElbowRight_Z_Sav02;
-            CharacterDetails.ElbowRight_W.value = ElbowRight_W_Sav02;
-            CharacterDetails.CouterRight_X.value = CouterRight_X_Sav02;
-            CharacterDetails.CouterRight_Y.value = CouterRight_Y_Sav02;
-            CharacterDetails.CouterRight_Z.value = CouterRight_Z_Sav02;
-            CharacterDetails.CouterRight_W.value = CouterRight_W_Sav02;
-            CharacterDetails.WristRight_X.value = WristRight_X_Sav02;
-            CharacterDetails.WristRight_Y.value = WristRight_Y_Sav02;
-            CharacterDetails.WristRight_Z.value = WristRight_Z_Sav02;
-            CharacterDetails.WristRight_W.value = WristRight_W_Sav02;
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClavicleRight_X), MemoryManager.StringToByteArray(ClavicleRight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ArmRight_X), MemoryManager.StringToByteArray(ArmRight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PauldronRight_X), MemoryManager.StringToByteArray(PauldronRight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ForearmRight_X), MemoryManager.StringToByteArray(ForearmRight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShoulderRight_X), MemoryManager.StringToByteArray(ShoulderRight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShieldRight_X), MemoryManager.StringToByteArray(ShieldRight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ElbowRight_X), MemoryManager.StringToByteArray(ElbowRight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CouterRight_X), MemoryManager.StringToByteArray(CouterRight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristRight_X), MemoryManager.StringToByteArray(WristRight_Sav02.Replace(" ", string.Empty)));
         }
         #endregion
         #region Savestate\Loadstate Clothes
         private void SavestateClothes01_Click(object sender, RoutedEventArgs e)
         {
-            CharacterDetails.SaveClothes01 = true;
             ClothesSaved01 = true;
-
             if (CharacterDetails.BoneEditMode) LoadstateClothes01.IsEnabled = true;
+
+            ClothBackALeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackALeft_X), 16));
+            ClothBackARight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackARight_X), 16));
+            ClothFrontALeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontALeft_X), 16));
+            ClothFrontARight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontARight_X), 16));
+            ClothSideALeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideALeft_X), 16));
+            ClothSideARight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideARight_X), 16));
+            ClothBackBLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackBLeft_X), 16));
+            ClothBackBRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackBRight_X), 16));
+            ClothFrontBLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontBLeft_X), 16));
+            ClothFrontBRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontBRight_X), 16));
+            ClothSideBLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideBLeft_X), 16));
+            ClothSideBRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideBRight_X), 16));
+            ClothBackCLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackCLeft_X), 16));
+            ClothBackCRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackCRight_X), 16));
+            ClothFrontCLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontCLeft_X), 16));
+            ClothFrontCRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontCRight_X), 16));
+            ClothSideCLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideCLeft_X), 16));
+            ClothSideCRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideCRight_X), 16));
         }
         private void SavestateClothes02_Click(object sender, RoutedEventArgs e)
         {
-            CharacterDetails.SaveClothes02 = true;
             ClothesSaved02 = true;
-
             if (CharacterDetails.BoneEditMode) LoadstateClothes02.IsEnabled = true;
+
+            ClothBackALeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackALeft_X), 16));
+            ClothBackARight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackARight_X), 16));
+            ClothFrontALeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontALeft_X), 16));
+            ClothFrontARight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontARight_X), 16));
+            ClothSideALeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideALeft_X), 16));
+            ClothSideARight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideARight_X), 16));
+            ClothBackBLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackBLeft_X), 16));
+            ClothBackBRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackBRight_X), 16));
+            ClothFrontBLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontBLeft_X), 16));
+            ClothFrontBRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontBRight_X), 16));
+            ClothSideBLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideBLeft_X), 16));
+            ClothSideBRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideBRight_X), 16));
+            ClothBackCLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackCLeft_X), 16));
+            ClothBackCRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackCRight_X), 16));
+            ClothFrontCLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontCLeft_X), 16));
+            ClothFrontCRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontCRight_X), 16));
+            ClothSideCLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideCLeft_X), 16));
+            ClothSideCRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideCRight_X), 16));
         }
         private void LoadstateClothes01_Click(object sender, RoutedEventArgs e)
         {
             UncheckAll();
-            CharacterDetails.WriteClothes = true;
-
-            CharacterDetails.ClothBackALeft_X.value = ClothBackALeft_X_Sav01;
-            CharacterDetails.ClothBackALeft_Y.value = ClothBackALeft_Y_Sav01;
-            CharacterDetails.ClothBackALeft_Z.value = ClothBackALeft_Z_Sav01;
-            CharacterDetails.ClothBackALeft_W.value = ClothBackALeft_W_Sav01;
-            CharacterDetails.ClothBackARight_X.value = ClothBackARight_X_Sav01;
-            CharacterDetails.ClothBackARight_Y.value = ClothBackARight_Y_Sav01;
-            CharacterDetails.ClothBackARight_Z.value = ClothBackARight_Z_Sav01;
-            CharacterDetails.ClothBackARight_W.value = ClothBackARight_W_Sav01;
-            CharacterDetails.ClothFrontALeft_X.value = ClothFrontALeft_X_Sav01;
-            CharacterDetails.ClothFrontALeft_Y.value = ClothFrontALeft_Y_Sav01;
-            CharacterDetails.ClothFrontALeft_Z.value = ClothFrontALeft_Z_Sav01;
-            CharacterDetails.ClothFrontALeft_W.value = ClothFrontALeft_W_Sav01;
-            CharacterDetails.ClothFrontARight_X.value = ClothFrontARight_X_Sav01;
-            CharacterDetails.ClothFrontARight_Y.value = ClothFrontARight_Y_Sav01;
-            CharacterDetails.ClothFrontARight_Z.value = ClothFrontARight_Z_Sav01;
-            CharacterDetails.ClothFrontARight_W.value = ClothFrontARight_W_Sav01;
-            CharacterDetails.ClothSideALeft_X.value = ClothSideALeft_X_Sav01;
-            CharacterDetails.ClothSideALeft_Y.value = ClothSideALeft_Y_Sav01;
-            CharacterDetails.ClothSideALeft_Z.value = ClothSideALeft_Z_Sav01;
-            CharacterDetails.ClothSideALeft_W.value = ClothSideALeft_W_Sav01;
-            CharacterDetails.ClothSideARight_X.value = ClothSideARight_X_Sav01;
-            CharacterDetails.ClothSideARight_Y.value = ClothSideARight_Y_Sav01;
-            CharacterDetails.ClothSideARight_Z.value = ClothSideARight_Z_Sav01;
-            CharacterDetails.ClothSideARight_W.value = ClothSideARight_W_Sav01;
-            CharacterDetails.ClothBackBLeft_X.value = ClothBackBLeft_X_Sav01;
-            CharacterDetails.ClothBackBLeft_Y.value = ClothBackBLeft_Y_Sav01;
-            CharacterDetails.ClothBackBLeft_Z.value = ClothBackBLeft_Z_Sav01;
-            CharacterDetails.ClothBackBLeft_W.value = ClothBackBLeft_W_Sav01;
-            CharacterDetails.ClothBackBRight_X.value = ClothBackBRight_X_Sav01;
-            CharacterDetails.ClothBackBRight_Y.value = ClothBackBRight_Y_Sav01;
-            CharacterDetails.ClothBackBRight_Z.value = ClothBackBRight_Z_Sav01;
-            CharacterDetails.ClothBackBRight_W.value = ClothBackBRight_W_Sav01;
-            CharacterDetails.ClothFrontBLeft_X.value = ClothFrontBLeft_X_Sav01;
-            CharacterDetails.ClothFrontBLeft_Y.value = ClothFrontBLeft_Y_Sav01;
-            CharacterDetails.ClothFrontBLeft_Z.value = ClothFrontBLeft_Z_Sav01;
-            CharacterDetails.ClothFrontBLeft_W.value = ClothFrontBLeft_W_Sav01;
-            CharacterDetails.ClothFrontBRight_X.value = ClothFrontBRight_X_Sav01;
-            CharacterDetails.ClothFrontBRight_Y.value = ClothFrontBRight_Y_Sav01;
-            CharacterDetails.ClothFrontBRight_Z.value = ClothFrontBRight_Z_Sav01;
-            CharacterDetails.ClothFrontBRight_W.value = ClothFrontBRight_W_Sav01;
-            CharacterDetails.ClothSideBLeft_X.value = ClothSideBLeft_X_Sav01;
-            CharacterDetails.ClothSideBLeft_Y.value = ClothSideBLeft_Y_Sav01;
-            CharacterDetails.ClothSideBLeft_Z.value = ClothSideBLeft_Z_Sav01;
-            CharacterDetails.ClothSideBLeft_W.value = ClothSideBLeft_W_Sav01;
-            CharacterDetails.ClothSideBRight_X.value = ClothSideBRight_X_Sav01;
-            CharacterDetails.ClothSideBRight_Y.value = ClothSideBRight_Y_Sav01;
-            CharacterDetails.ClothSideBRight_Z.value = ClothSideBRight_Z_Sav01;
-            CharacterDetails.ClothSideBRight_W.value = ClothSideBRight_W_Sav01;
-            CharacterDetails.ClothBackCLeft_X.value = ClothBackCLeft_X_Sav01;
-            CharacterDetails.ClothBackCLeft_Y.value = ClothBackCLeft_Y_Sav01;
-            CharacterDetails.ClothBackCLeft_Z.value = ClothBackCLeft_Z_Sav01;
-            CharacterDetails.ClothBackCLeft_W.value = ClothBackCLeft_W_Sav01;
-            CharacterDetails.ClothBackCRight_X.value = ClothBackCRight_X_Sav01;
-            CharacterDetails.ClothBackCRight_Y.value = ClothBackCRight_Y_Sav01;
-            CharacterDetails.ClothBackCRight_Z.value = ClothBackCRight_Z_Sav01;
-            CharacterDetails.ClothBackCRight_W.value = ClothBackCRight_W_Sav01;
-            CharacterDetails.ClothFrontCLeft_X.value = ClothFrontCLeft_X_Sav01;
-            CharacterDetails.ClothFrontCLeft_Y.value = ClothFrontCLeft_Y_Sav01;
-            CharacterDetails.ClothFrontCLeft_Z.value = ClothFrontCLeft_Z_Sav01;
-            CharacterDetails.ClothFrontCLeft_W.value = ClothFrontCLeft_W_Sav01;
-            CharacterDetails.ClothFrontCRight_X.value = ClothFrontCRight_X_Sav01;
-            CharacterDetails.ClothFrontCRight_Y.value = ClothFrontCRight_Y_Sav01;
-            CharacterDetails.ClothFrontCRight_Z.value = ClothFrontCRight_Z_Sav01;
-            CharacterDetails.ClothFrontCRight_W.value = ClothFrontCRight_W_Sav01;
-            CharacterDetails.ClothSideCLeft_X.value = ClothSideCLeft_X_Sav01;
-            CharacterDetails.ClothSideCLeft_Y.value = ClothSideCLeft_Y_Sav01;
-            CharacterDetails.ClothSideCLeft_Z.value = ClothSideCLeft_Z_Sav01;
-            CharacterDetails.ClothSideCLeft_W.value = ClothSideCLeft_W_Sav01;
-            CharacterDetails.ClothSideCRight_X.value = ClothSideCRight_X_Sav01;
-            CharacterDetails.ClothSideCRight_Y.value = ClothSideCRight_Y_Sav01;
-            CharacterDetails.ClothSideCRight_Z.value = ClothSideCRight_Z_Sav01;
-            CharacterDetails.ClothSideCRight_W.value = ClothSideCRight_W_Sav01;
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackALeft_X), MemoryManager.StringToByteArray(ClothBackALeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackARight_X), MemoryManager.StringToByteArray(ClothBackARight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontALeft_X), MemoryManager.StringToByteArray(ClothFrontALeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontARight_X), MemoryManager.StringToByteArray(ClothFrontARight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideALeft_X), MemoryManager.StringToByteArray(ClothSideALeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideARight_X), MemoryManager.StringToByteArray(ClothSideARight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackBLeft_X), MemoryManager.StringToByteArray(ClothBackBLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackBRight_X), MemoryManager.StringToByteArray(ClothBackBRight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontBLeft_X), MemoryManager.StringToByteArray(ClothFrontBLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontBRight_X), MemoryManager.StringToByteArray(ClothFrontBRight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideBLeft_X), MemoryManager.StringToByteArray(ClothSideBLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideBRight_X), MemoryManager.StringToByteArray(ClothSideBRight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackCLeft_X), MemoryManager.StringToByteArray(ClothBackCLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackCRight_X), MemoryManager.StringToByteArray(ClothBackCRight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontCLeft_X), MemoryManager.StringToByteArray(ClothFrontCLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontCRight_X), MemoryManager.StringToByteArray(ClothFrontCRight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideCLeft_X), MemoryManager.StringToByteArray(ClothSideCLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideCRight_X), MemoryManager.StringToByteArray(ClothSideCRight_Sav01.Replace(" ", string.Empty)));
         }
         private void LoadstateClothes02_Click(object sender, RoutedEventArgs e)
         {
             UncheckAll();
-            CharacterDetails.WriteClothes = true;
-
-            CharacterDetails.ClothBackALeft_X.value = ClothBackALeft_X_Sav02;
-            CharacterDetails.ClothBackALeft_Y.value = ClothBackALeft_Y_Sav02;
-            CharacterDetails.ClothBackALeft_Z.value = ClothBackALeft_Z_Sav02;
-            CharacterDetails.ClothBackALeft_W.value = ClothBackALeft_W_Sav02;
-            CharacterDetails.ClothBackARight_X.value = ClothBackARight_X_Sav02;
-            CharacterDetails.ClothBackARight_Y.value = ClothBackARight_Y_Sav02;
-            CharacterDetails.ClothBackARight_Z.value = ClothBackARight_Z_Sav02;
-            CharacterDetails.ClothBackARight_W.value = ClothBackARight_W_Sav02;
-            CharacterDetails.ClothFrontALeft_X.value = ClothFrontALeft_X_Sav02;
-            CharacterDetails.ClothFrontALeft_Y.value = ClothFrontALeft_Y_Sav02;
-            CharacterDetails.ClothFrontALeft_Z.value = ClothFrontALeft_Z_Sav02;
-            CharacterDetails.ClothFrontALeft_W.value = ClothFrontALeft_W_Sav02;
-            CharacterDetails.ClothFrontARight_X.value = ClothFrontARight_X_Sav02;
-            CharacterDetails.ClothFrontARight_Y.value = ClothFrontARight_Y_Sav02;
-            CharacterDetails.ClothFrontARight_Z.value = ClothFrontARight_Z_Sav02;
-            CharacterDetails.ClothFrontARight_W.value = ClothFrontARight_W_Sav02;
-            CharacterDetails.ClothSideALeft_X.value = ClothSideALeft_X_Sav02;
-            CharacterDetails.ClothSideALeft_Y.value = ClothSideALeft_Y_Sav02;
-            CharacterDetails.ClothSideALeft_Z.value = ClothSideALeft_Z_Sav02;
-            CharacterDetails.ClothSideALeft_W.value = ClothSideALeft_W_Sav02;
-            CharacterDetails.ClothSideARight_X.value = ClothSideARight_X_Sav02;
-            CharacterDetails.ClothSideARight_Y.value = ClothSideARight_Y_Sav02;
-            CharacterDetails.ClothSideARight_Z.value = ClothSideARight_Z_Sav02;
-            CharacterDetails.ClothSideARight_W.value = ClothSideARight_W_Sav02;
-            CharacterDetails.ClothBackBLeft_X.value = ClothBackBLeft_X_Sav02;
-            CharacterDetails.ClothBackBLeft_Y.value = ClothBackBLeft_Y_Sav02;
-            CharacterDetails.ClothBackBLeft_Z.value = ClothBackBLeft_Z_Sav02;
-            CharacterDetails.ClothBackBLeft_W.value = ClothBackBLeft_W_Sav02;
-            CharacterDetails.ClothBackBRight_X.value = ClothBackBRight_X_Sav02;
-            CharacterDetails.ClothBackBRight_Y.value = ClothBackBRight_Y_Sav02;
-            CharacterDetails.ClothBackBRight_Z.value = ClothBackBRight_Z_Sav02;
-            CharacterDetails.ClothBackBRight_W.value = ClothBackBRight_W_Sav02;
-            CharacterDetails.ClothFrontBLeft_X.value = ClothFrontBLeft_X_Sav02;
-            CharacterDetails.ClothFrontBLeft_Y.value = ClothFrontBLeft_Y_Sav02;
-            CharacterDetails.ClothFrontBLeft_Z.value = ClothFrontBLeft_Z_Sav02;
-            CharacterDetails.ClothFrontBLeft_W.value = ClothFrontBLeft_W_Sav02;
-            CharacterDetails.ClothFrontBRight_X.value = ClothFrontBRight_X_Sav02;
-            CharacterDetails.ClothFrontBRight_Y.value = ClothFrontBRight_Y_Sav02;
-            CharacterDetails.ClothFrontBRight_Z.value = ClothFrontBRight_Z_Sav02;
-            CharacterDetails.ClothFrontBRight_W.value = ClothFrontBRight_W_Sav02;
-            CharacterDetails.ClothSideBLeft_X.value = ClothSideBLeft_X_Sav02;
-            CharacterDetails.ClothSideBLeft_Y.value = ClothSideBLeft_Y_Sav02;
-            CharacterDetails.ClothSideBLeft_Z.value = ClothSideBLeft_Z_Sav02;
-            CharacterDetails.ClothSideBLeft_W.value = ClothSideBLeft_W_Sav02;
-            CharacterDetails.ClothSideBRight_X.value = ClothSideBRight_X_Sav02;
-            CharacterDetails.ClothSideBRight_Y.value = ClothSideBRight_Y_Sav02;
-            CharacterDetails.ClothSideBRight_Z.value = ClothSideBRight_Z_Sav02;
-            CharacterDetails.ClothSideBRight_W.value = ClothSideBRight_W_Sav02;
-            CharacterDetails.ClothBackCLeft_X.value = ClothBackCLeft_X_Sav02;
-            CharacterDetails.ClothBackCLeft_Y.value = ClothBackCLeft_Y_Sav02;
-            CharacterDetails.ClothBackCLeft_Z.value = ClothBackCLeft_Z_Sav02;
-            CharacterDetails.ClothBackCLeft_W.value = ClothBackCLeft_W_Sav02;
-            CharacterDetails.ClothBackCRight_X.value = ClothBackCRight_X_Sav02;
-            CharacterDetails.ClothBackCRight_Y.value = ClothBackCRight_Y_Sav02;
-            CharacterDetails.ClothBackCRight_Z.value = ClothBackCRight_Z_Sav02;
-            CharacterDetails.ClothBackCRight_W.value = ClothBackCRight_W_Sav02;
-            CharacterDetails.ClothFrontCLeft_X.value = ClothFrontCLeft_X_Sav02;
-            CharacterDetails.ClothFrontCLeft_Y.value = ClothFrontCLeft_Y_Sav02;
-            CharacterDetails.ClothFrontCLeft_Z.value = ClothFrontCLeft_Z_Sav02;
-            CharacterDetails.ClothFrontCLeft_W.value = ClothFrontCLeft_W_Sav02;
-            CharacterDetails.ClothFrontCRight_X.value = ClothFrontCRight_X_Sav02;
-            CharacterDetails.ClothFrontCRight_Y.value = ClothFrontCRight_Y_Sav02;
-            CharacterDetails.ClothFrontCRight_Z.value = ClothFrontCRight_Z_Sav02;
-            CharacterDetails.ClothFrontCRight_W.value = ClothFrontCRight_W_Sav02;
-            CharacterDetails.ClothSideCLeft_X.value = ClothSideCLeft_X_Sav02;
-            CharacterDetails.ClothSideCLeft_Y.value = ClothSideCLeft_Y_Sav02;
-            CharacterDetails.ClothSideCLeft_Z.value = ClothSideCLeft_Z_Sav02;
-            CharacterDetails.ClothSideCLeft_W.value = ClothSideCLeft_W_Sav02;
-            CharacterDetails.ClothSideCRight_X.value = ClothSideCRight_X_Sav02;
-            CharacterDetails.ClothSideCRight_Y.value = ClothSideCRight_Y_Sav02;
-            CharacterDetails.ClothSideCRight_Z.value = ClothSideCRight_Z_Sav02;
-            CharacterDetails.ClothSideCRight_W.value = ClothSideCRight_W_Sav02;
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackALeft_X), MemoryManager.StringToByteArray(ClothBackALeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackARight_X), MemoryManager.StringToByteArray(ClothBackARight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontALeft_X), MemoryManager.StringToByteArray(ClothFrontALeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontARight_X), MemoryManager.StringToByteArray(ClothFrontARight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideALeft_X), MemoryManager.StringToByteArray(ClothSideALeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideARight_X), MemoryManager.StringToByteArray(ClothSideARight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackBLeft_X), MemoryManager.StringToByteArray(ClothBackBLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackBRight_X), MemoryManager.StringToByteArray(ClothBackBRight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontBLeft_X), MemoryManager.StringToByteArray(ClothFrontBLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontBRight_X), MemoryManager.StringToByteArray(ClothFrontBRight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideBLeft_X), MemoryManager.StringToByteArray(ClothSideBLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideBRight_X), MemoryManager.StringToByteArray(ClothSideBRight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackCLeft_X), MemoryManager.StringToByteArray(ClothBackCLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackCRight_X), MemoryManager.StringToByteArray(ClothBackCRight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontCLeft_X), MemoryManager.StringToByteArray(ClothFrontCLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontCRight_X), MemoryManager.StringToByteArray(ClothFrontCRight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideCLeft_X), MemoryManager.StringToByteArray(ClothSideCLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideCRight_X), MemoryManager.StringToByteArray(ClothSideCRight_Sav02.Replace(" ", string.Empty)));
         }
         #endregion
         #region Savestate\Loadstate Weapons
         private void SavestateWeapons01_Click(object sender, RoutedEventArgs e)
         {
-            CharacterDetails.SaveWeapons01 = true;
             WeaponsSaved01 = true;
-
             if (CharacterDetails.BoneEditMode) LoadstateWeapons01.IsEnabled = true;
+
+            WeaponLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WeaponLeft_X), 16));
+            WeaponRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WeaponRight_X), 16));
         }
         private void SavestateWeapons02_Click(object sender, RoutedEventArgs e)
         {
-            CharacterDetails.SaveWeapons02 = true;
             WeaponsSaved02 = true;
-
             if (CharacterDetails.BoneEditMode) LoadstateWeapons02.IsEnabled = true;
+
+            WeaponLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WeaponLeft_X), 16));
+            WeaponRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WeaponRight_X), 16));
         }
         private void LoadstateWeapons01_Click(object sender, RoutedEventArgs e)
         {
             UncheckAll();
-            CharacterDetails.WriteWeapons = true;
-
-            CharacterDetails.WeaponLeft_X.value = WeaponLeft_X_Sav01;
-            CharacterDetails.WeaponLeft_Y.value = WeaponLeft_Y_Sav01;
-            CharacterDetails.WeaponLeft_Z.value = WeaponLeft_Z_Sav01;
-            CharacterDetails.WeaponLeft_W.value = WeaponLeft_W_Sav01;
-            CharacterDetails.WeaponRight_X.value = WeaponRight_X_Sav01;
-            CharacterDetails.WeaponRight_Y.value = WeaponRight_Y_Sav01;
-            CharacterDetails.WeaponRight_Z.value = WeaponRight_Z_Sav01;
-            CharacterDetails.WeaponRight_W.value = WeaponRight_W_Sav01;
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WeaponLeft_X), MemoryManager.StringToByteArray(WeaponLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WeaponRight_X), MemoryManager.StringToByteArray(WeaponRight_Sav01.Replace(" ", string.Empty)));
         }
         private void LoadstateWeapons02_Click(object sender, RoutedEventArgs e)
         {
             UncheckAll();
-            CharacterDetails.WriteWeapons = true;
-
-            CharacterDetails.WeaponLeft_X.value = WeaponLeft_X_Sav02;
-            CharacterDetails.WeaponLeft_Y.value = WeaponLeft_Y_Sav02;
-            CharacterDetails.WeaponLeft_Z.value = WeaponLeft_Z_Sav02;
-            CharacterDetails.WeaponLeft_W.value = WeaponLeft_W_Sav02;
-            CharacterDetails.WeaponRight_X.value = WeaponRight_X_Sav02;
-            CharacterDetails.WeaponRight_Y.value = WeaponRight_Y_Sav02;
-            CharacterDetails.WeaponRight_Z.value = WeaponRight_Z_Sav02;
-            CharacterDetails.WeaponRight_W.value = WeaponRight_W_Sav02;
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WeaponLeft_X), MemoryManager.StringToByteArray(WeaponLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WeaponRight_X), MemoryManager.StringToByteArray(WeaponRight_Sav02.Replace(" ", string.Empty)));
         }
         #endregion
         #region Savestate\Loadstate LeftHand
         private void SavestateLeftHand01_Click(object sender, RoutedEventArgs e)
         {
-            CharacterDetails.SaveLeftHand01 = true;
             LeftHandSaved01 = true;
-
             if (CharacterDetails.BoneEditMode) LoadstateLeftHand01.IsEnabled = true;
+
+            HandLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HandLeft_X), 16));
+            IndexALeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexALeft_X), 16));
+            PinkyALeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyALeft_X), 16));
+            RingALeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingALeft_X), 16));
+            MiddleALeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleALeft_X), 16));
+            ThumbALeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbALeft_X), 16));
+            IndexBLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexBLeft_X), 16));
+            PinkyBLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyBLeft_X), 16));
+            RingBLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingBLeft_X), 16));
+            MiddleBLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBLeft_X), 16));
+            ThumbBLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBLeft_X), 16));
         }
         private void SavestateLeftHand02_Click(object sender, RoutedEventArgs e)
         {
-            CharacterDetails.SaveLeftHand02 = true;
             LeftHandSaved02 = true;
-
             if (CharacterDetails.BoneEditMode) LoadstateLeftHand02.IsEnabled = true;
+
+            HandLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HandLeft_X), 16));
+            IndexALeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexALeft_X), 16));
+            PinkyALeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyALeft_X), 16));
+            RingALeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingALeft_X), 16));
+            MiddleALeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleALeft_X), 16));
+            ThumbALeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbALeft_X), 16));
+            IndexBLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexBLeft_X), 16));
+            PinkyBLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyBLeft_X), 16));
+            RingBLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingBLeft_X), 16));
+            MiddleBLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBLeft_X), 16));
+            ThumbBLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBLeft_X), 16));
         }
         private void LoadstateLeftHand01_Click(object sender, RoutedEventArgs e)
         {
             UncheckAll();
-            CharacterDetails.WriteLeftHand = true;
-
-            CharacterDetails.HandLeft_X.value = HandLeft_X_Sav01;
-            CharacterDetails.HandLeft_Y.value = HandLeft_Y_Sav01;
-            CharacterDetails.HandLeft_Z.value = HandLeft_Z_Sav01;
-            CharacterDetails.HandLeft_W.value = HandLeft_W_Sav01;
-            CharacterDetails.IndexALeft_X.value = IndexALeft_X_Sav01;
-            CharacterDetails.IndexALeft_Y.value = IndexALeft_Y_Sav01;
-            CharacterDetails.IndexALeft_Z.value = IndexALeft_Z_Sav01;
-            CharacterDetails.IndexALeft_W.value = IndexALeft_W_Sav01;
-            CharacterDetails.PinkyALeft_X.value = PinkyALeft_X_Sav01;
-            CharacterDetails.PinkyALeft_Y.value = PinkyALeft_Y_Sav01;
-            CharacterDetails.PinkyALeft_Z.value = PinkyALeft_Z_Sav01;
-            CharacterDetails.PinkyALeft_W.value = PinkyALeft_W_Sav01;
-            CharacterDetails.RingALeft_X.value = RingALeft_X_Sav01;
-            CharacterDetails.RingALeft_Y.value = RingALeft_Y_Sav01;
-            CharacterDetails.RingALeft_Z.value = RingALeft_Z_Sav01;
-            CharacterDetails.RingALeft_W.value = RingALeft_W_Sav01;
-            CharacterDetails.MiddleALeft_X.value = MiddleALeft_X_Sav01;
-            CharacterDetails.MiddleALeft_Y.value = MiddleALeft_Y_Sav01;
-            CharacterDetails.MiddleALeft_Z.value = MiddleALeft_Z_Sav01;
-            CharacterDetails.MiddleALeft_W.value = MiddleALeft_W_Sav01;
-            CharacterDetails.ThumbALeft_X.value = ThumbALeft_X_Sav01;
-            CharacterDetails.ThumbALeft_Y.value = ThumbALeft_Y_Sav01;
-            CharacterDetails.ThumbALeft_Z.value = ThumbALeft_Z_Sav01;
-            CharacterDetails.ThumbALeft_W.value = ThumbALeft_W_Sav01;
-            CharacterDetails.IndexBLeft_X.value = IndexBLeft_X_Sav01;
-            CharacterDetails.IndexBLeft_Y.value = IndexBLeft_Y_Sav01;
-            CharacterDetails.IndexBLeft_Z.value = IndexBLeft_Z_Sav01;
-            CharacterDetails.IndexBLeft_W.value = IndexBLeft_W_Sav01;
-            CharacterDetails.PinkyBLeft_X.value = PinkyBLeft_X_Sav01;
-            CharacterDetails.PinkyBLeft_Y.value = PinkyBLeft_Y_Sav01;
-            CharacterDetails.PinkyBLeft_Z.value = PinkyBLeft_Z_Sav01;
-            CharacterDetails.PinkyBLeft_W.value = PinkyBLeft_W_Sav01;
-            CharacterDetails.RingBLeft_X.value = RingBLeft_X_Sav01;
-            CharacterDetails.RingBLeft_Y.value = RingBLeft_Y_Sav01;
-            CharacterDetails.RingBLeft_Z.value = RingBLeft_Z_Sav01;
-            CharacterDetails.RingBLeft_W.value = RingBLeft_W_Sav01;
-            CharacterDetails.MiddleBLeft_X.value = MiddleBLeft_X_Sav01;
-            CharacterDetails.MiddleBLeft_Y.value = MiddleBLeft_Y_Sav01;
-            CharacterDetails.MiddleBLeft_Z.value = MiddleBLeft_Z_Sav01;
-            CharacterDetails.MiddleBLeft_W.value = MiddleBLeft_W_Sav01;
-            CharacterDetails.ThumbBLeft_X.value = ThumbBLeft_X_Sav01;
-            CharacterDetails.ThumbBLeft_Y.value = ThumbBLeft_Y_Sav01;
-            CharacterDetails.ThumbBLeft_Z.value = ThumbBLeft_Z_Sav01;
-            CharacterDetails.ThumbBLeft_W.value = ThumbBLeft_W_Sav01;
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HandLeft_X), MemoryManager.StringToByteArray(HandLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexALeft_X), MemoryManager.StringToByteArray(IndexALeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyALeft_X), MemoryManager.StringToByteArray(PinkyALeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingALeft_X), MemoryManager.StringToByteArray(RingALeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleALeft_X), MemoryManager.StringToByteArray(MiddleALeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbALeft_X), MemoryManager.StringToByteArray(ThumbALeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexBLeft_X), MemoryManager.StringToByteArray(IndexBLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyBLeft_X), MemoryManager.StringToByteArray(PinkyBLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingBLeft_X), MemoryManager.StringToByteArray(RingBLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBLeft_X), MemoryManager.StringToByteArray(MiddleBLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBLeft_X), MemoryManager.StringToByteArray(ThumbBLeft_Sav01.Replace(" ", string.Empty)));
         }
         private void LoadstateLeftHand02_Click(object sender, RoutedEventArgs e)
         {
             UncheckAll();
-            CharacterDetails.WriteLeftHand = true;
-
-            CharacterDetails.HandLeft_X.value = HandLeft_X_Sav02;
-            CharacterDetails.HandLeft_Y.value = HandLeft_Y_Sav02;
-            CharacterDetails.HandLeft_Z.value = HandLeft_Z_Sav02;
-            CharacterDetails.HandLeft_W.value = HandLeft_W_Sav02;
-            CharacterDetails.IndexALeft_X.value = IndexALeft_X_Sav02;
-            CharacterDetails.IndexALeft_Y.value = IndexALeft_Y_Sav02;
-            CharacterDetails.IndexALeft_Z.value = IndexALeft_Z_Sav02;
-            CharacterDetails.IndexALeft_W.value = IndexALeft_W_Sav02;
-            CharacterDetails.PinkyALeft_X.value = PinkyALeft_X_Sav02;
-            CharacterDetails.PinkyALeft_Y.value = PinkyALeft_Y_Sav02;
-            CharacterDetails.PinkyALeft_Z.value = PinkyALeft_Z_Sav02;
-            CharacterDetails.PinkyALeft_W.value = PinkyALeft_W_Sav02;
-            CharacterDetails.RingALeft_X.value = RingALeft_X_Sav02;
-            CharacterDetails.RingALeft_Y.value = RingALeft_Y_Sav02;
-            CharacterDetails.RingALeft_Z.value = RingALeft_Z_Sav02;
-            CharacterDetails.RingALeft_W.value = RingALeft_W_Sav02;
-            CharacterDetails.MiddleALeft_X.value = MiddleALeft_X_Sav02;
-            CharacterDetails.MiddleALeft_Y.value = MiddleALeft_Y_Sav02;
-            CharacterDetails.MiddleALeft_Z.value = MiddleALeft_Z_Sav02;
-            CharacterDetails.MiddleALeft_W.value = MiddleALeft_W_Sav02;
-            CharacterDetails.ThumbALeft_X.value = ThumbALeft_X_Sav02;
-            CharacterDetails.ThumbALeft_Y.value = ThumbALeft_Y_Sav02;
-            CharacterDetails.ThumbALeft_Z.value = ThumbALeft_Z_Sav02;
-            CharacterDetails.ThumbALeft_W.value = ThumbALeft_W_Sav02;
-            CharacterDetails.IndexBLeft_X.value = IndexBLeft_X_Sav02;
-            CharacterDetails.IndexBLeft_Y.value = IndexBLeft_Y_Sav02;
-            CharacterDetails.IndexBLeft_Z.value = IndexBLeft_Z_Sav02;
-            CharacterDetails.IndexBLeft_W.value = IndexBLeft_W_Sav02;
-            CharacterDetails.PinkyBLeft_X.value = PinkyBLeft_X_Sav02;
-            CharacterDetails.PinkyBLeft_Y.value = PinkyBLeft_Y_Sav02;
-            CharacterDetails.PinkyBLeft_Z.value = PinkyBLeft_Z_Sav02;
-            CharacterDetails.PinkyBLeft_W.value = PinkyBLeft_W_Sav02;
-            CharacterDetails.RingBLeft_X.value = RingBLeft_X_Sav02;
-            CharacterDetails.RingBLeft_Y.value = RingBLeft_Y_Sav02;
-            CharacterDetails.RingBLeft_Z.value = RingBLeft_Z_Sav02;
-            CharacterDetails.RingBLeft_W.value = RingBLeft_W_Sav02;
-            CharacterDetails.MiddleBLeft_X.value = MiddleBLeft_X_Sav02;
-            CharacterDetails.MiddleBLeft_Y.value = MiddleBLeft_Y_Sav02;
-            CharacterDetails.MiddleBLeft_Z.value = MiddleBLeft_Z_Sav02;
-            CharacterDetails.MiddleBLeft_W.value = MiddleBLeft_W_Sav02;
-            CharacterDetails.ThumbBLeft_X.value = ThumbBLeft_X_Sav02;
-            CharacterDetails.ThumbBLeft_Y.value = ThumbBLeft_Y_Sav02;
-            CharacterDetails.ThumbBLeft_Z.value = ThumbBLeft_Z_Sav02;
-            CharacterDetails.ThumbBLeft_W.value = ThumbBLeft_W_Sav02;
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HandLeft_X), MemoryManager.StringToByteArray(HandLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexALeft_X), MemoryManager.StringToByteArray(IndexALeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyALeft_X), MemoryManager.StringToByteArray(PinkyALeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingALeft_X), MemoryManager.StringToByteArray(RingALeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleALeft_X), MemoryManager.StringToByteArray(MiddleALeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbALeft_X), MemoryManager.StringToByteArray(ThumbALeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexBLeft_X), MemoryManager.StringToByteArray(IndexBLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyBLeft_X), MemoryManager.StringToByteArray(PinkyBLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingBLeft_X), MemoryManager.StringToByteArray(RingBLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBLeft_X), MemoryManager.StringToByteArray(MiddleBLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBLeft_X), MemoryManager.StringToByteArray(ThumbBLeft_Sav02.Replace(" ", string.Empty)));
         }
         #endregion
         #region Savestate\Loadstate RightHand
         private void SavestateRightHand01_Click(object sender, RoutedEventArgs e)
         {
-            CharacterDetails.SaveRightHand01 = true;
             RightHandSaved01 = true;
-
             if (CharacterDetails.BoneEditMode) LoadstateRightHand01.IsEnabled = true;
+
+            HandRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HandRight_X), 16));
+            IndexARight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexARight_X), 16));
+            PinkyARight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyARight_X), 16));
+            RingARight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingARight_X), 16));
+            MiddleARight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleARight_X), 16));
+            ThumbARight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbARight_X), 16));
+            IndexBRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexBRight_X), 16));
+            PinkyBRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyBRight_X), 16));
+            RingBRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingBRight_X), 16));
+            MiddleBRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBRight_X), 16));
+            ThumbBRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBRight_X), 16));
         }
         private void SavestateRightHand02_Click(object sender, RoutedEventArgs e)
         {
-            CharacterDetails.SaveRightHand02 = true;
             RightHandSaved02 = true;
-
             if (CharacterDetails.BoneEditMode) LoadstateRightHand02.IsEnabled = true;
+
+            HandRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HandRight_X), 16));
+            IndexARight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexARight_X), 16));
+            PinkyARight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyARight_X), 16));
+            RingARight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingARight_X), 16));
+            MiddleARight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleARight_X), 16));
+            ThumbARight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbARight_X), 16));
+            IndexBRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexBRight_X), 16));
+            PinkyBRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyBRight_X), 16));
+            RingBRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingBRight_X), 16));
+            MiddleBRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBRight_X), 16));
+            ThumbBRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBRight_X), 16));
         }
         private void LoadstateRightHand01_Click(object sender, RoutedEventArgs e)
         {
             UncheckAll();
-            CharacterDetails.WriteRightHand = true;
-
-            CharacterDetails.HandRight_X.value = HandRight_X_Sav01;
-            CharacterDetails.HandRight_Y.value = HandRight_Y_Sav01;
-            CharacterDetails.HandRight_Z.value = HandRight_Z_Sav01;
-            CharacterDetails.HandRight_W.value = HandRight_W_Sav01;
-            CharacterDetails.IndexARight_X.value = IndexARight_X_Sav01;
-            CharacterDetails.IndexARight_Y.value = IndexARight_Y_Sav01;
-            CharacterDetails.IndexARight_Z.value = IndexARight_Z_Sav01;
-            CharacterDetails.IndexARight_W.value = IndexARight_W_Sav01;
-            CharacterDetails.PinkyARight_X.value = PinkyARight_X_Sav01;
-            CharacterDetails.PinkyARight_Y.value = PinkyARight_Y_Sav01;
-            CharacterDetails.PinkyARight_Z.value = PinkyARight_Z_Sav01;
-            CharacterDetails.PinkyARight_W.value = PinkyARight_W_Sav01;
-            CharacterDetails.RingARight_X.value = RingARight_X_Sav01;
-            CharacterDetails.RingARight_Y.value = RingARight_Y_Sav01;
-            CharacterDetails.RingARight_Z.value = RingARight_Z_Sav01;
-            CharacterDetails.RingARight_W.value = RingARight_W_Sav01;
-            CharacterDetails.MiddleARight_X.value = MiddleARight_X_Sav01;
-            CharacterDetails.MiddleARight_Y.value = MiddleARight_Y_Sav01;
-            CharacterDetails.MiddleARight_Z.value = MiddleARight_Z_Sav01;
-            CharacterDetails.MiddleARight_W.value = MiddleARight_W_Sav01;
-            CharacterDetails.ThumbARight_X.value = ThumbARight_X_Sav01;
-            CharacterDetails.ThumbARight_Y.value = ThumbARight_Y_Sav01;
-            CharacterDetails.ThumbARight_Z.value = ThumbARight_Z_Sav01;
-            CharacterDetails.ThumbARight_W.value = ThumbARight_W_Sav01;
-            CharacterDetails.IndexBRight_X.value = IndexBRight_X_Sav01;
-            CharacterDetails.IndexBRight_Y.value = IndexBRight_Y_Sav01;
-            CharacterDetails.IndexBRight_Z.value = IndexBRight_Z_Sav01;
-            CharacterDetails.IndexBRight_W.value = IndexBRight_W_Sav01;
-            CharacterDetails.PinkyBRight_X.value = PinkyBRight_X_Sav01;
-            CharacterDetails.PinkyBRight_Y.value = PinkyBRight_Y_Sav01;
-            CharacterDetails.PinkyBRight_Z.value = PinkyBRight_Z_Sav01;
-            CharacterDetails.PinkyBRight_W.value = PinkyBRight_W_Sav01;
-            CharacterDetails.RingBRight_X.value = RingBRight_X_Sav01;
-            CharacterDetails.RingBRight_Y.value = RingBRight_Y_Sav01;
-            CharacterDetails.RingBRight_Z.value = RingBRight_Z_Sav01;
-            CharacterDetails.RingBRight_W.value = RingBRight_W_Sav01;
-            CharacterDetails.MiddleBRight_X.value = MiddleBRight_X_Sav01;
-            CharacterDetails.MiddleBRight_Y.value = MiddleBRight_Y_Sav01;
-            CharacterDetails.MiddleBRight_Z.value = MiddleBRight_Z_Sav01;
-            CharacterDetails.MiddleBRight_W.value = MiddleBRight_W_Sav01;
-            CharacterDetails.ThumbBRight_X.value = ThumbBRight_X_Sav01;
-            CharacterDetails.ThumbBRight_Y.value = ThumbBRight_Y_Sav01;
-            CharacterDetails.ThumbBRight_Z.value = ThumbBRight_Z_Sav01;
-            CharacterDetails.ThumbBRight_W.value = ThumbBRight_W_Sav01;
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HandRight_X), MemoryManager.StringToByteArray(HandRight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexARight_X), MemoryManager.StringToByteArray(IndexARight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyARight_X), MemoryManager.StringToByteArray(PinkyARight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingARight_X), MemoryManager.StringToByteArray(RingARight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleARight_X), MemoryManager.StringToByteArray(MiddleARight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbARight_X), MemoryManager.StringToByteArray(ThumbARight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexBRight_X), MemoryManager.StringToByteArray(IndexBRight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyBRight_X), MemoryManager.StringToByteArray(PinkyBRight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingBRight_X), MemoryManager.StringToByteArray(RingBRight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBRight_X), MemoryManager.StringToByteArray(MiddleBRight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBRight_X), MemoryManager.StringToByteArray(ThumbBRight_Sav01.Replace(" ", string.Empty)));
         }
         private void LoadstateRightHand02_Click(object sender, RoutedEventArgs e)
         {
             UncheckAll();
-            CharacterDetails.WriteRightHand = true;
-
-            CharacterDetails.HandRight_X.value = HandRight_X_Sav02;
-            CharacterDetails.HandRight_Y.value = HandRight_Y_Sav02;
-            CharacterDetails.HandRight_Z.value = HandRight_Z_Sav02;
-            CharacterDetails.HandRight_W.value = HandRight_W_Sav02;
-            CharacterDetails.IndexARight_X.value = IndexARight_X_Sav02;
-            CharacterDetails.IndexARight_Y.value = IndexARight_Y_Sav02;
-            CharacterDetails.IndexARight_Z.value = IndexARight_Z_Sav02;
-            CharacterDetails.IndexARight_W.value = IndexARight_W_Sav02;
-            CharacterDetails.PinkyARight_X.value = PinkyARight_X_Sav02;
-            CharacterDetails.PinkyARight_Y.value = PinkyARight_Y_Sav02;
-            CharacterDetails.PinkyARight_Z.value = PinkyARight_Z_Sav02;
-            CharacterDetails.PinkyARight_W.value = PinkyARight_W_Sav02;
-            CharacterDetails.RingARight_X.value = RingARight_X_Sav02;
-            CharacterDetails.RingARight_Y.value = RingARight_Y_Sav02;
-            CharacterDetails.RingARight_Z.value = RingARight_Z_Sav02;
-            CharacterDetails.RingARight_W.value = RingARight_W_Sav02;
-            CharacterDetails.MiddleARight_X.value = MiddleARight_X_Sav02;
-            CharacterDetails.MiddleARight_Y.value = MiddleARight_Y_Sav02;
-            CharacterDetails.MiddleARight_Z.value = MiddleARight_Z_Sav02;
-            CharacterDetails.MiddleARight_W.value = MiddleARight_W_Sav02;
-            CharacterDetails.ThumbARight_X.value = ThumbARight_X_Sav02;
-            CharacterDetails.ThumbARight_Y.value = ThumbARight_Y_Sav02;
-            CharacterDetails.ThumbARight_Z.value = ThumbARight_Z_Sav02;
-            CharacterDetails.ThumbARight_W.value = ThumbARight_W_Sav02;
-            CharacterDetails.IndexBRight_X.value = IndexBRight_X_Sav02;
-            CharacterDetails.IndexBRight_Y.value = IndexBRight_Y_Sav02;
-            CharacterDetails.IndexBRight_Z.value = IndexBRight_Z_Sav02;
-            CharacterDetails.IndexBRight_W.value = IndexBRight_W_Sav02;
-            CharacterDetails.PinkyBRight_X.value = PinkyBRight_X_Sav02;
-            CharacterDetails.PinkyBRight_Y.value = PinkyBRight_Y_Sav02;
-            CharacterDetails.PinkyBRight_Z.value = PinkyBRight_Z_Sav02;
-            CharacterDetails.PinkyBRight_W.value = PinkyBRight_W_Sav02;
-            CharacterDetails.RingBRight_X.value = RingBRight_X_Sav02;
-            CharacterDetails.RingBRight_Y.value = RingBRight_Y_Sav02;
-            CharacterDetails.RingBRight_Z.value = RingBRight_Z_Sav02;
-            CharacterDetails.RingBRight_W.value = RingBRight_W_Sav02;
-            CharacterDetails.MiddleBRight_X.value = MiddleBRight_X_Sav02;
-            CharacterDetails.MiddleBRight_Y.value = MiddleBRight_Y_Sav02;
-            CharacterDetails.MiddleBRight_Z.value = MiddleBRight_Z_Sav02;
-            CharacterDetails.MiddleBRight_W.value = MiddleBRight_W_Sav02;
-            CharacterDetails.ThumbBRight_X.value = ThumbBRight_X_Sav02;
-            CharacterDetails.ThumbBRight_Y.value = ThumbBRight_Y_Sav02;
-            CharacterDetails.ThumbBRight_Z.value = ThumbBRight_Z_Sav02;
-            CharacterDetails.ThumbBRight_W.value = ThumbBRight_W_Sav02;
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HandRight_X), MemoryManager.StringToByteArray(HandRight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexARight_X), MemoryManager.StringToByteArray(IndexARight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyARight_X), MemoryManager.StringToByteArray(PinkyARight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingARight_X), MemoryManager.StringToByteArray(RingARight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleARight_X), MemoryManager.StringToByteArray(MiddleARight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbARight_X), MemoryManager.StringToByteArray(ThumbARight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexBRight_X), MemoryManager.StringToByteArray(IndexBRight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyBRight_X), MemoryManager.StringToByteArray(PinkyBRight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingBRight_X), MemoryManager.StringToByteArray(RingBRight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBRight_X), MemoryManager.StringToByteArray(MiddleBRight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBRight_X), MemoryManager.StringToByteArray(ThumbBRight_Sav02.Replace(" ", string.Empty)));
         }
         #endregion
         #region Savestate\Loadstate Waist
         private void SavestateWaist01_Click(object sender, RoutedEventArgs e)
         {
-            CharacterDetails.SaveWaist01 = true;
             WaistSaved01 = true;
-
             if (CharacterDetails.BoneEditMode) LoadstateWaist01.IsEnabled = true;
+
+            Waist_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Waist_X), 16));
+            HolsterLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HolsterLeft_X), 16));
+            HolsterRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HolsterRight_X), 16));
+            SheatheLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SheatheLeft_X), 16));
+            SheatheRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SheatheRight_X), 16));
+            if (CharacterDetails.Race.value == 4 || CharacterDetails.Race.value == 6 || CharacterDetails.Race.value == 7)
+            {
+                TailA_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailA_X), 16));
+                TailB_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailB_X), 16));
+                TailC_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailC_X), 16));
+                TailD_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailD_X), 16));
+                TailE_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailE_X), 16));
+            }
+            else
+            {
+                TailA_Sav01 = "null";
+                TailB_Sav01 = "null";
+                TailC_Sav01 = "null";
+                TailD_Sav01 = "null";
+                TailE_Sav01 = "null";
+            }
         }
         private void SavestateWaist02_Click(object sender, RoutedEventArgs e)
         {
-            CharacterDetails.SaveWaist02 = true;
             WaistSaved02 = true;
-
             if (CharacterDetails.BoneEditMode) LoadstateWaist02.IsEnabled = true;
+
+            Waist_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Waist_X), 16));
+            HolsterLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HolsterLeft_X), 16));
+            HolsterRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HolsterRight_X), 16));
+            SheatheLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SheatheLeft_X), 16));
+            SheatheRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SheatheRight_X), 16));
+            if (CharacterDetails.Race.value == 4 || CharacterDetails.Race.value == 6 || CharacterDetails.Race.value == 7)
+            {
+                TailA_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailA_X), 16));
+                TailB_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailB_X), 16));
+                TailC_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailC_X), 16));
+                TailD_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailD_X), 16));
+                TailE_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailE_X), 16));
+            }
+            else
+            {
+                TailA_Sav02 = "null";
+                TailB_Sav02 = "null";
+                TailC_Sav02 = "null";
+                TailD_Sav02 = "null";
+                TailE_Sav02 = "null";
+            }
         }
         private void LoadstateWaist01_Click(object sender, RoutedEventArgs e)
         {
             UncheckAll();
-            CharacterDetails.WriteWaist = true;
-
-            CharacterDetails.Waist_X.value = Waist_X_Sav01;
-            CharacterDetails.Waist_Y.value = Waist_Y_Sav01;
-            CharacterDetails.Waist_Z.value = Waist_Z_Sav01;
-            CharacterDetails.Waist_W.value = Waist_W_Sav01;
-            CharacterDetails.HolsterLeft_X.value = HolsterLeft_X_Sav01;
-            CharacterDetails.HolsterLeft_Y.value = HolsterLeft_Y_Sav01;
-            CharacterDetails.HolsterLeft_Z.value = HolsterLeft_Z_Sav01;
-            CharacterDetails.HolsterLeft_W.value = HolsterLeft_W_Sav01;
-            CharacterDetails.HolsterRight_X.value = HolsterRight_X_Sav01;
-            CharacterDetails.HolsterRight_Y.value = HolsterRight_Y_Sav01;
-            CharacterDetails.HolsterRight_Z.value = HolsterRight_Z_Sav01;
-            CharacterDetails.HolsterRight_W.value = HolsterRight_W_Sav01;
-            CharacterDetails.SheatheLeft_X.value = SheatheLeft_X_Sav01;
-            CharacterDetails.SheatheLeft_Y.value = SheatheLeft_Y_Sav01;
-            CharacterDetails.SheatheLeft_Z.value = SheatheLeft_Z_Sav01;
-            CharacterDetails.SheatheLeft_W.value = SheatheLeft_W_Sav01;
-            CharacterDetails.SheatheRight_X.value = SheatheRight_X_Sav01;
-            CharacterDetails.SheatheRight_Y.value = SheatheRight_Y_Sav01;
-            CharacterDetails.SheatheRight_Z.value = SheatheRight_Z_Sav01;
-            CharacterDetails.SheatheRight_W.value = SheatheRight_W_Sav01;
-            CharacterDetails.TailA_X.value = TailA_X_Sav01;
-            CharacterDetails.TailA_Y.value = TailA_Y_Sav01;
-            CharacterDetails.TailA_Z.value = TailA_Z_Sav01;
-            CharacterDetails.TailA_W.value = TailA_W_Sav01;
-            CharacterDetails.TailB_X.value = TailB_X_Sav01;
-            CharacterDetails.TailB_Y.value = TailB_Y_Sav01;
-            CharacterDetails.TailB_Z.value = TailB_Z_Sav01;
-            CharacterDetails.TailB_W.value = TailB_W_Sav01;
-            CharacterDetails.TailC_X.value = TailC_X_Sav01;
-            CharacterDetails.TailC_Y.value = TailC_Y_Sav01;
-            CharacterDetails.TailC_Z.value = TailC_Z_Sav01;
-            CharacterDetails.TailC_W.value = TailC_W_Sav01;
-            CharacterDetails.TailD_X.value = TailD_X_Sav01;
-            CharacterDetails.TailD_Y.value = TailD_Y_Sav01;
-            CharacterDetails.TailD_Z.value = TailD_Z_Sav01;
-            CharacterDetails.TailD_W.value = TailD_W_Sav01;
-            CharacterDetails.TailE_X.value = TailE_X_Sav01;
-            CharacterDetails.TailE_Y.value = TailE_Y_Sav01;
-            CharacterDetails.TailE_Z.value = TailE_Z_Sav01;
-            CharacterDetails.TailE_W.value = TailE_W_Sav01;
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Waist_X), MemoryManager.StringToByteArray(Waist_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HolsterLeft_X), MemoryManager.StringToByteArray(HolsterLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HolsterRight_X), MemoryManager.StringToByteArray(HolsterRight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SheatheLeft_X), MemoryManager.StringToByteArray(SheatheLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SheatheRight_X), MemoryManager.StringToByteArray(SheatheRight_Sav01.Replace(" ", string.Empty)));
+            if (TailA_Sav01 != "null")
+            {
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailA_X), MemoryManager.StringToByteArray(TailA_Sav01.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailB_X), MemoryManager.StringToByteArray(TailB_Sav01.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailC_X), MemoryManager.StringToByteArray(TailC_Sav01.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailD_X), MemoryManager.StringToByteArray(TailD_Sav01.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailE_X), MemoryManager.StringToByteArray(TailE_Sav01.Replace(" ", string.Empty)));
+            }
         }
         private void LoadstateWaist02_Click(object sender, RoutedEventArgs e)
         {
             UncheckAll();
-            CharacterDetails.WriteWaist = true;
-
-            CharacterDetails.Waist_X.value = Waist_X_Sav02;
-            CharacterDetails.Waist_Y.value = Waist_Y_Sav02;
-            CharacterDetails.Waist_Z.value = Waist_Z_Sav02;
-            CharacterDetails.Waist_W.value = Waist_W_Sav02;
-            CharacterDetails.HolsterLeft_X.value = HolsterLeft_X_Sav02;
-            CharacterDetails.HolsterLeft_Y.value = HolsterLeft_Y_Sav02;
-            CharacterDetails.HolsterLeft_Z.value = HolsterLeft_Z_Sav02;
-            CharacterDetails.HolsterLeft_W.value = HolsterLeft_W_Sav02;
-            CharacterDetails.HolsterRight_X.value = HolsterRight_X_Sav02;
-            CharacterDetails.HolsterRight_Y.value = HolsterRight_Y_Sav02;
-            CharacterDetails.HolsterRight_Z.value = HolsterRight_Z_Sav02;
-            CharacterDetails.HolsterRight_W.value = HolsterRight_W_Sav02;
-            CharacterDetails.SheatheLeft_X.value = SheatheLeft_X_Sav02;
-            CharacterDetails.SheatheLeft_Y.value = SheatheLeft_Y_Sav02;
-            CharacterDetails.SheatheLeft_Z.value = SheatheLeft_Z_Sav02;
-            CharacterDetails.SheatheLeft_W.value = SheatheLeft_W_Sav02;
-            CharacterDetails.SheatheRight_X.value = SheatheRight_X_Sav02;
-            CharacterDetails.SheatheRight_Y.value = SheatheRight_Y_Sav02;
-            CharacterDetails.SheatheRight_Z.value = SheatheRight_Z_Sav02;
-            CharacterDetails.SheatheRight_W.value = SheatheRight_W_Sav02;
-            CharacterDetails.TailA_X.value = TailA_X_Sav02;
-            CharacterDetails.TailA_Y.value = TailA_Y_Sav02;
-            CharacterDetails.TailA_Z.value = TailA_Z_Sav02;
-            CharacterDetails.TailA_W.value = TailA_W_Sav02;
-            CharacterDetails.TailB_X.value = TailB_X_Sav02;
-            CharacterDetails.TailB_Y.value = TailB_Y_Sav02;
-            CharacterDetails.TailB_Z.value = TailB_Z_Sav02;
-            CharacterDetails.TailB_W.value = TailB_W_Sav02;
-            CharacterDetails.TailC_X.value = TailC_X_Sav02;
-            CharacterDetails.TailC_Y.value = TailC_Y_Sav02;
-            CharacterDetails.TailC_Z.value = TailC_Z_Sav02;
-            CharacterDetails.TailC_W.value = TailC_W_Sav02;
-            CharacterDetails.TailD_X.value = TailD_X_Sav02;
-            CharacterDetails.TailD_Y.value = TailD_Y_Sav02;
-            CharacterDetails.TailD_Z.value = TailD_Z_Sav02;
-            CharacterDetails.TailD_W.value = TailD_W_Sav02;
-            CharacterDetails.TailE_X.value = TailE_X_Sav02;
-            CharacterDetails.TailE_Y.value = TailE_Y_Sav02;
-            CharacterDetails.TailE_Z.value = TailE_Z_Sav02;
-            CharacterDetails.TailE_W.value = TailE_W_Sav02;
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Waist_X), MemoryManager.StringToByteArray(Waist_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HolsterLeft_X), MemoryManager.StringToByteArray(HolsterLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HolsterRight_X), MemoryManager.StringToByteArray(HolsterRight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SheatheLeft_X), MemoryManager.StringToByteArray(SheatheLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SheatheRight_X), MemoryManager.StringToByteArray(SheatheRight_Sav02.Replace(" ", string.Empty)));
+            if (TailA_Sav02 != "null")
+            {
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailA_X), MemoryManager.StringToByteArray(TailA_Sav02.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailB_X), MemoryManager.StringToByteArray(TailB_Sav02.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailC_X), MemoryManager.StringToByteArray(TailC_Sav02.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailD_X), MemoryManager.StringToByteArray(TailD_Sav02.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailE_X), MemoryManager.StringToByteArray(TailE_Sav02.Replace(" ", string.Empty)));
+            }
         }
         #endregion
         #region Savestate\Loadstate LeftLeg
         private void SavestateLeftLeg01_Click(object sender, RoutedEventArgs e)
         {
-            CharacterDetails.SaveLeftLeg01 = true;
             LeftLegSaved01 = true;
-
             if (CharacterDetails.BoneEditMode) LoadstateLeftLeg01.IsEnabled = true;
+
+            LegLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LegLeft_X), 16));
+            KneeLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.KneeLeft_X), 16));
+            CalfLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CalfLeft_X), 16));
+            PoleynLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PoleynLeft_X), 16));
+            FootLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.FootLeft_X), 16));
+            ToesLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ToesLeft_X), 16));
         }
         private void SavestateLeftLeg02_Click(object sender, RoutedEventArgs e)
         {
-            CharacterDetails.SaveLeftLeg02 = true;
             LeftLegSaved02 = true;
-
             if (CharacterDetails.BoneEditMode) LoadstateLeftLeg02.IsEnabled = true;
+
+            LegLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LegLeft_X), 16));
+            KneeLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.KneeLeft_X), 16));
+            CalfLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CalfLeft_X), 16));
+            PoleynLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PoleynLeft_X), 16));
+            FootLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.FootLeft_X), 16));
+            ToesLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ToesLeft_X), 16));
         }
         private void LoadstateLeftLeg01_Click(object sender, RoutedEventArgs e)
         {
             UncheckAll();
-            CharacterDetails.WriteLeftLeg = true;
-
-            CharacterDetails.LegLeft_X.value = LegLeft_X_Sav01;
-            CharacterDetails.LegLeft_Y.value = LegLeft_Y_Sav01;
-            CharacterDetails.LegLeft_Z.value = LegLeft_Z_Sav01;
-            CharacterDetails.LegLeft_W.value = LegLeft_W_Sav01;
-            CharacterDetails.KneeLeft_X.value = KneeLeft_X_Sav01;
-            CharacterDetails.KneeLeft_Y.value = KneeLeft_Y_Sav01;
-            CharacterDetails.KneeLeft_Z.value = KneeLeft_Z_Sav01;
-            CharacterDetails.KneeLeft_W.value = KneeLeft_W_Sav01;
-            CharacterDetails.CalfLeft_X.value = CalfLeft_X_Sav01;
-            CharacterDetails.CalfLeft_Y.value = CalfLeft_Y_Sav01;
-            CharacterDetails.CalfLeft_Z.value = CalfLeft_Z_Sav01;
-            CharacterDetails.CalfLeft_W.value = CalfLeft_W_Sav01;
-            CharacterDetails.PoleynLeft_X.value = PoleynLeft_X_Sav01;
-            CharacterDetails.PoleynLeft_Y.value = PoleynLeft_Y_Sav01;
-            CharacterDetails.PoleynLeft_Z.value = PoleynLeft_Z_Sav01;
-            CharacterDetails.PoleynLeft_W.value = PoleynLeft_W_Sav01;
-            CharacterDetails.FootLeft_X.value = FootLeft_X_Sav01;
-            CharacterDetails.FootLeft_Y.value = FootLeft_Y_Sav01;
-            CharacterDetails.FootLeft_Z.value = FootLeft_Z_Sav01;
-            CharacterDetails.FootLeft_W.value = FootLeft_W_Sav01;
-            CharacterDetails.ToesLeft_X.value = ToesLeft_X_Sav01;
-            CharacterDetails.ToesLeft_Y.value = ToesLeft_Y_Sav01;
-            CharacterDetails.ToesLeft_Z.value = ToesLeft_Z_Sav01;
-            CharacterDetails.ToesLeft_W.value = ToesLeft_W_Sav01;
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LegLeft_X), MemoryManager.StringToByteArray(LegLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.KneeLeft_X), MemoryManager.StringToByteArray(KneeLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CalfLeft_X), MemoryManager.StringToByteArray(CalfLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PoleynLeft_X), MemoryManager.StringToByteArray(PoleynLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.FootLeft_X), MemoryManager.StringToByteArray(FootLeft_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ToesLeft_X), MemoryManager.StringToByteArray(ToesLeft_Sav01.Replace(" ", string.Empty)));
         }
         private void LoadstateLeftLeg02_Click(object sender, RoutedEventArgs e)
         {
             UncheckAll();
-            CharacterDetails.WriteLeftLeg = true;
-
-            CharacterDetails.LegLeft_X.value = LegLeft_X_Sav02;
-            CharacterDetails.LegLeft_Y.value = LegLeft_Y_Sav02;
-            CharacterDetails.LegLeft_Z.value = LegLeft_Z_Sav02;
-            CharacterDetails.LegLeft_W.value = LegLeft_W_Sav02;
-            CharacterDetails.KneeLeft_X.value = KneeLeft_X_Sav02;
-            CharacterDetails.KneeLeft_Y.value = KneeLeft_Y_Sav02;
-            CharacterDetails.KneeLeft_Z.value = KneeLeft_Z_Sav02;
-            CharacterDetails.KneeLeft_W.value = KneeLeft_W_Sav02;
-            CharacterDetails.CalfLeft_X.value = CalfLeft_X_Sav02;
-            CharacterDetails.CalfLeft_Y.value = CalfLeft_Y_Sav02;
-            CharacterDetails.CalfLeft_Z.value = CalfLeft_Z_Sav02;
-            CharacterDetails.CalfLeft_W.value = CalfLeft_W_Sav02;
-            CharacterDetails.PoleynLeft_X.value = PoleynLeft_X_Sav02;
-            CharacterDetails.PoleynLeft_Y.value = PoleynLeft_Y_Sav02;
-            CharacterDetails.PoleynLeft_Z.value = PoleynLeft_Z_Sav02;
-            CharacterDetails.PoleynLeft_W.value = PoleynLeft_W_Sav02;
-            CharacterDetails.FootLeft_X.value = FootLeft_X_Sav02;
-            CharacterDetails.FootLeft_Y.value = FootLeft_Y_Sav02;
-            CharacterDetails.FootLeft_Z.value = FootLeft_Z_Sav02;
-            CharacterDetails.FootLeft_W.value = FootLeft_W_Sav02;
-            CharacterDetails.ToesLeft_X.value = ToesLeft_X_Sav02;
-            CharacterDetails.ToesLeft_Y.value = ToesLeft_Y_Sav02;
-            CharacterDetails.ToesLeft_Z.value = ToesLeft_Z_Sav02;
-            CharacterDetails.ToesLeft_W.value = ToesLeft_W_Sav02;
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LegLeft_X), MemoryManager.StringToByteArray(LegLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.KneeLeft_X), MemoryManager.StringToByteArray(KneeLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CalfLeft_X), MemoryManager.StringToByteArray(CalfLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PoleynLeft_X), MemoryManager.StringToByteArray(PoleynLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.FootLeft_X), MemoryManager.StringToByteArray(FootLeft_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ToesLeft_X), MemoryManager.StringToByteArray(ToesLeft_Sav02.Replace(" ", string.Empty)));
         }
         #endregion
         #region Savestate\Loadstate RightLeg
         private void SavestateRightLeg01_Click(object sender, RoutedEventArgs e)
         {
-            CharacterDetails.SaveRightLeg01 = true;
             RightLegSaved01 = true;
-
             if (CharacterDetails.BoneEditMode) LoadstateRightLeg01.IsEnabled = true;
+
+            LegRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LegRight_X), 16));
+            KneeRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.KneeRight_X), 16));
+            CalfRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CalfRight_X), 16));
+            PoleynRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PoleynRight_X), 16));
+            FootRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.FootRight_X), 16));
+            ToesRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ToesRight_X), 16));
         }
         private void SavestateRightLeg02_Click(object sender, RoutedEventArgs e)
         {
-            CharacterDetails.SaveRightLeg02 = true;
             RightLegSaved02 = true;
-
             if (CharacterDetails.BoneEditMode) LoadstateRightLeg02.IsEnabled = true;
+
+            LegRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LegRight_X), 16));
+            KneeRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.KneeRight_X), 16));
+            CalfRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CalfRight_X), 16));
+            PoleynRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PoleynRight_X), 16));
+            FootRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.FootRight_X), 16));
+            ToesRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ToesRight_X), 16));
         }
         private void LoadstateRightLeg01_Click(object sender, RoutedEventArgs e)
         {
             UncheckAll();
-            CharacterDetails.WriteRightLeg = true;
-
-            CharacterDetails.LegRight_X.value = LegRight_X_Sav01;
-            CharacterDetails.LegRight_Y.value = LegRight_Y_Sav01;
-            CharacterDetails.LegRight_Z.value = LegRight_Z_Sav01;
-            CharacterDetails.LegRight_W.value = LegRight_W_Sav01;
-            CharacterDetails.KneeRight_X.value = KneeRight_X_Sav01;
-            CharacterDetails.KneeRight_Y.value = KneeRight_Y_Sav01;
-            CharacterDetails.KneeRight_Z.value = KneeRight_Z_Sav01;
-            CharacterDetails.KneeRight_W.value = KneeRight_W_Sav01;
-            CharacterDetails.CalfRight_X.value = CalfRight_X_Sav01;
-            CharacterDetails.CalfRight_Y.value = CalfRight_Y_Sav01;
-            CharacterDetails.CalfRight_Z.value = CalfRight_Z_Sav01;
-            CharacterDetails.CalfRight_W.value = CalfRight_W_Sav01;
-            CharacterDetails.PoleynRight_X.value = PoleynRight_X_Sav01;
-            CharacterDetails.PoleynRight_Y.value = PoleynRight_Y_Sav01;
-            CharacterDetails.PoleynRight_Z.value = PoleynRight_Z_Sav01;
-            CharacterDetails.PoleynRight_W.value = PoleynRight_W_Sav01;
-            CharacterDetails.FootRight_X.value = FootRight_X_Sav01;
-            CharacterDetails.FootRight_Y.value = FootRight_Y_Sav01;
-            CharacterDetails.FootRight_Z.value = FootRight_Z_Sav01;
-            CharacterDetails.FootRight_W.value = FootRight_W_Sav01;
-            CharacterDetails.ToesRight_X.value = ToesRight_X_Sav01;
-            CharacterDetails.ToesRight_Y.value = ToesRight_Y_Sav01;
-            CharacterDetails.ToesRight_Z.value = ToesRight_Z_Sav01;
-            CharacterDetails.ToesRight_W.value = ToesRight_W_Sav01;
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LegRight_X), MemoryManager.StringToByteArray(LegRight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.KneeRight_X), MemoryManager.StringToByteArray(KneeRight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CalfRight_X), MemoryManager.StringToByteArray(CalfRight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PoleynRight_X), MemoryManager.StringToByteArray(PoleynRight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.FootRight_X), MemoryManager.StringToByteArray(FootRight_Sav01.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ToesRight_X), MemoryManager.StringToByteArray(ToesRight_Sav01.Replace(" ", string.Empty)));
         }
         private void LoadstateRightLeg02_Click(object sender, RoutedEventArgs e)
         {
             UncheckAll();
-            CharacterDetails.WriteRightLeg = true;
-
-            CharacterDetails.LegRight_X.value = LegRight_X_Sav02;
-            CharacterDetails.LegRight_Y.value = LegRight_Y_Sav02;
-            CharacterDetails.LegRight_Z.value = LegRight_Z_Sav02;
-            CharacterDetails.LegRight_W.value = LegRight_W_Sav02;
-            CharacterDetails.KneeRight_X.value = KneeRight_X_Sav02;
-            CharacterDetails.KneeRight_Y.value = KneeRight_Y_Sav02;
-            CharacterDetails.KneeRight_Z.value = KneeRight_Z_Sav02;
-            CharacterDetails.KneeRight_W.value = KneeRight_W_Sav02;
-            CharacterDetails.CalfRight_X.value = CalfRight_X_Sav02;
-            CharacterDetails.CalfRight_Y.value = CalfRight_Y_Sav02;
-            CharacterDetails.CalfRight_Z.value = CalfRight_Z_Sav02;
-            CharacterDetails.CalfRight_W.value = CalfRight_W_Sav02;
-            CharacterDetails.PoleynRight_X.value = PoleynRight_X_Sav02;
-            CharacterDetails.PoleynRight_Y.value = PoleynRight_Y_Sav02;
-            CharacterDetails.PoleynRight_Z.value = PoleynRight_Z_Sav02;
-            CharacterDetails.PoleynRight_W.value = PoleynRight_W_Sav02;
-            CharacterDetails.FootRight_X.value = FootRight_X_Sav02;
-            CharacterDetails.FootRight_Y.value = FootRight_Y_Sav02;
-            CharacterDetails.FootRight_Z.value = FootRight_Z_Sav02;
-            CharacterDetails.FootRight_W.value = FootRight_W_Sav02;
-            CharacterDetails.ToesRight_X.value = ToesRight_X_Sav02;
-            CharacterDetails.ToesRight_Y.value = ToesRight_Y_Sav02;
-            CharacterDetails.ToesRight_Z.value = ToesRight_Z_Sav02;
-            CharacterDetails.ToesRight_W.value = ToesRight_W_Sav02;
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LegRight_X), MemoryManager.StringToByteArray(LegRight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.KneeRight_X), MemoryManager.StringToByteArray(KneeRight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CalfRight_X), MemoryManager.StringToByteArray(CalfRight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PoleynRight_X), MemoryManager.StringToByteArray(PoleynRight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.FootRight_X), MemoryManager.StringToByteArray(FootRight_Sav02.Replace(" ", string.Empty)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ToesRight_X), MemoryManager.StringToByteArray(ToesRight_Sav02.Replace(" ", string.Empty)));
         }
         #endregion
         #region Savestate\Loadstate Helm
         private void SavestateHelm01_Click(object sender, RoutedEventArgs e)
         {
-            CharacterDetails.SaveHelm01 = true;
             HelmSaved01 = true;
-
             if (CharacterDetails.BoneEditMode) LoadstateHelm01.IsEnabled = true;
+
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 1)
+            {
+                ExRootMet_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExRootMet_X), 16));
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 2)
+            {
+                ExMetA_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetA_X), 16));
+            }
+            else
+            {
+                ExMetA_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 3)
+            {
+                ExMetB_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetB_X), 16));
+            }
+            else
+            {
+                ExMetB_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 4)
+            {
+                ExMetC_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetC_X), 16));
+            }
+            else
+            {
+                ExMetC_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 5)
+            {
+                ExMetD_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetD_X), 16));
+            }
+            else
+            {
+                ExMetD_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 6)
+            {
+                ExMetE_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetE_X), 16));
+            }
+            else
+            {
+                ExMetE_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 7)
+            {
+                ExMetF_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetF_X), 16));
+            }
+            else
+            {
+                ExMetF_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 8)
+            {
+                ExMetG_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetG_X), 16));
+            }
+            else
+            {
+                ExMetG_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 9)
+            {
+                ExMetH_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetH_X), 16));
+            }
+            else
+            {
+                ExMetH_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 10)
+            {
+                ExMetI_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetI_X), 16));
+            }
+            else
+            {
+                ExMetI_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 11)
+            {
+                ExMetJ_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetJ_X), 16));
+            }
+            else
+            {
+                ExMetJ_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 12)
+            {
+                ExMetK_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetK_X), 16));
+            }
+            else
+            {
+                ExMetK_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 13)
+            {
+                ExMetL_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetL_X), 16));
+            }
+            else
+            {
+                ExMetL_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 14)
+            {
+                ExMetM_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetM_X), 16));
+            }
+            else
+            {
+                ExMetM_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 15)
+            {
+                ExMetN_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetN_X), 16));
+            }
+            else
+            {
+                ExMetN_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 16)
+            {
+                ExMetO_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetO_X), 16));
+            }
+            else
+            {
+                ExMetO_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 17)
+            {
+                ExMetP_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetP_X), 16));
+            }
+            else
+            {
+                ExMetP_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 18)
+            {
+                ExMetQ_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetQ_X), 16));
+            }
+            else
+            {
+                ExMetQ_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 19)
+            {
+                ExMetR_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetR_X), 16));
+            }
+            else
+            {
+                ExMetR_Sav01 = "null";
+            }
+            if (ExRootMet_Sav01 == null)
+            {
+                ExRootMet_Sav01 = "null";
+                ExMetA_Sav01 = "null";
+                ExMetB_Sav01 = "null";
+                ExMetC_Sav01 = "null";
+                ExMetD_Sav01 = "null";
+                ExMetE_Sav01 = "null";
+                ExMetF_Sav01 = "null";
+                ExMetG_Sav01 = "null";
+                ExMetH_Sav01 = "null";
+                ExMetI_Sav01 = "null";
+                ExMetJ_Sav01 = "null";
+                ExMetK_Sav01 = "null";
+                ExMetL_Sav01 = "null";
+                ExMetM_Sav01 = "null";
+                ExMetN_Sav01 = "null";
+                ExMetO_Sav01 = "null";
+                ExMetP_Sav01 = "null";
+                ExMetQ_Sav01 = "null";
+                ExMetR_Sav01 = "null";
+            }
         }
         private void SavestateHelm02_Click(object sender, RoutedEventArgs e)
         {
-            CharacterDetails.SaveHelm02 = true;
             HelmSaved02 = true;
-
             if (CharacterDetails.BoneEditMode) LoadstateHelm02.IsEnabled = true;
+
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 1)
+            {
+                ExRootMet_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExRootMet_X), 16));
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 2)
+            {
+                ExMetA_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetA_X), 16));
+            }
+            else
+            {
+                ExMetA_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 3)
+            {
+                ExMetB_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetB_X), 16));
+            }
+            else
+            {
+                ExMetB_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 4)
+            {
+                ExMetC_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetC_X), 16));
+            }
+            else
+            {
+                ExMetC_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 5)
+            {
+                ExMetD_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetD_X), 16));
+            }
+            else
+            {
+                ExMetD_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 6)
+            {
+                ExMetE_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetE_X), 16));
+            }
+            else
+            {
+                ExMetE_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 7)
+            {
+                ExMetF_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetF_X), 16));
+            }
+            else
+            {
+                ExMetF_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 8)
+            {
+                ExMetG_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetG_X), 16));
+            }
+            else
+            {
+                ExMetG_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 9)
+            {
+                ExMetH_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetH_X), 16));
+            }
+            else
+            {
+                ExMetH_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 10)
+            {
+                ExMetI_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetI_X), 16));
+            }
+            else
+            {
+                ExMetI_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 11)
+            {
+                ExMetJ_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetJ_X), 16));
+            }
+            else
+            {
+                ExMetJ_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 12)
+            {
+                ExMetK_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetK_X), 16));
+            }
+            else
+            {
+                ExMetK_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 13)
+            {
+                ExMetL_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetL_X), 16));
+            }
+            else
+            {
+                ExMetL_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 14)
+            {
+                ExMetM_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetM_X), 16));
+            }
+            else
+            {
+                ExMetM_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 15)
+            {
+                ExMetN_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetN_X), 16));
+            }
+            else
+            {
+                ExMetN_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 16)
+            {
+                ExMetO_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetO_X), 16));
+            }
+            else
+            {
+                ExMetO_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 17)
+            {
+                ExMetP_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetP_X), 16));
+            }
+            else
+            {
+                ExMetP_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 18)
+            {
+                ExMetQ_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetQ_X), 16));
+            }
+            else
+            {
+                ExMetQ_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 19)
+            {
+                ExMetR_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetR_X), 16));
+            }
+            else
+            {
+                ExMetR_Sav02 = "null";
+            }
+            if (ExRootMet_Sav02 == null)
+            {
+                ExRootMet_Sav02 = "null";
+                ExMetA_Sav02 = "null";
+                ExMetB_Sav02 = "null";
+                ExMetC_Sav02 = "null";
+                ExMetD_Sav02 = "null";
+                ExMetE_Sav02 = "null";
+                ExMetF_Sav02 = "null";
+                ExMetG_Sav02 = "null";
+                ExMetH_Sav02 = "null";
+                ExMetI_Sav02 = "null";
+                ExMetJ_Sav02 = "null";
+                ExMetK_Sav02 = "null";
+                ExMetL_Sav02 = "null";
+                ExMetM_Sav02 = "null";
+                ExMetN_Sav02 = "null";
+                ExMetO_Sav02 = "null";
+                ExMetP_Sav02 = "null";
+                ExMetQ_Sav02 = "null";
+                ExMetR_Sav02 = "null";
+            }
         }
         private void LoadstateHelm01_Click(object sender, RoutedEventArgs e)
         {
             UncheckAll();
-            CharacterDetails.WriteHelm = true;
-
-            CharacterDetails.ExMetA_X.value = ExMetA_X_Sav01;
-            CharacterDetails.ExMetA_Y.value = ExMetA_Y_Sav01;
-            CharacterDetails.ExMetA_Z.value = ExMetA_Z_Sav01;
-            CharacterDetails.ExMetA_W.value = ExMetA_W_Sav01;
-            CharacterDetails.ExMetB_X.value = ExMetB_X_Sav01;
-            CharacterDetails.ExMetB_Y.value = ExMetB_Y_Sav01;
-            CharacterDetails.ExMetB_Z.value = ExMetB_Z_Sav01;
-            CharacterDetails.ExMetB_W.value = ExMetB_W_Sav01;
-            CharacterDetails.ExMetC_X.value = ExMetC_X_Sav01;
-            CharacterDetails.ExMetC_Y.value = ExMetC_Y_Sav01;
-            CharacterDetails.ExMetC_Z.value = ExMetC_Z_Sav01;
-            CharacterDetails.ExMetC_W.value = ExMetC_W_Sav01;
-            CharacterDetails.ExMetD_X.value = ExMetD_X_Sav01;
-            CharacterDetails.ExMetD_Y.value = ExMetD_Y_Sav01;
-            CharacterDetails.ExMetD_Z.value = ExMetD_Z_Sav01;
-            CharacterDetails.ExMetD_W.value = ExMetD_W_Sav01;
-            CharacterDetails.ExMetE_X.value = ExMetE_X_Sav01;
-            CharacterDetails.ExMetE_Y.value = ExMetE_Y_Sav01;
-            CharacterDetails.ExMetE_Z.value = ExMetE_Z_Sav01;
-            CharacterDetails.ExMetE_W.value = ExMetE_W_Sav01;
-            CharacterDetails.ExMetF_X.value = ExMetF_X_Sav01;
-            CharacterDetails.ExMetF_Y.value = ExMetF_Y_Sav01;
-            CharacterDetails.ExMetF_Z.value = ExMetF_Z_Sav01;
-            CharacterDetails.ExMetF_W.value = ExMetF_W_Sav01;
-            CharacterDetails.ExMetG_X.value = ExMetG_X_Sav01;
-            CharacterDetails.ExMetG_Y.value = ExMetG_Y_Sav01;
-            CharacterDetails.ExMetG_Z.value = ExMetG_Z_Sav01;
-            CharacterDetails.ExMetG_W.value = ExMetG_W_Sav01;
-            CharacterDetails.ExMetH_X.value = ExMetH_X_Sav01;
-            CharacterDetails.ExMetH_Y.value = ExMetH_Y_Sav01;
-            CharacterDetails.ExMetH_Z.value = ExMetH_Z_Sav01;
-            CharacterDetails.ExMetH_W.value = ExMetH_W_Sav01;
-            CharacterDetails.ExMetI_X.value = ExMetI_X_Sav01;
-            CharacterDetails.ExMetI_Y.value = ExMetI_Y_Sav01;
-            CharacterDetails.ExMetI_Z.value = ExMetI_Z_Sav01;
-            CharacterDetails.ExMetI_W.value = ExMetI_W_Sav01;
-            CharacterDetails.ExMetJ_X.value = ExMetJ_X_Sav01;
-            CharacterDetails.ExMetJ_Y.value = ExMetJ_Y_Sav01;
-            CharacterDetails.ExMetJ_Z.value = ExMetJ_Z_Sav01;
-            CharacterDetails.ExMetJ_W.value = ExMetJ_W_Sav01;
-            CharacterDetails.ExMetK_X.value = ExMetK_X_Sav01;
-            CharacterDetails.ExMetK_Y.value = ExMetK_Y_Sav01;
-            CharacterDetails.ExMetK_Z.value = ExMetK_Z_Sav01;
-            CharacterDetails.ExMetK_W.value = ExMetK_W_Sav01;
-            CharacterDetails.ExMetL_X.value = ExMetL_X_Sav01;
-            CharacterDetails.ExMetL_Y.value = ExMetL_Y_Sav01;
-            CharacterDetails.ExMetL_Z.value = ExMetL_Z_Sav01;
-            CharacterDetails.ExMetL_W.value = ExMetL_W_Sav01;
-            CharacterDetails.ExMetM_X.value = ExMetM_X_Sav01;
-            CharacterDetails.ExMetM_Y.value = ExMetM_Y_Sav01;
-            CharacterDetails.ExMetM_Z.value = ExMetM_Z_Sav01;
-            CharacterDetails.ExMetM_W.value = ExMetM_W_Sav01;
-            CharacterDetails.ExMetN_X.value = ExMetN_X_Sav01;
-            CharacterDetails.ExMetN_Y.value = ExMetN_Y_Sav01;
-            CharacterDetails.ExMetN_Z.value = ExMetN_Z_Sav01;
-            CharacterDetails.ExMetN_W.value = ExMetN_W_Sav01;
-            CharacterDetails.ExMetO_X.value = ExMetO_X_Sav01;
-            CharacterDetails.ExMetO_Y.value = ExMetO_Y_Sav01;
-            CharacterDetails.ExMetO_Z.value = ExMetO_Z_Sav01;
-            CharacterDetails.ExMetO_W.value = ExMetO_W_Sav01;
-            CharacterDetails.ExMetP_X.value = ExMetP_X_Sav01;
-            CharacterDetails.ExMetP_Y.value = ExMetP_Y_Sav01;
-            CharacterDetails.ExMetP_Z.value = ExMetP_Z_Sav01;
-            CharacterDetails.ExMetP_W.value = ExMetP_W_Sav01;
-            CharacterDetails.ExMetQ_X.value = ExMetQ_X_Sav01;
-            CharacterDetails.ExMetQ_Y.value = ExMetQ_Y_Sav01;
-            CharacterDetails.ExMetQ_Z.value = ExMetQ_Z_Sav01;
-            CharacterDetails.ExMetQ_W.value = ExMetQ_W_Sav01;
-            CharacterDetails.ExMetR_X.value = ExMetR_X_Sav01;
-            CharacterDetails.ExMetR_Y.value = ExMetR_Y_Sav01;
-            CharacterDetails.ExMetR_Z.value = ExMetR_Z_Sav01;
-            CharacterDetails.ExMetR_W.value = ExMetR_W_Sav01;
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 2)
+            {
+                if (ExMetA_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetA_X), MemoryManager.StringToByteArray(ExMetA_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 3)
+            {
+                if (ExMetB_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetB_X), MemoryManager.StringToByteArray(ExMetB_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 4)
+            {
+                if (ExMetC_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetC_X), MemoryManager.StringToByteArray(ExMetC_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 5)
+            {
+                if (ExMetD_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetD_X), MemoryManager.StringToByteArray(ExMetD_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 6)
+            {
+                if (ExMetE_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetE_X), MemoryManager.StringToByteArray(ExMetE_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 7)
+            {
+                if (ExMetF_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetF_X), MemoryManager.StringToByteArray(ExMetF_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 8)
+            {
+                if (ExMetG_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetG_X), MemoryManager.StringToByteArray(ExMetG_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 9)
+            {
+                if (ExMetH_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetH_X), MemoryManager.StringToByteArray(ExMetH_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 10)
+            {
+                if (ExMetI_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetI_X), MemoryManager.StringToByteArray(ExMetI_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 11)
+            {
+                if (ExMetJ_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetJ_X), MemoryManager.StringToByteArray(ExMetJ_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 12)
+            {
+                if (ExMetK_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetK_X), MemoryManager.StringToByteArray(ExMetK_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 13)
+            {
+                if (ExMetL_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetL_X), MemoryManager.StringToByteArray(ExMetL_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 14)
+            {
+                if (ExMetM_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetM_X), MemoryManager.StringToByteArray(ExMetM_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 15)
+            {
+                if (ExMetN_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetN_X), MemoryManager.StringToByteArray(ExMetN_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 16)
+            {
+                if (ExMetO_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetO_X), MemoryManager.StringToByteArray(ExMetO_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 17)
+            {
+                if (ExMetP_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetP_X), MemoryManager.StringToByteArray(ExMetP_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 18)
+            {
+                if (ExMetQ_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetQ_X), MemoryManager.StringToByteArray(ExMetQ_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 19)
+            {
+                if (ExMetR_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetR_X), MemoryManager.StringToByteArray(ExMetR_Sav01.Replace(" ", string.Empty)));
+                }
+            }
         }
         private void LoadstateHelm02_Click(object sender, RoutedEventArgs e)
         {
             UncheckAll();
-            CharacterDetails.WriteHelm = true;
-
-            CharacterDetails.ExMetA_X.value = ExMetA_X_Sav02;
-            CharacterDetails.ExMetA_Y.value = ExMetA_Y_Sav02;
-            CharacterDetails.ExMetA_Z.value = ExMetA_Z_Sav02;
-            CharacterDetails.ExMetA_W.value = ExMetA_W_Sav02;
-            CharacterDetails.ExMetB_X.value = ExMetB_X_Sav02;
-            CharacterDetails.ExMetB_Y.value = ExMetB_Y_Sav02;
-            CharacterDetails.ExMetB_Z.value = ExMetB_Z_Sav02;
-            CharacterDetails.ExMetB_W.value = ExMetB_W_Sav02;
-            CharacterDetails.ExMetC_X.value = ExMetC_X_Sav02;
-            CharacterDetails.ExMetC_Y.value = ExMetC_Y_Sav02;
-            CharacterDetails.ExMetC_Z.value = ExMetC_Z_Sav02;
-            CharacterDetails.ExMetC_W.value = ExMetC_W_Sav02;
-            CharacterDetails.ExMetD_X.value = ExMetD_X_Sav02;
-            CharacterDetails.ExMetD_Y.value = ExMetD_Y_Sav02;
-            CharacterDetails.ExMetD_Z.value = ExMetD_Z_Sav02;
-            CharacterDetails.ExMetD_W.value = ExMetD_W_Sav02;
-            CharacterDetails.ExMetE_X.value = ExMetE_X_Sav02;
-            CharacterDetails.ExMetE_Y.value = ExMetE_Y_Sav02;
-            CharacterDetails.ExMetE_Z.value = ExMetE_Z_Sav02;
-            CharacterDetails.ExMetE_W.value = ExMetE_W_Sav02;
-            CharacterDetails.ExMetF_X.value = ExMetF_X_Sav02;
-            CharacterDetails.ExMetF_Y.value = ExMetF_Y_Sav02;
-            CharacterDetails.ExMetF_Z.value = ExMetF_Z_Sav02;
-            CharacterDetails.ExMetF_W.value = ExMetF_W_Sav02;
-            CharacterDetails.ExMetG_X.value = ExMetG_X_Sav02;
-            CharacterDetails.ExMetG_Y.value = ExMetG_Y_Sav02;
-            CharacterDetails.ExMetG_Z.value = ExMetG_Z_Sav02;
-            CharacterDetails.ExMetG_W.value = ExMetG_W_Sav02;
-            CharacterDetails.ExMetH_X.value = ExMetH_X_Sav02;
-            CharacterDetails.ExMetH_Y.value = ExMetH_Y_Sav02;
-            CharacterDetails.ExMetH_Z.value = ExMetH_Z_Sav02;
-            CharacterDetails.ExMetH_W.value = ExMetH_W_Sav02;
-            CharacterDetails.ExMetI_X.value = ExMetI_X_Sav02;
-            CharacterDetails.ExMetI_Y.value = ExMetI_Y_Sav02;
-            CharacterDetails.ExMetI_Z.value = ExMetI_Z_Sav02;
-            CharacterDetails.ExMetI_W.value = ExMetI_W_Sav02;
-            CharacterDetails.ExMetJ_X.value = ExMetJ_X_Sav02;
-            CharacterDetails.ExMetJ_Y.value = ExMetJ_Y_Sav02;
-            CharacterDetails.ExMetJ_Z.value = ExMetJ_Z_Sav02;
-            CharacterDetails.ExMetJ_W.value = ExMetJ_W_Sav02;
-            CharacterDetails.ExMetK_X.value = ExMetK_X_Sav02;
-            CharacterDetails.ExMetK_Y.value = ExMetK_Y_Sav02;
-            CharacterDetails.ExMetK_Z.value = ExMetK_Z_Sav02;
-            CharacterDetails.ExMetK_W.value = ExMetK_W_Sav02;
-            CharacterDetails.ExMetL_X.value = ExMetL_X_Sav02;
-            CharacterDetails.ExMetL_Y.value = ExMetL_Y_Sav02;
-            CharacterDetails.ExMetL_Z.value = ExMetL_Z_Sav02;
-            CharacterDetails.ExMetL_W.value = ExMetL_W_Sav02;
-            CharacterDetails.ExMetM_X.value = ExMetM_X_Sav02;
-            CharacterDetails.ExMetM_Y.value = ExMetM_Y_Sav02;
-            CharacterDetails.ExMetM_Z.value = ExMetM_Z_Sav02;
-            CharacterDetails.ExMetM_W.value = ExMetM_W_Sav02;
-            CharacterDetails.ExMetN_X.value = ExMetN_X_Sav02;
-            CharacterDetails.ExMetN_Y.value = ExMetN_Y_Sav02;
-            CharacterDetails.ExMetN_Z.value = ExMetN_Z_Sav02;
-            CharacterDetails.ExMetN_W.value = ExMetN_W_Sav02;
-            CharacterDetails.ExMetO_X.value = ExMetO_X_Sav02;
-            CharacterDetails.ExMetO_Y.value = ExMetO_Y_Sav02;
-            CharacterDetails.ExMetO_Z.value = ExMetO_Z_Sav02;
-            CharacterDetails.ExMetO_W.value = ExMetO_W_Sav02;
-            CharacterDetails.ExMetP_X.value = ExMetP_X_Sav02;
-            CharacterDetails.ExMetP_Y.value = ExMetP_Y_Sav02;
-            CharacterDetails.ExMetP_Z.value = ExMetP_Z_Sav02;
-            CharacterDetails.ExMetP_W.value = ExMetP_W_Sav02;
-            CharacterDetails.ExMetQ_X.value = ExMetQ_X_Sav02;
-            CharacterDetails.ExMetQ_Y.value = ExMetQ_Y_Sav02;
-            CharacterDetails.ExMetQ_Z.value = ExMetQ_Z_Sav02;
-            CharacterDetails.ExMetQ_W.value = ExMetQ_W_Sav02;
-            CharacterDetails.ExMetR_X.value = ExMetR_X_Sav02;
-            CharacterDetails.ExMetR_Y.value = ExMetR_Y_Sav02;
-            CharacterDetails.ExMetR_Z.value = ExMetR_Z_Sav02;
-            CharacterDetails.ExMetR_W.value = ExMetR_W_Sav02;
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 2)
+            {
+                if (ExMetA_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetA_X), MemoryManager.StringToByteArray(ExMetA_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 3)
+            {
+                if (ExMetB_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetB_X), MemoryManager.StringToByteArray(ExMetB_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 4)
+            {
+                if (ExMetC_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetC_X), MemoryManager.StringToByteArray(ExMetC_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 5)
+            {
+                if (ExMetD_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetD_X), MemoryManager.StringToByteArray(ExMetD_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 6)
+            {
+                if (ExMetE_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetE_X), MemoryManager.StringToByteArray(ExMetE_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 7)
+            {
+                if (ExMetF_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetF_X), MemoryManager.StringToByteArray(ExMetF_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 8)
+            {
+                if (ExMetG_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetG_X), MemoryManager.StringToByteArray(ExMetG_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 9)
+            {
+                if (ExMetH_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetH_X), MemoryManager.StringToByteArray(ExMetH_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 10)
+            {
+                if (ExMetI_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetI_X), MemoryManager.StringToByteArray(ExMetI_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 11)
+            {
+                if (ExMetJ_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetJ_X), MemoryManager.StringToByteArray(ExMetJ_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 12)
+            {
+                if (ExMetK_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetK_X), MemoryManager.StringToByteArray(ExMetK_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 13)
+            {
+                if (ExMetL_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetL_X), MemoryManager.StringToByteArray(ExMetL_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 14)
+            {
+                if (ExMetM_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetM_X), MemoryManager.StringToByteArray(ExMetM_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 15)
+            {
+                if (ExMetN_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetN_X), MemoryManager.StringToByteArray(ExMetN_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 16)
+            {
+                if (ExMetO_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetO_X), MemoryManager.StringToByteArray(ExMetO_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 17)
+            {
+                if (ExMetP_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetP_X), MemoryManager.StringToByteArray(ExMetP_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 18)
+            {
+                if (ExMetQ_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetQ_X), MemoryManager.StringToByteArray(ExMetQ_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 19)
+            {
+                if (ExMetR_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetR_X), MemoryManager.StringToByteArray(ExMetR_Sav02.Replace(" ", string.Empty)));
+                }
+            }
         }
         #endregion
         #region Savestate\Loadstate Top
         private void SavestateTop01_Click(object sender, RoutedEventArgs e)
         {
-            CharacterDetails.SaveTop01 = true;
             TopSaved01 = true;
-
             if (CharacterDetails.BoneEditMode) LoadstateTop01.IsEnabled = true;
+
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 1)
+            {
+                ExRootTop_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExRootTop_X), 16));
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 2)
+            {
+                ExTopA_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopA_X), 16));
+            }
+            else
+            {
+                ExTopA_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 3)
+            {
+                ExTopB_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopB_X), 16));
+            }
+            else
+            {
+                ExTopB_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 4)
+            {
+                ExTopC_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopC_X), 16));
+            }
+            else
+            {
+                ExTopC_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 5)
+            {
+                ExTopD_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopD_X), 16));
+            }
+            else
+            {
+                ExTopD_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 6)
+            {
+                ExTopE_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopE_X), 16));
+            }
+            else
+            {
+                ExTopE_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 7)
+            {
+                ExTopF_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopF_X), 16));
+            }
+            else
+            {
+                ExTopF_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 8)
+            {
+                ExTopG_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopG_X), 16));
+            }
+            else
+            {
+                ExTopG_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 9)
+            {
+                ExTopH_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopH_X), 16));
+            }
+            else
+            {
+                ExTopH_Sav01 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 10)
+            {
+                ExTopI_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopI_X), 16));
+            }
+            else
+            {
+                ExTopI_Sav01 = "null";
+            }
+            if (ExRootTop_Sav01 == null)
+            {
+                ExRootTop_Sav01 = "null";
+                ExTopA_Sav01 = "null";
+                ExTopB_Sav01 = "null";
+                ExTopC_Sav01 = "null";
+                ExTopD_Sav01 = "null";
+                ExTopE_Sav01 = "null";
+                ExTopF_Sav01 = "null";
+                ExTopG_Sav01 = "null";
+                ExTopH_Sav01 = "null";
+                ExTopI_Sav01 = "null";
+            }
         }
         private void SavestateTop02_Click(object sender, RoutedEventArgs e)
         {
-            CharacterDetails.SaveTop02 = true;
             TopSaved02 = true;
-
             if (CharacterDetails.BoneEditMode) LoadstateTop02.IsEnabled = true;
+
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 1)
+            {
+                ExRootTop_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExRootTop_X), 16));
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 2)
+            {
+                ExTopA_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopA_X), 16));
+            }
+            else
+            {
+                ExTopA_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 3)
+            {
+                ExTopB_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopB_X), 16));
+            }
+            else
+            {
+                ExTopB_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 4)
+            {
+                ExTopC_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopC_X), 16));
+            }
+            else
+            {
+                ExTopC_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 5)
+            {
+                ExTopD_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopD_X), 16));
+            }
+            else
+            {
+                ExTopD_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 6)
+            {
+                ExTopE_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopE_X), 16));
+            }
+            else
+            {
+                ExTopE_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 7)
+            {
+                ExTopF_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopF_X), 16));
+            }
+            else
+            {
+                ExTopF_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 8)
+            {
+                ExTopG_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopG_X), 16));
+            }
+            else
+            {
+                ExTopG_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 9)
+            {
+                ExTopH_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopH_X), 16));
+            }
+            else
+            {
+                ExTopH_Sav02 = "null";
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 10)
+            {
+                ExTopI_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopI_X), 16));
+            }
+            else
+            {
+                ExTopI_Sav02 = "null";
+            }
+            if (ExRootTop_Sav02 == null)
+            {
+                ExRootTop_Sav02 = "null";
+                ExTopA_Sav02 = "null";
+                ExTopB_Sav02 = "null";
+                ExTopC_Sav02 = "null";
+                ExTopD_Sav02 = "null";
+                ExTopE_Sav02 = "null";
+                ExTopF_Sav02 = "null";
+                ExTopG_Sav02 = "null";
+                ExTopH_Sav02 = "null";
+                ExTopI_Sav02 = "null";
+            }
         }
         private void LoadstateTop01_Click(object sender, RoutedEventArgs e)
         {
             UncheckAll();
-            CharacterDetails.WriteTop = true;
-
-            CharacterDetails.ExTopA_X.value = ExTopA_X_Sav01;
-            CharacterDetails.ExTopA_Y.value = ExTopA_Y_Sav01;
-            CharacterDetails.ExTopA_Z.value = ExTopA_Z_Sav01;
-            CharacterDetails.ExTopA_W.value = ExTopA_W_Sav01;
-            CharacterDetails.ExTopB_X.value = ExTopB_X_Sav01;
-            CharacterDetails.ExTopB_Y.value = ExTopB_Y_Sav01;
-            CharacterDetails.ExTopB_Z.value = ExTopB_Z_Sav01;
-            CharacterDetails.ExTopB_W.value = ExTopB_W_Sav01;
-            CharacterDetails.ExTopC_X.value = ExTopC_X_Sav01;
-            CharacterDetails.ExTopC_Y.value = ExTopC_Y_Sav01;
-            CharacterDetails.ExTopC_Z.value = ExTopC_Z_Sav01;
-            CharacterDetails.ExTopC_W.value = ExTopC_W_Sav01;
-            CharacterDetails.ExTopD_X.value = ExTopD_X_Sav01;
-            CharacterDetails.ExTopD_Y.value = ExTopD_Y_Sav01;
-            CharacterDetails.ExTopD_Z.value = ExTopD_Z_Sav01;
-            CharacterDetails.ExTopD_W.value = ExTopD_W_Sav01;
-            CharacterDetails.ExTopE_X.value = ExTopE_X_Sav01;
-            CharacterDetails.ExTopE_Y.value = ExTopE_Y_Sav01;
-            CharacterDetails.ExTopE_Z.value = ExTopE_Z_Sav01;
-            CharacterDetails.ExTopE_W.value = ExTopE_W_Sav01;
-            CharacterDetails.ExTopF_X.value = ExTopF_X_Sav01;
-            CharacterDetails.ExTopF_Y.value = ExTopF_Y_Sav01;
-            CharacterDetails.ExTopF_Z.value = ExTopF_Z_Sav01;
-            CharacterDetails.ExTopF_W.value = ExTopF_W_Sav01;
-            CharacterDetails.ExTopG_X.value = ExTopG_X_Sav01;
-            CharacterDetails.ExTopG_Y.value = ExTopG_Y_Sav01;
-            CharacterDetails.ExTopG_Z.value = ExTopG_Z_Sav01;
-            CharacterDetails.ExTopG_W.value = ExTopG_W_Sav01;
-            CharacterDetails.ExTopH_X.value = ExTopH_X_Sav01;
-            CharacterDetails.ExTopH_Y.value = ExTopH_Y_Sav01;
-            CharacterDetails.ExTopH_Z.value = ExTopH_Z_Sav01;
-            CharacterDetails.ExTopH_W.value = ExTopH_W_Sav01;
-            CharacterDetails.ExTopI_X.value = ExTopI_X_Sav01;
-            CharacterDetails.ExTopI_Y.value = ExTopI_Y_Sav01;
-            CharacterDetails.ExTopI_Z.value = ExTopI_Z_Sav01;
-            CharacterDetails.ExTopI_W.value = ExTopI_W_Sav01;
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 2)
+            {
+                if (ExTopA_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopA_X), MemoryManager.StringToByteArray(ExTopA_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 3)
+            {
+                if (ExTopB_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopB_X), MemoryManager.StringToByteArray(ExTopB_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 4)
+            {
+                if (ExTopC_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopC_X), MemoryManager.StringToByteArray(ExTopC_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 5)
+            {
+                if (ExTopD_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopD_X), MemoryManager.StringToByteArray(ExTopD_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 6)
+            {
+                if (ExTopE_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopE_X), MemoryManager.StringToByteArray(ExTopE_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 7)
+            {
+                if (ExTopF_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopF_X), MemoryManager.StringToByteArray(ExTopF_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 8)
+            {
+                if (ExTopG_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopG_X), MemoryManager.StringToByteArray(ExTopG_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 9)
+            {
+                if (ExTopH_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopH_X), MemoryManager.StringToByteArray(ExTopH_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 10)
+            {
+                if (ExTopI_Sav01 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopI_X), MemoryManager.StringToByteArray(ExTopI_Sav01.Replace(" ", string.Empty)));
+                }
+            }
         }
         private void LoadstateTop02_Click(object sender, RoutedEventArgs e)
         {
             UncheckAll();
-            CharacterDetails.WriteTop = true;
-
-            CharacterDetails.ExTopA_X.value = ExTopA_X_Sav02;
-            CharacterDetails.ExTopA_Y.value = ExTopA_Y_Sav02;
-            CharacterDetails.ExTopA_Z.value = ExTopA_Z_Sav02;
-            CharacterDetails.ExTopA_W.value = ExTopA_W_Sav02;
-            CharacterDetails.ExTopB_X.value = ExTopB_X_Sav02;
-            CharacterDetails.ExTopB_Y.value = ExTopB_Y_Sav02;
-            CharacterDetails.ExTopB_Z.value = ExTopB_Z_Sav02;
-            CharacterDetails.ExTopB_W.value = ExTopB_W_Sav02;
-            CharacterDetails.ExTopC_X.value = ExTopC_X_Sav02;
-            CharacterDetails.ExTopC_Y.value = ExTopC_Y_Sav02;
-            CharacterDetails.ExTopC_Z.value = ExTopC_Z_Sav02;
-            CharacterDetails.ExTopC_W.value = ExTopC_W_Sav02;
-            CharacterDetails.ExTopD_X.value = ExTopD_X_Sav02;
-            CharacterDetails.ExTopD_Y.value = ExTopD_Y_Sav02;
-            CharacterDetails.ExTopD_Z.value = ExTopD_Z_Sav02;
-            CharacterDetails.ExTopD_W.value = ExTopD_W_Sav02;
-            CharacterDetails.ExTopE_X.value = ExTopE_X_Sav02;
-            CharacterDetails.ExTopE_Y.value = ExTopE_Y_Sav02;
-            CharacterDetails.ExTopE_Z.value = ExTopE_Z_Sav02;
-            CharacterDetails.ExTopE_W.value = ExTopE_W_Sav02;
-            CharacterDetails.ExTopF_X.value = ExTopF_X_Sav02;
-            CharacterDetails.ExTopF_Y.value = ExTopF_Y_Sav02;
-            CharacterDetails.ExTopF_Z.value = ExTopF_Z_Sav02;
-            CharacterDetails.ExTopF_W.value = ExTopF_W_Sav02;
-            CharacterDetails.ExTopG_X.value = ExTopG_X_Sav02;
-            CharacterDetails.ExTopG_Y.value = ExTopG_Y_Sav02;
-            CharacterDetails.ExTopG_Z.value = ExTopG_Z_Sav02;
-            CharacterDetails.ExTopG_W.value = ExTopG_W_Sav02;
-            CharacterDetails.ExTopH_X.value = ExTopH_X_Sav02;
-            CharacterDetails.ExTopH_Y.value = ExTopH_Y_Sav02;
-            CharacterDetails.ExTopH_Z.value = ExTopH_Z_Sav02;
-            CharacterDetails.ExTopH_W.value = ExTopH_W_Sav02;
-            CharacterDetails.ExTopI_X.value = ExTopI_X_Sav02;
-            CharacterDetails.ExTopI_Y.value = ExTopI_Y_Sav02;
-            CharacterDetails.ExTopI_Z.value = ExTopI_Z_Sav02;
-            CharacterDetails.ExTopI_W.value = ExTopI_W_Sav02;
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 2)
+            {
+                if (ExTopA_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopA_X), MemoryManager.StringToByteArray(ExTopA_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 3)
+            {
+                if (ExTopB_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopB_X), MemoryManager.StringToByteArray(ExTopB_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 4)
+            {
+                if (ExTopC_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopC_X), MemoryManager.StringToByteArray(ExTopC_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 5)
+            {
+                if (ExTopD_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopD_X), MemoryManager.StringToByteArray(ExTopD_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 6)
+            {
+                if (ExTopE_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopE_X), MemoryManager.StringToByteArray(ExTopE_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 7)
+            {
+                if (ExTopF_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopF_X), MemoryManager.StringToByteArray(ExTopF_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 8)
+            {
+                if (ExTopG_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopG_X), MemoryManager.StringToByteArray(ExTopG_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 9)
+            {
+                if (ExTopH_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopH_X), MemoryManager.StringToByteArray(ExTopH_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 10)
+            {
+                if (ExTopI_Sav02 != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopI_X), MemoryManager.StringToByteArray(ExTopI_Sav02.Replace(" ", string.Empty)));
+                }
+            }
         }
         #endregion
 
@@ -23635,8 +23091,7 @@ namespace ConceptMatrix.Views
                 #endregion
                 #region LeftArm
                 BoneSaver.ClavicleLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClavicleLeft_X), 16));
-                BoneSaver.ArmLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ArmLeft_X), 16));
-                BoneSaver.ArmRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ArmRight_X), 16));
+                BoneSaver.ArmLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ArmLeft_X), 16));                
                 BoneSaver.PauldronLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PauldronLeft_X), 16));
                 BoneSaver.ForearmLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ForearmLeft_X), 16));
                 BoneSaver.ShoulderLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShoulderLeft_X), 16));
@@ -23647,8 +23102,7 @@ namespace ConceptMatrix.Views
                 #endregion
                 #region RightArm
                 BoneSaver.ClavicleRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClavicleRight_X), 16));
-                BoneSaver.ArmRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ArmRight_X), 16));
-                BoneSaver.ArmRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ArmRight_X), 16));
+                BoneSaver.ArmRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ArmRight_X), 16));                
                 BoneSaver.PauldronRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PauldronRight_X), 16));
                 BoneSaver.ForearmRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ForearmRight_X), 16));
                 BoneSaver.ShoulderRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShoulderRight_X), 16));
@@ -24256,406 +23710,406 @@ namespace ConceptMatrix.Views
                 #endregion
                 #region Hair
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairA_X), MemoryManager.StringToByteArray(BoneLoader.HairA.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontLeft_X), MemoryManager.StringToByteArray(BoneLoader.HairFrontLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontRight_X), MemoryManager.StringToByteArray(BoneLoader.HairFrontRight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairB_X), MemoryManager.StringToByteArray(BoneLoader.HairB.Replace(" ", string.Empty)));
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 2)
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontLeft_X), MemoryManager.StringToByteArray(BoneLoader.HairFrontLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontRight_X), MemoryManager.StringToByteArray(BoneLoader.HairFrontRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairB_X), MemoryManager.StringToByteArray(BoneLoader.HairB.Replace(" ", string.Empty)));
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 2)
+                {
+                    if (BoneLoader.ExHairA != "null")
                     {
-                        if (BoneLoader.ExHairA != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairA_X), MemoryManager.StringToByteArray(BoneLoader.ExHairA.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairA_X), MemoryManager.StringToByteArray(BoneLoader.ExHairA.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 3)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 3)
+                {
+                    if (BoneLoader.ExHairB != "null")
                     {
-                        if (BoneLoader.ExHairB != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairB_X), MemoryManager.StringToByteArray(BoneLoader.ExHairB.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairB_X), MemoryManager.StringToByteArray(BoneLoader.ExHairB.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 4)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 4)
+                {
+                    if (BoneLoader.ExHairC != "null")
                     {
-                        if (BoneLoader.ExHairC != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairC_X), MemoryManager.StringToByteArray(BoneLoader.ExHairC.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairC_X), MemoryManager.StringToByteArray(BoneLoader.ExHairC.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 5)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 5)
+                {
+                    if (BoneLoader.ExHairD != "null")
                     {
-                        if (BoneLoader.ExHairD != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairD_X), MemoryManager.StringToByteArray(BoneLoader.ExHairD.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairD_X), MemoryManager.StringToByteArray(BoneLoader.ExHairD.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 6)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 6)
+                {
+                    if (BoneLoader.ExHairE != "null")
                     {
-                        if (BoneLoader.ExHairE != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairE_X), MemoryManager.StringToByteArray(BoneLoader.ExHairE.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairE_X), MemoryManager.StringToByteArray(BoneLoader.ExHairE.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 7)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 7)
+                {
+                    if (BoneLoader.ExHairF != "null")
                     {
-                        if (BoneLoader.ExHairF != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairF_X), MemoryManager.StringToByteArray(BoneLoader.ExHairF.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairF_X), MemoryManager.StringToByteArray(BoneLoader.ExHairF.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 8)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 8)
+                {
+                    if (BoneLoader.ExHairG != "null")
                     {
-                        if (BoneLoader.ExHairG != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairG_X), MemoryManager.StringToByteArray(BoneLoader.ExHairG.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairG_X), MemoryManager.StringToByteArray(BoneLoader.ExHairG.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 9)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 9)
+                {
+                    if (BoneLoader.ExHairH != "null")
                     {
-                        if (BoneLoader.ExHairH != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairH_X), MemoryManager.StringToByteArray(BoneLoader.ExHairH.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairH_X), MemoryManager.StringToByteArray(BoneLoader.ExHairH.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 10)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 10)
+                {
+                    if (BoneLoader.ExHairI != "null")
                     {
-                        if (BoneLoader.ExHairI != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairI_X), MemoryManager.StringToByteArray(BoneLoader.ExHairI.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairI_X), MemoryManager.StringToByteArray(BoneLoader.ExHairI.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 11)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 11)
+                {
+                    if (BoneLoader.ExHairJ != "null")
                     {
-                        if (BoneLoader.ExHairJ != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairJ_X), MemoryManager.StringToByteArray(BoneLoader.ExHairJ.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairJ_X), MemoryManager.StringToByteArray(BoneLoader.ExHairJ.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 12)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 12)
+                {
+                    if (BoneLoader.ExHairK != "null")
                     {
-                        if (BoneLoader.ExHairK != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairK_X), MemoryManager.StringToByteArray(BoneLoader.ExHairK.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairK_X), MemoryManager.StringToByteArray(BoneLoader.ExHairK.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 13)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 13)
+                {
+                    if (BoneLoader.ExHairL != "null")
                     {
-                        if (BoneLoader.ExHairL != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairL_X), MemoryManager.StringToByteArray(BoneLoader.ExHairL.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairL_X), MemoryManager.StringToByteArray(BoneLoader.ExHairL.Replace(" ", string.Empty)));
                     }
+                }
                 #endregion
                 #region Earrings
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringALeft_X), MemoryManager.StringToByteArray(BoneLoader.EarringALeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringARight_X), MemoryManager.StringToByteArray(BoneLoader.EarringARight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringBLeft_X), MemoryManager.StringToByteArray(BoneLoader.EarringBLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringBRight_X), MemoryManager.StringToByteArray(BoneLoader.EarringBRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringARight_X), MemoryManager.StringToByteArray(BoneLoader.EarringARight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringBLeft_X), MemoryManager.StringToByteArray(BoneLoader.EarringBLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringBRight_X), MemoryManager.StringToByteArray(BoneLoader.EarringBRight.Replace(" ", string.Empty)));
                 #endregion
                 #region Body
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SpineA_X), MemoryManager.StringToByteArray(BoneLoader.SpineA.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SpineB_X), MemoryManager.StringToByteArray(BoneLoader.SpineB.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BreastLeft_X), MemoryManager.StringToByteArray(BoneLoader.BreastLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BreastRight_X), MemoryManager.StringToByteArray(BoneLoader.BreastRight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SpineC_X), MemoryManager.StringToByteArray(BoneLoader.SpineC.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ScabbardLeft_X), MemoryManager.StringToByteArray(BoneLoader.ScabbardLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ScabbardRight_X), MemoryManager.StringToByteArray(BoneLoader.ScabbardRight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Neck_X), MemoryManager.StringToByteArray(BoneLoader.Neck.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SpineB_X), MemoryManager.StringToByteArray(BoneLoader.SpineB.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BreastLeft_X), MemoryManager.StringToByteArray(BoneLoader.BreastLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BreastRight_X), MemoryManager.StringToByteArray(BoneLoader.BreastRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SpineC_X), MemoryManager.StringToByteArray(BoneLoader.SpineC.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ScabbardLeft_X), MemoryManager.StringToByteArray(BoneLoader.ScabbardLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ScabbardRight_X), MemoryManager.StringToByteArray(BoneLoader.ScabbardRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Neck_X), MemoryManager.StringToByteArray(BoneLoader.Neck.Replace(" ", string.Empty)));
                 #endregion
                 #region LeftArm
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClavicleLeft_X), MemoryManager.StringToByteArray(BoneLoader.ClavicleLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ArmLeft_X), MemoryManager.StringToByteArray(BoneLoader.ArmLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PauldronLeft_X), MemoryManager.StringToByteArray(BoneLoader.PauldronLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ForearmLeft_X), MemoryManager.StringToByteArray(BoneLoader.ForearmLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShoulderLeft_X), MemoryManager.StringToByteArray(BoneLoader.ShoulderLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShieldLeft_X), MemoryManager.StringToByteArray(BoneLoader.ShieldLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ElbowLeft_X), MemoryManager.StringToByteArray(BoneLoader.ElbowLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CouterLeft_X), MemoryManager.StringToByteArray(BoneLoader.CouterLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristLeft_X), MemoryManager.StringToByteArray(BoneLoader.WristLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ArmLeft_X), MemoryManager.StringToByteArray(BoneLoader.ArmLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PauldronLeft_X), MemoryManager.StringToByteArray(BoneLoader.PauldronLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ForearmLeft_X), MemoryManager.StringToByteArray(BoneLoader.ForearmLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShoulderLeft_X), MemoryManager.StringToByteArray(BoneLoader.ShoulderLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShieldLeft_X), MemoryManager.StringToByteArray(BoneLoader.ShieldLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ElbowLeft_X), MemoryManager.StringToByteArray(BoneLoader.ElbowLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CouterLeft_X), MemoryManager.StringToByteArray(BoneLoader.CouterLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristLeft_X), MemoryManager.StringToByteArray(BoneLoader.WristLeft.Replace(" ", string.Empty)));
                 #endregion
                 #region RightArm
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClavicleRight_X), MemoryManager.StringToByteArray(BoneLoader.ClavicleRight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ArmRight_X), MemoryManager.StringToByteArray(BoneLoader.ArmRight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PauldronRight_X), MemoryManager.StringToByteArray(BoneLoader.PauldronRight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ForearmRight_X), MemoryManager.StringToByteArray(BoneLoader.ForearmRight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShoulderRight_X), MemoryManager.StringToByteArray(BoneLoader.ShoulderRight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShieldRight_X), MemoryManager.StringToByteArray(BoneLoader.ShieldRight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ElbowRight_X), MemoryManager.StringToByteArray(BoneLoader.ElbowRight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CouterRight_X), MemoryManager.StringToByteArray(BoneLoader.CouterRight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristRight_X), MemoryManager.StringToByteArray(BoneLoader.WristRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ArmRight_X), MemoryManager.StringToByteArray(BoneLoader.ArmRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PauldronRight_X), MemoryManager.StringToByteArray(BoneLoader.PauldronRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ForearmRight_X), MemoryManager.StringToByteArray(BoneLoader.ForearmRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShoulderRight_X), MemoryManager.StringToByteArray(BoneLoader.ShoulderRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ShieldRight_X), MemoryManager.StringToByteArray(BoneLoader.ShieldRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ElbowRight_X), MemoryManager.StringToByteArray(BoneLoader.ElbowRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CouterRight_X), MemoryManager.StringToByteArray(BoneLoader.CouterRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristRight_X), MemoryManager.StringToByteArray(BoneLoader.WristRight.Replace(" ", string.Empty)));
                 #endregion
                 #region Clothes
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackALeft_X), MemoryManager.StringToByteArray(BoneLoader.ClothBackALeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackARight_X), MemoryManager.StringToByteArray(BoneLoader.ClothBackARight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontALeft_X), MemoryManager.StringToByteArray(BoneLoader.ClothFrontALeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontARight_X), MemoryManager.StringToByteArray(BoneLoader.ClothFrontARight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideALeft_X), MemoryManager.StringToByteArray(BoneLoader.ClothSideALeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideARight_X), MemoryManager.StringToByteArray(BoneLoader.ClothSideARight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackBLeft_X), MemoryManager.StringToByteArray(BoneLoader.ClothBackBLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackBRight_X), MemoryManager.StringToByteArray(BoneLoader.ClothBackBRight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontBLeft_X), MemoryManager.StringToByteArray(BoneLoader.ClothFrontBLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontBRight_X), MemoryManager.StringToByteArray(BoneLoader.ClothFrontBRight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideBLeft_X), MemoryManager.StringToByteArray(BoneLoader.ClothSideBLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideBRight_X), MemoryManager.StringToByteArray(BoneLoader.ClothSideBRight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackCLeft_X), MemoryManager.StringToByteArray(BoneLoader.ClothBackCLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackCRight_X), MemoryManager.StringToByteArray(BoneLoader.ClothBackCRight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontCLeft_X), MemoryManager.StringToByteArray(BoneLoader.ClothFrontCLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontCRight_X), MemoryManager.StringToByteArray(BoneLoader.ClothFrontCRight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideCLeft_X), MemoryManager.StringToByteArray(BoneLoader.ClothSideCLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideCRight_X), MemoryManager.StringToByteArray(BoneLoader.ClothSideCRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackARight_X), MemoryManager.StringToByteArray(BoneLoader.ClothBackARight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontALeft_X), MemoryManager.StringToByteArray(BoneLoader.ClothFrontALeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontARight_X), MemoryManager.StringToByteArray(BoneLoader.ClothFrontARight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideALeft_X), MemoryManager.StringToByteArray(BoneLoader.ClothSideALeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideARight_X), MemoryManager.StringToByteArray(BoneLoader.ClothSideARight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackBLeft_X), MemoryManager.StringToByteArray(BoneLoader.ClothBackBLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackBRight_X), MemoryManager.StringToByteArray(BoneLoader.ClothBackBRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontBLeft_X), MemoryManager.StringToByteArray(BoneLoader.ClothFrontBLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontBRight_X), MemoryManager.StringToByteArray(BoneLoader.ClothFrontBRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideBLeft_X), MemoryManager.StringToByteArray(BoneLoader.ClothSideBLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideBRight_X), MemoryManager.StringToByteArray(BoneLoader.ClothSideBRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackCLeft_X), MemoryManager.StringToByteArray(BoneLoader.ClothBackCLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackCRight_X), MemoryManager.StringToByteArray(BoneLoader.ClothBackCRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontCLeft_X), MemoryManager.StringToByteArray(BoneLoader.ClothFrontCLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontCRight_X), MemoryManager.StringToByteArray(BoneLoader.ClothFrontCRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideCLeft_X), MemoryManager.StringToByteArray(BoneLoader.ClothSideCLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideCRight_X), MemoryManager.StringToByteArray(BoneLoader.ClothSideCRight.Replace(" ", string.Empty)));
                 #endregion
                 #region Weapons
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WeaponLeft_X), MemoryManager.StringToByteArray(BoneLoader.WeaponLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WeaponRight_X), MemoryManager.StringToByteArray(BoneLoader.WeaponRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WeaponRight_X), MemoryManager.StringToByteArray(BoneLoader.WeaponRight.Replace(" ", string.Empty)));
                 #endregion
                 #region LeftHand
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HandLeft_X), MemoryManager.StringToByteArray(BoneLoader.HandLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexALeft_X), MemoryManager.StringToByteArray(BoneLoader.IndexALeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyALeft_X), MemoryManager.StringToByteArray(BoneLoader.PinkyALeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingALeft_X), MemoryManager.StringToByteArray(BoneLoader.RingALeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleALeft_X), MemoryManager.StringToByteArray(BoneLoader.MiddleALeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbALeft_X), MemoryManager.StringToByteArray(BoneLoader.ThumbALeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexBLeft_X), MemoryManager.StringToByteArray(BoneLoader.IndexBLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyBLeft_X), MemoryManager.StringToByteArray(BoneLoader.PinkyBLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingBLeft_X), MemoryManager.StringToByteArray(BoneLoader.RingBLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBLeft_X), MemoryManager.StringToByteArray(BoneLoader.MiddleBLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBLeft_X), MemoryManager.StringToByteArray(BoneLoader.ThumbBLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexALeft_X), MemoryManager.StringToByteArray(BoneLoader.IndexALeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyALeft_X), MemoryManager.StringToByteArray(BoneLoader.PinkyALeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingALeft_X), MemoryManager.StringToByteArray(BoneLoader.RingALeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleALeft_X), MemoryManager.StringToByteArray(BoneLoader.MiddleALeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbALeft_X), MemoryManager.StringToByteArray(BoneLoader.ThumbALeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexBLeft_X), MemoryManager.StringToByteArray(BoneLoader.IndexBLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyBLeft_X), MemoryManager.StringToByteArray(BoneLoader.PinkyBLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingBLeft_X), MemoryManager.StringToByteArray(BoneLoader.RingBLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBLeft_X), MemoryManager.StringToByteArray(BoneLoader.MiddleBLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBLeft_X), MemoryManager.StringToByteArray(BoneLoader.ThumbBLeft.Replace(" ", string.Empty)));
                 #endregion
                 #region RightHand
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HandRight_X), MemoryManager.StringToByteArray(BoneLoader.HandRight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexARight_X), MemoryManager.StringToByteArray(BoneLoader.IndexARight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyARight_X), MemoryManager.StringToByteArray(BoneLoader.PinkyARight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingARight_X), MemoryManager.StringToByteArray(BoneLoader.RingARight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleARight_X), MemoryManager.StringToByteArray(BoneLoader.MiddleARight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbARight_X), MemoryManager.StringToByteArray(BoneLoader.ThumbARight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexBRight_X), MemoryManager.StringToByteArray(BoneLoader.IndexBRight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyBRight_X), MemoryManager.StringToByteArray(BoneLoader.PinkyBRight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingBRight_X), MemoryManager.StringToByteArray(BoneLoader.RingBRight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBRight_X), MemoryManager.StringToByteArray(BoneLoader.MiddleBRight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBRight_X), MemoryManager.StringToByteArray(BoneLoader.ThumbBRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexARight_X), MemoryManager.StringToByteArray(BoneLoader.IndexARight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyARight_X), MemoryManager.StringToByteArray(BoneLoader.PinkyARight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingARight_X), MemoryManager.StringToByteArray(BoneLoader.RingARight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleARight_X), MemoryManager.StringToByteArray(BoneLoader.MiddleARight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbARight_X), MemoryManager.StringToByteArray(BoneLoader.ThumbARight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexBRight_X), MemoryManager.StringToByteArray(BoneLoader.IndexBRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyBRight_X), MemoryManager.StringToByteArray(BoneLoader.PinkyBRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingBRight_X), MemoryManager.StringToByteArray(BoneLoader.RingBRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBRight_X), MemoryManager.StringToByteArray(BoneLoader.MiddleBRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBRight_X), MemoryManager.StringToByteArray(BoneLoader.ThumbBRight.Replace(" ", string.Empty)));
                 #endregion
                 #region Waist
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Waist_X), MemoryManager.StringToByteArray(BoneLoader.Waist.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HolsterLeft_X), MemoryManager.StringToByteArray(BoneLoader.HolsterLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HolsterRight_X), MemoryManager.StringToByteArray(BoneLoader.HolsterRight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SheatheLeft_X), MemoryManager.StringToByteArray(BoneLoader.SheatheLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SheatheRight_X), MemoryManager.StringToByteArray(BoneLoader.SheatheRight.Replace(" ", string.Empty)));
-                    if (BoneLoader.TailA != "null")
-                    {
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailA_X), MemoryManager.StringToByteArray(BoneLoader.TailA.Replace(" ", string.Empty)));
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailB_X), MemoryManager.StringToByteArray(BoneLoader.TailB.Replace(" ", string.Empty)));
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailC_X), MemoryManager.StringToByteArray(BoneLoader.TailC.Replace(" ", string.Empty)));
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailD_X), MemoryManager.StringToByteArray(BoneLoader.TailD.Replace(" ", string.Empty)));
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailE_X), MemoryManager.StringToByteArray(BoneLoader.TailE.Replace(" ", string.Empty)));
-                    }
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HolsterLeft_X), MemoryManager.StringToByteArray(BoneLoader.HolsterLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HolsterRight_X), MemoryManager.StringToByteArray(BoneLoader.HolsterRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SheatheLeft_X), MemoryManager.StringToByteArray(BoneLoader.SheatheLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SheatheRight_X), MemoryManager.StringToByteArray(BoneLoader.SheatheRight.Replace(" ", string.Empty)));
+                if (BoneLoader.TailA != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailA_X), MemoryManager.StringToByteArray(BoneLoader.TailA.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailB_X), MemoryManager.StringToByteArray(BoneLoader.TailB.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailC_X), MemoryManager.StringToByteArray(BoneLoader.TailC.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailD_X), MemoryManager.StringToByteArray(BoneLoader.TailD.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailE_X), MemoryManager.StringToByteArray(BoneLoader.TailE.Replace(" ", string.Empty)));
+                }
                 #endregion
                 #region LeftLeg
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LegLeft_X), MemoryManager.StringToByteArray(BoneLoader.LegLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.KneeLeft_X), MemoryManager.StringToByteArray(BoneLoader.KneeLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CalfLeft_X), MemoryManager.StringToByteArray(BoneLoader.CalfLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PoleynLeft_X), MemoryManager.StringToByteArray(BoneLoader.PoleynLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.FootLeft_X), MemoryManager.StringToByteArray(BoneLoader.FootLeft.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ToesLeft_X), MemoryManager.StringToByteArray(BoneLoader.ToesLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.KneeLeft_X), MemoryManager.StringToByteArray(BoneLoader.KneeLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CalfLeft_X), MemoryManager.StringToByteArray(BoneLoader.CalfLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PoleynLeft_X), MemoryManager.StringToByteArray(BoneLoader.PoleynLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.FootLeft_X), MemoryManager.StringToByteArray(BoneLoader.FootLeft.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ToesLeft_X), MemoryManager.StringToByteArray(BoneLoader.ToesLeft.Replace(" ", string.Empty)));
                 #endregion
                 #region RightLeg
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LegRight_X), MemoryManager.StringToByteArray(BoneLoader.LegRight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.KneeRight_X), MemoryManager.StringToByteArray(BoneLoader.KneeRight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CalfRight_X), MemoryManager.StringToByteArray(BoneLoader.CalfRight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PoleynRight_X), MemoryManager.StringToByteArray(BoneLoader.PoleynRight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.FootRight_X), MemoryManager.StringToByteArray(BoneLoader.FootRight.Replace(" ", string.Empty)));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ToesRight_X), MemoryManager.StringToByteArray(BoneLoader.ToesRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.KneeRight_X), MemoryManager.StringToByteArray(BoneLoader.KneeRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CalfRight_X), MemoryManager.StringToByteArray(BoneLoader.CalfRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PoleynRight_X), MemoryManager.StringToByteArray(BoneLoader.PoleynRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.FootRight_X), MemoryManager.StringToByteArray(BoneLoader.FootRight.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ToesRight_X), MemoryManager.StringToByteArray(BoneLoader.ToesRight.Replace(" ", string.Empty)));
                 #endregion
                 #region Helm
                 if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 2)
+                {
+                    if (BoneLoader.ExMetA != "null")
                     {
-                        if (BoneLoader.ExMetA != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetA_X), MemoryManager.StringToByteArray(BoneLoader.ExMetA.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetA_X), MemoryManager.StringToByteArray(BoneLoader.ExMetA.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 3)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 3)
+                {
+                    if (BoneLoader.ExMetB != "null")
                     {
-                        if (BoneLoader.ExMetB != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetB_X), MemoryManager.StringToByteArray(BoneLoader.ExMetB.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetB_X), MemoryManager.StringToByteArray(BoneLoader.ExMetB.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 4)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 4)
+                {
+                    if (BoneLoader.ExMetC != "null")
                     {
-                        if (BoneLoader.ExMetC != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetC_X), MemoryManager.StringToByteArray(BoneLoader.ExMetC.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetC_X), MemoryManager.StringToByteArray(BoneLoader.ExMetC.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 5)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 5)
+                {
+                    if (BoneLoader.ExMetD != "null")
                     {
-                        if (BoneLoader.ExMetD != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetD_X), MemoryManager.StringToByteArray(BoneLoader.ExMetD.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetD_X), MemoryManager.StringToByteArray(BoneLoader.ExMetD.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 6)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 6)
+                {
+                    if (BoneLoader.ExMetE != "null")
                     {
-                        if (BoneLoader.ExMetE != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetE_X), MemoryManager.StringToByteArray(BoneLoader.ExMetE.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetE_X), MemoryManager.StringToByteArray(BoneLoader.ExMetE.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 7)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 7)
+                {
+                    if (BoneLoader.ExMetF != "null")
                     {
-                        if (BoneLoader.ExMetF != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetF_X), MemoryManager.StringToByteArray(BoneLoader.ExMetF.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetF_X), MemoryManager.StringToByteArray(BoneLoader.ExMetF.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 8)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 8)
+                {
+                    if (BoneLoader.ExMetG != "null")
                     {
-                        if (BoneLoader.ExMetG != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetG_X), MemoryManager.StringToByteArray(BoneLoader.ExMetG.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetG_X), MemoryManager.StringToByteArray(BoneLoader.ExMetG.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 9)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 9)
+                {
+                    if (BoneLoader.ExMetH != "null")
                     {
-                        if (BoneLoader.ExMetH != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetH_X), MemoryManager.StringToByteArray(BoneLoader.ExMetH.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetH_X), MemoryManager.StringToByteArray(BoneLoader.ExMetH.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 10)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 10)
+                {
+                    if (BoneLoader.ExMetI != "null")
                     {
-                        if (BoneLoader.ExMetI != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetI_X), MemoryManager.StringToByteArray(BoneLoader.ExMetI.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetI_X), MemoryManager.StringToByteArray(BoneLoader.ExMetI.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 11)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 11)
+                {
+                    if (BoneLoader.ExMetJ != "null")
                     {
-                        if (BoneLoader.ExMetJ != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetJ_X), MemoryManager.StringToByteArray(BoneLoader.ExMetJ.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetJ_X), MemoryManager.StringToByteArray(BoneLoader.ExMetJ.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 12)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 12)
+                {
+                    if (BoneLoader.ExMetK != "null")
                     {
-                        if (BoneLoader.ExMetK != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetK_X), MemoryManager.StringToByteArray(BoneLoader.ExMetK.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetK_X), MemoryManager.StringToByteArray(BoneLoader.ExMetK.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 13)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 13)
+                {
+                    if (BoneLoader.ExMetL != "null")
                     {
-                        if (BoneLoader.ExMetL != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetL_X), MemoryManager.StringToByteArray(BoneLoader.ExMetL.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetL_X), MemoryManager.StringToByteArray(BoneLoader.ExMetL.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 14)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 14)
+                {
+                    if (BoneLoader.ExMetM != "null")
                     {
-                        if (BoneLoader.ExMetM != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetM_X), MemoryManager.StringToByteArray(BoneLoader.ExMetM.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetM_X), MemoryManager.StringToByteArray(BoneLoader.ExMetM.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 15)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 15)
+                {
+                    if (BoneLoader.ExMetN != "null")
                     {
-                        if (BoneLoader.ExMetN != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetN_X), MemoryManager.StringToByteArray(BoneLoader.ExMetN.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetN_X), MemoryManager.StringToByteArray(BoneLoader.ExMetN.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 16)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 16)
+                {
+                    if (BoneLoader.ExMetO != "null")
                     {
-                        if (BoneLoader.ExMetO != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetO_X), MemoryManager.StringToByteArray(BoneLoader.ExMetO.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetO_X), MemoryManager.StringToByteArray(BoneLoader.ExMetO.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 17)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 17)
+                {
+                    if (BoneLoader.ExMetP != "null")
                     {
-                        if (BoneLoader.ExMetP != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetP_X), MemoryManager.StringToByteArray(BoneLoader.ExMetP.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetP_X), MemoryManager.StringToByteArray(BoneLoader.ExMetP.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 18)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 18)
+                {
+                    if (BoneLoader.ExMetQ != "null")
                     {
-                        if (BoneLoader.ExMetQ != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetQ_X), MemoryManager.StringToByteArray(BoneLoader.ExMetQ.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetQ_X), MemoryManager.StringToByteArray(BoneLoader.ExMetQ.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 19)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 19)
+                {
+                    if (BoneLoader.ExMetR != "null")
                     {
-                        if (BoneLoader.ExMetR != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetR_X), MemoryManager.StringToByteArray(BoneLoader.ExMetR.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetR_X), MemoryManager.StringToByteArray(BoneLoader.ExMetR.Replace(" ", string.Empty)));
                     }
+                }
                 #endregion
                 #region Top
                 if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 2)
+                {
+                    if (BoneLoader.ExTopA != "null")
                     {
-                        if (BoneLoader.ExTopA != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopA_X), MemoryManager.StringToByteArray(BoneLoader.ExTopA.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopA_X), MemoryManager.StringToByteArray(BoneLoader.ExTopA.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 3)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 3)
+                {
+                    if (BoneLoader.ExTopB != "null")
                     {
-                        if (BoneLoader.ExTopB != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopB_X), MemoryManager.StringToByteArray(BoneLoader.ExTopB.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopB_X), MemoryManager.StringToByteArray(BoneLoader.ExTopB.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 4)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 4)
+                {
+                    if (BoneLoader.ExTopC != "null")
                     {
-                        if (BoneLoader.ExTopC != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopC_X), MemoryManager.StringToByteArray(BoneLoader.ExTopC.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopC_X), MemoryManager.StringToByteArray(BoneLoader.ExTopC.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 5)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 5)
+                {
+                    if (BoneLoader.ExTopD != "null")
                     {
-                        if (BoneLoader.ExTopD != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopD_X), MemoryManager.StringToByteArray(BoneLoader.ExTopD.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopD_X), MemoryManager.StringToByteArray(BoneLoader.ExTopD.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 6)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 6)
+                {
+                    if (BoneLoader.ExTopE != "null")
                     {
-                        if (BoneLoader.ExTopE != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopE_X), MemoryManager.StringToByteArray(BoneLoader.ExTopE.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopE_X), MemoryManager.StringToByteArray(BoneLoader.ExTopE.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 7)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 7)
+                {
+                    if (BoneLoader.ExTopF != "null")
                     {
-                        if (BoneLoader.ExTopF != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopF_X), MemoryManager.StringToByteArray(BoneLoader.ExTopF.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopF_X), MemoryManager.StringToByteArray(BoneLoader.ExTopF.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 8)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 8)
+                {
+                    if (BoneLoader.ExTopG != "null")
                     {
-                        if (BoneLoader.ExTopG != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopG_X), MemoryManager.StringToByteArray(BoneLoader.ExTopG.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopG_X), MemoryManager.StringToByteArray(BoneLoader.ExTopG.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 9)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 9)
+                {
+                    if (BoneLoader.ExTopH != "null")
                     {
-                        if (BoneLoader.ExTopH != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopH_X), MemoryManager.StringToByteArray(BoneLoader.ExTopH.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopH_X), MemoryManager.StringToByteArray(BoneLoader.ExTopH.Replace(" ", string.Empty)));
                     }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 10)
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 10)
+                {
+                    if (BoneLoader.ExTopI != "null")
                     {
-                        if (BoneLoader.ExTopI != "null")
-                        {
-                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopI_X), MemoryManager.StringToByteArray(BoneLoader.ExTopI.Replace(" ", string.Empty)));
-                        }
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopI_X), MemoryManager.StringToByteArray(BoneLoader.ExTopI.Replace(" ", string.Empty)));
                     }
-                    #endregion
+                }
+                #endregion
             }
             else return;
         }
