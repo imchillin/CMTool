@@ -2159,10 +2159,6 @@ namespace ConceptMatrix.Utility
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.ArmLeft_Y), CharacterDetails.ArmLeft_Y.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.ArmLeft_Z), CharacterDetails.ArmLeft_Z.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.ArmLeft_W), CharacterDetails.ArmLeft_W.GetBytes());
-                        m.writeBytes(GAS(c.Body.Base, c.Body.Bones.ArmRight_X), CharacterDetails.ArmRight_X.GetBytes());
-                        m.writeBytes(GAS(c.Body.Base, c.Body.Bones.ArmRight_Y), CharacterDetails.ArmRight_Y.GetBytes());
-                        m.writeBytes(GAS(c.Body.Base, c.Body.Bones.ArmRight_Z), CharacterDetails.ArmRight_Z.GetBytes());
-                        m.writeBytes(GAS(c.Body.Base, c.Body.Bones.ArmRight_W), CharacterDetails.ArmRight_W.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.PauldronLeft_X), CharacterDetails.PauldronLeft_X.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.PauldronLeft_Y), CharacterDetails.PauldronLeft_Y.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.PauldronLeft_Z), CharacterDetails.PauldronLeft_Z.GetBytes());
@@ -2199,10 +2195,6 @@ namespace ConceptMatrix.Utility
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.ClavicleRight_Y), CharacterDetails.ClavicleRight_Y.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.ClavicleRight_Z), CharacterDetails.ClavicleRight_Z.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.ClavicleRight_W), CharacterDetails.ClavicleRight_W.GetBytes());
-                        m.writeBytes(GAS(c.Body.Base, c.Body.Bones.ArmRight_X), CharacterDetails.ArmRight_X.GetBytes());
-                        m.writeBytes(GAS(c.Body.Base, c.Body.Bones.ArmRight_Y), CharacterDetails.ArmRight_Y.GetBytes());
-                        m.writeBytes(GAS(c.Body.Base, c.Body.Bones.ArmRight_Z), CharacterDetails.ArmRight_Z.GetBytes());
-                        m.writeBytes(GAS(c.Body.Base, c.Body.Bones.ArmRight_W), CharacterDetails.ArmRight_W.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.ArmRight_X), CharacterDetails.ArmRight_X.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.ArmRight_Y), CharacterDetails.ArmRight_Y.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.ArmRight_Z), CharacterDetails.ArmRight_Z.GetBytes());

@@ -5730,10 +5730,6 @@ namespace ConceptMatrix.ViewModel
                     MainViewModel.ViewTime5.ArmLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmLeft_Y));
                     MainViewModel.ViewTime5.ArmLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmLeft_Z));
                     MainViewModel.ViewTime5.ArmLeft_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmLeft_W));
-                    MainViewModel.ViewTime5.ArmRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_X));
-                    MainViewModel.ViewTime5.ArmRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_Y));
-                    MainViewModel.ViewTime5.ArmRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_Z));
-                    MainViewModel.ViewTime5.ArmRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_W));
                     MainViewModel.ViewTime5.PauldronLeft_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronLeft_X));
                     MainViewModel.ViewTime5.PauldronLeft_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronLeft_Y));
                     MainViewModel.ViewTime5.PauldronLeft_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronLeft_Z));
@@ -5774,10 +5770,6 @@ namespace ConceptMatrix.ViewModel
                     MainViewModel.ViewTime5.ArmLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmLeft_Y));
                     MainViewModel.ViewTime5.ArmLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmLeft_Z));
                     MainViewModel.ViewTime5.ArmLeft_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmLeft_W));
-                    MainViewModel.ViewTime5.ArmRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_X));
-                    MainViewModel.ViewTime5.ArmRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_Y));
-                    MainViewModel.ViewTime5.ArmRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_Z));
-                    MainViewModel.ViewTime5.ArmRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_W));
                     MainViewModel.ViewTime5.PauldronLeft_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronLeft_X));
                     MainViewModel.ViewTime5.PauldronLeft_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronLeft_Y));
                     MainViewModel.ViewTime5.PauldronLeft_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronLeft_Z));
@@ -5818,10 +5810,6 @@ namespace ConceptMatrix.ViewModel
                     MainViewModel.ViewTime5.ArmRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_Y));
                     MainViewModel.ViewTime5.ArmRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_Z));
                     MainViewModel.ViewTime5.ArmRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_W));
-                    MainViewModel.ViewTime5.ArmRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_X));
-                    MainViewModel.ViewTime5.ArmRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_Y));
-                    MainViewModel.ViewTime5.ArmRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_Z));
-                    MainViewModel.ViewTime5.ArmRight_W_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_W));
                     MainViewModel.ViewTime5.PauldronRight_X_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronRight_X));
                     MainViewModel.ViewTime5.PauldronRight_Y_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronRight_Y));
                     MainViewModel.ViewTime5.PauldronRight_Z_Sav01 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronRight_Z));
@@ -5858,10 +5846,6 @@ namespace ConceptMatrix.ViewModel
                     MainViewModel.ViewTime5.ClavicleRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleRight_Y));
                     MainViewModel.ViewTime5.ClavicleRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleRight_Z));
                     MainViewModel.ViewTime5.ClavicleRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleRight_W));
-                    MainViewModel.ViewTime5.ArmRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_X));
-                    MainViewModel.ViewTime5.ArmRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_Y));
-                    MainViewModel.ViewTime5.ArmRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_Z));
-                    MainViewModel.ViewTime5.ArmRight_W_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_W));
                     MainViewModel.ViewTime5.ArmRight_X_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_X));
                     MainViewModel.ViewTime5.ArmRight_Y_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_Y));
                     MainViewModel.ViewTime5.ArmRight_Z_Sav02 = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_Z));
