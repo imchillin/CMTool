@@ -269,51 +269,6 @@ namespace ConceptMatrix.Models
 
         [JsonIgnore] public bool RotateFreeze { get; set; }
         [JsonIgnore] public bool BoneEditMode { get; set; }
-        [JsonIgnore] public bool WriteHead { get; set; }
-        [JsonIgnore] public bool WriteHair { get; set; }
-        [JsonIgnore] public bool WriteEarrings { get; set; }
-        [JsonIgnore] public bool WriteBody { get; set; }
-        [JsonIgnore] public bool WriteLeftArm { get; set; }
-        [JsonIgnore] public bool WriteRightArm { get; set; }
-        [JsonIgnore] public bool WriteClothes { get; set; }
-        [JsonIgnore] public bool WriteWeapons { get; set; }
-        [JsonIgnore] public bool WriteLeftHand { get; set; }
-        [JsonIgnore] public bool WriteRightHand { get; set; }
-        [JsonIgnore] public bool WriteWaist { get; set; }
-        [JsonIgnore] public bool WriteLeftLeg { get; set; }
-        [JsonIgnore] public bool WriteRightLeg { get; set; }
-        [JsonIgnore] public bool WriteHelm { get; set; }
-        [JsonIgnore] public bool WriteTop { get; set; }
-        [JsonIgnore] public bool SaveHead01 { get; set; }
-        [JsonIgnore] public bool SaveHair01 { get; set; }
-        [JsonIgnore] public bool SaveEarrings01 { get; set; }
-        [JsonIgnore] public bool SaveBody01 { get; set; }
-        [JsonIgnore] public bool SaveLeftArm01 { get; set; }
-        [JsonIgnore] public bool SaveRightArm01 { get; set; }
-        [JsonIgnore] public bool SaveClothes01 { get; set; }
-        [JsonIgnore] public bool SaveWeapons01 { get; set; }
-        [JsonIgnore] public bool SaveLeftHand01 { get; set; }
-        [JsonIgnore] public bool SaveRightHand01 { get; set; }
-        [JsonIgnore] public bool SaveWaist01 { get; set; }
-        [JsonIgnore] public bool SaveLeftLeg01 { get; set; }
-        [JsonIgnore] public bool SaveRightLeg01 { get; set; }
-        [JsonIgnore] public bool SaveHelm01 { get; set; }
-        [JsonIgnore] public bool SaveTop01 { get; set; }
-        [JsonIgnore] public bool SaveHead02 { get; set; }
-        [JsonIgnore] public bool SaveHair02 { get; set; }
-        [JsonIgnore] public bool SaveEarrings02 { get; set; }
-        [JsonIgnore] public bool SaveBody02 { get; set; }
-        [JsonIgnore] public bool SaveLeftArm02 { get; set; }
-        [JsonIgnore] public bool SaveRightArm02 { get; set; }
-        [JsonIgnore] public bool SaveClothes02 { get; set; }
-        [JsonIgnore] public bool SaveWeapons02 { get; set; }
-        [JsonIgnore] public bool SaveLeftHand02 { get; set; }
-        [JsonIgnore] public bool SaveRightHand02 { get; set; }
-        [JsonIgnore] public bool SaveWaist02 { get; set; }
-        [JsonIgnore] public bool SaveLeftLeg02 { get; set; }
-        [JsonIgnore] public bool SaveRightLeg02 { get; set; }
-        [JsonIgnore] public bool SaveHelm02 { get; set; }
-        [JsonIgnore] public bool SaveTop02 { get; set; }
 
         #region Bone
         [JsonIgnore] public Address<float> CubeBone_X { get; set; }
