@@ -752,7 +752,7 @@ namespace ConceptMatrix.Views
             if (c.Filename == null) return;
             else
             {
-                string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "CMTool", "Gearsets");
+                string path = SaveSettings.Default.GearsetsDirectory;
                 if (!Directory.Exists(path)) System.IO.Directory.CreateDirectory(path);
                 GearSaves Save1 = new GearSaves(); // Gearsave is class with all address
                 Save1.Description = c.Filename;
