@@ -29,27 +29,9 @@ namespace ConceptMatrix.Views
 		public CharacterDetailsView()
 		{
 			InitializeComponent();
-			_exdProvider.MonsterList();
+            if (SaveSettings.Default.HasBackground == false) ActorBG.Opacity = 0;
             MainViewModel.ViewTime = this;
-			ExdCsvReader.MonsterX = _exdProvider.Monsters.Values.ToArray();
 			CharacterDetailsViewModel.Viewtime = this;
-			DispatcherTimer timer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(40) };
-			timer.Tick += delegate
-			{
-				foreach (ExdCsvReader.Monster xD in ExdCsvReader.MonsterX)
-				{
-					if (xD.Real == true)
-					{
-						SpecialControl.ModelBox.Items.Add(new ExdCsvReader.Monster
-						{
-							Index = Convert.ToInt32(xD.Index),
-							Name = xD.Name.ToString()
-						});
-					}
-				}
-				timer.IsEnabled = false;
-			};
-			timer.Start();
             if(SaveSettings.Default.RotationSliders == true)
             {
                 RotSliderButton.IsChecked = true;

@@ -6,6 +6,7 @@ using System;
 using System.ComponentModel;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
@@ -28,6 +29,7 @@ namespace ConceptMatrix.ViewModel
         public static CharacterDetailsView3 ViewTime3;
         public static CharacterDetailsView2 ViewTime2;
         public static CharacterDetailsView ViewTime;
+        public static AboutView AboutTime;
         public static MainWindow MainTime;
         private static CharacterDetailsViewModel characterDetails;
 
@@ -88,6 +90,8 @@ namespace ConceptMatrix.ViewModel
             CharacterDetailsView._exdProvider.RaceList();
             CharacterDetailsView._exdProvider.TribeList();
             CharacterDetailsView._exdProvider.DyeList();
+            CharacterDetailsView._exdProvider.MonsterList();
+            ExdCsvReader.MonsterX = CharacterDetailsView._exdProvider.Monsters.Values.ToArray();
             for (int i = 0; i < CharacterDetailsView._exdProvider.Dyes.Count; i++)
             {
                 ViewTime2.HeadDye.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
@@ -97,6 +101,17 @@ namespace ConceptMatrix.ViewModel
                 ViewTime2.OHBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
                 ViewTime2.LegBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
                 ViewTime2.FeetBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
+            }
+            foreach (ExdCsvReader.Monster xD in ExdCsvReader.MonsterX)
+            {
+                if (xD.Real == true)
+                {
+                    ViewTime.SpecialControl.ModelBox.Items.Add(new ExdCsvReader.Monster
+                    {
+                        Index = Convert.ToInt32(xD.Index),
+                        Name = xD.Name.ToString()
+                    });
+                }
             }
             for (int i = 0; i < CharacterDetailsView._exdProvider.Races.Count; i++)
             {
