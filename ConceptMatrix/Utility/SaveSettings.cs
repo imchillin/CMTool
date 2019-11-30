@@ -64,6 +64,9 @@ namespace ConceptMatrix.Utility
         public bool AdvancedMove { get; set; } = true;
         public bool AltRotate { get; set; } = true;
         public bool HasBackground { get; set; } = true;
+        public string ProfileDirectory { get; set; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Saves");
+        public string MatrixPoseDirectory { get; set; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Matrix Saves");
+        public string GearsetsDirectory { get; set; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Gearsets");
         public string CharacterAoBBytes { get; set; } = "";
         public string EquipmentBytes { get; set; } = "";
         public WepTuple MainHandQuads { get; set; }

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using ConceptMatrix.Utility;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -55,7 +56,7 @@ namespace ConceptMatrix.Windows
         {
             List<GearSaves> output = new List<GearSaves>();
 
-            string PathX = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), App.ToolBin, "Gearsets");
+            string PathX = SaveSettings.Default.GearsetsDirectory;
 
             if (!Directory.Exists(PathX))
             {

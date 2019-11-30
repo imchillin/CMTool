@@ -8,7 +8,7 @@
              xmlns:materialDesignColors="clr-namespace:MaterialDesignColors;assembly=MaterialDesignColors"
              xmlns:ViewModel="clr-namespace:ConceptMatrix.ViewModel"
              mc:Ignorable="d" 
-             d:DesignWidth="1115" d:DesignHeight="460">
+             d:DesignWidth="1115" Height="530">
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
@@ -102,7 +102,7 @@
             <ToggleButton x:Name="BackgroundButton" Grid.Row="1" Grid.Column="2" Margin="234.467,5,-189.467,3" Command="{Binding ToggleBackground}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" HorizontalAlignment="Center" VerticalAlignment="Center" />
             <TextBlock Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Text="Enable Background" Margin="285.467,5,-285.567,5"/>
         </Grid>
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="0,0,0,134">
             <ItemsControl ItemsSource="{Binding Swatches, Mode=OneTime}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -111,5 +111,21 @@
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
         </ScrollViewer>
+        <Border BorderBrush="Black" BorderThickness="0,0,0,1" HorizontalAlignment="Left" Height="24" Margin="-21,335,-15,0" Grid.Row="1" VerticalAlignment="Top" Width="1151"/>
+        <GroupBox Header="Concept Matrix's Directories" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" Margin="0,364,0,0" wpf:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="136" Width="611" Grid.Row="1"/>
+        <TextBox x:Name="SaveDirectory" Style="{StaticResource MaterialDesignTextBox}" Text="Save Directory" HorizontalAlignment="Left" Margin="103,402,0,0" VerticalAlignment="Top" Width="436" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" TextAlignment="Justify" Height="28" FontSize="11.35" FontFamily="Segoe UI" MinHeight="0" Grid.Row="1" IsEnabled="False"/>
+        <Label Content="Save Profiles:" HorizontalAlignment="Left" Height="28" Margin="0,402,0,0" Grid.Row="1" VerticalAlignment="Top" Width="93"/>
+        <TextBox x:Name="SaveDirectory2" Style="{StaticResource MaterialDesignTextBox}" Text="Save Directory" HorizontalAlignment="Left" Margin="103,435,0,0" VerticalAlignment="Top" Width="436" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" TextAlignment="Justify" Height="28" FontSize="11.35" FontFamily="Segoe UI" MinHeight="0" Grid.Row="1" IsEnabled="False"/>
+        <Label Content="Matrix Saves:" HorizontalAlignment="Left" Height="28" Margin="0,435,0,0" Grid.Row="1" VerticalAlignment="Top" Width="93"/>
+        <TextBox x:Name="SaveDirectory3" Style="{StaticResource MaterialDesignTextBox}" Text="Save Directory" HorizontalAlignment="Left" Margin="103,468,0,0" VerticalAlignment="Top" Width="436" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" TextAlignment="Justify" Height="28" FontSize="11.35" FontFamily="Segoe UI" MinHeight="0" Grid.Row="1" IsEnabled="False"/>
+        <Label Content="Gearset Saves:" HorizontalAlignment="Left" Height="28" Margin="0,468,0,0" Grid.Row="1" VerticalAlignment="Top" Width="103"/>
+        <Button x:Name="DirectoryButton" Style="{StaticResource MaterialDesignRaisedDarkButton}" wpf:ShadowAssist.ShadowDepth="Depth3" Content="..." HorizontalAlignment="Left" Margin="551,402,0,0" VerticalAlignment="Top" Width="46" Grid.Row="1" Height="28" Click="DirectoryButton_Click"/>
+        <Button x:Name="DirectoryButton2" Style="{StaticResource MaterialDesignRaisedDarkButton}" wpf:ShadowAssist.ShadowDepth="Depth3" Content="..." HorizontalAlignment="Left" Margin="551,435,0,0" VerticalAlignment="Top" Width="46" Grid.Row="1" Height="28" Click="DirectoryButton2_Click"/>
+        <Button x:Name="DirectoryButton3" Style="{StaticResource MaterialDesignRaisedDarkButton}" wpf:ShadowAssist.ShadowDepth="Depth3" Content="..." HorizontalAlignment="Left" Margin="551,468,0,0" VerticalAlignment="Top" Width="46" Grid.Row="1" Height="28" Click="DirectoryButton3_Click"/>
+        <GroupBox Header="Additional Options" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" Margin="616,364,0,0" wpf:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="136" Width="484" Grid.Row="1"/>
+        <ToggleButton x:Name="Windowstoggled" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="Time Toggle Switch" Margin="795,408,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="22"  IsTabStop="False" Checked="Windowstoggled_Checked" Unchecked="Windowstoggled_Unchecked" Grid.Row="1" />
+        <Label Content="Concept Matrix Loader/Save" HorizontalAlignment="Left" Margin="621,404,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+        <Label Content="Windows Explorer for saves" HorizontalAlignment="Left" Margin="834,404,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+
     </Grid>
 </UserControl>

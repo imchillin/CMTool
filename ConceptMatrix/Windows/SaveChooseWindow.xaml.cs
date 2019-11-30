@@ -1,4 +1,5 @@
 ﻿using ConceptMatrix.Models;
+using ConceptMatrix.Utility;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -58,7 +59,7 @@ namespace ConceptMatrix.Windows
         {
             List<CharSaves> output = new List<CharSaves>();
 
-            string PathX = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), App.ToolBin, "Saves");
+            string PathX = SaveSettings.Default.ProfileDirectory;
 
             if (!Directory.Exists(PathX))
             {

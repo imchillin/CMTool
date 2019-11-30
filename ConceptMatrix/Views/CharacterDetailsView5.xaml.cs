@@ -22845,7 +22845,7 @@ namespace ConceptMatrix.Views
         {
             MainWindow.CurrentlySaving = true;
             SaveFileDialog dig = new SaveFileDialog();
-            dig.InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Matrix Saves");
+            dig.InitialDirectory = SaveSettings.Default.MatrixPoseDirectory;
             if (!Directory.Exists(dig.InitialDirectory)) { Directory.CreateDirectory(dig.InitialDirectory); }
             dig.Filter = "Concept Matrix Pose File(*.cmp)|*.cmp";
             if (dig.ShowDialog() == true)
@@ -23481,7 +23481,7 @@ namespace ConceptMatrix.Views
         {
 
             OpenFileDialog dig = new OpenFileDialog();
-            dig.InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Matrix Saves");
+            dig.InitialDirectory = SaveSettings.Default.MatrixPoseDirectory;
             if (!Directory.Exists(dig.InitialDirectory)) { Directory.CreateDirectory(dig.InitialDirectory); }
             dig.Filter = "Concept Matrix Pose File(*.cmp)|*.cmp";
             dig.DefaultExt = ".cmp";
@@ -24117,7 +24117,7 @@ namespace ConceptMatrix.Views
         private void AdvLoadCMP_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dig = new OpenFileDialog();
-            dig.InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Matrix Saves");
+            dig.InitialDirectory = SaveSettings.Default.MatrixPoseDirectory;
             if (!Directory.Exists(dig.InitialDirectory)) { Directory.CreateDirectory(dig.InitialDirectory); }
             dig.Filter = "Concept Matrix Pose File(*.cmp)|*.cmp";
             dig.DefaultExt = ".cmp";

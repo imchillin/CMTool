@@ -229,7 +229,7 @@ namespace ConceptMatrix
             CurrentlySaving = true;
             if (SaveSettings.Default.WindowsExplorer)
             {
-                string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Saves");
+                string path = SaveSettings.Default.ProfileDirectory;
                 if (!Directory.Exists(path)) { System.IO.Directory.CreateDirectory(path); }
                 SaveFileDialog dig = new SaveFileDialog();
                 dig.Filter = "Concept Matrix Appearance File(*.cma)|*.cma";
@@ -254,7 +254,7 @@ namespace ConceptMatrix
             }
             else
             {
-                string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Saves");
+                string path = SaveSettings.Default.ProfileDirectory;
                 if (!Directory.Exists(path)) { System.IO.Directory.CreateDirectory(path); }
                 var c = new Windows.GearSave("Save Concept Matrix Appearance File", "Write Character Save name here...");
                 c.Owner = Application.Current.MainWindow;
@@ -304,7 +304,7 @@ namespace ConceptMatrix
             else
             {
                 OpenFileDialog dig = new OpenFileDialog();
-                string path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Gearsets");
+                string path = SaveSettings.Default.GearsetsDirectory;
                 if (!Directory.Exists(path)) { System.IO.Directory.CreateDirectory(path);  }
                 dig.InitialDirectory = path;
                 dig.Filter = "Concept Matrix Appearance File(*.cma;*.json)|*.cma;*.json";
@@ -463,7 +463,7 @@ namespace ConceptMatrix
             else
             {
                 OpenFileDialog dig = new OpenFileDialog();
-                dig.InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Saves");
+                dig.InitialDirectory = SaveSettings.Default.ProfileDirectory;
                 dig.Filter = "Concept Matrix Appearance File(*.cma;*.json)|*.cma;*.json";
                 dig.DefaultExt = ".cma";
                 if (dig.ShowDialog() == true)
@@ -490,7 +490,7 @@ namespace ConceptMatrix
             else
             {
                 OpenFileDialog dig = new OpenFileDialog();
-                dig.InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Saves");
+                dig.InitialDirectory = SaveSettings.Default.ProfileDirectory;
                 dig.Filter = "Concept Matrix Appearance File(*.cma;*.json)|*.cma;*.json";
                 dig.DefaultExt = ".cma";
                 if (dig.ShowDialog() == true)
@@ -517,7 +517,7 @@ namespace ConceptMatrix
             else
             {
                 OpenFileDialog dig = new OpenFileDialog();
-                dig.InitialDirectory = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Saves");
+                dig.InitialDirectory = SaveSettings.Default.ProfileDirectory;
                 dig.Filter = "Concept Matrix Appearance File(*.cma;*.json)|*.cma;*.json";
                 dig.DefaultExt = ".cma";
                 if (dig.ShowDialog() == true)

@@ -1,5 +1,8 @@
 ﻿using ConceptMatrix.Utility;
 using ConceptMatrix.ViewModel;
+using System;
+using System.IO;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace ConceptMatrix.Views
@@ -15,6 +18,88 @@ namespace ConceptMatrix.Views
             DataContext = new PaletteSelectorViewModel();
             if (SaveSettings.Default.Theme == "Dark") ThemeButton.IsChecked = true;
             if (SaveSettings.Default.HasBackground == true) BackgroundButton.IsChecked = true;
+            if (SaveSettings.Default.WindowsExplorer == true) Windowstoggled.IsChecked = true;
+            SaveDirectory.Text = SaveSettings.Default.ProfileDirectory;
+            SaveDirectory2.Text = SaveSettings.Default.MatrixPoseDirectory;
+            SaveDirectory3.Text = SaveSettings.Default.GearsetsDirectory;
+        }
+
+        private void DirectoryButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            System.Windows.Forms.FolderBrowserDialog dig = new System.Windows.Forms.FolderBrowserDialog();
+            dig.SelectedPath = SaveDirectory.Text;
+            dig.Description = "Select a folder where you would want Profile Saves to be located in! Profile saves are: Appearances/Equipment.";
+            dig.ShowNewFolderButton = true;
+            dig.ShowDialog();
+            if (dig.SelectedPath == null) return;
+            SaveSettings.Default.ProfileDirectory = dig.SelectedPath;
+
+            var msgResult = System.Windows.MessageBox.Show($"Would you like to transfer the data in previous directory: {SaveDirectory.Text} to the newer directory: {dig.SelectedPath}", "Transfer Saves!", MessageBoxButton.YesNo);
+            if (msgResult == MessageBoxResult.Yes)
+            {
+                foreach (var file in new DirectoryInfo(SaveDirectory.Text).GetFiles())
+                {
+                    file.MoveTo($@"{dig.SelectedPath}\{file.Name}");
+                }
+            }
+            SaveDirectory.Text = dig.SelectedPath;
+        }
+
+        private void DirectoryButton2_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            System.Windows.Forms.FolderBrowserDialog dig = new System.Windows.Forms.FolderBrowserDialog();
+            dig.SelectedPath = SaveDirectory2.Text;
+            dig.Description = "Select a folder where you would want Concept Matrix Pose Saves to be located in!";
+            dig.ShowNewFolderButton = true;
+            dig.ShowDialog();
+            if (dig.SelectedPath == null) return;
+            SaveSettings.Default.MatrixPoseDirectory = dig.SelectedPath;
+
+            var msgResult = System.Windows.MessageBox.Show($"Would you like to transfer the data in previous directory: {SaveDirectory2.Text} to the newer directory: {dig.SelectedPath}", "Transfer Saves!", MessageBoxButton.YesNo);
+            if (msgResult == MessageBoxResult.Yes)
+            {
+                foreach (var file in new DirectoryInfo(SaveDirectory2.Text).GetFiles())
+                {
+                    file.MoveTo($@"{dig.SelectedPath}\{file.Name}");
+                }
+            }
+            SaveDirectory2.Text = dig.SelectedPath;
+        }
+
+        private void DirectoryButton3_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            System.Windows.Forms.FolderBrowserDialog dig = new System.Windows.Forms.FolderBrowserDialog();
+            dig.SelectedPath = SaveDirectory3.Text;
+            dig.Description = "Select a folder where you would want Gearset Saves to be located in!";
+            dig.ShowNewFolderButton = true;
+            dig.ShowDialog();
+            if (dig.SelectedPath == null) return;
+            SaveSettings.Default.GearsetsDirectory = dig.SelectedPath;
+
+            var msgResult = System.Windows.MessageBox.Show($"Would you like to transfer the data in previous directory: {SaveDirectory3.Text} to the newer directory: {dig.SelectedPath}", "Transfer Saves!", MessageBoxButton.YesNo);
+            if (msgResult == MessageBoxResult.Yes)
+            {
+                foreach (var file in new DirectoryInfo(SaveDirectory3.Text).GetFiles())
+                {
+                    file.MoveTo($@"{dig.SelectedPath}\{file.Name}");
+                }
+            }
+            SaveDirectory3.Text = dig.SelectedPath;
+        }
+        private void Windowstoggled_Checked(object sender, RoutedEventArgs e)
+        {
+            if (Windowstoggled.IsKeyboardFocusWithin || Windowstoggled.IsMouseOver)
+            {
+                SaveSettings.Default.WindowsExplorer = true;
+            }
+        }
+
+        private void Windowstoggled_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (Windowstoggled.IsKeyboardFocusWithin || Windowstoggled.IsMouseOver)
+            {
+                SaveSettings.Default.WindowsExplorer = false;
+            }
         }
     }
 }
