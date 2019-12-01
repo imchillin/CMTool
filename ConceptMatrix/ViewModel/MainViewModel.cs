@@ -3,6 +3,7 @@ using ConceptMatrix.Views;
 using MaterialDesignThemes.Wpf;
 using SaintCoinach;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.IO;
@@ -10,6 +11,7 @@ using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Xml.Serialization;
 
@@ -120,6 +122,20 @@ namespace ConceptMatrix.ViewModel
             for (int i = 0; i < CharacterDetailsView._exdProvider.Tribes.Count; i++)
             {
                 ViewTime.ClanBox.Items.Add(CharacterDetailsView._exdProvider.Tribes[i].Name);
+            }
+            var StatusSheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Status>();
+            HashSet<byte> Sets = new HashSet<byte>();
+            foreach (SaintCoinach.Xiv.Status status in StatusSheet)
+            {
+                if(status.Key==0)
+                {
+                    ViewTime4.StatusEffectBox2.Items.Add(new ComboBoxItem() { Content = "None", Tag = 0 });
+                }
+                if (Sets.Contains(status.VFX) || status.VFX <= 0) continue;
+                Sets.Add(status.VFX);
+                string name = status.Name.ToString();
+                if (name.Length <= 0) name = "None";
+                ViewTime4.StatusEffectBox2.Items.Add(new ComboBoxItem() { Content = name, Tag = status.Key });
             }
             var TitleSheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Title>();
             foreach (SaintCoinach.Xiv.Title title in TitleSheet)
