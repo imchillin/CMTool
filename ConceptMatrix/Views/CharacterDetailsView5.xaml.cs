@@ -1,22 +1,10 @@
 ﻿using ConceptMatrix.Models;
 using ConceptMatrix.Utility;
 using ConceptMatrix.ViewModel;
-using MaterialDesignThemes.Wpf;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Media.Media3D;
 using Microsoft.Win32;
 using System.IO;
@@ -506,6 +494,42 @@ namespace ConceptMatrix.Views
             InitializeComponent();
             if (SaveSettings.Default.HasBackground == false) PoseBG.Opacity = 0;
             MainViewModel.ViewTime5 = this;
+            if (SaveSettings.Default.AltPoseRotate == true)
+            {
+                BoneUpDown.Visibility = Visibility.Hidden;
+                BoneUpDown.IsEnabled = false;
+                BoneUpDown2.Visibility = Visibility.Hidden;
+                BoneUpDown2.IsEnabled = false;
+                BoneUpDown3.Visibility = Visibility.Hidden;
+                BoneUpDown3.IsEnabled = false;
+
+                BoneSlider.Visibility = Visibility.Visible;
+                BoneSlider.IsEnabled = true;
+                BoneSlider2.Visibility = Visibility.Visible;
+                BoneSlider2.IsEnabled = true;
+                BoneSlider3.Visibility = Visibility.Visible;
+                BoneSlider3.IsEnabled = true;
+            }
+            else if (SaveSettings.Default.AltPoseRotate == false)
+            {
+                BoneUpDown.Visibility = Visibility.Visible;
+                BoneUpDown.IsEnabled = true;
+                BoneUpDown2.Visibility = Visibility.Visible;
+                BoneUpDown2.IsEnabled = true;
+                BoneUpDown3.Visibility = Visibility.Visible;
+                BoneUpDown3.IsEnabled = true;
+
+                BoneSlider.Visibility = Visibility.Hidden;
+                BoneSlider.IsEnabled = false;
+                BoneSlider2.Visibility = Visibility.Hidden;
+                BoneSlider2.IsEnabled = false;
+                BoneSlider3.Visibility = Visibility.Hidden;
+                BoneSlider3.IsEnabled = false;
+            }
+            if (SaveSettings.Default.AltPoseRotate == true)
+            {
+                BoneSliderButton.IsChecked = true;
+            }
         }
 
         private Vector3D GetEulerAngles() => new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
@@ -10196,6 +10220,7 @@ namespace ConceptMatrix.Views
             BoneSlider2.IsEnabled = true;
             BoneSlider3.Visibility = Visibility.Visible;
             BoneSlider3.IsEnabled = true;
+            SaveSettings.Default.AltPoseRotate = true;
         }
         private void BoneSliderButton_Unchecked(object sender, RoutedEventArgs e)
         {
@@ -10212,6 +10237,8 @@ namespace ConceptMatrix.Views
             BoneSlider2.IsEnabled = false;
             BoneSlider3.Visibility = Visibility.Hidden;
             BoneSlider3.IsEnabled = false;
+
+            SaveSettings.Default.AltPoseRotate = false;
         }
 
         #region Root
