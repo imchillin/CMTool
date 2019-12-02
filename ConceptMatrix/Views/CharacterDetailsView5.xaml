@@ -749,10 +749,11 @@
 
         <!-- Settings -->
         <GroupBox Header="Pose Matrix Settings" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" Margin="850,330,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="110" Width="255"/>
-        <ToggleButton x:Name="EditModeButton" Checked="EditModeButton_Checked" Unchecked="EditModeButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1011,375,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" />
-        <Label Content="Enable Editing:" HorizontalAlignment="Left" Margin="907,375,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton x:Name="PhysicsButton" Checked="PhysicsButton_Checked" Unchecked="PhysicsButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1011,405,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" />
-        <Label Content="Enable Physics:" HorizontalAlignment="Left" Margin="907,405,0,0" VerticalAlignment="Top" Height="28"/>
+        <Label x:Name="GPoseWarningText" Content="Please enable GPose to use this feature." HorizontalAlignment="Left" Margin="856,387,0,0" VerticalAlignment="Top" Height="28" FontWeight="Bold"/>
+        <ToggleButton x:Name="EditModeButton" Checked="EditModeButton_Checked" Unchecked="EditModeButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1011,375,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Visibility="Hidden" />
+        <Label x:Name="EditModeText" Content="Enable Editing:" HorizontalAlignment="Left" Margin="907,375,0,0" VerticalAlignment="Top" Height="28" Visibility="Hidden"/>
+        <ToggleButton x:Name="PhysicsButton" Checked="PhysicsButton_Checked" Unchecked="PhysicsButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1011,405,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Visibility="Hidden" />
+        <Label x:Name="PhysicsText" Content="Enable Physics:" HorizontalAlignment="Left" Margin="907,405,0,0" VerticalAlignment="Top" Height="28" Visibility="Hidden"/>
         <Button x:Name="TertiaryButton" ToolTip="Detect Race, Hair, and Equipment exclusive Bones for the selected actor." materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="890,445,0,0" VerticalAlignment="Top" Width="175" Click="EnableTertiary" Height="28" Content="Detect Tertiary Bones" IsEnabled="False"/>
         <Button x:Name="HeadShortcut" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="863,11,0,0" VerticalAlignment="Top" Width="33" Click="HeadShortcut_Click" Height="33" IsEnabled="true" Padding="0">
             <Button.Background>
