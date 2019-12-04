@@ -841,29 +841,44 @@ namespace ConceptMatrix.Views
             EquipBox.Items.Clear();
             foreach (ExdCsvReader.Item game in _items.Where(g => g.Name.ToLower().Contains(filter)))
             {
-                if (ClassBox.SelectedIndex != 0)
+                if (EquipBoxC.SelectedIndex > 11)
                 {
-                    if (EquipBoxC.SelectedIndex != 0 && EquipBoxC.SelectedIndex != 1)
+                    EquipBox.Items.Add(new Itemx
                     {
-                        if (ClassBox.SelectedIndex == 4)
-                        {
-                            if (!game.ClassJobListStringName.Equals(ClassBox.Text)) continue;
-                        }
-                        else if (!game.ClassJobListStringName.Contains(ClassBox.Text)) continue;
-                    }
-                    else if (ClassBox.SelectedIndex >= 7)
-                    {
-                        if (!game.ClassJobListStringName.Contains(ClassBox.Text)) continue;
-                    }
+                        Name = game.Name,
+                        ModelMain = game.ModelMain,
+                        ModelOff = game.ModelOff,
+                        Type = game.Type,
+                        Icon = null
+                    });
                 }
-                EquipBox.Items.Add(new Itemx
+                else
                 {
-                    Name = game.Name.ToString(),
-                    ModelMain = game.ModelMain,
-                    ModelOff = game.ModelOff,
-                    Type = game.Type,
-                    Icon = CreateSource(game.Icon)
-                });
+                    if (ClassBox.SelectedIndex != 0)
+                    {
+                        if (EquipBoxC.SelectedIndex != 0 && EquipBoxC.SelectedIndex != 1)
+                        {
+                            if (ClassBox.SelectedIndex == 4)
+                            {
+                                if (!game.ClassJobListStringName.Equals(ClassBox.Text)) continue;
+                            }
+                            else if (!game.ClassJobListStringName.Contains(ClassBox.Text)) continue;
+                        }
+                        else if (ClassBox.SelectedIndex >= 7)
+                        {
+                            if (!game.ClassJobListStringName.Contains(ClassBox.Text)) continue;
+                        }
+                    }
+
+                    EquipBox.Items.Add(new Itemx
+                    {
+                        Name = game.Name.ToString(),
+                        ModelMain = game.ModelMain,
+                        ModelOff = game.ModelOff,
+                        Type = game.Type,
+                        Icon = CreateSource(game.Icon)
+                    });
+                }
             }
         }
 
