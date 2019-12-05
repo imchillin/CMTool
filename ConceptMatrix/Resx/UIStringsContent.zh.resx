@@ -1,0 +1,1338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>关于本软件</value>
+  </data>
+  <data name="ActorData" xml:space="preserve">
+    <value>目标基本设置</value>
+  </data>
+  <data name="ActorEntityListToolTip" xml:space="preserve">
+    <value>显示你周围区域中可选中物体的列表
+
+• 列表基于物体与玩家的距离远近排列构成.该列表的顺序会在物体（包括宠物）改变位置时产生变化</value>
+  </data>
+  <data name="ActorProperties" xml:space="preserve">
+    <value>目标属性</value>
+  </data>
+  <data name="ActorRefreshButton" xml:space="preserve">
+    <value>刷新至游戏</value>
+  </data>
+  <data name="ActorRefreshToolTip" xml:space="preserve">
+    <value>在所选目标上应用设置并刷新</value>
+  </data>
+  <data name="ActorScale" xml:space="preserve">
+    <value>目标大小</value>
+  </data>
+  <data name="Advanced" xml:space="preserve">
+    <value>高级设置</value>
+  </data>
+  <data name="AlwaysOnTopButton" xml:space="preserve">
+    <value>总在最前</value>
+  </data>
+  <data name="AnimSpeed" xml:space="preserve">
+    <value>动作速率</value>
+  </data>
+  <data name="AnimSpeedToolTip" xml:space="preserve">
+    <value>修改选中目标的动作速率</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>应用</value>
+  </data>
+  <data name="Arms" xml:space="preserve">
+    <value>手臂</value>
+  </data>
+  <data name="ArrayOfBytes" xml:space="preserve">
+    <value>字节阵列</value>
+  </data>
+  <data name="ArrayOfBytesToolTip" xml:space="preserve">
+    <value>包含所选物体的数据 
+
+• 你可以复制黏贴数据阵列到该栏并点击应用</value>
+  </data>
+  <data name="B" xml:space="preserve">
+    <value>B</value>
+  </data>
+  <data name="Base" xml:space="preserve">
+    <value>基准</value>
+  </data>
+  <data name="BGMFreeze" xml:space="preserve">
+    <value>暂停背景音乐</value>
+  </data>
+  <data name="BGMID" xml:space="preserve">
+    <value>背景音乐ID</value>
+  </data>
+  <data name="Blue" xml:space="preserve">
+    <value>蓝色</value>
+  </data>
+  <data name="BlueGlow" xml:space="preserve">
+    <value>蓝光</value>
+  </data>
+  <data name="Body" xml:space="preserve">
+    <value>上身装备</value>
+  </data>
+  <data name="BodyToolTip" xml:space="preserve">
+    <value>改变所选目标的体型</value>
+  </data>
+  <data name="BodyToolTip2" xml:space="preserve">
+    <value>允许你在所选目标上装备任意上身装备</value>
+  </data>
+  <data name="BodyType" xml:space="preserve">
+    <value>体型</value>
+  </data>
+  <data name="Breasts" xml:space="preserve">
+    <value>胸</value>
+  </data>
+  <data name="Brightness" xml:space="preserve">
+    <value>亮度</value>
+  </data>
+  <data name="BustSize" xml:space="preserve">
+    <value>胸围</value>
+  </data>
+  <data name="BustSizeToolTip" xml:space="preserve">
+    <value>改变所选目标的胸围</value>
+  </data>
+  <data name="BustXScale" xml:space="preserve">
+    <value>胸部 X 轴范围</value>
+  </data>
+  <data name="BustXScaleToolTip" xml:space="preserve">
+    <value>修改所选目标胸部的X轴范围 
+• 只对女性角色适用</value>
+  </data>
+  <data name="BustYScale" xml:space="preserve">
+    <value>胸部Y轴范围</value>
+  </data>
+  <data name="BustYScaleToolTip" xml:space="preserve">
+    <value>修改所选目标胸部的Y轴范围 
+• 只对女性角色适用</value>
+  </data>
+  <data name="BustZScale" xml:space="preserve">
+    <value>胸部Z轴范围</value>
+  </data>
+  <data name="BustZScaleToolTip" xml:space="preserve">
+    <value>修改所选目标胸部的Z轴范围 
+• 只对女性角色适用</value>
+  </data>
+  <data name="c1001" xml:space="preserve">
+    <value>c1001 - 鲁加族 （女）</value>
+  </data>
+  <data name="c101" xml:space="preserve">
+    <value>c101 - 人族（男）</value>
+  </data>
+  <data name="c104" xml:space="preserve">
+    <value>c104 - 人族 (正太)</value>
+  </data>
+  <data name="c1101" xml:space="preserve">
+    <value>c1101 - 拉拉菲尔族（男）</value>
+  </data>
+  <data name="c1201" xml:space="preserve">
+    <value>c1201 - 拉拉菲尔族（女）</value>
+  </data>
+  <data name="c1301" xml:space="preserve">
+    <value>c1301 - 敖龙族（男）</value>
+  </data>
+  <data name="c1401" xml:space="preserve">
+    <value>c1401 - 敖龙族（女）</value>
+  </data>
+  <data name="c1501" xml:space="preserve">
+    <value>c1501 - 硌狮族（男）</value>
+  </data>
+  <data name="c1801" xml:space="preserve">
+    <value>c1801 - 维埃拉族（女）</value>
+  </data>
+  <data name="c201" xml:space="preserve">
+    <value>c201 - 人族（女）</value>
+  </data>
+  <data name="c301" xml:space="preserve">
+    <value>c301 - 高地之民（男）</value>
+  </data>
+  <data name="c401" xml:space="preserve">
+    <value>c401 -高地之民（女）</value>
+  </data>
+  <data name="c501" xml:space="preserve">
+    <value>c501 - 精灵族（男）</value>
+  </data>
+  <data name="c504" xml:space="preserve">
+    <value>c504 - 精灵族（正太）</value>
+  </data>
+  <data name="c601" xml:space="preserve">
+    <value>c601 - 精灵族（女）</value>
+  </data>
+  <data name="c604" xml:space="preserve">
+    <value>c604 - 精灵族（萝莉）</value>
+  </data>
+  <data name="c701" xml:space="preserve">
+    <value>c701 - 猫魅族（男）</value>
+  </data>
+  <data name="c801" xml:space="preserve">
+    <value>c801 - 猫魅族（女）</value>
+  </data>
+  <data name="c804" xml:space="preserve">
+    <value>c804 - 猫魅族（萝莉）</value>
+  </data>
+  <data name="c901" xml:space="preserve">
+    <value>c901 - 鲁加族（男）</value>
+  </data>
+  <data name="c9104" xml:space="preserve">
+    <value>c9104 - 角尊（男）</value>
+  </data>
+  <data name="c9204" xml:space="preserve">
+    <value>c9204 - 角尊（女）</value>
+  </data>
+  <data name="Calves" xml:space="preserve">
+    <value>小腿肚</value>
+  </data>
+  <data name="CamAngleX" xml:space="preserve">
+    <value>镜头角度X</value>
+  </data>
+  <data name="CamAngleY" xml:space="preserve">
+    <value>镜头角度Y</value>
+  </data>
+  <data name="CameraSettings" xml:space="preserve">
+    <value>镜头设置</value>
+  </data>
+  <data name="CameraViewX" xml:space="preserve">
+    <value>镜头图像X</value>
+  </data>
+  <data name="CameraViewY" xml:space="preserve">
+    <value>镜头图像Y</value>
+  </data>
+  <data name="CameraViewZ" xml:space="preserve">
+    <value>镜头图像Z</value>
+  </data>
+  <data name="CameraXPos" xml:space="preserve">
+    <value>镜头X轴位置</value>
+  </data>
+  <data name="CameraYPos" xml:space="preserve">
+    <value>镜头Y轴位置</value>
+  </data>
+  <data name="CameraZPos" xml:space="preserve">
+    <value>镜头Z轴位置</value>
+  </data>
+  <data name="CamRotation" xml:space="preserve">
+    <value>镜头旋转</value>
+  </data>
+  <data name="CamUpDown" xml:space="preserve">
+    <value>镜头上/下</value>
+  </data>
+  <data name="CamYMax" xml:space="preserve">
+    <value>镜头Y轴最大</value>
+  </data>
+  <data name="CamYMin" xml:space="preserve">
+    <value>镜头Y轴最小</value>
+  </data>
+  <data name="Cheeks" xml:space="preserve">
+    <value>面颊</value>
+  </data>
+  <data name="Chest" xml:space="preserve">
+    <value>胸膛</value>
+  </data>
+  <data name="Clan" xml:space="preserve">
+    <value>部族</value>
+  </data>
+  <data name="ClanToolTip" xml:space="preserve">
+    <value>改变所选目标的部族</value>
+  </data>
+  <data name="Clavicles" xml:space="preserve">
+    <value>锁骨</value>
+  </data>
+  <data name="Colorfulness" xml:space="preserve">
+    <value>视彩度</value>
+  </data>
+  <data name="Colorfulness2" xml:space="preserve">
+    <value>视彩度2</value>
+  </data>
+  <data name="Contrast" xml:space="preserve">
+    <value>对比度</value>
+  </data>
+  <data name="Contrast2" xml:space="preserve">
+    <value>对比度2</value>
+  </data>
+  <data name="CurrentZoom" xml:space="preserve">
+    <value>当前焦距</value>
+  </data>
+  <data name="DataPath" xml:space="preserve">
+    <value>数据路径</value>
+  </data>
+  <data name="DataPathToolTip" xml:space="preserve">
+    <value>改变所选目标的数据路径   
+
+• 这会让你可以使用其他种族或性别的动作   
+
+•不需要刷新，在Gpose内外都可以使用    
+
+•目标的建模骨架会变形以适应所选定的种族及性别，产生的拉伸或缩小是不可避免的  
+
+•你也可以点击刷新按钮，成为一个变形怪！</value>
+  </data>
+  <data name="DefaultTime" xml:space="preserve">
+    <value>默认时间</value>
+  </data>
+  <data name="Discord" xml:space="preserve">
+    <value>Discord</value>
+  </data>
+  <data name="Drenched" xml:space="preserve">
+    <value>湿透效果</value>
+  </data>
+  <data name="DrenchedToolTip" xml:space="preserve">
+    <value>给目标增加一个比湿衣更加明显的效果
+
+•和湿衣一样，这个效果会随着时间而消失</value>
+  </data>
+  <data name="Dyes" xml:space="preserve">
+    <value>染色</value>
+  </data>
+  <data name="EarMuscleTailSize" xml:space="preserve">
+    <value>耳朵尾巴尺寸</value>
+  </data>
+  <data name="EarMuscleTailSizeToolTip" xml:space="preserve">
+    <value>改变所选目标的耳朵，体格（肌肉），尾巴的尺寸与多少</value>
+  </data>
+  <data name="Ears" xml:space="preserve">
+    <value>耳朵</value>
+  </data>
+  <data name="EarsToolTip" xml:space="preserve">
+    <value>允许你在所选目标上装备任意耳环</value>
+  </data>
+  <data name="EarTailScale" xml:space="preserve">
+    <value>耳朵/尾巴大小</value>
+  </data>
+  <data name="EarTailScaleToolTip" xml:space="preserve">
+    <value>改变所选目标耳朵/尾部的大小</value>
+  </data>
+  <data name="EarTailType" xml:space="preserve">
+    <value>耳朵/尾部类型</value>
+  </data>
+  <data name="EarTailTypeToolTip" xml:space="preserve">
+    <value>改变所选目标耳朵/尾部的类型</value>
+  </data>
+  <data name="Elbows" xml:space="preserve">
+    <value>肘</value>
+  </data>
+  <data name="EnableEditing" xml:space="preserve">
+    <value>启用编辑</value>
+  </data>
+  <data name="EnablePhysics" xml:space="preserve">
+    <value>启用物理效果</value>
+  </data>
+  <data name="EntityType" xml:space="preserve">
+    <value>实体类型</value>
+  </data>
+  <data name="EntityTypeToolTip" xml:space="preserve">
+    <value>供高级使用者使用   
+
+•将会改变所选目标的实体类型  
+
+•对某些物体将导致不可预测及不想要的效果   
+
+•把一些npc的实体类型设置为1可以让他们在gpose中变为可被选中的目标</value>
+  </data>
+  <data name="Equipment" xml:space="preserve">
+    <value>装备</value>
+  </data>
+  <data name="Exposure" xml:space="preserve">
+    <value>曝光</value>
+  </data>
+  <data name="EyeBrowsToolTip" xml:space="preserve">
+    <value>改变所选目标的眉毛类型</value>
+  </data>
+  <data name="EyebrowsType" xml:space="preserve">
+    <value>眉毛类型</value>
+  </data>
+  <data name="EyeColorLeft" xml:space="preserve">
+    <value>瞳孔颜色（左）</value>
+  </data>
+  <data name="EyeColorLeftToolTip" xml:space="preserve">
+    <value>改变所选目标左眼的瞳孔颜色</value>
+  </data>
+  <data name="EyeColorRight" xml:space="preserve">
+    <value>瞳孔颜色(右）</value>
+  </data>
+  <data name="EyeColorRightToolTip" xml:space="preserve">
+    <value>改变所选目标右眼的瞳孔颜色</value>
+  </data>
+  <data name="Eyelids" xml:space="preserve">
+    <value>眼睑</value>
+  </data>
+  <data name="Eyes" xml:space="preserve">
+    <value>眼睛</value>
+  </data>
+  <data name="EyesType" xml:space="preserve">
+    <value>眼睛类型</value>
+  </data>
+  <data name="EyeTypeToolTip" xml:space="preserve">
+    <value>改变所选目标的眼睛类型</value>
+  </data>
+  <data name="Face" xml:space="preserve">
+    <value>脸</value>
+  </data>
+  <data name="FacePaint" xml:space="preserve">
+    <value>面妆/刺青</value>
+  </data>
+  <data name="FacePaintColor" xml:space="preserve">
+    <value>面妆颜色</value>
+  </data>
+  <data name="FacePaintColorToolTip" xml:space="preserve">
+    <value>改变所选目标的面妆颜色</value>
+  </data>
+  <data name="FacePaintToolTip" xml:space="preserve">
+    <value>改变所选目标面妆/刺青的类型</value>
+  </data>
+  <data name="FacialFeatures" xml:space="preserve">
+    <value>面部伤痕</value>
+  </data>
+  <data name="FacialFeaturesToolTip" xml:space="preserve">
+    <value>改变所选物体的面部特征</value>
+  </data>
+  <data name="Feet" xml:space="preserve">
+    <value>鞋子</value>
+  </data>
+  <data name="FeetToolTip" xml:space="preserve">
+    <value>允许所选物体装备任意鞋子</value>
+  </data>
+  <data name="Filmic" xml:space="preserve">
+    <value>电影化画面</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>滤镜</value>
+  </data>
+  <data name="FindProcessButton" xml:space="preserve">
+    <value>打开进程</value>
+  </data>
+  <data name="FindProcessToolTip" xml:space="preserve">
+    <value>读取最终幻想14进程</value>
+  </data>
+  <data name="FingerBones" xml:space="preserve">
+    <value>指骨</value>
+  </data>
+  <data name="ForceAnim" xml:space="preserve">
+    <value>强制动作</value>
+  </data>
+  <data name="ForceAnimToolTip" xml:space="preserve">
+    <value>强制所选目标作出一个动作
+
+•只能在gpose下使用   
+
+•需要在进入gpose前做一个非循环动作（如/挥手） 
+
+•一些动作会有种族/性别上的限定，如果在执行时你的角色只是抖动了一下，那你可能需要设置一个可用的数据路径   
+
+•对npc无效</value>
+  </data>
+  <data name="Forearms" xml:space="preserve">
+    <value>小臂</value>
+  </data>
+  <data name="FoV" xml:space="preserve">
+    <value>视野</value>
+  </data>
+  <data name="FoV2" xml:space="preserve">
+    <value>视野2</value>
+  </data>
+  <data name="FreeCompanyTag" xml:space="preserve">
+    <value>部队标签</value>
+  </data>
+  <data name="FreeCompanyTagWaterMark" xml:space="preserve">
+    <value>部队标签</value>
+  </data>
+  <data name="FreeCompanyToolTip" xml:space="preserve">
+    <value>可编辑被选中物体的部队标签</value>
+  </data>
+  <data name="FreezeAll" xml:space="preserve">
+    <value>清除所有勾选</value>
+  </data>
+  <data name="FreezePos" xml:space="preserve">
+    <value>冻结位置</value>
+  </data>
+  <data name="FreezePosToolTip" xml:space="preserve">
+    <value>冻结所选目标位置
+
+• 这项功能主要用来控制gpose中的移动目标，它可以防止目标在完成表情/动作之后跳回其原有位置
+
+• 确保在切换到一个新目标之前关闭此功能，否则新目标和原目标将出现在同一位置</value>
+  </data>
+  <data name="FreezeRot" xml:space="preserve">
+    <value>冻结转向</value>
+  </data>
+  <data name="FreezeRotToolTip" xml:space="preserve">
+    <value>冻结所选物体的旋转
+
+• 此功能一般与冻结位置在gpose中共同使用以冻结所选目标的位置
+
+• 你可以利用此功能与游戏中的“面向镜头”（默认键：空格键）来在不转动所选目标身体的情况下转动其头部
+
+• 同冻结位置一样，请确保在gpose中切换所选物体之前，关闭该功能
+
+• 需要使用数字直接输入数值或滑动旋转滑块来调节</value>
+  </data>
+  <data name="G" xml:space="preserve">
+    <value>G</value>
+  </data>
+  <data name="Gamma" xml:space="preserve">
+    <value>Gamma值</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>性别</value>
+  </data>
+  <data name="GenderToolTip" xml:space="preserve">
+    <value>改变所选目标的性别</value>
+  </data>
+  <data name="GPoseMode" xml:space="preserve">
+    <value>Gpose模式</value>
+  </data>
+  <data name="GposeModeToolTip" xml:space="preserve">
+    <value>允许改变所选目标在gpose中的具体参数，如xyz轴位置，旋转，动作等
+
+• Gpose模式和目标模式应同时打开，请确保不要在先打开目标模式的情况下开启gpose模式，否则两个都会被关闭</value>
+  </data>
+  <data name="Green" xml:space="preserve">
+    <value>绿色</value>
+  </data>
+  <data name="GreenGlow" xml:space="preserve">
+    <value>绿光</value>
+  </data>
+  <data name="GroupPoseFilter" xml:space="preserve">
+    <value>gpose滤镜</value>
+  </data>
+  <data name="HairColor" xml:space="preserve">
+    <value>头发颜色</value>
+  </data>
+  <data name="HairColor2" xml:space="preserve">
+    <value>头发颜色2</value>
+  </data>
+  <data name="HairColorToolTip" xml:space="preserve">
+    <value>改变所选目标的头发颜色</value>
+  </data>
+  <data name="Hairstyle" xml:space="preserve">
+    <value>发型</value>
+  </data>
+  <data name="HairStyleToolTip" xml:space="preserve">
+    <value>改变所选目标的发型</value>
+  </data>
+  <data name="Hands" xml:space="preserve">
+    <value>手套</value>
+  </data>
+  <data name="HandsToolTip" xml:space="preserve">
+    <value>允许所选目标装备任意手套</value>
+  </data>
+  <data name="HDR" xml:space="preserve">
+    <value>HDR</value>
+  </data>
+  <data name="Head" xml:space="preserve">
+    <value>帽子</value>
+  </data>
+  <data name="HeadBones" xml:space="preserve">
+    <value>头骨</value>
+  </data>
+  <data name="HeadToolTip" xml:space="preserve">
+    <value>允许所选目标装备任意帽子</value>
+  </data>
+  <data name="HeadType" xml:space="preserve">
+    <value>脸部轮廓</value>
+  </data>
+  <data name="HeadTypeToolTip" xml:space="preserve">
+    <value>改变所选目标的面部轮廓</value>
+  </data>
+  <data name="Height" xml:space="preserve">
+    <value>身高</value>
+  </data>
+  <data name="HeightToolTip" xml:space="preserve">
+    <value>改变所选目标的身高</value>
+  </data>
+  <data name="HighLightButtonToolTip" xml:space="preserve">
+    <value>为所选目标添加挑染效果</value>
+  </data>
+  <data name="Highlights" xml:space="preserve">
+    <value>挑染</value>
+  </data>
+  <data name="HighlightsColor" xml:space="preserve">
+    <value>挑染颜色</value>
+  </data>
+  <data name="HighlightsToolTip" xml:space="preserve">
+    <value>改变所选目标的挑染颜色</value>
+  </data>
+  <data name="IdleAnim" xml:space="preserve">
+    <value>空闲时动作</value>
+  </data>
+  <data name="IdleAnimToolTip" xml:space="preserve">
+    <value>改变所选目标空闲时的动作
+
+• 该功能可用于gpose内及gpose外
+
+• 如果计划于gpose内使用该功能，在进入gpose之前如果做过其他动作，请先/sit再站起来以保证进入gpose后不会重复上一个动作
+
+• 此功能可以作用于宠物，陆行鸟及大部分npc</value>
+  </data>
+  <data name="IndexFinger" xml:space="preserve">
+    <value>食指</value>
+  </data>
+  <data name="IndexJoint" xml:space="preserve">
+    <value>食指关节</value>
+  </data>
+  <data name="InnerBrows" xml:space="preserve">
+    <value>眉心</value>
+  </data>
+  <data name="Jaw" xml:space="preserve">
+    <value>下巴</value>
+  </data>
+  <data name="JawType" xml:space="preserve">
+    <value>下颌类型（脸型）</value>
+  </data>
+  <data name="JawTypeToolTip" xml:space="preserve">
+    <value>改变所选目标的下颌类型</value>
+  </data>
+  <data name="JobIcon" xml:space="preserve">
+    <value>职业图标</value>
+  </data>
+  <data name="JobIconToolTip" xml:space="preserve">
+    <value>改变小队列表中已选中的小队成员的职业图标</value>
+  </data>
+  <data name="Knees" xml:space="preserve">
+    <value>膝盖</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>zh</value>
+  </data>
+  <data name="LeftArm" xml:space="preserve">
+    <value>左臂</value>
+  </data>
+  <data name="LeftEyeColor" xml:space="preserve">
+    <value>瞳孔颜色（左眼）</value>
+  </data>
+  <data name="LeftLeg" xml:space="preserve">
+    <value>左腿</value>
+  </data>
+  <data name="LeftRing" xml:space="preserve">
+    <value>戒指（左手）</value>
+  </data>
+  <data name="LeftRingToolTip" xml:space="preserve">
+    <value>允许选中的目标的左手装备任何戒指</value>
+  </data>
+  <data name="Legs" xml:space="preserve">
+    <value>下身防具</value>
+  </data>
+  <data name="LegsToolTip" xml:space="preserve">
+    <value>允许选中目标装备任何下身防具</value>
+  </data>
+  <data name="LimbalOrTattoo" xml:space="preserve">
+    <value>瞳孔轮廓/刺青</value>
+  </data>
+  <data name="LimbalOrTattooToolTip" xml:space="preserve">
+    <value>改变所选中目标的瞳孔轮廓颜色及刺青颜色</value>
+  </data>
+  <data name="LimbalRingTattooColor" xml:space="preserve">
+    <value>瞳孔轮廓颜色/刺青颜色</value>
+  </data>
+  <data name="LipColor" xml:space="preserve">
+    <value>唇色/毛纹</value>
+  </data>
+  <data name="LipColorToolTip" xml:space="preserve">
+    <value>改变所选目标的唇色及毛纹</value>
+  </data>
+  <data name="LipsColor" xml:space="preserve">
+    <value>唇色</value>
+  </data>
+  <data name="LoadButton" xml:space="preserve">
+    <value>读取</value>
+  </data>
+  <data name="LoadGearset" xml:space="preserve">
+    <value>读取装备库</value>
+  </data>
+  <data name="LoadMainWindow" xml:space="preserve">
+    <value>读取外观</value>
+  </data>
+  <data name="LoadMainWindowToolTip" xml:space="preserve">
+    <value>从用户生成的json文件中读取外观
+
+•你可以用“load .dat”从游戏中的角色创建保存文件中读取数据</value>
+  </data>
+  <data name="LoadPointButton" xml:space="preserve">
+    <value>读取状态</value>
+  </data>
+  <data name="LoadPointToolTip" xml:space="preserve">
+    <value>读取先前备份的状态文件</value>
+  </data>
+  <data name="LockFacialAnimation" xml:space="preserve">
+    <value>面部表情锁定</value>
+  </data>
+  <data name="LockFacialAnimationToolTip" xml:space="preserve">
+    <value>锁定所选中目标的面部表情动作
+
+• 请勾选并打开此功能，设置动作为0来使用此功能</value>
+  </data>
+  <data name="LockTime" xml:space="preserve">
+    <value>锁定时间</value>
+  </data>
+  <data name="LowerBodyBones" xml:space="preserve">
+    <value>下身骨骼</value>
+  </data>
+  <data name="LowerEarrings" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LowerEyelids" xml:space="preserve">
+    <value>下眼睑</value>
+  </data>
+  <data name="LowerLip" xml:space="preserve">
+    <value>下唇</value>
+  </data>
+  <data name="MainHand" xml:space="preserve">
+    <value>主手装备</value>
+  </data>
+  <data name="MainHandColor" xml:space="preserve">
+    <value>主手装备颜色</value>
+  </data>
+  <data name="MainHandScale" xml:space="preserve">
+    <value>主手装备大小</value>
+  </data>
+  <data name="MainHandScaleToolTip" xml:space="preserve">
+    <value>控制目标主手装备的xyz轴大小
+
+• 此功能用来控制主手道具的大小，但一些在动作表情中临时出现的的“特效类道具”不受影响</value>
+  </data>
+  <data name="MainHandToolTip" xml:space="preserve">
+    <value>允许所选中目标装备任何武器在主手位置
+
+• 如果你想要主手处于空手状态，可以选择装备“皇帝”系列或者用右侧面板中主手/副手装备大小调节功能</value>
+  </data>
+  <data name="MaxZoom" xml:space="preserve">
+    <value>最大焦距</value>
+  </data>
+  <data name="MiddleFinger" xml:space="preserve">
+    <value>中指</value>
+  </data>
+  <data name="MiddleJoint" xml:space="preserve">
+    <value>中指关节</value>
+  </data>
+  <data name="MinZoom" xml:space="preserve">
+    <value>最小焦距</value>
+  </data>
+  <data name="ModelID" xml:space="preserve">
+    <value>模型ID</value>
+  </data>
+  <data name="ModelList" xml:space="preserve">
+    <value>模型列表</value>
+  </data>
+  <data name="ModelType" xml:space="preserve">
+    <value>模型类型</value>
+  </data>
+  <data name="ModelTypeButtonToolTip" xml:space="preserve">
+    <value>模型列表可以提供怪物，半人，道具及道具效果的搜索
+
+• 包含一些npc，此类npc被归类为半人
+
+• 如果选择变为半人后游戏内人物模型消失，请在装备区把所有基准数值设置为0，变量设置为0，如果没有解决，请尝试1，0或1,1的设置</value>
+  </data>
+  <data name="ModelTypeToolTip" xml:space="preserve">
+    <value>改变所选目标的模型类型</value>
+  </data>
+  <data name="Mouth" xml:space="preserve">
+    <value>嘴</value>
+  </data>
+  <data name="MouthType" xml:space="preserve">
+    <value>嘴型</value>
+  </data>
+  <data name="MouthTypeToolTip" xml:space="preserve">
+    <value>改变所选目标的嘴型</value>
+  </data>
+  <data name="MuscleTone" xml:space="preserve">
+    <value>体格</value>
+  </data>
+  <data name="MuscleToneToolTip" xml:space="preserve">
+    <value>改变所选目标的体格</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>名字</value>
+  </data>
+  <data name="NameToolTip" xml:space="preserve">
+    <value>改变所选目标的名字</value>
+  </data>
+  <data name="NameWaterMark" xml:space="preserve">
+    <value>名字</value>
+  </data>
+  <data name="Neck" xml:space="preserve">
+    <value>项链</value>
+  </data>
+  <data name="NeckToolTip" xml:space="preserve">
+    <value>使所选目标可装备所有项链</value>
+  </data>
+  <data name="Nose" xml:space="preserve">
+    <value>鼻子</value>
+  </data>
+  <data name="NoseType" xml:space="preserve">
+    <value>鼻型</value>
+  </data>
+  <data name="NoseTypeToolTip" xml:space="preserve">
+    <value>改变所选目标的鼻型</value>
+  </data>
+  <data name="Nostrils" xml:space="preserve">
+    <value>鼻孔</value>
+  </data>
+  <data name="NPCModel" xml:space="preserve">
+    <value>npc模型</value>
+  </data>
+  <data name="NPCOutfit" xml:space="preserve">
+    <value>npc装备</value>
+  </data>
+  <data name="NPCOutfitToolTip" xml:space="preserve">
+    <value>可根据姓名搜索相应npc
+
+• 选择相应npc后，需要点击刷新至游戏来应用该npc外观
+
+• 由于分类问题，一些NPC不在此列表，如果没有找到想要的npc，请在模型列表里尝试搜索</value>
+  </data>
+  <data name="OffHand" xml:space="preserve">
+    <value>副手装备</value>
+  </data>
+  <data name="OffHandColor" xml:space="preserve">
+    <value>副手装备颜色</value>
+  </data>
+  <data name="OffHandScale" xml:space="preserve">
+    <value>副手装备大小</value>
+  </data>
+  <data name="OffHandScaleToolTip" xml:space="preserve">
+    <value>可以控制副手武器的XYZ轴以调整大小
+
+• 此功能涵盖盾牌，箭筒，刀削，匕首，拳套等物品</value>
+  </data>
+  <data name="OffHandToolTip" xml:space="preserve">
+    <value>允许被选目标装备副手武器
+
+• 利用副手武器的“查看”按钮搜索主手装备，例如寻找刀鞘或者箭筒，可以直接选取与之配套的刀或弓</value>
+  </data>
+  <data name="OuterBrows" xml:space="preserve">
+    <value>眉尾</value>
+  </data>
+  <data name="OverallScale" xml:space="preserve">
+    <value>总体大小</value>
+  </data>
+  <data name="OverallScaleToolTip" xml:space="preserve">
+    <value>调节所选目标的总体大小</value>
+  </data>
+  <data name="Pelvis" xml:space="preserve">
+    <value>胯骨</value>
+  </data>
+  <data name="PinkyFinger" xml:space="preserve">
+    <value>小指</value>
+  </data>
+  <data name="PinkyJoint" xml:space="preserve">
+    <value>小指关节</value>
+  </data>
+  <data name="PosingMatrix" xml:space="preserve">
+    <value>动作矩阵</value>
+  </data>
+  <data name="PropView" xml:space="preserve">
+    <value>视图</value>
+  </data>
+  <data name="R" xml:space="preserve">
+    <value>R</value>
+  </data>
+  <data name="Race" xml:space="preserve">
+    <value>种族</value>
+  </data>
+  <data name="RaceToolTip" xml:space="preserve">
+    <value>更改所选目标的种族</value>
+  </data>
+  <data name="RandomizeAppearance" xml:space="preserve">
+    <value>随机外观</value>
+  </data>
+  <data name="RandomizeAppearanceToolTip" xml:space="preserve">
+    <value>创建随机外观</value>
+  </data>
+  <data name="RealtimeRotation" xml:space="preserve">
+    <value>实时旋转</value>
+  </data>
+  <data name="RealTimeRotationToolTip" xml:space="preserve">
+    <value>用鼠标控制方块
+
+• 所有的转向基于所选目标当前的朝向
+
+• 鼠标右键控制X轴旋转
+
+• 鼠标左键控制Y轴旋转
+
+• 鼠标中键控制Z轴旋转</value>
+  </data>
+  <data name="Red" xml:space="preserve">
+    <value>红色</value>
+  </data>
+  <data name="RedGlow" xml:space="preserve">
+    <value>红光</value>
+  </data>
+  <data name="RefreshButton" xml:space="preserve">
+    <value>刷新按钮</value>
+  </data>
+  <data name="RelativeXYZPos" xml:space="preserve">
+    <value>相对XYZ位置</value>
+  </data>
+  <data name="RelativeXYZPosToolTip" xml:space="preserve">
+    <value>使所有XYZ轴位置调整都基于所选目标而不是基于游戏环境
+
+• 此设定默认开启</value>
+  </data>
+  <data name="RelativeXYZRot" xml:space="preserve">
+    <value>相对XYZ旋转</value>
+  </data>
+  <data name="RelativeXYZRotToolTip" xml:space="preserve">
+    <value>使所有XYZ轴旋转调整都基于所选目标而不是基于游戏环境
+
+• 此设定默认开启
+
+• 只影响实施旋转方块</value>
+  </data>
+  <data name="RenderCycle" xml:space="preserve">
+    <value>渲染循环</value>
+  </data>
+  <data name="RenderLimit" xml:space="preserve">
+    <value>解除角色渲染限制</value>
+  </data>
+  <data name="RenderToggleToolTip" xml:space="preserve">
+    <value>渲染开关</value>
+  </data>
+  <data name="ResetButton" xml:space="preserve">
+    <value>复位</value>
+  </data>
+  <data name="ResetToDefaultButton" xml:space="preserve">
+    <value>恢复默认</value>
+  </data>
+  <data name="RightArm" xml:space="preserve">
+    <value>右臂</value>
+  </data>
+  <data name="RightEyeColor" xml:space="preserve">
+    <value>瞳孔颜色（右眼）</value>
+  </data>
+  <data name="RightLeg" xml:space="preserve">
+    <value>右腿</value>
+  </data>
+  <data name="RightRing" xml:space="preserve">
+    <value>戒指（右手）</value>
+  </data>
+  <data name="RightRingToolTip" xml:space="preserve">
+    <value>使所选目标的右手可以装备任何戒指</value>
+  </data>
+  <data name="RingFinger" xml:space="preserve">
+    <value>无名指</value>
+  </data>
+  <data name="RingJoint" xml:space="preserve">
+    <value>无名指关节</value>
+  </data>
+  <data name="RotationSliders" xml:space="preserve">
+    <value>转动滑块</value>
+  </data>
+  <data name="RotationSlidersToolTip" xml:space="preserve">
+    <value>此功能可以在转动滑块与数字输入之间切换
+
+•此功能默认打开
+
+•关闭此功能将使XYZ轴旋转滑块变为数字输入
+
+•有效数值为0-360
+
+•转动滑块与数字输入都需要转动功能被勾选</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="SaveGearset" xml:space="preserve">
+    <value>保存装备</value>
+  </data>
+  <data name="SaveMainWindow" xml:space="preserve">
+    <value>保存外观</value>
+  </data>
+  <data name="SaveMainWindowToolTip" xml:space="preserve">
+    <value>保存外观为json文件</value>
+  </data>
+  <data name="SavePointButton" xml:space="preserve">
+    <value>保存状态</value>
+  </data>
+  <data name="SavePointToolTip" xml:space="preserve">
+    <value>创建一个可以读取的“”备份“”状态</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="SHDR" xml:space="preserve">
+    <value>S-HDR</value>
+  </data>
+  <data name="Shoulders" xml:space="preserve">
+    <value>肩膀</value>
+  </data>
+  <data name="SkinColor" xml:space="preserve">
+    <value>肤色</value>
+  </data>
+  <data name="Skintone" xml:space="preserve">
+    <value>肤色</value>
+  </data>
+  <data name="SkinToneToolTip" xml:space="preserve">
+    <value>改变所选目标肤色</value>
+  </data>
+  <data name="StatusEffect" xml:space="preserve">
+    <value>Gpose 状态效果</value>
+  </data>
+  <data name="StatusEffectToolTip" xml:space="preserve">
+    <value>允许你在gpose中应用额外的特效
+
+• 1 先在gpose中激活一个基本状态
+  
+2  在cm下拉菜单中选择你想要的新特效
+  
+3  在gpose菜单中选择移除之前添加的状态
+
+• 想要添加新的效果或者移除当前效果，请点击复位或者用其他的效果覆盖</value>
+  </data>
+  <data name="Sternum" xml:space="preserve">
+    <value>胸骨</value>
+  </data>
+  <data name="Tail" xml:space="preserve">
+    <value>尾巴</value>
+  </data>
+  <data name="TailJoints" xml:space="preserve">
+    <value>尾巴关节</value>
+  </data>
+  <data name="TargetActorIs" xml:space="preserve">
+    <value>目标物体是？？？</value>
+  </data>
+  <data name="TargetMode" xml:space="preserve">
+    <value>目标模式</value>
+  </data>
+  <data name="TargetModeToolTip" xml:space="preserve">
+    <value>允许你在不使用目标列表的情况下，改变鼠标选中的目标的各项数值
+
+• 此功能在物体较多的复杂环境中使用，以避免物体移动带来的列表顺序变化. 不过在应用修改之前请先取消打钩此功能，用普通模式进行应用</value>
+  </data>
+  <data name="Thumb" xml:space="preserve">
+    <value>拇指</value>
+  </data>
+  <data name="ThumbJoint" xml:space="preserve">
+    <value>拇指关节</value>
+  </data>
+  <data name="TimeButtonLockToolTip" xml:space="preserve">
+    <value>时间转换</value>
+  </data>
+  <data name="TimeControl" xml:space="preserve">
+    <value>时间控制</value>
+  </data>
+  <data name="TimeControlToolTip" xml:space="preserve">
+    <value>调整当前区域时间
+
+•在gpose模式下使用时间/天气暂停的同时使用时间控制可以看到完整的月亮变化</value>
+  </data>
+  <data name="TimeLockToolTip" xml:space="preserve">
+    <value>尝试阻止时间流动
+
+•这项功能并不精准，长时间试用下，时间还是会轻微的流动</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>称号</value>
+  </data>
+  <data name="TitleToolTip" xml:space="preserve">
+    <value>更改所选目标的称号</value>
+  </data>
+  <data name="Toes" xml:space="preserve">
+    <value>脚趾</value>
+  </data>
+  <data name="Torso" xml:space="preserve">
+    <value>上身</value>
+  </data>
+  <data name="TPoseActor" xml:space="preserve">
+    <value>T-pose actor</value>
+  </data>
+  <data name="TransformationData" xml:space="preserve">
+    <value>转换数据</value>
+  </data>
+  <data name="Transparency" xml:space="preserve">
+    <value>透明度</value>
+  </data>
+  <data name="TransparencyToolTip" xml:space="preserve">
+    <value>改变所选物体透明度
+
+•降低所选物体透明度并不影响其主手及副手的物品，你可以利用主副手物品xyz轴归零的功能来使其隐形
+
+•如果将数值设置为0，会使系统认为他们为不可选中的目标，如果你要继续使用，请将数值设置为0.03</value>
+  </data>
+  <data name="Twitter" xml:space="preserve">
+    <value>Twitter</value>
+  </data>
+  <data name="UncheckButton" xml:space="preserve">
+    <value>取消勾选所有</value>
+  </data>
+  <data name="UncheckButtonToolTip" xml:space="preserve">
+    <value>取消勾选所有选项</value>
+  </data>
+  <data name="UpperBodyBones" xml:space="preserve">
+    <value>上身骨骼</value>
+  </data>
+  <data name="UpperEarrings" xml:space="preserve">
+    <value>上耳耳环</value>
+  </data>
+  <data name="UpperLip" xml:space="preserve">
+    <value>上唇</value>
+  </data>
+  <data name="Variant" xml:space="preserve">
+    <value>变量</value>
+  </data>
+  <data name="Vibrance" xml:space="preserve">
+    <value>饱和度</value>
+  </data>
+  <data name="VieraLowerEars" xml:space="preserve">
+    <value>维埃拉族下耳</value>
+  </data>
+  <data name="VieraUpperEars" xml:space="preserve">
+    <value>维埃拉族上耳</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>视图</value>
+  </data>
+  <data name="VisualEffect" xml:space="preserve">
+    <value>视觉效果</value>
+  </data>
+  <data name="VoiceType" xml:space="preserve">
+    <value>声音类型</value>
+  </data>
+  <data name="VoiceTypeToolTip" xml:space="preserve">
+    <value>更改所选目标的声音类型</value>
+  </data>
+  <data name="Waist" xml:space="preserve">
+    <value>腰</value>
+  </data>
+  <data name="Weather" xml:space="preserve">
+    <value>天气</value>
+  </data>
+  <data name="WeatherForce" xml:space="preserve">
+    <value>强制天气</value>
+  </data>
+  <data name="WeatherForceToolTip" xml:space="preserve">
+    <value>控制当前区域天气
+
+•此功能采用立即生效的方式，一经选择则天气立即改变为所选</value>
+  </data>
+  <data name="WeatherSelect" xml:space="preserve">
+    <value>天气选择</value>
+  </data>
+  <data name="WeatherToolTip" xml:space="preserve">
+    <value>控制当前区域天气
+
+•此功能采用自然变化生效方式，选择后天气改变更加自然</value>
+  </data>
+  <data name="Wet" xml:space="preserve">
+    <value>湿衣</value>
+  </data>
+  <data name="WetToolTip" xml:space="preserve">
+    <value>给予所选目标湿衣效果
+
+•如果关闭此功能，湿衣效果会随时间流逝而消失</value>
+  </data>
+  <data name="World" xml:space="preserve">
+    <value>世界</value>
+  </data>
+  <data name="Wrists" xml:space="preserve">
+    <value>手镯</value>
+  </data>
+  <data name="WristsToolTIp" xml:space="preserve">
+    <value>允许所选目标装备任意手镯</value>
+  </data>
+  <data name="X" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="XPos" xml:space="preserve">
+    <value>X轴位置</value>
+  </data>
+  <data name="XPosToolTip" xml:space="preserve">
+    <value>修改所选目标的X轴位置
+
+•如在gpose中使用，请先冻结当前目标动作</value>
+  </data>
+  <data name="XRot" xml:space="preserve">
+    <value>X轴旋转</value>
+  </data>
+  <data name="XRot2" xml:space="preserve">
+    <value>X轴旋转</value>
+  </data>
+  <data name="XRot2ToolTip" xml:space="preserve">
+    <value>调整所选关节的X轴旋转程度</value>
+  </data>
+  <data name="XRotToolTip" xml:space="preserve">
+    <value>调整所选目标的X轴旋转
+
+•如在gpose中使用，请先冻结当前目标动作
+
+•滑块调整及数值输入调整都需要先勾选旋转功能</value>
+  </data>
+  <data name="Y" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="YPos" xml:space="preserve">
+    <value>Y轴位置</value>
+  </data>
+  <data name="YPosToolTip" xml:space="preserve">
+    <value>修改所选目标的Y轴位置
+
+•如在gpose中使用，请先冻结当前目标动作</value>
+  </data>
+  <data name="YRot" xml:space="preserve">
+    <value>Y轴旋转</value>
+  </data>
+  <data name="YRot2" xml:space="preserve">
+    <value>Y轴旋转</value>
+  </data>
+  <data name="YRot2ToolTip" xml:space="preserve">
+    <value>调整所选关节的Y轴旋转程度</value>
+  </data>
+  <data name="YRotToolTip" xml:space="preserve">
+    <value>调整所选目标的Y轴旋转
+
+•如在gpose中使用，请先冻结当前目标动作
+
+•滑块调整及数值输入调整都需要先勾选旋转功能</value>
+  </data>
+  <data name="Z" xml:space="preserve">
+    <value>Z</value>
+  </data>
+  <data name="Zero" xml:space="preserve">
+    <value>零</value>
+  </data>
+  <data name="ZeroScale" xml:space="preserve">
+    <value>大小为0</value>
+  </data>
+  <data name="ZeroScaleToolTip" xml:space="preserve">
+    <value>把XYZ轴大小均设置为0，能有效的使物品消失
+
+•你可以在XYZ轴设置栏输入数值（例如1）来取消该效果</value>
+  </data>
+  <data name="ZPos" xml:space="preserve">
+    <value>Z轴位置</value>
+  </data>
+  <data name="ZPosToolTip" xml:space="preserve">
+    <value>修改所选目标的Z轴位置
+
+•如在gpose中使用，请先冻结当前目标动作</value>
+  </data>
+  <data name="ZRot" xml:space="preserve">
+    <value>Z轴旋转</value>
+  </data>
+  <data name="ZRot2" xml:space="preserve">
+    <value>Z轴旋转</value>
+  </data>
+  <data name="ZRot2ToolTip" xml:space="preserve">
+    <value>调整所选关节的Z轴旋转程度</value>
+  </data>
+  <data name="ZRotToolTip" xml:space="preserve">
+    <value>调整所选目标的Z轴旋转
+•如在gpose中使用，请先冻结当前目标动作
+•滑块调整及数值输入调整都需要先勾选旋转功能</value>
+  </data>
+</root>

@@ -307,15 +307,18 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resx\UIPoseStrings.ja.resx" />
     <EmbeddedResource Include="Resx\UIPoseStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>UIPoseStrings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resx\UIPoseStrings.zh.resx" />
     <EmbeddedResource Include="Resx\UIStringsContent.ja.resx" />
     <EmbeddedResource Include="Resx\UIStringsContent.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>UIStringsContent.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resx\UIStringsContent.zh.resx" />
     <None Include="app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
