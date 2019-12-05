@@ -20,6 +20,7 @@ using System.Net;
 using ConceptMatrix.Views;
 using WepTuple = System.Tuple<int, int, int, int>;
 using SaintCoinach;
+using System.Globalization;
 
 namespace ConceptMatrix
 {
@@ -40,6 +41,18 @@ namespace ConceptMatrix
         public MainWindow()
         {
             ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
+
+            var ci = new CultureInfo("ja") //settings.CultureSet
+            {
+                NumberFormat = { NumberDecimalSeparator = "." }
+            };
+
+            CultureInfo.DefaultThreadCurrentCulture = ci;
+            CultureInfo.DefaultThreadCurrentUICulture = ci;
+            CultureInfo.CurrentCulture = ci;
+            CultureInfo.CurrentUICulture = ci;
+
+
 
             // Call the update method.
             UpdateProgram();

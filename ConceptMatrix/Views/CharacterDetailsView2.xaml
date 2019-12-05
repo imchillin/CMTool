@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:resx="clr-namespace:ConceptMatrix.Resx"
              xmlns:Views="clr-namespace:ConceptMatrix.Views"
              TextElement.FontSize="13.25"
              mc:Ignorable="d" d:DesignWidth="1115" Height="530">
@@ -15,297 +16,298 @@
         <Border BorderBrush="Black" BorderThickness="0,0,1,0" HorizontalAlignment="Left" Height="530" Margin="-185,0,0,0" VerticalAlignment="Top" Width="828"/>
         
         <!-- Main Hand -->
-        <CheckBox IsChecked="{Binding Path=CharacterDetails.Job.freeze}" Content="Main Hand:" ToolTip="Allows you to equip any weapon on the selected actor.&#xD;&#xA;&#x2022; If you want their hands to be empty, either equip the 'Emperor's New Fists', or use Main Hand Scale and/or Off Hand Scale in the Right Pane." HorizontalAlignment="Left" Margin="8,5,0,0" VerticalAlignment="Top" Height="38"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.Job.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.MainHand}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.MainHandToolTip}}" HorizontalAlignment="Left" Margin="8,5,0,0" VerticalAlignment="Top" Height="38"/>
         <TextBox Text="{Binding Path=CharacterDetails.Job.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="235,5,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="65" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
-                    <TextBlock><Run Text="Model ID"/></TextBlock>
+                    <TextBlock Text="{Binding Source={x:Static resx:UIStringsContent.ModelID}}"/>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <ComboBox x:Name="MHBox" SelectedIndex="{Binding Path=CharacterDetails.WeaponDye.value}" materialDesign:HintAssist.Hint="Dyes" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="320,5,0,0" VerticalAlignment="Top" Width="150" IsEditable="True" StaysOpenOnEdit="True" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+        <ComboBox x:Name="MHBox" SelectedIndex="{Binding Path=CharacterDetails.WeaponDye.value}" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.Dyes}}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="320,5,0,0" VerticalAlignment="Top" Width="150" IsEditable="True" StaysOpenOnEdit="True" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <ComboBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel />
                 </ItemsPanelTemplate>
             </ComboBox.ItemsPanel>
         </ComboBox>
-        <Button Name="MainSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="View" HorizontalAlignment="Left" Margin="475,5,0,0" VerticalAlignment="Top" Width="65" Click="MainSearch_Click" Height="38"/>
-        <Button x:Name="PropSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Prop&#xA;View" HorizontalAlignment="Left" Margin="560,5,0,0" VerticalAlignment="Top" Width="65" FontSize="13" Padding="16,-2,16,0" Click="PropSearch_Click" Height="38"/>
+        <Button Name="MainSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="475,5,0,0" VerticalAlignment="Top" Width="65" Click="MainSearch_Click" Height="38"/>
+        <Button x:Name="PropSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.PropView}}" HorizontalAlignment="Left" Margin="560,5,0,0" VerticalAlignment="Top" Width="65" FontSize="13" Padding="0,-2,0,0" Click="PropSearch_Click" Height="38"/>
         <TextBox Text="{Binding Path=CharacterDetails.WeaponBase.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="105,5,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="60" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
-                    <TextBlock><Run Text="Base"/></TextBlock>
+                  <!--  <TextBlock Text="{Binding Source={x:Static resx:UIStringsContent.Base}}"/> -->
+                    <TextBlock Text="{Binding Source={x:Static resx:UIStringsContent.Base}}"/>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
         <TextBox Text="{Binding Path=CharacterDetails.WeaponV.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="170,5,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="60" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
-                    <TextBlock><Run Text="Variant"/></TextBlock>
+                    <TextBlock Text="{Binding Source={x:Static resx:UIStringsContent.Variant}}"/>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
 
         <!-- Off Hand -->
-        <CheckBox IsChecked="{Binding Path=CharacterDetails.Offhand.freeze}" Content="Off Hand:" ToolTip="Allows you to equip an off hand weapon. &#xD;&#xA;&#x2022; In order to find an applicable off hand (except for shields), you need to search for the main hand equipment using the off hand 'View' button. For example to find a Sheath or Quiver, you need to search for the Katana or Bow that goes with it." HorizontalAlignment="Left" Margin="8,55,0,0" VerticalAlignment="Top" Height="38"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.Offhand.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.OffHand}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.OffHandToolTip}}" HorizontalAlignment="Left" Margin="8,55,0,0" VerticalAlignment="Top" Height="38"/>
         <TextBox Text="{Binding Path=CharacterDetails.Offhand.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="235,55,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="65" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
-                    <TextBlock><Run Text="Model ID"/></TextBlock>
+                    <TextBlock Text="{Binding Source={x:Static resx:UIStringsContent.ModelID}}"/>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
         <TextBox Text="{Binding Path=CharacterDetails.OffhandBase.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="105,55,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="60" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
-                    <TextBlock><Run Text="Base"/></TextBlock>
+                    <TextBlock Text="{Binding Source={x:Static resx:UIStringsContent.Base}}"/>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
         <TextBox Text="{Binding Path=CharacterDetails.OffhandV.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="170,55,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="60" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
-                    <TextBlock><Run Text="Variant"/></TextBlock>
+                    <TextBlock Text="{Binding Source={x:Static resx:UIStringsContent.Variant}}"/>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <ComboBox x:Name="OHBox" SelectedIndex="{Binding Path=CharacterDetails.OffhandDye.value}" materialDesign:HintAssist.Hint="Dyes" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="320,55,0,0" VerticalAlignment="Top" Width="150" StaysOpenOnEdit="True" IsEditable="True" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+        <ComboBox x:Name="OHBox" SelectedIndex="{Binding Path=CharacterDetails.OffhandDye.value}" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.Dyes}}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="320,55,0,0" VerticalAlignment="Top" Width="150" StaysOpenOnEdit="True" IsEditable="True" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <ComboBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel />
                 </ItemsPanelTemplate>
             </ComboBox.ItemsPanel>
         </ComboBox>
-        <Button Name="OffSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="View" HorizontalAlignment="Left" Margin="475,55,0,0" VerticalAlignment="Top" Width="65" Click="OffSearch_Click" Height="38"/>
-        <Button x:Name="PropSearchOH" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Prop&#xA;View" HorizontalAlignment="Left" Margin="560,55,0,0" VerticalAlignment="Top" Width="65" FontSize="13" Padding="16,-2,16,0" Click="PropSearchOH_Click" Height="38"/>
+        <Button Name="OffSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="475,55,0,0" VerticalAlignment="Top" Width="65" Click="OffSearch_Click" Height="38"/>
+        <Button x:Name="PropSearchOH" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.PropView}}" HorizontalAlignment="Left" Margin="560,55,0,0" VerticalAlignment="Top" Width="65" FontSize="13" Padding="0,-2,0,0" Click="PropSearchOH_Click" Height="38"/>
 
         <!-- Head -->
-        <CheckBox IsChecked="{Binding Path=CharacterDetails.HeadPiece.freeze}" Content="Head:" ToolTip="Allows you to equip any headpiece on the selected actor." HorizontalAlignment="Left" Margin="8,105,0,0" VerticalAlignment="Top" Height="38"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.HeadPiece.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.Head}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.HeadToolTip}}" HorizontalAlignment="Left" Margin="8,105,0,0" VerticalAlignment="Top" Height="38"/>
         <TextBox Text="{Binding Path=CharacterDetails.HeadPiece.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="105,105,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="60" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
-                    <TextBlock><Run Text="Base"/></TextBlock>
+                    <TextBlock Text="{Binding Source={x:Static resx:UIStringsContent.Base}}"/>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
         <TextBox Text="{Binding Path=CharacterDetails.HeadV.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="170,105,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="60" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
-                    <TextBlock><Run Text="Variant"/></TextBlock>
+                    <TextBlock Text="{Binding Source={x:Static resx:UIStringsContent.Variant}}"/>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <ComboBox x:Name="HeadDye" SelectedIndex="{Binding Path=CharacterDetails.HeadDye.value}" materialDesign:HintAssist.Hint="Dyes" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="320,105,0,0" VerticalAlignment="Top" Width="150" IsEditable="True" StaysOpenOnEdit="True" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+        <ComboBox x:Name="HeadDye" SelectedIndex="{Binding Path=CharacterDetails.HeadDye.value}" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.Dyes}}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="320,105,0,0" VerticalAlignment="Top" Width="150" IsEditable="True" StaysOpenOnEdit="True" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <ComboBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel />
                 </ItemsPanelTemplate>
             </ComboBox.ItemsPanel>
         </ComboBox>
-        <Button Name="HeadSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="View" HorizontalAlignment="Left" Margin="475,105,0,0" VerticalAlignment="Top" Width="65" Click="HeadSearch_Click" Height="38"/>
+        <Button Name="HeadSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="475,105,0,0" VerticalAlignment="Top" Width="65" Click="HeadSearch_Click" Height="38"/>
 
         <!-- Body -->
-        <CheckBox IsChecked="{Binding Path=CharacterDetails.Chest.freeze}" Content="Body:" ToolTip="Allows you to equip any bodypiece on the selected actor." HorizontalAlignment="Left" Margin="8,155,0,0" VerticalAlignment="Top" Height="38"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.Chest.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.Body}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.BodyToolTip}}" HorizontalAlignment="Left" Margin="8,155,0,0" VerticalAlignment="Top" Height="38"/>
         <TextBox Text="{Binding Path=CharacterDetails.Chest.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="105,155,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="60" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
-                    <TextBlock><Run Text="Base"/></TextBlock>
+                    <TextBlock Text="{Binding Source={x:Static resx:UIStringsContent.Base}}"/>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
         <TextBox Text="{Binding Path=CharacterDetails.ChestV.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="170,155,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="60" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
-                    <TextBlock><Run Text="Variant"/></TextBlock>
+                    <TextBlock Text="{Binding Source={x:Static resx:UIStringsContent.Variant}}"/>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <ComboBox x:Name="ChestBox" SelectedIndex="{Binding Path=CharacterDetails.ChestDye.value}" materialDesign:HintAssist.Hint="Dyes" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="320,155,0,0" VerticalAlignment="Top" Width="150" StaysOpenOnEdit="True" IsEditable="True" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+        <ComboBox x:Name="ChestBox" SelectedIndex="{Binding Path=CharacterDetails.ChestDye.value}" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.Dyes}}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="320,155,0,0" VerticalAlignment="Top" Width="150" StaysOpenOnEdit="True" IsEditable="True" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <ComboBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel />
                 </ItemsPanelTemplate>
             </ComboBox.ItemsPanel>
         </ComboBox>
-        <Button Name="BodySearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="View" HorizontalAlignment="Left" Margin="475,155,0,0" VerticalAlignment="Top" Width="65" Click="BodySearch_Click" Height="38"/>
+        <Button Name="BodySearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="475,155,0,0" VerticalAlignment="Top" Width="65" Click="BodySearch_Click" Height="38"/>
 
         <!-- Hands -->
-        <CheckBox IsChecked="{Binding Path=CharacterDetails.Arms.freeze}" Content="Hands:" ToolTip="Allows you to equip any handwear on the selected actor." HorizontalAlignment="Left" Margin="8,205,0,0" VerticalAlignment="Top" Height="38"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.Arms.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.Hands}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.HandsToolTip}}" HorizontalAlignment="Left" Margin="8,205,0,0" VerticalAlignment="Top" Height="38"/>
         <TextBox Text="{Binding Path=CharacterDetails.Arms.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="105,205,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="60" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
-                    <TextBlock><Run Text="Base"/></TextBlock>
+                    <TextBlock Text="{Binding Source={x:Static resx:UIStringsContent.Base}}"/>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
         <TextBox Text="{Binding Path=CharacterDetails.ArmsV.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="170,205,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="60" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
-                    <TextBlock><Run Text="Variant"/></TextBlock>
+                    <TextBlock Text="{Binding Source={x:Static resx:UIStringsContent.Variant}}"/>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <ComboBox x:Name="ArmBox" SelectedIndex="{Binding Path=CharacterDetails.ArmsDye.value}" materialDesign:HintAssist.Hint="Dyes" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="320,205,0,0" VerticalAlignment="Top" Width="150" StaysOpenOnEdit="True" IsEditable="True" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+        <ComboBox x:Name="ArmBox" SelectedIndex="{Binding Path=CharacterDetails.ArmsDye.value}" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.Dyes}}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="320,205,0,0" VerticalAlignment="Top" Width="150" StaysOpenOnEdit="True" IsEditable="True" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <ComboBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel />
                 </ItemsPanelTemplate>
             </ComboBox.ItemsPanel>
         </ComboBox>
-        <Button Name="HandSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="View" HorizontalAlignment="Left" Margin="475,205,0,0" VerticalAlignment="Top" Width="65" Click="HandSearch_Click" Height="38"/>
+        <Button Name="HandSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="475,205,0,0" VerticalAlignment="Top" Width="65" Click="HandSearch_Click" Height="38"/>
 
         <!-- Legs -->
-        <CheckBox IsChecked="{Binding Path=CharacterDetails.Legs.freeze}" Content="Legs:" ToolTip="Allows you to equip any leggings on the selected actor." HorizontalAlignment="Left" Margin="8,255,0,0" VerticalAlignment="Top" Height="38"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.Legs.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.Legs}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.LegsToolTip}}" HorizontalAlignment="Left" Margin="8,255,0,0" VerticalAlignment="Top" Height="38"/>
         <TextBox Text="{Binding Path=CharacterDetails.Legs.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="105,255,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="60" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
-                    <TextBlock><Run Text="Base"/></TextBlock>
+                    <TextBlock Text="{Binding Source={x:Static resx:UIStringsContent.Base}}"/>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
         <TextBox Text="{Binding Path=CharacterDetails.LegsV.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="170,255,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="60" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
-                    <TextBlock><Run Text="Variant"/></TextBlock>
+                    <TextBlock Text="{Binding Source={x:Static resx:UIStringsContent.Variant}}"/>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <ComboBox x:Name="LegBox" SelectedIndex="{Binding Path=CharacterDetails.LegsDye.value}" materialDesign:HintAssist.Hint="Dyes" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="320,255,0,0" VerticalAlignment="Top" Width="150" IsEditable="True" StaysOpenOnEdit="True" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+        <ComboBox x:Name="LegBox" SelectedIndex="{Binding Path=CharacterDetails.LegsDye.value}" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.Dyes}}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="320,255,0,0" VerticalAlignment="Top" Width="150" IsEditable="True" StaysOpenOnEdit="True" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <ComboBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel />
                 </ItemsPanelTemplate>
             </ComboBox.ItemsPanel>
         </ComboBox>
-        <Button Name="LegsSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="View" HorizontalAlignment="Left" Margin="475,255,0,0" VerticalAlignment="Top" Width="65" Click="LegsSearch_Click" Height="38"/>
+        <Button Name="LegsSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="475,255,0,0" VerticalAlignment="Top" Width="65" Click="LegsSearch_Click" Height="38"/>
 
         <!-- Feet -->
-        <CheckBox IsChecked="{Binding Path=CharacterDetails.Feet.freeze}" Content="Feet:" ToolTip="Allows you to equip any footwear on the selected actor." HorizontalAlignment="Left" Margin="8,305,0,0" VerticalAlignment="Top" Height="38"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.Feet.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.Feet}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.FeetToolTip}}" HorizontalAlignment="Left" Margin="8,305,0,0" VerticalAlignment="Top" Height="38"/>
         <TextBox Text="{Binding Path=CharacterDetails.Feet.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="105,305,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="60" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
-                    <TextBlock><Run Text="Base"/></TextBlock>
+                    <TextBlock Text="{Binding Source={x:Static resx:UIStringsContent.Base}}"/>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
         <TextBox Text="{Binding Path=CharacterDetails.FeetVa.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="170,305,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="60" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
-                    <TextBlock><Run Text="Variant"/></TextBlock>
+                    <TextBlock Text="{Binding Source={x:Static resx:UIStringsContent.Variant}}"/>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <ComboBox x:Name="FeetBox" SelectedIndex="{Binding Path=CharacterDetails.FeetDye.value}" materialDesign:HintAssist.Hint="Dyes" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="320,305,0,0" VerticalAlignment="Top" Width="150" IsEditable="True" StaysOpenOnEdit="True" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+        <ComboBox x:Name="FeetBox" SelectedIndex="{Binding Path=CharacterDetails.FeetDye.value}" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.Dyes}}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="320,305,0,0" VerticalAlignment="Top" Width="150" IsEditable="True" StaysOpenOnEdit="True" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <ComboBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel />
                 </ItemsPanelTemplate>
             </ComboBox.ItemsPanel>
         </ComboBox>
-        <Button Name="FeetSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="View" HorizontalAlignment="Left" Margin="475,305,0,0" VerticalAlignment="Top" Width="65" Click="FeetSearch_Click" Height="38"/>
+        <Button Name="FeetSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="475,305,0,0" VerticalAlignment="Top" Width="65" Click="FeetSearch_Click" Height="38"/>
 
         <!-- Ears -->
-        <CheckBox IsChecked="{Binding Path=CharacterDetails.Ear.freeze}" Content="Ears:" ToolTip="Allows you to equip any earrings on the selected actor." HorizontalAlignment="Left" Margin="8,355,0,0" VerticalAlignment="Top" Height="38"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.Ear.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.Ears}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.EarsToolTip}}" HorizontalAlignment="Left" Margin="8,355,0,0" VerticalAlignment="Top" Height="38"/>
         <TextBox Text="{Binding Path=CharacterDetails.Ear.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="105,355,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="60" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
-                    <TextBlock><Run Text="Base"/></TextBlock>
+                    <TextBlock Text="{Binding Source={x:Static resx:UIStringsContent.Base}}"/>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
         <TextBox Text="{Binding Path=CharacterDetails.EarVa.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="170,355,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="60" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
-                    <TextBlock><Run Text="Variant"/></TextBlock>
+                    <TextBlock Text="{Binding Source={x:Static resx:UIStringsContent.Variant}}"/>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <Button Name="EarSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="View" HorizontalAlignment="Left" Margin="235,355,0,0" VerticalAlignment="Top" Width="65" Click="EarSearch_Click" Height="38"/>
+        <Button Name="EarSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="235,355,0,0" VerticalAlignment="Top" Width="65" Click="EarSearch_Click" Height="38"/>
 
         <!-- Neck -->
-        <CheckBox IsChecked="{Binding Path=CharacterDetails.Neck.freeze}" Content="Neck:" ToolTip="Allows you to equip any necklace on the selected actor." HorizontalAlignment="Left" Margin="8,405,0,0" VerticalAlignment="Top" Height="38"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.Neck.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.Neck}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.NeckToolTip}}" HorizontalAlignment="Left" Margin="8,405,0,0" VerticalAlignment="Top" Height="38"/>
         <TextBox Text="{Binding Path=CharacterDetails.Neck.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="105,405,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="60" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
-                    <TextBlock><Run Text="Base"/></TextBlock>
+                    <TextBlock Text="{Binding Source={x:Static resx:UIStringsContent.Base}}"/>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
         <TextBox Text="{Binding Path=CharacterDetails.NeckVa.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="170,405,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="60" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
-                    <TextBlock><Run Text="Variant"/></TextBlock>
+                    <TextBlock Text="{Binding Source={x:Static resx:UIStringsContent.Variant}}"/>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <Button Name="NeckSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="View" HorizontalAlignment="Left" Margin="235,405,0,0" VerticalAlignment="Top" Width="65" Click="NeckSearch_Click" Height="38"/>
+        <Button Name="NeckSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="235,405,0,0" VerticalAlignment="Top" Width="65" Click="NeckSearch_Click" Height="38"/>
 
         <!-- Wrists -->
-        <CheckBox IsChecked="{Binding Path=CharacterDetails.Wrist.freeze}" Content="Wrists:" ToolTip="Allows you to equip any bracelet on the selected actor." HorizontalAlignment="Left" Margin="8,455,0,0" VerticalAlignment="Top" Height="38"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.Wrist.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.Wrists}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.WristsToolTIp}}" HorizontalAlignment="Left" Margin="8,455,0,0" VerticalAlignment="Top" Height="38"/>
         <TextBox Text="{Binding Path=CharacterDetails.Wrist.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="105,455,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="60" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
-                    <TextBlock><Run Text="Base"/></TextBlock>
+                    <TextBlock Text="{Binding Source={x:Static resx:UIStringsContent.Base}}"/>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
         <TextBox Text="{Binding Path=CharacterDetails.WristVa.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="170,455,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="60" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
-                    <TextBlock><Run Text="Variant"/></TextBlock>
+                    <TextBlock Text="{Binding Source={x:Static resx:UIStringsContent.Variant}}"/>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <Button Name="WristSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="View" HorizontalAlignment="Left" Margin="235,455,0,0" VerticalAlignment="Top" Width="65" Click="WristSearch_Click" Height="38"/>
+        <Button Name="WristSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="235,455,0,0" VerticalAlignment="Top" Width="65" Click="WristSearch_Click" Height="38"/>
 
         <!-- Right Ring -->
-        <CheckBox IsChecked="{Binding Path=CharacterDetails.RFinger.freeze}" Content="Right Ring:" ToolTip="Allows you to equip any ring on the selected actors right hand." HorizontalAlignment="Left" Margin="320,405,0,0" VerticalAlignment="Top" Height="38"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.RFinger.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.RightRing}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.RightRingToolTip}}" HorizontalAlignment="Left" Margin="320,405,0,0" VerticalAlignment="Top" Height="38"/>
         <TextBox Text="{Binding Path=CharacterDetails.RFinger.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="410,405,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="60" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
-                    <TextBlock><Run Text="Base"/></TextBlock>
+                    <TextBlock Text="{Binding Source={x:Static resx:UIStringsContent.Base}}"/>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
         <TextBox Text="{Binding Path=CharacterDetails.RFingerVa.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="475,405,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="60" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
-                    <TextBlock><Run Text="Variant"/></TextBlock>
+                    <TextBlock Text="{Binding Source={x:Static resx:UIStringsContent.Variant}}"/>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <Button Name="RightSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="View" HorizontalAlignment="Left" Margin="560,405,0,0" VerticalAlignment="Top" Width="65" Click="RightSearch_Click" Height="38"/>
+        <Button Name="RightSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="560,405,0,0" VerticalAlignment="Top" Width="65" Click="RightSearch_Click" Height="38"/>
 
         <!-- Left Ring -->
-        <CheckBox IsChecked="{Binding Path=CharacterDetails.LFinger.freeze}" Content="Left Ring:" ToolTip="Allows you to equip any ring on the selected actors left hand." HorizontalAlignment="Left" Margin="320,355,0,0" VerticalAlignment="Top" Height="38"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.LFinger.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.LeftRing}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.LeftRingToolTip}}" HorizontalAlignment="Left" Margin="320,355,0,0" VerticalAlignment="Top" Height="38"/>
         <TextBox Text="{Binding Path=CharacterDetails.LFinger.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="410,355,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="60" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
-                    <TextBlock><Run Text="Base"/></TextBlock>
+                    <TextBlock Text="{Binding Source={x:Static resx:UIStringsContent.Base}}"/>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
         <TextBox Text="{Binding Path=CharacterDetails.LFingerVa.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="475,355,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="60" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
-                    <TextBlock><Run Text="Variant"/></TextBlock>
+                    <TextBlock Text="{Binding Source={x:Static resx:UIStringsContent.Variant}}"/>
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <Button Name="LeftSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="View" HorizontalAlignment="Left" Margin="560,355,0,0" VerticalAlignment="Top" Width="65" Click="LeftSearch_Click" Height="38"/>
+        <Button Name="LeftSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="560,355,0,0" VerticalAlignment="Top" Width="65" Click="LeftSearch_Click" Height="38"/>
 
         <!-- Main Hand Scale -->
         <CheckBox IsChecked="{Binding Path=CharacterDetails.WeaponX.freeze}" Content="X" HorizontalAlignment="Left" Margin="648,22,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="XPos2" Value="{Binding Path=CharacterDetails.WeaponX.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="683,22,0,0" VerticalAlignment="Top" Width="160" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Interval="0.01"  TextAlignment="Right" SourceUpdated="XPos2_SourceUpdated" Height="28"/>
-        <Label Content="Main Hand Scale" ToolTip="Controls the XYZ Scale of the entity's main hand weapon.&#xD;&#xA;&#x2022; This can be used to resize main hand props as well, but does not affect the size of 'vfx items' that appear temporarily during certain emotes, such as the Tomestone." HorizontalAlignment="Left" Margin="690,-6,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding Source={x:Static resx:UIStringsContent.MainHandScale}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.MainHandScaleToolTip}}" HorizontalAlignment="Left" Margin="690,-6,0,0" VerticalAlignment="Top"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.WeaponY.freeze}" Content="Y" HorizontalAlignment="Left" Margin="648,52,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="XPos2_Copy" Value="{Binding Path=CharacterDetails.WeaponY.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="683,52,0,0" VerticalAlignment="Top" Width="160" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Interval="0.01"  TextAlignment="Right" SourceUpdated="XPos2_Copy_SourceUpdated" Height="28"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.WeaponZ.freeze}" Content="Z" HorizontalAlignment="Left" Margin="648,82,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="XPos2_Copy1" Value="{Binding Path=CharacterDetails.WeaponZ.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="683,82,0,0" VerticalAlignment="Top" Width="160" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Interval="0.01"  TextAlignment="Right" SourceUpdated="XPos2_Copy1_SourceUpdated" Height="28"/>
 
         <!-- Main Hand Color -->
-        <Label Content="Main Hand Color" HorizontalAlignment="Left" Margin="942,-6,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding Source={x:Static resx:UIStringsContent.MainHandColor}}" HorizontalAlignment="Left" Margin="942,-6,0,0" VerticalAlignment="Top"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.WeaponRed.freeze}" Content="R" HorizontalAlignment="Left" Margin="901,22,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="WeaponRed" Value="{Binding Path=CharacterDetails.WeaponRed.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="936,22,0,0" VerticalAlignment="Top" Width="160" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Interval="0.01"  TextAlignment="Right" SourceUpdated="WeaponRed_SourceUpdated" Height="28"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.WeaponGreen.freeze}" Content="G" HorizontalAlignment="Left" Margin="901,52,0,0" VerticalAlignment="Top" Height="28"/>
@@ -316,30 +318,30 @@
         <!-- Off Hand Scale -->
         <CheckBox IsChecked="{Binding Path=CharacterDetails.OffhandX.freeze}" Content="X" HorizontalAlignment="Left" Margin="648,195,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="OXPos" Value="{Binding Path=CharacterDetails.OffhandX.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="683,195,0,0" VerticalAlignment="Top" Width="160" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Interval="0.01"  TextAlignment="Right" SourceUpdated="OXPos_SourceUpdated" Height="28"/>
-        <Label Content="Off Hand Scale" ToolTip="Controls the XYZ Scale of the entity's off hand weapon.&#xD;&#xA;&#x2022; This affects equipment such as a Shield, Quiver, Aetherpack, Sleeve, Katana Sheath, Focus and Left Hand Dagger or Fist." HorizontalAlignment="Left" Margin="690,166,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding Source={x:Static resx:UIStringsContent.OffHandScale}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.OffHandScaleToolTip}}" HorizontalAlignment="Left" Margin="690,166,0,0" VerticalAlignment="Top"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.OffhandY.freeze}" Content="Y" HorizontalAlignment="Left" Margin="648,225,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="OYPos" Value="{Binding Path=CharacterDetails.OffhandY.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="683,225,0,0" VerticalAlignment="Top" Width="160" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Interval="0.01"  TextAlignment="Right" SourceUpdated="OYPos_SourceUpdated" Height="28"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.OffhandZ.freeze}" Content="Z" HorizontalAlignment="Left" Margin="648,255,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="OZPos" Value="{Binding Path=CharacterDetails.OffhandZ.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="683,255,0,0" VerticalAlignment="Top" Width="160" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Interval="0.01"  TextAlignment="Right" SourceUpdated="OZPos_SourceUpdated" Height="28"/>
 
         <!-- Off Hand Color -->
-        <Label Content="Off Hand Color" HorizontalAlignment="Left" Margin="942,166,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding Source={x:Static resx:UIStringsContent.OffHandColor}}" HorizontalAlignment="Left" Margin="942,166,0,0" VerticalAlignment="Top"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.OffhandRed.freeze}" Content="R" HorizontalAlignment="Left" Margin="901,195,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="OffRed" Value="{Binding Path=CharacterDetails.OffhandRed.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="936,195,0,0" VerticalAlignment="Top" Width="160" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Interval="0.01"  TextAlignment="Right" SourceUpdated="OffRed_SourceUpdated" Height="28"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.OffhandGreen.freeze}" Content="G" HorizontalAlignment="Left" Margin="901,225,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="OffGreen" Value="{Binding Path=CharacterDetails.OffhandGreen.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="936,225,0,0" VerticalAlignment="Top" Width="160" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Interval="0.01"  TextAlignment="Right" SourceUpdated="OffGreen_SourceUpdated" Height="28"/>
         <CheckBox IsChecked="{Binding Path=CharacterDetails.OffhandBlue.freeze}" Content="B" HorizontalAlignment="Left" Margin="901,255,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="OffBlue" Value="{Binding Path=CharacterDetails.OffhandBlue.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="936,255,0,0" VerticalAlignment="Top" Width="160" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Interval="0.01"  TextAlignment="Right" SourceUpdated="OffBlue_SourceUpdated" Height="28"/>
-        
-        <Button x:Name="SettoZero" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Zero Scale" ToolTip="Sets the XYZ Scale to 0, effectively rendering it invisible. &#xD;&#xA;&#x2022; You can undo this by inputing '1.0' in each of the fields." HorizontalAlignment="Left" Margin="683,112,0,0" VerticalAlignment="Top" Width="160" Height="28" FontSize="14" Click="SettoZero_Click" IsTabStop="False" />
 
-        <Button x:Name="SettoZero2" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Zero Scale" ToolTip="Sets the XYZ Scale to 0, effectively rendering it invisible. &#xD;&#xA;&#x2022; You can undo this by inputing '1.0' in each of the fields." HorizontalAlignment="Left" Margin="683,285,0,0" VerticalAlignment="Top" Width="160" Height="28" FontSize="14" Click="SettoZero2_Click" IsTabStop="False" />
+        <Button x:Name="SettoZero" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.ZeroScale}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.ZeroScaleToolTip}}" HorizontalAlignment="Left" Margin="683,112,0,0" VerticalAlignment="Top" Width="160" Height="28" FontSize="14" Click="SettoZero_Click" IsTabStop="False" Padding="0,4" />
 
-        <Button x:Name="SaveGearset" Content="Save Gearset" HorizontalAlignment="Left" Margin="974,455,0,0" VerticalAlignment="Top" Width="122" Click="SaveGearset_Click" IsTabStop="False"/>
-        <Button x:Name="LoadGearSet" Content="Load Gearset" HorizontalAlignment="Left" Margin="837,455,0,0" VerticalAlignment="Top" Width="122" Click="LoadGearSet_Click"/>
+        <Button x:Name="SettoZero2" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.ZeroScale}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.ZeroScaleToolTip}}" HorizontalAlignment="Left" Margin="683,285,0,0" VerticalAlignment="Top" Width="160" Height="28" FontSize="14" Click="SettoZero2_Click" IsTabStop="False" Padding="0,4" />
+
+        <Button x:Name="SaveGearset" Content="{Binding Source={x:Static resx:UIStringsContent.SaveGearset}}" HorizontalAlignment="Left" Margin="974,455,0,0" VerticalAlignment="Top" Width="122" Click="SaveGearset_Click" IsTabStop="False" Padding="0,4"/>
+        <Button x:Name="LoadGearSet" Content="{Binding Source={x:Static resx:UIStringsContent.LoadGearset}}" HorizontalAlignment="Left" Margin="837,455,0,0" VerticalAlignment="Top" Width="122" Click="LoadGearSet_Click" Padding="0,4"/>
 
         <!-- NPC Appearance -->
-        <Button x:Name="NPC_Click" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="NPC Outfits &amp; Appearances" ToolTip="Opens a fly-out search window on the right that allows you to search for NPCs by name. &#xD;&#xA;&#x2022; You will need to use Actor Refresh after clicking an entry to assume their appearance. &#xD;&#xA;&#x2022; Some NPCs, such as beast tribes, Zenos and a few others are not in this section because they are classified as Demi-Humans. They can be found by searching Model Type on the first tab." HorizontalAlignment="Left" Margin="320,455,0,0" VerticalAlignment="Top" Width="305" Height="38" Click="NPC_Click2">
+        <Button x:Name="NPC_Click" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.NPCOutfit}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.NPCOutfitToolTip}}" HorizontalAlignment="Left" Margin="320,455,0,0" VerticalAlignment="Top" Width="305" Height="38" Click="NPC_Click2" Padding="0,4">
             <Button.LayoutTransform>
                 <RotateTransform Angle="0" />
             </Button.LayoutTransform>
