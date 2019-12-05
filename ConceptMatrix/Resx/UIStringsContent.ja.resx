@@ -125,6 +125,7 @@
   </data>
   <data name="ActorEntityListToolTip" xml:space="preserve">
     <value>周囲の領域にターゲット可能なエンティティのリストを表示する
+
 • リストはプレイヤーからの距離に基づいて入力され、エンティティが位置を変更すると変更される可能性がある</value>
   </data>
   <data name="ActorProperties" xml:space="preserve">
@@ -162,6 +163,7 @@
   </data>
   <data name="ArrayOfBytesToolTip" xml:space="preserve">
     <value>選択したエンティティに関するデータが含まれる
+
 • このフィールドにデータをコピーして貼り付け、「適用する」をクリックする</value>
   </data>
   <data name="B" xml:space="preserve">
@@ -367,9 +369,13 @@
   </data>
   <data name="DataPathToolTip" xml:space="preserve">
     <value>選択したエンティティのデータパスを変更する
+
 • これにより、他の種族または性別のアニメーションを使用できる
+
 • アクターリフレッシュを必要とせず、Gpose内外で使用できる
+
 • エンティティのスケルトンは、選択した種族に合わせてモーフィングされます、ストレッチングは避けられません
+
 • アボミネーションになりたい場合は、アクターリフレッシュを使用できる</value>
   </data>
   <data name="DefaultTime" xml:space="preserve">
@@ -383,6 +389,7 @@
   </data>
   <data name="DrenchedToolTip" xml:space="preserve">
     <value>選択したエンティティに、より顕著な濡れた効果を与える
+
 • 水濡れたと同じように、この効果は時間とともに消える</value>
   </data>
   <data name="Dyes" xml:space="preserve">
@@ -426,8 +433,11 @@
   </data>
   <data name="EntityTypeToolTip" xml:space="preserve">
     <value>上級ユーザーのみ！
+
 • これにより、選択したエンティティのエンティティタイプが変更される
+
 • これにより、一部のエンティティで予期しない動作が発生する可能性があります
+
 • 一部のNPCをタイプ1にチェンジすると、グループポーズでターゲット可能になる</value>
   </data>
   <data name="Equipment" xml:space="preserve">
@@ -513,9 +523,13 @@
   </data>
   <data name="ForceAnimToolTip" xml:space="preserve">
     <value>選択したエンティティに強制的にアニメーションを実行させる
+
 • これはGPoseでのみ使用できる
+
 • これを使用するには、GPoseに入る前に /wave などの非ループエモートを実行する必要がありる
+
 • 一部のアニメーションには、実行するために特定の種族/性別の要件がある。 キャラクターがけいれんしている場合は、別のデータパスを使用する必要がある
+
 • NPCでは実行できない!</value>
   </data>
   <data name="Forearms" xml:space="preserve">
@@ -544,7 +558,9 @@
   </data>
   <data name="FreezePosToolTip" xml:space="preserve">
     <value>選択したエンティティのポジションをフリーズする
+
 • これは、エモートがチェンジされたときにエンティティが元のポジションに戻るのを防ぐので、GPoseでエンティティを移動するのに役立ちる
+
 • 新しいエンティティをクリックする前にこのボタンをもう一度押すと、同じポジションに移動する</value>
   </data>
   <data name="FreezeRot" xml:space="preserve">
@@ -552,9 +568,13 @@
   </data>
   <data name="FreezeRotToolTip" xml:space="preserve">
     <value>選択したエンティティのローテーションをフリーズする
+
 • これは、GPoseでエンティティのポジションとローテーションを保持するために、「ポジションをフリーズする」と併用すると便利
+
 • これをゲーム内の「フェイスカメラ」トグル（デフォルト：スペースバー）とともに使用して、体全体を回さずにエンティティの頭を回すことがでる
+
 • 「ポジションをフリーズする」と同様に、GPoseでエンティティを切り替える前に、「ローテーションをフリーズする」を必ずオフにして 
+
 • 数値直接入力またはローテーションスライダーを使用するために必要</value>
   </data>
   <data name="G" xml:space="preserve">
@@ -574,6 +594,7 @@
   </data>
   <data name="GposeModeToolTip" xml:space="preserve">
     <value>GPoseで現在選択されているエンティティのXYZポジション、ローテーション、アニメーションなどの特定のバリューをチェンジできる
+
 • GPoseモードとターゲットモードは両方とも同時にオンに切り替わる。 ターゲットモードが既にオンになっていないことを確認して。オンになっていないと、代わりにオフになります。</value>
   </data>
   <data name="Green" xml:space="preserve">
@@ -647,8 +668,10 @@
   </data>
   <data name="IdleAnimToolTip" xml:space="preserve">
     <value>選択したエンティティのアイドルアニメーションをチェンジする
+
 • これはGPoseの内外で使用できる
 • GPoseでこれを使用する場合、 座るか立つ必要がある、 アイドルアニメーションが対応するまで /cpose を使用する
+
 • ペット、ミニオン、チョコボ、およびほとんどのNPCで使用できる！</value>
   </data>
   <data name="IndexFinger" xml:space="preserve">
@@ -731,6 +754,7 @@
   </data>
   <data name="LoadMainWindowToolTip" xml:space="preserve">
     <value>ユーザー生成のJSONファイルから外観をロードする 
+
 • ゲーム内でキャラメイクから保存したデータをロードするには、「Load .DAT」オプションを使用する</value>
   </data>
   <data name="LoadPointButton" xml:space="preserve">
@@ -744,6 +768,7 @@
   </data>
   <data name="LockFacialAnimationToolTip" xml:space="preserve">
     <value>アクターの表情をロックする
+
 • アクターの表情を適切にロックするには、これをオンにする必要がある、 オプションをフリーズする、 そして、アニメーションのスピードをゼロに設定しする</value>
   </data>
   <data name="LockTime" xml:space="preserve">
@@ -772,10 +797,12 @@
   </data>
   <data name="MainHandScaleToolTip" xml:space="preserve">
     <value>エンティティの名ナームのXYZスケールを制御する
+
 • メインアームプロップのサイズ変更にも使用でる、 トームストーンなどの特定のエモート中に一時的に表示される「vfxアイテム」のサイズには影響しません</value>
   </data>
   <data name="MainHandToolTip" xml:space="preserve">
     <value>アクターにメインアームを装備できる
+
 • メインアームを空にしたい場合は、「エンペラーズ・ニューフィスト」を装備するか、右パネルでメインハンドスケールおよび/またはサブアームスケールを使用する</value>
   </data>
   <data name="MaxZoom" xml:space="preserve">
@@ -801,7 +828,9 @@
   </data>
   <data name="ModelTypeButtonToolTip" xml:space="preserve">
     <value>右側にフライアウトメニューが開き、モンスター、デミヒューマン、プロップエンティティ、エンティティベースの効果を検索でる
+
 • 一部のNPCは、蛮族、ゼノス、トールダン/蒼天騎士などのようにデミヒューマンとして分類されているため、この選択の下で見つける
+
 • デミヒューマンに変更した後に見えなくなった場合、すべての装備をベース0、バリアント0にチェンジする。 動作しない場合は、1,0または1,1を試して</value>
   </data>
   <data name="ModelTypeToolTip" xml:space="preserve">
@@ -857,7 +886,9 @@
   </data>
   <data name="NPCOutfitToolTip" xml:space="preserve">
     <value>右側にフライアウト検索ウィンドウが開き、名前でNPCを検索できる
+
 • エントリをクリックした後、アクターリフレッシュを使用して外観を想定する必要がある
+
 •蛮族、ゼノスなどの一部のNPCは、デミヒューマンに分類されるため、このセクションには含まれていない。 最初のタブでモデルタイプを検索することで見つけるができる</value>
   </data>
   <data name="OffHand" xml:space="preserve">
@@ -871,10 +902,12 @@
   </data>
   <data name="OffHandScaleToolTip" xml:space="preserve">
     <value>エンティティのサブアームのXYZスケールを制御しする
+
 • これは、盾、矢筒、エーテルパック、スリーブ、刀鞘、フォーカス、左手短剣または拳などの装備に影響する</value>
   </data>
   <data name="OffHandToolTip" xml:space="preserve">
     <value>サブアームを装備できる 
+
 •適用可能なサブアーム（盾以外）を見つけるには、サブアームの「Display」ボタンを使用してメインハンドを検索する必要がある。たとえば、鞘または矢筒を見つけるには、それに合う刀または弓を検索する必要がある。</value>
   </data>
   <data name="OuterBrows" xml:space="preserve">
@@ -921,9 +954,13 @@
   </data>
   <data name="RealTimeRotationToolTip" xml:space="preserve">
     <value>マウスボタンを使用してキューブを制御する
+
 • すべてのローテーションは、エンティティが現在向いている方向に対して相対的
+
 • RMBは、X軸のローテーションを制御する
+
 • LMBは、Y軸のローテーションを制御する
+
 • MMBは、Z軸のローテーションを制御する</value>
   </data>
   <data name="Red" xml:space="preserve">
@@ -940,6 +977,7 @@
   </data>
   <data name="RelativeXYZPosToolTip" xml:space="preserve">
     <value>このトグルは、対象となるエンティティに関連するすべてのXYZ移動を行います
+
 • この設定はデフォルトでオンに設定されており、その状態はセッション間で保存される</value>
   </data>
   <data name="RelativeXYZRot" xml:space="preserve">
@@ -947,7 +985,9 @@
   </data>
   <data name="RelativeXYZRotToolTip" xml:space="preserve">
     <value>このトグルは、ターゲットとなるエンティティを基準にしてすべてのXYZローテーションを行います
+
 • この設定はデフォルトでオンに設定されており、その状態はセッション間で保存される
+
 • リアルタイムローテーションキューブにのみ影響しする</value>
   </data>
   <data name="RenderCycle" xml:space="preserve">
@@ -991,9 +1031,13 @@
   </data>
   <data name="RotationSlidersToolTip" xml:space="preserve">
     <value>このトグルは、ローテーションスライダーと数値直接入力を切り替える
+
 • この設定はデフォルトでオンに設定されており、その状態はセッション間で保存される
+
 • オフにすると、XYZローテーションスライダーが数値に変わる
+
 • 各入力は、0〜360の値を受け入れる
+
 • ローテーションスライダーと数値直接入力の両方で、ローテーションをフリーズする必要がある</value>
   </data>
   <data name="SaveButton" xml:space="preserve">
@@ -1038,9 +1082,13 @@
   </data>
   <data name="StatusEffectToolTip" xml:space="preserve">
     <value>GPoseのエンティティに非標準ステータスVFXを適用できる
+
 1. GPoseメニューのステータス表現の1つをアクティブにする（ヒートなど）
+
 2. ドロップダウンメニューから新しいVFXを選択する
+
 3. GPoseメニューを使用して選択ステータス表現を削除する
+
 • 新しい効果を選択するか、現在の効果を削除するには、[リセット]をクリックするか、別のステータス（氷結など）で上書きする</value>
   </data>
   <data name="Sternum" xml:space="preserve">
@@ -1060,6 +1108,7 @@
   </data>
   <data name="TargetModeToolTip" xml:space="preserve">
     <value>エンティティリストを使用せずに、選択ターゲットのバリューをチェンジできる
+
 •これは、エンティティリストが絶えず移動する混雑したエリアに便利です。これをオフにし、通常の方法で変更を適用する必要がある。</value>
   </data>
   <data name="Thumb" xml:space="preserve">
@@ -1076,10 +1125,12 @@
   </data>
   <data name="TimeControlToolTip" xml:space="preserve">
     <value>エリアの現在の時刻を調整する
+
 • 「フリーズタイム/天気」をオンにしてGPoseで時間制御を使用すると、月の位相が循環する</value>
   </data>
   <data name="TimeLockToolTip" xml:space="preserve">
     <value>タイムコントロールを使用して設定された時間が変更されないようにする。
+
 •これは不正確であり、長期間にわたってわずかに変化する</value>
   </data>
   <data name="Title" xml:space="preserve">
@@ -1105,7 +1156,9 @@
   </data>
   <data name="TransparencyToolTip" xml:space="preserve">
     <value>選択したエンティティのトランスペアレンシーをチェンジする
+
 • アクターの透明度を下げても、メインアームまたはサブハンドには影響しない。装備タブで武器のXYZスケールを0に設定できる
+
 • GPoseのエンティティに対してこれを0に設定すると、システムがターゲット可能であることを忘れることがあります。引き続き使用する場合は、0.03に設定する。</value>
   </data>
   <data name="Twitter" xml:space="preserve">
@@ -1161,6 +1214,7 @@
   </data>
   <data name="WeatherForceToolTip" xml:space="preserve">
     <value>エリアの現在の天気を制御する
+
 •この方法はインスタント遷移を使用し、ドロップダウンメニューから天気リストするとすぐに変更される</value>
   </data>
   <data name="WeatherSelect" xml:space="preserve">
@@ -1168,6 +1222,7 @@
   </data>
   <data name="WeatherToolTip" xml:space="preserve">
     <value>エリアの現在の天気を制御する 
+
 • この方法は自然な遷移を使用し、少し時間がかかる場合がある</value>
   </data>
   <data name="Wet" xml:space="preserve">
@@ -1193,6 +1248,7 @@
   </data>
   <data name="XPosToolTip" xml:space="preserve">
     <value>アクターのXポジションを変更する
+
 • GPoseで適切に適用するには、アクターのアニメーションをフリーズする必要がある場合があります.</value>
   </data>
   <data name="XRot" xml:space="preserve">
@@ -1206,7 +1262,9 @@
   </data>
   <data name="XRotToolTip" xml:space="preserve">
     <value>アクターのXローテーションを変更する
+
 • GPoseで適切に適用するには、アクターのアニメーションをフリーズする必要がある場合があります
+
 • ローテーションスライダーと数値直接入力の両方で、ローテーションをフリーズする必要がある</value>
   </data>
   <data name="Y" xml:space="preserve">
@@ -1217,6 +1275,7 @@
   </data>
   <data name="YPosToolTip" xml:space="preserve">
     <value>アクターのYポジションを変更する
+
 • GPoseで適切に適用するには、アクターのアニメーションをフリーズする必要がある場合があります.</value>
   </data>
   <data name="YRot" xml:space="preserve">
@@ -1230,7 +1289,9 @@
   </data>
   <data name="YRotToolTip" xml:space="preserve">
     <value>アクターのYローテーションを変更する
+
 • GPoseで適切に適用するには、アクターのアニメーションをフリーズする必要がある場合があります
+
 • ローテーションスライダーと数値直接入力の両方で、ローテーションをフリーズする必要がある</value>
   </data>
   <data name="Z" xml:space="preserve">
@@ -1244,6 +1305,7 @@
   </data>
   <data name="ZeroScaleToolTip" xml:space="preserve">
     <value>XYZスケールを0に設定し、効果的に非表示にする
+
 • 元に戻すには、各フィールドに「1.0」と入力する</value>
   </data>
   <data name="ZPos" xml:space="preserve">
@@ -1251,6 +1313,7 @@
   </data>
   <data name="ZPosToolTip" xml:space="preserve">
     <value>アクターのZポジションを変更する
+
 • GPoseで適切に適用するには、アクターのアニメーションをフリーズする必要がある場合があります.</value>
   </data>
   <data name="ZRot" xml:space="preserve">
@@ -1264,7 +1327,9 @@
   </data>
   <data name="ZRotToolTip" xml:space="preserve">
     <value>アクターのZローテーションを変更する
+
 • GPoseで適切に適用するには、アクターのアニメーションをフリーズする必要がある場合があります
+
 • ローテーションスライダーと数値直接入力の両方で、ローテーションをフリーズする必要がある</value>
   </data>
 </root>
