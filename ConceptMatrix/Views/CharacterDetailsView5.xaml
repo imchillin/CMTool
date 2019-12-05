@@ -750,7 +750,9 @@
 
         <!-- Settings -->
         <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.PoseMatrixSettings}}" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" Margin="850,330,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="110" Width="255"/>
-        <Label x:Name="GPoseWarningText" Content="{Binding Source={x:Static resx:UIPoseStrings.EnableGpose}}" HorizontalAlignment="Left" Margin="856,387,0,0" VerticalAlignment="Top" Height="28" FontWeight="Bold"/>
+        <Label x:Name="GPoseWarningText" HorizontalAlignment="Left" Margin="859,381,0,0" VerticalAlignment="Top" Height="49" FontWeight="Bold" Width="234">
+            <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding Source={x:Static resx:UIPoseStrings.EnableGpose}}"/>
+        </Label>
         <ToggleButton x:Name="EditModeButton" Checked="EditModeButton_Checked" Unchecked="EditModeButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1011,375,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Visibility="Hidden" />
         <Label x:Name="EditModeText" Content="{Binding Source={x:Static resx:UIPoseStrings.EnableEditing}}" HorizontalAlignment="Left" Margin="907,375,0,0" VerticalAlignment="Top" Height="28" Visibility="Hidden"/>
         <ToggleButton x:Name="PhysicsButton" Checked="PhysicsButton_Checked" Unchecked="PhysicsButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1011,405,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Visibility="Hidden" />
