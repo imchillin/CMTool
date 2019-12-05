@@ -1340,4 +1340,22 @@ Status Effects:</value>
 • You may need to Freeze the animations of your actor to properly apply this in GPose.
 • Both Rotation Sliders and Numerical direct input require Rotation to be frozen.</value>
   </data>
+  <data name="FaceCamX" xml:space="preserve">
+    <value>Face Cam X:</value>
+  </data>
+  <data name="FaceCamY" xml:space="preserve">
+    <value>Face Cam Y:</value>
+  </data>
+  <data name="FaceCamZ" xml:space="preserve">
+    <value>Face Cam Z:</value>
+  </data>
+  <data name="GposeViewX" xml:space="preserve">
+    <value>GPose View X:</value>
+  </data>
+  <data name="GposeViewY" xml:space="preserve">
+    <value>GPose View Y:</value>
+  </data>
+  <data name="GposeViewZ" xml:space="preserve">
+    <value>GPose View Z:</value>
+  </data>
 </root>

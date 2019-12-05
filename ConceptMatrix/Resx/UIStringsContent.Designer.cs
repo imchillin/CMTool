@@ -1114,6 +1114,33 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Face Cam X:.
+        /// </summary>
+        public static string FaceCamX {
+            get {
+                return ResourceManager.GetString("FaceCamX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Face Cam Y:.
+        /// </summary>
+        public static string FaceCamY {
+            get {
+                return ResourceManager.GetString("FaceCamY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Face Cam Z:.
+        /// </summary>
+        public static string FaceCamZ {
+            get {
+                return ResourceManager.GetString("FaceCamZ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Face Paint/Tattoo:.
         /// </summary>
         public static string FacePaint {
@@ -1420,6 +1447,33 @@ namespace ConceptMatrix.Resx {
         public static string GposeModeToolTip {
             get {
                 return ResourceManager.GetString("GposeModeToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GPose View X:.
+        /// </summary>
+        public static string GposeViewX {
+            get {
+                return ResourceManager.GetString("GposeViewX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GPose View Y:.
+        /// </summary>
+        public static string GposeViewY {
+            get {
+                return ResourceManager.GetString("GposeViewY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GPose View Z:.
+        /// </summary>
+        public static string GposeViewZ {
+            get {
+                return ResourceManager.GetString("GposeViewZ", resourceCulture);
             }
         }
         

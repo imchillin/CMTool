@@ -42,7 +42,7 @@ namespace ConceptMatrix
         {
             ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
 
-            var ci = new CultureInfo("zh") //settings.CultureSet
+            var ci = new CultureInfo("ja") //settings.CultureSet
             {
                 NumberFormat = { NumberDecimalSeparator = "." }
             };

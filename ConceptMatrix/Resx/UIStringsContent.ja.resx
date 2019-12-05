@@ -590,7 +590,7 @@
     <value>アクターの性別をチェンジする</value>
   </data>
   <data name="GPoseMode" xml:space="preserve">
-    <value>グループポーズモード:</value>
+    <value>GPoseモード：</value>
   </data>
   <data name="GposeModeToolTip" xml:space="preserve">
     <value>GPoseで現在選択されているエンティティのXYZポジション、ローテーション、アニメーションなどの特定のバリューをチェンジできる
@@ -1331,5 +1331,23 @@
 • GPoseで適切に適用するには、アクターのアニメーションをフリーズする必要がある場合があります
 
 • ローテーションスライダーと数値直接入力の両方で、ローテーションをフリーズする必要がある</value>
+  </data>
+  <data name="FaceCamX" xml:space="preserve">
+    <value>X顔カム：</value>
+  </data>
+  <data name="FaceCamY" xml:space="preserve">
+    <value>Y顔カム：</value>
+  </data>
+  <data name="FaceCamZ" xml:space="preserve">
+    <value>Z顔カム：</value>
+  </data>
+  <data name="GposeViewX" xml:space="preserve">
+    <value>X GPoseビュー：</value>
+  </data>
+  <data name="GposeViewY" xml:space="preserve">
+    <value>Y GPoseビュー：</value>
+  </data>
+  <data name="GposeViewZ" xml:space="preserve">
+    <value>Z GPoseビュー：</value>
   </data>
 </root>
