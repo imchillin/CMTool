@@ -125,6 +125,7 @@
   </data>
   <data name="ActorEntityListToolTip" xml:space="preserve">
     <value>Display the list of targetable entities in the area around you.
+
 • The list is populated based on distance from the player, and can potentially shift if any entities change positions, including minions.  
 </value>
   </data>
@@ -163,6 +164,7 @@
   </data>
   <data name="ArrayOfBytesToolTip" xml:space="preserve">
     <value>Contains data about the selected Entity.
+
 • You can copy-paste data into this field and hit Apply.</value>
   </data>
   <data name="B" xml:space="preserve">
@@ -212,6 +214,7 @@
   </data>
   <data name="BustXScaleToolTip" xml:space="preserve">
     <value>Modifies the X Scale of the selected actors Bust.
+
 • This option is Female only.</value>
   </data>
   <data name="BustYScale" xml:space="preserve">
@@ -219,6 +222,7 @@
   </data>
   <data name="BustYScaleToolTip" xml:space="preserve">
     <value>Modifies the Y Scale of the selected actors Bust.
+
 • This option is Female only.</value>
   </data>
   <data name="BustZScale" xml:space="preserve">
@@ -226,6 +230,7 @@
   </data>
   <data name="BustZScaleToolTip" xml:space="preserve">
     <value>Modifies the Z Scale of the selected actors Bust.
+
 • This option is Female only.</value>
   </data>
   <data name="c1001" xml:space="preserve">
@@ -371,9 +376,13 @@
   </data>
   <data name="DataPathToolTip" xml:space="preserve">
     <value>Changes the Data Path of the selected entity.
+
 •This will allow you use the animations of other Races or Genders.
+
 • Does not require an Actor Refresh, and can be used in and out of GPose.
+
 • The entity's skeleton will be morphed to fit the selected race. This stretching or shrinking is unavoidable.
+
 • You can use Actor Refresh if you want to become an abomination for fun.</value>
   </data>
   <data name="DefaultTime" xml:space="preserve">
@@ -387,6 +396,7 @@
   </data>
   <data name="DrenchedToolTip" xml:space="preserve">
     <value>Gives the selected entity a much more pronounced wetness effect.
+
 • Same as Wet, this effect goes away over time.</value>
   </data>
   <data name="Dyes" xml:space="preserve">
@@ -430,8 +440,11 @@
   </data>
   <data name="EntityTypeToolTip" xml:space="preserve">
     <value>For Advanced Users Only!
+
 • This will change the Entity type of the selected entity.
+
 • This can lead to unpredictable and unwanted behavior for some entities.
+
 • Changing some NPCs to Type 1 will allow them to be targetable in GPose.</value>
   </data>
   <data name="Equipment" xml:space="preserve">
@@ -517,9 +530,13 @@
   </data>
   <data name="ForceAnimToolTip" xml:space="preserve">
     <value>Forces the selected entity to perform an animation.
+
 • This can only be used in GPose.
+
 • In order to use this, you need to do a non-looping emote, suchs as /wave before entering GPose.
+
 • Some animations have a specific race/gender requirement in order to perform. You may need to use a different Data Path if your character is just twitching.
+
 • Does not work on NPCs!</value>
   </data>
   <data name="Forearms" xml:space="preserve">
@@ -548,7 +565,9 @@
   </data>
   <data name="FreezePosToolTip" xml:space="preserve">
     <value>Freezes the position of the selected entity
+
 • This is useful for moving entities in GPose, as it will prevent them from snapping back to their original position when their emote changes or you use face camera.
+
 • Make sure to press this button again before clicking or tabbing to a new entity, or it will snap them to the same position.</value>
   </data>
   <data name="FreezeRot" xml:space="preserve">
@@ -556,9 +575,13 @@
   </data>
   <data name="FreezeRotToolTip" xml:space="preserve">
     <value>Freezes the rotation of the selected entity.
+
 • This is useful in conjunction with Freeze Pos for preserving the position and rotation of an entity in GPose.
+
 • You can use this along with the 'Face Camera' toggle in-game (Default: Space Bar) to turn the entity's head without turning the entire body.
+
 • Same as Freeze Pos, make sure to toggle off Freeze Rot before switching entities in GPose. 
+
 • Required for using Numerical direct input or Rotation Sliders.</value>
   </data>
   <data name="G" xml:space="preserve">
@@ -578,6 +601,7 @@
   </data>
   <data name="GposeModeToolTip" xml:space="preserve">
     <value>Allows for certain values such as XYZ Position, Rotation and Animation to be changed for your currently selected entity in GPose.
+
 • GPose mode and Target Mode both toggle on at the same time. Make sure not to have Target Mode already toggled on, or it will toggle off instead.</value>
   </data>
   <data name="Green" xml:space="preserve">
@@ -651,8 +675,11 @@
   </data>
   <data name="IdleAnimToolTip" xml:space="preserve">
     <value>Changes the Idle Animation of the selected entity.
+
 • This can be used both in and out of GPose.
+
 • If you plan to use this in GPose, you will need to sit/stand, then use /cpose until your Idle Anim reads.
+
 • This can be used on Pets, Minions, Chocobos and most NPCs!</value>
   </data>
   <data name="IndexFinger" xml:space="preserve">
@@ -735,6 +762,7 @@
   </data>
   <data name="LoadMainWindowToolTip" xml:space="preserve">
     <value>Load Appearance from a user-generated JSON file. 
+
 •You can load data you have saved from the Character Creator in-game using the 'Load .DAT' option.</value>
   </data>
   <data name="LoadPointButton" xml:space="preserve">
@@ -748,6 +776,7 @@
   </data>
   <data name="LockFacialAnimationToolTip" xml:space="preserve">
     <value>Locks the Facial Animation of the selected actor.
+
 • To properly lock the facial animation of the selected actor, you need to toggle this on, freeze the option, and then set Anim Speed to Zero.</value>
   </data>
   <data name="LockTime" xml:space="preserve">
@@ -776,10 +805,12 @@
   </data>
   <data name="MainHandScaleToolTip" xml:space="preserve">
     <value>Controls the XYZ Scale of the entity's main hand weapon.
+
 • This can be used to resize main hand props as well, but does not affect the size of 'vfx items' that appear temporarily during certain emotes, such as the Tomestone.</value>
   </data>
   <data name="MainHandToolTip" xml:space="preserve">
     <value>Allows you to equip any weapon on the selected actor.
+
 • If you want their hands to be empty, either equip the 'Emperor's New Fists', or use Main Hand Scale and/or Off Hand Scale in the Right Pane.</value>
   </data>
   <data name="MaxZoom" xml:space="preserve">
@@ -805,7 +836,9 @@
   </data>
   <data name="ModelTypeButtonToolTip" xml:space="preserve">
     <value>Opens a flyout menu on the right side that allows you to search for Monsters, Demi-Humans, Prop Entities and Entity-Based Effects.
+
 • Some NPCs are found under this selection because they are classified as Demi-Humans, such as Beast Tribes, Zenos, Thordan/Knights, etc.
+
 • If you become invisible after changing to a Demi-Human, change all of your Equipment to Base 0, Variant 0. If this doesn't work, try 1,0 or 1,1.</value>
   </data>
   <data name="ModelTypeToolTip" xml:space="preserve">
@@ -861,7 +894,9 @@
   </data>
   <data name="NPCOutfitToolTip" xml:space="preserve">
     <value>Opens a fly-out search window on the right that allows you to search for NPCs by name.
+
 • You will need to use Actor Refresh after clicking an entry to assume their appearance. 
+
 • Some NPCs, such as beast tribes, Zenos and a few others are not in this section because they are classified as Demi-Humans. They can be found by searching Model Type on the first tab.</value>
   </data>
   <data name="OffHand" xml:space="preserve">
@@ -875,10 +910,12 @@
   </data>
   <data name="OffHandScaleToolTip" xml:space="preserve">
     <value>Controls the XYZ Scale of the entity's off hand weapon.
+
 • This affects equipment such as a Shield, Quiver, Aetherpack, Sleeve, Katana Sheath, Focus and Left Hand Dagger or Fist.</value>
   </data>
   <data name="OffHandToolTip" xml:space="preserve">
     <value>Allows you to equip an off hand weapon. 
+
 •In order to find an applicable off hand (except for shields), you need to search for the main hand equipment using the off hand 'View' button. For example to find a Sheath or Quiver, you need to search for the Katana or Bow that goes with it.</value>
   </data>
   <data name="OuterBrows" xml:space="preserve">
@@ -926,9 +963,13 @@ View</value>
   </data>
   <data name="RealTimeRotationToolTip" xml:space="preserve">
     <value>Use your mouse buttons to control the cube.
+
 • All rotations are relative to the direction that the entity is currently facing.
+
 • RMB controls X-axis rotation.
+
 • LMB controls Y-axis rotation.
+
 • MMB controls Z-axis rotation.</value>
   </data>
   <data name="Red" xml:space="preserve">
@@ -945,6 +986,7 @@ View</value>
   </data>
   <data name="RelativeXYZPosToolTip" xml:space="preserve">
     <value>This toggle will make all XYZ movements relative to the entity being targeted, and not absolute based on the gameworld.
+
 • This setting is defaulted to on, and its state is saved between sessions.</value>
   </data>
   <data name="RelativeXYZRot" xml:space="preserve">
@@ -952,6 +994,7 @@ View</value>
   </data>
   <data name="RelativeXYZRotToolTip" xml:space="preserve">
     <value>This toggle will make all XYZ rotations relative to the entity being targeted, and not absolute based on the gameworld. 
+
 • This setting is defaulted to on, and its state is saved between sessions.
 • Only affects the Realtime Rotation Cube.</value>
   </data>
@@ -996,8 +1039,11 @@ View</value>
   </data>
   <data name="RotationSlidersToolTip" xml:space="preserve">
     <value>This toggle will switch between Rotation Sliders and Numerical direct input.
+
 •This setting is defaulted to on, and its state is saved between sessions.
+
 • Turning it off will turn the XYZ Rotation sliders into numerical values.
+
 • Each input will accept a value between 0 and 360. 
 • Both Rotation Sliders and Numerical direct input require Rotation to be frozen.</value>
   </data>
@@ -1043,9 +1089,13 @@ Status Effects:</value>
   </data>
   <data name="StatusEffectToolTip" xml:space="preserve">
     <value>Allows you to apply non-standard status VFX to entities in GPose.
+
 1. Activate one of the basic Statuses in the GPose menu (Such as Pyretic)
+
 2. Select the new VFX you want from the drop-down menu.
+
 3. Remove the Status you selected using the GPose menu.
+
 • To choose a new effect or remove the current one, hit Reset or overwrite it with another Status (Such as Deep Freeze).</value>
   </data>
   <data name="Sternum" xml:space="preserve">
@@ -1065,6 +1115,7 @@ Status Effects:</value>
   </data>
   <data name="TargetModeToolTip" xml:space="preserve">
     <value>Allows you to change values for your selected target without using the Entity List.
+
 •This is handy for busy areas where the Entity List constantly shifting. You will need to uncheck this and use the normal method to apply the changes you make, though.</value>
   </data>
   <data name="Thumb" xml:space="preserve">
@@ -1081,10 +1132,12 @@ Status Effects:</value>
   </data>
   <data name="TimeControlToolTip" xml:space="preserve">
     <value>Adjusts the current time for the zone.
+
 • Using Time Control while in GPose with 'Freeze Time/Weather' toggled on will cycle the phases of the Moon.</value>
   </data>
   <data name="TimeLockToolTip" xml:space="preserve">
     <value>Attempts to prevent the time set using Time Control from changing.
+
 •This is imprecise, and will still shift slightly over long periods of time.</value>
   </data>
   <data name="Title" xml:space="preserve">
@@ -1110,7 +1163,9 @@ Status Effects:</value>
   </data>
   <data name="TransparencyToolTip" xml:space="preserve">
     <value>Modifies the transparency of the selected entity.
+
 • Reducing the transparency of an actor does not affect their main or offhand weapons. You can set the XYZ scale of their weapons to 0 in the Equipment tab.
+
 • Setting this to 0 for an entity in GPose can cause the system to forget that they're targetable. If you plan to still use them, set it to 0.03.</value>
   </data>
   <data name="Twitter" xml:space="preserve">
@@ -1166,6 +1221,7 @@ Status Effects:</value>
   </data>
   <data name="WeatherForceToolTip" xml:space="preserve">
     <value>Controls the current weather for your zone.
+
 •This method uses instant transitions, and will change as soon as you select a weather from the drop down menu.</value>
   </data>
   <data name="WeatherSelect" xml:space="preserve">
@@ -1173,6 +1229,7 @@ Status Effects:</value>
   </data>
   <data name="WeatherToolTip" xml:space="preserve">
     <value>Controls the current weather for your zone. 
+
 •This method uses natural transitions and may a bit of time to take effect.</value>
   </data>
   <data name="Wet" xml:space="preserve">
@@ -1180,6 +1237,7 @@ Status Effects:</value>
   </data>
   <data name="WetToolTip" xml:space="preserve">
     <value>Gives the target entity the effect that you get from being in water, or in rain.
+
 • This effect will wear off over time if toggled off.</value>
   </data>
   <data name="World" xml:space="preserve">
@@ -1199,6 +1257,7 @@ Status Effects:</value>
   </data>
   <data name="XPosToolTip" xml:space="preserve">
     <value>Modifies the X Position of the selected actor.
+
 • You may need to Freeze the animations of your actor to properly apply this in GPose.</value>
   </data>
   <data name="XRot" xml:space="preserve">
@@ -1212,7 +1271,9 @@ Status Effects:</value>
   </data>
   <data name="XRotToolTip" xml:space="preserve">
     <value>Modifies the X Rotation of the selected actor.
+
 • You may need to Freeze the animations of your actor to properly apply this in GPose.
+
 • Both Rotation Sliders and Numerical direct input require Rotation to be frozen.</value>
   </data>
   <data name="Y" xml:space="preserve">
@@ -1223,6 +1284,7 @@ Status Effects:</value>
   </data>
   <data name="YPosToolTip" xml:space="preserve">
     <value>Modifies the Y Position of the selected actor.
+
 • You may need to Freeze the animations of your actor to properly apply this in GPose.</value>
   </data>
   <data name="YRot" xml:space="preserve">
@@ -1236,7 +1298,9 @@ Status Effects:</value>
   </data>
   <data name="YRotToolTip" xml:space="preserve">
     <value>Modifies the Y Rotation of the selected actor. 
+
 • You may need to Freeze the animations of your actor to properly apply this in GPose.
+
 • Both Rotation Sliders and Numerical direct input require Rotation to be frozen.</value>
   </data>
   <data name="Z" xml:space="preserve">
@@ -1250,6 +1314,7 @@ Status Effects:</value>
   </data>
   <data name="ZeroScaleToolTip" xml:space="preserve">
     <value>Sets the XYZ Scale to 0, effectively rendering it invisible.
+
 • You can undo this by inputing '1.0' in each of the fields.</value>
   </data>
   <data name="ZPos" xml:space="preserve">
@@ -1257,6 +1322,7 @@ Status Effects:</value>
   </data>
   <data name="ZPosToolTip" xml:space="preserve">
     <value>Modifies the Z Position of the selected actor.
+
 • You may need to Freeze the animations of your actor to properly apply this in GPose.</value>
   </data>
   <data name="ZRot" xml:space="preserve">
@@ -1270,6 +1336,8 @@ Status Effects:</value>
   </data>
   <data name="ZRotToolTip" xml:space="preserve">
     <value>Modifies the Z Rotation of the selected actor.
-• You may need to Freeze the animations of your actor to properly apply this in GPose.&amp;#xD;&amp;#xA;&amp;#x2022; Both Rotation Sliders and Numerical direct input require Rotation to be frozen.</value>
+
+• You may need to Freeze the animations of your actor to properly apply this in GPose.
+• Both Rotation Sliders and Numerical direct input require Rotation to be frozen.</value>
   </data>
 </root>
