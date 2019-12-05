@@ -1033,7 +1033,8 @@
     <value>アクターの肌の色をチェンジする</value>
   </data>
   <data name="StatusEffect" xml:space="preserve">
-    <value>グループポーズのステータス表現</value>
+    <value>ステータス効果
+（Gpose）</value>
   </data>
   <data name="StatusEffectToolTip" xml:space="preserve">
     <value>GPoseのエンティティに非標準ステータスVFXを適用できる
