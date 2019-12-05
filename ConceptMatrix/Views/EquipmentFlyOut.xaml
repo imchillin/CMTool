@@ -65,6 +65,7 @@
             <ComboBoxItem Content="MIN"/>
             <ComboBoxItem Content="BTN"/>
             <ComboBoxItem Content="FSH"/>
+            <ComboBoxItem Content="BLU"/>
         </ComboBox>
 
         <Label FontSize="16" x:Name="EquippedLabel" Content="Currently Equipped:" HorizontalAlignment="Left" Margin="35,-75,0,0" VerticalAlignment="Top" Height="30" Width="168" FontWeight="Bold"/>

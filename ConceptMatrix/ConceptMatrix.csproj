@@ -317,6 +317,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resx\FlyOutStrings.ja.resx" />
     <EmbeddedResource Include="Resx\FlyOutStrings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>FlyOutStrings.Designer.cs</LastGenOutput>

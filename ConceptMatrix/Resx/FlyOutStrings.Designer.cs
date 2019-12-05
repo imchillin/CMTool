@@ -160,6 +160,15 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BLU.
+        /// </summary>
+        internal static string BLU {
+            get {
+                return ResourceManager.GetString("BLU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Body.
         /// </summary>
         internal static string Body {

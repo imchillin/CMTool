@@ -118,294 +118,294 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ACN" xml:space="preserve">
-    <value>ACN</value>
+    <value>巴術士</value>
   </data>
   <data name="ALC" xml:space="preserve">
-    <value>ALC</value>
+    <value>錬金術師</value>
   </data>
   <data name="All" xml:space="preserve">
-    <value>All</value>
+    <value />
   </data>
   <data name="AllClasses" xml:space="preserve">
-    <value>All Classes</value>
+    <value>全クラス</value>
   </data>
   <data name="AppearanceOnly" xml:space="preserve">
-    <value>Appearance Only</value>
+    <value />
   </data>
   <data name="ARC" xml:space="preserve">
-    <value>ARC</value>
+    <value>弓術士</value>
   </data>
   <data name="ARM" xml:space="preserve">
-    <value>ARM</value>
+    <value>甲冑師</value>
   </data>
   <data name="AST" xml:space="preserve">
-    <value>AST</value>
+    <value>占星術師</value>
   </data>
   <data name="Battle" xml:space="preserve">
-    <value>Battle</value>
+    <value />
   </data>
   <data name="BGM" xml:space="preserve">
-    <value>BGM</value>
+    <value />
   </data>
   <data name="BLM" xml:space="preserve">
-    <value>BLM</value>
-  </data>
-  <data name="Body" xml:space="preserve">
-    <value>Body</value>
-  </data>
-  <data name="BRD" xml:space="preserve">
-    <value>BRD</value>
-  </data>
-  <data name="BSM" xml:space="preserve">
-    <value>BSM</value>
-  </data>
-  <data name="BTN" xml:space="preserve">
-    <value>BTN</value>
-  </data>
-  <data name="Character" xml:space="preserve">
-    <value>Character</value>
-  </data>
-  <data name="CNJ" xml:space="preserve">
-    <value>CNJ</value>
-  </data>
-  <data name="ColorSelector" xml:space="preserve">
-    <value>Color Selector</value>
-  </data>
-  <data name="CRP" xml:space="preserve">
-    <value>CRP</value>
-  </data>
-  <data name="CUL" xml:space="preserve">
-    <value>CUL</value>
-  </data>
-  <data name="DiscipleofHand" xml:space="preserve">
-    <value>Disciple of the Hand</value>
-  </data>
-  <data name="DiscipleOfLand" xml:space="preserve">
-    <value>Disciple of the Land</value>
-  </data>
-  <data name="DiscipleOfMagic" xml:space="preserve">
-    <value>Disciple of Magic</value>
-  </data>
-  <data name="DiscipleOfWar" xml:space="preserve">
-    <value>Disciple of War</value>
-  </data>
-  <data name="DisciplesOfWarMagic" xml:space="preserve">
-    <value>Disciples of War or Magic</value>
-  </data>
-  <data name="DNC" xml:space="preserve">
-    <value>DNC</value>
-  </data>
-  <data name="DRG" xml:space="preserve">
-    <value>DRG</value>
-  </data>
-  <data name="DRK" xml:space="preserve">
-    <value>DRK</value>
-  </data>
-  <data name="Earing" xml:space="preserve">
-    <value>Earing</value>
-  </data>
-  <data name="Emotes" xml:space="preserve">
-    <value>Emotes</value>
-  </data>
-  <data name="EquipmentOnly" xml:space="preserve">
-    <value>Equipment Only</value>
-  </data>
-  <data name="EquipmentSelector" xml:space="preserve">
-    <value>Equipment Selector</value>
-  </data>
-  <data name="FacePaint" xml:space="preserve">
-    <value>Face Paint</value>
-  </data>
-  <data name="FacePaintColor" xml:space="preserve">
-    <value>FacePaint Color</value>
-  </data>
-  <data name="FacialFeature" xml:space="preserve">
-    <value>Facial Feature</value>
-  </data>
-  <data name="Favorite" xml:space="preserve">
-    <value>Favorite</value>
-  </data>
-  <data name="Feet" xml:space="preserve">
-    <value>Feet</value>
-  </data>
-  <data name="ForceAnimation" xml:space="preserve">
-    <value>Force Animation</value>
-  </data>
-  <data name="FSH" xml:space="preserve">
-    <value>FSH</value>
-  </data>
-  <data name="GLA" xml:space="preserve">
-    <value>GLA</value>
-  </data>
-  <data name="GNB" xml:space="preserve">
-    <value>GNB</value>
-  </data>
-  <data name="GSM" xml:space="preserve">
-    <value>GSM</value>
-  </data>
-  <data name="HairColor" xml:space="preserve">
-    <value>Hair Color</value>
-  </data>
-  <data name="HairSelector" xml:space="preserve">
-    <value>Hair Selector</value>
-  </data>
-  <data name="Hands" xml:space="preserve">
-    <value>Hands</value>
-  </data>
-  <data name="Head" xml:space="preserve">
-    <value>Head</value>
-  </data>
-  <data name="HighlightsColor" xml:space="preserve">
-    <value>Highlights Color</value>
-  </data>
-  <data name="Icon" xml:space="preserve">
-    <value>Icon</value>
-  </data>
-  <data name="ID" xml:space="preserve">
-    <value>ID</value>
-  </data>
-  <data name="IdleAnimation" xml:space="preserve">
-    <value>Idle Animation</value>
-  </data>
-  <data name="IncludeEverything" xml:space="preserve">
-    <value>Include Everything</value>
-  </data>
-  <data name="IncludeOffhand" xml:space="preserve">
-    <value>Include OffHand</value>
-  </data>
-  <data name="KeepDyes" xml:space="preserve">
-    <value>Keep Dyes</value>
-  </data>
-  <data name="LeftEyeColor" xml:space="preserve">
-    <value>Left-Eye Color</value>
-  </data>
-  <data name="LeftFinger" xml:space="preserve">
-    <value>Left Finger</value>
-  </data>
-  <data name="Legs" xml:space="preserve">
-    <value>Legs</value>
-  </data>
-  <data name="LimbalEyeColor" xml:space="preserve">
-    <value>Limbal-Eye Color</value>
-  </data>
-  <data name="LipColor" xml:space="preserve">
-    <value>Lip Color</value>
-  </data>
-  <data name="LNC" xml:space="preserve">
-    <value>LNC</value>
-  </data>
-  <data name="Location" xml:space="preserve">
-    <value>Location</value>
-  </data>
-  <data name="LTW" xml:space="preserve">
-    <value>LTW</value>
-  </data>
-  <data name="MainHand" xml:space="preserve">
-    <value>Main Hand</value>
-  </data>
-  <data name="MCH" xml:space="preserve">
-    <value>MCH</value>
-  </data>
-  <data name="MIN" xml:space="preserve">
-    <value>MIN</value>
-  </data>
-  <data name="MNK" xml:space="preserve">
-    <value>MNK</value>
-  </data>
-  <data name="ModelList" xml:space="preserve">
-    <value>Model List</value>
-  </data>
-  <data name="ModelValues" xml:space="preserve">
-    <value>Model Values</value>
-  </data>
-  <data name="Monster" xml:space="preserve">
-    <value>Monster</value>
-  </data>
-  <data name="MRD" xml:space="preserve">
-    <value>MRD</value>
-  </data>
-  <data name="Name" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="Neck" xml:space="preserve">
-    <value>Neck</value>
-  </data>
-  <data name="NIN" xml:space="preserve">
-    <value>NIN</value>
-  </data>
-  <data name="NPCSelect" xml:space="preserve">
-    <value>NPC Selector</value>
-  </data>
-  <data name="OffHand" xml:space="preserve">
-    <value>Off Hand</value>
-  </data>
-  <data name="PGL" xml:space="preserve">
-    <value>PGL</value>
-  </data>
-  <data name="Player" xml:space="preserve">
-    <value>Player</value>
-  </data>
-  <data name="PLD" xml:space="preserve">
-    <value>PLD</value>
-  </data>
-  <data name="PropsMainHand" xml:space="preserve">
-    <value>Props Main Hand</value>
-  </data>
-  <data name="PropsOffHand" xml:space="preserve">
-    <value>Props Off Hand</value>
-  </data>
-  <data name="RDM" xml:space="preserve">
-    <value>RDM</value>
-  </data>
-  <data name="ReverseFacePaint" xml:space="preserve">
-    <value>Reverse FacePaint</value>
-  </data>
-  <data name="RightEyeColor" xml:space="preserve">
-    <value>Right-Eye Color</value>
-  </data>
-  <data name="RightFinger" xml:space="preserve">
-    <value>Right Finger</value>
-  </data>
-  <data name="ROG" xml:space="preserve">
-    <value>ROG</value>
-  </data>
-  <data name="SAM" xml:space="preserve">
-    <value>SAM</value>
-  </data>
-  <data name="SCH" xml:space="preserve">
-    <value>SCH</value>
-  </data>
-  <data name="Search" xml:space="preserve">
-    <value>Search...</value>
-  </data>
-  <data name="SelectType" xml:space="preserve">
-    <value>Select Type</value>
-  </data>
-  <data name="SkinColor" xml:space="preserve">
-    <value>SkinColor</value>
-  </data>
-  <data name="SMN" xml:space="preserve">
-    <value>SMN</value>
-  </data>
-  <data name="THM" xml:space="preserve">
-    <value>THM</value>
-  </data>
-  <data name="WAR" xml:space="preserve">
-    <value>WAR</value>
-  </data>
-  <data name="WHM" xml:space="preserve">
-    <value>WHM</value>
-  </data>
-  <data name="World" xml:space="preserve">
-    <value>World</value>
-  </data>
-  <data name="Wrist" xml:space="preserve">
-    <value>Wrist</value>
-  </data>
-  <data name="WVR" xml:space="preserve">
-    <value>WVR</value>
+    <value>黒魔道士</value>
   </data>
   <data name="BLU" xml:space="preserve">
-    <value>BLU</value>
+    <value>青魔道士</value>
+  </data>
+  <data name="Body" xml:space="preserve">
+    <value>胴防具</value>
+  </data>
+  <data name="BRD" xml:space="preserve">
+    <value>吟遊詩人</value>
+  </data>
+  <data name="BSM" xml:space="preserve">
+    <value>鍛冶師</value>
+  </data>
+  <data name="BTN" xml:space="preserve">
+    <value>園芸師</value>
+  </data>
+  <data name="Character" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CNJ" xml:space="preserve">
+    <value>幻術士</value>
+  </data>
+  <data name="ColorSelector" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CRP" xml:space="preserve">
+    <value>木工師</value>
+  </data>
+  <data name="CUL" xml:space="preserve">
+    <value>調理師</value>
+  </data>
+  <data name="DiscipleofHand" xml:space="preserve">
+    <value>クラフター</value>
+  </data>
+  <data name="DiscipleOfLand" xml:space="preserve">
+    <value>ギャザラー</value>
+  </data>
+  <data name="DiscipleOfMagic" xml:space="preserve">
+    <value>ソーサラー</value>
+  </data>
+  <data name="DiscipleOfWar" xml:space="preserve">
+    <value>ファイター</value>
+  </data>
+  <data name="DisciplesOfWarMagic" xml:space="preserve">
+    <value>ファイター ソーサラー</value>
+  </data>
+  <data name="DNC" xml:space="preserve">
+    <value>踊り子</value>
+  </data>
+  <data name="DRG" xml:space="preserve">
+    <value>竜騎士</value>
+  </data>
+  <data name="DRK" xml:space="preserve">
+    <value>暗黒騎士</value>
+  </data>
+  <data name="Earing" xml:space="preserve">
+    <value>耳飾り</value>
+  </data>
+  <data name="Emotes" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EquipmentOnly" xml:space="preserve">
+    <value />
+  </data>
+  <data name="EquipmentSelector" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FacePaint" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FacePaintColor" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FacialFeature" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Favorite" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Feet" xml:space="preserve">
+    <value>足防具</value>
+  </data>
+  <data name="ForceAnimation" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FSH" xml:space="preserve">
+    <value>漁師</value>
+  </data>
+  <data name="GLA" xml:space="preserve">
+    <value>剣術士</value>
+  </data>
+  <data name="GNB" xml:space="preserve">
+    <value>ガンブレイカー</value>
+  </data>
+  <data name="GSM" xml:space="preserve">
+    <value>彫金師</value>
+  </data>
+  <data name="HairColor" xml:space="preserve">
+    <value />
+  </data>
+  <data name="HairSelector" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Hands" xml:space="preserve">
+    <value>手防具</value>
+  </data>
+  <data name="Head" xml:space="preserve">
+    <value>頭防具</value>
+  </data>
+  <data name="HighlightsColor" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Icon" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IdleAnimation" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IncludeEverything" xml:space="preserve">
+    <value />
+  </data>
+  <data name="IncludeOffhand" xml:space="preserve">
+    <value />
+  </data>
+  <data name="KeepDyes" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LeftEyeColor" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LeftFinger" xml:space="preserve">
+    <value>指輪（左）</value>
+  </data>
+  <data name="Legs" xml:space="preserve">
+    <value>脚防具</value>
+  </data>
+  <data name="LimbalEyeColor" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LipColor" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LNC" xml:space="preserve">
+    <value>槍術士</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LTW" xml:space="preserve">
+    <value>革細工師</value>
+  </data>
+  <data name="MainHand" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MCH" xml:space="preserve">
+    <value>機工士</value>
+  </data>
+  <data name="MIN" xml:space="preserve">
+    <value>採掘師</value>
+  </data>
+  <data name="MNK" xml:space="preserve">
+    <value>モンク</value>
+  </data>
+  <data name="ModelList" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ModelValues" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Monster" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MRD" xml:space="preserve">
+    <value>斧術士</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Neck" xml:space="preserve">
+    <value>首飾り</value>
+  </data>
+  <data name="NIN" xml:space="preserve">
+    <value>忍者</value>
+  </data>
+  <data name="NPCSelect" xml:space="preserve">
+    <value />
+  </data>
+  <data name="OffHand" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PGL" xml:space="preserve">
+    <value>格闘士</value>
+  </data>
+  <data name="Player" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PLD" xml:space="preserve">
+    <value>ナイト</value>
+  </data>
+  <data name="PropsMainHand" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PropsOffHand" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RDM" xml:space="preserve">
+    <value>赤魔道士</value>
+  </data>
+  <data name="ReverseFacePaint" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RightEyeColor" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RightFinger" xml:space="preserve">
+    <value>指輪（右）</value>
+  </data>
+  <data name="ROG" xml:space="preserve">
+    <value>双剣士</value>
+  </data>
+  <data name="SAM" xml:space="preserve">
+    <value>侍</value>
+  </data>
+  <data name="SCH" xml:space="preserve">
+    <value>学者</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SelectType" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SkinColor" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SMN" xml:space="preserve">
+    <value>召喚士</value>
+  </data>
+  <data name="THM" xml:space="preserve">
+    <value>呪術士</value>
+  </data>
+  <data name="WAR" xml:space="preserve">
+    <value>戦士</value>
+  </data>
+  <data name="WHM" xml:space="preserve">
+    <value>白魔道士</value>
+  </data>
+  <data name="World" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Wrist" xml:space="preserve">
+    <value>腕輪</value>
+  </data>
+  <data name="WVR" xml:space="preserve">
+    <value>裁縫師</value>
   </data>
 </root>
