@@ -226,7 +226,7 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to BGM ID.
+        ///   Looks up a localized string similar to Music:.
         /// </summary>
         public static string BGMID {
             get {
@@ -643,7 +643,7 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Camera X Pos:.
+        ///   Looks up a localized string similar to Camera Pos X:.
         /// </summary>
         public static string CameraXPos {
             get {
@@ -652,7 +652,7 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Camera Y Pos:.
+        ///   Looks up a localized string similar to Camera Pos Y:.
         /// </summary>
         public static string CameraYPos {
             get {
@@ -661,7 +661,7 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Camera Z Pos:.
+        ///   Looks up a localized string similar to Camera Pos Z:.
         /// </summary>
         public static string CameraZPos {
             get {
@@ -2492,7 +2492,7 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remove Character Render Limit:.
+        ///   Looks up a localized string similar to Remove Actor Render Limit:.
         /// </summary>
         public static string RenderLimit {
             get {

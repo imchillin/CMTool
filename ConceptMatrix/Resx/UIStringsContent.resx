@@ -175,7 +175,7 @@
     <value>Freeze BGM</value>
   </data>
   <data name="BGMID" xml:space="preserve">
-    <value>BGM ID</value>
+    <value>Music:</value>
   </data>
   <data name="Blue" xml:space="preserve">
     <value>Blue:</value>
@@ -316,13 +316,13 @@
     <value>Camera View Z:</value>
   </data>
   <data name="CameraXPos" xml:space="preserve">
-    <value>Camera X Pos:</value>
+    <value>Camera Pos X:</value>
   </data>
   <data name="CameraYPos" xml:space="preserve">
-    <value>Camera Y Pos:</value>
+    <value>Camera Pos Y:</value>
   </data>
   <data name="CameraZPos" xml:space="preserve">
-    <value>Camera Z Pos:</value>
+    <value>Camera Pos Z:</value>
   </data>
   <data name="CamRotation" xml:space="preserve">
     <value>Cam Rotation:</value>
@@ -959,7 +959,7 @@ View</value>
     <value>Render Cycle</value>
   </data>
   <data name="RenderLimit" xml:space="preserve">
-    <value>Remove Character Render Limit:</value>
+    <value>Remove Actor Render Limit:</value>
   </data>
   <data name="RenderToggleToolTip" xml:space="preserve">
     <value>Render Toggle Switch</value>

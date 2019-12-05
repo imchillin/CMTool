@@ -174,7 +174,7 @@
     <value>BGMを一時停止する</value>
   </data>
   <data name="BGMID" xml:space="preserve">
-    <value>BGM ID</value>
+    <value>音楽：</value>
   </data>
   <data name="Blue" xml:space="preserve">
     <value>青</value>
@@ -721,7 +721,7 @@
     <value>唇の色</value>
   </data>
   <data name="LoadButton" xml:space="preserve">
-    <value>ロードする</value>
+    <value>ロド</value>
   </data>
   <data name="LoadGearset" xml:space="preserve">
     <value>ギアセットをロードする</value>
@@ -954,7 +954,7 @@
     <value>レンダーサイクル</value>
   </data>
   <data name="RenderLimit" xml:space="preserve">
-    <value>キャラクターレンダリングリミットを削除する</value>
+    <value>アクターレンダリング制限の削除：</value>
   </data>
   <data name="RenderToggleToolTip" xml:space="preserve">
     <value>レンダートグルスイッチ</value>
@@ -1072,7 +1072,7 @@
     <value>タイムトグルスイッチ</value>
   </data>
   <data name="TimeControl" xml:space="preserve">
-    <value>タイムをコントロールする</value>
+    <value>時間変更</value>
   </data>
   <data name="TimeControlToolTip" xml:space="preserve">
     <value>エリアの現在の時刻を調整する
