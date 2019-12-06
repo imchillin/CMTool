@@ -408,4 +408,7 @@
   <data name="BLU" xml:space="preserve">
     <value>BLU</value>
   </data>
+  <data name="Equipment" xml:space="preserve">
+    <value>Equipment</value>
+  </data>
 </root>

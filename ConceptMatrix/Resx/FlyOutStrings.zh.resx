@@ -210,6 +210,9 @@
   <data name="Emotes" xml:space="preserve">
     <value>表情</value>
   </data>
+  <data name="Equipment" xml:space="preserve">
+    <value>装备</value>
+  </data>
   <data name="EquipmentOnly" xml:space="preserve">
     <value>仅装备</value>
   </data>
