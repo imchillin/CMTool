@@ -22,7 +22,7 @@ namespace ConceptMatrix.Resx {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class FlyOutStrings {
+    public class FlyOutStrings {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace ConceptMatrix.Resx {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ConceptMatrix.Resx.FlyOutStrings", typeof(FlyOutStrings).Assembly);
@@ -51,7 +51,7 @@ namespace ConceptMatrix.Resx {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to ACN.
         /// </summary>
-        internal static string ACN {
+        public static string ACN {
             get {
                 return ResourceManager.GetString("ACN", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to ALC.
         /// </summary>
-        internal static string ALC {
+        public static string ALC {
             get {
                 return ResourceManager.GetString("ALC", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to All.
         /// </summary>
-        internal static string All {
+        public static string All {
             get {
                 return ResourceManager.GetString("All", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to All Classes.
         /// </summary>
-        internal static string AllClasses {
+        public static string AllClasses {
             get {
                 return ResourceManager.GetString("AllClasses", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Appearance Only.
         /// </summary>
-        internal static string AppearanceOnly {
+        public static string AppearanceOnly {
             get {
                 return ResourceManager.GetString("AppearanceOnly", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to ARC.
         /// </summary>
-        internal static string ARC {
+        public static string ARC {
             get {
                 return ResourceManager.GetString("ARC", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to ARM.
         /// </summary>
-        internal static string ARM {
+        public static string ARM {
             get {
                 return ResourceManager.GetString("ARM", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to AST.
         /// </summary>
-        internal static string AST {
+        public static string AST {
             get {
                 return ResourceManager.GetString("AST", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Battle.
         /// </summary>
-        internal static string Battle {
+        public static string Battle {
             get {
                 return ResourceManager.GetString("Battle", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to BGM.
         /// </summary>
-        internal static string BGM {
+        public static string BGM {
             get {
                 return ResourceManager.GetString("BGM", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to BLM.
         /// </summary>
-        internal static string BLM {
+        public static string BLM {
             get {
                 return ResourceManager.GetString("BLM", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to BLU.
         /// </summary>
-        internal static string BLU {
+        public static string BLU {
             get {
                 return ResourceManager.GetString("BLU", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Body.
         /// </summary>
-        internal static string Body {
+        public static string Body {
             get {
                 return ResourceManager.GetString("Body", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to BRD.
         /// </summary>
-        internal static string BRD {
+        public static string BRD {
             get {
                 return ResourceManager.GetString("BRD", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to BSM.
         /// </summary>
-        internal static string BSM {
+        public static string BSM {
             get {
                 return ResourceManager.GetString("BSM", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to BTN.
         /// </summary>
-        internal static string BTN {
+        public static string BTN {
             get {
                 return ResourceManager.GetString("BTN", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Character.
         /// </summary>
-        internal static string Character {
+        public static string Character {
             get {
                 return ResourceManager.GetString("Character", resourceCulture);
             }
@@ -216,7 +216,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to CNJ.
         /// </summary>
-        internal static string CNJ {
+        public static string CNJ {
             get {
                 return ResourceManager.GetString("CNJ", resourceCulture);
             }
@@ -225,7 +225,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Color Selector.
         /// </summary>
-        internal static string ColorSelector {
+        public static string ColorSelector {
             get {
                 return ResourceManager.GetString("ColorSelector", resourceCulture);
             }
@@ -234,7 +234,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to CRP.
         /// </summary>
-        internal static string CRP {
+        public static string CRP {
             get {
                 return ResourceManager.GetString("CRP", resourceCulture);
             }
@@ -243,7 +243,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to CUL.
         /// </summary>
-        internal static string CUL {
+        public static string CUL {
             get {
                 return ResourceManager.GetString("CUL", resourceCulture);
             }
@@ -252,7 +252,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Disciple of the Hand.
         /// </summary>
-        internal static string DiscipleofHand {
+        public static string DiscipleofHand {
             get {
                 return ResourceManager.GetString("DiscipleofHand", resourceCulture);
             }
@@ -261,7 +261,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Disciple of the Land.
         /// </summary>
-        internal static string DiscipleOfLand {
+        public static string DiscipleOfLand {
             get {
                 return ResourceManager.GetString("DiscipleOfLand", resourceCulture);
             }
@@ -270,7 +270,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Disciple of Magic.
         /// </summary>
-        internal static string DiscipleOfMagic {
+        public static string DiscipleOfMagic {
             get {
                 return ResourceManager.GetString("DiscipleOfMagic", resourceCulture);
             }
@@ -279,7 +279,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Disciple of War.
         /// </summary>
-        internal static string DiscipleOfWar {
+        public static string DiscipleOfWar {
             get {
                 return ResourceManager.GetString("DiscipleOfWar", resourceCulture);
             }
@@ -288,7 +288,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Disciples of War or Magic.
         /// </summary>
-        internal static string DisciplesOfWarMagic {
+        public static string DisciplesOfWarMagic {
             get {
                 return ResourceManager.GetString("DisciplesOfWarMagic", resourceCulture);
             }
@@ -297,7 +297,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to DNC.
         /// </summary>
-        internal static string DNC {
+        public static string DNC {
             get {
                 return ResourceManager.GetString("DNC", resourceCulture);
             }
@@ -306,7 +306,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to DRG.
         /// </summary>
-        internal static string DRG {
+        public static string DRG {
             get {
                 return ResourceManager.GetString("DRG", resourceCulture);
             }
@@ -315,7 +315,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to DRK.
         /// </summary>
-        internal static string DRK {
+        public static string DRK {
             get {
                 return ResourceManager.GetString("DRK", resourceCulture);
             }
@@ -324,7 +324,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Earing.
         /// </summary>
-        internal static string Earing {
+        public static string Earing {
             get {
                 return ResourceManager.GetString("Earing", resourceCulture);
             }
@@ -333,7 +333,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Emotes.
         /// </summary>
-        internal static string Emotes {
+        public static string Emotes {
             get {
                 return ResourceManager.GetString("Emotes", resourceCulture);
             }
@@ -342,7 +342,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Equipment.
         /// </summary>
-        internal static string Equipment {
+        public static string Equipment {
             get {
                 return ResourceManager.GetString("Equipment", resourceCulture);
             }
@@ -351,7 +351,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Equipment Only.
         /// </summary>
-        internal static string EquipmentOnly {
+        public static string EquipmentOnly {
             get {
                 return ResourceManager.GetString("EquipmentOnly", resourceCulture);
             }
@@ -360,7 +360,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Equipment Selector.
         /// </summary>
-        internal static string EquipmentSelector {
+        public static string EquipmentSelector {
             get {
                 return ResourceManager.GetString("EquipmentSelector", resourceCulture);
             }
@@ -369,7 +369,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Face Paint.
         /// </summary>
-        internal static string FacePaint {
+        public static string FacePaint {
             get {
                 return ResourceManager.GetString("FacePaint", resourceCulture);
             }
@@ -378,7 +378,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to FacePaint Color.
         /// </summary>
-        internal static string FacePaintColor {
+        public static string FacePaintColor {
             get {
                 return ResourceManager.GetString("FacePaintColor", resourceCulture);
             }
@@ -387,7 +387,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Facial Feature.
         /// </summary>
-        internal static string FacialFeature {
+        public static string FacialFeature {
             get {
                 return ResourceManager.GetString("FacialFeature", resourceCulture);
             }
@@ -396,7 +396,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Favorite.
         /// </summary>
-        internal static string Favorite {
+        public static string Favorite {
             get {
                 return ResourceManager.GetString("Favorite", resourceCulture);
             }
@@ -405,7 +405,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Feet.
         /// </summary>
-        internal static string Feet {
+        public static string Feet {
             get {
                 return ResourceManager.GetString("Feet", resourceCulture);
             }
@@ -414,7 +414,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Force Animation.
         /// </summary>
-        internal static string ForceAnimation {
+        public static string ForceAnimation {
             get {
                 return ResourceManager.GetString("ForceAnimation", resourceCulture);
             }
@@ -423,7 +423,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to FSH.
         /// </summary>
-        internal static string FSH {
+        public static string FSH {
             get {
                 return ResourceManager.GetString("FSH", resourceCulture);
             }
@@ -432,7 +432,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to GLA.
         /// </summary>
-        internal static string GLA {
+        public static string GLA {
             get {
                 return ResourceManager.GetString("GLA", resourceCulture);
             }
@@ -441,7 +441,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to GNB.
         /// </summary>
-        internal static string GNB {
+        public static string GNB {
             get {
                 return ResourceManager.GetString("GNB", resourceCulture);
             }
@@ -450,7 +450,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to GSM.
         /// </summary>
-        internal static string GSM {
+        public static string GSM {
             get {
                 return ResourceManager.GetString("GSM", resourceCulture);
             }
@@ -459,7 +459,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Hair Color.
         /// </summary>
-        internal static string HairColor {
+        public static string HairColor {
             get {
                 return ResourceManager.GetString("HairColor", resourceCulture);
             }
@@ -468,7 +468,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Hair Selector.
         /// </summary>
-        internal static string HairSelector {
+        public static string HairSelector {
             get {
                 return ResourceManager.GetString("HairSelector", resourceCulture);
             }
@@ -477,7 +477,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Hands.
         /// </summary>
-        internal static string Hands {
+        public static string Hands {
             get {
                 return ResourceManager.GetString("Hands", resourceCulture);
             }
@@ -486,7 +486,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Head.
         /// </summary>
-        internal static string Head {
+        public static string Head {
             get {
                 return ResourceManager.GetString("Head", resourceCulture);
             }
@@ -495,7 +495,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Highlights Color.
         /// </summary>
-        internal static string HighlightsColor {
+        public static string HighlightsColor {
             get {
                 return ResourceManager.GetString("HighlightsColor", resourceCulture);
             }
@@ -504,7 +504,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Icon.
         /// </summary>
-        internal static string Icon {
+        public static string Icon {
             get {
                 return ResourceManager.GetString("Icon", resourceCulture);
             }
@@ -513,7 +513,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to ID.
         /// </summary>
-        internal static string ID {
+        public static string ID {
             get {
                 return ResourceManager.GetString("ID", resourceCulture);
             }
@@ -522,7 +522,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Idle Animation.
         /// </summary>
-        internal static string IdleAnimation {
+        public static string IdleAnimation {
             get {
                 return ResourceManager.GetString("IdleAnimation", resourceCulture);
             }
@@ -531,7 +531,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Include Everything.
         /// </summary>
-        internal static string IncludeEverything {
+        public static string IncludeEverything {
             get {
                 return ResourceManager.GetString("IncludeEverything", resourceCulture);
             }
@@ -540,7 +540,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Include OffHand.
         /// </summary>
-        internal static string IncludeOffhand {
+        public static string IncludeOffhand {
             get {
                 return ResourceManager.GetString("IncludeOffhand", resourceCulture);
             }
@@ -549,7 +549,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Keep Dyes.
         /// </summary>
-        internal static string KeepDyes {
+        public static string KeepDyes {
             get {
                 return ResourceManager.GetString("KeepDyes", resourceCulture);
             }
@@ -558,7 +558,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Left-Eye Color.
         /// </summary>
-        internal static string LeftEyeColor {
+        public static string LeftEyeColor {
             get {
                 return ResourceManager.GetString("LeftEyeColor", resourceCulture);
             }
@@ -567,7 +567,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Left Finger.
         /// </summary>
-        internal static string LeftFinger {
+        public static string LeftFinger {
             get {
                 return ResourceManager.GetString("LeftFinger", resourceCulture);
             }
@@ -576,7 +576,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Legs.
         /// </summary>
-        internal static string Legs {
+        public static string Legs {
             get {
                 return ResourceManager.GetString("Legs", resourceCulture);
             }
@@ -585,7 +585,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Limbal-Eye Color.
         /// </summary>
-        internal static string LimbalEyeColor {
+        public static string LimbalEyeColor {
             get {
                 return ResourceManager.GetString("LimbalEyeColor", resourceCulture);
             }
@@ -594,7 +594,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Lip Color.
         /// </summary>
-        internal static string LipColor {
+        public static string LipColor {
             get {
                 return ResourceManager.GetString("LipColor", resourceCulture);
             }
@@ -603,7 +603,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to LNC.
         /// </summary>
-        internal static string LNC {
+        public static string LNC {
             get {
                 return ResourceManager.GetString("LNC", resourceCulture);
             }
@@ -612,7 +612,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Location.
         /// </summary>
-        internal static string Location {
+        public static string Location {
             get {
                 return ResourceManager.GetString("Location", resourceCulture);
             }
@@ -621,7 +621,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to LTW.
         /// </summary>
-        internal static string LTW {
+        public static string LTW {
             get {
                 return ResourceManager.GetString("LTW", resourceCulture);
             }
@@ -630,7 +630,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Main Hand.
         /// </summary>
-        internal static string MainHand {
+        public static string MainHand {
             get {
                 return ResourceManager.GetString("MainHand", resourceCulture);
             }
@@ -639,7 +639,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to MCH.
         /// </summary>
-        internal static string MCH {
+        public static string MCH {
             get {
                 return ResourceManager.GetString("MCH", resourceCulture);
             }
@@ -648,7 +648,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to MIN.
         /// </summary>
-        internal static string MIN {
+        public static string MIN {
             get {
                 return ResourceManager.GetString("MIN", resourceCulture);
             }
@@ -657,7 +657,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to MNK.
         /// </summary>
-        internal static string MNK {
+        public static string MNK {
             get {
                 return ResourceManager.GetString("MNK", resourceCulture);
             }
@@ -666,7 +666,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Model List.
         /// </summary>
-        internal static string ModelList {
+        public static string ModelList {
             get {
                 return ResourceManager.GetString("ModelList", resourceCulture);
             }
@@ -675,7 +675,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Model Values.
         /// </summary>
-        internal static string ModelValues {
+        public static string ModelValues {
             get {
                 return ResourceManager.GetString("ModelValues", resourceCulture);
             }
@@ -684,7 +684,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Monster.
         /// </summary>
-        internal static string Monster {
+        public static string Monster {
             get {
                 return ResourceManager.GetString("Monster", resourceCulture);
             }
@@ -693,7 +693,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to MRD.
         /// </summary>
-        internal static string MRD {
+        public static string MRD {
             get {
                 return ResourceManager.GetString("MRD", resourceCulture);
             }
@@ -702,7 +702,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
-        internal static string Name {
+        public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
             }
@@ -711,7 +711,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Neck.
         /// </summary>
-        internal static string Neck {
+        public static string Neck {
             get {
                 return ResourceManager.GetString("Neck", resourceCulture);
             }
@@ -720,7 +720,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to NIN.
         /// </summary>
-        internal static string NIN {
+        public static string NIN {
             get {
                 return ResourceManager.GetString("NIN", resourceCulture);
             }
@@ -729,7 +729,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to NPC Selector.
         /// </summary>
-        internal static string NPCSelect {
+        public static string NPCSelect {
             get {
                 return ResourceManager.GetString("NPCSelect", resourceCulture);
             }
@@ -738,7 +738,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Off Hand.
         /// </summary>
-        internal static string OffHand {
+        public static string OffHand {
             get {
                 return ResourceManager.GetString("OffHand", resourceCulture);
             }
@@ -747,7 +747,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to PGL.
         /// </summary>
-        internal static string PGL {
+        public static string PGL {
             get {
                 return ResourceManager.GetString("PGL", resourceCulture);
             }
@@ -756,7 +756,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Player.
         /// </summary>
-        internal static string Player {
+        public static string Player {
             get {
                 return ResourceManager.GetString("Player", resourceCulture);
             }
@@ -765,7 +765,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to PLD.
         /// </summary>
-        internal static string PLD {
+        public static string PLD {
             get {
                 return ResourceManager.GetString("PLD", resourceCulture);
             }
@@ -774,7 +774,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Props Main Hand.
         /// </summary>
-        internal static string PropsMainHand {
+        public static string PropsMainHand {
             get {
                 return ResourceManager.GetString("PropsMainHand", resourceCulture);
             }
@@ -783,7 +783,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Props Off Hand.
         /// </summary>
-        internal static string PropsOffHand {
+        public static string PropsOffHand {
             get {
                 return ResourceManager.GetString("PropsOffHand", resourceCulture);
             }
@@ -792,7 +792,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to RDM.
         /// </summary>
-        internal static string RDM {
+        public static string RDM {
             get {
                 return ResourceManager.GetString("RDM", resourceCulture);
             }
@@ -801,7 +801,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Reverse FacePaint.
         /// </summary>
-        internal static string ReverseFacePaint {
+        public static string ReverseFacePaint {
             get {
                 return ResourceManager.GetString("ReverseFacePaint", resourceCulture);
             }
@@ -810,7 +810,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Right-Eye Color.
         /// </summary>
-        internal static string RightEyeColor {
+        public static string RightEyeColor {
             get {
                 return ResourceManager.GetString("RightEyeColor", resourceCulture);
             }
@@ -819,7 +819,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Right Finger.
         /// </summary>
-        internal static string RightFinger {
+        public static string RightFinger {
             get {
                 return ResourceManager.GetString("RightFinger", resourceCulture);
             }
@@ -828,7 +828,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to ROG.
         /// </summary>
-        internal static string ROG {
+        public static string ROG {
             get {
                 return ResourceManager.GetString("ROG", resourceCulture);
             }
@@ -837,7 +837,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to SAM.
         /// </summary>
-        internal static string SAM {
+        public static string SAM {
             get {
                 return ResourceManager.GetString("SAM", resourceCulture);
             }
@@ -846,7 +846,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to SCH.
         /// </summary>
-        internal static string SCH {
+        public static string SCH {
             get {
                 return ResourceManager.GetString("SCH", resourceCulture);
             }
@@ -855,7 +855,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Search....
         /// </summary>
-        internal static string Search {
+        public static string Search {
             get {
                 return ResourceManager.GetString("Search", resourceCulture);
             }
@@ -864,7 +864,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Select Type.
         /// </summary>
-        internal static string SelectType {
+        public static string SelectType {
             get {
                 return ResourceManager.GetString("SelectType", resourceCulture);
             }
@@ -873,7 +873,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Skin Color.
         /// </summary>
-        internal static string SkinColor {
+        public static string SkinColor {
             get {
                 return ResourceManager.GetString("SkinColor", resourceCulture);
             }
@@ -882,7 +882,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to SMN.
         /// </summary>
-        internal static string SMN {
+        public static string SMN {
             get {
                 return ResourceManager.GetString("SMN", resourceCulture);
             }
@@ -891,7 +891,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to THM.
         /// </summary>
-        internal static string THM {
+        public static string THM {
             get {
                 return ResourceManager.GetString("THM", resourceCulture);
             }
@@ -900,7 +900,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to WAR.
         /// </summary>
-        internal static string WAR {
+        public static string WAR {
             get {
                 return ResourceManager.GetString("WAR", resourceCulture);
             }
@@ -909,7 +909,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to WHM.
         /// </summary>
-        internal static string WHM {
+        public static string WHM {
             get {
                 return ResourceManager.GetString("WHM", resourceCulture);
             }
@@ -918,7 +918,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to World.
         /// </summary>
-        internal static string World {
+        public static string World {
             get {
                 return ResourceManager.GetString("World", resourceCulture);
             }
@@ -927,7 +927,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Wrist.
         /// </summary>
-        internal static string Wrist {
+        public static string Wrist {
             get {
                 return ResourceManager.GetString("Wrist", resourceCulture);
             }
@@ -936,7 +936,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to WVR.
         /// </summary>
-        internal static string WVR {
+        public static string WVR {
             get {
                 return ResourceManager.GetString("WVR", resourceCulture);
             }

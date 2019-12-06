@@ -22,7 +22,7 @@ namespace ConceptMatrix.Resx {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class WindowsStrings {
+    public class WindowsStrings {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace ConceptMatrix.Resx {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ConceptMatrix.Resx.WindowsStrings", typeof(WindowsStrings).Assembly);
@@ -51,7 +51,7 @@ namespace ConceptMatrix.Resx {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
-        internal static string Cancel {
+        public static string Cancel {
             get {
                 return ResourceManager.GetString("Cancel", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Character Save Window.
         /// </summary>
-        internal static string CharacterSaveWindow {
+        public static string CharacterSaveWindow {
             get {
                 return ResourceManager.GetString("CharacterSaveWindow", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Date Created.
         /// </summary>
-        internal static string DateCreated {
+        public static string DateCreated {
             get {
                 return ResourceManager.GetString("DateCreated", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Gearset Name.
         /// </summary>
-        internal static string GearsetName {
+        public static string GearsetName {
             get {
                 return ResourceManager.GetString("GearsetName", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to ID.
         /// </summary>
-        internal static string ID {
+        public static string ID {
             get {
                 return ResourceManager.GetString("ID", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Make sure ffxiv_dx11.exe is running!.
         /// </summary>
-        internal static string IsDx11Running {
+        public static string IsDx11Running {
             get {
                 return ResourceManager.GetString("IsDx11Running", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Load All[Appearance].
         /// </summary>
-        internal static string LoadAllAppearance {
+        public static string LoadAllAppearance {
             get {
                 return ResourceManager.GetString("LoadAllAppearance", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Load All Character.
         /// </summary>
-        internal static string LoadAllCharacter {
+        public static string LoadAllCharacter {
             get {
                 return ResourceManager.GetString("LoadAllCharacter", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Load All[Equipment].
         /// </summary>
-        internal static string LoadAllEquipment {
+        public static string LoadAllEquipment {
             get {
                 return ResourceManager.GetString("LoadAllEquipment", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Load .Dat.
         /// </summary>
-        internal static string LoadDat {
+        public static string LoadDat {
             get {
                 return ResourceManager.GetString("LoadDat", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Load Gearset.
         /// </summary>
-        internal static string LoadGearset {
+        public static string LoadGearset {
             get {
                 return ResourceManager.GetString("LoadGearset", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Load Window.
         /// </summary>
-        internal static string LoadWindow {
+        public static string LoadWindow {
             get {
                 return ResourceManager.GetString("LoadWindow", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
-        internal static string No {
+        public static string No {
             get {
                 return ResourceManager.GetString("No", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to OK.
         /// </summary>
-        internal static string OK {
+        public static string OK {
             get {
                 return ResourceManager.GetString("OK", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Process.
         /// </summary>
-        internal static string Process {
+        public static string Process {
             get {
                 return ResourceManager.GetString("Process", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Process Finder.
         /// </summary>
-        internal static string ProcessFinder {
+        public static string ProcessFinder {
             get {
                 return ResourceManager.GetString("ProcessFinder", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Refresh.
         /// </summary>
-        internal static string Refresh {
+        public static string Refresh {
             get {
                 return ResourceManager.GetString("Refresh", resourceCulture);
             }
@@ -216,7 +216,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Save Gearset.
         /// </summary>
-        internal static string SaveGearset {
+        public static string SaveGearset {
             get {
                 return ResourceManager.GetString("SaveGearset", resourceCulture);
             }
@@ -225,7 +225,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Save Name.
         /// </summary>
-        internal static string SaveName {
+        public static string SaveName {
             get {
                 return ResourceManager.GetString("SaveName", resourceCulture);
             }
@@ -234,7 +234,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Search Gearset name here....
         /// </summary>
-        internal static string SearchGearSet {
+        public static string SearchGearSet {
             get {
                 return ResourceManager.GetString("SearchGearSet", resourceCulture);
             }
@@ -243,7 +243,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Search Save name here.....
         /// </summary>
-        internal static string SearchSaveName {
+        public static string SearchSaveName {
             get {
                 return ResourceManager.GetString("SearchSaveName", resourceCulture);
             }
@@ -252,7 +252,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Start Time.
         /// </summary>
-        internal static string StartTime {
+        public static string StartTime {
             get {
                 return ResourceManager.GetString("StartTime", resourceCulture);
             }
@@ -261,7 +261,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Use Windows Explorer:.
         /// </summary>
-        internal static string UseWindowsEx {
+        public static string UseWindowsEx {
             get {
                 return ResourceManager.GetString("UseWindowsEx", resourceCulture);
             }
@@ -270,7 +270,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Write Gearset name here....
         /// </summary>
-        internal static string WriteGearsetName {
+        public static string WriteGearsetName {
             get {
                 return ResourceManager.GetString("WriteGearsetName", resourceCulture);
             }
@@ -279,7 +279,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Yes.
         /// </summary>
-        internal static string Yes {
+        public static string Yes {
             get {
                 return ResourceManager.GetString("Yes", resourceCulture);
             }
