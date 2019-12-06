@@ -1272,4 +1272,22 @@
 •如在gose中使用，请先冻结当前目标动作
 •滑块调整及数值输入调整都需要先勾选旋转功能</value>
   </data>
+  <data name="FaceCamX" xml:space="preserve">
+    <value>X面凸轮：</value>
+  </data>
+  <data name="FaceCamY" xml:space="preserve">
+    <value>Y面凸轮：</value>
+  </data>
+  <data name="FaceCamZ" xml:space="preserve">
+    <value>Z面凸轮：</value>
+  </data>
+  <data name="GposeViewX" xml:space="preserve">
+    <value>X GPose视图：</value>
+  </data>
+  <data name="GposeViewY" xml:space="preserve">
+    <value>Y GPose视图：</value>
+  </data>
+  <data name="GposeViewZ" xml:space="preserve">
+    <value>Z GPose视图：</value>
+  </data>
 </root>

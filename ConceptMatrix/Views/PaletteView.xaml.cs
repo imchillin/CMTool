@@ -1,5 +1,6 @@
 ﻿using ConceptMatrix.Utility;
 using ConceptMatrix.ViewModel;
+using ConceptMatrix.Windows;
 using System;
 using System.IO;
 using System.Windows;
@@ -148,6 +149,20 @@ namespace ConceptMatrix.Views
             }
 
             SaveDirectory3.Text = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Gearsets");
+        }
+
+        private void ChangeLang_Click(object sender, RoutedEventArgs e)
+        {
+            var langSelectView = new LanguageSelectView();
+            langSelectView.ShowDialog();
+            var langCode = langSelectView.LanguageCode;
+
+            if (string.IsNullOrEmpty(langCode)) return;
+
+            SaveSettings.Default.Language = langCode;
+
+            System.Windows.Forms.Application.Restart();
+            System.Windows.Application.Current.Shutdown();
         }
     }
 }

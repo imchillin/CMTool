@@ -41,8 +41,9 @@ namespace ConceptMatrix
         public MainWindow()
         {
             ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
-
-            var ci = new CultureInfo("zh") //settings.CultureSet
+            LanguageSelection();
+            var settings = SaveSettings.Default;
+            var ci = new CultureInfo(settings.Language)
             {
                 NumberFormat = { NumberDecimalSeparator = "." }
             };
@@ -115,6 +116,26 @@ namespace ConceptMatrix
             InitializeComponent();
         }
 
+        private void LanguageSelection()
+        {
+            var lang = SaveSettings.Default.Language;
+
+            if (string.IsNullOrEmpty(lang)) 
+            {
+                var langSelectView = new LanguageSelectView();
+                langSelectView.ShowDialog();
+               
+                var langCode = langSelectView.LanguageCode;
+                if (string.IsNullOrEmpty(langCode))
+                {
+                    LanguageSelection();
+                    return;
+                }
+                        
+                SaveSettings.Default.Language = langCode;
+            }
+        }
+
         private void UpdateProgram(bool alertWhenUpToDate = false)
         {
             ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
@@ -158,16 +179,15 @@ namespace ConceptMatrix
         {
             Title = $"{App.ToolName} v{version}";
             DataContext = new MainViewModel();
-            var settings = SaveSettings.Default;
-            var accentColor = settings.Accent;
+            var accentColor = SaveSettings.Default.Accent;
             new PaletteHelper().ReplaceAccentColor(accentColor);
-            var primaryColor = settings.Primary;
+            var primaryColor = SaveSettings.Default.Primary;
             new PaletteHelper().ReplacePrimaryColor(primaryColor);
-            var theme = settings.Theme;
+            var theme = SaveSettings.Default.Theme;
             new PaletteHelper().SetLightDark(theme != "Light");
-            this.Topmost = settings.TopApp;
+            this.Topmost = SaveSettings.Default.TopApp;
 			// toggle status
-			(DataContext as MainViewModel).ToggleStatus(settings.TopApp);
+			(DataContext as MainViewModel).ToggleStatus(SaveSettings.Default.TopApp);
 	        // CharacterDetailsView._exdProvider.MakeCharaMakeFeatureList();
             // CharacterDetailsView._exdProvider.MakeCharaMakeFeatureFacialList();
             // CharacterDetailsView._exdProvider.MakeTerritoryTypeList();
