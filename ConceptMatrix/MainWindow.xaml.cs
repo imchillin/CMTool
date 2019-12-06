@@ -287,7 +287,7 @@ namespace ConceptMatrix
                     string extension = System.IO.Path.GetExtension(".cma");
                     string result = dig.SafeFileName.Substring(0, dig.SafeFileName.Length - extension.Length);
                     Save1.Description = result;
-                    Save1.DateCreated = DateTime.Now.ToLocalTime().ToString();
+                    Save1.DateCreated = DateTime.Now.ToString("yyyy-MM-dd HH':'mm':'ss");
                     Save1.MainHand = new WepTuple(CharacterDetails.Job.value, CharacterDetails.WeaponBase.value, CharacterDetails.WeaponV.value, CharacterDetails.WeaponDye.value);
                     Save1.OffHand = new WepTuple(CharacterDetails.Offhand.value, CharacterDetails.OffhandBase.value, CharacterDetails.OffhandV.value, CharacterDetails.OffhandDye.value);
                     Save1.EquipmentBytes = CharacterDetails.TestArray2.value;
@@ -311,7 +311,7 @@ namespace ConceptMatrix
                 {
                     CharSaves Save1 = new CharSaves(); // Gearsave is class with all address
                     Save1.Description = c.Filename;
-                    Save1.DateCreated = DateTime.Now.ToLocalTime().ToString();
+                    Save1.DateCreated = DateTime.Now.ToString("yyyy-MM-dd HH':'mm':'ss");
                     Save1.MainHand = new WepTuple(CharacterDetails.Job.value, CharacterDetails.WeaponBase.value, CharacterDetails.WeaponV.value, CharacterDetails.WeaponDye.value);
                     Save1.OffHand = new WepTuple(CharacterDetails.Offhand.value, CharacterDetails.OffhandBase.value, CharacterDetails.OffhandV.value, CharacterDetails.OffhandDye.value);
                     Save1.EquipmentBytes = CharacterDetails.TestArray2.value;
