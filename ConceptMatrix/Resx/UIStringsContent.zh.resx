@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>关于本软件</value>
+    <value>关于</value>
   </data>
   <data name="ActorData" xml:space="preserve">
     <value>目标基本设置</value>
@@ -132,7 +132,7 @@
     <value>目标属性</value>
   </data>
   <data name="ActorRefreshButton" xml:space="preserve">
-    <value>刷新至游戏</value>
+    <value>刷新角色</value>
   </data>
   <data name="ActorRefreshToolTip" xml:space="preserve">
     <value>在所选目标上应用设置并刷新</value>
@@ -372,13 +372,9 @@
   </data>
   <data name="DataPathToolTip" xml:space="preserve">
     <value>改变所选目标的数据路径   
-
 • 这会让你可以使用其他种族或性别的动作   
-
 •不需要刷新，在Gpose内外都可以使用    
-
 •目标的建模骨架会变形以适应所选定的种族及性别，产生的拉伸或缩小是不可避免的  
-
 •你也可以点击刷新按钮，成为一个变形怪！</value>
   </data>
   <data name="DefaultTime" xml:space="preserve">
@@ -392,14 +388,13 @@
   </data>
   <data name="DrenchedToolTip" xml:space="preserve">
     <value>给目标增加一个比湿衣更加明显的效果
-
 •和湿衣一样，这个效果会随着时间而消失</value>
   </data>
   <data name="Dyes" xml:space="preserve">
     <value>染色</value>
   </data>
   <data name="EarMuscleTailSize" xml:space="preserve">
-    <value>耳朵尾巴尺寸</value>
+    <value>耳朵/尾巴尺寸</value>
   </data>
   <data name="EarMuscleTailSizeToolTip" xml:space="preserve">
     <value>改变所选目标的耳朵，体格（肌肉），尾巴的尺寸与多少</value>
@@ -436,11 +431,8 @@
   </data>
   <data name="EntityTypeToolTip" xml:space="preserve">
     <value>供高级使用者使用   
-
 •将会改变所选目标的实体类型  
-
 •对某些物体将导致不可预测及不想要的效果   
-
 •把一些npc的实体类型设置为1可以让他们在gpose中变为可被选中的目标</value>
   </data>
   <data name="Equipment" xml:space="preserve">
@@ -462,7 +454,7 @@
     <value>改变所选目标左眼的瞳孔颜色</value>
   </data>
   <data name="EyeColorRight" xml:space="preserve">
-    <value>瞳孔颜色(右）</value>
+    <value>瞳孔颜色（右）</value>
   </data>
   <data name="EyeColorRightToolTip" xml:space="preserve">
     <value>改变所选目标右眼的瞳孔颜色</value>
@@ -495,7 +487,7 @@
     <value>改变所选目标面妆/刺青的类型</value>
   </data>
   <data name="FacialFeatures" xml:space="preserve">
-    <value>面部伤痕</value>
+    <value>面部特征：</value>
   </data>
   <data name="FacialFeaturesToolTip" xml:space="preserve">
     <value>改变所选物体的面部特征</value>
@@ -516,7 +508,7 @@
     <value>打开进程</value>
   </data>
   <data name="FindProcessToolTip" xml:space="preserve">
-    <value>读取最终幻想14进程</value>
+    <value>刷新最终幻想14进程</value>
   </data>
   <data name="FingerBones" xml:space="preserve">
     <value>指骨</value>
@@ -526,13 +518,9 @@
   </data>
   <data name="ForceAnimToolTip" xml:space="preserve">
     <value>强制所选目标作出一个动作
-
 •只能在gpose下使用   
-
 •需要在进入gpose前做一个非循环动作（如/挥手） 
-
 •一些动作会有种族/性别上的限定，如果在执行时你的角色只是抖动了一下，那你可能需要设置一个可用的数据路径   
-
 •对npc无效</value>
   </data>
   <data name="Forearms" xml:space="preserve">
@@ -561,9 +549,7 @@
   </data>
   <data name="FreezePosToolTip" xml:space="preserve">
     <value>冻结所选目标位置
-
 • 这项功能主要用来控制gpose中的移动目标，它可以防止目标在完成表情/动作之后跳回其原有位置
-
 • 确保在切换到一个新目标之前关闭此功能，否则新目标和原目标将出现在同一位置</value>
   </data>
   <data name="FreezeRot" xml:space="preserve">
@@ -571,13 +557,9 @@
   </data>
   <data name="FreezeRotToolTip" xml:space="preserve">
     <value>冻结所选物体的旋转
-
 • 此功能一般与冻结位置在gpose中共同使用以冻结所选目标的位置
-
 • 你可以利用此功能与游戏中的“面向镜头”（默认键：空格键）来在不转动所选目标身体的情况下转动其头部
-
 • 同冻结位置一样，请确保在gpose中切换所选物体之前，关闭该功能
-
 • 需要使用数字直接输入数值或滑动旋转滑块来调节</value>
   </data>
   <data name="G" xml:space="preserve">
@@ -597,7 +579,6 @@
   </data>
   <data name="GposeModeToolTip" xml:space="preserve">
     <value>允许改变所选目标在gpose中的具体参数，如xyz轴位置，旋转，动作等
-
 • Gpose模式和目标模式应同时打开，请确保不要在先打开目标模式的情况下开启gpose模式，否则两个都会被关闭</value>
   </data>
   <data name="Green" xml:space="preserve">
@@ -671,11 +652,8 @@
   </data>
   <data name="IdleAnimToolTip" xml:space="preserve">
     <value>改变所选目标空闲时的动作
-
 • 该功能可用于gpose内及gpose外
-
 • 如果计划于gpose内使用该功能，在进入gpose之前如果做过其他动作，请先/sit再站起来以保证进入gpose后不会重复上一个动作
-
 • 此功能可以作用于宠物，陆行鸟及大部分npc</value>
   </data>
   <data name="IndexFinger" xml:space="preserve">
@@ -691,7 +669,7 @@
     <value>下巴</value>
   </data>
   <data name="JawType" xml:space="preserve">
-    <value>下颌类型（脸型）</value>
+    <value>下颌类型：</value>
   </data>
   <data name="JawTypeToolTip" xml:space="preserve">
     <value>改变所选目标的下颌类型</value>
@@ -706,7 +684,7 @@
     <value>膝盖</value>
   </data>
   <data name="Language" xml:space="preserve">
-    <value>zh</value>
+    <value>中文（简体）</value>
   </data>
   <data name="LeftArm" xml:space="preserve">
     <value>左臂</value>
@@ -736,7 +714,7 @@
     <value>改变所选中目标的瞳孔轮廓颜色及刺青颜色</value>
   </data>
   <data name="LimbalRingTattooColor" xml:space="preserve">
-    <value>瞳孔轮廓颜色/刺青颜色</value>
+    <value>瞳孔轮廓/刺青颜色</value>
   </data>
   <data name="LipColor" xml:space="preserve">
     <value>唇色/毛纹</value>
@@ -758,7 +736,6 @@
   </data>
   <data name="LoadMainWindowToolTip" xml:space="preserve">
     <value>从用户生成的json文件中读取外观
-
 •你可以用“load .dat”从游戏中的角色创建保存文件中读取数据</value>
   </data>
   <data name="LoadPointButton" xml:space="preserve">
@@ -772,7 +749,6 @@
   </data>
   <data name="LockFacialAnimationToolTip" xml:space="preserve">
     <value>锁定所选中目标的面部表情动作
-
 • 请勾选并打开此功能，设置动作为0来使用此功能</value>
   </data>
   <data name="LockTime" xml:space="preserve">
@@ -782,7 +758,7 @@
     <value>下身骨骼</value>
   </data>
   <data name="LowerEarrings" xml:space="preserve">
-    <value />
+    <value>下耳环</value>
   </data>
   <data name="LowerEyelids" xml:space="preserve">
     <value>下眼睑</value>
@@ -801,12 +777,10 @@
   </data>
   <data name="MainHandScaleToolTip" xml:space="preserve">
     <value>控制目标主手装备的xyz轴大小
-
 • 此功能用来控制主手道具的大小，但一些在动作表情中临时出现的的“特效类道具”不受影响</value>
   </data>
   <data name="MainHandToolTip" xml:space="preserve">
     <value>允许所选中目标装备任何武器在主手位置
-
 • 如果你想要主手处于空手状态，可以选择装备“皇帝”系列或者用右侧面板中主手/副手装备大小调节功能</value>
   </data>
   <data name="MaxZoom" xml:space="preserve">
@@ -832,9 +806,7 @@
   </data>
   <data name="ModelTypeButtonToolTip" xml:space="preserve">
     <value>模型列表可以提供怪物，半人，道具及道具效果的搜索
-
 • 包含一些npc，此类npc被归类为半人
-
 • 如果选择变为半人后游戏内人物模型消失，请在装备区把所有基准数值设置为0，变量设置为0，如果没有解决，请尝试1，0或1,1的设置</value>
   </data>
   <data name="ModelTypeToolTip" xml:space="preserve">
@@ -890,9 +862,7 @@
   </data>
   <data name="NPCOutfitToolTip" xml:space="preserve">
     <value>可根据姓名搜索相应npc
-
 • 选择相应npc后，需要点击刷新至游戏来应用该npc外观
-
 • 由于分类问题，一些NPC不在此列表，如果没有找到想要的npc，请在模型列表里尝试搜索</value>
   </data>
   <data name="OffHand" xml:space="preserve">
@@ -906,12 +876,10 @@
   </data>
   <data name="OffHandScaleToolTip" xml:space="preserve">
     <value>可以控制副手武器的XYZ轴以调整大小
-
 • 此功能涵盖盾牌，箭筒，刀削，匕首，拳套等物品</value>
   </data>
   <data name="OffHandToolTip" xml:space="preserve">
     <value>允许被选目标装备副手武器
-
 • 利用副手武器的“查看”按钮搜索主手装备，例如寻找刀鞘或者箭筒，可以直接选取与之配套的刀或弓</value>
   </data>
   <data name="OuterBrows" xml:space="preserve">
@@ -958,13 +926,9 @@
   </data>
   <data name="RealTimeRotationToolTip" xml:space="preserve">
     <value>用鼠标控制方块
-
 • 所有的转向基于所选目标当前的朝向
-
 • 鼠标右键控制X轴旋转
-
 • 鼠标左键控制Y轴旋转
-
 • 鼠标中键控制Z轴旋转</value>
   </data>
   <data name="Red" xml:space="preserve">
@@ -981,7 +945,6 @@
   </data>
   <data name="RelativeXYZPosToolTip" xml:space="preserve">
     <value>使所有XYZ轴位置调整都基于所选目标而不是基于游戏环境
-
 • 此设定默认开启</value>
   </data>
   <data name="RelativeXYZRot" xml:space="preserve">
@@ -989,9 +952,7 @@
   </data>
   <data name="RelativeXYZRotToolTip" xml:space="preserve">
     <value>使所有XYZ轴旋转调整都基于所选目标而不是基于游戏环境
-
 • 此设定默认开启
-
 • 只影响实施旋转方块</value>
   </data>
   <data name="RenderCycle" xml:space="preserve">
@@ -1035,13 +996,9 @@
   </data>
   <data name="RotationSlidersToolTip" xml:space="preserve">
     <value>此功能可以在转动滑块与数字输入之间切换
-
 •此功能默认打开
-
 •关闭此功能将使XYZ轴旋转滑块变为数字输入
-
 •有效数值为0-360
-
 •转动滑块与数字输入都需要转动功能被勾选</value>
   </data>
   <data name="SaveButton" xml:space="preserve">
@@ -1085,13 +1042,9 @@
   </data>
   <data name="StatusEffectToolTip" xml:space="preserve">
     <value>允许你在gpose中应用额外的特效
-
 • 1 先在gpose中激活一个基本状态
-  
-2  在cm下拉菜单中选择你想要的新特效
-  
-3  在gpose菜单中选择移除之前添加的状态
-
+  2  在cm下拉菜单中选择你想要的新特效
+  3  在gpose菜单中选择移除之前添加的状态
 • 想要添加新的效果或者移除当前效果，请点击复位或者用其他的效果覆盖</value>
   </data>
   <data name="Sternum" xml:space="preserve">
@@ -1111,7 +1064,6 @@
   </data>
   <data name="TargetModeToolTip" xml:space="preserve">
     <value>允许你在不使用目标列表的情况下，改变鼠标选中的目标的各项数值
-
 • 此功能在物体较多的复杂环境中使用，以避免物体移动带来的列表顺序变化. 不过在应用修改之前请先取消打钩此功能，用普通模式进行应用</value>
   </data>
   <data name="Thumb" xml:space="preserve">
@@ -1128,12 +1080,10 @@
   </data>
   <data name="TimeControlToolTip" xml:space="preserve">
     <value>调整当前区域时间
-
 •在gpose模式下使用时间/天气暂停的同时使用时间控制可以看到完整的月亮变化</value>
   </data>
   <data name="TimeLockToolTip" xml:space="preserve">
     <value>尝试阻止时间流动
-
 •这项功能并不精准，长时间试用下，时间还是会轻微的流动</value>
   </data>
   <data name="Title" xml:space="preserve">
@@ -1159,9 +1109,7 @@
   </data>
   <data name="TransparencyToolTip" xml:space="preserve">
     <value>改变所选物体透明度
-
 •降低所选物体透明度并不影响其主手及副手的物品，你可以利用主副手物品xyz轴归零的功能来使其隐形
-
 •如果将数值设置为0，会使系统认为他们为不可选中的目标，如果你要继续使用，请将数值设置为0.03</value>
   </data>
   <data name="Twitter" xml:space="preserve">
@@ -1217,7 +1165,6 @@
   </data>
   <data name="WeatherForceToolTip" xml:space="preserve">
     <value>控制当前区域天气
-
 •此功能采用立即生效的方式，一经选择则天气立即改变为所选</value>
   </data>
   <data name="WeatherSelect" xml:space="preserve">
@@ -1225,7 +1172,6 @@
   </data>
   <data name="WeatherToolTip" xml:space="preserve">
     <value>控制当前区域天气
-
 •此功能采用自然变化生效方式，选择后天气改变更加自然</value>
   </data>
   <data name="Wet" xml:space="preserve">
@@ -1233,7 +1179,6 @@
   </data>
   <data name="WetToolTip" xml:space="preserve">
     <value>给予所选目标湿衣效果
-
 •如果关闭此功能，湿衣效果会随时间流逝而消失</value>
   </data>
   <data name="World" xml:space="preserve">
@@ -1253,7 +1198,6 @@
   </data>
   <data name="XPosToolTip" xml:space="preserve">
     <value>修改所选目标的X轴位置
-
 •如在gpose中使用，请先冻结当前目标动作</value>
   </data>
   <data name="XRot" xml:space="preserve">
@@ -1267,9 +1211,7 @@
   </data>
   <data name="XRotToolTip" xml:space="preserve">
     <value>调整所选目标的X轴旋转
-
-•如在gpose中使用，请先冻结当前目标动作
-
+•如在gose中使用，请先冻结当前目标动作
 •滑块调整及数值输入调整都需要先勾选旋转功能</value>
   </data>
   <data name="Y" xml:space="preserve">
@@ -1280,7 +1222,6 @@
   </data>
   <data name="YPosToolTip" xml:space="preserve">
     <value>修改所选目标的Y轴位置
-
 •如在gpose中使用，请先冻结当前目标动作</value>
   </data>
   <data name="YRot" xml:space="preserve">
@@ -1294,9 +1235,7 @@
   </data>
   <data name="YRotToolTip" xml:space="preserve">
     <value>调整所选目标的Y轴旋转
-
-•如在gpose中使用，请先冻结当前目标动作
-
+•如在gose中使用，请先冻结当前目标动作
 •滑块调整及数值输入调整都需要先勾选旋转功能</value>
   </data>
   <data name="Z" xml:space="preserve">
@@ -1310,7 +1249,6 @@
   </data>
   <data name="ZeroScaleToolTip" xml:space="preserve">
     <value>把XYZ轴大小均设置为0，能有效的使物品消失
-
 •你可以在XYZ轴设置栏输入数值（例如1）来取消该效果</value>
   </data>
   <data name="ZPos" xml:space="preserve">
@@ -1318,7 +1256,6 @@
   </data>
   <data name="ZPosToolTip" xml:space="preserve">
     <value>修改所选目标的Z轴位置
-
 •如在gpose中使用，请先冻结当前目标动作</value>
   </data>
   <data name="ZRot" xml:space="preserve">
@@ -1332,25 +1269,7 @@
   </data>
   <data name="ZRotToolTip" xml:space="preserve">
     <value>调整所选目标的Z轴旋转
-•如在gpose中使用，请先冻结当前目标动作
+•如在gose中使用，请先冻结当前目标动作
 •滑块调整及数值输入调整都需要先勾选旋转功能</value>
-  </data>
-  <data name="FaceCamX" xml:space="preserve">
-    <value>X面凸轮：</value>
-  </data>
-  <data name="FaceCamY" xml:space="preserve">
-    <value>Y面凸轮：</value>
-  </data>
-  <data name="FaceCamZ" xml:space="preserve">
-    <value>Z面凸轮：</value>
-  </data>
-  <data name="GposeViewX" xml:space="preserve">
-    <value>X GPose视图：</value>
-  </data>
-  <data name="GposeViewY" xml:space="preserve">
-    <value>Y GPose视图：</value>
-  </data>
-  <data name="GposeViewZ" xml:space="preserve">
-    <value>Z GPose视图：</value>
   </data>
 </root>

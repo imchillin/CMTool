@@ -322,6 +322,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>FlyOutStrings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resx\FlyOutStrings.zh.resx" />
     <EmbeddedResource Include="Resx\UIPoseStrings.ja.resx" />
     <EmbeddedResource Include="Resx\UIPoseStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -338,6 +339,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>WindowsStrings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resx\WindowsStrings.zh.resx" />
     <None Include="app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
