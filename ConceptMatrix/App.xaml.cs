@@ -103,13 +103,18 @@ namespace ConceptMatrix
             if (!Directory.Exists(path))
                 return false;
 
-            return File.Exists(Path.Combine(path, "game", "ffxivgame.ver"));
+            if (File.Exists(Path.Combine(path, "game", "ffxivgame.ver")))
+                return File.Exists(Path.Combine(path, "game", "ffxivgame.ver"));
+
+            return false;
         }
+
         private void App_Exit(object sender, ExitEventArgs e)
         {
             Utility.SaveSettings.Default.Save();
             if (CharacterDetails.BoneEditMode) MainViewModel.ViewTime5.EditModeButton.IsChecked = false;
         }
+
         private static bool RequestGamePath()
         {
             string path = ConceptMatrix.Properties.Settings.Default.GamePath;
