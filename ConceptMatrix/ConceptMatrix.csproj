@@ -319,7 +319,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resx\FlyOutStrings.ja.resx" />
     <EmbeddedResource Include="Resx\FlyOutStrings.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>FlyOutStrings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resx\FlyOutStrings.zh.resx" />
@@ -336,7 +336,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resx\UIStringsContent.zh.resx" />
     <EmbeddedResource Include="Resx\WindowsStrings.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>WindowsStrings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resx\WindowsStrings.zh.resx" />
