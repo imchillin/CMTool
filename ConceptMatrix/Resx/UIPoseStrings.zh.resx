@@ -341,10 +341,14 @@
   </data>
   <data name="RealTimeRotationToolTip" xml:space="preserve">
     <value>使用鼠标控制立方体。
- •所有旋转均相对于实体当前面对的方向：
- •右键控制X轴旋转。
- •左键控制Y轴旋转。
- •滚轮控制Z轴旋转。</value>
+ 
+•所有旋转均相对于实体当前面对的方向：
+
+•右键控制X轴旋转。
+ 
+•左键控制Y轴旋转。
+
+•滚轮控制Z轴旋转。</value>
   </data>
   <data name="RightArm" xml:space="preserve">
     <value>右臂：</value>

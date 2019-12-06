@@ -862,7 +862,7 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SkinColor.
+        ///   Looks up a localized string similar to Skin Color.
         /// </summary>
         internal static string SkinColor {
             get {
