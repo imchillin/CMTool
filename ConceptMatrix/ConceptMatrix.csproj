@@ -142,6 +142,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>WindowsStrings.resx</DependentUpon>
     </Compile>
+    <Compile Include="Utility\FlexibleMessageBox.cs" />
     <Compile Include="Utility\QuaternionConverter.cs" />
     <Compile Include="Utility\CmpReader.cs" />
     <Compile Include="Utility\DatSaves.cs" />

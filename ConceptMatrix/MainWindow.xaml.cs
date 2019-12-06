@@ -41,19 +41,18 @@ namespace ConceptMatrix
         public MainWindow()
         {
             ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
+            
+            //Culture setting
             LanguageSelection();
             var settings = SaveSettings.Default;
             var ci = new CultureInfo(settings.Language)
             {
                 NumberFormat = { NumberDecimalSeparator = "." }
             };
-
             CultureInfo.DefaultThreadCurrentCulture = ci;
             CultureInfo.DefaultThreadCurrentUICulture = ci;
             CultureInfo.CurrentCulture = ci;
             CultureInfo.CurrentUICulture = ci;
-
-
 
             // Call the update method.
             UpdateProgram();
@@ -78,42 +77,20 @@ namespace ConceptMatrix
                     return;
                 }
             }
-            List<ProcessLooker.Game> GameList = new List<ProcessLooker.Game>();
-            Process[] processlist = Process.GetProcesses();
-            Processcheck = 0;
-            foreach (Process theprocess in processlist)
+
+            try
             {
-                if (theprocess.ProcessName.ToLower().Contains("ffxiv_dx11"))
-                {
-                    Processcheck++;
-                    GameList.Add(new ProcessLooker.Game() { ProcessName = theprocess.ProcessName, ID = theprocess.Id, StartTime = theprocess.StartTime, AppIcon = IconToImageSource(System.Drawing.Icon.ExtractAssociatedIcon(theprocess.MainModule.FileName)) });
-                }
+                //Search for any process for the game.
+                FindProcessStartUP();
+
+                InitializeComponent();
             }
-            if (Processcheck > 1)
+            catch (Exception e)
             {
-                ProcessLooker f = new ProcessLooker(GameList);
-                f.ShowDialog();
-                if (f.Choice == null)
-                {
-                    Close();
-                    return;
-                }
-                MainViewModel.gameProcId = f.Choice.ID;
+                System.Windows.MessageBox.Show(string.Format($"Please make sure you are running Concept Matrix in the folder it came in. If you continue to receive this error, Please make sure your Anti - Virus is not blocking CMTool. Error: { 0} Exception: { 1}", e.Message, e.InnerException),"Error!");
+                Environment.Exit(-1);
+                return;
             }
-            if (Processcheck == 1)
-                MainViewModel.gameProcId = GameList[0].ID;
-            if (Processcheck <= 0)
-            {
-                ProcessLooker f = new ProcessLooker(GameList);
-                f.ShowDialog();
-                if (f.Choice == null)
-                {
-                    Close();
-                    return;
-                }
-                MainViewModel.gameProcId = f.Choice.ID;
-            }
-            InitializeComponent();
         }
 
         private void LanguageSelection()
@@ -219,7 +196,44 @@ namespace ConceptMatrix
                 }
             }
         }
-
+        private void FindProcessStartUP()
+        {
+            List<ProcessLooker.Game> GameList = new List<ProcessLooker.Game>();
+            Process[] processlist = Process.GetProcesses();
+            Processcheck = 0;
+            foreach (Process theprocess in processlist)
+            {
+                if (theprocess.ProcessName.ToLower().Contains("ffxiv_dx11"))
+                {
+                    Processcheck++;
+                    GameList.Add(new ProcessLooker.Game() { ProcessName = theprocess.ProcessName, ID = theprocess.Id, StartTime = theprocess.StartTime, AppIcon = IconToImageSource(System.Drawing.Icon.ExtractAssociatedIcon(theprocess.MainModule.FileName)) });
+                }
+            }
+            if (Processcheck > 1)
+            {
+                ProcessLooker f = new ProcessLooker(GameList);
+                f.ShowDialog();
+                if (f.Choice == null)
+                {
+                    Close();
+                    return;
+                }
+                MainViewModel.gameProcId = f.Choice.ID;
+            }
+            if (Processcheck == 1)
+                MainViewModel.gameProcId = GameList[0].ID;
+            if (Processcheck <= 0)
+            {
+                ProcessLooker f = new ProcessLooker(GameList);
+                f.ShowDialog();
+                if (f.Choice == null)
+                {
+                    Close();
+                    return;
+                }
+                MainViewModel.gameProcId = f.Choice.ID;
+            }
+        }
         private void FindProcess_Click(object sender, RoutedEventArgs e)
         {
             List<ProcessLooker.Game> GameList = new List<ProcessLooker.Game>();
