@@ -122,6 +122,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resx\MiscStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MiscStrings.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resx\FlyOutStrings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -325,6 +330,10 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resx\MiscStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MiscStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resx\FlyOutStrings.ja.resx" />
     <EmbeddedResource Include="Resx\FlyOutStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -337,12 +346,17 @@
       <LastGenOutput>UIPoseStrings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resx\UIPoseStrings.zh.resx" />
-    <EmbeddedResource Include="Resx\UIStringsContent.ja.resx" />
+    <EmbeddedResource Include="Resx\UIStringsContent.ja.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resx\UIStringsContent.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>UIStringsContent.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resx\UIStringsContent.zh.resx" />
+    <EmbeddedResource Include="Resx\UIStringsContent.zh.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resx\WindowsStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>WindowsStrings.Designer.cs</LastGenOutput>
