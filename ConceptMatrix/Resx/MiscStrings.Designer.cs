@@ -22,7 +22,7 @@ namespace ConceptMatrix.Resx {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class MiscStrings {
+    public class MiscStrings {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace ConceptMatrix.Resx {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ConceptMatrix.Resx.MiscStrings", typeof(MiscStrings).Assembly);
@@ -51,7 +51,7 @@ namespace ConceptMatrix.Resx {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to This trainer and its base code was originally created by LeonBlade..
         /// </summary>
-        internal static string About {
+        public static string About {
             get {
                 return ResourceManager.GetString("About", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to In the early ages of the trainer Johto took over, maintaining and updating the SSTools project..
         /// </summary>
-        internal static string About1 {
+        public static string About1 {
             get {
                 return ResourceManager.GetString("About1", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Later on Krisan Thyme began work on a new branch - CMTools - which has since been merged into the main repo..
         /// </summary>
-        internal static string About2 {
+        public static string About2 {
             get {
                 return ResourceManager.GetString("About2", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Special thanks to Goat and Seria Myouna for their contributions!.
         /// </summary>
-        internal static string About3 {
+        public static string About3 {
             get {
                 return ResourceManager.GetString("About3", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to This project is powered by MaterialDesignInXAML, MahApps, Fody, Newtonsoft.Json and Memory.dll.
         /// </summary>
-        internal static string About4 {
+        public static string About4 {
             get {
                 return ResourceManager.GetString("About4", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Additional Options.
         /// </summary>
-        internal static string AdditionalOptions {
+        public static string AdditionalOptions {
             get {
                 return ResourceManager.GetString("AdditionalOptions", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Change Language:.
         /// </summary>
-        internal static string ChangeLanguage {
+        public static string ChangeLanguage {
             get {
                 return ResourceManager.GetString("ChangeLanguage", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Change Language.
         /// </summary>
-        internal static string ChangeLanguage2 {
+        public static string ChangeLanguage2 {
             get {
                 return ResourceManager.GetString("ChangeLanguage2", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Concept Matrix Directories.
         /// </summary>
-        internal static string CMDirectories {
+        public static string CMDirectories {
             get {
                 return ResourceManager.GetString("CMDirectories", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to CMTool Saving/Loading.
         /// </summary>
-        internal static string CMToolSaving {
+        public static string CMToolSaving {
             get {
                 return ResourceManager.GetString("CMToolSaving", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Zodiark Theme.
         /// </summary>
-        internal static string DarkTheme {
+        public static string DarkTheme {
             get {
                 return ResourceManager.GetString("DarkTheme", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Default.
         /// </summary>
-        internal static string Default {
+        public static string Default {
             get {
                 return ResourceManager.GetString("Default", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Disable Backgrounds.
         /// </summary>
-        internal static string DisableBackground {
+        public static string DisableBackground {
             get {
                 return ResourceManager.GetString("DisableBackground", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Donate to the Devs!.
         /// </summary>
-        internal static string DonateDevs {
+        public static string DonateDevs {
             get {
                 return ResourceManager.GetString("DonateDevs", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Feel like you want to make a donation? It would be gratefully received. Click any of the buttons below to donate via Ko-fi..
         /// </summary>
-        internal static string DonateDevs2 {
+        public static string DonateDevs2 {
             get {
                 return ResourceManager.GetString("DonateDevs2", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Donate to Johto.
         /// </summary>
-        internal static string DonateJohto {
+        public static string DonateJohto {
             get {
                 return ResourceManager.GetString("DonateJohto", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Donate to Krisan Thyme.
         /// </summary>
-        internal static string DonateKrisan {
+        public static string DonateKrisan {
             get {
                 return ResourceManager.GetString("DonateKrisan", resourceCulture);
             }
@@ -216,7 +216,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Donate to LeonBlade.
         /// </summary>
-        internal static string DonateLeon {
+        public static string DonateLeon {
             get {
                 return ResourceManager.GetString("DonateLeon", resourceCulture);
             }
@@ -225,7 +225,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Enable Backgrounds.
         /// </summary>
-        internal static string EnableBackground {
+        public static string EnableBackground {
             get {
                 return ResourceManager.GetString("EnableBackground", resourceCulture);
             }
@@ -234,7 +234,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Gearset Saves:.
         /// </summary>
-        internal static string GearsetSaves {
+        public static string GearsetSaves {
             get {
                 return ResourceManager.GetString("GearsetSaves", resourceCulture);
             }
@@ -243,7 +243,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Get in Touch.
         /// </summary>
-        internal static string GetInTouch {
+        public static string GetInTouch {
             get {
                 return ResourceManager.GetString("GetInTouch", resourceCulture);
             }
@@ -252,7 +252,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Say hello, submit a feature request or raise a bug..
         /// </summary>
-        internal static string GetInTouch2 {
+        public static string GetInTouch2 {
             get {
                 return ResourceManager.GetString("GetInTouch2", resourceCulture);
             }
@@ -261,7 +261,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Hydaelyn Theme.
         /// </summary>
-        internal static string LightTheme {
+        public static string LightTheme {
             get {
                 return ResourceManager.GetString("LightTheme", resourceCulture);
             }
@@ -270,7 +270,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Matrix Saves:.
         /// </summary>
-        internal static string MatrixSaves {
+        public static string MatrixSaves {
             get {
                 return ResourceManager.GetString("MatrixSaves", resourceCulture);
             }
@@ -279,7 +279,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Proudly Open Source.
         /// </summary>
-        internal static string OpenSource {
+        public static string OpenSource {
             get {
                 return ResourceManager.GetString("OpenSource", resourceCulture);
             }
@@ -288,7 +288,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to This project is completely open source. If you like it and want to say thanks you could hit the GitHub Star button and message us your thanks..
         /// </summary>
-        internal static string OpenSource2 {
+        public static string OpenSource2 {
             get {
                 return ResourceManager.GetString("OpenSource2", resourceCulture);
             }
@@ -297,7 +297,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Profile Saves:.
         /// </summary>
-        internal static string ProfileSaves {
+        public static string ProfileSaves {
             get {
                 return ResourceManager.GetString("ProfileSaves", resourceCulture);
             }
@@ -306,7 +306,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Windows Explorer.
         /// </summary>
-        internal static string WindowsExplorer {
+        public static string WindowsExplorer {
             get {
                 return ResourceManager.GetString("WindowsExplorer", resourceCulture);
             }
