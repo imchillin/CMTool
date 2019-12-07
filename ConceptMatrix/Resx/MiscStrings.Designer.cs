@@ -115,6 +115,51 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Aetherometer.
+        /// </summary>
+        public static string Aetherometer {
+            get {
+                return ResourceManager.GetString("Aetherometer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bright 1.
+        /// </summary>
+        public static string Bright1 {
+            get {
+                return ResourceManager.GetString("Bright1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bright 2.
+        /// </summary>
+        public static string Bright2 {
+            get {
+                return ResourceManager.GetString("Bright2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bright 3.
+        /// </summary>
+        public static string Bright3 {
+            get {
+                return ResourceManager.GetString("Bright3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bright 4.
+        /// </summary>
+        public static string Bright4 {
+            get {
+                return ResourceManager.GetString("Bright4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change Language:.
         /// </summary>
         public static string ChangeLanguage {
@@ -147,6 +192,33 @@ namespace ConceptMatrix.Resx {
         public static string CMToolSaving {
             get {
                 return ResourceManager.GetString("CMToolSaving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Colored Marker 1.
+        /// </summary>
+        public static string ColoredMarker1 {
+            get {
+                return ResourceManager.GetString("ColoredMarker1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Colored Marker 2.
+        /// </summary>
+        public static string ColoredMarker2 {
+            get {
+                return ResourceManager.GetString("ColoredMarker2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Colored Pencil.
+        /// </summary>
+        public static string ColoredPencil {
+            get {
+                return ResourceManager.GetString("ColoredPencil", resourceCulture);
             }
         }
         
@@ -223,11 +295,29 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Echo.
+        /// </summary>
+        public static string Echo {
+            get {
+                return ResourceManager.GetString("Echo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enable Backgrounds.
         /// </summary>
         public static string EnableBackground {
             get {
                 return ResourceManager.GetString("EnableBackground", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Female.
+        /// </summary>
+        public static string Female {
+            get {
+                return ResourceManager.GetString("Female", resourceCulture);
             }
         }
         
@@ -268,11 +358,74 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Male.
+        /// </summary>
+        public static string Male {
+            get {
+                return ResourceManager.GetString("Male", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Matrix Saves:.
         /// </summary>
         public static string MatrixSaves {
             get {
                 return ResourceManager.GetString("MatrixSaves", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Monochrome 1.
+        /// </summary>
+        public static string Monochrome1 {
+            get {
+                return ResourceManager.GetString("Monochrome1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Monochrome 2.
+        /// </summary>
+        public static string Monochrome2 {
+            get {
+                return ResourceManager.GetString("Monochrome2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Monotone 1.
+        /// </summary>
+        public static string Monotone1 {
+            get {
+                return ResourceManager.GetString("Monotone1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Monotone 2.
+        /// </summary>
+        public static string Monotone2 {
+            get {
+                return ResourceManager.GetString("Monotone2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Monotone 3.
+        /// </summary>
+        public static string Monotone3 {
+            get {
+                return ResourceManager.GetString("Monotone3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Normal.
+        /// </summary>
+        public static string Normal {
+            get {
+                return ResourceManager.GetString("Normal", resourceCulture);
             }
         }
         
@@ -295,11 +448,119 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pastel 1.
+        /// </summary>
+        public static string Pastel1 {
+            get {
+                return ResourceManager.GetString("Pastel1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pastel 2.
+        /// </summary>
+        public static string Pastel2 {
+            get {
+                return ResourceManager.GetString("Pastel2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pastel 3.
+        /// </summary>
+        public static string Pastel3 {
+            get {
+                return ResourceManager.GetString("Pastel3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pencil.
+        /// </summary>
+        public static string Pencil {
+            get {
+                return ResourceManager.GetString("Pencil", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Posterization 1.
+        /// </summary>
+        public static string Posterization1 {
+            get {
+                return ResourceManager.GetString("Posterization1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Posterization 2.
+        /// </summary>
+        public static string Posterization2 {
+            get {
+                return ResourceManager.GetString("Posterization2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Profile Saves:.
         /// </summary>
         public static string ProfileSaves {
             get {
                 return ResourceManager.GetString("ProfileSaves", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sepia 1.
+        /// </summary>
+        public static string Sepia1 {
+            get {
+                return ResourceManager.GetString("Sepia1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sepia 2.
+        /// </summary>
+        public static string Sepia2 {
+            get {
+                return ResourceManager.GetString("Sepia2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Strengthened Effects.
+        /// </summary>
+        public static string StrengthenedEffects {
+            get {
+                return ResourceManager.GetString("StrengthenedEffects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Targeted Actor is ???.
+        /// </summary>
+        public static string TargetActorIs {
+            get {
+                return ResourceManager.GetString("TargetActorIs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Targeted Actor is Frozen!.
+        /// </summary>
+        public static string TargetActorIs2 {
+            get {
+                return ResourceManager.GetString("TargetActorIs2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Targeted Actor is Animating!.
+        /// </summary>
+        public static string TargetActorIs3 {
+            get {
+                return ResourceManager.GetString("TargetActorIs3", resourceCulture);
             }
         }
         

@@ -99,8 +99,8 @@
         <!-- Gender -->
         <CheckBox IsChecked="{Binding CharacterDetails.Gender.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.Gender}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.GenderToolTip}}" HorizontalAlignment="Left" Margin="8,137,0,0" VerticalAlignment="Top" Height="23"/>
         <ComboBox SelectedIndex="{Binding CharacterDetails.Gender.value}" HorizontalAlignment="Left" Margin="168,137.118,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
-            <ComboBoxItem Content="Male" Background="{x:Null}"/>
-            <ComboBoxItem Content="Female" Background="{x:Null}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Male}}" Background="{x:Null}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Female}}" Background="{x:Null}"/>
         </ComboBox>
 
         <!-- Body Type -->

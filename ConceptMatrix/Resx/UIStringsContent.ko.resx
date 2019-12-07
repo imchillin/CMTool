@@ -1139,8 +1139,7 @@
     <value>Twitter</value>
   </data>
   <data name="UncheckButton" xml:space="preserve">
-    <value>모든 고정 해제
-</value>
+    <value>모든 고정 해제</value>
   </data>
   <data name="UncheckButtonToolTip" xml:space="preserve">
     <value>모든 선택을 취소하고 동결을 해제합니다.

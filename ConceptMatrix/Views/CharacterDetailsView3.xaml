@@ -91,30 +91,30 @@
         <Slider x:Name="VibranceSlider" Value="{Binding Path=CharacterDetails.Vibrance.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="848,55,0,0" VerticalAlignment="Top" Width="100" Height="28" Maximum="1" Minimum="-1" LargeChange="0.2" TickFrequency="0.1" IsSnapToTickEnabled="True" SourceUpdated="VibranceSlider_SourceUpdated" TickPlacement="BottomRight"/>
         <mah:NumericUpDown x:Name="VibranceUpDown" Value="{Binding Path=CharacterDetails.Vibrance.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="951,55,0,0" VerticalAlignment="Top" Width="146" Minimum="-1" Maximum="1" Speedup="False" StringFormat="F5" Interval="0.1" SourceUpdated="VibranceSlider_SourceUpdated" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" BorderThickness="0,0,0,1" Background="{x:Null}" Height="28" FontSize="11.35" FontFamily="Sogoe UI"/>
         <ComboBox SelectedIndex="{Binding Path=CharacterDetails.FilterAoB.Selected}" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.Filters}}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" MaxDropDownHeight="150" x:Name="Filters" HorizontalAlignment="Left" Margin="744,205,0,0" VerticalAlignment="Top" Width="205" IsTabStop="False" RenderTransformOrigin="0.5,0.577" FontSize="16" SelectionChanged="Filters_SelectionChanged" Height="40" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
-            <ComboBoxItem Content="Normal"/>
-            <ComboBoxItem Content="Sepia 1"/>
-            <ComboBoxItem Content="Sepia 2"/>
-            <ComboBoxItem Content="Monochrome 1"/>
-            <ComboBoxItem Content="Monochrome 2"/>
-            <ComboBoxItem Content="Bright 1"/>
-            <ComboBoxItem Content="Bright 2"/>
-            <ComboBoxItem Content="Bright 3"/>
-            <ComboBoxItem Content="Bright 4"/>
-            <ComboBoxItem Content="Posterization 1"/>
-            <ComboBoxItem Content="Posterization 2"/>
-            <ComboBoxItem Content="Colored Pencil"/>
-            <ComboBoxItem Content="Pencil"/>
-            <ComboBoxItem Content="Colored Marker 1"/>
-            <ComboBoxItem Content="Colored Marker 2"/>
-            <ComboBoxItem Content="Pastel 1"/>
-            <ComboBoxItem Content="Pastel 2"/>
-            <ComboBoxItem Content="Pastel 3"/>
-            <ComboBoxItem Content="Monotone 1"/>
-            <ComboBoxItem Content="Monotone 2"/>
-            <ComboBoxItem Content="Monotone 3"/>
-            <ComboBoxItem Content="Echo"/>
-            <ComboBoxItem Content="Aetherometer"/>
-            <ComboBoxItem Content="Strengthened Effects"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Normal}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Sepia1}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Sepia2}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Monochrome1}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Monochrome2}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Bright1}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Bright2}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Bright3}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Bright4}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Posterization1}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Posterization2}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.ColoredPencil}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Pencil}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.ColoredMarker1}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.ColoredMarker2}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Pastel1}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Pastel2}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Pastel3}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Monotone1}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Monotone2}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Monotone3}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Echo}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Aetherometer}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.StrengthenedEffects}}"/>
         </ComboBox>
         <Label Content="{Binding Source={x:Static resx:UIStringsContent.SaveButton}}" HorizontalAlignment="Left" Margin="976.836,299,0,0" VerticalAlignment="Top" FontSize="16"/>
         <Label Content="{Binding Source={x:Static resx:UIStringsContent.LoadButton}}" HorizontalAlignment="Left" Margin="1038.836,299,0,0" VerticalAlignment="Top" FontSize="16"/>
