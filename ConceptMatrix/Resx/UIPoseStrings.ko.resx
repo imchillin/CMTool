@@ -1,0 +1,489 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Abdomen" xml:space="preserve">
+    <value>복부</value>
+  </data>
+  <data name="AdvancedLoading" xml:space="preserve">
+    <value>고급 불러오기</value>
+  </data>
+  <data name="AdvLoadCMPFile" xml:space="preserve">
+    <value>고급 CMP 파일 불러오기</value>
+  </data>
+  <data name="Arms" xml:space="preserve">
+    <value>팔</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>등</value>
+  </data>
+  <data name="Body" xml:space="preserve">
+    <value>몸:</value>
+  </data>
+  <data name="Body2" xml:space="preserve">
+    <value>몸</value>
+  </data>
+  <data name="BodyClothes" xml:space="preserve">
+    <value>몸 &amp; 옷</value>
+  </data>
+  <data name="Breasts" xml:space="preserve">
+    <value>가슴:</value>
+  </data>
+  <data name="Bridge" xml:space="preserve">
+    <value>브릿지</value>
+  </data>
+  <data name="Brows" xml:space="preserve">
+    <value>이마:</value>
+  </data>
+  <data name="Calves" xml:space="preserve">
+    <value>정강이:</value>
+  </data>
+  <data name="Cervical" xml:space="preserve">
+    <value>경추:</value>
+  </data>
+  <data name="Cheeks" xml:space="preserve">
+    <value>볼:</value>
+  </data>
+  <data name="Clavicles" xml:space="preserve">
+    <value>쇄골:</value>
+  </data>
+  <data name="Clothes" xml:space="preserve">
+    <value>옷:</value>
+  </data>
+  <data name="Clothes2" xml:space="preserve">
+    <value>옷</value>
+  </data>
+  <data name="Couters" xml:space="preserve">
+    <value>쿠터(팔꿈치)</value>
+  </data>
+  <data name="DetectTertiaryBones" xml:space="preserve">
+    <value>세번째 뼈 찾기</value>
+  </data>
+  <data name="Earrings" xml:space="preserve">
+    <value>귀걸이:</value>
+  </data>
+  <data name="Earrings2" xml:space="preserve">
+    <value>귀걸이</value>
+  </data>
+  <data name="Ears" xml:space="preserve">
+    <value>귀:</value>
+  </data>
+  <data name="Elbows" xml:space="preserve">
+    <value>팔꿈치:</value>
+  </data>
+  <data name="EnableEditing" xml:space="preserve">
+    <value>수정 허용하기:</value>
+  </data>
+  <data name="EnableGpose" xml:space="preserve">
+    <value>이 기능을 사용하기 위해서 GPose를 허용하십시오.</value>
+  </data>
+  <data name="EnablePhysics" xml:space="preserve">
+    <value>물리효과 사용:</value>
+  </data>
+  <data name="Equipment" xml:space="preserve">
+    <value>장비</value>
+  </data>
+  <data name="EquipOther" xml:space="preserve">
+    <value>기타장비</value>
+  </data>
+  <data name="Eyebrows" xml:space="preserve">
+    <value>눈썹:</value>
+  </data>
+  <data name="Eyelids" xml:space="preserve">
+    <value>눈꺼풀:</value>
+  </data>
+  <data name="Eyes" xml:space="preserve">
+    <value>눈:</value>
+  </data>
+  <data name="Face" xml:space="preserve">
+    <value>얼굴:</value>
+  </data>
+  <data name="Feet" xml:space="preserve">
+    <value>발:</value>
+  </data>
+  <data name="Forearms" xml:space="preserve">
+    <value>전완:</value>
+  </data>
+  <data name="Front" xml:space="preserve">
+    <value>앞:</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>일반:</value>
+  </data>
+  <data name="Hair" xml:space="preserve">
+    <value>머리카락:</value>
+  </data>
+  <data name="Hair2" xml:space="preserve">
+    <value>머리카락</value>
+  </data>
+  <data name="HairAccessories" xml:space="preserve">
+    <value>머리카락 &amp; 악세사리</value>
+  </data>
+  <data name="Hands" xml:space="preserve">
+    <value>손:</value>
+  </data>
+  <data name="Hands2" xml:space="preserve">
+    <value>손</value>
+  </data>
+  <data name="HandsLegs" xml:space="preserve">
+    <value>손 &amp; 다리</value>
+  </data>
+  <data name="Head" xml:space="preserve">
+    <value>머리:</value>
+  </data>
+  <data name="Head2" xml:space="preserve">
+    <value>머리</value>
+  </data>
+  <data name="HeadHair" xml:space="preserve">
+    <value>머리 &amp; 머리카락</value>
+  </data>
+  <data name="Helm" xml:space="preserve">
+    <value>투구:</value>
+  </data>
+  <data name="Helm2" xml:space="preserve">
+    <value>투구</value>
+  </data>
+  <data name="Holsters" xml:space="preserve">
+    <value>권총집:</value>
+  </data>
+  <data name="HrothgarWhiskers" xml:space="preserve">
+    <value>로스갈 구렛나루:</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>색인:</value>
+  </data>
+  <data name="Jaw" xml:space="preserve">
+    <value>턱:</value>
+  </data>
+  <data name="Knees" xml:space="preserve">
+    <value>무릎:</value>
+  </data>
+  <data name="LeftArm" xml:space="preserve">
+    <value>왼팔:</value>
+  </data>
+  <data name="LeftArm2" xml:space="preserve">
+    <value>왼팔</value>
+  </data>
+  <data name="LeftHand" xml:space="preserve">
+    <value>왼손:</value>
+  </data>
+  <data name="LeftHand2" xml:space="preserve">
+    <value>왼손</value>
+  </data>
+  <data name="LeftLeg" xml:space="preserve">
+    <value>왼다리:</value>
+  </data>
+  <data name="LeftLeg2" xml:space="preserve">
+    <value>왼다리</value>
+  </data>
+  <data name="Legs" xml:space="preserve">
+    <value>다리:</value>
+  </data>
+  <data name="LoadCMPFile" xml:space="preserve">
+    <value>CMP 파일 불러오기</value>
+  </data>
+  <data name="LoadCMPToolTip" xml:space="preserve">
+    <value>사용자 생성 CMP 파일로부터 포즈를 읽습니다.</value>
+  </data>
+  <data name="LowerLids" xml:space="preserve">
+    <value>아래 눈꺼풀:</value>
+  </data>
+  <data name="LowerLip" xml:space="preserve">
+    <value>아랫 입술:</value>
+  </data>
+  <data name="Lumbar" xml:space="preserve">
+    <value>요추:</value>
+  </data>
+  <data name="Middle" xml:space="preserve">
+    <value>가운데:</value>
+  </data>
+  <data name="Mouth" xml:space="preserve">
+    <value>입:</value>
+  </data>
+  <data name="Neck" xml:space="preserve">
+    <value>목:</value>
+  </data>
+  <data name="Nose" xml:space="preserve">
+    <value>코:</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>기타</value>
+  </data>
+  <data name="Pauldrons" xml:space="preserve">
+    <value>견갑:</value>
+  </data>
+  <data name="Pinky" xml:space="preserve">
+    <value>새끼 손가락</value>
+  </data>
+  <data name="Poleyns" xml:space="preserve">
+    <value>무릎 보호대</value>
+  </data>
+  <data name="PoseMatrixSettings" xml:space="preserve">
+    <value>포즈 매트릭스 설정</value>
+  </data>
+  <data name="RealTimeRotation" xml:space="preserve">
+    <value>실시간 회전</value>
+  </data>
+  <data name="RealTimeRotationToolTip" xml:space="preserve">
+    <value>마우스 버튼을 사용하여 큐브를 조작하세요.
+* 모든 회전은 대상이 보고있는 방향을 기준으로 작동합니다.
+* RMB는 X축 회전을 조절합니다.
+* LMB는 Y축 회전을 조절합니다.
+* MMB는 Z축 회전을 조절합니다. </value>
+  </data>
+  <data name="RightArm" xml:space="preserve">
+    <value>오른팔:</value>
+  </data>
+  <data name="RightArm2" xml:space="preserve">
+    <value>오른팔</value>
+  </data>
+  <data name="RightHand" xml:space="preserve">
+    <value>오른손:</value>
+  </data>
+  <data name="RightHand2" xml:space="preserve">
+    <value>오른손</value>
+  </data>
+  <data name="RightLeg" xml:space="preserve">
+    <value>오른다리:</value>
+  </data>
+  <data name="RightLeg2" xml:space="preserve">
+    <value>오른다리</value>
+  </data>
+  <data name="Ring" xml:space="preserve">
+    <value>반지:</value>
+  </data>
+  <data name="Root" xml:space="preserve">
+    <value>뿌리:</value>
+  </data>
+  <data name="RotationSliders" xml:space="preserve">
+    <value>슬라이드 회전:</value>
+  </data>
+  <data name="RotationSlidersToolTip" xml:space="preserve">
+    <value>이 토글은 로테이션 슬라이더와 직접 입력 숫자값을 전환합니다.
+• 토글을 끄면 XYZ 로테이션이 숫자값으로 전환됩니다.
+• 각각의 입력값은 0부터 360까지로 제한됩니다.</value>
+  </data>
+  <data name="SaveCMPFile" xml:space="preserve">
+    <value>CMP 파일 저장</value>
+  </data>
+  <data name="SaveCMPToolTip" xml:space="preserve">
+    <value>포즈를 CMP 파일에 저장합니다.</value>
+  </data>
+  <data name="SaveLoad" xml:space="preserve">
+    <value>저장 &amp; 불러오기</value>
+  </data>
+  <data name="Scabbards" xml:space="preserve">
+    <value>칼집:</value>
+  </data>
+  <data name="SelectAll" xml:space="preserve">
+    <value>전체 선택</value>
+  </data>
+  <data name="SelectNone" xml:space="preserve">
+    <value>전체 선택 해제</value>
+  </data>
+  <data name="Sheathes" xml:space="preserve">
+    <value>칼집:</value>
+  </data>
+  <data name="Shields" xml:space="preserve">
+    <value>방패:</value>
+  </data>
+  <data name="Shoulders" xml:space="preserve">
+    <value>어깨:</value>
+  </data>
+  <data name="Sides" xml:space="preserve">
+    <value>측면:</value>
+  </data>
+  <data name="StandardSaving" xml:space="preserve">
+    <value>스탠다드 저장 &amp; 불러오기</value>
+  </data>
+  <data name="Tail" xml:space="preserve">
+    <value>꼬리:</value>
+  </data>
+  <data name="TertiaryButtonToolTip" xml:space="preserve">
+    <value>선택한 대상의 종족, 헤어스타일, 그리고 장비에 귀속된 뼈대를 찾습니다. </value>
+  </data>
+  <data name="Thoracic" xml:space="preserve">
+    <value>흉부:</value>
+  </data>
+  <data name="Throw" xml:space="preserve">
+    <value>던지기:</value>
+  </data>
+  <data name="Thumb" xml:space="preserve">
+    <value>엄지:</value>
+  </data>
+  <data name="Toes" xml:space="preserve">
+    <value>발가락:</value>
+  </data>
+  <data name="Top" xml:space="preserve">
+    <value>상의:</value>
+  </data>
+  <data name="Top2" xml:space="preserve">
+    <value>상의</value>
+  </data>
+  <data name="Unique" xml:space="preserve">
+    <value>유니크:</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>불명:</value>
+  </data>
+  <data name="UpperLip" xml:space="preserve">
+    <value>윗 입술:</value>
+  </data>
+  <data name="VieraEars" xml:space="preserve">
+    <value>비에라 귀:</value>
+  </data>
+  <data name="Waist" xml:space="preserve">
+    <value>허리:</value>
+  </data>
+  <data name="Waist2" xml:space="preserve">
+    <value>허리</value>
+  </data>
+  <data name="WaistLegs" xml:space="preserve">
+    <value>허리 &amp; 다리</value>
+  </data>
+  <data name="Weapons" xml:space="preserve">
+    <value>무기들:</value>
+  </data>
+  <data name="Weapons2" xml:space="preserve">
+    <value>무기:</value>
+  </data>
+  <data name="Weapons3" xml:space="preserve">
+    <value>무기</value>
+  </data>
+  <data name="Wrists" xml:space="preserve">
+    <value>손목:</value>
+  </data>
+  <data name="XRot" xml:space="preserve">
+    <value>X축 회전:</value>
+  </data>
+  <data name="XRotToolTip" xml:space="preserve">
+    <value>선택된 관절의 X축 회전정도를 변경합니다</value>
+  </data>
+  <data name="YRot" xml:space="preserve">
+    <value>Y축 회전:</value>
+  </data>
+  <data name="YRotToolTip" xml:space="preserve">
+    <value>선택된 관절의 Y축 회전각도를 변경합니다</value>
+  </data>
+  <data name="ZRot" xml:space="preserve">
+    <value>Z축 회전:</value>
+  </data>
+  <data name="ZRotToolTip" xml:space="preserve">
+    <value>선택된 관절의 Z축 회전정도를 변경합니다</value>
+  </data>
+</root>
