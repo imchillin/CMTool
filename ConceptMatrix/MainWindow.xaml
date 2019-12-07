@@ -13,34 +13,44 @@
         xmlns:local="clr-namespace:ConceptMatrix"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:Views="clr-namespace:ConceptMatrix.Views"
+        xmlns:resx="clr-namespace:ConceptMatrix.Resx"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
         Height="650" Width="1115" Loaded="MetroWindow_Loaded" Icon="cmtool-icon.ico" ResizeMode="CanMinimize">
+
+    <Window.Resources>
+        <Style x:Key="MenuLevel2" BasedOn="{StaticResource MetroTabItem}" TargetType="{x:Type TabItem}">
+            <Setter Property="mah:ControlsHelper.HeaderFontSize" Value="24"></Setter>
+        </Style>
+    </Window.Resources>
+
     <Grid>
         <TabControl TabStripPlacement="Top" Margin="0,48,0,0" Background="{DynamicResource MaterialDesignPaper}" DataContext="{Binding Path=CharacterDetails}">
-            <TabItem Header="Actor Data">
+
+            <TabItem Header="{Binding Source={x:Static resx:UIStringsContent.ActorData}}" Style="{DynamicResource MenuLevel2}">
                 <Views:CharacterDetailsView Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
             </TabItem>
-            <TabItem Header="Actor Properties">
+            <TabItem Header="{Binding Source={x:Static resx:UIStringsContent.ActorProperties}}" Style="{DynamicResource MenuLevel2}">
                 <Views:CharacterDetailsView4 Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
             </TabItem>
-            <TabItem Header="Equipment">
+            <TabItem Header="{Binding Source={x:Static resx:UIStringsContent.Equipment}}" Style="{DynamicResource MenuLevel2}">
                 <Views:CharacterDetailsView2 Margin="0,4,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
             </TabItem>
-            <TabItem Header="Posing Matrix">
+            <TabItem Header="{Binding Source={x:Static resx:UIStringsContent.PosingMatrix}}" Style="{DynamicResource MenuLevel2}">
                 <Views:CharacterDetailsView5 Margin="0,4,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
             </TabItem>
-            <TabItem Header="World">
+            <TabItem Header="{Binding Source={x:Static resx:UIStringsContent.World}}" Style="{DynamicResource MenuLevel2}">
                 <Views:CharacterDetailsView3 Margin="0,4,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
             </TabItem>
-            <TabItem Header="About">
+            <TabItem Header="{Binding Source={x:Static resx:UIStringsContent.About}}" Style="{DynamicResource MenuLevel2}">
                 <Views:AboutView Margin="0" HorizontalAlignment="Left" Width="1102" Height="530"/>
             </TabItem>
             <TabItem Header="&#x1F6E0;">
                 <Views:PaletteView Margin="0" HorizontalAlignment="Left" Width="1102" Height="530"/>
             </TabItem>
         </TabControl>
-        <ComboBox ToolTip="Displays the list of targetable entities in the area around you.&#xD;&#xA;&#x2022; This list is populated based on distance from the player, and can potentially shift if any entities change positions, including minions." HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="131" ItemsSource="{Binding Path=CharacterDetails.CharacterDetails.Names}" SelectedIndex="{Binding Path=CharacterDetails.CharacterDetails.SelectedIndex}" IsTabStop="False"/>
-        <Button HorizontalAlignment="Left" Style="{StaticResource MaterialDesignRaisedAccentButton}" ToolTip="Reload the entity list, refreshing the available entries to select from." materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="146,7,0,0" VerticalAlignment="Top" Width="74" Command="{Binding Path=CharacterDetails.RefreshEntitiesCommand}" IsTabStop="False">
+        <ComboBox ToolTip="{Binding Source={x:Static resx:UIStringsContent.ActorEntityListToolTip}}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="131" ItemsSource="{Binding Path=CharacterDetails.CharacterDetails.Names}" SelectedIndex="{Binding Path=CharacterDetails.CharacterDetails.SelectedIndex}" IsTabStop="False"/>
+        <Button HorizontalAlignment="Left" Style="{StaticResource MaterialDesignRaisedAccentButton}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.ActorRefreshToolTip}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="146,7,0,0" VerticalAlignment="Top" Width="74" Command="{Binding Path=CharacterDetails.RefreshEntitiesCommand}" IsTabStop="False">
             <DockPanel>
                 <Image Source="Resources/Refresh.png" RenderTransformOrigin="0.5,0.5">
                     <Image.RenderTransform>
@@ -54,40 +64,40 @@
                 </Image>
             </DockPanel>
         </Button>
-        <Button x:Name="CharacterRefreshButton" ToolTip="Refresh the selected actor, reloading it based on the changes you've made." Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Actor Refresh" HorizontalAlignment="Left" Margin="225,7,0,0" VerticalAlignment="Top" Width="125" Click="CharacterRefreshButton_Click" IsTabStop="False" FontFamily="Segoe UI"/>
-        <Button x:Name="FindProcess" ToolTip="Reload the Final Fantasy XIV process." Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Reload Process" HorizontalAlignment="Left" Margin="953,7,0,0" VerticalAlignment="Top" Width="151" Click="FindProcess_Click" IsTabStop="False" FontFamily="Segoe UI"/>
+        <Button x:Name="CharacterRefreshButton" ToolTip="{Binding Source={x:Static resx:UIStringsContent.ActorRefreshToolTip}}" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.ActorRefreshButton}}" HorizontalAlignment="Left" Margin="225,7,0,0" VerticalAlignment="Top" Width="125" Click="CharacterRefreshButton_Click" IsTabStop="False" Padding="0,4"/>
+        <Button x:Name="FindProcess" ToolTip="{Binding Source={x:Static resx:UIStringsContent.FindProcessToolTip}}" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.FindProcessButton}}" HorizontalAlignment="Left" Margin="953,7,0,0" VerticalAlignment="Top" Width="151" Click="FindProcess_Click" IsTabStop="False" Padding="0,4"/>
         <ToggleButton x:Name="GposeButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding Path=CharacterDetails.CharacterDetails.GposeMode}" Margin="455,3,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="21" Checked="GposeButton_Checked" Unchecked="GposeButton_Unchecked" IsTabStop="False" />
-        <Label Content="GPose Mode:" ToolTip="Allows for certain values such as XYZ Position, Rotation and Animation to be changed for your currently selected entity in GPose.&#xD;&#xA;&#x2022; GPose mode and Target Mode both toggle on at the same time. Make sure not to have Target Mode already toggled on, or it will toggle off instead." HorizontalAlignment="Left" Margin="360,-2,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Segoe UI"/>
-        <Button HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}" VerticalAlignment="Top" x:Name="TwitterButton" Margin="910,-45,0,0" Width="131" Click="TwitterButton_Click" Height="45" Foreground="White" BorderBrush="#7F000000" BorderThickness="1,0" Padding="16,20,16,4" IsTabStop="False">
+        <Button HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}" VerticalAlignment="Top" x:Name="TwitterButton" Margin="910,-45,0,0" Width="131" Click="TwitterButton_Click" Height="45" Foreground="White" BorderBrush="#7F000000" BorderThickness="1,0" Padding="0,20,0,4" IsTabStop="False">
             <StackPanel Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="Twitter" Padding="0" />
-                <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0"><Run Text="Twitter"/></TextBlock>
+                <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="{Binding Source={x:Static resx:UIStringsContent.Twitter}}"/>
             </StackPanel>
         </Button>
-        <Button x:Name="Save" ToolTip="Save Appearance to a CMA file." Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Save Appearance" HorizontalAlignment="Left" Margin="755,7,0,0" VerticalAlignment="Top" Width="145" Click="Save_Click" IsTabStop="False" FontFamily="Segoe UI"/>
-        <Button x:Name="Load" ToolTip="Load Appearance from a user-generated CMA file.&#xD;&#xA;&#x2022; You can load data you have saved from the Character Creator in-game using the 'Load .DAT' option." Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Load Appearance" HorizontalAlignment="Left" Margin="605,7,0,0" VerticalAlignment="Top" Width="145" Click="Load_Click" IsTabStop="False" FontFamily="Segoe UI"/>
-        <Button x:Name="Uncheck" ToolTip="Uncheck and unfreeze all selections." Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Unfreeze All" HorizontalAlignment="Left" Margin="500,7,0,0" VerticalAlignment="Top" Width="100" Click="Uncheck_Click" Padding="15,4,16,4" FontSize="12" IsTabStop="False" FontFamily="Segoe UI"/>
-        <Button HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}" VerticalAlignment="Top" x:Name="AlwaysOnTop" Margin="626,-45,0,0" Width="153" Click="AlwaysOnTop_Click" Height="45" Foreground="White" BorderBrush="#7F000000" BorderThickness="1,0" Padding="16,20,16,4" IsTabStop="False">
+        <Button x:Name="Save" ToolTip="{Binding Source={x:Static resx:UIStringsContent.SaveMainWindowToolTip}}" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.SaveMainWindow}}" HorizontalAlignment="Left" Margin="755,7,0,0" VerticalAlignment="Top" Width="145" Click="Save_Click" IsTabStop="False" Padding="0,4"/>
+        <Button x:Name="Load" ToolTip="{Binding Source={x:Static resx:UIStringsContent.LoadMainWindowToolTip}}" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.LoadMainWindow}}" HorizontalAlignment="Left" Margin="605,7,0,0" VerticalAlignment="Top" Width="145" Click="Load_Click" IsTabStop="False" Padding="0,4"/>
+        <Button x:Name="Uncheck" ToolTip="{Binding Source={x:Static resx:UIStringsContent.UncheckButtonToolTip}}" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.UncheckButton}}" HorizontalAlignment="Left" Margin="500,7,0,0" VerticalAlignment="Top" Width="100" Click="Uncheck_Click" Padding="0,4" FontSize="12" IsTabStop="False"/>
+        <Button HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}" VerticalAlignment="Top" x:Name="AlwaysOnTop" Margin="626,-45,0,0" Width="153" Click="AlwaysOnTop_Click" Height="45" Foreground="White" BorderBrush="#7F000000" BorderThickness="1,0" Padding="0,20,0,4" IsTabStop="False">
             <StackPanel Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="{Binding Path=AOTToggleStatus, FallbackValue=ToggleSwitchOffOutline}" Padding="0" Foreground="{Binding ToggleForeground, FallbackValue=#7FFFFFFF}" />
-                <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0">Always on Top</TextBlock>
+                <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="{Binding Source={x:Static resx:UIStringsContent.AlwaysOnTopButton}}" />
             </StackPanel>
         </Button>
-        <Button HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}" VerticalAlignment="Top" x:Name="UpdateButton" Margin="520,-45,0,0" Width="107" Click="UpdateButton_Click" Height="45" Foreground="White" BorderBrush="#7F000000" BorderThickness="1,0" Padding="16,20,16,4" IsTabStop="False">
-            <StackPanel Orientation="Horizontal">
-                <materialDesign:PackIcon Kind="Update" Padding="0" />
-                <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0"><Run Text="Update"/></TextBlock>
-            </StackPanel>
-        </Button>
-        <Button HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}" VerticalAlignment="Top" x:Name="DiscordButton" Margin="778,-45,0,0" Width="133" Click="DiscordButton_Click" Height="45" Foreground="White" BorderBrush="#7F000000" BorderThickness="1,0" Padding="16,20,16,4" IsTabStop="False">
+        <Button HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}" VerticalAlignment="Top" x:Name="DiscordButton" Margin="778,-45,0,0" Width="133" Click="DiscordButton_Click" Height="45" Foreground="White" BorderBrush="#7F000000" BorderThickness="1,0" Padding="0,20,0,4" IsTabStop="False">
             <StackPanel Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="Discord" Padding="0" />
-                <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="Discord"/>
+                <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="{Binding Source={x:Static resx:UIStringsContent.Discord}}"/>
             </StackPanel>
         </Button>
         <ToggleButton x:Name="TargetButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.CharacterDetails.TargetModeActive}" Margin="455,25,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="21" Checked="TargetButton_Checked" Unchecked="TargetButton_Unchecked" IsTabStop="False" />
-        <Label Content="Target Mode:" ToolTip="Allows you to change values for your selected target without using the Entity List&#xD;&#xA;&#x2022; This is handy for busy areas where the Entity List constantly shifting. You will need to uncheck this and use the normal method to apply the changes you make, though." HorizontalAlignment="Left" Margin="360,21,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Segoe UI"/>
-        <Button x:Name="SavePoint" ToolTip="Creates a 'Backup' state that you can load later." Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Save State" HorizontalAlignment="Left" Margin="1005,50,0,0" VerticalAlignment="Top" Width="100" IsTabStop="False" Click="SavePoint_Click" FontFamily="Segoe UI"/>
-        <Button x:Name="LoadSavePoint" ToolTip="Reverts back to your 'Backup' state." Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Load State" HorizontalAlignment="Left" Margin="900,50,0,0" VerticalAlignment="Top" Width="100" IsTabStop="False" Click="LoadSavePoint_Click" FontFamily="Segoe UI"/>
+        <Button x:Name="SavePoint" ToolTip="{Binding Source={x:Static resx:UIStringsContent.SavePointToolTip}}" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.SavePointButton}}" HorizontalAlignment="Left" Margin="1005,50,0,0" VerticalAlignment="Top" Width="100" IsTabStop="False" Click="SavePoint_Click" Padding="0,4"/>
+        <Button x:Name="LoadSavePoint" ToolTip="{Binding Source={x:Static resx:UIStringsContent.LoadPointToolTip}}" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.LoadPointButton}}" HorizontalAlignment="Left" Margin="900,50,0,0" VerticalAlignment="Top" Width="100" IsTabStop="False" Click="LoadSavePoint_Click" Padding="0,4"/>
+        <Button HorizontalAlignment="Left" Content="{Binding Source={x:Static resx:UIStringsContent.Language}}" Style="{DynamicResource MaterialDesignFlatButton}" VerticalAlignment="Top" x:Name="LangButton" Margin="546,-45,0,0" Width="81" Height="45" Foreground="White" BorderBrush="#7F000000" BorderThickness="1,0" Padding="0,20,0,4" IsTabStop="False" IsEnabled="False"/>
+        <Viewbox HorizontalAlignment="Left" Height="29" Margin="355,1,0,0" VerticalAlignment="Top" Width="95">
+            <Label Content="{Binding Source={x:Static resx:UIStringsContent.GPoseMode}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.GposeModeToolTip}}" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Height="27"/>
+        </Viewbox>
+        <Viewbox HorizontalAlignment="Left" Height="29" Margin="355,22,0,0" VerticalAlignment="Top" Width="95">
+            <Label Content="{Binding Source={x:Static resx:UIStringsContent.TargetMode}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.TargetModeToolTip}}" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14"/>
+        </Viewbox>
+
     </Grid>
 </controls:MetroWindow>

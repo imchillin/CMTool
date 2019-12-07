@@ -6,12 +6,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"        
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"         
     xmlns:local="clr-namespace:ConceptMatrix.Views"      
-    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"      
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:resx="clr-namespace:ConceptMatrix.Resx"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"     
     Background="{DynamicResource MaterialDesignPaper}"      
     TextElement.FontWeight="Medium"    
     TextElement.FontSize="13.25"     
-    Header="Equipment"
+    Header="{Binding Source={x:Static resx:FlyOutStrings.Equipment}}"
     Position="Right"
     mc:Ignorable="d"
     d:DesignHeight="470" d:DesignWidth="480" Height="530">
@@ -29,42 +30,43 @@
     </controls:Flyout.Resources>
 
     <Grid Height="450">
-        <ComboBox SelectedIndex="0" Visibility="Visible" materialDesign:HintAssist.Hint="Select Type" x:Name="ClassBox" HorizontalAlignment="Left" Margin="282,-38,0,0" VerticalAlignment="Top" Width="184" SelectionChanged="ClassBox_SelectionChanged">
-            <ComboBoxItem Content="Include Everything"/>
-            <ComboBoxItem Content="All Classes"/>
-            <ComboBoxItem Content="Disciple of War"/>
-            <ComboBoxItem Content="Disciple of Magic"/>
-            <ComboBoxItem Content="Disciples of War or Magic"/>
-            <ComboBoxItem Content="Disciple of the Hand"/>
-            <ComboBoxItem Content="Disciple of the Land"/>
-            <ComboBoxItem Content="PLD" Tag="GLA"/>
-            <ComboBoxItem Content="WAR" Tag="MRD"/>
-            <ComboBoxItem Content="DRK"/>
-            <ComboBoxItem Content="GNB"/>
-            <ComboBoxItem Content="WHM" Tag="CNJ"/>
-            <ComboBoxItem Content="SCH" Tag="ACN"/>
-            <ComboBoxItem Content="AST"/>
-            <ComboBoxItem Content="MNK" Tag="PGL"/>
-            <ComboBoxItem Content="DRG" Tag="LNC"/>
-            <ComboBoxItem Content="NIN" Tag="ROG"/>
-            <ComboBoxItem Content="SAM"/>
-            <ComboBoxItem Content="BLM" Tag="THM"/>
-            <ComboBoxItem Content="SMN" Tag="ACN"/>
-            <ComboBoxItem Content="RDM"/>
-            <ComboBoxItem Content="BRD" Tag="ARC"/>
-            <ComboBoxItem Content="MCH"/>
-            <ComboBoxItem Content="DNC"/>
-            <ComboBoxItem Content="CRP"/>
-            <ComboBoxItem Content="BSM"/>
-            <ComboBoxItem Content="ARM"/>
-            <ComboBoxItem Content="GSM"/>
-            <ComboBoxItem Content="LTW"/>
-            <ComboBoxItem Content="WVR"/>
-            <ComboBoxItem Content="ALC"/>
-            <ComboBoxItem Content="CUL"/>
-            <ComboBoxItem Content="MIN"/>
-            <ComboBoxItem Content="BTN"/>
-            <ComboBoxItem Content="FSH"/>
+        <ComboBox SelectedIndex="0" Visibility="Visible" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:FlyOutStrings.SelectType}}" x:Name="ClassBox" HorizontalAlignment="Left" Margin="282,-38,0,0" VerticalAlignment="Top" Width="184" SelectionChanged="ClassBox_SelectionChanged">
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.IncludeEverything}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.AllClasses}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.DiscipleOfWar}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.DiscipleOfMagic}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.DisciplesOfWarMagic}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.DiscipleofHand}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.DiscipleOfLand}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.PLD}}" Tag="{Binding Source={x:Static resx:FlyOutStrings.GLA}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.WAR}}" Tag="{Binding Source={x:Static resx:FlyOutStrings.MRD}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.DRK}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.GNB}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.WHM}}" Tag="{Binding Source={x:Static resx:FlyOutStrings.CNJ}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.SCH}}" Tag="{Binding Source={x:Static resx:FlyOutStrings.ACN}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.AST}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.MNK}}" Tag="{Binding Source={x:Static resx:FlyOutStrings.PGL}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.DRG}}" Tag="{Binding Source={x:Static resx:FlyOutStrings.LNC}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.NIN}}" Tag="{Binding Source={x:Static resx:FlyOutStrings.ROG}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.SAM}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.BLM}}" Tag="{Binding Source={x:Static resx:FlyOutStrings.THM}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.SMN}}" Tag="{Binding Source={x:Static resx:FlyOutStrings.ACN}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.RDM}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.BRD}}" Tag="{Binding Source={x:Static resx:FlyOutStrings.ARC}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.MCH}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.DNC}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.CRP}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.BSM}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.ARM}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.GSM}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.LTW}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.WVR}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.ALC}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.CUL}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.MIN}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.BTN}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.FSH}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.BLU}}"/>
         </ComboBox>
 
         <Label FontSize="16" x:Name="EquippedLabel" Content="Currently Equipped:" HorizontalAlignment="Left" Margin="35,-75,0,0" VerticalAlignment="Top" Height="30" Width="168" FontWeight="Bold"/>
@@ -76,54 +78,54 @@
                                               Margin="2"
                                               controls:TabControlHelper.Underlined="TabPanel"
                                               Background="{DynamicResource MaterialDesignPaper}" SelectionChanged="AnimatedTabControl_SelectionChanged">
-                    <TabItem Header="Equipment Selector" Name="EquipTab">
+                    <TabItem Header="{Binding Source={x:Static resx:FlyOutStrings.EquipmentSelector}}" Name="EquipTab">
                         <Grid>
-                            <CheckBox Content="Include OffHand" Name="CheckIncluded" HorizontalAlignment="Left" Margin="181,11,0,0" VerticalAlignment="Top" Width="171"/>
+                            <CheckBox Content="{Binding Source={x:Static resx:FlyOutStrings.IncludeOffhand}}" Name="CheckIncluded" HorizontalAlignment="Left" Margin="181,11,0,0" VerticalAlignment="Top" Width="171"/>
                             <DataGrid x:Name="EquipBox" HorizontalAlignment="Left" Height="325" Margin="-6,42,0,0" VerticalAlignment="Top" Width="478" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden" SelectionChanged="EquipBox_SelectionChanged">
                                 <DataGrid.Columns>
-                                    <DataGridTemplateColumn Width="68" CanUserSort="False" Header="Icon">
+                                    <DataGridTemplateColumn Width="68" CanUserSort="False" Header="{Binding Source={x:Static resx:FlyOutStrings.Icon}}">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
                                                 <Image Source="{Binding Path=Icon}" Width="38" Height="38"/>
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
-                                    <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="2.4*" />
-                                    <DataGridTextColumn Header="Model Values" Binding="{Binding Path=ModelMain}" Width="*"/>
+                                    <DataGridTextColumn Header="{Binding Source={x:Static resx:FlyOutStrings.Name}}" Binding="{Binding Path=Name}" Width="2.4*" />
+                                    <DataGridTextColumn Header="{Binding Source={x:Static resx:FlyOutStrings.ModelValues}}" Binding="{Binding Path=ModelMain}" Width="*"/>
                                 </DataGrid.Columns>
                             </DataGrid>
-                            <TextBox x:Name="SearchModelBox" materialDesign:HintAssist.Hint="Search..." VerticalAlignment="Top" Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Margin="2,370,0,0" TextWrapping="Wrap" Width="461" TextChanged="SearchModelBox_TextChanged" BorderThickness="0,1" Height="27"/>
-                            <ComboBox materialDesign:HintAssist.Hint="Select Type" x:Name="EquipBoxC" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="154" SelectionChanged="EquipBoxC_SelectionChanged" PreviewMouseDown="EquipBoxC_PreviewMouseDown">
-                                <ComboBoxItem Content="Main Hand"/>
-                                <ComboBoxItem Content="Off Hand"/>
-                                <ComboBoxItem Content="Head"/>
-                                <ComboBoxItem Content="Body"/>
-                                <ComboBoxItem Content="Hands"/>
-                                <ComboBoxItem Content="Legs"/>
-                                <ComboBoxItem Content="Feet"/>
-                                <ComboBoxItem Content="Earing"/>
-                                <ComboBoxItem Content="Neck"/>
-                                <ComboBoxItem Content="Wrist"/>
-                                <ComboBoxItem Content="Right Finger"/>
-                                <ComboBoxItem Content="Left Finger"/>
-                                <ComboBoxItem Content="Props Main Hand"/>
-                                <ComboBoxItem Content="Props Off Hand"/>
+                            <TextBox x:Name="SearchModelBox" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:FlyOutStrings.Search}}" VerticalAlignment="Top" Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Margin="2,370,0,0" TextWrapping="Wrap" Width="461" TextChanged="SearchModelBox_TextChanged" BorderThickness="0,1" Height="27"/>
+                            <ComboBox materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:FlyOutStrings.SelectType}}" x:Name="EquipBoxC" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="154" SelectionChanged="EquipBoxC_SelectionChanged" PreviewMouseDown="EquipBoxC_PreviewMouseDown">
+                                <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.MainHand}}"/>
+                                <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.OffHand}}"/>
+                                <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.Head}}"/>
+                                <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.Body}}"/>
+                                <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.Hands}}"/>
+                                <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.Legs}}"/>
+                                <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.Feet}}"/>
+                                <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.Earing}}"/>
+                                <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.Neck}}"/>
+                                <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.Wrist}}"/>
+                                <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.RightFinger}}"/>
+                                <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.LeftFinger}}"/>
+                                <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.PropsMainHand}}"/>
+                                <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.PropsOffHand}}"/>
                             </ComboBox>
-                            <CheckBox Content="Keep Dyes" x:Name="KeepDyes" HorizontalAlignment="Left" Margin="365,11,0,0" VerticalAlignment="Top" Width="98" Checked="KeepDyes_Checked" Unchecked="KeepDyes_Unchecked"/>
+                            <CheckBox Content="{Binding Source={x:Static resx:FlyOutStrings.KeepDyes}}" x:Name="KeepDyes" HorizontalAlignment="Left" Margin="365,11,0,0" VerticalAlignment="Top" Width="98" Checked="KeepDyes_Checked" Unchecked="KeepDyes_Unchecked"/>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="NPC Selector" Name="NPCTab">
+                    <TabItem Header="{Binding Source={x:Static resx:FlyOutStrings.NPCSelect}}" Name="NPCTab">
                         <Grid>
                             <DataGrid x:Name="residentlist" HorizontalAlignment="Left" Height="325" Margin="-6,42,0,0" VerticalAlignment="Top" Width="478" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden" SelectionChanged="residentlist_SelectionChanged">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="*"/>
+                                    <DataGridTextColumn Header="{Binding Source={x:Static resx:FlyOutStrings.Name}}" Binding="{Binding Path=Name}" Width="*"/>
                                 </DataGrid.Columns>
                             </DataGrid>
-                            <TextBox x:Name="SearchModelBox2" materialDesign:HintAssist.Hint="Search..." Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="31" Margin="2,370,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="461" TextChanged="SearchModelBox2_TextChanged" BorderThickness="0,1"/>
-                            <ComboBox SelectedIndex="0" materialDesign:HintAssist.Hint="Select Type" x:Name="LoadType" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="146">
-                                <ComboBoxItem Content="All"/>
-                                <ComboBoxItem Content="Appearance Only"/>
-                                <ComboBoxItem Content="Equipment Only"/>
+                            <TextBox x:Name="SearchModelBox2" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:FlyOutStrings.Search}}" Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="31" Margin="2,370,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="461" TextChanged="SearchModelBox2_TextChanged" BorderThickness="0,1"/>
+                            <ComboBox SelectedIndex="0" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:FlyOutStrings.SelectType}}" x:Name="LoadType" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="146">
+                                <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.All}}"/>
+                                <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.AppearanceOnly}}"/>
+                                <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.EquipmentOnly}}"/>
                             </ComboBox>
                         </Grid>
                     </TabItem>

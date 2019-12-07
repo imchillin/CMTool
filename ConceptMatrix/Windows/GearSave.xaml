@@ -6,22 +6,22 @@
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.FontWeight="Medium"
         TextElement.FontSize="13"
-
+        xmlns:resx="clr-namespace:ConceptMatrix.Resx"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ConceptMatrix.Windows"
         mc:Ignorable="d"
-        Title="Save Gearset" Height="153.166" Width="310.333" WindowStartupLocation="CenterOwner">
+        Title="{Binding Source={x:Static resx:WindowsStrings.SaveGearset}}" Height="153.166" Width="310.333" WindowStartupLocation="CenterOwner">
     <Grid>
         <TextBox x:Name="FilenameText" Style="{StaticResource MaterialDesignFloatingHintTextBox}" MaxLength="240" Margin="10,21,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="274" TextAlignment="Center" KeyDown="FilenameText_KeyDown">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
-                    <TextBlock><Run x:Name="RunText" Text="Write Gearset name here..."/></TextBlock>
+                    <TextBlock Name="RunText" Text="{Binding Source={x:Static resx:WindowsStrings.WriteGearsetName}}" />
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <Button Content="OK" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="164,71,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click_1"/>
+        <Button Content="{Binding Source={x:Static resx:WindowsStrings.OK}}" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click"/>
+        <Button Content="{Binding Source={x:Static resx:WindowsStrings.Cancel}}" HorizontalAlignment="Left" Margin="164,71,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click_1"/>
     </Grid>
 </Window>

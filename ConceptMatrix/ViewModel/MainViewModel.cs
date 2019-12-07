@@ -48,7 +48,12 @@ namespace ConceptMatrix.ViewModel
             {
                 if (!App.IsValidGamePath(Properties.Settings.Default.GamePath))
                     return;
-                var realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.English);
+                ARealmReversed realm = null;
+                if (SaveSettings.Default.Language == "en") realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.English);
+                else if (SaveSettings.Default.Language == "ja") realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.Japanese);
+                else if (SaveSettings.Default.Language == "de") realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.German);
+                else if (SaveSettings.Default.Language == "fr") realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.French);
+                else realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.English);
                 Initialize(realm);
                 MainWindow.HasRead = true;
             }
@@ -80,7 +85,11 @@ namespace ConceptMatrix.ViewModel
                 {
                     if (File.Exists("SaintCoinach.History.zip"))
                         File.Delete("SaintCoinach.History.zip");
-                    realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.English);
+                    if (SaveSettings.Default.Language == "en") realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.English);
+                    else if (SaveSettings.Default.Language == "ja") realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.Japanese);
+                    else if (SaveSettings.Default.Language == "de") realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.German);
+                    else if (SaveSettings.Default.Language == "fr") realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.French);
+                    else realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.English);
                 }
                 catch
                 {

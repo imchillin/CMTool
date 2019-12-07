@@ -20,6 +20,7 @@ using System.Net;
 using ConceptMatrix.Views;
 using WepTuple = System.Tuple<int, int, int, int>;
 using SaintCoinach;
+using System.Globalization;
 
 namespace ConceptMatrix
 {
@@ -40,6 +41,18 @@ namespace ConceptMatrix
         public MainWindow()
         {
             ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
+            
+            //Culture setting
+            LanguageSelection();
+            var settings = SaveSettings.Default;
+            var ci = new CultureInfo(settings.Language)
+            {
+                NumberFormat = { NumberDecimalSeparator = "." }
+            };
+            CultureInfo.DefaultThreadCurrentCulture = ci;
+            CultureInfo.DefaultThreadCurrentUICulture = ci;
+            CultureInfo.CurrentCulture = ci;
+            CultureInfo.CurrentUICulture = ci;
 
             // Call the update method.
             UpdateProgram();
@@ -64,42 +77,40 @@ namespace ConceptMatrix
                     return;
                 }
             }
-            List<ProcessLooker.Game> GameList = new List<ProcessLooker.Game>();
-            Process[] processlist = Process.GetProcesses();
-            Processcheck = 0;
-            foreach (Process theprocess in processlist)
+
+            try
             {
-                if (theprocess.ProcessName.ToLower().Contains("ffxiv_dx11"))
-                {
-                    Processcheck++;
-                    GameList.Add(new ProcessLooker.Game() { ProcessName = theprocess.ProcessName, ID = theprocess.Id, StartTime = theprocess.StartTime, AppIcon = IconToImageSource(System.Drawing.Icon.ExtractAssociatedIcon(theprocess.MainModule.FileName)) });
-                }
+                //Search for any process for the game.
+                FindProcessStartUP();
+
+                InitializeComponent();
             }
-            if (Processcheck > 1)
+            catch (Exception e)
             {
-                ProcessLooker f = new ProcessLooker(GameList);
-                f.ShowDialog();
-                if (f.Choice == null)
+                System.Windows.MessageBox.Show(string.Format($"Please make sure you are running Concept Matrix in the folder it came in. If you continue to receive this error, Please make sure your Anti - Virus is not blocking CMTool. Error: { 0} Exception: { 1}", e.Message, e.InnerException),"Error!");
+                Environment.Exit(-1);
+                return;
+            }
+        }
+
+        private void LanguageSelection()
+        {
+            var lang = SaveSettings.Default.Language;
+
+            if (string.IsNullOrEmpty(lang)) 
+            {
+                var langSelectView = new LanguageSelectView();
+                langSelectView.ShowDialog();
+               
+                var langCode = langSelectView.LanguageCode;
+                if (string.IsNullOrEmpty(langCode))
                 {
-                    Close();
+                    LanguageSelection();
                     return;
                 }
-                MainViewModel.gameProcId = f.Choice.ID;
+                        
+                SaveSettings.Default.Language = langCode;
             }
-            if (Processcheck == 1)
-                MainViewModel.gameProcId = GameList[0].ID;
-            if (Processcheck <= 0)
-            {
-                ProcessLooker f = new ProcessLooker(GameList);
-                f.ShowDialog();
-                if (f.Choice == null)
-                {
-                    Close();
-                    return;
-                }
-                MainViewModel.gameProcId = f.Choice.ID;
-            }
-            InitializeComponent();
         }
 
         private void UpdateProgram(bool alertWhenUpToDate = false)
@@ -145,16 +156,15 @@ namespace ConceptMatrix
         {
             Title = $"{App.ToolName} v{version}";
             DataContext = new MainViewModel();
-            var settings = SaveSettings.Default;
-            var accentColor = settings.Accent;
+            var accentColor = SaveSettings.Default.Accent;
             new PaletteHelper().ReplaceAccentColor(accentColor);
-            var primaryColor = settings.Primary;
+            var primaryColor = SaveSettings.Default.Primary;
             new PaletteHelper().ReplacePrimaryColor(primaryColor);
-            var theme = settings.Theme;
+            var theme = SaveSettings.Default.Theme;
             new PaletteHelper().SetLightDark(theme != "Light");
-            this.Topmost = settings.TopApp;
+            this.Topmost = SaveSettings.Default.TopApp;
 			// toggle status
-			(DataContext as MainViewModel).ToggleStatus(settings.TopApp);
+			(DataContext as MainViewModel).ToggleStatus(SaveSettings.Default.TopApp);
 	        // CharacterDetailsView._exdProvider.MakeCharaMakeFeatureList();
             // CharacterDetailsView._exdProvider.MakeCharaMakeFeatureFacialList();
             // CharacterDetailsView._exdProvider.MakeTerritoryTypeList();
@@ -186,7 +196,44 @@ namespace ConceptMatrix
                 }
             }
         }
-
+        private void FindProcessStartUP()
+        {
+            List<ProcessLooker.Game> GameList = new List<ProcessLooker.Game>();
+            Process[] processlist = Process.GetProcesses();
+            Processcheck = 0;
+            foreach (Process theprocess in processlist)
+            {
+                if (theprocess.ProcessName.ToLower().Contains("ffxiv_dx11"))
+                {
+                    Processcheck++;
+                    GameList.Add(new ProcessLooker.Game() { ProcessName = theprocess.ProcessName, ID = theprocess.Id, StartTime = theprocess.StartTime, AppIcon = IconToImageSource(System.Drawing.Icon.ExtractAssociatedIcon(theprocess.MainModule.FileName)) });
+                }
+            }
+            if (Processcheck > 1)
+            {
+                ProcessLooker f = new ProcessLooker(GameList);
+                f.ShowDialog();
+                if (f.Choice == null)
+                {
+                    Close();
+                    return;
+                }
+                MainViewModel.gameProcId = f.Choice.ID;
+            }
+            if (Processcheck == 1)
+                MainViewModel.gameProcId = GameList[0].ID;
+            if (Processcheck <= 0)
+            {
+                ProcessLooker f = new ProcessLooker(GameList);
+                f.ShowDialog();
+                if (f.Choice == null)
+                {
+                    Close();
+                    return;
+                }
+                MainViewModel.gameProcId = f.Choice.ID;
+            }
+        }
         private void FindProcess_Click(object sender, RoutedEventArgs e)
         {
             List<ProcessLooker.Game> GameList = new List<ProcessLooker.Game>();
@@ -240,7 +287,7 @@ namespace ConceptMatrix
                     string extension = System.IO.Path.GetExtension(".cma");
                     string result = dig.SafeFileName.Substring(0, dig.SafeFileName.Length - extension.Length);
                     Save1.Description = result;
-                    Save1.DateCreated = DateTime.Now.ToLocalTime().ToString();
+                    Save1.DateCreated = DateTime.Now.ToString("yyyy-MM-dd HH':'mm':'ss");
                     Save1.MainHand = new WepTuple(CharacterDetails.Job.value, CharacterDetails.WeaponBase.value, CharacterDetails.WeaponV.value, CharacterDetails.WeaponDye.value);
                     Save1.OffHand = new WepTuple(CharacterDetails.Offhand.value, CharacterDetails.OffhandBase.value, CharacterDetails.OffhandV.value, CharacterDetails.OffhandDye.value);
                     Save1.EquipmentBytes = CharacterDetails.TestArray2.value;
@@ -264,7 +311,7 @@ namespace ConceptMatrix
                 {
                     CharSaves Save1 = new CharSaves(); // Gearsave is class with all address
                     Save1.Description = c.Filename;
-                    Save1.DateCreated = DateTime.Now.ToLocalTime().ToString();
+                    Save1.DateCreated = DateTime.Now.ToString("yyyy-MM-dd HH':'mm':'ss");
                     Save1.MainHand = new WepTuple(CharacterDetails.Job.value, CharacterDetails.WeaponBase.value, CharacterDetails.WeaponV.value, CharacterDetails.WeaponDye.value);
                     Save1.OffHand = new WepTuple(CharacterDetails.Offhand.value, CharacterDetails.OffhandBase.value, CharacterDetails.OffhandV.value, CharacterDetails.OffhandDye.value);
                     Save1.EquipmentBytes = CharacterDetails.TestArray2.value;

@@ -756,7 +756,7 @@ namespace ConceptMatrix.Views
                 if (!Directory.Exists(path)) System.IO.Directory.CreateDirectory(path);
                 GearSaves Save1 = new GearSaves(); // Gearsave is class with all address
                 Save1.Description = c.Filename;
-                Save1.DateCreated = DateTime.Now.ToLocalTime().ToString();
+                Save1.DateCreated = DateTime.Now.ToString("yyyy-MM-dd HH':'mm':'ss");
                 Save1.MainHand = new WepTuple(CharacterDetails.Job.value, CharacterDetails.WeaponBase.value, CharacterDetails.WeaponV.value, CharacterDetails.WeaponDye.value);
                 Save1.OffHand = new WepTuple(CharacterDetails.Offhand.value, CharacterDetails.OffhandBase.value, CharacterDetails.OffhandV.value, CharacterDetails.OffhandDye.value);
                 Save1.EquipmentBytes = CharacterDetails.TestArray2.value;
