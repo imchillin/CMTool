@@ -1,0 +1,1653 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This is for CN server only-->
+<Settings>
+  <LastUpdated>5.01</LastUpdated>
+  <CameraOffset>1B24830</CameraOffset><!-- ok -->
+  <GposeOffset>1B24A28</GposeOffset><!-- ok -->
+  <GposeEntityOffset>1B278D0</GposeEntityOffset><!-- ok -->
+  <GposeCheckOffset>1B7826A</GposeCheckOffset>
+  <GposeCheck2Offset>1B28620</GposeCheck2Offset>
+  <AoBOffset>1B25E40</AoBOffset><!-- ok -->
+  <TargetOffset>1B24A38</TargetOffset><!-- ok -->
+  <TimeOffset>1B09A08</TimeOffset><!-- ok -->
+  <WeatherOffset>1AE09B8</WeatherOffset><!-- ok -->
+  <TerritoryOffset>1B62AF8</TerritoryOffset><!-- ok -->
+  <GposeFilters>1B078B8</GposeFilters><!-- ok -->
+  <MusicOffset>1B3D968</MusicOffset><!-- ok -->
+  <SkeletonOffset>1292990</SkeletonOffset><!-- ok -->
+  <SkeletonOffset2>1293ABD</SkeletonOffset2><!-- ok -->
+  <SkeletonOffset3>12A1724</SkeletonOffset3><!-- ok -->
+  <PhysicsOffset>3727D8</PhysicsOffset><!-- ok -->
+  <PhysicsOffset2>3727CF</PhysicsOffset2><!-- ok -->
+  <CharacterRenderOffset>4293D0</CharacterRenderOffset>
+  <CharacterRenderOffset2>4293C6</CharacterRenderOffset2>
+  <Character>
+    <Name>30</Name>
+    <FCTag>17FA</FCTag>
+    <Title>18BE</Title>
+    <JobIco>18DC</JobIco>
+    <Voices>18C4</Voices>
+    <Body Base="F0">
+      <Position>
+        <X>50</X>
+        <Y>54</Y>
+        <Z>58</Z>
+        <Rotation>60</Rotation>
+        <Rotation2>64</Rotation2>
+        <Rotation3>68</Rotation3>
+        <Rotation4>6C</Rotation4>
+
+        <PelvisX>98,68,140,18,A0</PelvisX>
+        <PelvisY>98,68,140,18,A4</PelvisY>
+        <PelvisZ>98,68,140,18,A8</PelvisZ>
+        <PelvisW>98,68,140,18,AC</PelvisW>
+        <WaistX>98,68,140,18,D0</WaistX>
+        <WaistY>98,68,140,18,D4</WaistY>
+        <WaistZ>98,68,140,18,D8</WaistZ>
+        <WaistW>98,68,140,18,DC</WaistW>
+        <LThighX>98,68,140,18,100</LThighX>
+        <LThighY>98,68,140,18,104</LThighY>
+        <LThighZ>98,68,140,18,108</LThighZ>
+        <LThighW>98,68,140,18,10C</LThighW>
+        <RThighX>98,68,140,18,130</RThighX>
+        <RThighY>98,68,140,18,134</RThighY>
+        <RThighZ>98,68,140,18,138</RThighZ>
+        <RThighW>98,68,140,18,13C</RThighW>
+        <TorsoX>98,68,140,18,220</TorsoX>
+        <TorsoY>98,68,140,18,224</TorsoY>
+        <TorsoZ>98,68,140,18,228</TorsoZ>
+        <TorsoW>98,68,140,18,22C</TorsoW>
+        <LKneeX>98,68,140,18,370</LKneeX>
+        <LKneeY>98,68,140,18,374</LKneeY>
+        <LKneeZ>98,68,140,18,378</LKneeZ>
+        <LKneeW>98,68,140,18,37C</LKneeW>
+        <RKneeX>98,68,140,18,3A0</RKneeX>
+        <RKneeY>98,68,140,18,3A4</RKneeY>
+        <RKneeZ>98,68,140,18,3A8</RKneeZ>
+        <RKneeW>98,68,140,18,3AC</RKneeW>
+        <LBreastX>98,68,140,18,3D0</LBreastX>
+        <LBreastY>98,68,140,18,3D4</LBreastY>
+        <LBreastZ>98,68,140,18,3D8</LBreastZ>
+        <LBreastW>98,68,140,18,3DC</LBreastW>
+        <RBreastX>98,68,140,18,400</RBreastX>
+        <RBreastY>98,68,140,18,404</RBreastY>
+        <RBreastZ>98,68,140,18,408</RBreastZ>
+        <RBreastW>98,68,140,18,40C</RBreastW>
+        <SternumX>98,68,140,18,430</SternumX>
+        <SternumY>98,68,140,18,434</SternumY>
+        <SternumZ>98,68,140,18,438</SternumZ>
+        <SternumW>98,68,140,18,43C</SternumW>
+        <LCalfX>98,68,140,18,580</LCalfX>
+        <LCalfY>98,68,140,18,584</LCalfY>
+        <LCalfZ>98,68,140,18,588</LCalfZ>
+        <LCalfW>98,68,140,18,58C</LCalfW>
+        <RCalfX>98,68,140,18,5B0</RCalfX>
+        <RCalfY>98,68,140,18,5B4</RCalfY>
+        <RCalfZ>98,68,140,18,5B8</RCalfZ>
+        <RCalfW>98,68,140,18,5BC</RCalfW>
+        <NeckX>98,68,140,18,640</NeckX>
+        <NeckY>98,68,140,18,644</NeckY>
+        <NeckZ>98,68,140,18,648</NeckZ>
+        <NeckW>98,68,140,18,64C</NeckW>
+        <LClavicleX>98,68,140,18,670</LClavicleX>
+        <LClavicleY>98,68,140,18,674</LClavicleY>
+        <LClavicleZ>98,68,140,18,678</LClavicleZ>
+        <LClavicleW>98,68,140,18,67C</LClavicleW>
+        <RClavicleX>98,68,140,18,6A0</RClavicleX>
+        <RClavicleY>98,68,140,18,6A4</RClavicleY>
+        <RClavicleZ>98,68,140,18,6A8</RClavicleZ>
+        <RClavicleW>98,68,140,18,6AC</RClavicleW>
+        <LFootX>98,68,140,18,850</LFootX>
+        <LFootY>98,68,140,18,854</LFootY>
+        <LFootZ>98,68,140,18,858</LFootZ>
+        <LFootW>98,68,140,18,85C</LFootW>
+        <RFootX>98,68,140,18,880</RFootX>
+        <RFootY>98,68,140,18,884</RFootY>
+        <RFootZ>98,68,140,18,888</RFootZ>
+        <RFootW>98,68,140,18,88C</RFootW>
+        <HeadX>98,68,140,18,8B0</HeadX>
+        <HeadY>98,68,140,18,8B4</HeadY>
+        <HeadZ>98,68,140,18,8B8</HeadZ>
+        <HeadW>98,68,140,18,8BC</HeadW>
+        <LArmX>98,68,140,18,8E0</LArmX>
+        <LArmY>98,68,140,18,8E4</LArmY>
+        <LArmZ>98,68,140,18,8E8</LArmZ>
+        <LArmW>98,68,140,18,8EC</LArmW>
+        <RArmX>98,68,140,18,910</RArmX>
+        <RArmY>98,68,140,18,914</RArmY>
+        <RArmZ>98,68,140,18,918</RArmZ>
+        <RArmW>98,68,140,18,91C</RArmW>
+        <LToesX>98,68,140,18,9D0</LToesX>
+        <LToesY>98,68,140,18,9D4</LToesY>
+        <LToesZ>98,68,140,18,9D8</LToesZ>
+        <LToesW>98,68,140,18,9DC</LToesW>
+        <RToesX>98,68,140,18,A00</RToesX>
+        <RToesY>98,68,140,18,A04</RToesY>
+        <RToesZ>98,68,140,18,A08</RToesZ>
+        <RToesW>98,68,140,18,A0C</RToesW>
+        <LEarX>98,68,140,18,AC0</LEarX>
+        <LEarY>98,68,140,18,AC4</LEarY>
+        <LEarZ>98,68,140,18,AC8</LEarZ>
+        <LEarW>98,68,140,18,ACC</LEarW>
+        <REarX>98,68,140,18,AF0</REarX>
+        <REarY>98,68,140,18,AF4</REarY>
+        <REarZ>98,68,140,18,AF8</REarZ>
+        <REarW>98,68,140,18,AFC</REarW>
+        <LForearmX>98,68,140,18,B20</LForearmX>
+        <LForearmY>98,68,140,18,B24</LForearmY>
+        <LForearmZ>98,68,140,18,B28</LForearmZ>
+        <LForearmW>98,68,140,18,B2C</LForearmW>
+        <RForearmX>98,68,140,18,B50</RForearmX>
+        <RForearmY>98,68,140,18,B54</RForearmY>
+        <RForearmZ>98,68,140,18,B58</RForearmZ>
+        <RForearmW>98,68,140,18,B5C</RForearmW>
+        <LShoulderX>98,68,140,18,B80</LShoulderX>
+        <LShoulderY>98,68,140,18,B84</LShoulderY>
+        <LShoulderZ>98,68,140,18,B88</LShoulderZ>
+        <LShoulderW>98,68,140,18,B8C</LShoulderW>
+        <RShoulderX>98,68,140,18,BB0</RShoulderX>
+        <RShoulderY>98,68,140,18,BB4</RShoulderY>
+        <RShoulderZ>98,68,140,18,BB8</RShoulderZ>
+        <RShoulderW>98,68,140,18,BBC</RShoulderW>
+        <LHandX>98,68,140,18,C10</LHandX>
+        <LHandY>98,68,140,18,C14</LHandY>
+        <LHandZ>98,68,140,18,C18</LHandZ>
+        <LHandW>98,68,140,18,C1C</LHandW>
+        <RHandX>98,68,140,18,C40</RHandX>
+        <RHandY>98,68,140,18,C44</RHandY>
+        <RHandZ>98,68,140,18,C48</RHandZ>
+        <RHandW>98,68,140,18,C4C</RHandW>
+        <LShieldX>98,68,140,18,C70</LShieldX>
+        <LShieldY>98,68,140,18,C74</LShieldY>
+        <LShieldZ>98,68,140,18,C78</LShieldZ>
+        <LShieldW>98,68,140,18,C7C</LShieldW>
+        <RShieldX>98,68,140,18,CA0</RShieldX>
+        <RShieldY>98,68,140,18,CA4</RShieldY>
+        <RShieldZ>98,68,140,18,CA8</RShieldZ>
+        <RShieldW>98,68,140,18,CAC</RShieldW>
+        <LEarringX>98,68,140,18,CD0</LEarringX>
+        <LEarringY>98,68,140,18,CD4</LEarringY>
+        <LEarringZ>98,68,140,18,CD8</LEarringZ>
+        <LEarringW>98,68,140,18,CDC</LEarringW>
+        <REarringX>98,68,140,18,D00</REarringX>
+        <REarringY>98,68,140,18,D04</REarringY>
+        <REarringZ>98,68,140,18,D08</REarringZ>
+        <REarringW>98,68,140,18,D0C</REarringW>
+        <LElbowX>98,68,140,18,D30</LElbowX>
+        <LElbowY>98,68,140,18,D34</LElbowY>
+        <LElbowZ>98,68,140,18,D38</LElbowZ>
+        <LElbowW>98,68,140,18,D3C</LElbowW>
+        <RElbowX>98,68,140,18,D60</RElbowX>
+        <RElbowY>98,68,140,18,D64</RElbowY>
+        <RElbowZ>98,68,140,18,D68</RElbowZ>
+        <RElbowW>98,68,140,18,D6C</RElbowW>
+        <LWristX>98,68,140,18,DF0</LWristX>
+        <LWristY>98,68,140,18,DF4</LWristY>
+        <LWristZ>98,68,140,18,DF8</LWristZ>
+        <LWristW>98,68,140,18,DFC</LWristW>
+        <RWristX>98,68,140,18,E20</RWristX>
+        <RWristY>98,68,140,18,E24</RWristY>
+        <RWristZ>98,68,140,18,E28</RWristZ>
+        <RWristW>98,68,140,18,E2C</RWristW>
+        <LEarring2X>98,68,140,18,1090</LEarring2X>
+        <LEarring2Y>98,68,140,18,1094</LEarring2Y>
+        <LEarring2Z>98,68,140,18,1098</LEarring2Z>
+        <LEarring2W>98,68,140,18,109C</LEarring2W>
+        <REarring2X>98,68,140,18,10C0</REarring2X>
+        <REarring2Y>98,68,140,18,10C4</REarring2Y>
+        <REarring2Z>98,68,140,18,10C8</REarring2Z>
+        <REarring2W>98,68,140,18,10CC</REarring2W>
+        <LIndexX>98,68,140,18,E50</LIndexX>
+        <LIndexY>98,68,140,18,E54</LIndexY>
+        <LIndexZ>98,68,140,18,E58</LIndexZ>
+        <LIndexW>98,68,140,18,E5C</LIndexW>
+        <RIndexX>98,68,140,18,E80</RIndexX>
+        <RIndexY>98,68,140,18,E84</RIndexY>
+        <RIndexZ>98,68,140,18,E88</RIndexZ>
+        <RIndexW>98,68,140,18,E8C</RIndexW>
+        <LPinkyX>98,68,140,18,EB0</LPinkyX>
+        <LPinkyY>98,68,140,18,EB4</LPinkyY>
+        <LPinkyZ>98,68,140,18,EB8</LPinkyZ>
+        <LPinkyW>98,68,140,18,EBC</LPinkyW>
+        <RPinkyX>98,68,140,18,EE0</RPinkyX>
+        <RPinkyY>98,68,140,18,EE4</RPinkyY>
+        <RPinkyZ>98,68,140,18,EE8</RPinkyZ>
+        <RPinkyW>98,68,140,18,EEC</RPinkyW>
+        <LRingX>98,68,140,18,F10</LRingX>
+        <LRingY>98,68,140,18,F14</LRingY>
+        <LRingZ>98,68,140,18,F18</LRingZ>
+        <LRingW>98,68,140,18,F1C</LRingW>
+        <RRingX>98,68,140,18,F40</RRingX>
+        <RRingY>98,68,140,18,F44</RRingY>
+        <RRingZ>98,68,140,18,F48</RRingZ>
+        <RRingW>98,68,140,18,F4C</RRingW>
+        <LMiddleX>98,68,140,18,F70</LMiddleX>
+        <LMiddleY>98,68,140,18,F74</LMiddleY>
+        <LMiddleZ>98,68,140,18,F78</LMiddleZ>
+        <LMiddleW>98,68,140,18,F7C</LMiddleW>
+        <RMiddleX>98,68,140,18,FA0</RMiddleX>
+        <RMiddleY>98,68,140,18,FA4</RMiddleY>
+        <RMiddleZ>98,68,140,18,FA8</RMiddleZ>
+        <RMiddleW>98,68,140,18,FAC</RMiddleW>
+        <LThumbX>98,68,140,18,FD0</LThumbX>
+        <LThumbY>98,68,140,18,FD4</LThumbY>
+        <LThumbZ>98,68,140,18,FD8</LThumbZ>
+        <LThumbW>98,68,140,18,FDC</LThumbW>
+        <RThumbX>98,68,140,18,1000</RThumbX>
+        <RThumbY>98,68,140,18,1004</RThumbY>
+        <RThumbZ>98,68,140,18,1008</RThumbZ>
+        <RThumbW>98,68,140,18,100C</RThumbW>
+        <LIndex2X>98,68,140,18,10F0</LIndex2X>
+        <LIndex2Y>98,68,140,18,10F4</LIndex2Y>
+        <LIndex2Z>98,68,140,18,10F8</LIndex2Z>
+        <LIndex2W>98,68,140,18,10FC</LIndex2W>
+        <RIndex2X>98,68,140,18,1120</RIndex2X>
+        <RIndex2Y>98,68,140,18,1124</RIndex2Y>
+        <RIndex2Z>98,68,140,18,1128</RIndex2Z>
+        <RIndex2W>98,68,140,18,112C</RIndex2W>
+        <LPinky2X>98,68,140,18,1150</LPinky2X>
+        <LPinky2Y>98,68,140,18,1154</LPinky2Y>
+        <LPinky2Z>98,68,140,18,1158</LPinky2Z>
+        <LPinky2W>98,68,140,18,115C</LPinky2W>
+        <RPinky2X>98,68,140,18,1180</RPinky2X>
+        <RPinky2Y>98,68,140,18,1184</RPinky2Y>
+        <RPinky2Z>98,68,140,18,1188</RPinky2Z>
+        <RPinky2W>98,68,140,18,118C</RPinky2W>
+        <LRing2X>98,68,140,18,11B0</LRing2X>
+        <LRing2Y>98,68,140,18,11B4</LRing2Y>
+        <LRing2Z>98,68,140,18,11B8</LRing2Z>
+        <LRing2W>98,68,140,18,11BC</LRing2W>
+        <RRing2X>98,68,140,18,11E0</RRing2X>
+        <RRing2Y>98,68,140,18,11E4</RRing2Y>
+        <RRing2Z>98,68,140,18,11E8</RRing2Z>
+        <RRing2W>98,68,140,18,11EC</RRing2W>
+        <LMiddle2X>98,68,140,18,1210</LMiddle2X>
+        <LMiddle2Y>98,68,140,18,1214</LMiddle2Y>
+        <LMiddle2Z>98,68,140,18,1218</LMiddle2Z>
+        <LMiddle2W>98,68,140,18,121C</LMiddle2W>
+        <RMiddle2X>98,68,140,18,1240</RMiddle2X>
+        <RMiddle2Y>98,68,140,18,1244</RMiddle2Y>
+        <RMiddle2Z>98,68,140,18,1248</RMiddle2Z>
+        <RMiddle2W>98,68,140,18,124C</RMiddle2W>
+        <LThumb2X>98,68,140,18,1270</LThumb2X>
+        <LThumb2Y>98,68,140,18,1274</LThumb2Y>
+        <LThumb2Z>98,68,140,18,1278</LThumb2Z>
+        <LThumb2W>98,68,140,18,127C</LThumb2W>
+        <RThumb2X>98,68,140,18,12A0</RThumb2X>
+        <RThumb2Y>98,68,140,18,12A4</RThumb2Y>
+        <RThumb2Z>98,68,140,18,12A8</RThumb2Z>
+        <RThumb2W>98,68,140,18,12AC</RThumb2W>
+        <LWeaponX>98,68,140,18,1030</LWeaponX>
+        <LWeaponY>98,68,140,18,1034</LWeaponY>
+        <LWeaponZ>98,68,140,18,1038</LWeaponZ>
+        <LWeaponW>98,68,140,18,103C</LWeaponW>
+        <RWeaponX>98,68,140,18,1060</RWeaponX>
+        <RWeaponY>98,68,140,18,1064</RWeaponY>
+        <RWeaponZ>98,68,140,18,1068</RWeaponZ>
+        <RWeaponW>98,68,140,18,106C</RWeaponW>
+        <TailX>98,68,140,18,12D0</TailX>
+        <TailY>98,68,140,18,12D4</TailY>
+        <TailZ>98,68,140,18,12D8</TailZ>
+        <TailW>98,68,140,18,12DC</TailW>
+        <Tail2X>98,68,140,18,1300</Tail2X>
+        <Tail2Y>98,68,140,18,1304</Tail2Y>
+        <Tail2Z>98,68,140,18,1308</Tail2Z>
+        <Tail2W>98,68,140,18,130C</Tail2W>
+        <Tail3X>98,68,140,18,1330</Tail3X>
+        <Tail3Y>98,68,140,18,1334</Tail3Y>
+        <Tail3Z>98,68,140,18,1338</Tail3Z>
+        <Tail3W>98,68,140,18,133C</Tail3W>
+        <Tail4X>98,68,140,18,1360</Tail4X>
+        <Tail4Y>98,68,140,18,1364</Tail4Y>
+        <Tail4Z>98,68,140,18,1368</Tail4Z>
+        <Tail4W>98,68,140,18,136C</Tail4W>
+        <Tail5X>98,68,140,18,1390</Tail5X>
+        <Tail5Y>98,68,140,18,1394</Tail5Y>
+        <Tail5Z>98,68,140,18,1398</Tail5Z>
+        <Tail5W>98,68,140,18,139C</Tail5W>
+        <ChinX>98,68,300,18,40</ChinX>
+        <ChinY>98,68,300,18,44</ChinY>
+        <ChinZ>98,68,300,18,48</ChinZ>
+        <ChinW>98,68,300,18,4C</ChinW>
+        <LLowEyelidX>98,68,300,18,70</LLowEyelidX>
+        <LLowEyelidY>98,68,300,18,74</LLowEyelidY>
+        <LLowEyelidZ>98,68,300,18,78</LLowEyelidZ>
+        <LLowEyelidW>98,68,300,18,7C</LLowEyelidW>
+        <RLowEyelidX>98,68,300,18,A0</RLowEyelidX>
+        <RLowEyelidY>98,68,300,18,A4</RLowEyelidY>
+        <RLowEyelidZ>98,68,300,18,A8</RLowEyelidZ>
+        <RLowEyelidW>98,68,300,18,AC</RLowEyelidW>
+        <LEyeX>98,68,300,18,D0</LEyeX>
+        <LEyeY>98,68,300,18,D4</LEyeY>
+        <LEyeZ>98,68,300,18,D8</LEyeZ>
+        <LEyeW>98,68,300,18,DC</LEyeW>
+        <REyeX>98,68,300,18,100</REyeX>
+        <REyeY>98,68,300,18,104</REyeY>
+        <REyeZ>98,68,300,18,108</REyeZ>
+        <REyeW>98,68,300,18,10C</REyeW>
+        <NostrilsX>98,68,300,18,130</NostrilsX>
+        <NostrilsY>98,68,300,18,134</NostrilsY>
+        <NostrilsZ>98,68,300,18,138</NostrilsZ>
+        <NostrilsW>98,68,300,18,13C</NostrilsW>
+        <LCheekX>98,68,300,18,160</LCheekX>
+        <LCheekY>98,68,300,18,164</LCheekY>
+        <LCheekZ>98,68,300,18,168</LCheekZ>
+        <LCheekW>98,68,300,18,16C</LCheekW>
+        <RCheekX>98,68,300,18,190</RCheekX>
+        <RCheekY>98,68,300,18,194</RCheekY>
+        <RCheekZ>98,68,300,18,198</RCheekZ>
+        <RCheekW>98,68,300,18,19C</RCheekW>
+        <LMouthX>98,68,300,18,1C0</LMouthX>
+        <LMouthY>98,68,300,18,1C4</LMouthY>
+        <LMouthZ>98,68,300,18,1C8</LMouthZ>
+        <LMouthW>98,68,300,18,1CC</LMouthW>
+        <RMouthX>98,68,300,18,1F0</RMouthX>
+        <RMouthY>98,68,300,18,1F4</RMouthY>
+        <RMouthZ>98,68,300,18,1F8</RMouthZ>
+        <RMouthW>98,68,300,18,1FC</RMouthW>
+        <LOutEyebrowX>98,68,300,18,220</LOutEyebrowX>
+        <LOutEyebrowY>98,68,300,18,224</LOutEyebrowY>
+        <LOutEyebrowZ>98,68,300,18,228</LOutEyebrowZ>
+        <LOutEyebrowW>98,68,300,18,22C</LOutEyebrowW>
+        <ROutEyebrowX>98,68,300,18,250</ROutEyebrowX>
+        <ROutEyebrowY>98,68,300,18,254</ROutEyebrowY>
+        <ROutEyebrowZ>98,68,300,18,258</ROutEyebrowZ>
+        <ROutEyebrowW>98,68,300,18,25C</ROutEyebrowW>
+        <NoseX>98,68,300,18,280</NoseX>
+        <NoseY>98,68,300,18,284</NoseY>
+        <NoseZ>98,68,300,18,288</NoseZ>
+        <NoseW>98,68,300,18,28C</NoseW>
+        <LInEyebrowX>98,68,300,18,2B0</LInEyebrowX>
+        <LInEyebrowY>98,68,300,18,2B4</LInEyebrowY>
+        <LInEyebrowZ>98,68,300,18,2B8</LInEyebrowZ>
+        <LInEyebrowW>98,68,300,18,2BC</LInEyebrowW>
+        <RInEyebrowX>98,68,300,18,2E0</RInEyebrowX>
+        <RInEyebrowY>98,68,300,18,2E4</RInEyebrowY>
+        <RInEyebrowZ>98,68,300,18,2E8</RInEyebrowZ>
+        <RInEyebrowW>98,68,300,18,2EC</RInEyebrowW>
+        <LUpLipX>98,68,300,18,310</LUpLipX>
+        <LUpLipY>98,68,300,18,314</LUpLipY>
+        <LUpLipZ>98,68,300,18,318</LUpLipZ>
+        <LUpLipW>98,68,300,18,31C</LUpLipW>
+        <LEyelidX>98,68,300,18,340</LEyelidX>
+        <LEyelidY>98,68,300,18,344</LEyelidY>
+        <LEyelidZ>98,68,300,18,348</LEyelidZ>
+        <LEyelidW>98,68,300,18,34C</LEyelidW>
+        <REyelidX>98,68,300,18,370</REyelidX>
+        <REyelidY>98,68,300,18,374</REyelidY>
+        <REyelidZ>98,68,300,18,378</REyelidZ>
+        <REyelidW>98,68,300,18,37C</REyelidW>
+        <LLowLipX>98,68,300,18,3A0</LLowLipX>
+        <LLowLipY>98,68,300,18,3A4</LLowLipY>
+        <LLowLipZ>98,68,300,18,3A8</LLowLipZ>
+        <LLowLipW>98,68,300,18,3AC</LLowLipW>
+        <RUpLipX>98,68,300,18,3D0</RUpLipX>
+        <RUpLipY>98,68,300,18,3D4</RUpLipY>
+        <RUpLipZ>98,68,300,18,3D8</RUpLipZ>
+        <RUpLipW>98,68,300,18,3DC</RUpLipW>
+        <RLowLipX>98,68,300,18,400</RLowLipX>
+        <RLowLipY>98,68,300,18,404</RLowLipY>
+        <RLowLipZ>98,68,300,18,408</RLowLipZ>
+        <RLowLipW>98,68,300,18,40C</RLowLipW>
+        <RVLowEar2X>98,68,300,18,430</RVLowEar2X>
+        <RVLowEar2Y>98,68,300,18,434</RVLowEar2Y>
+        <RVLowEar2Z>98,68,300,18,438</RVLowEar2Z>
+        <RVLowEar2W>98,68,300,18,43C</RVLowEar2W>
+        <LVLowEar3X>98,68,300,18,460</LVLowEar3X>
+        <LVLowEar3Y>98,68,300,18,464</LVLowEar3Y>
+        <LVLowEar3Z>98,68,300,18,468</LVLowEar3Z>
+        <LVLowEar3W>98,68,300,18,46C</LVLowEar3W>
+        <RVLowEar3X>98,68,300,18,490</RVLowEar3X>
+        <RVLowEar3Y>98,68,300,18,494</RVLowEar3Y>
+        <RVLowEar3Z>98,68,300,18,498</RVLowEar3Z>
+        <RVLowEar3W>98,68,300,18,49C</RVLowEar3W>
+        <LVLowEar4X>98,68,300,18,4C0</LVLowEar4X>
+        <LVLowEar4Y>98,68,300,18,4C4</LVLowEar4Y>
+        <LVLowEar4Z>98,68,300,18,4C8</LVLowEar4Z>
+        <LVLowEar4W>98,68,300,18,4CC</LVLowEar4W>
+        <RVLowEar4X>98,68,300,18,4F0</RVLowEar4X>
+        <RVLowEar4Y>98,68,300,18,4F4</RVLowEar4Y>
+        <RVLowEar4Z>98,68,300,18,4F8</RVLowEar4Z>
+        <RVLowEar4W>98,68,300,18,4FC</RVLowEar4W>
+        <LVLowLipX>98,68,300,18,520</LVLowLipX>
+        <LVLowLipY>98,68,300,18,524</LVLowLipY>
+        <LVLowLipZ>98,68,300,18,528</LVLowLipZ>
+        <LVLowLipW>98,68,300,18,52C</LVLowLipW>
+        <RVUpLipX>98,68,300,18,550</RVUpLipX>
+        <RVUpLipY>98,68,300,18,554</RVUpLipY>
+        <RVUpLipZ>98,68,300,18,558</RVUpLipZ>
+        <RVUpLipW>98,68,300,18,55C</RVUpLipW>
+        <LVEarX>98,68,300,18,580</LVEarX>
+        <LVEarY>98,68,300,18,584</LVEarY>
+        <LVEarZ>98,68,300,18,588</LVEarZ>
+        <LVEarW>98,68,300,18,58C</LVEarW>
+        <RVEarX>98,68,300,18,5B0</RVEarX>
+        <RVEarY>98,68,300,18,5B4</RVEarY>
+        <RVEarZ>98,68,300,18,5B8</RVEarZ>
+        <RVEarW>98,68,300,18,5BC</RVEarW>
+        <LVEar2X>98,68,300,18,5E0</LVEar2X>
+        <LVEar2Y>98,68,300,18,5E4</LVEar2Y>
+        <LVEar2Z>98,68,300,18,5E8</LVEar2Z>
+        <LVEar2W>98,68,300,18,5EC</LVEar2W>
+        <RVEar2X>98,68,300,18,610</RVEar2X>
+        <RVEar2Y>98,68,300,18,614</RVEar2Y>
+        <RVEar2Z>98,68,300,18,618</RVEar2Z>
+        <RVEar2W>98,68,300,18,61C</RVEar2W>
+        <LVEar3X>98,68,300,18,640</LVEar3X>
+        <LVEar3Y>98,68,300,18,644</LVEar3Y>
+        <LVEar3Z>98,68,300,18,648</LVEar3Z>
+        <LVEar3W>98,68,300,18,64C</LVEar3W>
+        <RVEar3X>98,68,300,18,670</RVEar3X>
+        <RVEar3Y>98,68,300,18,674</RVEar3Y>
+        <RVEar3Z>98,68,300,18,678</RVEar3Z>
+        <RVEar3W>98,68,300,18,67C</RVEar3W>
+        <LVEar4X>98,68,300,18,6A0</LVEar4X>
+        <LVEar4Y>98,68,300,18,6A4</LVEar4Y>
+        <LVEar4Z>98,68,300,18,6A8</LVEar4Z>
+        <LVEar4W>98,68,300,18,6AC</LVEar4W>
+        <RVEar4X>98,68,300,18,6D0</RVEar4X>
+        <RVEar4Y>98,68,300,18,6D4</RVEar4Y>
+        <RVEar4Z>98,68,300,18,6D8</RVEar4Z>
+        <RVEar4W>98,68,300,18,6DC</RVEar4W>
+        <RVLowLipX>98,68,300,18,700</RVLowLipX>
+        <RVLowLipY>98,68,300,18,704</RVLowLipY>
+        <RVLowLipZ>98,68,300,18,708</RVLowLipZ>
+        <RVLowLipW>98,68,300,18,70C</RVLowLipW>
+      </Position>
+      <Bones>
+        <Root_X>98,68,140,18,10</Root_X>
+        <Root_Y>98,68,140,18,14</Root_Y>
+        <Root_Z>98,68,140,18,18</Root_Z>
+        <Root_W>98,68,140,18,1C</Root_W>
+
+        <Abdomen_X>98,68,140,18,40</Abdomen_X>
+        <Abdomen_Y>98,68,140,18,44</Abdomen_Y>
+        <Abdomen_Z>98,68,140,18,48</Abdomen_Z>
+        <Abdomen_W>98,68,140,18,4C</Abdomen_W>
+
+        <Throw_X>98,68,140,18,70</Throw_X>
+        <Throw_Y>98,68,140,18,74</Throw_Y>
+        <Throw_Z>98,68,140,18,78</Throw_Z>
+        <Throw_W>98,68,140,18,7C</Throw_W>
+
+        <Waist_X>98,68,140,18,A0</Waist_X>
+        <Waist_Y>98,68,140,18,A4</Waist_Y>
+        <Waist_Z>98,68,140,18,A8</Waist_Z>
+        <Waist_W>98,68,140,18,AC</Waist_W>
+
+        <SpineA_X>98,68,140,18,D0</SpineA_X>
+        <SpineA_Y>98,68,140,18,D4</SpineA_Y>
+        <SpineA_Z>98,68,140,18,D8</SpineA_Z>
+        <SpineA_W>98,68,140,18,DC</SpineA_W>
+
+        <LegLeft_X>98,68,140,18,100</LegLeft_X>
+        <LegLeft_Y>98,68,140,18,104</LegLeft_Y>
+        <LegLeft_Z>98,68,140,18,108</LegLeft_Z>
+        <LegLeft_W>98,68,140,18,10C</LegLeft_W>
+
+        <LegRight_X>98,68,140,18,130</LegRight_X>
+        <LegRight_Y>98,68,140,18,134</LegRight_Y>
+        <LegRight_Z>98,68,140,18,138</LegRight_Z>
+        <LegRight_W>98,68,140,18,13C</LegRight_W>
+
+        <HolsterLeft_X>98,68,140,18,160</HolsterLeft_X>
+        <HolsterLeft_Y>98,68,140,18,164</HolsterLeft_Y>
+        <HolsterLeft_Z>98,68,140,18,168</HolsterLeft_Z>
+        <HolsterLeft_W>98,68,140,18,16C</HolsterLeft_W>
+
+        <HolsterRight_X>98,68,140,18,190</HolsterRight_X>
+        <HolsterRight_Y>98,68,140,18,194</HolsterRight_Y>
+        <HolsterRight_Z>98,68,140,18,198</HolsterRight_Z>
+        <HolsterRight_W>98,68,140,18,19C</HolsterRight_W>
+
+        <SheatheLeft_X>98,68,140,18,1C0</SheatheLeft_X>
+        <SheatheLeft_Y>98,68,140,18,1C4</SheatheLeft_Y>
+        <SheatheLeft_Z>98,68,140,18,1C8</SheatheLeft_Z>
+        <SheatheLeft_W>98,68,140,18,1CC</SheatheLeft_W>
+
+        <SheatheRight_X>98,68,140,18,1F0</SheatheRight_X>
+        <SheatheRight_Y>98,68,140,18,1F4</SheatheRight_Y>
+        <SheatheRight_Z>98,68,140,18,1F8</SheatheRight_Z>
+        <SheatheRight_W>98,68,140,18,1FC</SheatheRight_W>
+
+        <SpineB_X>98,68,140,18,220</SpineB_X>
+        <SpineB_Y>98,68,140,18,224</SpineB_Y>
+        <SpineB_Z>98,68,140,18,228</SpineB_Z>
+        <SpineB_W>98,68,140,18,22C</SpineB_W>
+
+        <ClothBackALeft_X>98,68,140,18,250</ClothBackALeft_X>
+        <ClothBackALeft_Y>98,68,140,18,254</ClothBackALeft_Y>
+        <ClothBackALeft_Z>98,68,140,18,258</ClothBackALeft_Z>
+        <ClothBackALeft_W>98,68,140,18,25C</ClothBackALeft_W>
+
+        <ClothBackARight_X>98,68,140,18,280</ClothBackARight_X>
+        <ClothBackARight_Y>98,68,140,18,284</ClothBackARight_Y>
+        <ClothBackARight_Z>98,68,140,18,288</ClothBackARight_Z>
+        <ClothBackARight_W>98,68,140,18,28C</ClothBackARight_W>
+
+        <ClothFrontALeft_X>98,68,140,18,2B0</ClothFrontALeft_X>
+        <ClothFrontALeft_Y>98,68,140,18,2B4</ClothFrontALeft_Y>
+        <ClothFrontALeft_Z>98,68,140,18,2B8</ClothFrontALeft_Z>
+        <ClothFrontALeft_W>98,68,140,18,2BC</ClothFrontALeft_W>
+
+        <ClothFrontARight_X>98,68,140,18,2E0</ClothFrontARight_X>
+        <ClothFrontARight_Y>98,68,140,18,2E4</ClothFrontARight_Y>
+        <ClothFrontARight_Z>98,68,140,18,2E8</ClothFrontARight_Z>
+        <ClothFrontARight_W>98,68,140,18,2EC</ClothFrontARight_W>
+
+        <ClothSideALeft_X>98,68,140,18,310</ClothSideALeft_X>
+        <ClothSideALeft_Y>98,68,140,18,314</ClothSideALeft_Y>
+        <ClothSideALeft_Z>98,68,140,18,318</ClothSideALeft_Z>
+        <ClothSideALeft_W>98,68,140,18,31C</ClothSideALeft_W>
+
+        <ClothSideARight_X>98,68,140,18,340</ClothSideARight_X>
+        <ClothSideARight_Y>98,68,140,18,344</ClothSideARight_Y>
+        <ClothSideARight_Z>98,68,140,18,348</ClothSideARight_Z>
+        <ClothSideARight_W>98,68,140,18,34C</ClothSideARight_W>
+
+        <KneeLeft_X>98,68,140,18,370</KneeLeft_X>
+        <KneeLeft_Y>98,68,140,18,374</KneeLeft_Y>
+        <KneeLeft_Z>98,68,140,18,378</KneeLeft_Z>
+        <KneeLeft_W>98,68,140,18,37C</KneeLeft_W>
+
+        <KneeRight_X>98,68,140,18,3A0</KneeRight_X>
+        <KneeRight_Y>98,68,140,18,3A4</KneeRight_Y>
+        <KneeRight_Z>98,68,140,18,3A8</KneeRight_Z>
+        <KneeRight_W>98,68,140,18,3AC</KneeRight_W>
+
+        <BreastLeft_X>98,68,140,18,3D0</BreastLeft_X>
+        <BreastLeft_Y>98,68,140,18,3D4</BreastLeft_Y>
+        <BreastLeft_Z>98,68,140,18,3D8</BreastLeft_Z>
+        <BreastLeft_W>98,68,140,18,3DC</BreastLeft_W>
+
+        <BreastRight_X>98,68,140,18,400</BreastRight_X>
+        <BreastRight_Y>98,68,140,18,404</BreastRight_Y>
+        <BreastRight_Z>98,68,140,18,408</BreastRight_Z>
+        <BreastRight_W>98,68,140,18,40C</BreastRight_W>
+
+        <SpineC_X>98,68,140,18,430</SpineC_X>
+        <SpineC_Y>98,68,140,18,434</SpineC_Y>
+        <SpineC_Z>98,68,140,18,438</SpineC_Z>
+        <SpineC_W>98,68,140,18,43C</SpineC_W>
+
+        <ClothBackBLeft_X>98,68,140,18,460</ClothBackBLeft_X>
+        <ClothBackBLeft_Y>98,68,140,18,464</ClothBackBLeft_Y>
+        <ClothBackBLeft_Z>98,68,140,18,468</ClothBackBLeft_Z>
+        <ClothBackBLeft_W>98,68,140,18,46C</ClothBackBLeft_W>
+
+        <ClothBackBRight_X>98,68,140,18,490</ClothBackBRight_X>
+        <ClothBackBRight_Y>98,68,140,18,494</ClothBackBRight_Y>
+        <ClothBackBRight_Z>98,68,140,18,498</ClothBackBRight_Z>
+        <ClothBackBRight_W>98,68,140,18,49C</ClothBackBRight_W>
+
+        <ClothFrontBLeft_X>98,68,140,18,4C0</ClothFrontBLeft_X>
+        <ClothFrontBLeft_Y>98,68,140,18,4C4</ClothFrontBLeft_Y>
+        <ClothFrontBLeft_Z>98,68,140,18,4C8</ClothFrontBLeft_Z>
+        <ClothFrontBLeft_W>98,68,140,18,4CC</ClothFrontBLeft_W>
+
+        <ClothFrontBRight_X>98,68,140,18,4F0</ClothFrontBRight_X>
+        <ClothFrontBRight_Y>98,68,140,18,4F4</ClothFrontBRight_Y>
+        <ClothFrontBRight_Z>98,68,140,18,4F8</ClothFrontBRight_Z>
+        <ClothFrontBRight_W>98,68,140,18,4FC</ClothFrontBRight_W>
+
+        <ClothSideBLeft_X>98,68,140,18,520</ClothSideBLeft_X>
+        <ClothSideBLeft_Y>98,68,140,18,524</ClothSideBLeft_Y>
+        <ClothSideBLeft_Z>98,68,140,18,528</ClothSideBLeft_Z>
+        <ClothSideBLeft_W>98,68,140,18,52C</ClothSideBLeft_W>
+
+        <ClothSideBRight_X>98,68,140,18,550</ClothSideBRight_X>
+        <ClothSideBRight_Y>98,68,140,18,554</ClothSideBRight_Y>
+        <ClothSideBRight_Z>98,68,140,18,558</ClothSideBRight_Z>
+        <ClothSideBRight_W>98,68,140,18,55C</ClothSideBRight_W>
+
+        <CalfLeft_X>98,68,140,18,580</CalfLeft_X>
+        <CalfLeft_Y>98,68,140,18,584</CalfLeft_Y>
+        <CalfLeft_Z>98,68,140,18,588</CalfLeft_Z>
+        <CalfLeft_W>98,68,140,18,58C</CalfLeft_W>
+
+        <CalfRight_X>98,68,140,18,5B0</CalfRight_X>
+        <CalfRight_Y>98,68,140,18,5B4</CalfRight_Y>
+        <CalfRight_Z>98,68,140,18,5B8</CalfRight_Z>
+        <CalfRight_W>98,68,140,18,5BC</CalfRight_W>
+
+        <ScabbardLeft_X>98,68,140,18,5E0</ScabbardLeft_X>
+        <ScabbardLeft_Y>98,68,140,18,5E4</ScabbardLeft_Y>
+        <ScabbardLeft_Z>98,68,140,18,5E8</ScabbardLeft_Z>
+        <ScabbardLeft_W>98,68,140,18,5EC</ScabbardLeft_W>
+
+        <ScabbardRight_X>98,68,140,18,610</ScabbardRight_X>
+        <ScabbardRight_Y>98,68,140,18,614</ScabbardRight_Y>
+        <ScabbardRight_Z>98,68,140,18,618</ScabbardRight_Z>
+        <ScabbardRight_W>98,68,140,18,61C</ScabbardRight_W>
+
+        <Neck_X>98,68,140,18,640</Neck_X>
+        <Neck_Y>98,68,140,18,644</Neck_Y>
+        <Neck_Z>98,68,140,18,648</Neck_Z>
+        <Neck_W>98,68,140,18,64C</Neck_W>
+
+        <ClavicleLeft_X>98,68,140,18,670</ClavicleLeft_X>
+        <ClavicleLeft_Y>98,68,140,18,674</ClavicleLeft_Y>
+        <ClavicleLeft_Z>98,68,140,18,678</ClavicleLeft_Z>
+        <ClavicleLeft_W>98,68,140,18,67C</ClavicleLeft_W>
+
+        <ClavicleRight_X>98,68,140,18,6A0</ClavicleRight_X>
+        <ClavicleRight_Y>98,68,140,18,6A4</ClavicleRight_Y>
+        <ClavicleRight_Z>98,68,140,18,6A8</ClavicleRight_Z>
+        <ClavicleRight_W>98,68,140,18,6AC</ClavicleRight_W>
+
+        <ClothBackCLeft_X>98,68,140,18,6D0</ClothBackCLeft_X>
+        <ClothBackCLeft_Y>98,68,140,18,6D4</ClothBackCLeft_Y>
+        <ClothBackCLeft_Z>98,68,140,18,6D8</ClothBackCLeft_Z>
+        <ClothBackCLeft_W>98,68,140,18,6DC</ClothBackCLeft_W>
+
+        <ClothBackCRight_X>98,68,140,18,700</ClothBackCRight_X>
+        <ClothBackCRight_Y>98,68,140,18,704</ClothBackCRight_Y>
+        <ClothBackCRight_Z>98,68,140,18,708</ClothBackCRight_Z>
+        <ClothBackCRight_W>98,68,140,18,70C</ClothBackCRight_W>
+
+        <ClothFrontCLeft_X>98,68,140,18,730</ClothFrontCLeft_X>
+        <ClothFrontCLeft_Y>98,68,140,18,734</ClothFrontCLeft_Y>
+        <ClothFrontCLeft_Z>98,68,140,18,738</ClothFrontCLeft_Z>
+        <ClothFrontCLeft_W>98,68,140,18,73C</ClothFrontCLeft_W>
+
+        <ClothFrontCRight_X>98,68,140,18,760</ClothFrontCRight_X>
+        <ClothFrontCRight_Y>98,68,140,18,764</ClothFrontCRight_Y>
+        <ClothFrontCRight_Z>98,68,140,18,768</ClothFrontCRight_Z>
+        <ClothFrontCRight_W>98,68,140,18,76C</ClothFrontCRight_W>
+
+        <ClothSideCLeft_X>98,68,140,18,790</ClothSideCLeft_X>
+        <ClothSideCLeft_Y>98,68,140,18,794</ClothSideCLeft_Y>
+        <ClothSideCLeft_Z>98,68,140,18,798</ClothSideCLeft_Z>
+        <ClothSideCLeft_W>98,68,140,18,79C</ClothSideCLeft_W>
+
+        <ClothSideCRight_X>98,68,140,18,7C0</ClothSideCRight_X>
+        <ClothSideCRight_Y>98,68,140,18,7C4</ClothSideCRight_Y>
+        <ClothSideCRight_Z>98,68,140,18,7C8</ClothSideCRight_Z>
+        <ClothSideCRight_W>98,68,140,18,7CC</ClothSideCRight_W>
+
+        <PoleynLeft_X>98,68,140,18,7F0</PoleynLeft_X>
+        <PoleynLeft_Y>98,68,140,18,7F4</PoleynLeft_Y>
+        <PoleynLeft_Z>98,68,140,18,7F8</PoleynLeft_Z>
+        <PoleynLeft_W>98,68,140,18,7FC</PoleynLeft_W>
+
+        <PoleynRight_X>98,68,140,18,820</PoleynRight_X>
+        <PoleynRight_Y>98,68,140,18,824</PoleynRight_Y>
+        <PoleynRight_Z>98,68,140,18,828</PoleynRight_Z>
+        <PoleynRight_W>98,68,140,18,82C</PoleynRight_W>
+
+        <FootLeft_X>98,68,140,18,850</FootLeft_X>
+        <FootLeft_Y>98,68,140,18,854</FootLeft_Y>
+        <FootLeft_Z>98,68,140,18,858</FootLeft_Z>
+        <FootLeft_W>98,68,140,18,85C</FootLeft_W>
+
+        <FootRight_X>98,68,140,18,880</FootRight_X>
+        <FootRight_Y>98,68,140,18,884</FootRight_Y>
+        <FootRight_Z>98,68,140,18,888</FootRight_Z>
+        <FootRight_W>98,68,140,18,88C</FootRight_W>
+
+        <Head_X>98,68,140,18,8B0</Head_X>
+        <Head_Y>98,68,140,18,8B4</Head_Y>
+        <Head_Z>98,68,140,18,8B8</Head_Z>
+        <Head_W>98,68,140,18,8BC</Head_W>
+
+        <ArmLeft_X>98,68,140,18,8E0</ArmLeft_X>
+        <ArmLeft_Y>98,68,140,18,8E4</ArmLeft_Y>
+        <ArmLeft_Z>98,68,140,18,8E8</ArmLeft_Z>
+        <ArmLeft_W>98,68,140,18,8EC</ArmLeft_W>
+
+        <ArmRight_X>98,68,140,18,910</ArmRight_X>
+        <ArmRight_Y>98,68,140,18,914</ArmRight_Y>
+        <ArmRight_Z>98,68,140,18,918</ArmRight_Z>
+        <ArmRight_W>98,68,140,18,91C</ArmRight_W>
+
+        <PauldronLeft_X>98,68,140,18,940</PauldronLeft_X>
+        <PauldronLeft_Y>98,68,140,18,944</PauldronLeft_Y>
+        <PauldronLeft_Z>98,68,140,18,948</PauldronLeft_Z>
+        <PauldronLeft_W>98,68,140,18,94C</PauldronLeft_W>
+
+        <PauldronRight_X>98,68,140,18,970</PauldronRight_X>
+        <PauldronRight_Y>98,68,140,18,974</PauldronRight_Y>
+        <PauldronRight_Z>98,68,140,18,978</PauldronRight_Z>
+        <PauldronRight_W>98,68,140,18,97C</PauldronRight_W>
+
+        <Unknown00_X>98,68,140,18,9A0</Unknown00_X>
+        <Unknown00_Y>98,68,140,18,9A4</Unknown00_Y>
+        <Unknown00_Z>98,68,140,18,9A8</Unknown00_Z>
+        <Unknown00_W>98,68,140,18,9AC</Unknown00_W>
+
+        <ToesLeft_X>98,68,140,18,9D0</ToesLeft_X>
+        <ToesLeft_Y>98,68,140,18,9D4</ToesLeft_Y>
+        <ToesLeft_Z>98,68,140,18,9D8</ToesLeft_Z>
+        <ToesLeft_W>98,68,140,18,9DC</ToesLeft_W>
+
+        <ToesRight_X>98,68,140,18,A00</ToesRight_X>
+        <ToesRight_Y>98,68,140,18,A04</ToesRight_Y>
+        <ToesRight_Z>98,68,140,18,A08</ToesRight_Z>
+        <ToesRight_W>98,68,140,18,A0C</ToesRight_W>
+
+        <HairA_X>98,68,140,18,A30</HairA_X>
+        <HairA_Y>98,68,140,18,A34</HairA_Y>
+        <HairA_Z>98,68,140,18,A38</HairA_Z>
+        <HairA_W>98,68,140,18,A3C</HairA_W>
+
+        <HairFrontLeft_X>98,68,140,18,A60</HairFrontLeft_X>
+        <HairFrontLeft_Y>98,68,140,18,A64</HairFrontLeft_Y>
+        <HairFrontLeft_Z>98,68,140,18,A68</HairFrontLeft_Z>
+        <HairFrontLeft_W>98,68,140,18,A6C</HairFrontLeft_W>
+
+        <HairFrontRight_X>98,68,140,18,A90</HairFrontRight_X>
+        <HairFrontRight_Y>98,68,140,18,A94</HairFrontRight_Y>
+        <HairFrontRight_Z>98,68,140,18,A98</HairFrontRight_Z>
+        <HairFrontRight_W>98,68,140,18,A9C</HairFrontRight_W>
+
+        <EarLeft_X>98,68,140,18,AC0</EarLeft_X>
+        <EarLeft_Y>98,68,140,18,AC4</EarLeft_Y>
+        <EarLeft_Z>98,68,140,18,AC8</EarLeft_Z>
+        <EarLeft_W>98,68,140,18,ACC</EarLeft_W>
+
+        <EarRight_X>98,68,140,18,AF0</EarRight_X>
+        <EarRight_Y>98,68,140,18,AF4</EarRight_Y>
+        <EarRight_Z>98,68,140,18,AF8</EarRight_Z>
+        <EarRight_W>98,68,140,18,AFC</EarRight_W>
+
+        <ForearmLeft_X>98,68,140,18,B20</ForearmLeft_X>
+        <ForearmLeft_Y>98,68,140,18,B24</ForearmLeft_Y>
+        <ForearmLeft_Z>98,68,140,18,B28</ForearmLeft_Z>
+        <ForearmLeft_W>98,68,140,18,B2C</ForearmLeft_W>
+
+        <ForearmRight_X>98,68,140,18,B50</ForearmRight_X>
+        <ForearmRight_Y>98,68,140,18,B54</ForearmRight_Y>
+        <ForearmRight_Z>98,68,140,18,B58</ForearmRight_Z>
+        <ForearmRight_W>98,68,140,18,B5C</ForearmRight_W>
+
+        <ShoulderLeft_X>98,68,140,18,B80</ShoulderLeft_X>
+        <ShoulderLeft_Y>98,68,140,18,B84</ShoulderLeft_Y>
+        <ShoulderLeft_Z>98,68,140,18,B88</ShoulderLeft_Z>
+        <ShoulderLeft_W>98,68,140,18,B8C</ShoulderLeft_W>
+
+        <ShoulderRight_X>98,68,140,18,BB0</ShoulderRight_X>
+        <ShoulderRight_Y>98,68,140,18,BB4</ShoulderRight_Y>
+        <ShoulderRight_Z>98,68,140,18,BB8</ShoulderRight_Z>
+        <ShoulderRight_W>98,68,140,18,BBC</ShoulderRight_W>
+
+        <HairB_X>98,68,140,18,BE0</HairB_X>
+        <HairB_Y>98,68,140,18,BE4</HairB_Y>
+        <HairB_Z>98,68,140,18,BE8</HairB_Z>
+        <HairB_W>98,68,140,18,BEC</HairB_W>
+
+        <HandLeft_X>98,68,140,18,C10</HandLeft_X>
+        <HandLeft_Y>98,68,140,18,C14</HandLeft_Y>
+        <HandLeft_Z>98,68,140,18,C18</HandLeft_Z>
+        <HandLeft_W>98,68,140,18,C1C</HandLeft_W>
+
+        <HandRight_X>98,68,140,18,C40</HandRight_X>
+        <HandRight_Y>98,68,140,18,C44</HandRight_Y>
+        <HandRight_Z>98,68,140,18,C48</HandRight_Z>
+        <HandRight_W>98,68,140,18,C4C</HandRight_W>
+
+        <ShieldLeft_X>98,68,140,18,C70</ShieldLeft_X>
+        <ShieldLeft_Y>98,68,140,18,C74</ShieldLeft_Y>
+        <ShieldLeft_Z>98,68,140,18,C78</ShieldLeft_Z>
+        <ShieldLeft_W>98,68,140,18,C7C</ShieldLeft_W>
+
+        <ShieldRight_X>98,68,140,18,CA0</ShieldRight_X>
+        <ShieldRight_Y>98,68,140,18,CA4</ShieldRight_Y>
+        <ShieldRight_Z>98,68,140,18,CA8</ShieldRight_Z>
+        <ShieldRight_W>98,68,140,18,CAC</ShieldRight_W>
+
+        <EarringALeft_X>98,68,140,18,CD0</EarringALeft_X>
+        <EarringALeft_Y>98,68,140,18,CD4</EarringALeft_Y>
+        <EarringALeft_Z>98,68,140,18,CD8</EarringALeft_Z>
+        <EarringALeft_W>98,68,140,18,CDC</EarringALeft_W>
+
+        <EarringARight_X>98,68,140,18,D00</EarringARight_X>
+        <EarringARight_Y>98,68,140,18,D04</EarringARight_Y>
+        <EarringARight_Z>98,68,140,18,D08</EarringARight_Z>
+        <EarringARight_W>98,68,140,18,D0C</EarringARight_W>
+
+        <ElbowLeft_X>98,68,140,18,D30</ElbowLeft_X>
+        <ElbowLeft_Y>98,68,140,18,D34</ElbowLeft_Y>
+        <ElbowLeft_Z>98,68,140,18,D38</ElbowLeft_Z>
+        <ElbowLeft_W>98,68,140,18,D3C</ElbowLeft_W>
+
+        <ElbowRight_X>98,68,140,18,D60</ElbowRight_X>
+        <ElbowRight_Y>98,68,140,18,D64</ElbowRight_Y>
+        <ElbowRight_Z>98,68,140,18,D68</ElbowRight_Z>
+        <ElbowRight_W>98,68,140,18,D6C</ElbowRight_W>
+
+        <CouterLeft_X>98,68,140,18,D90</CouterLeft_X>
+        <CouterLeft_Y>98,68,140,18,D94</CouterLeft_Y>
+        <CouterLeft_Z>98,68,140,18,D98</CouterLeft_Z>
+        <CouterLeft_W>98,68,140,18,D9C</CouterLeft_W>
+
+        <CouterRight_X>98,68,140,18,DC0</CouterRight_X>
+        <CouterRight_Y>98,68,140,18,DC4</CouterRight_Y>
+        <CouterRight_Z>98,68,140,18,DC8</CouterRight_Z>
+        <CouterRight_W>98,68,140,18,DCC</CouterRight_W>
+
+        <WristLeft_X>98,68,140,18,DF0</WristLeft_X>
+        <WristLeft_Y>98,68,140,18,DF4</WristLeft_Y>
+        <WristLeft_Z>98,68,140,18,DF8</WristLeft_Z>
+        <WristLeft_W>98,68,140,18,DFC</WristLeft_W>
+
+        <WristRight_X>98,68,140,18,E20</WristRight_X>
+        <WristRight_Y>98,68,140,18,E24</WristRight_Y>
+        <WristRight_Z>98,68,140,18,E28</WristRight_Z>
+        <WristRight_W>98,68,140,18,E2C</WristRight_W>
+
+        <IndexALeft_X>98,68,140,18,E50</IndexALeft_X>
+        <IndexALeft_Y>98,68,140,18,E54</IndexALeft_Y>
+        <IndexALeft_Z>98,68,140,18,E58</IndexALeft_Z>
+        <IndexALeft_W>98,68,140,18,E5C</IndexALeft_W>
+
+        <IndexARight_X>98,68,140,18,E80</IndexARight_X>
+        <IndexARight_Y>98,68,140,18,E84</IndexARight_Y>
+        <IndexARight_Z>98,68,140,18,E88</IndexARight_Z>
+        <IndexARight_W>98,68,140,18,E8C</IndexARight_W>
+
+        <PinkyALeft_X>98,68,140,18,EB0</PinkyALeft_X>
+        <PinkyALeft_Y>98,68,140,18,EB4</PinkyALeft_Y>
+        <PinkyALeft_Z>98,68,140,18,EB8</PinkyALeft_Z>
+        <PinkyALeft_W>98,68,140,18,EBC</PinkyALeft_W>
+
+        <PinkyARight_X>98,68,140,18,EE0</PinkyARight_X>
+        <PinkyARight_Y>98,68,140,18,EE4</PinkyARight_Y>
+        <PinkyARight_Z>98,68,140,18,EE8</PinkyARight_Z>
+        <PinkyARight_W>98,68,140,18,EEC</PinkyARight_W>
+
+        <RingALeft_X>98,68,140,18,F10</RingALeft_X>
+        <RingALeft_Y>98,68,140,18,F14</RingALeft_Y>
+        <RingALeft_Z>98,68,140,18,F18</RingALeft_Z>
+        <RingALeft_W>98,68,140,18,F1C</RingALeft_W>
+
+        <RingARight_X>98,68,140,18,F40</RingARight_X>
+        <RingARight_Y>98,68,140,18,F44</RingARight_Y>
+        <RingARight_Z>98,68,140,18,F48</RingARight_Z>
+        <RingARight_W>98,68,140,18,F4C</RingARight_W>
+
+        <MiddleALeft_X>98,68,140,18,F70</MiddleALeft_X>
+        <MiddleALeft_Y>98,68,140,18,F74</MiddleALeft_Y>
+        <MiddleALeft_Z>98,68,140,18,F78</MiddleALeft_Z>
+        <MiddleALeft_W>98,68,140,18,F7C</MiddleALeft_W>
+
+        <MiddleARight_X>98,68,140,18,FA0</MiddleARight_X>
+        <MiddleARight_Y>98,68,140,18,FA4</MiddleARight_Y>
+        <MiddleARight_Z>98,68,140,18,FA8</MiddleARight_Z>
+        <MiddleARight_W>98,68,140,18,FAC</MiddleARight_W>
+
+        <ThumbALeft_X>98,68,140,18,FD0</ThumbALeft_X>
+        <ThumbALeft_Y>98,68,140,18,FD4</ThumbALeft_Y>
+        <ThumbALeft_Z>98,68,140,18,FD8</ThumbALeft_Z>
+        <ThumbALeft_W>98,68,140,18,FDC</ThumbALeft_W>
+
+        <ThumbARight_X>98,68,140,18,1000</ThumbARight_X>
+        <ThumbARight_Y>98,68,140,18,1004</ThumbARight_Y>
+        <ThumbARight_Z>98,68,140,18,1008</ThumbARight_Z>
+        <ThumbARight_W>98,68,140,18,100C</ThumbARight_W>
+
+        <WeaponLeft_X>98,68,140,18,1030</WeaponLeft_X>
+        <WeaponLeft_Y>98,68,140,18,1034</WeaponLeft_Y>
+        <WeaponLeft_Z>98,68,140,18,1038</WeaponLeft_Z>
+        <WeaponLeft_W>98,68,140,18,103C</WeaponLeft_W>
+
+        <WeaponRight_X>98,68,140,18,1060</WeaponRight_X>
+        <WeaponRight_Y>98,68,140,18,1064</WeaponRight_Y>
+        <WeaponRight_Z>98,68,140,18,1068</WeaponRight_Z>
+        <WeaponRight_W>98,68,140,18,106C</WeaponRight_W>
+
+        <EarringBLeft_X>98,68,140,18,1090</EarringBLeft_X>
+        <EarringBLeft_Y>98,68,140,18,1094</EarringBLeft_Y>
+        <EarringBLeft_Z>98,68,140,18,1098</EarringBLeft_Z>
+        <EarringBLeft_W>98,68,140,18,109C</EarringBLeft_W>
+
+        <EarringBRight_X>98,68,140,18,10C0</EarringBRight_X>
+        <EarringBRight_Y>98,68,140,18,10C4</EarringBRight_Y>
+        <EarringBRight_Z>98,68,140,18,10C8</EarringBRight_Z>
+        <EarringBRight_W>98,68,140,18,10CC</EarringBRight_W>
+
+        <IndexBLeft_X>98,68,140,18,10F0</IndexBLeft_X>
+        <IndexBLeft_Y>98,68,140,18,10F4</IndexBLeft_Y>
+        <IndexBLeft_Z>98,68,140,18,10F8</IndexBLeft_Z>
+        <IndexBLeft_W>98,68,140,18,10FC</IndexBLeft_W>
+
+        <IndexBRight_X>98,68,140,18,1120</IndexBRight_X>
+        <IndexBRight_Y>98,68,140,18,1124</IndexBRight_Y>
+        <IndexBRight_Z>98,68,140,18,1128</IndexBRight_Z>
+        <IndexBRight_W>98,68,140,18,112C</IndexBRight_W>
+
+        <PinkyBLeft_X>98,68,140,18,1150</PinkyBLeft_X>
+        <PinkyBLeft_Y>98,68,140,18,1154</PinkyBLeft_Y>
+        <PinkyBLeft_Z>98,68,140,18,1158</PinkyBLeft_Z>
+        <PinkyBLeft_W>98,68,140,18,115C</PinkyBLeft_W>
+
+        <PinkyBRight_X>98,68,140,18,1180</PinkyBRight_X>
+        <PinkyBRight_Y>98,68,140,18,1184</PinkyBRight_Y>
+        <PinkyBRight_Z>98,68,140,18,1188</PinkyBRight_Z>
+        <PinkyBRight_W>98,68,140,18,118C</PinkyBRight_W>
+
+        <RingBLeft_X>98,68,140,18,11B0</RingBLeft_X>
+        <RingBLeft_Y>98,68,140,18,11B4</RingBLeft_Y>
+        <RingBLeft_Z>98,68,140,18,11B8</RingBLeft_Z>
+        <RingBLeft_W>98,68,140,18,11BC</RingBLeft_W>
+
+        <RingBRight_X>98,68,140,18,11E0</RingBRight_X>
+        <RingBRight_Y>98,68,140,18,11E4</RingBRight_Y>
+        <RingBRight_Z>98,68,140,18,11E8</RingBRight_Z>
+        <RingBRight_W>98,68,140,18,11EC</RingBRight_W>
+
+        <MiddleBLeft_X>98,68,140,18,1210</MiddleBLeft_X>
+        <MiddleBLeft_Y>98,68,140,18,1214</MiddleBLeft_Y>
+        <MiddleBLeft_Z>98,68,140,18,1218</MiddleBLeft_Z>
+        <MiddleBLeft_W>98,68,140,18,121C</MiddleBLeft_W>
+
+        <MiddleBRight_X>98,68,140,18,1240</MiddleBRight_X>
+        <MiddleBRight_Y>98,68,140,18,1244</MiddleBRight_Y>
+        <MiddleBRight_Z>98,68,140,18,1248</MiddleBRight_Z>
+        <MiddleBRight_W>98,68,140,18,124C</MiddleBRight_W>
+
+        <ThumbBLeft_X>98,68,140,18,1270</ThumbBLeft_X>
+        <ThumbBLeft_Y>98,68,140,18,1274</ThumbBLeft_Y>
+        <ThumbBLeft_Z>98,68,140,18,1278</ThumbBLeft_Z>
+        <ThumbBLeft_W>98,68,140,18,127C</ThumbBLeft_W>
+
+        <ThumbBRight_X>98,68,140,18,12A0</ThumbBRight_X>
+        <ThumbBRight_Y>98,68,140,18,12A4</ThumbBRight_Y>
+        <ThumbBRight_Z>98,68,140,18,12A8</ThumbBRight_Z>
+        <ThumbBRight_W>98,68,140,18,12AC</ThumbBRight_W>
+
+        <TailA_X>98,68,140,18,12D0</TailA_X>
+        <TailA_Y>98,68,140,18,12D4</TailA_Y>
+        <TailA_Z>98,68,140,18,12D8</TailA_Z>
+        <TailA_W>98,68,140,18,12DC</TailA_W>
+
+        <TailB_X>98,68,140,18,1300</TailB_X>
+        <TailB_Y>98,68,140,18,1304</TailB_Y>
+        <TailB_Z>98,68,140,18,1308</TailB_Z>
+        <TailB_W>98,68,140,18,130C</TailB_W>
+
+        <TailC_X>98,68,140,18,1330</TailC_X>
+        <TailC_Y>98,68,140,18,1334</TailC_Y>
+        <TailC_Z>98,68,140,18,1338</TailC_Z>
+        <TailC_W>98,68,140,18,133C</TailC_W>
+
+        <TailD_X>98,68,140,18,1360</TailD_X>
+        <TailD_Y>98,68,140,18,1364</TailD_Y>
+        <TailD_Z>98,68,140,18,1368</TailD_Z>
+        <TailD_W>98,68,140,18,136C</TailD_W>
+
+        <TailE_X>98,68,140,18,1390</TailE_X>
+        <TailE_Y>98,68,140,18,1394</TailE_Y>
+        <TailE_Z>98,68,140,18,1398</TailE_Z>
+        <TailE_W>98,68,140,18,139C</TailE_W>
+
+        <RootHead_X>98,68,300,18,10</RootHead_X>
+        <RootHead_Y>98,68,300,18,14</RootHead_Y>
+        <RootHead_Z>98,68,300,18,18</RootHead_Z>
+        <RootHead_W>98,68,300,18,1C</RootHead_W>
+
+        <Jaw_X>98,68,300,18,40</Jaw_X>
+        <Jaw_Y>98,68,300,18,44</Jaw_Y>
+        <Jaw_Z>98,68,300,18,48</Jaw_Z>
+        <Jaw_W>98,68,300,18,4C</Jaw_W>
+
+        <EyelidLowerLeft_X>98,68,300,18,70</EyelidLowerLeft_X>
+        <EyelidLowerLeft_Y>98,68,300,18,74</EyelidLowerLeft_Y>
+        <EyelidLowerLeft_Z>98,68,300,18,78</EyelidLowerLeft_Z>
+        <EyelidLowerLeft_W>98,68,300,18,7C</EyelidLowerLeft_W>
+
+        <EyelidLowerRight_X>98,68,300,18,A0</EyelidLowerRight_X>
+        <EyelidLowerRight_Y>98,68,300,18,A4</EyelidLowerRight_Y>
+        <EyelidLowerRight_Z>98,68,300,18,A8</EyelidLowerRight_Z>
+        <EyelidLowerRight_W>98,68,300,18,AC</EyelidLowerRight_W>
+
+        <EyeLeft_X>98,68,300,18,D0</EyeLeft_X>
+        <EyeLeft_Y>98,68,300,18,D4</EyeLeft_Y>
+        <EyeLeft_Z>98,68,300,18,D8</EyeLeft_Z>
+        <EyeLeft_W>98,68,300,18,DC</EyeLeft_W>
+
+        <EyeRight_X>98,68,300,18,100</EyeRight_X>
+        <EyeRight_Y>98,68,300,18,104</EyeRight_Y>
+        <EyeRight_Z>98,68,300,18,108</EyeRight_Z>
+        <EyeRight_W>98,68,300,18,10C</EyeRight_W>
+
+        <Nose_X>98,68,300,18,130</Nose_X>
+        <Nose_Y>98,68,300,18,134</Nose_Y>
+        <Nose_Z>98,68,300,18,138</Nose_Z>
+        <Nose_W>98,68,300,18,13C</Nose_W>
+
+        <CheekLeft_X>98,68,300,18,160</CheekLeft_X>
+        <CheekLeft_Y>98,68,300,18,164</CheekLeft_Y>
+        <CheekLeft_Z>98,68,300,18,168</CheekLeft_Z>
+        <CheekLeft_W>98,68,300,18,16C</CheekLeft_W>
+        <HrothWhiskersLeft_X>98,68,300,18,160</HrothWhiskersLeft_X>
+        <HrothWhiskersLeft_Y>98,68,300,18,164</HrothWhiskersLeft_Y>
+        <HrothWhiskersLeft_Z>98,68,300,18,168</HrothWhiskersLeft_Z>
+        <HrothWhiskersLeft_W>98,68,300,18,16C</HrothWhiskersLeft_W>
+
+        <CheekRight_X>98,68,300,18,190</CheekRight_X>
+        <CheekRight_Y>98,68,300,18,194</CheekRight_Y>
+        <CheekRight_Z>98,68,300,18,198</CheekRight_Z>
+        <CheekRight_W>98,68,300,18,19C</CheekRight_W>
+        <HrothWhiskersRight_X>98,68,300,18,190</HrothWhiskersRight_X>
+        <HrothWhiskersRight_Y>98,68,300,18,194</HrothWhiskersRight_Y>
+        <HrothWhiskersRight_Z>98,68,300,18,198</HrothWhiskersRight_Z>
+        <HrothWhiskersRight_W>98,68,300,18,19C</HrothWhiskersRight_W>
+
+        <LipsLeft_X>98,68,300,18,1C0</LipsLeft_X>
+        <LipsLeft_Y>98,68,300,18,1C4</LipsLeft_Y>
+        <LipsLeft_Z>98,68,300,18,1C8</LipsLeft_Z>
+        <LipsLeft_W>98,68,300,18,1CC</LipsLeft_W>
+        <HrothEyebrowLeft_X>98,68,300,18,1C0</HrothEyebrowLeft_X>
+        <HrothEyebrowLeft_Y>98,68,300,18,1C4</HrothEyebrowLeft_Y>
+        <HrothEyebrowLeft_Z>98,68,300,18,1C8</HrothEyebrowLeft_Z>
+        <HrothEyebrowLeft_W>98,68,300,18,1CC</HrothEyebrowLeft_W>
+
+        <LipsRight_X>98,68,300,18,1F0</LipsRight_X>
+        <LipsRight_Y>98,68,300,18,1F4</LipsRight_Y>
+        <LipsRight_Z>98,68,300,18,1F8</LipsRight_Z>
+        <LipsRight_W>98,68,300,18,1FC</LipsRight_W>
+        <HrothEyebrowRight_X>98,68,300,18,1F0</HrothEyebrowRight_X>
+        <HrothEyebrowRight_Y>98,68,300,18,1F4</HrothEyebrowRight_Y>
+        <HrothEyebrowRight_Z>98,68,300,18,1F8</HrothEyebrowRight_Z>
+        <HrothEyebrowRight_W>98,68,300,18,1FC</HrothEyebrowRight_W>
+
+        <EyebrowLeft_X>98,68,300,18,220</EyebrowLeft_X>
+        <EyebrowLeft_Y>98,68,300,18,224</EyebrowLeft_Y>
+        <EyebrowLeft_Z>98,68,300,18,228</EyebrowLeft_Z>
+        <EyebrowLeft_W>98,68,300,18,22C</EyebrowLeft_W>
+        <HrothBridge_X>98,68,300,18,220</HrothBridge_X>
+        <HrothBridge_Y>98,68,300,18,224</HrothBridge_Y>
+        <HrothBridge_Z>98,68,300,18,228</HrothBridge_Z>
+        <HrothBridge_W>98,68,300,18,22C</HrothBridge_W>
+
+        <EyebrowRight_X>98,68,300,18,250</EyebrowRight_X>
+        <EyebrowRight_Y>98,68,300,18,254</EyebrowRight_Y>
+        <EyebrowRight_Z>98,68,300,18,258</EyebrowRight_Z>
+        <EyebrowRight_W>98,68,300,18,25C</EyebrowRight_W>
+        <HrothBrowLeft_X>98,68,300,18,250</HrothBrowLeft_X>
+        <HrothBrowLeft_Y>98,68,300,18,254</HrothBrowLeft_Y>
+        <HrothBrowLeft_Z>98,68,300,18,258</HrothBrowLeft_Z>
+        <HrothBrowLeft_W>98,68,300,18,25C</HrothBrowLeft_W>
+
+        <Bridge_X>98,68,300,18,280</Bridge_X>
+        <Bridge_Y>98,68,300,18,284</Bridge_Y>
+        <Bridge_Z>98,68,300,18,288</Bridge_Z>
+        <Bridge_W>98,68,300,18,28C</Bridge_W>
+        <HrothBrowRight_X>98,68,300,18,280</HrothBrowRight_X>
+        <HrothBrowRight_Y>98,68,300,18,284</HrothBrowRight_Y>
+        <HrothBrowRight_Z>98,68,300,18,288</HrothBrowRight_Z>
+        <HrothBrowRight_W>98,68,300,18,28C</HrothBrowRight_W>
+
+        <BrowLeft_X>98,68,300,18,2B0</BrowLeft_X>
+        <BrowLeft_Y>98,68,300,18,2B4</BrowLeft_Y>
+        <BrowLeft_Z>98,68,300,18,2B8</BrowLeft_Z>
+        <BrowLeft_W>98,68,300,18,2BC</BrowLeft_W>
+        <HrothJawUpper_X>98,68,300,18,2B0</HrothJawUpper_X>
+        <HrothJawUpper_Y>98,68,300,18,2B4</HrothJawUpper_Y>
+        <HrothJawUpper_Z>98,68,300,18,2B8</HrothJawUpper_Z>
+        <HrothJawUpper_W>98,68,300,18,2BC</HrothJawUpper_W>
+
+        <BrowRight_X>98,68,300,18,2E0</BrowRight_X>
+        <BrowRight_Y>98,68,300,18,2E4</BrowRight_Y>
+        <BrowRight_Z>98,68,300,18,2E8</BrowRight_Z>
+        <BrowRight_W>98,68,300,18,2EC</BrowRight_W>
+        <HrothLipUpper_X>98,68,300,18,2E0</HrothLipUpper_X>
+        <HrothLipUpper_Y>98,68,300,18,2E4</HrothLipUpper_Y>
+        <HrothLipUpper_Z>98,68,300,18,2E8</HrothLipUpper_Z>
+        <HrothLipUpper_W>98,68,300,18,2EC</HrothLipUpper_W>
+
+        <LipUpperA_X>98,68,300,18,310</LipUpperA_X>
+        <LipUpperA_Y>98,68,300,18,314</LipUpperA_Y>
+        <LipUpperA_Z>98,68,300,18,318</LipUpperA_Z>
+        <LipUpperA_W>98,68,300,18,31C</LipUpperA_W>
+        <HrothEyelidUpperLeft_X>98,68,300,18,310</HrothEyelidUpperLeft_X>
+        <HrothEyelidUpperLeft_Y>98,68,300,18,314</HrothEyelidUpperLeft_Y>
+        <HrothEyelidUpperLeft_Z>98,68,300,18,318</HrothEyelidUpperLeft_Z>
+        <HrothEyelidUpperLeft_W>98,68,300,18,31C</HrothEyelidUpperLeft_W>
+
+        <EyelidUpperLeft_X>98,68,300,18,340</EyelidUpperLeft_X>
+        <EyelidUpperLeft_Y>98,68,300,18,344</EyelidUpperLeft_Y>
+        <EyelidUpperLeft_Z>98,68,300,18,348</EyelidUpperLeft_Z>
+        <EyelidUpperLeft_W>98,68,300,18,34C</EyelidUpperLeft_W>
+        <HrothEyelidUpperRight_X>98,68,300,18,340</HrothEyelidUpperRight_X>
+        <HrothEyelidUpperRight_Y>98,68,300,18,344</HrothEyelidUpperRight_Y>
+        <HrothEyelidUpperRight_Z>98,68,300,18,348</HrothEyelidUpperRight_Z>
+        <HrothEyelidUpperRight_W>98,68,300,18,34C</HrothEyelidUpperRight_W>
+
+        <EyelidUpperRight_X>98,68,300,18,370</EyelidUpperRight_X>
+        <EyelidUpperRight_Y>98,68,300,18,374</EyelidUpperRight_Y>
+        <EyelidUpperRight_Z>98,68,300,18,378</EyelidUpperRight_Z>
+        <EyelidUpperRight_W>98,68,300,18,37C</EyelidUpperRight_W>
+        <HrothLipsLeft_X>98,68,300,18,370</HrothLipsLeft_X>
+        <HrothLipsLeft_Y>98,68,300,18,374</HrothLipsLeft_Y>
+        <HrothLipsLeft_Z>98,68,300,18,378</HrothLipsLeft_Z>
+        <HrothLipsLeft_W>98,68,300,18,37C</HrothLipsLeft_W>
+
+        <LipLowerA_X>98,68,300,18,3A0</LipLowerA_X>
+        <LipLowerA_Y>98,68,300,18,3A4</LipLowerA_Y>
+        <LipLowerA_Z>98,68,300,18,3A8</LipLowerA_Z>
+        <LipLowerA_W>98,68,300,18,3AC</LipLowerA_W>
+        <HrothLipsRight_X>98,68,300,18,3A0</HrothLipsRight_X>
+        <HrothLipsRight_Y>98,68,300,18,3A4</HrothLipsRight_Y>
+        <HrothLipsRight_Z>98,68,300,18,3A8</HrothLipsRight_Z>
+        <HrothLipsRight_W>98,68,300,18,3AC</HrothLipsRight_W>
+        <VieraEar01ALeft_X>98,68,300,18,3A0</VieraEar01ALeft_X>
+        <VieraEar01ALeft_Y>98,68,300,18,3A4</VieraEar01ALeft_Y>
+        <VieraEar01ALeft_Z>98,68,300,18,3A8</VieraEar01ALeft_Z>
+        <VieraEar01ALeft_W>98,68,300,18,3AC</VieraEar01ALeft_W>
+
+        <LipUpperB_X>98,68,300,18,3D0</LipUpperB_X>
+        <LipUpperB_Y>98,68,300,18,3D4</LipUpperB_Y>
+        <LipUpperB_Z>98,68,300,18,3D8</LipUpperB_Z>
+        <LipUpperB_W>98,68,300,18,3DC</LipUpperB_W>
+        <HrothLipUpperLeft_X>98,68,300,18,3D0</HrothLipUpperLeft_X>
+        <HrothLipUpperLeft_Y>98,68,300,18,3D4</HrothLipUpperLeft_Y>
+        <HrothLipUpperLeft_Z>98,68,300,18,3D8</HrothLipUpperLeft_Z>
+        <HrothLipUpperLeft_W>98,68,300,18,3DC</HrothLipUpperLeft_W>
+        <VieraEar01ARight_X>98,68,300,18,3D0</VieraEar01ARight_X>
+        <VieraEar01ARight_Y>98,68,300,18,3D4</VieraEar01ARight_Y>
+        <VieraEar01ARight_Z>98,68,300,18,3D8</VieraEar01ARight_Z>
+        <VieraEar01ARight_W>98,68,300,18,3DC</VieraEar01ARight_W>
+
+        <LipLowerB_X>98,68,300,18,400</LipLowerB_X>
+        <LipLowerB_Y>98,68,300,18,404</LipLowerB_Y>
+        <LipLowerB_Z>98,68,300,18,408</LipLowerB_Z>
+        <LipLowerB_W>98,68,300,18,40C</LipLowerB_W>
+        <HrothLipUpperRight_X>98,68,300,18,400</HrothLipUpperRight_X>
+        <HrothLipUpperRight_Y>98,68,300,18,404</HrothLipUpperRight_Y>
+        <HrothLipUpperRight_Z>98,68,300,18,408</HrothLipUpperRight_Z>
+        <HrothLipUpperRight_W>98,68,300,18,40C</HrothLipUpperRight_W>
+        <VieraEar02ALeft_X>98,68,300,18,400</VieraEar02ALeft_X>
+        <VieraEar02ALeft_Y>98,68,300,18,404</VieraEar02ALeft_Y>
+        <VieraEar02ALeft_Z>98,68,300,18,408</VieraEar02ALeft_Z>
+        <VieraEar02ALeft_W>98,68,300,18,40C</VieraEar02ALeft_W>
+
+        <HrothLipLower_X>98,68,300,18,430</HrothLipLower_X>
+        <HrothLipLower_Y>98,68,300,18,434</HrothLipLower_Y>
+        <HrothLipLower_Z>98,68,300,18,438</HrothLipLower_Z>
+        <HrothLipLower_W>98,68,300,18,43C</HrothLipLower_W>
+        <VieraEar02ARight_X>98,68,300,18,430</VieraEar02ARight_X>
+        <VieraEar02ARight_Y>98,68,300,18,434</VieraEar02ARight_Y>
+        <VieraEar02ARight_Z>98,68,300,18,438</VieraEar02ARight_Z>
+        <VieraEar02ARight_W>98,68,300,18,43C</VieraEar02ARight_W>
+
+        <VieraEar03ALeft_X>98,68,300,18,460</VieraEar03ALeft_X>
+        <VieraEar03ALeft_Y>98,68,300,18,464</VieraEar03ALeft_Y>
+        <VieraEar03ALeft_Z>98,68,300,18,468</VieraEar03ALeft_Z>
+        <VieraEar03ALeft_W>98,68,300,18,46C</VieraEar03ALeft_W>
+
+        <VieraEar03ARight_X>98,68,300,18,490</VieraEar03ARight_X>
+        <VieraEar03ARight_Y>98,68,300,18,494</VieraEar03ARight_Y>
+        <VieraEar03ARight_Z>98,68,300,18,498</VieraEar03ARight_Z>
+        <VieraEar03ARight_W>98,68,300,18,49C</VieraEar03ARight_W>
+
+        <VieraEar04ALeft_X>98,68,300,18,4C0</VieraEar04ALeft_X>
+        <VieraEar04ALeft_Y>98,68,300,18,4C4</VieraEar04ALeft_Y>
+        <VieraEar04ALeft_Z>98,68,300,18,4C8</VieraEar04ALeft_Z>
+        <VieraEar04ALeft_W>98,68,300,18,4CC</VieraEar04ALeft_W>
+
+        <VieraEar04ARight_X>98,68,300,18,4F0</VieraEar04ARight_X>
+        <VieraEar04ARight_Y>98,68,300,18,4F4</VieraEar04ARight_Y>
+        <VieraEar04ARight_Z>98,68,300,18,4F8</VieraEar04ARight_Z>
+        <VieraEar04ARight_W>98,68,300,18,4FC</VieraEar04ARight_W>
+
+        <VieraLipLowerA_X>98,68,300,18,520</VieraLipLowerA_X>
+        <VieraLipLowerA_Y>98,68,300,18,524</VieraLipLowerA_Y>
+        <VieraLipLowerA_Z>98,68,300,18,528</VieraLipLowerA_Z>
+        <VieraLipLowerA_W>98,68,300,18,52C</VieraLipLowerA_W>
+
+        <VieraLipUpperB_X>98,68,300,18,550</VieraLipUpperB_X>
+        <VieraLipUpperB_Y>98,68,300,18,554</VieraLipUpperB_Y>
+        <VieraLipUpperB_Z>98,68,300,18,558</VieraLipUpperB_Z>
+        <VieraLipUpperB_W>98,68,300,18,55C</VieraLipUpperB_W>
+
+        <VieraEar01BLeft_X>98,68,300,18,580</VieraEar01BLeft_X>
+        <VieraEar01BLeft_Y>98,68,300,18,584</VieraEar01BLeft_Y>
+        <VieraEar01BLeft_Z>98,68,300,18,588</VieraEar01BLeft_Z>
+        <VieraEar01BLeft_W>98,68,300,18,58C</VieraEar01BLeft_W>
+
+        <VieraEar01BRight_X>98,68,300,18,5B0</VieraEar01BRight_X>
+        <VieraEar01BRight_Y>98,68,300,18,5B4</VieraEar01BRight_Y>
+        <VieraEar01BRight_Z>98,68,300,18,5B8</VieraEar01BRight_Z>
+        <VieraEar01BRight_W>98,68,300,18,5BC</VieraEar01BRight_W>
+
+        <VieraEar02BLeft_X>98,68,300,18,5E0</VieraEar02BLeft_X>
+        <VieraEar02BLeft_Y>98,68,300,18,5E4</VieraEar02BLeft_Y>
+        <VieraEar02BLeft_Z>98,68,300,18,5E8</VieraEar02BLeft_Z>
+        <VieraEar02BLeft_W>98,68,300,18,5EC</VieraEar02BLeft_W>
+
+        <VieraEar02BRight_X>98,68,300,18,610</VieraEar02BRight_X>
+        <VieraEar02BRight_Y>98,68,300,18,614</VieraEar02BRight_Y>
+        <VieraEar02BRight_Z>98,68,300,18,618</VieraEar02BRight_Z>
+        <VieraEar02BRight_W>98,68,300,18,61C</VieraEar02BRight_W>
+
+        <VieraEar03BLeft_X>98,68,300,18,640</VieraEar03BLeft_X>
+        <VieraEar03BLeft_Y>98,68,300,18,644</VieraEar03BLeft_Y>
+        <VieraEar03BLeft_Z>98,68,300,18,648</VieraEar03BLeft_Z>
+        <VieraEar03BLeft_W>98,68,300,18,64C</VieraEar03BLeft_W>
+
+        <VieraEar03BRight_X>98,68,300,18,670</VieraEar03BRight_X>
+        <VieraEar03BRight_Y>98,68,300,18,674</VieraEar03BRight_Y>
+        <VieraEar03BRight_Z>98,68,300,18,678</VieraEar03BRight_Z>
+        <VieraEar03BRight_W>98,68,300,18,67C</VieraEar03BRight_W>
+
+        <VieraEar04BLeft_X>98,68,300,18,6A0</VieraEar04BLeft_X>
+        <VieraEar04BLeft_Y>98,68,300,18,6A4</VieraEar04BLeft_Y>
+        <VieraEar04BLeft_Z>98,68,300,18,6A8</VieraEar04BLeft_Z>
+        <VieraEar04BLeft_W>98,68,300,18,6AC</VieraEar04BLeft_W>
+
+        <VieraEar04BRight_X>98,68,300,18,6D0</VieraEar04BRight_X>
+        <VieraEar04BRight_Y>98,68,300,18,6D4</VieraEar04BRight_Y>
+        <VieraEar04BRight_Z>98,68,300,18,6D8</VieraEar04BRight_Z>
+        <VieraEar04BRight_W>98,68,300,18,6DC</VieraEar04BRight_W>
+
+        <VieraLipLowerB_X>98,68,300,18,700</VieraLipLowerB_X>
+        <VieraLipLowerB_Y>98,68,300,18,704</VieraLipLowerB_Y>
+        <VieraLipLowerB_Z>98,68,300,18,708</VieraLipLowerB_Z>
+        <VieraLipLowerB_W>98,68,300,18,70C</VieraLipLowerB_W>
+
+        <ExHair_Value>98,68,4C0,10</ExHair_Value>
+        <ExRootHair_X>98,68,4C0,18,10</ExRootHair_X>
+        <ExRootHair_Y>98,68,4C0,18,14</ExRootHair_Y>
+        <ExRootHair_Z>98,68,4C0,18,18</ExRootHair_Z>
+        <ExRootHair_W>98,68,4C0,18,1C</ExRootHair_W>
+
+        <ExHairA_X>98,68,4C0,18,40</ExHairA_X>
+        <ExHairA_Y>98,68,4C0,18,44</ExHairA_Y>
+        <ExHairA_Z>98,68,4C0,18,48</ExHairA_Z>
+        <ExHairA_W>98,68,4C0,18,4C</ExHairA_W>
+
+        <ExHairB_X>98,68,4C0,18,70</ExHairB_X>
+        <ExHairB_Y>98,68,4C0,18,74</ExHairB_Y>
+        <ExHairB_Z>98,68,4C0,18,78</ExHairB_Z>
+        <ExHairB_W>98,68,4C0,18,7C</ExHairB_W>
+
+        <ExHairC_X>98,68,4C0,18,A0</ExHairC_X>
+        <ExHairC_Y>98,68,4C0,18,A4</ExHairC_Y>
+        <ExHairC_Z>98,68,4C0,18,A8</ExHairC_Z>
+        <ExHairC_W>98,68,4C0,18,AC</ExHairC_W>
+
+        <ExHairD_X>98,68,4C0,18,D0</ExHairD_X>
+        <ExHairD_Y>98,68,4C0,18,D4</ExHairD_Y>
+        <ExHairD_Z>98,68,4C0,18,D8</ExHairD_Z>
+        <ExHairD_W>98,68,4C0,18,DC</ExHairD_W>
+
+        <ExHairE_X>98,68,4C0,18,100</ExHairE_X>
+        <ExHairE_Y>98,68,4C0,18,104</ExHairE_Y>
+        <ExHairE_Z>98,68,4C0,18,108</ExHairE_Z>
+        <ExHairE_W>98,68,4C0,18,10C</ExHairE_W>
+
+        <ExHairF_X>98,68,4C0,18,130</ExHairF_X>
+        <ExHairF_Y>98,68,4C0,18,134</ExHairF_Y>
+        <ExHairF_Z>98,68,4C0,18,138</ExHairF_Z>
+        <ExHairF_W>98,68,4C0,18,13C</ExHairF_W>
+
+        <ExHairG_X>98,68,4C0,18,160</ExHairG_X>
+        <ExHairG_Y>98,68,4C0,18,164</ExHairG_Y>
+        <ExHairG_Z>98,68,4C0,18,168</ExHairG_Z>
+        <ExHairG_W>98,68,4C0,18,16C</ExHairG_W>
+
+        <ExHairH_X>98,68,4C0,18,190</ExHairH_X>
+        <ExHairH_Y>98,68,4C0,18,194</ExHairH_Y>
+        <ExHairH_Z>98,68,4C0,18,198</ExHairH_Z>
+        <ExHairH_W>98,68,4C0,18,19C</ExHairH_W>
+
+        <ExHairI_X>98,68,4C0,18,1C0</ExHairI_X>
+        <ExHairI_Y>98,68,4C0,18,1C4</ExHairI_Y>
+        <ExHairI_Z>98,68,4C0,18,1C8</ExHairI_Z>
+        <ExHairI_W>98,68,4C0,18,1CC</ExHairI_W>
+
+        <ExHairJ_X>98,68,4C0,18,1F0</ExHairJ_X>
+        <ExHairJ_Y>98,68,4C0,18,1F4</ExHairJ_Y>
+        <ExHairJ_Z>98,68,4C0,18,1F8</ExHairJ_Z>
+        <ExHairJ_W>98,68,4C0,18,1FC</ExHairJ_W>
+
+        <ExHairK_X>98,68,4C0,18,220</ExHairK_X>
+        <ExHairK_Y>98,68,4C0,18,224</ExHairK_Y>
+        <ExHairK_Z>98,68,4C0,18,228</ExHairK_Z>
+        <ExHairK_W>98,68,4C0,18,22C</ExHairK_W>
+
+        <ExHairL_X>98,68,4C0,18,250</ExHairL_X>
+        <ExHairL_Y>98,68,4C0,18,254</ExHairL_Y>
+        <ExHairL_Z>98,68,4C0,18,258</ExHairL_Z>
+        <ExHairL_W>98,68,4C0,18,25C</ExHairL_W>
+
+        <ExMet_Value>98,68,680,10</ExMet_Value>
+        <ExRootMet_X>98,68,680,18,10</ExRootMet_X>
+        <ExRootMet_Y>98,68,680,18,14</ExRootMet_Y>
+        <ExRootMet_Z>98,68,680,18,18</ExRootMet_Z>
+        <ExRootMet_W>98,68,680,18,1C</ExRootMet_W>
+
+        <ExMetA_X>98,68,680,18,40</ExMetA_X>
+        <ExMetA_Y>98,68,680,18,44</ExMetA_Y>
+        <ExMetA_Z>98,68,680,18,48</ExMetA_Z>
+        <ExMetA_W>98,68,680,18,4C</ExMetA_W>
+
+        <ExMetB_X>98,68,680,18,70</ExMetB_X>
+        <ExMetB_Y>98,68,680,18,74</ExMetB_Y>
+        <ExMetB_Z>98,68,680,18,78</ExMetB_Z>
+        <ExMetB_W>98,68,680,18,7C</ExMetB_W>
+
+        <ExMetC_X>98,68,680,18,A0</ExMetC_X>
+        <ExMetC_Y>98,68,680,18,A4</ExMetC_Y>
+        <ExMetC_Z>98,68,680,18,A8</ExMetC_Z>
+        <ExMetC_W>98,68,680,18,AC</ExMetC_W>
+
+        <ExMetD_X>98,68,680,18,D0</ExMetD_X>
+        <ExMetD_Y>98,68,680,18,D4</ExMetD_Y>
+        <ExMetD_Z>98,68,680,18,D8</ExMetD_Z>
+        <ExMetD_W>98,68,680,18,DC</ExMetD_W>
+
+        <ExMetE_X>98,68,680,18,100</ExMetE_X>
+        <ExMetE_Y>98,68,680,18,104</ExMetE_Y>
+        <ExMetE_Z>98,68,680,18,108</ExMetE_Z>
+        <ExMetE_W>98,68,680,18,10C</ExMetE_W>
+
+        <ExMetF_X>98,68,680,18,130</ExMetF_X>
+        <ExMetF_Y>98,68,680,18,134</ExMetF_Y>
+        <ExMetF_Z>98,68,680,18,138</ExMetF_Z>
+        <ExMetF_W>98,68,680,18,13C</ExMetF_W>
+
+        <ExMetG_X>98,68,680,18,160</ExMetG_X>
+        <ExMetG_Y>98,68,680,18,164</ExMetG_Y>
+        <ExMetG_Z>98,68,680,18,168</ExMetG_Z>
+        <ExMetG_W>98,68,680,18,16C</ExMetG_W>
+
+        <ExMetH_X>98,68,680,18,190</ExMetH_X>
+        <ExMetH_Y>98,68,680,18,194</ExMetH_Y>
+        <ExMetH_Z>98,68,680,18,198</ExMetH_Z>
+        <ExMetH_W>98,68,680,18,19C</ExMetH_W>
+
+        <ExMetI_X>98,68,680,18,1C0</ExMetI_X>
+        <ExMetI_Y>98,68,680,18,1C4</ExMetI_Y>
+        <ExMetI_Z>98,68,680,18,1C8</ExMetI_Z>
+        <ExMetI_W>98,68,680,18,1CC</ExMetI_W>
+
+        <ExMetJ_X>98,68,680,18,1F0</ExMetJ_X>
+        <ExMetJ_Y>98,68,680,18,1F4</ExMetJ_Y>
+        <ExMetJ_Z>98,68,680,18,1F8</ExMetJ_Z>
+        <ExMetJ_W>98,68,680,18,1FC</ExMetJ_W>
+
+        <ExMetK_X>98,68,680,18,220</ExMetK_X>
+        <ExMetK_Y>98,68,680,18,224</ExMetK_Y>
+        <ExMetK_Z>98,68,680,18,228</ExMetK_Z>
+        <ExMetK_W>98,68,680,18,22C</ExMetK_W>
+
+        <ExMetL_X>98,68,680,18,250</ExMetL_X>
+        <ExMetL_Y>98,68,680,18,254</ExMetL_Y>
+        <ExMetL_Z>98,68,680,18,258</ExMetL_Z>
+        <ExMetL_W>98,68,680,18,25C</ExMetL_W>
+
+        <ExMetM_X>98,68,680,18,280</ExMetM_X>
+        <ExMetM_Y>98,68,680,18,284</ExMetM_Y>
+        <ExMetM_Z>98,68,680,18,288</ExMetM_Z>
+        <ExMetM_W>98,68,680,18,28C</ExMetM_W>
+
+        <ExMetN_X>98,68,680,18,2B0</ExMetN_X>
+        <ExMetN_Y>98,68,680,18,2B4</ExMetN_Y>
+        <ExMetN_Z>98,68,680,18,2B8</ExMetN_Z>
+        <ExMetN_W>98,68,680,18,2BC</ExMetN_W>
+
+        <ExMetO_X>98,68,680,18,2E0</ExMetO_X>
+        <ExMetO_Y>98,68,680,18,2E4</ExMetO_Y>
+        <ExMetO_Z>98,68,680,18,2E8</ExMetO_Z>
+        <ExMetO_W>98,68,680,18,2EC</ExMetO_W>
+
+        <ExMetP_X>98,68,680,18,310</ExMetP_X>
+        <ExMetP_Y>98,68,680,18,314</ExMetP_Y>
+        <ExMetP_Z>98,68,680,18,318</ExMetP_Z>
+        <ExMetP_W>98,68,680,18,31C</ExMetP_W>
+
+        <ExMetQ_X>98,68,680,18,340</ExMetQ_X>
+        <ExMetQ_Y>98,68,680,18,344</ExMetQ_Y>
+        <ExMetQ_Z>98,68,680,18,348</ExMetQ_Z>
+        <ExMetQ_W>98,68,680,18,34C</ExMetQ_W>
+
+        <ExMetR_X>98,68,680,18,370</ExMetR_X>
+        <ExMetR_Y>98,68,680,18,374</ExMetR_Y>
+        <ExMetR_Z>98,68,680,18,378</ExMetR_Z>
+        <ExMetR_W>98,68,680,18,37C</ExMetR_W>
+
+        <ExTop_Value>98,68,840,10</ExTop_Value>
+        <ExRootTop_X>98,68,840,18,10</ExRootTop_X>
+        <ExRootTop_Y>98,68,840,18,14</ExRootTop_Y>
+        <ExRootTop_Z>98,68,840,18,18</ExRootTop_Z>
+        <ExRootTop_W>98,68,840,18,1C</ExRootTop_W>
+
+        <ExTopA_X>98,68,840,18,40</ExTopA_X>
+        <ExTopA_Y>98,68,840,18,44</ExTopA_Y>
+        <ExTopA_Z>98,68,840,18,48</ExTopA_Z>
+        <ExTopA_W>98,68,840,18,4C</ExTopA_W>
+
+        <ExTopB_X>98,68,840,18,70</ExTopB_X>
+        <ExTopB_Y>98,68,840,18,74</ExTopB_Y>
+        <ExTopB_Z>98,68,840,18,78</ExTopB_Z>
+        <ExTopB_W>98,68,840,18,7C</ExTopB_W>
+
+        <ExTopC_X>98,68,840,18,A0</ExTopC_X>
+        <ExTopC_Y>98,68,840,18,A4</ExTopC_Y>
+        <ExTopC_Z>98,68,840,18,A8</ExTopC_Z>
+        <ExTopC_W>98,68,840,18,AC</ExTopC_W>
+
+        <ExTopD_X>98,68,840,18,D0</ExTopD_X>
+        <ExTopD_Y>98,68,840,18,D4</ExTopD_Y>
+        <ExTopD_Z>98,68,840,18,D8</ExTopD_Z>
+        <ExTopD_W>98,68,840,18,DC</ExTopD_W>
+
+        <ExTopE_X>98,68,840,18,100</ExTopE_X>
+        <ExTopE_Y>98,68,840,18,104</ExTopE_Y>
+        <ExTopE_Z>98,68,840,18,108</ExTopE_Z>
+        <ExTopE_W>98,68,840,18,10C</ExTopE_W>
+
+        <ExTopF_X>98,68,840,18,130</ExTopF_X>
+        <ExTopF_Y>98,68,840,18,134</ExTopF_Y>
+        <ExTopF_Z>98,68,840,18,138</ExTopF_Z>
+        <ExTopF_W>98,68,840,18,13C</ExTopF_W>
+
+        <ExTopG_X>98,68,840,18,160</ExTopG_X>
+        <ExTopG_Y>98,68,840,18,164</ExTopG_Y>
+        <ExTopG_Z>98,68,840,18,168</ExTopG_Z>
+        <ExTopG_W>98,68,840,18,16C</ExTopG_W>
+
+        <ExTopH_X>98,68,840,18,190</ExTopH_X>
+        <ExTopH_Y>98,68,840,18,194</ExTopH_Y>
+        <ExTopH_Z>98,68,840,18,198</ExTopH_Z>
+        <ExTopH_W>98,68,840,18,19C</ExTopH_W>
+
+        <ExTopI_X>98,68,840,18,1C0</ExTopI_X>
+        <ExTopI_Y>98,68,840,18,1C4</ExTopI_Y>
+        <ExTopI_Z>98,68,840,18,1C8</ExTopI_Z>
+        <ExTopI_W>98,68,840,18,1CC</ExTopI_W>
+      </Bones>
+
+      <Scale>
+        <X>70</X>
+        <Y>78</Y>
+        <Z>74</Z>
+      </Scale>
+
+      <Bust Base="140">
+        <X>68</X>
+        <Y>6C</Y>
+        <Z>70</Z>
+      </Bust>
+      <Wetness>2B0</Wetness>
+      <SWetness>2BC</SWetness>
+      <Height>26C</Height>
+      <MuscleTone>240,28,20,C</MuscleTone>
+      <TailSize>140,74</TailSize>
+    </Body>
+    <TimeControl>10,8,28,80</TimeControl>
+    <Weather>20</Weather>
+    <ForceWeather>26</ForceWeather>
+    <Music>C0,116</Music>
+    <Music2>C0,114</Music2>
+    <NameHeight>164</NameHeight>
+    <RenderToggle>104</RenderToggle>
+    <Transparency>173C</Transparency>
+    <EntityType>8C</EntityType>
+    <ModelType>189C</ModelType>
+    <!--Character Appearance-->
+    <Race>17E0</Race>
+    <Gender>17E1</Gender>
+    <BodyType>17E2</BodyType>
+    <RHeight>17E3</RHeight>
+    <Clan>17E4</Clan>
+    <Head>17E5</Head>
+    <Hair>17E6</Hair>
+    <Highlights>17E7</Highlights>
+    <Skintone>17E8</Skintone>
+    <RightEye>17E9</RightEye>
+    <HairTone>17EA</HairTone>
+    <HighlightTone>17EB</HighlightTone>
+    <FacialFeatures>17EC</FacialFeatures>
+    <LimbalEyes>17ED</LimbalEyes>
+    <EyeBrowType>17EE</EyeBrowType>
+    <LeftEye>17EF</LeftEye>
+    <Eye>17F0</Eye>
+    <Nose>17F1</Nose>
+    <Jaw>17F2</Jaw>
+    <Lips>17F3</Lips>
+    <LipsTone>17F4</LipsTone>
+    <TailorMuscle>17F5</TailorMuscle>
+    <TailType>17F6</TailType>
+    <RBust>17F7</RBust>
+    <FacePaint>17F8</FacePaint>
+    <FacePaintColor>17F9</FacePaintColor>
+
+    <CamAngleX>134</CamAngleX>
+    <CamAngleY>138</CamAngleY>
+    <CameraYAMin>150</CameraYAMin>
+    <CameraYAMax>14C</CameraYAMax>
+    <CameraHeight2>164</CameraHeight2>
+
+    <CamViewX>170</CamViewX>
+    <CamViewY>174</CamViewY>
+    <CamViewZ>178</CamViewZ>
+
+    <CamX>A0</CamX>
+    <CamY>A4</CamY>
+    <CamZ>A8</CamZ>
+
+    <FaceCamX>3E8</FaceCamX>
+    <FaceCamY>3EC</FaceCamY>
+    <FaceCamZ>3F0</FaceCamZ>
+
+    <Max>120</Max>
+    <Min>11C</Min>
+    <CZoom>118</CZoom>
+    <FOVC>124</FOVC>
+    <FOVMAX>12C</FOVMAX>
+    <FOV2>130</FOV2>
+    <CameraUpDown>218</CameraUpDown>
+    <EmoteIsPlayerFrozen>7C8</EmoteIsPlayerFrozen>
+    <AltCheckPlayerFrozen>D20</AltCheckPlayerFrozen>
+    <Emote>18CA</Emote>
+    <EmoteOld>CA0</EmoteOld>
+    <EmoteSpeed1>D14</EmoteSpeed1>
+    <EmoteSpeed2>D18</EmoteSpeed2>
+    <FreezeFacial>D1C</FreezeFacial>
+    <Territory>674</Territory>
+    <DataPath>F0,838</DataPath>
+    <DataHead>F0,83C</DataHead>
+    <NPCName>1884</NPCName>
+    <NPCModel>1902</NPCModel>
+    <StatusEffect>1C3C</StatusEffect>
+
+    <!--Character Equipment-->
+    <Job>1490</Job>
+    <WeaponBase>1492</WeaponBase>
+    <WeaponV>1494</WeaponV>
+    <WeaponDye>1496</WeaponDye>
+    <Offhand>14F8</Offhand>
+    <OffhandBase>14FA</OffhandBase>
+    <OffhandV>14FC</OffhandV>
+    <OffhandDye>14FE</OffhandDye>
+    <HeadPiece>1740</HeadPiece>
+    <HeadV>1742</HeadV>
+    <HeadDye>1743</HeadDye>
+    <Chest>1744</Chest>
+    <ChestV>1746</ChestV>
+    <ChestDye>1747</ChestDye>
+    <Arms>1748</Arms>
+    <ArmsV>174A</ArmsV>
+    <ArmsDye>174B</ArmsDye>
+    <Legs>174C</Legs>
+    <LegsV>174E</LegsV>
+    <LegsDye>174F</LegsDye>
+    <Feet>1750</Feet>
+    <FeetVa>1752</FeetVa>
+    <FeetDye>1753</FeetDye>
+    <Ear>1754</Ear>
+    <EarVa>1756</EarVa>
+    <Neck>1758</Neck>
+    <NeckVa>175A</NeckVa>
+    <Wrist>175C</Wrist>
+    <WristVa>175E</WristVa>
+    <RFinger>1760</RFinger>
+    <RFingerVa>1762</RFingerVa>
+    <LFinger>1764</LFinger>
+    <LFingerVa>1766</LFingerVa>
+
+
+    <WeaponX>F0,30,70</WeaponX>
+    <WeaponY>F0,30,74</WeaponY>
+    <WeaponZ>F0,30,78</WeaponZ>
+    <WeaponRed>F0,30,258</WeaponRed>
+    <WeaponGreen>F0,30,25C</WeaponGreen>
+    <WeaponBlue>F0,30,260</WeaponBlue>
+    <OffhandX>F0,30,28,70</OffhandX>
+    <OffhandY>F0,30,28,74</OffhandY>
+    <OffhandZ>F0,30,28,78</OffhandZ>
+    <OffhandRed>F0,30,28,258</OffhandRed>
+    <OffhandGreen>F0,30,28,25C</OffhandGreen>
+    <OffhandBlue>F0,30,28,260</OffhandBlue>
+    <SkinRedPigment>F0,240,28,20,0</SkinRedPigment>
+    <SkinGreenPigment>F0,240,28,20,4</SkinGreenPigment>
+    <SkinBluePigment>F0,240,28,20,8</SkinBluePigment>
+    <SkinRedGloss>F0,240,28,20,10</SkinRedGloss>
+    <SkinGreenGloss>F0,240,28,20,14</SkinGreenGloss>
+    <SkinBlueGloss>F0,240,28,20,18</SkinBlueGloss>
+    <HairRedPigment>F0,240,28,20,30</HairRedPigment>
+    <HairGreenPigment>F0,240,28,20,34</HairGreenPigment>
+    <HairBluePigment>F0,240,28,20,38</HairBluePigment>
+    <HairGlowRed>F0,240,28,20,40</HairGlowRed>
+    <HairGlowGreen>F0,240,28,20,44</HairGlowGreen>
+    <HairGlowBlue>F0,240,28,20,48</HairGlowBlue>
+    <HighlightRedPigment>F0,240,28,20,50</HighlightRedPigment>
+    <HighlightGreenPigment>F0,240,28,20,54</HighlightGreenPigment>
+    <HighlightBluePigment>F0,240,28,20,58</HighlightBluePigment>
+    <LeftEyeRed>F0,240,28,20,60</LeftEyeRed>
+    <LeftEyeGreen>F0,240,28,20,64</LeftEyeGreen>
+    <LeftEyeBlue>F0,240,28,20,68</LeftEyeBlue>
+    <RightEyeRed>F0,240,28,20,70</RightEyeRed>
+    <RightEyeGreen>F0,240,28,20,74</RightEyeGreen>
+    <RightEyeBlue>F0,240,28,20,78</RightEyeBlue>
+    <LipsBrightness>F0,240,28,20,2C</LipsBrightness>
+    <LipsR>F0,240,28,20,20</LipsR>
+    <LipsG>F0,240,28,20,24</LipsG>
+    <LipsB>F0,240,28,20,28</LipsB>
+    <LimbalR>F0,240,28,20,80</LimbalR>
+    <LimbalG>F0,240,28,20,84</LimbalG>
+    <LimbalB>F0,240,28,20,88</LimbalB>
+    <RenderDistance>C0</RenderDistance>
+    <FilterEnable>37B</FilterEnable>
+    <FilterAoB>318</FilterAoB>
+    <HDR>350</HDR>
+    <Brightness>318</Brightness>
+    <Contrast>330</Contrast>
+    <Exposure>31C</Exposure>
+    <Filmic>320</Filmic>
+    <SHDR>324</SHDR>
+    <Colorfulness>32C</Colorfulness>
+    <Contrast2>334</Contrast2>
+    <Colorfulnesss2>34C</Colorfulnesss2>
+    <Vibrance>348</Vibrance>
+    <Gamma>344</Gamma>
+    <GBlue>340</GBlue>
+    <GGreens>33C</GGreens>
+    <GRed>338</GRed>
+
+  </Character>
+
+</Settings>
