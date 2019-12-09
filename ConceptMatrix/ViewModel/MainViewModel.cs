@@ -53,6 +53,22 @@ namespace ConceptMatrix.ViewModel
                 else if (SaveSettings.Default.Language == "ja") realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.Japanese);
                 else if (SaveSettings.Default.Language == "de") realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.German);
                 else if (SaveSettings.Default.Language == "fr") realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.French);
+                else if (SaveSettings.Default.Language == "ko")
+                {
+                    if (File.Exists(Path.Combine(Properties.Settings.Default.GamePath, "boot", "FFXIV_Boot.exe")))
+                    {
+                        realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.Korean);
+                    }
+                    else realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.English);
+                }
+                else if (SaveSettings.Default.Language == "zh")
+                {
+                    if (File.Exists(Path.Combine(Properties.Settings.Default.GamePath, "FFXIVBoot.exe")))
+                    {
+                        realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.ChineseSimplified);
+                    }
+                    else realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.English);
+                }
                 else realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.English);
                 Initialize(realm);
                 MainWindow.HasRead = true;
