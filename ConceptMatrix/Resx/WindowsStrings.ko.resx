@@ -154,7 +154,7 @@
     <value>불러오기 창</value>
   </data>
   <data name="No" xml:space="preserve">
-    <value>아니요</value>
+    <value>아니오</value>
   </data>
   <data name="OK" xml:space="preserve">
     <value>확인</value>

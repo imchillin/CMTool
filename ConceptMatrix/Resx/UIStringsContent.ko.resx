@@ -117,6 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="FaceCamX" xml:space="preserve">
+    <value>X 페이스 캠 :</value>
+  </data>
+  <data name="FaceCamY" xml:space="preserve">
+    <value>Y 페이스 캠 :</value>
+  </data>
+  <data name="FaceCamZ" xml:space="preserve">
+    <value>Z 페이스 캠 :</value>
+  </data>
+  <data name="FacePaint" xml:space="preserve">
+    <value>얼굴 문신</value>
+  </data>
+  <data name="GposeViewX" xml:space="preserve">
+    <value>XGpose보기 :</value>
+  </data>
+  <data name="GposeViewY" xml:space="preserve">
+    <value>YGpose보기 :</value>
+  </data>
+  <data name="GposeViewZ" xml:space="preserve">
+    <value>ZGpose보기 :</value>
+  </data>
   <data name="About" xml:space="preserve">
     <value>응용 프로그램에 대하여</value>
   </data>
@@ -124,7 +145,7 @@
     <value>대상 데이터</value>
   </data>
   <data name="ActorEntityListToolTip" xml:space="preserve">
-    <value>주변 지역에 타겟팅 가능한 엔티티의 목록을 보려면 • 목록은 플레이어에서의 거리에 따라 입력된 엔티티가 위치를 변경하면 변경될 가능성이 있습니다.</value>
+    <value>주변 지역에 지정 가능한 엔티티의 목록을 보여줍니다 • 목록은 플레이어로부터의 거리에 따라 채워지며, 꼬마친구를 포함한 엔티티의 위치 변화에 따라 달라질 수 있습니다.</value>
   </data>
   <data name="ActorProperties" xml:space="preserve">
     <value>대상 속성</value>
@@ -133,7 +154,7 @@
     <value>대상 새로고침</value>
   </data>
   <data name="ActorRefreshToolTip" xml:space="preserve">
-    <value>선택한 대상에서 설정을 적용하고 새로고침합니다.</value>
+    <value>변경사항을 적용하고 대상을 새로고침 합니다.</value>
   </data>
   <data name="ActorScale" xml:space="preserve">
     <value>대상 크기</value>
@@ -145,10 +166,10 @@
     <value>항상 위에</value>
   </data>
   <data name="AnimSpeed" xml:space="preserve">
-    <value>행동 률</value>
+    <value>동작 속도 :</value>
   </data>
   <data name="AnimSpeedToolTip" xml:space="preserve">
-    <value>선택된 목표의 행동 속도를 수정합니다.</value>
+    <value>선택된 대상의 애니메이션 속도를 조정합니다.</value>
   </data>
   <data name="Apply" xml:space="preserve">
     <value>적용</value>
@@ -160,34 +181,34 @@
     <value>바이트 배열</value>
   </data>
   <data name="ArrayOfBytesToolTip" xml:space="preserve">
-    <value>선택한 개체에 대한 데이터를 포함합니다 • 데이터 배열을 복사하여 필드에 붙여넣고 적용</value>
+    <value>선택한 개체에 대한 데이터를 포함합니다 • 데이터를 붙여넣기 하고, 적용을 클릭하십시오.</value>
   </data>
   <data name="B" xml:space="preserve">
     <value>B</value>
   </data>
   <data name="Base" xml:space="preserve">
-    <value>기초</value>
+    <value>베이스</value>
   </data>
   <data name="BGMFreeze" xml:space="preserve">
-    <value>배경 음악 일시 중지</value>
+    <value>BGM 일시 중지</value>
   </data>
   <data name="BGMID" xml:space="preserve">
-    <value>배경 음악 ID</value>
+    <value>BGM배경 음악 ID</value>
   </data>
   <data name="Blue" xml:space="preserve">
     <value>파랑</value>
   </data>
   <data name="BlueGlow" xml:space="preserve">
-    <value>파란빛</value>
+    <value>파란빛:</value>
   </data>
   <data name="Body" xml:space="preserve">
-    <value>상체 장비</value>
+    <value>상체</value>
   </data>
   <data name="BodyToolTip" xml:space="preserve">
-    <value>선택한 대상의 크기를 변경합니다.</value>
+    <value>선택한 대상의 바디 타입을 변경합니다.</value>
   </data>
   <data name="BodyToolTip2" xml:space="preserve">
-    <value>선택한 대상에게 상체 장비를 장착 시킬 수 있습니다.</value>
+    <value>선택한 대상에 상체 장비를 장착 시킬 수 있습니다.</value>
   </data>
   <data name="BodyType" xml:space="preserve">
     <value>바디 타입</value>
@@ -202,25 +223,25 @@
     <value>가슴 크기</value>
   </data>
   <data name="BustSizeToolTip" xml:space="preserve">
-    <value>선택한 대상의 가슴둘레를 변경합니다.</value>
+    <value>선택한 대상의 가슴 크기를 변경합니다.</value>
   </data>
   <data name="BustXScale" xml:space="preserve">
-    <value>가슴 X 축 범위</value>
+    <value>가슴 X 크기</value>
   </data>
   <data name="BustXScaleToolTip" xml:space="preserve">
-    <value>선택한 대상의 가슴의 X축 범위를 수정합니다. •  여성캐릭터만 해당</value>
+    <value>선택한 대상의 가슴의 X 변경를 수정합니다. •  여성캐릭터만 해당</value>
   </data>
   <data name="BustYScale" xml:space="preserve">
-    <value>가슴 Y 축 범위</value>
+    <value>가슴 Y 크기</value>
   </data>
   <data name="BustYScaleToolTip" xml:space="preserve">
-    <value>선택한 대상의 가슴의 Y축 범위를 수정합니다. •  여성캐릭터만 해당</value>
+    <value>선택한 대상의 가슴의 Y 크기를 변경합니다. •  여성캐릭터만 해당</value>
   </data>
   <data name="BustZScale" xml:space="preserve">
-    <value>가슴 Z 축 범위</value>
+    <value>가슴 Z 크기</value>
   </data>
   <data name="BustZScaleToolTip" xml:space="preserve">
-    <value>선택한 대상의 가슴의 Z축 범위를 수정합니다. •  여성캐릭터만 해당</value>
+    <value>선택한 대상의 가슴의 Z 크기를 변경합니다. •  여성캐릭터만 해당</value>
   </data>
   <data name="c1001" xml:space="preserve">
     <value>c1001 - 루가딘 (여자)</value>
@@ -310,13 +331,13 @@
     <value>카메라 뷰 Z:</value>
   </data>
   <data name="CameraXPos" xml:space="preserve">
-    <value>카메라 X 포지션 :</value>
+    <value>카메라 X 포지션</value>
   </data>
   <data name="CameraYPos" xml:space="preserve">
-    <value>카메라 Y 포지션 :</value>
+    <value>카메라 Y 포지션</value>
   </data>
   <data name="CameraZPos" xml:space="preserve">
-    <value>카메라 Z 포지션 :</value>
+    <value>카메라 Z 포지션</value>
   </data>
   <data name="CamRotation" xml:space="preserve">
     <value>카메라 회전:</value>
@@ -346,10 +367,10 @@
     <value>쇄골</value>
   </data>
   <data name="Colorfulness" xml:space="preserve">
-    <value>색상의 강도:</value>
+    <value>채도:</value>
   </data>
   <data name="Colorfulness2" xml:space="preserve">
-    <value>색상의 강도2:</value>
+    <value>채도2:</value>
   </data>
   <data name="Contrast" xml:space="preserve">
     <value>대비:</value>
@@ -358,17 +379,17 @@
     <value>대비2:</value>
   </data>
   <data name="CurrentZoom" xml:space="preserve">
-    <value>현재 초점 거리:</value>
+    <value>현재 줌 거리:</value>
   </data>
   <data name="DataPath" xml:space="preserve">
     <value>데이터 경로:</value>
   </data>
   <data name="DataPathToolTip" xml:space="preserve">
-    <value>선택한 대상의 데이터를 경로 변경합니다.
-• 이것은 다른 인종이나 성별 움직임을 사용할 수 있습니다
-• 새로 고칠 필요가 없으며 Gpose 내부 및 외부에서 사용할 수 있습니다.
-• 대상의 모델링 골격이 선택한 인종과 성별에 맞게 변형되므로 결과적으로 늘어나거나 줄어드는 것이 불가피합니다.
-• 새로 고침 버튼을 클릭하여 변형 몬스터가 될 수도 있습니다</value>
+    <value>선택한 엔티티의 데이터를 경로 변경합니다.
+• 다른 종족이나 성별의 애니메이션을 사용할 수 있게 합니다.
+• 새로고침할 필요가 없으며, GPose 내외부에서 사용할 수 있습니다.
+• 대상의 뼈대가 선택한 종족과 성별에 맞게 변형되므로 늘어나거나 찌그러짐 등이 발생할 수 있습니다.
+• 대상 새로고침을 통해 보스나 몹이 될 수도 있습니다.</value>
   </data>
   <data name="DefaultTime" xml:space="preserve">
     <value>기본시간</value>
@@ -380,11 +401,11 @@
     <value>흠집 효과</value>
   </data>
   <data name="DrenchedToolTip" xml:space="preserve">
-    <value>선택한 엔티티에 더 뚜렷한 젖은 효과를 줍니다.
+    <value>선택한 엔티티에 보다 뚜렷한 젖은 효과를 줍니다.
 • 물에 젖은것처럼, 이 효과는 시간이 지나면 사라집니다.</value>
   </data>
   <data name="Dyes" xml:space="preserve">
-    <value>염료</value>
+    <value>염색</value>
   </data>
   <data name="EarMuscleTailSize" xml:space="preserve">
     <value>귀 / 체격 / 꼬리 크기</value>
@@ -425,11 +446,10 @@
     <value>엔티티 유형</value>
   </data>
   <data name="EntityTypeToolTip" xml:space="preserve">
-    <value>
-고급 사용자 만!
-• 선택한 엔터티의 엔터티 유형이 변경됩니다
-• 따라서 일부 엔티티에서 예기치 않은 동작이 발생할 수 있습니다
-• 일부 NPC를 유형 1로 바꾸면 그룹 포즈에서 타겟팅이 가능해집니다</value>
+    <value>고급 사용자만!
+• 선택한 엔티티의 엔티티 유형이 변경됩니다.
+• 따라서 일부 엔티티에서 예기치 않은 동작이 발생할 수 있습니다.
+• 일부 NPC를 유형 1로 바꾸면 GPose에서 지정이 가능해집니다.</value>
   </data>
   <data name="Equipment" xml:space="preserve">
     <value>장비</value>
@@ -472,16 +492,7 @@
   <data name="Face" xml:space="preserve">
     <value>얼굴</value>
   </data>
-  <data name="FaceCamX" xml:space="preserve">
-    <value>X 페이스 캠 :</value>
-  </data>
-  <data name="FaceCamY" xml:space="preserve">
-    <value>Y 페이스 캠 :</value>
-  </data>
-  <data name="FaceCamZ" xml:space="preserve">
-    <value>Z 페이스 캠 :</value>
-  </data>
-  <data name="FacePaint" xml:space="preserve">
+  <data name="FacePaint1" xml:space="preserve">
     <value>얼굴 문신</value>
   </data>
   <data name="FacePaintColor" xml:space="preserve">
@@ -520,7 +531,7 @@
     <value>파이널판타지14의 프로세스를 다시 읽습니다.</value>
   </data>
   <data name="FingerBones" xml:space="preserve">
-    <value>손가락 뼈</value>
+    <value>손가락 뼈대</value>
   </data>
   <data name="ForceAnim" xml:space="preserve">
     <value>강제동작</value>
@@ -528,27 +539,27 @@
   <data name="ForceAnimToolTip" xml:space="preserve">
     <value>선택된 엔터티에 강제로 동작을 실행시킵니다.
 • GPose에서만 사용할 수 있습니다.
-• 이것을 사용하려면 GPose에 들어가기 전에 /wave 등의 비 루프 이모트를 수행해야합니다.
-• 일부 동작에는 인종/성별 제한이 있습니다. 캐릭터가 경련하는 경우 다른 데이터 경로를 사용해야 할 수도 있습니다.
+• 이것을 사용하려면 GPose에 들어가기 전에 /손인사 등의 반복되지 않는 감정표현을 먼저 사용해야합니다.
+• 일부 동작에는 종족/성별 제한이 있습니다. 캐릭터가 떨리는 경우 다른 데이터 경로를 사용해야 할 수도 있습니다.
 • NPC에는 작동하지 않습니다! </value>
   </data>
   <data name="Forearms" xml:space="preserve">
     <value>팔뚝</value>
   </data>
   <data name="FoV" xml:space="preserve">
-    <value>시야</value>
+    <value>시야:</value>
   </data>
   <data name="FoV2" xml:space="preserve">
-    <value>시야2</value>
+    <value>시야2:</value>
   </data>
   <data name="FreeCompanyTag" xml:space="preserve">
-    <value>부대약자</value>
+    <value>부대약칭:</value>
   </data>
   <data name="FreeCompanyTagWaterMark" xml:space="preserve">
-    <value>부대약자</value>
+    <value>부대약칭</value>
   </data>
   <data name="FreeCompanyToolTip" xml:space="preserve">
-    <value>선택한 대상의 부대약자를 변경합니다.</value>
+    <value>선택한 대상의 부대약칭를 변경합니다.</value>
   </data>
   <data name="FreezeAll" xml:space="preserve">
     <value>모두 동결</value>
@@ -569,7 +580,7 @@
 • GPose에서 엔티티의 포지션과 로테이션을 유지하기 위해 포지션동결과 함께 사용하면 유용합니다.
 • 이것을 게임 내 '페이스 카메라'토글 (기본값 : 스페이스 바)과 함께 사용하면 몸 전체를 돌리지 않고도 개체의 머리를 회전시킬 수 있습니다.
 • 포지션 동결과 동일하게 GPose에서 엔티티를 전환하기 전에 로테이션 동결을 끄십시오.
-• 수치 직접 입력 또는 로테이션 슬라이더 사용에 필요합니다. </value>
+• 수치를 직접 입력하거나 로테이션 슬라이더 사용이 필요합니다. </value>
   </data>
   <data name="G" xml:space="preserve">
     <value>G</value>
@@ -584,38 +595,29 @@
     <value>선택한 대상의 성별을 변경합니다.</value>
   </data>
   <data name="GPoseMode" xml:space="preserve">
-    <value>Gpose 모드</value>
+    <value>GPose 모드</value>
   </data>
   <data name="GposeModeToolTip" xml:space="preserve">
     <value>GPose에서 현재 선택된 엔티티의  XYZ 포지션, 로테이션 및 동작과 같은 특정 값을 변경할 수 있습니다.
-• GPose 모드와 타겟모드는 동시에 켜집니다. 대상 모드가 이미 켜져 있지 않은지 확인하십시오. 그렇지 않으면 대신 꺼집니다.</value>
-  </data>
-  <data name="GposeViewX" xml:space="preserve">
-    <value>XGpose보기 :</value>
-  </data>
-  <data name="GposeViewY" xml:space="preserve">
-    <value>YGpose보기 :</value>
-  </data>
-  <data name="GposeViewZ" xml:space="preserve">
-    <value>ZGpose보기 :</value>
+• GPose 모드와 지정 모드는 동시에 켜집니다. 지정 모드가 이미 켜져 있지 않은지 확인하십시오. 그렇지 않으면 꺼집니다.</value>
   </data>
   <data name="Green" xml:space="preserve">
     <value>초록</value>
   </data>
   <data name="GreenGlow" xml:space="preserve">
-    <value>초록빛</value>
+    <value>초록빛:</value>
   </data>
   <data name="GroupPoseFilter" xml:space="preserve">
-    <value>Gpose 필터</value>
+    <value>GPose 필터</value>
   </data>
   <data name="HairColor" xml:space="preserve">
-    <value>머리색</value>
+    <value>머리색상:</value>
   </data>
   <data name="HairColor2" xml:space="preserve">
-    <value>머리색2</value>
+    <value>머리색상2:</value>
   </data>
   <data name="HairColorToolTip" xml:space="preserve">
-    <value>선택한 대상의 머리색을 변경합니다.</value>
+    <value>선택한 대상의 머리색상을 변경합니다.</value>
   </data>
   <data name="Hairstyle" xml:space="preserve">
     <value>헤어스타일</value>
@@ -630,25 +632,25 @@
     <value>선택한 대상에게 장갑을 착용 시킬 수 있습니다.</value>
   </data>
   <data name="HDR" xml:space="preserve">
-    <value>HDR</value>
+    <value>HDR:</value>
   </data>
   <data name="Head" xml:space="preserve">
     <value>머리</value>
   </data>
   <data name="HeadBones" xml:space="preserve">
-    <value>두개골</value>
+    <value>머리 뼈대</value>
   </data>
   <data name="HeadToolTip" xml:space="preserve">
     <value>선택한 대상에게 머리장비를 착용 시킬 수 있습니다.</value>
   </data>
   <data name="HeadType" xml:space="preserve">
-    <value>얼굴 유형</value>
+    <value>머리 유형:</value>
   </data>
   <data name="HeadTypeToolTip" xml:space="preserve">
-    <value>선택한  대상의 얼굴 유형을 변경합니다.</value>
+    <value>선택한  대상의 머리 유형을 변경합니다.</value>
   </data>
   <data name="Height" xml:space="preserve">
-    <value>키</value>
+    <value>키:</value>
   </data>
   <data name="HeightToolTip" xml:space="preserve">
     <value>선택한 대상의 키를 변경합니다.</value>
@@ -663,15 +665,15 @@
     <value>부분 염색 색</value>
   </data>
   <data name="HighlightsToolTip" xml:space="preserve">
-    <value>선택한 대상의 부분 염색 색을 변경합니다.</value>
+    <value>선택한 대상의 부분 염색을 변경합니다.</value>
   </data>
   <data name="IdleAnim" xml:space="preserve">
-    <value>포즈 선택</value>
+    <value>유휴 동작 :</value>
   </data>
   <data name="IdleAnimToolTip" xml:space="preserve">
-    <value>목록에서 포즈를 변경할 수 있습니다.
-• 단체모드에 진입하지 않아도 사용이 가능합니다.
-• 단체모드에서 이용할 경우, 앉거나 서 있어야 하며 포즈를 불러올 때까지 '/자세변경'을 해야합니다.
+    <value>선택한 엔티티의 대기 애니메이션을 변경할 수 있습니다.
+• GPose에 진입하지 않아도 사용이 가능합니다.
+• GPose에서 이용할 경우, 앉거나 서 있어야 하며 포즈를 불러올 때까지 '/자세변경'을 해야합니다.
 • 소환수, 꼬마친구, 초코보 그리고 대부분의 NPC들에게도 사용할 수 있습니다.
 </value>
   </data>
@@ -685,7 +687,7 @@
     <value>속눈썹:</value>
   </data>
   <data name="Jaw" xml:space="preserve">
-    <value>턱</value>
+    <value>턱:</value>
   </data>
   <data name="JawType" xml:space="preserve">
     <value>턱 유형:</value>
@@ -722,7 +724,7 @@
 </value>
   </data>
   <data name="Legs" xml:space="preserve">
-    <value>다리</value>
+    <value>다리:</value>
   </data>
   <data name="LegsToolTip" xml:space="preserve">
     <value>선택한 대상에게 다리 장비를 착용 시킬 수 있습니다.</value>
@@ -772,48 +774,48 @@
 • 표정을 제대로 고정하려면, 이 옵션을 키고, 애니메이션의 속도를 0으로 설정해야합니다.</value>
   </data>
   <data name="LockTime" xml:space="preserve">
-    <value>시간 정지</value>
+    <value>시간 정지:</value>
   </data>
   <data name="LowerBodyBones" xml:space="preserve">
-    <value>하체 뼈</value>
+    <value>하체 뼈대</value>
   </data>
   <data name="LowerEarrings" xml:space="preserve">
-    <value>아랫 귀걸이:</value>
+    <value>아래 귀걸이:</value>
   </data>
   <data name="LowerEyelids" xml:space="preserve">
-    <value>아랫 눈꺼풀:</value>
+    <value>아래 눈꺼풀:</value>
   </data>
   <data name="LowerLip" xml:space="preserve">
-    <value>아랫입술</value>
+    <value>아랫입술:</value>
   </data>
   <data name="MainHand" xml:space="preserve">
-    <value>주 무기</value>
+    <value>주 무기:</value>
   </data>
   <data name="MainHandColor" xml:space="preserve">
     <value>주 무기 색상</value>
   </data>
   <data name="MainHandScale" xml:space="preserve">
-    <value>주 무기 스케일</value>
+    <value>주 무기 크기</value>
   </data>
   <data name="MainHandScaleToolTip" xml:space="preserve">
-    <value>주 무기의 XYZ 스케일을 조절 할 수 있습니다.
+    <value>주 무기의 XYZ 크기를 조절 할 수 있습니다.
 • 주 무기에 불러온 소품의 크기도 변경이 가능합니다. 하지만 툼스톤(컴패니언앱 감정표현)같은 시각효과에는 영향을 미치지 않습니다.</value>
   </data>
   <data name="MainHandToolTip" xml:space="preserve">
     <value>대상에게 주 무기를 장비시킬 수 있습니다.
-• 주 무기를 투명하게 하고 싶은 경우에는 '임금님의 주먹'을 장비하거나, 오른쪽 패널로 주 무기 스케일 및/또는 보조 무기 스케일을 사용합니다.</value>
+• 주 무기를 투명하게 하고 싶은 경우에는 '임금님의 주먹'을 장비하거나, 오른쪽 패널로 주 무기 크기 및/또는 보조 무기 크기을 사용합니다.</value>
   </data>
   <data name="MaxZoom" xml:space="preserve">
-    <value>최대 시야거리</value>
+    <value>최대 줌 거리:</value>
   </data>
   <data name="MiddleFinger" xml:space="preserve">
-    <value />
+    <value>중지:</value>
   </data>
   <data name="MiddleJoint" xml:space="preserve">
-    <value />
+    <value>중지 관절:</value>
   </data>
   <data name="MinZoom" xml:space="preserve">
-    <value>최소 시야거리</value>
+    <value>최소 줌 거리:</value>
   </data>
   <data name="ModelID" xml:space="preserve">
     <value>모델 ID</value>
@@ -822,7 +824,7 @@
     <value>모델 목록</value>
   </data>
   <data name="ModelType" xml:space="preserve">
-    <value>모델 유형</value>
+    <value>모델 유형:</value>
   </data>
   <data name="ModelTypeButtonToolTip" xml:space="preserve">
     <value>우측의 플라이아웃 메뉴를 열어 몬스터, 데미-휴먼, 프랍 엔티티 또는 엔티티 기반의 효과를 검색할 수 있습니다.
@@ -833,10 +835,10 @@
     <value>선택한 캐릭터의 모델 유형을 변경합니다.</value>
   </data>
   <data name="Mouth" xml:space="preserve">
-    <value>입</value>
+    <value>입:</value>
   </data>
   <data name="MouthType" xml:space="preserve">
-    <value>입 유형</value>
+    <value>입 유형:</value>
   </data>
   <data name="MouthTypeToolTip" xml:space="preserve">
     <value>선택한 대상의 입 유형을 변경합니다.</value>
@@ -857,16 +859,16 @@
     <value>이름</value>
   </data>
   <data name="Neck" xml:space="preserve">
-    <value>목걸이</value>
+    <value>목걸이:</value>
   </data>
   <data name="NeckToolTip" xml:space="preserve">
     <value>선택한 대상에게 목걸이를 착용시킬 수 있습니다.</value>
   </data>
   <data name="Nose" xml:space="preserve">
-    <value>코</value>
+    <value>코:</value>
   </data>
   <data name="NoseType" xml:space="preserve">
-    <value>코 유형</value>
+    <value>코 유형:</value>
   </data>
   <data name="NoseTypeToolTip" xml:space="preserve">
     <value>선택한 대상의 코 유형을 변경합니다.</value>
@@ -886,30 +888,30 @@
 • 일부 NPC(제노스, 야만족 및 일부 NPC)는 데미-휴먼으로 분류되기 때문에 이 항목에 포함되지 않으며 첫 번째 탭의 모델 유형에서 검색하여 찾을 수 있습니다.</value>
   </data>
   <data name="OffHand" xml:space="preserve">
-    <value>보조 무기</value>
+    <value>보조 무기:</value>
   </data>
   <data name="OffHandColor" xml:space="preserve">
-    <value>보조 무기 컬러</value>
+    <value>보조 무기 색상</value>
   </data>
   <data name="OffHandScale" xml:space="preserve">
-    <value>보조 무기 스케일</value>
+    <value>보조 무기 크기</value>
   </data>
   <data name="OffHandScaleToolTip" xml:space="preserve">
-    <value>보조 무기의 XYZ 스케일을 조절 할 수 있습니다.
-• 이 옵션은 방패, 화살통, 에테르팩(기공사), 카드집(점성술사), 칼집, 그리고 Focus와 쌍수 무기의 왼손에 영향을 미칩니다.</value>
+    <value>보조 무기의 XYZ 크기를 조절 할 수 있습니다.
+• 이 옵션은 방패, 화살통, 에테르팩(기공사), 카드집(점성술사), 칼집, 그리고 오브(적마도사)와 쌍수 무기의 왼손에 영향을 미칩니다.</value>
   </data>
   <data name="OffHandToolTip" xml:space="preserve">
     <value>보조 무기를 착용 할 수 있습니다.
 • 적절한 보조 무기를 찾으려면 (방패 제외) 보조 무기 '보기'버튼을 사용하여 주무기 장비를 검색해야합니다. 예를 들어 칼집이나 화살통을 찾으려면 쌍검이나 활을 검색해야합니다.</value>
   </data>
   <data name="OuterBrows" xml:space="preserve">
-    <value>눈썹꼬리</value>
+    <value>눈썹꼬리:</value>
   </data>
   <data name="OverallScale" xml:space="preserve">
-    <value>전반적 스케일:</value>
+    <value>전체 크기:</value>
   </data>
   <data name="OverallScaleToolTip" xml:space="preserve">
-    <value>선택된 대상의 전반적 스케일을 수정합니다.</value>
+    <value>선택된 대상의 전체 크기를 수정합니다.</value>
   </data>
   <data name="Pelvis" xml:space="preserve">
     <value>골반:</value>
@@ -924,14 +926,13 @@
     <value>포징 매트릭스</value>
   </data>
   <data name="PropView" xml:space="preserve">
-    <value>소품
-보기</value>
+    <value>프롭뷰</value>
   </data>
   <data name="R" xml:space="preserve">
     <value>R</value>
   </data>
   <data name="Race" xml:space="preserve">
-    <value>종족</value>
+    <value>종족:</value>
   </data>
   <data name="RaceToolTip" xml:space="preserve">
     <value>선택한 대상의 종족을 변경합니다.</value>
@@ -948,39 +949,39 @@
   <data name="RealTimeRotationToolTip" xml:space="preserve">
     <value>마우스 버튼을 사용하여 큐브를 제어하십시오.
 • 모든 로테이션은 개체가 현재 향하고있는 방향을 기준으로합니다.
-• RMB는 X 로테이션을 제어합니다.
-• LMB는 Y 로테이션을 제어합니다.
-• MMB는 Z 로테이션을 제어합니다. </value>
+• 우클릭은 X 로테이션을 제어합니다.
+• 좌클릭은 Y 로테이션을 제어합니다.
+• 훨클릭은 Z 로테이션을 제어합니다. </value>
   </data>
   <data name="Red" xml:space="preserve">
-    <value>빨강</value>
+    <value>빨강:</value>
   </data>
   <data name="RedGlow" xml:space="preserve">
-    <value>빨간빛</value>
+    <value>빨간빛:</value>
   </data>
   <data name="RefreshButton" xml:space="preserve">
     <value>새로고침</value>
   </data>
   <data name="RelativeXYZPos" xml:space="preserve">
-    <value>상대적 XYZ 포지션 :</value>
+    <value>상대적 XYZ 위치 :</value>
   </data>
   <data name="RelativeXYZPosToolTip" xml:space="preserve">
-    <value>이 토글은 모든 XYZ 움직임을 대상으로 하는 엔티티를 기준으로 움직이게 합니다.
-•이 설정은 기본적으로 켜져 있으며 상태는 세션간에 저장됩니다</value>
+    <value>이 토글은 모든 선택된 엔티티와 관련된 모든 XYZ 움직임을 조작할 수 있게 합니다. 인게임과 완벽히 일치하지는 않습니다.
+• 이 설정은 기본적으로 켜져 있으며 상태는 세션간에 저장됩니다</value>
   </data>
   <data name="RelativeXYZRot" xml:space="preserve">
     <value>상대적 XYZ 로테이션:</value>
   </data>
   <data name="RelativeXYZRotToolTip" xml:space="preserve">
-    <value>이 토글은 모든 XYZ 움직임을 대상으로 하는 엔티티를 기준으로 움직이게 합니다.
-•이 설정은 기본적으로 켜져 있으며 상태는 세션간에 저장됩니다
+    <value>이 토글은 모든 선택된 엔티티와 관련된 모든 XYZ 움직임을 조작할 수 있게 합니다. 인게임과 완벽히 일치하지는 않습니다.
+• 이 설정은 기본적으로 켜져 있으며 상태는 세션간에 저장됩니다
 • 실시간 로테이션 큐브에만 영향을줍니다.</value>
   </data>
   <data name="RenderCycle" xml:space="preserve">
     <value>랜더 주기</value>
   </data>
   <data name="RenderLimit" xml:space="preserve">
-    <value>랜더 제한</value>
+    <value>캐릭터 렌더 제한 해제:</value>
   </data>
   <data name="RenderToggleToolTip" xml:space="preserve">
     <value>랜더 토글 스위치</value>
@@ -992,16 +993,16 @@
     <value>초기설정으로 초기화</value>
   </data>
   <data name="RightArm" xml:space="preserve">
-    <value>오른팔</value>
+    <value>오른팔:</value>
   </data>
   <data name="RightEyeColor" xml:space="preserve">
     <value>오른쪽 눈 색</value>
   </data>
   <data name="RightLeg" xml:space="preserve">
-    <value>오른다리</value>
+    <value>오른다리:</value>
   </data>
   <data name="RightRing" xml:space="preserve">
-    <value>오른쪽 반지</value>
+    <value>오른쪽 반지:</value>
   </data>
   <data name="RightRingToolTip" xml:space="preserve">
     <value>선택한 대상에게 오른쪽 반지를 착용 시킬 수 있습니다.
@@ -1018,10 +1019,10 @@
   </data>
   <data name="RotationSlidersToolTip" xml:space="preserve">
     <value>이 토글은 로테이션 슬라이더와 수치 직접 입력간에 전환됩니다.
-•이 설정은 기본적으로 켜져 있으며 세션간에 상태가 저장됩니다.
+• 이 설정은 기본적으로 켜져 있으며 세션간에 상태가 저장됩니다.
 • 끄면 XYZ 로테이션 슬라이더가 숫자 값으로 바뀝니다.
-• 각 입력은 0에서 360 사이의 값을 허용합니다.
-• 로테이션 슬라이더 및 숫자 입력 조정은 먼저 로테이션 동결을 해야 합니다.</value>
+• 각각 0에서 360 사이의 값을 입력할 수 있습니다.
+• 로테이션 슬라이더 및 직접 수치 입력은 먼저 로테이션 동결을 해야 합니다.</value>
   </data>
   <data name="SaveButton" xml:space="preserve">
     <value>저장</value>
@@ -1054,7 +1055,7 @@
     <value>피부색</value>
   </data>
   <data name="Skintone" xml:space="preserve">
-    <value>피부 톤</value>
+    <value>피부 톤:</value>
   </data>
   <data name="SkinToneToolTip" xml:space="preserve">
     <value>선택한 대상의 피부 톤을 변경합니다.</value>
@@ -1065,10 +1066,10 @@
   </data>
   <data name="StatusEffectToolTip" xml:space="preserve">
     <value>비표준 상태 VFX를 GPose의 엔티티에 적용 할 수 있습니다.
-1. GPose 메뉴에서 기본 상태 중 하나를 활성화합니다 (예: 열).
+1. GPose 메뉴에서 기본 상태 중 하나를 활성화합니다 (예: 열병).
 2. 드롭 다운 메뉴에서 원하는 새 VFX를 선택하십시오.
 3. GPose 메뉴를 사용하여 선택한 상태를 제거하십시오.
-• 새로운 효과를 선택하거나 현재 효과를 제거하려면 재설정을 누르거나 다른 상태 (예: 깊은 동결)로 덮어 쓰십시오.</value>
+• 새로운 효과를 선택하거나 현재 효과를 제거하려면 재설정을 누르거나 다른 상태 (예: 빙결)로 덮어 쓰십시오.</value>
   </data>
   <data name="Sternum" xml:space="preserve">
     <value>흉골:</value>
@@ -1107,10 +1108,10 @@
   </data>
   <data name="TimeLockToolTip" xml:space="preserve">
     <value>시간 제어를 사용하여 설정한 시간이 변경되지 않도록합니다.
-"이것은 정확하지 않으며 장기간에 걸쳐 약간씩 이동합니다</value>
+•이것은 정확하지 않으며 장기간에 걸쳐 약간씩 이동합니다</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>칭호</value>
+    <value>칭호:</value>
   </data>
   <data name="TitleToolTip" xml:space="preserve">
     <value>선택한 대상의 칭호를 변경합니다.</value>
@@ -1132,8 +1133,8 @@
   </data>
   <data name="TransparencyToolTip" xml:space="preserve">
     <value>선택된 엔티티의 투명도를 수정합니다.
-• 대상의 투명도를 줄여도 주 무기 나 무기에 영향을 미치지 않습니다. 장비 탭에서 무기의 XYZ 스케일을 0으로 설정할 수 있습니다.
-• GPose의 엔터티의 값을 0으로 설정하면 시스템에서 대상을 지정할 수 없게될수도 있습니다. 그래도 계속 사용하려면 0.03으로 설정하십시오. </value>
+• 대상의 투명도를 줄여도 주 무기 나 무기에 영향을 미치지 않습니다. 장비 탭에서 무기의 XYZ 크기를 0으로 설정할 수 있습니다.
+• GPose의 엔티티의 값을 0으로 설정하면 시스템에서 대상을 지정할 수 없게될수도 있습니다. 그래도 계속 사용하려면 0.03으로 설정하십시오. </value>
   </data>
   <data name="Twitter" xml:space="preserve">
     <value>Twitter</value>
@@ -1142,17 +1143,17 @@
     <value>모든 고정 해제</value>
   </data>
   <data name="UncheckButtonToolTip" xml:space="preserve">
-    <value>모든 선택을 취소하고 동결을 해제합니다.
+    <value>모든 선택을 취소하고 고정을 해제합니다.
 </value>
   </data>
   <data name="UpperBodyBones" xml:space="preserve">
-    <value>상체 뼈</value>
+    <value>상체 뼈대:</value>
   </data>
   <data name="UpperEarrings" xml:space="preserve">
     <value>위 귀걸이:</value>
   </data>
   <data name="UpperLip" xml:space="preserve">
-    <value>윗입술</value>
+    <value>윗입술:</value>
   </data>
   <data name="Variant" xml:space="preserve">
     <value>변수</value>
@@ -1173,19 +1174,19 @@
     <value>시각 효과</value>
   </data>
   <data name="VoiceType" xml:space="preserve">
-    <value>목소리 종류</value>
+    <value>목소리 타입:</value>
   </data>
   <data name="VoiceTypeToolTip" xml:space="preserve">
-    <value>선택한 대상의 목소리 종류를 변경합니다.</value>
+    <value>선택한 대상의 목소리 타입을 변경합니다.</value>
   </data>
   <data name="Waist" xml:space="preserve">
     <value>허리:</value>
   </data>
   <data name="Weather" xml:space="preserve">
-    <value>날씨</value>
+    <value>날씨:</value>
   </data>
   <data name="WeatherForce" xml:space="preserve">
-    <value>날씨 강제</value>
+    <value>날씨 강제:</value>
   </data>
   <data name="WeatherForceToolTip" xml:space="preserve">
     <value>지역의 현재 날씨를 제어합니다.
@@ -1196,7 +1197,7 @@
   </data>
   <data name="WeatherToolTip" xml:space="preserve">
     <value>지역의 현재 날씨를 제어합니다.
-이 방법은 자연스러운 전환을 사용하며 약간의 시간이 걸릴 수 있습니다.</value>
+• 이 방법은 자연스러운 전환을 사용하며 약간의 시간이 걸릴 수 있습니다.</value>
   </data>
   <data name="Wet" xml:space="preserve">
     <value>물에 젖은 효과:</value>
@@ -1206,7 +1207,7 @@
 • 해제하면 시간이 지남에 따라 효과가 사라집니다.</value>
   </data>
   <data name="World" xml:space="preserve">
-    <value>환경</value>
+    <value>월드</value>
   </data>
   <data name="Wrists" xml:space="preserve">
     <value>손목</value>
@@ -1232,12 +1233,12 @@
     <value>X 로테이션:</value>
   </data>
   <data name="XRot2ToolTip" xml:space="preserve">
-    <value>선택한 조인트의 X 로테이션을 수정합니다.</value>
+    <value>선택한 관절의 X 로테이션을 수정합니다.</value>
   </data>
   <data name="XRotToolTip" xml:space="preserve">
     <value>선택한 대상의 X 로테이션을 수정합니다.
 • GPose에서 적용하려면 대상의 동작을 동결시켜야 할 수도 있습니다.
-• 로테이션 슬라이더와 숫자 입력 조정은 로테이션 동결이 필요합니다.</value>
+• 로테이션 슬라이더와 직접 수치 입력은 로테이션 동결이 필요합니다.</value>
   </data>
   <data name="Y" xml:space="preserve">
     <value>Y:</value>
@@ -1256,12 +1257,12 @@
     <value>Y 로테이션:</value>
   </data>
   <data name="YRot2ToolTip" xml:space="preserve">
-    <value>선택한 조인트의 Y 로테이션을 수정합니다.</value>
+    <value>선택한 관절의 Y 로테이션을 수정합니다.</value>
   </data>
   <data name="YRotToolTip" xml:space="preserve">
     <value>선택한 대상의 Y 로테이션을 수정합니다.
 • GPose에서 적용하려면 대상의 동작을 동결시켜야 할 수도 있습니다.
-• 로테이션 슬라이더 및 숫자 입력 조정은 먼저 로테이션 동결을 해야합니다 </value>
+• 로테이션 슬라이더 및 직접 수치 입력은 먼저 로테이션 동결을 해야합니다 </value>
   </data>
   <data name="Z" xml:space="preserve">
     <value>Z:</value>
@@ -1270,14 +1271,14 @@
     <value>제로</value>
   </data>
   <data name="ZeroScale" xml:space="preserve">
-    <value>제로 스케일</value>
+    <value>제로 크기</value>
   </data>
   <data name="ZeroScaleToolTip" xml:space="preserve">
-    <value>XYZ 스케일을 0으로 설정하여 효과적으로 보이지 않게합니다.
+    <value>XYZ 크기를 0으로 설정하여 보이지 않게합니다.
 • 각 필드에 '1.0'을 입력하면 작업을 취소 할 수 있습니다. </value>
   </data>
   <data name="ZPos" xml:space="preserve">
-    <value>Z 포지션</value>
+    <value>Z 포지션:</value>
   </data>
   <data name="ZPosToolTip" xml:space="preserve">
     <value>선택한 대상의 Z 포지션을 수정합니다.
@@ -1290,13 +1291,13 @@
     <value>Z 로테이션:</value>
   </data>
   <data name="ZRot2ToolTip" xml:space="preserve">
-    <value>선택한 조인트의 Z 로테이션을 수정합니다.
+    <value>선택한 관절의 Z 로테이션을 수정합니다.
 </value>
   </data>
   <data name="ZRotToolTip" xml:space="preserve">
     <value>선택한 대상의 Z 로테이션을 수정합니다.
 • GPose에서 적용하려면 대상의 동작을 동결해야 할 수도 있습니다. 
-• 로테이션 슬라이더 및 숫자 입력 조정은 먼저 로테이션 동결을 해야합니다 
+• 로테이션 슬라이더 및 직접 수치 입력은 먼저 로테이션 동결을 해야합니다 
 </value>
   </data>
 </root>

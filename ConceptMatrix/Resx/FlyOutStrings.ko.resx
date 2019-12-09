@@ -226,7 +226,7 @@
     <value>얼굴 특징</value>
   </data>
   <data name="Favorite" xml:space="preserve">
-    <value>가장 좋아하는</value>
+    <value>즐겨찾기</value>
   </data>
   <data name="Feet" xml:space="preserve">
     <value>발 방어구</value>
@@ -400,7 +400,7 @@
     <value>백마도사</value>
   </data>
   <data name="World" xml:space="preserve">
-    <value>환경</value>
+    <value>월드</value>
   </data>
   <data name="Wrist" xml:space="preserve">
     <value>팔찌</value>

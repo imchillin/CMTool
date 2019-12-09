@@ -127,7 +127,7 @@
     <value>고급 CMP 파일 불러오기</value>
   </data>
   <data name="Arms" xml:space="preserve">
-    <value>팔</value>
+    <value>팔:</value>
   </data>
   <data name="Back" xml:space="preserve">
     <value>등</value>
@@ -145,7 +145,7 @@
     <value>가슴:</value>
   </data>
   <data name="Bridge" xml:space="preserve">
-    <value>브릿지</value>
+    <value>브릿지:</value>
   </data>
   <data name="Brows" xml:space="preserve">
     <value>이마:</value>
@@ -169,7 +169,7 @@
     <value>옷</value>
   </data>
   <data name="Couters" xml:space="preserve">
-    <value>쿠터(팔꿈치)</value>
+    <value>쿠터(팔꿈치):</value>
   </data>
   <data name="DetectTertiaryBones" xml:space="preserve">
     <value>세번째 뼈 찾기</value>
@@ -262,7 +262,7 @@
     <value>권총집:</value>
   </data>
   <data name="HrothgarWhiskers" xml:space="preserve">
-    <value>로스갈 구렛나루:</value>
+    <value>로스갈 구렛나루</value>
   </data>
   <data name="Index" xml:space="preserve">
     <value>색인:</value>
@@ -342,9 +342,9 @@
   <data name="RealTimeRotationToolTip" xml:space="preserve">
     <value>마우스 버튼을 사용하여 큐브를 조작하세요.
 * 모든 회전은 대상이 보고있는 방향을 기준으로 작동합니다.
-* RMB는 X축 회전을 조절합니다.
-* LMB는 Y축 회전을 조절합니다.
-* MMB는 Z축 회전을 조절합니다. </value>
+* 우클릭은 X축 회전을 조절합니다.
+* 좌클릭은 Y축 회전을 조절합니다.
+* 휠클릭은 Z축 회전을 조절합니다. </value>
   </data>
   <data name="RightArm" xml:space="preserve">
     <value>오른팔:</value>
@@ -376,7 +376,7 @@
   <data name="RotationSlidersToolTip" xml:space="preserve">
     <value>이 토글은 로테이션 슬라이더와 직접 입력 숫자값을 전환합니다.
 • 토글을 끄면 XYZ 로테이션이 숫자값으로 전환됩니다.
-• 각각의 입력값은 0부터 360까지로 제한됩니다.</value>
+• 각각 0에서 360 사이의 값을 입력할 수 있습니다.</value>
   </data>
   <data name="SaveCMPFile" xml:space="preserve">
     <value>CMP 파일 저장</value>

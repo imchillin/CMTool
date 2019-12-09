@@ -127,7 +127,7 @@
     <value>이후에 Krisan Thyme는 새로운 브랜치 - CMTools - 에서 작업했습니다. 이것은 나중에 메인 레포로 통합되었습니다.</value>
   </data>
   <data name="About3" xml:space="preserve">
-    <value>Goat와 Seria Myouna의 기여에 특별히 감사드립니다!</value>
+    <value>Goat와 Seria Myouna의 기여에 특별한 감사를 드립니다!</value>
   </data>
   <data name="About4" xml:space="preserve">
     <value>이 프로젝트는 MaterialDesignInXAML, MahApps, Fody, Newtonsoft.Json 그리고 Memory.dll에 의해 작동합니다.</value>
@@ -172,7 +172,7 @@
     <value>색연필</value>
   </data>
   <data name="DarkTheme" xml:space="preserve">
-    <value>조디악 테마</value>
+    <value>조디아크 테마</value>
   </data>
   <data name="Default" xml:space="preserve">
     <value>기본값</value>
