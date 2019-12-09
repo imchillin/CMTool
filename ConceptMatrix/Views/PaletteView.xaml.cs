@@ -159,7 +159,8 @@ namespace ConceptMatrix.Views
 
             if (string.IsNullOrEmpty(langCode)) return;
 
-            SaveSettings.Default.Language = langCode;
+            Properties.Settings.Default.Language = langCode;
+            Properties.Settings.Default.Save();
 
             System.Windows.Forms.Application.Restart();
             System.Windows.Application.Current.Shutdown();

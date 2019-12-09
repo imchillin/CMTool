@@ -50,7 +50,6 @@ namespace ConceptMatrix.Utility
         }
         #endregion
 
-        public string Language { get; set; } = "";
         public string Theme { get; set; } = "Dark";
         public string Primary { get; set; } = "Blue";
         public string Accent { get; set; } = "Blue";

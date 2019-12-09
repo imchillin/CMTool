@@ -414,6 +414,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <Resource Include="OffsetSettingsKO.xml" />
+    <Resource Include="OffsetSettingsCN.xml" />
     <Resource Include="Resources\body.png" />
     <Resource Include="Resources\clothes.png" />
     <Resource Include="Resources\equip.png" />

@@ -44,8 +44,7 @@ namespace ConceptMatrix
             
             //Culture setting
             LanguageSelection();
-            var settings = SaveSettings.Default;
-            var ci = new CultureInfo(settings.Language)
+            var ci = new CultureInfo(Properties.Settings.Default.Language)
             {
                 NumberFormat = { NumberDecimalSeparator = "." }
             };
@@ -95,7 +94,7 @@ namespace ConceptMatrix
 
         private void LanguageSelection()
         {
-            var lang = SaveSettings.Default.Language;
+            var lang = Properties.Settings.Default.Language;
 
             if (string.IsNullOrEmpty(lang)) 
             {
@@ -108,8 +107,9 @@ namespace ConceptMatrix
                     LanguageSelection();
                     return;
                 }
-                        
-                SaveSettings.Default.Language = langCode;
+
+                Properties.Settings.Default.Language = langCode;
+                Properties.Settings.Default.Save();
             }
         }
 
@@ -154,17 +154,18 @@ namespace ConceptMatrix
         }
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            var settings = SaveSettings.Default;
             Title = $"{App.ToolName} v{version}";
             DataContext = new MainViewModel();
-            var accentColor = SaveSettings.Default.Accent;
+            var accentColor = settings.Accent;
             new PaletteHelper().ReplaceAccentColor(accentColor);
-            var primaryColor = SaveSettings.Default.Primary;
+            var primaryColor = settings.Primary;
             new PaletteHelper().ReplacePrimaryColor(primaryColor);
-            var theme = SaveSettings.Default.Theme;
+            var theme = settings.Theme;
             new PaletteHelper().SetLightDark(theme != "Light");
-            this.Topmost = SaveSettings.Default.TopApp;
+            this.Topmost = settings.TopApp;
 			// toggle status
-			(DataContext as MainViewModel).ToggleStatus(SaveSettings.Default.TopApp);
+			(DataContext as MainViewModel).ToggleStatus(settings.TopApp);
 	        // CharacterDetailsView._exdProvider.MakeCharaMakeFeatureList();
             // CharacterDetailsView._exdProvider.MakeCharaMakeFeatureFacialList();
             // CharacterDetailsView._exdProvider.MakeTerritoryTypeList();
