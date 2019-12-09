@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Abdomen" xml:space="preserve">
-    <value>腹部：</value>
+    <value>腹部</value>
   </data>
   <data name="AdvancedLoading" xml:space="preserve">
     <value>高级导入：</value>
@@ -145,16 +145,16 @@
     <value>胸：</value>
   </data>
   <data name="Bridge" xml:space="preserve">
-    <value>桥：</value>
+    <value>鼻梁：</value>
   </data>
   <data name="Brows" xml:space="preserve">
     <value>额头：</value>
   </data>
   <data name="Calves" xml:space="preserve">
-    <value>犊牛：</value>
+    <value>小腿：</value>
   </data>
   <data name="Cervical" xml:space="preserve">
-    <value>宫颈：</value>
+    <value>颈椎：</value>
   </data>
   <data name="Cheeks" xml:space="preserve">
     <value>脸颊：</value>
@@ -166,7 +166,7 @@
     <value>衣服：</value>
   </data>
   <data name="Clothes2" xml:space="preserve">
-    <value>衣服：</value>
+    <value>衣服</value>
   </data>
   <data name="Couters" xml:space="preserve">
     <value>手肘：</value>
@@ -178,7 +178,7 @@
     <value>耳环：</value>
   </data>
   <data name="Earrings2" xml:space="preserve">
-    <value>耳环：</value>
+    <value>耳环</value>
   </data>
   <data name="Ears" xml:space="preserve">
     <value>耳朵：</value>
@@ -301,7 +301,7 @@
     <value>从用户生成的CMP文件加载姿势。</value>
   </data>
   <data name="LowerLids" xml:space="preserve">
-    <value>下盖：</value>
+    <value>下眼睑：</value>
   </data>
   <data name="LowerLip" xml:space="preserve">
     <value>下唇：</value>
@@ -313,7 +313,7 @@
     <value>中指：</value>
   </data>
   <data name="Mouth" xml:space="preserve">
-    <value>口：</value>
+    <value>嘴巴：</value>
   </data>
   <data name="Neck" xml:space="preserve">
     <value>颈部：</value>
@@ -331,7 +331,7 @@
     <value>小指：</value>
   </data>
   <data name="Poleyns" xml:space="preserve">
-    <value>护膝：</value>
+    <value>护腿：</value>
   </data>
   <data name="PoseMatrixSettings" xml:space="preserve">
     <value>姿势矩阵设置</value>
