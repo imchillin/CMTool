@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ACN" xml:space="preserve">
+    <value>ACN</value>
+  </data>
+  <data name="ALC" xml:space="preserve">
+    <value>ALC</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Tous </value>
+  </data>
+  <data name="AllClasses" xml:space="preserve">
+    <value>Toutes les Classes</value>
+  </data>
+  <data name="AppearanceOnly" xml:space="preserve">
+    <value>Apparence Seulement</value>
+  </data>
+  <data name="ARC" xml:space="preserve">
+    <value>ARC</value>
+  </data>
+  <data name="ARM" xml:space="preserve">
+    <value>ARM</value>
+  </data>
+  <data name="AST" xml:space="preserve">
+    <value>AST</value>
+  </data>
+  <data name="Battle" xml:space="preserve">
+    <value>Combat</value>
+  </data>
+  <data name="BGM" xml:space="preserve">
+    <value>BGM</value>
+  </data>
+  <data name="BLM" xml:space="preserve">
+    <value>MNO</value>
+  </data>
+  <data name="BLU" xml:space="preserve">
+    <value>MBU</value>
+  </data>
+  <data name="Body" xml:space="preserve">
+    <value>Corps</value>
+  </data>
+  <data name="BRD" xml:space="preserve">
+    <value>BRD</value>
+  </data>
+  <data name="BSM" xml:space="preserve">
+    <value>FRG</value>
+  </data>
+  <data name="BTN" xml:space="preserve">
+    <value>BOT</value>
+  </data>
+  <data name="Character" xml:space="preserve">
+    <value>Personnage</value>
+  </data>
+  <data name="CNJ" xml:space="preserve">
+    <value>ÉLM</value>
+  </data>
+  <data name="ColorSelector" xml:space="preserve">
+    <value>Sélecteur de Couleurs</value>
+  </data>
+  <data name="CRP" xml:space="preserve">
+    <value>MEN</value>
+  </data>
+  <data name="CUL" xml:space="preserve">
+    <value>CUI</value>
+  </data>
+  <data name="DiscipleofHand" xml:space="preserve">
+    <value>Artisans</value>
+  </data>
+  <data name="DiscipleOfLand" xml:space="preserve">
+    <value>Récolteurs</value>
+  </data>
+  <data name="DiscipleOfMagic" xml:space="preserve">
+    <value>Mages</value>
+  </data>
+  <data name="DiscipleOfWar" xml:space="preserve">
+    <value>Combattants</value>
+  </data>
+  <data name="DisciplesOfWarMagic" xml:space="preserve">
+    <value>Combattants et Mages</value>
+  </data>
+  <data name="DNC" xml:space="preserve">
+    <value>DNS</value>
+  </data>
+  <data name="DRG" xml:space="preserve">
+    <value>DRG</value>
+  </data>
+  <data name="DRK" xml:space="preserve">
+    <value>CHN</value>
+  </data>
+  <data name="Earing" xml:space="preserve">
+    <value>Boucles d'Oreilles</value>
+  </data>
+  <data name="Emotes" xml:space="preserve">
+    <value>Emotes</value>
+  </data>
+  <data name="EquipmentOnly" xml:space="preserve">
+    <value>Equipement Seul</value>
+  </data>
+  <data name="EquipmentSelector" xml:space="preserve">
+    <value>Sélection d'Equipement</value>
+  </data>
+  <data name="FacePaint" xml:space="preserve">
+    <value>Maquillage</value>
+  </data>
+  <data name="FacePaintColor" xml:space="preserve">
+    <value>Couleur de Maquillage</value>
+  </data>
+  <data name="FacialFeature" xml:space="preserve">
+    <value>Caractéristique Faciale</value>
+  </data>
+  <data name="Favorite" xml:space="preserve">
+    <value>Favorie</value>
+  </data>
+  <data name="Feet" xml:space="preserve">
+    <value>Pied</value>
+  </data>
+  <data name="ForceAnimation" xml:space="preserve">
+    <value>Forcer l'Animation</value>
+  </data>
+  <data name="FSH" xml:space="preserve">
+    <value>PÊC</value>
+  </data>
+  <data name="GLA" xml:space="preserve">
+    <value>GLA</value>
+  </data>
+  <data name="GNB" xml:space="preserve">
+    <value>PSB</value>
+  </data>
+  <data name="GSM" xml:space="preserve">
+    <value>ORF</value>
+  </data>
+  <data name="HairColor" xml:space="preserve">
+    <value>Couleur de Cheveux</value>
+  </data>
+  <data name="HairSelector" xml:space="preserve">
+    <value>Sélection de Cheveux</value>
+  </data>
+  <data name="Hands" xml:space="preserve">
+    <value>Mains</value>
+  </data>
+  <data name="Head" xml:space="preserve">
+    <value>Tête</value>
+  </data>
+  <data name="HighlightsColor" xml:space="preserve">
+    <value>Couleurs des Mèches</value>
+  </data>
+  <data name="Icon" xml:space="preserve">
+    <value>Icon</value>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="IdleAnimation" xml:space="preserve">
+    <value>Animation Inactive</value>
+  </data>
+  <data name="IncludeEverything" xml:space="preserve">
+    <value>Tout Inclure</value>
+  </data>
+  <data name="IncludeOffhand" xml:space="preserve">
+    <value>Inclure la Main Non Directrice</value>
+  </data>
+  <data name="KeepDyes" xml:space="preserve">
+    <value>Garder les Teintures</value>
+  </data>
+  <data name="LeftEyeColor" xml:space="preserve">
+    <value>Couleur de l'Oeil Gauche</value>
+  </data>
+  <data name="LeftFinger" xml:space="preserve">
+    <value>Doigt Gauche</value>
+  </data>
+  <data name="Legs" xml:space="preserve">
+    <value>Jambes</value>
+  </data>
+  <data name="LimbalEyeColor" xml:space="preserve">
+    <value>Couleur du Contour de l'Iris</value>
+  </data>
+  <data name="LipColor" xml:space="preserve">
+    <value>Couleur des lèvres</value>
+  </data>
+  <data name="LNC" xml:space="preserve">
+    <value>HAS</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Emplacement</value>
+  </data>
+  <data name="LTW" xml:space="preserve">
+    <value>TAN</value>
+  </data>
+  <data name="MainHand" xml:space="preserve">
+    <value>Main Directrice</value>
+  </data>
+  <data name="MCH" xml:space="preserve">
+    <value>MCH</value>
+  </data>
+  <data name="MIN" xml:space="preserve">
+    <value>MIN</value>
+  </data>
+  <data name="MNK" xml:space="preserve">
+    <value>MOI</value>
+  </data>
+  <data name="ModelList" xml:space="preserve">
+    <value>Liste des Modèles</value>
+  </data>
+  <data name="ModelValues" xml:space="preserve">
+    <value>Liste des Valeurs</value>
+  </data>
+  <data name="Monster" xml:space="preserve">
+    <value>Monstre</value>
+  </data>
+  <data name="MRD" xml:space="preserve">
+    <value>MRD</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="Neck" xml:space="preserve">
+    <value>Cou</value>
+  </data>
+  <data name="NIN" xml:space="preserve">
+    <value>NIN</value>
+  </data>
+  <data name="NPCSelect" xml:space="preserve">
+    <value>Sélection de PNJ</value>
+  </data>
+  <data name="OffHand" xml:space="preserve">
+    <value>Main Non Directrice</value>
+  </data>
+  <data name="PGL" xml:space="preserve">
+    <value>PGL</value>
+  </data>
+  <data name="Player" xml:space="preserve">
+    <value>Joueur</value>
+  </data>
+  <data name="PLD" xml:space="preserve">
+    <value>PLD</value>
+  </data>
+  <data name="PropsMainHand" xml:space="preserve">
+    <value>Accessoire Main Directrice</value>
+  </data>
+  <data name="PropsOffHand" xml:space="preserve">
+    <value>Accessoire Main Non Directrice</value>
+  </data>
+  <data name="RDM" xml:space="preserve">
+    <value>MRG</value>
+  </data>
+  <data name="ReverseFacePaint" xml:space="preserve">
+    <value>Inverser le Maquillage</value>
+  </data>
+  <data name="RightEyeColor" xml:space="preserve">
+    <value>Couleur de l'Oeil Droit</value>
+  </data>
+  <data name="RightFinger" xml:space="preserve">
+    <value>Doigt Droit</value>
+  </data>
+  <data name="ROG" xml:space="preserve">
+    <value>SUR</value>
+  </data>
+  <data name="SAM" xml:space="preserve">
+    <value>SAM</value>
+  </data>
+  <data name="SCH" xml:space="preserve">
+    <value>ÉRU</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Recherche</value>
+  </data>
+  <data name="SelectType" xml:space="preserve">
+    <value>Sélection du Type</value>
+  </data>
+  <data name="SkinColor" xml:space="preserve">
+    <value>Couleur de Peau</value>
+  </data>
+  <data name="SMN" xml:space="preserve">
+    <value>INV</value>
+  </data>
+  <data name="THM" xml:space="preserve">
+    <value>OCC</value>
+  </data>
+  <data name="WAR" xml:space="preserve">
+    <value>GUE</value>
+  </data>
+  <data name="WHM" xml:space="preserve">
+    <value>MBL</value>
+  </data>
+  <data name="World" xml:space="preserve">
+    <value>Monde</value>
+  </data>
+  <data name="Wrist" xml:space="preserve">
+    <value>Poignet</value>
+  </data>
+  <data name="WVR" xml:space="preserve">
+    <value>COU</value>
+  </data>
+</root>

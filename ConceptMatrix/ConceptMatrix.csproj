@@ -330,7 +330,11 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resx\FlyOutStrings.de.resx" />
+    <EmbeddedResource Include="Resx\FlyOutStrings.fr.resx" />
     <EmbeddedResource Include="Resx\FlyOutStrings.ko.resx" />
+    <EmbeddedResource Include="Resx\MiscStrings.de.resx" />
+    <EmbeddedResource Include="Resx\MiscStrings.fr.resx" />
     <EmbeddedResource Include="Resx\MiscStrings.ko.resx" />
     <EmbeddedResource Include="Resx\MiscStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -342,6 +346,9 @@
       <LastGenOutput>FlyOutStrings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resx\FlyOutStrings.zh.resx" />
+    <EmbeddedResource Include="Resx\MiscStrings.zh.resx" />
+    <EmbeddedResource Include="Resx\UIPoseStrings.de.resx" />
+    <EmbeddedResource Include="Resx\UIPoseStrings.fr.resx" />
     <EmbeddedResource Include="Resx\UIPoseStrings.ja.resx" />
     <EmbeddedResource Include="Resx\UIPoseStrings.ko.resx" />
     <EmbeddedResource Include="Resx\UIPoseStrings.resx">
@@ -349,6 +356,8 @@
       <LastGenOutput>UIPoseStrings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resx\UIPoseStrings.zh.resx" />
+    <EmbeddedResource Include="Resx\UIStringsContent.de.resx" />
+    <EmbeddedResource Include="Resx\UIStringsContent.fr.resx" />
     <EmbeddedResource Include="Resx\UIStringsContent.ja.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -361,6 +370,8 @@
     <EmbeddedResource Include="Resx\UIStringsContent.zh.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resx\WindowsStrings.de.resx" />
+    <EmbeddedResource Include="Resx\WindowsStrings.fr.resx" />
     <EmbeddedResource Include="Resx\WindowsStrings.ko.resx" />
     <EmbeddedResource Include="Resx\WindowsStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
