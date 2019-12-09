@@ -166,7 +166,11 @@ namespace ConceptMatrix
             this.Topmost = settings.TopApp;
 			// toggle status
 			(DataContext as MainViewModel).ToggleStatus(settings.TopApp);
-	        // CharacterDetailsView._exdProvider.MakeCharaMakeFeatureList();
+            //Check if these directories exist
+            if (!Directory.Exists(SaveSettings.Default.ProfileDirectory)) { System.IO.Directory.CreateDirectory(SaveSettings.Default.ProfileDirectory); }
+            if (!Directory.Exists(SaveSettings.Default.MatrixPoseDirectory)) { System.IO.Directory.CreateDirectory(SaveSettings.Default.MatrixPoseDirectory); }
+            if (!Directory.Exists(SaveSettings.Default.GearsetsDirectory)) { System.IO.Directory.CreateDirectory(SaveSettings.Default.GearsetsDirectory); }
+            // CharacterDetailsView._exdProvider.MakeCharaMakeFeatureList();
             // CharacterDetailsView._exdProvider.MakeCharaMakeFeatureFacialList();
             // CharacterDetailsView._exdProvider.MakeTerritoryTypeList();
         }
