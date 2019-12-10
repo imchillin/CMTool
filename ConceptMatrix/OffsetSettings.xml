@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Settings>
-  <LastUpdated>5.15</LastUpdated>
+  <LastUpdated>5.15x1</LastUpdated>
   <CameraOffset>1C037B8</CameraOffset>
   <GposeOffset>1C03988</GposeOffset>
   <GposeEntityOffset>1C06820</GposeEntityOffset>
@@ -14,7 +14,7 @@
   <GposeFilters>1BE2728</GposeFilters>
   <MusicOffset>1C11360</MusicOffset>
   <SkeletonOffset>1330AF0</SkeletonOffset>
-  <SkeletonOffset2>1331CD</SkeletonOffset2>
+  <SkeletonOffset2>1331C1D</SkeletonOffset2>
   <SkeletonOffset3>133F884</SkeletonOffset3>
   <PhysicsOffset>39F008</PhysicsOffset>
   <PhysicsOffset2>39EFFF</PhysicsOffset2>
