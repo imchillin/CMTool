@@ -225,7 +225,7 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<string> ArmSlot { get; set; }
         [JsonIgnore] public Address<int> TimeControl { get; set; }
         [JsonIgnore] public Address<byte> Weather { get; set; }
-        [JsonIgnore] public Address<ushort> ForceWeather { get; set; }
+        [JsonIgnore] public Address<byte> ForceWeather { get; set; }
         [JsonIgnore] public Address<byte> EntityType { get; set; }
         [JsonIgnore] public Address<int> Territoryxd { get; set; }
         [JsonIgnore] public Address<short> DataPath { get; set; }
@@ -1562,7 +1562,7 @@ namespace ConceptMatrix.Models
             Jaw = new Address<byte>();
             TimeControl = new Address<int>();
             Weather = new Address<byte>();
-            ForceWeather = new Address<ushort>();
+            ForceWeather = new Address<byte>();
             LFingerSlot = new Address<string>();
             RFingerSlot = new Address<string>();
             NeckSlot = new Address<string>();

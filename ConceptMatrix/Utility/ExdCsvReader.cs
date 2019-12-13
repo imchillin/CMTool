@@ -148,7 +148,8 @@ namespace ConceptMatrix.Utility
 		{
 			public int Index { get; set; }
 			public string Name { get; set; }
-		}
+            public ImageSource Icon { get; set; }
+        }
 		public class TerritoryType
 		{
 			public int Index { get; set; }
@@ -184,7 +185,7 @@ namespace ConceptMatrix.Utility
 		public Dictionary<int, Item> Items = null;
 		public Dictionary<int, Item> ItemsProps = null;
 		public Dictionary<int, TerritoryType> TerritoryTypes = null;
-		public Dictionary<int, Dye> Dyes = null;
+        public Dictionary<int, Dye> Dyes = null;
 		public Dictionary<int, Emote> Emotes = null;
 		public Dictionary<int, Resident> Residents = null;
 		public Dictionary<int, CharaMakeCustomizeFeature> CharaMakeFeatures = null;
@@ -193,7 +194,7 @@ namespace ConceptMatrix.Utility
 		public Dictionary<int, Tribe> Tribes = null;
 		public Dictionary<int, Monster> Monsters = null;
 		public Dictionary<int, BGM> BGMs = null;
-		private static ImageSource CreateSource(SaintCoinach.Imaging.ImageFile file)
+		public static ImageSource CreateSource(SaintCoinach.Imaging.ImageFile file)
 		{
 			var argb = SaintCoinach.Imaging.ImageConverter.GetA8R8G8B8(file);
 			return System.Windows.Media.Imaging.BitmapSource.Create(
@@ -607,43 +608,43 @@ namespace ConceptMatrix.Utility
 				Residents = null;
 			}
 		}
-		public void MakeTerritoryTypeList()
-		{
-			TerritoryTypes = new Dictionary<int, TerritoryType>();
+        public void MakeTerritoryTypeList()
+        {
+            TerritoryTypes = new Dictionary<int, TerritoryType>();
 
-			try
-			{
-				var sheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.TerritoryType>();
-				foreach (var Parse in sheet)
-				{
-					TerritoryType territory = new TerritoryType
-					{
-						Index = Parse.Key,
-						WeatherRate = new WeatherRate()
-					};
-					territory.WeatherRate.AllowedWeathers = new List<Weather>();
-					foreach (var Test in Parse.WeatherRate.PossibleWeathers)
-					{
-						territory.WeatherRate.Index = Test.Key;
-						if (Test.Key != 0) territory.WeatherRate.AllowedWeathers.Add(new Weather() { Index = Test.Key, Name = Test.Name });
-						else territory.WeatherRate.AllowedWeathers.Add(new Weather() { Index = Test.Key, Name = "None" });
-					}
-					if (Parse.RegionPlaceName.Name == "Norvrandt")
-					{
-						territory.WeatherRate.AllowedWeathers.Add(new Weather() { Index = 118, Name = "Everlasting Light #1" });
-						territory.WeatherRate.AllowedWeathers.Add(new Weather() { Index = 129, Name = "Everlasting Light #2" });
-					}
-					TerritoryTypes.Add(Parse.Key, territory);
-				}
-			}
-			catch (Exception)
-			{
-				TerritoryTypes = null;
+            try
+            {
+                var sheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.TerritoryType>();
+                foreach (var Parse in sheet)
+                {
+                    TerritoryType territory = new TerritoryType
+                    {
+                        Index = Parse.Key,
+                        WeatherRate = new WeatherRate()
+                    };
+                    territory.WeatherRate.AllowedWeathers = new List<Weather>();
+                    foreach (var Test in Parse.WeatherRate.PossibleWeathers)
+                    {
+                        territory.WeatherRate.Index = Test.Key;
+                        if (Test.Key != 0) territory.WeatherRate.AllowedWeathers.Add(new Weather() { Index = Test.Key, Name = Test.Name });
+                        else territory.WeatherRate.AllowedWeathers.Add(new Weather() { Index = Test.Key, Name = "None" });
+                    }
+                    if (Parse.RegionPlaceName.Name == "Norvrandt")
+                    {
+                        territory.WeatherRate.AllowedWeathers.Add(new Weather() { Index = 118, Name = "Everlasting Light #1" });
+                        territory.WeatherRate.AllowedWeathers.Add(new Weather() { Index = 129, Name = "Everlasting Light #2" });
+                    }
+                    TerritoryTypes.Add(Parse.Key, territory);
+                }
+            }
+            catch (Exception)
+            {
+                TerritoryTypes = null;
 
-				throw;
+                throw;
 
-			}
-		}
+            }
+        }
 		public void MakePropList()
 		{
 			ItemsProps = new Dictionary<int, Item>();

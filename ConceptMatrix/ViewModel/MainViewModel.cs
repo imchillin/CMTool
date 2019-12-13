@@ -177,6 +177,29 @@ namespace ConceptMatrix.ViewModel
                 if (Title.Length <= 0) Title = "No Title";
                 ViewTime.TitleBox.Items.Add(Title);
             }
+            var WeatherSheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Weather>();
+            foreach (SaintCoinach.Xiv.Weather weather in WeatherSheet)
+            {
+                if (weather.Key == 0 || weather.Icon == null)
+                {
+                    ViewTime3.ForceWeatherBox.Items.Add(new ExdCsvReader.Weather
+                    {
+                        Index = Convert.ToInt32(weather.Key),
+                        Name = weather.Name.ToString(),
+                        Icon = null
+                    });
+                }
+                else
+                {
+                    ViewTime3.ForceWeatherBox.Items.Add(new ExdCsvReader.Weather
+                    {
+                        Index = Convert.ToInt32(weather.Key),
+                        Name = weather.Name.ToString(),
+                        Icon = ExdCsvReader.CreateSource(weather.Icon)
+                    });
+                }
+
+            }
         }
        private void LoadSettings(string region)
         {

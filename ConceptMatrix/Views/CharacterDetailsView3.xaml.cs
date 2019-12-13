@@ -1191,8 +1191,8 @@ namespace ConceptMatrix.Views
             {
                 if (ForceWeatherBox.SelectedIndex >= 0)
                 {
-                    CharacterDetails.ForceWeather.value = ushort.Parse(((ComboBoxItem)ForceWeatherBox.SelectedItem).Tag.ToString());
-                    m.writeMemory(GAS(MemoryManager.Instance.GposeFilters, c.ForceWeather), "int", ((ComboBoxItem)ForceWeatherBox.SelectedItem).Tag.ToString());
+                    CharacterDetails.ForceWeather.value = (byte)ForceWeatherBox.SelectedIndex;
+                    m.writeMemory(GAS(MemoryManager.Instance.GposeFilters, c.ForceWeather), "byte", ForceWeatherBox.SelectedIndex.ToString("X"));
                 }
             }
         }

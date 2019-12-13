@@ -12,7 +12,16 @@
              TextElement.FontSize="13.25"
              mc:Ignorable="d" 
              d:DesignHeight="460" d:DesignWidth="1115" Height="530">
+    <UserControl.Resources>
+        <DataTemplate x:Key="cmbTemplate">
+            <WrapPanel>
+                <Image Width="20" Height="20" Source="{Binding Icon}"/>
+                <Label Content="{Binding Name}"/>
+            </WrapPanel>
+        </DataTemplate>
+    </UserControl.Resources>
     <Grid Height="530">
+        
         <Grid.Background>
             <ImageBrush x:Name="WorldBG" ImageSource="/ConceptMatrix;component/Resources/worldbg.png"/>
         </Grid.Background>
@@ -139,140 +148,12 @@
         <Button Content="{Binding Source={x:Static resx:UIStringsContent.RefreshButton}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="926,421,0,0" VerticalAlignment="Top" Width="165" Click="Button_Click" Height="28" Padding="0,4"/>
 
         <CheckBox IsChecked="{Binding CharacterDetails.ForceWeather.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.WeatherForce}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.WeatherForceToolTip}}" HorizontalAlignment="Left" Margin="410,454,0,0" VerticalAlignment="Top" Height="28"/>
-        <ComboBox x:Name="ForceWeatherBox" SelectedValuePath="Tag" SelectedValue="{Binding CharacterDetails.ForceWeather.value}" HorizontalAlignment="Left" Margin="530,454,0,0" VerticalAlignment="Top" Width="142" Height="28" FontSize="11.35" SelectedIndex="0" SelectionChanged="ForceWeatherBox_SelectionChanged" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
-            <ComboBoxItem Content="None" Tag="0" Background="{x:Null}"/>
-            <ComboBoxItem Content="Clear Skies" Tag="257" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="514" Background="{x:Null}"/>
-            <ComboBoxItem Content="Clouds" Tag="771" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fog" Tag="1028" Background="{x:Null}"/>
-            <ComboBoxItem Content="Wind" Tag="1285" Background="{x:Null}"/>
-            <ComboBoxItem Content="Gales" Tag="1542" Background="{x:Null}"/>
-            <ComboBoxItem Content="Rain" Tag="1799" Background="{x:Null}"/>
-            <ComboBoxItem Content="Showers" Tag="2056" Background="{x:Null}"/>
-            <ComboBoxItem Content="Thunder" Tag="2313" Background="{x:Null}"/>
-            <ComboBoxItem Content="Thunderstorms" Tag="2570" Background="{x:Null}"/>
-            <ComboBoxItem Content="Dust Storms" Tag="2827" Background="{x:Null}"/>
-            <ComboBoxItem Content="Sandstorms" Tag="3084" Background="{x:Null}"/>
-            <ComboBoxItem Content="Hot Spells" Tag="3341" Background="{x:Null}"/>
-            <ComboBoxItem Content="Heat Waves" Tag="3598" Background="{x:Null}"/>
-            <ComboBoxItem Content="Snow" Tag="3855" Background="{x:Null}"/>
-            <ComboBoxItem Content="Blizzards" Tag="4112" Background="{x:Null}"/>
-            <ComboBoxItem Content="Gloom" Tag="4369" Background="{x:Null}"/>
-            <ComboBoxItem Content="Auroras" Tag="4626" Background="{x:Null}"/>
-            <ComboBoxItem Content="Darkness" Tag="4883" Background="{x:Null}"/>
-            <ComboBoxItem Content="Tension" Tag="5140" Background="{x:Null}"/>
-            <ComboBoxItem Content="Clouds" Tag="5397" Background="{x:Null}"/>
-            <ComboBoxItem Content="Storm Clouds" Tag="5654" Background="{x:Null}"/>
-            <ComboBoxItem Content="Rough Seas" Tag="5911" Background="{x:Null}"/>
-            <ComboBoxItem Content="Rough Seas" Tag="6168" Background="{x:Null}"/>
-            <ComboBoxItem Content="Louring" Tag="6425" Background="{x:Null}"/>
-            <ComboBoxItem Content="Heat Waves" Tag="6682" Background="{x:Null}"/>
-            <ComboBoxItem Content="Gloom" Tag="6939" Background="{x:Null}"/>
-            <ComboBoxItem Content="Gales" Tag="7196" Background="{x:Null}"/>
-            <ComboBoxItem Content="Eruptions" Tag="7453" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="7710" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="7967" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="8224" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="8481" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="8738" Background="{x:Null}"/>
-            <ComboBoxItem Content="Irradiance" Tag="8995" Background="{x:Null}"/>
-            <ComboBoxItem Content="Core Radiation" Tag="9252" Background="{x:Null}"/>
-            <ComboBoxItem Content="Core Radiation" Tag="9509" Background="{x:Null}"/>
-            <ComboBoxItem Content="Core Radiation" Tag="9766" Background="{x:Null}"/>
-            <ComboBoxItem Content="Core Radiation" Tag="10023" Background="{x:Null}"/>
-            <ComboBoxItem Content="Sheif Clouds" Tag="10280" Background="{x:Null}"/>
-            <ComboBoxItem Content="Sheif Clouds" Tag="10537" Background="{x:Null}"/>
-            <ComboBoxItem Content="Sheif Clouds" Tag="10794" Background="{x:Null}"/>
-            <ComboBoxItem Content="Sheif Clouds" Tag="11051" Background="{x:Null}"/>
-            <ComboBoxItem Content="Oppression" Tag="11308" Background="{x:Null}"/>
-            <ComboBoxItem Content="Oppression" Tag="11565" Background="{x:Null}"/>
-            <ComboBoxItem Content="Oppression" Tag="11822" Background="{x:Null}"/>
-            <ComboBoxItem Content="Oppression" Tag="12079" Background="{x:Null}"/>
-            <ComboBoxItem Content="Oppression" Tag="12336" Background="{x:Null}"/>
-            <ComboBoxItem Content="Umbral Wind" Tag="12593" Background="{x:Null}"/>
-            <ComboBoxItem Content="Umbral Static" Tag="12850" Background="{x:Null}"/>
-            <ComboBoxItem Content="Smoke" Tag="13107" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="13364" Background="{x:Null}"/>
-            <ComboBoxItem Content="Royal Levin" Tag="13621" Background="{x:Null}"/>
-            <ComboBoxItem Content="Hyperelectricity" Tag="13878" Background="{x:Null}"/>
-            <ComboBoxItem Content="Royal Levin" Tag="14135" Background="{x:Null}"/>
-            <ComboBoxItem Content="Oppression" Tag="14392" Background="{x:Null}"/>
-            <ComboBoxItem Content="Thunder" Tag="14649" Background="{x:Null}"/>
-            <ComboBoxItem Content="Thunder" Tag="14906" Background="{x:Null}"/>
-            <ComboBoxItem Content="Cutscene" Tag="15163" Background="{x:Null}"/>
-            <ComboBoxItem Content="Multiplicity" Tag="15420" Background="{x:Null}"/>
-            <ComboBoxItem Content="Multiplicity" Tag="15677" Background="{x:Null}"/>
-            <ComboBoxItem Content="Rain" Tag="15934" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="16191" Background="{x:Null}"/>
-            <ComboBoxItem Content="Rain" Tag="16448" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="16705" Background="{x:Null}"/>
-            <ComboBoxItem Content="Dragonstorms" Tag="16962" Background="{x:Null}"/>
-            <ComboBoxItem Content="Dragonstorms" Tag="17219" Background="{x:Null}"/>
-            <ComboBoxItem Content="Subterrain" Tag="17476" Background="{x:Null}"/>
-            <ComboBoxItem Content="Concordance" Tag="17733" Background="{x:Null}"/>
-            <ComboBoxItem Content="Concordance" Tag="17990" Background="{x:Null}"/>
-            <ComboBoxItem Content="Beyond Time" Tag="18247" Background="{x:Null}"/>
-            <ComboBoxItem Content="Beyond Time" Tag="18504" Background="{x:Null}"/>
-            <ComboBoxItem Content="Beyond Time" Tag="18761" Background="{x:Null}"/>
-            <ComboBoxItem Content="Demonic Infinity" Tag="19018" Background="{x:Null}"/>
-            <ComboBoxItem Content="Demonic Infinity" Tag="19275" Background="{x:Null}"/>
-            <ComboBoxItem Content="Demonic Infinity" Tag="19532" Background="{x:Null}"/>
-            <ComboBoxItem Content="Dimensional Disruption" Tag="19789" Background="{x:Null}"/>
-            <ComboBoxItem Content="Dimensional Disruption" Tag="20046" Background="{x:Null}"/>
-            <ComboBoxItem Content="Dimensional Disruption" Tag="20303" Background="{x:Null}"/>
-            <ComboBoxItem Content="Revelstorms" Tag="20560" Background="{x:Null}"/>
-            <ComboBoxItem Content="Revelstorms" Tag="20817" Background="{x:Null}"/>
-            <ComboBoxItem Content="Eternal Bliss" Tag="21074" Background="{x:Null}"/>
-            <ComboBoxItem Content="Eternal Bliss" Tag="21331" Background="{x:Null}"/>
-            <ComboBoxItem Content="Wyrmstorms" Tag="21588" Background="{x:Null}"/>
-            <ComboBoxItem Content="Wyrmstorms" Tag="21845" Background="{x:Null}"/>
-            <ComboBoxItem Content="Revelstorms" Tag="22102" Background="{x:Null}"/>
-            <ComboBoxItem Content="Quicklevin" Tag="22359" Background="{x:Null}"/>
-            <ComboBoxItem Content="Thunder" Tag="22616" Background="{x:Null}"/>
-            <ComboBoxItem Content="Dimensonal Disruption" Tag="22873" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="23130" Background="{x:Null}"/>
-            <ComboBoxItem Content="Clear Skies" Tag="23387" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="23130" Background="{x:Null}"/>
-            <ComboBoxItem Content="White Cyclones" Tag="23644" Background="{x:Null}"/>
-            <ComboBoxItem Content="White Cyclones" Tag="23901" Background="{x:Null}"/>
-            <ComboBoxItem Content="White Cyclones" Tag="24158" Background="{x:Null}"/>
-            <ComboBoxItem Content="Ultimania" Tag="24415" Background="{x:Null}"/>
-            <ComboBoxItem Content="White Cyclones" Tag="24672" Background="{x:Null}"/>
-            <ComboBoxItem Content="Moonlight" Tag="24929" Background="{x:Null}"/>
-            <ComboBoxItem Content="Moonlight" Tag="25186" Background="{x:Null}"/>
-            <ComboBoxItem Content="Moonlight" Tag="25443" Background="{x:Null}"/>
-            <ComboBoxItem Content="Moonlight" Tag="25700" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="25957" Background="{x:Null}"/>
-            <ComboBoxItem Content="Scarlet" Tag="26214" Background="{x:Null}"/>
-            <ComboBoxItem Content="Scarlet" Tag="26471" Background="{x:Null}"/>
-            <ComboBoxItem Content="Scarlet" Tag="26728" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="26985" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="27242" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="27499" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="27756" Background="{x:Null}"/>
-            <ComboBoxItem Content="Flames" Tag="28013" Background="{x:Null}"/>
-            <ComboBoxItem Content="Tsunamis" Tag="28270" Background="{x:Null}"/>
-            <ComboBoxItem Content="Cyclones" Tag="28527" Background="{x:Null}"/>
-            <ComboBoxItem Content="Geostorms" Tag="28784" Background="{x:Null}"/>
-            <ComboBoxItem Content="True Blue" Tag="29041" Background="{x:Null}"/>
-            <ComboBoxItem Content="True Blue" Tag="29298" Background="{x:Null}"/>
-            <ComboBoxItem Content="True Blue" Tag="29555" Background="{x:Null}"/>
-            <ComboBoxItem Content="Umbral Turbulence" Tag="29812" Background="{x:Null}"/>
-            <ComboBoxItem Content="True Blue" Tag="30069" Background="{x:Null}"/>
-            <ComboBoxItem Content="Everlasting Light" Tag="30326" Background="{x:Null}"/>
-            <ComboBoxItem Content="Gales" Tag="30583" Background="{x:Null}"/>
-            <ComboBoxItem Content="Termination" Tag="30840" Background="{x:Null}"/>
-            <ComboBoxItem Content="Termination" Tag="31097" Background="{x:Null}"/>
-            <ComboBoxItem Content="Dreams" Tag="31354" Background="{x:Null}"/>
-            <ComboBoxItem Content="Dreams" Tag="31611" Background="{x:Null}"/>
-            <ComboBoxItem Content="Dreams" Tag="31868" Background="{x:Null}"/>
-            <ComboBoxItem Content="Brilliance" Tag="32125" Background="{x:Null}"/>
-            <ComboBoxItem Content="Brilliance" Tag="32382" Background="{x:Null}"/>
-            <ComboBoxItem Content="Termination" Tag="32639" Background="{x:Null}"/>
-            <ComboBoxItem Content="Termination" Tag="32896" Background="{x:Null}"/>
-            <ComboBoxItem Content="Everlasting Light" Tag="33153" Background="{x:Null}"/>
-            <ComboBoxItem Content="Eruptions" Tag="33410" Background="{x:Null}"/>
-            <ComboBoxItem Content="Termination" Tag="33667" Background="{x:Null}"/>
+        <ComboBox x:Name="ForceWeatherBox" ItemTemplate="{StaticResource cmbTemplate}" SelectedIndex="{Binding CharacterDetails.ForceWeather.value}" HorizontalAlignment="Left" Margin="530,454,0,0" VerticalAlignment="Top" Width="142" Height="28" FontSize="11.35" SelectionChanged="ForceWeatherBox_SelectionChanged" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Padding="0">
+            <ComboBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </ComboBox.ItemsPanel>
         </ComboBox>
 
         <Slider x:Name="Timexd" Value="{Binding Path=CharacterDetails.TimeControl.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="677,359,0,0" VerticalAlignment="Top" Width="234" Maximum="90000" SmallChange="1" Interval="1" Height="28" SourceUpdated="Timexd_SourceUpdated" Minimum="-90000"/>
