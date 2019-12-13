@@ -149,6 +149,7 @@ namespace ConceptMatrix.Utility
 			public int Index { get; set; }
 			public string Name { get; set; }
             public ImageSource Icon { get; set; }
+            public SaintCoinach.Imaging.ImageFile Icon2 { get; set; }
         }
 		public class TerritoryType
 		{
@@ -615,6 +616,7 @@ namespace ConceptMatrix.Utility
             try
             {
                 var sheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.TerritoryType>();
+                var WeatherSheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Weather>();
                 foreach (var Parse in sheet)
                 {
                     TerritoryType territory = new TerritoryType
@@ -626,13 +628,14 @@ namespace ConceptMatrix.Utility
                     foreach (var Test in Parse.WeatherRate.PossibleWeathers)
                     {
                         territory.WeatherRate.Index = Test.Key;
-                        if (Test.Key != 0) territory.WeatherRate.AllowedWeathers.Add(new Weather() { Index = Test.Key, Name = Test.Name });
-                        else territory.WeatherRate.AllowedWeathers.Add(new Weather() { Index = Test.Key, Name = "None" });
+                     //   Test.Icon
+                        if (Test.Key != 0) territory.WeatherRate.AllowedWeathers.Add(new Weather() { Index = Test.Key, Name = Test.Name, Icon2 = Test.Icon });
+                        else territory.WeatherRate.AllowedWeathers.Add(new Weather() { Index = Test.Key, Name = "None", Icon2 = null });
                     }
                     if (Parse.RegionPlaceName.Name == "Norvrandt")
                     {
-                        territory.WeatherRate.AllowedWeathers.Add(new Weather() { Index = 118, Name = "Everlasting Light #1" });
-                        territory.WeatherRate.AllowedWeathers.Add(new Weather() { Index = 129, Name = "Everlasting Light #2" });
+                        territory.WeatherRate.AllowedWeathers.Add(new Weather() { Index = 118, Name = "Everlasting Light #1", Icon2 = WeatherSheet[118].Icon });
+                        territory.WeatherRate.AllowedWeathers.Add(new Weather() { Index = 129, Name = "Everlasting Light #2", Icon2 = WeatherSheet[129].Icon });
                     }
                     TerritoryTypes.Add(Parse.Key, territory);
                 }

@@ -3,6 +3,7 @@ using ConceptMatrix.Utility;
 using ConceptMatrix.ViewModel;
 using Microsoft.Win32;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
@@ -314,13 +315,29 @@ namespace ConceptMatrix.Views
             WeatherBox.Items.Clear();
             for (int i = 0; i < allowedWeathers.Count; i++)
             {
-                WeatherBox.Items.Add(allowedWeathers[i].Name);
+                if (allowedWeathers[i].Index == 0 || allowedWeathers[i].Icon2 == null)
+                {
+                    WeatherBox.Items.Add(new ExdCsvReader.Weather
+                    {
+                        Index = Convert.ToInt32(allowedWeathers[i].Index),
+                        Name = allowedWeathers[i].Name.ToString(),
+                        Icon = null
+                    });
+                }
+                else
+                {
+                    WeatherBox.Items.Add(new ExdCsvReader.Weather
+                    {
+                        Index = Convert.ToInt32(allowedWeathers[i].Index),
+                        Name = allowedWeathers[i].Name.ToString(),
+                        Icon = ExdCsvReader.CreateSource(allowedWeathers[i].Icon2)
+                    });
+                }
 
                 if (allowedWeathers[i].Index == currentWeather)
                     WeatherBox.SelectedIndex = i;
             }
         }
-
         public static bool CheckTerritoryList()
         {
             if (CharacterDetailsView._exdProvider.TerritoryTypes == null)
