@@ -7,10 +7,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using ConceptMatrix.Resx;
 using System.Windows.Input;
 using System.Windows.Media;
 using GearTuple = System.Tuple<int, int, int>;
 using WepTuple = System.Tuple<int, int, int, int>;
+using System.Windows.Data;
 
 namespace ConceptMatrix.Views
 {
@@ -95,9 +97,29 @@ namespace ConceptMatrix.Views
             }
             else
             {
+                string selectedTag = ((ComboBoxItem)ClassBox.SelectedItem).Tag.ToString();
                 foreach (ExdCsvReader.Item game in _items)
                 {
-                    if (ClassBox.SelectedIndex != 0)
+                    if(MainViewModel.RegionType=="Live" && Properties.Settings.Default.Language=="zh" 
+                        || MainViewModel.RegionType == "Live" && Properties.Settings.Default.Language == "ko")
+                    {
+                        if (ClassBox.SelectedIndex != 0)
+                        {
+                            if (EquipBoxC.SelectedIndex != 0 && EquipBoxC.SelectedIndex != 1)
+                            {
+                                if (ClassBox.SelectedIndex == 4)
+                                {
+                                    if (!game.ClassJobListStringName.Equals(selectedTag)) continue;
+                                }
+                                else if (!game.ClassJobListStringName.Contains(selectedTag)) continue;
+                            }
+                            else if (ClassBox.SelectedIndex >= 7)
+                            {
+                                if (!game.ClassJobListStringName.Contains(selectedTag)) continue;
+                            }
+                        }
+                    }
+                    else if (ClassBox.SelectedIndex != 0)
                     {
                         if (EquipBoxC.SelectedIndex != 0 && EquipBoxC.SelectedIndex != 1)
                         {
@@ -112,6 +134,7 @@ namespace ConceptMatrix.Views
                             if (!game.ClassJobListStringName.Contains(ClassBox.Text)) continue;
                         }
                     }
+
                     EquipBox.Items.Add(new Itemx
                     {
                         Name = game.Name,
@@ -839,6 +862,7 @@ namespace ConceptMatrix.Views
                 return;
             string filter = SearchModelBox.Text.ToLower();
             EquipBox.Items.Clear();
+            string selectedTag = ((ComboBoxItem)ClassBox.SelectedItem).Tag.ToString();
             foreach (ExdCsvReader.Item game in _items.Where(g => g.Name.ToLower().Contains(filter)))
             {
                 if (EquipBoxC.SelectedIndex > 11)
@@ -854,7 +878,26 @@ namespace ConceptMatrix.Views
                 }
                 else
                 {
-                    if (ClassBox.SelectedIndex != 0)
+                    if(MainViewModel.RegionType=="Live" && Properties.Settings.Default.Language=="zh" 
+                        || MainViewModel.RegionType == "Live" && Properties.Settings.Default.Language == "ko")
+                    {
+                        if (ClassBox.SelectedIndex != 0)
+                        {
+                            if (EquipBoxC.SelectedIndex != 0 && EquipBoxC.SelectedIndex != 1)
+                            {
+                                if (ClassBox.SelectedIndex == 4)
+                                {
+                                    if (!game.ClassJobListStringName.Equals(selectedTag)) continue;
+                                }
+                                else if (!game.ClassJobListStringName.Contains(selectedTag)) continue;
+                            }
+                            else if (ClassBox.SelectedIndex >= 7)
+                            {
+                                if (!game.ClassJobListStringName.Contains(selectedTag)) continue;
+                            }
+                        }
+                    }
+                    else if (ClassBox.SelectedIndex != 0)
                     {
                         if (EquipBoxC.SelectedIndex != 0 && EquipBoxC.SelectedIndex != 1)
                         {
@@ -928,6 +971,73 @@ namespace ConceptMatrix.Views
             {
                 if (ClassBox.SelectedIndex < 0) return;
                 SaveSettings.Default.ClassIndex = ClassBox.SelectedIndex;
+
+                if (EquipBoxC.SelectedItem == null)
+                    return;
+
+                string filter = SearchModelBox.Text.ToLower();
+                EquipBox.Items.Clear();
+                string selectedTag = ((ComboBoxItem)ClassBox.SelectedItem).Tag.ToString();
+                foreach (ExdCsvReader.Item game in _items.Where(g => g.Name.ToLower().Contains(filter)))
+                {
+                    if (EquipBoxC.SelectedIndex > 11)
+                    {
+                        EquipBox.Items.Add(new Itemx
+                        {
+                            Name = game.Name,
+                            ModelMain = game.ModelMain,
+                            ModelOff = game.ModelOff,
+                            Type = game.Type,
+                            Icon = null
+                        });
+                    }
+                    else
+                    {
+                        if (MainViewModel.RegionType == "Live" && Properties.Settings.Default.Language == "zh"
+                            || MainViewModel.RegionType == "Live" && Properties.Settings.Default.Language == "ko")
+                        {
+                            if (ClassBox.SelectedIndex != 0)
+                            {
+                                if (EquipBoxC.SelectedIndex != 0 && EquipBoxC.SelectedIndex != 1)
+                                {
+                                    if (ClassBox.SelectedIndex == 4)
+                                    {
+                                        if (!game.ClassJobListStringName.Equals(selectedTag)) continue;
+                                    }
+                                    else if (!game.ClassJobListStringName.Contains(selectedTag)) continue;
+                                }
+                                else if (ClassBox.SelectedIndex >= 7)
+                                {
+                                    if (!game.ClassJobListStringName.Contains(selectedTag)) continue;
+                                }
+                            }
+                        }
+                        else if (ClassBox.SelectedIndex != 0)
+                        {
+                            if (EquipBoxC.SelectedIndex != 0 && EquipBoxC.SelectedIndex != 1)
+                            {
+                                if (ClassBox.SelectedIndex == 4)
+                                {
+                                    if (!game.ClassJobListStringName.Equals(ClassBox.Text)) continue;
+                                }
+                                else if (!game.ClassJobListStringName.Contains(ClassBox.Text)) continue;
+                            }
+                            else if (ClassBox.SelectedIndex >= 7)
+                            {
+                                if (!game.ClassJobListStringName.Contains(ClassBox.Text)) continue;
+                            }
+                        }
+
+                        EquipBox.Items.Add(new Itemx
+                        {
+                            Name = game.Name.ToString(),
+                            ModelMain = game.ModelMain,
+                            ModelOff = game.ModelOff,
+                            Type = game.Type,
+                            Icon = CreateSource(game.Icon)
+                        });
+                    }
+                }
             }
         }
     }
