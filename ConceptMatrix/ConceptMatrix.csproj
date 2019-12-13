@@ -388,6 +388,9 @@
     <None Include="Resources\actiontimeline.csv" />
     <None Include="Resources\BGM.csv" />
     <None Include="Resources\human.cmp" />
+    <None Include="Resources\Item.json" />
+    <None Include="Resources\ItemCN.json" />
+    <None Include="Resources\ItemKR.json" />
     <None Include="Resources\MonsterList.csv" />
     <None Include="Resources\PropsList.csv" />
   </ItemGroup>

@@ -19,7 +19,7 @@ namespace ConceptMatrix.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -134,6 +134,133 @@ namespace ConceptMatrix.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;sheet&quot;: &quot;Item&quot;,
+        ///  &quot;defaultColumn&quot;: &quot;Name&quot;,
+        ///  &quot;definitions&quot;: [
+        ///    {
+        ///      &quot;name&quot;: &quot;Singular&quot;
+        ///    },
+        ///    {
+        ///      &quot;index&quot;: 1,
+        ///      &quot;name&quot;: &quot;Adjective&quot;
+        ///    },
+        ///    {
+        ///      &quot;index&quot;: 2,
+        ///      &quot;name&quot;: &quot;Plural&quot;
+        ///    },
+        ///    {
+        ///      &quot;index&quot;: 3,
+        ///      &quot;name&quot;: &quot;PossessivePronoun&quot;
+        ///    },
+        ///    {
+        ///      &quot;index&quot;: 4,
+        ///      &quot;name&quot;: &quot;StartsWithVowel&quot;
+        ///    },
+        ///    {
+        ///      &quot;index&quot;: 6,
+        ///      &quot;name&quot;: &quot;Pronoun&quot;
+        ///    },
+        ///    {
+        ///      &quot;index&quot;: 7,
+        ///      &quot;name&quot;: &quot;Article&quot;
+        ///    },
+        ///    {
+        ///      &quot;index&quot;: 8,
+        ///  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Item {
+            get {
+                return ResourceManager.GetString("Item", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;sheet&quot;: &quot;Item&quot;,
+        ///  &quot;defaultColumn&quot;: &quot;Name&quot;,
+        ///  &quot;definitions&quot;: [
+        ///    {
+        ///      &quot;name&quot;: &quot;Singular&quot;
+        ///    },
+        ///    {
+        ///      &quot;index&quot;: 1,
+        ///      &quot;name&quot;: &quot;Adjective&quot;
+        ///    },
+        ///    {
+        ///      &quot;index&quot;: 2,
+        ///      &quot;name&quot;: &quot;Plural&quot;
+        ///    },
+        ///    {
+        ///      &quot;index&quot;: 3,
+        ///      &quot;name&quot;: &quot;PossessivePronoun&quot;
+        ///    },
+        ///    {
+        ///      &quot;index&quot;: 4,
+        ///      &quot;name&quot;: &quot;StartsWithVowel&quot;
+        ///    },
+        ///    {
+        ///      &quot;index&quot;: 6,
+        ///      &quot;name&quot;: &quot;Pronoun&quot;
+        ///    },
+        ///    {
+        ///      &quot;index&quot;: 7,
+        ///      &quot;name&quot;: &quot;Article&quot;
+        ///    },
+        ///    {
+        ///      &quot;index&quot;: 8,
+        ///  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ItemCN {
+            get {
+                return ResourceManager.GetString("ItemCN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;sheet&quot;: &quot;Item&quot;,
+        ///  &quot;defaultColumn&quot;: &quot;Name&quot;,
+        ///  &quot;definitions&quot;: [
+        ///    {
+        ///      &quot;name&quot;: &quot;Singular&quot;
+        ///    },
+        ///    {
+        ///      &quot;index&quot;: 1,
+        ///      &quot;name&quot;: &quot;Adjective&quot;
+        ///    },
+        ///    {
+        ///      &quot;index&quot;: 2,
+        ///      &quot;name&quot;: &quot;Plural&quot;
+        ///    },
+        ///    {
+        ///      &quot;index&quot;: 3,
+        ///      &quot;name&quot;: &quot;PossessivePronoun&quot;
+        ///    },
+        ///    {
+        ///      &quot;index&quot;: 4,
+        ///      &quot;name&quot;: &quot;StartsWithVowel&quot;
+        ///    },
+        ///    {
+        ///      &quot;index&quot;: 6,
+        ///      &quot;name&quot;: &quot;Pronoun&quot;
+        ///    },
+        ///    {
+        ///      &quot;index&quot;: 7,
+        ///      &quot;name&quot;: &quot;Article&quot;
+        ///    },
+        ///    {
+        ///      &quot;index&quot;: 8,
+        ///      &quot;name&quot;: &quot;Description&quot;
+        ///    }, [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ItemKR {
+            get {
+                return ResourceManager.GetString("ItemKR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Legacy {
@@ -199,21 +326,20 @@ namespace ConceptMatrix.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Index, Name, Model IDs
-        ///0,&quot;Target&quot;,&quot;9001,228,1,0&quot;
-        ///1,&quot;Japanese Fan&quot;,&quot;9001,227,1,0&quot;
-        ///2,&quot;Japanese Bell&quot;,&quot;9001,226,1,0&quot;
-        ///3,&quot;Zenos Katana&quot;,&quot;9001,225,1,0&quot;
-        ///4,&quot;Necklace&quot;,&quot;9001,224,1,0&quot;
-        ///5,&quot;Corked Rose Alcohol Bottle&quot;,&quot;9001,222,1,0&quot;
-        ///6,&quot;Corked Alcohol Bottle&quot;,&quot;9001,221,1,0&quot;
-        ///7,&quot;Sparrow Taiyaki&quot;,&quot;9001,219,1,0&quot;
-        ///8,&quot;Bom Boko Taiyaki&quot;,&quot;9001,218,1,0&quot;
-        ///9,&quot;Odder Otter Taiyaki&quot;,&quot;9001,217,1,0&quot;
-        ///10,&quot;BIG TUNA&quot;,&quot;9001,216,1,0&quot;
-        ///11,&quot;Bamboo Blowgun&quot;,&quot;9001,212,1,0&quot;
-        ///12,&quot;Papers&quot;,&quot;9001,211,1,0&quot;
-        ///13,&quot;Spoon&quot;,&quot;9001,208,1,0&quot;
-        ///14,&quot;Empty [rest of string was truncated]&quot;;.
+        ///0,&quot;GIGANTIC MEOL&quot;,&quot;9001,268,1,0&quot;
+        ///1,&quot;Il Mheg Looking Grass&quot;,&quot;9001,267,1,0&quot;
+        ///2,&quot;Alcohol Mixer&quot;,&quot;9001,266,1,0&quot;
+        ///3,&quot;Large Ronkan Disc&quot;,&quot;9001,265,1,0&quot;
+        ///4,&quot;Green Gem&quot;,&quot;9001,264,1,0&quot;
+        ///5,&quot;Royal Bracelet (?)&quot;,&quot;9001,263,1,0&quot;
+        ///6,&quot;Royal Crown&quot;,&quot;9001,262,1,0&quot;
+        ///7,&quot;Hair Brush&quot;,&quot;9001,261,1,0&quot;
+        ///8,&quot;Paint Brush&quot;,&quot;9001,260,1,0&quot;
+        ///9,&quot;Basket of Fruits&quot;,&quot;9001,259,1,0&quot;
+        ///10,&quot;Tankard of Ale&quot;,&quot;9001,258,1,0&quot;
+        ///11,&quot;Large Box of Hay&quot;,&quot;9001,257,1,0&quot;
+        ///12,&quot;Large Box of Potions&quot;,&quot;9001,256,1,0&quot;
+        ///13,&quot;Box of Crystals&quot;,&quot;9 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string PropsList {
             get {

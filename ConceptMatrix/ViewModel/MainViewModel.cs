@@ -52,15 +52,18 @@ namespace ConceptMatrix.ViewModel
                 if (File.Exists(Path.Combine(GameDirectory, "FFXIVBoot.exe")))
                 {
                     RegionType = "zh";
+                    File.WriteAllText("Definitions/Item.json", Properties.Resources.ItemCN);
                     realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.ChineseSimplified);
                 }
                 else if (File.Exists(Path.Combine(GameDirectory, "boot", "FFXIV_Boot.exe")))
                 {
                     RegionType = "ko";
+                    File.WriteAllText("Definitions/Item.json", Properties.Resources.ItemKR);
                     realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.Korean);
                 }
                 if(RegionType == "Live")
                 {
+                    File.WriteAllText("Definitions/Item.json", Properties.Resources.Item);
                     if (SaveSettings.Default.Language == "en") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.English);
                     else if (SaveSettings.Default.Language == "ja") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.Japanese);
                     else if (SaveSettings.Default.Language == "de") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.German);
@@ -100,14 +103,17 @@ namespace ConceptMatrix.ViewModel
                         File.Delete("SaintCoinach.History.zip");
                     if (File.Exists(Path.Combine(GameDirectory, "FFXIVBoot.exe")))
                     {
+                        File.WriteAllText("Definitions/Item.json", Properties.Resources.ItemCN);
                         realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.ChineseSimplified);
                     }
                     else if (File.Exists(Path.Combine(GameDirectory, "boot", "FFXIV_Boot.exe")))
                     {
+                        File.WriteAllText("Definitions/Item.json", Properties.Resources.ItemKR);
                         realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.Korean);
                     }
                     if (Determination == "Live")
                     {
+                        File.WriteAllText("Definitions/Item.json", Properties.Resources.Item);
                         if (SaveSettings.Default.Language == "en") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.English);
                         else if (SaveSettings.Default.Language == "ja") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.Japanese);
                         else if (SaveSettings.Default.Language == "de") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.German);
