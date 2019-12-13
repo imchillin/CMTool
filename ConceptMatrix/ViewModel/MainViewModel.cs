@@ -188,26 +188,29 @@ namespace ConceptMatrix.ViewModel
             {
                 if (weather.Key == 0 || weather.Icon == null)
                 {
+                    byte[] Bytes = { (byte)weather.Key, (byte)weather.Key };
                     ViewTime3.ForceWeatherBox.Items.Add(new ExdCsvReader.Weather
                     {
                         Index = Convert.ToInt32(weather.Key),
+                        Key = BitConverter.ToUInt16(Bytes, 0),
                         Name = weather.Name.ToString(),
                         Icon = null
                     });
                 }
                 else
                 {
+                    byte[] Bytes = { (byte)weather.Key, (byte)weather.Key };
                     ViewTime3.ForceWeatherBox.Items.Add(new ExdCsvReader.Weather
                     {
                         Index = Convert.ToInt32(weather.Key),
                         Name = weather.Name.ToString(),
+                        Key = BitConverter.ToUInt16(Bytes, 0),
                         Icon = ExdCsvReader.CreateSource(weather.Icon)
                     });
                 }
-
             }
         }
-       private void LoadSettings(string region)
+        private void LoadSettings(string region)
         {
             // create an xml serializer
             var serializer = new XmlSerializer(typeof(Settings), "");

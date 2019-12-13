@@ -148,6 +148,7 @@ namespace ConceptMatrix.Utility
 		{
 			public int Index { get; set; }
 			public string Name { get; set; }
+            public ushort Key { get; set; }
             public ImageSource Icon { get; set; }
             public SaintCoinach.Imaging.ImageFile Icon2 { get; set; }
         }

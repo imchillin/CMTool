@@ -1208,8 +1208,9 @@ namespace ConceptMatrix.Views
             {
                 if (ForceWeatherBox.SelectedIndex >= 0)
                 {
-                    CharacterDetails.ForceWeather.value = (byte)ForceWeatherBox.SelectedIndex;
-                    m.writeMemory(GAS(MemoryManager.Instance.GposeFilters, c.ForceWeather), "byte", ForceWeatherBox.SelectedIndex.ToString("X"));
+                    var Value = (ExdCsvReader.Weather)ForceWeatherBox.SelectedItem;
+                    CharacterDetails.ForceWeather.value = Value.Key;
+                    m.writeMemory(GAS(MemoryManager.Instance.GposeFilters, c.ForceWeather), "int", Value.Key.ToString());
                 }
             }
         }

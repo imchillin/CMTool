@@ -148,7 +148,7 @@
         <Button Content="{Binding Source={x:Static resx:UIStringsContent.RefreshButton}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="926,421,0,0" VerticalAlignment="Top" Width="165" Click="Button_Click" Height="28" Padding="0,4"/>
 
         <CheckBox IsChecked="{Binding CharacterDetails.ForceWeather.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.WeatherForce}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.WeatherForceToolTip}}" HorizontalAlignment="Left" Margin="410,454,0,0" VerticalAlignment="Top" Height="28"/>
-        <ComboBox x:Name="ForceWeatherBox" ItemTemplate="{StaticResource cmbTemplate}" SelectedIndex="{Binding CharacterDetails.ForceWeather.value}" HorizontalAlignment="Left" Margin="530,454,0,0" VerticalAlignment="Top" Width="142" Height="28" FontSize="11.35" SelectionChanged="ForceWeatherBox_SelectionChanged" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Padding="0">
+        <ComboBox x:Name="ForceWeatherBox" ItemTemplate="{StaticResource cmbTemplate}" SelectedValuePath="Key" SelectedValue="{Binding CharacterDetails.ForceWeather.value}" HorizontalAlignment="Left" Margin="530,454,0,0" VerticalAlignment="Top" Width="142" Height="28" FontSize="11.35" SelectionChanged="ForceWeatherBox_SelectionChanged" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Padding="0">
             <ComboBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel />

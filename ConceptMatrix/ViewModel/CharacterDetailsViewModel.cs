@@ -6683,7 +6683,7 @@ namespace ConceptMatrix.ViewModel
 
                 if (!CharacterDetails.StatusEffect.freeze) CharacterDetails.StatusEffect.value = (short)m.read2Byte(GAS(baseAddr, c.StatusEffect));
                 if (!CharacterDetails.Weather.freeze) CharacterDetails.Weather.value = (byte)m.readByte(GAS(MemoryManager.Instance.WeatherAddress, c.Weather));
-                if (!CharacterDetails.ForceWeather.freeze) CharacterDetails.ForceWeather.value = (byte)m.readByte(GAS(MemoryManager.Instance.GposeFilters, c.ForceWeather));
+                if (!CharacterDetails.ForceWeather.freeze) CharacterDetails.ForceWeather.value = (ushort)m.read2Byte(GAS(MemoryManager.Instance.GposeFilters, c.ForceWeather));
                 CharacterDetails.TimeControl.value = (int)m.readInt(GAS(MemoryManager.Instance.TimeAddress, c.TimeControl));
                 if (!CharacterDetails.HeadPiece.Activated) CharacterDetails.HeadSlot.value = CharacterDetails.HeadPiece.value + "," + CharacterDetails.HeadV.value + "," + CharacterDetails.HeadDye.value;
                 if (!CharacterDetails.Chest.Activated) CharacterDetails.BodySlot.value = CharacterDetails.Chest.value + "," + CharacterDetails.ChestV.value + "," + CharacterDetails.ChestDye.value;
