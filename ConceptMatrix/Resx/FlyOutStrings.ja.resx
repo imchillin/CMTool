@@ -408,4 +408,7 @@
   <data name="WVR" xml:space="preserve">
     <value>裁縫師</value>
   </data>
+  <data name="NoneOffHand" xml:space="preserve">
+    <value>オフハンドの美学</value>
+  </data>
 </root>

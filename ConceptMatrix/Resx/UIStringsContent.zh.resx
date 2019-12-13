@@ -1051,7 +1051,7 @@
     <value>改变所选目标肤色</value>
   </data>
   <data name="StatusEffect" xml:space="preserve">
-    <value>Gpose 状态效果：</value>
+    <value>Gpose 状态效果</value>
   </data>
   <data name="StatusEffectToolTip" xml:space="preserve">
     <value>允许你在gpose中应用额外的特效

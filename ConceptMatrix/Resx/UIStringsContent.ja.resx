@@ -149,7 +149,7 @@
     <value>キャラプロパティ</value>
   </data>
   <data name="ActorRefreshButton" xml:space="preserve">
-    <value>キャラをリフレッシュする</value>
+    <value>キャラをリフレッシュ</value>
   </data>
   <data name="ActorRefreshToolTip" xml:space="preserve">
     <value>キャラクターをリフレッシュする、行った変更に基づいてリロードする</value>
@@ -228,40 +228,40 @@
     <value>バストXスケール:</value>
   </data>
   <data name="BustXScaleToolTip" xml:space="preserve">
-    <value>キャラクターのバストXスケールを変更する (女性オンリー)</value>
+    <value>キャラクターのバストXスケールを変更する (女性のみ)</value>
   </data>
   <data name="BustYScale" xml:space="preserve">
     <value>バストYスケール:</value>
   </data>
   <data name="BustYScaleToolTip" xml:space="preserve">
-    <value>キャラクターのバストYスケールを変更する (女性オンリー)</value>
+    <value>キャラクターのバストYスケールを変更する (女性のみ)</value>
   </data>
   <data name="BustZScale" xml:space="preserve">
     <value>バストZスケール:</value>
   </data>
   <data name="BustZScaleToolTip" xml:space="preserve">
-    <value>キャラクターのバストZスケールを変更する (女性オンリー)</value>
+    <value>キャラクターのバストZスケールを変更する (女性のみ)</value>
   </data>
   <data name="c1001" xml:space="preserve">
-    <value>c1001 - ルガディン (女)</value>
+    <value>c1001 - ルガディン 女性</value>
   </data>
   <data name="c101" xml:space="preserve">
-    <value>c101 - ヒューラン (男)</value>
+    <value>c101 - ヒューラン 男性</value>
   </data>
   <data name="c104" xml:space="preserve">
-    <value>c104 - ヒューラン (男、子)</value>
+    <value>c104 - ヒューラン 男性(子供)</value>
   </data>
   <data name="c1101" xml:space="preserve">
-    <value>c1101 - ララフェル (男)</value>
+    <value>c1101 - ララフェル 男性</value>
   </data>
   <data name="c1201" xml:space="preserve">
-    <value>c1201 - ララフェル (女)</value>
+    <value>c1201 - ララフェル 女性</value>
   </data>
   <data name="c1301" xml:space="preserve">
-    <value>c1301 - アウラ (男)</value>
+    <value>c1301 - アウラ 男性</value>
   </data>
   <data name="c1401" xml:space="preserve">
-    <value>c1401 - アウラ (女)</value>
+    <value>c1401 - アウラ 女性</value>
   </data>
   <data name="c1501" xml:space="preserve">
     <value>c1501 - ロスガル</value>
@@ -270,43 +270,43 @@
     <value>c1801 - ヴィエラ</value>
   </data>
   <data name="c201" xml:space="preserve">
-    <value>c201 - ヒューラン (女)</value>
+    <value>c201 - ヒューラン 女性</value>
   </data>
   <data name="c301" xml:space="preserve">
-    <value>c301 - ハイランダー (男)</value>
+    <value>c301 - ハイランダー 男性</value>
   </data>
   <data name="c401" xml:space="preserve">
-    <value>c401 - ハイランダー (女)</value>
+    <value>c401 - ハイランダー 女性</value>
   </data>
   <data name="c501" xml:space="preserve">
-    <value>c501 - エレゼン (男)</value>
+    <value>c501 - エレゼン 男性</value>
   </data>
   <data name="c504" xml:space="preserve">
-    <value>c504 - エレゼン (男、子)</value>
+    <value>c504 - エレゼン 男性(子供)</value>
   </data>
   <data name="c601" xml:space="preserve">
-    <value>c601 - エレゼン (女)</value>
+    <value>c601 - エレゼン 女性</value>
   </data>
   <data name="c604" xml:space="preserve">
-    <value>c604 - エレゼン (女、子)</value>
+    <value>c604 - エレゼン 女性(子供)</value>
   </data>
   <data name="c701" xml:space="preserve">
-    <value>c701 - ミコッテ (男)</value>
+    <value>c701 - ミコッテ 男性</value>
   </data>
   <data name="c801" xml:space="preserve">
-    <value>c801 - ミコッテ (女)</value>
+    <value>c801 - ミコッテ 女性</value>
   </data>
   <data name="c804" xml:space="preserve">
-    <value>c804 - ミコッテ (女、子)</value>
+    <value>c804 - ミコッテ 女性(子供)</value>
   </data>
   <data name="c901" xml:space="preserve">
-    <value>c901 - ルガディン (男)</value>
+    <value>c901 - ルガディン 男性</value>
   </data>
   <data name="c9104" xml:space="preserve">
-    <value>c9104 - 角尊 (男)</value>
+    <value>c9104 - 角尊 男性</value>
   </data>
   <data name="c9204" xml:space="preserve">
-    <value>c9204 - 角尊 (女)</value>
+    <value>c9204 - 角尊 女性</value>
   </data>
   <data name="Calves" xml:space="preserve">
     <value>腓骨</value>
@@ -407,31 +407,31 @@
     <value>染料</value>
   </data>
   <data name="EarMuscleTailSize" xml:space="preserve">
-    <value>耳/体格/尾サイズ</value>
+    <value>耳/体格/しっぽのサイズ:</value>
   </data>
   <data name="EarMuscleTailSizeToolTip" xml:space="preserve">
-    <value>キャラクターの耳、体格、尾のサイズを変更する</value>
+    <value>キャラクターの耳、体格、しっぽのサイズを変更する</value>
   </data>
   <data name="Ears" xml:space="preserve">
-    <value>耳の形</value>
+    <value>耳の形:</value>
   </data>
   <data name="EarsToolTip" xml:space="preserve">
     <value>キャラクターに耳飾りを装備できる</value>
   </data>
   <data name="EarTailScale" xml:space="preserve">
-    <value>耳/尾スケール</value>
+    <value>耳/しっぽスケール:</value>
   </data>
   <data name="EarTailScaleToolTip" xml:space="preserve">
-    <value>キャラクターの耳と尾のスケールを変更する</value>
+    <value>キャラクターの耳としっぽのスケールを変更する</value>
   </data>
   <data name="EarTailType" xml:space="preserve">
-    <value>耳/尾の形</value>
+    <value>耳/しっぽの形:</value>
   </data>
   <data name="EarTailTypeToolTip" xml:space="preserve">
     <value>キャラクターの耳と尾を変更する</value>
   </data>
   <data name="Elbows" xml:space="preserve">
-    <value>肘</value>
+    <value>肘:</value>
   </data>
   <data name="EnableEditing" xml:space="preserve">
     <value>編集を有効にする:</value>
@@ -452,46 +452,46 @@
     <value>装備</value>
   </data>
   <data name="Exposure" xml:space="preserve">
-    <value>露出 </value>
+    <value>露出:</value>
   </data>
   <data name="EyeBrowsToolTip" xml:space="preserve">
     <value>キャラクターの眉を変更する</value>
   </data>
   <data name="EyebrowsType" xml:space="preserve">
-    <value>眉</value>
+    <value>眉:</value>
   </data>
   <data name="EyeColorLeft" xml:space="preserve">
-    <value>瞳の色 (左)</value>
+    <value>瞳の色 (左):</value>
   </data>
   <data name="EyeColorLeftToolTip" xml:space="preserve">
     <value>キャラクターの左瞳の色を変更する</value>
   </data>
   <data name="EyeColorRight" xml:space="preserve">
-    <value>瞳の色 (右)</value>
+    <value>瞳の色 (右):</value>
   </data>
   <data name="EyeColorRightToolTip" xml:space="preserve">
     <value>キャラクターの右瞳の色を変更する</value>
   </data>
   <data name="Eyelids" xml:space="preserve">
-    <value>まぶた</value>
+    <value>まぶた:</value>
   </data>
   <data name="Eyes" xml:space="preserve">
-    <value>目</value>
+    <value>目:</value>
   </data>
   <data name="EyesType" xml:space="preserve">
-    <value>目</value>
+    <value>目のタイプ:</value>
   </data>
   <data name="EyeTypeToolTip" xml:space="preserve">
     <value>キャラクターの目を変更する</value>
   </data>
   <data name="Face" xml:space="preserve">
-    <value>顔</value>
+    <value>顔:</value>
   </data>
   <data name="FacePaint" xml:space="preserve">
-    <value>フェイスペイント</value>
+    <value>フェイスペイント:</value>
   </data>
   <data name="FacePaintColor" xml:space="preserve">
-    <value>ペイントの色</value>
+    <value>フェイスペイントの色:</value>
   </data>
   <data name="FacePaintColorToolTip" xml:space="preserve">
     <value>キャラクターのフェイスペイントの色を変更する</value>
@@ -500,19 +500,19 @@
     <value>キャラクターのフェイスペイントと刺青を変更する</value>
   </data>
   <data name="FacialFeatures" xml:space="preserve">
-    <value>髭や傷など</value>
+    <value>髭や傷など:</value>
   </data>
   <data name="FacialFeaturesToolTip" xml:space="preserve">
     <value>キャラクターの髭や傷などを変更する</value>
   </data>
   <data name="Feet" xml:space="preserve">
-    <value>足防具</value>
+    <value>足防具:</value>
   </data>
   <data name="FeetToolTip" xml:space="preserve">
     <value>キャラクターに足防具を装備できる</value>
   </data>
   <data name="Filmic" xml:space="preserve">
-    <value>フィルム</value>
+    <value>シネマティック:</value>
   </data>
   <data name="Filters" xml:space="preserve">
     <value>フィルター</value>
@@ -537,13 +537,13 @@
 • NPCでは実行できない!</value>
   </data>
   <data name="Forearms" xml:space="preserve">
-    <value>前腕部</value>
+    <value>前腕部:</value>
   </data>
   <data name="FoV" xml:space="preserve">
-    <value>視野</value>
+    <value>視野角:</value>
   </data>
   <data name="FoV2" xml:space="preserve">
-    <value>視野 2:</value>
+    <value>視野角 2:</value>
   </data>
   <data name="FreeCompanyTag" xml:space="preserve">
     <value>フリーカンパニーのタグ:</value>
@@ -566,7 +566,7 @@
 • 新しいエンティティをクリックする前にこのボタンをもう一度押すと、同じポジションに移動する</value>
   </data>
   <data name="FreezeRot" xml:space="preserve">
-    <value>ローテーションを固定(ストップ)する</value>
+    <value>回転を凍結</value>
   </data>
   <data name="FreezeRotToolTip" xml:space="preserve">
     <value>選択したエンティティのローテーションを固定する
@@ -595,10 +595,10 @@
 • GPoseモードとターゲットモードは両方とも同時にオンに切り替わります。 ターゲットモードが既にオンになっていないことを確認してください。オンになっていないと、代わりにオフになります。</value>
   </data>
   <data name="Green" xml:space="preserve">
-    <value>緑</value>
+    <value>緑:</value>
   </data>
   <data name="GreenGlow" xml:space="preserve">
-    <value>緑グロー</value>
+    <value>緑グロー:</value>
   </data>
   <data name="GroupPoseFilter" xml:space="preserve">
     <value>グループポーズのフィルター</value>
@@ -613,13 +613,13 @@
     <value>キャラクターの髪の色を変更する</value>
   </data>
   <data name="Hairstyle" xml:space="preserve">
-    <value>髪型</value>
+    <value>髪型:</value>
   </data>
   <data name="HairStyleToolTip" xml:space="preserve">
     <value>キャラクターの髪型を変更する</value>
   </data>
   <data name="Hands" xml:space="preserve">
-    <value>手防具</value>
+    <value>手防具:</value>
   </data>
   <data name="HandsToolTip" xml:space="preserve">
     <value>キャラクターに手防具を装着できる</value>
@@ -628,7 +628,7 @@
     <value>HDR:</value>
   </data>
   <data name="Head" xml:space="preserve">
-    <value>頭防具</value>
+    <value>頭防具:</value>
   </data>
   <data name="HeadBones" xml:space="preserve">
     <value>頭の骨</value>
@@ -637,13 +637,13 @@
     <value>キャラクターに頭防具を装備できる</value>
   </data>
   <data name="HeadType" xml:space="preserve">
-    <value>顔のタイプ</value>
+    <value>顔のタイプ:</value>
   </data>
   <data name="HeadTypeToolTip" xml:space="preserve">
     <value>キャラクターの顔のタイプを変更する</value>
   </data>
   <data name="Height" xml:space="preserve">
-    <value>身長</value>
+    <value>身長:</value>
   </data>
   <data name="HeightToolTip" xml:space="preserve">
     <value>キャラクターの身長を変更する</value>
@@ -652,7 +652,7 @@
     <value>キャラクターのメッシュを切り替える</value>
   </data>
   <data name="Highlights" xml:space="preserve">
-    <value>メッシュ</value>
+    <value>メッシュ:</value>
   </data>
   <data name="HighlightsColor" xml:space="preserve">
     <value>メッシュの色</value>
@@ -673,49 +673,49 @@
     <value>人差し指</value>
   </data>
   <data name="IndexJoint" xml:space="preserve">
-    <value>人差し指関節</value>
+    <value>人差し指関節:</value>
   </data>
   <data name="InnerBrows" xml:space="preserve">
-    <value>インナー眉</value>
+    <value>インナー眉:</value>
   </data>
   <data name="Jaw" xml:space="preserve">
-    <value>あご</value>
+    <value>あご:</value>
   </data>
   <data name="JawType" xml:space="preserve">
-    <value>顔の輪郭</value>
+    <value>顔の輪郭:</value>
   </data>
   <data name="JawTypeToolTip" xml:space="preserve">
     <value>キャラクターの顔の輪郭を変更する</value>
   </data>
   <data name="JobIcon" xml:space="preserve">
-    <value>ジョビコ:</value>
+    <value>ジョビコン:</value>
   </data>
   <data name="JobIconToolTip" xml:space="preserve">
     <value>パーティーリストでパーティーメンバーのジョブアイコンを変更する</value>
   </data>
   <data name="Knees" xml:space="preserve">
-    <value>膝</value>
+    <value>膝:</value>
   </data>
   <data name="Language" xml:space="preserve">
     <value>日本語</value>
   </data>
   <data name="LeftArm" xml:space="preserve">
-    <value>左腕</value>
+    <value>左腕:</value>
   </data>
   <data name="LeftEyeColor" xml:space="preserve">
     <value>瞳の色 (左)</value>
   </data>
   <data name="LeftLeg" xml:space="preserve">
-    <value>左脚</value>
+    <value>左脚:</value>
   </data>
   <data name="LeftRing" xml:space="preserve">
-    <value>指輪 (左)</value>
+    <value>指輪 (左):</value>
   </data>
   <data name="LeftRingToolTip" xml:space="preserve">
     <value>キャラクターの左手に任意の指輪を装備できる</value>
   </data>
   <data name="Legs" xml:space="preserve">
-    <value>脚防具</value>
+    <value>脚防具:</value>
   </data>
   <data name="LegsToolTip" xml:space="preserve">
     <value>キャラクターに脚防具を装備できる</value>
@@ -730,7 +730,7 @@
     <value>瞳の輪郭の色/刺青の色</value>
   </data>
   <data name="LipColor" xml:space="preserve">
-    <value>唇の色/体毛柄</value>
+    <value>唇の色/体毛柄:</value>
   </data>
   <data name="LipColorToolTip" xml:space="preserve">
     <value>キャラクターの唇の色と体毛柄を変更する</value>
@@ -758,35 +758,35 @@
     <value>「バックアップ」状態に戻る</value>
   </data>
   <data name="LockFacialAnimation" xml:space="preserve">
-    <value>表情を固定</value>
+    <value>表情を固定:</value>
   </data>
   <data name="LockFacialAnimationToolTip" xml:space="preserve">
     <value>キャラクターの表情を固定する
 • アクターの表情を適切に固定するには、これをオンにする必要がある、 オプションを固定する そして、アニメーションのスピードを0に設定する</value>
   </data>
   <data name="LockTime" xml:space="preserve">
-    <value>時間を固定する</value>
+    <value>時間を固定する:</value>
   </data>
   <data name="LowerBodyBones" xml:space="preserve">
     <value>下半身の骨</value>
   </data>
   <data name="LowerEarrings" xml:space="preserve">
-    <value>ロワーイヤリング</value>
+    <value>ロワーイヤリング:</value>
   </data>
   <data name="LowerEyelids" xml:space="preserve">
-    <value>下まぶた</value>
+    <value>下まぶた:</value>
   </data>
   <data name="LowerLip" xml:space="preserve">
-    <value>下唇</value>
+    <value>下唇:</value>
   </data>
   <data name="MainHand" xml:space="preserve">
-    <value>メインアーム</value>
+    <value>メインアーム:</value>
   </data>
   <data name="MainHandColor" xml:space="preserve">
     <value>メインアームの色</value>
   </data>
   <data name="MainHandScale" xml:space="preserve">
-    <value>メインアームのスケール</value>
+    <value>メインアームの大きさ</value>
   </data>
   <data name="MainHandScaleToolTip" xml:space="preserve">
     <value>エンティティの名ナームのXYZスケールを制御する
@@ -797,16 +797,16 @@
 • メインアームを空にしたい場合は、「エンペラーズ・ニューフィスト」を装備するか、右パネルでメインハンドスケールおよび/またはサブアームスケールを使用する</value>
   </data>
   <data name="MaxZoom" xml:space="preserve">
-    <value>マックスズーム</value>
+    <value>マックスズーム:</value>
   </data>
   <data name="MiddleFinger" xml:space="preserve">
-    <value>中指</value>
+    <value>中指:</value>
   </data>
   <data name="MiddleJoint" xml:space="preserve">
     <value>中指関節:</value>
   </data>
   <data name="MinZoom" xml:space="preserve">
-    <value>ミニマルズーム</value>
+    <value>ミニマルズーム:</value>
   </data>
   <data name="ModelID" xml:space="preserve">
     <value>モデルID</value>
@@ -826,16 +826,16 @@
     <value>キャラクターのモデルタイプを変更する</value>
   </data>
   <data name="Mouth" xml:space="preserve">
-    <value>口</value>
+    <value>口:</value>
   </data>
   <data name="MouthType" xml:space="preserve">
-    <value>口の形</value>
+    <value>口の形:</value>
   </data>
   <data name="MouthTypeToolTip" xml:space="preserve">
-    <value>キャラクタ＾ーの口の形を変更する</value>
+    <value>キャラクターの口の形を変更する</value>
   </data>
   <data name="MuscleTone" xml:space="preserve">
-    <value>体格</value>
+    <value>体格:</value>
   </data>
   <data name="MuscleToneToolTip" xml:space="preserve">
     <value>キャラクターの体格を変更する</value>
@@ -847,7 +847,7 @@
     <value>キャラクターの名前を変更する</value>
   </data>
   <data name="NameWaterMark" xml:space="preserve">
-    <value />
+    <value>名前</value>
   </data>
   <data name="Neck" xml:space="preserve">
     <value>首飾り</value>
@@ -856,19 +856,19 @@
     <value>キャラクターに首飾りを装備できる</value>
   </data>
   <data name="Nose" xml:space="preserve">
-    <value>鼻</value>
+    <value>鼻:</value>
   </data>
   <data name="NoseType" xml:space="preserve">
-    <value>鼻の形</value>
+    <value>鼻の形:</value>
   </data>
   <data name="NoseTypeToolTip" xml:space="preserve">
     <value>キャラクターの鼻の形を変更する</value>
   </data>
   <data name="Nostrils" xml:space="preserve">
-    <value>鼻孔</value>
+    <value>鼻孔:</value>
   </data>
   <data name="NPCModel" xml:space="preserve">
-    <value>NPCのモデル</value>
+    <value>NPCのモデル:</value>
   </data>
   <data name="NPCOutfit" xml:space="preserve">
     <value>NPCの衣装</value>
@@ -879,13 +879,13 @@
 •蛮族、ゼノスなどの一部のNPCは、デミヒューマンに分類されるため、このセクションには含まれていない。 最初のタブでモデルタイプを検索することで見つけるができる</value>
   </data>
   <data name="OffHand" xml:space="preserve">
-    <value>サブアーム</value>
+    <value>サブアーム:</value>
   </data>
   <data name="OffHandColor" xml:space="preserve">
-    <value>サブアームの色</value>
+    <value>サブアームの色:</value>
   </data>
   <data name="OffHandScale" xml:space="preserve">
-    <value>サブアームスケール</value>
+    <value>サブアーム大きさ</value>
   </data>
   <data name="OffHandScaleToolTip" xml:space="preserve">
     <value>エンティティのサブアームのXYZスケールを制御しする
@@ -896,22 +896,22 @@
 •適用可能なサブアーム（盾以外）を見つけるには、サブアームの「Display」ボタンを使用してメインハンドを検索する必要がある。たとえば、鞘または矢筒を見つけるには、それに合う刀または弓を検索する必要がある。</value>
   </data>
   <data name="OuterBrows" xml:space="preserve">
-    <value>アウター眉</value>
+    <value>アウター眉:</value>
   </data>
   <data name="OverallScale" xml:space="preserve">
-    <value>全体スケール</value>
+    <value>全体の大きさ:</value>
   </data>
   <data name="OverallScaleToolTip" xml:space="preserve">
     <value>キャラクターの全体スケールを変更する</value>
   </data>
   <data name="Pelvis" xml:space="preserve">
-    <value>骨盤</value>
+    <value>骨盤:</value>
   </data>
   <data name="PinkyFinger" xml:space="preserve">
-    <value>小指</value>
+    <value>小指:</value>
   </data>
   <data name="PinkyJoint" xml:space="preserve">
-    <value>小指関節</value>
+    <value>小指関節:</value>
   </data>
   <data name="PosingMatrix" xml:space="preserve">
     <value>ポージングマトリックス</value>
@@ -923,7 +923,7 @@
     <value>R</value>
   </data>
   <data name="Race" xml:space="preserve">
-    <value>種族</value>
+    <value>種族:</value>
   </data>
   <data name="RaceToolTip" xml:space="preserve">
     <value>キャラクターの種族を変更する</value>
@@ -935,7 +935,7 @@
     <value>ランダムな外観を作成する</value>
   </data>
   <data name="RealtimeRotation" xml:space="preserve">
-    <value>リアルタイムローテーション</value>
+    <value>リアルタイムローテーション:</value>
   </data>
   <data name="RealTimeRotationToolTip" xml:space="preserve">
     <value>マウスボタンを使用してキューブを制御する
@@ -945,23 +945,23 @@
 • MMBは、Z軸のローテーションを制御する</value>
   </data>
   <data name="Red" xml:space="preserve">
-    <value>赤</value>
+    <value>赤:</value>
   </data>
   <data name="RedGlow" xml:space="preserve">
-    <value>赤グロー</value>
+    <value>赤グロー:</value>
   </data>
   <data name="RefreshButton" xml:space="preserve">
     <value>リフレッシュ</value>
   </data>
   <data name="RelativeXYZPos" xml:space="preserve">
-    <value>相対XYZポジション</value>
+    <value>相対XYZポジション:</value>
   </data>
   <data name="RelativeXYZPosToolTip" xml:space="preserve">
     <value>このトグルは、対象となるエンティティに関連するすべてのXYZ移動を行います
 • この設定はデフォルトでオンに設定されており、その状態はセッション間で保存される</value>
   </data>
   <data name="RelativeXYZRot" xml:space="preserve">
-    <value>相対XYZローテーション</value>
+    <value>相対XYZローテーション:</value>
   </data>
   <data name="RelativeXYZRotToolTip" xml:space="preserve">
     <value>このトグルは、ターゲットとなるエンティティを基準にしてすべてのXYZローテーションを行います
@@ -972,7 +972,7 @@
     <value>レンダーサイクル</value>
   </data>
   <data name="RenderLimit" xml:space="preserve">
-    <value>キャラクターレンダリングリミットを削除する</value>
+    <value>アクターレンダリング制限の削除:</value>
   </data>
   <data name="RenderToggleToolTip" xml:space="preserve">
     <value>レンダートグルスイッチ</value>
@@ -984,13 +984,13 @@
     <value>デフォルトにリセット</value>
   </data>
   <data name="RightArm" xml:space="preserve">
-    <value>右腕</value>
+    <value>右腕:</value>
   </data>
   <data name="RightEyeColor" xml:space="preserve">
     <value>瞳の色 (右)</value>
   </data>
   <data name="RightLeg" xml:space="preserve">
-    <value>右脚</value>
+    <value>右脚:</value>
   </data>
   <data name="RightRing" xml:space="preserve">
     <value>指輪 (右)</value>
@@ -999,13 +999,13 @@
     <value>キャラクターの右手に任意の指輪を装備できる</value>
   </data>
   <data name="RingFinger" xml:space="preserve">
-    <value>薬指</value>
+    <value>薬指:</value>
   </data>
   <data name="RingJoint" xml:space="preserve">
-    <value>薬指関節</value>
+    <value>薬指関節:</value>
   </data>
   <data name="RotationSliders" xml:space="preserve">
-    <value>ローテーションスライダー</value>
+    <value>回転スライダー</value>
   </data>
   <data name="RotationSlidersToolTip" xml:space="preserve">
     <value>このトグルは、ローテーションスライダーと数値直接入力を切り替える
@@ -1039,26 +1039,27 @@
     <value>S-HDR:</value>
   </data>
   <data name="Shoulders" xml:space="preserve">
-    <value>肩</value>
+    <value>肩:</value>
   </data>
   <data name="SkinColor" xml:space="preserve">
     <value>肌の色</value>
   </data>
   <data name="Skintone" xml:space="preserve">
-    <value>肌の色</value>
+    <value>肌の色:</value>
   </data>
   <data name="SkinToneToolTip" xml:space="preserve">
     <value>キャラクターの肌の色を変更する</value>
   </data>
   <data name="StatusEffect" xml:space="preserve">
-    <value>グループポーズのステータス表現</value>
+    <value>グループポーズ
+ステータス効果</value>
   </data>
   <data name="StatusEffectToolTip" xml:space="preserve">
     <value>Ermöglicht es zusätzliche VFX auf Entitäten in GPose anzuwenden.
 1. </value>
   </data>
   <data name="Sternum" xml:space="preserve">
-    <value>胸骨</value>
+    <value>胸骨:</value>
   </data>
   <data name="Tail" xml:space="preserve">
     <value>しっぽ:</value>
@@ -1070,14 +1071,14 @@
     <value>ターゲットされたキャラは？？？</value>
   </data>
   <data name="TargetMode" xml:space="preserve">
-    <value>ターゲットモード</value>
+    <value>ターゲットモード:</value>
   </data>
   <data name="TargetModeToolTip" xml:space="preserve">
     <value>エンティティリストを使用せずに、選択ターゲットのバリューを変更できる
 •これは、エンティティリストが絶えず移動する混雑したエリアに便利です。これをオフにし、通常の方法で変更を適用する必要がある。</value>
   </data>
   <data name="Thumb" xml:space="preserve">
-    <value>親指</value>
+    <value>親指:</value>
   </data>
   <data name="ThumbJoint" xml:space="preserve">
     <value>親指関節:</value>
@@ -1126,7 +1127,7 @@
     <value>Twitter</value>
   </data>
   <data name="UncheckButton" xml:space="preserve">
-    <value>変更を破棄</value>
+    <value>変更の固定を解除</value>
   </data>
   <data name="UncheckButtonToolTip" xml:space="preserve">
     <value>変更点をすべて無効化にして固定の解除</value>
@@ -1168,10 +1169,10 @@
     <value>腰:</value>
   </data>
   <data name="Weather" xml:space="preserve">
-    <value>天気</value>
+    <value>天気:</value>
   </data>
   <data name="WeatherForce" xml:space="preserve">
-    <value>天気を強制する</value>
+    <value>天気を強制する:</value>
   </data>
   <data name="WeatherForceToolTip" xml:space="preserve">
     <value>現在のエリアの天気を制御する
@@ -1224,7 +1225,7 @@
 • ローテーションスライダーと数値直接入力の両方で、ローテーションを固定する必要がある</value>
   </data>
   <data name="Y" xml:space="preserve">
-    <value>Y</value>
+    <value>Y:</value>
   </data>
   <data name="YPos" xml:space="preserve">
     <value>Y ポジション:</value>

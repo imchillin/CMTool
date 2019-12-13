@@ -408,4 +408,7 @@
   <data name="WVR" xml:space="preserve">
     <value>WEB</value>
   </data>
+  <data name="NoneOffHand" xml:space="preserve">
+    <value>Non-Offhand</value>
+  </data>
 </root>

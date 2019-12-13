@@ -411,4 +411,7 @@
   <data name="Equipment" xml:space="preserve">
     <value>Equipment</value>
   </data>
+  <data name="NoneOffHand" xml:space="preserve">
+    <value>Non-Offhand Aesthetics</value>
+  </data>
 </root>

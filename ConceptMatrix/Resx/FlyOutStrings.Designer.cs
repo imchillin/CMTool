@@ -727,6 +727,15 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Non-Offhand Aesthetics.
+        /// </summary>
+        public static string NoneOffHand {
+            get {
+                return ResourceManager.GetString("NoneOffHand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to NPC Selector.
         /// </summary>
         public static string NPCSelect {

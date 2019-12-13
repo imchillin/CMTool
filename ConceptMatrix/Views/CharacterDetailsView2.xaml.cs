@@ -1,4 +1,5 @@
 ﻿using ConceptMatrix.Models;
+using ConceptMatrix.Resx;
 using ConceptMatrix.Utility;
 using ConceptMatrix.ViewModel;
 using ConceptMatrix.Windows;
@@ -255,7 +256,7 @@ namespace ConceptMatrix.Views
                     EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
                     EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                     EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                    EquipmentControl.CheckIncluded.Content = "Include OffHand";
+                    EquipmentControl.CheckIncluded.Content = FlyOutStrings.IncludeOffhand;
                     EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
@@ -270,7 +271,7 @@ namespace ConceptMatrix.Views
                 EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
                 EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                 EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                EquipmentControl.CheckIncluded.Content = "Include OffHand";
+                EquipmentControl.CheckIncluded.Content = FlyOutStrings.IncludeOffhand;
                 EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray());
             }
         }
@@ -290,7 +291,7 @@ namespace ConceptMatrix.Views
                     EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
                     EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                     EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                    EquipmentControl.CheckIncluded.Content = "Non-Offhand Aesthetics";
+                    EquipmentControl.CheckIncluded.Content = FlyOutStrings.NoneOffHand;
                     EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
@@ -305,7 +306,7 @@ namespace ConceptMatrix.Views
                 EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
                 EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                 EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                EquipmentControl.CheckIncluded.Content = "Non-Offhand Aesthetics";
+                EquipmentControl.CheckIncluded.Content = FlyOutStrings.NoneOffHand;
                 EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray());
             }
         }

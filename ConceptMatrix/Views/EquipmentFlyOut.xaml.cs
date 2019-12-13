@@ -502,14 +502,14 @@ namespace ConceptMatrix.Views
                 {
                     CheckIncluded.Visibility = Visibility.Visible;
                     KeepDyes.Visibility = Visibility.Visible;
-                    CheckIncluded.Content = "Include OffHand";
+                    CheckIncluded.Content = FlyOutStrings.IncludeOffhand;
                     GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray());
                 }
                 if (EquipBoxC.SelectedIndex == 1)
                 {
                     CheckIncluded.Visibility = Visibility.Visible;
                     KeepDyes.Visibility = Visibility.Visible;
-                    CheckIncluded.Content = "Non-Offhand Aesthetics";
+                    CheckIncluded.Content = FlyOutStrings.NoneOffHand;
                     GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray());
                 }
                 if (EquipBoxC.SelectedIndex == 2)
@@ -971,69 +971,6 @@ namespace ConceptMatrix.Views
             {
                 if (ClassBox.SelectedIndex < 0) return;
                 SaveSettings.Default.ClassIndex = ClassBox.SelectedIndex;
-                EquipBox.Items.Clear();
-                string selectedTag = ((ComboBoxItem)ClassBox.SelectedItem).Tag.ToString();
-
-                foreach (ExdCsvReader.Item game in _items)
-                {
-                    if (EquipBoxC.SelectedIndex > 11)
-                    {
-                        EquipBox.Items.Add(new Itemx
-                        {
-                            Name = game.Name,
-                            ModelMain = game.ModelMain,
-                            ModelOff = game.ModelOff,
-                            Type = game.Type,
-                            Icon = null
-                        });
-                    }
-                    else
-                    {
-                        if (MainViewModel.RegionType == "Live" && SaveSettings.Default.Language == "zh"
-                            || MainViewModel.RegionType == "Live" && SaveSettings.Default.Language == "ko")
-                        {
-                            if (ClassBox.SelectedIndex != 0)
-                            {
-                                if (EquipBoxC.SelectedIndex != 0 && EquipBoxC.SelectedIndex != 1)
-                                {
-                                    if (ClassBox.SelectedIndex == 4)
-                                    {
-                                        if (!game.ClassJobListStringName.Equals(selectedTag)) continue;
-                                    }
-                                    else if (!game.ClassJobListStringName.Contains(selectedTag)) continue;
-                                }
-                                else if (ClassBox.SelectedIndex >= 7)
-                                {
-                                    if (!game.ClassJobListStringName.Contains(selectedTag)) continue;
-                                }
-                            }
-                        }
-                        else if (ClassBox.SelectedIndex != 0)
-                        {
-                            if (EquipBoxC.SelectedIndex != 0 && EquipBoxC.SelectedIndex != 1)
-                            {
-                                if (ClassBox.SelectedIndex == 4)
-                                {
-                                    if (!game.ClassJobListStringName.Equals(ClassBox.Text)) continue;
-                                }
-                                else if (!game.ClassJobListStringName.Contains(ClassBox.Text)) continue;
-                            }
-                            else if (ClassBox.SelectedIndex >= 7)
-                            {
-                                if (!game.ClassJobListStringName.Contains(ClassBox.Text)) continue;
-                            }
-                        }
-
-                        EquipBox.Items.Add(new Itemx
-                        {
-                            Name = game.Name.ToString(),
-                            ModelMain = game.ModelMain,
-                            ModelOff = game.ModelOff,
-                            Type = game.Type,
-                            Icon = CreateSource(game.Icon)
-                        });
-                    }
-                }
             }
         }
     }

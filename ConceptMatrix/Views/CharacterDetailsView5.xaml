@@ -21,8 +21,9 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-
-        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.RealTimeRotation}}" ToolTip="{Binding Source={x:Static resx:UIPoseStrings.RealTimeRotationToolTip}}" HorizontalAlignment="Left" Margin="958,5,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Viewbox HorizontalAlignment="Left" Height="28" Margin="962,10,0,0" VerticalAlignment="Top" Width="143">
+            <Label Content="{Binding Source={x:Static resx:UIPoseStrings.RealTimeRotation}}" ToolTip="{Binding Source={x:Static resx:UIPoseStrings.RealTimeRotationToolTip}}" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16"/>
+        </Viewbox>
         <Border BorderBrush="Black" BorderThickness="3" HorizontalAlignment="Left" Height="150" Margin="955,35,0,0" VerticalAlignment="Top" Width="150" Background="#FF2E2E2E">
             <local:PoseRotationView Height="Auto" Width="Auto">
                 <local:PoseRotationView.DataContext>

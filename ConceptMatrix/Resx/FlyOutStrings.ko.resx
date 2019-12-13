@@ -408,4 +408,7 @@
   <data name="WVR" xml:space="preserve">
     <value>재봉사</value>
   </data>
+  <data name="NoneOffHand" xml:space="preserve">
+    <value>비 손상 미학</value>
+  </data>
 </root>

@@ -408,4 +408,7 @@
   <data name="WVR" xml:space="preserve">
     <value>COU</value>
   </data>
+  <data name="NoneOffHand" xml:space="preserve">
+    <value>Non désinvolte</value>
+  </data>
 </root>

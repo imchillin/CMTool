@@ -121,7 +121,7 @@
     <value>腹部:</value>
   </data>
   <data name="AdvancedLoading" xml:space="preserve">
-    <value>前進。 CMPファイルを開く</value>
+    <value>選択した部分をCMPファイルから読み込む</value>
   </data>
   <data name="AdvLoadCMPFile" xml:space="preserve">
     <value>CMPファイルを開く</value>
@@ -337,7 +337,7 @@
     <value>ポーズマトリックスのセッティング</value>
   </data>
   <data name="RealTimeRotation" xml:space="preserve">
-    <value>リアルタイムローテーション</value>
+    <value>リアルタイムローテーション:</value>
   </data>
   <data name="RealTimeRotationToolTip" xml:space="preserve">
     <value>マウスクリックを使用してキューブを制御する
@@ -459,7 +459,7 @@
     <value>ウエスト＆脚</value>
   </data>
   <data name="Weapons" xml:space="preserve">
-    <value>武器</value>
+    <value>武器:</value>
   </data>
   <data name="Weapons2" xml:space="preserve">
     <value>武器:</value>
