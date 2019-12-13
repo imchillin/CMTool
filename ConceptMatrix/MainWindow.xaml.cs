@@ -1358,5 +1358,14 @@ namespace ConceptMatrix
             CharacterDetails.OffhandDye.value = (byte)SaveSettings.Default.OffHandQuads.Item4;
             MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Offhand), EquipmentFlyOut.WepTupleToByteAry(SaveSettings.Default.OffHandQuads));
         }
+
+        private void Wiki_Click(object sender, RoutedEventArgs e)
+        {
+            if(SaveSettings.Default.Language=="zh")
+            {
+                Process.Start($"https://github.com/Bluefissure/CMTool/wiki");
+            }
+            else Process.Start($"https://github.com/imchillin/CMTool/wiki");
+        }
     }
 }

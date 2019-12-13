@@ -1271,4 +1271,7 @@
 • Vous pourriez avoir besoin de Figer les animations de votre Acteur pour pouvoir appliquer correctement cette option en GPose.
 • Les Curseurs de Rotation comme les inputs Numériques directs nécessitent que la Rotation soit Figée.</value>
   </data>
+  <data name="Wiki" xml:space="preserve">
+    <value>Wiki</value>
+  </data>
 </root>

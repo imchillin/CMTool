@@ -1300,4 +1300,7 @@
 • 로테이션 슬라이더 및 직접 수치 입력은 먼저 로테이션 동결을 해야합니다 
 </value>
   </data>
+  <data name="Wiki" xml:space="preserve">
+    <value>위키</value>
+  </data>
 </root>

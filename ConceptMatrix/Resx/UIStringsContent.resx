@@ -1358,4 +1358,7 @@ Status Effects:</value>
   <data name="GposeViewZ" xml:space="preserve">
     <value>GPose View Z:</value>
   </data>
+  <data name="Wiki" xml:space="preserve">
+    <value>Wiki</value>
+  </data>
 </root>

@@ -1285,4 +1285,7 @@
 •如在gose中使用，请先冻结当前目标动作
 •滑块调整及数值输入调整都需要先勾选旋转功能</value>
   </data>
+  <data name="Wiki" xml:space="preserve">
+    <value>维基</value>
+  </data>
 </root>

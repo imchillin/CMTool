@@ -1282,4 +1282,7 @@
 • GPoseで適切に適用するには、アクターのアニメーションを固定する必要がある場合があります
 • ローテーションスライダーと数値直接入力の両方で、ローテーションを固定する必要がある</value>
   </data>
+  <data name="Wiki" xml:space="preserve">
+    <value>Wiki</value>
+  </data>
 </root>
