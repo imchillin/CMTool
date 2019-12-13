@@ -971,14 +971,10 @@ namespace ConceptMatrix.Views
             {
                 if (ClassBox.SelectedIndex < 0) return;
                 SaveSettings.Default.ClassIndex = ClassBox.SelectedIndex;
-
-                if (EquipBoxC.SelectedItem == null)
-                    return;
-
-                string filter = SearchModelBox.Text.ToLower();
                 EquipBox.Items.Clear();
                 string selectedTag = ((ComboBoxItem)ClassBox.SelectedItem).Tag.ToString();
-                foreach (ExdCsvReader.Item game in _items.Where(g => g.Name.ToLower().Contains(filter)))
+
+                foreach (ExdCsvReader.Item game in _items)
                 {
                     if (EquipBoxC.SelectedIndex > 11)
                     {

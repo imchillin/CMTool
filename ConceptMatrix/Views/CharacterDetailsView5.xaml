@@ -681,19 +681,19 @@
                 <Grid>
                     <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.StandardSaving}}" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="175" Width="630"/>
                     <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.AdvancedLoading}}" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="175" Width="630" Margin="0,255,0,0"/>
-                    <Button x:Name="SaveCMP" ToolTip="{Binding Source={x:Static resx:UIPoseStrings.SaveCMPToolTip}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="225,70,0,0" VerticalAlignment="Top" Width="180" Click="SaveCMP_Click" Height="28">
+                    <Button x:Name="SaveCMP" ToolTip="{Binding Source={x:Static resx:UIPoseStrings.SaveCMPToolTip}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="225,70,0,0" VerticalAlignment="Top" Width="180" Click="SaveCMP_Click" Height="28" Padding="0,4">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="ContentSave" Padding="0" Margin="0,2,0,0" />
                             <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="{Binding Source={x:Static resx:UIPoseStrings.SaveCMPFile}}" />
                         </StackPanel>
                     </Button>
-                    <Button x:Name="LoadCMP" ToolTip="{Binding Source={x:Static resx:UIPoseStrings.LoadCMPToolTip}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="225,103,0,0" VerticalAlignment="Top" Width="180" Click="LoadCMP_Click" Height="28" IsEnabled="False">
+                    <Button x:Name="LoadCMP" ToolTip="{Binding Source={x:Static resx:UIPoseStrings.LoadCMPToolTip}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="225,103,0,0" VerticalAlignment="Top" Width="180" Click="LoadCMP_Click" Height="28" IsEnabled="False" Padding="0,4">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Download" Padding="0" Margin="0,3,0,0" />
                             <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="{Binding Source={x:Static resx:UIPoseStrings.LoadCMPFile}}" />
                         </StackPanel>
                     </Button>
-                    <Button x:Name="AdvLoadCMP" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="225,395,0,0" VerticalAlignment="Top" Width="180" Click="AdvLoadCMP_Click" Height="28" IsEnabled="False">
+                    <Button x:Name="AdvLoadCMP" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="225,395,0,0" VerticalAlignment="Top" Width="180" Click="AdvLoadCMP_Click" Height="28" IsEnabled="False" Padding="0,4">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Download" Padding="0" Margin="0,3,0,0" />
                             <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="{Binding Source={x:Static resx:UIPoseStrings.AdvancedLoading}}" />

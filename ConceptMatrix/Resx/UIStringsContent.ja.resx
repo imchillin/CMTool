@@ -117,53 +117,69 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="FaceCamX" xml:space="preserve">
+    <value>X顔カム：</value>
+  </data>
+  <data name="FaceCamY" xml:space="preserve">
+    <value>Y顔カム：</value>
+  </data>
+  <data name="FaceCamZ" xml:space="preserve">
+    <value>Z顔カム：</value>
+  </data>
+  <data name="GposeViewX" xml:space="preserve">
+    <value>X GPoseビュー：</value>
+  </data>
+  <data name="GposeViewY" xml:space="preserve">
+    <value>Y GPoseビュー：</value>
+  </data>
+  <data name="GposeViewZ" xml:space="preserve">
+    <value>Z GPoseビュー：</value>
+  </data>
   <data name="About" xml:space="preserve">
-    <value>アプリのについて</value>
+    <value>アプリについて</value>
   </data>
   <data name="ActorData" xml:space="preserve">
-    <value>アクターデータ</value>
+    <value>キャラデータ</value>
   </data>
   <data name="ActorEntityListToolTip" xml:space="preserve">
     <value>周囲の領域にターゲット可能なエンティティのリストを表示する
-
-• リストはプレイヤーからの距離に基づいて入力され、エンティティが位置を変更すると変更される可能性がある</value>
+• リストはプレイヤーからの距離に基づいて入力され、エンティティが位置を変更すると変更される可能性があります</value>
   </data>
   <data name="ActorProperties" xml:space="preserve">
-    <value>アクタープロパティズ</value>
+    <value>キャラプロパティ</value>
   </data>
   <data name="ActorRefreshButton" xml:space="preserve">
-    <value>アクターをリフレッシュする</value>
+    <value>キャラをリフレッシュする</value>
   </data>
   <data name="ActorRefreshToolTip" xml:space="preserve">
-    <value>アクターをリフレッシュする、行った変更に基づいてリロードする</value>
+    <value>キャラクターをリフレッシュする、行った変更に基づいてリロードする</value>
   </data>
   <data name="ActorScale" xml:space="preserve">
-    <value>アクタースケール</value>
+    <value>キャラの大きさ</value>
   </data>
   <data name="Advanced" xml:space="preserve">
     <value>アドバンス</value>
   </data>
   <data name="AlwaysOnTopButton" xml:space="preserve">
-    <value>手前に表示</value>
+    <value>常に手前に表示</value>
   </data>
   <data name="AnimSpeed" xml:space="preserve">
     <value>エモートスピード</value>
   </data>
   <data name="AnimSpeedToolTip" xml:space="preserve">
-    <value>アクターのアニメーションスピードをチェンジする</value>
+    <value>キャラクターのアニメーションスピードを変更する</value>
   </data>
   <data name="Apply" xml:space="preserve">
-    <value>適用する</value>
+    <value>適用</value>
   </data>
   <data name="Arms" xml:space="preserve">
     <value>腕</value>
   </data>
   <data name="ArrayOfBytes" xml:space="preserve">
-    <value>バイトの配列</value>
+    <value>バイト配列</value>
   </data>
   <data name="ArrayOfBytesToolTip" xml:space="preserve">
     <value>選択したエンティティに関するデータが含まれる
-
 • このフィールドにデータをコピーして貼り付け、「適用する」をクリックする</value>
   </data>
   <data name="B" xml:space="preserve">
@@ -176,7 +192,7 @@
     <value>BGMを一時停止する</value>
   </data>
   <data name="BGMID" xml:space="preserve">
-    <value>音楽：</value>
+    <value>BGM ID</value>
   </data>
   <data name="Blue" xml:space="preserve">
     <value>青</value>
@@ -188,10 +204,10 @@
     <value>胴防具</value>
   </data>
   <data name="BodyToolTip" xml:space="preserve">
-    <value>アクターのボディタイプをチェンジする</value>
+    <value>キャラクターのボディタイプを変更する</value>
   </data>
   <data name="BodyToolTip2" xml:space="preserve">
-    <value>アクターに胴防具を装備できる</value>
+    <value>キャラクターに胴防具を装備できる</value>
   </data>
   <data name="BodyType" xml:space="preserve">
     <value>ボディタイプ</value>
@@ -206,25 +222,25 @@
     <value>胸囲</value>
   </data>
   <data name="BustSizeToolTip" xml:space="preserve">
-    <value>アクターの胸囲をチェンジする</value>
+    <value>キャラクターの胸囲を変更する</value>
   </data>
   <data name="BustXScale" xml:space="preserve">
     <value>バストXスケール:</value>
   </data>
   <data name="BustXScaleToolTip" xml:space="preserve">
-    <value>アクターバストXスケールをチェンジする (女性オンリー)</value>
+    <value>キャラクターのバストXスケールを変更する (女性オンリー)</value>
   </data>
   <data name="BustYScale" xml:space="preserve">
     <value>バストYスケール:</value>
   </data>
   <data name="BustYScaleToolTip" xml:space="preserve">
-    <value>アクターバストYスケールをチェンジする (女性オンリー)</value>
+    <value>キャラクターのバストYスケールを変更する (女性オンリー)</value>
   </data>
   <data name="BustZScale" xml:space="preserve">
     <value>バストZスケール:</value>
   </data>
   <data name="BustZScaleToolTip" xml:space="preserve">
-    <value>アクターバストZスケールをチェンジする (女性オンリー)</value>
+    <value>キャラクターのバストZスケールを変更する (女性オンリー)</value>
   </data>
   <data name="c1001" xml:space="preserve">
     <value>c1001 - ルガディン (女)</value>
@@ -344,7 +360,7 @@
     <value>部族</value>
   </data>
   <data name="ClanToolTip" xml:space="preserve">
-    <value>アクターの部族をチェンジする</value>
+    <value>キャラクターの部族を変更する</value>
   </data>
   <data name="Clavicles" xml:space="preserve">
     <value>鎖骨</value>
@@ -369,27 +385,22 @@
   </data>
   <data name="DataPathToolTip" xml:space="preserve">
     <value>選択したエンティティのデータパスを変更する
-
 • これにより、他の種族または性別のアニメーションを使用できる
-
-• アクターリフレッシュを必要とせず、Gpose内外で使用できる
-
+• キャラリフレッシュを必要とせず、Gpose内外で使用できる
 • エンティティのスケルトンは、選択した種族に合わせてモーフィングされます、ストレッチングは避けられません
-
-• アボミネーションになりたい場合は、アクターリフレッシュを使用できる</value>
+• アボミネーションになりたい場合は、キャラリフレッシュを使用できる</value>
   </data>
   <data name="DefaultTime" xml:space="preserve">
     <value>デフォルトタイム</value>
   </data>
   <data name="Discord" xml:space="preserve">
-    <value>ディスコードサーバー</value>
+    <value>Discord</value>
   </data>
   <data name="Drenched" xml:space="preserve">
     <value>湿性効果</value>
   </data>
   <data name="DrenchedToolTip" xml:space="preserve">
     <value>選択したエンティティに、より顕著な濡れた効果を与える
-
 • 水濡れたと同じように、この効果は時間とともに消える</value>
   </data>
   <data name="Dyes" xml:space="preserve">
@@ -399,25 +410,25 @@
     <value>耳/体格/尾サイズ</value>
   </data>
   <data name="EarMuscleTailSizeToolTip" xml:space="preserve">
-    <value>アクタの耳、体格、尾のサイズをチェンジする</value>
+    <value>キャラクターの耳、体格、尾のサイズを変更する</value>
   </data>
   <data name="Ears" xml:space="preserve">
     <value>耳の形</value>
   </data>
   <data name="EarsToolTip" xml:space="preserve">
-    <value>アクターに耳飾りを装備できる</value>
+    <value>キャラクターに耳飾りを装備できる</value>
   </data>
   <data name="EarTailScale" xml:space="preserve">
     <value>耳/尾スケール</value>
   </data>
   <data name="EarTailScaleToolTip" xml:space="preserve">
-    <value>アクターの耳と尾のスケールを変更する</value>
+    <value>キャラクターの耳と尾のスケールを変更する</value>
   </data>
   <data name="EarTailType" xml:space="preserve">
     <value>耳/尾の形</value>
   </data>
   <data name="EarTailTypeToolTip" xml:space="preserve">
-    <value>アクターの耳と尾をチェンジする</value>
+    <value>キャラクターの耳と尾を変更する</value>
   </data>
   <data name="Elbows" xml:space="preserve">
     <value>肘</value>
@@ -426,19 +437,16 @@
     <value>編集を有効にする:</value>
   </data>
   <data name="EnablePhysics" xml:space="preserve">
-    <value>フィジックを有効にする:</value>
+    <value>物理演算を有効にする:</value>
   </data>
   <data name="EntityType" xml:space="preserve">
     <value>エンティティタイプ:</value>
   </data>
   <data name="EntityTypeToolTip" xml:space="preserve">
     <value>上級ユーザーのみ！
-
 • これにより、選択したエンティティのエンティティタイプが変更される
-
 • これにより、一部のエンティティで予期しない動作が発生する可能性があります
-
-• 一部のNPCをタイプ1にチェンジすると、グループポーズでターゲット可能になる</value>
+• 一部のNPCをタイプ1に変更すると、グループポーズでターゲット可能になる</value>
   </data>
   <data name="Equipment" xml:space="preserve">
     <value>装備</value>
@@ -447,7 +455,7 @@
     <value>露出 </value>
   </data>
   <data name="EyeBrowsToolTip" xml:space="preserve">
-    <value>アクターの眉をチェンジする</value>
+    <value>キャラクターの眉を変更する</value>
   </data>
   <data name="EyebrowsType" xml:space="preserve">
     <value>眉</value>
@@ -456,13 +464,13 @@
     <value>瞳の色 (左)</value>
   </data>
   <data name="EyeColorLeftToolTip" xml:space="preserve">
-    <value>アクターの左瞳の色をチェンジする</value>
+    <value>キャラクターの左瞳の色を変更する</value>
   </data>
   <data name="EyeColorRight" xml:space="preserve">
     <value>瞳の色 (右)</value>
   </data>
   <data name="EyeColorRightToolTip" xml:space="preserve">
-    <value>アクターの右瞳の色をチェンジする</value>
+    <value>キャラクターの右瞳の色を変更する</value>
   </data>
   <data name="Eyelids" xml:space="preserve">
     <value>まぶた</value>
@@ -474,7 +482,7 @@
     <value>目</value>
   </data>
   <data name="EyeTypeToolTip" xml:space="preserve">
-    <value>アクターの目をチェンジする</value>
+    <value>キャラクターの目を変更する</value>
   </data>
   <data name="Face" xml:space="preserve">
     <value>顔</value>
@@ -486,22 +494,22 @@
     <value>ペイントの色</value>
   </data>
   <data name="FacePaintColorToolTip" xml:space="preserve">
-    <value>アクターのフェイスペイントの色をチェンジする</value>
+    <value>キャラクターのフェイスペイントの色を変更する</value>
   </data>
   <data name="FacePaintToolTip" xml:space="preserve">
-    <value>アクターのフェイスペイントと刺青をチェンジする</value>
+    <value>キャラクターのフェイスペイントと刺青を変更する</value>
   </data>
   <data name="FacialFeatures" xml:space="preserve">
     <value>髭や傷など</value>
   </data>
   <data name="FacialFeaturesToolTip" xml:space="preserve">
-    <value>アクターの髭や傷などをチェンジする</value>
+    <value>キャラクターの髭や傷などを変更する</value>
   </data>
   <data name="Feet" xml:space="preserve">
     <value>足防具</value>
   </data>
   <data name="FeetToolTip" xml:space="preserve">
-    <value>アクターに足防具を装備できる</value>
+    <value>キャラクターに足防具を装備できる</value>
   </data>
   <data name="Filmic" xml:space="preserve">
     <value>フィルム</value>
@@ -513,7 +521,7 @@
     <value>プロセスをリロードする</value>
   </data>
   <data name="FindProcessToolTip" xml:space="preserve">
-    <value>プロセスをリロードする</value>
+    <value>FF14のプロセスをリロードする</value>
   </data>
   <data name="FingerBones" xml:space="preserve">
     <value>指の骨</value>
@@ -523,13 +531,9 @@
   </data>
   <data name="ForceAnimToolTip" xml:space="preserve">
     <value>選択したエンティティに強制的にアニメーションを実行させる
-
 • これはGPoseでのみ使用できる
-
 • これを使用するには、GPoseに入る前に /wave などの非ループエモートを実行する必要がありる
-
 • 一部のアニメーションには、実行するために特定の種族/性別の要件がある。 キャラクターがけいれんしている場合は、別のデータパスを使用する必要がある
-
 • NPCでは実行できない!</value>
   </data>
   <data name="Forearms" xml:space="preserve">
@@ -542,39 +546,33 @@
     <value>視野 2:</value>
   </data>
   <data name="FreeCompanyTag" xml:space="preserve">
-    <value>フリーカンパニーのタグ</value>
+    <value>フリーカンパニーのタグ:</value>
   </data>
   <data name="FreeCompanyTagWaterMark" xml:space="preserve">
     <value>フリーカンパニーのタグ</value>
   </data>
   <data name="FreeCompanyToolTip" xml:space="preserve">
-    <value>アクターのフリーカンパニータグを変更する</value>
+    <value>キャラクターのフリーカンパニータグを変更する</value>
   </data>
   <data name="FreezeAll" xml:space="preserve">
-    <value>すべてをフリーズする</value>
+    <value>すべてを固定する</value>
   </data>
   <data name="FreezePos" xml:space="preserve">
-    <value>フリーズポジション</value>
+    <value>ポジションを固定する</value>
   </data>
   <data name="FreezePosToolTip" xml:space="preserve">
-    <value>選択したエンティティのポジションをフリーズする
-
-• これは、エモートがチェンジされたときにエンティティが元のポジションに戻るのを防ぐので、GPoseでエンティティを移動するのに役立ちる
-
+    <value>選択したエンティティのポジションを固定する
+• これはエモートが変更されたときに、エンティティが元のポジションに戻るのを防ぐのでGPoseでエンティティを移動するのに役立ちます
 • 新しいエンティティをクリックする前にこのボタンをもう一度押すと、同じポジションに移動する</value>
   </data>
   <data name="FreezeRot" xml:space="preserve">
-    <value>回転を凍結</value>
+    <value>ローテーションを固定(ストップ)する</value>
   </data>
   <data name="FreezeRotToolTip" xml:space="preserve">
-    <value>選択したエンティティのローテーションをフリーズする
-
-• これは、GPoseでエンティティのポジションとローテーションを保持するために、「ポジションをフリーズする」と併用すると便利
-
-• これをゲーム内の「フェイスカメラ」トグル（デフォルト：スペースバー）とともに使用して、体全体を回さずにエンティティの頭を回すことがでる
-
-• 「ポジションをフリーズする」と同様に、GPoseでエンティティを切り替える前に、「ローテーションをフリーズする」を必ずオフにして 
-
+    <value>選択したエンティティのローテーションを固定する
+• これは、GPoseでエンティティのポジションとローテーションを保持するために、「ポジションを固定する」と併用すると便利
+• これをゲーム内の「フェイスカメラ」トグル（デフォルト：スペースバー）とともに使用して、体全体を回さずにエンティティの頭を回すことができる
+• 「ポジションを固定する」と同様に、GPoseでエンティティを切り替える前に、「ローテーションを固定する」を必ずオフにして ください
 • 数値直接入力またはローテーションスライダーを使用するために必要</value>
   </data>
   <data name="G" xml:space="preserve">
@@ -587,15 +585,14 @@
     <value>性別</value>
   </data>
   <data name="GenderToolTip" xml:space="preserve">
-    <value>アクターの性別をチェンジする</value>
+    <value>キャラクターの性別を変更する</value>
   </data>
   <data name="GPoseMode" xml:space="preserve">
-    <value>GPoseモード：</value>
+    <value>グループポーズモード:</value>
   </data>
   <data name="GposeModeToolTip" xml:space="preserve">
-    <value>GPoseで現在選択されているエンティティのXYZポジション、ローテーション、アニメーションなどの特定のバリューをチェンジできる
-
-• GPoseモードとターゲットモードは両方とも同時にオンに切り替わる。 ターゲットモードが既にオンになっていないことを確認して。オンになっていないと、代わりにオフになります。</value>
+    <value>GPoseで現在選択されているエンティティのXYZポジション、ローテーション、アニメーションなどの特定のバリューを変更できる
+• GPoseモードとターゲットモードは両方とも同時にオンに切り替わります。 ターゲットモードが既にオンになっていないことを確認してください。オンになっていないと、代わりにオフになります。</value>
   </data>
   <data name="Green" xml:space="preserve">
     <value>緑</value>
@@ -613,19 +610,19 @@
     <value>髪の色</value>
   </data>
   <data name="HairColorToolTip" xml:space="preserve">
-    <value>アクターの髪の色をチェンジする</value>
+    <value>キャラクターの髪の色を変更する</value>
   </data>
   <data name="Hairstyle" xml:space="preserve">
     <value>髪型</value>
   </data>
   <data name="HairStyleToolTip" xml:space="preserve">
-    <value>アクターの髪型をチェンジする</value>
+    <value>キャラクターの髪型を変更する</value>
   </data>
   <data name="Hands" xml:space="preserve">
     <value>手防具</value>
   </data>
   <data name="HandsToolTip" xml:space="preserve">
-    <value>アクターに手防具を装着できる</value>
+    <value>キャラクターに手防具を装着できる</value>
   </data>
   <data name="HDR" xml:space="preserve">
     <value>HDR:</value>
@@ -637,22 +634,22 @@
     <value>頭の骨</value>
   </data>
   <data name="HeadToolTip" xml:space="preserve">
-    <value>アクターに頭防具を装備できる</value>
+    <value>キャラクターに頭防具を装備できる</value>
   </data>
   <data name="HeadType" xml:space="preserve">
     <value>顔のタイプ</value>
   </data>
   <data name="HeadTypeToolTip" xml:space="preserve">
-    <value>アクターの顔のタイプをチェンジする</value>
+    <value>キャラクターの顔のタイプを変更する</value>
   </data>
   <data name="Height" xml:space="preserve">
     <value>身長</value>
   </data>
   <data name="HeightToolTip" xml:space="preserve">
-    <value>アクターの身長をチェンジする</value>
+    <value>キャラクターの身長を変更する</value>
   </data>
   <data name="HighLightButtonToolTip" xml:space="preserve">
-    <value>アクターのメッシュを切り替える</value>
+    <value>キャラクターのメッシュを切り替える</value>
   </data>
   <data name="Highlights" xml:space="preserve">
     <value>メッシュ</value>
@@ -661,18 +658,16 @@
     <value>メッシュの色</value>
   </data>
   <data name="HighlightsToolTip" xml:space="preserve">
-    <value>アクターのメッシュの色をチェンジする</value>
+    <value>キャラクターのメッシュの色を変更する</value>
   </data>
   <data name="IdleAnim" xml:space="preserve">
     <value>アイドルエモート</value>
   </data>
   <data name="IdleAnimToolTip" xml:space="preserve">
-    <value>選択したエンティティのアイドルアニメーションをチェンジする
-
-• これはGPoseの内外で使用できる
-• GPoseでこれを使用する場合、 座るか立つ必要がある、 アイドルアニメーションが対応するまで /cpose を使用する
-
-• ペット、ミニオン、チョコボ、およびほとんどのNPCで使用できる！</value>
+    <value>選択したエンティティのアイドルアニメーションを変更する
+• これはGPoseの内外で使用できます
+• GPoseでこれを使用する場合、 一度座るか立つ必要があります、 アイドルアニメーションが対応するまで /cpose を使用してください
+• ペット、ミニオン、チョコボ、およびほとんどのNPCで使用できます！</value>
   </data>
   <data name="IndexFinger" xml:space="preserve">
     <value>人差し指</value>
@@ -690,13 +685,13 @@
     <value>顔の輪郭</value>
   </data>
   <data name="JawTypeToolTip" xml:space="preserve">
-    <value>アクターの顔の輪郭をチェンジする</value>
+    <value>キャラクターの顔の輪郭を変更する</value>
   </data>
   <data name="JobIcon" xml:space="preserve">
-    <value>ジョビコン</value>
+    <value>ジョビコ:</value>
   </data>
   <data name="JobIconToolTip" xml:space="preserve">
-    <value>パーティーリストでパーティーメンバーのジョブアイコンをチェンジする</value>
+    <value>パーティーリストでパーティーメンバーのジョブアイコンを変更する</value>
   </data>
   <data name="Knees" xml:space="preserve">
     <value>膝</value>
@@ -717,19 +712,19 @@
     <value>指輪 (左)</value>
   </data>
   <data name="LeftRingToolTip" xml:space="preserve">
-    <value>アクターの左手に任意の指輪を装備できる</value>
+    <value>キャラクターの左手に任意の指輪を装備できる</value>
   </data>
   <data name="Legs" xml:space="preserve">
     <value>脚防具</value>
   </data>
   <data name="LegsToolTip" xml:space="preserve">
-    <value>アクターに脚防具を装備できる</value>
+    <value>キャラクターに脚防具を装備できる</value>
   </data>
   <data name="LimbalOrTattoo" xml:space="preserve">
     <value>瞳の輪郭の色/刺青の色</value>
   </data>
   <data name="LimbalOrTattooToolTip" xml:space="preserve">
-    <value>アクターの瞳の輪郭の色と刺青の色をチェンジする</value>
+    <value>キャラクターの瞳の輪郭の色と刺青の色を変更する</value>
   </data>
   <data name="LimbalRingTattooColor" xml:space="preserve">
     <value>瞳の輪郭の色/刺青の色</value>
@@ -738,41 +733,39 @@
     <value>唇の色/体毛柄</value>
   </data>
   <data name="LipColorToolTip" xml:space="preserve">
-    <value>アクターの唇の色と体毛柄をチェンジする</value>
+    <value>キャラクターの唇の色と体毛柄を変更する</value>
   </data>
   <data name="LipsColor" xml:space="preserve">
     <value>唇の色</value>
   </data>
   <data name="LoadButton" xml:space="preserve">
-    <value>ロド</value>
+    <value>ロード</value>
   </data>
   <data name="LoadGearset" xml:space="preserve">
-    <value>ギアセットをロードする</value>
+    <value>ギアセットをロード</value>
   </data>
   <data name="LoadMainWindow" xml:space="preserve">
-    <value>外観をロードする</value>
+    <value>外観をロード</value>
   </data>
   <data name="LoadMainWindowToolTip" xml:space="preserve">
     <value>ユーザー生成のJSONファイルから外観をロードする 
-
 • ゲーム内でキャラメイクから保存したデータをロードするには、「Load .DAT」オプションを使用する</value>
   </data>
   <data name="LoadPointButton" xml:space="preserve">
-    <value>状態をロードする</value>
+    <value>状態をロード</value>
   </data>
   <data name="LoadPointToolTip" xml:space="preserve">
     <value>「バックアップ」状態に戻る</value>
   </data>
   <data name="LockFacialAnimation" xml:space="preserve">
-    <value>表情をロックする</value>
+    <value>表情を固定</value>
   </data>
   <data name="LockFacialAnimationToolTip" xml:space="preserve">
-    <value>アクターの表情をロックする
-
-• アクターの表情を適切にロックするには、これをオンにする必要がある、 オプションをフリーズする、 そして、アニメーションのスピードをゼロに設定しする</value>
+    <value>キャラクターの表情を固定する
+• アクターの表情を適切に固定するには、これをオンにする必要がある、 オプションを固定する そして、アニメーションのスピードを0に設定する</value>
   </data>
   <data name="LockTime" xml:space="preserve">
-    <value>タイムをロックする</value>
+    <value>時間を固定する</value>
   </data>
   <data name="LowerBodyBones" xml:space="preserve">
     <value>下半身の骨</value>
@@ -797,12 +790,10 @@
   </data>
   <data name="MainHandScaleToolTip" xml:space="preserve">
     <value>エンティティの名ナームのXYZスケールを制御する
-
 • メインアームプロップのサイズ変更にも使用でる、 トームストーンなどの特定のエモート中に一時的に表示される「vfxアイテム」のサイズには影響しません</value>
   </data>
   <data name="MainHandToolTip" xml:space="preserve">
-    <value>アクターにメインアームを装備できる
-
+    <value>キャラクターにメインアームを装備できる
 • メインアームを空にしたい場合は、「エンペラーズ・ニューフィスト」を装備するか、右パネルでメインハンドスケールおよび/またはサブアームスケールを使用する</value>
   </data>
   <data name="MaxZoom" xml:space="preserve">
@@ -812,7 +803,7 @@
     <value>中指</value>
   </data>
   <data name="MiddleJoint" xml:space="preserve">
-    <value>中間関節</value>
+    <value>中指関節:</value>
   </data>
   <data name="MinZoom" xml:space="preserve">
     <value>ミニマルズーム</value>
@@ -827,14 +818,12 @@
     <value>モデルタイプ:</value>
   </data>
   <data name="ModelTypeButtonToolTip" xml:space="preserve">
-    <value>右側にフライアウトメニューが開き、モンスター、デミヒューマン、プロップエンティティ、エンティティベースの効果を検索でる
-
+    <value>右側にフライアウトメニューが開き、モンスター、デミヒューマン、プロップエンティティ、エンティティベースの効果を検索できる
 • 一部のNPCは、蛮族、ゼノス、トールダン/蒼天騎士などのようにデミヒューマンとして分類されているため、この選択の下で見つける
-
-• デミヒューマンに変更した後に見えなくなった場合、すべての装備をベース0、バリアント0にチェンジする。 動作しない場合は、1,0または1,1を試して</value>
+• デミヒューマンに変更した後に見えなくなった場合、すべての装備をベース0、バリアント0に変更する。 動作しない場合は、1,0または1,1を試してください</value>
   </data>
   <data name="ModelTypeToolTip" xml:space="preserve">
-    <value>アクターのモデルタイプをチェンジする</value>
+    <value>キャラクターのモデルタイプを変更する</value>
   </data>
   <data name="Mouth" xml:space="preserve">
     <value>口</value>
@@ -843,19 +832,19 @@
     <value>口の形</value>
   </data>
   <data name="MouthTypeToolTip" xml:space="preserve">
-    <value>アクターの口の形をチェンジする</value>
+    <value>キャラクタ＾ーの口の形を変更する</value>
   </data>
   <data name="MuscleTone" xml:space="preserve">
     <value>体格</value>
   </data>
   <data name="MuscleToneToolTip" xml:space="preserve">
-    <value>アクターの体格を変更する</value>
+    <value>キャラクターの体格を変更する</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>名前</value>
   </data>
   <data name="NameToolTip" xml:space="preserve">
-    <value>アクターの名前を変更する</value>
+    <value>キャラクターの名前を変更する</value>
   </data>
   <data name="NameWaterMark" xml:space="preserve">
     <value />
@@ -864,7 +853,7 @@
     <value>首飾り</value>
   </data>
   <data name="NeckToolTip" xml:space="preserve">
-    <value>アクターに首飾りを装備できる</value>
+    <value>キャラクターに首飾りを装備できる</value>
   </data>
   <data name="Nose" xml:space="preserve">
     <value>鼻</value>
@@ -873,7 +862,7 @@
     <value>鼻の形</value>
   </data>
   <data name="NoseTypeToolTip" xml:space="preserve">
-    <value>アクターの鼻の形をチェンジする</value>
+    <value>キャラクターの鼻の形を変更する</value>
   </data>
   <data name="Nostrils" xml:space="preserve">
     <value>鼻孔</value>
@@ -886,9 +875,7 @@
   </data>
   <data name="NPCOutfitToolTip" xml:space="preserve">
     <value>右側にフライアウト検索ウィンドウが開き、名前でNPCを検索できる
-
-• エントリをクリックした後、アクターリフレッシュを使用して外観を想定する必要がある
-
+• エントリをクリックした後、キャラリフレッシュを使用して外観を想定する必要がある
 •蛮族、ゼノスなどの一部のNPCは、デミヒューマンに分類されるため、このセクションには含まれていない。 最初のタブでモデルタイプを検索することで見つけるができる</value>
   </data>
   <data name="OffHand" xml:space="preserve">
@@ -902,22 +889,20 @@
   </data>
   <data name="OffHandScaleToolTip" xml:space="preserve">
     <value>エンティティのサブアームのXYZスケールを制御しする
-
 • これは、盾、矢筒、エーテルパック、スリーブ、刀鞘、フォーカス、左手短剣または拳などの装備に影響する</value>
   </data>
   <data name="OffHandToolTip" xml:space="preserve">
     <value>サブアームを装備できる 
-
 •適用可能なサブアーム（盾以外）を見つけるには、サブアームの「Display」ボタンを使用してメインハンドを検索する必要がある。たとえば、鞘または矢筒を見つけるには、それに合う刀または弓を検索する必要がある。</value>
   </data>
   <data name="OuterBrows" xml:space="preserve">
     <value>アウター眉</value>
   </data>
   <data name="OverallScale" xml:space="preserve">
-    <value>全体スケールを</value>
+    <value>全体スケール</value>
   </data>
   <data name="OverallScaleToolTip" xml:space="preserve">
-    <value>アクターの全体スケールを変更する</value>
+    <value>キャラクターの全体スケールを変更する</value>
   </data>
   <data name="Pelvis" xml:space="preserve">
     <value>骨盤</value>
@@ -932,7 +917,7 @@
     <value>ポージングマトリックス</value>
   </data>
   <data name="PropView" xml:space="preserve">
-    <value>プロップ</value>
+    <value>プロップを見る</value>
   </data>
   <data name="R" xml:space="preserve">
     <value>R</value>
@@ -941,7 +926,7 @@
     <value>種族</value>
   </data>
   <data name="RaceToolTip" xml:space="preserve">
-    <value>アクターの種族をチェンジする</value>
+    <value>キャラクターの種族を変更する</value>
   </data>
   <data name="RandomizeAppearance" xml:space="preserve">
     <value>外観をランダム化する</value>
@@ -954,13 +939,9 @@
   </data>
   <data name="RealTimeRotationToolTip" xml:space="preserve">
     <value>マウスボタンを使用してキューブを制御する
-
 • すべてのローテーションは、エンティティが現在向いている方向に対して相対的
-
 • RMBは、X軸のローテーションを制御する
-
 • LMBは、Y軸のローテーションを制御する
-
 • MMBは、Z軸のローテーションを制御する</value>
   </data>
   <data name="Red" xml:space="preserve">
@@ -977,24 +958,21 @@
   </data>
   <data name="RelativeXYZPosToolTip" xml:space="preserve">
     <value>このトグルは、対象となるエンティティに関連するすべてのXYZ移動を行います
-
 • この設定はデフォルトでオンに設定されており、その状態はセッション間で保存される</value>
   </data>
   <data name="RelativeXYZRot" xml:space="preserve">
-    <value>相対XYZ回転</value>
+    <value>相対XYZローテーション</value>
   </data>
   <data name="RelativeXYZRotToolTip" xml:space="preserve">
     <value>このトグルは、ターゲットとなるエンティティを基準にしてすべてのXYZローテーションを行います
-
 • この設定はデフォルトでオンに設定されており、その状態はセッション間で保存される
-
 • リアルタイムローテーションキューブにのみ影響しする</value>
   </data>
   <data name="RenderCycle" xml:space="preserve">
     <value>レンダーサイクル</value>
   </data>
   <data name="RenderLimit" xml:space="preserve">
-    <value>アクターレンダリング制限の削除：</value>
+    <value>キャラクターレンダリングリミットを削除する</value>
   </data>
   <data name="RenderToggleToolTip" xml:space="preserve">
     <value>レンダートグルスイッチ</value>
@@ -1018,7 +996,7 @@
     <value>指輪 (右)</value>
   </data>
   <data name="RightRingToolTip" xml:space="preserve">
-    <value>アクターの右手に任意の指輪を装備できる</value>
+    <value>キャラクターの右手に任意の指輪を装備できる</value>
   </data>
   <data name="RingFinger" xml:space="preserve">
     <value>薬指</value>
@@ -1027,33 +1005,29 @@
     <value>薬指関節</value>
   </data>
   <data name="RotationSliders" xml:space="preserve">
-    <value>回転スライダー</value>
+    <value>ローテーションスライダー</value>
   </data>
   <data name="RotationSlidersToolTip" xml:space="preserve">
     <value>このトグルは、ローテーションスライダーと数値直接入力を切り替える
-
 • この設定はデフォルトでオンに設定されており、その状態はセッション間で保存される
-
 • オフにすると、XYZローテーションスライダーが数値に変わる
-
 • 各入力は、0〜360の値を受け入れる
-
-• ローテーションスライダーと数値直接入力の両方で、ローテーションをフリーズする必要がある</value>
+• ローテーションスライダーと数値直接入力の両方で、ローテーションを固定する必要がある</value>
   </data>
   <data name="SaveButton" xml:space="preserve">
-    <value>セーブ</value>
+    <value>保存</value>
   </data>
   <data name="SaveGearset" xml:space="preserve">
-    <value>ギアセットをセーブする</value>
+    <value>ギアセットを保存</value>
   </data>
   <data name="SaveMainWindow" xml:space="preserve">
-    <value>外観をセーブする</value>
+    <value>外観を保存</value>
   </data>
   <data name="SaveMainWindowToolTip" xml:space="preserve">
-    <value>外観をJSONファイルにセーブする</value>
+    <value>外観をJSONファイルに保存</value>
   </data>
   <data name="SavePointButton" xml:space="preserve">
-    <value>状態をセーブする</value>
+    <value>状態を保存する</value>
   </data>
   <data name="SavePointToolTip" xml:space="preserve">
     <value>後でロードできる「バックアップ」状態を作成する</value>
@@ -1074,122 +1048,109 @@
     <value>肌の色</value>
   </data>
   <data name="SkinToneToolTip" xml:space="preserve">
-    <value>アクターの肌の色をチェンジする</value>
+    <value>キャラクターの肌の色を変更する</value>
   </data>
   <data name="StatusEffect" xml:space="preserve">
-    <value>ステータス効果
-（Gpose）</value>
+    <value>グループポーズのステータス表現</value>
   </data>
   <data name="StatusEffectToolTip" xml:space="preserve">
-    <value>GPoseのエンティティに非標準ステータスVFXを適用できる
-
-1. GPoseメニューのステータス表現の1つをアクティブにする（ヒートなど）
-
-2. ドロップダウンメニューから新しいVFXを選択する
-
-3. GPoseメニューを使用して選択ステータス表現を削除する
-
-• 新しい効果を選択するか、現在の効果を削除するには、[リセット]をクリックするか、別のステータス（氷結など）で上書きする</value>
+    <value>Ermöglicht es zusätzliche VFX auf Entitäten in GPose anzuwenden.
+1. </value>
   </data>
   <data name="Sternum" xml:space="preserve">
     <value>胸骨</value>
   </data>
   <data name="Tail" xml:space="preserve">
-    <value>尾</value>
+    <value>しっぽ:</value>
   </data>
   <data name="TailJoints" xml:space="preserve">
-    <value>尾関節</value>
+    <value>しっぽの関節:</value>
   </data>
   <data name="TargetActorIs" xml:space="preserve">
-    <value>ターゲットされたのアクターは？？？</value>
+    <value>ターゲットされたキャラは？？？</value>
   </data>
   <data name="TargetMode" xml:space="preserve">
     <value>ターゲットモード</value>
   </data>
   <data name="TargetModeToolTip" xml:space="preserve">
-    <value>エンティティリストを使用せずに、選択ターゲットのバリューをチェンジできる
-
+    <value>エンティティリストを使用せずに、選択ターゲットのバリューを変更できる
 •これは、エンティティリストが絶えず移動する混雑したエリアに便利です。これをオフにし、通常の方法で変更を適用する必要がある。</value>
   </data>
   <data name="Thumb" xml:space="preserve">
     <value>親指</value>
   </data>
   <data name="ThumbJoint" xml:space="preserve">
-    <value>親指関節</value>
+    <value>親指関節:</value>
   </data>
   <data name="TimeButtonLockToolTip" xml:space="preserve">
     <value>タイムトグルスイッチ</value>
   </data>
   <data name="TimeControl" xml:space="preserve">
-    <value>時間変更</value>
+    <value>時間制御:</value>
   </data>
   <data name="TimeControlToolTip" xml:space="preserve">
-    <value>エリアの現在の時刻を調整する
-
-• 「フリーズタイム/天気」をオンにしてGPoseで時間制御を使用すると、月の位相が循環する</value>
+    <value>現在のエリアの時刻を調整する
+• 「時間を固定/天気」をオンにしてGPoseで時刻/天気をストップの設定を外すと天候はそのままに昼夜を変えることができます</value>
   </data>
   <data name="TimeLockToolTip" xml:space="preserve">
-    <value>タイムコントロールを使用して設定された時間が変更されないようにする。
-
-•これは不正確であり、長期間にわたってわずかに変化する</value>
+    <value>時間制御を使用して設定された時間が変更されないようにする。
+•これは不正確であり、長期間にわたってわずかに変化します</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>称号:</value>
   </data>
   <data name="TitleToolTip" xml:space="preserve">
-    <value>アクターの称号をチェンジする</value>
+    <value>キャラクターの称号を変更する</value>
   </data>
   <data name="Toes" xml:space="preserve">
-    <value>爪先</value>
+    <value>爪先:</value>
   </data>
   <data name="Torso" xml:space="preserve">
-    <value>胴体</value>
+    <value>胴体:</value>
   </data>
   <data name="TPoseActor" xml:space="preserve">
-    <value>アクターをTPoseする</value>
+    <value>キャラをTPoseする</value>
   </data>
   <data name="TransformationData" xml:space="preserve">
     <value>トランスフォーメーションデータ</value>
   </data>
   <data name="Transparency" xml:space="preserve">
-    <value>不透明度</value>
+    <value>不透明度:</value>
   </data>
   <data name="TransparencyToolTip" xml:space="preserve">
-    <value>選択したエンティティのトランスペアレンシーをチェンジする
-
-• アクターの透明度を下げても、メインアームまたはサブハンドには影響しない。装備タブで武器のXYZスケールを0に設定できる
-
+    <value>選択したエンティティのトランスペアレンシーを変更する
+• キャラクターの透明度を下げても、メインアームまたはサブハンドには影響しない。装備タブで武器のXYZスケールを0に設定できる
 • GPoseのエンティティに対してこれを0に設定すると、システムがターゲット可能であることを忘れることがあります。引き続き使用する場合は、0.03に設定する。</value>
   </data>
   <data name="Twitter" xml:space="preserve">
     <value>Twitter</value>
   </data>
   <data name="UncheckButton" xml:space="preserve">
-    <value>すべてアンフリーズする</value>
+    <value>変更を破棄</value>
   </data>
   <data name="UncheckButtonToolTip" xml:space="preserve">
-    <value>すべての選択をアンチェックとアンフリーズする</value>
+    <value>変更点をすべて無効化にして固定の解除</value>
   </data>
   <data name="UpperBodyBones" xml:space="preserve">
     <value>上半身の骨</value>
   </data>
   <data name="UpperEarrings" xml:space="preserve">
-    <value>アッパーイヤリング</value>
+    <value>アッパーイヤリング:</value>
   </data>
   <data name="UpperLip" xml:space="preserve">
-    <value>上唇</value>
+    <value>上唇:</value>
   </data>
   <data name="Variant" xml:space="preserve">
     <value>バリアント</value>
   </data>
   <data name="Vibrance" xml:space="preserve">
-    <value>バイブランス</value>
+    <value>バイブランス:</value>
   </data>
   <data name="VieraLowerEars" xml:space="preserve">
-    <value>ヴィエラの下耳</value>
+    <value>ヴィエラの下耳:</value>
   </data>
   <data name="VieraUpperEars" xml:space="preserve">
-    <value>ヴィエラの上耳</value>
+    <value>ヴィエラの上耳:</value>
   </data>
   <data name="View" xml:space="preserve">
     <value>ビュー</value>
@@ -1198,13 +1159,13 @@
     <value>ビジュアルエフェクト</value>
   </data>
   <data name="VoiceType" xml:space="preserve">
-    <value>声のタイプ</value>
+    <value>声のタイプ:</value>
   </data>
   <data name="VoiceTypeToolTip" xml:space="preserve">
-    <value>アクターの声のタイプをチェンジする</value>
+    <value>キャラクターの声のタイプを変更する</value>
   </data>
   <data name="Waist" xml:space="preserve">
-    <value>腰</value>
+    <value>腰:</value>
   </data>
   <data name="Weather" xml:space="preserve">
     <value>天気</value>
@@ -1213,20 +1174,18 @@
     <value>天気を強制する</value>
   </data>
   <data name="WeatherForceToolTip" xml:space="preserve">
-    <value>エリアの現在の天気を制御する
-
+    <value>現在のエリアの天気を制御する
 •この方法はインスタント遷移を使用し、ドロップダウンメニューから天気リストするとすぐに変更される</value>
   </data>
   <data name="WeatherSelect" xml:space="preserve">
     <value>天気リスト</value>
   </data>
   <data name="WeatherToolTip" xml:space="preserve">
-    <value>エリアの現在の天気を制御する 
-
+    <value>現在のエリアの天気を制御する 
 • この方法は自然な遷移を使用し、少し時間がかかる場合がある</value>
   </data>
   <data name="Wet" xml:space="preserve">
-    <value>水濡れ効果</value>
+    <value>水濡れ効果:</value>
   </data>
   <data name="WetToolTip" xml:space="preserve">
     <value>ターゲットエンティティに、水の中または雨の中から水濡れ効果を与える</value>
@@ -1235,64 +1194,58 @@
     <value>ワールド</value>
   </data>
   <data name="Wrists" xml:space="preserve">
-    <value>腕輪</value>
+    <value>腕輪:</value>
   </data>
   <data name="WristsToolTIp" xml:space="preserve">
-    <value>アクターに腕輪を装備できる</value>
+    <value>キャラクターに腕輪を装備できる</value>
   </data>
   <data name="X" xml:space="preserve">
     <value>X:</value>
   </data>
   <data name="XPos" xml:space="preserve">
-    <value>X ポジション</value>
+    <value>Xポジション:</value>
   </data>
   <data name="XPosToolTip" xml:space="preserve">
-    <value>アクターのXポジションを変更する
-
-• GPoseで適切に適用するには、アクターのアニメーションをフリーズする必要がある場合があります.</value>
+    <value>キャラクターのXポジションを変更する
+• GPoseで適切に適用するには、アクターのアニメーションを固定する必要がある場合があります.</value>
   </data>
   <data name="XRot" xml:space="preserve">
-    <value>X ローテーション</value>
+    <value>X ローテーション:</value>
   </data>
   <data name="XRot2" xml:space="preserve">
-    <value>X ローテーション</value>
+    <value>X ローテーション:</value>
   </data>
   <data name="XRot2ToolTip" xml:space="preserve">
     <value>選択したジョイントのXローテーションを変更する</value>
   </data>
   <data name="XRotToolTip" xml:space="preserve">
-    <value>アクターのXローテーションを変更する
-
-• GPoseで適切に適用するには、アクターのアニメーションをフリーズする必要がある場合があります
-
-• ローテーションスライダーと数値直接入力の両方で、ローテーションをフリーズする必要がある</value>
+    <value>キャラクターのXローテーションを変更する
+• GPoseで適切に適用するには、アクターのアニメーションを固定する必要がある場合があります
+• ローテーションスライダーと数値直接入力の両方で、ローテーションを固定する必要がある</value>
   </data>
   <data name="Y" xml:space="preserve">
     <value>Y</value>
   </data>
   <data name="YPos" xml:space="preserve">
-    <value>Y ポジション</value>
+    <value>Y ポジション:</value>
   </data>
   <data name="YPosToolTip" xml:space="preserve">
-    <value>アクターのYポジションを変更する
-
-• GPoseで適切に適用するには、アクターのアニメーションをフリーズする必要がある場合があります.</value>
+    <value>キャラクターのYポジションを変更する
+• GPoseで適切に適用するには、アクターのアニメーションを固定する必要がある場合があります.</value>
   </data>
   <data name="YRot" xml:space="preserve">
-    <value>Y ローテーション</value>
+    <value>Y ローテーション:</value>
   </data>
   <data name="YRot2" xml:space="preserve">
-    <value>Y ローテーション</value>
+    <value>Y ローテーション:</value>
   </data>
   <data name="YRot2ToolTip" xml:space="preserve">
     <value>選択したジョイントのYローテーションを変更する</value>
   </data>
   <data name="YRotToolTip" xml:space="preserve">
-    <value>アクターのYローテーションを変更する
-
-• GPoseで適切に適用するには、アクターのアニメーションをフリーズする必要がある場合があります
-
-• ローテーションスライダーと数値直接入力の両方で、ローテーションをフリーズする必要がある</value>
+    <value>キャラクターのYローテーションを変更する
+• GPoseで適切に適用するには、アクターのアニメーションを固定する必要がある場合があります
+• ローテーションスライダーと数値直接入力の両方で、ローテーションを固定する必要がある</value>
   </data>
   <data name="Z" xml:space="preserve">
     <value>Z:</value>
@@ -1305,49 +1258,27 @@
   </data>
   <data name="ZeroScaleToolTip" xml:space="preserve">
     <value>XYZスケールを0に設定し、効果的に非表示にする
-
 • 元に戻すには、各フィールドに「1.0」と入力する</value>
   </data>
   <data name="ZPos" xml:space="preserve">
-    <value>Z ポジション</value>
+    <value>Z ポジション:</value>
   </data>
   <data name="ZPosToolTip" xml:space="preserve">
-    <value>アクターのZポジションを変更する
-
-• GPoseで適切に適用するには、アクターのアニメーションをフリーズする必要がある場合があります.</value>
+    <value>キャラクターのZポジションを変更する
+• GPoseで適切に適用するには、アクターのアニメーションを固定する必要がある場合があります.</value>
   </data>
   <data name="ZRot" xml:space="preserve">
-    <value>Z ローテーション</value>
+    <value>Z ローテーション:</value>
   </data>
   <data name="ZRot2" xml:space="preserve">
-    <value>Z ローテーション</value>
+    <value>Z ローテーション:</value>
   </data>
   <data name="ZRot2ToolTip" xml:space="preserve">
     <value>選択したジョイントのZローテーションを変更する</value>
   </data>
   <data name="ZRotToolTip" xml:space="preserve">
-    <value>アクターのZローテーションを変更する
-
-• GPoseで適切に適用するには、アクターのアニメーションをフリーズする必要がある場合があります
-
-• ローテーションスライダーと数値直接入力の両方で、ローテーションをフリーズする必要がある</value>
-  </data>
-  <data name="FaceCamX" xml:space="preserve">
-    <value>X顔カム：</value>
-  </data>
-  <data name="FaceCamY" xml:space="preserve">
-    <value>Y顔カム：</value>
-  </data>
-  <data name="FaceCamZ" xml:space="preserve">
-    <value>Z顔カム：</value>
-  </data>
-  <data name="GposeViewX" xml:space="preserve">
-    <value>X GPoseビュー：</value>
-  </data>
-  <data name="GposeViewY" xml:space="preserve">
-    <value>Y GPoseビュー：</value>
-  </data>
-  <data name="GposeViewZ" xml:space="preserve">
-    <value>Z GPoseビュー：</value>
+    <value>キャラクターのZローテーションを変更する
+• GPoseで適切に適用するには、アクターのアニメーションを固定する必要がある場合があります
+• ローテーションスライダーと数値直接入力の両方で、ローテーションを固定する必要がある</value>
   </data>
 </root>

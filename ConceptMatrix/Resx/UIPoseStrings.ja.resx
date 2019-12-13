@@ -121,10 +121,10 @@
     <value>腹部:</value>
   </data>
   <data name="AdvancedLoading" xml:space="preserve">
-    <value>アドバンスローディング</value>
+    <value>前進。 CMPファイルを開く</value>
   </data>
   <data name="AdvLoadCMPFile" xml:space="preserve">
-    <value>CMPファイルのアドバンスローディング</value>
+    <value>CMPファイルを開く</value>
   </data>
   <data name="Arms" xml:space="preserve">
     <value>腕:</value>
@@ -133,28 +133,28 @@
     <value>背中:</value>
   </data>
   <data name="Body" xml:space="preserve">
-    <value>体:</value>
+    <value>胴体:</value>
   </data>
   <data name="Body2" xml:space="preserve">
-    <value>体</value>
+    <value>胴体</value>
   </data>
   <data name="BodyClothes" xml:space="preserve">
-    <value>体 &amp; 服</value>
+    <value>胴体 &amp; 服</value>
   </data>
   <data name="Breasts" xml:space="preserve">
-    <value>胸</value>
+    <value>胸:</value>
   </data>
   <data name="Bridge" xml:space="preserve">
-    <value>ブリッジ：</value>
+    <value>鼻根:</value>
   </data>
   <data name="Brows" xml:space="preserve">
-    <value>眉宇:</value>
+    <value>眉頭:</value>
   </data>
   <data name="Calves" xml:space="preserve">
-    <value>ふくらはぎ:</value>
+    <value>膝関節:</value>
   </data>
   <data name="Cervical" xml:space="preserve">
-    <value>子宮頸:</value>
+    <value>首:</value>
   </data>
   <data name="Cheeks" xml:space="preserve">
     <value>頬:</value>
@@ -169,13 +169,13 @@
     <value>服</value>
   </data>
   <data name="Couters" xml:space="preserve">
-    <value>肘：</value>
+    <value>肘:</value>
   </data>
   <data name="DetectTertiaryBones" xml:space="preserve">
     <value>三次骨を検出</value>
   </data>
   <data name="Earrings" xml:space="preserve">
-    <value>イヤリング：</value>
+    <value>イヤリング:</value>
   </data>
   <data name="Earrings2" xml:space="preserve">
     <value>イヤリング</value>
@@ -187,22 +187,22 @@
     <value>肘:</value>
   </data>
   <data name="EnableEditing" xml:space="preserve">
-    <value>編集有効化：</value>
+    <value>編集有効化:</value>
   </data>
   <data name="EnableGpose" xml:space="preserve">
     <value>この機能を使用するには、GPoseを有効にしてください</value>
   </data>
   <data name="EnablePhysics" xml:space="preserve">
-    <value>物理学：</value>
+    <value>物理演算有効化</value>
   </data>
   <data name="Equipment" xml:space="preserve">
     <value>装備</value>
   </data>
   <data name="EquipOther" xml:space="preserve">
-    <value>衣装&amp;その他</value>
+    <value>装備&amp;その他</value>
   </data>
   <data name="Eyebrows" xml:space="preserve">
-    <value>眉:</value>
+    <value>眉山:</value>
   </data>
   <data name="Eyelids" xml:space="preserve">
     <value>まぶた:</value>
@@ -214,7 +214,7 @@
     <value>顔:</value>
   </data>
   <data name="Feet" xml:space="preserve">
-    <value>足:</value>
+    <value>足首:</value>
   </data>
   <data name="Forearms" xml:space="preserve">
     <value>前腕:</value>
@@ -259,13 +259,13 @@
     <value>ヘルム</value>
   </data>
   <data name="Holsters" xml:space="preserve">
-    <value>ホルスター：</value>
+    <value>ホルスター:</value>
   </data>
   <data name="HrothgarWhiskers" xml:space="preserve">
-    <value>ロスガルのウィスカ:</value>
+    <value>ロスガルのヒゲ:</value>
   </data>
   <data name="Index" xml:space="preserve">
-    <value>人差し指：</value>
+    <value>人差し指:</value>
   </data>
   <data name="Jaw" xml:space="preserve">
     <value>あご:</value>
@@ -280,7 +280,7 @@
     <value>左腕</value>
   </data>
   <data name="LeftHand" xml:space="preserve">
-    <value>左手：</value>
+    <value>左手:</value>
   </data>
   <data name="LeftHand2" xml:space="preserve">
     <value>左手</value>
@@ -292,25 +292,25 @@
     <value>左脚</value>
   </data>
   <data name="Legs" xml:space="preserve">
-    <value>脚:</value>
+    <value>股関節:</value>
   </data>
   <data name="LoadCMPFile" xml:space="preserve">
-    <value>CMPファイルをロードする</value>
+    <value>CMPファイルを開く</value>
   </data>
   <data name="LoadCMPToolTip" xml:space="preserve">
-    <value>ユーザーポーズのCMPファイルからポーズをロードする</value>
+    <value>ユーザーポーズのCMPファイルからポーズを読み込む</value>
   </data>
   <data name="LowerLids" xml:space="preserve">
-    <value>下唇：</value>
+    <value>下唇:</value>
   </data>
   <data name="LowerLip" xml:space="preserve">
     <value>下唇:</value>
   </data>
   <data name="Lumbar" xml:space="preserve">
-    <value>腰椎:</value>
+    <value>腰:</value>
   </data>
   <data name="Middle" xml:space="preserve">
-    <value>中指：</value>
+    <value>中指:</value>
   </data>
   <data name="Mouth" xml:space="preserve">
     <value>口:</value>
@@ -325,13 +325,13 @@
     <value>その他:</value>
   </data>
   <data name="Pauldrons" xml:space="preserve">
-    <value>ポールドロン:</value>
+    <value>肩:</value>
   </data>
   <data name="Pinky" xml:space="preserve">
-    <value>ピンキー：</value>
+    <value>小指:</value>
   </data>
   <data name="Poleyns" xml:space="preserve">
-    <value>膝パッド：</value>
+    <value>膝サポーター:</value>
   </data>
   <data name="PoseMatrixSettings" xml:space="preserve">
     <value>ポーズマトリックスのセッティング</value>
@@ -340,7 +340,7 @@
     <value>リアルタイムローテーション</value>
   </data>
   <data name="RealTimeRotationToolTip" xml:space="preserve">
-    <value>マウスボタンを使用してキューブを制御する
+    <value>マウスクリックを使用してキューブを制御する
 • すべてのローテーションは、エンティティが現在向いている方向に対して相対的
 • RMBは、X軸のローテーションを制御する
 • LMBは、Y軸のローテーションを制御する
@@ -353,7 +353,7 @@
     <value>右腕</value>
   </data>
   <data name="RightHand" xml:space="preserve">
-    <value>右手：</value>
+    <value>右手:</value>
   </data>
   <data name="RightHand2" xml:space="preserve">
     <value>右手</value>
@@ -365,30 +365,26 @@
     <value>右脚:</value>
   </data>
   <data name="Ring" xml:space="preserve">
-    <value>薬指：</value>
+    <value>薬指:</value>
   </data>
   <data name="Root" xml:space="preserve">
-    <value>ルート：</value>
+    <value>ルート:</value>
   </data>
   <data name="RotationSliders" xml:space="preserve">
     <value>回転スライダー</value>
   </data>
   <data name="RotationSlidersToolTip" xml:space="preserve">
     <value>このトグルは、ローテーションスライダーと数値直接入力を切り替える
-
 • この設定はデフォルトでオンに設定されており、その状態はセッション間で保存される
-
 • オフにすると、XYZローテーションスライダーが数値に変わる
-
 • 各入力は、0〜360の値を受け入れる
-
-• ローテーションスライダーと数値直接入力の両方で、ローテーションをフリーズする必要がある</value>
+• ローテーションスライダーと数値直接入力の両方で、ローテーションを固定する必要がある</value>
   </data>
   <data name="SaveCMPFile" xml:space="preserve">
-    <value>CMPファイルをセーブする</value>
+    <value>CMPファイルに保存</value>
   </data>
   <data name="SaveCMPToolTip" xml:space="preserve">
-    <value>ポーズをCMPファイルにセーブする</value>
+    <value>ポーズをCMPファイルに保存する</value>
   </data>
   <data name="SaveLoad" xml:space="preserve">
     <value>セーブ＆ロード</value>
@@ -400,10 +396,10 @@
     <value>すべて選択</value>
   </data>
   <data name="SelectNone" xml:space="preserve">
-    <value>どれも選択しない</value>
+    <value>選択解除</value>
   </data>
   <data name="Sheathes" xml:space="preserve">
-    <value>シース:</value>
+    <value>鞘:</value>
   </data>
   <data name="Shields" xml:space="preserve">
     <value>盾:</value>
@@ -412,16 +408,16 @@
     <value>肩:</value>
   </data>
   <data name="Sides" xml:space="preserve">
-    <value>Sides:</value>
+    <value>側面:</value>
   </data>
   <data name="StandardSaving" xml:space="preserve">
     <value>スタンダードセーブ＆ロード</value>
   </data>
   <data name="Tail" xml:space="preserve">
-    <value>尾:</value>
+    <value>しっぽ:</value>
   </data>
   <data name="TertiaryButtonToolTip" xml:space="preserve">
-    <value>選択したキャラクターの人種、髪、および服装固有の骨を検出します。</value>
+    <value>選択したキャラクターの人種、髪、および服装固有の骨を検出します。(しっぽ、装備の装飾)</value>
   </data>
   <data name="Thoracic" xml:space="preserve">
     <value>胸部:</value>
@@ -436,13 +432,13 @@
     <value>爪先:</value>
   </data>
   <data name="Top" xml:space="preserve">
-    <value>ユニーク:</value>
+    <value>上半身:</value>
   </data>
   <data name="Top2" xml:space="preserve">
-    <value>ユニーク</value>
+    <value>上半身</value>
   </data>
   <data name="Unique" xml:space="preserve">
-    <value>ユニーク：</value>
+    <value>ユニーク:</value>
   </data>
   <data name="Unknown" xml:space="preserve">
     <value>不明:</value>
@@ -475,19 +471,19 @@
     <value>手首:</value>
   </data>
   <data name="XRot" xml:space="preserve">
-    <value>X ローテーション</value>
+    <value>X ローテーション:</value>
   </data>
   <data name="XRotToolTip" xml:space="preserve">
     <value>選択ジョイントのXローテーションを変更する</value>
   </data>
   <data name="YRot" xml:space="preserve">
-    <value>Y ローテーション</value>
+    <value>Y ローテーション:</value>
   </data>
   <data name="YRotToolTip" xml:space="preserve">
     <value>選択ジョイントのYローテーションを変更する</value>
   </data>
   <data name="ZRot" xml:space="preserve">
-    <value>Z ローテーション</value>
+    <value>Z ローテーション:</value>
   </data>
   <data name="ZRotToolTip" xml:space="preserve">
     <value>選択ジョイントのZローテーションを変更する</value>

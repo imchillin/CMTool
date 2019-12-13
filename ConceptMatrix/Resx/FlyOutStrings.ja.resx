@@ -124,13 +124,13 @@
     <value>錬金術師</value>
   </data>
   <data name="All" xml:space="preserve">
-    <value />
+    <value>すべて</value>
   </data>
   <data name="AllClasses" xml:space="preserve">
     <value>全クラス</value>
   </data>
   <data name="AppearanceOnly" xml:space="preserve">
-    <value />
+    <value>外観のみ</value>
   </data>
   <data name="ARC" xml:space="preserve">
     <value>弓術士</value>
@@ -142,10 +142,10 @@
     <value>占星術師</value>
   </data>
   <data name="Battle" xml:space="preserve">
-    <value />
+    <value>バトル</value>
   </data>
   <data name="BGM" xml:space="preserve">
-    <value />
+    <value>BGM</value>
   </data>
   <data name="BLM" xml:space="preserve">
     <value>黒魔道士</value>
@@ -166,13 +166,13 @@
     <value>園芸師</value>
   </data>
   <data name="Character" xml:space="preserve">
-    <value />
+    <value>キャラクター</value>
   </data>
   <data name="CNJ" xml:space="preserve">
     <value>幻術士</value>
   </data>
   <data name="ColorSelector" xml:space="preserve">
-    <value />
+    <value>色を選ぶ</value>
   </data>
   <data name="CRP" xml:space="preserve">
     <value>木工師</value>
@@ -208,31 +208,31 @@
     <value>耳飾り</value>
   </data>
   <data name="Emotes" xml:space="preserve">
-    <value />
+    <value>エモート</value>
   </data>
   <data name="EquipmentOnly" xml:space="preserve">
-    <value />
+    <value>装備のみ</value>
   </data>
   <data name="EquipmentSelector" xml:space="preserve">
-    <value />
+    <value>装備の選択</value>
   </data>
   <data name="FacePaint" xml:space="preserve">
-    <value />
+    <value>フェイスペイント</value>
   </data>
   <data name="FacePaintColor" xml:space="preserve">
-    <value />
+    <value>フェイスペイントの色</value>
   </data>
   <data name="FacialFeature" xml:space="preserve">
-    <value />
+    <value>髭や傷など</value>
   </data>
   <data name="Favorite" xml:space="preserve">
-    <value />
+    <value>お気に入り</value>
   </data>
   <data name="Feet" xml:space="preserve">
     <value>足防具</value>
   </data>
   <data name="ForceAnimation" xml:space="preserve">
-    <value />
+    <value>アニメーションを強制する</value>
   </data>
   <data name="FSH" xml:space="preserve">
     <value>漁師</value>
@@ -247,10 +247,10 @@
     <value>彫金師</value>
   </data>
   <data name="HairColor" xml:space="preserve">
-    <value />
+    <value>髪の色</value>
   </data>
   <data name="HairSelector" xml:space="preserve">
-    <value />
+    <value>髪の選択</value>
   </data>
   <data name="Hands" xml:space="preserve">
     <value>手防具</value>
@@ -259,52 +259,52 @@
     <value>頭防具</value>
   </data>
   <data name="HighlightsColor" xml:space="preserve">
-    <value />
+    <value>ハイライトの色</value>
   </data>
   <data name="Icon" xml:space="preserve">
-    <value />
+    <value>アイコン</value>
   </data>
   <data name="ID" xml:space="preserve">
-    <value />
+    <value>ID</value>
   </data>
   <data name="IdleAnimation" xml:space="preserve">
-    <value />
+    <value>アイドルアニメーション</value>
   </data>
   <data name="IncludeEverything" xml:space="preserve">
-    <value />
+    <value>すべてを含める</value>
   </data>
   <data name="IncludeOffhand" xml:space="preserve">
-    <value />
+    <value>補助武器</value>
   </data>
   <data name="KeepDyes" xml:space="preserve">
-    <value />
+    <value>染料を保つ</value>
   </data>
   <data name="LeftEyeColor" xml:space="preserve">
-    <value />
+    <value>左目の色</value>
   </data>
   <data name="LeftFinger" xml:space="preserve">
-    <value>指輪（左）</value>
+    <value>指輪(左)</value>
   </data>
   <data name="Legs" xml:space="preserve">
     <value>脚防具</value>
   </data>
   <data name="LimbalEyeColor" xml:space="preserve">
-    <value />
+    <value>瞳の色</value>
   </data>
   <data name="LipColor" xml:space="preserve">
-    <value />
+    <value>唇の色</value>
   </data>
   <data name="LNC" xml:space="preserve">
     <value>槍術士</value>
   </data>
   <data name="Location" xml:space="preserve">
-    <value />
+    <value>位置</value>
   </data>
   <data name="LTW" xml:space="preserve">
     <value>革細工師</value>
   </data>
   <data name="MainHand" xml:space="preserve">
-    <value />
+    <value>主武器</value>
   </data>
   <data name="MCH" xml:space="preserve">
     <value>機工士</value>
@@ -316,19 +316,19 @@
     <value>モンク</value>
   </data>
   <data name="ModelList" xml:space="preserve">
-    <value />
+    <value>モデルリスト</value>
   </data>
   <data name="ModelValues" xml:space="preserve">
-    <value />
+    <value>モデル値</value>
   </data>
   <data name="Monster" xml:space="preserve">
-    <value />
+    <value>モンスター</value>
   </data>
   <data name="MRD" xml:space="preserve">
     <value>斧術士</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value />
+    <value>名前</value>
   </data>
   <data name="Neck" xml:space="preserve">
     <value>首飾り</value>
@@ -337,37 +337,37 @@
     <value>忍者</value>
   </data>
   <data name="NPCSelect" xml:space="preserve">
-    <value />
+    <value>NPCセレクト</value>
   </data>
   <data name="OffHand" xml:space="preserve">
-    <value />
+    <value>サブアーム</value>
   </data>
   <data name="PGL" xml:space="preserve">
     <value>格闘士</value>
   </data>
   <data name="Player" xml:space="preserve">
-    <value />
+    <value>プレイヤー</value>
   </data>
   <data name="PLD" xml:space="preserve">
     <value>ナイト</value>
   </data>
   <data name="PropsMainHand" xml:space="preserve">
-    <value />
+    <value>主道具</value>
   </data>
   <data name="PropsOffHand" xml:space="preserve">
-    <value />
+    <value>副道具</value>
   </data>
   <data name="RDM" xml:space="preserve">
     <value>赤魔道士</value>
   </data>
   <data name="ReverseFacePaint" xml:space="preserve">
-    <value />
+    <value>フェイスペイントの反転</value>
   </data>
   <data name="RightEyeColor" xml:space="preserve">
-    <value />
+    <value>右目の色</value>
   </data>
   <data name="RightFinger" xml:space="preserve">
-    <value>指輪（右）</value>
+    <value>指輪(右)</value>
   </data>
   <data name="ROG" xml:space="preserve">
     <value>双剣士</value>
@@ -379,13 +379,13 @@
     <value>学者</value>
   </data>
   <data name="Search" xml:space="preserve">
-    <value />
+    <value>検索</value>
   </data>
   <data name="SelectType" xml:space="preserve">
-    <value />
+    <value>タイプを変更</value>
   </data>
   <data name="SkinColor" xml:space="preserve">
-    <value />
+    <value>肌の色</value>
   </data>
   <data name="SMN" xml:space="preserve">
     <value>召喚士</value>
@@ -400,7 +400,7 @@
     <value>白魔道士</value>
   </data>
   <data name="World" xml:space="preserve">
-    <value />
+    <value>ワールド</value>
   </data>
   <data name="Wrist" xml:space="preserve">
     <value>腕輪</value>
