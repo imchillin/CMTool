@@ -34,9 +34,9 @@ namespace ConceptMatrix.ViewModel
         public static AboutView AboutTime;
         public static MainWindow MainTime;
         private static CharacterDetailsViewModel characterDetails;
-
+        public static string RegionType = "Live";
 		public event PropertyChangedEventHandler PropertyChanged;
-
+        public static string GameDirectory = "";
 		public CharacterDetailsViewModel CharacterDetails { get => characterDetails; set => characterDetails = value; }
 
         public PackIconKind AOTToggleStatus { get; set; } = PackIconKind.ToggleSwitchOffOutline;
@@ -44,41 +44,35 @@ namespace ConceptMatrix.ViewModel
 
 		public MainViewModel()
         {
-            string Determination = "Live";
             if (!MainWindow.HasRead)
             {
-                if (!App.IsValidGamePath(Properties.Settings.Default.GamePath))
+                if (!App.IsValidGamePath(GameDirectory))
                     return;
                 ARealmReversed realm = null;
-                if (Properties.Settings.Default.Language == "en") realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.English);
-                else if (Properties.Settings.Default.Language == "ja") realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.Japanese);
-                else if (Properties.Settings.Default.Language == "de") realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.German);
-                else if (Properties.Settings.Default.Language == "fr") realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.French);
-                else if (Properties.Settings.Default.Language == "ko")
+                if (File.Exists(Path.Combine(GameDirectory, "FFXIVBoot.exe")))
                 {
-                    if (File.Exists(Path.Combine(Properties.Settings.Default.GamePath, "boot", "FFXIV_Boot.exe")))
-                    {
-                        realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.Korean);
-                        Determination = "ko";
-                    }
-                    else realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.English);
+                    RegionType = "zh";
+                    realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.ChineseSimplified);
                 }
-                else if (Properties.Settings.Default.Language == "zh")
+                else if (File.Exists(Path.Combine(GameDirectory, "boot", "FFXIV_Boot.exe")))
                 {
-                    if (File.Exists(Path.Combine(Properties.Settings.Default.GamePath, "FFXIVBoot.exe")))
-                    {
-                        realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.ChineseSimplified);
-                        Determination = "zh";
-                    }
-                    else realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.English);
+                    RegionType = "ko";
+                    realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.Korean);
                 }
-                else realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.English);
-                Initialize(realm);
+                if(RegionType == "Live")
+                {
+                    if (Properties.Settings.Default.Language == "en") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.English);
+                    else if (Properties.Settings.Default.Language == "ja") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.Japanese);
+                    else if (Properties.Settings.Default.Language == "de") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.German);
+                    else if (Properties.Settings.Default.Language == "fr") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.French);
+                    else realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.English);
+                }
+                Initialize(realm, RegionType);
                 MainWindow.HasRead = true;
             }
             mediator = new Mediator();
             MemoryManager.Instance.MemLib.OpenProcess(gameProcId);
-            LoadSettings(Determination);
+            LoadSettings(RegionType);
             worker = new BackgroundWorker();
             worker.DoWork += Worker_DoWork;
             worker.WorkerSupportsCancellation = true;
@@ -96,7 +90,7 @@ namespace ConceptMatrix.ViewModel
             mediator = null;
             ThreadTime = null;
         }
-        private void Initialize(ARealmReversed realm)
+        private void Initialize(ARealmReversed realm, string Determination)
         {
             if (!realm.IsCurrentVersion)
             {
@@ -104,27 +98,22 @@ namespace ConceptMatrix.ViewModel
                 {
                     if (File.Exists("SaintCoinach.History.zip"))
                         File.Delete("SaintCoinach.History.zip");
-                    if (Properties.Settings.Default.Language == "en") realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.English);
-                    else if (Properties.Settings.Default.Language == "ja") realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.Japanese);
-                    else if (Properties.Settings.Default.Language == "de") realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.German);
-                    else if (Properties.Settings.Default.Language == "fr") realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.French);
-                    else if (Properties.Settings.Default.Language == "ko")
+                    if (File.Exists(Path.Combine(GameDirectory, "FFXIVBoot.exe")))
                     {
-                        if (File.Exists(Path.Combine(Properties.Settings.Default.GamePath, "boot", "FFXIV_Boot.exe")))
-                        {
-                            realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.Korean);
-                        }
-                        else realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.English);
+                        realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.ChineseSimplified);
                     }
-                    else if (Properties.Settings.Default.Language == "zh")
+                    else if (File.Exists(Path.Combine(GameDirectory, "boot", "FFXIV_Boot.exe")))
                     {
-                        if (File.Exists(Path.Combine(Properties.Settings.Default.GamePath, "FFXIVBoot.exe")))
-                        {
-                            realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.ChineseSimplified);
-                        }
-                        else realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.English);
+                        realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.Korean);
                     }
-                    else realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.English);
+                    if (Determination == "Live")
+                    {
+                        if (Properties.Settings.Default.Language == "en") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.English);
+                        else if (Properties.Settings.Default.Language == "ja") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.Japanese);
+                        else if (Properties.Settings.Default.Language == "de") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.German);
+                        else if (Properties.Settings.Default.Language == "fr") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.French);
+                        else realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.English);
+                    }
                 }
                 catch
                 {

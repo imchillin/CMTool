@@ -32,12 +32,6 @@ namespace ConceptMatrix
                 ConceptMatrix.Properties.Settings.Default.UpgradeRequired = false;
                 ConceptMatrix.Properties.Settings.Default.Save();
             }
-            if (!RequestGamePath())
-            {
-                MainWindow = null;
-                Shutdown(1);
-                return;
-            }
             base.OnStartup(e);
 
             this.Exit += App_Exit;
@@ -113,90 +107,6 @@ namespace ConceptMatrix
         {
             Utility.SaveSettings.Default.Save();
             if (CharacterDetails.BoneEditMode) MainViewModel.ViewTime5.EditModeButton.IsChecked = false;
-        }
-
-        private static bool RequestGamePath()
-        {
-            string path = ConceptMatrix.Properties.Settings.Default.GamePath;
-            if (!IsValidGamePath(path))
-            {
-                string programDir;
-                if (Environment.Is64BitProcess)
-                    programDir = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
-                else
-                    programDir = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
-
-                path = System.IO.Path.Combine(programDir, "SquareEnix", "FINAL FANTASY XIV - A Realm Reborn");
-
-                if (IsValidGamePath(path))
-                {
-                    var msgResult = System.Windows.MessageBox.Show(string.Format("Found game installation at \"{0}\". Is this correct?", path), "Confirm game installation", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes);
-                    if (msgResult == MessageBoxResult.Yes)
-                    {
-                        ConceptMatrix.Properties.Settings.Default.GamePath = path;
-                        ConceptMatrix.Properties.Settings.Default.Save();
-
-                        return true;
-                    }
-
-                    path = null;
-                }
-                else
-                {
-                    path = System.IO.Path.Combine(programDir, "Steam", "steamapps", "common", "FINAL FANTASY XIV Online");
-                    if (IsValidGamePath(path))
-                    {
-                        var msgResult = System.Windows.MessageBox.Show(string.Format("Found game installation at \"{0}\". Is this correct?", path), "Confirm game installation", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes);
-                        if (msgResult == MessageBoxResult.Yes)
-                        {
-                            ConceptMatrix.Properties.Settings.Default.GamePath = path;
-                            ConceptMatrix.Properties.Settings.Default.Save();
-
-                            return true;
-                        }
-                        path = null;
-                    }
-                    else
-                    {
-                        path = System.IO.Path.Combine(programDir, "Steam", "steamapps", "common", "FINAL FANTASY XIV - A Realm Reborn");
-                        if (IsValidGamePath(path))
-                        {
-                            var msgResult = System.Windows.MessageBox.Show(string.Format("Found game installation at \"{0}\". Is this correct?", path), "Confirm game installation", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes);
-                            if (msgResult == MessageBoxResult.Yes)
-                            {
-                                ConceptMatrix.Properties.Settings.Default.GamePath = path;
-                                ConceptMatrix.Properties.Settings.Default.Save();
-
-                                return true;
-                            }
-                            path = null;
-                        }
-                    }
-                }
-
-            }
-
-            System.Windows.Forms.FolderBrowserDialog dig = null;
-            while (!IsValidGamePath(path))
-            {
-                var result = (dig ?? (dig = new System.Windows.Forms.FolderBrowserDialog
-                {
-                    Description = "Please select where FFXIV is installed (should contain boot and game directories).",
-                    ShowNewFolderButton = false,
-                })).ShowDialog();
-
-                if (result!=System.Windows.Forms.DialogResult.OK&&result!=System.Windows.Forms.DialogResult.Yes)
-                {
-                    var msgResult = System.Windows.MessageBox.Show("Cannot continue without a valid game installation, quit the program?", "That's no good", MessageBoxButton.YesNo, MessageBoxImage.Error, MessageBoxResult.No);
-                    if (msgResult == MessageBoxResult.Yes)
-                        return false;
-                }
-                path = dig.SelectedPath;
-            }
-
-            ConceptMatrix.Properties.Settings.Default.GamePath = path;
-            ConceptMatrix.Properties.Settings.Default.Save();
-            return true;
         }
     }
 }

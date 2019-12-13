@@ -211,7 +211,13 @@ namespace ConceptMatrix
                 if (theprocess.ProcessName.ToLower().Contains("ffxiv_dx11"))
                 {
                     Processcheck++;
-                    GameList.Add(new ProcessLooker.Game() { ProcessName = theprocess.ProcessName, ID = theprocess.Id, StartTime = theprocess.StartTime, AppIcon = IconToImageSource(System.Drawing.Icon.ExtractAssociatedIcon(theprocess.MainModule.FileName)) });
+                    GameList.Add(new ProcessLooker.Game()
+                    {
+                        ProcessName = theprocess.ProcessName,
+                        ID = theprocess.Id, StartTime = theprocess.StartTime,
+                        AppIcon = IconToImageSource(System.Drawing.Icon.ExtractAssociatedIcon(theprocess.MainModule.FileName)),
+                        GameDirectory = Path.GetFullPath(Path.Combine(theprocess.MainModule.FileName, "..", "..")).ToString()
+                    });
                 }
             }
             if (Processcheck > 1)
@@ -223,10 +229,14 @@ namespace ConceptMatrix
                     Close();
                     return;
                 }
+                MainViewModel.GameDirectory = f.Choice.GameDirectory;
                 MainViewModel.gameProcId = f.Choice.ID;
             }
             if (Processcheck == 1)
+            {
                 MainViewModel.gameProcId = GameList[0].ID;
+                MainViewModel.GameDirectory = GameList[0].GameDirectory;
+            }
             if (Processcheck <= 0)
             {
                 ProcessLooker f = new ProcessLooker(GameList);
@@ -236,6 +246,7 @@ namespace ConceptMatrix
                     Close();
                     return;
                 }
+                MainViewModel.GameDirectory = f.Choice.GameDirectory;
                 MainViewModel.gameProcId = f.Choice.ID;
             }
         }
@@ -250,7 +261,14 @@ namespace ConceptMatrix
                 if (theprocess.ProcessName.ToLower().Contains("ffxiv_dx11"))
                 {
                     Processcheck++;
-                    GameList.Add(new ProcessLooker.Game() { ProcessName = theprocess.ProcessName, ID = theprocess.Id, StartTime = theprocess.StartTime, AppIcon = IconToImageSource(System.Drawing.Icon.ExtractAssociatedIcon(theprocess.MainModule.FileName)) });
+                    GameList.Add(new ProcessLooker.Game()
+                    {
+                        ProcessName = theprocess.ProcessName,
+                        ID = theprocess.Id,
+                        StartTime = theprocess.StartTime,
+                        AppIcon = IconToImageSource(System.Drawing.Icon.ExtractAssociatedIcon(theprocess.MainModule.FileName)),
+                        GameDirectory = Path.GetFullPath(Path.Combine(theprocess.MainModule.FileName, "..", "..")).ToString()
+                    });
                 }
             }
             if (Processcheck > 1)
@@ -260,12 +278,14 @@ namespace ConceptMatrix
                 if (f.Choice == null)
                     return;
                 MainViewModel.ShutDownStuff();
+                MainViewModel.GameDirectory = f.Choice.GameDirectory;
                 MainViewModel.gameProcId = f.Choice.ID;
                 DataContext = new MainViewModel();
             }
             if (Processcheck == 1)
             {
                 MainViewModel.ShutDownStuff();
+                MainViewModel.GameDirectory = GameList[0].GameDirectory;
                 MainViewModel.gameProcId = GameList[0].ID;
                 DataContext = new MainViewModel();
             }
