@@ -26,12 +26,6 @@ namespace ConceptMatrix
         {
             Application.Current.DispatcherUnhandledException += Application_DispatcherUnhandledException;
             GetDotNetFromRegistry();
-            if (ConceptMatrix.Properties.Settings.Default.UpgradeRequired)
-            {
-                ConceptMatrix.Properties.Settings.Default.Upgrade();
-                ConceptMatrix.Properties.Settings.Default.UpgradeRequired = false;
-                ConceptMatrix.Properties.Settings.Default.Save();
-            }
             base.OnStartup(e);
 
             this.Exit += App_Exit;

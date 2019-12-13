@@ -41,10 +41,10 @@ namespace ConceptMatrix
         public MainWindow()
         {
             ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
-            
+            var settings = SaveSettings.Default;
             //Culture setting
             LanguageSelection();
-            var ci = new CultureInfo(Properties.Settings.Default.Language)
+            var ci = new CultureInfo(settings.Language)
             {
                 NumberFormat = { NumberDecimalSeparator = "." }
             };
@@ -94,7 +94,7 @@ namespace ConceptMatrix
 
         private void LanguageSelection()
         {
-            var lang = Properties.Settings.Default.Language;
+            var lang = SaveSettings.Default.Language;
 
             if (string.IsNullOrEmpty(lang)) 
             {
@@ -108,8 +108,7 @@ namespace ConceptMatrix
                     return;
                 }
 
-                Properties.Settings.Default.Language = langCode;
-                Properties.Settings.Default.Save();
+                SaveSettings.Default.Language = langCode;
             }
         }
 
@@ -154,18 +153,18 @@ namespace ConceptMatrix
         }
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            var settings = SaveSettings.Default;
+            
             Title = $"{App.ToolName} v{version}";
             DataContext = new MainViewModel();
-            var accentColor = settings.Accent;
+            var accentColor = SaveSettings.Default.Accent;
             new PaletteHelper().ReplaceAccentColor(accentColor);
-            var primaryColor = settings.Primary;
+            var primaryColor = SaveSettings.Default.Primary;
             new PaletteHelper().ReplacePrimaryColor(primaryColor);
-            var theme = settings.Theme;
+            var theme = SaveSettings.Default.Theme;
             new PaletteHelper().SetLightDark(theme != "Light");
-            this.Topmost = settings.TopApp;
+            this.Topmost = SaveSettings.Default.TopApp;
 			// toggle status
-			(DataContext as MainViewModel).ToggleStatus(settings.TopApp);
+			(DataContext as MainViewModel).ToggleStatus(SaveSettings.Default.TopApp);
             //Check if these directories exist
             if (!Directory.Exists(SaveSettings.Default.ProfileDirectory)) { System.IO.Directory.CreateDirectory(SaveSettings.Default.ProfileDirectory); }
             if (!Directory.Exists(SaveSettings.Default.MatrixPoseDirectory)) { System.IO.Directory.CreateDirectory(SaveSettings.Default.MatrixPoseDirectory); }

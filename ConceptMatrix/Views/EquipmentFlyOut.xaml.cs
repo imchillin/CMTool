@@ -100,8 +100,8 @@ namespace ConceptMatrix.Views
                 string selectedTag = ((ComboBoxItem)ClassBox.SelectedItem).Tag.ToString();
                 foreach (ExdCsvReader.Item game in _items)
                 {
-                    if(MainViewModel.RegionType=="Live" && Properties.Settings.Default.Language=="zh" 
-                        || MainViewModel.RegionType == "Live" && Properties.Settings.Default.Language == "ko")
+                    if(MainViewModel.RegionType=="Live" && SaveSettings.Default.Language == "zh" 
+                        || MainViewModel.RegionType == "Live" && SaveSettings.Default.Language == "ko")
                     {
                         if (ClassBox.SelectedIndex != 0)
                         {
@@ -878,8 +878,8 @@ namespace ConceptMatrix.Views
                 }
                 else
                 {
-                    if(MainViewModel.RegionType=="Live" && Properties.Settings.Default.Language=="zh" 
-                        || MainViewModel.RegionType == "Live" && Properties.Settings.Default.Language == "ko")
+                    if(MainViewModel.RegionType=="Live" && SaveSettings.Default.Language == "zh" 
+                        || MainViewModel.RegionType == "Live" && SaveSettings.Default.Language == "ko")
                     {
                         if (ClassBox.SelectedIndex != 0)
                         {
@@ -993,8 +993,8 @@ namespace ConceptMatrix.Views
                     }
                     else
                     {
-                        if (MainViewModel.RegionType == "Live" && Properties.Settings.Default.Language == "zh"
-                            || MainViewModel.RegionType == "Live" && Properties.Settings.Default.Language == "ko")
+                        if (MainViewModel.RegionType == "Live" && SaveSettings.Default.Language == "zh"
+                            || MainViewModel.RegionType == "Live" && SaveSettings.Default.Language == "ko")
                         {
                             if (ClassBox.SelectedIndex != 0)
                             {
