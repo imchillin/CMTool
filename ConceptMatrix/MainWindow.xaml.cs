@@ -222,6 +222,7 @@ namespace ConceptMatrix
             if (Processcheck > 1)
             {
                 ProcessLooker f = new ProcessLooker(GameList);
+                f.Topmost= SaveSettings.Default.TopApp;
                 f.ShowDialog();
                 if (f.Choice == null)
                 {
@@ -239,6 +240,7 @@ namespace ConceptMatrix
             if (Processcheck <= 0)
             {
                 ProcessLooker f = new ProcessLooker(GameList);
+                f.Topmost = SaveSettings.Default.TopApp;
                 f.ShowDialog();
                 if (f.Choice == null)
                 {
@@ -273,6 +275,7 @@ namespace ConceptMatrix
             if (Processcheck > 1)
             {
                 ProcessLooker f = new ProcessLooker(GameList);
+                f.Topmost = SaveSettings.Default.TopApp;
                 f.ShowDialog();
                 if (f.Choice == null)
                     return;
