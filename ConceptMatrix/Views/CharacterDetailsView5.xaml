@@ -697,7 +697,7 @@
                     <Button x:Name="AdvLoadCMP" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="225,395,0,0" VerticalAlignment="Top" Width="180" Click="AdvLoadCMP_Click" Height="28" IsEnabled="False" Padding="0,4">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Download" Padding="0" Margin="0,3,0,0" />
-                            <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="{Binding Source={x:Static resx:UIPoseStrings.AdvancedLoading}}" />
+                            <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="{Binding Source={x:Static resx:UIPoseStrings.AdvLoadCMPFile}}" />
                         </StackPanel>
                     </Button>
                     <CheckBox x:Name="LoadHead" Content="{Binding Source={x:Static resx:UIPoseStrings.Head2}}" HorizontalAlignment="Left" Margin="75,300,0,0" VerticalAlignment="Top" FontSize="13.25" Checked="LoadHead_Checked" Unchecked="LoadHead_Unchecked" Height="28"/>
