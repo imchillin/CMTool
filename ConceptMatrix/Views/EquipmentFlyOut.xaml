@@ -111,7 +111,7 @@
                                 <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.PropsMainHand}}"/>
                                 <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.PropsOffHand}}"/>
                             </ComboBox>
-                            <CheckBox Content="{Binding Source={x:Static resx:FlyOutStrings.KeepDyes}}" x:Name="KeepDyes" HorizontalAlignment="Left" Margin="365,11,0,0" VerticalAlignment="Top" Width="98" Checked="KeepDyes_Checked" Unchecked="KeepDyes_Unchecked"/>
+                            <CheckBox Content="{Binding Source={x:Static resx:FlyOutStrings.KeepDyes}}" x:Name="KeepDyes" HorizontalAlignment="Left" Margin="356,11,0,0" VerticalAlignment="Top" Width="107" Checked="KeepDyes_Checked" Unchecked="KeepDyes_Unchecked"/>
                         </Grid>
                     </TabItem>
                     <TabItem Header="{Binding Source={x:Static resx:FlyOutStrings.NPCSelect}}" Name="NPCTab">

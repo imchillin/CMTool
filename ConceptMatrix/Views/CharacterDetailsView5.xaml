@@ -13,7 +13,11 @@
              d:DesignHeight="460" d:DesignWidth="1115" Height="530">
     <UserControl.Resources>
         <Converters:QuaternionConverter x:Key="QuaternionConverter" />
+        <Style x:Name="HeaderTabs" x:Key="MenuLevel2" BasedOn="{StaticResource MetroTabItem}" TargetType="{x:Type TabItem}">
+            <Setter Property="mah:ControlsHelper.HeaderFontSize" Value="20"></Setter>
+        </Style>
     </UserControl.Resources>
+
     <Grid Height="530" Width="1119">
         <Grid.Background>
             <ImageBrush x:Name="PoseBG" ImageSource="/ConceptMatrix;component/Resources/posebg.png"/>
@@ -38,26 +42,34 @@
         </Border>
 
         <mah:MetroAnimatedTabControl x:Name="MatrixTabControl" TabStripPlacement="Left" Margin="11,10,278,10" Background="{x:Null}" Width="830">
-            <TabItem Header="{Binding Source={x:Static resx:UIPoseStrings.HeadHair}}" Width="200" Height="40" Background="{x:Null}">
+            <TabItem Header="{Binding Source={x:Static resx:UIPoseStrings.HeadHair}}" Width="200" Height="40" Background="{x:Null}" Style="{DynamicResource MenuLevel2}">
                 <Grid Margin="0">
                     <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.Head2}}" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="175" Width="630"/>
                     <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.HairAccessories}}" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="175" Width="630" Margin="0,255,0,0"/>
                     <ToggleButton x:Name="Head" Checked="Head_Checked" Unchecked="Head_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="108,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" />
                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Face}}" HorizontalAlignment="Left" Margin="33,45,0,0" VerticalAlignment="Top" Height="28"/>
                     <ToggleButton x:Name="Bridge" Checked="Bridge_Checked" Unchecked="Bridge_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="108,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" />
-                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Bridge}}" HorizontalAlignment="Left" Margin="33,75,0,0" VerticalAlignment="Top" Height="28"/>
+                    <Viewbox HorizontalAlignment="Left" Height="28" Margin="33,75,0,0" VerticalAlignment="Top" Width="70">
+                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Bridge}}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"/>
+                    </Viewbox>
                     <ToggleButton x:Name="Nose" Checked="Nose_Checked" Unchecked="Nose_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="108,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" />
                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Nose}}" HorizontalAlignment="Left" Margin="33,105,0,0" VerticalAlignment="Top" Height="28"/>
                     <ToggleButton x:Name="Jaw" Checked="Jaw_Checked" Unchecked="Jaw_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="108,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" />
                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Jaw}}" HorizontalAlignment="Left" Margin="33,135,0,0" VerticalAlignment="Top" Height="28"/>
                     <ToggleButton x:Name="EyebrowLeft" Checked="EyebrowLeft_Checked" Unchecked="EyebrowLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="220,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
-                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Eyebrows}}" HorizontalAlignment="Left" Margin="145,45,0,0" VerticalAlignment="Top" Height="28"/>
+                    <Viewbox HorizontalAlignment="Left" Height="28" Margin="144,45,0,0" VerticalAlignment="Top" Width="71">
+                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Eyebrows}}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"/>
+                    </Viewbox>
                     <ToggleButton x:Name="BrowLeft" Checked="BrowLeft_Checked" Unchecked="BrowLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="220,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
-                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Brows}}" HorizontalAlignment="Left" Margin="145,75,0,0" VerticalAlignment="Top" Height="28"/>
+                    <Viewbox HorizontalAlignment="Left" Height="28" Margin="144,75,0,0" VerticalAlignment="Top" Width="71">
+                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Brows}}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"/>
+                    </Viewbox>
                     <ToggleButton x:Name="EyelidUpperLeft" Checked="EyelidUpperLeft_Checked" Unchecked="EyelidUpperLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="220,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Eyelids}}" HorizontalAlignment="Left" Margin="145,105,0,0" VerticalAlignment="Top" Height="28"/>
                     <ToggleButton x:Name="EyelidLowerLeft" Checked="EyelidLowerLeft_Checked" Unchecked="EyelidLowerLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="220,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
-                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.LowerLids}}" HorizontalAlignment="Left" Margin="145,135,0,0" VerticalAlignment="Top" Height="28"/>
+                    <Viewbox HorizontalAlignment="Left" Height="28" Margin="145,135,0,0" VerticalAlignment="Top" Width="71">
+                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.LowerLids}}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"/>
+                    </Viewbox>
                     <ToggleButton x:Name="EyebrowRight" Checked="EyebrowRight_Checked" Unchecked="EyebrowRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="259,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
                     <ToggleButton x:Name="BrowRight" Checked="BrowRight_Checked" Unchecked="BrowRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="259,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
                     <ToggleButton x:Name="EyelidUpperRight" Checked="EyelidUpperRight_Checked" Unchecked="EyelidUpperRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="259,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
@@ -67,7 +79,9 @@
                     <ToggleButton x:Name="EarLeft" Checked="EarLeft_Checked" Unchecked="EarLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="371,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Ears}}" HorizontalAlignment="Left" Margin="296,75,0,0" VerticalAlignment="Top" Height="28"/>
                     <ToggleButton x:Name="VieraEarALeft" Checked="VieraEarALeft_Checked" Unchecked="VieraEarALeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="371,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L1" />
-                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.VieraEars}}" HorizontalAlignment="Left" Margin="296,105,0,0" VerticalAlignment="Top" Height="28"/>
+                    <Viewbox HorizontalAlignment="Left" Height="28" Margin="296,105,0,0" VerticalAlignment="Top" Width="71">
+                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.VieraEars}}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"/>
+                    </Viewbox>
                     <ToggleButton x:Name="VieraEarBLeft" Checked="VieraEarBLeft_Checked" Unchecked="VieraEarBLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="371,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L2" />
                     <ToggleButton x:Name="EyeRight" Checked="EyeRight_Checked" Unchecked="EyeRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="410,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
                     <ToggleButton x:Name="EarRight" Checked="EarRight_Checked" Unchecked="EarRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="410,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
@@ -183,15 +197,17 @@
                             <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
                         </StackPanel>
                     </Button>
+                    <Viewbox HorizontalAlignment="Left" Height="28" Margin="215,302,0,0" VerticalAlignment="Top" Width="121">
+                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.HrothgarWhiskers}}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"/>
+                    </Viewbox>
                     <ToggleButton x:Name="HrothWhiskersLeft" Checked="HrothWhiskersLeft_Checked" Unchecked="HrothWhiskersLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="341,302,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="L" />
-                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.HrothgarWhiskers}}" HorizontalAlignment="Left" Margin="215,302,0,0" VerticalAlignment="Top" Height="28"/>
                     <ToggleButton x:Name="HrothWhiskersRight" Checked="HrothWhiskersRight_Checked" Unchecked="HrothWhiskersRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="380,302,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="R" />
 
                 </Grid>
             </TabItem>
-            <TabItem Header="{Binding Source={x:Static resx:UIPoseStrings.BodyClothes}}" Width="200" Height="40" Background="{x:Null}">
+            <TabItem Header="{Binding Source={x:Static resx:UIPoseStrings.BodyClothes}}" Width="200" Height="40" Background="{x:Null}" Style="{DynamicResource MenuLevel2}">
                 <Grid>
-                    <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.Body2}}" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="175" Width="630"/>
+                    <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.Body2}}" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="175" Width="630" Margin="-1,0,0,0"/>
                     <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.Clothes2}}" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="175" Width="630" Margin="0,255,0,0"/>
                     <ToggleButton x:Name="Neck" Checked="Neck_Checked" Unchecked="Neck_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="108,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" />
                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Neck}}" HorizontalAlignment="Left" Margin="33,45,0,0" VerticalAlignment="Top" Height="28"/>
@@ -204,14 +220,18 @@
                     <ToggleButton x:Name="ScabbardLeft" Checked="ScabbardLeft_Checked" Unchecked="ScabbardLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="220,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Scabbards}}" HorizontalAlignment="Left" Margin="145,45,0,0" VerticalAlignment="Top" Height="28"/>
                     <ToggleButton x:Name="ClavicleLeft" Checked="ClavicleLeft_Checked" Unchecked="ClavicleLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="220,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
-                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Clavicles}}" HorizontalAlignment="Left" Margin="145,75,0,0" VerticalAlignment="Top" Height="28"/>
+                    <Viewbox HorizontalAlignment="Left" Height="28" Margin="145,75,0,0" VerticalAlignment="Top" Width="74">
+                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Clavicles}}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"/>
+                    </Viewbox>
                     <ToggleButton x:Name="BreastLeft" Checked="BreastLeft_Checked" Unchecked="BreastLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="220,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Breasts}}" HorizontalAlignment="Left" Margin="145,105,0,0" VerticalAlignment="Top" Height="28"/>
                     <ToggleButton x:Name="ScabbardRight" Checked="ScabbardRight_Checked" Unchecked="ScabbardRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="259,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
                     <ToggleButton x:Name="ClavicleRight" Checked="ClavicleRight_Checked" Unchecked="ClavicleRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="259,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
                     <ToggleButton x:Name="BreastRight" Checked="BreastRight_Checked" Unchecked="BreastRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="259,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
                     <ToggleButton x:Name="PauldronLeft" Checked="PauldronLeft_Checked" Unchecked="PauldronLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="371,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
-                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Pauldrons}}" HorizontalAlignment="Left" Margin="296,45,0,0" VerticalAlignment="Top" Height="28"/>
+                    <Viewbox HorizontalAlignment="Left" Height="28" Margin="296,45,0,0" VerticalAlignment="Top" Width="74">
+                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Pauldrons}}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"/>
+                    </Viewbox>
                     <ToggleButton x:Name="ShoulderLeft" Checked="ShoulderLeft_Checked" Unchecked="ShoulderLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="371,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Shoulders}}" HorizontalAlignment="Left" Margin="296,75,0,0" VerticalAlignment="Top" Height="28"/>
                     <ToggleButton x:Name="ArmLeft" Checked="ArmLeft_Checked" Unchecked="ArmLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="371,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
@@ -219,8 +239,10 @@
                     <ToggleButton x:Name="PauldronRight" Checked="PauldronRight_Checked" Unchecked="PauldronRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="410,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
                     <ToggleButton x:Name="ShoulderRight" Checked="ShoulderRight_Checked" Unchecked="ShoulderRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="410,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
                     <ToggleButton x:Name="ArmRight" Checked="ArmRight_Checked" Unchecked="ArmRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="410,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <Viewbox HorizontalAlignment="Left" Height="28" Margin="296,135,0,0" VerticalAlignment="Top" Width="78">
+                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Couters}}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"/>
+                    </Viewbox>
                     <ToggleButton x:Name="CouterLeft" Checked="CouterLeft_Checked" Unchecked="CouterLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="371,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
-                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Couters}}" HorizontalAlignment="Left" Margin="296,135,0,0" VerticalAlignment="Top" Height="28"/>
                     <ToggleButton x:Name="ElbowLeft" Checked="ElbowLeft_Checked" Unchecked="ElbowLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="522,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Elbows}}" HorizontalAlignment="Left" Margin="447,45,0,0" VerticalAlignment="Top" Height="28"/>
                     <ToggleButton x:Name="ForearmLeft" Checked="ForearmLeft_Checked" Unchecked="ForearmLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="522,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
@@ -254,7 +276,9 @@
                     <ToggleButton x:Name="ClothBackCRight" Checked="ClothBackCRight_Checked" Unchecked="ClothBackCRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="522,360,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="R3" />
                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Body}}" HorizontalAlignment="Left" Margin="39,180,0,0" VerticalAlignment="Top" Height="28"/>
                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.LeftArm}}" HorizontalAlignment="Left" Margin="224,180,0,0" VerticalAlignment="Top" Height="28"/>
-                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.RightArm}}" HorizontalAlignment="Left" Margin="409,180,0,0" VerticalAlignment="Top" Height="28"/>
+                    <Viewbox HorizontalAlignment="Left" Height="28" Margin="409,180,0,0" VerticalAlignment="Top" Width="74">
+                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.RightArm}}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"/>
+                    </Viewbox>
                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Clothes}}" HorizontalAlignment="Left" Margin="224,435,0,0" VerticalAlignment="Top" Height="28"/>
                     <Button x:Name="SavestateBody01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="114,180,0,0" VerticalAlignment="Top" Width="50" Click="SavestateBody01_Click" Height="28" Padding="0">
                         <StackPanel Orientation="Horizontal" Width="50" Height="16">
@@ -353,11 +377,13 @@
                         </StackPanel>
                     </Button>
                     <ToggleButton x:Name="WristLeft" Checked="WristLeft_Checked" Unchecked="WristLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="522,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
-                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Wrists}}" HorizontalAlignment="Left" Margin="447,135,0,0" VerticalAlignment="Top" Height="28"/>
+                    <Viewbox HorizontalAlignment="Left" Height="28" Margin="447,135,0,0" VerticalAlignment="Top" Width="74">
+                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Wrists}}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"/>
+                    </Viewbox>
                     <ToggleButton x:Name="WristRight" Checked="WristRight_Checked" Unchecked="WristRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="561,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
                 </Grid>
             </TabItem>
-            <TabItem Header="{Binding Source={x:Static resx:UIPoseStrings.HandsLegs}}" Width="200" Height="40" Background="{x:Null}">
+            <TabItem Header="{Binding Source={x:Static resx:UIPoseStrings.HandsLegs}}" Width="200" Height="40" Background="{x:Null}" Style="{DynamicResource MenuLevel2}">
                 <Grid>
                     <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.Hands2}}" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="175" Width="630"/>
                     <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.WaistLegs}}" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="175" Width="630" Margin="0,255,0,0"/>
@@ -373,7 +399,9 @@
                     <ToggleButton x:Name="MiddleALeft" Checked="MiddleALeft_Checked" Unchecked="MiddleALeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="541,45,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L1" />
                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Middle}}" HorizontalAlignment="Left" Margin="466,45,0,0" VerticalAlignment="Top" Height="28"/>
                     <ToggleButton x:Name="PinkyALeft" Checked="PinkyALeft_Checked" Unchecked="PinkyALeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="541,105,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L1" />
-                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Pinky}}" HorizontalAlignment="Left" Margin="466,105,0,0" VerticalAlignment="Top" Height="28"/>
+                    <Viewbox HorizontalAlignment="Left" Height="28" Margin="466,105,0,0" VerticalAlignment="Top" Width="74">
+                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Pinky}}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"/>
+                    </Viewbox>
                     <ToggleButton x:Name="MiddleBLeft" Checked="MiddleBLeft_Checked" Unchecked="MiddleBLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="541,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L2" />
                     <ToggleButton x:Name="PinkyBLeft" Checked="PinkyBLeft_Checked" Unchecked="PinkyBLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="541,135,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L2" />
                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Waist}}" HorizontalAlignment="Left" Margin="33,300,0,0" VerticalAlignment="Top" Height="28"/>
@@ -395,14 +423,18 @@
                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Weapons}}" HorizontalAlignment="Left" Margin="13,75,0,0" VerticalAlignment="Top" Height="28"/>
                     <ToggleButton x:Name="WeaponRight" Checked="WeaponRight_Checked" Unchecked="WeaponRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="127,75,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
                     <ToggleButton x:Name="Waist" Checked="Waist_Checked" Unchecked="Waist_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="101,300,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="" />
+                    <Viewbox HorizontalAlignment="Left" Height="28" Margin="143,300,0,0" VerticalAlignment="Top" Width="74">
+                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Sheathes}}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"/>
+                    </Viewbox>
                     <ToggleButton x:Name="SheatheLeft" Checked="SheatheLeft_Checked" Unchecked="SheatheLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="218,300,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
-                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Sheathes}}" HorizontalAlignment="Left" Margin="143,300,0,0" VerticalAlignment="Top" Height="28"/>
                     <ToggleButton x:Name="SheatheRight" Checked="SheatheRight_Checked" Unchecked="SheatheRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="257,300,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
                     <ToggleButton x:Name="HolsterLeft" Checked="HolsterLeft_Checked" Unchecked="HolsterLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="371,300,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Holsters}}" HorizontalAlignment="Left" Margin="296,300,0,0" VerticalAlignment="Top" Height="28"/>
                     <ToggleButton x:Name="HolsterRight" Checked="HolsterRight_Checked" Unchecked="HolsterRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="410,300,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
                     <ToggleButton x:Name="PoleynLeft" Checked="PoleynLeft_Checked" Unchecked="PoleynLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="522,300,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
-                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Poleyns}}" HorizontalAlignment="Left" Margin="447,300,0,0" VerticalAlignment="Top" Height="28"/>
+                    <Viewbox HorizontalAlignment="Left" Height="28" Margin="447,300,0,0" VerticalAlignment="Top" Width="74">
+                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Poleyns}}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"/>
+                    </Viewbox>
                     <ToggleButton x:Name="PoleynRight" Checked="PoleynRight_Checked" Unchecked="PoleynRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="561,300,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
                     <ToggleButton x:Name="LegLeft" Checked="LegLeft_Checked" Unchecked="LegLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="218,330,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Legs}}" HorizontalAlignment="Left" Margin="143,330,0,0" VerticalAlignment="Top" Height="28"/>
@@ -410,8 +442,10 @@
                     <ToggleButton x:Name="KneeLeft" Checked="KneeLeft_Checked" Unchecked="KneeLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="371,330,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Knees}}" HorizontalAlignment="Left" Margin="296,330,0,0" VerticalAlignment="Top" Height="28"/>
                     <ToggleButton x:Name="KneeRight" Checked="KneeRight_Checked" Unchecked="KneeRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="410,330,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
+                    <Viewbox HorizontalAlignment="Left" Height="28" Margin="447,330,0,0" VerticalAlignment="Top" Width="74">
+                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Calves}}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"/>
+                    </Viewbox>
                     <ToggleButton x:Name="CalfLeft" Checked="CalfLeft_Checked" Unchecked="CalfLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="522,330,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
-                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Calves}}" HorizontalAlignment="Left" Margin="447,330,0,0" VerticalAlignment="Top" Height="28"/>
                     <ToggleButton x:Name="CalfRight" Checked="CalfRight_Checked" Unchecked="CalfRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="561,330,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="R" />
                     <ToggleButton x:Name="FootLeft" Checked="FootLeft_Checked" Unchecked="FootLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="371,360,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" RenderTransformOrigin="0.941,0.607" Content="L" />
                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Feet}}" HorizontalAlignment="Left" Margin="296,360,0,0" VerticalAlignment="Top" Height="28"/>
@@ -426,7 +460,9 @@
                     <ToggleButton x:Name="TailE" Checked="TailE_Checked" Unchecked="TailE_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="257,360,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="5" />
                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Weapons}}" HorizontalAlignment="Left" Margin="39,180,0,0" VerticalAlignment="Top" Height="28"/>
                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.LeftHand}}" HorizontalAlignment="Left" Margin="224,180,0,0" VerticalAlignment="Top" Height="28"/>
-                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.RightHand}}" HorizontalAlignment="Left" Margin="409,180,0,0" VerticalAlignment="Top" Height="28"/>
+                    <Viewbox HorizontalAlignment="Left" Height="28" Margin="409,180,0,0" VerticalAlignment="Top" Width="74">
+                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.RightHand}}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"/>
+                    </Viewbox>
                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Waist}}" HorizontalAlignment="Left" Margin="39,435,0,0" VerticalAlignment="Top" Height="28"/>
                     <Button x:Name="SavestateWeapons01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="114,180,0,0" VerticalAlignment="Top" Width="50" Click="SavestateWeapons01_Click" Height="28" Padding="0">
                         <StackPanel Orientation="Horizontal" Width="50" Height="16">
@@ -549,7 +585,9 @@
                             <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
                         </StackPanel>
                     </Button>
-                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.RightLeg}}" HorizontalAlignment="Left" Margin="409,435,0,0" VerticalAlignment="Top" Height="28"/>
+                    <Viewbox HorizontalAlignment="Left" Height="28" Margin="409,435,0,0" VerticalAlignment="Top" Width="76">
+                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.RightLeg}}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"/>
+                    </Viewbox>
                     <Button x:Name="SavestateRightLeg01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="486,435,0,0" VerticalAlignment="Top" Width="50" Click="SavestateRightLeg01_Click" Height="28" Padding="0">
                         <StackPanel Orientation="Horizontal" Width="50" Height="16">
                             <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
@@ -577,7 +615,7 @@
                 </Grid>
 
             </TabItem>
-            <TabItem Header="{Binding Source={x:Static resx:UIPoseStrings.EquipOther}}" Width="200" Height="40" Background="{x:Null}">
+            <TabItem Header="{Binding Source={x:Static resx:UIPoseStrings.EquipOther}}" Width="200" Height="40" Background="{x:Null}" Style="{DynamicResource MenuLevel2}">
                 <Grid>
                     <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.Equipment}}" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="175" Width="630"/>
                     <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.Other}}" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="175" Width="630" Margin="0,255,0,0"/>
@@ -678,7 +716,7 @@
                 </Grid>
 
             </TabItem>
-            <TabItem Header="{Binding Source={x:Static resx:UIPoseStrings.SaveLoad}}" Width="200" Height="40" Background="{x:Null}">
+            <TabItem Header="{Binding Source={x:Static resx:UIPoseStrings.SaveLoad}}" Width="200" Height="40" Background="{x:Null}" Style="{DynamicResource MenuLevel2}">
                 <Grid>
                     <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.StandardSaving}}" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="175" Width="630"/>
                     <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.AdvancedLoading}}" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="175" Width="630" Margin="0,255,0,0"/>

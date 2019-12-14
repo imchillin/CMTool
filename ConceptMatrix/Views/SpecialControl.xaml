@@ -18,7 +18,11 @@
              d:DesignHeight="470" d:DesignWidth="579" Height="530" Width="579">
 
     <controls:Flyout.Resources>
+        
         <ResourceDictionary>
+            <Style x:Key="MenuLevel2" BasedOn="{StaticResource MetroTabItem}" TargetType="{x:Type TabItem}">
+                <Setter Property="controls:ControlsHelper.HeaderFontSize" Value="20"></Setter>
+            </Style>
             <ObjectDataProvider x:Key="FlyoutThemeEnumValues"
                                 MethodName="GetValues"
                                 ObjectType="{x:Type controls:FlyoutTheme}">
@@ -38,7 +42,7 @@
                                               controls:TabControlHelper.Underlined="TabPanel"
                                               Background="{DynamicResource MaterialDesignPaper}" SelectionChanged="AnimatedTabControl_SelectionChanged"
                                                   >
-                    <TabItem Header="{Binding Source={x:Static resx:FlyOutStrings.ColorSelector}}" Name="ColorTab">
+                    <TabItem Header="{Binding Source={x:Static resx:FlyOutStrings.ColorSelector}}" Name="ColorTab" Style="{DynamicResource MenuLevel2}">
                         <Grid Height="360">
                             <Button Content="Button" HorizontalAlignment="Left" Margin="746,294,-251,0" VerticalAlignment="Top" Width="75"/>
                             <ListView x:Name="colorListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,42,0,0" SelectionChanged="colorListView_SelectionChanged" Height="315">
@@ -63,7 +67,7 @@
                             </ComboBox>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="{Binding Source={x:Static resx:FlyOutStrings.HairSelector}}" Name="HairTab">
+                    <TabItem Header="{Binding Source={x:Static resx:FlyOutStrings.HairSelector}}" Name="HairTab" Style="{DynamicResource MenuLevel2}">
                         <Grid Margin="-7,0,-4,-5" Height="360">
                             <Grid.Background>
                                 <ImageBrush ImageSource="/ConceptMatrix;component/Resources/Background.png">
@@ -87,13 +91,13 @@
                             </ListView>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="{Binding Source={x:Static resx:FlyOutStrings.FacePaint}}" Name="PaintTab">
+                    <TabItem Header="{Binding Source={x:Static resx:FlyOutStrings.FacePaint}}" Name="PaintTab" Style="{DynamicResource MenuLevel2}">
                         <Grid Margin="-7,0,-4,-5" Height="360">
                             <Grid.Background>
                                 <ImageBrush ImageSource="/ConceptMatrix;component/Resources/Background.png">
                                 </ImageBrush>
                             </Grid.Background>
-                            <CheckBox Content="{Binding Source={x:Static resx:FlyOutStrings.ReverseFacePaint}}" x:Name="CheckIncluded" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="171" FontWeight="Bold" FontSize="14" Height="17"/>
+                            <CheckBox Content="{Binding Source={x:Static resx:FlyOutStrings.ReverseFacePaint}}" x:Name="CheckIncluded" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="237" FontWeight="Bold" FontSize="14" Height="17"/>
                             <ListView x:Name="FacePaintFeature" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="3,22,6,0" SelectionChanged="CharacterFeature2_SelectionChanged">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
@@ -112,7 +116,7 @@
                             </ListView>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="{Binding Source={x:Static resx:FlyOutStrings.FacialFeature}}" Name="FacialTab">
+                    <TabItem Header="{Binding Source={x:Static resx:FlyOutStrings.FacialFeature}}" Name="FacialTab" Style="{DynamicResource MenuLevel2}">
                         <Grid Margin="-7,0,-4,-5" Height="360">
                             <Grid.Background>
                                 <ImageBrush ImageSource="/ConceptMatrix;component/Resources/Background.png">
@@ -136,7 +140,7 @@
                             </ListView>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="{Binding Source={x:Static resx:FlyOutStrings.ModelList}}" Name="ModelType">
+                    <TabItem Header="{Binding Source={x:Static resx:FlyOutStrings.ModelList}}" Name="ModelType" Style="{DynamicResource MenuLevel2}">
                         <Grid Height="360">
                             <DataGrid x:Name="ModelBox" HorizontalAlignment="Left" Height="315" Margin="0,2,0,0" VerticalAlignment="Top" Width="562" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden" SelectionChanged="ModelBox_SelectionChanged">
                                 <DataGrid.Columns>

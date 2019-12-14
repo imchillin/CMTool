@@ -32,7 +32,7 @@
 
         <!-- Job Icon -->
         <CheckBox IsChecked="{Binding CharacterDetails.JobIco.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.JobIcon}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.JobIconToolTip}}" HorizontalAlignment="Left" Margin="311,35,0,0" VerticalAlignment="Top" Height="23"/>
-        <ComboBox SelectedIndex="{Binding CharacterDetails.JobIco.value}" HorizontalAlignment="Left" Margin="396,35,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+        <ComboBox SelectedIndex="{Binding CharacterDetails.JobIco.value}" HorizontalAlignment="Left" Margin="396,35,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Padding="0,1">
             <ComboBoxItem Content="None" Background="{x:Null}"/>
             <ComboBoxItem Content="Gladiator" Background="{x:Null}"/>
             <ComboBoxItem Content="Pugilist" Background="{x:Null}"/>
@@ -80,7 +80,7 @@
 
         <!-- Title -->
         <CheckBox IsChecked="{Binding CharacterDetails.Title.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.Title}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.TitleToolTip}}" HorizontalAlignment="Left" Margin="311,5,0,0" VerticalAlignment="Top" Height="23"/>
-        <ComboBox x:Name="TitleBox" SelectedIndex="{Binding CharacterDetails.Title.value}" HorizontalAlignment="Left" Margin="396,5,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+        <ComboBox x:Name="TitleBox" SelectedIndex="{Binding CharacterDetails.Title.value}" HorizontalAlignment="Left" Margin="396,5,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Padding="0,1"/>
 
         <Border BorderBrush="Black" BorderThickness="0,1,0,0" HorizontalAlignment="Left" Height="462" Margin="0,68,0,0" VerticalAlignment="Top" Width="535"/>
 
@@ -90,15 +90,15 @@
 
         <!-- Race -->
         <CheckBox IsChecked="{Binding CharacterDetails.Race.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.Race}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.RaceToolTip}}" HorizontalAlignment="Left" Margin="8,77,0,0" VerticalAlignment="Top" Height="23"/>
-        <ComboBox x:Name="RaceBox" SelectedIndex="{Binding CharacterDetails.Race.value}" HorizontalAlignment="Left" Margin="168,77.118,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+        <ComboBox x:Name="RaceBox" SelectedIndex="{Binding CharacterDetails.Race.value}" HorizontalAlignment="Left" Margin="168,77.118,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Padding="0,1"/>
 
         <!-- Clan -->
         <CheckBox IsChecked="{Binding CharacterDetails.Clan.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.Clan}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.ClanToolTip}}" HorizontalAlignment="Left" Margin="8,107,0,0" VerticalAlignment="Top" Height="23"/>
-        <ComboBox x:Name="ClanBox" SelectedIndex="{Binding CharacterDetails.Clan.value}" HorizontalAlignment="Left" Margin="168,107.118,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+        <ComboBox x:Name="ClanBox" SelectedIndex="{Binding CharacterDetails.Clan.value}" HorizontalAlignment="Left" Margin="168,107.118,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Padding="0,1"/>
 
         <!-- Gender -->
         <CheckBox IsChecked="{Binding CharacterDetails.Gender.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.Gender}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.GenderToolTip}}" HorizontalAlignment="Left" Margin="8,137,0,0" VerticalAlignment="Top" Height="23"/>
-        <ComboBox SelectedIndex="{Binding CharacterDetails.Gender.value}" HorizontalAlignment="Left" Margin="168,137.118,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+        <ComboBox SelectedIndex="{Binding CharacterDetails.Gender.value}" HorizontalAlignment="Left" Margin="168,137.118,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Padding="0,1">
             <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Male}}" Background="{x:Null}"/>
             <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Female}}" Background="{x:Null}"/>
         </ComboBox>
