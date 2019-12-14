@@ -1,0 +1,489 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Abdomen" xml:space="preserve">
+    <value>腹部</value>
+  </data>
+  <data name="AdvancedLoading" xml:space="preserve">
+    <value>高级导入：</value>
+  </data>
+  <data name="AdvLoadCMPFile" xml:space="preserve">
+    <value>高级导入 CMP 文件</value>
+  </data>
+  <data name="Arms" xml:space="preserve">
+    <value>臂：</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>背：</value>
+  </data>
+  <data name="Body" xml:space="preserve">
+    <value>身体：</value>
+  </data>
+  <data name="Body2" xml:space="preserve">
+    <value>身体</value>
+  </data>
+  <data name="BodyClothes" xml:space="preserve">
+    <value>身体 &amp; 衣服</value>
+  </data>
+  <data name="Breasts" xml:space="preserve">
+    <value>胸：</value>
+  </data>
+  <data name="Bridge" xml:space="preserve">
+    <value>鼻梁：</value>
+  </data>
+  <data name="Brows" xml:space="preserve">
+    <value>额头：</value>
+  </data>
+  <data name="Calves" xml:space="preserve">
+    <value>小腿：</value>
+  </data>
+  <data name="Cervical" xml:space="preserve">
+    <value>颈椎：</value>
+  </data>
+  <data name="Cheeks" xml:space="preserve">
+    <value>脸颊：</value>
+  </data>
+  <data name="Clavicles" xml:space="preserve">
+    <value>锁骨：</value>
+  </data>
+  <data name="Clothes" xml:space="preserve">
+    <value>衣服：</value>
+  </data>
+  <data name="Clothes2" xml:space="preserve">
+    <value>衣服</value>
+  </data>
+  <data name="Couters" xml:space="preserve">
+    <value>手肘：</value>
+  </data>
+  <data name="DetectTertiaryBones" xml:space="preserve">
+    <value>检测三次骨骼</value>
+  </data>
+  <data name="Earrings" xml:space="preserve">
+    <value>耳环：</value>
+  </data>
+  <data name="Earrings2" xml:space="preserve">
+    <value>耳环</value>
+  </data>
+  <data name="Ears" xml:space="preserve">
+    <value>耳朵：</value>
+  </data>
+  <data name="Elbows" xml:space="preserve">
+    <value>肘：</value>
+  </data>
+  <data name="EnableEditing" xml:space="preserve">
+    <value>启用编辑：</value>
+  </data>
+  <data name="EnableGpose" xml:space="preserve">
+    <value>请启用GPose以使用此功能。</value>
+  </data>
+  <data name="EnablePhysics" xml:space="preserve">
+    <value>启用物理：</value>
+  </data>
+  <data name="Equipment" xml:space="preserve">
+    <value>装备</value>
+  </data>
+  <data name="EquipOther" xml:space="preserve">
+    <value>装备 &amp; 其他</value>
+  </data>
+  <data name="Eyebrows" xml:space="preserve">
+    <value>眉:</value>
+  </data>
+  <data name="Eyelids" xml:space="preserve">
+    <value>眼皮：</value>
+  </data>
+  <data name="Eyes" xml:space="preserve">
+    <value>眼睛：</value>
+  </data>
+  <data name="Face" xml:space="preserve">
+    <value>脸：</value>
+  </data>
+  <data name="Feet" xml:space="preserve">
+    <value>脚：</value>
+  </data>
+  <data name="Forearms" xml:space="preserve">
+    <value>前臂：</value>
+  </data>
+  <data name="Front" xml:space="preserve">
+    <value>前面：</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>通常：</value>
+  </data>
+  <data name="Hair" xml:space="preserve">
+    <value>头发：</value>
+  </data>
+  <data name="Hair2" xml:space="preserve">
+    <value>头发</value>
+  </data>
+  <data name="HairAccessories" xml:space="preserve">
+    <value>发饰</value>
+  </data>
+  <data name="Hands" xml:space="preserve">
+    <value>手：</value>
+  </data>
+  <data name="Hands2" xml:space="preserve">
+    <value>手</value>
+  </data>
+  <data name="HandsLegs" xml:space="preserve">
+    <value>腕 &amp; 脚</value>
+  </data>
+  <data name="Head" xml:space="preserve">
+    <value>头：</value>
+  </data>
+  <data name="Head2" xml:space="preserve">
+    <value>头</value>
+  </data>
+  <data name="HeadHair" xml:space="preserve">
+    <value>头 &amp; 发</value>
+  </data>
+  <data name="Helm" xml:space="preserve">
+    <value>头盔：</value>
+  </data>
+  <data name="Helm2" xml:space="preserve">
+    <value>头盔</value>
+  </data>
+  <data name="Holsters" xml:space="preserve">
+    <value>皮套：</value>
+  </data>
+  <data name="HrothgarWhiskers" xml:space="preserve">
+    <value>硌狮胡须：</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>食指：</value>
+  </data>
+  <data name="Jaw" xml:space="preserve">
+    <value>颚：</value>
+  </data>
+  <data name="Knees" xml:space="preserve">
+    <value>膝盖：</value>
+  </data>
+  <data name="LeftArm" xml:space="preserve">
+    <value>左臂：</value>
+  </data>
+  <data name="LeftArm2" xml:space="preserve">
+    <value>左臂</value>
+  </data>
+  <data name="LeftHand" xml:space="preserve">
+    <value>左手：</value>
+  </data>
+  <data name="LeftHand2" xml:space="preserve">
+    <value>左手</value>
+  </data>
+  <data name="LeftLeg" xml:space="preserve">
+    <value>左腿：</value>
+  </data>
+  <data name="LeftLeg2" xml:space="preserve">
+    <value>左腿</value>
+  </data>
+  <data name="Legs" xml:space="preserve">
+    <value>腿部：</value>
+  </data>
+  <data name="LoadCMPFile" xml:space="preserve">
+    <value>加载CMP文件</value>
+  </data>
+  <data name="LoadCMPToolTip" xml:space="preserve">
+    <value>从用户生成的CMP文件加载姿势。</value>
+  </data>
+  <data name="LowerLids" xml:space="preserve">
+    <value>下眼睑：</value>
+  </data>
+  <data name="LowerLip" xml:space="preserve">
+    <value>下唇：</value>
+  </data>
+  <data name="Lumbar" xml:space="preserve">
+    <value>腰椎：</value>
+  </data>
+  <data name="Middle" xml:space="preserve">
+    <value>中指：</value>
+  </data>
+  <data name="Mouth" xml:space="preserve">
+    <value>嘴巴：</value>
+  </data>
+  <data name="Neck" xml:space="preserve">
+    <value>颈部：</value>
+  </data>
+  <data name="Nose" xml:space="preserve">
+    <value>鼻子：</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>其他</value>
+  </data>
+  <data name="Pauldrons" xml:space="preserve">
+    <value>护肩：</value>
+  </data>
+  <data name="Pinky" xml:space="preserve">
+    <value>小指：</value>
+  </data>
+  <data name="Poleyns" xml:space="preserve">
+    <value>护腿：</value>
+  </data>
+  <data name="PoseMatrixSettings" xml:space="preserve">
+    <value>姿势矩阵设置</value>
+  </data>
+  <data name="RealTimeRotation" xml:space="preserve">
+    <value>实时旋转</value>
+  </data>
+  <data name="RealTimeRotationToolTip" xml:space="preserve">
+    <value>使用鼠标控制立方体。
+•所有旋转均相对于实体当前面对的方向：
+•右键控制X轴旋转。
+•左键控制Y轴旋转。
+•滚轮控制Z轴旋转。</value>
+  </data>
+  <data name="RightArm" xml:space="preserve">
+    <value>右臂：</value>
+  </data>
+  <data name="RightArm2" xml:space="preserve">
+    <value>右臂</value>
+  </data>
+  <data name="RightHand" xml:space="preserve">
+    <value>右手：</value>
+  </data>
+  <data name="RightHand2" xml:space="preserve">
+    <value>右手</value>
+  </data>
+  <data name="RightLeg" xml:space="preserve">
+    <value>右腿：</value>
+  </data>
+  <data name="RightLeg2" xml:space="preserve">
+    <value>右腿</value>
+  </data>
+  <data name="Ring" xml:space="preserve">
+    <value>无名指：</value>
+  </data>
+  <data name="Root" xml:space="preserve">
+    <value>根：</value>
+  </data>
+  <data name="RotationSliders" xml:space="preserve">
+    <value>旋转滑块：</value>
+  </data>
+  <data name="RotationSlidersToolTip" xml:space="preserve">
+    <value>此切换将在旋转滑块和数字直接输入之间切换。
+•禁用它会把“ XYZ旋转”滑块变成数值。
+•每个输入将接受0到360之间的值。</value>
+  </data>
+  <data name="SaveCMPFile" xml:space="preserve">
+    <value>保存CMP文件</value>
+  </data>
+  <data name="SaveCMPToolTip" xml:space="preserve">
+    <value>将姿势保存到CMP文件。</value>
+  </data>
+  <data name="SaveLoad" xml:space="preserve">
+    <value>保存并加载</value>
+  </data>
+  <data name="Scabbards" xml:space="preserve">
+    <value>刀鞘：</value>
+  </data>
+  <data name="SelectAll" xml:space="preserve">
+    <value>全选</value>
+  </data>
+  <data name="SelectNone" xml:space="preserve">
+    <value>不选择</value>
+  </data>
+  <data name="Sheathes" xml:space="preserve">
+    <value>护套：</value>
+  </data>
+  <data name="Shields" xml:space="preserve">
+    <value>盾牌：</value>
+  </data>
+  <data name="Shoulders" xml:space="preserve">
+    <value>肩宽：</value>
+  </data>
+  <data name="Sides" xml:space="preserve">
+    <value>侧面：</value>
+  </data>
+  <data name="StandardSaving" xml:space="preserve">
+    <value>标准保存和加载</value>
+  </data>
+  <data name="Tail" xml:space="preserve">
+    <value>尾巴：</value>
+  </data>
+  <data name="TertiaryButtonToolTip" xml:space="preserve">
+    <value>检测所选角色的种族，头发和装备专有骨骼。</value>
+  </data>
+  <data name="Thoracic" xml:space="preserve">
+    <value>胸椎：</value>
+  </data>
+  <data name="Throw" xml:space="preserve">
+    <value>演员：</value>
+  </data>
+  <data name="Thumb" xml:space="preserve">
+    <value>拇指：</value>
+  </data>
+  <data name="Toes" xml:space="preserve">
+    <value>脚趾：</value>
+  </data>
+  <data name="Top" xml:space="preserve">
+    <value>上半身:</value>
+  </data>
+  <data name="Top2" xml:space="preserve">
+    <value>上半身</value>
+  </data>
+  <data name="Unique" xml:space="preserve">
+    <value>独特：</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>未知：</value>
+  </data>
+  <data name="UpperLip" xml:space="preserve">
+    <value>上唇：</value>
+  </data>
+  <data name="VieraEars" xml:space="preserve">
+    <value>兔耳：</value>
+  </data>
+  <data name="Waist" xml:space="preserve">
+    <value>腰部：</value>
+  </data>
+  <data name="Waist2" xml:space="preserve">
+    <value>腰部</value>
+  </data>
+  <data name="WaistLegs" xml:space="preserve">
+    <value>腰腿</value>
+  </data>
+  <data name="Weapons" xml:space="preserve">
+    <value>武器：</value>
+  </data>
+  <data name="Weapons2" xml:space="preserve">
+    <value>武器：</value>
+  </data>
+  <data name="Weapons3" xml:space="preserve">
+    <value>武器</value>
+  </data>
+  <data name="Wrists" xml:space="preserve">
+    <value>手腕：</value>
+  </data>
+  <data name="XRot" xml:space="preserve">
+    <value>X旋转：</value>
+  </data>
+  <data name="XRotToolTip" xml:space="preserve">
+    <value>修改选定关节的“X旋转”。</value>
+  </data>
+  <data name="YRot" xml:space="preserve">
+    <value>Y旋转：</value>
+  </data>
+  <data name="YRotToolTip" xml:space="preserve">
+    <value>修改选定关节的“Y旋转”。</value>
+  </data>
+  <data name="ZRot" xml:space="preserve">
+    <value>Z旋转：</value>
+  </data>
+  <data name="ZRotToolTip" xml:space="preserve">
+    <value>修改选定关节的“Z旋转”。</value>
+  </data>
+</root>

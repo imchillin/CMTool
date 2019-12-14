@@ -122,6 +122,32 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resx\MiscStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MiscStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resx\FlyOutStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FlyOutStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resx\UIPoseStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UIPoseStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resx\UIStringsContent.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UIStringsContent.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resx\WindowsStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WindowsStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\FlexibleMessageBox.cs" />
     <Compile Include="Utility\QuaternionConverter.cs" />
     <Compile Include="Utility\CmpReader.cs" />
     <Compile Include="Utility\DatSaves.cs" />
@@ -184,6 +210,9 @@
     </Compile>
     <Compile Include="Windows\GearsetChooseWindow.xaml.cs">
       <DependentUpon>GearsetChooseWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\LanguageSelectView.xaml.cs">
+      <DependentUpon>LanguageSelectView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\LoadWindow.xaml.cs">
       <DependentUpon>LoadWindow.xaml</DependentUpon>
@@ -270,6 +299,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\LanguageSelectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\LoadWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -297,6 +330,56 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resx\FlyOutStrings.de.resx" />
+    <EmbeddedResource Include="Resx\FlyOutStrings.fr.resx" />
+    <EmbeddedResource Include="Resx\FlyOutStrings.ko.resx" />
+    <EmbeddedResource Include="Resx\MiscStrings.de.resx" />
+    <EmbeddedResource Include="Resx\MiscStrings.fr.resx" />
+    <EmbeddedResource Include="Resx\MiscStrings.ja.resx" />
+    <EmbeddedResource Include="Resx\MiscStrings.ko.resx" />
+    <EmbeddedResource Include="Resx\MiscStrings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MiscStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resx\FlyOutStrings.ja.resx" />
+    <EmbeddedResource Include="Resx\FlyOutStrings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>FlyOutStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resx\FlyOutStrings.zh.resx" />
+    <EmbeddedResource Include="Resx\MiscStrings.zh.resx" />
+    <EmbeddedResource Include="Resx\UIPoseStrings.de.resx" />
+    <EmbeddedResource Include="Resx\UIPoseStrings.fr.resx" />
+    <EmbeddedResource Include="Resx\UIPoseStrings.ja.resx" />
+    <EmbeddedResource Include="Resx\UIPoseStrings.ko.resx" />
+    <EmbeddedResource Include="Resx\UIPoseStrings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UIPoseStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resx\UIPoseStrings.zh.resx" />
+    <EmbeddedResource Include="Resx\UIStringsContent.de.resx" />
+    <EmbeddedResource Include="Resx\UIStringsContent.fr.resx" />
+    <EmbeddedResource Include="Resx\UIStringsContent.ja.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resx\UIStringsContent.ko.resx" />
+    <EmbeddedResource Include="Resx\UIStringsContent.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UIStringsContent.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resx\UIStringsContent.zh.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resx\WindowsStrings.de.resx" />
+    <EmbeddedResource Include="Resx\WindowsStrings.fr.resx" />
+    <EmbeddedResource Include="Resx\WindowsStrings.ja.resx" />
+    <EmbeddedResource Include="Resx\WindowsStrings.ko.resx" />
+    <EmbeddedResource Include="Resx\WindowsStrings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>WindowsStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resx\WindowsStrings.zh.resx" />
     <None Include="app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -305,6 +388,9 @@
     <None Include="Resources\actiontimeline.csv" />
     <None Include="Resources\BGM.csv" />
     <None Include="Resources\human.cmp" />
+    <None Include="Resources\Item.json" />
+    <None Include="Resources\ItemCN.json" />
+    <None Include="Resources\ItemKR.json" />
     <None Include="Resources\MonsterList.csv" />
     <None Include="Resources\PropsList.csv" />
   </ItemGroup>
@@ -332,6 +418,12 @@
     <Content Include="OffsetSettings.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
+    </Content>
+    <Content Include="OffsetSettingsKO.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OffsetSettingsCN.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="Resources\body.png" />
     <Resource Include="Resources\clothes.png" />

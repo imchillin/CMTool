@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -18,6 +19,7 @@ namespace ConceptMatrix.Windows
             public int ID { get; set; }
             public DateTime StartTime { get; set; }
             public ImageSource AppIcon { get; set; }
+            public string GameDirectory { get; set; }
         }
         public Game Choice = null;
         public ProcessLooker(List<Game> GameList)
@@ -43,7 +45,14 @@ namespace ConceptMatrix.Windows
             {
                 if (theprocess.ProcessName.ToLower().Contains("ffxiv_dx11"))
                 {
-                    GameListX.Add(new ProcessLooker.Game() { ProcessName = theprocess.ProcessName, ID = theprocess.Id, StartTime = theprocess.StartTime, AppIcon = MainWindow.IconToImageSource(System.Drawing.Icon.ExtractAssociatedIcon(theprocess.MainModule.FileName)) });
+                    GameListX.Add(new ProcessLooker.Game()
+                    {
+                        ProcessName = theprocess.ProcessName,
+                        ID = theprocess.Id,
+                        StartTime = theprocess.StartTime,
+                        AppIcon = MainWindow.IconToImageSource(System.Drawing.Icon.ExtractAssociatedIcon(theprocess.MainModule.FileName)),
+                        GameDirectory = Path.GetFullPath(Path.Combine(theprocess.MainModule.FileName, "..", "..")).ToString()
+                    });
                 }
             }
             ProcessGrid.ItemsSource = GameListX;

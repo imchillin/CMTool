@@ -7,17 +7,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ConceptMatrix.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:resx="clr-namespace:ConceptMatrix.Resx"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              Background="{DynamicResource MaterialDesignPaper}"
              TextElement.FontWeight="Medium"
              TextElement.FontSize="13.25"
-             Header="Character"
+             Header="{Binding Source={x:Static resx:FlyOutStrings.Character}}"
              Position="Right"
              mc:Ignorable="d" 
              d:DesignHeight="470" d:DesignWidth="579" Height="530" Width="579">
 
     <controls:Flyout.Resources>
+        
         <ResourceDictionary>
+            <Style x:Key="MenuLevel2" BasedOn="{StaticResource MetroTabItem}" TargetType="{x:Type TabItem}">
+                <Setter Property="controls:ControlsHelper.HeaderFontSize" Value="20"></Setter>
+            </Style>
             <ObjectDataProvider x:Key="FlyoutThemeEnumValues"
                                 MethodName="GetValues"
                                 ObjectType="{x:Type controls:FlyoutTheme}">
@@ -37,7 +42,7 @@
                                               controls:TabControlHelper.Underlined="TabPanel"
                                               Background="{DynamicResource MaterialDesignPaper}" SelectionChanged="AnimatedTabControl_SelectionChanged"
                                                   >
-                    <TabItem Header="Color Selector" Name="ColorTab">
+                    <TabItem Header="{Binding Source={x:Static resx:FlyOutStrings.ColorSelector}}" Name="ColorTab" Style="{DynamicResource MenuLevel2}">
                         <Grid Height="360">
                             <Button Content="Button" HorizontalAlignment="Left" Margin="746,294,-251,0" VerticalAlignment="Top" Width="75"/>
                             <ListView x:Name="colorListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,42,0,0" SelectionChanged="colorListView_SelectionChanged" Height="315">
@@ -50,19 +55,19 @@
 
                                 </ListView.ItemsPanel>
                             </ListView>
-                            <ComboBox materialDesign:HintAssist.Hint="Select Type" x:Name="ClanBox" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="146" SelectionChanged="ClanBox_SelectionChanged" PreviewMouseDown="ClanBox_PreviewMouseDown" VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling">
-                                <ComboBoxItem Content="Skin Color"/>
-                                <ComboBoxItem Content="Hair Color"/>
-                                <ComboBoxItem Content="Highlights Color"/>
-                                <ComboBoxItem Content="Lip Color"/>
-                                <ComboBoxItem Content="Right-Eye Color"/>
-                                <ComboBoxItem Content="Left-Eye Color"/>
-                                <ComboBoxItem Content="FacePaint Color"/>
-                                <ComboBoxItem Content="Limbal-Eye Color"/>
+                            <ComboBox materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:FlyOutStrings.SelectType}}" x:Name="ClanBox" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="146" SelectionChanged="ClanBox_SelectionChanged" PreviewMouseDown="ClanBox_PreviewMouseDown" VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling">
+                                <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.SkinColor}}"/>
+                                <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.HairColor}}"/>
+                                <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.HighlightsColor}}"/>
+                                <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.LipColor}}"/>
+                                <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.RightEyeColor}}"/>
+                                <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.LeftEyeColor}}"/>
+                                <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.FacePaintColor}}"/>
+                                <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.LimbalEyeColor}}"/>
                             </ComboBox>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="Hair Selector" Name="HairTab">
+                    <TabItem Header="{Binding Source={x:Static resx:FlyOutStrings.HairSelector}}" Name="HairTab" Style="{DynamicResource MenuLevel2}">
                         <Grid Margin="-7,0,-4,-5" Height="360">
                             <Grid.Background>
                                 <ImageBrush ImageSource="/ConceptMatrix;component/Resources/Background.png">
@@ -86,13 +91,13 @@
                             </ListView>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="Face Paint" Name="PaintTab">
+                    <TabItem Header="{Binding Source={x:Static resx:FlyOutStrings.FacePaint}}" Name="PaintTab" Style="{DynamicResource MenuLevel2}">
                         <Grid Margin="-7,0,-4,-5" Height="360">
                             <Grid.Background>
                                 <ImageBrush ImageSource="/ConceptMatrix;component/Resources/Background.png">
                                 </ImageBrush>
                             </Grid.Background>
-                            <CheckBox Content="Reverse FacePaint" x:Name="CheckIncluded" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="171" FontWeight="Bold" FontSize="14" Height="17"/>
+                            <CheckBox Content="{Binding Source={x:Static resx:FlyOutStrings.ReverseFacePaint}}" x:Name="CheckIncluded" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="237" FontWeight="Bold" FontSize="14" Height="17"/>
                             <ListView x:Name="FacePaintFeature" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="3,22,6,0" SelectionChanged="CharacterFeature2_SelectionChanged">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
@@ -111,7 +116,7 @@
                             </ListView>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="Facial Feature" Name="FacialTab">
+                    <TabItem Header="{Binding Source={x:Static resx:FlyOutStrings.FacialFeature}}" Name="FacialTab" Style="{DynamicResource MenuLevel2}">
                         <Grid Margin="-7,0,-4,-5" Height="360">
                             <Grid.Background>
                                 <ImageBrush ImageSource="/ConceptMatrix;component/Resources/Background.png">
@@ -135,15 +140,15 @@
                             </ListView>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="Model List" Name="ModelType">
+                    <TabItem Header="{Binding Source={x:Static resx:FlyOutStrings.ModelList}}" Name="ModelType" Style="{DynamicResource MenuLevel2}">
                         <Grid Height="360">
                             <DataGrid x:Name="ModelBox" HorizontalAlignment="Left" Height="315" Margin="0,2,0,0" VerticalAlignment="Top" Width="562" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden" SelectionChanged="ModelBox_SelectionChanged">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="ID" Binding="{Binding Path=Index}" Width="56"/>
-                                    <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="*"/>
+                                    <DataGridTextColumn Header="{Binding Source={x:Static resx:FlyOutStrings.ID}}" Binding="{Binding Path=Index}" Width="56"/>
+                                    <DataGridTextColumn Header="{Binding Source={x:Static resx:FlyOutStrings.Name}}" Binding="{Binding Path=Name}" Width="*"/>
                                 </DataGrid.Columns>
                             </DataGrid>
-                            <TextBox x:Name="SearchModelBox" materialDesign:HintAssist.Hint="Search..." Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="36" Margin="2,320,0,-4" TextWrapping="Wrap" VerticalAlignment="Top" Width="560" TextChanged="SearchModelBox_TextChanged" BorderThickness="0,1"/>
+                            <TextBox x:Name="SearchModelBox" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:FlyOutStrings.Search}}" Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="36" Margin="2,320,0,-4" TextWrapping="Wrap" VerticalAlignment="Top" Width="560" TextChanged="SearchModelBox_TextChanged" BorderThickness="0,1"/>
                         </Grid>
                     </TabItem>
                 </controls:MetroAnimatedTabControl>

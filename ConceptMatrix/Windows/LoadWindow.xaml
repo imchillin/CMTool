@@ -6,23 +6,24 @@
         xmlns:local="clr-namespace:ConceptMatrix.Windows"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
+        xmlns:resx="clr-namespace:ConceptMatrix.Resx"
         TextElement.FontWeight="Medium"
         TextElement.FontSize="13.25"
         BorderThickness="1"              
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         mc:Ignorable="d"
-        Title="Load Window" Height="313.003" Width="349.244" ResizeMode="NoResize" Icon="/ConceptMatrix;component/cmtool-icon.ico" WindowStartupLocation="CenterOwner">
+        Title="{Binding Source={x:Static resx:WindowsStrings.LoadWindow}}" Height="313.003" Width="349.244" ResizeMode="NoResize" Icon="/ConceptMatrix;component/cmtool-icon.ico" WindowStartupLocation="CenterOwner">
     <Grid Margin="0,0,0,2">
         <ListBox BorderThickness="1" FontSize="24" Margin="10,10,0,0" BorderBrush="Black" HorizontalAlignment="Left" VerticalAlignment="Top" Width="321" Height="222">
-            <ListBoxItem x:Name="All"  Content="Load All Character" Uid="1" KeyDown="All_KeyDown" PreviewMouseDown="All_PreviewMouseDown"/>
-            <ListBoxItem x:Name="App"  Content="Load All[Appearance]"  BorderThickness="0,1,0,0" Uid="2" KeyDown="App_KeyDown" BorderBrush="Black" PreviewMouseDown="App_PreviewMouseDown"/>
-            <ListBoxItem x:Name="Xuip" Content="Load All[Equipment]" BorderThickness="0,1,0,0" Uid="3" KeyDown="Xuip_KeyDown" BorderBrush="Black" PreviewMouseDown="Xuip_PreviewMouseDown"/>
-            <ListBoxItem x:Name="Dat" Content="Load .Dat" BorderThickness="0,1,0,0" Uid="3" BorderBrush="Black" KeyDown="Dat_KeyDown" PreviewMouseDown="Dat_PreviewMouseDown" Height="41" />
-            <ListBoxItem x:Name="Gearset" Content="Load Gearset" BorderThickness="0,1,0,0" Uid="3" BorderBrush="Black" KeyDown="Gearset_KeyDown" PreviewMouseDown="Gearset_PreviewMouseDown" Height="41" />
+            <ListBoxItem x:Name="All"  Content="{Binding Source={x:Static resx:WindowsStrings.LoadAllCharacter}}" Uid="1" KeyDown="All_KeyDown" PreviewMouseDown="All_PreviewMouseDown"/>
+            <ListBoxItem x:Name="App"  Content="{Binding Source={x:Static resx:WindowsStrings.LoadAllAppearance}}"  BorderThickness="0,1,0,0" Uid="2" KeyDown="App_KeyDown" BorderBrush="Black" PreviewMouseDown="App_PreviewMouseDown"/>
+            <ListBoxItem x:Name="Xuip" Content="{Binding Source={x:Static resx:WindowsStrings.LoadAllEquipment}}" BorderThickness="0,1,0,0" Uid="3" KeyDown="Xuip_KeyDown" BorderBrush="Black" PreviewMouseDown="Xuip_PreviewMouseDown"/>
+            <ListBoxItem x:Name="Dat" Content="{Binding Source={x:Static resx:WindowsStrings.LoadDat}}" BorderThickness="0,1,0,0" Uid="3" BorderBrush="Black" KeyDown="Dat_KeyDown" PreviewMouseDown="Dat_PreviewMouseDown" Height="41" />
+            <ListBoxItem x:Name="Gearset" Content="{Binding Source={x:Static resx:WindowsStrings.LoadGearset}}" BorderThickness="0,1,0,0" Uid="3" BorderBrush="Black" KeyDown="Gearset_KeyDown" PreviewMouseDown="Gearset_PreviewMouseDown" Height="41" />
         </ListBox>
-        <ToggleButton x:Name="Windowstoggled" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="Time Toggle Switch" Margin="202,248,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="22"  IsTabStop="False" Checked="Windowstoggled_Checked" Unchecked="Windowstoggled_Unchecked" />
-        <Label Content="No" HorizontalAlignment="Left" Margin="168,244,0,0" VerticalAlignment="Top"/>
-        <Label Content="Yes" HorizontalAlignment="Left" Margin="236,244,0,0" VerticalAlignment="Top"/>
-        <Label Content="Use Windows Explorer:" HorizontalAlignment="Left" Margin="10,244,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <ToggleButton x:Name="Windowstoggled" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="Time Toggle Switch" Margin="232,248,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="22"  IsTabStop="False" Checked="Windowstoggled_Checked" Unchecked="Windowstoggled_Unchecked" />
+        <Label Content="{Binding Source={x:Static resx:WindowsStrings.No}}" HorizontalAlignment="Left" Margin="198,244,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding Source={x:Static resx:WindowsStrings.Yes}}" HorizontalAlignment="Left" Margin="266,244,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding Source={x:Static resx:WindowsStrings.UseWindowsEx}}" HorizontalAlignment="Left" Margin="10,244,0,0" VerticalAlignment="Top" FontSize="14"/>
     </Grid>
 </Window>

@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>此修改器及其基本代码最初是由LeonBlade创建的。</value>
+  </data>
+  <data name="About1" xml:space="preserve">
+    <value>在此修改器的早期，是由Johto接管、维护并更新的SSTools项目。</value>
+  </data>
+  <data name="About2" xml:space="preserve">
+    <value>后来，Krisan Thyme开发了一个新分支-CMTools-，并将其合并到主仓库中。</value>
+  </data>
+  <data name="About3" xml:space="preserve">
+    <value>特别感谢Goat和Seria Myouna的贡献！</value>
+  </data>
+  <data name="About4" xml:space="preserve">
+    <value>该项目由MaterialDesignInXAML，MahApps，Fody，Newtonsoft.Json和Memory.dll驱动。</value>
+  </data>
+  <data name="AdditionalOptions" xml:space="preserve">
+    <value>其他设置</value>
+  </data>
+  <data name="Aetherometer" xml:space="preserve">
+    <value>以太成像</value>
+  </data>
+  <data name="Bright1" xml:space="preserve">
+    <value>鲜艳1</value>
+  </data>
+  <data name="Bright2" xml:space="preserve">
+    <value>鲜艳2</value>
+  </data>
+  <data name="Bright3" xml:space="preserve">
+    <value>鲜艳3</value>
+  </data>
+  <data name="Bright4" xml:space="preserve">
+    <value>鲜艳4</value>
+  </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>变更语言：</value>
+  </data>
+  <data name="ChangeLanguage2" xml:space="preserve">
+    <value>变更语言</value>
+  </data>
+  <data name="CMDirectories" xml:space="preserve">
+    <value>Concept Matrix路径</value>
+  </data>
+  <data name="CMToolSaving" xml:space="preserve">
+    <value>CMTool保存/加载</value>
+  </data>
+  <data name="ColoredMarker1" xml:space="preserve">
+    <value>彩色水笔1</value>
+  </data>
+  <data name="ColoredMarker2" xml:space="preserve">
+    <value>彩色水笔2</value>
+  </data>
+  <data name="ColoredPencil" xml:space="preserve">
+    <value>彩色铅笔</value>
+  </data>
+  <data name="DarkTheme" xml:space="preserve">
+    <value>佐迪亚克主题</value>
+  </data>
+  <data name="Default" xml:space="preserve">
+    <value>默认</value>
+  </data>
+  <data name="DisableBackground" xml:space="preserve">
+    <value>停用背景</value>
+  </data>
+  <data name="DonateDevs" xml:space="preserve">
+    <value>赞助开发者！</value>
+  </data>
+  <data name="DonateDevs2" xml:space="preserve">
+    <value>想要赞助？ 我将不胜感激。 请点击以下按钮通过Ko-fi赞助。</value>
+  </data>
+  <data name="DonateJohto" xml:space="preserve">
+    <value>赞助Johto</value>
+  </data>
+  <data name="DonateKrisan" xml:space="preserve">
+    <value>赞助Krisan Thyme</value>
+  </data>
+  <data name="DonateLeon" xml:space="preserve">
+    <value>赞助LeonBlade</value>
+  </data>
+  <data name="Echo" xml:space="preserve">
+    <value>回溯过去</value>
+  </data>
+  <data name="EnableBackground" xml:space="preserve">
+    <value>启用背景</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>女</value>
+  </data>
+  <data name="GearsetSaves" xml:space="preserve">
+    <value>装备组保存：</value>
+  </data>
+  <data name="GetInTouch" xml:space="preserve">
+    <value>联系方式</value>
+  </data>
+  <data name="GetInTouch2" xml:space="preserve">
+    <value>打招呼，提交功能请求、建议或错误报告。</value>
+  </data>
+  <data name="LightTheme" xml:space="preserve">
+    <value>海德林主题</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>男</value>
+  </data>
+  <data name="MatrixSaves" xml:space="preserve">
+    <value>Matrix保存:</value>
+  </data>
+  <data name="Monochrome1" xml:space="preserve">
+    <value>黑白1</value>
+  </data>
+  <data name="Monochrome2" xml:space="preserve">
+    <value>黑白2</value>
+  </data>
+  <data name="Monotone1" xml:space="preserve">
+    <value>单色1</value>
+  </data>
+  <data name="Monotone2" xml:space="preserve">
+    <value>单色2</value>
+  </data>
+  <data name="Monotone3" xml:space="preserve">
+    <value>单色3</value>
+  </data>
+  <data name="Normal" xml:space="preserve">
+    <value>标准</value>
+  </data>
+  <data name="OpenSource" xml:space="preserve">
+    <value>骄傲的开源</value>
+  </data>
+  <data name="OpenSource2" xml:space="preserve">
+    <value>该项目是完全开源的。 如果您喜欢它并想要表示感谢，请通过点击GitHub的Star按钮并向我们发送感谢。</value>
+  </data>
+  <data name="Pastel1" xml:space="preserve">
+    <value>色粉画1</value>
+  </data>
+  <data name="Pastel2" xml:space="preserve">
+    <value>色粉画2</value>
+  </data>
+  <data name="Pastel3" xml:space="preserve">
+    <value>色粉画3</value>
+  </data>
+  <data name="Pencil" xml:space="preserve">
+    <value>黑白铅笔</value>
+  </data>
+  <data name="Posterization1" xml:space="preserve">
+    <value>色调分离1</value>
+  </data>
+  <data name="Posterization2" xml:space="preserve">
+    <value>色调分离2</value>
+  </data>
+  <data name="ProfileSaves" xml:space="preserve">
+    <value>保存个人资料：</value>
+  </data>
+  <data name="Sepia1" xml:space="preserve">
+    <value>棕色1</value>
+  </data>
+  <data name="Sepia2" xml:space="preserve">
+    <value>棕色2</value>
+  </data>
+  <data name="StrengthenedEffects" xml:space="preserve">
+    <value>强调特效</value>
+  </data>
+  <data name="TargetActorIs" xml:space="preserve">
+    <value>指定目标是？？？</value>
+  </data>
+  <data name="TargetActorIs2" xml:space="preserve">
+    <value>指定目标已被冻结！</value>
+  </data>
+  <data name="TargetActorIs3" xml:space="preserve">
+    <value>指定目标正在动画！</value>
+  </data>
+  <data name="WindowsExplorer" xml:space="preserve">
+    <value>Windows资源管理器</value>
+  </data>
+</root>

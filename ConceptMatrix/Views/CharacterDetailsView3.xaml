@@ -8,117 +8,127 @@
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:Views="clr-namespace:ConceptMatrix.Views"
              x:Class="ConceptMatrix.Views.CharacterDetailsView3"
+             xmlns:resx="clr-namespace:ConceptMatrix.Resx"
              TextElement.FontSize="13.25"
              mc:Ignorable="d" 
              d:DesignHeight="460" d:DesignWidth="1115" Height="530">
+    <UserControl.Resources>
+        <DataTemplate x:Key="cmbTemplate">
+            <WrapPanel>
+                <Image Width="20" Height="20" Source="{Binding Icon}"/>
+                <Label Content="{Binding Name}"/>
+            </WrapPanel>
+        </DataTemplate>
+    </UserControl.Resources>
     <Grid Height="530">
+        
         <Grid.Background>
             <ImageBrush x:Name="WorldBG" ImageSource="/ConceptMatrix;component/Resources/worldbg.png"/>
         </Grid.Background>
-        <GroupBox Header="Group Pose Filters" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" Margin="402,10,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="330" Width="703"/>
-        <GroupBox Header="Camera Settings" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" Margin="10,10,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="510" Width="387"/>
-        <Button x:Name="ResetCams" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Reset to Default" HorizontalAlignment="Left" Margin="16,485,0,0" VerticalAlignment="Top" Width="376" Height="28" FontWeight="Bold" Click="ResetCams_Click"/>
-        <CheckBox IsEnabled="{Binding Path=CharacterDetails.Max.Checker}" IsChecked="{Binding Path=CharacterDetails.Max.freeze}" Content="Max Zoom:" HorizontalAlignment="Left" Margin="16,145,0,0" VerticalAlignment="Top" Height="28"/>
+        <GroupBox Header="{Binding Source={x:Static resx:UIStringsContent.GroupPoseFilter}}" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" Margin="402,10,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="330" Width="703"/>
+        <GroupBox Header="{Binding Source={x:Static resx:UIStringsContent.CameraSettings}}" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" Margin="10,10,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="510" Width="387"/>
+        <Button x:Name="ResetCams" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.ResetToDefaultButton}}" HorizontalAlignment="Left" Margin="16,485,0,0" VerticalAlignment="Top" Width="376" Height="28" FontWeight="Bold" Click="ResetCams_Click"/>
+        <CheckBox IsEnabled="{Binding Path=CharacterDetails.Max.Checker}" IsChecked="{Binding Path=CharacterDetails.Max.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.MaxZoom}}" HorizontalAlignment="Left" Margin="16,145,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown  x:Name="MaxZoom" Value="{Binding Path=CharacterDetails.Max.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="132,145,0,0" VerticalAlignment="Top" Width="142" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F5" Interval="0.01"  TextAlignment="Right" SourceUpdated="MaxZoom_SourceUpdated" Height="28" FontSize="11.35" FontFamily="Sogoe UI"/>
-        <CheckBox IsChecked="{Binding Path=CharacterDetails.Min.freeze}" IsEnabled="{Binding Path=CharacterDetails.Min.Checker}" Content="Min Zoom:" HorizontalAlignment="Left" Margin="16,175,0,0" VerticalAlignment="Top" Height="28"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.Min.freeze}" IsEnabled="{Binding Path=CharacterDetails.Min.Checker}" Content="{Binding Source={x:Static resx:UIStringsContent.MinZoom}}" HorizontalAlignment="Left" Margin="16,175,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="Min_Zoom" Value="{Binding Path=CharacterDetails.Min.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="132,175,0,0" VerticalAlignment="Top" Width="142" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F5" Interval="0.01"  TextAlignment="Right" SourceUpdated="Min_Zoom_SourceUpdated" Height="28" FontSize="11.35" FontFamily="Sogoe UI"/>
-        <CheckBox IsEnabled="{Binding Path=CharacterDetails.CZoom.Checker}" IsChecked="{Binding Path=CharacterDetails.CZoom.freeze}" Content="Current Zoom:" HorizontalAlignment="Left" Margin="16,205,0,0" VerticalAlignment="Top" Height="28"/>
+        <CheckBox IsEnabled="{Binding Path=CharacterDetails.CZoom.Checker}" IsChecked="{Binding Path=CharacterDetails.CZoom.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.CurrentZoom}}" HorizontalAlignment="Left" Margin="16,205,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="CurrentZoom" Value="{Binding Path=CharacterDetails.CZoom.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="132,205,0,0" VerticalAlignment="Top" Width="142" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F5" Interval="0.01"  TextAlignment="Right" SourceUpdated="CurrentZoom_SourceUpdated" Height="28" FontSize="11.35" FontFamily="Sogoe UI"/>
         <Slider x:Name="CZoom2" Value="{Binding Path=CharacterDetails.CZoom.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="276,205,0,0" VerticalAlignment="Top" Width="120" IsSnapToTickEnabled="True" Interval="1" TickFrequency="0.1" Maximum="100" SourceUpdated="CurrentZoom_SourceUpdated" Height="28" TickPlacement="BottomRight"/>
-        <CheckBox IsChecked="{Binding Path=CharacterDetails.FOVC.freeze}" Content="Field of View:" HorizontalAlignment="Left" Margin="16,235,0,0" VerticalAlignment="Top" Height="28"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.FOVC.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.FoV}}" HorizontalAlignment="Left" Margin="16,235,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="CurrentFOV" Value="{Binding Path=CharacterDetails.FOVC.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Minimum="0" HorizontalAlignment="Left" Margin="132,235,0,0" VerticalAlignment="Top" Width="142" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F5" Interval="0.01"  TextAlignment="Right" SourceUpdated="CurrentFOV_SourceUpdated" Height="28" FontSize="11.35" FontFamily="Sogoe UI"/>
         <Slider x:Name="FOV1S" Value="{Binding Path=CharacterDetails.FOVC.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="276,235,0,0" VerticalAlignment="Top" Width="120" TickPlacement="BottomRight" Maximum="2" TickFrequency="0.05" IsSnapToTickEnabled="True" Interval="1" SourceUpdated="CurrentFOV_SourceUpdated" Height="28"/>
-        <CheckBox IsChecked="{Binding Path=CharacterDetails.FOV2.freeze}" Content="Field of View 2:" HorizontalAlignment="Left" Margin="16,265,0,0" VerticalAlignment="Top" Height="28"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.FOV2.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.FoV2}}" HorizontalAlignment="Left" Margin="16,265,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="FOV2" Value="{Binding Path=CharacterDetails.FOV2.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="132,265,0,0" VerticalAlignment="Top" Width="142" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F5" Interval="0.01"  TextAlignment="Right" SourceUpdated="FOV2_SourceUpdated" Height="28" FontSize="11.35" FontFamily="Sogoe UI"/>
         <Slider x:Name="FOV2S" Value="{Binding Path=CharacterDetails.FOV2.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="276,265,0,0" VerticalAlignment="Top" Width="120" Maximum="1" Minimum="-1" TickFrequency="0.1" TickPlacement="BottomRight" IsSnapToTickEnabled="True" Interval="1" SourceUpdated="FOV2_SourceUpdated" Height="28"/>
-        <CheckBox IsChecked="{Binding Path=CharacterDetails.CameraHeight2.freeze}" Content="Cam Rotation:" HorizontalAlignment="Left" Margin="16,295,0,0" VerticalAlignment="Top" Height="28"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.CameraHeight2.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.CamRotation}}" HorizontalAlignment="Left" Margin="16,295,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="CameraHeight2" Value="{Binding Path=CharacterDetails.CameraHeight2.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="132,295,0,0" VerticalAlignment="Top" Width="142" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F5" Interval="0.01"  TextAlignment="Right" SourceUpdated="CameraHeight2_SourceUpdated" Height="28" FontSize="11.35" FontFamily="Sogoe UI"/>
-        <CheckBox IsChecked="{Binding Path=CharacterDetails.CameraYAMin.freeze}" Content="Cam Y Min:" HorizontalAlignment="Left" Margin="16,325,0,0" VerticalAlignment="Top" Height="28"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.CameraYAMin.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.CamYMin}}" HorizontalAlignment="Left" Margin="16,325,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="CamYMin" Value="{Binding Path=CharacterDetails.CameraYAMin.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="132,325,0,0" VerticalAlignment="Top" Width="142" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F5" Interval="0.01"  TextAlignment="Right" SourceUpdated="CamYMin_SourceUpdated" Height="28" FontSize="11.35" FontFamily="Sogoe UI"/>
-        <CheckBox IsChecked="{Binding Path=CharacterDetails.CameraYAMax.freeze}" Content="Cam Y Max:" HorizontalAlignment="Left" Margin="16,355,0,0" VerticalAlignment="Top" Height="28"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.CameraYAMax.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.CamYMax}}" HorizontalAlignment="Left" Margin="16,355,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="CamYMax" Value="{Binding Path=CharacterDetails.CameraYAMax.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="132,355,0,0" VerticalAlignment="Top" Width="142" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F5" Interval="0.01"  TextAlignment="Right" SourceUpdated="CamYMax_SourceUpdated" Height="28" FontSize="11.35" FontFamily="Sogoe UI"/>
-        <CheckBox  IsChecked="{Binding Path=CharacterDetails.CameraUpDown.freeze}" Content="Cam Up/Down:" HorizontalAlignment="Left" Margin="16,385,0,0" VerticalAlignment="Top" Height="28"/>
+        <CheckBox  IsChecked="{Binding Path=CharacterDetails.CameraUpDown.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.CamUpDown}}" HorizontalAlignment="Left" Margin="16,385,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="CamUpDown" Value="{Binding Path=CharacterDetails.CameraUpDown.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="132,385,0,0" VerticalAlignment="Top" Width="142" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F5" Interval="0.01"  TextAlignment="Right" SourceUpdated="CamUpDown_SourceUpdated" Height="28" FontSize="11.35" FontFamily="Sogoe UI"/>
-        <CheckBox  IsChecked="{Binding Path=CharacterDetails.CamAngleX.freeze}" Content="Cam Angle X:" HorizontalAlignment="Left" Margin="16,415,0,0" VerticalAlignment="Top" Height="28"/>
+        <CheckBox  IsChecked="{Binding Path=CharacterDetails.CamAngleX.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.CamAngleX}}" HorizontalAlignment="Left" Margin="16,415,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="CamAngleX" Value="{Binding Path=CharacterDetails.CamAngleX.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="132,415,0,0" VerticalAlignment="Top" Width="142" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F5" Interval="0.01"  TextAlignment="Right" SourceUpdated="CamAngleX_SourceUpdated" Height="28" FontSize="11.35" FontFamily="Sogoe UI"/>
-        <CheckBox  IsChecked="{Binding Path=CharacterDetails.CamAngleY.freeze}" Content="Cam Angle Y:" HorizontalAlignment="Left" Margin="16,445,0,0" VerticalAlignment="Top" Height="28"/>
+        <CheckBox  IsChecked="{Binding Path=CharacterDetails.CamAngleY.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.CamAngleY}}" HorizontalAlignment="Left" Margin="16,445,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="CamAngleY" Value="{Binding Path=CharacterDetails.CamAngleY.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="132,445,0,0" VerticalAlignment="Top" Width="142" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F5" Interval="0.01"  TextAlignment="Right" SourceUpdated="CamAngleY_SourceUpdated" Height="28" FontSize="11.35" FontFamily="Sogoe UI"/>
-        <Button x:Name="SaveCamView" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Save" HorizontalAlignment="Left" Margin="294,415,0,0" VerticalAlignment="Top" Width="60" Height="28" FontSize="12" Click="SaveCamAngle_Click" RenderTransformOrigin="0.5,0.5"/>
+        <Button x:Name="SaveCamView" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.SaveButton}}" HorizontalAlignment="Left" Margin="294,415,0,0" VerticalAlignment="Top" Width="60" Height="28" FontSize="12" Click="SaveCamAngle_Click" RenderTransformOrigin="0.5,0.5" Padding="0,4"/>
 
-        <Button x:Name="LoadCamView" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Load" HorizontalAlignment="Left" Margin="294,445,0,0" VerticalAlignment="Top" Width="60" Height="28" FontSize="12" Click="LoadCamAngle_Click" RenderTransformOrigin="0.5,0.5"/>
+        <Button x:Name="LoadCamView" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.LoadButton}}" HorizontalAlignment="Left" Margin="294,445,0,0" VerticalAlignment="Top" Width="60" Height="28" FontSize="12" Click="LoadCamAngle_Click" RenderTransformOrigin="0.5,0.5" Padding="0,4"/>
 
-        <Label Content="Brightness:" HorizontalAlignment="Left" Margin="410,55,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
+        <Label Content="{Binding Source={x:Static resx:UIStringsContent.Brightness}}" HorizontalAlignment="Left" Margin="410,55,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
         <Slider x:Name="BrightSlider" Value="{Binding Path=CharacterDetails.Brightness.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="488,55,0,0" VerticalAlignment="Top" Width="100" Height="28" Maximum="1" Minimum="-1" LargeChange="0.2" TickFrequency="0.1" IsSnapToTickEnabled="True" SourceUpdated="BrightSlider_SourceUpdated" TickPlacement="BottomRight"/>
         <mah:NumericUpDown x:Name="BrightUpDown" Value="{Binding Path=CharacterDetails.Brightness.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="593,55,0,0" VerticalAlignment="Top" Width="142" Maximum="1" Minimum="-1" Speedup="False" StringFormat="F5" Interval="0.1" SourceUpdated="BrightSlider_SourceUpdated" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Background="{x:Null}" Height="28" FontSize="11.35" FontFamily="Sogoe UI"/>
-        <Label Content="Exposure:" HorizontalAlignment="Left" Margin="410,85,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
+        <Label Content="{Binding Source={x:Static resx:UIStringsContent.Exposure}}" HorizontalAlignment="Left" Margin="410,85,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
         <Slider x:Name="ExpoSlider" Value="{Binding Path=CharacterDetails.Exposure.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="488,85,0,0" VerticalAlignment="Top" Width="100" Height="28" Maximum="1" Minimum="-1" LargeChange="0.2" TickFrequency="0.1" IsSnapToTickEnabled="True" SourceUpdated="ExpoSlider_SourceUpdated" TickPlacement="BottomRight"/>
         <mah:NumericUpDown x:Name="ExpoUpDown" Value="{Binding Path=CharacterDetails.Exposure.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="593,85,0,0" VerticalAlignment="Top" Width="142" Minimum="-1" Maximum="1" Speedup="False" StringFormat="F5" Interval="0.1" SourceUpdated="ExpoSlider_SourceUpdated" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" BorderThickness="0,0,0,1" Background="{x:Null}" Height="28" FontSize="11.35" FontFamily="Sogoe UI"/>
-        <Label Content="Contrast:" HorizontalAlignment="Left" Margin="410,115,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
+        <Label Content="{Binding Source={x:Static resx:UIStringsContent.Contrast}}" HorizontalAlignment="Left" Margin="410,115,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
         <Slider x:Name="ContrastSlider" Value="{Binding Path=CharacterDetails.Contrast.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="488,115,0,0" VerticalAlignment="Top" Width="100" Height="28" Maximum="1" Minimum="-1" LargeChange="0.2" TickFrequency="0.1" IsSnapToTickEnabled="True" SourceUpdated="ContrastSlider_SourceUpdated" TickPlacement="BottomRight"/>
         <mah:NumericUpDown x:Name="ContrastUpDown" Value="{Binding Path=CharacterDetails.Contrast.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="593,115,0,0" VerticalAlignment="Top" Width="142" Minimum="-1" Maximum="1" Speedup="False" StringFormat="F5" Interval="0.1" SourceUpdated="ContrastSlider_SourceUpdated" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" BorderThickness="0,0,0,1" Background="{x:Null}" Height="28" FontSize="11.35" FontFamily="Sogoe UI"/>
-        <Label Content="Gamma:" HorizontalAlignment="Left" Margin="410,145,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
+        <Label Content="{Binding Source={x:Static resx:UIStringsContent.Gamma}}" HorizontalAlignment="Left" Margin="410,145,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
         <Slider x:Name="GammaSlider" Value="{Binding Path=CharacterDetails.Gamma.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="488,145,0,0" VerticalAlignment="Top" Width="100" Height="28" Maximum="1" Minimum="-1" LargeChange="0.2" TickFrequency="0.1" IsSnapToTickEnabled="True" SourceUpdated="GammaSlider_SourceUpdated" TickPlacement="BottomRight"/>
         <mah:NumericUpDown x:Name="GammaUpDown" Value="{Binding Path=CharacterDetails.Gamma.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="593,145,0,0" VerticalAlignment="Top" Width="142" Minimum="-1" Maximum="1" Speedup="False" StringFormat="F5" Interval="0.1" SourceUpdated="GammaSlider_SourceUpdated" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" BorderThickness="0,0,0,1" Background="{x:Null}" Height="28" FontSize="11.35" FontFamily="Sogoe UI"/>
-        <Label Content="Red:" HorizontalAlignment="Left" Margin="410,175,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
+        <Label Content="{Binding Source={x:Static resx:UIStringsContent.Red}}" HorizontalAlignment="Left" Margin="410,175,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
         <Slider x:Name="RedSlider" Value="{Binding Path=CharacterDetails.GRed.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="488,175,0,0" VerticalAlignment="Top" Width="100" Height="28" Maximum="1" Minimum="-1" LargeChange="0.2" TickFrequency="0.1" IsSnapToTickEnabled="True" SourceUpdated="RedSlider_SourceUpdated" TickPlacement="BottomRight"/>
         <mah:NumericUpDown x:Name="RedUpDown" Value="{Binding Path=CharacterDetails.GRed.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="593,175,0,0" VerticalAlignment="Top" Width="142" Minimum="-1" Maximum="1" Speedup="False" StringFormat="F5" Interval="0.1" SourceUpdated="RedSlider_SourceUpdated" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" BorderThickness="0,0,0,1" Background="{x:Null}" Height="28" FontSize="11.35" FontFamily="Sogoe UI"/>
-        <Label Content="Green:" HorizontalAlignment="Left" Margin="410,205,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
+        <Label Content="{Binding Source={x:Static resx:UIStringsContent.Green}}" HorizontalAlignment="Left" Margin="410,205,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
         <Slider x:Name="GreenSlider" Value="{Binding Path=CharacterDetails.GGreens.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="488,205,0,0" VerticalAlignment="Top" Width="100" Height="28" Maximum="1" Minimum="-1" LargeChange="0.2" TickFrequency="0.1" IsSnapToTickEnabled="True" SourceUpdated="GreenSlider_SourceUpdated" TickPlacement="BottomRight"/>
         <mah:NumericUpDown x:Name="GreenUpDown" Value="{Binding Path=CharacterDetails.GGreens.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="593,205,0,0" VerticalAlignment="Top" Width="142" Minimum="-1" Maximum="1" Speedup="False" StringFormat="F5" Interval="0.1" SourceUpdated="GreenSlider_SourceUpdated" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" BorderThickness="0,0,0,1" Background="{x:Null}" Height="28" FontSize="11.35" FontFamily="Sogoe UI"/>
-        <Label Content="Blue:" HorizontalAlignment="Left" Margin="410,235,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
+        <Label Content="{Binding Source={x:Static resx:UIStringsContent.Blue}}" HorizontalAlignment="Left" Margin="410,235,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
         <Slider x:Name="BlueSlider" Value="{Binding Path=CharacterDetails.GBlue.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="488,235,0,0" VerticalAlignment="Top" Width="100" Height="28" Maximum="1" Minimum="-1" LargeChange="0.2" TickFrequency="0.1" IsSnapToTickEnabled="True" SourceUpdated="BlueSlider_SourceUpdated" TickPlacement="BottomRight"/>
         <mah:NumericUpDown x:Name="BlueUpDown" Value="{Binding Path=CharacterDetails.GBlue.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="593,235,0,0" VerticalAlignment="Top" Width="142" Minimum="-1" Maximum="1" Speedup="False" StringFormat="F5" Interval="0.1" SourceUpdated="BlueSlider_SourceUpdated" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" BorderThickness="0,0,0,1" Background="{x:Null}" Height="28" FontSize="11.35" FontFamily="Sogoe UI"/>
-        <Label Content="HDR:" HorizontalAlignment="Left" Margin="410,265,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
+        <Label Content="{Binding Source={x:Static resx:UIStringsContent.HDR}}" HorizontalAlignment="Left" Margin="410,265,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
         <Slider x:Name="HDRSlider" Value="{Binding Path=CharacterDetails.HDR.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="488,265,0,0" VerticalAlignment="Top" Width="100" Height="28" Maximum="1" Minimum="-1" LargeChange="0.2" TickFrequency="0.1" IsSnapToTickEnabled="True" SourceUpdated="HDRSlider_SourceUpdated" TickPlacement="BottomRight"/>
         <mah:NumericUpDown x:Name="HDRUpDown" HorizontalAlignment="Left" Margin="593,265,0,0" VerticalAlignment="Top" Width="142" Minimum="-1" Maximum="1" Speedup="False" StringFormat="F5" Interval="0.1" Value="{Binding Path=CharacterDetails.HDR.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" NumericInputMode="Decimal" SourceUpdated="HDRSlider_SourceUpdated" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" BorderThickness="0,0,0,1" Background="{x:Null}" Height="28" FontSize="11.35" FontFamily="Sogoe UI"/>
-        <Label Content="S-HDR:" HorizontalAlignment="Left" Margin="410,295,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
+        <Label Content="{Binding Source={x:Static resx:UIStringsContent.SHDR}}" HorizontalAlignment="Left" Margin="410,295,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
         <Slider x:Name="SHDRSlider" Value="{Binding Path=CharacterDetails.SHDR.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="488,295,0,0" VerticalAlignment="Top" Width="100" Height="28" Maximum="1" Minimum="-1" LargeChange="0.2" TickFrequency="0.1" IsSnapToTickEnabled="True" SourceUpdated="SHDRSlider_SourceUpdated" TickPlacement="BottomRight"/>
         <mah:NumericUpDown x:Name="SHDRUpDown" Value="{Binding Path=CharacterDetails.SHDR.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="593,295,0,0" VerticalAlignment="Top" Width="142" Minimum="-1" Maximum="1" Speedup="False" StringFormat="F5" Interval="0.1" SourceUpdated="SHDRSlider_SourceUpdated" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" BorderThickness="0,0,0,1" Background="{x:Null}" Height="28" FontSize="11.35" FontFamily="Sogoe UI"/>
-        <Label Content="Filmic:" HorizontalAlignment="Left" Margin="745,85,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
+        <Label Content="{Binding Source={x:Static resx:UIStringsContent.Filmic}}" HorizontalAlignment="Left" Margin="745,85,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
         <Slider x:Name="FilmicSlider" Value="{Binding Path=CharacterDetails.Filmic.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="848,85,0,0" VerticalAlignment="Top" Width="100" Height="28" Maximum="1" Minimum="-1" LargeChange="0.2" TickFrequency="0.1" IsSnapToTickEnabled="True" SourceUpdated="FilmicSlider_SourceUpdated" TickPlacement="BottomRight"/>
         <mah:NumericUpDown x:Name="FilmicUpDown" Value="{Binding Path=CharacterDetails.Filmic.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="951,85,0,0" VerticalAlignment="Top" Width="146" Minimum="-1" Maximum="1" Speedup="False" StringFormat="F5" Interval="0.1" SourceUpdated="FilmicSlider_SourceUpdated" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" BorderThickness="0,0,0,1" Background="{x:Null}" Height="28" FontSize="11.35" FontFamily="Sogoe UI"/>
-        <Label Content="Colorfulness:" HorizontalAlignment="Left" Margin="744,145,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
+        <Label Content="{Binding Source={x:Static resx:UIStringsContent.Colorfulness}}" HorizontalAlignment="Left" Margin="744,145,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
         <Slider x:Name="ColorfulnessSlider" Value="{Binding Path=CharacterDetails.Colorfulness.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="848,145,0,0" VerticalAlignment="Top" Width="100" Height="28" Maximum="1" Minimum="-1" LargeChange="0.2" TickFrequency="0.1" IsSnapToTickEnabled="True" SourceUpdated="ColorfulnessSlider_SourceUpdated" TickPlacement="BottomRight"/>
         <mah:NumericUpDown x:Name="ColorfulnessUpDown" Value="{Binding Path=CharacterDetails.Colorfulness.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="951,145,0,0" VerticalAlignment="Top" Width="146" Minimum="-1" Maximum="1" Speedup="False" StringFormat="F5" Interval="0.1" SourceUpdated="ColorfulnessSlider_SourceUpdated" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" BorderThickness="0,0,0,1" Background="{x:Null}" Height="28" FontSize="11.35" FontFamily="Sogoe UI"/>
-        <Label Content="Colorfulness 2:" HorizontalAlignment="Left" Margin="744,175,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
+        <Label Content="{Binding Source={x:Static resx:UIStringsContent.Colorfulness2}}" HorizontalAlignment="Left" Margin="744,175,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
         <Slider x:Name="Colorfulness2Slider" Value="{Binding Path=CharacterDetails.Colorfulnesss2.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="848,175,0,0" VerticalAlignment="Top" Width="100" Height="28" Maximum="1" Minimum="-1" LargeChange="0.2" TickFrequency="0.1" IsSnapToTickEnabled="True" SourceUpdated="Colorfulness2Slider_SourceUpdated" TickPlacement="BottomRight"/>
         <mah:NumericUpDown x:Name="Colorfulness2UpDown" Value="{Binding Path=CharacterDetails.Colorfulnesss2.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="951,175,0,0" VerticalAlignment="Top" Width="146" Minimum="-1" Maximum="1" Speedup="False" StringFormat="F5" Interval="0.1" SourceUpdated="Colorfulness2Slider_SourceUpdated" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" BorderThickness="0,0,0,1" Background="{x:Null}" Height="28" FontSize="11.35" FontFamily="Sogoe UI"/>
-        <Label Content="Contrast 2:" HorizontalAlignment="Left" Margin="744,115,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
+        <Label Content="{Binding Source={x:Static resx:UIStringsContent.Contrast2}}" HorizontalAlignment="Left" Margin="744,115,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
         <Slider x:Name="Contrast2Slider" Value="{Binding Path=CharacterDetails.Contrast2.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="848,115,0,0" VerticalAlignment="Top" Width="100" Height="28" Maximum="1" Minimum="-1" LargeChange="0.2" TickFrequency="0.1" IsSnapToTickEnabled="True" SourceUpdated="Contrast2Slider_SourceUpdated" TickPlacement="BottomRight"/>
         <mah:NumericUpDown x:Name="Contrast2UpDown" Value="{Binding Path=CharacterDetails.Contrast2.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="951,115,0,0" VerticalAlignment="Top" Width="146" Minimum="-1" Maximum="1" Speedup="False" StringFormat="F5" Interval="0.1" SourceUpdated="Contrast2Slider_SourceUpdated" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" BorderThickness="0,0,0,1" Background="{x:Null}" Height="28" FontSize="11.35" FontFamily="Sogoe UI"/>
-        <Label Content="Vibrance:" HorizontalAlignment="Left" Margin="744,55,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
+        <Label Content="{Binding Source={x:Static resx:UIStringsContent.Vibrance}}" HorizontalAlignment="Left" Margin="744,55,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
         <Slider x:Name="VibranceSlider" Value="{Binding Path=CharacterDetails.Vibrance.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="848,55,0,0" VerticalAlignment="Top" Width="100" Height="28" Maximum="1" Minimum="-1" LargeChange="0.2" TickFrequency="0.1" IsSnapToTickEnabled="True" SourceUpdated="VibranceSlider_SourceUpdated" TickPlacement="BottomRight"/>
         <mah:NumericUpDown x:Name="VibranceUpDown" Value="{Binding Path=CharacterDetails.Vibrance.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="951,55,0,0" VerticalAlignment="Top" Width="146" Minimum="-1" Maximum="1" Speedup="False" StringFormat="F5" Interval="0.1" SourceUpdated="VibranceSlider_SourceUpdated" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" BorderThickness="0,0,0,1" Background="{x:Null}" Height="28" FontSize="11.35" FontFamily="Sogoe UI"/>
-        <ComboBox SelectedIndex="{Binding Path=CharacterDetails.FilterAoB.Selected}" materialDesign:HintAssist.Hint="Filters" Style="{StaticResource MaterialDesignFloatingHintComboBox}" MaxDropDownHeight="150" x:Name="Filters" HorizontalAlignment="Left" Margin="744,205,0,0" VerticalAlignment="Top" Width="205" IsTabStop="False" RenderTransformOrigin="0.5,0.577" FontSize="16" SelectionChanged="Filters_SelectionChanged" Height="40" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
-            <ComboBoxItem Content="Normal"/>
-            <ComboBoxItem Content="Sepia 1"/>
-            <ComboBoxItem Content="Sepia 2"/>
-            <ComboBoxItem Content="Monochrome 1"/>
-            <ComboBoxItem Content="Monochrome 2"/>
-            <ComboBoxItem Content="Bright 1"/>
-            <ComboBoxItem Content="Bright 2"/>
-            <ComboBoxItem Content="Bright 3"/>
-            <ComboBoxItem Content="Bright 4"/>
-            <ComboBoxItem Content="Posterization 1"/>
-            <ComboBoxItem Content="Posterization 2"/>
-            <ComboBoxItem Content="Colored Pencil"/>
-            <ComboBoxItem Content="Pencil"/>
-            <ComboBoxItem Content="Colored Marker 1"/>
-            <ComboBoxItem Content="Colored Marker 2"/>
-            <ComboBoxItem Content="Pastel 1"/>
-            <ComboBoxItem Content="Pastel 2"/>
-            <ComboBoxItem Content="Pastel 3"/>
-            <ComboBoxItem Content="Monotone 1"/>
-            <ComboBoxItem Content="Monotone 2"/>
-            <ComboBoxItem Content="Monotone 3"/>
-            <ComboBoxItem Content="Echo"/>
-            <ComboBoxItem Content="Aetherometer"/>
-            <ComboBoxItem Content="Strengthened Effects"/>
+        <ComboBox SelectedIndex="{Binding Path=CharacterDetails.FilterAoB.Selected}" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.Filters}}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" MaxDropDownHeight="150" x:Name="Filters" HorizontalAlignment="Left" Margin="744,205,0,0" VerticalAlignment="Top" Width="205" IsTabStop="False" RenderTransformOrigin="0.5,0.577" FontSize="16" SelectionChanged="Filters_SelectionChanged" Height="40" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Normal}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Sepia1}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Sepia2}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Monochrome1}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Monochrome2}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Bright1}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Bright2}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Bright3}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Bright4}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Posterization1}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Posterization2}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.ColoredPencil}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Pencil}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.ColoredMarker1}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.ColoredMarker2}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Pastel1}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Pastel2}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Pastel3}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Monotone1}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Monotone2}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Monotone3}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Echo}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.Aetherometer}}"/>
+            <ComboBoxItem Content="{Binding Source={x:Static resx:MiscStrings.StrengthenedEffects}}"/>
         </ComboBox>
-        <Label Content="Save" HorizontalAlignment="Left" Margin="976.836,299,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <Label Content="Load" HorizontalAlignment="Left" Margin="1038.836,299,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <CheckBox x:Name="EnableEditing" Content="Enable Editing" HorizontalAlignment="Left" Margin="744,250,0,0" VerticalAlignment="Top" FontSize="13.25" Checked="EnableEditing_Checked" Unchecked="EnableEditing_Unchecked" Height="28"/>
-        <CheckBox x:Name="FreezeAlll" Content="Freeze All" HorizontalAlignment="Left" Margin="744,280,0,0" VerticalAlignment="Top" FontSize="13.25" Unchecked="FreezeAlll_Unchecked" Checked="FreezeAlll_Checked" Height="28"/>
+        <Label Content="{Binding Source={x:Static resx:UIStringsContent.SaveButton}}" HorizontalAlignment="Left" Margin="976.836,299,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="{Binding Source={x:Static resx:UIStringsContent.LoadButton}}" HorizontalAlignment="Left" Margin="1038.836,299,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <CheckBox x:Name="EnableEditing" Content="{Binding Source={x:Static resx:UIStringsContent.EnableEditing}}" HorizontalAlignment="Left" Margin="744,250,0,0" VerticalAlignment="Top" FontSize="13.25" Checked="EnableEditing_Checked" Unchecked="EnableEditing_Unchecked" Height="28"/>
+        <CheckBox x:Name="FreezeAlll" Content="{Binding Source={x:Static resx:UIStringsContent.FreezeAll}}" HorizontalAlignment="Left" Margin="744,280,0,0" VerticalAlignment="Top" FontSize="13.25" Unchecked="FreezeAlll_Unchecked" Checked="FreezeAlll_Checked" Height="28"/>
         <Button x:Name="SaveButtonX" HorizontalAlignment="Left" Margin="972.837,248,0,0" VerticalAlignment="Top" Width="51" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" ToolTip="Save" Height="50" Padding="0" Click="SaveButtonX_Click">
             <materialDesign:PackIcon Kind="ContentSave" Height="24" Width="24">
             </materialDesign:PackIcon>
@@ -126,170 +136,42 @@
         <Button x:Name="Load_Button" HorizontalAlignment="Left" Margin="1035.837,248,0,0" VerticalAlignment="Top" Width="51" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" ToolTip="Load" Height="50" Padding="0" Click="Load_Button_Click">
             <materialDesign:PackIcon Kind="Download" Height="24" Width="24"/>
         </Button>
-        <CheckBox IsChecked="{Binding Path=CharacterDetails.Weather.freeze}" Content="Weather:" ToolTip="Controls the current weather for your zone. &#xD;&#xA;This method uses natural transitions and may a bit of time to take effect." HorizontalAlignment="Left" Margin="410,421,0,0" VerticalAlignment="Top" Height="28"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.Weather.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.Weather}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.WeatherToolTip}}" HorizontalAlignment="Left" Margin="410,421,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="Weather" Maximum="140" Minimum="1" Value="{Binding Path=CharacterDetails.Weather.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="530,421,0,0" VerticalAlignment="Top" Width="142" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Interval="1" TextAlignment="Right" NumericInputMode="Numbers" SourceUpdated="Weather_SourceUpdated" Speedup="False" Height="28" FontSize="11.35" FontFamily="Sogoe UI"/>
-        <ComboBox x:Name="WeatherBox" materialDesign:HintAssist.Hint="Weather Select" HorizontalAlignment="Left" Margin="688,421,0,0" VerticalAlignment="Top" Width="142" SelectionChanged="WeatherBox_SelectionChanged" PreviewMouseDown="WeatherBox_PreviewMouseDown" Height="28" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+        <ComboBox x:Name="WeatherBox" ItemTemplate="{StaticResource cmbTemplate}" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.WeatherSelect}}" HorizontalAlignment="Left" Margin="688,421,0,0" VerticalAlignment="Top" Width="142" SelectionChanged="WeatherBox_SelectionChanged" PreviewMouseDown="WeatherBox_PreviewMouseDown" Height="28" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Padding="0">
             <ComboBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel />
                 </ItemsPanelTemplate>
             </ComboBox.ItemsPanel>
         </ComboBox>
-        <Button Content="Refresh" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="926,421,0,0" VerticalAlignment="Top" Width="165" Click="Button_Click" Height="28"/>
+        <Button Content="{Binding Source={x:Static resx:UIStringsContent.RefreshButton}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="926,421,0,0" VerticalAlignment="Top" Width="165" Click="Button_Click" Height="28" Padding="0,4"/>
 
-        <CheckBox IsChecked="{Binding CharacterDetails.ForceWeather.freeze}" Content="Force Weather:" ToolTip="Controls the current weather for your zone.&#xD;&#xA;This method uses instant transitions, and will change as soon as you select a weather from the drop down menu." HorizontalAlignment="Left" Margin="410,454,0,0" VerticalAlignment="Top" Height="28"/>
-        <ComboBox x:Name="ForceWeatherBox" SelectedValuePath="Tag" SelectedValue="{Binding CharacterDetails.ForceWeather.value}" HorizontalAlignment="Left" Margin="530,454,0,0" VerticalAlignment="Top" Width="142" Height="28" FontSize="11.35" SelectedIndex="0" SelectionChanged="ForceWeatherBox_SelectionChanged" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
-            <ComboBoxItem Content="None" Tag="0" Background="{x:Null}"/>
-            <ComboBoxItem Content="Clear Skies" Tag="257" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="514" Background="{x:Null}"/>
-            <ComboBoxItem Content="Clouds" Tag="771" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fog" Tag="1028" Background="{x:Null}"/>
-            <ComboBoxItem Content="Wind" Tag="1285" Background="{x:Null}"/>
-            <ComboBoxItem Content="Gales" Tag="1542" Background="{x:Null}"/>
-            <ComboBoxItem Content="Rain" Tag="1799" Background="{x:Null}"/>
-            <ComboBoxItem Content="Showers" Tag="2056" Background="{x:Null}"/>
-            <ComboBoxItem Content="Thunder" Tag="2313" Background="{x:Null}"/>
-            <ComboBoxItem Content="Thunderstorms" Tag="2570" Background="{x:Null}"/>
-            <ComboBoxItem Content="Dust Storms" Tag="2827" Background="{x:Null}"/>
-            <ComboBoxItem Content="Sandstorms" Tag="3084" Background="{x:Null}"/>
-            <ComboBoxItem Content="Hot Spells" Tag="3341" Background="{x:Null}"/>
-            <ComboBoxItem Content="Heat Waves" Tag="3598" Background="{x:Null}"/>
-            <ComboBoxItem Content="Snow" Tag="3855" Background="{x:Null}"/>
-            <ComboBoxItem Content="Blizzards" Tag="4112" Background="{x:Null}"/>
-            <ComboBoxItem Content="Gloom" Tag="4369" Background="{x:Null}"/>
-            <ComboBoxItem Content="Auroras" Tag="4626" Background="{x:Null}"/>
-            <ComboBoxItem Content="Darkness" Tag="4883" Background="{x:Null}"/>
-            <ComboBoxItem Content="Tension" Tag="5140" Background="{x:Null}"/>
-            <ComboBoxItem Content="Clouds" Tag="5397" Background="{x:Null}"/>
-            <ComboBoxItem Content="Storm Clouds" Tag="5654" Background="{x:Null}"/>
-            <ComboBoxItem Content="Rough Seas" Tag="5911" Background="{x:Null}"/>
-            <ComboBoxItem Content="Rough Seas" Tag="6168" Background="{x:Null}"/>
-            <ComboBoxItem Content="Louring" Tag="6425" Background="{x:Null}"/>
-            <ComboBoxItem Content="Heat Waves" Tag="6682" Background="{x:Null}"/>
-            <ComboBoxItem Content="Gloom" Tag="6939" Background="{x:Null}"/>
-            <ComboBoxItem Content="Gales" Tag="7196" Background="{x:Null}"/>
-            <ComboBoxItem Content="Eruptions" Tag="7453" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="7710" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="7967" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="8224" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="8481" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="8738" Background="{x:Null}"/>
-            <ComboBoxItem Content="Irradiance" Tag="8995" Background="{x:Null}"/>
-            <ComboBoxItem Content="Core Radiation" Tag="9252" Background="{x:Null}"/>
-            <ComboBoxItem Content="Core Radiation" Tag="9509" Background="{x:Null}"/>
-            <ComboBoxItem Content="Core Radiation" Tag="9766" Background="{x:Null}"/>
-            <ComboBoxItem Content="Core Radiation" Tag="10023" Background="{x:Null}"/>
-            <ComboBoxItem Content="Sheif Clouds" Tag="10280" Background="{x:Null}"/>
-            <ComboBoxItem Content="Sheif Clouds" Tag="10537" Background="{x:Null}"/>
-            <ComboBoxItem Content="Sheif Clouds" Tag="10794" Background="{x:Null}"/>
-            <ComboBoxItem Content="Sheif Clouds" Tag="11051" Background="{x:Null}"/>
-            <ComboBoxItem Content="Oppression" Tag="11308" Background="{x:Null}"/>
-            <ComboBoxItem Content="Oppression" Tag="11565" Background="{x:Null}"/>
-            <ComboBoxItem Content="Oppression" Tag="11822" Background="{x:Null}"/>
-            <ComboBoxItem Content="Oppression" Tag="12079" Background="{x:Null}"/>
-            <ComboBoxItem Content="Oppression" Tag="12336" Background="{x:Null}"/>
-            <ComboBoxItem Content="Umbral Wind" Tag="12593" Background="{x:Null}"/>
-            <ComboBoxItem Content="Umbral Static" Tag="12850" Background="{x:Null}"/>
-            <ComboBoxItem Content="Smoke" Tag="13107" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="13364" Background="{x:Null}"/>
-            <ComboBoxItem Content="Royal Levin" Tag="13621" Background="{x:Null}"/>
-            <ComboBoxItem Content="Hyperelectricity" Tag="13878" Background="{x:Null}"/>
-            <ComboBoxItem Content="Royal Levin" Tag="14135" Background="{x:Null}"/>
-            <ComboBoxItem Content="Oppression" Tag="14392" Background="{x:Null}"/>
-            <ComboBoxItem Content="Thunder" Tag="14649" Background="{x:Null}"/>
-            <ComboBoxItem Content="Thunder" Tag="14906" Background="{x:Null}"/>
-            <ComboBoxItem Content="Cutscene" Tag="15163" Background="{x:Null}"/>
-            <ComboBoxItem Content="Multiplicity" Tag="15420" Background="{x:Null}"/>
-            <ComboBoxItem Content="Multiplicity" Tag="15677" Background="{x:Null}"/>
-            <ComboBoxItem Content="Rain" Tag="15934" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="16191" Background="{x:Null}"/>
-            <ComboBoxItem Content="Rain" Tag="16448" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="16705" Background="{x:Null}"/>
-            <ComboBoxItem Content="Dragonstorms" Tag="16962" Background="{x:Null}"/>
-            <ComboBoxItem Content="Dragonstorms" Tag="17219" Background="{x:Null}"/>
-            <ComboBoxItem Content="Subterrain" Tag="17476" Background="{x:Null}"/>
-            <ComboBoxItem Content="Concordance" Tag="17733" Background="{x:Null}"/>
-            <ComboBoxItem Content="Concordance" Tag="17990" Background="{x:Null}"/>
-            <ComboBoxItem Content="Beyond Time" Tag="18247" Background="{x:Null}"/>
-            <ComboBoxItem Content="Beyond Time" Tag="18504" Background="{x:Null}"/>
-            <ComboBoxItem Content="Beyond Time" Tag="18761" Background="{x:Null}"/>
-            <ComboBoxItem Content="Demonic Infinity" Tag="19018" Background="{x:Null}"/>
-            <ComboBoxItem Content="Demonic Infinity" Tag="19275" Background="{x:Null}"/>
-            <ComboBoxItem Content="Demonic Infinity" Tag="19532" Background="{x:Null}"/>
-            <ComboBoxItem Content="Dimensional Disruption" Tag="19789" Background="{x:Null}"/>
-            <ComboBoxItem Content="Dimensional Disruption" Tag="20046" Background="{x:Null}"/>
-            <ComboBoxItem Content="Dimensional Disruption" Tag="20303" Background="{x:Null}"/>
-            <ComboBoxItem Content="Revelstorms" Tag="20560" Background="{x:Null}"/>
-            <ComboBoxItem Content="Revelstorms" Tag="20817" Background="{x:Null}"/>
-            <ComboBoxItem Content="Eternal Bliss" Tag="21074" Background="{x:Null}"/>
-            <ComboBoxItem Content="Eternal Bliss" Tag="21331" Background="{x:Null}"/>
-            <ComboBoxItem Content="Wyrmstorms" Tag="21588" Background="{x:Null}"/>
-            <ComboBoxItem Content="Wyrmstorms" Tag="21845" Background="{x:Null}"/>
-            <ComboBoxItem Content="Revelstorms" Tag="22102" Background="{x:Null}"/>
-            <ComboBoxItem Content="Quicklevin" Tag="22359" Background="{x:Null}"/>
-            <ComboBoxItem Content="Thunder" Tag="22616" Background="{x:Null}"/>
-            <ComboBoxItem Content="Dimensonal Disruption" Tag="22873" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="23130" Background="{x:Null}"/>
-            <ComboBoxItem Content="Clear Skies" Tag="23387" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="23130" Background="{x:Null}"/>
-            <ComboBoxItem Content="White Cyclones" Tag="23644" Background="{x:Null}"/>
-            <ComboBoxItem Content="White Cyclones" Tag="23901" Background="{x:Null}"/>
-            <ComboBoxItem Content="White Cyclones" Tag="24158" Background="{x:Null}"/>
-            <ComboBoxItem Content="Ultimania" Tag="24415" Background="{x:Null}"/>
-            <ComboBoxItem Content="White Cyclones" Tag="24672" Background="{x:Null}"/>
-            <ComboBoxItem Content="Moonlight" Tag="24929" Background="{x:Null}"/>
-            <ComboBoxItem Content="Moonlight" Tag="25186" Background="{x:Null}"/>
-            <ComboBoxItem Content="Moonlight" Tag="25443" Background="{x:Null}"/>
-            <ComboBoxItem Content="Moonlight" Tag="25700" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="25957" Background="{x:Null}"/>
-            <ComboBoxItem Content="Scarlet" Tag="26214" Background="{x:Null}"/>
-            <ComboBoxItem Content="Scarlet" Tag="26471" Background="{x:Null}"/>
-            <ComboBoxItem Content="Scarlet" Tag="26728" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="26985" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="27242" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="27499" Background="{x:Null}"/>
-            <ComboBoxItem Content="Fair Skies" Tag="27756" Background="{x:Null}"/>
-            <ComboBoxItem Content="Flames" Tag="28013" Background="{x:Null}"/>
-            <ComboBoxItem Content="Tsunamis" Tag="28270" Background="{x:Null}"/>
-            <ComboBoxItem Content="Cyclones" Tag="28527" Background="{x:Null}"/>
-            <ComboBoxItem Content="Geostorms" Tag="28784" Background="{x:Null}"/>
-            <ComboBoxItem Content="True Blue" Tag="29041" Background="{x:Null}"/>
-            <ComboBoxItem Content="True Blue" Tag="29298" Background="{x:Null}"/>
-            <ComboBoxItem Content="True Blue" Tag="29555" Background="{x:Null}"/>
-            <ComboBoxItem Content="Umbral Turbulence" Tag="29812" Background="{x:Null}"/>
-            <ComboBoxItem Content="True Blue" Tag="30069" Background="{x:Null}"/>
-            <ComboBoxItem Content="Everlasting Light" Tag="30326" Background="{x:Null}"/>
-            <ComboBoxItem Content="Gales" Tag="30583" Background="{x:Null}"/>
-            <ComboBoxItem Content="Termination" Tag="30840" Background="{x:Null}"/>
-            <ComboBoxItem Content="Termination" Tag="31097" Background="{x:Null}"/>
-            <ComboBoxItem Content="Dreams" Tag="31354" Background="{x:Null}"/>
-            <ComboBoxItem Content="Dreams" Tag="31611" Background="{x:Null}"/>
-            <ComboBoxItem Content="Dreams" Tag="31868" Background="{x:Null}"/>
-            <ComboBoxItem Content="Brilliance" Tag="32125" Background="{x:Null}"/>
-            <ComboBoxItem Content="Brilliance" Tag="32382" Background="{x:Null}"/>
-            <ComboBoxItem Content="Termination" Tag="32639" Background="{x:Null}"/>
-            <ComboBoxItem Content="Termination" Tag="32896" Background="{x:Null}"/>
-            <ComboBoxItem Content="Everlasting Light" Tag="33153" Background="{x:Null}"/>
-            <ComboBoxItem Content="Eruptions" Tag="33410" Background="{x:Null}"/>
-            <ComboBoxItem Content="Termination" Tag="33667" Background="{x:Null}"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.ForceWeather.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.WeatherForce}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.WeatherForceToolTip}}" HorizontalAlignment="Left" Margin="410,454,0,0" VerticalAlignment="Top" Height="28"/>
+        <ComboBox x:Name="ForceWeatherBox" ItemTemplate="{StaticResource cmbTemplate}" SelectedValuePath="Key" SelectedValue="{Binding CharacterDetails.ForceWeather.value}" HorizontalAlignment="Left" Margin="530,454,0,0" VerticalAlignment="Top" Width="142" Height="28" FontSize="11.35" SelectionChanged="ForceWeatherBox_SelectionChanged" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Padding="0">
+            <ComboBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </ComboBox.ItemsPanel>
         </ComboBox>
 
         <Slider x:Name="Timexd" Value="{Binding Path=CharacterDetails.TimeControl.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="677,359,0,0" VerticalAlignment="Top" Width="234" Maximum="90000" SmallChange="1" Interval="1" Height="28" SourceUpdated="Timexd_SourceUpdated" Minimum="-90000"/>
-        <Button x:Name="TimeButton" Content="Default Time" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="926,355,0,0" VerticalAlignment="Top" Width="165" Height="28" FontSize="12" Click="TimeButton_Click"/>
+        <Button x:Name="TimeButton" Content="{Binding Source={x:Static resx:UIStringsContent.DefaultTime}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="926,355,0,0" VerticalAlignment="Top" Width="165" Height="28" FontSize="12" Click="TimeButton_Click" Padding="0,4"/>
         <mah:NumericUpDown x:Name="TimeControlUpDown" Value="{Binding Path=CharacterDetails.TimeControl.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="530,355,0,0" VerticalAlignment="Top" Width="142" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Interval="1"  TextAlignment="Right" SourceUpdated="Timexd_SourceUpdated" NumericInputMode="Numbers" Maximum="2147483647" Minimum="-2147483648" FontSize="11.35" FontFamily="Sogoe UI"/>
-        <CheckBox Content="Time Control:" IsChecked="{Binding Path=CharacterDetails.TimeControl.freeze}" ToolTip="Adjusts the current time for the zone. &#xD;&#xA;&#x2022; Using Time Control in GPose while frozen will gradually cycle the phases of the Moon." Checked="TimeButtonLock_Checked" Unchecked="TimeButtonLock_Unchecked" HorizontalAlignment="Left" Margin="410,355,0,0" VerticalAlignment="Top" Height="28"/>
+        <CheckBox Content="{Binding Source={x:Static resx:UIStringsContent.TimeControl}}" IsChecked="{Binding Path=CharacterDetails.TimeControl.freeze}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.TimeControlToolTip}}" Checked="TimeButtonLock_Checked" Unchecked="TimeButtonLock_Unchecked" HorizontalAlignment="Left" Margin="410,355,0,0" VerticalAlignment="Top" Height="28"/>
         <TextBox x:Name="BGMTEXT" Style="{StaticResource MaterialDesignTextBox}" Margin="530,388,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="142" TextAlignment="Left" PreviewTextInput="DigitCheckInput" Text="0" Height="28" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" FontSize="11.35" Padding="5,0,0,0"/>
-        <Button x:Name="ApplyButton" Content="Apply" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="1011,388,0,0" VerticalAlignment="Top" Width="80" Click="ApplyButton_Click" Height="28"/>
-        <ToggleButton x:Name="RenderButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding Path=CharacterDetails.CharacterRender.Activated}" ToolTip="Render Toggle Switch" Margin="878,485,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"  IsTabStop="False" Checked="RenderButton_Checked" Unchecked="RenderButton_Unchecked" />
-        <Label Content="Remove Actor Render Limit:" HorizontalAlignment="Left" Margin="688,485,0,0" VerticalAlignment="Top" FontSize="14" Height="28"/>
-        <Button x:Name="Renda" Content="Render Cycle" HorizontalAlignment="Left" Margin="926,485,0,0" VerticalAlignment="Top" Width="165" Height="28" Click="Renda_Click"/>
-        <Button x:Name="SearchBGM" Content="View" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="926,388,0,0" VerticalAlignment="Top" Width="80" Click="SearchBGM_Click" Height="28"/>
-        <CheckBox IsChecked="{Binding Path=CharacterDetails.MusicBGM.freeze}" x:Name="BGMCheckBox" Content="Music:" HorizontalAlignment="Left" Margin="411,388,0,0" VerticalAlignment="Top" Width="94" Height="28"/>
-        <CheckBox IsChecked="{Binding CharacterDetails.CamViewX.freeze}" Content="Camera Pos X:" HorizontalAlignment="Left" Margin="16,55,0,0" VerticalAlignment="Top" Height="28"/>
+        <Button x:Name="ApplyButton" Content="{Binding Source={x:Static resx:UIStringsContent.Apply}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="1011,388,0,0" VerticalAlignment="Top" Width="80" Click="ApplyButton_Click" Height="28" Padding="0,4"/>
+        <ToggleButton x:Name="RenderButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding Path=CharacterDetails.CharacterRender.Activated}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.RenderToggleToolTip}}" Margin="878,485,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"  IsTabStop="False" Checked="RenderButton_Checked" Unchecked="RenderButton_Unchecked" />
+        <Label Content="{Binding Source={x:Static resx:UIStringsContent.RenderLimit}}" HorizontalAlignment="Left" Margin="688,485,0,0" VerticalAlignment="Top" FontSize="14" Height="28"/>
+        <Button x:Name="Renda" Content="{Binding Source={x:Static resx:UIStringsContent.RenderCycle}}" HorizontalAlignment="Left" Margin="926,485,0,0" VerticalAlignment="Top" Width="165" Height="28" Click="Renda_Click" Padding="0,4"/>
+        <Button x:Name="SearchBGM" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="926,388,0,0" VerticalAlignment="Top" Width="80" Click="SearchBGM_Click" Height="28" Padding="0,4"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.MusicBGM.freeze}" x:Name="BGMCheckBox" Content="{Binding Source={x:Static resx:UIStringsContent.BGMID}}" HorizontalAlignment="Left" Margin="411,388,0,0" VerticalAlignment="Top" Width="94" Height="28"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.CamViewX.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.CameraXPos}}" HorizontalAlignment="Left" Margin="16,55,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="CamViewX" Value="{Binding CharacterDetails.CamViewX.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="132,55,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Interval="0.01" TextAlignment="Right" Height="28" FontFamily="Segoe UI" FontSize="11.35" SourceUpdated="CamViewX_SourceUpdated"/>
-        <CheckBox IsChecked="{Binding CharacterDetails.CamViewY.freeze}" Content="Camera Pos Y:" HorizontalAlignment="Left" Margin="16,85,0,0" VerticalAlignment="Top" Height="28"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.CamViewY.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.CameraYPos}}" HorizontalAlignment="Left" Margin="16,85,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="CamViewY" Value="{Binding CharacterDetails.CamViewY.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="132,85,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Interval="0.01" TextAlignment="Right" Height="28" FontFamily="Segoe UI" FontSize="11.35" SourceUpdated="CamViewY_SourceUpdated"/>
-        <CheckBox IsChecked="{Binding CharacterDetails.CamViewZ.freeze}" Content="Camera Pos Z:" HorizontalAlignment="Left" Margin="16,115,0,0" VerticalAlignment="Top" Height="28"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.CamViewZ.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.CameraZPos}}" HorizontalAlignment="Left" Margin="16,115,0,0" VerticalAlignment="Top" Height="28"/>
         <mah:NumericUpDown x:Name="CamViewZ" Value="{Binding CharacterDetails.CamViewZ.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="132,115,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Interval="0.01" TextAlignment="Right" Height="28" FontFamily="Segoe UI" FontSize="11.35" SourceUpdated="CamViewZ_SourceUpdated"/>
 
         <Views:WorldFlyOut x:Name="WorldFlyout" Width="667" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Margin="0,0,0,0" Height="530" Padding="0"/>

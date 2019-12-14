@@ -22881,7 +22881,7 @@ namespace ConceptMatrix.Views
                 string result = dig.SafeFileName.Substring(0, dig.SafeFileName.Length - extension.Length);
                 BoneSaves BoneSaver = new BoneSaves();
                 BoneSaver.Description = result;
-                BoneSaver.DateCreated = DateTime.Now.ToLocalTime().ToString();
+                BoneSaver.DateCreated = DateTime.Now.ToString("yyyy-MM-dd HH':'mm':'ss");
                 BoneSaver.CMPVersion = "1.0";
 
                 BoneSaver.Race = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Race), 1));

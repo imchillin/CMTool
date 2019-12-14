@@ -34,9 +34,9 @@ namespace ConceptMatrix.ViewModel
         public static AboutView AboutTime;
         public static MainWindow MainTime;
         private static CharacterDetailsViewModel characterDetails;
-
+        public static string RegionType = "Live";
 		public event PropertyChangedEventHandler PropertyChanged;
-
+        public static string GameDirectory = "";
 		public CharacterDetailsViewModel CharacterDetails { get => characterDetails; set => characterDetails = value; }
 
         public PackIconKind AOTToggleStatus { get; set; } = PackIconKind.ToggleSwitchOffOutline;
@@ -46,15 +46,36 @@ namespace ConceptMatrix.ViewModel
         {
             if (!MainWindow.HasRead)
             {
-                if (!App.IsValidGamePath(Properties.Settings.Default.GamePath))
+                if (!App.IsValidGamePath(GameDirectory))
                     return;
-                var realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.English);
-                Initialize(realm);
+                ARealmReversed realm = null;
+                if (File.Exists(Path.Combine(GameDirectory, "FFXIVBoot.exe")))
+                {
+                    RegionType = "zh";
+                    File.WriteAllText("Definitions/Item.json", Properties.Resources.ItemCN);
+                    realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.ChineseSimplified);
+                }
+                else if (File.Exists(Path.Combine(GameDirectory, "boot", "FFXIV_Boot.exe")))
+                {
+                    RegionType = "ko";
+                    File.WriteAllText("Definitions/Item.json", Properties.Resources.ItemKR);
+                    realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.Korean);
+                }
+                if(RegionType == "Live")
+                {
+                    File.WriteAllText("Definitions/Item.json", Properties.Resources.Item);
+                    if (SaveSettings.Default.Language == "en") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.English);
+                    else if (SaveSettings.Default.Language == "ja") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.Japanese);
+                    else if (SaveSettings.Default.Language == "de") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.German);
+                    else if (SaveSettings.Default.Language == "fr") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.French);
+                    else realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.English);
+                }
+                Initialize(realm, RegionType);
                 MainWindow.HasRead = true;
             }
             mediator = new Mediator();
             MemoryManager.Instance.MemLib.OpenProcess(gameProcId);
-            LoadSettings();
+            LoadSettings(RegionType);
             worker = new BackgroundWorker();
             worker.DoWork += Worker_DoWork;
             worker.WorkerSupportsCancellation = true;
@@ -72,7 +93,7 @@ namespace ConceptMatrix.ViewModel
             mediator = null;
             ThreadTime = null;
         }
-        private void Initialize(ARealmReversed realm)
+        private void Initialize(ARealmReversed realm, string Determination)
         {
             if (!realm.IsCurrentVersion)
             {
@@ -80,7 +101,25 @@ namespace ConceptMatrix.ViewModel
                 {
                     if (File.Exists("SaintCoinach.History.zip"))
                         File.Delete("SaintCoinach.History.zip");
-                    realm = new ARealmReversed(Properties.Settings.Default.GamePath, SaintCoinach.Ex.Language.English);
+                    if (File.Exists(Path.Combine(GameDirectory, "FFXIVBoot.exe")))
+                    {
+                        File.WriteAllText("Definitions/Item.json", Properties.Resources.ItemCN);
+                        realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.ChineseSimplified);
+                    }
+                    else if (File.Exists(Path.Combine(GameDirectory, "boot", "FFXIV_Boot.exe")))
+                    {
+                        File.WriteAllText("Definitions/Item.json", Properties.Resources.ItemKR);
+                        realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.Korean);
+                    }
+                    if (Determination == "Live")
+                    {
+                        File.WriteAllText("Definitions/Item.json", Properties.Resources.Item);
+                        if (SaveSettings.Default.Language == "en") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.English);
+                        else if (SaveSettings.Default.Language == "ja") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.Japanese);
+                        else if (SaveSettings.Default.Language == "de") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.German);
+                        else if (SaveSettings.Default.Language == "fr") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.French);
+                        else realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.English);
+                    }
                 }
                 catch
                 {
@@ -144,8 +183,34 @@ namespace ConceptMatrix.ViewModel
                 if (Title.Length <= 0) Title = "No Title";
                 ViewTime.TitleBox.Items.Add(Title);
             }
+            var WeatherSheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Weather>();
+            foreach (SaintCoinach.Xiv.Weather weather in WeatherSheet)
+            {
+                if (weather.Key == 0 || weather.Icon == null)
+                {
+                    byte[] Bytes = { (byte)weather.Key, (byte)weather.Key };
+                    ViewTime3.ForceWeatherBox.Items.Add(new ExdCsvReader.Weather
+                    {
+                        Index = Convert.ToInt32(weather.Key),
+                        Key = BitConverter.ToUInt16(Bytes, 0),
+                        Name = weather.Name.ToString(),
+                        Icon = null
+                    });
+                }
+                else
+                {
+                    byte[] Bytes = { (byte)weather.Key, (byte)weather.Key };
+                    ViewTime3.ForceWeatherBox.Items.Add(new ExdCsvReader.Weather
+                    {
+                        Index = Convert.ToInt32(weather.Key),
+                        Name = weather.Name.ToString(),
+                        Key = BitConverter.ToUInt16(Bytes, 0),
+                        Icon = ExdCsvReader.CreateSource(weather.Icon)
+                    });
+                }
+            }
         }
-       private void LoadSettings()
+        private void LoadSettings(string region)
         {
             // create an xml serializer
             var serializer = new XmlSerializer(typeof(Settings), "");
@@ -153,48 +218,145 @@ namespace ConceptMatrix.ViewModel
             var ns = new XmlSerializerNamespaces();
             // add blank namespaces
             ns.Add("", "");
-            using (var reader = new StreamReader(@"./OffsetSettings.xml"))
+            if (region=="Live")
+            {
+                using (var reader = new StreamReader(@"./OffsetSettings.xml"))
+                {
+                    try
+                    {
+                        Settings.Instance = (Settings)serializer.Deserialize(reader);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                    }
+                }
+                if (CheckUpdate(region) == true)
+                {
+                    System.Windows.MessageBox.Show("We successfully updated offsets automatically for you! Please Restart the program or Press Find New Process on the top right of the application if this doesn't work!", "Oh wow!");
+                }
+            }
+            else if (region == "zh")
+            {
+                using (var reader = new StreamReader(@"./OffsetSettingsCN.xml"))
+                {
+                    try
+                    {
+                        Settings.Instance = (Settings)serializer.Deserialize(reader);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                    }
+                }
+                if (CheckUpdate(region) == true)
+                {
+                    System.Windows.MessageBox.Show("We successfully updated offsets automatically for you! Please Restart the program or Press Find New Process on the top right of the application if this doesn't work!", "Oh wow!");
+                }
+            }
+            else if (region == "ko")
+            {
+                using (var reader = new StreamReader(@"./OffsetSettingsKO.xml"))
+                {
+                    try
+                    {
+                        Settings.Instance = (Settings)serializer.Deserialize(reader);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex);
+                    }
+                }
+                if (CheckUpdate(region) == true)
+                {
+                    System.Windows.MessageBox.Show("We successfully updated offsets automatically for you! Please Restart the program or Press Find New Process on the top right of the application if this doesn't work!", "Oh wow!");
+                }
+            }
+        }
+        private bool CheckUpdate(string region)
+        {
+            if (region == "Live")
             {
                 try
                 {
-                    Settings.Instance = (Settings)serializer.Deserialize(reader);
+                    string xmlStr;
+                    ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
+                    using (var HAH = new WebClient())
+                    {
+                        xmlStr = HAH.DownloadString(@"https://raw.githubusercontent.com/imchillin/CMTool/master/ConceptMatrix/OffsetSettings.xml");
+                    }
+                    var serializer = new XmlSerializer(typeof(Settings), "");
+                    var xmlDoc = new System.Xml.XmlDocument();
+                    xmlDoc.LoadXml(xmlStr);
+                    var offset = (Settings)serializer.Deserialize(new StringReader(xmlDoc.InnerXml));
+                    if (!string.Equals(Settings.Instance.LastUpdated, offset.LastUpdated))
+                    {
+                        File.WriteAllText(@"./OffsetSettings.xml", xmlDoc.InnerXml);
+                        Settings.Instance = offset;
+                        return true;
+                    }
+                    else return false;
                 }
-                catch (Exception ex)
+                catch
                 {
-                    Console.WriteLine(ex);
+                    return false;
                 }
             }
-            if (CheckUpdate()==true)
+            else if (region == "zh")
             {
-                System.Windows.MessageBox.Show("We successfully updated offsets automatically for you! Please Restart the program or Press Find New Process on the top right of the application if this doesn't work!", "Oh wow!");
-            }
-        }
-        private bool CheckUpdate()
-        {
-            try
-            {
-                string xmlStr;
-                ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
-                using (var HAH = new WebClient())
+                try
                 {
-                    xmlStr = HAH.DownloadString(@"https://raw.githubusercontent.com/imchillin/CMTool/master/ConceptMatrix/OffsetSettings.xml");
+                    string xmlStr;
+                    ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
+                    using (var HAH = new WebClient())
+                    {
+                        xmlStr = HAH.DownloadString(@"https://raw.githubusercontent.com/imchillin/CMTool/master/ConceptMatrix/OffsetSettingsCN.xml");
+                    }
+                    var serializer = new XmlSerializer(typeof(Settings), "");
+                    var xmlDoc = new System.Xml.XmlDocument();
+                    xmlDoc.LoadXml(xmlStr);
+                    var offset = (Settings)serializer.Deserialize(new StringReader(xmlDoc.InnerXml));
+                    if (!string.Equals(Settings.Instance.LastUpdated, offset.LastUpdated))
+                    {
+                        File.WriteAllText(@"./OffsetSettingsCN.xml", xmlDoc.InnerXml);
+                        Settings.Instance = offset;
+                        return true;
+                    }
+                    else return false;
                 }
-                var serializer = new XmlSerializer(typeof(Settings), "");
-                var xmlDoc = new System.Xml.XmlDocument();
-                xmlDoc.LoadXml(xmlStr);
-                var offset = (Settings)serializer.Deserialize(new StringReader(xmlDoc.InnerXml));
-                if (!string.Equals(Settings.Instance.LastUpdated, offset.LastUpdated))
+                catch
                 {
-                    File.WriteAllText(@"./OffsetSettings.xml", xmlDoc.InnerXml);
-                    Settings.Instance = offset;
-                    return true;
+                    return false;
                 }
-                else return false;
             }
-            catch
+            else if (region == "ko")
             {
-                return false;
+                try
+                {
+                    string xmlStr;
+                    ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
+                    using (var HAH = new WebClient())
+                    {
+                        xmlStr = HAH.DownloadString(@"https://raw.githubusercontent.com/imchillin/CMTool/master/ConceptMatrix/OffsetSettingsKO.xml");
+                    }
+                    var serializer = new XmlSerializer(typeof(Settings), "");
+                    var xmlDoc = new System.Xml.XmlDocument();
+                    xmlDoc.LoadXml(xmlStr);
+                    var offset = (Settings)serializer.Deserialize(new StringReader(xmlDoc.InnerXml));
+                    if (!string.Equals(Settings.Instance.LastUpdated, offset.LastUpdated))
+                    {
+                        File.WriteAllText(@"./OffsetSettingsKO.xml", xmlDoc.InnerXml);
+                        Settings.Instance = offset;
+                        return true;
+                    }
+                    else return false;
+                }
+                catch
+                {
+                    return false;
+                }
             }
+            else return false;
         }
         private void Worker_DoWork(object sender, DoWorkEventArgs e)
         {
