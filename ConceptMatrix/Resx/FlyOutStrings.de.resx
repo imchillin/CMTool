@@ -277,7 +277,7 @@
     <value>Nebenhand beinhalten</value>
   </data>
   <data name="KeepDyes" xml:space="preserve">
-    <value>Färbungen beibehalten</value>
+    <value>Behalte Farbe</value>
   </data>
   <data name="LeftEyeColor" xml:space="preserve">
     <value>Linke Augenfarbe</value>

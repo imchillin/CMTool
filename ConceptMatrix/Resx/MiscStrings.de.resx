@@ -205,7 +205,7 @@
     <value>Frau</value>
   </data>
   <data name="GearsetSaves" xml:space="preserve">
-    <value>Gespeicherte Ausrüstungssets:</value>
+    <value>Gearset Saves:</value>
   </data>
   <data name="GetInTouch" xml:space="preserve">
     <value>In Kontakt treten</value>
@@ -265,7 +265,7 @@
     <value>Posterisation 2</value>
   </data>
   <data name="ProfileSaves" xml:space="preserve">
-    <value>Gespeicherte Profile:</value>
+    <value>Profile Saves:</value>
   </data>
   <data name="Sepia1" xml:space="preserve">
     <value>Sepia 1</value>

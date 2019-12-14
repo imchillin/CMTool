@@ -124,14 +124,14 @@
     <value>Charakterdaten</value>
   </data>
   <data name="ActorEntityListToolTip" xml:space="preserve">
-    <value>Zeigt eine Liste aller anwählbaren Entitäten im Umkreis an.
-• Diese Liste ist abhängig von der Distanz des Spielers zu den anwählbaren Entitäten und kann sich potenziell ändern, wenn diese ihre Position verändern. Begleiter sind hierbei mitinbegrifen.</value>
+    <value>Zeigt eine Liste aller anvisierbaren/zielfähigen Entitäten im Umkreis von dir an.
+• Diese Liste füllt sich basierend von der Distanz zum Spieler und kann sich potenziell ändern, falls die Entitäten ihre Position verändern, Begleiter mit inbegriffen.</value>
   </data>
   <data name="ActorProperties" xml:space="preserve">
     <value>Charaktereigenschaften</value>
   </data>
   <data name="ActorRefreshButton" xml:space="preserve">
-    <value>Charakter neu laden</value>
+    <value>CharakterAktualisieren</value>
   </data>
   <data name="ActorRefreshToolTip" xml:space="preserve">
     <value>Der ausgewählte Charakter wird mit den neuen Einstellungen erneut geladen.</value>
@@ -149,7 +149,7 @@
     <value>Anim Tempo</value>
   </data>
   <data name="AnimSpeedToolTip" xml:space="preserve">
-    <value>Ändert die Geschwindigkeit des ausgewählten Charakters.</value>
+    <value>Ändert die Animationsgeschwindigkeit des ausgewählten Charakters.</value>
   </data>
   <data name="Apply" xml:space="preserve">
     <value>Anwenden</value>
@@ -158,11 +158,11 @@
     <value>Arme:</value>
   </data>
   <data name="ArrayOfBytes" xml:space="preserve">
-    <value>Array of Bytes</value>
+    <value>AoB-Daten:</value>
   </data>
   <data name="ArrayOfBytesToolTip" xml:space="preserve">
-    <value>Enthält Daten über die ausgewählten Charakter.
-• Man kann hier Daten kopieren/einfügen und auf Anwenden klicken.</value>
+    <value>Beinhaltet Daten über die ausgewählte Entität.
+• In diesem Feld kannst du Daten kopieren-einfügen und auf Anwenden klicken.</value>
   </data>
   <data name="B" xml:space="preserve">
     <value>B</value>
@@ -180,7 +180,7 @@
     <value>Blau</value>
   </data>
   <data name="BlueGlow" xml:space="preserve">
-    <value>Blauer Glanz</value>
+    <value>BlauerGlanz</value>
   </data>
   <data name="Body" xml:space="preserve">
     <value>Rumpf:</value>
@@ -207,21 +207,21 @@
     <value>Ändert die Oberweite des ausgewählten Charakters.</value>
   </data>
   <data name="BustXScale" xml:space="preserve">
-    <value>Brust X Skalierung</value>
+    <value>Büste X-Skala</value>
   </data>
   <data name="BustXScaleToolTip" xml:space="preserve">
     <value>Ändert den X-Wert der Brust des ausgewählten Charakter.
 • Nur an weiblichen Charakteren anwendbar.</value>
   </data>
   <data name="BustYScale" xml:space="preserve">
-    <value>Brust Y Skalierung</value>
+    <value>Büste Y-Skala</value>
   </data>
   <data name="BustYScaleToolTip" xml:space="preserve">
     <value>Ändert den Y-Wert der Brust des ausgewählten Charakter.
 • Nur an weiblichen Charakteren anwendbar.</value>
   </data>
   <data name="BustZScale" xml:space="preserve">
-    <value>Brust Z Skalierung</value>
+    <value>Büste Z-Skala</value>
   </data>
   <data name="BustZScaleToolTip" xml:space="preserve">
     <value>Ändert den Z-Wert der Brust des ausgewählten Charakter.
@@ -297,43 +297,43 @@
     <value>Waden:</value>
   </data>
   <data name="CamAngleX" xml:space="preserve">
-    <value>Kamera Winkel X:</value>
+    <value>Kam Winkel X:</value>
   </data>
   <data name="CamAngleY" xml:space="preserve">
-    <value>Kamera Winkel Y:</value>
+    <value>Kam Winkel Y:</value>
   </data>
   <data name="CameraSettings" xml:space="preserve">
     <value>Kameraeinstellungen</value>
   </data>
   <data name="CameraViewX" xml:space="preserve">
-    <value>Kamera Sicht X:</value>
+    <value>Kam Sicht X:</value>
   </data>
   <data name="CameraViewY" xml:space="preserve">
-    <value>Kamera Sicht Y:</value>
+    <value>Kam Sicht Y:</value>
   </data>
   <data name="CameraViewZ" xml:space="preserve">
-    <value>Kamera Sicht Z:</value>
+    <value>Kam Sicht Z:</value>
   </data>
   <data name="CameraXPos" xml:space="preserve">
-    <value>Kamera X Pos:</value>
+    <value>Kam X Pos:</value>
   </data>
   <data name="CameraYPos" xml:space="preserve">
-    <value>Kamera Y Pos:</value>
+    <value>Kam Y Pos:</value>
   </data>
   <data name="CameraZPos" xml:space="preserve">
-    <value>Kamera Z Pos:</value>
+    <value>Kam Z Pos:</value>
   </data>
   <data name="CamRotation" xml:space="preserve">
     <value>Kamerarotation:</value>
   </data>
   <data name="CamUpDown" xml:space="preserve">
-    <value>Kamera Auf/Ab:</value>
+    <value>Kam Auf/Ab:</value>
   </data>
   <data name="CamYMax" xml:space="preserve">
-    <value>Kamera Y Max:</value>
+    <value>Kam Y Max:</value>
   </data>
   <data name="CamYMin" xml:space="preserve">
-    <value>Kamera Y Min:</value>
+    <value>Kam Y Min:</value>
   </data>
   <data name="Cheeks" xml:space="preserve">
     <value>Wangen:</value>
@@ -363,17 +363,17 @@
     <value>Kontrast 2:</value>
   </data>
   <data name="CurrentZoom" xml:space="preserve">
-    <value>Aktuelle Zoomstufe:</value>
+    <value>Aktueller Zoom:</value>
   </data>
   <data name="DataPath" xml:space="preserve">
     <value>Dateipfad:</value>
   </data>
   <data name="DataPathToolTip" xml:space="preserve">
-    <value>Ändert den Dateipfad des ausgewählten Charakters.
-• Erlaubt Animationen von anderen Rassen und Geschlechtern auf dem Charakter zu nutzen.
-• Benötigt keine Neuladung des Charakters und kann außerhalb von GPose benutzt werden.
-• Das Skelett des Charakters wird auf die ausgewählte Rasse angepasst. Die Erweiterung oder Schrumpfung hierbei ist nicht vermeidbar.
-• Man kann den Charakter neuladen, wenn man zum Spaß eine Monstrosität sein will.</value>
+    <value>Ändert den Dateipfad der ausgewählten Entität.
+• Das erlaubt uns Animationen von anderen Rassen und Geschlechtern zu nutzen.
+• Eine Charakteraktualisierung wird nicht benötigt und kann innerhalb und außerhalb von GPose benutzt werden.
+• Das Skelett der Entität wird umgewandelt um der ausgewählten Rasse zu passen. Diese Ausdehnung oder Einschränkung hierbei ist nicht vermeidbar.
+• Man kann die Charakteraktualisierung benutzen, wenn man zum Spaß eine Monstrosität sein will.</value>
   </data>
   <data name="DefaultTime" xml:space="preserve">
     <value>Standardzeit</value>
@@ -385,29 +385,29 @@
     <value>Durchnässt:</value>
   </data>
   <data name="DrenchedToolTip" xml:space="preserve">
-    <value>Gibt dem ausgewählten Charakter einen stark hervorhebenden Nässeeffekt.
-• Vergleichbar mit "Nass", der Effekt verschwindet jedoch nach einer Weile.</value>
+    <value>Gibt der ausgewählten Entität einen stark ausgeprägten Nässeeffekt.
+• Genau wie der Nasseffekt, verschwindet dieser Effekt mit der Zeit.</value>
   </data>
   <data name="Dyes" xml:space="preserve">
     <value>Farbstoffe</value>
   </data>
   <data name="EarMuscleTailSize" xml:space="preserve">
-    <value>Ohr/Muskel/Schwanzgröße:</value>
+    <value>Extra-Feature Größe:</value>
   </data>
   <data name="EarMuscleTailSizeToolTip" xml:space="preserve">
-    <value>Ändert die Ohren- und Schwanzgröße des ausgewählten Charakters.</value>
+    <value>Ändert die Ohren, Muskeln und Schwanzgröße des ausgewählten Charakters.</value>
   </data>
   <data name="Ears" xml:space="preserve">
-    <value>Ohrring:</value>
+    <value>Ohren:</value>
   </data>
   <data name="EarsToolTip" xml:space="preserve">
     <value>Erlaubt es, jede Art von Ohrringen an dem ausgewählten Charakter auszurüsten.</value>
   </data>
   <data name="EarTailScale" xml:space="preserve">
-    <value>Ohr/Schwanzskala:</value>
+    <value>Ohr/Schwanz:</value>
   </data>
   <data name="EarTailScaleToolTip" xml:space="preserve">
-    <value>Ändert die Ohren- und Schwanzskalierung des ausgewählten Charakters.</value>
+    <value>Ändert die Ohren und Schwanzskalierung des ausgewählten Charakters.</value>
   </data>
   <data name="EarTailType" xml:space="preserve">
     <value>Ohr/Schwanzform:</value>
@@ -512,7 +512,7 @@
     <value>Finger Bones</value>
   </data>
   <data name="ForceAnim" xml:space="preserve">
-    <value>Anim erzwingen:</value>
+    <value>AnimErzwingen:</value>
   </data>
   <data name="ForceAnimToolTip" xml:space="preserve">
     <value>Zwingt die ausgewählte Entität eine Animation auszuführen. 
@@ -531,10 +531,10 @@
     <value>Field of View 2:</value>
   </data>
   <data name="FreeCompanyTag" xml:space="preserve">
-    <value>Freie Gesellschaft Kürzel:</value>
+    <value>Freie Gesellschaft:</value>
   </data>
   <data name="FreeCompanyTagWaterMark" xml:space="preserve">
-    <value>Freie Gesellschaft Kürzel</value>
+    <value>Freie Gesellschaft:</value>
   </data>
   <data name="FreeCompanyToolTip" xml:space="preserve">
     <value>Ändert das Kürzel der Freien Gesellschaft des ausgewählten Charakters.</value>
@@ -583,7 +583,7 @@
     <value>Grün</value>
   </data>
   <data name="GreenGlow" xml:space="preserve">
-    <value>Grüner Glanz:</value>
+    <value>GrünerGlanz:</value>
   </data>
   <data name="GroupPoseFilter" xml:space="preserve">
     <value>GPose Filter</value>
@@ -646,7 +646,7 @@
     <value>Ändert die Farbe der Strähnen des ausgewählten Charakters.</value>
   </data>
   <data name="IdleAnim" xml:space="preserve">
-    <value>Handlung bei Untätigkeit</value>
+    <value>Idle Anim:</value>
   </data>
   <data name="IdleAnimToolTip" xml:space="preserve">
     <value>Ändert die 'Handlung bei Untätigkeit' der gewählten Entität.
@@ -673,7 +673,7 @@
     <value>Ändert die Kieferart des ausgewählten Charakters.</value>
   </data>
   <data name="JobIcon" xml:space="preserve">
-    <value>Klassensymbol:</value>
+    <value>Klasse:</value>
   </data>
   <data name="JobIconToolTip" xml:space="preserve">
     <value>Ändert das Klassensymbol des ausgewählen Gruppenmitglied in der Gruppenliste.</value>
@@ -706,16 +706,16 @@
     <value>Erlaubt es, jede Art von Beinbekleidung an dem ausgewählten Charakter auszurüsten.</value>
   </data>
   <data name="LimbalOrTattoo" xml:space="preserve">
-    <value>Äußere Iris / Tattoofarbe:</value>
+    <value>Äußere Iris/Tattoofarbe:</value>
   </data>
   <data name="LimbalOrTattooToolTip" xml:space="preserve">
     <value>Ändert die Farbe der äußeren Iris oder des Tattoos auf dem ausgewähltem Charakter.</value>
   </data>
   <data name="LimbalRingTattooColor" xml:space="preserve">
-    <value>Äußere Iris / Tattoofarbe</value>
+    <value>Äußere Iris/Tattoofarbe</value>
   </data>
   <data name="LipColor" xml:space="preserve">
-    <value>Lippenfarbe / Fellmuster:</value>
+    <value>Lippenfarbe/Fellmuster:</value>
   </data>
   <data name="LipColorToolTip" xml:space="preserve">
     <value>Ändert die Lippenfarbe oder das Fellmuster des ausgewählten Charakters.</value>
@@ -743,7 +743,7 @@
     <value>Setzt den aktuellen Zustand auf das 'Backup' zurück.</value>
   </data>
   <data name="LockFacialAnimation" xml:space="preserve">
-    <value>Gesichtsanimation einfrieren:</value>
+    <value>Gesicht einfrieren:</value>
   </data>
   <data name="LockFacialAnimationToolTip" xml:space="preserve">
     <value>Friert die Gesichtsanimation der ausgewählten Entität ein.
@@ -884,7 +884,7 @@
     <value>Äußere Augenbrauen:</value>
   </data>
   <data name="OverallScale" xml:space="preserve">
-    <value>Gesamte Skalierung</value>
+    <value>Höhenskala:</value>
   </data>
   <data name="OverallScaleToolTip" xml:space="preserve">
     <value>Modifiziert die gesamte Skalierung des geählten Charakters.</value>
@@ -933,20 +933,20 @@
     <value>Rot:</value>
   </data>
   <data name="RedGlow" xml:space="preserve">
-    <value>Roter Glanz:</value>
+    <value>RoterGlanz:</value>
   </data>
   <data name="RefreshButton" xml:space="preserve">
     <value>Neuladen</value>
   </data>
   <data name="RelativeXYZPos" xml:space="preserve">
-    <value>Relative XYZ Position:</value>
+    <value>Relative XYZ Pos:</value>
   </data>
   <data name="RelativeXYZPosToolTip" xml:space="preserve">
     <value>Dieser Schalter legt XYZ Bewegung relativ zur gewählten Entität fest anstatt zum absoluten Bezug der Spielwelt.
 • Diese Einstellung ist standardmäßig an und ihr Zustand bleibt zwischen Sitzungen erhalten.</value>
   </data>
   <data name="RelativeXYZRot" xml:space="preserve">
-    <value>Relative XYZ Rotation:</value>
+    <value>Relative XYZ Rot:</value>
   </data>
   <data name="RelativeXYZRotToolTip" xml:space="preserve">
     <value>Dieser Schalter legt XYZ Rotation relativ zur gewählten Entität fest anstatt zum absoluten Bezug der Spielwelt.
@@ -957,7 +957,7 @@
     <value>Render Zyklus</value>
   </data>
   <data name="RenderLimit" xml:space="preserve">
-    <value>Entfernt die Render Limitation der Charaktere.</value>
+    <value>Renderlimit entfernen:</value>
   </data>
   <data name="RenderToggleToolTip" xml:space="preserve">
     <value>Render Umschalter</value>
@@ -1036,7 +1036,8 @@
     <value>Ändert den Hautton des ausgewählen Charakters.</value>
   </data>
   <data name="StatusEffect" xml:space="preserve">
-    <value>GPose Statuseffekte:</value>
+    <value>GPose 
+Statuseffekte:</value>
   </data>
   <data name="StatusEffectToolTip" xml:space="preserve">
     <value>Ermöglicht es zusätzliche VFX auf Entitäten anzuwenden.
@@ -1103,7 +1104,7 @@
     <value>Transformationsdaten</value>
   </data>
   <data name="Transparency" xml:space="preserve">
-    <value>Durchsichtigkeit:</value>
+    <value>Transparenz:</value>
   </data>
   <data name="TransparencyToolTip" xml:space="preserve">
     <value>Verändert die Durchsichtigkeit der gewählten Entität.
@@ -1159,7 +1160,7 @@
     <value>Wetter</value>
   </data>
   <data name="WeatherForce" xml:space="preserve">
-    <value>Wetter erzwingen</value>
+    <value>Instant-Wetter:</value>
   </data>
   <data name="WeatherForceToolTip" xml:space="preserve">
     <value>Kontrolliert das Wetter des Areals.
@@ -1269,8 +1270,5 @@
     <value>Rotiert den gewählten Charakter um die Z-Achse.
 • Man wird den Charakter einfrieren müssen, um die Position besser in GPose einstellen zu können.
 • Sowohl Rotationsregler als auch Zifferneingabe setzen vorraus das die Rotation eingefroren ist.</value>
-  </data>
-  <data name="Wiki" xml:space="preserve">
-    <value>Wiki</value>
   </data>
 </root>

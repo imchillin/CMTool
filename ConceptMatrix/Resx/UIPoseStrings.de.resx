@@ -124,7 +124,7 @@
     <value>Erweitertes Laden</value>
   </data>
   <data name="AdvLoadCMPFile" xml:space="preserve">
-    <value>Erweitertes Laden von CMP Dateien</value>
+    <value>Erweitertes CMP Laden</value>
   </data>
   <data name="Arms" xml:space="preserve">
     <value>Arme:</value>
@@ -301,7 +301,7 @@
     <value>Lade Pose aus einer Benutzer generierten CMP Datei.</value>
   </data>
   <data name="LowerLids" xml:space="preserve">
-    <value>Untere Augenlider:</value>
+    <value>Unteres Augenlid:</value>
   </data>
   <data name="LowerLip" xml:space="preserve">
     <value>Unterlippe:</value>
@@ -469,19 +469,19 @@
     <value>Handgelenke</value>
   </data>
   <data name="XRot" xml:space="preserve">
-    <value>X Drehung</value>
+    <value>X Rotation:</value>
   </data>
   <data name="XRotToolTip" xml:space="preserve">
     <value>Modifiziert die X Drehung des ausgewählten Gelenks.</value>
   </data>
   <data name="YRot" xml:space="preserve">
-    <value>Y Drehung</value>
+    <value>Y Rotation:</value>
   </data>
   <data name="YRotToolTip" xml:space="preserve">
     <value>Modifiziert die Y Drehung des ausgewählten Gelenks.</value>
   </data>
   <data name="ZRot" xml:space="preserve">
-    <value>Z Drehung</value>
+    <value>Z Rotation:</value>
   </data>
   <data name="ZRotToolTip" xml:space="preserve">
     <value>Modifiziert die Z Drehung des ausgewählten Gelenks.</value>
