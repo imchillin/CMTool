@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- This is for CN server only-->
 <Settings>
-  <LastUpdated>5.01</LastUpdated>
-  <CameraOffset>1B24830</CameraOffset><!-- ok -->
-  <GposeOffset>1B24A28</GposeOffset><!-- ok -->
-  <GposeEntityOffset>1B278D0</GposeEntityOffset><!-- ok -->
+  <LastUpdated>5.01x</LastUpdated>
+  <CameraOffset>1B24830</CameraOffset>
+  <GposeOffset>1B24A28</GposeOffset>
+  <GposeEntityOffset>1B278D0</GposeEntityOffset>
   <GposeCheckOffset>1B7826A</GposeCheckOffset>
   <GposeCheck2Offset>1B28620</GposeCheck2Offset>
-  <AoBOffset>1B25E40</AoBOffset><!-- ok -->
-  <TargetOffset>1B24A38</TargetOffset><!-- ok -->
-  <TimeOffset>1B09A08</TimeOffset><!-- ok -->
-  <WeatherOffset>1AE09B8</WeatherOffset><!-- ok -->
-  <TerritoryOffset>1B62AF8</TerritoryOffset><!-- ok -->
-  <GposeFilters>1B078B8</GposeFilters><!-- ok -->
-  <MusicOffset>1B3D968</MusicOffset><!-- ok -->
-  <SkeletonOffset>1292990</SkeletonOffset><!-- ok -->
-  <SkeletonOffset2>1293ABD</SkeletonOffset2><!-- ok -->
-  <SkeletonOffset3>12A1724</SkeletonOffset3><!-- ok -->
-  <PhysicsOffset>3727D8</PhysicsOffset><!-- ok -->
-  <PhysicsOffset2>3727CF</PhysicsOffset2><!-- ok -->
+  <AoBOffset>1B25E40</AoBOffset>
+  <TargetOffset>1B24AA0</TargetOffset> <!-- fixed -->
+  <TimeOffset>1B09A08</TimeOffset>
+  <WeatherOffset>1AE09B8</WeatherOffset>
+  <TerritoryOffset>1B62AF8</TerritoryOffset>
+  <GposeFilters>1B078B8</GposeFilters>
+  <MusicOffset>1B3D968</MusicOffset>
+  <SkeletonOffset>1292990</SkeletonOffset>
+  <SkeletonOffset2>1293ABD</SkeletonOffset2>
+  <SkeletonOffset3>12A1724</SkeletonOffset3>
+  <PhysicsOffset>3727D8</PhysicsOffset>
+  <PhysicsOffset2>3727CF</PhysicsOffset2>
   <CharacterRenderOffset>4293D0</CharacterRenderOffset>
   <CharacterRenderOffset2>4293C6</CharacterRenderOffset2>
   <Character>
