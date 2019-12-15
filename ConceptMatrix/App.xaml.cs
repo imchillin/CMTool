@@ -1,11 +1,16 @@
 ﻿using ConceptMatrix.Models;
+using ConceptMatrix.Utility;
 using ConceptMatrix.ViewModel;
 using Microsoft.Win32;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Threading;
+using Application = System.Windows.Application;
+using Clipboard = System.Windows.Clipboard;
 namespace ConceptMatrix
 {
     /// <summary>
@@ -24,7 +29,14 @@ namespace ConceptMatrix
 		public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
         protected override void OnStartup(StartupEventArgs e)
         {
-            Application.Current.DispatcherUnhandledException += Application_DispatcherUnhandledException;
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+
+            Dispatcher.UnhandledException += DispatcherOnUnhandledException;
+
+            Application.Current.DispatcherUnhandledException += CurrentOnDispatcherUnhandledException;
+
+            TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
+
             GetDotNetFromRegistry();
             base.OnStartup(e);
 
@@ -62,26 +74,6 @@ namespace ConceptMatrix
                 }
             }
         }
-        private void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
-        {
-            if (e.Exception != null)
-            {
-                using (StreamWriter writer = new StreamWriter("ErrorLog.txt", true))
-                {
-                    writer.WriteLine("-----------Start-----------" + DateTime.Now);
-                    writer.WriteLine("Error Message: " + e.Exception.Message);
-                    writer.WriteLine("Stack Trace: " + e.Exception.StackTrace);
-                    if (e.Exception.InnerException != null)
-                    {
-                        writer.WriteLine("-----------Inner Exception-----------" + DateTime.Now);
-                        writer.WriteLine("Inner Exception Message: " + e.Exception.InnerException.Message);
-                        writer.WriteLine("Inner Exception Message: " + e.Exception.InnerException.StackTrace);
-                    }
-                    writer.WriteLine("-----------End-----------" + DateTime.Now);
-                }
-            }
-            e.Handled = true;
-        }
 
         public static bool IsValidGamePath(string path)
         {
@@ -101,6 +93,82 @@ namespace ConceptMatrix
         {
             Utility.SaveSettings.Default.Save();
             if (CharacterDetails.BoneEditMode) MainViewModel.ViewTime5.EditModeButton.IsChecked = false;
+        }
+
+        private void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
+        {
+            var ver = FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).FileVersion;
+
+            const string lineBreak = "\n======================================================\n";
+
+            var errorText = "Concept Matirx ran into an error.\n\n" +
+                            "Please submit a bug report with the following information.\n " +
+                            lineBreak +
+                            e.Exception +
+                            lineBreak + "\n" +
+                            "Copy to clipboard?";
+
+            if (FlexibleMessageBox.Show(errorText, "Crash Report " + ver, MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+            {
+                Clipboard.SetText(e.Exception.ToString());
+            }
+        }
+
+        private void CurrentOnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            var ver = FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).FileVersion;
+
+            const string lineBreak = "\n======================================================\n";
+
+            var errorText = "Concept Matirx ran into an error.\n\n" +
+                            "Please submit a bug report with the following information.\n " +
+                            lineBreak +
+                            e.Exception +
+                            lineBreak + "\n" +
+                            "Copy to clipboard?";
+
+            if (FlexibleMessageBox.Show(errorText, "Crash Report " + ver, MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+            {
+                Clipboard.SetText(e.Exception.ToString());
+            }
+        }
+
+        private void DispatcherOnUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            var ver = FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).FileVersion;
+
+            const string lineBreak = "\n======================================================\n";
+
+            var errorText = "Concept Matirx ran into an error.\n\n" +
+                            "Please submit a bug report with the following information.\n " +
+                            lineBreak +
+                            e.Exception +
+                            lineBreak + "\n" +
+                            "Copy to clipboard?";
+
+            if (FlexibleMessageBox.Show(errorText, "Crash Report " + ver, MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+            {
+                Clipboard.SetText(e.Exception.ToString());
+            }
+        }
+
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            var ver = FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).FileVersion;
+
+            const string lineBreak = "\n======================================================\n";
+
+            var errorText = "Concept Matirx ran into an error.\n\n" +
+                            "Please submit a bug report with the following information.\n " +
+                            lineBreak +
+                            e.ExceptionObject +
+                            lineBreak + "\n" +
+                            "Copy to clipboard?";
+
+            if (FlexibleMessageBox.Show(errorText, "Crash Report " + ver, MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+            {
+                Clipboard.SetText(e.ExceptionObject.ToString());
+            }
         }
     }
 }

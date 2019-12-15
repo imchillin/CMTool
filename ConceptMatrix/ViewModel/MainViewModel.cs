@@ -12,6 +12,7 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Media;
 using System.Xml.Serialization;
 
@@ -44,46 +45,55 @@ namespace ConceptMatrix.ViewModel
 
 		public MainViewModel()
         {
-            if (!MainWindow.HasRead)
+            try
             {
-                if (!App.IsValidGamePath(GameDirectory))
-                    return;
-                ARealmReversed realm = null;
-                if (File.Exists(Path.Combine(GameDirectory, "FFXIVBoot.exe")))
+                if (!MainWindow.HasRead)
                 {
-                    RegionType = "zh";
-                    File.WriteAllText("Definitions/Item.json", Properties.Resources.ItemCN);
-                    realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.ChineseSimplified);
+                    if (!App.IsValidGamePath(GameDirectory))
+                    {
+                        FlexibleMessageBox.Show($"Please make sure ffxivgame.ver is in \n\n{GameDirectory}/game diirectory", $"ValidGamePath Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    ARealmReversed realm = null;
+                    if (File.Exists(Path.Combine(GameDirectory, "FFXIVBoot.exe")))
+                    {
+                        RegionType = "zh";
+                        File.WriteAllText("Definitions/Item.json", Properties.Resources.ItemCN);
+                        realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.ChineseSimplified);
+                    }
+                    else if (File.Exists(Path.Combine(GameDirectory, "boot", "FFXIV_Boot.exe")))
+                    {
+                        RegionType = "ko";
+                        File.WriteAllText("Definitions/Item.json", Properties.Resources.ItemKR);
+                        realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.Korean);
+                    }
+                    if (RegionType == "Live")
+                    {
+                        File.WriteAllText("Definitions/Item.json", Properties.Resources.Item);
+                        if (SaveSettings.Default.Language == "en") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.English);
+                        else if (SaveSettings.Default.Language == "ja") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.Japanese);
+                        else if (SaveSettings.Default.Language == "de") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.German);
+                        else if (SaveSettings.Default.Language == "fr") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.French);
+                        else realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.English);
+                    }
+                    Initialize(realm, RegionType);
+                    MainWindow.HasRead = true;
                 }
-                else if (File.Exists(Path.Combine(GameDirectory, "boot", "FFXIV_Boot.exe")))
-                {
-                    RegionType = "ko";
-                    File.WriteAllText("Definitions/Item.json", Properties.Resources.ItemKR);
-                    realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.Korean);
-                }
-                if(RegionType == "Live")
-                {
-                    File.WriteAllText("Definitions/Item.json", Properties.Resources.Item);
-                    if (SaveSettings.Default.Language == "en") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.English);
-                    else if (SaveSettings.Default.Language == "ja") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.Japanese);
-                    else if (SaveSettings.Default.Language == "de") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.German);
-                    else if (SaveSettings.Default.Language == "fr") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.French);
-                    else realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.English);
-                }
-                Initialize(realm, RegionType);
-                MainWindow.HasRead = true;
+                mediator = new Mediator();
+                MemoryManager.Instance.MemLib.OpenProcess(gameProcId);
+                LoadSettings(RegionType);
+                worker = new BackgroundWorker();
+                worker.DoWork += Worker_DoWork;
+                worker.WorkerSupportsCancellation = true;
+                worker.RunWorkerAsync();
+                characterDetails = new CharacterDetailsViewModel(mediator);
+                CharacterDetailsViewModel.baseAddr = MemoryManager.Add(MemoryManager.Instance.BaseAddress, "8");
+                Task.Delay(40).Wait();
+                ThreadTime = new ThreadWriting(); // Thread Writing
             }
-            mediator = new Mediator();
-            MemoryManager.Instance.MemLib.OpenProcess(gameProcId);
-            LoadSettings(RegionType);
-            worker = new BackgroundWorker();
-            worker.DoWork += Worker_DoWork;
-            worker.WorkerSupportsCancellation = true;
-            worker.RunWorkerAsync();
-            characterDetails = new CharacterDetailsViewModel(mediator);
-            CharacterDetailsViewModel.baseAddr = MemoryManager.Add(MemoryManager.Instance.BaseAddress, "8");
-            Task.Delay(40).Wait();
-            ThreadTime = new ThreadWriting(); // Thread Writing
+            catch(Exception)
+            {
+            }
         }
         public static void ShutDownStuff()
         {
@@ -126,88 +136,95 @@ namespace ConceptMatrix.ViewModel
                     System.Windows.MessageBox.Show("Unable to delete SaintCoinach.History.zip! Please don't open zip or use it.", "Oh wow!");
                 }
             }
-            realm.Packs.GetPack(new SaintCoinach.IO.PackIdentifier("exd", SaintCoinach.IO.PackIdentifier.DefaultExpansion, 0)).KeepInMemory = true;
-            MainWindow.Realm = realm;
-            CharacterDetailsView._exdProvider.RaceList();
-            CharacterDetailsView._exdProvider.TribeList();
-            CharacterDetailsView._exdProvider.DyeList();
-            CharacterDetailsView._exdProvider.MonsterList();
-            ExdCsvReader.MonsterX = CharacterDetailsView._exdProvider.Monsters.Values.ToArray();
-            for (int i = 0; i < CharacterDetailsView._exdProvider.Dyes.Count; i++)
+            try
             {
-                ViewTime2.HeadDye.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
-                ViewTime2.ChestBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
-                ViewTime2.ArmBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
-                ViewTime2.MHBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
-                ViewTime2.OHBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
-                ViewTime2.LegBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
-                ViewTime2.FeetBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
-            }
-            foreach (ExdCsvReader.Monster xD in ExdCsvReader.MonsterX)
-            {
-                if (xD.Real == true)
+                realm.Packs.GetPack(new SaintCoinach.IO.PackIdentifier("exd", SaintCoinach.IO.PackIdentifier.DefaultExpansion, 0)).KeepInMemory = true;
+                MainWindow.Realm = realm;
+                CharacterDetailsView._exdProvider.RaceList();
+                CharacterDetailsView._exdProvider.TribeList();
+                CharacterDetailsView._exdProvider.DyeList();
+                CharacterDetailsView._exdProvider.MonsterList();
+                ExdCsvReader.MonsterX = CharacterDetailsView._exdProvider.Monsters.Values.ToArray();
+                for (int i = 0; i < CharacterDetailsView._exdProvider.Dyes.Count; i++)
                 {
-                    ViewTime.SpecialControl.ModelBox.Items.Add(new ExdCsvReader.Monster
+                    ViewTime2.HeadDye.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
+                    ViewTime2.ChestBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
+                    ViewTime2.ArmBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
+                    ViewTime2.MHBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
+                    ViewTime2.OHBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
+                    ViewTime2.LegBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
+                    ViewTime2.FeetBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
+                }
+                foreach (ExdCsvReader.Monster xD in ExdCsvReader.MonsterX)
+                {
+                    if (xD.Real == true)
                     {
-                        Index = Convert.ToInt32(xD.Index),
-                        Name = xD.Name.ToString()
-                    });
+                        ViewTime.SpecialControl.ModelBox.Items.Add(new ExdCsvReader.Monster
+                        {
+                            Index = Convert.ToInt32(xD.Index),
+                            Name = xD.Name.ToString()
+                        });
+                    }
                 }
-            }
-            for (int i = 0; i < CharacterDetailsView._exdProvider.Races.Count; i++)
-            {
-                ViewTime.RaceBox.Items.Add(CharacterDetailsView._exdProvider.Races[i].Name);
-            }
-            for (int i = 0; i < CharacterDetailsView._exdProvider.Tribes.Count; i++)
-            {
-                ViewTime.ClanBox.Items.Add(CharacterDetailsView._exdProvider.Tribes[i].Name);
-            }
-            var StatusSheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Status>();
-            HashSet<byte> Sets = new HashSet<byte>();
-            foreach (SaintCoinach.Xiv.Status status in StatusSheet)
-            {
-                if(status.Key==0)
+                for (int i = 0; i < CharacterDetailsView._exdProvider.Races.Count; i++)
                 {
-                    ViewTime4.StatusEffectBox2.Items.Add(new ComboBoxItem() { Content = "None", Tag = 0 });
+                    ViewTime.RaceBox.Items.Add(CharacterDetailsView._exdProvider.Races[i].Name);
                 }
-                if (Sets.Contains(status.VFX) || status.VFX <= 0) continue;
-                Sets.Add(status.VFX);
-                string name = status.Name.ToString();
-                if (name.Length <= 0) name = "None";
-                ViewTime4.StatusEffectBox2.Items.Add(new ComboBoxItem() { Content = name, Tag = status.Key });
-            }
-            var TitleSheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Title>();
-            foreach (SaintCoinach.Xiv.Title title in TitleSheet)
-            {
-                string Title = title.Feminine;
-                if (Title.Length <= 0) Title = "No Title";
-                ViewTime.TitleBox.Items.Add(Title);
-            }
-            var WeatherSheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Weather>();
-            foreach (SaintCoinach.Xiv.Weather weather in WeatherSheet)
-            {
-                if (weather.Key == 0 || weather.Icon == null)
+                for (int i = 0; i < CharacterDetailsView._exdProvider.Tribes.Count; i++)
                 {
-                    byte[] Bytes = { (byte)weather.Key, (byte)weather.Key };
-                    ViewTime3.ForceWeatherBox.Items.Add(new ExdCsvReader.Weather
+                    ViewTime.ClanBox.Items.Add(CharacterDetailsView._exdProvider.Tribes[i].Name);
+                }
+                var StatusSheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Status>();
+                HashSet<byte> Sets = new HashSet<byte>();
+                foreach (SaintCoinach.Xiv.Status status in StatusSheet)
+                {
+                    if (status.Key == 0)
                     {
-                        Index = Convert.ToInt32(weather.Key),
-                        Key = BitConverter.ToUInt16(Bytes, 0),
-                        Name = weather.Name.ToString(),
-                        Icon = null
-                    });
+                        ViewTime4.StatusEffectBox2.Items.Add(new ComboBoxItem() { Content = "None", Tag = 0 });
+                    }
+                    if (Sets.Contains(status.VFX) || status.VFX <= 0) continue;
+                    Sets.Add(status.VFX);
+                    string name = status.Name.ToString();
+                    if (name.Length <= 0) name = "None";
+                    ViewTime4.StatusEffectBox2.Items.Add(new ComboBoxItem() { Content = name, Tag = status.Key });
                 }
-                else
+                var TitleSheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Title>();
+                foreach (SaintCoinach.Xiv.Title title in TitleSheet)
                 {
-                    byte[] Bytes = { (byte)weather.Key, (byte)weather.Key };
-                    ViewTime3.ForceWeatherBox.Items.Add(new ExdCsvReader.Weather
-                    {
-                        Index = Convert.ToInt32(weather.Key),
-                        Name = weather.Name.ToString(),
-                        Key = BitConverter.ToUInt16(Bytes, 0),
-                        Icon = ExdCsvReader.CreateSource(weather.Icon)
-                    });
+                    string Title = title.Feminine;
+                    if (Title.Length <= 0) Title = "No Title";
+                    ViewTime.TitleBox.Items.Add(Title);
                 }
+                var WeatherSheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Weather>();
+                foreach (SaintCoinach.Xiv.Weather weather in WeatherSheet)
+                {
+                    if (weather.Key == 0 || weather.Icon == null)
+                    {
+                        byte[] Bytes = { (byte)weather.Key, (byte)weather.Key };
+                        ViewTime3.ForceWeatherBox.Items.Add(new ExdCsvReader.Weather
+                        {
+                            Index = Convert.ToInt32(weather.Key),
+                            Key = BitConverter.ToUInt16(Bytes, 0),
+                            Name = weather.Name.ToString(),
+                            Icon = null
+                        });
+                    }
+                    else
+                    {
+                        byte[] Bytes = { (byte)weather.Key, (byte)weather.Key };
+                        ViewTime3.ForceWeatherBox.Items.Add(new ExdCsvReader.Weather
+                        {
+                            Index = Convert.ToInt32(weather.Key),
+                            Name = weather.Name.ToString(),
+                            Key = BitConverter.ToUInt16(Bytes, 0),
+                            Icon = ExdCsvReader.CreateSource(weather.Icon)
+                        });
+                    }
+                }
+            }
+            catch(Exception)
+            {
+
             }
         }
         private void LoadSettings(string region)

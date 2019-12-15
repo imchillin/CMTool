@@ -307,7 +307,7 @@ namespace ConceptMatrix.Utility
 			{
 				Tribes = null;
 
-				throw;
+				//throw;
 
 			}
 		}
@@ -332,7 +332,7 @@ namespace ConceptMatrix.Utility
 			catch (Exception)
 			{
 				Races = null;
-				throw;
+				//throw;
 			}
 		}
 		public void EmoteList()
@@ -375,7 +375,7 @@ namespace ConceptMatrix.Utility
 				{
 					Emotes = null;
 
-					throw;
+				//	throw;
 
 				}
 			}
@@ -421,7 +421,7 @@ namespace ConceptMatrix.Utility
 				{
 					Monsters = null;
 
-					throw;
+				//	throw;
 
 				}
 			}
@@ -449,7 +449,7 @@ namespace ConceptMatrix.Utility
 				{
 					Dyes = null;
 
-					throw;
+					//throw;
 
 				}
 			}
@@ -645,7 +645,7 @@ namespace ConceptMatrix.Utility
             {
                 TerritoryTypes = null;
 
-                throw;
+            //    throw;
 
             }
         }
@@ -703,7 +703,7 @@ namespace ConceptMatrix.Utility
 				{
 					ItemsProps = null;
 
-					throw;
+				//	throw;
 
 				}
 			}
@@ -754,7 +754,7 @@ namespace ConceptMatrix.Utility
 				{
 					BGMs = null;
 
-					throw;
+				//	throw;
 
 				}
 			}
