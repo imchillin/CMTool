@@ -212,13 +212,26 @@ namespace ConceptMatrix.ViewModel
                     else
                     {
                         byte[] Bytes = { (byte)weather.Key, (byte)weather.Key };
-                        ViewTime3.ForceWeatherBox.Items.Add(new ExdCsvReader.Weather
+                        try
                         {
-                            Index = Convert.ToInt32(weather.Key),
-                            Name = weather.Name.ToString(),
-                            Key = BitConverter.ToUInt16(Bytes, 0),
-                            Icon = ExdCsvReader.CreateSource(weather.Icon)
-                        });
+                            ViewTime3.ForceWeatherBox.Items.Add(new ExdCsvReader.Weather
+                            {
+                                Index = Convert.ToInt32(weather.Key),
+                                Name = weather.Name.ToString(),
+                                Key = BitConverter.ToUInt16(Bytes, 0),
+                                Icon = ExdCsvReader.CreateSource(weather.Icon)
+                            });
+                        }
+                        catch
+                        {
+                            ViewTime3.ForceWeatherBox.Items.Add(new ExdCsvReader.Weather
+                            {
+                                Index = Convert.ToInt32(weather.Key),
+                                Name = weather.Name.ToString(),
+                                Key = BitConverter.ToUInt16(Bytes, 0),
+                                Icon = null
+                            });
+                        }
                     }
                 }
             }
