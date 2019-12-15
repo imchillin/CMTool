@@ -593,7 +593,7 @@
     <value>Couleur de Cheveux:</value>
   </data>
   <data name="HairColor2" xml:space="preserve">
-    <value>Couleur de Cheveux 2:</value>
+    <value>Couleur de Cheveux 2</value>
   </data>
   <data name="HairColorToolTip" xml:space="preserve">
     <value>Change la Couleur de Cheveux de l'Acteur sélectionné.</value>
@@ -1273,5 +1273,23 @@
   </data>
   <data name="Wiki" xml:space="preserve">
     <value>Wiki</value>
+  </data>
+  <data name="GposeViewX" xml:space="preserve">
+    <value>GPose View X:</value>
+  </data>
+  <data name="GposeViewY" xml:space="preserve">
+    <value>GPose View Y:</value>
+  </data>
+  <data name="GposeViewZ" xml:space="preserve">
+    <value>GPose View Z:</value>
+  </data>
+  <data name="FaceCamX" xml:space="preserve">
+    <value>Face Cam X:</value>
+  </data>
+  <data name="FaceCamY" xml:space="preserve">
+    <value>Face Cam Y:</value>
+  </data>
+  <data name="FaceCamZ" xml:space="preserve">
+    <value>Face Cam Z:</value>
   </data>
 </root>

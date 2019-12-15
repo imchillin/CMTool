@@ -492,9 +492,6 @@
   <data name="Face" xml:space="preserve">
     <value>얼굴</value>
   </data>
-  <data name="FacePaint1" xml:space="preserve">
-    <value>얼굴 문신</value>
-  </data>
   <data name="FacePaintColor" xml:space="preserve">
     <value>얼굴 문신 색상</value>
   </data>

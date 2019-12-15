@@ -80,9 +80,7 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Display the list of targetable entities in the area around you.
-        ///
-        ///• The list is populated based on distance from the player, and can potentially shift if any entities change positions, including minions.  
-        ///.
+        ///• The list is populated based on distance from the player, and can potentially shift if any entities change positions, including minions..
         /// </summary>
         public static string ActorEntityListToolTip {
             get {
@@ -191,7 +189,6 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Contains data about the selected Entity.
-        ///
         ///• You can copy-paste data into this field and hit Apply..
         /// </summary>
         public static string ArrayOfBytesToolTip {
@@ -337,7 +334,6 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Modifies the X Scale of the selected actors Bust.
-        ///
         ///• This option is Female only..
         /// </summary>
         public static string BustXScaleToolTip {
@@ -357,7 +353,6 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Modifies the Y Scale of the selected actors Bust.
-        ///
         ///• This option is Female only..
         /// </summary>
         public static string BustYScaleToolTip {
@@ -377,7 +372,6 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Modifies the Z Scale of the selected actors Bust.
-        ///
         ///• This option is Female only..
         /// </summary>
         public static string BustZScaleToolTip {
@@ -811,13 +805,9 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Changes the Data Path of the selected entity.
-        ///
         ///•This will allow you use the animations of other Races or Genders.
-        ///
         ///• Does not require an Actor Refresh, and can be used in and out of GPose.
-        ///
         ///• The entity&apos;s skeleton will be morphed to fit the selected race. This stretching or shrinking is unavoidable.
-        ///
         ///• You can use Actor Refresh if you want to become an abomination for fun..
         /// </summary>
         public static string DataPathToolTip {
@@ -855,7 +845,6 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Gives the selected entity a much more pronounced wetness effect.
-        ///
         ///• Same as Wet, this effect goes away over time..
         /// </summary>
         public static string DrenchedToolTip {
@@ -983,11 +972,8 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to For Advanced Users Only!
-        ///
         ///• This will change the Entity type of the selected entity.
-        ///
         ///• This can lead to unpredictable and unwanted behavior for some entities.
-        ///
         ///• Changing some NPCs to Type 1 will allow them to be targetable in GPose..
         /// </summary>
         public static string EntityTypeToolTip {
@@ -1268,13 +1254,9 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Forces the selected entity to perform an animation.
-        ///
         ///• This can only be used in GPose.
-        ///
         ///• In order to use this, you need to do a non-looping emote, suchs as /wave before entering GPose.
-        ///
         ///• Some animations have a specific race/gender requirement in order to perform. You may need to use a different Data Path if your character is just twitching.
-        ///
         ///• Does not work on NPCs!.
         /// </summary>
         public static string ForceAnimToolTip {
@@ -1357,9 +1339,7 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Freezes the position of the selected entity
-        ///
         ///• This is useful for moving entities in GPose, as it will prevent them from snapping back to their original position when their emote changes or you use face camera.
-        ///
         ///• Make sure to press this button again before clicking or tabbing to a new entity, or it will snap them to the same position..
         /// </summary>
         public static string FreezePosToolTip {
@@ -1379,13 +1359,9 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Freezes the rotation of the selected entity.
-        ///
         ///• This is useful in conjunction with Freeze Pos for preserving the position and rotation of an entity in GPose.
-        ///
         ///• You can use this along with the &apos;Face Camera&apos; toggle in-game (Default: Space Bar) to turn the entity&apos;s head without turning the entire body.
-        ///
         ///• Same as Freeze Pos, make sure to toggle off Freeze Rot before switching entities in GPose. 
-        ///
         ///• Required for using Numerical direct input or Rotation Sliders..
         /// </summary>
         public static string FreezeRotToolTip {
@@ -1441,7 +1417,6 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Allows for certain values such as XYZ Position, Rotation and Animation to be changed for your currently selected entity in GPose.
-        ///
         ///• GPose mode and Target Mode both toggle on at the same time. Make sure not to have Target Mode already toggled on, or it will toggle off instead..
         /// </summary>
         public static string GposeModeToolTip {
@@ -1686,11 +1661,8 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Changes the Idle Animation of the selected entity.
-        ///
         ///• This can be used both in and out of GPose.
-        ///
         ///• If you plan to use this in GPose, you will need to sit/stand, then use /cpose until your Idle Anim reads.
-        ///
         ///• This can be used on Pets, Minions, Chocobos and most NPCs!.
         /// </summary>
         public static string IdleAnimToolTip {
@@ -1935,7 +1907,6 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Load Appearance from a user-generated JSON file. 
-        ///
         ///•You can load data you have saved from the Character Creator in-game using the &apos;Load .DAT&apos; option..
         /// </summary>
         public static string LoadMainWindowToolTip {
@@ -1973,7 +1944,6 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Locks the Facial Animation of the selected actor.
-        ///
         ///• To properly lock the facial animation of the selected actor, you need to toggle this on, freeze the option, and then set Anim Speed to Zero..
         /// </summary>
         public static string LockFacialAnimationToolTip {
@@ -2056,7 +2026,6 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Controls the XYZ Scale of the entity&apos;s main hand weapon.
-        ///
         ///• This can be used to resize main hand props as well, but does not affect the size of &apos;vfx items&apos; that appear temporarily during certain emotes, such as the Tomestone..
         /// </summary>
         public static string MainHandScaleToolTip {
@@ -2067,7 +2036,6 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Allows you to equip any weapon on the selected actor.
-        ///
         ///• If you want their hands to be empty, either equip the &apos;Emperor&apos;s New Fists&apos;, or use Main Hand Scale and/or Off Hand Scale in the Right Pane..
         /// </summary>
         public static string MainHandToolTip {
@@ -2141,9 +2109,7 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Opens a flyout menu on the right side that allows you to search for Monsters, Demi-Humans, Prop Entities and Entity-Based Effects.
-        ///
         ///• Some NPCs are found under this selection because they are classified as Demi-Humans, such as Beast Tribes, Zenos, Thordan/Knights, etc.
-        ///
         ///• If you become invisible after changing to a Demi-Human, change all of your Equipment to Base 0, Variant 0. If this doesn&apos;t work, try 1,0 or 1,1..
         /// </summary>
         public static string ModelTypeButtonToolTip {
@@ -2307,9 +2273,7 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Opens a fly-out search window on the right that allows you to search for NPCs by name.
-        ///
         ///• You will need to use Actor Refresh after clicking an entry to assume their appearance. 
-        ///
         ///• Some NPCs, such as beast tribes, Zenos and a few others are not in this section because they are classified as Demi-Humans. They can be found by searching Model Type on the first tab..
         /// </summary>
         public static string NPCOutfitToolTip {
@@ -2347,7 +2311,6 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Controls the XYZ Scale of the entity&apos;s off hand weapon.
-        ///
         ///• This affects equipment such as a Shield, Quiver, Aetherpack, Sleeve, Katana Sheath, Focus and Left Hand Dagger or Fist..
         /// </summary>
         public static string OffHandScaleToolTip {
@@ -2358,7 +2321,6 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Allows you to equip an off hand weapon. 
-        ///
         ///•In order to find an applicable off hand (except for shields), you need to search for the main hand equipment using the off hand &apos;View&apos; button. For example to find a Sheath or Quiver, you need to search for the Katana or Bow that goes with it..
         /// </summary>
         public static string OffHandToolTip {
@@ -2496,13 +2458,9 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Use your mouse buttons to control the cube.
-        ///
         ///• All rotations are relative to the direction that the entity is currently facing.
-        ///
         ///• RMB controls X-axis rotation.
-        ///
         ///• LMB controls Y-axis rotation.
-        ///
         ///• MMB controls Z-axis rotation..
         /// </summary>
         public static string RealTimeRotationToolTip {
@@ -2549,7 +2507,6 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to This toggle will make all XYZ movements relative to the entity being targeted, and not absolute based on the gameworld.
-        ///
         ///• This setting is defaulted to on, and its state is saved between sessions..
         /// </summary>
         public static string RelativeXYZPosToolTip {
@@ -2569,7 +2526,6 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to This toggle will make all XYZ rotations relative to the entity being targeted, and not absolute based on the gameworld. 
-        ///
         ///• This setting is defaulted to on, and its state is saved between sessions.
         ///• Only affects the Realtime Rotation Cube..
         /// </summary>
@@ -2698,11 +2654,8 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to This toggle will switch between Rotation Sliders and Numerical direct input.
-        ///
         ///•This setting is defaulted to on, and its state is saved between sessions.
-        ///
         ///• Turning it off will turn the XYZ Rotation sliders into numerical values.
-        ///
         ///• Each input will accept a value between 0 and 360. 
         ///• Both Rotation Sliders and Numerical direct input require Rotation to be frozen..
         /// </summary>
@@ -2832,13 +2785,9 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Allows you to apply non-standard status VFX to entities in GPose.
-        ///
         ///1. Activate one of the basic Statuses in the GPose menu (Such as Pyretic)
-        ///
         ///2. Select the new VFX you want from the drop-down menu.
-        ///
         ///3. Remove the Status you selected using the GPose menu.
-        ///
         ///• To choose a new effect or remove the current one, hit Reset or overwrite it with another Status (Such as Deep Freeze)..
         /// </summary>
         public static string StatusEffectToolTip {
@@ -2894,7 +2843,6 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Allows you to change values for your selected target without using the Entity List.
-        ///
         ///•This is handy for busy areas where the Entity List constantly shifting. You will need to uncheck this and use the normal method to apply the changes you make, though..
         /// </summary>
         public static string TargetModeToolTip {
@@ -2941,7 +2889,6 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Adjusts the current time for the zone.
-        ///
         ///• Using Time Control while in GPose with &apos;Freeze Time/Weather&apos; toggled on will cycle the phases of the Moon..
         /// </summary>
         public static string TimeControlToolTip {
@@ -2952,7 +2899,6 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Attempts to prevent the time set using Time Control from changing.
-        ///
         ///•This is imprecise, and will still shift slightly over long periods of time..
         /// </summary>
         public static string TimeLockToolTip {
@@ -3026,9 +2972,7 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Modifies the transparency of the selected entity.
-        ///
         ///• Reducing the transparency of an actor does not affect their main or offhand weapons. You can set the XYZ scale of their weapons to 0 in the Equipment tab.
-        ///
         ///• Setting this to 0 for an entity in GPose can cause the system to forget that they&apos;re targetable. If you plan to still use them, set it to 0.03..
         /// </summary>
         public static string TransparencyToolTip {
@@ -3192,7 +3136,6 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Controls the current weather for your zone.
-        ///
         ///•This method uses instant transitions, and will change as soon as you select a weather from the drop down menu..
         /// </summary>
         public static string WeatherForceToolTip {
@@ -3212,7 +3155,6 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Controls the current weather for your zone. 
-        ///
         ///•This method uses natural transitions and may a bit of time to take effect..
         /// </summary>
         public static string WeatherToolTip {
@@ -3232,7 +3174,6 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Gives the target entity the effect that you get from being in water, or in rain.
-        ///
         ///• This effect will wear off over time if toggled off..
         /// </summary>
         public static string WetToolTip {
@@ -3297,7 +3238,6 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Modifies the X Position of the selected actor.
-        ///
         ///• You may need to Freeze the animations of your actor to properly apply this in GPose..
         /// </summary>
         public static string XPosToolTip {
@@ -3335,9 +3275,7 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Modifies the X Rotation of the selected actor.
-        ///
         ///• You may need to Freeze the animations of your actor to properly apply this in GPose.
-        ///
         ///• Both Rotation Sliders and Numerical direct input require Rotation to be frozen..
         /// </summary>
         public static string XRotToolTip {
@@ -3366,7 +3304,6 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Modifies the Y Position of the selected actor.
-        ///
         ///• You may need to Freeze the animations of your actor to properly apply this in GPose..
         /// </summary>
         public static string YPosToolTip {
@@ -3404,9 +3341,7 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Modifies the Y Rotation of the selected actor. 
-        ///
         ///• You may need to Freeze the animations of your actor to properly apply this in GPose.
-        ///
         ///• Both Rotation Sliders and Numerical direct input require Rotation to be frozen..
         /// </summary>
         public static string YRotToolTip {
@@ -3444,7 +3379,6 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Sets the XYZ Scale to 0, effectively rendering it invisible.
-        ///
         ///• You can undo this by inputing &apos;1.0&apos; in each of the fields..
         /// </summary>
         public static string ZeroScaleToolTip {
@@ -3464,7 +3398,6 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Modifies the Z Position of the selected actor.
-        ///
         ///• You may need to Freeze the animations of your actor to properly apply this in GPose..
         /// </summary>
         public static string ZPosToolTip {
@@ -3502,7 +3435,6 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Modifies the Z Rotation of the selected actor.
-        ///
         ///• You may need to Freeze the animations of your actor to properly apply this in GPose.
         ///• Both Rotation Sliders and Numerical direct input require Rotation to be frozen..
         /// </summary>

@@ -411,4 +411,7 @@
   <data name="NoneOffHand" xml:space="preserve">
     <value>オフハンドの美学</value>
   </data>
+  <data name="Equipment" xml:space="preserve">
+    <value>装備</value>
+  </data>
 </root>

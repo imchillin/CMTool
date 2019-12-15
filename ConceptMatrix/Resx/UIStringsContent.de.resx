@@ -1072,7 +1072,7 @@ Statuseffekte:</value>
     <value>Daumengelenk</value>
   </data>
   <data name="TimeButtonLockToolTip" xml:space="preserve">
-    <value />
+    <value>Time Toggle Switch</value>
   </data>
   <data name="TimeControl" xml:space="preserve">
     <value>Zeitkontrolle:</value>
@@ -1270,5 +1270,26 @@ Statuseffekte:</value>
     <value>Rotiert den gewählten Charakter um die Z-Achse.
 • Man wird den Charakter einfrieren müssen, um die Position besser in GPose einstellen zu können.
 • Sowohl Rotationsregler als auch Zifferneingabe setzen vorraus das die Rotation eingefroren ist.</value>
+  </data>
+  <data name="GposeViewX" xml:space="preserve">
+    <value>GPose View X:</value>
+  </data>
+  <data name="GposeViewY" xml:space="preserve">
+    <value>GPose View Y:</value>
+  </data>
+  <data name="GposeViewZ" xml:space="preserve">
+    <value>GPose View Z:</value>
+  </data>
+  <data name="FaceCamX" xml:space="preserve">
+    <value>Face Cam X:</value>
+  </data>
+  <data name="FaceCamY" xml:space="preserve">
+    <value>Face Cam Y:</value>
+  </data>
+  <data name="FaceCamZ" xml:space="preserve">
+    <value>Face Cam Z:</value>
+  </data>
+  <data name="Wiki" xml:space="preserve">
+    <value>Wiki</value>
   </data>
 </root>
