@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Settings>
-  <LastUpdated>5.15x4</LastUpdated>
-  <CameraOffset>1C037A0</CameraOffset>
-  <GposeOffset>1C03988</GposeOffset>
-  <GposeEntityOffset>1C06820</GposeEntityOffset>
-  <GposeCheckOffset>1C5447A</GposeCheckOffset>
-  <GposeCheck2Offset>1C07570</GposeCheck2Offset>
-  <AoBOffset>1C04D90</AoBOffset>
-  <TargetOffset>1C039F0</TargetOffset>
-  <TimeOffset>1BE47C8</TimeOffset>
-  <WeatherOffset>1BBB548</WeatherOffset>
-  <TerritoryOffset>1C027C0</TerritoryOffset>
-  <GposeFilters>1BE2728</GposeFilters>
-  <MusicOffset>1C19360</MusicOffset>
-  <SkeletonOffset>1330AF0</SkeletonOffset>
-  <SkeletonOffset2>1331C1D</SkeletonOffset2>
-  <SkeletonOffset3>133F884</SkeletonOffset3>
-  <PhysicsOffset>39F008</PhysicsOffset>
-  <PhysicsOffset2>39EFFF</PhysicsOffset2>
-  <CharacterRenderOffset>4554F0</CharacterRenderOffset>
-  <CharacterRenderOffset2>4554E6</CharacterRenderOffset2>
+  <LastUpdated>5.2</LastUpdated>
+  <CameraOffset>1BFE7A0</CameraOffset><!--Done-->
+  <GposeOffset>1BFE988</GposeOffset><!--Done-->
+  <GposeEntityOffset>1C01820</GposeEntityOffset><!--Done-->
+  <GposeCheckOffset>1C4F47A</GposeCheckOffset><!--Done-->
+  <GposeCheck2Offset>1C02570</GposeCheck2Offset><!--Done-->
+  <AoBOffset>1BFFD90</AoBOffset><!--Done-->
+  <TargetOffset>1BFE9F0</TargetOffset><!--Done-->
+  <TimeOffset>1BDF7C8</TimeOffset><!--Done-->
+  <WeatherOffset>1BB6548</WeatherOffset> <!--Done-->
+  <TerritoryOffset>1BFD7C0</TerritoryOffset><!--Done-->
+  <GposeFilters>1BDD728</GposeFilters><!--Done-->
+  <MusicOffset>1C14360</MusicOffset> <!--Done-->
+  <SkeletonOffset>1330BD0</SkeletonOffset><!--Done-->
+  <SkeletonOffset2>1331CFD</SkeletonOffset2><!--Done-->
+  <SkeletonOffset3>133F964</SkeletonOffset3><!--Done-->
+  <PhysicsOffset>39EFC8</PhysicsOffset><!--Done-->
+  <PhysicsOffset2>39EFBF</PhysicsOffset2><!--Done-->
+  <CharacterRenderOffset>4554B0</CharacterRenderOffset><!--Done-->
+  <CharacterRenderOffset2>4554A6</CharacterRenderOffset2><!--Done-->
   <Character>
     <Name>30</Name>
     <FCTag>17FA</FCTag>

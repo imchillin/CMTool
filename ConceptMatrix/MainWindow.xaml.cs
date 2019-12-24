@@ -86,7 +86,7 @@ namespace ConceptMatrix
             }
             catch (Exception e)
             {
-                System.Windows.MessageBox.Show(string.Format($"Please make sure you are running Concept Matrix in the folder it came in. If you continue to receive this error, Please make sure your Anti - Virus is not blocking CMTool. Error: { 0} Exception: { 1}", e.Message, e.InnerException),"Error!");
+                System.Windows.MessageBox.Show($"Please make sure you are running Concept Matrix in the folder it came in. If you continue to receive this error, Please make sure your Anti - Virus is not blocking CMTool. Error: {e.Message} Exception: {e.InnerException}"+ "\n======================================================\n" + $"Stacktrace: {e.StackTrace}"+ "\n======================================================\n" + $"TargetMethod: {e.TargetSite}","Error!");
                 Environment.Exit(-1);
                 return;
             }
@@ -251,6 +251,7 @@ namespace ConceptMatrix
                 MainViewModel.gameProcId = f.Choice.ID;
             }
         }
+
         private void FindProcess_Click(object sender, RoutedEventArgs e)
         {
             List<ProcessLooker.Game> GameList = new List<ProcessLooker.Game>();
