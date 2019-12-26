@@ -1530,7 +1530,7 @@ namespace ConceptMatrix.ViewModel
                         CharacterDetails.Head_Z.value,
                         CharacterDetails.Head_W.value
                     ).ToEulerAngles();
-
+                    MainViewModel.ViewTime5.newrot = new Vector3D((float)euler.X, (float)euler.Y, (float)euler.Z);
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
@@ -1929,7 +1929,7 @@ namespace ConceptMatrix.ViewModel
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
-                  //  MainViewModel.ViewTime5.newrot = new Vector3D((float)euler.X, (float)euler.Y, (float)euler.Z);
+                    MainViewModel.ViewTime5.newrot = new Vector3D((float)euler.X, (float)euler.Y, (float)euler.Z);
                     CharacterDetails.HandLeft_Toggle = false;
                     CharacterDetails.HandLeft_Rotate = true;
                 }
@@ -2827,7 +2827,7 @@ namespace ConceptMatrix.ViewModel
                         CharacterDetails.RootHead_Z.value,
                         CharacterDetails.RootHead_W.value
                     ).ToEulerAngles();
-
+                    MainViewModel.ViewTime5.newrot = new Vector3D((float)euler.X, (float)euler.Y, (float)euler.Z);
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
