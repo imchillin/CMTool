@@ -13062,11 +13062,145 @@ namespace ConceptMatrix.Views
         {
             // Get the euler angles from UI.
             var quat = GetEulerAngles().ToQuaternion();
-
+       //     oldrot = newrot;
             CharacterDetails.HandLeft_X.value = (float)quat.X;
             CharacterDetails.HandLeft_Y.value = (float)quat.Y;
             CharacterDetails.HandLeft_Z.value = (float)quat.Z;
             CharacterDetails.HandLeft_W.value = (float)quat.W;
+            #region ChildBones
+            /*  newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+              Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+              Quaternion q1_new = newrot.ToQuaternion();
+              byte[] bytearray = null;
+              bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexALeft_X), 16);
+              #region Index
+              Quaternion q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12)
+              ).ToEulerAngles().ToQuaternion();
+
+              Quaternion q21 = QuatMult(q2, q1_inv);
+              Quaternion q2_new = QuatMult(q21, q1_new);
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base,
+                  Settings.Instance.Character.Body.Bones.IndexALeft_X), BitConverter.GetBytes((float)q2_new.X));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base,
+                  Settings.Instance.Character.Body.Bones.IndexALeft_Y), BitConverter.GetBytes((float)q2_new.Y));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base,
+                  Settings.Instance.Character.Body.Bones.IndexALeft_Z), BitConverter.GetBytes((float)q2_new.Z));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base,
+                  Settings.Instance.Character.Body.Bones.IndexALeft_W), BitConverter.GetBytes((float)q2_new.W));
+
+              bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexBLeft_X), 16);
+              q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12)
+              ).ToEulerAngles().ToQuaternion();
+
+              q21 = QuatMult(q2, q1_inv);
+              q2_new = QuatMult(q21, q1_new);
+
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexBLeft_X), BitConverter.GetBytes((float)q2_new.X));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexBLeft_Y), BitConverter.GetBytes((float)q2_new.Y));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexBLeft_Z), BitConverter.GetBytes((float)q2_new.Z));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexBLeft_W), BitConverter.GetBytes((float)q2_new.W));
+              #endregion
+              #region thumb
+              bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbALeft_X), 16);
+              q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12)
+              ).ToEulerAngles().ToQuaternion();
+
+              q21 = QuatMult(q2, q1_inv);
+              q2_new = QuatMult(q21, q1_new);
+
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbALeft_X), BitConverter.GetBytes((float)q2_new.X));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbALeft_Y), BitConverter.GetBytes((float)q2_new.Y));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbALeft_Z), BitConverter.GetBytes((float)q2_new.Z));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbALeft_W), BitConverter.GetBytes((float)q2_new.W));
+
+              bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBLeft_X), 16);
+              q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12)
+              ).ToEulerAngles().ToQuaternion();
+
+              q21 = QuatMult(q2, q1_inv);
+              q2_new = QuatMult(q21, q1_new);
+
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBLeft_X), BitConverter.GetBytes((float)q2_new.X));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBLeft_Y), BitConverter.GetBytes((float)q2_new.Y));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBLeft_Z), BitConverter.GetBytes((float)q2_new.Z));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBLeft_W), BitConverter.GetBytes((float)q2_new.W));
+              #endregion
+              #region Ring
+              bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingALeft_X), 16);
+              q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12)
+              ).ToEulerAngles().ToQuaternion();
+
+              q21 = QuatMult(q2, q1_inv);
+              q2_new = QuatMult(q21, q1_new);
+
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingALeft_X), BitConverter.GetBytes((float)q2_new.X));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingALeft_Y), BitConverter.GetBytes((float)q2_new.Y));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingALeft_Z), BitConverter.GetBytes((float)q2_new.Z));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingALeft_W), BitConverter.GetBytes((float)q2_new.W));
+
+              bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingBLeft_X), 16);
+              q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12)
+              ).ToEulerAngles().ToQuaternion();
+
+              q21 = QuatMult(q2, q1_inv);
+              q2_new = QuatMult(q21, q1_new);
+
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingBLeft_X), BitConverter.GetBytes((float)q2_new.X));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingBLeft_Y), BitConverter.GetBytes((float)q2_new.Y));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingBLeft_Z), BitConverter.GetBytes((float)q2_new.Z));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingBLeft_W), BitConverter.GetBytes((float)q2_new.W));
+              #endregion
+              #region middle
+              bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleALeft_X), 16);
+              q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12)
+              ).ToEulerAngles().ToQuaternion();
+
+              q21 = QuatMult(q2, q1_inv);
+              q2_new = QuatMult(q21, q1_new);
+
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleALeft_X), BitConverter.GetBytes((float)q2_new.X));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleALeft_Y), BitConverter.GetBytes((float)q2_new.Y));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleALeft_Z), BitConverter.GetBytes((float)q2_new.Z));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleALeft_W), BitConverter.GetBytes((float)q2_new.W));
+
+              bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBLeft_X), 16);
+              q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12)
+              ).ToEulerAngles().ToQuaternion();
+
+              q21 = QuatMult(q2, q1_inv);
+              q2_new = QuatMult(q21, q1_new);
+
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBLeft_X), BitConverter.GetBytes((float)q2_new.X));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBLeft_Y), BitConverter.GetBytes((float)q2_new.Y));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBLeft_Z), BitConverter.GetBytes((float)q2_new.Z));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBLeft_W), BitConverter.GetBytes((float)q2_new.W));
+              #endregion
+              #region Pinky
+              bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyALeft_X), 16);
+              q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12)
+              ).ToEulerAngles().ToQuaternion();
+
+              q21 = QuatMult(q2, q1_inv);
+              q2_new = QuatMult(q21, q1_new);
+
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyALeft_X), BitConverter.GetBytes((float)q2_new.X));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyALeft_Y), BitConverter.GetBytes((float)q2_new.Y));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyALeft_Z), BitConverter.GetBytes((float)q2_new.Z));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyALeft_W), BitConverter.GetBytes((float)q2_new.W));
+
+              bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyBLeft_X), 16);
+              q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12)
+              ).ToEulerAngles().ToQuaternion();
+
+              q21 = QuatMult(q2, q1_inv);
+              q2_new = QuatMult(q21, q1_new);
+
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyBLeft_X), BitConverter.GetBytes((float)q2_new.X));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyBLeft_Y), BitConverter.GetBytes((float)q2_new.Y));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyBLeft_Z), BitConverter.GetBytes((float)q2_new.Z));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyBLeft_W), BitConverter.GetBytes((float)q2_new.W));
+              #endregion*/
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= HandLeft_Slider;
             BoneSlider2.ValueChanged -= HandLeft_Slider;
@@ -13077,11 +13211,145 @@ namespace ConceptMatrix.Views
         {
             // Get the euler angles from UI.
             var quat = GetEulerAngles().ToQuaternion();
-
+         //   oldrot = newrot;
             CharacterDetails.HandLeft_X.value = (float)quat.X;
             CharacterDetails.HandLeft_Y.value = (float)quat.Y;
             CharacterDetails.HandLeft_Z.value = (float)quat.Z;
             CharacterDetails.HandLeft_W.value = (float)quat.W;
+            #region ChildBones
+            /*  newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+              Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+              Quaternion q1_new = newrot.ToQuaternion();
+              byte[] bytearray = null;
+              bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexALeft_X), 16);
+              #region Index
+              Quaternion q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12)
+              ).ToEulerAngles().ToQuaternion();
+
+              Quaternion q21 = QuatMult(q2, q1_inv);
+              Quaternion q2_new = QuatMult(q21, q1_new);
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base,
+                  Settings.Instance.Character.Body.Bones.IndexALeft_X), BitConverter.GetBytes((float)q2_new.X));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base,
+                  Settings.Instance.Character.Body.Bones.IndexALeft_Y), BitConverter.GetBytes((float)q2_new.Y));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base,
+                  Settings.Instance.Character.Body.Bones.IndexALeft_Z), BitConverter.GetBytes((float)q2_new.Z));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base,
+                  Settings.Instance.Character.Body.Bones.IndexALeft_W), BitConverter.GetBytes((float)q2_new.W));
+
+              bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexBLeft_X), 16);
+              q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12)
+              ).ToEulerAngles().ToQuaternion();
+
+              q21 = QuatMult(q2, q1_inv);
+              q2_new = QuatMult(q21, q1_new);
+
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexBLeft_X), BitConverter.GetBytes((float)q2_new.X));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexBLeft_Y), BitConverter.GetBytes((float)q2_new.Y));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexBLeft_Z), BitConverter.GetBytes((float)q2_new.Z));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexBLeft_W), BitConverter.GetBytes((float)q2_new.W));
+              #endregion
+              #region thumb
+              bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbALeft_X), 16);
+              q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12)
+              ).ToEulerAngles().ToQuaternion();
+
+              q21 = QuatMult(q2, q1_inv);
+              q2_new = QuatMult(q21, q1_new);
+
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbALeft_X), BitConverter.GetBytes((float)q2_new.X));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbALeft_Y), BitConverter.GetBytes((float)q2_new.Y));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbALeft_Z), BitConverter.GetBytes((float)q2_new.Z));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbALeft_W), BitConverter.GetBytes((float)q2_new.W));
+
+              bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBLeft_X), 16);
+              q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12)
+              ).ToEulerAngles().ToQuaternion();
+
+              q21 = QuatMult(q2, q1_inv);
+              q2_new = QuatMult(q21, q1_new);
+
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBLeft_X), BitConverter.GetBytes((float)q2_new.X));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBLeft_Y), BitConverter.GetBytes((float)q2_new.Y));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBLeft_Z), BitConverter.GetBytes((float)q2_new.Z));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBLeft_W), BitConverter.GetBytes((float)q2_new.W));
+              #endregion
+              #region Ring
+              bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingALeft_X), 16);
+              q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12)
+              ).ToEulerAngles().ToQuaternion();
+
+              q21 = QuatMult(q2, q1_inv);
+              q2_new = QuatMult(q21, q1_new);
+
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingALeft_X), BitConverter.GetBytes((float)q2_new.X));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingALeft_Y), BitConverter.GetBytes((float)q2_new.Y));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingALeft_Z), BitConverter.GetBytes((float)q2_new.Z));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingALeft_W), BitConverter.GetBytes((float)q2_new.W));
+
+              bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingBLeft_X), 16);
+              q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12)
+              ).ToEulerAngles().ToQuaternion();
+
+              q21 = QuatMult(q2, q1_inv);
+              q2_new = QuatMult(q21, q1_new);
+
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingBLeft_X), BitConverter.GetBytes((float)q2_new.X));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingBLeft_Y), BitConverter.GetBytes((float)q2_new.Y));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingBLeft_Z), BitConverter.GetBytes((float)q2_new.Z));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingBLeft_W), BitConverter.GetBytes((float)q2_new.W));
+              #endregion
+              #region middle
+              bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleALeft_X), 16);
+              q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12)
+              ).ToEulerAngles().ToQuaternion();
+
+              q21 = QuatMult(q2, q1_inv);
+              q2_new = QuatMult(q21, q1_new);
+
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleALeft_X), BitConverter.GetBytes((float)q2_new.X));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleALeft_Y), BitConverter.GetBytes((float)q2_new.Y));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleALeft_Z), BitConverter.GetBytes((float)q2_new.Z));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleALeft_W), BitConverter.GetBytes((float)q2_new.W));
+
+              bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBLeft_X), 16);
+              q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12)
+              ).ToEulerAngles().ToQuaternion();
+
+              q21 = QuatMult(q2, q1_inv);
+              q2_new = QuatMult(q21, q1_new);
+
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBLeft_X), BitConverter.GetBytes((float)q2_new.X));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBLeft_Y), BitConverter.GetBytes((float)q2_new.Y));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBLeft_Z), BitConverter.GetBytes((float)q2_new.Z));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBLeft_W), BitConverter.GetBytes((float)q2_new.W));
+              #endregion
+              #region Pinky
+              bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyALeft_X), 16);
+              q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12)
+              ).ToEulerAngles().ToQuaternion();
+
+              q21 = QuatMult(q2, q1_inv);
+              q2_new = QuatMult(q21, q1_new);
+
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyALeft_X), BitConverter.GetBytes((float)q2_new.X));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyALeft_Y), BitConverter.GetBytes((float)q2_new.Y));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyALeft_Z), BitConverter.GetBytes((float)q2_new.Z));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyALeft_W), BitConverter.GetBytes((float)q2_new.W));
+
+              bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyBLeft_X), 16);
+              q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12)
+              ).ToEulerAngles().ToQuaternion();
+
+              q21 = QuatMult(q2, q1_inv);
+              q2_new = QuatMult(q21, q1_new);
+
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyBLeft_X), BitConverter.GetBytes((float)q2_new.X));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyBLeft_Y), BitConverter.GetBytes((float)q2_new.Y));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyBLeft_Z), BitConverter.GetBytes((float)q2_new.Z));
+              m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyBLeft_W), BitConverter.GetBytes((float)q2_new.W));
+              #endregion*/
+            #endregion
             // Remove listeners for value changed.
             BoneUpDown.ValueChanged -= HandLeft_UpDown;
             BoneUpDown2.ValueChanged -= HandLeft_UpDown;
@@ -24864,5 +25132,59 @@ namespace ConceptMatrix.Views
             LoadHelm.IsChecked = false;
             LoadTop.IsChecked = false;
         }
+        public Quaternion QuatMult(Quaternion q1, Quaternion q2)
+        {
+            double x = q1.X * q2.X - q1.Y * q2.Y - q1.Z * q2.Z - q1.W * q2.W;
+            double y = q1.X * q2.Y + q1.Y * q2.X + q1.Z * q2.W - q1.W * q2.Z;
+            double z = q1.X * q2.Z - q1.Y * q2.W + q1.Z * q2.X + q1.W * q2.Y;
+            double w = q1.X * q2.W + q1.Y * q2.Z - q1.Z * q2.Y + q1.W * q2.X;
+            double norm = Math.Sqrt(x * x + y * y + z * z + w * w);
+            return new Quaternion(x / norm, y / norm, z / norm, w / norm);
+        }
+        private void SaveOldRot(object sender, RoutedEventArgs e)
+        {
+            oldrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+        }
+
+        private void SaveNewRot(object sender, RoutedEventArgs e)
+        {
+            newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+        }
+        public Quaternion QInv(Quaternion q1)
+        {
+            return new Quaternion(q1.X, -q1.Y, -q1.Z, -q1.W);
+        }
+        public Vector3D oldrot = new Vector3D(0, 0, 0);
+        public Vector3D newrot = new Vector3D(0, 0, 0);
+        private void ApplyRelRot(object sender, RoutedEventArgs e)
+        {
+            Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+            Quaternion q1_new = newrot.ToQuaternion();
+            Vector3D e2 = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+            Quaternion q2 = e2.ToQuaternion();
+            Quaternion q21 = QuatMult(q2, q1_inv);
+            Quaternion q2_new = QuatMult(q21, q1_new);
+            Vector3D e2_new = q2_new.ToEulerAngles();
+            // HOW DO I TRIGGER AN UPDATE!?!?
+            if (BoneSliderButton.IsChecked == false)
+            {
+                System.Windows.Input.Keyboard.Focus(BoneUpDown3);
+                System.Windows.Input.Keyboard.Focus(BoneUpDown3);
+                BoneUpDown.Value = e2_new.X;
+                BoneUpDown2.Value = e2_new.Y;
+                BoneUpDown3.Value = e2_new.Z;
+                BoneUpDown3_SourceUpdated(this, null);
+            }
+            else
+            {
+                System.Windows.Input.Keyboard.Focus(BoneSlider3);
+                System.Windows.Input.Keyboard.Focus(BoneSlider3);
+                BoneSlider.Value = e2_new.X;
+                BoneSlider2.Value = e2_new.Y;
+                BoneSlider3.Value = e2_new.Z;
+                BoneSliders3_SourceUpdated(this, null);
+            }
+        }
     }
 }
+//private void BoneSliders3_SourceUpdated(object sender, DataTransferEventArgs e)

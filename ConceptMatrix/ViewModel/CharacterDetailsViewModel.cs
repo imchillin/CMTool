@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Threading;
 using ConceptMatrix.Resx;
 using System.Threading.Tasks;
+using System.Windows.Media.Media3D;
 
 namespace ConceptMatrix.ViewModel
 {
@@ -1925,11 +1926,10 @@ namespace ConceptMatrix.ViewModel
                         CharacterDetails.HandLeft_Z.value,
                         CharacterDetails.HandLeft_W.value
                     ).ToEulerAngles();
-
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
                     CharacterDetails.BoneZ = (float)euler.Z;
-
+                  //  MainViewModel.ViewTime5.newrot = new Vector3D((float)euler.X, (float)euler.Y, (float)euler.Z);
                     CharacterDetails.HandLeft_Toggle = false;
                     CharacterDetails.HandLeft_Rotate = true;
                 }

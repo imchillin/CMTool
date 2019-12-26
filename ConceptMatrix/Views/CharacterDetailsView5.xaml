@@ -797,6 +797,8 @@
         <ToggleButton x:Name="PhysicsButton" Checked="PhysicsButton_Checked" Unchecked="PhysicsButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1011,405,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Visibility="Hidden" />
         <Label x:Name="PhysicsText" Content="{Binding Source={x:Static resx:UIPoseStrings.EnablePhysics}}" HorizontalAlignment="Left" Margin="907,405,0,0" VerticalAlignment="Top" Height="28" Visibility="Hidden"/>
         <Button x:Name="TertiaryButton" ToolTip="{Binding Source={x:Static resx:UIPoseStrings.TertiaryButtonToolTip}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="890,445,0,0" VerticalAlignment="Top" Width="175" Click="EnableTertiary" Height="28" Content="{Binding Source={x:Static resx:UIPoseStrings.DetectTertiaryBones}}" IsEnabled="False"/>
+        <Button x:Name="OldRotButton" Content="OldRot" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="890,478,0,0" VerticalAlignment="Top" Width="74" Click="SaveOldRot" Height="19" Padding="0"/>
+        <Button x:Name="NewRotBotton" Content="NewRot" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="890,502,0,0" VerticalAlignment="Top" Width="74" Click="SaveNewRot" Height="19" Padding="0"/>
         <Button x:Name="HeadShortcut" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="863,11,0,0" VerticalAlignment="Top" Width="33" Click="HeadShortcut_Click" Height="33" IsEnabled="true" Padding="0">
             <Button.Background>
                 <ImageBrush ImageSource="/ConceptMatrix;component/Resources/head.png"/>
@@ -847,6 +849,7 @@
                 <ImageBrush ImageSource="/ConceptMatrix;component/Resources/load.png"/>
             </Button.Background>
         </Button>
+        <Button x:Name="ApplyRot" Content="Apply" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="973,478,0,0" VerticalAlignment="Top" Width="92" Click="ApplyRelRot" Height="42" Padding="0"/>
 
         <!-- Other -->
 
