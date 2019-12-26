@@ -484,12 +484,199 @@ namespace ConceptMatrix.Views
         public bool HelmAdvLoad;
         public bool TopAdvLoad;
         #endregion
-
+ 
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
         private string GAS(params string[] args) => MemoryManager.GetAddressString(args);
         private readonly Mem m = MemoryManager.Instance.MemLib;
         private bool ReadTetriaryFromRunTime = false;
         private CharacterOffsets c = Settings.Instance.Character;
+
+        #region BoneTree
+        public class BoneNode
+        {
+            private string bonesOffset;
+            private List<BoneNode> children;
+            public BoneNode(string offset)
+            {
+                this.bonesOffset = offset;
+                children = new List<BoneNode>();
+            }
+
+            public string Get()
+            {
+                return bonesOffset;
+            }
+
+            public BoneNode Child(string offset)
+            {
+                BoneNode childnode = new BoneNode(offset);
+                children.Add(childnode);
+                return childnode;
+            }
+
+            public IEnumerator<BoneNode> GetEnumerator()
+            {
+                return children.GetEnumerator();
+            }
+        }
+
+        private static BoneNode
+            bone_lumbar,
+            bone_thora,
+            bone_cerv,
+            bone_neck,
+            bone_face,
+            bone_clav_l,
+            bone_clav_r,
+            bone_arm_l,
+            bone_arm_r,
+            bone_forearm_l,
+            bone_forearm_r,
+            bone_hand_l,
+            bone_hand_r,
+            bone_thumb_l,
+            bone_thumb_r,
+            bone_index_l,
+            bone_index_r,
+            bone_middle_l,
+            bone_middle_r,
+            bone_ring_l,
+            bone_ring_r,
+            bone_pinky_l,
+            bone_pinky_r,
+            bone_waist,
+            bone_leg_l,
+            bone_leg_r,
+            bone_knee_l,
+            bone_knee_r,
+            bone_calf_l,
+            bone_calf_r,
+            bone_foot_l,
+            bone_foot_r;
+
+        public static BoneNode InitBonetree ()
+        {
+            BoneNode root_tree = new BoneNode(Settings.Instance.Character.Body.Bones.Root_X);
+            #region torso tree
+            bone_lumbar = root_tree.Child(Settings.Instance.Character.Body.Bones.SpineA_X);
+            bone_thora = bone_lumbar.Child(Settings.Instance.Character.Body.Bones.SpineB_X);
+            bone_cerv = bone_thora.Child(Settings.Instance.Character.Body.Bones.SpineC_X);
+            bone_thora.Child(Settings.Instance.Character.Body.Bones.BreastLeft_X);
+            bone_thora.Child(Settings.Instance.Character.Body.Bones.BreastRight_X);
+            bone_neck = bone_cerv.Child(Settings.Instance.Character.Body.Bones.Neck_X);
+            #endregion
+            #region clothes tree
+            /*
+            bone_lumbar.Child(Settings.Instance.Character.Body.Bones.ClothBackALeft_X);
+            bone_lumbar.Child(Settings.Instance.Character.Body.Bones.ClothBackBLeft_X);
+            bone_lumbar.Child(Settings.Instance.Character.Body.Bones.ClothBackCLeft_X);
+            bone_lumbar.Child(Settings.Instance.Character.Body.Bones.ClothBackARight_X);
+            bone_lumbar.Child(Settings.Instance.Character.Body.Bones.ClothBackBRight_X);
+            bone_lumbar.Child(Settings.Instance.Character.Body.Bones.ClothBackCRight_X);
+            bone_lumbar.Child(Settings.Instance.Character.Body.Bones.ClothSideALeft_X);
+            bone_lumbar.Child(Settings.Instance.Character.Body.Bones.ClothSideBLeft_X);
+            bone_lumbar.Child(Settings.Instance.Character.Body.Bones.ClothSideCLeft_X);
+            bone_lumbar.Child(Settings.Instance.Character.Body.Bones.ClothSideARight_X);
+            bone_lumbar.Child(Settings.Instance.Character.Body.Bones.ClothSideBRight_X);
+            bone_lumbar.Child(Settings.Instance.Character.Body.Bones.ClothSideCRight_X);
+            bone_lumbar.Child(Settings.Instance.Character.Body.Bones.ClothFrontALeft_X);
+            bone_lumbar.Child(Settings.Instance.Character.Body.Bones.ClothFrontBLeft_X);
+            bone_lumbar.Child(Settings.Instance.Character.Body.Bones.ClothFrontCLeft_X);
+            bone_lumbar.Child(Settings.Instance.Character.Body.Bones.ClothFrontARight_X);
+            bone_lumbar.Child(Settings.Instance.Character.Body.Bones.ClothFrontBRight_X);
+            bone_lumbar.Child(Settings.Instance.Character.Body.Bones.ClothFrontCRight_X);
+            */
+            #endregion
+            #region facebone tree
+            bone_face = bone_neck.Child(Settings.Instance.Character.Body.Bones.Head_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.Bridge_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.Nose_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.Jaw_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.EyebrowLeft_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.EyebrowRight_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.BrowLeft_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.BrowRight_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.EyelidUpperLeft_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.EyelidUpperRight_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.EyelidLowerLeft_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.EyelidLowerRight_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.EyeLeft_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.EyeRight_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.EarLeft_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.EarRight_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.CheekLeft_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.CheekRight_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.LipsLeft_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.LipsRight_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.LipUpperA_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.LipUpperB_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.LipLowerA_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.LipLowerB_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.EarringALeft_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.EarringBLeft_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.EarringARight_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.EarringBRight_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.HairFrontLeft_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.HairFrontRight_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.HairA_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.HairB_X);
+            #endregion
+            #region armbone tree
+            bone_clav_l = bone_cerv.Child(Settings.Instance.Character.Body.Bones.ClavicleLeft_X);
+            bone_arm_l = bone_clav_l.Child(Settings.Instance.Character.Body.Bones.ArmLeft_X);
+            bone_arm_l.Child(Settings.Instance.Character.Body.Bones.ShoulderLeft_X);
+            bone_forearm_l = bone_arm_l.Child(Settings.Instance.Character.Body.Bones.ForearmLeft_X);
+            bone_forearm_l.Child(Settings.Instance.Character.Body.Bones.ElbowLeft_X);
+            bone_forearm_l.Child(Settings.Instance.Character.Body.Bones.WristLeft_X);
+            bone_hand_l = bone_forearm_l.Child(Settings.Instance.Character.Body.Bones.HandLeft_X);
+            bone_thumb_l = bone_hand_l.Child(Settings.Instance.Character.Body.Bones.ThumbALeft_X);
+            bone_thumb_l.Child(Settings.Instance.Character.Body.Bones.ThumbBLeft_X);
+            bone_index_l = bone_hand_l.Child(Settings.Instance.Character.Body.Bones.IndexALeft_X);
+            bone_index_l.Child(Settings.Instance.Character.Body.Bones.IndexBLeft_X);
+            bone_middle_l = bone_hand_l.Child(Settings.Instance.Character.Body.Bones.MiddleALeft_X);
+            bone_middle_l.Child(Settings.Instance.Character.Body.Bones.MiddleBLeft_X);
+            bone_ring_l = bone_hand_l.Child(Settings.Instance.Character.Body.Bones.RingALeft_X);
+            bone_ring_l.Child(Settings.Instance.Character.Body.Bones.RingBLeft_X);
+            bone_pinky_l = bone_hand_l.Child(Settings.Instance.Character.Body.Bones.PinkyALeft_X);
+            bone_pinky_l.Child(Settings.Instance.Character.Body.Bones.PinkyBLeft_X);
+
+            bone_clav_r = bone_cerv.Child(Settings.Instance.Character.Body.Bones.ClavicleRight_X);
+            bone_arm_r = bone_clav_r.Child(Settings.Instance.Character.Body.Bones.ArmRight_X);
+            bone_arm_r.Child(Settings.Instance.Character.Body.Bones.ShoulderRight_X);
+            bone_forearm_r = bone_arm_r.Child(Settings.Instance.Character.Body.Bones.ForearmRight_X);
+            bone_forearm_r.Child(Settings.Instance.Character.Body.Bones.ElbowRight_X);
+            bone_forearm_r.Child(Settings.Instance.Character.Body.Bones.WristRight_X);
+            bone_hand_r = bone_forearm_r.Child(Settings.Instance.Character.Body.Bones.HandRight_X);
+            bone_thumb_r = bone_hand_r.Child(Settings.Instance.Character.Body.Bones.ThumbARight_X);
+            bone_thumb_r.Child(Settings.Instance.Character.Body.Bones.ThumbBRight_X);
+            bone_index_r = bone_hand_r.Child(Settings.Instance.Character.Body.Bones.IndexARight_X);
+            bone_index_r.Child(Settings.Instance.Character.Body.Bones.IndexBRight_X);
+            bone_middle_r = bone_hand_r.Child(Settings.Instance.Character.Body.Bones.MiddleARight_X);
+            bone_middle_r.Child(Settings.Instance.Character.Body.Bones.MiddleBRight_X);
+            bone_ring_r = bone_hand_r.Child(Settings.Instance.Character.Body.Bones.RingARight_X);
+            bone_ring_r.Child(Settings.Instance.Character.Body.Bones.RingBRight_X);
+            bone_pinky_r = bone_hand_r.Child(Settings.Instance.Character.Body.Bones.PinkyARight_X);
+            bone_pinky_r.Child(Settings.Instance.Character.Body.Bones.PinkyBRight_X);
+            #endregion
+            #region lower half bones tree
+            bone_waist = root_tree.Child(Settings.Instance.Character.Body.Bones.Waist_X);
+            bone_leg_l = bone_waist.Child(Settings.Instance.Character.Body.Bones.LegLeft_X);
+            bone_knee_l = bone_leg_l.Child(Settings.Instance.Character.Body.Bones.KneeLeft_X);
+            bone_calf_l = bone_knee_l.Child(Settings.Instance.Character.Body.Bones.CalfLeft_X);
+            bone_foot_l = bone_calf_l.Child(Settings.Instance.Character.Body.Bones.FootLeft_X);
+            bone_foot_l.Child(Settings.Instance.Character.Body.Bones.ToesLeft_X);
+            
+            bone_leg_r = bone_waist.Child(Settings.Instance.Character.Body.Bones.LegRight_X);
+            bone_knee_r = bone_leg_r.Child(Settings.Instance.Character.Body.Bones.KneeRight_X);
+            bone_calf_r = bone_knee_r.Child(Settings.Instance.Character.Body.Bones.CalfRight_X);
+            bone_foot_r = bone_calf_r.Child(Settings.Instance.Character.Body.Bones.FootRight_X);
+            bone_foot_r.Child(Settings.Instance.Character.Body.Bones.ToesRight_X);
+            #endregion
+
+            return root_tree;
+        }
+        public BoneNode bonetree = null;
+        #endregion
 
         public CharacterDetailsView5()
         {
@@ -10251,6 +10438,21 @@ namespace ConceptMatrix.Views
 
             SaveSettings.Default.AltPoseRotate = false;
         }
+        private void Rotate_ChildBone (BoneNode boneParent, Quaternion q1_inv, Quaternion q1_new)
+        {
+            foreach (BoneNode boneNode in boneParent)
+            {
+                ChildBone_Propagator(boneNode, q1_inv, q1_new);
+            }
+        }
+        private void ChildBone_Propagator(BoneNode boneParent, Quaternion q1_inv, Quaternion q1_new)
+        {
+            byte[] bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, boneParent.Get()), 16);
+            if (bytearray == null) return;
+            Quaternion q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, boneParent.Get()), GetBytes(QuatMult(QuatMult(q2, q1_inv), q1_new)));
+            Rotate_ChildBone(boneParent, q1_inv, q1_new);
+        }
 
         #region Root
         private void Root_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -10394,6 +10596,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.Waist_Y.value = (float)quat.Y;
             CharacterDetails.Waist_Z.value = (float)quat.Z;
             CharacterDetails.Waist_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_waist, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= Waist_Slider;
             BoneSlider2.ValueChanged -= Waist_Slider;
@@ -10409,6 +10621,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.Waist_Y.value = (float)quat.Y;
             CharacterDetails.Waist_Z.value = (float)quat.Z;
             CharacterDetails.Waist_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_waist, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneUpDown.ValueChanged -= Waist_UpDown;
             BoneUpDown2.ValueChanged -= Waist_UpDown;
@@ -10438,6 +10660,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.SpineA_Y.value = (float)quat.Y;
             CharacterDetails.SpineA_Z.value = (float)quat.Z;
             CharacterDetails.SpineA_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_lumbar, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= SpineA_Slider;
             BoneSlider2.ValueChanged -= SpineA_Slider;
@@ -10453,6 +10685,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.SpineA_Y.value = (float)quat.Y;
             CharacterDetails.SpineA_Z.value = (float)quat.Z;
             CharacterDetails.SpineA_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_lumbar, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneUpDown.ValueChanged -= SpineA_UpDown;
             BoneUpDown2.ValueChanged -= SpineA_UpDown;
@@ -10482,6 +10724,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.LegLeft_Y.value = (float)quat.Y;
             CharacterDetails.LegLeft_Z.value = (float)quat.Z;
             CharacterDetails.LegLeft_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_leg_l, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= LegLeft_Slider;
             BoneSlider2.ValueChanged -= LegLeft_Slider;
@@ -10497,6 +10749,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.LegLeft_Y.value = (float)quat.Y;
             CharacterDetails.LegLeft_Z.value = (float)quat.Z;
             CharacterDetails.LegLeft_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_leg_l, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneUpDown.ValueChanged -= LegLeft_UpDown;
             BoneUpDown2.ValueChanged -= LegLeft_UpDown;
@@ -10526,6 +10788,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.LegRight_Y.value = (float)quat.Y;
             CharacterDetails.LegRight_Z.value = (float)quat.Z;
             CharacterDetails.LegRight_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_leg_r, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= LegRight_Slider;
             BoneSlider2.ValueChanged -= LegRight_Slider;
@@ -10541,6 +10813,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.LegRight_Y.value = (float)quat.Y;
             CharacterDetails.LegRight_Z.value = (float)quat.Z;
             CharacterDetails.LegRight_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_leg_r, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneUpDown.ValueChanged -= LegRight_UpDown;
             BoneUpDown2.ValueChanged -= LegRight_UpDown;
@@ -10746,6 +11028,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.SpineB_Y.value = (float)quat.Y;
             CharacterDetails.SpineB_Z.value = (float)quat.Z;
             CharacterDetails.SpineB_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_thora, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= SpineB_Slider;
             BoneSlider2.ValueChanged -= SpineB_Slider;
@@ -10761,6 +11053,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.SpineB_Y.value = (float)quat.Y;
             CharacterDetails.SpineB_Z.value = (float)quat.Z;
             CharacterDetails.SpineB_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_thora, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneUpDown.ValueChanged -= SpineB_UpDown;
             BoneUpDown2.ValueChanged -= SpineB_UpDown;
@@ -11054,6 +11356,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.KneeLeft_Y.value = (float)quat.Y;
             CharacterDetails.KneeLeft_Z.value = (float)quat.Z;
             CharacterDetails.KneeLeft_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_knee_l, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= KneeLeft_Slider;
             BoneSlider2.ValueChanged -= KneeLeft_Slider;
@@ -11098,6 +11410,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.KneeRight_Y.value = (float)quat.Y;
             CharacterDetails.KneeRight_Z.value = (float)quat.Z;
             CharacterDetails.KneeRight_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_knee_r, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= KneeRight_Slider;
             BoneSlider2.ValueChanged -= KneeRight_Slider;
@@ -11230,6 +11552,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.SpineC_Y.value = (float)quat.Y;
             CharacterDetails.SpineC_Z.value = (float)quat.Z;
             CharacterDetails.SpineC_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_cerv, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= SpineC_Slider;
             BoneSlider2.ValueChanged -= SpineC_Slider;
@@ -11245,6 +11577,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.SpineC_Y.value = (float)quat.Y;
             CharacterDetails.SpineC_Z.value = (float)quat.Z;
             CharacterDetails.SpineC_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_cerv, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneUpDown.ValueChanged -= SpineC_UpDown;
             BoneUpDown2.ValueChanged -= SpineC_UpDown;
@@ -11538,6 +11880,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.CalfLeft_Y.value = (float)quat.Y;
             CharacterDetails.CalfLeft_Z.value = (float)quat.Z;
             CharacterDetails.CalfLeft_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_calf_l, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= CalfLeft_Slider;
             BoneSlider2.ValueChanged -= CalfLeft_Slider;
@@ -11553,6 +11905,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.CalfLeft_Y.value = (float)quat.Y;
             CharacterDetails.CalfLeft_Z.value = (float)quat.Z;
             CharacterDetails.CalfLeft_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_calf_l, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneUpDown.ValueChanged -= CalfLeft_UpDown;
             BoneUpDown2.ValueChanged -= CalfLeft_UpDown;
@@ -11582,6 +11944,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.CalfRight_Y.value = (float)quat.Y;
             CharacterDetails.CalfRight_Z.value = (float)quat.Z;
             CharacterDetails.CalfRight_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_calf_r, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= CalfRight_Slider;
             BoneSlider2.ValueChanged -= CalfRight_Slider;
@@ -11597,6 +11969,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.CalfRight_Y.value = (float)quat.Y;
             CharacterDetails.CalfRight_Z.value = (float)quat.Z;
             CharacterDetails.CalfRight_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_calf_r, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneUpDown.ValueChanged -= CalfRight_UpDown;
             BoneUpDown2.ValueChanged -= CalfRight_UpDown;
@@ -11714,6 +12096,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.Neck_Y.value = (float)quat.Y;
             CharacterDetails.Neck_Z.value = (float)quat.Z;
             CharacterDetails.Neck_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_neck, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= Neck_Slider;
             BoneSlider2.ValueChanged -= Neck_Slider;
@@ -11729,6 +12121,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.Neck_Y.value = (float)quat.Y;
             CharacterDetails.Neck_Z.value = (float)quat.Z;
             CharacterDetails.Neck_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_neck, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneUpDown.ValueChanged -= Neck_UpDown;
             BoneUpDown2.ValueChanged -= Neck_UpDown;
@@ -11758,6 +12160,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClavicleLeft_Y.value = (float)quat.Y;
             CharacterDetails.ClavicleLeft_Z.value = (float)quat.Z;
             CharacterDetails.ClavicleLeft_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_clav_l, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= ClavicleLeft_Slider;
             BoneSlider2.ValueChanged -= ClavicleLeft_Slider;
@@ -11773,6 +12185,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClavicleLeft_Y.value = (float)quat.Y;
             CharacterDetails.ClavicleLeft_Z.value = (float)quat.Z;
             CharacterDetails.ClavicleLeft_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_clav_l, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneUpDown.ValueChanged -= ClavicleLeft_UpDown;
             BoneUpDown2.ValueChanged -= ClavicleLeft_UpDown;
@@ -11802,6 +12224,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClavicleRight_Y.value = (float)quat.Y;
             CharacterDetails.ClavicleRight_Z.value = (float)quat.Z;
             CharacterDetails.ClavicleRight_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_clav_r, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= ClavicleRight_Slider;
             BoneSlider2.ValueChanged -= ClavicleRight_Slider;
@@ -11817,6 +12249,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClavicleRight_Y.value = (float)quat.Y;
             CharacterDetails.ClavicleRight_Z.value = (float)quat.Z;
             CharacterDetails.ClavicleRight_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_clav_r, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneUpDown.ValueChanged -= ClavicleRight_UpDown;
             BoneUpDown2.ValueChanged -= ClavicleRight_UpDown;
@@ -12198,6 +12640,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.FootLeft_Y.value = (float)quat.Y;
             CharacterDetails.FootLeft_Z.value = (float)quat.Z;
             CharacterDetails.FootLeft_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_foot_l, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= FootLeft_Slider;
             BoneSlider2.ValueChanged -= FootLeft_Slider;
@@ -12213,6 +12665,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.FootLeft_Y.value = (float)quat.Y;
             CharacterDetails.FootLeft_Z.value = (float)quat.Z;
             CharacterDetails.FootLeft_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_foot_l, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneUpDown.ValueChanged -= FootLeft_UpDown;
             BoneUpDown2.ValueChanged -= FootLeft_UpDown;
@@ -12242,6 +12704,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.FootRight_Y.value = (float)quat.Y;
             CharacterDetails.FootRight_Z.value = (float)quat.Z;
             CharacterDetails.FootRight_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_foot_r, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= FootRight_Slider;
             BoneSlider2.ValueChanged -= FootRight_Slider;
@@ -12257,6 +12729,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.FootRight_Y.value = (float)quat.Y;
             CharacterDetails.FootRight_Z.value = (float)quat.Z;
             CharacterDetails.FootRight_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_foot_r, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneUpDown.ValueChanged -= FootRight_UpDown;
             BoneUpDown2.ValueChanged -= FootRight_UpDown;
@@ -12281,7 +12763,6 @@ namespace ConceptMatrix.Views
         {
             // Get the euler angles from UI.
             var quat = GetEulerAngles().ToQuaternion();
-            oldrot = newrot;
             CharacterDetails.Head_X.value = (float)quat.X;
             CharacterDetails.Head_Y.value = (float)quat.Y;
             CharacterDetails.Head_Z.value = (float)quat.Z;
@@ -12290,213 +12771,15 @@ namespace ConceptMatrix.Views
             #region Child Bones
             if (ParentingToggle.IsChecked == true)
             {
+                oldrot = newrot;
                 newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
                 Quaternion q1_inv = QInv(oldrot.ToQuaternion());
                 Quaternion q1_new = newrot.ToQuaternion();
+
+                Rotate_ChildBone(bone_face, q1_inv, q1_new);
                 byte[] bytearray = null;
                 byte[] QuaternionBytes = null;
-
-                #region Bridge
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Bridge_X), 16);
-                Quaternion q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                Quaternion q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Bridge_X), QuaternionBytes);
-                #endregion
-                #region Nose
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Nose_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Nose_X), QuaternionBytes);
-                #endregion
-                #region Jaw
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Jaw_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Jaw_X), QuaternionBytes);
-                #endregion
-                #region EyeBrows
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowLeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowLeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowRight_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowRight_X), QuaternionBytes);
-                #endregion
-                #region Brows
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowLeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowLeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowRight_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowRight_X), QuaternionBytes);
-                #endregion
-                #region EyeLids
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperLeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperLeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperRight_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperRight_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidLowerLeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidLowerLeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidLowerRight_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidLowerRight_X), QuaternionBytes);
-                #endregion
-                #region Eyes
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyeLeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyeLeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyeRight_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyeRight_X), QuaternionBytes);
-                #endregion
-                #region Ears
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarLeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarLeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarRight_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarRight_X), QuaternionBytes);
-                #endregion
-                #region Cheeks
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekLeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekLeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekRight_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekRight_X), QuaternionBytes);
-                #endregion
-                #region Mouth
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsLeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsLeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsRight_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsRight_X), QuaternionBytes);
-                #endregion
-                #region Upper Lip
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperA_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperA_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperB_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperB_X), QuaternionBytes);
-                #endregion
-                #region Lower Lip
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipLowerA_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipLowerA_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipLowerB_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipLowerB_X), QuaternionBytes);
-                #endregion
-
-                #region Earrings
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringALeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringALeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringBLeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringBLeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringARight_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringARight_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringBRight_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringBRight_X), QuaternionBytes);
-                #endregion
-                #region General
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontLeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontLeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontRight_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontRight_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairA_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairA_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairB_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairB_X), QuaternionBytes);
-                #endregion
+                Quaternion q2, q21;
 
                 //Check for Teritrary Bones : Hair or anything else here.
                 #region Tetriarybones
@@ -12781,210 +13064,11 @@ namespace ConceptMatrix.Views
                 newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
                 Quaternion q1_inv = QInv(oldrot.ToQuaternion());
                 Quaternion q1_new = newrot.ToQuaternion();
+
+                Rotate_ChildBone(bone_face, q1_inv, q1_new);
                 byte[] bytearray = null;
                 byte[] QuaternionBytes = null;
-
-                #region Bridge
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Bridge_X), 16);
-                Quaternion q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                Quaternion q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Bridge_X), QuaternionBytes);
-                #endregion
-                #region Nose
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Nose_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Nose_X), QuaternionBytes);
-                #endregion
-                #region Jaw
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Jaw_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Jaw_X), QuaternionBytes);
-                #endregion
-                #region EyeBrows
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowLeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowLeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowRight_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyebrowRight_X), QuaternionBytes);
-                #endregion
-                #region Brows
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowLeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowLeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowRight_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BrowRight_X), QuaternionBytes);
-                #endregion
-                #region EyeLids
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperLeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperLeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperRight_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidUpperRight_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidLowerLeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidLowerLeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidLowerRight_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyelidLowerRight_X), QuaternionBytes);
-                #endregion
-                #region Eyes
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyeLeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyeLeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyeRight_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EyeRight_X), QuaternionBytes);
-                #endregion
-                #region Ears
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarLeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarLeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarRight_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarRight_X), QuaternionBytes);
-                #endregion
-                #region Cheeks
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekLeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekLeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekRight_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CheekRight_X), QuaternionBytes);
-                #endregion
-                #region Mouth
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsLeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsLeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsRight_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipsRight_X), QuaternionBytes);
-                #endregion
-                #region Upper Lip
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperA_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperA_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperB_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipUpperB_X), QuaternionBytes);
-                #endregion
-                #region Lower Lip
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipLowerA_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipLowerA_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipLowerB_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LipLowerB_X), QuaternionBytes);
-                #endregion
-
-                #region Earrings
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringALeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringALeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringBLeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringBLeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringARight_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringARight_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringBRight_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringBRight_X), QuaternionBytes);
-                #endregion
-                #region General
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontLeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontLeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontRight_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontRight_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairA_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairA_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairB_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairB_X), QuaternionBytes);
-                #endregion
+                Quaternion q2, q21;
 
                 //Check for Teritrary Bones : Hair or anything else here.
                 #region Tetriarybones
@@ -13276,6 +13360,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.ArmLeft_Y.value = (float)quat.Y;
             CharacterDetails.ArmLeft_Z.value = (float)quat.Z;
             CharacterDetails.ArmLeft_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_arm_l, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= ArmLeft_Slider;
             BoneSlider2.ValueChanged -= ArmLeft_Slider;
@@ -13291,6 +13385,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.ArmLeft_Y.value = (float)quat.Y;
             CharacterDetails.ArmLeft_Z.value = (float)quat.Z;
             CharacterDetails.ArmLeft_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_arm_l, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneUpDown.ValueChanged -= ArmLeft_UpDown;
             BoneUpDown2.ValueChanged -= ArmLeft_UpDown;
@@ -13320,6 +13424,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.ArmRight_Y.value = (float)quat.Y;
             CharacterDetails.ArmRight_Z.value = (float)quat.Z;
             CharacterDetails.ArmRight_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_arm_r, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= ArmRight_Slider;
             BoneSlider2.ValueChanged -= ArmRight_Slider;
@@ -13335,6 +13449,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.ArmRight_Y.value = (float)quat.Y;
             CharacterDetails.ArmRight_Z.value = (float)quat.Z;
             CharacterDetails.ArmRight_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_arm_r, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneUpDown.ValueChanged -= ArmRight_UpDown;
             BoneUpDown2.ValueChanged -= ArmRight_UpDown;
@@ -13804,6 +13928,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.ForearmLeft_Y.value = (float)quat.Y;
             CharacterDetails.ForearmLeft_Z.value = (float)quat.Z;
             CharacterDetails.ForearmLeft_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_forearm_l, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= ForearmLeft_Slider;
             BoneSlider2.ValueChanged -= ForearmLeft_Slider;
@@ -13819,6 +13953,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.ForearmLeft_Y.value = (float)quat.Y;
             CharacterDetails.ForearmLeft_Z.value = (float)quat.Z;
             CharacterDetails.ForearmLeft_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_forearm_l, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneUpDown.ValueChanged -= ForearmLeft_UpDown;
             BoneUpDown2.ValueChanged -= ForearmLeft_UpDown;
@@ -13848,6 +13992,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.ForearmRight_Y.value = (float)quat.Y;
             CharacterDetails.ForearmRight_Z.value = (float)quat.Z;
             CharacterDetails.ForearmRight_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_forearm_r, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= ForearmRight_Slider;
             BoneSlider2.ValueChanged -= ForearmRight_Slider;
@@ -13863,6 +14017,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.ForearmRight_Y.value = (float)quat.Y;
             CharacterDetails.ForearmRight_Z.value = (float)quat.Z;
             CharacterDetails.ForearmRight_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_forearm_r, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneUpDown.ValueChanged -= ForearmRight_UpDown;
             BoneUpDown2.ValueChanged -= ForearmRight_UpDown;
@@ -14025,81 +14189,14 @@ namespace ConceptMatrix.Views
             CharacterDetails.HandLeft_Z.value = (float)quat.Z;
             CharacterDetails.HandLeft_W.value = (float)quat.W;
 
-            #region ChildBones
+            #region Child Bones
             if (ParentingToggle.IsChecked == true)
             {
+                oldrot = newrot;
                 newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
                 Quaternion q1_inv = QInv(oldrot.ToQuaternion());
                 Quaternion q1_new = newrot.ToQuaternion();
-                byte[] bytearray = null;
-                byte[] QuaternionBytes = null;
-                #region Index
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexALeft_X), 16);
-                Quaternion q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                Quaternion q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexALeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexBLeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexBLeft_X), QuaternionBytes);
-                #endregion
-                #region thumb
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbALeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbALeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBLeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBLeft_X), QuaternionBytes);
-
-                #endregion
-                #region Ring
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingALeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingALeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingBLeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingBLeft_X), QuaternionBytes);
-                #endregion
-                #region middle
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleALeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleALeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBLeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBLeft_X), QuaternionBytes);
-
-                #endregion
-                #region Pinky
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyALeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyALeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyBLeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyBLeft_X), QuaternionBytes);
-                #endregion
+                Rotate_ChildBone(bone_hand_l, q1_inv, q1_new);
             }
             #endregion
             // Remove listeners for value changed.
@@ -14117,81 +14214,15 @@ namespace ConceptMatrix.Views
             CharacterDetails.HandLeft_Y.value = (float)quat.Y;
             CharacterDetails.HandLeft_Z.value = (float)quat.Z;
             CharacterDetails.HandLeft_W.value = (float)quat.W;
-            #region ChildBones
+
+            #region Child Bones
             if (ParentingToggle.IsChecked == true)
             {
+                oldrot = newrot;
                 newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
                 Quaternion q1_inv = QInv(oldrot.ToQuaternion());
                 Quaternion q1_new = newrot.ToQuaternion();
-                byte[] bytearray = null;
-                byte[] QuaternionBytes = null;
-                #region Index
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexALeft_X), 16);
-                Quaternion q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                Quaternion q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexALeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexBLeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexBLeft_X), QuaternionBytes);
-                #endregion
-                #region thumb
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbALeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbALeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBLeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBLeft_X), QuaternionBytes);
-
-                #endregion
-                #region Ring
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingALeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingALeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingBLeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingBLeft_X), QuaternionBytes);
-                #endregion
-                #region middle
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleALeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleALeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBLeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBLeft_X), QuaternionBytes);
-
-                #endregion
-                #region Pinky
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyALeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyALeft_X), QuaternionBytes);
-
-                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyBLeft_X), 16);
-                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                q21 = QuatMult(q2, q1_inv);
-                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyBLeft_X), QuaternionBytes);
-                #endregion
+                Rotate_ChildBone(bone_hand_l, q1_inv, q1_new);
             }
             #endregion
             // Remove listeners for value changed.
@@ -14223,6 +14254,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.HandRight_Y.value = (float)quat.Y;
             CharacterDetails.HandRight_Z.value = (float)quat.Z;
             CharacterDetails.HandRight_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_hand_r, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= HandRight_Slider;
             BoneSlider2.ValueChanged -= HandRight_Slider;
@@ -14238,6 +14279,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.HandRight_Y.value = (float)quat.Y;
             CharacterDetails.HandRight_Z.value = (float)quat.Z;
             CharacterDetails.HandRight_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_hand_r, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneUpDown.ValueChanged -= HandRight_UpDown;
             BoneUpDown2.ValueChanged -= HandRight_UpDown;
@@ -14707,6 +14758,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.IndexALeft_Y.value = (float)quat.Y;
             CharacterDetails.IndexALeft_Z.value = (float)quat.Z;
             CharacterDetails.IndexALeft_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_index_l, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= IndexALeft_Slider;
             BoneSlider2.ValueChanged -= IndexALeft_Slider;
@@ -14722,6 +14783,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.IndexALeft_Y.value = (float)quat.Y;
             CharacterDetails.IndexALeft_Z.value = (float)quat.Z;
             CharacterDetails.IndexALeft_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_index_l, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneUpDown.ValueChanged -= IndexALeft_UpDown;
             BoneUpDown2.ValueChanged -= IndexALeft_UpDown;
@@ -14751,6 +14822,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.IndexARight_Y.value = (float)quat.Y;
             CharacterDetails.IndexARight_Z.value = (float)quat.Z;
             CharacterDetails.IndexARight_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_index_r, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= IndexARight_Slider;
             BoneSlider2.ValueChanged -= IndexARight_Slider;
@@ -14766,6 +14847,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.IndexARight_Y.value = (float)quat.Y;
             CharacterDetails.IndexARight_Z.value = (float)quat.Z;
             CharacterDetails.IndexARight_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_index_r, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneUpDown.ValueChanged -= IndexARight_UpDown;
             BoneUpDown2.ValueChanged -= IndexARight_UpDown;
@@ -14795,6 +14886,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.PinkyALeft_Y.value = (float)quat.Y;
             CharacterDetails.PinkyALeft_Z.value = (float)quat.Z;
             CharacterDetails.PinkyALeft_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_pinky_l, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= PinkyALeft_Slider;
             BoneSlider2.ValueChanged -= PinkyALeft_Slider;
@@ -14810,6 +14911,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.PinkyALeft_Y.value = (float)quat.Y;
             CharacterDetails.PinkyALeft_Z.value = (float)quat.Z;
             CharacterDetails.PinkyALeft_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_pinky_l, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneUpDown.ValueChanged -= PinkyALeft_UpDown;
             BoneUpDown2.ValueChanged -= PinkyALeft_UpDown;
@@ -14839,6 +14950,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.PinkyARight_Y.value = (float)quat.Y;
             CharacterDetails.PinkyARight_Z.value = (float)quat.Z;
             CharacterDetails.PinkyARight_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_pinky_r, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= PinkyARight_Slider;
             BoneSlider2.ValueChanged -= PinkyARight_Slider;
@@ -14854,6 +14975,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.PinkyARight_Y.value = (float)quat.Y;
             CharacterDetails.PinkyARight_Z.value = (float)quat.Z;
             CharacterDetails.PinkyARight_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_pinky_r, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneUpDown.ValueChanged -= PinkyARight_UpDown;
             BoneUpDown2.ValueChanged -= PinkyARight_UpDown;
@@ -14883,6 +15014,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.RingALeft_Y.value = (float)quat.Y;
             CharacterDetails.RingALeft_Z.value = (float)quat.Z;
             CharacterDetails.RingALeft_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_ring_l, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= RingALeft_Slider;
             BoneSlider2.ValueChanged -= RingALeft_Slider;
@@ -14898,6 +15039,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.RingALeft_Y.value = (float)quat.Y;
             CharacterDetails.RingALeft_Z.value = (float)quat.Z;
             CharacterDetails.RingALeft_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_ring_l, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneUpDown.ValueChanged -= RingALeft_UpDown;
             BoneUpDown2.ValueChanged -= RingALeft_UpDown;
@@ -14927,6 +15078,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.RingARight_Y.value = (float)quat.Y;
             CharacterDetails.RingARight_Z.value = (float)quat.Z;
             CharacterDetails.RingARight_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_ring_r, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= RingARight_Slider;
             BoneSlider2.ValueChanged -= RingARight_Slider;
@@ -14942,6 +15103,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.RingARight_Y.value = (float)quat.Y;
             CharacterDetails.RingARight_Z.value = (float)quat.Z;
             CharacterDetails.RingARight_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_ring_r, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneUpDown.ValueChanged -= RingARight_UpDown;
             BoneUpDown2.ValueChanged -= RingARight_UpDown;
@@ -14971,6 +15142,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.MiddleALeft_Y.value = (float)quat.Y;
             CharacterDetails.MiddleALeft_Z.value = (float)quat.Z;
             CharacterDetails.MiddleALeft_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_middle_l, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= MiddleALeft_Slider;
             BoneSlider2.ValueChanged -= MiddleALeft_Slider;
@@ -14986,6 +15167,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.MiddleALeft_Y.value = (float)quat.Y;
             CharacterDetails.MiddleALeft_Z.value = (float)quat.Z;
             CharacterDetails.MiddleALeft_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_middle_l, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneUpDown.ValueChanged -= MiddleALeft_UpDown;
             BoneUpDown2.ValueChanged -= MiddleALeft_UpDown;
@@ -15015,6 +15206,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.MiddleARight_Y.value = (float)quat.Y;
             CharacterDetails.MiddleARight_Z.value = (float)quat.Z;
             CharacterDetails.MiddleARight_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_middle_r, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= MiddleARight_Slider;
             BoneSlider2.ValueChanged -= MiddleARight_Slider;
@@ -15030,6 +15231,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.MiddleARight_Y.value = (float)quat.Y;
             CharacterDetails.MiddleARight_Z.value = (float)quat.Z;
             CharacterDetails.MiddleARight_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_middle_r, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneUpDown.ValueChanged -= MiddleARight_UpDown;
             BoneUpDown2.ValueChanged -= MiddleARight_UpDown;
@@ -15059,6 +15270,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.ThumbALeft_Y.value = (float)quat.Y;
             CharacterDetails.ThumbALeft_Z.value = (float)quat.Z;
             CharacterDetails.ThumbALeft_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_thumb_l, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= ThumbALeft_Slider;
             BoneSlider2.ValueChanged -= ThumbALeft_Slider;
@@ -15074,6 +15295,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.ThumbALeft_Y.value = (float)quat.Y;
             CharacterDetails.ThumbALeft_Z.value = (float)quat.Z;
             CharacterDetails.ThumbALeft_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_thumb_l, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneUpDown.ValueChanged -= ThumbALeft_UpDown;
             BoneUpDown2.ValueChanged -= ThumbALeft_UpDown;
@@ -15103,6 +15334,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.ThumbARight_Y.value = (float)quat.Y;
             CharacterDetails.ThumbARight_Z.value = (float)quat.Z;
             CharacterDetails.ThumbARight_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_thumb_r, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneSlider.ValueChanged -= ThumbARight_Slider;
             BoneSlider2.ValueChanged -= ThumbARight_Slider;
@@ -15118,6 +15359,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.ThumbARight_Y.value = (float)quat.Y;
             CharacterDetails.ThumbARight_Z.value = (float)quat.Z;
             CharacterDetails.ThumbARight_W.value = (float)quat.W;
+            #region Child Bones
+            if (ParentingToggle.IsChecked == true)
+            {
+                oldrot = newrot;
+                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
+                Quaternion q1_new = newrot.ToQuaternion();
+                Rotate_ChildBone(bone_thumb_r, q1_inv, q1_new);
+            }
+            #endregion
             // Remove listeners for value changed.
             BoneUpDown.ValueChanged -= ThumbARight_UpDown;
             BoneUpDown2.ValueChanged -= ThumbARight_UpDown;

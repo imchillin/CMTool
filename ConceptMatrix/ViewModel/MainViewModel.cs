@@ -88,6 +88,7 @@ namespace ConceptMatrix.ViewModel
                 worker.RunWorkerAsync();
                 characterDetails = new CharacterDetailsViewModel(mediator);
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Add(MemoryManager.Instance.BaseAddress, "8");
+                ViewTime5.bonetree = CharacterDetailsView5.InitBonetree();
                 Task.Delay(40).Wait();
                 ThreadTime = new ThreadWriting(); // Thread Writing
             }
@@ -103,6 +104,7 @@ namespace ConceptMatrix.ViewModel
             mediator = null;
             ThreadTime = null;
         }
+        
         private void Initialize(ARealmReversed realm, string Determination)
         {
             if (!realm.IsCurrentVersion)
