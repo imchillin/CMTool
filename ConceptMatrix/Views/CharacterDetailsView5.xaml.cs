@@ -10499,6 +10499,7 @@ namespace ConceptMatrix.Views
                 Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothLipsRight_X, q1_inv, q1_new);
                 Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothLipUpperLeft_X, q1_inv, q1_new);
                 Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothLipUpperRight_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothLipLower_X, q1_inv, q1_new);
             }
             else if (CharacterDetails.Race.value == 8)
             {
@@ -10782,7 +10783,20 @@ namespace ConceptMatrix.Views
             }
             #endregion
         }
+        private void RemoveRoutedEventListener(RoutedPropertyChangedEventHandler<double> reh)
+        {
+            BoneSlider.ValueChanged -= reh;
+            BoneSlider2.ValueChanged -= reh;
+            BoneSlider3.ValueChanged -= reh;
 
+        }
+        private void RemoveRoutedEventListener(RoutedPropertyChangedEventHandler<double?> reh)
+        {
+            BoneUpDown.ValueChanged -= reh;
+            BoneUpDown2.ValueChanged -= reh;
+            BoneUpDown3.ValueChanged -= reh;
+
+        }
         #region Root
         private void Root_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
@@ -10794,9 +10808,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.Root_Z.value = (float)quat.Z;
             CharacterDetails.Root_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= Root_Slider;
-            BoneSlider2.ValueChanged -= Root_Slider;
-            BoneSlider3.ValueChanged -= Root_Slider;
+            RemoveRoutedEventListener(Root_Slider);
         }
 
         private void Root_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -10809,9 +10821,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.Root_Z.value = (float)quat.Z;
             CharacterDetails.Root_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= Root_UpDown;
-            BoneUpDown2.ValueChanged -= Root_UpDown;
-            BoneUpDown3.ValueChanged -= Root_UpDown;
+            RemoveRoutedEventListener(Root_UpDown);
         }
 
         public void Root_Checked(object sender, RoutedEventArgs e)
@@ -10824,6 +10834,8 @@ namespace ConceptMatrix.Views
         }
         private void Root_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(Root_Slider);
+            RemoveRoutedEventListener(Root_UpDown);
             CharacterDetails.Root_Rotate = false;
         }
         #endregion
@@ -10838,9 +10850,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.Abdomen_Z.value = (float)quat.Z;
             CharacterDetails.Abdomen_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= Abdomen_Slider;
-            BoneSlider2.ValueChanged -= Abdomen_Slider;
-            BoneSlider3.ValueChanged -= Abdomen_Slider;
+            RemoveRoutedEventListener(Abdomen_Slider);
         }
 
         private void Abdomen_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -10853,9 +10863,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.Abdomen_Z.value = (float)quat.Z;
             CharacterDetails.Abdomen_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= Abdomen_UpDown;
-            BoneUpDown2.ValueChanged -= Abdomen_UpDown;
-            BoneUpDown3.ValueChanged -= Abdomen_UpDown;
+            RemoveRoutedEventListener(Abdomen_UpDown);
         }
 
         public void Abdomen_Checked(object sender, RoutedEventArgs e)
@@ -10868,6 +10876,8 @@ namespace ConceptMatrix.Views
         }
         private void Abdomen_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(Abdomen_Slider);
+            RemoveRoutedEventListener(Abdomen_UpDown);
             CharacterDetails.Abdomen_Rotate = false;
         }
         #endregion
@@ -10882,9 +10892,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.Throw_Z.value = (float)quat.Z;
             CharacterDetails.Throw_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= Throw_Slider;
-            BoneSlider2.ValueChanged -= Throw_Slider;
-            BoneSlider3.ValueChanged -= Throw_Slider;
+            RemoveRoutedEventListener(Throw_Slider);
         }
 
         private void Throw_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -10897,9 +10905,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.Throw_Z.value = (float)quat.Z;
             CharacterDetails.Throw_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= Throw_UpDown;
-            BoneUpDown2.ValueChanged -= Throw_UpDown;
-            BoneUpDown3.ValueChanged -= Throw_UpDown;
+            RemoveRoutedEventListener(Throw_UpDown);
         }
 
         public void Throw_Checked(object sender, RoutedEventArgs e)
@@ -10912,6 +10918,8 @@ namespace ConceptMatrix.Views
         }
         private void Throw_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(Throw_Slider);
+            RemoveRoutedEventListener(Throw_UpDown);
             CharacterDetails.Throw_Rotate = false;
         }
         #endregion
@@ -10936,9 +10944,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= Waist_Slider;
-            BoneSlider2.ValueChanged -= Waist_Slider;
-            BoneSlider3.ValueChanged -= Waist_Slider;
+            RemoveRoutedEventListener(Waist_Slider);
         }
 
         private void Waist_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -10961,9 +10967,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= Waist_UpDown;
-            BoneUpDown2.ValueChanged -= Waist_UpDown;
-            BoneUpDown3.ValueChanged -= Waist_UpDown;
+            RemoveRoutedEventListener(Waist_UpDown);
         }
 
         public void Waist_Checked(object sender, RoutedEventArgs e)
@@ -10976,6 +10980,8 @@ namespace ConceptMatrix.Views
         }
         private void Waist_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(Waist_Slider);
+            RemoveRoutedEventListener(Waist_UpDown);
             CharacterDetails.Waist_Rotate = false;
         }
         #endregion
@@ -11001,9 +11007,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= SpineA_Slider;
-            BoneSlider2.ValueChanged -= SpineA_Slider;
-            BoneSlider3.ValueChanged -= SpineA_Slider;
+            RemoveRoutedEventListener(SpineA_Slider);
         }
 
         private void SpineA_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -11027,9 +11031,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= SpineA_UpDown;
-            BoneUpDown2.ValueChanged -= SpineA_UpDown;
-            BoneUpDown3.ValueChanged -= SpineA_UpDown;
+            RemoveRoutedEventListener(SpineA_UpDown);
         }
 
         public void SpineA_Checked(object sender, RoutedEventArgs e)
@@ -11042,6 +11044,8 @@ namespace ConceptMatrix.Views
         }
         private void SpineA_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(SpineA_Slider);
+            RemoveRoutedEventListener(SpineA_UpDown);
             CharacterDetails.SpineA_Rotate = false;
         }
         #endregion
@@ -11066,9 +11070,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= LegLeft_Slider;
-            BoneSlider2.ValueChanged -= LegLeft_Slider;
-            BoneSlider3.ValueChanged -= LegLeft_Slider;
+            RemoveRoutedEventListener(LegLeft_Slider);
         }
 
         private void LegLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -11091,9 +11093,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= LegLeft_UpDown;
-            BoneUpDown2.ValueChanged -= LegLeft_UpDown;
-            BoneUpDown3.ValueChanged -= LegLeft_UpDown;
+            RemoveRoutedEventListener(LegLeft_UpDown);
         }
 
         public void LegLeft_Checked(object sender, RoutedEventArgs e)
@@ -11106,6 +11106,8 @@ namespace ConceptMatrix.Views
         }
         private void LegLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(LegLeft_Slider);
+            RemoveRoutedEventListener(LegLeft_UpDown);
             CharacterDetails.LegLeft_Rotate = false;
         }
         #endregion
@@ -11130,9 +11132,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= LegRight_Slider;
-            BoneSlider2.ValueChanged -= LegRight_Slider;
-            BoneSlider3.ValueChanged -= LegRight_Slider;
+            RemoveRoutedEventListener(LegRight_Slider);
         }
 
         private void LegRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -11155,9 +11155,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= LegRight_UpDown;
-            BoneUpDown2.ValueChanged -= LegRight_UpDown;
-            BoneUpDown3.ValueChanged -= LegRight_UpDown;
+            RemoveRoutedEventListener(LegRight_UpDown);
         }
 
         public void LegRight_Checked(object sender, RoutedEventArgs e)
@@ -11170,6 +11168,8 @@ namespace ConceptMatrix.Views
         }
         private void LegRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(LegRight_Slider);
+            RemoveRoutedEventListener(LegRight_UpDown);
             CharacterDetails.LegRight_Rotate = false;
         }
         #endregion
@@ -11184,9 +11184,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HolsterLeft_Z.value = (float)quat.Z;
             CharacterDetails.HolsterLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= HolsterLeft_Slider;
-            BoneSlider2.ValueChanged -= HolsterLeft_Slider;
-            BoneSlider3.ValueChanged -= HolsterLeft_Slider;
+            RemoveRoutedEventListener(HolsterLeft_Slider);
         }
 
         private void HolsterLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -11199,9 +11197,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HolsterLeft_Z.value = (float)quat.Z;
             CharacterDetails.HolsterLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= HolsterLeft_UpDown;
-            BoneUpDown2.ValueChanged -= HolsterLeft_UpDown;
-            BoneUpDown3.ValueChanged -= HolsterLeft_UpDown;
+            RemoveRoutedEventListener(HolsterLeft_UpDown);
         }
 
         public void HolsterLeft_Checked(object sender, RoutedEventArgs e)
@@ -11214,6 +11210,8 @@ namespace ConceptMatrix.Views
         }
         private void HolsterLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(HolsterLeft_Slider);
+            RemoveRoutedEventListener(HolsterLeft_UpDown);
             CharacterDetails.HolsterLeft_Rotate = false;
         }
         #endregion
@@ -11228,9 +11226,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HolsterRight_Z.value = (float)quat.Z;
             CharacterDetails.HolsterRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= HolsterRight_Slider;
-            BoneSlider2.ValueChanged -= HolsterRight_Slider;
-            BoneSlider3.ValueChanged -= HolsterRight_Slider;
+            RemoveRoutedEventListener(HolsterRight_Slider);
         }
 
         private void HolsterRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -11243,9 +11239,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HolsterRight_Z.value = (float)quat.Z;
             CharacterDetails.HolsterRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= HolsterRight_UpDown;
-            BoneUpDown2.ValueChanged -= HolsterRight_UpDown;
-            BoneUpDown3.ValueChanged -= HolsterRight_UpDown;
+            RemoveRoutedEventListener(HolsterRight_UpDown);
         }
 
         public void HolsterRight_Checked(object sender, RoutedEventArgs e)
@@ -11258,6 +11252,8 @@ namespace ConceptMatrix.Views
         }
         private void HolsterRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(HolsterRight_Slider);
+            RemoveRoutedEventListener(HolsterRight_UpDown);
             CharacterDetails.HolsterRight_Rotate = false;
         }
         #endregion
@@ -11272,9 +11268,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.SheatheLeft_Z.value = (float)quat.Z;
             CharacterDetails.SheatheLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= SheatheLeft_Slider;
-            BoneSlider2.ValueChanged -= SheatheLeft_Slider;
-            BoneSlider3.ValueChanged -= SheatheLeft_Slider;
+            RemoveRoutedEventListener(SheatheLeft_Slider);
         }
 
         private void SheatheLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -11287,9 +11281,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.SheatheLeft_Z.value = (float)quat.Z;
             CharacterDetails.SheatheLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= SheatheLeft_UpDown;
-            BoneUpDown2.ValueChanged -= SheatheLeft_UpDown;
-            BoneUpDown3.ValueChanged -= SheatheLeft_UpDown;
+            RemoveRoutedEventListener(SheatheLeft_UpDown);
         }
 
         public void SheatheLeft_Checked(object sender, RoutedEventArgs e)
@@ -11302,6 +11294,8 @@ namespace ConceptMatrix.Views
         }
         private void SheatheLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(SheatheLeft_Slider);
+            RemoveRoutedEventListener(SheatheLeft_UpDown);
             CharacterDetails.SheatheLeft_Rotate = false;
         }
         #endregion
@@ -11316,9 +11310,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.SheatheRight_Z.value = (float)quat.Z;
             CharacterDetails.SheatheRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= SheatheRight_Slider;
-            BoneSlider2.ValueChanged -= SheatheRight_Slider;
-            BoneSlider3.ValueChanged -= SheatheRight_Slider;
+            RemoveRoutedEventListener(SheatheRight_Slider);
         }
 
         private void SheatheRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -11331,9 +11323,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.SheatheRight_Z.value = (float)quat.Z;
             CharacterDetails.SheatheRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= SheatheRight_UpDown;
-            BoneUpDown2.ValueChanged -= SheatheRight_UpDown;
-            BoneUpDown3.ValueChanged -= SheatheRight_UpDown;
+            RemoveRoutedEventListener(SheatheRight_UpDown);
         }
 
         public void SheatheRight_Checked(object sender, RoutedEventArgs e)
@@ -11346,6 +11336,8 @@ namespace ConceptMatrix.Views
         }
         private void SheatheRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(SheatheRight_Slider);
+            RemoveRoutedEventListener(SheatheRight_UpDown);
             CharacterDetails.SheatheRight_Rotate = false;
         }
         #endregion
@@ -11371,9 +11363,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= SpineB_Slider;
-            BoneSlider2.ValueChanged -= SpineB_Slider;
-            BoneSlider3.ValueChanged -= SpineB_Slider;
+            RemoveRoutedEventListener(SpineB_Slider);
         }
 
         private void SpineB_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -11397,9 +11387,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= SpineB_UpDown;
-            BoneUpDown2.ValueChanged -= SpineB_UpDown;
-            BoneUpDown3.ValueChanged -= SpineB_UpDown;
+            RemoveRoutedEventListener(SpineB_UpDown);
         }
 
         public void SpineB_Checked(object sender, RoutedEventArgs e)
@@ -11412,6 +11400,8 @@ namespace ConceptMatrix.Views
         }
         private void SpineB_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(SpineB_Slider);
+            RemoveRoutedEventListener(SpineB_UpDown);
             CharacterDetails.SpineB_Rotate = false;
         }
         #endregion
@@ -11426,9 +11416,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothBackALeft_Z.value = (float)quat.Z;
             CharacterDetails.ClothBackALeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ClothBackALeft_Slider;
-            BoneSlider2.ValueChanged -= ClothBackALeft_Slider;
-            BoneSlider3.ValueChanged -= ClothBackALeft_Slider;
+            RemoveRoutedEventListener(ClothBackALeft_Slider);
         }
 
         private void ClothBackALeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -11441,9 +11429,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothBackALeft_Z.value = (float)quat.Z;
             CharacterDetails.ClothBackALeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ClothBackALeft_UpDown;
-            BoneUpDown2.ValueChanged -= ClothBackALeft_UpDown;
-            BoneUpDown3.ValueChanged -= ClothBackALeft_UpDown;
+            RemoveRoutedEventListener(ClothBackALeft_UpDown);
         }
 
         public void ClothBackALeft_Checked(object sender, RoutedEventArgs e)
@@ -11456,6 +11442,8 @@ namespace ConceptMatrix.Views
         }
         private void ClothBackALeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ClothBackALeft_Slider);
+            RemoveRoutedEventListener(ClothBackALeft_UpDown);
             CharacterDetails.ClothBackALeft_Rotate = false;
         }
         #endregion
@@ -11470,9 +11458,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothBackARight_Z.value = (float)quat.Z;
             CharacterDetails.ClothBackARight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ClothBackARight_Slider;
-            BoneSlider2.ValueChanged -= ClothBackARight_Slider;
-            BoneSlider3.ValueChanged -= ClothBackARight_Slider;
+            RemoveRoutedEventListener(ClothBackARight_Slider);
         }
 
         private void ClothBackARight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -11485,9 +11471,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothBackARight_Z.value = (float)quat.Z;
             CharacterDetails.ClothBackARight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ClothBackARight_UpDown;
-            BoneUpDown2.ValueChanged -= ClothBackARight_UpDown;
-            BoneUpDown3.ValueChanged -= ClothBackARight_UpDown;
+            RemoveRoutedEventListener(ClothBackARight_UpDown);
         }
 
         public void ClothBackARight_Checked(object sender, RoutedEventArgs e)
@@ -11500,6 +11484,8 @@ namespace ConceptMatrix.Views
         }
         private void ClothBackARight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ClothBackARight_Slider);
+            RemoveRoutedEventListener(ClothBackARight_UpDown);
             CharacterDetails.ClothBackARight_Rotate = false;
         }
         #endregion
@@ -11514,9 +11500,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothFrontALeft_Z.value = (float)quat.Z;
             CharacterDetails.ClothFrontALeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ClothFrontALeft_Slider;
-            BoneSlider2.ValueChanged -= ClothFrontALeft_Slider;
-            BoneSlider3.ValueChanged -= ClothFrontALeft_Slider;
+            RemoveRoutedEventListener(ClothFrontALeft_Slider);
         }
 
         private void ClothFrontALeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -11529,9 +11513,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothFrontALeft_Z.value = (float)quat.Z;
             CharacterDetails.ClothFrontALeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ClothFrontALeft_UpDown;
-            BoneUpDown2.ValueChanged -= ClothFrontALeft_UpDown;
-            BoneUpDown3.ValueChanged -= ClothFrontALeft_UpDown;
+            RemoveRoutedEventListener(ClothFrontALeft_UpDown);
         }
 
         public void ClothFrontALeft_Checked(object sender, RoutedEventArgs e)
@@ -11544,6 +11526,8 @@ namespace ConceptMatrix.Views
         }
         private void ClothFrontALeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ClothFrontALeft_Slider);
+            RemoveRoutedEventListener(ClothFrontALeft_UpDown);
             CharacterDetails.ClothFrontALeft_Rotate = false;
         }
         #endregion
@@ -11558,9 +11542,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothFrontARight_Z.value = (float)quat.Z;
             CharacterDetails.ClothFrontARight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ClothFrontARight_Slider;
-            BoneSlider2.ValueChanged -= ClothFrontARight_Slider;
-            BoneSlider3.ValueChanged -= ClothFrontARight_Slider;
+            RemoveRoutedEventListener(ClothFrontARight_Slider);
         }
 
         private void ClothFrontARight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -11573,9 +11555,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothFrontARight_Z.value = (float)quat.Z;
             CharacterDetails.ClothFrontARight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ClothFrontARight_UpDown;
-            BoneUpDown2.ValueChanged -= ClothFrontARight_UpDown;
-            BoneUpDown3.ValueChanged -= ClothFrontARight_UpDown;
+            RemoveRoutedEventListener(ClothFrontARight_UpDown);
         }
 
         public void ClothFrontARight_Checked(object sender, RoutedEventArgs e)
@@ -11588,6 +11568,8 @@ namespace ConceptMatrix.Views
         }
         private void ClothFrontARight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ClothFrontARight_Slider);
+            RemoveRoutedEventListener(ClothFrontARight_UpDown);
             CharacterDetails.ClothFrontARight_Rotate = false;
         }
         #endregion
@@ -11602,9 +11584,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothSideALeft_Z.value = (float)quat.Z;
             CharacterDetails.ClothSideALeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ClothSideALeft_Slider;
-            BoneSlider2.ValueChanged -= ClothSideALeft_Slider;
-            BoneSlider3.ValueChanged -= ClothSideALeft_Slider;
+            RemoveRoutedEventListener(ClothSideALeft_Slider);
         }
 
         private void ClothSideALeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -11617,9 +11597,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothSideALeft_Z.value = (float)quat.Z;
             CharacterDetails.ClothSideALeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ClothSideALeft_UpDown;
-            BoneUpDown2.ValueChanged -= ClothSideALeft_UpDown;
-            BoneUpDown3.ValueChanged -= ClothSideALeft_UpDown;
+            RemoveRoutedEventListener(ClothSideALeft_UpDown);
         }
 
         public void ClothSideALeft_Checked(object sender, RoutedEventArgs e)
@@ -11632,6 +11610,8 @@ namespace ConceptMatrix.Views
         }
         private void ClothSideALeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ClothSideALeft_Slider);
+            RemoveRoutedEventListener(ClothSideALeft_UpDown);
             CharacterDetails.ClothSideALeft_Rotate = false;
         }
         #endregion
@@ -11646,9 +11626,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothSideARight_Z.value = (float)quat.Z;
             CharacterDetails.ClothSideARight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ClothSideARight_Slider;
-            BoneSlider2.ValueChanged -= ClothSideARight_Slider;
-            BoneSlider3.ValueChanged -= ClothSideARight_Slider;
+            RemoveRoutedEventListener(ClothSideARight_Slider);
         }
 
         private void ClothSideARight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -11661,9 +11639,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothSideARight_Z.value = (float)quat.Z;
             CharacterDetails.ClothSideARight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ClothSideARight_UpDown;
-            BoneUpDown2.ValueChanged -= ClothSideARight_UpDown;
-            BoneUpDown3.ValueChanged -= ClothSideARight_UpDown;
+            RemoveRoutedEventListener(ClothSideARight_UpDown);
         }
 
         public void ClothSideARight_Checked(object sender, RoutedEventArgs e)
@@ -11676,6 +11652,8 @@ namespace ConceptMatrix.Views
         }
         private void ClothSideARight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ClothSideARight_Slider);
+            RemoveRoutedEventListener(ClothSideARight_UpDown);
             CharacterDetails.ClothSideARight_Rotate = false;
         }
         #endregion
@@ -11700,9 +11678,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= KneeLeft_Slider;
-            BoneSlider2.ValueChanged -= KneeLeft_Slider;
-            BoneSlider3.ValueChanged -= KneeLeft_Slider;
+            RemoveRoutedEventListener(KneeLeft_Slider);
         }
 
         private void KneeLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -11715,9 +11691,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.KneeLeft_Z.value = (float)quat.Z;
             CharacterDetails.KneeLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= KneeLeft_UpDown;
-            BoneUpDown2.ValueChanged -= KneeLeft_UpDown;
-            BoneUpDown3.ValueChanged -= KneeLeft_UpDown;
+            RemoveRoutedEventListener(KneeLeft_UpDown);
         }
 
         public void KneeLeft_Checked(object sender, RoutedEventArgs e)
@@ -11730,6 +11704,8 @@ namespace ConceptMatrix.Views
         }
         private void KneeLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(KneeLeft_Slider);
+            RemoveRoutedEventListener(KneeLeft_UpDown);
             CharacterDetails.KneeLeft_Rotate = false;
         }
         #endregion
@@ -11754,9 +11730,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= KneeRight_Slider;
-            BoneSlider2.ValueChanged -= KneeRight_Slider;
-            BoneSlider3.ValueChanged -= KneeRight_Slider;
+            RemoveRoutedEventListener(KneeRight_Slider);
         }
 
         private void KneeRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -11769,9 +11743,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.KneeRight_Z.value = (float)quat.Z;
             CharacterDetails.KneeRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= KneeRight_UpDown;
-            BoneUpDown2.ValueChanged -= KneeRight_UpDown;
-            BoneUpDown3.ValueChanged -= KneeRight_UpDown;
+            RemoveRoutedEventListener(KneeRight_UpDown);
         }
 
         public void KneeRight_Checked(object sender, RoutedEventArgs e)
@@ -11784,6 +11756,8 @@ namespace ConceptMatrix.Views
         }
         private void KneeRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(KneeRight_Slider);
+            RemoveRoutedEventListener(KneeRight_UpDown);
             CharacterDetails.KneeRight_Rotate = false;
         }
         #endregion
@@ -11798,9 +11772,8 @@ namespace ConceptMatrix.Views
             CharacterDetails.BreastLeft_Z.value = (float)quat.Z;
             CharacterDetails.BreastLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= BreastLeft_Slider;
-            BoneSlider2.ValueChanged -= BreastLeft_Slider;
-            BoneSlider3.ValueChanged -= BreastLeft_Slider;
+            RemoveRoutedEventListener(BreastLeft_Slider);
+            RemoveRoutedEventListener(BreastLeft_UpDown);
         }
 
         private void BreastLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -11813,9 +11786,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.BreastLeft_Z.value = (float)quat.Z;
             CharacterDetails.BreastLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= BreastLeft_UpDown;
-            BoneUpDown2.ValueChanged -= BreastLeft_UpDown;
-            BoneUpDown3.ValueChanged -= BreastLeft_UpDown;
+            RemoveRoutedEventListener(BreastLeft_UpDown);
         }
 
         public void BreastLeft_Checked(object sender, RoutedEventArgs e)
@@ -11828,6 +11799,8 @@ namespace ConceptMatrix.Views
         }
         private void BreastLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(BreastLeft_Slider);
+            RemoveRoutedEventListener(BreastLeft_UpDown);
             CharacterDetails.BreastLeft_Rotate = false;
         }
         #endregion
@@ -11842,9 +11815,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.BreastRight_Z.value = (float)quat.Z;
             CharacterDetails.BreastRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= BreastRight_Slider;
-            BoneSlider2.ValueChanged -= BreastRight_Slider;
-            BoneSlider3.ValueChanged -= BreastRight_Slider;
+            RemoveRoutedEventListener(BreastRight_Slider);
         }
 
         private void BreastRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -11857,9 +11828,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.BreastRight_Z.value = (float)quat.Z;
             CharacterDetails.BreastRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= BreastRight_UpDown;
-            BoneUpDown2.ValueChanged -= BreastRight_UpDown;
-            BoneUpDown3.ValueChanged -= BreastRight_UpDown;
+            RemoveRoutedEventListener(BreastRight_UpDown);
         }
 
         public void BreastRight_Checked(object sender, RoutedEventArgs e)
@@ -11872,6 +11841,8 @@ namespace ConceptMatrix.Views
         }
         private void BreastRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(BreastRight_Slider);
+            RemoveRoutedEventListener(BreastRight_UpDown);
             CharacterDetails.BreastRight_Rotate = false;
         }
         #endregion
@@ -11897,9 +11868,8 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= SpineC_Slider;
-            BoneSlider2.ValueChanged -= SpineC_Slider;
-            BoneSlider3.ValueChanged -= SpineC_Slider;
+            RemoveRoutedEventListener(SpineC_Slider);
+            RemoveRoutedEventListener(SpineC_UpDown);
         }
 
         private void SpineC_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -11923,9 +11893,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= SpineC_UpDown;
-            BoneUpDown2.ValueChanged -= SpineC_UpDown;
-            BoneUpDown3.ValueChanged -= SpineC_UpDown;
+            RemoveRoutedEventListener(SpineC_UpDown);
         }
 
         public void SpineC_Checked(object sender, RoutedEventArgs e)
@@ -11938,6 +11906,8 @@ namespace ConceptMatrix.Views
         }
         private void SpineC_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(SpineC_Slider);
+            RemoveRoutedEventListener(SpineC_UpDown);
             CharacterDetails.SpineC_Rotate = false;
         }
         #endregion
@@ -11952,9 +11922,8 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothBackBLeft_Z.value = (float)quat.Z;
             CharacterDetails.ClothBackBLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ClothBackBLeft_Slider;
-            BoneSlider2.ValueChanged -= ClothBackBLeft_Slider;
-            BoneSlider3.ValueChanged -= ClothBackBLeft_Slider;
+            RemoveRoutedEventListener(ClothBackBLeft_Slider);
+            RemoveRoutedEventListener(ClothBackBLeft_UpDown);
         }
 
         private void ClothBackBLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -11967,9 +11936,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothBackBLeft_Z.value = (float)quat.Z;
             CharacterDetails.ClothBackBLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ClothBackBLeft_UpDown;
-            BoneUpDown2.ValueChanged -= ClothBackBLeft_UpDown;
-            BoneUpDown3.ValueChanged -= ClothBackBLeft_UpDown;
+            RemoveRoutedEventListener(ClothBackBLeft_UpDown);
         }
 
         public void ClothBackBLeft_Checked(object sender, RoutedEventArgs e)
@@ -11982,6 +11949,8 @@ namespace ConceptMatrix.Views
         }
         private void ClothBackBLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ClothBackBLeft_Slider);
+            RemoveRoutedEventListener(ClothBackBLeft_UpDown);
             CharacterDetails.ClothBackBLeft_Rotate = false;
         }
         #endregion
@@ -11996,9 +11965,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothBackBRight_Z.value = (float)quat.Z;
             CharacterDetails.ClothBackBRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ClothBackBRight_Slider;
-            BoneSlider2.ValueChanged -= ClothBackBRight_Slider;
-            BoneSlider3.ValueChanged -= ClothBackBRight_Slider;
+            RemoveRoutedEventListener(ClothBackBRight_Slider);
         }
 
         private void ClothBackBRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -12011,9 +11978,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothBackBRight_Z.value = (float)quat.Z;
             CharacterDetails.ClothBackBRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ClothBackBRight_UpDown;
-            BoneUpDown2.ValueChanged -= ClothBackBRight_UpDown;
-            BoneUpDown3.ValueChanged -= ClothBackBRight_UpDown;
+            RemoveRoutedEventListener(ClothBackBRight_UpDown);
         }
 
         public void ClothBackBRight_Checked(object sender, RoutedEventArgs e)
@@ -12026,6 +11991,8 @@ namespace ConceptMatrix.Views
         }
         private void ClothBackBRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ClothBackBRight_Slider);
+            RemoveRoutedEventListener(ClothBackBRight_UpDown);
             CharacterDetails.ClothBackBRight_Rotate = false;
         }
         #endregion
@@ -12040,9 +12007,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothFrontBLeft_Z.value = (float)quat.Z;
             CharacterDetails.ClothFrontBLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ClothFrontBLeft_Slider;
-            BoneSlider2.ValueChanged -= ClothFrontBLeft_Slider;
-            BoneSlider3.ValueChanged -= ClothFrontBLeft_Slider;
+            RemoveRoutedEventListener(ClothFrontBLeft_Slider);
         }
 
         private void ClothFrontBLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -12055,9 +12020,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothFrontBLeft_Z.value = (float)quat.Z;
             CharacterDetails.ClothFrontBLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ClothFrontBLeft_UpDown;
-            BoneUpDown2.ValueChanged -= ClothFrontBLeft_UpDown;
-            BoneUpDown3.ValueChanged -= ClothFrontBLeft_UpDown;
+            RemoveRoutedEventListener(ClothFrontBLeft_UpDown);
         }
 
         public void ClothFrontBLeft_Checked(object sender, RoutedEventArgs e)
@@ -12070,6 +12033,8 @@ namespace ConceptMatrix.Views
         }
         private void ClothFrontBLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ClothFrontBLeft_Slider);
+            RemoveRoutedEventListener(ClothFrontBLeft_UpDown);
             CharacterDetails.ClothFrontBLeft_Rotate = false;
         }
         #endregion
@@ -12084,9 +12049,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothFrontBRight_Z.value = (float)quat.Z;
             CharacterDetails.ClothFrontBRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ClothFrontBRight_Slider;
-            BoneSlider2.ValueChanged -= ClothFrontBRight_Slider;
-            BoneSlider3.ValueChanged -= ClothFrontBRight_Slider;
+            RemoveRoutedEventListener(ClothFrontBRight_Slider);
         }
 
         private void ClothFrontBRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -12099,9 +12062,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothFrontBRight_Z.value = (float)quat.Z;
             CharacterDetails.ClothFrontBRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ClothFrontBRight_UpDown;
-            BoneUpDown2.ValueChanged -= ClothFrontBRight_UpDown;
-            BoneUpDown3.ValueChanged -= ClothFrontBRight_UpDown;
+            RemoveRoutedEventListener(ClothFrontBRight_UpDown);
         }
 
         public void ClothFrontBRight_Checked(object sender, RoutedEventArgs e)
@@ -12114,6 +12075,8 @@ namespace ConceptMatrix.Views
         }
         private void ClothFrontBRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ClothFrontBRight_Slider);
+            RemoveRoutedEventListener(ClothFrontBRight_UpDown);
             CharacterDetails.ClothFrontBRight_Rotate = false;
         }
         #endregion
@@ -12128,9 +12091,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothSideBLeft_Z.value = (float)quat.Z;
             CharacterDetails.ClothSideBLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ClothSideBLeft_Slider;
-            BoneSlider2.ValueChanged -= ClothSideBLeft_Slider;
-            BoneSlider3.ValueChanged -= ClothSideBLeft_Slider;
+            RemoveRoutedEventListener(ClothSideBLeft_Slider);
         }
 
         private void ClothSideBLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -12143,9 +12104,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothSideBLeft_Z.value = (float)quat.Z;
             CharacterDetails.ClothSideBLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ClothSideBLeft_UpDown;
-            BoneUpDown2.ValueChanged -= ClothSideBLeft_UpDown;
-            BoneUpDown3.ValueChanged -= ClothSideBLeft_UpDown;
+            RemoveRoutedEventListener(ClothSideBLeft_UpDown);
         }
 
         public void ClothSideBLeft_Checked(object sender, RoutedEventArgs e)
@@ -12158,6 +12117,8 @@ namespace ConceptMatrix.Views
         }
         private void ClothSideBLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ClothSideBLeft_Slider);
+            RemoveRoutedEventListener(ClothSideBLeft_UpDown);
             CharacterDetails.ClothSideBLeft_Rotate = false;
         }
         #endregion
@@ -12172,9 +12133,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothSideBRight_Z.value = (float)quat.Z;
             CharacterDetails.ClothSideBRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ClothSideBRight_Slider;
-            BoneSlider2.ValueChanged -= ClothSideBRight_Slider;
-            BoneSlider3.ValueChanged -= ClothSideBRight_Slider;
+            RemoveRoutedEventListener(ClothSideBRight_Slider);
         }
 
         private void ClothSideBRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -12187,9 +12146,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothSideBRight_Z.value = (float)quat.Z;
             CharacterDetails.ClothSideBRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ClothSideBRight_UpDown;
-            BoneUpDown2.ValueChanged -= ClothSideBRight_UpDown;
-            BoneUpDown3.ValueChanged -= ClothSideBRight_UpDown;
+            RemoveRoutedEventListener(ClothSideBRight_UpDown);
         }
 
         public void ClothSideBRight_Checked(object sender, RoutedEventArgs e)
@@ -12202,6 +12159,8 @@ namespace ConceptMatrix.Views
         }
         private void ClothSideBRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ClothSideBRight_Slider);
+            RemoveRoutedEventListener(ClothSideBRight_UpDown);
             CharacterDetails.ClothSideBRight_Rotate = false;
         }
         #endregion
@@ -12226,9 +12185,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= CalfLeft_Slider;
-            BoneSlider2.ValueChanged -= CalfLeft_Slider;
-            BoneSlider3.ValueChanged -= CalfLeft_Slider;
+            RemoveRoutedEventListener(CalfLeft_Slider);
         }
 
         private void CalfLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -12251,9 +12208,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= CalfLeft_UpDown;
-            BoneUpDown2.ValueChanged -= CalfLeft_UpDown;
-            BoneUpDown3.ValueChanged -= CalfLeft_UpDown;
+            RemoveRoutedEventListener(CalfLeft_UpDown);
         }
 
         public void CalfLeft_Checked(object sender, RoutedEventArgs e)
@@ -12266,6 +12221,8 @@ namespace ConceptMatrix.Views
         }
         private void CalfLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(CalfLeft_Slider);
+            RemoveRoutedEventListener(CalfLeft_UpDown);
             CharacterDetails.CalfLeft_Rotate = false;
         }
         #endregion
@@ -12290,9 +12247,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= CalfRight_Slider;
-            BoneSlider2.ValueChanged -= CalfRight_Slider;
-            BoneSlider3.ValueChanged -= CalfRight_Slider;
+            RemoveRoutedEventListener(CalfRight_Slider);
         }
 
         private void CalfRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -12315,9 +12270,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= CalfRight_UpDown;
-            BoneUpDown2.ValueChanged -= CalfRight_UpDown;
-            BoneUpDown3.ValueChanged -= CalfRight_UpDown;
+            RemoveRoutedEventListener(CalfRight_UpDown);
         }
 
         public void CalfRight_Checked(object sender, RoutedEventArgs e)
@@ -12330,6 +12283,8 @@ namespace ConceptMatrix.Views
         }
         private void CalfRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(CalfRight_Slider);
+            RemoveRoutedEventListener(CalfRight_UpDown);
             CharacterDetails.CalfRight_Rotate = false;
         }
         #endregion
@@ -12344,9 +12299,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ScabbardLeft_Z.value = (float)quat.Z;
             CharacterDetails.ScabbardLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ScabbardLeft_Slider;
-            BoneSlider2.ValueChanged -= ScabbardLeft_Slider;
-            BoneSlider3.ValueChanged -= ScabbardLeft_Slider;
+            RemoveRoutedEventListener(ScabbardLeft_Slider);
         }
 
         private void ScabbardLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -12359,9 +12312,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ScabbardLeft_Z.value = (float)quat.Z;
             CharacterDetails.ScabbardLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ScabbardLeft_UpDown;
-            BoneUpDown2.ValueChanged -= ScabbardLeft_UpDown;
-            BoneUpDown3.ValueChanged -= ScabbardLeft_UpDown;
+            RemoveRoutedEventListener(ScabbardLeft_UpDown);
         }
 
         public void ScabbardLeft_Checked(object sender, RoutedEventArgs e)
@@ -12374,6 +12325,8 @@ namespace ConceptMatrix.Views
         }
         private void ScabbardLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ScabbardLeft_Slider);
+            RemoveRoutedEventListener(ScabbardLeft_UpDown);
             CharacterDetails.ScabbardLeft_Rotate = false;
         }
         #endregion
@@ -12388,9 +12341,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ScabbardRight_Z.value = (float)quat.Z;
             CharacterDetails.ScabbardRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ScabbardRight_Slider;
-            BoneSlider2.ValueChanged -= ScabbardRight_Slider;
-            BoneSlider3.ValueChanged -= ScabbardRight_Slider;
+            RemoveRoutedEventListener(ScabbardRight_Slider);
         }
 
         private void ScabbardRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -12403,9 +12354,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ScabbardRight_Z.value = (float)quat.Z;
             CharacterDetails.ScabbardRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ScabbardRight_UpDown;
-            BoneUpDown2.ValueChanged -= ScabbardRight_UpDown;
-            BoneUpDown3.ValueChanged -= ScabbardRight_UpDown;
+            RemoveRoutedEventListener(ScabbardRight_UpDown);
         }
 
         public void ScabbardRight_Checked(object sender, RoutedEventArgs e)
@@ -12418,6 +12367,8 @@ namespace ConceptMatrix.Views
         }
         private void ScabbardRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ScabbardRight_Slider);
+            RemoveRoutedEventListener(ScabbardRight_UpDown);
             CharacterDetails.ScabbardRight_Rotate = false;
         }
         #endregion
@@ -12443,9 +12394,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= Neck_Slider;
-            BoneSlider2.ValueChanged -= Neck_Slider;
-            BoneSlider3.ValueChanged -= Neck_Slider;
+            RemoveRoutedEventListener(Neck_Slider);
         }
 
         private void Neck_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -12469,9 +12418,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= Neck_UpDown;
-            BoneUpDown2.ValueChanged -= Neck_UpDown;
-            BoneUpDown3.ValueChanged -= Neck_UpDown;
+            RemoveRoutedEventListener(Neck_UpDown);
         }
 
         public void Neck_Checked(object sender, RoutedEventArgs e)
@@ -12484,6 +12431,8 @@ namespace ConceptMatrix.Views
         }
         private void Neck_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(Neck_Slider);
+            RemoveRoutedEventListener(Neck_UpDown);
             CharacterDetails.Neck_Rotate = false;
         }
         #endregion
@@ -12508,9 +12457,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ClavicleLeft_Slider;
-            BoneSlider2.ValueChanged -= ClavicleLeft_Slider;
-            BoneSlider3.ValueChanged -= ClavicleLeft_Slider;
+            RemoveRoutedEventListener(ClavicleLeft_Slider);
         }
 
         private void ClavicleLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -12533,9 +12480,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ClavicleLeft_UpDown;
-            BoneUpDown2.ValueChanged -= ClavicleLeft_UpDown;
-            BoneUpDown3.ValueChanged -= ClavicleLeft_UpDown;
+            RemoveRoutedEventListener(ClavicleLeft_UpDown);
         }
 
         public void ClavicleLeft_Checked(object sender, RoutedEventArgs e)
@@ -12548,6 +12493,8 @@ namespace ConceptMatrix.Views
         }
         private void ClavicleLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ClavicleLeft_Slider);
+            RemoveRoutedEventListener(ClavicleLeft_UpDown);
             CharacterDetails.ClavicleLeft_Rotate = false;
         }
         #endregion
@@ -12572,9 +12519,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ClavicleRight_Slider;
-            BoneSlider2.ValueChanged -= ClavicleRight_Slider;
-            BoneSlider3.ValueChanged -= ClavicleRight_Slider;
+            RemoveRoutedEventListener(ClavicleRight_Slider);
         }
 
         private void ClavicleRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -12597,9 +12542,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ClavicleRight_UpDown;
-            BoneUpDown2.ValueChanged -= ClavicleRight_UpDown;
-            BoneUpDown3.ValueChanged -= ClavicleRight_UpDown;
+            RemoveRoutedEventListener(ClavicleRight_UpDown);
         }
 
         public void ClavicleRight_Checked(object sender, RoutedEventArgs e)
@@ -12612,6 +12555,8 @@ namespace ConceptMatrix.Views
         }
         private void ClavicleRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ClavicleRight_Slider);
+            RemoveRoutedEventListener(ClavicleRight_UpDown);
             CharacterDetails.ClavicleRight_Rotate = false;
         }
         #endregion
@@ -12626,9 +12571,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothBackCLeft_Z.value = (float)quat.Z;
             CharacterDetails.ClothBackCLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ClothBackCLeft_Slider;
-            BoneSlider2.ValueChanged -= ClothBackCLeft_Slider;
-            BoneSlider3.ValueChanged -= ClothBackCLeft_Slider;
+            RemoveRoutedEventListener(ClothBackCLeft_Slider);
         }
 
         private void ClothBackCLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -12641,9 +12584,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothBackCLeft_Z.value = (float)quat.Z;
             CharacterDetails.ClothBackCLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ClothBackCLeft_UpDown;
-            BoneUpDown2.ValueChanged -= ClothBackCLeft_UpDown;
-            BoneUpDown3.ValueChanged -= ClothBackCLeft_UpDown;
+            RemoveRoutedEventListener(ClothBackCLeft_UpDown);
         }
 
         public void ClothBackCLeft_Checked(object sender, RoutedEventArgs e)
@@ -12656,6 +12597,8 @@ namespace ConceptMatrix.Views
         }
         private void ClothBackCLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ClothBackCLeft_Slider);
+            RemoveRoutedEventListener(ClothBackCLeft_UpDown);
             CharacterDetails.ClothBackCLeft_Rotate = false;
         }
         #endregion
@@ -12670,9 +12613,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothBackCRight_Z.value = (float)quat.Z;
             CharacterDetails.ClothBackCRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ClothBackCRight_Slider;
-            BoneSlider2.ValueChanged -= ClothBackCRight_Slider;
-            BoneSlider3.ValueChanged -= ClothBackCRight_Slider;
+            RemoveRoutedEventListener(ClothBackCRight_Slider);
         }
 
         private void ClothBackCRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -12685,9 +12626,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothBackCRight_Z.value = (float)quat.Z;
             CharacterDetails.ClothBackCRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ClothBackCRight_UpDown;
-            BoneUpDown2.ValueChanged -= ClothBackCRight_UpDown;
-            BoneUpDown3.ValueChanged -= ClothBackCRight_UpDown;
+            RemoveRoutedEventListener(ClothBackCRight_UpDown);
         }
 
         public void ClothBackCRight_Checked(object sender, RoutedEventArgs e)
@@ -12700,6 +12639,8 @@ namespace ConceptMatrix.Views
         }
         private void ClothBackCRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ClothBackCRight_Slider);
+            RemoveRoutedEventListener(ClothBackCRight_UpDown);
             CharacterDetails.ClothBackCRight_Rotate = false;
         }
         #endregion
@@ -12714,9 +12655,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothFrontCLeft_Z.value = (float)quat.Z;
             CharacterDetails.ClothFrontCLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ClothFrontCLeft_Slider;
-            BoneSlider2.ValueChanged -= ClothFrontCLeft_Slider;
-            BoneSlider3.ValueChanged -= ClothFrontCLeft_Slider;
+            RemoveRoutedEventListener(ClothFrontCLeft_Slider);
         }
 
         private void ClothFrontCLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -12729,9 +12668,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothFrontCLeft_Z.value = (float)quat.Z;
             CharacterDetails.ClothFrontCLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ClothFrontCLeft_UpDown;
-            BoneUpDown2.ValueChanged -= ClothFrontCLeft_UpDown;
-            BoneUpDown3.ValueChanged -= ClothFrontCLeft_UpDown;
+            RemoveRoutedEventListener(ClothFrontCLeft_UpDown);
         }
 
         public void ClothFrontCLeft_Checked(object sender, RoutedEventArgs e)
@@ -12744,6 +12681,8 @@ namespace ConceptMatrix.Views
         }
         private void ClothFrontCLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ClothFrontCLeft_Slider);
+            RemoveRoutedEventListener(ClothFrontCLeft_UpDown);
             CharacterDetails.ClothFrontCLeft_Rotate = false;
         }
         #endregion
@@ -12758,9 +12697,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothFrontCRight_Z.value = (float)quat.Z;
             CharacterDetails.ClothFrontCRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ClothFrontCRight_Slider;
-            BoneSlider2.ValueChanged -= ClothFrontCRight_Slider;
-            BoneSlider3.ValueChanged -= ClothFrontCRight_Slider;
+            RemoveRoutedEventListener(ClothFrontCRight_Slider);
         }
 
         private void ClothFrontCRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -12773,9 +12710,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothFrontCRight_Z.value = (float)quat.Z;
             CharacterDetails.ClothFrontCRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ClothFrontCRight_UpDown;
-            BoneUpDown2.ValueChanged -= ClothFrontCRight_UpDown;
-            BoneUpDown3.ValueChanged -= ClothFrontCRight_UpDown;
+            RemoveRoutedEventListener(ClothFrontCRight_UpDown);
         }
 
         public void ClothFrontCRight_Checked(object sender, RoutedEventArgs e)
@@ -12788,6 +12723,8 @@ namespace ConceptMatrix.Views
         }
         private void ClothFrontCRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ClothFrontCRight_Slider);
+            RemoveRoutedEventListener(ClothFrontCRight_UpDown);
             CharacterDetails.ClothFrontCRight_Rotate = false;
         }
         #endregion
@@ -12802,9 +12739,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothSideCLeft_Z.value = (float)quat.Z;
             CharacterDetails.ClothSideCLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ClothSideCLeft_Slider;
-            BoneSlider2.ValueChanged -= ClothSideCLeft_Slider;
-            BoneSlider3.ValueChanged -= ClothSideCLeft_Slider;
+            RemoveRoutedEventListener(ClothSideCLeft_Slider);
         }
 
         private void ClothSideCLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -12817,9 +12752,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothSideCLeft_Z.value = (float)quat.Z;
             CharacterDetails.ClothSideCLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ClothSideCLeft_UpDown;
-            BoneUpDown2.ValueChanged -= ClothSideCLeft_UpDown;
-            BoneUpDown3.ValueChanged -= ClothSideCLeft_UpDown;
+            RemoveRoutedEventListener(ClothSideCLeft_UpDown);
         }
 
         public void ClothSideCLeft_Checked(object sender, RoutedEventArgs e)
@@ -12832,6 +12765,8 @@ namespace ConceptMatrix.Views
         }
         private void ClothSideCLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ClothSideCLeft_Slider);
+            RemoveRoutedEventListener(ClothSideCLeft_UpDown);
             CharacterDetails.ClothSideCLeft_Rotate = false;
         }
         #endregion
@@ -12846,9 +12781,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothSideCRight_Z.value = (float)quat.Z;
             CharacterDetails.ClothSideCRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ClothSideCRight_Slider;
-            BoneSlider2.ValueChanged -= ClothSideCRight_Slider;
-            BoneSlider3.ValueChanged -= ClothSideCRight_Slider;
+            RemoveRoutedEventListener(ClothSideCRight_Slider);
         }
 
         private void ClothSideCRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -12861,9 +12794,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ClothSideCRight_Z.value = (float)quat.Z;
             CharacterDetails.ClothSideCRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ClothSideCRight_UpDown;
-            BoneUpDown2.ValueChanged -= ClothSideCRight_UpDown;
-            BoneUpDown3.ValueChanged -= ClothSideCRight_UpDown;
+            RemoveRoutedEventListener(ClothSideCRight_UpDown);
         }
 
         public void ClothSideCRight_Checked(object sender, RoutedEventArgs e)
@@ -12876,6 +12807,8 @@ namespace ConceptMatrix.Views
         }
         private void ClothSideCRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ClothSideCRight_Slider);
+            RemoveRoutedEventListener(ClothSideCRight_UpDown);
             CharacterDetails.ClothSideCRight_Rotate = false;
         }
         #endregion
@@ -12890,9 +12823,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.PoleynLeft_Z.value = (float)quat.Z;
             CharacterDetails.PoleynLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= PoleynLeft_Slider;
-            BoneSlider2.ValueChanged -= PoleynLeft_Slider;
-            BoneSlider3.ValueChanged -= PoleynLeft_Slider;
+            RemoveRoutedEventListener(PoleynLeft_Slider);
         }
 
         private void PoleynLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -12905,9 +12836,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.PoleynLeft_Z.value = (float)quat.Z;
             CharacterDetails.PoleynLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= PoleynLeft_UpDown;
-            BoneUpDown2.ValueChanged -= PoleynLeft_UpDown;
-            BoneUpDown3.ValueChanged -= PoleynLeft_UpDown;
+            RemoveRoutedEventListener(PoleynLeft_UpDown);
         }
 
         public void PoleynLeft_Checked(object sender, RoutedEventArgs e)
@@ -12920,6 +12849,8 @@ namespace ConceptMatrix.Views
         }
         private void PoleynLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(PoleynLeft_Slider);
+            RemoveRoutedEventListener(PoleynLeft_UpDown);
             CharacterDetails.PoleynLeft_Rotate = false;
         }
         #endregion
@@ -12934,9 +12865,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.PoleynRight_Z.value = (float)quat.Z;
             CharacterDetails.PoleynRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= PoleynRight_Slider;
-            BoneSlider2.ValueChanged -= PoleynRight_Slider;
-            BoneSlider3.ValueChanged -= PoleynRight_Slider;
+            RemoveRoutedEventListener(PoleynRight_Slider);
         }
 
         private void PoleynRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -12949,9 +12878,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.PoleynRight_Z.value = (float)quat.Z;
             CharacterDetails.PoleynRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= PoleynRight_UpDown;
-            BoneUpDown2.ValueChanged -= PoleynRight_UpDown;
-            BoneUpDown3.ValueChanged -= PoleynRight_UpDown;
+            RemoveRoutedEventListener(PoleynRight_UpDown);
         }
 
         public void PoleynRight_Checked(object sender, RoutedEventArgs e)
@@ -12964,6 +12891,8 @@ namespace ConceptMatrix.Views
         }
         private void PoleynRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(PoleynRight_Slider);
+            RemoveRoutedEventListener(PoleynRight_UpDown);
             CharacterDetails.PoleynRight_Rotate = false;
         }
         #endregion
@@ -12988,9 +12917,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= FootLeft_Slider;
-            BoneSlider2.ValueChanged -= FootLeft_Slider;
-            BoneSlider3.ValueChanged -= FootLeft_Slider;
+            RemoveRoutedEventListener(FootLeft_Slider);
         }
 
         private void FootLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -13013,9 +12940,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= FootLeft_UpDown;
-            BoneUpDown2.ValueChanged -= FootLeft_UpDown;
-            BoneUpDown3.ValueChanged -= FootLeft_UpDown;
+            RemoveRoutedEventListener(FootLeft_UpDown);
         }
 
         public void FootLeft_Checked(object sender, RoutedEventArgs e)
@@ -13028,6 +12953,8 @@ namespace ConceptMatrix.Views
         }
         private void FootLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(FootLeft_Slider);
+            RemoveRoutedEventListener(FootLeft_UpDown);
             CharacterDetails.FootLeft_Rotate = false;
         }
         #endregion
@@ -13052,9 +12979,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= FootRight_Slider;
-            BoneSlider2.ValueChanged -= FootRight_Slider;
-            BoneSlider3.ValueChanged -= FootRight_Slider;
+            RemoveRoutedEventListener(FootRight_Slider);
         }
 
         private void FootRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -13077,9 +13002,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= FootRight_UpDown;
-            BoneUpDown2.ValueChanged -= FootRight_UpDown;
-            BoneUpDown3.ValueChanged -= FootRight_UpDown;
+            RemoveRoutedEventListener(FootRight_UpDown);
         }
 
         public void FootRight_Checked(object sender, RoutedEventArgs e)
@@ -13092,6 +13015,8 @@ namespace ConceptMatrix.Views
         }
         private void FootRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(FootRight_Slider);
+            RemoveRoutedEventListener(FootRight_UpDown);
             CharacterDetails.FootRight_Rotate = false;
         }
         #endregion
@@ -13119,9 +13044,7 @@ namespace ConceptMatrix.Views
             #endregion
 
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= Head_Slider;
-            BoneSlider2.ValueChanged -= Head_Slider;
-            BoneSlider3.ValueChanged -= Head_Slider;
+            RemoveRoutedEventListener(Head_Slider);
         }
 
         private void Head_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -13147,9 +13070,7 @@ namespace ConceptMatrix.Views
             #endregion
 
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= Head_UpDown;
-            BoneUpDown2.ValueChanged -= Head_UpDown;
-            BoneUpDown3.ValueChanged -= Head_UpDown;
+            RemoveRoutedEventListener(Head_UpDown);
         }
 
         public void Head_Checked(object sender, RoutedEventArgs e)
@@ -13162,6 +13083,8 @@ namespace ConceptMatrix.Views
         }
         private void Head_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(Head_Slider);
+            RemoveRoutedEventListener(Head_UpDown);
             CharacterDetails.Head_Rotate = false;
         }
         #endregion
@@ -13186,9 +13109,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ArmLeft_Slider;
-            BoneSlider2.ValueChanged -= ArmLeft_Slider;
-            BoneSlider3.ValueChanged -= ArmLeft_Slider;
+            RemoveRoutedEventListener(ArmLeft_Slider);
         }
 
         private void ArmLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -13211,9 +13132,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ArmLeft_UpDown;
-            BoneUpDown2.ValueChanged -= ArmLeft_UpDown;
-            BoneUpDown3.ValueChanged -= ArmLeft_UpDown;
+            RemoveRoutedEventListener(ArmLeft_UpDown);
         }
 
         public void ArmLeft_Checked(object sender, RoutedEventArgs e)
@@ -13226,6 +13145,8 @@ namespace ConceptMatrix.Views
         }
         private void ArmLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ArmLeft_Slider);
+            RemoveRoutedEventListener(ArmLeft_UpDown);
             CharacterDetails.ArmLeft_Rotate = false;
         }
         #endregion
@@ -13250,9 +13171,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ArmRight_Slider;
-            BoneSlider2.ValueChanged -= ArmRight_Slider;
-            BoneSlider3.ValueChanged -= ArmRight_Slider;
+            RemoveRoutedEventListener(ArmRight_Slider);
         }
 
         private void ArmRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -13275,9 +13194,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ArmRight_UpDown;
-            BoneUpDown2.ValueChanged -= ArmRight_UpDown;
-            BoneUpDown3.ValueChanged -= ArmRight_UpDown;
+            RemoveRoutedEventListener(ArmRight_UpDown);
         }
 
         public void ArmRight_Checked(object sender, RoutedEventArgs e)
@@ -13290,6 +13207,8 @@ namespace ConceptMatrix.Views
         }
         private void ArmRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ArmRight_Slider);
+            RemoveRoutedEventListener(ArmRight_UpDown);
             CharacterDetails.ArmRight_Rotate = false;
         }
         #endregion
@@ -13304,9 +13223,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.PauldronLeft_Z.value = (float)quat.Z;
             CharacterDetails.PauldronLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= PauldronLeft_Slider;
-            BoneSlider2.ValueChanged -= PauldronLeft_Slider;
-            BoneSlider3.ValueChanged -= PauldronLeft_Slider;
+            RemoveRoutedEventListener(PauldronLeft_Slider);
         }
 
         private void PauldronLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -13319,9 +13236,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.PauldronLeft_Z.value = (float)quat.Z;
             CharacterDetails.PauldronLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= PauldronLeft_UpDown;
-            BoneUpDown2.ValueChanged -= PauldronLeft_UpDown;
-            BoneUpDown3.ValueChanged -= PauldronLeft_UpDown;
+            RemoveRoutedEventListener(PauldronLeft_UpDown);
         }
 
         public void PauldronLeft_Checked(object sender, RoutedEventArgs e)
@@ -13334,6 +13249,8 @@ namespace ConceptMatrix.Views
         }
         private void PauldronLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(PauldronLeft_Slider);
+            RemoveRoutedEventListener(PauldronLeft_UpDown);
             CharacterDetails.PauldronLeft_Rotate = false;
         }
         #endregion
@@ -13348,9 +13265,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.PauldronRight_Z.value = (float)quat.Z;
             CharacterDetails.PauldronRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= PauldronRight_Slider;
-            BoneSlider2.ValueChanged -= PauldronRight_Slider;
-            BoneSlider3.ValueChanged -= PauldronRight_Slider;
+            RemoveRoutedEventListener(PauldronRight_Slider);
         }
 
         private void PauldronRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -13363,9 +13278,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.PauldronRight_Z.value = (float)quat.Z;
             CharacterDetails.PauldronRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= PauldronRight_UpDown;
-            BoneUpDown2.ValueChanged -= PauldronRight_UpDown;
-            BoneUpDown3.ValueChanged -= PauldronRight_UpDown;
+            RemoveRoutedEventListener(PauldronRight_UpDown);
         }
 
         public void PauldronRight_Checked(object sender, RoutedEventArgs e)
@@ -13378,6 +13291,8 @@ namespace ConceptMatrix.Views
         }
         private void PauldronRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(PauldronRight_Slider);
+            RemoveRoutedEventListener(PauldronRight_UpDown);
             CharacterDetails.PauldronRight_Rotate = false;
         }
         #endregion
@@ -13392,9 +13307,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.Unknown00_Z.value = (float)quat.Z;
             CharacterDetails.Unknown00_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= Unknown00_Slider;
-            BoneSlider2.ValueChanged -= Unknown00_Slider;
-            BoneSlider3.ValueChanged -= Unknown00_Slider;
+            RemoveRoutedEventListener(Unknown00_Slider);
         }
 
         private void Unknown00_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -13407,9 +13320,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.Unknown00_Z.value = (float)quat.Z;
             CharacterDetails.Unknown00_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= Unknown00_UpDown;
-            BoneUpDown2.ValueChanged -= Unknown00_UpDown;
-            BoneUpDown3.ValueChanged -= Unknown00_UpDown;
+            RemoveRoutedEventListener(Unknown00_UpDown);
         }
 
         public void Unknown00_Checked(object sender, RoutedEventArgs e)
@@ -13422,6 +13333,8 @@ namespace ConceptMatrix.Views
         }
         private void Unknown00_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(Unknown00_Slider);
+            RemoveRoutedEventListener(Unknown00_UpDown);
             CharacterDetails.Unknown00_Rotate = false;
         }
         #endregion
@@ -13436,9 +13349,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ToesLeft_Z.value = (float)quat.Z;
             CharacterDetails.ToesLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ToesLeft_Slider;
-            BoneSlider2.ValueChanged -= ToesLeft_Slider;
-            BoneSlider3.ValueChanged -= ToesLeft_Slider;
+            RemoveRoutedEventListener(ToesLeft_Slider);
         }
 
         private void ToesLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -13451,10 +13362,8 @@ namespace ConceptMatrix.Views
             CharacterDetails.ToesLeft_Z.value = (float)quat.Z;
             CharacterDetails.ToesLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ToesLeft_UpDown;
-            BoneUpDown2.ValueChanged -= ToesLeft_UpDown;
-            BoneUpDown3.ValueChanged -= ToesLeft_UpDown;
-        }
+            RemoveRoutedEventListener(ToesLeft_UpDown);
+            }
 
         public void ToesLeft_Checked(object sender, RoutedEventArgs e)
         {
@@ -13466,6 +13375,8 @@ namespace ConceptMatrix.Views
         }
         private void ToesLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ToesLeft_Slider);
+            RemoveRoutedEventListener(ToesLeft_UpDown);
             CharacterDetails.ToesLeft_Rotate = false;
         }
         #endregion
@@ -13480,9 +13391,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ToesRight_Z.value = (float)quat.Z;
             CharacterDetails.ToesRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ToesRight_Slider;
-            BoneSlider2.ValueChanged -= ToesRight_Slider;
-            BoneSlider3.ValueChanged -= ToesRight_Slider;
+            RemoveRoutedEventListener(ToesRight_Slider);
         }
 
         private void ToesRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -13495,9 +13404,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ToesRight_Z.value = (float)quat.Z;
             CharacterDetails.ToesRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ToesRight_UpDown;
-            BoneUpDown2.ValueChanged -= ToesRight_UpDown;
-            BoneUpDown3.ValueChanged -= ToesRight_UpDown;
+            RemoveRoutedEventListener(ToesRight_UpDown);
         }
 
         public void ToesRight_Checked(object sender, RoutedEventArgs e)
@@ -13510,6 +13417,8 @@ namespace ConceptMatrix.Views
         }
         private void ToesRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ToesRight_Slider);
+            RemoveRoutedEventListener(ToesRight_UpDown);
             CharacterDetails.ToesRight_Rotate = false;
         }
         #endregion
@@ -13524,9 +13433,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HairA_Z.value = (float)quat.Z;
             CharacterDetails.HairA_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= HairA_Slider;
-            BoneSlider2.ValueChanged -= HairA_Slider;
-            BoneSlider3.ValueChanged -= HairA_Slider;
+            RemoveRoutedEventListener(HairA_Slider);
         }
 
         private void HairA_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -13539,9 +13446,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HairA_Z.value = (float)quat.Z;
             CharacterDetails.HairA_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= HairA_UpDown;
-            BoneUpDown2.ValueChanged -= HairA_UpDown;
-            BoneUpDown3.ValueChanged -= HairA_UpDown;
+            RemoveRoutedEventListener(HairA_UpDown);
         }
 
         public void HairA_Checked(object sender, RoutedEventArgs e)
@@ -13554,6 +13459,8 @@ namespace ConceptMatrix.Views
         }
         private void HairA_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(HairA_Slider);
+            RemoveRoutedEventListener(HairA_UpDown);
             CharacterDetails.HairA_Rotate = false;
         }
         #endregion
@@ -13568,9 +13475,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HairFrontLeft_Z.value = (float)quat.Z;
             CharacterDetails.HairFrontLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= HairFrontLeft_Slider;
-            BoneSlider2.ValueChanged -= HairFrontLeft_Slider;
-            BoneSlider3.ValueChanged -= HairFrontLeft_Slider;
+            RemoveRoutedEventListener(HairFrontLeft_Slider);
         }
 
         private void HairFrontLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -13583,9 +13488,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HairFrontLeft_Z.value = (float)quat.Z;
             CharacterDetails.HairFrontLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= HairFrontLeft_UpDown;
-            BoneUpDown2.ValueChanged -= HairFrontLeft_UpDown;
-            BoneUpDown3.ValueChanged -= HairFrontLeft_UpDown;
+            RemoveRoutedEventListener(HairFrontLeft_UpDown);
         }
 
         public void HairFrontLeft_Checked(object sender, RoutedEventArgs e)
@@ -13598,6 +13501,8 @@ namespace ConceptMatrix.Views
         }
         private void HairFrontLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(HairFrontLeft_Slider);
+            RemoveRoutedEventListener(HairFrontLeft_UpDown);
             CharacterDetails.HairFrontLeft_Rotate = false;
         }
         #endregion
@@ -13612,9 +13517,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HairFrontRight_Z.value = (float)quat.Z;
             CharacterDetails.HairFrontRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= HairFrontRight_Slider;
-            BoneSlider2.ValueChanged -= HairFrontRight_Slider;
-            BoneSlider3.ValueChanged -= HairFrontRight_Slider;
+            RemoveRoutedEventListener(HairFrontRight_Slider);
         }
 
         private void HairFrontRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -13627,9 +13530,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HairFrontRight_Z.value = (float)quat.Z;
             CharacterDetails.HairFrontRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= HairFrontRight_UpDown;
-            BoneUpDown2.ValueChanged -= HairFrontRight_UpDown;
-            BoneUpDown3.ValueChanged -= HairFrontRight_UpDown;
+            RemoveRoutedEventListener(HairFrontRight_UpDown);
         }
 
         public void HairFrontRight_Checked(object sender, RoutedEventArgs e)
@@ -13642,6 +13543,8 @@ namespace ConceptMatrix.Views
         }
         private void HairFrontRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(HairFrontRight_Slider);
+            RemoveRoutedEventListener(HairFrontRight_UpDown);
             CharacterDetails.HairFrontRight_Rotate = false;
         }
         #endregion
@@ -13656,9 +13559,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.EarLeft_Z.value = (float)quat.Z;
             CharacterDetails.EarLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= EarLeft_Slider;
-            BoneSlider2.ValueChanged -= EarLeft_Slider;
-            BoneSlider3.ValueChanged -= EarLeft_Slider;
+            RemoveRoutedEventListener(EarLeft_Slider);
         }
 
         private void EarLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -13671,9 +13572,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.EarLeft_Z.value = (float)quat.Z;
             CharacterDetails.EarLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= EarLeft_UpDown;
-            BoneUpDown2.ValueChanged -= EarLeft_UpDown;
-            BoneUpDown3.ValueChanged -= EarLeft_UpDown;
+            RemoveRoutedEventListener(EarLeft_UpDown);
         }
 
         public void EarLeft_Checked(object sender, RoutedEventArgs e)
@@ -13686,6 +13585,8 @@ namespace ConceptMatrix.Views
         }
         private void EarLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(EarLeft_Slider);
+            RemoveRoutedEventListener(EarLeft_UpDown);
             CharacterDetails.EarLeft_Rotate = false;
         }
         #endregion
@@ -13700,9 +13601,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.EarRight_Z.value = (float)quat.Z;
             CharacterDetails.EarRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= EarRight_Slider;
-            BoneSlider2.ValueChanged -= EarRight_Slider;
-            BoneSlider3.ValueChanged -= EarRight_Slider;
+            RemoveRoutedEventListener(EarRight_Slider);
         }
 
         private void EarRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -13715,9 +13614,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.EarRight_Z.value = (float)quat.Z;
             CharacterDetails.EarRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= EarRight_UpDown;
-            BoneUpDown2.ValueChanged -= EarRight_UpDown;
-            BoneUpDown3.ValueChanged -= EarRight_UpDown;
+            RemoveRoutedEventListener(EarRight_UpDown);
         }
 
         public void EarRight_Checked(object sender, RoutedEventArgs e)
@@ -13730,6 +13627,8 @@ namespace ConceptMatrix.Views
         }
         private void EarRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(EarRight_Slider);
+            RemoveRoutedEventListener(EarRight_UpDown);
             CharacterDetails.EarRight_Rotate = false;
         }
         #endregion
@@ -13754,9 +13653,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ForearmLeft_Slider;
-            BoneSlider2.ValueChanged -= ForearmLeft_Slider;
-            BoneSlider3.ValueChanged -= ForearmLeft_Slider;
+            RemoveRoutedEventListener(ForearmLeft_Slider);
         }
 
         private void ForearmLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -13779,9 +13676,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ForearmLeft_UpDown;
-            BoneUpDown2.ValueChanged -= ForearmLeft_UpDown;
-            BoneUpDown3.ValueChanged -= ForearmLeft_UpDown;
+            RemoveRoutedEventListener(ForearmLeft_UpDown);
         }
 
         public void ForearmLeft_Checked(object sender, RoutedEventArgs e)
@@ -13794,6 +13689,8 @@ namespace ConceptMatrix.Views
         }
         private void ForearmLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ForearmLeft_Slider);
+            RemoveRoutedEventListener(ForearmLeft_UpDown);
             CharacterDetails.ForearmLeft_Rotate = false;
         }
         #endregion
@@ -13818,9 +13715,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ForearmRight_Slider;
-            BoneSlider2.ValueChanged -= ForearmRight_Slider;
-            BoneSlider3.ValueChanged -= ForearmRight_Slider;
+            RemoveRoutedEventListener(ForearmRight_Slider);
         }
 
         private void ForearmRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -13843,9 +13738,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ForearmRight_UpDown;
-            BoneUpDown2.ValueChanged -= ForearmRight_UpDown;
-            BoneUpDown3.ValueChanged -= ForearmRight_UpDown;
+            RemoveRoutedEventListener(ForearmRight_UpDown);
         }
 
         public void ForearmRight_Checked(object sender, RoutedEventArgs e)
@@ -13858,6 +13751,8 @@ namespace ConceptMatrix.Views
         }
         private void ForearmRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ForearmRight_Slider);
+            RemoveRoutedEventListener(ForearmRight_UpDown);
             CharacterDetails.ForearmRight_Rotate = false;
         }
         #endregion
@@ -13872,9 +13767,8 @@ namespace ConceptMatrix.Views
             CharacterDetails.ShoulderLeft_Z.value = (float)quat.Z;
             CharacterDetails.ShoulderLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ShoulderLeft_Slider;
-            BoneSlider2.ValueChanged -= ShoulderLeft_Slider;
-            BoneSlider3.ValueChanged -= ShoulderLeft_Slider;
+            RemoveRoutedEventListener(ShoulderLeft_Slider);
+            RemoveRoutedEventListener(ShoulderLeft_UpDown);
         }
 
         private void ShoulderLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -13887,9 +13781,8 @@ namespace ConceptMatrix.Views
             CharacterDetails.ShoulderLeft_Z.value = (float)quat.Z;
             CharacterDetails.ShoulderLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ShoulderLeft_UpDown;
-            BoneUpDown2.ValueChanged -= ShoulderLeft_UpDown;
-            BoneUpDown3.ValueChanged -= ShoulderLeft_UpDown;
+            RemoveRoutedEventListener(ShoulderLeft_Slider);
+            RemoveRoutedEventListener(ShoulderLeft_UpDown);
         }
 
         public void ShoulderLeft_Checked(object sender, RoutedEventArgs e)
@@ -13902,6 +13795,8 @@ namespace ConceptMatrix.Views
         }
         private void ShoulderLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ShoulderLeft_Slider);
+            RemoveRoutedEventListener(ShoulderLeft_UpDown);
             CharacterDetails.ShoulderLeft_Rotate = false;
         }
         #endregion
@@ -13916,9 +13811,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ShoulderRight_Z.value = (float)quat.Z;
             CharacterDetails.ShoulderRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ShoulderRight_Slider;
-            BoneSlider2.ValueChanged -= ShoulderRight_Slider;
-            BoneSlider3.ValueChanged -= ShoulderRight_Slider;
+            RemoveRoutedEventListener(ShoulderRight_Slider);
         }
 
         private void ShoulderRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -13931,9 +13824,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ShoulderRight_Z.value = (float)quat.Z;
             CharacterDetails.ShoulderRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ShoulderRight_UpDown;
-            BoneUpDown2.ValueChanged -= ShoulderRight_UpDown;
-            BoneUpDown3.ValueChanged -= ShoulderRight_UpDown;
+            RemoveRoutedEventListener(ShoulderRight_UpDown);
         }
 
         public void ShoulderRight_Checked(object sender, RoutedEventArgs e)
@@ -13946,6 +13837,8 @@ namespace ConceptMatrix.Views
         }
         private void ShoulderRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ShoulderRight_Slider);
+            RemoveRoutedEventListener(ShoulderRight_UpDown);
             CharacterDetails.ShoulderRight_Rotate = false;
         }
         #endregion
@@ -13960,9 +13853,8 @@ namespace ConceptMatrix.Views
             CharacterDetails.HairB_Z.value = (float)quat.Z;
             CharacterDetails.HairB_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= HairB_Slider;
-            BoneSlider2.ValueChanged -= HairB_Slider;
-            BoneSlider3.ValueChanged -= HairB_Slider;
+            RemoveRoutedEventListener(HairB_Slider);
+            RemoveRoutedEventListener(HairB_UpDown);
         }
 
         private void HairB_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -13975,9 +13867,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HairB_Z.value = (float)quat.Z;
             CharacterDetails.HairB_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= HairB_UpDown;
-            BoneUpDown2.ValueChanged -= HairB_UpDown;
-            BoneUpDown3.ValueChanged -= HairB_UpDown;
+            RemoveRoutedEventListener(HairB_Slider);
         }
 
         public void HairB_Checked(object sender, RoutedEventArgs e)
@@ -13990,6 +13880,7 @@ namespace ConceptMatrix.Views
         }
         private void HairB_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(HairB_UpDown);
             CharacterDetails.HairB_Rotate = false;
         }
         #endregion
@@ -14015,9 +13906,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= HandLeft_Slider;
-            BoneSlider2.ValueChanged -= HandLeft_Slider;
-            BoneSlider3.ValueChanged -= HandLeft_Slider;
+            RemoveRoutedEventListener(HandLeft_Slider);
         }
 
         private void HandLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -14041,9 +13930,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= HandLeft_UpDown;
-            BoneUpDown2.ValueChanged -= HandLeft_UpDown;
-            BoneUpDown3.ValueChanged -= HandLeft_UpDown;
+            RemoveRoutedEventListener(HandLeft_UpDown);
         }
 
         public void HandLeft_Checked(object sender, RoutedEventArgs e)
@@ -14056,6 +13943,8 @@ namespace ConceptMatrix.Views
         }
         private void HandLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(HandLeft_Slider);
+            RemoveRoutedEventListener(HandLeft_UpDown);
             CharacterDetails.HandLeft_Rotate = false;
         }
         #endregion
@@ -14080,9 +13969,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= HandRight_Slider;
-            BoneSlider2.ValueChanged -= HandRight_Slider;
-            BoneSlider3.ValueChanged -= HandRight_Slider;
+            RemoveRoutedEventListener(HandRight_Slider);
         }
 
         private void HandRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -14105,9 +13992,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= HandRight_UpDown;
-            BoneUpDown2.ValueChanged -= HandRight_UpDown;
-            BoneUpDown3.ValueChanged -= HandRight_UpDown;
+            RemoveRoutedEventListener(HandRight_UpDown);
         }
 
         public void HandRight_Checked(object sender, RoutedEventArgs e)
@@ -14120,6 +14005,8 @@ namespace ConceptMatrix.Views
         }
         private void HandRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(HandRight_Slider);
+            RemoveRoutedEventListener(HandRight_UpDown);
             CharacterDetails.HandRight_Rotate = false;
         }
         #endregion
@@ -14134,9 +14021,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ShieldLeft_Z.value = (float)quat.Z;
             CharacterDetails.ShieldLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ShieldLeft_Slider;
-            BoneSlider2.ValueChanged -= ShieldLeft_Slider;
-            BoneSlider3.ValueChanged -= ShieldLeft_Slider;
+            RemoveRoutedEventListener(ShieldLeft_Slider);
         }
 
         private void ShieldLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -14149,9 +14034,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ShieldLeft_Z.value = (float)quat.Z;
             CharacterDetails.ShieldLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ShieldLeft_UpDown;
-            BoneUpDown2.ValueChanged -= ShieldLeft_UpDown;
-            BoneUpDown3.ValueChanged -= ShieldLeft_UpDown;
+            RemoveRoutedEventListener(ShieldLeft_UpDown);
         }
 
         public void ShieldLeft_Checked(object sender, RoutedEventArgs e)
@@ -14164,6 +14047,8 @@ namespace ConceptMatrix.Views
         }
         private void ShieldLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ShieldLeft_Slider);
+            RemoveRoutedEventListener(ShieldLeft_UpDown);
             CharacterDetails.ShieldLeft_Rotate = false;
         }
         #endregion
@@ -14178,9 +14063,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ShieldRight_Z.value = (float)quat.Z;
             CharacterDetails.ShieldRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ShieldRight_Slider;
-            BoneSlider2.ValueChanged -= ShieldRight_Slider;
-            BoneSlider3.ValueChanged -= ShieldRight_Slider;
+            RemoveRoutedEventListener(ShieldRight_Slider);
         }
 
         private void ShieldRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -14193,9 +14076,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ShieldRight_Z.value = (float)quat.Z;
             CharacterDetails.ShieldRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ShieldRight_UpDown;
-            BoneUpDown2.ValueChanged -= ShieldRight_UpDown;
-            BoneUpDown3.ValueChanged -= ShieldRight_UpDown;
+            RemoveRoutedEventListener(ShieldRight_UpDown);
         }
 
         public void ShieldRight_Checked(object sender, RoutedEventArgs e)
@@ -14208,6 +14089,8 @@ namespace ConceptMatrix.Views
         }
         private void ShieldRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ShieldRight_Slider);
+            RemoveRoutedEventListener(ShieldRight_UpDown);
             CharacterDetails.ShieldRight_Rotate = false;
         }
         #endregion
@@ -14222,9 +14105,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.EarringALeft_Z.value = (float)quat.Z;
             CharacterDetails.EarringALeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= EarringALeft_Slider;
-            BoneSlider2.ValueChanged -= EarringALeft_Slider;
-            BoneSlider3.ValueChanged -= EarringALeft_Slider;
+            RemoveRoutedEventListener(EarringALeft_Slider);
         }
 
         private void EarringALeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -14237,9 +14118,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.EarringALeft_Z.value = (float)quat.Z;
             CharacterDetails.EarringALeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= EarringALeft_UpDown;
-            BoneUpDown2.ValueChanged -= EarringALeft_UpDown;
-            BoneUpDown3.ValueChanged -= EarringALeft_UpDown;
+            RemoveRoutedEventListener(EarringALeft_UpDown);
         }
 
         public void EarringALeft_Checked(object sender, RoutedEventArgs e)
@@ -14252,6 +14131,8 @@ namespace ConceptMatrix.Views
         }
         private void EarringALeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(EarringALeft_Slider);
+            RemoveRoutedEventListener(EarringALeft_UpDown);
             CharacterDetails.EarringALeft_Rotate = false;
         }
         #endregion
@@ -14266,9 +14147,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.EarringARight_Z.value = (float)quat.Z;
             CharacterDetails.EarringARight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= EarringARight_Slider;
-            BoneSlider2.ValueChanged -= EarringARight_Slider;
-            BoneSlider3.ValueChanged -= EarringARight_Slider;
+            RemoveRoutedEventListener(EarringARight_Slider);
         }
 
         private void EarringARight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -14281,9 +14160,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.EarringARight_Z.value = (float)quat.Z;
             CharacterDetails.EarringARight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= EarringARight_UpDown;
-            BoneUpDown2.ValueChanged -= EarringARight_UpDown;
-            BoneUpDown3.ValueChanged -= EarringARight_UpDown;
+            RemoveRoutedEventListener(EarringARight_UpDown);
         }
 
         public void EarringARight_Checked(object sender, RoutedEventArgs e)
@@ -14296,6 +14173,8 @@ namespace ConceptMatrix.Views
         }
         private void EarringARight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(EarringARight_Slider);
+            RemoveRoutedEventListener(EarringARight_UpDown);
             CharacterDetails.EarringARight_Rotate = false;
         }
         #endregion
@@ -14310,9 +14189,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ElbowLeft_Z.value = (float)quat.Z;
             CharacterDetails.ElbowLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ElbowLeft_Slider;
-            BoneSlider2.ValueChanged -= ElbowLeft_Slider;
-            BoneSlider3.ValueChanged -= ElbowLeft_Slider;
+            RemoveRoutedEventListener(ElbowLeft_Slider);
         }
 
         private void ElbowLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -14325,9 +14202,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ElbowLeft_Z.value = (float)quat.Z;
             CharacterDetails.ElbowLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ElbowLeft_UpDown;
-            BoneUpDown2.ValueChanged -= ElbowLeft_UpDown;
-            BoneUpDown3.ValueChanged -= ElbowLeft_UpDown;
+            RemoveRoutedEventListener(ElbowLeft_UpDown);
         }
 
         public void ElbowLeft_Checked(object sender, RoutedEventArgs e)
@@ -14340,6 +14215,8 @@ namespace ConceptMatrix.Views
         }
         private void ElbowLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ElbowLeft_Slider);
+            RemoveRoutedEventListener(ElbowLeft_UpDown);
             CharacterDetails.ElbowLeft_Rotate = false;
         }
         #endregion
@@ -14354,9 +14231,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ElbowRight_Z.value = (float)quat.Z;
             CharacterDetails.ElbowRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ElbowRight_Slider;
-            BoneSlider2.ValueChanged -= ElbowRight_Slider;
-            BoneSlider3.ValueChanged -= ElbowRight_Slider;
+            RemoveRoutedEventListener(ElbowRight_Slider);
         }
 
         private void ElbowRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -14369,9 +14244,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ElbowRight_Z.value = (float)quat.Z;
             CharacterDetails.ElbowRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ElbowRight_UpDown;
-            BoneUpDown2.ValueChanged -= ElbowRight_UpDown;
-            BoneUpDown3.ValueChanged -= ElbowRight_UpDown;
+            RemoveRoutedEventListener(ElbowRight_UpDown);
         }
 
         public void ElbowRight_Checked(object sender, RoutedEventArgs e)
@@ -14384,6 +14257,8 @@ namespace ConceptMatrix.Views
         }
         private void ElbowRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ElbowRight_Slider);
+            RemoveRoutedEventListener(ElbowRight_UpDown);
             CharacterDetails.ElbowRight_Rotate = false;
         }
         #endregion
@@ -14398,9 +14273,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.CouterLeft_Z.value = (float)quat.Z;
             CharacterDetails.CouterLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= CouterLeft_Slider;
-            BoneSlider2.ValueChanged -= CouterLeft_Slider;
-            BoneSlider3.ValueChanged -= CouterLeft_Slider;
+            RemoveRoutedEventListener(CouterLeft_Slider);
         }
 
         private void CouterLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -14413,9 +14286,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.CouterLeft_Z.value = (float)quat.Z;
             CharacterDetails.CouterLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= CouterLeft_UpDown;
-            BoneUpDown2.ValueChanged -= CouterLeft_UpDown;
-            BoneUpDown3.ValueChanged -= CouterLeft_UpDown;
+            RemoveRoutedEventListener(CouterLeft_UpDown);
         }
 
         public void CouterLeft_Checked(object sender, RoutedEventArgs e)
@@ -14428,6 +14299,8 @@ namespace ConceptMatrix.Views
         }
         private void CouterLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(CouterLeft_Slider);
+            RemoveRoutedEventListener(CouterLeft_UpDown);
             CharacterDetails.CouterLeft_Rotate = false;
         }
         #endregion
@@ -14442,9 +14315,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.CouterRight_Z.value = (float)quat.Z;
             CharacterDetails.CouterRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= CouterRight_Slider;
-            BoneSlider2.ValueChanged -= CouterRight_Slider;
-            BoneSlider3.ValueChanged -= CouterRight_Slider;
+            RemoveRoutedEventListener(CouterRight_Slider);
         }
 
         private void CouterRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -14457,9 +14328,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.CouterRight_Z.value = (float)quat.Z;
             CharacterDetails.CouterRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= CouterRight_UpDown;
-            BoneUpDown2.ValueChanged -= CouterRight_UpDown;
-            BoneUpDown3.ValueChanged -= CouterRight_UpDown;
+            RemoveRoutedEventListener(CouterRight_UpDown);
         }
 
         public void CouterRight_Checked(object sender, RoutedEventArgs e)
@@ -14472,6 +14341,8 @@ namespace ConceptMatrix.Views
         }
         private void CouterRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(CouterRight_Slider);
+            RemoveRoutedEventListener(CouterRight_UpDown);
             CharacterDetails.CouterRight_Rotate = false;
         }
         #endregion
@@ -14486,9 +14357,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.WristLeft_Z.value = (float)quat.Z;
             CharacterDetails.WristLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= WristLeft_Slider;
-            BoneSlider2.ValueChanged -= WristLeft_Slider;
-            BoneSlider3.ValueChanged -= WristLeft_Slider;
+            RemoveRoutedEventListener(WristLeft_Slider);
         }
 
         private void WristLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -14501,9 +14370,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.WristLeft_Z.value = (float)quat.Z;
             CharacterDetails.WristLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= WristLeft_UpDown;
-            BoneUpDown2.ValueChanged -= WristLeft_UpDown;
-            BoneUpDown3.ValueChanged -= WristLeft_UpDown;
+            RemoveRoutedEventListener(WristLeft_UpDown);
         }
 
         public void WristLeft_Checked(object sender, RoutedEventArgs e)
@@ -14516,6 +14383,8 @@ namespace ConceptMatrix.Views
         }
         private void WristLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(WristLeft_Slider);
+            RemoveRoutedEventListener(WristLeft_UpDown);
             CharacterDetails.WristLeft_Rotate = false;
         }
         #endregion
@@ -14530,9 +14399,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.WristRight_Z.value = (float)quat.Z;
             CharacterDetails.WristRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= WristRight_Slider;
-            BoneSlider2.ValueChanged -= WristRight_Slider;
-            BoneSlider3.ValueChanged -= WristRight_Slider;
+            RemoveRoutedEventListener(WristRight_Slider);
         }
 
         private void WristRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -14545,9 +14412,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.WristRight_Z.value = (float)quat.Z;
             CharacterDetails.WristRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= WristRight_UpDown;
-            BoneUpDown2.ValueChanged -= WristRight_UpDown;
-            BoneUpDown3.ValueChanged -= WristRight_UpDown;
+            RemoveRoutedEventListener(WristRight_UpDown);
         }
 
         public void WristRight_Checked(object sender, RoutedEventArgs e)
@@ -14560,6 +14425,8 @@ namespace ConceptMatrix.Views
         }
         private void WristRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(WristRight_Slider);
+            RemoveRoutedEventListener(WristRight_UpDown);
             CharacterDetails.WristRight_Rotate = false;
         }
         #endregion
@@ -14584,9 +14451,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= IndexALeft_Slider;
-            BoneSlider2.ValueChanged -= IndexALeft_Slider;
-            BoneSlider3.ValueChanged -= IndexALeft_Slider;
+            RemoveRoutedEventListener(IndexALeft_Slider);
         }
 
         private void IndexALeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -14609,9 +14474,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= IndexALeft_UpDown;
-            BoneUpDown2.ValueChanged -= IndexALeft_UpDown;
-            BoneUpDown3.ValueChanged -= IndexALeft_UpDown;
+            RemoveRoutedEventListener(IndexALeft_UpDown);
         }
 
         public void IndexALeft_Checked(object sender, RoutedEventArgs e)
@@ -14624,6 +14487,8 @@ namespace ConceptMatrix.Views
         }
         private void IndexALeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(IndexALeft_Slider);
+            RemoveRoutedEventListener(IndexALeft_UpDown);
             CharacterDetails.IndexALeft_Rotate = false;
         }
         #endregion
@@ -14648,9 +14513,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= IndexARight_Slider;
-            BoneSlider2.ValueChanged -= IndexARight_Slider;
-            BoneSlider3.ValueChanged -= IndexARight_Slider;
+            RemoveRoutedEventListener(IndexARight_Slider);
         }
 
         private void IndexARight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -14673,9 +14536,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= IndexARight_UpDown;
-            BoneUpDown2.ValueChanged -= IndexARight_UpDown;
-            BoneUpDown3.ValueChanged -= IndexARight_UpDown;
+            RemoveRoutedEventListener(IndexARight_UpDown);
         }
 
         public void IndexARight_Checked(object sender, RoutedEventArgs e)
@@ -14688,6 +14549,8 @@ namespace ConceptMatrix.Views
         }
         private void IndexARight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(IndexARight_Slider);
+            RemoveRoutedEventListener(IndexARight_UpDown);
             CharacterDetails.IndexARight_Rotate = false;
         }
         #endregion
@@ -14712,9 +14575,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= PinkyALeft_Slider;
-            BoneSlider2.ValueChanged -= PinkyALeft_Slider;
-            BoneSlider3.ValueChanged -= PinkyALeft_Slider;
+            RemoveRoutedEventListener(PinkyALeft_Slider);
         }
 
         private void PinkyALeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -14737,9 +14598,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= PinkyALeft_UpDown;
-            BoneUpDown2.ValueChanged -= PinkyALeft_UpDown;
-            BoneUpDown3.ValueChanged -= PinkyALeft_UpDown;
+            RemoveRoutedEventListener(PinkyALeft_UpDown);
         }
 
         public void PinkyALeft_Checked(object sender, RoutedEventArgs e)
@@ -14752,6 +14611,8 @@ namespace ConceptMatrix.Views
         }
         private void PinkyALeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(PinkyALeft_Slider);
+            RemoveRoutedEventListener(PinkyALeft_UpDown);
             CharacterDetails.PinkyALeft_Rotate = false;
         }
         #endregion
@@ -14776,9 +14637,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= PinkyARight_Slider;
-            BoneSlider2.ValueChanged -= PinkyARight_Slider;
-            BoneSlider3.ValueChanged -= PinkyARight_Slider;
+            RemoveRoutedEventListener(PinkyARight_Slider);
         }
 
         private void PinkyARight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -14801,9 +14660,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= PinkyARight_UpDown;
-            BoneUpDown2.ValueChanged -= PinkyARight_UpDown;
-            BoneUpDown3.ValueChanged -= PinkyARight_UpDown;
+            RemoveRoutedEventListener(PinkyARight_UpDown);
         }
 
         public void PinkyARight_Checked(object sender, RoutedEventArgs e)
@@ -14816,6 +14673,8 @@ namespace ConceptMatrix.Views
         }
         private void PinkyARight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(PinkyARight_Slider);
+            RemoveRoutedEventListener(PinkyARight_UpDown);
             CharacterDetails.PinkyARight_Rotate = false;
         }
         #endregion
@@ -14840,9 +14699,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= RingALeft_Slider;
-            BoneSlider2.ValueChanged -= RingALeft_Slider;
-            BoneSlider3.ValueChanged -= RingALeft_Slider;
+            RemoveRoutedEventListener(RingALeft_Slider);
         }
 
         private void RingALeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -14865,9 +14722,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= RingALeft_UpDown;
-            BoneUpDown2.ValueChanged -= RingALeft_UpDown;
-            BoneUpDown3.ValueChanged -= RingALeft_UpDown;
+            RemoveRoutedEventListener(RingALeft_UpDown);
         }
 
         public void RingALeft_Checked(object sender, RoutedEventArgs e)
@@ -14880,6 +14735,8 @@ namespace ConceptMatrix.Views
         }
         private void RingALeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(RingALeft_Slider);
+            RemoveRoutedEventListener(RingALeft_UpDown);
             CharacterDetails.RingALeft_Rotate = false;
         }
         #endregion
@@ -14904,9 +14761,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= RingARight_Slider;
-            BoneSlider2.ValueChanged -= RingARight_Slider;
-            BoneSlider3.ValueChanged -= RingARight_Slider;
+            RemoveRoutedEventListener(RingARight_Slider);
         }
 
         private void RingARight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -14929,9 +14784,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= RingARight_UpDown;
-            BoneUpDown2.ValueChanged -= RingARight_UpDown;
-            BoneUpDown3.ValueChanged -= RingARight_UpDown;
+            RemoveRoutedEventListener(RingARight_UpDown);
         }
 
         public void RingARight_Checked(object sender, RoutedEventArgs e)
@@ -14944,6 +14797,8 @@ namespace ConceptMatrix.Views
         }
         private void RingARight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(RingARight_Slider);
+            RemoveRoutedEventListener(RingARight_UpDown);
             CharacterDetails.RingARight_Rotate = false;
         }
         #endregion
@@ -14968,9 +14823,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= MiddleALeft_Slider;
-            BoneSlider2.ValueChanged -= MiddleALeft_Slider;
-            BoneSlider3.ValueChanged -= MiddleALeft_Slider;
+            RemoveRoutedEventListener(MiddleALeft_Slider);
         }
 
         private void MiddleALeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -14993,9 +14846,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= MiddleALeft_UpDown;
-            BoneUpDown2.ValueChanged -= MiddleALeft_UpDown;
-            BoneUpDown3.ValueChanged -= MiddleALeft_UpDown;
+            RemoveRoutedEventListener(MiddleALeft_UpDown);
         }
 
         public void MiddleALeft_Checked(object sender, RoutedEventArgs e)
@@ -15008,6 +14859,8 @@ namespace ConceptMatrix.Views
         }
         private void MiddleALeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(MiddleALeft_Slider);
+            RemoveRoutedEventListener(MiddleALeft_UpDown);
             CharacterDetails.MiddleALeft_Rotate = false;
         }
         #endregion
@@ -15032,9 +14885,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= MiddleARight_Slider;
-            BoneSlider2.ValueChanged -= MiddleARight_Slider;
-            BoneSlider3.ValueChanged -= MiddleARight_Slider;
+            RemoveRoutedEventListener(MiddleARight_Slider);
         }
 
         private void MiddleARight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -15057,9 +14908,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= MiddleARight_UpDown;
-            BoneUpDown2.ValueChanged -= MiddleARight_UpDown;
-            BoneUpDown3.ValueChanged -= MiddleARight_UpDown;
+            RemoveRoutedEventListener(MiddleARight_UpDown);
         }
 
         public void MiddleARight_Checked(object sender, RoutedEventArgs e)
@@ -15072,6 +14921,8 @@ namespace ConceptMatrix.Views
         }
         private void MiddleARight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(MiddleARight_Slider);
+            RemoveRoutedEventListener(MiddleARight_UpDown);
             CharacterDetails.MiddleARight_Rotate = false;
         }
         #endregion
@@ -15096,9 +14947,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ThumbALeft_Slider;
-            BoneSlider2.ValueChanged -= ThumbALeft_Slider;
-            BoneSlider3.ValueChanged -= ThumbALeft_Slider;
+            RemoveRoutedEventListener(ThumbALeft_Slider);
         }
 
         private void ThumbALeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -15121,9 +14970,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ThumbALeft_UpDown;
-            BoneUpDown2.ValueChanged -= ThumbALeft_UpDown;
-            BoneUpDown3.ValueChanged -= ThumbALeft_UpDown;
+            RemoveRoutedEventListener(ThumbALeft_UpDown);
         }
 
         public void ThumbALeft_Checked(object sender, RoutedEventArgs e)
@@ -15136,6 +14983,8 @@ namespace ConceptMatrix.Views
         }
         private void ThumbALeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ThumbALeft_Slider);
+            RemoveRoutedEventListener(ThumbALeft_UpDown);
             CharacterDetails.ThumbALeft_Rotate = false;
         }
         #endregion
@@ -15160,9 +15009,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ThumbARight_Slider;
-            BoneSlider2.ValueChanged -= ThumbARight_Slider;
-            BoneSlider3.ValueChanged -= ThumbARight_Slider;
+            RemoveRoutedEventListener(ThumbARight_Slider);
         }
 
         private void ThumbARight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -15185,9 +15032,7 @@ namespace ConceptMatrix.Views
             }
             #endregion
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ThumbARight_UpDown;
-            BoneUpDown2.ValueChanged -= ThumbARight_UpDown;
-            BoneUpDown3.ValueChanged -= ThumbARight_UpDown;
+            RemoveRoutedEventListener(ThumbARight_UpDown);
         }
 
         public void ThumbARight_Checked(object sender, RoutedEventArgs e)
@@ -15200,6 +15045,8 @@ namespace ConceptMatrix.Views
         }
         private void ThumbARight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ThumbARight_Slider);
+            RemoveRoutedEventListener(ThumbARight_UpDown);
             CharacterDetails.ThumbARight_Rotate = false;
         }
         #endregion
@@ -15214,9 +15061,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.WeaponLeft_Z.value = (float)quat.Z;
             CharacterDetails.WeaponLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= WeaponLeft_Slider;
-            BoneSlider2.ValueChanged -= WeaponLeft_Slider;
-            BoneSlider3.ValueChanged -= WeaponLeft_Slider;
+            RemoveRoutedEventListener(WeaponLeft_Slider);
         }
 
         private void WeaponLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -15229,9 +15074,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.WeaponLeft_Z.value = (float)quat.Z;
             CharacterDetails.WeaponLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= WeaponLeft_UpDown;
-            BoneUpDown2.ValueChanged -= WeaponLeft_UpDown;
-            BoneUpDown3.ValueChanged -= WeaponLeft_UpDown;
+            RemoveRoutedEventListener(WeaponLeft_UpDown);
         }
 
         public void WeaponLeft_Checked(object sender, RoutedEventArgs e)
@@ -15244,6 +15087,8 @@ namespace ConceptMatrix.Views
         }
         private void WeaponLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(WeaponLeft_Slider);
+            RemoveRoutedEventListener(WeaponLeft_UpDown);
             CharacterDetails.WeaponLeft_Rotate = false;
         }
         #endregion
@@ -15258,9 +15103,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.WeaponRight_Z.value = (float)quat.Z;
             CharacterDetails.WeaponRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= WeaponRight_Slider;
-            BoneSlider2.ValueChanged -= WeaponRight_Slider;
-            BoneSlider3.ValueChanged -= WeaponRight_Slider;
+            RemoveRoutedEventListener(WeaponRight_Slider);
         }
 
         private void WeaponRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -15273,9 +15116,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.WeaponRight_Z.value = (float)quat.Z;
             CharacterDetails.WeaponRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= WeaponRight_UpDown;
-            BoneUpDown2.ValueChanged -= WeaponRight_UpDown;
-            BoneUpDown3.ValueChanged -= WeaponRight_UpDown;
+            RemoveRoutedEventListener(WeaponRight_UpDown);
         }
 
         public void WeaponRight_Checked(object sender, RoutedEventArgs e)
@@ -15288,6 +15129,8 @@ namespace ConceptMatrix.Views
         }
         private void WeaponRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(WeaponRight_Slider);
+            RemoveRoutedEventListener(WeaponRight_UpDown);
             CharacterDetails.WeaponRight_Rotate = false;
         }
         #endregion
@@ -15302,9 +15145,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.EarringBLeft_Z.value = (float)quat.Z;
             CharacterDetails.EarringBLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= EarringBLeft_Slider;
-            BoneSlider2.ValueChanged -= EarringBLeft_Slider;
-            BoneSlider3.ValueChanged -= EarringBLeft_Slider;
+            RemoveRoutedEventListener(EarringBLeft_Slider);
         }
 
         private void EarringBLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -15317,9 +15158,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.EarringBLeft_Z.value = (float)quat.Z;
             CharacterDetails.EarringBLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= EarringBLeft_UpDown;
-            BoneUpDown2.ValueChanged -= EarringBLeft_UpDown;
-            BoneUpDown3.ValueChanged -= EarringBLeft_UpDown;
+            RemoveRoutedEventListener(EarringBLeft_UpDown);
         }
 
         public void EarringBLeft_Checked(object sender, RoutedEventArgs e)
@@ -15332,6 +15171,8 @@ namespace ConceptMatrix.Views
         }
         private void EarringBLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(EarringBLeft_Slider);
+            RemoveRoutedEventListener(EarringBLeft_UpDown);
             CharacterDetails.EarringBLeft_Rotate = false;
         }
         #endregion
@@ -15346,9 +15187,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.EarringBRight_Z.value = (float)quat.Z;
             CharacterDetails.EarringBRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= EarringBRight_Slider;
-            BoneSlider2.ValueChanged -= EarringBRight_Slider;
-            BoneSlider3.ValueChanged -= EarringBRight_Slider;
+            RemoveRoutedEventListener(EarringBRight_Slider);
         }
 
         private void EarringBRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -15361,9 +15200,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.EarringBRight_Z.value = (float)quat.Z;
             CharacterDetails.EarringBRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= EarringBRight_UpDown;
-            BoneUpDown2.ValueChanged -= EarringBRight_UpDown;
-            BoneUpDown3.ValueChanged -= EarringBRight_UpDown;
+            RemoveRoutedEventListener(EarringBRight_UpDown);
         }
 
         public void EarringBRight_Checked(object sender, RoutedEventArgs e)
@@ -15376,6 +15213,8 @@ namespace ConceptMatrix.Views
         }
         private void EarringBRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(EarringBRight_Slider);
+            RemoveRoutedEventListener(EarringBRight_UpDown);
             CharacterDetails.EarringBRight_Rotate = false;
         }
         #endregion
@@ -15390,9 +15229,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.IndexBLeft_Z.value = (float)quat.Z;
             CharacterDetails.IndexBLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= IndexBLeft_Slider;
-            BoneSlider2.ValueChanged -= IndexBLeft_Slider;
-            BoneSlider3.ValueChanged -= IndexBLeft_Slider;
+            RemoveRoutedEventListener(IndexBLeft_Slider);
         }
 
         private void IndexBLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -15405,9 +15242,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.IndexBLeft_Z.value = (float)quat.Z;
             CharacterDetails.IndexBLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= IndexBLeft_UpDown;
-            BoneUpDown2.ValueChanged -= IndexBLeft_UpDown;
-            BoneUpDown3.ValueChanged -= IndexBLeft_UpDown;
+            RemoveRoutedEventListener(IndexBLeft_UpDown);
         }
 
         public void IndexBLeft_Checked(object sender, RoutedEventArgs e)
@@ -15420,6 +15255,8 @@ namespace ConceptMatrix.Views
         }
         private void IndexBLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(IndexBLeft_Slider);
+            RemoveRoutedEventListener(IndexBLeft_UpDown);
             CharacterDetails.IndexBLeft_Rotate = false;
         }
         #endregion
@@ -15434,9 +15271,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.IndexBRight_Z.value = (float)quat.Z;
             CharacterDetails.IndexBRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= IndexBRight_Slider;
-            BoneSlider2.ValueChanged -= IndexBRight_Slider;
-            BoneSlider3.ValueChanged -= IndexBRight_Slider;
+            RemoveRoutedEventListener(IndexBRight_Slider);
         }
 
         private void IndexBRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -15449,9 +15284,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.IndexBRight_Z.value = (float)quat.Z;
             CharacterDetails.IndexBRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= IndexBRight_UpDown;
-            BoneUpDown2.ValueChanged -= IndexBRight_UpDown;
-            BoneUpDown3.ValueChanged -= IndexBRight_UpDown;
+            RemoveRoutedEventListener(IndexBRight_UpDown);
         }
 
         public void IndexBRight_Checked(object sender, RoutedEventArgs e)
@@ -15464,6 +15297,8 @@ namespace ConceptMatrix.Views
         }
         private void IndexBRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(IndexBRight_Slider);
+            RemoveRoutedEventListener(IndexBRight_UpDown);
             CharacterDetails.IndexBRight_Rotate = false;
         }
         #endregion
@@ -15478,9 +15313,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.PinkyBLeft_Z.value = (float)quat.Z;
             CharacterDetails.PinkyBLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= PinkyBLeft_Slider;
-            BoneSlider2.ValueChanged -= PinkyBLeft_Slider;
-            BoneSlider3.ValueChanged -= PinkyBLeft_Slider;
+            RemoveRoutedEventListener(PinkyBLeft_Slider);
         }
 
         private void PinkyBLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -15493,9 +15326,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.PinkyBLeft_Z.value = (float)quat.Z;
             CharacterDetails.PinkyBLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= PinkyBLeft_UpDown;
-            BoneUpDown2.ValueChanged -= PinkyBLeft_UpDown;
-            BoneUpDown3.ValueChanged -= PinkyBLeft_UpDown;
+            RemoveRoutedEventListener(PinkyBLeft_UpDown);
         }
 
         public void PinkyBLeft_Checked(object sender, RoutedEventArgs e)
@@ -15508,6 +15339,8 @@ namespace ConceptMatrix.Views
         }
         private void PinkyBLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(PinkyBLeft_Slider);
+            RemoveRoutedEventListener(PinkyBLeft_UpDown);
             CharacterDetails.PinkyBLeft_Rotate = false;
         }
         #endregion
@@ -15522,9 +15355,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.PinkyBRight_Z.value = (float)quat.Z;
             CharacterDetails.PinkyBRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= PinkyBRight_Slider;
-            BoneSlider2.ValueChanged -= PinkyBRight_Slider;
-            BoneSlider3.ValueChanged -= PinkyBRight_Slider;
+            RemoveRoutedEventListener(PinkyBRight_Slider);
         }
 
         private void PinkyBRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -15537,9 +15368,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.PinkyBRight_Z.value = (float)quat.Z;
             CharacterDetails.PinkyBRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= PinkyBRight_UpDown;
-            BoneUpDown2.ValueChanged -= PinkyBRight_UpDown;
-            BoneUpDown3.ValueChanged -= PinkyBRight_UpDown;
+            RemoveRoutedEventListener(PinkyBRight_UpDown);
         }
 
         public void PinkyBRight_Checked(object sender, RoutedEventArgs e)
@@ -15552,6 +15381,8 @@ namespace ConceptMatrix.Views
         }
         private void PinkyBRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(PinkyBRight_Slider);
+            RemoveRoutedEventListener(PinkyBRight_UpDown);
             CharacterDetails.PinkyBRight_Rotate = false;
         }
         #endregion
@@ -15566,9 +15397,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.RingBLeft_Z.value = (float)quat.Z;
             CharacterDetails.RingBLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= RingBLeft_Slider;
-            BoneSlider2.ValueChanged -= RingBLeft_Slider;
-            BoneSlider3.ValueChanged -= RingBLeft_Slider;
+            RemoveRoutedEventListener(RingBLeft_Slider);
         }
 
         private void RingBLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -15581,9 +15410,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.RingBLeft_Z.value = (float)quat.Z;
             CharacterDetails.RingBLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= RingBLeft_UpDown;
-            BoneUpDown2.ValueChanged -= RingBLeft_UpDown;
-            BoneUpDown3.ValueChanged -= RingBLeft_UpDown;
+            RemoveRoutedEventListener(RingBLeft_UpDown);
         }
 
         public void RingBLeft_Checked(object sender, RoutedEventArgs e)
@@ -15596,6 +15423,8 @@ namespace ConceptMatrix.Views
         }
         private void RingBLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(RingBLeft_Slider);
+            RemoveRoutedEventListener(RingBLeft_UpDown);
             CharacterDetails.RingBLeft_Rotate = false;
         }
         #endregion
@@ -15610,9 +15439,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.RingBRight_Z.value = (float)quat.Z;
             CharacterDetails.RingBRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= RingBRight_Slider;
-            BoneSlider2.ValueChanged -= RingBRight_Slider;
-            BoneSlider3.ValueChanged -= RingBRight_Slider;
+            RemoveRoutedEventListener(RingBRight_Slider);
         }
 
         private void RingBRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -15625,9 +15452,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.RingBRight_Z.value = (float)quat.Z;
             CharacterDetails.RingBRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= RingBRight_UpDown;
-            BoneUpDown2.ValueChanged -= RingBRight_UpDown;
-            BoneUpDown3.ValueChanged -= RingBRight_UpDown;
+            RemoveRoutedEventListener(RingBRight_UpDown);
         }
 
         public void RingBRight_Checked(object sender, RoutedEventArgs e)
@@ -15640,6 +15465,8 @@ namespace ConceptMatrix.Views
         }
         private void RingBRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(RingBRight_Slider);
+            RemoveRoutedEventListener(RingBRight_UpDown);
             CharacterDetails.RingBRight_Rotate = false;
         }
         #endregion
@@ -15654,9 +15481,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.MiddleBLeft_Z.value = (float)quat.Z;
             CharacterDetails.MiddleBLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= MiddleBLeft_Slider;
-            BoneSlider2.ValueChanged -= MiddleBLeft_Slider;
-            BoneSlider3.ValueChanged -= MiddleBLeft_Slider;
+            RemoveRoutedEventListener(MiddleBLeft_Slider);
         }
 
         private void MiddleBLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -15669,9 +15494,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.MiddleBLeft_Z.value = (float)quat.Z;
             CharacterDetails.MiddleBLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= MiddleBLeft_UpDown;
-            BoneUpDown2.ValueChanged -= MiddleBLeft_UpDown;
-            BoneUpDown3.ValueChanged -= MiddleBLeft_UpDown;
+            RemoveRoutedEventListener(MiddleBLeft_UpDown);
         }
 
         public void MiddleBLeft_Checked(object sender, RoutedEventArgs e)
@@ -15684,6 +15507,8 @@ namespace ConceptMatrix.Views
         }
         private void MiddleBLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(MiddleBLeft_Slider);
+            RemoveRoutedEventListener(MiddleBLeft_UpDown);
             CharacterDetails.MiddleBLeft_Rotate = false;
         }
         #endregion
@@ -15698,9 +15523,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.MiddleBRight_Z.value = (float)quat.Z;
             CharacterDetails.MiddleBRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= MiddleBRight_Slider;
-            BoneSlider2.ValueChanged -= MiddleBRight_Slider;
-            BoneSlider3.ValueChanged -= MiddleBRight_Slider;
+            RemoveRoutedEventListener(MiddleBRight_Slider);
         }
 
         private void MiddleBRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -15713,9 +15536,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.MiddleBRight_Z.value = (float)quat.Z;
             CharacterDetails.MiddleBRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= MiddleBRight_UpDown;
-            BoneUpDown2.ValueChanged -= MiddleBRight_UpDown;
-            BoneUpDown3.ValueChanged -= MiddleBRight_UpDown;
+            RemoveRoutedEventListener(MiddleBRight_UpDown);
         }
 
         public void MiddleBRight_Checked(object sender, RoutedEventArgs e)
@@ -15728,6 +15549,8 @@ namespace ConceptMatrix.Views
         }
         private void MiddleBRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(MiddleBRight_Slider);
+            RemoveRoutedEventListener(MiddleBRight_UpDown);
             CharacterDetails.MiddleBRight_Rotate = false;
         }
         #endregion
@@ -15742,9 +15565,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ThumbBLeft_Z.value = (float)quat.Z;
             CharacterDetails.ThumbBLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ThumbBLeft_Slider;
-            BoneSlider2.ValueChanged -= ThumbBLeft_Slider;
-            BoneSlider3.ValueChanged -= ThumbBLeft_Slider;
+            RemoveRoutedEventListener(ThumbBLeft_Slider);
         }
 
         private void ThumbBLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -15757,9 +15578,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ThumbBLeft_Z.value = (float)quat.Z;
             CharacterDetails.ThumbBLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ThumbBLeft_UpDown;
-            BoneUpDown2.ValueChanged -= ThumbBLeft_UpDown;
-            BoneUpDown3.ValueChanged -= ThumbBLeft_UpDown;
+            RemoveRoutedEventListener(ThumbBLeft_UpDown);
         }
 
         public void ThumbBLeft_Checked(object sender, RoutedEventArgs e)
@@ -15772,6 +15591,8 @@ namespace ConceptMatrix.Views
         }
         private void ThumbBLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ThumbBLeft_Slider);
+            RemoveRoutedEventListener(ThumbBLeft_UpDown);
             CharacterDetails.ThumbBLeft_Rotate = false;
         }
         #endregion
@@ -15786,9 +15607,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ThumbBRight_Z.value = (float)quat.Z;
             CharacterDetails.ThumbBRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= ThumbBRight_Slider;
-            BoneSlider2.ValueChanged -= ThumbBRight_Slider;
-            BoneSlider3.ValueChanged -= ThumbBRight_Slider;
+            RemoveRoutedEventListener(ThumbBRight_Slider);
         }
 
         private void ThumbBRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -15801,9 +15620,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ThumbBRight_Z.value = (float)quat.Z;
             CharacterDetails.ThumbBRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= ThumbBRight_UpDown;
-            BoneUpDown2.ValueChanged -= ThumbBRight_UpDown;
-            BoneUpDown3.ValueChanged -= ThumbBRight_UpDown;
+            RemoveRoutedEventListener(ThumbBRight_UpDown);
         }
 
         public void ThumbBRight_Checked(object sender, RoutedEventArgs e)
@@ -15816,6 +15633,8 @@ namespace ConceptMatrix.Views
         }
         private void ThumbBRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ThumbBRight_Slider);
+            RemoveRoutedEventListener(ThumbBRight_UpDown);
             CharacterDetails.ThumbBRight_Rotate = false;
         }
         #endregion
@@ -15830,9 +15649,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.TailA_Z.value = (float)quat.Z;
             CharacterDetails.TailA_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= TailA_Slider;
-            BoneSlider2.ValueChanged -= TailA_Slider;
-            BoneSlider3.ValueChanged -= TailA_Slider;
+            RemoveRoutedEventListener(TailA_Slider);
         }
 
         private void TailA_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -15845,9 +15662,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.TailA_Z.value = (float)quat.Z;
             CharacterDetails.TailA_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= TailA_UpDown;
-            BoneUpDown2.ValueChanged -= TailA_UpDown;
-            BoneUpDown3.ValueChanged -= TailA_UpDown;
+            RemoveRoutedEventListener(TailA_UpDown);
         }
 
         public void TailA_Checked(object sender, RoutedEventArgs e)
@@ -15860,6 +15675,8 @@ namespace ConceptMatrix.Views
         }
         private void TailA_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(TailA_Slider);
+            RemoveRoutedEventListener(TailA_UpDown);
             CharacterDetails.TailA_Rotate = false;
         }
         #endregion
@@ -15874,9 +15691,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.TailB_Z.value = (float)quat.Z;
             CharacterDetails.TailB_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= TailB_Slider;
-            BoneSlider2.ValueChanged -= TailB_Slider;
-            BoneSlider3.ValueChanged -= TailB_Slider;
+            RemoveRoutedEventListener(TailB_Slider);
         }
 
         private void TailB_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -15889,9 +15704,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.TailB_Z.value = (float)quat.Z;
             CharacterDetails.TailB_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= TailB_UpDown;
-            BoneUpDown2.ValueChanged -= TailB_UpDown;
-            BoneUpDown3.ValueChanged -= TailB_UpDown;
+            RemoveRoutedEventListener(TailB_UpDown);
         }
 
         public void TailB_Checked(object sender, RoutedEventArgs e)
@@ -15904,6 +15717,8 @@ namespace ConceptMatrix.Views
         }
         private void TailB_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(TailB_Slider);
+            RemoveRoutedEventListener(TailB_UpDown);
             CharacterDetails.TailB_Rotate = false;
         }
         #endregion
@@ -15918,9 +15733,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.TailC_Z.value = (float)quat.Z;
             CharacterDetails.TailC_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= TailC_Slider;
-            BoneSlider2.ValueChanged -= TailC_Slider;
-            BoneSlider3.ValueChanged -= TailC_Slider;
+            RemoveRoutedEventListener(TailC_Slider);
         }
 
         private void TailC_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -15933,9 +15746,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.TailC_Z.value = (float)quat.Z;
             CharacterDetails.TailC_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= TailC_UpDown;
-            BoneUpDown2.ValueChanged -= TailC_UpDown;
-            BoneUpDown3.ValueChanged -= TailC_UpDown;
+            RemoveRoutedEventListener(TailC_UpDown);
         }
 
         public void TailC_Checked(object sender, RoutedEventArgs e)
@@ -15948,6 +15759,8 @@ namespace ConceptMatrix.Views
         }
         private void TailC_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(TailC_Slider);
+            RemoveRoutedEventListener(TailC_UpDown);
             CharacterDetails.TailC_Rotate = false;
         }
         #endregion
@@ -15962,9 +15775,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.TailD_Z.value = (float)quat.Z;
             CharacterDetails.TailD_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= TailD_Slider;
-            BoneSlider2.ValueChanged -= TailD_Slider;
-            BoneSlider3.ValueChanged -= TailD_Slider;
+            RemoveRoutedEventListener(TailD_Slider);
         }
 
         private void TailD_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -15977,9 +15788,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.TailD_Z.value = (float)quat.Z;
             CharacterDetails.TailD_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= TailD_UpDown;
-            BoneUpDown2.ValueChanged -= TailD_UpDown;
-            BoneUpDown3.ValueChanged -= TailD_UpDown;
+            RemoveRoutedEventListener(TailD_UpDown);
         }
 
         public void TailD_Checked(object sender, RoutedEventArgs e)
@@ -15992,6 +15801,8 @@ namespace ConceptMatrix.Views
         }
         private void TailD_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(TailD_Slider);
+            RemoveRoutedEventListener(TailD_UpDown);
             CharacterDetails.TailD_Rotate = false;
         }
         #endregion
@@ -16006,9 +15817,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.TailE_Z.value = (float)quat.Z;
             CharacterDetails.TailE_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= TailE_Slider;
-            BoneSlider2.ValueChanged -= TailE_Slider;
-            BoneSlider3.ValueChanged -= TailE_Slider;
+            RemoveRoutedEventListener(TailE_Slider);
         }
 
         private void TailE_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -16021,9 +15830,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.TailE_Z.value = (float)quat.Z;
             CharacterDetails.TailE_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= TailE_UpDown;
-            BoneUpDown2.ValueChanged -= TailE_UpDown;
-            BoneUpDown3.ValueChanged -= TailE_UpDown;
+            RemoveRoutedEventListener(TailE_UpDown);
         }
 
         public void TailE_Checked(object sender, RoutedEventArgs e)
@@ -16036,6 +15843,8 @@ namespace ConceptMatrix.Views
         }
         private void TailE_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(TailE_Slider);
+            RemoveRoutedEventListener(TailE_UpDown);
             CharacterDetails.TailE_Rotate = false;
         }
         #endregion
@@ -16051,9 +15860,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.RootHead_Z.value = (float)quat.Z;
             CharacterDetails.RootHead_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= RootHead_Slider;
-            BoneSlider2.ValueChanged -= RootHead_Slider;
-            BoneSlider3.ValueChanged -= RootHead_Slider;
+            RemoveRoutedEventListener(RootHead_Slider); 
         }
 
         private void RootHead_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -16066,9 +15873,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.RootHead_Z.value = (float)quat.Z;
             CharacterDetails.RootHead_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= RootHead_UpDown;
-            BoneUpDown2.ValueChanged -= RootHead_UpDown;
-            BoneUpDown3.ValueChanged -= RootHead_UpDown;
+            RemoveRoutedEventListener(RootHead_UpDown);
         }
 
         public void RootHead_Checked(object sender, RoutedEventArgs e)
@@ -16081,6 +15886,8 @@ namespace ConceptMatrix.Views
         }
         private void RootHead_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(RootHead_Slider);
+            RemoveRoutedEventListener(RootHead_UpDown);
             CharacterDetails.RootHead_Rotate = false;
         }
         #endregion
@@ -16095,9 +15902,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.Jaw_Z.value = (float)quat.Z;
             CharacterDetails.Jaw_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= Jaw_Slider;
-            BoneSlider2.ValueChanged -= Jaw_Slider;
-            BoneSlider3.ValueChanged -= Jaw_Slider;
+            RemoveRoutedEventListener(Jaw_Slider);
         }
 
         private void Jaw_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -16110,9 +15915,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.Jaw_Z.value = (float)quat.Z;
             CharacterDetails.Jaw_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= Jaw_UpDown;
-            BoneUpDown2.ValueChanged -= Jaw_UpDown;
-            BoneUpDown3.ValueChanged -= Jaw_UpDown;
+            RemoveRoutedEventListener(Jaw_UpDown);
         }
 
         public void Jaw_Checked(object sender, RoutedEventArgs e)
@@ -16125,6 +15928,8 @@ namespace ConceptMatrix.Views
         }
         private void Jaw_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(Jaw_Slider);
+            RemoveRoutedEventListener(Jaw_UpDown);
             CharacterDetails.Jaw_Rotate = false;
         }
         #endregion
@@ -16139,9 +15944,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.EyelidLowerLeft_Z.value = (float)quat.Z;
             CharacterDetails.EyelidLowerLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= EyelidLowerLeft_Slider;
-            BoneSlider2.ValueChanged -= EyelidLowerLeft_Slider;
-            BoneSlider3.ValueChanged -= EyelidLowerLeft_Slider;
+            RemoveRoutedEventListener(EyelidLowerLeft_Slider);
         }
 
         private void EyelidLowerLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -16154,9 +15957,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.EyelidLowerLeft_Z.value = (float)quat.Z;
             CharacterDetails.EyelidLowerLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= EyelidLowerLeft_UpDown;
-            BoneUpDown2.ValueChanged -= EyelidLowerLeft_UpDown;
-            BoneUpDown3.ValueChanged -= EyelidLowerLeft_UpDown;
+            RemoveRoutedEventListener(EyelidLowerLeft_UpDown);
         }
 
         public void EyelidLowerLeft_Checked(object sender, RoutedEventArgs e)
@@ -16169,6 +15970,8 @@ namespace ConceptMatrix.Views
         }
         private void EyelidLowerLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(EyelidLowerLeft_Slider);
+            RemoveRoutedEventListener(EyelidLowerLeft_UpDown);
             CharacterDetails.EyelidLowerLeft_Rotate = false;
         }
         #endregion
@@ -16183,9 +15986,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.EyelidLowerRight_Z.value = (float)quat.Z;
             CharacterDetails.EyelidLowerRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= EyelidLowerRight_Slider;
-            BoneSlider2.ValueChanged -= EyelidLowerRight_Slider;
-            BoneSlider3.ValueChanged -= EyelidLowerRight_Slider;
+            RemoveRoutedEventListener(EyelidLowerRight_Slider);
         }
 
         private void EyelidLowerRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -16198,9 +15999,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.EyelidLowerRight_Z.value = (float)quat.Z;
             CharacterDetails.EyelidLowerRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= EyelidLowerRight_UpDown;
-            BoneUpDown2.ValueChanged -= EyelidLowerRight_UpDown;
-            BoneUpDown3.ValueChanged -= EyelidLowerRight_UpDown;
+            RemoveRoutedEventListener(EyelidLowerRight_UpDown);
         }
 
         public void EyelidLowerRight_Checked(object sender, RoutedEventArgs e)
@@ -16213,6 +16012,8 @@ namespace ConceptMatrix.Views
         }
         private void EyelidLowerRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(EyelidLowerRight_Slider);
+            RemoveRoutedEventListener(EyelidLowerRight_UpDown);
             CharacterDetails.EyelidLowerRight_Rotate = false;
         }
         #endregion
@@ -16227,9 +16028,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.EyeLeft_Z.value = (float)quat.Z;
             CharacterDetails.EyeLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= EyeLeft_Slider;
-            BoneSlider2.ValueChanged -= EyeLeft_Slider;
-            BoneSlider3.ValueChanged -= EyeLeft_Slider;
+            RemoveRoutedEventListener(EyeLeft_Slider);
         }
 
         private void EyeLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -16242,9 +16041,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.EyeLeft_Z.value = (float)quat.Z;
             CharacterDetails.EyeLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= EyeLeft_UpDown;
-            BoneUpDown2.ValueChanged -= EyeLeft_UpDown;
-            BoneUpDown3.ValueChanged -= EyeLeft_UpDown;
+            RemoveRoutedEventListener(EyeLeft_UpDown);
         }
 
         public void EyeLeft_Checked(object sender, RoutedEventArgs e)
@@ -16257,6 +16054,8 @@ namespace ConceptMatrix.Views
         }
         private void EyeLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(EyeLeft_Slider);
+            RemoveRoutedEventListener(EyeLeft_UpDown);
             CharacterDetails.EyeLeft_Rotate = false;
         }
         #endregion
@@ -16271,9 +16070,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.EyeRight_Z.value = (float)quat.Z;
             CharacterDetails.EyeRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= EyeRight_Slider;
-            BoneSlider2.ValueChanged -= EyeRight_Slider;
-            BoneSlider3.ValueChanged -= EyeRight_Slider;
+            RemoveRoutedEventListener(EyeRight_Slider);
         }
 
         private void EyeRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -16286,9 +16083,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.EyeRight_Z.value = (float)quat.Z;
             CharacterDetails.EyeRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= EyeRight_UpDown;
-            BoneUpDown2.ValueChanged -= EyeRight_UpDown;
-            BoneUpDown3.ValueChanged -= EyeRight_UpDown;
+            RemoveRoutedEventListener(EyeRight_UpDown);
         }
 
         public void EyeRight_Checked(object sender, RoutedEventArgs e)
@@ -16301,6 +16096,8 @@ namespace ConceptMatrix.Views
         }
         private void EyeRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(EyeRight_Slider);
+            RemoveRoutedEventListener(EyeRight_UpDown);
             CharacterDetails.EyeRight_Rotate = false;
         }
         #endregion
@@ -16315,9 +16112,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.Nose_Z.value = (float)quat.Z;
             CharacterDetails.Nose_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= Nose_Slider;
-            BoneSlider2.ValueChanged -= Nose_Slider;
-            BoneSlider3.ValueChanged -= Nose_Slider;
+            RemoveRoutedEventListener(Nose_Slider);
         }
 
         private void Nose_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -16330,9 +16125,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.Nose_Z.value = (float)quat.Z;
             CharacterDetails.Nose_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= Nose_UpDown;
-            BoneUpDown2.ValueChanged -= Nose_UpDown;
-            BoneUpDown3.ValueChanged -= Nose_UpDown;
+            RemoveRoutedEventListener(Nose_UpDown);
         }
 
         public void Nose_Checked(object sender, RoutedEventArgs e)
@@ -16345,6 +16138,8 @@ namespace ConceptMatrix.Views
         }
         private void Nose_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(Nose_Slider);
+            RemoveRoutedEventListener(Nose_UpDown);
             CharacterDetails.Nose_Rotate = false;
         }
         #endregion
@@ -16359,9 +16154,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.CheekLeft_Z.value = (float)quat.Z;
             CharacterDetails.CheekLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= CheekLeft_Slider;
-            BoneSlider2.ValueChanged -= CheekLeft_Slider;
-            BoneSlider3.ValueChanged -= CheekLeft_Slider;
+            RemoveRoutedEventListener(CheekLeft_Slider);
         }
 
         private void CheekLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -16374,9 +16167,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.CheekLeft_Z.value = (float)quat.Z;
             CharacterDetails.CheekLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= CheekLeft_UpDown;
-            BoneUpDown2.ValueChanged -= CheekLeft_UpDown;
-            BoneUpDown3.ValueChanged -= CheekLeft_UpDown;
+            RemoveRoutedEventListener(CheekLeft_UpDown);
         }
 
         private void HrothLipUpperLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -16389,9 +16180,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothLipUpperLeft_Z.value = (float)quat.Z;
             CharacterDetails.HrothLipUpperLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= HrothLipUpperLeft_Slider;
-            BoneSlider2.ValueChanged -= HrothLipUpperLeft_Slider;
-            BoneSlider3.ValueChanged -= HrothLipUpperLeft_Slider;
+            RemoveRoutedEventListener(HrothLipUpperLeft_Slider);
         }
 
         private void HrothLipUpperLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -16404,9 +16193,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothLipUpperLeft_Z.value = (float)quat.Z;
             CharacterDetails.HrothLipUpperLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= HrothLipUpperLeft_UpDown;
-            BoneUpDown2.ValueChanged -= HrothLipUpperLeft_UpDown;
-            BoneUpDown3.ValueChanged -= HrothLipUpperLeft_UpDown;
+            RemoveRoutedEventListener(HrothLipUpperLeft_UpDown);
         }
 
         public void CheekLeft_Checked(object sender, RoutedEventArgs e)
@@ -16420,6 +16207,10 @@ namespace ConceptMatrix.Views
         }
         private void CheekLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(CheekLeft_Slider);
+            RemoveRoutedEventListener(CheekLeft_UpDown);
+            RemoveRoutedEventListener(HrothLipUpperLeft_Slider);
+            RemoveRoutedEventListener(HrothLipUpperLeft_UpDown);
             CharacterDetails.CheekLeft_Rotate = false;
             CharacterDetails.HrothLipUpperLeft_Rotate = false;
         }
@@ -16435,9 +16226,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.CheekRight_Z.value = (float)quat.Z;
             CharacterDetails.CheekRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= CheekRight_Slider;
-            BoneSlider2.ValueChanged -= CheekRight_Slider;
-            BoneSlider3.ValueChanged -= CheekRight_Slider;
+            RemoveRoutedEventListener(CheekRight_Slider);
         }
 
         private void CheekRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -16450,9 +16239,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.CheekRight_Z.value = (float)quat.Z;
             CharacterDetails.CheekRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= CheekRight_UpDown;
-            BoneUpDown2.ValueChanged -= CheekRight_UpDown;
-            BoneUpDown3.ValueChanged -= CheekRight_UpDown;
+            RemoveRoutedEventListener(CheekRight_UpDown);
         }
 
         private void HrothLipUpperRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -16465,9 +16252,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothLipUpperRight_Z.value = (float)quat.Z;
             CharacterDetails.HrothLipUpperRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= HrothLipUpperRight_Slider;
-            BoneSlider2.ValueChanged -= HrothLipUpperRight_Slider;
-            BoneSlider3.ValueChanged -= HrothLipUpperRight_Slider;
+            RemoveRoutedEventListener(HrothLipUpperRight_Slider);
         }
 
         private void HrothLipUpperRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -16480,9 +16265,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothLipUpperRight_Z.value = (float)quat.Z;
             CharacterDetails.HrothLipUpperRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= HrothLipUpperRight_UpDown;
-            BoneUpDown2.ValueChanged -= HrothLipUpperRight_UpDown;
-            BoneUpDown3.ValueChanged -= HrothLipUpperRight_UpDown;
+            RemoveRoutedEventListener(HrothLipUpperRight_UpDown);
         }
 
         public void CheekRight_Checked(object sender, RoutedEventArgs e)
@@ -16496,6 +16279,10 @@ namespace ConceptMatrix.Views
         }
         private void CheekRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(CheekRight_Slider);
+            RemoveRoutedEventListener(CheekRight_UpDown);
+            RemoveRoutedEventListener(HrothLipUpperRight_Slider);
+            RemoveRoutedEventListener(HrothLipUpperRight_UpDown);
             CharacterDetails.CheekRight_Rotate = false;
             CharacterDetails.HrothLipUpperRight_Rotate = false;
         }
@@ -16511,9 +16298,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.LipsLeft_Z.value = (float)quat.Z;
             CharacterDetails.LipsLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= LipsLeft_Slider;
-            BoneSlider2.ValueChanged -= LipsLeft_Slider;
-            BoneSlider3.ValueChanged -= LipsLeft_Slider;
+            RemoveRoutedEventListener(LipsLeft_Slider);
         }
 
         private void LipsLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -16526,9 +16311,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.LipsLeft_Z.value = (float)quat.Z;
             CharacterDetails.LipsLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= LipsLeft_UpDown;
-            BoneUpDown2.ValueChanged -= LipsLeft_UpDown;
-            BoneUpDown3.ValueChanged -= LipsLeft_UpDown;
+            RemoveRoutedEventListener(LipsLeft_UpDown);
         }
 
         private void HrothLipsLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -16541,9 +16324,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothLipsLeft_Z.value = (float)quat.Z;
             CharacterDetails.HrothLipsLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= HrothLipsLeft_Slider;
-            BoneSlider2.ValueChanged -= HrothLipsLeft_Slider;
-            BoneSlider3.ValueChanged -= HrothLipsLeft_Slider;
+            RemoveRoutedEventListener(HrothLipsLeft_Slider);
         }
 
         private void HrothLipsLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -16556,9 +16337,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothLipsLeft_Z.value = (float)quat.Z;
             CharacterDetails.HrothLipsLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= HrothLipsLeft_UpDown;
-            BoneUpDown2.ValueChanged -= HrothLipsLeft_UpDown;
-            BoneUpDown3.ValueChanged -= HrothLipsLeft_UpDown;
+            RemoveRoutedEventListener(HrothLipsLeft_UpDown);
         }
 
         public void LipsLeft_Checked(object sender, RoutedEventArgs e)
@@ -16572,6 +16351,10 @@ namespace ConceptMatrix.Views
         }
         private void LipsLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(LipsLeft_Slider);
+            RemoveRoutedEventListener(LipsLeft_UpDown);
+            RemoveRoutedEventListener(HrothLipsLeft_Slider);
+            RemoveRoutedEventListener(HrothLipsLeft_UpDown);
             CharacterDetails.LipsLeft_Rotate = false;
             CharacterDetails.HrothLipsLeft_Rotate = false;
         }
@@ -16587,9 +16370,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.LipsRight_Z.value = (float)quat.Z;
             CharacterDetails.LipsRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= LipsRight_Slider;
-            BoneSlider2.ValueChanged -= LipsRight_Slider;
-            BoneSlider3.ValueChanged -= LipsRight_Slider;
+            RemoveRoutedEventListener(LipsRight_Slider);
         }
 
         private void LipsRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -16602,9 +16383,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.LipsRight_Z.value = (float)quat.Z;
             CharacterDetails.LipsRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= LipsRight_UpDown;
-            BoneUpDown2.ValueChanged -= LipsRight_UpDown;
-            BoneUpDown3.ValueChanged -= LipsRight_UpDown;
+            RemoveRoutedEventListener(LipsRight_UpDown);
         }
 
         private void HrothLipsRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -16617,9 +16396,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothLipsRight_Z.value = (float)quat.Z;
             CharacterDetails.HrothLipsRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= HrothLipsRight_Slider;
-            BoneSlider2.ValueChanged -= HrothLipsRight_Slider;
-            BoneSlider3.ValueChanged -= HrothLipsRight_Slider;
+            RemoveRoutedEventListener(HrothLipsRight_Slider);
         }
 
         private void HrothLipsRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -16632,9 +16409,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothLipsRight_Z.value = (float)quat.Z;
             CharacterDetails.HrothLipsRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= HrothLipsRight_UpDown;
-            BoneUpDown2.ValueChanged -= HrothLipsRight_UpDown;
-            BoneUpDown3.ValueChanged -= HrothLipsRight_UpDown;
+            RemoveRoutedEventListener(HrothLipsRight_UpDown);
         }
 
         public void LipsRight_Checked(object sender, RoutedEventArgs e)
@@ -16648,6 +16423,10 @@ namespace ConceptMatrix.Views
         }
         private void LipsRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(LipsRight_Slider);
+            RemoveRoutedEventListener(LipsRight_UpDown);
+            RemoveRoutedEventListener(HrothLipsRight_Slider);
+            RemoveRoutedEventListener(HrothLipsRight_UpDown);
             CharacterDetails.LipsRight_Rotate = false;
             CharacterDetails.HrothLipsRight_Rotate = false;
         }
@@ -16663,9 +16442,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.EyebrowLeft_Z.value = (float)quat.Z;
             CharacterDetails.EyebrowLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= EyebrowLeft_Slider;
-            BoneSlider2.ValueChanged -= EyebrowLeft_Slider;
-            BoneSlider3.ValueChanged -= EyebrowLeft_Slider;
+            RemoveRoutedEventListener(EyebrowLeft_Slider);
         }
 
         private void EyebrowLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -16678,9 +16455,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.EyebrowLeft_Z.value = (float)quat.Z;
             CharacterDetails.EyebrowLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= EyebrowLeft_UpDown;
-            BoneUpDown2.ValueChanged -= EyebrowLeft_UpDown;
-            BoneUpDown3.ValueChanged -= EyebrowLeft_UpDown;
+            RemoveRoutedEventListener(EyebrowLeft_UpDown);
         }
 
         private void HrothEyebrowLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -16693,9 +16468,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothEyebrowLeft_Z.value = (float)quat.Z;
             CharacterDetails.HrothEyebrowLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= HrothEyebrowLeft_Slider;
-            BoneSlider2.ValueChanged -= HrothEyebrowLeft_Slider;
-            BoneSlider3.ValueChanged -= HrothEyebrowLeft_Slider;
+            RemoveRoutedEventListener(HrothEyebrowLeft_Slider);
         }
 
         private void HrothEyebrowLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -16708,9 +16481,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothEyebrowLeft_Z.value = (float)quat.Z;
             CharacterDetails.HrothEyebrowLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= HrothEyebrowLeft_UpDown;
-            BoneUpDown2.ValueChanged -= HrothEyebrowLeft_UpDown;
-            BoneUpDown3.ValueChanged -= HrothEyebrowLeft_UpDown;
+            RemoveRoutedEventListener(HrothEyebrowLeft_UpDown);
         }
 
         public void EyebrowLeft_Checked(object sender, RoutedEventArgs e)
@@ -16724,6 +16495,8 @@ namespace ConceptMatrix.Views
         }
         private void EyebrowLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(EyebrowLeft_Slider);
+            RemoveRoutedEventListener(EyebrowLeft_UpDown);
             CharacterDetails.EyebrowLeft_Rotate = false;
             CharacterDetails.HrothEyebrowLeft_Rotate = false;
         }
@@ -16739,9 +16512,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.EyebrowRight_Z.value = (float)quat.Z;
             CharacterDetails.EyebrowRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= EyebrowRight_Slider;
-            BoneSlider2.ValueChanged -= EyebrowRight_Slider;
-            BoneSlider3.ValueChanged -= EyebrowRight_Slider;
+            RemoveRoutedEventListener(EyebrowRight_Slider);
         }
 
         private void EyebrowRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -16754,9 +16525,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.EyebrowRight_Z.value = (float)quat.Z;
             CharacterDetails.EyebrowRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= EyebrowRight_UpDown;
-            BoneUpDown2.ValueChanged -= EyebrowRight_UpDown;
-            BoneUpDown3.ValueChanged -= EyebrowRight_UpDown;
+            RemoveRoutedEventListener(EyebrowRight_UpDown);
         }
 
         private void HrothEyebrowRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -16769,9 +16538,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothEyebrowRight_Z.value = (float)quat.Z;
             CharacterDetails.HrothEyebrowRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= HrothEyebrowRight_Slider;
-            BoneSlider2.ValueChanged -= HrothEyebrowRight_Slider;
-            BoneSlider3.ValueChanged -= HrothEyebrowRight_Slider;
+            RemoveRoutedEventListener(HrothEyebrowRight_Slider);
         }
 
         private void HrothEyebrowRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -16784,9 +16551,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothEyebrowRight_Z.value = (float)quat.Z;
             CharacterDetails.HrothEyebrowRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= HrothEyebrowRight_UpDown;
-            BoneUpDown2.ValueChanged -= HrothEyebrowRight_UpDown;
-            BoneUpDown3.ValueChanged -= HrothEyebrowRight_UpDown;
+            RemoveRoutedEventListener(HrothEyebrowRight_UpDown);
         }
 
         public void EyebrowRight_Checked(object sender, RoutedEventArgs e)
@@ -16800,6 +16565,10 @@ namespace ConceptMatrix.Views
         }
         private void EyebrowRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(EyebrowRight_Slider);
+            RemoveRoutedEventListener(EyebrowRight_UpDown);
+            RemoveRoutedEventListener(HrothEyebrowRight_Slider);
+            RemoveRoutedEventListener(HrothEyebrowRight_UpDown);
             CharacterDetails.EyebrowRight_Rotate = false;
             CharacterDetails.HrothEyebrowRight_Rotate = false;
         }
@@ -16815,9 +16584,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.Bridge_Z.value = (float)quat.Z;
             CharacterDetails.Bridge_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= Bridge_Slider;
-            BoneSlider2.ValueChanged -= Bridge_Slider;
-            BoneSlider3.ValueChanged -= Bridge_Slider;
+            RemoveRoutedEventListener(Bridge_Slider);
         }
 
         private void Bridge_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -16830,9 +16597,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.Bridge_Z.value = (float)quat.Z;
             CharacterDetails.Bridge_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= Bridge_UpDown;
-            BoneUpDown2.ValueChanged -= Bridge_UpDown;
-            BoneUpDown3.ValueChanged -= Bridge_UpDown;
+            RemoveRoutedEventListener(Bridge_UpDown);
         }
 
         private void HrothBridge_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -16845,9 +16610,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothBridge_Z.value = (float)quat.Z;
             CharacterDetails.HrothBridge_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= HrothBridge_Slider;
-            BoneSlider2.ValueChanged -= HrothBridge_Slider;
-            BoneSlider3.ValueChanged -= HrothBridge_Slider;
+            RemoveRoutedEventListener(HrothBridge_Slider);
         }
 
         private void HrothBridge_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -16860,9 +16623,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothBridge_Z.value = (float)quat.Z;
             CharacterDetails.HrothBridge_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= HrothBridge_UpDown;
-            BoneUpDown2.ValueChanged -= HrothBridge_UpDown;
-            BoneUpDown3.ValueChanged -= HrothBridge_UpDown;
+            RemoveRoutedEventListener(HrothBridge_UpDown);
         }
 
         public void Bridge_Checked(object sender, RoutedEventArgs e)
@@ -16876,6 +16637,10 @@ namespace ConceptMatrix.Views
         }
         private void Bridge_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(Bridge_Slider);
+            RemoveRoutedEventListener(Bridge_UpDown);
+            RemoveRoutedEventListener(HrothBridge_Slider);
+            RemoveRoutedEventListener(HrothBridge_UpDown);
             CharacterDetails.Bridge_Rotate = false;
             CharacterDetails.HrothBridge_Rotate = false;
         }
@@ -16891,9 +16656,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.BrowLeft_Z.value = (float)quat.Z;
             CharacterDetails.BrowLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= BrowLeft_Slider;
-            BoneSlider2.ValueChanged -= BrowLeft_Slider;
-            BoneSlider3.ValueChanged -= BrowLeft_Slider;
+            RemoveRoutedEventListener(BrowLeft_Slider);
         }
 
         private void BrowLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -16906,9 +16669,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.BrowLeft_Z.value = (float)quat.Z;
             CharacterDetails.BrowLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= BrowLeft_UpDown;
-            BoneUpDown2.ValueChanged -= BrowLeft_UpDown;
-            BoneUpDown3.ValueChanged -= BrowLeft_UpDown;
+            RemoveRoutedEventListener(BrowLeft_UpDown);
         }
 
         private void HrothBrowLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -16921,9 +16682,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothBrowLeft_Z.value = (float)quat.Z;
             CharacterDetails.HrothBrowLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= HrothBrowLeft_Slider;
-            BoneSlider2.ValueChanged -= HrothBrowLeft_Slider;
-            BoneSlider3.ValueChanged -= HrothBrowLeft_Slider;
+            RemoveRoutedEventListener(HrothBrowLeft_Slider);
         }
 
         private void HrothBrowLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -16936,9 +16695,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothBrowLeft_Z.value = (float)quat.Z;
             CharacterDetails.HrothBrowLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= HrothBrowLeft_UpDown;
-            BoneUpDown2.ValueChanged -= HrothBrowLeft_UpDown;
-            BoneUpDown3.ValueChanged -= HrothBrowLeft_UpDown;
+            RemoveRoutedEventListener(HrothBrowLeft_UpDown);
         }
 
         public void BrowLeft_Checked(object sender, RoutedEventArgs e)
@@ -16952,6 +16709,10 @@ namespace ConceptMatrix.Views
         }
         private void BrowLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(BrowLeft_Slider);
+            RemoveRoutedEventListener(BrowLeft_UpDown);
+            RemoveRoutedEventListener(HrothBrowLeft_Slider);
+            RemoveRoutedEventListener(HrothBrowLeft_UpDown);
             CharacterDetails.BrowLeft_Rotate = false;
             CharacterDetails.HrothBrowLeft_Rotate = false;
         }
@@ -16967,9 +16728,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.BrowRight_Z.value = (float)quat.Z;
             CharacterDetails.BrowRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= BrowRight_Slider;
-            BoneSlider2.ValueChanged -= BrowRight_Slider;
-            BoneSlider3.ValueChanged -= BrowRight_Slider;
+            RemoveRoutedEventListener(BrowRight_Slider);
         }
 
         private void BrowRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -16982,9 +16741,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.BrowRight_Z.value = (float)quat.Z;
             CharacterDetails.BrowRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= BrowRight_UpDown;
-            BoneUpDown2.ValueChanged -= BrowRight_UpDown;
-            BoneUpDown3.ValueChanged -= BrowRight_UpDown;
+            RemoveRoutedEventListener(BrowRight_UpDown);
         }
 
         private void HrothBrowRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -16997,9 +16754,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothBrowRight_Z.value = (float)quat.Z;
             CharacterDetails.HrothBrowRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= HrothBrowRight_Slider;
-            BoneSlider2.ValueChanged -= HrothBrowRight_Slider;
-            BoneSlider3.ValueChanged -= HrothBrowRight_Slider;
+            RemoveRoutedEventListener(HrothBrowRight_Slider);
         }
 
         private void HrothBrowRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -17012,9 +16767,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothBrowRight_Z.value = (float)quat.Z;
             CharacterDetails.HrothBrowRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= HrothBrowRight_UpDown;
-            BoneUpDown2.ValueChanged -= HrothBrowRight_UpDown;
-            BoneUpDown3.ValueChanged -= HrothBrowRight_UpDown;
+            RemoveRoutedEventListener(HrothBrowRight_UpDown);
         }
 
         public void BrowRight_Checked(object sender, RoutedEventArgs e)
@@ -17028,6 +16781,10 @@ namespace ConceptMatrix.Views
         }
         private void BrowRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(HrothBrowRight_Slider);
+            RemoveRoutedEventListener(HrothBrowRight_UpDown);
+            RemoveRoutedEventListener(BrowRight_Slider);
+            RemoveRoutedEventListener(BrowRight_UpDown);
             CharacterDetails.BrowRight_Rotate = false;
             CharacterDetails.HrothBrowRight_Rotate = false;
         }
@@ -17043,9 +16800,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.LipUpperA_Z.value = (float)quat.Z;
             CharacterDetails.LipUpperA_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= LipUpperA_Slider;
-            BoneSlider2.ValueChanged -= LipUpperA_Slider;
-            BoneSlider3.ValueChanged -= LipUpperA_Slider;
+            RemoveRoutedEventListener(LipUpperA_Slider);
         }
 
         private void LipUpperA_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -17058,9 +16813,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.LipUpperA_Z.value = (float)quat.Z;
             CharacterDetails.LipUpperA_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= LipUpperA_UpDown;
-            BoneUpDown2.ValueChanged -= LipUpperA_UpDown;
-            BoneUpDown3.ValueChanged -= LipUpperA_UpDown;
+            RemoveRoutedEventListener(LipUpperA_UpDown);
         }
 
         private void HrothLipUpper_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -17073,9 +16826,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothLipUpper_Z.value = (float)quat.Z;
             CharacterDetails.HrothLipUpper_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= HrothLipUpper_Slider;
-            BoneSlider2.ValueChanged -= HrothLipUpper_Slider;
-            BoneSlider3.ValueChanged -= HrothLipUpper_Slider;
+            RemoveRoutedEventListener(HrothLipUpper_Slider);
         }
 
         private void HrothLipUpper_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -17088,9 +16839,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothLipUpper_Z.value = (float)quat.Z;
             CharacterDetails.HrothLipUpper_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= HrothLipUpper_UpDown;
-            BoneUpDown2.ValueChanged -= HrothLipUpper_UpDown;
-            BoneUpDown3.ValueChanged -= HrothLipUpper_UpDown;
+            RemoveRoutedEventListener(HrothLipUpper_UpDown);
         }
 
         public void LipUpperA_Checked(object sender, RoutedEventArgs e)
@@ -17104,6 +16853,10 @@ namespace ConceptMatrix.Views
         }
         private void LipUpperA_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(HrothLipUpper_Slider);
+            RemoveRoutedEventListener(HrothLipUpper_UpDown);
+            RemoveRoutedEventListener(LipUpperA_Slider);
+            RemoveRoutedEventListener(LipUpperA_UpDown);
             CharacterDetails.LipUpperA_Rotate = false;
             CharacterDetails.HrothLipUpper_Rotate = false;
         }
@@ -17119,9 +16872,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.EyelidUpperLeft_Z.value = (float)quat.Z;
             CharacterDetails.EyelidUpperLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= EyelidUpperLeft_Slider;
-            BoneSlider2.ValueChanged -= EyelidUpperLeft_Slider;
-            BoneSlider3.ValueChanged -= EyelidUpperLeft_Slider;
+            RemoveRoutedEventListener(EyelidUpperLeft_Slider);
         }
 
         private void EyelidUpperLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -17134,9 +16885,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.EyelidUpperLeft_Z.value = (float)quat.Z;
             CharacterDetails.EyelidUpperLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= EyelidUpperLeft_UpDown;
-            BoneUpDown2.ValueChanged -= EyelidUpperLeft_UpDown;
-            BoneUpDown3.ValueChanged -= EyelidUpperLeft_UpDown;
+            RemoveRoutedEventListener(EyelidUpperLeft_UpDown);
         }
 
         private void HrothEyelidUpperLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -17149,9 +16898,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothEyelidUpperLeft_Z.value = (float)quat.Z;
             CharacterDetails.HrothEyelidUpperLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= HrothEyelidUpperLeft_Slider;
-            BoneSlider2.ValueChanged -= HrothEyelidUpperLeft_Slider;
-            BoneSlider3.ValueChanged -= HrothEyelidUpperLeft_Slider;
+            RemoveRoutedEventListener(HrothEyelidUpperLeft_Slider);
         }
 
         private void HrothEyelidUpperLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -17164,9 +16911,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothEyelidUpperLeft_Z.value = (float)quat.Z;
             CharacterDetails.HrothEyelidUpperLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= HrothEyelidUpperLeft_UpDown;
-            BoneUpDown2.ValueChanged -= HrothEyelidUpperLeft_UpDown;
-            BoneUpDown3.ValueChanged -= HrothEyelidUpperLeft_UpDown;
+            RemoveRoutedEventListener(HrothEyelidUpperLeft_UpDown);
         }
 
         public void EyelidUpperLeft_Checked(object sender, RoutedEventArgs e)
@@ -17180,6 +16925,10 @@ namespace ConceptMatrix.Views
         }
         private void EyelidUpperLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(EyelidUpperLeft_Slider);
+            RemoveRoutedEventListener(EyelidUpperLeft_UpDown);
+            RemoveRoutedEventListener(HrothEyelidUpperLeft_Slider);
+            RemoveRoutedEventListener(HrothEyelidUpperLeft_UpDown);
             CharacterDetails.EyelidUpperLeft_Rotate = false;
             CharacterDetails.HrothEyelidUpperLeft_Rotate = false;
         }
@@ -17195,9 +16944,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.EyelidUpperRight_Z.value = (float)quat.Z;
             CharacterDetails.EyelidUpperRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= EyelidUpperRight_Slider;
-            BoneSlider2.ValueChanged -= EyelidUpperRight_Slider;
-            BoneSlider3.ValueChanged -= EyelidUpperRight_Slider;
+            RemoveRoutedEventListener(EyelidUpperRight_Slider);
         }
 
         private void EyelidUpperRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -17210,9 +16957,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.EyelidUpperRight_Z.value = (float)quat.Z;
             CharacterDetails.EyelidUpperRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= EyelidUpperRight_UpDown;
-            BoneUpDown2.ValueChanged -= EyelidUpperRight_UpDown;
-            BoneUpDown3.ValueChanged -= EyelidUpperRight_UpDown;
+            RemoveRoutedEventListener(EyelidUpperRight_UpDown);
         }
 
         private void HrothEyelidUpperRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -17225,9 +16970,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothEyelidUpperRight_Z.value = (float)quat.Z;
             CharacterDetails.HrothEyelidUpperRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= HrothEyelidUpperRight_Slider;
-            BoneSlider2.ValueChanged -= HrothEyelidUpperRight_Slider;
-            BoneSlider3.ValueChanged -= HrothEyelidUpperRight_Slider;
+            RemoveRoutedEventListener(HrothEyelidUpperRight_Slider);
         }
 
         private void HrothEyelidUpperRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -17240,9 +16983,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothEyelidUpperRight_Z.value = (float)quat.Z;
             CharacterDetails.HrothEyelidUpperRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= HrothEyelidUpperRight_UpDown;
-            BoneUpDown2.ValueChanged -= HrothEyelidUpperRight_UpDown;
-            BoneUpDown3.ValueChanged -= HrothEyelidUpperRight_UpDown;
+            RemoveRoutedEventListener(HrothEyelidUpperRight_UpDown);
         }
 
         public void EyelidUpperRight_Checked(object sender, RoutedEventArgs e)
@@ -17256,6 +16997,10 @@ namespace ConceptMatrix.Views
         }
         private void EyelidUpperRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(HrothEyelidUpperRight_Slider);
+            RemoveRoutedEventListener(HrothEyelidUpperRight_UpDown);
+            RemoveRoutedEventListener(EyelidUpperRight_Slider);
+            RemoveRoutedEventListener(EyelidUpperRight_UpDown);
             CharacterDetails.EyelidUpperRight_Rotate = false;
             CharacterDetails.HrothEyelidUpperRight_Rotate = false;
         }
@@ -17271,9 +17016,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.LipLowerA_Z.value = (float)quat.Z;
             CharacterDetails.LipLowerA_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= LipLowerA_Slider;
-            BoneSlider2.ValueChanged -= LipLowerA_Slider;
-            BoneSlider3.ValueChanged -= LipLowerA_Slider;
+            RemoveRoutedEventListener(LipLowerA_Slider);
         }
 
         private void LipLowerA_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -17286,9 +17029,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.LipLowerA_Z.value = (float)quat.Z;
             CharacterDetails.LipLowerA_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= LipLowerA_UpDown;
-            BoneUpDown2.ValueChanged -= LipLowerA_UpDown;
-            BoneUpDown3.ValueChanged -= LipLowerA_UpDown;
+            RemoveRoutedEventListener(LipLowerA_UpDown);
         }
 
         private void HrothLipLower_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -17301,9 +17042,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothLipLower_Z.value = (float)quat.Z;
             CharacterDetails.HrothLipLower_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= HrothLipLower_Slider;
-            BoneSlider2.ValueChanged -= HrothLipLower_Slider;
-            BoneSlider3.ValueChanged -= HrothLipLower_Slider;
+            RemoveRoutedEventListener(HrothLipLower_Slider);
         }
 
         private void HrothLipLower_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -17316,9 +17055,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothLipLower_Z.value = (float)quat.Z;
             CharacterDetails.HrothLipLower_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= HrothLipLower_UpDown;
-            BoneUpDown2.ValueChanged -= HrothLipLower_UpDown;
-            BoneUpDown3.ValueChanged -= HrothLipLower_UpDown;
+            RemoveRoutedEventListener(HrothLipLower_UpDown);
         }
 
         private void VieraLipLowerA_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -17331,9 +17068,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraLipLowerA_Z.value = (float)quat.Z;
             CharacterDetails.VieraLipLowerA_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= VieraLipLowerA_Slider;
-            BoneSlider2.ValueChanged -= VieraLipLowerA_Slider;
-            BoneSlider3.ValueChanged -= VieraLipLowerA_Slider;
+            RemoveRoutedEventListener(VieraLipLowerA_Slider);
         }
 
         private void VieraLipLowerA_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -17346,9 +17081,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraLipLowerA_Z.value = (float)quat.Z;
             CharacterDetails.VieraLipLowerA_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= VieraLipLowerA_UpDown;
-            BoneUpDown2.ValueChanged -= VieraLipLowerA_UpDown;
-            BoneUpDown3.ValueChanged -= VieraLipLowerA_UpDown;
+            RemoveRoutedEventListener(VieraLipLowerA_UpDown);
         }
 
         public void LipLowerA_Checked(object sender, RoutedEventArgs e)
@@ -17363,6 +17096,12 @@ namespace ConceptMatrix.Views
         }
         private void LipLowerA_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(VieraLipLowerA_Slider);
+            RemoveRoutedEventListener(VieraLipLowerA_UpDown);
+            RemoveRoutedEventListener(HrothLipLower_Slider);
+            RemoveRoutedEventListener(HrothLipLower_UpDown);
+            RemoveRoutedEventListener(LipLowerA_Slider);
+            RemoveRoutedEventListener(LipLowerA_UpDown);
             CharacterDetails.LipLowerA_Rotate = false;
             CharacterDetails.HrothLipLower_Rotate = false;
             CharacterDetails.VieraLipLowerA_Rotate = false;
@@ -17379,9 +17118,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.LipUpperB_Z.value = (float)quat.Z;
             CharacterDetails.LipUpperB_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= LipUpperB_Slider;
-            BoneSlider2.ValueChanged -= LipUpperB_Slider;
-            BoneSlider3.ValueChanged -= LipUpperB_Slider;
+            RemoveRoutedEventListener(LipUpperB_Slider);
         }
 
         private void LipUpperB_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -17394,9 +17131,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.LipUpperB_Z.value = (float)quat.Z;
             CharacterDetails.LipUpperB_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= LipUpperB_UpDown;
-            BoneUpDown2.ValueChanged -= LipUpperB_UpDown;
-            BoneUpDown3.ValueChanged -= LipUpperB_UpDown;
+            RemoveRoutedEventListener(LipUpperB_UpDown);
         }
 
         private void HrothJawUpper_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -17409,9 +17144,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothJawUpper_Z.value = (float)quat.Z;
             CharacterDetails.HrothJawUpper_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= HrothJawUpper_Slider;
-            BoneSlider2.ValueChanged -= HrothJawUpper_Slider;
-            BoneSlider3.ValueChanged -= HrothJawUpper_Slider;
+            RemoveRoutedEventListener(HrothJawUpper_Slider);
         }
 
         private void HrothJawUpper_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -17424,9 +17157,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothJawUpper_Z.value = (float)quat.Z;
             CharacterDetails.HrothJawUpper_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= HrothJawUpper_UpDown;
-            BoneUpDown2.ValueChanged -= HrothJawUpper_UpDown;
-            BoneUpDown3.ValueChanged -= HrothJawUpper_UpDown;
+            RemoveRoutedEventListener(HrothJawUpper_UpDown);
         }
 
         private void VieraLipUpperB_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -17439,9 +17170,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraLipUpperB_Z.value = (float)quat.Z;
             CharacterDetails.VieraLipUpperB_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= VieraLipUpperB_Slider;
-            BoneSlider2.ValueChanged -= VieraLipUpperB_Slider;
-            BoneSlider3.ValueChanged -= VieraLipUpperB_Slider;
+            RemoveRoutedEventListener(VieraLipUpperB_Slider);
         }
 
         private void VieraLipUpperB_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -17454,9 +17183,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraLipUpperB_Z.value = (float)quat.Z;
             CharacterDetails.VieraLipUpperB_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= VieraLipUpperB_UpDown;
-            BoneUpDown2.ValueChanged -= VieraLipUpperB_UpDown;
-            BoneUpDown3.ValueChanged -= VieraLipUpperB_UpDown;
+            RemoveRoutedEventListener(VieraLipUpperB_UpDown);
         }
 
         public void LipUpperB_Checked(object sender, RoutedEventArgs e)
@@ -17471,6 +17198,12 @@ namespace ConceptMatrix.Views
         }
         private void LipUpperB_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(VieraLipUpperB_Slider);
+            RemoveRoutedEventListener(VieraLipUpperB_UpDown);
+            RemoveRoutedEventListener(HrothJawUpper_Slider);
+            RemoveRoutedEventListener(HrothJawUpper_UpDown);
+            RemoveRoutedEventListener(LipUpperB_Slider);
+            RemoveRoutedEventListener(LipUpperB_UpDown);
             CharacterDetails.LipUpperB_Rotate = false;
             CharacterDetails.HrothJawUpper_Rotate = false;
             CharacterDetails.VieraLipUpperB_Rotate = false;
@@ -17487,9 +17220,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.LipLowerB_Z.value = (float)quat.Z;
             CharacterDetails.LipLowerB_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= LipLowerB_Slider;
-            BoneSlider2.ValueChanged -= LipLowerB_Slider;
-            BoneSlider3.ValueChanged -= LipLowerB_Slider;
+            RemoveRoutedEventListener(LipLowerB_Slider);
         }
 
         private void LipLowerB_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -17502,9 +17233,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.LipLowerB_Z.value = (float)quat.Z;
             CharacterDetails.LipLowerB_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= LipLowerB_UpDown;
-            BoneUpDown2.ValueChanged -= LipLowerB_UpDown;
-            BoneUpDown3.ValueChanged -= LipLowerB_UpDown;
+            RemoveRoutedEventListener(LipLowerB_UpDown);
         }
 
         private void VieraLipLowerB_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -17517,9 +17246,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraLipLowerB_Z.value = (float)quat.Z;
             CharacterDetails.VieraLipLowerB_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= VieraLipLowerB_Slider;
-            BoneSlider2.ValueChanged -= VieraLipLowerB_Slider;
-            BoneSlider3.ValueChanged -= VieraLipLowerB_Slider;
+            RemoveRoutedEventListener(VieraLipLowerB_Slider);
         }
 
         private void VieraLipLowerB_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -17532,9 +17259,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraLipLowerB_Z.value = (float)quat.Z;
             CharacterDetails.VieraLipLowerB_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= VieraLipLowerB_UpDown;
-            BoneUpDown2.ValueChanged -= VieraLipLowerB_UpDown;
-            BoneUpDown3.ValueChanged -= VieraLipLowerB_UpDown;
+            RemoveRoutedEventListener(VieraLipLowerB_UpDown);
         }
 
         public void LipLowerB_Checked(object sender, RoutedEventArgs e)
@@ -17548,6 +17273,10 @@ namespace ConceptMatrix.Views
         }
         private void LipLowerB_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(VieraLipLowerB_Slider);
+            RemoveRoutedEventListener(VieraLipLowerB_UpDown);
+            RemoveRoutedEventListener(LipLowerB_Slider);
+            RemoveRoutedEventListener(LipLowerB_UpDown);
             CharacterDetails.LipLowerB_Rotate = false;
             CharacterDetails.VieraLipLowerB_Rotate = false;
         }
@@ -17563,9 +17292,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothWhiskersLeft_Z.value = (float)quat.Z;
             CharacterDetails.HrothWhiskersLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= HrothWhiskersLeft_Slider;
-            BoneSlider2.ValueChanged -= HrothWhiskersLeft_Slider;
-            BoneSlider3.ValueChanged -= HrothWhiskersLeft_Slider;
+            RemoveRoutedEventListener(HrothWhiskersLeft_Slider);
         }
 
         private void HrothWhiskersLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -17578,9 +17305,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothWhiskersLeft_Z.value = (float)quat.Z;
             CharacterDetails.HrothWhiskersLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= HrothWhiskersLeft_UpDown;
-            BoneUpDown2.ValueChanged -= HrothWhiskersLeft_UpDown;
-            BoneUpDown3.ValueChanged -= HrothWhiskersLeft_UpDown;
+            RemoveRoutedEventListener(HrothWhiskersLeft_UpDown);
         }
 
         public void HrothWhiskersLeft_Checked(object sender, RoutedEventArgs e)
@@ -17593,6 +17318,8 @@ namespace ConceptMatrix.Views
         }
         private void HrothWhiskersLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(HrothWhiskersLeft_Slider);
+            RemoveRoutedEventListener(HrothWhiskersLeft_UpDown);
             CharacterDetails.HrothWhiskersLeft_Rotate = false;
         }
         #endregion
@@ -17607,9 +17334,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothWhiskersRight_Z.value = (float)quat.Z;
             CharacterDetails.HrothWhiskersRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= HrothWhiskersRight_Slider;
-            BoneSlider2.ValueChanged -= HrothWhiskersRight_Slider;
-            BoneSlider3.ValueChanged -= HrothWhiskersRight_Slider;
+            RemoveRoutedEventListener(HrothWhiskersRight_Slider);
         }
 
         private void HrothWhiskersRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -17622,9 +17347,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothWhiskersRight_Z.value = (float)quat.Z;
             CharacterDetails.HrothWhiskersRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= HrothWhiskersRight_UpDown;
-            BoneUpDown2.ValueChanged -= HrothWhiskersRight_UpDown;
-            BoneUpDown3.ValueChanged -= HrothWhiskersRight_UpDown;
+            RemoveRoutedEventListener(HrothWhiskersRight_UpDown);
         }
 
         public void HrothWhiskersRight_Checked(object sender, RoutedEventArgs e)
@@ -17637,6 +17360,8 @@ namespace ConceptMatrix.Views
         }
         private void HrothWhiskersRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(HrothWhiskersRight_Slider);
+            RemoveRoutedEventListener(HrothWhiskersRight_UpDown);
             CharacterDetails.HrothWhiskersRight_Rotate = false;
         }
         #endregion
@@ -17651,9 +17376,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar01ALeft_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar01ALeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= VieraEar01ALeft_Slider;
-            BoneSlider2.ValueChanged -= VieraEar01ALeft_Slider;
-            BoneSlider3.ValueChanged -= VieraEar01ALeft_Slider;
+            RemoveRoutedEventListener(VieraEar01ALeft_Slider);
         }
 
         private void VieraEar01ALeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -17666,9 +17389,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar01ALeft_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar01ALeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= VieraEar01ALeft_UpDown;
-            BoneUpDown2.ValueChanged -= VieraEar01ALeft_UpDown;
-            BoneUpDown3.ValueChanged -= VieraEar01ALeft_UpDown;
+            RemoveRoutedEventListener(VieraEar01ALeft_UpDown);
         }
 
         private void VieraEar02ALeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -17681,9 +17402,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar02ALeft_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar02ALeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= VieraEar02ALeft_Slider;
-            BoneSlider2.ValueChanged -= VieraEar02ALeft_Slider;
-            BoneSlider3.ValueChanged -= VieraEar02ALeft_Slider;
+            RemoveRoutedEventListener(VieraEar02ALeft_Slider);
         }
 
         private void VieraEar02ALeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -17696,9 +17415,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar02ALeft_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar02ALeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= VieraEar02ALeft_UpDown;
-            BoneUpDown2.ValueChanged -= VieraEar02ALeft_UpDown;
-            BoneUpDown3.ValueChanged -= VieraEar02ALeft_UpDown;
+            RemoveRoutedEventListener(VieraEar02ALeft_UpDown);
         }
 
         private void VieraEar03ALeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -17711,9 +17428,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar03ALeft_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar03ALeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= VieraEar03ALeft_Slider;
-            BoneSlider2.ValueChanged -= VieraEar03ALeft_Slider;
-            BoneSlider3.ValueChanged -= VieraEar03ALeft_Slider;
+            RemoveRoutedEventListener(VieraEar03ALeft_Slider);
         }
 
         private void VieraEar03ALeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -17726,9 +17441,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar03ALeft_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar03ALeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= VieraEar03ALeft_UpDown;
-            BoneUpDown2.ValueChanged -= VieraEar03ALeft_UpDown;
-            BoneUpDown3.ValueChanged -= VieraEar03ALeft_UpDown;
+            RemoveRoutedEventListener(VieraEar03ALeft_UpDown);
         }
 
         private void VieraEar04ALeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -17741,9 +17454,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar04ALeft_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar04ALeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= VieraEar04ALeft_Slider;
-            BoneSlider2.ValueChanged -= VieraEar04ALeft_Slider;
-            BoneSlider3.ValueChanged -= VieraEar04ALeft_Slider;
+            RemoveRoutedEventListener(VieraEar04ALeft_Slider);
         }
 
         private void VieraEar04ALeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -17756,9 +17467,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar04ALeft_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar04ALeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= VieraEar04ALeft_UpDown;
-            BoneUpDown2.ValueChanged -= VieraEar04ALeft_UpDown;
-            BoneUpDown3.ValueChanged -= VieraEar04ALeft_UpDown;
+            RemoveRoutedEventListener(VieraEar04ALeft_UpDown);
         }
 
         public void VieraEarALeft_Checked(object sender, RoutedEventArgs e)
@@ -17775,6 +17484,14 @@ namespace ConceptMatrix.Views
         }
         private void VieraEarALeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(VieraEar04ALeft_Slider);
+            RemoveRoutedEventListener(VieraEar04ALeft_UpDown);
+            RemoveRoutedEventListener(VieraEar03ALeft_Slider);
+            RemoveRoutedEventListener(VieraEar03ALeft_UpDown);
+            RemoveRoutedEventListener(VieraEar02ALeft_Slider);
+            RemoveRoutedEventListener(VieraEar02ALeft_UpDown);
+            RemoveRoutedEventListener(VieraEar01ALeft_Slider);
+            RemoveRoutedEventListener(VieraEar01ALeft_UpDown);
             CharacterDetails.VieraEar01ALeft_Rotate = false;
             CharacterDetails.VieraEar02ALeft_Rotate = false;
             CharacterDetails.VieraEar03ALeft_Rotate = false;
@@ -17792,9 +17509,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar01ARight_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar01ARight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= VieraEar01ARight_Slider;
-            BoneSlider2.ValueChanged -= VieraEar01ARight_Slider;
-            BoneSlider3.ValueChanged -= VieraEar01ARight_Slider;
+            RemoveRoutedEventListener(VieraEar01ARight_Slider);
         }
 
         private void VieraEar01ARight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -17807,9 +17522,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar01ARight_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar01ARight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= VieraEar01ARight_UpDown;
-            BoneUpDown2.ValueChanged -= VieraEar01ARight_UpDown;
-            BoneUpDown3.ValueChanged -= VieraEar01ARight_UpDown;
+            RemoveRoutedEventListener(VieraEar01ARight_UpDown);
         }
 
         private void VieraEar02ARight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -17822,9 +17535,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar02ARight_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar02ARight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= VieraEar02ARight_Slider;
-            BoneSlider2.ValueChanged -= VieraEar02ARight_Slider;
-            BoneSlider3.ValueChanged -= VieraEar02ARight_Slider;
+            RemoveRoutedEventListener(VieraEar02ARight_Slider);
         }
 
         private void VieraEar02ARight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -17837,9 +17548,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar02ARight_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar02ARight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= VieraEar02ARight_UpDown;
-            BoneUpDown2.ValueChanged -= VieraEar02ARight_UpDown;
-            BoneUpDown3.ValueChanged -= VieraEar02ARight_UpDown;
+            RemoveRoutedEventListener(VieraEar02ARight_UpDown);
         }
 
         private void VieraEar03ARight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -17852,9 +17561,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar03ARight_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar03ARight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= VieraEar03ARight_Slider;
-            BoneSlider2.ValueChanged -= VieraEar03ARight_Slider;
-            BoneSlider3.ValueChanged -= VieraEar03ARight_Slider;
+            RemoveRoutedEventListener(VieraEar03ARight_Slider);
         }
 
         private void VieraEar03ARight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -17867,9 +17574,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar03ARight_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar03ARight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= VieraEar03ARight_UpDown;
-            BoneUpDown2.ValueChanged -= VieraEar03ARight_UpDown;
-            BoneUpDown3.ValueChanged -= VieraEar03ARight_UpDown;
+            RemoveRoutedEventListener(VieraEar03ARight_UpDown);
         }
 
         private void VieraEar04ARight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -17882,9 +17587,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar04ARight_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar04ARight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= VieraEar04ARight_Slider;
-            BoneSlider2.ValueChanged -= VieraEar04ARight_Slider;
-            BoneSlider3.ValueChanged -= VieraEar04ARight_Slider;
+            RemoveRoutedEventListener(VieraEar04ARight_Slider);
         }
 
         private void VieraEar04ARight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -17897,9 +17600,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar04ARight_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar04ARight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= VieraEar04ARight_UpDown;
-            BoneUpDown2.ValueChanged -= VieraEar04ARight_UpDown;
-            BoneUpDown3.ValueChanged -= VieraEar04ARight_UpDown;
+            RemoveRoutedEventListener(VieraEar04ARight_UpDown);
         }
 
         public void VieraEarARight_Checked(object sender, RoutedEventArgs e)
@@ -17916,6 +17617,14 @@ namespace ConceptMatrix.Views
         }
         private void VieraEarARight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(VieraEar04ARight_Slider);
+            RemoveRoutedEventListener(VieraEar04ARight_UpDown);
+            RemoveRoutedEventListener(VieraEar03ARight_Slider);
+            RemoveRoutedEventListener(VieraEar03ARight_UpDown);
+            RemoveRoutedEventListener(VieraEar02ARight_Slider);
+            RemoveRoutedEventListener(VieraEar02ARight_UpDown);
+            RemoveRoutedEventListener(VieraEar01ARight_Slider);
+            RemoveRoutedEventListener(VieraEar01ARight_UpDown);
             CharacterDetails.VieraEar01ARight_Rotate = false;
             CharacterDetails.VieraEar02ARight_Rotate = false;
             CharacterDetails.VieraEar03ARight_Rotate = false;
@@ -17933,9 +17642,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar01BLeft_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar01BLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= VieraEar01BLeft_Slider;
-            BoneSlider2.ValueChanged -= VieraEar01BLeft_Slider;
-            BoneSlider3.ValueChanged -= VieraEar01BLeft_Slider;
+            RemoveRoutedEventListener(VieraEar01BLeft_Slider);
         }
 
         private void VieraEar01BLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -17948,9 +17655,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar01BLeft_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar01BLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= VieraEar01BLeft_UpDown;
-            BoneUpDown2.ValueChanged -= VieraEar01BLeft_UpDown;
-            BoneUpDown3.ValueChanged -= VieraEar01BLeft_UpDown;
+            RemoveRoutedEventListener(VieraEar01BLeft_UpDown);
         }
 
         private void VieraEar02BLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -17963,9 +17668,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar02BLeft_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar02BLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= VieraEar02BLeft_Slider;
-            BoneSlider2.ValueChanged -= VieraEar02BLeft_Slider;
-            BoneSlider3.ValueChanged -= VieraEar02BLeft_Slider;
+            RemoveRoutedEventListener(VieraEar02BLeft_Slider);
         }
 
         private void VieraEar02BLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -17978,9 +17681,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar02BLeft_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar02BLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= VieraEar02BLeft_UpDown;
-            BoneUpDown2.ValueChanged -= VieraEar02BLeft_UpDown;
-            BoneUpDown3.ValueChanged -= VieraEar02BLeft_UpDown;
+            RemoveRoutedEventListener(VieraEar02BLeft_UpDown);
         }
 
         private void VieraEar03BLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -17993,9 +17694,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar03BLeft_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar03BLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= VieraEar03BLeft_Slider;
-            BoneSlider2.ValueChanged -= VieraEar03BLeft_Slider;
-            BoneSlider3.ValueChanged -= VieraEar03BLeft_Slider;
+            RemoveRoutedEventListener(VieraEar03BLeft_Slider);
         }
 
         private void VieraEar03BLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -18008,9 +17707,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar03BLeft_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar03BLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= VieraEar03BLeft_UpDown;
-            BoneUpDown2.ValueChanged -= VieraEar03BLeft_UpDown;
-            BoneUpDown3.ValueChanged -= VieraEar03BLeft_UpDown;
+            RemoveRoutedEventListener(VieraEar03BLeft_UpDown);
         }
 
         private void VieraEar04BLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -18023,9 +17720,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar04BLeft_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar04BLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= VieraEar04BLeft_Slider;
-            BoneSlider2.ValueChanged -= VieraEar04BLeft_Slider;
-            BoneSlider3.ValueChanged -= VieraEar04BLeft_Slider;
+            RemoveRoutedEventListener(VieraEar04BLeft_Slider);
         }
 
         private void VieraEar04BLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -18038,9 +17733,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar04BLeft_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar04BLeft_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= VieraEar04BLeft_UpDown;
-            BoneUpDown2.ValueChanged -= VieraEar04BLeft_UpDown;
-            BoneUpDown3.ValueChanged -= VieraEar04BLeft_UpDown;
+            RemoveRoutedEventListener(VieraEar04BLeft_UpDown);
         }
 
         public void VieraEarBLeft_Checked(object sender, RoutedEventArgs e)
@@ -18057,6 +17750,14 @@ namespace ConceptMatrix.Views
         }
         private void VieraEarBLeft_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(VieraEar04BLeft_Slider);
+            RemoveRoutedEventListener(VieraEar04BLeft_UpDown);
+            RemoveRoutedEventListener(VieraEar03BLeft_Slider);
+            RemoveRoutedEventListener(VieraEar03BLeft_UpDown);
+            RemoveRoutedEventListener(VieraEar02BLeft_Slider);
+            RemoveRoutedEventListener(VieraEar02BLeft_UpDown);
+            RemoveRoutedEventListener(VieraEar01BLeft_Slider);
+            RemoveRoutedEventListener(VieraEar01BLeft_UpDown);
             CharacterDetails.VieraEar01BLeft_Rotate = false;
             CharacterDetails.VieraEar02BLeft_Rotate = false;
             CharacterDetails.VieraEar03BLeft_Rotate = false;
@@ -18074,9 +17775,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar01BRight_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar01BRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= VieraEar01BRight_Slider;
-            BoneSlider2.ValueChanged -= VieraEar01BRight_Slider;
-            BoneSlider3.ValueChanged -= VieraEar01BRight_Slider;
+            RemoveRoutedEventListener(VieraEar01BRight_Slider);
         }
 
         private void VieraEar01BRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -18089,9 +17788,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar01BRight_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar01BRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= VieraEar01BRight_UpDown;
-            BoneUpDown2.ValueChanged -= VieraEar01BRight_UpDown;
-            BoneUpDown3.ValueChanged -= VieraEar01BRight_UpDown;
+            RemoveRoutedEventListener(VieraEar01BRight_UpDown);
         }
 
         private void VieraEar02BRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -18104,9 +17801,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar02BRight_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar02BRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= VieraEar02BRight_Slider;
-            BoneSlider2.ValueChanged -= VieraEar02BRight_Slider;
-            BoneSlider3.ValueChanged -= VieraEar02BRight_Slider;
+            RemoveRoutedEventListener(VieraEar02BRight_Slider);
         }
 
         private void VieraEar02BRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -18119,9 +17814,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar02BRight_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar02BRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= VieraEar02BRight_UpDown;
-            BoneUpDown2.ValueChanged -= VieraEar02BRight_UpDown;
-            BoneUpDown3.ValueChanged -= VieraEar02BRight_UpDown;
+            RemoveRoutedEventListener(VieraEar02BRight_UpDown);
         }
 
         private void VieraEar03BRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -18134,9 +17827,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar03BRight_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar03BRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= VieraEar03BRight_Slider;
-            BoneSlider2.ValueChanged -= VieraEar03BRight_Slider;
-            BoneSlider3.ValueChanged -= VieraEar03BRight_Slider;
+            RemoveRoutedEventListener(VieraEar03BRight_Slider);
         }
 
         private void VieraEar03BRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -18149,9 +17840,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar03BRight_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar03BRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= VieraEar03BRight_UpDown;
-            BoneUpDown2.ValueChanged -= VieraEar03BRight_UpDown;
-            BoneUpDown3.ValueChanged -= VieraEar03BRight_UpDown;
+            RemoveRoutedEventListener(VieraEar03BRight_UpDown);
         }
 
         private void VieraEar04BRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -18164,9 +17853,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar04BRight_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar04BRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneSlider.ValueChanged -= VieraEar04BRight_Slider;
-            BoneSlider2.ValueChanged -= VieraEar04BRight_Slider;
-            BoneSlider3.ValueChanged -= VieraEar04BRight_Slider;
+            RemoveRoutedEventListener(VieraEar04BRight_Slider);
         }
 
         private void VieraEar04BRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -18179,9 +17866,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar04BRight_Z.value = (float)quat.Z;
             CharacterDetails.VieraEar04BRight_W.value = (float)quat.W;
             // Remove listeners for value changed.
-            BoneUpDown.ValueChanged -= VieraEar04BRight_UpDown;
-            BoneUpDown2.ValueChanged -= VieraEar04BRight_UpDown;
-            BoneUpDown3.ValueChanged -= VieraEar04BRight_UpDown;
+            RemoveRoutedEventListener(VieraEar04BRight_UpDown);
         }
 
         public void VieraEarBRight_Checked(object sender, RoutedEventArgs e)
@@ -18198,6 +17883,14 @@ namespace ConceptMatrix.Views
         }
         private void VieraEarBRight_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(VieraEar04BRight_Slider);
+            RemoveRoutedEventListener(VieraEar04BRight_UpDown);
+            RemoveRoutedEventListener(VieraEar03BRight_Slider);
+            RemoveRoutedEventListener(VieraEar03BRight_UpDown);
+            RemoveRoutedEventListener(VieraEar02BRight_Slider);
+            RemoveRoutedEventListener(VieraEar02BRight_UpDown);
+            RemoveRoutedEventListener(VieraEar01BRight_Slider);
+            RemoveRoutedEventListener(VieraEar01BRight_UpDown);
             CharacterDetails.VieraEar01BRight_Rotate = false;
             CharacterDetails.VieraEar02BRight_Rotate = false;
             CharacterDetails.VieraEar03BRight_Rotate = false;
@@ -18216,9 +17909,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExHairA_Z.value = (float)quat.Z;
             CharacterDetails.ExHairA_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExHairA_Slider;
-            BoneSlider2.ValueChanged -= ExHairA_Slider;
-            BoneSlider3.ValueChanged -= ExHairA_Slider;
+            RemoveRoutedEventListener(ExHairA_Slider);
         }
 
         private void ExHairA_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -18231,9 +17922,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExHairA_Z.value = (float)quat.Z;
             CharacterDetails.ExHairA_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExHairA_UpDown;
-            BoneUpDown2.ValueChanged -= ExHairA_UpDown;
-            BoneUpDown3.ValueChanged -= ExHairA_UpDown;
+            RemoveRoutedEventListener(ExHairA_UpDown);
         }
 
         public void ExHairA_Checked(object sender, RoutedEventArgs e)
@@ -18246,6 +17935,8 @@ namespace ConceptMatrix.Views
         }
         private void ExHairA_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExHairA_Slider);
+            RemoveRoutedEventListener(ExHairA_UpDown);
             CharacterDetails.ExHairA_Rotate = false;
         }
         #endregion
@@ -18260,9 +17951,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExHairB_Z.value = (float)quat.Z;
             CharacterDetails.ExHairB_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExHairB_Slider;
-            BoneSlider2.ValueChanged -= ExHairB_Slider;
-            BoneSlider3.ValueChanged -= ExHairB_Slider;
+            RemoveRoutedEventListener(ExHairB_Slider);
         }
 
         private void ExHairB_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -18275,9 +17964,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExHairB_Z.value = (float)quat.Z;
             CharacterDetails.ExHairB_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExHairB_UpDown;
-            BoneUpDown2.ValueChanged -= ExHairB_UpDown;
-            BoneUpDown3.ValueChanged -= ExHairB_UpDown;
+            RemoveRoutedEventListener(ExHairB_UpDown);
         }
 
         public void ExHairB_Checked(object sender, RoutedEventArgs e)
@@ -18290,6 +17977,8 @@ namespace ConceptMatrix.Views
         }
         private void ExHairB_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExHairB_Slider);
+            RemoveRoutedEventListener(ExHairB_UpDown);
             CharacterDetails.ExHairB_Rotate = false;
         }
         #endregion
@@ -18304,9 +17993,8 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExHairC_Z.value = (float)quat.Z;
             CharacterDetails.ExHairC_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExHairC_Slider;
-            BoneSlider2.ValueChanged -= ExHairC_Slider;
-            BoneSlider3.ValueChanged -= ExHairC_Slider;
+            RemoveRoutedEventListener(ExHairC_Slider);
+            RemoveRoutedEventListener(ExHairC_UpDown);
         }
 
         private void ExHairC_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -18319,9 +18007,8 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExHairC_Z.value = (float)quat.Z;
             CharacterDetails.ExHairC_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExHairC_UpDown;
-            BoneUpDown2.ValueChanged -= ExHairC_UpDown;
-            BoneUpDown3.ValueChanged -= ExHairC_UpDown;
+            RemoveRoutedEventListener(ExHairC_Slider);
+            RemoveRoutedEventListener(ExHairC_UpDown);
         }
 
         public void ExHairC_Checked(object sender, RoutedEventArgs e)
@@ -18334,6 +18021,8 @@ namespace ConceptMatrix.Views
         }
         private void ExHairC_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExHairC_Slider);
+            RemoveRoutedEventListener(ExHairC_UpDown);
             CharacterDetails.ExHairC_Rotate = false;
         }
         #endregion
@@ -18348,9 +18037,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExHairD_Z.value = (float)quat.Z;
             CharacterDetails.ExHairD_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExHairD_Slider;
-            BoneSlider2.ValueChanged -= ExHairD_Slider;
-            BoneSlider3.ValueChanged -= ExHairD_Slider;
+            RemoveRoutedEventListener(ExHairD_Slider);
         }
 
         private void ExHairD_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -18363,9 +18050,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExHairD_Z.value = (float)quat.Z;
             CharacterDetails.ExHairD_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExHairD_UpDown;
-            BoneUpDown2.ValueChanged -= ExHairD_UpDown;
-            BoneUpDown3.ValueChanged -= ExHairD_UpDown;
+            RemoveRoutedEventListener(ExHairD_UpDown);
         }
 
         public void ExHairD_Checked(object sender, RoutedEventArgs e)
@@ -18378,6 +18063,8 @@ namespace ConceptMatrix.Views
         }
         private void ExHairD_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExHairD_Slider);
+            RemoveRoutedEventListener(ExHairD_UpDown);
             CharacterDetails.ExHairD_Rotate = false;
         }
         #endregion
@@ -18392,9 +18079,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExHairE_Z.value = (float)quat.Z;
             CharacterDetails.ExHairE_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExHairE_Slider;
-            BoneSlider2.ValueChanged -= ExHairE_Slider;
-            BoneSlider3.ValueChanged -= ExHairE_Slider;
+            RemoveRoutedEventListener(ExHairE_Slider);
         }
 
         private void ExHairE_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -18407,9 +18092,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExHairE_Z.value = (float)quat.Z;
             CharacterDetails.ExHairE_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExHairE_UpDown;
-            BoneUpDown2.ValueChanged -= ExHairE_UpDown;
-            BoneUpDown3.ValueChanged -= ExHairE_UpDown;
+            RemoveRoutedEventListener(ExHairE_UpDown);
         }
 
         public void ExHairE_Checked(object sender, RoutedEventArgs e)
@@ -18422,6 +18105,8 @@ namespace ConceptMatrix.Views
         }
         private void ExHairE_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExHairE_Slider);
+            RemoveRoutedEventListener(ExHairE_UpDown);
             CharacterDetails.ExHairE_Rotate = false;
         }
         #endregion
@@ -18436,9 +18121,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExHairF_Z.value = (float)quat.Z;
             CharacterDetails.ExHairF_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExHairF_Slider;
-            BoneSlider2.ValueChanged -= ExHairF_Slider;
-            BoneSlider3.ValueChanged -= ExHairF_Slider;
+            RemoveRoutedEventListener(ExHairF_Slider);
         }
 
         private void ExHairF_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -18451,9 +18134,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExHairF_Z.value = (float)quat.Z;
             CharacterDetails.ExHairF_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExHairF_UpDown;
-            BoneUpDown2.ValueChanged -= ExHairF_UpDown;
-            BoneUpDown3.ValueChanged -= ExHairF_UpDown;
+            RemoveRoutedEventListener(ExHairF_UpDown);
         }
 
         public void ExHairF_Checked(object sender, RoutedEventArgs e)
@@ -18466,6 +18147,8 @@ namespace ConceptMatrix.Views
         }
         private void ExHairF_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExHairF_Slider);
+            RemoveRoutedEventListener(ExHairF_UpDown);
             CharacterDetails.ExHairF_Rotate = false;
         }
         #endregion
@@ -18480,9 +18163,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExHairG_Z.value = (float)quat.Z;
             CharacterDetails.ExHairG_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExHairG_Slider;
-            BoneSlider2.ValueChanged -= ExHairG_Slider;
-            BoneSlider3.ValueChanged -= ExHairG_Slider;
+            RemoveRoutedEventListener(ExHairG_Slider);
         }
 
         private void ExHairG_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -18495,9 +18176,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExHairG_Z.value = (float)quat.Z;
             CharacterDetails.ExHairG_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExHairG_UpDown;
-            BoneUpDown2.ValueChanged -= ExHairG_UpDown;
-            BoneUpDown3.ValueChanged -= ExHairG_UpDown;
+            RemoveRoutedEventListener(ExHairG_UpDown);
         }
 
         public void ExHairG_Checked(object sender, RoutedEventArgs e)
@@ -18510,6 +18189,8 @@ namespace ConceptMatrix.Views
         }
         private void ExHairG_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExHairG_Slider);
+            RemoveRoutedEventListener(ExHairG_UpDown);
             CharacterDetails.ExHairG_Rotate = false;
         }
         #endregion
@@ -18524,9 +18205,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExHairH_Z.value = (float)quat.Z;
             CharacterDetails.ExHairH_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExHairH_Slider;
-            BoneSlider2.ValueChanged -= ExHairH_Slider;
-            BoneSlider3.ValueChanged -= ExHairH_Slider;
+            RemoveRoutedEventListener(ExHairH_Slider);
         }
 
         private void ExHairH_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -18539,9 +18218,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExHairH_Z.value = (float)quat.Z;
             CharacterDetails.ExHairH_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExHairH_UpDown;
-            BoneUpDown2.ValueChanged -= ExHairH_UpDown;
-            BoneUpDown3.ValueChanged -= ExHairH_UpDown;
+            RemoveRoutedEventListener(ExHairH_UpDown);
         }
 
         public void ExHairH_Checked(object sender, RoutedEventArgs e)
@@ -18554,6 +18231,8 @@ namespace ConceptMatrix.Views
         }
         private void ExHairH_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExHairH_Slider);
+            RemoveRoutedEventListener(ExHairH_UpDown);
             CharacterDetails.ExHairH_Rotate = false;
         }
         #endregion
@@ -18568,9 +18247,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExHairI_Z.value = (float)quat.Z;
             CharacterDetails.ExHairI_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExHairI_Slider;
-            BoneSlider2.ValueChanged -= ExHairI_Slider;
-            BoneSlider3.ValueChanged -= ExHairI_Slider;
+            RemoveRoutedEventListener(ExHairI_Slider);
         }
 
         private void ExHairI_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -18583,9 +18260,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExHairI_Z.value = (float)quat.Z;
             CharacterDetails.ExHairI_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExHairI_UpDown;
-            BoneUpDown2.ValueChanged -= ExHairI_UpDown;
-            BoneUpDown3.ValueChanged -= ExHairI_UpDown;
+            RemoveRoutedEventListener(ExHairI_UpDown);
         }
 
         public void ExHairI_Checked(object sender, RoutedEventArgs e)
@@ -18598,6 +18273,8 @@ namespace ConceptMatrix.Views
         }
         private void ExHairI_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExHairI_Slider);
+            RemoveRoutedEventListener(ExHairI_UpDown);
             CharacterDetails.ExHairI_Rotate = false;
         }
         #endregion
@@ -18612,9 +18289,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExHairJ_Z.value = (float)quat.Z;
             CharacterDetails.ExHairJ_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExHairJ_Slider;
-            BoneSlider2.ValueChanged -= ExHairJ_Slider;
-            BoneSlider3.ValueChanged -= ExHairJ_Slider;
+            RemoveRoutedEventListener(ExHairJ_Slider);
         }
 
         private void ExHairJ_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -18627,9 +18302,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExHairJ_Z.value = (float)quat.Z;
             CharacterDetails.ExHairJ_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExHairJ_UpDown;
-            BoneUpDown2.ValueChanged -= ExHairJ_UpDown;
-            BoneUpDown3.ValueChanged -= ExHairJ_UpDown;
+            RemoveRoutedEventListener(ExHairJ_UpDown);
         }
 
         public void ExHairJ_Checked(object sender, RoutedEventArgs e)
@@ -18642,6 +18315,8 @@ namespace ConceptMatrix.Views
         }
         private void ExHairJ_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExHairJ_Slider);
+            RemoveRoutedEventListener(ExHairJ_UpDown);
             CharacterDetails.ExHairJ_Rotate = false;
         }
         #endregion
@@ -18656,9 +18331,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExHairK_Z.value = (float)quat.Z;
             CharacterDetails.ExHairK_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExHairK_Slider;
-            BoneSlider2.ValueChanged -= ExHairK_Slider;
-            BoneSlider3.ValueChanged -= ExHairK_Slider;
+            RemoveRoutedEventListener(ExHairK_Slider);
         }
 
         private void ExHairK_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -18671,9 +18344,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExHairK_Z.value = (float)quat.Z;
             CharacterDetails.ExHairK_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExHairK_UpDown;
-            BoneUpDown2.ValueChanged -= ExHairK_UpDown;
-            BoneUpDown3.ValueChanged -= ExHairK_UpDown;
+            RemoveRoutedEventListener(ExHairK_UpDown);
         }
 
         public void ExHairK_Checked(object sender, RoutedEventArgs e)
@@ -18686,6 +18357,8 @@ namespace ConceptMatrix.Views
         }
         private void ExHairK_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExHairK_Slider);
+            RemoveRoutedEventListener(ExHairK_UpDown);
             CharacterDetails.ExHairK_Rotate = false;
         }
         #endregion
@@ -18700,9 +18373,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExHairL_Z.value = (float)quat.Z;
             CharacterDetails.ExHairL_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExHairL_Slider;
-            BoneSlider2.ValueChanged -= ExHairL_Slider;
-            BoneSlider3.ValueChanged -= ExHairL_Slider;
+            RemoveRoutedEventListener(ExHairL_Slider);
         }
 
         private void ExHairL_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -18715,9 +18386,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExHairL_Z.value = (float)quat.Z;
             CharacterDetails.ExHairL_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExHairL_UpDown;
-            BoneUpDown2.ValueChanged -= ExHairL_UpDown;
-            BoneUpDown3.ValueChanged -= ExHairL_UpDown;
+            RemoveRoutedEventListener(ExHairL_UpDown);
         }
 
         public void ExHairL_Checked(object sender, RoutedEventArgs e)
@@ -18730,6 +18399,8 @@ namespace ConceptMatrix.Views
         }
         private void ExHairL_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExHairL_Slider);
+            RemoveRoutedEventListener(ExHairL_UpDown);
             CharacterDetails.ExHairL_Rotate = false;
         }
         #endregion
@@ -18745,9 +18416,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetA_Z.value = (float)quat.Z;
             CharacterDetails.ExMetA_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExMetA_Slider;
-            BoneSlider2.ValueChanged -= ExMetA_Slider;
-            BoneSlider3.ValueChanged -= ExMetA_Slider;
+            RemoveRoutedEventListener(ExMetA_Slider);
         }
 
         private void ExMetA_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -18760,9 +18429,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetA_Z.value = (float)quat.Z;
             CharacterDetails.ExMetA_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExMetA_UpDown;
-            BoneUpDown2.ValueChanged -= ExMetA_UpDown;
-            BoneUpDown3.ValueChanged -= ExMetA_UpDown;
+            RemoveRoutedEventListener(ExMetA_UpDown);
         }
 
         public void ExMetA_Checked(object sender, RoutedEventArgs e)
@@ -18775,6 +18442,8 @@ namespace ConceptMatrix.Views
         }
         private void ExMetA_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExMetA_Slider);
+            RemoveRoutedEventListener(ExMetA_UpDown);
             CharacterDetails.ExMetA_Rotate = false;
         }
         #endregion
@@ -18789,9 +18458,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetB_Z.value = (float)quat.Z;
             CharacterDetails.ExMetB_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExMetB_Slider;
-            BoneSlider2.ValueChanged -= ExMetB_Slider;
-            BoneSlider3.ValueChanged -= ExMetB_Slider;
+            RemoveRoutedEventListener(ExMetB_Slider);
         }
 
         private void ExMetB_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -18804,9 +18471,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetB_Z.value = (float)quat.Z;
             CharacterDetails.ExMetB_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExMetB_UpDown;
-            BoneUpDown2.ValueChanged -= ExMetB_UpDown;
-            BoneUpDown3.ValueChanged -= ExMetB_UpDown;
+            RemoveRoutedEventListener(ExMetB_UpDown);
         }
 
         public void ExMetB_Checked(object sender, RoutedEventArgs e)
@@ -18819,6 +18484,8 @@ namespace ConceptMatrix.Views
         }
         private void ExMetB_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExMetB_Slider);
+            RemoveRoutedEventListener(ExMetB_UpDown);
             CharacterDetails.ExMetB_Rotate = false;
         }
         #endregion
@@ -18833,9 +18500,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetC_Z.value = (float)quat.Z;
             CharacterDetails.ExMetC_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExMetC_Slider;
-            BoneSlider2.ValueChanged -= ExMetC_Slider;
-            BoneSlider3.ValueChanged -= ExMetC_Slider;
+            RemoveRoutedEventListener(ExMetC_Slider);
         }
 
         private void ExMetC_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -18848,9 +18513,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetC_Z.value = (float)quat.Z;
             CharacterDetails.ExMetC_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExMetC_UpDown;
-            BoneUpDown2.ValueChanged -= ExMetC_UpDown;
-            BoneUpDown3.ValueChanged -= ExMetC_UpDown;
+            RemoveRoutedEventListener(ExMetC_UpDown);
         }
 
         public void ExMetC_Checked(object sender, RoutedEventArgs e)
@@ -18863,6 +18526,8 @@ namespace ConceptMatrix.Views
         }
         private void ExMetC_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExMetC_Slider);
+            RemoveRoutedEventListener(ExMetC_UpDown);
             CharacterDetails.ExMetC_Rotate = false;
         }
         #endregion
@@ -18877,9 +18542,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetD_Z.value = (float)quat.Z;
             CharacterDetails.ExMetD_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExMetD_Slider;
-            BoneSlider2.ValueChanged -= ExMetD_Slider;
-            BoneSlider3.ValueChanged -= ExMetD_Slider;
+            RemoveRoutedEventListener(ExMetD_Slider);
         }
 
         private void ExMetD_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -18892,9 +18555,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetD_Z.value = (float)quat.Z;
             CharacterDetails.ExMetD_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExMetD_UpDown;
-            BoneUpDown2.ValueChanged -= ExMetD_UpDown;
-            BoneUpDown3.ValueChanged -= ExMetD_UpDown;
+            RemoveRoutedEventListener(ExMetD_UpDown);
         }
 
         public void ExMetD_Checked(object sender, RoutedEventArgs e)
@@ -18907,6 +18568,8 @@ namespace ConceptMatrix.Views
         }
         private void ExMetD_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExMetD_Slider);
+            RemoveRoutedEventListener(ExMetD_UpDown);
             CharacterDetails.ExMetD_Rotate = false;
         }
         #endregion
@@ -18921,9 +18584,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetE_Z.value = (float)quat.Z;
             CharacterDetails.ExMetE_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExMetE_Slider;
-            BoneSlider2.ValueChanged -= ExMetE_Slider;
-            BoneSlider3.ValueChanged -= ExMetE_Slider;
+            RemoveRoutedEventListener(ExMetE_Slider);
         }
 
         private void ExMetE_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -18936,9 +18597,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetE_Z.value = (float)quat.Z;
             CharacterDetails.ExMetE_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExMetE_UpDown;
-            BoneUpDown2.ValueChanged -= ExMetE_UpDown;
-            BoneUpDown3.ValueChanged -= ExMetE_UpDown;
+            RemoveRoutedEventListener(ExMetE_UpDown);
         }
 
         public void ExMetE_Checked(object sender, RoutedEventArgs e)
@@ -18951,6 +18610,8 @@ namespace ConceptMatrix.Views
         }
         private void ExMetE_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExMetE_Slider);
+            RemoveRoutedEventListener(ExMetE_UpDown);
             CharacterDetails.ExMetE_Rotate = false;
         }
         #endregion
@@ -18965,9 +18626,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetF_Z.value = (float)quat.Z;
             CharacterDetails.ExMetF_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExMetF_Slider;
-            BoneSlider2.ValueChanged -= ExMetF_Slider;
-            BoneSlider3.ValueChanged -= ExMetF_Slider;
+            RemoveRoutedEventListener(ExMetF_Slider);
         }
 
         private void ExMetF_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -18980,9 +18639,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetF_Z.value = (float)quat.Z;
             CharacterDetails.ExMetF_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExMetF_UpDown;
-            BoneUpDown2.ValueChanged -= ExMetF_UpDown;
-            BoneUpDown3.ValueChanged -= ExMetF_UpDown;
+            RemoveRoutedEventListener(ExMetF_UpDown);
         }
 
         public void ExMetF_Checked(object sender, RoutedEventArgs e)
@@ -18995,6 +18652,8 @@ namespace ConceptMatrix.Views
         }
         private void ExMetF_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExMetF_Slider);
+            RemoveRoutedEventListener(ExMetF_UpDown);
             CharacterDetails.ExMetF_Rotate = false;
         }
         #endregion
@@ -19009,9 +18668,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetG_Z.value = (float)quat.Z;
             CharacterDetails.ExMetG_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExMetG_Slider;
-            BoneSlider2.ValueChanged -= ExMetG_Slider;
-            BoneSlider3.ValueChanged -= ExMetG_Slider;
+            RemoveRoutedEventListener(ExMetG_Slider);
         }
 
         private void ExMetG_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -19024,9 +18681,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetG_Z.value = (float)quat.Z;
             CharacterDetails.ExMetG_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExMetG_UpDown;
-            BoneUpDown2.ValueChanged -= ExMetG_UpDown;
-            BoneUpDown3.ValueChanged -= ExMetG_UpDown;
+            RemoveRoutedEventListener(ExMetG_UpDown);
         }
 
         public void ExMetG_Checked(object sender, RoutedEventArgs e)
@@ -19039,6 +18694,8 @@ namespace ConceptMatrix.Views
         }
         private void ExMetG_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExMetG_Slider);
+            RemoveRoutedEventListener(ExMetG_UpDown);
             CharacterDetails.ExMetG_Rotate = false;
         }
         #endregion
@@ -19053,9 +18710,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetH_Z.value = (float)quat.Z;
             CharacterDetails.ExMetH_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExMetH_Slider;
-            BoneSlider2.ValueChanged -= ExMetH_Slider;
-            BoneSlider3.ValueChanged -= ExMetH_Slider;
+            RemoveRoutedEventListener(ExMetH_Slider);
         }
 
         private void ExMetH_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -19068,9 +18723,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetH_Z.value = (float)quat.Z;
             CharacterDetails.ExMetH_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExMetH_UpDown;
-            BoneUpDown2.ValueChanged -= ExMetH_UpDown;
-            BoneUpDown3.ValueChanged -= ExMetH_UpDown;
+            RemoveRoutedEventListener(ExMetH_UpDown);
         }
 
         public void ExMetH_Checked(object sender, RoutedEventArgs e)
@@ -19083,6 +18736,8 @@ namespace ConceptMatrix.Views
         }
         private void ExMetH_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExMetH_Slider);
+            RemoveRoutedEventListener(ExMetH_UpDown);
             CharacterDetails.ExMetH_Rotate = false;
         }
         #endregion
@@ -19097,9 +18752,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetI_Z.value = (float)quat.Z;
             CharacterDetails.ExMetI_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExMetI_Slider;
-            BoneSlider2.ValueChanged -= ExMetI_Slider;
-            BoneSlider3.ValueChanged -= ExMetI_Slider;
+            RemoveRoutedEventListener(ExMetI_Slider);
         }
 
         private void ExMetI_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -19112,9 +18765,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetI_Z.value = (float)quat.Z;
             CharacterDetails.ExMetI_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExMetI_UpDown;
-            BoneUpDown2.ValueChanged -= ExMetI_UpDown;
-            BoneUpDown3.ValueChanged -= ExMetI_UpDown;
+            RemoveRoutedEventListener(ExMetI_UpDown);
         }
 
         public void ExMetI_Checked(object sender, RoutedEventArgs e)
@@ -19127,6 +18778,8 @@ namespace ConceptMatrix.Views
         }
         private void ExMetI_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExMetI_Slider);
+            RemoveRoutedEventListener(ExMetI_UpDown);
             CharacterDetails.ExMetI_Rotate = false;
         }
         #endregion
@@ -19141,9 +18794,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetJ_Z.value = (float)quat.Z;
             CharacterDetails.ExMetJ_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExMetJ_Slider;
-            BoneSlider2.ValueChanged -= ExMetJ_Slider;
-            BoneSlider3.ValueChanged -= ExMetJ_Slider;
+            RemoveRoutedEventListener(ExMetJ_Slider);
         }
 
         private void ExMetJ_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -19156,9 +18807,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetJ_Z.value = (float)quat.Z;
             CharacterDetails.ExMetJ_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExMetJ_UpDown;
-            BoneUpDown2.ValueChanged -= ExMetJ_UpDown;
-            BoneUpDown3.ValueChanged -= ExMetJ_UpDown;
+            RemoveRoutedEventListener(ExMetJ_UpDown);
         }
 
         public void ExMetJ_Checked(object sender, RoutedEventArgs e)
@@ -19171,6 +18820,8 @@ namespace ConceptMatrix.Views
         }
         private void ExMetJ_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExMetJ_Slider);
+            RemoveRoutedEventListener(ExMetJ_UpDown);
             CharacterDetails.ExMetJ_Rotate = false;
         }
         #endregion
@@ -19185,9 +18836,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetK_Z.value = (float)quat.Z;
             CharacterDetails.ExMetK_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExMetK_Slider;
-            BoneSlider2.ValueChanged -= ExMetK_Slider;
-            BoneSlider3.ValueChanged -= ExMetK_Slider;
+            RemoveRoutedEventListener(ExMetK_Slider);
         }
 
         private void ExMetK_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -19200,9 +18849,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetK_Z.value = (float)quat.Z;
             CharacterDetails.ExMetK_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExMetK_UpDown;
-            BoneUpDown2.ValueChanged -= ExMetK_UpDown;
-            BoneUpDown3.ValueChanged -= ExMetK_UpDown;
+            RemoveRoutedEventListener(ExMetK_UpDown);
         }
 
         public void ExMetK_Checked(object sender, RoutedEventArgs e)
@@ -19215,6 +18862,8 @@ namespace ConceptMatrix.Views
         }
         private void ExMetK_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExMetK_Slider);
+            RemoveRoutedEventListener(ExMetK_UpDown);
             CharacterDetails.ExMetK_Rotate = false;
         }
         #endregion
@@ -19229,9 +18878,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetL_Z.value = (float)quat.Z;
             CharacterDetails.ExMetL_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExMetL_Slider;
-            BoneSlider2.ValueChanged -= ExMetL_Slider;
-            BoneSlider3.ValueChanged -= ExMetL_Slider;
+            RemoveRoutedEventListener(ExMetL_Slider);
         }
 
         private void ExMetL_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -19243,10 +18890,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetL_Y.value = (float)quat.Y;
             CharacterDetails.ExMetL_Z.value = (float)quat.Z;
             CharacterDetails.ExMetL_W.value = (float)quat.W;
-            // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExMetL_UpDown;
-            BoneUpDown2.ValueChanged -= ExMetL_UpDown;
-            BoneUpDown3.ValueChanged -= ExMetL_UpDown;
+            RemoveRoutedEventListener(ExMetL_UpDown);
         }
 
         public void ExMetL_Checked(object sender, RoutedEventArgs e)
@@ -19259,6 +18903,8 @@ namespace ConceptMatrix.Views
         }
         private void ExMetL_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExMetL_Slider);
+            RemoveRoutedEventListener(ExMetL_UpDown);
             CharacterDetails.ExMetL_Rotate = false;
         }
         #endregion
@@ -19273,9 +18919,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetM_Z.value = (float)quat.Z;
             CharacterDetails.ExMetM_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExMetM_Slider;
-            BoneSlider2.ValueChanged -= ExMetM_Slider;
-            BoneSlider3.ValueChanged -= ExMetM_Slider;
+            RemoveRoutedEventListener(ExMetM_Slider);
         }
 
         private void ExMetM_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -19288,9 +18932,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetM_Z.value = (float)quat.Z;
             CharacterDetails.ExMetM_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExMetM_UpDown;
-            BoneUpDown2.ValueChanged -= ExMetM_UpDown;
-            BoneUpDown3.ValueChanged -= ExMetM_UpDown;
+            RemoveRoutedEventListener(ExMetM_UpDown);
         }
 
         public void ExMetM_Checked(object sender, RoutedEventArgs e)
@@ -19303,6 +18945,8 @@ namespace ConceptMatrix.Views
         }
         private void ExMetM_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExMetM_Slider);
+            RemoveRoutedEventListener(ExMetM_UpDown);
             CharacterDetails.ExMetM_Rotate = false;
         }
         #endregion
@@ -19317,9 +18961,8 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetN_Z.value = (float)quat.Z;
             CharacterDetails.ExMetN_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExMetN_Slider;
-            BoneSlider2.ValueChanged -= ExMetN_Slider;
-            BoneSlider3.ValueChanged -= ExMetN_Slider;
+            RemoveRoutedEventListener(ExMetN_Slider);
+            RemoveRoutedEventListener(ExMetN_UpDown);
         }
 
         private void ExMetN_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -19332,9 +18975,8 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetN_Z.value = (float)quat.Z;
             CharacterDetails.ExMetN_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExMetN_UpDown;
-            BoneUpDown2.ValueChanged -= ExMetN_UpDown;
-            BoneUpDown3.ValueChanged -= ExMetN_UpDown;
+            RemoveRoutedEventListener(ExMetN_Slider);
+            RemoveRoutedEventListener(ExMetN_UpDown);
         }
 
         public void ExMetN_Checked(object sender, RoutedEventArgs e)
@@ -19347,6 +18989,8 @@ namespace ConceptMatrix.Views
         }
         private void ExMetN_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExMetN_Slider);
+            RemoveRoutedEventListener(ExMetN_UpDown);
             CharacterDetails.ExMetN_Rotate = false;
         }
         #endregion
@@ -19361,9 +19005,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetO_Z.value = (float)quat.Z;
             CharacterDetails.ExMetO_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExMetO_Slider;
-            BoneSlider2.ValueChanged -= ExMetO_Slider;
-            BoneSlider3.ValueChanged -= ExMetO_Slider;
+            RemoveRoutedEventListener(ExMetO_Slider);
         }
 
         private void ExMetO_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -19376,9 +19018,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetO_Z.value = (float)quat.Z;
             CharacterDetails.ExMetO_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExMetO_UpDown;
-            BoneUpDown2.ValueChanged -= ExMetO_UpDown;
-            BoneUpDown3.ValueChanged -= ExMetO_UpDown;
+            RemoveRoutedEventListener(ExMetO_UpDown);
         }
 
         public void ExMetO_Checked(object sender, RoutedEventArgs e)
@@ -19391,6 +19031,8 @@ namespace ConceptMatrix.Views
         }
         private void ExMetO_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExMetO_Slider);
+            RemoveRoutedEventListener(ExMetO_UpDown);
             CharacterDetails.ExMetO_Rotate = false;
         }
         #endregion
@@ -19405,9 +19047,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetP_Z.value = (float)quat.Z;
             CharacterDetails.ExMetP_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExMetP_Slider;
-            BoneSlider2.ValueChanged -= ExMetP_Slider;
-            BoneSlider3.ValueChanged -= ExMetP_Slider;
+            RemoveRoutedEventListener(ExMetP_Slider);
         }
 
         private void ExMetP_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -19420,9 +19060,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetP_Z.value = (float)quat.Z;
             CharacterDetails.ExMetP_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExMetP_UpDown;
-            BoneUpDown2.ValueChanged -= ExMetP_UpDown;
-            BoneUpDown3.ValueChanged -= ExMetP_UpDown;
+            RemoveRoutedEventListener(ExMetP_UpDown);
         }
 
         public void ExMetP_Checked(object sender, RoutedEventArgs e)
@@ -19435,6 +19073,8 @@ namespace ConceptMatrix.Views
         }
         private void ExMetP_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExMetP_Slider);
+            RemoveRoutedEventListener(ExMetP_UpDown);
             CharacterDetails.ExMetP_Rotate = false;
         }
         #endregion
@@ -19449,9 +19089,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetQ_Z.value = (float)quat.Z;
             CharacterDetails.ExMetQ_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExMetQ_Slider;
-            BoneSlider2.ValueChanged -= ExMetQ_Slider;
-            BoneSlider3.ValueChanged -= ExMetQ_Slider;
+            RemoveRoutedEventListener(ExMetQ_Slider);
         }
 
         private void ExMetQ_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -19464,9 +19102,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetQ_Z.value = (float)quat.Z;
             CharacterDetails.ExMetQ_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExMetQ_UpDown;
-            BoneUpDown2.ValueChanged -= ExMetQ_UpDown;
-            BoneUpDown3.ValueChanged -= ExMetQ_UpDown;
+            RemoveRoutedEventListener(ExMetQ_UpDown);
         }
 
         public void ExMetQ_Checked(object sender, RoutedEventArgs e)
@@ -19479,6 +19115,8 @@ namespace ConceptMatrix.Views
         }
         private void ExMetQ_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExMetQ_Slider);
+            RemoveRoutedEventListener(ExMetQ_UpDown);
             CharacterDetails.ExMetQ_Rotate = false;
         }
         #endregion
@@ -19493,9 +19131,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetR_Z.value = (float)quat.Z;
             CharacterDetails.ExMetR_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExMetR_Slider;
-            BoneSlider2.ValueChanged -= ExMetR_Slider;
-            BoneSlider3.ValueChanged -= ExMetR_Slider;
+            RemoveRoutedEventListener(ExMetR_Slider);
         }
 
         private void ExMetR_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -19508,9 +19144,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExMetR_Z.value = (float)quat.Z;
             CharacterDetails.ExMetR_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExMetR_UpDown;
-            BoneUpDown2.ValueChanged -= ExMetR_UpDown;
-            BoneUpDown3.ValueChanged -= ExMetR_UpDown;
+            RemoveRoutedEventListener(ExMetR_UpDown);
         }
 
         public void ExMetR_Checked(object sender, RoutedEventArgs e)
@@ -19523,6 +19157,8 @@ namespace ConceptMatrix.Views
         }
         private void ExMetR_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExMetR_Slider);
+            RemoveRoutedEventListener(ExMetR_UpDown);
             CharacterDetails.ExMetR_Rotate = false;
         }
         #endregion
@@ -19538,9 +19174,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExTopA_Z.value = (float)quat.Z;
             CharacterDetails.ExTopA_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExTopA_Slider;
-            BoneSlider2.ValueChanged -= ExTopA_Slider;
-            BoneSlider3.ValueChanged -= ExTopA_Slider;
+            RemoveRoutedEventListener(ExTopA_Slider);
         }
 
         private void ExTopA_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -19553,9 +19187,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExTopA_Z.value = (float)quat.Z;
             CharacterDetails.ExTopA_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExTopA_UpDown;
-            BoneUpDown2.ValueChanged -= ExTopA_UpDown;
-            BoneUpDown3.ValueChanged -= ExTopA_UpDown;
+            RemoveRoutedEventListener(ExTopA_UpDown);
         }
 
         public void ExTopA_Checked(object sender, RoutedEventArgs e)
@@ -19568,6 +19200,8 @@ namespace ConceptMatrix.Views
         }
         private void ExTopA_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExTopA_Slider);
+            RemoveRoutedEventListener(ExTopA_UpDown);
             CharacterDetails.ExTopA_Rotate = false;
         }
         #endregion
@@ -19582,9 +19216,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExTopB_Z.value = (float)quat.Z;
             CharacterDetails.ExTopB_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExTopB_Slider;
-            BoneSlider2.ValueChanged -= ExTopB_Slider;
-            BoneSlider3.ValueChanged -= ExTopB_Slider;
+            RemoveRoutedEventListener(ExTopB_Slider);
         }
 
         private void ExTopB_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -19597,9 +19229,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExTopB_Z.value = (float)quat.Z;
             CharacterDetails.ExTopB_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExTopB_UpDown;
-            BoneUpDown2.ValueChanged -= ExTopB_UpDown;
-            BoneUpDown3.ValueChanged -= ExTopB_UpDown;
+            RemoveRoutedEventListener(ExTopB_UpDown);
         }
 
         public void ExTopB_Checked(object sender, RoutedEventArgs e)
@@ -19612,6 +19242,8 @@ namespace ConceptMatrix.Views
         }
         private void ExTopB_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExTopB_Slider);
+            RemoveRoutedEventListener(ExTopB_UpDown);
             CharacterDetails.ExTopB_Rotate = false;
         }
         #endregion
@@ -19626,9 +19258,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExTopC_Z.value = (float)quat.Z;
             CharacterDetails.ExTopC_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExTopC_Slider;
-            BoneSlider2.ValueChanged -= ExTopC_Slider;
-            BoneSlider3.ValueChanged -= ExTopC_Slider;
+            RemoveRoutedEventListener(ExTopC_Slider);
         }
 
         private void ExTopC_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -19641,9 +19271,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExTopC_Z.value = (float)quat.Z;
             CharacterDetails.ExTopC_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExTopC_UpDown;
-            BoneUpDown2.ValueChanged -= ExTopC_UpDown;
-            BoneUpDown3.ValueChanged -= ExTopC_UpDown;
+            RemoveRoutedEventListener(ExTopC_UpDown);
         }
 
         public void ExTopC_Checked(object sender, RoutedEventArgs e)
@@ -19656,6 +19284,8 @@ namespace ConceptMatrix.Views
         }
         private void ExTopC_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExTopC_Slider);
+            RemoveRoutedEventListener(ExTopC_UpDown);
             CharacterDetails.ExTopC_Rotate = false;
         }
         #endregion
@@ -19670,9 +19300,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExTopD_Z.value = (float)quat.Z;
             CharacterDetails.ExTopD_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExTopD_Slider;
-            BoneSlider2.ValueChanged -= ExTopD_Slider;
-            BoneSlider3.ValueChanged -= ExTopD_Slider;
+            RemoveRoutedEventListener(ExTopD_Slider);
         }
 
         private void ExTopD_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -19685,9 +19313,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExTopD_Z.value = (float)quat.Z;
             CharacterDetails.ExTopD_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExTopD_UpDown;
-            BoneUpDown2.ValueChanged -= ExTopD_UpDown;
-            BoneUpDown3.ValueChanged -= ExTopD_UpDown;
+            RemoveRoutedEventListener(ExTopD_UpDown);
         }
 
         public void ExTopD_Checked(object sender, RoutedEventArgs e)
@@ -19700,6 +19326,8 @@ namespace ConceptMatrix.Views
         }
         private void ExTopD_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExTopD_Slider);
+            RemoveRoutedEventListener(ExTopD_UpDown);
             CharacterDetails.ExTopD_Rotate = false;
         }
         #endregion
@@ -19714,9 +19342,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExTopE_Z.value = (float)quat.Z;
             CharacterDetails.ExTopE_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExTopE_Slider;
-            BoneSlider2.ValueChanged -= ExTopE_Slider;
-            BoneSlider3.ValueChanged -= ExTopE_Slider;
+            RemoveRoutedEventListener(ExTopE_Slider);
         }
 
         private void ExTopE_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -19729,9 +19355,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExTopE_Z.value = (float)quat.Z;
             CharacterDetails.ExTopE_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExTopE_UpDown;
-            BoneUpDown2.ValueChanged -= ExTopE_UpDown;
-            BoneUpDown3.ValueChanged -= ExTopE_UpDown;
+            RemoveRoutedEventListener(ExTopE_UpDown);
         }
 
         public void ExTopE_Checked(object sender, RoutedEventArgs e)
@@ -19744,6 +19368,8 @@ namespace ConceptMatrix.Views
         }
         private void ExTopE_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExTopE_Slider);
+            RemoveRoutedEventListener(ExTopE_UpDown);
             CharacterDetails.ExTopE_Rotate = false;
         }
         #endregion
@@ -19758,9 +19384,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExTopF_Z.value = (float)quat.Z;
             CharacterDetails.ExTopF_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExTopF_Slider;
-            BoneSlider2.ValueChanged -= ExTopF_Slider;
-            BoneSlider3.ValueChanged -= ExTopF_Slider;
+            RemoveRoutedEventListener(ExTopF_Slider);
         }
 
         private void ExTopF_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -19773,9 +19397,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExTopF_Z.value = (float)quat.Z;
             CharacterDetails.ExTopF_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExTopF_UpDown;
-            BoneUpDown2.ValueChanged -= ExTopF_UpDown;
-            BoneUpDown3.ValueChanged -= ExTopF_UpDown;
+            RemoveRoutedEventListener(ExTopF_UpDown);
         }
 
         public void ExTopF_Checked(object sender, RoutedEventArgs e)
@@ -19788,6 +19410,8 @@ namespace ConceptMatrix.Views
         }
         private void ExTopF_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExTopF_Slider);
+            RemoveRoutedEventListener(ExTopF_UpDown);
             CharacterDetails.ExTopF_Rotate = false;
         }
         #endregion
@@ -19802,9 +19426,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExTopG_Z.value = (float)quat.Z;
             CharacterDetails.ExTopG_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExTopG_Slider;
-            BoneSlider2.ValueChanged -= ExTopG_Slider;
-            BoneSlider3.ValueChanged -= ExTopG_Slider;
+            RemoveRoutedEventListener(ExTopG_Slider);
         }
 
         private void ExTopG_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -19817,9 +19439,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExTopG_Z.value = (float)quat.Z;
             CharacterDetails.ExTopG_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExTopG_UpDown;
-            BoneUpDown2.ValueChanged -= ExTopG_UpDown;
-            BoneUpDown3.ValueChanged -= ExTopG_UpDown;
+            RemoveRoutedEventListener(ExTopG_UpDown);
         }
 
         public void ExTopG_Checked(object sender, RoutedEventArgs e)
@@ -19832,6 +19452,8 @@ namespace ConceptMatrix.Views
         }
         private void ExTopG_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExTopG_Slider);
+            RemoveRoutedEventListener(ExTopG_UpDown);
             CharacterDetails.ExTopG_Rotate = false;
         }
         #endregion
@@ -19846,9 +19468,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExTopH_Z.value = (float)quat.Z;
             CharacterDetails.ExTopH_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExTopH_Slider;
-            BoneSlider2.ValueChanged -= ExTopH_Slider;
-            BoneSlider3.ValueChanged -= ExTopH_Slider;
+            RemoveRoutedEventListener(ExTopH_Slider);
         }
 
         private void ExTopH_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -19861,9 +19481,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExTopH_Z.value = (float)quat.Z;
             CharacterDetails.ExTopH_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExTopH_UpDown;
-            BoneUpDown2.ValueChanged -= ExTopH_UpDown;
-            BoneUpDown3.ValueChanged -= ExTopH_UpDown;
+            RemoveRoutedEventListener(ExTopH_UpDown);
         }
 
         public void ExTopH_Checked(object sender, RoutedEventArgs e)
@@ -19876,6 +19494,8 @@ namespace ConceptMatrix.Views
         }
         private void ExTopH_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExTopH_Slider);
+            RemoveRoutedEventListener(ExTopH_UpDown);
             CharacterDetails.ExTopH_Rotate = false;
         }
         #endregion
@@ -19890,9 +19510,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExTopI_Z.value = (float)quat.Z;
             CharacterDetails.ExTopI_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneSlider.ValueChanged -= ExTopI_Slider;
-            BoneSlider2.ValueChanged -= ExTopI_Slider;
-            BoneSlider3.ValueChanged -= ExTopI_Slider;
+            RemoveRoutedEventListener(ExTopI_Slider);
         }
 
         private void ExTopI_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
@@ -19905,9 +19523,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.ExTopI_Z.value = (float)quat.Z;
             CharacterDetails.ExTopI_W.value = (float)quat.W;
             // Remove listeners for value changed.	
-            BoneUpDown.ValueChanged -= ExTopI_UpDown;
-            BoneUpDown2.ValueChanged -= ExTopI_UpDown;
-            BoneUpDown3.ValueChanged -= ExTopI_UpDown;
+            RemoveRoutedEventListener(ExTopI_UpDown);
         }
 
         public void ExTopI_Checked(object sender, RoutedEventArgs e)
@@ -19920,6 +19536,8 @@ namespace ConceptMatrix.Views
         }
         private void ExTopI_Unchecked(object sender, RoutedEventArgs e)
         {
+            RemoveRoutedEventListener(ExTopI_Slider);
+            RemoveRoutedEventListener(ExTopI_UpDown);
             CharacterDetails.ExTopI_Rotate = false;
         }
         #endregion
@@ -23053,7 +22671,7 @@ namespace ConceptMatrix.Views
             ExTopH.IsChecked = (newActive == ExTopH) ? true : false;
             ExTopI.IsChecked = (newActive == ExTopI) ? true : false;
         }
-        private void UncheckAll()
+        public void UncheckAll()
         {
             Root.IsChecked = false;
             Abdomen.IsChecked = false;
