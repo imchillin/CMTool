@@ -563,6 +563,8 @@ namespace ConceptMatrix.Views
             bone_cerv = bone_thora.Child(Settings.Instance.Character.Body.Bones.SpineC_X);
             bone_thora.Child(Settings.Instance.Character.Body.Bones.BreastLeft_X);
             bone_thora.Child(Settings.Instance.Character.Body.Bones.BreastRight_X);
+            bone_thora.Child(Settings.Instance.Character.Body.Bones.ScabbardLeft_X);
+            bone_thora.Child(Settings.Instance.Character.Body.Bones.ScabbardRight_X);
             bone_neck = bone_cerv.Child(Settings.Instance.Character.Body.Bones.Neck_X);
             #endregion
             #region clothes tree
@@ -589,29 +591,14 @@ namespace ConceptMatrix.Views
             #endregion
             #region facebone tree
             bone_face = bone_neck.Child(Settings.Instance.Character.Body.Bones.Head_X);
-            bone_face.Child(Settings.Instance.Character.Body.Bones.Bridge_X);
             bone_face.Child(Settings.Instance.Character.Body.Bones.Nose_X);
             bone_face.Child(Settings.Instance.Character.Body.Bones.Jaw_X);
-            bone_face.Child(Settings.Instance.Character.Body.Bones.EyebrowLeft_X);
-            bone_face.Child(Settings.Instance.Character.Body.Bones.EyebrowRight_X);
-            bone_face.Child(Settings.Instance.Character.Body.Bones.BrowLeft_X);
-            bone_face.Child(Settings.Instance.Character.Body.Bones.BrowRight_X);
-            bone_face.Child(Settings.Instance.Character.Body.Bones.EyelidUpperLeft_X);
-            bone_face.Child(Settings.Instance.Character.Body.Bones.EyelidUpperRight_X);
             bone_face.Child(Settings.Instance.Character.Body.Bones.EyelidLowerLeft_X);
             bone_face.Child(Settings.Instance.Character.Body.Bones.EyelidLowerRight_X);
             bone_face.Child(Settings.Instance.Character.Body.Bones.EyeLeft_X);
             bone_face.Child(Settings.Instance.Character.Body.Bones.EyeRight_X);
             bone_face.Child(Settings.Instance.Character.Body.Bones.EarLeft_X);
             bone_face.Child(Settings.Instance.Character.Body.Bones.EarRight_X);
-            bone_face.Child(Settings.Instance.Character.Body.Bones.CheekLeft_X);
-            bone_face.Child(Settings.Instance.Character.Body.Bones.CheekRight_X);
-            bone_face.Child(Settings.Instance.Character.Body.Bones.LipsLeft_X);
-            bone_face.Child(Settings.Instance.Character.Body.Bones.LipsRight_X);
-            bone_face.Child(Settings.Instance.Character.Body.Bones.LipUpperA_X);
-            bone_face.Child(Settings.Instance.Character.Body.Bones.LipUpperB_X);
-            bone_face.Child(Settings.Instance.Character.Body.Bones.LipLowerA_X);
-            bone_face.Child(Settings.Instance.Character.Body.Bones.LipLowerB_X);
             bone_face.Child(Settings.Instance.Character.Body.Bones.EarringALeft_X);
             bone_face.Child(Settings.Instance.Character.Body.Bones.EarringBLeft_X);
             bone_face.Child(Settings.Instance.Character.Body.Bones.EarringARight_X);
@@ -625,10 +612,14 @@ namespace ConceptMatrix.Views
             bone_clav_l = bone_cerv.Child(Settings.Instance.Character.Body.Bones.ClavicleLeft_X);
             bone_arm_l = bone_clav_l.Child(Settings.Instance.Character.Body.Bones.ArmLeft_X);
             bone_arm_l.Child(Settings.Instance.Character.Body.Bones.ShoulderLeft_X);
+            bone_arm_l.Child(Settings.Instance.Character.Body.Bones.PauldronLeft_X);
             bone_forearm_l = bone_arm_l.Child(Settings.Instance.Character.Body.Bones.ForearmLeft_X);
             bone_forearm_l.Child(Settings.Instance.Character.Body.Bones.ElbowLeft_X);
             bone_forearm_l.Child(Settings.Instance.Character.Body.Bones.WristLeft_X);
+            bone_forearm_l.Child(Settings.Instance.Character.Body.Bones.ShieldLeft_X);
+            bone_forearm_l.Child(Settings.Instance.Character.Body.Bones.CouterLeft_X);
             bone_hand_l = bone_forearm_l.Child(Settings.Instance.Character.Body.Bones.HandLeft_X);
+            bone_hand_l.Child(Settings.Instance.Character.Body.Bones.WeaponLeft_X);
             bone_thumb_l = bone_hand_l.Child(Settings.Instance.Character.Body.Bones.ThumbALeft_X);
             bone_thumb_l.Child(Settings.Instance.Character.Body.Bones.ThumbBLeft_X);
             bone_index_l = bone_hand_l.Child(Settings.Instance.Character.Body.Bones.IndexALeft_X);
@@ -643,10 +634,14 @@ namespace ConceptMatrix.Views
             bone_clav_r = bone_cerv.Child(Settings.Instance.Character.Body.Bones.ClavicleRight_X);
             bone_arm_r = bone_clav_r.Child(Settings.Instance.Character.Body.Bones.ArmRight_X);
             bone_arm_r.Child(Settings.Instance.Character.Body.Bones.ShoulderRight_X);
+            bone_arm_r.Child(Settings.Instance.Character.Body.Bones.PauldronRight_X);
             bone_forearm_r = bone_arm_r.Child(Settings.Instance.Character.Body.Bones.ForearmRight_X);
             bone_forearm_r.Child(Settings.Instance.Character.Body.Bones.ElbowRight_X);
             bone_forearm_r.Child(Settings.Instance.Character.Body.Bones.WristRight_X);
+            bone_forearm_r.Child(Settings.Instance.Character.Body.Bones.ShieldRight_X);
+            bone_forearm_r.Child(Settings.Instance.Character.Body.Bones.CouterRight_X);
             bone_hand_r = bone_forearm_r.Child(Settings.Instance.Character.Body.Bones.HandRight_X);
+            bone_hand_r.Child(Settings.Instance.Character.Body.Bones.WeaponRight_X);
             bone_thumb_r = bone_hand_r.Child(Settings.Instance.Character.Body.Bones.ThumbARight_X);
             bone_thumb_r.Child(Settings.Instance.Character.Body.Bones.ThumbBRight_X);
             bone_index_r = bone_hand_r.Child(Settings.Instance.Character.Body.Bones.IndexARight_X);
@@ -660,14 +655,20 @@ namespace ConceptMatrix.Views
             #endregion
             #region lower half bones tree
             bone_waist = root_tree.Child(Settings.Instance.Character.Body.Bones.Waist_X);
+            bone_waist.Child(Settings.Instance.Character.Body.Bones.SheatheLeft_X);
+            bone_waist.Child(Settings.Instance.Character.Body.Bones.SheatheRight_X);
+            bone_waist.Child(Settings.Instance.Character.Body.Bones.HolsterLeft_X);
+            bone_waist.Child(Settings.Instance.Character.Body.Bones.HolsterRight_X);
             bone_leg_l = bone_waist.Child(Settings.Instance.Character.Body.Bones.LegLeft_X);
             bone_knee_l = bone_leg_l.Child(Settings.Instance.Character.Body.Bones.KneeLeft_X);
+            bone_knee_l.Child(Settings.Instance.Character.Body.Bones.PoleynLeft_X);
             bone_calf_l = bone_knee_l.Child(Settings.Instance.Character.Body.Bones.CalfLeft_X);
             bone_foot_l = bone_calf_l.Child(Settings.Instance.Character.Body.Bones.FootLeft_X);
             bone_foot_l.Child(Settings.Instance.Character.Body.Bones.ToesLeft_X);
             
             bone_leg_r = bone_waist.Child(Settings.Instance.Character.Body.Bones.LegRight_X);
             bone_knee_r = bone_leg_r.Child(Settings.Instance.Character.Body.Bones.KneeRight_X);
+            bone_knee_r.Child(Settings.Instance.Character.Body.Bones.PoleynRight_X);
             bone_calf_r = bone_knee_r.Child(Settings.Instance.Character.Body.Bones.CalfRight_X);
             bone_foot_r = bone_calf_r.Child(Settings.Instance.Character.Body.Bones.FootRight_X);
             bone_foot_r.Child(Settings.Instance.Character.Body.Bones.ToesRight_X);
@@ -10445,13 +10446,337 @@ namespace ConceptMatrix.Views
                 ChildBone_Propagator(boneNode, q1_inv, q1_new);
             }
         }
-        private void ChildBone_Propagator(BoneNode boneParent, Quaternion q1_inv, Quaternion q1_new)
+        private void Rotate_UnitBone(string boneOffset, Quaternion q1_inv, Quaternion q1_new)
         {
-            byte[] bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, boneParent.Get()), 16);
+            byte[] bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, boneOffset), 16);
             if (bytearray == null) return;
             Quaternion q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, boneParent.Get()), GetBytes(QuatMult(QuatMult(q2, q1_inv), q1_new)));
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, boneOffset), GetBytes(QuatMult(QuatMult(q2, q1_inv), q1_new)));
+
+        }
+        private void ChildBone_Propagator(BoneNode boneParent, Quaternion q1_inv, Quaternion q1_new)
+        {
+            Rotate_UnitBone(boneParent.Get(), q1_inv, q1_new);
             Rotate_ChildBone(boneParent, q1_inv, q1_new);
+        }
+
+        private void FaceBone_Rotator(Quaternion q1_inv, Quaternion q1_new)
+        {
+            if (CharacterDetails.Race.value < 7)
+            {
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.CheekLeft_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.CheekRight_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.LipsLeft_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.LipsRight_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.EyebrowLeft_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.EyebrowRight_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.Bridge_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.BrowLeft_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.BrowRight_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.LipUpperA_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.EyelidUpperLeft_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.EyelidUpperRight_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.LipLowerA_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.LipUpperB_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.LipLowerB_X, q1_inv, q1_new);
+            }
+            else if (CharacterDetails.Race.value == 7)
+            {
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothEyebrowLeft_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothEyebrowRight_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothBridge_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothBrowLeft_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothBrowRight_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothJawUpper_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothLipUpper_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothEyelidUpperLeft_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothEyelidUpperRight_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothLipsLeft_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothLipsRight_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothLipUpperLeft_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothLipUpperRight_X, q1_inv, q1_new);
+            }
+            else if (CharacterDetails.Race.value == 8)
+            {
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.CheekLeft_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.CheekRight_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.LipsLeft_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.LipsRight_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.EyebrowLeft_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.EyebrowRight_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.Bridge_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.BrowLeft_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.BrowRight_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.LipUpperA_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.EyelidUpperLeft_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.EyelidUpperRight_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.VieraLipLowerA_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.VieraLipUpperB_X, q1_inv, q1_new);
+                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.VieraLipLowerB_X, q1_inv, q1_new);
+            }
+
+            byte[] bytearray = null;
+            byte[] QuaternionBytes = null;
+            Quaternion q2, q21;
+
+            //Check for Teritrary Bones : Hair or anything else here.
+            #region Tetriarybones
+            if (!ReadTetriaryFromRunTime)
+            {
+                ReadTetriaryFromRunTime = true;
+                if (CharacterDetails.Race.value == 7)
+                {
+                    HrothWhiskersLeft.IsEnabled = true;
+                    HrothWhiskersRight.IsEnabled = true;
+                }
+                if (CharacterDetails.Race.value == 8)
+                {
+                    VieraEarALeft.IsEnabled = true;
+                    VieraEarARight.IsEnabled = true;
+                    VieraEarBLeft.IsEnabled = true;
+                    VieraEarBRight.IsEnabled = true;
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 2)
+                {
+                    ExHairA.IsEnabled = true;
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 3)
+                {
+                    ExHairB.IsEnabled = true;
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 4)
+                {
+                    ExHairC.IsEnabled = true;
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 5)
+                {
+                    ExHairD.IsEnabled = true;
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 6)
+                {
+                    ExHairE.IsEnabled = true;
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 7)
+                {
+                    ExHairF.IsEnabled = true;
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 8)
+                {
+                    ExHairG.IsEnabled = true;
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 9)
+                {
+                    ExHairH.IsEnabled = true;
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 10)
+                {
+                    ExHairI.IsEnabled = true;
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 11)
+                {
+                    ExHairJ.IsEnabled = true;
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 12)
+                {
+                    ExHairK.IsEnabled = true;
+                }
+                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 13)
+                {
+                    ExHairL.IsEnabled = true;
+                }
+            }
+            #endregion
+
+            #region Unique 1
+            if (ExHairA.IsEnabled == true)
+            {
+                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairA_X), 16);
+                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
+                q21 = QuatMult(q2, q1_inv);
+                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairA_X), QuaternionBytes);
+            }
+            #endregion
+            #region Unique 2
+            if (ExHairB.IsEnabled == true)
+            {
+                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairB_X), 16);
+                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
+                q21 = QuatMult(q2, q1_inv);
+                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairB_X), QuaternionBytes);
+            }
+            #endregion
+            #region Unique 3
+            if (ExHairC.IsEnabled == true)
+            {
+                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairC_X), 16);
+                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
+                q21 = QuatMult(q2, q1_inv);
+                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairC_X), QuaternionBytes);
+            }
+            #endregion
+            #region Unique 4
+            if (ExHairD.IsEnabled == true)
+            {
+                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairD_X), 16);
+                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
+                q21 = QuatMult(q2, q1_inv);
+                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairD_X), QuaternionBytes);
+            }
+            #endregion
+            #region Unique 5
+            if (ExHairE.IsEnabled == true)
+            {
+                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairE_X), 16);
+                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
+                q21 = QuatMult(q2, q1_inv);
+                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairE_X), QuaternionBytes);
+            }
+            #endregion
+            #region Unique 6
+            if (ExHairF.IsEnabled == true)
+            {
+                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairF_X), 16);
+                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
+                q21 = QuatMult(q2, q1_inv);
+                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairF_X), QuaternionBytes);
+            }
+            #endregion
+            #region Unique 7
+            if (ExHairG.IsEnabled == true)
+            {
+                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairG_X), 16);
+                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
+                q21 = QuatMult(q2, q1_inv);
+                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairG_X), QuaternionBytes);
+            }
+            #endregion
+            #region Unique 8
+            if (ExHairH.IsEnabled == true)
+            {
+                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairH_X), 16);
+                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
+                q21 = QuatMult(q2, q1_inv);
+                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairH_X), QuaternionBytes);
+            }
+            #endregion
+            #region Unique 9
+            if (ExHairI.IsEnabled == true)
+            {
+                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairI_X), 16);
+                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
+
+                q21 = QuatMult(q2, q1_inv);
+                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairI_X), QuaternionBytes);
+            }
+            #endregion
+            #region Unique 10
+            if (ExHairJ.IsEnabled == true)
+            {
+                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairJ_X), 16);
+                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
+                q21 = QuatMult(q2, q1_inv);
+                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairJ_X), QuaternionBytes);
+            }
+            #endregion
+            #region Unique 11
+            if (ExHairK.IsEnabled == true)
+            {
+                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairK_X), 16);
+                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
+                q21 = QuatMult(q2, q1_inv);
+                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairK_X), QuaternionBytes);
+            }
+            #endregion
+            #region Unique 12
+            if (ExHairL.IsEnabled == true)
+            {
+                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairL_X), 16);
+                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
+                q21 = QuatMult(q2, q1_inv);
+                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairL_X), QuaternionBytes);
+            }
+            #endregion
+            #region Hrothgar Whiskers
+            if (CharacterDetails.Race.value == 7)
+            {
+                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersLeft_X), 16);
+                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
+                q21 = QuatMult(q2, q1_inv);
+                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersLeft_X), QuaternionBytes);
+
+                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersRight_X), 16);
+                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
+                q21 = QuatMult(q2, q1_inv);
+                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersRight_X), QuaternionBytes);
+            }
+            #endregion
+            #region Viera Ears
+            if (CharacterDetails.Race.value == 8)
+            {
+                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01ALeft_X), 16);
+                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
+                q21 = QuatMult(q2, q1_inv);
+                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01ALeft_X), QuaternionBytes);
+
+                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01ARight_X), 16);
+                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
+                q21 = QuatMult(q2, q1_inv);
+                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01ARight_X), QuaternionBytes);
+
+                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02ALeft_X), 16);
+                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
+                q21 = QuatMult(q2, q1_inv);
+                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02ALeft_X), QuaternionBytes);
+
+                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02ARight_X), 16);
+                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
+                q21 = QuatMult(q2, q1_inv);
+                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02ARight_X), QuaternionBytes);
+
+                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01BLeft_X), 16);
+                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
+                q21 = QuatMult(q2, q1_inv);
+                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01BLeft_X), QuaternionBytes);
+
+                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01BRight_X), 16);
+                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
+
+                q21 = QuatMult(q2, q1_inv);
+                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01BRight_X), QuaternionBytes);
+
+                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02BLeft_X), 16);
+                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
+                q21 = QuatMult(q2, q1_inv);
+                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02BLeft_X), QuaternionBytes);
+
+                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02BRight_X), 16);
+                q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
+                q21 = QuatMult(q2, q1_inv);
+                QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02BRight_X), QuaternionBytes);
+            }
+            #endregion
         }
 
         #region Root
@@ -10668,6 +10993,7 @@ namespace ConceptMatrix.Views
                 Quaternion q1_inv = QInv(oldrot.ToQuaternion());
                 Quaternion q1_new = newrot.ToQuaternion();
                 Rotate_ChildBone(bone_lumbar, q1_inv, q1_new);
+                FaceBone_Rotator(q1_inv, q1_new);
             }
             #endregion
             // Remove listeners for value changed.
@@ -10693,6 +11019,7 @@ namespace ConceptMatrix.Views
                 Quaternion q1_inv = QInv(oldrot.ToQuaternion());
                 Quaternion q1_new = newrot.ToQuaternion();
                 Rotate_ChildBone(bone_lumbar, q1_inv, q1_new);
+                FaceBone_Rotator(q1_inv, q1_new);
             }
             #endregion
             // Remove listeners for value changed.
@@ -11036,6 +11363,7 @@ namespace ConceptMatrix.Views
                 Quaternion q1_inv = QInv(oldrot.ToQuaternion());
                 Quaternion q1_new = newrot.ToQuaternion();
                 Rotate_ChildBone(bone_thora, q1_inv, q1_new);
+                FaceBone_Rotator(q1_inv, q1_new);
             }
             #endregion
             // Remove listeners for value changed.
@@ -11061,6 +11389,7 @@ namespace ConceptMatrix.Views
                 Quaternion q1_inv = QInv(oldrot.ToQuaternion());
                 Quaternion q1_new = newrot.ToQuaternion();
                 Rotate_ChildBone(bone_thora, q1_inv, q1_new);
+                FaceBone_Rotator(q1_inv, q1_new);
             }
             #endregion
             // Remove listeners for value changed.
@@ -11560,6 +11889,7 @@ namespace ConceptMatrix.Views
                 Quaternion q1_inv = QInv(oldrot.ToQuaternion());
                 Quaternion q1_new = newrot.ToQuaternion();
                 Rotate_ChildBone(bone_cerv, q1_inv, q1_new);
+                FaceBone_Rotator(q1_inv, q1_new);
             }
             #endregion
             // Remove listeners for value changed.
@@ -11585,6 +11915,7 @@ namespace ConceptMatrix.Views
                 Quaternion q1_inv = QInv(oldrot.ToQuaternion());
                 Quaternion q1_new = newrot.ToQuaternion();
                 Rotate_ChildBone(bone_cerv, q1_inv, q1_new);
+                FaceBone_Rotator(q1_inv, q1_new);
             }
             #endregion
             // Remove listeners for value changed.
@@ -12104,6 +12435,7 @@ namespace ConceptMatrix.Views
                 Quaternion q1_inv = QInv(oldrot.ToQuaternion());
                 Quaternion q1_new = newrot.ToQuaternion();
                 Rotate_ChildBone(bone_neck, q1_inv, q1_new);
+                FaceBone_Rotator(q1_inv, q1_new);
             }
             #endregion
             // Remove listeners for value changed.
@@ -12129,6 +12461,7 @@ namespace ConceptMatrix.Views
                 Quaternion q1_inv = QInv(oldrot.ToQuaternion());
                 Quaternion q1_new = newrot.ToQuaternion();
                 Rotate_ChildBone(bone_neck, q1_inv, q1_new);
+                FaceBone_Rotator(q1_inv, q1_new);
             }
             #endregion
             // Remove listeners for value changed.
@@ -12777,268 +13110,7 @@ namespace ConceptMatrix.Views
                 Quaternion q1_new = newrot.ToQuaternion();
 
                 Rotate_ChildBone(bone_face, q1_inv, q1_new);
-                byte[] bytearray = null;
-                byte[] QuaternionBytes = null;
-                Quaternion q2, q21;
-
-                //Check for Teritrary Bones : Hair or anything else here.
-                #region Tetriarybones
-                if (!ReadTetriaryFromRunTime)
-                {
-                    ReadTetriaryFromRunTime = true;
-                    if (CharacterDetails.Race.value == 7)
-                    {
-                        HrothWhiskersLeft.IsEnabled = true;
-                        HrothWhiskersRight.IsEnabled = true;
-                    }
-                    if (CharacterDetails.Race.value == 8)
-                    {
-                        VieraEarALeft.IsEnabled = true;
-                        VieraEarARight.IsEnabled = true;
-                        VieraEarBLeft.IsEnabled = true;
-                        VieraEarBRight.IsEnabled = true;
-                    }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 2)
-                    {
-                        ExHairA.IsEnabled = true;
-                    }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 3)
-                    {
-                        ExHairB.IsEnabled = true;
-                    }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 4)
-                    {
-                        ExHairC.IsEnabled = true;
-                    }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 5)
-                    {
-                        ExHairD.IsEnabled = true;
-                    }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 6)
-                    {
-                        ExHairE.IsEnabled = true;
-                    }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 7)
-                    {
-                        ExHairF.IsEnabled = true;
-                    }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 8)
-                    {
-                        ExHairG.IsEnabled = true;
-                    }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 9)
-                    {
-                        ExHairH.IsEnabled = true;
-                    }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 10)
-                    {
-                        ExHairI.IsEnabled = true;
-                    }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 11)
-                    {
-                        ExHairJ.IsEnabled = true;
-                    }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 12)
-                    {
-                        ExHairK.IsEnabled = true;
-                    }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 13)
-                    {
-                        ExHairL.IsEnabled = true;
-                    }
-                }
-                #endregion
-
-                #region Unique 1
-                if (ExHairA.IsEnabled == true)
-                {
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairA_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairA_X), QuaternionBytes);
-                }
-                #endregion
-                #region Unique 2
-                if (ExHairB.IsEnabled == true)
-                {
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairB_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairB_X), QuaternionBytes);
-                }
-                #endregion
-                #region Unique 3
-                if (ExHairC.IsEnabled == true)
-                {
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairC_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairC_X), QuaternionBytes);
-                }
-                #endregion
-                #region Unique 4
-                if (ExHairD.IsEnabled == true)
-                {
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairD_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairD_X), QuaternionBytes);
-                }
-                #endregion
-                #region Unique 5
-                if (ExHairE.IsEnabled == true)
-                {
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairE_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairE_X), QuaternionBytes);
-                }
-                #endregion
-                #region Unique 6
-                if (ExHairF.IsEnabled == true)
-                {
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairF_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairF_X), QuaternionBytes);
-                }
-                #endregion
-                #region Unique 7
-                if (ExHairG.IsEnabled == true)
-                {
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairG_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairG_X), QuaternionBytes);
-                }
-                #endregion
-                #region Unique 8
-                if (ExHairH.IsEnabled == true)
-                {
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairH_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairH_X), QuaternionBytes);
-                }
-                #endregion
-                #region Unique 9
-                if (ExHairI.IsEnabled == true)
-                {
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairI_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairI_X), QuaternionBytes);
-                }
-                #endregion
-                #region Unique 10
-                if (ExHairJ.IsEnabled == true)
-                {
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairJ_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairJ_X), QuaternionBytes);
-                }
-                #endregion
-                #region Unique 11
-                if (ExHairK.IsEnabled == true)
-                {
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairK_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairK_X), QuaternionBytes);
-                }
-                #endregion
-                #region Unique 12
-                if (ExHairL.IsEnabled == true)
-                {
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairL_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairL_X), QuaternionBytes);
-                }
-                #endregion
-                #region Hrothgar Whiskers
-                if (CharacterDetails.Race.value == 7)
-                {
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersLeft_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersLeft_X), QuaternionBytes);
-
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersRight_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersRight_X), QuaternionBytes);
-                }
-                #endregion
-                #region Viera Ears
-                if (CharacterDetails.Race.value == 8)
-                {
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01ALeft_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01ALeft_X), QuaternionBytes);
-
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01ARight_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01ARight_X), QuaternionBytes);
-
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02ALeft_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02ALeft_X), QuaternionBytes);
-
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02ARight_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02ARight_X), QuaternionBytes);
-
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01BLeft_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01BLeft_X), QuaternionBytes);
-
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01BRight_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01BRight_X), QuaternionBytes);
-
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02BLeft_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02BLeft_X), QuaternionBytes);
-
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02BRight_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02BRight_X), QuaternionBytes);
-                }
-                #endregion
+                FaceBone_Rotator(q1_inv, q1_new);
             }
             #endregion
 
@@ -13066,268 +13138,7 @@ namespace ConceptMatrix.Views
                 Quaternion q1_new = newrot.ToQuaternion();
 
                 Rotate_ChildBone(bone_face, q1_inv, q1_new);
-                byte[] bytearray = null;
-                byte[] QuaternionBytes = null;
-                Quaternion q2, q21;
-
-                //Check for Teritrary Bones : Hair or anything else here.
-                #region Tetriarybones
-                if (!ReadTetriaryFromRunTime)
-                {
-                    ReadTetriaryFromRunTime = true;
-                    if (CharacterDetails.Race.value == 7)
-                    {
-                        HrothWhiskersLeft.IsEnabled = true;
-                        HrothWhiskersRight.IsEnabled = true;
-                    }
-                    if (CharacterDetails.Race.value == 8)
-                    {
-                        VieraEarALeft.IsEnabled = true;
-                        VieraEarARight.IsEnabled = true;
-                        VieraEarBLeft.IsEnabled = true;
-                        VieraEarBRight.IsEnabled = true;
-                    }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 2)
-                    {
-                        ExHairA.IsEnabled = true;
-                    }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 3)
-                    {
-                        ExHairB.IsEnabled = true;
-                    }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 4)
-                    {
-                        ExHairC.IsEnabled = true;
-                    }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 5)
-                    {
-                        ExHairD.IsEnabled = true;
-                    }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 6)
-                    {
-                        ExHairE.IsEnabled = true;
-                    }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 7)
-                    {
-                        ExHairF.IsEnabled = true;
-                    }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 8)
-                    {
-                        ExHairG.IsEnabled = true;
-                    }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 9)
-                    {
-                        ExHairH.IsEnabled = true;
-                    }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 10)
-                    {
-                        ExHairI.IsEnabled = true;
-                    }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 11)
-                    {
-                        ExHairJ.IsEnabled = true;
-                    }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 12)
-                    {
-                        ExHairK.IsEnabled = true;
-                    }
-                    if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 13)
-                    {
-                        ExHairL.IsEnabled = true;
-                    }
-                }
-                #endregion
-
-                #region Unique 1
-                if (ExHairA.IsEnabled == true)
-                {
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairA_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairA_X), QuaternionBytes);
-                }
-                #endregion
-                #region Unique 2
-                if (ExHairB.IsEnabled == true)
-                {
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairB_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairB_X), QuaternionBytes);
-                }
-                #endregion
-                #region Unique 3
-                if (ExHairC.IsEnabled == true)
-                {
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairC_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairC_X), QuaternionBytes);
-                }
-                #endregion
-                #region Unique 4
-                if (ExHairD.IsEnabled == true)
-                {
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairD_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairD_X), QuaternionBytes);
-                }
-                #endregion
-                #region Unique 5
-                if (ExHairE.IsEnabled == true)
-                {
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairE_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairE_X), QuaternionBytes);
-                }
-                #endregion
-                #region Unique 6
-                if (ExHairF.IsEnabled == true)
-                {
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairF_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairF_X), QuaternionBytes);
-                }
-                #endregion
-                #region Unique 7
-                if (ExHairG.IsEnabled == true)
-                {
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairG_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairG_X), QuaternionBytes);
-                }
-                #endregion
-                #region Unique 8
-                if (ExHairH.IsEnabled == true)
-                {
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairH_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairH_X), QuaternionBytes);
-                }
-                #endregion
-                #region Unique 9
-                if (ExHairI.IsEnabled == true)
-                {
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairI_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairI_X), QuaternionBytes);
-                }
-                #endregion
-                #region Unique 10
-                if (ExHairJ.IsEnabled == true)
-                {
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairJ_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairJ_X), QuaternionBytes);
-                }
-                #endregion
-                #region Unique 11
-                if (ExHairK.IsEnabled == true)
-                {
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairK_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairK_X), QuaternionBytes);
-                }
-                #endregion
-                #region Unique 12
-                if (ExHairL.IsEnabled == true)
-                {
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairL_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairL_X), QuaternionBytes);
-                }
-                #endregion
-                #region Hrothgar Whiskers
-                if (CharacterDetails.Race.value == 7)
-                {
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersLeft_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersLeft_X), QuaternionBytes);
-
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersRight_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HrothWhiskersRight_X), QuaternionBytes);
-                }
-                #endregion
-                #region Viera Ears
-                if (CharacterDetails.Race.value == 8)
-                {
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01ALeft_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01ALeft_X), QuaternionBytes);
-
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01ARight_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01ARight_X), QuaternionBytes);
-
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02ALeft_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02ALeft_X), QuaternionBytes);
-
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02ARight_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02ARight_X), QuaternionBytes);
-
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01BLeft_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01BLeft_X), QuaternionBytes);
-
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01BRight_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar01BRight_X), QuaternionBytes);
-
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02BLeft_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02BLeft_X), QuaternionBytes);
-
-                    bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02BRight_X), 16);
-                    q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-                    q21 = QuatMult(q2, q1_inv);
-                    QuaternionBytes = GetBytes(QuatMult(q21, q1_new));
-                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraEar02BRight_X), QuaternionBytes);
-                }
-                #endregion
+                FaceBone_Rotator(q1_inv, q1_new);
             }
             #endregion
 
