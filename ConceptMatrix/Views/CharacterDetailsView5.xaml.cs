@@ -720,6 +720,10 @@ namespace ConceptMatrix.Views
             {
                 BoneSliderButton.IsChecked = true;
             }
+            if (SaveSettings.Default.RelativeBones == true)
+            {
+                ParentingToggle.IsChecked = true;
+            }
         }
 
         private Vector3D GetEulerAngles() => new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
@@ -26099,12 +26103,12 @@ namespace ConceptMatrix.Views
 
         private void ParentingToggle_Checked(object sender, RoutedEventArgs e)
         {
-            // Add save stuff here later on
+            SaveSettings.Default.RelativeBones = true;
         }
 
         private void ParentingToggle_Unchecked(object sender, RoutedEventArgs e)
         {
-
+            SaveSettings.Default.RelativeBones = false;
         }
     }
 }
