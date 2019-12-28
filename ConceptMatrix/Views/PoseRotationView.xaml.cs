@@ -76,7 +76,7 @@ namespace ConceptMatrix.Views
             var el = (UIElement)sender;
             if (dragState.isTracking)
                 return;
-
+            
             dragState.lastPoint = e.MouseDevice.GetPosition(el);
             dragState.isTracking = true;
             dragState.mouseButton = e.ChangedButton;
