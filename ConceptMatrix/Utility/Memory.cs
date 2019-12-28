@@ -543,7 +543,10 @@ namespace ConceptMatrix.Utility
             UIntPtr theCode = get64bitCode(code, file);
 
             if (!ReadProcessMemory(pHandle, theCode, memory, (UIntPtr)length, IntPtr.Zero))
-                return null;
+            {
+                Array.Clear(memory, 0, memory.Length);
+                return memory;
+            }
 
             return memory;
         }
