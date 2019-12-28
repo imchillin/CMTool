@@ -131,14 +131,7 @@ namespace ConceptMatrix.Views
             }
             if (CharacterDetails.Waist_Rotate == true)
             {
-                CharacterDetails.Waist_X.value = (float)q.X;
-                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Waist_X), "float", ((float)q.X).ToString());
-                CharacterDetails.Waist_Y.value = (float)q.Y;
-                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Waist_Y), "float", ((float)q.Y).ToString());
-                CharacterDetails.Waist_Z.value = (float)q.Z;
-                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Waist_Z), "float", ((float)q.Z).ToString());
-                CharacterDetails.Waist_W.value = (float)q.W;
-                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Waist_W), "float", ((float)q.W).ToString());
+                MainViewModel.ViewTime5.RotateHelper(q, CharacterDetails.Waist_X, CharacterDetails.Waist_Y, CharacterDetails.Waist_Z, CharacterDetails.Waist_W, MainViewModel.ViewTime5.bone_waist);
                 CharacterDetails.Waist_Toggle = true;
             }
             if (CharacterDetails.SpineA_Rotate == true)
