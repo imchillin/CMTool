@@ -1,7 +1,9 @@
 ﻿using ConceptMatrix.Models;
 using ConceptMatrix.ViewModel;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Threading;
 
 namespace ConceptMatrix.Utility
@@ -525,6 +527,15 @@ namespace ConceptMatrix.Utility
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.Head_Y), CharacterDetails.Head_Y.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.Head_Z), CharacterDetails.Head_Z.GetBytes());
                         m.writeBytes(GAS(c.Body.Base, c.Body.Bones.Head_W), CharacterDetails.Head_W.GetBytes());
+                        // Let's change everything in future to this below
+                        /* 
+                        List<byte> bytes = new List<byte>(16);
+                        bytes.AddRange(BitConverter.GetBytes((float)CharacterDetails.Head_X.value));
+                        bytes.AddRange(BitConverter.GetBytes((float)CharacterDetails.Head_Y.value));
+                        bytes.AddRange(BitConverter.GetBytes((float)CharacterDetails.Head_Z.value));
+                        bytes.AddRange(BitConverter.GetBytes((float)CharacterDetails.Head_W.value));
+                        byte[] Bytes =  bytes.ToArray();
+                        m.writeBytes(GAS(c.Body.Base, c.Body.Bones.Head_X), Bytes);*/
                     }
 
                     if (CharacterDetails.ArmLeft_Rotate)

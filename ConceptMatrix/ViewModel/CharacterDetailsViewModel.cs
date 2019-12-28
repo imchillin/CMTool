@@ -7,6 +7,7 @@ using System.Threading;
 using ConceptMatrix.Resx;
 using System.Threading.Tasks;
 using System.Windows.Media.Media3D;
+using System.Windows;
 
 namespace ConceptMatrix.ViewModel
 {
@@ -201,6 +202,7 @@ namespace ConceptMatrix.ViewModel
                         WritingCheck++;
                         if (CharacterDetails.FilterAoB.Selected == 0) m.writeMemory(GAS(MemoryManager.Instance.GposeFilters, c.FilterEnable), "byte", "00");
                     }
+                    #region Gpose Filters
                     if (FreezeAll && !CharacterDetails.FilterAoB.SpecialActivate)
                     {
                         m.writeBytes(GAS(MemoryManager.Instance.GposeFilters, c.HDR), CharacterDetails.HDR.GetBytes());
@@ -220,20 +222,21 @@ namespace ConceptMatrix.ViewModel
                     }
                     else
                     {
-                        CharacterDetails.HDR.value = m.readFloat(GAS(MemoryManager.Instance.GposeFilters, c.HDR));
-                        CharacterDetails.Brightness.value = m.readFloat(GAS(MemoryManager.Instance.GposeFilters, c.Brightness));
-                        CharacterDetails.Contrast.value = m.readFloat(GAS(MemoryManager.Instance.GposeFilters, c.Contrast));
-                        CharacterDetails.Exposure.value = m.readFloat(GAS(MemoryManager.Instance.GposeFilters, c.Exposure));
-                        CharacterDetails.Filmic.value = m.readFloat(GAS(MemoryManager.Instance.GposeFilters, c.Filmic));
-                        CharacterDetails.SHDR.value = m.readFloat(GAS(MemoryManager.Instance.GposeFilters, c.SHDR));
-                        CharacterDetails.Colorfulness.value = m.readFloat(GAS(MemoryManager.Instance.GposeFilters, c.Colorfulness));
-                        CharacterDetails.Contrast2.value = m.readFloat(GAS(MemoryManager.Instance.GposeFilters, c.Contrast2));
-                        CharacterDetails.Colorfulnesss2.value = m.readFloat(GAS(MemoryManager.Instance.GposeFilters, c.Colorfulnesss2));
-                        CharacterDetails.Vibrance.value = m.readFloat(GAS(MemoryManager.Instance.GposeFilters, c.Vibrance));
-                        CharacterDetails.Gamma.value = m.readFloat(GAS(MemoryManager.Instance.GposeFilters, c.Gamma));
-                        CharacterDetails.GBlue.value = m.readFloat(GAS(MemoryManager.Instance.GposeFilters, c.GBlue));
-                        CharacterDetails.GGreens.value = m.readFloat(GAS(MemoryManager.Instance.GposeFilters, c.GGreens));
-                        CharacterDetails.GRed.value = m.readFloat(GAS(MemoryManager.Instance.GposeFilters, c.GRed));
+                        byte[] FIlterBytes = m.readBytes(GAS(MemoryManager.Instance.GposeFilters, c.Brightness), 60);
+                        CharacterDetails.Brightness.value = BitConverter.ToSingle(FIlterBytes, 0);
+                        CharacterDetails.Exposure.value = BitConverter.ToSingle(FIlterBytes, 4);
+                        CharacterDetails.Filmic.value = BitConverter.ToSingle(FIlterBytes, 8);
+                        CharacterDetails.SHDR.value = BitConverter.ToSingle(FIlterBytes, 12);
+                        CharacterDetails.Colorfulness.value = BitConverter.ToSingle(FIlterBytes, 20);
+                        CharacterDetails.Contrast.value = BitConverter.ToSingle(FIlterBytes, 24);
+                        CharacterDetails.Contrast2.value = BitConverter.ToSingle(FIlterBytes, 28);
+                        CharacterDetails.GRed.value = BitConverter.ToSingle(FIlterBytes, 32);
+                        CharacterDetails.GGreens.value = BitConverter.ToSingle(FIlterBytes, 36);
+                        CharacterDetails.GBlue.value = BitConverter.ToSingle(FIlterBytes, 40);
+                        CharacterDetails.Gamma.value = BitConverter.ToSingle(FIlterBytes, 44);
+                        CharacterDetails.Vibrance.value = BitConverter.ToSingle(FIlterBytes, 48);
+                        CharacterDetails.Colorfulnesss2.value = BitConverter.ToSingle(FIlterBytes, 52);
+                        CharacterDetails.HDR.value = BitConverter.ToSingle(FIlterBytes, 56);
                     }
                     if (CharacterDetails.FilterAoB.value.Contains("00 00 00 00 00 00 80 3F 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"))
                         CharacterDetails.FilterAoB.Selected = 0;
@@ -284,6 +287,7 @@ namespace ConceptMatrix.ViewModel
                     if (CharacterDetails.FilterAoB.value.Contains("00 00 80 3E 00 00 00 3F CD CC CC BE CD CC 4C BE 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00"))
                         CharacterDetails.FilterAoB.Selected = 23;
                 }
+                #endregion
 
                 if (!CheckingGPose)
                 {
@@ -310,7 +314,7 @@ namespace ConceptMatrix.ViewModel
                                 CharacterDetails.WeaponBase.value = 0;
                                 CharacterDetails.WeaponV.value = 0;
                                 CharacterDetails.WeaponDye.value = 0;
-                                MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Job), "bytes", "00 00 00 00 00 00 00 00");
+                                MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Job), "bytes", "2D 01 1F 00 01 00 00 00");
                             }
 
                             if (m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Offhand)) <= 0)
@@ -319,7 +323,7 @@ namespace ConceptMatrix.ViewModel
                                 CharacterDetails.OffhandBase.value = 0;
                                 CharacterDetails.OffhandV.value = 0;
                                 CharacterDetails.OffhandDye.value = 0;
-                                MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Offhand), "bytes", "00 00 00 00 00 00 00 00");
+                                MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Offhand), "bytes", "5F 01 1F 00 01 00 00 00");
                             }
 
                             if (m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.HeadPiece)) <= 0)
@@ -408,6 +412,122 @@ namespace ConceptMatrix.ViewModel
                     }
                 }
 
+                byte[] CharacterBytes = m.readBytes(GAS(baseAddr, c.Race), 26);
+                
+                #region Actor AoB
+                if (!CharacterDetails.Race.freeze) CharacterDetails.Race.value = CharacterBytes[0];
+                if (!CharacterDetails.Gender.freeze) CharacterDetails.Gender.value = CharacterBytes[1];
+                if (!CharacterDetails.BodyType.freeze) CharacterDetails.BodyType.value = CharacterBytes[2];
+                if (!CharacterDetails.RHeight.freeze) CharacterDetails.RHeight.value = CharacterBytes[3];
+                if (!CharacterDetails.Clan.freeze) CharacterDetails.Clan.value = CharacterBytes[4];
+                if (!CharacterDetails.Head.freeze) CharacterDetails.Head.value = CharacterBytes[5];
+                if (!CharacterDetails.Hair.freeze) CharacterDetails.Hair.value = CharacterBytes[6];
+                if (!CharacterDetails.Highlights.freeze)
+                {
+                    CharacterDetails.Highlights.value = CharacterBytes[7];
+                    if (CharacterDetails.Highlights.value >= 80) CharacterDetails.Highlights.SpecialActivate = true;
+                    else CharacterDetails.Highlights.SpecialActivate = false;
+                }
+                if (!CharacterDetails.Skintone.freeze) CharacterDetails.Skintone.value = CharacterBytes[8];
+                if (!CharacterDetails.RightEye.freeze) CharacterDetails.RightEye.value = CharacterBytes[9];
+                if (!CharacterDetails.HairTone.freeze) CharacterDetails.HairTone.value = CharacterBytes[10];
+                if (!CharacterDetails.HighlightTone.freeze) CharacterDetails.HighlightTone.value = CharacterBytes[11];
+                if (!CharacterDetails.FacialFeatures.freeze) CharacterDetails.FacialFeatures.value = CharacterBytes[12];
+                if (!CharacterDetails.LimbalEyes.freeze) CharacterDetails.LimbalEyes.value = CharacterBytes[13];
+                if (!CharacterDetails.EyeBrowType.freeze) CharacterDetails.EyeBrowType.value = CharacterBytes[14];
+                if (!CharacterDetails.LeftEye.freeze) CharacterDetails.LeftEye.value = CharacterBytes[15];
+                if (!CharacterDetails.Eye.freeze) CharacterDetails.Eye.value = CharacterBytes[16];
+                if (!CharacterDetails.Nose.freeze) CharacterDetails.Nose.value = CharacterBytes[17];
+                if (!CharacterDetails.Jaw.freeze) CharacterDetails.Jaw.value = CharacterBytes[18];
+                if (!CharacterDetails.Lips.freeze) CharacterDetails.Lips.value = CharacterBytes[19];
+                if (!CharacterDetails.LipsTone.freeze) CharacterDetails.LipsTone.value = CharacterBytes[20];
+                if (!CharacterDetails.TailorMuscle.freeze) CharacterDetails.TailorMuscle.value = CharacterBytes[21];
+                if (!CharacterDetails.TailType.freeze) CharacterDetails.TailType.value = CharacterBytes[22];
+                if (!CharacterDetails.RBust.freeze) CharacterDetails.RBust.value = CharacterBytes[23];
+                if (!CharacterDetails.FacePaint.freeze) CharacterDetails.FacePaint.value = CharacterBytes[24];
+                if (!CharacterDetails.FacePaintColor.freeze) CharacterDetails.FacePaintColor.value = CharacterBytes[25];
+                #endregion
+                if (!CharacterDetails.TestArray.freeze) CharacterDetails.TestArray.value = MemoryManager.ByteArrayToString(CharacterBytes);
+
+                #region Mainhand & OffHand
+                byte[] MainHandBytes = m.readBytes(GAS(baseAddr, c.Job), 7);
+                if (!CharacterDetails.Job.freeze && !CharacterDetails.Job.Activated)
+                {
+                    CharacterDetails.Job.value = MainHandBytes[0] + MainHandBytes[1] * 256;
+                    CharacterDetails.WeaponBase.value = MainHandBytes[2] + MainHandBytes[3] * 256;
+                    CharacterDetails.WeaponV.value = MainHandBytes[4];
+                    CharacterDetails.WeaponDye.value = MainHandBytes[6];
+                }
+
+                byte[] OffhandBytes = m.readBytes(GAS(baseAddr, c.Offhand), 7);
+                if (!CharacterDetails.Offhand.freeze && !CharacterDetails.Offhand.Activated)
+                {
+                    CharacterDetails.Offhand.value = OffhandBytes[0] + OffhandBytes[1] * 256;
+                    CharacterDetails.OffhandBase.value = OffhandBytes[2] + OffhandBytes[3] * 256;
+                    CharacterDetails.OffhandV.value = OffhandBytes[4];
+                    CharacterDetails.OffhandDye.value = OffhandBytes[6];
+                }
+                #endregion
+                byte[] EquipmentArray = m.readBytes(GAS(baseAddr, c.HeadPiece), 39);
+                #region Equipment Array - Non Mainhand+Offhand
+                if (!CharacterDetails.HeadPiece.freeze && !CharacterDetails.HeadPiece.Activated)
+                {
+                    CharacterDetails.HeadPiece.value = (EquipmentArray[0] + EquipmentArray[1] * 256);
+                    CharacterDetails.HeadV.value = EquipmentArray[2];
+                    CharacterDetails.HeadDye.value = EquipmentArray[3];
+                }
+                if (!CharacterDetails.Chest.freeze && !CharacterDetails.Chest.Activated)
+                {
+                    CharacterDetails.Chest.value = (EquipmentArray[4] + EquipmentArray[5] * 256);
+                    CharacterDetails.ChestV.value = EquipmentArray[6];
+                    CharacterDetails.ChestDye.value = EquipmentArray[7];
+                }
+                if (!CharacterDetails.Arms.freeze && !CharacterDetails.Arms.Activated)
+                {
+                    CharacterDetails.Arms.value = (EquipmentArray[8] + EquipmentArray[9] * 256);
+                    CharacterDetails.ArmsV.value = EquipmentArray[10];
+                    CharacterDetails.ArmsDye.value = EquipmentArray[11];
+                }
+                if (!CharacterDetails.Legs.freeze && !CharacterDetails.Legs.Activated)
+                {
+                    CharacterDetails.Legs.value = (EquipmentArray[12] + EquipmentArray[13] * 256);
+                    CharacterDetails.LegsV.value = EquipmentArray[14];
+                    CharacterDetails.LegsDye.value = EquipmentArray[15];
+                }
+                if (!CharacterDetails.Feet.freeze && !CharacterDetails.Feet.Activated)
+                {
+                    CharacterDetails.Feet.value = (EquipmentArray[16] + EquipmentArray[17] * 256);
+                    CharacterDetails.FeetVa.value = EquipmentArray[18];
+                    CharacterDetails.FeetDye.value = EquipmentArray[19];
+                }
+                if (!CharacterDetails.Ear.freeze && !CharacterDetails.Ear.Activated)
+                {
+                    CharacterDetails.Ear.value = (EquipmentArray[20] + EquipmentArray[21] * 256);
+                    CharacterDetails.EarVa.value = EquipmentArray[22];
+                }
+                if (!CharacterDetails.Neck.freeze && !CharacterDetails.Neck.Activated)
+                {
+                    CharacterDetails.Neck.value = (EquipmentArray[24] + EquipmentArray[25] * 256);
+                    CharacterDetails.NeckVa.value = EquipmentArray[26];
+                }
+                if (!CharacterDetails.Wrist.freeze && !CharacterDetails.Wrist.Activated)
+                {
+                    CharacterDetails.Wrist.value = (EquipmentArray[28] + EquipmentArray[29] * 256);
+                    CharacterDetails.WristVa.value = EquipmentArray[30];
+                }
+                if (!CharacterDetails.RFinger.freeze && !CharacterDetails.RFinger.Activated)
+                {
+                    CharacterDetails.RFinger.value = (EquipmentArray[32] + EquipmentArray[33] * 256);
+                    CharacterDetails.RFingerVa.value = EquipmentArray[34];
+                }
+                if (!CharacterDetails.LFinger.freeze && !CharacterDetails.LFinger.Activated)
+                {
+                    CharacterDetails.LFinger.value = (EquipmentArray[36] + EquipmentArray[37] * 256);
+                    CharacterDetails.LFingerVa.value = EquipmentArray[38];
+                }
+                #endregion
+                if (!CharacterDetails.TestArray2.freeze) CharacterDetails.TestArray2.value = MemoryManager.ByteArrayToString(EquipmentArray);
+
                 if (!CharacterDetails.Voices.freeze) CharacterDetails.Voices.value = (byte)m.readByte(GAS(baseAddr, c.Voices));
 
                 if (!CharacterDetails.Height.freeze) CharacterDetails.Height.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Height));
@@ -416,80 +536,34 @@ namespace ConceptMatrix.ViewModel
 
                 if (!CharacterDetails.JobIco.freeze) CharacterDetails.JobIco.value = (byte)m.readByte(GAS(baseAddr, c.JobIco));
 
-                if (!CharacterDetails.Race.freeze) CharacterDetails.Race.value = (byte)m.readByte(GAS(baseAddr, c.Race));
+                #region Bust Scale
+                byte[] BustScaleArray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bust.Base, c.Body.Bust.X), 12);
 
-                if (!CharacterDetails.Clan.freeze) CharacterDetails.Clan.value = (byte)m.readByte(GAS(baseAddr, c.Clan));
+                if (!CharacterDetails.BustX.freeze) CharacterDetails.BustX.value = BitConverter.ToSingle(BustScaleArray, 0);
 
-                if (!CharacterDetails.Gender.freeze) CharacterDetails.Gender.value = (byte)m.readByte(GAS(baseAddr, c.Gender));
+                if (!CharacterDetails.BustY.freeze) CharacterDetails.BustY.value = BitConverter.ToSingle(BustScaleArray, 4);
 
-                if (!CharacterDetails.Head.freeze) CharacterDetails.Head.value = (byte)m.readByte(GAS(baseAddr, c.Head));
+                if (!CharacterDetails.BustZ.freeze) CharacterDetails.BustZ.value = BitConverter.ToSingle(BustScaleArray, 8);
+                #endregion
 
-                if (!CharacterDetails.Hair.freeze) CharacterDetails.Hair.value = (byte)m.readByte(GAS(baseAddr, c.Hair));
+                #region Actor Position XYZ
+                byte[] PositionArray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Position.X), 12);
+                if (!CharacterDetails.X.freeze) CharacterDetails.X.value = BitConverter.ToSingle(PositionArray, 0);
 
-                if (!CharacterDetails.TailType.freeze) CharacterDetails.TailType.value = (byte)m.readByte(GAS(baseAddr, c.TailType));
+                if (!CharacterDetails.Y.freeze) CharacterDetails.Y.value = BitConverter.ToSingle(PositionArray, 4);
 
-                if (!CharacterDetails.HairTone.freeze) CharacterDetails.HairTone.value = (byte)m.readByte(GAS(baseAddr, c.HairTone));
-
-                if (!CharacterDetails.Highlights.freeze)
-                {
-                    CharacterDetails.Highlights.value = (byte)m.readByte(GAS(baseAddr, c.Highlights));
-                    if (CharacterDetails.Highlights.value >= 80) CharacterDetails.Highlights.SpecialActivate = true;
-                    else CharacterDetails.Highlights.SpecialActivate = false;
-                }
-
-                if (!CharacterDetails.HighlightTone.freeze) CharacterDetails.HighlightTone.value = (byte)m.readByte(GAS(baseAddr, c.HighlightTone));
-
-                if (!CharacterDetails.Skintone.freeze) CharacterDetails.Skintone.value = (byte)m.readByte(GAS(baseAddr, c.Skintone));
-
-                if (!CharacterDetails.Lips.freeze) CharacterDetails.Lips.value = (byte)m.readByte(GAS(baseAddr, c.Lips));
-
-                if (!CharacterDetails.LipsTone.freeze) CharacterDetails.LipsTone.value = (byte)m.readByte(GAS(baseAddr, c.LipsTone));
-
-                if (!CharacterDetails.Nose.freeze) CharacterDetails.Nose.value = (byte)m.readByte(GAS(baseAddr, c.Nose));
-
-                if (!CharacterDetails.TailorMuscle.freeze) CharacterDetails.TailorMuscle.value = (byte)m.readByte(GAS(baseAddr, c.TailorMuscle));
-
-                if (!CharacterDetails.FacePaintColor.freeze) CharacterDetails.FacePaintColor.value = (byte)m.readByte(GAS(baseAddr, c.FacePaintColor));
-
-                if (!CharacterDetails.FacePaint.freeze) CharacterDetails.FacePaint.value = (byte)m.readByte(GAS(baseAddr, c.FacePaint));
-
-                if (!CharacterDetails.LeftEye.freeze) CharacterDetails.LeftEye.value = (byte)m.readByte(GAS(baseAddr, c.LeftEye));
-
-                if (!CharacterDetails.RightEye.freeze) CharacterDetails.RightEye.value = (byte)m.readByte(GAS(baseAddr, c.RightEye));
-
-                if (!CharacterDetails.LimbalEyes.freeze) CharacterDetails.LimbalEyes.value = (byte)m.readByte(GAS(baseAddr, c.LimbalEyes));
-
-                if (!CharacterDetails.Eye.freeze) CharacterDetails.Eye.value = (byte)m.readByte(GAS(baseAddr, c.Eye));
-
-                if (!CharacterDetails.EyeBrowType.freeze) CharacterDetails.EyeBrowType.value = (byte)m.readByte(GAS(baseAddr, c.EyeBrowType));
-
-                if (!CharacterDetails.FacialFeatures.freeze) CharacterDetails.FacialFeatures.value = (byte)m.readByte(GAS(baseAddr, c.FacialFeatures));
-
-                if (!CharacterDetails.Jaw.freeze) CharacterDetails.Jaw.value = (byte)m.readByte(GAS(baseAddr, c.Jaw));
-
-                if (!CharacterDetails.RHeight.freeze) CharacterDetails.RHeight.value = (byte)m.readByte(GAS(baseAddr, c.RHeight));
-
-                if (!CharacterDetails.RBust.freeze) CharacterDetails.RBust.value = (byte)m.readByte(GAS(baseAddr, c.RBust));
-
-                if (!CharacterDetails.BodyType.freeze) CharacterDetails.BodyType.value = (byte)m.read2Byte(GAS(baseAddr, c.BodyType));
-
-                if (!CharacterDetails.TestArray.freeze) CharacterDetails.TestArray.value = MemoryManager.ByteArrayToString(m.readBytes(GAS(baseAddr, c.Race), 26));
-
-                if (!CharacterDetails.TestArray2.freeze) CharacterDetails.TestArray2.value = MemoryManager.ByteArrayToString(m.readBytes(GAS(baseAddr, c.HeadPiece), 39));
-
-                if (!CharacterDetails.BustX.freeze) CharacterDetails.BustX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bust.Base, c.Body.Bust.X));
-
-                if (!CharacterDetails.BustY.freeze) CharacterDetails.BustY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bust.Base, c.Body.Bust.Y));
-
-                if (!CharacterDetails.BustZ.freeze) CharacterDetails.BustZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bust.Base, c.Body.Bust.Z));
+                if (!CharacterDetails.Z.freeze) CharacterDetails.Z.value = BitConverter.ToSingle(PositionArray, 8);
+                #endregion
 
                 // Reading rotation values.
+                #region Actor Rotation
                 if (!CharacterDetails.RotateFreeze && !CharacterDetails.BoneEditMode)
                 {
-                    CharacterDetails.Rotation.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Rotation));
-                    CharacterDetails.Rotation2.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Rotation2));
-                    CharacterDetails.Rotation3.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Rotation3));
-                    CharacterDetails.Rotation4.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Rotation4));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Position.Rotation), 16);
+                    CharacterDetails.Rotation.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.Rotation2.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.Rotation3.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.Rotation4.value = BitConverter.ToSingle(bytearray, 12);
 
                     // Create euler angles from the quaternion.
                     var euler = new System.Windows.Media.Media3D.Quaternion(
@@ -503,14 +577,16 @@ namespace ConceptMatrix.ViewModel
                     CharacterDetails.RotateY = (float)euler.Y;
                     CharacterDetails.RotateZ = (float)euler.Z;
                 }
+                #endregion
 
                 #region Bone Rotations
                 if (CharacterDetails.Root_Toggle)
                 {
-                    CharacterDetails.Root_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Root_X));
-                    CharacterDetails.Root_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Root_Y));
-                    CharacterDetails.Root_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Root_Z));
-                    CharacterDetails.Root_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Root_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.Root_X), 16);
+                    CharacterDetails.Root_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.Root_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.Root_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.Root_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.Root_X.value,
@@ -529,10 +605,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.Abdomen_Toggle)
                 {
-                    CharacterDetails.Abdomen_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Abdomen_X));
-                    CharacterDetails.Abdomen_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Abdomen_Y));
-                    CharacterDetails.Abdomen_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Abdomen_Z));
-                    CharacterDetails.Abdomen_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Abdomen_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.Abdomen_X), 16);
+                    CharacterDetails.Abdomen_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.Abdomen_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.Abdomen_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.Abdomen_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.Abdomen_X.value,
@@ -551,10 +628,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.Throw_Toggle)
                 {
-                    CharacterDetails.Throw_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Throw_X));
-                    CharacterDetails.Throw_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Throw_Y));
-                    CharacterDetails.Throw_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Throw_Z));
-                    CharacterDetails.Throw_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Throw_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.Throw_X), 16);
+                    CharacterDetails.Throw_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.Throw_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.Throw_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.Throw_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.Throw_X.value,
@@ -573,10 +651,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.Waist_Toggle)
                 {
-                    CharacterDetails.Waist_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Waist_X));
-                    CharacterDetails.Waist_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Waist_Y));
-                    CharacterDetails.Waist_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Waist_Z));
-                    CharacterDetails.Waist_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Waist_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.Waist_X), 16);
+                    CharacterDetails.Waist_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.Waist_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.Waist_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.Waist_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.Waist_X.value,
@@ -595,10 +674,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.SpineA_Toggle)
                 {
-                    CharacterDetails.SpineA_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineA_X));
-                    CharacterDetails.SpineA_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineA_Y));
-                    CharacterDetails.SpineA_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineA_Z));
-                    CharacterDetails.SpineA_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineA_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineA_X), 16);
+                    CharacterDetails.SpineA_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.SpineA_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.SpineA_W.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.SpineA_Z.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.SpineA_X.value,
@@ -617,10 +697,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.LegLeft_Toggle)
                 {
-                    CharacterDetails.LegLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegLeft_X));
-                    CharacterDetails.LegLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegLeft_Y));
-                    CharacterDetails.LegLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegLeft_Z));
-                    CharacterDetails.LegLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegLeft_X), 16);
+                    CharacterDetails.LegLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.LegLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.LegLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.LegLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.LegLeft_X.value,
@@ -639,10 +720,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.LegRight_Toggle)
                 {
-                    CharacterDetails.LegRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegRight_X));
-                    CharacterDetails.LegRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegRight_Y));
-                    CharacterDetails.LegRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegRight_Z));
-                    CharacterDetails.LegRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.LegRight_X), 16);
+                    CharacterDetails.LegRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.LegRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.LegRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.LegRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.LegRight_X.value,
@@ -661,10 +743,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.HolsterLeft_Toggle)
                 {
-                    CharacterDetails.HolsterLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterLeft_X));
-                    CharacterDetails.HolsterLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterLeft_Y));
-                    CharacterDetails.HolsterLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterLeft_Z));
-                    CharacterDetails.HolsterLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterLeft_X), 16);
+                    CharacterDetails.HolsterLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.HolsterLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.HolsterLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.HolsterLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.HolsterLeft_X.value,
@@ -683,10 +766,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.HolsterRight_Toggle)
                 {
-                    CharacterDetails.HolsterRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterRight_X));
-                    CharacterDetails.HolsterRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterRight_Y));
-                    CharacterDetails.HolsterRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterRight_Z));
-                    CharacterDetails.HolsterRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.HolsterRight_X), 16);
+                    CharacterDetails.HolsterRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.HolsterRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.HolsterRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.HolsterRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.HolsterRight_X.value,
@@ -705,10 +789,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.SheatheLeft_Toggle)
                 {
-                    CharacterDetails.SheatheLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheLeft_X));
-                    CharacterDetails.SheatheLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheLeft_Y));
-                    CharacterDetails.SheatheLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheLeft_Z));
-                    CharacterDetails.SheatheLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheLeft_X), 16);
+                    CharacterDetails.SheatheLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.SheatheLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.SheatheLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.SheatheLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.SheatheLeft_X.value,
@@ -727,10 +812,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.SheatheRight_Toggle)
                 {
-                    CharacterDetails.SheatheRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheRight_X));
-                    CharacterDetails.SheatheRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheRight_Y));
-                    CharacterDetails.SheatheRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheRight_Z));
-                    CharacterDetails.SheatheRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.SheatheRight_X), 16);
+                    CharacterDetails.SheatheRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.SheatheRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.SheatheRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.SheatheRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.SheatheRight_X.value,
@@ -749,10 +835,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.SpineB_Toggle)
                 {
-                    CharacterDetails.SpineB_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineB_X));
-                    CharacterDetails.SpineB_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineB_Y));
-                    CharacterDetails.SpineB_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineB_Z));
-                    CharacterDetails.SpineB_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineB_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineB_X), 16);
+                    CharacterDetails.SpineB_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.SpineB_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.SpineB_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.SpineB_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.SpineB_X.value,
@@ -771,10 +858,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ClothBackALeft_Toggle)
                 {
-                    CharacterDetails.ClothBackALeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackALeft_X));
-                    CharacterDetails.ClothBackALeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackALeft_Y));
-                    CharacterDetails.ClothBackALeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackALeft_Z));
-                    CharacterDetails.ClothBackALeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackALeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackALeft_X), 16);
+                    CharacterDetails.ClothBackALeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ClothBackALeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ClothBackALeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ClothBackALeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ClothBackALeft_X.value,
@@ -793,10 +881,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ClothBackARight_Toggle)
                 {
-                    CharacterDetails.ClothBackARight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackARight_X));
-                    CharacterDetails.ClothBackARight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackARight_Y));
-                    CharacterDetails.ClothBackARight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackARight_Z));
-                    CharacterDetails.ClothBackARight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackARight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackARight_X), 16);
+                    CharacterDetails.ClothBackARight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ClothBackARight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ClothBackARight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ClothBackARight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ClothBackARight_X.value,
@@ -815,10 +904,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ClothFrontALeft_Toggle)
                 {
-                    CharacterDetails.ClothFrontALeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontALeft_X));
-                    CharacterDetails.ClothFrontALeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontALeft_Y));
-                    CharacterDetails.ClothFrontALeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontALeft_Z));
-                    CharacterDetails.ClothFrontALeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontALeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontALeft_X), 16);
+                    CharacterDetails.ClothFrontALeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ClothFrontALeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ClothFrontALeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ClothFrontALeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ClothFrontALeft_X.value,
@@ -837,10 +927,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ClothFrontARight_Toggle)
                 {
-                    CharacterDetails.ClothFrontARight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontARight_X));
-                    CharacterDetails.ClothFrontARight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontARight_Y));
-                    CharacterDetails.ClothFrontARight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontARight_Z));
-                    CharacterDetails.ClothFrontARight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontARight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontARight_X), 16);
+                    CharacterDetails.ClothFrontARight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ClothFrontARight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ClothFrontARight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ClothFrontARight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ClothFrontARight_X.value,
@@ -859,10 +950,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ClothSideALeft_Toggle)
                 {
-                    CharacterDetails.ClothSideALeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideALeft_X));
-                    CharacterDetails.ClothSideALeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideALeft_Y));
-                    CharacterDetails.ClothSideALeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideALeft_Z));
-                    CharacterDetails.ClothSideALeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideALeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideALeft_X), 16);
+                    CharacterDetails.ClothSideALeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ClothSideALeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ClothSideALeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ClothSideALeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ClothSideALeft_X.value,
@@ -881,10 +973,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ClothSideARight_Toggle)
                 {
-                    CharacterDetails.ClothSideARight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideARight_X));
-                    CharacterDetails.ClothSideARight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideARight_Y));
-                    CharacterDetails.ClothSideARight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideARight_Z));
-                    CharacterDetails.ClothSideARight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideARight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideARight_X), 16);
+                    CharacterDetails.ClothSideARight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ClothSideARight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ClothSideARight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ClothSideARight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ClothSideARight_X.value,
@@ -903,10 +996,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.KneeLeft_Toggle)
                 {
-                    CharacterDetails.KneeLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeLeft_X));
-                    CharacterDetails.KneeLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeLeft_Y));
-                    CharacterDetails.KneeLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeLeft_Z));
-                    CharacterDetails.KneeLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeLeft_X), 16);
+                    CharacterDetails.KneeLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.KneeLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.KneeLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.KneeLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.KneeLeft_X.value,
@@ -925,10 +1019,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.KneeRight_Toggle)
                 {
-                    CharacterDetails.KneeRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeRight_X));
-                    CharacterDetails.KneeRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeRight_Y));
-                    CharacterDetails.KneeRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeRight_Z));
-                    CharacterDetails.KneeRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.KneeRight_X), 16);
+                    CharacterDetails.KneeRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.KneeRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.KneeRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.KneeRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.KneeRight_X.value,
@@ -947,10 +1042,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.BreastLeft_Toggle)
                 {
-                    CharacterDetails.BreastLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastLeft_X));
-                    CharacterDetails.BreastLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastLeft_Y));
-                    CharacterDetails.BreastLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastLeft_Z));
-                    CharacterDetails.BreastLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastLeft_X), 16);
+                    CharacterDetails.BreastLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.BreastLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.BreastLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.BreastLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.BreastLeft_X.value,
@@ -969,10 +1065,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.BreastRight_Toggle)
                 {
-                    CharacterDetails.BreastRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastRight_X));
-                    CharacterDetails.BreastRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastRight_Y));
-                    CharacterDetails.BreastRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastRight_Z));
-                    CharacterDetails.BreastRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.BreastRight_X), 16);
+                    CharacterDetails.BreastRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.BreastRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.BreastRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.BreastRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.BreastRight_X.value,
@@ -991,10 +1088,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.SpineC_Toggle)
                 {
-                    CharacterDetails.SpineC_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineC_X));
-                    CharacterDetails.SpineC_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineC_Y));
-                    CharacterDetails.SpineC_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineC_Z));
-                    CharacterDetails.SpineC_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineC_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineC_X), 16);
+                    CharacterDetails.SpineC_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.SpineC_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.SpineC_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.SpineC_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.SpineC_X.value,
@@ -1013,10 +1111,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ClothBackBLeft_Toggle)
                 {
-                    CharacterDetails.ClothBackBLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBLeft_X));
-                    CharacterDetails.ClothBackBLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBLeft_Y));
-                    CharacterDetails.ClothBackBLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBLeft_Z));
-                    CharacterDetails.ClothBackBLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBLeft_X), 16);
+                    CharacterDetails.ClothBackBLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ClothBackBLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ClothBackBLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ClothBackBLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ClothBackBLeft_X.value,
@@ -1035,10 +1134,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ClothBackBRight_Toggle)
                 {
-                    CharacterDetails.ClothBackBRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBRight_X));
-                    CharacterDetails.ClothBackBRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBRight_Y));
-                    CharacterDetails.ClothBackBRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBRight_Z));
-                    CharacterDetails.ClothBackBRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackBRight_X), 16);
+                    CharacterDetails.ClothBackBRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ClothBackBRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ClothBackBRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ClothBackBRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ClothBackBRight_X.value,
@@ -1057,10 +1157,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ClothFrontBLeft_Toggle)
                 {
-                    CharacterDetails.ClothFrontBLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBLeft_X));
-                    CharacterDetails.ClothFrontBLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBLeft_Y));
-                    CharacterDetails.ClothFrontBLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBLeft_Z));
-                    CharacterDetails.ClothFrontBLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBLeft_X), 16);
+                    CharacterDetails.ClothFrontBLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ClothFrontBLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ClothFrontBLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ClothFrontBLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ClothFrontBLeft_X.value,
@@ -1079,10 +1180,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ClothFrontBRight_Toggle)
                 {
-                    CharacterDetails.ClothFrontBRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBRight_X));
-                    CharacterDetails.ClothFrontBRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBRight_Y));
-                    CharacterDetails.ClothFrontBRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBRight_Z));
-                    CharacterDetails.ClothFrontBRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontBRight_X), 16);
+                    CharacterDetails.ClothFrontBRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ClothFrontBRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ClothFrontBRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ClothFrontBRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ClothFrontBRight_X.value,
@@ -1101,10 +1203,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ClothSideBLeft_Toggle)
                 {
-                    CharacterDetails.ClothSideBLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBLeft_X));
-                    CharacterDetails.ClothSideBLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBLeft_Y));
-                    CharacterDetails.ClothSideBLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBLeft_Z));
-                    CharacterDetails.ClothSideBLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBLeft_X), 16);
+                    CharacterDetails.ClothSideBLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ClothSideBLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ClothSideBLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ClothSideBLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ClothSideBLeft_X.value,
@@ -1123,10 +1226,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ClothSideBRight_Toggle)
                 {
-                    CharacterDetails.ClothSideBRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBRight_X));
-                    CharacterDetails.ClothSideBRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBRight_Y));
-                    CharacterDetails.ClothSideBRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBRight_Z));
-                    CharacterDetails.ClothSideBRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideBRight_X), 16);
+                    CharacterDetails.ClothSideBRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ClothSideBRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ClothSideBRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ClothSideBRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ClothSideBRight_X.value,
@@ -1145,10 +1249,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.CalfLeft_Toggle)
                 {
-                    CharacterDetails.CalfLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfLeft_X));
-                    CharacterDetails.CalfLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfLeft_Y));
-                    CharacterDetails.CalfLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfLeft_Z));
-                    CharacterDetails.CalfLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfLeft_X), 16);
+                    CharacterDetails.CalfLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.CalfLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.CalfLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.CalfLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.CalfLeft_X.value,
@@ -1167,10 +1272,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.CalfRight_Toggle)
                 {
-                    CharacterDetails.CalfRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfRight_X));
-                    CharacterDetails.CalfRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfRight_Y));
-                    CharacterDetails.CalfRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfRight_Z));
-                    CharacterDetails.CalfRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.CalfRight_X), 16);
+                    CharacterDetails.CalfRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.CalfRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.CalfRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.CalfRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.CalfRight_X.value,
@@ -1189,10 +1295,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ScabbardLeft_Toggle)
                 {
-                    CharacterDetails.ScabbardLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardLeft_X));
-                    CharacterDetails.ScabbardLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardLeft_Y));
-                    CharacterDetails.ScabbardLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardLeft_Z));
-                    CharacterDetails.ScabbardLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardLeft_X), 16);
+                    CharacterDetails.ScabbardLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ScabbardLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ScabbardLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ScabbardLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ScabbardLeft_X.value,
@@ -1211,10 +1318,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ScabbardRight_Toggle)
                 {
-                    CharacterDetails.ScabbardRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardRight_X));
-                    CharacterDetails.ScabbardRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardRight_Y));
-                    CharacterDetails.ScabbardRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardRight_Z));
-                    CharacterDetails.ScabbardRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ScabbardRight_X), 16);
+                    CharacterDetails.ScabbardRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ScabbardRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ScabbardRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ScabbardRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ScabbardRight_X.value,
@@ -1233,10 +1341,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.Neck_Toggle)
                 {
-                    CharacterDetails.Neck_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Neck_X));
-                    CharacterDetails.Neck_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Neck_Y));
-                    CharacterDetails.Neck_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Neck_Z));
-                    CharacterDetails.Neck_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Neck_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.Neck_X), 16);
+                    CharacterDetails.Neck_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.Neck_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.Neck_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.Neck_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.Neck_X.value,
@@ -1255,10 +1364,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ClavicleLeft_Toggle)
                 {
-                    CharacterDetails.ClavicleLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleLeft_X));
-                    CharacterDetails.ClavicleLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleLeft_Y));
-                    CharacterDetails.ClavicleLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleLeft_Z));
-                    CharacterDetails.ClavicleLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleLeft_X), 16);
+                    CharacterDetails.ClavicleLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ClavicleLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ClavicleLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ClavicleLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ClavicleLeft_X.value,
@@ -1277,10 +1387,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ClavicleRight_Toggle)
                 {
-                    CharacterDetails.ClavicleRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleRight_X));
-                    CharacterDetails.ClavicleRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleRight_Y));
-                    CharacterDetails.ClavicleRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleRight_Z));
-                    CharacterDetails.ClavicleRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClavicleRight_X), 16);
+                    CharacterDetails.ClavicleRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ClavicleRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ClavicleRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ClavicleRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ClavicleRight_X.value,
@@ -1299,10 +1410,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ClothBackCLeft_Toggle)
                 {
-                    CharacterDetails.ClothBackCLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCLeft_X));
-                    CharacterDetails.ClothBackCLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCLeft_Y));
-                    CharacterDetails.ClothBackCLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCLeft_Z));
-                    CharacterDetails.ClothBackCLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCLeft_X), 16);
+                    CharacterDetails.ClothBackCLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ClothBackCLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ClothBackCLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ClothBackCLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ClothBackCLeft_X.value,
@@ -1321,10 +1433,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ClothBackCRight_Toggle)
                 {
-                    CharacterDetails.ClothBackCRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCRight_X));
-                    CharacterDetails.ClothBackCRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCRight_Y));
-                    CharacterDetails.ClothBackCRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCRight_Z));
-                    CharacterDetails.ClothBackCRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothBackCRight_X), 16);
+                    CharacterDetails.ClothBackCRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ClothBackCRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ClothBackCRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ClothBackCRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ClothBackCRight_X.value,
@@ -1343,10 +1456,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ClothFrontCLeft_Toggle)
                 {
-                    CharacterDetails.ClothFrontCLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCLeft_X));
-                    CharacterDetails.ClothFrontCLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCLeft_Y));
-                    CharacterDetails.ClothFrontCLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCLeft_Z));
-                    CharacterDetails.ClothFrontCLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCLeft_X), 16);
+                    CharacterDetails.ClothFrontCLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ClothFrontCLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ClothFrontCLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ClothFrontCLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ClothFrontCLeft_X.value,
@@ -1365,10 +1479,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ClothFrontCRight_Toggle)
                 {
-                    CharacterDetails.ClothFrontCRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCRight_X));
-                    CharacterDetails.ClothFrontCRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCRight_Y));
-                    CharacterDetails.ClothFrontCRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCRight_Z));
-                    CharacterDetails.ClothFrontCRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothFrontCRight_X), 16);
+                    CharacterDetails.ClothFrontCRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ClothFrontCRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ClothFrontCRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ClothFrontCRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ClothFrontCRight_X.value,
@@ -1387,6 +1502,12 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ClothSideCLeft_Toggle)
                 {
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCLeft_X), 16);
+                    CharacterDetails.ClothSideCLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ClothSideCLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ClothSideCLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ClothSideCLeft_W.value = BitConverter.ToSingle(bytearray, 12);
+
                     CharacterDetails.ClothSideCLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCLeft_X));
                     CharacterDetails.ClothSideCLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCLeft_Y));
                     CharacterDetails.ClothSideCLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCLeft_Z));
@@ -1409,10 +1530,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ClothSideCRight_Toggle)
                 {
-                    CharacterDetails.ClothSideCRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCRight_X));
-                    CharacterDetails.ClothSideCRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCRight_Y));
-                    CharacterDetails.ClothSideCRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCRight_Z));
-                    CharacterDetails.ClothSideCRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ClothSideCRight_X), 16);
+                    CharacterDetails.ClothSideCRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ClothSideCRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ClothSideCRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ClothSideCRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ClothSideCRight_X.value,
@@ -1431,10 +1553,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.PoleynLeft_Toggle)
                 {
-                    CharacterDetails.PoleynLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynLeft_X));
-                    CharacterDetails.PoleynLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynLeft_Y));
-                    CharacterDetails.PoleynLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynLeft_Z));
-                    CharacterDetails.PoleynLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynLeft_X), 16);
+                    CharacterDetails.PoleynLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.PoleynLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.PoleynLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.PoleynLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.PoleynLeft_X.value,
@@ -1453,10 +1576,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.PoleynRight_Toggle)
                 {
-                    CharacterDetails.PoleynRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynRight_X));
-                    CharacterDetails.PoleynRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynRight_Y));
-                    CharacterDetails.PoleynRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynRight_Z));
-                    CharacterDetails.PoleynRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.PoleynRight_X), 16);
+                    CharacterDetails.PoleynRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.PoleynRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.PoleynRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.PoleynRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.PoleynRight_X.value,
@@ -1475,10 +1599,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.FootLeft_Toggle)
                 {
-                    CharacterDetails.FootLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootLeft_X));
-                    CharacterDetails.FootLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootLeft_Y));
-                    CharacterDetails.FootLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootLeft_Z));
-                    CharacterDetails.FootLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootLeft_X), 16);
+                    CharacterDetails.FootLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.FootLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.FootLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.FootLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.FootLeft_X.value,
@@ -1497,10 +1622,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.FootRight_Toggle)
                 {
-                    CharacterDetails.FootRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootRight_X));
-                    CharacterDetails.FootRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootRight_Y));
-                    CharacterDetails.FootRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootRight_Z));
-                    CharacterDetails.FootRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.FootRight_X), 16);
+                    CharacterDetails.FootRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.FootRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.FootRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.FootRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.FootRight_X.value,
@@ -1519,10 +1645,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.Head_Toggle)
                 {
-                    CharacterDetails.Head_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Head_X));
-                    CharacterDetails.Head_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Head_Y));
-                    CharacterDetails.Head_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Head_Z));
-                    CharacterDetails.Head_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Head_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.Head_X), 16);
+                    CharacterDetails.Head_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.Head_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.Head_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.Head_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.Head_X.value,
@@ -1541,10 +1668,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ArmLeft_Toggle)
                 {
-                    CharacterDetails.ArmLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmLeft_X));
-                    CharacterDetails.ArmLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmLeft_Y));
-                    CharacterDetails.ArmLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmLeft_Z));
-                    CharacterDetails.ArmLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmLeft_X), 16);
+                    CharacterDetails.ArmLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ArmLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ArmLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ArmLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ArmLeft_X.value,
@@ -1563,10 +1691,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ArmRight_Toggle)
                 {
-                    CharacterDetails.ArmRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_X));
-                    CharacterDetails.ArmRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_Y));
-                    CharacterDetails.ArmRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_Z));
-                    CharacterDetails.ArmRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ArmRight_X), 16);
+                    CharacterDetails.ArmRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ArmRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ArmRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ArmRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ArmRight_X.value,
@@ -1585,10 +1714,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.PauldronLeft_Toggle)
                 {
-                    CharacterDetails.PauldronLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronLeft_X));
-                    CharacterDetails.PauldronLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronLeft_Y));
-                    CharacterDetails.PauldronLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronLeft_Z));
-                    CharacterDetails.PauldronLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronLeft_X), 16);
+                    CharacterDetails.PauldronLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.PauldronLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.PauldronLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.PauldronLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.PauldronLeft_X.value,
@@ -1607,10 +1737,12 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.PauldronRight_Toggle)
                 {
-                    CharacterDetails.PauldronRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronRight_X));
-                    CharacterDetails.PauldronRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronRight_Y));
-                    CharacterDetails.PauldronRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronRight_Z));
-                    CharacterDetails.PauldronRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronRight_W));
+
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.PauldronRight_X), 16);
+                    CharacterDetails.PauldronRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.PauldronRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.PauldronRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.PauldronRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.PauldronRight_X.value,
@@ -1629,10 +1761,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.Unknown00_Toggle)
                 {
-                    CharacterDetails.Unknown00_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Unknown00_X));
-                    CharacterDetails.Unknown00_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Unknown00_Y));
-                    CharacterDetails.Unknown00_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Unknown00_Z));
-                    CharacterDetails.Unknown00_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Unknown00_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.Unknown00_X), 16);
+                    CharacterDetails.Unknown00_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.Unknown00_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.Unknown00_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.Unknown00_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.Unknown00_X.value,
@@ -1651,10 +1784,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ToesLeft_Toggle)
                 {
-                    CharacterDetails.ToesLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesLeft_X));
-                    CharacterDetails.ToesLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesLeft_Y));
-                    CharacterDetails.ToesLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesLeft_Z));
-                    CharacterDetails.ToesLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesLeft_X), 16);
+                    CharacterDetails.ToesLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ToesLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ToesLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ToesLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ToesLeft_X.value,
@@ -1673,10 +1807,12 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ToesRight_Toggle)
                 {
-                    CharacterDetails.ToesRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesRight_X));
-                    CharacterDetails.ToesRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesRight_Y));
-                    CharacterDetails.ToesRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesRight_Z));
-                    CharacterDetails.ToesRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesRight_W));
+
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ToesRight_X), 16);
+                    CharacterDetails.ToesRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ToesRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ToesRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ToesRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ToesRight_X.value,
@@ -1695,10 +1831,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.HairA_Toggle)
                 {
-                    CharacterDetails.HairA_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairA_X));
-                    CharacterDetails.HairA_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairA_Y));
-                    CharacterDetails.HairA_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairA_Z));
-                    CharacterDetails.HairA_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairA_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairA_X), 16);
+                    CharacterDetails.HairA_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.HairA_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.HairA_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.HairA_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.HairA_X.value,
@@ -1717,10 +1854,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.HairFrontLeft_Toggle)
                 {
-                    CharacterDetails.HairFrontLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontLeft_X));
-                    CharacterDetails.HairFrontLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontLeft_Y));
-                    CharacterDetails.HairFrontLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontLeft_Z));
-                    CharacterDetails.HairFrontLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontLeft_X), 16);
+                    CharacterDetails.HairFrontLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.HairFrontLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.HairFrontLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.HairFrontLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.HairFrontLeft_X.value,
@@ -1739,10 +1877,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.HairFrontRight_Toggle)
                 {
-                    CharacterDetails.HairFrontRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontRight_X));
-                    CharacterDetails.HairFrontRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontRight_Y));
-                    CharacterDetails.HairFrontRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontRight_Z));
-                    CharacterDetails.HairFrontRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairFrontRight_X), 16);
+                    CharacterDetails.HairFrontRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.HairFrontRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.HairFrontRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.HairFrontRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.HairFrontRight_X.value,
@@ -1761,10 +1900,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.EarLeft_Toggle)
                 {
-                    CharacterDetails.EarLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarLeft_X));
-                    CharacterDetails.EarLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarLeft_Y));
-                    CharacterDetails.EarLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarLeft_Z));
-                    CharacterDetails.EarLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarLeft_X), 16);
+                    CharacterDetails.EarLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.EarLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.EarLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.EarLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.EarLeft_X.value,
@@ -1783,10 +1923,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.EarRight_Toggle)
                 {
-                    CharacterDetails.EarRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarRight_X));
-                    CharacterDetails.EarRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarRight_Y));
-                    CharacterDetails.EarRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarRight_Z));
-                    CharacterDetails.EarRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarRight_X), 16);
+                    CharacterDetails.EarRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.EarRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.EarRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.EarRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.EarRight_X.value,
@@ -1805,10 +1946,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ForearmLeft_Toggle)
                 {
-                    CharacterDetails.ForearmLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmLeft_X));
-                    CharacterDetails.ForearmLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmLeft_Y));
-                    CharacterDetails.ForearmLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmLeft_Z));
-                    CharacterDetails.ForearmLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmLeft_X), 16);
+                    CharacterDetails.ForearmLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ForearmLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ForearmLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ForearmLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ForearmLeft_X.value,
@@ -1827,10 +1969,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ForearmRight_Toggle)
                 {
-                    CharacterDetails.ForearmRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmRight_X));
-                    CharacterDetails.ForearmRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmRight_Y));
-                    CharacterDetails.ForearmRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmRight_Z));
-                    CharacterDetails.ForearmRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ForearmRight_X), 16);
+                    CharacterDetails.ForearmRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ForearmRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ForearmRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ForearmRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ForearmRight_X.value,
@@ -1849,10 +1992,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ShoulderLeft_Toggle)
                 {
-                    CharacterDetails.ShoulderLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderLeft_X));
-                    CharacterDetails.ShoulderLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderLeft_Y));
-                    CharacterDetails.ShoulderLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderLeft_Z));
-                    CharacterDetails.ShoulderLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderLeft_X), 16);
+                    CharacterDetails.ShoulderLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ShoulderLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ShoulderLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ShoulderLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ShoulderLeft_X.value,
@@ -1871,10 +2015,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ShoulderRight_Toggle)
                 {
-                    CharacterDetails.ShoulderRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderRight_X));
-                    CharacterDetails.ShoulderRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderRight_Y));
-                    CharacterDetails.ShoulderRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderRight_Z));
-                    CharacterDetails.ShoulderRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShoulderRight_X), 16);
+                    CharacterDetails.ShoulderRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ShoulderRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ShoulderRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ShoulderRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ShoulderRight_X.value,
@@ -1893,10 +2038,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.HairB_Toggle)
                 {
-                    CharacterDetails.HairB_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairB_X));
-                    CharacterDetails.HairB_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairB_Y));
-                    CharacterDetails.HairB_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairB_Z));
-                    CharacterDetails.HairB_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairB_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.HairB_X), 16);
+                    CharacterDetails.HairB_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.HairB_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.HairB_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.HairB_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.HairB_X.value,
@@ -1915,10 +2061,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.HandLeft_Toggle)
                 {
-                    CharacterDetails.HandLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandLeft_X));
-                    CharacterDetails.HandLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandLeft_Y));
-                    CharacterDetails.HandLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandLeft_Z));
-                    CharacterDetails.HandLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandLeft_X), 16);
+                    CharacterDetails.HandLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.HandLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.HandLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.HandLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.HandLeft_X.value,
@@ -1936,10 +2083,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.HandRight_Toggle)
                 {
-                    CharacterDetails.HandRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandRight_X));
-                    CharacterDetails.HandRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandRight_Y));
-                    CharacterDetails.HandRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandRight_Z));
-                    CharacterDetails.HandRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.HandRight_X), 16);
+                    CharacterDetails.HandRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.HandRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.HandRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.HandRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.HandRight_X.value,
@@ -1958,10 +2106,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ShieldLeft_Toggle)
                 {
-                    CharacterDetails.ShieldLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldLeft_X));
-                    CharacterDetails.ShieldLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldLeft_Y));
-                    CharacterDetails.ShieldLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldLeft_Z));
-                    CharacterDetails.ShieldLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldLeft_X), 16);
+                    CharacterDetails.ShieldLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ShieldLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ShieldLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ShieldLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ShieldLeft_X.value,
@@ -1980,10 +2129,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ShieldRight_Toggle)
                 {
-                    CharacterDetails.ShieldRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldRight_X));
-                    CharacterDetails.ShieldRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldRight_Y));
-                    CharacterDetails.ShieldRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldRight_Z));
-                    CharacterDetails.ShieldRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ShieldRight_X), 16);
+                    CharacterDetails.ShieldRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ShieldRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ShieldRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ShieldRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ShieldRight_X.value,
@@ -2002,10 +2152,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.EarringALeft_Toggle)
                 {
-                    CharacterDetails.EarringALeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringALeft_X));
-                    CharacterDetails.EarringALeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringALeft_Y));
-                    CharacterDetails.EarringALeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringALeft_Z));
-                    CharacterDetails.EarringALeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringALeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringALeft_X), 16);
+                    CharacterDetails.EarringALeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.EarringALeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.EarringALeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.EarringALeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.EarringALeft_X.value,
@@ -2024,10 +2175,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.EarringARight_Toggle)
                 {
-                    CharacterDetails.EarringARight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringARight_X));
-                    CharacterDetails.EarringARight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringARight_Y));
-                    CharacterDetails.EarringARight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringARight_Z));
-                    CharacterDetails.EarringARight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringARight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringARight_X), 16);
+                    CharacterDetails.EarringARight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.EarringARight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.EarringARight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.EarringARight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.EarringARight_X.value,
@@ -2046,10 +2198,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ElbowLeft_Toggle)
                 {
-                    CharacterDetails.ElbowLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowLeft_X));
-                    CharacterDetails.ElbowLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowLeft_Y));
-                    CharacterDetails.ElbowLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowLeft_Z));
-                    CharacterDetails.ElbowLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowLeft_X), 16);
+                    CharacterDetails.ElbowLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ElbowLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ElbowLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ElbowLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ElbowLeft_X.value,
@@ -2068,10 +2221,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ElbowRight_Toggle)
                 {
-                    CharacterDetails.ElbowRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowRight_X));
-                    CharacterDetails.ElbowRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowRight_Y));
-                    CharacterDetails.ElbowRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowRight_Z));
-                    CharacterDetails.ElbowRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ElbowRight_X), 16);
+                    CharacterDetails.ElbowRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ElbowRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ElbowRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ElbowRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ElbowRight_X.value,
@@ -2090,10 +2244,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.CouterLeft_Toggle)
                 {
-                    CharacterDetails.CouterLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterLeft_X));
-                    CharacterDetails.CouterLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterLeft_Y));
-                    CharacterDetails.CouterLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterLeft_Z));
-                    CharacterDetails.CouterLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterLeft_X), 16);
+                    CharacterDetails.CouterLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.CouterLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.CouterLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.CouterLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.CouterLeft_X.value,
@@ -2112,10 +2267,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.CouterRight_Toggle)
                 {
-                    CharacterDetails.CouterRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterRight_X));
-                    CharacterDetails.CouterRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterRight_Y));
-                    CharacterDetails.CouterRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterRight_Z));
-                    CharacterDetails.CouterRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.CouterRight_X), 16);
+                    CharacterDetails.CouterRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.CouterRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.CouterRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.CouterRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.CouterRight_X.value,
@@ -2134,10 +2290,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.WristLeft_Toggle)
                 {
-                    CharacterDetails.WristLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_X));
-                    CharacterDetails.WristLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_Y));
-                    CharacterDetails.WristLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_Z));
-                    CharacterDetails.WristLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristLeft_X), 16);
+                    CharacterDetails.WristLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.WristLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.WristLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.WristLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.WristLeft_X.value,
@@ -2156,10 +2313,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.WristRight_Toggle)
                 {
-                    CharacterDetails.WristRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_X));
-                    CharacterDetails.WristRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_Y));
-                    CharacterDetails.WristRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_Z));
-                    CharacterDetails.WristRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.WristRight_X), 16);
+                    CharacterDetails.WristRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.WristRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.WristRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.WristRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.WristRight_X.value,
@@ -2178,10 +2336,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.IndexALeft_Toggle)
                 {
-                    CharacterDetails.IndexALeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexALeft_X));
-                    CharacterDetails.IndexALeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexALeft_Y));
-                    CharacterDetails.IndexALeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexALeft_Z));
-                    CharacterDetails.IndexALeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexALeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexALeft_X), 16);
+                    CharacterDetails.IndexALeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.IndexALeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.IndexALeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.IndexALeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.IndexALeft_X.value,
@@ -2200,10 +2359,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.IndexARight_Toggle)
                 {
-                    CharacterDetails.IndexARight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexARight_X));
-                    CharacterDetails.IndexARight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexARight_Y));
-                    CharacterDetails.IndexARight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexARight_Z));
-                    CharacterDetails.IndexARight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexARight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexARight_X), 16);
+                    CharacterDetails.IndexARight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.IndexARight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.IndexARight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.IndexARight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.IndexARight_X.value,
@@ -2222,10 +2382,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.PinkyALeft_Toggle)
                 {
-                    CharacterDetails.PinkyALeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyALeft_X));
-                    CharacterDetails.PinkyALeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyALeft_Y));
-                    CharacterDetails.PinkyALeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyALeft_Z));
-                    CharacterDetails.PinkyALeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyALeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyALeft_X), 16);
+                    CharacterDetails.PinkyALeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.PinkyALeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.PinkyALeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.PinkyALeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.PinkyALeft_X.value,
@@ -2244,10 +2405,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.PinkyARight_Toggle)
                 {
-                    CharacterDetails.PinkyARight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyARight_X));
-                    CharacterDetails.PinkyARight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyARight_Y));
-                    CharacterDetails.PinkyARight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyARight_Z));
-                    CharacterDetails.PinkyARight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyARight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyARight_X), 16);
+                    CharacterDetails.PinkyARight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.PinkyARight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.PinkyARight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.PinkyARight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.PinkyARight_X.value,
@@ -2266,10 +2428,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.RingALeft_Toggle)
                 {
-                    CharacterDetails.RingALeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingALeft_X));
-                    CharacterDetails.RingALeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingALeft_Y));
-                    CharacterDetails.RingALeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingALeft_Z));
-                    CharacterDetails.RingALeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingALeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingALeft_X), 16);
+                    CharacterDetails.RingALeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.RingALeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.RingALeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.RingALeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.RingALeft_X.value,
@@ -2288,10 +2451,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.RingARight_Toggle)
                 {
-                    CharacterDetails.RingARight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingARight_X));
-                    CharacterDetails.RingARight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingARight_Y));
-                    CharacterDetails.RingARight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingARight_Z));
-                    CharacterDetails.RingARight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingARight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingARight_X), 16);
+                    CharacterDetails.RingARight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.RingARight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.RingARight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.RingARight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.RingARight_X.value,
@@ -2310,10 +2474,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.MiddleALeft_Toggle)
                 {
-                    CharacterDetails.MiddleALeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleALeft_X));
-                    CharacterDetails.MiddleALeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleALeft_Y));
-                    CharacterDetails.MiddleALeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleALeft_Z));
-                    CharacterDetails.MiddleALeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleALeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleALeft_X), 16);
+                    CharacterDetails.MiddleALeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.MiddleALeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.MiddleALeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.MiddleALeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.MiddleALeft_X.value,
@@ -2332,10 +2497,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.MiddleARight_Toggle)
                 {
-                    CharacterDetails.MiddleARight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleARight_X));
-                    CharacterDetails.MiddleARight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleARight_Y));
-                    CharacterDetails.MiddleARight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleARight_Z));
-                    CharacterDetails.MiddleARight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleARight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleARight_X), 16);
+                    CharacterDetails.MiddleARight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.MiddleARight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.MiddleARight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.MiddleARight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.MiddleARight_X.value,
@@ -2354,10 +2520,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ThumbALeft_Toggle)
                 {
-                    CharacterDetails.ThumbALeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbALeft_X));
-                    CharacterDetails.ThumbALeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbALeft_Y));
-                    CharacterDetails.ThumbALeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbALeft_Z));
-                    CharacterDetails.ThumbALeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbALeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbALeft_X), 16);
+                    CharacterDetails.ThumbALeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ThumbALeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ThumbALeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ThumbALeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ThumbALeft_X.value,
@@ -2376,10 +2543,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ThumbARight_Toggle)
                 {
-                    CharacterDetails.ThumbARight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbARight_X));
-                    CharacterDetails.ThumbARight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbARight_Y));
-                    CharacterDetails.ThumbARight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbARight_Z));
-                    CharacterDetails.ThumbARight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbARight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbARight_X), 16);
+                    CharacterDetails.ThumbARight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ThumbARight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ThumbARight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ThumbARight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ThumbARight_X.value,
@@ -2398,10 +2566,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.WeaponLeft_Toggle)
                 {
-                    CharacterDetails.WeaponLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponLeft_X));
-                    CharacterDetails.WeaponLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponLeft_Y));
-                    CharacterDetails.WeaponLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponLeft_Z));
-                    CharacterDetails.WeaponLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponLeft_X), 16);
+                    CharacterDetails.WeaponLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.WeaponLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.WeaponLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.WeaponLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.WeaponLeft_X.value,
@@ -2420,10 +2589,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.WeaponRight_Toggle)
                 {
-                    CharacterDetails.WeaponRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponRight_X));
-                    CharacterDetails.WeaponRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponRight_Y));
-                    CharacterDetails.WeaponRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponRight_Z));
-                    CharacterDetails.WeaponRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.WeaponRight_X), 16);
+                    CharacterDetails.WeaponRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.WeaponRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.WeaponRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.WeaponRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.WeaponRight_X.value,
@@ -2442,10 +2612,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.EarringBLeft_Toggle)
                 {
-                    CharacterDetails.EarringBLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBLeft_X));
-                    CharacterDetails.EarringBLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBLeft_Y));
-                    CharacterDetails.EarringBLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBLeft_Z));
-                    CharacterDetails.EarringBLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBLeft_X), 16);
+                    CharacterDetails.EarringBLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.EarringBLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.EarringBLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.EarringBLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.EarringBLeft_X.value,
@@ -2464,10 +2635,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.EarringBRight_Toggle)
                 {
-                    CharacterDetails.EarringBRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBRight_X));
-                    CharacterDetails.EarringBRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBRight_Y));
-                    CharacterDetails.EarringBRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBRight_Z));
-                    CharacterDetails.EarringBRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.EarringBRight_X), 16);
+                    CharacterDetails.EarringBRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.EarringBRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.EarringBRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.EarringBRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.EarringBRight_X.value,
@@ -2486,10 +2658,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.IndexBLeft_Toggle)
                 {
-                    CharacterDetails.IndexBLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBLeft_X));
-                    CharacterDetails.IndexBLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBLeft_Y));
-                    CharacterDetails.IndexBLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBLeft_Z));
-                    CharacterDetails.IndexBLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBLeft_X), 16);
+                    CharacterDetails.IndexBLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.IndexBLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.IndexBLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.IndexBLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.IndexBLeft_X.value,
@@ -2508,10 +2681,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.IndexBRight_Toggle)
                 {
-                    CharacterDetails.IndexBRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBRight_X));
-                    CharacterDetails.IndexBRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBRight_Y));
-                    CharacterDetails.IndexBRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBRight_Z));
-                    CharacterDetails.IndexBRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.IndexBRight_X), 16);
+                    CharacterDetails.IndexBRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.IndexBRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.IndexBRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.IndexBRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.IndexBRight_X.value,
@@ -2530,10 +2704,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.PinkyBLeft_Toggle)
                 {
-                    CharacterDetails.PinkyBLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBLeft_X));
-                    CharacterDetails.PinkyBLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBLeft_Y));
-                    CharacterDetails.PinkyBLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBLeft_Z));
-                    CharacterDetails.PinkyBLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBLeft_X), 16);
+                    CharacterDetails.PinkyBLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.PinkyBLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.PinkyBLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.PinkyBLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.PinkyBLeft_X.value,
@@ -2552,10 +2727,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.PinkyBRight_Toggle)
                 {
-                    CharacterDetails.PinkyBRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBRight_X));
-                    CharacterDetails.PinkyBRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBRight_Y));
-                    CharacterDetails.PinkyBRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBRight_Z));
-                    CharacterDetails.PinkyBRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.PinkyBRight_X), 16);
+                    CharacterDetails.PinkyBRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.PinkyBRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.PinkyBRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.PinkyBRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.PinkyBRight_X.value,
@@ -2574,10 +2750,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.RingBLeft_Toggle)
                 {
-                    CharacterDetails.RingBLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBLeft_X));
-                    CharacterDetails.RingBLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBLeft_Y));
-                    CharacterDetails.RingBLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBLeft_Z));
-                    CharacterDetails.RingBLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBLeft_X), 16);
+                    CharacterDetails.RingBLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.RingBLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.RingBLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.RingBLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.RingBLeft_X.value,
@@ -2596,10 +2773,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.RingBRight_Toggle)
                 {
-                    CharacterDetails.RingBRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBRight_X));
-                    CharacterDetails.RingBRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBRight_Y));
-                    CharacterDetails.RingBRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBRight_Z));
-                    CharacterDetails.RingBRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.RingBRight_X), 16);
+                    CharacterDetails.RingBRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.RingBRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.RingBRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.RingBRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.RingBRight_X.value,
@@ -2618,10 +2796,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.MiddleBLeft_Toggle)
                 {
-                    CharacterDetails.MiddleBLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBLeft_X));
-                    CharacterDetails.MiddleBLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBLeft_Y));
-                    CharacterDetails.MiddleBLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBLeft_Z));
-                    CharacterDetails.MiddleBLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBLeft_X), 16);
+                    CharacterDetails.MiddleBLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.MiddleBLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.MiddleBLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.MiddleBLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.MiddleBLeft_X.value,
@@ -2640,10 +2819,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.MiddleBRight_Toggle)
                 {
-                    CharacterDetails.MiddleBRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBRight_X));
-                    CharacterDetails.MiddleBRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBRight_Y));
-                    CharacterDetails.MiddleBRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBRight_Z));
-                    CharacterDetails.MiddleBRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.MiddleBRight_X), 16);
+                    CharacterDetails.MiddleBRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.MiddleBRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.MiddleBRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.MiddleBRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.MiddleBRight_X.value,
@@ -2662,10 +2842,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ThumbBLeft_Toggle)
                 {
-                    CharacterDetails.ThumbBLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBLeft_X));
-                    CharacterDetails.ThumbBLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBLeft_Y));
-                    CharacterDetails.ThumbBLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBLeft_Z));
-                    CharacterDetails.ThumbBLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBLeft_X), 16);
+                    CharacterDetails.ThumbBLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ThumbBLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ThumbBLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ThumbBLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ThumbBLeft_X.value,
@@ -2684,10 +2865,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ThumbBRight_Toggle)
                 {
-                    CharacterDetails.ThumbBRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBRight_X));
-                    CharacterDetails.ThumbBRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBRight_Y));
-                    CharacterDetails.ThumbBRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBRight_Z));
-                    CharacterDetails.ThumbBRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ThumbBRight_X), 16);
+                    CharacterDetails.ThumbBRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ThumbBRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ThumbBRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ThumbBRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ThumbBRight_X.value,
@@ -2706,10 +2888,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.TailA_Toggle)
                 {
-                    CharacterDetails.TailA_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailA_X));
-                    CharacterDetails.TailA_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailA_Y));
-                    CharacterDetails.TailA_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailA_Z));
-                    CharacterDetails.TailA_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailA_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailA_X), 16);
+                    CharacterDetails.TailA_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.TailA_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.TailA_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.TailA_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.TailA_X.value,
@@ -2728,10 +2911,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.TailB_Toggle)
                 {
-                    CharacterDetails.TailB_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailB_X));
-                    CharacterDetails.TailB_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailB_Y));
-                    CharacterDetails.TailB_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailB_Z));
-                    CharacterDetails.TailB_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailB_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailB_X), 16);
+                    CharacterDetails.TailB_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.TailB_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.TailB_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.TailB_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.TailB_X.value,
@@ -2750,10 +2934,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.TailC_Toggle)
                 {
-                    CharacterDetails.TailC_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailC_X));
-                    CharacterDetails.TailC_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailC_Y));
-                    CharacterDetails.TailC_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailC_Z));
-                    CharacterDetails.TailC_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailC_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailC_X), 16);
+                    CharacterDetails.TailC_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.TailC_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.TailC_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.TailC_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.TailC_X.value,
@@ -2772,10 +2957,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.TailD_Toggle)
                 {
-                    CharacterDetails.TailD_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailD_X));
-                    CharacterDetails.TailD_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailD_Y));
-                    CharacterDetails.TailD_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailD_Z));
-                    CharacterDetails.TailD_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailD_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailD_X), 16);
+                    CharacterDetails.TailD_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.TailD_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.TailD_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.TailD_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.TailD_X.value,
@@ -2794,10 +2980,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.TailE_Toggle)
                 {
-                    CharacterDetails.TailE_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailE_X));
-                    CharacterDetails.TailE_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailE_Y));
-                    CharacterDetails.TailE_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailE_Z));
-                    CharacterDetails.TailE_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailE_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.TailE_X), 16);
+                    CharacterDetails.TailE_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.TailE_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.TailE_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.TailE_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.TailE_X.value,
@@ -2816,10 +3003,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.RootHead_Toggle)
                 {
-                    CharacterDetails.RootHead_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RootHead_X));
-                    CharacterDetails.RootHead_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RootHead_Y));
-                    CharacterDetails.RootHead_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RootHead_Z));
-                    CharacterDetails.RootHead_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.RootHead_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.RootHead_X), 16);
+                    CharacterDetails.RootHead_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.RootHead_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.RootHead_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.RootHead_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.RootHead_X.value,
@@ -2838,10 +3026,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.Jaw_Toggle)
                 {
-                    CharacterDetails.Jaw_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Jaw_X));
-                    CharacterDetails.Jaw_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Jaw_Y));
-                    CharacterDetails.Jaw_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Jaw_Z));
-                    CharacterDetails.Jaw_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Jaw_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.Jaw_X), 16);
+                    CharacterDetails.Jaw_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.Jaw_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.Jaw_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.Jaw_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.Jaw_X.value,
@@ -2860,10 +3049,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.EyelidLowerLeft_Toggle)
                 {
-                    CharacterDetails.EyelidLowerLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerLeft_X));
-                    CharacterDetails.EyelidLowerLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerLeft_Y));
-                    CharacterDetails.EyelidLowerLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerLeft_Z));
-                    CharacterDetails.EyelidLowerLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerLeft_X), 16);
+                    CharacterDetails.EyelidLowerLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.EyelidLowerLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.EyelidLowerLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.EyelidLowerLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.EyelidLowerLeft_X.value,
@@ -2882,10 +3072,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.EyelidLowerRight_Toggle)
                 {
-                    CharacterDetails.EyelidLowerRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerRight_X));
-                    CharacterDetails.EyelidLowerRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerRight_Y));
-                    CharacterDetails.EyelidLowerRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerRight_Z));
-                    CharacterDetails.EyelidLowerRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidLowerRight_X), 16);
+                    CharacterDetails.EyelidLowerRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.EyelidLowerRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.EyelidLowerRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.EyelidLowerRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.EyelidLowerRight_X.value,
@@ -2904,10 +3095,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.EyeLeft_Toggle)
                 {
-                    CharacterDetails.EyeLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeLeft_X));
-                    CharacterDetails.EyeLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeLeft_Y));
-                    CharacterDetails.EyeLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeLeft_Z));
-                    CharacterDetails.EyeLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeLeft_X), 16);
+                    CharacterDetails.EyeLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.EyeLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.EyeLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.EyeLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.EyeLeft_X.value,
@@ -2926,10 +3118,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.EyeRight_Toggle)
                 {
-                    CharacterDetails.EyeRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeRight_X));
-                    CharacterDetails.EyeRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeRight_Y));
-                    CharacterDetails.EyeRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeRight_Z));
-                    CharacterDetails.EyeRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyeRight_X), 16);
+                    CharacterDetails.EyeRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.EyeRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.EyeRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.EyeRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.EyeRight_X.value,
@@ -2948,10 +3141,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.Nose_Toggle)
                 {
-                    CharacterDetails.Nose_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Nose_X));
-                    CharacterDetails.Nose_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Nose_Y));
-                    CharacterDetails.Nose_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Nose_Z));
-                    CharacterDetails.Nose_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Nose_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.Nose_X), 16);
+                    CharacterDetails.Nose_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.Nose_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.Nose_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.Nose_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.Nose_X.value,
@@ -2970,10 +3164,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.CheekLeft_Toggle)
                 {
-                    CharacterDetails.CheekLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekLeft_X));
-                    CharacterDetails.CheekLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekLeft_Y));
-                    CharacterDetails.CheekLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekLeft_Z));
-                    CharacterDetails.CheekLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekLeft_X), 16);
+                    CharacterDetails.CheekLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.CheekLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.CheekLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.CheekLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.CheekLeft_X.value,
@@ -2992,10 +3187,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.HrothWhiskersLeft_Toggle)
                 {
-                    CharacterDetails.HrothWhiskersLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersLeft_X));
-                    CharacterDetails.HrothWhiskersLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersLeft_Y));
-                    CharacterDetails.HrothWhiskersLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersLeft_Z));
-                    CharacterDetails.HrothWhiskersLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersLeft_X), 16);
+                    CharacterDetails.HrothWhiskersLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.HrothWhiskersLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.HrothWhiskersLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.HrothWhiskersLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.HrothWhiskersLeft_X.value,
@@ -3014,10 +3210,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.CheekRight_Toggle)
                 {
-                    CharacterDetails.CheekRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekRight_X));
-                    CharacterDetails.CheekRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekRight_Y));
-                    CharacterDetails.CheekRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekRight_Z));
-                    CharacterDetails.CheekRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.CheekRight_X), 16);
+                    CharacterDetails.CheekRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.CheekRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.CheekRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.CheekRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.CheekRight_X.value,
@@ -3036,10 +3233,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.HrothWhiskersRight_Toggle)
                 {
-                    CharacterDetails.HrothWhiskersRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersRight_X));
-                    CharacterDetails.HrothWhiskersRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersRight_Y));
-                    CharacterDetails.HrothWhiskersRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersRight_Z));
-                    CharacterDetails.HrothWhiskersRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothWhiskersRight_X), 16);
+                    CharacterDetails.HrothWhiskersRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.HrothWhiskersRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.HrothWhiskersRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.HrothWhiskersRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.HrothWhiskersRight_X.value,
@@ -3058,10 +3256,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.LipsLeft_Toggle)
                 {
-                    CharacterDetails.LipsLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsLeft_X));
-                    CharacterDetails.LipsLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsLeft_Y));
-                    CharacterDetails.LipsLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsLeft_Z));
-                    CharacterDetails.LipsLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsLeft_X), 16);
+                    CharacterDetails.LipsLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.LipsLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.LipsLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.LipsLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.LipsLeft_X.value,
@@ -3080,10 +3279,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.HrothEyebrowLeft_Toggle)
                 {
-                    CharacterDetails.HrothEyebrowLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowLeft_X));
-                    CharacterDetails.HrothEyebrowLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowLeft_Y));
-                    CharacterDetails.HrothEyebrowLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowLeft_Z));
-                    CharacterDetails.HrothEyebrowLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowLeft_X), 16);
+                    CharacterDetails.HrothEyebrowLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.HrothEyebrowLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.HrothEyebrowLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.HrothEyebrowLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.HrothEyebrowLeft_X.value,
@@ -3102,10 +3302,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.LipsRight_Toggle)
                 {
-                    CharacterDetails.LipsRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsRight_X));
-                    CharacterDetails.LipsRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsRight_Y));
-                    CharacterDetails.LipsRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsRight_Z));
-                    CharacterDetails.LipsRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipsRight_X), 16);
+                    CharacterDetails.LipsRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.LipsRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.LipsRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.LipsRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.LipsRight_X.value,
@@ -3124,10 +3325,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.HrothEyebrowRight_Toggle)
                 {
-                    CharacterDetails.HrothEyebrowRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowRight_X));
-                    CharacterDetails.HrothEyebrowRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowRight_Y));
-                    CharacterDetails.HrothEyebrowRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowRight_Z));
-                    CharacterDetails.HrothEyebrowRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyebrowRight_X), 16);
+                    CharacterDetails.HrothEyebrowRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.HrothEyebrowRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.HrothEyebrowRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.HrothEyebrowRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.HrothEyebrowRight_X.value,
@@ -3146,10 +3348,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.EyebrowLeft_Toggle)
                 {
-                    CharacterDetails.EyebrowLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowLeft_X));
-                    CharacterDetails.EyebrowLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowLeft_Y));
-                    CharacterDetails.EyebrowLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowLeft_Z));
-                    CharacterDetails.EyebrowLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowLeft_X), 16);
+                    CharacterDetails.EyebrowLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.EyebrowLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.EyebrowLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.EyebrowLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.EyebrowLeft_X.value,
@@ -3168,10 +3371,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.HrothBridge_Toggle)
                 {
-                    CharacterDetails.HrothBridge_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBridge_X));
-                    CharacterDetails.HrothBridge_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBridge_Y));
-                    CharacterDetails.HrothBridge_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBridge_Z));
-                    CharacterDetails.HrothBridge_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBridge_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBridge_X), 16);
+                    CharacterDetails.HrothBridge_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.HrothBridge_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.HrothBridge_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.HrothBridge_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.HrothBridge_X.value,
@@ -3190,10 +3394,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.EyebrowRight_Toggle)
                 {
-                    CharacterDetails.EyebrowRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowRight_X));
-                    CharacterDetails.EyebrowRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowRight_Y));
-                    CharacterDetails.EyebrowRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowRight_Z));
-                    CharacterDetails.EyebrowRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyebrowRight_X), 16);
+                    CharacterDetails.EyebrowRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.EyebrowRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.EyebrowRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.EyebrowRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.EyebrowRight_X.value,
@@ -3212,10 +3417,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.HrothBrowLeft_Toggle)
                 {
-                    CharacterDetails.HrothBrowLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowLeft_X));
-                    CharacterDetails.HrothBrowLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowLeft_Y));
-                    CharacterDetails.HrothBrowLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowLeft_Z));
-                    CharacterDetails.HrothBrowLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowLeft_X), 16);
+                    CharacterDetails.HrothBrowLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.HrothBrowLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.HrothBrowLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.HrothBrowLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.HrothBrowLeft_X.value,
@@ -3234,10 +3440,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.Bridge_Toggle)
                 {
-                    CharacterDetails.Bridge_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Bridge_X));
-                    CharacterDetails.Bridge_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Bridge_Y));
-                    CharacterDetails.Bridge_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Bridge_Z));
-                    CharacterDetails.Bridge_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.Bridge_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.Bridge_X), 16);
+                    CharacterDetails.Bridge_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.Bridge_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.Bridge_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.Bridge_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.Bridge_X.value,
@@ -3256,10 +3463,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.HrothBrowRight_Toggle)
                 {
-                    CharacterDetails.HrothBrowRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowRight_X));
-                    CharacterDetails.HrothBrowRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowRight_Y));
-                    CharacterDetails.HrothBrowRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowRight_Z));
-                    CharacterDetails.HrothBrowRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothBrowRight_X), 16);
+                    CharacterDetails.HrothBrowRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.HrothBrowRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.HrothBrowRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.HrothBrowRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.HrothBrowRight_X.value,
@@ -3278,10 +3486,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.BrowLeft_Toggle)
                 {
-                    CharacterDetails.BrowLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowLeft_X));
-                    CharacterDetails.BrowLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowLeft_Y));
-                    CharacterDetails.BrowLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowLeft_Z));
-                    CharacterDetails.BrowLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowLeft_X), 16);
+                    CharacterDetails.BrowLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.BrowLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.BrowLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.BrowLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.BrowLeft_X.value,
@@ -3300,10 +3509,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.HrothJawUpper_Toggle)
                 {
-                    CharacterDetails.HrothJawUpper_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothJawUpper_X));
-                    CharacterDetails.HrothJawUpper_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothJawUpper_Y));
-                    CharacterDetails.HrothJawUpper_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothJawUpper_Z));
-                    CharacterDetails.HrothJawUpper_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothJawUpper_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothJawUpper_X), 16);
+                    CharacterDetails.HrothJawUpper_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.HrothJawUpper_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.HrothJawUpper_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.HrothJawUpper_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.HrothJawUpper_X.value,
@@ -3322,10 +3532,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.BrowRight_Toggle)
                 {
-                    CharacterDetails.BrowRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowRight_X));
-                    CharacterDetails.BrowRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowRight_Y));
-                    CharacterDetails.BrowRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowRight_Z));
-                    CharacterDetails.BrowRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.BrowRight_X), 16);
+                    CharacterDetails.BrowRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.BrowRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.BrowRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.BrowRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.BrowRight_X.value,
@@ -3344,10 +3555,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.HrothLipUpper_Toggle)
                 {
-                    CharacterDetails.HrothLipUpper_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpper_X));
-                    CharacterDetails.HrothLipUpper_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpper_Y));
-                    CharacterDetails.HrothLipUpper_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpper_Z));
-                    CharacterDetails.HrothLipUpper_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpper_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpper_X), 16);
+                    CharacterDetails.HrothLipUpper_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.HrothLipUpper_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.HrothLipUpper_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.HrothLipUpper_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.HrothLipUpper_X.value,
@@ -3366,10 +3578,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.LipUpperA_Toggle)
                 {
-                    CharacterDetails.LipUpperA_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperA_X));
-                    CharacterDetails.LipUpperA_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperA_Y));
-                    CharacterDetails.LipUpperA_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperA_Z));
-                    CharacterDetails.LipUpperA_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperA_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperA_X), 16);
+                    CharacterDetails.LipUpperA_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.LipUpperA_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.LipUpperA_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.LipUpperA_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.LipUpperA_X.value,
@@ -3388,10 +3601,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.HrothEyelidUpperLeft_Toggle)
                 {
-                    CharacterDetails.HrothEyelidUpperLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperLeft_X));
-                    CharacterDetails.HrothEyelidUpperLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperLeft_Y));
-                    CharacterDetails.HrothEyelidUpperLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperLeft_Z));
-                    CharacterDetails.HrothEyelidUpperLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperLeft_X), 16);
+                    CharacterDetails.HrothEyelidUpperLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.HrothEyelidUpperLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.HrothEyelidUpperLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.HrothEyelidUpperLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.HrothEyelidUpperLeft_X.value,
@@ -3410,10 +3624,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.EyelidUpperLeft_Toggle)
                 {
-                    CharacterDetails.EyelidUpperLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperLeft_X));
-                    CharacterDetails.EyelidUpperLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperLeft_Y));
-                    CharacterDetails.EyelidUpperLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperLeft_Z));
-                    CharacterDetails.EyelidUpperLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperLeft_X), 16);
+                    CharacterDetails.EyelidUpperLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.EyelidUpperLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.EyelidUpperLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.EyelidUpperLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.EyelidUpperLeft_X.value,
@@ -3432,10 +3647,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.HrothEyelidUpperRight_Toggle)
                 {
-                    CharacterDetails.HrothEyelidUpperRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperRight_X));
-                    CharacterDetails.HrothEyelidUpperRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperRight_Y));
-                    CharacterDetails.HrothEyelidUpperRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperRight_Z));
-                    CharacterDetails.HrothEyelidUpperRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothEyelidUpperRight_X), 16);
+                    CharacterDetails.HrothEyelidUpperRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.HrothEyelidUpperRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.HrothEyelidUpperRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.HrothEyelidUpperRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.HrothEyelidUpperRight_X.value,
@@ -3454,10 +3670,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.EyelidUpperRight_Toggle)
                 {
-                    CharacterDetails.EyelidUpperRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperRight_X));
-                    CharacterDetails.EyelidUpperRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperRight_Y));
-                    CharacterDetails.EyelidUpperRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperRight_Z));
-                    CharacterDetails.EyelidUpperRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.EyelidUpperRight_X), 16);
+                    CharacterDetails.EyelidUpperRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.EyelidUpperRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.EyelidUpperRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.EyelidUpperRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.EyelidUpperRight_X.value,
@@ -3476,10 +3693,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.HrothLipsLeft_Toggle)
                 {
-                    CharacterDetails.HrothLipsLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsLeft_X));
-                    CharacterDetails.HrothLipsLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsLeft_Y));
-                    CharacterDetails.HrothLipsLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsLeft_Z));
-                    CharacterDetails.HrothLipsLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsLeft_X), 16);
+                    CharacterDetails.HrothLipsLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.HrothLipsLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.HrothLipsLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.HrothLipsLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.HrothLipsLeft_X.value,
@@ -3498,10 +3716,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.LipLowerA_Toggle)
                 {
-                    CharacterDetails.LipLowerA_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerA_X));
-                    CharacterDetails.LipLowerA_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerA_Y));
-                    CharacterDetails.LipLowerA_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerA_Z));
-                    CharacterDetails.LipLowerA_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerA_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerA_X), 16);
+                    CharacterDetails.LipLowerA_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.LipLowerA_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.LipLowerA_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.LipLowerA_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.LipLowerA_X.value,
@@ -3520,10 +3739,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.HrothLipsRight_Toggle)
                 {
-                    CharacterDetails.HrothLipsRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsRight_X));
-                    CharacterDetails.HrothLipsRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsRight_Y));
-                    CharacterDetails.HrothLipsRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsRight_Z));
-                    CharacterDetails.HrothLipsRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipsRight_X), 16);
+                    CharacterDetails.HrothLipsRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.HrothLipsRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.HrothLipsRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.HrothLipsRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.HrothLipsRight_X.value,
@@ -3542,10 +3762,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.VieraEar01ALeft_Toggle)
                 {
-                    CharacterDetails.VieraEar01ALeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ALeft_X));
-                    CharacterDetails.VieraEar01ALeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ALeft_Y));
-                    CharacterDetails.VieraEar01ALeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ALeft_Z));
-                    CharacterDetails.VieraEar01ALeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ALeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ALeft_X), 16);
+                    CharacterDetails.VieraEar01ALeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.VieraEar01ALeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.VieraEar01ALeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.VieraEar01ALeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.VieraEar01ALeft_X.value,
@@ -3564,10 +3785,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.LipUpperB_Toggle)
                 {
-                    CharacterDetails.LipUpperB_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperB_X));
-                    CharacterDetails.LipUpperB_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperB_Y));
-                    CharacterDetails.LipUpperB_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperB_Z));
-                    CharacterDetails.LipUpperB_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperB_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipUpperB_X), 16);
+                    CharacterDetails.LipUpperB_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.LipUpperB_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.LipUpperB_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.LipUpperB_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.LipUpperB_X.value,
@@ -3586,10 +3808,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.HrothLipUpperLeft_Toggle)
                 {
-                    CharacterDetails.HrothLipUpperLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperLeft_X));
-                    CharacterDetails.HrothLipUpperLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperLeft_Y));
-                    CharacterDetails.HrothLipUpperLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperLeft_Z));
-                    CharacterDetails.HrothLipUpperLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperLeft_X), 16);
+                    CharacterDetails.HrothLipUpperLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.HrothLipUpperLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.HrothLipUpperLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.HrothLipUpperLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.HrothLipUpperLeft_X.value,
@@ -3608,10 +3831,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.VieraEar01ARight_Toggle)
                 {
-                    CharacterDetails.VieraEar01ARight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ARight_X));
-                    CharacterDetails.VieraEar01ARight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ARight_Y));
-                    CharacterDetails.VieraEar01ARight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ARight_Z));
-                    CharacterDetails.VieraEar01ARight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ARight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01ARight_X), 16);
+                    CharacterDetails.VieraEar01ARight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.VieraEar01ARight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.VieraEar01ARight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.VieraEar01ARight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.VieraEar01ARight_X.value,
@@ -3630,10 +3854,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.LipLowerB_Toggle)
                 {
-                    CharacterDetails.LipLowerB_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerB_X));
-                    CharacterDetails.LipLowerB_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerB_Y));
-                    CharacterDetails.LipLowerB_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerB_Z));
-                    CharacterDetails.LipLowerB_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerB_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.LipLowerB_X), 16);
+                    CharacterDetails.LipLowerB_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.LipLowerB_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.LipLowerB_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.LipLowerB_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.LipLowerB_X.value,
@@ -3652,10 +3877,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.HrothLipUpperRight_Toggle)
                 {
-                    CharacterDetails.HrothLipUpperRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperRight_X));
-                    CharacterDetails.HrothLipUpperRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperRight_Y));
-                    CharacterDetails.HrothLipUpperRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperRight_Z));
-                    CharacterDetails.HrothLipUpperRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipUpperRight_X), 16);
+                    CharacterDetails.HrothLipUpperRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.HrothLipUpperRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.HrothLipUpperRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.HrothLipUpperRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.HrothLipUpperRight_X.value,
@@ -3674,10 +3900,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.VieraEar02ALeft_Toggle)
                 {
-                    CharacterDetails.VieraEar02ALeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ALeft_X));
-                    CharacterDetails.VieraEar02ALeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ALeft_Y));
-                    CharacterDetails.VieraEar02ALeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ALeft_Z));
-                    CharacterDetails.VieraEar02ALeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ALeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ALeft_X), 16);
+                    CharacterDetails.VieraEar02ALeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.VieraEar02ALeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.VieraEar02ALeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.VieraEar02ALeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.VieraEar02ALeft_X.value,
@@ -3696,10 +3923,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.HrothLipLower_Toggle)
                 {
-                    CharacterDetails.HrothLipLower_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipLower_X));
-                    CharacterDetails.HrothLipLower_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipLower_Y));
-                    CharacterDetails.HrothLipLower_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipLower_Z));
-                    CharacterDetails.HrothLipLower_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipLower_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.HrothLipLower_X), 16);
+                    CharacterDetails.HrothLipLower_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.HrothLipLower_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.HrothLipLower_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.HrothLipLower_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.HrothLipLower_X.value,
@@ -3718,10 +3946,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.VieraEar02ARight_Toggle)
                 {
-                    CharacterDetails.VieraEar02ARight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ARight_X));
-                    CharacterDetails.VieraEar02ARight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ARight_Y));
-                    CharacterDetails.VieraEar02ARight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ARight_Z));
-                    CharacterDetails.VieraEar02ARight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ARight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02ARight_X), 16);
+                    CharacterDetails.VieraEar02ARight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.VieraEar02ARight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.VieraEar02ARight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.VieraEar02ARight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.VieraEar02ARight_X.value,
@@ -3740,10 +3969,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.VieraEar03ALeft_Toggle)
                 {
-                    CharacterDetails.VieraEar03ALeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ALeft_X));
-                    CharacterDetails.VieraEar03ALeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ALeft_Y));
-                    CharacterDetails.VieraEar03ALeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ALeft_Z));
-                    CharacterDetails.VieraEar03ALeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ALeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ALeft_X), 16);
+                    CharacterDetails.VieraEar03ALeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.VieraEar03ALeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.VieraEar03ALeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.VieraEar03ALeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.VieraEar03ALeft_X.value,
@@ -3762,10 +3992,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.VieraEar03ARight_Toggle)
                 {
-                    CharacterDetails.VieraEar03ARight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ARight_X));
-                    CharacterDetails.VieraEar03ARight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ARight_Y));
-                    CharacterDetails.VieraEar03ARight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ARight_Z));
-                    CharacterDetails.VieraEar03ARight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ARight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03ARight_X), 16);
+                    CharacterDetails.VieraEar03ARight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.VieraEar03ARight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.VieraEar03ARight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.VieraEar03ARight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.VieraEar03ARight_X.value,
@@ -3784,10 +4015,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.VieraEar04ALeft_Toggle)
                 {
-                    CharacterDetails.VieraEar04ALeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ALeft_X));
-                    CharacterDetails.VieraEar04ALeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ALeft_Y));
-                    CharacterDetails.VieraEar04ALeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ALeft_Z));
-                    CharacterDetails.VieraEar04ALeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ALeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ALeft_X), 16);
+                    CharacterDetails.VieraEar04ALeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.VieraEar04ALeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.VieraEar04ALeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.VieraEar04ALeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.VieraEar04ALeft_X.value,
@@ -3806,10 +4038,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.VieraEar04ARight_Toggle)
                 {
-                    CharacterDetails.VieraEar04ARight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ARight_X));
-                    CharacterDetails.VieraEar04ARight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ARight_Y));
-                    CharacterDetails.VieraEar04ARight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ARight_Z));
-                    CharacterDetails.VieraEar04ARight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ARight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04ARight_X), 16);
+                    CharacterDetails.VieraEar04ARight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.VieraEar04ARight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.VieraEar04ARight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.VieraEar04ARight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.VieraEar04ARight_X.value,
@@ -3828,10 +4061,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.VieraLipLowerA_Toggle)
                 {
-                    CharacterDetails.VieraLipLowerA_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerA_X));
-                    CharacterDetails.VieraLipLowerA_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerA_Y));
-                    CharacterDetails.VieraLipLowerA_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerA_Z));
-                    CharacterDetails.VieraLipLowerA_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerA_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerA_X), 16);
+                    CharacterDetails.VieraLipLowerA_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.VieraLipLowerA_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.VieraLipLowerA_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.VieraLipLowerA_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.VieraLipLowerA_X.value,
@@ -3850,10 +4084,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.VieraLipUpperB_Toggle)
                 {
-                    CharacterDetails.VieraLipUpperB_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipUpperB_X));
-                    CharacterDetails.VieraLipUpperB_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipUpperB_Y));
-                    CharacterDetails.VieraLipUpperB_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipUpperB_Z));
-                    CharacterDetails.VieraLipUpperB_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipUpperB_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipUpperB_X), 16);
+                    CharacterDetails.VieraLipUpperB_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.VieraLipUpperB_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.VieraLipUpperB_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.VieraLipUpperB_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.VieraLipUpperB_X.value,
@@ -3872,10 +4107,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.VieraEar01BLeft_Toggle)
                 {
-                    CharacterDetails.VieraEar01BLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BLeft_X));
-                    CharacterDetails.VieraEar01BLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BLeft_Y));
-                    CharacterDetails.VieraEar01BLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BLeft_Z));
-                    CharacterDetails.VieraEar01BLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BLeft_X), 16);
+                    CharacterDetails.VieraEar01BLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.VieraEar01BLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.VieraEar01BLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.VieraEar01BLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.VieraEar01BLeft_X.value,
@@ -3894,10 +4130,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.VieraEar01BRight_Toggle)
                 {
-                    CharacterDetails.VieraEar01BRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BRight_X));
-                    CharacterDetails.VieraEar01BRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BRight_Y));
-                    CharacterDetails.VieraEar01BRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BRight_Z));
-                    CharacterDetails.VieraEar01BRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar01BRight_X), 16);
+                    CharacterDetails.VieraEar01BRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.VieraEar01BRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.VieraEar01BRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.VieraEar01BRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.VieraEar01BRight_X.value,
@@ -3916,10 +4153,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.VieraEar02BLeft_Toggle)
                 {
-                    CharacterDetails.VieraEar02BLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BLeft_X));
-                    CharacterDetails.VieraEar02BLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BLeft_Y));
-                    CharacterDetails.VieraEar02BLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BLeft_Z));
-                    CharacterDetails.VieraEar02BLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BLeft_X), 16);
+                    CharacterDetails.VieraEar02BLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.VieraEar02BLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.VieraEar02BLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.VieraEar02BLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.VieraEar02BLeft_X.value,
@@ -3938,10 +4176,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.VieraEar02BRight_Toggle)
                 {
-                    CharacterDetails.VieraEar02BRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BRight_X));
-                    CharacterDetails.VieraEar02BRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BRight_Y));
-                    CharacterDetails.VieraEar02BRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BRight_Z));
-                    CharacterDetails.VieraEar02BRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar02BRight_X), 16);
+                    CharacterDetails.VieraEar02BRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.VieraEar02BRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.VieraEar02BRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.VieraEar02BRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.VieraEar02BRight_X.value,
@@ -3960,10 +4199,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.VieraEar03BLeft_Toggle)
                 {
-                    CharacterDetails.VieraEar03BLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BLeft_X));
-                    CharacterDetails.VieraEar03BLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BLeft_Y));
-                    CharacterDetails.VieraEar03BLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BLeft_Z));
-                    CharacterDetails.VieraEar03BLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BLeft_X), 16);
+                    CharacterDetails.VieraEar03BLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.VieraEar03BLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.VieraEar03BLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.VieraEar03BLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.VieraEar03BLeft_X.value,
@@ -3982,10 +4222,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.VieraEar03BRight_Toggle)
                 {
-                    CharacterDetails.VieraEar03BRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BRight_X));
-                    CharacterDetails.VieraEar03BRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BRight_Y));
-                    CharacterDetails.VieraEar03BRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BRight_Z));
-                    CharacterDetails.VieraEar03BRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar03BRight_X), 16);
+                    CharacterDetails.VieraEar03BRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.VieraEar03BRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.VieraEar03BRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.VieraEar03BRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.VieraEar03BRight_X.value,
@@ -4004,10 +4245,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.VieraEar04BLeft_Toggle)
                 {
-                    CharacterDetails.VieraEar04BLeft_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BLeft_X));
-                    CharacterDetails.VieraEar04BLeft_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BLeft_Y));
-                    CharacterDetails.VieraEar04BLeft_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BLeft_Z));
-                    CharacterDetails.VieraEar04BLeft_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BLeft_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BLeft_X), 16);
+                    CharacterDetails.VieraEar04BLeft_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.VieraEar04BLeft_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.VieraEar04BLeft_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.VieraEar04BLeft_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.VieraEar04BLeft_X.value,
@@ -4026,10 +4268,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.VieraEar04BRight_Toggle)
                 {
-                    CharacterDetails.VieraEar04BRight_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BRight_X));
-                    CharacterDetails.VieraEar04BRight_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BRight_Y));
-                    CharacterDetails.VieraEar04BRight_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BRight_Z));
-                    CharacterDetails.VieraEar04BRight_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BRight_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraEar04BRight_X), 16);
+                    CharacterDetails.VieraEar04BRight_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.VieraEar04BRight_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.VieraEar04BRight_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.VieraEar04BRight_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.VieraEar04BRight_X.value,
@@ -4048,10 +4291,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.VieraLipLowerB_Toggle)
                 {
-                    CharacterDetails.VieraLipLowerB_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerB_X));
-                    CharacterDetails.VieraLipLowerB_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerB_Y));
-                    CharacterDetails.VieraLipLowerB_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerB_Z));
-                    CharacterDetails.VieraLipLowerB_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerB_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.VieraLipLowerB_X), 16);
+                    CharacterDetails.VieraLipLowerB_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.VieraLipLowerB_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.VieraLipLowerB_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.VieraLipLowerB_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.VieraLipLowerB_X.value,
@@ -4070,10 +4314,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExRootHair_Toggle)
                 {
-                    CharacterDetails.ExRootHair_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExRootHair_X));
-                    CharacterDetails.ExRootHair_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExRootHair_Y));
-                    CharacterDetails.ExRootHair_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExRootHair_Z));
-                    CharacterDetails.ExRootHair_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExRootHair_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExRootHair_X), 16);
+                    CharacterDetails.ExRootHair_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExRootHair_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExRootHair_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExRootHair_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExRootHair_X.value,
@@ -4092,10 +4337,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExHairA_Toggle)
                 {
-                    CharacterDetails.ExHairA_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairA_X));
-                    CharacterDetails.ExHairA_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairA_Y));
-                    CharacterDetails.ExHairA_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairA_Z));
-                    CharacterDetails.ExHairA_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairA_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairA_X), 16);
+                    CharacterDetails.ExHairA_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExHairA_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExHairA_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExHairA_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExHairA_X.value,
@@ -4114,10 +4360,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExHairB_Toggle)
                 {
-                    CharacterDetails.ExHairB_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairB_X));
-                    CharacterDetails.ExHairB_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairB_Y));
-                    CharacterDetails.ExHairB_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairB_Z));
-                    CharacterDetails.ExHairB_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairB_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairB_X), 16);
+                    CharacterDetails.ExHairB_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExHairB_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExHairB_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExHairB_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExHairB_X.value,
@@ -4136,10 +4383,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExHairC_Toggle)
                 {
-                    CharacterDetails.ExHairC_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairC_X));
-                    CharacterDetails.ExHairC_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairC_Y));
-                    CharacterDetails.ExHairC_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairC_Z));
-                    CharacterDetails.ExHairC_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairC_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairC_X), 16);
+                    CharacterDetails.ExHairC_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExHairC_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExHairC_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExHairC_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExHairC_X.value,
@@ -4158,10 +4406,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExHairD_Toggle)
                 {
-                    CharacterDetails.ExHairD_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairD_X));
-                    CharacterDetails.ExHairD_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairD_Y));
-                    CharacterDetails.ExHairD_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairD_Z));
-                    CharacterDetails.ExHairD_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairD_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairD_X), 16);
+                    CharacterDetails.ExHairD_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExHairD_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExHairD_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExHairD_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExHairD_X.value,
@@ -4180,10 +4429,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExHairE_Toggle)
                 {
-                    CharacterDetails.ExHairE_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairE_X));
-                    CharacterDetails.ExHairE_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairE_Y));
-                    CharacterDetails.ExHairE_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairE_Z));
-                    CharacterDetails.ExHairE_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairE_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairE_X), 16);
+                    CharacterDetails.ExHairE_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExHairE_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExHairE_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExHairE_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExHairE_X.value,
@@ -4202,10 +4452,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExHairF_Toggle)
                 {
-                    CharacterDetails.ExHairF_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairF_X));
-                    CharacterDetails.ExHairF_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairF_Y));
-                    CharacterDetails.ExHairF_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairF_Z));
-                    CharacterDetails.ExHairF_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairF_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairF_X), 16);
+                    CharacterDetails.ExHairF_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExHairF_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExHairF_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExHairF_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExHairF_X.value,
@@ -4224,10 +4475,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExHairG_Toggle)
                 {
-                    CharacterDetails.ExHairG_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairG_X));
-                    CharacterDetails.ExHairG_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairG_Y));
-                    CharacterDetails.ExHairG_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairG_Z));
-                    CharacterDetails.ExHairG_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairG_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairG_X), 16);
+                    CharacterDetails.ExHairG_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExHairG_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExHairG_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExHairG_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExHairG_X.value,
@@ -4246,10 +4498,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExHairH_Toggle)
                 {
-                    CharacterDetails.ExHairH_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairH_X));
-                    CharacterDetails.ExHairH_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairH_Y));
-                    CharacterDetails.ExHairH_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairH_Z));
-                    CharacterDetails.ExHairH_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairH_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairH_X), 16);
+                    CharacterDetails.ExHairH_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExHairH_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExHairH_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExHairH_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExHairH_X.value,
@@ -4268,10 +4521,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExHairI_Toggle)
                 {
-                    CharacterDetails.ExHairI_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairI_X));
-                    CharacterDetails.ExHairI_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairI_Y));
-                    CharacterDetails.ExHairI_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairI_Z));
-                    CharacterDetails.ExHairI_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairI_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairI_X), 16);
+                    CharacterDetails.ExHairI_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExHairI_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExHairI_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExHairI_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExHairI_X.value,
@@ -4290,10 +4544,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExHairJ_Toggle)
                 {
-                    CharacterDetails.ExHairJ_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairJ_X));
-                    CharacterDetails.ExHairJ_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairJ_Y));
-                    CharacterDetails.ExHairJ_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairJ_Z));
-                    CharacterDetails.ExHairJ_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairJ_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairJ_X), 16);
+                    CharacterDetails.ExHairJ_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExHairJ_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExHairJ_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExHairJ_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExHairJ_X.value,
@@ -4312,10 +4567,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExHairK_Toggle)
                 {
-                    CharacterDetails.ExHairK_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairK_X));
-                    CharacterDetails.ExHairK_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairK_Y));
-                    CharacterDetails.ExHairK_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairK_Z));
-                    CharacterDetails.ExHairK_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairK_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairK_X), 16);
+                    CharacterDetails.ExHairK_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExHairK_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExHairK_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExHairK_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExHairK_X.value,
@@ -4334,10 +4590,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExHairL_Toggle)
                 {
-                    CharacterDetails.ExHairL_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairL_X));
-                    CharacterDetails.ExHairL_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairL_Y));
-                    CharacterDetails.ExHairL_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairL_Z));
-                    CharacterDetails.ExHairL_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairL_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExHairL_X), 16);
+                    CharacterDetails.ExHairL_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExHairL_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExHairL_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExHairL_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExHairL_X.value,
@@ -4356,10 +4613,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExRootMet_Toggle)
                 {
-                    CharacterDetails.ExRootMet_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExRootMet_X));
-                    CharacterDetails.ExRootMet_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExRootMet_Y));
-                    CharacterDetails.ExRootMet_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExRootMet_Z));
-                    CharacterDetails.ExRootMet_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExRootMet_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExRootMet_X), 16);
+                    CharacterDetails.ExRootMet_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExRootMet_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExRootMet_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExRootMet_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExRootMet_X.value,
@@ -4378,10 +4636,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExMetA_Toggle)
                 {
-                    CharacterDetails.ExMetA_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetA_X));
-                    CharacterDetails.ExMetA_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetA_Y));
-                    CharacterDetails.ExMetA_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetA_Z));
-                    CharacterDetails.ExMetA_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetA_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetA_X), 16);
+                    CharacterDetails.ExMetA_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExMetA_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExMetA_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExMetA_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExMetA_X.value,
@@ -4400,10 +4659,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExMetB_Toggle)
                 {
-                    CharacterDetails.ExMetB_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetB_X));
-                    CharacterDetails.ExMetB_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetB_Y));
-                    CharacterDetails.ExMetB_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetB_Z));
-                    CharacterDetails.ExMetB_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetB_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetB_X), 16);
+                    CharacterDetails.ExMetB_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExMetB_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExMetB_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExMetB_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExMetB_X.value,
@@ -4422,10 +4682,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExMetC_Toggle)
                 {
-                    CharacterDetails.ExMetC_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetC_X));
-                    CharacterDetails.ExMetC_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetC_Y));
-                    CharacterDetails.ExMetC_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetC_Z));
-                    CharacterDetails.ExMetC_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetC_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetC_X), 16);
+                    CharacterDetails.ExMetC_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExMetC_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExMetC_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExMetC_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExMetC_X.value,
@@ -4444,10 +4705,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExMetD_Toggle)
                 {
-                    CharacterDetails.ExMetD_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetD_X));
-                    CharacterDetails.ExMetD_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetD_Y));
-                    CharacterDetails.ExMetD_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetD_Z));
-                    CharacterDetails.ExMetD_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetD_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetD_X), 16);
+                    CharacterDetails.ExMetD_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExMetD_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExMetD_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExMetD_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExMetD_X.value,
@@ -4466,10 +4728,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExMetE_Toggle)
                 {
-                    CharacterDetails.ExMetE_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetE_X));
-                    CharacterDetails.ExMetE_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetE_Y));
-                    CharacterDetails.ExMetE_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetE_Z));
-                    CharacterDetails.ExMetE_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetE_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetE_X), 16);
+                    CharacterDetails.ExMetE_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExMetE_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExMetE_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExMetE_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExMetE_X.value,
@@ -4488,10 +4751,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExMetF_Toggle)
                 {
-                    CharacterDetails.ExMetF_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetF_X));
-                    CharacterDetails.ExMetF_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetF_Y));
-                    CharacterDetails.ExMetF_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetF_Z));
-                    CharacterDetails.ExMetF_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetF_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetF_X), 16);
+                    CharacterDetails.ExMetF_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExMetF_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExMetF_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExMetF_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExMetF_X.value,
@@ -4510,10 +4774,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExMetG_Toggle)
                 {
-                    CharacterDetails.ExMetG_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetG_X));
-                    CharacterDetails.ExMetG_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetG_Y));
-                    CharacterDetails.ExMetG_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetG_Z));
-                    CharacterDetails.ExMetG_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetG_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetG_X), 16);
+                    CharacterDetails.ExMetG_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExMetG_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExMetG_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExMetG_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExMetG_X.value,
@@ -4532,10 +4797,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExMetH_Toggle)
                 {
-                    CharacterDetails.ExMetH_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetH_X));
-                    CharacterDetails.ExMetH_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetH_Y));
-                    CharacterDetails.ExMetH_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetH_Z));
-                    CharacterDetails.ExMetH_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetH_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetH_X), 16);
+                    CharacterDetails.ExMetH_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExMetH_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExMetH_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExMetH_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExMetH_X.value,
@@ -4554,10 +4820,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExMetI_Toggle)
                 {
-                    CharacterDetails.ExMetI_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetI_X));
-                    CharacterDetails.ExMetI_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetI_Y));
-                    CharacterDetails.ExMetI_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetI_Z));
-                    CharacterDetails.ExMetI_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetI_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetI_X), 16);
+                    CharacterDetails.ExMetI_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExMetI_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExMetI_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExMetI_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExMetI_X.value,
@@ -4576,6 +4843,12 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExMetJ_Toggle)
                 {
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetJ_X), 16);
+                    CharacterDetails.ExMetJ_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExMetJ_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExMetJ_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExMetJ_W.value = BitConverter.ToSingle(bytearray, 12);
+
                     CharacterDetails.ExMetJ_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetJ_X));
                     CharacterDetails.ExMetJ_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetJ_Y));
                     CharacterDetails.ExMetJ_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetJ_Z));
@@ -4598,10 +4871,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExMetK_Toggle)
                 {
-                    CharacterDetails.ExMetK_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetK_X));
-                    CharacterDetails.ExMetK_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetK_Y));
-                    CharacterDetails.ExMetK_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetK_Z));
-                    CharacterDetails.ExMetK_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetK_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetK_X), 16);
+                    CharacterDetails.ExMetK_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExMetK_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExMetK_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExMetK_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExMetK_X.value,
@@ -4620,10 +4894,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExMetL_Toggle)
                 {
-                    CharacterDetails.ExMetL_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetL_X));
-                    CharacterDetails.ExMetL_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetL_Y));
-                    CharacterDetails.ExMetL_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetL_Z));
-                    CharacterDetails.ExMetL_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetL_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetL_X), 16);
+                    CharacterDetails.ExMetL_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExMetL_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExMetL_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExMetL_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExMetL_X.value,
@@ -4642,10 +4917,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExMetM_Toggle)
                 {
-                    CharacterDetails.ExMetM_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetM_X));
-                    CharacterDetails.ExMetM_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetM_Y));
-                    CharacterDetails.ExMetM_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetM_Z));
-                    CharacterDetails.ExMetM_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetM_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetM_X), 16);
+                    CharacterDetails.ExMetM_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExMetM_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExMetM_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExMetM_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExMetM_X.value,
@@ -4664,10 +4940,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExMetN_Toggle)
                 {
-                    CharacterDetails.ExMetN_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetN_X));
-                    CharacterDetails.ExMetN_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetN_Y));
-                    CharacterDetails.ExMetN_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetN_Z));
-                    CharacterDetails.ExMetN_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetN_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetN_X), 16);
+                    CharacterDetails.ExMetN_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExMetN_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExMetN_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExMetN_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExMetN_X.value,
@@ -4686,10 +4963,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExMetO_Toggle)
                 {
-                    CharacterDetails.ExMetO_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetO_X));
-                    CharacterDetails.ExMetO_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetO_Y));
-                    CharacterDetails.ExMetO_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetO_Z));
-                    CharacterDetails.ExMetO_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetO_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetO_X), 16);
+                    CharacterDetails.ExMetO_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExMetO_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExMetO_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExMetO_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExMetO_X.value,
@@ -4708,10 +4986,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExMetP_Toggle)
                 {
-                    CharacterDetails.ExMetP_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetP_X));
-                    CharacterDetails.ExMetP_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetP_Y));
-                    CharacterDetails.ExMetP_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetP_Z));
-                    CharacterDetails.ExMetP_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetP_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetP_X), 16);
+                    CharacterDetails.ExMetP_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExMetP_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExMetP_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExMetP_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExMetP_X.value,
@@ -4730,10 +5009,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExMetQ_Toggle)
                 {
-                    CharacterDetails.ExMetQ_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetQ_X));
-                    CharacterDetails.ExMetQ_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetQ_Y));
-                    CharacterDetails.ExMetQ_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetQ_Z));
-                    CharacterDetails.ExMetQ_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetQ_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetQ_X), 16);
+                    CharacterDetails.ExMetQ_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExMetQ_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExMetQ_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExMetQ_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExMetQ_X.value,
@@ -4752,10 +5032,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExMetR_Toggle)
                 {
-                    CharacterDetails.ExMetR_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetR_X));
-                    CharacterDetails.ExMetR_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetR_Y));
-                    CharacterDetails.ExMetR_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetR_Z));
-                    CharacterDetails.ExMetR_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetR_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExMetR_X), 16);
+                    CharacterDetails.ExMetR_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExMetR_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExMetR_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExMetR_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExMetR_X.value,
@@ -4774,10 +5055,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExRootTop_Toggle)
                 {
-                    CharacterDetails.ExRootTop_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExRootTop_X));
-                    CharacterDetails.ExRootTop_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExRootTop_Y));
-                    CharacterDetails.ExRootTop_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExRootTop_Z));
-                    CharacterDetails.ExRootTop_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExRootTop_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExRootTop_X), 16);
+                    CharacterDetails.ExRootTop_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExRootTop_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExRootTop_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExRootTop_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExRootTop_X.value,
@@ -4796,10 +5078,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExTopA_Toggle)
                 {
-                    CharacterDetails.ExTopA_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopA_X));
-                    CharacterDetails.ExTopA_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopA_Y));
-                    CharacterDetails.ExTopA_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopA_Z));
-                    CharacterDetails.ExTopA_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopA_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopA_X), 16);
+                    CharacterDetails.ExTopA_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExTopA_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExTopA_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExTopA_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExTopA_X.value,
@@ -4818,10 +5101,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExTopB_Toggle)
                 {
-                    CharacterDetails.ExTopB_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopB_X));
-                    CharacterDetails.ExTopB_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopB_Y));
-                    CharacterDetails.ExTopB_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopB_Z));
-                    CharacterDetails.ExTopB_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopB_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopB_X), 16);
+                    CharacterDetails.ExTopB_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExTopB_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExTopB_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExTopB_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExTopB_X.value,
@@ -4840,10 +5124,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExTopC_Toggle)
                 {
-                    CharacterDetails.ExTopC_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopC_X));
-                    CharacterDetails.ExTopC_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopC_Y));
-                    CharacterDetails.ExTopC_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopC_Z));
-                    CharacterDetails.ExTopC_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopC_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopC_X), 16);
+                    CharacterDetails.ExTopC_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExTopC_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExTopC_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExTopC_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExTopC_X.value,
@@ -4862,10 +5147,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExTopD_Toggle)
                 {
-                    CharacterDetails.ExTopD_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopD_X));
-                    CharacterDetails.ExTopD_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopD_Y));
-                    CharacterDetails.ExTopD_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopD_Z));
-                    CharacterDetails.ExTopD_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopD_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopD_X), 16);
+                    CharacterDetails.ExTopD_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExTopD_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExTopD_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExTopD_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExTopD_X.value,
@@ -4884,10 +5170,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExTopE_Toggle)
                 {
-                    CharacterDetails.ExTopE_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopE_X));
-                    CharacterDetails.ExTopE_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopE_Y));
-                    CharacterDetails.ExTopE_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopE_Z));
-                    CharacterDetails.ExTopE_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopE_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopE_X), 16);
+                    CharacterDetails.ExTopE_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExTopE_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExTopE_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExTopE_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExTopE_X.value,
@@ -4906,10 +5193,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExTopF_Toggle)
                 {
-                    CharacterDetails.ExTopF_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopF_X));
-                    CharacterDetails.ExTopF_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopF_Y));
-                    CharacterDetails.ExTopF_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopF_Z));
-                    CharacterDetails.ExTopF_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopF_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopF_X), 16);
+                    CharacterDetails.ExTopF_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExTopF_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExTopF_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExTopF_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExTopF_X.value,
@@ -4928,10 +5216,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExTopG_Toggle)
                 {
-                    CharacterDetails.ExTopG_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopG_X));
-                    CharacterDetails.ExTopG_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopG_Y));
-                    CharacterDetails.ExTopG_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopG_Z));
-                    CharacterDetails.ExTopG_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopG_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopG_X), 16);
+                    CharacterDetails.ExTopG_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExTopG_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExTopG_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExTopG_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExTopG_X.value,
@@ -4950,10 +5239,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExTopH_Toggle)
                 {
-                    CharacterDetails.ExTopH_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopH_X));
-                    CharacterDetails.ExTopH_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopH_Y));
-                    CharacterDetails.ExTopH_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopH_Z));
-                    CharacterDetails.ExTopH_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopH_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopH_X), 16);
+                    CharacterDetails.ExTopH_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExTopH_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExTopH_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExTopH_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExTopH_X.value,
@@ -4972,10 +5262,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (CharacterDetails.ExTopI_Toggle)
                 {
-                    CharacterDetails.ExTopI_X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopI_X));
-                    CharacterDetails.ExTopI_Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopI_Y));
-                    CharacterDetails.ExTopI_Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopI_Z));
-                    CharacterDetails.ExTopI_W.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopI_W));
+                    byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.ExTopI_X), 16);
+                    CharacterDetails.ExTopI_X.value = BitConverter.ToSingle(bytearray, 0);
+                    CharacterDetails.ExTopI_Y.value = BitConverter.ToSingle(bytearray, 4);
+                    CharacterDetails.ExTopI_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.ExTopI_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.ExTopI_X.value,
@@ -6423,12 +6714,6 @@ namespace ConceptMatrix.ViewModel
                 }
                 #endregion
 
-                if (!CharacterDetails.X.freeze) CharacterDetails.X.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.X));
-
-                if (!CharacterDetails.Y.freeze) CharacterDetails.Y.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Y));
-
-                if (!CharacterDetails.Z.freeze) CharacterDetails.Z.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Position.Z));
-
                 if (!CharacterDetails.TailSize.freeze) CharacterDetails.TailSize.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.TailSize));
 
                 if (!CharacterDetails.MuscleTone.freeze) CharacterDetails.MuscleTone.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.MuscleTone));
@@ -6459,76 +6744,6 @@ namespace ConceptMatrix.ViewModel
 
                 if (!CharacterDetails.EmoteSpeed1.freeze) CharacterDetails.EmoteSpeed1.value = (float)m.readFloat((GAS(baseAddr, c.EmoteSpeed1)));
 
-                if (!CharacterDetails.Job.freeze && !CharacterDetails.Job.Activated)
-                {
-                    CharacterDetails.Job.value = (int)m.read2Byte(GAS(baseAddr, c.Job));
-                    CharacterDetails.WeaponBase.value = (int)m.read2Byte(GAS(baseAddr, c.WeaponBase));
-                    CharacterDetails.WeaponV.value = (byte)m.readByte(GAS(baseAddr, c.WeaponV));
-                    CharacterDetails.WeaponDye.value = (byte)m.readByte(GAS(baseAddr, c.WeaponDye));
-                }
-                if (!CharacterDetails.Offhand.freeze && !CharacterDetails.Offhand.Activated)
-                {
-                    CharacterDetails.Offhand.value = (int)m.read2Byte(GAS(baseAddr, c.Offhand));
-                    CharacterDetails.OffhandBase.value = (int)m.read2Byte(GAS(baseAddr, c.OffhandBase));
-                    CharacterDetails.OffhandV.value = (byte)m.readByte(GAS(baseAddr, c.OffhandV));
-                    CharacterDetails.OffhandDye.value = (byte)m.readByte(GAS(baseAddr, c.OffhandDye));
-                }
-                if (!CharacterDetails.HeadPiece.freeze && !CharacterDetails.HeadPiece.Activated)
-                {
-                    CharacterDetails.HeadPiece.value = (int)m.read2Byte(GAS(baseAddr, c.HeadPiece));
-                    CharacterDetails.HeadV.value = (byte)m.readByte(GAS(baseAddr, c.HeadV));
-                    CharacterDetails.HeadDye.value = (byte)m.readByte(GAS(baseAddr, c.HeadDye));
-                }
-                if (!CharacterDetails.Chest.freeze && !CharacterDetails.Chest.Activated)
-                {
-                    CharacterDetails.Chest.value = (int)m.read2Byte(GAS(baseAddr, c.Chest));
-                    CharacterDetails.ChestV.value = (byte)m.readByte(GAS(baseAddr, c.ChestV));
-                    CharacterDetails.ChestDye.value = (byte)m.readByte(GAS(baseAddr, c.ChestDye));
-                }
-                if (!CharacterDetails.Arms.freeze && !CharacterDetails.Arms.Activated)
-                {
-                    CharacterDetails.Arms.value = (int)m.read2Byte(GAS(baseAddr, c.Arms));
-                    CharacterDetails.ArmsV.value = (byte)m.readByte(GAS(baseAddr, c.ArmsV));
-                    CharacterDetails.ArmsDye.value = (byte)m.readByte(GAS(baseAddr, c.ArmsDye));
-                }
-                if (!CharacterDetails.Legs.freeze && !CharacterDetails.Legs.Activated)
-                {
-                    CharacterDetails.Legs.value = (int)m.read2Byte(GAS(baseAddr, c.Legs));
-                    CharacterDetails.LegsV.value = (byte)m.readByte(GAS(baseAddr, c.LegsV));
-                    CharacterDetails.LegsDye.value = (byte)m.readByte(GAS(baseAddr, c.LegsDye));
-                }
-                if (!CharacterDetails.Feet.freeze && !CharacterDetails.Feet.Activated)
-                {
-                    CharacterDetails.Feet.value = (int)m.read2Byte(GAS(baseAddr, c.Feet));
-                    CharacterDetails.FeetVa.value = (byte)m.readByte(GAS(baseAddr, c.FeetVa));
-                    CharacterDetails.FeetDye.value = (byte)m.readByte(GAS(baseAddr, c.FeetDye));
-                }
-
-                if (!CharacterDetails.LFinger.freeze && !CharacterDetails.LFinger.Activated)
-                {
-                    CharacterDetails.LFinger.value = (int)m.read2Byte(GAS(baseAddr, c.LFinger));
-                    CharacterDetails.LFingerVa.value = (byte)m.readByte(GAS(baseAddr, c.LFingerVa));
-                }
-                if (!CharacterDetails.RFinger.freeze && !CharacterDetails.RFinger.Activated)
-                {
-                    CharacterDetails.RFinger.value = (int)m.read2Byte(GAS(baseAddr, c.RFinger));
-                    CharacterDetails.RFingerVa.value = (byte)m.readByte(GAS(baseAddr, c.RFingerVa));
-                }
-                if (!CharacterDetails.Wrist.freeze && !CharacterDetails.Wrist.Activated)
-                {
-                    CharacterDetails.Wrist.value = (int)m.read2Byte(GAS(baseAddr, c.Wrist));
-                    CharacterDetails.WristVa.value = (byte)m.readByte(GAS(baseAddr, c.WristVa));
-                }
-                if (!CharacterDetails.Neck.freeze && !CharacterDetails.Neck.Activated)
-                {
-                    CharacterDetails.Neck.value = (int)m.read2Byte(GAS(baseAddr, c.Neck));
-                    CharacterDetails.NeckVa.value = (byte)m.readByte(GAS(baseAddr, c.NeckVa));
-                }
-                if (!CharacterDetails.Ear.freeze && !CharacterDetails.Ear.Activated)
-                {
-                    CharacterDetails.Ear.value = (int)m.read2Byte(GAS(baseAddr, c.Ear));
-                    CharacterDetails.EarVa.value = (byte)m.readByte(GAS(baseAddr, c.EarVa));
-                }
                 if (!CharacterDetails.WeaponRed.freeze) CharacterDetails.WeaponRed.value = m.readFloat(GAS(baseAddr, c.WeaponRed));
 
                 if (!CharacterDetails.WeaponGreen.freeze) CharacterDetails.WeaponGreen.value = m.readFloat(GAS(baseAddr, c.WeaponGreen));
@@ -6685,6 +6900,7 @@ namespace ConceptMatrix.ViewModel
                 if (!CharacterDetails.Weather.freeze) CharacterDetails.Weather.value = (byte)m.readByte(GAS(MemoryManager.Instance.WeatherAddress, c.Weather));
                 if (!CharacterDetails.ForceWeather.freeze) CharacterDetails.ForceWeather.value = (ushort)m.read2Byte(GAS(MemoryManager.Instance.GposeFilters, c.ForceWeather));
                 CharacterDetails.TimeControl.value = (int)m.readInt(GAS(MemoryManager.Instance.TimeAddress, c.TimeControl));
+
                 if (!CharacterDetails.HeadPiece.Activated) CharacterDetails.HeadSlot.value = CharacterDetails.HeadPiece.value + "," + CharacterDetails.HeadV.value + "," + CharacterDetails.HeadDye.value;
                 if (!CharacterDetails.Chest.Activated) CharacterDetails.BodySlot.value = CharacterDetails.Chest.value + "," + CharacterDetails.ChestV.value + "," + CharacterDetails.ChestDye.value;
                 if (!CharacterDetails.Arms.Activated) CharacterDetails.ArmSlot.value = CharacterDetails.Arms.value + "," + CharacterDetails.ArmsV.value + "," + CharacterDetails.ArmsDye.value;
@@ -6698,7 +6914,7 @@ namespace ConceptMatrix.ViewModel
                 if (!CharacterDetails.LFinger.Activated) CharacterDetails.LFingerSlot.value = CharacterDetails.LFinger.value + "," + CharacterDetails.LFingerVa.value + ",0";
                 if (!CharacterDetails.RFinger.Activated) CharacterDetails.RFingerSlot.value = CharacterDetails.RFinger.value + "," + CharacterDetails.RFingerVa.value + ",0";
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 				//System.Windows.MessageBox.Show(ex.Message + "\n" + ex.StackTrace, App.ToolName, MessageBoxButton.OK, MessageBoxImage.Error);
 				mediator.Work -= Work;
