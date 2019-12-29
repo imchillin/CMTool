@@ -490,17 +490,24 @@ namespace ConceptMatrix.Views
         private readonly Mem m = MemoryManager.Instance.MemLib;
         private bool ReadTetriaryFromRunTime = false;
         private CharacterOffsets c = Settings.Instance.Character;
+        private ToggleButton[] exhair_buttons, exmet_buttons, extop_buttons;
+
+        enum FaceRace
+        {
+            Middy,
+            Hroth,
+            Viera
+        }
+        private FaceRace face_check = FaceRace.Middy;
 
         #region BoneTree
         public class BoneNode
         {
             private readonly string BonesOffset;
             private List<BoneNode> children;
-            private readonly bool FaceParent;
-            public BoneNode(string offset, bool fparent = false)
+            public BoneNode(string offset)
             {
                 BonesOffset = offset;
-                FaceParent = fparent;
                 children = new List<BoneNode>();
             }
 
@@ -508,18 +515,20 @@ namespace ConceptMatrix.Views
             {
                 return BonesOffset;
             }
-
-            public bool RotateFace()
+            public BoneNode Child(string offset)
             {
-                return FaceParent;
-            }
-            public BoneNode Child(string offset, bool fparent = false)
-            {
-                BoneNode childnode = new BoneNode(offset, fparent);
+                BoneNode childnode = new BoneNode(offset);
                 children.Add(childnode);
                 return childnode;
             }
-
+            public void Add(BoneNode bnode)
+            {
+                children.Add(bnode);
+            }
+            public void Remove(BoneNode bnode)
+            {
+                children.Remove(bnode);
+            }
             public IEnumerator<BoneNode> GetEnumerator()
             {
                 return children.GetEnumerator();
@@ -532,6 +541,9 @@ namespace ConceptMatrix.Views
             bone_cerv,
             bone_neck,
             bone_face,
+            bone_face_middy,
+            bone_face_viera,
+            bone_face_hroth,
             bone_clav_l,
             bone_clav_r,
             bone_arm_l,
@@ -558,20 +570,28 @@ namespace ConceptMatrix.Views
             bone_calf_l,
             bone_calf_r,
             bone_foot_l,
-            bone_foot_r;
+            bone_foot_r,
+            bone_tail_waist,
+            bone_tail_a,
+            bone_tail_b,
+            bone_tail_c,
+            bone_tail_d;
+        public BoneNode[] bone_exhair;
+        public BoneNode[] bone_exmet;
+
 
         public BoneNode InitBonetree ()
         {
             BoneNode root_tree = new BoneNode(Settings.Instance.Character.Body.Bones.Root_X);
             #region torso tree
-            bone_lumbar = root_tree.Child(Settings.Instance.Character.Body.Bones.SpineA_X, true);
-            bone_thora = bone_lumbar.Child(Settings.Instance.Character.Body.Bones.SpineB_X, true);
-            bone_cerv = bone_thora.Child(Settings.Instance.Character.Body.Bones.SpineC_X, true);
+            bone_lumbar = root_tree.Child(Settings.Instance.Character.Body.Bones.SpineA_X);
+            bone_thora = bone_lumbar.Child(Settings.Instance.Character.Body.Bones.SpineB_X);
+            bone_cerv = bone_thora.Child(Settings.Instance.Character.Body.Bones.SpineC_X);
             bone_thora.Child(Settings.Instance.Character.Body.Bones.BreastLeft_X);
             bone_thora.Child(Settings.Instance.Character.Body.Bones.BreastRight_X);
             bone_thora.Child(Settings.Instance.Character.Body.Bones.ScabbardLeft_X);
             bone_thora.Child(Settings.Instance.Character.Body.Bones.ScabbardRight_X);
-            bone_neck = bone_cerv.Child(Settings.Instance.Character.Body.Bones.Neck_X, true);
+            bone_neck = bone_cerv.Child(Settings.Instance.Character.Body.Bones.Neck_X);
             #endregion
             #region clothes tree
             /*
@@ -595,8 +615,8 @@ namespace ConceptMatrix.Views
             bone_lumbar.Child(Settings.Instance.Character.Body.Bones.ClothFrontCRight_X);
             */
             #endregion
-            #region facebone tree
-            bone_face = bone_neck.Child(Settings.Instance.Character.Body.Bones.Head_X, true);
+            #region facebone (middy) tree
+            bone_face = bone_neck.Child(Settings.Instance.Character.Body.Bones.Head_X);
             bone_face.Child(Settings.Instance.Character.Body.Bones.Nose_X);
             bone_face.Child(Settings.Instance.Character.Body.Bones.Jaw_X);
             bone_face.Child(Settings.Instance.Character.Body.Bones.EyelidLowerLeft_X);
@@ -613,6 +633,99 @@ namespace ConceptMatrix.Views
             bone_face.Child(Settings.Instance.Character.Body.Bones.HairFrontRight_X);
             bone_face.Child(Settings.Instance.Character.Body.Bones.HairA_X);
             bone_face.Child(Settings.Instance.Character.Body.Bones.HairB_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.CheekLeft_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.CheekRight_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.LipsLeft_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.LipsRight_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.EyebrowLeft_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.EyebrowRight_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.Bridge_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.BrowLeft_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.BrowRight_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.LipUpperA_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.EyelidUpperLeft_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.EyelidUpperRight_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.LipLowerA_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.LipUpperB_X);
+            bone_face.Child(Settings.Instance.Character.Body.Bones.LipLowerB_X);
+            bone_face_middy = bone_face;
+            #endregion
+            #region facebone hroth tree
+            bone_face_hroth = new BoneNode(Settings.Instance.Character.Body.Bones.Head_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.Nose_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.Jaw_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.EyelidLowerLeft_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.EyelidLowerRight_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.EyeLeft_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.EyeRight_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.EarLeft_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.EarRight_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.EarringALeft_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.EarringBLeft_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.EarringARight_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.EarringBRight_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.HairFrontLeft_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.HairFrontRight_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.HairA_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.HairB_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.HrothEyebrowLeft_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.HrothEyebrowRight_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.HrothBridge_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.HrothBrowLeft_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.HrothBrowRight_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.HrothJawUpper_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.HrothLipUpper_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.HrothEyelidUpperLeft_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.HrothEyelidUpperRight_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.HrothLipsLeft_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.HrothLipsRight_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.HrothLipUpperLeft_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.HrothLipUpperRight_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.HrothLipLower_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.HrothWhiskersLeft_X);
+            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.HrothWhiskersRight_X);
+            #endregion
+            #region facebone viera tree
+            bone_face_viera = new BoneNode(Settings.Instance.Character.Body.Bones.Head_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.Nose_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.Jaw_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.EyelidLowerLeft_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.EyelidLowerRight_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.EyeLeft_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.EyeRight_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.EarLeft_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.EarRight_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.EarringALeft_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.EarringBLeft_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.EarringARight_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.EarringBRight_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.HairFrontLeft_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.HairFrontRight_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.HairA_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.HairB_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.CheekLeft_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.CheekRight_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.LipsLeft_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.LipsRight_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.EyebrowLeft_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.EyebrowRight_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.Bridge_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.BrowLeft_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.BrowRight_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.LipUpperA_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.EyelidUpperLeft_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.EyelidUpperRight_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.VieraLipLowerA_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.VieraLipUpperB_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.VieraLipLowerB_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.VieraEar01ALeft_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.VieraEar01ARight_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.VieraEar02ALeft_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.VieraEar02ARight_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.VieraEar01BLeft_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.VieraEar01BRight_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.VieraEar02BLeft_X);
+            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.VieraEar02BRight_X);
             #endregion
             #region armbone tree
             bone_clav_l = bone_cerv.Child(Settings.Instance.Character.Body.Bones.ClavicleLeft_X);
@@ -679,6 +792,50 @@ namespace ConceptMatrix.Views
             bone_foot_r = bone_calf_r.Child(Settings.Instance.Character.Body.Bones.FootRight_X);
             bone_foot_r.Child(Settings.Instance.Character.Body.Bones.ToesRight_X);
             #endregion
+            #region tail bones tree
+            bone_tail_a = new BoneNode(Settings.Instance.Character.Body.Bones.TailA_X);
+            bone_tail_b = bone_tail_a.Child(Settings.Instance.Character.Body.Bones.TailB_X);
+            bone_tail_c = bone_tail_b.Child(Settings.Instance.Character.Body.Bones.TailC_X);
+            bone_tail_d = bone_tail_c.Child(Settings.Instance.Character.Body.Bones.TailD_X);
+            bone_tail_d.Child(Settings.Instance.Character.Body.Bones.TailE_X);
+            #endregion
+            #region exhair
+            bone_exhair = new BoneNode[12];
+            bone_exhair[0] = new BoneNode(Settings.Instance.Character.Body.Bones.ExHairA_X);
+            bone_exhair[1] = new BoneNode(Settings.Instance.Character.Body.Bones.ExHairB_X);
+            bone_exhair[2] = new BoneNode(Settings.Instance.Character.Body.Bones.ExHairC_X);
+            bone_exhair[3] = new BoneNode(Settings.Instance.Character.Body.Bones.ExHairD_X);
+            bone_exhair[4] = new BoneNode(Settings.Instance.Character.Body.Bones.ExHairE_X);
+            bone_exhair[5] = new BoneNode(Settings.Instance.Character.Body.Bones.ExHairF_X);
+            bone_exhair[6] = new BoneNode(Settings.Instance.Character.Body.Bones.ExHairG_X);
+            bone_exhair[7] = new BoneNode(Settings.Instance.Character.Body.Bones.ExHairH_X);
+            bone_exhair[8] = new BoneNode(Settings.Instance.Character.Body.Bones.ExHairI_X);
+            bone_exhair[9] = new BoneNode(Settings.Instance.Character.Body.Bones.ExHairJ_X);
+            bone_exhair[10] = new BoneNode(Settings.Instance.Character.Body.Bones.ExHairK_X);
+            bone_exhair[11] = new BoneNode(Settings.Instance.Character.Body.Bones.ExHairL_X);
+            #endregion
+            #region exmet
+            bone_exmet = new BoneNode[18];
+            bone_exmet[0] = new BoneNode(Settings.Instance.Character.Body.Bones.ExMetA_X);
+            bone_exmet[1] = new BoneNode(Settings.Instance.Character.Body.Bones.ExMetB_X);
+            bone_exmet[2] = new BoneNode(Settings.Instance.Character.Body.Bones.ExMetC_X);
+            bone_exmet[3] = new BoneNode(Settings.Instance.Character.Body.Bones.ExMetD_X);
+            bone_exmet[4] = new BoneNode(Settings.Instance.Character.Body.Bones.ExMetE_X);
+            bone_exmet[5] = new BoneNode(Settings.Instance.Character.Body.Bones.ExMetF_X);
+            bone_exmet[6] = new BoneNode(Settings.Instance.Character.Body.Bones.ExMetG_X);
+            bone_exmet[7] = new BoneNode(Settings.Instance.Character.Body.Bones.ExMetH_X);
+            bone_exmet[8] = new BoneNode(Settings.Instance.Character.Body.Bones.ExMetI_X);
+            bone_exmet[9] = new BoneNode(Settings.Instance.Character.Body.Bones.ExMetJ_X);
+            bone_exmet[10] = new BoneNode(Settings.Instance.Character.Body.Bones.ExMetK_X);
+            bone_exmet[11] = new BoneNode(Settings.Instance.Character.Body.Bones.ExMetL_X);
+            bone_exmet[12] = new BoneNode(Settings.Instance.Character.Body.Bones.ExMetM_X);
+            bone_exmet[13] = new BoneNode(Settings.Instance.Character.Body.Bones.ExMetN_X);
+            bone_exmet[14] = new BoneNode(Settings.Instance.Character.Body.Bones.ExMetO_X);
+            bone_exmet[15] = new BoneNode(Settings.Instance.Character.Body.Bones.ExMetP_X);
+            bone_exmet[16] = new BoneNode(Settings.Instance.Character.Body.Bones.ExMetQ_X);
+            bone_exmet[17] = new BoneNode(Settings.Instance.Character.Body.Bones.ExMetR_X);
+            #endregion
+
 
             return root_tree;
         }
@@ -730,6 +887,10 @@ namespace ConceptMatrix.Views
             {
                 ParentingToggle.IsChecked = true;
             }
+
+            exhair_buttons = new ToggleButton[] { ExHairA, ExHairB, ExHairC, ExHairD, ExHairE, ExHairF, ExHairG, ExHairH, ExHairI, ExHairJ, ExHairK, ExHairL };
+            exmet_buttons = new ToggleButton[] { ExMetA, ExMetB, ExMetC, ExMetD, ExMetE, ExMetF, ExMetG, ExMetH, ExMetI, ExMetJ, ExMetK, ExMetL, ExMetM, ExMetN, ExMetO, ExMetP, ExMetQ, ExMetR };
+            extop_buttons = new ToggleButton[] { ExTopA, ExTopB, ExTopC, ExTopD, ExTopE, ExTopF, ExTopG, ExTopH, ExTopI};
         }
 
         private Vector3D GetEulerAngles() => new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
@@ -10470,224 +10631,86 @@ namespace ConceptMatrix.Views
             Rotate_ChildBone(boneParent, q1_inv, q1_new);
         }
 
-        public void FaceBone_Rotator(Quaternion q1_inv, Quaternion q1_new)
+        public void EnableTertiaryFlags()
         {
-            if (CharacterDetails.Race.value < 7)
+            if (CharacterDetails.Race.value == 4 || CharacterDetails.Race.value == 6 || CharacterDetails.Race.value == 7)
             {
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.CheekLeft_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.CheekRight_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.LipsLeft_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.LipsRight_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.EyebrowLeft_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.EyebrowRight_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.Bridge_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.BrowLeft_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.BrowRight_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.LipUpperA_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.EyelidUpperLeft_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.EyelidUpperRight_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.LipLowerA_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.LipUpperB_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.LipLowerB_X, q1_inv, q1_new);
+                TailA.IsEnabled = true;
+                TailB.IsEnabled = true;
+                TailC.IsEnabled = true;
+                TailD.IsEnabled = true;
+                TailE.IsEnabled = true;
+                bone_waist.Add(bone_tail_a);
             }
-            else if (CharacterDetails.Race.value == 7)
-            {
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothEyebrowLeft_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothEyebrowRight_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothBridge_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothBrowLeft_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothBrowRight_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothJawUpper_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothLipUpper_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothEyelidUpperLeft_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothEyelidUpperRight_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothLipsLeft_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothLipsRight_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothLipUpperLeft_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothLipUpperRight_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothLipLower_X, q1_inv, q1_new);
-            }
-            else if (CharacterDetails.Race.value == 8)
-            {
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.CheekLeft_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.CheekRight_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.LipsLeft_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.LipsRight_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.EyebrowLeft_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.EyebrowRight_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.Bridge_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.BrowLeft_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.BrowRight_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.LipUpperA_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.EyelidUpperLeft_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.EyelidUpperRight_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.VieraLipLowerA_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.VieraLipUpperB_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.VieraLipLowerB_X, q1_inv, q1_new);
-            }
-
-            //Check for Teritrary Bones : Hair or anything else here.
-            #region Tetriarybones
-            if (!ReadTetriaryFromRunTime)
-            {
-                ReadTetriaryFromRunTime = true;
-                if (CharacterDetails.Race.value == 7)
-                {
-                    HrothWhiskersLeft.IsEnabled = true;
-                    HrothWhiskersRight.IsEnabled = true;
-                }
-                if (CharacterDetails.Race.value == 8)
-                {
-                    VieraEarALeft.IsEnabled = true;
-                    VieraEarARight.IsEnabled = true;
-                    VieraEarBLeft.IsEnabled = true;
-                    VieraEarBRight.IsEnabled = true;
-                }
-                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 2)
-                {
-                    ExHairA.IsEnabled = true;
-                }
-                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 3)
-                {
-                    ExHairB.IsEnabled = true;
-                }
-                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 4)
-                {
-                    ExHairC.IsEnabled = true;
-                }
-                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 5)
-                {
-                    ExHairD.IsEnabled = true;
-                }
-                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 6)
-                {
-                    ExHairE.IsEnabled = true;
-                }
-                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 7)
-                {
-                    ExHairF.IsEnabled = true;
-                }
-                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 8)
-                {
-                    ExHairG.IsEnabled = true;
-                }
-                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 9)
-                {
-                    ExHairH.IsEnabled = true;
-                }
-                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 10)
-                {
-                    ExHairI.IsEnabled = true;
-                }
-                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 11)
-                {
-                    ExHairJ.IsEnabled = true;
-                }
-                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 12)
-                {
-                    ExHairK.IsEnabled = true;
-                }
-                if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 13)
-                {
-                    ExHairL.IsEnabled = true;
-                }
-            }
-            #endregion
-
-            #region Unique 1
-            if (ExHairA.IsEnabled == true)
-            {
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.ExHairA_X, q1_inv, q1_new);
-            }
-            #endregion
-            #region Unique 2
-            if (ExHairB.IsEnabled == true)
-            {
-
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.ExHairB_X, q1_inv, q1_new);
-            }
-            #endregion
-            #region Unique 3
-            if (ExHairC.IsEnabled == true)
-            {
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.ExHairC_X, q1_inv, q1_new);
-            }
-            #endregion
-            #region Unique 4
-            if (ExHairD.IsEnabled == true)
-            {
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.ExHairD_X, q1_inv, q1_new);
-            }
-            #endregion
-            #region Unique 5
-            if (ExHairE.IsEnabled == true)
-            {
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.ExHairE_X, q1_inv, q1_new);
-            }
-            #endregion
-            #region Unique 6
-            if (ExHairF.IsEnabled == true)
-            {
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.ExHairF_X, q1_inv, q1_new);
-            }
-            #endregion
-            #region Unique 7
-            if (ExHairG.IsEnabled == true)
-            {
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.ExHairG_X, q1_inv, q1_new);
-            }
-            #endregion
-            #region Unique 8
-            if (ExHairH.IsEnabled == true)
-            {
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.ExHairH_X, q1_inv, q1_new);
-            }
-            #endregion
-            #region Unique 9
-            if (ExHairI.IsEnabled == true)
-            {
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.ExHairI_X, q1_inv, q1_new);
-            }
-            #endregion
-            #region Unique 10
-            if (ExHairJ.IsEnabled == true)
-            {
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.ExHairJ_X, q1_inv, q1_new);
-            }
-            #endregion
-            #region Unique 11
-            if (ExHairK.IsEnabled == true)
-            {
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.ExHairK_X, q1_inv, q1_new);
-            }
-            #endregion
-            #region Unique 12
-            if (ExHairL.IsEnabled == true)
-            {
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.ExHairL_X, q1_inv, q1_new);
-            }
-            #endregion
-            #region Hrothgar Whiskers
             if (CharacterDetails.Race.value == 7)
             {
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothWhiskersLeft_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.HrothWhiskersRight_X, q1_inv, q1_new);
+                HrothWhiskersLeft.IsEnabled = true;
+                HrothWhiskersRight.IsEnabled = true;
             }
-            #endregion
-            #region Viera Ears
             if (CharacterDetails.Race.value == 8)
             {
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.VieraEar01ALeft_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.VieraEar01ARight_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.VieraEar02ALeft_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.VieraEar02ARight_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.VieraEar01BLeft_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.VieraEar01BRight_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.VieraEar02BLeft_X, q1_inv, q1_new);
-                Rotate_UnitBone(Settings.Instance.Character.Body.Bones.VieraEar02BRight_X, q1_inv, q1_new);
+                VieraEarALeft.IsEnabled = true;
+                VieraEarARight.IsEnabled = true;
+                VieraEarBLeft.IsEnabled = true;
+                VieraEarBRight.IsEnabled = true;
+            }
+            #region Exhair
+            int exhair_value = m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value));
+            for (int i = 0; i < exhair_value - 1; i++)
+            {
+                bone_face.Add(bone_exhair[i]);
+                exhair_buttons[i].IsEnabled = true;
+            }
+            #endregion
+            #region ExMet
+            int exmet_value = m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value));
+            for (int i = 0; i < exmet_value - 1; i++)
+            {
+                bone_face.Add(bone_exmet[i]);
+                exmet_buttons[i].IsEnabled = true;
+            }
+            #endregion
+            #region ExTop
+            int extop_value = m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value));
+            for (int i = 0; i < extop_value - 1; i++)
+            {
+                extop_buttons[i].IsEnabled = true;
             }
             #endregion
         }
+        public void Bone_Flag_Manager()
+        {
+            if (face_check != FaceRace.Middy && CharacterDetails.Race.value < 7)
+            {
+                face_check = FaceRace.Middy;
+                bone_neck.Remove(bone_face_hroth);
+                bone_neck.Remove(bone_face_viera);
+                bone_neck.Add(bone_face_middy);
+                bone_face = bone_face_middy;
+            }
+            else if (face_check != FaceRace.Hroth && CharacterDetails.Race.value == 7)
+            {
+                face_check = FaceRace.Hroth;
+                bone_neck.Remove(bone_face_middy);
+                bone_neck.Remove(bone_face_viera);
+                bone_neck.Add(bone_face_hroth);
+                bone_face = bone_face_hroth;
+            }
+            else if (face_check != FaceRace.Viera && CharacterDetails.Race.value == 8)
+            {
+                face_check = FaceRace.Viera;
+                bone_neck.Remove(bone_face_middy);
+                bone_neck.Remove(bone_face_hroth);
+                bone_neck.Add(bone_face_viera);
+                bone_face = bone_face_viera;
+            }
+            if (!ReadTetriaryFromRunTime)
+            {
+                ReadTetriaryFromRunTime = true;
+                EnableTertiaryFlags();
+            }
+        }
+
         private void RemoveRoutedEventListener(RoutedPropertyChangedEventHandler<double> reh)
         {
             BoneSlider.ValueChanged -= reh;
@@ -10712,15 +10735,12 @@ namespace ConceptMatrix.Views
             #region Child Bones
             if (ParentingToggle.IsChecked == true && bnode != null)
             {
+                Bone_Flag_Manager();
                 oldrot = newrot;
                 newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
                 Quaternion q1_inv = QInv(oldrot.ToQuaternion());
                 Quaternion q1_new = newrot.ToQuaternion();
                 Rotate_ChildBone(bnode, q1_inv, q1_new);
-                if (bnode.RotateFace())
-                {
-                    FaceBone_Rotator(q1_inv, q1_new);
-                }
             }
             #endregion
         }
@@ -13910,7 +13930,7 @@ namespace ConceptMatrix.Views
         private void TailA_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
-            RotateHelper(CharacterDetails.TailA_X, CharacterDetails.TailA_Y, CharacterDetails.TailA_Z, CharacterDetails.TailA_W);
+            RotateHelper(CharacterDetails.TailA_X, CharacterDetails.TailA_Y, CharacterDetails.TailA_Z, CharacterDetails.TailA_W, bone_tail_a);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(TailA_Slider);
         }
@@ -13918,7 +13938,7 @@ namespace ConceptMatrix.Views
         private void TailA_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
 
-            RotateHelper(CharacterDetails.TailA_X, CharacterDetails.TailA_Y, CharacterDetails.TailA_Z, CharacterDetails.TailA_W);
+            RotateHelper(CharacterDetails.TailA_X, CharacterDetails.TailA_Y, CharacterDetails.TailA_Z, CharacterDetails.TailA_W, bone_tail_a);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(TailA_UpDown);
         }
@@ -13942,7 +13962,7 @@ namespace ConceptMatrix.Views
         private void TailB_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
-            RotateHelper(CharacterDetails.TailB_X, CharacterDetails.TailB_Y, CharacterDetails.TailB_Z, CharacterDetails.TailB_W);
+            RotateHelper(CharacterDetails.TailB_X, CharacterDetails.TailB_Y, CharacterDetails.TailB_Z, CharacterDetails.TailB_W, bone_tail_b);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(TailB_Slider);
         }
@@ -13950,7 +13970,7 @@ namespace ConceptMatrix.Views
         private void TailB_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
 
-            RotateHelper(CharacterDetails.TailB_X, CharacterDetails.TailB_Y, CharacterDetails.TailB_Z, CharacterDetails.TailB_W);
+            RotateHelper(CharacterDetails.TailB_X, CharacterDetails.TailB_Y, CharacterDetails.TailB_Z, CharacterDetails.TailB_W, bone_tail_b);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(TailB_UpDown);
         }
@@ -13974,7 +13994,7 @@ namespace ConceptMatrix.Views
         private void TailC_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
-            RotateHelper(CharacterDetails.TailC_X, CharacterDetails.TailC_Y, CharacterDetails.TailC_Z, CharacterDetails.TailC_W);
+            RotateHelper(CharacterDetails.TailC_X, CharacterDetails.TailC_Y, CharacterDetails.TailC_Z, CharacterDetails.TailC_W, bone_tail_c);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(TailC_Slider);
         }
@@ -13982,7 +14002,7 @@ namespace ConceptMatrix.Views
         private void TailC_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
 
-            RotateHelper(CharacterDetails.TailC_X, CharacterDetails.TailC_Y, CharacterDetails.TailC_Z, CharacterDetails.TailC_W);
+            RotateHelper(CharacterDetails.TailC_X, CharacterDetails.TailC_Y, CharacterDetails.TailC_Z, CharacterDetails.TailC_W, bone_tail_c);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(TailC_UpDown);
         }
@@ -14006,7 +14026,7 @@ namespace ConceptMatrix.Views
         private void TailD_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
-            RotateHelper(CharacterDetails.TailD_X, CharacterDetails.TailD_Y, CharacterDetails.TailD_Z, CharacterDetails.TailD_W);
+            RotateHelper(CharacterDetails.TailD_X, CharacterDetails.TailD_Y, CharacterDetails.TailD_Z, CharacterDetails.TailD_W, bone_tail_d);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(TailD_Slider);
         }
@@ -14014,7 +14034,7 @@ namespace ConceptMatrix.Views
         private void TailD_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
 
-            RotateHelper(CharacterDetails.TailD_X, CharacterDetails.TailD_Y, CharacterDetails.TailD_Z, CharacterDetails.TailD_W);
+            RotateHelper(CharacterDetails.TailD_X, CharacterDetails.TailD_Y, CharacterDetails.TailD_Z, CharacterDetails.TailD_W, bone_tail_d);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(TailD_UpDown);
         }
@@ -19755,7 +19775,6 @@ namespace ConceptMatrix.Views
         {
             oldrot = new Vector3D(0, 0, 0);
             newrot = new Vector3D(0, 0, 0);
-            ReadTetriaryFromRunTime = false;
             Root.IsChecked = (newActive == Root) ? true : false;
             Abdomen.IsChecked = (newActive == Abdomen) ? true : false;
             Throw.IsChecked = (newActive == Throw) ? true : false;
@@ -20394,11 +20413,6 @@ namespace ConceptMatrix.Views
             MiddleBRight.IsEnabled = false;
             ThumbBLeft.IsEnabled = false;
             ThumbBRight.IsEnabled = false;
-            TailA.IsEnabled = false;
-            TailB.IsEnabled = false;
-            TailC.IsEnabled = false;
-            TailD.IsEnabled = false;
-            TailE.IsEnabled = false;
             RootHead.IsEnabled = false;
             Jaw.IsEnabled = false;
             EyelidLowerLeft.IsEnabled = false;
@@ -20423,51 +20437,7 @@ namespace ConceptMatrix.Views
             LipLowerA.IsEnabled = false;
             LipUpperB.IsEnabled = false;
             LipLowerB.IsEnabled = false;
-            HrothWhiskersLeft.IsEnabled = false;
-            HrothWhiskersRight.IsEnabled = false;
-            VieraEarALeft.IsEnabled = false;
-            VieraEarARight.IsEnabled = false;
-            VieraEarBLeft.IsEnabled = false;
-            VieraEarBRight.IsEnabled = false;
-            ExHairA.IsEnabled = false;
-            ExHairB.IsEnabled = false;
-            ExHairC.IsEnabled = false;
-            ExHairD.IsEnabled = false;
-            ExHairE.IsEnabled = false;
-            ExHairF.IsEnabled = false;
-            ExHairG.IsEnabled = false;
-            ExHairH.IsEnabled = false;
-            ExHairI.IsEnabled = false;
-            ExHairJ.IsEnabled = false;
-            ExHairK.IsEnabled = false;
-            ExHairL.IsEnabled = false;
-            ExMetA.IsEnabled = false;
-            ExMetB.IsEnabled = false;
-            ExMetC.IsEnabled = false;
-            ExMetD.IsEnabled = false;
-            ExMetE.IsEnabled = false;
-            ExMetF.IsEnabled = false;
-            ExMetG.IsEnabled = false;
-            ExMetH.IsEnabled = false;
-            ExMetI.IsEnabled = false;
-            ExMetJ.IsEnabled = false;
-            ExMetK.IsEnabled = false;
-            ExMetL.IsEnabled = false;
-            ExMetM.IsEnabled = false;
-            ExMetN.IsEnabled = false;
-            ExMetO.IsEnabled = false;
-            ExMetP.IsEnabled = false;
-            ExMetQ.IsEnabled = false;
-            ExMetR.IsEnabled = false;
-            ExTopA.IsEnabled = false;
-            ExTopB.IsEnabled = false;
-            ExTopC.IsEnabled = false;
-            ExTopD.IsEnabled = false;
-            ExTopE.IsEnabled = false;
-            ExTopF.IsEnabled = false;
-            ExTopG.IsEnabled = false;
-            ExTopH.IsEnabled = false;
-            ExTopI.IsEnabled = false;
+            DisableTertiary();
 
             //LoadHeadButton.IsEnabled = false;
             //LoadTorsoButton.IsEnabled = false;
@@ -20479,183 +20449,7 @@ namespace ConceptMatrix.Views
         private void EnableTertiary(object sender, RoutedEventArgs e)
         {
             DisableTertiary();
-
-            if (CharacterDetails.Race.value == 4 || CharacterDetails.Race.value == 6 || CharacterDetails.Race.value == 7)
-            {
-                TailA.IsEnabled = true;
-                TailB.IsEnabled = true;
-                TailC.IsEnabled = true;
-                TailD.IsEnabled = true;
-                TailE.IsEnabled = true;
-            }
-            if (CharacterDetails.Race.value == 7)
-            {
-                HrothWhiskersLeft.IsEnabled = true;
-                HrothWhiskersRight.IsEnabled = true;
-            }
-            if (CharacterDetails.Race.value == 8)
-            {
-                VieraEarALeft.IsEnabled = true;
-                VieraEarARight.IsEnabled = true;
-                VieraEarBLeft.IsEnabled = true;
-                VieraEarBRight.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 2)
-            {
-                ExHairA.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 3)
-            {
-                ExHairB.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 4)
-            {
-                ExHairC.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 5)
-            {
-                ExHairD.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 6)
-            {
-                ExHairE.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 7)
-            {
-                ExHairF.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 8)
-            {
-                ExHairG.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 9)
-            {
-                ExHairH.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 10)
-            {
-                ExHairI.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 11)
-            {
-                ExHairJ.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 12)
-            {
-                ExHairK.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value)) >= 13)
-            {
-                ExHairL.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 2)
-            {
-                ExMetA.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 3)
-            {
-                ExMetB.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 4)
-            {
-                ExMetC.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 5)
-            {
-                ExMetD.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 6)
-            {
-                ExMetE.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 7)
-            {
-                ExMetF.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 8)
-            {
-                ExMetG.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 9)
-            {
-                ExMetH.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 10)
-            {
-                ExMetI.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 11)
-            {
-                ExMetJ.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 12)
-            {
-                ExMetK.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 13)
-            {
-                ExMetL.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 14)
-            {
-                ExMetM.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 15)
-            {
-                ExMetN.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 16)
-            {
-                ExMetO.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 17)
-            {
-                ExMetP.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 18)
-            {
-                ExMetQ.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 19)
-            {
-                ExMetR.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 2)
-            {
-                ExTopA.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 3)
-            {
-                ExTopB.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 4)
-            {
-                ExTopC.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 5)
-            {
-                ExTopD.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 6)
-            {
-                ExTopE.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 7)
-            {
-                ExTopF.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 8)
-            {
-                ExTopG.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 9)
-            {
-                ExTopH.IsEnabled = true;
-            }
-            if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 10)
-            {
-                ExTopI.IsEnabled = true;
-            }
+            EnableTertiaryFlags();
         }
         private void DisableTertiary()
         {
@@ -20709,6 +20503,11 @@ namespace ConceptMatrix.Views
             ExTopG.IsEnabled = false;
             ExTopH.IsEnabled = false;
             ExTopI.IsEnabled = false;
+            bone_waist.Remove(bone_tail_a);
+            for (int i = 0; i < bone_exhair.Length; i++)
+            {
+                bone_face.Remove(bone_exhair[i]);
+            }
         }
 
         public class BoneSaves
@@ -22929,8 +22728,9 @@ namespace ConceptMatrix.Views
             double y = q1.X * q2.Y + q1.Y * q2.X + q1.Z * q2.W - q1.W * q2.Z;
             double z = q1.X * q2.Z - q1.Y * q2.W + q1.Z * q2.X + q1.W * q2.Y;
             double w = q1.X * q2.W + q1.Y * q2.Z - q1.Z * q2.Y + q1.W * q2.X;
-            double norm = Math.Sqrt(x * x + y * y + z * z + w * w);
-            return new Quaternion(x / norm, y / norm, z / norm, w / norm);
+            // double norm = Math.Sqrt(x * x + y * y + z * z + w * w);
+            return new Quaternion(x, y, z, w);
+            // return new Quaternion(x / norm, y / norm, z / norm, w / norm);
         }
         private void SaveOldRot(object sender, RoutedEventArgs e)
         {

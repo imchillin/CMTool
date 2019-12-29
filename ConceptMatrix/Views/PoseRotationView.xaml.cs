@@ -98,14 +98,11 @@ namespace ConceptMatrix.Views
             #region Child Bones
             if (MainViewModel.ViewTime5.ParentingToggle.IsChecked == true && bnode != null)
             {
+                MainViewModel.ViewTime5.Bone_Flag_Manager();
                 oldrot = newrot;
                 Quaternion q1_inv = CharacterDetailsView5.QInv(oldrot);
                 newrot = (Quaternion)RotationQuaternion.GetValue(QuaternionRotation3D.QuaternionProperty);
                 MainViewModel.ViewTime5.Rotate_ChildBone(bnode, q1_inv, newrot);
-                if (bnode.RotateFace())
-                {
-                    MainViewModel.ViewTime5.FaceBone_Rotator(q1_inv, newrot);
-                }
             }
             #endregion
         }
