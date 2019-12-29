@@ -494,22 +494,28 @@ namespace ConceptMatrix.Views
         #region BoneTree
         public class BoneNode
         {
-            private string bonesOffset;
+            private readonly string BonesOffset;
             private List<BoneNode> children;
-            public BoneNode(string offset)
+            private readonly bool FaceParent;
+            public BoneNode(string offset, bool fparent = false)
             {
-                this.bonesOffset = offset;
+                BonesOffset = offset;
+                FaceParent = fparent;
                 children = new List<BoneNode>();
             }
 
             public string Get()
             {
-                return bonesOffset;
+                return BonesOffset;
             }
 
-            public BoneNode Child(string offset)
+            public bool RotateFace()
             {
-                BoneNode childnode = new BoneNode(offset);
+                return FaceParent;
+            }
+            public BoneNode Child(string offset, bool fparent = false)
+            {
+                BoneNode childnode = new BoneNode(offset, fparent);
                 children.Add(childnode);
                 return childnode;
             }
@@ -558,14 +564,14 @@ namespace ConceptMatrix.Views
         {
             BoneNode root_tree = new BoneNode(Settings.Instance.Character.Body.Bones.Root_X);
             #region torso tree
-            bone_lumbar = root_tree.Child(Settings.Instance.Character.Body.Bones.SpineA_X);
-            bone_thora = bone_lumbar.Child(Settings.Instance.Character.Body.Bones.SpineB_X);
-            bone_cerv = bone_thora.Child(Settings.Instance.Character.Body.Bones.SpineC_X);
+            bone_lumbar = root_tree.Child(Settings.Instance.Character.Body.Bones.SpineA_X, true);
+            bone_thora = bone_lumbar.Child(Settings.Instance.Character.Body.Bones.SpineB_X, true);
+            bone_cerv = bone_thora.Child(Settings.Instance.Character.Body.Bones.SpineC_X, true);
             bone_thora.Child(Settings.Instance.Character.Body.Bones.BreastLeft_X);
             bone_thora.Child(Settings.Instance.Character.Body.Bones.BreastRight_X);
             bone_thora.Child(Settings.Instance.Character.Body.Bones.ScabbardLeft_X);
             bone_thora.Child(Settings.Instance.Character.Body.Bones.ScabbardRight_X);
-            bone_neck = bone_cerv.Child(Settings.Instance.Character.Body.Bones.Neck_X);
+            bone_neck = bone_cerv.Child(Settings.Instance.Character.Body.Bones.Neck_X, true);
             #endregion
             #region clothes tree
             /*
@@ -590,7 +596,7 @@ namespace ConceptMatrix.Views
             */
             #endregion
             #region facebone tree
-            bone_face = bone_neck.Child(Settings.Instance.Character.Body.Bones.Head_X);
+            bone_face = bone_neck.Child(Settings.Instance.Character.Body.Bones.Head_X, true);
             bone_face.Child(Settings.Instance.Character.Body.Bones.Nose_X);
             bone_face.Child(Settings.Instance.Character.Body.Bones.Jaw_X);
             bone_face.Child(Settings.Instance.Character.Body.Bones.EyelidLowerLeft_X);
@@ -728,7 +734,7 @@ namespace ConceptMatrix.Views
 
         private Vector3D GetEulerAngles() => new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
 
-        byte[] GetBytes(Quaternion q)
+        public static byte[] GetBytes(Quaternion q)
         {
             List<byte> bytes = new List<byte>(16);
             bytes.AddRange(BitConverter.GetBytes((float)q.X));
@@ -10443,7 +10449,7 @@ namespace ConceptMatrix.Views
 
             SaveSettings.Default.AltPoseRotate = false;
         }
-        private void Rotate_ChildBone (BoneNode boneParent, Quaternion q1_inv, Quaternion q1_new)
+        public void Rotate_ChildBone (BoneNode boneParent, Quaternion q1_inv, Quaternion q1_new)
         {
             foreach (BoneNode boneNode in boneParent)
             {
@@ -10464,7 +10470,7 @@ namespace ConceptMatrix.Views
             Rotate_ChildBone(boneParent, q1_inv, q1_new);
         }
 
-        private void FaceBone_Rotator(Quaternion q1_inv, Quaternion q1_new)
+        public void FaceBone_Rotator(Quaternion q1_inv, Quaternion q1_new)
         {
             if (CharacterDetails.Race.value < 7)
             {
@@ -10696,8 +10702,9 @@ namespace ConceptMatrix.Views
             BoneUpDown3.ValueChanged -= reh;
 
         }
-        public void RotateHelper(Quaternion quat, Address<float> x, Address<float> y, Address<float> z, Address<float> w, BoneNode bnode = null)
+        public void RotateHelper(Address<float> x, Address<float> y, Address<float> z, Address<float> w, BoneNode bnode = null)
         {
+            Quaternion quat = GetEulerAngles().ToQuaternion();
             x.value = (float)quat.X;
             y.value = (float)quat.Y;
             z.value = (float)quat.Z;
@@ -10710,32 +10717,24 @@ namespace ConceptMatrix.Views
                 Quaternion q1_inv = QInv(oldrot.ToQuaternion());
                 Quaternion q1_new = newrot.ToQuaternion();
                 Rotate_ChildBone(bnode, q1_inv, q1_new);
+                if (bnode.RotateFace())
+                {
+                    FaceBone_Rotator(q1_inv, q1_new);
+                }
             }
             #endregion
         }
         #region Root
         private void Root_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.Root_X.value = (float)quat.X;
-            CharacterDetails.Root_Y.value = (float)quat.Y;
-            CharacterDetails.Root_Z.value = (float)quat.Z;
-            CharacterDetails.Root_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.Root_X, CharacterDetails.Root_Y, CharacterDetails.Root_Z, CharacterDetails.Root_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(Root_Slider);
         }
 
         private void Root_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.Root_X.value = (float)quat.X;
-            CharacterDetails.Root_Y.value = (float)quat.Y;
-            CharacterDetails.Root_Z.value = (float)quat.Z;
-            CharacterDetails.Root_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.Root_X, CharacterDetails.Root_Y, CharacterDetails.Root_Z, CharacterDetails.Root_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(Root_UpDown);
         }
@@ -10758,26 +10757,14 @@ namespace ConceptMatrix.Views
         #region Abdomen
         private void Abdomen_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.Abdomen_X.value = (float)quat.X;
-            CharacterDetails.Abdomen_Y.value = (float)quat.Y;
-            CharacterDetails.Abdomen_Z.value = (float)quat.Z;
-            CharacterDetails.Abdomen_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.Abdomen_X, CharacterDetails.Abdomen_Y, CharacterDetails.Abdomen_Z, CharacterDetails.Abdomen_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(Abdomen_Slider);
         }
 
         private void Abdomen_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.Abdomen_X.value = (float)quat.X;
-            CharacterDetails.Abdomen_Y.value = (float)quat.Y;
-            CharacterDetails.Abdomen_Z.value = (float)quat.Z;
-            CharacterDetails.Abdomen_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.Abdomen_X, CharacterDetails.Abdomen_Y, CharacterDetails.Abdomen_Z, CharacterDetails.Abdomen_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(Abdomen_UpDown);
         }
@@ -10800,26 +10787,14 @@ namespace ConceptMatrix.Views
         #region Throw
         private void Throw_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.Throw_X.value = (float)quat.X;
-            CharacterDetails.Throw_Y.value = (float)quat.Y;
-            CharacterDetails.Throw_Z.value = (float)quat.Z;
-            CharacterDetails.Throw_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.Throw_X, CharacterDetails.Throw_Y, CharacterDetails.Throw_Z, CharacterDetails.Throw_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(Throw_Slider);
         }
 
         private void Throw_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.Throw_X.value = (float)quat.X;
-            CharacterDetails.Throw_Y.value = (float)quat.Y;
-            CharacterDetails.Throw_Z.value = (float)quat.Z;
-            CharacterDetails.Throw_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.Throw_X, CharacterDetails.Throw_Y, CharacterDetails.Throw_Z, CharacterDetails.Throw_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(Throw_UpDown);
         }
@@ -10842,14 +10817,14 @@ namespace ConceptMatrix.Views
         #region Waist
         private void Waist_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            RotateHelper(GetEulerAngles().ToQuaternion(), CharacterDetails.Waist_X, CharacterDetails.Waist_Y, CharacterDetails.Waist_Z, CharacterDetails.Waist_W, bone_waist);
+            RotateHelper(CharacterDetails.Waist_X, CharacterDetails.Waist_Y, CharacterDetails.Waist_Z, CharacterDetails.Waist_W, bone_waist);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(Waist_Slider);
         }
 
         private void Waist_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            RotateHelper(GetEulerAngles().ToQuaternion(), CharacterDetails.Waist_X, CharacterDetails.Waist_Y, CharacterDetails.Waist_Z, CharacterDetails.Waist_W, bone_waist);
+            RotateHelper(CharacterDetails.Waist_X, CharacterDetails.Waist_Y, CharacterDetails.Waist_Z, CharacterDetails.Waist_W, bone_waist);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(Waist_UpDown);
         }
@@ -10872,49 +10847,14 @@ namespace ConceptMatrix.Views
         #region SpineA
         private void SpineA_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.SpineA_X.value = (float)quat.X;
-            CharacterDetails.SpineA_Y.value = (float)quat.Y;
-            CharacterDetails.SpineA_Z.value = (float)quat.Z;
-            CharacterDetails.SpineA_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_lumbar, q1_inv, q1_new);
-                FaceBone_Rotator(q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.SpineA_X, CharacterDetails.SpineA_Y, CharacterDetails.SpineA_Z, CharacterDetails.SpineA_W, bone_lumbar);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(SpineA_Slider);
         }
 
         private void SpineA_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.SpineA_X.value = (float)quat.X;
-            CharacterDetails.SpineA_Y.value = (float)quat.Y;
-            CharacterDetails.SpineA_Z.value = (float)quat.Z;
-            CharacterDetails.SpineA_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_lumbar, q1_inv, q1_new);
-                FaceBone_Rotator(q1_inv, q1_new);
-            }
-            #endregion
-            // Remove listeners for value changed.
+            RotateHelper(CharacterDetails.SpineA_X, CharacterDetails.SpineA_Y, CharacterDetails.SpineA_Z, CharacterDetails.SpineA_W, bone_lumbar);
             RemoveRoutedEventListener(SpineA_UpDown);
         }
 
@@ -10936,46 +10876,14 @@ namespace ConceptMatrix.Views
         #region LegLeft
         private void LegLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.LegLeft_X.value = (float)quat.X;
-            CharacterDetails.LegLeft_Y.value = (float)quat.Y;
-            CharacterDetails.LegLeft_Z.value = (float)quat.Z;
-            CharacterDetails.LegLeft_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_leg_l, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.LegLeft_X, CharacterDetails.LegLeft_Y, CharacterDetails.LegLeft_Z, CharacterDetails.LegLeft_W, bone_leg_l);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(LegLeft_Slider);
         }
 
         private void LegLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.LegLeft_X.value = (float)quat.X;
-            CharacterDetails.LegLeft_Y.value = (float)quat.Y;
-            CharacterDetails.LegLeft_Z.value = (float)quat.Z;
-            CharacterDetails.LegLeft_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_leg_l, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.LegLeft_X, CharacterDetails.LegLeft_Y, CharacterDetails.LegLeft_Z, CharacterDetails.LegLeft_W, bone_leg_l);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(LegLeft_UpDown);
         }
@@ -10998,46 +10906,14 @@ namespace ConceptMatrix.Views
         #region LegRight
         private void LegRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.LegRight_X.value = (float)quat.X;
-            CharacterDetails.LegRight_Y.value = (float)quat.Y;
-            CharacterDetails.LegRight_Z.value = (float)quat.Z;
-            CharacterDetails.LegRight_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_leg_r, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.LegRight_X, CharacterDetails.LegRight_Y, CharacterDetails.LegRight_Z, CharacterDetails.LegRight_W, bone_leg_r);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(LegRight_Slider);
         }
 
         private void LegRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.LegRight_X.value = (float)quat.X;
-            CharacterDetails.LegRight_Y.value = (float)quat.Y;
-            CharacterDetails.LegRight_Z.value = (float)quat.Z;
-            CharacterDetails.LegRight_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_leg_r, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.LegRight_X, CharacterDetails.LegRight_Y, CharacterDetails.LegRight_Z, CharacterDetails.LegRight_W, bone_leg_r);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(LegRight_UpDown);
         }
@@ -11060,26 +10936,14 @@ namespace ConceptMatrix.Views
         #region HolsterLeft
         private void HolsterLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.HolsterLeft_X.value = (float)quat.X;
-            CharacterDetails.HolsterLeft_Y.value = (float)quat.Y;
-            CharacterDetails.HolsterLeft_Z.value = (float)quat.Z;
-            CharacterDetails.HolsterLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HolsterLeft_X, CharacterDetails.HolsterLeft_Y, CharacterDetails.HolsterLeft_Z, CharacterDetails.HolsterLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HolsterLeft_Slider);
         }
 
         private void HolsterLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.HolsterLeft_X.value = (float)quat.X;
-            CharacterDetails.HolsterLeft_Y.value = (float)quat.Y;
-            CharacterDetails.HolsterLeft_Z.value = (float)quat.Z;
-            CharacterDetails.HolsterLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HolsterLeft_X, CharacterDetails.HolsterLeft_Y, CharacterDetails.HolsterLeft_Z, CharacterDetails.HolsterLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HolsterLeft_UpDown);
         }
@@ -11102,26 +10966,14 @@ namespace ConceptMatrix.Views
         #region HolsterRight
         private void HolsterRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.HolsterRight_X.value = (float)quat.X;
-            CharacterDetails.HolsterRight_Y.value = (float)quat.Y;
-            CharacterDetails.HolsterRight_Z.value = (float)quat.Z;
-            CharacterDetails.HolsterRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HolsterRight_X, CharacterDetails.HolsterRight_Y, CharacterDetails.HolsterRight_Z, CharacterDetails.HolsterRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HolsterRight_Slider);
         }
 
         private void HolsterRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.HolsterRight_X.value = (float)quat.X;
-            CharacterDetails.HolsterRight_Y.value = (float)quat.Y;
-            CharacterDetails.HolsterRight_Z.value = (float)quat.Z;
-            CharacterDetails.HolsterRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HolsterRight_X, CharacterDetails.HolsterRight_Y, CharacterDetails.HolsterRight_Z, CharacterDetails.HolsterRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HolsterRight_UpDown);
         }
@@ -11144,26 +10996,14 @@ namespace ConceptMatrix.Views
         #region SheatheLeft
         private void SheatheLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.SheatheLeft_X.value = (float)quat.X;
-            CharacterDetails.SheatheLeft_Y.value = (float)quat.Y;
-            CharacterDetails.SheatheLeft_Z.value = (float)quat.Z;
-            CharacterDetails.SheatheLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.SheatheLeft_X, CharacterDetails.SheatheLeft_Y, CharacterDetails.SheatheLeft_Z, CharacterDetails.SheatheLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(SheatheLeft_Slider);
         }
 
         private void SheatheLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.SheatheLeft_X.value = (float)quat.X;
-            CharacterDetails.SheatheLeft_Y.value = (float)quat.Y;
-            CharacterDetails.SheatheLeft_Z.value = (float)quat.Z;
-            CharacterDetails.SheatheLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.SheatheLeft_X, CharacterDetails.SheatheLeft_Y, CharacterDetails.SheatheLeft_Z, CharacterDetails.SheatheLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(SheatheLeft_UpDown);
         }
@@ -11186,26 +11026,14 @@ namespace ConceptMatrix.Views
         #region SheatheRight
         private void SheatheRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.SheatheRight_X.value = (float)quat.X;
-            CharacterDetails.SheatheRight_Y.value = (float)quat.Y;
-            CharacterDetails.SheatheRight_Z.value = (float)quat.Z;
-            CharacterDetails.SheatheRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.SheatheRight_X, CharacterDetails.SheatheRight_Y, CharacterDetails.SheatheRight_Z, CharacterDetails.SheatheRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(SheatheRight_Slider);
         }
 
         private void SheatheRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.SheatheRight_X.value = (float)quat.X;
-            CharacterDetails.SheatheRight_Y.value = (float)quat.Y;
-            CharacterDetails.SheatheRight_Z.value = (float)quat.Z;
-            CharacterDetails.SheatheRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.SheatheRight_X, CharacterDetails.SheatheRight_Y, CharacterDetails.SheatheRight_Z, CharacterDetails.SheatheRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(SheatheRight_UpDown);
         }
@@ -11228,48 +11056,14 @@ namespace ConceptMatrix.Views
         #region SpineB
         private void SpineB_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.SpineB_X.value = (float)quat.X;
-            CharacterDetails.SpineB_Y.value = (float)quat.Y;
-            CharacterDetails.SpineB_Z.value = (float)quat.Z;
-            CharacterDetails.SpineB_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_thora, q1_inv, q1_new);
-                FaceBone_Rotator(q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.SpineB_X, CharacterDetails.SpineB_Y, CharacterDetails.SpineB_Z, CharacterDetails.SpineB_W, bone_thora);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(SpineB_Slider);
         }
 
         private void SpineB_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.SpineB_X.value = (float)quat.X;
-            CharacterDetails.SpineB_Y.value = (float)quat.Y;
-            CharacterDetails.SpineB_Z.value = (float)quat.Z;
-            CharacterDetails.SpineB_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_thora, q1_inv, q1_new);
-                FaceBone_Rotator(q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.SpineB_X, CharacterDetails.SpineB_Y, CharacterDetails.SpineB_Z, CharacterDetails.SpineB_W, bone_thora);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(SpineB_UpDown);
         }
@@ -11292,26 +11086,16 @@ namespace ConceptMatrix.Views
         #region ClothBackALeft
         private void ClothBackALeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothBackALeft_X.value = (float)quat.X;
-            CharacterDetails.ClothBackALeft_Y.value = (float)quat.Y;
-            CharacterDetails.ClothBackALeft_Z.value = (float)quat.Z;
-            CharacterDetails.ClothBackALeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothBackALeft_X, CharacterDetails.ClothBackALeft_Y, CharacterDetails.ClothBackALeft_Z, CharacterDetails.ClothBackALeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothBackALeft_Slider);
         }
 
         private void ClothBackALeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothBackALeft_X.value = (float)quat.X;
-            CharacterDetails.ClothBackALeft_Y.value = (float)quat.Y;
-            CharacterDetails.ClothBackALeft_Z.value = (float)quat.Z;
-            CharacterDetails.ClothBackALeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothBackALeft_X, CharacterDetails.ClothBackALeft_Y, CharacterDetails.ClothBackALeft_Z, CharacterDetails.ClothBackALeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothBackALeft_UpDown);
         }
@@ -11334,26 +11118,16 @@ namespace ConceptMatrix.Views
         #region ClothBackARight
         private void ClothBackARight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothBackARight_X.value = (float)quat.X;
-            CharacterDetails.ClothBackARight_Y.value = (float)quat.Y;
-            CharacterDetails.ClothBackARight_Z.value = (float)quat.Z;
-            CharacterDetails.ClothBackARight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothBackARight_X, CharacterDetails.ClothBackARight_Y, CharacterDetails.ClothBackARight_Z, CharacterDetails.ClothBackARight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothBackARight_Slider);
         }
 
         private void ClothBackARight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothBackARight_X.value = (float)quat.X;
-            CharacterDetails.ClothBackARight_Y.value = (float)quat.Y;
-            CharacterDetails.ClothBackARight_Z.value = (float)quat.Z;
-            CharacterDetails.ClothBackARight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothBackARight_X, CharacterDetails.ClothBackARight_Y, CharacterDetails.ClothBackARight_Z, CharacterDetails.ClothBackARight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothBackARight_UpDown);
         }
@@ -11376,26 +11150,16 @@ namespace ConceptMatrix.Views
         #region ClothFrontALeft
         private void ClothFrontALeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothFrontALeft_X.value = (float)quat.X;
-            CharacterDetails.ClothFrontALeft_Y.value = (float)quat.Y;
-            CharacterDetails.ClothFrontALeft_Z.value = (float)quat.Z;
-            CharacterDetails.ClothFrontALeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothFrontALeft_X, CharacterDetails.ClothFrontALeft_Y, CharacterDetails.ClothFrontALeft_Z, CharacterDetails.ClothFrontALeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothFrontALeft_Slider);
         }
 
         private void ClothFrontALeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothFrontALeft_X.value = (float)quat.X;
-            CharacterDetails.ClothFrontALeft_Y.value = (float)quat.Y;
-            CharacterDetails.ClothFrontALeft_Z.value = (float)quat.Z;
-            CharacterDetails.ClothFrontALeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothFrontALeft_X, CharacterDetails.ClothFrontALeft_Y, CharacterDetails.ClothFrontALeft_Z, CharacterDetails.ClothFrontALeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothFrontALeft_UpDown);
         }
@@ -11418,26 +11182,16 @@ namespace ConceptMatrix.Views
         #region ClothFrontARight
         private void ClothFrontARight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothFrontARight_X.value = (float)quat.X;
-            CharacterDetails.ClothFrontARight_Y.value = (float)quat.Y;
-            CharacterDetails.ClothFrontARight_Z.value = (float)quat.Z;
-            CharacterDetails.ClothFrontARight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothFrontARight_X, CharacterDetails.ClothFrontARight_Y, CharacterDetails.ClothFrontARight_Z, CharacterDetails.ClothFrontARight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothFrontARight_Slider);
         }
 
         private void ClothFrontARight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothFrontARight_X.value = (float)quat.X;
-            CharacterDetails.ClothFrontARight_Y.value = (float)quat.Y;
-            CharacterDetails.ClothFrontARight_Z.value = (float)quat.Z;
-            CharacterDetails.ClothFrontARight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothFrontARight_X, CharacterDetails.ClothFrontARight_Y, CharacterDetails.ClothFrontARight_Z, CharacterDetails.ClothFrontARight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothFrontARight_UpDown);
         }
@@ -11460,26 +11214,16 @@ namespace ConceptMatrix.Views
         #region ClothSideALeft
         private void ClothSideALeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothSideALeft_X.value = (float)quat.X;
-            CharacterDetails.ClothSideALeft_Y.value = (float)quat.Y;
-            CharacterDetails.ClothSideALeft_Z.value = (float)quat.Z;
-            CharacterDetails.ClothSideALeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothSideALeft_X, CharacterDetails.ClothSideALeft_Y, CharacterDetails.ClothSideALeft_Z, CharacterDetails.ClothSideALeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothSideALeft_Slider);
         }
 
         private void ClothSideALeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothSideALeft_X.value = (float)quat.X;
-            CharacterDetails.ClothSideALeft_Y.value = (float)quat.Y;
-            CharacterDetails.ClothSideALeft_Z.value = (float)quat.Z;
-            CharacterDetails.ClothSideALeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothSideALeft_X, CharacterDetails.ClothSideALeft_Y, CharacterDetails.ClothSideALeft_Z, CharacterDetails.ClothSideALeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothSideALeft_UpDown);
         }
@@ -11502,26 +11246,16 @@ namespace ConceptMatrix.Views
         #region ClothSideARight
         private void ClothSideARight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothSideARight_X.value = (float)quat.X;
-            CharacterDetails.ClothSideARight_Y.value = (float)quat.Y;
-            CharacterDetails.ClothSideARight_Z.value = (float)quat.Z;
-            CharacterDetails.ClothSideARight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothSideARight_X, CharacterDetails.ClothSideARight_Y, CharacterDetails.ClothSideARight_Z, CharacterDetails.ClothSideARight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothSideARight_Slider);
         }
 
         private void ClothSideARight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothSideARight_X.value = (float)quat.X;
-            CharacterDetails.ClothSideARight_Y.value = (float)quat.Y;
-            CharacterDetails.ClothSideARight_Z.value = (float)quat.Z;
-            CharacterDetails.ClothSideARight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothSideARight_X, CharacterDetails.ClothSideARight_Y, CharacterDetails.ClothSideARight_Z, CharacterDetails.ClothSideARight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothSideARight_UpDown);
         }
@@ -11544,36 +11278,14 @@ namespace ConceptMatrix.Views
         #region KneeLeft
         private void KneeLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.KneeLeft_X.value = (float)quat.X;
-            CharacterDetails.KneeLeft_Y.value = (float)quat.Y;
-            CharacterDetails.KneeLeft_Z.value = (float)quat.Z;
-            CharacterDetails.KneeLeft_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_knee_l, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.KneeLeft_X, CharacterDetails.KneeLeft_Y, CharacterDetails.KneeLeft_Z, CharacterDetails.KneeLeft_W, bone_knee_l);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(KneeLeft_Slider);
         }
 
         private void KneeLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.KneeLeft_X.value = (float)quat.X;
-            CharacterDetails.KneeLeft_Y.value = (float)quat.Y;
-            CharacterDetails.KneeLeft_Z.value = (float)quat.Z;
-            CharacterDetails.KneeLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.KneeLeft_X, CharacterDetails.KneeLeft_Y, CharacterDetails.KneeLeft_Z, CharacterDetails.KneeLeft_W, bone_knee_l);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(KneeLeft_UpDown);
         }
@@ -11596,36 +11308,14 @@ namespace ConceptMatrix.Views
         #region KneeRight
         private void KneeRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.KneeRight_X.value = (float)quat.X;
-            CharacterDetails.KneeRight_Y.value = (float)quat.Y;
-            CharacterDetails.KneeRight_Z.value = (float)quat.Z;
-            CharacterDetails.KneeRight_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_knee_r, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.KneeRight_X, CharacterDetails.KneeRight_Y, CharacterDetails.KneeRight_Z, CharacterDetails.KneeRight_W, bone_knee_r);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(KneeRight_Slider);
         }
 
         private void KneeRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.KneeRight_X.value = (float)quat.X;
-            CharacterDetails.KneeRight_Y.value = (float)quat.Y;
-            CharacterDetails.KneeRight_Z.value = (float)quat.Z;
-            CharacterDetails.KneeRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.KneeRight_X, CharacterDetails.KneeRight_Y, CharacterDetails.KneeRight_Z, CharacterDetails.KneeRight_W, bone_knee_r);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(KneeRight_UpDown);
         }
@@ -11648,13 +11338,7 @@ namespace ConceptMatrix.Views
         #region BreastLeft
         private void BreastLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.BreastLeft_X.value = (float)quat.X;
-            CharacterDetails.BreastLeft_Y.value = (float)quat.Y;
-            CharacterDetails.BreastLeft_Z.value = (float)quat.Z;
-            CharacterDetails.BreastLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.BreastLeft_X, CharacterDetails.BreastLeft_Y, CharacterDetails.BreastLeft_Z, CharacterDetails.BreastLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(BreastLeft_Slider);
             RemoveRoutedEventListener(BreastLeft_UpDown);
@@ -11662,13 +11346,7 @@ namespace ConceptMatrix.Views
 
         private void BreastLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.BreastLeft_X.value = (float)quat.X;
-            CharacterDetails.BreastLeft_Y.value = (float)quat.Y;
-            CharacterDetails.BreastLeft_Z.value = (float)quat.Z;
-            CharacterDetails.BreastLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.BreastLeft_X, CharacterDetails.BreastLeft_Y, CharacterDetails.BreastLeft_Z, CharacterDetails.BreastLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(BreastLeft_UpDown);
         }
@@ -11691,26 +11369,14 @@ namespace ConceptMatrix.Views
         #region BreastRight
         private void BreastRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.BreastRight_X.value = (float)quat.X;
-            CharacterDetails.BreastRight_Y.value = (float)quat.Y;
-            CharacterDetails.BreastRight_Z.value = (float)quat.Z;
-            CharacterDetails.BreastRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.BreastRight_X, CharacterDetails.BreastRight_Y, CharacterDetails.BreastRight_Z, CharacterDetails.BreastRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(BreastRight_Slider);
         }
 
         private void BreastRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-
-            CharacterDetails.BreastRight_X.value = (float)quat.X;
-            CharacterDetails.BreastRight_Y.value = (float)quat.Y;
-            CharacterDetails.BreastRight_Z.value = (float)quat.Z;
-            CharacterDetails.BreastRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.BreastRight_X, CharacterDetails.BreastRight_Y, CharacterDetails.BreastRight_Z, CharacterDetails.BreastRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(BreastRight_UpDown);
         }
@@ -11733,24 +11399,8 @@ namespace ConceptMatrix.Views
         #region SpineC
         private void SpineC_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.SpineC_X.value = (float)quat.X;
-            CharacterDetails.SpineC_Y.value = (float)quat.Y;
-            CharacterDetails.SpineC_Z.value = (float)quat.Z;
-            CharacterDetails.SpineC_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_cerv, q1_inv, q1_new);
-                FaceBone_Rotator(q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.SpineC_X, CharacterDetails.SpineC_Y, CharacterDetails.SpineC_Z, CharacterDetails.SpineC_W, bone_cerv);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(SpineC_Slider);
             RemoveRoutedEventListener(SpineC_UpDown);
@@ -11758,24 +11408,8 @@ namespace ConceptMatrix.Views
 
         private void SpineC_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.SpineC_X.value = (float)quat.X;
-            CharacterDetails.SpineC_Y.value = (float)quat.Y;
-            CharacterDetails.SpineC_Z.value = (float)quat.Z;
-            CharacterDetails.SpineC_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_cerv, q1_inv, q1_new);
-                FaceBone_Rotator(q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.SpineC_X, CharacterDetails.SpineC_Y, CharacterDetails.SpineC_Z, CharacterDetails.SpineC_W, bone_cerv);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(SpineC_UpDown);
         }
@@ -11798,13 +11432,8 @@ namespace ConceptMatrix.Views
         #region ClothBackBLeft
         private void ClothBackBLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothBackBLeft_X.value = (float)quat.X;
-            CharacterDetails.ClothBackBLeft_Y.value = (float)quat.Y;
-            CharacterDetails.ClothBackBLeft_Z.value = (float)quat.Z;
-            CharacterDetails.ClothBackBLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothBackBLeft_X, CharacterDetails.ClothBackBLeft_Y, CharacterDetails.ClothBackBLeft_Z, CharacterDetails.ClothBackBLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothBackBLeft_Slider);
             RemoveRoutedEventListener(ClothBackBLeft_UpDown);
@@ -11812,13 +11441,8 @@ namespace ConceptMatrix.Views
 
         private void ClothBackBLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothBackBLeft_X.value = (float)quat.X;
-            CharacterDetails.ClothBackBLeft_Y.value = (float)quat.Y;
-            CharacterDetails.ClothBackBLeft_Z.value = (float)quat.Z;
-            CharacterDetails.ClothBackBLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothBackBLeft_X, CharacterDetails.ClothBackBLeft_Y, CharacterDetails.ClothBackBLeft_Z, CharacterDetails.ClothBackBLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothBackBLeft_UpDown);
         }
@@ -11841,26 +11465,16 @@ namespace ConceptMatrix.Views
         #region ClothBackBRight
         private void ClothBackBRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothBackBRight_X.value = (float)quat.X;
-            CharacterDetails.ClothBackBRight_Y.value = (float)quat.Y;
-            CharacterDetails.ClothBackBRight_Z.value = (float)quat.Z;
-            CharacterDetails.ClothBackBRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothBackBRight_X, CharacterDetails.ClothBackBRight_Y, CharacterDetails.ClothBackBRight_Z, CharacterDetails.ClothBackBRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothBackBRight_Slider);
         }
 
         private void ClothBackBRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothBackBRight_X.value = (float)quat.X;
-            CharacterDetails.ClothBackBRight_Y.value = (float)quat.Y;
-            CharacterDetails.ClothBackBRight_Z.value = (float)quat.Z;
-            CharacterDetails.ClothBackBRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothBackBRight_X, CharacterDetails.ClothBackBRight_Y, CharacterDetails.ClothBackBRight_Z, CharacterDetails.ClothBackBRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothBackBRight_UpDown);
         }
@@ -11883,26 +11497,16 @@ namespace ConceptMatrix.Views
         #region ClothFrontBLeft
         private void ClothFrontBLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothFrontBLeft_X.value = (float)quat.X;
-            CharacterDetails.ClothFrontBLeft_Y.value = (float)quat.Y;
-            CharacterDetails.ClothFrontBLeft_Z.value = (float)quat.Z;
-            CharacterDetails.ClothFrontBLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothFrontBLeft_X, CharacterDetails.ClothFrontBLeft_Y, CharacterDetails.ClothFrontBLeft_Z, CharacterDetails.ClothFrontBLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothFrontBLeft_Slider);
         }
 
         private void ClothFrontBLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothFrontBLeft_X.value = (float)quat.X;
-            CharacterDetails.ClothFrontBLeft_Y.value = (float)quat.Y;
-            CharacterDetails.ClothFrontBLeft_Z.value = (float)quat.Z;
-            CharacterDetails.ClothFrontBLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothFrontBLeft_X, CharacterDetails.ClothFrontBLeft_Y, CharacterDetails.ClothFrontBLeft_Z, CharacterDetails.ClothFrontBLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothFrontBLeft_UpDown);
         }
@@ -11925,26 +11529,16 @@ namespace ConceptMatrix.Views
         #region ClothFrontBRight
         private void ClothFrontBRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothFrontBRight_X.value = (float)quat.X;
-            CharacterDetails.ClothFrontBRight_Y.value = (float)quat.Y;
-            CharacterDetails.ClothFrontBRight_Z.value = (float)quat.Z;
-            CharacterDetails.ClothFrontBRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothFrontBRight_X, CharacterDetails.ClothFrontBRight_Y, CharacterDetails.ClothFrontBRight_Z, CharacterDetails.ClothFrontBRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothFrontBRight_Slider);
         }
 
         private void ClothFrontBRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothFrontBRight_X.value = (float)quat.X;
-            CharacterDetails.ClothFrontBRight_Y.value = (float)quat.Y;
-            CharacterDetails.ClothFrontBRight_Z.value = (float)quat.Z;
-            CharacterDetails.ClothFrontBRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothFrontBRight_X, CharacterDetails.ClothFrontBRight_Y, CharacterDetails.ClothFrontBRight_Z, CharacterDetails.ClothFrontBRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothFrontBRight_UpDown);
         }
@@ -11967,26 +11561,16 @@ namespace ConceptMatrix.Views
         #region ClothSideBLeft
         private void ClothSideBLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothSideBLeft_X.value = (float)quat.X;
-            CharacterDetails.ClothSideBLeft_Y.value = (float)quat.Y;
-            CharacterDetails.ClothSideBLeft_Z.value = (float)quat.Z;
-            CharacterDetails.ClothSideBLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothSideBLeft_X, CharacterDetails.ClothSideBLeft_Y, CharacterDetails.ClothSideBLeft_Z, CharacterDetails.ClothSideBLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothSideBLeft_Slider);
         }
 
         private void ClothSideBLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothSideBLeft_X.value = (float)quat.X;
-            CharacterDetails.ClothSideBLeft_Y.value = (float)quat.Y;
-            CharacterDetails.ClothSideBLeft_Z.value = (float)quat.Z;
-            CharacterDetails.ClothSideBLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothSideBLeft_X, CharacterDetails.ClothSideBLeft_Y, CharacterDetails.ClothSideBLeft_Z, CharacterDetails.ClothSideBLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothSideBLeft_UpDown);
         }
@@ -12009,26 +11593,16 @@ namespace ConceptMatrix.Views
         #region ClothSideBRight
         private void ClothSideBRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothSideBRight_X.value = (float)quat.X;
-            CharacterDetails.ClothSideBRight_Y.value = (float)quat.Y;
-            CharacterDetails.ClothSideBRight_Z.value = (float)quat.Z;
-            CharacterDetails.ClothSideBRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothSideBRight_X, CharacterDetails.ClothSideBRight_Y, CharacterDetails.ClothSideBRight_Z, CharacterDetails.ClothSideBRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothSideBRight_Slider);
         }
 
         private void ClothSideBRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothSideBRight_X.value = (float)quat.X;
-            CharacterDetails.ClothSideBRight_Y.value = (float)quat.Y;
-            CharacterDetails.ClothSideBRight_Z.value = (float)quat.Z;
-            CharacterDetails.ClothSideBRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothSideBRight_X, CharacterDetails.ClothSideBRight_Y, CharacterDetails.ClothSideBRight_Z, CharacterDetails.ClothSideBRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothSideBRight_UpDown);
         }
@@ -12051,46 +11625,16 @@ namespace ConceptMatrix.Views
         #region CalfLeft
         private void CalfLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.CalfLeft_X.value = (float)quat.X;
-            CharacterDetails.CalfLeft_Y.value = (float)quat.Y;
-            CharacterDetails.CalfLeft_Z.value = (float)quat.Z;
-            CharacterDetails.CalfLeft_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_calf_l, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.CalfLeft_X, CharacterDetails.CalfLeft_Y, CharacterDetails.CalfLeft_Z, CharacterDetails.CalfLeft_W, bone_calf_l);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(CalfLeft_Slider);
         }
 
         private void CalfLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.CalfLeft_X.value = (float)quat.X;
-            CharacterDetails.CalfLeft_Y.value = (float)quat.Y;
-            CharacterDetails.CalfLeft_Z.value = (float)quat.Z;
-            CharacterDetails.CalfLeft_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_calf_l, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.CalfLeft_X, CharacterDetails.CalfLeft_Y, CharacterDetails.CalfLeft_Z, CharacterDetails.CalfLeft_W, bone_calf_l);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(CalfLeft_UpDown);
         }
@@ -12113,46 +11657,16 @@ namespace ConceptMatrix.Views
         #region CalfRight
         private void CalfRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.CalfRight_X.value = (float)quat.X;
-            CharacterDetails.CalfRight_Y.value = (float)quat.Y;
-            CharacterDetails.CalfRight_Z.value = (float)quat.Z;
-            CharacterDetails.CalfRight_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_calf_r, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.CalfRight_X, CharacterDetails.CalfRight_Y, CharacterDetails.CalfRight_Z, CharacterDetails.CalfRight_W, bone_calf_r);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(CalfRight_Slider);
         }
 
         private void CalfRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.CalfRight_X.value = (float)quat.X;
-            CharacterDetails.CalfRight_Y.value = (float)quat.Y;
-            CharacterDetails.CalfRight_Z.value = (float)quat.Z;
-            CharacterDetails.CalfRight_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_calf_r, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.CalfRight_X, CharacterDetails.CalfRight_Y, CharacterDetails.CalfRight_Z, CharacterDetails.CalfRight_W, bone_calf_r);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(CalfRight_UpDown);
         }
@@ -12175,26 +11689,16 @@ namespace ConceptMatrix.Views
         #region ScabbardLeft
         private void ScabbardLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ScabbardLeft_X.value = (float)quat.X;
-            CharacterDetails.ScabbardLeft_Y.value = (float)quat.Y;
-            CharacterDetails.ScabbardLeft_Z.value = (float)quat.Z;
-            CharacterDetails.ScabbardLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ScabbardLeft_X, CharacterDetails.ScabbardLeft_Y, CharacterDetails.ScabbardLeft_Z, CharacterDetails.ScabbardLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ScabbardLeft_Slider);
         }
 
         private void ScabbardLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ScabbardLeft_X.value = (float)quat.X;
-            CharacterDetails.ScabbardLeft_Y.value = (float)quat.Y;
-            CharacterDetails.ScabbardLeft_Z.value = (float)quat.Z;
-            CharacterDetails.ScabbardLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ScabbardLeft_X, CharacterDetails.ScabbardLeft_Y, CharacterDetails.ScabbardLeft_Z, CharacterDetails.ScabbardLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ScabbardLeft_UpDown);
         }
@@ -12217,26 +11721,16 @@ namespace ConceptMatrix.Views
         #region ScabbardRight
         private void ScabbardRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ScabbardRight_X.value = (float)quat.X;
-            CharacterDetails.ScabbardRight_Y.value = (float)quat.Y;
-            CharacterDetails.ScabbardRight_Z.value = (float)quat.Z;
-            CharacterDetails.ScabbardRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ScabbardRight_X, CharacterDetails.ScabbardRight_Y, CharacterDetails.ScabbardRight_Z, CharacterDetails.ScabbardRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ScabbardRight_Slider);
         }
 
         private void ScabbardRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ScabbardRight_X.value = (float)quat.X;
-            CharacterDetails.ScabbardRight_Y.value = (float)quat.Y;
-            CharacterDetails.ScabbardRight_Z.value = (float)quat.Z;
-            CharacterDetails.ScabbardRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ScabbardRight_X, CharacterDetails.ScabbardRight_Y, CharacterDetails.ScabbardRight_Z, CharacterDetails.ScabbardRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ScabbardRight_UpDown);
         }
@@ -12259,48 +11753,16 @@ namespace ConceptMatrix.Views
         #region Neck
         private void Neck_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.Neck_X.value = (float)quat.X;
-            CharacterDetails.Neck_Y.value = (float)quat.Y;
-            CharacterDetails.Neck_Z.value = (float)quat.Z;
-            CharacterDetails.Neck_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_neck, q1_inv, q1_new);
-                FaceBone_Rotator(q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.Neck_X, CharacterDetails.Neck_Y, CharacterDetails.Neck_Z, CharacterDetails.Neck_W, bone_neck);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(Neck_Slider);
         }
 
         private void Neck_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.Neck_X.value = (float)quat.X;
-            CharacterDetails.Neck_Y.value = (float)quat.Y;
-            CharacterDetails.Neck_Z.value = (float)quat.Z;
-            CharacterDetails.Neck_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_neck, q1_inv, q1_new);
-                FaceBone_Rotator(q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.Neck_X, CharacterDetails.Neck_Y, CharacterDetails.Neck_Z, CharacterDetails.Neck_W, bone_neck);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(Neck_UpDown);
         }
@@ -12323,46 +11785,16 @@ namespace ConceptMatrix.Views
         #region ClavicleLeft
         private void ClavicleLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClavicleLeft_X.value = (float)quat.X;
-            CharacterDetails.ClavicleLeft_Y.value = (float)quat.Y;
-            CharacterDetails.ClavicleLeft_Z.value = (float)quat.Z;
-            CharacterDetails.ClavicleLeft_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_clav_l, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.ClavicleLeft_X, CharacterDetails.ClavicleLeft_Y, CharacterDetails.ClavicleLeft_Z, CharacterDetails.ClavicleLeft_W, bone_clav_l);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClavicleLeft_Slider);
         }
 
         private void ClavicleLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClavicleLeft_X.value = (float)quat.X;
-            CharacterDetails.ClavicleLeft_Y.value = (float)quat.Y;
-            CharacterDetails.ClavicleLeft_Z.value = (float)quat.Z;
-            CharacterDetails.ClavicleLeft_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_clav_l, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.ClavicleLeft_X, CharacterDetails.ClavicleLeft_Y, CharacterDetails.ClavicleLeft_Z, CharacterDetails.ClavicleLeft_W, bone_clav_l);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClavicleLeft_UpDown);
         }
@@ -12385,46 +11817,16 @@ namespace ConceptMatrix.Views
         #region ClavicleRight
         private void ClavicleRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClavicleRight_X.value = (float)quat.X;
-            CharacterDetails.ClavicleRight_Y.value = (float)quat.Y;
-            CharacterDetails.ClavicleRight_Z.value = (float)quat.Z;
-            CharacterDetails.ClavicleRight_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_clav_r, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.ClavicleRight_X, CharacterDetails.ClavicleRight_Y, CharacterDetails.ClavicleRight_Z, CharacterDetails.ClavicleRight_W, bone_clav_r);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClavicleRight_Slider);
         }
 
         private void ClavicleRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClavicleRight_X.value = (float)quat.X;
-            CharacterDetails.ClavicleRight_Y.value = (float)quat.Y;
-            CharacterDetails.ClavicleRight_Z.value = (float)quat.Z;
-            CharacterDetails.ClavicleRight_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_clav_r, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.ClavicleRight_X, CharacterDetails.ClavicleRight_Y, CharacterDetails.ClavicleRight_Z, CharacterDetails.ClavicleRight_W, bone_clav_r);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClavicleRight_UpDown);
         }
@@ -12447,26 +11849,16 @@ namespace ConceptMatrix.Views
         #region ClothBackCLeft
         private void ClothBackCLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothBackCLeft_X.value = (float)quat.X;
-            CharacterDetails.ClothBackCLeft_Y.value = (float)quat.Y;
-            CharacterDetails.ClothBackCLeft_Z.value = (float)quat.Z;
-            CharacterDetails.ClothBackCLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothBackCLeft_X, CharacterDetails.ClothBackCLeft_Y, CharacterDetails.ClothBackCLeft_Z, CharacterDetails.ClothBackCLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothBackCLeft_Slider);
         }
 
         private void ClothBackCLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothBackCLeft_X.value = (float)quat.X;
-            CharacterDetails.ClothBackCLeft_Y.value = (float)quat.Y;
-            CharacterDetails.ClothBackCLeft_Z.value = (float)quat.Z;
-            CharacterDetails.ClothBackCLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothBackCLeft_X, CharacterDetails.ClothBackCLeft_Y, CharacterDetails.ClothBackCLeft_Z, CharacterDetails.ClothBackCLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothBackCLeft_UpDown);
         }
@@ -12489,26 +11881,16 @@ namespace ConceptMatrix.Views
         #region ClothBackCRight
         private void ClothBackCRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothBackCRight_X.value = (float)quat.X;
-            CharacterDetails.ClothBackCRight_Y.value = (float)quat.Y;
-            CharacterDetails.ClothBackCRight_Z.value = (float)quat.Z;
-            CharacterDetails.ClothBackCRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothBackCRight_X, CharacterDetails.ClothBackCRight_Y, CharacterDetails.ClothBackCRight_Z, CharacterDetails.ClothBackCRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothBackCRight_Slider);
         }
 
         private void ClothBackCRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothBackCRight_X.value = (float)quat.X;
-            CharacterDetails.ClothBackCRight_Y.value = (float)quat.Y;
-            CharacterDetails.ClothBackCRight_Z.value = (float)quat.Z;
-            CharacterDetails.ClothBackCRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothBackCRight_X, CharacterDetails.ClothBackCRight_Y, CharacterDetails.ClothBackCRight_Z, CharacterDetails.ClothBackCRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothBackCRight_UpDown);
         }
@@ -12531,26 +11913,16 @@ namespace ConceptMatrix.Views
         #region ClothFrontCLeft
         private void ClothFrontCLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothFrontCLeft_X.value = (float)quat.X;
-            CharacterDetails.ClothFrontCLeft_Y.value = (float)quat.Y;
-            CharacterDetails.ClothFrontCLeft_Z.value = (float)quat.Z;
-            CharacterDetails.ClothFrontCLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothFrontCLeft_X, CharacterDetails.ClothFrontCLeft_Y, CharacterDetails.ClothFrontCLeft_Z, CharacterDetails.ClothFrontCLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothFrontCLeft_Slider);
         }
 
         private void ClothFrontCLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothFrontCLeft_X.value = (float)quat.X;
-            CharacterDetails.ClothFrontCLeft_Y.value = (float)quat.Y;
-            CharacterDetails.ClothFrontCLeft_Z.value = (float)quat.Z;
-            CharacterDetails.ClothFrontCLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothFrontCLeft_X, CharacterDetails.ClothFrontCLeft_Y, CharacterDetails.ClothFrontCLeft_Z, CharacterDetails.ClothFrontCLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothFrontCLeft_UpDown);
         }
@@ -12573,26 +11945,16 @@ namespace ConceptMatrix.Views
         #region ClothFrontCRight
         private void ClothFrontCRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothFrontCRight_X.value = (float)quat.X;
-            CharacterDetails.ClothFrontCRight_Y.value = (float)quat.Y;
-            CharacterDetails.ClothFrontCRight_Z.value = (float)quat.Z;
-            CharacterDetails.ClothFrontCRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothFrontCRight_X, CharacterDetails.ClothFrontCRight_Y, CharacterDetails.ClothFrontCRight_Z, CharacterDetails.ClothFrontCRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothFrontCRight_Slider);
         }
 
         private void ClothFrontCRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothFrontCRight_X.value = (float)quat.X;
-            CharacterDetails.ClothFrontCRight_Y.value = (float)quat.Y;
-            CharacterDetails.ClothFrontCRight_Z.value = (float)quat.Z;
-            CharacterDetails.ClothFrontCRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothFrontCRight_X, CharacterDetails.ClothFrontCRight_Y, CharacterDetails.ClothFrontCRight_Z, CharacterDetails.ClothFrontCRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothFrontCRight_UpDown);
         }
@@ -12615,26 +11977,16 @@ namespace ConceptMatrix.Views
         #region ClothSideCLeft
         private void ClothSideCLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothSideCLeft_X.value = (float)quat.X;
-            CharacterDetails.ClothSideCLeft_Y.value = (float)quat.Y;
-            CharacterDetails.ClothSideCLeft_Z.value = (float)quat.Z;
-            CharacterDetails.ClothSideCLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothSideCLeft_X, CharacterDetails.ClothSideCLeft_Y, CharacterDetails.ClothSideCLeft_Z, CharacterDetails.ClothSideCLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothSideCLeft_Slider);
         }
 
         private void ClothSideCLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothSideCLeft_X.value = (float)quat.X;
-            CharacterDetails.ClothSideCLeft_Y.value = (float)quat.Y;
-            CharacterDetails.ClothSideCLeft_Z.value = (float)quat.Z;
-            CharacterDetails.ClothSideCLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothSideCLeft_X, CharacterDetails.ClothSideCLeft_Y, CharacterDetails.ClothSideCLeft_Z, CharacterDetails.ClothSideCLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothSideCLeft_UpDown);
         }
@@ -12657,26 +12009,16 @@ namespace ConceptMatrix.Views
         #region ClothSideCRight
         private void ClothSideCRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothSideCRight_X.value = (float)quat.X;
-            CharacterDetails.ClothSideCRight_Y.value = (float)quat.Y;
-            CharacterDetails.ClothSideCRight_Z.value = (float)quat.Z;
-            CharacterDetails.ClothSideCRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothSideCRight_X, CharacterDetails.ClothSideCRight_Y, CharacterDetails.ClothSideCRight_Z, CharacterDetails.ClothSideCRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothSideCRight_Slider);
         }
 
         private void ClothSideCRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ClothSideCRight_X.value = (float)quat.X;
-            CharacterDetails.ClothSideCRight_Y.value = (float)quat.Y;
-            CharacterDetails.ClothSideCRight_Z.value = (float)quat.Z;
-            CharacterDetails.ClothSideCRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ClothSideCRight_X, CharacterDetails.ClothSideCRight_Y, CharacterDetails.ClothSideCRight_Z, CharacterDetails.ClothSideCRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ClothSideCRight_UpDown);
         }
@@ -12699,26 +12041,16 @@ namespace ConceptMatrix.Views
         #region PoleynLeft
         private void PoleynLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.PoleynLeft_X.value = (float)quat.X;
-            CharacterDetails.PoleynLeft_Y.value = (float)quat.Y;
-            CharacterDetails.PoleynLeft_Z.value = (float)quat.Z;
-            CharacterDetails.PoleynLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.PoleynLeft_X, CharacterDetails.PoleynLeft_Y, CharacterDetails.PoleynLeft_Z, CharacterDetails.PoleynLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(PoleynLeft_Slider);
         }
 
         private void PoleynLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.PoleynLeft_X.value = (float)quat.X;
-            CharacterDetails.PoleynLeft_Y.value = (float)quat.Y;
-            CharacterDetails.PoleynLeft_Z.value = (float)quat.Z;
-            CharacterDetails.PoleynLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.PoleynLeft_X, CharacterDetails.PoleynLeft_Y, CharacterDetails.PoleynLeft_Z, CharacterDetails.PoleynLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(PoleynLeft_UpDown);
         }
@@ -12741,26 +12073,16 @@ namespace ConceptMatrix.Views
         #region PoleynRight
         private void PoleynRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.PoleynRight_X.value = (float)quat.X;
-            CharacterDetails.PoleynRight_Y.value = (float)quat.Y;
-            CharacterDetails.PoleynRight_Z.value = (float)quat.Z;
-            CharacterDetails.PoleynRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.PoleynRight_X, CharacterDetails.PoleynRight_Y, CharacterDetails.PoleynRight_Z, CharacterDetails.PoleynRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(PoleynRight_Slider);
         }
 
         private void PoleynRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.PoleynRight_X.value = (float)quat.X;
-            CharacterDetails.PoleynRight_Y.value = (float)quat.Y;
-            CharacterDetails.PoleynRight_Z.value = (float)quat.Z;
-            CharacterDetails.PoleynRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.PoleynRight_X, CharacterDetails.PoleynRight_Y, CharacterDetails.PoleynRight_Z, CharacterDetails.PoleynRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(PoleynRight_UpDown);
         }
@@ -12783,46 +12105,16 @@ namespace ConceptMatrix.Views
         #region FootLeft
         private void FootLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.FootLeft_X.value = (float)quat.X;
-            CharacterDetails.FootLeft_Y.value = (float)quat.Y;
-            CharacterDetails.FootLeft_Z.value = (float)quat.Z;
-            CharacterDetails.FootLeft_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_foot_l, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.FootLeft_X, CharacterDetails.FootLeft_Y, CharacterDetails.FootLeft_Z, CharacterDetails.FootLeft_W, bone_foot_l);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(FootLeft_Slider);
         }
 
         private void FootLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.FootLeft_X.value = (float)quat.X;
-            CharacterDetails.FootLeft_Y.value = (float)quat.Y;
-            CharacterDetails.FootLeft_Z.value = (float)quat.Z;
-            CharacterDetails.FootLeft_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_foot_l, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.FootLeft_X, CharacterDetails.FootLeft_Y, CharacterDetails.FootLeft_Z, CharacterDetails.FootLeft_W, bone_foot_l);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(FootLeft_UpDown);
         }
@@ -12845,13 +12137,8 @@ namespace ConceptMatrix.Views
         #region FootRight
         private void FootRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.FootRight_X.value = (float)quat.X;
-            CharacterDetails.FootRight_Y.value = (float)quat.Y;
-            CharacterDetails.FootRight_Z.value = (float)quat.Z;
-            CharacterDetails.FootRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.FootRight_X, CharacterDetails.FootRight_Y, CharacterDetails.FootRight_Z, CharacterDetails.FootRight_W, bone_foot_r);
             #region Child Bones
             if (ParentingToggle.IsChecked == true)
             {
@@ -12868,23 +12155,8 @@ namespace ConceptMatrix.Views
 
         private void FootRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.FootRight_X.value = (float)quat.X;
-            CharacterDetails.FootRight_Y.value = (float)quat.Y;
-            CharacterDetails.FootRight_Z.value = (float)quat.Z;
-            CharacterDetails.FootRight_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_foot_r, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.FootRight_X, CharacterDetails.FootRight_Y, CharacterDetails.FootRight_Z, CharacterDetails.FootRight_W, bone_foot_r);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(FootRight_UpDown);
         }
@@ -12907,52 +12179,16 @@ namespace ConceptMatrix.Views
         #region Head
         private void Head_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-            CharacterDetails.Head_X.value = (float)quat.X;
-            CharacterDetails.Head_Y.value = (float)quat.Y;
-            CharacterDetails.Head_Z.value = (float)quat.Z;
-            CharacterDetails.Head_W.value = (float)quat.W;
 
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-
-                Rotate_ChildBone(bone_face, q1_inv, q1_new);
-                FaceBone_Rotator(q1_inv, q1_new);
-            }
-            #endregion
-
+            RotateHelper(CharacterDetails.Head_X, CharacterDetails.Head_Y, CharacterDetails.Head_Z, CharacterDetails.Head_W, bone_face);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(Head_Slider);
         }
 
         private void Head_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-            oldrot = newrot;
-            CharacterDetails.Head_X.value = (float)quat.X;
-            CharacterDetails.Head_Y.value = (float)quat.Y;
-            CharacterDetails.Head_Z.value = (float)quat.Z;
-            CharacterDetails.Head_W.value = (float)quat.W;
 
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-
-                Rotate_ChildBone(bone_face, q1_inv, q1_new);
-                FaceBone_Rotator(q1_inv, q1_new);
-            }
-            #endregion
-
+            RotateHelper(CharacterDetails.Head_X, CharacterDetails.Head_Y, CharacterDetails.Head_Z, CharacterDetails.Head_W, bone_face);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(Head_UpDown);
         }
@@ -12975,46 +12211,16 @@ namespace ConceptMatrix.Views
         #region ArmLeft
         private void ArmLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ArmLeft_X.value = (float)quat.X;
-            CharacterDetails.ArmLeft_Y.value = (float)quat.Y;
-            CharacterDetails.ArmLeft_Z.value = (float)quat.Z;
-            CharacterDetails.ArmLeft_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_arm_l, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.ArmLeft_X, CharacterDetails.ArmLeft_Y, CharacterDetails.ArmLeft_Z, CharacterDetails.ArmLeft_W, bone_arm_l);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ArmLeft_Slider);
         }
 
         private void ArmLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ArmLeft_X.value = (float)quat.X;
-            CharacterDetails.ArmLeft_Y.value = (float)quat.Y;
-            CharacterDetails.ArmLeft_Z.value = (float)quat.Z;
-            CharacterDetails.ArmLeft_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_arm_l, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.ArmLeft_X, CharacterDetails.ArmLeft_Y, CharacterDetails.ArmLeft_Z, CharacterDetails.ArmLeft_W, bone_arm_l);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ArmLeft_UpDown);
         }
@@ -13037,46 +12243,16 @@ namespace ConceptMatrix.Views
         #region ArmRight
         private void ArmRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ArmRight_X.value = (float)quat.X;
-            CharacterDetails.ArmRight_Y.value = (float)quat.Y;
-            CharacterDetails.ArmRight_Z.value = (float)quat.Z;
-            CharacterDetails.ArmRight_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_arm_r, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.ArmRight_X, CharacterDetails.ArmRight_Y, CharacterDetails.ArmRight_Z, CharacterDetails.ArmRight_W, bone_arm_r);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ArmRight_Slider);
         }
 
         private void ArmRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ArmRight_X.value = (float)quat.X;
-            CharacterDetails.ArmRight_Y.value = (float)quat.Y;
-            CharacterDetails.ArmRight_Z.value = (float)quat.Z;
-            CharacterDetails.ArmRight_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_arm_r, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.ArmRight_X, CharacterDetails.ArmRight_Y, CharacterDetails.ArmRight_Z, CharacterDetails.ArmRight_W, bone_arm_r);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ArmRight_UpDown);
         }
@@ -13099,26 +12275,16 @@ namespace ConceptMatrix.Views
         #region PauldronLeft
         private void PauldronLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.PauldronLeft_X.value = (float)quat.X;
-            CharacterDetails.PauldronLeft_Y.value = (float)quat.Y;
-            CharacterDetails.PauldronLeft_Z.value = (float)quat.Z;
-            CharacterDetails.PauldronLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.PauldronLeft_X, CharacterDetails.PauldronLeft_Y, CharacterDetails.PauldronLeft_Z, CharacterDetails.PauldronLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(PauldronLeft_Slider);
         }
 
         private void PauldronLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.PauldronLeft_X.value = (float)quat.X;
-            CharacterDetails.PauldronLeft_Y.value = (float)quat.Y;
-            CharacterDetails.PauldronLeft_Z.value = (float)quat.Z;
-            CharacterDetails.PauldronLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.PauldronLeft_X, CharacterDetails.PauldronLeft_Y, CharacterDetails.PauldronLeft_Z, CharacterDetails.PauldronLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(PauldronLeft_UpDown);
         }
@@ -13141,26 +12307,16 @@ namespace ConceptMatrix.Views
         #region PauldronRight
         private void PauldronRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.PauldronRight_X.value = (float)quat.X;
-            CharacterDetails.PauldronRight_Y.value = (float)quat.Y;
-            CharacterDetails.PauldronRight_Z.value = (float)quat.Z;
-            CharacterDetails.PauldronRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.PauldronRight_X, CharacterDetails.PauldronRight_Y, CharacterDetails.PauldronRight_Z, CharacterDetails.PauldronRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(PauldronRight_Slider);
         }
 
         private void PauldronRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.PauldronRight_X.value = (float)quat.X;
-            CharacterDetails.PauldronRight_Y.value = (float)quat.Y;
-            CharacterDetails.PauldronRight_Z.value = (float)quat.Z;
-            CharacterDetails.PauldronRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.PauldronRight_X, CharacterDetails.PauldronRight_Y, CharacterDetails.PauldronRight_Z, CharacterDetails.PauldronRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(PauldronRight_UpDown);
         }
@@ -13183,26 +12339,16 @@ namespace ConceptMatrix.Views
         #region Unknown00
         private void Unknown00_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.Unknown00_X.value = (float)quat.X;
-            CharacterDetails.Unknown00_Y.value = (float)quat.Y;
-            CharacterDetails.Unknown00_Z.value = (float)quat.Z;
-            CharacterDetails.Unknown00_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.Unknown00_X, CharacterDetails.Unknown00_Y, CharacterDetails.Unknown00_Z, CharacterDetails.Unknown00_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(Unknown00_Slider);
         }
 
         private void Unknown00_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.Unknown00_X.value = (float)quat.X;
-            CharacterDetails.Unknown00_Y.value = (float)quat.Y;
-            CharacterDetails.Unknown00_Z.value = (float)quat.Z;
-            CharacterDetails.Unknown00_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.Unknown00_X, CharacterDetails.Unknown00_Y, CharacterDetails.Unknown00_Z, CharacterDetails.Unknown00_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(Unknown00_UpDown);
         }
@@ -13225,26 +12371,16 @@ namespace ConceptMatrix.Views
         #region ToesLeft
         private void ToesLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ToesLeft_X.value = (float)quat.X;
-            CharacterDetails.ToesLeft_Y.value = (float)quat.Y;
-            CharacterDetails.ToesLeft_Z.value = (float)quat.Z;
-            CharacterDetails.ToesLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ToesLeft_X, CharacterDetails.ToesLeft_Y, CharacterDetails.ToesLeft_Z, CharacterDetails.ToesLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ToesLeft_Slider);
         }
 
         private void ToesLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ToesLeft_X.value = (float)quat.X;
-            CharacterDetails.ToesLeft_Y.value = (float)quat.Y;
-            CharacterDetails.ToesLeft_Z.value = (float)quat.Z;
-            CharacterDetails.ToesLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ToesLeft_X, CharacterDetails.ToesLeft_Y, CharacterDetails.ToesLeft_Z, CharacterDetails.ToesLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ToesLeft_UpDown);
             }
@@ -13267,26 +12403,16 @@ namespace ConceptMatrix.Views
         #region ToesRight
         private void ToesRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ToesRight_X.value = (float)quat.X;
-            CharacterDetails.ToesRight_Y.value = (float)quat.Y;
-            CharacterDetails.ToesRight_Z.value = (float)quat.Z;
-            CharacterDetails.ToesRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ToesRight_X, CharacterDetails.ToesRight_Y, CharacterDetails.ToesRight_Z, CharacterDetails.ToesRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ToesRight_Slider);
         }
 
         private void ToesRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ToesRight_X.value = (float)quat.X;
-            CharacterDetails.ToesRight_Y.value = (float)quat.Y;
-            CharacterDetails.ToesRight_Z.value = (float)quat.Z;
-            CharacterDetails.ToesRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ToesRight_X, CharacterDetails.ToesRight_Y, CharacterDetails.ToesRight_Z, CharacterDetails.ToesRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ToesRight_UpDown);
         }
@@ -13309,26 +12435,16 @@ namespace ConceptMatrix.Views
         #region HairA
         private void HairA_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HairA_X.value = (float)quat.X;
-            CharacterDetails.HairA_Y.value = (float)quat.Y;
-            CharacterDetails.HairA_Z.value = (float)quat.Z;
-            CharacterDetails.HairA_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HairA_X, CharacterDetails.HairA_Y, CharacterDetails.HairA_Z, CharacterDetails.HairA_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HairA_Slider);
         }
 
         private void HairA_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HairA_X.value = (float)quat.X;
-            CharacterDetails.HairA_Y.value = (float)quat.Y;
-            CharacterDetails.HairA_Z.value = (float)quat.Z;
-            CharacterDetails.HairA_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HairA_X, CharacterDetails.HairA_Y, CharacterDetails.HairA_Z, CharacterDetails.HairA_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HairA_UpDown);
         }
@@ -13351,26 +12467,16 @@ namespace ConceptMatrix.Views
         #region HairFrontLeft
         private void HairFrontLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HairFrontLeft_X.value = (float)quat.X;
-            CharacterDetails.HairFrontLeft_Y.value = (float)quat.Y;
-            CharacterDetails.HairFrontLeft_Z.value = (float)quat.Z;
-            CharacterDetails.HairFrontLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HairFrontLeft_X, CharacterDetails.HairFrontLeft_Y, CharacterDetails.HairFrontLeft_Z, CharacterDetails.HairFrontLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HairFrontLeft_Slider);
         }
 
         private void HairFrontLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HairFrontLeft_X.value = (float)quat.X;
-            CharacterDetails.HairFrontLeft_Y.value = (float)quat.Y;
-            CharacterDetails.HairFrontLeft_Z.value = (float)quat.Z;
-            CharacterDetails.HairFrontLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HairFrontLeft_X, CharacterDetails.HairFrontLeft_Y, CharacterDetails.HairFrontLeft_Z, CharacterDetails.HairFrontLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HairFrontLeft_UpDown);
         }
@@ -13393,26 +12499,16 @@ namespace ConceptMatrix.Views
         #region HairFrontRight
         private void HairFrontRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HairFrontRight_X.value = (float)quat.X;
-            CharacterDetails.HairFrontRight_Y.value = (float)quat.Y;
-            CharacterDetails.HairFrontRight_Z.value = (float)quat.Z;
-            CharacterDetails.HairFrontRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HairFrontRight_X, CharacterDetails.HairFrontRight_Y, CharacterDetails.HairFrontRight_Z, CharacterDetails.HairFrontRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HairFrontRight_Slider);
         }
 
         private void HairFrontRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HairFrontRight_X.value = (float)quat.X;
-            CharacterDetails.HairFrontRight_Y.value = (float)quat.Y;
-            CharacterDetails.HairFrontRight_Z.value = (float)quat.Z;
-            CharacterDetails.HairFrontRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HairFrontRight_X, CharacterDetails.HairFrontRight_Y, CharacterDetails.HairFrontRight_Z, CharacterDetails.HairFrontRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HairFrontRight_UpDown);
         }
@@ -13435,26 +12531,16 @@ namespace ConceptMatrix.Views
         #region EarLeft
         private void EarLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.EarLeft_X.value = (float)quat.X;
-            CharacterDetails.EarLeft_Y.value = (float)quat.Y;
-            CharacterDetails.EarLeft_Z.value = (float)quat.Z;
-            CharacterDetails.EarLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.EarLeft_X, CharacterDetails.EarLeft_Y, CharacterDetails.EarLeft_Z, CharacterDetails.EarLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EarLeft_Slider);
         }
 
         private void EarLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.EarLeft_X.value = (float)quat.X;
-            CharacterDetails.EarLeft_Y.value = (float)quat.Y;
-            CharacterDetails.EarLeft_Z.value = (float)quat.Z;
-            CharacterDetails.EarLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.EarLeft_X, CharacterDetails.EarLeft_Y, CharacterDetails.EarLeft_Z, CharacterDetails.EarLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EarLeft_UpDown);
         }
@@ -13477,26 +12563,16 @@ namespace ConceptMatrix.Views
         #region EarRight
         private void EarRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.EarRight_X.value = (float)quat.X;
-            CharacterDetails.EarRight_Y.value = (float)quat.Y;
-            CharacterDetails.EarRight_Z.value = (float)quat.Z;
-            CharacterDetails.EarRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.EarRight_X, CharacterDetails.EarRight_Y, CharacterDetails.EarRight_Z, CharacterDetails.EarRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EarRight_Slider);
         }
 
         private void EarRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.EarRight_X.value = (float)quat.X;
-            CharacterDetails.EarRight_Y.value = (float)quat.Y;
-            CharacterDetails.EarRight_Z.value = (float)quat.Z;
-            CharacterDetails.EarRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.EarRight_X, CharacterDetails.EarRight_Y, CharacterDetails.EarRight_Z, CharacterDetails.EarRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EarRight_UpDown);
         }
@@ -13519,46 +12595,16 @@ namespace ConceptMatrix.Views
         #region ForearmLeft
         private void ForearmLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ForearmLeft_X.value = (float)quat.X;
-            CharacterDetails.ForearmLeft_Y.value = (float)quat.Y;
-            CharacterDetails.ForearmLeft_Z.value = (float)quat.Z;
-            CharacterDetails.ForearmLeft_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_forearm_l, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.ForearmLeft_X, CharacterDetails.ForearmLeft_Y, CharacterDetails.ForearmLeft_Z, CharacterDetails.ForearmLeft_W, bone_forearm_l);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ForearmLeft_Slider);
         }
 
         private void ForearmLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ForearmLeft_X.value = (float)quat.X;
-            CharacterDetails.ForearmLeft_Y.value = (float)quat.Y;
-            CharacterDetails.ForearmLeft_Z.value = (float)quat.Z;
-            CharacterDetails.ForearmLeft_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_forearm_l, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.ForearmLeft_X, CharacterDetails.ForearmLeft_Y, CharacterDetails.ForearmLeft_Z, CharacterDetails.ForearmLeft_W, bone_forearm_l);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ForearmLeft_UpDown);
         }
@@ -13581,46 +12627,16 @@ namespace ConceptMatrix.Views
         #region ForearmRight
         private void ForearmRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ForearmRight_X.value = (float)quat.X;
-            CharacterDetails.ForearmRight_Y.value = (float)quat.Y;
-            CharacterDetails.ForearmRight_Z.value = (float)quat.Z;
-            CharacterDetails.ForearmRight_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_forearm_r, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.ForearmRight_X, CharacterDetails.ForearmRight_Y, CharacterDetails.ForearmRight_Z, CharacterDetails.ForearmRight_W, bone_forearm_r);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ForearmRight_Slider);
         }
 
         private void ForearmRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ForearmRight_X.value = (float)quat.X;
-            CharacterDetails.ForearmRight_Y.value = (float)quat.Y;
-            CharacterDetails.ForearmRight_Z.value = (float)quat.Z;
-            CharacterDetails.ForearmRight_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_forearm_r, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.ForearmRight_X, CharacterDetails.ForearmRight_Y, CharacterDetails.ForearmRight_Z, CharacterDetails.ForearmRight_W, bone_forearm_r);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ForearmRight_UpDown);
         }
@@ -13643,13 +12659,8 @@ namespace ConceptMatrix.Views
         #region ShoulderLeft
         private void ShoulderLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ShoulderLeft_X.value = (float)quat.X;
-            CharacterDetails.ShoulderLeft_Y.value = (float)quat.Y;
-            CharacterDetails.ShoulderLeft_Z.value = (float)quat.Z;
-            CharacterDetails.ShoulderLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ShoulderLeft_X, CharacterDetails.ShoulderLeft_Y, CharacterDetails.ShoulderLeft_Z, CharacterDetails.ShoulderLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ShoulderLeft_Slider);
             RemoveRoutedEventListener(ShoulderLeft_UpDown);
@@ -13657,13 +12668,8 @@ namespace ConceptMatrix.Views
 
         private void ShoulderLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ShoulderLeft_X.value = (float)quat.X;
-            CharacterDetails.ShoulderLeft_Y.value = (float)quat.Y;
-            CharacterDetails.ShoulderLeft_Z.value = (float)quat.Z;
-            CharacterDetails.ShoulderLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ShoulderLeft_X, CharacterDetails.ShoulderLeft_Y, CharacterDetails.ShoulderLeft_Z, CharacterDetails.ShoulderLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ShoulderLeft_Slider);
             RemoveRoutedEventListener(ShoulderLeft_UpDown);
@@ -13687,26 +12693,16 @@ namespace ConceptMatrix.Views
         #region ShoulderRight
         private void ShoulderRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ShoulderRight_X.value = (float)quat.X;
-            CharacterDetails.ShoulderRight_Y.value = (float)quat.Y;
-            CharacterDetails.ShoulderRight_Z.value = (float)quat.Z;
-            CharacterDetails.ShoulderRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ShoulderRight_X, CharacterDetails.ShoulderRight_Y, CharacterDetails.ShoulderRight_Z, CharacterDetails.ShoulderRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ShoulderRight_Slider);
         }
 
         private void ShoulderRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ShoulderRight_X.value = (float)quat.X;
-            CharacterDetails.ShoulderRight_Y.value = (float)quat.Y;
-            CharacterDetails.ShoulderRight_Z.value = (float)quat.Z;
-            CharacterDetails.ShoulderRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ShoulderRight_X, CharacterDetails.ShoulderRight_Y, CharacterDetails.ShoulderRight_Z, CharacterDetails.ShoulderRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ShoulderRight_UpDown);
         }
@@ -13729,13 +12725,8 @@ namespace ConceptMatrix.Views
         #region HairB
         private void HairB_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HairB_X.value = (float)quat.X;
-            CharacterDetails.HairB_Y.value = (float)quat.Y;
-            CharacterDetails.HairB_Z.value = (float)quat.Z;
-            CharacterDetails.HairB_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HairB_X, CharacterDetails.HairB_Y, CharacterDetails.HairB_Z, CharacterDetails.HairB_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HairB_Slider);
             RemoveRoutedEventListener(HairB_UpDown);
@@ -13743,13 +12734,8 @@ namespace ConceptMatrix.Views
 
         private void HairB_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HairB_X.value = (float)quat.X;
-            CharacterDetails.HairB_Y.value = (float)quat.Y;
-            CharacterDetails.HairB_Z.value = (float)quat.Z;
-            CharacterDetails.HairB_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HairB_X, CharacterDetails.HairB_Y, CharacterDetails.HairB_Z, CharacterDetails.HairB_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HairB_Slider);
         }
@@ -13771,48 +12757,16 @@ namespace ConceptMatrix.Views
         #region HandLeft
         private void HandLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-            oldrot = newrot;
-            CharacterDetails.HandLeft_X.value = (float)quat.X;
-            CharacterDetails.HandLeft_Y.value = (float)quat.Y;
-            CharacterDetails.HandLeft_Z.value = (float)quat.Z;
-            CharacterDetails.HandLeft_W.value = (float)quat.W;
 
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_hand_l, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.HandLeft_X, CharacterDetails.HandLeft_Y, CharacterDetails.HandLeft_Z, CharacterDetails.HandLeft_W, bone_hand_l);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HandLeft_Slider);
         }
 
         private void HandLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
-            oldrot = newrot;
-            CharacterDetails.HandLeft_X.value = (float)quat.X;
-            CharacterDetails.HandLeft_Y.value = (float)quat.Y;
-            CharacterDetails.HandLeft_Z.value = (float)quat.Z;
-            CharacterDetails.HandLeft_W.value = (float)quat.W;
 
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_hand_l, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.HandLeft_X, CharacterDetails.HandLeft_Y, CharacterDetails.HandLeft_Z, CharacterDetails.HandLeft_W, bone_hand_l);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HandLeft_UpDown);
         }
@@ -13835,46 +12789,16 @@ namespace ConceptMatrix.Views
         #region HandRight
         private void HandRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HandRight_X.value = (float)quat.X;
-            CharacterDetails.HandRight_Y.value = (float)quat.Y;
-            CharacterDetails.HandRight_Z.value = (float)quat.Z;
-            CharacterDetails.HandRight_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_hand_r, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.HandRight_X, CharacterDetails.HandRight_Y, CharacterDetails.HandRight_Z, CharacterDetails.HandRight_W, bone_hand_r);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HandRight_Slider);
         }
 
         private void HandRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HandRight_X.value = (float)quat.X;
-            CharacterDetails.HandRight_Y.value = (float)quat.Y;
-            CharacterDetails.HandRight_Z.value = (float)quat.Z;
-            CharacterDetails.HandRight_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_hand_r, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.HandRight_X, CharacterDetails.HandRight_Y, CharacterDetails.HandRight_Z, CharacterDetails.HandRight_W, bone_hand_r);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HandRight_UpDown);
         }
@@ -13897,26 +12821,16 @@ namespace ConceptMatrix.Views
         #region ShieldLeft
         private void ShieldLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ShieldLeft_X.value = (float)quat.X;
-            CharacterDetails.ShieldLeft_Y.value = (float)quat.Y;
-            CharacterDetails.ShieldLeft_Z.value = (float)quat.Z;
-            CharacterDetails.ShieldLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ShieldLeft_X, CharacterDetails.ShieldLeft_Y, CharacterDetails.ShieldLeft_Z, CharacterDetails.ShieldLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ShieldLeft_Slider);
         }
 
         private void ShieldLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ShieldLeft_X.value = (float)quat.X;
-            CharacterDetails.ShieldLeft_Y.value = (float)quat.Y;
-            CharacterDetails.ShieldLeft_Z.value = (float)quat.Z;
-            CharacterDetails.ShieldLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ShieldLeft_X, CharacterDetails.ShieldLeft_Y, CharacterDetails.ShieldLeft_Z, CharacterDetails.ShieldLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ShieldLeft_UpDown);
         }
@@ -13939,26 +12853,16 @@ namespace ConceptMatrix.Views
         #region ShieldRight
         private void ShieldRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ShieldRight_X.value = (float)quat.X;
-            CharacterDetails.ShieldRight_Y.value = (float)quat.Y;
-            CharacterDetails.ShieldRight_Z.value = (float)quat.Z;
-            CharacterDetails.ShieldRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ShieldRight_X, CharacterDetails.ShieldRight_Y, CharacterDetails.ShieldRight_Z, CharacterDetails.ShieldRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ShieldRight_Slider);
         }
 
         private void ShieldRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ShieldRight_X.value = (float)quat.X;
-            CharacterDetails.ShieldRight_Y.value = (float)quat.Y;
-            CharacterDetails.ShieldRight_Z.value = (float)quat.Z;
-            CharacterDetails.ShieldRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ShieldRight_X, CharacterDetails.ShieldRight_Y, CharacterDetails.ShieldRight_Z, CharacterDetails.ShieldRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ShieldRight_UpDown);
         }
@@ -13981,26 +12885,16 @@ namespace ConceptMatrix.Views
         #region EarringALeft
         private void EarringALeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.EarringALeft_X.value = (float)quat.X;
-            CharacterDetails.EarringALeft_Y.value = (float)quat.Y;
-            CharacterDetails.EarringALeft_Z.value = (float)quat.Z;
-            CharacterDetails.EarringALeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.EarringALeft_X, CharacterDetails.EarringALeft_Y, CharacterDetails.EarringALeft_Z, CharacterDetails.EarringALeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EarringALeft_Slider);
         }
 
         private void EarringALeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.EarringALeft_X.value = (float)quat.X;
-            CharacterDetails.EarringALeft_Y.value = (float)quat.Y;
-            CharacterDetails.EarringALeft_Z.value = (float)quat.Z;
-            CharacterDetails.EarringALeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.EarringALeft_X, CharacterDetails.EarringALeft_Y, CharacterDetails.EarringALeft_Z, CharacterDetails.EarringALeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EarringALeft_UpDown);
         }
@@ -14023,26 +12917,16 @@ namespace ConceptMatrix.Views
         #region EarringARight
         private void EarringARight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.EarringARight_X.value = (float)quat.X;
-            CharacterDetails.EarringARight_Y.value = (float)quat.Y;
-            CharacterDetails.EarringARight_Z.value = (float)quat.Z;
-            CharacterDetails.EarringARight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.EarringARight_X, CharacterDetails.EarringARight_Y, CharacterDetails.EarringARight_Z, CharacterDetails.EarringARight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EarringARight_Slider);
         }
 
         private void EarringARight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.EarringARight_X.value = (float)quat.X;
-            CharacterDetails.EarringARight_Y.value = (float)quat.Y;
-            CharacterDetails.EarringARight_Z.value = (float)quat.Z;
-            CharacterDetails.EarringARight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.EarringARight_X, CharacterDetails.EarringARight_Y, CharacterDetails.EarringARight_Z, CharacterDetails.EarringARight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EarringARight_UpDown);
         }
@@ -14065,26 +12949,16 @@ namespace ConceptMatrix.Views
         #region ElbowLeft
         private void ElbowLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ElbowLeft_X.value = (float)quat.X;
-            CharacterDetails.ElbowLeft_Y.value = (float)quat.Y;
-            CharacterDetails.ElbowLeft_Z.value = (float)quat.Z;
-            CharacterDetails.ElbowLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ElbowLeft_X, CharacterDetails.ElbowLeft_Y, CharacterDetails.ElbowLeft_Z, CharacterDetails.ElbowLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ElbowLeft_Slider);
         }
 
         private void ElbowLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ElbowLeft_X.value = (float)quat.X;
-            CharacterDetails.ElbowLeft_Y.value = (float)quat.Y;
-            CharacterDetails.ElbowLeft_Z.value = (float)quat.Z;
-            CharacterDetails.ElbowLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ElbowLeft_X, CharacterDetails.ElbowLeft_Y, CharacterDetails.ElbowLeft_Z, CharacterDetails.ElbowLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ElbowLeft_UpDown);
         }
@@ -14107,26 +12981,16 @@ namespace ConceptMatrix.Views
         #region ElbowRight
         private void ElbowRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ElbowRight_X.value = (float)quat.X;
-            CharacterDetails.ElbowRight_Y.value = (float)quat.Y;
-            CharacterDetails.ElbowRight_Z.value = (float)quat.Z;
-            CharacterDetails.ElbowRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ElbowRight_X, CharacterDetails.ElbowRight_Y, CharacterDetails.ElbowRight_Z, CharacterDetails.ElbowRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ElbowRight_Slider);
         }
 
         private void ElbowRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ElbowRight_X.value = (float)quat.X;
-            CharacterDetails.ElbowRight_Y.value = (float)quat.Y;
-            CharacterDetails.ElbowRight_Z.value = (float)quat.Z;
-            CharacterDetails.ElbowRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ElbowRight_X, CharacterDetails.ElbowRight_Y, CharacterDetails.ElbowRight_Z, CharacterDetails.ElbowRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ElbowRight_UpDown);
         }
@@ -14149,26 +13013,16 @@ namespace ConceptMatrix.Views
         #region CouterLeft
         private void CouterLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.CouterLeft_X.value = (float)quat.X;
-            CharacterDetails.CouterLeft_Y.value = (float)quat.Y;
-            CharacterDetails.CouterLeft_Z.value = (float)quat.Z;
-            CharacterDetails.CouterLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.CouterLeft_X, CharacterDetails.CouterLeft_Y, CharacterDetails.CouterLeft_Z, CharacterDetails.CouterLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(CouterLeft_Slider);
         }
 
         private void CouterLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.CouterLeft_X.value = (float)quat.X;
-            CharacterDetails.CouterLeft_Y.value = (float)quat.Y;
-            CharacterDetails.CouterLeft_Z.value = (float)quat.Z;
-            CharacterDetails.CouterLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.CouterLeft_X, CharacterDetails.CouterLeft_Y, CharacterDetails.CouterLeft_Z, CharacterDetails.CouterLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(CouterLeft_UpDown);
         }
@@ -14191,26 +13045,16 @@ namespace ConceptMatrix.Views
         #region CouterRight
         private void CouterRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.CouterRight_X.value = (float)quat.X;
-            CharacterDetails.CouterRight_Y.value = (float)quat.Y;
-            CharacterDetails.CouterRight_Z.value = (float)quat.Z;
-            CharacterDetails.CouterRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.CouterRight_X, CharacterDetails.CouterRight_Y, CharacterDetails.CouterRight_Z, CharacterDetails.CouterRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(CouterRight_Slider);
         }
 
         private void CouterRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.CouterRight_X.value = (float)quat.X;
-            CharacterDetails.CouterRight_Y.value = (float)quat.Y;
-            CharacterDetails.CouterRight_Z.value = (float)quat.Z;
-            CharacterDetails.CouterRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.CouterRight_X, CharacterDetails.CouterRight_Y, CharacterDetails.CouterRight_Z, CharacterDetails.CouterRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(CouterRight_UpDown);
         }
@@ -14233,26 +13077,16 @@ namespace ConceptMatrix.Views
         #region WristLeft
         private void WristLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.WristLeft_X.value = (float)quat.X;
-            CharacterDetails.WristLeft_Y.value = (float)quat.Y;
-            CharacterDetails.WristLeft_Z.value = (float)quat.Z;
-            CharacterDetails.WristLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.WristLeft_X, CharacterDetails.WristLeft_Y, CharacterDetails.WristLeft_Z, CharacterDetails.WristLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(WristLeft_Slider);
         }
 
         private void WristLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.WristLeft_X.value = (float)quat.X;
-            CharacterDetails.WristLeft_Y.value = (float)quat.Y;
-            CharacterDetails.WristLeft_Z.value = (float)quat.Z;
-            CharacterDetails.WristLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.WristLeft_X, CharacterDetails.WristLeft_Y, CharacterDetails.WristLeft_Z, CharacterDetails.WristLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(WristLeft_UpDown);
         }
@@ -14275,26 +13109,16 @@ namespace ConceptMatrix.Views
         #region WristRight
         private void WristRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.WristRight_X.value = (float)quat.X;
-            CharacterDetails.WristRight_Y.value = (float)quat.Y;
-            CharacterDetails.WristRight_Z.value = (float)quat.Z;
-            CharacterDetails.WristRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.WristRight_X, CharacterDetails.WristRight_Y, CharacterDetails.WristRight_Z, CharacterDetails.WristRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(WristRight_Slider);
         }
 
         private void WristRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.WristRight_X.value = (float)quat.X;
-            CharacterDetails.WristRight_Y.value = (float)quat.Y;
-            CharacterDetails.WristRight_Z.value = (float)quat.Z;
-            CharacterDetails.WristRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.WristRight_X, CharacterDetails.WristRight_Y, CharacterDetails.WristRight_Z, CharacterDetails.WristRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(WristRight_UpDown);
         }
@@ -14317,46 +13141,16 @@ namespace ConceptMatrix.Views
         #region IndexALeft
         private void IndexALeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.IndexALeft_X.value = (float)quat.X;
-            CharacterDetails.IndexALeft_Y.value = (float)quat.Y;
-            CharacterDetails.IndexALeft_Z.value = (float)quat.Z;
-            CharacterDetails.IndexALeft_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_index_l, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.IndexALeft_X, CharacterDetails.IndexALeft_Y, CharacterDetails.IndexALeft_Z, CharacterDetails.IndexALeft_W, bone_index_l);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(IndexALeft_Slider);
         }
 
         private void IndexALeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.IndexALeft_X.value = (float)quat.X;
-            CharacterDetails.IndexALeft_Y.value = (float)quat.Y;
-            CharacterDetails.IndexALeft_Z.value = (float)quat.Z;
-            CharacterDetails.IndexALeft_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_index_l, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.IndexALeft_X, CharacterDetails.IndexALeft_Y, CharacterDetails.IndexALeft_Z, CharacterDetails.IndexALeft_W, bone_index_l);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(IndexALeft_UpDown);
         }
@@ -14379,46 +13173,16 @@ namespace ConceptMatrix.Views
         #region IndexARight
         private void IndexARight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.IndexARight_X.value = (float)quat.X;
-            CharacterDetails.IndexARight_Y.value = (float)quat.Y;
-            CharacterDetails.IndexARight_Z.value = (float)quat.Z;
-            CharacterDetails.IndexARight_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_index_r, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.IndexARight_X, CharacterDetails.IndexARight_Y, CharacterDetails.IndexARight_Z, CharacterDetails.IndexARight_W, bone_index_r);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(IndexARight_Slider);
         }
 
         private void IndexARight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.IndexARight_X.value = (float)quat.X;
-            CharacterDetails.IndexARight_Y.value = (float)quat.Y;
-            CharacterDetails.IndexARight_Z.value = (float)quat.Z;
-            CharacterDetails.IndexARight_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_index_r, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.IndexARight_X, CharacterDetails.IndexARight_Y, CharacterDetails.IndexARight_Z, CharacterDetails.IndexARight_W, bone_index_r);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(IndexARight_UpDown);
         }
@@ -14441,46 +13205,16 @@ namespace ConceptMatrix.Views
         #region PinkyALeft
         private void PinkyALeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.PinkyALeft_X.value = (float)quat.X;
-            CharacterDetails.PinkyALeft_Y.value = (float)quat.Y;
-            CharacterDetails.PinkyALeft_Z.value = (float)quat.Z;
-            CharacterDetails.PinkyALeft_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_pinky_l, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.PinkyALeft_X, CharacterDetails.PinkyALeft_Y, CharacterDetails.PinkyALeft_Z, CharacterDetails.PinkyALeft_W, bone_pinky_l);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(PinkyALeft_Slider);
         }
 
         private void PinkyALeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.PinkyALeft_X.value = (float)quat.X;
-            CharacterDetails.PinkyALeft_Y.value = (float)quat.Y;
-            CharacterDetails.PinkyALeft_Z.value = (float)quat.Z;
-            CharacterDetails.PinkyALeft_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_pinky_l, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.PinkyALeft_X, CharacterDetails.PinkyALeft_Y, CharacterDetails.PinkyALeft_Z, CharacterDetails.PinkyALeft_W, bone_pinky_l);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(PinkyALeft_UpDown);
         }
@@ -14503,46 +13237,16 @@ namespace ConceptMatrix.Views
         #region PinkyARight
         private void PinkyARight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.PinkyARight_X.value = (float)quat.X;
-            CharacterDetails.PinkyARight_Y.value = (float)quat.Y;
-            CharacterDetails.PinkyARight_Z.value = (float)quat.Z;
-            CharacterDetails.PinkyARight_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_pinky_r, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.PinkyARight_X, CharacterDetails.PinkyARight_Y, CharacterDetails.PinkyARight_Z, CharacterDetails.PinkyARight_W, bone_pinky_r);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(PinkyARight_Slider);
         }
 
         private void PinkyARight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.PinkyARight_X.value = (float)quat.X;
-            CharacterDetails.PinkyARight_Y.value = (float)quat.Y;
-            CharacterDetails.PinkyARight_Z.value = (float)quat.Z;
-            CharacterDetails.PinkyARight_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_pinky_r, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.PinkyARight_X, CharacterDetails.PinkyARight_Y, CharacterDetails.PinkyARight_Z, CharacterDetails.PinkyARight_W, bone_pinky_r);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(PinkyARight_UpDown);
         }
@@ -14565,46 +13269,16 @@ namespace ConceptMatrix.Views
         #region RingALeft
         private void RingALeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.RingALeft_X.value = (float)quat.X;
-            CharacterDetails.RingALeft_Y.value = (float)quat.Y;
-            CharacterDetails.RingALeft_Z.value = (float)quat.Z;
-            CharacterDetails.RingALeft_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_ring_l, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.RingALeft_X, CharacterDetails.RingALeft_Y, CharacterDetails.RingALeft_Z, CharacterDetails.RingALeft_W, bone_ring_l);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(RingALeft_Slider);
         }
 
         private void RingALeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.RingALeft_X.value = (float)quat.X;
-            CharacterDetails.RingALeft_Y.value = (float)quat.Y;
-            CharacterDetails.RingALeft_Z.value = (float)quat.Z;
-            CharacterDetails.RingALeft_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_ring_l, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.RingALeft_X, CharacterDetails.RingALeft_Y, CharacterDetails.RingALeft_Z, CharacterDetails.RingALeft_W, bone_ring_l);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(RingALeft_UpDown);
         }
@@ -14627,46 +13301,16 @@ namespace ConceptMatrix.Views
         #region RingARight
         private void RingARight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.RingARight_X.value = (float)quat.X;
-            CharacterDetails.RingARight_Y.value = (float)quat.Y;
-            CharacterDetails.RingARight_Z.value = (float)quat.Z;
-            CharacterDetails.RingARight_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_ring_r, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.RingARight_X, CharacterDetails.RingARight_Y, CharacterDetails.RingARight_Z, CharacterDetails.RingARight_W, bone_ring_r);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(RingARight_Slider);
         }
 
         private void RingARight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.RingARight_X.value = (float)quat.X;
-            CharacterDetails.RingARight_Y.value = (float)quat.Y;
-            CharacterDetails.RingARight_Z.value = (float)quat.Z;
-            CharacterDetails.RingARight_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_ring_r, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.RingARight_X, CharacterDetails.RingARight_Y, CharacterDetails.RingARight_Z, CharacterDetails.RingARight_W, bone_ring_r);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(RingARight_UpDown);
         }
@@ -14689,46 +13333,16 @@ namespace ConceptMatrix.Views
         #region MiddleALeft
         private void MiddleALeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.MiddleALeft_X.value = (float)quat.X;
-            CharacterDetails.MiddleALeft_Y.value = (float)quat.Y;
-            CharacterDetails.MiddleALeft_Z.value = (float)quat.Z;
-            CharacterDetails.MiddleALeft_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_middle_l, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.MiddleALeft_X, CharacterDetails.MiddleALeft_Y, CharacterDetails.MiddleALeft_Z, CharacterDetails.MiddleALeft_W, bone_middle_l);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(MiddleALeft_Slider);
         }
 
         private void MiddleALeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.MiddleALeft_X.value = (float)quat.X;
-            CharacterDetails.MiddleALeft_Y.value = (float)quat.Y;
-            CharacterDetails.MiddleALeft_Z.value = (float)quat.Z;
-            CharacterDetails.MiddleALeft_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_middle_l, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.MiddleALeft_X, CharacterDetails.MiddleALeft_Y, CharacterDetails.MiddleALeft_Z, CharacterDetails.MiddleALeft_W, bone_middle_l);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(MiddleALeft_UpDown);
         }
@@ -14751,46 +13365,16 @@ namespace ConceptMatrix.Views
         #region MiddleARight
         private void MiddleARight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.MiddleARight_X.value = (float)quat.X;
-            CharacterDetails.MiddleARight_Y.value = (float)quat.Y;
-            CharacterDetails.MiddleARight_Z.value = (float)quat.Z;
-            CharacterDetails.MiddleARight_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_middle_r, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.MiddleARight_X, CharacterDetails.MiddleARight_Y, CharacterDetails.MiddleARight_Z, CharacterDetails.MiddleARight_W, bone_middle_r);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(MiddleARight_Slider);
         }
 
         private void MiddleARight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.MiddleARight_X.value = (float)quat.X;
-            CharacterDetails.MiddleARight_Y.value = (float)quat.Y;
-            CharacterDetails.MiddleARight_Z.value = (float)quat.Z;
-            CharacterDetails.MiddleARight_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_middle_r, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.MiddleARight_X, CharacterDetails.MiddleARight_Y, CharacterDetails.MiddleARight_Z, CharacterDetails.MiddleARight_W, bone_middle_r);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(MiddleARight_UpDown);
         }
@@ -14813,46 +13397,16 @@ namespace ConceptMatrix.Views
         #region ThumbALeft
         private void ThumbALeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ThumbALeft_X.value = (float)quat.X;
-            CharacterDetails.ThumbALeft_Y.value = (float)quat.Y;
-            CharacterDetails.ThumbALeft_Z.value = (float)quat.Z;
-            CharacterDetails.ThumbALeft_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_thumb_l, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.ThumbALeft_X, CharacterDetails.ThumbALeft_Y, CharacterDetails.ThumbALeft_Z, CharacterDetails.ThumbALeft_W, bone_thumb_l);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ThumbALeft_Slider);
         }
 
         private void ThumbALeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ThumbALeft_X.value = (float)quat.X;
-            CharacterDetails.ThumbALeft_Y.value = (float)quat.Y;
-            CharacterDetails.ThumbALeft_Z.value = (float)quat.Z;
-            CharacterDetails.ThumbALeft_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_thumb_l, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.ThumbALeft_X, CharacterDetails.ThumbALeft_Y, CharacterDetails.ThumbALeft_Z, CharacterDetails.ThumbALeft_W, bone_thumb_l);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ThumbALeft_UpDown);
         }
@@ -14875,46 +13429,16 @@ namespace ConceptMatrix.Views
         #region ThumbARight
         private void ThumbARight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ThumbARight_X.value = (float)quat.X;
-            CharacterDetails.ThumbARight_Y.value = (float)quat.Y;
-            CharacterDetails.ThumbARight_Z.value = (float)quat.Z;
-            CharacterDetails.ThumbARight_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_thumb_r, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.ThumbARight_X, CharacterDetails.ThumbARight_Y, CharacterDetails.ThumbARight_Z, CharacterDetails.ThumbARight_W, bone_thumb_r);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ThumbARight_Slider);
         }
 
         private void ThumbARight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ThumbARight_X.value = (float)quat.X;
-            CharacterDetails.ThumbARight_Y.value = (float)quat.Y;
-            CharacterDetails.ThumbARight_Z.value = (float)quat.Z;
-            CharacterDetails.ThumbARight_W.value = (float)quat.W;
-            #region Child Bones
-            if (ParentingToggle.IsChecked == true)
-            {
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
-                Quaternion q1_inv = QInv(oldrot.ToQuaternion());
-                Quaternion q1_new = newrot.ToQuaternion();
-                Rotate_ChildBone(bone_thumb_r, q1_inv, q1_new);
-            }
-            #endregion
+            RotateHelper(CharacterDetails.ThumbARight_X, CharacterDetails.ThumbARight_Y, CharacterDetails.ThumbARight_Z, CharacterDetails.ThumbARight_W, bone_thumb_r);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ThumbARight_UpDown);
         }
@@ -14937,26 +13461,16 @@ namespace ConceptMatrix.Views
         #region WeaponLeft
         private void WeaponLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.WeaponLeft_X.value = (float)quat.X;
-            CharacterDetails.WeaponLeft_Y.value = (float)quat.Y;
-            CharacterDetails.WeaponLeft_Z.value = (float)quat.Z;
-            CharacterDetails.WeaponLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.WeaponLeft_X, CharacterDetails.WeaponLeft_Y, CharacterDetails.WeaponLeft_Z, CharacterDetails.WeaponLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(WeaponLeft_Slider);
         }
 
         private void WeaponLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.WeaponLeft_X.value = (float)quat.X;
-            CharacterDetails.WeaponLeft_Y.value = (float)quat.Y;
-            CharacterDetails.WeaponLeft_Z.value = (float)quat.Z;
-            CharacterDetails.WeaponLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.WeaponLeft_X, CharacterDetails.WeaponLeft_Y, CharacterDetails.WeaponLeft_Z, CharacterDetails.WeaponLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(WeaponLeft_UpDown);
         }
@@ -14979,26 +13493,16 @@ namespace ConceptMatrix.Views
         #region WeaponRight
         private void WeaponRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.WeaponRight_X.value = (float)quat.X;
-            CharacterDetails.WeaponRight_Y.value = (float)quat.Y;
-            CharacterDetails.WeaponRight_Z.value = (float)quat.Z;
-            CharacterDetails.WeaponRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.WeaponRight_X, CharacterDetails.WeaponRight_Y, CharacterDetails.WeaponRight_Z, CharacterDetails.WeaponRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(WeaponRight_Slider);
         }
 
         private void WeaponRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.WeaponRight_X.value = (float)quat.X;
-            CharacterDetails.WeaponRight_Y.value = (float)quat.Y;
-            CharacterDetails.WeaponRight_Z.value = (float)quat.Z;
-            CharacterDetails.WeaponRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.WeaponRight_X, CharacterDetails.WeaponRight_Y, CharacterDetails.WeaponRight_Z, CharacterDetails.WeaponRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(WeaponRight_UpDown);
         }
@@ -15021,26 +13525,16 @@ namespace ConceptMatrix.Views
         #region EarringBLeft
         private void EarringBLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.EarringBLeft_X.value = (float)quat.X;
-            CharacterDetails.EarringBLeft_Y.value = (float)quat.Y;
-            CharacterDetails.EarringBLeft_Z.value = (float)quat.Z;
-            CharacterDetails.EarringBLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.EarringBLeft_X, CharacterDetails.EarringBLeft_Y, CharacterDetails.EarringBLeft_Z, CharacterDetails.EarringBLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EarringBLeft_Slider);
         }
 
         private void EarringBLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.EarringBLeft_X.value = (float)quat.X;
-            CharacterDetails.EarringBLeft_Y.value = (float)quat.Y;
-            CharacterDetails.EarringBLeft_Z.value = (float)quat.Z;
-            CharacterDetails.EarringBLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.EarringBLeft_X, CharacterDetails.EarringBLeft_Y, CharacterDetails.EarringBLeft_Z, CharacterDetails.EarringBLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EarringBLeft_UpDown);
         }
@@ -15063,26 +13557,16 @@ namespace ConceptMatrix.Views
         #region EarringBRight
         private void EarringBRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.EarringBRight_X.value = (float)quat.X;
-            CharacterDetails.EarringBRight_Y.value = (float)quat.Y;
-            CharacterDetails.EarringBRight_Z.value = (float)quat.Z;
-            CharacterDetails.EarringBRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.EarringBRight_X, CharacterDetails.EarringBRight_Y, CharacterDetails.EarringBRight_Z, CharacterDetails.EarringBRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EarringBRight_Slider);
         }
 
         private void EarringBRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.EarringBRight_X.value = (float)quat.X;
-            CharacterDetails.EarringBRight_Y.value = (float)quat.Y;
-            CharacterDetails.EarringBRight_Z.value = (float)quat.Z;
-            CharacterDetails.EarringBRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.EarringBRight_X, CharacterDetails.EarringBRight_Y, CharacterDetails.EarringBRight_Z, CharacterDetails.EarringBRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EarringBRight_UpDown);
         }
@@ -15105,26 +13589,16 @@ namespace ConceptMatrix.Views
         #region IndexBLeft
         private void IndexBLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.IndexBLeft_X.value = (float)quat.X;
-            CharacterDetails.IndexBLeft_Y.value = (float)quat.Y;
-            CharacterDetails.IndexBLeft_Z.value = (float)quat.Z;
-            CharacterDetails.IndexBLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.IndexBLeft_X, CharacterDetails.IndexBLeft_Y, CharacterDetails.IndexBLeft_Z, CharacterDetails.IndexBLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(IndexBLeft_Slider);
         }
 
         private void IndexBLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.IndexBLeft_X.value = (float)quat.X;
-            CharacterDetails.IndexBLeft_Y.value = (float)quat.Y;
-            CharacterDetails.IndexBLeft_Z.value = (float)quat.Z;
-            CharacterDetails.IndexBLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.IndexBLeft_X, CharacterDetails.IndexBLeft_Y, CharacterDetails.IndexBLeft_Z, CharacterDetails.IndexBLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(IndexBLeft_UpDown);
         }
@@ -15147,26 +13621,16 @@ namespace ConceptMatrix.Views
         #region IndexBRight
         private void IndexBRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.IndexBRight_X.value = (float)quat.X;
-            CharacterDetails.IndexBRight_Y.value = (float)quat.Y;
-            CharacterDetails.IndexBRight_Z.value = (float)quat.Z;
-            CharacterDetails.IndexBRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.IndexBRight_X, CharacterDetails.IndexBRight_Y, CharacterDetails.IndexBRight_Z, CharacterDetails.IndexBRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(IndexBRight_Slider);
         }
 
         private void IndexBRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.IndexBRight_X.value = (float)quat.X;
-            CharacterDetails.IndexBRight_Y.value = (float)quat.Y;
-            CharacterDetails.IndexBRight_Z.value = (float)quat.Z;
-            CharacterDetails.IndexBRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.IndexBRight_X, CharacterDetails.IndexBRight_Y, CharacterDetails.IndexBRight_Z, CharacterDetails.IndexBRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(IndexBRight_UpDown);
         }
@@ -15189,26 +13653,16 @@ namespace ConceptMatrix.Views
         #region PinkyBLeft
         private void PinkyBLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.PinkyBLeft_X.value = (float)quat.X;
-            CharacterDetails.PinkyBLeft_Y.value = (float)quat.Y;
-            CharacterDetails.PinkyBLeft_Z.value = (float)quat.Z;
-            CharacterDetails.PinkyBLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.PinkyBLeft_X, CharacterDetails.PinkyBLeft_Y, CharacterDetails.PinkyBLeft_Z, CharacterDetails.PinkyBLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(PinkyBLeft_Slider);
         }
 
         private void PinkyBLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.PinkyBLeft_X.value = (float)quat.X;
-            CharacterDetails.PinkyBLeft_Y.value = (float)quat.Y;
-            CharacterDetails.PinkyBLeft_Z.value = (float)quat.Z;
-            CharacterDetails.PinkyBLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.PinkyBLeft_X, CharacterDetails.PinkyBLeft_Y, CharacterDetails.PinkyBLeft_Z, CharacterDetails.PinkyBLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(PinkyBLeft_UpDown);
         }
@@ -15231,26 +13685,16 @@ namespace ConceptMatrix.Views
         #region PinkyBRight
         private void PinkyBRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.PinkyBRight_X.value = (float)quat.X;
-            CharacterDetails.PinkyBRight_Y.value = (float)quat.Y;
-            CharacterDetails.PinkyBRight_Z.value = (float)quat.Z;
-            CharacterDetails.PinkyBRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.PinkyBRight_X, CharacterDetails.PinkyBRight_Y, CharacterDetails.PinkyBRight_Z, CharacterDetails.PinkyBRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(PinkyBRight_Slider);
         }
 
         private void PinkyBRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.PinkyBRight_X.value = (float)quat.X;
-            CharacterDetails.PinkyBRight_Y.value = (float)quat.Y;
-            CharacterDetails.PinkyBRight_Z.value = (float)quat.Z;
-            CharacterDetails.PinkyBRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.PinkyBRight_X, CharacterDetails.PinkyBRight_Y, CharacterDetails.PinkyBRight_Z, CharacterDetails.PinkyBRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(PinkyBRight_UpDown);
         }
@@ -15273,26 +13717,16 @@ namespace ConceptMatrix.Views
         #region RingBLeft
         private void RingBLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.RingBLeft_X.value = (float)quat.X;
-            CharacterDetails.RingBLeft_Y.value = (float)quat.Y;
-            CharacterDetails.RingBLeft_Z.value = (float)quat.Z;
-            CharacterDetails.RingBLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.RingBLeft_X, CharacterDetails.RingBLeft_Y, CharacterDetails.RingBLeft_Z, CharacterDetails.RingBLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(RingBLeft_Slider);
         }
 
         private void RingBLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.RingBLeft_X.value = (float)quat.X;
-            CharacterDetails.RingBLeft_Y.value = (float)quat.Y;
-            CharacterDetails.RingBLeft_Z.value = (float)quat.Z;
-            CharacterDetails.RingBLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.RingBLeft_X, CharacterDetails.RingBLeft_Y, CharacterDetails.RingBLeft_Z, CharacterDetails.RingBLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(RingBLeft_UpDown);
         }
@@ -15315,26 +13749,16 @@ namespace ConceptMatrix.Views
         #region RingBRight
         private void RingBRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.RingBRight_X.value = (float)quat.X;
-            CharacterDetails.RingBRight_Y.value = (float)quat.Y;
-            CharacterDetails.RingBRight_Z.value = (float)quat.Z;
-            CharacterDetails.RingBRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.RingBRight_X, CharacterDetails.RingBRight_Y, CharacterDetails.RingBRight_Z, CharacterDetails.RingBRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(RingBRight_Slider);
         }
 
         private void RingBRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.RingBRight_X.value = (float)quat.X;
-            CharacterDetails.RingBRight_Y.value = (float)quat.Y;
-            CharacterDetails.RingBRight_Z.value = (float)quat.Z;
-            CharacterDetails.RingBRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.RingBRight_X, CharacterDetails.RingBRight_Y, CharacterDetails.RingBRight_Z, CharacterDetails.RingBRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(RingBRight_UpDown);
         }
@@ -15357,26 +13781,16 @@ namespace ConceptMatrix.Views
         #region MiddleBLeft
         private void MiddleBLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.MiddleBLeft_X.value = (float)quat.X;
-            CharacterDetails.MiddleBLeft_Y.value = (float)quat.Y;
-            CharacterDetails.MiddleBLeft_Z.value = (float)quat.Z;
-            CharacterDetails.MiddleBLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.MiddleBLeft_X, CharacterDetails.MiddleBLeft_Y, CharacterDetails.MiddleBLeft_Z, CharacterDetails.MiddleBLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(MiddleBLeft_Slider);
         }
 
         private void MiddleBLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.MiddleBLeft_X.value = (float)quat.X;
-            CharacterDetails.MiddleBLeft_Y.value = (float)quat.Y;
-            CharacterDetails.MiddleBLeft_Z.value = (float)quat.Z;
-            CharacterDetails.MiddleBLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.MiddleBLeft_X, CharacterDetails.MiddleBLeft_Y, CharacterDetails.MiddleBLeft_Z, CharacterDetails.MiddleBLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(MiddleBLeft_UpDown);
         }
@@ -15399,26 +13813,16 @@ namespace ConceptMatrix.Views
         #region MiddleBRight
         private void MiddleBRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.MiddleBRight_X.value = (float)quat.X;
-            CharacterDetails.MiddleBRight_Y.value = (float)quat.Y;
-            CharacterDetails.MiddleBRight_Z.value = (float)quat.Z;
-            CharacterDetails.MiddleBRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.MiddleBRight_X, CharacterDetails.MiddleBRight_Y, CharacterDetails.MiddleBRight_Z, CharacterDetails.MiddleBRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(MiddleBRight_Slider);
         }
 
         private void MiddleBRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.MiddleBRight_X.value = (float)quat.X;
-            CharacterDetails.MiddleBRight_Y.value = (float)quat.Y;
-            CharacterDetails.MiddleBRight_Z.value = (float)quat.Z;
-            CharacterDetails.MiddleBRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.MiddleBRight_X, CharacterDetails.MiddleBRight_Y, CharacterDetails.MiddleBRight_Z, CharacterDetails.MiddleBRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(MiddleBRight_UpDown);
         }
@@ -15441,26 +13845,16 @@ namespace ConceptMatrix.Views
         #region ThumbBLeft
         private void ThumbBLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ThumbBLeft_X.value = (float)quat.X;
-            CharacterDetails.ThumbBLeft_Y.value = (float)quat.Y;
-            CharacterDetails.ThumbBLeft_Z.value = (float)quat.Z;
-            CharacterDetails.ThumbBLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ThumbBLeft_X, CharacterDetails.ThumbBLeft_Y, CharacterDetails.ThumbBLeft_Z, CharacterDetails.ThumbBLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ThumbBLeft_Slider);
         }
 
         private void ThumbBLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ThumbBLeft_X.value = (float)quat.X;
-            CharacterDetails.ThumbBLeft_Y.value = (float)quat.Y;
-            CharacterDetails.ThumbBLeft_Z.value = (float)quat.Z;
-            CharacterDetails.ThumbBLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ThumbBLeft_X, CharacterDetails.ThumbBLeft_Y, CharacterDetails.ThumbBLeft_Z, CharacterDetails.ThumbBLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ThumbBLeft_UpDown);
         }
@@ -15483,26 +13877,16 @@ namespace ConceptMatrix.Views
         #region ThumbBRight
         private void ThumbBRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ThumbBRight_X.value = (float)quat.X;
-            CharacterDetails.ThumbBRight_Y.value = (float)quat.Y;
-            CharacterDetails.ThumbBRight_Z.value = (float)quat.Z;
-            CharacterDetails.ThumbBRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ThumbBRight_X, CharacterDetails.ThumbBRight_Y, CharacterDetails.ThumbBRight_Z, CharacterDetails.ThumbBRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ThumbBRight_Slider);
         }
 
         private void ThumbBRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ThumbBRight_X.value = (float)quat.X;
-            CharacterDetails.ThumbBRight_Y.value = (float)quat.Y;
-            CharacterDetails.ThumbBRight_Z.value = (float)quat.Z;
-            CharacterDetails.ThumbBRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ThumbBRight_X, CharacterDetails.ThumbBRight_Y, CharacterDetails.ThumbBRight_Z, CharacterDetails.ThumbBRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(ThumbBRight_UpDown);
         }
@@ -15525,26 +13909,16 @@ namespace ConceptMatrix.Views
         #region TailA
         private void TailA_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.TailA_X.value = (float)quat.X;
-            CharacterDetails.TailA_Y.value = (float)quat.Y;
-            CharacterDetails.TailA_Z.value = (float)quat.Z;
-            CharacterDetails.TailA_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.TailA_X, CharacterDetails.TailA_Y, CharacterDetails.TailA_Z, CharacterDetails.TailA_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(TailA_Slider);
         }
 
         private void TailA_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.TailA_X.value = (float)quat.X;
-            CharacterDetails.TailA_Y.value = (float)quat.Y;
-            CharacterDetails.TailA_Z.value = (float)quat.Z;
-            CharacterDetails.TailA_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.TailA_X, CharacterDetails.TailA_Y, CharacterDetails.TailA_Z, CharacterDetails.TailA_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(TailA_UpDown);
         }
@@ -15567,26 +13941,16 @@ namespace ConceptMatrix.Views
         #region TailB
         private void TailB_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.TailB_X.value = (float)quat.X;
-            CharacterDetails.TailB_Y.value = (float)quat.Y;
-            CharacterDetails.TailB_Z.value = (float)quat.Z;
-            CharacterDetails.TailB_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.TailB_X, CharacterDetails.TailB_Y, CharacterDetails.TailB_Z, CharacterDetails.TailB_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(TailB_Slider);
         }
 
         private void TailB_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.TailB_X.value = (float)quat.X;
-            CharacterDetails.TailB_Y.value = (float)quat.Y;
-            CharacterDetails.TailB_Z.value = (float)quat.Z;
-            CharacterDetails.TailB_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.TailB_X, CharacterDetails.TailB_Y, CharacterDetails.TailB_Z, CharacterDetails.TailB_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(TailB_UpDown);
         }
@@ -15609,26 +13973,16 @@ namespace ConceptMatrix.Views
         #region TailC
         private void TailC_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.TailC_X.value = (float)quat.X;
-            CharacterDetails.TailC_Y.value = (float)quat.Y;
-            CharacterDetails.TailC_Z.value = (float)quat.Z;
-            CharacterDetails.TailC_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.TailC_X, CharacterDetails.TailC_Y, CharacterDetails.TailC_Z, CharacterDetails.TailC_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(TailC_Slider);
         }
 
         private void TailC_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.TailC_X.value = (float)quat.X;
-            CharacterDetails.TailC_Y.value = (float)quat.Y;
-            CharacterDetails.TailC_Z.value = (float)quat.Z;
-            CharacterDetails.TailC_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.TailC_X, CharacterDetails.TailC_Y, CharacterDetails.TailC_Z, CharacterDetails.TailC_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(TailC_UpDown);
         }
@@ -15651,26 +14005,16 @@ namespace ConceptMatrix.Views
         #region TailD
         private void TailD_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.TailD_X.value = (float)quat.X;
-            CharacterDetails.TailD_Y.value = (float)quat.Y;
-            CharacterDetails.TailD_Z.value = (float)quat.Z;
-            CharacterDetails.TailD_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.TailD_X, CharacterDetails.TailD_Y, CharacterDetails.TailD_Z, CharacterDetails.TailD_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(TailD_Slider);
         }
 
         private void TailD_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.TailD_X.value = (float)quat.X;
-            CharacterDetails.TailD_Y.value = (float)quat.Y;
-            CharacterDetails.TailD_Z.value = (float)quat.Z;
-            CharacterDetails.TailD_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.TailD_X, CharacterDetails.TailD_Y, CharacterDetails.TailD_Z, CharacterDetails.TailD_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(TailD_UpDown);
         }
@@ -15693,26 +14037,16 @@ namespace ConceptMatrix.Views
         #region TailE
         private void TailE_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.TailE_X.value = (float)quat.X;
-            CharacterDetails.TailE_Y.value = (float)quat.Y;
-            CharacterDetails.TailE_Z.value = (float)quat.Z;
-            CharacterDetails.TailE_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.TailE_X, CharacterDetails.TailE_Y, CharacterDetails.TailE_Z, CharacterDetails.TailE_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(TailE_Slider);
         }
 
         private void TailE_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.TailE_X.value = (float)quat.X;
-            CharacterDetails.TailE_Y.value = (float)quat.Y;
-            CharacterDetails.TailE_Z.value = (float)quat.Z;
-            CharacterDetails.TailE_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.TailE_X, CharacterDetails.TailE_Y, CharacterDetails.TailE_Z, CharacterDetails.TailE_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(TailE_UpDown);
         }
@@ -15736,26 +14070,16 @@ namespace ConceptMatrix.Views
         #region RootHead
         private void RootHead_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.RootHead_X.value = (float)quat.X;
-            CharacterDetails.RootHead_Y.value = (float)quat.Y;
-            CharacterDetails.RootHead_Z.value = (float)quat.Z;
-            CharacterDetails.RootHead_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.RootHead_X, CharacterDetails.RootHead_Y, CharacterDetails.RootHead_Z, CharacterDetails.RootHead_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(RootHead_Slider); 
         }
 
         private void RootHead_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.RootHead_X.value = (float)quat.X;
-            CharacterDetails.RootHead_Y.value = (float)quat.Y;
-            CharacterDetails.RootHead_Z.value = (float)quat.Z;
-            CharacterDetails.RootHead_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.RootHead_X, CharacterDetails.RootHead_Y, CharacterDetails.RootHead_Z, CharacterDetails.RootHead_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(RootHead_UpDown);
         }
@@ -15778,26 +14102,16 @@ namespace ConceptMatrix.Views
         #region Jaw
         private void Jaw_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.Jaw_X.value = (float)quat.X;
-            CharacterDetails.Jaw_Y.value = (float)quat.Y;
-            CharacterDetails.Jaw_Z.value = (float)quat.Z;
-            CharacterDetails.Jaw_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.Jaw_X, CharacterDetails.Jaw_Y, CharacterDetails.Jaw_Z, CharacterDetails.Jaw_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(Jaw_Slider);
         }
 
         private void Jaw_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.Jaw_X.value = (float)quat.X;
-            CharacterDetails.Jaw_Y.value = (float)quat.Y;
-            CharacterDetails.Jaw_Z.value = (float)quat.Z;
-            CharacterDetails.Jaw_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.Jaw_X, CharacterDetails.Jaw_Y, CharacterDetails.Jaw_Z, CharacterDetails.Jaw_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(Jaw_UpDown);
         }
@@ -15820,26 +14134,16 @@ namespace ConceptMatrix.Views
         #region EyelidLowerLeft
         private void EyelidLowerLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.EyelidLowerLeft_X.value = (float)quat.X;
-            CharacterDetails.EyelidLowerLeft_Y.value = (float)quat.Y;
-            CharacterDetails.EyelidLowerLeft_Z.value = (float)quat.Z;
-            CharacterDetails.EyelidLowerLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.EyelidLowerLeft_X, CharacterDetails.EyelidLowerLeft_Y, CharacterDetails.EyelidLowerLeft_Z, CharacterDetails.EyelidLowerLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EyelidLowerLeft_Slider);
         }
 
         private void EyelidLowerLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.EyelidLowerLeft_X.value = (float)quat.X;
-            CharacterDetails.EyelidLowerLeft_Y.value = (float)quat.Y;
-            CharacterDetails.EyelidLowerLeft_Z.value = (float)quat.Z;
-            CharacterDetails.EyelidLowerLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.EyelidLowerLeft_X, CharacterDetails.EyelidLowerLeft_Y, CharacterDetails.EyelidLowerLeft_Z, CharacterDetails.EyelidLowerLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EyelidLowerLeft_UpDown);
         }
@@ -15862,26 +14166,16 @@ namespace ConceptMatrix.Views
         #region EyelidLowerRight
         private void EyelidLowerRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.EyelidLowerRight_X.value = (float)quat.X;
-            CharacterDetails.EyelidLowerRight_Y.value = (float)quat.Y;
-            CharacterDetails.EyelidLowerRight_Z.value = (float)quat.Z;
-            CharacterDetails.EyelidLowerRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.EyelidLowerRight_X, CharacterDetails.EyelidLowerRight_Y, CharacterDetails.EyelidLowerRight_Z, CharacterDetails.EyelidLowerRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EyelidLowerRight_Slider);
         }
 
         private void EyelidLowerRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.EyelidLowerRight_X.value = (float)quat.X;
-            CharacterDetails.EyelidLowerRight_Y.value = (float)quat.Y;
-            CharacterDetails.EyelidLowerRight_Z.value = (float)quat.Z;
-            CharacterDetails.EyelidLowerRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.EyelidLowerRight_X, CharacterDetails.EyelidLowerRight_Y, CharacterDetails.EyelidLowerRight_Z, CharacterDetails.EyelidLowerRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EyelidLowerRight_UpDown);
         }
@@ -15904,26 +14198,16 @@ namespace ConceptMatrix.Views
         #region EyeLeft
         private void EyeLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.EyeLeft_X.value = (float)quat.X;
-            CharacterDetails.EyeLeft_Y.value = (float)quat.Y;
-            CharacterDetails.EyeLeft_Z.value = (float)quat.Z;
-            CharacterDetails.EyeLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.EyeLeft_X, CharacterDetails.EyeLeft_Y, CharacterDetails.EyeLeft_Z, CharacterDetails.EyeLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EyeLeft_Slider);
         }
 
         private void EyeLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.EyeLeft_X.value = (float)quat.X;
-            CharacterDetails.EyeLeft_Y.value = (float)quat.Y;
-            CharacterDetails.EyeLeft_Z.value = (float)quat.Z;
-            CharacterDetails.EyeLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.EyeLeft_X, CharacterDetails.EyeLeft_Y, CharacterDetails.EyeLeft_Z, CharacterDetails.EyeLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EyeLeft_UpDown);
         }
@@ -15946,26 +14230,16 @@ namespace ConceptMatrix.Views
         #region EyeRight
         private void EyeRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.EyeRight_X.value = (float)quat.X;
-            CharacterDetails.EyeRight_Y.value = (float)quat.Y;
-            CharacterDetails.EyeRight_Z.value = (float)quat.Z;
-            CharacterDetails.EyeRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.EyeRight_X, CharacterDetails.EyeRight_Y, CharacterDetails.EyeRight_Z, CharacterDetails.EyeRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EyeRight_Slider);
         }
 
         private void EyeRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.EyeRight_X.value = (float)quat.X;
-            CharacterDetails.EyeRight_Y.value = (float)quat.Y;
-            CharacterDetails.EyeRight_Z.value = (float)quat.Z;
-            CharacterDetails.EyeRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.EyeRight_X, CharacterDetails.EyeRight_Y, CharacterDetails.EyeRight_Z, CharacterDetails.EyeRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EyeRight_UpDown);
         }
@@ -15988,26 +14262,16 @@ namespace ConceptMatrix.Views
         #region Nose
         private void Nose_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.Nose_X.value = (float)quat.X;
-            CharacterDetails.Nose_Y.value = (float)quat.Y;
-            CharacterDetails.Nose_Z.value = (float)quat.Z;
-            CharacterDetails.Nose_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.Nose_X, CharacterDetails.Nose_Y, CharacterDetails.Nose_Z, CharacterDetails.Nose_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(Nose_Slider);
         }
 
         private void Nose_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.Nose_X.value = (float)quat.X;
-            CharacterDetails.Nose_Y.value = (float)quat.Y;
-            CharacterDetails.Nose_Z.value = (float)quat.Z;
-            CharacterDetails.Nose_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.Nose_X, CharacterDetails.Nose_Y, CharacterDetails.Nose_Z, CharacterDetails.Nose_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(Nose_UpDown);
         }
@@ -16030,52 +14294,32 @@ namespace ConceptMatrix.Views
         #region CheekLeft / HrothLipUpperLeft
         private void CheekLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.CheekLeft_X.value = (float)quat.X;
-            CharacterDetails.CheekLeft_Y.value = (float)quat.Y;
-            CharacterDetails.CheekLeft_Z.value = (float)quat.Z;
-            CharacterDetails.CheekLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.CheekLeft_X, CharacterDetails.CheekLeft_Y, CharacterDetails.CheekLeft_Z, CharacterDetails.CheekLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(CheekLeft_Slider);
         }
 
         private void CheekLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.CheekLeft_X.value = (float)quat.X;
-            CharacterDetails.CheekLeft_Y.value = (float)quat.Y;
-            CharacterDetails.CheekLeft_Z.value = (float)quat.Z;
-            CharacterDetails.CheekLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.CheekLeft_X, CharacterDetails.CheekLeft_Y, CharacterDetails.CheekLeft_Z, CharacterDetails.CheekLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(CheekLeft_UpDown);
         }
 
         private void HrothLipUpperLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothLipUpperLeft_X.value = (float)quat.X;
-            CharacterDetails.HrothLipUpperLeft_Y.value = (float)quat.Y;
-            CharacterDetails.HrothLipUpperLeft_Z.value = (float)quat.Z;
-            CharacterDetails.HrothLipUpperLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothLipUpperLeft_X, CharacterDetails.HrothLipUpperLeft_Y, CharacterDetails.HrothLipUpperLeft_Z, CharacterDetails.HrothLipUpperLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothLipUpperLeft_Slider);
         }
 
         private void HrothLipUpperLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothLipUpperLeft_X.value = (float)quat.X;
-            CharacterDetails.HrothLipUpperLeft_Y.value = (float)quat.Y;
-            CharacterDetails.HrothLipUpperLeft_Z.value = (float)quat.Z;
-            CharacterDetails.HrothLipUpperLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothLipUpperLeft_X, CharacterDetails.HrothLipUpperLeft_Y, CharacterDetails.HrothLipUpperLeft_Z, CharacterDetails.HrothLipUpperLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothLipUpperLeft_UpDown);
         }
@@ -16102,52 +14346,32 @@ namespace ConceptMatrix.Views
         #region CheekRight / HrothLipUpperRight
         private void CheekRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.CheekRight_X.value = (float)quat.X;
-            CharacterDetails.CheekRight_Y.value = (float)quat.Y;
-            CharacterDetails.CheekRight_Z.value = (float)quat.Z;
-            CharacterDetails.CheekRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.CheekRight_X, CharacterDetails.CheekRight_Y, CharacterDetails.CheekRight_Z, CharacterDetails.CheekRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(CheekRight_Slider);
         }
 
         private void CheekRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.CheekRight_X.value = (float)quat.X;
-            CharacterDetails.CheekRight_Y.value = (float)quat.Y;
-            CharacterDetails.CheekRight_Z.value = (float)quat.Z;
-            CharacterDetails.CheekRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.CheekRight_X, CharacterDetails.CheekRight_Y, CharacterDetails.CheekRight_Z, CharacterDetails.CheekRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(CheekRight_UpDown);
         }
 
         private void HrothLipUpperRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothLipUpperRight_X.value = (float)quat.X;
-            CharacterDetails.HrothLipUpperRight_Y.value = (float)quat.Y;
-            CharacterDetails.HrothLipUpperRight_Z.value = (float)quat.Z;
-            CharacterDetails.HrothLipUpperRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothLipUpperRight_X, CharacterDetails.HrothLipUpperRight_Y, CharacterDetails.HrothLipUpperRight_Z, CharacterDetails.HrothLipUpperRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothLipUpperRight_Slider);
         }
 
         private void HrothLipUpperRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothLipUpperRight_X.value = (float)quat.X;
-            CharacterDetails.HrothLipUpperRight_Y.value = (float)quat.Y;
-            CharacterDetails.HrothLipUpperRight_Z.value = (float)quat.Z;
-            CharacterDetails.HrothLipUpperRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothLipUpperRight_X, CharacterDetails.HrothLipUpperRight_Y, CharacterDetails.HrothLipUpperRight_Z, CharacterDetails.HrothLipUpperRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothLipUpperRight_UpDown);
         }
@@ -16174,52 +14398,32 @@ namespace ConceptMatrix.Views
         #region LipsLeft / HrothLipsLeft
         private void LipsLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.LipsLeft_X.value = (float)quat.X;
-            CharacterDetails.LipsLeft_Y.value = (float)quat.Y;
-            CharacterDetails.LipsLeft_Z.value = (float)quat.Z;
-            CharacterDetails.LipsLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.LipsLeft_X, CharacterDetails.LipsLeft_Y, CharacterDetails.LipsLeft_Z, CharacterDetails.LipsLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(LipsLeft_Slider);
         }
 
         private void LipsLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.LipsLeft_X.value = (float)quat.X;
-            CharacterDetails.LipsLeft_Y.value = (float)quat.Y;
-            CharacterDetails.LipsLeft_Z.value = (float)quat.Z;
-            CharacterDetails.LipsLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.LipsLeft_X, CharacterDetails.LipsLeft_Y, CharacterDetails.LipsLeft_Z, CharacterDetails.LipsLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(LipsLeft_UpDown);
         }
 
         private void HrothLipsLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothLipsLeft_X.value = (float)quat.X;
-            CharacterDetails.HrothLipsLeft_Y.value = (float)quat.Y;
-            CharacterDetails.HrothLipsLeft_Z.value = (float)quat.Z;
-            CharacterDetails.HrothLipsLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothLipsLeft_X, CharacterDetails.HrothLipsLeft_Y, CharacterDetails.HrothLipsLeft_Z, CharacterDetails.HrothLipsLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothLipsLeft_Slider);
         }
 
         private void HrothLipsLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothLipsLeft_X.value = (float)quat.X;
-            CharacterDetails.HrothLipsLeft_Y.value = (float)quat.Y;
-            CharacterDetails.HrothLipsLeft_Z.value = (float)quat.Z;
-            CharacterDetails.HrothLipsLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothLipsLeft_X, CharacterDetails.HrothLipsLeft_Y, CharacterDetails.HrothLipsLeft_Z, CharacterDetails.HrothLipsLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothLipsLeft_UpDown);
         }
@@ -16246,52 +14450,32 @@ namespace ConceptMatrix.Views
         #region LipsRight / HrothLipsRight
         private void LipsRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.LipsRight_X.value = (float)quat.X;
-            CharacterDetails.LipsRight_Y.value = (float)quat.Y;
-            CharacterDetails.LipsRight_Z.value = (float)quat.Z;
-            CharacterDetails.LipsRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.LipsRight_X, CharacterDetails.LipsRight_Y, CharacterDetails.LipsRight_Z, CharacterDetails.LipsRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(LipsRight_Slider);
         }
 
         private void LipsRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.LipsRight_X.value = (float)quat.X;
-            CharacterDetails.LipsRight_Y.value = (float)quat.Y;
-            CharacterDetails.LipsRight_Z.value = (float)quat.Z;
-            CharacterDetails.LipsRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.LipsRight_X, CharacterDetails.LipsRight_Y, CharacterDetails.LipsRight_Z, CharacterDetails.LipsRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(LipsRight_UpDown);
         }
 
         private void HrothLipsRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothLipsRight_X.value = (float)quat.X;
-            CharacterDetails.HrothLipsRight_Y.value = (float)quat.Y;
-            CharacterDetails.HrothLipsRight_Z.value = (float)quat.Z;
-            CharacterDetails.HrothLipsRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothLipsRight_X, CharacterDetails.HrothLipsRight_Y, CharacterDetails.HrothLipsRight_Z, CharacterDetails.HrothLipsRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothLipsRight_Slider);
         }
 
         private void HrothLipsRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothLipsRight_X.value = (float)quat.X;
-            CharacterDetails.HrothLipsRight_Y.value = (float)quat.Y;
-            CharacterDetails.HrothLipsRight_Z.value = (float)quat.Z;
-            CharacterDetails.HrothLipsRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothLipsRight_X, CharacterDetails.HrothLipsRight_Y, CharacterDetails.HrothLipsRight_Z, CharacterDetails.HrothLipsRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothLipsRight_UpDown);
         }
@@ -16318,52 +14502,32 @@ namespace ConceptMatrix.Views
         #region EyebrowLeft / HrothEyebrowLeft
         private void EyebrowLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.EyebrowLeft_X.value = (float)quat.X;
-            CharacterDetails.EyebrowLeft_Y.value = (float)quat.Y;
-            CharacterDetails.EyebrowLeft_Z.value = (float)quat.Z;
-            CharacterDetails.EyebrowLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.EyebrowLeft_X, CharacterDetails.EyebrowLeft_Y, CharacterDetails.EyebrowLeft_Z, CharacterDetails.EyebrowLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EyebrowLeft_Slider);
         }
 
         private void EyebrowLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.EyebrowLeft_X.value = (float)quat.X;
-            CharacterDetails.EyebrowLeft_Y.value = (float)quat.Y;
-            CharacterDetails.EyebrowLeft_Z.value = (float)quat.Z;
-            CharacterDetails.EyebrowLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.EyebrowLeft_X, CharacterDetails.EyebrowLeft_Y, CharacterDetails.EyebrowLeft_Z, CharacterDetails.EyebrowLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EyebrowLeft_UpDown);
         }
 
         private void HrothEyebrowLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothEyebrowLeft_X.value = (float)quat.X;
-            CharacterDetails.HrothEyebrowLeft_Y.value = (float)quat.Y;
-            CharacterDetails.HrothEyebrowLeft_Z.value = (float)quat.Z;
-            CharacterDetails.HrothEyebrowLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothEyebrowLeft_X, CharacterDetails.HrothEyebrowLeft_Y, CharacterDetails.HrothEyebrowLeft_Z, CharacterDetails.HrothEyebrowLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothEyebrowLeft_Slider);
         }
 
         private void HrothEyebrowLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothEyebrowLeft_X.value = (float)quat.X;
-            CharacterDetails.HrothEyebrowLeft_Y.value = (float)quat.Y;
-            CharacterDetails.HrothEyebrowLeft_Z.value = (float)quat.Z;
-            CharacterDetails.HrothEyebrowLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothEyebrowLeft_X, CharacterDetails.HrothEyebrowLeft_Y, CharacterDetails.HrothEyebrowLeft_Z, CharacterDetails.HrothEyebrowLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothEyebrowLeft_UpDown);
         }
@@ -16388,52 +14552,32 @@ namespace ConceptMatrix.Views
         #region EyebrowRight / HrothEyebrowRight
         private void EyebrowRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.EyebrowRight_X.value = (float)quat.X;
-            CharacterDetails.EyebrowRight_Y.value = (float)quat.Y;
-            CharacterDetails.EyebrowRight_Z.value = (float)quat.Z;
-            CharacterDetails.EyebrowRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.EyebrowRight_X, CharacterDetails.EyebrowRight_Y, CharacterDetails.EyebrowRight_Z, CharacterDetails.EyebrowRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EyebrowRight_Slider);
         }
 
         private void EyebrowRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.EyebrowRight_X.value = (float)quat.X;
-            CharacterDetails.EyebrowRight_Y.value = (float)quat.Y;
-            CharacterDetails.EyebrowRight_Z.value = (float)quat.Z;
-            CharacterDetails.EyebrowRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.EyebrowRight_X, CharacterDetails.EyebrowRight_Y, CharacterDetails.EyebrowRight_Z, CharacterDetails.EyebrowRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EyebrowRight_UpDown);
         }
 
         private void HrothEyebrowRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothEyebrowRight_X.value = (float)quat.X;
-            CharacterDetails.HrothEyebrowRight_Y.value = (float)quat.Y;
-            CharacterDetails.HrothEyebrowRight_Z.value = (float)quat.Z;
-            CharacterDetails.HrothEyebrowRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothEyebrowRight_X, CharacterDetails.HrothEyebrowRight_Y, CharacterDetails.HrothEyebrowRight_Z, CharacterDetails.HrothEyebrowRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothEyebrowRight_Slider);
         }
 
         private void HrothEyebrowRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothEyebrowRight_X.value = (float)quat.X;
-            CharacterDetails.HrothEyebrowRight_Y.value = (float)quat.Y;
-            CharacterDetails.HrothEyebrowRight_Z.value = (float)quat.Z;
-            CharacterDetails.HrothEyebrowRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothEyebrowRight_X, CharacterDetails.HrothEyebrowRight_Y, CharacterDetails.HrothEyebrowRight_Z, CharacterDetails.HrothEyebrowRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothEyebrowRight_UpDown);
         }
@@ -16460,52 +14604,32 @@ namespace ConceptMatrix.Views
         #region Bridge / HrothBridge
         private void Bridge_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.Bridge_X.value = (float)quat.X;
-            CharacterDetails.Bridge_Y.value = (float)quat.Y;
-            CharacterDetails.Bridge_Z.value = (float)quat.Z;
-            CharacterDetails.Bridge_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.Bridge_X, CharacterDetails.Bridge_Y, CharacterDetails.Bridge_Z, CharacterDetails.Bridge_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(Bridge_Slider);
         }
 
         private void Bridge_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.Bridge_X.value = (float)quat.X;
-            CharacterDetails.Bridge_Y.value = (float)quat.Y;
-            CharacterDetails.Bridge_Z.value = (float)quat.Z;
-            CharacterDetails.Bridge_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.Bridge_X, CharacterDetails.Bridge_Y, CharacterDetails.Bridge_Z, CharacterDetails.Bridge_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(Bridge_UpDown);
         }
 
         private void HrothBridge_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothBridge_X.value = (float)quat.X;
-            CharacterDetails.HrothBridge_Y.value = (float)quat.Y;
-            CharacterDetails.HrothBridge_Z.value = (float)quat.Z;
-            CharacterDetails.HrothBridge_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothBridge_X, CharacterDetails.HrothBridge_Y, CharacterDetails.HrothBridge_Z, CharacterDetails.HrothBridge_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothBridge_Slider);
         }
 
         private void HrothBridge_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothBridge_X.value = (float)quat.X;
-            CharacterDetails.HrothBridge_Y.value = (float)quat.Y;
-            CharacterDetails.HrothBridge_Z.value = (float)quat.Z;
-            CharacterDetails.HrothBridge_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothBridge_X, CharacterDetails.HrothBridge_Y, CharacterDetails.HrothBridge_Z, CharacterDetails.HrothBridge_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothBridge_UpDown);
         }
@@ -16532,52 +14656,32 @@ namespace ConceptMatrix.Views
         #region BrowLeft / HrothBrowLeft
         private void BrowLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.BrowLeft_X.value = (float)quat.X;
-            CharacterDetails.BrowLeft_Y.value = (float)quat.Y;
-            CharacterDetails.BrowLeft_Z.value = (float)quat.Z;
-            CharacterDetails.BrowLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.BrowLeft_X, CharacterDetails.BrowLeft_Y, CharacterDetails.BrowLeft_Z, CharacterDetails.BrowLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(BrowLeft_Slider);
         }
 
         private void BrowLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.BrowLeft_X.value = (float)quat.X;
-            CharacterDetails.BrowLeft_Y.value = (float)quat.Y;
-            CharacterDetails.BrowLeft_Z.value = (float)quat.Z;
-            CharacterDetails.BrowLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.BrowLeft_X, CharacterDetails.BrowLeft_Y, CharacterDetails.BrowLeft_Z, CharacterDetails.BrowLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(BrowLeft_UpDown);
         }
 
         private void HrothBrowLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothBrowLeft_X.value = (float)quat.X;
-            CharacterDetails.HrothBrowLeft_Y.value = (float)quat.Y;
-            CharacterDetails.HrothBrowLeft_Z.value = (float)quat.Z;
-            CharacterDetails.HrothBrowLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothBrowLeft_X, CharacterDetails.HrothBrowLeft_Y, CharacterDetails.HrothBrowLeft_Z, CharacterDetails.HrothBrowLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothBrowLeft_Slider);
         }
 
         private void HrothBrowLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothBrowLeft_X.value = (float)quat.X;
-            CharacterDetails.HrothBrowLeft_Y.value = (float)quat.Y;
-            CharacterDetails.HrothBrowLeft_Z.value = (float)quat.Z;
-            CharacterDetails.HrothBrowLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothBrowLeft_X, CharacterDetails.HrothBrowLeft_Y, CharacterDetails.HrothBrowLeft_Z, CharacterDetails.HrothBrowLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothBrowLeft_UpDown);
         }
@@ -16604,52 +14708,32 @@ namespace ConceptMatrix.Views
         #region BrowRight / HrothBrowRight
         private void BrowRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.BrowRight_X.value = (float)quat.X;
-            CharacterDetails.BrowRight_Y.value = (float)quat.Y;
-            CharacterDetails.BrowRight_Z.value = (float)quat.Z;
-            CharacterDetails.BrowRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.BrowRight_X, CharacterDetails.BrowRight_Y, CharacterDetails.BrowRight_Z, CharacterDetails.BrowRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(BrowRight_Slider);
         }
 
         private void BrowRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.BrowRight_X.value = (float)quat.X;
-            CharacterDetails.BrowRight_Y.value = (float)quat.Y;
-            CharacterDetails.BrowRight_Z.value = (float)quat.Z;
-            CharacterDetails.BrowRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.BrowRight_X, CharacterDetails.BrowRight_Y, CharacterDetails.BrowRight_Z, CharacterDetails.BrowRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(BrowRight_UpDown);
         }
 
         private void HrothBrowRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothBrowRight_X.value = (float)quat.X;
-            CharacterDetails.HrothBrowRight_Y.value = (float)quat.Y;
-            CharacterDetails.HrothBrowRight_Z.value = (float)quat.Z;
-            CharacterDetails.HrothBrowRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothBrowRight_X, CharacterDetails.HrothBrowRight_Y, CharacterDetails.HrothBrowRight_Z, CharacterDetails.HrothBrowRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothBrowRight_Slider);
         }
 
         private void HrothBrowRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothBrowRight_X.value = (float)quat.X;
-            CharacterDetails.HrothBrowRight_Y.value = (float)quat.Y;
-            CharacterDetails.HrothBrowRight_Z.value = (float)quat.Z;
-            CharacterDetails.HrothBrowRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothBrowRight_X, CharacterDetails.HrothBrowRight_Y, CharacterDetails.HrothBrowRight_Z, CharacterDetails.HrothBrowRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothBrowRight_UpDown);
         }
@@ -16676,52 +14760,32 @@ namespace ConceptMatrix.Views
         #region LipUpperA / HrothLipUpper
         private void LipUpperA_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.LipUpperA_X.value = (float)quat.X;
-            CharacterDetails.LipUpperA_Y.value = (float)quat.Y;
-            CharacterDetails.LipUpperA_Z.value = (float)quat.Z;
-            CharacterDetails.LipUpperA_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.LipUpperA_X, CharacterDetails.LipUpperA_Y, CharacterDetails.LipUpperA_Z, CharacterDetails.LipUpperA_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(LipUpperA_Slider);
         }
 
         private void LipUpperA_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.LipUpperA_X.value = (float)quat.X;
-            CharacterDetails.LipUpperA_Y.value = (float)quat.Y;
-            CharacterDetails.LipUpperA_Z.value = (float)quat.Z;
-            CharacterDetails.LipUpperA_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.LipUpperA_X, CharacterDetails.LipUpperA_Y, CharacterDetails.LipUpperA_Z, CharacterDetails.LipUpperA_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(LipUpperA_UpDown);
         }
 
         private void HrothLipUpper_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothLipUpper_X.value = (float)quat.X;
-            CharacterDetails.HrothLipUpper_Y.value = (float)quat.Y;
-            CharacterDetails.HrothLipUpper_Z.value = (float)quat.Z;
-            CharacterDetails.HrothLipUpper_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothLipUpper_X, CharacterDetails.HrothLipUpper_Y, CharacterDetails.HrothLipUpper_Z, CharacterDetails.HrothLipUpper_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothLipUpper_Slider);
         }
 
         private void HrothLipUpper_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothLipUpper_X.value = (float)quat.X;
-            CharacterDetails.HrothLipUpper_Y.value = (float)quat.Y;
-            CharacterDetails.HrothLipUpper_Z.value = (float)quat.Z;
-            CharacterDetails.HrothLipUpper_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothLipUpper_X, CharacterDetails.HrothLipUpper_Y, CharacterDetails.HrothLipUpper_Z, CharacterDetails.HrothLipUpper_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothLipUpper_UpDown);
         }
@@ -16748,52 +14812,32 @@ namespace ConceptMatrix.Views
         #region EyelidUpperLeft / HrothEyelidUpperLeft
         private void EyelidUpperLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.EyelidUpperLeft_X.value = (float)quat.X;
-            CharacterDetails.EyelidUpperLeft_Y.value = (float)quat.Y;
-            CharacterDetails.EyelidUpperLeft_Z.value = (float)quat.Z;
-            CharacterDetails.EyelidUpperLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.EyelidUpperLeft_X, CharacterDetails.EyelidUpperLeft_Y, CharacterDetails.EyelidUpperLeft_Z, CharacterDetails.EyelidUpperLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EyelidUpperLeft_Slider);
         }
 
         private void EyelidUpperLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.EyelidUpperLeft_X.value = (float)quat.X;
-            CharacterDetails.EyelidUpperLeft_Y.value = (float)quat.Y;
-            CharacterDetails.EyelidUpperLeft_Z.value = (float)quat.Z;
-            CharacterDetails.EyelidUpperLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.EyelidUpperLeft_X, CharacterDetails.EyelidUpperLeft_Y, CharacterDetails.EyelidUpperLeft_Z, CharacterDetails.EyelidUpperLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EyelidUpperLeft_UpDown);
         }
 
         private void HrothEyelidUpperLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothEyelidUpperLeft_X.value = (float)quat.X;
-            CharacterDetails.HrothEyelidUpperLeft_Y.value = (float)quat.Y;
-            CharacterDetails.HrothEyelidUpperLeft_Z.value = (float)quat.Z;
-            CharacterDetails.HrothEyelidUpperLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothEyelidUpperLeft_X, CharacterDetails.HrothEyelidUpperLeft_Y, CharacterDetails.HrothEyelidUpperLeft_Z, CharacterDetails.HrothEyelidUpperLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothEyelidUpperLeft_Slider);
         }
 
         private void HrothEyelidUpperLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothEyelidUpperLeft_X.value = (float)quat.X;
-            CharacterDetails.HrothEyelidUpperLeft_Y.value = (float)quat.Y;
-            CharacterDetails.HrothEyelidUpperLeft_Z.value = (float)quat.Z;
-            CharacterDetails.HrothEyelidUpperLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothEyelidUpperLeft_X, CharacterDetails.HrothEyelidUpperLeft_Y, CharacterDetails.HrothEyelidUpperLeft_Z, CharacterDetails.HrothEyelidUpperLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothEyelidUpperLeft_UpDown);
         }
@@ -16820,52 +14864,32 @@ namespace ConceptMatrix.Views
         #region EyelidUpperRight / HrothEyelidUpperRight
         private void EyelidUpperRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.EyelidUpperRight_X.value = (float)quat.X;
-            CharacterDetails.EyelidUpperRight_Y.value = (float)quat.Y;
-            CharacterDetails.EyelidUpperRight_Z.value = (float)quat.Z;
-            CharacterDetails.EyelidUpperRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.EyelidUpperRight_X, CharacterDetails.EyelidUpperRight_Y, CharacterDetails.EyelidUpperRight_Z, CharacterDetails.EyelidUpperRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EyelidUpperRight_Slider);
         }
 
         private void EyelidUpperRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.EyelidUpperRight_X.value = (float)quat.X;
-            CharacterDetails.EyelidUpperRight_Y.value = (float)quat.Y;
-            CharacterDetails.EyelidUpperRight_Z.value = (float)quat.Z;
-            CharacterDetails.EyelidUpperRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.EyelidUpperRight_X, CharacterDetails.EyelidUpperRight_Y, CharacterDetails.EyelidUpperRight_Z, CharacterDetails.EyelidUpperRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EyelidUpperRight_UpDown);
         }
 
         private void HrothEyelidUpperRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothEyelidUpperRight_X.value = (float)quat.X;
-            CharacterDetails.HrothEyelidUpperRight_Y.value = (float)quat.Y;
-            CharacterDetails.HrothEyelidUpperRight_Z.value = (float)quat.Z;
-            CharacterDetails.HrothEyelidUpperRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothEyelidUpperRight_X, CharacterDetails.HrothEyelidUpperRight_Y, CharacterDetails.HrothEyelidUpperRight_Z, CharacterDetails.HrothEyelidUpperRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothEyelidUpperRight_Slider);
         }
 
         private void HrothEyelidUpperRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothEyelidUpperRight_X.value = (float)quat.X;
-            CharacterDetails.HrothEyelidUpperRight_Y.value = (float)quat.Y;
-            CharacterDetails.HrothEyelidUpperRight_Z.value = (float)quat.Z;
-            CharacterDetails.HrothEyelidUpperRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothEyelidUpperRight_X, CharacterDetails.HrothEyelidUpperRight_Y, CharacterDetails.HrothEyelidUpperRight_Z, CharacterDetails.HrothEyelidUpperRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothEyelidUpperRight_UpDown);
         }
@@ -16892,78 +14916,48 @@ namespace ConceptMatrix.Views
         #region LipLowerA / HrothLipLower / VieraLipLowerA
         private void LipLowerA_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.LipLowerA_X.value = (float)quat.X;
-            CharacterDetails.LipLowerA_Y.value = (float)quat.Y;
-            CharacterDetails.LipLowerA_Z.value = (float)quat.Z;
-            CharacterDetails.LipLowerA_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.LipLowerA_X, CharacterDetails.LipLowerA_Y, CharacterDetails.LipLowerA_Z, CharacterDetails.LipLowerA_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(LipLowerA_Slider);
         }
 
         private void LipLowerA_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.LipLowerA_X.value = (float)quat.X;
-            CharacterDetails.LipLowerA_Y.value = (float)quat.Y;
-            CharacterDetails.LipLowerA_Z.value = (float)quat.Z;
-            CharacterDetails.LipLowerA_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.LipLowerA_X, CharacterDetails.LipLowerA_Y, CharacterDetails.LipLowerA_Z, CharacterDetails.LipLowerA_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(LipLowerA_UpDown);
         }
 
         private void HrothLipLower_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothLipLower_X.value = (float)quat.X;
-            CharacterDetails.HrothLipLower_Y.value = (float)quat.Y;
-            CharacterDetails.HrothLipLower_Z.value = (float)quat.Z;
-            CharacterDetails.HrothLipLower_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothLipLower_X, CharacterDetails.HrothLipLower_Y, CharacterDetails.HrothLipLower_Z, CharacterDetails.HrothLipLower_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothLipLower_Slider);
         }
 
         private void HrothLipLower_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothLipLower_X.value = (float)quat.X;
-            CharacterDetails.HrothLipLower_Y.value = (float)quat.Y;
-            CharacterDetails.HrothLipLower_Z.value = (float)quat.Z;
-            CharacterDetails.HrothLipLower_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothLipLower_X, CharacterDetails.HrothLipLower_Y, CharacterDetails.HrothLipLower_Z, CharacterDetails.HrothLipLower_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothLipLower_UpDown);
         }
 
         private void VieraLipLowerA_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraLipLowerA_X.value = (float)quat.X;
-            CharacterDetails.VieraLipLowerA_Y.value = (float)quat.Y;
-            CharacterDetails.VieraLipLowerA_Z.value = (float)quat.Z;
-            CharacterDetails.VieraLipLowerA_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraLipLowerA_X, CharacterDetails.VieraLipLowerA_Y, CharacterDetails.VieraLipLowerA_Z, CharacterDetails.VieraLipLowerA_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraLipLowerA_Slider);
         }
 
         private void VieraLipLowerA_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraLipLowerA_X.value = (float)quat.X;
-            CharacterDetails.VieraLipLowerA_Y.value = (float)quat.Y;
-            CharacterDetails.VieraLipLowerA_Z.value = (float)quat.Z;
-            CharacterDetails.VieraLipLowerA_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraLipLowerA_X, CharacterDetails.VieraLipLowerA_Y, CharacterDetails.VieraLipLowerA_Z, CharacterDetails.VieraLipLowerA_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraLipLowerA_UpDown);
         }
@@ -16994,78 +14988,48 @@ namespace ConceptMatrix.Views
         #region LipUpperB / HrothJawUpper / VieraLipUpperB
         private void LipUpperB_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.LipUpperB_X.value = (float)quat.X;
-            CharacterDetails.LipUpperB_Y.value = (float)quat.Y;
-            CharacterDetails.LipUpperB_Z.value = (float)quat.Z;
-            CharacterDetails.LipUpperB_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.LipUpperB_X, CharacterDetails.LipUpperB_Y, CharacterDetails.LipUpperB_Z, CharacterDetails.LipUpperB_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(LipUpperB_Slider);
         }
 
         private void LipUpperB_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.LipUpperB_X.value = (float)quat.X;
-            CharacterDetails.LipUpperB_Y.value = (float)quat.Y;
-            CharacterDetails.LipUpperB_Z.value = (float)quat.Z;
-            CharacterDetails.LipUpperB_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.LipUpperB_X, CharacterDetails.LipUpperB_Y, CharacterDetails.LipUpperB_Z, CharacterDetails.LipUpperB_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(LipUpperB_UpDown);
         }
 
         private void HrothJawUpper_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothJawUpper_X.value = (float)quat.X;
-            CharacterDetails.HrothJawUpper_Y.value = (float)quat.Y;
-            CharacterDetails.HrothJawUpper_Z.value = (float)quat.Z;
-            CharacterDetails.HrothJawUpper_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothJawUpper_X, CharacterDetails.HrothJawUpper_Y, CharacterDetails.HrothJawUpper_Z, CharacterDetails.HrothJawUpper_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothJawUpper_Slider);
         }
 
         private void HrothJawUpper_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothJawUpper_X.value = (float)quat.X;
-            CharacterDetails.HrothJawUpper_Y.value = (float)quat.Y;
-            CharacterDetails.HrothJawUpper_Z.value = (float)quat.Z;
-            CharacterDetails.HrothJawUpper_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothJawUpper_X, CharacterDetails.HrothJawUpper_Y, CharacterDetails.HrothJawUpper_Z, CharacterDetails.HrothJawUpper_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothJawUpper_UpDown);
         }
 
         private void VieraLipUpperB_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraLipUpperB_X.value = (float)quat.X;
-            CharacterDetails.VieraLipUpperB_Y.value = (float)quat.Y;
-            CharacterDetails.VieraLipUpperB_Z.value = (float)quat.Z;
-            CharacterDetails.VieraLipUpperB_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraLipUpperB_X, CharacterDetails.VieraLipUpperB_Y, CharacterDetails.VieraLipUpperB_Z, CharacterDetails.VieraLipUpperB_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraLipUpperB_Slider);
         }
 
         private void VieraLipUpperB_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraLipUpperB_X.value = (float)quat.X;
-            CharacterDetails.VieraLipUpperB_Y.value = (float)quat.Y;
-            CharacterDetails.VieraLipUpperB_Z.value = (float)quat.Z;
-            CharacterDetails.VieraLipUpperB_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraLipUpperB_X, CharacterDetails.VieraLipUpperB_Y, CharacterDetails.VieraLipUpperB_Z, CharacterDetails.VieraLipUpperB_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraLipUpperB_UpDown);
         }
@@ -17096,52 +15060,32 @@ namespace ConceptMatrix.Views
         #region LipLowerB / VieraLipLowerB
         private void LipLowerB_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.LipLowerB_X.value = (float)quat.X;
-            CharacterDetails.LipLowerB_Y.value = (float)quat.Y;
-            CharacterDetails.LipLowerB_Z.value = (float)quat.Z;
-            CharacterDetails.LipLowerB_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.LipLowerB_X, CharacterDetails.LipLowerB_Y, CharacterDetails.LipLowerB_Z, CharacterDetails.LipLowerB_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(LipLowerB_Slider);
         }
 
         private void LipLowerB_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.LipLowerB_X.value = (float)quat.X;
-            CharacterDetails.LipLowerB_Y.value = (float)quat.Y;
-            CharacterDetails.LipLowerB_Z.value = (float)quat.Z;
-            CharacterDetails.LipLowerB_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.LipLowerB_X, CharacterDetails.LipLowerB_Y, CharacterDetails.LipLowerB_Z, CharacterDetails.LipLowerB_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(LipLowerB_UpDown);
         }
 
         private void VieraLipLowerB_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraLipLowerB_X.value = (float)quat.X;
-            CharacterDetails.VieraLipLowerB_Y.value = (float)quat.Y;
-            CharacterDetails.VieraLipLowerB_Z.value = (float)quat.Z;
-            CharacterDetails.VieraLipLowerB_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraLipLowerB_X, CharacterDetails.VieraLipLowerB_Y, CharacterDetails.VieraLipLowerB_Z, CharacterDetails.VieraLipLowerB_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraLipLowerB_Slider);
         }
 
         private void VieraLipLowerB_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraLipLowerB_X.value = (float)quat.X;
-            CharacterDetails.VieraLipLowerB_Y.value = (float)quat.Y;
-            CharacterDetails.VieraLipLowerB_Z.value = (float)quat.Z;
-            CharacterDetails.VieraLipLowerB_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraLipLowerB_X, CharacterDetails.VieraLipLowerB_Y, CharacterDetails.VieraLipLowerB_Z, CharacterDetails.VieraLipLowerB_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraLipLowerB_UpDown);
         }
@@ -17168,26 +15112,16 @@ namespace ConceptMatrix.Views
         #region HrothWhiskersLeft
         private void HrothWhiskersLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothWhiskersLeft_X.value = (float)quat.X;
-            CharacterDetails.HrothWhiskersLeft_Y.value = (float)quat.Y;
-            CharacterDetails.HrothWhiskersLeft_Z.value = (float)quat.Z;
-            CharacterDetails.HrothWhiskersLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothWhiskersLeft_X, CharacterDetails.HrothWhiskersLeft_Y, CharacterDetails.HrothWhiskersLeft_Z, CharacterDetails.HrothWhiskersLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothWhiskersLeft_Slider);
         }
 
         private void HrothWhiskersLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothWhiskersLeft_X.value = (float)quat.X;
-            CharacterDetails.HrothWhiskersLeft_Y.value = (float)quat.Y;
-            CharacterDetails.HrothWhiskersLeft_Z.value = (float)quat.Z;
-            CharacterDetails.HrothWhiskersLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothWhiskersLeft_X, CharacterDetails.HrothWhiskersLeft_Y, CharacterDetails.HrothWhiskersLeft_Z, CharacterDetails.HrothWhiskersLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothWhiskersLeft_UpDown);
         }
@@ -17210,26 +15144,16 @@ namespace ConceptMatrix.Views
         #region HrothWhiskersRight
         private void HrothWhiskersRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothWhiskersRight_X.value = (float)quat.X;
-            CharacterDetails.HrothWhiskersRight_Y.value = (float)quat.Y;
-            CharacterDetails.HrothWhiskersRight_Z.value = (float)quat.Z;
-            CharacterDetails.HrothWhiskersRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothWhiskersRight_X, CharacterDetails.HrothWhiskersRight_Y, CharacterDetails.HrothWhiskersRight_Z, CharacterDetails.HrothWhiskersRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothWhiskersRight_Slider);
         }
 
         private void HrothWhiskersRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.HrothWhiskersRight_X.value = (float)quat.X;
-            CharacterDetails.HrothWhiskersRight_Y.value = (float)quat.Y;
-            CharacterDetails.HrothWhiskersRight_Z.value = (float)quat.Z;
-            CharacterDetails.HrothWhiskersRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.HrothWhiskersRight_X, CharacterDetails.HrothWhiskersRight_Y, CharacterDetails.HrothWhiskersRight_Z, CharacterDetails.HrothWhiskersRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(HrothWhiskersRight_UpDown);
         }
@@ -17252,104 +15176,64 @@ namespace ConceptMatrix.Views
         #region VieraEarALeft
         private void VieraEar01ALeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar01ALeft_X.value = (float)quat.X;
-            CharacterDetails.VieraEar01ALeft_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar01ALeft_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar01ALeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar01ALeft_X, CharacterDetails.VieraEar01ALeft_Y, CharacterDetails.VieraEar01ALeft_Z, CharacterDetails.VieraEar01ALeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar01ALeft_Slider);
         }
 
         private void VieraEar01ALeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar01ALeft_X.value = (float)quat.X;
-            CharacterDetails.VieraEar01ALeft_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar01ALeft_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar01ALeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar01ALeft_X, CharacterDetails.VieraEar01ALeft_Y, CharacterDetails.VieraEar01ALeft_Z, CharacterDetails.VieraEar01ALeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar01ALeft_UpDown);
         }
 
         private void VieraEar02ALeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar02ALeft_X.value = (float)quat.X;
-            CharacterDetails.VieraEar02ALeft_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar02ALeft_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar02ALeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar02ALeft_X, CharacterDetails.VieraEar02ALeft_Y, CharacterDetails.VieraEar02ALeft_Z, CharacterDetails.VieraEar02ALeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar02ALeft_Slider);
         }
 
         private void VieraEar02ALeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar02ALeft_X.value = (float)quat.X;
-            CharacterDetails.VieraEar02ALeft_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar02ALeft_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar02ALeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar02ALeft_X, CharacterDetails.VieraEar02ALeft_Y, CharacterDetails.VieraEar02ALeft_Z, CharacterDetails.VieraEar02ALeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar02ALeft_UpDown);
         }
 
         private void VieraEar03ALeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar03ALeft_X.value = (float)quat.X;
-            CharacterDetails.VieraEar03ALeft_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar03ALeft_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar03ALeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar03ALeft_X, CharacterDetails.VieraEar03ALeft_Y, CharacterDetails.VieraEar03ALeft_Z, CharacterDetails.VieraEar03ALeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar03ALeft_Slider);
         }
 
         private void VieraEar03ALeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar03ALeft_X.value = (float)quat.X;
-            CharacterDetails.VieraEar03ALeft_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar03ALeft_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar03ALeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar03ALeft_X, CharacterDetails.VieraEar03ALeft_Y, CharacterDetails.VieraEar03ALeft_Z, CharacterDetails.VieraEar03ALeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar03ALeft_UpDown);
         }
 
         private void VieraEar04ALeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar04ALeft_X.value = (float)quat.X;
-            CharacterDetails.VieraEar04ALeft_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar04ALeft_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar04ALeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar04ALeft_X, CharacterDetails.VieraEar04ALeft_Y, CharacterDetails.VieraEar04ALeft_Z, CharacterDetails.VieraEar04ALeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar04ALeft_Slider);
         }
 
         private void VieraEar04ALeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar04ALeft_X.value = (float)quat.X;
-            CharacterDetails.VieraEar04ALeft_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar04ALeft_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar04ALeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar04ALeft_X, CharacterDetails.VieraEar04ALeft_Y, CharacterDetails.VieraEar04ALeft_Z, CharacterDetails.VieraEar04ALeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar04ALeft_UpDown);
         }
@@ -17385,104 +15269,64 @@ namespace ConceptMatrix.Views
         #region VieraEarARight
         private void VieraEar01ARight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar01ARight_X.value = (float)quat.X;
-            CharacterDetails.VieraEar01ARight_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar01ARight_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar01ARight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar01ARight_X, CharacterDetails.VieraEar01ARight_Y, CharacterDetails.VieraEar01ARight_Z, CharacterDetails.VieraEar01ARight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar01ARight_Slider);
         }
 
         private void VieraEar01ARight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar01ARight_X.value = (float)quat.X;
-            CharacterDetails.VieraEar01ARight_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar01ARight_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar01ARight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar01ARight_X, CharacterDetails.VieraEar01ARight_Y, CharacterDetails.VieraEar01ARight_Z, CharacterDetails.VieraEar01ARight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar01ARight_UpDown);
         }
 
         private void VieraEar02ARight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar02ARight_X.value = (float)quat.X;
-            CharacterDetails.VieraEar02ARight_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar02ARight_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar02ARight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar02ARight_X, CharacterDetails.VieraEar02ARight_Y, CharacterDetails.VieraEar02ARight_Z, CharacterDetails.VieraEar02ARight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar02ARight_Slider);
         }
 
         private void VieraEar02ARight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar02ARight_X.value = (float)quat.X;
-            CharacterDetails.VieraEar02ARight_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar02ARight_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar02ARight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar02ARight_X, CharacterDetails.VieraEar02ARight_Y, CharacterDetails.VieraEar02ARight_Z, CharacterDetails.VieraEar02ARight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar02ARight_UpDown);
         }
 
         private void VieraEar03ARight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar03ARight_X.value = (float)quat.X;
-            CharacterDetails.VieraEar03ARight_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar03ARight_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar03ARight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar03ARight_X, CharacterDetails.VieraEar03ARight_Y, CharacterDetails.VieraEar03ARight_Z, CharacterDetails.VieraEar03ARight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar03ARight_Slider);
         }
 
         private void VieraEar03ARight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar03ARight_X.value = (float)quat.X;
-            CharacterDetails.VieraEar03ARight_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar03ARight_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar03ARight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar03ARight_X, CharacterDetails.VieraEar03ARight_Y, CharacterDetails.VieraEar03ARight_Z, CharacterDetails.VieraEar03ARight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar03ARight_UpDown);
         }
 
         private void VieraEar04ARight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar04ARight_X.value = (float)quat.X;
-            CharacterDetails.VieraEar04ARight_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar04ARight_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar04ARight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar04ARight_X, CharacterDetails.VieraEar04ARight_Y, CharacterDetails.VieraEar04ARight_Z, CharacterDetails.VieraEar04ARight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar04ARight_Slider);
         }
 
         private void VieraEar04ARight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar04ARight_X.value = (float)quat.X;
-            CharacterDetails.VieraEar04ARight_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar04ARight_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar04ARight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar04ARight_X, CharacterDetails.VieraEar04ARight_Y, CharacterDetails.VieraEar04ARight_Z, CharacterDetails.VieraEar04ARight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar04ARight_UpDown);
         }
@@ -17518,104 +15362,64 @@ namespace ConceptMatrix.Views
         #region VieraEarBLeft
         private void VieraEar01BLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar01BLeft_X.value = (float)quat.X;
-            CharacterDetails.VieraEar01BLeft_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar01BLeft_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar01BLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar01BLeft_X, CharacterDetails.VieraEar01BLeft_Y, CharacterDetails.VieraEar01BLeft_Z, CharacterDetails.VieraEar01BLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar01BLeft_Slider);
         }
 
         private void VieraEar01BLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar01BLeft_X.value = (float)quat.X;
-            CharacterDetails.VieraEar01BLeft_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar01BLeft_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar01BLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar01BLeft_X, CharacterDetails.VieraEar01BLeft_Y, CharacterDetails.VieraEar01BLeft_Z, CharacterDetails.VieraEar01BLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar01BLeft_UpDown);
         }
 
         private void VieraEar02BLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar02BLeft_X.value = (float)quat.X;
-            CharacterDetails.VieraEar02BLeft_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar02BLeft_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar02BLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar02BLeft_X, CharacterDetails.VieraEar02BLeft_Y, CharacterDetails.VieraEar02BLeft_Z, CharacterDetails.VieraEar02BLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar02BLeft_Slider);
         }
 
         private void VieraEar02BLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar02BLeft_X.value = (float)quat.X;
-            CharacterDetails.VieraEar02BLeft_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar02BLeft_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar02BLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar02BLeft_X, CharacterDetails.VieraEar02BLeft_Y, CharacterDetails.VieraEar02BLeft_Z, CharacterDetails.VieraEar02BLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar02BLeft_UpDown);
         }
 
         private void VieraEar03BLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar03BLeft_X.value = (float)quat.X;
-            CharacterDetails.VieraEar03BLeft_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar03BLeft_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar03BLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar03BLeft_X, CharacterDetails.VieraEar03BLeft_Y, CharacterDetails.VieraEar03BLeft_Z, CharacterDetails.VieraEar03BLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar03BLeft_Slider);
         }
 
         private void VieraEar03BLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar03BLeft_X.value = (float)quat.X;
-            CharacterDetails.VieraEar03BLeft_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar03BLeft_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar03BLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar03BLeft_X, CharacterDetails.VieraEar03BLeft_Y, CharacterDetails.VieraEar03BLeft_Z, CharacterDetails.VieraEar03BLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar03BLeft_UpDown);
         }
 
         private void VieraEar04BLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar04BLeft_X.value = (float)quat.X;
-            CharacterDetails.VieraEar04BLeft_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar04BLeft_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar04BLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar04BLeft_X, CharacterDetails.VieraEar04BLeft_Y, CharacterDetails.VieraEar04BLeft_Z, CharacterDetails.VieraEar04BLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar04BLeft_Slider);
         }
 
         private void VieraEar04BLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar04BLeft_X.value = (float)quat.X;
-            CharacterDetails.VieraEar04BLeft_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar04BLeft_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar04BLeft_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar04BLeft_X, CharacterDetails.VieraEar04BLeft_Y, CharacterDetails.VieraEar04BLeft_Z, CharacterDetails.VieraEar04BLeft_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar04BLeft_UpDown);
         }
@@ -17651,104 +15455,64 @@ namespace ConceptMatrix.Views
         #region VieraEarBRight
         private void VieraEar01BRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar01BRight_X.value = (float)quat.X;
-            CharacterDetails.VieraEar01BRight_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar01BRight_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar01BRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar01BRight_X, CharacterDetails.VieraEar01BRight_Y, CharacterDetails.VieraEar01BRight_Z, CharacterDetails.VieraEar01BRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar01BRight_Slider);
         }
 
         private void VieraEar01BRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar01BRight_X.value = (float)quat.X;
-            CharacterDetails.VieraEar01BRight_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar01BRight_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar01BRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar01BRight_X, CharacterDetails.VieraEar01BRight_Y, CharacterDetails.VieraEar01BRight_Z, CharacterDetails.VieraEar01BRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar01BRight_UpDown);
         }
 
         private void VieraEar02BRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar02BRight_X.value = (float)quat.X;
-            CharacterDetails.VieraEar02BRight_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar02BRight_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar02BRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar02BRight_X, CharacterDetails.VieraEar02BRight_Y, CharacterDetails.VieraEar02BRight_Z, CharacterDetails.VieraEar02BRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar02BRight_Slider);
         }
 
         private void VieraEar02BRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar02BRight_X.value = (float)quat.X;
-            CharacterDetails.VieraEar02BRight_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar02BRight_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar02BRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar02BRight_X, CharacterDetails.VieraEar02BRight_Y, CharacterDetails.VieraEar02BRight_Z, CharacterDetails.VieraEar02BRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar02BRight_UpDown);
         }
 
         private void VieraEar03BRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar03BRight_X.value = (float)quat.X;
-            CharacterDetails.VieraEar03BRight_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar03BRight_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar03BRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar03BRight_X, CharacterDetails.VieraEar03BRight_Y, CharacterDetails.VieraEar03BRight_Z, CharacterDetails.VieraEar03BRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar03BRight_Slider);
         }
 
         private void VieraEar03BRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar03BRight_X.value = (float)quat.X;
-            CharacterDetails.VieraEar03BRight_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar03BRight_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar03BRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar03BRight_X, CharacterDetails.VieraEar03BRight_Y, CharacterDetails.VieraEar03BRight_Z, CharacterDetails.VieraEar03BRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar03BRight_UpDown);
         }
 
         private void VieraEar04BRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar04BRight_X.value = (float)quat.X;
-            CharacterDetails.VieraEar04BRight_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar04BRight_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar04BRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar04BRight_X, CharacterDetails.VieraEar04BRight_Y, CharacterDetails.VieraEar04BRight_Z, CharacterDetails.VieraEar04BRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar04BRight_Slider);
         }
 
         private void VieraEar04BRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.VieraEar04BRight_X.value = (float)quat.X;
-            CharacterDetails.VieraEar04BRight_Y.value = (float)quat.Y;
-            CharacterDetails.VieraEar04BRight_Z.value = (float)quat.Z;
-            CharacterDetails.VieraEar04BRight_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.VieraEar04BRight_X, CharacterDetails.VieraEar04BRight_Y, CharacterDetails.VieraEar04BRight_Z, CharacterDetails.VieraEar04BRight_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar04BRight_UpDown);
         }
@@ -17785,26 +15549,16 @@ namespace ConceptMatrix.Views
         #region ExHairA
         private void ExHairA_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExHairA_X.value = (float)quat.X;
-            CharacterDetails.ExHairA_Y.value = (float)quat.Y;
-            CharacterDetails.ExHairA_Z.value = (float)quat.Z;
-            CharacterDetails.ExHairA_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExHairA_X, CharacterDetails.ExHairA_Y, CharacterDetails.ExHairA_Z, CharacterDetails.ExHairA_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExHairA_Slider);
         }
 
         private void ExHairA_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExHairA_X.value = (float)quat.X;
-            CharacterDetails.ExHairA_Y.value = (float)quat.Y;
-            CharacterDetails.ExHairA_Z.value = (float)quat.Z;
-            CharacterDetails.ExHairA_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExHairA_X, CharacterDetails.ExHairA_Y, CharacterDetails.ExHairA_Z, CharacterDetails.ExHairA_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExHairA_UpDown);
         }
@@ -17827,26 +15581,16 @@ namespace ConceptMatrix.Views
         #region ExHairB
         private void ExHairB_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExHairB_X.value = (float)quat.X;
-            CharacterDetails.ExHairB_Y.value = (float)quat.Y;
-            CharacterDetails.ExHairB_Z.value = (float)quat.Z;
-            CharacterDetails.ExHairB_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExHairB_X, CharacterDetails.ExHairB_Y, CharacterDetails.ExHairB_Z, CharacterDetails.ExHairB_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExHairB_Slider);
         }
 
         private void ExHairB_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExHairB_X.value = (float)quat.X;
-            CharacterDetails.ExHairB_Y.value = (float)quat.Y;
-            CharacterDetails.ExHairB_Z.value = (float)quat.Z;
-            CharacterDetails.ExHairB_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExHairB_X, CharacterDetails.ExHairB_Y, CharacterDetails.ExHairB_Z, CharacterDetails.ExHairB_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExHairB_UpDown);
         }
@@ -17869,13 +15613,8 @@ namespace ConceptMatrix.Views
         #region ExHairC
         private void ExHairC_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExHairC_X.value = (float)quat.X;
-            CharacterDetails.ExHairC_Y.value = (float)quat.Y;
-            CharacterDetails.ExHairC_Z.value = (float)quat.Z;
-            CharacterDetails.ExHairC_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExHairC_X, CharacterDetails.ExHairC_Y, CharacterDetails.ExHairC_Z, CharacterDetails.ExHairC_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExHairC_Slider);
             RemoveRoutedEventListener(ExHairC_UpDown);
@@ -17883,13 +15622,8 @@ namespace ConceptMatrix.Views
 
         private void ExHairC_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExHairC_X.value = (float)quat.X;
-            CharacterDetails.ExHairC_Y.value = (float)quat.Y;
-            CharacterDetails.ExHairC_Z.value = (float)quat.Z;
-            CharacterDetails.ExHairC_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExHairC_X, CharacterDetails.ExHairC_Y, CharacterDetails.ExHairC_Z, CharacterDetails.ExHairC_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExHairC_Slider);
             RemoveRoutedEventListener(ExHairC_UpDown);
@@ -17913,26 +15647,16 @@ namespace ConceptMatrix.Views
         #region ExHairD
         private void ExHairD_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExHairD_X.value = (float)quat.X;
-            CharacterDetails.ExHairD_Y.value = (float)quat.Y;
-            CharacterDetails.ExHairD_Z.value = (float)quat.Z;
-            CharacterDetails.ExHairD_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExHairD_X, CharacterDetails.ExHairD_Y, CharacterDetails.ExHairD_Z, CharacterDetails.ExHairD_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExHairD_Slider);
         }
 
         private void ExHairD_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExHairD_X.value = (float)quat.X;
-            CharacterDetails.ExHairD_Y.value = (float)quat.Y;
-            CharacterDetails.ExHairD_Z.value = (float)quat.Z;
-            CharacterDetails.ExHairD_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExHairD_X, CharacterDetails.ExHairD_Y, CharacterDetails.ExHairD_Z, CharacterDetails.ExHairD_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExHairD_UpDown);
         }
@@ -17955,26 +15679,16 @@ namespace ConceptMatrix.Views
         #region ExHairE
         private void ExHairE_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExHairE_X.value = (float)quat.X;
-            CharacterDetails.ExHairE_Y.value = (float)quat.Y;
-            CharacterDetails.ExHairE_Z.value = (float)quat.Z;
-            CharacterDetails.ExHairE_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExHairE_X, CharacterDetails.ExHairE_Y, CharacterDetails.ExHairE_Z, CharacterDetails.ExHairE_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExHairE_Slider);
         }
 
         private void ExHairE_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExHairE_X.value = (float)quat.X;
-            CharacterDetails.ExHairE_Y.value = (float)quat.Y;
-            CharacterDetails.ExHairE_Z.value = (float)quat.Z;
-            CharacterDetails.ExHairE_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExHairE_X, CharacterDetails.ExHairE_Y, CharacterDetails.ExHairE_Z, CharacterDetails.ExHairE_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExHairE_UpDown);
         }
@@ -17997,26 +15711,16 @@ namespace ConceptMatrix.Views
         #region ExHairF
         private void ExHairF_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExHairF_X.value = (float)quat.X;
-            CharacterDetails.ExHairF_Y.value = (float)quat.Y;
-            CharacterDetails.ExHairF_Z.value = (float)quat.Z;
-            CharacterDetails.ExHairF_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExHairF_X, CharacterDetails.ExHairF_Y, CharacterDetails.ExHairF_Z, CharacterDetails.ExHairF_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExHairF_Slider);
         }
 
         private void ExHairF_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExHairF_X.value = (float)quat.X;
-            CharacterDetails.ExHairF_Y.value = (float)quat.Y;
-            CharacterDetails.ExHairF_Z.value = (float)quat.Z;
-            CharacterDetails.ExHairF_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExHairF_X, CharacterDetails.ExHairF_Y, CharacterDetails.ExHairF_Z, CharacterDetails.ExHairF_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExHairF_UpDown);
         }
@@ -18039,26 +15743,16 @@ namespace ConceptMatrix.Views
         #region ExHairG
         private void ExHairG_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExHairG_X.value = (float)quat.X;
-            CharacterDetails.ExHairG_Y.value = (float)quat.Y;
-            CharacterDetails.ExHairG_Z.value = (float)quat.Z;
-            CharacterDetails.ExHairG_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExHairG_X, CharacterDetails.ExHairG_Y, CharacterDetails.ExHairG_Z, CharacterDetails.ExHairG_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExHairG_Slider);
         }
 
         private void ExHairG_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExHairG_X.value = (float)quat.X;
-            CharacterDetails.ExHairG_Y.value = (float)quat.Y;
-            CharacterDetails.ExHairG_Z.value = (float)quat.Z;
-            CharacterDetails.ExHairG_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExHairG_X, CharacterDetails.ExHairG_Y, CharacterDetails.ExHairG_Z, CharacterDetails.ExHairG_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExHairG_UpDown);
         }
@@ -18081,26 +15775,16 @@ namespace ConceptMatrix.Views
         #region ExHairH
         private void ExHairH_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExHairH_X.value = (float)quat.X;
-            CharacterDetails.ExHairH_Y.value = (float)quat.Y;
-            CharacterDetails.ExHairH_Z.value = (float)quat.Z;
-            CharacterDetails.ExHairH_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExHairH_X, CharacterDetails.ExHairH_Y, CharacterDetails.ExHairH_Z, CharacterDetails.ExHairH_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExHairH_Slider);
         }
 
         private void ExHairH_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExHairH_X.value = (float)quat.X;
-            CharacterDetails.ExHairH_Y.value = (float)quat.Y;
-            CharacterDetails.ExHairH_Z.value = (float)quat.Z;
-            CharacterDetails.ExHairH_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExHairH_X, CharacterDetails.ExHairH_Y, CharacterDetails.ExHairH_Z, CharacterDetails.ExHairH_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExHairH_UpDown);
         }
@@ -18123,26 +15807,16 @@ namespace ConceptMatrix.Views
         #region ExHairI
         private void ExHairI_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExHairI_X.value = (float)quat.X;
-            CharacterDetails.ExHairI_Y.value = (float)quat.Y;
-            CharacterDetails.ExHairI_Z.value = (float)quat.Z;
-            CharacterDetails.ExHairI_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExHairI_X, CharacterDetails.ExHairI_Y, CharacterDetails.ExHairI_Z, CharacterDetails.ExHairI_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExHairI_Slider);
         }
 
         private void ExHairI_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExHairI_X.value = (float)quat.X;
-            CharacterDetails.ExHairI_Y.value = (float)quat.Y;
-            CharacterDetails.ExHairI_Z.value = (float)quat.Z;
-            CharacterDetails.ExHairI_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExHairI_X, CharacterDetails.ExHairI_Y, CharacterDetails.ExHairI_Z, CharacterDetails.ExHairI_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExHairI_UpDown);
         }
@@ -18165,26 +15839,16 @@ namespace ConceptMatrix.Views
         #region ExHairJ
         private void ExHairJ_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExHairJ_X.value = (float)quat.X;
-            CharacterDetails.ExHairJ_Y.value = (float)quat.Y;
-            CharacterDetails.ExHairJ_Z.value = (float)quat.Z;
-            CharacterDetails.ExHairJ_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExHairJ_X, CharacterDetails.ExHairJ_Y, CharacterDetails.ExHairJ_Z, CharacterDetails.ExHairJ_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExHairJ_Slider);
         }
 
         private void ExHairJ_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExHairJ_X.value = (float)quat.X;
-            CharacterDetails.ExHairJ_Y.value = (float)quat.Y;
-            CharacterDetails.ExHairJ_Z.value = (float)quat.Z;
-            CharacterDetails.ExHairJ_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExHairJ_X, CharacterDetails.ExHairJ_Y, CharacterDetails.ExHairJ_Z, CharacterDetails.ExHairJ_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExHairJ_UpDown);
         }
@@ -18207,26 +15871,16 @@ namespace ConceptMatrix.Views
         #region ExHairK
         private void ExHairK_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExHairK_X.value = (float)quat.X;
-            CharacterDetails.ExHairK_Y.value = (float)quat.Y;
-            CharacterDetails.ExHairK_Z.value = (float)quat.Z;
-            CharacterDetails.ExHairK_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExHairK_X, CharacterDetails.ExHairK_Y, CharacterDetails.ExHairK_Z, CharacterDetails.ExHairK_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExHairK_Slider);
         }
 
         private void ExHairK_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExHairK_X.value = (float)quat.X;
-            CharacterDetails.ExHairK_Y.value = (float)quat.Y;
-            CharacterDetails.ExHairK_Z.value = (float)quat.Z;
-            CharacterDetails.ExHairK_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExHairK_X, CharacterDetails.ExHairK_Y, CharacterDetails.ExHairK_Z, CharacterDetails.ExHairK_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExHairK_UpDown);
         }
@@ -18249,26 +15903,16 @@ namespace ConceptMatrix.Views
         #region ExHairL
         private void ExHairL_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExHairL_X.value = (float)quat.X;
-            CharacterDetails.ExHairL_Y.value = (float)quat.Y;
-            CharacterDetails.ExHairL_Z.value = (float)quat.Z;
-            CharacterDetails.ExHairL_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExHairL_X, CharacterDetails.ExHairL_Y, CharacterDetails.ExHairL_Z, CharacterDetails.ExHairL_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExHairL_Slider);
         }
 
         private void ExHairL_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExHairL_X.value = (float)quat.X;
-            CharacterDetails.ExHairL_Y.value = (float)quat.Y;
-            CharacterDetails.ExHairL_Z.value = (float)quat.Z;
-            CharacterDetails.ExHairL_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExHairL_X, CharacterDetails.ExHairL_Y, CharacterDetails.ExHairL_Z, CharacterDetails.ExHairL_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExHairL_UpDown);
         }
@@ -18292,26 +15936,16 @@ namespace ConceptMatrix.Views
         #region ExMetA
         private void ExMetA_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetA_X.value = (float)quat.X;
-            CharacterDetails.ExMetA_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetA_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetA_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetA_X, CharacterDetails.ExMetA_Y, CharacterDetails.ExMetA_Z, CharacterDetails.ExMetA_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetA_Slider);
         }
 
         private void ExMetA_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetA_X.value = (float)quat.X;
-            CharacterDetails.ExMetA_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetA_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetA_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetA_X, CharacterDetails.ExMetA_Y, CharacterDetails.ExMetA_Z, CharacterDetails.ExMetA_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetA_UpDown);
         }
@@ -18334,26 +15968,16 @@ namespace ConceptMatrix.Views
         #region ExMetB
         private void ExMetB_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetB_X.value = (float)quat.X;
-            CharacterDetails.ExMetB_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetB_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetB_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetB_X, CharacterDetails.ExMetB_Y, CharacterDetails.ExMetB_Z, CharacterDetails.ExMetB_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetB_Slider);
         }
 
         private void ExMetB_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetB_X.value = (float)quat.X;
-            CharacterDetails.ExMetB_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetB_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetB_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetB_X, CharacterDetails.ExMetB_Y, CharacterDetails.ExMetB_Z, CharacterDetails.ExMetB_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetB_UpDown);
         }
@@ -18376,26 +16000,16 @@ namespace ConceptMatrix.Views
         #region ExMetC
         private void ExMetC_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetC_X.value = (float)quat.X;
-            CharacterDetails.ExMetC_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetC_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetC_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetC_X, CharacterDetails.ExMetC_Y, CharacterDetails.ExMetC_Z, CharacterDetails.ExMetC_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetC_Slider);
         }
 
         private void ExMetC_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetC_X.value = (float)quat.X;
-            CharacterDetails.ExMetC_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetC_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetC_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetC_X, CharacterDetails.ExMetC_Y, CharacterDetails.ExMetC_Z, CharacterDetails.ExMetC_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetC_UpDown);
         }
@@ -18418,26 +16032,16 @@ namespace ConceptMatrix.Views
         #region ExMetD
         private void ExMetD_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetD_X.value = (float)quat.X;
-            CharacterDetails.ExMetD_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetD_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetD_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetD_X, CharacterDetails.ExMetD_Y, CharacterDetails.ExMetD_Z, CharacterDetails.ExMetD_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetD_Slider);
         }
 
         private void ExMetD_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetD_X.value = (float)quat.X;
-            CharacterDetails.ExMetD_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetD_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetD_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetD_X, CharacterDetails.ExMetD_Y, CharacterDetails.ExMetD_Z, CharacterDetails.ExMetD_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetD_UpDown);
         }
@@ -18460,26 +16064,16 @@ namespace ConceptMatrix.Views
         #region ExMetE
         private void ExMetE_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetE_X.value = (float)quat.X;
-            CharacterDetails.ExMetE_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetE_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetE_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetE_X, CharacterDetails.ExMetE_Y, CharacterDetails.ExMetE_Z, CharacterDetails.ExMetE_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetE_Slider);
         }
 
         private void ExMetE_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetE_X.value = (float)quat.X;
-            CharacterDetails.ExMetE_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetE_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetE_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetE_X, CharacterDetails.ExMetE_Y, CharacterDetails.ExMetE_Z, CharacterDetails.ExMetE_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetE_UpDown);
         }
@@ -18502,26 +16096,16 @@ namespace ConceptMatrix.Views
         #region ExMetF
         private void ExMetF_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetF_X.value = (float)quat.X;
-            CharacterDetails.ExMetF_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetF_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetF_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetF_X, CharacterDetails.ExMetF_Y, CharacterDetails.ExMetF_Z, CharacterDetails.ExMetF_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetF_Slider);
         }
 
         private void ExMetF_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetF_X.value = (float)quat.X;
-            CharacterDetails.ExMetF_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetF_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetF_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetF_X, CharacterDetails.ExMetF_Y, CharacterDetails.ExMetF_Z, CharacterDetails.ExMetF_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetF_UpDown);
         }
@@ -18544,26 +16128,16 @@ namespace ConceptMatrix.Views
         #region ExMetG
         private void ExMetG_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetG_X.value = (float)quat.X;
-            CharacterDetails.ExMetG_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetG_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetG_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetG_X, CharacterDetails.ExMetG_Y, CharacterDetails.ExMetG_Z, CharacterDetails.ExMetG_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetG_Slider);
         }
 
         private void ExMetG_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetG_X.value = (float)quat.X;
-            CharacterDetails.ExMetG_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetG_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetG_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetG_X, CharacterDetails.ExMetG_Y, CharacterDetails.ExMetG_Z, CharacterDetails.ExMetG_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetG_UpDown);
         }
@@ -18586,26 +16160,16 @@ namespace ConceptMatrix.Views
         #region ExMetH
         private void ExMetH_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetH_X.value = (float)quat.X;
-            CharacterDetails.ExMetH_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetH_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetH_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetH_X, CharacterDetails.ExMetH_Y, CharacterDetails.ExMetH_Z, CharacterDetails.ExMetH_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetH_Slider);
         }
 
         private void ExMetH_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetH_X.value = (float)quat.X;
-            CharacterDetails.ExMetH_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetH_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetH_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetH_X, CharacterDetails.ExMetH_Y, CharacterDetails.ExMetH_Z, CharacterDetails.ExMetH_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetH_UpDown);
         }
@@ -18628,26 +16192,16 @@ namespace ConceptMatrix.Views
         #region ExMetI
         private void ExMetI_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetI_X.value = (float)quat.X;
-            CharacterDetails.ExMetI_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetI_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetI_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetI_X, CharacterDetails.ExMetI_Y, CharacterDetails.ExMetI_Z, CharacterDetails.ExMetI_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetI_Slider);
         }
 
         private void ExMetI_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetI_X.value = (float)quat.X;
-            CharacterDetails.ExMetI_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetI_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetI_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetI_X, CharacterDetails.ExMetI_Y, CharacterDetails.ExMetI_Z, CharacterDetails.ExMetI_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetI_UpDown);
         }
@@ -18670,26 +16224,16 @@ namespace ConceptMatrix.Views
         #region ExMetJ
         private void ExMetJ_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetJ_X.value = (float)quat.X;
-            CharacterDetails.ExMetJ_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetJ_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetJ_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetJ_X, CharacterDetails.ExMetJ_Y, CharacterDetails.ExMetJ_Z, CharacterDetails.ExMetJ_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetJ_Slider);
         }
 
         private void ExMetJ_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetJ_X.value = (float)quat.X;
-            CharacterDetails.ExMetJ_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetJ_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetJ_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetJ_X, CharacterDetails.ExMetJ_Y, CharacterDetails.ExMetJ_Z, CharacterDetails.ExMetJ_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetJ_UpDown);
         }
@@ -18712,26 +16256,16 @@ namespace ConceptMatrix.Views
         #region ExMetK
         private void ExMetK_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetK_X.value = (float)quat.X;
-            CharacterDetails.ExMetK_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetK_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetK_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetK_X, CharacterDetails.ExMetK_Y, CharacterDetails.ExMetK_Z, CharacterDetails.ExMetK_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetK_Slider);
         }
 
         private void ExMetK_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetK_X.value = (float)quat.X;
-            CharacterDetails.ExMetK_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetK_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetK_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetK_X, CharacterDetails.ExMetK_Y, CharacterDetails.ExMetK_Z, CharacterDetails.ExMetK_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetK_UpDown);
         }
@@ -18754,26 +16288,16 @@ namespace ConceptMatrix.Views
         #region ExMetL
         private void ExMetL_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetL_X.value = (float)quat.X;
-            CharacterDetails.ExMetL_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetL_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetL_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetL_X, CharacterDetails.ExMetL_Y, CharacterDetails.ExMetL_Z, CharacterDetails.ExMetL_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetL_Slider);
         }
 
         private void ExMetL_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetL_X.value = (float)quat.X;
-            CharacterDetails.ExMetL_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetL_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetL_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetL_X, CharacterDetails.ExMetL_Y, CharacterDetails.ExMetL_Z, CharacterDetails.ExMetL_W);
             RemoveRoutedEventListener(ExMetL_UpDown);
         }
 
@@ -18795,26 +16319,16 @@ namespace ConceptMatrix.Views
         #region ExMetM
         private void ExMetM_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetM_X.value = (float)quat.X;
-            CharacterDetails.ExMetM_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetM_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetM_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetM_X, CharacterDetails.ExMetM_Y, CharacterDetails.ExMetM_Z, CharacterDetails.ExMetM_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetM_Slider);
         }
 
         private void ExMetM_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetM_X.value = (float)quat.X;
-            CharacterDetails.ExMetM_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetM_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetM_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetM_X, CharacterDetails.ExMetM_Y, CharacterDetails.ExMetM_Z, CharacterDetails.ExMetM_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetM_UpDown);
         }
@@ -18837,13 +16351,8 @@ namespace ConceptMatrix.Views
         #region ExMetN
         private void ExMetN_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetN_X.value = (float)quat.X;
-            CharacterDetails.ExMetN_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetN_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetN_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetN_X, CharacterDetails.ExMetN_Y, CharacterDetails.ExMetN_Z, CharacterDetails.ExMetN_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetN_Slider);
             RemoveRoutedEventListener(ExMetN_UpDown);
@@ -18851,13 +16360,8 @@ namespace ConceptMatrix.Views
 
         private void ExMetN_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetN_X.value = (float)quat.X;
-            CharacterDetails.ExMetN_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetN_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetN_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetN_X, CharacterDetails.ExMetN_Y, CharacterDetails.ExMetN_Z, CharacterDetails.ExMetN_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetN_Slider);
             RemoveRoutedEventListener(ExMetN_UpDown);
@@ -18881,26 +16385,16 @@ namespace ConceptMatrix.Views
         #region ExMetO
         private void ExMetO_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetO_X.value = (float)quat.X;
-            CharacterDetails.ExMetO_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetO_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetO_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetO_X, CharacterDetails.ExMetO_Y, CharacterDetails.ExMetO_Z, CharacterDetails.ExMetO_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetO_Slider);
         }
 
         private void ExMetO_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetO_X.value = (float)quat.X;
-            CharacterDetails.ExMetO_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetO_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetO_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetO_X, CharacterDetails.ExMetO_Y, CharacterDetails.ExMetO_Z, CharacterDetails.ExMetO_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetO_UpDown);
         }
@@ -18923,26 +16417,16 @@ namespace ConceptMatrix.Views
         #region ExMetP
         private void ExMetP_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetP_X.value = (float)quat.X;
-            CharacterDetails.ExMetP_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetP_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetP_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetP_X, CharacterDetails.ExMetP_Y, CharacterDetails.ExMetP_Z, CharacterDetails.ExMetP_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetP_Slider);
         }
 
         private void ExMetP_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetP_X.value = (float)quat.X;
-            CharacterDetails.ExMetP_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetP_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetP_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetP_X, CharacterDetails.ExMetP_Y, CharacterDetails.ExMetP_Z, CharacterDetails.ExMetP_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetP_UpDown);
         }
@@ -18965,26 +16449,16 @@ namespace ConceptMatrix.Views
         #region ExMetQ
         private void ExMetQ_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetQ_X.value = (float)quat.X;
-            CharacterDetails.ExMetQ_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetQ_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetQ_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetQ_X, CharacterDetails.ExMetQ_Y, CharacterDetails.ExMetQ_Z, CharacterDetails.ExMetQ_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetQ_Slider);
         }
 
         private void ExMetQ_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetQ_X.value = (float)quat.X;
-            CharacterDetails.ExMetQ_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetQ_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetQ_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetQ_X, CharacterDetails.ExMetQ_Y, CharacterDetails.ExMetQ_Z, CharacterDetails.ExMetQ_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetQ_UpDown);
         }
@@ -19007,26 +16481,16 @@ namespace ConceptMatrix.Views
         #region ExMetR
         private void ExMetR_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetR_X.value = (float)quat.X;
-            CharacterDetails.ExMetR_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetR_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetR_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetR_X, CharacterDetails.ExMetR_Y, CharacterDetails.ExMetR_Z, CharacterDetails.ExMetR_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetR_Slider);
         }
 
         private void ExMetR_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExMetR_X.value = (float)quat.X;
-            CharacterDetails.ExMetR_Y.value = (float)quat.Y;
-            CharacterDetails.ExMetR_Z.value = (float)quat.Z;
-            CharacterDetails.ExMetR_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExMetR_X, CharacterDetails.ExMetR_Y, CharacterDetails.ExMetR_Z, CharacterDetails.ExMetR_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExMetR_UpDown);
         }
@@ -19050,26 +16514,16 @@ namespace ConceptMatrix.Views
         #region ExTopA
         private void ExTopA_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExTopA_X.value = (float)quat.X;
-            CharacterDetails.ExTopA_Y.value = (float)quat.Y;
-            CharacterDetails.ExTopA_Z.value = (float)quat.Z;
-            CharacterDetails.ExTopA_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExTopA_X, CharacterDetails.ExTopA_Y, CharacterDetails.ExTopA_Z, CharacterDetails.ExTopA_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExTopA_Slider);
         }
 
         private void ExTopA_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExTopA_X.value = (float)quat.X;
-            CharacterDetails.ExTopA_Y.value = (float)quat.Y;
-            CharacterDetails.ExTopA_Z.value = (float)quat.Z;
-            CharacterDetails.ExTopA_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExTopA_X, CharacterDetails.ExTopA_Y, CharacterDetails.ExTopA_Z, CharacterDetails.ExTopA_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExTopA_UpDown);
         }
@@ -19092,26 +16546,16 @@ namespace ConceptMatrix.Views
         #region ExTopB
         private void ExTopB_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExTopB_X.value = (float)quat.X;
-            CharacterDetails.ExTopB_Y.value = (float)quat.Y;
-            CharacterDetails.ExTopB_Z.value = (float)quat.Z;
-            CharacterDetails.ExTopB_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExTopB_X, CharacterDetails.ExTopB_Y, CharacterDetails.ExTopB_Z, CharacterDetails.ExTopB_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExTopB_Slider);
         }
 
         private void ExTopB_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExTopB_X.value = (float)quat.X;
-            CharacterDetails.ExTopB_Y.value = (float)quat.Y;
-            CharacterDetails.ExTopB_Z.value = (float)quat.Z;
-            CharacterDetails.ExTopB_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExTopB_X, CharacterDetails.ExTopB_Y, CharacterDetails.ExTopB_Z, CharacterDetails.ExTopB_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExTopB_UpDown);
         }
@@ -19134,26 +16578,16 @@ namespace ConceptMatrix.Views
         #region ExTopC
         private void ExTopC_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExTopC_X.value = (float)quat.X;
-            CharacterDetails.ExTopC_Y.value = (float)quat.Y;
-            CharacterDetails.ExTopC_Z.value = (float)quat.Z;
-            CharacterDetails.ExTopC_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExTopC_X, CharacterDetails.ExTopC_Y, CharacterDetails.ExTopC_Z, CharacterDetails.ExTopC_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExTopC_Slider);
         }
 
         private void ExTopC_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExTopC_X.value = (float)quat.X;
-            CharacterDetails.ExTopC_Y.value = (float)quat.Y;
-            CharacterDetails.ExTopC_Z.value = (float)quat.Z;
-            CharacterDetails.ExTopC_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExTopC_X, CharacterDetails.ExTopC_Y, CharacterDetails.ExTopC_Z, CharacterDetails.ExTopC_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExTopC_UpDown);
         }
@@ -19176,26 +16610,16 @@ namespace ConceptMatrix.Views
         #region ExTopD
         private void ExTopD_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExTopD_X.value = (float)quat.X;
-            CharacterDetails.ExTopD_Y.value = (float)quat.Y;
-            CharacterDetails.ExTopD_Z.value = (float)quat.Z;
-            CharacterDetails.ExTopD_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExTopD_X, CharacterDetails.ExTopD_Y, CharacterDetails.ExTopD_Z, CharacterDetails.ExTopD_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExTopD_Slider);
         }
 
         private void ExTopD_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExTopD_X.value = (float)quat.X;
-            CharacterDetails.ExTopD_Y.value = (float)quat.Y;
-            CharacterDetails.ExTopD_Z.value = (float)quat.Z;
-            CharacterDetails.ExTopD_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExTopD_X, CharacterDetails.ExTopD_Y, CharacterDetails.ExTopD_Z, CharacterDetails.ExTopD_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExTopD_UpDown);
         }
@@ -19218,26 +16642,16 @@ namespace ConceptMatrix.Views
         #region ExTopE
         private void ExTopE_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExTopE_X.value = (float)quat.X;
-            CharacterDetails.ExTopE_Y.value = (float)quat.Y;
-            CharacterDetails.ExTopE_Z.value = (float)quat.Z;
-            CharacterDetails.ExTopE_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExTopE_X, CharacterDetails.ExTopE_Y, CharacterDetails.ExTopE_Z, CharacterDetails.ExTopE_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExTopE_Slider);
         }
 
         private void ExTopE_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExTopE_X.value = (float)quat.X;
-            CharacterDetails.ExTopE_Y.value = (float)quat.Y;
-            CharacterDetails.ExTopE_Z.value = (float)quat.Z;
-            CharacterDetails.ExTopE_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExTopE_X, CharacterDetails.ExTopE_Y, CharacterDetails.ExTopE_Z, CharacterDetails.ExTopE_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExTopE_UpDown);
         }
@@ -19260,26 +16674,16 @@ namespace ConceptMatrix.Views
         #region ExTopF
         private void ExTopF_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExTopF_X.value = (float)quat.X;
-            CharacterDetails.ExTopF_Y.value = (float)quat.Y;
-            CharacterDetails.ExTopF_Z.value = (float)quat.Z;
-            CharacterDetails.ExTopF_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExTopF_X, CharacterDetails.ExTopF_Y, CharacterDetails.ExTopF_Z, CharacterDetails.ExTopF_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExTopF_Slider);
         }
 
         private void ExTopF_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExTopF_X.value = (float)quat.X;
-            CharacterDetails.ExTopF_Y.value = (float)quat.Y;
-            CharacterDetails.ExTopF_Z.value = (float)quat.Z;
-            CharacterDetails.ExTopF_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExTopF_X, CharacterDetails.ExTopF_Y, CharacterDetails.ExTopF_Z, CharacterDetails.ExTopF_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExTopF_UpDown);
         }
@@ -19302,26 +16706,16 @@ namespace ConceptMatrix.Views
         #region ExTopG
         private void ExTopG_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExTopG_X.value = (float)quat.X;
-            CharacterDetails.ExTopG_Y.value = (float)quat.Y;
-            CharacterDetails.ExTopG_Z.value = (float)quat.Z;
-            CharacterDetails.ExTopG_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExTopG_X, CharacterDetails.ExTopG_Y, CharacterDetails.ExTopG_Z, CharacterDetails.ExTopG_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExTopG_Slider);
         }
 
         private void ExTopG_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExTopG_X.value = (float)quat.X;
-            CharacterDetails.ExTopG_Y.value = (float)quat.Y;
-            CharacterDetails.ExTopG_Z.value = (float)quat.Z;
-            CharacterDetails.ExTopG_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExTopG_X, CharacterDetails.ExTopG_Y, CharacterDetails.ExTopG_Z, CharacterDetails.ExTopG_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExTopG_UpDown);
         }
@@ -19344,26 +16738,16 @@ namespace ConceptMatrix.Views
         #region ExTopH
         private void ExTopH_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExTopH_X.value = (float)quat.X;
-            CharacterDetails.ExTopH_Y.value = (float)quat.Y;
-            CharacterDetails.ExTopH_Z.value = (float)quat.Z;
-            CharacterDetails.ExTopH_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExTopH_X, CharacterDetails.ExTopH_Y, CharacterDetails.ExTopH_Z, CharacterDetails.ExTopH_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExTopH_Slider);
         }
 
         private void ExTopH_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExTopH_X.value = (float)quat.X;
-            CharacterDetails.ExTopH_Y.value = (float)quat.Y;
-            CharacterDetails.ExTopH_Z.value = (float)quat.Z;
-            CharacterDetails.ExTopH_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExTopH_X, CharacterDetails.ExTopH_Y, CharacterDetails.ExTopH_Z, CharacterDetails.ExTopH_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExTopH_UpDown);
         }
@@ -19386,26 +16770,16 @@ namespace ConceptMatrix.Views
         #region ExTopI
         private void ExTopI_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExTopI_X.value = (float)quat.X;
-            CharacterDetails.ExTopI_Y.value = (float)quat.Y;
-            CharacterDetails.ExTopI_Z.value = (float)quat.Z;
-            CharacterDetails.ExTopI_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExTopI_X, CharacterDetails.ExTopI_Y, CharacterDetails.ExTopI_Z, CharacterDetails.ExTopI_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExTopI_Slider);
         }
 
         private void ExTopI_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            // Get the euler angles from UI.
-            var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.ExTopI_X.value = (float)quat.X;
-            CharacterDetails.ExTopI_Y.value = (float)quat.Y;
-            CharacterDetails.ExTopI_Z.value = (float)quat.Z;
-            CharacterDetails.ExTopI_W.value = (float)quat.W;
+            RotateHelper(CharacterDetails.ExTopI_X, CharacterDetails.ExTopI_Y, CharacterDetails.ExTopI_Z, CharacterDetails.ExTopI_W);
             // Remove listeners for value changed.	
             RemoveRoutedEventListener(ExTopI_UpDown);
         }
@@ -25567,7 +22941,7 @@ namespace ConceptMatrix.Views
         {
             newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
         }
-        public Quaternion QInv(Quaternion q1)
+        public static Quaternion QInv(Quaternion q1)
         {
             return new Quaternion(q1.X, -q1.Y, -q1.Z, -q1.W);
         }

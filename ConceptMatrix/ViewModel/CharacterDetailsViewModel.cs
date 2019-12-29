@@ -677,8 +677,8 @@ namespace ConceptMatrix.ViewModel
                     byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Bones.SpineA_X), 16);
                     CharacterDetails.SpineA_X.value = BitConverter.ToSingle(bytearray, 0);
                     CharacterDetails.SpineA_Y.value = BitConverter.ToSingle(bytearray, 4);
-                    CharacterDetails.SpineA_W.value = BitConverter.ToSingle(bytearray, 8);
-                    CharacterDetails.SpineA_Z.value = BitConverter.ToSingle(bytearray, 12);
+                    CharacterDetails.SpineA_Z.value = BitConverter.ToSingle(bytearray, 8);
+                    CharacterDetails.SpineA_W.value = BitConverter.ToSingle(bytearray, 12);
 
                     var euler = new System.Windows.Media.Media3D.Quaternion(
                         CharacterDetails.SpineA_X.value,
