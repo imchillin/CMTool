@@ -812,8 +812,7 @@ namespace ConceptMatrix.Views
             bone_tail_a = new BoneNode(Settings.Instance.Character.Body.Bones.TailA_X);
             bone_tail_b = bone_tail_a.Child(Settings.Instance.Character.Body.Bones.TailB_X);
             bone_tail_c = bone_tail_b.Child(Settings.Instance.Character.Body.Bones.TailC_X);
-            bone_tail_d = bone_tail_c.Child(Settings.Instance.Character.Body.Bones.TailD_X);
-            bone_tail_d.Child(Settings.Instance.Character.Body.Bones.TailE_X);
+            bone_tail_c.Child(Settings.Instance.Character.Body.Bones.TailD_X);
             #endregion
             #region exhair
             bone_exhair = new BoneNode[12];
@@ -14049,7 +14048,7 @@ namespace ConceptMatrix.Views
         private void TailD_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
-            RotateHelper(CharacterDetails.TailD_X, CharacterDetails.TailD_Y, CharacterDetails.TailD_Z, CharacterDetails.TailD_W, bone_tail_d);
+            RotateHelper(CharacterDetails.TailD_X, CharacterDetails.TailD_Y, CharacterDetails.TailD_Z, CharacterDetails.TailD_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(TailD_Slider);
         }
@@ -14057,7 +14056,7 @@ namespace ConceptMatrix.Views
         private void TailD_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
 
-            RotateHelper(CharacterDetails.TailD_X, CharacterDetails.TailD_Y, CharacterDetails.TailD_Z, CharacterDetails.TailD_W, bone_tail_d);
+            RotateHelper(CharacterDetails.TailD_X, CharacterDetails.TailD_Y, CharacterDetails.TailD_Z, CharacterDetails.TailD_W);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(TailD_UpDown);
         }
