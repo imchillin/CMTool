@@ -323,7 +323,7 @@ namespace ConceptMatrix.ViewModel
                                 CharacterDetails.OffhandBase.value = 0;
                                 CharacterDetails.OffhandV.value = 0;
                                 CharacterDetails.OffhandDye.value = 0;
-                                MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Offhand), "bytes", "5F 01 1F 00 01 00 00 00");
+                                MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Offhand), "bytes", "00 00 00 00 00 00 00 00");
                             }
 
                             if (m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.HeadPiece)) <= 0)
