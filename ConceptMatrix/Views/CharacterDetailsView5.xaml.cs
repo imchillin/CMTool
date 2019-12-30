@@ -578,6 +578,8 @@ namespace ConceptMatrix.Views
             bone_tail_d;
         public BoneNode[] bone_exhair;
         public BoneNode[] bone_exmet;
+        public BoneNode[] bone_viera_ear_l;
+        public BoneNode[] bone_viera_ear_r;
 
 
         public BoneNode InitBonetree ()
@@ -718,14 +720,28 @@ namespace ConceptMatrix.Views
             bone_face_viera.Child(Settings.Instance.Character.Body.Bones.VieraLipLowerA_X);
             bone_face_viera.Child(Settings.Instance.Character.Body.Bones.VieraLipUpperB_X);
             bone_face_viera.Child(Settings.Instance.Character.Body.Bones.VieraLipLowerB_X);
-            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.VieraEar01ALeft_X);
-            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.VieraEar01ARight_X);
-            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.VieraEar02ALeft_X);
-            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.VieraEar02ARight_X);
-            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.VieraEar01BLeft_X);
-            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.VieraEar01BRight_X);
-            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.VieraEar02BLeft_X);
-            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.VieraEar02BRight_X);
+            bone_viera_ear_l = new BoneNode[5];
+            bone_viera_ear_r = new BoneNode[5];
+            bone_viera_ear_l[0] = new BoneNode(Settings.Instance.Character.Body.Bones.VieraEar01ALeft_X);
+            bone_viera_ear_r[0] = new BoneNode(Settings.Instance.Character.Body.Bones.VieraEar01ARight_X);
+            bone_viera_ear_l[1] = new BoneNode(Settings.Instance.Character.Body.Bones.VieraEar01ALeft_X);
+            bone_viera_ear_r[1] = new BoneNode(Settings.Instance.Character.Body.Bones.VieraEar01ARight_X);
+            bone_viera_ear_l[2] = new BoneNode(Settings.Instance.Character.Body.Bones.VieraEar02ALeft_X);
+            bone_viera_ear_r[2] = new BoneNode(Settings.Instance.Character.Body.Bones.VieraEar02ARight_X);
+            bone_viera_ear_l[3] = new BoneNode(Settings.Instance.Character.Body.Bones.VieraEar03ALeft_X);
+            bone_viera_ear_r[3] = new BoneNode(Settings.Instance.Character.Body.Bones.VieraEar03ARight_X);
+            bone_viera_ear_l[4] = new BoneNode(Settings.Instance.Character.Body.Bones.VieraEar04ALeft_X);
+            bone_viera_ear_r[4] = new BoneNode(Settings.Instance.Character.Body.Bones.VieraEar04ARight_X);
+            bone_viera_ear_l[0].Child(Settings.Instance.Character.Body.Bones.VieraEar01BLeft_X);
+            bone_viera_ear_r[0].Child(Settings.Instance.Character.Body.Bones.VieraEar01BRight_X);
+            bone_viera_ear_l[1].Child(Settings.Instance.Character.Body.Bones.VieraEar01BLeft_X);
+            bone_viera_ear_r[1].Child(Settings.Instance.Character.Body.Bones.VieraEar01BRight_X);
+            bone_viera_ear_l[2].Child(Settings.Instance.Character.Body.Bones.VieraEar02BLeft_X);
+            bone_viera_ear_r[2].Child(Settings.Instance.Character.Body.Bones.VieraEar02BRight_X);
+            bone_viera_ear_l[3].Child(Settings.Instance.Character.Body.Bones.VieraEar03BLeft_X);
+            bone_viera_ear_r[3].Child(Settings.Instance.Character.Body.Bones.VieraEar03BRight_X);
+            bone_viera_ear_l[4].Child(Settings.Instance.Character.Body.Bones.VieraEar04BLeft_X);
+            bone_viera_ear_r[4].Child(Settings.Instance.Character.Body.Bones.VieraEar04BRight_X);
             #endregion
             #region armbone tree
             bone_clav_l = bone_cerv.Child(Settings.Instance.Character.Body.Bones.ClavicleLeft_X);
@@ -10653,6 +10669,13 @@ namespace ConceptMatrix.Views
                 VieraEarARight.IsEnabled = true;
                 VieraEarBLeft.IsEnabled = true;
                 VieraEarBRight.IsEnabled = true;
+                for (int i = 0; i < bone_viera_ear_l.Length; i++)
+                {
+                    bone_face_viera.Remove(bone_viera_ear_l[i]);
+                    bone_face_viera.Remove(bone_viera_ear_r[i]);
+                }
+                bone_face_viera.Add(bone_viera_ear_l[CharacterDetails.TailType.value]);
+                bone_face_viera.Add(bone_viera_ear_r[CharacterDetails.TailType.value]);
             }
             #region Exhair
             int exhair_value = m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value));
@@ -10683,26 +10706,26 @@ namespace ConceptMatrix.Views
             if (face_check != FaceRace.Middy && CharacterDetails.Race.value < 7)
             {
                 face_check = FaceRace.Middy;
+                bone_face = bone_face_middy;
                 bone_neck.Remove(bone_face_hroth);
                 bone_neck.Remove(bone_face_viera);
                 bone_neck.Add(bone_face_middy);
-                bone_face = bone_face_middy;
             }
             else if (face_check != FaceRace.Hroth && CharacterDetails.Race.value == 7)
             {
                 face_check = FaceRace.Hroth;
+                bone_face = bone_face_hroth;
                 bone_neck.Remove(bone_face_middy);
                 bone_neck.Remove(bone_face_viera);
                 bone_neck.Add(bone_face_hroth);
-                bone_face = bone_face_hroth;
             }
             else if (face_check != FaceRace.Viera && CharacterDetails.Race.value == 8)
             {
                 face_check = FaceRace.Viera;
+                bone_face = bone_face_viera;
                 bone_neck.Remove(bone_face_middy);
                 bone_neck.Remove(bone_face_hroth);
                 bone_neck.Add(bone_face_viera);
-                bone_face = bone_face_viera;
             }
             if (!ReadTetriaryFromRunTime)
             {
@@ -15197,7 +15220,7 @@ namespace ConceptMatrix.Views
         private void VieraEar01ALeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
-            RotateHelper(CharacterDetails.VieraEar01ALeft_X, CharacterDetails.VieraEar01ALeft_Y, CharacterDetails.VieraEar01ALeft_Z, CharacterDetails.VieraEar01ALeft_W);
+            RotateHelper(CharacterDetails.VieraEar01ALeft_X, CharacterDetails.VieraEar01ALeft_Y, CharacterDetails.VieraEar01ALeft_Z, CharacterDetails.VieraEar01ALeft_W, bone_viera_ear_l[0]);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar01ALeft_Slider);
         }
@@ -15205,7 +15228,7 @@ namespace ConceptMatrix.Views
         private void VieraEar01ALeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
 
-            RotateHelper(CharacterDetails.VieraEar01ALeft_X, CharacterDetails.VieraEar01ALeft_Y, CharacterDetails.VieraEar01ALeft_Z, CharacterDetails.VieraEar01ALeft_W);
+            RotateHelper(CharacterDetails.VieraEar01ALeft_X, CharacterDetails.VieraEar01ALeft_Y, CharacterDetails.VieraEar01ALeft_Z, CharacterDetails.VieraEar01ALeft_W, bone_viera_ear_l[0]);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar01ALeft_UpDown);
         }
@@ -15213,7 +15236,7 @@ namespace ConceptMatrix.Views
         private void VieraEar02ALeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
-            RotateHelper(CharacterDetails.VieraEar02ALeft_X, CharacterDetails.VieraEar02ALeft_Y, CharacterDetails.VieraEar02ALeft_Z, CharacterDetails.VieraEar02ALeft_W);
+            RotateHelper(CharacterDetails.VieraEar02ALeft_X, CharacterDetails.VieraEar02ALeft_Y, CharacterDetails.VieraEar02ALeft_Z, CharacterDetails.VieraEar02ALeft_W, bone_viera_ear_l[2]);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar02ALeft_Slider);
         }
@@ -15221,7 +15244,7 @@ namespace ConceptMatrix.Views
         private void VieraEar02ALeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
 
-            RotateHelper(CharacterDetails.VieraEar02ALeft_X, CharacterDetails.VieraEar02ALeft_Y, CharacterDetails.VieraEar02ALeft_Z, CharacterDetails.VieraEar02ALeft_W);
+            RotateHelper(CharacterDetails.VieraEar02ALeft_X, CharacterDetails.VieraEar02ALeft_Y, CharacterDetails.VieraEar02ALeft_Z, CharacterDetails.VieraEar02ALeft_W, bone_viera_ear_l[2]);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar02ALeft_UpDown);
         }
@@ -15229,7 +15252,7 @@ namespace ConceptMatrix.Views
         private void VieraEar03ALeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
-            RotateHelper(CharacterDetails.VieraEar03ALeft_X, CharacterDetails.VieraEar03ALeft_Y, CharacterDetails.VieraEar03ALeft_Z, CharacterDetails.VieraEar03ALeft_W);
+            RotateHelper(CharacterDetails.VieraEar03ALeft_X, CharacterDetails.VieraEar03ALeft_Y, CharacterDetails.VieraEar03ALeft_Z, CharacterDetails.VieraEar03ALeft_W, bone_viera_ear_l[3]);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar03ALeft_Slider);
         }
@@ -15237,7 +15260,7 @@ namespace ConceptMatrix.Views
         private void VieraEar03ALeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
 
-            RotateHelper(CharacterDetails.VieraEar03ALeft_X, CharacterDetails.VieraEar03ALeft_Y, CharacterDetails.VieraEar03ALeft_Z, CharacterDetails.VieraEar03ALeft_W);
+            RotateHelper(CharacterDetails.VieraEar03ALeft_X, CharacterDetails.VieraEar03ALeft_Y, CharacterDetails.VieraEar03ALeft_Z, CharacterDetails.VieraEar03ALeft_W, bone_viera_ear_l[3]);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar03ALeft_UpDown);
         }
@@ -15245,7 +15268,7 @@ namespace ConceptMatrix.Views
         private void VieraEar04ALeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
-            RotateHelper(CharacterDetails.VieraEar04ALeft_X, CharacterDetails.VieraEar04ALeft_Y, CharacterDetails.VieraEar04ALeft_Z, CharacterDetails.VieraEar04ALeft_W);
+            RotateHelper(CharacterDetails.VieraEar04ALeft_X, CharacterDetails.VieraEar04ALeft_Y, CharacterDetails.VieraEar04ALeft_Z, CharacterDetails.VieraEar04ALeft_W, bone_viera_ear_l[4]);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar04ALeft_Slider);
         }
@@ -15253,7 +15276,7 @@ namespace ConceptMatrix.Views
         private void VieraEar04ALeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
 
-            RotateHelper(CharacterDetails.VieraEar04ALeft_X, CharacterDetails.VieraEar04ALeft_Y, CharacterDetails.VieraEar04ALeft_Z, CharacterDetails.VieraEar04ALeft_W);
+            RotateHelper(CharacterDetails.VieraEar04ALeft_X, CharacterDetails.VieraEar04ALeft_Y, CharacterDetails.VieraEar04ALeft_Z, CharacterDetails.VieraEar04ALeft_W, bone_viera_ear_l[4]);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar04ALeft_UpDown);
         }
@@ -15290,7 +15313,7 @@ namespace ConceptMatrix.Views
         private void VieraEar01ARight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
-            RotateHelper(CharacterDetails.VieraEar01ARight_X, CharacterDetails.VieraEar01ARight_Y, CharacterDetails.VieraEar01ARight_Z, CharacterDetails.VieraEar01ARight_W);
+            RotateHelper(CharacterDetails.VieraEar01ARight_X, CharacterDetails.VieraEar01ARight_Y, CharacterDetails.VieraEar01ARight_Z, CharacterDetails.VieraEar01ARight_W, bone_viera_ear_r[0]);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar01ARight_Slider);
         }
@@ -15298,7 +15321,7 @@ namespace ConceptMatrix.Views
         private void VieraEar01ARight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
 
-            RotateHelper(CharacterDetails.VieraEar01ARight_X, CharacterDetails.VieraEar01ARight_Y, CharacterDetails.VieraEar01ARight_Z, CharacterDetails.VieraEar01ARight_W);
+            RotateHelper(CharacterDetails.VieraEar01ARight_X, CharacterDetails.VieraEar01ARight_Y, CharacterDetails.VieraEar01ARight_Z, CharacterDetails.VieraEar01ARight_W, bone_viera_ear_r[0]);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar01ARight_UpDown);
         }
@@ -15306,7 +15329,7 @@ namespace ConceptMatrix.Views
         private void VieraEar02ARight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
-            RotateHelper(CharacterDetails.VieraEar02ARight_X, CharacterDetails.VieraEar02ARight_Y, CharacterDetails.VieraEar02ARight_Z, CharacterDetails.VieraEar02ARight_W);
+            RotateHelper(CharacterDetails.VieraEar02ARight_X, CharacterDetails.VieraEar02ARight_Y, CharacterDetails.VieraEar02ARight_Z, CharacterDetails.VieraEar02ARight_W, bone_viera_ear_r[2]);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar02ARight_Slider);
         }
@@ -15314,7 +15337,7 @@ namespace ConceptMatrix.Views
         private void VieraEar02ARight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
 
-            RotateHelper(CharacterDetails.VieraEar02ARight_X, CharacterDetails.VieraEar02ARight_Y, CharacterDetails.VieraEar02ARight_Z, CharacterDetails.VieraEar02ARight_W);
+            RotateHelper(CharacterDetails.VieraEar02ARight_X, CharacterDetails.VieraEar02ARight_Y, CharacterDetails.VieraEar02ARight_Z, CharacterDetails.VieraEar02ARight_W, bone_viera_ear_r[2]);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar02ARight_UpDown);
         }
@@ -15322,7 +15345,7 @@ namespace ConceptMatrix.Views
         private void VieraEar03ARight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
-            RotateHelper(CharacterDetails.VieraEar03ARight_X, CharacterDetails.VieraEar03ARight_Y, CharacterDetails.VieraEar03ARight_Z, CharacterDetails.VieraEar03ARight_W);
+            RotateHelper(CharacterDetails.VieraEar03ARight_X, CharacterDetails.VieraEar03ARight_Y, CharacterDetails.VieraEar03ARight_Z, CharacterDetails.VieraEar03ARight_W, bone_viera_ear_r[3]);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar03ARight_Slider);
         }
@@ -15330,7 +15353,7 @@ namespace ConceptMatrix.Views
         private void VieraEar03ARight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
 
-            RotateHelper(CharacterDetails.VieraEar03ARight_X, CharacterDetails.VieraEar03ARight_Y, CharacterDetails.VieraEar03ARight_Z, CharacterDetails.VieraEar03ARight_W);
+            RotateHelper(CharacterDetails.VieraEar03ARight_X, CharacterDetails.VieraEar03ARight_Y, CharacterDetails.VieraEar03ARight_Z, CharacterDetails.VieraEar03ARight_W, bone_viera_ear_r[3]);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar03ARight_UpDown);
         }
@@ -15338,7 +15361,7 @@ namespace ConceptMatrix.Views
         private void VieraEar04ARight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
-            RotateHelper(CharacterDetails.VieraEar04ARight_X, CharacterDetails.VieraEar04ARight_Y, CharacterDetails.VieraEar04ARight_Z, CharacterDetails.VieraEar04ARight_W);
+            RotateHelper(CharacterDetails.VieraEar04ARight_X, CharacterDetails.VieraEar04ARight_Y, CharacterDetails.VieraEar04ARight_Z, CharacterDetails.VieraEar04ARight_W, bone_viera_ear_r[4]);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar04ARight_Slider);
         }
@@ -15346,7 +15369,7 @@ namespace ConceptMatrix.Views
         private void VieraEar04ARight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
 
-            RotateHelper(CharacterDetails.VieraEar04ARight_X, CharacterDetails.VieraEar04ARight_Y, CharacterDetails.VieraEar04ARight_Z, CharacterDetails.VieraEar04ARight_W);
+            RotateHelper(CharacterDetails.VieraEar04ARight_X, CharacterDetails.VieraEar04ARight_Y, CharacterDetails.VieraEar04ARight_Z, CharacterDetails.VieraEar04ARight_W, bone_viera_ear_r[4]);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(VieraEar04ARight_UpDown);
         }
@@ -16825,6 +16848,7 @@ namespace ConceptMatrix.Views
             CharacterDetails.BoneEditMode = true;
             ReadTetriaryFromRunTime = false;
             EnableAll();
+            Bone_Flag_Manager();
 
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress, "bytes", "0x90 0x90 0x90 0x90 0x90 0x90");
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress2, "bytes", "0x90 0x90 0x90 0x90 0x90 0x90");
@@ -20449,6 +20473,7 @@ namespace ConceptMatrix.Views
         private void EnableTertiary(object sender, RoutedEventArgs e)
         {
             DisableTertiary();
+            Bone_Flag_Manager();
             EnableTertiaryFlags();
         }
         private void DisableTertiary()
@@ -20508,7 +20533,12 @@ namespace ConceptMatrix.Views
             {
                 bone_face.Remove(bone_exhair[i]);
             }
-        }
+            for (int i = 0; i < bone_viera_ear_l.Length; i++)
+            {
+                bone_face_viera.Remove(bone_viera_ear_l[i]);
+                bone_face_viera.Remove(bone_viera_ear_r[i]);
+            }
+    }
 
         public class BoneSaves
         {
