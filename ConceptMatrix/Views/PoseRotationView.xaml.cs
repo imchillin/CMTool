@@ -68,7 +68,10 @@ namespace ConceptMatrix.Views
                 // more intuitive to adjust the roll, pitch, and yaw relative to the original
                 // rotation.
                 var rotationDelta = new Quaternion(axis, angle);
+                rotationDelta.Normalize();
                 var q = (MainViewModel.ViewTime.AltRotate) ? RotationQuaternion.Quaternion * rotationDelta : rotationDelta * RotationQuaternion.Quaternion;
+                q.Normalize();
+
                 RotationQuaternion.SetCurrentValue(QuaternionRotation3D.QuaternionProperty, q);
                 dragState.lastPoint = curPoint;
             }

@@ -11,6 +11,7 @@ using System.IO;
 using Newtonsoft.Json;
 using System.Windows.Controls.Primitives;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ConceptMatrix.Views
 {
@@ -505,6 +506,8 @@ namespace ConceptMatrix.Views
         {
             private readonly string BonesOffset;
             private List<BoneNode> children;
+            private bool prime_rot;
+            Quaternion q_rot;
             public BoneNode(string offset)
             {
                 BonesOffset = offset;
@@ -532,6 +535,15 @@ namespace ConceptMatrix.Views
             public IEnumerator<BoneNode> GetEnumerator()
             {
                 return children.GetEnumerator();
+            }
+            public void PrimeRot(Quaternion q)
+            {
+                if (!double.IsNaN(q.X))
+                {
+                    prime_rot = true;
+                    q_rot = q;
+                }
+                prime_rot = true;
             }
         }
 
@@ -10632,12 +10644,30 @@ namespace ConceptMatrix.Views
                 ChildBone_Propagator(boneNode, q1_inv, q1_new);
             }
         }
+        private void QuatCheck(Quaternion q, string name)
+        {
+            if (q.X == 0 && q.Y == 0 && q.Z == 0 && q.W == 0)
+            {
+                Console.WriteLine(name);
+                Console.WriteLine("{0:F}, {1:F}, {2:F}, {3:F}", q.X, q.Y, q.Z, q.W);
+            }
+        }
         private void Rotate_UnitBone(string boneOffset, Quaternion q1_inv, Quaternion q1_new)
         {
             byte[] bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, boneOffset), 16);
             if (bytearray == null) return;
+            int ctr = 0;
+            while (bytearray.All(singleByte => singleByte == 0) && ctr < 100)
+            {
+                bytearray = m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, boneOffset), 16);
+                ctr++;
+            }
             Quaternion q2 = new Quaternion(BitConverter.ToSingle(bytearray, 0), BitConverter.ToSingle(bytearray, 4), BitConverter.ToSingle(bytearray, 8), BitConverter.ToSingle(bytearray, 12));
-            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, boneOffset), GetBytes(QuatMult(QuatMult(q2, q1_inv), q1_new)));
+            Quaternion q2_new = QuatMult(QuatMult(q2, q1_inv), q1_new);
+            QuatCheck(q2, "q2");
+            QuatCheck(q1_inv, "q1_inv");
+            QuatCheck(q1_new, "q1_new");
+            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, boneOffset), GetBytes(q2_new));
 
         }
         private void ChildBone_Propagator(BoneNode boneParent, Quaternion q1_inv, Quaternion q1_new)
@@ -10676,29 +10706,29 @@ namespace ConceptMatrix.Views
                 bone_face_viera.Add(bone_viera_ear_l[CharacterDetails.TailType.value]);
                 bone_face_viera.Add(bone_viera_ear_r[CharacterDetails.TailType.value]);
             }
-            #region Exhair
+#region Exhair
             int exhair_value = m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value));
             for (int i = 0; i < exhair_value - 1; i++)
             {
                 bone_face.Add(bone_exhair[i]);
                 exhair_buttons[i].IsEnabled = true;
             }
-            #endregion
-            #region ExMet
+#endregion
+#region ExMet
             int exmet_value = m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value));
             for (int i = 0; i < exmet_value - 1; i++)
             {
                 bone_face.Add(bone_exmet[i]);
                 exmet_buttons[i].IsEnabled = true;
             }
-            #endregion
-            #region ExTop
+#endregion
+#region ExTop
             int extop_value = m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value));
             for (int i = 0; i < extop_value - 1; i++)
             {
                 extop_buttons[i].IsEnabled = true;
             }
-            #endregion
+#endregion
         }
         public void Bone_Flag_Manager()
         {
@@ -10754,7 +10784,7 @@ namespace ConceptMatrix.Views
             y.value = (float)quat.Y;
             z.value = (float)quat.Z;
             w.value = (float)quat.W;
-            #region Child Bones
+#region Child Bones
             if (ParentingToggle.IsChecked == true && bnode != null)
             {
                 Bone_Flag_Manager();
@@ -10764,9 +10794,9 @@ namespace ConceptMatrix.Views
                 Quaternion q1_new = newrot.ToQuaternion();
                 Rotate_ChildBone(bnode, q1_inv, q1_new);
             }
-            #endregion
+#endregion
         }
-        #region Root
+#region Root
         private void Root_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             RotateHelper(CharacterDetails.Root_X, CharacterDetails.Root_Y, CharacterDetails.Root_Z, CharacterDetails.Root_W);
@@ -10795,8 +10825,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(Root_UpDown);
             CharacterDetails.Root_Rotate = false;
         }
-        #endregion
-        #region Abdomen
+#endregion
+#region Abdomen
         private void Abdomen_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             RotateHelper(CharacterDetails.Abdomen_X, CharacterDetails.Abdomen_Y, CharacterDetails.Abdomen_Z, CharacterDetails.Abdomen_W);
@@ -10825,8 +10855,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(Abdomen_UpDown);
             CharacterDetails.Abdomen_Rotate = false;
         }
-        #endregion
-        #region Throw
+#endregion
+#region Throw
         private void Throw_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             RotateHelper(CharacterDetails.Throw_X, CharacterDetails.Throw_Y, CharacterDetails.Throw_Z, CharacterDetails.Throw_W);
@@ -10855,8 +10885,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(Throw_UpDown);
             CharacterDetails.Throw_Rotate = false;
         }
-        #endregion
-        #region Waist
+#endregion
+#region Waist
         private void Waist_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             RotateHelper(CharacterDetails.Waist_X, CharacterDetails.Waist_Y, CharacterDetails.Waist_Z, CharacterDetails.Waist_W, bone_waist);
@@ -10885,8 +10915,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(Waist_UpDown);
             CharacterDetails.Waist_Rotate = false;
         }
-        #endregion
-        #region SpineA
+#endregion
+#region SpineA
         private void SpineA_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             RotateHelper(CharacterDetails.SpineA_X, CharacterDetails.SpineA_Y, CharacterDetails.SpineA_Z, CharacterDetails.SpineA_W, bone_lumbar);
@@ -10914,8 +10944,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(SpineA_UpDown);
             CharacterDetails.SpineA_Rotate = false;
         }
-        #endregion
-        #region LegLeft
+#endregion
+#region LegLeft
         private void LegLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             RotateHelper(CharacterDetails.LegLeft_X, CharacterDetails.LegLeft_Y, CharacterDetails.LegLeft_Z, CharacterDetails.LegLeft_W, bone_leg_l);
@@ -10944,8 +10974,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(LegLeft_UpDown);
             CharacterDetails.LegLeft_Rotate = false;
         }
-        #endregion
-        #region LegRight
+#endregion
+#region LegRight
         private void LegRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             RotateHelper(CharacterDetails.LegRight_X, CharacterDetails.LegRight_Y, CharacterDetails.LegRight_Z, CharacterDetails.LegRight_W, bone_leg_r);
@@ -10974,8 +11004,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(LegRight_UpDown);
             CharacterDetails.LegRight_Rotate = false;
         }
-        #endregion
-        #region HolsterLeft
+#endregion
+#region HolsterLeft
         private void HolsterLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             RotateHelper(CharacterDetails.HolsterLeft_X, CharacterDetails.HolsterLeft_Y, CharacterDetails.HolsterLeft_Z, CharacterDetails.HolsterLeft_W);
@@ -11004,8 +11034,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(HolsterLeft_UpDown);
             CharacterDetails.HolsterLeft_Rotate = false;
         }
-        #endregion
-        #region HolsterRight
+#endregion
+#region HolsterRight
         private void HolsterRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             RotateHelper(CharacterDetails.HolsterRight_X, CharacterDetails.HolsterRight_Y, CharacterDetails.HolsterRight_Z, CharacterDetails.HolsterRight_W);
@@ -11034,8 +11064,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(HolsterRight_UpDown);
             CharacterDetails.HolsterRight_Rotate = false;
         }
-        #endregion
-        #region SheatheLeft
+#endregion
+#region SheatheLeft
         private void SheatheLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             RotateHelper(CharacterDetails.SheatheLeft_X, CharacterDetails.SheatheLeft_Y, CharacterDetails.SheatheLeft_Z, CharacterDetails.SheatheLeft_W);
@@ -11064,8 +11094,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(SheatheLeft_UpDown);
             CharacterDetails.SheatheLeft_Rotate = false;
         }
-        #endregion
-        #region SheatheRight
+#endregion
+#region SheatheRight
         private void SheatheRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             RotateHelper(CharacterDetails.SheatheRight_X, CharacterDetails.SheatheRight_Y, CharacterDetails.SheatheRight_Z, CharacterDetails.SheatheRight_W);
@@ -11094,8 +11124,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(SheatheRight_UpDown);
             CharacterDetails.SheatheRight_Rotate = false;
         }
-        #endregion
-        #region SpineB
+#endregion
+#region SpineB
         private void SpineB_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             RotateHelper(CharacterDetails.SpineB_X, CharacterDetails.SpineB_Y, CharacterDetails.SpineB_Z, CharacterDetails.SpineB_W, bone_thora);
@@ -11124,8 +11154,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(SpineB_UpDown);
             CharacterDetails.SpineB_Rotate = false;
         }
-        #endregion
-        #region ClothBackALeft
+#endregion
+#region ClothBackALeft
         private void ClothBackALeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -11156,8 +11186,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ClothBackALeft_UpDown);
             CharacterDetails.ClothBackALeft_Rotate = false;
         }
-        #endregion
-        #region ClothBackARight
+#endregion
+#region ClothBackARight
         private void ClothBackARight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -11188,8 +11218,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ClothBackARight_UpDown);
             CharacterDetails.ClothBackARight_Rotate = false;
         }
-        #endregion
-        #region ClothFrontALeft
+#endregion
+#region ClothFrontALeft
         private void ClothFrontALeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -11220,8 +11250,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ClothFrontALeft_UpDown);
             CharacterDetails.ClothFrontALeft_Rotate = false;
         }
-        #endregion
-        #region ClothFrontARight
+#endregion
+#region ClothFrontARight
         private void ClothFrontARight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -11252,8 +11282,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ClothFrontARight_UpDown);
             CharacterDetails.ClothFrontARight_Rotate = false;
         }
-        #endregion
-        #region ClothSideALeft
+#endregion
+#region ClothSideALeft
         private void ClothSideALeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -11284,8 +11314,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ClothSideALeft_UpDown);
             CharacterDetails.ClothSideALeft_Rotate = false;
         }
-        #endregion
-        #region ClothSideARight
+#endregion
+#region ClothSideARight
         private void ClothSideARight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -11316,8 +11346,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ClothSideARight_UpDown);
             CharacterDetails.ClothSideARight_Rotate = false;
         }
-        #endregion
-        #region KneeLeft
+#endregion
+#region KneeLeft
         private void KneeLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             RotateHelper(CharacterDetails.KneeLeft_X, CharacterDetails.KneeLeft_Y, CharacterDetails.KneeLeft_Z, CharacterDetails.KneeLeft_W, bone_knee_l);
@@ -11346,8 +11376,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(KneeLeft_UpDown);
             CharacterDetails.KneeLeft_Rotate = false;
         }
-        #endregion
-        #region KneeRight
+#endregion
+#region KneeRight
         private void KneeRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             RotateHelper(CharacterDetails.KneeRight_X, CharacterDetails.KneeRight_Y, CharacterDetails.KneeRight_Z, CharacterDetails.KneeRight_W, bone_knee_r);
@@ -11376,8 +11406,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(KneeRight_UpDown);
             CharacterDetails.KneeRight_Rotate = false;
         }
-        #endregion
-        #region BreastLeft
+#endregion
+#region BreastLeft
         private void BreastLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             RotateHelper(CharacterDetails.BreastLeft_X, CharacterDetails.BreastLeft_Y, CharacterDetails.BreastLeft_Z, CharacterDetails.BreastLeft_W);
@@ -11407,8 +11437,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(BreastLeft_UpDown);
             CharacterDetails.BreastLeft_Rotate = false;
         }
-        #endregion
-        #region BreastRight
+#endregion
+#region BreastRight
         private void BreastRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             RotateHelper(CharacterDetails.BreastRight_X, CharacterDetails.BreastRight_Y, CharacterDetails.BreastRight_Z, CharacterDetails.BreastRight_W);
@@ -11437,8 +11467,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(BreastRight_UpDown);
             CharacterDetails.BreastRight_Rotate = false;
         }
-        #endregion
-        #region SpineC
+#endregion
+#region SpineC
         private void SpineC_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -11470,8 +11500,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(SpineC_UpDown);
             CharacterDetails.SpineC_Rotate = false;
         }
-        #endregion
-        #region ClothBackBLeft
+#endregion
+#region ClothBackBLeft
         private void ClothBackBLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -11503,8 +11533,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ClothBackBLeft_UpDown);
             CharacterDetails.ClothBackBLeft_Rotate = false;
         }
-        #endregion
-        #region ClothBackBRight
+#endregion
+#region ClothBackBRight
         private void ClothBackBRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -11535,8 +11565,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ClothBackBRight_UpDown);
             CharacterDetails.ClothBackBRight_Rotate = false;
         }
-        #endregion
-        #region ClothFrontBLeft
+#endregion
+#region ClothFrontBLeft
         private void ClothFrontBLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -11567,8 +11597,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ClothFrontBLeft_UpDown);
             CharacterDetails.ClothFrontBLeft_Rotate = false;
         }
-        #endregion
-        #region ClothFrontBRight
+#endregion
+#region ClothFrontBRight
         private void ClothFrontBRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -11599,8 +11629,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ClothFrontBRight_UpDown);
             CharacterDetails.ClothFrontBRight_Rotate = false;
         }
-        #endregion
-        #region ClothSideBLeft
+#endregion
+#region ClothSideBLeft
         private void ClothSideBLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -11631,8 +11661,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ClothSideBLeft_UpDown);
             CharacterDetails.ClothSideBLeft_Rotate = false;
         }
-        #endregion
-        #region ClothSideBRight
+#endregion
+#region ClothSideBRight
         private void ClothSideBRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -11663,8 +11693,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ClothSideBRight_UpDown);
             CharacterDetails.ClothSideBRight_Rotate = false;
         }
-        #endregion
-        #region CalfLeft
+#endregion
+#region CalfLeft
         private void CalfLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -11695,8 +11725,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(CalfLeft_UpDown);
             CharacterDetails.CalfLeft_Rotate = false;
         }
-        #endregion
-        #region CalfRight
+#endregion
+#region CalfRight
         private void CalfRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -11727,8 +11757,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(CalfRight_UpDown);
             CharacterDetails.CalfRight_Rotate = false;
         }
-        #endregion
-        #region ScabbardLeft
+#endregion
+#region ScabbardLeft
         private void ScabbardLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -11759,8 +11789,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ScabbardLeft_UpDown);
             CharacterDetails.ScabbardLeft_Rotate = false;
         }
-        #endregion
-        #region ScabbardRight
+#endregion
+#region ScabbardRight
         private void ScabbardRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -11791,8 +11821,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ScabbardRight_UpDown);
             CharacterDetails.ScabbardRight_Rotate = false;
         }
-        #endregion
-        #region Neck
+#endregion
+#region Neck
         private void Neck_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -11823,8 +11853,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(Neck_UpDown);
             CharacterDetails.Neck_Rotate = false;
         }
-        #endregion
-        #region ClavicleLeft
+#endregion
+#region ClavicleLeft
         private void ClavicleLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -11855,8 +11885,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ClavicleLeft_UpDown);
             CharacterDetails.ClavicleLeft_Rotate = false;
         }
-        #endregion
-        #region ClavicleRight
+#endregion
+#region ClavicleRight
         private void ClavicleRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -11887,8 +11917,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ClavicleRight_UpDown);
             CharacterDetails.ClavicleRight_Rotate = false;
         }
-        #endregion
-        #region ClothBackCLeft
+#endregion
+#region ClothBackCLeft
         private void ClothBackCLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -11919,8 +11949,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ClothBackCLeft_UpDown);
             CharacterDetails.ClothBackCLeft_Rotate = false;
         }
-        #endregion
-        #region ClothBackCRight
+#endregion
+#region ClothBackCRight
         private void ClothBackCRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -11951,8 +11981,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ClothBackCRight_UpDown);
             CharacterDetails.ClothBackCRight_Rotate = false;
         }
-        #endregion
-        #region ClothFrontCLeft
+#endregion
+#region ClothFrontCLeft
         private void ClothFrontCLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -11983,8 +12013,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ClothFrontCLeft_UpDown);
             CharacterDetails.ClothFrontCLeft_Rotate = false;
         }
-        #endregion
-        #region ClothFrontCRight
+#endregion
+#region ClothFrontCRight
         private void ClothFrontCRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -12015,8 +12045,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ClothFrontCRight_UpDown);
             CharacterDetails.ClothFrontCRight_Rotate = false;
         }
-        #endregion
-        #region ClothSideCLeft
+#endregion
+#region ClothSideCLeft
         private void ClothSideCLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -12047,8 +12077,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ClothSideCLeft_UpDown);
             CharacterDetails.ClothSideCLeft_Rotate = false;
         }
-        #endregion
-        #region ClothSideCRight
+#endregion
+#region ClothSideCRight
         private void ClothSideCRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -12079,8 +12109,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ClothSideCRight_UpDown);
             CharacterDetails.ClothSideCRight_Rotate = false;
         }
-        #endregion
-        #region PoleynLeft
+#endregion
+#region PoleynLeft
         private void PoleynLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -12111,8 +12141,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(PoleynLeft_UpDown);
             CharacterDetails.PoleynLeft_Rotate = false;
         }
-        #endregion
-        #region PoleynRight
+#endregion
+#region PoleynRight
         private void PoleynRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -12143,8 +12173,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(PoleynRight_UpDown);
             CharacterDetails.PoleynRight_Rotate = false;
         }
-        #endregion
-        #region FootLeft
+#endregion
+#region FootLeft
         private void FootLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -12175,13 +12205,13 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(FootLeft_UpDown);
             CharacterDetails.FootLeft_Rotate = false;
         }
-        #endregion
-        #region FootRight
+#endregion
+#region FootRight
         private void FootRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
             RotateHelper(CharacterDetails.FootRight_X, CharacterDetails.FootRight_Y, CharacterDetails.FootRight_Z, CharacterDetails.FootRight_W, bone_foot_r);
-            #region Child Bones
+#region Child Bones
             if (ParentingToggle.IsChecked == true)
             {
                 oldrot = newrot;
@@ -12190,7 +12220,7 @@ namespace ConceptMatrix.Views
                 Quaternion q1_new = newrot.ToQuaternion();
                 Rotate_ChildBone(bone_foot_r, q1_inv, q1_new);
             }
-            #endregion
+#endregion
             // Remove listeners for value changed.
             RemoveRoutedEventListener(FootRight_Slider);
         }
@@ -12217,8 +12247,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(FootRight_UpDown);
             CharacterDetails.FootRight_Rotate = false;
         }
-        #endregion
-        #region Head
+#endregion
+#region Head
         private void Head_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -12249,8 +12279,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(Head_UpDown);
             CharacterDetails.Head_Rotate = false;
         }
-        #endregion
-        #region ArmLeft
+#endregion
+#region ArmLeft
         private void ArmLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -12281,8 +12311,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ArmLeft_UpDown);
             CharacterDetails.ArmLeft_Rotate = false;
         }
-        #endregion
-        #region ArmRight
+#endregion
+#region ArmRight
         private void ArmRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -12313,8 +12343,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ArmRight_UpDown);
             CharacterDetails.ArmRight_Rotate = false;
         }
-        #endregion
-        #region PauldronLeft
+#endregion
+#region PauldronLeft
         private void PauldronLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -12345,8 +12375,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(PauldronLeft_UpDown);
             CharacterDetails.PauldronLeft_Rotate = false;
         }
-        #endregion
-        #region PauldronRight
+#endregion
+#region PauldronRight
         private void PauldronRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -12377,8 +12407,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(PauldronRight_UpDown);
             CharacterDetails.PauldronRight_Rotate = false;
         }
-        #endregion
-        #region Unknown00
+#endregion
+#region Unknown00
         private void Unknown00_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -12409,8 +12439,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(Unknown00_UpDown);
             CharacterDetails.Unknown00_Rotate = false;
         }
-        #endregion
-        #region ToesLeft
+#endregion
+#region ToesLeft
         private void ToesLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -12441,8 +12471,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ToesLeft_UpDown);
             CharacterDetails.ToesLeft_Rotate = false;
         }
-        #endregion
-        #region ToesRight
+#endregion
+#region ToesRight
         private void ToesRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -12473,8 +12503,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ToesRight_UpDown);
             CharacterDetails.ToesRight_Rotate = false;
         }
-        #endregion
-        #region HairA
+#endregion
+#region HairA
         private void HairA_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -12505,8 +12535,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(HairA_UpDown);
             CharacterDetails.HairA_Rotate = false;
         }
-        #endregion
-        #region HairFrontLeft
+#endregion
+#region HairFrontLeft
         private void HairFrontLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -12537,8 +12567,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(HairFrontLeft_UpDown);
             CharacterDetails.HairFrontLeft_Rotate = false;
         }
-        #endregion
-        #region HairFrontRight
+#endregion
+#region HairFrontRight
         private void HairFrontRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -12569,8 +12599,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(HairFrontRight_UpDown);
             CharacterDetails.HairFrontRight_Rotate = false;
         }
-        #endregion
-        #region EarLeft
+#endregion
+#region EarLeft
         private void EarLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -12601,8 +12631,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(EarLeft_UpDown);
             CharacterDetails.EarLeft_Rotate = false;
         }
-        #endregion
-        #region EarRight
+#endregion
+#region EarRight
         private void EarRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -12633,8 +12663,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(EarRight_UpDown);
             CharacterDetails.EarRight_Rotate = false;
         }
-        #endregion
-        #region ForearmLeft
+#endregion
+#region ForearmLeft
         private void ForearmLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -12665,8 +12695,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ForearmLeft_UpDown);
             CharacterDetails.ForearmLeft_Rotate = false;
         }
-        #endregion
-        #region ForearmRight
+#endregion
+#region ForearmRight
         private void ForearmRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -12697,8 +12727,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ForearmRight_UpDown);
             CharacterDetails.ForearmRight_Rotate = false;
         }
-        #endregion
-        #region ShoulderLeft
+#endregion
+#region ShoulderLeft
         private void ShoulderLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -12731,8 +12761,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ShoulderLeft_UpDown);
             CharacterDetails.ShoulderLeft_Rotate = false;
         }
-        #endregion
-        #region ShoulderRight
+#endregion
+#region ShoulderRight
         private void ShoulderRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -12763,8 +12793,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ShoulderRight_UpDown);
             CharacterDetails.ShoulderRight_Rotate = false;
         }
-        #endregion
-        #region HairB
+#endregion
+#region HairB
         private void HairB_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -12795,8 +12825,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(HairB_UpDown);
             CharacterDetails.HairB_Rotate = false;
         }
-        #endregion
-        #region HandLeft
+#endregion
+#region HandLeft
         private void HandLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -12827,8 +12857,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(HandLeft_UpDown);
             CharacterDetails.HandLeft_Rotate = false;
         }
-        #endregion
-        #region HandRight
+#endregion
+#region HandRight
         private void HandRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -12859,8 +12889,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(HandRight_UpDown);
             CharacterDetails.HandRight_Rotate = false;
         }
-        #endregion
-        #region ShieldLeft
+#endregion
+#region ShieldLeft
         private void ShieldLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -12891,8 +12921,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ShieldLeft_UpDown);
             CharacterDetails.ShieldLeft_Rotate = false;
         }
-        #endregion
-        #region ShieldRight
+#endregion
+#region ShieldRight
         private void ShieldRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -12923,8 +12953,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ShieldRight_UpDown);
             CharacterDetails.ShieldRight_Rotate = false;
         }
-        #endregion
-        #region EarringALeft
+#endregion
+#region EarringALeft
         private void EarringALeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -12955,8 +12985,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(EarringALeft_UpDown);
             CharacterDetails.EarringALeft_Rotate = false;
         }
-        #endregion
-        #region EarringARight
+#endregion
+#region EarringARight
         private void EarringARight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -12987,8 +13017,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(EarringARight_UpDown);
             CharacterDetails.EarringARight_Rotate = false;
         }
-        #endregion
-        #region ElbowLeft
+#endregion
+#region ElbowLeft
         private void ElbowLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13019,8 +13049,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ElbowLeft_UpDown);
             CharacterDetails.ElbowLeft_Rotate = false;
         }
-        #endregion
-        #region ElbowRight
+#endregion
+#region ElbowRight
         private void ElbowRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13051,8 +13081,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ElbowRight_UpDown);
             CharacterDetails.ElbowRight_Rotate = false;
         }
-        #endregion
-        #region CouterLeft
+#endregion
+#region CouterLeft
         private void CouterLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13083,8 +13113,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(CouterLeft_UpDown);
             CharacterDetails.CouterLeft_Rotate = false;
         }
-        #endregion
-        #region CouterRight
+#endregion
+#region CouterRight
         private void CouterRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13115,8 +13145,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(CouterRight_UpDown);
             CharacterDetails.CouterRight_Rotate = false;
         }
-        #endregion
-        #region WristLeft
+#endregion
+#region WristLeft
         private void WristLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13147,8 +13177,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(WristLeft_UpDown);
             CharacterDetails.WristLeft_Rotate = false;
         }
-        #endregion
-        #region WristRight
+#endregion
+#region WristRight
         private void WristRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13179,8 +13209,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(WristRight_UpDown);
             CharacterDetails.WristRight_Rotate = false;
         }
-        #endregion
-        #region IndexALeft
+#endregion
+#region IndexALeft
         private void IndexALeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13211,8 +13241,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(IndexALeft_UpDown);
             CharacterDetails.IndexALeft_Rotate = false;
         }
-        #endregion
-        #region IndexARight
+#endregion
+#region IndexARight
         private void IndexARight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13243,8 +13273,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(IndexARight_UpDown);
             CharacterDetails.IndexARight_Rotate = false;
         }
-        #endregion
-        #region PinkyALeft
+#endregion
+#region PinkyALeft
         private void PinkyALeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13275,8 +13305,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(PinkyALeft_UpDown);
             CharacterDetails.PinkyALeft_Rotate = false;
         }
-        #endregion
-        #region PinkyARight
+#endregion
+#region PinkyARight
         private void PinkyARight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13307,8 +13337,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(PinkyARight_UpDown);
             CharacterDetails.PinkyARight_Rotate = false;
         }
-        #endregion
-        #region RingALeft
+#endregion
+#region RingALeft
         private void RingALeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13339,8 +13369,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(RingALeft_UpDown);
             CharacterDetails.RingALeft_Rotate = false;
         }
-        #endregion
-        #region RingARight
+#endregion
+#region RingARight
         private void RingARight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13371,8 +13401,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(RingARight_UpDown);
             CharacterDetails.RingARight_Rotate = false;
         }
-        #endregion
-        #region MiddleALeft
+#endregion
+#region MiddleALeft
         private void MiddleALeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13403,8 +13433,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(MiddleALeft_UpDown);
             CharacterDetails.MiddleALeft_Rotate = false;
         }
-        #endregion
-        #region MiddleARight
+#endregion
+#region MiddleARight
         private void MiddleARight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13435,8 +13465,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(MiddleARight_UpDown);
             CharacterDetails.MiddleARight_Rotate = false;
         }
-        #endregion
-        #region ThumbALeft
+#endregion
+#region ThumbALeft
         private void ThumbALeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13467,8 +13497,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ThumbALeft_UpDown);
             CharacterDetails.ThumbALeft_Rotate = false;
         }
-        #endregion
-        #region ThumbARight
+#endregion
+#region ThumbARight
         private void ThumbARight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13499,8 +13529,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ThumbARight_UpDown);
             CharacterDetails.ThumbARight_Rotate = false;
         }
-        #endregion
-        #region WeaponLeft
+#endregion
+#region WeaponLeft
         private void WeaponLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13531,8 +13561,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(WeaponLeft_UpDown);
             CharacterDetails.WeaponLeft_Rotate = false;
         }
-        #endregion
-        #region WeaponRight
+#endregion
+#region WeaponRight
         private void WeaponRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13563,8 +13593,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(WeaponRight_UpDown);
             CharacterDetails.WeaponRight_Rotate = false;
         }
-        #endregion
-        #region EarringBLeft
+#endregion
+#region EarringBLeft
         private void EarringBLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13595,8 +13625,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(EarringBLeft_UpDown);
             CharacterDetails.EarringBLeft_Rotate = false;
         }
-        #endregion
-        #region EarringBRight
+#endregion
+#region EarringBRight
         private void EarringBRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13627,8 +13657,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(EarringBRight_UpDown);
             CharacterDetails.EarringBRight_Rotate = false;
         }
-        #endregion
-        #region IndexBLeft
+#endregion
+#region IndexBLeft
         private void IndexBLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13659,8 +13689,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(IndexBLeft_UpDown);
             CharacterDetails.IndexBLeft_Rotate = false;
         }
-        #endregion
-        #region IndexBRight
+#endregion
+#region IndexBRight
         private void IndexBRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13691,8 +13721,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(IndexBRight_UpDown);
             CharacterDetails.IndexBRight_Rotate = false;
         }
-        #endregion
-        #region PinkyBLeft
+#endregion
+#region PinkyBLeft
         private void PinkyBLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13723,8 +13753,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(PinkyBLeft_UpDown);
             CharacterDetails.PinkyBLeft_Rotate = false;
         }
-        #endregion
-        #region PinkyBRight
+#endregion
+#region PinkyBRight
         private void PinkyBRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13755,8 +13785,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(PinkyBRight_UpDown);
             CharacterDetails.PinkyBRight_Rotate = false;
         }
-        #endregion
-        #region RingBLeft
+#endregion
+#region RingBLeft
         private void RingBLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13787,8 +13817,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(RingBLeft_UpDown);
             CharacterDetails.RingBLeft_Rotate = false;
         }
-        #endregion
-        #region RingBRight
+#endregion
+#region RingBRight
         private void RingBRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13819,8 +13849,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(RingBRight_UpDown);
             CharacterDetails.RingBRight_Rotate = false;
         }
-        #endregion
-        #region MiddleBLeft
+#endregion
+#region MiddleBLeft
         private void MiddleBLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13851,8 +13881,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(MiddleBLeft_UpDown);
             CharacterDetails.MiddleBLeft_Rotate = false;
         }
-        #endregion
-        #region MiddleBRight
+#endregion
+#region MiddleBRight
         private void MiddleBRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13883,8 +13913,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(MiddleBRight_UpDown);
             CharacterDetails.MiddleBRight_Rotate = false;
         }
-        #endregion
-        #region ThumbBLeft
+#endregion
+#region ThumbBLeft
         private void ThumbBLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13915,8 +13945,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ThumbBLeft_UpDown);
             CharacterDetails.ThumbBLeft_Rotate = false;
         }
-        #endregion
-        #region ThumbBRight
+#endregion
+#region ThumbBRight
         private void ThumbBRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13947,8 +13977,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ThumbBRight_UpDown);
             CharacterDetails.ThumbBRight_Rotate = false;
         }
-        #endregion
-        #region TailA
+#endregion
+#region TailA
         private void TailA_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -13979,8 +14009,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(TailA_UpDown);
             CharacterDetails.TailA_Rotate = false;
         }
-        #endregion
-        #region TailB
+#endregion
+#region TailB
         private void TailB_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -14011,8 +14041,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(TailB_UpDown);
             CharacterDetails.TailB_Rotate = false;
         }
-        #endregion
-        #region TailC
+#endregion
+#region TailC
         private void TailC_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -14043,8 +14073,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(TailC_UpDown);
             CharacterDetails.TailC_Rotate = false;
         }
-        #endregion
-        #region TailD
+#endregion
+#region TailD
         private void TailD_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -14075,8 +14105,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(TailD_UpDown);
             CharacterDetails.TailD_Rotate = false;
         }
-        #endregion
-        #region TailE
+#endregion
+#region TailE
         private void TailE_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -14107,9 +14137,9 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(TailE_UpDown);
             CharacterDetails.TailE_Rotate = false;
         }
-        #endregion
+#endregion
 
-        #region RootHead
+#region RootHead
         private void RootHead_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -14140,8 +14170,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(RootHead_UpDown);
             CharacterDetails.RootHead_Rotate = false;
         }
-        #endregion
-        #region Jaw
+#endregion
+#region Jaw
         private void Jaw_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -14172,8 +14202,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(Jaw_UpDown);
             CharacterDetails.Jaw_Rotate = false;
         }
-        #endregion
-        #region EyelidLowerLeft
+#endregion
+#region EyelidLowerLeft
         private void EyelidLowerLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -14204,8 +14234,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(EyelidLowerLeft_UpDown);
             CharacterDetails.EyelidLowerLeft_Rotate = false;
         }
-        #endregion
-        #region EyelidLowerRight
+#endregion
+#region EyelidLowerRight
         private void EyelidLowerRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -14236,8 +14266,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(EyelidLowerRight_UpDown);
             CharacterDetails.EyelidLowerRight_Rotate = false;
         }
-        #endregion
-        #region EyeLeft
+#endregion
+#region EyeLeft
         private void EyeLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -14268,8 +14298,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(EyeLeft_UpDown);
             CharacterDetails.EyeLeft_Rotate = false;
         }
-        #endregion
-        #region EyeRight
+#endregion
+#region EyeRight
         private void EyeRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -14300,8 +14330,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(EyeRight_UpDown);
             CharacterDetails.EyeRight_Rotate = false;
         }
-        #endregion
-        #region Nose
+#endregion
+#region Nose
         private void Nose_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -14332,8 +14362,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(Nose_UpDown);
             CharacterDetails.Nose_Rotate = false;
         }
-        #endregion
-        #region CheekLeft / HrothLipUpperLeft
+#endregion
+#region CheekLeft / HrothLipUpperLeft
         private void CheekLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -14384,8 +14414,8 @@ namespace ConceptMatrix.Views
             CharacterDetails.CheekLeft_Rotate = false;
             CharacterDetails.HrothLipUpperLeft_Rotate = false;
         }
-        #endregion
-        #region CheekRight / HrothLipUpperRight
+#endregion
+#region CheekRight / HrothLipUpperRight
         private void CheekRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -14436,8 +14466,8 @@ namespace ConceptMatrix.Views
             CharacterDetails.CheekRight_Rotate = false;
             CharacterDetails.HrothLipUpperRight_Rotate = false;
         }
-        #endregion
-        #region LipsLeft / HrothLipsLeft
+#endregion
+#region LipsLeft / HrothLipsLeft
         private void LipsLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -14488,8 +14518,8 @@ namespace ConceptMatrix.Views
             CharacterDetails.LipsLeft_Rotate = false;
             CharacterDetails.HrothLipsLeft_Rotate = false;
         }
-        #endregion
-        #region LipsRight / HrothLipsRight
+#endregion
+#region LipsRight / HrothLipsRight
         private void LipsRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -14540,8 +14570,8 @@ namespace ConceptMatrix.Views
             CharacterDetails.LipsRight_Rotate = false;
             CharacterDetails.HrothLipsRight_Rotate = false;
         }
-        #endregion
-        #region EyebrowLeft / HrothEyebrowLeft
+#endregion
+#region EyebrowLeft / HrothEyebrowLeft
         private void EyebrowLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -14590,8 +14620,8 @@ namespace ConceptMatrix.Views
             CharacterDetails.EyebrowLeft_Rotate = false;
             CharacterDetails.HrothEyebrowLeft_Rotate = false;
         }
-        #endregion
-        #region EyebrowRight / HrothEyebrowRight
+#endregion
+#region EyebrowRight / HrothEyebrowRight
         private void EyebrowRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -14642,8 +14672,8 @@ namespace ConceptMatrix.Views
             CharacterDetails.EyebrowRight_Rotate = false;
             CharacterDetails.HrothEyebrowRight_Rotate = false;
         }
-        #endregion
-        #region Bridge / HrothBridge
+#endregion
+#region Bridge / HrothBridge
         private void Bridge_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -14694,8 +14724,8 @@ namespace ConceptMatrix.Views
             CharacterDetails.Bridge_Rotate = false;
             CharacterDetails.HrothBridge_Rotate = false;
         }
-        #endregion
-        #region BrowLeft / HrothBrowLeft
+#endregion
+#region BrowLeft / HrothBrowLeft
         private void BrowLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -14746,8 +14776,8 @@ namespace ConceptMatrix.Views
             CharacterDetails.BrowLeft_Rotate = false;
             CharacterDetails.HrothBrowLeft_Rotate = false;
         }
-        #endregion
-        #region BrowRight / HrothBrowRight
+#endregion
+#region BrowRight / HrothBrowRight
         private void BrowRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -14798,8 +14828,8 @@ namespace ConceptMatrix.Views
             CharacterDetails.BrowRight_Rotate = false;
             CharacterDetails.HrothBrowRight_Rotate = false;
         }
-        #endregion
-        #region LipUpperA / HrothLipUpper
+#endregion
+#region LipUpperA / HrothLipUpper
         private void LipUpperA_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -14850,8 +14880,8 @@ namespace ConceptMatrix.Views
             CharacterDetails.LipUpperA_Rotate = false;
             CharacterDetails.HrothLipUpper_Rotate = false;
         }
-        #endregion
-        #region EyelidUpperLeft / HrothEyelidUpperLeft
+#endregion
+#region EyelidUpperLeft / HrothEyelidUpperLeft
         private void EyelidUpperLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -14902,8 +14932,8 @@ namespace ConceptMatrix.Views
             CharacterDetails.EyelidUpperLeft_Rotate = false;
             CharacterDetails.HrothEyelidUpperLeft_Rotate = false;
         }
-        #endregion
-        #region EyelidUpperRight / HrothEyelidUpperRight
+#endregion
+#region EyelidUpperRight / HrothEyelidUpperRight
         private void EyelidUpperRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -14954,8 +14984,8 @@ namespace ConceptMatrix.Views
             CharacterDetails.EyelidUpperRight_Rotate = false;
             CharacterDetails.HrothEyelidUpperRight_Rotate = false;
         }
-        #endregion
-        #region LipLowerA / HrothLipLower / VieraLipLowerA
+#endregion
+#region LipLowerA / HrothLipLower / VieraLipLowerA
         private void LipLowerA_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -15026,8 +15056,8 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothLipLower_Rotate = false;
             CharacterDetails.VieraLipLowerA_Rotate = false;
         }
-        #endregion
-        #region LipUpperB / HrothJawUpper / VieraLipUpperB
+#endregion
+#region LipUpperB / HrothJawUpper / VieraLipUpperB
         private void LipUpperB_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -15098,8 +15128,8 @@ namespace ConceptMatrix.Views
             CharacterDetails.HrothJawUpper_Rotate = false;
             CharacterDetails.VieraLipUpperB_Rotate = false;
         }
-        #endregion
-        #region LipLowerB / VieraLipLowerB
+#endregion
+#region LipLowerB / VieraLipLowerB
         private void LipLowerB_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -15150,8 +15180,8 @@ namespace ConceptMatrix.Views
             CharacterDetails.LipLowerB_Rotate = false;
             CharacterDetails.VieraLipLowerB_Rotate = false;
         }
-        #endregion
-        #region HrothWhiskersLeft
+#endregion
+#region HrothWhiskersLeft
         private void HrothWhiskersLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -15182,8 +15212,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(HrothWhiskersLeft_UpDown);
             CharacterDetails.HrothWhiskersLeft_Rotate = false;
         }
-        #endregion
-        #region HrothWhiskersRight
+#endregion
+#region HrothWhiskersRight
         private void HrothWhiskersRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -15214,8 +15244,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(HrothWhiskersRight_UpDown);
             CharacterDetails.HrothWhiskersRight_Rotate = false;
         }
-        #endregion
-        #region VieraEarALeft
+#endregion
+#region VieraEarALeft
         private void VieraEar01ALeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -15307,8 +15337,8 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar03ALeft_Rotate = false;
             CharacterDetails.VieraEar04ALeft_Rotate = false;
         }
-        #endregion
-        #region VieraEarARight
+#endregion
+#region VieraEarARight
         private void VieraEar01ARight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -15400,8 +15430,8 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar03ARight_Rotate = false;
             CharacterDetails.VieraEar04ARight_Rotate = false;
         }
-        #endregion
-        #region VieraEarBLeft
+#endregion
+#region VieraEarBLeft
         private void VieraEar01BLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -15493,8 +15523,8 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar03BLeft_Rotate = false;
             CharacterDetails.VieraEar04BLeft_Rotate = false;
         }
-        #endregion
-        #region VieraEarBRight
+#endregion
+#region VieraEarBRight
         private void VieraEar01BRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -15586,9 +15616,9 @@ namespace ConceptMatrix.Views
             CharacterDetails.VieraEar03BRight_Rotate = false;
             CharacterDetails.VieraEar04BRight_Rotate = false;
         }
-        #endregion
+#endregion
 
-        #region ExHairA
+#region ExHairA
         private void ExHairA_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -15619,8 +15649,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExHairA_UpDown);
             CharacterDetails.ExHairA_Rotate = false;
         }
-        #endregion
-        #region ExHairB
+#endregion
+#region ExHairB
         private void ExHairB_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -15651,8 +15681,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExHairB_UpDown);
             CharacterDetails.ExHairB_Rotate = false;
         }
-        #endregion
-        #region ExHairC
+#endregion
+#region ExHairC
         private void ExHairC_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -15685,8 +15715,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExHairC_UpDown);
             CharacterDetails.ExHairC_Rotate = false;
         }
-        #endregion
-        #region ExHairD
+#endregion
+#region ExHairD
         private void ExHairD_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -15717,8 +15747,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExHairD_UpDown);
             CharacterDetails.ExHairD_Rotate = false;
         }
-        #endregion
-        #region ExHairE
+#endregion
+#region ExHairE
         private void ExHairE_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -15749,8 +15779,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExHairE_UpDown);
             CharacterDetails.ExHairE_Rotate = false;
         }
-        #endregion
-        #region ExHairF
+#endregion
+#region ExHairF
         private void ExHairF_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -15781,8 +15811,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExHairF_UpDown);
             CharacterDetails.ExHairF_Rotate = false;
         }
-        #endregion
-        #region ExHairG
+#endregion
+#region ExHairG
         private void ExHairG_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -15813,8 +15843,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExHairG_UpDown);
             CharacterDetails.ExHairG_Rotate = false;
         }
-        #endregion
-        #region ExHairH
+#endregion
+#region ExHairH
         private void ExHairH_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -15845,8 +15875,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExHairH_UpDown);
             CharacterDetails.ExHairH_Rotate = false;
         }
-        #endregion
-        #region ExHairI
+#endregion
+#region ExHairI
         private void ExHairI_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -15877,8 +15907,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExHairI_UpDown);
             CharacterDetails.ExHairI_Rotate = false;
         }
-        #endregion
-        #region ExHairJ
+#endregion
+#region ExHairJ
         private void ExHairJ_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -15909,8 +15939,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExHairJ_UpDown);
             CharacterDetails.ExHairJ_Rotate = false;
         }
-        #endregion
-        #region ExHairK
+#endregion
+#region ExHairK
         private void ExHairK_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -15941,8 +15971,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExHairK_UpDown);
             CharacterDetails.ExHairK_Rotate = false;
         }
-        #endregion
-        #region ExHairL
+#endregion
+#region ExHairL
         private void ExHairL_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -15973,9 +16003,9 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExHairL_UpDown);
             CharacterDetails.ExHairL_Rotate = false;
         }
-        #endregion
+#endregion
 
-        #region ExMetA
+#region ExMetA
         private void ExMetA_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -16006,8 +16036,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExMetA_UpDown);
             CharacterDetails.ExMetA_Rotate = false;
         }
-        #endregion
-        #region ExMetB
+#endregion
+#region ExMetB
         private void ExMetB_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -16038,8 +16068,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExMetB_UpDown);
             CharacterDetails.ExMetB_Rotate = false;
         }
-        #endregion
-        #region ExMetC
+#endregion
+#region ExMetC
         private void ExMetC_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -16070,8 +16100,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExMetC_UpDown);
             CharacterDetails.ExMetC_Rotate = false;
         }
-        #endregion
-        #region ExMetD
+#endregion
+#region ExMetD
         private void ExMetD_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -16102,8 +16132,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExMetD_UpDown);
             CharacterDetails.ExMetD_Rotate = false;
         }
-        #endregion
-        #region ExMetE
+#endregion
+#region ExMetE
         private void ExMetE_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -16134,8 +16164,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExMetE_UpDown);
             CharacterDetails.ExMetE_Rotate = false;
         }
-        #endregion
-        #region ExMetF
+#endregion
+#region ExMetF
         private void ExMetF_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -16166,8 +16196,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExMetF_UpDown);
             CharacterDetails.ExMetF_Rotate = false;
         }
-        #endregion
-        #region ExMetG
+#endregion
+#region ExMetG
         private void ExMetG_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -16198,8 +16228,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExMetG_UpDown);
             CharacterDetails.ExMetG_Rotate = false;
         }
-        #endregion
-        #region ExMetH
+#endregion
+#region ExMetH
         private void ExMetH_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -16230,8 +16260,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExMetH_UpDown);
             CharacterDetails.ExMetH_Rotate = false;
         }
-        #endregion
-        #region ExMetI
+#endregion
+#region ExMetI
         private void ExMetI_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -16262,8 +16292,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExMetI_UpDown);
             CharacterDetails.ExMetI_Rotate = false;
         }
-        #endregion
-        #region ExMetJ
+#endregion
+#region ExMetJ
         private void ExMetJ_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -16294,8 +16324,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExMetJ_UpDown);
             CharacterDetails.ExMetJ_Rotate = false;
         }
-        #endregion
-        #region ExMetK
+#endregion
+#region ExMetK
         private void ExMetK_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -16326,8 +16356,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExMetK_UpDown);
             CharacterDetails.ExMetK_Rotate = false;
         }
-        #endregion
-        #region ExMetL
+#endregion
+#region ExMetL
         private void ExMetL_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -16357,8 +16387,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExMetL_UpDown);
             CharacterDetails.ExMetL_Rotate = false;
         }
-        #endregion
-        #region ExMetM
+#endregion
+#region ExMetM
         private void ExMetM_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -16389,8 +16419,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExMetM_UpDown);
             CharacterDetails.ExMetM_Rotate = false;
         }
-        #endregion
-        #region ExMetN
+#endregion
+#region ExMetN
         private void ExMetN_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -16423,8 +16453,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExMetN_UpDown);
             CharacterDetails.ExMetN_Rotate = false;
         }
-        #endregion
-        #region ExMetO
+#endregion
+#region ExMetO
         private void ExMetO_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -16455,8 +16485,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExMetO_UpDown);
             CharacterDetails.ExMetO_Rotate = false;
         }
-        #endregion
-        #region ExMetP
+#endregion
+#region ExMetP
         private void ExMetP_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -16487,8 +16517,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExMetP_UpDown);
             CharacterDetails.ExMetP_Rotate = false;
         }
-        #endregion
-        #region ExMetQ
+#endregion
+#region ExMetQ
         private void ExMetQ_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -16519,8 +16549,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExMetQ_UpDown);
             CharacterDetails.ExMetQ_Rotate = false;
         }
-        #endregion
-        #region ExMetR
+#endregion
+#region ExMetR
         private void ExMetR_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -16551,9 +16581,9 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExMetR_UpDown);
             CharacterDetails.ExMetR_Rotate = false;
         }
-        #endregion
+#endregion
 
-        #region ExTopA
+#region ExTopA
         private void ExTopA_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -16584,8 +16614,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExTopA_UpDown);
             CharacterDetails.ExTopA_Rotate = false;
         }
-        #endregion
-        #region ExTopB
+#endregion
+#region ExTopB
         private void ExTopB_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -16616,8 +16646,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExTopB_UpDown);
             CharacterDetails.ExTopB_Rotate = false;
         }
-        #endregion
-        #region ExTopC
+#endregion
+#region ExTopC
         private void ExTopC_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -16648,8 +16678,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExTopC_UpDown);
             CharacterDetails.ExTopC_Rotate = false;
         }
-        #endregion
-        #region ExTopD
+#endregion
+#region ExTopD
         private void ExTopD_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -16680,8 +16710,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExTopD_UpDown);
             CharacterDetails.ExTopD_Rotate = false;
         }
-        #endregion
-        #region ExTopE
+#endregion
+#region ExTopE
         private void ExTopE_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -16712,8 +16742,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExTopE_UpDown);
             CharacterDetails.ExTopE_Rotate = false;
         }
-        #endregion
-        #region ExTopF
+#endregion
+#region ExTopF
         private void ExTopF_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -16744,8 +16774,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExTopF_UpDown);
             CharacterDetails.ExTopF_Rotate = false;
         }
-        #endregion
-        #region ExTopG
+#endregion
+#region ExTopG
         private void ExTopG_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -16776,8 +16806,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExTopG_UpDown);
             CharacterDetails.ExTopG_Rotate = false;
         }
-        #endregion
-        #region ExTopH
+#endregion
+#region ExTopH
         private void ExTopH_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -16808,8 +16838,8 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExTopH_UpDown);
             CharacterDetails.ExTopH_Rotate = false;
         }
-        #endregion
-        #region ExTopI
+#endregion
+#region ExTopI
         private void ExTopI_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
@@ -16840,7 +16870,7 @@ namespace ConceptMatrix.Views
             RemoveRoutedEventListener(ExTopI_UpDown);
             CharacterDetails.ExTopI_Rotate = false;
         }
-        #endregion
+#endregion
 
         private void EditModeButton_Checked(object sender, RoutedEventArgs e)
         {
@@ -16953,7 +16983,7 @@ namespace ConceptMatrix.Views
             }
         }
 
-        #region Savestate\Loadstate Head
+#region Savestate\Loadstate Head
         private void SavestateHead01_Click(object sender, RoutedEventArgs e)
         {
             HeadSaved01 = true;
@@ -17584,8 +17614,8 @@ namespace ConceptMatrix.Views
                 }
             }
         }
-        #endregion
-        #region Savestate\Loadstate Hair
+#endregion
+#region Savestate\Loadstate Hair
         private void SavestateHair01_Click(object sender, RoutedEventArgs e)
         {
             HairSaved01 = true;
@@ -18022,8 +18052,8 @@ namespace ConceptMatrix.Views
                 }
             }
         }
-        #endregion
-        #region Savestate\Loadstate Earrings
+#endregion
+#region Savestate\Loadstate Earrings
         private void SavestateEarrings01_Click(object sender, RoutedEventArgs e)
         {
             EarringsSaved01 = true;
@@ -18060,8 +18090,8 @@ namespace ConceptMatrix.Views
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringBLeft_X), MemoryManager.StringToByteArray(EarringBLeft_Sav02.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringBRight_X), MemoryManager.StringToByteArray(EarringBRight_Sav02.Replace(" ", string.Empty)));
         }
-        #endregion
-        #region Savestate\Loadstate Body
+#endregion
+#region Savestate\Loadstate Body
         private void SavestateBody01_Click(object sender, RoutedEventArgs e)
         {
             BodySaved01 = true;
@@ -18114,8 +18144,8 @@ namespace ConceptMatrix.Views
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ScabbardRight_X), MemoryManager.StringToByteArray(ScabbardRight_Sav02.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Neck_X), MemoryManager.StringToByteArray(Neck_Sav02.Replace(" ", string.Empty)));
         }
-        #endregion
-        #region Savestate\Loadstate LeftArm
+#endregion
+#region Savestate\Loadstate LeftArm
         private void SavestateLeftArm01_Click(object sender, RoutedEventArgs e)
         {
             LeftArmSaved01 = true;
@@ -18174,8 +18204,8 @@ namespace ConceptMatrix.Views
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CouterLeft_X), MemoryManager.StringToByteArray(CouterLeft_Sav02.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristLeft_X), MemoryManager.StringToByteArray(WristLeft_Sav02.Replace(" ", string.Empty)));
         }
-        #endregion
-        #region Savestate\Loadstate RightArm
+#endregion
+#region Savestate\Loadstate RightArm
         private void SavestateRightArm01_Click(object sender, RoutedEventArgs e)
         {
             RightArmSaved01 = true;
@@ -18234,8 +18264,8 @@ namespace ConceptMatrix.Views
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CouterRight_X), MemoryManager.StringToByteArray(CouterRight_Sav02.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristRight_X), MemoryManager.StringToByteArray(WristRight_Sav02.Replace(" ", string.Empty)));
         }
-        #endregion
-        #region Savestate\Loadstate Clothes
+#endregion
+#region Savestate\Loadstate Clothes
         private void SavestateClothes01_Click(object sender, RoutedEventArgs e)
         {
             ClothesSaved01 = true;
@@ -18328,8 +18358,8 @@ namespace ConceptMatrix.Views
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideCLeft_X), MemoryManager.StringToByteArray(ClothSideCLeft_Sav02.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideCRight_X), MemoryManager.StringToByteArray(ClothSideCRight_Sav02.Replace(" ", string.Empty)));
         }
-        #endregion
-        #region Savestate\Loadstate Weapons
+#endregion
+#region Savestate\Loadstate Weapons
         private void SavestateWeapons01_Click(object sender, RoutedEventArgs e)
         {
             WeaponsSaved01 = true;
@@ -18358,8 +18388,8 @@ namespace ConceptMatrix.Views
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WeaponLeft_X), MemoryManager.StringToByteArray(WeaponLeft_Sav02.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WeaponRight_X), MemoryManager.StringToByteArray(WeaponRight_Sav02.Replace(" ", string.Empty)));
         }
-        #endregion
-        #region Savestate\Loadstate LeftHand
+#endregion
+#region Savestate\Loadstate LeftHand
         private void SavestateLeftHand01_Click(object sender, RoutedEventArgs e)
         {
             LeftHandSaved01 = true;
@@ -18424,8 +18454,8 @@ namespace ConceptMatrix.Views
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBLeft_X), MemoryManager.StringToByteArray(MiddleBLeft_Sav02.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBLeft_X), MemoryManager.StringToByteArray(ThumbBLeft_Sav02.Replace(" ", string.Empty)));
         }
-        #endregion
-        #region Savestate\Loadstate RightHand
+#endregion
+#region Savestate\Loadstate RightHand
         private void SavestateRightHand01_Click(object sender, RoutedEventArgs e)
         {
             RightHandSaved01 = true;
@@ -18490,8 +18520,8 @@ namespace ConceptMatrix.Views
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBRight_X), MemoryManager.StringToByteArray(MiddleBRight_Sav02.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBRight_X), MemoryManager.StringToByteArray(ThumbBRight_Sav02.Replace(" ", string.Empty)));
         }
-        #endregion
-        #region Savestate\Loadstate Waist
+#endregion
+#region Savestate\Loadstate Waist
         private void SavestateWaist01_Click(object sender, RoutedEventArgs e)
         {
             WaistSaved01 = true;
@@ -18580,8 +18610,8 @@ namespace ConceptMatrix.Views
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailE_X), MemoryManager.StringToByteArray(TailE_Sav02.Replace(" ", string.Empty)));
             }
         }
-        #endregion
-        #region Savestate\Loadstate LeftLeg
+#endregion
+#region Savestate\Loadstate LeftLeg
         private void SavestateLeftLeg01_Click(object sender, RoutedEventArgs e)
         {
             LeftLegSaved01 = true;
@@ -18626,8 +18656,8 @@ namespace ConceptMatrix.Views
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.FootLeft_X), MemoryManager.StringToByteArray(FootLeft_Sav02.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ToesLeft_X), MemoryManager.StringToByteArray(ToesLeft_Sav02.Replace(" ", string.Empty)));
         }
-        #endregion
-        #region Savestate\Loadstate RightLeg
+#endregion
+#region Savestate\Loadstate RightLeg
         private void SavestateRightLeg01_Click(object sender, RoutedEventArgs e)
         {
             RightLegSaved01 = true;
@@ -18672,8 +18702,8 @@ namespace ConceptMatrix.Views
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.FootRight_X), MemoryManager.StringToByteArray(FootRight_Sav02.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ToesRight_X), MemoryManager.StringToByteArray(ToesRight_Sav02.Replace(" ", string.Empty)));
         }
-        #endregion
-        #region Savestate\Loadstate Helm
+#endregion
+#region Savestate\Loadstate Helm
         private void SavestateHelm01_Click(object sender, RoutedEventArgs e)
         {
             HelmSaved01 = true;
@@ -19286,8 +19316,8 @@ namespace ConceptMatrix.Views
                 }
             }
         }
-        #endregion
-        #region Savestate\Loadstate Top
+#endregion
+#region Savestate\Loadstate Top
         private void SavestateTop01_Click(object sender, RoutedEventArgs e)
         {
             TopSaved01 = true;
@@ -19612,9 +19642,9 @@ namespace ConceptMatrix.Views
                 }
             }
         }
-        #endregion
+#endregion
 
-        #region Advanced Loading Options
+#region Advanced Loading Options
         private void LoadHead_Checked(object sender, RoutedEventArgs e)
         {
             HeadAdvLoad = true;
@@ -19749,9 +19779,9 @@ namespace ConceptMatrix.Views
         {
             RightLegAdvLoad = false;
         }
-        #endregion
+#endregion
 
-        #region Shortcuts
+#region Shortcuts
         private void HeadShortcut_Click(object sender, RoutedEventArgs e)
         {
             MatrixTabControl.SelectedIndex = 0;
@@ -19792,7 +19822,7 @@ namespace ConceptMatrix.Views
         {
             MatrixTabControl.SelectedIndex = 4;
         }
-        #endregion
+#endregion
 
         private void SwapToggles(ToggleButton newActive)
         {
@@ -20775,7 +20805,7 @@ namespace ConceptMatrix.Views
                 BoneSaver.Clan = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Clan), 1));
                 BoneSaver.Body = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.BodyType), 1));
 
-                #region Head
+#region Head
                 BoneSaver.Head = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Head_X), 16));
                 BoneSaver.EarLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarLeft_X), 16));
                 BoneSaver.EarRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarRight_X), 16));
@@ -20865,8 +20895,8 @@ namespace ConceptMatrix.Views
                     BoneSaver.VieraEar04BRight = "null";
                     BoneSaver.VieraLipLowerB = "null";
                 }
-                #endregion
-                #region Hair
+#endregion
+#region Hair
                 BoneSaver.HairA = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairA_X), 16));
                 BoneSaver.HairFrontLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontLeft_X), 16));
                 BoneSaver.HairFrontRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontRight_X), 16));
@@ -20987,14 +21017,14 @@ namespace ConceptMatrix.Views
                     BoneSaver.ExHairK = "null";
                     BoneSaver.ExHairL = "null";
                 }
-                #endregion
-                #region Earrings
+#endregion
+#region Earrings
                 BoneSaver.EarringALeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringALeft_X), 16));
                 BoneSaver.EarringARight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringARight_X), 16));
                 BoneSaver.EarringBLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringBLeft_X), 16));
                 BoneSaver.EarringBRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringBRight_X), 16));
-                #endregion
-                #region Body
+#endregion
+#region Body
                 BoneSaver.SpineA = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SpineA_X), 16));
                 BoneSaver.SpineB = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SpineB_X), 16));
                 BoneSaver.BreastLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BreastLeft_X), 16));
@@ -21003,8 +21033,8 @@ namespace ConceptMatrix.Views
                 BoneSaver.ScabbardLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ScabbardLeft_X), 16));
                 BoneSaver.ScabbardRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ScabbardRight_X), 16));
                 BoneSaver.Neck = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Neck_X), 16));
-                #endregion
-                #region LeftArm
+#endregion
+#region LeftArm
                 BoneSaver.ClavicleLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClavicleLeft_X), 16));
                 BoneSaver.ArmLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ArmLeft_X), 16));                
                 BoneSaver.PauldronLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PauldronLeft_X), 16));
@@ -21014,8 +21044,8 @@ namespace ConceptMatrix.Views
                 BoneSaver.ElbowLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ElbowLeft_X), 16));
                 BoneSaver.CouterLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CouterLeft_X), 16));
                 BoneSaver.WristLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristLeft_X), 16));
-                #endregion
-                #region RightArm
+#endregion
+#region RightArm
                 BoneSaver.ClavicleRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClavicleRight_X), 16));
                 BoneSaver.ArmRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ArmRight_X), 16));                
                 BoneSaver.PauldronRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PauldronRight_X), 16));
@@ -21025,8 +21055,8 @@ namespace ConceptMatrix.Views
                 BoneSaver.ElbowRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ElbowRight_X), 16));
                 BoneSaver.CouterRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CouterRight_X), 16));
                 BoneSaver.WristRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristRight_X), 16));
-                #endregion
-                #region Clothes
+#endregion
+#region Clothes
                 BoneSaver.ClothBackALeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackALeft_X), 16));
                 BoneSaver.ClothBackARight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackARight_X), 16));
                 BoneSaver.ClothFrontALeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontALeft_X), 16));
@@ -21045,12 +21075,12 @@ namespace ConceptMatrix.Views
                 BoneSaver.ClothFrontCRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontCRight_X), 16));
                 BoneSaver.ClothSideCLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideCLeft_X), 16));
                 BoneSaver.ClothSideCRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideCRight_X), 16));
-                #endregion
-                #region Weapons
+#endregion
+#region Weapons
                 BoneSaver.WeaponLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WeaponLeft_X), 16));
                 BoneSaver.WeaponRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WeaponRight_X), 16));
-                #endregion
-                #region LeftHand
+#endregion
+#region LeftHand
                 BoneSaver.HandLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HandLeft_X), 16));
                 BoneSaver.IndexALeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexALeft_X), 16));
                 BoneSaver.PinkyALeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyALeft_X), 16));
@@ -21062,8 +21092,8 @@ namespace ConceptMatrix.Views
                 BoneSaver.RingBLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingBLeft_X), 16));
                 BoneSaver.MiddleBLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBLeft_X), 16));
                 BoneSaver.ThumbBLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBLeft_X), 16));
-                #endregion
-                #region RightHand
+#endregion
+#region RightHand
                 BoneSaver.HandRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HandRight_X), 16));
                 BoneSaver.IndexARight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexARight_X), 16));
                 BoneSaver.PinkyARight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyARight_X), 16));
@@ -21075,8 +21105,8 @@ namespace ConceptMatrix.Views
                 BoneSaver.RingBRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingBRight_X), 16));
                 BoneSaver.MiddleBRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBRight_X), 16));
                 BoneSaver.ThumbBRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBRight_X), 16));
-                #endregion
-                #region Waist
+#endregion
+#region Waist
                 BoneSaver.Waist = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Waist_X), 16));
                 BoneSaver.HolsterLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HolsterLeft_X), 16));
                 BoneSaver.HolsterRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HolsterRight_X), 16));
@@ -21098,24 +21128,24 @@ namespace ConceptMatrix.Views
                     BoneSaver.TailD = "null";
                     BoneSaver.TailE = "null";
                 }
-                #endregion
-                #region LeftLeg
+#endregion
+#region LeftLeg
                 BoneSaver.LegLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LegLeft_X), 16));
                 BoneSaver.KneeLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.KneeLeft_X), 16));
                 BoneSaver.CalfLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CalfLeft_X), 16));
                 BoneSaver.PoleynLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PoleynLeft_X), 16));
                 BoneSaver.FootLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.FootLeft_X), 16));
                 BoneSaver.ToesLeft = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ToesLeft_X), 16));
-                #endregion
-                #region RightLeg
+#endregion
+#region RightLeg
                 BoneSaver.LegRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LegRight_X), 16));
                 BoneSaver.KneeRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.KneeRight_X), 16));
                 BoneSaver.CalfRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CalfRight_X), 16));
                 BoneSaver.PoleynRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PoleynRight_X), 16));
                 BoneSaver.FootRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.FootRight_X), 16));
                 BoneSaver.ToesRight = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ToesRight_X), 16));
-                #endregion
-                #region Helm
+#endregion
+#region Helm
                 if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 1)
                 {
                     BoneSaver.ExRootMet = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExRootMet_X), 16));
@@ -21286,8 +21316,8 @@ namespace ConceptMatrix.Views
                     BoneSaver.ExMetQ = "null";
                     BoneSaver.ExMetR = "null";
                 }
-                #endregion
-                #region Top
+#endregion
+#region Top
                 if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 1)
                 {
                     BoneSaver.ExRootTop = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExRootTop_X), 16));
@@ -21377,13 +21407,13 @@ namespace ConceptMatrix.Views
                     BoneSaver.ExTopH = "null";
                     BoneSaver.ExTopI = "null";
                 }
-                #endregion
-                #region Other
+#endregion
+#region Other
                 BoneSaver.Root = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Root_X), 16));
                 BoneSaver.Abdomen = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Abdomen_X), 16));
                 BoneSaver.Throw = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Throw_X), 16));
                 BoneSaver.Unknown00 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Unknown00_X), 16));
-                #endregion
+#endregion
 
                 string details = JsonConvert.SerializeObject(BoneSaver, Formatting.Indented, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
                 File.WriteAllText(dig.FileName, details);
@@ -21408,7 +21438,7 @@ namespace ConceptMatrix.Views
                     PhysicsButton.IsChecked = false;
                     BoneSaves BoneLoader = JsonConvert.DeserializeObject<BoneSaves>(File.ReadAllText(dig.FileName));
 
-                    #region Head
+#region Head
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Head_X), MemoryManager.StringToByteArray(BoneLoader.Head.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarLeft_X), MemoryManager.StringToByteArray(BoneLoader.EarLeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarRight_X), MemoryManager.StringToByteArray(BoneLoader.EarRight.Replace(" ", string.Empty)));
@@ -21624,8 +21654,8 @@ namespace ConceptMatrix.Views
                             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.VieraLipLowerB_X), MemoryManager.StringToByteArray(BoneLoader.VieraLipLowerB.Replace(" ", string.Empty)));
                         }
                     }
-                    #endregion
-                    #region Hair
+#endregion
+#region Hair
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairA_X), MemoryManager.StringToByteArray(BoneLoader.HairA.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontLeft_X), MemoryManager.StringToByteArray(BoneLoader.HairFrontLeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairFrontRight_X), MemoryManager.StringToByteArray(BoneLoader.HairFrontRight.Replace(" ", string.Empty)));
@@ -21714,14 +21744,14 @@ namespace ConceptMatrix.Views
                             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHairL_X), MemoryManager.StringToByteArray(BoneLoader.ExHairL.Replace(" ", string.Empty)));
                         }
                     }
-                    #endregion
-                    #region Earrings
+#endregion
+#region Earrings
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringALeft_X), MemoryManager.StringToByteArray(BoneLoader.EarringALeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringARight_X), MemoryManager.StringToByteArray(BoneLoader.EarringARight.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringBLeft_X), MemoryManager.StringToByteArray(BoneLoader.EarringBLeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringBRight_X), MemoryManager.StringToByteArray(BoneLoader.EarringBRight.Replace(" ", string.Empty)));
-                    #endregion
-                    #region Body
+#endregion
+#region Body
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SpineA_X), MemoryManager.StringToByteArray(BoneLoader.SpineA.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SpineB_X), MemoryManager.StringToByteArray(BoneLoader.SpineB.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.BreastLeft_X), MemoryManager.StringToByteArray(BoneLoader.BreastLeft.Replace(" ", string.Empty)));
@@ -21730,8 +21760,8 @@ namespace ConceptMatrix.Views
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ScabbardLeft_X), MemoryManager.StringToByteArray(BoneLoader.ScabbardLeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ScabbardRight_X), MemoryManager.StringToByteArray(BoneLoader.ScabbardRight.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Neck_X), MemoryManager.StringToByteArray(BoneLoader.Neck.Replace(" ", string.Empty)));
-                    #endregion
-                    #region LeftArm
+#endregion
+#region LeftArm
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClavicleLeft_X), MemoryManager.StringToByteArray(BoneLoader.ClavicleLeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ArmLeft_X), MemoryManager.StringToByteArray(BoneLoader.ArmLeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PauldronLeft_X), MemoryManager.StringToByteArray(BoneLoader.PauldronLeft.Replace(" ", string.Empty)));
@@ -21741,8 +21771,8 @@ namespace ConceptMatrix.Views
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ElbowLeft_X), MemoryManager.StringToByteArray(BoneLoader.ElbowLeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CouterLeft_X), MemoryManager.StringToByteArray(BoneLoader.CouterLeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristLeft_X), MemoryManager.StringToByteArray(BoneLoader.WristLeft.Replace(" ", string.Empty)));
-                    #endregion
-                    #region RightArm
+#endregion
+#region RightArm
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClavicleRight_X), MemoryManager.StringToByteArray(BoneLoader.ClavicleRight.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ArmRight_X), MemoryManager.StringToByteArray(BoneLoader.ArmRight.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PauldronRight_X), MemoryManager.StringToByteArray(BoneLoader.PauldronRight.Replace(" ", string.Empty)));
@@ -21752,8 +21782,8 @@ namespace ConceptMatrix.Views
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ElbowRight_X), MemoryManager.StringToByteArray(BoneLoader.ElbowRight.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CouterRight_X), MemoryManager.StringToByteArray(BoneLoader.CouterRight.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristRight_X), MemoryManager.StringToByteArray(BoneLoader.WristRight.Replace(" ", string.Empty)));
-                    #endregion
-                    #region Clothes
+#endregion
+#region Clothes
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackALeft_X), MemoryManager.StringToByteArray(BoneLoader.ClothBackALeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackARight_X), MemoryManager.StringToByteArray(BoneLoader.ClothBackARight.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontALeft_X), MemoryManager.StringToByteArray(BoneLoader.ClothFrontALeft.Replace(" ", string.Empty)));
@@ -21772,12 +21802,12 @@ namespace ConceptMatrix.Views
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothFrontCRight_X), MemoryManager.StringToByteArray(BoneLoader.ClothFrontCRight.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideCLeft_X), MemoryManager.StringToByteArray(BoneLoader.ClothSideCLeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideCRight_X), MemoryManager.StringToByteArray(BoneLoader.ClothSideCRight.Replace(" ", string.Empty)));
-                    #endregion
-                    #region Weapons
+#endregion
+#region Weapons
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WeaponLeft_X), MemoryManager.StringToByteArray(BoneLoader.WeaponLeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WeaponRight_X), MemoryManager.StringToByteArray(BoneLoader.WeaponRight.Replace(" ", string.Empty)));
-                    #endregion
-                    #region LeftHand
+#endregion
+#region LeftHand
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HandLeft_X), MemoryManager.StringToByteArray(BoneLoader.HandLeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexALeft_X), MemoryManager.StringToByteArray(BoneLoader.IndexALeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyALeft_X), MemoryManager.StringToByteArray(BoneLoader.PinkyALeft.Replace(" ", string.Empty)));
@@ -21789,8 +21819,8 @@ namespace ConceptMatrix.Views
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingBLeft_X), MemoryManager.StringToByteArray(BoneLoader.RingBLeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBLeft_X), MemoryManager.StringToByteArray(BoneLoader.MiddleBLeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBLeft_X), MemoryManager.StringToByteArray(BoneLoader.ThumbBLeft.Replace(" ", string.Empty)));
-                    #endregion
-                    #region RightHand
+#endregion
+#region RightHand
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HandRight_X), MemoryManager.StringToByteArray(BoneLoader.HandRight.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.IndexARight_X), MemoryManager.StringToByteArray(BoneLoader.IndexARight.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PinkyARight_X), MemoryManager.StringToByteArray(BoneLoader.PinkyARight.Replace(" ", string.Empty)));
@@ -21802,8 +21832,8 @@ namespace ConceptMatrix.Views
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.RingBRight_X), MemoryManager.StringToByteArray(BoneLoader.RingBRight.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBRight_X), MemoryManager.StringToByteArray(BoneLoader.MiddleBRight.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBRight_X), MemoryManager.StringToByteArray(BoneLoader.ThumbBRight.Replace(" ", string.Empty)));
-                    #endregion
-                    #region Waist
+#endregion
+#region Waist
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Waist_X), MemoryManager.StringToByteArray(BoneLoader.Waist.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HolsterLeft_X), MemoryManager.StringToByteArray(BoneLoader.HolsterLeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HolsterRight_X), MemoryManager.StringToByteArray(BoneLoader.HolsterRight.Replace(" ", string.Empty)));
@@ -21817,24 +21847,24 @@ namespace ConceptMatrix.Views
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailD_X), MemoryManager.StringToByteArray(BoneLoader.TailD.Replace(" ", string.Empty)));
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailE_X), MemoryManager.StringToByteArray(BoneLoader.TailE.Replace(" ", string.Empty)));
                     }
-                    #endregion
-                    #region LeftLeg
+#endregion
+#region LeftLeg
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LegLeft_X), MemoryManager.StringToByteArray(BoneLoader.LegLeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.KneeLeft_X), MemoryManager.StringToByteArray(BoneLoader.KneeLeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CalfLeft_X), MemoryManager.StringToByteArray(BoneLoader.CalfLeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PoleynLeft_X), MemoryManager.StringToByteArray(BoneLoader.PoleynLeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.FootLeft_X), MemoryManager.StringToByteArray(BoneLoader.FootLeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ToesLeft_X), MemoryManager.StringToByteArray(BoneLoader.ToesLeft.Replace(" ", string.Empty)));
-                    #endregion
-                    #region RightLeg
+#endregion
+#region RightLeg
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LegRight_X), MemoryManager.StringToByteArray(BoneLoader.LegRight.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.KneeRight_X), MemoryManager.StringToByteArray(BoneLoader.KneeRight.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CalfRight_X), MemoryManager.StringToByteArray(BoneLoader.CalfRight.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.PoleynRight_X), MemoryManager.StringToByteArray(BoneLoader.PoleynRight.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.FootRight_X), MemoryManager.StringToByteArray(BoneLoader.FootRight.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ToesRight_X), MemoryManager.StringToByteArray(BoneLoader.ToesRight.Replace(" ", string.Empty)));
-                    #endregion
-                    #region Helm
+#endregion
+#region Helm
                     if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 2)
                     {
                         if (BoneLoader.ExMetA != "null")
@@ -21961,8 +21991,8 @@ namespace ConceptMatrix.Views
                             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMetR_X), MemoryManager.StringToByteArray(BoneLoader.ExMetR.Replace(" ", string.Empty)));
                         }
                     }
-                    #endregion
-                    #region Top
+#endregion
+#region Top
                     if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 2)
                     {
                         if (BoneLoader.ExTopA != "null")
@@ -22026,7 +22056,7 @@ namespace ConceptMatrix.Views
                             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTopI_X), MemoryManager.StringToByteArray(BoneLoader.ExTopI.Replace(" ", string.Empty)));
                         }
                     }
-                    #endregion
+#endregion
                 }
             }
             else return;
@@ -22047,7 +22077,7 @@ namespace ConceptMatrix.Views
                     PhysicsButton.IsChecked = false;
                     BoneSaves BoneLoader = JsonConvert.DeserializeObject<BoneSaves>(File.ReadAllText(dig.FileName));
 
-                    #region Head
+#region Head
                     if (HeadAdvLoad == true)
                     {
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Head_X), MemoryManager.StringToByteArray(BoneLoader.Head.Replace(" ", string.Empty)));
@@ -22266,8 +22296,8 @@ namespace ConceptMatrix.Views
                             }
                         }
                     }
-                    #endregion
-                    #region Hair
+#endregion
+#region Hair
                     if (HairAdvLoad == true)
                     {
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HairA_X), MemoryManager.StringToByteArray(BoneLoader.HairA.Replace(" ", string.Empty)));
@@ -22359,8 +22389,8 @@ namespace ConceptMatrix.Views
                             }
                         }
                     }
-                    #endregion
-                    #region Earrings
+#endregion
+#region Earrings
                     if (EarringsAdvLoad == true)
                     {
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringALeft_X), MemoryManager.StringToByteArray(BoneLoader.EarringALeft.Replace(" ", string.Empty)));
@@ -22368,8 +22398,8 @@ namespace ConceptMatrix.Views
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringBLeft_X), MemoryManager.StringToByteArray(BoneLoader.EarringBLeft.Replace(" ", string.Empty)));
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.EarringBRight_X), MemoryManager.StringToByteArray(BoneLoader.EarringBRight.Replace(" ", string.Empty)));
                     }
-                    #endregion
-                    #region Body
+#endregion
+#region Body
                     if (BodyAdvLoad == true)
                     {
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.SpineA_X), MemoryManager.StringToByteArray(BoneLoader.SpineA.Replace(" ", string.Empty)));
@@ -22381,8 +22411,8 @@ namespace ConceptMatrix.Views
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ScabbardRight_X), MemoryManager.StringToByteArray(BoneLoader.ScabbardRight.Replace(" ", string.Empty)));
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Neck_X), MemoryManager.StringToByteArray(BoneLoader.Neck.Replace(" ", string.Empty)));
                     }
-                    #endregion
-                    #region LeftArm
+#endregion
+#region LeftArm
                     if (LeftArmAdvLoad == true)
                     {
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClavicleLeft_X), MemoryManager.StringToByteArray(BoneLoader.ClavicleLeft.Replace(" ", string.Empty)));
@@ -22395,8 +22425,8 @@ namespace ConceptMatrix.Views
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CouterLeft_X), MemoryManager.StringToByteArray(BoneLoader.CouterLeft.Replace(" ", string.Empty)));
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristLeft_X), MemoryManager.StringToByteArray(BoneLoader.WristLeft.Replace(" ", string.Empty)));
                     }
-                    #endregion
-                    #region RightArm
+#endregion
+#region RightArm
                     if (RightArmAdvLoad == true)
                     {
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClavicleRight_X), MemoryManager.StringToByteArray(BoneLoader.ClavicleRight.Replace(" ", string.Empty)));
@@ -22409,8 +22439,8 @@ namespace ConceptMatrix.Views
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.CouterRight_X), MemoryManager.StringToByteArray(BoneLoader.CouterRight.Replace(" ", string.Empty)));
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WristRight_X), MemoryManager.StringToByteArray(BoneLoader.WristRight.Replace(" ", string.Empty)));
                     }
-                    #endregion
-                    #region Clothes
+#endregion
+#region Clothes
                     if (ClothesAdvLoad == true)
                     {
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothBackALeft_X), MemoryManager.StringToByteArray(BoneLoader.ClothBackALeft.Replace(" ", string.Empty)));
@@ -22432,15 +22462,15 @@ namespace ConceptMatrix.Views
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideCLeft_X), MemoryManager.StringToByteArray(BoneLoader.ClothSideCLeft.Replace(" ", string.Empty)));
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ClothSideCRight_X), MemoryManager.StringToByteArray(BoneLoader.ClothSideCRight.Replace(" ", string.Empty)));
                     }
-                    #endregion
-                    #region Weapons
+#endregion
+#region Weapons
                     if (WeaponsAdvLoad == true)
                     {
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WeaponLeft_X), MemoryManager.StringToByteArray(BoneLoader.WeaponLeft.Replace(" ", string.Empty)));
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.WeaponRight_X), MemoryManager.StringToByteArray(BoneLoader.WeaponRight.Replace(" ", string.Empty)));
                     }
-                    #endregion
-                    #region LeftHand
+#endregion
+#region LeftHand
                     if (LeftHandAdvLoad == true)
                     {
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HandLeft_X), MemoryManager.StringToByteArray(BoneLoader.HandLeft.Replace(" ", string.Empty)));
@@ -22455,8 +22485,8 @@ namespace ConceptMatrix.Views
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBLeft_X), MemoryManager.StringToByteArray(BoneLoader.MiddleBLeft.Replace(" ", string.Empty)));
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBLeft_X), MemoryManager.StringToByteArray(BoneLoader.ThumbBLeft.Replace(" ", string.Empty)));
                     }
-                    #endregion
-                    #region RightHand
+#endregion
+#region RightHand
                     if (RightHandAdvLoad == true)
                     {
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.HandRight_X), MemoryManager.StringToByteArray(BoneLoader.HandRight.Replace(" ", string.Empty)));
@@ -22471,8 +22501,8 @@ namespace ConceptMatrix.Views
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.MiddleBRight_X), MemoryManager.StringToByteArray(BoneLoader.MiddleBRight.Replace(" ", string.Empty)));
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ThumbBRight_X), MemoryManager.StringToByteArray(BoneLoader.ThumbBRight.Replace(" ", string.Empty)));
                     }
-                    #endregion
-                    #region Waist
+#endregion
+#region Waist
                     if (WaistAdvLoad == true)
                     {
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.Waist_X), MemoryManager.StringToByteArray(BoneLoader.Waist.Replace(" ", string.Empty)));
@@ -22489,8 +22519,8 @@ namespace ConceptMatrix.Views
                             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.TailE_X), MemoryManager.StringToByteArray(BoneLoader.TailE.Replace(" ", string.Empty)));
                         }
                     }
-                    #endregion
-                    #region LeftLeg
+#endregion
+#region LeftLeg
                     if (LeftLegAdvLoad == true)
                     {
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LegLeft_X), MemoryManager.StringToByteArray(BoneLoader.LegLeft.Replace(" ", string.Empty)));
@@ -22500,8 +22530,8 @@ namespace ConceptMatrix.Views
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.FootLeft_X), MemoryManager.StringToByteArray(BoneLoader.FootLeft.Replace(" ", string.Empty)));
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ToesLeft_X), MemoryManager.StringToByteArray(BoneLoader.ToesLeft.Replace(" ", string.Empty)));
                     }
-                    #endregion
-                    #region RightLeg
+#endregion
+#region RightLeg
                     if (RightLegAdvLoad == true)
                     {
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.LegRight_X), MemoryManager.StringToByteArray(BoneLoader.LegRight.Replace(" ", string.Empty)));
@@ -22511,8 +22541,8 @@ namespace ConceptMatrix.Views
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.FootRight_X), MemoryManager.StringToByteArray(BoneLoader.FootRight.Replace(" ", string.Empty)));
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ToesRight_X), MemoryManager.StringToByteArray(BoneLoader.ToesRight.Replace(" ", string.Empty)));
                     }
-                    #endregion
-                    #region Helm
+#endregion
+#region Helm
                     if (HelmAdvLoad == true)
                     {
                         if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value)) >= 2)
@@ -22642,8 +22672,8 @@ namespace ConceptMatrix.Views
                             }
                         }
                     }
-                    #endregion
-                    #region Top
+#endregion
+#region Top
                     if (TopAdvLoad == true)
                     {
                         if (m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value)) >= 2)
@@ -22710,7 +22740,7 @@ namespace ConceptMatrix.Views
                             }
                         }
                     }
-                    #endregion
+#endregion
                 }
             }
             else return;
@@ -22757,9 +22787,9 @@ namespace ConceptMatrix.Views
             double y = q1.X * q2.Y + q1.Y * q2.X + q1.Z * q2.W - q1.W * q2.Z;
             double z = q1.X * q2.Z - q1.Y * q2.W + q1.Z * q2.X + q1.W * q2.Y;
             double w = q1.X * q2.W + q1.Y * q2.Z - q1.Z * q2.Y + q1.W * q2.X;
-            // double norm = Math.Sqrt(x * x + y * y + z * z + w * w);
-            return new Quaternion(x, y, z, w);
-            // return new Quaternion(x / norm, y / norm, z / norm, w / norm);
+            Quaternion q = new Quaternion(x, y, z, w);
+            q.Normalize();
+            return q;
         }
         private void SaveOldRot(object sender, RoutedEventArgs e)
         {
