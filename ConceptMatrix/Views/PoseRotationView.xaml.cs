@@ -297,7 +297,7 @@ namespace ConceptMatrix.Views
             }
             if (CharacterDetails.ClavicleRight_Rotate == true)
             {
-                RotateHelper(CharacterDetails.ClavicleRight_X, CharacterDetails.ClavicleRight_Y, CharacterDetails.ClavicleRight_Z, CharacterDetails.ClavicleRight_W, MainViewModel.ViewTime5.bone_clav_l);
+                RotateHelper(CharacterDetails.ClavicleRight_X, CharacterDetails.ClavicleRight_Y, CharacterDetails.ClavicleRight_Z, CharacterDetails.ClavicleRight_W, MainViewModel.ViewTime5.bone_clav_r);
                 CharacterDetails.ClavicleRight_Toggle = true;
             }
             if (CharacterDetails.ClothBackCLeft_Rotate == true)
