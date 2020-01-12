@@ -492,6 +492,7 @@ namespace ConceptMatrix.Views
         private bool ReadTetriaryFromRunTime = false;
         private CharacterOffsets c = Settings.Instance.Character;
         private ToggleButton[] exhair_buttons, exmet_buttons, extop_buttons;
+        private bool toggle_helm_parenting = false;
 
         enum FaceRace
         {
@@ -506,7 +507,6 @@ namespace ConceptMatrix.Views
         {
             private readonly string BonesOffset;
             private List<BoneNode> children;
-            private bool prime_rot;
             Quaternion q_rot;
             public BoneNode(string offset)
             {
@@ -535,15 +535,6 @@ namespace ConceptMatrix.Views
             public IEnumerator<BoneNode> GetEnumerator()
             {
                 return children.GetEnumerator();
-            }
-            public void PrimeRot(Quaternion q)
-            {
-                if (!double.IsNaN(q.X))
-                {
-                    prime_rot = true;
-                    q_rot = q;
-                }
-                prime_rot = true;
             }
         }
 
@@ -10706,12 +10697,15 @@ namespace ConceptMatrix.Views
                 bone_face_viera.Add(bone_viera_ear_l[CharacterDetails.TailType.value]);
                 bone_face_viera.Add(bone_viera_ear_r[CharacterDetails.TailType.value]);
             }
-#region Exhair
-            int exhair_value = m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value));
-            for (int i = 0; i < exhair_value - 1; i++)
+            #region Exhair
+            if (toggle_helm_parenting)
             {
-                bone_face.Add(bone_exhair[i]);
-                exhair_buttons[i].IsEnabled = true;
+                int exhair_value = m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value));
+                for (int i = 0; i < exhair_value - 1; i++)
+                {
+                    bone_face.Add(bone_exhair[i]);
+                    exhair_buttons[i].IsEnabled = true;
+                }
             }
 #endregion
 #region ExMet
@@ -10784,12 +10778,12 @@ namespace ConceptMatrix.Views
             y.value = (float)quat.Y;
             z.value = (float)quat.Z;
             w.value = (float)quat.W;
-#region Child Bones
+            oldrot = newrot;
+            newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
+            #region Child Bones
             if (ParentingToggle.IsChecked == true && bnode != null)
             {
                 Bone_Flag_Manager();
-                oldrot = newrot;
-                newrot = new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
                 Quaternion q1_inv = QInv(oldrot.ToQuaternion());
                 Quaternion q1_new = newrot.ToQuaternion();
                 Rotate_ChildBone(bnode, q1_inv, q1_new);
@@ -19735,6 +19729,25 @@ namespace ConceptMatrix.Views
             WeaponsAdvLoad = false;
         }
 
+        private void Helm_Parenting_Checked(object sender, RoutedEventArgs e)
+        {
+            int exmet_value = m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value));
+            for (int i = 0; i < exmet_value - 1; i++)
+            {
+                bone_face.Add(bone_exmet[i]);
+            }
+            toggle_helm_parenting = true;
+        }
+
+        private void Helm_Parenting_Unchecked(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < bone_exmet.Length; i++)
+            {
+                bone_face.Remove(bone_exmet[i]);
+            }
+            toggle_helm_parenting = false;
+        }
+
         private void LoadLeftHand_Checked(object sender, RoutedEventArgs e)
         {
             LeftHandAdvLoad = true;
@@ -20566,6 +20579,10 @@ namespace ConceptMatrix.Views
             {
                 bone_face_viera.Remove(bone_viera_ear_l[i]);
                 bone_face_viera.Remove(bone_viera_ear_r[i]);
+            }
+            for (int i = 0; i < bone_exmet.Length; i++)
+            {
+                bone_face.Remove(bone_exmet[i]);
             }
     }
 
@@ -21423,7 +21440,9 @@ namespace ConceptMatrix.Views
         }
         private void LoadCMP_Click(object sender, RoutedEventArgs e)
         {
-
+            DisableTertiary();
+            Bone_Flag_Manager();
+            EnableTertiaryFlags();
             OpenFileDialog dig = new OpenFileDialog();
             dig.InitialDirectory = SaveSettings.Default.MatrixPoseDirectory;
             if (!Directory.Exists(dig.InitialDirectory)) { Directory.CreateDirectory(dig.InitialDirectory); }

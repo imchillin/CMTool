@@ -98,13 +98,13 @@ namespace ConceptMatrix.Views
             y.value = (float)q.Y;
             z.value = (float)q.Z;
             w.value = (float)q.W;
+            oldrot = newrot;
+            newrot = (Quaternion)RotationQuaternion.GetValue(QuaternionRotation3D.QuaternionProperty);
             #region Child Bones
             if (MainViewModel.ViewTime5.ParentingToggle.IsChecked == true && bnode != null)
             {
                 MainViewModel.ViewTime5.Bone_Flag_Manager();
-                oldrot = newrot;
                 Quaternion q1_inv = CharacterDetailsView5.QInv(oldrot);
-                newrot = (Quaternion)RotationQuaternion.GetValue(QuaternionRotation3D.QuaternionProperty);
                 MainViewModel.ViewTime5.Rotate_ChildBone(bnode, q1_inv, newrot);
             }
             #endregion
