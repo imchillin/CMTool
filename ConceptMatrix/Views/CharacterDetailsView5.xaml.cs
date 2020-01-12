@@ -20513,7 +20513,6 @@ namespace ConceptMatrix.Views
         {
             DisableTertiary();
             Bone_Flag_Manager();
-            EnableTertiaryFlags();
         }
         private void DisableTertiary()
         {
@@ -20581,7 +20580,8 @@ namespace ConceptMatrix.Views
             {
                 bone_face.Remove(bone_exmet[i]);
             }
-    }
+            ReadTetriaryFromRunTime = false;
+        }
 
         public class BoneSaves
         {
@@ -21439,7 +21439,6 @@ namespace ConceptMatrix.Views
         {
             DisableTertiary();
             Bone_Flag_Manager();
-            EnableTertiaryFlags();
             OpenFileDialog dig = new OpenFileDialog();
             dig.InitialDirectory = SaveSettings.Default.MatrixPoseDirectory;
             if (!Directory.Exists(dig.InitialDirectory)) { Directory.CreateDirectory(dig.InitialDirectory); }
