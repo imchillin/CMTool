@@ -506,12 +506,11 @@ namespace ConceptMatrix.Views
         public class BoneNode
         {
             private readonly string BonesOffset;
-            private List<BoneNode> children;
-            Quaternion q_rot;
+            private HashSet<BoneNode> children;
             public BoneNode(string offset)
             {
                 BonesOffset = offset;
-                children = new List<BoneNode>();
+                children = new HashSet<BoneNode>();
             }
 
             public string Get()
@@ -10669,58 +10668,63 @@ namespace ConceptMatrix.Views
 
         public void EnableTertiaryFlags()
         {
-            if (CharacterDetails.Race.value == 4 || CharacterDetails.Race.value == 6 || CharacterDetails.Race.value == 7)
+            if (!ReadTetriaryFromRunTime)
             {
-                TailA.IsEnabled = true;
-                TailB.IsEnabled = true;
-                TailC.IsEnabled = true;
-                TailD.IsEnabled = true;
-                TailE.IsEnabled = true;
-                bone_waist.Add(bone_tail_a);
-            }
-            if (CharacterDetails.Race.value == 7)
-            {
-                HrothWhiskersLeft.IsEnabled = true;
-                HrothWhiskersRight.IsEnabled = true;
-            }
-            if (CharacterDetails.Race.value == 8)
-            {
-                VieraEarALeft.IsEnabled = true;
-                VieraEarARight.IsEnabled = true;
-                VieraEarBLeft.IsEnabled = true;
-                VieraEarBRight.IsEnabled = true;
-                for (int i = 0; i < bone_viera_ear_l.Length; i++)
+                ReadTetriaryFromRunTime = true;
+                if (CharacterDetails.Race.value == 4 || CharacterDetails.Race.value == 6 || CharacterDetails.Race.value == 7)
                 {
-                    bone_face_viera.Remove(bone_viera_ear_l[i]);
-                    bone_face_viera.Remove(bone_viera_ear_r[i]);
+                    TailA.IsEnabled = true;
+                    TailB.IsEnabled = true;
+                    TailC.IsEnabled = true;
+                    TailD.IsEnabled = true;
+                    TailE.IsEnabled = true;
+                    bone_waist.Add(bone_tail_a);
                 }
-                bone_face_viera.Add(bone_viera_ear_l[CharacterDetails.TailType.value]);
-                bone_face_viera.Add(bone_viera_ear_r[CharacterDetails.TailType.value]);
+                if (CharacterDetails.Race.value == 7)
+                {
+                    HrothWhiskersLeft.IsEnabled = true;
+                    HrothWhiskersRight.IsEnabled = true;
+                }
+                if (CharacterDetails.Race.value == 8)
+                {
+                    VieraEarALeft.IsEnabled = true;
+                    VieraEarARight.IsEnabled = true;
+                    VieraEarBLeft.IsEnabled = true;
+                    VieraEarBRight.IsEnabled = true;
+                    for (int i = 0; i < bone_viera_ear_l.Length; i++)
+                    {
+                        bone_face_viera.Remove(bone_viera_ear_l[i]);
+                        bone_face_viera.Remove(bone_viera_ear_r[i]);
+                    }
+                    bone_face_viera.Add(bone_viera_ear_l[CharacterDetails.TailType.value]);
+                    bone_face_viera.Add(bone_viera_ear_r[CharacterDetails.TailType.value]);
+                }
+                #region Exhair
+                int exhair_value = m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value));
+                for (int i = 0; i < exhair_value - 1; i++)
+                {
+                    bone_face.Add(bone_exhair[i]);
+                    exhair_buttons[i].IsEnabled = true;
+                }
+                #endregion
+                #region ExMet
+                int exmet_value = m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value));
+                for (int i = 0; i < exmet_value - 1; i++)
+                {
+                    if (toggle_helm_parenting) bone_face.Add(bone_exmet[i]);
+                    exmet_buttons[i].IsEnabled = true;
+                }
+                #endregion
+                #region ExTop
+                int extop_value = m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value));
+                for (int i = 0; i < extop_value - 1; i++)
+                {
+                    extop_buttons[i].IsEnabled = true;
+                }
+                #endregion
             }
-            #region Exhair
-            int exhair_value = m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value));
-            for (int i = 0; i < exhair_value - 1; i++)
-            {
-                bone_face.Add(bone_exhair[i]);
-                exhair_buttons[i].IsEnabled = true;
-            }
-            #endregion
-            #region ExMet
-            int exmet_value = m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value));
-            for (int i = 0; i < exmet_value - 1; i++)
-            {
-                if (toggle_helm_parenting) bone_face.Add(bone_exmet[i]);
-                exmet_buttons[i].IsEnabled = true;
-            }
-            #endregion
-            #region ExTop
-            int extop_value = m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value));
-            for (int i = 0; i < extop_value - 1; i++)
-            {
-                extop_buttons[i].IsEnabled = true;
-            }
-#endregion
         }
+
         public void Bone_Flag_Manager()
         {
             if (face_check != FaceRace.Middy && CharacterDetails.Race.value < 7)
@@ -10747,11 +10751,7 @@ namespace ConceptMatrix.Views
                 bone_neck.Remove(bone_face_hroth);
                 bone_neck.Add(bone_face_viera);
             }
-            if (!ReadTetriaryFromRunTime)
-            {
-                ReadTetriaryFromRunTime = true;
-                EnableTertiaryFlags();
-            }
+            EnableTertiaryFlags();
         }
 
         private void RemoveRoutedEventListener(RoutedPropertyChangedEventHandler<double> reh)
