@@ -33,12 +33,13 @@ namespace ConceptMatrix.Utility
 			var c1c2 = c1 * c2;
 			var s1s2 = s1 * s2;
 
-			return new Quaternion(
-				c1c2 * s3 + s1s2 * c3,
-				s1 * c2 * c3 + c1 * s2 * s3,
-				c1 * s2 * c3 - s1 * c2 * s3,
-				c1c2 * c3 - s1s2 * s3
-			);
+            var x = c1c2 * s3 + s1s2 * c3;
+            var y = s1 * c2 * c3 + c1 * s2 * s3;
+            var z = c1 * s2 * c3 - s1 * c2 * s3;
+            var w = c1c2 * c3 - s1s2 * s3;
+            // var norm = Math.Sqrt(x * x + y * y + z * z + w * w);
+
+            return new Quaternion(x, y, z, w);
 		}
 
 		private static double NormalizeAngle(double angle)

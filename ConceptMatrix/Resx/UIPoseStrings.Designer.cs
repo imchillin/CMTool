@@ -989,6 +989,15 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Toggle Helm Parenting.
+        /// </summary>
+        public static string ToggleHelmParenting {
+            get {
+                return ResourceManager.GetString("ToggleHelmParenting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Top:.
         /// </summary>
         public static string Top {

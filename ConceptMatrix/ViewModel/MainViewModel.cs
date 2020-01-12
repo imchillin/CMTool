@@ -88,7 +88,7 @@ namespace ConceptMatrix.ViewModel
                 worker.RunWorkerAsync();
                 characterDetails = new CharacterDetailsViewModel(mediator);
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Add(MemoryManager.Instance.BaseAddress, "8");
-                ViewTime5.bonetree = CharacterDetailsView5.InitBonetree();
+                ViewTime5.bonetree = ViewTime5.InitBonetree();
                 Task.Delay(40).Wait();
                 ThreadTime = new ThreadWriting(); // Thread Writing
             }

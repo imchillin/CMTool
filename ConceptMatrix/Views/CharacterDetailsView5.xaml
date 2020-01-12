@@ -202,10 +202,9 @@
                     </Viewbox>
                     <ToggleButton x:Name="HrothWhiskersLeft" Checked="HrothWhiskersLeft_Checked" Unchecked="HrothWhiskersLeft_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="341,302,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="L" />
                     <ToggleButton x:Name="HrothWhiskersRight" Checked="HrothWhiskersRight_Checked" Unchecked="HrothWhiskersRight_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="380,302,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Content="R" />
-
                 </Grid>
             </TabItem>
-            <TabItem Header="{Binding Source={x:Static resx:UIPoseStrings.BodyClothes}}" Width="200" Height="40" Background="{x:Null}" Style="{DynamicResource MenuLevel2}">
+            <TabItem Header="{Binding Source={x:Static resx:UIPoseStrings.BodyClothes}}" Width="200" Height="40" Background="{x:Null}" Style="{DynamicResource MenuLevel2}" VerticalAlignment="Bottom">
                 <Grid>
                     <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.Body2}}" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="175" Width="630" Margin="-1,0,0,0"/>
                     <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.Clothes2}}" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="175" Width="630" Margin="0,255,0,0"/>
@@ -797,8 +796,8 @@
         <ToggleButton x:Name="PhysicsButton" Checked="PhysicsButton_Checked" Unchecked="PhysicsButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1011,405,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False" Visibility="Hidden" />
         <Label x:Name="PhysicsText" Content="{Binding Source={x:Static resx:UIPoseStrings.EnablePhysics}}" HorizontalAlignment="Left" Margin="907,405,0,0" VerticalAlignment="Top" Height="28" Visibility="Hidden"/>
         <Button x:Name="TertiaryButton" ToolTip="{Binding Source={x:Static resx:UIPoseStrings.TertiaryButtonToolTip}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="890,445,0,0" VerticalAlignment="Top" Width="175" Click="EnableTertiary" Height="28" Content="{Binding Source={x:Static resx:UIPoseStrings.DetectTertiaryBones}}" IsEnabled="False"/>
-        <Button x:Name="OldRotButton" Content="OldRot" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="890,478,0,0" VerticalAlignment="Top" Width="74" Click="SaveOldRot" Height="19" Padding="0"/>
-        <Button x:Name="NewRotBotton" Content="NewRot" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="890,502,0,0" VerticalAlignment="Top" Width="74" Click="SaveNewRot" Height="19" Padding="0"/>
+        <ToggleButton x:Name="ToggleHelmParenting" Checked="Helm_Parenting_Checked" Unchecked="Helm_Parenting_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1038,486,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="True" />
+        <Label Content="Toggle Helm Parenting" HorizontalAlignment="Left" Margin="892,486,0,0" VerticalAlignment="Top" Height="28"/>
         <Button x:Name="HeadShortcut" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="863,11,0,0" VerticalAlignment="Top" Width="33" Click="HeadShortcut_Click" Height="33" IsEnabled="true" Padding="0">
             <Button.Background>
                 <ImageBrush ImageSource="/ConceptMatrix;component/Resources/head.png"/>
@@ -849,7 +848,6 @@
                 <ImageBrush ImageSource="/ConceptMatrix;component/Resources/load.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="ApplyRot" Content="Apply" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="973,478,0,0" VerticalAlignment="Top" Width="92" Click="ApplyRelRot" Height="42" Padding="0"/>
         <!-- Parental bone rotation -->
         <ToggleButton x:Name="ParentingToggle" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1067,303,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Checked="ParentingToggle_Checked" Unchecked="ParentingToggle_Unchecked"/>
         <Label Content="Parenting Rotation:" HorizontalAlignment="Left" Margin="940,303,0,0" VerticalAlignment="Top" Height="28"/>

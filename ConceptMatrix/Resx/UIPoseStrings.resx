@@ -490,4 +490,7 @@
   <data name="ZRot" xml:space="preserve">
     <value>Z Rotation:</value>
   </data>
+  <data name="ToggleHelmParenting" xml:space="preserve">
+    <value>Toggle Helm Parenting</value>
+  </data>
 </root>
