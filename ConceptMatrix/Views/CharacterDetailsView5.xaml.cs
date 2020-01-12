@@ -10698,25 +10698,22 @@ namespace ConceptMatrix.Views
                 bone_face_viera.Add(bone_viera_ear_r[CharacterDetails.TailType.value]);
             }
             #region Exhair
-            if (toggle_helm_parenting)
+            int exhair_value = m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value));
+            for (int i = 0; i < exhair_value - 1; i++)
             {
-                int exhair_value = m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value));
-                for (int i = 0; i < exhair_value - 1; i++)
-                {
-                    bone_face.Add(bone_exhair[i]);
-                    exhair_buttons[i].IsEnabled = true;
-                }
+                bone_face.Add(bone_exhair[i]);
+                exhair_buttons[i].IsEnabled = true;
             }
-#endregion
-#region ExMet
+            #endregion
+            #region ExMet
             int exmet_value = m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExMet_Value));
             for (int i = 0; i < exmet_value - 1; i++)
             {
-                bone_face.Add(bone_exmet[i]);
+                if (toggle_helm_parenting) bone_face.Add(bone_exmet[i]);
                 exmet_buttons[i].IsEnabled = true;
             }
-#endregion
-#region ExTop
+            #endregion
+            #region ExTop
             int extop_value = m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExTop_Value));
             for (int i = 0; i < extop_value - 1; i++)
             {
