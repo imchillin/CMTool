@@ -577,7 +577,9 @@ namespace ConceptMatrix.Views
             bone_tail_a,
             bone_tail_b,
             bone_tail_c,
-            bone_tail_d;
+            bone_tail_d,
+            bone_eye_l,
+            bone_eye_r;
         public BoneNode[] bone_exhair;
         public BoneNode[] bone_exmet;
         public BoneNode[] bone_viera_ear_l;
@@ -625,8 +627,8 @@ namespace ConceptMatrix.Views
             bone_face.Child(Settings.Instance.Character.Body.Bones.Jaw_X);
             bone_face.Child(Settings.Instance.Character.Body.Bones.EyelidLowerLeft_X);
             bone_face.Child(Settings.Instance.Character.Body.Bones.EyelidLowerRight_X);
-            bone_face.Child(Settings.Instance.Character.Body.Bones.EyeLeft_X);
-            bone_face.Child(Settings.Instance.Character.Body.Bones.EyeRight_X);
+            bone_eye_l = bone_face.Child(Settings.Instance.Character.Body.Bones.EyeLeft_X);
+            bone_eye_l.Child(Settings.Instance.Character.Body.Bones.EyeRight_X);
             bone_face.Child(Settings.Instance.Character.Body.Bones.EarLeft_X);
             bone_face.Child(Settings.Instance.Character.Body.Bones.EarRight_X);
             bone_face.Child(Settings.Instance.Character.Body.Bones.EarringALeft_X);
@@ -660,8 +662,7 @@ namespace ConceptMatrix.Views
             bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.Jaw_X);
             bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.EyelidLowerLeft_X);
             bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.EyelidLowerRight_X);
-            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.EyeLeft_X);
-            bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.EyeRight_X);
+            bone_face_hroth.Add(bone_eye_l);
             bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.EarLeft_X);
             bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.EarRight_X);
             bone_face_hroth.Child(Settings.Instance.Character.Body.Bones.EarringALeft_X);
@@ -695,8 +696,7 @@ namespace ConceptMatrix.Views
             bone_face_viera.Child(Settings.Instance.Character.Body.Bones.Jaw_X);
             bone_face_viera.Child(Settings.Instance.Character.Body.Bones.EyelidLowerLeft_X);
             bone_face_viera.Child(Settings.Instance.Character.Body.Bones.EyelidLowerRight_X);
-            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.EyeLeft_X);
-            bone_face_viera.Child(Settings.Instance.Character.Body.Bones.EyeRight_X);
+            bone_face_viera.Add(bone_eye_l);
             bone_face_viera.Child(Settings.Instance.Character.Body.Bones.EarLeft_X);
             bone_face_viera.Child(Settings.Instance.Character.Body.Bones.EarRight_X);
             bone_face_viera.Child(Settings.Instance.Character.Body.Bones.EarringALeft_X);
@@ -745,6 +745,11 @@ namespace ConceptMatrix.Views
             bone_viera_ear_l[4].Child(Settings.Instance.Character.Body.Bones.VieraEar04BLeft_X);
             bone_viera_ear_r[4].Child(Settings.Instance.Character.Body.Bones.VieraEar04BRight_X);
             #endregion
+            #endregion
+            #region special handler for eyes
+            bone_eye_r = new BoneNode(Settings.Instance.Character.Body.Bones.EyeRight_X);
+            bone_eye_r.Child(Settings.Instance.Character.Body.Bones.EyeLeft_X);
+            #endregion
             #region armbone tree
             bone_clav_l = bone_cerv.Child(Settings.Instance.Character.Body.Bones.ClavicleLeft_X);
             bone_arm_l = bone_clav_l.Child(Settings.Instance.Character.Body.Bones.ArmLeft_X);
@@ -789,7 +794,6 @@ namespace ConceptMatrix.Views
             bone_ring_r.Child(Settings.Instance.Character.Body.Bones.RingBRight_X);
             bone_pinky_r = bone_hand_r.Child(Settings.Instance.Character.Body.Bones.PinkyARight_X);
             bone_pinky_r.Child(Settings.Instance.Character.Body.Bones.PinkyBRight_X);
-            #endregion
             #region lower half bones tree
             bone_waist = root_tree.Child(Settings.Instance.Character.Body.Bones.Waist_X);
             bone_waist.Child(Settings.Instance.Character.Body.Bones.SheatheLeft_X);
@@ -14262,7 +14266,7 @@ namespace ConceptMatrix.Views
         private void EyeLeft_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
-            RotateHelper(CharacterDetails.EyeLeft_X, CharacterDetails.EyeLeft_Y, CharacterDetails.EyeLeft_Z, CharacterDetails.EyeLeft_W);
+            RotateHelper(CharacterDetails.EyeLeft_X, CharacterDetails.EyeLeft_Y, CharacterDetails.EyeLeft_Z, CharacterDetails.EyeLeft_W, bone_eye_l);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EyeLeft_Slider);
         }
@@ -14270,7 +14274,7 @@ namespace ConceptMatrix.Views
         private void EyeLeft_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
 
-            RotateHelper(CharacterDetails.EyeLeft_X, CharacterDetails.EyeLeft_Y, CharacterDetails.EyeLeft_Z, CharacterDetails.EyeLeft_W);
+            RotateHelper(CharacterDetails.EyeLeft_X, CharacterDetails.EyeLeft_Y, CharacterDetails.EyeLeft_Z, CharacterDetails.EyeLeft_W, bone_eye_l);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EyeLeft_UpDown);
         }
@@ -14294,7 +14298,7 @@ namespace ConceptMatrix.Views
         private void EyeRight_Slider(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
-            RotateHelper(CharacterDetails.EyeRight_X, CharacterDetails.EyeRight_Y, CharacterDetails.EyeRight_Z, CharacterDetails.EyeRight_W);
+            RotateHelper(CharacterDetails.EyeRight_X, CharacterDetails.EyeRight_Y, CharacterDetails.EyeRight_Z, CharacterDetails.EyeRight_W, bone_eye_r);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EyeRight_Slider);
         }
@@ -14302,7 +14306,7 @@ namespace ConceptMatrix.Views
         private void EyeRight_UpDown(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
 
-            RotateHelper(CharacterDetails.EyeRight_X, CharacterDetails.EyeRight_Y, CharacterDetails.EyeRight_Z, CharacterDetails.EyeRight_W);
+            RotateHelper(CharacterDetails.EyeRight_X, CharacterDetails.EyeRight_Y, CharacterDetails.EyeRight_Z, CharacterDetails.EyeRight_W, bone_eye_r);
             // Remove listeners for value changed.
             RemoveRoutedEventListener(EyeRight_UpDown);
         }
