@@ -126,7 +126,17 @@
 							</StackPanel>
 						</Button>
 					</Border>
-				</StackPanel>
+                    <!-- Ena Donate -->
+                    <Border BorderThickness="0 1 0 1" BorderBrush="{DynamicResource MaterialDesignDivider}" Grid.Column="1">
+                        <Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
+                            x:Name="Gitbutton2" Width="auto" Click="Gitbutton2_Click" >
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Link" Margin="0,2,8,0" />
+                                <TextBlock Margin="0 0 0 0" VerticalAlignment="Center" FontSize="14" Width="auto" Text="{Binding Source={x:Static resx:MiscStrings.DonateEna}}"/>
+                            </StackPanel>
+                        </Button>
+                    </Border>
+                </StackPanel>
 
 				<materialDesign:PackIcon Grid.Column="0"  Kind="Donate" Width="96" Height="96" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.RowSpan="3" />
 			</Grid>
