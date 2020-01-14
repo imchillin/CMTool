@@ -288,4 +288,7 @@
   <data name="WindowsExplorer" xml:space="preserve">
     <value>Windows资源管理器</value>
   </data>
+  <data name="DonateEna" xml:space="preserve">
+    <value>赞助Ena</value>
+  </data>
 </root>

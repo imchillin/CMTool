@@ -682,6 +682,15 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Parenting Rotation:.
+        /// </summary>
+        public static string ParentRotation {
+            get {
+                return ResourceManager.GetString("ParentRotation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pauldrons:.
         /// </summary>
         public static string Pauldrons {

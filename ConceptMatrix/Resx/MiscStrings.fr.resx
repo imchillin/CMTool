@@ -288,4 +288,7 @@
   <data name="WindowsExplorer" xml:space="preserve">
     <value>Explorateur Windows</value>
   </data>
+  <data name="DonateEna" xml:space="preserve">
+    <value>Faire un don à Ena</value>
+  </data>
 </root>

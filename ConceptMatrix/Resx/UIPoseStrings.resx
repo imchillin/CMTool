@@ -493,4 +493,7 @@
   <data name="ToggleHelmParenting" xml:space="preserve">
     <value>Toggle Helm Parenting</value>
   </data>
+  <data name="ParentRotation" xml:space="preserve">
+    <value>Parenting Rotation:</value>
+  </data>
 </root>

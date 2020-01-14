@@ -288,4 +288,7 @@
   <data name="WindowsExplorer" xml:space="preserve">
     <value>Windowsエクスプローラー</value>
   </data>
+  <data name="DonateEna" xml:space="preserve">
+    <value>Enaに寄付</value>
+  </data>
 </root>

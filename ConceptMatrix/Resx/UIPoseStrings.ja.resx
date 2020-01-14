@@ -488,4 +488,7 @@
   <data name="ZRotToolTip" xml:space="preserve">
     <value>選択ジョイントのZローテーションを変更する</value>
   </data>
+  <data name="ParentRotation" xml:space="preserve">
+    <value>子育て回転：</value>
+  </data>
 </root>

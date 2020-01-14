@@ -288,4 +288,7 @@
   <data name="WindowsExplorer" xml:space="preserve">
     <value>Windows 탐색기</value>
   </data>
+  <data name="DonateEna" xml:space="preserve">
+    <value>Ena에게 후원하기</value>
+  </data>
 </root>

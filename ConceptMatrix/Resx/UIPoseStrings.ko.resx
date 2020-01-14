@@ -486,4 +486,7 @@
   <data name="ZRotToolTip" xml:space="preserve">
     <value>선택된 관절의 Z축 회전정도를 변경합니다</value>
   </data>
+  <data name="ParentRotation" xml:space="preserve">
+    <value>육아 회전 :</value>
+  </data>
 </root>

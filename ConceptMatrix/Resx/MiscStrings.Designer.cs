@@ -268,6 +268,15 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Donate to Ena.
+        /// </summary>
+        public static string DonateEna {
+            get {
+                return ResourceManager.GetString("DonateEna", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Donate to Johto.
         /// </summary>
         public static string DonateJohto {

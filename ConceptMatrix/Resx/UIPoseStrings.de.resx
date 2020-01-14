@@ -486,4 +486,7 @@
   <data name="ZRotToolTip" xml:space="preserve">
     <value>Modifiziert die Z Drehung des ausgewählten Gelenks.</value>
   </data>
+  <data name="ParentRotation" xml:space="preserve">
+    <value>Eltern Rotation:</value>
+  </data>
 </root>
