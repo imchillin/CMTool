@@ -667,12 +667,12 @@ namespace ConceptMatrix.Views
             }
             if (CharacterDetails.EyeLeft_Rotate == true)
             {
-                RotateHelper(CharacterDetails.EyeLeft_X, CharacterDetails.EyeLeft_Y, CharacterDetails.EyeLeft_Z, CharacterDetails.EyeLeft_W);
+                RotateHelper(CharacterDetails.EyeLeft_X, CharacterDetails.EyeLeft_Y, CharacterDetails.EyeLeft_Z, CharacterDetails.EyeLeft_W, MainViewModel.ViewTime5.bone_eye_l);
                 CharacterDetails.EyeLeft_Toggle = true;
             }
             if (CharacterDetails.EyeRight_Rotate == true)
             {
-                RotateHelper(CharacterDetails.EyeRight_X, CharacterDetails.EyeRight_Y, CharacterDetails.EyeRight_Z, CharacterDetails.EyeRight_W);
+                RotateHelper(CharacterDetails.EyeRight_X, CharacterDetails.EyeRight_Y, CharacterDetails.EyeRight_Z, CharacterDetails.EyeRight_W, MainViewModel.ViewTime5.bone_eye_r);
                 CharacterDetails.EyeRight_Toggle = true;
             }
             if (CharacterDetails.Nose_Rotate == true)

@@ -3105,6 +3105,7 @@ namespace ConceptMatrix.ViewModel
                         CharacterDetails.EyeLeft_Z.value,
                         CharacterDetails.EyeLeft_W.value
                     ).ToEulerAngles();
+                    MainViewModel.ViewTime5.newrot = new Vector3D((float)euler.X, (float)euler.Y, (float)euler.Z);
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
@@ -3128,6 +3129,7 @@ namespace ConceptMatrix.ViewModel
                         CharacterDetails.EyeRight_Z.value,
                         CharacterDetails.EyeRight_W.value
                     ).ToEulerAngles();
+                    MainViewModel.ViewTime5.newrot = new Vector3D((float)euler.X, (float)euler.Y, (float)euler.Z);
 
                     CharacterDetails.BoneX = (float)euler.X;
                     CharacterDetails.BoneY = (float)euler.Y;
