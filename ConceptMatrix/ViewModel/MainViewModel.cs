@@ -55,7 +55,7 @@ namespace ConceptMatrix.ViewModel
                         return;
                     }
                     ARealmReversed realm = null;
-                    if (File.Exists(Path.Combine(GameDirectory, "FFXIVBoot.exe")))
+                    if (File.Exists(Path.Combine(GameDirectory, "FFXIVBoot.exe")) || File.Exists(Path.Combine(GameDirectory, "rail_files", "rail_game_identify.json")))
                     {
                         RegionType = "zh";
                         File.WriteAllText("Definitions/Item.json", Properties.Resources.ItemCN);
@@ -113,7 +113,7 @@ namespace ConceptMatrix.ViewModel
                 {
                     if (File.Exists("SaintCoinach.History.zip"))
                         File.Delete("SaintCoinach.History.zip");
-                    if (File.Exists(Path.Combine(GameDirectory, "FFXIVBoot.exe")))
+                    if (File.Exists(Path.Combine(GameDirectory, "FFXIVBoot.exe")) || File.Exists(Path.Combine(GameDirectory, "rail_files", "rail_game_identify.json")))
                     {
                         File.WriteAllText("Definitions/Item.json", Properties.Resources.ItemCN);
                         realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.ChineseSimplified);
