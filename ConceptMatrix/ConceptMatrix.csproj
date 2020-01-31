@@ -36,7 +36,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -499,4 +499,10 @@
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if $(ConfigurationName) == Debug (
+call "$(DevEnvDir)..\..\VC\Auxiliary\Build\vcvars64.bat"
+editbin /STACK:104857600 "$(TargetPath)"
+)</PostBuildEvent>
+  </PropertyGroup>
 </Project>

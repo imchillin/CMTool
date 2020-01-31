@@ -1517,6 +1517,8 @@
 
     <CamAngleX>134</CamAngleX>
     <CamAngleY>138</CamAngleY>
+    <CamPanX>154</CamPanX>
+    <CamPanY>158</CamPanY>
     <CameraYAMin>150</CameraYAMin>
     <CameraYAMax>14C</CameraYAMax>
     <CameraHeight2>164</CameraHeight2>

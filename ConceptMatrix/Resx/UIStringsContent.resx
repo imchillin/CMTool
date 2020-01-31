@@ -315,13 +315,13 @@
     <value>Camera View Z:</value>
   </data>
   <data name="CameraXPos" xml:space="preserve">
-    <value>Camera Pos X:</value>
+    <value>Camera Off X:</value>
   </data>
   <data name="CameraYPos" xml:space="preserve">
-    <value>Camera Pos Y:</value>
+    <value>Camera Off Y:</value>
   </data>
   <data name="CameraZPos" xml:space="preserve">
-    <value>Camera Pos Z:</value>
+    <value>Camera Off Z:</value>
   </data>
   <data name="CamRotation" xml:space="preserve">
     <value>Cam Rotation:</value>

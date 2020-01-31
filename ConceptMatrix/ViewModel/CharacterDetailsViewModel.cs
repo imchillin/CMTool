@@ -6845,12 +6845,11 @@ namespace ConceptMatrix.ViewModel
 
                 if (!CharacterDetails.CameraUpDown.freeze) CharacterDetails.CameraUpDown.value = m.readFloat(GAS(MemoryManager.Instance.CameraAddress, c.CameraUpDown));
 
-                if (!CharacterDetails.FOVMAX.freeze)
+                if (!CharacterDetails.FOVC.freeze)
                 {
                     CharacterDetails.FOVMAX.value = m.readFloat(GAS(MemoryManager.Instance.CameraAddress, c.FOVMAX));
                     CharacterDetails.FOVC.value = m.readFloat(GAS(MemoryManager.Instance.CameraAddress, c.FOVC));
                 }
-
                 if (!CharacterDetails.CZoom.freeze) CharacterDetails.CZoom.value = m.readFloat(GAS(MemoryManager.Instance.CameraAddress, c.CZoom));
 
                 if (!CharacterDetails.Min.freeze) CharacterDetails.Min.value = m.readFloat(GAS(MemoryManager.Instance.CameraAddress, c.Min));
@@ -6860,6 +6859,10 @@ namespace ConceptMatrix.ViewModel
                 if (!CharacterDetails.CamAngleX.freeze) CharacterDetails.CamAngleX.value = m.readFloat(GAS(MemoryManager.Instance.CameraAddress, c.CamAngleX));
 
                 if (!CharacterDetails.CamAngleY.freeze) CharacterDetails.CamAngleY.value = m.readFloat(GAS(MemoryManager.Instance.CameraAddress, c.CamAngleY));
+
+                if (!CharacterDetails.CamPanX.freeze) CharacterDetails.CamPanX.value = m.readFloat(GAS(MemoryManager.Instance.CameraAddress, c.CamPanX));
+
+                if (!CharacterDetails.CamPanY.freeze) CharacterDetails.CamPanY.value = m.readFloat(GAS(MemoryManager.Instance.CameraAddress, c.CamPanY));
 
                 if (!CharacterDetails.CamZ.freeze && CharacterDetails.GposeMode)
                 {

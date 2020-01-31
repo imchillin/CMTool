@@ -19,7 +19,7 @@ namespace ConceptMatrix.Resx {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class UIStringsContent {
@@ -642,7 +642,7 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Camera Pos X:.
+        ///   Looks up a localized string similar to Camera Off X:.
         /// </summary>
         public static string CameraXPos {
             get {
@@ -651,7 +651,7 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Camera Pos Y:.
+        ///   Looks up a localized string similar to Camera Off Y:.
         /// </summary>
         public static string CameraYPos {
             get {
@@ -660,7 +660,7 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Camera Pos Z:.
+        ///   Looks up a localized string similar to Camera Off Z:.
         /// </summary>
         public static string CameraZPos {
             get {

@@ -1868,9 +1868,9 @@ namespace ConceptMatrix.Utility
                     if (CharacterDetails.WeaponBlue.freeze) m.writeBytes(GAS(c.WeaponBlue), CharacterDetails.WeaponBlue.GetBytes());
                     if (CharacterDetails.WeaponGreen.freeze) m.writeBytes(GAS(c.WeaponGreen), CharacterDetails.WeaponGreen.GetBytes());
                     if (CharacterDetails.WeaponRed.freeze) m.writeBytes(GAS(c.WeaponRed), CharacterDetails.WeaponRed.GetBytes());
-                    if (CharacterDetails.FOVMAX.freeze)
+                    if (CharacterDetails.FOVC.freeze)
                     {
-                        m.writeBytes(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, c.FOVMAX), CharacterDetails.FOVMAX.GetBytes());
+                        m.writeBytes(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, c.FOVMAX), CharacterDetails.FOVC.GetBytes());
                         m.writeBytes(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, c.FOVC), CharacterDetails.FOVC.GetBytes());
                     }
                     if (CharacterDetails.Max.freeze) m.writeBytes(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, c.Max), CharacterDetails.Max.GetBytes());
@@ -1878,6 +1878,8 @@ namespace ConceptMatrix.Utility
                     if (CharacterDetails.CZoom.freeze) m.writeBytes(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, c.CZoom), CharacterDetails.CZoom.GetBytes());
                     if (CharacterDetails.CamAngleX.freeze) m.writeBytes(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, c.CamAngleX), CharacterDetails.CamAngleX.GetBytes());
                     if (CharacterDetails.CamAngleY.freeze) m.writeBytes(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, c.CamAngleY), CharacterDetails.CamAngleY.GetBytes());
+                    if (CharacterDetails.CamPanX.freeze) m.writeBytes(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, c.CamPanX), CharacterDetails.CamPanX.GetBytes());
+                    if (CharacterDetails.CamPanY.freeze) m.writeBytes(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, c.CamPanY), CharacterDetails.CamPanY.GetBytes());
 
                     if (CharacterDetails.Job.freeze && !CharacterDetails.Job.Activated)
                     {
