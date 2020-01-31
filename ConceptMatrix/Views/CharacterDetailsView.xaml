@@ -406,7 +406,7 @@
                 <materialDesign:PackIcon Kind="ContentSave" Margin="0 0 0 0" Padding="0" Width="16" Height="16"/>
             </StackPanel>
         </Button>
-        <Button x:Name="GposeViewSettingsLoad" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="810,492,0,0" Width="28" Click="GposeViewSettingsLoad_Click" Height="28" Padding="0" RenderTransformOrigin="6.24,-0.429" VerticalAlignment="Top">
+        <Button x:Name="GposeViewSettingsLoad" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="810,492,0,0" Width="28" Click="GposeViewSettingsLoad_Click" Height="28" Padding="0" RenderTransformOrigin="6.24,-0.429" VerticalAlignment="Top" IsEnabled="False">
             <StackPanel Orientation="Horizontal" Width="16" Height="16">
                 <materialDesign:PackIcon Kind="Download" Margin="0 0 0 0" Padding="0" Width="16" Height="16"/>
             </StackPanel>

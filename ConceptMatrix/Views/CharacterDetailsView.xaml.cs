@@ -1377,6 +1377,9 @@ namespace ConceptMatrix.Views
 			{
 				var settings = JsonConvert.DeserializeObject<SaveSettings.LocationSettings>(File.ReadAllText(dlg.FileName));
 
+				// Make sure user didn't exit gpose while loading
+				if (!GposeViewSettingsLoad.IsEnabled) return;
+
 				CharacterDetails.CamX.freeze = true;
 				CharacterDetails.CamY.freeze = true;
 				CharacterDetails.CamZ.freeze = true;

@@ -1097,6 +1097,7 @@ namespace ConceptMatrix
             MainViewModel.ViewTime.CamXCheck.IsEnabled = true;
             MainViewModel.ViewTime.CamYCheck.IsEnabled = true;
             MainViewModel.ViewTime.CamZCheck.IsEnabled = true;
+            MainViewModel.ViewTime.GposeViewSettingsLoad.IsEnabled = true;
 
             /*
             MainViewModel.ViewTime.FaceCamXCheck.IsEnabled = true;
@@ -1165,6 +1166,7 @@ namespace ConceptMatrix
             MainViewModel.ViewTime.CamXCheck.IsEnabled = false;
             MainViewModel.ViewTime.CamYCheck.IsEnabled = false;
             MainViewModel.ViewTime.CamZCheck.IsEnabled = false;
+            MainViewModel.ViewTime.GposeViewSettingsLoad.IsEnabled = false;
 
             /*
             MainViewModel.ViewTime.FaceCamXCheck.IsEnabled = false;
