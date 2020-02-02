@@ -1285,4 +1285,26 @@
   <data name="Wiki" xml:space="preserve">
     <value>Wiki</value>
   </data>
+  <data name="CamSettingsLoadToolTip" xml:space="preserve">
+    <value>Load camera settings from file.</value>
+  </data>
+  <data name="CamSettingsSaveToolTip" xml:space="preserve">
+    <value>Save camera settings to file.</value>
+  </data>
+  <data name="GposeViewSettingsLoadToolTip" xml:space="preserve">
+    <value>Load GPose View position from file.
+• Hold CTRL when clicking this to load as an offset from the current actor position.
+• You can load saved actor positionss to jump GPose View actor to that position.</value>
+  </data>
+  <data name="GposeViewSettingsSaveToolTip" xml:space="preserve">
+    <value>Save GPose View position to file.</value>
+  </data>
+  <data name="PosSettingsLoadToolTip" xml:space="preserve">
+    <value>Load actor position from file.
+• Hold CTRL when clicking this to load as an offset from the current GPose View.
+• You can load saved GPose View positions to jump an actor to that position.</value>
+  </data>
+  <data name="PosSettingsSaveToolTip" xml:space="preserve">
+    <value>Save actor position to file.</value>
+  </data>
 </root>

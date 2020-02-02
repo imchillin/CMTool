@@ -1271,6 +1271,11 @@ namespace ConceptMatrix.Views
 					X = CharacterDetails.X.value,
 					Y = CharacterDetails.Y.value,
 					Z = CharacterDetails.Z.value,
+
+					OffsetFromViewX = CharacterDetails.CamX.value - CharacterDetails.X.value,
+					OffsetFromViewY = CharacterDetails.CamY.value - CharacterDetails.Y.value,
+					OffsetFromViewZ = CharacterDetails.CamZ.value - CharacterDetails.Z.value,
+
 					Rotation1 = CharacterDetails.Rotation.value,
 					Rotation2 = CharacterDetails.Rotation2.value,
 					Rotation3 = CharacterDetails.Rotation3.value,
@@ -1287,10 +1292,12 @@ namespace ConceptMatrix.Views
 
 		private void PosSettingsLoad_Click(object sender, RoutedEventArgs e)
 		{
+			bool use_offsets = Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl);
+
 			var dlg = new OpenFileDialog
 			{
 				InitialDirectory = SaveSettings.Default.ProfileDirectory,
-				Filter = "Concept Matrix Location File (*.cml)|*.cml",
+				Filter = "Concept Matrix Location File (*.cml)|*.cml|Concept Matrix Gpose View File (*.cmg)|*.cmg",
 				DefaultExt = ".cml"
 			};
 
@@ -1303,9 +1310,18 @@ namespace ConceptMatrix.Views
 				CharacterDetails.Y.freeze = true;
 				CharacterDetails.Z.freeze = true;
 
-				CharacterDetails.X.value = settings.X;
-				CharacterDetails.Y.value = settings.Y;
-				CharacterDetails.Z.value = settings.Z;
+				if (use_offsets)
+				{
+					CharacterDetails.X.value = CharacterDetails.CamX.value - settings.OffsetFromViewX;
+					CharacterDetails.Y.value = CharacterDetails.CamY.value - settings.OffsetFromViewY;
+					CharacterDetails.Z.value = CharacterDetails.CamZ.value - settings.OffsetFromViewZ;
+				}
+				else
+				{
+					CharacterDetails.X.value = settings.X;
+					CharacterDetails.Y.value = settings.Y;
+					CharacterDetails.Z.value = settings.Z;
+				}
 
 				if (!float.IsNaN(settings.Rotation1) &&
 					!float.IsNaN(settings.Rotation2) &&
@@ -1324,7 +1340,6 @@ namespace ConceptMatrix.Views
 					CharacterDetails.RotateY = (float)euler.Y;
 					CharacterDetails.RotateZ = (float)euler.Z;
 
-
 					CharacterDetails.Rotation.value = settings.Rotation1;
 					CharacterDetails.Rotation2.value = settings.Rotation2;
 					CharacterDetails.Rotation3.value = settings.Rotation3;
@@ -1340,7 +1355,7 @@ namespace ConceptMatrix.Views
 			var dlg = new SaveFileDialog
 			{
 				InitialDirectory = SaveSettings.Default.ProfileDirectory,
-				Filter = "Concept Matrix Location File (*.cml)|*.cml"
+				Filter = "Concept Matrix Gpose View File (*.cmg)|*.cmg"
 			};
 
 			if (dlg.ShowDialog() == true)
@@ -1351,6 +1366,11 @@ namespace ConceptMatrix.Views
 					X = CharacterDetails.CamX.value,
 					Y = CharacterDetails.CamY.value,
 					Z = CharacterDetails.CamZ.value,
+
+					OffsetFromViewX = CharacterDetails.CamX.value - CharacterDetails.X.value,
+					OffsetFromViewY = CharacterDetails.CamY.value - CharacterDetails.Y.value,
+					OffsetFromViewZ = CharacterDetails.CamZ.value - CharacterDetails.Z.value,
+
 					OffsetX = CharacterDetails.CamViewX.value,
 					OffsetY = CharacterDetails.CamViewY.value,
 					OffsetZ = CharacterDetails.CamViewZ.value
@@ -1366,11 +1386,13 @@ namespace ConceptMatrix.Views
 
 		private void GposeViewSettingsLoad_Click(object sender, RoutedEventArgs e)
 		{
+			bool use_offsets = Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl);
+
 			var dlg = new OpenFileDialog
 			{
 				InitialDirectory = SaveSettings.Default.ProfileDirectory,
-				Filter = "Concept Matrix Location File (*.cml)|*.cml",
-				DefaultExt = ".cml"
+				Filter = "Concept Matrix Gpose View File (*.cmg)|*.cmg|Concept Matrix Location File (*.cml)|*.cml",
+				DefaultExt = ".cmg"
 			};
 
 			if (dlg.ShowDialog() == true)
@@ -1384,9 +1406,18 @@ namespace ConceptMatrix.Views
 				CharacterDetails.CamY.freeze = true;
 				CharacterDetails.CamZ.freeze = true;
 
-				CharacterDetails.CamX.value = settings.X;
-				CharacterDetails.CamY.value = settings.Y;
-				CharacterDetails.CamZ.value = settings.Z;
+				if (use_offsets)
+				{
+					CharacterDetails.CamX.value = CharacterDetails.X.value + settings.OffsetFromViewX;
+					CharacterDetails.CamY.value = CharacterDetails.Y.value + settings.OffsetFromViewY;
+					CharacterDetails.CamZ.value = CharacterDetails.Z.value + settings.OffsetFromViewZ;
+				}
+				else
+				{
+					CharacterDetails.CamX.value = settings.X;
+					CharacterDetails.CamY.value = settings.Y;
+					CharacterDetails.CamZ.value = settings.Z;
+				}
 
 				if (!float.IsNaN(settings.OffsetX) &&
 					!float.IsNaN(settings.OffsetY) &&

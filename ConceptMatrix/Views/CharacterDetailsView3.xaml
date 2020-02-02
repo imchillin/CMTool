@@ -178,12 +178,12 @@
 
         <Button x:Name="LoadCamView" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.LoadButton}}" HorizontalAlignment="Left" Margin="342,387,0,0" VerticalAlignment="Top" Width="50" Height="28" FontSize="12" Click="LoadCamAngle_Click" RenderTransformOrigin="0.5,0.5" Padding="0,4"/>
 
-        <Button x:Name="CamSettingsSave" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="287,420,0,0" Width="50" Click="CamSettingsSave_Click" Height="28" Padding="0" RenderTransformOrigin="6.24,-0.429" VerticalAlignment="Top">
+        <Button x:Name="CamSettingsSave" ToolTip="{Binding Source={x:Static resx:UIStringsContent.CamSettingsSaveToolTip}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="287,420,0,0" Width="50" Click="CamSettingsSave_Click" Height="28" Padding="0" RenderTransformOrigin="6.24,-0.429" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal" Width="50" Height="16">
                 <materialDesign:PackIcon Kind="ContentSave" Margin="17 0 0 0" Padding="0" Width="16" Height="16"/>
             </StackPanel>
         </Button>
-        <Button x:Name="CamSettingsLoad" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="342,420,0,0" Width="50" Click="CamSettingsLoad_Click" Height="28" Padding="0" RenderTransformOrigin="6.24,-0.429" VerticalAlignment="Top">
+        <Button x:Name="CamSettingsLoad" ToolTip="{Binding Source={x:Static resx:UIStringsContent.CamSettingsLoadToolTip}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="342,420,0,0" Width="50" Click="CamSettingsLoad_Click" Height="28" Padding="0" RenderTransformOrigin="6.24,-0.429" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal" Width="50" Height="16">
                 <materialDesign:PackIcon Kind="Download" Margin="17 0 0 0" Padding="0" Width="16" Height="16"/>
             </StackPanel>

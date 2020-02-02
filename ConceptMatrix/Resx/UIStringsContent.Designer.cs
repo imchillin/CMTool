@@ -678,6 +678,25 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Load camera settings from file.
+        ///• Try jiggling the camera or loading again if the camera is blocked by an object and didn&apos;t restore completely..
+        /// </summary>
+        public static string CamSettingsLoadToolTip {
+            get {
+                return ResourceManager.GetString("CamSettingsLoadToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save camera settings to file..
+        /// </summary>
+        public static string CamSettingsSaveToolTip {
+            get {
+                return ResourceManager.GetString("CamSettingsSaveToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cam Up/Down:.
         /// </summary>
         public static string CamUpDown {
@@ -1422,6 +1441,26 @@ namespace ConceptMatrix.Resx {
         public static string GposeModeToolTip {
             get {
                 return ResourceManager.GetString("GposeModeToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Load GPose View position from file.
+        ///• Hold CTRL when clicking this to load as an offset from the current actor position.
+        ///• You can load saved actor positionss to jump GPose View actor to that position..
+        /// </summary>
+        public static string GposeViewSettingsLoadToolTip {
+            get {
+                return ResourceManager.GetString("GposeViewSettingsLoadToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save GPose View position to file..
+        /// </summary>
+        public static string GposeViewSettingsSaveToolTip {
+            get {
+                return ResourceManager.GetString("GposeViewSettingsSaveToolTip", resourceCulture);
             }
         }
         
@@ -2389,6 +2428,28 @@ namespace ConceptMatrix.Resx {
         public static string PosingMatrix {
             get {
                 return ResourceManager.GetString("PosingMatrix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Load actor position from file.
+        ///• Hold CTRL when clicking this to load as an offset from the current GPose View.
+        ///• You can load saved GPose View positions to jump an actor to that position.
+        ///• Visible position is affected by emote animations! Use the same neutral emote when loading and saving for best results..
+        /// </summary>
+        public static string PosSettingsLoadToolTip {
+            get {
+                return ResourceManager.GetString("PosSettingsLoadToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save actor position to file.
+        ///• Visible position is affected by emote animations! Use the same neutral emote when loading and saving for best results..
+        /// </summary>
+        public static string PosSettingsSaveToolTip {
+            get {
+                return ResourceManager.GetString("PosSettingsSaveToolTip", resourceCulture);
             }
         }
         

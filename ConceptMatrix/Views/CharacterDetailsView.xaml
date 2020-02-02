@@ -391,22 +391,22 @@
             <Label Content="{Binding Source={x:Static resx:UIStringsContent.RelativeXYZRot}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.RelativeXYZRotToolTip}}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"/>
         </Viewbox>
         <ToggleButton Name="RotRelButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1067,305,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Checked="RotRelButton_Checked" Unchecked="RotRelButton_Unchecked" />
-        <Button x:Name="PosSettingsSave" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Right" Margin="0,182,234,0" Width="28" Click="PosSettingsSave_Click" Height="28" Padding="0" RenderTransformOrigin="6.24,-0.429" VerticalAlignment="Top">
+        <Button x:Name="PosSettingsSave" ToolTip="{Binding Source={x:Static resx:UIStringsContent.PosSettingsSaveToolTip}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Right" Margin="0,182,234,0" Width="28" Click="PosSettingsSave_Click" Height="28" Padding="0" RenderTransformOrigin="6.24,-0.429" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal" Width="16" Height="16">
                 <materialDesign:PackIcon Kind="ContentSave" Margin="0 0 0 0" Padding="0" Width="16" Height="16"/>
             </StackPanel>
         </Button>
-        <Button x:Name="PosSettingsLoad" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="881,182,0,0" Width="28" Click="PosSettingsLoad_Click" Height="28" Padding="0" RenderTransformOrigin="6.24,-0.429" VerticalAlignment="Top">
+        <Button x:Name="PosSettingsLoad" ToolTip="{Binding Source={x:Static resx:UIStringsContent.PosSettingsLoadToolTip}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="881,182,0,0" Width="28" Click="PosSettingsLoad_Click" Height="28" Padding="0" RenderTransformOrigin="6.24,-0.429" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal" Width="16" Height="16">
                 <materialDesign:PackIcon Kind="Download" Margin="0 0 0 0" Padding="0" Width="16" Height="16"/>
             </StackPanel>
         </Button>
-        <Button x:Name="GposeViewSettingsSave" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Right" Margin="0,492,305,0" Width="28" Click="GposeViewSettingsSave_Click" Height="28" Padding="0" RenderTransformOrigin="6.24,-0.429" VerticalAlignment="Top">
+        <Button x:Name="GposeViewSettingsSave" ToolTip="{Binding Source={x:Static resx:UIStringsContent.GposeViewSettingsSaveToolTip}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Right" Margin="0,492,305,0" Width="28" Click="GposeViewSettingsSave_Click" Height="28" Padding="0" RenderTransformOrigin="6.24,-0.429" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal" Width="16" Height="16">
                 <materialDesign:PackIcon Kind="ContentSave" Margin="0 0 0 0" Padding="0" Width="16" Height="16"/>
             </StackPanel>
         </Button>
-        <Button x:Name="GposeViewSettingsLoad" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="810,492,0,0" Width="28" Click="GposeViewSettingsLoad_Click" Height="28" Padding="0" RenderTransformOrigin="6.24,-0.429" VerticalAlignment="Top" IsEnabled="False">
+        <Button x:Name="GposeViewSettingsLoad" ToolTip="{Binding Source={x:Static resx:UIStringsContent.GposeViewSettingsLoadToolTip}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="810,492,0,0" Width="28" Click="GposeViewSettingsLoad_Click" Height="28" Padding="0" RenderTransformOrigin="6.24,-0.429" VerticalAlignment="Top" IsEnabled="False">
             <StackPanel Orientation="Horizontal" Width="16" Height="16">
                 <materialDesign:PackIcon Kind="Download" Margin="0 0 0 0" Padding="0" Width="16" Height="16"/>
             </StackPanel>

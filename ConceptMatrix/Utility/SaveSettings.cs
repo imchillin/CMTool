@@ -75,6 +75,10 @@ namespace ConceptMatrix.Utility
             public float Y { get; set; } = 0;
             public float Z { get; set; } = 0;
 
+            public float OffsetFromViewX { get; set; } = float.NaN;
+            public float OffsetFromViewY { get; set; } = float.NaN;
+            public float OffsetFromViewZ { get; set; } = float.NaN;
+
             public float Rotation1{ get; set; } = float.NaN;
             public float Rotation2 { get; set; } = float.NaN;
             public float Rotation3 { get; set; } = float.NaN;

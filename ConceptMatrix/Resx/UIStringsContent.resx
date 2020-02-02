@@ -326,6 +326,13 @@
   <data name="CamRotation" xml:space="preserve">
     <value>Cam Rotation:</value>
   </data>
+  <data name="CamSettingsLoadToolTip" xml:space="preserve">
+    <value>Load camera settings from file.
+• Try jiggling the camera or loading again if the camera is blocked by an object and didn't restore completely.</value>
+  </data>
+  <data name="CamSettingsSaveToolTip" xml:space="preserve">
+    <value>Save camera settings to file.</value>
+  </data>
   <data name="CamUpDown" xml:space="preserve">
     <value>Cam Up/Down:</value>
   </data>
@@ -587,6 +594,14 @@
   <data name="GposeModeToolTip" xml:space="preserve">
     <value>Allows for certain values such as XYZ Position, Rotation and Animation to be changed for your currently selected entity in GPose.
 • GPose mode and Target Mode both toggle on at the same time. Make sure not to have Target Mode already toggled on, or it will toggle off instead.</value>
+  </data>
+  <data name="GposeViewSettingsLoadToolTip" xml:space="preserve">
+    <value>Load GPose View position from file.
+• Hold CTRL when clicking this to load as an offset from the current actor position.
+• You can load saved actor positionss to jump GPose View actor to that position.</value>
+  </data>
+  <data name="GposeViewSettingsSaveToolTip" xml:space="preserve">
+    <value>Save GPose View position to file.</value>
   </data>
   <data name="GposeViewX" xml:space="preserve">
     <value>GPose View X:</value>
@@ -918,6 +933,16 @@
   </data>
   <data name="PosingMatrix" xml:space="preserve">
     <value>Posing Matrix</value>
+  </data>
+  <data name="PosSettingsLoadToolTip" xml:space="preserve">
+    <value>Load actor position from file.
+• Hold CTRL when clicking this to load as an offset from the current GPose View.
+• You can load saved GPose View positions to jump an actor to that position.
+• Visible position is affected by emote animations! Use the same neutral emote when loading and saving for best results.</value>
+  </data>
+  <data name="PosSettingsSaveToolTip" xml:space="preserve">
+    <value>Save actor position to file.
+• Visible position is affected by emote animations! Use the same neutral emote when loading and saving for best results.</value>
   </data>
   <data name="PropView" xml:space="preserve">
     <value>Prop
