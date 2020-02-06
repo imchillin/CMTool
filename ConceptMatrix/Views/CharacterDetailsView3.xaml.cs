@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Media.Media3D;
 
 namespace ConceptMatrix.Views
 {
@@ -1211,8 +1212,10 @@ namespace ConceptMatrix.Views
 
         private void LoadCamAngle_Click(object sender, RoutedEventArgs e)
         {
+            bool relative_rot = Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt);
+
             SetFreezeCamAngle(true);
-            ApplyCameraSettings(SaveSettings.Default.LastCameraSave);
+            ApplyCameraSettings(SaveSettings.Default.LastCameraSave, relative_rot);
         }
 
 
@@ -1240,6 +1243,8 @@ namespace ConceptMatrix.Views
 
         private void CamSettingsLoad_Click(object sender, RoutedEventArgs e)
         {
+            bool relative_rot = Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt);
+
             var dlg = new OpenFileDialog
             {
                 InitialDirectory = SaveSettings.Default.ProfileDirectory,
@@ -1252,12 +1257,17 @@ namespace ConceptMatrix.Views
                 var settings = JsonConvert.DeserializeObject<SaveSettings.CameraSettings>(File.ReadAllText(dlg.FileName));
 
                 SetFreezeCamAngle(true);
-                ApplyCameraSettings(settings);
+                ApplyCameraSettings(settings, relative_rot);
             }
         }
 
         private SaveSettings.CameraSettings GetCameraSettings()
         {
+            var euler_rot = new Quaternion(CharacterDetails.Rotation.value,
+                                           CharacterDetails.Rotation2.value,
+                                           CharacterDetails.Rotation3.value,
+                                           CharacterDetails.Rotation4.value).ToEulerAngles();
+
             return new SaveSettings.CameraSettings
             {
                 CurrentZoom = (float)CurrentZoom.Value,
@@ -1272,11 +1282,16 @@ namespace ConceptMatrix.Views
                 CamAngleY = (float)CamAngleY.Value,
 
                 CamPanX = (float)CamPanX.Value,
-                CamPanY = (float)CamPanY.Value
+                CamPanY = (float)CamPanY.Value,
+
+                TargetRotation = (float)euler_rot.Y,
+                TargetRotationName = CharacterDetails.Name.value,
+                TargetRotationRace = CharacterDetails.Race.value,
+                TargetRotationClan = CharacterDetails.Clan.value,
             };
         }
 
-        private void ApplyCameraSettings(SaveSettings.CameraSettings settings)
+        private void ApplyCameraSettings(SaveSettings.CameraSettings settings, bool relative)
         {
             if (settings == null) return;
 
@@ -1292,7 +1307,22 @@ namespace ConceptMatrix.Views
 
             CharacterDetails.CameraUpDown.value = settings.CameraUpDown;
 
-            CharacterDetails.CamAngleX.value = settings.CamAngleX;
+            if (relative)
+            {
+                var euler_rot = new Quaternion(CharacterDetails.Rotation.value,
+                                               CharacterDetails.Rotation2.value,
+                                               CharacterDetails.Rotation3.value,
+                                               CharacterDetails.Rotation4.value).ToEulerAngles();
+
+                var radians = (euler_rot.Y - settings.TargetRotation) * (Math.PI * 2) / 360;
+
+                CharacterDetails.CamAngleX.value = (float) (settings.CamAngleX + radians);
+            } 
+            else
+            {
+                CharacterDetails.CamAngleX.value = settings.CamAngleX;
+            }
+
             CharacterDetails.CamAngleY.value = settings.CamAngleY;
 
             CharacterDetails.CamPanX.value = settings.CamPanX;
