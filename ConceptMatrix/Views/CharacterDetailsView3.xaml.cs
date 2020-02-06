@@ -33,54 +33,6 @@ namespace ConceptMatrix.Views
             MainViewModel.ViewTime3 = this;
         }
 
-        private void CamViewX_SourceUpdated(object sender, DataTransferEventArgs e)
-        {
-            if (CamViewX.IsMouseOver || CamViewX.IsKeyboardFocusWithin)
-            {
-                CamViewX.ValueChanged -= CamViewX_;
-                CamViewX.ValueChanged += CamViewX_;
-            }
-        }
-        private void CamViewX_(object sender, RoutedPropertyChangedEventArgs<double?> e)
-        {
-            if (CamViewX.Value.HasValue)
-                if (CamViewX.IsMouseOver || CamViewX.IsKeyboardFocusWithin)
-                    MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.CamViewX), "float", CamViewX.Value.ToString());
-            CamViewX.ValueChanged -= CamViewX_;
-        }
-
-        private void CamViewY_SourceUpdated(object sender, DataTransferEventArgs e)
-        {
-            if (CamViewY.IsMouseOver || CamViewY.IsKeyboardFocusWithin)
-            {
-                CamViewY.ValueChanged -= CamViewY_;
-                CamViewY.ValueChanged += CamViewY_;
-            }
-        }
-        private void CamViewY_(object sender, RoutedPropertyChangedEventArgs<double?> e)
-        {
-            if (CamViewY.Value.HasValue)
-                if (CamViewY.IsMouseOver || CamViewY.IsKeyboardFocusWithin)
-                    MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.CamViewY), "float", CamViewY.Value.ToString());
-            CamViewY.ValueChanged -= CamViewY_;
-        }
-
-        private void CamViewZ_SourceUpdated(object sender, DataTransferEventArgs e)
-        {
-            if (CamViewZ.IsMouseOver || CamViewZ.IsKeyboardFocusWithin)
-            {
-                CamViewZ.ValueChanged -= CamViewZ_;
-                CamViewZ.ValueChanged += CamViewZ_;
-            }
-        }
-        private void CamViewZ_(object sender, RoutedPropertyChangedEventArgs<double?> e)
-        {
-            if (CamViewZ.Value.HasValue)
-                if (CamViewZ.IsMouseOver || CamViewZ.IsKeyboardFocusWithin)
-                    MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.CamViewZ), "float", CamViewZ.Value.ToString());
-            CamViewZ.ValueChanged -= CamViewZ_;
-        }
-
         private void MaxZoomXD(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (MaxZoom.Value.HasValue)
@@ -1143,6 +1095,15 @@ namespace ConceptMatrix.Views
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.FOVMAX), "float", CharacterDetails.FOVMAX.value.ToString());
             CharacterDetails.CameraUpDown.value = -0.21952191f;
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CameraUpDown), "float", CharacterDetails.CameraUpDown.value.ToString());
+
+            CharacterDetails.CamAngleX.value = 0;
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CamAngleX), "float", CharacterDetails.CamAngleX.value.ToString());
+            CharacterDetails.CamAngleY.value = 0;
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CamAngleY), "float", CharacterDetails.CamAngleY.value.ToString());
+            CharacterDetails.CamPanX.value = 0;
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CamPanX), "float", CharacterDetails.CamPanX.value.ToString());
+            CharacterDetails.CamPanY.value = 0;
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CamPanY), "float", CharacterDetails.CamPanY.value.ToString());
         }
 
         private void Renda_Click(object sender, RoutedEventArgs e)
@@ -1185,16 +1146,163 @@ namespace ConceptMatrix.Views
             }
         }
 
+        private void CamPanVC(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            if (CamPanY.Value.HasValue)
+            {
+                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CamPanY), "float", CamPanY.Value.ToString());
+            }
+            CamPanY.ValueChanged -= CamPanVC;
+        }
+        private void CamPanY_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
+        {
+            if (CamPanY.IsMouseOver || CamPanY.IsKeyboardFocusWithin)
+            {
+                CamPanY.ValueChanged -= CamPanVC;
+                CamPanY.ValueChanged += CamPanVC;
+            }
+        }
+        private void CamPanVC2(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            if (CamPanX.Value.HasValue)
+            {
+                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CamPanX), "float", CamPanX.Value.ToString());
+            }
+            CamPanX.ValueChanged -= CamPanVC2;
+        }
+        private void CamPanX_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
+        {
+            if (CamPanX.IsMouseOver || CamPanX.IsKeyboardFocusWithin)
+            {
+                CamPanX.ValueChanged -= CamPanVC2;
+                CamPanX.ValueChanged += CamPanVC2;
+            }
+        }
+
+        static public bool FreezeCamAngleSet = false;
+        private void FreezeCamAngle_Click(object sender, RoutedEventArgs e)
+        {
+            SetFreezeCamAngle(!FreezeCamAngleSet);
+        }
+
+        void SetFreezeCamAngle(bool freeze)
+        {
+            FreezeCamAngleSet = freeze;
+
+            CharacterDetails.CZoom.freeze = freeze;
+            CharacterDetails.FOVC.freeze = freeze;
+            CharacterDetails.FOV2.freeze = freeze;
+
+            CharacterDetails.CameraHeight2.freeze = freeze;
+
+            CharacterDetails.CameraUpDown.freeze = freeze;
+
+            CharacterDetails.CamAngleX.freeze = freeze;
+            CharacterDetails.CamAngleY.freeze = freeze;
+
+            CharacterDetails.CamPanX.freeze = freeze;
+            CharacterDetails.CamPanY.freeze = freeze;
+        }
+
         private void SaveCamAngle_Click(object sender, RoutedEventArgs e)
         {
-            SaveSettings.Default.CamAngleX = (float)CamAngleX.Value;
-            SaveSettings.Default.CamAngleY = (float)CamAngleY.Value;
+            SaveSettings.Default.LastCameraSave = GetCameraSettings();
         }
 
         private void LoadCamAngle_Click(object sender, RoutedEventArgs e)
         {
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CamAngleX), "float", SaveSettings.Default.CamAngleX.ToString());
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CamAngleY), "float", SaveSettings.Default.CamAngleY.ToString());
+            SetFreezeCamAngle(true);
+            ApplyCameraSettings(SaveSettings.Default.LastCameraSave);
+        }
+
+
+        private void CamSettingsSave_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.CurrentlySaving = true;
+
+            var dlg = new SaveFileDialog
+            {
+                InitialDirectory = SaveSettings.Default.ProfileDirectory,
+                Filter = "Concept Matrix Camera File (*.cmc)|*.cmc"
+            };
+
+            if (dlg.ShowDialog() == true)
+            {
+                var settings = GetCameraSettings();
+
+                string data = JsonConvert.SerializeObject(settings, Formatting.Indented, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
+
+                File.WriteAllText(dlg.FileName, data);
+            }
+                
+            MainWindow.CurrentlySaving = false;
+        }
+
+        private void CamSettingsLoad_Click(object sender, RoutedEventArgs e)
+        {
+            var dlg = new OpenFileDialog
+            {
+                InitialDirectory = SaveSettings.Default.ProfileDirectory,
+                Filter = "Concept Matrix Camera File (*.cmc)|*.cmc",
+                DefaultExt = ".cmc"
+            };
+
+            if (dlg.ShowDialog() == true)
+            {
+                var settings = JsonConvert.DeserializeObject<SaveSettings.CameraSettings>(File.ReadAllText(dlg.FileName));
+
+                SetFreezeCamAngle(true);
+                ApplyCameraSettings(settings);
+            }
+        }
+
+        private SaveSettings.CameraSettings GetCameraSettings()
+        {
+            return new SaveSettings.CameraSettings
+            {
+                CurrentZoom = (float)CurrentZoom.Value,
+                FOV = (float)CurrentFOV.Value,
+                FOV2 = (float)FOV2.Value,
+
+                CameraRotation = (float)CameraHeight2.Value,
+
+                CameraUpDown = (float)CamUpDown.Value,
+
+                CamAngleX = (float)CamAngleX.Value,
+                CamAngleY = (float)CamAngleY.Value,
+
+                CamPanX = (float)CamPanX.Value,
+                CamPanY = (float)CamPanY.Value
+            };
+        }
+
+        private void ApplyCameraSettings(SaveSettings.CameraSettings settings)
+        {
+            if (settings == null) return;
+
+            // Zoom in first so that all rotations etc are valid.
+            // This avoids some issues where loaded camera angles won't apply without jigging
+            // the camera manually a bit.
+            CharacterDetails.CZoom.value = 0;
+
+            CharacterDetails.FOVC.value = settings.FOV;
+            CharacterDetails.FOV2.value = settings.FOV2;
+
+            CharacterDetails.CameraHeight2.value = settings.CameraRotation;
+
+            CharacterDetails.CameraUpDown.value = settings.CameraUpDown;
+
+            CharacterDetails.CamAngleX.value = settings.CamAngleX;
+            CharacterDetails.CamAngleY.value = settings.CamAngleY;
+
+            CharacterDetails.CamPanX.value = settings.CamPanX;
+            CharacterDetails.CamPanY.value = settings.CamPanY;
+
+            // Wait for changes to register before zooming out to the desired distance.
+            // The delay required seems related to how far out the camera started.
+            System.Threading.Tasks.Task.Delay(500).Wait();
+
+            CharacterDetails.CZoom.value = settings.CurrentZoom;
         }
 
         private void ForceWeatherBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

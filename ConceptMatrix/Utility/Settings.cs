@@ -146,6 +146,8 @@ namespace ConceptMatrix.Utility
         public string FaceCamZ { get; set; }
         public string CamAngleX { get; set; }
         public string CamAngleY { get; set; }
+        public string CamPanX { get; set; }
+        public string CamPanY { get; set; }
         public string Max { get; set; }
         public string Min { get; set; }
         public string CZoom { get; set; }

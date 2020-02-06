@@ -50,6 +50,45 @@ namespace ConceptMatrix.Utility
         }
         #endregion
 
+        public class CameraSettings
+        {
+            public string CMCVersion { get; set; } = "1.0";
+            public float CurrentZoom { get; set; } = 0;
+            public float FOV { get; set; } = 0;
+            public float FOV2 { get; set; } = 0;
+            // aka CameraHeight2
+            public float CameraRotation { get; set; } = 0;
+            public float CameraUpDown { get; set; } = 0;
+            public float CamAngleX { get; set; } = 0;
+            public float CamAngleY { get; set; } = 0;
+            public float CamPanX { get; set; } = 0;
+            public float CamPanY { get; set; } = 0;
+        }
+
+        // Use the same type for character position and gpose view so
+        // you can sync them to each other via loads if desired.
+        public class LocationSettings
+        {
+            public string CMLVersion { get; set; } = "1.0";
+
+            public float X { get; set; } = 0;
+            public float Y { get; set; } = 0;
+            public float Z { get; set; } = 0;
+
+            public float OffsetFromViewX { get; set; } = float.NaN;
+            public float OffsetFromViewY { get; set; } = float.NaN;
+            public float OffsetFromViewZ { get; set; } = float.NaN;
+
+            public float Rotation1{ get; set; } = float.NaN;
+            public float Rotation2 { get; set; } = float.NaN;
+            public float Rotation3 { get; set; } = float.NaN;
+            public float Rotation4 { get; set; } = float.NaN;
+
+            public float OffsetX { get; set; } = float.NaN;
+            public float OffsetY { get; set; } = float.NaN;
+            public float OffsetZ { get; set; } = float.NaN;
+        }
+
         public string Language { get; set; } = null;
         public string Theme { get; set; } = "Dark";
         public string Primary { get; set; } = "Blue";
@@ -59,8 +98,6 @@ namespace ConceptMatrix.Utility
         public bool KeepDyes { get; set; } = true;
         public bool ReminderTool { get; set; } = false;
         public int ClassIndex { get; set; } = 0;
-        public float CamAngleX { get; set; } = 0;
-        public float CamAngleY { get; set; } = 0;
         public bool RotationSliders { get; set; } = true;
         public bool AdvancedMove { get; set; } = true;
         public bool AltRotate { get; set; } = true;
@@ -75,5 +112,7 @@ namespace ConceptMatrix.Utility
         public WepTuple MainHandQuads { get; set; }
         public WepTuple OffHandQuads { get; set; }
         public List<ExdCsvReader.Emote> FavoriteEmotes { get; set; } = new List<ExdCsvReader.Emote>();
+
+        public CameraSettings LastCameraSave { get; set; }
     }
 }

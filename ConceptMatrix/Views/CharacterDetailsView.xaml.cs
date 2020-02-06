@@ -2,8 +2,11 @@
 using ConceptMatrix.Utility;
 using ConceptMatrix.ViewModel;
 using MahApps.Metro.Controls;
+using Microsoft.Win32;
+using Newtonsoft.Json;
 using System;
 using System.Linq;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -662,6 +665,55 @@ namespace ConceptMatrix.Views
 			CamZ.ValueChanged -= CamZ_;
 		}
 
+		private void CamViewX_SourceUpdated(object sender, DataTransferEventArgs e)
+		{
+			if (CamViewX.IsMouseOver || CamViewX.IsKeyboardFocusWithin)
+			{
+				CamViewX.ValueChanged -= CamViewX_;
+				CamViewX.ValueChanged += CamViewX_;
+			}
+		}
+		private void CamViewX_(object sender, RoutedPropertyChangedEventArgs<double?> e)
+		{
+			if (CamViewX.Value.HasValue)
+				if (CamViewX.IsMouseOver || CamViewX.IsKeyboardFocusWithin)
+					MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.CamViewX), "float", CamViewX.Value.ToString());
+			CamViewX.ValueChanged -= CamViewX_;
+		}
+
+		private void CamViewY_SourceUpdated(object sender, DataTransferEventArgs e)
+		{
+			if (CamViewY.IsMouseOver || CamViewY.IsKeyboardFocusWithin)
+			{
+				CamViewY.ValueChanged -= CamViewY_;
+				CamViewY.ValueChanged += CamViewY_;
+			}
+		}
+		private void CamViewY_(object sender, RoutedPropertyChangedEventArgs<double?> e)
+		{
+			if (CamViewY.Value.HasValue)
+				if (CamViewY.IsMouseOver || CamViewY.IsKeyboardFocusWithin)
+					MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.CamViewY), "float", CamViewY.Value.ToString());
+			CamViewY.ValueChanged -= CamViewY_;
+		}
+
+		private void CamViewZ_SourceUpdated(object sender, DataTransferEventArgs e)
+		{
+			if (CamViewZ.IsMouseOver || CamViewZ.IsKeyboardFocusWithin)
+			{
+				CamViewZ.ValueChanged -= CamViewZ_;
+				CamViewZ.ValueChanged += CamViewZ_;
+			}
+		}
+		private void CamViewZ_(object sender, RoutedPropertyChangedEventArgs<double?> e)
+		{
+			if (CamViewZ.Value.HasValue)
+				if (CamViewZ.IsMouseOver || CamViewZ.IsKeyboardFocusWithin)
+					MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.CamViewZ), "float", CamViewZ.Value.ToString());
+			CamViewZ.ValueChanged -= CamViewZ_;
+		}
+
+		/*
         private void FaceCamX_SourceUpdated(object sender, DataTransferEventArgs e)
         {
             if (FaceCamX.IsMouseOver || FaceCamX.IsKeyboardFocusWithin)
@@ -712,10 +764,11 @@ namespace ConceptMatrix.Views
                     MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, Settings.Instance.Character.FaceCamZ), "float", FaceCamZ.Value.ToString());
             FaceCamZ.ValueChanged -= FaceCamZ_;
         }
+		*/
 
-        #endregion
+		#endregion
 
-        private void SkinSearch_Click(object sender, RoutedEventArgs e)
+		private void SkinSearch_Click(object sender, RoutedEventArgs e)
 		{
 			if (SpecialControl.IsOpen)
 			{
@@ -1199,5 +1252,186 @@ namespace ConceptMatrix.Views
                 }
             }
         }
+
+
+		private void PosSettingsSave_Click(object sender, RoutedEventArgs e)
+		{
+			MainWindow.CurrentlySaving = true;
+
+			var dlg = new SaveFileDialog
+			{
+				InitialDirectory = SaveSettings.Default.ProfileDirectory,
+				Filter = "Concept Matrix Location File (*.cml)|*.cml"
+			};
+
+			if (dlg.ShowDialog() == true)
+			{
+				var settings = new SaveSettings.LocationSettings
+				{
+					X = CharacterDetails.X.value,
+					Y = CharacterDetails.Y.value,
+					Z = CharacterDetails.Z.value,
+
+					OffsetFromViewX = CharacterDetails.CamX.value - CharacterDetails.X.value,
+					OffsetFromViewY = CharacterDetails.CamY.value - CharacterDetails.Y.value,
+					OffsetFromViewZ = CharacterDetails.CamZ.value - CharacterDetails.Z.value,
+
+					Rotation1 = CharacterDetails.Rotation.value,
+					Rotation2 = CharacterDetails.Rotation2.value,
+					Rotation3 = CharacterDetails.Rotation3.value,
+					Rotation4 = CharacterDetails.Rotation4.value
+				};
+
+				string data = JsonConvert.SerializeObject(settings, Formatting.Indented, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
+
+				File.WriteAllText(dlg.FileName, data);
+			}
+
+			MainWindow.CurrentlySaving = false;
+		}
+
+		private void PosSettingsLoad_Click(object sender, RoutedEventArgs e)
+		{
+			bool use_offsets = Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl);
+
+			var dlg = new OpenFileDialog
+			{
+				InitialDirectory = SaveSettings.Default.ProfileDirectory,
+				Filter = "Concept Matrix Location File (*.cml)|*.cml|Concept Matrix Gpose View File (*.cmg)|*.cmg",
+				DefaultExt = ".cml"
+			};
+
+			if (dlg.ShowDialog() == true)
+			{
+				var settings = JsonConvert.DeserializeObject<SaveSettings.LocationSettings>(File.ReadAllText(dlg.FileName));
+
+				xyzcheck = true;
+				CharacterDetails.X.freeze = true;
+				CharacterDetails.Y.freeze = true;
+				CharacterDetails.Z.freeze = true;
+
+				if (use_offsets)
+				{
+					CharacterDetails.X.value = CharacterDetails.CamX.value - settings.OffsetFromViewX;
+					CharacterDetails.Y.value = CharacterDetails.CamY.value - settings.OffsetFromViewY;
+					CharacterDetails.Z.value = CharacterDetails.CamZ.value - settings.OffsetFromViewZ;
+				}
+				else
+				{
+					CharacterDetails.X.value = settings.X;
+					CharacterDetails.Y.value = settings.Y;
+					CharacterDetails.Z.value = settings.Z;
+				}
+
+				if (!float.IsNaN(settings.Rotation1) &&
+					!float.IsNaN(settings.Rotation2) &&
+					!float.IsNaN(settings.Rotation3) &&
+					!float.IsNaN(settings.Rotation4))
+				{
+					numbcheck = true;
+					CharacterDetails.RotateFreeze = true;
+
+					var euler = new System.Windows.Media.Media3D.Quaternion(settings.Rotation1,
+														                    settings.Rotation2,
+														                    settings.Rotation3,
+                                                                            settings.Rotation4).ToEulerAngles();
+
+					CharacterDetails.RotateX = (float)euler.X;
+					CharacterDetails.RotateY = (float)euler.Y;
+					CharacterDetails.RotateZ = (float)euler.Z;
+
+					CharacterDetails.Rotation.value = settings.Rotation1;
+					CharacterDetails.Rotation2.value = settings.Rotation2;
+					CharacterDetails.Rotation3.value = settings.Rotation3;
+					CharacterDetails.Rotation4.value = settings.Rotation4;
+				}
+			}
+		}
+
+		private void GposeViewSettingsSave_Click(object sender, RoutedEventArgs e)
+		{
+			MainWindow.CurrentlySaving = true;
+
+			var dlg = new SaveFileDialog
+			{
+				InitialDirectory = SaveSettings.Default.ProfileDirectory,
+				Filter = "Concept Matrix Gpose View File (*.cmg)|*.cmg"
+			};
+
+			if (dlg.ShowDialog() == true)
+			{
+				var settings = new SaveSettings.LocationSettings
+				{
+
+					X = CharacterDetails.CamX.value,
+					Y = CharacterDetails.CamY.value,
+					Z = CharacterDetails.CamZ.value,
+
+					OffsetFromViewX = CharacterDetails.CamX.value - CharacterDetails.X.value,
+					OffsetFromViewY = CharacterDetails.CamY.value - CharacterDetails.Y.value,
+					OffsetFromViewZ = CharacterDetails.CamZ.value - CharacterDetails.Z.value,
+
+					OffsetX = CharacterDetails.CamViewX.value,
+					OffsetY = CharacterDetails.CamViewY.value,
+					OffsetZ = CharacterDetails.CamViewZ.value
+				};
+
+				string data = JsonConvert.SerializeObject(settings, Formatting.Indented, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
+
+				File.WriteAllText(dlg.FileName, data);
+			}
+
+			MainWindow.CurrentlySaving = false;
+		}
+
+		private void GposeViewSettingsLoad_Click(object sender, RoutedEventArgs e)
+		{
+			bool use_offsets = Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl);
+
+			var dlg = new OpenFileDialog
+			{
+				InitialDirectory = SaveSettings.Default.ProfileDirectory,
+				Filter = "Concept Matrix Gpose View File (*.cmg)|*.cmg|Concept Matrix Location File (*.cml)|*.cml",
+				DefaultExt = ".cmg"
+			};
+
+			if (dlg.ShowDialog() == true)
+			{
+				var settings = JsonConvert.DeserializeObject<SaveSettings.LocationSettings>(File.ReadAllText(dlg.FileName));
+
+				// Make sure user didn't exit gpose while loading
+				if (!GposeViewSettingsLoad.IsEnabled) return;
+
+				CharacterDetails.CamX.freeze = true;
+				CharacterDetails.CamY.freeze = true;
+				CharacterDetails.CamZ.freeze = true;
+
+				if (use_offsets)
+				{
+					CharacterDetails.CamX.value = CharacterDetails.X.value + settings.OffsetFromViewX;
+					CharacterDetails.CamY.value = CharacterDetails.Y.value + settings.OffsetFromViewY;
+					CharacterDetails.CamZ.value = CharacterDetails.Z.value + settings.OffsetFromViewZ;
+				}
+				else
+				{
+					CharacterDetails.CamX.value = settings.X;
+					CharacterDetails.CamY.value = settings.Y;
+					CharacterDetails.CamZ.value = settings.Z;
+				}
+
+				if (!float.IsNaN(settings.OffsetX) &&
+					!float.IsNaN(settings.OffsetY) &&
+					!float.IsNaN(settings.OffsetZ))
+				{
+					CharacterDetails.CamViewX.freeze = true;
+					CharacterDetails.CamViewY.freeze = true;
+					CharacterDetails.CamViewZ.freeze = true;
+
+					CharacterDetails.CamViewX.value = settings.OffsetX;
+					CharacterDetails.CamViewY.value = settings.OffsetY;
+					CharacterDetails.CamViewZ.value = settings.OffsetZ;
+				}
+			}
+		}
 	}
 }
