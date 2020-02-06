@@ -1316,7 +1316,10 @@ namespace ConceptMatrix.Views
 
                 var radians = (euler_rot.Y - settings.TargetRotation) * (Math.PI * 2) / 360;
 
-                CharacterDetails.CamAngleX.value = (float) (settings.CamAngleX + radians);
+                radians += settings.CamAngleX;
+                if (radians > Math.PI) radians -= 2 * Math.PI;
+
+                CharacterDetails.CamAngleX.value = (float) radians;
             } 
             else
             {
