@@ -557,7 +557,12 @@ namespace ConceptMatrix.ViewModel
 
                 // Reading rotation values.
                 #region Actor Rotation
-                if (!CharacterDetails.RotateFreeze && !CharacterDetails.BoneEditMode)
+                // TBD: lilly removed this extra check because it was causing the rotation values
+                //      to be wrong vs what the game shows in some cases. This caused annoying GUI
+                //      behavior and messed up the relative rotation code.
+                //
+                //      Unclear what this check was intended for.
+                if (!CharacterDetails.RotateFreeze /* && !CharacterDetails.BoneEditMode */)
                 {
                     byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Position.Rotation), 16);
                     CharacterDetails.Rotation.value = BitConverter.ToSingle(bytearray, 0);
