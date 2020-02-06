@@ -213,7 +213,14 @@ namespace ConceptMatrix.Views
 		/// <returns>Vector3D representing euler angles.</returns>	
 		private Vector3D GetEulerAngles() => new Vector3D(CharacterDetails.RotateX, CharacterDetails.RotateY, CharacterDetails.RotateZ);
 
-        private void RotationUpDown_SourceUpdated(object sender, DataTransferEventArgs e)
+		// I'm scared of the above being wrong sometimes (the GUI controls don't always match the real rotation).
+		// Using this one based on the raw values until convinced it's safe.
+		private Vector3D GetCurrenRotation() =>  new Quaternion(CharacterDetails.Rotation.value,
+											                    CharacterDetails.Rotation2.value,
+											                    CharacterDetails.Rotation3.value,
+											                    CharacterDetails.Rotation4.value).ToEulerAngles();
+
+		private void RotationUpDown_SourceUpdated(object sender, DataTransferEventArgs e)
         {
 
             if (RotationSlider.IsKeyboardFocusWithin || RotationSlider.IsMouseOver)
@@ -1253,6 +1260,11 @@ namespace ConceptMatrix.Views
             }
         }
 
+		double GetCameraAngleXAsDegrees()
+		{
+			double degrees = (float)(CharacterDetails.CamAngleX.value * 180 / Math.PI);
+			return (degrees + 720) % 360;
+		}
 
 		private void PosSettingsSave_Click(object sender, RoutedEventArgs e)
 		{
@@ -1266,6 +1278,9 @@ namespace ConceptMatrix.Views
 
 			if (dlg.ShowDialog() == true)
 			{
+				var euler_rot = GetCurrenRotation();
+				var cam_angle = GetCameraAngleXAsDegrees();
+
 				var settings = new SaveSettings.LocationSettings
 				{
 					X = CharacterDetails.X.value,
@@ -1275,6 +1290,8 @@ namespace ConceptMatrix.Views
 					OffsetFromViewX = CharacterDetails.CamX.value - CharacterDetails.X.value,
 					OffsetFromViewY = CharacterDetails.CamY.value - CharacterDetails.Y.value,
 					OffsetFromViewZ = CharacterDetails.CamZ.value - CharacterDetails.Z.value,
+
+					OffsetFromCamX = (float)(cam_angle - euler_rot.Y),
 
 					Rotation1 = CharacterDetails.Rotation.value,
 					Rotation2 = CharacterDetails.Rotation2.value,
@@ -1292,7 +1309,8 @@ namespace ConceptMatrix.Views
 
 		private void PosSettingsLoad_Click(object sender, RoutedEventArgs e)
 		{
-			bool use_offsets = Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl);
+			bool use_rot_offsets = Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt);
+			bool use_offsets = use_rot_offsets || Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl);
 
 			var dlg = new OpenFileDialog
 			{
@@ -1331,19 +1349,43 @@ namespace ConceptMatrix.Views
 					numbcheck = true;
 					CharacterDetails.RotateFreeze = true;
 
-					var euler = new System.Windows.Media.Media3D.Quaternion(settings.Rotation1,
-														                    settings.Rotation2,
-														                    settings.Rotation3,
-                                                                            settings.Rotation4).ToEulerAngles();
+					var euler = new Quaternion(settings.Rotation1,
+											   settings.Rotation2,
+											   settings.Rotation3,
+											   settings.Rotation4).ToEulerAngles();
+
+					if (use_rot_offsets)
+					{
+						var cam_angle = GetCameraAngleXAsDegrees();
+						var cam_rot_diff_degrees = cam_angle - euler.Y - settings.OffsetFromCamX;
+
+						// Adjust the characters own rotation
+						euler.Y += (float)cam_rot_diff_degrees;
+						euler.Y = (euler.Y + 720) % 360;
+
+						// Adjust the character's rotation relative to the camera to match
+						// This keeps multiple loaded actors also relative to each other as you'd expect
+						var axis_angle = new AxisAngleRotation3D(new Vector3D(0, 3, 0), cam_rot_diff_degrees);
+
+						var transform = new RotateTransform3D(axis_angle, CharacterDetails.CamX.value, CharacterDetails.Y.value, CharacterDetails.CamZ.value);
+
+						var rotated_point = transform.Transform(new Point3D(CharacterDetails.X.value, CharacterDetails.Y.value, CharacterDetails.Z.value));
+
+						CharacterDetails.X.value = (float) rotated_point.X;
+						CharacterDetails.Y.value = (float) rotated_point.Y;
+						CharacterDetails.Z.value = (float) rotated_point.Z;
+					}
 
 					CharacterDetails.RotateX = (float)euler.X;
 					CharacterDetails.RotateY = (float)euler.Y;
 					CharacterDetails.RotateZ = (float)euler.Z;
 
-					CharacterDetails.Rotation.value = settings.Rotation1;
-					CharacterDetails.Rotation2.value = settings.Rotation2;
-					CharacterDetails.Rotation3.value = settings.Rotation3;
-					CharacterDetails.Rotation4.value = settings.Rotation4;
+					// Using this on purpose since it derives from the values we just set
+					var quat = GetEulerAngles().ToQuaternion();
+					CharacterDetails.Rotation.value = (float)quat.X;
+					CharacterDetails.Rotation2.value = (float)quat.Y;
+					CharacterDetails.Rotation3.value = (float)quat.Z;
+					CharacterDetails.Rotation4.value = (float)quat.W;
 				}
 			}
 		}
@@ -1371,6 +1413,11 @@ namespace ConceptMatrix.Views
 					OffsetFromViewY = CharacterDetails.CamY.value - CharacterDetails.Y.value,
 					OffsetFromViewZ = CharacterDetails.CamZ.value - CharacterDetails.Z.value,
 
+					TargetRotation = (float)GetCurrenRotation().Y,
+					TargetRotationName = CharacterDetails.Name.value,
+					TargetRotationRace = CharacterDetails.Race.value,
+					TargetRotationClan = CharacterDetails.Clan.value,
+
 					OffsetX = CharacterDetails.CamViewX.value,
 					OffsetY = CharacterDetails.CamViewY.value,
 					OffsetZ = CharacterDetails.CamViewZ.value
@@ -1386,7 +1433,8 @@ namespace ConceptMatrix.Views
 
 		private void GposeViewSettingsLoad_Click(object sender, RoutedEventArgs e)
 		{
-			bool use_offsets = Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl);
+			bool use_rot_offsets = Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt);
+			bool use_offsets = use_rot_offsets || Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl);
 
 			var dlg = new OpenFileDialog
 			{
@@ -1411,6 +1459,21 @@ namespace ConceptMatrix.Views
 					CharacterDetails.CamX.value = CharacterDetails.X.value + settings.OffsetFromViewX;
 					CharacterDetails.CamY.value = CharacterDetails.Y.value + settings.OffsetFromViewY;
 					CharacterDetails.CamZ.value = CharacterDetails.Z.value + settings.OffsetFromViewZ;
+
+					if (use_rot_offsets)
+					{
+						var rot_diff = GetCurrenRotation().Y - settings.TargetRotation;
+
+						var axis_angle = new AxisAngleRotation3D(new Vector3D(0, 3, 0), rot_diff);
+
+						var transform = new RotateTransform3D(axis_angle, CharacterDetails.X.value, CharacterDetails.CamY.value, CharacterDetails.Z.value);
+
+						var rotated_point = transform.Transform(new Point3D(CharacterDetails.CamX.value, CharacterDetails.CamY.value, CharacterDetails.CamZ.value));
+
+						CharacterDetails.CamX.value = (float)rotated_point.X;
+						CharacterDetails.CamY.value = (float)rotated_point.Y;
+						CharacterDetails.CamZ.value = (float)rotated_point.Z;
+					}
 				}
 				else
 				{

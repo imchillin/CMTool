@@ -679,6 +679,7 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Load camera settings from file.
+        ///• Hold ALT to rotate Cam Angle X relative to the target.
         ///• Try jiggling the camera or loading again if the camera is blocked by an object and didn&apos;t restore completely..
         /// </summary>
         public static string CamSettingsLoadToolTip {
@@ -1446,7 +1447,8 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Load GPose View position from file.
-        ///• Hold CTRL when clicking this to load as an offset from the current actor position.
+        ///• Hold CTRL to load relative to the current actor position.
+        ///• Hold ALT to load and rotate relative to current actor position &amp; rotation.
         ///• You can load saved actor positionss to jump GPose View actor to that position..
         /// </summary>
         public static string GposeViewSettingsLoadToolTip {
@@ -2433,7 +2435,8 @@ namespace ConceptMatrix.Resx {
         
         /// <summary>
         ///   Looks up a localized string similar to Load actor position from file.
-        ///• Hold CTRL when clicking this to load as an offset from the current GPose View.
+        ///• Hold CTRL to load relative to current GPose View.
+        ///• Hold ALT to load and rotate relative to current GPose View &amp; cam angle.
         ///• You can load saved GPose View positions to jump an actor to that position.
         ///• Visible position is affected by emote animations! Use the same neutral emote when loading and saving for best results..
         /// </summary>

@@ -63,6 +63,15 @@ namespace ConceptMatrix.Utility
             public float CamAngleY { get; set; } = 0;
             public float CamPanX { get; set; } = 0;
             public float CamPanY { get; set; } = 0;
+
+            // Used to rotate Camera Angle X relative to Actor rotation
+            public float TargetRotation { get; set; } = 0;
+
+            // These are to help detect user errors loading things relative
+            // to the wrong target.
+            public string TargetRotationName { get; set; } = "None";
+            public int TargetRotationRace { get; set; } = 0;
+            public int TargetRotationClan { get; set; } = 0;
         }
 
         // Use the same type for character position and gpose view so
@@ -75,9 +84,21 @@ namespace ConceptMatrix.Utility
             public float Y { get; set; } = 0;
             public float Z { get; set; } = 0;
 
-            public float OffsetFromViewX { get; set; } = float.NaN;
-            public float OffsetFromViewY { get; set; } = float.NaN;
-            public float OffsetFromViewZ { get; set; } = float.NaN;
+            public float OffsetFromViewX { get; set; } = 0;
+            public float OffsetFromViewY { get; set; } = 0;
+            public float OffsetFromViewZ { get; set; } = 0;
+            // Used to rotate Actor relative to camera rotation
+            public float OffsetFromCamX { get; set; } = 0;
+
+            // Used to rotate GPose View position relative to Actor rotation
+            public float TargetRotation { get; set; } = 0;
+
+            // These are to help detect user errors loading things relative
+            // to the wrong target.
+            public string TargetRotationName { get; set; } = "None";
+            public int TargetRotationRace { get; set; } = 0;
+            public int TargetRotationClan { get; set; } = 0;
+
 
             public float Rotation1{ get; set; } = float.NaN;
             public float Rotation2 { get; set; } = float.NaN;
