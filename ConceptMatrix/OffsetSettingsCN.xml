@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- This is for CN server only-->
 <Settings>
-  <LastUpdated>5.1</LastUpdated>
+  <LastUpdated>5.1x</LastUpdated>
   <CameraOffset>1BF9B20</CameraOffset><!--Done-->
   <GposeOffset>1BF9D08</GposeOffset><!--Done-->
   <GposeEntityOffset>1BFCBA0</GposeEntityOffset><!--Done-->
   <GposeCheckOffset>1BAEC88</GposeCheckOffset><!--Done-->
   <GposeCheck2Offset>1BFD8F0</GposeCheck2Offset><!--Done-->
   <AoBOffset>1BFB110</AoBOffset><!--Done-->
-  <TargetOffset>1BF9D90</TargetOffset><!--Done-->
+  <TargetOffset>1BF9D70</TargetOffset><!--Fixed-->
   <TimeOffset>1BDAB48</TimeOffset><!--Done-->
   <WeatherOffset>1BB1818</WeatherOffset><!--Done-->
   <TerritoryOffset>1BD8320</TerritoryOffset><!--Done-->
