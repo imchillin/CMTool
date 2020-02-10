@@ -391,12 +391,12 @@
             <Label Content="{Binding Source={x:Static resx:UIStringsContent.RelativeXYZRot}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.RelativeXYZRotToolTip}}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"/>
         </Viewbox>
         <ToggleButton Name="RotRelButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1067,305,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Checked="RotRelButton_Checked" Unchecked="RotRelButton_Unchecked" />
-        <Button x:Name="PosSettingsSave" ToolTip="{Binding Source={x:Static resx:UIStringsContent.PosSettingsSaveToolTip}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Right" Margin="0,182,234,0" Width="28" Click="PosSettingsSave_Click" Height="28" Padding="0" RenderTransformOrigin="6.24,-0.429" VerticalAlignment="Top">
+        <Button x:Name="PosSettingsSave" ToolTip="{Binding Source={x:Static resx:UIStringsContent.PosSettingsSaveToolTip}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Right" Margin="0,136,214,0" Width="28" Click="PosSettingsSave_Click" Height="28" Padding="0" RenderTransformOrigin="6.24,-0.429" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal" Width="16" Height="16">
                 <materialDesign:PackIcon Kind="ContentSave" Margin="0 0 0 0" Padding="0" Width="16" Height="16"/>
             </StackPanel>
         </Button>
-        <Button x:Name="PosSettingsLoad" ToolTip="{Binding Source={x:Static resx:UIStringsContent.PosSettingsLoadToolTip}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="881,182,0,0" Width="28" Click="PosSettingsLoad_Click" Height="28" Padding="0" RenderTransformOrigin="6.24,-0.429" VerticalAlignment="Top">
+        <Button x:Name="PosSettingsLoad" ToolTip="{Binding Source={x:Static resx:UIStringsContent.PosSettingsLoadToolTip}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="901,136,0,0" Width="28" Click="PosSettingsLoad_Click" Height="28" Padding="0" RenderTransformOrigin="6.24,-0.429" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal" Width="16" Height="16">
                 <materialDesign:PackIcon Kind="Download" Margin="0 0 0 0" Padding="0" Width="16" Height="16"/>
             </StackPanel>
@@ -411,6 +411,12 @@
                 <materialDesign:PackIcon Kind="Download" Margin="0 0 0 0" Padding="0" Width="16" Height="16"/>
             </StackPanel>
         </Button>
+
+        <Viewbox HorizontalAlignment="Left" Height="28" Margin="848,187,0,0" VerticalAlignment="Top"  Width="100">
+            <Label Name="LinkPositionText" Content="Linked:" ToolTip="{Binding Source={x:Static resx:UIStringsContent.LinkPositionToolTip}}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" IsEnabled="False"/>
+        </Viewbox>
+        <ToggleButton Name="LinkPosition" IsChecked="{Binding CharacterDetails.IsLinked, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="914,187,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Checked="LinkPosition_Checked" Unchecked="LinkPosition_Unchecked" IsEnabled="False" />
+
         <Views:EmoteFlyOut x:Name="EmoteFlyouts" Width="534" HorizontalAlignment="Left" VerticalAlignment="Top" Height="Auto" Visibility="Hidden"/>
         <Views:SpecialControl x:Name="SpecialControl" Width="579" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Margin="536,0,0,0"/>
 

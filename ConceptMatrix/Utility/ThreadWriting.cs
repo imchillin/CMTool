@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Threading;
+using System.Windows.Media.Media3D;
 
 namespace ConceptMatrix.Utility
 {
@@ -1970,6 +1971,12 @@ namespace ConceptMatrix.Utility
                         if (CharacterDetails.EmoteOld.value > 7756) CharacterDetails.EmoteOld.value = 7756;
                         m.writeBytes(GAS(c.EmoteOld), CharacterDetails.EmoteOld.GetBytes());
                     }
+
+                    if (CharacterDetails.GposeMode == true)
+                    {
+                        CheckLinkedActors();
+                    }
+
                     Thread.Sleep(9);
                 }
             }
@@ -1979,5 +1986,158 @@ namespace ConceptMatrix.Utility
 				worker.CancelAsync();
             }
         }
+
+        void CheckLinkedActors()
+        {
+            lock (CharacterDetails.LinkedActors)
+            {
+                foreach (var currActor in CharacterDetails.LinkedActors)
+                {
+                    if (currActor.Name != CharacterDetails.Name.value) continue;
+
+                    // This function uses memory values for current positions because I am paranoid
+                    // about the inconsistent updating of state data.
+                    byte[] PositionArray = m.readBytes(GAS(c.Body.Base, c.Body.Position.X), 12);
+                    float currActorMemX = BitConverter.ToSingle(PositionArray, 0);
+                    float currActorMemY = BitConverter.ToSingle(PositionArray, 4);
+                    float currActorMemZ = BitConverter.ToSingle(PositionArray, 8);
+
+                    byte[] bytearray = m.readBytes(GAS(c.Body.Base, c.Body.Position.Rotation), 16);
+                    float currActorMemRot1 = BitConverter.ToSingle(bytearray, 0);
+                    float currActorMemRot2 = BitConverter.ToSingle(bytearray, 4);
+                    float currActorMemRot3 = BitConverter.ToSingle(bytearray, 8);
+                    float currActorMemRot4 = BitConverter.ToSingle(bytearray, 12);
+
+                    // If nothing has changed then don't waste any more time
+                    if (currActor.X == currActorMemX &&
+                        currActor.Y == currActorMemY &&
+                        currActor.Z == currActorMemZ &&
+                        currActor.Rotation1 == currActorMemRot1 &&
+                        currActor.Rotation2 == currActorMemRot2 &&
+                        currActor.Rotation3 == currActorMemRot3 &&
+                        currActor.Rotation4 == currActorMemRot4)
+                    {
+                        break;
+                    }
+
+                    double deltaX = currActor.X - currActorMemX;
+                    double deltaY = currActor.Y - currActorMemY;
+                    double deltaZ = currActor.Z - currActorMemZ;
+
+                    var currActorRotXYZ = new Quaternion(currActor.Rotation1, currActor.Rotation2, currActor.Rotation3, currActor.Rotation4).ToEulerAngles();
+                    var currActorMemRotXYZ = new Quaternion(currActorMemRot1, currActorMemRot2, currActorMemRot3, currActorMemRot4).ToEulerAngles();
+
+                    double deltaRotX = currActorMemRotXYZ.X - currActorRotXYZ.X;
+                    double deltaRotY = currActorMemRotXYZ.Y - currActorRotXYZ.Y;
+                    double deltaRotZ = currActorMemRotXYZ.Z - currActorRotXYZ.Z;
+
+                    foreach (var linkedActor in CharacterDetails.LinkedActors)
+                    {
+                        if (linkedActor.Name == currActor.Name) continue;
+
+                        for (var i = 0; i < m.readLong(MemoryManager.Instance.GposeEntityOffset); i++)
+                        {
+                            string offset = ((i + 1) * 8).ToString("X");
+
+                            var linkedNameAddr = MemoryManager.GetAddressString(MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, offset), c.Name);
+
+                            var linkedMemName = m.readString(linkedNameAddr);
+                            if (linkedMemName.IndexOf('\0') != -1) linkedMemName = linkedMemName.Substring(0, linkedMemName.IndexOf('\0'));
+
+                            // TBD: This is safe for players but things like pets could be a problem.
+                            if (linkedActor.Name == linkedMemName)
+                            {
+                                var linkedOffset = MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, offset);
+
+                                var linkedMemX = m.readFloat(MemoryManager.GetAddressString(linkedOffset, c.Body.Base, c.Body.Position.X));
+                                var linkedMemY = m.readFloat(MemoryManager.GetAddressString(linkedOffset, c.Body.Base, c.Body.Position.Y));
+                                var linkedMemZ = m.readFloat(MemoryManager.GetAddressString(linkedOffset, c.Body.Base, c.Body.Position.Z));
+
+                                var linkedMemRot1 = m.readFloat(MemoryManager.GetAddressString(linkedOffset, c.Body.Base, c.Body.Position.Rotation));
+                                var linkedMemRot2 = m.readFloat(MemoryManager.GetAddressString(linkedOffset, c.Body.Base, c.Body.Position.Rotation2));
+                                var linkedMemRot3 = m.readFloat(MemoryManager.GetAddressString(linkedOffset, c.Body.Base, c.Body.Position.Rotation3));
+                                var linkedMemRot4 = m.readFloat(MemoryManager.GetAddressString(linkedOffset, c.Body.Base, c.Body.Position.Rotation4));
+                                
+                                var linkedMemRotXYZ = new Quaternion(linkedMemRot1, linkedMemRot2, linkedMemRot3, linkedMemRot4).ToEulerAngles();
+
+                                var newPos = new Point3D(linkedMemX - deltaX,
+                                                         linkedMemY - deltaY,
+                                                         linkedMemZ - deltaZ);
+
+                                var rotatedPoint = newPos;
+
+                                // Y rotation only for now. We need better math for the others.
+
+                                // Even with X and Y delta set to 0 some weird things happen when you change X on a linked actor.
+                                // (Because Y jumps on the current actor when X cross 90 degrees etc.)
+                                deltaRotX = 0;
+                                deltaRotZ = 0;
+
+                                /*
+                                {
+                                    var linkedRotXYZ = new Quaternion(linkedActor.Rotation1, linkedActor.Rotation2, linkedActor.Rotation3, linkedActor.Rotation4).ToEulerAngles();
+
+                                    var transform = new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 1, 0), -linkedRotXYZ.Y), currActorMemX, currActorMemY, currActorMemZ);
+                                    rotatedPoint = transform.Transform(rotatedPoint);
+
+                                    transform = new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(1, 0, 0), deltaRotX), currActorMemX, currActorMemY, currActorMemZ);
+                                    rotatedPoint = transform.Transform(rotatedPoint);
+
+                                    transform = new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 1, 0), linkedRotXYZ.Y), currActorMemX, currActorMemY, currActorMemZ);
+                                    rotatedPoint = transform.Transform(rotatedPoint);
+                                }
+                                */
+
+                                {
+                                    var transform = new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 1, 0), deltaRotY), currActorMemX, currActorMemY, currActorMemZ);
+                                    rotatedPoint = transform.Transform(rotatedPoint);
+                                }
+
+                                /*
+                                {
+                                    var transform = new RotateTransform3D(new AxisAngleRotation3D(new Vector3D(0, 0, 1), deltaRotZ), currActorMemX, currActorMemY, currActorMemZ);
+                                    rotatedPoint = transform.Transform(rotatedPoint);
+                                }
+                                */
+
+                                var newRotX = linkedMemRotXYZ.X + deltaRotX;
+                                var newRotY = linkedMemRotXYZ.Y + deltaRotY;
+                                var newRotZ = linkedMemRotXYZ.Z + deltaRotZ;
+
+                                var newRotXYZW = new Vector3D(newRotX, newRotY, newRotZ).ToQuaternion();
+
+                                m.writeMemory(MemoryManager.GetAddressString(linkedOffset, c.Body.Base, c.Body.Position.X), "float", rotatedPoint.X.ToString());
+                                m.writeMemory(MemoryManager.GetAddressString(linkedOffset, c.Body.Base, c.Body.Position.Y), "float", rotatedPoint.Y.ToString());
+                                m.writeMemory(MemoryManager.GetAddressString(linkedOffset, c.Body.Base, c.Body.Position.Z), "float", rotatedPoint.Z.ToString());
+
+                                m.writeMemory(MemoryManager.GetAddressString(linkedOffset, c.Body.Base, c.Body.Position.Rotation), "float", newRotXYZW.X.ToString());
+                                m.writeMemory(MemoryManager.GetAddressString(linkedOffset, c.Body.Base, c.Body.Position.Rotation2), "float", newRotXYZW.Y.ToString());
+                                m.writeMemory(MemoryManager.GetAddressString(linkedOffset, c.Body.Base, c.Body.Position.Rotation3), "float", newRotXYZW.Z.ToString());
+                                m.writeMemory(MemoryManager.GetAddressString(linkedOffset, c.Body.Base, c.Body.Position.Rotation4), "float", newRotXYZW.W.ToString());
+
+                                linkedActor.X = (float)rotatedPoint.X;
+                                linkedActor.Y = (float)rotatedPoint.Y;
+                                linkedActor.Z = (float)rotatedPoint.Z;
+
+                                linkedActor.Rotation1 = (float)newRotXYZW.X;
+                                linkedActor.Rotation2 = (float)newRotXYZW.Y;
+                                linkedActor.Rotation3 = (float)newRotXYZW.Z;
+                                linkedActor.Rotation4 = (float)newRotXYZW.W;
+                            }
+                        }
+                    }
+
+                    currActor.X = currActorMemX;
+                    currActor.Y = currActorMemY;
+                    currActor.Z = currActorMemZ;
+
+                    currActor.Rotation1 = currActorMemRot1;
+                    currActor.Rotation2 = currActorMemRot2;
+                    currActor.Rotation3 = currActorMemRot3;
+                    currActor.Rotation4 = currActorMemRot4;
+                }
+            }
+        }
     }
+
 }

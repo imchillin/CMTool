@@ -1314,4 +1314,8 @@ Statuseffekte:</value>
   <data name="PosSettingsSaveToolTip" xml:space="preserve">
     <value>Save actor position to file.</value>
   </data>
+  <data name="LinkPositionToolTip" xml:space="preserve">
+    <value>Toggles linking for this actor.
+• Changing position or rotation of any linked actor will affect them all.</value>
+  </data>
 </root>

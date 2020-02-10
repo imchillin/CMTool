@@ -557,12 +557,7 @@ namespace ConceptMatrix.ViewModel
 
                 // Reading rotation values.
                 #region Actor Rotation
-                // TBD: lilly removed this extra check because it was causing the rotation values
-                //      to be wrong vs what the game shows in some cases. This caused annoying GUI
-                //      behavior and messed up the relative rotation code.
-                //
-                //      Unclear what this check was intended for.
-                if (!CharacterDetails.RotateFreeze /* && !CharacterDetails.BoneEditMode */)
+                if (!CharacterDetails.RotateFreeze)
                 {
                     byte[] bytearray = m.readBytes(GAS(baseAddr, c.Body.Base, c.Body.Position.Rotation), 16);
                     CharacterDetails.Rotation.value = BitConverter.ToSingle(bytearray, 0);
@@ -583,6 +578,14 @@ namespace ConceptMatrix.ViewModel
                     CharacterDetails.RotateZ = (float)euler.Z;
                 }
                 #endregion
+
+                if (CharacterDetails.GposeMode == true)
+                {
+                    lock (CharacterDetails.LinkedActors)
+                    {
+                        CharacterDetails.IsLinked = CharacterDetails.LinkedActors.Exists(x => x.Name == CharacterDetails.Name.value);
+                    }
+                }
 
                 #region Bone Rotations
                 if (CharacterDetails.Root_Toggle)
