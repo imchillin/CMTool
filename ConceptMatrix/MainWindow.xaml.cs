@@ -1156,6 +1156,8 @@ namespace ConceptMatrix
                 MainViewModel.ViewTime5.PhysicsButton.Visibility = Visibility.Visible;
                 MainViewModel.ViewTime5.LoadCMP.IsEnabled = true;
                 MainViewModel.ViewTime5.AdvLoadCMP.IsEnabled = true;
+                MainViewModel.ViewTime.LinkPositionText.IsEnabled = true;
+                MainViewModel.ViewTime.LinkPosition.IsEnabled = true;
             }
         }
 
@@ -1226,6 +1228,15 @@ namespace ConceptMatrix
                 MainViewModel.ViewTime5.PhysicsButton.Visibility = Visibility.Hidden;
                 MainViewModel.ViewTime5.LoadCMP.IsEnabled = false;
                 MainViewModel.ViewTime5.AdvLoadCMP.IsEnabled = false;
+
+                lock (CharacterDetails.LinkedActors)
+                {
+                    MainViewModel.ViewTime.LinkPositionText.IsEnabled = false;
+                    MainViewModel.ViewTime.LinkPosition.IsChecked = false;
+                    MainViewModel.ViewTime.LinkPosition.IsEnabled = false;
+                    CharacterDetails.LinkedActors.Clear();
+                    CharacterDetails.IsLinked = false;
+                }
             }
         }
 

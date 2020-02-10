@@ -340,7 +340,40 @@ namespace ConceptMatrix.Views
             AltRotate = false;
         }
 
-        private void HighlightCheckbox_Checked(object sender, RoutedEventArgs e)
+
+		private void LinkPosition_Checked(object sender, RoutedEventArgs e)
+		{
+			lock (CharacterDetails.LinkedActors)
+			{
+				CharacterDetails.LinkedActors.RemoveAll(x => x.Name == CharacterDetails.Name.value);
+
+				var linked = new LinkedActorInfo()
+				{
+					Name = CharacterDetails.Name.value,
+
+					X = CharacterDetails.X.value,
+					Y = CharacterDetails.Y.value,
+					Z = CharacterDetails.Z.value,
+
+					Rotation1 = CharacterDetails.Rotation.value,
+					Rotation2 = CharacterDetails.Rotation2.value,
+					Rotation3 = CharacterDetails.Rotation3.value,
+					Rotation4 = CharacterDetails.Rotation4.value,
+				};
+
+				CharacterDetails.LinkedActors.Add(linked);
+			}
+		}
+		private void LinkPosition_Unchecked(object sender, RoutedEventArgs e)
+		{
+			lock (CharacterDetails.LinkedActors)
+			{
+				CharacterDetails.LinkedActors.RemoveAll(x => x.Name == CharacterDetails.Name.value);
+			}
+		}
+
+
+		private void HighlightCheckbox_Checked(object sender, RoutedEventArgs e)
         {
             HighlightCheckbox.IsChecked = true;
         }

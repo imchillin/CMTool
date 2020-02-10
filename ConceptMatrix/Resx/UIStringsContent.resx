@@ -749,6 +749,11 @@
   <data name="LimbalRingTattooColor" xml:space="preserve">
     <value>Limbal Ring / Tattoos Color</value>
   </data>
+  <data name="LinkPositionToolTip" xml:space="preserve">
+    <value>Toggles linking for this actor.
+• Changing position or rotation of any linked actor will affect them all.
+• Only supports Y rotation for now. Changes to X rotation while linked may have weird effects!</value>
+  </data>
   <data name="LipColor" xml:space="preserve">
     <value>Lips Color/Fur Pattern:</value>
   </data>

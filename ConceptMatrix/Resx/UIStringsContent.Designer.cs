@@ -1893,6 +1893,17 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Toggles linking for this actor.
+        ///• Changing position or rotation of any linked actor will affect them all.
+        ///• Only supports Y rotation for now. Changes to X rotation while linked may have weird effects!.
+        /// </summary>
+        public static string LinkPositionToolTip {
+            get {
+                return ResourceManager.GetString("LinkPositionToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lips Color/Fur Pattern:.
         /// </summary>
         public static string LipColor {

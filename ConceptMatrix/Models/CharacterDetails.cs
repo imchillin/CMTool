@@ -8,8 +8,27 @@ using System.Threading.Tasks;
 
 namespace ConceptMatrix.Models
 {
+    public class LinkedActorInfo
+    {
+        public string Name;
+
+        public float X;
+        public float Y;
+        public float Z;
+
+        public float Rotation1;
+        public float Rotation2;
+        public float Rotation3;
+        public float Rotation4;
+    }
+
     public class CharacterDetails : BaseModel
     {
+        [JsonIgnore]
+        public List<LinkedActorInfo> LinkedActors { get; set; } = new List<LinkedActorInfo>();
+
+        [JsonIgnore] public bool IsLinked { get; set; } = false;
+
         [JsonIgnore] private long size;
         [JsonIgnore]
         public long Size
