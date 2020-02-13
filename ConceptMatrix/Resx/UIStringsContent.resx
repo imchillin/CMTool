@@ -752,7 +752,7 @@
   <data name="LinkPositionToolTip" xml:space="preserve">
     <value>Toggles linking for this actor.
 • Changing position or rotation of any linked actor will affect them all.
-• Only supports Y rotation for now. Changes to X rotation while linked may have weird effects!</value>
+• Turn this on for all actors you want to move together!</value>
   </data>
   <data name="LipColor" xml:space="preserve">
     <value>Lips Color/Fur Pattern:</value>
