@@ -147,10 +147,13 @@ namespace ConceptMatrix.Utility
 
                     if (CharacterDetails.RotateFreeze)
                     {
-                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.Rotation), CharacterDetails.Rotation.GetBytes());
-                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.Rotation2), CharacterDetails.Rotation2.GetBytes());
-                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.Rotation3), CharacterDetails.Rotation3.GetBytes());
-                        m.writeBytes(GAS(c.Body.Base, c.Body.Position.Rotation4), CharacterDetails.Rotation4.GetBytes());
+                        lock (CharacterDetails.Rotation)
+                        {
+                            m.writeBytes(GAS(c.Body.Base, c.Body.Position.Rotation), CharacterDetails.Rotation.GetBytes());
+                            m.writeBytes(GAS(c.Body.Base, c.Body.Position.Rotation2), CharacterDetails.Rotation2.GetBytes());
+                            m.writeBytes(GAS(c.Body.Base, c.Body.Position.Rotation3), CharacterDetails.Rotation3.GetBytes());
+                            m.writeBytes(GAS(c.Body.Base, c.Body.Position.Rotation4), CharacterDetails.Rotation4.GetBytes());
+                        }
                     }
 
                     #region Bone Rotation
@@ -1998,22 +2001,20 @@ namespace ConceptMatrix.Utility
             {
                 foreach (var currActor in CharacterDetails.LinkedActors)
                 {
-                    if (currActor.Name != CharacterDetails.Name.value) continue;
+                    // Check if the target by base address instead of name because of annoying
+                    // race conditions with data updates.
+                    var check = m.readUInt(CharacterDetailsViewModel.baseAddr).ToString("X");
 
-                    // Check the name in memory since we can be too quick when gpose target has switched.
-                    // The name check above is retained as an optimization.
-                    var currActorName = m.readString(GAS(c.Name));
-                    if (currActorName.IndexOf('\0') != -1) currActorName = currActorName.Substring(0, currActorName.IndexOf('\0'));
-                    if (currActor.Name != currActorName) continue;
+                    if (currActor.DataOffset != check) continue;
 
-                    // This function uses memory values for current positions because I am paranoid
-                    // about the inconsistent updating of state data.
-                    byte[] buff = m.readBytes(GAS(c.Body.Base, c.Body.Position.X), 12);
+                    var currActorBodyData = currActor.DataOffset + "+" + c.Body.Base + ",";
+
+                    byte[] buff = m.readBytes(currActorBodyData + c.Body.Position.X, 12);
                     float currActorMemX = BitConverter.ToSingle(buff, 0);
                     float currActorMemY = BitConverter.ToSingle(buff, 4);
                     float currActorMemZ = BitConverter.ToSingle(buff, 8);
 
-                    buff = m.readBytes(GAS(c.Body.Base, c.Body.Position.Rotation), 16);
+                    buff = m.readBytes(currActorBodyData + c.Body.Position.Rotation, 16);
                     float currActorMemRot1 = BitConverter.ToSingle(buff, 0);
                     float currActorMemRot2 = BitConverter.ToSingle(buff, 4);
                     float currActorMemRot3 = BitConverter.ToSingle(buff, 8);
@@ -2046,62 +2047,60 @@ namespace ConceptMatrix.Utility
                     {
                         if (linkedActor.Name == currActor.Name) continue;
 
-                        for (var i = 0; i < m.readLong(MemoryManager.Instance.GposeEntityOffset); i++)
+                        // We use saved absolute addresses to the actor data so we don't have to worry about the game
+                        // changing the entity list under us.
+                        var linkedMemName = m.readString(linkedActor.DataOffset + "+" + c.Name);
+                        if (linkedMemName.IndexOf('\0') != -1) linkedMemName = linkedMemName.Substring(0, linkedMemName.IndexOf('\0'));
+
+                        // Make sure DataOffset is still pointing at actor data though
+                        if (linkedActor.Name != linkedMemName)
                         {
-                            string offset = ((i + 1) * 8).ToString("X");
-
-                            var linkedNameAddr = MemoryManager.GetAddressString(MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, offset), c.Name);
-
-                            var linkedMemName = m.readString(linkedNameAddr);
-                            if (linkedMemName.IndexOf('\0') != -1) linkedMemName = linkedMemName.Substring(0, linkedMemName.IndexOf('\0'));
-
-                            // TBD: This is safe for players but things like pets could be a problem.
-                            if (linkedActor.Name == linkedMemName)
-                            {
-                                var linkedOffset = MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, offset);
-
-                                buff = m.readBytes(MemoryManager.GetAddressString(linkedOffset, c.Body.Base, c.Body.Position.X), 12);
-                                float linkedMemX = BitConverter.ToSingle(buff, 0);
-                                float linkedMemY = BitConverter.ToSingle(buff, 4);
-                                float linkedMemZ = BitConverter.ToSingle(buff, 8);
-
-                                buff = m.readBytes(MemoryManager.GetAddressString(linkedOffset, c.Body.Base, c.Body.Position.Rotation), 16);
-                                float linkedMemRot1 = BitConverter.ToSingle(buff, 0);
-                                float linkedMemRot2 = BitConverter.ToSingle(buff, 4);
-                                float linkedMemRot3 = BitConverter.ToSingle(buff, 8);
-                                float linkedMemRot4 = BitConverter.ToSingle(buff, 12);
-
-                                // Rotate the linked actor's position relative to the current actor
-                                var linkNewPos = new Point3D(linkedMemX - deltaX,
-                                                             linkedMemY - deltaY,
-                                                             linkedMemZ - deltaZ);
-
-                                var transform = new RotateTransform3D(new QuaternionRotation3D(currActorRotDeltaQ), currActorMemX, currActorMemY, currActorMemZ);
-                                linkNewPos = transform.Transform(linkNewPos);
-
-                                // Now rotate the linked actor's orientation
-                                var linkedMemRotQ = new Quaternion(linkedMemRot1, linkedMemRot2, linkedMemRot3, linkedMemRot4);
-                                var newRotQ = currActorRotDeltaQ * linkedMemRotQ;
-
-                                m.writeMemory(MemoryManager.GetAddressString(linkedOffset, c.Body.Base, c.Body.Position.X), "float", linkNewPos.X.ToString());
-                                m.writeMemory(MemoryManager.GetAddressString(linkedOffset, c.Body.Base, c.Body.Position.Y), "float", linkNewPos.Y.ToString());
-                                m.writeMemory(MemoryManager.GetAddressString(linkedOffset, c.Body.Base, c.Body.Position.Z), "float", linkNewPos.Z.ToString());
-
-                                m.writeMemory(MemoryManager.GetAddressString(linkedOffset, c.Body.Base, c.Body.Position.Rotation), "float", newRotQ.X.ToString());
-                                m.writeMemory(MemoryManager.GetAddressString(linkedOffset, c.Body.Base, c.Body.Position.Rotation2), "float", newRotQ.Y.ToString());
-                                m.writeMemory(MemoryManager.GetAddressString(linkedOffset, c.Body.Base, c.Body.Position.Rotation3), "float", newRotQ.Z.ToString());
-                                m.writeMemory(MemoryManager.GetAddressString(linkedOffset, c.Body.Base, c.Body.Position.Rotation4), "float", newRotQ.W.ToString());
-
-                                linkedActor.X = (float)linkNewPos.X;
-                                linkedActor.Y = (float)linkNewPos.Y;
-                                linkedActor.Z = (float)linkNewPos.Z;
-
-                                linkedActor.Rotation1 = (float)newRotQ.X;
-                                linkedActor.Rotation2 = (float)newRotQ.Y;
-                                linkedActor.Rotation3 = (float)newRotQ.Z;
-                                linkedActor.Rotation4 = (float)newRotQ.W;
-                            }
+                            continue;
                         }
+
+                        var linkedActorBodyData = linkedActor.DataOffset + "+" + c.Body.Base + ",";
+
+                        buff = m.readBytes(linkedActorBodyData + c.Body.Position.X, 12);
+                        float linkedMemX = BitConverter.ToSingle(buff, 0);
+                        float linkedMemY = BitConverter.ToSingle(buff, 4);
+                        float linkedMemZ = BitConverter.ToSingle(buff, 8);
+
+                        buff = m.readBytes(linkedActorBodyData + c.Body.Position.Rotation, 16);
+                        float linkedMemRot1 = BitConverter.ToSingle(buff, 0);
+                        float linkedMemRot2 = BitConverter.ToSingle(buff, 4);
+                        float linkedMemRot3 = BitConverter.ToSingle(buff, 8);
+                        float linkedMemRot4 = BitConverter.ToSingle(buff, 12);
+
+                        var linkedMemRotQ = new Quaternion(linkedMemRot1, linkedMemRot2, linkedMemRot3, linkedMemRot4);
+
+                        // Rotate the linked actor's position relative to the current actor
+                        var linkNewPos = new Point3D(linkedMemX - deltaX,
+                                                        linkedMemY - deltaY,
+                                                        linkedMemZ - deltaZ);
+
+                        var transform = new RotateTransform3D(new QuaternionRotation3D(currActorRotDeltaQ), currActorMemX, currActorMemY, currActorMemZ);
+                        linkNewPos = transform.Transform(linkNewPos);
+
+                        // Now rotate the linked actor's orientation
+                        var newRotQ = currActorRotDeltaQ * linkedMemRotQ;
+
+                        m.writeMemory(linkedActorBodyData + c.Body.Position.X, "float", linkNewPos.X.ToString());
+                        m.writeMemory(linkedActorBodyData + c.Body.Position.Y, "float", linkNewPos.Y.ToString());
+                        m.writeMemory(linkedActorBodyData + c.Body.Position.Z, "float", linkNewPos.Z.ToString());
+
+                        m.writeMemory(linkedActorBodyData + c.Body.Position.Rotation, "float", newRotQ.X.ToString());
+                        m.writeMemory(linkedActorBodyData + c.Body.Position.Rotation2, "float", newRotQ.Y.ToString());
+                        m.writeMemory(linkedActorBodyData + c.Body.Position.Rotation3, "float", newRotQ.Z.ToString());
+                        m.writeMemory(linkedActorBodyData + c.Body.Position.Rotation4, "float", newRotQ.W.ToString());
+
+                        linkedActor.X = (float)linkNewPos.X;
+                        linkedActor.Y = (float)linkNewPos.Y;
+                        linkedActor.Z = (float)linkNewPos.Z;
+
+                        linkedActor.Rotation1 = (float)newRotQ.X;
+                        linkedActor.Rotation2 = (float)newRotQ.Y;
+                        linkedActor.Rotation3 = (float)newRotQ.Z;
+                        linkedActor.Rotation4 = (float)newRotQ.W;
                     }
 
                     if (MainViewModel.ViewTime.LinkedGposeView)

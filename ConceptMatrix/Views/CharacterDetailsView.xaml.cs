@@ -288,10 +288,13 @@ namespace ConceptMatrix.Views
             // Get the euler angles from UI.	
             var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.Rotation.value = (float)quat.X;
-            CharacterDetails.Rotation2.value = (float)quat.Y;
-            CharacterDetails.Rotation3.value = (float)quat.Z;
-            CharacterDetails.Rotation4.value = (float)quat.W;
+			lock (CharacterDetails.Rotation)
+			{
+				CharacterDetails.Rotation.value = (float)quat.X;
+				CharacterDetails.Rotation2.value = (float)quat.Y;
+				CharacterDetails.Rotation3.value = (float)quat.Z;
+				CharacterDetails.Rotation4.value = (float)quat.W;
+			}
             // Remove listeners for value changed.	
             RotationUpDown.ValueChanged -= RotV;
             RotationUpDown2.ValueChanged -= RotV;
@@ -302,12 +305,15 @@ namespace ConceptMatrix.Views
             // Get the euler angles from UI.	
             var quat = GetEulerAngles().ToQuaternion();
 
-            CharacterDetails.Rotation.value = (float)quat.X;
-            CharacterDetails.Rotation2.value = (float)quat.Y;
-            CharacterDetails.Rotation3.value = (float)quat.Z;
-            CharacterDetails.Rotation4.value = (float)quat.W;
-            // Remove listeners for value changed.	
-            RotationSlider.ValueChanged -= RotV2;
+			lock (CharacterDetails.Rotation)
+			{
+				CharacterDetails.Rotation.value = (float)quat.X;
+				CharacterDetails.Rotation2.value = (float)quat.Y;
+				CharacterDetails.Rotation3.value = (float)quat.Z;
+				CharacterDetails.Rotation4.value = (float)quat.W;
+			}
+			// Remove listeners for value changed.	
+			RotationSlider.ValueChanged -= RotV2;
             RotationSlider2.ValueChanged -= RotV2;
             RotationSlider3.ValueChanged -= RotV2;
             //  Console.WriteLine(CharacterDetails.RotateY);	
@@ -375,6 +381,8 @@ namespace ConceptMatrix.Views
 				var linked = new LinkedActorInfo()
 				{
 					Name = CharacterDetails.Name.value,
+
+					DataOffset = MemoryManager.Instance.MemLib.readUInt(CharacterDetailsViewModel.baseAddr).ToString("X"),
 
 					X = CharacterDetails.X.value,
 					Y = CharacterDetails.Y.value,
@@ -1459,16 +1467,19 @@ namespace ConceptMatrix.Views
 						CharacterDetails.Z.value = (float) rotated_point.Z;
 					}
 
-					CharacterDetails.RotateX = (float)euler.X;
-					CharacterDetails.RotateY = (float)euler.Y;
-					CharacterDetails.RotateZ = (float)euler.Z;
+					lock (CharacterDetails.Rotation)
+					{
+						CharacterDetails.RotateX = (float)euler.X;
+						CharacterDetails.RotateY = (float)euler.Y;
+						CharacterDetails.RotateZ = (float)euler.Z;
 
-					// Using this on purpose since it derives from the values we just set
-					var quat = GetEulerAngles().ToQuaternion();
-					CharacterDetails.Rotation.value = (float)quat.X;
-					CharacterDetails.Rotation2.value = (float)quat.Y;
-					CharacterDetails.Rotation3.value = (float)quat.Z;
-					CharacterDetails.Rotation4.value = (float)quat.W;
+						// Using this on purpose since it derives from the values we just set
+						var quat = GetEulerAngles().ToQuaternion();
+						CharacterDetails.Rotation.value = (float)quat.X;
+						CharacterDetails.Rotation2.value = (float)quat.Y;
+						CharacterDetails.Rotation3.value = (float)quat.Z;
+						CharacterDetails.Rotation4.value = (float)quat.W;
+					}
 				}
 			}
 		}

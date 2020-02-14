@@ -687,11 +687,11 @@ namespace ConceptMatrix.Utility
         /// <returns></returns>
         public UInt64 readUInt(string code, string file = "")
         {
-            byte[] memory = new byte[4];
+            byte[] memory = new byte[8];
             UIntPtr theCode;
             theCode = get64bitCode(code, file);
 
-            if (ReadProcessMemory(pHandle, theCode, memory, (UIntPtr)4, IntPtr.Zero))
+            if (ReadProcessMemory(pHandle, theCode, memory, (UIntPtr)8, IntPtr.Zero))
                 return BitConverter.ToUInt64(memory, 0);
             else
                 return 0;

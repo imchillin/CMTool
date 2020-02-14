@@ -12,6 +12,8 @@ namespace ConceptMatrix.Models
     {
         public string Name;
 
+        public string DataOffset;
+
         public float X;
         public float Y;
         public float Z;
