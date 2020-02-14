@@ -392,6 +392,16 @@ namespace ConceptMatrix.Views
 			if (secret_feature)
 			{
 				LinkedGposeView = true;
+
+				// TBD: There's some kind of (thread?) race that messes things up sometimes if these aren't frozen
+				xyzcheck = true;
+				CharacterDetails.X.freeze = true;
+				CharacterDetails.Y.freeze = true;
+				CharacterDetails.Z.freeze = true;
+				CharacterDetails.CamX.freeze = true;
+				CharacterDetails.CamY.freeze = true;
+				CharacterDetails.CamZ.freeze = true;
+				CharacterDetails.CamAngleX.freeze = true;
 			}
 		}
 		private void LinkPosition_Unchecked(object sender, RoutedEventArgs e)
