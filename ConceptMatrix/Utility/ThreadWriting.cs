@@ -2000,6 +2000,12 @@ namespace ConceptMatrix.Utility
                 {
                     if (currActor.Name != CharacterDetails.Name.value) continue;
 
+                    // Check the name in memory since we can be too quick when gpose target has switched.
+                    // The name check above is retained as an optimization.
+                    var currActorName = m.readString(GAS(c.Name));
+                    if (currActorName.IndexOf('\0') != -1) currActorName = currActorName.Substring(0, currActorName.IndexOf('\0'));
+                    if (currActor.Name != currActorName) continue;
+
                     // This function uses memory values for current positions because I am paranoid
                     // about the inconsistent updating of state data.
                     byte[] buff = m.readBytes(GAS(c.Body.Base, c.Body.Position.X), 12);
