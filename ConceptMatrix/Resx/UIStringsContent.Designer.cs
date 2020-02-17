@@ -1895,7 +1895,7 @@ namespace ConceptMatrix.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Toggles linking for this actor.
         ///• Changing position or rotation of any linked actor will affect them all.
-        ///• Only supports Y rotation for now. Changes to X rotation while linked may have weird effects!.
+        ///• Turn this on for all actors you want to move together!.
         /// </summary>
         public static string LinkPositionToolTip {
             get {

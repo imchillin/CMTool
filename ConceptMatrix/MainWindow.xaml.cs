@@ -1236,6 +1236,7 @@ namespace ConceptMatrix
                     MainViewModel.ViewTime.LinkPosition.IsEnabled = false;
                     CharacterDetails.LinkedActors.Clear();
                     CharacterDetails.IsLinked = false;
+                    MainViewModel.ViewTime.LinkedGposeView = false;
                 }
             }
         }

@@ -579,12 +579,9 @@ namespace ConceptMatrix.ViewModel
                 }
                 #endregion
 
-                if (CharacterDetails.GposeMode == true)
+                lock (CharacterDetails.LinkedActors)
                 {
-                    lock (CharacterDetails.LinkedActors)
-                    {
-                        CharacterDetails.IsLinked = CharacterDetails.LinkedActors.Exists(x => x.Name == CharacterDetails.Name.value);
-                    }
+                    CharacterDetails.IsLinked = CharacterDetails.LinkedActors.Exists(x => x.Name == CharacterDetails.Name.value);
                 }
 
                 #region Bone Rotations
