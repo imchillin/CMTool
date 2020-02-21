@@ -252,7 +252,7 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<short> DataPath { get; set; }
         [JsonIgnore] public Address<short> NPCName { get; set; }
         [JsonIgnore] public Address<short> NPCModel { get; set; }
-        [JsonIgnore] public Address<short> StatusEffect { get; set; }
+        [JsonIgnore] public Address<int> StatusEffect { get; set; }
         [JsonIgnore] public Address<float> FreezeFacial { get; set; }
         [JsonIgnore] public Address<string> TestArray { get; set; } // Appereance
         [JsonIgnore] public Address<string> TestArray2 { get; set; } // Equipment
@@ -1572,7 +1572,7 @@ namespace ConceptMatrix.Models
             DataHead = new Address<byte>();
             NPCName = new Address<short>();
             NPCModel = new Address<short>();
-            StatusEffect = new Address<short>();
+            StatusEffect = new Address<int>();
             ScaleX = new Address<float>();
             ScaleY = new Address<float>();
             ScaleZ = new Address<float>();

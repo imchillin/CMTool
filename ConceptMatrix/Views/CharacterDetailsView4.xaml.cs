@@ -570,7 +570,7 @@ namespace ConceptMatrix.Views
             {
                 if (StatusEffectBox2.SelectedIndex >= 0)
                 {
-                    CharacterDetails.StatusEffect.value = short.Parse(((ComboBoxItem)StatusEffectBox2.SelectedItem).Tag.ToString());
+                    CharacterDetails.StatusEffect.value = int.Parse(((ComboBoxItem)StatusEffectBox2.SelectedItem).Tag.ToString());
                     m.writeMemory(GASG(c.StatusEffect), "int", ((ComboBoxItem)StatusEffectBox2.SelectedItem).Tag.ToString());
                 }
             }
