@@ -177,13 +177,10 @@ namespace ConceptMatrix.Views
                         {
                             if (CharacterDetails.HeadPiece.value > 0)
                             {
-                                if (game.Gender >= 2 || game.Gender == CharacterDetails.Gender.value)
+                                if (Modelmain.Item1 == CharacterDetails.HeadPiece.value && Modelmain.Item2 == CharacterDetails.HeadV.value)
                                 {
-                                    if (Modelmain.Item1 == CharacterDetails.HeadPiece.value && Modelmain.Item2 == CharacterDetails.HeadV.value)
-                                    {
-                                        CurrentlyEquippedName.Content = game.Name;
-                                        found = true;
-                                    }
+                                    CurrentlyEquippedName.Content = game.Name;
+                                    found = true;
                                 }
                             }
                         }
@@ -192,13 +189,10 @@ namespace ConceptMatrix.Views
                         {
                             if (CharacterDetails.Chest.value > 0)
                             {
-                                if (game.Gender >= 2 || game.Gender == CharacterDetails.Gender.value)
+                                if (Modelmain.Item1 == CharacterDetails.Chest.value && Modelmain.Item2 == CharacterDetails.ChestV.value)
                                 {
-                                    if (Modelmain.Item1 == CharacterDetails.Chest.value && Modelmain.Item2 == CharacterDetails.ChestV.value)
-                                    {
-                                        CurrentlyEquippedName.Content = game.Name;
-                                        found = true;
-                                    }
+                                    CurrentlyEquippedName.Content = game.Name;
+                                    found = true;
                                 }
                             }
                         }
@@ -207,13 +201,10 @@ namespace ConceptMatrix.Views
                         {
                             if (CharacterDetails.Arms.value > 0)
                             {
-                                if (game.Gender >= 2 || game.Gender == CharacterDetails.Gender.value)
+                                if (Modelmain.Item1 == CharacterDetails.Arms.value && Modelmain.Item2 == CharacterDetails.ArmsV.value)
                                 {
-                                    if (Modelmain.Item1 == CharacterDetails.Arms.value && Modelmain.Item2 == CharacterDetails.ArmsV.value)
-                                    {
-                                        CurrentlyEquippedName.Content = game.Name;
-                                        found = true;
-                                    }
+                                    CurrentlyEquippedName.Content = game.Name;
+                                    found = true;
                                 }
                             }
                         }
@@ -222,13 +213,10 @@ namespace ConceptMatrix.Views
                         {
                             if (CharacterDetails.Legs.value > 0)
                             {
-                                if (game.Gender >= 2 || game.Gender == CharacterDetails.Gender.value)
+                                if (Modelmain.Item1 == CharacterDetails.Legs.value && Modelmain.Item2 == CharacterDetails.LegsV.value)
                                 {
-                                    if (Modelmain.Item1 == CharacterDetails.Legs.value && Modelmain.Item2 == CharacterDetails.LegsV.value)
-                                    {
-                                        CurrentlyEquippedName.Content = game.Name;
-                                        found = true;
-                                    }
+                                    CurrentlyEquippedName.Content = game.Name;
+                                    found = true;
                                 }
                             }
                         }
@@ -237,13 +225,10 @@ namespace ConceptMatrix.Views
                         {
                             if (CharacterDetails.Feet.value > 0)
                             {
-                                if (game.Gender >= 2 || game.Gender == CharacterDetails.Gender.value)
+                                if (Modelmain.Item1 == CharacterDetails.Feet.value && Modelmain.Item2 == CharacterDetails.FeetVa.value)
                                 {
-                                    if (Modelmain.Item1 == CharacterDetails.Feet.value && Modelmain.Item2 == CharacterDetails.FeetVa.value)
-                                    {
-                                        CurrentlyEquippedName.Content = game.Name;
-                                        found = true;
-                                    }
+                                    CurrentlyEquippedName.Content = game.Name;
+                                    found = true;
                                 }
                             }
                         }
@@ -279,6 +264,7 @@ namespace ConceptMatrix.Views
                                 if (Modelmain.Item1 == CharacterDetails.Wrist.value && Modelmain.Item2 == CharacterDetails.WristVa.value)
                                 {
                                     CurrentlyEquippedName.Content = game.Name;
+                                    found = true;
                                 }
                             }
                         }

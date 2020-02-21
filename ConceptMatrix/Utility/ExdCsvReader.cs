@@ -63,7 +63,6 @@ namespace ConceptMatrix.Utility
 			public string Name { get; set; }
 			public string ModelMain { get; set; }
 			public string ModelOff { get; set; }
-			public int Gender { get; set; }
 			public ItemType Type { get; set; }
 			public string ClassJobListStringName { get; set; }
 			public SaintCoinach.Imaging.ImageFile Icon { get; set; }
@@ -240,7 +239,6 @@ namespace ConceptMatrix.Utility
 					feature.Gender = test.Gender;
 					feature.Race = test.Race.Key;
 					feature.Tribe = test.Tribe.Key;
-					//  Console.WriteLine($"{test.Key}");
 					feature.Features = FeatureD(test.FacialFeatureIcon);
 					CharaMakeFeatures2.Add(test.Key, feature);
 				}
@@ -511,9 +509,6 @@ namespace ConceptMatrix.Utility
 							item.ModelMain = Parse.ModelMain.ToString();
 							item.ModelOff = Parse.ModelSub.ToString();
 						}
-						if (Parse.Description.ToString().Contains("♀")) item.Gender = 1;
-						else if (Parse.Description.ToString().Contains("♂")) item.Gender = 0;
-						else item.Gender = 2;
 						try
 						{
 							if (Parse.Icon == null) item.Icon = null;
