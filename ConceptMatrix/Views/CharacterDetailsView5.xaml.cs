@@ -20807,8 +20807,7 @@ namespace ConceptMatrix.Views
         {
             MainWindow.CurrentlySaving = true;
             SaveFileDialog dig = new SaveFileDialog();
-            dig.InitialDirectory = SaveSettings.Default.MatrixPoseDirectory;
-            if (!Directory.Exists(dig.InitialDirectory)) { Directory.CreateDirectory(dig.InitialDirectory); }
+            dig.InitialDirectory = SaveSettings.Default.MatrixPoseSaveLoadDirectory;
             dig.Filter = "Concept Matrix Pose File(*.cmp)|*.cmp";
             if (dig.ShowDialog() == true)
             {
@@ -20818,7 +20817,7 @@ namespace ConceptMatrix.Views
                 BoneSaver.Description = result;
                 BoneSaver.DateCreated = DateTime.Now.ToString("yyyy-MM-dd HH':'mm':'ss");
                 BoneSaver.CMPVersion = "1.0";
-
+                SaveSettings.Default.MatrixPoseSaveLoadDirectory = Path.GetDirectoryName(dig.FileName);
                 BoneSaver.Race = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Race), 1));
                 BoneSaver.Clan = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Clan), 1));
                 BoneSaver.Body = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.BodyType), 1));
@@ -21444,12 +21443,12 @@ namespace ConceptMatrix.Views
             DisableTertiary();
             Bone_Flag_Manager();
             OpenFileDialog dig = new OpenFileDialog();
-            dig.InitialDirectory = SaveSettings.Default.MatrixPoseDirectory;
-            if (!Directory.Exists(dig.InitialDirectory)) { Directory.CreateDirectory(dig.InitialDirectory); }
+            dig.InitialDirectory = SaveSettings.Default.MatrixPoseSaveLoadDirectory;
             dig.Filter = "Concept Matrix Pose File(*.cmp)|*.cmp";
             dig.DefaultExt = ".cmp";
             if (dig.ShowDialog() == true)
             {
+                SaveSettings.Default.MatrixPoseSaveLoadDirectory = Path.GetDirectoryName(dig.FileName);
                 if (MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheckAddress)) == 1 && MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheck2Address)) == 4)
                 {
                     UncheckAll();
@@ -22083,12 +22082,12 @@ namespace ConceptMatrix.Views
         private void AdvLoadCMP_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dig = new OpenFileDialog();
-            dig.InitialDirectory = SaveSettings.Default.MatrixPoseDirectory;
-            if (!Directory.Exists(dig.InitialDirectory)) { Directory.CreateDirectory(dig.InitialDirectory); }
+            dig.InitialDirectory = SaveSettings.Default.MatrixPoseSaveLoadDirectory;
             dig.Filter = "Concept Matrix Pose File(*.cmp)|*.cmp";
             dig.DefaultExt = ".cmp";
             if (dig.ShowDialog() == true)
             {
+                SaveSettings.Default.MatrixPoseSaveLoadDirectory = Path.GetDirectoryName(dig.FileName);
                 if (MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheckAddress)) == 1 && MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheck2Address)) == 4)
                 {
                     UncheckAll();

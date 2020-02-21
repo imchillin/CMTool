@@ -2,6 +2,7 @@
 using ConceptMatrix.ViewModel;
 using ConceptMatrix.Windows;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -121,18 +122,7 @@ namespace ConceptMatrix.Views
 
         private void Default2_Click(object sender, RoutedEventArgs e)
         {
-            SaveSettings.Default.MatrixPoseDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Matrix Saves");
-
-            var msgResult = System.Windows.MessageBox.Show($"Would you like to transfer the data in previous directory: {SaveDirectory2.Text} to the newer directory: {SaveSettings.Default.MatrixPoseDirectory}", "Transfer Saves!", MessageBoxButton.YesNo);
-            if (msgResult == MessageBoxResult.Yes)
-            {
-                foreach (var file in new DirectoryInfo(SaveDirectory2.Text).GetFiles())
-                {
-                    file.MoveTo($@"{SaveSettings.Default.MatrixPoseDirectory}\{file.Name}");
-                }
-            }
-
-            SaveDirectory2.Text = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Matrix Saves");
+            Process.Start(SaveDirectory2.Text);
         }
 
         private void Default3_Click(object sender, RoutedEventArgs e)

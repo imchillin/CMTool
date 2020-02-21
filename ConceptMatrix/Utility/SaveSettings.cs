@@ -128,6 +128,9 @@ namespace ConceptMatrix.Utility
         public string ProfileDirectory { get; set; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Saves");
         public string MatrixPoseDirectory { get; set; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Matrix Saves");
         public string GearsetsDirectory { get; set; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Gearsets");
+
+        public string MatrixPoseSaveLoadDirectory { get; set; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Matrix Saves");
+
         public string CharacterAoBBytes { get; set; } = "";
         public string EquipmentBytes { get; set; } = "";
         public WepTuple MainHandQuads { get; set; }
