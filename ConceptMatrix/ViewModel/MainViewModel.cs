@@ -176,27 +176,6 @@ namespace ConceptMatrix.ViewModel
                 {
                     ViewTime.ClanBox.Items.Add(CharacterDetailsView._exdProvider.Tribes[i].Name);
                 }
-                var StatusSheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Status>();
-                HashSet<byte> Sets = new HashSet<byte>();
-                foreach (SaintCoinach.Xiv.Status status in StatusSheet)
-                {
-                    if (status.Key == 0)
-                    {
-                        ViewTime4.StatusEffectBox2.Items.Add(new ComboBoxItem() { Content = "None", Tag = 0 });
-                    }
-                    if (Sets.Contains(status.VFX) || status.VFX <= 0) continue;
-                    Sets.Add(status.VFX);
-                    string name = status.Name.ToString();
-                    if (name.Length <= 0) name = "None";
-                    ViewTime4.StatusEffectBox2.Items.Add(new ComboBoxItem() { Content = name, Tag = status.Key });
-                }
-                var TitleSheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Title>();
-                foreach (SaintCoinach.Xiv.Title title in TitleSheet)
-                {
-                    string Title = title.Feminine;
-                    if (Title.Length <= 0) Title = "No Title";
-                    ViewTime.TitleBox.Items.Add(Title);
-                }
                 var WeatherSheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Weather>();
                 foreach (SaintCoinach.Xiv.Weather weather in WeatherSheet)
                 {
@@ -235,6 +214,27 @@ namespace ConceptMatrix.ViewModel
                             });
                         }
                     }
+                }
+                var StatusSheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Status>();
+                HashSet<byte> Sets = new HashSet<byte>();
+                foreach (SaintCoinach.Xiv.Status status in StatusSheet)
+                {
+                    if (status.Key == 0)
+                    {
+                        ViewTime4.StatusEffectBox2.Items.Add(new ComboBoxItem() { Content = "None", Tag = 0 });
+                    }
+                    if (Sets.Contains(status.VFX) || status.VFX <= 0) continue;
+                    Sets.Add(status.VFX);
+                    string name = status.Name.ToString();
+                    if (name.Length <= 0) name = "None";
+                    ViewTime4.StatusEffectBox2.Items.Add(new ComboBoxItem() { Content = name, Tag = status.Key });
+                }
+                var TitleSheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Title>();
+                foreach (SaintCoinach.Xiv.Title title in TitleSheet)
+                {
+                    string Title = title.Feminine;
+                    if (Title.Length <= 0) Title = "No Title";
+                    ViewTime.TitleBox.Items.Add(Title);
                 }
             }
             catch(Exception)
