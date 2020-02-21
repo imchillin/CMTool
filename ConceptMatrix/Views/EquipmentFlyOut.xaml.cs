@@ -705,6 +705,8 @@ namespace ConceptMatrix.Views
             CharacterDetails.FacePaint.value = CharacterBytes[24];
             CharacterDetails.FacePaintColor.value = CharacterBytes[25];
             MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Race), CharacterBytes);
+            CharacterDetails.ModelType.value = _cGearSet.ModelType;
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.ModelType),"int", _cGearSet.ModelType.ToString());
             Task.Delay(25).Wait();
             if (CharacterDetails.LimbalEyes.Activated == true) { CharacterDetails.LimbalEyes.freeze = true; CharacterDetails.LimbalEyes.Activated = false; }
             if (CharacterDetails.Highlights.Activated == true) { CharacterDetails.Highlights.freeze = true; CharacterDetails.Highlights.Activated = false; }

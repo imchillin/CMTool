@@ -119,6 +119,7 @@
                             <DataGrid x:Name="residentlist" HorizontalAlignment="Left" Height="325" Margin="-6,42,0,0" VerticalAlignment="Top" Width="478" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"  IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden" SelectionChanged="residentlist_SelectionChanged">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="{Binding Source={x:Static resx:FlyOutStrings.Name}}" Binding="{Binding Path=Name}" Width="*"/>
+                                    <DataGridTextColumn Header="{Binding Source={x:Static resx:FlyOutStrings.ModelValues}}" Binding="{Binding Path=Gear.ModelType}" Width="*"/>
                                 </DataGrid.Columns>
                             </DataGrid>
                             <TextBox x:Name="SearchModelBox2" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:FlyOutStrings.Search}}" Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Height="31" Margin="2,370,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="461" TextChanged="SearchModelBox2_TextChanged" BorderThickness="0,1"/>

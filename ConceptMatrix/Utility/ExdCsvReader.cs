@@ -29,6 +29,8 @@ namespace ConceptMatrix.Utility
 
 		public byte[] Customize { get; set; }
 
+		public int ModelType { get; set; }
+
 		public string ToJson()
 		{
 			return JsonConvert.SerializeObject(this);
@@ -559,6 +561,7 @@ namespace ConceptMatrix.Utility
 				   , Convert.ToByte(parse.EyeShape), Convert.ToByte(parse.Nose), Convert.ToByte(parse.Jaw), Convert.ToByte(parse.Mouth)
 				   , Convert.ToByte(parse.LipColor), Convert.ToByte(parse.BustOrTone1), Convert.ToByte(parse.ExtraFeature1), Convert.ToByte(parse.ExtraFeature2OrBust)
 				   , Convert.ToByte(parse.FacePaint), Convert.ToByte(parse.FacePaintColor) });
+					gear.ModelType = parse.ModelChara.Key;
 					gear.Customize = customize.ToArray();
 					if (parse.NpcEquip.Key > 0)
 					{
