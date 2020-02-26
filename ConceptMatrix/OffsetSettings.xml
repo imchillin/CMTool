@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Settings>
-  <LastUpdated>5.2x1</LastUpdated>
+  <LastUpdated>5.2x2</LastUpdated>
   <CameraOffset>1C61F80</CameraOffset><!--Done-->
   <GposeOffset>1C62168</GposeOffset><!--Done-->
   <GposeEntityOffset>1C65000</GposeEntityOffset><!--Done-->
@@ -1066,7 +1066,7 @@
     <Music2>C0,114</Music2>
     <NameHeight>164</NameHeight>
     <RenderToggle>104</RenderToggle>
-    <Transparency>1700</Transparency>
+    <Transparency>1704</Transparency>
     <EntityType>8C</EntityType>
     <ModelType>1888</ModelType>
     <!--Character Appearance-->
