@@ -59,17 +59,20 @@ namespace ConceptMatrix.ViewModel
                     {
                         RegionType = "zh";
                         File.WriteAllText("Definitions/Item.json", Properties.Resources.ItemCN);
+                        File.WriteAllText("Definitions/Stain.json", Properties.Resources.StainCN);
                         realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.ChineseSimplified);
                     }
                     else if (File.Exists(Path.Combine(GameDirectory, "boot", "FFXIV_Boot.exe")))
                     {
                         RegionType = "ko";
                         File.WriteAllText("Definitions/Item.json", Properties.Resources.ItemKR);
+                        File.WriteAllText("Definitions/Stain.json", Properties.Resources.StainKR);
                         realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.Korean);
                     }
                     if (RegionType == "Live")
                     {
                         File.WriteAllText("Definitions/Item.json", Properties.Resources.Item);
+                        File.WriteAllText("Definitions/Stain.json", Properties.Resources.Stain);
                         if (SaveSettings.Default.Language == "en") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.English);
                         else if (SaveSettings.Default.Language == "ja") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.Japanese);
                         else if (SaveSettings.Default.Language == "de") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.German);
