@@ -151,4 +151,13 @@
   <data name="ItemKR" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ItemKR.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="Stain" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Stain.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;gb2312</value>
+  </data>
+  <data name="StainCN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\StainCN.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;gb2312</value>
+  </data>
+  <data name="StainKR" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\StainKR.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;gb2312</value>
+  </data>
 </root>

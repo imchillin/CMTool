@@ -1112,7 +1112,7 @@
     <value>上身：</value>
   </data>
   <data name="TPoseActor" xml:space="preserve">
-    <value>T-pose actor</value>
+    <value>T-pose 角色</value>
   </data>
   <data name="TransformationData" xml:space="preserve">
     <value>转换数据</value>
@@ -1289,29 +1289,38 @@
     <value>维基</value>
   </data>
   <data name="CamSettingsLoadToolTip" xml:space="preserve">
-    <value>Load camera settings from file.</value>
+    <value>从文件加载摄像机设置</value>
   </data>
   <data name="CamSettingsSaveToolTip" xml:space="preserve">
-    <value>Save camera settings to file.</value>
+    <value>保存摄像机设置到文件</value>
   </data>
   <data name="GposeViewSettingsLoadToolTip" xml:space="preserve">
-    <value>Load GPose View position from file.
-• Hold CTRL when clicking this to load as an offset from the current actor position.
-• You can load saved actor positionss to jump GPose View actor to that position.</value>
+    <value>从文件加载GPose视图位置。
+•单击时按住CTRL来将文件作为当前视图位置的偏移量。
+•您可以加载已保存的角色位置，以将GPose的视图跳转到该位置。</value>
   </data>
   <data name="GposeViewSettingsSaveToolTip" xml:space="preserve">
-    <value>Save GPose View position to file.</value>
+    <value>将GPose视图位置保存到文件</value>
   </data>
   <data name="PosSettingsLoadToolTip" xml:space="preserve">
-    <value>Load actor position from file.
-• Hold CTRL when clicking this to load as an offset from the current GPose View.
-• You can load saved GPose View positions to jump an actor to that position.</value>
+    <value>从文件加载角色位置
+•单击时按住CTRL键，以从当前GPose视图中加载角色的偏移量。
+•您可以加载已保存的GPose视图位置，以将角色跳转到该位置。</value>
   </data>
   <data name="PosSettingsSaveToolTip" xml:space="preserve">
-    <value>Save actor position to file.</value>
+    <value>保存角色位置至文件</value>
   </data>
   <data name="LinkPositionToolTip" xml:space="preserve">
-    <value>Toggles linking for this actor.
-• Changing position or rotation of any linked actor will affect them all.</value>
+    <value>启用此角色的连接状态
+•更改任何连接的角色的位置或旋转会同时影响其连接的角色。</value>
+  </data>
+  <data name="CamPanX" xml:space="preserve">
+    <value>相机平移 X:</value>
+  </data>
+  <data name="CamPanY" xml:space="preserve">
+    <value>相机平移 Y:</value>
+  </data>
+  <data name="FreezeCam" xml:space="preserve">
+    <value>冻结相机</value>
   </data>
 </root>

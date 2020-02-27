@@ -669,6 +669,24 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cam Pan X:.
+        /// </summary>
+        public static string CamPanX {
+            get {
+                return ResourceManager.GetString("CamPanX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cam Pan Y:.
+        /// </summary>
+        public static string CamPanY {
+            get {
+                return ResourceManager.GetString("CamPanY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cam Rotation:.
         /// </summary>
         public static string CamRotation {
@@ -1345,6 +1363,15 @@ namespace ConceptMatrix.Resx {
         public static string FreezeAll {
             get {
                 return ResourceManager.GetString("FreezeAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Freeze Cam.
+        /// </summary>
+        public static string FreezeCam {
+            get {
+                return ResourceManager.GetString("FreezeCam", resourceCulture);
             }
         }
         
