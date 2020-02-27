@@ -323,6 +323,12 @@
   <data name="CameraZPos" xml:space="preserve">
     <value>Camera Off Z:</value>
   </data>
+  <data name="CamPanX" xml:space="preserve">
+    <value>Cam Pan X:</value>
+  </data>
+  <data name="CamPanY" xml:space="preserve">
+    <value>Cam Pan Y:</value>
+  </data>
   <data name="CamRotation" xml:space="preserve">
     <value>Cam Rotation:</value>
   </data>
@@ -558,6 +564,9 @@
   </data>
   <data name="FreezeAll" xml:space="preserve">
     <value>Freeze All</value>
+  </data>
+  <data name="FreezeCam" xml:space="preserve">
+    <value>Freeze Cam</value>
   </data>
   <data name="FreezePos" xml:space="preserve">
     <value>Freeze Pos</value>

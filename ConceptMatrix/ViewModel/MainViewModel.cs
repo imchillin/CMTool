@@ -116,16 +116,19 @@ namespace ConceptMatrix.ViewModel
                     if (File.Exists(Path.Combine(GameDirectory, "FFXIVBoot.exe")) || File.Exists(Path.Combine(GameDirectory, "rail_files", "rail_game_identify.json")))
                     {
                         File.WriteAllText("Definitions/Item.json", Properties.Resources.ItemCN);
+                        File.WriteAllText("Definitions/Stain.json", Properties.Resources.StainCN);
                         realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.ChineseSimplified);
                     }
                     else if (File.Exists(Path.Combine(GameDirectory, "boot", "FFXIV_Boot.exe")))
                     {
                         File.WriteAllText("Definitions/Item.json", Properties.Resources.ItemKR);
+                        File.WriteAllText("Definitions/Stain.json", Properties.Resources.StainKR);
                         realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.Korean);
                     }
                     if (Determination == "Live")
                     {
                         File.WriteAllText("Definitions/Item.json", Properties.Resources.Item);
+                        File.WriteAllText("Definitions/Stain.json", Properties.Resources.Stain);
                         if (SaveSettings.Default.Language == "en") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.English);
                         else if (SaveSettings.Default.Language == "ja") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.Japanese);
                         else if (SaveSettings.Default.Language == "de") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.German);
@@ -239,7 +242,7 @@ namespace ConceptMatrix.ViewModel
             }
             catch(Exception)
             {
-
+            
             }
         }
         private void LoadSettings(string region)

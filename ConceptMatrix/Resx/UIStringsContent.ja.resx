@@ -1311,4 +1311,13 @@
     <value>Toggles linking for this actor.
 • Changing position or rotation of any linked actor will affect them all.</value>
   </data>
+  <data name="CamPanX" xml:space="preserve">
+    <value>Cam Pan X:</value>
+  </data>
+  <data name="CamPanY" xml:space="preserve">
+    <value>Cam Pan Y:</value>
+  </data>
+  <data name="FreezeCam" xml:space="preserve">
+    <value>Freeze Cam</value>
+  </data>
 </root>

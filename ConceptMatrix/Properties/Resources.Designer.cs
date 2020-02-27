@@ -19,7 +19,7 @@ namespace ConceptMatrix.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -251,8 +251,7 @@ namespace ConceptMatrix.Properties {
         ///    },
         ///    {
         ///      &quot;index&quot;: 8,
-        ///      &quot;name&quot;: &quot;Description&quot;
-        ///    }, [rest of string was truncated]&quot;;.
+        ///  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ItemKR {
             get {
@@ -326,9 +325,9 @@ namespace ConceptMatrix.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Index, Name, Model IDs
-        ///0,&quot;GIGANTIC MEOL&quot;,&quot;9001,268,1,0&quot;
-        ///1,&quot;Il Mheg Looking Grass&quot;,&quot;9001,267,1,0&quot;
-        ///2,&quot;Alcohol Mixer&quot;,&quot;9001,266,1,0&quot;
+        ///0,&quot;GIGANTIC MEOL&quot;,&quot;9001,269,1,0&quot;
+        ///1,&quot;Il Mheg Looking Grass&quot;,&quot;9001,268,1,0&quot;
+        ///2,&quot;Alcohol Mixer&quot;,&quot;9001,267,1,0&quot;
         ///3,&quot;Large Ronkan Disc&quot;,&quot;9001,265,1,0&quot;
         ///4,&quot;Green Gem&quot;,&quot;9001,264,1,0&quot;
         ///5,&quot;Royal Bracelet (?)&quot;,&quot;9001,263,1,0&quot;
@@ -344,6 +343,90 @@ namespace ConceptMatrix.Properties {
         internal static string PropsList {
             get {
                 return ResourceManager.GetString("PropsList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;sheet&quot;: &quot;Stain&quot;,
+        ///  &quot;defaultColumn&quot;: &quot;Name&quot;,
+        ///  &quot;definitions&quot;: [
+        ///    {
+        ///      &quot;name&quot;: &quot;Color&quot;,
+        ///      &quot;converter&quot;: {
+        ///        &quot;type&quot;: &quot;color&quot;
+        ///      }
+        ///    },
+        ///    {
+        ///      &quot;index&quot;: 1,
+        ///      &quot;name&quot;: &quot;Shade&quot;
+        ///    },
+        ///    {
+        ///      &quot;index&quot;: 3,
+        ///      &quot;name&quot;: &quot;Name&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string Stain {
+            get {
+                return ResourceManager.GetString("Stain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;sheet&quot;: &quot;Stain&quot;,
+        ///  &quot;defaultColumn&quot;: &quot;Name&quot;,
+        ///  &quot;definitions&quot;: [
+        ///    {
+        ///      &quot;name&quot;: &quot;Color&quot;,
+        ///      &quot;converter&quot;: {
+        ///        &quot;type&quot;: &quot;color&quot;
+        ///      }
+        ///    },
+        ///    {
+        ///      &quot;index&quot;: 1,
+        ///      &quot;name&quot;: &quot;Shade&quot;
+        ///    },
+        ///    {
+        ///      &quot;index&quot;: 2,
+        ///      &quot;name&quot;: &quot;Name&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string StainCN {
+            get {
+                return ResourceManager.GetString("StainCN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;sheet&quot;: &quot;Stain&quot;,
+        ///  &quot;defaultColumn&quot;: &quot;Name&quot;,
+        ///  &quot;definitions&quot;: [
+        ///    {
+        ///      &quot;name&quot;: &quot;Color&quot;,
+        ///      &quot;converter&quot;: {
+        ///        &quot;type&quot;: &quot;color&quot;
+        ///      }
+        ///    },
+        ///    {
+        ///      &quot;index&quot;: 1,
+        ///      &quot;name&quot;: &quot;Shade&quot;
+        ///    },
+        ///    {
+        ///      &quot;index&quot;: 2,
+        ///      &quot;name&quot;: &quot;Name&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string StainKR {
+            get {
+                return ResourceManager.GetString("StainKR", resourceCulture);
             }
         }
     }
