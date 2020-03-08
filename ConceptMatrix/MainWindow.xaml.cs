@@ -1068,7 +1068,8 @@ namespace ConceptMatrix
             CharacterDetailsView.xyzcheck = false;
             CharacterDetailsView.numbcheck = false;
             CharacterDetailsView3.FreezeCamAngleSet = false;
-        }
+            MainViewModel.ViewTime5.UncheckAll();
+    }
 
 		private void AlwaysOnTop_Click(object sender, RoutedEventArgs e)
         {

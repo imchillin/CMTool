@@ -913,7 +913,7 @@ namespace ConceptMatrix.Views
             exmet_buttons = new ToggleButton[] { ExMetA, ExMetB, ExMetC, ExMetD, ExMetE, ExMetF, ExMetG, ExMetH, ExMetI, ExMetJ, ExMetK, ExMetL, ExMetM, ExMetN, ExMetO, ExMetP, ExMetQ, ExMetR };
             extop_buttons = new ToggleButton[] { ExTopA, ExTopB, ExTopC, ExTopD, ExTopE, ExTopF, ExTopG, ExTopH, ExTopI};
         }
-
+        
         private Vector3D GetEulerAngles() => new Vector3D(CharacterDetails.BoneX, CharacterDetails.BoneY, CharacterDetails.BoneZ);
 
         public static byte[] GetBytes(Quaternion q)
@@ -20376,7 +20376,7 @@ namespace ConceptMatrix.Views
             //if (LeftLegSaved) LoadLLegButton.IsEnabled = true;
             //if (RightLegSaved) LoadRLegButton.IsEnabled = true;
         }
-        private void DisableAll()
+        public void DisableAll()
         {
             PhysicsButton.IsEnabled = false;
             TertiaryButton.IsEnabled = false;
