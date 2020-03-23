@@ -8,6 +8,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -36,6 +37,35 @@ namespace ConceptMatrix.Views
 			InitializeComponent();
 		}
 
+		private void OnIsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+		{
+			MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress, "bytes", "0x90 0x90 0x90 0x90 0x90 0x90");
+			MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress2, "bytes", "0x90 0x90 0x90 0x90 0x90 0x90");
+			MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress3, "bytes", "0x90 0x90 0x90 0x90");
+			MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.PhysicsAddress, "bytes", "0x90 0x90 0x90 0x90");
+			MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.PhysicsAddress2, "bytes", "0x90 0x90 0x90");
+
+			if (this.IsVisible)
+			{
+				ThreadStart ts = new ThreadStart(this.PollSliders);
+				Thread th = new Thread(ts);
+				th.Start();
+			}
+		}
+
+		private void PollSliders()
+		{
+			while (this.IsVisible)
+			{
+				Thread.Sleep(8);
+
+				if (this.viewModel.CurrentBone == null)
+					continue;
+
+				this.viewModel.CurrentBone.SetRotation();
+			}
+		}
+
 		public class PoseViewModel : BaseModel
 		{
 			private static Dictionary<string, Bone> bones = new Dictionary<string, Bone>();
@@ -53,6 +83,10 @@ namespace ConceptMatrix.Views
 				{
 					if (this.CurrentBone?.BoneName == value)
 						return;
+
+					// Ensure we have written any pending rotations before changing bone targets
+					if (this.CurrentBone != null)
+						this.CurrentBone.SetRotation();
 
 					if (!bones.ContainsKey(value))
 						throw new Exception("Failed to find bone: " + value);
@@ -353,9 +387,6 @@ namespace ConceptMatrix.Views
 					set
 					{
 						this.euler.X = value;
-						this.quaternion = this.euler.ToQuaternion();
-
-						SetRotation();
 					}
 				}
 
@@ -369,8 +400,7 @@ namespace ConceptMatrix.Views
 					set
 					{
 						this.euler.Y = value;
-						this.quaternion = this.euler.ToQuaternion();
-						SetRotation();
+						
 					}
 				}
 
@@ -384,8 +414,6 @@ namespace ConceptMatrix.Views
 					set
 					{
 						this.euler.Z = value;
-						this.quaternion = this.euler.ToQuaternion();
-						SetRotation();
 					}
 				}
 
@@ -412,8 +440,13 @@ namespace ConceptMatrix.Views
 					this.oldQuaternion = this.quaternion;
 				}
 
-				private void SetRotation()
+				public void SetRotation()
 				{
+					this.quaternion = this.euler.ToQuaternion();
+
+					if (this.oldQuaternion == this.quaternion)
+						return;
+
 					this.WriteRotation();
 
 					this.oldQuaternion.Conjugate();
