@@ -42,7 +42,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
-    <NoWarn>CS0067</NoWarn>
+    <NoWarn>CS0067;</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -54,7 +54,7 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
     <DebugSymbols>true</DebugSymbols>
-    <NoWarn>CS0067</NoWarn>
+    <NoWarn>CS0067;</NoWarn>
     <DocumentationFile>
     </DocumentationFile>
   </PropertyGroup>
@@ -184,6 +184,9 @@
     <Compile Include="Views\CharacterDetailsView4.xaml.cs">
       <DependentUpon>CharacterDetailsView4.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CharacterPoseView.xaml.cs">
+      <DependentUpon>CharacterPoseView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EmoteFlyOut.xaml.cs">
       <DependentUpon>EmoteFlyOut.xaml</DependentUpon>
     </Compile>
@@ -259,6 +262,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\CharacterDetailsView4.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CharacterPoseView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -428,6 +435,7 @@
     <Content Include="OffsetSettingsCN.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\PoseCharacterBackground.png" />
     <Resource Include="Resources\body.png" />
     <Resource Include="Resources\clothes.png" />
     <Resource Include="Resources\equip.png" />

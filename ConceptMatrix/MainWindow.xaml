@@ -37,6 +37,10 @@
                 <Views:CharacterDetailsView2 Margin="0,4,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
             </TabItem>
             <TabItem Header="{Binding Source={x:Static resx:UIStringsContent.PosingMatrix}}" Style="{DynamicResource MenuLevel2}">
+                <Views:CharacterPoseView DataContext="{Binding CharacterDetails}"/>
+            </TabItem>
+            
+            <TabItem Header="{Binding Source={x:Static resx:UIStringsContent.PosingMatrix}}" Style="{DynamicResource MenuLevel2}">
                 <Views:CharacterDetailsView5 Margin="0,4,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
             </TabItem>
             <TabItem Header="{Binding Source={x:Static resx:UIStringsContent.World}}" Style="{DynamicResource MenuLevel2}">
