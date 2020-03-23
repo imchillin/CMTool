@@ -57,9 +57,8 @@ namespace ConceptMatrix.Views
 					if (!bones.ContainsKey(value))
 						throw new Exception("Failed to find bone: " + value);
 
+					bones[value].GetRotation();
 					this.CurrentBone = bones[value];
-					this.CurrentBone.GetRotation();
-					
 				}
 			}
 
@@ -89,6 +88,214 @@ namespace ConceptMatrix.Views
 						bones[boneName] = new Bone(boneName);
 					}
 				}
+
+				// now that we have all the bones, we make a hierarchy
+				// torso tree
+				ParentBone("Root", "SpineA");
+				ParentBone("SpineA", "SpineB");
+				ParentBone("SpineB", "SpineC");
+				ParentBone("SpineC", "Neck");
+				ParentBone("Neck", "Head");
+				ParentBone("SpineB", "BreastLeft");
+				ParentBone("SpineB", "BreastRight");
+				ParentBone("SpineB", "ScabbardLeft");
+				ParentBone("SpineB", "ScabbardRight");
+
+				// clothes tree
+				ParentBone("SpineA", "ClothBackALeft");
+				ParentBone("SpineA", "ClothBackBLeft");
+				ParentBone("SpineA", "ClothBackCLeft");
+				ParentBone("SpineA", "ClothBackARight");
+				ParentBone("SpineA", "ClothBackBRight");
+				ParentBone("SpineA", "ClothBackCRight");
+				ParentBone("SpineA", "ClothSideALeft");
+				ParentBone("SpineA", "ClothSideBLeft");
+				ParentBone("SpineA", "ClothSideCLeft");
+				ParentBone("SpineA", "ClothSideARight");
+				ParentBone("SpineA", "ClothSideBRight");
+				ParentBone("SpineA", "ClothSideCRight");
+				ParentBone("SpineA", "ClothFrontALeft");
+				ParentBone("SpineA", "ClothFrontBLeft");
+				ParentBone("SpineA", "ClothFrontCLeft");
+				ParentBone("SpineA", "ClothFrontARight");
+				ParentBone("SpineA", "ClothFrontBRight");
+				ParentBone("SpineA", "ClothFrontCRight");
+
+				// Facebone (middy) tree
+				ParentBone("Head", "Nose");
+				ParentBone("Head", "Jaw");
+				ParentBone("Head", "EyelidLowerLeft");
+				ParentBone("Head", "EyelidLowerRight");
+				ParentBone("Head", "EyeLeft");
+				ParentBone("EyeLeft", "EyeRight");
+				ParentBone("Head", "EarLeft");
+				ParentBone("Head", "EarRight");
+				ParentBone("Head", "EarringALeft");
+				ParentBone("Head", "EarringBLeft");
+				ParentBone("Head", "EarringARight");
+				ParentBone("Head", "EarringBRight");
+				ParentBone("Head", "HairFrontLeft");
+				ParentBone("Head", "HairFrontRight");
+				ParentBone("Head", "HairA");
+				ParentBone("Head", "HairB");
+				ParentBone("Head", "CheekLeft");
+				ParentBone("Head", "CheekRight");
+				ParentBone("Head", "LipsLeft");
+				ParentBone("Head", "LipsRight");
+				ParentBone("Head", "EyebrowLeft");
+				ParentBone("Head", "EyebrowRight");
+				ParentBone("Head", "Bridge");
+				ParentBone("Head", "BrowLeft");
+				ParentBone("Head", "BrowRight");
+				ParentBone("Head", "LipUpperA");
+				ParentBone("Head", "EyelidUpperLeft");
+				ParentBone("Head", "EyelidUpperRight");
+				ParentBone("Head", "LipLowerA");
+				ParentBone("Head", "LipUpperB");
+				ParentBone("Head", "LipLowerB");
+
+				ParentBone("Head", "ExHairA");
+				ParentBone("Head", "ExHairB");
+				ParentBone("Head", "ExHairC");
+				ParentBone("Head", "ExHairD");
+				ParentBone("Head", "ExHairE");
+				ParentBone("Head", "ExHairF");
+				ParentBone("Head", "ExHairG");
+				ParentBone("Head", "ExHairH");
+				ParentBone("Head", "ExHairI");
+				ParentBone("Head", "ExHairJ");
+				ParentBone("Head", "ExHairK");
+				ParentBone("Head", "ExHairL");
+
+				// Facebone hroth tree
+				/*ParentBone("Head", "HrothEyebrowLeft");
+				ParentBone("Head", "HrothEyebrowRight");
+				ParentBone("Head", "HrothBridge");
+				ParentBone("Head", "HrothBrowLeft");
+				ParentBone("Head", "HrothBrowRight");
+				ParentBone("Head", "HrothJawUpper");
+				ParentBone("Head", "HrothLipUpper");
+				ParentBone("Head", "HrothEyelidUpperLeft");
+				ParentBone("Head", "HrothEyelidUpperRight");
+				ParentBone("Head", "HrothLipsLeft");
+				ParentBone("Head", "HrothLipsRight");
+				ParentBone("Head", "HrothLipUpperLeft");
+				ParentBone("Head", "HrothLipUpperRight");
+				ParentBone("Head", "HrothLipLower");
+				ParentBone("Head", "HrothWhiskersLeft");
+				ParentBone("Head", "HrothWhiskersRight");
+
+				// Facebone Viera tree
+				ParentBone("Head", "VieraLipLowerA");
+				ParentBone("Head", "VieraLipUpperB");
+				ParentBone("Head", "VieraLipLowerB");
+				ParentBone("VieraEar01BLeft", "VieraEar01ALeft");
+				ParentBone("VieraEar02BLeft", "VieraEar02ALeft");
+				ParentBone("VieraEar03BLeft", "VieraEar03ALeft");
+				ParentBone("VieraEar04BLeft", "VieraEar04ALeft");
+				ParentBone("VieraEar01BRight", "VieraEar01ARight");
+				ParentBone("VieraEar02BRight", "VieraEar02ARight");
+				ParentBone("VieraEar03BRight", "VieraEar03ARight");
+				ParentBone("VieraEar04BRight", "VieraEar04ARight");*/
+
+				// Special handler for eyes
+				////ParentBone("EyeRight", "EyeLeft");
+
+				// armbone tree
+				ParentBone("SpineC", "ClavicleLeft");
+				ParentBone("ClavicleLeft", "ArmLeft");
+				ParentBone("ArmLeft", "ShoulderLeft");
+				ParentBone("ArmLeft", "PauldronLeft");
+				ParentBone("ArmLeft", "ForearmLeft");
+				ParentBone("ForearmLeft", "ElbowLeft");
+				ParentBone("ForearmLeft", "WristLeft");
+				ParentBone("ForearmLeft", "ShieldLeft");
+				ParentBone("ForearmLeft", "CouterLeft");
+				ParentBone("ForearmLeft", "HandLeft");
+				ParentBone("HandLeft", "WeaponLeft");
+				ParentBone("HandLeft", "ThumbALeft");
+				ParentBone("ThumbALeft", "ThumbBLeft");
+				ParentBone("HandLeft", "IndexALeft");
+				ParentBone("IndexALeft", "IndexBLeft");
+				ParentBone("HandLeft", "MiddleALeft");
+				ParentBone("MiddleALeft", "MiddleBLeft");
+				ParentBone("HandLeft", "RingALeft");
+				ParentBone("RingALeft", "RingBLeft");
+				ParentBone("HandLeft", "PinkyALeft");
+				ParentBone("PinkyALeft", "PinkyBLeft");
+
+				ParentBone("SpineC", "ClavicleRight");
+				ParentBone("ClavicleRight", "ArmRight");
+				ParentBone("ArmRight", "ShoulderRight");
+				ParentBone("ArmRight", "PauldronRight");
+				ParentBone("ArmRight", "ForearmRight");
+				ParentBone("ForearmRight", "ElbowRight");
+				ParentBone("ForearmRight", "WristRight");
+				ParentBone("ForearmRight", "ShieldRight");
+				ParentBone("ForearmRight", "CouterRight");
+				ParentBone("ForearmRight", "HandRight");
+				ParentBone("HandRight", "WeaponRight");
+				ParentBone("HandRight", "ThumbARight");
+				ParentBone("ThumbARight", "ThumbBRight");
+				ParentBone("HandRight", "IndexARight");
+				ParentBone("IndexARight", "IndexBRight");
+				ParentBone("HandRight", "MiddleARight");
+				ParentBone("MiddleARight", "MiddleBRight");
+				ParentBone("HandRight", "RingARight");
+				ParentBone("RingARight", "RingBRight");
+				ParentBone("HandRight", "PinkyARight");
+				ParentBone("PinkyARight", "PinkyBRight");
+
+				// lower half bones tree
+				ParentBone("Root", "Waist");
+				ParentBone("Waist", "SheatheLeft");
+				ParentBone("Waist", "SheatheRight");
+				ParentBone("Waist", "HolsterLeft");
+				ParentBone("Waist", "HolsterRight");
+				ParentBone("Waist", "LegLeft");
+				ParentBone("LegLeft", "KneeLeft");
+				ParentBone("KneeLeft", "PoleynLeft");
+				ParentBone("KneeLeft", "CalfLeft");
+				ParentBone("KneeLeft", "FootLeft");
+				ParentBone("FootLeft", "ToesLeft");
+				ParentBone("Waist", "LegRight");
+				ParentBone("LegRight", "KneeRight");
+				ParentBone("KneeRight", "PoleynRight");
+				ParentBone("KneeRight", "CalfRight");
+				ParentBone("KneeRight", "FootRight");
+				ParentBone("FootRight", "ToesRight");
+
+				// tail bones tree
+				ParentBone("Waist", "TailA");
+				ParentBone("TailA", "TailB");
+				ParentBone("TailB", "TailC");
+				ParentBone("TailC", "TailD");
+			}
+
+			private static void ParentBone(string parentName, string childName)
+			{
+				Bone parent = GetBone(parentName);
+				Bone child = GetBone(childName);
+
+				if (parent.Children.Contains(child) || child.Parent == parent)
+				{
+					Console.WriteLine("Duplicate parenting: " + parentName + " - " + childName);
+					return;
+				}
+
+				if (child.Parent != null)
+					throw new Exception("Attempt to parent bone: " + childName + " to multiple parents: " + parentName + " and " + bones[childName].Parent);
+
+				parent.Children.Add(child);
+				child.Parent = parent;
+			}
+
+			private static Bone GetBone(string name)
+			{
+				if (!bones.ContainsKey(name))
+					throw new Exception("Unable to locate bone: \"" + name + "\"");
+
+				return bones[name];
 			}
 
 			// Get the bone address string from the Settings.Instance.Character.Body.Bones lookup.
@@ -111,89 +318,141 @@ namespace ConceptMatrix.Views
 			{
 				public readonly string BoneName;
 
-				private float x;
-				private float y;
-				private float z;
+				public List<Bone> Children = new List<Bone>();
+				public Bone Parent;
+
+				private Quaternion oldQuaternion = Quaternion.Identity;
+				private Quaternion quaternion = Quaternion.Identity;
+				private Vector3D euler;
+
+				private string xAddr;
+				private string yAddr;
+				private string zAddr;
+				private string wAddr;
 
 				public Bone(string boneName)
 				{
 					this.BoneName = boneName;
 				}
 
-				public float X 
+				public double X 
 				{ 
 					get
 					{
-						return this.x;
+						return this.euler.X;
 					}
 
 					set
 					{
-						this.x = value;
+						this.euler.X = value;
+						this.quaternion = this.euler.ToQuaternion();
+
 						SetRotation();
 					}
 				}
 
-				public float Y
+				public double Y
 				{
 					get
 					{
-						return this.y;
+						return this.euler.Y;
 					}
 
 					set
 					{
-						this.y = value;
+						this.euler.Y = value;
+						this.quaternion = this.euler.ToQuaternion();
 						SetRotation();
 					}
 				}
 
-				public float Z
+				public double Z
 				{
 					get
 					{
-						return this.z;
+						return this.euler.Z;
 					}
 
 					set
 					{
-						this.z = value;
+						this.euler.Z = value;
+						this.quaternion = this.euler.ToQuaternion();
 						SetRotation();
 					}
 				}
 
-				public void GetRotation()
+				public void GetRotation(bool suppressPropertyChanged = false)
 				{
 					Mem mem = MemoryManager.Instance.MemLib;
 
-					byte[] bytearray = mem.readBytes(GetAddress("X"), 16);
+					GetAddress();
+					byte[] bytearray = mem.readBytes(this.xAddr, 16);
 
-					Quaternion q = new Quaternion();
-					q.X = BitConverter.ToSingle(bytearray, 0);
-					q.Y = BitConverter.ToSingle(bytearray, 4);
-					q.Z = BitConverter.ToSingle(bytearray, 8);
-					q.W = BitConverter.ToSingle(bytearray, 12);
-					Vector3D euler = q.ToEulerAngles();
-					this.X = (float)euler.X;
-					this.Y = (float)euler.Y;
-					this.Z = (float)euler.Z;
+					this.quaternion.X = BitConverter.ToSingle(bytearray, 0);
+					this.quaternion.Y = BitConverter.ToSingle(bytearray, 4);
+					this.quaternion.Z = BitConverter.ToSingle(bytearray, 8);
+					this.quaternion.W = BitConverter.ToSingle(bytearray, 12);
+					this.euler = this.quaternion.ToEulerAngles();
+
+					if (!suppressPropertyChanged)
+					{
+						this.X = euler.X;
+						this.Y = euler.Y;
+						this.Z = euler.Z;
+					}
+
+					this.oldQuaternion = this.quaternion;
 				}
 
 				private void SetRotation()
 				{
-					Vector3D euler = new Vector3D(this.X, this.Y, this.Z);
-					Quaternion q = euler.ToQuaternion();
+					this.WriteRotation();
 
-					Mem mem = MemoryManager.Instance.MemLib;
-					mem.writeBytes(GetAddress("X"), BitConverter.GetBytes((float)q.X));
-					mem.writeBytes(GetAddress("Y"), BitConverter.GetBytes((float)q.Y));
-					mem.writeBytes(GetAddress("Z"), BitConverter.GetBytes((float)q.Z));
-					mem.writeBytes(GetAddress("W"), BitConverter.GetBytes((float)q.W));
+					this.oldQuaternion.Conjugate();
+
+					foreach (Bone child in this.Children)
+					{
+						child.Rotate(this.oldQuaternion, this.quaternion);
+					}
+
+					this.oldQuaternion = this.quaternion;
 				}
 
-				private string GetAddress(string axis)
+				private void WriteRotation()
 				{
-					return PoseViewModel.GetAddressString(BoneName, axis);
+					Mem mem = MemoryManager.Instance.MemLib;
+					GetAddress();
+					mem.writeBytes(this.xAddr, BitConverter.GetBytes((float)this.quaternion.X));
+					mem.writeBytes(this.yAddr, BitConverter.GetBytes((float)this.quaternion.Y));
+					mem.writeBytes(this.zAddr, BitConverter.GetBytes((float)this.quaternion.Z));
+					mem.writeBytes(this.wAddr, BitConverter.GetBytes((float)this.quaternion.W));
+				}
+
+				private void Rotate(Quaternion sourceOldCnj, Quaternion sourceNew)
+				{
+					this.GetRotation(true);
+
+					this.oldQuaternion = this.quaternion;
+					this.quaternion = sourceNew * (sourceOldCnj * this.quaternion);
+					this.euler = this.quaternion.ToEulerAngles();
+
+					this.WriteRotation();
+
+					foreach (Bone child in this.Children)
+					{
+						child.Rotate(sourceOldCnj, sourceNew);
+					}
+				}
+
+				private void GetAddress()
+				{
+					if (this.xAddr == null)
+					{
+						this.xAddr = PoseViewModel.GetAddressString(BoneName, "X");
+						this.yAddr = PoseViewModel.GetAddressString(BoneName, "Y");
+						this.zAddr = PoseViewModel.GetAddressString(BoneName, "Z");
+						this.wAddr = PoseViewModel.GetAddressString(BoneName, "W");
+					}
 				}
 			}
 		}
