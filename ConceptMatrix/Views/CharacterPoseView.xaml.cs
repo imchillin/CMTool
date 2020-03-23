@@ -183,20 +183,28 @@ namespace ConceptMatrix.Views
 				ParentBone("Head", "HrothLipUpperRight");
 				ParentBone("Head", "HrothLipLower");
 				ParentBone("Head", "HrothWhiskersLeft");
-				ParentBone("Head", "HrothWhiskersRight");
+				ParentBone("Head", "HrothWhiskersRight");*/
 
 				// Facebone Viera tree
 				ParentBone("Head", "VieraLipLowerA");
-				ParentBone("Head", "VieraLipUpperB");
 				ParentBone("Head", "VieraLipLowerB");
-				ParentBone("VieraEar01BLeft", "VieraEar01ALeft");
-				ParentBone("VieraEar02BLeft", "VieraEar02ALeft");
-				ParentBone("VieraEar03BLeft", "VieraEar03ALeft");
-				ParentBone("VieraEar04BLeft", "VieraEar04ALeft");
-				ParentBone("VieraEar01BRight", "VieraEar01ARight");
-				ParentBone("VieraEar02BRight", "VieraEar02ARight");
-				ParentBone("VieraEar03BRight", "VieraEar03ARight");
-				ParentBone("VieraEar04BRight", "VieraEar04ARight");*/
+				ParentBone("Head", "VieraLipUpperB");
+				////ParentBone("Head", "VieraEar01ALeft");
+				////ParentBone("Head", "VieraEar02ALeft");
+				////ParentBone("Head", "VieraEar03ALeft");
+				////ParentBone("Head", "VieraEar04ALeft");
+				ParentBone("Head", "VieraEar01ARight");
+				ParentBone("Head", "VieraEar02ARight");
+				ParentBone("Head", "VieraEar03ARight");
+				ParentBone("Head", "VieraEar04ARight");
+				ParentBone("VieraEar01ALeft", "VieraEar01BLeft");
+				ParentBone("VieraEar02ALeft", "VieraEar02BLeft");
+				ParentBone("VieraEar03ALeft", "VieraEar03BLeft");
+				ParentBone("VieraEar04ALeft", "VieraEar04BLeft");
+				ParentBone("VieraEar01ARight", "VieraEar01BRight");
+				ParentBone("VieraEar02ARight", "VieraEar02BRight");
+				ParentBone("VieraEar03ARight", "VieraEar03BRight");
+				ParentBone("VieraEar04ARight", "VieraEar04BRight");
 
 				// Special handler for eyes
 				////ParentBone("EyeRight", "EyeLeft");
