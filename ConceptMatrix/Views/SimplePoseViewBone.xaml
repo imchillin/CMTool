@@ -7,8 +7,13 @@
 			 DataContextChanged="OnDataContextChanged"
 			 mc:Ignorable="d" 
 			 Width="18"
-			 Height="18">
+			 Height="18"
+			 MouseEnter="OnMouseEnter"
+			 MouseLeave="OnMouseLeave"
+			 MouseUp="OnMouseUp">
 	<Grid>
-		<RadioButton x:Name="Button" Checked="OnChecked" MouseEnter="OnMouseEnter" MouseLeave="OnMouseLeave"/>
+		<Ellipse Stroke="Gray" StrokeThickness="1" Fill="#404040" x:Name="Background"/>
+		<Ellipse Fill="Gray" Margin="3" x:Name="Foreground" Visibility="Hidden"/>
+		<!--<RadioButton x:Name="Button" Checked="OnChecked" MouseEnter="OnMouseEnter" MouseLeave="OnMouseLeave"/>-->
 	</Grid>
 </UserControl>

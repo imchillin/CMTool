@@ -103,13 +103,13 @@ namespace ConceptMatrix.ViewModel
 			this.ParentBone("Head", "EyelidLowerLeft");
 			this.ParentBone("Head", "EyelidLowerRight");
 			this.ParentBone("Head", "EyeLeft");
-			this.ParentBone("EyeLeft", "EyeRight");
+			this.ParentBone("Head", "EyeRight");
 			this.ParentBone("Head", "EarLeft");
+			this.ParentBone("EarLeft", "EarringALeft");
+			this.ParentBone("EarringALeft", "EarringBLeft");
 			this.ParentBone("Head", "EarRight");
-			this.ParentBone("Head", "EarringALeft");
-			this.ParentBone("Head", "EarringBLeft");
-			this.ParentBone("Head", "EarringARight");
-			this.ParentBone("Head", "EarringBRight");
+			this.ParentBone("EarRight", "EarringARight");
+			this.ParentBone("EarringARight", "EarringBRight");
 			this.ParentBone("Head", "HairFrontLeft");
 			this.ParentBone("Head", "HairFrontRight");
 			this.ParentBone("Head", "HairA");
@@ -126,9 +126,9 @@ namespace ConceptMatrix.ViewModel
 			this.ParentBone("Head", "LipUpperA");
 			this.ParentBone("Head", "EyelidUpperLeft");
 			this.ParentBone("Head", "EyelidUpperRight");
-			this.ParentBone("Head", "LipLowerA");
+			this.ParentBone("Jaw", "LipLowerA");
 			this.ParentBone("Head", "LipUpperB");
-			this.ParentBone("Head", "LipLowerB");
+			this.ParentBone("LipLowerA", "LipLowerB");
 
 			this.ParentBone("Head", "ExHairA");
 			this.ParentBone("Head", "ExHairB");
@@ -182,9 +182,6 @@ namespace ConceptMatrix.ViewModel
 			this.ParentBone("VieraEar03ARight", "VieraEar03BRight");
 			this.ParentBone("VieraEar04ARight", "VieraEar04BRight");
 
-			// Special handler for eyes
-			////ParentBone("EyeRight", "EyeLeft");
-
 			// armbone tree
 			this.ParentBone("SpineC", "ClavicleLeft");
 			this.ParentBone("ClavicleLeft", "ArmLeft");
@@ -195,10 +192,11 @@ namespace ConceptMatrix.ViewModel
 			this.ParentBone("ForearmLeft", "WristLeft");
 			this.ParentBone("ForearmLeft", "ShieldLeft");
 			this.ParentBone("ForearmLeft", "CouterLeft");
-			this.ParentBone("ForearmLeft", "HandLeft");
+			this.ParentBone("ForearmLeft", "WristLeft");
 			this.ParentBone("HandLeft", "WeaponLeft");
 			this.ParentBone("HandLeft", "ThumbALeft");
 			this.ParentBone("ThumbALeft", "ThumbBLeft");
+			this.ParentBone("WristLeft", "HandLeft");
 			this.ParentBone("HandLeft", "IndexALeft");
 			this.ParentBone("IndexALeft", "IndexBLeft");
 			this.ParentBone("HandLeft", "MiddleALeft");
@@ -217,7 +215,8 @@ namespace ConceptMatrix.ViewModel
 			this.ParentBone("ForearmRight", "WristRight");
 			this.ParentBone("ForearmRight", "ShieldRight");
 			this.ParentBone("ForearmRight", "CouterRight");
-			this.ParentBone("ForearmRight", "HandRight");
+			this.ParentBone("ForearmRight", "WristRight");
+			this.ParentBone("WristRight", "HandRight");
 			this.ParentBone("HandRight", "WeaponRight");
 			this.ParentBone("HandRight", "ThumbARight");
 			this.ParentBone("ThumbARight", "ThumbBRight");
@@ -237,16 +236,16 @@ namespace ConceptMatrix.ViewModel
 			this.ParentBone("Waist", "HolsterLeft");
 			this.ParentBone("Waist", "HolsterRight");
 			this.ParentBone("Waist", "LegLeft");
-			this.ParentBone("LegLeft", "KneeLeft");
+			this.ParentBone("CalfLeft", "KneeLeft");
 			this.ParentBone("KneeLeft", "PoleynLeft");
-			this.ParentBone("KneeLeft", "CalfLeft");
-			this.ParentBone("KneeLeft", "FootLeft");
+			this.ParentBone("LegLeft", "CalfLeft");
+			this.ParentBone("CalfLeft", "FootLeft");
 			this.ParentBone("FootLeft", "ToesLeft");
 			this.ParentBone("Waist", "LegRight");
-			this.ParentBone("LegRight", "KneeRight");
+			this.ParentBone("CalfRight", "KneeRight");
 			this.ParentBone("KneeRight", "PoleynRight");
-			this.ParentBone("KneeRight", "CalfRight");
-			this.ParentBone("KneeRight", "FootRight");
+			this.ParentBone("LegRight", "CalfRight");
+			this.ParentBone("CalfRight", "FootRight");
 			this.ParentBone("FootRight", "ToesRight");
 
 			// tail bones tree
@@ -268,7 +267,7 @@ namespace ConceptMatrix.ViewModel
 			}
 
 			if (child.Parent != null)
-				throw new Exception("Attempt to parent bone: " + childName + " to multiple parents: " + parentName + " and " + bones[childName].Parent);
+				throw new Exception("Attempt to parent bone: " + childName + " to multiple parents: " + parentName + " and " + bones[childName].Parent.BoneName);
 
 			parent.Children.Add(child);
 			child.Parent = parent;
