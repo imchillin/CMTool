@@ -135,6 +135,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FlyOutStrings.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resx\UISimplePoseStrings.Designer.cs">
+      <DependentUpon>UISimplePoseStrings.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Resx\UIPoseStrings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -166,6 +171,7 @@
     <Compile Include="ViewModel\CharacterDetailsViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\PaletteSelectorViewModel.cs" />
+    <Compile Include="ViewModel\SimplePoseViewModel.cs" />
     <Compile Include="Views\AboutView.xaml.cs">
       <DependentUpon>AboutView.xaml</DependentUpon>
     </Compile>
@@ -184,8 +190,8 @@
     <Compile Include="Views\CharacterDetailsView4.xaml.cs">
       <DependentUpon>CharacterDetailsView4.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CharacterPoseView.xaml.cs">
-      <DependentUpon>CharacterPoseView.xaml</DependentUpon>
+    <Compile Include="Views\SimplePoseView.xaml.cs">
+      <DependentUpon>SimplePoseView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EmoteFlyOut.xaml.cs">
       <DependentUpon>EmoteFlyOut.xaml</DependentUpon>
@@ -201,6 +207,9 @@
     </Compile>
     <Compile Include="Views\RotationView.xaml.cs">
       <DependentUpon>RotationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SimplePoseViewBone.xaml.cs">
+      <DependentUpon>SimplePoseViewBone.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SpecialControl.xaml.cs">
       <DependentUpon>SpecialControl.xaml</DependentUpon>
@@ -265,7 +274,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CharacterPoseView.xaml">
+    <Page Include="Views\SimplePoseView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -286,6 +295,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\RotationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SimplePoseViewBone.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -358,6 +371,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resx\FlyOutStrings.zh.resx" />
     <EmbeddedResource Include="Resx\MiscStrings.zh.resx" />
+    <EmbeddedResource Include="Resx\UISimplePoseStrings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UISimplePoseStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resx\UIPoseStrings.de.resx" />
     <EmbeddedResource Include="Resx\UIPoseStrings.fr.resx" />
     <EmbeddedResource Include="Resx\UIPoseStrings.ja.resx" />
@@ -435,6 +452,8 @@
     <Content Include="OffsetSettingsCN.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\PoseCharacterClothesBackgroundFront.png" />
+    <Resource Include="Resources\PoseCharacterClothesBackgroundBack.png" />
     <Resource Include="Resources\PoseCharacterBackground.png" />
     <Resource Include="Resources\body.png" />
     <Resource Include="Resources\clothes.png" />
