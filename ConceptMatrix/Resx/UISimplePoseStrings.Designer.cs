@@ -61,6 +61,861 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Abdomen.
+        /// </summary>
+        public static string Abdomen_Tooltip {
+            get {
+                return ResourceManager.GetString("Abdomen_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arm Left.
+        /// </summary>
+        public static string ArmLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("ArmLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arm Right.
+        /// </summary>
+        public static string ArmRight_Tooltip {
+            get {
+                return ResourceManager.GetString("ArmRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Breast Left.
+        /// </summary>
+        public static string BreastLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("BreastLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Breast Right.
+        /// </summary>
+        public static string BreastRight_Tooltip {
+            get {
+                return ResourceManager.GetString("BreastRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bridge.
+        /// </summary>
+        public static string Bridge_Tooltip {
+            get {
+                return ResourceManager.GetString("Bridge_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Brow Left.
+        /// </summary>
+        public static string BrowLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("BrowLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Brow Right.
+        /// </summary>
+        public static string BrowRight_Tooltip {
+            get {
+                return ResourceManager.GetString("BrowRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Calf Left.
+        /// </summary>
+        public static string CalfLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("CalfLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Calf Right.
+        /// </summary>
+        public static string CalfRight_Tooltip {
+            get {
+                return ResourceManager.GetString("CalfRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cheek Left.
+        /// </summary>
+        public static string CheekLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("CheekLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cheek Right.
+        /// </summary>
+        public static string CheekRight_Tooltip {
+            get {
+                return ResourceManager.GetString("CheekRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clavicle Left.
+        /// </summary>
+        public static string ClavicleLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("ClavicleLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clavicle Right.
+        /// </summary>
+        public static string ClavicleRight_Tooltip {
+            get {
+                return ResourceManager.GetString("ClavicleRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cloth Back A Left.
+        /// </summary>
+        public static string ClothBackALeft_Tooltip {
+            get {
+                return ResourceManager.GetString("ClothBackALeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cloth Back A Right.
+        /// </summary>
+        public static string ClothBackARight_Tooltip {
+            get {
+                return ResourceManager.GetString("ClothBackARight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cloth Back B Left.
+        /// </summary>
+        public static string ClothBackBLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("ClothBackBLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cloth Back B Right.
+        /// </summary>
+        public static string ClothBackBRight_Tooltip {
+            get {
+                return ResourceManager.GetString("ClothBackBRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cloth Back C Left.
+        /// </summary>
+        public static string ClothBackCLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("ClothBackCLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cloth Back C Right.
+        /// </summary>
+        public static string ClothBackCRight_Tooltip {
+            get {
+                return ResourceManager.GetString("ClothBackCRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cloth Front A Left.
+        /// </summary>
+        public static string ClothFrontALeft_Tooltip {
+            get {
+                return ResourceManager.GetString("ClothFrontALeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cloth Front A Right.
+        /// </summary>
+        public static string ClothFrontARight_Tooltip {
+            get {
+                return ResourceManager.GetString("ClothFrontARight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cloth Front B Left.
+        /// </summary>
+        public static string ClothFrontBLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("ClothFrontBLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cloth Front B Right.
+        /// </summary>
+        public static string ClothFrontBRight_Tooltip {
+            get {
+                return ResourceManager.GetString("ClothFrontBRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cloth Front C Left.
+        /// </summary>
+        public static string ClothFrontCLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("ClothFrontCLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cloth Front C Right.
+        /// </summary>
+        public static string ClothFrontCRight_Tooltip {
+            get {
+                return ResourceManager.GetString("ClothFrontCRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cloth Side A Left.
+        /// </summary>
+        public static string ClothSideALeft_Tooltip {
+            get {
+                return ResourceManager.GetString("ClothSideALeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cloth Side A Right.
+        /// </summary>
+        public static string ClothSideARight_Tooltip {
+            get {
+                return ResourceManager.GetString("ClothSideARight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cloth Side B Left.
+        /// </summary>
+        public static string ClothSideBLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("ClothSideBLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cloth Side B Right.
+        /// </summary>
+        public static string ClothSideBRight_Tooltip {
+            get {
+                return ResourceManager.GetString("ClothSideBRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cloth Side C Left.
+        /// </summary>
+        public static string ClothSideCLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("ClothSideCLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cloth Side C Right.
+        /// </summary>
+        public static string ClothSideCRight_Tooltip {
+            get {
+                return ResourceManager.GetString("ClothSideCRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Couter Left.
+        /// </summary>
+        public static string CouterLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("CouterLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Couter Right.
+        /// </summary>
+        public static string CouterRight_Tooltip {
+            get {
+                return ResourceManager.GetString("CouterRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ear Left.
+        /// </summary>
+        public static string EarLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("EarLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ear Right.
+        /// </summary>
+        public static string EarRight_Tooltip {
+            get {
+                return ResourceManager.GetString("EarRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Earring A Left.
+        /// </summary>
+        public static string EarringALeft_Tooltip {
+            get {
+                return ResourceManager.GetString("EarringALeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Earring A Right.
+        /// </summary>
+        public static string EarringARight_Tooltip {
+            get {
+                return ResourceManager.GetString("EarringARight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Earring B Left.
+        /// </summary>
+        public static string EarringBLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("EarringBLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Earring B Right.
+        /// </summary>
+        public static string EarringBRight_Tooltip {
+            get {
+                return ResourceManager.GetString("EarringBRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Elbow Left.
+        /// </summary>
+        public static string ElbowLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("ElbowLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Elbow Right.
+        /// </summary>
+        public static string ElbowRight_Tooltip {
+            get {
+                return ResourceManager.GetString("ElbowRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Hair.
+        /// </summary>
+        public static string ExHair_Tooltip {
+            get {
+                return ResourceManager.GetString("ExHair_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Hair A.
+        /// </summary>
+        public static string ExHairA_Tooltip {
+            get {
+                return ResourceManager.GetString("ExHairA_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Hair B.
+        /// </summary>
+        public static string ExHairB_Tooltip {
+            get {
+                return ResourceManager.GetString("ExHairB_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Hair C.
+        /// </summary>
+        public static string ExHairC_Tooltip {
+            get {
+                return ResourceManager.GetString("ExHairC_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Hair D.
+        /// </summary>
+        public static string ExHairD_Tooltip {
+            get {
+                return ResourceManager.GetString("ExHairD_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Hair E.
+        /// </summary>
+        public static string ExHairE_Tooltip {
+            get {
+                return ResourceManager.GetString("ExHairE_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Hair F.
+        /// </summary>
+        public static string ExHairF_Tooltip {
+            get {
+                return ResourceManager.GetString("ExHairF_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Hair G.
+        /// </summary>
+        public static string ExHairG_Tooltip {
+            get {
+                return ResourceManager.GetString("ExHairG_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Hair H.
+        /// </summary>
+        public static string ExHairH_Tooltip {
+            get {
+                return ResourceManager.GetString("ExHairH_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Hair I.
+        /// </summary>
+        public static string ExHairI_Tooltip {
+            get {
+                return ResourceManager.GetString("ExHairI_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Hair J.
+        /// </summary>
+        public static string ExHairJ_Tooltip {
+            get {
+                return ResourceManager.GetString("ExHairJ_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Hair K.
+        /// </summary>
+        public static string ExHairK_Tooltip {
+            get {
+                return ResourceManager.GetString("ExHairK_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Hair L.
+        /// </summary>
+        public static string ExHairL_Tooltip {
+            get {
+                return ResourceManager.GetString("ExHairL_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Met.
+        /// </summary>
+        public static string ExMet_Tooltip {
+            get {
+                return ResourceManager.GetString("ExMet_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Met A.
+        /// </summary>
+        public static string ExMetA_Tooltip {
+            get {
+                return ResourceManager.GetString("ExMetA_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Met B.
+        /// </summary>
+        public static string ExMetB_Tooltip {
+            get {
+                return ResourceManager.GetString("ExMetB_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Met C.
+        /// </summary>
+        public static string ExMetC_Tooltip {
+            get {
+                return ResourceManager.GetString("ExMetC_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Met D.
+        /// </summary>
+        public static string ExMetD_Tooltip {
+            get {
+                return ResourceManager.GetString("ExMetD_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Met E.
+        /// </summary>
+        public static string ExMetE_Tooltip {
+            get {
+                return ResourceManager.GetString("ExMetE_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Met F.
+        /// </summary>
+        public static string ExMetF_Tooltip {
+            get {
+                return ResourceManager.GetString("ExMetF_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Met G.
+        /// </summary>
+        public static string ExMetG_Tooltip {
+            get {
+                return ResourceManager.GetString("ExMetG_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Met H.
+        /// </summary>
+        public static string ExMetH_Tooltip {
+            get {
+                return ResourceManager.GetString("ExMetH_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Met I.
+        /// </summary>
+        public static string ExMetI_Tooltip {
+            get {
+                return ResourceManager.GetString("ExMetI_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Met J.
+        /// </summary>
+        public static string ExMetJ_Tooltip {
+            get {
+                return ResourceManager.GetString("ExMetJ_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Met K.
+        /// </summary>
+        public static string ExMetK_Tooltip {
+            get {
+                return ResourceManager.GetString("ExMetK_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Met L.
+        /// </summary>
+        public static string ExMetL_Tooltip {
+            get {
+                return ResourceManager.GetString("ExMetL_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Met M.
+        /// </summary>
+        public static string ExMetM_Tooltip {
+            get {
+                return ResourceManager.GetString("ExMetM_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Met N.
+        /// </summary>
+        public static string ExMetN_Tooltip {
+            get {
+                return ResourceManager.GetString("ExMetN_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Met O.
+        /// </summary>
+        public static string ExMetO_Tooltip {
+            get {
+                return ResourceManager.GetString("ExMetO_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Met P.
+        /// </summary>
+        public static string ExMetP_Tooltip {
+            get {
+                return ResourceManager.GetString("ExMetP_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Met Q.
+        /// </summary>
+        public static string ExMetQ_Tooltip {
+            get {
+                return ResourceManager.GetString("ExMetQ_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Met R.
+        /// </summary>
+        public static string ExMetR_Tooltip {
+            get {
+                return ResourceManager.GetString("ExMetR_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Root Hair.
+        /// </summary>
+        public static string ExRootHair_Tooltip {
+            get {
+                return ResourceManager.GetString("ExRootHair_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Root Met.
+        /// </summary>
+        public static string ExRootMet_Tooltip {
+            get {
+                return ResourceManager.GetString("ExRootMet_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Root Top.
+        /// </summary>
+        public static string ExRootTop_Tooltip {
+            get {
+                return ResourceManager.GetString("ExRootTop_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Top.
+        /// </summary>
+        public static string ExTop_Tooltip {
+            get {
+                return ResourceManager.GetString("ExTop_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Top A.
+        /// </summary>
+        public static string ExTopA_Tooltip {
+            get {
+                return ResourceManager.GetString("ExTopA_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Top B.
+        /// </summary>
+        public static string ExTopB_Tooltip {
+            get {
+                return ResourceManager.GetString("ExTopB_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Top C.
+        /// </summary>
+        public static string ExTopC_Tooltip {
+            get {
+                return ResourceManager.GetString("ExTopC_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Top D.
+        /// </summary>
+        public static string ExTopD_Tooltip {
+            get {
+                return ResourceManager.GetString("ExTopD_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Top E.
+        /// </summary>
+        public static string ExTopE_Tooltip {
+            get {
+                return ResourceManager.GetString("ExTopE_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Top F.
+        /// </summary>
+        public static string ExTopF_Tooltip {
+            get {
+                return ResourceManager.GetString("ExTopF_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Top G.
+        /// </summary>
+        public static string ExTopG_Tooltip {
+            get {
+                return ResourceManager.GetString("ExTopG_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Top H.
+        /// </summary>
+        public static string ExTopH_Tooltip {
+            get {
+                return ResourceManager.GetString("ExTopH_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Top I.
+        /// </summary>
+        public static string ExTopI_Tooltip {
+            get {
+                return ResourceManager.GetString("ExTopI_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Eyebrow Left.
+        /// </summary>
+        public static string EyebrowLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("EyebrowLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Eyebrow Right.
+        /// </summary>
+        public static string EyebrowRight_Tooltip {
+            get {
+                return ResourceManager.GetString("EyebrowRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Eye Left.
+        /// </summary>
+        public static string EyeLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("EyeLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Eyelid Lower Left.
+        /// </summary>
+        public static string EyelidLowerLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("EyelidLowerLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Eyelid Lower Right.
+        /// </summary>
+        public static string EyelidLowerRight_Tooltip {
+            get {
+                return ResourceManager.GetString("EyelidLowerRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Eyelid Upper Left.
+        /// </summary>
+        public static string EyelidUpperLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("EyelidUpperLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Eyelid Upper Right.
+        /// </summary>
+        public static string EyelidUpperRight_Tooltip {
+            get {
+                return ResourceManager.GetString("EyelidUpperRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Eye Right.
+        /// </summary>
+        public static string EyeRight_Tooltip {
+            get {
+                return ResourceManager.GetString("EyeRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Flip Sides:.
         /// </summary>
         public static string FlipSides {
@@ -79,11 +934,1019 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Foot Left.
+        /// </summary>
+        public static string FootLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("FootLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Foot Right.
+        /// </summary>
+        public static string FootRight_Tooltip {
+            get {
+                return ResourceManager.GetString("FootRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forearm Left.
+        /// </summary>
+        public static string ForearmLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("ForearmLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forearm Right.
+        /// </summary>
+        public static string ForearmRight_Tooltip {
+            get {
+                return ResourceManager.GetString("ForearmRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hair A.
+        /// </summary>
+        public static string HairA_Tooltip {
+            get {
+                return ResourceManager.GetString("HairA_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hair B.
+        /// </summary>
+        public static string HairB_Tooltip {
+            get {
+                return ResourceManager.GetString("HairB_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hair Front Left.
+        /// </summary>
+        public static string HairFrontLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("HairFrontLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hair Front Right.
+        /// </summary>
+        public static string HairFrontRight_Tooltip {
+            get {
+                return ResourceManager.GetString("HairFrontRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hand Left.
+        /// </summary>
+        public static string HandLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("HandLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hand Right.
+        /// </summary>
+        public static string HandRight_Tooltip {
+            get {
+                return ResourceManager.GetString("HandRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Head.
+        /// </summary>
+        public static string Head_Tooltip {
+            get {
+                return ResourceManager.GetString("Head_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Holster Left.
+        /// </summary>
+        public static string HolsterLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("HolsterLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Holster Right.
+        /// </summary>
+        public static string HolsterRight_Tooltip {
+            get {
+                return ResourceManager.GetString("HolsterRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hroth Bridge.
+        /// </summary>
+        public static string HrothBridge_Tooltip {
+            get {
+                return ResourceManager.GetString("HrothBridge_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hroth Brow Left.
+        /// </summary>
+        public static string HrothBrowLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("HrothBrowLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hroth Brow Right.
+        /// </summary>
+        public static string HrothBrowRight_Tooltip {
+            get {
+                return ResourceManager.GetString("HrothBrowRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hroth Eyebrow Left.
+        /// </summary>
+        public static string HrothEyebrowLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("HrothEyebrowLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hroth Eyebrow Right.
+        /// </summary>
+        public static string HrothEyebrowRight_Tooltip {
+            get {
+                return ResourceManager.GetString("HrothEyebrowRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hroth Eyelid Upper Left.
+        /// </summary>
+        public static string HrothEyelidUpperLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("HrothEyelidUpperLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hroth Eyelid Upper Right.
+        /// </summary>
+        public static string HrothEyelidUpperRight_Tooltip {
+            get {
+                return ResourceManager.GetString("HrothEyelidUpperRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hroth Jaw Upper.
+        /// </summary>
+        public static string HrothJawUpper_Tooltip {
+            get {
+                return ResourceManager.GetString("HrothJawUpper_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hroth Lip Lower.
+        /// </summary>
+        public static string HrothLipLower_Tooltip {
+            get {
+                return ResourceManager.GetString("HrothLipLower_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hroth Lips Left.
+        /// </summary>
+        public static string HrothLipsLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("HrothLipsLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hroth Lips Right.
+        /// </summary>
+        public static string HrothLipsRight_Tooltip {
+            get {
+                return ResourceManager.GetString("HrothLipsRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hroth Lip Upper.
+        /// </summary>
+        public static string HrothLipUpper_Tooltip {
+            get {
+                return ResourceManager.GetString("HrothLipUpper_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hroth Lip Upper Left.
+        /// </summary>
+        public static string HrothLipUpperLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("HrothLipUpperLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hroth Lip Upper Right.
+        /// </summary>
+        public static string HrothLipUpperRight_Tooltip {
+            get {
+                return ResourceManager.GetString("HrothLipUpperRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hroth Whiskers Left.
+        /// </summary>
+        public static string HrothWhiskersLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("HrothWhiskersLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hroth Whiskers Right.
+        /// </summary>
+        public static string HrothWhiskersRight_Tooltip {
+            get {
+                return ResourceManager.GetString("HrothWhiskersRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Index A Left.
+        /// </summary>
+        public static string IndexALeft_Tooltip {
+            get {
+                return ResourceManager.GetString("IndexALeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Index A Right.
+        /// </summary>
+        public static string IndexARight_Tooltip {
+            get {
+                return ResourceManager.GetString("IndexARight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Index B Left.
+        /// </summary>
+        public static string IndexBLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("IndexBLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Index B Right.
+        /// </summary>
+        public static string IndexBRight_Tooltip {
+            get {
+                return ResourceManager.GetString("IndexBRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Jaw.
+        /// </summary>
+        public static string Jaw_Tooltip {
+            get {
+                return ResourceManager.GetString("Jaw_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Knee Left.
+        /// </summary>
+        public static string KneeLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("KneeLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Knee Right.
+        /// </summary>
+        public static string KneeRight_Tooltip {
+            get {
+                return ResourceManager.GetString("KneeRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Leg Left.
+        /// </summary>
+        public static string LegLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("LegLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Leg Right.
+        /// </summary>
+        public static string LegRight_Tooltip {
+            get {
+                return ResourceManager.GetString("LegRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lip Lower A.
+        /// </summary>
+        public static string LipLowerA_Tooltip {
+            get {
+                return ResourceManager.GetString("LipLowerA_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lip Lower B.
+        /// </summary>
+        public static string LipLowerB_Tooltip {
+            get {
+                return ResourceManager.GetString("LipLowerB_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lips Left.
+        /// </summary>
+        public static string LipsLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("LipsLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lips Right.
+        /// </summary>
+        public static string LipsRight_Tooltip {
+            get {
+                return ResourceManager.GetString("LipsRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lip Upper A.
+        /// </summary>
+        public static string LipUpperA_Tooltip {
+            get {
+                return ResourceManager.GetString("LipUpperA_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lip Upper B.
+        /// </summary>
+        public static string LipUpperB_Tooltip {
+            get {
+                return ResourceManager.GetString("LipUpperB_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Middle A Left.
+        /// </summary>
+        public static string MiddleALeft_Tooltip {
+            get {
+                return ResourceManager.GetString("MiddleALeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Middle A Right.
+        /// </summary>
+        public static string MiddleARight_Tooltip {
+            get {
+                return ResourceManager.GetString("MiddleARight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Middle B Left.
+        /// </summary>
+        public static string MiddleBLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("MiddleBLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Middle B Right.
+        /// </summary>
+        public static string MiddleBRight_Tooltip {
+            get {
+                return ResourceManager.GetString("MiddleBRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neck.
+        /// </summary>
+        public static string Neck_Tooltip {
+            get {
+                return ResourceManager.GetString("Neck_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nose.
+        /// </summary>
+        public static string Nose_Tooltip {
+            get {
+                return ResourceManager.GetString("Nose_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pauldron Left.
+        /// </summary>
+        public static string PauldronLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("PauldronLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pauldron Right.
+        /// </summary>
+        public static string PauldronRight_Tooltip {
+            get {
+                return ResourceManager.GetString("PauldronRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pinky A Left.
+        /// </summary>
+        public static string PinkyALeft_Tooltip {
+            get {
+                return ResourceManager.GetString("PinkyALeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pinky A Right.
+        /// </summary>
+        public static string PinkyARight_Tooltip {
+            get {
+                return ResourceManager.GetString("PinkyARight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pinky B Left.
+        /// </summary>
+        public static string PinkyBLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("PinkyBLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pinky B Right.
+        /// </summary>
+        public static string PinkyBRight_Tooltip {
+            get {
+                return ResourceManager.GetString("PinkyBRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Poleyn Left.
+        /// </summary>
+        public static string PoleynLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("PoleynLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Poleyn Right.
+        /// </summary>
+        public static string PoleynRight_Tooltip {
+            get {
+                return ResourceManager.GetString("PoleynRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ring A Left.
+        /// </summary>
+        public static string RingALeft_Tooltip {
+            get {
+                return ResourceManager.GetString("RingALeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ring A Right.
+        /// </summary>
+        public static string RingARight_Tooltip {
+            get {
+                return ResourceManager.GetString("RingARight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ring B Left.
+        /// </summary>
+        public static string RingBLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("RingBLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ring B Right.
+        /// </summary>
+        public static string RingBRight_Tooltip {
+            get {
+                return ResourceManager.GetString("RingBRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Root.
+        /// </summary>
+        public static string Root_Tooltip {
+            get {
+                return ResourceManager.GetString("Root_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Root Head.
+        /// </summary>
+        public static string RootHead_Tooltip {
+            get {
+                return ResourceManager.GetString("RootHead_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scabbard Left.
+        /// </summary>
+        public static string ScabbardLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("ScabbardLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scabbard Right.
+        /// </summary>
+        public static string ScabbardRight_Tooltip {
+            get {
+                return ResourceManager.GetString("ScabbardRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sheathe Left.
+        /// </summary>
+        public static string SheatheLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("SheatheLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sheathe Right.
+        /// </summary>
+        public static string SheatheRight_Tooltip {
+            get {
+                return ResourceManager.GetString("SheatheRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shield Left.
+        /// </summary>
+        public static string ShieldLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("ShieldLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shield Right.
+        /// </summary>
+        public static string ShieldRight_Tooltip {
+            get {
+                return ResourceManager.GetString("ShieldRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shoulder Left.
+        /// </summary>
+        public static string ShoulderLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("ShoulderLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shoulder Right.
+        /// </summary>
+        public static string ShoulderRight_Tooltip {
+            get {
+                return ResourceManager.GetString("ShoulderRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Simple Pose.
         /// </summary>
         public static string SimplePose {
             get {
                 return ResourceManager.GetString("SimplePose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spine A.
+        /// </summary>
+        public static string SpineA_Tooltip {
+            get {
+                return ResourceManager.GetString("SpineA_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spine B.
+        /// </summary>
+        public static string SpineB_Tooltip {
+            get {
+                return ResourceManager.GetString("SpineB_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spine C.
+        /// </summary>
+        public static string SpineC_Tooltip {
+            get {
+                return ResourceManager.GetString("SpineC_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tail A.
+        /// </summary>
+        public static string TailA_Tooltip {
+            get {
+                return ResourceManager.GetString("TailA_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tail B.
+        /// </summary>
+        public static string TailB_Tooltip {
+            get {
+                return ResourceManager.GetString("TailB_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tail C.
+        /// </summary>
+        public static string TailC_Tooltip {
+            get {
+                return ResourceManager.GetString("TailC_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tail D.
+        /// </summary>
+        public static string TailD_Tooltip {
+            get {
+                return ResourceManager.GetString("TailD_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tail E.
+        /// </summary>
+        public static string TailE_Tooltip {
+            get {
+                return ResourceManager.GetString("TailE_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Throw.
+        /// </summary>
+        public static string Throw_Tooltip {
+            get {
+                return ResourceManager.GetString("Throw_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thumb A Left.
+        /// </summary>
+        public static string ThumbALeft_Tooltip {
+            get {
+                return ResourceManager.GetString("ThumbALeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thumb A Right.
+        /// </summary>
+        public static string ThumbARight_Tooltip {
+            get {
+                return ResourceManager.GetString("ThumbARight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thumb B Left.
+        /// </summary>
+        public static string ThumbBLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("ThumbBLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thumb B Right.
+        /// </summary>
+        public static string ThumbBRight_Tooltip {
+            get {
+                return ResourceManager.GetString("ThumbBRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toes Left.
+        /// </summary>
+        public static string ToesLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("ToesLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toes Right.
+        /// </summary>
+        public static string ToesRight_Tooltip {
+            get {
+                return ResourceManager.GetString("ToesRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown.
+        /// </summary>
+        public static string Unknown00_Tooltip {
+            get {
+                return ResourceManager.GetString("Unknown00_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Viera Ear 01 A Left.
+        /// </summary>
+        public static string VieraEar01ALeft_Tooltip {
+            get {
+                return ResourceManager.GetString("VieraEar01ALeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Viera Ear 01 A Right.
+        /// </summary>
+        public static string VieraEar01ARight_Tooltip {
+            get {
+                return ResourceManager.GetString("VieraEar01ARight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Viera Ear 01 B Left.
+        /// </summary>
+        public static string VieraEar01BLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("VieraEar01BLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Viera Ear 01 B Right.
+        /// </summary>
+        public static string VieraEar01BRight_Tooltip {
+            get {
+                return ResourceManager.GetString("VieraEar01BRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Viera Ear 02 A Left.
+        /// </summary>
+        public static string VieraEar02ALeft_Tooltip {
+            get {
+                return ResourceManager.GetString("VieraEar02ALeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Viera Ear 02 A Right.
+        /// </summary>
+        public static string VieraEar02ARight_Tooltip {
+            get {
+                return ResourceManager.GetString("VieraEar02ARight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Viera Ear 02 B Left.
+        /// </summary>
+        public static string VieraEar02BLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("VieraEar02BLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Viera Ear 02 B Right.
+        /// </summary>
+        public static string VieraEar02BRight_Tooltip {
+            get {
+                return ResourceManager.GetString("VieraEar02BRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Viera Ear 03 A Left.
+        /// </summary>
+        public static string VieraEar03ALeft_Tooltip {
+            get {
+                return ResourceManager.GetString("VieraEar03ALeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Viera Ear 03 A Right.
+        /// </summary>
+        public static string VieraEar03ARight_Tooltip {
+            get {
+                return ResourceManager.GetString("VieraEar03ARight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Viera Ear 03 B Left.
+        /// </summary>
+        public static string VieraEar03BLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("VieraEar03BLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Viera Ear 03 B Right.
+        /// </summary>
+        public static string VieraEar03BRight_Tooltip {
+            get {
+                return ResourceManager.GetString("VieraEar03BRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Viera Ear 04 A Left.
+        /// </summary>
+        public static string VieraEar04ALeft_Tooltip {
+            get {
+                return ResourceManager.GetString("VieraEar04ALeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Viera Ear 04 A Right.
+        /// </summary>
+        public static string VieraEar04ARight_Tooltip {
+            get {
+                return ResourceManager.GetString("VieraEar04ARight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Viera Ear 04 B Left.
+        /// </summary>
+        public static string VieraEar04BLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("VieraEar04BLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Viera Ear 04 B Right.
+        /// </summary>
+        public static string VieraEar04BRight_Tooltip {
+            get {
+                return ResourceManager.GetString("VieraEar04BRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Viera Lip Lower A.
+        /// </summary>
+        public static string VieraLipLowerA_Tooltip {
+            get {
+                return ResourceManager.GetString("VieraLipLowerA_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Viera Lip Lower B.
+        /// </summary>
+        public static string VieraLipLowerB_Tooltip {
+            get {
+                return ResourceManager.GetString("VieraLipLowerB_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Viera Lip Upper B.
+        /// </summary>
+        public static string VieraLipUpperB_Tooltip {
+            get {
+                return ResourceManager.GetString("VieraLipUpperB_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Waist.
+        /// </summary>
+        public static string Waist_Tooltip {
+            get {
+                return ResourceManager.GetString("Waist_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weapon Left.
+        /// </summary>
+        public static string WeaponLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("WeaponLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weapon Right.
+        /// </summary>
+        public static string WeaponRight_Tooltip {
+            get {
+                return ResourceManager.GetString("WeaponRight_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wrist Left.
+        /// </summary>
+        public static string WristLeft_Tooltip {
+            get {
+                return ResourceManager.GetString("WristLeft_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wrist Right.
+        /// </summary>
+        public static string WristRight_Tooltip {
+            get {
+                return ResourceManager.GetString("WristRight_Tooltip", resourceCulture);
             }
         }
     }

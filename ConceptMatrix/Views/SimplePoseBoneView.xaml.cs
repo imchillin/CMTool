@@ -127,8 +127,10 @@ namespace ConceptMatrix.Views
 			string value = ResourceManager.GetString(key);
 
 			if (string.IsNullOrEmpty(value))
+			{
+				Console.WriteLine("Missing string: \"" + key + "\" in resources: \"" + ResourceManager.BaseName + "\"");
 				return "[Missing] " + key;
-				////throw new Exception("Missing string: \"" + key + "\" in resources: \"" + ResourceManager.BaseName + "\"");
+			}
 
 			return value;
 		}

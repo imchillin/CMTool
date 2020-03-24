@@ -1,129 +1,759 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
-    Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
-    associated with the data types.
-    
-    Example:
-    
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
-                
-    There are any number of "resheader" rows that contain simple 
-    name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
-    mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
-    extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
-    read any of the formats listed below.
-    
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-    
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
+	<!-- 
+		Microsoft ResX Schema 
+		
+		Version 2.0
+		
+		The primary goals of this format is to allow a simple XML format 
+		that is mostly human readable. The generation and parsing of the 
+		various data types are done through the TypeConverter classes 
+		associated with the data types.
+		
+		Example:
+		
+		... ado.net/XML headers & schema ...
+		<resheader name="resmimetype">text/microsoft-resx</resheader>
+		<resheader name="version">2.0</resheader>
+		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+		<data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+				<value>[base64 mime encoded serialized .NET Framework object]</value>
+		</data>
+		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+				<value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+				<comment>This is a comment</comment>
+		</data>
+								
+		There are any number of "resheader" rows that contain simple 
+		name/value pairs.
+		
+		Each data row contains a name, and value. The row also contains a 
+		type or mimetype. Type corresponds to a .NET class that support 
+		text/value conversion through the TypeConverter architecture. 
+		Classes that don't support this are serialized and stored with the 
+		mimetype set.
+		
+		The mimetype is used for serialized objects, and tells the 
+		ResXResourceReader how to depersist the object. This is currently not 
+		extensible. For a given mimetype the value must be set accordingly:
+		
+		Note - application/x-microsoft.net.object.binary.base64 is the format 
+		that the ResXResourceWriter will generate, however the reader can 
+		read any of the formats listed below.
+		
+		mimetype: application/x-microsoft.net.object.binary.base64
+		value   : The object must be serialized with 
+						: System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+						: and then encoded with base64 encoding.
+		
+		mimetype: application/x-microsoft.net.object.soap.base64
+		value   : The object must be serialized with 
+						: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+						: and then encoded with base64 encoding.
 
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-    <xsd:element name="root" msdata:IsDataSet="true">
-      <xsd:complexType>
-        <xsd:choice maxOccurs="unbounded">
-          <xsd:element name="metadata">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
-              </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="assembly">
-            <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="data">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="resheader">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
-            </xsd:complexType>
-          </xsd:element>
-        </xsd:choice>
-      </xsd:complexType>
-    </xsd:element>
-  </xsd:schema>
-  <resheader name="resmimetype">
-    <value>text/microsoft-resx</value>
-  </resheader>
-  <resheader name="version">
-    <value>2.0</value>
-  </resheader>
-  <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  <data name="FlipSides" xml:space="preserve">
-    <value>Flip Sides:</value>
-  </data>
-  <data name="FlipSidesTooltip" xml:space="preserve">
-    <value>Flips Left and Right sides</value>
-  </data>
-  <data name="SimplePose" xml:space="preserve">
-    <value>Simple Pose</value>
-  </data>
+		mimetype: application/x-microsoft.net.object.bytearray.base64
+		value   : The object must be serialized into a byte array 
+						: using a System.ComponentModel.TypeConverter
+						: and then encoded with base64 encoding.
+		-->
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="metadata">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" />
+							</xsd:sequence>
+							<xsd:attribute name="name" use="required" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="assembly">
+						<xsd:complexType>
+							<xsd:attribute name="alias" type="xsd:string" />
+							<xsd:attribute name="name" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="FlipSides" xml:space="preserve">
+		<value>Flip Sides:</value>
+	</data>
+	<data name="FlipSidesTooltip" xml:space="preserve">
+		<value>Flips Left and Right sides</value>
+	</data>
+	<data name="SimplePose" xml:space="preserve">
+		<value>Simple Pose</value>
+	</data>
+	<data name="Head_Tooltip" xml:space="preserve">
+				<value>Head</value>
+		</data>
+	<data name="Neck_Tooltip" xml:space="preserve">
+				<value>Neck</value>
+		</data>
+	<data name="SpineC_Tooltip" xml:space="preserve">
+				<value>Spine C</value>
+		</data>
+	<data name="SpineB_Tooltip" xml:space="preserve">
+				<value>Spine B</value>
+		</data>
+	<data name="SpineA_Tooltip" xml:space="preserve">
+				<value>Spine A</value>
+		</data>
+	<data name="Root_Tooltip" xml:space="preserve">
+				<value>Root</value>
+		</data>
+	<data name="Waist_Tooltip" xml:space="preserve">
+				<value>Waist</value>
+		</data>
+	<data name="ClavicleLeft_Tooltip" xml:space="preserve">
+				<value>Clavicle Left</value>
+		</data>
+	<data name="ClavicleRight_Tooltip" xml:space="preserve">
+				<value>Clavicle Right</value>
+		</data>
+	<data name="ShoulderLeft_Tooltip" xml:space="preserve">
+				<value>Shoulder Left</value>
+		</data>
+	<data name="ShoulderRight_Tooltip" xml:space="preserve">
+				<value>Shoulder Right</value>
+		</data>
+	<data name="BreastLeft_Tooltip" xml:space="preserve">
+				<value>Breast Left</value>
+		</data>
+	<data name="BreastRight_Tooltip" xml:space="preserve">
+				<value>Breast Right</value>
+		</data>
+	<data name="ArmLeft_Tooltip" xml:space="preserve">
+				<value>Arm Left</value>
+		</data>
+	<data name="ArmRight_Tooltip" xml:space="preserve">
+				<value>Arm Right</value>
+		</data>
+	<data name="ElbowLeft_Tooltip" xml:space="preserve">
+				<value>Elbow Left</value>
+		</data>
+	<data name="ElbowRight_Tooltip" xml:space="preserve">
+				<value>Elbow Right</value>
+		</data>
+	<data name="ForearmLeft_Tooltip" xml:space="preserve">
+				<value>Forearm Left</value>
+		</data>
+	<data name="ForearmRight_Tooltip" xml:space="preserve">
+				<value>Forearm Right</value>
+		</data>
+	<data name="WristLeft_Tooltip" xml:space="preserve">
+				<value>Wrist Left</value>
+		</data>
+	<data name="WristRight_Tooltip" xml:space="preserve">
+				<value>Wrist Right</value>
+		</data>
+	<data name="LegLeft_Tooltip" xml:space="preserve">
+				<value>Leg Left</value>
+		</data>
+	<data name="LegRight_Tooltip" xml:space="preserve">
+				<value>Leg Right</value>
+		</data>
+	<data name="KneeLeft_Tooltip" xml:space="preserve">
+				<value>Knee Left</value>
+		</data>
+	<data name="KneeRight_Tooltip" xml:space="preserve">
+				<value>Knee Right</value>
+		</data>
+	<data name="CalfLeft_Tooltip" xml:space="preserve">
+				<value>Calf Left</value>
+		</data>
+	<data name="CalfRight_Tooltip" xml:space="preserve">
+				<value>Calf Right</value>
+		</data>
+	<data name="FootLeft_Tooltip" xml:space="preserve">
+				<value>Foot Left</value>
+		</data>
+	<data name="FootRight_Tooltip" xml:space="preserve">
+				<value>Foot Right</value>
+		</data>
+	<data name="ToesLeft_Tooltip" xml:space="preserve">
+				<value>Toes Left</value>
+		</data>
+	<data name="ToesRight_Tooltip" xml:space="preserve">
+				<value>Toes Right</value>
+		</data>
+	<data name="SpineA_Tooltip" xml:space="preserve">
+				<value>Spine A</value>
+		</data>
+	<data name="PauldronRight_Tooltip" xml:space="preserve">
+				<value>Pauldron Right</value>
+		</data>
+	<data name="PauldronLeft_Tooltip" xml:space="preserve">
+				<value>Pauldron Left</value>
+		</data>
+	<data name="ClothFrontARight_Tooltip" xml:space="preserve">
+				<value>Cloth Front A Right</value>
+		</data>
+	<data name="ClothFrontBRight_Tooltip" xml:space="preserve">
+				<value>Cloth Front B Right</value>
+		</data>
+	<data name="ClothFrontCRight_Tooltip" xml:space="preserve">
+				<value>Cloth Front C Right</value>
+		</data>
+	<data name="ClothFrontALeft_Tooltip" xml:space="preserve">
+				<value>Cloth Front A Left</value>
+		</data>
+	<data name="ClothFrontBLeft_Tooltip" xml:space="preserve">
+				<value>Cloth Front B Left</value>
+		</data>
+	<data name="ClothFrontCLeft_Tooltip" xml:space="preserve">
+				<value>Cloth Front C Left</value>
+		</data>
+	<data name="ClothSideARight_Tooltip" xml:space="preserve">
+				<value>Cloth Side A Right</value>
+		</data>
+	<data name="ClothSideBRight_Tooltip" xml:space="preserve">
+				<value>Cloth Side B Right</value>
+		</data>
+	<data name="ClothSideCRight_Tooltip" xml:space="preserve">
+				<value>Cloth Side C Right</value>
+		</data>
+	<data name="ClothSideALeft_Tooltip" xml:space="preserve">
+				<value>Cloth Side A Left</value>
+		</data>
+	<data name="ClothSideBLeft_Tooltip" xml:space="preserve">
+				<value>Cloth Side B Left</value>
+		</data>
+	<data name="ClothSideCLeft_Tooltip" xml:space="preserve">
+				<value>Cloth Side C Left</value>
+		</data>
+	<data name="ClothBackARight_Tooltip" xml:space="preserve">
+				<value>Cloth Back A Right</value>
+		</data>
+	<data name="ClothBackBRight_Tooltip" xml:space="preserve">
+				<value>Cloth Back B Right</value>
+		</data>
+	<data name="ClothBackCRight_Tooltip" xml:space="preserve">
+				<value>Cloth Back C Right</value>
+		</data>
+	<data name="ClothBackALeft_Tooltip" xml:space="preserve">
+				<value>Cloth Back A Left</value>
+		</data>
+	<data name="ClothBackBLeft_Tooltip" xml:space="preserve">
+				<value>Cloth Back B Left</value>
+		</data>
+	<data name="ClothBackCLeft_Tooltip" xml:space="preserve">
+				<value>Cloth Back C Left</value>
+		</data>
+	<data name="Jaw_Tooltip" xml:space="preserve">
+				<value>Jaw</value>
+		</data>
+	<data name="Nose_Tooltip" xml:space="preserve">
+				<value>Nose</value>
+		</data>
+	<data name="Bridge_Tooltip" xml:space="preserve">
+				<value>Bridge</value>
+		</data>
+	<data name="LipLowerB_Tooltip" xml:space="preserve">
+				<value>Lip Lower B</value>
+		</data>
+	<data name="LipLowerA_Tooltip" xml:space="preserve">
+				<value>Lip Lower A</value>
+		</data>
+	<data name="LipUpperA_Tooltip" xml:space="preserve">
+				<value>Lip Upper A</value>
+		</data>
+	<data name="LipUpperB_Tooltip" xml:space="preserve">
+				<value>Lip Upper B</value>
+		</data>
+	<data name="BrowLeft_Tooltip" xml:space="preserve">
+				<value>Brow Left</value>
+		</data>
+	<data name="EyeLeft_Tooltip" xml:space="preserve">
+				<value>Eye Left</value>
+		</data>
+	<data name="EyelidLowerLeft_Tooltip" xml:space="preserve">
+				<value>Eyelid Lower Left</value>
+		</data>
+	<data name="EyelidUpperLeft_Tooltip" xml:space="preserve">
+				<value>Eyelid Upper Left</value>
+		</data>
+	<data name="EyebrowLeft_Tooltip" xml:space="preserve">
+				<value>Eyebrow Left</value>
+		</data>
+	<data name="EarLeft_Tooltip" xml:space="preserve">
+				<value>Ear Left</value>
+		</data>
+	<data name="CheekLeft_Tooltip" xml:space="preserve">
+				<value>Cheek Left</value>
+		</data>
+	<data name="LipsLeft_Tooltip" xml:space="preserve">
+				<value>Lips Left</value>
+		</data>
+	<data name="EarringALeft_Tooltip" xml:space="preserve">
+				<value>Earring A Left</value>
+		</data>
+	<data name="EarringBLeft_Tooltip" xml:space="preserve">
+				<value>Earring B Left</value>
+		</data>
+	<data name="BrowRight_Tooltip" xml:space="preserve">
+				<value>Brow Right</value>
+		</data>
+	<data name="EyeRight_Tooltip" xml:space="preserve">
+				<value>Eye Right</value>
+		</data>
+	<data name="EyelidLowerRight_Tooltip" xml:space="preserve">
+				<value>Eyelid Lower Right</value>
+		</data>
+	<data name="EyelidUpperRight_Tooltip" xml:space="preserve">
+				<value>Eyelid Upper Right</value>
+		</data>
+	<data name="EyebrowRight_Tooltip" xml:space="preserve">
+				<value>Eyebrow Right</value>
+		</data>
+	<data name="EarRight_Tooltip" xml:space="preserve">
+				<value>Ear Right</value>
+		</data>
+	<data name="CheekRight_Tooltip" xml:space="preserve">
+				<value>Cheek Right</value>
+		</data>
+	<data name="LipsRight_Tooltip" xml:space="preserve">
+				<value>Lips Right</value>
+		</data>
+	<data name="EarringARight_Tooltip" xml:space="preserve">
+				<value>Earring A Right</value>
+		</data>
+	<data name="EarringBRight_Tooltip" xml:space="preserve">
+				<value>Earring B Right</value>
+		</data>
+	<data name="WristLeft_Tooltip" xml:space="preserve">
+				<value>Wrist Left</value>
+		</data>
+	<data name="HandLeft_Tooltip" xml:space="preserve">
+				<value>Hand Left</value>
+		</data>
+	<data name="ThumbALeft_Tooltip" xml:space="preserve">
+				<value>Thumb A Left</value>
+		</data>
+	<data name="ThumbBLeft_Tooltip" xml:space="preserve">
+				<value>Thumb B Left</value>
+		</data>
+	<data name="IndexALeft_Tooltip" xml:space="preserve">
+				<value>Index A Left</value>
+		</data>
+	<data name="IndexBLeft_Tooltip" xml:space="preserve">
+				<value>Index B Left</value>
+		</data>
+	<data name="MiddleALeft_Tooltip" xml:space="preserve">
+				<value>Middle A Left</value>
+		</data>
+	<data name="MiddleBLeft_Tooltip" xml:space="preserve">
+				<value>Middle B Left</value>
+		</data>
+	<data name="RingALeft_Tooltip" xml:space="preserve">
+				<value>Ring A Left</value>
+		</data>
+	<data name="RingBLeft_Tooltip" xml:space="preserve">
+				<value>Ring B Left</value>
+		</data>
+	<data name="PinkyALeft_Tooltip" xml:space="preserve">
+				<value>Pinky A Left</value>
+		</data>
+	<data name="PinkyBLeft_Tooltip" xml:space="preserve">
+				<value>Pinky B Left</value>
+		</data>
+	<data name="WeaponLeft_Tooltip" xml:space="preserve">
+				<value>Weapon Left</value>
+		</data>
+	<data name="WristRight_Tooltip" xml:space="preserve">
+				<value>Wrist Right</value>
+		</data>
+	<data name="HandRight_Tooltip" xml:space="preserve">
+				<value>Hand Right</value>
+		</data>
+	<data name="ThumbARight_Tooltip" xml:space="preserve">
+				<value>Thumb A Right</value>
+		</data>
+	<data name="ThumbBRight_Tooltip" xml:space="preserve">
+				<value>Thumb B Right</value>
+		</data>
+	<data name="IndexARight_Tooltip" xml:space="preserve">
+				<value>Index A Right</value>
+		</data>
+	<data name="IndexBRight_Tooltip" xml:space="preserve">
+				<value>Index B Right</value>
+		</data>
+	<data name="MiddleARight_Tooltip" xml:space="preserve">
+				<value>Middle A Right</value>
+		</data>
+	<data name="MiddleBRight_Tooltip" xml:space="preserve">
+				<value>Middle B Right</value>
+		</data>
+	<data name="RingARight_Tooltip" xml:space="preserve">
+				<value>Ring A Right</value>
+		</data>
+	<data name="RingBRight_Tooltip" xml:space="preserve">
+				<value>Ring B Right</value>
+		</data>
+	<data name="PinkyARight_Tooltip" xml:space="preserve">
+				<value>Pinky A Right</value>
+		</data>
+	<data name="PinkyBRight_Tooltip" xml:space="preserve">
+				<value>Pinky B Right</value>
+		</data>
+	<data name="WeaponRight_Tooltip" xml:space="preserve">
+				<value>Weapon Right</value>
+		</data>
+	<data name="Abdomen_Tooltip" xml:space="preserve">
+				<value>Abdomen</value>
+		</data>
+	<data name="Throw_Tooltip" xml:space="preserve">
+				<value>Throw</value>
+		</data>
+	<data name="HolsterLeft_Tooltip" xml:space="preserve">
+				<value>Holster Left</value>
+		</data>
+	<data name="HolsterRight_Tooltip" xml:space="preserve">
+				<value>Holster Right</value>
+		</data>
+	<data name="SheatheLeft_Tooltip" xml:space="preserve">
+				<value>Sheathe Left</value>
+		</data>
+	<data name="SheatheRight_Tooltip" xml:space="preserve">
+				<value>Sheathe Right</value>
+		</data>
+	<data name="ScabbardLeft_Tooltip" xml:space="preserve">
+				<value>Scabbard Left</value>
+		</data>
+	<data name="ScabbardRight_Tooltip" xml:space="preserve">
+				<value>Scabbard Right</value>
+		</data>
+	<data name="PoleynLeft_Tooltip" xml:space="preserve">
+				<value>Poleyn Left</value>
+		</data>
+	<data name="PoleynRight_Tooltip" xml:space="preserve">
+				<value>Poleyn Right</value>
+		</data>
+	<data name="Unknown00_Tooltip" xml:space="preserve">
+				<value>Unknown</value>
+		</data>
+	<data name="HairA_Tooltip" xml:space="preserve">
+				<value>Hair A</value>
+		</data>
+	<data name="HairFrontLeft_Tooltip" xml:space="preserve">
+				<value>Hair Front Left</value>
+		</data>
+	<data name="HairFrontRight_Tooltip" xml:space="preserve">
+				<value>Hair Front Right</value>
+		</data>
+	<data name="HairB_Tooltip" xml:space="preserve">
+				<value>Hair B</value>
+		</data>
+	<data name="ShieldLeft_Tooltip" xml:space="preserve">
+				<value>Shield Left</value>
+		</data>
+	<data name="ShieldRight_Tooltip" xml:space="preserve">
+				<value>Shield Right</value>
+		</data>
+	<data name="CouterLeft_Tooltip" xml:space="preserve">
+				<value>Couter Left</value>
+		</data>
+	<data name="CouterRight_Tooltip" xml:space="preserve">
+				<value>Couter Right</value>
+		</data>
+	<data name="TailA_Tooltip" xml:space="preserve">
+				<value>Tail A</value>
+		</data>
+	<data name="TailB_Tooltip" xml:space="preserve">
+				<value>Tail B</value>
+		</data>
+	<data name="TailC_Tooltip" xml:space="preserve">
+				<value>Tail C</value>
+		</data>
+	<data name="TailD_Tooltip" xml:space="preserve">
+				<value>Tail D</value>
+		</data>
+	<data name="TailE_Tooltip" xml:space="preserve">
+				<value>Tail E</value>
+		</data>
+	<data name="RootHead_Tooltip" xml:space="preserve">
+				<value>Root Head</value>
+		</data>
+	<data name="HrothWhiskersLeft_Tooltip" xml:space="preserve">
+				<value>Hroth Whiskers Left</value>
+		</data>
+	<data name="HrothWhiskersRight_Tooltip" xml:space="preserve">
+				<value>Hroth Whiskers Right</value>
+		</data>
+	<data name="HrothEyebrowLeft_Tooltip" xml:space="preserve">
+				<value>Hroth Eyebrow Left</value>
+		</data>
+	<data name="HrothEyebrowRight_Tooltip" xml:space="preserve">
+				<value>Hroth Eyebrow Right</value>
+		</data>
+	<data name="HrothBridge_Tooltip" xml:space="preserve">
+				<value>Hroth Bridge</value>
+		</data>
+	<data name="HrothBrowLeft_Tooltip" xml:space="preserve">
+				<value>Hroth Brow Left</value>
+		</data>
+	<data name="HrothBrowRight_Tooltip" xml:space="preserve">
+				<value>Hroth Brow Right</value>
+		</data>
+	<data name="HrothJawUpper_Tooltip" xml:space="preserve">
+				<value>Hroth Jaw Upper</value>
+		</data>
+	<data name="HrothLipUpper_Tooltip" xml:space="preserve">
+				<value>Hroth Lip Upper</value>
+		</data>
+	<data name="HrothEyelidUpperLeft_Tooltip" xml:space="preserve">
+				<value>Hroth Eyelid Upper Left</value>
+		</data>
+	<data name="HrothEyelidUpperRight_Tooltip" xml:space="preserve">
+				<value>Hroth Eyelid Upper Right</value>
+		</data>
+	<data name="HrothLipsLeft_Tooltip" xml:space="preserve">
+				<value>Hroth Lips Left</value>
+		</data>
+	<data name="HrothLipsRight_Tooltip" xml:space="preserve">
+				<value>Hroth Lips Right</value>
+		</data>
+	<data name="VieraEar01ALeft_Tooltip" xml:space="preserve">
+				<value>Viera Ear 01 A Left</value>
+		</data>
+	<data name="HrothLipUpperLeft_Tooltip" xml:space="preserve">
+				<value>Hroth Lip Upper Left</value>
+		</data>
+	<data name="VieraEar01ARight_Tooltip" xml:space="preserve">
+				<value>Viera Ear 01 A Right</value>
+		</data>
+	<data name="HrothLipUpperRight_Tooltip" xml:space="preserve">
+				<value>Hroth Lip Upper Right</value>
+		</data>
+	<data name="VieraEar02ALeft_Tooltip" xml:space="preserve">
+				<value>Viera Ear 02 A Left</value>
+		</data>
+	<data name="HrothLipLower_Tooltip" xml:space="preserve">
+				<value>Hroth Lip Lower</value>
+		</data>
+	<data name="VieraEar02ARight_Tooltip" xml:space="preserve">
+				<value>Viera Ear 02 A Right</value>
+		</data>
+	<data name="VieraEar03ALeft_Tooltip" xml:space="preserve">
+				<value>Viera Ear 03 A Left</value>
+		</data>
+	<data name="VieraEar03ARight_Tooltip" xml:space="preserve">
+				<value>Viera Ear 03 A Right</value>
+		</data>
+	<data name="VieraEar04ALeft_Tooltip" xml:space="preserve">
+				<value>Viera Ear 04 A Left</value>
+		</data>
+	<data name="VieraEar04ARight_Tooltip" xml:space="preserve">
+				<value>Viera Ear 04 A Right</value>
+		</data>
+	<data name="VieraLipLowerA_Tooltip" xml:space="preserve">
+				<value>Viera Lip Lower A</value>
+		</data>
+	<data name="VieraLipUpperB_Tooltip" xml:space="preserve">
+				<value>Viera Lip Upper B</value>
+		</data>
+	<data name="VieraEar01BLeft_Tooltip" xml:space="preserve">
+				<value>Viera Ear 01 B Left</value>
+		</data>
+	<data name="VieraEar01BRight_Tooltip" xml:space="preserve">
+				<value>Viera Ear 01 B Right</value>
+		</data>
+	<data name="VieraEar02BLeft_Tooltip" xml:space="preserve">
+				<value>Viera Ear 02 B Left</value>
+		</data>
+	<data name="VieraEar02BRight_Tooltip" xml:space="preserve">
+				<value>Viera Ear 02 B Right</value>
+		</data>
+	<data name="VieraEar03BLeft_Tooltip" xml:space="preserve">
+				<value>Viera Ear 03 B Left</value>
+		</data>
+	<data name="VieraEar03BRight_Tooltip" xml:space="preserve">
+				<value>Viera Ear 03 B Right</value>
+		</data>
+	<data name="VieraEar04BLeft_Tooltip" xml:space="preserve">
+				<value>Viera Ear 04 B Left</value>
+		</data>
+	<data name="VieraEar04BRight_Tooltip" xml:space="preserve">
+				<value>Viera Ear 04 B Right</value>
+		</data>
+	<data name="VieraLipLowerB_Tooltip" xml:space="preserve">
+				<value>Viera Lip Lower B</value>
+		</data>
+	<data name="ExHair_Tooltip" xml:space="preserve">
+				<value>Extended Hair</value>
+		</data>
+	<data name="ExRootHair_Tooltip" xml:space="preserve">
+				<value>Extended Root Hair</value>
+		</data>
+	<data name="ExHairA_Tooltip" xml:space="preserve">
+				<value>Extended Hair A</value>
+		</data>
+	<data name="ExHairB_Tooltip" xml:space="preserve">
+				<value>Extended Hair B</value>
+		</data>
+	<data name="ExHairC_Tooltip" xml:space="preserve">
+				<value>Extended Hair C</value>
+		</data>
+	<data name="ExHairD_Tooltip" xml:space="preserve">
+				<value>Extended Hair D</value>
+		</data>
+	<data name="ExHairE_Tooltip" xml:space="preserve">
+				<value>Extended Hair E</value>
+		</data>
+	<data name="ExHairF_Tooltip" xml:space="preserve">
+				<value>Extended Hair F</value>
+		</data>
+	<data name="ExHairG_Tooltip" xml:space="preserve">
+				<value>Extended Hair G</value>
+		</data>
+	<data name="ExHairH_Tooltip" xml:space="preserve">
+				<value>Extended Hair H</value>
+		</data>
+	<data name="ExHairI_Tooltip" xml:space="preserve">
+				<value>Extended Hair I</value>
+		</data>
+	<data name="ExHairJ_Tooltip" xml:space="preserve">
+				<value>Extended Hair J</value>
+		</data>
+	<data name="ExHairK_Tooltip" xml:space="preserve">
+				<value>Extended Hair K</value>
+		</data>
+	<data name="ExHairL_Tooltip" xml:space="preserve">
+				<value>Extended Hair L</value>
+		</data>
+	<data name="ExMet_Tooltip" xml:space="preserve">
+				<value>Extended Met</value>
+		</data>
+	<data name="ExRootMet_Tooltip" xml:space="preserve">
+				<value>Extended Root Met</value>
+		</data>
+	<data name="ExMetA_Tooltip" xml:space="preserve">
+				<value>Extended Met A</value>
+		</data>
+	<data name="ExMetB_Tooltip" xml:space="preserve">
+				<value>Extended Met B</value>
+		</data>
+	<data name="ExMetC_Tooltip" xml:space="preserve">
+				<value>Extended Met C</value>
+		</data>
+	<data name="ExMetD_Tooltip" xml:space="preserve">
+				<value>Extended Met D</value>
+		</data>
+	<data name="ExMetE_Tooltip" xml:space="preserve">
+				<value>Extended Met E</value>
+		</data>
+	<data name="ExMetF_Tooltip" xml:space="preserve">
+				<value>Extended Met F</value>
+		</data>
+	<data name="ExMetG_Tooltip" xml:space="preserve">
+				<value>Extended Met G</value>
+		</data>
+	<data name="ExMetH_Tooltip" xml:space="preserve">
+				<value>Extended Met H</value>
+		</data>
+	<data name="ExMetI_Tooltip" xml:space="preserve">
+				<value>Extended Met I</value>
+		</data>
+	<data name="ExMetJ_Tooltip" xml:space="preserve">
+				<value>Extended Met J</value>
+		</data>
+	<data name="ExMetK_Tooltip" xml:space="preserve">
+				<value>Extended Met K</value>
+		</data>
+	<data name="ExMetL_Tooltip" xml:space="preserve">
+				<value>Extended Met L</value>
+		</data>
+	<data name="ExMetM_Tooltip" xml:space="preserve">
+				<value>Extended Met M</value>
+		</data>
+	<data name="ExMetN_Tooltip" xml:space="preserve">
+				<value>Extended Met N</value>
+		</data>
+	<data name="ExMetO_Tooltip" xml:space="preserve">
+				<value>Extended Met O</value>
+		</data>
+	<data name="ExMetP_Tooltip" xml:space="preserve">
+				<value>Extended Met P</value>
+		</data>
+	<data name="ExMetQ_Tooltip" xml:space="preserve">
+				<value>Extended Met Q</value>
+		</data>
+	<data name="ExMetR_Tooltip" xml:space="preserve">
+				<value>Extended Met R</value>
+		</data>
+	<data name="ExTop_Tooltip" xml:space="preserve">
+				<value>Extended Top</value>
+		</data>
+	<data name="ExRootTop_Tooltip" xml:space="preserve">
+				<value>Extended Root Top</value>
+		</data>
+	<data name="ExTopA_Tooltip" xml:space="preserve">
+				<value>Extended Top A</value>
+		</data>
+	<data name="ExTopB_Tooltip" xml:space="preserve">
+				<value>Extended Top B</value>
+		</data>
+	<data name="ExTopC_Tooltip" xml:space="preserve">
+				<value>Extended Top C</value>
+		</data>
+	<data name="ExTopD_Tooltip" xml:space="preserve">
+				<value>Extended Top D</value>
+		</data>
+	<data name="ExTopE_Tooltip" xml:space="preserve">
+				<value>Extended Top E</value>
+		</data>
+	<data name="ExTopF_Tooltip" xml:space="preserve">
+				<value>Extended Top F</value>
+		</data>
+	<data name="ExTopG_Tooltip" xml:space="preserve">
+				<value>Extended Top G</value>
+		</data>
+	<data name="ExTopH_Tooltip" xml:space="preserve">
+				<value>Extended Top H</value>
+		</data>
+	<data name="ExTopI_Tooltip" xml:space="preserve">
+				<value>Extended Top I</value>
+		</data>
 </root>
