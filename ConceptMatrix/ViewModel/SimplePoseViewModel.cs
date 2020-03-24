@@ -79,23 +79,23 @@ namespace ConceptMatrix.ViewModel
 
 			// clothes tree
 			this.ParentBone("SpineA", "ClothBackALeft");
-			this.ParentBone("SpineA", "ClothBackBLeft");
-			this.ParentBone("SpineA", "ClothBackCLeft");
+			this.ParentBone("ClothBackALeft", "ClothBackBLeft");
+			this.ParentBone("ClothBackBLeft", "ClothBackCLeft");
 			this.ParentBone("SpineA", "ClothBackARight");
-			this.ParentBone("SpineA", "ClothBackBRight");
-			this.ParentBone("SpineA", "ClothBackCRight");
+			this.ParentBone("ClothBackARight", "ClothBackBRight");
+			this.ParentBone("ClothBackBRight", "ClothBackCRight");
 			this.ParentBone("SpineA", "ClothSideALeft");
-			this.ParentBone("SpineA", "ClothSideBLeft");
-			this.ParentBone("SpineA", "ClothSideCLeft");
+			this.ParentBone("ClothSideALeft", "ClothSideBLeft");
+			this.ParentBone("ClothSideBLeft", "ClothSideCLeft");
 			this.ParentBone("SpineA", "ClothSideARight");
-			this.ParentBone("SpineA", "ClothSideBRight");
-			this.ParentBone("SpineA", "ClothSideCRight");
+			this.ParentBone("ClothSideARight", "ClothSideBRight");
+			this.ParentBone("ClothSideBRight", "ClothSideCRight");
 			this.ParentBone("SpineA", "ClothFrontALeft");
-			this.ParentBone("SpineA", "ClothFrontBLeft");
-			this.ParentBone("SpineA", "ClothFrontCLeft");
+			this.ParentBone("ClothFrontALeft", "ClothFrontBLeft");
+			this.ParentBone("ClothFrontBLeft", "ClothFrontCLeft");
 			this.ParentBone("SpineA", "ClothFrontARight");
-			this.ParentBone("SpineA", "ClothFrontBRight");
-			this.ParentBone("SpineA", "ClothFrontCRight");
+			this.ParentBone("ClothFrontARight", "ClothFrontBRight");
+			this.ParentBone("ClothFrontBRight", "ClothFrontCRight");
 
 			// Facebone (middy) tree
 			this.ParentBone("Head", "Nose");

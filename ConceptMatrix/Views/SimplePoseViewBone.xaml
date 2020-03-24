@@ -6,8 +6,9 @@
 			 xmlns:local="clr-namespace:ConceptMatrix.Views"
 			 DataContextChanged="OnDataContextChanged"
 			 mc:Ignorable="d" 
-			 d:DesignHeight="20" d:DesignWidth="20">
+			 Width="18"
+			 Height="18">
 	<Grid>
-		<RadioButton x:Name="Button" Checked="OnChecked"/>
+		<RadioButton x:Name="Button" Checked="OnChecked" MouseEnter="OnMouseEnter" MouseLeave="OnMouseLeave"/>
 	</Grid>
 </UserControl>
