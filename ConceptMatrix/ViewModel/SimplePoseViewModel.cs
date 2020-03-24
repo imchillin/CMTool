@@ -38,10 +38,48 @@ namespace ConceptMatrix.ViewModel
 			}
 		}
 
+		public Bone MouseOverBone { get; set; }
+
 		public SimplePoseViewModel(CharacterDetails character)
 		{
 			this.Character = character;
 			GenerateBones();
+		}
+
+		public bool GetIsBoneSelected(Bone bone)
+		{
+			return this.CurrentBone == bone;
+		}
+
+		public bool GetIsBoneParentsSelected(Bone bone)
+		{
+			if (this. GetIsBoneSelected(bone))
+				return true;
+
+			if (bone.Parent != null)
+			{
+				return GetIsBoneParentsSelected(bone.Parent);
+			}
+
+			return false;
+		}
+
+		public bool GetIsBoneHovered(Bone bone)
+		{
+			return this.MouseOverBone == bone;
+		}
+
+		public bool GetIsBoneParentsHovered(Bone bone)
+		{
+			if (this.GetIsBoneHovered(bone))
+				return true;
+
+			if (bone.Parent != null)
+			{
+				return GetIsBoneParentsHovered(bone.Parent);
+			}
+
+			return false;
 		}
 
 		// gets all bones defined in BonesOffsets.

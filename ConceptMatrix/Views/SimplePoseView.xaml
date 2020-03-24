@@ -128,18 +128,18 @@
 					Unique 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
 				-->
 
-				<local:SimplePoseViewBone Canvas.Left="144" Canvas.Top="278" BoneName="Jaw"/>
-				<local:SimplePoseViewBone Canvas.Left="144" Canvas.Top="135" BoneName="Nose"/>
-				<local:SimplePoseViewBone Canvas.Left="144" Canvas.Top="100" BoneName="Bridge"/>
-				<local:SimplePoseViewBone Canvas.Left="144" Canvas.Top="248" BoneName="LipLowerB"/>
-				<local:SimplePoseViewBone Canvas.Left="144" Canvas.Top="225" BoneName="LipLowerA"/>
-				<local:SimplePoseViewBone Canvas.Left="144" Canvas.Top="186" BoneName="LipUpperA"/>
-				<local:SimplePoseViewBone Canvas.Left="144" Canvas.Top="163" BoneName="LipUpperB"/>
+				<local:SimplePoseViewBone Canvas.Left="141" Canvas.Top="278" BoneName="Jaw"/>
+				<local:SimplePoseViewBone Canvas.Left="141" Canvas.Top="135" BoneName="Nose"/>
+				<local:SimplePoseViewBone Canvas.Left="141" Canvas.Top="100" BoneName="Bridge"/>
+				<local:SimplePoseViewBone Canvas.Left="141" Canvas.Top="248" BoneName="LipLowerB"/>
+				<local:SimplePoseViewBone Canvas.Left="141" Canvas.Top="225" BoneName="LipLowerA"/>
+				<local:SimplePoseViewBone Canvas.Left="141" Canvas.Top="186" BoneName="LipUpperA"/>
+				<local:SimplePoseViewBone Canvas.Left="141" Canvas.Top="163" BoneName="LipUpperB"/>
 
 				<local:SimplePoseViewBone Canvas.Left="103" Canvas.Top="33" BoneName="BrowLeft"/>
 				<local:SimplePoseViewBone Canvas.Left="74" Canvas.Top="77" BoneName="EyeLeft"/>
-				<local:SimplePoseViewBone Canvas.Left="68" Canvas.Top="100" BoneName="EyelidLowerLeft"/>
-				<local:SimplePoseViewBone Canvas.Left="74" Canvas.Top="54" BoneName="EyelidUpperLeft"/>
+				<local:SimplePoseViewBone Canvas.Left="68" Canvas.Top="96" BoneName="EyelidLowerLeft"/>
+				<local:SimplePoseViewBone Canvas.Left="68" Canvas.Top="59" BoneName="EyelidUpperLeft"/>
 				<local:SimplePoseViewBone Canvas.Left="52" Canvas.Top="24" BoneName="EyebrowLeft"/>
 				<local:SimplePoseViewBone Canvas.Left="15" Canvas.Top="96" BoneName="EarLeft"/>
 				<local:SimplePoseViewBone Canvas.Left="68" Canvas.Top="150" BoneName="CheekLeft"/>
@@ -147,16 +147,16 @@
 				<local:SimplePoseViewBone Canvas.Left="20" Canvas.Top="150" BoneName="EarringALeft"/>
 				<local:SimplePoseViewBone Canvas.Left="20" Canvas.Top="178" BoneName="EarringBLeft"/>
 
-				<local:SimplePoseViewBone Canvas.Left="186" Canvas.Top="33" BoneName="BrowRight"/>
-				<local:SimplePoseViewBone Canvas.Left="218" Canvas.Top="77" BoneName="EyeRight"/>
-				<local:SimplePoseViewBone Canvas.Left="224" Canvas.Top="100" BoneName="EyelidLowerRight"/>
-				<local:SimplePoseViewBone Canvas.Left="214" Canvas.Top="54" BoneName="EyelidUpperRight"/>
-				<local:SimplePoseViewBone Canvas.Left="239" Canvas.Top="24" BoneName="EyebrowRight"/>
-				<local:SimplePoseViewBone Canvas.Left="272" Canvas.Top="96" BoneName="EarRight"/>
-				<local:SimplePoseViewBone Canvas.Left="224" Canvas.Top="150" BoneName="CheekRight"/>
-				<local:SimplePoseViewBone Canvas.Left="186" Canvas.Top="208" BoneName="LipsRight"/>
-				<local:SimplePoseViewBone Canvas.Left="267" Canvas.Top="150" BoneName="EarringARight"/>
-				<local:SimplePoseViewBone Canvas.Left="267" Canvas.Top="178" BoneName="EarringBRight"/>
+				<local:SimplePoseViewBone Canvas.Left="183" Canvas.Top="33" BoneName="BrowRight"/>
+				<local:SimplePoseViewBone Canvas.Left="211" Canvas.Top="77" BoneName="EyeRight"/>
+				<local:SimplePoseViewBone Canvas.Left="215" Canvas.Top="95" BoneName="EyelidLowerRight"/>
+				<local:SimplePoseViewBone Canvas.Left="215" Canvas.Top="59" BoneName="EyelidUpperRight"/>
+				<local:SimplePoseViewBone Canvas.Left="231" Canvas.Top="24" BoneName="EyebrowRight"/>
+				<local:SimplePoseViewBone Canvas.Left="267" Canvas.Top="96" BoneName="EarRight"/>
+				<local:SimplePoseViewBone Canvas.Left="215" Canvas.Top="150" BoneName="CheekRight"/>
+				<local:SimplePoseViewBone Canvas.Left="180" Canvas.Top="208" BoneName="LipsRight"/>
+				<local:SimplePoseViewBone Canvas.Left="263" Canvas.Top="150" BoneName="EarringARight"/>
+				<local:SimplePoseViewBone Canvas.Left="263" Canvas.Top="178" BoneName="EarringBRight"/>
 
 			</Canvas>
 		</Viewbox>

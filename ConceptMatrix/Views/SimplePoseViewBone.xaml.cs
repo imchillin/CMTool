@@ -66,21 +66,20 @@ namespace ConceptMatrix.Views
 
 				this.IsEnabled = true;
 
-				Task.Run(DrawSkeletonDelay);
+				// Wait for all bone views to load, then draw the skeleton
+				Application.Current.Dispatcher.InvokeAsync(async () =>
+				{
+					await Task.Delay(1);
+					this.DrawSkeleton();
+				});
 			}
 			catch (Exception ex)
 			{
 				this.IsEnabled = false;
 				this.ToolTip = ex.Message;
 				Console.WriteLine(ex.Message);
-				this.Background.Stroke = Brushes.Red;
+				this.BackgroundElipse.Stroke = Brushes.Red;
 			}
-		}
-
-		private async Task DrawSkeletonDelay()
-		{
-			await Task.Delay(100);
-			Application.Current.Dispatcher.Invoke(() => this.DrawSkeleton());
 		}
 
 		private void DrawSkeleton()
@@ -114,11 +113,7 @@ namespace ConceptMatrix.Views
 
 		private void OnViewModelPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
-			if (e.PropertyName == nameof(SimplePoseViewModel.CurrentBone))
-			{
-				this.Foreground.Visibility = this.viewModel.CurrentBone == this.bone ? Visibility.Visible : Visibility.Hidden;
-				////Button.IsChecked = this.viewModel.CurrentBone == this.bone;
-			}
+			this.UpdateState();
 		}
 
 		private static string GetString(string key)
@@ -132,47 +127,12 @@ namespace ConceptMatrix.Views
 			return value;
 		}
 
-		private void OnChecked(object sender, RoutedEventArgs e)
-		{
-			if (this.viewModel is null || this.bone is null)
-				return;
-
-			this.viewModel.CurrentBone = this.bone;
-		}
-
 		private void OnMouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
 		{
 			if (!this.IsEnabled)
 				return;
 
-			// TODO: get the current theme FG color
-			this.Background.Stroke = Brushes.SkyBlue;
-			this.Background.StrokeThickness = 2;
-
-			foreach (SimplePoseViewBone childView in boneViews[this.bone])
-			{
-				if (childView == sender || childView == this)
-					continue;
-
-				childView.OnMouseEnter(this, e);
-			}
-
-			foreach (SimplePoseViewModel.Bone bone in this.bone.Children)
-			{
-				if (!boneViews.ContainsKey(bone))
-					continue;
-
-				foreach (SimplePoseViewBone childView in boneViews[bone])
-				{
-					childView.OnMouseEnter(sender, e);
-				}
-			}
-
-			foreach (Line line in this.linesToChildren)
-			{
-				line.Stroke = this.Background.Stroke;
-				line.StrokeThickness = this.Background.StrokeThickness;
-			}
+			this.viewModel.MouseOverBone = this.bone;
 		}
 
 		private void OnMouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
@@ -180,32 +140,9 @@ namespace ConceptMatrix.Views
 			if (!this.IsEnabled)
 				return;
 
-			this.Background.Stroke = Brushes.Gray;
-			this.Background.StrokeThickness = 1;
-
-			foreach (SimplePoseViewBone childView in boneViews[this.bone])
+			if (this.viewModel.MouseOverBone == this.bone)
 			{
-				if (childView == sender || childView == this)
-					continue;
-
-				childView.OnMouseLeave(this, e);
-			}
-
-			foreach (SimplePoseViewModel.Bone bone in this.bone.Children)
-			{
-				if (!boneViews.ContainsKey(bone))
-					continue;
-
-				foreach (SimplePoseViewBone childView in boneViews[bone])
-				{
-					childView.OnMouseLeave(sender, e);
-				}
-			}
-
-			foreach (Line line in this.linesToChildren)
-			{
-				line.Stroke = this.Background.Stroke;
-				line.StrokeThickness = this.Background.StrokeThickness;
+				this.viewModel.MouseOverBone = null;
 			}
 		}
 
@@ -218,6 +155,36 @@ namespace ConceptMatrix.Views
 				return;
 
 			this.viewModel.CurrentBone = this.bone;
+		}
+
+		private void UpdateState()
+		{
+			bool selected = this.viewModel.GetIsBoneSelected(this.bone);
+			bool parentSelected = this.viewModel.GetIsBoneParentsSelected(this.bone);
+			bool hovered = this.viewModel.GetIsBoneParentsHovered(this.bone);
+
+			// TODO: get the current theme FG color instead of sky blue
+			Brush color = hovered ? Brushes.SkyBlue : Brushes.Gray;
+			int thickenss = parentSelected || selected || hovered ? 2 : 1;
+
+			this.ForegroundElipse.Visibility = selected ? Visibility.Visible : Visibility.Hidden;
+			this.ForegroundElipse.Fill = Brushes.SkyBlue;
+			SetState(color, thickenss);
+		}
+
+		private void SetState(Brush stroke, int thickness)
+		{
+			if (this.BackgroundElipse.Stroke == stroke && this.BackgroundElipse.StrokeThickness == thickness)
+				return;
+
+			this.BackgroundElipse.Stroke = stroke;
+			this.BackgroundElipse.StrokeThickness = thickness;
+
+			foreach (Line line in this.linesToChildren)
+			{
+				line.Stroke = stroke;
+				line.StrokeThickness = thickness;
+			}
 		}
 	}
 }
