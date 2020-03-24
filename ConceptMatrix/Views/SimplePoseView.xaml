@@ -88,8 +88,8 @@
 				-->
 
 				<local:SimplePoseBoneView Canvas.Left="118" Canvas.Top="170" BoneName="SpineA"/>
-				<local:SimplePoseBoneView  Canvas.Left="70" Canvas.Top="110" BoneName="PauldronRight"/>
-				<local:SimplePoseBoneView  Canvas.Left="170" Canvas.Top="110" BoneName="PauldronLeft"/>
+				<local:SimplePoseBoneView  Canvas.Left="70" Canvas.Top="110" BoneName="PauldronLeft"/>
+				<local:SimplePoseBoneView  Canvas.Left="170" Canvas.Top="110" BoneName="PauldronRight"/>
 				<local:SimplePoseBoneView  Canvas.Left="140" Canvas.Top="230" BoneName="ClothFrontARight"/>
 				<local:SimplePoseBoneView  Canvas.Left="150" Canvas.Top="330" BoneName="ClothFrontBRight"/>
 				<local:SimplePoseBoneView  Canvas.Left="160" Canvas.Top="420" BoneName="ClothFrontCRight"/>
