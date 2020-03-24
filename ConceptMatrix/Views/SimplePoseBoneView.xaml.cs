@@ -13,15 +13,15 @@ namespace ConceptMatrix.Views
 	/// <summary>
 	/// Interaction logic for SimplePoseViewBone.xaml
 	/// </summary>
-	public partial class SimplePoseViewBone : UserControl
+	public partial class SimplePoseBoneView : UserControl
 	{
-		public static readonly DependencyProperty BoneNameProperty = DependencyProperty.Register("BoneName", typeof(string), typeof(SimplePoseViewBone));
+		public static readonly DependencyProperty BoneNameProperty = DependencyProperty.Register("BoneName", typeof(string), typeof(SimplePoseBoneView));
 		private static readonly ResourceManager ResourceManager = new ResourceManager(typeof(Resx.UISimplePoseStrings));
 
 		private SimplePoseViewModel viewModel;
 		private SimplePoseViewModel.Bone bone;
 
-		private static Dictionary<SimplePoseViewModel.Bone, List<SimplePoseViewBone>> boneViews = new Dictionary<SimplePoseViewModel.Bone, List<SimplePoseViewBone>>();
+		private static Dictionary<SimplePoseViewModel.Bone, List<SimplePoseBoneView>> boneViews = new Dictionary<SimplePoseViewModel.Bone, List<SimplePoseBoneView>>();
 		private List<Line> linesToChildren = new List<Line>();
 
 		public string BoneName
@@ -37,41 +37,47 @@ namespace ConceptMatrix.Views
 			}
 		}
 
-		public SimplePoseViewBone()
+		public SimplePoseBoneView()
 		{
 			InitializeComponent();
 			this.OnDataContextChanged(null, default);
 		}
 
+		public static bool HasView(SimplePoseViewModel.Bone bone)
+		{
+			return boneViews.ContainsKey(bone);
+		}
+
 		private void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
 		{
-			if (this.DataContext is null)
-			{
-				this.IsEnabled = false;
-				return;
-			}
-
 			try
 			{
-				this.viewModel = this.DataContext as SimplePoseViewModel;
-				this.viewModel.PropertyChanged += this.OnViewModelPropertyChanged;
-				this.bone = viewModel.GetBone(this.BoneName);
-
-				if (!boneViews.ContainsKey(this.bone))
-					boneViews.Add(this.bone, new List<SimplePoseViewBone>());
-
-				boneViews[this.bone].Add(this);
-
-				this.ToolTip = GetString(this.BoneName + "_Tooltip");
-
-				this.IsEnabled = true;
-
-				// Wait for all bone views to load, then draw the skeleton
-				Application.Current.Dispatcher.InvokeAsync(async () =>
+				if (this.DataContext is SimplePoseViewModel viewModel)
 				{
-					await Task.Delay(1);
-					this.DrawSkeleton();
-				});
+					this.viewModel = viewModel;
+					this.viewModel.PropertyChanged += this.OnViewModelPropertyChanged;
+					this.bone = viewModel.GetBone(this.BoneName);
+
+					if (!boneViews.ContainsKey(this.bone))
+						boneViews.Add(this.bone, new List<SimplePoseBoneView>());
+
+					boneViews[this.bone].Add(this);
+
+					this.ToolTip = GetString(this.BoneName + "_Tooltip");
+
+					this.IsEnabled = true;
+
+					// Wait for all bone views to load, then draw the skeleton
+					Application.Current.Dispatcher.InvokeAsync(async () =>
+					{
+						await Task.Delay(1);
+						this.DrawSkeleton();
+					});
+				}
+				else
+				{
+					this.IsEnabled = false;
+				}
 			}
 			catch (Exception ex)
 			{
@@ -89,7 +95,7 @@ namespace ConceptMatrix.Views
 				if (!boneViews.ContainsKey(bone))
 					continue;
 
-				foreach (SimplePoseViewBone childView in boneViews[bone])
+				foreach (SimplePoseBoneView childView in boneViews[bone])
 				{
 					if (this.Parent is Canvas c1 && childView.Parent is Canvas c2 && c1 == c2)
 					{

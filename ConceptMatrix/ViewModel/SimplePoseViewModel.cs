@@ -40,6 +40,14 @@ namespace ConceptMatrix.ViewModel
 
 		public Bone MouseOverBone { get; set; }
 
+		public IEnumerable<Bone> Bones
+		{
+			get
+			{
+				return bones.Values;
+			}
+		}
+
 		public SimplePoseViewModel(CharacterDetails character)
 		{
 			this.Character = character;

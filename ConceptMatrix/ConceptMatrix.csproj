@@ -208,8 +208,8 @@
     <Compile Include="Views\RotationView.xaml.cs">
       <DependentUpon>RotationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SimplePoseViewBone.xaml.cs">
-      <DependentUpon>SimplePoseViewBone.xaml</DependentUpon>
+    <Compile Include="Views\SimplePoseBoneView.xaml.cs">
+      <DependentUpon>SimplePoseBoneView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SpecialControl.xaml.cs">
       <DependentUpon>SpecialControl.xaml</DependentUpon>
@@ -298,7 +298,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SimplePoseViewBone.xaml">
+    <Page Include="Views\SimplePoseBoneView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
