@@ -25,12 +25,6 @@ namespace ConceptMatrix.Views
 
 		private void OnIsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
 		{
-			MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress, "bytes", "0x90 0x90 0x90 0x90 0x90 0x90");
-			MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress2, "bytes", "0x90 0x90 0x90 0x90 0x90 0x90");
-			MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress3, "bytes", "0x90 0x90 0x90 0x90");
-			MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.PhysicsAddress, "bytes", "0x90 0x90 0x90 0x90");
-			MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.PhysicsAddress2, "bytes", "0x90 0x90 0x90");
-
 			if (this.IsVisible)
 			{
 				ThreadStart ts = new ThreadStart(this.PollSliders);
@@ -43,7 +37,10 @@ namespace ConceptMatrix.Views
 		{
 			while (this.IsVisible)
 			{
-				Thread.Sleep(8);
+				Thread.Sleep(16);
+
+				if (!this.ViewModel.IsEnabled)
+					continue;
 
 				if (this.ViewModel.CurrentBone == null)
 					continue;
@@ -75,7 +72,7 @@ namespace ConceptMatrix.Views
 					grid.Children.Add(boneView);
 
 					Label label = new Label();
-					label.Content = bone.BoneName;
+					label.Content = boneView.ToolTip;
 					Grid.SetColumn(label, 1);
 					grid.Children.Add(label);
 

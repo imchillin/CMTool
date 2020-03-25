@@ -6,6 +6,7 @@
 			 xmlns:local="clr-namespace:ConceptMatrix.Views"
 			 xmlns:resx="clr-namespace:ConceptMatrix.Resx"
 			 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+			 xmlns:controls="clr-namespace:ConceptMatrix.Controls"
 			 DataContextChanged="OnDataContextChanged"
 			 mc:Ignorable="d" 
 			 IsVisibleChanged="OnIsVisibleChanged"
@@ -223,28 +224,69 @@
 		</ScrollViewer>
 		
 		<Grid Grid.Column="5" Grid.RowSpan="2">
-			<StackPanel Margin="6">
+			<StackPanel>
+				<GroupBox Header="Options" Margin="6" Padding="4">
 
-				<!-- TODO -->
-				<!--<StackPanel Orientation="Horizontal" Margin="20,0,20,0" ToolTip="{Binding Source={x:Static resx:UISimplePoseStrings.FlipSidesTooltip}}">
-					<Label Content="{Binding Source={x:Static resx:UISimplePoseStrings.FlipSides}}" VerticalContentAlignment="Center"/>
-					<ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding FlipSides}"/>
-				</StackPanel>-->
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition/>
+							<ColumnDefinition Width="Auto"/>
+						</Grid.ColumnDefinitions>
 
-				<!-- X Rot -->
-				<Label ToolTip="{Binding Source={x:Static resx:UIPoseStrings.XRotToolTip}}" Content="{Binding Source={x:Static resx:UIPoseStrings.XRot}}"/>
-				<mah:NumericUpDown Minimum="0" Maximum="360" Value="{Binding CurrentBone.X, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C0000FF" StringFormat="F10" Interval="0.5" TextAlignment="Right" Height="28" FontSize="11.35" FontFamily="Segoe UI"/>
-				<Slider Value="{Binding CurrentBone.X, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Minimum="0" Maximum="360" TickFrequency="0.5"/>
+						<Grid.RowDefinitions>
+							<RowDefinition/>
+							<RowDefinition/>
+						</Grid.RowDefinitions>
 
-				<!-- Y Rot -->
-				<Label ToolTip="{Binding Source={x:Static resx:UIPoseStrings.YRotToolTip}}" Content="{Binding Source={x:Static resx:UIPoseStrings.YRot}}"/>
-				<mah:NumericUpDown Minimum="0" Maximum="360" Value="{Binding CurrentBone.Y, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C008000" StringFormat="F10" Interval="0.5" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
-				<Slider Value="{Binding CurrentBone.Y, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Minimum="0" Maximum="360" TickFrequency="0.5"/>
+						<Label Grid.Row="0" Grid.Column="0" Content="{Binding Source={x:Static resx:UIPoseStrings.EnableEditing}}" VerticalContentAlignment="Center"/>
+						<ToggleButton Grid.Row="0" Grid.Column="1" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding IsEnabled}"/>
 
-				<!-- Z Rot -->
-				<Label ToolTip="{Binding Source={x:Static resx:UIPoseStrings.ZRotToolTip}}" Content="{Binding Source={x:Static resx:UIPoseStrings.ZRot}}"/>
-				<mah:NumericUpDown Minimum="0" Maximum="360" Value="{Binding CurrentBone.Z, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8CFF0000" StringFormat="F10" Interval="0.5" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
-				<Slider Value="{Binding CurrentBone.Z, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Minimum="0" Maximum="360" TickFrequency="0.5"/>
+						<Label Grid.Row="1" Grid.Column="0" Content="{Binding Source={x:Static resx:UISimplePoseStrings.FlipSides}}" VerticalContentAlignment="Center"/>
+						<ToggleButton Grid.Row="1" Grid.Column="1" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding FlipSides}"/>
+					</Grid>
+
+				</GroupBox>
+
+
+				<GroupBox Header="{Binding CurrentBone.BoneName, FallbackValue=Bone}" Margin="6"  Padding="4" IsEnabled="{Binding IsEnabled}">
+
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition/>
+						</Grid.ColumnDefinitions>
+
+						<Grid.RowDefinitions>
+							<RowDefinition/>
+							<RowDefinition/>
+							<RowDefinition/>
+						</Grid.RowDefinitions>
+
+						<Label Grid.Row="0" Grid.Column="0" Content="X" VerticalContentAlignment="Center"/>
+						<controls:NumberBox Grid.Row="0" Grid.Column="1" Value="{Binding CurrentBone.X, Mode=TwoWay}" TickFrequency="0.5" Minimum="0" Maximum="360"/>
+
+						<Label Grid.Row="1" Grid.Column="0" Content="X" VerticalContentAlignment="Center"/>
+						<controls:NumberBox Grid.Row="1" Grid.Column="1" Value="{Binding CurrentBone.Y, Mode=TwoWay}" TickFrequency="0.5" Minimum="0" Maximum="360"/>
+
+						<Label Grid.Row="2" Grid.Column="0" Content="X" VerticalContentAlignment="Center"/>
+						<controls:NumberBox Grid.Row="2" Grid.Column="1" Value="{Binding CurrentBone.Z, Mode=TwoWay}" TickFrequency="0.5" Minimum="0" Maximum="360"/>
+
+					</Grid>
+					
+					<!--<StackPanel>
+						<Label ToolTip="{Binding Source={x:Static resx:UIPoseStrings.XRotToolTip}}" Content="{Binding Source={x:Static resx:UIPoseStrings.XRot}}"/>
+						<mah:NumericUpDown Minimum="0" Maximum="360" Value="{Binding CurrentBone.X, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C0000FF" StringFormat="F10" Interval="0.5" TextAlignment="Right" Height="28" FontSize="11.35" FontFamily="Segoe UI"/>
+						<Slider Value="{Binding CurrentBone.X, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Minimum="0" Maximum="360" TickFrequency="0.5"/>
+
+						<Label ToolTip="{Binding Source={x:Static resx:UIPoseStrings.YRotToolTip}}" Content="{Binding Source={x:Static resx:UIPoseStrings.YRot}}"/>
+						<mah:NumericUpDown Minimum="0" Maximum="360" Value="{Binding CurrentBone.Y, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C008000" StringFormat="F10" Interval="0.5" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
+						<Slider Value="{Binding CurrentBone.Y, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Minimum="0" Maximum="360" TickFrequency="0.5"/>
+
+						<Label ToolTip="{Binding Source={x:Static resx:UIPoseStrings.ZRotToolTip}}" Content="{Binding Source={x:Static resx:UIPoseStrings.ZRot}}"/>
+						<mah:NumericUpDown Minimum="0" Maximum="360" Value="{Binding CurrentBone.Z, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8CFF0000" StringFormat="F10" Interval="0.5" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
+						<Slider Value="{Binding CurrentBone.Z, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Minimum="0" Maximum="360" TickFrequency="0.5"/>
+					</StackPanel>-->
+				</GroupBox>
 			</StackPanel>
 		</Grid>
 
