@@ -29,6 +29,7 @@ namespace ConceptMatrix.ViewModel
 
 			set
 			{
+				this.CurrentBone = null;
 				this.enabled = value;
 
 				MemoryManager mem = MemoryManager.Instance;
@@ -64,6 +65,9 @@ namespace ConceptMatrix.ViewModel
 
 			set
 			{
+				if (!this.IsEnabled)
+					return;
+
 				// Ensure we have written any pending rotations before changing bone targets
 				if (this.currentBone != null)
 					this.currentBone.SetRotation();
@@ -485,11 +489,6 @@ namespace ConceptMatrix.ViewModel
 
 				this.WriteRotation();
 
-				// load all child rotations before applying new rotation
-				// this prevents multiple bones that target the same in game bone from getting
-				// multiple additive rotation requests.
-				////this.GetRotationRecursive();
-
 				Quaternion oldConj = this.oldQuaternion;
 				oldConj.Conjugate();
 
@@ -509,16 +508,6 @@ namespace ConceptMatrix.ViewModel
 				mem.writeBytes(this.yAddr, BitConverter.GetBytes((float)this.quaternion.Y));
 				mem.writeBytes(this.zAddr, BitConverter.GetBytes((float)this.quaternion.Z));
 				mem.writeBytes(this.wAddr, BitConverter.GetBytes((float)this.quaternion.W));
-			}
-
-			private void GetRotationRecursive()
-			{
-				this.GetRotation(true);
-
-				foreach (Bone child in this.Children)
-				{
-					child.GetRotation(true);
-				}
 			}
 
 			private void Rotate(Quaternion sourceOldCnj, Quaternion sourceNew)
