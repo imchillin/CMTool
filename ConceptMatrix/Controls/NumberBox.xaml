@@ -9,7 +9,7 @@
 	<Grid x:Name="Content">
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition/>
-			<ColumnDefinition MinWidth="38"/>
+			<ColumnDefinition MinWidth="32"/>
 		</Grid.ColumnDefinitions>
 
 		<Slider

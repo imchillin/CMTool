@@ -22,7 +22,7 @@
 	/// </summary>
 	public partial class NumberBox : UserControl, INotifyPropertyChanged
 	{
-		public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(nameof(Value), typeof(double), typeof(NumberBox));
+		public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(nameof(Value), typeof(double), typeof(NumberBox), new FrameworkPropertyMetadata(new PropertyChangedCallback(OnValueChanged)));
 
 		private string inputString;
 
@@ -69,6 +69,8 @@
 
 			set
 			{
+				value = Math.Round(value / this.TickFrequency) * this.TickFrequency;
+
 				this.SetValue(ValueProperty, value);
 				this.Text = this.Value.ToString("0.###");
 			}
@@ -76,9 +78,17 @@
 
 		public event PropertyChangedEventHandler PropertyChanged;
 
+		private static void OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+		{
+			if (sender is NumberBox numberBox)
+			{
+				numberBox.Text = numberBox.Value.ToString("0.##");
+			}
+		}
+
 		private void OnLostFocus(object sender, RoutedEventArgs e)
 		{
-			this.Text = this.Value.ToString("0.###");
+			this.Text = this.Value.ToString("0.##");
 		}
 
 		protected override void OnPreviewMouseWheel(MouseWheelEventArgs e)
