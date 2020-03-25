@@ -17,7 +17,6 @@ namespace ConceptMatrix.ViewModel
 	{
 		private Dictionary<string, Bone> bones;
 		private Bone currentBone;
-		private Bone currentMirrorBone;
 		private bool enabled;
 
 		public CharacterDetails Character { get; set; }
@@ -86,12 +85,14 @@ namespace ConceptMatrix.ViewModel
 				if (this.currentBone != null)
 					this.currentBone.SetRotation();
 
+				// Ensure we have the correct rotation for a bone before we edit it
+				if (value != null)
+					value.GetRotation();
+
 				this.currentBone = value;
 
-				// Ensure we have the correct rotation for a bone before we edit it
 				if (this.currentBone != null)
 				{
-					this.currentBone.GetRotation();
 					this.currentBone.EnableMirror = this.Mirror;
 				}
 			}
