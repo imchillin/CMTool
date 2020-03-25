@@ -1366,6 +1366,15 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mirror.
+        /// </summary>
+        public static string Mirror {
+            get {
+                return ResourceManager.GetString("Mirror", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Neck.
         /// </summary>
         public static string Neck_Tooltip {

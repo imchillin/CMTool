@@ -20,6 +20,7 @@ namespace ConceptMatrix.Views
 
 		private SimplePoseViewModel viewModel;
 		private SimplePoseViewModel.Bone bone;
+		private SimplePoseViewModel.Bone mirrorBone;
 
 		private static Dictionary<SimplePoseViewModel.Bone, List<SimplePoseBoneView>> boneViews = new Dictionary<SimplePoseViewModel.Bone, List<SimplePoseBoneView>>();
 		private List<Line> linesToChildren = new List<Line>();
@@ -56,22 +57,8 @@ namespace ConceptMatrix.Views
 				{
 					this.viewModel = viewModel;
 					this.viewModel.PropertyChanged += this.OnViewModelPropertyChanged;
-					this.bone = viewModel.GetBone(this.BoneName);
 
-					if (!boneViews.ContainsKey(this.bone))
-						boneViews.Add(this.bone, new List<SimplePoseBoneView>());
-
-					boneViews[this.bone].Add(this);
-
-					this.ToolTip = this.bone.Tooltip;
-					this.IsEnabled = true;
-
-					// Wait for all bone views to load, then draw the skeleton
-					Application.Current.Dispatcher.InvokeAsync(async () =>
-					{
-						await Task.Delay(1);
-						this.DrawSkeleton();
-					});
+					this.SetBone(this.BoneName);
 				}
 				else
 				{
@@ -89,6 +76,16 @@ namespace ConceptMatrix.Views
 
 		private void DrawSkeleton()
 		{
+			foreach (Line line in this.linesToChildren)
+			{
+				if (line.Parent is Panel parentPanel)
+				{
+					parentPanel.Children.Remove(line);
+				}
+			}
+
+			this.linesToChildren.Clear();
+
 			foreach (SimplePoseViewModel.Bone bone in this.bone.Children)
 			{
 				if (!boneViews.ContainsKey(bone))
@@ -98,6 +95,16 @@ namespace ConceptMatrix.Views
 				{
 					if (this.Parent is Canvas c1 && childView.Parent is Canvas c2 && c1 == c2)
 					{
+						// Special cases for mirrored skeletons...
+						if (this.viewModel.Mirror)
+						{
+							if (this.BoneName.EndsWith("Left") && childView.BoneName.EndsWith("Right"))
+								continue;
+
+							if (this.BoneName.EndsWith("Right") && childView.BoneName.EndsWith("Left"))
+								continue;
+						}
+
 						Line line = new Line();
 						line.SnapsToDevicePixels = true;
 						line.StrokeThickness = 1;
@@ -119,6 +126,41 @@ namespace ConceptMatrix.Views
 		private void OnViewModelPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
 			this.UpdateState();
+
+			if (e.PropertyName == nameof(this.viewModel.FlipSides) || e.PropertyName == nameof(this.viewModel.Mirror))
+			{
+				this.SetBone(SimplePoseViewModel.GetBoneName(this.BoneName, this.viewModel.FlipSides, this.viewModel.Mirror));
+			}
+		}
+
+		private void SetBone(string name)
+		{
+			if (this.bone != null)
+			{
+				if (boneViews.ContainsKey(this.bone))
+				{
+					boneViews[this.bone].Remove(this);
+				}
+			}
+
+			this.bone = viewModel.GetBone(name);
+			this.ToolTip = this.bone.Tooltip;
+
+			if (!boneViews.ContainsKey(this.bone))
+				boneViews.Add(this.bone, new List<SimplePoseBoneView>());
+
+			boneViews[this.bone].Add(this);
+
+			this.ToolTip = this.bone.Tooltip;
+			this.IsEnabled = true;
+
+			// Wait for all bone views to load, then draw the skeleton
+			Application.Current.Dispatcher.InvokeAsync(async () =>
+			{
+				await Task.Delay(1);
+				this.DrawSkeleton();
+				this.UpdateState();
+			});
 		}
 
 		private void OnMouseEnter(object sender, System.Windows.Input.MouseEventArgs e)

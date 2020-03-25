@@ -17,6 +17,7 @@ namespace ConceptMatrix.ViewModel
 	{
 		private Dictionary<string, Bone> bones;
 		private Bone currentBone;
+		private Bone currentMirrorBone;
 		private bool enabled;
 
 		public CharacterDetails Character { get; set; }
@@ -57,6 +58,18 @@ namespace ConceptMatrix.ViewModel
 			}
 		}
 
+		public bool FlipSides
+		{
+			get;
+			set;
+		}
+
+		public bool Mirror
+		{
+			get;
+			set;
+		}
+
 		public Bone CurrentBone 
 		{ 
 			get
@@ -73,11 +86,14 @@ namespace ConceptMatrix.ViewModel
 				if (this.currentBone != null)
 					this.currentBone.SetRotation();
 
-				// Ensure we have the correct rotation for a bone before we edit it
-				if (value != null)
-					value.GetRotation();
-
 				this.currentBone = value;
+
+				// Ensure we have the correct rotation for a bone before we edit it
+				if (this.currentBone != null)
+				{
+					this.currentBone.GetRotation();
+					this.currentBone.EnableMirror = this.Mirror;
+				}
 			}
 		}
 
@@ -179,6 +195,30 @@ namespace ConceptMatrix.ViewModel
 			GenerateBones();
 		}
 
+		public static string GetBoneName(string name, bool flip, bool mirror)
+		{
+			if (flip)
+			{
+				// flip left and right side bones
+				if (name.Contains("Left"))
+					return name.Replace("Left", "Right");
+
+				if (name.Contains("Right"))
+					return name.Replace("Right", "Left");
+			}
+
+			if (mirror)
+			{
+				// make all bones left side bones
+				if (name.Contains("Right"))
+				{
+					return name.Replace("Right", "Left");
+				}
+			}
+
+			return name;
+		}
+
 		public void Refresh()
 		{
 			// Trigger a binding update since the character may have changed
@@ -253,6 +293,19 @@ namespace ConceptMatrix.ViewModel
 						this.bones[boneName].IsEnabled = this.HasTail;
 				}
 			}
+
+			// Set all mirror bones
+			foreach (Bone bone in this.bones.Values)
+			{
+				string mirrorBoneName = GetBoneName(bone.BoneName, true, false);
+
+				// no mirror
+				if (mirrorBoneName == bone.BoneName)
+					continue;
+
+				bone.Mirror = this.GetBone(mirrorBoneName);
+			}
+
 
 			// now that we have all the bones, we make a hierarchy
 			// torso tree
@@ -496,6 +549,7 @@ namespace ConceptMatrix.ViewModel
 
 			public List<Bone> Children = new List<Bone>();
 			public Bone Parent;
+			public Bone Mirror;
 
 			private Quaternion oldQuaternion = Quaternion.Identity;
 			private Quaternion quaternion = Quaternion.Identity;
@@ -559,6 +613,8 @@ namespace ConceptMatrix.ViewModel
 				}
 			}
 
+			public bool EnableMirror { get; set; }
+
 			public void GetRotation(bool suppressPropertyChanged = false)
 			{
 				if (!this.IsEnabled)
@@ -594,6 +650,20 @@ namespace ConceptMatrix.ViewModel
 
 				if (this.oldQuaternion == this.quaternion)
 					return;
+
+				if (this.EnableMirror && this.Mirror != null)
+				{
+					this.Mirror.GetRotation(true);
+
+					this.Mirror.quaternion = this.quaternion;
+
+					// ???
+					
+					this.Mirror.euler = this.Mirror.quaternion.ToEulerAngles();
+					this.Mirror.SetRotation();
+
+					throw new NotImplementedException();
+				}
 
 				this.WriteRotation();
 

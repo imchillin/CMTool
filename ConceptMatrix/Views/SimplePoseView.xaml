@@ -307,6 +307,7 @@
 						<Grid.RowDefinitions>
 							<RowDefinition/>
 							<RowDefinition/>
+							<RowDefinition/>
 						</Grid.RowDefinitions>
 
 						<Label Grid.Row="0" Grid.Column="0" Content="{Binding Source={x:Static resx:UIPoseStrings.EnableEditing}}" VerticalContentAlignment="Center"/>
@@ -314,12 +315,17 @@
 
 						<Label Grid.Row="1" Grid.Column="0" Content="{Binding Source={x:Static resx:UISimplePoseStrings.FlipSides}}" VerticalContentAlignment="Center"/>
 						<ToggleButton Grid.Row="1" Grid.Column="1" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding FlipSides}"/>
+
+						<!--
+						<Label Grid.Row="2" Grid.Column="0" Content="{Binding Source={x:Static resx:UISimplePoseStrings.Mirror}}" VerticalContentAlignment="Center"/>
+						<ToggleButton Grid.Row="2" Grid.Column="1" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding Mirror}"/>
+						-->
 					</Grid>
 
 				</GroupBox>
 
 
-				<GroupBox Header="{Binding CurrentBone.Tooltip, FallbackValue=Bone}" Margin="6"  Padding="4" IsEnabled="{Binding IsEnabled}">
+				<GroupBox Header="{Binding CurrentBone.Tooltip, FallbackValue=''}" Margin="6"  Padding="4" IsEnabled="{Binding IsEnabled}">
 
 					<Grid>
 						<Grid.ColumnDefinitions>
