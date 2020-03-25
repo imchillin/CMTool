@@ -1,9 +1,11 @@
 ﻿using ConceptMatrix.Models;
+using ConceptMatrix.Resx;
 using ConceptMatrix.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Media3D;
@@ -14,8 +16,44 @@ namespace ConceptMatrix.ViewModel
 	{
 		private Dictionary<string, Bone> bones;
 		private Bone currentBone;
+		private bool enabled;
 
 		public CharacterDetails Character { get; set; }
+
+		public bool IsEnabled 
+		{ 
+			get
+			{
+				return this.enabled;
+			}
+
+			set
+			{
+				this.enabled = value;
+
+				MemoryManager mem = MemoryManager.Instance;
+
+				// Not sure I want both simple pose and pose matrix trying to edit bones at the same time.
+				////CharacterDetails.BoneEditMode = this.enabled;
+
+				if (this.enabled)
+				{
+					mem.MemLib.writeMemory(mem.SkeletonAddress, "bytes", "0x90 0x90 0x90 0x90 0x90 0x90");
+					mem.MemLib.writeMemory(mem.SkeletonAddress2, "bytes", "0x90 0x90 0x90 0x90 0x90 0x90");
+					mem.MemLib.writeMemory(mem.SkeletonAddress3, "bytes", "0x90 0x90 0x90 0x90");
+					mem.MemLib.writeMemory(mem.PhysicsAddress, "bytes", "0x90 0x90 0x90 0x90");
+					mem.MemLib.writeMemory(mem.PhysicsAddress2, "bytes", "0x90 0x90 0x90");
+				}
+				else
+				{
+					mem.MemLib.writeMemory(mem.SkeletonAddress, "bytes", "0x41 0x0F 0x29 0x5C 0x12 0x10");
+					mem.MemLib.writeMemory(mem.SkeletonAddress2, "bytes", "0x43 0x0F 0x29 0x5C 0x18 0x10");
+					mem.MemLib.writeMemory(mem.SkeletonAddress3, "bytes", "0x0F 0x29 0x5E 0x10");
+					mem.MemLib.writeMemory(mem.PhysicsAddress, "bytes", "0x0F 0x29 0x48 0x10");
+					mem.MemLib.writeMemory(mem.PhysicsAddress2, "bytes", "0x0F 0x29 0x00");
+				}
+			}
+		}
 
 		public Bone CurrentBone 
 		{ 
@@ -348,7 +386,7 @@ namespace ConceptMatrix.ViewModel
 
 		public class Bone : BaseModel
 		{
-			public readonly string BoneName;
+			public string BoneName{ get; private set; }
 
 			public List<Bone> Children = new List<Bone>();
 			public Bone Parent;
@@ -407,6 +445,14 @@ namespace ConceptMatrix.ViewModel
 				}
 			}
 
+			public string Tooltip
+			{
+				get
+				{
+					return Strings.GetString<UISimplePoseStrings>(this.BoneName + "_Tooltip");
+				}
+			}
+
 			public void GetRotation(bool suppressPropertyChanged = false)
 			{
 				Mem mem = MemoryManager.Instance.MemLib;
@@ -439,11 +485,17 @@ namespace ConceptMatrix.ViewModel
 
 				this.WriteRotation();
 
-				this.oldQuaternion.Conjugate();
+				// load all child rotations before applying new rotation
+				// this prevents multiple bones that target the same in game bone from getting
+				// multiple additive rotation requests.
+				////this.GetRotationRecursive();
+
+				Quaternion oldConj = this.oldQuaternion;
+				oldConj.Conjugate();
 
 				foreach (Bone child in this.Children)
 				{
-					child.Rotate(this.oldQuaternion, this.quaternion);
+					child.Rotate(oldConj, this.quaternion);
 				}
 
 				this.oldQuaternion = this.quaternion;
@@ -457,6 +509,16 @@ namespace ConceptMatrix.ViewModel
 				mem.writeBytes(this.yAddr, BitConverter.GetBytes((float)this.quaternion.Y));
 				mem.writeBytes(this.zAddr, BitConverter.GetBytes((float)this.quaternion.Z));
 				mem.writeBytes(this.wAddr, BitConverter.GetBytes((float)this.quaternion.W));
+			}
+
+			private void GetRotationRecursive()
+			{
+				this.GetRotation(true);
+
+				foreach (Bone child in this.Children)
+				{
+					child.GetRotation(true);
+				}
 			}
 
 			private void Rotate(Quaternion sourceOldCnj, Quaternion sourceNew)
