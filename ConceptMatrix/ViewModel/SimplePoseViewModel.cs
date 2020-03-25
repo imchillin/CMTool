@@ -82,6 +82,14 @@ namespace ConceptMatrix.ViewModel
 
 		public Bone MouseOverBone { get; set; }
 
+		public bool HasTail
+		{
+			get
+			{
+				return this.Character.Race.value == 4 || this.Character.Race.value == 6 || this.Character.Race.value == 7;
+			}
+		}
+
 		public IEnumerable<Bone> Bones
 		{
 			get
@@ -142,11 +150,6 @@ namespace ConceptMatrix.ViewModel
 			return this.Character.Race.value == 7;
 		}
 
-		public bool GetHasTail()
-		{
-			return this.Character.Race.value == 4 || this.Character.Race.value == 6 || this.Character.Race.value == 7;
-		}
-
 		// gets all bones defined in BonesOffsets.
 		private void GenerateBones()
 		{
@@ -174,7 +177,7 @@ namespace ConceptMatrix.ViewModel
 						this.bones[boneName].IsEnabled = this.GetIsViera();
 
 					if (boneName.Contains("Tail"))
-						this.bones[boneName].IsEnabled = this.GetHasTail();
+						this.bones[boneName].IsEnabled = this.HasTail;
 				}
 			}
 

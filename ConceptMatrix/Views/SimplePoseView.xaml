@@ -12,7 +12,7 @@
 			 Unloaded="OnUnloaded"
 			 IsVisibleChanged="OnIsVisibleChanged"
 			 d:DesignHeight="512" d:DesignWidth="1024">
-
+	
 	<Grid x:Name="ContentArea">
 		<Grid.RowDefinitions>
 			<RowDefinition/>
@@ -220,10 +220,25 @@
 			</Canvas>
 		</Viewbox>
 
+		<!-- Tail -->
+		<Viewbox Grid.Column="4" Grid.Row="0" Visibility="{Binding HasTail, Converter={StaticResource BooleanToVisibilityConverter}}">
+			<Canvas Height="200" Width="128">
+				<Canvas.Background>
+					<ImageBrush ImageSource="/ConceptMatrix;component/Resources/PoseCharacterTailBackground.png" Opacity="0.15" Stretch="Uniform"/>
+				</Canvas.Background>
+
+				<local:SimplePoseBoneView Canvas.Left="51" Canvas.Top="5" BoneName="TailA"/>
+				<local:SimplePoseBoneView Canvas.Left="74" Canvas.Top="36" BoneName="TailB"/>
+				<local:SimplePoseBoneView Canvas.Left="56" Canvas.Top="99" BoneName="TailC"/>
+				<local:SimplePoseBoneView Canvas.Left="56" Canvas.Top="152" BoneName="TailD"/>
+
+			</Canvas>
+		</Viewbox>
+
 		<ScrollViewer Grid.Column="4" Grid.Row="1" HorizontalScrollBarVisibility="Hidden">
 			<StackPanel x:Name="ExtraBonesList"/>
 		</ScrollViewer>
-		
+
 		<Grid Grid.Column="5" Grid.RowSpan="2">
 			<StackPanel>
 				<GroupBox Header="Options" Margin="6" Padding="4">
@@ -273,7 +288,7 @@
 						<controls:NumberBox Grid.Row="2" Grid.Column="1" Value="{Binding CurrentBone.Z, Mode=TwoWay}" TickFrequency="0.5" Minimum="0" Maximum="360"/>
 
 					</Grid>
-					
+
 					<!--<StackPanel>
 						<Label ToolTip="{Binding Source={x:Static resx:UIPoseStrings.XRotToolTip}}" Content="{Binding Source={x:Static resx:UIPoseStrings.XRot}}"/>
 						<mah:NumericUpDown Minimum="0" Maximum="360" Value="{Binding CurrentBone.X, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C0000FF" StringFormat="F10" Interval="0.5" TextAlignment="Right" Height="28" FontSize="11.35" FontFamily="Segoe UI"/>
