@@ -9,6 +9,7 @@
 			 xmlns:controls="clr-namespace:ConceptMatrix.Controls"
 			 DataContextChanged="OnDataContextChanged"
 			 mc:Ignorable="d" 
+			 Unloaded="OnUnloaded"
 			 IsVisibleChanged="OnIsVisibleChanged"
 			 d:DesignHeight="512" d:DesignWidth="1024">
 
@@ -70,7 +71,7 @@
 		</Viewbox>
 
 		<!-- Clothes -->
-		<Viewbox Grid.Column="1" Grid.RowSpan="2"  Margin="-30, 0, -20, 0">
+		<Viewbox Grid.Column="1" Grid.RowSpan="2"  Margin="-20, 0, -20, 0">
 			<Canvas Height="512" Width="256">
 				<Canvas.Background>
 					<ImageBrush ImageSource="/ConceptMatrix;component/Resources/PoseCharacterClothesBackground.png" Opacity="0.15" Stretch="Uniform"/>
@@ -248,7 +249,7 @@
 				</GroupBox>
 
 
-				<GroupBox Header="{Binding CurrentBone.BoneName, FallbackValue=Bone}" Margin="6"  Padding="4" IsEnabled="{Binding IsEnabled}">
+				<GroupBox Header="{Binding CurrentBone.Tooltip, FallbackValue=Bone}" Margin="6"  Padding="4" IsEnabled="{Binding IsEnabled}">
 
 					<Grid>
 						<Grid.ColumnDefinitions>
@@ -265,10 +266,10 @@
 						<Label Grid.Row="0" Grid.Column="0" Content="X" VerticalContentAlignment="Center"/>
 						<controls:NumberBox Grid.Row="0" Grid.Column="1" Value="{Binding CurrentBone.X, Mode=TwoWay}" TickFrequency="0.5" Minimum="0" Maximum="360"/>
 
-						<Label Grid.Row="1" Grid.Column="0" Content="X" VerticalContentAlignment="Center"/>
+						<Label Grid.Row="1" Grid.Column="0" Content="Y" VerticalContentAlignment="Center"/>
 						<controls:NumberBox Grid.Row="1" Grid.Column="1" Value="{Binding CurrentBone.Y, Mode=TwoWay}" TickFrequency="0.5" Minimum="0" Maximum="360"/>
 
-						<Label Grid.Row="2" Grid.Column="0" Content="X" VerticalContentAlignment="Center"/>
+						<Label Grid.Row="2" Grid.Column="0" Content="Z" VerticalContentAlignment="Center"/>
 						<controls:NumberBox Grid.Row="2" Grid.Column="1" Value="{Binding CurrentBone.Z, Mode=TwoWay}" TickFrequency="0.5" Minimum="0" Maximum="360"/>
 
 					</Grid>

@@ -1,4 +1,5 @@
-﻿using ConceptMatrix.ViewModel;
+﻿using ConceptMatrix.Resx;
+using ConceptMatrix.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Resources;
@@ -16,7 +17,6 @@ namespace ConceptMatrix.Views
 	public partial class SimplePoseBoneView : UserControl
 	{
 		public static readonly DependencyProperty BoneNameProperty = DependencyProperty.Register("BoneName", typeof(string), typeof(SimplePoseBoneView));
-		private static readonly ResourceManager ResourceManager = new ResourceManager(typeof(Resx.UISimplePoseStrings));
 
 		private SimplePoseViewModel viewModel;
 		private SimplePoseViewModel.Bone bone;
@@ -63,8 +63,7 @@ namespace ConceptMatrix.Views
 
 					boneViews[this.bone].Add(this);
 
-					this.ToolTip = GetString(this.BoneName + "_Tooltip");
-
+					this.ToolTip = this.bone.Tooltip;
 					this.IsEnabled = true;
 
 					// Wait for all bone views to load, then draw the skeleton
@@ -120,19 +119,6 @@ namespace ConceptMatrix.Views
 		private void OnViewModelPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
 			this.UpdateState();
-		}
-
-		private static string GetString(string key)
-		{
-			string value = ResourceManager.GetString(key);
-
-			if (string.IsNullOrEmpty(value))
-			{
-				Console.WriteLine("Missing string: \"" + key + "\" in resources: \"" + ResourceManager.BaseName + "\"");
-				return "[Missing] " + key;
-			}
-
-			return value;
 		}
 
 		private void OnMouseEnter(object sender, System.Windows.Input.MouseEventArgs e)

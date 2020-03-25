@@ -169,6 +169,7 @@
     <Compile Include="Utility\MemoryManager.cs" />
     <Compile Include="Utility\SaveSettings.cs" />
     <Compile Include="Utility\Settings.cs" />
+    <Compile Include="Utility\Strings.cs" />
     <Compile Include="Utility\ThreadWriting.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\CharacterDetailsViewModel.cs" />

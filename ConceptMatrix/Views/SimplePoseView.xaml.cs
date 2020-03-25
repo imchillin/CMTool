@@ -21,23 +21,24 @@ namespace ConceptMatrix.Views
 		public SimplePoseView()
 		{
 			InitializeComponent();
+			Application.Current.Exit += this.OnApplicationExiting;
 		}
 
 		private void OnIsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
 		{
 			if (this.IsVisible)
 			{
-				ThreadStart ts = new ThreadStart(this.PollSliders);
+				ThreadStart ts = new ThreadStart(this.PollChanges);
 				Thread th = new Thread(ts);
 				th.Start();
 			}
 		}
 
-		private void PollSliders()
+		private void PollChanges()
 		{
 			while (this.IsVisible)
 			{
-				Thread.Sleep(16);
+				Thread.Sleep(32);
 
 				if (!this.ViewModel.IsEnabled)
 					continue;
@@ -79,6 +80,16 @@ namespace ConceptMatrix.Views
 					ExtraBonesList.Children.Add(grid);
 				}
 			}
+		}
+
+		private void OnApplicationExiting(object sender, ExitEventArgs e)
+		{
+			this.ViewModel.IsEnabled = false;
+		}
+
+		private void OnUnloaded(object sender, RoutedEventArgs e)
+		{
+			this.ViewModel.IsEnabled = false;
 		}
 	}
 }
