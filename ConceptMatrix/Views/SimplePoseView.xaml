@@ -12,7 +12,7 @@
 			 Unloaded="OnUnloaded"
 			 IsVisibleChanged="OnIsVisibleChanged"
 			 d:DesignHeight="512" d:DesignWidth="1024">
-	
+
 	<Grid x:Name="ContentArea">
 		<Grid.RowDefinitions>
 			<RowDefinition/>
@@ -221,7 +221,7 @@
 		</Viewbox>
 
 		<!-- Tail -->
-		<Viewbox Grid.Column="4" Grid.Row="0" Visibility="{Binding HasTail, Converter={StaticResource BooleanToVisibilityConverter}}">
+		<Viewbox Grid.Column="4" Grid.Row="0" Visibility="{Binding HasTail, Converter={StaticResource BooleanToVisibilityConverter}, FallbackValue=Hidden}">
 			<Canvas Height="200" Width="128">
 				<Canvas.Background>
 					<ImageBrush ImageSource="/ConceptMatrix;component/Resources/PoseCharacterTailBackground.png" Opacity="0.15" Stretch="Uniform"/>
@@ -231,7 +231,62 @@
 				<local:SimplePoseBoneView Canvas.Left="74" Canvas.Top="36" BoneName="TailB"/>
 				<local:SimplePoseBoneView Canvas.Left="56" Canvas.Top="99" BoneName="TailC"/>
 				<local:SimplePoseBoneView Canvas.Left="56" Canvas.Top="152" BoneName="TailD"/>
+			</Canvas>
+		</Viewbox>
 
+		<!-- Viera Ears 01 -->
+		<Viewbox Grid.Column="4" Grid.Row="0" Visibility="{Binding IsVieraEars01, Converter={StaticResource BooleanToVisibilityConverter}, FallbackValue=Hidden}">
+			<Canvas Width="138" Height="196">
+				<Canvas.Background>
+					<ImageBrush ImageSource="/ConceptMatrix;component/Resources/PoseCharacterVieraEars01Background.png" Opacity="0.15" Stretch="Uniform"/>
+				</Canvas.Background>
+
+				<local:SimplePoseBoneView Canvas.Left="37" Canvas.Top="154" BoneName="VieraEar01ALeft"/>
+				<local:SimplePoseBoneView Canvas.Left="22" Canvas.Top="98" BoneName="VieraEar01BLeft"/>
+				<local:SimplePoseBoneView Canvas.Left="86" Canvas.Top="154" BoneName="VieraEar01ARight"/>
+				<local:SimplePoseBoneView Canvas.Left="96" Canvas.Top="98" BoneName="VieraEar01BRight"/>
+			</Canvas>
+		</Viewbox>
+
+		<!-- Viera Ears 02 -->
+		<Viewbox Grid.Column="4" Grid.Row="0" Visibility="{Binding IsVieraEars02, Converter={StaticResource BooleanToVisibilityConverter}, FallbackValue=Hidden}">
+			<Canvas Width="163" Height="232">
+				<Canvas.Background>
+					<ImageBrush ImageSource="/ConceptMatrix;component/Resources/PoseCharacterVieraEars02Background.png" Opacity="0.15" Stretch="Uniform"/>
+				</Canvas.Background>
+
+				<local:SimplePoseBoneView Canvas.Left="47" Canvas.Top="169" BoneName="VieraEar02ALeft"/>
+				<local:SimplePoseBoneView Canvas.Left="31" Canvas.Top="106" BoneName="VieraEar02BLeft"/>
+				<local:SimplePoseBoneView Canvas.Left="89" Canvas.Top="169" BoneName="VieraEar02ARight"/>
+				<local:SimplePoseBoneView Canvas.Left="105" Canvas.Top="106" BoneName="VieraEar02BRight"/>
+			</Canvas>
+		</Viewbox>
+
+		<!-- Viera Ears 03 -->
+		<Viewbox Grid.Column="4" Grid.Row="0" Visibility="{Binding IsVieraEars03, Converter={StaticResource BooleanToVisibilityConverter}, FallbackValue=Hidden}">
+			<Canvas Width="256" Height="122" >
+				<Canvas.Background>
+					<ImageBrush ImageSource="/ConceptMatrix;component/Resources/PoseCharacterVieraEars03Background.png" Opacity="0.15" Stretch="Uniform"/>
+				</Canvas.Background>
+
+				<local:SimplePoseBoneView Canvas.Left="90" Canvas.Top="58" BoneName="VieraEar03ALeft"/>
+				<local:SimplePoseBoneView Canvas.Left="43" Canvas.Top="48" BoneName="VieraEar03BLeft"/>
+				<local:SimplePoseBoneView Canvas.Left="135" Canvas.Top="58" BoneName="VieraEar03ARight"/>
+				<local:SimplePoseBoneView Canvas.Left="187" Canvas.Top="48" BoneName="VieraEar03BRight"/>
+			</Canvas>
+		</Viewbox>
+
+		<!-- Viera Ears 04 -->
+		<Viewbox Grid.Column="4" Grid.Row="0" Visibility="{Binding IsVieraEars04, Converter={StaticResource BooleanToVisibilityConverter}, FallbackValue=Hidden}">
+			<Canvas Width="149" Height="232">
+				<Canvas.Background>
+					<ImageBrush ImageSource="/ConceptMatrix;component/Resources/PoseCharacterVieraEars04Background.png" Opacity="0.15" Stretch="Uniform"/>
+				</Canvas.Background>
+
+				<local:SimplePoseBoneView Canvas.Left="44" Canvas.Top="170" BoneName="VieraEar04ALeft"/>
+				<local:SimplePoseBoneView Canvas.Left="26" Canvas.Top="104" BoneName="VieraEar04BLeft"/>
+				<local:SimplePoseBoneView Canvas.Left="85" Canvas.Top="170" BoneName="VieraEar04ARight"/>
+				<local:SimplePoseBoneView Canvas.Left="102" Canvas.Top="104" BoneName="VieraEar04BRight"/>
 			</Canvas>
 		</Viewbox>
 

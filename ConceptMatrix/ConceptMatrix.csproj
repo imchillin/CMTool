@@ -460,6 +460,10 @@
     <Content Include="OffsetSettingsCN.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\PoseCharacterVieraEars02Background.png" />
+    <Resource Include="Resources\PoseCharacterVieraEars03Background.png" />
+    <Resource Include="Resources\PoseCharacterVieraEars04Background.png" />
+    <Resource Include="Resources\PoseCharacterVieraEars01Background.png" />
     <Resource Include="Resources\PoseCharacterTailBackground.png" />
     <Resource Include="Resources\PoseCharacterFaceBackground.png" />
     <Resource Include="Resources\PoseCharacterHandBackground.png" />

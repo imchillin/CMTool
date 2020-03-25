@@ -1,6 +1,7 @@
 ﻿using ConceptMatrix.Models;
 using ConceptMatrix.Resx;
 using ConceptMatrix.Utility;
+using PropertyChanged;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -82,14 +83,88 @@ namespace ConceptMatrix.ViewModel
 
 		public Bone MouseOverBone { get; set; }
 
+		[DependsOn(nameof(Character))]
 		public bool HasTail
 		{
 			get
 			{
+				if (this.Character == null)
+					return false;
+
 				return this.Character.Race.value == 4 || this.Character.Race.value == 6 || this.Character.Race.value == 7;
 			}
 		}
 
+		[DependsOn(nameof(Character))]
+		public bool IsViera
+		{
+			get
+			{
+				if (this.Character == null)
+					return false;
+
+				return this.Character.Race.value == 8;
+			}
+		}
+
+		[DependsOn(nameof(Character))]
+		public bool IsVieraEars01
+		{
+			get
+			{
+				if (this.Character == null)
+					return false;
+
+				return this.Character.Race.value == 8 && this.Character.TailType.value == 1;
+			}
+		}
+
+		[DependsOn(nameof(Character))]
+		public bool IsVieraEars02
+		{
+			get
+			{
+				if (this.Character == null)
+					return false;
+
+				return this.Character.Race.value == 8 && this.Character.TailType.value == 2;
+			}
+		}
+
+		[DependsOn(nameof(Character))]
+		public bool IsVieraEars03
+		{
+			get
+			{
+				if (this.Character == null)
+					return false;
+
+				return this.Character.Race.value == 8 && this.Character.TailType.value == 3;
+			}
+		}
+
+		[DependsOn(nameof(Character))]
+		public bool IsVieraEars04
+		{
+			get
+			{
+				if (this.Character == null)
+					return false;
+
+				return this.Character.Race.value == 8 && this.Character.TailType.value == 4;
+			}
+		}
+
+		[DependsOn(nameof(Character))]
+		public bool IsHrothgar
+		{
+			get
+			{
+				return this.Character.Race.value == 7;
+			}
+		}
+
+		[DependsOn(nameof(Character))]
 		public IEnumerable<Bone> Bones
 		{
 			get
@@ -102,6 +177,14 @@ namespace ConceptMatrix.ViewModel
 		{
 			this.Character = character;
 			GenerateBones();
+		}
+
+		public void Refresh()
+		{
+			// Trigger a binding update since the character may have changed
+			CharacterDetails details = this.Character;
+			this.Character = null;
+			this.Character = details;
 		}
 
 		public bool GetIsBoneSelected(Bone bone)
@@ -140,16 +223,6 @@ namespace ConceptMatrix.ViewModel
 			return false;
 		}
 
-		public bool GetIsHroth()
-		{
-			return this.Character.Race.value == 7;
-		}
-
-		public bool GetIsViera()
-		{
-			return this.Character.Race.value == 7;
-		}
-
 		// gets all bones defined in BonesOffsets.
 		private void GenerateBones()
 		{
@@ -171,10 +244,10 @@ namespace ConceptMatrix.ViewModel
 
 					// bit of a hack...
 					if (boneName.Contains("Hroth"))
-						this.bones[boneName].IsEnabled = this.GetIsHroth();
+						this.bones[boneName].IsEnabled = this.IsHrothgar;
 
 					if (boneName.Contains("Viera"))
-						this.bones[boneName].IsEnabled = this.GetIsViera();
+						this.bones[boneName].IsEnabled = this.IsViera;
 
 					if (boneName.Contains("Tail"))
 						this.bones[boneName].IsEnabled = this.HasTail;
