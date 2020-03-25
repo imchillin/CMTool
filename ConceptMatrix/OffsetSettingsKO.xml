@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Settings>
-  <LastUpdated>5.05</LastUpdated>
-  <CameraOffset>1B26830</CameraOffset>
-  <GposeOffset>1B26A28</GposeOffset>
-  <GposeEntityOffset>1B298D0</GposeEntityOffset>
-  <GposeCheckOffset>1B2A640</GposeCheckOffset>
-  <GposeCheck2Offset>1B2A620</GposeCheck2Offset>
-  <AoBOffset>1B27E40</AoBOffset>
-  <TargetOffset>1B26AA0</TargetOffset>
-  <TimeOffset>1B0B9F0</TimeOffset>
-  <WeatherOffset>1AE2A18</WeatherOffset>
-  <TerritoryOffset>1B64B08</TerritoryOffset>
-  <GposeFilters>1B098A8</GposeFilters>
-  <MusicOffset>1B47748</MusicOffset>
-  <SkeletonOffset>1292D00</SkeletonOffset>
-  <SkeletonOffset2>1293E2D</SkeletonOffset2>
-  <SkeletonOffset3>12A1A94</SkeletonOffset3>
-  <PhysicsOffset>371E28</PhysicsOffset>
-  <PhysicsOffset2>371E1F</PhysicsOffset2>
-  <CharacterRenderOffset>4281D0</CharacterRenderOffset>
-  <CharacterRenderOffset2>4281C6</CharacterRenderOffset2>
+  <LastUpdated>5.1</LastUpdated>
+  <CameraOffset>1BFCAA0</CameraOffset>
+  <GposeOffset>1BFCC88</GposeOffset>
+  <GposeEntityOffset>1BFEDD8</GposeEntityOffset>
+  <GposeCheckOffset>1C4D77A</GposeCheckOffset>
+  <GposeCheck2Offset>1C00870</GposeCheck2Offset>
+  <AoBOffset>1BFE090</AoBOffset>
+  <!--1B27E40-->
+  <TargetOffset>1BFCCF0</TargetOffset>
+  <TimeOffset>1BDDAC8</TimeOffset>
+  <WeatherOffset>1BB4838</WeatherOffset>
+  <TerritoryOffset>1BFBAC0</TerritoryOffset>
+  <GposeFilters>1BDBA28</GposeFilters>
+  <MusicOffset>1C12660</MusicOffset>
+  <SkeletonOffset>132F760</SkeletonOffset>
+  <SkeletonOffset2>133088D</SkeletonOffset2>
+  <SkeletonOffset3>133E4F4</SkeletonOffset3>
+  <PhysicsOffset>39E208</PhysicsOffset>
+  <PhysicsOffset2>39E1FF</PhysicsOffset2>
+  <CharacterRenderOffset>4546F0</CharacterRenderOffset>
+  <CharacterRenderOffset2>4546E6</CharacterRenderOffset2>
   <Character>
     <Name>30</Name>
     <FCTag>17FA</FCTag>
-    <Title>18BE</Title>
-    <JobIco>18DC</JobIco>
-    <Voices>18C4</Voices>
+    <Title>18D2</Title>
+    <JobIco>18F4</JobIco>
+    <Voices>18D8</Voices>
     <Body Base="F0">
       <Position>
         <X>50</X>
@@ -1068,7 +1069,7 @@
     <RenderToggle>104</RenderToggle>
     <Transparency>173C</Transparency>
     <EntityType>8C</EntityType>
-    <ModelType>189C</ModelType>
+    <ModelType>18A8</ModelType>
     <!--Character Appearance-->
     <Race>17E0</Race>
     <Gender>17E1</Gender>
@@ -1131,7 +1132,7 @@
     <EmoteSpeed1>D14</EmoteSpeed1>
     <EmoteSpeed2>D18</EmoteSpeed2>
     <FreezeFacial>D1C</FreezeFacial>
-    <Territory>660</Territory>
+    <Territory>0,F8C</Territory>
     <DataPath>F0,838</DataPath>
     <DataHead>F0,83C</DataHead>
     <NPCName>1890</NPCName>
