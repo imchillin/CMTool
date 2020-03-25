@@ -9,7 +9,8 @@
 			 Height="18"
 			 MouseEnter="OnMouseEnter"
 			 MouseLeave="OnMouseLeave"
-			 MouseUp="OnMouseUp">
+			 MouseUp="OnMouseUp"
+			 IsEnabled="{Binding IsEnabled}">
 	<Grid>
 		<Ellipse Stroke="Gray" StrokeThickness="1" Fill="#404040" x:Name="BackgroundElipse"/>
 		<Ellipse Fill="Gray" Margin="3" x:Name="ForegroundElipse" Visibility="Hidden"/>

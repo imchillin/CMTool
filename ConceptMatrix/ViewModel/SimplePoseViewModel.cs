@@ -132,6 +132,21 @@ namespace ConceptMatrix.ViewModel
 			return false;
 		}
 
+		public bool GetIsHroth()
+		{
+			return this.Character.Race.value == 7;
+		}
+
+		public bool GetIsViera()
+		{
+			return this.Character.Race.value == 7;
+		}
+
+		public bool GetHasTail()
+		{
+			return this.Character.Race.value == 4 || this.Character.Race.value == 6 || this.Character.Race.value == 7;
+		}
+
 		// gets all bones defined in BonesOffsets.
 		private void GenerateBones()
 		{
@@ -150,6 +165,16 @@ namespace ConceptMatrix.ViewModel
 				if (!this.bones.ContainsKey(boneName))
 				{
 					this.bones[boneName] = new Bone(boneName);
+
+					// bit of a hack...
+					if (boneName.Contains("Hroth"))
+						this.bones[boneName].IsEnabled = this.GetIsHroth();
+
+					if (boneName.Contains("Viera"))
+						this.bones[boneName].IsEnabled = this.GetIsViera();
+
+					if (boneName.Contains("Tail"))
+						this.bones[boneName].IsEnabled = this.GetHasTail();
 				}
 			}
 
@@ -232,7 +257,7 @@ namespace ConceptMatrix.ViewModel
 			this.ParentBone("Head", "ExHairL");
 
 			// Facebone hroth tree
-			/*this.ParentBone("Head", "HrothEyebrowLeft");
+			this.ParentBone("Head", "HrothEyebrowLeft");
 			this.ParentBone("Head", "HrothEyebrowRight");
 			this.ParentBone("Head", "HrothBridge");
 			this.ParentBone("Head", "HrothBrowLeft");
@@ -247,16 +272,16 @@ namespace ConceptMatrix.ViewModel
 			this.ParentBone("Head", "HrothLipUpperRight");
 			this.ParentBone("Head", "HrothLipLower");
 			this.ParentBone("Head", "HrothWhiskersLeft");
-			this.ParentBone("Head", "HrothWhiskersRight");*/
+			this.ParentBone("Head", "HrothWhiskersRight");
 
 			// Facebone Viera tree
 			this.ParentBone("Head", "VieraLipLowerA");
 			this.ParentBone("Head", "VieraLipLowerB");
 			this.ParentBone("Head", "VieraLipUpperB");
-			////this.ParentBone("Head", "VieraEar01ALeft");
-			////this.ParentBone("Head", "VieraEar02ALeft");
-			////this.ParentBone("Head", "VieraEar03ALeft");
-			////this.ParentBone("Head", "VieraEar04ALeft");
+			this.ParentBone("Head", "VieraEar01ALeft");
+			this.ParentBone("Head", "VieraEar02ALeft");
+			this.ParentBone("Head", "VieraEar03ALeft");
+			this.ParentBone("Head", "VieraEar04ALeft");
 			this.ParentBone("Head", "VieraEar01ARight");
 			this.ParentBone("Head", "VieraEar02ARight");
 			this.ParentBone("Head", "VieraEar03ARight");
@@ -391,6 +416,7 @@ namespace ConceptMatrix.ViewModel
 		public class Bone : BaseModel
 		{
 			public string BoneName{ get; private set; }
+			public bool IsEnabled { get; set; } = true;
 
 			public List<Bone> Children = new List<Bone>();
 			public Bone Parent;
@@ -459,6 +485,9 @@ namespace ConceptMatrix.ViewModel
 
 			public void GetRotation(bool suppressPropertyChanged = false)
 			{
+				if (!this.IsEnabled)
+					return;
+
 				Mem mem = MemoryManager.Instance.MemLib;
 
 				GetAddress();
@@ -482,6 +511,9 @@ namespace ConceptMatrix.ViewModel
 
 			public void SetRotation()
 			{
+				if (!this.IsEnabled)
+					return;
+
 				this.quaternion = this.euler.ToQuaternion();
 
 				if (this.oldQuaternion == this.quaternion)
@@ -512,6 +544,9 @@ namespace ConceptMatrix.ViewModel
 
 			private void Rotate(Quaternion sourceOldCnj, Quaternion sourceNew)
 			{
+				if (!this.IsEnabled)
+					return;
+
 				this.GetRotation(true);
 
 				this.oldQuaternion = this.quaternion;
