@@ -1,21 +1,12 @@
 ﻿namespace ConceptMatrix.Controls
 {
-	using PropertyChanged;
 	using System;
-	using System.Collections.Generic;
 	using System.ComponentModel;
-	using System.Linq;
-	using System.Text;
+	using System.Data;
 	using System.Threading.Tasks;
 	using System.Windows;
 	using System.Windows.Controls;
-	using System.Windows.Data;
-	using System.Windows.Documents;
 	using System.Windows.Input;
-	using System.Windows.Media;
-	using System.Windows.Media.Imaging;
-	using System.Windows.Navigation;
-	using System.Windows.Shapes;
 
 	/// <summary>
 	/// Interaction logic for NumberBox.xaml
@@ -35,6 +26,9 @@
 		public double TickFrequency { get; set; } = 0.5f;
 		public double Minimum { get; set; } = 0;
 		public double Maximum { get; set; } = 100;
+		public bool Wrap { get; set; } = true;
+
+		private Key keyHeld = Key.None;
 
 		public string Text
 		{
@@ -55,6 +49,8 @@
 				}
 				else
 				{
+					
+
 					this.ErrorDisplay.Visibility = Visibility.Visible;
 				}
 			}
@@ -88,15 +84,124 @@
 
 		private void OnLostFocus(object sender, RoutedEventArgs e)
 		{
-			this.Text = this.Value.ToString("0.##");
+			this.Commit(false);
+		}
+
+		protected override void OnPreviewKeyDown(KeyEventArgs e)
+		{
+			bool focused = this.InputBox.IsKeyboardFocused || this.InputSlider.IsKeyboardFocused;
+			if (!focused)
+				return;
+
+			if (e.Key == Key.Return)
+			{
+				this.Commit(true);
+				e.Handled = true;
+			}
+
+			if (e.Key == Key.Up || e.Key == Key.Down)
+			{
+				e.Handled = true;
+
+				if (e.IsRepeat)
+				{
+					if (this.keyHeld == e.Key)
+						return;
+
+					this.keyHeld = e.Key;
+					Task.Run(this.TickHeldKey);
+				}
+				else
+				{
+					TickKey(e.Key);
+				}
+			}
+		}
+
+		protected override void OnPreviewKeyUp(KeyEventArgs e)
+		{
+			if (this.keyHeld == e.Key)
+			{
+				e.Handled = true;
+				this.keyHeld = Key.None;
+			}
 		}
 
 		protected override void OnPreviewMouseWheel(MouseWheelEventArgs e)
 		{
 			e.Handled = true;
-			this.Value += e.Delta > 0 ? TickFrequency : -TickFrequency;
-			this.Value = Math.Min(this.Value, this.Maximum);
-			this.Value = Math.Max(this.Value, this.Minimum);
+			this.TickValue(e.Delta > 0);
+		}
+
+		private void Commit(bool refocus)
+		{
+			this.Value = Convert.ToDouble(new DataTable().Compute(this.inputString, null));
+			this.Text = this.Value.ToString("0.##");
+
+			if (refocus)
+			{
+				this.InputBox.Focus();
+				this.InputBox.CaretIndex = int.MaxValue;
+			}
+		}
+
+		private async Task TickHeldKey()
+		{
+			while (this.keyHeld != Key.None)
+			{
+				await Application.Current.Dispatcher.InvokeAsync(() =>
+				{
+					this.TickKey(keyHeld);
+				});
+
+				await Task.Delay(10);
+			}
+		}
+
+		private void TickKey(Key key)
+		{
+			if (key == Key.Up)
+			{
+				this.TickValue(true);
+				Commit(true);
+
+			}
+			else if (key == Key.Down)
+			{
+				this.TickValue(false);
+				Commit(true);
+			}
+		}
+
+		private void TickValue(bool increase)
+		{
+			double delta = increase ? TickFrequency : -TickFrequency;
+
+			if (Keyboard.IsKeyDown(Key.LeftShift))
+				delta *= 10;
+
+			double value = this.Value;
+			value += delta;
+
+			if (this.Wrap)
+			{
+				while (value > this.Maximum)
+				{
+					value -= this.Maximum;
+				}
+
+				while (value < this.Minimum)
+				{
+					value += this.Maximum;
+				}
+			}
+			else
+			{
+				value = Math.Min(value, this.Maximum);
+				value = Math.Max(value, this.Minimum);
+			}
+
+			this.Value = value;
 		}
 	}
 }

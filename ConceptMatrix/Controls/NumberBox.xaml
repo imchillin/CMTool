@@ -13,6 +13,7 @@
 		</Grid.ColumnDefinitions>
 
 		<Slider
+			x:Name="InputSlider"
 			Grid.Row="0"
 			Grid.Column="0"
 			Margin="3"
@@ -20,9 +21,11 @@
 			Minimum="{Binding Minimum}"
 			Maximum="{Binding Maximum}"
 			TickFrequency="{Binding TickFrequency}"
+			Focusable="False"
 			VerticalAlignment="Center"/>
 
 		<TextBox
+			x:Name="InputBox"
 			Grid.Row="0"
 			Grid.Column="1"
 			Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}"
