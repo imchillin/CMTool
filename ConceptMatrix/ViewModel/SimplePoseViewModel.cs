@@ -502,6 +502,7 @@ namespace ConceptMatrix.ViewModel
 			this.ParentBone("TailA", "TailB");
 			this.ParentBone("TailB", "TailC");
 			this.ParentBone("TailC", "TailD");
+			this.ParentBone("TailD", "TailE");
 		}
 
 		private void ParentBone(string parentName, string childName)
@@ -562,10 +563,7 @@ namespace ConceptMatrix.ViewModel
 			private Quaternion quaternion = Quaternion.Identity;
 			private Vector3D euler;
 
-			private string xAddr;
-			private string yAddr;
-			private string zAddr;
-			private string wAddr;
+			private string rotationAddress;
 
 			public Bone(string boneName)
 			{
@@ -630,7 +628,7 @@ namespace ConceptMatrix.ViewModel
 				Mem mem = MemoryManager.Instance.MemLib;
 
 				GetAddress();
-				byte[] bytearray = mem.readBytes(this.xAddr, 16);
+				byte[] bytearray = mem.readBytes(this.rotationAddress, 16);
 
 				this.quaternion.X = BitConverter.ToSingle(bytearray, 0);
 				this.quaternion.Y = BitConverter.ToSingle(bytearray, 4);
@@ -689,10 +687,13 @@ namespace ConceptMatrix.ViewModel
 			{
 				Mem mem = MemoryManager.Instance.MemLib;
 				GetAddress();
-				mem.writeBytes(this.xAddr, BitConverter.GetBytes((float)this.quaternion.X));
-				mem.writeBytes(this.yAddr, BitConverter.GetBytes((float)this.quaternion.Y));
-				mem.writeBytes(this.zAddr, BitConverter.GetBytes((float)this.quaternion.Z));
-				mem.writeBytes(this.wAddr, BitConverter.GetBytes((float)this.quaternion.W));
+
+				byte[] bytearray = new byte[16];
+				Array.Copy(BitConverter.GetBytes((float)this.quaternion.X), bytearray, 4);
+				Array.Copy(BitConverter.GetBytes((float)this.quaternion.Y), 0, bytearray, 4, 4);
+				Array.Copy(BitConverter.GetBytes((float)this.quaternion.Z), 0, bytearray, 8, 4);
+				Array.Copy(BitConverter.GetBytes((float)this.quaternion.W), 0, bytearray, 12, 4);
+				mem.writeBytes(this.rotationAddress, bytearray);
 			}
 
 			private void Rotate(Quaternion sourceOldCnj, Quaternion sourceNew)
@@ -716,12 +717,9 @@ namespace ConceptMatrix.ViewModel
 
 			private void GetAddress()
 			{
-				if (this.xAddr == null)
+				if (this.rotationAddress == null)
 				{
-					this.xAddr = SimplePoseViewModel.GetAddressString(BoneName, "X");
-					this.yAddr = SimplePoseViewModel.GetAddressString(BoneName, "Y");
-					this.zAddr = SimplePoseViewModel.GetAddressString(BoneName, "Z");
-					this.wAddr = SimplePoseViewModel.GetAddressString(BoneName, "W");
+					this.rotationAddress = SimplePoseViewModel.GetAddressString(BoneName, "X");
 				}
 			}
 		}

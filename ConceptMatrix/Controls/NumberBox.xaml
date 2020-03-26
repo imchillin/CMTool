@@ -9,7 +9,7 @@
 	<Grid x:Name="Content">
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition/>
-			<ColumnDefinition MinWidth="32"/>
+			<ColumnDefinition Width="50"/>
 		</Grid.ColumnDefinitions>
 
 		<Slider
@@ -28,7 +28,7 @@
 			x:Name="InputBox"
 			Grid.Row="0"
 			Grid.Column="1"
-			Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}"
+			Text="{Binding Text, UpdateSourceTrigger=PropertyChanged, FallbackValue=000.00}"
 			Margin="3"
 			Style="{StaticResource MaterialDesignTextBox}"
 			LostFocus="OnLostFocus"
