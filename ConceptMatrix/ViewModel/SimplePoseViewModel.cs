@@ -321,22 +321,22 @@ namespace ConceptMatrix.ViewModel
 			this.ParentBone("SpineB", "BreastRight");
 
 			// clothes tree
-			this.ParentBone("SpineA", "ClothBackALeft");
+			this.ParentBone("Waist", "ClothBackALeft");
 			this.ParentBone("ClothBackALeft", "ClothBackBLeft");
 			this.ParentBone("ClothBackBLeft", "ClothBackCLeft");
-			this.ParentBone("SpineA", "ClothBackARight");
+			this.ParentBone("Waist", "ClothBackARight");
 			this.ParentBone("ClothBackARight", "ClothBackBRight");
 			this.ParentBone("ClothBackBRight", "ClothBackCRight");
-			this.ParentBone("SpineA", "ClothSideALeft");
+			this.ParentBone("Waist", "ClothSideALeft");
 			this.ParentBone("ClothSideALeft", "ClothSideBLeft");
 			this.ParentBone("ClothSideBLeft", "ClothSideCLeft");
-			this.ParentBone("SpineA", "ClothSideARight");
+			this.ParentBone("Waist", "ClothSideARight");
 			this.ParentBone("ClothSideARight", "ClothSideBRight");
 			this.ParentBone("ClothSideBRight", "ClothSideCRight");
-			this.ParentBone("SpineA", "ClothFrontALeft");
+			this.ParentBone("Waist", "ClothFrontALeft");
 			this.ParentBone("ClothFrontALeft", "ClothFrontBLeft");
 			this.ParentBone("ClothFrontBLeft", "ClothFrontCLeft");
-			this.ParentBone("SpineA", "ClothFrontARight");
+			this.ParentBone("Waist", "ClothFrontARight");
 			this.ParentBone("ClothFrontARight", "ClothFrontBRight");
 			this.ParentBone("ClothFrontBRight", "ClothFrontCRight");
 
@@ -488,12 +488,10 @@ namespace ConceptMatrix.ViewModel
 			this.ParentBone("FootRight", "ToesRight");
 
 
-			this.ParentBone("Waist", "SheatheLeft");
-			this.ParentBone("Waist", "SheatheRight");
+			this.ParentBone("SpineB", "SheatheLeft");
+			this.ParentBone("SpineB", "SheatheRight");
 			this.ParentBone("SheatheLeft", "HolsterLeft");
 			this.ParentBone("SheatheRight", "HolsterRight");
-
-			// usually on Spine B
 			this.ParentBone("SheatheLeft", "ScabbardLeft");
 			this.ParentBone("SheatheRight", "ScabbardRight");
 

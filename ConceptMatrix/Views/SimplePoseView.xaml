@@ -124,7 +124,7 @@
 					<ImageBrush ImageSource="/ConceptMatrix;component/Resources/PoseCharacterClothesBackground.png" Opacity="0.15" Stretch="Uniform"/>
 				</Canvas.Background>
 
-				<local:SimplePoseBoneView Canvas.Left="120" Canvas.Top="170" BoneName="SpineA"/>
+				<local:SimplePoseBoneView Canvas.Left="120" Canvas.Top="202" BoneName="Waist"/>
 				<local:SimplePoseBoneView  Canvas.Left="70" Canvas.Top="110" BoneName="PauldronLeft"/>
 				<local:SimplePoseBoneView  Canvas.Left="170" Canvas.Top="110" BoneName="PauldronRight"/>
 				<local:SimplePoseBoneView  Canvas.Left="140" Canvas.Top="230" BoneName="ClothFrontARight"/>
