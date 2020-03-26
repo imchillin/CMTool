@@ -67,6 +67,7 @@
 				<local:SimplePoseBoneView Canvas.Left="156" Canvas.Top="460" BoneName="FootRight"/>
 				<local:SimplePoseBoneView Canvas.Left="73" Canvas.Top="480" BoneName="ToesLeft"/>
 				<local:SimplePoseBoneView Canvas.Left="164" Canvas.Top="480" BoneName="ToesRight"/>
+
 			</Canvas>
 		</Viewbox>
 
@@ -77,27 +78,45 @@
 					<ImageBrush ImageSource="/ConceptMatrix;component/Resources/PoseCharacterClothesBackground.png" Opacity="0.15" Stretch="Uniform"/>
 				</Canvas.Background>
 
-				<local:SimplePoseBoneView Canvas.Left="118" Canvas.Top="170" BoneName="SpineA"/>
+				<local:SimplePoseBoneView Canvas.Left="120" Canvas.Top="170" BoneName="SpineA"/>
 				<local:SimplePoseBoneView  Canvas.Left="70" Canvas.Top="110" BoneName="PauldronLeft"/>
 				<local:SimplePoseBoneView  Canvas.Left="170" Canvas.Top="110" BoneName="PauldronRight"/>
 				<local:SimplePoseBoneView  Canvas.Left="140" Canvas.Top="230" BoneName="ClothFrontARight"/>
-				<local:SimplePoseBoneView  Canvas.Left="150" Canvas.Top="330" BoneName="ClothFrontBRight"/>
-				<local:SimplePoseBoneView  Canvas.Left="160" Canvas.Top="420" BoneName="ClothFrontCRight"/>
+				<local:SimplePoseBoneView  Canvas.Left="165" Canvas.Top="307" BoneName="ClothFrontBRight"/>
+				<local:SimplePoseBoneView  Canvas.Left="176" Canvas.Top="404" BoneName="ClothFrontCRight"/>
 				<local:SimplePoseBoneView  Canvas.Left="100" Canvas.Top="230" BoneName="ClothFrontALeft"/>
-				<local:SimplePoseBoneView  Canvas.Left="90" Canvas.Top="330" BoneName="ClothFrontBLeft"/>
-				<local:SimplePoseBoneView  Canvas.Left="80" Canvas.Top="420" BoneName="ClothFrontCLeft"/>
+				<local:SimplePoseBoneView  Canvas.Left="74" Canvas.Top="307" BoneName="ClothFrontBLeft"/>
+				<local:SimplePoseBoneView  Canvas.Left="64" Canvas.Top="404" BoneName="ClothFrontCLeft"/>
 				<local:SimplePoseBoneView  Canvas.Left="160" Canvas.Top="230" BoneName="ClothSideARight"/>
-				<local:SimplePoseBoneView  Canvas.Left="180" Canvas.Top="320" BoneName="ClothSideBRight"/>
-				<local:SimplePoseBoneView  Canvas.Left="200" Canvas.Top="400" BoneName="ClothSideCRight"/>
+				<local:SimplePoseBoneView  Canvas.Left="194" Canvas.Top="292" BoneName="ClothSideBRight"/>
+				<local:SimplePoseBoneView  Canvas.Left="214" Canvas.Top="389" BoneName="ClothSideCRight"/>
 				<local:SimplePoseBoneView  Canvas.Left="80" Canvas.Top="230" BoneName="ClothSideALeft"/>
-				<local:SimplePoseBoneView  Canvas.Left="60" Canvas.Top="320" BoneName="ClothSideBLeft"/>
-				<local:SimplePoseBoneView  Canvas.Left="40" Canvas.Top="400" BoneName="ClothSideCLeft"/>
+				<local:SimplePoseBoneView  Canvas.Left="46" Canvas.Top="292" BoneName="ClothSideBLeft"/>
+				<local:SimplePoseBoneView  Canvas.Left="26" Canvas.Top="389" BoneName="ClothSideCLeft"/>
 				<local:SimplePoseBoneView  Canvas.Left="130" Canvas.Top="250" BoneName="ClothBackARight"/>
-				<local:SimplePoseBoneView  Canvas.Left="140" Canvas.Top="350" BoneName="ClothBackBRight"/>
-				<local:SimplePoseBoneView  Canvas.Left="150" Canvas.Top="440" BoneName="ClothBackCRight"/>
+				<local:SimplePoseBoneView  Canvas.Left="130" Canvas.Top="307" BoneName="ClothBackBRight"/>
+				<local:SimplePoseBoneView  Canvas.Left="130" Canvas.Top="422" BoneName="ClothBackCRight"/>
 				<local:SimplePoseBoneView  Canvas.Left="110" Canvas.Top="250" BoneName="ClothBackALeft"/>
-				<local:SimplePoseBoneView  Canvas.Left="100" Canvas.Top="350" BoneName="ClothBackBLeft"/>
-				<local:SimplePoseBoneView  Canvas.Left="90" Canvas.Top="440" BoneName="ClothBackCLeft"/>
+				<local:SimplePoseBoneView  Canvas.Left="110" Canvas.Top="307" BoneName="ClothBackBLeft"/>
+				<local:SimplePoseBoneView  Canvas.Left="110" Canvas.Top="422" BoneName="ClothBackCLeft"/>
+
+				<local:SimplePoseBoneView  Canvas.Left="120" Canvas.Top="54" BoneName="HairA"/>
+				<local:SimplePoseBoneView  Canvas.Left="120" Canvas.Top="83" BoneName="HairB"/>
+				<local:SimplePoseBoneView  Canvas.Left="100" Canvas.Top="54" BoneName="HairFrontLeft"/>
+				<local:SimplePoseBoneView  Canvas.Left="140" Canvas.Top="54" BoneName="HairFrontRight"/>
+
+				<!--<local:SimplePoseBoneView Canvas.Left="80" Canvas.Top="160" BoneName="HolsterLeft"/>
+				<local:SimplePoseBoneView Canvas.Left="160" Canvas.Top="160" BoneName="HolsterRight"/>-->
+				<local:SimplePoseBoneView Canvas.Left="90" Canvas.Top="184" BoneName="SheatheLeft"/>
+				<local:SimplePoseBoneView Canvas.Left="149" Canvas.Top="184" BoneName="SheatheRight"/>
+				<!--<local:SimplePoseBoneView Canvas.Left="97" Canvas.Top="170" BoneName="ScabbardLeft"/>
+				<local:SimplePoseBoneView Canvas.Left="142" Canvas.Top="170" BoneName="ScabbardLeft"/>-->
+
+				<local:SimplePoseBoneView Canvas.Left="90" Canvas.Top="346" BoneName="PoleynLeft"/>
+				<local:SimplePoseBoneView Canvas.Left="149" Canvas.Top="346" BoneName="PoleynRight"/>
+
+				<local:SimplePoseBoneView Canvas.Left="57" Canvas.Top="170" BoneName="CouterLeft"/>
+				<local:SimplePoseBoneView Canvas.Left="183" Canvas.Top="170" BoneName="CouterRight"/>
 
 			</Canvas>
 		</Viewbox>

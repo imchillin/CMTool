@@ -323,8 +323,6 @@ namespace ConceptMatrix.ViewModel
 			this.ParentBone("Neck", "Head");
 			this.ParentBone("SpineB", "BreastLeft");
 			this.ParentBone("SpineB", "BreastRight");
-			this.ParentBone("SpineB", "ScabbardLeft");
-			this.ParentBone("SpineB", "ScabbardRight");
 
 			// clothes tree
 			this.ParentBone("SpineA", "ClothBackALeft");
@@ -362,7 +360,7 @@ namespace ConceptMatrix.ViewModel
 			this.ParentBone("Head", "HairFrontLeft");
 			this.ParentBone("Head", "HairFrontRight");
 			this.ParentBone("Head", "HairA");
-			this.ParentBone("Head", "HairB");
+			this.ParentBone("HairA", "HairB");
 			this.ParentBone("Head", "CheekLeft");
 			this.ParentBone("Head", "CheekRight");
 			this.ParentBone("Head", "LipsLeft");
@@ -480,10 +478,6 @@ namespace ConceptMatrix.ViewModel
 
 			// lower half bones tree
 			this.ParentBone("Root", "Waist");
-			this.ParentBone("Waist", "SheatheLeft");
-			this.ParentBone("Waist", "SheatheRight");
-			this.ParentBone("Waist", "HolsterLeft");
-			this.ParentBone("Waist", "HolsterRight");
 			this.ParentBone("Waist", "LegLeft");
 			this.ParentBone("CalfLeft", "KneeLeft");
 			this.ParentBone("KneeLeft", "PoleynLeft");
@@ -496,6 +490,16 @@ namespace ConceptMatrix.ViewModel
 			this.ParentBone("LegRight", "CalfRight");
 			this.ParentBone("CalfRight", "FootRight");
 			this.ParentBone("FootRight", "ToesRight");
+
+
+			this.ParentBone("Waist", "SheatheLeft");
+			this.ParentBone("Waist", "SheatheRight");
+			this.ParentBone("SheatheLeft", "HolsterLeft");
+			this.ParentBone("SheatheRight", "HolsterRight");
+
+			// usually on Spine B
+			this.ParentBone("SheatheLeft", "ScabbardLeft");
+			this.ParentBone("SheatheRight", "ScabbardRight");
 
 			// tail bones tree
 			this.ParentBone("Waist", "TailA");

@@ -13,6 +13,6 @@
 			 IsEnabled="{Binding IsEnabled}">
 	<Grid>
 		<Ellipse Stroke="Gray" StrokeThickness="1" Fill="#404040" x:Name="BackgroundElipse"/>
-		<Ellipse Fill="Gray" Margin="3" x:Name="ForegroundElipse" Visibility="Hidden"/>
+		<Ellipse Fill="Gray" Margin="4" x:Name="ForegroundElipse" Visibility="Hidden"/>
 	</Grid>
 </UserControl>
