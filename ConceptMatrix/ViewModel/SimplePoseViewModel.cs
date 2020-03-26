@@ -295,6 +295,12 @@ namespace ConceptMatrix.ViewModel
 				}
 			}
 
+			// special case for viera lips
+			// disable lip bones if vierra, as they have their own set of lip bones...
+			this.GetBone("LipLowerA").IsEnabled = !this.IsViera;
+			this.GetBone("LipUpperB").IsEnabled = !this.IsViera;
+			this.GetBone("LipLowerB").IsEnabled = !this.IsViera;
+
 			// Set all mirror bones
 			foreach (Bone bone in this.bones.Values)
 			{
@@ -405,8 +411,8 @@ namespace ConceptMatrix.ViewModel
 			this.ParentBone("Head", "HrothWhiskersRight");
 
 			// Facebone Viera tree
-			this.ParentBone("Head", "VieraLipLowerA");
-			this.ParentBone("Head", "VieraLipLowerB");
+			this.ParentBone("Jaw", "VieraLipLowerA");
+			this.ParentBone("Jaw", "VieraLipLowerB");
 			this.ParentBone("Head", "VieraLipUpperB");
 			this.ParentBone("Head", "VieraEar01ALeft");
 			this.ParentBone("Head", "VieraEar02ALeft");

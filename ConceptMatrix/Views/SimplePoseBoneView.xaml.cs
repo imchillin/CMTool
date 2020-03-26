@@ -195,6 +195,12 @@ namespace ConceptMatrix.Views
 
 		private void UpdateState()
 		{
+			if (this.bone == null)
+			{
+				SetState(Brushes.Red, 1);
+				return;
+			}
+
 			bool selected = this.viewModel.GetIsBoneSelected(this.bone);
 			bool parentSelected = this.viewModel.GetIsBoneParentsSelected(this.bone);
 			bool hovered = this.viewModel.GetIsBoneParentsHovered(this.bone);
