@@ -4,6 +4,7 @@ using ConceptMatrix.Utility;
 using PropertyChanged;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Reflection;
 using System.Windows.Media.Media3D;
 
@@ -59,12 +60,6 @@ namespace ConceptMatrix.ViewModel
 			set;
 		}
 
-		public bool Mirror
-		{
-			get;
-			set;
-		}
-
 		public Bone CurrentBone 
 		{ 
 			get
@@ -86,11 +81,6 @@ namespace ConceptMatrix.ViewModel
 					value.GetRotation();
 
 				this.currentBone = value;
-
-				if (this.currentBone != null)
-				{
-					this.currentBone.EnableMirror = this.Mirror;
-				}
 			}
 		}
 
@@ -192,7 +182,7 @@ namespace ConceptMatrix.ViewModel
 			GenerateBones();
 		}
 
-		public static string GetBoneName(string name, bool flip, bool mirror)
+		public static string GetBoneName(string name, bool flip)
 		{
 			if (flip)
 			{
@@ -202,15 +192,6 @@ namespace ConceptMatrix.ViewModel
 
 				if (name.Contains("Right"))
 					return name.Replace("Right", "Left");
-			}
-
-			if (mirror)
-			{
-				// make all bones left side bones
-				if (name.Contains("Right"))
-				{
-					return name.Replace("Right", "Left");
-				}
 			}
 
 			return name;
@@ -268,27 +249,25 @@ namespace ConceptMatrix.ViewModel
 			PropertyInfo[] boneProperties = typeof(BonesOffsets).GetProperties();
 			foreach (PropertyInfo boneProperty in boneProperties)
 			{
-				string[] parts = boneProperty.Name.Split('_');
-
-				if (parts.Length != 2)
+				if (!boneProperty.Name.Contains("_X"))
 					continue;
 
-				string boneName = parts[0];
+				string boneName = boneProperty.Name.Replace("_X", string.Empty);
 
-				if (!this.bones.ContainsKey(boneName))
-				{
-					this.bones[boneName] = new Bone(boneName);
+				if (this.bones.ContainsKey(boneName))
+					throw new Exception("Duplicate bone: \"" + boneName + "\"");
+				
+				this.bones[boneName] = new Bone(boneName);
 
-					// bit of a hack...
-					if (boneName.Contains("Hroth"))
-						this.bones[boneName].IsEnabled = this.IsHrothgar;
+				// bit of a hack...
+				if (boneName.Contains("Hroth"))
+					this.bones[boneName].IsEnabled = this.IsHrothgar;
 
-					if (boneName.Contains("Viera"))
-						this.bones[boneName].IsEnabled = this.IsViera;
+				if (boneName.Contains("Viera"))
+					this.bones[boneName].IsEnabled = this.IsViera;
 
-					if (boneName.Contains("Tail"))
-						this.bones[boneName].IsEnabled = this.HasTail;
-				}
+				if (boneName.Contains("Tail"))
+					this.bones[boneName].IsEnabled = this.HasTail;
 			}
 
 			// special case for viera lips
@@ -296,19 +275,6 @@ namespace ConceptMatrix.ViewModel
 			this.GetBone("LipLowerA").IsEnabled = !this.IsViera;
 			this.GetBone("LipUpperB").IsEnabled = !this.IsViera;
 			this.GetBone("LipLowerB").IsEnabled = !this.IsViera;
-
-			// Set all mirror bones
-			foreach (Bone bone in this.bones.Values)
-			{
-				string mirrorBoneName = GetBoneName(bone.BoneName, true, false);
-
-				// no mirror
-				if (mirrorBoneName == bone.BoneName)
-					continue;
-
-				bone.Mirror = this.GetBone(mirrorBoneName);
-			}
-
 
 			// now that we have all the bones, we make a hierarchy
 			// torso tree
@@ -533,12 +499,12 @@ namespace ConceptMatrix.ViewModel
 		}
 
 		// Get the bone address string from the Settings.Instance.Character.Body.Bones lookup.
-		private static string GetAddressString(string boneName, string axis)
+		private static string GetAddressString(string boneName)
 		{
 			Mem mem = MemoryManager.Instance.MemLib;
 			CharacterOffsets c = Settings.Instance.Character;
 
-			string propertyName = boneName + "_" + axis.ToUpper();
+			string propertyName = boneName + "_X";
 			PropertyInfo property = c.Body.Bones.GetType().GetProperty(propertyName);
 
 			if (property == null)
@@ -548,65 +514,26 @@ namespace ConceptMatrix.ViewModel
 			return MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, c.Body.Base, offsetString);
 		}
 
-		public class Bone : BaseModel
+		public class Bone : INotifyPropertyChanged
 		{
 			public string BoneName{ get; private set; }
 			public bool IsEnabled { get; set; } = true;
 
 			public List<Bone> Children = new List<Bone>();
 			public Bone Parent;
-			public Bone Mirror;
 
-			private Quaternion oldQuaternion = Quaternion.Identity;
-			private Quaternion quaternion = Quaternion.Identity;
-			private Vector3D euler;
+			private QuaternionMemory rotationMemory;
 
-			private string rotationAddress;
+			public event PropertyChangedEventHandler PropertyChanged;
 
 			public Bone(string boneName)
 			{
 				this.BoneName = boneName;
+
+				
 			}
 
-			public double X
-			{
-				get
-				{
-					return this.euler.X;
-				}
-
-				set
-				{
-					this.euler.X = value;
-				}
-			}
-
-			public double Y
-			{
-				get
-				{
-					return this.euler.Y;
-				}
-
-				set
-				{
-					this.euler.Y = value;
-
-				}
-			}
-
-			public double Z
-			{
-				get
-				{
-					return this.euler.Z;
-				}
-
-				set
-				{
-					this.euler.Z = value;
-				}
-			}
+			public Quaternion Rotation { get; set; }
 
 			public string Tooltip
 			{
@@ -616,32 +543,23 @@ namespace ConceptMatrix.ViewModel
 				}
 			}
 
-			public bool EnableMirror { get; set; }
-
-			public void GetRotation(bool suppressPropertyChanged = false)
+			public QuaternionMemory RotationMemory
 			{
-				if (!this.IsEnabled)
-					return;
-
-				Mem mem = MemoryManager.Instance.MemLib;
-
-				GetAddress();
-				byte[] bytearray = mem.readBytes(this.rotationAddress, 16);
-
-				this.quaternion.X = BitConverter.ToSingle(bytearray, 0);
-				this.quaternion.Y = BitConverter.ToSingle(bytearray, 4);
-				this.quaternion.Z = BitConverter.ToSingle(bytearray, 8);
-				this.quaternion.W = BitConverter.ToSingle(bytearray, 12);
-				this.euler = this.quaternion.ToEulerAngles();
-
-				if (!suppressPropertyChanged)
+				get
 				{
-					this.X = euler.X;
-					this.Y = euler.Y;
-					this.Z = euler.Z;
-				}
+					if (this.rotationMemory == null)
+					{
+						UIntPtr address = MemoryManager.Instance.MemLib.get64bitCode(SimplePoseViewModel.GetAddressString(BoneName));
+						this.rotationMemory = new QuaternionMemory(address);
+					}
 
-				this.oldQuaternion = this.quaternion;
+					return this.rotationMemory;
+				}
+			}
+
+			public void GetRotation()
+			{
+				this.Rotation = this.RotationMemory.Get();
 			}
 
 			public void SetRotation()
@@ -649,49 +567,17 @@ namespace ConceptMatrix.ViewModel
 				if (!this.IsEnabled)
 					return;
 
-				this.quaternion = this.euler.ToQuaternion();
-
-				if (this.oldQuaternion == this.quaternion)
+				if (this.RotationMemory.Value == this.Rotation)
 					return;
 
-				if (this.EnableMirror && this.Mirror != null)
-				{
-					this.Mirror.GetRotation(true);
-
-					this.Mirror.quaternion = this.quaternion;
-
-					// ???
-					
-					this.Mirror.euler = this.Mirror.quaternion.ToEulerAngles();
-					this.Mirror.SetRotation();
-
-					throw new NotImplementedException();
-				}
-
-				this.WriteRotation();
-
-				Quaternion oldConj = this.oldQuaternion;
-				oldConj.Conjugate();
+				Quaternion oldrotation = this.RotationMemory.Set(this.Rotation);
+				Quaternion oldRotationConjugate = oldrotation;
+				oldRotationConjugate.Conjugate();
 
 				foreach (Bone child in this.Children)
 				{
-					child.Rotate(oldConj, this.quaternion);
+					child.Rotate(oldRotationConjugate, this.Rotation);
 				}
-
-				this.oldQuaternion = this.quaternion;
-			}
-
-			private void WriteRotation()
-			{
-				Mem mem = MemoryManager.Instance.MemLib;
-				GetAddress();
-
-				byte[] bytearray = new byte[16];
-				Array.Copy(BitConverter.GetBytes((float)this.quaternion.X), bytearray, 4);
-				Array.Copy(BitConverter.GetBytes((float)this.quaternion.Y), 0, bytearray, 4, 4);
-				Array.Copy(BitConverter.GetBytes((float)this.quaternion.Z), 0, bytearray, 8, 4);
-				Array.Copy(BitConverter.GetBytes((float)this.quaternion.W), 0, bytearray, 12, 4);
-				mem.writeBytes(this.rotationAddress, bytearray);
 			}
 
 			private void Rotate(Quaternion sourceOldCnj, Quaternion sourceNew)
@@ -699,13 +585,9 @@ namespace ConceptMatrix.ViewModel
 				if (!this.IsEnabled)
 					return;
 
-				this.GetRotation(true);
-
-				this.oldQuaternion = this.quaternion;
-				this.quaternion = sourceNew * (sourceOldCnj * this.quaternion);
-				this.euler = this.quaternion.ToEulerAngles();
-
-				this.WriteRotation();
+				this.Rotation = this.RotationMemory.Get();
+				this.Rotation = sourceNew * (sourceOldCnj * this.Rotation);
+				this.RotationMemory.Set(this.Rotation);
 
 				foreach (Bone child in this.Children)
 				{
@@ -713,11 +595,75 @@ namespace ConceptMatrix.ViewModel
 				}
 			}
 
-			private void GetAddress()
+			public abstract class Memory<T>
 			{
-				if (this.rotationAddress == null)
+				protected UIntPtr address;
+
+				private bool isRead = false;
+
+				public Memory(UIntPtr address)
 				{
-					this.rotationAddress = SimplePoseViewModel.GetAddressString(BoneName, "X");
+					this.address = address;
+				}
+
+				public T Value { get; private set; }
+
+				/// <summary>
+				/// Gets the current value from the process.
+				/// </summary
+				public T Get()
+				{
+					this.isRead = true;
+					T newValue = this.Read(MemoryManager.Instance.MemLib);
+					this.Value = newValue;
+					return newValue;
+				}
+
+				/// <summary>
+				/// Writes a new value to the process, and returns the old value.
+				/// </summary
+				public T Set(T value)
+				{
+					if (!isRead)
+						this.Value = Get();
+
+					T oldValue = this.Value;
+					this.Write(value, MemoryManager.Instance.MemLib);
+					this.Value = value;
+					return oldValue;
+				}
+
+				protected abstract T Read( Mem memory);
+				protected abstract void Write(T value, Mem memory);
+			}
+
+			public class QuaternionMemory : Memory<Quaternion>
+			{
+				public QuaternionMemory(UIntPtr address)
+					: base(address)
+				{
+				}
+
+				protected override Quaternion Read(Mem memory)
+				{
+					byte[] bytearray = memory.readBytes(this.address, 16);
+
+					Quaternion value = new Quaternion();
+					value.X = BitConverter.ToSingle(bytearray, 0);
+					value.Y = BitConverter.ToSingle(bytearray, 4);
+					value.Z = BitConverter.ToSingle(bytearray, 8);
+					value.W = BitConverter.ToSingle(bytearray, 12);
+					return value;
+				}
+
+				protected override void Write(Quaternion value, Mem memory)
+				{
+					byte[] bytearray = new byte[16];
+					Array.Copy(BitConverter.GetBytes((float)value.X), bytearray, 4);
+					Array.Copy(BitConverter.GetBytes((float)value.Y), 0, bytearray, 4, 4);
+					Array.Copy(BitConverter.GetBytes((float)value.Z), 0, bytearray, 8, 4);
+					Array.Copy(BitConverter.GetBytes((float)value.W), 0, bytearray, 12, 4);
+					memory.writeBytes(this.address, bytearray);
 				}
 			}
 		}

@@ -18,7 +18,6 @@ namespace ConceptMatrix.Views
 
 		private SimplePoseViewModel viewModel;
 		private SimplePoseViewModel.Bone bone;
-		private SimplePoseViewModel.Bone mirrorBone;
 
 		private static Dictionary<SimplePoseViewModel.Bone, List<SimplePoseBoneView>> boneViews = new Dictionary<SimplePoseViewModel.Bone, List<SimplePoseBoneView>>();
 		private List<Line> linesToChildren = new List<Line>();
@@ -93,16 +92,6 @@ namespace ConceptMatrix.Views
 				{
 					if (this.Parent is Canvas c1 && childView.Parent is Canvas c2 && c1 == c2)
 					{
-						// Special cases for mirrored skeletons...
-						if (this.viewModel.Mirror)
-						{
-							if (this.BoneName.EndsWith("Left") && childView.BoneName.EndsWith("Right"))
-								continue;
-
-							if (this.BoneName.EndsWith("Right") && childView.BoneName.EndsWith("Left"))
-								continue;
-						}
-
 						Line line = new Line();
 						line.SnapsToDevicePixels = true;
 						line.StrokeThickness = 1;
@@ -125,9 +114,9 @@ namespace ConceptMatrix.Views
 		{
 			this.UpdateState();
 
-			if (e.PropertyName == nameof(this.viewModel.FlipSides) || e.PropertyName == nameof(this.viewModel.Mirror))
+			if (e.PropertyName == nameof(this.viewModel.FlipSides))
 			{
-				this.SetBone(SimplePoseViewModel.GetBoneName(this.BoneName, this.viewModel.FlipSides, this.viewModel.Mirror));
+				this.SetBone(SimplePoseViewModel.GetBoneName(this.BoneName, this.viewModel.FlipSides));
 			}
 		}
 

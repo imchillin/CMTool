@@ -121,6 +121,9 @@
     <Compile Include="Controls\NumberBox.xaml.cs">
       <DependentUpon>NumberBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\QuaternionEditor.xaml.cs">
+      <DependentUpon>QuaternionEditor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\CharacterDetails.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -243,6 +246,10 @@
       <DependentUpon>SaveChooseWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Controls\NumberBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\QuaternionEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
