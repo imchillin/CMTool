@@ -1,8 +1,6 @@
-﻿using ConceptMatrix.Resx;
-using ConceptMatrix.ViewModel;
+﻿using ConceptMatrix.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.Resources;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;

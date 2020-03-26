@@ -12,6 +12,54 @@
 			 Unloaded="OnUnloaded"
 			 IsVisibleChanged="OnIsVisibleChanged"
 			 d:DesignHeight="512" d:DesignWidth="1024">
+	
+	<!--
+	Missing Bones:
+		ShieldLeft
+		ShieldRight
+		ExtendedHair
+		ExtendedHairA
+		ExtendedHairB
+		ExtendedHairC
+		ExtendedHairD
+		ExtendedHairE
+		ExtendedHairF
+		ExtendedHairG
+		ExtendedHairH
+		ExtendedHairI
+		ExtendedHairJ
+		ExtendedHairK
+		ExtendedHairL
+		ExtendedMet
+		ExtendedMetA
+		ExtendedMetB
+		ExtendedMetC
+		ExtendedMetD
+		ExtendedMetE
+		ExtendedMetF
+		ExtendedMetG
+		ExtendedMetH
+		ExtendedMetI
+		ExtendedMetJ
+		ExtendedMetK
+		ExtendedMetL
+		ExtendedMetM
+		ExtendedMetN
+		ExtendedMetO
+		ExtendedMetP
+		ExtendedMetQ
+		ExtendedMetR
+		ExtendedTop
+		ExtendedTopA
+		ExtendedTopB
+		ExtendedTopC
+		ExtendedTopD
+		ExtendedTopE
+		ExtendedTopF
+		ExtendedTopG
+		ExtendedTopH
+		ExtendedTopI
+	-->
 
 	<Grid x:Name="ContentArea">
 		<Grid.RowDefinitions>
@@ -324,10 +372,6 @@
 				<local:SimplePoseBoneView Canvas.Left="102" Canvas.Top="104" BoneName="VieraEar04BRight"/>
 			</Canvas>
 		</Viewbox>
-
-		<ScrollViewer Grid.Column="4" Grid.Row="1" HorizontalScrollBarVisibility="Hidden">
-			<StackPanel x:Name="ExtraBonesList"/>
-		</ScrollViewer>
 
 		<Grid Grid.Column="5" Grid.RowSpan="2">
 			<StackPanel>
