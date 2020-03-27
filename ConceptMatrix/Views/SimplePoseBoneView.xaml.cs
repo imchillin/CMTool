@@ -38,7 +38,7 @@ namespace ConceptMatrix.Views
 		public SimplePoseBoneView()
 		{
 			InitializeComponent();
-			this.OnDataContextChanged(null, default);
+			this.BindDataContext();
 		}
 
 		public static bool HasView(SimplePoseViewModel.Bone bone)
@@ -47,6 +47,11 @@ namespace ConceptMatrix.Views
 		}
 
 		private void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+		{
+			this.BindDataContext();
+		}
+
+		private void BindDataContext()
 		{
 			try
 			{
