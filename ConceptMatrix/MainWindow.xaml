@@ -20,8 +20,9 @@
 
     <Window.Resources>
         <Style x:Key="MenuLevel2" BasedOn="{StaticResource MetroTabItem}" TargetType="{x:Type TabItem}">
-            <Setter Property="mah:ControlsHelper.HeaderFontSize" Value="24"></Setter>
+            <Setter Property="mah:ControlsHelper.HeaderFontSize" Value="19.5"></Setter>
         </Style>
+
     </Window.Resources>
 
     <Grid>
