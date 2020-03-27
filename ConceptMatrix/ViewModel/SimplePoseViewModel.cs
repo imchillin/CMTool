@@ -621,13 +621,16 @@ namespace ConceptMatrix.ViewModel
 				if (this.RotationMemory.Value == this.Rotation)
 					return;
 
-				Quaternion oldrotation = this.RotationMemory.Set(this.Rotation);
+				Quaternion newRotation = this.Rotation;
+
+				Quaternion oldrotation = this.rotationMemory.Get();
+				this.RotationMemory.Set(newRotation);
 				Quaternion oldRotationConjugate = oldrotation;
 				oldRotationConjugate.Conjugate();
 
 				foreach (Bone child in this.Children)
 				{
-					child.Rotate(oldRotationConjugate, this.Rotation);
+					child.Rotate(oldRotationConjugate, newRotation);
 				}
 			}
 
@@ -637,7 +640,12 @@ namespace ConceptMatrix.ViewModel
 					return;
 
 				this.Rotation = this.RotationMemory.Get();
-				this.Rotation = sourceNew * (sourceOldCnj * this.Rotation);
+				Quaternion newRotation = sourceNew * (sourceOldCnj * this.Rotation);
+
+				if (this.Rotation == newRotation)
+					return;
+
+				this.Rotation = newRotation;
 				this.RotationMemory.Set(this.Rotation);
 
 				foreach (Bone child in this.Children)
@@ -649,8 +657,6 @@ namespace ConceptMatrix.ViewModel
 			public abstract class Memory<T>
 			{
 				protected UIntPtr address;
-
-				private bool isRead = false;
 
 				public Memory(UIntPtr address)
 				{
@@ -664,7 +670,6 @@ namespace ConceptMatrix.ViewModel
 				/// </summary
 				public T Get()
 				{
-					this.isRead = true;
 					T newValue = this.Read(MemoryManager.Instance.MemLib);
 					this.Value = newValue;
 					return newValue;
@@ -673,15 +678,11 @@ namespace ConceptMatrix.ViewModel
 				/// <summary>
 				/// Writes a new value to the process, and returns the old value.
 				/// </summary
-				public T Set(T value)
+				public void Set(T value)
 				{
-					if (!isRead)
-						this.Value = Get();
-
 					T oldValue = this.Value;
 					this.Write(value, MemoryManager.Instance.MemLib);
 					this.Value = value;
-					return oldValue;
 				}
 
 				protected abstract T Read( Mem memory);
