@@ -6,9 +6,9 @@ using System.Windows.Media.Media3D;
 
 namespace ConceptMatrix.ThreeD
 {
-    public class LineRenderer : ModelVisual3D
+    public class Line : ModelVisual3D
     {
-        public LineRenderer()
+        public Line()
         {
             _mesh = new MeshGeometry3D();
             _model = new GeometryModel3D();
@@ -25,14 +25,14 @@ namespace ConceptMatrix.ThreeD
             DependencyProperty.Register(
                 "Color",
                 typeof(Color),
-                typeof(LineRenderer),
+                typeof(Line),
                 new PropertyMetadata(
                     Colors.White,
                     OnColorChanged));
 
         private static void OnColorChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
         {
-            ((LineRenderer)sender).SetColor((Color) args.NewValue);
+            ((Line)sender).SetColor((Color) args.NewValue);
         }
 
         private void SetColor(Color color)
@@ -56,14 +56,14 @@ namespace ConceptMatrix.ThreeD
             DependencyProperty.Register(
                 "Thickness",
                 typeof(double),
-                typeof(LineRenderer),
+                typeof(Line),
                 new PropertyMetadata(
                     1.0,
                     OnThicknessChanged));
 
         private static void OnThicknessChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
         {
-            ((LineRenderer)sender).GeometryDirty();
+            ((Line)sender).GeometryDirty();
         }
 
         public double Thickness
@@ -76,14 +76,14 @@ namespace ConceptMatrix.ThreeD
             DependencyProperty.Register(
                 "Points",
                 typeof(Point3DCollection),
-                typeof(LineRenderer),
+                typeof(Line),
                 new PropertyMetadata(
                     null,
                     OnPointsChanged));
 
         private static void OnPointsChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args)
         {
-            ((LineRenderer)sender).GeometryDirty();
+            ((Line)sender).GeometryDirty();
         }
 
         public Point3DCollection Points
@@ -240,6 +240,32 @@ namespace ConceptMatrix.ThreeD
             transform.Push(Matrix3D.Identity);
 
             WireframeHelper(model, transform);
+        }
+
+        public Point3D? NearestPoint2D(Point3D cameraPoint)
+        {
+            double closest = double.MaxValue;
+            Point3D? closestPoint = null;
+
+            Matrix3D matrix;
+            if (!MathUtils.ToViewportTransform(this, out matrix))
+                return null;
+
+            MatrixTransform3D transform = new MatrixTransform3D(matrix);
+
+            foreach (Point3D point in this.Points)
+            {
+                Point3D cameraSpacePoint = transform.Transform(point);
+
+                Vector3D dir = cameraPoint - cameraSpacePoint;
+                if (dir.Length < closest)
+                {
+                    closest = dir.Length;
+                    closestPoint = point;
+                }
+            }
+
+            return closestPoint;
         }
 
         private void WireframeHelper(Model3D model, Matrix3DStack matrixStack)

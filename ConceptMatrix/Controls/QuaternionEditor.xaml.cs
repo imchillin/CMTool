@@ -34,13 +34,6 @@ namespace ConceptMatrix.Controls
 		private bool eulerLock = false;
 		private RotationGizmo rotationGizmo;
 		private bool mouseDown = false;
-		private Point lastMousePosition;
-
-		[DllImport("User32.dll")]
-		private static extern bool SetCursorPos(int X, int Y);
-
-		[DllImport("User32.dll")]
-		private static extern bool ShowCursor(bool show);
 
 		public QuaternionEditor()
 		{
@@ -138,17 +131,14 @@ namespace ConceptMatrix.Controls
 
 		private void OnViewportMouseDown(object sender, MouseButtonEventArgs e)
 		{
-			this.lastMousePosition = e.GetPosition(this.Viewport);
 			this.mouseDown = true;
 			Mouse.Capture(this.Viewport);
-			ShowCursor(false);
 		}
 
 		private void OnViewportMouseUp(object sender, MouseButtonEventArgs e)
 		{
 			this.mouseDown = false;
 			Mouse.Capture(null);
-			ShowCursor(true);
 			this.rotationGizmo.Hover(null);
 		}
 
@@ -163,16 +153,10 @@ namespace ConceptMatrix.Controls
 			}
 			else
 			{
-				Vector delta = mousePosition - this.lastMousePosition;
-				this.rotationGizmo.Drag(delta);
+				Point3D mousePos3D = new Point3D(mousePosition.X, mousePosition.Y, 0);
 
-				Point relativePoint = this.Viewport.TransformToAncestor(this).Transform(new Point(0, 0));
-				Point pt = new Point(relativePoint.X + this.Viewport.ActualWidth / 2, relativePoint.Y + this.Viewport.ActualHeight / 2);
-				pt = this.PointToScreen(pt);
-				SetCursorPos((int)pt.X, (int)pt.Y);
+				this.rotationGizmo.Drag(mousePos3D);
 			}
-
-			this.lastMousePosition = mousePosition;
 		}
 
 		private void OnViewportMouseLeave(object sender, MouseEventArgs e)
@@ -228,12 +212,12 @@ namespace ConceptMatrix.Controls
 				return false;
 			}
 
-			public void Drag(Vector delta)
+			public void Drag(Point3D mousePosition)
 			{
 				if (this.hoveredGizmo == null)
 					return;
 
-				this.hoveredGizmo.Drag(delta);
+				this.hoveredGizmo.Drag(mousePosition);
 			}
 		}
 
@@ -243,6 +227,8 @@ namespace ConceptMatrix.Controls
 			private Cylinder cylinder;
 			private bool hovered;
 			private Color color;
+
+			private Point3D? lastPoint;
 
 			public AxisGizmo(Color color, Vector3D axis)
 			{
@@ -278,6 +264,7 @@ namespace ConceptMatrix.Controls
 					{
 						this.circle.Color = color;
 						this.circle.Thickness = 1;
+						this.lastPoint = null;
 					}
 					else
 					{
@@ -287,9 +274,37 @@ namespace ConceptMatrix.Controls
 				}
 			}
 
-			public void Drag(Vector delta)
+			public void Drag(Point3D mousePosition)
 			{
-				Console.WriteLine(">> " + delta);
+				Point3D? point = this.circle.NearestPoint2D(mousePosition);
+
+				if (point == null)
+					return;
+
+				point = this.circle.TransformToAncestor(this).Transform((Point3D)point);
+
+				if (this.lastPoint == null)
+				{
+					this.lastPoint = point;
+					return;
+				}
+				else
+				{
+					Vector3D axis = new Vector3D(1, 0, 0);
+
+					Vector3D from = (Vector3D)this.lastPoint;
+					Vector3D to = (Vector3D)point;
+
+
+
+					double angle = Vector3D.AngleBetween(from, to);
+
+					Vector3D cross = Vector3D.CrossProduct(from, to);
+					if (Vector3D.DotProduct(axis, cross) < 0)
+						angle = -angle;
+
+					Console.WriteLine(angle);
+				}
 			}
 		}
 	}

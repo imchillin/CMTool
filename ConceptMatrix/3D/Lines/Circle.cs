@@ -3,7 +3,7 @@
 	using System;
 	using System.Windows.Media.Media3D;
 
-	public class Circle : LineRenderer
+	public class Circle : Line
 	{
 		private double radius;
 

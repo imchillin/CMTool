@@ -18,6 +18,11 @@ namespace ConceptMatrix.ThreeD
             return degrees * (Math.PI / 180.0);
         }
 
+        public static double RadiansToDegrees(double radians)
+        {
+            return radians * (180 / Math.PI);
+        }
+
         private static Matrix3D GetViewMatrix(ProjectionCamera camera)
         {
             Debug.Assert(camera != null,
@@ -173,6 +178,24 @@ namespace ConceptMatrix.ThreeD
                       0, -scaleY, 0, 0,
                       0, 0, 1, 0,
                 offsetX, offsetY, 0, 1);
+        }
+
+        public static bool ToViewportTransform(DependencyObject visual, out Matrix3D matrix)
+        {
+            matrix = Matrix3D.Identity;
+
+            Viewport3DVisual viewportVisual;
+            Matrix3D toWorld = GetWorldTransformationMatrix(visual, out viewportVisual);
+
+            bool success;
+            Matrix3D toViewport = TryWorldToViewportTransform(viewportVisual, out success);
+
+            if (!success)
+                return false;
+
+            toWorld.Append(toViewport);
+            matrix = toWorld;
+            return true;
         }
 
         /// <summary>
@@ -435,5 +458,14 @@ namespace ConceptMatrix.ThreeD
         public static readonly Vector3D XAxis = new Vector3D(1, 0, 0);
         public static readonly Vector3D YAxis = new Vector3D(0, 1, 0);
         public static readonly Vector3D ZAxis = new Vector3D(0, 0, 1);
+
+
+        public static Point3D NearestPointOnRay(Point3D rayOrigin, Vector3D rayDirection, Point3D pnt)
+        {
+            rayDirection.Normalize();
+            Vector3D v = pnt - rayOrigin;
+            double d = Vector3D.DotProduct(v, rayDirection);
+            return rayOrigin + rayDirection * d;
+        }
     }
 }
