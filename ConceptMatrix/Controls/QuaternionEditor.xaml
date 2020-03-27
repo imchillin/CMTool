@@ -25,12 +25,12 @@
 		</Grid>
 		
 		<Label Grid.Row="1" Grid.Column="0" Content="X" VerticalContentAlignment="Center"/>
-		<local:NumberBox Grid.Row="1" Grid.Column="1" Value="{Binding EulerX, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TickFrequency="0.5" Minimum="0" Maximum="360"/>
+		<local:NumberBox Grid.Row="1" Grid.Column="1" Value="{Binding EulerX, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TickFrequency="{Binding TickFrequency}" Minimum="0" Maximum="360"/>
 
 		<Label Grid.Row="2" Grid.Column="0" Content="Y" VerticalContentAlignment="Center"/>
-		<local:NumberBox Grid.Row="2" Grid.Column="1" Value="{Binding EulerY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TickFrequency="0.5" Minimum="0" Maximum="360"/>
+		<local:NumberBox Grid.Row="2" Grid.Column="1" Value="{Binding EulerY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TickFrequency="{Binding TickFrequency}" Minimum="0" Maximum="360"/>
 
 		<Label Grid.Row="3" Grid.Column="0" Content="Z" VerticalContentAlignment="Center"/>
-		<local:NumberBox Grid.Row="3" Grid.Column="1" Value="{Binding EulerZ, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TickFrequency="0.5" Minimum="0" Maximum="360"/>
+		<local:NumberBox Grid.Row="3" Grid.Column="1" Value="{Binding EulerZ, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TickFrequency="{Binding TickFrequency}" Minimum="0" Maximum="360"/>
 	</Grid>
 </UserControl>

@@ -29,16 +29,31 @@ namespace ConceptMatrix.Controls
 	public partial class QuaternionEditor : UserControl, INotifyPropertyChanged
 	{
 		public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(nameof(Value), typeof(Quaternion), typeof(QuaternionEditor), new FrameworkPropertyMetadata(new PropertyChangedCallback(OnValueChanged)));
+		public static readonly DependencyProperty TickFrequencyProperty = DependencyProperty.Register(nameof(TickFrequency), typeof(double), typeof(QuaternionEditor));
 
 		private Vector3D euler;
 		private bool eulerLock = false;
 		private RotationGizmo rotationGizmo;
 		private bool mouseDown = false;
 
+		public double TickFrequency
+		{
+			get
+			{
+				return (double)this.GetValue(TickFrequencyProperty);
+			}
+			set
+			{
+				this.SetValue(TickFrequencyProperty, value);
+			}
+		}
+
 		public QuaternionEditor()
 		{
 			InitializeComponent();
 			this.Content.DataContext = this;
+
+			this.TickFrequency = 0.5;
 
 			this.rotationGizmo = new RotationGizmo(this);
 			this.Viewport.Children.Add(this.rotationGizmo);
@@ -169,7 +184,7 @@ namespace ConceptMatrix.Controls
 
 		private void OnViewportMouseWheel(object sender, MouseWheelEventArgs e)
 		{
-			double delta = e.Delta > 0 ? 1 : -1;
+			double delta = e.Delta > 0 ? TickFrequency : -TickFrequency;
 
 			if (Keyboard.IsKeyDown(Key.LeftShift))
 				delta *= 10;
@@ -228,7 +243,7 @@ namespace ConceptMatrix.Controls
 			{
 				if (this.hoveredGizmo == null)
 					return;
-				
+
 				Vector3D angleDelta = this.hoveredGizmo.Drag(mousePosition);
 				this.ApplyDelta(angleDelta);
 			}

@@ -14,6 +14,7 @@
 	public partial class NumberBox : UserControl, INotifyPropertyChanged
 	{
 		public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(nameof(Value), typeof(double), typeof(NumberBox), new FrameworkPropertyMetadata(new PropertyChangedCallback(OnValueChanged)));
+		public static readonly DependencyProperty TickFrequencyProperty = DependencyProperty.Register(nameof(TickFrequency), typeof(double), typeof(NumberBox));
 
 		private string inputString;
 
@@ -23,7 +24,18 @@
 			this.Content.DataContext = this;
 		}
 
-		public double TickFrequency { get; set; } = 0.5f;
+		public double TickFrequency
+		{
+			get
+			{
+				return (double)this.GetValue(TickFrequencyProperty);
+			}
+			set
+			{
+				this.SetValue(TickFrequencyProperty, value);
+			}
+		}
+
 		public double Minimum { get; set; } = 0;
 		public double Maximum { get; set; } = 100;
 		public bool Wrap { get; set; } = true;
