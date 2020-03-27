@@ -117,6 +117,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="3D\Cylinder.cs" />
+    <Compile Include="3D\Lines\CircleRenderer.cs" />
+    <Compile Include="3D\MathUtils.cs" />
+    <Compile Include="3D\Matrix3DStack.cs" />
+    <Compile Include="3D\Lines\LineRenderer.cs" />
+    <Compile Include="3D\Sphere.cs" />
     <Compile Include="Commands\RefreshEntitiesCommand.cs" />
     <Compile Include="Controls\NumberBox.xaml.cs">
       <DependentUpon>NumberBox.xaml</DependentUpon>

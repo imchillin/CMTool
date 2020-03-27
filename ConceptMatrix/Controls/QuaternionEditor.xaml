@@ -19,6 +19,45 @@
 			<RowDefinition/>
 		</Grid.RowDefinitions>
 
+		<Viewport3D Grid.Row="0" Grid.ColumnSpan="2" x:Name="Viewport" MouseLeave="OnViewportMouseLeave" MouseMove="OnViewportMouseMove">
+			<Viewport3D.Camera>
+				<PerspectiveCamera x:Name="rotationCamera" Position="1.5,1.1,1.5" LookDirection="-4,-3,-4" FieldOfView="45" />
+			</Viewport3D.Camera>
+			<Viewport3D.Children>
+				<ModelVisual3D>
+					<ModelVisual3D.Content>
+						<DirectionalLight Color="#FFFFFF" Direction="-1,-1,-1" />
+					</ModelVisual3D.Content>
+				</ModelVisual3D>
+				<!--<ModelVisual3D>
+					<ModelVisual3D.Content>
+						<GeometryModel3D>
+							<GeometryModel3D.Geometry>
+								<MeshGeometry3D Positions="2,-0,2 -2,0,-2 -2,-0,2 2,-0,2 2,0,-2 -2,0,-2 "
+													TriangleIndices="0 1 2 3 4 5 "
+													TextureCoordinates="1,1 0,0 0,1 1,1 1,0 0,0 "
+													Normals="0,0,1 0,0,1 0,0,1 0,0,1 0,0,1 0,0,1 " />
+							</GeometryModel3D.Geometry>
+							<GeometryModel3D.Material>
+								<DiffuseMaterial>
+									<DiffuseMaterial.Brush>
+										<DrawingBrush Viewport="0,0,0.1,0.1" TileMode="Tile">
+											<DrawingBrush.Drawing>
+												<DrawingGroup>
+													<GeometryDrawing Geometry="M0,0.1 L 0,0 0.1,0 0.1,0.01 0.01,0.01 0.01,0.1Z" Brush="#FF666666"/>
+												</DrawingGroup>
+											</DrawingBrush.Drawing>
+										</DrawingBrush>
+									</DiffuseMaterial.Brush>
+								</DiffuseMaterial>
+							</GeometryModel3D.Material>
+						</GeometryModel3D>
+					</ModelVisual3D.Content>
+				</ModelVisual3D>-->
+			</Viewport3D.Children>
+		</Viewport3D>
+
+
 		<Label Grid.Row="1" Grid.Column="0" Content="X" VerticalContentAlignment="Center"/>
 		<local:NumberBox Grid.Row="1" Grid.Column="1" Value="{Binding EulerX, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TickFrequency="0.5" Minimum="0" Maximum="360"/>
 
