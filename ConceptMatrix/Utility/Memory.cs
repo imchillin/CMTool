@@ -552,6 +552,25 @@ namespace ConceptMatrix.Utility
         }
 
         /// <summary>
+        /// Reads up to `length ` bytes from an address.
+        /// </summary>
+        /// <param name="length">The maximum bytes to read.</param>
+        /// <param name="file">path and name of ini file.</param>
+        /// <returns>The bytes read or null</returns>
+        public byte[] readBytes(UIntPtr address, long length, string file = "")
+        {
+            byte[] memory = new byte[length];
+
+            if (!ReadProcessMemory(pHandle, address, memory, (UIntPtr)length, IntPtr.Zero))
+            {
+                Array.Clear(memory, 0, memory.Length);
+                return memory;
+            }
+
+            return memory;
+        }
+
+        /// <summary>
         /// Read a float value from an address.
         /// </summary>
         /// <param name="code">address, module + pointer + offset, module + offset OR label in .ini file.</param>

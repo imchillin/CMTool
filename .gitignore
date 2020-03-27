@@ -6,3 +6,4 @@ ConceptMatrixUpdater/obj
 packages/
 ConceptMatrixUpdater/bin/
 lib/SaintCoinach
+*.user

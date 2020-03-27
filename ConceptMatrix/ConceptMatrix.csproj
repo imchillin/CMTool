@@ -42,7 +42,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
-    <NoWarn>CS0067</NoWarn>
+    <NoWarn>CS0067;</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -54,7 +54,7 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
     <DebugSymbols>true</DebugSymbols>
-    <NoWarn>CS0067</NoWarn>
+    <NoWarn>CS0067;</NoWarn>
     <DocumentationFile>
     </DocumentationFile>
   </PropertyGroup>
@@ -117,7 +117,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="3D\Cylinder.cs" />
+    <Compile Include="3D\Lines\Circle.cs" />
+    <Compile Include="3D\MathUtils.cs" />
+    <Compile Include="3D\Matrix3DStack.cs" />
+    <Compile Include="3D\Lines\Line.cs" />
+    <Compile Include="3D\Sphere.cs" />
     <Compile Include="Commands\RefreshEntitiesCommand.cs" />
+    <Compile Include="Controls\NumberBox.xaml.cs">
+      <DependentUpon>NumberBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\QuaternionEditor.xaml.cs">
+      <DependentUpon>QuaternionEditor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\CharacterDetails.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -134,6 +146,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FlyOutStrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resx\UISimplePoseStrings.Designer.cs">
+      <DependentUpon>UISimplePoseStrings.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Resx\UIPoseStrings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -161,11 +178,13 @@
     <Compile Include="Utility\MemoryManager.cs" />
     <Compile Include="Utility\SaveSettings.cs" />
     <Compile Include="Utility\Settings.cs" />
+    <Compile Include="Utility\Strings.cs" />
     <Compile Include="Utility\ThreadWriting.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\CharacterDetailsViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\PaletteSelectorViewModel.cs" />
+    <Compile Include="ViewModel\SimplePoseViewModel.cs" />
     <Compile Include="Views\AboutView.xaml.cs">
       <DependentUpon>AboutView.xaml</DependentUpon>
     </Compile>
@@ -184,6 +203,9 @@
     <Compile Include="Views\CharacterDetailsView4.xaml.cs">
       <DependentUpon>CharacterDetailsView4.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SimplePoseView.xaml.cs">
+      <DependentUpon>SimplePoseView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EmoteFlyOut.xaml.cs">
       <DependentUpon>EmoteFlyOut.xaml</DependentUpon>
     </Compile>
@@ -198,6 +220,9 @@
     </Compile>
     <Compile Include="Views\RotationView.xaml.cs">
       <DependentUpon>RotationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SimplePoseBoneView.xaml.cs">
+      <DependentUpon>SimplePoseBoneView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SpecialControl.xaml.cs">
       <DependentUpon>SpecialControl.xaml</DependentUpon>
@@ -226,6 +251,14 @@
     <Compile Include="Windows\SaveChooseWindow.xaml.cs">
       <DependentUpon>SaveChooseWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\NumberBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\QuaternionEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -262,6 +295,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\SimplePoseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\EmoteFlyOut.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -279,6 +316,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\RotationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SimplePoseBoneView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -351,6 +392,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resx\FlyOutStrings.zh.resx" />
     <EmbeddedResource Include="Resx\MiscStrings.zh.resx" />
+    <EmbeddedResource Include="Resx\UISimplePoseStrings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UISimplePoseStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resx\UIPoseStrings.de.resx" />
     <EmbeddedResource Include="Resx\UIPoseStrings.fr.resx" />
     <EmbeddedResource Include="Resx\UIPoseStrings.ja.resx" />
@@ -428,6 +473,16 @@
     <Content Include="OffsetSettingsCN.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\PoseCharacterHrothFaceBackground.png" />
+    <Resource Include="Resources\PoseCharacterVieraEars02Background.png" />
+    <Resource Include="Resources\PoseCharacterVieraEars03Background.png" />
+    <Resource Include="Resources\PoseCharacterVieraEars04Background.png" />
+    <Resource Include="Resources\PoseCharacterVieraEars01Background.png" />
+    <Resource Include="Resources\PoseCharacterTailBackground.png" />
+    <Resource Include="Resources\PoseCharacterFaceBackground.png" />
+    <Resource Include="Resources\PoseCharacterHandBackground.png" />
+    <Resource Include="Resources\PoseCharacterClothesBackground.png" />
+    <Resource Include="Resources\PoseCharacterBackground.png" />
     <Resource Include="Resources\body.png" />
     <Resource Include="Resources\clothes.png" />
     <Resource Include="Resources\equip.png" />

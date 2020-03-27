@@ -36,6 +36,10 @@
             <TabItem Header="{Binding Source={x:Static resx:UIStringsContent.Equipment}}" Style="{DynamicResource MenuLevel2}">
                 <Views:CharacterDetailsView2 Margin="0,4,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
             </TabItem>
+            <TabItem Header="{Binding Source={x:Static resx:UISimplePoseStrings.SimplePose}}" Style="{DynamicResource MenuLevel2}">
+                <Views:SimplePoseView DataContext="{Binding CharacterDetails}"/>
+            </TabItem>
+            
             <TabItem Header="{Binding Source={x:Static resx:UIStringsContent.PosingMatrix}}" Style="{DynamicResource MenuLevel2}">
                 <Views:CharacterDetailsView5 Margin="0,4,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
             </TabItem>
