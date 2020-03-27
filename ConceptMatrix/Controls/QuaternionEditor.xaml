@@ -19,7 +19,7 @@
 			<RowDefinition/>
 		</Grid.RowDefinitions>
 
-		<Grid Grid.Row="0" Grid.ColumnSpan="2" MouseDown="OnViewportMouseDown" MouseUp="OnViewportMouseUp" MouseLeave="OnViewportMouseLeave" MouseMove="OnViewportMouseMove">
+		<Grid Grid.Row="0" Grid.ColumnSpan="2" MouseDown="OnViewportMouseDown" MouseUp="OnViewportMouseUp" MouseLeave="OnViewportMouseLeave" MouseMove="OnViewportMouseMove" MouseWheel="OnViewportMouseWheel">
 			<Rectangle Fill="Transparent"/>
 			<Viewport3D x:Name="Viewport"/>
 		</Grid>

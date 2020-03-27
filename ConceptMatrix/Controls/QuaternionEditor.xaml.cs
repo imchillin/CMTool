@@ -40,7 +40,7 @@ namespace ConceptMatrix.Controls
 			InitializeComponent();
 			this.Content.DataContext = this;
 
-			this.rotationGizmo = new RotationGizmo();
+			this.rotationGizmo = new RotationGizmo(this);
 			this.Viewport.Children.Add(this.rotationGizmo);
 
 			this.Viewport.Camera = new PerspectiveCamera(new Point3D(1.5, 1.1, 1.5), new Vector3D(-4, -3, -4), new Vector3D(0, 1, 0), 45);
@@ -154,7 +154,7 @@ namespace ConceptMatrix.Controls
 			{
 				Point3D mousePos3D = new Point3D(mousePosition.X, mousePosition.Y, 0);
 
-				this.rotationGizmo.Drag(mousePos3D, this);
+				this.rotationGizmo.Drag(mousePos3D);
 			}
 		}
 
@@ -167,12 +167,25 @@ namespace ConceptMatrix.Controls
 			this.mouseDown = false;
 		}
 
+		private void OnViewportMouseWheel(object sender, MouseWheelEventArgs e)
+		{
+			double delta = e.Delta > 0 ? 1 : -1;
+
+			if (Keyboard.IsKeyDown(Key.LeftShift))
+				delta *= 10;
+
+			this.rotationGizmo.Scroll(delta);
+		}
+
 		private class RotationGizmo : ModelVisual3D
 		{
 			private AxisGizmo hoveredGizmo;
+			private QuaternionEditor target;
 
-			public RotationGizmo()
+			public RotationGizmo(QuaternionEditor target)
 			{
+				this.target = target;
+
 				Sphere sphere = new Sphere();
 				sphere.Radius = 0.48;
 				Color c = Colors.Black;
@@ -211,21 +224,31 @@ namespace ConceptMatrix.Controls
 				return false;
 			}
 
-			public void Drag(Point3D mousePosition, QuaternionEditor target)
+			public void Drag(Point3D mousePosition)
+			{
+				if (this.hoveredGizmo == null)
+					return;
+				
+				Vector3D angleDelta = this.hoveredGizmo.Drag(mousePosition);
+				this.ApplyDelta(angleDelta);
+			}
+
+			public void Scroll(double delta)
 			{
 				if (this.hoveredGizmo == null)
 					return;
 
-				Vector3D angleDelta = this.hoveredGizmo.Drag(mousePosition);
+				Vector3D angleDelta = this.hoveredGizmo.Axis * delta;
+				this.ApplyDelta(angleDelta);
+			}
 
-				if (angleDelta.X != 0)
-					target.EulerX += angleDelta.X;
+			private void ApplyDelta(Vector3D angleEuler)
+			{
+				// special case for LHS to RHS conversion, I think.
+				angleEuler.Z *= -1;
 
-				if (angleDelta.Y != 0)
-					target.EulerY += angleDelta.Y;
-
-				if (angleDelta.Z != 0)
-					target.EulerZ -= angleDelta.Z;
+				Quaternion angle = angleEuler.ToQuaternion();
+				this.target.Value *= angle;
 			}
 		}
 
