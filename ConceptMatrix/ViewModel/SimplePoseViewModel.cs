@@ -14,11 +14,13 @@ using static ConceptMatrix.ViewModel.SimplePoseViewModel.Bone;
 
 namespace ConceptMatrix.ViewModel
 {
-	public class SimplePoseViewModel : BaseModel
+	public class SimplePoseViewModel : INotifyPropertyChanged
 	{
 		private Dictionary<string, Bone> bones;
 		private Bone currentBone;
 		private bool enabled;
+
+		public event PropertyChangedEventHandler PropertyChanged;
 
 		public CharacterDetails Character { get; set; }
 
@@ -132,7 +134,7 @@ namespace ConceptMatrix.ViewModel
 				if (this.Character == null)
 					return false;
 
-				return this.Character.Race.value == 8 && this.Character.TailType.value == 1;
+				return this.Character.Race.value == 8 && this.Character.TailType.value <= 1;
 			}
 		}
 
@@ -177,6 +179,9 @@ namespace ConceptMatrix.ViewModel
 		{
 			get
 			{
+				if (this.Character == null)
+					return false;
+
 				return this.Character.Race.value == 7;
 			}
 		}
@@ -213,10 +218,17 @@ namespace ConceptMatrix.ViewModel
 
 		public void Refresh()
 		{
-			// Trigger a binding update since the character may have changed
-			CharacterDetails details = this.Character;
-			this.Character = null;
-			this.Character = details;
+			GenerateBones();
+
+			this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.Character)));
+			this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.Bones)));
+			this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.HasTail)));
+			this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.IsViera)));
+			this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.IsVieraEars01)));
+			this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.IsVieraEars02)));
+			this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.IsVieraEars03)));
+			this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.IsVieraEars04)));
+			this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.IsHrothgar)));
 		}
 
 		public bool GetIsBoneSelected(Bone bone)

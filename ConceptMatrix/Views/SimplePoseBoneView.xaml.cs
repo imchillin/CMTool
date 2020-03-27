@@ -118,6 +118,10 @@ namespace ConceptMatrix.Views
 			{
 				this.SetBone(SimplePoseViewModel.GetBoneName(this.BoneName, this.viewModel.FlipSides));
 			}
+			if (e.PropertyName == nameof(this.viewModel.Bones))
+			{
+				this.SetBone(this.BoneName);
+			}
 		}
 
 		private void SetBone(string name)
