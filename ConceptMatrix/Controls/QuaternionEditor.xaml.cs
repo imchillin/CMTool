@@ -60,7 +60,6 @@ namespace ConceptMatrix.Controls
 					this.euler = value.ToEulerAngles();
 
 				this.SetValue(ValueProperty, value);
-
 				this.rotationGizmo.Transform = new RotateTransform3D(new QuaternionRotation3D(value));
 			}
 		}
@@ -155,7 +154,7 @@ namespace ConceptMatrix.Controls
 			{
 				Point3D mousePos3D = new Point3D(mousePosition.X, mousePosition.Y, 0);
 
-				this.rotationGizmo.Drag(mousePos3D);
+				this.rotationGizmo.Drag(mousePos3D, this);
 			}
 		}
 
@@ -212,12 +211,21 @@ namespace ConceptMatrix.Controls
 				return false;
 			}
 
-			public void Drag(Point3D mousePosition)
+			public void Drag(Point3D mousePosition, QuaternionEditor target)
 			{
 				if (this.hoveredGizmo == null)
 					return;
 
-				this.hoveredGizmo.Drag(mousePosition);
+				Vector3D angleDelta = this.hoveredGizmo.Drag(mousePosition);
+
+				if (angleDelta.X != 0)
+					target.EulerX += angleDelta.X;
+
+				if (angleDelta.Y != 0)
+					target.EulerY += angleDelta.Y;
+
+				if (angleDelta.Z != 0)
+					target.EulerZ -= angleDelta.Z;
 			}
 		}
 
@@ -230,9 +238,14 @@ namespace ConceptMatrix.Controls
 
 			private Point3D? lastPoint;
 
+			public readonly Vector3D Axis;
+
 			public AxisGizmo(Color color, Vector3D axis)
 			{
+				this.Axis = axis;
 				this.color = color;
+
+				Vector3D rotationAxis = new Vector3D(axis.Z, 0, axis.X);
 
 				this.circle = new Circle();
 				this.circle.Thickness = 1;
@@ -274,28 +287,33 @@ namespace ConceptMatrix.Controls
 				}
 			}
 
-			public void Drag(Point3D mousePosition)
+			public void StartDrag(Point3D mousePosition)
+			{
+				this.lastPoint = null;
+			}
+
+			public Vector3D Drag(Point3D mousePosition)
 			{
 				Point3D? point = this.circle.NearestPoint2D(mousePosition);
 
 				if (point == null)
-					return;
+					return new Vector3D();
 
 				point = this.circle.TransformToAncestor(this).Transform((Point3D)point);
 
 				if (this.lastPoint == null)
 				{
 					this.lastPoint = point;
-					return;
+					return new Vector3D();
 				}
 				else
 				{
-					Vector3D axis = new Vector3D(1, 0, 0);
+					Vector3D axis = new Vector3D(0, 1, 0);
 
 					Vector3D from = (Vector3D)this.lastPoint;
 					Vector3D to = (Vector3D)point;
 
-
+					this.lastPoint = null;
 
 					double angle = Vector3D.AngleBetween(from, to);
 
@@ -303,7 +321,7 @@ namespace ConceptMatrix.Controls
 					if (Vector3D.DotProduct(axis, cross) < 0)
 						angle = -angle;
 
-					Console.WriteLine(angle);
+					return this.Axis * (angle * 2);
 				}
 			}
 		}
