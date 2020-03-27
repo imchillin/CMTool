@@ -283,6 +283,7 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<float> CamPanX { get; set; }
         [JsonIgnore] public Address<float> CamPanY { get; set; }
         [JsonIgnore] public Address<byte> DataHead { get; set; }
+        [JsonIgnore] public Address<byte> ActorID { get; set; }
         [JsonIgnore] public float RotateX { get; set; }
         [JsonIgnore] public float RotateY { get; set; }
         [JsonIgnore] public float RotateZ { get; set; }
@@ -1536,6 +1537,7 @@ namespace ConceptMatrix.Models
 
         public CharacterDetails()
         {
+            ActorID = new Address<byte>();
             CamAngleX = new Address<float>();
             CamAngleY = new Address<float>();
             CamPanX = new Address<float>();

@@ -22,6 +22,7 @@ namespace ConceptMatrix.ViewModel
         public static bool CheckingGPose = false;
         public bool InGpose = false;
         public int WritingCheck = 0;
+        public static int OldActorID = 0;
         public static string baseAddr;
         public static Views.CharacterDetailsView Viewtime;
 
@@ -6915,7 +6916,13 @@ namespace ConceptMatrix.ViewModel
                 if (!CharacterDetails.Weather.freeze) CharacterDetails.Weather.value = (byte)m.readByte(GAS(MemoryManager.Instance.WeatherAddress, c.Weather));
                 if (!CharacterDetails.ForceWeather.freeze) CharacterDetails.ForceWeather.value = (ushort)m.read2Byte(GAS(MemoryManager.Instance.GposeFilters, c.ForceWeather));
                 CharacterDetails.TimeControl.value = (int)m.readInt(GAS(MemoryManager.Instance.TimeAddress, c.TimeControl));
+                var ActorIdentfication = (byte)m.readByte(GAS(baseAddr, c.ActorID));
+                if (ActorIdentfication != OldActorID)
+                {
+                    CharacterDetails.ActorID.value = ActorIdentfication;
 
+                    //do check here if Editmode is enabled then read new bone values.
+                }
                 if (!CharacterDetails.HeadPiece.Activated) CharacterDetails.HeadSlot.value = CharacterDetails.HeadPiece.value + "," + CharacterDetails.HeadV.value + "," + CharacterDetails.HeadDye.value;
                 if (!CharacterDetails.Chest.Activated) CharacterDetails.BodySlot.value = CharacterDetails.Chest.value + "," + CharacterDetails.ChestV.value + "," + CharacterDetails.ChestDye.value;
                 if (!CharacterDetails.Arms.Activated) CharacterDetails.ArmSlot.value = CharacterDetails.Arms.value + "," + CharacterDetails.ArmsV.value + "," + CharacterDetails.ArmsDye.value;

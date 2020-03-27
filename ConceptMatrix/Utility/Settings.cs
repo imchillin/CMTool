@@ -55,6 +55,7 @@ namespace ConceptMatrix.Utility
     [Serializable]
     public struct CharacterOffsets
     {
+        public string ActorID { get; set; }
         public string AltCheckPlayerFrozen { get; set; }
         public string EmoteIsPlayerFrozen { get; set; }
         public string CharacterRender { get; set; }

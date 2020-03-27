@@ -22,6 +22,7 @@
   <CharacterRenderOffset2>431156</CharacterRenderOffset2><!--Done-->
   <Character>
     <Name>30</Name>
+    <ActorID>34</ActorID>
     <FCTag>17D2</FCTag>
     <Title>18B2</Title>
     <JobIco>18D6</JobIco>
