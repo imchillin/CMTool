@@ -402,7 +402,7 @@
 				</GroupBox>
 
 				<GroupBox Header="{Binding CurrentBone.Tooltip, FallbackValue=''}" Margin="6"  Padding="4" IsEnabled="{Binding IsEnabled}">
-					<controls:QuaternionEditor Value="{Binding CurrentBone.Rotation, Mode=TwoWay}"/>
+					<controls:QuaternionEditor Value="{Binding CurrentBone.Rotation, Mode=TwoWay}" CameraRotation="{Binding CameraRotation}"/>
 				</GroupBox>
 			</StackPanel>
 		</Grid>

@@ -30,6 +30,7 @@ namespace ConceptMatrix.Controls
 	{
 		public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(nameof(Value), typeof(Quaternion), typeof(QuaternionEditor), new FrameworkPropertyMetadata(new PropertyChangedCallback(OnValueChanged)));
 		public static readonly DependencyProperty TickFrequencyProperty = DependencyProperty.Register(nameof(TickFrequency), typeof(double), typeof(QuaternionEditor));
+		public static readonly DependencyProperty CameraRotationProperty = DependencyProperty.Register(nameof(CameraRotation), typeof(Quaternion), typeof(QuaternionEditor), new FrameworkPropertyMetadata(new PropertyChangedCallback(OnCameraRotationChanged)));
 
 		private Vector3D euler;
 		private bool eulerLock = false;
@@ -58,7 +59,7 @@ namespace ConceptMatrix.Controls
 			this.rotationGizmo = new RotationGizmo(this);
 			this.Viewport.Children.Add(this.rotationGizmo);
 
-			this.Viewport.Camera = new PerspectiveCamera(new Point3D(1.5, 1.1, 1.5), new Vector3D(-4, -3, -4), new Vector3D(0, 1, 0), 45);
+			this.Viewport.Camera = new PerspectiveCamera(new Point3D(0, 0, -2.5), new Vector3D(0, 0, 1), new Vector3D(0, 1, 0), 45);
 		}
 
 		[AlsoNotifyFor(nameof(EulerX), nameof(EulerY), nameof(EulerZ))]
@@ -76,6 +77,20 @@ namespace ConceptMatrix.Controls
 
 				this.SetValue(ValueProperty, value);
 				this.rotationGizmo.Transform = new RotateTransform3D(new QuaternionRotation3D(value));
+			}
+		}
+
+		public Quaternion CameraRotation
+		{
+			get
+			{
+				return (Quaternion)this.GetValue(CameraRotationProperty);
+			}
+
+			set
+			{
+				this.SetValue(CameraRotationProperty, value);
+				this.Viewport.Camera.Transform = new RotateTransform3D(new QuaternionRotation3D(value));
 			}
 		}
 
@@ -140,6 +155,17 @@ namespace ConceptMatrix.Controls
 				quaternionEditor.PropertyChanged.Invoke(sender, new PropertyChangedEventArgs(nameof(EulerX)));
 				quaternionEditor.PropertyChanged.Invoke(sender, new PropertyChangedEventArgs(nameof(EulerY)));
 				quaternionEditor.PropertyChanged.Invoke(sender, new PropertyChangedEventArgs(nameof(EulerZ)));
+			}
+		}
+
+		
+		private static void OnCameraRotationChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+		{
+			if (sender is QuaternionEditor quaternionEditor)
+			{
+				quaternionEditor.Viewport.Camera.Transform = new RotateTransform3D(new QuaternionRotation3D(quaternionEditor.CameraRotation));
+
+				quaternionEditor.PropertyChanged.Invoke(sender, new PropertyChangedEventArgs(nameof(CameraRotation)));
 			}
 		}
 

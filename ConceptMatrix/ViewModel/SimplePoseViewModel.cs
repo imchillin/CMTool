@@ -1,12 +1,16 @@
 ﻿using ConceptMatrix.Models;
 using ConceptMatrix.Resx;
+using ConceptMatrix.ThreeD;
 using ConceptMatrix.Utility;
 using PropertyChanged;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
+using System.Threading;
+using System.Windows;
 using System.Windows.Media.Media3D;
+using static ConceptMatrix.ViewModel.SimplePoseViewModel.Bone;
 
 namespace ConceptMatrix.ViewModel
 {
@@ -42,6 +46,10 @@ namespace ConceptMatrix.ViewModel
 					mem.MemLib.writeMemory(mem.SkeletonAddress3, "bytes", "0x90 0x90 0x90 0x90");
 					mem.MemLib.writeMemory(mem.PhysicsAddress, "bytes", "0x90 0x90 0x90 0x90");
 					mem.MemLib.writeMemory(mem.PhysicsAddress2, "bytes", "0x90 0x90 0x90");
+
+					ThreadStart ts = new ThreadStart(this.WatchCamera);
+					Thread t = new Thread(ts);
+					t.Start();
 				}
 				else
 				{
@@ -85,6 +93,12 @@ namespace ConceptMatrix.ViewModel
 		}
 
 		public Bone MouseOverBone { get; set; }
+
+		public Quaternion CameraRotation
+		{
+			get;
+			set;
+		}
 
 		[DependsOn(nameof(Character))]
 		public bool HasTail
@@ -514,6 +528,45 @@ namespace ConceptMatrix.ViewModel
 			return MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, c.Body.Base, offsetString);
 		}
 
+		private void WatchCamera()
+		{
+			string addressStr = MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CamAngleX);
+			UIntPtr address = MemoryManager.Instance.MemLib.get64bitCode(addressStr);
+			FloatMemory xMem = new FloatMemory(address);
+
+			addressStr = MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CamAngleY);
+			address = MemoryManager.Instance.MemLib.get64bitCode(addressStr);
+			FloatMemory yMem = new FloatMemory(address);
+
+			addressStr = MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CameraHeight2); //!?
+			address = MemoryManager.Instance.MemLib.get64bitCode(addressStr);
+			FloatMemory zMem = new FloatMemory(address);
+
+			
+
+			while (this.IsEnabled && Application.Current != null)
+			{
+				Vector3D camEuler = new Vector3D();
+
+				camEuler.Y = MathUtils.RadiansToDegrees(xMem.Get());
+				camEuler.Z = -MathUtils.RadiansToDegrees(yMem.Get());
+				camEuler.X = MathUtils.RadiansToDegrees(zMem.Get());
+
+				try
+				{
+					Application.Current.Dispatcher.Invoke(() =>
+					{
+						this.CameraRotation = camEuler.ToQuaternion();
+					});
+				}
+				catch (Exception)
+				{
+				}
+
+				Thread.Sleep(32);
+			}
+		}
+
 		public class Bone : INotifyPropertyChanged
 		{
 			public string BoneName{ get; private set; }
@@ -529,8 +582,6 @@ namespace ConceptMatrix.ViewModel
 			public Bone(string boneName)
 			{
 				this.BoneName = boneName;
-
-				
 			}
 
 			public Quaternion Rotation { get; set; }
@@ -664,6 +715,25 @@ namespace ConceptMatrix.ViewModel
 					Array.Copy(BitConverter.GetBytes((float)value.Z), 0, bytearray, 8, 4);
 					Array.Copy(BitConverter.GetBytes((float)value.W), 0, bytearray, 12, 4);
 					memory.writeBytes(this.address, bytearray);
+				}
+			}
+
+			public class FloatMemory : Memory<float>
+			{
+				public FloatMemory(UIntPtr address)
+					: base(address)
+				{
+				}
+
+				protected override float Read(Mem memory)
+				{
+					byte[] bytearray = memory.readBytes(this.address, 4);
+					return BitConverter.ToSingle(bytearray, 0);
+				}
+
+				protected override void Write(float value, Mem memory)
+				{
+					memory.writeBytes(this.address, BitConverter.GetBytes(value));
 				}
 			}
 		}
