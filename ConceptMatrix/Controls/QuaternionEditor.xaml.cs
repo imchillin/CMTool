@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -32,6 +33,14 @@ namespace ConceptMatrix.Controls
 		private Vector3D euler;
 		private bool eulerLock = false;
 		private RotationGizmo rotationGizmo;
+		private bool mouseDown = false;
+		private Point lastMousePosition;
+
+		[DllImport("User32.dll")]
+		private static extern bool SetCursorPos(int X, int Y);
+
+		[DllImport("User32.dll")]
+		private static extern bool ShowCursor(bool show);
 
 		public QuaternionEditor()
 		{
@@ -40,6 +49,8 @@ namespace ConceptMatrix.Controls
 
 			this.rotationGizmo = new RotationGizmo();
 			this.Viewport.Children.Add(this.rotationGizmo);
+
+			this.Viewport.Camera = new PerspectiveCamera(new Point3D(1.5, 1.1, 1.5), new Vector3D(-4, -3, -4), new Vector3D(0, 1, 0), 45);
 		}
 
 		[AlsoNotifyFor(nameof(EulerX), nameof(EulerY), nameof(EulerZ))]
@@ -125,18 +136,52 @@ namespace ConceptMatrix.Controls
 			}
 		}
 
+		private void OnViewportMouseDown(object sender, MouseButtonEventArgs e)
+		{
+			this.lastMousePosition = e.GetPosition(this.Viewport);
+			this.mouseDown = true;
+			Mouse.Capture(this.Viewport);
+			ShowCursor(false);
+		}
+
+		private void OnViewportMouseUp(object sender, MouseButtonEventArgs e)
+		{
+			this.mouseDown = false;
+			Mouse.Capture(null);
+			ShowCursor(true);
+			this.rotationGizmo.Hover(null);
+		}
+
 		private void OnViewportMouseMove(object sender, MouseEventArgs e)
 		{
-
 			Point mousePosition = e.GetPosition(this.Viewport);
-			HitTestResult result = VisualTreeHelper.HitTest(this.Viewport, mousePosition);
 
-			this.rotationGizmo.Hover(result.VisualHit);
+			if (!this.mouseDown)
+			{
+				HitTestResult result = VisualTreeHelper.HitTest(this.Viewport, mousePosition);
+				this.rotationGizmo.Hover(result?.VisualHit);
+			}
+			else
+			{
+				Vector delta = mousePosition - this.lastMousePosition;
+				this.rotationGizmo.Drag(delta);
+
+				Point relativePoint = this.Viewport.TransformToAncestor(this).Transform(new Point(0, 0));
+				Point pt = new Point(relativePoint.X + this.Viewport.ActualWidth / 2, relativePoint.Y + this.Viewport.ActualHeight / 2);
+				pt = this.PointToScreen(pt);
+				SetCursorPos((int)pt.X, (int)pt.Y);
+			}
+
+			this.lastMousePosition = mousePosition;
 		}
 
 		private void OnViewportMouseLeave(object sender, MouseEventArgs e)
 		{
+			if (this.mouseDown)
+				return;
+
 			this.rotationGizmo.Hover(null);
+			this.mouseDown = false;
 		}
 
 		private class RotationGizmo : ModelVisual3D
@@ -181,6 +226,14 @@ namespace ConceptMatrix.Controls
 				}
 
 				return false;
+			}
+
+			public void Drag(Vector delta)
+			{
+				if (this.hoveredGizmo == null)
+					return;
+
+				this.hoveredGizmo.Drag(delta);
 			}
 		}
 
@@ -232,6 +285,11 @@ namespace ConceptMatrix.Controls
 						this.circle.Thickness = 3;
 					}
 				}
+			}
+
+			public void Drag(Vector delta)
+			{
+				Console.WriteLine(">> " + delta);
 			}
 		}
 	}
