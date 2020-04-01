@@ -1,6 +1,4 @@
-# CMTool
-
-如果你在中国服务器，请从此链接下载，https://file.bluefissure.com/FFXIV/
+# CMTool 3
 
 Concept Matrix is a standalone tool that is used to modify certain client side only values and allow them a greater degree of flexibility for making creative and interesting screenshots. In short, this tool allows its users to temporarily change their race, gender, looks, equipment, etc in game without actually making any changes visible to other players. It also allows to use all of the emotes in game, and you can even pose as monsters, other NPCs, etc. With the latest addition, Posing Matrix, you can even tweak existing emotes or create your own poses. As such this tool can be looked at as a valuable resource for both the beginner and advanced screenshot lovers.
 
@@ -10,7 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-You need to have .NET framework installed on your computer, version 4.6.2 or higher. You can download it [here](https://dotnet.microsoft.com/download/dotnet-framework). You might also need to have „C++ Redistributable 2012-2019” installed to have Saintcoinach working properly, grab it from [here](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads).
+You need to have .NET framework installed on your computer, version 4.7.2 or higher. You can download it [here](https://dotnet.microsoft.com/download/dotnet-framework). You might also need to have „C++ Redistributable 2012-2019” installed to have Saintcoinach working properly, grab it from [here](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads).
 
 ### Installing
 
