@@ -324,6 +324,9 @@
   <data name="Other" xml:space="preserve">
     <value>其他</value>
   </data>
+  <data name="ParentRotation" xml:space="preserve">
+    <value>连动旋转：</value>
+  </data>
   <data name="Pauldrons" xml:space="preserve">
     <value>护肩：</value>
   </data>
@@ -421,13 +424,16 @@
     <value>胸椎：</value>
   </data>
   <data name="Throw" xml:space="preserve">
-    <value>演员：</value>
+    <value>投掷：</value>
   </data>
   <data name="Thumb" xml:space="preserve">
     <value>拇指：</value>
   </data>
   <data name="Toes" xml:space="preserve">
     <value>脚趾：</value>
+  </data>
+  <data name="ToggleHelmParenting" xml:space="preserve">
+    <value>切换连动模式</value>
   </data>
   <data name="Top" xml:space="preserve">
     <value>上半身:</value>

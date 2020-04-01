@@ -1,0 +1,753 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Abdomen_Tooltip" xml:space="preserve">
+    <value>腹部</value>
+  </data>
+  <data name="ArmLeft_Tooltip" xml:space="preserve">
+    <value>左臂</value>
+  </data>
+  <data name="ArmRight_Tooltip" xml:space="preserve">
+    <value>右臂</value>
+  </data>
+  <data name="BreastLeft_Tooltip" xml:space="preserve">
+    <value>左乳房</value>
+  </data>
+  <data name="BreastRight_Tooltip" xml:space="preserve">
+    <value>右乳房</value>
+  </data>
+  <data name="Bridge_Tooltip" xml:space="preserve">
+    <value>鼻梁</value>
+  </data>
+  <data name="BrowLeft_Tooltip" xml:space="preserve">
+    <value>左眉</value>
+  </data>
+  <data name="BrowRight_Tooltip" xml:space="preserve">
+    <value>右眉</value>
+  </data>
+  <data name="CalfLeft_Tooltip" xml:space="preserve">
+    <value>小腿左</value>
+  </data>
+  <data name="CalfRight_Tooltip" xml:space="preserve">
+    <value>小腿右</value>
+  </data>
+  <data name="CheekLeft_Tooltip" xml:space="preserve">
+    <value>脸颊左</value>
+  </data>
+  <data name="CheekRight_Tooltip" xml:space="preserve">
+    <value>脸颊右</value>
+  </data>
+  <data name="ClavicleLeft_Tooltip" xml:space="preserve">
+    <value>锁骨左</value>
+  </data>
+  <data name="ClavicleRight_Tooltip" xml:space="preserve">
+    <value>锁骨右</value>
+  </data>
+  <data name="ClothBackALeft_Tooltip" xml:space="preserve">
+    <value>衣服左后</value>
+  </data>
+  <data name="ClothBackARight_Tooltip" xml:space="preserve">
+    <value>衣服右后</value>
+  </data>
+  <data name="ClothBackBLeft_Tooltip" xml:space="preserve">
+    <value>衣服背B左</value>
+  </data>
+  <data name="ClothBackBRight_Tooltip" xml:space="preserve">
+    <value>衣服背B右</value>
+  </data>
+  <data name="ClothBackCLeft_Tooltip" xml:space="preserve">
+    <value>衣服背C左</value>
+  </data>
+  <data name="ClothBackCRight_Tooltip" xml:space="preserve">
+    <value>衣服背C右</value>
+  </data>
+  <data name="ClothFrontALeft_Tooltip" xml:space="preserve">
+    <value>衣服前A左</value>
+  </data>
+  <data name="ClothFrontARight_Tooltip" xml:space="preserve">
+    <value>衣服前A右</value>
+  </data>
+  <data name="ClothFrontBLeft_Tooltip" xml:space="preserve">
+    <value>衣服前B左</value>
+  </data>
+  <data name="ClothFrontBRight_Tooltip" xml:space="preserve">
+    <value>衣服前B右</value>
+  </data>
+  <data name="ClothFrontCLeft_Tooltip" xml:space="preserve">
+    <value>衣服前C左</value>
+  </data>
+  <data name="ClothFrontCRight_Tooltip" xml:space="preserve">
+    <value>衣服前C右</value>
+  </data>
+  <data name="ClothSideALeft_Tooltip" xml:space="preserve">
+    <value>衣服面A左</value>
+  </data>
+  <data name="ClothSideARight_Tooltip" xml:space="preserve">
+    <value>衣服面A右</value>
+  </data>
+  <data name="ClothSideBLeft_Tooltip" xml:space="preserve">
+    <value>衣服B面左</value>
+  </data>
+  <data name="ClothSideBRight_Tooltip" xml:space="preserve">
+    <value>衣服B面右</value>
+  </data>
+  <data name="ClothSideCLeft_Tooltip" xml:space="preserve">
+    <value>衣服C面左</value>
+  </data>
+  <data name="ClothSideCRight_Tooltip" xml:space="preserve">
+    <value>衣服C面右</value>
+  </data>
+  <data name="CouterLeft_Tooltip" xml:space="preserve">
+    <value>肘部左</value>
+  </data>
+  <data name="CouterRight_Tooltip" xml:space="preserve">
+    <value>肘部右</value>
+  </data>
+  <data name="EarLeft_Tooltip" xml:space="preserve">
+    <value>左耳</value>
+  </data>
+  <data name="EarRight_Tooltip" xml:space="preserve">
+    <value>右耳</value>
+  </data>
+  <data name="EarringALeft_Tooltip" xml:space="preserve">
+    <value>耳环A左</value>
+  </data>
+  <data name="EarringARight_Tooltip" xml:space="preserve">
+    <value>耳环A右</value>
+  </data>
+  <data name="EarringBLeft_Tooltip" xml:space="preserve">
+    <value>耳环B左</value>
+  </data>
+  <data name="EarringBRight_Tooltip" xml:space="preserve">
+    <value>耳环B右</value>
+  </data>
+  <data name="ElbowLeft_Tooltip" xml:space="preserve">
+    <value>左肘</value>
+  </data>
+  <data name="ElbowRight_Tooltip" xml:space="preserve">
+    <value>右肘</value>
+  </data>
+  <data name="ExHairA_Tooltip" xml:space="preserve">
+    <value>长发A</value>
+  </data>
+  <data name="ExHairB_Tooltip" xml:space="preserve">
+    <value>长发B</value>
+  </data>
+  <data name="ExHairC_Tooltip" xml:space="preserve">
+    <value>长发C</value>
+  </data>
+  <data name="ExHairD_Tooltip" xml:space="preserve">
+    <value>长发D</value>
+  </data>
+  <data name="ExHairE_Tooltip" xml:space="preserve">
+    <value>长发E</value>
+  </data>
+  <data name="ExHairF_Tooltip" xml:space="preserve">
+    <value>长发F</value>
+  </data>
+  <data name="ExHairG_Tooltip" xml:space="preserve">
+    <value>长发G</value>
+  </data>
+  <data name="ExHairH_Tooltip" xml:space="preserve">
+    <value>长发H</value>
+  </data>
+  <data name="ExHairI_Tooltip" xml:space="preserve">
+    <value>长发I</value>
+  </data>
+  <data name="ExHairJ_Tooltip" xml:space="preserve">
+    <value>长发J</value>
+  </data>
+  <data name="ExHairK_Tooltip" xml:space="preserve">
+    <value>长发K</value>
+  </data>
+  <data name="ExHairL_Tooltip" xml:space="preserve">
+    <value>长发L</value>
+  </data>
+  <data name="ExHair_Tooltip" xml:space="preserve">
+    <value>长发</value>
+  </data>
+  <data name="ExMetA_Tooltip" xml:space="preserve">
+    <value>Extended Met A</value>
+  </data>
+  <data name="ExMetB_Tooltip" xml:space="preserve">
+    <value>Extended Met B</value>
+  </data>
+  <data name="ExMetC_Tooltip" xml:space="preserve">
+    <value>Extended Met C</value>
+  </data>
+  <data name="ExMetD_Tooltip" xml:space="preserve">
+    <value>Extended Met D</value>
+  </data>
+  <data name="ExMetE_Tooltip" xml:space="preserve">
+    <value>Extended Met E</value>
+  </data>
+  <data name="ExMetF_Tooltip" xml:space="preserve">
+    <value>Extended Met F</value>
+  </data>
+  <data name="ExMetG_Tooltip" xml:space="preserve">
+    <value>Extended Met G</value>
+  </data>
+  <data name="ExMetH_Tooltip" xml:space="preserve">
+    <value>Extended Met H</value>
+  </data>
+  <data name="ExMetI_Tooltip" xml:space="preserve">
+    <value>Extended Met I</value>
+  </data>
+  <data name="ExMetJ_Tooltip" xml:space="preserve">
+    <value>Extended Met J</value>
+  </data>
+  <data name="ExMetK_Tooltip" xml:space="preserve">
+    <value>Extended Met K</value>
+  </data>
+  <data name="ExMetL_Tooltip" xml:space="preserve">
+    <value>Extended Met L</value>
+  </data>
+  <data name="ExMetM_Tooltip" xml:space="preserve">
+    <value>Extended Met M</value>
+  </data>
+  <data name="ExMetN_Tooltip" xml:space="preserve">
+    <value>Extended Met N</value>
+  </data>
+  <data name="ExMetO_Tooltip" xml:space="preserve">
+    <value>Extended Met O</value>
+  </data>
+  <data name="ExMetP_Tooltip" xml:space="preserve">
+    <value>Extended Met P</value>
+  </data>
+  <data name="ExMetQ_Tooltip" xml:space="preserve">
+    <value>Extended Met Q</value>
+  </data>
+  <data name="ExMetR_Tooltip" xml:space="preserve">
+    <value>Extended Met R</value>
+  </data>
+  <data name="ExMet_Tooltip" xml:space="preserve">
+    <value>Extended Met</value>
+  </data>
+  <data name="ExRootHair_Tooltip" xml:space="preserve">
+    <value>根长发</value>
+  </data>
+  <data name="ExRootMet_Tooltip" xml:space="preserve">
+    <value>扩展根满足</value>
+  </data>
+  <data name="ExRootTop_Tooltip" xml:space="preserve">
+    <value>扩展根顶</value>
+  </data>
+  <data name="ExTopA_Tooltip" xml:space="preserve">
+    <value>扩展顶A</value>
+  </data>
+  <data name="ExTopB_Tooltip" xml:space="preserve">
+    <value>扩展顶B</value>
+  </data>
+  <data name="ExTopC_Tooltip" xml:space="preserve">
+    <value>扩展顶C</value>
+  </data>
+  <data name="ExTopD_Tooltip" xml:space="preserve">
+    <value>扩展顶D</value>
+  </data>
+  <data name="ExTopE_Tooltip" xml:space="preserve">
+    <value>扩展顶E</value>
+  </data>
+  <data name="ExTopF_Tooltip" xml:space="preserve">
+    <value>扩展顶F</value>
+  </data>
+  <data name="ExTopG_Tooltip" xml:space="preserve">
+    <value>扩展顶G</value>
+  </data>
+  <data name="ExTopH_Tooltip" xml:space="preserve">
+    <value>扩展顶H</value>
+  </data>
+  <data name="ExTopI_Tooltip" xml:space="preserve">
+    <value>扩展顶I</value>
+  </data>
+  <data name="ExTop_Tooltip" xml:space="preserve">
+    <value>扩展顶</value>
+  </data>
+  <data name="EyebrowLeft_Tooltip" xml:space="preserve">
+    <value>左眉</value>
+  </data>
+  <data name="EyebrowRight_Tooltip" xml:space="preserve">
+    <value>右眉</value>
+  </data>
+  <data name="EyeLeft_Tooltip" xml:space="preserve">
+    <value>左眼</value>
+  </data>
+  <data name="EyelidLowerLeft_Tooltip" xml:space="preserve">
+    <value>眼睑左下</value>
+  </data>
+  <data name="EyelidLowerRight_Tooltip" xml:space="preserve">
+    <value>眼睑右下</value>
+  </data>
+  <data name="EyelidUpperLeft_Tooltip" xml:space="preserve">
+    <value>眼睑左上</value>
+  </data>
+  <data name="EyelidUpperRight_Tooltip" xml:space="preserve">
+    <value>眼睑右上</value>
+  </data>
+  <data name="EyeRight_Tooltip" xml:space="preserve">
+    <value>右眼</value>
+  </data>
+  <data name="FlipSides" xml:space="preserve">
+    <value>反转左右：</value>
+  </data>
+  <data name="FlipSidesTooltip" xml:space="preserve">
+    <value>左右翻转</value>
+  </data>
+  <data name="FootLeft_Tooltip" xml:space="preserve">
+    <value>左脚</value>
+  </data>
+  <data name="FootRight_Tooltip" xml:space="preserve">
+    <value>右脚</value>
+  </data>
+  <data name="ForearmLeft_Tooltip" xml:space="preserve">
+    <value>前臂左</value>
+  </data>
+  <data name="ForearmRight_Tooltip" xml:space="preserve">
+    <value>前臂右</value>
+  </data>
+  <data name="HairA_Tooltip" xml:space="preserve">
+    <value>头发A</value>
+  </data>
+  <data name="HairB_Tooltip" xml:space="preserve">
+    <value>头发B</value>
+  </data>
+  <data name="HairFrontLeft_Tooltip" xml:space="preserve">
+    <value>头发左前</value>
+  </data>
+  <data name="HairFrontRight_Tooltip" xml:space="preserve">
+    <value>头发右前</value>
+  </data>
+  <data name="HandLeft_Tooltip" xml:space="preserve">
+    <value>左手</value>
+  </data>
+  <data name="HandRight_Tooltip" xml:space="preserve">
+    <value>右手</value>
+  </data>
+  <data name="Head_Tooltip" xml:space="preserve">
+    <value>头</value>
+  </data>
+  <data name="HolsterLeft_Tooltip" xml:space="preserve">
+    <value>左皮套</value>
+  </data>
+  <data name="HolsterRight_Tooltip" xml:space="preserve">
+    <value>皮套右</value>
+  </data>
+  <data name="HrothBridge_Tooltip" xml:space="preserve">
+    <value>硌狮鼻梁</value>
+  </data>
+  <data name="HrothBrowLeft_Tooltip" xml:space="preserve">
+    <value>硌狮左眉头</value>
+  </data>
+  <data name="HrothBrowRight_Tooltip" xml:space="preserve">
+    <value>硌狮右眉头</value>
+  </data>
+  <data name="HrothEyebrowLeft_Tooltip" xml:space="preserve">
+    <value>硌狮眉毛左</value>
+  </data>
+  <data name="HrothEyebrowRight_Tooltip" xml:space="preserve">
+    <value>硌狮眉毛右</value>
+  </data>
+  <data name="HrothEyelidUpperLeft_Tooltip" xml:space="preserve">
+    <value>硌狮眼睑左上</value>
+  </data>
+  <data name="HrothEyelidUpperRight_Tooltip" xml:space="preserve">
+    <value>硌狮眼睑右上</value>
+  </data>
+  <data name="HrothJawUpper_Tooltip" xml:space="preserve">
+    <value>硌狮颚</value>
+  </data>
+  <data name="HrothLipLower_Tooltip" xml:space="preserve">
+    <value>硌狮下嘴唇</value>
+  </data>
+  <data name="HrothLipsLeft_Tooltip" xml:space="preserve">
+    <value>硌狮嘴唇左</value>
+  </data>
+  <data name="HrothLipsRight_Tooltip" xml:space="preserve">
+    <value>硌狮嘴唇右</value>
+  </data>
+  <data name="HrothLipUpperLeft_Tooltip" xml:space="preserve">
+    <value>硌狮左上唇</value>
+  </data>
+  <data name="HrothLipUpperRight_Tooltip" xml:space="preserve">
+    <value>硌狮右上唇</value>
+  </data>
+  <data name="HrothLipUpper_Tooltip" xml:space="preserve">
+    <value>硌狮上唇</value>
+  </data>
+  <data name="HrothWhiskersLeft_Tooltip" xml:space="preserve">
+    <value>硌狮胡须左</value>
+  </data>
+  <data name="HrothWhiskersRight_Tooltip" xml:space="preserve">
+    <value>硌狮胡须右</value>
+  </data>
+  <data name="IndexALeft_Tooltip" xml:space="preserve">
+    <value>拇指A左</value>
+  </data>
+  <data name="IndexARight_Tooltip" xml:space="preserve">
+    <value>拇指A右</value>
+  </data>
+  <data name="IndexBLeft_Tooltip" xml:space="preserve">
+    <value>拇指B左</value>
+  </data>
+  <data name="IndexBRight_Tooltip" xml:space="preserve">
+    <value>拇指B右</value>
+  </data>
+  <data name="Jaw_Tooltip" xml:space="preserve">
+    <value>颚</value>
+  </data>
+  <data name="KneeLeft_Tooltip" xml:space="preserve">
+    <value>左膝</value>
+  </data>
+  <data name="KneeRight_Tooltip" xml:space="preserve">
+    <value>右膝</value>
+  </data>
+  <data name="LegLeft_Tooltip" xml:space="preserve">
+    <value>左腿</value>
+  </data>
+  <data name="LegRight_Tooltip" xml:space="preserve">
+    <value>右腿</value>
+  </data>
+  <data name="LipLowerA_Tooltip" xml:space="preserve">
+    <value>下唇A</value>
+  </data>
+  <data name="LipLowerB_Tooltip" xml:space="preserve">
+    <value>下唇B</value>
+  </data>
+  <data name="LipsLeft_Tooltip" xml:space="preserve">
+    <value>左唇</value>
+  </data>
+  <data name="LipsRight_Tooltip" xml:space="preserve">
+    <value>右唇</value>
+  </data>
+  <data name="LipUpperA_Tooltip" xml:space="preserve">
+    <value>上唇A</value>
+  </data>
+  <data name="LipUpperB_Tooltip" xml:space="preserve">
+    <value>上唇B</value>
+  </data>
+  <data name="MiddleALeft_Tooltip" xml:space="preserve">
+    <value>中指A左</value>
+  </data>
+  <data name="MiddleARight_Tooltip" xml:space="preserve">
+    <value>中指A右</value>
+  </data>
+  <data name="MiddleBLeft_Tooltip" xml:space="preserve">
+    <value>中指B左</value>
+  </data>
+  <data name="MiddleBRight_Tooltip" xml:space="preserve">
+    <value>中指B右</value>
+  </data>
+  <data name="Mirror" xml:space="preserve">
+    <value>镜子</value>
+  </data>
+  <data name="Neck_Tooltip" xml:space="preserve">
+    <value>颈部</value>
+  </data>
+  <data name="Nose_Tooltip" xml:space="preserve">
+    <value>鼻子</value>
+  </data>
+  <data name="PauldronLeft_Tooltip" xml:space="preserve">
+    <value>肩甲左</value>
+  </data>
+  <data name="PauldronRight_Tooltip" xml:space="preserve">
+    <value>肩甲右</value>
+  </data>
+  <data name="PinkyALeft_Tooltip" xml:space="preserve">
+    <value>小指A左</value>
+  </data>
+  <data name="PinkyARight_Tooltip" xml:space="preserve">
+    <value>小指A右</value>
+  </data>
+  <data name="PinkyBLeft_Tooltip" xml:space="preserve">
+    <value>小指B左</value>
+  </data>
+  <data name="PinkyBRight_Tooltip" xml:space="preserve">
+    <value>小指B右</value>
+  </data>
+  <data name="PoleynLeft_Tooltip" xml:space="preserve">
+    <value>膝甲左</value>
+  </data>
+  <data name="PoleynRight_Tooltip" xml:space="preserve">
+    <value>膝甲右</value>
+  </data>
+  <data name="RingALeft_Tooltip" xml:space="preserve">
+    <value>无名指A左</value>
+  </data>
+  <data name="RingARight_Tooltip" xml:space="preserve">
+    <value>无名指A右</value>
+  </data>
+  <data name="RingBLeft_Tooltip" xml:space="preserve">
+    <value>无名指B左</value>
+  </data>
+  <data name="RingBRight_Tooltip" xml:space="preserve">
+    <value>无名指B右</value>
+  </data>
+  <data name="RootHead_Tooltip" xml:space="preserve">
+    <value>根头</value>
+  </data>
+  <data name="Root_Tooltip" xml:space="preserve">
+    <value>根</value>
+  </data>
+  <data name="ScabbardLeft_Tooltip" xml:space="preserve">
+    <value>刀鞘左</value>
+  </data>
+  <data name="ScabbardRight_Tooltip" xml:space="preserve">
+    <value>刀鞘右</value>
+  </data>
+  <data name="SheatheLeft_Tooltip" xml:space="preserve">
+    <value>左胯</value>
+  </data>
+  <data name="SheatheRight_Tooltip" xml:space="preserve">
+    <value>右胯</value>
+  </data>
+  <data name="ShieldLeft_Tooltip" xml:space="preserve">
+    <value>左盾</value>
+  </data>
+  <data name="ShieldRight_Tooltip" xml:space="preserve">
+    <value>右盾</value>
+  </data>
+  <data name="ShoulderLeft_Tooltip" xml:space="preserve">
+    <value>左肩</value>
+  </data>
+  <data name="ShoulderRight_Tooltip" xml:space="preserve">
+    <value>右肩</value>
+  </data>
+  <data name="SimplePose" xml:space="preserve">
+    <value>简单姿势</value>
+  </data>
+  <data name="SpineA_Tooltip" xml:space="preserve">
+    <value>脊柱A</value>
+  </data>
+  <data name="SpineB_Tooltip" xml:space="preserve">
+    <value>脊柱B</value>
+  </data>
+  <data name="SpineC_Tooltip" xml:space="preserve">
+    <value>脊柱C</value>
+  </data>
+  <data name="TailA_Tooltip" xml:space="preserve">
+    <value>尾巴A</value>
+  </data>
+  <data name="TailB_Tooltip" xml:space="preserve">
+    <value>尾巴B</value>
+  </data>
+  <data name="TailC_Tooltip" xml:space="preserve">
+    <value>尾巴C</value>
+  </data>
+  <data name="TailD_Tooltip" xml:space="preserve">
+    <value>尾巴D</value>
+  </data>
+  <data name="TailE_Tooltip" xml:space="preserve">
+    <value>尾巴E</value>
+  </data>
+  <data name="Throw_Tooltip" xml:space="preserve">
+    <value>投掷</value>
+  </data>
+  <data name="ThumbALeft_Tooltip" xml:space="preserve">
+    <value>拇指A左</value>
+  </data>
+  <data name="ThumbARight_Tooltip" xml:space="preserve">
+    <value>拇指B右</value>
+  </data>
+  <data name="ThumbBLeft_Tooltip" xml:space="preserve">
+    <value>拇指B左</value>
+  </data>
+  <data name="ThumbBRight_Tooltip" xml:space="preserve">
+    <value>拇指B右</value>
+  </data>
+  <data name="ToesLeft_Tooltip" xml:space="preserve">
+    <value>左脚趾</value>
+  </data>
+  <data name="ToesRight_Tooltip" xml:space="preserve">
+    <value>右脚趾</value>
+  </data>
+  <data name="Unknown00_Tooltip" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="VieraEar01ALeft_Tooltip" xml:space="preserve">
+    <value>维埃拉耳 01 A左</value>
+  </data>
+  <data name="VieraEar01ARight_Tooltip" xml:space="preserve">
+    <value>维埃拉耳 01 A右</value>
+  </data>
+  <data name="VieraEar01BLeft_Tooltip" xml:space="preserve">
+    <value>维埃拉耳 01 B左</value>
+  </data>
+  <data name="VieraEar01BRight_Tooltip" xml:space="preserve">
+    <value>维埃拉耳 01 B右</value>
+  </data>
+  <data name="VieraEar02ALeft_Tooltip" xml:space="preserve">
+    <value>维埃拉耳 02 A左</value>
+  </data>
+  <data name="VieraEar02ARight_Tooltip" xml:space="preserve">
+    <value>维埃拉耳 02 A右</value>
+  </data>
+  <data name="VieraEar02BLeft_Tooltip" xml:space="preserve">
+    <value>维埃拉耳 02 B左</value>
+  </data>
+  <data name="VieraEar02BRight_Tooltip" xml:space="preserve">
+    <value>维埃拉耳 02 B右</value>
+  </data>
+  <data name="VieraEar03ALeft_Tooltip" xml:space="preserve">
+    <value>维埃拉耳 03 A左</value>
+  </data>
+  <data name="VieraEar03ARight_Tooltip" xml:space="preserve">
+    <value>维埃拉耳 03 A右</value>
+  </data>
+  <data name="VieraEar03BLeft_Tooltip" xml:space="preserve">
+    <value>维埃拉耳 03 B左</value>
+  </data>
+  <data name="VieraEar03BRight_Tooltip" xml:space="preserve">
+    <value>维埃拉耳 03 B右</value>
+  </data>
+  <data name="VieraEar04ALeft_Tooltip" xml:space="preserve">
+    <value>维埃拉耳 04 A左</value>
+  </data>
+  <data name="VieraEar04ARight_Tooltip" xml:space="preserve">
+    <value>维埃拉耳 04 A右</value>
+  </data>
+  <data name="VieraEar04BLeft_Tooltip" xml:space="preserve">
+    <value>维埃拉耳 04 B左</value>
+  </data>
+  <data name="VieraEar04BRight_Tooltip" xml:space="preserve">
+    <value>维埃拉耳 04 B右</value>
+  </data>
+  <data name="VieraLipLowerA_Tooltip" xml:space="preserve">
+    <value>维埃拉下唇 A</value>
+  </data>
+  <data name="VieraLipLowerB_Tooltip" xml:space="preserve">
+    <value>维埃拉下唇 B</value>
+  </data>
+  <data name="VieraLipUpperB_Tooltip" xml:space="preserve">
+    <value>维埃拉上唇 B</value>
+  </data>
+  <data name="Waist_Tooltip" xml:space="preserve">
+    <value>腰部</value>
+  </data>
+  <data name="WeaponLeft_Tooltip" xml:space="preserve">
+    <value>左武器</value>
+  </data>
+  <data name="WeaponRight_Tooltip" xml:space="preserve">
+    <value>右武器</value>
+  </data>
+  <data name="WristLeft_Tooltip" xml:space="preserve">
+    <value>左腕</value>
+  </data>
+  <data name="WristRight_Tooltip" xml:space="preserve">
+    <value>右腕</value>
+  </data>
+</root>
