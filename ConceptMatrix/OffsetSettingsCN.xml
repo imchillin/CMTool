@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- This is for CN server only-->
 <Settings>
-  <LastUpdated>5.11</LastUpdated>
-  <CameraOffset>1BFAB20</CameraOffset><!--Done-->
-  <GposeOffset>1BFAD08</GposeOffset><!--Done-->
-  <GposeEntityOffset>1BFDBA0</GposeEntityOffset><!--Done-->
-  <GposeCheckOffset>1BAFC88</GposeCheckOffset><!--Done-->
-  <GposeCheck2Offset>1BFE8F0</GposeCheck2Offset><!--Done-->
-  <AoBOffset>1BFC110</AoBOffset><!--Done-->
-  <TargetOffset>1BFAD70</TargetOffset><!--Done-->
-  <TimeOffset>1BDBB48</TimeOffset><!--Done-->
-  <WeatherOffset>1BB2818</WeatherOffset><!--Done-->
-  <TerritoryOffset>1BD9320</TerritoryOffset><!--Done-->
-  <GposeFilters>1BD9AA8</GposeFilters><!--Done-->
-  <MusicOffset>1C114A8</MusicOffset><!--Done-->
-  <SkeletonOffset>132F2B0</SkeletonOffset><!--Done-->
-  <SkeletonOffset2>13303DD</SkeletonOffset2><!--Done-->
-  <SkeletonOffset3>133E044</SkeletonOffset3><!--Done-->
-  <PhysicsOffset>39EA78</PhysicsOffset><!--Done-->
-  <PhysicsOffset2>39EA6F</PhysicsOffset2><!--Done-->
-  <CharacterRenderOffset>454F60</CharacterRenderOffset><!--Done-->
-  <CharacterRenderOffset2>454F56</CharacterRenderOffset2><!--Done-->
+  <LastUpdated>5.15</LastUpdated>
+  <CameraOffset>1BF9B20</CameraOffset>
+  <GposeOffset>1BF9D08</GposeOffset>
+  <GposeEntityOffset>1BFCBA0</GposeEntityOffset>
+  <GposeCheckOffset>1BAEC88</GposeCheckOffset>
+  <GposeCheck2Offset>1BFD8F0</GposeCheck2Offset>
+  <AoBOffset>1BFB110</AoBOffset>
+  <TargetOffset>1BF9D70</TargetOffset>
+  <TimeOffset>1BDAB48</TimeOffset>
+  <WeatherOffset>1BB1818</WeatherOffset>
+  <TerritoryOffset>1BD8320</TerritoryOffset>
+  <GposeFilters>1BD8AA8</GposeFilters>
+  <MusicOffset>1C104A8</MusicOffset>
+  <SkeletonOffset>132EFF0</SkeletonOffset>
+  <SkeletonOffset2>133011D</SkeletonOffset2>
+  <SkeletonOffset3>133DD84</SkeletonOffset3>
+  <PhysicsOffset>39E918</PhysicsOffset>
+  <PhysicsOffset2>39E90F</PhysicsOffset2>
+  <CharacterRenderOffset>454E00</CharacterRenderOffset>
+  <CharacterRenderOffset2>454DF6</CharacterRenderOffset2>
   <Character>
     <Name>30</Name>
     <ActorID>34</ActorID>
