@@ -297,9 +297,8 @@ namespace ConceptMatrix.Utility
                     Debug.WriteLine("ERROR: OpenProcess: Process is not responding or null.");
                     return false;
                 }
-
-                pHandle = OpenProcess(0x1F0FFF, true, pid);
                 Process.EnterDebugMode();
+                pHandle = OpenProcess(0x1F0FFF, true, pid);
 
                 if (pHandle == IntPtr.Zero)
                 {
