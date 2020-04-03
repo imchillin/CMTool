@@ -1,5 +1,6 @@
 ﻿using ConceptMatrix.Models;
 using ConceptMatrix.ViewModel;
+using System.ComponentModel;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -52,8 +53,21 @@ namespace ConceptMatrix.Views
 		{
 			if (this.DataContext is CharacterDetails details)
 			{
+				details.ActorID.PropertyChanged += this.ActorIdChanged;
+
 				this.ViewModel = new SimplePoseViewModel(details);
 				this.ContentArea.DataContext = this.ViewModel;
+			}
+		}
+
+		private void ActorIdChanged(object sender, PropertyChangedEventArgs e)
+		{
+			if (e.PropertyName == nameof(CharacterDetails.ActorID.value))
+			{
+				Application.Current.Dispatcher.Invoke(()=>
+				{
+					this.ViewModel.Refresh();
+				});
 			}
 		}
 
