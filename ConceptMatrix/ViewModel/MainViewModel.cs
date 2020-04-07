@@ -27,7 +27,7 @@ namespace ConceptMatrix.ViewModel
         public static int gameProcId = 0;
         public static ThreadWriting ThreadTime;
         public static RotationView RotTime;
-        public static CharacterDetailsView5 ViewTime5;
+        public static PoseMatrixView ViewTime5;
         public static CharacterDetailsView4 ViewTime4;
         public static CharacterDetailsView3 ViewTime3;
         public static CharacterDetailsView2 ViewTime2;
@@ -91,7 +91,8 @@ namespace ConceptMatrix.ViewModel
                 worker.RunWorkerAsync();
                 characterDetails = new CharacterDetailsViewModel(mediator);
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Add(MemoryManager.Instance.BaseAddress, "8");
-                ViewTime5.bonetree = ViewTime5.InitBonetree();
+                //  ViewTime5.bonetree = ViewTime5.InitBonetree();
+                PoseMatrixViewModel.PoseVM.InitBonetree();
                 Task.Delay(40).Wait();
                 ThreadTime = new ThreadWriting(); // Thread Writing
             }
@@ -414,8 +415,12 @@ namespace ConceptMatrix.ViewModel
             MemoryManager.Instance.SkeletonAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.SkeletonOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.SkeletonAddress2 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.SkeletonOffset2, NumberStyles.HexNumber));
             MemoryManager.Instance.SkeletonAddress3 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.SkeletonOffset3, NumberStyles.HexNumber));
+            MemoryManager.Instance.SkeletonAddress4 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.SkeletonOffset4, NumberStyles.HexNumber));
+            MemoryManager.Instance.SkeletonAddress5 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.SkeletonOffset5, NumberStyles.HexNumber));
+            MemoryManager.Instance.SkeletonAddress6 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.SkeletonOffset6, NumberStyles.HexNumber));
             MemoryManager.Instance.PhysicsAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.PhysicsOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.PhysicsAddress2 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.PhysicsOffset2, NumberStyles.HexNumber));
+            MemoryManager.Instance.PhysicsAddress3 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.PhysicsOffset3, NumberStyles.HexNumber));
             MemoryManager.Instance.CharacterRenderAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.CharacterRenderOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.CharacterRenderAddress2 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.CharacterRenderOffset2, NumberStyles.HexNumber));
             while (true)

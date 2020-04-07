@@ -531,13 +531,14 @@ namespace ConceptMatrix.ViewModel
 			CharacterOffsets c = Settings.Instance.Character;
 
 			string propertyName = boneName + "_X";
-			PropertyInfo property = c.Body.Bones.GetType().GetProperty(propertyName);
+			/*	PropertyInfo property = c.Body.Bones.GetType().GetProperty(propertyName);
 
-			if (property == null)
-				throw new Exception("Failed to get bone axis: \"" + propertyName + "\"");
+				if (property == null)
+					throw new Exception("Failed to get bone axis: \"" + propertyName + "\"");
 
-			string offsetString = (string)property.GetValue(c.Body.Bones);
-			return MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, c.Body.Base, offsetString);
+				string offsetString = (string)property.GetValue(c.Body.Bones);
+				return MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, c.Body.Base, offsetString);*/
+			return "";
 		}
 
 		private void WatchCamera()

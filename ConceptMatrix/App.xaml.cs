@@ -92,7 +92,7 @@ namespace ConceptMatrix
         private void App_Exit(object sender, ExitEventArgs e)
         {
             Utility.SaveSettings.Default.Save();
-            if (CharacterDetails.BoneEditMode) MainViewModel.ViewTime5.EditModeButton.IsChecked = false;
+         //   if (CharacterDetails.BoneEditMode) MainViewModel.ViewTime5.EditModeButton.IsChecked = false;
         }
 
         private void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)

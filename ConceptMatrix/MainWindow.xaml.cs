@@ -1149,16 +1149,9 @@ namespace ConceptMatrix
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Instance.GposeEntityOffset;
             if (MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheckAddress)) == 1 && MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheck2Address)) == 4)
             {
-                MainViewModel.ViewTime5.GPoseWarningText.Visibility = Visibility.Hidden;
-                MainViewModel.ViewTime5.EditModeText.Visibility = Visibility.Visible;
-                MainViewModel.ViewTime5.EditModeButton.Visibility = Visibility.Visible;
-                MainViewModel.ViewTime5.EditModeButton.IsEnabled = true;
-                MainViewModel.ViewTime5.PhysicsText.Visibility = Visibility.Visible;
-                MainViewModel.ViewTime5.PhysicsButton.Visibility = Visibility.Visible;
-                MainViewModel.ViewTime5.LoadCMP.IsEnabled = true;
-                MainViewModel.ViewTime5.AdvLoadCMP.IsEnabled = true;
                 MainViewModel.ViewTime.LinkPositionText.IsEnabled = true;
                 MainViewModel.ViewTime.LinkPosition.IsEnabled = true;
+                MainViewModel.ViewTime5.PoseMatrixSetting.IsEnabled = true;
             }
         }
 
@@ -1220,15 +1213,7 @@ namespace ConceptMatrix
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Add(MemoryManager.Instance.BaseAddress, CharacterDetailsViewModel.eOffset);
             if (MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheckAddress)) == 0)
             {
-                MainViewModel.ViewTime5.GPoseWarningText.Visibility = Visibility.Visible;
-                MainViewModel.ViewTime5.EditModeText.Visibility = Visibility.Hidden;
-                MainViewModel.ViewTime5.EditModeButton.Visibility = Visibility.Hidden;
-                MainViewModel.ViewTime5.EditModeButton.IsChecked = false;
-                MainViewModel.ViewTime5.EditModeButton.IsEnabled = false;
-                MainViewModel.ViewTime5.PhysicsText.Visibility = Visibility.Hidden;
-                MainViewModel.ViewTime5.PhysicsButton.Visibility = Visibility.Hidden;
-                MainViewModel.ViewTime5.LoadCMP.IsEnabled = false;
-                MainViewModel.ViewTime5.AdvLoadCMP.IsEnabled = false;
+                MainViewModel.ViewTime5.PoseMatrixSetting.IsEnabled = false;
 
                 lock (CharacterDetails.LinkedActors)
                 {

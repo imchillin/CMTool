@@ -96,5 +96,19 @@ namespace ConceptMatrix.Utility
 
 			return NormalizeAngles(v * Rad2Deg);
 		}
+		public static Quaternion QInv(Quaternion q1)
+		{
+			return new Quaternion(q1.X, -q1.Y, -q1.Z, -q1.W);
+		}
+		public static Quaternion QuatMult(Quaternion q1, Quaternion q2)
+		{
+			double x = q1.X * q2.X - q1.Y * q2.Y - q1.Z * q2.Z - q1.W * q2.W;
+			double y = q1.X * q2.Y + q1.Y * q2.X + q1.Z * q2.W - q1.W * q2.Z;
+			double z = q1.X * q2.Z - q1.Y * q2.W + q1.Z * q2.X + q1.W * q2.Y;
+			double w = q1.X * q2.W + q1.Y * q2.Z - q1.Z * q2.Y + q1.W * q2.X;
+			Quaternion q = new Quaternion(x, y, z, w);
+			q.Normalize();
+			return q;
+		}
 	}
 }

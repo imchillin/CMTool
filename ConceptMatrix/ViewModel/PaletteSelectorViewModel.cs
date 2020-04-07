@@ -33,7 +33,7 @@ namespace ConceptMatrix.ViewModel
                 MainViewModel.ViewTime2.EquipBG.Opacity = 0;
                 MainViewModel.ViewTime3.WorldBG.Opacity = 0;
                 MainViewModel.ViewTime4.PropBG.Opacity = 0;
-                MainViewModel.ViewTime5.PoseBG.Opacity = 0;
+           //     MainViewModel.ViewTime5.PoseBG.Opacity = 0;
                 MainViewModel.AboutTime.AboutBG.Opacity = 0;
             }
             else
@@ -42,7 +42,7 @@ namespace ConceptMatrix.ViewModel
                 MainViewModel.ViewTime2.EquipBG.Opacity = 100;
                 MainViewModel.ViewTime3.WorldBG.Opacity = 100;
                 MainViewModel.ViewTime4.PropBG.Opacity = 100;
-                MainViewModel.ViewTime5.PoseBG.Opacity = 100;
+             //   MainViewModel.ViewTime5.PoseBG.Opacity = 100;
                 MainViewModel.AboutTime.AboutBG.Opacity = 100;
             }
             SaveSettings.Default.HasBackground = isBG;
