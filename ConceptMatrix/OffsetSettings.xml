@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Settings>
-  <LastUpdated>5.21x1</LastUpdated>
-  <CameraOffset>1C62F00</CameraOffset><!--Done-->
-  <GposeOffset>1C630E8</GposeOffset><!--Done-->
-  <GposeEntityOffset>1C65F80</GposeEntityOffset><!--Done-->
-  <GposeCheckOffset>1CB3C1A</GposeCheckOffset><!--Done-->
-  <GposeCheck2Offset>1C66CD0</GposeCheck2Offset><!--Done-->
-  <AoBOffset>1C644F0</AoBOffset><!--Done-->
-  <TargetOffset>1C63150</TargetOffset><!--Done-->
-  <TimeOffset>1C43A78</TimeOffset><!--Done-->
-  <WeatherOffset>1C1A858</WeatherOffset> <!--Done-->
-  <TerritoryOffset>1C413B0</TerritoryOffset><!--Done-->
-  <GposeFilters>1C41B38</GposeFilters><!--Done-->
-  <MusicOffset>1C80C28</MusicOffset> <!--Done-->
-  <SkeletonOffset>1381A40</SkeletonOffset><!--Done-->
-  <SkeletonOffset2>1382B6D</SkeletonOffset2><!--Done-->
-  <SkeletonOffset3>13907D4</SkeletonOffset3><!--Done-->
-  <PhysicsOffset>37A878</PhysicsOffset><!--Done-->
-  <PhysicsOffset2>37A86F</PhysicsOffset2><!--Done-->
-  <CharacterRenderOffset>431160</CharacterRenderOffset><!--Done-->
-  <CharacterRenderOffset2>431156</CharacterRenderOffset2><!--Done-->
+  <LastUpdated>5.25</LastUpdated>
+  <CameraOffset>1C63F80</CameraOffset><!--Done-->
+  <GposeOffset>1C64168</GposeOffset><!--Done-->
+  <GposeEntityOffset>1C67000</GposeEntityOffset><!--Done-->
+  <GposeCheckOffset>1CB4C9A</GposeCheckOffset><!--Done-->
+  <GposeCheck2Offset>1C67D50</GposeCheck2Offset><!--Done-->
+  <AoBOffset>1C65570</AoBOffset><!--Done-->
+  <TargetOffset>1C641D0</TargetOffset><!--Done-->
+  <TimeOffset>1C44AF8</TimeOffset><!--Done-->
+  <WeatherOffset>1C1B858</WeatherOffset> <!--Done-->
+  <TerritoryOffset>1C42430</TerritoryOffset><!--Done-->
+  <GposeFilters>1C42BB8</GposeFilters><!--Done-->
+  <MusicOffset>1C81CA8</MusicOffset> <!--Done-->
+  <SkeletonOffset>1382290</SkeletonOffset><!--Done-->
+  <SkeletonOffset2>13833BD</SkeletonOffset2><!--Done-->
+  <SkeletonOffset3>1391024</SkeletonOffset3><!--Done-->
+  <PhysicsOffset>37AA48</PhysicsOffset><!--Done-->
+  <PhysicsOffset2>37AA3F</PhysicsOffset2><!--Done-->
+  <CharacterRenderOffset>431330</CharacterRenderOffset><!--Done-->
+  <CharacterRenderOffset2>431326</CharacterRenderOffset2><!--Done-->
   <Character>
     <Name>30</Name>
     <ActorID>34</ActorID>
