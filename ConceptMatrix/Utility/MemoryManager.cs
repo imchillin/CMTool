@@ -49,8 +49,12 @@ namespace ConceptMatrix.Utility
         public string SkeletonAddress { get; set; }
         public string SkeletonAddress2 { get; set; }
         public string SkeletonAddress3 { get; set; }
+        public string SkeletonAddress4 { get; set; }
+        public string SkeletonAddress5 { get; set; }
+        public string SkeletonAddress6 { get; set; }
         public string PhysicsAddress { get; set; }
         public string PhysicsAddress2 { get; set; }
+        public string PhysicsAddress3 { get; set; }
         public string CharacterRenderAddress { get; set; }
         public string CharacterRenderAddress2 { get; set; }
         /// <summary>
