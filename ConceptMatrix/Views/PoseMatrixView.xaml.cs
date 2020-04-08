@@ -711,6 +711,7 @@ namespace ConceptMatrix.Views
             PoseMatrixViewModel.PoseVM.PointerPath = null;
             PoseMatrixViewModel.PoseVM.TheButton = newActive;
             PoseMatrixViewModel.PoseVM.PointerType = 0;
+            Cube.IsEnabled = true;
             XUpDown.Minimum = 0;
             XUpDown.Maximum = 360;
             YUpDown.Maximum = 360;
@@ -2403,6 +2404,7 @@ namespace ConceptMatrix.Views
                     PoseMatrixViewModel.PoseVM.PointerPath = null;
                     PoseMatrixViewModel.PoseVM.BNode = null;
                     PoseMatrixViewModel.PoseVM.PointerType = 0;
+                    Cube.IsEnabled = false;
                     break;
 
             }

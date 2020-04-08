@@ -90,26 +90,7 @@ namespace ConceptMatrix.Views
             el.CaptureMouse();
         }
 
-
-        public void RotateHelper(Address<float> x, Address<float> y, Address<float> z, Address<float> w)
-        {
-            Quaternion q = (Quaternion)RotationQuaternion.GetValue(QuaternionRotation3D.QuaternionProperty);
-            x.value = (float)q.X;
-            y.value = (float)q.Y;
-            z.value = (float)q.Z;
-            w.value = (float)q.W;
-            oldrot = newrot;
-            newrot = (Quaternion)RotationQuaternion.GetValue(QuaternionRotation3D.QuaternionProperty);
         /*    #region Child Bones
-            if (MainViewModel.ViewTime5.ParentingToggle.IsChecked == true && bnode != null)
-            {
-                MainViewModel.ViewTime5.Bone_Flag_Manager();
-                Quaternion q1_inv = CharacterDetailsView5.QInv(oldrot);
-                MainViewModel.ViewTime5.Rotate_ChildBone(bnode, q1_inv, newrot);
-            }
-            #endregion*/
-        }
-
         private void Viewport3D_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             var el = (UIElement)sender;
@@ -119,6 +100,8 @@ namespace ConceptMatrix.Views
 
             var qv = RotationQuaternion.GetValue(QuaternionRotation3D.QuaternionProperty);
             var q = (Quaternion)qv;
+
+            PoseMatrixViewModel.PoseVM.RotateHelperQuaternion(q);
         }
     }
 }
