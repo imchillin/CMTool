@@ -90,7 +90,6 @@ namespace ConceptMatrix.Views
             el.CaptureMouse();
         }
 
-        /*    #region Child Bones
         private void Viewport3D_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             var el = (UIElement)sender;
