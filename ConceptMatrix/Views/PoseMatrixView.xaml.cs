@@ -913,6 +913,10 @@ namespace ConceptMatrix.Views
             {
                 ScaleSaveToggle.IsChecked = true;
             }
+            if (SaveSettings.Default.AltModelView == true)
+            {
+                ToggleModelView.IsChecked = true;
+            }
         }
         private void EditModeButton_Checked(object sender, RoutedEventArgs e)
         {
@@ -13250,6 +13254,7 @@ namespace ConceptMatrix.Views
         {
             ActorProperties.Visibility = Visibility.Visible;
             CubeBox.Visibility = Visibility.Hidden;
+            SaveSettings.Default.AltModelView = true;
 
         }
 
@@ -13257,6 +13262,7 @@ namespace ConceptMatrix.Views
         {
             ActorProperties.Visibility = Visibility.Hidden;
             CubeBox.Visibility = Visibility.Visible;
+            SaveSettings.Default.AltModelView = false;
         }
 
         private void ScaleSaveToggle_Checked(object sender, RoutedEventArgs e)

@@ -21,7 +21,7 @@
         
         <ResourceDictionary>
             <Style x:Key="MenuLevel2" BasedOn="{StaticResource MetroTabItem}" TargetType="{x:Type TabItem}">
-                <Setter Property="controls:ControlsHelper.HeaderFontSize" Value="20"></Setter>
+                <Setter Property="controls:ControlsHelper.HeaderFontSize" Value="17.95"></Setter>
             </Style>
             <ObjectDataProvider x:Key="FlyoutThemeEnumValues"
                                 MethodName="GetValues"

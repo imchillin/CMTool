@@ -124,6 +124,8 @@ namespace ConceptMatrix.Utility
         public bool AltRotate { get; set; } = true;
         public bool AltPoseRotate { get; set; } = false;
         public bool RelativeBones { get; set; } = false;
+
+        public bool AltModelView { get; set; } = false;
         public bool ScalingLoad { get; set; } = false;
         public bool HasBackground { get; set; } = true;
         public string ProfileDirectory { get; set; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Saves");
