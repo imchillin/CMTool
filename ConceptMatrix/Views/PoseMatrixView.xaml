@@ -12,7 +12,7 @@
              d:DesignHeight="530" d:DesignWidth="1115" Height="530">
     <UserControl.Resources>
         <Style x:Name="HeaderTabs" x:Key="MenuLevel2" BasedOn="{StaticResource MetroTabItem}" TargetType="{x:Type TabItem}">
-            <Setter Property="mah:ControlsHelper.HeaderFontSize" Value="16"></Setter>
+            <Setter Property="mah:ControlsHelper.HeaderFontSize" Value="20"></Setter>
         </Style>
     </UserControl.Resources>
     <Grid Height="530" Width="1119">
@@ -123,7 +123,7 @@
                                 Margin="5,5,0,0" Width="165" Minimum="0" Maximum="360" TickFrequency="0.5"/>
             </StackPanel>
         </StackPanel>
-        <mah:MetroAnimatedTabControl  Background="{x:Null}" Grid.Column="1" Margin="249,163,10,0">
+        <mah:MetroAnimatedTabControl  Background="{x:Null}" Grid.Column="1" Margin="249,155,10,0">
             <TabItem Header="{Binding Source={x:Static resx:UIPoseStrings.HeadHair}}" Style="{DynamicResource MenuLevel2}">
                 <StackPanel>
                     <GroupBox Header=" Head" Padding="0,0,0,5" Width="720">
@@ -453,7 +453,7 @@
                 </StackPanel>
 
             </TabItem>
-            <TabItem Header="Clothes" Style="{DynamicResource MenuLevel2}" HorizontalAlignment="Right" Width="65">
+            <TabItem Header="Clothes" Style="{DynamicResource MenuLevel2}" HorizontalAlignment="Right">
                 <StackPanel>
                     <GroupBox Header=" Clothes" Width="720" Padding="0,0,0,5">
                         <StackPanel>
