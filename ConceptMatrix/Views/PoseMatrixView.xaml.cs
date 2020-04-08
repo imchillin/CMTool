@@ -488,9 +488,9 @@ namespace ConceptMatrix.Views
             exmet_buttons = new ToggleButton[] { ExMetA, ExMetB, ExMetC, ExMetD, ExMetE, ExMetF, ExMetG, ExMetH, ExMetI, ExMetJ, ExMetK, ExMetL, ExMetM, ExMetN, ExMetO, ExMetP, ExMetQ, ExMetR };
             extop_buttons = new ToggleButton[] { ExTopA, ExTopB, ExTopC, ExTopD, ExTopE, ExTopF, ExTopG, ExTopH, ExTopI };
             this.DataContext = new PoseMatrixViewModel();
-            if (SaveSettings.Default.AdvancedMove == true)
+            if (SaveSettings.Default.ScalingLoad == true)
             {
-                PosRelButton.IsChecked = true;
+                ScaleSaveToggle.IsChecked = true;
             }
         }
         private void EditModeButton_Checked(object sender, RoutedEventArgs e)
@@ -4474,6 +4474,16 @@ namespace ConceptMatrix.Views
         private void PosRelButton_Unchecked(object sender, RoutedEventArgs e)
         {
             AdvancedMove = false;
+        }
+
+        private void ScaleSaveToggle_Checked(object sender, RoutedEventArgs e)
+        {
+            SaveSettings.Default.ScalingLoad = true;
+        }
+
+        private void ScaleSaveToggle_Unchecked(object sender, RoutedEventArgs e)
+        {
+            SaveSettings.Default.ScalingLoad = false;
         }
 
         private void DisableTertiary()

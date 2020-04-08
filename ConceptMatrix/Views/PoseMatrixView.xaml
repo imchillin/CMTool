@@ -50,7 +50,7 @@
                             <Label Content="{Binding Source={x:Static resx:UIPoseStrings.EnablePhysics}}"  Width="95" VerticalAlignment="Center"/>
                             <ToggleButton Name="PhysicsButton" Checked="PhysicsButton_Checked" Unchecked="PhysicsButton_Unchecked" IsEnabled="False" />
                             <Label Content="Scaling In Load:" Width="95" />
-                            <ToggleButton x:Name="ScaleSaveToggle"/>
+                            <ToggleButton x:Name="ScaleSaveToggle" Checked="ScaleSaveToggle_Checked" Unchecked="ScaleSaveToggle_Unchecked"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="0,3,0,0">
                             <Button x:Name="SaveCMP" Width="156" Margin="25,0,0,0" Click="SaveCMP_Click">

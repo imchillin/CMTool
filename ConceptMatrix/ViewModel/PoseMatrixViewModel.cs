@@ -135,7 +135,7 @@ namespace ConceptMatrix.ViewModel
                 }
             }
         }
-        public bool ParentingToggle { get; set; }
+        public bool ParentingToggle { get => SaveSettings.Default.RelativeBones; set => SaveSettings.Default.RelativeBones = value; }
 
         public bool ReadTetriaryFromRunTime = false;
 
@@ -151,6 +151,10 @@ namespace ConceptMatrix.ViewModel
         public PoseMatrixViewModel()
         {
             PoseVM = this;
+            if (SaveSettings.Default.RelativeBones == true)
+            {
+                ParentingToggle = true;
+            }
         }
 
         public Vector3D oldrot = new Vector3D(0, 0, 0);
