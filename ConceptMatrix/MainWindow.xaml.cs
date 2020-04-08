@@ -1214,6 +1214,7 @@ namespace ConceptMatrix
             if (MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheckAddress)) == 0)
             {
                 MainViewModel.ViewTime5.PoseMatrixSetting.IsEnabled = false;
+                MainViewModel.ViewTime5.EditModeButton.IsChecked = false;
 
                 lock (CharacterDetails.LinkedActors)
                 {
