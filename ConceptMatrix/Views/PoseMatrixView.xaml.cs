@@ -25,6 +25,9 @@ namespace ConceptMatrix.Views
         private MemoryManager Memory = MemoryManager.Instance;
         public ToggleButton[] exhair_buttons, exmet_buttons, extop_buttons;
         public ToggleButton ToggleSave;
+
+        public bool AdvancedMove;
+
         #region Savestate01 Strings
         public string Race_Sav01;
 
@@ -485,6 +488,10 @@ namespace ConceptMatrix.Views
             exmet_buttons = new ToggleButton[] { ExMetA, ExMetB, ExMetC, ExMetD, ExMetE, ExMetF, ExMetG, ExMetH, ExMetI, ExMetJ, ExMetK, ExMetL, ExMetM, ExMetN, ExMetO, ExMetP, ExMetQ, ExMetR };
             extop_buttons = new ToggleButton[] { ExTopA, ExTopB, ExTopC, ExTopD, ExTopE, ExTopF, ExTopG, ExTopH, ExTopI };
             this.DataContext = new PoseMatrixViewModel();
+            if (SaveSettings.Default.AdvancedMove == true)
+            {
+                PosRelButton.IsChecked = true;
+            }
         }
         private void EditModeButton_Checked(object sender, RoutedEventArgs e)
         {
@@ -4322,20 +4329,129 @@ namespace ConceptMatrix.Views
         }
         #endregion
 
-        private void PosZ_SourceUpdated(object sender, DataTransferEventArgs e)
-        {
+        #region position
+        private void PosX_SourceUpdated(object sender, DataTransferEventArgs e) => Pos_SourceUpdated(PosX, XPosUpdate);
+        private void PosY_SourceUpdated(object sender, DataTransferEventArgs e) => Pos_SourceUpdated(PosY, YPosUpdate);
+        private void PosZ_SourceUpdated(object sender, DataTransferEventArgs e) => Pos_SourceUpdated(PosZ, ZPosUpdate);
 
+        /// <summary>
+        /// This thing exists because of the way this broken ass system works, the flag is purely to not trigger multiple source update loops.
+        /// </summary>
+        private bool PosAdvancedWorking = false;
+
+        private void Pos_SourceUpdated(MahApps.Metro.Controls.NumericUpDown control, RoutedPropertyChangedEventHandler<double?> handler)
+        {
+            if (AdvancedMove && control.Name != PosY.Name)
+            {
+                // Ensure not in an existing event.
+                if (!PosAdvancedWorking)
+                {
+                    control.ValueChanged -= AdvancedPosUpdate;
+                    control.ValueChanged += AdvancedPosUpdate;
+                }
+            }
+            else if (control.IsKeyboardFocusWithin || control.IsMouseOver)
+            {
+                control.ValueChanged -= handler;
+                control.ValueChanged += handler;
+            }
         }
 
-        private void PosY_SourceUpdated(object sender, DataTransferEventArgs e)
-        {
+        private const double Deg2Rad = (Math.PI * 2) / 360;
 
+        private void AdvancedPosUpdate(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            // Get the control from sender.
+            var control = (sender as MahApps.Metro.Controls.NumericUpDown);
+
+            // Remove the event handler (?)
+            control.ValueChanged -= AdvancedPosUpdate;
+
+            // Flag that we're working to avoid updates later.
+            PosAdvancedWorking = true;
+
+            // Instantiate x and z floats for the vector.
+            var x = 0.0;
+            var z = 0.0;
+
+            double oldX = 0;
+            double oldZ = 0;
+
+            // Set the appropriate axis based on which control this is.
+            if (control.Name == PosX.Name)
+            {
+                z = (double)(e.NewValue - e.OldValue);
+                oldX = e.OldValue ?? 0;
+                oldZ = PosZ.Value ?? 0;
+            }
+            else
+            {
+                x = (double)(e.NewValue - e.OldValue);
+                oldX = PosX.Value ?? 0;
+                oldZ = e.OldValue ?? 0;
+            }
+
+            // Get the angle of the position.
+            var degrees = GetEulerAngles().Y;
+
+            // Get the cos and sin of radians.
+            var ca = Math.Cos(degrees * Deg2Rad);
+            var sa = Math.Sin(degrees * Deg2Rad);
+
+            // Calculate the new vector.
+            var newX = x * sa - z * ca;
+            var newZ = x * ca + z * sa;
+
+            // Update the values in the text field (yeah I know this is dumb but this whole thing is dumb so i'm gonna leave it like this I should honestly use the databinding but I never know how any of this stuff works because the codebase is all over the place and there's like 5 possible files where something might get read or written to memory and I give up)
+            PosX.Value = oldX + newX;
+            PosZ.Value = oldZ + newZ;
+
+            MemoryManager.Instance.MemLib.writeMemory(
+                MemoryManager.GetAddressString(
+                    CharacterDetailsViewModel.baseAddr,
+                    Settings.Instance.Character.Body.Base,
+                    Settings.Instance.Character.Body.Position.X
+                ),
+                "float",
+                PosX.Value.ToString()
+            );
+
+            MemoryManager.Instance.MemLib.writeMemory(
+                MemoryManager.GetAddressString(
+                    CharacterDetailsViewModel.baseAddr,
+                    Settings.Instance.Character.Body.Base,
+                    Settings.Instance.Character.Body.Position.Z
+                ),
+                "float",
+                PosZ.Value.ToString()
+            );
+
+            // Work is done, future events can trigger now.
+            PosAdvancedWorking = false;
         }
 
-        private void PosX_SourceUpdated(object sender, DataTransferEventArgs e)
+        private void XPosUpdate(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-
+            if (PosX.Value.HasValue)
+                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.X), "float", PosX.Value.ToString());
+            PosX.ValueChanged -= XPosUpdate;
         }
+
+        private void YPosUpdate(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            if (PosY.Value.HasValue)
+                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.Y), "float", PosY.Value.ToString());
+            PosY.ValueChanged -= YPosUpdate;
+        }
+
+        private void ZPosUpdate(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            if (PosZ.Value.HasValue)
+                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.Z), "float", PosZ.Value.ToString());
+            PosZ.ValueChanged -= ZPosUpdate;
+        }
+
+#endregion
 
         private void ToggleModelView_Checked(object sender, RoutedEventArgs e)
         {
@@ -4348,6 +4464,16 @@ namespace ConceptMatrix.Views
         {
             ActorProperties.Visibility = Visibility.Hidden;
             CubeBox.Visibility = Visibility.Visible;
+        }
+
+        private void PosRelButton_Checked(object sender, RoutedEventArgs e)
+        {
+            AdvancedMove = true;
+        }
+
+        private void PosRelButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            AdvancedMove = false;
         }
 
         private void DisableTertiary()

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using ConceptMatrix.Utility;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -63,6 +64,8 @@ namespace ConceptMatrix.Models
             set => selectedIndex = value;
         }
 
+        [JsonIgnore] public bool RelativePositioning
+        { get => SaveSettings.Default.AdvancedMove; set => SaveSettings.Default.AdvancedMove = value; }
 
         [JsonIgnore] public bool IsEnabled { get; set; }
         [JsonIgnore] public bool GposeMode { get; set; }

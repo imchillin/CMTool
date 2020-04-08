@@ -88,10 +88,6 @@ namespace ConceptMatrix.Views
                 RotationSlider3.Visibility = Visibility.Hidden;
                 RotationSlider3.IsEnabled = false;
             }
-            if (SaveSettings.Default.AdvancedMove == true)
-            {
-                PosRelButton.IsChecked = true;
-            }
             if (SaveSettings.Default.AltRotate == true)
             {
                 RotRelButton.IsChecked = true;
@@ -581,14 +577,12 @@ namespace ConceptMatrix.Views
 
         private void PosRelButton_Checked(object sender, RoutedEventArgs e)
         {
-            SaveSettings.Default.AdvancedMove = true;
             AdvancedMove = true;
-        }
+		}
         private void PosRelButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            SaveSettings.Default.AdvancedMove = false;
             AdvancedMove = false;
-        }
+		}
 
         #endregion
 

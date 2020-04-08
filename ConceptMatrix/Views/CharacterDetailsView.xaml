@@ -384,7 +384,7 @@
 
         <!-- Relative Pos -->
         <Label Content="{Binding Source={x:Static resx:UIStringsContent.RelativeXYZPos}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.RelativeXYZPosToolTip}}" HorizontalAlignment="Left" Margin="654,307,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton Name="PosRelButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="769,305,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" BorderThickness="1" Checked="PosRelButton_Checked" Unchecked="PosRelButton_Unchecked" />
+        <ToggleButton Name="PosRelButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.RelativePositioning, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Margin="769,305,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" BorderThickness="1" Checked="PosRelButton_Checked" Unchecked="PosRelButton_Unchecked" />
 
         <!-- Relative Rot -->
         <Viewbox HorizontalAlignment="Left" Height="28" Margin="956,307,0,0" VerticalAlignment="Top"  Width="111">

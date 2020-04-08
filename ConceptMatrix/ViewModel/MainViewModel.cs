@@ -112,6 +112,11 @@ namespace ConceptMatrix.ViewModel
                 ViewTime5.XCheck.DataContext = this;
                 ViewTime5.YCheck.DataContext = this;
                 ViewTime5.ZCheck.DataContext = this;
+                ViewTime5.PosRelButton.DataContext = this;
+                if (SaveSettings.Default.AdvancedMove == true)
+                {
+                    CharacterDetails.CharacterDetails.RelativePositioning = true;
+                }
             }
             catch(Exception)
             {

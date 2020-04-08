@@ -176,6 +176,9 @@
                     <!-- Z Post -->
                     <CheckBox IsChecked="{Binding CharacterDetails.CharacterDetails.Z.freeze}" x:Name="ZCheck" Content="{Binding Source={x:Static resx:UIStringsContent.ZPos}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.ZPosToolTip}}" Height="28"/>
                     <mah:NumericUpDown x:Name="PosZ" Value="{Binding CharacterDetails.CharacterDetails.Z.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8CFF0000" StringFormat="F5" Interval="0.01" SourceUpdated="PosZ_SourceUpdated" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
+                    <!-- Relative Pos -->
+                    <Label Content="Relative PoS:" ToolTip="{Binding Source={x:Static resx:UIStringsContent.RelativeXYZPosToolTip}}" Height="28"/>
+                    <ToggleButton Name="PosRelButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.CharacterDetails.RelativePositioning, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Height="28" BorderThickness="1" Checked="PosRelButton_Checked" Unchecked="PosRelButton_Unchecked" />
                 </StackPanel>
             </StackPanel>
 

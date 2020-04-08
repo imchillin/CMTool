@@ -585,7 +585,6 @@ namespace ConceptMatrix.ViewModel
                 {
                     CharacterDetails.IsLinked = CharacterDetails.LinkedActors.Exists(x => x.Name == CharacterDetails.Name.value);
                 }
-
                 if (!CharacterDetails.TailSize.freeze) CharacterDetails.TailSize.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.TailSize));
 
                 if (!CharacterDetails.MuscleTone.freeze) CharacterDetails.MuscleTone.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.MuscleTone));
