@@ -8,6 +8,7 @@ using ConceptMatrix.Resx;
 using System.Threading.Tasks;
 using System.Windows.Media.Media3D;
 using System.Windows;
+using ConceptMatrix.Views;
 
 namespace ConceptMatrix.ViewModel
 {
@@ -22,7 +23,7 @@ namespace ConceptMatrix.ViewModel
         public static bool CheckingGPose = false;
         public bool InGpose = false;
         public int WritingCheck = 0;
-        public static int OldActorID = 0;
+        public static UIntPtr OldMemoryLocation;
         public static string baseAddr;
         public static Views.CharacterDetailsView Viewtime;
 
@@ -774,12 +775,19 @@ namespace ConceptMatrix.ViewModel
                 if (!CharacterDetails.Weather.freeze) CharacterDetails.Weather.value = (byte)m.readByte(GAS(MemoryManager.Instance.WeatherAddress, c.Weather));
                 if (!CharacterDetails.ForceWeather.freeze) CharacterDetails.ForceWeather.value = (ushort)m.read2Byte(GAS(MemoryManager.Instance.GposeFilters, c.ForceWeather));
                 CharacterDetails.TimeControl.value = (int)m.readInt(GAS(MemoryManager.Instance.TimeAddress, c.TimeControl));
-                var ActorIdentfication = (byte)m.readByte(GAS(baseAddr, c.ActorID));
-                if (ActorIdentfication != OldActorID)
+                var ActorIdentfication = m.get64bitCode(GAS(baseAddr, c.ActorID), "");
+                if (ActorIdentfication != OldMemoryLocation)
                 {
-                    CharacterDetails.ActorID.value = ActorIdentfication;
-
+                    OldMemoryLocation = ActorIdentfication;
                     //do check here if Editmode is enabled then read new bone values.
+                    Application.Current.Dispatcher.Invoke(() => //Use Dispather to Update UI Immediately  
+                    {
+                        if (PoseMatrixView.PosingMatrix.EditModeButton.IsChecked == true)
+                        {
+                            if (PoseMatrixViewModel.PoseVM.PointerPath != null) PoseMatrixView.PosingMatrix.GetPointers(PoseMatrixViewModel.PoseVM.TheButton);
+                            PoseMatrixView.PosingMatrix.EnableTertiary();
+                        }
+                    });
                 }
                 if (!CharacterDetails.HeadPiece.Activated) CharacterDetails.HeadSlot.value = CharacterDetails.HeadPiece.value + "," + CharacterDetails.HeadV.value + "," + CharacterDetails.HeadDye.value;
                 if (!CharacterDetails.Chest.Activated) CharacterDetails.BodySlot.value = CharacterDetails.Chest.value + "," + CharacterDetails.ChestV.value + "," + CharacterDetails.ChestDye.value;
