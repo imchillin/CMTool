@@ -58,6 +58,11 @@ namespace ConceptMatrix.ViewModel
                 RotateHelper();
             }
         }
+        public float CubeBone_X { get; set; }
+        public float CubeBone_Y { get; set; }
+        public float CubeBone_Z { get; set; }
+        public float CubeBone_W { get; set; }
+
         private string pointerPath;
         public string PointerPath
         {
@@ -68,6 +73,11 @@ namespace ConceptMatrix.ViewModel
                 BoneX = 0;
                 BoneY = 0;
                 BoneZ = 0;
+                CubeBone_X = 0;
+                CubeBone_Y = 0;
+                CubeBone_Z = 0;
+                CubeBone_W = 0;
+
                 if (value != null)
                 {
                     byte[] bytearray = Memory.readBytes(GAS(CharacterDetailsViewModel.baseAddr, value), 16);
@@ -87,6 +97,7 @@ namespace ConceptMatrix.ViewModel
                             PoseMatrixView.PosingMatrix.BoneSliderY.Minimum = -10;
                             PoseMatrixView.PosingMatrix.BoneSliderZ.Maximum = 10;
                             PoseMatrixView.PosingMatrix.BoneSliderZ.Minimum = -10;
+                            PoseMatrixView.PosingMatrix.Cube.IsEnabled = false;
                         }
                         else
                         {
@@ -99,6 +110,7 @@ namespace ConceptMatrix.ViewModel
                             PoseMatrixView.PosingMatrix.BoneSliderX.IsEnabled = false;
                             PoseMatrixView.PosingMatrix.BoneSliderY.IsEnabled = false;
                             PoseMatrixView.PosingMatrix.BoneSliderZ.IsEnabled = false;
+                            PoseMatrixView.PosingMatrix.Cube.IsEnabled = false;
                         }
                         BoneX = BitConverter.ToSingle(bytearray, 0);
                         BoneY = BitConverter.ToSingle(bytearray, 4);
@@ -115,6 +127,10 @@ namespace ConceptMatrix.ViewModel
                         BoneX = (float)euler.X;
                         BoneY = (float)euler.Y;
                         BoneZ = (float)euler.Z;
+                        CubeBone_X = BitConverter.ToSingle(bytearray, 0);
+                        CubeBone_Y = BitConverter.ToSingle(bytearray, 4);
+                        CubeBone_Z = BitConverter.ToSingle(bytearray, 8);
+                        CubeBone_W = BitConverter.ToSingle(bytearray, 12);
                     }
                 }
             }
@@ -155,7 +171,10 @@ namespace ConceptMatrix.ViewModel
                 Quaternion quat = GetEulerAngles().ToQuaternion();
                 //     Console.WriteLine($"{(float)quat.X}, {(float)quat.Y}, {(float)quat.Z}, {(float)quat.W}");
                 Memory.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, PointerPath), GetBytes(quat));
-
+                CubeBone_X = (float)quat.X;
+                CubeBone_Y = (float)quat.Y;
+                CubeBone_Z = (float)quat.Z;
+                CubeBone_W = (float)quat.W;
                 oldrot = newrot;
                 newrot = new Vector3D(BoneX, BoneY, BoneZ);
                 if (ParentingToggle == true && BNode != null)
@@ -167,6 +186,29 @@ namespace ConceptMatrix.ViewModel
                 }
             }
         }
+
+        public void RotateHelperQuaternion(Quaternion Rotation)
+        {
+            if (PointerPath == null) return;
+            if (PointerType > 0) return;
+            else
+            {
+                Memory.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, PointerPath), GetBytes(Rotation));
+                oldrot = newrot;
+                var ConvertToEuler = Rotation.ToEulerAngles();
+                BoneX = (float)ConvertToEuler.X;
+                BoneY = (float)ConvertToEuler.Y;
+                BoneZ = (float)ConvertToEuler.Z;
+                newrot = new Vector3D(BoneX, BoneY, BoneZ);
+                if (ParentingToggle == true && BNode != null)
+                {
+                    Bone_Flag_Manager();
+                    Quaternion q1_inv = Extensions.QInv(oldrot.ToQuaternion());
+                    Rotate_ChildBone(BNode, q1_inv, Rotation);
+                }
+            }
+        }
+
         public void Rotate_ChildBone(BoneNodes boneParent, Quaternion q1_inv, Quaternion q1_new)
         {
             foreach (BoneNodes boneNode in boneParent)
