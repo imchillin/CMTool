@@ -286,17 +286,8 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public float RotateX { get; set; }
         [JsonIgnore] public float RotateY { get; set; }
         [JsonIgnore] public float RotateZ { get; set; }
-        [JsonIgnore] public float BoneX { get; set; }
-        [JsonIgnore] public float BoneY { get; set; }
-        [JsonIgnore] public float BoneZ { get; set; }
 
         [JsonIgnore] public bool RotateFreeze { get; set; }
-        #region Bone
-        [JsonIgnore] public Address<float> CubeBone_X { get; set; }
-        [JsonIgnore] public Address<float> CubeBone_Y { get; set; }
-        [JsonIgnore] public Address<float> CubeBone_Z { get; set; }
-        [JsonIgnore] public Address<float> CubeBone_W { get; set; }
-        #endregion
  
         public CharacterDetails()
         {
@@ -504,13 +495,6 @@ namespace ConceptMatrix.Models
             Min.Checker = true;
             CZoom.Checker = true;
             RotateFreeze = false;
-
-            #region Bones
-            CubeBone_X = new Address<float>();
-            CubeBone_Y = new Address<float>();
-            CubeBone_Z = new Address<float>();
-            CubeBone_W = new Address<float>();
-            #endregion
         }
     }
 }
