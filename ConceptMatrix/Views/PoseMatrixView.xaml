@@ -4,7 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:resx="clr-namespace:ConceptMatrix.Resx"
-             xmlns:local="clr-namespace:ConceptMatrix.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:local="clr-namespace:ConceptMatrix.Views" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d" 
              TextElement.FontSize="11.65"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -304,70 +306,122 @@
                     </StackPanel>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Body" Style="{DynamicResource MenuLevel2}">
+            <TabItem Header="Body n Hands" Style="{DynamicResource MenuLevel2}">
                 <StackPanel>
-                    <GroupBox Header=" Body" Width="720" Padding="0,0,0,5">
-                        <StackPanel>
-                            <StackPanel Orientation="Vertical">
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Content="Neck:"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="Neck"/>
-                                    <Label Content="Scabbards:"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ScabbardLeft" Checked="Toggles_Checked" Content="L"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ScabbardRight" Checked="Toggles_Checked" Content="R"/>
-                                    <Label Content="Shoulders:"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ShoulderLeft" Checked="Toggles_Checked" Content="L"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ShoulderRight" Checked="Toggles_Checked" Content="R"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Content="Cervical:"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="SpineC"/>
-                                    <Label Content="Clavicles:"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClavicleLeft" Checked="Toggles_Checked" Content="L"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClavicleRight" Checked="Toggles_Checked" Content="R"/>
-                                    <Label Content="Arms:"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ArmLeft" Checked="Toggles_Checked" Content="L"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ArmRight" Checked="Toggles_Checked" Content="R"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Content="Thoracic:"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="SpineB"/>
-                                    <Label Content="Breasts:"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="BreastLeft" Checked="Toggles_Checked" Content="L"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="BreastRight" Checked="Toggles_Checked" Content="R"/>
-                                    <Label Content="Couters:"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="CouterLeft" Checked="Toggles_Checked" Content="L"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="CouterRight" Checked="Toggles_Checked" Content="R"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Content="Lumbar:"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="SpineA"/>
-                                    <Label Content="Pauldron:"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="PauldronLeft" Checked="Toggles_Checked" Content="L"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="PauldronRight" Checked="Toggles_Checked" Content="R"/>
-                                    <Label Content="Elbows:"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ElbowLeft" Checked="Toggles_Checked" Content="L"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ElbowRight" Checked="Toggles_Checked" Content="R"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Width="115"></Label>
-                                    <Label Content="Shields:"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ShieldLeft" Checked="Toggles_Checked" Content="L"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ShieldRight" Checked="Toggles_Checked" Content="R"/>
-                                    <Label Content="Forearms:"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ForearmLeft" Checked="Toggles_Checked" Content="L"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ForearmRight" Checked="Toggles_Checked" Content="R"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Width="263"></Label>
-                                    <Label Content="Wrists:"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="WristLeft" Checked="Toggles_Checked" Content="L"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="WristRight" Checked="Toggles_Checked" Content="R"/>
+                    <StackPanel Orientation="Horizontal">
+                        <GroupBox Header=" Body" Padding="0,0,0,5">
+                            <StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="Neck:"  VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="Neck"/>
+                                        <Label Content="Scabbards:"  VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ScabbardLeft" Checked="Toggles_Checked" Content="L"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ScabbardRight" Checked="Toggles_Checked" Content="R"/>
+                                        <Label Content="Shoulders:"  VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ShoulderLeft" Checked="Toggles_Checked" Content="L"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ShoulderRight" Checked="Toggles_Checked" Content="R"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="Cervical:"  VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="SpineC"/>
+                                        <Label Content="Clavicles:"  VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClavicleLeft" Checked="Toggles_Checked" Content="L"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClavicleRight" Checked="Toggles_Checked" Content="R"/>
+                                        <Label Content="Arms:"  VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ArmLeft" Checked="Toggles_Checked" Content="L"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ArmRight" Checked="Toggles_Checked" Content="R"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="Thoracic:"  VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="SpineB"/>
+                                        <Label Content="Breasts:"  VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="BreastLeft" Checked="Toggles_Checked" Content="L"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="BreastRight" Checked="Toggles_Checked" Content="R"/>
+                                        <Label Content="Couters:"  VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="CouterLeft" Checked="Toggles_Checked" Content="L"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="CouterRight" Checked="Toggles_Checked" Content="R"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="Lumbar:"  VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="SpineA"/>
+                                        <Label Content="Pauldron:"  VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="PauldronLeft" Checked="Toggles_Checked" Content="L"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="PauldronRight" Checked="Toggles_Checked" Content="R"/>
+                                        <Label Content="Elbows:"  VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ElbowLeft" Checked="Toggles_Checked" Content="L"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ElbowRight" Checked="Toggles_Checked" Content="R"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Width="115"></Label>
+                                        <Label Content="Shields:"  VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ShieldLeft" Checked="Toggles_Checked" Content="L"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ShieldRight" Checked="Toggles_Checked" Content="R"/>
+                                        <Label Content="Forearms:"  VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ForearmLeft" Checked="Toggles_Checked" Content="L"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ForearmRight" Checked="Toggles_Checked" Content="R"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Width="263"></Label>
+                                        <Label Content="Wrists:"  VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="WristLeft" Checked="Toggles_Checked" Content="L"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="WristRight" Checked="Toggles_Checked" Content="R"/>
+                                    </StackPanel>
                                 </StackPanel>
                             </StackPanel>
-                        </StackPanel>
 
-                    </GroupBox>
+                        </GroupBox>
+                        <GroupBox Header=" Hands" Padding="0,0,0,5" Width="313">
+                            <StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <Label Content="Hands:"  VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="HandLeft" Checked="Toggles_Checked" Content="L"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="HandRight" Checked="Toggles_Checked" Content="R"/>
+                                        <Label Content="Weapons:"  VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="WeaponLeft" Checked="Toggles_Checked" Content="L"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="WeaponRight" Checked="Toggles_Checked" Content="R"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <Label Content="Thumb:"  VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ThumbALeft" Checked="Toggles_Checked" Content="L1"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ThumbBLeft" Checked="Toggles_Checked" Content="L2"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ThumbARight" Checked="Toggles_Checked" Content="R1"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ThumbBRight" Checked="Toggles_Checked" Content="R2"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <Label Content="Index:"  VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="IndexALeft" Checked="Toggles_Checked" Content="L1"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="IndexBLeft" Checked="Toggles_Checked" Content="L2"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="IndexARight" Checked="Toggles_Checked" Content="R1"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="IndexBRight" Checked="Toggles_Checked" Content="R2"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <Label Content="Middle:"  VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="MiddleALeft" Checked="Toggles_Checked" Content="L1"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="MiddleBLeft" Checked="Toggles_Checked" Content="L2"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="MiddleARight" Checked="Toggles_Checked" Content="R1"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="MiddleBRight" Checked="Toggles_Checked" Content="R2"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <Label Content="Ring:"  VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="RingALeft" Checked="Toggles_Checked" Content="L1"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="RingBLeft" Checked="Toggles_Checked" Content="L2"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="RingARight" Checked="Toggles_Checked" Content="R1"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="RingBRight"  Checked="Toggles_Checked" Content="R2"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <Label Content="Pinky:"  VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="PinkyALeft" Checked="Toggles_Checked" Content="L1"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="PinkyBLeft" Checked="Toggles_Checked" Content="L2"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="PinkyARight" Checked="Toggles_Checked" Content="R1"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="PinkyBRight"  Checked="Toggles_Checked" Content="R2"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+
+                        </GroupBox>
+                    </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                         <Label Content="Body:"  VerticalAlignment="Center" Width="75"/>
                         <Button x:Name="SavestateBody01" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="28" Padding="0" Click="SavestateBody01_Click">
@@ -394,6 +448,33 @@
                                 <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
                             </StackPanel>
                         </Button>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Weapons:"  VerticalAlignment="Center" Width="75"/>
+                            <Button x:Name="SavestateWeapons01" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="28" Padding="0" Click="SavestateWeapons01_Click">
+                                <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                                    <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                                    <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="LoadstateWeapons01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left"  Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" IsEnabled="False" Click="LoadstateWeapons01_Click">
+                                <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                                    <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                                    <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="SavestateWeapons02" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" Click="SavestateWeapons02_Click">
+                                <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                                    <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                                    <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="LoadstateWeapons02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left"  Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" IsEnabled="False" Click="LoadstateWeapons02_Click">
+                                <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                                    <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                                    <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                         <Label Content="Left Arm:"  VerticalAlignment="Center" Width="75"/>
@@ -421,6 +502,33 @@
                                 <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
                             </StackPanel>
                         </Button>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Left Hand:"  VerticalAlignment="Center" Width="75"/>
+                            <Button x:Name="SavestateLeftHand01" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="28" Padding="0" Click="SavestateLeftHand01_Click">
+                                <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                                    <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                                    <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="LoadstateLeftHand01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left"  Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" IsEnabled="False" Click="LoadstateLeftHand01_Click">
+                                <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                                    <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                                    <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="SavestateLeftHand02" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" Click="SavestateLeftHand02_Click">
+                                <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                                    <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                                    <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="LoadstateLeftHand02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left"  Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" IsEnabled="False" Click="LoadstateLeftHand02_Click">
+                                <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                                    <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                                    <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                         <Label Content="Right Arm:"  VerticalAlignment="Center" Width="75"/>
@@ -448,226 +556,35 @@
                                 <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
                             </StackPanel>
                         </Button>
-                    </StackPanel>
 
-                </StackPanel>
-
-            </TabItem>
-            <TabItem Header="Clothes" Style="{DynamicResource MenuLevel2}" HorizontalAlignment="Right">
-                <StackPanel>
-                    <GroupBox Header=" Clothes" Width="720" Padding="0,0,0,5">
-                        <StackPanel>
-                            <StackPanel Orientation="Vertical">
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Content="Front:"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothFrontALeft" Checked="Toggles_Checked" Content="L1"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothFrontARight" Checked="Toggles_Checked" Content="R1"/>
-                                    <Label Content="Sides:"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothSideALeft" Checked="Toggles_Checked" Content="L1"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothSideARight" Checked="Toggles_Checked" Content="R1"/>
-
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Right Hand:"  VerticalAlignment="Center" Width="75"/>
+                            <Button x:Name="SavestateRightHand01" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="28" Padding="0" Click="SavestateRightHand01_Click">
+                                <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                                    <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                                    <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
                                 </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-
-                                    <Label   VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothFrontBLeft" Checked="Toggles_Checked" Content="L2"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothFrontBRight" Checked="Toggles_Checked" Content="R2"/>
-                                    <Label   VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothSideBLeft" Checked="Toggles_Checked" Content="L2"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothSideBRight" Checked="Toggles_Checked" Content="R2"/>
+                            </Button>
+                            <Button x:Name="LoadstateRightHand01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left"  Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" IsEnabled="False" Click="LoadstateRightHand01_Click">
+                                <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                                    <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                                    <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
                                 </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-
-                                    <Label Content=""  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothFrontCLeft" Checked="Toggles_Checked" Content="L3"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothFrontCRight" Checked="Toggles_Checked" Content="R3"/>
-                                    <Label  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothSideCLeft" Checked="Toggles_Checked" Content="L3"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothSideCRight" Checked="Toggles_Checked" Content="R3"/>
+                            </Button>
+                            <Button x:Name="SavestateRightHand02" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" Click="SavestateRightHand02_Click">
+                                <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                                    <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                                    <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
                                 </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Content="Back:"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothBackALeft" Checked="Toggles_Checked" Content="L1"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothBackARight" Checked="Toggles_Checked" Content="R1"/>
+                            </Button>
+                            <Button x:Name="LoadstateRightHand02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left"  Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" IsEnabled="False" Click="LoadstateRightHand02_Click">
+                                <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                                    <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                                    <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
                                 </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <Label  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothBackBLeft" Checked="Toggles_Checked" Content="L2"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothBackBRight" Checked="Toggles_Checked" Content="R2"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0,3,0,0">
-                                    <Label  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothBackCLeft" Checked="Toggles_Checked" Content="L3"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothBackCRight" Checked="Toggles_Checked" Content="R3"/>
-                                </StackPanel>
-                            </StackPanel>
+                            </Button>
                         </StackPanel>
-
-                    </GroupBox>
-                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                        <Label Content="Clothes:"  VerticalAlignment="Center" Width="75"/>
-                        <Button x:Name="SavestateClothes01" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="28" Padding="0" Click="SavestateClothes01_Click">
-                            <StackPanel Orientation="Horizontal" Width="50" Height="16">
-                                <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
-                                <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="LoadstateClothes01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left"  Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" IsEnabled="False" Click="LoadstateClothes01_Click">
-                            <StackPanel Orientation="Horizontal" Width="50" Height="16">
-                                <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
-                                <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="SavestateClothes02" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" Click="SavestateClothes02_Click">
-                            <StackPanel Orientation="Horizontal" Width="50" Height="16">
-                                <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
-                                <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="LoadstateClothes02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left"  Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" IsEnabled="False" Click="LoadstateClothes02_Click">
-                            <StackPanel Orientation="Horizontal" Width="50" Height="16">
-                                <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
-                                <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
-                            </StackPanel>
-                        </Button>
                     </StackPanel>
-                </StackPanel>
-
-            </TabItem>
-            <TabItem Header="Hands" Style="{DynamicResource MenuLevel2}">
-                <StackPanel>
-                    <GroupBox Header=" Hands" Width="720" Padding="0,0,0,5">
-                        <StackPanel>
-                            <StackPanel Orientation="Vertical">
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <Label Content="Hands:"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="HandLeft" Checked="Toggles_Checked" Content="L"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="HandRight" Checked="Toggles_Checked" Content="R"/>
-                                    <Label Content="Weapons:"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="WeaponLeft" Checked="Toggles_Checked" Content="L"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="WeaponRight" Checked="Toggles_Checked" Content="R"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <Label Content="Thumb:"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ThumbALeft" Checked="Toggles_Checked" Content="L1"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ThumbBLeft" Checked="Toggles_Checked" Content="L2"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ThumbARight" Checked="Toggles_Checked" Content="R1"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ThumbBRight" Checked="Toggles_Checked" Content="R2"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <Label Content="Index:"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="IndexALeft" Checked="Toggles_Checked" Content="L1"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="IndexBLeft" Checked="Toggles_Checked" Content="L2"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="IndexARight" Checked="Toggles_Checked" Content="R1"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="IndexBRight" Checked="Toggles_Checked" Content="R2"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <Label Content="Middle:"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="MiddleALeft" Checked="Toggles_Checked" Content="L1"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="MiddleBLeft" Checked="Toggles_Checked" Content="L2"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="MiddleARight" Checked="Toggles_Checked" Content="R1"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="MiddleBRight" Checked="Toggles_Checked" Content="R2"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <Label Content="Ring:"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="RingALeft" Checked="Toggles_Checked" Content="L1"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="RingBLeft" Checked="Toggles_Checked" Content="L2"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="RingARight" Checked="Toggles_Checked" Content="R1"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="RingBRight"  Checked="Toggles_Checked" Content="R2"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <Label Content="Pinky:"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="PinkyALeft" Checked="Toggles_Checked" Content="L1"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="PinkyBLeft" Checked="Toggles_Checked" Content="L2"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="PinkyARight" Checked="Toggles_Checked" Content="R1"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="PinkyBRight"  Checked="Toggles_Checked" Content="R2"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </StackPanel>
-
-                    </GroupBox>
-                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                        <Label Content="Weapons:"  VerticalAlignment="Center" Width="75"/>
-                        <Button x:Name="SavestateWeapons01" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="28" Padding="0" Click="SavestateWeapons01_Click">
-                            <StackPanel Orientation="Horizontal" Width="50" Height="16">
-                                <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
-                                <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="LoadstateWeapons01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left"  Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" IsEnabled="False" Click="LoadstateWeapons01_Click">
-                            <StackPanel Orientation="Horizontal" Width="50" Height="16">
-                                <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
-                                <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="SavestateWeapons02" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" Click="SavestateWeapons02_Click">
-                            <StackPanel Orientation="Horizontal" Width="50" Height="16">
-                                <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
-                                <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="LoadstateWeapons02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left"  Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" IsEnabled="False" Click="LoadstateWeapons02_Click">
-                            <StackPanel Orientation="Horizontal" Width="50" Height="16">
-                                <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
-                                <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
-                            </StackPanel>
-                        </Button>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                        <Label Content="Left Hand:"  VerticalAlignment="Center" Width="75"/>
-                        <Button x:Name="SavestateLeftHand01" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="28" Padding="0" Click="SavestateLeftHand01_Click">
-                            <StackPanel Orientation="Horizontal" Width="50" Height="16">
-                                <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
-                                <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="LoadstateLeftHand01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left"  Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" IsEnabled="False" Click="LoadstateLeftHand01_Click">
-                            <StackPanel Orientation="Horizontal" Width="50" Height="16">
-                                <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
-                                <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="SavestateLeftHand02" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" Click="SavestateLeftHand02_Click">
-                            <StackPanel Orientation="Horizontal" Width="50" Height="16">
-                                <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
-                                <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="LoadstateLeftHand02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left"  Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" IsEnabled="False" Click="LoadstateLeftHand02_Click">
-                            <StackPanel Orientation="Horizontal" Width="50" Height="16">
-                                <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
-                                <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
-                            </StackPanel>
-                        </Button>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                        <Label Content="Right Hand:"  VerticalAlignment="Center" Width="75"/>
-                        <Button x:Name="SavestateRightHand01" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="28" Padding="0" Click="SavestateRightHand01_Click">
-                            <StackPanel Orientation="Horizontal" Width="50" Height="16">
-                                <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
-                                <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="LoadstateRightHand01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left"  Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" IsEnabled="False" Click="LoadstateRightHand01_Click">
-                            <StackPanel Orientation="Horizontal" Width="50" Height="16">
-                                <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
-                                <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="SavestateRightHand02" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" Click="SavestateRightHand02_Click">
-                            <StackPanel Orientation="Horizontal" Width="50" Height="16">
-                                <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
-                                <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="LoadstateRightHand02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left"  Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" IsEnabled="False" Click="LoadstateRightHand02_Click">
-                            <StackPanel Orientation="Horizontal" Width="50" Height="16">
-                                <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
-                                <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
-                            </StackPanel>
-                        </Button>
-                    </StackPanel>
-
                 </StackPanel>
 
             </TabItem>
@@ -700,7 +617,7 @@
                                     <Label Content="Knees:"  VerticalAlignment="Center" Width="80"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="KneeLeft" Checked="Toggles_Checked" Content="L"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="KneeRight" Checked="Toggles_Checked" Content="R"/>
-                                    
+
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label Content="Poleyns:"  VerticalAlignment="Center" Width="80"/>
@@ -807,59 +724,138 @@
                 </StackPanel>
 
             </TabItem>
-            <TabItem Header="Equipment" Style="{DynamicResource MenuLevel2}">
+            <TabItem Header="Clothes n Equipment" Style="{DynamicResource MenuLevel2}" HorizontalAlignment="Right">
                 <StackPanel>
-                    <GroupBox Header=" Equipment" Width="720" Padding="0,0,0,5">
-                        <StackPanel>
-                            <StackPanel Orientation="Vertical">
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Content="Helm:"  VerticalAlignment="Center" Width="60"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetA" Content="1"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetB" Content="2" />
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetC" Content="3"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetD" Content="4" />
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetE" Content="5"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetF" Content="6"/>
-                                    <Label Content="Top:"  VerticalAlignment="Center" Width="40"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopA" Content="1"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopB" Content="2" />
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopC" Content="3"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                    <Label  VerticalAlignment="Center" Width="60"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetG" Content="7"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetH" Content="8" />
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetI" Content="9"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetJ" Content="10" />
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetK" Content="11"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetL" Content="12"/>
-                                    <Label  VerticalAlignment="Center" Width="40"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopD" Content="4"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopE" Content="5" />
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopF" Content="6"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal"  Margin="0,5,0,0">
-                                    <Label  VerticalAlignment="Center" Width="60"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetM" Content="13"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetN" Content="14" />
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetO" Content="15"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetP" Content="16" />
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetQ" Content="17"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetR" Content="18"/>
-                                    <Label  VerticalAlignment="Center" Width="40"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopG" Content="7"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopH" Content="8" />
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopI" Content="9"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal">
+                        <GroupBox Header=" Clothes" Padding="0,0,0,5">
+                            <StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="Front:"  VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothFrontALeft" Checked="Toggles_Checked" Content="L1"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothFrontARight" Checked="Toggles_Checked" Content="R1"/>
+                                        <Label Content="Sides:"  VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothSideALeft" Checked="Toggles_Checked" Content="L1"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothSideARight" Checked="Toggles_Checked" Content="R1"/>
 
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+
+                                        <Label   VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothFrontBLeft" Checked="Toggles_Checked" Content="L2"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothFrontBRight" Checked="Toggles_Checked" Content="R2"/>
+                                        <Label   VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothSideBLeft" Checked="Toggles_Checked" Content="L2"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothSideBRight" Checked="Toggles_Checked" Content="R2"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+
+                                        <Label Content=""  VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothFrontCLeft" Checked="Toggles_Checked" Content="L3"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothFrontCRight" Checked="Toggles_Checked" Content="R3"/>
+                                        <Label  VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothSideCLeft" Checked="Toggles_Checked" Content="L3"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothSideCRight" Checked="Toggles_Checked" Content="R3"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="Back:"  VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothBackALeft" Checked="Toggles_Checked" Content="L1"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothBackARight" Checked="Toggles_Checked" Content="R1"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label  VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothBackBLeft" Checked="Toggles_Checked" Content="L2"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothBackBRight" Checked="Toggles_Checked" Content="R2"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="0,3,0,0">
+                                        <Label  VerticalAlignment="Center" Width="80"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothBackCLeft" Checked="Toggles_Checked" Content="L3"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ClothBackCRight" Checked="Toggles_Checked" Content="R3"/>
+                                    </StackPanel>
                                 </StackPanel>
                             </StackPanel>
-                        </StackPanel>
 
-                    </GroupBox>
+                        </GroupBox>
+                        <GroupBox Header=" Equipment" Padding="0,0,0,5" Width="428">
+                            <StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="Helm:"  VerticalAlignment="Center" Width="60"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetA" Content="1"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetB" Content="2" />
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetC" Content="3"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetD" Content="4" />
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetE" Content="5"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetF" Content="6"/>
+                                        <Label Content="Top:"  VerticalAlignment="Center" Width="40"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopA" Content="1"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopB" Content="2" />
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopC" Content="3"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                        <Label  VerticalAlignment="Center" Width="60"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetG" Content="7"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetH" Content="8" />
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetI" Content="9"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetJ" Content="10" />
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetK" Content="11"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetL" Content="12"/>
+                                        <Label  VerticalAlignment="Center" Width="40"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopD" Content="4"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopE" Content="5" />
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopF" Content="6"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal"  Margin="0,5,0,0">
+                                        <Label  VerticalAlignment="Center" Width="60"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetM" Content="13"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetN" Content="14" />
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetO" Content="15"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetP" Content="16" />
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetQ" Content="17"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetR" Content="18"/>
+                                        <Label  VerticalAlignment="Center" Width="40"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopG" Content="7"/>
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopH" Content="8" />
+                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopI" Content="9"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+
+                        </GroupBox>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                        <Label Content="Clothes:"  VerticalAlignment="Center" Width="75"/>
+                        <Button x:Name="SavestateClothes01" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="28" Padding="0" Click="SavestateClothes01_Click">
+                            <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                                <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                                <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="LoadstateClothes01" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left"  Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" IsEnabled="False" Click="LoadstateClothes01_Click">
+                            <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                                <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                                <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="SavestateClothes02" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" Click="SavestateClothes02_Click">
+                            <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                                <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                                <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="LoadstateClothes02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left"  Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" IsEnabled="False" Click="LoadstateClothes02_Click">
+                            <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                                <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                                <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                         <Label Content="Helm:"  VerticalAlignment="Center" Width="75"/>
                         <Button x:Name="SavestateHelm01" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="28" Padding="0" Click="SavestateHelm01_Click">
@@ -914,10 +910,10 @@
                             </StackPanel>
                         </Button>
                     </StackPanel>
-
                 </StackPanel>
 
             </TabItem>
+
             <TabItem Header="Others" Style="{DynamicResource MenuLevel2}">
                 <StackPanel>
                     <GroupBox Header=" Other" Width="720" Padding="0,0,0,5">

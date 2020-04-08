@@ -53,7 +53,7 @@ namespace ConceptMatrix.Views
 		{
 			if (this.DataContext is CharacterDetails details)
 			{
-				details.ActorID.PropertyChanged += this.ActorIdChanged;
+				//details.ActorID.PropertyChanged += this.ActorIdChanged;
 
 				this.ViewModel = new SimplePoseViewModel(details);
 				this.ContentArea.DataContext = this.ViewModel;
@@ -62,13 +62,13 @@ namespace ConceptMatrix.Views
 
 		private void ActorIdChanged(object sender, PropertyChangedEventArgs e)
 		{
-			if (e.PropertyName == nameof(CharacterDetails.ActorID.value))
+		/*	if (e.PropertyName == nameof(CharacterDetails.ActorID.value))
 			{
 				Application.Current.Dispatcher.Invoke(()=>
 				{
 					this.ViewModel.Refresh();
 				});
-			}
+			}*/
 		}
 
 		private void OnApplicationExiting(object sender, ExitEventArgs e)
