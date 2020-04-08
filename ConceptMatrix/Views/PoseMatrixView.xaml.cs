@@ -32,6 +32,7 @@ namespace ConceptMatrix.Views
         #region Savestate01 Strings
         public string Race_Sav01;
 
+        #region Bones
         public string Root_Sav01;
         public string Abdomen_Sav01;
         public string Throw_Sav01;
@@ -237,9 +238,218 @@ namespace ConceptMatrix.Views
         public string ExTopH_Sav01;
         public string ExTopI_Sav01;
         #endregion
+
+        #region Scale
+        public string Root_Sav01Size;
+        public string Abdomen_Sav01Size;
+        public string Throw_Sav01Size;
+        public string Waist_Sav01Size;
+        public string SpineA_Sav01Size;
+        public string LegLeft_Sav01Size;
+        public string LegRight_Sav01Size;
+        public string HolsterLeft_Sav01Size;
+        public string HolsterRight_Sav01Size;
+        public string SheatheLeft_Sav01Size;
+        public string SheatheRight_Sav01Size;
+        public string SpineB_Sav01Size;
+        public string ClothBackALeft_Sav01Size;
+        public string ClothBackARight_Sav01Size;
+        public string ClothFrontALeft_Sav01Size;
+        public string ClothFrontARight_Sav01Size;
+        public string ClothSideALeft_Sav01Size;
+        public string ClothSideARight_Sav01Size;
+        public string KneeLeft_Sav01Size;
+        public string KneeRight_Sav01Size;
+        public string BreastLeft_Sav01Size;
+        public string BreastRight_Sav01Size;
+        public string SpineC_Sav01Size;
+        public string ClothBackBLeft_Sav01Size;
+        public string ClothBackBRight_Sav01Size;
+        public string ClothFrontBLeft_Sav01Size;
+        public string ClothFrontBRight_Sav01Size;
+        public string ClothSideBLeft_Sav01Size;
+        public string ClothSideBRight_Sav01Size;
+        public string CalfLeft_Sav01Size;
+        public string CalfRight_Sav01Size;
+        public string ScabbardLeft_Sav01Size;
+        public string ScabbardRight_Sav01Size;
+        public string Neck_Sav01Size;
+        public string ClavicleLeft_Sav01Size;
+        public string ClavicleRight_Sav01Size;
+        public string ClothBackCLeft_Sav01Size;
+        public string ClothBackCRight_Sav01Size;
+        public string ClothFrontCLeft_Sav01Size;
+        public string ClothFrontCRight_Sav01Size;
+        public string ClothSideCLeft_Sav01Size;
+        public string ClothSideCRight_Sav01Size;
+        public string PoleynLeft_Sav01Size;
+        public string PoleynRight_Sav01Size;
+        public string FootLeft_Sav01Size;
+        public string FootRight_Sav01Size;
+        public string Head_Sav01Size;
+        public string ArmLeft_Sav01Size;
+        public string ArmRight_Sav01Size;
+        public string PauldronLeft_Sav01Size;
+        public string PauldronRight_Sav01Size;
+        public string Unknown00_Sav01Size;
+        public string ToesLeft_Sav01Size;
+        public string ToesRight_Sav01Size;
+        public string HairA_Sav01Size;
+        public string HairFrontLeft_Sav01Size;
+        public string HairFrontRight_Sav01Size;
+        public string EarLeft_Sav01Size;
+        public string EarRight_Sav01Size;
+        public string ForearmLeft_Sav01Size;
+        public string ForearmRight_Sav01Size;
+        public string ShoulderLeft_Sav01Size;
+        public string ShoulderRight_Sav01Size;
+        public string HairB_Sav01Size;
+        public string HandLeft_Sav01Size;
+        public string HandRight_Sav01Size;
+        public string ShieldLeft_Sav01Size;
+        public string ShieldRight_Sav01Size;
+        public string EarringALeft_Sav01Size;
+        public string EarringARight_Sav01Size;
+        public string ElbowLeft_Sav01Size;
+        public string ElbowRight_Sav01Size;
+        public string CouterLeft_Sav01Size;
+        public string CouterRight_Sav01Size;
+        public string WristLeft_Sav01Size;
+        public string WristRight_Sav01Size;
+        public string IndexALeft_Sav01Size;
+        public string IndexARight_Sav01Size;
+        public string PinkyALeft_Sav01Size;
+        public string PinkyARight_Sav01Size;
+        public string RingALeft_Sav01Size;
+        public string RingARight_Sav01Size;
+        public string MiddleALeft_Sav01Size;
+        public string MiddleARight_Sav01Size;
+        public string ThumbALeft_Sav01Size;
+        public string ThumbARight_Sav01Size;
+        public string WeaponLeft_Sav01Size;
+        public string WeaponRight_Sav01Size;
+        public string EarringBLeft_Sav01Size;
+        public string EarringBRight_Sav01Size;
+        public string IndexBLeft_Sav01Size;
+        public string IndexBRight_Sav01Size;
+        public string PinkyBLeft_Sav01Size;
+        public string PinkyBRight_Sav01Size;
+        public string RingBLeft_Sav01Size;
+        public string RingBRight_Sav01Size;
+        public string MiddleBLeft_Sav01Size;
+        public string MiddleBRight_Sav01Size;
+        public string ThumbBLeft_Sav01Size;
+        public string ThumbBRight_Sav01Size;
+        public string TailA_Sav01Size;
+        public string TailB_Sav01Size;
+        public string TailC_Sav01Size;
+        public string TailD_Sav01Size;
+        public string TailE_Sav01Size;
+        public string RootHead_Sav01Size;
+        public string Jaw_Sav01Size;
+        public string EyelidLowerLeft_Sav01Size;
+        public string EyelidLowerRight_Sav01Size;
+        public string EyeLeft_Sav01Size;
+        public string EyeRight_Sav01Size;
+        public string Nose_Sav01Size;
+        public string CheekLeft_Sav01Size;
+        public string HrothWhiskersLeft_Sav01Size;
+        public string CheekRight_Sav01Size;
+        public string HrothWhiskersRight_Sav01Size;
+        public string LipsLeft_Sav01Size;
+        public string HrothEyebrowLeft_Sav01Size;
+        public string LipsRight_Sav01Size;
+        public string HrothEyebrowRight_Sav01Size;
+        public string EyebrowLeft_Sav01Size;
+        public string HrothBridge_Sav01Size;
+        public string EyebrowRight_Sav01Size;
+        public string HrothBrowLeft_Sav01Size;
+        public string Bridge_Sav01Size;
+        public string HrothBrowRight_Sav01Size;
+        public string BrowLeft_Sav01Size;
+        public string HrothJawUpper_Sav01Size;
+        public string BrowRight_Sav01Size;
+        public string HrothLipUpper_Sav01Size;
+        public string LipUpperA_Sav01Size;
+        public string HrothEyelidUpperLeft_Sav01Size;
+        public string EyelidUpperLeft_Sav01Size;
+        public string HrothEyelidUpperRight_Sav01Size;
+        public string EyelidUpperRight_Sav01Size;
+        public string HrothLipsLeft_Sav01Size;
+        public string LipLowerA_Sav01Size;
+        public string HrothLipsRight_Sav01Size;
+        public string VieraEar01ALeft_Sav01Size;
+        public string LipUpperB_Sav01Size;
+        public string HrothLipUpperLeft_Sav01Size;
+        public string VieraEar01ARight_Sav01Size;
+        public string LipLowerB_Sav01Size;
+        public string HrothLipUpperRight_Sav01Size;
+        public string VieraEar02ALeft_Sav01Size;
+        public string HrothLipLower_Sav01Size;
+        public string VieraEar02ARight_Sav01Size;
+        public string VieraEar03ALeft_Sav01Size;
+        public string VieraEar03ARight_Sav01Size;
+        public string VieraEar04ALeft_Sav01Size;
+        public string VieraEar04ARight_Sav01Size;
+        public string VieraLipLowerA_Sav01Size;
+        public string VieraLipUpperB_Sav01Size;
+        public string VieraEar01BLeft_Sav01Size;
+        public string VieraEar01BRight_Sav01Size;
+        public string VieraEar02BLeft_Sav01Size;
+        public string VieraEar02BRight_Sav01Size;
+        public string VieraEar03BLeft_Sav01Size;
+        public string VieraEar03BRight_Sav01Size;
+        public string VieraEar04BLeft_Sav01Size;
+        public string VieraEar04BRight_Sav01Size;
+        public string VieraLipLowerB_Sav01Size;
+        public string ExRootHair_Sav01Size;
+        public string ExHairA_Sav01Size;
+        public string ExHairB_Sav01Size;
+        public string ExHairC_Sav01Size;
+        public string ExHairD_Sav01Size;
+        public string ExHairE_Sav01Size;
+        public string ExHairF_Sav01Size;
+        public string ExHairG_Sav01Size;
+        public string ExHairH_Sav01Size;
+        public string ExHairI_Sav01Size;
+        public string ExHairJ_Sav01Size;
+        public string ExHairK_Sav01Size;
+        public string ExHairL_Sav01Size;
+        public string ExRootMet_Sav01Size;
+        public string ExMetA_Sav01Size;
+        public string ExMetB_Sav01Size;
+        public string ExMetC_Sav01Size;
+        public string ExMetD_Sav01Size;
+        public string ExMetE_Sav01Size;
+        public string ExMetF_Sav01Size;
+        public string ExMetG_Sav01Size;
+        public string ExMetH_Sav01Size;
+        public string ExMetI_Sav01Size;
+        public string ExMetJ_Sav01Size;
+        public string ExMetK_Sav01Size;
+        public string ExMetL_Sav01Size;
+        public string ExMetM_Sav01Size;
+        public string ExMetN_Sav01Size;
+        public string ExMetO_Sav01Size;
+        public string ExMetP_Sav01Size;
+        public string ExMetQ_Sav01Size;
+        public string ExMetR_Sav01Size;
+        public string ExRootTop_Sav01Size;
+        public string ExTopA_Sav01Size;
+        public string ExTopB_Sav01Size;
+        public string ExTopC_Sav01Size;
+        public string ExTopD_Sav01Size;
+        public string ExTopE_Sav01Size;
+        public string ExTopF_Sav01Size;
+        public string ExTopG_Sav01Size;
+        public string ExTopH_Sav01Size;
+        public string ExTopI_Sav01Size;
+        #endregion
+
+        #endregion
         #region Savestate02 Strings
         public string Race_Sav02;
-
+        #region Bones
         public string Root_Sav02;
         public string Abdomen_Sav02;
         public string Throw_Sav02;
@@ -444,6 +654,216 @@ namespace ConceptMatrix.Views
         public string ExTopG_Sav02;
         public string ExTopH_Sav02;
         public string ExTopI_Sav02;
+        #endregion
+
+        #region Scale
+        public string Root_Sav02Size;
+        public string Abdomen_Sav02Size;
+        public string Throw_Sav02Size;
+        public string Waist_Sav02Size;
+        public string SpineA_Sav02Size;
+        public string LegLeft_Sav02Size;
+        public string LegRight_Sav02Size;
+        public string HolsterLeft_Sav02Size;
+        public string HolsterRight_Sav02Size;
+        public string SheatheLeft_Sav02Size;
+        public string SheatheRight_Sav02Size;
+        public string SpineB_Sav02Size;
+        public string ClothBackALeft_Sav02Size;
+        public string ClothBackARight_Sav02Size;
+        public string ClothFrontALeft_Sav02Size;
+        public string ClothFrontARight_Sav02Size;
+        public string ClothSideALeft_Sav02Size;
+        public string ClothSideARight_Sav02Size;
+        public string KneeLeft_Sav02Size;
+        public string KneeRight_Sav02Size;
+        public string BreastLeft_Sav02Size;
+        public string BreastRight_Sav02Size;
+        public string SpineC_Sav02Size;
+        public string ClothBackBLeft_Sav02Size;
+        public string ClothBackBRight_Sav02Size;
+        public string ClothFrontBLeft_Sav02Size;
+        public string ClothFrontBRight_Sav02Size;
+        public string ClothSideBLeft_Sav02Size;
+        public string ClothSideBRight_Sav02Size;
+        public string CalfLeft_Sav02Size;
+        public string CalfRight_Sav02Size;
+        public string ScabbardLeft_Sav02Size;
+        public string ScabbardRight_Sav02Size;
+        public string Neck_Sav02Size;
+        public string ClavicleLeft_Sav02Size;
+        public string ClavicleRight_Sav02Size;
+        public string ClothBackCLeft_Sav02Size;
+        public string ClothBackCRight_Sav02Size;
+        public string ClothFrontCLeft_Sav02Size;
+        public string ClothFrontCRight_Sav02Size;
+        public string ClothSideCLeft_Sav02Size;
+        public string ClothSideCRight_Sav02Size;
+        public string PoleynLeft_Sav02Size;
+        public string PoleynRight_Sav02Size;
+        public string FootLeft_Sav02Size;
+        public string FootRight_Sav02Size;
+        public string Head_Sav02Size;
+        public string ArmLeft_Sav02Size;
+        public string ArmRight_Sav02Size;
+        public string PauldronLeft_Sav02Size;
+        public string PauldronRight_Sav02Size;
+        public string Unknown00_Sav02Size;
+        public string ToesLeft_Sav02Size;
+        public string ToesRight_Sav02Size;
+        public string HairA_Sav02Size;
+        public string HairFrontLeft_Sav02Size;
+        public string HairFrontRight_Sav02Size;
+        public string EarLeft_Sav02Size;
+        public string EarRight_Sav02Size;
+        public string ForearmLeft_Sav02Size;
+        public string ForearmRight_Sav02Size;
+        public string ShoulderLeft_Sav02Size;
+        public string ShoulderRight_Sav02Size;
+        public string HairB_Sav02Size;
+        public string HandLeft_Sav02Size;
+        public string HandRight_Sav02Size;
+        public string ShieldLeft_Sav02Size;
+        public string ShieldRight_Sav02Size;
+        public string EarringALeft_Sav02Size;
+        public string EarringARight_Sav02Size;
+        public string ElbowLeft_Sav02Size;
+        public string ElbowRight_Sav02Size;
+        public string CouterLeft_Sav02Size;
+        public string CouterRight_Sav02Size;
+        public string WristLeft_Sav02Size;
+        public string WristRight_Sav02Size;
+        public string IndexALeft_Sav02Size;
+        public string IndexARight_Sav02Size;
+        public string PinkyALeft_Sav02Size;
+        public string PinkyARight_Sav02Size;
+        public string RingALeft_Sav02Size;
+        public string RingARight_Sav02Size;
+        public string MiddleALeft_Sav02Size;
+        public string MiddleARight_Sav02Size;
+        public string ThumbALeft_Sav02Size;
+        public string ThumbARight_Sav02Size;
+        public string WeaponLeft_Sav02Size;
+        public string WeaponRight_Sav02Size;
+        public string EarringBLeft_Sav02Size;
+        public string EarringBRight_Sav02Size;
+        public string IndexBLeft_Sav02Size;
+        public string IndexBRight_Sav02Size;
+        public string PinkyBLeft_Sav02Size;
+        public string PinkyBRight_Sav02Size;
+        public string RingBLeft_Sav02Size;
+        public string RingBRight_Sav02Size;
+        public string MiddleBLeft_Sav02Size;
+        public string MiddleBRight_Sav02Size;
+        public string ThumbBLeft_Sav02Size;
+        public string ThumbBRight_Sav02Size;
+        public string TailA_Sav02Size;
+        public string TailB_Sav02Size;
+        public string TailC_Sav02Size;
+        public string TailD_Sav02Size;
+        public string TailE_Sav02Size;
+        public string RootHead_Sav02Size;
+        public string Jaw_Sav02Size;
+        public string EyelidLowerLeft_Sav02Size;
+        public string EyelidLowerRight_Sav02Size;
+        public string EyeLeft_Sav02Size;
+        public string EyeRight_Sav02Size;
+        public string Nose_Sav02Size;
+        public string CheekLeft_Sav02Size;
+        public string HrothWhiskersLeft_Sav02Size;
+        public string CheekRight_Sav02Size;
+        public string HrothWhiskersRight_Sav02Size;
+        public string LipsLeft_Sav02Size;
+        public string HrothEyebrowLeft_Sav02Size;
+        public string LipsRight_Sav02Size;
+        public string HrothEyebrowRight_Sav02Size;
+        public string EyebrowLeft_Sav02Size;
+        public string HrothBridge_Sav02Size;
+        public string EyebrowRight_Sav02Size;
+        public string HrothBrowLeft_Sav02Size;
+        public string Bridge_Sav02Size;
+        public string HrothBrowRight_Sav02Size;
+        public string BrowLeft_Sav02Size;
+        public string HrothJawUpper_Sav02Size;
+        public string BrowRight_Sav02Size;
+        public string HrothLipUpper_Sav02Size;
+        public string LipUpperA_Sav02Size;
+        public string HrothEyelidUpperLeft_Sav02Size;
+        public string EyelidUpperLeft_Sav02Size;
+        public string HrothEyelidUpperRight_Sav02Size;
+        public string EyelidUpperRight_Sav02Size;
+        public string HrothLipsLeft_Sav02Size;
+        public string LipLowerA_Sav02Size;
+        public string HrothLipsRight_Sav02Size;
+        public string VieraEar01ALeft_Sav02Size;
+        public string LipUpperB_Sav02Size;
+        public string HrothLipUpperLeft_Sav02Size;
+        public string VieraEar01ARight_Sav02Size;
+        public string LipLowerB_Sav02Size;
+        public string HrothLipUpperRight_Sav02Size;
+        public string VieraEar02ALeft_Sav02Size;
+        public string HrothLipLower_Sav02Size;
+        public string VieraEar02ARight_Sav02Size;
+        public string VieraEar03ALeft_Sav02Size;
+        public string VieraEar03ARight_Sav02Size;
+        public string VieraEar04ALeft_Sav02Size;
+        public string VieraEar04ARight_Sav02Size;
+        public string VieraLipLowerA_Sav02Size;
+        public string VieraLipUpperB_Sav02Size;
+        public string VieraEar01BLeft_Sav02Size;
+        public string VieraEar01BRight_Sav02Size;
+        public string VieraEar02BLeft_Sav02Size;
+        public string VieraEar02BRight_Sav02Size;
+        public string VieraEar03BLeft_Sav02Size;
+        public string VieraEar03BRight_Sav02Size;
+        public string VieraEar04BLeft_Sav02Size;
+        public string VieraEar04BRight_Sav02Size;
+        public string VieraLipLowerB_Sav02Size;
+        public string ExRootHair_Sav02Size;
+        public string ExHairA_Sav02Size;
+        public string ExHairB_Sav02Size;
+        public string ExHairC_Sav02Size;
+        public string ExHairD_Sav02Size;
+        public string ExHairE_Sav02Size;
+        public string ExHairF_Sav02Size;
+        public string ExHairG_Sav02Size;
+        public string ExHairH_Sav02Size;
+        public string ExHairI_Sav02Size;
+        public string ExHairJ_Sav02Size;
+        public string ExHairK_Sav02Size;
+        public string ExHairL_Sav02Size;
+        public string ExRootMet_Sav02Size;
+        public string ExMetA_Sav02Size;
+        public string ExMetB_Sav02Size;
+        public string ExMetC_Sav02Size;
+        public string ExMetD_Sav02Size;
+        public string ExMetE_Sav02Size;
+        public string ExMetF_Sav02Size;
+        public string ExMetG_Sav02Size;
+        public string ExMetH_Sav02Size;
+        public string ExMetI_Sav02Size;
+        public string ExMetJ_Sav02Size;
+        public string ExMetK_Sav02Size;
+        public string ExMetL_Sav02Size;
+        public string ExMetM_Sav02Size;
+        public string ExMetN_Sav02Size;
+        public string ExMetO_Sav02Size;
+        public string ExMetP_Sav02Size;
+        public string ExMetQ_Sav02Size;
+        public string ExMetR_Sav02Size;
+        public string ExRootTop_Sav02Size;
+        public string ExTopA_Sav02Size;
+        public string ExTopB_Sav02Size;
+        public string ExTopC_Sav02Size;
+        public string ExTopD_Sav02Size;
+        public string ExTopE_Sav02Size;
+        public string ExTopF_Sav02Size;
+        public string ExTopG_Sav02Size;
+        public string ExTopH_Sav02Size;
+        public string ExTopI_Sav02Size;
+        #endregion
+
+
         #endregion
         #region Savestate Bools
         public bool HeadSaved01;
@@ -7109,6 +7529,96 @@ namespace ConceptMatrix.Views
                 VieraEar04BRight_Sav01 = "null";
                 VieraLipLowerB_Sav01 = "null";
             }
+
+            Head_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Head_Size), 16));
+            EarLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EarLeft_Size), 16));
+            EarRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EarRight_Size), 16));
+            Jaw_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Jaw_Size), 16));
+            EyelidLowerLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidLowerLeft_Size), 16));
+            EyelidLowerRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidLowerRight_Size), 16));
+            EyeLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyeLeft_Size), 16));
+            EyeRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyeRight_Size), 16));
+            Nose_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Nose_Size), 16));
+            CheekLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CheekLeft_Size), 16));
+            HrothWhiskersLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothWhiskersLeft_Size), 16));
+            CheekRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CheekRight_Size), 16));
+            HrothWhiskersRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothWhiskersRight_Size), 16));
+            LipsLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipsLeft_Size), 16));
+            HrothEyebrowLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyebrowLeft_Size), 16));
+            LipsRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipsRight_Size), 16));
+            HrothEyebrowRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyebrowRight_Size), 16));
+            EyebrowLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyebrowLeft_Size), 16));
+            HrothBridge_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothBridge_Size), 16));
+            EyebrowRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyebrowRight_Size), 16));
+            HrothBrowLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothBrowLeft_Size), 16));
+            Bridge_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Bridge_Size), 16));
+            HrothBrowRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothBrowRight_Size), 16));
+            BrowLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BrowLeft_Size), 16));
+            HrothJawUpper_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothJawUpper_Size), 16));
+            BrowRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BrowRight_Size), 16));
+            HrothLipUpper_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipUpper_Size), 16));
+            LipUpperA_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipUpperA_Size), 16));
+            HrothEyelidUpperLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyelidUpperLeft_Size), 16));
+            EyelidUpperLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidUpperLeft_Size), 16));
+            HrothEyelidUpperRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyelidUpperRight_Size), 16));
+            EyelidUpperRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidUpperRight_Size), 16));
+            HrothLipsLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipsLeft_Size), 16));
+            LipLowerA_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipLowerA_Size), 16));
+            HrothLipsRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipsRight_Size), 16));
+            VieraEar01ALeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar01ALeft_Size), 16));
+            LipUpperB_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipUpperB_Size), 16));
+            HrothLipUpperLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipUpperLeft_Size), 16));
+            VieraEar01ARight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar01ARight_Size), 16));
+            LipLowerB_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipLowerB_Size), 16));
+            HrothLipUpperRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipUpperRight_Size), 16));
+            VieraEar02ALeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar02ALeft_Size), 16));
+            if (CharacterDetails.Race.value == 7 || CharacterDetails.Race.value == 8)
+            {
+                HrothLipLower_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipLower_Size), 16));
+                VieraEar02ARight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar02ARight_Size), 16));
+            }
+            else
+            {
+                HrothLipLower_Sav01Size = "null";
+                VieraEar02ARight_Sav01Size = "null";
+            }
+            if (CharacterDetails.Race.value == 8)
+            {
+                VieraEar03ALeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar03ALeft_Size), 16));
+                VieraEar03ARight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar03ARight_Size), 16));
+                VieraEar04ALeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar04ALeft_Size), 16));
+                VieraEar04ARight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar04ARight_Size), 16));
+                VieraLipLowerA_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraLipLowerA_Size), 16));
+                VieraLipUpperB_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraLipUpperB_Size), 16));
+                VieraEar01BLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar01BLeft_Size), 16));
+                VieraEar01BRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar01BRight_Size), 16));
+                VieraEar02BLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar02BLeft_Size), 16));
+                VieraEar02BRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar02BRight_Size), 16));
+                VieraEar03BLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar03BLeft_Size), 16));
+                VieraEar03BRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar03BRight_Size), 16));
+                VieraEar04BLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar04BLeft_Size), 16));
+                VieraEar04BRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar04BRight_Size), 16));
+                VieraLipLowerB_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraLipLowerB_Size), 16));
+            }
+            else
+            {
+                VieraEar03ALeft_Sav01Size = "null";
+                VieraEar03ARight_Sav01Size = "null";
+                VieraEar04ALeft_Sav01Size = "null";
+                VieraEar04ARight_Sav01Size = "null";
+                VieraLipLowerA_Sav01Size = "null";
+                VieraLipUpperB_Sav01Size = "null";
+                VieraEar01BLeft_Sav01Size = "null";
+                VieraEar01BRight_Sav01Size = "null";
+                VieraEar02BLeft_Sav01Size = "null";
+                VieraEar02BRight_Sav01Size = "null";
+                VieraEar03BLeft_Sav01Size = "null";
+                VieraEar03BRight_Sav01Size = "null";
+                VieraEar04BLeft_Sav01Size = "null";
+                VieraEar04BRight_Sav01Size = "null";
+                VieraLipLowerB_Sav01Size = "null";
+            }
+
         }
         private void SavestateHead02_Click(object sender, RoutedEventArgs e)
         {
@@ -7204,6 +7714,95 @@ namespace ConceptMatrix.Views
                 VieraEar04BLeft_Sav02 = "null";
                 VieraEar04BRight_Sav02 = "null";
                 VieraLipLowerB_Sav02 = "null";
+            }
+
+            Head_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Head_Size), 16));
+            EarLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EarLeft_Size), 16));
+            EarRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EarRight_Size), 16));
+            Jaw_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Jaw_Size), 16));
+            EyelidLowerLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidLowerLeft_Size), 16));
+            EyelidLowerRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidLowerRight_Size), 16));
+            EyeLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyeLeft_Size), 16));
+            EyeRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyeRight_Size), 16));
+            Nose_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Nose_Size), 16));
+            CheekLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CheekLeft_Size), 16));
+            HrothWhiskersLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothWhiskersLeft_Size), 16));
+            CheekRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CheekRight_Size), 16));
+            HrothWhiskersRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothWhiskersRight_Size), 16));
+            LipsLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipsLeft_Size), 16));
+            HrothEyebrowLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyebrowLeft_Size), 16));
+            LipsRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipsRight_Size), 16));
+            HrothEyebrowRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyebrowRight_Size), 16));
+            EyebrowLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyebrowLeft_Size), 16));
+            HrothBridge_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothBridge_Size), 16));
+            EyebrowRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyebrowRight_Size), 16));
+            HrothBrowLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothBrowLeft_Size), 16));
+            Bridge_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Bridge_Size), 16));
+            HrothBrowRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothBrowRight_Size), 16));
+            BrowLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BrowLeft_Size), 16));
+            HrothJawUpper_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothJawUpper_Size), 16));
+            BrowRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BrowRight_Size), 16));
+            HrothLipUpper_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipUpper_Size), 16));
+            LipUpperA_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipUpperA_Size), 16));
+            HrothEyelidUpperLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyelidUpperLeft_Size), 16));
+            EyelidUpperLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidUpperLeft_Size), 16));
+            HrothEyelidUpperRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyelidUpperRight_Size), 16));
+            EyelidUpperRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidUpperRight_Size), 16));
+            HrothLipsLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipsLeft_Size), 16));
+            LipLowerA_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipLowerA_Size), 16));
+            HrothLipsRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipsRight_Size), 16));
+            VieraEar01ALeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar01ALeft_Size), 16));
+            LipUpperB_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipUpperB_Size), 16));
+            HrothLipUpperLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipUpperLeft_Size), 16));
+            VieraEar01ARight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar01ARight_Size), 16));
+            LipLowerB_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipLowerB_Size), 16));
+            HrothLipUpperRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipUpperRight_Size), 16));
+            VieraEar02ALeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar02ALeft_Size), 16));
+            if (CharacterDetails.Race.value == 7 || CharacterDetails.Race.value == 8)
+            {
+                HrothLipLower_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipLower_Size), 16));
+                VieraEar02ARight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar02ARight_Size), 16));
+            }
+            else
+            {
+                HrothLipLower_Sav02Size = "null";
+                VieraEar02ARight_Sav02Size = "null";
+            }
+            if (CharacterDetails.Race.value == 8)
+            {
+                VieraEar03ALeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar03ALeft_Size), 16));
+                VieraEar03ARight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar03ARight_Size), 16));
+                VieraEar04ALeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar04ALeft_Size), 16));
+                VieraEar04ARight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar04ARight_Size), 16));
+                VieraLipLowerA_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraLipLowerA_Size), 16));
+                VieraLipUpperB_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraLipUpperB_Size), 16));
+                VieraEar01BLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar01BLeft_Size), 16));
+                VieraEar01BRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar01BRight_Size), 16));
+                VieraEar02BLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar02BLeft_Size), 16));
+                VieraEar02BRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar02BRight_Size), 16));
+                VieraEar03BLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar03BLeft_Size), 16));
+                VieraEar03BRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar03BRight_Size), 16));
+                VieraEar04BLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar04BLeft_Size), 16));
+                VieraEar04BRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar04BRight_Size), 16));
+                VieraLipLowerB_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraLipLowerB_Size), 16));
+            }
+            else
+            {
+                VieraEar03ALeft_Sav02Size = "null";
+                VieraEar03ARight_Sav02Size = "null";
+                VieraEar04ALeft_Sav02Size = "null";
+                VieraEar04ARight_Sav02Size = "null";
+                VieraLipLowerA_Sav02Size = "null";
+                VieraLipUpperB_Sav02Size = "null";
+                VieraEar01BLeft_Sav02Size = "null";
+                VieraEar01BRight_Sav02Size = "null";
+                VieraEar02BLeft_Sav02Size = "null";
+                VieraEar02BRight_Sav02Size = "null";
+                VieraEar03BLeft_Sav02Size = "null";
+                VieraEar03BRight_Sav02Size = "null";
+                VieraEar04BLeft_Sav02Size = "null";
+                VieraEar04BRight_Sav02Size = "null";
+                VieraLipLowerB_Sav02Size = "null";
             }
         }
         private void LoadstateHead01_Click(object sender, RoutedEventArgs e)
@@ -7422,6 +8021,224 @@ namespace ConceptMatrix.Views
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar04BLeft_Bone), MemoryManager.StringToByteArray(VieraEar04BLeft_Sav01.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar04BRight_Bone), MemoryManager.StringToByteArray(VieraEar04BRight_Sav01.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraLipLowerB_Bone), MemoryManager.StringToByteArray(VieraLipLowerB_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if(ScaleSaveToggle.IsChecked == true)
+            {
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Head_Size), MemoryManager.StringToByteArray(Head_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EarLeft_Size), MemoryManager.StringToByteArray(EarLeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EarRight_Size), MemoryManager.StringToByteArray(EarRight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Jaw_Size), MemoryManager.StringToByteArray(Jaw_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidLowerLeft_Size), MemoryManager.StringToByteArray(EyelidLowerLeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidLowerRight_Size), MemoryManager.StringToByteArray(EyelidLowerRight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyeLeft_Size), MemoryManager.StringToByteArray(EyeLeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyeRight_Size), MemoryManager.StringToByteArray(EyeRight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Nose_Size), MemoryManager.StringToByteArray(Nose_Sav01Size.Replace(" ", string.Empty)));
+                if (CharacterDetails.Race.value < 7)
+                {
+                    if (Race_Sav01 == "01" || Race_Sav01 == "02" || Race_Sav01 == "03" || Race_Sav01 == "04" || Race_Sav01 == "05" || Race_Sav01 == "06")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CheekLeft_Size), MemoryManager.StringToByteArray(CheekLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CheekRight_Size), MemoryManager.StringToByteArray(CheekRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipsLeft_Size), MemoryManager.StringToByteArray(LipsLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipsRight_Size), MemoryManager.StringToByteArray(LipsRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyebrowLeft_Size), MemoryManager.StringToByteArray(EyebrowLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyebrowRight_Size), MemoryManager.StringToByteArray(EyebrowRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Bridge_Size), MemoryManager.StringToByteArray(Bridge_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BrowLeft_Size), MemoryManager.StringToByteArray(BrowLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BrowRight_Size), MemoryManager.StringToByteArray(BrowRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipUpperA_Size), MemoryManager.StringToByteArray(LipUpperA_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidUpperLeft_Size), MemoryManager.StringToByteArray(EyelidUpperLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidUpperRight_Size), MemoryManager.StringToByteArray(EyelidUpperRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipLowerA_Size), MemoryManager.StringToByteArray(LipLowerA_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipUpperB_Size), MemoryManager.StringToByteArray(LipUpperB_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipLowerB_Size), MemoryManager.StringToByteArray(LipLowerB_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                    if (Race_Sav01 == "07")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CheekLeft_Size), MemoryManager.StringToByteArray(HrothLipUpperLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CheekRight_Size), MemoryManager.StringToByteArray(HrothLipUpperRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipsLeft_Size), MemoryManager.StringToByteArray(HrothLipsLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipsRight_Size), MemoryManager.StringToByteArray(HrothLipsRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyebrowLeft_Size), MemoryManager.StringToByteArray(HrothEyebrowLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyebrowRight_Size), MemoryManager.StringToByteArray(HrothEyebrowRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Bridge_Size), MemoryManager.StringToByteArray(HrothBridge_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BrowLeft_Size), MemoryManager.StringToByteArray(HrothBrowLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BrowRight_Size), MemoryManager.StringToByteArray(HrothBrowRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipUpperA_Size), MemoryManager.StringToByteArray(HrothLipUpper_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidUpperLeft_Size), MemoryManager.StringToByteArray(HrothEyelidUpperLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidUpperRight_Size), MemoryManager.StringToByteArray(HrothEyelidUpperRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipUpperB_Size), MemoryManager.StringToByteArray(HrothJawUpper_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                    if (Race_Sav01 == "08")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CheekLeft_Size), MemoryManager.StringToByteArray(CheekLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CheekRight_Size), MemoryManager.StringToByteArray(CheekRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipsLeft_Size), MemoryManager.StringToByteArray(LipsLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipsRight_Size), MemoryManager.StringToByteArray(LipsRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyebrowLeft_Size), MemoryManager.StringToByteArray(EyebrowLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyebrowRight_Size), MemoryManager.StringToByteArray(EyebrowRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Bridge_Size), MemoryManager.StringToByteArray(Bridge_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BrowLeft_Size), MemoryManager.StringToByteArray(BrowLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BrowRight_Size), MemoryManager.StringToByteArray(BrowRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipUpperA_Size), MemoryManager.StringToByteArray(LipUpperA_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidUpperLeft_Size), MemoryManager.StringToByteArray(EyelidUpperLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidUpperRight_Size), MemoryManager.StringToByteArray(EyelidUpperRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipLowerA_Size), MemoryManager.StringToByteArray(VieraLipLowerA_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipUpperB_Size), MemoryManager.StringToByteArray(VieraLipUpperB_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipLowerB_Size), MemoryManager.StringToByteArray(VieraLipLowerB_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (CharacterDetails.Race.value == 7)
+                {
+                    if (Race_Sav01 == "01" || Race_Sav01 == "02" || Race_Sav01 == "03" || Race_Sav01 == "04" || Race_Sav01 == "05" || Race_Sav01 == "06")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyebrowLeft_Size), MemoryManager.StringToByteArray(EyebrowLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyebrowRight_Size), MemoryManager.StringToByteArray(EyebrowRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothBridge_Size), MemoryManager.StringToByteArray(Bridge_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothBrowLeft_Size), MemoryManager.StringToByteArray(BrowLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothBrowRight_Size), MemoryManager.StringToByteArray(BrowRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothJawUpper_Size), MemoryManager.StringToByteArray(LipUpperB_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipUpper_Size), MemoryManager.StringToByteArray(LipUpperA_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyelidUpperLeft_Size), MemoryManager.StringToByteArray(EyelidUpperLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyelidUpperRight_Size), MemoryManager.StringToByteArray(EyelidUpperRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipsLeft_Size), MemoryManager.StringToByteArray(LipsLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipsRight_Size), MemoryManager.StringToByteArray(LipsRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipUpperLeft_Size), MemoryManager.StringToByteArray(CheekLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipUpperRight_Size), MemoryManager.StringToByteArray(CheekRight_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                    if (Race_Sav01 == "07")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothWhiskersLeft_Size), MemoryManager.StringToByteArray(HrothWhiskersLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothWhiskersRight_Size), MemoryManager.StringToByteArray(HrothWhiskersRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyebrowLeft_Size), MemoryManager.StringToByteArray(HrothEyebrowLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyebrowRight_Size), MemoryManager.StringToByteArray(HrothEyebrowRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothBridge_Size), MemoryManager.StringToByteArray(HrothBridge_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothBrowLeft_Size), MemoryManager.StringToByteArray(HrothBrowLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothBrowRight_Size), MemoryManager.StringToByteArray(HrothBrowRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothJawUpper_Size), MemoryManager.StringToByteArray(HrothJawUpper_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipUpper_Size), MemoryManager.StringToByteArray(HrothLipUpper_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyelidUpperLeft_Size), MemoryManager.StringToByteArray(HrothEyelidUpperLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyelidUpperRight_Size), MemoryManager.StringToByteArray(HrothEyelidUpperRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipsLeft_Size), MemoryManager.StringToByteArray(HrothLipsLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipsRight_Size), MemoryManager.StringToByteArray(HrothLipsRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipUpperLeft_Size), MemoryManager.StringToByteArray(HrothLipUpperLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipUpperRight_Size), MemoryManager.StringToByteArray(HrothLipUpperRight_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                    if (Race_Sav01 == "08")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyebrowLeft_Size), MemoryManager.StringToByteArray(EyebrowLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyebrowRight_Size), MemoryManager.StringToByteArray(EyebrowRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothBridge_Size), MemoryManager.StringToByteArray(Bridge_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothBrowLeft_Size), MemoryManager.StringToByteArray(BrowLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothBrowRight_Size), MemoryManager.StringToByteArray(BrowRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothJawUpper_Size), MemoryManager.StringToByteArray(VieraLipUpperB_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipUpper_Size), MemoryManager.StringToByteArray(LipUpperA_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyelidUpperLeft_Size), MemoryManager.StringToByteArray(EyelidUpperLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyelidUpperRight_Size), MemoryManager.StringToByteArray(EyelidUpperRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipsLeft_Size), MemoryManager.StringToByteArray(LipsLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipsRight_Size), MemoryManager.StringToByteArray(LipsRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipUpperLeft_Size), MemoryManager.StringToByteArray(CheekLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipUpperRight_Size), MemoryManager.StringToByteArray(CheekRight_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (CharacterDetails.Race.value == 8)
+                {
+                    if (Race_Sav01 == "01" || Race_Sav01 == "02" || Race_Sav01 == "03" || Race_Sav01 == "04" || Race_Sav01 == "05" || Race_Sav01 == "06")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CheekLeft_Size), MemoryManager.StringToByteArray(CheekLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CheekRight_Size), MemoryManager.StringToByteArray(CheekRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipsLeft_Size), MemoryManager.StringToByteArray(LipsLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipsRight_Size), MemoryManager.StringToByteArray(LipsRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyebrowLeft_Size), MemoryManager.StringToByteArray(EyebrowLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyebrowRight_Size), MemoryManager.StringToByteArray(EyebrowRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Bridge_Size), MemoryManager.StringToByteArray(Bridge_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BrowLeft_Size), MemoryManager.StringToByteArray(BrowLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BrowRight_Size), MemoryManager.StringToByteArray(BrowRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipUpperA_Size), MemoryManager.StringToByteArray(LipUpperA_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidUpperLeft_Size), MemoryManager.StringToByteArray(EyelidUpperLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidUpperRight_Size), MemoryManager.StringToByteArray(EyelidUpperRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraLipLowerA_Size), MemoryManager.StringToByteArray(VieraEar01ALeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraLipUpperB_Size), MemoryManager.StringToByteArray(VieraEar01ARight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraLipLowerB_Size), MemoryManager.StringToByteArray(VieraEar02ALeft_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                    if (Race_Sav01 == "07")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CheekLeft_Size), MemoryManager.StringToByteArray(HrothLipUpperLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CheekRight_Size), MemoryManager.StringToByteArray(HrothLipUpperRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipsLeft_Size), MemoryManager.StringToByteArray(HrothLipsLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipsRight_Size), MemoryManager.StringToByteArray(HrothLipsRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyebrowLeft_Size), MemoryManager.StringToByteArray(HrothEyebrowLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyebrowRight_Size), MemoryManager.StringToByteArray(HrothEyebrowRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Bridge_Size), MemoryManager.StringToByteArray(HrothBridge_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BrowLeft_Size), MemoryManager.StringToByteArray(HrothBrowLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BrowRight_Size), MemoryManager.StringToByteArray(HrothBrowRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipUpperA_Size), MemoryManager.StringToByteArray(HrothLipUpper_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidUpperLeft_Size), MemoryManager.StringToByteArray(HrothEyelidUpperLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidUpperRight_Size), MemoryManager.StringToByteArray(HrothEyelidUpperRight_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                    if (Race_Sav01 == "08")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CheekLeft_Size), MemoryManager.StringToByteArray(CheekLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CheekRight_Size), MemoryManager.StringToByteArray(CheekRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipsLeft_Size), MemoryManager.StringToByteArray(LipsLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipsRight_Size), MemoryManager.StringToByteArray(LipsRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyebrowLeft_Size), MemoryManager.StringToByteArray(EyebrowLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyebrowRight_Size), MemoryManager.StringToByteArray(EyebrowRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Bridge_Size), MemoryManager.StringToByteArray(Bridge_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BrowLeft_Size), MemoryManager.StringToByteArray(BrowLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BrowRight_Size), MemoryManager.StringToByteArray(BrowRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipUpperA_Size), MemoryManager.StringToByteArray(LipUpperA_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidUpperLeft_Size), MemoryManager.StringToByteArray(EyelidUpperLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidUpperRight_Size), MemoryManager.StringToByteArray(EyelidUpperRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar01ALeft_Size), MemoryManager.StringToByteArray(VieraEar01ALeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar01ARight_Size), MemoryManager.StringToByteArray(VieraEar01ARight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar02ALeft_Size), MemoryManager.StringToByteArray(VieraEar02ALeft_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HrothLipLower_Sav01 != "null" || VieraEar02ARight_Sav01 != "null")
+                {
+                    if (CharacterDetails.Race.value == 7)
+                    {
+                        if (Race_Sav01 == "07")
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipLower_Size), MemoryManager.StringToByteArray(HrothLipLower_Sav01Size.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (CharacterDetails.Race.value == 8)
+                    {
+                        if (Race_Sav01 == "08")
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar02ARight_Size), MemoryManager.StringToByteArray(VieraEar02ARight_Sav01Size.Replace(" ", string.Empty)));
+                        }
+                    }
+                }
+                if (VieraEar03ALeft_Sav01 != "null")
+                {
+                    if (CharacterDetails.Race.value < 7)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipLowerA_Size), MemoryManager.StringToByteArray(VieraLipLowerA_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipUpperB_Size), MemoryManager.StringToByteArray(VieraLipUpperB_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipLowerB_Size), MemoryManager.StringToByteArray(VieraLipLowerB_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                    if (CharacterDetails.Race.value == 8)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar03ALeft_Size), MemoryManager.StringToByteArray(VieraEar03ALeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar03ARight_Size), MemoryManager.StringToByteArray(VieraEar03ARight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar04ALeft_Size), MemoryManager.StringToByteArray(VieraEar04ALeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar04ARight_Size), MemoryManager.StringToByteArray(VieraEar04ARight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraLipLowerA_Size), MemoryManager.StringToByteArray(VieraLipLowerA_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraLipUpperB_Size), MemoryManager.StringToByteArray(VieraLipUpperB_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar01BLeft_Size), MemoryManager.StringToByteArray(VieraEar01BLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar01BRight_Size), MemoryManager.StringToByteArray(VieraEar01BRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar02BLeft_Size), MemoryManager.StringToByteArray(VieraEar02BLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar02BRight_Size), MemoryManager.StringToByteArray(VieraEar02BRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar03BLeft_Size), MemoryManager.StringToByteArray(VieraEar03BLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar03BRight_Size), MemoryManager.StringToByteArray(VieraEar03BRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar04BLeft_Size), MemoryManager.StringToByteArray(VieraEar04BLeft_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar04BRight_Size), MemoryManager.StringToByteArray(VieraEar04BRight_Sav01Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraLipLowerB_Size), MemoryManager.StringToByteArray(VieraLipLowerB_Sav01Size.Replace(" ", string.Empty)));
+                    }
                 }
             }
         }
@@ -7643,6 +8460,225 @@ namespace ConceptMatrix.Views
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraLipLowerB_Bone), MemoryManager.StringToByteArray(VieraLipLowerB_Sav02.Replace(" ", string.Empty)));
                 }
             }
+            if (ScaleSaveToggle.IsChecked == true)
+            {
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Head_Size), MemoryManager.StringToByteArray(Head_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EarLeft_Size), MemoryManager.StringToByteArray(EarLeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EarRight_Size), MemoryManager.StringToByteArray(EarRight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Jaw_Size), MemoryManager.StringToByteArray(Jaw_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidLowerLeft_Size), MemoryManager.StringToByteArray(EyelidLowerLeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidLowerRight_Size), MemoryManager.StringToByteArray(EyelidLowerRight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyeLeft_Size), MemoryManager.StringToByteArray(EyeLeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyeRight_Size), MemoryManager.StringToByteArray(EyeRight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Nose_Size), MemoryManager.StringToByteArray(Nose_Sav02Size.Replace(" ", string.Empty)));
+                if (CharacterDetails.Race.value < 7)
+                {
+                    if (Race_Sav02 == "01" || Race_Sav02 == "02" || Race_Sav02 == "03" || Race_Sav02 == "04" || Race_Sav02 == "05" || Race_Sav02 == "06")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CheekLeft_Size), MemoryManager.StringToByteArray(CheekLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CheekRight_Size), MemoryManager.StringToByteArray(CheekRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipsLeft_Size), MemoryManager.StringToByteArray(LipsLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipsRight_Size), MemoryManager.StringToByteArray(LipsRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyebrowLeft_Size), MemoryManager.StringToByteArray(EyebrowLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyebrowRight_Size), MemoryManager.StringToByteArray(EyebrowRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Bridge_Size), MemoryManager.StringToByteArray(Bridge_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BrowLeft_Size), MemoryManager.StringToByteArray(BrowLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BrowRight_Size), MemoryManager.StringToByteArray(BrowRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipUpperA_Size), MemoryManager.StringToByteArray(LipUpperA_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidUpperLeft_Size), MemoryManager.StringToByteArray(EyelidUpperLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidUpperRight_Size), MemoryManager.StringToByteArray(EyelidUpperRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipLowerA_Size), MemoryManager.StringToByteArray(LipLowerA_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipUpperB_Size), MemoryManager.StringToByteArray(LipUpperB_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipLowerB_Size), MemoryManager.StringToByteArray(LipLowerB_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                    if (Race_Sav02 == "07")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CheekLeft_Size), MemoryManager.StringToByteArray(HrothLipUpperLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CheekRight_Size), MemoryManager.StringToByteArray(HrothLipUpperRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipsLeft_Size), MemoryManager.StringToByteArray(HrothLipsLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipsRight_Size), MemoryManager.StringToByteArray(HrothLipsRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyebrowLeft_Size), MemoryManager.StringToByteArray(HrothEyebrowLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyebrowRight_Size), MemoryManager.StringToByteArray(HrothEyebrowRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Bridge_Size), MemoryManager.StringToByteArray(HrothBridge_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BrowLeft_Size), MemoryManager.StringToByteArray(HrothBrowLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BrowRight_Size), MemoryManager.StringToByteArray(HrothBrowRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipUpperA_Size), MemoryManager.StringToByteArray(HrothLipUpper_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidUpperLeft_Size), MemoryManager.StringToByteArray(HrothEyelidUpperLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidUpperRight_Size), MemoryManager.StringToByteArray(HrothEyelidUpperRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipUpperB_Size), MemoryManager.StringToByteArray(HrothJawUpper_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                    if (Race_Sav02 == "08")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CheekLeft_Size), MemoryManager.StringToByteArray(CheekLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CheekRight_Size), MemoryManager.StringToByteArray(CheekRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipsLeft_Size), MemoryManager.StringToByteArray(LipsLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipsRight_Size), MemoryManager.StringToByteArray(LipsRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyebrowLeft_Size), MemoryManager.StringToByteArray(EyebrowLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyebrowRight_Size), MemoryManager.StringToByteArray(EyebrowRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Bridge_Size), MemoryManager.StringToByteArray(Bridge_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BrowLeft_Size), MemoryManager.StringToByteArray(BrowLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BrowRight_Size), MemoryManager.StringToByteArray(BrowRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipUpperA_Size), MemoryManager.StringToByteArray(LipUpperA_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidUpperLeft_Size), MemoryManager.StringToByteArray(EyelidUpperLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidUpperRight_Size), MemoryManager.StringToByteArray(EyelidUpperRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipLowerA_Size), MemoryManager.StringToByteArray(VieraLipLowerA_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipUpperB_Size), MemoryManager.StringToByteArray(VieraLipUpperB_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipLowerB_Size), MemoryManager.StringToByteArray(VieraLipLowerB_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (CharacterDetails.Race.value == 7)
+                {
+                    if (Race_Sav02 == "01" || Race_Sav02 == "02" || Race_Sav02 == "03" || Race_Sav02 == "04" || Race_Sav02 == "05" || Race_Sav02 == "06")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyebrowLeft_Size), MemoryManager.StringToByteArray(EyebrowLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyebrowRight_Size), MemoryManager.StringToByteArray(EyebrowRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothBridge_Size), MemoryManager.StringToByteArray(Bridge_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothBrowLeft_Size), MemoryManager.StringToByteArray(BrowLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothBrowRight_Size), MemoryManager.StringToByteArray(BrowRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothJawUpper_Size), MemoryManager.StringToByteArray(LipUpperB_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipUpper_Size), MemoryManager.StringToByteArray(LipUpperA_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyelidUpperLeft_Size), MemoryManager.StringToByteArray(EyelidUpperLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyelidUpperRight_Size), MemoryManager.StringToByteArray(EyelidUpperRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipsLeft_Size), MemoryManager.StringToByteArray(LipsLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipsRight_Size), MemoryManager.StringToByteArray(LipsRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipUpperLeft_Size), MemoryManager.StringToByteArray(CheekLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipUpperRight_Size), MemoryManager.StringToByteArray(CheekRight_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                    if (Race_Sav02 == "07")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothWhiskersLeft_Size), MemoryManager.StringToByteArray(HrothWhiskersLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothWhiskersRight_Size), MemoryManager.StringToByteArray(HrothWhiskersRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyebrowLeft_Size), MemoryManager.StringToByteArray(HrothEyebrowLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyebrowRight_Size), MemoryManager.StringToByteArray(HrothEyebrowRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothBridge_Size), MemoryManager.StringToByteArray(HrothBridge_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothBrowLeft_Size), MemoryManager.StringToByteArray(HrothBrowLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothBrowRight_Size), MemoryManager.StringToByteArray(HrothBrowRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothJawUpper_Size), MemoryManager.StringToByteArray(HrothJawUpper_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipUpper_Size), MemoryManager.StringToByteArray(HrothLipUpper_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyelidUpperLeft_Size), MemoryManager.StringToByteArray(HrothEyelidUpperLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyelidUpperRight_Size), MemoryManager.StringToByteArray(HrothEyelidUpperRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipsLeft_Size), MemoryManager.StringToByteArray(HrothLipsLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipsRight_Size), MemoryManager.StringToByteArray(HrothLipsRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipUpperLeft_Size), MemoryManager.StringToByteArray(HrothLipUpperLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipUpperRight_Size), MemoryManager.StringToByteArray(HrothLipUpperRight_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                    if (Race_Sav02 == "08")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyebrowLeft_Size), MemoryManager.StringToByteArray(EyebrowLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyebrowRight_Size), MemoryManager.StringToByteArray(EyebrowRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothBridge_Size), MemoryManager.StringToByteArray(Bridge_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothBrowLeft_Size), MemoryManager.StringToByteArray(BrowLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothBrowRight_Size), MemoryManager.StringToByteArray(BrowRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothJawUpper_Size), MemoryManager.StringToByteArray(VieraLipUpperB_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipUpper_Size), MemoryManager.StringToByteArray(LipUpperA_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyelidUpperLeft_Size), MemoryManager.StringToByteArray(EyelidUpperLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothEyelidUpperRight_Size), MemoryManager.StringToByteArray(EyelidUpperRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipsLeft_Size), MemoryManager.StringToByteArray(LipsLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipsRight_Size), MemoryManager.StringToByteArray(LipsRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipUpperLeft_Size), MemoryManager.StringToByteArray(CheekLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipUpperRight_Size), MemoryManager.StringToByteArray(CheekRight_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (CharacterDetails.Race.value == 8)
+                {
+                    if (Race_Sav02 == "01" || Race_Sav02 == "02" || Race_Sav02 == "03" || Race_Sav02 == "04" || Race_Sav02 == "05" || Race_Sav02 == "06")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CheekLeft_Size), MemoryManager.StringToByteArray(CheekLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CheekRight_Size), MemoryManager.StringToByteArray(CheekRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipsLeft_Size), MemoryManager.StringToByteArray(LipsLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipsRight_Size), MemoryManager.StringToByteArray(LipsRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyebrowLeft_Size), MemoryManager.StringToByteArray(EyebrowLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyebrowRight_Size), MemoryManager.StringToByteArray(EyebrowRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Bridge_Size), MemoryManager.StringToByteArray(Bridge_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BrowLeft_Size), MemoryManager.StringToByteArray(BrowLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BrowRight_Size), MemoryManager.StringToByteArray(BrowRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipUpperA_Size), MemoryManager.StringToByteArray(LipUpperA_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidUpperLeft_Size), MemoryManager.StringToByteArray(EyelidUpperLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidUpperRight_Size), MemoryManager.StringToByteArray(EyelidUpperRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraLipLowerA_Size), MemoryManager.StringToByteArray(VieraEar01ALeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraLipUpperB_Size), MemoryManager.StringToByteArray(VieraEar01ARight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraLipLowerB_Size), MemoryManager.StringToByteArray(VieraEar02ALeft_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                    if (Race_Sav02 == "07")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CheekLeft_Size), MemoryManager.StringToByteArray(HrothLipUpperLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CheekRight_Size), MemoryManager.StringToByteArray(HrothLipUpperRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipsLeft_Size), MemoryManager.StringToByteArray(HrothLipsLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipsRight_Size), MemoryManager.StringToByteArray(HrothLipsRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyebrowLeft_Size), MemoryManager.StringToByteArray(HrothEyebrowLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyebrowRight_Size), MemoryManager.StringToByteArray(HrothEyebrowRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Bridge_Size), MemoryManager.StringToByteArray(HrothBridge_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BrowLeft_Size), MemoryManager.StringToByteArray(HrothBrowLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BrowRight_Size), MemoryManager.StringToByteArray(HrothBrowRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipUpperA_Size), MemoryManager.StringToByteArray(HrothLipUpper_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidUpperLeft_Size), MemoryManager.StringToByteArray(HrothEyelidUpperLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidUpperRight_Size), MemoryManager.StringToByteArray(HrothEyelidUpperRight_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                    if (Race_Sav02 == "08")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CheekLeft_Size), MemoryManager.StringToByteArray(CheekLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CheekRight_Size), MemoryManager.StringToByteArray(CheekRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipsLeft_Size), MemoryManager.StringToByteArray(LipsLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipsRight_Size), MemoryManager.StringToByteArray(LipsRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyebrowLeft_Size), MemoryManager.StringToByteArray(EyebrowLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyebrowRight_Size), MemoryManager.StringToByteArray(EyebrowRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Bridge_Size), MemoryManager.StringToByteArray(Bridge_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BrowLeft_Size), MemoryManager.StringToByteArray(BrowLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BrowRight_Size), MemoryManager.StringToByteArray(BrowRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipUpperA_Size), MemoryManager.StringToByteArray(LipUpperA_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidUpperLeft_Size), MemoryManager.StringToByteArray(EyelidUpperLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidUpperRight_Size), MemoryManager.StringToByteArray(EyelidUpperRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar01ALeft_Size), MemoryManager.StringToByteArray(VieraEar01ALeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar01ARight_Size), MemoryManager.StringToByteArray(VieraEar01ARight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar02ALeft_Size), MemoryManager.StringToByteArray(VieraEar02ALeft_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HrothLipLower_Sav02 != "null" || VieraEar02ARight_Sav02 != "null")
+                {
+                    if (CharacterDetails.Race.value == 7)
+                    {
+                        if (Race_Sav02 == "07")
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipLower_Size), MemoryManager.StringToByteArray(HrothLipLower_Sav02Size.Replace(" ", string.Empty)));
+                        }
+                    }
+                    if (CharacterDetails.Race.value == 8)
+                    {
+                        if (Race_Sav02 == "08")
+                        {
+                            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar02ARight_Size), MemoryManager.StringToByteArray(VieraEar02ARight_Sav02Size.Replace(" ", string.Empty)));
+                        }
+                    }
+                }
+                if (VieraEar03ALeft_Sav02 != "null")
+                {
+                    if (CharacterDetails.Race.value < 7)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipLowerA_Size), MemoryManager.StringToByteArray(VieraLipLowerA_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipUpperB_Size), MemoryManager.StringToByteArray(VieraLipUpperB_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipLowerB_Size), MemoryManager.StringToByteArray(VieraLipLowerB_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                    if (CharacterDetails.Race.value == 8)
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar03ALeft_Size), MemoryManager.StringToByteArray(VieraEar03ALeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar03ARight_Size), MemoryManager.StringToByteArray(VieraEar03ARight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar04ALeft_Size), MemoryManager.StringToByteArray(VieraEar04ALeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar04ARight_Size), MemoryManager.StringToByteArray(VieraEar04ARight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraLipLowerA_Size), MemoryManager.StringToByteArray(VieraLipLowerA_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraLipUpperB_Size), MemoryManager.StringToByteArray(VieraLipUpperB_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar01BLeft_Size), MemoryManager.StringToByteArray(VieraEar01BLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar01BRight_Size), MemoryManager.StringToByteArray(VieraEar01BRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar02BLeft_Size), MemoryManager.StringToByteArray(VieraEar02BLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar02BRight_Size), MemoryManager.StringToByteArray(VieraEar02BRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar03BLeft_Size), MemoryManager.StringToByteArray(VieraEar03BLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar03BRight_Size), MemoryManager.StringToByteArray(VieraEar03BRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar04BLeft_Size), MemoryManager.StringToByteArray(VieraEar04BLeft_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar04BRight_Size), MemoryManager.StringToByteArray(VieraEar04BRight_Sav02Size.Replace(" ", string.Empty)));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraLipLowerB_Size), MemoryManager.StringToByteArray(VieraLipLowerB_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+            }
+
         }
         #endregion
         #region Savestate\Loadstate Hair
@@ -7655,6 +8691,12 @@ namespace ConceptMatrix.Views
             HairFrontLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HairFrontLeft_Bone), 16));
             HairFrontRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HairFrontRight_Bone), 16));
             HairB_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HairB_Bone), 16));
+
+            HairA_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HairA_Size), 16));
+            HairFrontLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HairFrontLeft_Size), 16));
+            HairFrontRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HairFrontRight_Size), 16));
+            HairB_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HairB_Size), 16));
+
             var HairValue = m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHair_Value));
 
             if (HairValue >= 1)
@@ -7664,98 +8706,124 @@ namespace ConceptMatrix.Views
             if (HairValue >= 2)
             {
                 ExHairA_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairA_Bone), 16));
+                ExHairA_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairA_Size), 16));
             }
             else
             {
                 ExHairA_Sav01 = "null";
+                ExHairA_Sav01Size = "null";
             }
             if (HairValue >= 3)
             {
                 ExHairB_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairB_Bone), 16));
+                ExHairB_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairB_Size), 16));
+
             }
             else
             {
                 ExHairB_Sav01 = "null";
+                ExHairB_Sav01Size = "null";
             }
             if (HairValue >= 4)
             {
                 ExHairC_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairC_Bone), 16));
+                ExHairC_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairC_Size), 16));
             }
             else
             {
                 ExHairC_Sav01 = "null";
+                ExHairC_Sav01Size = "null";
             }
             if (HairValue >= 5)
             {
                 ExHairD_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairD_Bone), 16));
+                ExHairD_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairD_Size), 16));
             }
             else
             {
                 ExHairD_Sav01 = "null";
+                ExHairD_Sav01Size = "null";
             }
             if (HairValue >= 6)
             {
                 ExHairE_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairE_Bone), 16));
+                ExHairE_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairE_Size), 16));
             }
             else
             {
                 ExHairE_Sav01 = "null";
+                ExHairE_Sav01Size = "null";
             }
             if (HairValue >= 7)
             {
                 ExHairF_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairF_Bone), 16));
+                ExHairF_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairF_Size), 16));
             }
             else
             {
                 ExHairF_Sav01 = "null";
+                ExHairF_Sav01Size = "null";
             }
             if (HairValue >= 8)
             {
                 ExHairG_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairG_Bone), 16));
+                ExHairG_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairG_Size), 16));
             }
             else
             {
                 ExHairG_Sav01 = "null";
+                ExHairG_Sav01Size = "null";
             }
             if (HairValue >= 9)
             {
                 ExHairH_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairH_Bone), 16));
+                ExHairH_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairH_Size), 16));
             }
             else
             {
                 ExHairH_Sav01 = "null";
+                ExHairH_Sav01Size = "null";
             }
             if (HairValue >= 10)
             {
                 ExHairI_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairI_Bone), 16));
+                ExHairI_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairI_Size), 16));
             }
             else
             {
                 ExHairI_Sav01 = "null";
+                ExHairI_Sav01Size = "null";
             }
             if (HairValue >= 11)
             {
                 ExHairJ_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairJ_Bone), 16));
+                ExHairJ_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairJ_Size), 16));
             }
             else
             {
                 ExHairJ_Sav01 = "null";
+                ExHairJ_Sav01Size = "null";
+
             }
             if (HairValue >= 12)
             {
                 ExHairK_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairK_Bone), 16));
+                ExHairK_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairK_Size), 16));
             }
             else
             {
                 ExHairK_Sav01 = "null";
+                ExHairK_Sav01Size = "null";
             }
             if (HairValue >= 13)
             {
                 ExHairL_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairL_Bone), 16));
+                ExHairL_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairL_Size), 16));
             }
             else
             {
                 ExHairL_Sav01 = "null";
+                ExHairL_Sav01Size = "null";
             }
             if (ExRootHair_Sav01 == null)
             {
@@ -7772,6 +8840,19 @@ namespace ConceptMatrix.Views
                 ExHairJ_Sav01 = "null";
                 ExHairK_Sav01 = "null";
                 ExHairL_Sav01 = "null";
+
+                ExHairA_Sav01Size = "null";
+                ExHairB_Sav01Size = "null";
+                ExHairC_Sav01Size = "null";
+                ExHairD_Sav01Size = "null";
+                ExHairE_Sav01Size = "null";
+                ExHairF_Sav01Size = "null";
+                ExHairG_Sav01Size = "null";
+                ExHairH_Sav01Size = "null";
+                ExHairI_Sav01Size = "null";
+                ExHairJ_Sav01Size = "null";
+                ExHairK_Sav01Size = "null";
+                ExHairL_Sav01Size = "null";
             }
         }
         private void SavestateHair02_Click(object sender, RoutedEventArgs e)
@@ -7783,6 +8864,12 @@ namespace ConceptMatrix.Views
             HairFrontLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HairFrontLeft_Bone), 16));
             HairFrontRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HairFrontRight_Bone), 16));
             HairB_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HairB_Bone), 16));
+
+            HairA_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HairA_Size), 16));
+            HairFrontLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HairFrontLeft_Size), 16));
+            HairFrontRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HairFrontRight_Size), 16));
+            HairB_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HairB_Size), 16));
+
             var HairValue = m.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHair_Value));
 
             if (HairValue >= 1)
@@ -7792,98 +8879,124 @@ namespace ConceptMatrix.Views
             if (HairValue >= 2)
             {
                 ExHairA_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairA_Bone), 16));
+                ExHairA_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairA_Size), 16));
             }
             else
             {
                 ExHairA_Sav02 = "null";
+                ExHairA_Sav02Size = "null";
             }
             if (HairValue >= 3)
             {
                 ExHairB_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairB_Bone), 16));
+                ExHairB_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairB_Size), 16));
+
             }
             else
             {
                 ExHairB_Sav02 = "null";
+                ExHairB_Sav02Size = "null";
             }
             if (HairValue >= 4)
             {
                 ExHairC_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairC_Bone), 16));
+                ExHairC_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairC_Size), 16));
             }
             else
             {
                 ExHairC_Sav02 = "null";
+                ExHairC_Sav02Size = "null";
             }
             if (HairValue >= 5)
             {
                 ExHairD_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairD_Bone), 16));
+                ExHairD_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairD_Size), 16));
             }
             else
             {
                 ExHairD_Sav02 = "null";
+                ExHairD_Sav02Size = "null";
             }
             if (HairValue >= 6)
             {
                 ExHairE_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairE_Bone), 16));
+                ExHairE_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairE_Size), 16));
             }
             else
             {
                 ExHairE_Sav02 = "null";
+                ExHairE_Sav02Size = "null";
             }
             if (HairValue >= 7)
             {
                 ExHairF_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairF_Bone), 16));
+                ExHairF_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairF_Size), 16));
             }
             else
             {
                 ExHairF_Sav02 = "null";
+                ExHairF_Sav02Size = "null";
             }
             if (HairValue >= 8)
             {
                 ExHairG_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairG_Bone), 16));
+                ExHairG_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairG_Size), 16));
             }
             else
             {
                 ExHairG_Sav02 = "null";
+                ExHairG_Sav02Size = "null";
             }
             if (HairValue >= 9)
             {
                 ExHairH_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairH_Bone), 16));
+                ExHairH_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairH_Size), 16));
             }
             else
             {
                 ExHairH_Sav02 = "null";
+                ExHairH_Sav02Size = "null";
             }
             if (HairValue >= 10)
             {
                 ExHairI_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairI_Bone), 16));
+                ExHairI_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairI_Size), 16));
             }
             else
             {
                 ExHairI_Sav02 = "null";
+                ExHairI_Sav02Size = "null";
             }
             if (HairValue >= 11)
             {
                 ExHairJ_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairJ_Bone), 16));
+                ExHairJ_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairJ_Size), 16));
             }
             else
             {
                 ExHairJ_Sav02 = "null";
+                ExHairJ_Sav02Size = "null";
+
             }
             if (HairValue >= 12)
             {
                 ExHairK_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairK_Bone), 16));
+                ExHairK_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairK_Size), 16));
             }
             else
             {
                 ExHairK_Sav02 = "null";
+                ExHairK_Sav02Size = "null";
             }
             if (HairValue >= 13)
             {
                 ExHairL_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairL_Bone), 16));
+                ExHairL_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairL_Size), 16));
             }
             else
             {
                 ExHairL_Sav02 = "null";
+                ExHairL_Sav02Size = "null";
             }
             if (ExRootHair_Sav02 == null)
             {
@@ -7900,6 +9013,19 @@ namespace ConceptMatrix.Views
                 ExHairJ_Sav02 = "null";
                 ExHairK_Sav02 = "null";
                 ExHairL_Sav02 = "null";
+
+                ExHairA_Sav02Size = "null";
+                ExHairB_Sav02Size = "null";
+                ExHairC_Sav02Size = "null";
+                ExHairD_Sav02Size = "null";
+                ExHairE_Sav02Size = "null";
+                ExHairF_Sav02Size = "null";
+                ExHairG_Sav02Size = "null";
+                ExHairH_Sav02Size = "null";
+                ExHairI_Sav02Size = "null";
+                ExHairJ_Sav02Size = "null";
+                ExHairK_Sav02Size = "null";
+                ExHairL_Sav02Size = "null";
             }
         }
         private void LoadstateHair01_Click(object sender, RoutedEventArgs e)
@@ -7993,6 +9119,98 @@ namespace ConceptMatrix.Views
                 if (ExHairL_Sav01 != "null")
                 {
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairL_Bone), MemoryManager.StringToByteArray(ExHairL_Sav01.Replace(" ", string.Empty)));
+                }
+            }
+            if (ScaleSaveToggle.IsChecked == true)
+            {
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HairA_Size), MemoryManager.StringToByteArray(HairA_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HairFrontLeft_Size), MemoryManager.StringToByteArray(HairFrontLeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HairFrontRight_Size), MemoryManager.StringToByteArray(HairFrontRight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HairB_Size), MemoryManager.StringToByteArray(HairB_Sav01Size.Replace(" ", string.Empty)));
+
+                if (HairValue >= 2)
+                {
+                    if (ExHairA_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairA_Size), MemoryManager.StringToByteArray(ExHairA_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HairValue >= 3)
+                {
+                    if (ExHairB_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairB_Size), MemoryManager.StringToByteArray(ExHairB_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HairValue >= 4)
+                {
+                    if (ExHairC_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairC_Size), MemoryManager.StringToByteArray(ExHairC_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HairValue >= 5)
+                {
+                    if (ExHairD_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairD_Size), MemoryManager.StringToByteArray(ExHairD_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HairValue >= 6)
+                {
+                    if (ExHairE_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairE_Size), MemoryManager.StringToByteArray(ExHairE_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HairValue >= 7)
+                {
+                    if (ExHairF_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairF_Size), MemoryManager.StringToByteArray(ExHairF_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HairValue >= 8)
+                {
+                    if (ExHairG_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairG_Size), MemoryManager.StringToByteArray(ExHairG_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HairValue >= 9)
+                {
+                    if (ExHairH_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairH_Size), MemoryManager.StringToByteArray(ExHairH_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HairValue >= 10)
+                {
+                    if (ExHairI_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairI_Size), MemoryManager.StringToByteArray(ExHairI_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HairValue >= 11)
+                {
+                    if (ExHairJ_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairJ_Size), MemoryManager.StringToByteArray(ExHairJ_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HairValue >= 12)
+                {
+                    if (ExHairK_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairK_Size), MemoryManager.StringToByteArray(ExHairK_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HairValue >= 13)
+                {
+                    if (ExHairL_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairL_Size), MemoryManager.StringToByteArray(ExHairL_Sav01Size.Replace(" ", string.Empty)));
+                    }
                 }
             }
         }
@@ -8089,6 +9307,99 @@ namespace ConceptMatrix.Views
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairL_Bone), MemoryManager.StringToByteArray(ExHairL_Sav02.Replace(" ", string.Empty)));
                 }
             }
+            if (ScaleSaveToggle.IsChecked == true)
+            {
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HairA_Size), MemoryManager.StringToByteArray(HairA_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HairFrontLeft_Size), MemoryManager.StringToByteArray(HairFrontLeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HairFrontRight_Size), MemoryManager.StringToByteArray(HairFrontRight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HairB_Size), MemoryManager.StringToByteArray(HairB_Sav02Size.Replace(" ", string.Empty)));
+
+                if (HairValue >= 2)
+                {
+                    if (ExHairA_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairA_Size), MemoryManager.StringToByteArray(ExHairA_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HairValue >= 3)
+                {
+                    if (ExHairB_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairB_Size), MemoryManager.StringToByteArray(ExHairB_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HairValue >= 4)
+                {
+                    if (ExHairC_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairC_Size), MemoryManager.StringToByteArray(ExHairC_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HairValue >= 5)
+                {
+                    if (ExHairD_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairD_Size), MemoryManager.StringToByteArray(ExHairD_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HairValue >= 6)
+                {
+                    if (ExHairE_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairE_Size), MemoryManager.StringToByteArray(ExHairE_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HairValue >= 7)
+                {
+                    if (ExHairF_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairF_Size), MemoryManager.StringToByteArray(ExHairF_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HairValue >= 8)
+                {
+                    if (ExHairG_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairG_Size), MemoryManager.StringToByteArray(ExHairG_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HairValue >= 9)
+                {
+                    if (ExHairH_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairH_Size), MemoryManager.StringToByteArray(ExHairH_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HairValue >= 10)
+                {
+                    if (ExHairI_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairI_Size), MemoryManager.StringToByteArray(ExHairI_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HairValue >= 11)
+                {
+                    if (ExHairJ_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairJ_Size), MemoryManager.StringToByteArray(ExHairJ_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HairValue >= 12)
+                {
+                    if (ExHairK_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairK_Size), MemoryManager.StringToByteArray(ExHairK_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HairValue >= 13)
+                {
+                    if (ExHairL_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairL_Size), MemoryManager.StringToByteArray(ExHairL_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+            }
+
         }
         #endregion
         #region Savestate\Loadstate Earrings
@@ -8143,6 +9454,13 @@ namespace ConceptMatrix.Views
             ScabbardLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ScabbardLeft_Bone), 16));
             ScabbardRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ScabbardRight_Bone), 16));
             Neck_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Neck_Bone), 16));
+
+            SpineA_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.SpineA_Size), 16));
+            SpineB_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.SpineB_Size), 16));
+            BreastLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BreastLeft_Size), 16));
+            BreastRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BreastRight_Size), 16));
+            SpineC_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.SpineC_Size), 16));
+            Neck_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Neck_Size), 16));
         }
         private void SavestateBody02_Click(object sender, RoutedEventArgs e)
         {
@@ -8157,6 +9475,13 @@ namespace ConceptMatrix.Views
             ScabbardLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ScabbardLeft_Bone), 16));
             ScabbardRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ScabbardRight_Bone), 16));
             Neck_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Neck_Bone), 16));
+
+            SpineA_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.SpineA_Size), 16));
+            SpineB_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.SpineB_Size), 16));
+            BreastLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BreastLeft_Size), 16));
+            BreastRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BreastRight_Size), 16));
+            SpineC_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.SpineC_Size), 16));
+            Neck_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Neck_Size), 16));
         }
         private void LoadstateBody01_Click(object sender, RoutedEventArgs e)
         {
@@ -8169,6 +9494,16 @@ namespace ConceptMatrix.Views
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ScabbardLeft_Bone), MemoryManager.StringToByteArray(ScabbardLeft_Sav01.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ScabbardRight_Bone), MemoryManager.StringToByteArray(ScabbardRight_Sav01.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Neck_Bone), MemoryManager.StringToByteArray(Neck_Sav01.Replace(" ", string.Empty)));
+
+            if (ScaleSaveToggle.IsChecked == true)
+            {
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.SpineA_Size), MemoryManager.StringToByteArray(SpineA_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.SpineB_Size), MemoryManager.StringToByteArray(SpineB_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BreastLeft_Size), MemoryManager.StringToByteArray(BreastLeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BreastRight_Size), MemoryManager.StringToByteArray(BreastRight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.SpineC_Size), MemoryManager.StringToByteArray(SpineC_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Neck_Size), MemoryManager.StringToByteArray(Neck_Sav01Size.Replace(" ", string.Empty)));
+            }
         }
         private void LoadstateBody02_Click(object sender, RoutedEventArgs e)
         {
@@ -8181,6 +9516,16 @@ namespace ConceptMatrix.Views
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ScabbardLeft_Bone), MemoryManager.StringToByteArray(ScabbardLeft_Sav02.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ScabbardRight_Bone), MemoryManager.StringToByteArray(ScabbardRight_Sav02.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Neck_Bone), MemoryManager.StringToByteArray(Neck_Sav02.Replace(" ", string.Empty)));
+
+            if (ScaleSaveToggle.IsChecked == true)
+            {
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.SpineA_Size), MemoryManager.StringToByteArray(SpineA_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.SpineB_Size), MemoryManager.StringToByteArray(SpineB_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BreastLeft_Size), MemoryManager.StringToByteArray(BreastLeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.BreastRight_Size), MemoryManager.StringToByteArray(BreastRight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.SpineC_Size), MemoryManager.StringToByteArray(SpineC_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Neck_Size), MemoryManager.StringToByteArray(Neck_Sav02Size.Replace(" ", string.Empty)));
+            }
         }
         #endregion
         #region Savestate\Loadstate LeftArm
@@ -8199,6 +9544,15 @@ namespace ConceptMatrix.Views
             ElbowLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ElbowLeft_Bone), 16));
             CouterLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CouterLeft_Bone), 16));
             WristLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.WristLeft_Bone), 16));
+
+            ClavicleLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClavicleLeft_Size), 16));
+            ArmLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ArmLeft_Size), 16));
+            ArmRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ArmRight_Size), 16));
+            ForearmLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ForearmLeft_Size), 16));
+            ShoulderLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ShoulderLeft_Size), 16));
+            ElbowLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ElbowLeft_Size), 16));
+            CouterLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CouterLeft_Size), 16));
+            WristLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.WristLeft_Size), 16));
         }
         private void SavestateLeftArm02_Click(object sender, RoutedEventArgs e)
         {
@@ -8215,6 +9569,15 @@ namespace ConceptMatrix.Views
             ElbowLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ElbowLeft_Bone), 16));
             CouterLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CouterLeft_Bone), 16));
             WristLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.WristLeft_Bone), 16));
+
+            ClavicleLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClavicleLeft_Size), 16));
+            ArmLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ArmLeft_Size), 16));
+            ArmRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ArmRight_Size), 16));
+            ForearmLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ForearmLeft_Size), 16));
+            ShoulderLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ShoulderLeft_Size), 16));
+            ElbowLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ElbowLeft_Size), 16));
+            CouterLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CouterLeft_Size), 16));
+            WristLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.WristLeft_Size), 16));
         }
         private void LoadstateLeftArm01_Click(object sender, RoutedEventArgs e)
         {
@@ -8228,6 +9591,17 @@ namespace ConceptMatrix.Views
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ElbowLeft_Bone), MemoryManager.StringToByteArray(ElbowLeft_Sav01.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CouterLeft_Bone), MemoryManager.StringToByteArray(CouterLeft_Sav01.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.WristLeft_Bone), MemoryManager.StringToByteArray(WristLeft_Sav01.Replace(" ", string.Empty)));
+
+            if (ScaleSaveToggle.IsChecked == true)
+            {
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClavicleLeft_Size), MemoryManager.StringToByteArray(ClavicleLeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ArmLeft_Size), MemoryManager.StringToByteArray(ArmLeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ForearmLeft_Size), MemoryManager.StringToByteArray(ForearmLeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ShoulderLeft_Size), MemoryManager.StringToByteArray(ShoulderLeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ElbowLeft_Size), MemoryManager.StringToByteArray(ElbowLeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CouterLeft_Size), MemoryManager.StringToByteArray(CouterLeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.WristLeft_Size), MemoryManager.StringToByteArray(WristLeft_Sav01Size.Replace(" ", string.Empty)));
+            }
         }
         private void LoadstateLeftArm02_Click(object sender, RoutedEventArgs e)
         {
@@ -8241,6 +9615,17 @@ namespace ConceptMatrix.Views
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ElbowLeft_Bone), MemoryManager.StringToByteArray(ElbowLeft_Sav02.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CouterLeft_Bone), MemoryManager.StringToByteArray(CouterLeft_Sav02.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.WristLeft_Bone), MemoryManager.StringToByteArray(WristLeft_Sav02.Replace(" ", string.Empty)));
+
+            if (ScaleSaveToggle.IsChecked == true)
+            {
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClavicleLeft_Size), MemoryManager.StringToByteArray(ClavicleLeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ArmLeft_Size), MemoryManager.StringToByteArray(ArmLeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ForearmLeft_Size), MemoryManager.StringToByteArray(ForearmLeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ShoulderLeft_Size), MemoryManager.StringToByteArray(ShoulderLeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ElbowLeft_Size), MemoryManager.StringToByteArray(ElbowLeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CouterLeft_Size), MemoryManager.StringToByteArray(CouterLeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.WristLeft_Size), MemoryManager.StringToByteArray(WristLeft_Sav02Size.Replace(" ", string.Empty)));
+            }
         }
         #endregion
         #region Savestate\Loadstate RightArm
@@ -8259,6 +9644,15 @@ namespace ConceptMatrix.Views
             ElbowRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ElbowRight_Bone), 16));
             CouterRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CouterRight_Bone), 16));
             WristRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.WristRight_Bone), 16));
+
+            ClavicleRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClavicleRight_Size), 16));
+            ArmRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ArmRight_Size), 16));
+            ArmRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ArmRight_Size), 16));
+            ForearmRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ForearmRight_Size), 16));
+            ShoulderRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ShoulderRight_Size), 16));
+            ElbowRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ElbowRight_Size), 16));
+            CouterRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CouterRight_Size), 16));
+            WristRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.WristRight_Size), 16));
         }
         private void SavestateRightArm02_Click(object sender, RoutedEventArgs e)
         {
@@ -8275,6 +9669,15 @@ namespace ConceptMatrix.Views
             ElbowRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ElbowRight_Bone), 16));
             CouterRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CouterRight_Bone), 16));
             WristRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.WristRight_Bone), 16));
+
+            ClavicleRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClavicleRight_Size), 16));
+            ArmRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ArmRight_Size), 16));
+            ArmRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ArmRight_Size), 16));
+            ForearmRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ForearmRight_Size), 16));
+            ShoulderRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ShoulderRight_Size), 16));
+            ElbowRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ElbowRight_Size), 16));
+            CouterRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CouterRight_Size), 16));
+            WristRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.WristRight_Size), 16));
         }
         private void LoadstateRightArm01_Click(object sender, RoutedEventArgs e)
         {
@@ -8288,6 +9691,16 @@ namespace ConceptMatrix.Views
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ElbowRight_Bone), MemoryManager.StringToByteArray(ElbowRight_Sav01.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CouterRight_Bone), MemoryManager.StringToByteArray(CouterRight_Sav01.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.WristRight_Bone), MemoryManager.StringToByteArray(WristRight_Sav01.Replace(" ", string.Empty)));
+            if (ScaleSaveToggle.IsChecked == true)
+            {
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClavicleRight_Size), MemoryManager.StringToByteArray(ClavicleRight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ArmRight_Size), MemoryManager.StringToByteArray(ArmRight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ForearmRight_Size), MemoryManager.StringToByteArray(ForearmRight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ShoulderRight_Size), MemoryManager.StringToByteArray(ShoulderRight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ElbowRight_Size), MemoryManager.StringToByteArray(ElbowRight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CouterRight_Size), MemoryManager.StringToByteArray(CouterRight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.WristRight_Size), MemoryManager.StringToByteArray(WristRight_Sav01Size.Replace(" ", string.Empty)));
+            }
         }
         private void LoadstateRightArm02_Click(object sender, RoutedEventArgs e)
         {
@@ -8301,6 +9714,16 @@ namespace ConceptMatrix.Views
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ElbowRight_Bone), MemoryManager.StringToByteArray(ElbowRight_Sav02.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CouterRight_Bone), MemoryManager.StringToByteArray(CouterRight_Sav02.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.WristRight_Bone), MemoryManager.StringToByteArray(WristRight_Sav02.Replace(" ", string.Empty)));
+            if (ScaleSaveToggle.IsChecked == true)
+            {
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClavicleRight_Size), MemoryManager.StringToByteArray(ClavicleRight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ArmRight_Size), MemoryManager.StringToByteArray(ArmRight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ForearmRight_Size), MemoryManager.StringToByteArray(ForearmRight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ShoulderRight_Size), MemoryManager.StringToByteArray(ShoulderRight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ElbowRight_Size), MemoryManager.StringToByteArray(ElbowRight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CouterRight_Size), MemoryManager.StringToByteArray(CouterRight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.WristRight_Size), MemoryManager.StringToByteArray(WristRight_Sav02Size.Replace(" ", string.Empty)));
+            }
         }
         #endregion
         #region Savestate\Loadstate Clothes
@@ -8327,6 +9750,25 @@ namespace ConceptMatrix.Views
             ClothFrontCRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothFrontCRight_Bone), 16));
             ClothSideCLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideCLeft_Bone), 16));
             ClothSideCRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideCRight_Bone), 16));
+
+            ClothBackALeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothBackALeft_Size), 16));
+            ClothBackARight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothBackARight_Size), 16));
+            ClothFrontALeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothFrontALeft_Size), 16));
+            ClothFrontARight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothFrontARight_Size), 16));
+            ClothSideALeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideALeft_Size), 16));
+            ClothSideARight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideARight_Size), 16));
+            ClothBackBLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothBackBLeft_Size), 16));
+            ClothBackBRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothBackBRight_Size), 16));
+            ClothFrontBLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothFrontBLeft_Size), 16));
+            ClothFrontBRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothFrontBRight_Size), 16));
+            ClothSideBLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideBLeft_Size), 16));
+            ClothSideBRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideBRight_Size), 16));
+            ClothBackCLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothBackCLeft_Size), 16));
+            ClothBackCRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothBackCRight_Size), 16));
+            ClothFrontCLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothFrontCLeft_Size), 16));
+            ClothFrontCRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothFrontCRight_Size), 16));
+            ClothSideCLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideCLeft_Size), 16));
+            ClothSideCRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideCRight_Size), 16));
         }
         private void SavestateClothes02_Click(object sender, RoutedEventArgs e)
         {
@@ -8351,6 +9793,25 @@ namespace ConceptMatrix.Views
             ClothFrontCRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothFrontCRight_Bone), 16));
             ClothSideCLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideCLeft_Bone), 16));
             ClothSideCRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideCRight_Bone), 16));
+
+            ClothBackALeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothBackALeft_Size), 16));
+            ClothBackARight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothBackARight_Size), 16));
+            ClothFrontALeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothFrontALeft_Size), 16));
+            ClothFrontARight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothFrontARight_Size), 16));
+            ClothSideALeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideALeft_Size), 16));
+            ClothSideARight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideARight_Size), 16));
+            ClothBackBLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothBackBLeft_Size), 16));
+            ClothBackBRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothBackBRight_Size), 16));
+            ClothFrontBLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothFrontBLeft_Size), 16));
+            ClothFrontBRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothFrontBRight_Size), 16));
+            ClothSideBLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideBLeft_Size), 16));
+            ClothSideBRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideBRight_Size), 16));
+            ClothBackCLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothBackCLeft_Size), 16));
+            ClothBackCRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothBackCRight_Size), 16));
+            ClothFrontCLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothFrontCLeft_Size), 16));
+            ClothFrontCRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothFrontCRight_Size), 16));
+            ClothSideCLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideCLeft_Size), 16));
+            ClothSideCRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideCRight_Size), 16));
         }
         private void LoadstateClothes01_Click(object sender, RoutedEventArgs e)
         {
@@ -8373,6 +9834,28 @@ namespace ConceptMatrix.Views
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothFrontCRight_Bone), MemoryManager.StringToByteArray(ClothFrontCRight_Sav01.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideCLeft_Bone), MemoryManager.StringToByteArray(ClothSideCLeft_Sav01.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideCRight_Bone), MemoryManager.StringToByteArray(ClothSideCRight_Sav01.Replace(" ", string.Empty)));
+
+            if (ScaleSaveToggle.IsChecked == true)
+            {
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothBackALeft_Size), MemoryManager.StringToByteArray(ClothBackALeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothBackARight_Size), MemoryManager.StringToByteArray(ClothBackARight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothFrontALeft_Size), MemoryManager.StringToByteArray(ClothFrontALeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothFrontARight_Size), MemoryManager.StringToByteArray(ClothFrontARight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideALeft_Size), MemoryManager.StringToByteArray(ClothSideALeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideARight_Size), MemoryManager.StringToByteArray(ClothSideARight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothBackBLeft_Size), MemoryManager.StringToByteArray(ClothBackBLeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothBackBRight_Size), MemoryManager.StringToByteArray(ClothBackBRight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothFrontBLeft_Size), MemoryManager.StringToByteArray(ClothFrontBLeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothFrontBRight_Size), MemoryManager.StringToByteArray(ClothFrontBRight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideBLeft_Size), MemoryManager.StringToByteArray(ClothSideBLeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideBRight_Size), MemoryManager.StringToByteArray(ClothSideBRight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothBackCLeft_Size), MemoryManager.StringToByteArray(ClothBackCLeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothBackCRight_Size), MemoryManager.StringToByteArray(ClothBackCRight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothFrontCLeft_Size), MemoryManager.StringToByteArray(ClothFrontCLeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothFrontCRight_Size), MemoryManager.StringToByteArray(ClothFrontCRight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideCLeft_Size), MemoryManager.StringToByteArray(ClothSideCLeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideCRight_Size), MemoryManager.StringToByteArray(ClothSideCRight_Sav01Size.Replace(" ", string.Empty)));
+            }
         }
         private void LoadstateClothes02_Click(object sender, RoutedEventArgs e)
         {
@@ -8395,6 +9878,27 @@ namespace ConceptMatrix.Views
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothFrontCRight_Bone), MemoryManager.StringToByteArray(ClothFrontCRight_Sav02.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideCLeft_Bone), MemoryManager.StringToByteArray(ClothSideCLeft_Sav02.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideCRight_Bone), MemoryManager.StringToByteArray(ClothSideCRight_Sav02.Replace(" ", string.Empty)));
+            if (ScaleSaveToggle.IsChecked == true)
+            {
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothBackALeft_Size), MemoryManager.StringToByteArray(ClothBackALeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothBackARight_Size), MemoryManager.StringToByteArray(ClothBackARight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothFrontALeft_Size), MemoryManager.StringToByteArray(ClothFrontALeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothFrontARight_Size), MemoryManager.StringToByteArray(ClothFrontARight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideALeft_Size), MemoryManager.StringToByteArray(ClothSideALeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideARight_Size), MemoryManager.StringToByteArray(ClothSideARight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothBackBLeft_Size), MemoryManager.StringToByteArray(ClothBackBLeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothBackBRight_Size), MemoryManager.StringToByteArray(ClothBackBRight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothFrontBLeft_Size), MemoryManager.StringToByteArray(ClothFrontBLeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothFrontBRight_Size), MemoryManager.StringToByteArray(ClothFrontBRight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideBLeft_Size), MemoryManager.StringToByteArray(ClothSideBLeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideBRight_Size), MemoryManager.StringToByteArray(ClothSideBRight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothBackCLeft_Size), MemoryManager.StringToByteArray(ClothBackCLeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothBackCRight_Size), MemoryManager.StringToByteArray(ClothBackCRight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothFrontCLeft_Size), MemoryManager.StringToByteArray(ClothFrontCLeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothFrontCRight_Size), MemoryManager.StringToByteArray(ClothFrontCRight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideCLeft_Size), MemoryManager.StringToByteArray(ClothSideCLeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ClothSideCRight_Size), MemoryManager.StringToByteArray(ClothSideCRight_Sav02Size.Replace(" ", string.Empty)));
+            }
         }
         #endregion
         #region Savestate\Loadstate Weapons
@@ -8444,6 +9948,18 @@ namespace ConceptMatrix.Views
             RingBLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.RingBLeft_Bone), 16));
             MiddleBLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.MiddleBLeft_Bone), 16));
             ThumbBLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ThumbBLeft_Bone), 16));
+
+            HandLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HandLeft_Size), 16));
+            IndexALeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.IndexALeft_Size), 16));
+            PinkyALeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PinkyALeft_Size), 16));
+            RingALeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.RingALeft_Size), 16));
+            MiddleALeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.MiddleALeft_Size), 16));
+            ThumbALeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ThumbALeft_Size), 16));
+            IndexBLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.IndexBLeft_Size), 16));
+            PinkyBLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PinkyBLeft_Size), 16));
+            RingBLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.RingBLeft_Size), 16));
+            MiddleBLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.MiddleBLeft_Size), 16));
+            ThumbBLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ThumbBLeft_Size), 16));
         }
         private void SavestateLeftHand02_Click(object sender, RoutedEventArgs e)
         {
@@ -8461,6 +9977,18 @@ namespace ConceptMatrix.Views
             RingBLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.RingBLeft_Bone), 16));
             MiddleBLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.MiddleBLeft_Bone), 16));
             ThumbBLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ThumbBLeft_Bone), 16));
+
+            HandLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HandLeft_Size), 16));
+            IndexALeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.IndexALeft_Size), 16));
+            PinkyALeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PinkyALeft_Size), 16));
+            RingALeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.RingALeft_Size), 16));
+            MiddleALeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.MiddleALeft_Size), 16));
+            ThumbALeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ThumbALeft_Size), 16));
+            IndexBLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.IndexBLeft_Size), 16));
+            PinkyBLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PinkyBLeft_Size), 16));
+            RingBLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.RingBLeft_Size), 16));
+            MiddleBLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.MiddleBLeft_Size), 16));
+            ThumbBLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ThumbBLeft_Size), 16));
         }
         private void LoadstateLeftHand01_Click(object sender, RoutedEventArgs e)
         {
@@ -8476,6 +10004,21 @@ namespace ConceptMatrix.Views
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.RingBLeft_Bone), MemoryManager.StringToByteArray(RingBLeft_Sav01.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.MiddleBLeft_Bone), MemoryManager.StringToByteArray(MiddleBLeft_Sav01.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ThumbBLeft_Bone), MemoryManager.StringToByteArray(ThumbBLeft_Sav01.Replace(" ", string.Empty)));
+
+            if (ScaleSaveToggle.IsChecked == true)
+            {
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HandLeft_Size), MemoryManager.StringToByteArray(HandLeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.IndexALeft_Size), MemoryManager.StringToByteArray(IndexALeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PinkyALeft_Size), MemoryManager.StringToByteArray(PinkyALeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.RingALeft_Size), MemoryManager.StringToByteArray(RingALeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.MiddleALeft_Size), MemoryManager.StringToByteArray(MiddleALeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ThumbALeft_Size), MemoryManager.StringToByteArray(ThumbALeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.IndexBLeft_Size), MemoryManager.StringToByteArray(IndexBLeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PinkyBLeft_Size), MemoryManager.StringToByteArray(PinkyBLeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.RingBLeft_Size), MemoryManager.StringToByteArray(RingBLeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.MiddleBLeft_Size), MemoryManager.StringToByteArray(MiddleBLeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ThumbBLeft_Size), MemoryManager.StringToByteArray(ThumbBLeft_Sav01Size.Replace(" ", string.Empty)));
+            }
         }
         private void LoadstateLeftHand02_Click(object sender, RoutedEventArgs e)
         {
@@ -8491,6 +10034,21 @@ namespace ConceptMatrix.Views
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.RingBLeft_Bone), MemoryManager.StringToByteArray(RingBLeft_Sav02.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.MiddleBLeft_Bone), MemoryManager.StringToByteArray(MiddleBLeft_Sav02.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ThumbBLeft_Bone), MemoryManager.StringToByteArray(ThumbBLeft_Sav02.Replace(" ", string.Empty)));
+
+            if (ScaleSaveToggle.IsChecked == true)
+            {
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HandLeft_Size), MemoryManager.StringToByteArray(HandLeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.IndexALeft_Size), MemoryManager.StringToByteArray(IndexALeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PinkyALeft_Size), MemoryManager.StringToByteArray(PinkyALeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.RingALeft_Size), MemoryManager.StringToByteArray(RingALeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.MiddleALeft_Size), MemoryManager.StringToByteArray(MiddleALeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ThumbALeft_Size), MemoryManager.StringToByteArray(ThumbALeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.IndexBLeft_Size), MemoryManager.StringToByteArray(IndexBLeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PinkyBLeft_Size), MemoryManager.StringToByteArray(PinkyBLeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.RingBLeft_Size), MemoryManager.StringToByteArray(RingBLeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.MiddleBLeft_Size), MemoryManager.StringToByteArray(MiddleBLeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ThumbBLeft_Size), MemoryManager.StringToByteArray(ThumbBLeft_Sav02Size.Replace(" ", string.Empty)));
+            }
         }
         #endregion
         #region Savestate\Loadstate RightHand
@@ -8510,6 +10068,18 @@ namespace ConceptMatrix.Views
             RingBRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.RingBRight_Bone), 16));
             MiddleBRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.MiddleBRight_Bone), 16));
             ThumbBRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ThumbBRight_Bone), 16));
+
+            HandRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HandRight_Size), 16));
+            IndexARight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.IndexARight_Size), 16));
+            PinkyARight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PinkyARight_Size), 16));
+            RingARight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.RingARight_Size), 16));
+            MiddleARight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.MiddleARight_Size), 16));
+            ThumbARight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ThumbARight_Size), 16));
+            IndexBRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.IndexBRight_Size), 16));
+            PinkyBRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PinkyBRight_Size), 16));
+            RingBRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.RingBRight_Size), 16));
+            MiddleBRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.MiddleBRight_Size), 16));
+            ThumbBRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ThumbBRight_Size), 16));
         }
         private void SavestateRightHand02_Click(object sender, RoutedEventArgs e)
         {
@@ -8527,6 +10097,18 @@ namespace ConceptMatrix.Views
             RingBRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.RingBRight_Bone), 16));
             MiddleBRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.MiddleBRight_Bone), 16));
             ThumbBRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ThumbBRight_Bone), 16));
+
+            HandRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HandRight_Size), 16));
+            IndexARight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.IndexARight_Size), 16));
+            PinkyARight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PinkyARight_Size), 16));
+            RingARight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.RingARight_Size), 16));
+            MiddleARight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.MiddleARight_Size), 16));
+            ThumbARight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ThumbARight_Size), 16));
+            IndexBRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.IndexBRight_Size), 16));
+            PinkyBRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PinkyBRight_Size), 16));
+            RingBRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.RingBRight_Size), 16));
+            MiddleBRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.MiddleBRight_Size), 16));
+            ThumbBRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ThumbBRight_Size), 16));
         }
         private void LoadstateRightHand01_Click(object sender, RoutedEventArgs e)
         {
@@ -8542,6 +10124,21 @@ namespace ConceptMatrix.Views
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.RingBRight_Bone), MemoryManager.StringToByteArray(RingBRight_Sav01.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.MiddleBRight_Bone), MemoryManager.StringToByteArray(MiddleBRight_Sav01.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ThumbBRight_Bone), MemoryManager.StringToByteArray(ThumbBRight_Sav01.Replace(" ", string.Empty)));
+
+            if (ScaleSaveToggle.IsChecked == true)
+            {
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HandRight_Size), MemoryManager.StringToByteArray(HandRight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.IndexARight_Size), MemoryManager.StringToByteArray(IndexARight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PinkyARight_Size), MemoryManager.StringToByteArray(PinkyARight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.RingARight_Size), MemoryManager.StringToByteArray(RingARight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.MiddleARight_Size), MemoryManager.StringToByteArray(MiddleARight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ThumbARight_Size), MemoryManager.StringToByteArray(ThumbARight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.IndexBRight_Size), MemoryManager.StringToByteArray(IndexBRight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PinkyBRight_Size), MemoryManager.StringToByteArray(PinkyBRight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.RingBRight_Size), MemoryManager.StringToByteArray(RingBRight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.MiddleBRight_Size), MemoryManager.StringToByteArray(MiddleBRight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ThumbBRight_Size), MemoryManager.StringToByteArray(ThumbBRight_Sav01Size.Replace(" ", string.Empty)));
+            }
         }
         private void LoadstateRightHand02_Click(object sender, RoutedEventArgs e)
         {
@@ -8557,6 +10154,20 @@ namespace ConceptMatrix.Views
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.RingBRight_Bone), MemoryManager.StringToByteArray(RingBRight_Sav02.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.MiddleBRight_Bone), MemoryManager.StringToByteArray(MiddleBRight_Sav02.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ThumbBRight_Bone), MemoryManager.StringToByteArray(ThumbBRight_Sav02.Replace(" ", string.Empty)));
+            if (ScaleSaveToggle.IsChecked == true)
+            {
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HandRight_Size), MemoryManager.StringToByteArray(HandRight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.IndexARight_Size), MemoryManager.StringToByteArray(IndexARight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PinkyARight_Size), MemoryManager.StringToByteArray(PinkyARight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.RingARight_Size), MemoryManager.StringToByteArray(RingARight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.MiddleARight_Size), MemoryManager.StringToByteArray(MiddleARight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ThumbARight_Size), MemoryManager.StringToByteArray(ThumbARight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.IndexBRight_Size), MemoryManager.StringToByteArray(IndexBRight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PinkyBRight_Size), MemoryManager.StringToByteArray(PinkyBRight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.RingBRight_Size), MemoryManager.StringToByteArray(RingBRight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.MiddleBRight_Size), MemoryManager.StringToByteArray(MiddleBRight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ThumbBRight_Size), MemoryManager.StringToByteArray(ThumbBRight_Sav02Size.Replace(" ", string.Empty)));
+            }
         }
         #endregion
         #region Savestate\Loadstate Waist
@@ -8570,6 +10181,10 @@ namespace ConceptMatrix.Views
             HolsterRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HolsterRight_Bone), 16));
             SheatheLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.SheatheLeft_Bone), 16));
             SheatheRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.SheatheRight_Bone), 16));
+
+            Waist_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Waist_Size), 16));
+    
+
             if (CharacterDetails.Race.value == 4 || CharacterDetails.Race.value == 6 || CharacterDetails.Race.value == 7)
             {
                 TailA_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailA_Bone), 16));
@@ -8577,6 +10192,12 @@ namespace ConceptMatrix.Views
                 TailC_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailC_Bone), 16));
                 TailD_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailD_Bone), 16));
                 TailE_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailE_Bone), 16));
+
+                TailA_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailA_Size), 16));
+                TailB_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailB_Size), 16));
+                TailC_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailC_Size), 16));
+                TailD_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailD_Size), 16));
+                TailE_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailE_Size), 16));
             }
             else
             {
@@ -8585,6 +10206,12 @@ namespace ConceptMatrix.Views
                 TailC_Sav01 = "null";
                 TailD_Sav01 = "null";
                 TailE_Sav01 = "null";
+
+                TailA_Sav01Size = "null";
+                TailB_Sav01Size = "null";
+                TailC_Sav01Size = "null";
+                TailD_Sav01Size = "null";
+                TailE_Sav01Size = "null";
             }
         }
         private void SavestateWaist02_Click(object sender, RoutedEventArgs e)
@@ -8597,6 +10224,10 @@ namespace ConceptMatrix.Views
             HolsterRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HolsterRight_Bone), 16));
             SheatheLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.SheatheLeft_Bone), 16));
             SheatheRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.SheatheRight_Bone), 16));
+
+            Waist_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Waist_Size), 16));
+
+
             if (CharacterDetails.Race.value == 4 || CharacterDetails.Race.value == 6 || CharacterDetails.Race.value == 7)
             {
                 TailA_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailA_Bone), 16));
@@ -8604,6 +10235,12 @@ namespace ConceptMatrix.Views
                 TailC_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailC_Bone), 16));
                 TailD_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailD_Bone), 16));
                 TailE_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailE_Bone), 16));
+
+                TailA_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailA_Size), 16));
+                TailB_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailB_Size), 16));
+                TailC_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailC_Size), 16));
+                TailD_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailD_Size), 16));
+                TailE_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailE_Size), 16));
             }
             else
             {
@@ -8612,6 +10249,12 @@ namespace ConceptMatrix.Views
                 TailC_Sav02 = "null";
                 TailD_Sav02 = "null";
                 TailE_Sav02 = "null";
+
+                TailA_Sav02Size = "null";
+                TailB_Sav02Size = "null";
+                TailC_Sav02Size = "null";
+                TailD_Sav02Size = "null";
+                TailE_Sav02Size = "null";
             }
         }
         private void LoadstateWaist01_Click(object sender, RoutedEventArgs e)
@@ -8630,6 +10273,19 @@ namespace ConceptMatrix.Views
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailD_Bone), MemoryManager.StringToByteArray(TailD_Sav01.Replace(" ", string.Empty)));
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailE_Bone), MemoryManager.StringToByteArray(TailE_Sav01.Replace(" ", string.Empty)));
             }
+
+            if (ScaleSaveToggle.IsChecked == true)
+            {
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Waist_Size), MemoryManager.StringToByteArray(Waist_Sav01Size.Replace(" ", string.Empty)));
+                if (TailA_Sav01Size != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailA_Size), MemoryManager.StringToByteArray(TailA_Sav01Size.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailB_Size), MemoryManager.StringToByteArray(TailB_Sav01Size.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailC_Size), MemoryManager.StringToByteArray(TailC_Sav01Size.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailD_Size), MemoryManager.StringToByteArray(TailD_Sav01Size.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailE_Size), MemoryManager.StringToByteArray(TailE_Sav01Size.Replace(" ", string.Empty)));
+                }
+            }
         }
         private void LoadstateWaist02_Click(object sender, RoutedEventArgs e)
         {
@@ -8647,6 +10303,18 @@ namespace ConceptMatrix.Views
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailD_Bone), MemoryManager.StringToByteArray(TailD_Sav02.Replace(" ", string.Empty)));
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailE_Bone), MemoryManager.StringToByteArray(TailE_Sav02.Replace(" ", string.Empty)));
             }
+            if (ScaleSaveToggle.IsChecked == true)
+            {
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Waist_Size), MemoryManager.StringToByteArray(Waist_Sav02Size.Replace(" ", string.Empty)));
+                if (TailA_Sav02Size != "null")
+                {
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailA_Size), MemoryManager.StringToByteArray(TailA_Sav02Size.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailB_Size), MemoryManager.StringToByteArray(TailB_Sav02Size.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailC_Size), MemoryManager.StringToByteArray(TailC_Sav02Size.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailD_Size), MemoryManager.StringToByteArray(TailD_Sav02Size.Replace(" ", string.Empty)));
+                    m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailE_Size), MemoryManager.StringToByteArray(TailE_Sav02Size.Replace(" ", string.Empty)));
+                }
+            }
         }
         #endregion
         #region Savestate\Loadstate LeftLeg
@@ -8661,6 +10329,13 @@ namespace ConceptMatrix.Views
             PoleynLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PoleynLeft_Bone), 16));
             FootLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.FootLeft_Bone), 16));
             ToesLeft_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ToesLeft_Bone), 16));
+
+            LegLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LegsLeft_Size), 16));
+            KneeLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.KneeLeft_Size), 16));
+            CalfLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CalfLeft_Size), 16));
+            PoleynLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PoleynLeft_Size), 16));
+            FootLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.FootLeft_Size), 16));
+            ToesLeft_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ToesLeft_Size), 16));
         }
         private void SavestateLeftLeg02_Click(object sender, RoutedEventArgs e)
         {
@@ -8673,6 +10348,13 @@ namespace ConceptMatrix.Views
             PoleynLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PoleynLeft_Bone), 16));
             FootLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.FootLeft_Bone), 16));
             ToesLeft_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ToesLeft_Bone), 16));
+
+            LegLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LegsLeft_Size), 16));
+            KneeLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.KneeLeft_Size), 16));
+            CalfLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CalfLeft_Size), 16));
+            PoleynLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PoleynLeft_Size), 16));
+            FootLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.FootLeft_Size), 16));
+            ToesLeft_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ToesLeft_Size), 16));
         }
         private void LoadstateLeftLeg01_Click(object sender, RoutedEventArgs e)
         {
@@ -8683,6 +10365,16 @@ namespace ConceptMatrix.Views
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PoleynLeft_Bone), MemoryManager.StringToByteArray(PoleynLeft_Sav01.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.FootLeft_Bone), MemoryManager.StringToByteArray(FootLeft_Sav01.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ToesLeft_Bone), MemoryManager.StringToByteArray(ToesLeft_Sav01.Replace(" ", string.Empty)));
+
+            if (ScaleSaveToggle.IsChecked == true)
+            {
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LegsLeft_Size), MemoryManager.StringToByteArray(LegLeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.KneeLeft_Size), MemoryManager.StringToByteArray(KneeLeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CalfLeft_Size), MemoryManager.StringToByteArray(CalfLeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PoleynLeft_Size), MemoryManager.StringToByteArray(PoleynLeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.FootLeft_Size), MemoryManager.StringToByteArray(FootLeft_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ToesLeft_Size), MemoryManager.StringToByteArray(ToesLeft_Sav01Size.Replace(" ", string.Empty)));
+            }
         }
         private void LoadstateLeftLeg02_Click(object sender, RoutedEventArgs e)
         {
@@ -8693,6 +10385,15 @@ namespace ConceptMatrix.Views
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PoleynLeft_Bone), MemoryManager.StringToByteArray(PoleynLeft_Sav02.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.FootLeft_Bone), MemoryManager.StringToByteArray(FootLeft_Sav02.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ToesLeft_Bone), MemoryManager.StringToByteArray(ToesLeft_Sav02.Replace(" ", string.Empty)));
+            if (ScaleSaveToggle.IsChecked == true)
+            {
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LegsLeft_Size), MemoryManager.StringToByteArray(LegLeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.KneeLeft_Size), MemoryManager.StringToByteArray(KneeLeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CalfLeft_Size), MemoryManager.StringToByteArray(CalfLeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PoleynLeft_Size), MemoryManager.StringToByteArray(PoleynLeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.FootLeft_Size), MemoryManager.StringToByteArray(FootLeft_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ToesLeft_Size), MemoryManager.StringToByteArray(ToesLeft_Sav02Size.Replace(" ", string.Empty)));
+            }
         }
         #endregion
         #region Savestate\Loadstate RightLeg
@@ -8707,6 +10408,13 @@ namespace ConceptMatrix.Views
             PoleynRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PoleynRight_Bone), 16));
             FootRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.FootRight_Bone), 16));
             ToesRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ToesRight_Bone), 16));
+
+            LegRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LegsRight_Size), 16));
+            KneeRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.KneeRight_Size), 16));
+            CalfRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CalfRight_Size), 16));
+            PoleynRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PoleynRight_Size), 16));
+            FootRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.FootRight_Size), 16));
+            ToesRight_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ToesRight_Size), 16));
         }
         private void SavestateRightLeg02_Click(object sender, RoutedEventArgs e)
         {
@@ -8719,6 +10427,13 @@ namespace ConceptMatrix.Views
             PoleynRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PoleynRight_Bone), 16));
             FootRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.FootRight_Bone), 16));
             ToesRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ToesRight_Bone), 16));
+
+            LegRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LegsRight_Size), 16));
+            KneeRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.KneeRight_Size), 16));
+            CalfRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CalfRight_Size), 16));
+            PoleynRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PoleynRight_Size), 16));
+            FootRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.FootRight_Size), 16));
+            ToesRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ToesRight_Size), 16));
         }
         private void LoadstateRightLeg01_Click(object sender, RoutedEventArgs e)
         {
@@ -8729,6 +10444,16 @@ namespace ConceptMatrix.Views
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PoleynRight_Bone), MemoryManager.StringToByteArray(PoleynRight_Sav01.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.FootRight_Bone), MemoryManager.StringToByteArray(FootRight_Sav01.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ToesRight_Bone), MemoryManager.StringToByteArray(ToesRight_Sav01.Replace(" ", string.Empty)));
+
+            if (ScaleSaveToggle.IsChecked == true)
+            {
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LegsRight_Size), MemoryManager.StringToByteArray(LegRight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.KneeRight_Size), MemoryManager.StringToByteArray(KneeRight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CalfRight_Size), MemoryManager.StringToByteArray(CalfRight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PoleynRight_Size), MemoryManager.StringToByteArray(PoleynRight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.FootRight_Size), MemoryManager.StringToByteArray(FootRight_Sav01Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ToesRight_Size), MemoryManager.StringToByteArray(ToesRight_Sav01Size.Replace(" ", string.Empty)));
+            }
         }
         private void LoadstateRightLeg02_Click(object sender, RoutedEventArgs e)
         {
@@ -8739,6 +10464,16 @@ namespace ConceptMatrix.Views
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PoleynRight_Bone), MemoryManager.StringToByteArray(PoleynRight_Sav02.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.FootRight_Bone), MemoryManager.StringToByteArray(FootRight_Sav02.Replace(" ", string.Empty)));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ToesRight_Bone), MemoryManager.StringToByteArray(ToesRight_Sav02.Replace(" ", string.Empty)));
+
+            if (ScaleSaveToggle.IsChecked == true)
+            {
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LegsRight_Size), MemoryManager.StringToByteArray(LegRight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.KneeRight_Size), MemoryManager.StringToByteArray(KneeRight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.CalfRight_Size), MemoryManager.StringToByteArray(CalfRight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PoleynRight_Size), MemoryManager.StringToByteArray(PoleynRight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.FootRight_Size), MemoryManager.StringToByteArray(FootRight_Sav02Size.Replace(" ", string.Empty)));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ToesRight_Size), MemoryManager.StringToByteArray(ToesRight_Sav02Size.Replace(" ", string.Empty)));
+            }
         }
         #endregion
         #region Savestate\Loadstate Helm
@@ -8895,6 +10630,154 @@ namespace ConceptMatrix.Views
             {
                 ExMetR_Sav01 = "null";
             }
+            if (HelmValue >= 1)
+            {
+                // ExRootMet_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExRootMet_Size), 16));
+            }
+            if (HelmValue >= 2)
+            {
+                ExMetA_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetA_Size), 16));
+            }
+            else
+            {
+                ExMetA_Sav01Size = "null";
+            }
+            if (HelmValue >= 3)
+            {
+                ExMetB_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetB_Size), 16));
+            }
+            else
+            {
+                ExMetB_Sav01Size = "null";
+            }
+            if (HelmValue >= 4)
+            {
+                ExMetC_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetC_Size), 16));
+            }
+            else
+            {
+                ExMetC_Sav01Size = "null";
+            }
+            if (HelmValue >= 5)
+            {
+                ExMetD_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetD_Size), 16));
+            }
+            else
+            {
+                ExMetD_Sav01Size = "null";
+            }
+            if (HelmValue >= 6)
+            {
+                ExMetE_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetE_Size), 16));
+            }
+            else
+            {
+                ExMetE_Sav01Size = "null";
+            }
+            if (HelmValue >= 7)
+            {
+                ExMetF_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetF_Size), 16));
+            }
+            else
+            {
+                ExMetF_Sav01Size = "null";
+            }
+            if (HelmValue >= 8)
+            {
+                ExMetG_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetG_Size), 16));
+            }
+            else
+            {
+                ExMetG_Sav01Size = "null";
+            }
+            if (HelmValue >= 9)
+            {
+                ExMetH_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetH_Size), 16));
+            }
+            else
+            {
+                ExMetH_Sav01Size = "null";
+            }
+            if (HelmValue >= 10)
+            {
+                ExMetI_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetI_Size), 16));
+            }
+            else
+            {
+                ExMetI_Sav01Size = "null";
+            }
+            if (HelmValue >= 11)
+            {
+                ExMetJ_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetJ_Size), 16));
+            }
+            else
+            {
+                ExMetJ_Sav01Size = "null";
+            }
+            if (HelmValue >= 12)
+            {
+                ExMetK_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetK_Size), 16));
+            }
+            else
+            {
+                ExMetK_Sav01Size = "null";
+            }
+            if (HelmValue >= 13)
+            {
+                ExMetL_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetL_Size), 16));
+            }
+            else
+            {
+                ExMetL_Sav01Size = "null";
+            }
+            if (HelmValue >= 14)
+            {
+                ExMetM_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetM_Size), 16));
+            }
+            else
+            {
+                ExMetM_Sav01Size = "null";
+            }
+            if (HelmValue >= 15)
+            {
+                ExMetN_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetN_Size), 16));
+            }
+            else
+            {
+                ExMetN_Sav01Size = "null";
+            }
+            if (HelmValue >= 16)
+            {
+                ExMetO_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetO_Size), 16));
+            }
+            else
+            {
+                ExMetO_Sav01Size = "null";
+            }
+            if (HelmValue >= 17)
+            {
+                ExMetP_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetP_Size), 16));
+            }
+            else
+            {
+                ExMetP_Sav01Size = "null";
+            }
+            if (HelmValue >= 18)
+            {
+                ExMetQ_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetQ_Size), 16));
+            }
+            else
+            {
+                ExMetQ_Sav01Size = "null";
+            }
+            if (HelmValue >= 19)
+            {
+                ExMetR_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetR_Size), 16));
+            }
+            else
+            {
+                ExMetR_Sav01Size = "null";
+            }
             if (ExRootMet_Sav01 == null)
             {
                 ExRootMet_Sav01 = "null";
@@ -8916,6 +10799,25 @@ namespace ConceptMatrix.Views
                 ExMetP_Sav01 = "null";
                 ExMetQ_Sav01 = "null";
                 ExMetR_Sav01 = "null";
+
+                ExMetA_Sav01Size = "null";
+                ExMetB_Sav01Size = "null";
+                ExMetC_Sav01Size = "null";
+                ExMetD_Sav01Size = "null";
+                ExMetE_Sav01Size = "null";
+                ExMetF_Sav01Size = "null";
+                ExMetG_Sav01Size = "null";
+                ExMetH_Sav01Size = "null";
+                ExMetI_Sav01Size = "null";
+                ExMetJ_Sav01Size = "null";
+                ExMetK_Sav01Size = "null";
+                ExMetL_Sav01Size = "null";
+                ExMetM_Sav01Size = "null";
+                ExMetN_Sav01Size = "null";
+                ExMetO_Sav01Size = "null";
+                ExMetP_Sav01Size = "null";
+                ExMetQ_Sav01Size = "null";
+                ExMetR_Sav01Size = "null";
             }
         }
         private void SavestateHelm02_Click(object sender, RoutedEventArgs e)
@@ -9072,6 +10974,154 @@ namespace ConceptMatrix.Views
             {
                 ExMetR_Sav02 = "null";
             }
+            if (HelmValue >= 1)
+            {
+                // ExRootMet_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExRootMet_Size), 16));
+            }
+            if (HelmValue >= 2)
+            {
+                ExMetA_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetA_Size), 16));
+            }
+            else
+            {
+                ExMetA_Sav02Size = "null";
+            }
+            if (HelmValue >= 3)
+            {
+                ExMetB_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetB_Size), 16));
+            }
+            else
+            {
+                ExMetB_Sav02Size = "null";
+            }
+            if (HelmValue >= 4)
+            {
+                ExMetC_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetC_Size), 16));
+            }
+            else
+            {
+                ExMetC_Sav02Size = "null";
+            }
+            if (HelmValue >= 5)
+            {
+                ExMetD_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetD_Size), 16));
+            }
+            else
+            {
+                ExMetD_Sav02Size = "null";
+            }
+            if (HelmValue >= 6)
+            {
+                ExMetE_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetE_Size), 16));
+            }
+            else
+            {
+                ExMetE_Sav02Size = "null";
+            }
+            if (HelmValue >= 7)
+            {
+                ExMetF_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetF_Size), 16));
+            }
+            else
+            {
+                ExMetF_Sav02Size = "null";
+            }
+            if (HelmValue >= 8)
+            {
+                ExMetG_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetG_Size), 16));
+            }
+            else
+            {
+                ExMetG_Sav02Size = "null";
+            }
+            if (HelmValue >= 9)
+            {
+                ExMetH_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetH_Size), 16));
+            }
+            else
+            {
+                ExMetH_Sav02Size = "null";
+            }
+            if (HelmValue >= 10)
+            {
+                ExMetI_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetI_Size), 16));
+            }
+            else
+            {
+                ExMetI_Sav02Size = "null";
+            }
+            if (HelmValue >= 11)
+            {
+                ExMetJ_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetJ_Size), 16));
+            }
+            else
+            {
+                ExMetJ_Sav02Size = "null";
+            }
+            if (HelmValue >= 12)
+            {
+                ExMetK_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetK_Size), 16));
+            }
+            else
+            {
+                ExMetK_Sav02Size = "null";
+            }
+            if (HelmValue >= 13)
+            {
+                ExMetL_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetL_Size), 16));
+            }
+            else
+            {
+                ExMetL_Sav02Size = "null";
+            }
+            if (HelmValue >= 14)
+            {
+                ExMetM_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetM_Size), 16));
+            }
+            else
+            {
+                ExMetM_Sav02Size = "null";
+            }
+            if (HelmValue >= 15)
+            {
+                ExMetN_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetN_Size), 16));
+            }
+            else
+            {
+                ExMetN_Sav02Size = "null";
+            }
+            if (HelmValue >= 16)
+            {
+                ExMetO_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetO_Size), 16));
+            }
+            else
+            {
+                ExMetO_Sav02Size = "null";
+            }
+            if (HelmValue >= 17)
+            {
+                ExMetP_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetP_Size), 16));
+            }
+            else
+            {
+                ExMetP_Sav02Size = "null";
+            }
+            if (HelmValue >= 18)
+            {
+                ExMetQ_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetQ_Size), 16));
+            }
+            else
+            {
+                ExMetQ_Sav02Size = "null";
+            }
+            if (HelmValue >= 19)
+            {
+                ExMetR_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetR_Size), 16));
+            }
+            else
+            {
+                ExMetR_Sav02Size = "null";
+            }
             if (ExRootMet_Sav02 == null)
             {
                 ExRootMet_Sav02 = "null";
@@ -9093,6 +11143,25 @@ namespace ConceptMatrix.Views
                 ExMetP_Sav02 = "null";
                 ExMetQ_Sav02 = "null";
                 ExMetR_Sav02 = "null";
+
+                ExMetA_Sav02Size = "null";
+                ExMetB_Sav02Size = "null";
+                ExMetC_Sav02Size = "null";
+                ExMetD_Sav02Size = "null";
+                ExMetE_Sav02Size = "null";
+                ExMetF_Sav02Size = "null";
+                ExMetG_Sav02Size = "null";
+                ExMetH_Sav02Size = "null";
+                ExMetI_Sav02Size = "null";
+                ExMetJ_Sav02Size = "null";
+                ExMetK_Sav02Size = "null";
+                ExMetL_Sav02Size = "null";
+                ExMetM_Sav02Size = "null";
+                ExMetN_Sav02Size = "null";
+                ExMetO_Sav02Size = "null";
+                ExMetP_Sav02Size = "null";
+                ExMetQ_Sav02Size = "null";
+                ExMetR_Sav02Size = "null";
             }
         }
         private void LoadstateHelm01_Click(object sender, RoutedEventArgs e)
@@ -9225,6 +11294,137 @@ namespace ConceptMatrix.Views
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetR_Bone), MemoryManager.StringToByteArray(ExMetR_Sav01.Replace(" ", string.Empty)));
                 }
             }
+
+            if (ScaleSaveToggle.IsChecked == true)
+            {
+                if (HelmValue >= 2)
+                {
+                    if (ExMetA_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetA_Size), MemoryManager.StringToByteArray(ExMetA_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 3)
+                {
+                    if (ExMetB_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetB_Size), MemoryManager.StringToByteArray(ExMetB_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 4)
+                {
+                    if (ExMetC_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetC_Size), MemoryManager.StringToByteArray(ExMetC_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 5)
+                {
+                    if (ExMetD_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetD_Size), MemoryManager.StringToByteArray(ExMetD_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 6)
+                {
+                    if (ExMetE_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetE_Size), MemoryManager.StringToByteArray(ExMetE_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 7)
+                {
+                    if (ExMetF_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetF_Size), MemoryManager.StringToByteArray(ExMetF_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 8)
+                {
+                    if (ExMetG_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetG_Size), MemoryManager.StringToByteArray(ExMetG_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 9)
+                {
+                    if (ExMetH_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetH_Size), MemoryManager.StringToByteArray(ExMetH_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 10)
+                {
+                    if (ExMetI_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetI_Size), MemoryManager.StringToByteArray(ExMetI_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 11)
+                {
+                    if (ExMetJ_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetJ_Size), MemoryManager.StringToByteArray(ExMetJ_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 12)
+                {
+                    if (ExMetK_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetK_Size), MemoryManager.StringToByteArray(ExMetK_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 13)
+                {
+                    if (ExMetL_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetL_Size), MemoryManager.StringToByteArray(ExMetL_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 14)
+                {
+                    if (ExMetM_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetM_Size), MemoryManager.StringToByteArray(ExMetM_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 15)
+                {
+                    if (ExMetN_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetN_Size), MemoryManager.StringToByteArray(ExMetN_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 16)
+                {
+                    if (ExMetO_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetO_Size), MemoryManager.StringToByteArray(ExMetO_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 17)
+                {
+                    if (ExMetP_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetP_Size), MemoryManager.StringToByteArray(ExMetP_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 18)
+                {
+                    if (ExMetQ_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetQ_Size), MemoryManager.StringToByteArray(ExMetQ_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 19)
+                {
+                    if (ExMetR_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetR_Size), MemoryManager.StringToByteArray(ExMetR_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+
+            }
         }
         private void LoadstateHelm02_Click(object sender, RoutedEventArgs e)
         {
@@ -9356,6 +11556,137 @@ namespace ConceptMatrix.Views
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetR_Bone), MemoryManager.StringToByteArray(ExMetR_Sav02.Replace(" ", string.Empty)));
                 }
             }
+
+            if (ScaleSaveToggle.IsChecked == true)
+            {
+                if (HelmValue >= 2)
+                {
+                    if (ExMetA_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetA_Size), MemoryManager.StringToByteArray(ExMetA_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 3)
+                {
+                    if (ExMetB_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetB_Size), MemoryManager.StringToByteArray(ExMetB_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 4)
+                {
+                    if (ExMetC_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetC_Size), MemoryManager.StringToByteArray(ExMetC_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 5)
+                {
+                    if (ExMetD_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetD_Size), MemoryManager.StringToByteArray(ExMetD_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 6)
+                {
+                    if (ExMetE_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetE_Size), MemoryManager.StringToByteArray(ExMetE_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 7)
+                {
+                    if (ExMetF_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetF_Size), MemoryManager.StringToByteArray(ExMetF_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 8)
+                {
+                    if (ExMetG_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetG_Size), MemoryManager.StringToByteArray(ExMetG_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 9)
+                {
+                    if (ExMetH_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetH_Size), MemoryManager.StringToByteArray(ExMetH_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 10)
+                {
+                    if (ExMetI_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetI_Size), MemoryManager.StringToByteArray(ExMetI_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 11)
+                {
+                    if (ExMetJ_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetJ_Size), MemoryManager.StringToByteArray(ExMetJ_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 12)
+                {
+                    if (ExMetK_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetK_Size), MemoryManager.StringToByteArray(ExMetK_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 13)
+                {
+                    if (ExMetL_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetL_Size), MemoryManager.StringToByteArray(ExMetL_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 14)
+                {
+                    if (ExMetM_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetM_Size), MemoryManager.StringToByteArray(ExMetM_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 15)
+                {
+                    if (ExMetN_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetN_Size), MemoryManager.StringToByteArray(ExMetN_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 16)
+                {
+                    if (ExMetO_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetO_Size), MemoryManager.StringToByteArray(ExMetO_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 17)
+                {
+                    if (ExMetP_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetP_Size), MemoryManager.StringToByteArray(ExMetP_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 18)
+                {
+                    if (ExMetQ_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetQ_Size), MemoryManager.StringToByteArray(ExMetQ_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (HelmValue >= 19)
+                {
+                    if (ExMetR_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMetR_Size), MemoryManager.StringToByteArray(ExMetR_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+
+            }
         }
         #endregion
         #region Savestate\Loadstate Top
@@ -9441,6 +11772,83 @@ namespace ConceptMatrix.Views
             {
                 ExTopI_Sav01 = "null";
             }
+
+            if (TopValue >= 1)
+            {
+          //      ExRootTop_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExRootTop_Size), 16));
+            }
+            if (TopValue >= 2)
+            {
+                ExTopA_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopA_Size), 16));
+            }
+            else
+            {
+                ExTopA_Sav01Size = "null";
+            }
+            if (TopValue >= 3)
+            {
+                ExTopB_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopB_Size), 16));
+            }
+            else
+            {
+                ExTopB_Sav01Size = "null";
+            }
+            if (TopValue >= 4)
+            {
+                ExTopC_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopC_Size), 16));
+            }
+            else
+            {
+                ExTopC_Sav01Size = "null";
+            }
+            if (TopValue >= 5)
+            {
+                ExTopD_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopD_Size), 16));
+            }
+            else
+            {
+                ExTopD_Sav01Size = "null";
+            }
+            if (TopValue >= 6)
+            {
+                ExTopE_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopE_Size), 16));
+            }
+            else
+            {
+                ExTopE_Sav01Size = "null";
+            }
+            if (TopValue >= 7)
+            {
+                ExTopF_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopF_Size), 16));
+            }
+            else
+            {
+                ExTopF_Sav01Size = "null";
+            }
+            if (TopValue >= 8)
+            {
+                ExTopG_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopG_Size), 16));
+            }
+            else
+            {
+                ExTopG_Sav01Size = "null";
+            }
+            if (TopValue >= 9)
+            {
+                ExTopH_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopH_Size), 16));
+            }
+            else
+            {
+                ExTopH_Sav01Size = "null";
+            }
+            if (TopValue >= 10)
+            {
+                ExTopI_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopI_Size), 16));
+            }
+            else
+            {
+                ExTopI_Sav01Size = "null";
+            }
             if (ExRootTop_Sav01 == null)
             {
                 ExRootTop_Sav01 = "null";
@@ -9453,6 +11861,16 @@ namespace ConceptMatrix.Views
                 ExTopG_Sav01 = "null";
                 ExTopH_Sav01 = "null";
                 ExTopI_Sav01 = "null";
+
+                ExTopA_Sav01Size = "null";
+                ExTopB_Sav01Size = "null";
+                ExTopC_Sav01Size = "null";
+                ExTopD_Sav01Size = "null";
+                ExTopE_Sav01Size = "null";
+                ExTopF_Sav01Size = "null";
+                ExTopG_Sav01Size = "null";
+                ExTopH_Sav01Size = "null";
+                ExTopI_Sav01Size = "null";
             }
         }
         private void SavestateTop02_Click(object sender, RoutedEventArgs e)
@@ -9537,6 +11955,82 @@ namespace ConceptMatrix.Views
             {
                 ExTopI_Sav02 = "null";
             }
+            if (TopValue >= 1)
+            {
+                //      ExRootTop_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExRootTop_Size), 16));
+            }
+            if (TopValue >= 2)
+            {
+                ExTopA_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopA_Size), 16));
+            }
+            else
+            {
+                ExTopA_Sav02Size = "null";
+            }
+            if (TopValue >= 3)
+            {
+                ExTopB_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopB_Size), 16));
+            }
+            else
+            {
+                ExTopB_Sav02Size = "null";
+            }
+            if (TopValue >= 4)
+            {
+                ExTopC_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopC_Size), 16));
+            }
+            else
+            {
+                ExTopC_Sav02Size = "null";
+            }
+            if (TopValue >= 5)
+            {
+                ExTopD_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopD_Size), 16));
+            }
+            else
+            {
+                ExTopD_Sav02Size = "null";
+            }
+            if (TopValue >= 6)
+            {
+                ExTopE_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopE_Size), 16));
+            }
+            else
+            {
+                ExTopE_Sav02Size = "null";
+            }
+            if (TopValue >= 7)
+            {
+                ExTopF_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopF_Size), 16));
+            }
+            else
+            {
+                ExTopF_Sav02Size = "null";
+            }
+            if (TopValue >= 8)
+            {
+                ExTopG_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopG_Size), 16));
+            }
+            else
+            {
+                ExTopG_Sav02Size = "null";
+            }
+            if (TopValue >= 9)
+            {
+                ExTopH_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopH_Size), 16));
+            }
+            else
+            {
+                ExTopH_Sav02Size = "null";
+            }
+            if (TopValue >= 10)
+            {
+                ExTopI_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopI_Size), 16));
+            }
+            else
+            {
+                ExTopI_Sav02Size = "null";
+            }
             if (ExRootTop_Sav02 == null)
             {
                 ExRootTop_Sav02 = "null";
@@ -9549,6 +12043,16 @@ namespace ConceptMatrix.Views
                 ExTopG_Sav02 = "null";
                 ExTopH_Sav02 = "null";
                 ExTopI_Sav02 = "null";
+
+                ExTopA_Sav02Size = "null";
+                ExTopB_Sav02Size = "null";
+                ExTopC_Sav02Size = "null";
+                ExTopD_Sav02Size = "null";
+                ExTopE_Sav02Size = "null";
+                ExTopF_Sav02Size = "null";
+                ExTopG_Sav02Size = "null";
+                ExTopH_Sav02Size = "null";
+                ExTopI_Sav02Size = "null";
             }
         }
         private void LoadstateTop01_Click(object sender, RoutedEventArgs e)
@@ -9619,6 +12123,73 @@ namespace ConceptMatrix.Views
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopI_Bone), MemoryManager.StringToByteArray(ExTopI_Sav01.Replace(" ", string.Empty)));
                 }
             }
+            if (ScaleSaveToggle.IsChecked == true)
+            {
+
+                if (TopValue >= 2)
+                {
+                    if (ExTopA_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopA_Size), MemoryManager.StringToByteArray(ExTopA_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (TopValue >= 3)
+                {
+                    if (ExTopB_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopB_Size), MemoryManager.StringToByteArray(ExTopB_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (TopValue >= 4)
+                {
+                    if (ExTopC_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopC_Size), MemoryManager.StringToByteArray(ExTopC_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (TopValue >= 5)
+                {
+                    if (ExTopD_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopD_Size), MemoryManager.StringToByteArray(ExTopD_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (TopValue >= 6)
+                {
+                    if (ExTopE_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopE_Size), MemoryManager.StringToByteArray(ExTopE_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (TopValue >= 7)
+                {
+                    if (ExTopF_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopF_Size), MemoryManager.StringToByteArray(ExTopF_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (TopValue >= 8)
+                {
+                    if (ExTopG_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopG_Size), MemoryManager.StringToByteArray(ExTopG_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (TopValue >= 9)
+                {
+                    if (ExTopH_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopH_Size), MemoryManager.StringToByteArray(ExTopH_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (TopValue >= 10)
+                {
+                    if (ExTopI_Sav01Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopI_Size), MemoryManager.StringToByteArray(ExTopI_Sav01Size.Replace(" ", string.Empty)));
+                    }
+                }
+            }
         }
         private void LoadstateTop02_Click(object sender, RoutedEventArgs e)
         {
@@ -9686,6 +12257,73 @@ namespace ConceptMatrix.Views
                 if (ExTopI_Sav02 != "null")
                 {
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopI_Bone), MemoryManager.StringToByteArray(ExTopI_Sav02.Replace(" ", string.Empty)));
+                }
+            }
+            if (ScaleSaveToggle.IsChecked == true)
+            {
+
+                if (TopValue >= 2)
+                {
+                    if (ExTopA_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopA_Size), MemoryManager.StringToByteArray(ExTopA_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (TopValue >= 3)
+                {
+                    if (ExTopB_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopB_Size), MemoryManager.StringToByteArray(ExTopB_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (TopValue >= 4)
+                {
+                    if (ExTopC_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopC_Size), MemoryManager.StringToByteArray(ExTopC_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (TopValue >= 5)
+                {
+                    if (ExTopD_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopD_Size), MemoryManager.StringToByteArray(ExTopD_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (TopValue >= 6)
+                {
+                    if (ExTopE_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopE_Size), MemoryManager.StringToByteArray(ExTopE_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (TopValue >= 7)
+                {
+                    if (ExTopF_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopF_Size), MemoryManager.StringToByteArray(ExTopF_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (TopValue >= 8)
+                {
+                    if (ExTopG_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopG_Size), MemoryManager.StringToByteArray(ExTopG_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (TopValue >= 9)
+                {
+                    if (ExTopH_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopH_Size), MemoryManager.StringToByteArray(ExTopH_Sav02Size.Replace(" ", string.Empty)));
+                    }
+                }
+                if (TopValue >= 10)
+                {
+                    if (ExTopI_Sav02Size != "null")
+                    {
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTopI_Size), MemoryManager.StringToByteArray(ExTopI_Sav02Size.Replace(" ", string.Empty)));
+                    }
                 }
             }
         }
