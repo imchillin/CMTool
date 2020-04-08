@@ -328,7 +328,7 @@ namespace ConceptMatrix.ViewModel
                 int exhair_value = Memory.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHair_Value));
                 for (int i = 0; i < exhair_value - 1; i++)
                 {
-                    if (i > 12) break;
+                    if (i >= 12) break;
                     bone_face.Add(bone_exhair[i]);
                     PoseMatrixView.PosingMatrix.exhair_buttons[i].IsEnabled = true;
                 }
@@ -337,7 +337,7 @@ namespace ConceptMatrix.ViewModel
                 int exmet_value = Memory.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExMet_Value));
                 for (int i = 0; i < exmet_value - 1; i++)
                 {
-                    if (i > 17) break; // for now keep it like this
+                    if (i >= 18) break; // for now keep it like this
                     if (PoseMatrixView.PosingMatrix.HelmToggle.IsChecked == true) bone_face.Add(bone_exmet[i]);
 
                     PoseMatrixView.PosingMatrix.exmet_buttons[i].IsEnabled = true;
@@ -347,7 +347,7 @@ namespace ConceptMatrix.ViewModel
                 int extop_value = Memory.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExTop_Value));
                 for (int i = 0; i < extop_value - 1; i++)
                 {
-                    if (i > 9) break;
+                    if (i >=9) break;
                     PoseMatrixView.PosingMatrix.extop_buttons[i].IsEnabled = true;
                 }
                 #endregion
