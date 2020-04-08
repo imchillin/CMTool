@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media.Media3D;
+using System.Windows.Data;
 
 namespace ConceptMatrix.Views
 {
@@ -4224,6 +4225,127 @@ namespace ConceptMatrix.Views
             {
                 PoseMatrixViewModel.PoseVM.bone_face.Remove(PoseMatrixViewModel.PoseVM.bone_exmet[i]);
             }
+        }
+
+        #region Actor Rotation
+        /// <summary>	
+        /// Gets the euler angles from the UI elements.	
+        /// </summary>	
+        /// <returns>Vector3D representing euler angles.</returns>	
+        private Vector3D GetEulerAngles() => new Vector3D(CharacterDetails.RotateX, CharacterDetails.RotateY, CharacterDetails.RotateZ);
+
+        // I'm scared of the above being wrong sometimes (the GUI controls don't always match the real rotation).
+        // Using this one based on the raw values until convinced it's safe.
+        private Vector3D GetCurrenRotation() => new Quaternion(CharacterDetails.Rotation.value,
+                                                                CharacterDetails.Rotation2.value,
+                                                                CharacterDetails.Rotation3.value,
+                                                                CharacterDetails.Rotation4.value).ToEulerAngles();
+        private void RotationUpDown_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+
+            if (RotationSlider.IsKeyboardFocusWithin || RotationSlider.IsMouseOver)
+            {
+                RotationSlider.ValueChanged -= RotV2;
+                RotationSlider.ValueChanged += RotV2;
+            }
+
+            if (RotationUpDown.IsKeyboardFocusWithin || RotationUpDown.IsMouseOver)
+            {
+                RotationUpDown.ValueChanged -= RotV;
+                RotationUpDown.ValueChanged += RotV;
+            }
+        }
+        private void RotationUpDown2_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+            if (RotationSlider2.IsKeyboardFocusWithin || RotationSlider2.IsMouseOver)
+            {
+                RotationSlider2.ValueChanged -= RotV2;
+                RotationSlider2.ValueChanged += RotV2;
+            }
+
+            if (RotationUpDown2.IsKeyboardFocusWithin || RotationUpDown2.IsMouseOver)
+            {
+                RotationUpDown2.ValueChanged -= RotV;
+                RotationUpDown2.ValueChanged += RotV;
+            }
+        }
+        private void RotationUpDown3_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+            if (RotationSlider3.IsKeyboardFocusWithin || RotationSlider3.IsMouseOver)
+            {
+                RotationSlider3.ValueChanged -= RotV2;
+                RotationSlider3.ValueChanged += RotV2;
+            }
+
+            if (RotationUpDown3.IsKeyboardFocusWithin || RotationUpDown3.IsMouseOver)
+            {
+                RotationUpDown3.ValueChanged -= RotV;
+                RotationUpDown3.ValueChanged += RotV;
+            }
+        }
+        private void RotV(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            lock (CharacterDetails.Rotation)
+            {
+                CharacterDetails.Rotation.value = (float)quat.X;
+                CharacterDetails.Rotation2.value = (float)quat.Y;
+                CharacterDetails.Rotation3.value = (float)quat.Z;
+                CharacterDetails.Rotation4.value = (float)quat.W;
+            }
+            // Remove listeners for value changed.	
+            RotationUpDown.ValueChanged -= RotV;
+            RotationUpDown2.ValueChanged -= RotV;
+            RotationUpDown3.ValueChanged -= RotV;
+        }
+        private void RotV2(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            // Get the euler angles from UI.	
+            var quat = GetEulerAngles().ToQuaternion();
+
+            lock (CharacterDetails.Rotation)
+            {
+                CharacterDetails.Rotation.value = (float)quat.X;
+                CharacterDetails.Rotation2.value = (float)quat.Y;
+                CharacterDetails.Rotation3.value = (float)quat.Z;
+                CharacterDetails.Rotation4.value = (float)quat.W;
+            }
+            // Remove listeners for value changed.	
+            RotationSlider.ValueChanged -= RotV2;
+            RotationSlider2.ValueChanged -= RotV2;
+            RotationSlider3.ValueChanged -= RotV2;
+            //  Console.WriteLine(CharacterDetails.RotateY);	
+        }
+        #endregion
+
+        private void PosZ_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+
+        }
+
+        private void PosY_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+
+        }
+
+        private void PosX_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+
+        }
+
+        private void ToggleModelView_Checked(object sender, RoutedEventArgs e)
+        {
+            ActorProperties.Visibility = Visibility.Visible;
+            CubeBox.Visibility = Visibility.Hidden;
+
+        }
+
+        private void ToggleModelView_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ActorProperties.Visibility = Visibility.Hidden;
+            CubeBox.Visibility = Visibility.Visible;
         }
 
         private void DisableTertiary()

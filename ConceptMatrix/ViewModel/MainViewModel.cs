@@ -34,6 +34,7 @@ namespace ConceptMatrix.ViewModel
         public static CharacterDetailsView ViewTime;
         public static AboutView AboutTime;
         public static MainWindow MainTime;
+        public static MainViewModel MainViewModelX;
         private static CharacterDetailsViewModel characterDetails;
         public static string RegionType = "Live";
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -83,6 +84,7 @@ namespace ConceptMatrix.ViewModel
                     MainWindow.HasRead = true;
                 }
                 mediator = new Mediator();
+                MainViewModelX = this;
                 MemoryManager.Instance.MemLib.OpenProcess(gameProcId);
                 LoadSettings(RegionType);
                 worker = new BackgroundWorker();
@@ -95,6 +97,21 @@ namespace ConceptMatrix.ViewModel
                 PoseMatrixViewModel.PoseVM.InitBonetree();
                 Task.Delay(40).Wait();
                 ThreadTime = new ThreadWriting(); // Thread Writing
+                ViewTime5.RotationUpDown.DataContext = this;
+                ViewTime5.RotationUpDown2.DataContext = this;
+                ViewTime5.RotationUpDown3.DataContext = this;
+                ViewTime5.RotationSlider.DataContext = this;
+                ViewTime5.RotationSlider2.DataContext = this;
+                ViewTime5.RotationSlider3.DataContext = this;
+                ViewTime5.RotateCheckBox1.DataContext = this;
+                ViewTime5.RotateCheckBox2.DataContext = this;
+                ViewTime5.RotateCheckBox3.DataContext = this;
+                ViewTime5.PosX.DataContext = this;
+                ViewTime5.PosY.DataContext = this;
+                ViewTime5.PosZ.DataContext = this;
+                ViewTime5.XCheck.DataContext = this;
+                ViewTime5.YCheck.DataContext = this;
+                ViewTime5.ZCheck.DataContext = this;
             }
             catch(Exception)
             {
