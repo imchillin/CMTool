@@ -775,7 +775,7 @@ namespace ConceptMatrix.ViewModel
                 if (!CharacterDetails.Weather.freeze) CharacterDetails.Weather.value = (byte)m.readByte(GAS(MemoryManager.Instance.WeatherAddress, c.Weather));
                 if (!CharacterDetails.ForceWeather.freeze) CharacterDetails.ForceWeather.value = (ushort)m.read2Byte(GAS(MemoryManager.Instance.GposeFilters, c.ForceWeather));
                 CharacterDetails.TimeControl.value = (int)m.readInt(GAS(MemoryManager.Instance.TimeAddress, c.TimeControl));
-                var ActorIdentfication = m.get64bitCode(GAS(baseAddr, c.ActorID), "");
+                var ActorIdentfication = m.get64bitCode(GAS(baseAddr, c.ActorID));
                 if (ActorIdentfication != OldMemoryLocation)
                 {
                     OldMemoryLocation = ActorIdentfication;

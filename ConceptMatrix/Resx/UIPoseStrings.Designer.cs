@@ -19,7 +19,7 @@ namespace ConceptMatrix.Resx {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class UIPoseStrings {
@@ -124,7 +124,7 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Body &amp; Clothes.
+        ///   Looks up a localized string similar to Body &amp; Hands.
         /// </summary>
         public static string BodyClothes {
             get {
@@ -268,7 +268,7 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enable Editing:.
+        ///   Looks up a localized string similar to Edit Mode:.
         /// </summary>
         public static string EnableEditing {
             get {
@@ -286,7 +286,7 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enable Physics:.
+        ///   Looks up a localized string similar to Physics:.
         /// </summary>
         public static string EnablePhysics {
             get {
@@ -304,7 +304,7 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Equip &amp; Other.
+        ///   Looks up a localized string similar to Clothes &amp; Equip.
         /// </summary>
         public static string EquipOther {
             get {
@@ -430,7 +430,7 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hands &amp; Legs.
+        ///   Looks up a localized string similar to Legs.
         /// </summary>
         public static string HandsLegs {
             get {
@@ -682,7 +682,7 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parenting Rotation:.
+        ///   Looks up a localized string similar to Parenting Mode:.
         /// </summary>
         public static string ParentRotation {
             get {
@@ -718,7 +718,7 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pose Matrix Settings.
+        ///   Looks up a localized string similar to Posing Matrix Settings (Only in Gpose).
         /// </summary>
         public static string PoseMatrixSettings {
             get {
@@ -998,7 +998,7 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Toggle Helm Parenting.
+        ///   Looks up a localized string similar to Helm Parenting Mode:.
         /// </summary>
         public static string ToggleHelmParenting {
             get {

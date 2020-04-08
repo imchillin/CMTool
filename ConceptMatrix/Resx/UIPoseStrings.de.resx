@@ -139,7 +139,7 @@
     <value>Körper:</value>
   </data>
   <data name="BodyClothes" xml:space="preserve">
-    <value>Körper &amp; Kleidung:</value>
+    <value>Körper &amp; Hände</value>
   </data>
   <data name="Breasts" xml:space="preserve">
     <value>Brust:</value>
@@ -187,19 +187,19 @@
     <value>Ellenbogen:</value>
   </data>
   <data name="EnableEditing" xml:space="preserve">
-    <value>Aktiviere Editieren:</value>
+    <value>Editieren Modus:</value>
   </data>
   <data name="EnableGpose" xml:space="preserve">
     <value>Aktiviere Gpose:</value>
   </data>
   <data name="EnablePhysics" xml:space="preserve">
-    <value>Aktiviere Physik:</value>
+    <value>Physik:</value>
   </data>
   <data name="Equipment" xml:space="preserve">
     <value>Ausrüstung:</value>
   </data>
   <data name="EquipOther" xml:space="preserve">
-    <value>Ausrüstung &amp; Anderes:</value>
+    <value>Ausrüstung &amp; Kleidung</value>
   </data>
   <data name="Eyebrows" xml:space="preserve">
     <value>Augenbrauen:</value>
@@ -241,7 +241,7 @@
     <value>Hände</value>
   </data>
   <data name="HandsLegs" xml:space="preserve">
-    <value>Hände &amp; Füße:</value>
+    <value>Füße</value>
   </data>
   <data name="Head" xml:space="preserve">
     <value>Kopf:</value>
@@ -322,7 +322,7 @@
     <value>Nase:</value>
   </data>
   <data name="Other" xml:space="preserve">
-    <value>Anderes:</value>
+    <value>Anderes</value>
   </data>
   <data name="Pauldrons" xml:space="preserve">
     <value>Schulterstücke:</value>
@@ -334,7 +334,7 @@
     <value>Knieschützer:</value>
   </data>
   <data name="PoseMatrixSettings" xml:space="preserve">
-    <value>Pose Matrix Einstellungen</value>
+    <value>Pose Matrix Einstellungen(nur im Gpose)</value>
   </data>
   <data name="RealTimeRotation" xml:space="preserve">
     <value>Echtzeit Rotation</value>
@@ -466,7 +466,7 @@
     <value>Waffe</value>
   </data>
   <data name="Wrists" xml:space="preserve">
-    <value>Handgelenke</value>
+    <value>Handgelenke:</value>
   </data>
   <data name="XRot" xml:space="preserve">
     <value>X Rotation:</value>

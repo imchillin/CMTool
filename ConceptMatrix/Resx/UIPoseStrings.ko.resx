@@ -139,7 +139,7 @@
     <value>몸</value>
   </data>
   <data name="BodyClothes" xml:space="preserve">
-    <value>몸 &amp; 옷</value>
+    <value>몸 &amp; 손</value>
   </data>
   <data name="Breasts" xml:space="preserve">
     <value>가슴:</value>
@@ -199,7 +199,7 @@
     <value>장비</value>
   </data>
   <data name="EquipOther" xml:space="preserve">
-    <value>기타장비</value>
+    <value>장비 &amp; 옷</value>
   </data>
   <data name="Eyebrows" xml:space="preserve">
     <value>눈썹:</value>
@@ -241,7 +241,7 @@
     <value>손</value>
   </data>
   <data name="HandsLegs" xml:space="preserve">
-    <value>손 &amp; 다리</value>
+    <value>다리</value>
   </data>
   <data name="Head" xml:space="preserve">
     <value>머리:</value>

@@ -139,7 +139,7 @@
     <value>胴体</value>
   </data>
   <data name="BodyClothes" xml:space="preserve">
-    <value>胴体 &amp; 服</value>
+    <value>胴体＆腕</value>
   </data>
   <data name="Breasts" xml:space="preserve">
     <value>胸:</value>
@@ -199,7 +199,7 @@
     <value>装備</value>
   </data>
   <data name="EquipOther" xml:space="preserve">
-    <value>装備&amp;その他</value>
+    <value>装備＆服</value>
   </data>
   <data name="Eyebrows" xml:space="preserve">
     <value>眉山:</value>
@@ -241,7 +241,7 @@
     <value>手</value>
   </data>
   <data name="HandsLegs" xml:space="preserve">
-    <value>腕＆脚</value>
+    <value>脚</value>
   </data>
   <data name="Head" xml:space="preserve">
     <value>頭:</value>

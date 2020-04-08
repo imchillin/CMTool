@@ -136,7 +136,7 @@
     <value>Body:</value>
   </data>
   <data name="BodyClothes" xml:space="preserve">
-    <value>Body &amp; Clothes</value>
+    <value>Body &amp; Hands</value>
   </data>
   <data name="Breasts" xml:space="preserve">
     <value>Breasts:</value>
@@ -181,7 +181,7 @@
     <value>Please enable GPose to use this feature.</value>
   </data>
   <data name="EquipOther" xml:space="preserve">
-    <value>Equip &amp; Other</value>
+    <value>Clothes &amp; Equip</value>
   </data>
   <data name="Equipment" xml:space="preserve">
     <value>Equipment</value>
@@ -220,7 +220,7 @@
     <value>Hands:</value>
   </data>
   <data name="HandsLegs" xml:space="preserve">
-    <value>Hands &amp; Legs</value>
+    <value>Legs</value>
   </data>
   <data name="Head" xml:space="preserve">
     <value>Head:</value>
@@ -292,7 +292,7 @@
     <value>Poleyns:</value>
   </data>
   <data name="PoseMatrixSettings" xml:space="preserve">
-    <value>Pose Matrix Settings</value>
+    <value>Posing Matrix Settings (Only in Gpose)</value>
   </data>
   <data name="RightArm" xml:space="preserve">
     <value>Right Arm:</value>
@@ -406,10 +406,10 @@
     <value>Earrings</value>
   </data>
   <data name="EnableEditing" xml:space="preserve">
-    <value>Enable Editing:</value>
+    <value>Edit Mode:</value>
   </data>
   <data name="EnablePhysics" xml:space="preserve">
-    <value>Enable Physics:</value>
+    <value>Physics:</value>
   </data>
   <data name="Hair2" xml:space="preserve">
     <value>Hair</value>
@@ -491,9 +491,9 @@
     <value>Z Rotation:</value>
   </data>
   <data name="ToggleHelmParenting" xml:space="preserve">
-    <value>Toggle Helm Parenting</value>
+    <value>Helm Parenting Mode:</value>
   </data>
   <data name="ParentRotation" xml:space="preserve">
-    <value>Parenting Rotation:</value>
+    <value>Parenting Mode:</value>
   </data>
 </root>
