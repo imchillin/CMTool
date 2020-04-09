@@ -302,9 +302,17 @@ namespace ConceptMatrix.ViewModel
 			this.GetBone("LipUpperB").IsEnabled = !this.IsViera;
 			this.GetBone("LipLowerB").IsEnabled = !this.IsViera;
 
-			// now that we have all the bones, we make a hierarchy
-			// torso tree
-			this.ParentBone("Root", "SpineA");
+            // special case for exhair
+            int exhair_value = MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value));
+            string[] exhair_str = new string[] { "ExHairA", "ExHairB", "ExHairC", "ExHairD", "ExHairE", "ExHairF", "ExHairG", "ExHairH", "ExHairI", "ExHairJ", "ExHairK", "ExHairL" };
+            for (int i = exhair_value; i < exhair_str.Length; i++)
+            {
+                this.GetBone(exhair_str[i]).IsEnabled = false;
+            }
+
+            // now that we have all the bones, we make a hierarchy
+            // torso tree
+            this.ParentBone("Root", "SpineA");
 			this.ParentBone("SpineA", "SpineB");
 			this.ParentBone("SpineB", "SpineC");
 			this.ParentBone("SpineC", "Neck");
@@ -365,18 +373,10 @@ namespace ConceptMatrix.ViewModel
 			this.ParentBone("Head", "LipUpperB");
 			this.ParentBone("LipLowerA", "LipLowerB");
 
-			this.ParentBone("Head", "ExHairA");
-			this.ParentBone("Head", "ExHairB");
-			this.ParentBone("Head", "ExHairC");
-			this.ParentBone("Head", "ExHairD");
-			this.ParentBone("Head", "ExHairE");
-			this.ParentBone("Head", "ExHairF");
-			this.ParentBone("Head", "ExHairG");
-			this.ParentBone("Head", "ExHairH");
-			this.ParentBone("Head", "ExHairI");
-			this.ParentBone("Head", "ExHairJ");
-			this.ParentBone("Head", "ExHairK");
-			this.ParentBone("Head", "ExHairL");
+            for (int i = 0; i < exhair_str.Length; i++)
+            {
+                this.ParentBone("Head", exhair_str[i]);
+            }
 
 			// Facebone hroth tree
 			this.ParentBone("Head", "HrothEyebrowLeft");
