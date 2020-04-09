@@ -271,14 +271,14 @@ namespace ConceptMatrix.ViewModel
 		private void GenerateBones()
 		{
 			this.bones = new Dictionary<string, Bone>();
-			CharacterOffsets c = Settings.Instance.Character;
+			BonesOffsets c = Settings.Instance.Bones;
 			PropertyInfo[] boneProperties = typeof(BonesOffsets).GetProperties();
 			foreach (PropertyInfo boneProperty in boneProperties)
 			{
-				if (!boneProperty.Name.Contains("_X"))
+				if (!boneProperty.Name.Contains("_Bone"))
 					continue;
 
-				string boneName = boneProperty.Name.Replace("_X", string.Empty);
+				string boneName = boneProperty.Name.Replace("_Bone", string.Empty);
 
 				if (this.bones.ContainsKey(boneName))
 					throw new Exception("Duplicate bone: \"" + boneName + "\"");
@@ -466,16 +466,16 @@ namespace ConceptMatrix.ViewModel
 
 			// lower half bones tree
 			this.ParentBone("Root", "Waist");
-			this.ParentBone("Waist", "LegLeft");
+			this.ParentBone("Waist", "LegsLeft");
 			this.ParentBone("CalfLeft", "KneeLeft");
 			this.ParentBone("KneeLeft", "PoleynLeft");
-			this.ParentBone("LegLeft", "CalfLeft");
+			this.ParentBone("LegsLeft", "CalfLeft");
 			this.ParentBone("CalfLeft", "FootLeft");
 			this.ParentBone("FootLeft", "ToesLeft");
-			this.ParentBone("Waist", "LegRight");
+			this.ParentBone("Waist", "LegsRight");
 			this.ParentBone("CalfRight", "KneeRight");
 			this.ParentBone("KneeRight", "PoleynRight");
-			this.ParentBone("LegRight", "CalfRight");
+			this.ParentBone("LegsRight", "CalfRight");
 			this.ParentBone("CalfRight", "FootRight");
 			this.ParentBone("FootRight", "ToesRight");
 
@@ -528,17 +528,17 @@ namespace ConceptMatrix.ViewModel
 		private static string GetAddressString(string boneName)
 		{
 			Mem mem = MemoryManager.Instance.MemLib;
-			CharacterOffsets c = Settings.Instance.Character;
+			BonesOffsets c = Settings.Instance.Bones;
 
-			string propertyName = boneName + "_X";
-			/*	PropertyInfo property = c.Body.Bones.GetType().GetProperty(propertyName);
+			string propertyName = boneName + "_Bone";
+			PropertyInfo property = c.GetType().GetProperty(propertyName);
 
-				if (property == null)
-					throw new Exception("Failed to get bone axis: \"" + propertyName + "\"");
+			if (property == null)
+				throw new Exception("Failed to get bone axis: \"" + propertyName + "\"");
 
-				string offsetString = (string)property.GetValue(c.Body.Bones);
-				return MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, c.Body.Base, offsetString);*/
-			return "";
+			string offsetString = (string)property.GetValue(c);
+			return MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, offsetString);
+
 		}
 
 		private void WatchCamera()

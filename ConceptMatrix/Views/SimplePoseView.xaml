@@ -104,8 +104,8 @@
 				<local:SimplePoseBoneView Canvas.Left="182" Canvas.Top="160" BoneName="ForearmRight"/>
 				<local:SimplePoseBoneView Canvas.Left="48" Canvas.Top="230" BoneName="WristLeft"/>
 				<local:SimplePoseBoneView Canvas.Left="188" Canvas.Top="230" BoneName="WristRight"/>
-				<local:SimplePoseBoneView Canvas.Left="94" Canvas.Top="255" BoneName="LegLeft"/>
-				<local:SimplePoseBoneView Canvas.Left="143" Canvas.Top="255" BoneName="LegRight"/>
+				<local:SimplePoseBoneView Canvas.Left="94" Canvas.Top="255" BoneName="LegsLeft"/>
+				<local:SimplePoseBoneView Canvas.Left="143" Canvas.Top="255" BoneName="LegsRight"/>
 				<local:SimplePoseBoneView Canvas.Left="103" Canvas.Top="333" BoneName="KneeLeft"/>
 				<local:SimplePoseBoneView Canvas.Left="132" Canvas.Top="333" BoneName="KneeRight"/>
 				<local:SimplePoseBoneView Canvas.Left="83" Canvas.Top="333" BoneName="CalfLeft"/>

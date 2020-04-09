@@ -41,6 +41,9 @@
             <TabItem Header="{Binding Source={x:Static resx:UIStringsContent.PosingMatrix}}" Style="{DynamicResource MenuLevel2}">
                 <Views:PoseMatrixView Margin="0,4,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
             </TabItem>
+            <TabItem Header="Simple Pose" Style="{DynamicResource MenuLevel2}">
+                <Views:SimplePoseView DataContext="{Binding Path=CharacterDetails}" Margin="0,4,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
+            </TabItem>
             <TabItem Header="{Binding Source={x:Static resx:UIStringsContent.World}}" Style="{DynamicResource MenuLevel2}">
                 <Views:CharacterDetailsView3 Margin="0,4,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
             </TabItem>
