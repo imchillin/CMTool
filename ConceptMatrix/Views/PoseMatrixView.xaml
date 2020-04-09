@@ -109,19 +109,19 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                 <Label Content="{Binding Source={x:Static resx:UIPoseStrings.XRot}}"  VerticalAlignment="Center"/>
-                <mah:NumericUpDown x:Name="XUpDown" Width="125" Value="{Binding UserBoneX, Mode=TwoWay, NotifyOnSourceUpdated=True}" Background="{x:Null}" TextAlignment="Right"  BorderThickness="2" Maximum="360" Minimum="0" StringFormat="F5" Interval="0.01" FontSize="11.35" FontFamily="Segoe UI"/>
+                <mah:NumericUpDown x:Name="XUpDown" Width="125" Value="{Binding UserBoneX, Mode=TwoWay, NotifyOnSourceUpdated=True}" Background="{x:Null}" TextAlignment="Right"  BorderThickness="2" Maximum="360" Minimum="0" StringFormat="F5" Interval="{Binding BoneInterval}" FontSize="11.35" FontFamily="Segoe UI"/>
                 <Slider x:Name="BoneSliderX" Value="{Binding UserBoneX, Mode=TwoWay, NotifyOnSourceUpdated=True}"
                                 Margin="5,5,0,0" Width="165" Minimum="0" Maximum="360" TickFrequency="0.5" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="{Binding Source={x:Static resx:UIPoseStrings.YRot}}"  VerticalAlignment="Center"/>
-                <mah:NumericUpDown x:Name="YUpDown" Width="125" Value="{Binding UserBoneY, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"  Background="{x:Null}" TextAlignment="Right"  BorderThickness="2" Maximum="360" Minimum="0" StringFormat="F5" Interval="0.01" FontSize="11.35" FontFamily="Segoe UI"/>
+                <mah:NumericUpDown x:Name="YUpDown" Width="125" Value="{Binding UserBoneY, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"  Background="{x:Null}" TextAlignment="Right"  BorderThickness="2" Maximum="360" Minimum="0" StringFormat="F5" Interval="{Binding BoneInterval}" FontSize="11.35" FontFamily="Segoe UI"/>
                 <Slider x:Name="BoneSliderY" Value="{Binding UserBoneY, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
                                 Margin="5,5,0,0" Width="165" Minimum="0" Maximum="360" TickFrequency="0.5" />
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="{Binding Source={x:Static resx:UIPoseStrings.ZRot}}"  VerticalAlignment="Center"/>
-                <mah:NumericUpDown x:Name="ZUpDown" Width="125" Value="{Binding UserBoneZ, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Background="{x:Null}" TextAlignment="Right"  BorderThickness="2" Maximum="360" Minimum="0"  StringFormat="F5" Interval="0.01" FontSize="11.35" FontFamily="Segoe UI"/>
+                <mah:NumericUpDown x:Name="ZUpDown" Width="125" Value="{Binding UserBoneZ, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Background="{x:Null}" TextAlignment="Right"  BorderThickness="2" Maximum="360" Minimum="0"  StringFormat="F5" Interval="{Binding BoneInterval}" FontSize="11.35" FontFamily="Segoe UI"/>
                 <Slider x:Name="BoneSliderZ" Value="{Binding UserBoneZ, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
                                 Margin="5,5,0,0" Width="165" Minimum="0" Maximum="360" TickFrequency="0.5"/>
             </StackPanel>
@@ -183,7 +183,9 @@
             </StackPanel>
 
         </GroupBox>
-        <CheckBox x:Name="ToggleModelView" Content="Toggle Actor/Model Box" Grid.ColumnSpan="2" Margin="10,475,949,20" Checked="ToggleModelView_Checked" Unchecked="ToggleModelView_Unchecked"/>
+        <CheckBox x:Name="ToggleModelView" Content="Toggle Actor/Model Box" Grid.ColumnSpan="2" Margin="10,460,949,35" Checked="ToggleModelView_Checked" Unchecked="ToggleModelView_Unchecked"/>
+        <mah:NumericUpDown Value="{Binding BoneInterval, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Background="{x:Null}" TextAlignment="Right"  BorderThickness="2" Maximum="360" Minimum="0"  StringFormat="F3" Interval="0.01" FontSize="11.35" FontFamily="Segoe UI" Margin="95,496,909,8" Grid.ColumnSpan="2"/>
+        <Label Content="Bone Intervals:" Margin="9,496,39,9"/>
         <mah:MetroAnimatedTabControl  Background="{x:Null}" Grid.Column="1" Margin="231,155,10,0">
             <TabItem Header="{Binding Source={x:Static resx:UIPoseStrings.HeadHair}}" Style="{DynamicResource MenuLevel2}">
                 <StackPanel>

@@ -137,6 +137,8 @@ namespace ConceptMatrix.ViewModel
         }
         public bool ParentingToggle { get => SaveSettings.Default.RelativeBones; set => SaveSettings.Default.RelativeBones = value; }
 
+        public float BoneInterval { get => SaveSettings.Default.BoneInterval; set => SaveSettings.Default.BoneInterval = value; }
+
         public bool ReadTetriaryFromRunTime = false;
 
         public static PoseMatrixViewModel PoseVM;

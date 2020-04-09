@@ -127,6 +127,7 @@ namespace ConceptMatrix.Utility
 
         public bool AltModelView { get; set; } = false;
         public bool ScalingLoad { get; set; } = false;
+        public float BoneInterval { get; set; } = (float)0.10;
         public bool HasBackground { get; set; } = true;
         public string ProfileDirectory { get; set; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Saves");
         public string MatrixPoseDirectory { get; set; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), App.ToolBin, "Matrix Saves");
