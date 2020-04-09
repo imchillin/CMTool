@@ -492,7 +492,7 @@ namespace ConceptMatrix.ViewModel
 			this.ParentBone("TailA", "TailB");
 			this.ParentBone("TailB", "TailC");
 			this.ParentBone("TailC", "TailD");
-			this.ParentBone("TailD", "TailE");
+	//		this.ParentBone("TailD", "TailE");
 		}
 
 		private void ParentBone(string parentName, string childName)
