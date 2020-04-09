@@ -155,6 +155,7 @@ namespace ConceptMatrix.Utility
         }
 		public class TerritoryType
 		{
+			public string Name { get; set; }
 			public int Index { get; set; }
 			public WeatherRate WeatherRate { get; set; }
 		}
@@ -611,15 +612,15 @@ namespace ConceptMatrix.Utility
         public void MakeTerritoryTypeList()
         {
             TerritoryTypes = new Dictionary<int, TerritoryType>();
-
-            try
+			try
             {
                 var sheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.TerritoryType>();
                 var WeatherSheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Weather>();
                 foreach (var Parse in sheet)
                 {
-                    TerritoryType territory = new TerritoryType
-                    {
+					TerritoryType territory = new TerritoryType
+					{
+						Name = Parse.PlaceName.Name,
                         Index = Parse.Key,
                         WeatherRate = new WeatherRate()
                     };

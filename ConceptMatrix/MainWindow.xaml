@@ -100,7 +100,7 @@
                 <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="{Binding Source={x:Static resx:UIStringsContent.Wiki}}" />
             </StackPanel>
         </Button>
-
+        <TextBlock Text="{Binding Path=CharacterDetails.CharacterDetails.TerritoryName}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="257,-45,0,0" Width="376" Height="45" Foreground="White" TextAlignment="Right" FontSize="15" Padding="10,22,0,4" IsEnabled="False" IsHitTestVisible="False"/>
         <Viewbox HorizontalAlignment="Left" Height="29" Margin="355,1,0,0" VerticalAlignment="Top" Width="95">
             <Label Content="{Binding Source={x:Static resx:UIStringsContent.GPoseMode}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.GposeModeToolTip}}" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Height="27"/>
         </Viewbox>

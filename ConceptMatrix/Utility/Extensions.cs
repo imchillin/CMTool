@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConceptMatrix.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -109,6 +110,19 @@ namespace ConceptMatrix.Utility
 			Quaternion q = new Quaternion(x, y, z, w);
 			q.Normalize();
 			return q;
+		}
+
+		public static string TerritoryName(int ID)
+		{
+			ExdCsvReader.TerritoryType value;
+			if (CharacterDetailsView._exdProvider.TerritoryTypes.TryGetValue(ID, out value))
+			{
+				return $"{value.Name} - {value.Index}";
+			}
+			else
+			{
+				return $"No Zone - 0";
+			}
 		}
 	}
 }

@@ -158,6 +158,7 @@ namespace ConceptMatrix.ViewModel
             try
             {
                 CharacterDetails.Territoryxd.value = m.readInt(GAS(MemoryManager.Instance.TerritoryAddress, c.Territory));
+                CharacterDetails.TerritoryName = Extensions.TerritoryName(CharacterDetails.Territoryxd.value);
                 if (CharacterDetails.GposeMode)
                 {
                     if (CharacterDetails.TargetModeActive)

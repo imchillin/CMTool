@@ -175,6 +175,7 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetailsView._exdProvider.TribeList();
                 CharacterDetailsView._exdProvider.DyeList();
                 CharacterDetailsView._exdProvider.MonsterList();
+                CharacterDetailsView._exdProvider.MakeTerritoryTypeList();
                 ExdCsvReader.MonsterX = CharacterDetailsView._exdProvider.Monsters.Values.ToArray();
                 for (int i = 0; i < CharacterDetailsView._exdProvider.Dyes.Count; i++)
                 {

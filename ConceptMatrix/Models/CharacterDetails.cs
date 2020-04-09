@@ -67,6 +67,9 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public bool RelativePositioning
         { get => SaveSettings.Default.AdvancedMove; set => SaveSettings.Default.AdvancedMove = value; }
 
+        [JsonIgnore]
+        public string TerritoryName { get; set; }
+
         [JsonIgnore] public bool IsEnabled { get; set; }
         [JsonIgnore] public bool GposeMode { get; set; }
         [JsonIgnore] public Address<float> CharacterRender { get; set; }

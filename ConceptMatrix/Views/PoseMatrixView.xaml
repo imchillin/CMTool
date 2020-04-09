@@ -183,9 +183,9 @@
             </StackPanel>
 
         </GroupBox>
-        <CheckBox x:Name="ToggleModelView" Content="Toggle Actor/Model Box" Grid.ColumnSpan="2" Margin="10,460,949,35" Checked="ToggleModelView_Checked" Unchecked="ToggleModelView_Unchecked"/>
-        <mah:NumericUpDown Value="{Binding BoneInterval, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Background="{x:Null}" TextAlignment="Right"  BorderThickness="2" Maximum="360" Minimum="0"  StringFormat="F3" Interval="0.01" FontSize="11.35" FontFamily="Segoe UI" Margin="95,496,909,8" Grid.ColumnSpan="2"/>
-        <Label Content="Bone Intervals:" Margin="9,496,39,9"/>
+        <CheckBox x:Name="ToggleModelView" Content="Toggle Actor/Model Box" Grid.ColumnSpan="2" Margin="10,466,949,39" Checked="ToggleModelView_Checked" Unchecked="ToggleModelView_Unchecked"/>
+        <mah:NumericUpDown Value="{Binding BoneInterval, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Background="{x:Null}" TextAlignment="Right"  BorderThickness="2" Maximum="360" Minimum="0"  StringFormat="F3" Interval="0.01" FontSize="11.35" FontFamily="Segoe UI" Margin="95,493,909,11" Grid.ColumnSpan="2"/>
+        <Label Content="Bone Intervals:" Margin="9,493,39,12"/>
         <mah:MetroAnimatedTabControl  Background="{x:Null}" Grid.Column="1" Margin="231,155,10,0">
             <TabItem Header="{Binding Source={x:Static resx:UIPoseStrings.HeadHair}}" Style="{DynamicResource MenuLevel2}">
                 <StackPanel>
