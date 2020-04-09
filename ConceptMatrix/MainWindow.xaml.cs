@@ -1215,7 +1215,9 @@ namespace ConceptMatrix
             {
                 MainViewModel.ViewTime5.PoseMatrixSetting.IsEnabled = false;
                 MainViewModel.ViewTime5.EditModeButton.IsChecked = false;
-
+                // just in case?
+                PoseMatrixView.PosingMatrix.PoseMatrixSetting.IsEnabled = false;
+                PoseMatrixView.PosingMatrix.EditModeButton.IsChecked = false;
                 lock (CharacterDetails.LinkedActors)
                 {
                     MainViewModel.ViewTime.LinkPositionText.IsEnabled = false;

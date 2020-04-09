@@ -299,6 +299,14 @@ namespace ConceptMatrix.ViewModel
                         {
                             CharacterDetails.GposeMode = false;
                             InGpose = false;
+
+                            Application.Current.Dispatcher.Invoke(() => //Use Dispather to Update UI Immediately  
+                            {
+                                MainViewModel.ViewTime5.PoseMatrixSetting.IsEnabled = false;
+                                MainViewModel.ViewTime5.EditModeButton.IsChecked = false;
+                                PoseMatrixView.PosingMatrix.PoseMatrixSetting.IsEnabled = false;
+                                PoseMatrixView.PosingMatrix.EditModeButton.IsChecked = false;
+                            });
                         }
                     }
                     else if (m.readByte(GAS(MemoryManager.Instance.GposeCheckAddress)) == 1 && m.readByte(GAS(MemoryManager.Instance.GposeCheck2Address)) == 4)
@@ -410,6 +418,12 @@ namespace ConceptMatrix.ViewModel
                             Task.Delay(50).Wait();
                             m.writeMemory(GAS(MemoryManager.Instance.GposeAddress, c.EntityType), "byte", "0x01");
                             InGpose = true;
+
+                            Application.Current.Dispatcher.Invoke(() => //Use Dispather to Update UI Immediately  
+                            {
+                                MainViewModel.ViewTime5.PoseMatrixSetting.IsEnabled = true;
+                                PoseMatrixView.PosingMatrix.PoseMatrixSetting.IsEnabled = true;
+                            });
                         }
                     }
                 }
