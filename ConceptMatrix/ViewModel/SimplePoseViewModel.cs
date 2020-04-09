@@ -24,8 +24,8 @@ namespace ConceptMatrix.ViewModel
 
 		public CharacterDetails Character { get; set; }
 
-		public bool IsEnabled 
-		{ 
+		public bool IsEnabled
+		{
 			get
 			{
 				return this.enabled;
@@ -70,8 +70,8 @@ namespace ConceptMatrix.ViewModel
 			set;
 		}
 
-		public Bone CurrentBone 
-		{ 
+		public Bone CurrentBone
+		{
 			get
 			{
 				return this.currentBone;
@@ -238,7 +238,7 @@ namespace ConceptMatrix.ViewModel
 
 		public bool GetIsBoneParentsSelected(Bone bone)
 		{
-			if (this. GetIsBoneSelected(bone))
+			if (this.GetIsBoneSelected(bone))
 				return true;
 
 			if (bone.Parent != null)
@@ -282,7 +282,7 @@ namespace ConceptMatrix.ViewModel
 
 				if (this.bones.ContainsKey(boneName))
 					throw new Exception("Duplicate bone: \"" + boneName + "\"");
-				
+
 				this.bones[boneName] = new Bone(boneName);
 
 				// bit of a hack...
@@ -302,17 +302,17 @@ namespace ConceptMatrix.ViewModel
 			this.GetBone("LipUpperB").IsEnabled = !this.IsViera;
 			this.GetBone("LipLowerB").IsEnabled = !this.IsViera;
 
-            // special case for exhair
-            int exhair_value = MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Bones.ExHair_Value));
-            string[] exhair_str = new string[] { "ExHairA", "ExHairB", "ExHairC", "ExHairD", "ExHairE", "ExHairF", "ExHairG", "ExHairH", "ExHairI", "ExHairJ", "ExHairK", "ExHairL" };
-            for (int i = exhair_value; i < exhair_str.Length; i++)
-            {
-                this.GetBone(exhair_str[i]).IsEnabled = false;
-            }
+			// special case for exhair
+			int exhair_value = MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHair_Value));
+			string[] exhair_str = new string[] { "ExHairA", "ExHairB", "ExHairC", "ExHairD", "ExHairE", "ExHairF", "ExHairG", "ExHairH", "ExHairI", "ExHairJ", "ExHairK", "ExHairL" };
+			for (int i = exhair_value; i < exhair_str.Length; i++)
+			{
+				this.GetBone(exhair_str[i]).IsEnabled = false;
+			}
 
-            // now that we have all the bones, we make a hierarchy
-            // torso tree
-            this.ParentBone("Root", "SpineA");
+			// now that we have all the bones, we make a hierarchy
+			// torso tree
+			this.ParentBone("Root", "SpineA");
 			this.ParentBone("SpineA", "SpineB");
 			this.ParentBone("SpineB", "SpineC");
 			this.ParentBone("SpineC", "Neck");
@@ -373,10 +373,10 @@ namespace ConceptMatrix.ViewModel
 			this.ParentBone("Head", "LipUpperB");
 			this.ParentBone("LipLowerA", "LipLowerB");
 
-            for (int i = 0; i < exhair_str.Length; i++)
-            {
-                this.ParentBone("Head", exhair_str[i]);
-            }
+			for (int i = 0; i < exhair_str.Length; i++)
+			{
+				this.ParentBone("Head", exhair_str[i]);
+			}
 
 			// Facebone hroth tree
 			this.ParentBone("Head", "HrothEyebrowLeft");
@@ -555,7 +555,7 @@ namespace ConceptMatrix.ViewModel
 			address = MemoryManager.Instance.MemLib.get64bitCode(addressStr);
 			FloatMemory zMem = new FloatMemory(address);
 
-			
+
 
 			while (this.IsEnabled && Application.Current != null)
 			{
@@ -582,7 +582,7 @@ namespace ConceptMatrix.ViewModel
 
 		public class Bone : INotifyPropertyChanged
 		{
-			public string BoneName{ get; private set; }
+			public string BoneName { get; private set; }
 			public bool IsEnabled { get; set; } = true;
 
 			public List<Bone> Children = new List<Bone>();
@@ -698,7 +698,7 @@ namespace ConceptMatrix.ViewModel
 					this.Value = value;
 				}
 
-				protected abstract T Read( Mem memory);
+				protected abstract T Read(Mem memory);
 				protected abstract void Write(T value, Mem memory);
 			}
 
