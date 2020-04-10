@@ -514,6 +514,7 @@ namespace ConceptMatrix.Views
             {
                 if (ModelBox.SelectedItem == null)
                     return;
+                if (CharacterDetails.EntitySub.value == 5 || MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.EntitySub))==5) return; 
                 var Value = (ExdCsvReader.Monster)ModelBox.SelectedItem;
                 CharacterDetails.ModelType.value = (int)Value.Index;
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.ModelType), "int", Value.Index.ToString());

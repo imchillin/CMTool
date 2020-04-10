@@ -292,11 +292,12 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public float RotateX { get; set; }
         [JsonIgnore] public float RotateY { get; set; }
         [JsonIgnore] public float RotateZ { get; set; }
-
+        [JsonIgnore] public Address<byte> EntitySub { get; set; }
         [JsonIgnore] public bool RotateFreeze { get; set; }
  
         public CharacterDetails()
         {
+            EntitySub = new Address<byte>();
             CamAngleX = new Address<float>();
             CamAngleY = new Address<float>();
             CamPanX = new Address<float>();

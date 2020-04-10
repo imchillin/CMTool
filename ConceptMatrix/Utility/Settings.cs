@@ -95,7 +95,8 @@ namespace ConceptMatrix.Utility
         public string Clan { get; set; }
         public string BodyType { get; set; }
         public string EntityType { get; set; }
-        public string FreezeFacial { get; set; }
+		public string EntitySub { get; set; }
+		public string FreezeFacial { get; set; }
         public string Territory { get; set; }
         public string DataPath { get; set; }
         public string DataHead { get; set; }

@@ -88,7 +88,7 @@
         <GroupBox Header="{Binding Source={x:Static resx:UIStringsContent.Advanced}}"  HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" Margin="834,312,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="146" Width="263" />
 
         <!-- Entity Type -->
-        <CheckBox IsChecked="{Binding CharacterDetails.EntityType.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.EntityType}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.EntityTypeToolTip}}" HorizontalAlignment="Left" Margin="840,356,0,0" VerticalAlignment="Top" Height="28"/>
+        <CheckBox x:Name="EntityCheck" IsChecked="{Binding CharacterDetails.EntityType.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.EntityType}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.EntityTypeToolTip}}" HorizontalAlignment="Left" Margin="840,356,0,0" VerticalAlignment="Top" Height="28"/>
         <TextBox x:Name="EntityBox" Style="{StaticResource MaterialDesignTextBox}" Text="{Binding CharacterDetails.EntityType.value, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="950,356,0,0" VerticalAlignment="Top" Width="138" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" TextAlignment="Center" Height="28" FontSize="11.35" FontFamily="Segoe UI" MinHeight="0"/>
 
         <!-- Array of Bytes -->

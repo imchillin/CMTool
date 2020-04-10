@@ -175,6 +175,30 @@ namespace ConceptMatrix.ViewModel
                 var nameAddr = GAS(baseAddr, c.Name);
                 var fcnameAddr = GAS(baseAddr, c.FCTag);
                 var xdad = (byte)m.readByte(GAS(baseAddr, c.EntityType));
+                var SubType = (byte)m.readByte(GAS(baseAddr, c.EntitySub));
+                CharacterDetails.EntitySub.value = SubType;
+                if(SubType==5)
+                {
+                    Application.Current.Dispatcher.Invoke(() => //Use Dispather to Update UI Immediately  
+                    {
+                        MainViewModel.ViewTime.MonsterCheck.IsChecked = false;
+                        MainViewModel.ViewTime.MonsterCheck.IsEnabled = false;
+                        MainViewModel.ViewTime.MonsterNum.IsEnabled = false;
+                        MainViewModel.ViewTime4.EntityBox.IsEnabled = false;
+                        MainViewModel.ViewTime4.EntityCheck.IsChecked = false;
+                        MainViewModel.ViewTime4.EntityCheck.IsEnabled = false;
+                    });
+                }
+                else
+                {
+                    Application.Current.Dispatcher.Invoke(() => //Use Dispather to Update UI Immediately  
+                    {
+                        MainViewModel.ViewTime.MonsterCheck.IsEnabled = true;
+                        MainViewModel.ViewTime.MonsterNum.IsEnabled = true;
+                        MainViewModel.ViewTime4.EntityBox.IsEnabled = true;
+                        MainViewModel.ViewTime4.EntityCheck.IsEnabled = true;
+                    });
+                }
                 if (!CharacterDetails.Name.freeze)
                 {
                     var name = m.readString(nameAddr);
@@ -628,7 +652,7 @@ namespace ConceptMatrix.ViewModel
 
                 if (!CharacterDetails.EmoteOld.freeze) CharacterDetails.EmoteOld.value = (int)m.read2Byte((GAS(baseAddr, c.EmoteOld)));
 
-                if (!CharacterDetails.EmoteSpeed1.freeze) CharacterDetails.EmoteSpeed1.value = (float)m.readFloat((GAS(baseAddr, c.EmoteSpeed1)));
+                if (!CharacterDetails.EmoteSpeed1.freeze) CharacterDetails.EmoteSpeed1.value = (float)m.readFloat((GAS(MemoryManager.Instance.GposeAddress, c.EmoteSpeed1)));
 
                 if (!CharacterDetails.WeaponRed.freeze) CharacterDetails.WeaponRed.value = m.readFloat(GAS(baseAddr, c.WeaponRed));
 

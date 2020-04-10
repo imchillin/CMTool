@@ -69,6 +69,7 @@
 		<RenderToggle>104</RenderToggle>
 		<Transparency>173C</Transparency>
 		<EntityType>8C</EntityType>
+		<EntitySub>8D</EntitySub>
 		<ModelType>18A8</ModelType>
 		<!--Character Appearance-->
 		<Race>17E0</Race>

@@ -37,7 +37,17 @@ namespace ConceptMatrix.Utility
                         e.Cancel = true;
                     }
                     var xdad = (byte)m.readByte(GAS(c.EntityType));
-
+                    var EntitySub = (byte)m.readByte(GAS(c.EntitySub));
+                    if(EntitySub!=5)
+                    {
+                        if (CharacterDetails.EntityType.freeze && !CharacterDetails.EntityType.Activated) m.writeBytes(GAS(c.EntityType), CharacterDetails.EntityType.GetBytes());
+                        if (CharacterDetails.ModelType.freeze)m.writeBytes(GAS(c.ModelType), CharacterDetails.ModelType.GetBytes());
+                    }
+                    else
+                    {
+                        CharacterDetails.EntityType.freeze = false;
+                        CharacterDetails.ModelType.freeze = false;
+                    }
                     if (CharacterDetails.BodyType.freeze && !CharacterDetails.BodyType.Activated) m.writeBytes(GAS(c.BodyType), CharacterDetails.BodyType.GetBytes());
                     if (CharacterDetails.Title.freeze && !CharacterDetails.Title.Activated) m.writeBytes(GAS(c.Title), CharacterDetails.Title.GetBytes());
                     if (CharacterDetails.JobIco.freeze && !CharacterDetails.JobIco.Activated) m.writeBytes(GAS(c.JobIco), CharacterDetails.JobIco.GetBytes());
@@ -55,7 +65,6 @@ namespace ConceptMatrix.Utility
                         if (CharacterDetails.Highlights.value >= 80) CharacterDetails.Highlights.SpecialActivate = true;
                         else CharacterDetails.Highlights.SpecialActivate = false;
                     }
-                    if (CharacterDetails.EntityType.freeze && !CharacterDetails.EntityType.Activated) m.writeBytes(GAS(c.EntityType), CharacterDetails.EntityType.GetBytes());
                     if (CharacterDetails.Voices.freeze && !CharacterDetails.Voices.Activated) m.writeBytes(GAS(c.Voices), CharacterDetails.Voices.GetBytes());
                     if (CharacterDetails.Skintone.freeze && !CharacterDetails.Skintone.Activated) m.writeBytes(GAS(c.Skintone), CharacterDetails.Skintone.GetBytes());
                     if (CharacterDetails.Lips.freeze && !CharacterDetails.Lips.Activated) m.writeBytes(GAS(c.Lips), CharacterDetails.Lips.GetBytes());
@@ -161,7 +170,6 @@ namespace ConceptMatrix.Utility
                     if (CharacterDetails.MuscleTone.freeze) m.writeBytes(GAS(c.Body.Base, c.Body.MuscleTone), CharacterDetails.MuscleTone.GetBytes());
                     if (CharacterDetails.TailSize.freeze) m.writeBytes(GAS(c.Body.Base, c.Body.TailSize), CharacterDetails.TailSize.GetBytes());
                     if (CharacterDetails.Transparency.freeze) m.writeBytes(GAS(c.Transparency), CharacterDetails.Transparency.GetBytes());
-                    if (CharacterDetails.ModelType.freeze) m.writeBytes(GAS(c.ModelType), CharacterDetails.ModelType.GetBytes());
 
                     if (CharacterDetails.CamX.freeze) m.writeBytes(GASG(MemoryManager.Instance.GposeAddress, c.CamX), CharacterDetails.CamX.GetBytes());
                     if (CharacterDetails.CamY.freeze) m.writeBytes(GASG(MemoryManager.Instance.GposeAddress, c.CamY), CharacterDetails.CamY.GetBytes());
@@ -317,8 +325,8 @@ namespace ConceptMatrix.Utility
                     }
                     if (CharacterDetails.EmoteSpeed1.freeze)
                     {
-                        m.writeBytes(GAS(c.EmoteSpeed1), CharacterDetails.EmoteSpeed1.GetBytes());
-                        m.writeBytes(GAS(c.EmoteSpeed2), CharacterDetails.EmoteSpeed1.GetBytes());
+                        m.writeBytes(GASG(c.EmoteSpeed1), CharacterDetails.EmoteSpeed1.GetBytes());
+                        m.writeBytes(GASG(c.EmoteSpeed2), CharacterDetails.EmoteSpeed1.GetBytes());
                     }
                     if (CharacterDetails.Emote.freeze)
                     {
