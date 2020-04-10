@@ -1,5 +1,5 @@
 {
-   "LastUpdated": "5.1x3",
+   "LastUpdated": "5.1x4",
    "CameraOffset": "1BFCAA0",
    "GposeOffset": "1BFCC88",
    "GposeEntityOffset": "1BFEDD8",
@@ -31,7 +31,7 @@
       "JobIco": "18F4",
       "Voices": "18D8",
       "Body": {
-         "@Base": "F0",
+         "Base": "F0",
          "Position": {
             "X": "50",
             "Y": "54",
@@ -47,7 +47,7 @@
             "Z": "74"
          },
          "Bust": {
-            "@Base": "140",
+            "Base": "140",
             "X": "68",
             "Y": "6C",
             "Z": "70"
