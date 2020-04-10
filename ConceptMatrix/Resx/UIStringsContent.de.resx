@@ -1,0 +1,1330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>Über</value>
+  </data>
+  <data name="ActorData" xml:space="preserve">
+    <value>Charakterdaten</value>
+  </data>
+  <data name="ActorEntityListToolTip" xml:space="preserve">
+    <value>Zeigt eine Liste aller anvisierbaren/zielfähigen Entitäten im Umkreis von dir an.
+• Diese Liste füllt sich basierend von der Distanz zum Spieler und kann sich potenziell ändern, falls die Entitäten ihre Position verändern, Begleiter mit inbegriffen.</value>
+  </data>
+  <data name="ActorProperties" xml:space="preserve">
+    <value>Charaktereigenschaften</value>
+  </data>
+  <data name="ActorRefreshButton" xml:space="preserve">
+    <value>CharakterAktualisieren</value>
+  </data>
+  <data name="ActorRefreshToolTip" xml:space="preserve">
+    <value>Der ausgewählte Charakter wird mit den neuen Einstellungen erneut geladen.</value>
+  </data>
+  <data name="ActorScale" xml:space="preserve">
+    <value>Charakterskalierung</value>
+  </data>
+  <data name="Advanced" xml:space="preserve">
+    <value>Erweitert</value>
+  </data>
+  <data name="AlwaysOnTopButton" xml:space="preserve">
+    <value>Fenster im Vordergrund</value>
+  </data>
+  <data name="AnimSpeed" xml:space="preserve">
+    <value>Anim Tempo</value>
+  </data>
+  <data name="AnimSpeedToolTip" xml:space="preserve">
+    <value>Ändert die Animationsgeschwindigkeit des ausgewählten Charakters.</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Anwenden</value>
+  </data>
+  <data name="Arms" xml:space="preserve">
+    <value>Arme:</value>
+  </data>
+  <data name="ArrayOfBytes" xml:space="preserve">
+    <value>AoB-Daten:</value>
+  </data>
+  <data name="ArrayOfBytesToolTip" xml:space="preserve">
+    <value>Beinhaltet Daten über die ausgewählte Entität.
+• In diesem Feld kannst du Daten kopieren-einfügen und auf Anwenden klicken.</value>
+  </data>
+  <data name="B" xml:space="preserve">
+    <value>B</value>
+  </data>
+  <data name="Base" xml:space="preserve">
+    <value>Basis</value>
+  </data>
+  <data name="BGMFreeze" xml:space="preserve">
+    <value>BGM stoppen</value>
+  </data>
+  <data name="BGMID" xml:space="preserve">
+    <value>BGM ID</value>
+  </data>
+  <data name="Blue" xml:space="preserve">
+    <value>Blau</value>
+  </data>
+  <data name="BlueGlow" xml:space="preserve">
+    <value>BlauerGlanz</value>
+  </data>
+  <data name="Body" xml:space="preserve">
+    <value>Rumpf:</value>
+  </data>
+  <data name="BodyToolTip" xml:space="preserve">
+    <value>Ändert den Körpertyp des ausgewählten Charakters.</value>
+  </data>
+  <data name="BodyToolTip2" xml:space="preserve">
+    <value>Erlaubt es, jede Art von Oberteil an dem ausgewählten Charakter auszurüsten.</value>
+  </data>
+  <data name="BodyType" xml:space="preserve">
+    <value>Körpertyp:</value>
+  </data>
+  <data name="Breasts" xml:space="preserve">
+    <value>Brust:</value>
+  </data>
+  <data name="Brightness" xml:space="preserve">
+    <value>Helligkeit:</value>
+  </data>
+  <data name="BustSize" xml:space="preserve">
+    <value>Oberweite:</value>
+  </data>
+  <data name="BustSizeToolTip" xml:space="preserve">
+    <value>Ändert die Oberweite des ausgewählten Charakters.</value>
+  </data>
+  <data name="BustXScale" xml:space="preserve">
+    <value>Büste X-Skala</value>
+  </data>
+  <data name="BustXScaleToolTip" xml:space="preserve">
+    <value>Ändert den X-Wert der Brust des ausgewählten Charakter.
+• Nur an weiblichen Charakteren anwendbar.</value>
+  </data>
+  <data name="BustYScale" xml:space="preserve">
+    <value>Büste Y-Skala</value>
+  </data>
+  <data name="BustYScaleToolTip" xml:space="preserve">
+    <value>Ändert den Y-Wert der Brust des ausgewählten Charakter.
+• Nur an weiblichen Charakteren anwendbar.</value>
+  </data>
+  <data name="BustZScale" xml:space="preserve">
+    <value>Büste Z-Skala</value>
+  </data>
+  <data name="BustZScaleToolTip" xml:space="preserve">
+    <value>Ändert den Z-Wert der Brust des ausgewählten Charakter.
+• Nur an weiblichen Charakteren anwendbar.</value>
+  </data>
+  <data name="c1001" xml:space="preserve">
+    <value>c1001 - Roegadyn Frau</value>
+  </data>
+  <data name="c101" xml:space="preserve">
+    <value>c101 - Hyur Mann</value>
+  </data>
+  <data name="c104" xml:space="preserve">
+    <value>c104 - Hyur Mann (Kind)</value>
+  </data>
+  <data name="c1101" xml:space="preserve">
+    <value>c1101 - Lalafell Mann</value>
+  </data>
+  <data name="c1201" xml:space="preserve">
+    <value>c1201 - Lalafell Frau</value>
+  </data>
+  <data name="c1301" xml:space="preserve">
+    <value>c1301 - Au Ra Mann</value>
+  </data>
+  <data name="c1401" xml:space="preserve">
+    <value>c1401 - Au Ra Frau </value>
+  </data>
+  <data name="c1501" xml:space="preserve">
+    <value>c1501 - Hrothgar Mann</value>
+  </data>
+  <data name="c1801" xml:space="preserve">
+    <value>c1801 - Viera Frau</value>
+  </data>
+  <data name="c201" xml:space="preserve">
+    <value>c201 - Hyur Frau</value>
+  </data>
+  <data name="c301" xml:space="preserve">
+    <value>c301 - Hochländer Mann</value>
+  </data>
+  <data name="c401" xml:space="preserve">
+    <value>c401 - Hochländer Frau </value>
+  </data>
+  <data name="c501" xml:space="preserve">
+    <value>c501 - Elezen Mann</value>
+  </data>
+  <data name="c504" xml:space="preserve">
+    <value>c504 - Elezen Mann (Kind)</value>
+  </data>
+  <data name="c601" xml:space="preserve">
+    <value>c601 - Elezen Frau</value>
+  </data>
+  <data name="c604" xml:space="preserve">
+    <value>c604 - Elezen Frau (Kind)</value>
+  </data>
+  <data name="c701" xml:space="preserve">
+    <value>c701 - Miqo'te Mann</value>
+  </data>
+  <data name="c801" xml:space="preserve">
+    <value>c801 - Miqo'te Frau</value>
+  </data>
+  <data name="c804" xml:space="preserve">
+    <value>c804 - Miqo'te Frau (Kind)</value>
+  </data>
+  <data name="c901" xml:space="preserve">
+    <value>c901 - Roegadyn Mann</value>
+  </data>
+  <data name="c9104" xml:space="preserve">
+    <value>c9104 - Padjal Mann</value>
+  </data>
+  <data name="c9204" xml:space="preserve">
+    <value>c9204 - Padjal Frau</value>
+  </data>
+  <data name="Calves" xml:space="preserve">
+    <value>Waden:</value>
+  </data>
+  <data name="CamAngleX" xml:space="preserve">
+    <value>Kam Winkel X:</value>
+  </data>
+  <data name="CamAngleY" xml:space="preserve">
+    <value>Kam Winkel Y:</value>
+  </data>
+  <data name="CameraSettings" xml:space="preserve">
+    <value>Kameraeinstellungen</value>
+  </data>
+  <data name="CameraViewX" xml:space="preserve">
+    <value>Kam Sicht X:</value>
+  </data>
+  <data name="CameraViewY" xml:space="preserve">
+    <value>Kam Sicht Y:</value>
+  </data>
+  <data name="CameraViewZ" xml:space="preserve">
+    <value>Kam Sicht Z:</value>
+  </data>
+  <data name="CameraXPos" xml:space="preserve">
+    <value>Kam X Pos:</value>
+  </data>
+  <data name="CameraYPos" xml:space="preserve">
+    <value>Kam Y Pos:</value>
+  </data>
+  <data name="CameraZPos" xml:space="preserve">
+    <value>Kam Z Pos:</value>
+  </data>
+  <data name="CamRotation" xml:space="preserve">
+    <value>Kamerarotation:</value>
+  </data>
+  <data name="CamUpDown" xml:space="preserve">
+    <value>Kam Auf/Ab:</value>
+  </data>
+  <data name="CamYMax" xml:space="preserve">
+    <value>Kam Y Max:</value>
+  </data>
+  <data name="CamYMin" xml:space="preserve">
+    <value>Kam Y Min:</value>
+  </data>
+  <data name="Cheeks" xml:space="preserve">
+    <value>Wangen:</value>
+  </data>
+  <data name="Chest" xml:space="preserve">
+    <value>Brust:</value>
+  </data>
+  <data name="Clan" xml:space="preserve">
+    <value>Volksstamm:</value>
+  </data>
+  <data name="ClanToolTip" xml:space="preserve">
+    <value>Ändert den Klan des ausgewählten Charakters.</value>
+  </data>
+  <data name="Clavicles" xml:space="preserve">
+    <value>Schlüsselbein:</value>
+  </data>
+  <data name="Colorfulness" xml:space="preserve">
+    <value>Farbenpracht:</value>
+  </data>
+  <data name="Colorfulness2" xml:space="preserve">
+    <value>Farbenpracht 2:</value>
+  </data>
+  <data name="Contrast" xml:space="preserve">
+    <value>Kontrast:</value>
+  </data>
+  <data name="Contrast2" xml:space="preserve">
+    <value>Kontrast 2:</value>
+  </data>
+  <data name="CurrentZoom" xml:space="preserve">
+    <value>Aktueller Zoom:</value>
+  </data>
+  <data name="DataPath" xml:space="preserve">
+    <value>Dateipfad:</value>
+  </data>
+  <data name="DataPathToolTip" xml:space="preserve">
+    <value>Ändert den Dateipfad der ausgewählten Entität.
+• Das erlaubt uns Animationen von anderen Rassen und Geschlechtern zu nutzen.
+• Eine Charakteraktualisierung wird nicht benötigt und kann innerhalb und außerhalb von GPose benutzt werden.
+• Das Skelett der Entität wird umgewandelt um der ausgewählten Rasse zu passen. Diese Ausdehnung oder Einschränkung hierbei ist nicht vermeidbar.
+• Man kann die Charakteraktualisierung benutzen, wenn man zum Spaß eine Monstrosität sein will.</value>
+  </data>
+  <data name="DefaultTime" xml:space="preserve">
+    <value>Standardzeit</value>
+  </data>
+  <data name="Discord" xml:space="preserve">
+    <value>Discord</value>
+  </data>
+  <data name="Drenched" xml:space="preserve">
+    <value>Durchnässt:</value>
+  </data>
+  <data name="DrenchedToolTip" xml:space="preserve">
+    <value>Gibt der ausgewählten Entität einen stark ausgeprägten Nässeeffekt.
+• Genau wie der Nasseffekt, verschwindet dieser Effekt mit der Zeit.</value>
+  </data>
+  <data name="Dyes" xml:space="preserve">
+    <value>Farbstoffe</value>
+  </data>
+  <data name="EarMuscleTailSize" xml:space="preserve">
+    <value>Extra-Feature Größe:</value>
+  </data>
+  <data name="EarMuscleTailSizeToolTip" xml:space="preserve">
+    <value>Ändert die Ohren, Muskeln und Schwanzgröße des ausgewählten Charakters.</value>
+  </data>
+  <data name="Ears" xml:space="preserve">
+    <value>Ohren:</value>
+  </data>
+  <data name="EarsToolTip" xml:space="preserve">
+    <value>Erlaubt es, jede Art von Ohrringen an dem ausgewählten Charakter auszurüsten.</value>
+  </data>
+  <data name="EarTailScale" xml:space="preserve">
+    <value>Ohr/Schwanz:</value>
+  </data>
+  <data name="EarTailScaleToolTip" xml:space="preserve">
+    <value>Ändert die Ohren und Schwanzskalierung des ausgewählten Charakters.</value>
+  </data>
+  <data name="EarTailType" xml:space="preserve">
+    <value>Ohr/Schwanzform:</value>
+  </data>
+  <data name="EarTailTypeToolTip" xml:space="preserve">
+    <value>Ändert die Ohren und Schwanz des ausgewählten Charakters.</value>
+  </data>
+  <data name="Elbows" xml:space="preserve">
+    <value>Ellbogen:</value>
+  </data>
+  <data name="EnableEditing" xml:space="preserve">
+    <value>Bearbeitung aktivieren:</value>
+  </data>
+  <data name="EnablePhysics" xml:space="preserve">
+    <value>Physik aktivieren:</value>
+  </data>
+  <data name="EntityType" xml:space="preserve">
+    <value>Instanztyp:</value>
+  </data>
+  <data name="EntityTypeToolTip" xml:space="preserve">
+    <value>Nur für fortgeschrittene Benutzer!
+• Wird den Instanztyp des ausgewählten Charakters ändern.
+• Das kann zu unvorhersehbaren und nichtgewollten Verhalten von einigen Charaktern führen.
+• Das Ändern dieses Wertes auf Typ 1 kann manche NPC in GPose auswählbar machen.</value>
+  </data>
+  <data name="Equipment" xml:space="preserve">
+    <value>Ausrüstung</value>
+  </data>
+  <data name="Exposure" xml:space="preserve">
+    <value>Belichtung:</value>
+  </data>
+  <data name="EyeBrowsToolTip" xml:space="preserve">
+    <value>Ändert die Augenbrauen des ausgewählten Charakters.</value>
+  </data>
+  <data name="EyebrowsType" xml:space="preserve">
+    <value>Augenbrauen Typ:</value>
+  </data>
+  <data name="EyeColorLeft" xml:space="preserve">
+    <value>Augenfarbe (links)</value>
+  </data>
+  <data name="EyeColorLeftToolTip" xml:space="preserve">
+    <value>Ändert die linke Augenfarbe des ausgewählten Charakters.</value>
+  </data>
+  <data name="EyeColorRight" xml:space="preserve">
+    <value>Augenfarbe (rechts)</value>
+  </data>
+  <data name="EyeColorRightToolTip" xml:space="preserve">
+    <value>Ändert die rechte Augenfarbe des ausgewählten Charakters.</value>
+  </data>
+  <data name="Eyelids" xml:space="preserve">
+    <value>Augenlider:</value>
+  </data>
+  <data name="Eyes" xml:space="preserve">
+    <value>Augen:</value>
+  </data>
+  <data name="EyesType" xml:space="preserve">
+    <value>Augenform:</value>
+  </data>
+  <data name="EyeTypeToolTip" xml:space="preserve">
+    <value>Ändert die Augenform des ausgewählten Charakters.</value>
+  </data>
+  <data name="Face" xml:space="preserve">
+    <value>Gesicht:</value>
+  </data>
+  <data name="FacePaint" xml:space="preserve">
+    <value>Gesichtstattoo:</value>
+  </data>
+  <data name="FacePaintColor" xml:space="preserve">
+    <value>Gesichtstattoofarbe:</value>
+  </data>
+  <data name="FacePaintColorToolTip" xml:space="preserve">
+    <value>Ändert die Farbe des Gesichtstattoo des ausgewählten Charakters.</value>
+  </data>
+  <data name="FacePaintToolTip" xml:space="preserve">
+    <value>Ändert das Gesichtstattoo sowie die Farbe des ausgewählten Charakters.</value>
+  </data>
+  <data name="FacialFeatures" xml:space="preserve">
+    <value>Gesichtsmerkmale:</value>
+  </data>
+  <data name="FacialFeaturesToolTip" xml:space="preserve">
+    <value>Ändert die Gesichtsmerkmale des ausgewählten Charakters.</value>
+  </data>
+  <data name="Feet" xml:space="preserve">
+    <value>Füße:</value>
+  </data>
+  <data name="FeetToolTip" xml:space="preserve">
+    <value>Erlaubt es, jede Art von Schuhwerk an dem ausgewählten Charakter auszurüsten.</value>
+  </data>
+  <data name="Filmic" xml:space="preserve">
+    <value>Filmisch</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="FindProcessButton" xml:space="preserve">
+    <value>Prozess neu laden</value>
+  </data>
+  <data name="FindProcessToolTip" xml:space="preserve">
+    <value>Lädt den Final Fantasy XIV neu nach.</value>
+  </data>
+  <data name="FingerBones" xml:space="preserve">
+    <value>Finger Bones</value>
+  </data>
+  <data name="ForceAnim" xml:space="preserve">
+    <value>AnimErzwingen:</value>
+  </data>
+  <data name="ForceAnimToolTip" xml:space="preserve">
+    <value>Zwingt die ausgewählte Entität eine Animation auszuführen. 
+• Dies kann nur in GPose benutzt werden.
+• Um dies zu verwenden muss ein sich nicht wiederholendes Emote ausgeführt werden bevor man in die GPose geht.
+• Manche Animationen haben eine bestimmte Rasse oder Geschlecht als Voraussetzung. Unter Umständen muss ein anderer Dateipfad gewählt werden.
+• Funktioniert nicht mit NSCs!</value>
+  </data>
+  <data name="Forearms" xml:space="preserve">
+    <value>Unterarme:</value>
+  </data>
+  <data name="FoV" xml:space="preserve">
+    <value>Field of View:</value>
+  </data>
+  <data name="FoV2" xml:space="preserve">
+    <value>Field of View 2:</value>
+  </data>
+  <data name="FreeCompanyTag" xml:space="preserve">
+    <value>Freie Gesellschaft:</value>
+  </data>
+  <data name="FreeCompanyTagWaterMark" xml:space="preserve">
+    <value>Freie Gesellschaft:</value>
+  </data>
+  <data name="FreeCompanyToolTip" xml:space="preserve">
+    <value>Ändert das Kürzel der Freien Gesellschaft des ausgewählten Charakters.</value>
+  </data>
+  <data name="FreezeAll" xml:space="preserve">
+    <value>Bewegung anhalten (alle)</value>
+  </data>
+  <data name="FreezePos" xml:space="preserve">
+    <value>Position einfrieren</value>
+  </data>
+  <data name="FreezePosToolTip" xml:space="preserve">
+    <value>Friert die position der geählten Entiät ein.
+• Dies ist nützlich um Entitäten in GPose zu bewegen, da diese sonst zum Ursprungsort zurück springen wenn ihr Emote geändert wird oder 'Blick zur Kamera' verwendet wird.
+• Bevor zu einer anderen Entität gewechselt wird sollte diese Funktion deaktiviert werden da sonst die neue Entität an die gleiche Stelle springt.</value>
+  </data>
+  <data name="FreezeRot" xml:space="preserve">
+    <value>Rotation einfrieren</value>
+  </data>
+  <data name="FreezeRotToolTip" xml:space="preserve">
+    <value>Friert die Rotation der gewählten Entität ein.
+• Dies ist in Kombination mit Position einfrieren nützlich um sowohl Position wie auch Rotation zu erhalten.
+• Zusammen mit "Blick zu Kamera" (Standardbelegung: Leertaste) kann dies verwendet werden um nur den Kopf der gewählten Entität zu drehen.
+• Ebenso wie bei 'Position enfrieren' sollte dies wieder deaktiviert werden bevor zu einer anderen Entität gewechselt wird.
+• Voraussetzung um Rotationsregler oder direkte Zifferneingabe verwenden zu können.</value>
+  </data>
+  <data name="G" xml:space="preserve">
+    <value>G</value>
+  </data>
+  <data name="Gamma" xml:space="preserve">
+    <value>Gamma:</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Geschlecht:</value>
+  </data>
+  <data name="GenderToolTip" xml:space="preserve">
+    <value>Ändert das Geschlecht des ausgewählten Charakters.</value>
+  </data>
+  <data name="GPoseMode" xml:space="preserve">
+    <value>GPose Modus:</value>
+  </data>
+  <data name="GposeModeToolTip" xml:space="preserve">
+    <value>Ermöglicht es bestimmte Werte wie XYZ Position, Rotation und Animation der ausgewählten Entität in GPose zu verändern.
+• GPose Modus und Auswahlmodus werden zusammen aktivier. Stelle sicher das Auswahlmodus nicht bereits aktiviert ist da dieser sonst deaktiviert wird.</value>
+  </data>
+  <data name="Green" xml:space="preserve">
+    <value>Grün</value>
+  </data>
+  <data name="GreenGlow" xml:space="preserve">
+    <value>GrünerGlanz:</value>
+  </data>
+  <data name="GroupPoseFilter" xml:space="preserve">
+    <value>GPose Filter</value>
+  </data>
+  <data name="HairColor" xml:space="preserve">
+    <value>Haarfarbe:</value>
+  </data>
+  <data name="HairColor2" xml:space="preserve">
+    <value>Haarfarbe</value>
+  </data>
+  <data name="HairColorToolTip" xml:space="preserve">
+    <value>Ändert die Haarfarbe des ausgewählten Charakters.</value>
+  </data>
+  <data name="Hairstyle" xml:space="preserve">
+    <value>Frisur:</value>
+  </data>
+  <data name="HairStyleToolTip" xml:space="preserve">
+    <value>Ändert die Frisur des ausgewählten Charakters.</value>
+  </data>
+  <data name="Hands" xml:space="preserve">
+    <value>Hände:</value>
+  </data>
+  <data name="HandsToolTip" xml:space="preserve">
+    <value>Erlaubt es, jedes Art von Handschuhen an dem ausgewählten Charakter auszurüsten.</value>
+  </data>
+  <data name="HDR" xml:space="preserve">
+    <value>HDR:</value>
+  </data>
+  <data name="Head" xml:space="preserve">
+    <value>Kopf:</value>
+  </data>
+  <data name="HeadBones" xml:space="preserve">
+    <value>Kopf Bones</value>
+  </data>
+  <data name="HeadToolTip" xml:space="preserve">
+    <value>Erlaubt es, jedes Art von Kopfbekleidung an dem ausgewählten Charakter auszurüsten.</value>
+  </data>
+  <data name="HeadType" xml:space="preserve">
+    <value>Kopftyp:</value>
+  </data>
+  <data name="HeadTypeToolTip" xml:space="preserve">
+    <value>Ändert den Kopftyp des ausgewählten Charakters.</value>
+  </data>
+  <data name="Height" xml:space="preserve">
+    <value>Höhe:</value>
+  </data>
+  <data name="HeightToolTip" xml:space="preserve">
+    <value>Ändert die Höhe des ausgewählten Charakters.</value>
+  </data>
+  <data name="HighLightButtonToolTip" xml:space="preserve">
+    <value>Ändert die Strähnen des ausgewählten Charakters.</value>
+  </data>
+  <data name="Highlights" xml:space="preserve">
+    <value>Strähnen:</value>
+  </data>
+  <data name="HighlightsColor" xml:space="preserve">
+    <value>Farbe der Strähnen:</value>
+  </data>
+  <data name="HighlightsToolTip" xml:space="preserve">
+    <value>Ändert die Farbe der Strähnen des ausgewählten Charakters.</value>
+  </data>
+  <data name="IdleAnim" xml:space="preserve">
+    <value>Idle Anim:</value>
+  </data>
+  <data name="IdleAnimToolTip" xml:space="preserve">
+    <value>Ändert die 'Handlung bei Untätigkeit' der gewählten Entität.
+• Dies kann innerhalb und außerhalb von GPose benutzt werden.
+• Soll dies in GPose verwendet werden muss man sich zuerst hinsetzen, dann aufstehen, und /pose2 verwenden bis 'Handlung bei Untätigkeit' dies steht:
+• Dies kann für Familiare, Begleitern, Chocobos und die meisten NSCs verwendet werden.</value>
+  </data>
+  <data name="IndexFinger" xml:space="preserve">
+    <value>Zeigefinger:</value>
+  </data>
+  <data name="IndexJoint" xml:space="preserve">
+    <value>Zeigefinger Joint:</value>
+  </data>
+  <data name="InnerBrows" xml:space="preserve">
+    <value>Innere Augenbrauen:</value>
+  </data>
+  <data name="Jaw" xml:space="preserve">
+    <value>Kiefer:</value>
+  </data>
+  <data name="JawType" xml:space="preserve">
+    <value>Kieferart:</value>
+  </data>
+  <data name="JawTypeToolTip" xml:space="preserve">
+    <value>Ändert die Kieferart des ausgewählten Charakters.</value>
+  </data>
+  <data name="JobIcon" xml:space="preserve">
+    <value>Klasse:</value>
+  </data>
+  <data name="JobIconToolTip" xml:space="preserve">
+    <value>Ändert das Klassensymbol des ausgewählen Gruppenmitglied in der Gruppenliste.</value>
+  </data>
+  <data name="Knees" xml:space="preserve">
+    <value>Knie:</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>DE / GER</value>
+  </data>
+  <data name="LeftArm" xml:space="preserve">
+    <value>Linker Arm:</value>
+  </data>
+  <data name="LeftEyeColor" xml:space="preserve">
+    <value>Linke Augenfarbe:</value>
+  </data>
+  <data name="LeftLeg" xml:space="preserve">
+    <value>Linkes Bein:</value>
+  </data>
+  <data name="LeftRing" xml:space="preserve">
+    <value>Linker Ring:</value>
+  </data>
+  <data name="LeftRingToolTip" xml:space="preserve">
+    <value>Erlaubt es, jedes Art von Ring an der linken Hand des ausgewählten Charakter auszurüsten.</value>
+  </data>
+  <data name="Legs" xml:space="preserve">
+    <value>Beine:</value>
+  </data>
+  <data name="LegsToolTip" xml:space="preserve">
+    <value>Erlaubt es, jede Art von Beinbekleidung an dem ausgewählten Charakter auszurüsten.</value>
+  </data>
+  <data name="LimbalOrTattoo" xml:space="preserve">
+    <value>Äußere Iris/Tattoofarbe:</value>
+  </data>
+  <data name="LimbalOrTattooToolTip" xml:space="preserve">
+    <value>Ändert die Farbe der äußeren Iris oder des Tattoos auf dem ausgewähltem Charakter.</value>
+  </data>
+  <data name="LimbalRingTattooColor" xml:space="preserve">
+    <value>Äußere Iris/Tattoofarbe</value>
+  </data>
+  <data name="LipColor" xml:space="preserve">
+    <value>Lippenfarbe/Fellmuster:</value>
+  </data>
+  <data name="LipColorToolTip" xml:space="preserve">
+    <value>Ändert die Lippenfarbe oder das Fellmuster des ausgewählten Charakters.</value>
+  </data>
+  <data name="LipsColor" xml:space="preserve">
+    <value>Lippenfarbe:</value>
+  </data>
+  <data name="LoadButton" xml:space="preserve">
+    <value>Laden</value>
+  </data>
+  <data name="LoadGearset" xml:space="preserve">
+    <value>Ausrüstung laden</value>
+  </data>
+  <data name="LoadMainWindow" xml:space="preserve">
+    <value>Aussehen laden</value>
+  </data>
+  <data name="LoadMainWindowToolTip" xml:space="preserve">
+    <value>Lädt das Aussehen aus einer benutzergenerierten JSON Datei.
+• Bei der Charaktererschaffung im Spiel gespeicherte Aussehen können über die '.DAT laden' Option geladen werden.</value>
+  </data>
+  <data name="LoadPointButton" xml:space="preserve">
+    <value>Zustand laden</value>
+  </data>
+  <data name="LoadPointToolTip" xml:space="preserve">
+    <value>Setzt den aktuellen Zustand auf das 'Backup' zurück.</value>
+  </data>
+  <data name="LockFacialAnimation" xml:space="preserve">
+    <value>Gesicht einfrieren:</value>
+  </data>
+  <data name="LockFacialAnimationToolTip" xml:space="preserve">
+    <value>Friert die Gesichtsanimation der ausgewählten Entität ein.
+• Um die Animation sauber einzufrieren muss diese Option aktiviert und eingefroren werden, und Anim Tempo auf Null gesetzt werden. </value>
+  </data>
+  <data name="LockTime" xml:space="preserve">
+    <value>Zeit anhalten:</value>
+  </data>
+  <data name="LowerBodyBones" xml:space="preserve">
+    <value>Unterkörper Bones:</value>
+  </data>
+  <data name="LowerEarrings" xml:space="preserve">
+    <value>Untere Ohrringe:</value>
+  </data>
+  <data name="LowerEyelids" xml:space="preserve">
+    <value>Untere Augenlider:</value>
+  </data>
+  <data name="LowerLip" xml:space="preserve">
+    <value>Unterlippe:</value>
+  </data>
+  <data name="MainHand" xml:space="preserve">
+    <value>Haupthand:</value>
+  </data>
+  <data name="MainHandColor" xml:space="preserve">
+    <value>Haupthandfarbe:</value>
+  </data>
+  <data name="MainHandScale" xml:space="preserve">
+    <value>Haupthandskalierung:</value>
+  </data>
+  <data name="MainHandScaleToolTip" xml:space="preserve">
+    <value>Manipuliert die XYZ Skalierung der Haupthand der geählten Entität.
+• Dies kann auch verwendet werden um Requisiten zu skalieren, funktioniert jedoch nicht bei VFX Gegenständen welche nur kurzzeitig erscheinen, wie zum Beispiel der allagische Stein.</value>
+  </data>
+  <data name="MainHandToolTip" xml:space="preserve">
+    <value>Erlaubt es jede Art von Waffe an dem geählten Charakter auszurüsten.
+• Für eine leere Hand kann man entweder "Des Kaisers neue Fäuste" ausrüsten, oder Haupthand bzw. Nebenhandskalierung im rechten Panel verwenden.</value>
+  </data>
+  <data name="MaxZoom" xml:space="preserve">
+    <value>Max Zoom:</value>
+  </data>
+  <data name="MiddleFinger" xml:space="preserve">
+    <value>Mittelfinger:</value>
+  </data>
+  <data name="MiddleJoint" xml:space="preserve">
+    <value>Mittelfingergelenk:</value>
+  </data>
+  <data name="MinZoom" xml:space="preserve">
+    <value>Min Zoom:</value>
+  </data>
+  <data name="ModelID" xml:space="preserve">
+    <value>Modell-ID</value>
+  </data>
+  <data name="ModelList" xml:space="preserve">
+    <value>Modellliste</value>
+  </data>
+  <data name="ModelType" xml:space="preserve">
+    <value>Modelltyp:</value>
+  </data>
+  <data name="ModelTypeButtonToolTip" xml:space="preserve">
+    <value>Öffnet ein Untermenü auf der rechten Seite in welchem nach Monstern, Halb-Menschen, Requisiten Entitäten, und entitätsbasierenden Effekten gesucht werden kann.
+• Manche NSCs finden sich in dieser Auswahl da sie als Halb-Menschen klassifiziert werden, zum Beispiel wilde Stämme, Zenos, Thordan/Ritter, usw.
+• Wird der Charakter unsichtbar nachdem er in einen Halb-Menschen geändert wurde, ändere sämtliche Ausrüstung zu Basis 0, Variante 0. Sollte das nicht funktionieren, versuche auch 1,0 oder 1,1.</value>
+  </data>
+  <data name="ModelTypeToolTip" xml:space="preserve">
+    <value>Ändert den Modelltyp des ausgewählen Charakters.</value>
+  </data>
+  <data name="Mouth" xml:space="preserve">
+    <value>Mund:</value>
+  </data>
+  <data name="MouthType" xml:space="preserve">
+    <value>Mundart:</value>
+  </data>
+  <data name="MouthTypeToolTip" xml:space="preserve">
+    <value>Ändert die Mundart des ausgewählen Charakters.</value>
+  </data>
+  <data name="MuscleTone" xml:space="preserve">
+    <value>Muskulatur</value>
+  </data>
+  <data name="MuscleToneToolTip" xml:space="preserve">
+    <value>Verändert die Muskulatur des gewählten Charakters.</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="NameToolTip" xml:space="preserve">
+    <value>Ändert den Namen des ausgewählen Charakters.</value>
+  </data>
+  <data name="NameWaterMark" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Neck" xml:space="preserve">
+    <value>Hals:</value>
+  </data>
+  <data name="NeckToolTip" xml:space="preserve">
+    <value>Erlaubt es, jedes Art von Halsband an der rechten Hand des ausgewählten Charakter auszurüsten.</value>
+  </data>
+  <data name="Nose" xml:space="preserve">
+    <value>Nase:</value>
+  </data>
+  <data name="NoseType" xml:space="preserve">
+    <value>Nasenart:</value>
+  </data>
+  <data name="NoseTypeToolTip" xml:space="preserve">
+    <value>Ändert die Nasenart des ausgewählen Charakters.</value>
+  </data>
+  <data name="Nostrils" xml:space="preserve">
+    <value>Nasenlöcher:</value>
+  </data>
+  <data name="NPCModel" xml:space="preserve">
+    <value>Modell:</value>
+  </data>
+  <data name="NPCOutfit" xml:space="preserve">
+    <value>NPC Outfits und Aussehen</value>
+  </data>
+  <data name="NPCOutfitToolTip" xml:space="preserve">
+    <value>Öffnet ein Untermenü auf der rechten Seite in welchem mit Namen nach NSCs gesucht werden kann.
+• 'Charakter neu laden' muss verwendet werden um das Aussehen des ausgewählten Eintrags anzunehmen.
+• Manche NSCs, wie zum Beispiel wilde Stämme, Zenos und ein paar andere lassen sich nicht in dieser Liste finden da diese als Halb-Menschen klassifiziert sind. Diese kann man unter Modelltyp im ersten Reiter finden.</value>
+  </data>
+  <data name="OffHand" xml:space="preserve">
+    <value>Nebenhand:</value>
+  </data>
+  <data name="OffHandColor" xml:space="preserve">
+    <value>Nebenhandfarbe:</value>
+  </data>
+  <data name="OffHandScale" xml:space="preserve">
+    <value>Nebenhandskalierung:</value>
+  </data>
+  <data name="OffHandScaleToolTip" xml:space="preserve">
+    <value>Manipuliert die XYZ Skalierung der Nebenhand der gewählten Entität.
+• Dies beinflusst Ausrüstung wie Schilde, Köcher, Scheiden, Fokus, und Dolch oder Faustwaffe der linken Hand</value>
+  </data>
+  <data name="OffHandToolTip" xml:space="preserve">
+    <value>Erlaubt es jede Art von Nebenhand an dem geählten Charakter auszurüsten.
+• Um eine Nebenhand, mit Ausnahme von Schilden, zu finden muss nach der Haupthandausrüstung unter dem Nebenhand 'Mehr' Knopf gesucht werden. Um zum Besipiel eine Scheide oder einen Köcher zu findem muss nach dem dazugehörigen Katana oder Bogen gesucht werden.</value>
+  </data>
+  <data name="OuterBrows" xml:space="preserve">
+    <value>Äußere Augenbrauen:</value>
+  </data>
+  <data name="OverallScale" xml:space="preserve">
+    <value>Höhenskala:</value>
+  </data>
+  <data name="OverallScaleToolTip" xml:space="preserve">
+    <value>Modifiziert die gesamte Skalierung des geählten Charakters.</value>
+  </data>
+  <data name="Pelvis" xml:space="preserve">
+    <value>Becken:</value>
+  </data>
+  <data name="PinkyFinger" xml:space="preserve">
+    <value>Kleiner Finger:</value>
+  </data>
+  <data name="PinkyJoint" xml:space="preserve">
+    <value>Kleiner Finger Joint:</value>
+  </data>
+  <data name="PosingMatrix" xml:space="preserve">
+    <value>Posing Matrix</value>
+  </data>
+  <data name="PropView" xml:space="preserve">
+    <value>Requisiten</value>
+  </data>
+  <data name="R" xml:space="preserve">
+    <value>R</value>
+  </data>
+  <data name="Race" xml:space="preserve">
+    <value>Rasse:</value>
+  </data>
+  <data name="RaceToolTip" xml:space="preserve">
+    <value>Ändert die Rasse des ausgewählen Charakters.</value>
+  </data>
+  <data name="RandomizeAppearance" xml:space="preserve">
+    <value>Zufälliges Aussehen</value>
+  </data>
+  <data name="RandomizeAppearanceToolTip" xml:space="preserve">
+    <value>Erstellt ein zufälliges Aussehen.</value>
+  </data>
+  <data name="RealtimeRotation" xml:space="preserve">
+    <value>Echtzeitrotation:</value>
+  </data>
+  <data name="RealTimeRotationToolTip" xml:space="preserve">
+    <value>Verwende die Maustasten um den Würfel zu drehen.
+• All Drehungen sind relativ zur momentanen Orientierung der Entität.
+• Rechte Maustaste dreht um die X-Achse.
+• Linke Maustaste dreht um die Y-Achse.
+• Mittlere Maustaste dreht um die Z-Achse.</value>
+  </data>
+  <data name="Red" xml:space="preserve">
+    <value>Rot:</value>
+  </data>
+  <data name="RedGlow" xml:space="preserve">
+    <value>RoterGlanz:</value>
+  </data>
+  <data name="RefreshButton" xml:space="preserve">
+    <value>Neuladen</value>
+  </data>
+  <data name="RelativeXYZPos" xml:space="preserve">
+    <value>Relative XYZ Pos:</value>
+  </data>
+  <data name="RelativeXYZPosToolTip" xml:space="preserve">
+    <value>Dieser Schalter legt XYZ Bewegung relativ zur gewählten Entität fest anstatt zum absoluten Bezug der Spielwelt.
+• Diese Einstellung ist standardmäßig an und ihr Zustand bleibt zwischen Sitzungen erhalten.</value>
+  </data>
+  <data name="RelativeXYZRot" xml:space="preserve">
+    <value>Relative XYZ Rot:</value>
+  </data>
+  <data name="RelativeXYZRotToolTip" xml:space="preserve">
+    <value>Dieser Schalter legt XYZ Rotation relativ zur gewählten Entität fest anstatt zum absoluten Bezug der Spielwelt.
+• Diese Einstellung ist standardmäßig an und ihr Zustand bleibt zwischen Sitzungen erhalten.
+• Betrifft nur den Echtzeitrotationswürfel.</value>
+  </data>
+  <data name="RenderCycle" xml:space="preserve">
+    <value>Render Zyklus</value>
+  </data>
+  <data name="RenderLimit" xml:space="preserve">
+    <value>Renderlimit entfernen:</value>
+  </data>
+  <data name="RenderToggleToolTip" xml:space="preserve">
+    <value>Render Umschalter</value>
+  </data>
+  <data name="ResetButton" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="ResetToDefaultButton" xml:space="preserve">
+    <value>Zurücksetzen zum Standard</value>
+  </data>
+  <data name="RightArm" xml:space="preserve">
+    <value>Rechter Arm:</value>
+  </data>
+  <data name="RightEyeColor" xml:space="preserve">
+    <value>Rechte Augenfarbe</value>
+  </data>
+  <data name="RightLeg" xml:space="preserve">
+    <value>Rechtes Bein</value>
+  </data>
+  <data name="RightRing" xml:space="preserve">
+    <value>Rechter Ring</value>
+  </data>
+  <data name="RightRingToolTip" xml:space="preserve">
+    <value>Erlaubt es, jedes Art von Ring an der rechten Hand des ausgewählten Charakter auszurüsten.</value>
+  </data>
+  <data name="RingFinger" xml:space="preserve">
+    <value>Ringfinger:</value>
+  </data>
+  <data name="RingJoint" xml:space="preserve">
+    <value>Ringfinger Joint:</value>
+  </data>
+  <data name="RotationSliders" xml:space="preserve">
+    <value>Rotationsregler</value>
+  </data>
+  <data name="RotationSlidersToolTip" xml:space="preserve">
+    <value>Dieser Schalter wecheslt zwischen Rotationsreglern und direkter Zifferneingabe.
+• Diese Einstellung ist standardmäßig an und ihr Zustand bleibt zwischen Sitzungen erhalten.
+• Beim ausschalten werden XYZ Regler in Zahlenwerte umgewandelt.
+• Jede Eingabe akzeptiert einen Wert zwischen 0 und 360.
+• Sowohl Regler und Zifferneingabe setzen vorraus das 'Rotation einfrieren' aktiv ist.</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="SaveGearset" xml:space="preserve">
+    <value>Ausrüstung speichern</value>
+  </data>
+  <data name="SaveMainWindow" xml:space="preserve">
+    <value>Aussehen speichern</value>
+  </data>
+  <data name="SaveMainWindowToolTip" xml:space="preserve">
+    <value>Speichert das Aussehen in eine JSON Datei.</value>
+  </data>
+  <data name="SavePointButton" xml:space="preserve">
+    <value>Zustand speichern</value>
+  </data>
+  <data name="SavePointToolTip" xml:space="preserve">
+    <value>Erstellt ein 'Backup' des aktuellen Zustands, welcher später wieder geladen werden kann.</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="SHDR" xml:space="preserve">
+    <value>S-HDR:</value>
+  </data>
+  <data name="Shoulders" xml:space="preserve">
+    <value>Schultern:</value>
+  </data>
+  <data name="SkinColor" xml:space="preserve">
+    <value>Hautfarbe:</value>
+  </data>
+  <data name="Skintone" xml:space="preserve">
+    <value>Hautton:</value>
+  </data>
+  <data name="SkinToneToolTip" xml:space="preserve">
+    <value>Ändert den Hautton des ausgewählen Charakters.</value>
+  </data>
+  <data name="StatusEffect" xml:space="preserve">
+    <value>GPose 
+Statuseffekte:</value>
+  </data>
+  <data name="StatusEffectToolTip" xml:space="preserve">
+    <value>Ermöglicht es zusätzliche VFX auf Entitäten anzuwenden.
+1. Aktiviert einen Status im GPose Menü. (Zum Beispiel Versteinert)
+2. Wählt einen neuen VFX aus der Drop-down Liste aus.
+3. Entfernt den Status im GPose Menü.
+• Um einen neuen Effekt zu wählen oder den aktuellen Effekt zu entfernen verwendet den Reset Knopf oder überschreibt es mit einem anderen Status. </value>
+  </data>
+  <data name="Sternum" xml:space="preserve">
+    <value>Brustbein:</value>
+  </data>
+  <data name="Tail" xml:space="preserve">
+    <value>Schwanz:</value>
+  </data>
+  <data name="TailJoints" xml:space="preserve">
+    <value>Schwanz Joints:</value>
+  </data>
+  <data name="TargetActorIs" xml:space="preserve">
+    <value>Ausgewählter Charakter ist ???</value>
+  </data>
+  <data name="TargetMode" xml:space="preserve">
+    <value>Auswahlmodus:</value>
+  </data>
+  <data name="TargetModeToolTip" xml:space="preserve">
+    <value>Ermöglicht es Eigenschaften der ausgeählten Entität zu verändern ohne die Entitätenliste verwenden zu müssen.
+• Dies ist hilfreiche für belebte Gebiete in denen sich die Entitätenliste ständig verändert. Änderungen müssen jedoch durch die normalen Methoden angewendet werden wozu diese Einstellung deaktiviert werden muss.</value>
+  </data>
+  <data name="Thumb" xml:space="preserve">
+    <value>Daumen</value>
+  </data>
+  <data name="ThumbJoint" xml:space="preserve">
+    <value>Daumengelenk</value>
+  </data>
+  <data name="TimeButtonLockToolTip" xml:space="preserve">
+    <value>Time Toggle Switch</value>
+  </data>
+  <data name="TimeControl" xml:space="preserve">
+    <value>Zeitkontrolle:</value>
+  </data>
+  <data name="TimeControlToolTip" xml:space="preserve">
+    <value>Ändert die aktuelle Zeit des Areals.
+• Bei Benutzung der Zeitkontrolle in GPose zusammen mit "Freeze Time/Weather" wird durch die verschiedenen Mondzyklen gewechselt</value>
+  </data>
+  <data name="TimeLockToolTip" xml:space="preserve">
+    <value>Versucht die inder Zeitkontrolle festgelegte Zeit beizubehalten.
+• Dies ist nicht präzise und kann sich über lange Zeiträume verschieben.</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Titel:</value>
+  </data>
+  <data name="TitleToolTip" xml:space="preserve">
+    <value>Ändert den Titel des gewählten Charakters.</value>
+  </data>
+  <data name="Toes" xml:space="preserve">
+    <value>Zehen:</value>
+  </data>
+  <data name="Torso" xml:space="preserve">
+    <value>Oberkörper:</value>
+  </data>
+  <data name="TPoseActor" xml:space="preserve">
+    <value>Charakter T-Pose</value>
+  </data>
+  <data name="TransformationData" xml:space="preserve">
+    <value>Transformationsdaten</value>
+  </data>
+  <data name="Transparency" xml:space="preserve">
+    <value>Transparenz:</value>
+  </data>
+  <data name="TransparencyToolTip" xml:space="preserve">
+    <value>Verändert die Durchsichtigkeit der gewählten Entität.
+• Reduzierung der Durchsichtigkeit wirkt sich nicht auf die Haupt- oder Nebenhandausrüstung aus. Dazu kann die dazugehörige XYZ Skalierung im Ausrüstungsreiter auf 0 gesetzt werden.
+• Wenn dies in GPose auf 0 gesetzt wird kann es passieren, dass das System vergisst das die Entität auswählbar ist. Um dies zu verhindern sollte 0.03 als Wer gewählt werden.</value>
+  </data>
+  <data name="Twitter" xml:space="preserve">
+    <value>Twitter</value>
+  </data>
+  <data name="UncheckButton" xml:space="preserve">
+    <value>Alles abwählen</value>
+  </data>
+  <data name="UncheckButtonToolTip" xml:space="preserve">
+    <value>Wählt alle Einstellungen ab.</value>
+  </data>
+  <data name="UpperBodyBones" xml:space="preserve">
+    <value>Oberkörper Bones:</value>
+  </data>
+  <data name="UpperEarrings" xml:space="preserve">
+    <value>Obere Ohrringe:</value>
+  </data>
+  <data name="UpperLip" xml:space="preserve">
+    <value>Oberlippe:</value>
+  </data>
+  <data name="Variant" xml:space="preserve">
+    <value>Variante</value>
+  </data>
+  <data name="Vibrance" xml:space="preserve">
+    <value>Vitalität:</value>
+  </data>
+  <data name="VieraLowerEars" xml:space="preserve">
+    <value>Viera Obere Ohren:</value>
+  </data>
+  <data name="VieraUpperEars" xml:space="preserve">
+    <value>Viera Untere Ohren:</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>Mehr</value>
+  </data>
+  <data name="VisualEffect" xml:space="preserve">
+    <value>Visuelle Effekte:</value>
+  </data>
+  <data name="VoiceType" xml:space="preserve">
+    <value>Stimme:</value>
+  </data>
+  <data name="VoiceTypeToolTip" xml:space="preserve">
+    <value>Ändert die Stimme des ausgewählten Charakters:</value>
+  </data>
+  <data name="Waist" xml:space="preserve">
+    <value>Taille:</value>
+  </data>
+  <data name="Weather" xml:space="preserve">
+    <value>Wetter</value>
+  </data>
+  <data name="WeatherForce" xml:space="preserve">
+    <value>Instant-Wetter:</value>
+  </data>
+  <data name="WeatherForceToolTip" xml:space="preserve">
+    <value>Kontrolliert das Wetter des Areals.
+• Diese Methode wirkt sofort und ändert das Wetter sobald es aus dem Drop-down Menü ausgewählt wurde.</value>
+  </data>
+  <data name="WeatherSelect" xml:space="preserve">
+    <value>Wetterauswahl</value>
+  </data>
+  <data name="WeatherToolTip" xml:space="preserve">
+    <value>Ändert das aktuelle Wetter des Areals.
+• Diese Methode benutzt natürliche Übergänge und kann etwas Zeit in Anspruch nehmen bis die Änderung fertig ist.</value>
+  </data>
+  <data name="Wet" xml:space="preserve">
+    <value>Nasseffekt:</value>
+  </data>
+  <data name="WetToolTip" xml:space="preserve">
+    <value>Wendet den gleichen Effekt wie im Wasser oder Regen zu sein auf die gewählte Entität an.
+• Bei deaktivieren nimmt der Effekt über Zeit ab.</value>
+  </data>
+  <data name="World" xml:space="preserve">
+    <value>Welt</value>
+  </data>
+  <data name="Wrists" xml:space="preserve">
+    <value>Handgelenke:</value>
+  </data>
+  <data name="WristsToolTIp" xml:space="preserve">
+    <value>Erlaubt es, jedes Art von Armbändern an der rechten Hand des ausgewählten Charakter auszurüsten.</value>
+  </data>
+  <data name="X" xml:space="preserve">
+    <value>X:</value>
+  </data>
+  <data name="XPos" xml:space="preserve">
+    <value>X Position:</value>
+  </data>
+  <data name="XPosToolTip" xml:space="preserve">
+    <value>Ändert die X Position des ausgewählten Charakters.
+• Man wird den Charakter einfrieren müssen, um die Position besser in GPose einstellen zu können.</value>
+  </data>
+  <data name="XRot" xml:space="preserve">
+    <value>X Rotation:</value>
+  </data>
+  <data name="XRot2" xml:space="preserve">
+    <value>X Rotation:</value>
+  </data>
+  <data name="XRot2ToolTip" xml:space="preserve">
+    <value>Ändert die X Position des ausgewählten Joints..</value>
+  </data>
+  <data name="XRotToolTip" xml:space="preserve">
+    <value>Rotiert den gewählten Charakter um die X-Achse.
+• Man wird den Charakter einfrieren müssen, um die Position besser in GPose einstellen zu können.
+• Sowohl Rotationsregler als auch Zifferneingabe setzen vorraus das die Rotation eingefroren ist.</value>
+  </data>
+  <data name="Y" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="YPos" xml:space="preserve">
+    <value>Y Position:</value>
+  </data>
+  <data name="YPosToolTip" xml:space="preserve">
+    <value>Ändert die Y Position des ausgewählten Charakters.
+• Man wird den Charakter einfrieren müssen, um die Position besser in GPose einstellen zu können.</value>
+  </data>
+  <data name="YRot" xml:space="preserve">
+    <value>Y Rotation:</value>
+  </data>
+  <data name="YRot2" xml:space="preserve">
+    <value>Y Rotation:</value>
+  </data>
+  <data name="YRot2ToolTip" xml:space="preserve">
+    <value>Ändert die Y Position des ausgewählten Joints..</value>
+  </data>
+  <data name="YRotToolTip" xml:space="preserve">
+    <value>Rotiert den gewählten Charakter um die Y-Achse.
+• Man wird den Charakter einfrieren müssen, um die Position besser in GPose einstellen zu können.
+• Sowohl Rotationsregler als auch Zifferneingabe setzen vorraus das die Rotation eingefroren ist.</value>
+  </data>
+  <data name="Z" xml:space="preserve">
+    <value>Z:</value>
+  </data>
+  <data name="Zero" xml:space="preserve">
+    <value>Null / Stop</value>
+  </data>
+  <data name="ZeroScale" xml:space="preserve">
+    <value>Nullskalierung</value>
+  </data>
+  <data name="ZeroScaleToolTip" xml:space="preserve">
+    <value>Stellt die XYZ Skalierung auf 0 ein damit die Waffe unsichtbar erscheint. 
+• Man kann dies rückgängig machen, indem man die einzelnen Werte wieder mit "1.0" befüllt.</value>
+  </data>
+  <data name="ZPos" xml:space="preserve">
+    <value>Z Position:</value>
+  </data>
+  <data name="ZPosToolTip" xml:space="preserve">
+    <value>Ändert die Z Position des ausgewählten Charakters.
+• Man wird den Charakter einfrieren müssen, um die Position besser in GPose einstellen zu können.</value>
+  </data>
+  <data name="ZRot" xml:space="preserve">
+    <value>Z Rotation:</value>
+  </data>
+  <data name="ZRot2" xml:space="preserve">
+    <value>Z Rotation:</value>
+  </data>
+  <data name="ZRot2ToolTip" xml:space="preserve">
+    <value>Ändert die Z Position des ausgewählten Joints..</value>
+  </data>
+  <data name="ZRotToolTip" xml:space="preserve">
+    <value>Rotiert den gewählten Charakter um die Z-Achse.
+• Man wird den Charakter einfrieren müssen, um die Position besser in GPose einstellen zu können.
+• Sowohl Rotationsregler als auch Zifferneingabe setzen vorraus das die Rotation eingefroren ist.</value>
+  </data>
+  <data name="GposeViewX" xml:space="preserve">
+    <value>GPose View X:</value>
+  </data>
+  <data name="GposeViewY" xml:space="preserve">
+    <value>GPose View Y:</value>
+  </data>
+  <data name="GposeViewZ" xml:space="preserve">
+    <value>GPose View Z:</value>
+  </data>
+  <data name="FaceCamX" xml:space="preserve">
+    <value>Face Cam X:</value>
+  </data>
+  <data name="FaceCamY" xml:space="preserve">
+    <value>Face Cam Y:</value>
+  </data>
+  <data name="FaceCamZ" xml:space="preserve">
+    <value>Face Cam Z:</value>
+  </data>
+  <data name="Wiki" xml:space="preserve">
+    <value>Wiki</value>
+  </data>
+  <data name="CamSettingsLoadToolTip" xml:space="preserve">
+    <value>Load camera settings from file.</value>
+  </data>
+  <data name="CamSettingsSaveToolTip" xml:space="preserve">
+    <value>Save camera settings to file.</value>
+  </data>
+  <data name="GposeViewSettingsLoadToolTip" xml:space="preserve">
+    <value>Load GPose View position from file.
+• Hold CTRL when clicking this to load as an offset from the current actor position.
+• You can load saved actor positionss to jump GPose View actor to that position.</value>
+  </data>
+  <data name="GposeViewSettingsSaveToolTip" xml:space="preserve">
+    <value>Save GPose View position to file.</value>
+  </data>
+  <data name="PosSettingsLoadToolTip" xml:space="preserve">
+    <value>Load actor position from file.
+• Hold CTRL when clicking this to load as an offset from the current GPose View.
+• You can load saved GPose View positions to jump an actor to that position.</value>
+  </data>
+  <data name="PosSettingsSaveToolTip" xml:space="preserve">
+    <value>Save actor position to file.</value>
+  </data>
+  <data name="LinkPositionToolTip" xml:space="preserve">
+    <value>Toggles linking for this actor.
+• Changing position or rotation of any linked actor will affect them all.</value>
+  </data>
+  <data name="CamPanX" xml:space="preserve">
+    <value>Cam Pan X:</value>
+  </data>
+  <data name="CamPanY" xml:space="preserve">
+    <value>Cam Pan Y:</value>
+  </data>
+  <data name="FreezeCam" xml:space="preserve">
+    <value>Freeze Cam</value>
+  </data>
+</root>

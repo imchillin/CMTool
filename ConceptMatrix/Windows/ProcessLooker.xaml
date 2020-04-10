@@ -1,0 +1,34 @@
+﻿<Window x:Class="ConceptMatrix.Windows.ProcessLooker"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        xmlns:resx="clr-namespace:ConceptMatrix.Resx"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="13.25"
+        BorderThickness="1"              
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+        mc:Ignorable="d"
+        Title="{Binding Source={x:Static resx:WindowsStrings.ProcessFinder}}" Height="400.781" Width="379.244" ResizeMode="NoResize" Icon="/ConceptMatrix;component/cmtool-icon.ico" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <DataGrid x:Name="ProcessGrid" HorizontalAlignment="Left" Height="310" Margin="10,10,0,0" VerticalAlignment="Top" Width="353" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" ItemsSource="{Binding Path=Game}" IsReadOnly="True" SelectionMode="Single" SelectionUnit="FullRow" MouseDoubleClick="ProcessGrid_MouseDoubleClick" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False"  HorizontalScrollBarVisibility="Hidden">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=AppIcon}" Width="24" Height="24" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="{Binding Source={x:Static resx:WindowsStrings.Process}}" Binding="{Binding Path=ProcessName}"/>
+                <DataGridTextColumn Header="{Binding Source={x:Static resx:WindowsStrings.ID}}" Binding="{Binding Path=ID}"/>
+                <DataGridTextColumn Header="{Binding Source={x:Static resx:WindowsStrings.StartTime}}" Binding="{Binding Path=StartTime}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="{Binding Source={x:Static resx:WindowsStrings.OK}}" HorizontalAlignment="Left" Margin="279,325,0,0" VerticalAlignment="Top" Width="84" Click="Button_Click"/>
+        <Button Content="{Binding Source={x:Static resx:WindowsStrings.Refresh}}" HorizontalAlignment="Left" Margin="10,325,0,0" VerticalAlignment="Top" Width="84" Click="Button_Click_1" Padding="0,4"/>
+        <TextBlock HorizontalAlignment="Left" Margin="104,325,0,0" TextWrapping="Wrap" Text="{Binding Source={x:Static resx:WindowsStrings.IsDx11Running}}" VerticalAlignment="Top" Height="32" Width="175"/>
+    </Grid>
+</Window>

@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>Ce Trainer et son code de base ont été créés à l'origine par LeonBlade.</value>
+  </data>
+  <data name="About1" xml:space="preserve">
+    <value>Au tout début du Trainer, Johto a pris la relève, maintenant et mettant à jour le projet SSTools.</value>
+  </data>
+  <data name="About2" xml:space="preserve">
+    <value>Plus tard, Krisan Thyme a commencé à travailler sur une nouvelle branche - CMTools - qui a depuis été fusionnée dans le référentiel principal.</value>
+  </data>
+  <data name="About3" xml:space="preserve">
+    <value>Un remerciement spéciaux à Goat et Seria Myouna pour leurs contributions!</value>
+  </data>
+  <data name="About4" xml:space="preserve">
+    <value>Ce projet est alimenté par MaterialDesignInXAML, MahApps, Fody, Newtonsoft.Json et Memory.dll</value>
+  </data>
+  <data name="AdditionalOptions" xml:space="preserve">
+    <value>Options Additionelles</value>
+  </data>
+  <data name="Aetherometer" xml:space="preserve">
+    <value>Éthérimètre</value>
+  </data>
+  <data name="Bright1" xml:space="preserve">
+    <value>Clair 1</value>
+  </data>
+  <data name="Bright2" xml:space="preserve">
+    <value>Clair 2</value>
+  </data>
+  <data name="Bright3" xml:space="preserve">
+    <value>Clair 3</value>
+  </data>
+  <data name="Bright4" xml:space="preserve">
+    <value>Clair 4</value>
+  </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>Changer de Langue:</value>
+  </data>
+  <data name="ChangeLanguage2" xml:space="preserve">
+    <value>Changer de Langue</value>
+  </data>
+  <data name="CMDirectories" xml:space="preserve">
+    <value>Répertoires Concept Matrix</value>
+  </data>
+  <data name="CMToolSaving" xml:space="preserve">
+    <value>CMTool Sauvegarde / Chargement</value>
+  </data>
+  <data name="ColoredMarker1" xml:space="preserve">
+    <value>Feutre 1</value>
+  </data>
+  <data name="ColoredMarker2" xml:space="preserve">
+    <value>Feutre 2</value>
+  </data>
+  <data name="ColoredPencil" xml:space="preserve">
+    <value>Crayon de couleur</value>
+  </data>
+  <data name="DarkTheme" xml:space="preserve">
+    <value>Theme Zodiark</value>
+  </data>
+  <data name="Default" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="DisableBackground" xml:space="preserve">
+    <value>Désactiver le Fond</value>
+  </data>
+  <data name="DonateDevs" xml:space="preserve">
+    <value>Faites un don aux Devs!</value>
+  </data>
+  <data name="DonateDevs2" xml:space="preserve">
+    <value>Vous avez envie de faire un don? Il serait reçu avec reconnaissance. Cliquez sur l'un des boutons ci-dessous pour faire un don via Ko-fi.</value>
+  </data>
+  <data name="DonateJohto" xml:space="preserve">
+    <value>Faire un don à Johto</value>
+  </data>
+  <data name="DonateKrisan" xml:space="preserve">
+    <value>Faire un don à Krisan Thyme</value>
+  </data>
+  <data name="DonateLeon" xml:space="preserve">
+    <value>Faire un don à LeonBlade</value>
+  </data>
+  <data name="Echo" xml:space="preserve">
+    <value>Vision du passé</value>
+  </data>
+  <data name="EnableBackground" xml:space="preserve">
+    <value>Activer le Fond</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>Femme</value>
+  </data>
+  <data name="GearsetSaves" xml:space="preserve">
+    <value>Sauvegardes des Tenues</value>
+  </data>
+  <data name="GetInTouch" xml:space="preserve">
+    <value>Entrer en Contact</value>
+  </data>
+  <data name="GetInTouch2" xml:space="preserve">
+    <value>Dites bonjour, soumettez une demande de fonctionnalité ou rapportez un bug.</value>
+  </data>
+  <data name="LightTheme" xml:space="preserve">
+    <value>Theme Hydaelyn</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>Homme</value>
+  </data>
+  <data name="MatrixSaves" xml:space="preserve">
+    <value>Sauvegardes de Matrix</value>
+  </data>
+  <data name="Monochrome1" xml:space="preserve">
+    <value>Monochrome 1</value>
+  </data>
+  <data name="Monochrome2" xml:space="preserve">
+    <value>Monochrome 2</value>
+  </data>
+  <data name="Monotone1" xml:space="preserve">
+    <value>Monotone 1</value>
+  </data>
+  <data name="Monotone2" xml:space="preserve">
+    <value>Monotone 2</value>
+  </data>
+  <data name="Monotone3" xml:space="preserve">
+    <value>Monotone 3</value>
+  </data>
+  <data name="Normal" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="OpenSource" xml:space="preserve">
+    <value>Fièrement Open Source</value>
+  </data>
+  <data name="OpenSource2" xml:space="preserve">
+    <value>Ce projet est entièrement open source. Si vous l'aimez et que vous voulez dire merci, vous pouvez appuyer sur le bouton GitHub Star et nous envoyer un message de remerciement.</value>
+  </data>
+  <data name="Pastel1" xml:space="preserve">
+    <value>Pastel 1</value>
+  </data>
+  <data name="Pastel2" xml:space="preserve">
+    <value>Pastel 2</value>
+  </data>
+  <data name="Pastel3" xml:space="preserve">
+    <value>Pastel 3</value>
+  </data>
+  <data name="Pencil" xml:space="preserve">
+    <value>Crayon de papier</value>
+  </data>
+  <data name="Posterization1" xml:space="preserve">
+    <value>Postérisation 1</value>
+  </data>
+  <data name="Posterization2" xml:space="preserve">
+    <value>Postérisation 2</value>
+  </data>
+  <data name="ProfileSaves" xml:space="preserve">
+    <value>Sauvegardes des Profiles</value>
+  </data>
+  <data name="Sepia1" xml:space="preserve">
+    <value>Sépia 1</value>
+  </data>
+  <data name="Sepia2" xml:space="preserve">
+    <value>Sépia 2</value>
+  </data>
+  <data name="StrengthenedEffects" xml:space="preserve">
+    <value>Effets renforcés</value>
+  </data>
+  <data name="TargetActorIs" xml:space="preserve">
+    <value>L'Acteur Ciblé est ???</value>
+  </data>
+  <data name="TargetActorIs2" xml:space="preserve">
+    <value>L'acteur ciblé est gelé !</value>
+  </data>
+  <data name="TargetActorIs3" xml:space="preserve">
+    <value>L'acteur ciblé animé !</value>
+  </data>
+  <data name="WindowsExplorer" xml:space="preserve">
+    <value>Explorateur Windows</value>
+  </data>
+  <data name="DonateEna" xml:space="preserve">
+    <value>Faire un don à Ena</value>
+  </data>
+</root>

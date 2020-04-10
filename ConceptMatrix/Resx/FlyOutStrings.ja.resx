@@ -1,0 +1,417 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ACN" xml:space="preserve">
+    <value>巴術士</value>
+  </data>
+  <data name="ALC" xml:space="preserve">
+    <value>錬金術師</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>すべて</value>
+  </data>
+  <data name="AllClasses" xml:space="preserve">
+    <value>全クラス</value>
+  </data>
+  <data name="AppearanceOnly" xml:space="preserve">
+    <value>外観のみ</value>
+  </data>
+  <data name="ARC" xml:space="preserve">
+    <value>弓術士</value>
+  </data>
+  <data name="ARM" xml:space="preserve">
+    <value>甲冑師</value>
+  </data>
+  <data name="AST" xml:space="preserve">
+    <value>占星術師</value>
+  </data>
+  <data name="Battle" xml:space="preserve">
+    <value>バトル</value>
+  </data>
+  <data name="BGM" xml:space="preserve">
+    <value>BGM</value>
+  </data>
+  <data name="BLM" xml:space="preserve">
+    <value>黒魔道士</value>
+  </data>
+  <data name="BLU" xml:space="preserve">
+    <value>青魔道士</value>
+  </data>
+  <data name="Body" xml:space="preserve">
+    <value>胴防具</value>
+  </data>
+  <data name="BRD" xml:space="preserve">
+    <value>吟遊詩人</value>
+  </data>
+  <data name="BSM" xml:space="preserve">
+    <value>鍛冶師</value>
+  </data>
+  <data name="BTN" xml:space="preserve">
+    <value>園芸師</value>
+  </data>
+  <data name="Character" xml:space="preserve">
+    <value>キャラクター</value>
+  </data>
+  <data name="CNJ" xml:space="preserve">
+    <value>幻術士</value>
+  </data>
+  <data name="ColorSelector" xml:space="preserve">
+    <value>色を選ぶ</value>
+  </data>
+  <data name="CRP" xml:space="preserve">
+    <value>木工師</value>
+  </data>
+  <data name="CUL" xml:space="preserve">
+    <value>調理師</value>
+  </data>
+  <data name="DiscipleofHand" xml:space="preserve">
+    <value>クラフター</value>
+  </data>
+  <data name="DiscipleOfLand" xml:space="preserve">
+    <value>ギャザラー</value>
+  </data>
+  <data name="DiscipleOfMagic" xml:space="preserve">
+    <value>ソーサラー</value>
+  </data>
+  <data name="DiscipleOfWar" xml:space="preserve">
+    <value>ファイター</value>
+  </data>
+  <data name="DisciplesOfWarMagic" xml:space="preserve">
+    <value>ファイター ソーサラー</value>
+  </data>
+  <data name="DNC" xml:space="preserve">
+    <value>踊り子</value>
+  </data>
+  <data name="DRG" xml:space="preserve">
+    <value>竜騎士</value>
+  </data>
+  <data name="DRK" xml:space="preserve">
+    <value>暗黒騎士</value>
+  </data>
+  <data name="Earing" xml:space="preserve">
+    <value>耳飾り</value>
+  </data>
+  <data name="Emotes" xml:space="preserve">
+    <value>エモート</value>
+  </data>
+  <data name="EquipmentOnly" xml:space="preserve">
+    <value>装備のみ</value>
+  </data>
+  <data name="EquipmentSelector" xml:space="preserve">
+    <value>装備の選択</value>
+  </data>
+  <data name="FacePaint" xml:space="preserve">
+    <value>フェイスペイント</value>
+  </data>
+  <data name="FacePaintColor" xml:space="preserve">
+    <value>フェイスペイントの色</value>
+  </data>
+  <data name="FacialFeature" xml:space="preserve">
+    <value>髭や傷など</value>
+  </data>
+  <data name="Favorite" xml:space="preserve">
+    <value>お気に入り</value>
+  </data>
+  <data name="Feet" xml:space="preserve">
+    <value>足防具</value>
+  </data>
+  <data name="ForceAnimation" xml:space="preserve">
+    <value>アニメーションを強制する</value>
+  </data>
+  <data name="FSH" xml:space="preserve">
+    <value>漁師</value>
+  </data>
+  <data name="GLA" xml:space="preserve">
+    <value>剣術士</value>
+  </data>
+  <data name="GNB" xml:space="preserve">
+    <value>ガンブレイカー</value>
+  </data>
+  <data name="GSM" xml:space="preserve">
+    <value>彫金師</value>
+  </data>
+  <data name="HairColor" xml:space="preserve">
+    <value>髪の色</value>
+  </data>
+  <data name="HairSelector" xml:space="preserve">
+    <value>髪の選択</value>
+  </data>
+  <data name="Hands" xml:space="preserve">
+    <value>手防具</value>
+  </data>
+  <data name="Head" xml:space="preserve">
+    <value>頭防具</value>
+  </data>
+  <data name="HighlightsColor" xml:space="preserve">
+    <value>ハイライトの色</value>
+  </data>
+  <data name="Icon" xml:space="preserve">
+    <value>アイコン</value>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="IdleAnimation" xml:space="preserve">
+    <value>アイドルアニメーション</value>
+  </data>
+  <data name="IncludeEverything" xml:space="preserve">
+    <value>すべてを含める</value>
+  </data>
+  <data name="IncludeOffhand" xml:space="preserve">
+    <value>補助武器</value>
+  </data>
+  <data name="KeepDyes" xml:space="preserve">
+    <value>染料を保つ</value>
+  </data>
+  <data name="LeftEyeColor" xml:space="preserve">
+    <value>左目の色</value>
+  </data>
+  <data name="LeftFinger" xml:space="preserve">
+    <value>指輪(左)</value>
+  </data>
+  <data name="Legs" xml:space="preserve">
+    <value>脚防具</value>
+  </data>
+  <data name="LimbalEyeColor" xml:space="preserve">
+    <value>瞳の色</value>
+  </data>
+  <data name="LipColor" xml:space="preserve">
+    <value>唇の色</value>
+  </data>
+  <data name="LNC" xml:space="preserve">
+    <value>槍術士</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="LTW" xml:space="preserve">
+    <value>革細工師</value>
+  </data>
+  <data name="MainHand" xml:space="preserve">
+    <value>主武器</value>
+  </data>
+  <data name="MCH" xml:space="preserve">
+    <value>機工士</value>
+  </data>
+  <data name="MIN" xml:space="preserve">
+    <value>採掘師</value>
+  </data>
+  <data name="MNK" xml:space="preserve">
+    <value>モンク</value>
+  </data>
+  <data name="ModelList" xml:space="preserve">
+    <value>モデルリスト</value>
+  </data>
+  <data name="ModelValues" xml:space="preserve">
+    <value>モデル値</value>
+  </data>
+  <data name="Monster" xml:space="preserve">
+    <value>モンスター</value>
+  </data>
+  <data name="MRD" xml:space="preserve">
+    <value>斧術士</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="Neck" xml:space="preserve">
+    <value>首飾り</value>
+  </data>
+  <data name="NIN" xml:space="preserve">
+    <value>忍者</value>
+  </data>
+  <data name="NPCSelect" xml:space="preserve">
+    <value>NPCセレクト</value>
+  </data>
+  <data name="OffHand" xml:space="preserve">
+    <value>サブアーム</value>
+  </data>
+  <data name="PGL" xml:space="preserve">
+    <value>格闘士</value>
+  </data>
+  <data name="Player" xml:space="preserve">
+    <value>プレイヤー</value>
+  </data>
+  <data name="PLD" xml:space="preserve">
+    <value>ナイト</value>
+  </data>
+  <data name="PropsMainHand" xml:space="preserve">
+    <value>主道具</value>
+  </data>
+  <data name="PropsOffHand" xml:space="preserve">
+    <value>副道具</value>
+  </data>
+  <data name="RDM" xml:space="preserve">
+    <value>赤魔道士</value>
+  </data>
+  <data name="ReverseFacePaint" xml:space="preserve">
+    <value>フェイスペイントの反転</value>
+  </data>
+  <data name="RightEyeColor" xml:space="preserve">
+    <value>右目の色</value>
+  </data>
+  <data name="RightFinger" xml:space="preserve">
+    <value>指輪(右)</value>
+  </data>
+  <data name="ROG" xml:space="preserve">
+    <value>双剣士</value>
+  </data>
+  <data name="SAM" xml:space="preserve">
+    <value>侍</value>
+  </data>
+  <data name="SCH" xml:space="preserve">
+    <value>学者</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="SelectType" xml:space="preserve">
+    <value>タイプを変更</value>
+  </data>
+  <data name="SkinColor" xml:space="preserve">
+    <value>肌の色</value>
+  </data>
+  <data name="SMN" xml:space="preserve">
+    <value>召喚士</value>
+  </data>
+  <data name="THM" xml:space="preserve">
+    <value>呪術士</value>
+  </data>
+  <data name="WAR" xml:space="preserve">
+    <value>戦士</value>
+  </data>
+  <data name="WHM" xml:space="preserve">
+    <value>白魔道士</value>
+  </data>
+  <data name="World" xml:space="preserve">
+    <value>ワールド</value>
+  </data>
+  <data name="Wrist" xml:space="preserve">
+    <value>腕輪</value>
+  </data>
+  <data name="WVR" xml:space="preserve">
+    <value>裁縫師</value>
+  </data>
+  <data name="NoneOffHand" xml:space="preserve">
+    <value>オフハンドの美学</value>
+  </data>
+  <data name="Equipment" xml:space="preserve">
+    <value>装備</value>
+  </data>
+</root>

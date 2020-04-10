@@ -1,0 +1,1338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="FaceCamX" xml:space="preserve">
+    <value>X 페이스 캠 :</value>
+  </data>
+  <data name="FaceCamY" xml:space="preserve">
+    <value>Y 페이스 캠 :</value>
+  </data>
+  <data name="FaceCamZ" xml:space="preserve">
+    <value>Z 페이스 캠 :</value>
+  </data>
+  <data name="FacePaint" xml:space="preserve">
+    <value>얼굴 문신</value>
+  </data>
+  <data name="GposeViewX" xml:space="preserve">
+    <value>XGpose보기 :</value>
+  </data>
+  <data name="GposeViewY" xml:space="preserve">
+    <value>YGpose보기 :</value>
+  </data>
+  <data name="GposeViewZ" xml:space="preserve">
+    <value>ZGpose보기 :</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>응용 프로그램에 대하여</value>
+  </data>
+  <data name="ActorData" xml:space="preserve">
+    <value>대상 데이터</value>
+  </data>
+  <data name="ActorEntityListToolTip" xml:space="preserve">
+    <value>주변 지역에 지정 가능한 엔티티의 목록을 보여줍니다 • 목록은 플레이어로부터의 거리에 따라 채워지며, 꼬마친구를 포함한 엔티티의 위치 변화에 따라 달라질 수 있습니다.</value>
+  </data>
+  <data name="ActorProperties" xml:space="preserve">
+    <value>대상 속성</value>
+  </data>
+  <data name="ActorRefreshButton" xml:space="preserve">
+    <value>대상 새로고침</value>
+  </data>
+  <data name="ActorRefreshToolTip" xml:space="preserve">
+    <value>변경사항을 적용하고 대상을 새로고침 합니다.</value>
+  </data>
+  <data name="ActorScale" xml:space="preserve">
+    <value>대상 크기</value>
+  </data>
+  <data name="Advanced" xml:space="preserve">
+    <value>고급 설정</value>
+  </data>
+  <data name="AlwaysOnTopButton" xml:space="preserve">
+    <value>항상 위에</value>
+  </data>
+  <data name="AnimSpeed" xml:space="preserve">
+    <value>동작 속도 :</value>
+  </data>
+  <data name="AnimSpeedToolTip" xml:space="preserve">
+    <value>선택된 대상의 애니메이션 속도를 조정합니다.</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>적용</value>
+  </data>
+  <data name="Arms" xml:space="preserve">
+    <value>팔</value>
+  </data>
+  <data name="ArrayOfBytes" xml:space="preserve">
+    <value>바이트 배열</value>
+  </data>
+  <data name="ArrayOfBytesToolTip" xml:space="preserve">
+    <value>선택한 개체에 대한 데이터를 포함합니다 • 데이터를 붙여넣기 하고, 적용을 클릭하십시오.</value>
+  </data>
+  <data name="B" xml:space="preserve">
+    <value>B</value>
+  </data>
+  <data name="Base" xml:space="preserve">
+    <value>베이스</value>
+  </data>
+  <data name="BGMFreeze" xml:space="preserve">
+    <value>BGM 일시 중지</value>
+  </data>
+  <data name="BGMID" xml:space="preserve">
+    <value>BGM배경 음악 ID</value>
+  </data>
+  <data name="Blue" xml:space="preserve">
+    <value>파랑</value>
+  </data>
+  <data name="BlueGlow" xml:space="preserve">
+    <value>파란빛:</value>
+  </data>
+  <data name="Body" xml:space="preserve">
+    <value>상체</value>
+  </data>
+  <data name="BodyToolTip" xml:space="preserve">
+    <value>선택한 대상의 바디 타입을 변경합니다.</value>
+  </data>
+  <data name="BodyToolTip2" xml:space="preserve">
+    <value>선택한 대상에 상체 장비를 장착 시킬 수 있습니다.</value>
+  </data>
+  <data name="BodyType" xml:space="preserve">
+    <value>바디 타입</value>
+  </data>
+  <data name="Breasts" xml:space="preserve">
+    <value>가슴</value>
+  </data>
+  <data name="Brightness" xml:space="preserve">
+    <value>밝기</value>
+  </data>
+  <data name="BustSize" xml:space="preserve">
+    <value>가슴 크기</value>
+  </data>
+  <data name="BustSizeToolTip" xml:space="preserve">
+    <value>선택한 대상의 가슴 크기를 변경합니다.</value>
+  </data>
+  <data name="BustXScale" xml:space="preserve">
+    <value>가슴 X 크기</value>
+  </data>
+  <data name="BustXScaleToolTip" xml:space="preserve">
+    <value>선택한 대상의 가슴의 X 변경를 수정합니다. •  여성캐릭터만 해당</value>
+  </data>
+  <data name="BustYScale" xml:space="preserve">
+    <value>가슴 Y 크기</value>
+  </data>
+  <data name="BustYScaleToolTip" xml:space="preserve">
+    <value>선택한 대상의 가슴의 Y 크기를 변경합니다. •  여성캐릭터만 해당</value>
+  </data>
+  <data name="BustZScale" xml:space="preserve">
+    <value>가슴 Z 크기</value>
+  </data>
+  <data name="BustZScaleToolTip" xml:space="preserve">
+    <value>선택한 대상의 가슴의 Z 크기를 변경합니다. •  여성캐릭터만 해당</value>
+  </data>
+  <data name="c1001" xml:space="preserve">
+    <value>c1001 - 루가딘 (여자)</value>
+  </data>
+  <data name="c101" xml:space="preserve">
+    <value>c101 - 휴런 (남자)</value>
+  </data>
+  <data name="c104" xml:space="preserve">
+    <value>c104 - 휴런 (남자아이)</value>
+  </data>
+  <data name="c1101" xml:space="preserve">
+    <value>c1101 - 라라펠 (남자)</value>
+  </data>
+  <data name="c1201" xml:space="preserve">
+    <value>c1201 - 라라펠 (여자)</value>
+  </data>
+  <data name="c1301" xml:space="preserve">
+    <value>c1301 - 아우라 (남자)</value>
+  </data>
+  <data name="c1401" xml:space="preserve">
+    <value>c1401 - 아우라 (여자)</value>
+  </data>
+  <data name="c1501" xml:space="preserve">
+    <value>c1501 - 로스가르 (남자)</value>
+  </data>
+  <data name="c1801" xml:space="preserve">
+    <value>c1801 - 비에라 (여자)</value>
+  </data>
+  <data name="c201" xml:space="preserve">
+    <value>c201 - 휴런 (여자)</value>
+  </data>
+  <data name="c301" xml:space="preserve">
+    <value>c301 - 고원부족 (남자)</value>
+  </data>
+  <data name="c401" xml:space="preserve">
+    <value>c301 - 고원부족 (남자)</value>
+  </data>
+  <data name="c501" xml:space="preserve">
+    <value>c501 - 엘레젠 (남자)</value>
+  </data>
+  <data name="c504" xml:space="preserve">
+    <value>c504 - 엘레젠 (남자아이)</value>
+  </data>
+  <data name="c601" xml:space="preserve">
+    <value>c601 - 엘레젠 (여자)</value>
+  </data>
+  <data name="c604" xml:space="preserve">
+    <value>c604 - 엘레젠 (여자아이)</value>
+  </data>
+  <data name="c701" xml:space="preserve">
+    <value>c701 - 미코테 (남자)</value>
+  </data>
+  <data name="c801" xml:space="preserve">
+    <value>c801 - 미코테 (여자)</value>
+  </data>
+  <data name="c804" xml:space="preserve">
+    <value>c804 - 미코테 (여자아이)</value>
+  </data>
+  <data name="c901" xml:space="preserve">
+    <value>c901 - 루가딘 (남자)</value>
+  </data>
+  <data name="c9104" xml:space="preserve">
+    <value>c9104 - 뿔의 아이 (남자)</value>
+  </data>
+  <data name="c9204" xml:space="preserve">
+    <value>c9204 - 뿔의 아이 (여자)</value>
+  </data>
+  <data name="Calves" xml:space="preserve">
+    <value>종아리</value>
+  </data>
+  <data name="CamAngleX" xml:space="preserve">
+    <value>카메라 앵글 X :</value>
+  </data>
+  <data name="CamAngleY" xml:space="preserve">
+    <value>카메라 앵글 Y :</value>
+  </data>
+  <data name="CameraSettings" xml:space="preserve">
+    <value>카메라 설정</value>
+  </data>
+  <data name="CameraViewX" xml:space="preserve">
+    <value>카메라 뷰 X:</value>
+  </data>
+  <data name="CameraViewY" xml:space="preserve">
+    <value>카메라 뷰 Y:</value>
+  </data>
+  <data name="CameraViewZ" xml:space="preserve">
+    <value>카메라 뷰 Z:</value>
+  </data>
+  <data name="CameraXPos" xml:space="preserve">
+    <value>카메라 X 포지션</value>
+  </data>
+  <data name="CameraYPos" xml:space="preserve">
+    <value>카메라 Y 포지션</value>
+  </data>
+  <data name="CameraZPos" xml:space="preserve">
+    <value>카메라 Z 포지션</value>
+  </data>
+  <data name="CamRotation" xml:space="preserve">
+    <value>카메라 회전:</value>
+  </data>
+  <data name="CamUpDown" xml:space="preserve">
+    <value>카메라 위/아래:</value>
+  </data>
+  <data name="CamYMax" xml:space="preserve">
+    <value>카메라 Y축 최대</value>
+  </data>
+  <data name="CamYMin" xml:space="preserve">
+    <value>카메라 Y축 최소</value>
+  </data>
+  <data name="Cheeks" xml:space="preserve">
+    <value>뺨</value>
+  </data>
+  <data name="Chest" xml:space="preserve">
+    <value>가슴</value>
+  </data>
+  <data name="Clan" xml:space="preserve">
+    <value>부족</value>
+  </data>
+  <data name="ClanToolTip" xml:space="preserve">
+    <value>선택한 대상의 부족을 변경합니다.</value>
+  </data>
+  <data name="Clavicles" xml:space="preserve">
+    <value>쇄골</value>
+  </data>
+  <data name="Colorfulness" xml:space="preserve">
+    <value>채도:</value>
+  </data>
+  <data name="Colorfulness2" xml:space="preserve">
+    <value>채도2:</value>
+  </data>
+  <data name="Contrast" xml:space="preserve">
+    <value>대비:</value>
+  </data>
+  <data name="Contrast2" xml:space="preserve">
+    <value>대비2:</value>
+  </data>
+  <data name="CurrentZoom" xml:space="preserve">
+    <value>현재 줌 거리:</value>
+  </data>
+  <data name="DataPath" xml:space="preserve">
+    <value>데이터 경로:</value>
+  </data>
+  <data name="DataPathToolTip" xml:space="preserve">
+    <value>선택한 엔티티의 데이터를 경로 변경합니다.
+• 다른 종족이나 성별의 애니메이션을 사용할 수 있게 합니다.
+• 새로고침할 필요가 없으며, GPose 내외부에서 사용할 수 있습니다.
+• 대상의 뼈대가 선택한 종족과 성별에 맞게 변형되므로 늘어나거나 찌그러짐 등이 발생할 수 있습니다.
+• 대상 새로고침을 통해 보스나 몹이 될 수도 있습니다.</value>
+  </data>
+  <data name="DefaultTime" xml:space="preserve">
+    <value>기본시간</value>
+  </data>
+  <data name="Discord" xml:space="preserve">
+    <value>Discord</value>
+  </data>
+  <data name="Drenched" xml:space="preserve">
+    <value>흠집 효과</value>
+  </data>
+  <data name="DrenchedToolTip" xml:space="preserve">
+    <value>선택한 엔티티에 보다 뚜렷한 젖은 효과를 줍니다.
+• 물에 젖은것처럼, 이 효과는 시간이 지나면 사라집니다.</value>
+  </data>
+  <data name="Dyes" xml:space="preserve">
+    <value>염색</value>
+  </data>
+  <data name="EarMuscleTailSize" xml:space="preserve">
+    <value>귀 / 체격 / 꼬리 크기</value>
+  </data>
+  <data name="EarMuscleTailSizeToolTip" xml:space="preserve">
+    <value>선택한 대상의 귀, 근육 및 꼬리의 크기를 변경합니다.
+</value>
+  </data>
+  <data name="Ears" xml:space="preserve">
+    <value>귀</value>
+  </data>
+  <data name="EarsToolTip" xml:space="preserve">
+    <value>선택한 대상에게 귀걸이를 착용 시킬 수 있습니다
+</value>
+  </data>
+  <data name="EarTailScale" xml:space="preserve">
+    <value>귀 / 꼬리 크기</value>
+  </data>
+  <data name="EarTailScaleToolTip" xml:space="preserve">
+    <value>선택한 대상의 귀 / 꼬리 크기를 변경합니다.</value>
+  </data>
+  <data name="EarTailType" xml:space="preserve">
+    <value>귀 / 꼬리 유형</value>
+  </data>
+  <data name="EarTailTypeToolTip" xml:space="preserve">
+    <value>선택한 대상의 귀 / 꼬리 유형을 변경합니다.</value>
+  </data>
+  <data name="Elbows" xml:space="preserve">
+    <value>팔꿈치</value>
+  </data>
+  <data name="EnableEditing" xml:space="preserve">
+    <value>편집가능</value>
+  </data>
+  <data name="EnablePhysics" xml:space="preserve">
+    <value>물리효과 사용</value>
+  </data>
+  <data name="EntityType" xml:space="preserve">
+    <value>엔티티 유형</value>
+  </data>
+  <data name="EntityTypeToolTip" xml:space="preserve">
+    <value>고급 사용자만!
+• 선택한 엔티티의 엔티티 유형이 변경됩니다.
+• 따라서 일부 엔티티에서 예기치 않은 동작이 발생할 수 있습니다.
+• 일부 NPC를 유형 1로 바꾸면 GPose에서 지정이 가능해집니다.</value>
+  </data>
+  <data name="Equipment" xml:space="preserve">
+    <value>장비</value>
+  </data>
+  <data name="Exposure" xml:space="preserve">
+    <value>노출</value>
+  </data>
+  <data name="EyeBrowsToolTip" xml:space="preserve">
+    <value>선택한 대상의 눈썹 유형을 변경합니다.
+</value>
+  </data>
+  <data name="EyebrowsType" xml:space="preserve">
+    <value>눈썹 유형</value>
+  </data>
+  <data name="EyeColorLeft" xml:space="preserve">
+    <value>눈동자 색 (왼쪽)</value>
+  </data>
+  <data name="EyeColorLeftToolTip" xml:space="preserve">
+    <value>선택한 대상의 왼쪽 눈동자 색상을 변경합니다.</value>
+  </data>
+  <data name="EyeColorRight" xml:space="preserve">
+    <value>눈동자 색 (오른쪽)</value>
+  </data>
+  <data name="EyeColorRightToolTip" xml:space="preserve">
+    <value>선택한 대상의 오른쪽 눈동자 색상을 변경합니다.</value>
+  </data>
+  <data name="Eyelids" xml:space="preserve">
+    <value>눈꺼풀</value>
+  </data>
+  <data name="Eyes" xml:space="preserve">
+    <value>눈</value>
+  </data>
+  <data name="EyesType" xml:space="preserve">
+    <value>눈 유형</value>
+  </data>
+  <data name="EyeTypeToolTip" xml:space="preserve">
+    <value>선택한 대상의 눈 유형을 변경합니다.
+</value>
+  </data>
+  <data name="Face" xml:space="preserve">
+    <value>얼굴</value>
+  </data>
+  <data name="FacePaintColor" xml:space="preserve">
+    <value>얼굴 문신 색상</value>
+  </data>
+  <data name="FacePaintColorToolTip" xml:space="preserve">
+    <value>선택한 대상의 얼굴 문신 색상을 변경합니다.</value>
+  </data>
+  <data name="FacePaintToolTip" xml:space="preserve">
+    <value>선택한 대상의 얼굴 문신 유형을 변경합니다.
+</value>
+  </data>
+  <data name="FacialFeatures" xml:space="preserve">
+    <value>얼굴특징 (수염/흉터)</value>
+  </data>
+  <data name="FacialFeaturesToolTip" xml:space="preserve">
+    <value>선택한 대상의 얼굴 특징을 변경합니다.</value>
+  </data>
+  <data name="Feet" xml:space="preserve">
+    <value>신발</value>
+  </data>
+  <data name="FeetToolTip" xml:space="preserve">
+    <value>선택한 대상에게 신발을 착용 시킬 수 있습니다.
+</value>
+  </data>
+  <data name="Filmic" xml:space="preserve">
+    <value>영화화</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>필터</value>
+  </data>
+  <data name="FindProcessButton" xml:space="preserve">
+    <value>프로세스 다시 읽기</value>
+  </data>
+  <data name="FindProcessToolTip" xml:space="preserve">
+    <value>파이널판타지14의 프로세스를 다시 읽습니다.</value>
+  </data>
+  <data name="FingerBones" xml:space="preserve">
+    <value>손가락 뼈대</value>
+  </data>
+  <data name="ForceAnim" xml:space="preserve">
+    <value>강제동작</value>
+  </data>
+  <data name="ForceAnimToolTip" xml:space="preserve">
+    <value>선택된 엔터티에 강제로 동작을 실행시킵니다.
+• GPose에서만 사용할 수 있습니다.
+• 이것을 사용하려면 GPose에 들어가기 전에 /손인사 등의 반복되지 않는 감정표현을 먼저 사용해야합니다.
+• 일부 동작에는 종족/성별 제한이 있습니다. 캐릭터가 떨리는 경우 다른 데이터 경로를 사용해야 할 수도 있습니다.
+• NPC에는 작동하지 않습니다! </value>
+  </data>
+  <data name="Forearms" xml:space="preserve">
+    <value>팔뚝</value>
+  </data>
+  <data name="FoV" xml:space="preserve">
+    <value>시야:</value>
+  </data>
+  <data name="FoV2" xml:space="preserve">
+    <value>시야2:</value>
+  </data>
+  <data name="FreeCompanyTag" xml:space="preserve">
+    <value>부대약칭:</value>
+  </data>
+  <data name="FreeCompanyTagWaterMark" xml:space="preserve">
+    <value>부대약칭</value>
+  </data>
+  <data name="FreeCompanyToolTip" xml:space="preserve">
+    <value>선택한 대상의 부대약칭를 변경합니다.</value>
+  </data>
+  <data name="FreezeAll" xml:space="preserve">
+    <value>모두 동결</value>
+  </data>
+  <data name="FreezePos" xml:space="preserve">
+    <value>포지션 동결</value>
+  </data>
+  <data name="FreezePosToolTip" xml:space="preserve">
+    <value>선택한 엔티티의 포지션을 동결합니다.
+•이 기능은 주로 움직이는 목표물을 제어하는 ​​데 사용되며, 표현/동작을 완료 한 후 목표물이 원래 위치로 점프하는 것을 방지 할 수 있습니다.
+• 새 대상으로 전환하기 전에 이 기능을 끄십시오. 그렇지 않으면 새 대상과 원래 대상이 같은 위치에 나타납니다.</value>
+  </data>
+  <data name="FreezeRot" xml:space="preserve">
+    <value>로테이션 동결</value>
+  </data>
+  <data name="FreezeRotToolTip" xml:space="preserve">
+    <value>선택된 엔티티의 로테이션을 동결시킵니다.
+• GPose에서 엔티티의 포지션과 로테이션을 유지하기 위해 포지션동결과 함께 사용하면 유용합니다.
+• 이것을 게임 내 '페이스 카메라'토글 (기본값 : 스페이스 바)과 함께 사용하면 몸 전체를 돌리지 않고도 개체의 머리를 회전시킬 수 있습니다.
+• 포지션 동결과 동일하게 GPose에서 엔티티를 전환하기 전에 로테이션 동결을 끄십시오.
+• 수치를 직접 입력하거나 로테이션 슬라이더 사용이 필요합니다. </value>
+  </data>
+  <data name="G" xml:space="preserve">
+    <value>G</value>
+  </data>
+  <data name="Gamma" xml:space="preserve">
+    <value>감마:</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>성별</value>
+  </data>
+  <data name="GenderToolTip" xml:space="preserve">
+    <value>선택한 대상의 성별을 변경합니다.</value>
+  </data>
+  <data name="GPoseMode" xml:space="preserve">
+    <value>GPose 모드</value>
+  </data>
+  <data name="GposeModeToolTip" xml:space="preserve">
+    <value>GPose에서 현재 선택된 엔티티의  XYZ 포지션, 로테이션 및 동작과 같은 특정 값을 변경할 수 있습니다.
+• GPose 모드와 지정 모드는 동시에 켜집니다. 지정 모드가 이미 켜져 있지 않은지 확인하십시오. 그렇지 않으면 꺼집니다.</value>
+  </data>
+  <data name="Green" xml:space="preserve">
+    <value>초록</value>
+  </data>
+  <data name="GreenGlow" xml:space="preserve">
+    <value>초록빛:</value>
+  </data>
+  <data name="GroupPoseFilter" xml:space="preserve">
+    <value>GPose 필터</value>
+  </data>
+  <data name="HairColor" xml:space="preserve">
+    <value>머리색상:</value>
+  </data>
+  <data name="HairColor2" xml:space="preserve">
+    <value>머리색상2:</value>
+  </data>
+  <data name="HairColorToolTip" xml:space="preserve">
+    <value>선택한 대상의 머리색상을 변경합니다.</value>
+  </data>
+  <data name="Hairstyle" xml:space="preserve">
+    <value>헤어스타일</value>
+  </data>
+  <data name="HairStyleToolTip" xml:space="preserve">
+    <value>선택한 대상의 헤어스타일을 변경합니다.</value>
+  </data>
+  <data name="Hands" xml:space="preserve">
+    <value>손</value>
+  </data>
+  <data name="HandsToolTip" xml:space="preserve">
+    <value>선택한 대상에게 장갑을 착용 시킬 수 있습니다.</value>
+  </data>
+  <data name="HDR" xml:space="preserve">
+    <value>HDR:</value>
+  </data>
+  <data name="Head" xml:space="preserve">
+    <value>머리</value>
+  </data>
+  <data name="HeadBones" xml:space="preserve">
+    <value>머리 뼈대</value>
+  </data>
+  <data name="HeadToolTip" xml:space="preserve">
+    <value>선택한 대상에게 머리장비를 착용 시킬 수 있습니다.</value>
+  </data>
+  <data name="HeadType" xml:space="preserve">
+    <value>머리 유형:</value>
+  </data>
+  <data name="HeadTypeToolTip" xml:space="preserve">
+    <value>선택한  대상의 머리 유형을 변경합니다.</value>
+  </data>
+  <data name="Height" xml:space="preserve">
+    <value>키:</value>
+  </data>
+  <data name="HeightToolTip" xml:space="preserve">
+    <value>선택한 대상의 키를 변경합니다.</value>
+  </data>
+  <data name="HighLightButtonToolTip" xml:space="preserve">
+    <value>선택한 대상의 부분 염색 옵션을 온/오프 합니다.</value>
+  </data>
+  <data name="Highlights" xml:space="preserve">
+    <value>부분 염색</value>
+  </data>
+  <data name="HighlightsColor" xml:space="preserve">
+    <value>부분 염색 색</value>
+  </data>
+  <data name="HighlightsToolTip" xml:space="preserve">
+    <value>선택한 대상의 부분 염색을 변경합니다.</value>
+  </data>
+  <data name="IdleAnim" xml:space="preserve">
+    <value>유휴 동작 :</value>
+  </data>
+  <data name="IdleAnimToolTip" xml:space="preserve">
+    <value>선택한 엔티티의 대기 애니메이션을 변경할 수 있습니다.
+• GPose에 진입하지 않아도 사용이 가능합니다.
+• GPose에서 이용할 경우, 앉거나 서 있어야 하며 포즈를 불러올 때까지 '/자세변경'을 해야합니다.
+• 소환수, 꼬마친구, 초코보 그리고 대부분의 NPC들에게도 사용할 수 있습니다.
+</value>
+  </data>
+  <data name="IndexFinger" xml:space="preserve">
+    <value>집게 손가락:</value>
+  </data>
+  <data name="IndexJoint" xml:space="preserve">
+    <value>집게 손가락 관절:</value>
+  </data>
+  <data name="InnerBrows" xml:space="preserve">
+    <value>속눈썹:</value>
+  </data>
+  <data name="Jaw" xml:space="preserve">
+    <value>턱:</value>
+  </data>
+  <data name="JawType" xml:space="preserve">
+    <value>턱 유형:</value>
+  </data>
+  <data name="JawTypeToolTip" xml:space="preserve">
+    <value>선택한 대상의 턱 유형를 변경합니다.</value>
+  </data>
+  <data name="JobIcon" xml:space="preserve">
+    <value>잡 아이콘:</value>
+  </data>
+  <data name="JobIconToolTip" xml:space="preserve">
+    <value>파티 목록에서 선택된 맴버의 잡 아이콘을 변경합니다.</value>
+  </data>
+  <data name="Knees" xml:space="preserve">
+    <value>무릎</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>한국어</value>
+  </data>
+  <data name="LeftArm" xml:space="preserve">
+    <value>왼팔:</value>
+  </data>
+  <data name="LeftEyeColor" xml:space="preserve">
+    <value>왼쪽 눈 색</value>
+  </data>
+  <data name="LeftLeg" xml:space="preserve">
+    <value>왼다리:</value>
+  </data>
+  <data name="LeftRing" xml:space="preserve">
+    <value>왼쪽 반지:</value>
+  </data>
+  <data name="LeftRingToolTip" xml:space="preserve">
+    <value>선택한 대상에게 왼쪽 반지를 착용 시킬 수 있습니다.
+</value>
+  </data>
+  <data name="Legs" xml:space="preserve">
+    <value>다리:</value>
+  </data>
+  <data name="LegsToolTip" xml:space="preserve">
+    <value>선택한 대상에게 다리 장비를 착용 시킬 수 있습니다.</value>
+  </data>
+  <data name="LimbalOrTattoo" xml:space="preserve">
+    <value>눈동자 테두리/문신 색:</value>
+  </data>
+  <data name="LimbalOrTattooToolTip" xml:space="preserve">
+    <value>선택한 대상의 눈동자 테두리와 문신 색을 변경합니다.</value>
+  </data>
+  <data name="LimbalRingTattooColor" xml:space="preserve">
+    <value>눈동자 테두리 / 문신 색</value>
+  </data>
+  <data name="LipColor" xml:space="preserve">
+    <value>입술 색/털 패턴:</value>
+  </data>
+  <data name="LipColorToolTip" xml:space="preserve">
+    <value>선택한 대상의 입술 색과 털 패턴을 변경합니다.</value>
+  </data>
+  <data name="LipsColor" xml:space="preserve">
+    <value>입술 색</value>
+  </data>
+  <data name="LoadButton" xml:space="preserve">
+    <value>불러오기</value>
+  </data>
+  <data name="LoadGearset" xml:space="preserve">
+    <value>장비 불러오기</value>
+  </data>
+  <data name="LoadMainWindow" xml:space="preserve">
+    <value>외형 불러오기</value>
+  </data>
+  <data name="LoadMainWindowToolTip" xml:space="preserve">
+    <value>저장된 JSON 파일에서 외형을 불러옵니다.
+• 'Load .DAT'옵션을 사용해서 인게임에서 작성한 외형을 불러올 수 있습니다.</value>
+  </data>
+  <data name="LoadPointButton" xml:space="preserve">
+    <value>상태 불러오기</value>
+  </data>
+  <data name="LoadPointToolTip" xml:space="preserve">
+    <value>백업' 상태로 되돌립니다.</value>
+  </data>
+  <data name="LockFacialAnimation" xml:space="preserve">
+    <value>표정 고정</value>
+  </data>
+  <data name="LockFacialAnimationToolTip" xml:space="preserve">
+    <value>선택한 캐릭터의 표정을 고정합니다.
+• 표정을 제대로 고정하려면, 이 옵션을 키고, 애니메이션의 속도를 0으로 설정해야합니다.</value>
+  </data>
+  <data name="LockTime" xml:space="preserve">
+    <value>시간 정지:</value>
+  </data>
+  <data name="LowerBodyBones" xml:space="preserve">
+    <value>하체 뼈대</value>
+  </data>
+  <data name="LowerEarrings" xml:space="preserve">
+    <value>아래 귀걸이:</value>
+  </data>
+  <data name="LowerEyelids" xml:space="preserve">
+    <value>아래 눈꺼풀:</value>
+  </data>
+  <data name="LowerLip" xml:space="preserve">
+    <value>아랫입술:</value>
+  </data>
+  <data name="MainHand" xml:space="preserve">
+    <value>주 무기:</value>
+  </data>
+  <data name="MainHandColor" xml:space="preserve">
+    <value>주 무기 색상</value>
+  </data>
+  <data name="MainHandScale" xml:space="preserve">
+    <value>주 무기 크기</value>
+  </data>
+  <data name="MainHandScaleToolTip" xml:space="preserve">
+    <value>주 무기의 XYZ 크기를 조절 할 수 있습니다.
+• 주 무기에 불러온 소품의 크기도 변경이 가능합니다. 하지만 툼스톤(컴패니언앱 감정표현)같은 시각효과에는 영향을 미치지 않습니다.</value>
+  </data>
+  <data name="MainHandToolTip" xml:space="preserve">
+    <value>대상에게 주 무기를 장비시킬 수 있습니다.
+• 주 무기를 투명하게 하고 싶은 경우에는 '임금님의 주먹'을 장비하거나, 오른쪽 패널로 주 무기 크기 및/또는 보조 무기 크기을 사용합니다.</value>
+  </data>
+  <data name="MaxZoom" xml:space="preserve">
+    <value>최대 줌 거리:</value>
+  </data>
+  <data name="MiddleFinger" xml:space="preserve">
+    <value>중지:</value>
+  </data>
+  <data name="MiddleJoint" xml:space="preserve">
+    <value>중지 관절:</value>
+  </data>
+  <data name="MinZoom" xml:space="preserve">
+    <value>최소 줌 거리:</value>
+  </data>
+  <data name="ModelID" xml:space="preserve">
+    <value>모델 ID</value>
+  </data>
+  <data name="ModelList" xml:space="preserve">
+    <value>모델 목록</value>
+  </data>
+  <data name="ModelType" xml:space="preserve">
+    <value>모델 유형:</value>
+  </data>
+  <data name="ModelTypeButtonToolTip" xml:space="preserve">
+    <value>우측의 플라이아웃 메뉴를 열어 몬스터, 데미-휴먼, 프랍 엔티티 또는 엔티티 기반의 효과를 검색할 수 있습니다.
+• 몇몇 NPC(제노스, 야만족, 토르당/나이츠 등)는 데미-휴먼으로 분류되어 있기 때문에 이 선택 항목에서 찾을 수 있습니다.
+• 데미휴먼으로 변경 후 캐릭터가 보이지 않을 시 모든 장비의 베이스와 배리언트를 0으로 변경하십시오. 그래도 안된다면 1,0 또는 1,1로 시도하십시오.</value>
+  </data>
+  <data name="ModelTypeToolTip" xml:space="preserve">
+    <value>선택한 캐릭터의 모델 유형을 변경합니다.</value>
+  </data>
+  <data name="Mouth" xml:space="preserve">
+    <value>입:</value>
+  </data>
+  <data name="MouthType" xml:space="preserve">
+    <value>입 유형:</value>
+  </data>
+  <data name="MouthTypeToolTip" xml:space="preserve">
+    <value>선택한 대상의 입 유형을 변경합니다.</value>
+  </data>
+  <data name="MuscleTone" xml:space="preserve">
+    <value>근육 톤</value>
+  </data>
+  <data name="MuscleToneToolTip" xml:space="preserve">
+    <value>선택한 대상의 근육 톤을 수정합니다.</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>이름:</value>
+  </data>
+  <data name="NameToolTip" xml:space="preserve">
+    <value>선택한 대상의 표시되는 이름을 수정합니다.</value>
+  </data>
+  <data name="NameWaterMark" xml:space="preserve">
+    <value>이름</value>
+  </data>
+  <data name="Neck" xml:space="preserve">
+    <value>목걸이:</value>
+  </data>
+  <data name="NeckToolTip" xml:space="preserve">
+    <value>선택한 대상에게 목걸이를 착용시킬 수 있습니다.</value>
+  </data>
+  <data name="Nose" xml:space="preserve">
+    <value>코:</value>
+  </data>
+  <data name="NoseType" xml:space="preserve">
+    <value>코 유형:</value>
+  </data>
+  <data name="NoseTypeToolTip" xml:space="preserve">
+    <value>선택한 대상의 코 유형을 변경합니다.</value>
+  </data>
+  <data name="Nostrils" xml:space="preserve">
+    <value>콧구멍:</value>
+  </data>
+  <data name="NPCModel" xml:space="preserve">
+    <value>NPC모델</value>
+  </data>
+  <data name="NPCOutfit" xml:space="preserve">
+    <value>NPC외형</value>
+  </data>
+  <data name="NPCOutfitToolTip" xml:space="preserve">
+    <value>우측에 플라이아웃 검색창을 열어 이름으로 NPC들을 검색할 수 있습니다 .
+• 항목을 클릭한 후 대상 새로고침을 사용하여 외형을 적용시킬 수 있습니다. 
+• 일부 NPC(제노스, 야만족 및 일부 NPC)는 데미-휴먼으로 분류되기 때문에 이 항목에 포함되지 않으며 첫 번째 탭의 모델 유형에서 검색하여 찾을 수 있습니다.</value>
+  </data>
+  <data name="OffHand" xml:space="preserve">
+    <value>보조 무기:</value>
+  </data>
+  <data name="OffHandColor" xml:space="preserve">
+    <value>보조 무기 색상</value>
+  </data>
+  <data name="OffHandScale" xml:space="preserve">
+    <value>보조 무기 크기</value>
+  </data>
+  <data name="OffHandScaleToolTip" xml:space="preserve">
+    <value>보조 무기의 XYZ 크기를 조절 할 수 있습니다.
+• 이 옵션은 방패, 화살통, 에테르팩(기공사), 카드집(점성술사), 칼집, 그리고 오브(적마도사)와 쌍수 무기의 왼손에 영향을 미칩니다.</value>
+  </data>
+  <data name="OffHandToolTip" xml:space="preserve">
+    <value>보조 무기를 착용 할 수 있습니다.
+• 적절한 보조 무기를 찾으려면 (방패 제외) 보조 무기 '보기'버튼을 사용하여 주무기 장비를 검색해야합니다. 예를 들어 칼집이나 화살통을 찾으려면 쌍검이나 활을 검색해야합니다.</value>
+  </data>
+  <data name="OuterBrows" xml:space="preserve">
+    <value>눈썹꼬리:</value>
+  </data>
+  <data name="OverallScale" xml:space="preserve">
+    <value>전체 크기:</value>
+  </data>
+  <data name="OverallScaleToolTip" xml:space="preserve">
+    <value>선택된 대상의 전체 크기를 수정합니다.</value>
+  </data>
+  <data name="Pelvis" xml:space="preserve">
+    <value>골반:</value>
+  </data>
+  <data name="PinkyFinger" xml:space="preserve">
+    <value>새끼 손가락:</value>
+  </data>
+  <data name="PinkyJoint" xml:space="preserve">
+    <value>새끼 손가락 관절:</value>
+  </data>
+  <data name="PosingMatrix" xml:space="preserve">
+    <value>포징 매트릭스</value>
+  </data>
+  <data name="PropView" xml:space="preserve">
+    <value>프롭뷰</value>
+  </data>
+  <data name="R" xml:space="preserve">
+    <value>R</value>
+  </data>
+  <data name="Race" xml:space="preserve">
+    <value>종족:</value>
+  </data>
+  <data name="RaceToolTip" xml:space="preserve">
+    <value>선택한 대상의 종족을 변경합니다.</value>
+  </data>
+  <data name="RandomizeAppearance" xml:space="preserve">
+    <value>무작위 외형</value>
+  </data>
+  <data name="RandomizeAppearanceToolTip" xml:space="preserve">
+    <value>무작위 외형을 생성합니다.</value>
+  </data>
+  <data name="RealtimeRotation" xml:space="preserve">
+    <value>실시간 로테이션:</value>
+  </data>
+  <data name="RealTimeRotationToolTip" xml:space="preserve">
+    <value>마우스 버튼을 사용하여 큐브를 제어하십시오.
+• 모든 로테이션은 개체가 현재 향하고있는 방향을 기준으로합니다.
+• 우클릭은 X 로테이션을 제어합니다.
+• 좌클릭은 Y 로테이션을 제어합니다.
+• 훨클릭은 Z 로테이션을 제어합니다. </value>
+  </data>
+  <data name="Red" xml:space="preserve">
+    <value>빨강:</value>
+  </data>
+  <data name="RedGlow" xml:space="preserve">
+    <value>빨간빛:</value>
+  </data>
+  <data name="RefreshButton" xml:space="preserve">
+    <value>새로고침</value>
+  </data>
+  <data name="RelativeXYZPos" xml:space="preserve">
+    <value>상대적 XYZ 위치 :</value>
+  </data>
+  <data name="RelativeXYZPosToolTip" xml:space="preserve">
+    <value>이 토글은 모든 선택된 엔티티와 관련된 모든 XYZ 움직임을 조작할 수 있게 합니다. 인게임과 완벽히 일치하지는 않습니다.
+• 이 설정은 기본적으로 켜져 있으며 상태는 세션간에 저장됩니다</value>
+  </data>
+  <data name="RelativeXYZRot" xml:space="preserve">
+    <value>상대적 XYZ 로테이션:</value>
+  </data>
+  <data name="RelativeXYZRotToolTip" xml:space="preserve">
+    <value>이 토글은 모든 선택된 엔티티와 관련된 모든 XYZ 움직임을 조작할 수 있게 합니다. 인게임과 완벽히 일치하지는 않습니다.
+• 이 설정은 기본적으로 켜져 있으며 상태는 세션간에 저장됩니다
+• 실시간 로테이션 큐브에만 영향을줍니다.</value>
+  </data>
+  <data name="RenderCycle" xml:space="preserve">
+    <value>랜더 주기</value>
+  </data>
+  <data name="RenderLimit" xml:space="preserve">
+    <value>캐릭터 렌더 제한 해제:</value>
+  </data>
+  <data name="RenderToggleToolTip" xml:space="preserve">
+    <value>랜더 토글 스위치</value>
+  </data>
+  <data name="ResetButton" xml:space="preserve">
+    <value>초기화</value>
+  </data>
+  <data name="ResetToDefaultButton" xml:space="preserve">
+    <value>초기설정으로 초기화</value>
+  </data>
+  <data name="RightArm" xml:space="preserve">
+    <value>오른팔:</value>
+  </data>
+  <data name="RightEyeColor" xml:space="preserve">
+    <value>오른쪽 눈 색</value>
+  </data>
+  <data name="RightLeg" xml:space="preserve">
+    <value>오른다리:</value>
+  </data>
+  <data name="RightRing" xml:space="preserve">
+    <value>오른쪽 반지:</value>
+  </data>
+  <data name="RightRingToolTip" xml:space="preserve">
+    <value>선택한 대상에게 오른쪽 반지를 착용 시킬 수 있습니다.
+</value>
+  </data>
+  <data name="RingFinger" xml:space="preserve">
+    <value>약손가락</value>
+  </data>
+  <data name="RingJoint" xml:space="preserve">
+    <value>손가락 관절</value>
+  </data>
+  <data name="RotationSliders" xml:space="preserve">
+    <value>로테이션 슬라이더</value>
+  </data>
+  <data name="RotationSlidersToolTip" xml:space="preserve">
+    <value>이 토글은 로테이션 슬라이더와 수치 직접 입력간에 전환됩니다.
+• 이 설정은 기본적으로 켜져 있으며 세션간에 상태가 저장됩니다.
+• 끄면 XYZ 로테이션 슬라이더가 숫자 값으로 바뀝니다.
+• 각각 0에서 360 사이의 값을 입력할 수 있습니다.
+• 로테이션 슬라이더 및 직접 수치 입력은 먼저 로테이션 동결을 해야 합니다.</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>저장</value>
+  </data>
+  <data name="SaveGearset" xml:space="preserve">
+    <value>장비세트 저장</value>
+  </data>
+  <data name="SaveMainWindow" xml:space="preserve">
+    <value>외형 저장</value>
+  </data>
+  <data name="SaveMainWindowToolTip" xml:space="preserve">
+    <value>JSON파일로 외형을 저장합니다.</value>
+  </data>
+  <data name="SavePointButton" xml:space="preserve">
+    <value>상태 저장</value>
+  </data>
+  <data name="SavePointToolTip" xml:space="preserve">
+    <value>나중에 다시 불러올 수 있는 현재 상태의 '백업'을 만듭니다.</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>설정</value>
+  </data>
+  <data name="SHDR" xml:space="preserve">
+    <value>S-HDR:</value>
+  </data>
+  <data name="Shoulders" xml:space="preserve">
+    <value>어깨:</value>
+  </data>
+  <data name="SkinColor" xml:space="preserve">
+    <value>피부색</value>
+  </data>
+  <data name="Skintone" xml:space="preserve">
+    <value>피부 톤:</value>
+  </data>
+  <data name="SkinToneToolTip" xml:space="preserve">
+    <value>선택한 대상의 피부 톤을 변경합니다.</value>
+  </data>
+  <data name="StatusEffect" xml:space="preserve">
+    <value>GPose
+상태 효과 :</value>
+  </data>
+  <data name="StatusEffectToolTip" xml:space="preserve">
+    <value>비표준 상태 VFX를 GPose의 엔티티에 적용 할 수 있습니다.
+1. GPose 메뉴에서 기본 상태 중 하나를 활성화합니다 (예: 열병).
+2. 드롭 다운 메뉴에서 원하는 새 VFX를 선택하십시오.
+3. GPose 메뉴를 사용하여 선택한 상태를 제거하십시오.
+• 새로운 효과를 선택하거나 현재 효과를 제거하려면 재설정을 누르거나 다른 상태 (예: 빙결)로 덮어 쓰십시오.</value>
+  </data>
+  <data name="Sternum" xml:space="preserve">
+    <value>흉골:</value>
+  </data>
+  <data name="Tail" xml:space="preserve">
+    <value>꼬리:</value>
+  </data>
+  <data name="TailJoints" xml:space="preserve">
+    <value>꼬리 관절:</value>
+  </data>
+  <data name="TargetActorIs" xml:space="preserve">
+    <value>지정된 대상은 ???</value>
+  </data>
+  <data name="TargetMode" xml:space="preserve">
+    <value>지정 모드:</value>
+  </data>
+  <data name="TargetModeToolTip" xml:space="preserve">
+    <value>엔터티 목록을 사용하지 않고 선택한 대상의 값을 변경할 수 있습니다.
+• 엔티티 목록이 지속적으로 이동하는 번잡한 지역에 편리합니다. 변경 사항을 적용하려면 이를 선택해제하고 일반적인 방법을 사용해야합니다.</value>
+  </data>
+  <data name="Thumb" xml:space="preserve">
+    <value>엄지</value>
+  </data>
+  <data name="ThumbJoint" xml:space="preserve">
+    <value>엄지 관절 :</value>
+  </data>
+  <data name="TimeButtonLockToolTip" xml:space="preserve">
+    <value>시간 토글 스위치</value>
+  </data>
+  <data name="TimeControl" xml:space="preserve">
+    <value>시간 조절:</value>
+  </data>
+  <data name="TimeControlToolTip" xml:space="preserve">
+    <value>현재 시간을 조정합니다.
+• GPose에서 '시간정지/날씨정지'를 켜고 '시간조절'을 사용하면 달의 위상이 변화됩니다.</value>
+  </data>
+  <data name="TimeLockToolTip" xml:space="preserve">
+    <value>시간 제어를 사용하여 설정한 시간이 변경되지 않도록합니다.
+•이것은 정확하지 않으며 장기간에 걸쳐 약간씩 이동합니다</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>칭호:</value>
+  </data>
+  <data name="TitleToolTip" xml:space="preserve">
+    <value>선택한 대상의 칭호를 변경합니다.</value>
+  </data>
+  <data name="Toes" xml:space="preserve">
+    <value>발가락</value>
+  </data>
+  <data name="Torso" xml:space="preserve">
+    <value>몸통</value>
+  </data>
+  <data name="TPoseActor" xml:space="preserve">
+    <value>T 포즈 대상</value>
+  </data>
+  <data name="TransformationData" xml:space="preserve">
+    <value>변환 데이터</value>
+  </data>
+  <data name="Transparency" xml:space="preserve">
+    <value>투명도:</value>
+  </data>
+  <data name="TransparencyToolTip" xml:space="preserve">
+    <value>선택된 엔티티의 투명도를 수정합니다.
+• 대상의 투명도를 줄여도 주 무기 나 무기에 영향을 미치지 않습니다. 장비 탭에서 무기의 XYZ 크기를 0으로 설정할 수 있습니다.
+• GPose의 엔티티의 값을 0으로 설정하면 시스템에서 대상을 지정할 수 없게될수도 있습니다. 그래도 계속 사용하려면 0.03으로 설정하십시오. </value>
+  </data>
+  <data name="Twitter" xml:space="preserve">
+    <value>Twitter</value>
+  </data>
+  <data name="UncheckButton" xml:space="preserve">
+    <value>모든 고정 해제</value>
+  </data>
+  <data name="UncheckButtonToolTip" xml:space="preserve">
+    <value>모든 선택을 취소하고 고정을 해제합니다.
+</value>
+  </data>
+  <data name="UpperBodyBones" xml:space="preserve">
+    <value>상체 뼈대:</value>
+  </data>
+  <data name="UpperEarrings" xml:space="preserve">
+    <value>위 귀걸이:</value>
+  </data>
+  <data name="UpperLip" xml:space="preserve">
+    <value>윗입술:</value>
+  </data>
+  <data name="Variant" xml:space="preserve">
+    <value>변수</value>
+  </data>
+  <data name="Vibrance" xml:space="preserve">
+    <value>생동감:</value>
+  </data>
+  <data name="VieraLowerEars" xml:space="preserve">
+    <value>비에라 아랫귀</value>
+  </data>
+  <data name="VieraUpperEars" xml:space="preserve">
+    <value>비에라 윗귀</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>보기</value>
+  </data>
+  <data name="VisualEffect" xml:space="preserve">
+    <value>시각 효과</value>
+  </data>
+  <data name="VoiceType" xml:space="preserve">
+    <value>목소리 타입:</value>
+  </data>
+  <data name="VoiceTypeToolTip" xml:space="preserve">
+    <value>선택한 대상의 목소리 타입을 변경합니다.</value>
+  </data>
+  <data name="Waist" xml:space="preserve">
+    <value>허리:</value>
+  </data>
+  <data name="Weather" xml:space="preserve">
+    <value>날씨:</value>
+  </data>
+  <data name="WeatherForce" xml:space="preserve">
+    <value>날씨 강제:</value>
+  </data>
+  <data name="WeatherForceToolTip" xml:space="preserve">
+    <value>지역의 현재 날씨를 제어합니다.
+•이 방법은 즉시 전환을 사용하며 메뉴에서 날씨를 선택하자마자 바로 변경됩니다.</value>
+  </data>
+  <data name="WeatherSelect" xml:space="preserve">
+    <value>날씨 선택</value>
+  </data>
+  <data name="WeatherToolTip" xml:space="preserve">
+    <value>지역의 현재 날씨를 제어합니다.
+• 이 방법은 자연스러운 전환을 사용하며 약간의 시간이 걸릴 수 있습니다.</value>
+  </data>
+  <data name="Wet" xml:space="preserve">
+    <value>물에 젖은 효과:</value>
+  </data>
+  <data name="WetToolTip" xml:space="preserve">
+    <value>대상에게 물 속에 있거나 비를 맞았을 때의 젖는 효과를 줍니다.
+• 해제하면 시간이 지남에 따라 효과가 사라집니다.</value>
+  </data>
+  <data name="World" xml:space="preserve">
+    <value>월드</value>
+  </data>
+  <data name="Wrists" xml:space="preserve">
+    <value>손목</value>
+  </data>
+  <data name="WristsToolTIp" xml:space="preserve">
+    <value>선택한 대상에게 팔찌를 착용 시킬 수 있습니다.
+</value>
+  </data>
+  <data name="X" xml:space="preserve">
+    <value>X:</value>
+  </data>
+  <data name="XPos" xml:space="preserve">
+    <value>X 포지션</value>
+  </data>
+  <data name="XPosToolTip" xml:space="preserve">
+    <value>선택한 대상의 X 포지션을 수정합니다.
+• GPose에서 적용하려면 대상의 동작을 동결해야 할 수도 있습니다.</value>
+  </data>
+  <data name="XRot" xml:space="preserve">
+    <value>X 로테이션:</value>
+  </data>
+  <data name="XRot2" xml:space="preserve">
+    <value>X 로테이션:</value>
+  </data>
+  <data name="XRot2ToolTip" xml:space="preserve">
+    <value>선택한 관절의 X 로테이션을 수정합니다.</value>
+  </data>
+  <data name="XRotToolTip" xml:space="preserve">
+    <value>선택한 대상의 X 로테이션을 수정합니다.
+• GPose에서 적용하려면 대상의 동작을 동결시켜야 할 수도 있습니다.
+• 로테이션 슬라이더와 직접 수치 입력은 로테이션 동결이 필요합니다.</value>
+  </data>
+  <data name="Y" xml:space="preserve">
+    <value>Y:</value>
+  </data>
+  <data name="YPos" xml:space="preserve">
+    <value>Y 포지션</value>
+  </data>
+  <data name="YPosToolTip" xml:space="preserve">
+    <value>선택한 대상의 Y 포지션을 수정합니다.
+• GPose에서 적용하려면 대상의 동작을 동결해야 할 수도 있습니다.</value>
+  </data>
+  <data name="YRot" xml:space="preserve">
+    <value>Y 로테이션:</value>
+  </data>
+  <data name="YRot2" xml:space="preserve">
+    <value>Y 로테이션:</value>
+  </data>
+  <data name="YRot2ToolTip" xml:space="preserve">
+    <value>선택한 관절의 Y 로테이션을 수정합니다.</value>
+  </data>
+  <data name="YRotToolTip" xml:space="preserve">
+    <value>선택한 대상의 Y 로테이션을 수정합니다.
+• GPose에서 적용하려면 대상의 동작을 동결시켜야 할 수도 있습니다.
+• 로테이션 슬라이더 및 직접 수치 입력은 먼저 로테이션 동결을 해야합니다 </value>
+  </data>
+  <data name="Z" xml:space="preserve">
+    <value>Z:</value>
+  </data>
+  <data name="Zero" xml:space="preserve">
+    <value>제로</value>
+  </data>
+  <data name="ZeroScale" xml:space="preserve">
+    <value>제로 크기</value>
+  </data>
+  <data name="ZeroScaleToolTip" xml:space="preserve">
+    <value>XYZ 크기를 0으로 설정하여 보이지 않게합니다.
+• 각 필드에 '1.0'을 입력하면 작업을 취소 할 수 있습니다. </value>
+  </data>
+  <data name="ZPos" xml:space="preserve">
+    <value>Z 포지션:</value>
+  </data>
+  <data name="ZPosToolTip" xml:space="preserve">
+    <value>선택한 대상의 Z 포지션을 수정합니다.
+• GPose에서 올바르게 적용하려면 대상의 동작을 동결해야 할 수도 있습니다.</value>
+  </data>
+  <data name="ZRot" xml:space="preserve">
+    <value>Z 로테이션:</value>
+  </data>
+  <data name="ZRot2" xml:space="preserve">
+    <value>Z 로테이션:</value>
+  </data>
+  <data name="ZRot2ToolTip" xml:space="preserve">
+    <value>선택한 관절의 Z 로테이션을 수정합니다.
+</value>
+  </data>
+  <data name="ZRotToolTip" xml:space="preserve">
+    <value>선택한 대상의 Z 로테이션을 수정합니다.
+• GPose에서 적용하려면 대상의 동작을 동결해야 할 수도 있습니다. 
+• 로테이션 슬라이더 및 직접 수치 입력은 먼저 로테이션 동결을 해야합니다 
+</value>
+  </data>
+  <data name="Wiki" xml:space="preserve">
+    <value>위키</value>
+  </data>
+  <data name="CamSettingsLoadToolTip" xml:space="preserve">
+    <value>Load camera settings from file.</value>
+  </data>
+  <data name="CamSettingsSaveToolTip" xml:space="preserve">
+    <value>Save camera settings to file.</value>
+  </data>
+  <data name="GposeViewSettingsLoadToolTip" xml:space="preserve">
+    <value>Load GPose View position from file.
+• Hold CTRL when clicking this to load as an offset from the current actor position.
+• You can load saved actor positionss to jump GPose View actor to that position.</value>
+  </data>
+  <data name="GposeViewSettingsSaveToolTip" xml:space="preserve">
+    <value>Save GPose View position to file.</value>
+  </data>
+  <data name="PosSettingsLoadToolTip" xml:space="preserve">
+    <value>Load actor position from file.
+• Hold CTRL when clicking this to load as an offset from the current GPose View.
+• You can load saved GPose View positions to jump an actor to that position.</value>
+  </data>
+  <data name="PosSettingsSaveToolTip" xml:space="preserve">
+    <value>Save actor position to file.</value>
+  </data>
+  <data name="LinkPositionToolTip" xml:space="preserve">
+    <value>Toggles linking for this actor.
+• Changing position or rotation of any linked actor will affect them all.</value>
+  </data>
+  <data name="CamPanX" xml:space="preserve">
+    <value>Cam Pan X:</value>
+  </data>
+  <data name="CamPanY" xml:space="preserve">
+    <value>Cam Pan Y:</value>
+  </data>
+  <data name="FreezeCam" xml:space="preserve">
+    <value>Freeze Cam</value>
+  </data>
+</root>

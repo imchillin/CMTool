@@ -1,0 +1,492 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Abdomen" xml:space="preserve">
+    <value>Abdomen:</value>
+  </data>
+  <data name="AdvancedLoading" xml:space="preserve">
+    <value>Erweitertes Laden</value>
+  </data>
+  <data name="AdvLoadCMPFile" xml:space="preserve">
+    <value>Erweitertes CMP Laden</value>
+  </data>
+  <data name="Arms" xml:space="preserve">
+    <value>Arme:</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Rückseite:</value>
+  </data>
+  <data name="Body" xml:space="preserve">
+    <value>Körper:</value>
+  </data>
+  <data name="Body2" xml:space="preserve">
+    <value>Körper:</value>
+  </data>
+  <data name="BodyClothes" xml:space="preserve">
+    <value>Körper &amp; Hände</value>
+  </data>
+  <data name="Breasts" xml:space="preserve">
+    <value>Brust:</value>
+  </data>
+  <data name="Bridge" xml:space="preserve">
+    <value>Nasenrücken:</value>
+  </data>
+  <data name="Brows" xml:space="preserve">
+    <value>Augenbrauen:</value>
+  </data>
+  <data name="Calves" xml:space="preserve">
+    <value>Unterschenkel:</value>
+  </data>
+  <data name="Cervical" xml:space="preserve">
+    <value>Zervikal:</value>
+  </data>
+  <data name="Cheeks" xml:space="preserve">
+    <value>Wangen:</value>
+  </data>
+  <data name="Clavicles" xml:space="preserve">
+    <value>Schlüsselbeine:</value>
+  </data>
+  <data name="Clothes" xml:space="preserve">
+    <value>Kleidung:</value>
+  </data>
+  <data name="Clothes2" xml:space="preserve">
+    <value>Kleidung:</value>
+  </data>
+  <data name="Couters" xml:space="preserve">
+    <value>Ellbogenschützer:</value>
+  </data>
+  <data name="DetectTertiaryBones" xml:space="preserve">
+    <value>Finde Tertiäre Knochen</value>
+  </data>
+  <data name="Earrings" xml:space="preserve">
+    <value>Ohrringe:</value>
+  </data>
+  <data name="Earrings2" xml:space="preserve">
+    <value>Ohrringe:</value>
+  </data>
+  <data name="Ears" xml:space="preserve">
+    <value>Ohren:</value>
+  </data>
+  <data name="Elbows" xml:space="preserve">
+    <value>Ellenbogen:</value>
+  </data>
+  <data name="EnableEditing" xml:space="preserve">
+    <value>Editieren Modus:</value>
+  </data>
+  <data name="EnableGpose" xml:space="preserve">
+    <value>Aktiviere Gpose:</value>
+  </data>
+  <data name="EnablePhysics" xml:space="preserve">
+    <value>Physik:</value>
+  </data>
+  <data name="Equipment" xml:space="preserve">
+    <value>Ausrüstung:</value>
+  </data>
+  <data name="EquipOther" xml:space="preserve">
+    <value>Ausrüstung &amp; Kleidung</value>
+  </data>
+  <data name="Eyebrows" xml:space="preserve">
+    <value>Augenbrauen:</value>
+  </data>
+  <data name="Eyelids" xml:space="preserve">
+    <value>Augenlider:</value>
+  </data>
+  <data name="Eyes" xml:space="preserve">
+    <value>Augen:</value>
+  </data>
+  <data name="Face" xml:space="preserve">
+    <value>Gesicht:</value>
+  </data>
+  <data name="Feet" xml:space="preserve">
+    <value>Füße:</value>
+  </data>
+  <data name="Forearms" xml:space="preserve">
+    <value>Unterarme:</value>
+  </data>
+  <data name="Front" xml:space="preserve">
+    <value>Vorderseite:</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>General:</value>
+  </data>
+  <data name="Hair" xml:space="preserve">
+    <value>Haar:</value>
+  </data>
+  <data name="Hair2" xml:space="preserve">
+    <value>Haar</value>
+  </data>
+  <data name="HairAccessories" xml:space="preserve">
+    <value>Haar &amp; Accessoires:</value>
+  </data>
+  <data name="Hands" xml:space="preserve">
+    <value>Hände:</value>
+  </data>
+  <data name="Hands2" xml:space="preserve">
+    <value>Hände</value>
+  </data>
+  <data name="HandsLegs" xml:space="preserve">
+    <value>Füße</value>
+  </data>
+  <data name="Head" xml:space="preserve">
+    <value>Kopf:</value>
+  </data>
+  <data name="Head2" xml:space="preserve">
+    <value>Kopf:</value>
+  </data>
+  <data name="HeadHair" xml:space="preserve">
+    <value>Kopf &amp; Haar:</value>
+  </data>
+  <data name="Helm" xml:space="preserve">
+    <value>Helm:</value>
+  </data>
+  <data name="Helm2" xml:space="preserve">
+    <value>Helm</value>
+  </data>
+  <data name="Holsters" xml:space="preserve">
+    <value>Holster:</value>
+  </data>
+  <data name="HrothgarWhiskers" xml:space="preserve">
+    <value>Hrothgar Schnurrhaare:</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>Index:</value>
+  </data>
+  <data name="Jaw" xml:space="preserve">
+    <value>Kiefer:</value>
+  </data>
+  <data name="Knees" xml:space="preserve">
+    <value>Knie:</value>
+  </data>
+  <data name="LeftArm" xml:space="preserve">
+    <value>Linker Arm:</value>
+  </data>
+  <data name="LeftArm2" xml:space="preserve">
+    <value>Linker Arm</value>
+  </data>
+  <data name="LeftHand" xml:space="preserve">
+    <value>Linke Hand:</value>
+  </data>
+  <data name="LeftHand2" xml:space="preserve">
+    <value>Linke Hand</value>
+  </data>
+  <data name="LeftLeg" xml:space="preserve">
+    <value>Linkes Bein:</value>
+  </data>
+  <data name="LeftLeg2" xml:space="preserve">
+    <value>Linkes Bein</value>
+  </data>
+  <data name="Legs" xml:space="preserve">
+    <value>Beine:</value>
+  </data>
+  <data name="LoadCMPFile" xml:space="preserve">
+    <value>Lade CMP Datei</value>
+  </data>
+  <data name="LoadCMPToolTip" xml:space="preserve">
+    <value>Lade Pose aus einer Benutzer generierten CMP Datei.</value>
+  </data>
+  <data name="LowerLids" xml:space="preserve">
+    <value>Unteres Augenlid:</value>
+  </data>
+  <data name="LowerLip" xml:space="preserve">
+    <value>Unterlippe:</value>
+  </data>
+  <data name="Lumbar" xml:space="preserve">
+    <value>Lenden:</value>
+  </data>
+  <data name="Middle" xml:space="preserve">
+    <value>Mitte:</value>
+  </data>
+  <data name="Mouth" xml:space="preserve">
+    <value>Mund:</value>
+  </data>
+  <data name="Neck" xml:space="preserve">
+    <value>Hals:</value>
+  </data>
+  <data name="Nose" xml:space="preserve">
+    <value>Nase:</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Anderes</value>
+  </data>
+  <data name="Pauldrons" xml:space="preserve">
+    <value>Schulterstücke:</value>
+  </data>
+  <data name="Pinky" xml:space="preserve">
+    <value>Kleiner Finger:</value>
+  </data>
+  <data name="Poleyns" xml:space="preserve">
+    <value>Knieschützer:</value>
+  </data>
+  <data name="PoseMatrixSettings" xml:space="preserve">
+    <value>Pose Matrix Einstellungen(nur im Gpose)</value>
+  </data>
+  <data name="RealTimeRotation" xml:space="preserve">
+    <value>Echtzeit Rotation</value>
+  </data>
+  <data name="RealTimeRotationToolTip" xml:space="preserve">
+    <value>Benutze deine Maustasten um den Würfel zu kontrollieren.
+• Alle Drehungen sind relativ zu der Richtung, die der Entität zugewandt ist: 
+• Rechte Maustaste kontrolliert die X-Achsen Drehung.
+• Linke Maustaste kontrolliert die Y-Achsen Drehung.
+• Mittlere Maustaste kontrolliert die Z-Achsen Drehung.</value>
+  </data>
+  <data name="RightArm" xml:space="preserve">
+    <value>Rechter Arm:</value>
+  </data>
+  <data name="RightArm2" xml:space="preserve">
+    <value>Rechter Arm</value>
+  </data>
+  <data name="RightHand" xml:space="preserve">
+    <value>Rechte Hand:</value>
+  </data>
+  <data name="RightHand2" xml:space="preserve">
+    <value>Rechte Hand</value>
+  </data>
+  <data name="RightLeg" xml:space="preserve">
+    <value>Rechtes Bein:</value>
+  </data>
+  <data name="RightLeg2" xml:space="preserve">
+    <value>Rechtes Bein</value>
+  </data>
+  <data name="Ring" xml:space="preserve">
+    <value>Ring</value>
+  </data>
+  <data name="Root" xml:space="preserve">
+    <value>Wurzel</value>
+  </data>
+  <data name="RotationSliders" xml:space="preserve">
+    <value>Rotationsregler</value>
+  </data>
+  <data name="RotationSlidersToolTip" xml:space="preserve">
+    <value>Dieser Schalter wechselt zwischen Rotationsreglern und numerischer Direkteingabe.
+• Ausgeschaltet werden die XYZ Rotationsregler zu numerischen Eingabefeldern.
+• Jedes Feld akzeptiert Werte zwischen 0 und 360.</value>
+  </data>
+  <data name="SaveCMPFile" xml:space="preserve">
+    <value>Speichere CMP Datei.</value>
+  </data>
+  <data name="SaveCMPToolTip" xml:space="preserve">
+    <value>Speichere Pose als CMP Datei.</value>
+  </data>
+  <data name="SaveLoad" xml:space="preserve">
+    <value>Speichern &amp; Laden</value>
+  </data>
+  <data name="Scabbards" xml:space="preserve">
+    <value>Scheiden:</value>
+  </data>
+  <data name="SelectAll" xml:space="preserve">
+    <value>Alles auswählen</value>
+  </data>
+  <data name="SelectNone" xml:space="preserve">
+    <value>Nichts auswählen</value>
+  </data>
+  <data name="Sheathes" xml:space="preserve">
+    <value>Schwertscheide:</value>
+  </data>
+  <data name="Shields" xml:space="preserve">
+    <value>Schild:</value>
+  </data>
+  <data name="Shoulders" xml:space="preserve">
+    <value>Schultern:</value>
+  </data>
+  <data name="Sides" xml:space="preserve">
+    <value>Seiten:</value>
+  </data>
+  <data name="StandardSaving" xml:space="preserve">
+    <value>Standart Speichern &amp; Laden</value>
+  </data>
+  <data name="Tail" xml:space="preserve">
+    <value>Schwanz:</value>
+  </data>
+  <data name="TertiaryButtonToolTip" xml:space="preserve">
+    <value>Finde Rassen-, Haar- und Ausrüstungsexklusive Knochen für den ausgewählten Charakter.</value>
+  </data>
+  <data name="Thoracic" xml:space="preserve">
+    <value>Brustkorb:</value>
+  </data>
+  <data name="Throw" xml:space="preserve">
+    <value>Werfen:</value>
+  </data>
+  <data name="Thumb" xml:space="preserve">
+    <value>Daumen:</value>
+  </data>
+  <data name="Toes" xml:space="preserve">
+    <value>Zehen:</value>
+  </data>
+  <data name="Top" xml:space="preserve">
+    <value>Oberteil:</value>
+  </data>
+  <data name="Top2" xml:space="preserve">
+    <value>Oberteil</value>
+  </data>
+  <data name="Unique" xml:space="preserve">
+    <value>Einzigartig:</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>Unbekannt:</value>
+  </data>
+  <data name="UpperLip" xml:space="preserve">
+    <value>Oberlippe:</value>
+  </data>
+  <data name="VieraEars" xml:space="preserve">
+    <value>Viera Ohren:</value>
+  </data>
+  <data name="Waist" xml:space="preserve">
+    <value>Taille:</value>
+  </data>
+  <data name="Waist2" xml:space="preserve">
+    <value>Taille</value>
+  </data>
+  <data name="WaistLegs" xml:space="preserve">
+    <value>Taille &amp; Beine</value>
+  </data>
+  <data name="Weapons" xml:space="preserve">
+    <value>Waffen:</value>
+  </data>
+  <data name="Weapons2" xml:space="preserve">
+    <value>Waffe</value>
+  </data>
+  <data name="Weapons3" xml:space="preserve">
+    <value>Waffe</value>
+  </data>
+  <data name="Wrists" xml:space="preserve">
+    <value>Handgelenke:</value>
+  </data>
+  <data name="XRot" xml:space="preserve">
+    <value>X Rotation:</value>
+  </data>
+  <data name="XRotToolTip" xml:space="preserve">
+    <value>Modifiziert die X Drehung des ausgewählten Gelenks.</value>
+  </data>
+  <data name="YRot" xml:space="preserve">
+    <value>Y Rotation:</value>
+  </data>
+  <data name="YRotToolTip" xml:space="preserve">
+    <value>Modifiziert die Y Drehung des ausgewählten Gelenks.</value>
+  </data>
+  <data name="ZRot" xml:space="preserve">
+    <value>Z Rotation:</value>
+  </data>
+  <data name="ZRotToolTip" xml:space="preserve">
+    <value>Modifiziert die Z Drehung des ausgewählten Gelenks.</value>
+  </data>
+  <data name="ParentRotation" xml:space="preserve">
+    <value>Eltern Rotation:</value>
+  </data>
+</root>

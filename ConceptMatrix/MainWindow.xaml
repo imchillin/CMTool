@@ -1,0 +1,111 @@
+<controls:MetroWindow x:Class="ConceptMatrix.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="13"
+        BorderThickness="1"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+        xmlns:local="clr-namespace:ConceptMatrix"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:Views="clr-namespace:ConceptMatrix.Views"
+        xmlns:resx="clr-namespace:ConceptMatrix.Resx"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        mc:Ignorable="d"
+        Height="650" Width="1115" Loaded="MetroWindow_Loaded" Icon="cmtool-icon.ico" ResizeMode="CanMinimize">
+
+    <Window.Resources>
+        <Style x:Key="MenuLevel2" BasedOn="{StaticResource MetroTabItem}" TargetType="{x:Type TabItem}">
+            <Setter Property="mah:ControlsHelper.HeaderFontSize" Value="19.5"></Setter>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid>
+        <TabControl TabStripPlacement="Top" Margin="0,48,0,0" Background="{DynamicResource MaterialDesignPaper}" DataContext="{Binding Path=CharacterDetails}">
+
+            <TabItem Header="{Binding Source={x:Static resx:UIStringsContent.ActorData}}" Style="{DynamicResource MenuLevel2}">
+                <Views:CharacterDetailsView Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
+            </TabItem>
+            <TabItem Header="{Binding Source={x:Static resx:UIStringsContent.ActorProperties}}" Style="{DynamicResource MenuLevel2}">
+                <Views:CharacterDetailsView4 Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
+            </TabItem>
+            <TabItem Header="{Binding Source={x:Static resx:UIStringsContent.Equipment}}" Style="{DynamicResource MenuLevel2}">
+                <Views:CharacterDetailsView2 Margin="0,4,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
+            </TabItem>
+            <TabItem Header="{Binding Source={x:Static resx:UIStringsContent.PosingMatrix}}" Style="{DynamicResource MenuLevel2}">
+                <Views:PoseMatrixView Margin="0,4,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
+            </TabItem>
+            <TabItem Header="{Binding Source={x:Static resx:UIStringsContent.World}}" Style="{DynamicResource MenuLevel2}">
+                <Views:CharacterDetailsView3 Margin="0,4,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
+            </TabItem>
+            <TabItem Header="{Binding Source={x:Static resx:UIStringsContent.About}}" Style="{DynamicResource MenuLevel2}">
+                <Views:AboutView Margin="0" HorizontalAlignment="Left" Width="1102" Height="530"/>
+            </TabItem>
+            <TabItem Header="&#x1F6E0;">
+                <Views:PaletteView Margin="0" HorizontalAlignment="Left" Width="1102" Height="530"/>
+            </TabItem>
+        </TabControl>
+        <ComboBox ToolTip="{Binding Source={x:Static resx:UIStringsContent.ActorEntityListToolTip}}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="131" ItemsSource="{Binding Path=CharacterDetails.CharacterDetails.Names}" SelectedIndex="{Binding Path=CharacterDetails.CharacterDetails.SelectedIndex}" IsTabStop="False"/>
+        <Button HorizontalAlignment="Left" Style="{StaticResource MaterialDesignRaisedAccentButton}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.ActorRefreshToolTip}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="146,7,0,0" VerticalAlignment="Top" Width="74" Command="{Binding Path=CharacterDetails.RefreshEntitiesCommand}" IsTabStop="False">
+            <DockPanel>
+                <Image Source="Resources/Refresh.png" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-41.265"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </DockPanel>
+        </Button>
+        <Button x:Name="CharacterRefreshButton" ToolTip="{Binding Source={x:Static resx:UIStringsContent.ActorRefreshToolTip}}" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.ActorRefreshButton}}" HorizontalAlignment="Left" Margin="225,7,0,0" VerticalAlignment="Top" Width="125" Click="CharacterRefreshButton_Click" IsTabStop="False" Padding="0,4"/>
+        <Button x:Name="FindProcess" ToolTip="{Binding Source={x:Static resx:UIStringsContent.FindProcessToolTip}}" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.FindProcessButton}}" HorizontalAlignment="Left" Margin="953,7,0,0" VerticalAlignment="Top" Width="151" Click="FindProcess_Click" IsTabStop="False" Padding="0,4"/>
+        <ToggleButton x:Name="GposeButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding Path=CharacterDetails.CharacterDetails.GposeMode}" Margin="455,3,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="21" Checked="GposeButton_Checked" Unchecked="GposeButton_Unchecked" IsTabStop="False" />
+        <Button HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}" VerticalAlignment="Top" x:Name="TwitterButton" Margin="950,-45,0,0" Width="91" Click="TwitterButton_Click" Height="45" Foreground="White" BorderBrush="#7F000000" BorderThickness="1,0" Padding="0,20,0,4" IsTabStop="False">
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="Twitter" Padding="0" />
+                <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="{Binding Source={x:Static resx:UIStringsContent.Twitter}}"/>
+            </StackPanel>
+        </Button>
+        <Button x:Name="Save" ToolTip="{Binding Source={x:Static resx:UIStringsContent.SaveMainWindowToolTip}}" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.SaveMainWindow}}" HorizontalAlignment="Left" Margin="755,7,0,0" VerticalAlignment="Top" Width="145" Click="Save_Click" IsTabStop="False" Padding="0,4"/>
+        <Button x:Name="Load" ToolTip="{Binding Source={x:Static resx:UIStringsContent.LoadMainWindowToolTip}}" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.LoadMainWindow}}" HorizontalAlignment="Left" Margin="605,7,0,0" VerticalAlignment="Top" Width="145" Click="Load_Click" IsTabStop="False" Padding="0,4"/>
+        <Button x:Name="Uncheck" ToolTip="{Binding Source={x:Static resx:UIStringsContent.UncheckButtonToolTip}}" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.UncheckButton}}" HorizontalAlignment="Left" Margin="500,7,0,0" VerticalAlignment="Top" Width="100" Click="Uncheck_Click" Padding="0,4" FontSize="12" IsTabStop="False"/>
+        <Button HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}" VerticalAlignment="Top" x:Name="AlwaysOnTop" Margin="711,-45,0,0" Width="153" Click="AlwaysOnTop_Click" Height="45" Foreground="White" BorderBrush="#7F000000" BorderThickness="1,0" Padding="0,20,0,4" IsTabStop="False">
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="{Binding Path=AOTToggleStatus, FallbackValue=ToggleSwitchOffOutline}" Padding="0" Foreground="{Binding ToggleForeground, FallbackValue=#7FFFFFFF}" />
+                <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="{Binding Source={x:Static resx:UIStringsContent.AlwaysOnTopButton}}" />
+            </StackPanel>
+        </Button>
+        <Button HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}" VerticalAlignment="Top" x:Name="DiscordButton" Margin="863,-45,0,0" Width="88" Click="DiscordButton_Click" Height="45" Foreground="White" BorderBrush="#7F000000" BorderThickness="1,0" Padding="0,20,0,4" IsTabStop="False">
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="Discord" Padding="0" />
+                <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="{Binding Source={x:Static resx:UIStringsContent.Discord}}"/>
+            </StackPanel>
+        </Button>
+        <ToggleButton x:Name="TargetButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.CharacterDetails.TargetModeActive}" Margin="455,25,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="21" Checked="TargetButton_Checked" Unchecked="TargetButton_Unchecked" IsTabStop="False" />
+        <Button x:Name="SavePoint" ToolTip="{Binding Source={x:Static resx:UIStringsContent.SavePointToolTip}}" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.SavePointButton}}" HorizontalAlignment="Left" Margin="1005,50,0,0" VerticalAlignment="Top" Width="100" IsTabStop="False" Click="SavePoint_Click" Padding="0,4"/>
+        <Button x:Name="LoadSavePoint" ToolTip="{Binding Source={x:Static resx:UIStringsContent.LoadPointToolTip}}" Style="{StaticResource MaterialDesignRaisedAccentButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.LoadPointButton}}" HorizontalAlignment="Left" Margin="900,50,0,0" VerticalAlignment="Top" Width="100" IsTabStop="False" Click="LoadSavePoint_Click" Padding="0,4"/>
+
+        <Button HorizontalAlignment="Left" Style="{DynamicResource MaterialDesignFlatButton}" VerticalAlignment="Top" x:Name="Wiki" Margin="638,-45,0,0" Width="74" Height="45" Foreground="White" BorderBrush="#7F000000" BorderThickness="1,0" Padding="0,20,0,4" IsTabStop="False" Click="Wiki_Click">
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="Directions" Padding="0"/>
+                <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="{Binding Source={x:Static resx:UIStringsContent.Wiki}}" />
+            </StackPanel>
+        </Button>
+        <TextBlock Text="{Binding Path=CharacterDetails.CharacterDetails.TerritoryName}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="257,-45,0,0" Width="376" Height="45" Foreground="White" TextAlignment="Right" FontSize="15" Padding="10,22,0,4" IsEnabled="False" IsHitTestVisible="False"/>
+        <Viewbox HorizontalAlignment="Left" Height="29" Margin="355,1,0,0" VerticalAlignment="Top" Width="95">
+            <Label Content="{Binding Source={x:Static resx:UIStringsContent.GPoseMode}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.GposeModeToolTip}}" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Height="27"/>
+        </Viewbox>
+        <Viewbox HorizontalAlignment="Left" Height="29" Margin="355,22,0,0" VerticalAlignment="Top" Width="95">
+            <Label Content="{Binding Source={x:Static resx:UIStringsContent.TargetMode}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.TargetModeToolTip}}" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14"/>
+        </Viewbox>
+
+    </Grid>
+</controls:MetroWindow>
