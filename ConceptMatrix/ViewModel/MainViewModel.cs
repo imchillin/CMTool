@@ -1,6 +1,7 @@
 ﻿using ConceptMatrix.Utility;
 using ConceptMatrix.Views;
 using MaterialDesignThemes.Wpf;
+using Newtonsoft.Json;
 using SaintCoinach;
 using System;
 using System.Collections.Generic;
@@ -274,19 +275,13 @@ namespace ConceptMatrix.ViewModel
         }
         private void LoadSettings(string region)
         {
-            // create an xml serializer
-            var serializer = new XmlSerializer(typeof(Settings), "");
-            // create namespace to remove it for the serializer
-            var ns = new XmlSerializerNamespaces();
-            // add blank namespaces
-            ns.Add("", "");
             if (region=="Live")
             {
-                using (var reader = new StreamReader(@"./OffsetSettings.xml"))
+                using (var reader = new StreamReader(@"./OffsetSettings.json"))
                 {
                     try
                     {
-                        Settings.Instance = (Settings)serializer.Deserialize(reader);
+                        Settings.Instance = JsonConvert.DeserializeObject<Settings>(reader.ReadToEnd());
                     }
                     catch (Exception ex)
                     {
@@ -300,11 +295,11 @@ namespace ConceptMatrix.ViewModel
             }
             else if (region == "zh")
             {
-                using (var reader = new StreamReader(@"./OffsetSettingsCN.xml"))
+                using (var reader = new StreamReader(@"./OffsetSettingsCN.json"))
                 {
                     try
                     {
-                        Settings.Instance = (Settings)serializer.Deserialize(reader);
+                        Settings.Instance = JsonConvert.DeserializeObject<Settings>(reader.ReadToEnd());
                     }
                     catch (Exception ex)
                     {
@@ -318,11 +313,11 @@ namespace ConceptMatrix.ViewModel
             }
             else if (region == "ko")
             {
-                using (var reader = new StreamReader(@"./OffsetSettingsKO.xml"))
+                using (var reader = new StreamReader(@"./OffsetSettingsKO.json"))
                 {
                     try
                     {
-                        Settings.Instance = (Settings)serializer.Deserialize(reader);
+                        Settings.Instance = JsonConvert.DeserializeObject<Settings>(reader.ReadToEnd());
                     }
                     catch (Exception ex)
                     {
@@ -341,19 +336,16 @@ namespace ConceptMatrix.ViewModel
             {
                 try
                 {
-                    string xmlStr;
+                    string jsonStr;
                     ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
                     using (var HAH = new WebClient())
                     {
-                        xmlStr = HAH.DownloadString(@"https://raw.githubusercontent.com/imchillin/CMTool/master/ConceptMatrix/OffsetSettings.xml");
+                        jsonStr = HAH.DownloadString(@"https://raw.githubusercontent.com/imchillin/CMTool/master/ConceptMatrix/OffsetSettings.json");
                     }
-                    var serializer = new XmlSerializer(typeof(Settings), "");
-                    var xmlDoc = new System.Xml.XmlDocument();
-                    xmlDoc.LoadXml(xmlStr);
-                    var offset = (Settings)serializer.Deserialize(new StringReader(xmlDoc.InnerXml));
+                    var offset = JsonConvert.DeserializeObject<Settings>(jsonStr);
                     if (!string.Equals(Settings.Instance.LastUpdated, offset.LastUpdated))
                     {
-                        File.WriteAllText(@"./OffsetSettings.xml", xmlDoc.InnerXml);
+                        File.WriteAllText(@"./OffsetSettings.json", jsonStr);
                         Settings.Instance = offset;
                         return true;
                     }
@@ -368,19 +360,16 @@ namespace ConceptMatrix.ViewModel
             {
                 try
                 {
-                    string xmlStr;
+                    string jsonStr;
                     ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
                     using (var HAH = new WebClient())
                     {
-                        xmlStr = HAH.DownloadString(@"https://raw.githubusercontent.com/imchillin/CMTool/master/ConceptMatrix/OffsetSettingsCN.xml");
+                        jsonStr = HAH.DownloadString(@"https://raw.githubusercontent.com/imchillin/CMTool/master/ConceptMatrix/OffsetSettingsCN.json");
                     }
-                    var serializer = new XmlSerializer(typeof(Settings), "");
-                    var xmlDoc = new System.Xml.XmlDocument();
-                    xmlDoc.LoadXml(xmlStr);
-                    var offset = (Settings)serializer.Deserialize(new StringReader(xmlDoc.InnerXml));
+                    var offset = JsonConvert.DeserializeObject<Settings>(jsonStr);
                     if (!string.Equals(Settings.Instance.LastUpdated, offset.LastUpdated))
                     {
-                        File.WriteAllText(@"./OffsetSettingsCN.xml", xmlDoc.InnerXml);
+                        File.WriteAllText(@"./OffsetSettings.json", jsonStr);
                         Settings.Instance = offset;
                         return true;
                     }
@@ -395,19 +384,16 @@ namespace ConceptMatrix.ViewModel
             {
                 try
                 {
-                    string xmlStr;
+                    string jsonStr;
                     ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
                     using (var HAH = new WebClient())
                     {
-                        xmlStr = HAH.DownloadString(@"https://raw.githubusercontent.com/imchillin/CMTool/master/ConceptMatrix/OffsetSettingsKO.xml");
+                        jsonStr = HAH.DownloadString(@"https://raw.githubusercontent.com/imchillin/CMTool/master/ConceptMatrix/OffsetSettingsKO.json");
                     }
-                    var serializer = new XmlSerializer(typeof(Settings), "");
-                    var xmlDoc = new System.Xml.XmlDocument();
-                    xmlDoc.LoadXml(xmlStr);
-                    var offset = (Settings)serializer.Deserialize(new StringReader(xmlDoc.InnerXml));
+                    var offset = JsonConvert.DeserializeObject<Settings>(jsonStr);
                     if (!string.Equals(Settings.Instance.LastUpdated, offset.LastUpdated))
                     {
-                        File.WriteAllText(@"./OffsetSettingsKO.xml", xmlDoc.InnerXml);
+                        File.WriteAllText(@"./OffsetSettings.json", jsonStr);
                         Settings.Instance = offset;
                         return true;
                     }

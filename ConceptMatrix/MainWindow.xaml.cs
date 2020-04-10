@@ -3,6 +3,7 @@ using ConceptMatrix.ViewModel;
 using ConceptMatrix.Windows;
 using MahApps.Metro.Controls;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
@@ -53,21 +54,21 @@ namespace ConceptMatrix
             CultureInfo.CurrentCulture = ci;
             CultureInfo.CurrentUICulture = ci;
 
+            JsonSerializer serializer = new JsonSerializer();
+
             // Call the update method.
             UpdateProgram();
 
-            if (!File.Exists(@"./OffsetSettings.xml"))
+            if (!File.Exists(@"./OffsetSettings.json"))
             {
                 try
                 {
-                    string xmlStr;
+                    string jsonStr;
                     using (var wc = new WebClient())
                     {
-                        xmlStr = wc.DownloadString(@"https://raw.githubusercontent.com/" + App.GithubRepo + "/master/" + App.ToolName + "/OffsetSettings.xml");
+                        jsonStr = wc.DownloadString(@"https://raw.githubusercontent.com/" + App.GithubRepo + "/master/" + App.ToolName + "/OffsetSettings.json");
                     }
-                    var xmlDoc = new System.Xml.XmlDocument();
-                    xmlDoc.LoadXml(xmlStr);
-                    File.WriteAllText(@"./OffsetSettings.xml", xmlDoc.InnerXml);
+                    File.WriteAllText(@"./OffsetSettings.json", jsonStr);
                 }
                 catch
                 {

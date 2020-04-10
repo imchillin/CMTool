@@ -236,7 +236,6 @@ namespace ConceptMatrix.Utility
     [Serializable]
     public struct BodyOffsets
     {
-        [XmlAttribute("Base")]
         public string Base { get; set; }
 
         public PositionOffsets Position { get; set; }
@@ -668,7 +667,6 @@ namespace ConceptMatrix.Utility
 	[Serializable]
     public struct Vector3Offsets
     {
-        [XmlAttribute("Base")]
         public string Base { get; set; }
 
         public string X { get; set; }
