@@ -916,7 +916,7 @@
         <Label Content="{Binding Source={x:Static resx:UIPoseStrings.RotationSliders}}" ToolTip="{Binding Source={x:Static resx:UIPoseStrings.RotationSlidersToolTip}}" HorizontalAlignment="Left" Margin="956,189,0,0" VerticalAlignment="Top" Height="28"/>
 
         <!-- Settings -->
-        <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.PoseMatrixSettings}}" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" Padding="0,0,0,0" Margin="864,331,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="189" Width="245">
+        <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.PoseMatrixSettings}}" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" Padding="5,0,0,0" Margin="864,331,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="189" Width="245">
             <StackPanel x:Name="PoseMatrixSetting" IsEnabled="False" Orientation="Vertical" Margin="25,5,0,0">
                 <StackPanel Orientation="Horizontal">
                     <Label x:Name="EditModeText" Content="{Binding Source={x:Static resx:UIPoseStrings.EnableEditing}}" HorizontalAlignment="Left" Width="140" VerticalAlignment="Top" Height="28"/>
