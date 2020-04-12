@@ -450,6 +450,7 @@ namespace ConceptMatrix.ViewModel
 
                             Application.Current.Dispatcher.Invoke(() => //Use Dispather to Update UI Immediately  
                             {
+                                MainViewModel.MainTime.ActorDataUnfreeze();
                                 MainViewModel.ViewTime5.PoseMatrixSetting.IsEnabled = true;
                                 PoseMatrixView.PosingMatrix.PoseMatrixSetting.IsEnabled = true;
                                 MainViewModel.ViewTime5.LoadCMP.IsEnabled = true;
@@ -459,20 +460,6 @@ namespace ConceptMatrix.ViewModel
                             });
                         }
                     }
-                }
-                var ActorIdentfication = m.get64bitCode(GAS(baseAddr, c.ActorID));
-                if (ActorIdentfication != OldMemoryLocation)
-                {
-                    OldMemoryLocation = ActorIdentfication;
-                    //do check here if Editmode is enabled then read new bone values.
-                    Application.Current.Dispatcher.Invoke(() => //Use Dispather to Update UI Immediately  
-                    {
-                        if (PoseMatrixView.PosingMatrix.EditModeButton.IsChecked == true)
-                        {
-                            PoseMatrixView.PosingMatrix.EnableTertiary();
-                            if (PoseMatrixViewModel.PoseVM.PointerPath != null) PoseMatrixView.PosingMatrix.GetPointers(PoseMatrixViewModel.PoseVM.TheButton);
-                        }
-                    });
                 }
                 byte[] CharacterBytes = m.readBytes(GAS(baseAddr, c.Race), 26);
                 
@@ -589,6 +576,21 @@ namespace ConceptMatrix.ViewModel
                 }
                 #endregion
                 if (!CharacterDetails.TestArray2.freeze) CharacterDetails.TestArray2.value = MemoryManager.ByteArrayToString(EquipmentArray);
+
+                var ActorIdentfication = m.get64bitCode(GAS(baseAddr, c.ActorID));
+                if (ActorIdentfication != OldMemoryLocation)
+                {
+                    OldMemoryLocation = ActorIdentfication;
+                    //do check here if Editmode is enabled then read new bone values.
+                    Application.Current.Dispatcher.Invoke(() => //Use Dispather to Update UI Immediately  
+                    {
+                        if (PoseMatrixView.PosingMatrix.EditModeButton.IsChecked == true)
+                        {
+                            PoseMatrixView.PosingMatrix.EnableTertiary();
+                            if (PoseMatrixViewModel.PoseVM.PointerPath != null) PoseMatrixView.PosingMatrix.GetPointers(PoseMatrixViewModel.PoseVM.TheButton);
+                        }
+                    });
+                }
 
                 if (!CharacterDetails.Voices.freeze) CharacterDetails.Voices.value = (byte)m.readByte(GAS(baseAddr, c.Voices));
 

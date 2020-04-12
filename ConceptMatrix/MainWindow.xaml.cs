@@ -1151,6 +1151,7 @@ namespace ConceptMatrix
                 MainViewModel.ViewTime5.PoseMatrixSetting.IsEnabled = true;
                 MainViewModel.ViewTime5.LoadCMP.IsEnabled = true;
                 MainViewModel.ViewTime5.AdvLoadCMP.IsEnabled = true;
+                ActorDataUnfreeze();
             }
         }
 
@@ -1389,6 +1390,48 @@ namespace ConceptMatrix
                 Process.Start($"https://github.com/Bluefissure/CMTool/wiki");
             }
             else Process.Start($"https://github.com/imchillin/CMTool/wiki");
+        }
+
+        public void ActorDataUnfreeze()
+        {
+            CharacterDetails.Race.freeze = false;
+            CharacterDetails.Clan.freeze = false;
+            CharacterDetails.Gender.freeze = false;
+            CharacterDetails.Head.freeze = false;
+            CharacterDetails.TailType.freeze = false;
+            CharacterDetails.LimbalEyes.freeze = false;
+            CharacterDetails.Nose.freeze = false;
+            CharacterDetails.Lips.freeze = false;
+            CharacterDetails.BodyType.freeze = false;
+            CharacterDetails.Highlights.freeze = false;
+            CharacterDetails.Hair.freeze = false;
+            CharacterDetails.HairTone.freeze = false;
+            CharacterDetails.HighlightTone.freeze = false;
+            CharacterDetails.Jaw.freeze = false;
+            CharacterDetails.RBust.freeze = false;
+            CharacterDetails.RHeight.freeze = false;
+            CharacterDetails.LipsTone.freeze = false;
+            CharacterDetails.Skintone.freeze = false;
+            CharacterDetails.FacialFeatures.freeze = false;
+            CharacterDetails.TailorMuscle.freeze = false;
+            CharacterDetails.Eye.freeze = false;
+            CharacterDetails.RightEye.freeze = false;
+            CharacterDetails.EyeBrowType.freeze = false;
+            CharacterDetails.LeftEye.freeze = false;
+            CharacterDetails.FacePaint.freeze = false;
+            CharacterDetails.FacePaintColor.freeze = false;
+            CharacterDetails.Offhand.freeze = false;
+            CharacterDetails.Job.freeze = false;
+            CharacterDetails.HeadPiece.freeze = false;
+            CharacterDetails.Chest.freeze = false;
+            CharacterDetails.Arms.freeze = false;
+            CharacterDetails.Legs.freeze = false;
+            CharacterDetails.Feet.freeze = false;
+            CharacterDetails.Ear.freeze = false;
+            CharacterDetails.Neck.freeze = false;
+            CharacterDetails.Wrist.freeze = false;
+            CharacterDetails.RFinger.freeze = false;
+            CharacterDetails.LFinger.freeze = false;
         }
     }
 }
