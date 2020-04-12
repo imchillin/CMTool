@@ -291,4 +291,7 @@
   <data name="DonateEna" xml:space="preserve">
     <value>Enaに寄付</value>
   </data>
+  <data name="Transparency" xml:space="preserve">
+    <value>UI 透明性</value>
+  </data>
 </root>

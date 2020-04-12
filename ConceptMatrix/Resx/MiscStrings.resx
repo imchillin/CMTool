@@ -291,4 +291,7 @@
   <data name="DonateEna" xml:space="preserve">
     <value>Donate to Ena</value>
   </data>
+  <data name="Transparency" xml:space="preserve">
+    <value>UI Transparency</value>
+  </data>
 </root>

@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace ConceptMatrix.Views
 {
@@ -24,8 +25,21 @@ namespace ConceptMatrix.Views
             SaveDirectory.Text = SaveSettings.Default.ProfileDirectory;
             SaveDirectory2.Text = SaveSettings.Default.MatrixPoseDirectory;
             SaveDirectory3.Text = SaveSettings.Default.GearsetsDirectory;
+
+            AppTransparencySlider.Maximum = 1000.0;
+            AppTransparencySlider.Minimum = 200.0;
+            AppTransparencySlider.Value = SaveSettings.Default.UITransparency;
         }
 
+        private void AppTransparencyChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            Application.Current.Dispatcher.InvokeAsync(async () =>
+            {
+                MainViewModel.MainTime.Opacity = AppTransparencySlider.Value/1000.0;
+                SaveSettings.Default.UITransparency = AppTransparencySlider.Value;
+            });
+        }
+  
         private void DirectoryButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             System.Windows.Forms.FolderBrowserDialog dig = new System.Windows.Forms.FolderBrowserDialog();

@@ -99,9 +99,11 @@
             <TextBlock Grid.Row="1" VerticalAlignment="Center" Text="{Binding Source={x:Static resx:MiscStrings.LightTheme}}"/>
             <ToggleButton x:Name="ThemeButton" Grid.Row="1" Grid.Column="1" Margin="10,4.797,9.999,3.203" Command="{Binding ToggleBaseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked}" HorizontalAlignment="Center" VerticalAlignment="Center" />
             <TextBlock Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Text="{Binding Source={x:Static resx:MiscStrings.DarkTheme}}"/>
-            <TextBlock Grid.Row="1" VerticalAlignment="Center" Text="{Binding Source={x:Static resx:MiscStrings.DisableBackground}}" Margin="127.467,5,-139.467,5" Grid.Column="2"/>
+            <TextBlock Grid.Row="1" VerticalAlignment="Center" Text="{Binding Source={x:Static resx:MiscStrings.DisableBackground}}" Margin="120.467,5,-139.467,5" Grid.Column="2"/>
             <ToggleButton x:Name="BackgroundButton" Grid.Row="1" Grid.Column="2" Margin="252,5,-179,3" Command="{Binding ToggleBackground}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" HorizontalAlignment="Center" VerticalAlignment="Center" />
             <TextBlock Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Text="{Binding Source={x:Static resx:MiscStrings.EnableBackground}}" Margin="300,5,-300,5"/>
+            <TextBlock Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Text="{Binding Source={x:Static resx:MiscStrings.Transparency}}" Margin="450,5,-450,5"/>
+            <Slider Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" x:Name="AppTransparencySlider" ValueChanged="AppTransparencyChanged" Width="200" Margin="550,5,-640,5"/>
         </Grid>
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="0,0,0,134">
             <ItemsControl ItemsSource="{Binding Swatches, Mode=OneTime}">
