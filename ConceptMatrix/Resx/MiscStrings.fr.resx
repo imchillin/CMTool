@@ -292,6 +292,6 @@
     <value>Faire un don à Ena</value>
   </data>
   <data name="Transparency" xml:space="preserve">
-    <value>Transparence</value>
+    <value>UI Transparence</value>
   </data>
 </root>

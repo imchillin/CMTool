@@ -574,7 +574,7 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Transparency.
+        ///   Looks up a localized string similar to UI Transparency.
         /// </summary>
         public static string Transparency {
             get {

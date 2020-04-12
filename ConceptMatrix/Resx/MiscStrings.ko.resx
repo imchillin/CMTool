@@ -292,6 +292,6 @@
     <value>Ena에게 후원하기</value>
   </data>
   <data name="Transparency" xml:space="preserve">
-    <value>투명도</value>
+    <value>UI 투명도</value>
   </data>
 </root>
