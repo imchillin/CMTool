@@ -574,6 +574,15 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Transparency.
+        /// </summary>
+        public static string Transparency {
+            get {
+                return ResourceManager.GetString("Transparency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Windows Explorer.
         /// </summary>
         public static string WindowsExplorer {

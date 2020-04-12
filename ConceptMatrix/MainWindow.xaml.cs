@@ -15,7 +15,6 @@ using System.Windows.Interop;
 using Microsoft.Win32;
 using ConceptMatrix.Models;
 using Newtonsoft.Json;
-using System.IO;
 using MaterialDesignThemes.Wpf;
 using System.Net;
 using ConceptMatrix.Views;
@@ -84,6 +83,9 @@ namespace ConceptMatrix
                 Environment.Exit(-1);
                 return;
             }
+
+            // needed to reference this as an object in PaletteView for transparency
+            MainViewModel.MainTime = this;
         }
 
         private void LanguageSelection()

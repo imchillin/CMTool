@@ -16,7 +16,8 @@
         xmlns:resx="clr-namespace:ConceptMatrix.Resx"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
-        Height="650" Width="1115" Loaded="MetroWindow_Loaded" Icon="cmtool-icon.ico" ResizeMode="CanMinimize">
+        Height="650" Width="1115" Loaded="MetroWindow_Loaded" Icon="cmtool-icon.ico" ResizeMode="CanMinimize"
+        AllowsTransparency="True" Opacity="1.0">
 
     <Window.Resources>
         <Style x:Key="MenuLevel2" BasedOn="{StaticResource MetroTabItem}" TargetType="{x:Type TabItem}">
