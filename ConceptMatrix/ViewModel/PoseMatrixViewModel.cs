@@ -249,7 +249,8 @@ namespace ConceptMatrix.ViewModel
 
         public void Bone_Flag_Manager()
         {
-            if (face_check != FaceRace.Middy && CharacterDetails.Race.value < 7)
+            var Race = Memory.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Race));
+            if (face_check != FaceRace.Middy && Race < 7)
             {
                 face_check = FaceRace.Middy;
                 bone_face = bone_face_middy;
@@ -257,7 +258,7 @@ namespace ConceptMatrix.ViewModel
                 bone_neck.Remove(bone_face_viera);
                 bone_neck.Add(bone_face_middy);
             }
-            else if (face_check != FaceRace.Hroth && CharacterDetails.Race.value == 7)
+            else if (face_check != FaceRace.Hroth && Race == 7)
             {
                 face_check = FaceRace.Hroth;
                 bone_face = bone_face_hroth;
@@ -265,7 +266,7 @@ namespace ConceptMatrix.ViewModel
                 bone_neck.Remove(bone_face_viera);
                 bone_neck.Add(bone_face_hroth);
             }
-            else if (face_check != FaceRace.Viera && CharacterDetails.Race.value == 8)
+            else if (face_check != FaceRace.Viera && Race == 8)
             {
                 face_check = FaceRace.Viera;
                 bone_face = bone_face_viera;
@@ -273,7 +274,7 @@ namespace ConceptMatrix.ViewModel
                 bone_neck.Remove(bone_face_hroth);
                 bone_neck.Add(bone_face_viera);
             }
-            EnableTertiaryFlags();
+            EnableTertiaryFlags(Race);
         }
 
         public static byte[] GetBytes(Quaternion q)
@@ -293,12 +294,12 @@ namespace ConceptMatrix.ViewModel
             bytes.AddRange(BitConverter.GetBytes(Z));
             return bytes.ToArray();
         }
-        public void EnableTertiaryFlags()
+        public void EnableTertiaryFlags(int race)
         {
             if (!ReadTetriaryFromRunTime)
             {
                 ReadTetriaryFromRunTime = true;
-                if (CharacterDetails.Race.value == 4 || CharacterDetails.Race.value == 6 || CharacterDetails.Race.value == 7)
+                if (race == 4 || race == 6 || race == 7)
                 {
                     PoseMatrixView.PosingMatrix.TailA.IsEnabled = true;
                     PoseMatrixView.PosingMatrix.TailB.IsEnabled = true;
@@ -307,12 +308,12 @@ namespace ConceptMatrix.ViewModel
                     PoseMatrixView.PosingMatrix.TailE.IsEnabled = true;
                     bone_waist.Add(bone_tail_a);
                 }
-                if (CharacterDetails.Race.value == 7)
+                if (race == 7)
                 {
                     PoseMatrixView.PosingMatrix.HrothWhiskersLeft.IsEnabled = true;
                     PoseMatrixView.PosingMatrix.HrothWhiskersRight.IsEnabled = true;
                 }
-                if (CharacterDetails.Race.value == 8)
+                if (race == 8)
                 {
                     PoseMatrixView.PosingMatrix.VieraEarALeft.IsEnabled = true;
                     PoseMatrixView.PosingMatrix.VieraEarARight.IsEnabled = true;

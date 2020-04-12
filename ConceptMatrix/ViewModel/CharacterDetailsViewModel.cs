@@ -460,7 +460,20 @@ namespace ConceptMatrix.ViewModel
                         }
                     }
                 }
-
+                var ActorIdentfication = m.get64bitCode(GAS(baseAddr, c.ActorID));
+                if (ActorIdentfication != OldMemoryLocation)
+                {
+                    OldMemoryLocation = ActorIdentfication;
+                    //do check here if Editmode is enabled then read new bone values.
+                    Application.Current.Dispatcher.Invoke(() => //Use Dispather to Update UI Immediately  
+                    {
+                        if (PoseMatrixView.PosingMatrix.EditModeButton.IsChecked == true)
+                        {
+                            PoseMatrixView.PosingMatrix.EnableTertiary();
+                            if (PoseMatrixViewModel.PoseVM.PointerPath != null) PoseMatrixView.PosingMatrix.GetPointers(PoseMatrixViewModel.PoseVM.TheButton);
+                        }
+                    });
+                }
                 byte[] CharacterBytes = m.readBytes(GAS(baseAddr, c.Race), 26);
                 
                 #region Actor AoB
@@ -821,20 +834,6 @@ namespace ConceptMatrix.ViewModel
                 if (!CharacterDetails.Weather.freeze) CharacterDetails.Weather.value = (byte)m.readByte(GAS(MemoryManager.Instance.WeatherAddress, c.Weather));
                 if (!CharacterDetails.ForceWeather.freeze) CharacterDetails.ForceWeather.value = (ushort)m.read2Byte(GAS(MemoryManager.Instance.GposeFilters, c.ForceWeather));
                 CharacterDetails.TimeControl.value = (int)m.readInt(GAS(MemoryManager.Instance.TimeAddress, c.TimeControl));
-                var ActorIdentfication = m.get64bitCode(GAS(baseAddr, c.ActorID));
-                if (ActorIdentfication != OldMemoryLocation)
-                {
-                    OldMemoryLocation = ActorIdentfication;
-                    //do check here if Editmode is enabled then read new bone values.
-                    Application.Current.Dispatcher.Invoke(() => //Use Dispather to Update UI Immediately  
-                    {
-                        if (PoseMatrixView.PosingMatrix.EditModeButton.IsChecked == true)
-                        {
-                            if (PoseMatrixViewModel.PoseVM.PointerPath != null) PoseMatrixView.PosingMatrix.GetPointers(PoseMatrixViewModel.PoseVM.TheButton);
-                            PoseMatrixView.PosingMatrix.EnableTertiary();
-                        }
-                    });
-                }
                 if (!CharacterDetails.HeadPiece.Activated) CharacterDetails.HeadSlot.value = CharacterDetails.HeadPiece.value + "," + CharacterDetails.HeadV.value + "," + CharacterDetails.HeadDye.value;
                 if (!CharacterDetails.Chest.Activated) CharacterDetails.BodySlot.value = CharacterDetails.Chest.value + "," + CharacterDetails.ChestV.value + "," + CharacterDetails.ChestDye.value;
                 if (!CharacterDetails.Arms.Activated) CharacterDetails.ArmSlot.value = CharacterDetails.Arms.value + "," + CharacterDetails.ArmsV.value + "," + CharacterDetails.ArmsDye.value;

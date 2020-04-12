@@ -1156,6 +1156,8 @@ namespace ConceptMatrix.Views
             BoneSliderY.Minimum = 0;
             BoneSliderZ.Maximum = 360;
             BoneSliderZ.Minimum = 0;
+            var Race = Memory.MemLib.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Race));
+            var Tail = Memory.MemLib.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.TailType));
             //if(newActive == "JawSize")
             switch (newActive)
             {
@@ -1176,12 +1178,12 @@ namespace ConceptMatrix.Views
                     if (ScaleToggle.IsChecked == true)
                     {
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
-                        if (CharacterDetails.Race.value == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothEyebrowLeft_Size;
+                        if (Race == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothEyebrowLeft_Size;
                         else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.EyebrowLeft_Size;
                     }
                     else
                     {
-                        if (CharacterDetails.Race.value == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothEyebrowLeft_Bone;
+                        if (Race == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothEyebrowLeft_Bone;
                         else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.EyebrowLeft_Bone;
                     }
                     break;
@@ -1189,12 +1191,12 @@ namespace ConceptMatrix.Views
                     if (ScaleToggle.IsChecked == true)
                     {
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
-                        if (CharacterDetails.Race.value == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothEyebrowRight_Size;
+                        if (Race == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothEyebrowRight_Size;
                         else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.EyebrowRight_Size;
                     }
                     else
                     {
-                        if (CharacterDetails.Race.value == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothEyebrowRight_Bone;
+                        if (Race == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothEyebrowRight_Bone;
                         else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.EyebrowRight_Bone;
                     }
                     break;
@@ -1226,12 +1228,12 @@ namespace ConceptMatrix.Views
                     if (ScaleToggle.IsChecked == true)
                     {
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
-                        if (CharacterDetails.Race.value == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothBridge_Size;
+                        if (Race == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothBridge_Size;
                         else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.Bridge_Size;
                     }
                     else
                     {
-                        if (CharacterDetails.Race.value == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothBridge_Bone;
+                        if (Race == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothBridge_Bone;
                         else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.Bridge_Bone;
                     }
                     break;
@@ -1239,12 +1241,12 @@ namespace ConceptMatrix.Views
                     if (ScaleToggle.IsChecked == true)
                     {
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
-                        if (CharacterDetails.Race.value == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothBrowLeft_Size;
+                        if (Race == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothBrowLeft_Size;
                         else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.BrowLeft_Bone;
                     }
                     else
                     {
-                        if (CharacterDetails.Race.value == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothBrowLeft_Bone;
+                        if (Race == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothBrowLeft_Bone;
                         else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.BrowLeft_Bone;
                     }
                     break;
@@ -1252,12 +1254,12 @@ namespace ConceptMatrix.Views
                     if (ScaleToggle.IsChecked == true)
                     {
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
-                        if (CharacterDetails.Race.value == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothBrowRight_Size;
+                        if (Race == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothBrowRight_Size;
                         else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.BrowRight_Size;
                     }
                     else
                     {
-                        if (CharacterDetails.Race.value == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothBrowRight_Bone;
+                        if (Race == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothBrowRight_Bone;
                         else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.BrowRight_Bone;
                     }
                     break;
@@ -1295,12 +1297,12 @@ namespace ConceptMatrix.Views
                     if (ScaleToggle.IsChecked == true)
                     {
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
-                        if (CharacterDetails.Race.value == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothEyelidUpperLeft_Size;
+                        if (Race == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothEyelidUpperLeft_Size;
                         else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.EyelidUpperLeft_Bone;
                     }
                     else
                     {
-                        if (CharacterDetails.Race.value == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothEyelidUpperLeft_Bone;
+                        if (Race == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothEyelidUpperLeft_Bone;
                         else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.EyelidUpperLeft_Bone;
                     }
                     break;
@@ -1308,12 +1310,12 @@ namespace ConceptMatrix.Views
                     if (ScaleToggle.IsChecked == true)
                     {
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
-                        if (CharacterDetails.Race.value == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothEyelidUpperRight_Size;
+                        if (Race == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothEyelidUpperRight_Size;
                         else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.EyelidUpperRight_Size;
                     }
                     else
                     {
-                        if (CharacterDetails.Race.value == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothEyelidUpperRight_Bone;
+                        if (Race == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothEyelidUpperRight_Bone;
                         else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.EyelidUpperRight_Bone;
                     }
                     break;
@@ -1345,12 +1347,12 @@ namespace ConceptMatrix.Views
                     if (ScaleToggle.IsChecked == true)
                     {
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
-                        if (CharacterDetails.Race.value == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothLipUpperLeft_Size;
+                        if (Race == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothLipUpperLeft_Size;
                         else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.CheekLeft_Size;
                     }
                     else
                     {
-                        if (CharacterDetails.Race.value == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothLipUpperLeft_Bone;
+                        if (Race == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothLipUpperLeft_Bone;
                         else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.CheekLeft_Bone;
                     }
                     break;
@@ -1358,12 +1360,12 @@ namespace ConceptMatrix.Views
                     if (ScaleToggle.IsChecked == true)
                     {
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
-                        if (CharacterDetails.Race.value == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothLipUpperRight_Size;
+                        if (Race == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothLipUpperRight_Size;
                         else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.CheekRight_Size;
                     }
                     else
                     {
-                        if (CharacterDetails.Race.value == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothLipUpperRight_Bone;
+                        if (Race == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothLipUpperRight_Bone;
                         else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.CheekRight_Bone;
                     }
                     break;
@@ -1371,12 +1373,12 @@ namespace ConceptMatrix.Views
                     if (ScaleToggle.IsChecked == true)
                     {
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
-                        if (CharacterDetails.Race.value == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothLipUpper_Size;
+                        if (Race == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothLipUpper_Size;
                         else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.LipUpperA_Size;
                     }
                     else
                     {
-                        if (CharacterDetails.Race.value == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothLipUpper_Bone;
+                        if (Race == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothLipUpper_Bone;
                         else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.LipUpperA_Bone;
                     }
                     break;
@@ -1384,14 +1386,14 @@ namespace ConceptMatrix.Views
                     if (ScaleToggle.IsChecked == true)
                     {
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
-                        if (CharacterDetails.Race.value == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothJawUpper_Size;
-                        else if (CharacterDetails.Race.value == 8) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraLipUpperB_Size;
+                        if (Race == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothJawUpper_Size;
+                        else if (Race == 8) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraLipUpperB_Size;
                         else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.LipUpperB_Size;
                     }
                     else
                     {
-                        if (CharacterDetails.Race.value == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothJawUpper_Bone;
-                        else if (CharacterDetails.Race.value == 8) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraLipUpperB_Bone;
+                        if (Race == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothJawUpper_Bone;
+                        else if (Race == 8) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraLipUpperB_Bone;
                         else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.LipUpperB_Bone;
                     }
                     break;
@@ -1399,12 +1401,12 @@ namespace ConceptMatrix.Views
                     if (ScaleToggle.IsChecked == true)
                     {
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
-                        if (CharacterDetails.Race.value == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothLipsLeft_Size;
+                        if (Race == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothLipsLeft_Size;
                         else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.LipsLeft_Size;
                     }
                     else
                     {
-                        if (CharacterDetails.Race.value == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothLipsLeft_Bone;
+                        if (Race == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothLipsLeft_Bone;
                         else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.LipsLeft_Bone;
                     }
                     break;
@@ -1412,12 +1414,12 @@ namespace ConceptMatrix.Views
                     if (ScaleToggle.IsChecked == true)
                     {
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
-                        if (CharacterDetails.Race.value == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothLipsRight_Size;
+                        if (Race == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothLipsRight_Size;
                         else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.LipsRight_Size;
                     }
                     else
                     {
-                        if (CharacterDetails.Race.value == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothLipsRight_Bone;
+                        if (Race == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothLipsRight_Bone;
                         else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.LipsRight_Bone;
                     }
                     break;
@@ -1425,14 +1427,14 @@ namespace ConceptMatrix.Views
                     if (ScaleToggle.IsChecked == true)
                     {
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
-                        if (CharacterDetails.Race.value == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothLipLower_Size;
-                        else if (CharacterDetails.Race.value == 8) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraLipLowerA_Size;
+                        if (Race == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothLipLower_Size;
+                        else if (Race == 8) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraLipLowerA_Size;
                         else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.LipLowerA_Size;
                     }
                     else
                     {
-                        if (CharacterDetails.Race.value == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothLipLower_Bone;
-                        else if (CharacterDetails.Race.value == 8) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraLipLowerA_Bone;
+                        if (Race == 7) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.HrothLipLower_Bone;
+                        else if (Race == 8) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraLipLowerA_Bone;
                         else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.LipLowerA_Bone;
                     }
                     break;
@@ -1440,12 +1442,12 @@ namespace ConceptMatrix.Views
                     if (ScaleToggle.IsChecked == true)
                     {
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
-                        if (CharacterDetails.Race.value == 8) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraLipLowerB_Size;
+                        if (Race == 8) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraLipLowerB_Size;
                         else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.LipLowerB_Size;
                     }
                     else
                     {
-                        if (CharacterDetails.Race.value == 8) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraLipLowerB_Bone;
+                        if (Race == 8) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraLipLowerB_Bone;
                         else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.LipLowerB_Bone;
                     }
                     break;
@@ -1454,76 +1456,76 @@ namespace ConceptMatrix.Views
                     if (ScaleToggle.IsChecked == true)
                     {
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
-                        if (CharacterDetails.TailType.value == 0) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01ALeft_Size;
-                        else if (CharacterDetails.TailType.value == 1) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01ALeft_Size;
-                        else if (CharacterDetails.TailType.value == 2) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar02ALeft_Size;
-                        else if (CharacterDetails.TailType.value == 3) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar03ALeft_Size;
-                        else if (CharacterDetails.TailType.value == 4) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar04ALeft_Size;
+                        if (Tail == 0) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01ALeft_Size;
+                        else if (Tail == 1) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01ALeft_Size;
+                        else if (Tail == 2) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar02ALeft_Size;
+                        else if (Tail == 3) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar03ALeft_Size;
+                        else if (Tail == 4) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar04ALeft_Size;
                     }
                     else
                     {
-                        if (CharacterDetails.TailType.value == 0) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01ALeft_Bone;
-                        else if (CharacterDetails.TailType.value == 1) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01ALeft_Bone;
-                        else if (CharacterDetails.TailType.value == 2) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar02ALeft_Bone;
-                        else if (CharacterDetails.TailType.value == 3) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar03ALeft_Bone;
-                        else if (CharacterDetails.TailType.value == 4) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar04ALeft_Bone;
+                        if (Tail == 0) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01ALeft_Bone;
+                        else if (Tail == 1) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01ALeft_Bone;
+                        else if (Tail == 2) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar02ALeft_Bone;
+                        else if (Tail == 3) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar03ALeft_Bone;
+                        else if (Tail == 4) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar04ALeft_Bone;
                     }
                     break;
                 case "VieraEarBLeft":
                     if (ScaleToggle.IsChecked == true)
                     {
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
-                        if (CharacterDetails.TailType.value == 0) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01BLeft_Bone;
-                        else if (CharacterDetails.TailType.value == 1) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01BLeft_Bone;
-                        else if (CharacterDetails.TailType.value == 2) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar02BLeft_Bone;
-                        else if (CharacterDetails.TailType.value == 3) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar03BLeft_Bone;
-                        else if (CharacterDetails.TailType.value == 4) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar04BLeft_Bone;
+                        if (Tail == 0) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01BLeft_Bone;
+                        else if (Tail == 1) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01BLeft_Bone;
+                        else if (Tail == 2) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar02BLeft_Bone;
+                        else if (Tail == 3) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar03BLeft_Bone;
+                        else if (Tail == 4) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar04BLeft_Bone;
                     }
                     else
                     {
-                        if (CharacterDetails.TailType.value == 0) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01BLeft_Bone;
-                        else if (CharacterDetails.TailType.value == 1) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01BLeft_Bone;
-                        else if (CharacterDetails.TailType.value == 2) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar02BLeft_Bone;
-                        else if (CharacterDetails.TailType.value == 3) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar03BLeft_Bone;
-                        else if (CharacterDetails.TailType.value == 4) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar04BLeft_Bone;
+                        if (Tail == 0) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01BLeft_Bone;
+                        else if (Tail == 1) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01BLeft_Bone;
+                        else if (Tail == 2) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar02BLeft_Bone;
+                        else if (Tail == 3) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar03BLeft_Bone;
+                        else if (Tail == 4) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar04BLeft_Bone;
                     }
                     break;
                 case "VieraEarARight":
                     if (ScaleToggle.IsChecked == true)
                     {
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
-                        if (CharacterDetails.TailType.value == 0) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01ARight_Bone;
-                        else if (CharacterDetails.TailType.value == 1) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01ARight_Bone;
-                        else if (CharacterDetails.TailType.value == 2) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar02ARight_Bone;
-                        else if (CharacterDetails.TailType.value == 3) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar03ARight_Bone;
-                        else if (CharacterDetails.TailType.value == 4) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar04ARight_Bone;
+                        if (Tail == 0) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01ARight_Bone;
+                        else if (Tail == 1) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01ARight_Bone;
+                        else if (Tail == 2) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar02ARight_Bone;
+                        else if (Tail == 3) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar03ARight_Bone;
+                        else if (Tail == 4) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar04ARight_Bone;
                     }
                     else
                     {
-                        if (CharacterDetails.TailType.value == 0) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01ARight_Bone;
-                        else if (CharacterDetails.TailType.value == 1) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01ARight_Bone;
-                        else if (CharacterDetails.TailType.value == 2) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar02ARight_Bone;
-                        else if (CharacterDetails.TailType.value == 3) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar03ARight_Bone;
-                        else if (CharacterDetails.TailType.value == 4) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar04ARight_Bone;
+                        if (Tail == 0) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01ARight_Bone;
+                        else if (Tail == 1) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01ARight_Bone;
+                        else if (Tail == 2) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar02ARight_Bone;
+                        else if (Tail == 3) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar03ARight_Bone;
+                        else if (Tail == 4) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar04ARight_Bone;
                     }
                     break;
                 case "VieraEarBRight":
                     if (ScaleToggle.IsChecked == true)
                     {
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
-                        if (CharacterDetails.TailType.value == 0) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01BRight_Bone;
-                        else if (CharacterDetails.TailType.value == 1) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01BRight_Bone;
-                        else if (CharacterDetails.TailType.value == 2) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar02BRight_Bone;
-                        else if (CharacterDetails.TailType.value == 3) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar03BRight_Bone;
-                        else if (CharacterDetails.TailType.value == 4) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar04BRight_Bone;
+                        if (Tail == 0) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01BRight_Bone;
+                        else if (Tail == 1) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01BRight_Bone;
+                        else if (Tail == 2) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar02BRight_Bone;
+                        else if (Tail == 3) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar03BRight_Bone;
+                        else if (Tail == 4) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar04BRight_Bone;
                     }
                     else
                     {
-                        if (CharacterDetails.TailType.value == 0) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01BRight_Bone;
-                        else if (CharacterDetails.TailType.value == 1) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01BRight_Bone;
-                        else if (CharacterDetails.TailType.value == 2) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar02BRight_Bone;
-                        else if (CharacterDetails.TailType.value == 3) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar03BRight_Bone;
-                        else if (CharacterDetails.TailType.value == 4) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar04BRight_Bone;
+                        if (Tail == 0) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01BRight_Bone;
+                        else if (Tail == 1) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar01BRight_Bone;
+                        else if (Tail == 2) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar02BRight_Bone;
+                        else if (Tail == 3) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar03BRight_Bone;
+                        else if (Tail == 4) PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.VieraEar04BRight_Bone;
                     }
                     break;
 
@@ -4818,6 +4820,8 @@ namespace ConceptMatrix.Views
                     PhysicsButton.IsChecked = false;
                     BoneSaves BoneLoader = JsonConvert.DeserializeObject<BoneSaves>(File.ReadAllText(dig.FileName));
 
+                    var Race = MemoryManager.Instance.MemLib.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Race));
+
                     #region Head
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Head_Bone), MemoryManager.StringToByteArray(BoneLoader.Head.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EarLeft_Bone), MemoryManager.StringToByteArray(BoneLoader.EarLeft.Replace(" ", string.Empty)));
@@ -4828,7 +4832,7 @@ namespace ConceptMatrix.Views
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyeLeft_Bone), MemoryManager.StringToByteArray(BoneLoader.EyeLeft.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyeRight_Bone), MemoryManager.StringToByteArray(BoneLoader.EyeRight.Replace(" ", string.Empty)));
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Nose_Bone), MemoryManager.StringToByteArray(BoneLoader.Nose.Replace(" ", string.Empty)));
-                    if (CharacterDetails.Race.value < 7)
+                    if (Race < 7)
                     {
                         if (BoneLoader.Race == "01" || BoneLoader.Race == "02" || BoneLoader.Race == "03" || BoneLoader.Race == "04" || BoneLoader.Race == "05" || BoneLoader.Race == "06")
                         {
@@ -4883,7 +4887,7 @@ namespace ConceptMatrix.Views
                             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipLowerB_Bone), MemoryManager.StringToByteArray(BoneLoader.VieraLipLowerB.Replace(" ", string.Empty)));
                         }
                     }
-                    if (CharacterDetails.Race.value == 7)
+                    if (Race == 7)
                     {
                         if (BoneLoader.Race == "01" || BoneLoader.Race == "02" || BoneLoader.Race == "03" || BoneLoader.Race == "04" || BoneLoader.Race == "05" || BoneLoader.Race == "06")
                         {
@@ -4936,7 +4940,7 @@ namespace ConceptMatrix.Views
                             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipUpperRight_Bone), MemoryManager.StringToByteArray(BoneLoader.CheekRight.Replace(" ", string.Empty)));
                         }
                     }
-                    if (CharacterDetails.Race.value == 8)
+                    if (Race == 8)
                     {
                         if (BoneLoader.Race == "01" || BoneLoader.Race == "02" || BoneLoader.Race == "03" || BoneLoader.Race == "04" || BoneLoader.Race == "05" || BoneLoader.Race == "06")
                         {
@@ -4992,14 +4996,14 @@ namespace ConceptMatrix.Views
                     }
                     if (BoneLoader.HrothLipLower != "null" || BoneLoader.VieraEar02ARight != "null")
                     {
-                        if (CharacterDetails.Race.value == 7)
+                        if (Race == 7)
                         {
                             if (BoneLoader.Race == "07")
                             {
                                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipLower_Bone), MemoryManager.StringToByteArray(BoneLoader.HrothLipLower.Replace(" ", string.Empty)));
                             }
                         }
-                        if (CharacterDetails.Race.value == 8)
+                        if (Race == 8)
                         {
                             if (BoneLoader.Race == "08")
                             {
@@ -5009,13 +5013,13 @@ namespace ConceptMatrix.Views
                     }
                     if (BoneLoader.VieraEar03ALeft != "null")
                     {
-                        if (CharacterDetails.Race.value < 7)
+                        if (Race < 7)
                         {
                             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipLowerA_Bone), MemoryManager.StringToByteArray(BoneLoader.VieraLipLowerA.Replace(" ", string.Empty)));
                             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipUpperB_Bone), MemoryManager.StringToByteArray(BoneLoader.VieraLipUpperB.Replace(" ", string.Empty)));
                             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipLowerB_Bone), MemoryManager.StringToByteArray(BoneLoader.VieraLipLowerB.Replace(" ", string.Empty)));
                         }
-                        if (CharacterDetails.Race.value == 8)
+                        if (Race == 8)
                         {
                             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar03ALeft_Bone), MemoryManager.StringToByteArray(BoneLoader.VieraEar03ALeft.Replace(" ", string.Empty)));
                             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar03ARight_Bone), MemoryManager.StringToByteArray(BoneLoader.VieraEar03ARight.Replace(" ", string.Empty)));
@@ -5460,7 +5464,7 @@ namespace ConceptMatrix.Views
                             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyeLeft_Size), MemoryManager.StringToByteArray(BoneLoader.EyeLeftSize.Replace(" ", string.Empty)));
                             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyeRight_Size), MemoryManager.StringToByteArray(BoneLoader.EyeRightSize.Replace(" ", string.Empty)));
                             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Nose_Size), MemoryManager.StringToByteArray(BoneLoader.NoseSize.Replace(" ", string.Empty)));
-                            if (CharacterDetails.Race.value < 7)
+                            if (Race < 7)
                             {
                                 if (BoneLoader.Race == "01" || BoneLoader.Race == "02" || BoneLoader.Race == "03" || BoneLoader.Race == "04" || BoneLoader.Race == "05" || BoneLoader.Race == "06")
                                 {
@@ -5515,7 +5519,7 @@ namespace ConceptMatrix.Views
                                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipLowerB_Size), MemoryManager.StringToByteArray(BoneLoader.VieraLipLowerBSize.Replace(" ", string.Empty)));
                                 }
                             }
-                            if (CharacterDetails.Race.value == 7)
+                            if (Race == 7)
                             {
                                 if (BoneLoader.Race == "01" || BoneLoader.Race == "02" || BoneLoader.Race == "03" || BoneLoader.Race == "04" || BoneLoader.Race == "05" || BoneLoader.Race == "06")
                                 {
@@ -5568,7 +5572,7 @@ namespace ConceptMatrix.Views
                                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipUpperRight_Size), MemoryManager.StringToByteArray(BoneLoader.CheekRightSize.Replace(" ", string.Empty)));
                                 }
                             }
-                            if (CharacterDetails.Race.value == 8)
+                            if (Race == 8)
                             {
                                 if (BoneLoader.Race == "01" || BoneLoader.Race == "02" || BoneLoader.Race == "03" || BoneLoader.Race == "04" || BoneLoader.Race == "05" || BoneLoader.Race == "06")
                                 {
@@ -5624,14 +5628,14 @@ namespace ConceptMatrix.Views
                             }
                             if (BoneLoader.HrothLipLower != "null" || BoneLoader.VieraEar02ARight != "null")
                             {
-                                if (CharacterDetails.Race.value == 7)
+                                if (Race == 7)
                                 {
                                     if (BoneLoader.Race == "07")
                                     {
                                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipLower_Size), MemoryManager.StringToByteArray(BoneLoader.HrothLipLowerSize.Replace(" ", string.Empty)));
                                     }
                                 }
-                                if (CharacterDetails.Race.value == 8)
+                                if (Race == 8)
                                 {
                                     if (BoneLoader.Race == "08")
                                     {
@@ -5641,13 +5645,13 @@ namespace ConceptMatrix.Views
                             }
                             if (BoneLoader.VieraEar03ALeft != "null")
                             {
-                                if (CharacterDetails.Race.value < 7)
+                                if (Race < 7)
                                 {
                                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipLowerA_Size), MemoryManager.StringToByteArray(BoneLoader.VieraLipLowerASize.Replace(" ", string.Empty)));
                                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipUpperB_Size), MemoryManager.StringToByteArray(BoneLoader.VieraLipUpperBSize.Replace(" ", string.Empty)));
                                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipLowerB_Size), MemoryManager.StringToByteArray(BoneLoader.VieraLipLowerBSize.Replace(" ", string.Empty)));
                                 }
-                                if (CharacterDetails.Race.value == 8)
+                                if (Race == 8)
                                 {
                                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar03ALeft_Size), MemoryManager.StringToByteArray(BoneLoader.VieraEar03ALeftSize.Replace(" ", string.Empty)));
                                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar03ARight_Size), MemoryManager.StringToByteArray(BoneLoader.VieraEar03ARightSize.Replace(" ", string.Empty)));
@@ -6077,6 +6081,8 @@ namespace ConceptMatrix.Views
                     PhysicsButton.IsChecked = false;
                     BoneSaves BoneLoader = JsonConvert.DeserializeObject<BoneSaves>(File.ReadAllText(dig.FileName));
 
+                    var Race = MemoryManager.Instance.MemLib.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Race));
+
                     #region Head
                     if (HeadAdvLoad.IsChecked == true)
                     {
@@ -6089,7 +6095,7 @@ namespace ConceptMatrix.Views
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyeLeft_Bone), MemoryManager.StringToByteArray(BoneLoader.EyeLeft.Replace(" ", string.Empty)));
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyeRight_Bone), MemoryManager.StringToByteArray(BoneLoader.EyeRight.Replace(" ", string.Empty)));
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Nose_Bone), MemoryManager.StringToByteArray(BoneLoader.Nose.Replace(" ", string.Empty)));
-                        if (CharacterDetails.Race.value < 7)
+                        if (Race < 7)
                         {
                             if (BoneLoader.Race == "01" || BoneLoader.Race == "02" || BoneLoader.Race == "03" || BoneLoader.Race == "04" || BoneLoader.Race == "05" || BoneLoader.Race == "06")
                             {
@@ -6144,7 +6150,7 @@ namespace ConceptMatrix.Views
                                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipLowerB_Bone), MemoryManager.StringToByteArray(BoneLoader.VieraLipLowerB.Replace(" ", string.Empty)));
                             }
                         }
-                        if (CharacterDetails.Race.value == 7)
+                        if (Race == 7)
                         {
                             if (BoneLoader.Race == "01" || BoneLoader.Race == "02" || BoneLoader.Race == "03" || BoneLoader.Race == "04" || BoneLoader.Race == "05" || BoneLoader.Race == "06")
                             {
@@ -6197,7 +6203,7 @@ namespace ConceptMatrix.Views
                                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipUpperRight_Bone), MemoryManager.StringToByteArray(BoneLoader.CheekRight.Replace(" ", string.Empty)));
                             }
                         }
-                        if (CharacterDetails.Race.value == 8)
+                        if (Race == 8)
                         {
                             if (BoneLoader.Race == "01" || BoneLoader.Race == "02" || BoneLoader.Race == "03" || BoneLoader.Race == "04" || BoneLoader.Race == "05" || BoneLoader.Race == "06")
                             {
@@ -6253,14 +6259,14 @@ namespace ConceptMatrix.Views
                         }
                         if (BoneLoader.HrothLipLower != "null" || BoneLoader.VieraEar02ARight != "null")
                         {
-                            if (CharacterDetails.Race.value == 7)
+                            if (Race == 7)
                             {
                                 if (BoneLoader.Race == "07")
                                 {
                                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipLower_Bone), MemoryManager.StringToByteArray(BoneLoader.HrothLipLower.Replace(" ", string.Empty)));
                                 }
                             }
-                            if (CharacterDetails.Race.value == 8)
+                            if (Race == 8)
                             {
                                 if (BoneLoader.Race == "08")
                                 {
@@ -6270,13 +6276,13 @@ namespace ConceptMatrix.Views
                         }
                         if (BoneLoader.VieraEar03ALeft != "null")
                         {
-                            if (CharacterDetails.Race.value < 7)
+                            if (Race < 7)
                             {
                                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipLowerA_Bone), MemoryManager.StringToByteArray(BoneLoader.VieraLipLowerA.Replace(" ", string.Empty)));
                                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipUpperB_Bone), MemoryManager.StringToByteArray(BoneLoader.VieraLipUpperB.Replace(" ", string.Empty)));
                                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipLowerB_Bone), MemoryManager.StringToByteArray(BoneLoader.VieraLipLowerB.Replace(" ", string.Empty)));
                             }
-                            if (CharacterDetails.Race.value == 8)
+                            if (Race == 8)
                             {
                                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar03ALeft_Bone), MemoryManager.StringToByteArray(BoneLoader.VieraEar03ALeft.Replace(" ", string.Empty)));
                                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar03ARight_Bone), MemoryManager.StringToByteArray(BoneLoader.VieraEar03ARight.Replace(" ", string.Empty)));
@@ -6765,7 +6771,7 @@ namespace ConceptMatrix.Views
                                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyeLeft_Size), MemoryManager.StringToByteArray(BoneLoader.EyeLeftSize.Replace(" ", string.Empty)));
                                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyeRight_Size), MemoryManager.StringToByteArray(BoneLoader.EyeRightSize.Replace(" ", string.Empty)));
                                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Nose_Size), MemoryManager.StringToByteArray(BoneLoader.NoseSize.Replace(" ", string.Empty)));
-                                if (CharacterDetails.Race.value < 7)
+                                if (Race < 7)
                                 {
                                     if (BoneLoader.Race == "01" || BoneLoader.Race == "02" || BoneLoader.Race == "03" || BoneLoader.Race == "04" || BoneLoader.Race == "05" || BoneLoader.Race == "06")
                                     {
@@ -6820,7 +6826,7 @@ namespace ConceptMatrix.Views
                                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipLowerB_Size), MemoryManager.StringToByteArray(BoneLoader.VieraLipLowerBSize.Replace(" ", string.Empty)));
                                     }
                                 }
-                                if (CharacterDetails.Race.value == 7)
+                                if (Race == 7)
                                 {
                                     if (BoneLoader.Race == "01" || BoneLoader.Race == "02" || BoneLoader.Race == "03" || BoneLoader.Race == "04" || BoneLoader.Race == "05" || BoneLoader.Race == "06")
                                     {
@@ -6873,7 +6879,7 @@ namespace ConceptMatrix.Views
                                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipUpperRight_Size), MemoryManager.StringToByteArray(BoneLoader.CheekRightSize.Replace(" ", string.Empty)));
                                     }
                                 }
-                                if (CharacterDetails.Race.value == 8)
+                                if (Race == 8)
                                 {
                                     if (BoneLoader.Race == "01" || BoneLoader.Race == "02" || BoneLoader.Race == "03" || BoneLoader.Race == "04" || BoneLoader.Race == "05" || BoneLoader.Race == "06")
                                     {
@@ -6929,14 +6935,14 @@ namespace ConceptMatrix.Views
                                 }
                                 if (BoneLoader.HrothLipLower != "null" || BoneLoader.VieraEar02ARight != "null")
                                 {
-                                    if (CharacterDetails.Race.value == 7)
+                                    if (Race == 7)
                                     {
                                         if (BoneLoader.Race == "07")
                                         {
                                             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipLower_Size), MemoryManager.StringToByteArray(BoneLoader.HrothLipLowerSize.Replace(" ", string.Empty)));
                                         }
                                     }
-                                    if (CharacterDetails.Race.value == 8)
+                                    if (Race == 8)
                                     {
                                         if (BoneLoader.Race == "08")
                                         {
@@ -6946,13 +6952,13 @@ namespace ConceptMatrix.Views
                                 }
                                 if (BoneLoader.VieraEar03ALeft != "null")
                                 {
-                                    if (CharacterDetails.Race.value < 7)
+                                    if (Race < 7)
                                     {
                                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipLowerA_Size), MemoryManager.StringToByteArray(BoneLoader.VieraLipLowerASize.Replace(" ", string.Empty)));
                                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipUpperB_Size), MemoryManager.StringToByteArray(BoneLoader.VieraLipUpperBSize.Replace(" ", string.Empty)));
                                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipLowerB_Size), MemoryManager.StringToByteArray(BoneLoader.VieraLipLowerBSize.Replace(" ", string.Empty)));
                                     }
-                                    if (CharacterDetails.Race.value == 8)
+                                    if (Race == 8)
                                     {
                                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar03ALeft_Size), MemoryManager.StringToByteArray(BoneLoader.VieraEar03ALeftSize.Replace(" ", string.Empty)));
                                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar03ARight_Size), MemoryManager.StringToByteArray(BoneLoader.VieraEar03ARightSize.Replace(" ", string.Empty)));
