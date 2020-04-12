@@ -335,6 +335,15 @@ namespace ConceptMatrix.ViewModel
                                 MainViewModel.ViewTime5.AdvLoadCMP.IsEnabled = false;
                                 PoseMatrixView.PosingMatrix.LoadCMP.IsEnabled = false;
                                 PoseMatrixView.PosingMatrix.AdvLoadCMP.IsEnabled = false;
+
+                                MainViewModel.ViewTime6.PoseMatrixSetting.IsEnabled = false;
+                                MainViewModel.ViewTime6.EditModeButton.IsChecked = false;
+                                CharacterDetailsView5.PosingMatrix.PoseMatrixSetting.IsEnabled = false;
+                                CharacterDetailsView5.PosingMatrix.EditModeButton.IsChecked = false;
+                                MainViewModel.ViewTime6.LoadCMP.IsEnabled = false;
+                                MainViewModel.ViewTime6.AdvLoadCMP.IsEnabled = false;
+                                CharacterDetailsView5.PosingMatrix.LoadCMP.IsEnabled = false;
+                                CharacterDetailsView5.PosingMatrix.AdvLoadCMP.IsEnabled = false;
                             });
                         }
                     }
@@ -457,6 +466,13 @@ namespace ConceptMatrix.ViewModel
                                 MainViewModel.ViewTime5.AdvLoadCMP.IsEnabled = true;
                                 PoseMatrixView.PosingMatrix.LoadCMP.IsEnabled = true;
                                 PoseMatrixView.PosingMatrix.AdvLoadCMP.IsEnabled = true;
+
+                                MainViewModel.ViewTime6.PoseMatrixSetting.IsEnabled = true;
+                                CharacterDetailsView5.PosingMatrix.PoseMatrixSetting.IsEnabled = true;
+                                MainViewModel.ViewTime6.LoadCMP.IsEnabled = true;
+                                MainViewModel.ViewTime6.AdvLoadCMP.IsEnabled = true;
+                                CharacterDetailsView5.PosingMatrix.LoadCMP.IsEnabled = true;
+                                CharacterDetailsView5.PosingMatrix.AdvLoadCMP.IsEnabled = true;
                             });
                         }
                     }
@@ -588,6 +604,11 @@ namespace ConceptMatrix.ViewModel
                         {
                             PoseMatrixView.PosingMatrix.EnableTertiary();
                             if (PoseMatrixViewModel.PoseVM.PointerPath != null) PoseMatrixView.PosingMatrix.GetPointers(PoseMatrixViewModel.PoseVM.TheButton);
+                        }
+                        if (CharacterDetailsView5.PosingMatrix.EditModeButton.IsChecked == true)
+                        {
+                            CharacterDetailsView5.PosingMatrix.EnableTertiary();
+                            if (PoseMatrixViewModel.PoseVM.PointerPath != null) CharacterDetailsView5.PosingMatrix.GetPointers(PoseMatrixViewModel.PoseVM.TheButton);
                         }
                     });
                 }

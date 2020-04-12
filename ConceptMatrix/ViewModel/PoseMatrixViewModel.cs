@@ -63,6 +63,9 @@ namespace ConceptMatrix.ViewModel
         public float CubeBone_Z { get; set; }
         public float CubeBone_W { get; set; }
 
+        public double MaxBone { get; set; }
+        public double MinBone { get; set; }
+
         private string pointerPath;
         public string PointerPath
         {
@@ -85,32 +88,23 @@ namespace ConceptMatrix.ViewModel
                     {
                         if (PointerType == 1)
                         {
-                            PoseMatrixView.PosingMatrix.XUpDown.Minimum = -10;
-                            PoseMatrixView.PosingMatrix.XUpDown.Maximum = 10;
-                            PoseMatrixView.PosingMatrix.YUpDown.Maximum = 10;
-                            PoseMatrixView.PosingMatrix.YUpDown.Minimum = -10;
-                            PoseMatrixView.PosingMatrix.ZUpDown.Maximum = 10;
-                            PoseMatrixView.PosingMatrix.ZUpDown.Minimum = -10;
-                            PoseMatrixView.PosingMatrix.BoneSliderX.Maximum = 10;
-                            PoseMatrixView.PosingMatrix.BoneSliderX.Minimum = -10;
-                            PoseMatrixView.PosingMatrix.BoneSliderY.Maximum = 10;
-                            PoseMatrixView.PosingMatrix.BoneSliderY.Minimum = -10;
-                            PoseMatrixView.PosingMatrix.BoneSliderZ.Maximum = 10;
-                            PoseMatrixView.PosingMatrix.BoneSliderZ.Minimum = -10;
+                            MinBone = -10;
+                            MaxBone = 10;
                             PoseMatrixView.PosingMatrix.Cube.IsEnabled = false;
+                            CharacterDetailsView5.PosingMatrix.Cube.IsEnabled = false;
                         }
                         else
                         {
-                            PoseMatrixView.PosingMatrix.XUpDown.Minimum = float.MinValue;
-                            PoseMatrixView.PosingMatrix.XUpDown.Maximum = float.MaxValue;
-                            PoseMatrixView.PosingMatrix.YUpDown.Maximum = float.MaxValue;
-                            PoseMatrixView.PosingMatrix.YUpDown.Minimum = float.MinValue;
-                            PoseMatrixView.PosingMatrix.ZUpDown.Maximum = float.MaxValue;
-                            PoseMatrixView.PosingMatrix.ZUpDown.Minimum = float.MinValue;
+                            MinBone = float.MinValue;
+                            MaxBone = float.MaxValue;
                             PoseMatrixView.PosingMatrix.BoneSliderX.IsEnabled = false;
                             PoseMatrixView.PosingMatrix.BoneSliderY.IsEnabled = false;
                             PoseMatrixView.PosingMatrix.BoneSliderZ.IsEnabled = false;
                             PoseMatrixView.PosingMatrix.Cube.IsEnabled = false;
+                            CharacterDetailsView5.PosingMatrix.BoneSliderX.IsEnabled = false;
+                            CharacterDetailsView5.PosingMatrix.BoneSliderY.IsEnabled = false;
+                            CharacterDetailsView5.PosingMatrix.BoneSliderZ.IsEnabled = false;
+                            CharacterDetailsView5.PosingMatrix.Cube.IsEnabled = false;
                         }
                         BoneX = BitConverter.ToSingle(bytearray, 0);
                         BoneY = BitConverter.ToSingle(bytearray, 4);
@@ -118,6 +112,8 @@ namespace ConceptMatrix.ViewModel
                     }
                     else
                     {
+                        MinBone = 0;
+                        MaxBone = 360;
                         var euler = new Quaternion(
                         BitConverter.ToSingle(bytearray, 0),
                         BitConverter.ToSingle(bytearray, 4),
@@ -140,6 +136,7 @@ namespace ConceptMatrix.ViewModel
         public float BoneInterval { get => SaveSettings.Default.BoneInterval; set => SaveSettings.Default.BoneInterval = value; }
 
         public bool ReadTetriaryFromRunTime = false;
+        
 
         public static PoseMatrixViewModel PoseVM;
         enum FaceRace
@@ -307,12 +304,21 @@ namespace ConceptMatrix.ViewModel
                     PoseMatrixView.PosingMatrix.TailC.IsEnabled = true;
                     PoseMatrixView.PosingMatrix.TailD.IsEnabled = true;
                     PoseMatrixView.PosingMatrix.TailE.IsEnabled = true;
+
+                    CharacterDetailsView5.PosingMatrix.TailA.IsEnabled = true;
+                    CharacterDetailsView5.PosingMatrix.TailB.IsEnabled = true;
+                    CharacterDetailsView5.PosingMatrix.TailC.IsEnabled = true;
+                    CharacterDetailsView5.PosingMatrix.TailD.IsEnabled = true;
+                    CharacterDetailsView5.PosingMatrix.TailE.IsEnabled = true;
                     bone_waist.Add(bone_tail_a);
                 }
                 if (race == 7)
                 {
                     PoseMatrixView.PosingMatrix.HrothWhiskersLeft.IsEnabled = true;
                     PoseMatrixView.PosingMatrix.HrothWhiskersRight.IsEnabled = true;
+
+                    CharacterDetailsView5.PosingMatrix.HrothWhiskersLeft.IsEnabled = true;
+                    CharacterDetailsView5.PosingMatrix.HrothWhiskersRight.IsEnabled = true;
                 }
                 if (race == 8)
                 {
@@ -320,6 +326,11 @@ namespace ConceptMatrix.ViewModel
                     PoseMatrixView.PosingMatrix.VieraEarARight.IsEnabled = true;
                     PoseMatrixView.PosingMatrix.VieraEarBLeft.IsEnabled = true;
                     PoseMatrixView.PosingMatrix.VieraEarBRight.IsEnabled = true;
+
+                    CharacterDetailsView5.PosingMatrix.VieraEarALeft.IsEnabled = true;
+                    CharacterDetailsView5.PosingMatrix.VieraEarARight.IsEnabled = true;
+                    CharacterDetailsView5.PosingMatrix.VieraEarBLeft.IsEnabled = true;
+                    CharacterDetailsView5.PosingMatrix.VieraEarBRight.IsEnabled = true;
                     for (int i = 0; i < bone_viera_ear_l.Length; i++)
                     {
                         bone_face_viera.Remove(bone_viera_ear_l[i]);
@@ -335,6 +346,7 @@ namespace ConceptMatrix.ViewModel
                     if (i >= 12) break;
                     bone_face.Add(bone_exhair[i]);
                     PoseMatrixView.PosingMatrix.exhair_buttons[i].IsEnabled = true;
+                    CharacterDetailsView5.PosingMatrix.exhair_buttons[i].IsEnabled = true;
                 }
                 #endregion
                 #region ExMet
@@ -342,9 +354,10 @@ namespace ConceptMatrix.ViewModel
                 for (int i = 0; i < exmet_value - 1; i++)
                 {
                     if (i >= 18) break; // for now keep it like this
-                    if (PoseMatrixView.PosingMatrix.HelmToggle.IsChecked == true) bone_face.Add(bone_exmet[i]);
+                    if (PoseMatrixView.PosingMatrix.HelmToggle.IsChecked == true || CharacterDetailsView5.PosingMatrix.HelmToggle.IsChecked == true) bone_face.Add(bone_exmet[i]);
 
                     PoseMatrixView.PosingMatrix.exmet_buttons[i].IsEnabled = true;
+                    CharacterDetailsView5.PosingMatrix.exmet_buttons[i].IsEnabled = true;
                 }
                 #endregion
                 #region ExTop
@@ -353,6 +366,7 @@ namespace ConceptMatrix.ViewModel
                 {
                     if (i >=9) break;
                     PoseMatrixView.PosingMatrix.extop_buttons[i].IsEnabled = true;
+                    CharacterDetailsView5.PosingMatrix.extop_buttons[i].IsEnabled = true;
                 }
                 #endregion
             }

@@ -28,7 +28,9 @@ namespace ConceptMatrix.ViewModel
         public static int gameProcId = 0;
         public static ThreadWriting ThreadTime;
         public static RotationView RotTime;
+        public static CharacterDetailsView5 ViewTime6;
         public static PoseMatrixView ViewTime5;
+        public static PoseMatrixViewModel PoseMatrixVM;
         public static CharacterDetailsView4 ViewTime4;
         public static CharacterDetailsView3 ViewTime3;
         public static CharacterDetailsView2 ViewTime2;
@@ -95,9 +97,13 @@ namespace ConceptMatrix.ViewModel
                 characterDetails = new CharacterDetailsViewModel(mediator);
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Add(MemoryManager.Instance.BaseAddress, "8");
                 //  ViewTime5.bonetree = ViewTime5.InitBonetree();
-                PoseMatrixViewModel.PoseVM.InitBonetree();
                 Task.Delay(40).Wait();
                 ThreadTime = new ThreadWriting(); // Thread Writing
+
+                PoseMatrixVM = new PoseMatrixViewModel();
+                PoseMatrixViewModel.PoseVM.InitBonetree();
+                ViewTime5.DataContext = PoseMatrixVM;
+                ViewTime6.DataContext = PoseMatrixVM;
                 ViewTime5.RotationUpDown.DataContext = this;
                 ViewTime5.RotationUpDown2.DataContext = this;
                 ViewTime5.RotationUpDown3.DataContext = this;

@@ -93,6 +93,7 @@ namespace ConceptMatrix
         {
             Utility.SaveSettings.Default.Save();
             if (MainViewModel.ViewTime5.EditModeButton.IsChecked == true) MainViewModel.ViewTime5.EditModeButton.IsChecked = false;
+            if (MainViewModel.ViewTime6.EditModeButton.IsChecked == true) MainViewModel.ViewTime6.EditModeButton.IsChecked = false;
         }
 
         private void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)

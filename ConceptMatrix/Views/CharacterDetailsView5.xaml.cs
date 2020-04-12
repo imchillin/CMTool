@@ -2,23 +2,25 @@
 using ConceptMatrix.Utility;
 using ConceptMatrix.ViewModel;
 using System;
-using Microsoft.Win32;
-using Newtonsoft.Json;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Media.Media3D;
 using System.Windows.Data;
+using System.Windows.Media.Media3D;
+using Microsoft.Win32;
+using System.IO;
+using Newtonsoft.Json;
+using System.Windows.Controls.Primitives;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ConceptMatrix.Views
 {
     /// <summary>
-    /// Interaction logic for PoseMatrixView.xaml
+    /// Interaction logic for CharacterDetailsView5.xaml
     /// </summary>
-    public partial class PoseMatrixView : UserControl
+    public partial class CharacterDetailsView5 : UserControl
     {
-        public static PoseMatrixView PosingMatrix;
+        public static CharacterDetailsView5 PosingMatrix;
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
         private string GAS(params string[] args) => MemoryManager.GetAddressString(args);
 
@@ -899,28 +901,61 @@ namespace ConceptMatrix.Views
         public bool TopSaved02;
         #endregion
 
-        public PoseMatrixView()
+        public CharacterDetailsView5()
         {
             InitializeComponent();
             PosingMatrix = this;
-            MainViewModel.ViewTime5 = this;
+            MainViewModel.ViewTime6 = this;
             if (SaveSettings.Default.HasBackground == false) PoseBG.Opacity = 0;
+            if (SaveSettings.Default.AltPoseRotate == true)
+            {
+                XUpDown.Visibility = Visibility.Hidden;
+                XUpDown.IsEnabled = false;
+                YUpDown.Visibility = Visibility.Hidden;
+                YUpDown.IsEnabled = false;
+                ZUpDown.Visibility = Visibility.Hidden;
+                ZUpDown.IsEnabled = false;
+
+                BoneSliderX.Visibility = Visibility.Visible;
+                BoneSliderX.IsEnabled = true;
+                BoneSliderY.Visibility = Visibility.Visible;
+                BoneSliderY.IsEnabled = true;
+                BoneSliderZ.Visibility = Visibility.Visible;
+                BoneSliderZ.IsEnabled = true;
+            }
+            else if (SaveSettings.Default.AltPoseRotate == false)
+            {
+                XUpDown.Visibility = Visibility.Visible;
+                XUpDown.IsEnabled = true;
+                YUpDown.Visibility = Visibility.Visible;
+                YUpDown.IsEnabled = true;
+                ZUpDown.Visibility = Visibility.Visible;
+                ZUpDown.IsEnabled = true;
+
+                BoneSliderX.Visibility = Visibility.Hidden;
+                BoneSliderX.IsEnabled = false;
+                BoneSliderY.Visibility = Visibility.Hidden;
+                BoneSliderY.IsEnabled = false;
+                BoneSliderZ.Visibility = Visibility.Hidden;
+                BoneSliderZ.IsEnabled = false;
+            }
+            if (SaveSettings.Default.AltPoseRotate == true)
+            {
+                BoneSliderButton.IsChecked = true;
+            }
+            if (SaveSettings.Default.RelativeBones == true)
+            {
+                ParentingToggle.IsChecked = true;
+            }
+
             exhair_buttons = new ToggleButton[] { ExHairA, ExHairB, ExHairC, ExHairD, ExHairE, ExHairF, ExHairG, ExHairH, ExHairI, ExHairJ, ExHairK, ExHairL };
             exmet_buttons = new ToggleButton[] { ExMetA, ExMetB, ExMetC, ExMetD, ExMetE, ExMetF, ExMetG, ExMetH, ExMetI, ExMetJ, ExMetK, ExMetL, ExMetM, ExMetN, ExMetO, ExMetP, ExMetQ, ExMetR };
-            extop_buttons = new ToggleButton[] { ExTopA, ExTopB, ExTopC, ExTopD, ExTopE, ExTopF, ExTopG, ExTopH, ExTopI };
-            if (SaveSettings.Default.ScalingLoad == true)
-            {
-                ScaleSaveToggle.IsChecked = true;
-            }
-            if (SaveSettings.Default.AltModelView == true)
-            {
-                ToggleModelView.IsChecked = true;
-            }
+            extop_buttons = new ToggleButton[] { ExTopA, ExTopB, ExTopC, ExTopD, ExTopE, ExTopF, ExTopG, ExTopH, ExTopI};
         }
         private void EditModeButton_Checked(object sender, RoutedEventArgs e)
         {
             PoseMatrixViewModel.PoseVM.ReadTetriaryFromRunTime = false;
-            MainViewModel.MainTime.PoseVMOLD.IsEnabled = false;
+            MainViewModel.MainTime.PoseVMNew.IsEnabled = false;
             EnableAll();
             PoseMatrixViewModel.PoseVM.Bone_Flag_Manager();
             Memory.MemLib.writeMemory(Memory.SkeletonAddress, "bytes", "0x90 0x90 0x90 0x90 0x90 0x90");
@@ -938,7 +973,7 @@ namespace ConceptMatrix.Views
             ScaleToggle.IsChecked = false;
             HelmToggle.IsChecked = false;
             PoseMatrixViewModel.PoseVM.ReadTetriaryFromRunTime = false;
-            MainViewModel.MainTime.PoseVMOLD.IsEnabled = true;
+            MainViewModel.MainTime.PoseVMNew.IsEnabled = true;
             UncheckAll();
             DisableAll();
             Memory.MemLib.writeMemory(Memory.SkeletonAddress, "bytes", "0x41 0x0F 0x29 0x5C 0x12 0x10");
@@ -1026,7 +1061,6 @@ namespace ConceptMatrix.Views
                     ArmRight.IsEnabled = true;
                     PauldronLeft.IsEnabled = true;
                     PauldronRight.IsEnabled = true;
-                    Unknown00.IsEnabled = true;
                     ToesLeft.IsEnabled = true;
                     ToesRight.IsEnabled = true;
                     HairA.IsEnabled = true;
@@ -1116,7 +1150,7 @@ namespace ConceptMatrix.Views
             {
                 Memory.MemLib.writeMemory(Memory.PhysicsAddress, "bytes", "0x90 0x90 0x90 0x90");
                 Memory.MemLib.writeMemory(Memory.PhysicsAddress2, "bytes", "0x90 0x90 0x90");
-              //  Memory.MemLib.writeMemory(Memory.PhysicsAddress3, "bytes", "0x90 0x90 0x90 0x90");
+                //  Memory.MemLib.writeMemory(Memory.PhysicsAddress3, "bytes", "0x90 0x90 0x90 0x90");
             }
         }
 
@@ -1138,6 +1172,42 @@ namespace ConceptMatrix.Views
             GetPointers((sender as ToggleButton).Name);
             ToggleSave = sender as ToggleButton;
         }
+        private void BoneSliderButton_Checked(object sender, RoutedEventArgs e)
+        {
+            XUpDown.Visibility = Visibility.Hidden;
+            XUpDown.IsEnabled = false;
+            YUpDown.Visibility = Visibility.Hidden;
+            YUpDown.IsEnabled = false;
+            ZUpDown.Visibility = Visibility.Hidden;
+            ZUpDown.IsEnabled = false;
+
+            BoneSliderX.Visibility = Visibility.Visible;
+            BoneSliderX.IsEnabled = true;
+            BoneSliderY.Visibility = Visibility.Visible;
+            BoneSliderY.IsEnabled = true;
+            BoneSliderZ.Visibility = Visibility.Visible;
+            BoneSliderZ.IsEnabled = true;
+            SaveSettings.Default.AltPoseRotate = true;
+        }
+        private void BoneSliderButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            XUpDown.Visibility = Visibility.Visible;
+            XUpDown.IsEnabled = true;
+            YUpDown.Visibility = Visibility.Visible;
+            YUpDown.IsEnabled = true;
+            ZUpDown.Visibility = Visibility.Visible;
+            ZUpDown.IsEnabled = true;
+
+            BoneSliderX.Visibility = Visibility.Hidden;
+            BoneSliderX.IsEnabled = false;
+            BoneSliderY.Visibility = Visibility.Hidden;
+            BoneSliderY.IsEnabled = false;
+            BoneSliderZ.Visibility = Visibility.Hidden;
+            BoneSliderZ.IsEnabled = false;
+
+            SaveSettings.Default.AltPoseRotate = false;
+        }
+
         public void GetPointers(string newActive)
         {
             PoseMatrixViewModel.PoseVM.BNode = null;
@@ -2842,9 +2912,6 @@ namespace ConceptMatrix.Views
             BoneSliderY.IsEnabled = true;
             BoneSliderZ.IsEnabled = true;
             #region ToggleButton Ischecked
-            Root.IsChecked = (newActive == Root) ? true : false;
-            Abdomen.IsChecked = (newActive == Abdomen) ? true : false;
-            Throw.IsChecked = (newActive == Throw) ? true : false;
             Waist.IsChecked = (newActive == Waist) ? true : false;
             SpineA.IsChecked = (newActive == SpineA) ? true : false;
             LegLeft.IsChecked = (newActive == LegLeft) ? true : false;
@@ -2893,7 +2960,6 @@ namespace ConceptMatrix.Views
             ArmRight.IsChecked = (newActive == ArmRight) ? true : false;
             PauldronLeft.IsChecked = (newActive == PauldronLeft) ? true : false;
             PauldronRight.IsChecked = (newActive == PauldronRight) ? true : false;
-            Unknown00.IsChecked = (newActive == Unknown00) ? true : false;
             ToesLeft.IsChecked = (newActive == ToesLeft) ? true : false;
             ToesRight.IsChecked = (newActive == ToesRight) ? true : false;
             HairA.IsChecked = (newActive == HairA) ? true : false;
@@ -2947,7 +3013,6 @@ namespace ConceptMatrix.Views
             TailC.IsChecked = (newActive == TailC) ? true : false;
             TailD.IsChecked = (newActive == TailD) ? true : false;
             TailE.IsChecked = (newActive == TailE) ? true : false;
-            RootHead.IsChecked = (newActive == RootHead) ? true : false;
             Jaw.IsChecked = (newActive == Jaw) ? true : false;
             EyelidLowerLeft.IsChecked = (newActive == EyelidLowerLeft) ? true : false;
             EyelidLowerRight.IsChecked = (newActive == EyelidLowerRight) ? true : false;
@@ -3028,9 +3093,6 @@ namespace ConceptMatrix.Views
             PoseMatrixViewModel.PoseVM.BoneY = 0;
             PoseMatrixViewModel.PoseVM.BoneZ = 0;
             #region IsChecked = false
-            Root.IsChecked = false;
-            Abdomen.IsChecked = false;
-            Throw.IsChecked = false;
             Waist.IsChecked = false;
             SpineA.IsChecked = false;
             LegLeft.IsChecked = false;
@@ -3079,7 +3141,6 @@ namespace ConceptMatrix.Views
             ArmRight.IsChecked = false;
             PauldronLeft.IsChecked = false;
             PauldronRight.IsChecked = false;
-            Unknown00.IsChecked = false;
             ToesLeft.IsChecked = false;
             ToesRight.IsChecked = false;
             HairA.IsChecked = false;
@@ -3133,7 +3194,6 @@ namespace ConceptMatrix.Views
             TailC.IsChecked = false;
             TailD.IsChecked = false;
             TailE.IsChecked = false;
-            RootHead.IsChecked = false;
             Jaw.IsChecked = false;
             EyelidLowerLeft.IsChecked = false;
             EyelidLowerRight.IsChecked = false;
@@ -3264,7 +3324,6 @@ namespace ConceptMatrix.Views
             ArmRight.IsEnabled = true;
             PauldronLeft.IsEnabled = true;
             PauldronRight.IsEnabled = true;
-            Unknown00.IsEnabled = true;
             ToesLeft.IsEnabled = true;
             ToesRight.IsEnabled = true;
             HairA.IsEnabled = true;
@@ -3403,9 +3462,6 @@ namespace ConceptMatrix.Views
             ScaleToggle.IsEnabled = false;
             ScaleEdit.IsEnabled = false;
             // TertiaryButton.IsEnabled = false;
-            Root.IsEnabled = false;
-            Abdomen.IsEnabled = false;
-            Throw.IsEnabled = false;
             Waist.IsEnabled = false;
             SpineA.IsEnabled = false;
             LegLeft.IsEnabled = false;
@@ -3454,7 +3510,6 @@ namespace ConceptMatrix.Views
             ArmRight.IsEnabled = false;
             PauldronLeft.IsEnabled = false;
             PauldronRight.IsEnabled = false;
-            Unknown00.IsEnabled = false;
             ToesLeft.IsEnabled = false;
             ToesRight.IsEnabled = false;
             HairA.IsEnabled = false;
@@ -3503,7 +3558,6 @@ namespace ConceptMatrix.Views
             MiddleBRight.IsEnabled = false;
             ThumbBLeft.IsEnabled = false;
             ThumbBRight.IsEnabled = false;
-            RootHead.IsEnabled = false;
             Jaw.IsEnabled = false;
             EyelidLowerLeft.IsEnabled = false;
             EyelidLowerRight.IsEnabled = false;
@@ -3553,7 +3607,7 @@ namespace ConceptMatrix.Views
                 BoneSaver.DateCreated = DateTime.Now.ToString("yyyy-MM-dd HH':'mm':'ss");
                 BoneSaver.CMPVersion = "2.0";
                 SaveSettings.Default.MatrixPoseSaveLoadDirectory = Path.GetDirectoryName(dig.FileName);
-                var AppearanceArray = Memory.MemLib.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Race),26);
+                var AppearanceArray = Memory.MemLib.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Race), 26);
                 BoneSaver.Race = AppearanceArray[0].ToString("X2");
                 BoneSaver.Clan = AppearanceArray[4].ToString("X2");
                 BoneSaver.Body = AppearanceArray[2].ToString("X2");
@@ -3601,7 +3655,7 @@ namespace ConceptMatrix.Views
                 BoneSaver.LipLowerB = MemoryManager.ByteArrayToStringU(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.LipLowerB_Bone), 16));
                 BoneSaver.HrothLipUpperRight = MemoryManager.ByteArrayToStringU(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipUpperRight_Bone), 16));
                 BoneSaver.VieraEar02ALeft = MemoryManager.ByteArrayToStringU(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar02ALeft_Bone), 16));
-                if ( AppearanceArray[0] == 7 ||  AppearanceArray[0] == 8)
+                if (AppearanceArray[0] == 7 || AppearanceArray[0] == 8)
                 {
                     BoneSaver.HrothLipLower = MemoryManager.ByteArrayToStringU(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HrothLipLower_Bone), 16));
                     BoneSaver.VieraEar02ARight = MemoryManager.ByteArrayToStringU(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar02ARight_Bone), 16));
@@ -3611,7 +3665,7 @@ namespace ConceptMatrix.Views
                     BoneSaver.HrothLipLower = "null";
                     BoneSaver.VieraEar02ARight = "null";
                 }
-                if ( AppearanceArray[0] == 8)
+                if (AppearanceArray[0] == 8)
                 {
                     BoneSaver.VieraEar03ALeft = MemoryManager.ByteArrayToStringU(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar03ALeft_Bone), 16));
                     BoneSaver.VieraEar03ARight = MemoryManager.ByteArrayToStringU(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar03ARight_Bone), 16));
@@ -3866,7 +3920,7 @@ namespace ConceptMatrix.Views
                 BoneSaver.HolsterRight = MemoryManager.ByteArrayToStringU(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HolsterRight_Bone), 16));
                 BoneSaver.SheatheLeft = MemoryManager.ByteArrayToStringU(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.SheatheLeft_Bone), 16));
                 BoneSaver.SheatheRight = MemoryManager.ByteArrayToStringU(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.SheatheRight_Bone), 16));
-                if ( AppearanceArray[0] == 4 ||  AppearanceArray[0] == 6 ||  AppearanceArray[0] == 7)
+                if (AppearanceArray[0] == 4 || AppearanceArray[0] == 6 || AppearanceArray[0] == 7)
                 {
                     BoneSaver.TailA = MemoryManager.ByteArrayToStringU(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailA_Bone), 16));
                     BoneSaver.TailB = MemoryManager.ByteArrayToStringU(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.TailB_Bone), 16));
@@ -4270,7 +4324,7 @@ namespace ConceptMatrix.Views
 
                 if (HairValue >= 1)
                 {
-                   // BoneSaver.ExRootHairSize = MemoryManager.ByteArrayToStringU(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExRootHair_Size), 16));
+                    // BoneSaver.ExRootHairSize = MemoryManager.ByteArrayToStringU(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExRootHair_Size), 16));
                 }
                 if (HairValue >= 2)
                 {
@@ -4495,7 +4549,7 @@ namespace ConceptMatrix.Views
                 #region Helm
                 if (HelmValue >= 1)
                 {
-       //             BoneSaver.ExRootMetSize = MemoryManager.ByteArrayToStringU(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExRootMet_Size), 16));
+                    //             BoneSaver.ExRootMetSize = MemoryManager.ByteArrayToStringU(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExRootMet_Size), 16));
                 }
                 if (HelmValue >= 2)
                 {
@@ -4667,7 +4721,7 @@ namespace ConceptMatrix.Views
                 #region Top
                 if (TopValue >= 1)
                 {
-             //       BoneSaver.ExRootTopSize = MemoryManager.ByteArrayToStringU(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExRootTop_Size), 16));
+                    //       BoneSaver.ExRootTopSize = MemoryManager.ByteArrayToStringU(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExRootTop_Size), 16));
                 }
                 if (TopValue >= 2)
                 {
@@ -8004,7 +8058,7 @@ namespace ConceptMatrix.Views
                     m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraLipLowerB_Bone), MemoryManager.StringToByteArray(VieraLipLowerB_Sav01.Replace(" ", string.Empty)));
                 }
             }
-            if(ScaleSaveToggle.IsChecked == true)
+            if (ScaleSaveToggle.IsChecked == true)
             {
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Head_Size), MemoryManager.StringToByteArray(Head_Sav01Size.Replace(" ", string.Empty)));
                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EarLeft_Size), MemoryManager.StringToByteArray(EarLeft_Sav01Size.Replace(" ", string.Empty)));
@@ -10164,7 +10218,7 @@ namespace ConceptMatrix.Views
             SheatheRight_Sav01 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.SheatheRight_Bone), 16));
 
             Waist_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Waist_Size), 16));
-    
+
 
             if (CharacterDetails.Race.value == 4 || CharacterDetails.Race.value == 6 || CharacterDetails.Race.value == 7)
             {
@@ -11756,7 +11810,7 @@ namespace ConceptMatrix.Views
 
             if (TopValue >= 1)
             {
-          //      ExRootTop_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExRootTop_Size), 16));
+                //      ExRootTop_Sav01Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExRootTop_Size), 16));
             }
             if (TopValue >= 2)
             {
@@ -12328,9 +12382,6 @@ namespace ConceptMatrix.Views
                 #region Disable Controls
 
                 // TertiaryButton.IsEnabled = false;
-                Root.IsEnabled = false;
-                Abdomen.IsEnabled = false;
-                Throw.IsEnabled = false;
                 Waist.IsEnabled = false;
                 SpineA.IsEnabled = false;
                 LegLeft.IsEnabled = false;
@@ -12373,7 +12424,6 @@ namespace ConceptMatrix.Views
                 ArmRight.IsEnabled = false;
                 PauldronLeft.IsEnabled = false;
                 PauldronRight.IsEnabled = false;
-                Unknown00.IsEnabled = false;
                 ToesLeft.IsEnabled = false;
                 ToesRight.IsEnabled = false;
                 HairA.IsEnabled = false;
@@ -12420,7 +12470,6 @@ namespace ConceptMatrix.Views
                 MiddleBRight.IsEnabled = false;
                 ThumbBLeft.IsEnabled = false;
                 ThumbBRight.IsEnabled = false;
-                RootHead.IsEnabled = false;
                 Jaw.IsEnabled = false;
                 EyelidLowerLeft.IsEnabled = false;
                 EyelidLowerRight.IsEnabled = false;
@@ -12516,7 +12565,6 @@ namespace ConceptMatrix.Views
                 ArmRight.IsEnabled = true;
                 PauldronLeft.IsEnabled = true;
                 PauldronRight.IsEnabled = true;
-                Unknown00.IsEnabled = true;
                 ToesLeft.IsEnabled = true;
                 ToesRight.IsEnabled = true;
                 HairA.IsEnabled = true;
@@ -12660,9 +12708,6 @@ namespace ConceptMatrix.Views
 
                 #region Disable Controls
                 PhysicsButton.IsEnabled = false;
-                Root.IsEnabled = false;
-                Abdomen.IsEnabled = false;
-                Throw.IsEnabled = false;
                 //        Waist.IsEnabled = false;
                 //   SpineA.IsEnabled = false;
                 //    LegLeft.IsEnabled = false;
@@ -12711,7 +12756,6 @@ namespace ConceptMatrix.Views
                 //     ArmRight.IsEnabled = false;
                 //  PauldronLeft.IsEnabled = false;
                 // PauldronRight.IsEnabled = false;
-                Unknown00.IsEnabled = false;
                 //  ToesLeft.IsEnabled = false;
                 //   ToesRight.IsEnabled = false;
                 //     HairA.IsEnabled = false;
@@ -12760,7 +12804,6 @@ namespace ConceptMatrix.Views
                   MiddleBRight.IsEnabled = false;
                   ThumbBLeft.IsEnabled = false;
                   ThumbBRight.IsEnabled = false;*/
-                RootHead.IsEnabled = false;
                 //   Jaw.IsEnabled = false;
                 //   EyelidLowerLeft.IsEnabled = false;
                 //   EyelidLowerRight.IsEnabled = false;
@@ -12848,7 +12891,6 @@ namespace ConceptMatrix.Views
                 ArmRight.IsEnabled = true;
                 PauldronLeft.IsEnabled = true;
                 PauldronRight.IsEnabled = true;
-                Unknown00.IsEnabled = true;
                 ToesLeft.IsEnabled = true;
                 ToesRight.IsEnabled = true;
                 HairA.IsEnabled = true;
@@ -13000,247 +13042,48 @@ namespace ConceptMatrix.Views
             }
         }
 
-        #region Actor Rotation
-        /// <summary>	
-        /// Gets the euler angles from the UI elements.	
-        /// </summary>	
-        /// <returns>Vector3D representing euler angles.</returns>	
-        private Vector3D GetEulerAngles() => new Vector3D(CharacterDetails.RotateX, CharacterDetails.RotateY, CharacterDetails.RotateZ);
-
-        // I'm scared of the above being wrong sometimes (the GUI controls don't always match the real rotation).
-        // Using this one based on the raw values until convinced it's safe.
-        private Vector3D GetCurrenRotation() => new Quaternion(CharacterDetails.Rotation.value,
-                                                                CharacterDetails.Rotation2.value,
-                                                                CharacterDetails.Rotation3.value,
-                                                                CharacterDetails.Rotation4.value).ToEulerAngles();
-        private void RotationUpDown_SourceUpdated(object sender, DataTransferEventArgs e)
+        #region Shortcuts
+        private void HeadShortcut_Click(object sender, RoutedEventArgs e)
         {
-
-            if (RotationSlider.IsKeyboardFocusWithin || RotationSlider.IsMouseOver)
-            {
-                RotationSlider.ValueChanged -= RotV2;
-                RotationSlider.ValueChanged += RotV2;
-            }
-
-            if (RotationUpDown.IsKeyboardFocusWithin || RotationUpDown.IsMouseOver)
-            {
-                RotationUpDown.ValueChanged -= RotV;
-                RotationUpDown.ValueChanged += RotV;
-            }
+            MatrixTabControl.SelectedIndex = 0;
         }
-        private void RotationUpDown2_SourceUpdated(object sender, DataTransferEventArgs e)
+        private void HairShortcut_Click(object sender, RoutedEventArgs e)
         {
-            if (RotationSlider2.IsKeyboardFocusWithin || RotationSlider2.IsMouseOver)
-            {
-                RotationSlider2.ValueChanged -= RotV2;
-                RotationSlider2.ValueChanged += RotV2;
-            }
-
-            if (RotationUpDown2.IsKeyboardFocusWithin || RotationUpDown2.IsMouseOver)
-            {
-                RotationUpDown2.ValueChanged -= RotV;
-                RotationUpDown2.ValueChanged += RotV;
-            }
+            MatrixTabControl.SelectedIndex = 0;
         }
-        private void RotationUpDown3_SourceUpdated(object sender, DataTransferEventArgs e)
+        private void BodyShortcut_Click(object sender, RoutedEventArgs e)
         {
-            if (RotationSlider3.IsKeyboardFocusWithin || RotationSlider3.IsMouseOver)
-            {
-                RotationSlider3.ValueChanged -= RotV2;
-                RotationSlider3.ValueChanged += RotV2;
-            }
-
-            if (RotationUpDown3.IsKeyboardFocusWithin || RotationUpDown3.IsMouseOver)
-            {
-                RotationUpDown3.ValueChanged -= RotV;
-                RotationUpDown3.ValueChanged += RotV;
-            }
+            MatrixTabControl.SelectedIndex = 1;
         }
-        private void RotV(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void ClothesShortcut_Click(object sender, RoutedEventArgs e)
         {
-            // Get the euler angles from UI.	
-            var quat = GetEulerAngles().ToQuaternion();
-
-            lock (CharacterDetails.Rotation)
-            {
-                CharacterDetails.Rotation.value = (float)quat.X;
-                CharacterDetails.Rotation2.value = (float)quat.Y;
-                CharacterDetails.Rotation3.value = (float)quat.Z;
-                CharacterDetails.Rotation4.value = (float)quat.W;
-            }
-            // Remove listeners for value changed.	
-            RotationUpDown.ValueChanged -= RotV;
-            RotationUpDown2.ValueChanged -= RotV;
-            RotationUpDown3.ValueChanged -= RotV;
+            MatrixTabControl.SelectedIndex = 1;
         }
-        private void RotV2(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void HandsShortcut_Click(object sender, RoutedEventArgs e)
         {
-            // Get the euler angles from UI.	
-            var quat = GetEulerAngles().ToQuaternion();
-
-            lock (CharacterDetails.Rotation)
-            {
-                CharacterDetails.Rotation.value = (float)quat.X;
-                CharacterDetails.Rotation2.value = (float)quat.Y;
-                CharacterDetails.Rotation3.value = (float)quat.Z;
-                CharacterDetails.Rotation4.value = (float)quat.W;
-            }
-            // Remove listeners for value changed.	
-            RotationSlider.ValueChanged -= RotV2;
-            RotationSlider2.ValueChanged -= RotV2;
-            RotationSlider3.ValueChanged -= RotV2;
-            //  Console.WriteLine(CharacterDetails.RotateY);	
+            MatrixTabControl.SelectedIndex = 2;
+        }
+        private void PantsShortcut_Click(object sender, RoutedEventArgs e)
+        {
+            MatrixTabControl.SelectedIndex = 2;
+        }
+        private void EquipShortcut_Click(object sender, RoutedEventArgs e)
+        {
+            MatrixTabControl.SelectedIndex = 3;
+        }
+        private void OtherShortcut_Click(object sender, RoutedEventArgs e)
+        {
+            MatrixTabControl.SelectedIndex = 3;
+        }
+        private void SaveShortcut_Click(object sender, RoutedEventArgs e)
+        {
+            MatrixTabControl.SelectedIndex = 4;
+        }
+        private void LoadShortcut_Click(object sender, RoutedEventArgs e)
+        {
+            MatrixTabControl.SelectedIndex = 4;
         }
         #endregion
-
-        #region position
-        private void PosX_SourceUpdated(object sender, DataTransferEventArgs e) => Pos_SourceUpdated(PosX, XPosUpdate);
-        private void PosY_SourceUpdated(object sender, DataTransferEventArgs e) => Pos_SourceUpdated(PosY, YPosUpdate);
-        private void PosZ_SourceUpdated(object sender, DataTransferEventArgs e) => Pos_SourceUpdated(PosZ, ZPosUpdate);
-
-        /// <summary>
-        /// This thing exists because of the way this broken ass system works, the flag is purely to not trigger multiple source update loops.
-        /// </summary>
-        private bool PosAdvancedWorking = false;
-
-        private void Pos_SourceUpdated(MahApps.Metro.Controls.NumericUpDown control, RoutedPropertyChangedEventHandler<double?> handler)
-        {
-            if (AdvancedMove && control.Name != PosY.Name)
-            {
-                // Ensure not in an existing event.
-                if (!PosAdvancedWorking)
-                {
-                    control.ValueChanged -= AdvancedPosUpdate;
-                    control.ValueChanged += AdvancedPosUpdate;
-                }
-            }
-            else if (control.IsKeyboardFocusWithin || control.IsMouseOver)
-            {
-                control.ValueChanged -= handler;
-                control.ValueChanged += handler;
-            }
-        }
-
-        private const double Deg2Rad = (Math.PI * 2) / 360;
-
-        private void AdvancedPosUpdate(object sender, RoutedPropertyChangedEventArgs<double?> e)
-        {
-            // Get the control from sender.
-            var control = (sender as MahApps.Metro.Controls.NumericUpDown);
-
-            // Remove the event handler (?)
-            control.ValueChanged -= AdvancedPosUpdate;
-
-            // Flag that we're working to avoid updates later.
-            PosAdvancedWorking = true;
-
-            // Instantiate x and z floats for the vector.
-            var x = 0.0;
-            var z = 0.0;
-
-            double oldX = 0;
-            double oldZ = 0;
-
-            // Set the appropriate axis based on which control this is.
-            if (control.Name == PosX.Name)
-            {
-                z = (double)(e.NewValue - e.OldValue);
-                oldX = e.OldValue ?? 0;
-                oldZ = PosZ.Value ?? 0;
-            }
-            else
-            {
-                x = (double)(e.NewValue - e.OldValue);
-                oldX = PosX.Value ?? 0;
-                oldZ = e.OldValue ?? 0;
-            }
-
-            // Get the angle of the position.
-            var degrees = GetEulerAngles().Y;
-
-            // Get the cos and sin of radians.
-            var ca = Math.Cos(degrees * Deg2Rad);
-            var sa = Math.Sin(degrees * Deg2Rad);
-
-            // Calculate the new vector.
-            var newX = x * sa - z * ca;
-            var newZ = x * ca + z * sa;
-
-            // Update the values in the text field (yeah I know this is dumb but this whole thing is dumb so i'm gonna leave it like this I should honestly use the databinding but I never know how any of this stuff works because the codebase is all over the place and there's like 5 possible files where something might get read or written to memory and I give up)
-            PosX.Value = oldX + newX;
-            PosZ.Value = oldZ + newZ;
-
-            MemoryManager.Instance.MemLib.writeMemory(
-                MemoryManager.GetAddressString(
-                    CharacterDetailsViewModel.baseAddr,
-                    Settings.Instance.Character.Body.Base,
-                    Settings.Instance.Character.Body.Position.X
-                ),
-                "float",
-                PosX.Value.ToString()
-            );
-
-            MemoryManager.Instance.MemLib.writeMemory(
-                MemoryManager.GetAddressString(
-                    CharacterDetailsViewModel.baseAddr,
-                    Settings.Instance.Character.Body.Base,
-                    Settings.Instance.Character.Body.Position.Z
-                ),
-                "float",
-                PosZ.Value.ToString()
-            );
-
-            // Work is done, future events can trigger now.
-            PosAdvancedWorking = false;
-        }
-
-        private void XPosUpdate(object sender, RoutedPropertyChangedEventArgs<double?> e)
-        {
-            if (PosX.Value.HasValue)
-                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.X), "float", PosX.Value.ToString());
-            PosX.ValueChanged -= XPosUpdate;
-        }
-
-        private void YPosUpdate(object sender, RoutedPropertyChangedEventArgs<double?> e)
-        {
-            if (PosY.Value.HasValue)
-                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.Y), "float", PosY.Value.ToString());
-            PosY.ValueChanged -= YPosUpdate;
-        }
-
-        private void ZPosUpdate(object sender, RoutedPropertyChangedEventArgs<double?> e)
-        {
-            if (PosZ.Value.HasValue)
-                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Position.Z), "float", PosZ.Value.ToString());
-            PosZ.ValueChanged -= ZPosUpdate;
-        }
-
-        private void PosRelButton_Checked(object sender, RoutedEventArgs e)
-        {
-            AdvancedMove = true;
-        }
-
-        private void PosRelButton_Unchecked(object sender, RoutedEventArgs e)
-        {
-            AdvancedMove = false;
-        }
-
-        #endregion
-
-        private void ToggleModelView_Checked(object sender, RoutedEventArgs e)
-        {
-            ActorProperties.Visibility = Visibility.Visible;
-            CubeBox.Visibility = Visibility.Hidden;
-            SaveSettings.Default.AltModelView = true;
-
-        }
-
-        private void ToggleModelView_Unchecked(object sender, RoutedEventArgs e)
-        {
-            ActorProperties.Visibility = Visibility.Hidden;
-            CubeBox.Visibility = Visibility.Visible;
-            SaveSettings.Default.AltModelView = false;
-        }
 
         private void ScaleSaveToggle_Checked(object sender, RoutedEventArgs e)
         {

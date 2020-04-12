@@ -38,7 +38,10 @@
             <TabItem Header="{Binding Source={x:Static resx:UIStringsContent.Equipment}}" Style="{DynamicResource MenuLevel2}">
                 <Views:CharacterDetailsView2 Margin="0,4,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
             </TabItem>
-            <TabItem Header="{Binding Source={x:Static resx:UIStringsContent.PosingMatrix}}" Style="{DynamicResource MenuLevel2}">
+            <TabItem Header="Posing Matrix(old)" x:Name="PoseVMOLD" Style="{DynamicResource MenuLevel2}">
+                <Views:CharacterDetailsView5 Margin="0,4,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
+            </TabItem>
+            <TabItem Header="{Binding Source={x:Static resx:UIStringsContent.PosingMatrix}}" x:Name="PoseVMNew" Style="{DynamicResource MenuLevel2}">
                 <Views:PoseMatrixView Margin="0,4,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
             </TabItem>
             <TabItem Header="{Binding Source={x:Static resx:UIStringsContent.World}}" Style="{DynamicResource MenuLevel2}">

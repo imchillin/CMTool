@@ -1,255 +1,111 @@
-﻿<UserControl x:Class="ConceptMatrix.Views.PoseMatrixView"
+﻿<UserControl
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ConceptMatrix.Views"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:Converters="clr-namespace:ConceptMatrix.Converters"
              xmlns:resx="clr-namespace:ConceptMatrix.Resx"
-             xmlns:local="clr-namespace:ConceptMatrix.Views" 
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
-             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" xmlns:Converters="clr-namespace:ConceptMatrix.Converters"
-             mc:Ignorable="d" 
-             TextElement.FontSize="11.25"
-             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-             TextElement.FontWeight="Medium"
+             x:Class="ConceptMatrix.Views.CharacterDetailsView5"
+             mc:Ignorable="d"
              d:DesignHeight="530" d:DesignWidth="1115" Height="530">
     <UserControl.Resources>
         <Converters:QuaternionConverter x:Key="QuaternionConverter" />
         <Style x:Name="HeaderTabs" x:Key="MenuLevel2" BasedOn="{StaticResource MetroTabItem}" TargetType="{x:Type TabItem}">
-            <Setter Property="mah:ControlsHelper.HeaderFontSize" Value="16.5"></Setter>
+            <Setter Property="mah:ControlsHelper.HeaderFontSize" Value="20"></Setter>
         </Style>
     </UserControl.Resources>
+
     <Grid Height="530" Width="1119">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="134*"/>
-            <ColumnDefinition Width="985*"/>
-        </Grid.ColumnDefinitions>
         <Grid.Background>
             <ImageBrush x:Name="PoseBG" ImageSource="/ConceptMatrix;component/Resources/posebg.png"/>
         </Grid.Background>
-        <StackPanel Grid.ColumnSpan="2">
-            <StackPanel Orientation="Horizontal">
-                <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.PoseMatrixSettings}}" Width="450" Height="155" Padding="9,0,9,2">
-                    <StackPanel>
-                        <StackPanel x:Name="PoseMatrixSetting" IsEnabled="False">
-                            <StackPanel Orientation="Horizontal">
-                                <Label Content="{Binding Source={x:Static resx:UIPoseStrings.EnableEditing}}"  VerticalAlignment="Center" Width="95"/>
-                                <ToggleButton x:Name="EditModeButton" Checked="EditModeButton_Checked" Unchecked="EditModeButton_Unchecked"></ToggleButton>
-                                <Label Content="{Binding Source={x:Static resx:UIPoseStrings.ParentRotation}}" VerticalAlignment="Center"/>
-                                <ToggleButton IsChecked="{Binding ParentingToggle}"/>
-                                <Label Content="{Binding Source={x:Static resx:UIPoseStrings.ToggleHelmParenting}}"   VerticalAlignment="Center" Width="130"/>
-                                <ToggleButton x:Name="HelmToggle" IsEnabled="False" Checked="HelmToggle_Checked" Unchecked="HelmToggle_Unchecked" />
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
-                                <Label Content="Edit Scaling:" Width="95"  VerticalAlignment="Center"/>
-                                <ToggleButton x:Name="ScaleEdit" IsEnabled="False" Checked="ScaleEdit_Checked" Unchecked="ScaleEdit_Unchecked"  />
-                                <Label Content="Scaling Mode:"  VerticalAlignment="Center" Width="95"/>
-                                <ToggleButton x:Name="ScaleToggle" IsEnabled="False" Checked="ScaleToggle_Checked" Unchecked="ScaleToggle_Unchecked" />
-                                <Label Content="Weapon Postion Mode:"  VerticalAlignment="Center"/>
-                                <ToggleButton x:Name="WeaponPoSToggle" IsEnabled="False" Checked="WeaponPoSToggle_Checked" Unchecked="WeaponPoSToggle_Unchecked"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
-                                <Label Content="{Binding Source={x:Static resx:UIPoseStrings.EnablePhysics}}"  Width="95" VerticalAlignment="Center"/>
-                                <ToggleButton Name="PhysicsButton" Checked="PhysicsButton_Checked" Unchecked="PhysicsButton_Unchecked" IsEnabled="False" />
-                                <Label Content="Scaling In Load:" Width="95" />
-                                <ToggleButton x:Name="ScaleSaveToggle" Checked="ScaleSaveToggle_Checked" Unchecked="ScaleSaveToggle_Unchecked"/>
-                            </StackPanel>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="0,3,0,0">
-                            <Button x:Name="SaveCMP" Width="156" Margin="25,0,0,0" Click="SaveCMP_Click">
-                                <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="ContentSave" Padding="0" Margin="0,2,0,0" />
-                                    <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="{Binding Source={x:Static resx:UIPoseStrings.SaveCMPFile}}" />
-                                </StackPanel>
-                            </Button>
-                            <Button IsEnabled="False" x:Name="LoadCMP" Width="156" Margin="50,0,0,0" Click="LoadCMP_Click">
-                                <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="Download" Padding="0" Margin="0,2,0,0" />
-                                    <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="{Binding Source={x:Static resx:UIPoseStrings.LoadCMPFile}}" />
-                                </StackPanel>
-                            </Button>
-                        </StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Viewbox HorizontalAlignment="Left" Height="28" Margin="962,10,0,0" VerticalAlignment="Top" Width="143">
+            <Label Content="{Binding Source={x:Static resx:UIPoseStrings.RealTimeRotation}}" ToolTip="{Binding Source={x:Static resx:UIPoseStrings.RealTimeRotationToolTip}}" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16"/>
+        </Viewbox>
+        <Border BorderBrush="Black" BorderThickness="3" HorizontalAlignment="Left" Height="150" Margin="955,35,0,0" VerticalAlignment="Top" Width="150" Background="#FF2E2E2E">
+            <local:PoseRotationView x:Name="Cube" Height="Auto" Width="Auto">
+                <local:PoseRotationView.DataContext>
+                    <MultiBinding Converter="{StaticResource ResourceKey=QuaternionConverter}">
+                        <Binding Path="CubeBone_X" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
+                        <Binding Path="CubeBone_Y" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
+                        <Binding Path="CubeBone_Z" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
+                        <Binding Path="CubeBone_W" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
+                    </MultiBinding>
+                </local:PoseRotationView.DataContext>
+            </local:PoseRotationView>
+        </Border>
 
-                    </StackPanel>
-                </GroupBox>
-                <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.AdvancedLoading}}"  Height="155" Padding="9,0,9,2" Margin="10,0,0,0" Width="473">
-                    <StackPanel>
-                        <StackPanel Orientation="Vertical">
-                            <StackPanel Orientation="Horizontal" Margin="-10,5,0,0">
-                                <CheckBox x:Name="HeadAdvLoad" Content="{Binding Source={x:Static resx:UIPoseStrings.Head2}}" Margin="10,0,0,0" VerticalAlignment="Center" Width="80" Padding="0"/>
-                                <CheckBox x:Name="BodyAdvLoad" Margin="10,0,0,0" Content="{Binding Source={x:Static resx:UIPoseStrings.Body2}}"  VerticalAlignment="Center" Width="80" Padding="0"/>
-                                <CheckBox x:Name="ClothesAdvLoad" Margin="10,0,0,0" Content="{Binding Source={x:Static resx:UIPoseStrings.Clothes2}}"  VerticalAlignment="Center" Width="80" Padding="0"/>
-                                <CheckBox x:Name="WeaponsAdvLoad" Margin="10,0,0,0" Content="{Binding Source={x:Static resx:UIPoseStrings.Weapons3}}"  VerticalAlignment="Center" Width="90" Padding="0"/>
-                                <CheckBox x:Name="WaistAdvLoad" Margin="10,0,0,0" Content="{Binding Source={x:Static resx:UIPoseStrings.Waist2}}"  VerticalAlignment="Center" Width="90" Padding="0"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="-10,5,0,0">
-                                <CheckBox x:Name="HairAdvLoad"  Content="{Binding Source={x:Static resx:UIPoseStrings.Hair2}}"  Margin="10,0,0,0" VerticalAlignment="Center" Width="80" Padding="0"/>
-                                <CheckBox x:Name="LeftArmAdvLoad" Content="{Binding Source={x:Static resx:UIPoseStrings.LeftArm2}}" Margin="10,0,0,0"  VerticalAlignment="Center" Width="80" Padding="0"/>
-                                <CheckBox x:Name="HelmAdvLoad" Content="{Binding Source={x:Static resx:UIPoseStrings.Helm2}}"  Margin="10,0,0,0" VerticalAlignment="Center" Width="80" Padding="0"/>
-                                <CheckBox x:Name="LeftHandAdvLoad" Content="{Binding Source={x:Static resx:UIPoseStrings.LeftHand2}}" Margin="10,0,0,0"  VerticalAlignment="Center" Width="90" Padding="0"/>
-                                <CheckBox x:Name="LeftLegAdvLoad" Content="{Binding Source={x:Static resx:UIPoseStrings.LeftLeg2}}"  Margin="10,0,0,0" VerticalAlignment="Center" Width="90" Padding="0"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="-10,5,0,0">
-                                <CheckBox x:Name="EarringsAdvLoad" Content="{Binding Source={x:Static resx:UIPoseStrings.Earrings2}}"  Margin="10,0,0,0" VerticalAlignment="Center" Width="80" Padding="0"/>
-                                <CheckBox x:Name="RightArmAdvLoad" Content="{Binding Source={x:Static resx:UIPoseStrings.RightArm2}}" Margin="10,0,0,0" VerticalAlignment="Center" Width="80" Padding="0"/>
-                                <CheckBox x:Name="TopAdvLoad" Content="{Binding Source={x:Static resx:UIPoseStrings.Top2}}" Margin="10,0,0,0" VerticalAlignment="Center" Width="80" Padding="0"/>
-                                <CheckBox x:Name="RightHandAdvLoad" Content="{Binding Source={x:Static resx:UIPoseStrings.RightHand2}}" Margin="10,0,0,0" VerticalAlignment="Center" Width="90" Padding="0"/>
-                                <CheckBox x:Name="RightLegAdvLoad" Content="{Binding Source={x:Static resx:UIPoseStrings.RightLeg2}}" Margin="10,0,0,0" VerticalAlignment="Center" Width="90" Padding="0"/>
-                            </StackPanel>
-
-                            <Button IsEnabled="False" x:Name="AdvLoadCMP" Width="200" Margin="0,10,0,0" Click="AdvLoadCMP_Click">
-                                <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="Download" Padding="0" Margin="0,2,0,0" />
-                                    <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="{Binding Source={x:Static resx:UIPoseStrings.AdvLoadCMPFile}}" />
-                                </StackPanel>
-                            </Button>
-                        </StackPanel>
-                    </StackPanel>
-                </GroupBox>
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="10,40,0,0">
-                    <Button x:Name="SelectAll" Content="{Binding Source={x:Static resx:UIPoseStrings.SelectAll}}" Width="156" Click="SelectAll_Click" />
-                    <Button x:Name="SelectNone" Content="{Binding Source={x:Static resx:UIPoseStrings.SelectNone}}" Width="156" Margin="0,20,0,0" Click="SelectNone_Click"/>
-                </StackPanel>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                <Label Content="{Binding Source={x:Static resx:UIPoseStrings.XRot}}"  VerticalAlignment="Center"/>
-                <mah:NumericUpDown x:Name="XUpDown" Width="125" Value="{Binding UserBoneX, Mode=TwoWay, NotifyOnSourceUpdated=True}" Background="{x:Null}" TextAlignment="Right"  BorderThickness="2" Maximum="{Binding MaxBone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Minimum="{Binding MinBone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" StringFormat="F5" Interval="{Binding BoneInterval, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="11.35" FontFamily="Segoe UI"/>
-                <Slider x:Name="BoneSliderX" Value="{Binding UserBoneX, Mode=TwoWay, NotifyOnSourceUpdated=True}"
-                                Margin="5,5,0,0" Width="165" Maximum="{Binding MaxBone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Minimum="{Binding MinBone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TickFrequency="0.5" />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label Content="{Binding Source={x:Static resx:UIPoseStrings.YRot}}"  VerticalAlignment="Center"/>
-                <mah:NumericUpDown x:Name="YUpDown" Width="125" Value="{Binding UserBoneY, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"  Background="{x:Null}" TextAlignment="Right"  BorderThickness="2" Maximum="{Binding MaxBone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Minimum="{Binding MinBone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" StringFormat="F5" Interval="{Binding BoneInterval, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="11.35" FontFamily="Segoe UI"/>
-                <Slider x:Name="BoneSliderY" Value="{Binding UserBoneY, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
-                                Margin="5,5,0,0" Width="165" Maximum="{Binding MaxBone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Minimum="{Binding MinBone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TickFrequency="0.5" />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label Content="{Binding Source={x:Static resx:UIPoseStrings.ZRot}}"  VerticalAlignment="Center"/>
-                <mah:NumericUpDown x:Name="ZUpDown" Width="125" Value="{Binding UserBoneZ, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Background="{x:Null}" TextAlignment="Right"  BorderThickness="2" Maximum="{Binding MaxBone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Minimum="{Binding MinBone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  StringFormat="F5" Interval="{Binding BoneInterval, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="11.35" FontFamily="Segoe UI"/>
-                <Slider x:Name="BoneSliderZ" Value="{Binding UserBoneZ, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
-                                Margin="5,5,0,0" Width="165" Maximum="{Binding MaxBone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Minimum="{Binding MinBone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TickFrequency="0.5"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                <GroupBox Header="Cube Rotation - Bones" x:Name="CubeBox">
-                    <Border BorderBrush="Black" BorderThickness="3" Height="155" Width="200" Background="#FF2E2E2E">
-                        <local:PoseRotationView x:Name="Cube" IsEnabled="False">
-                            <local:PoseRotationView.DataContext>
-                                <MultiBinding Converter="{StaticResource ResourceKey=QuaternionConverter}">
-                                    <Binding Path="CubeBone_X" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
-                                    <Binding Path="CubeBone_Y" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
-                                    <Binding Path="CubeBone_Z" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
-                                    <Binding Path="CubeBone_W" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
-                                </MultiBinding>
-                            </local:PoseRotationView.DataContext>
-                        </local:PoseRotationView>
-                    </Border>
-                </GroupBox>
-            </StackPanel>
-        </StackPanel>
-        <GroupBox Margin="0,250,754,60" Grid.ColumnSpan="2" Header="Actor Model Properties" x:Name="ActorProperties" Visibility="Hidden">
-            <StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <!-- X Rot -->
-                    <CheckBox IsChecked="{Binding CharacterDetails.CharacterDetails.RotateFreeze}" Content="{Binding Source={x:Static resx:UIStringsContent.XRot}}"  x:Name="RotateCheckBox1" Height="28"/>
-                    <mah:NumericUpDown Minimum="0" Maximum="360" x:Name="RotationUpDown" SourceUpdated="RotationUpDown_SourceUpdated" Value="{Binding CharacterDetails.CharacterDetails.RotateX, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C0000FF" StringFormat="F5" Interval="0.5" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
-                    <Slider Name="RotationSlider" SourceUpdated="RotationUpDown_SourceUpdated" Value="{Binding CharacterDetails.CharacterDetails.RotateX, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Width="115" Minimum="0" Maximum="360" TickFrequency="0.5"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <!-- Y Rot -->
-                    <CheckBox IsChecked="{Binding CharacterDetails.CharacterDetails.RotateFreeze}" Content="{Binding Source={x:Static resx:UIStringsContent.YRot}}"  x:Name="RotateCheckBox2" Height="28"/>
-                    <mah:NumericUpDown Minimum="0" Maximum="360" x:Name="RotationUpDown2" SourceUpdated="RotationUpDown2_SourceUpdated" Value="{Binding CharacterDetails.CharacterDetails.RotateY, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C008000" StringFormat="F5" Interval="0.5" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
-                    <Slider Name="RotationSlider2" SourceUpdated="RotationUpDown2_SourceUpdated" Value="{Binding CharacterDetails.CharacterDetails.RotateY, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Width="115" Minimum="0" Maximum="360" TickFrequency="0.5"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <!-- Z Rot -->
-                    <CheckBox IsChecked="{Binding CharacterDetails.CharacterDetails.RotateFreeze}" Content="{Binding Source={x:Static resx:UIStringsContent.ZRot}}" x:Name="RotateCheckBox3" Height="28"/>
-                    <mah:NumericUpDown Minimum="0" Maximum="360" x:Name="RotationUpDown3" SourceUpdated="RotationUpDown3_SourceUpdated" Value="{Binding CharacterDetails.CharacterDetails.RotateZ, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8CFF0000" StringFormat="F5" Interval="0.5" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
-                    <Slider Name="RotationSlider3" SourceUpdated="RotationUpDown3_SourceUpdated" Value="{Binding CharacterDetails.CharacterDetails.RotateZ, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Width="115" Minimum="0" Maximum="360" TickFrequency="0.5"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <!-- X Pos -->
-                    <CheckBox IsChecked="{Binding CharacterDetails.CharacterDetails.X.freeze}" x:Name="XCheck" Content="{Binding Source={x:Static resx:UIStringsContent.XPos}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.XPosToolTip}}" Height="28"/>
-                    <mah:NumericUpDown x:Name="PosX" Value="{Binding CharacterDetails.CharacterDetails.X.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C0000FF" StringFormat="F5" Interval="0.01" SourceUpdated="PosX_SourceUpdated" TextAlignment="Right" MinWidth="0" MinHeight="0" Height="28" FontSize="11.35" FontFamily="Segoe UI"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <!-- Y Pos -->
-                    <CheckBox IsChecked="{Binding CharacterDetails.CharacterDetails.Y.freeze}" x:Name="YCheck" Content="{Binding Source={x:Static resx:UIStringsContent.YPos}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.YPosToolTip}}" Height="28"/>
-                    <mah:NumericUpDown x:Name="PosY" Value="{Binding CharacterDetails.CharacterDetails.Y.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C008000" StringFormat="F5" Interval="0.01" SourceUpdated="PosY_SourceUpdated" TextAlignment="Right" MinWidth="0" MinHeight="0" Height="28" FontSize="11.35" FontFamily="Segoe UI"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <!-- Z Post -->
-                    <CheckBox IsChecked="{Binding CharacterDetails.CharacterDetails.Z.freeze}" x:Name="ZCheck" Content="{Binding Source={x:Static resx:UIStringsContent.ZPos}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.ZPosToolTip}}" Height="28"/>
-                    <mah:NumericUpDown x:Name="PosZ" Value="{Binding CharacterDetails.CharacterDetails.Z.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8CFF0000" StringFormat="F5" Interval="0.01" SourceUpdated="PosZ_SourceUpdated" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
-                    <!-- Relative Pos -->
-                    <Label Content="Relative PoS:" ToolTip="{Binding Source={x:Static resx:UIStringsContent.RelativeXYZPosToolTip}}" Height="28"/>
-                    <ToggleButton Name="PosRelButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.CharacterDetails.RelativePositioning, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Height="28" BorderThickness="1" Checked="PosRelButton_Checked" Unchecked="PosRelButton_Unchecked" />
-                </StackPanel>
-            </StackPanel>
-
-        </GroupBox>
-        <CheckBox x:Name="ToggleModelView" Content="Toggle Actor/Model Box" Grid.ColumnSpan="2" Margin="10,466,949,39" Checked="ToggleModelView_Checked" Unchecked="ToggleModelView_Unchecked"/>
-        <mah:NumericUpDown Value="{Binding BoneInterval, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Background="{x:Null}" TextAlignment="Right"  BorderThickness="2" Maximum="360" Minimum="0"  StringFormat="F3" Interval="0.01" FontSize="11.35" FontFamily="Segoe UI" Margin="95,493,909,11" Grid.ColumnSpan="2"/>
-        <Label Content="Bone Intervals:" Margin="9,493,39,12"/>
-        <mah:MetroAnimatedTabControl  Background="{x:Null}" Grid.Column="1" Margin="231,155,10,0">
-            <TabItem Header="{Binding Source={x:Static resx:UIPoseStrings.HeadHair}}" Style="{DynamicResource MenuLevel2}">
+        <mah:MetroAnimatedTabControl x:Name="MatrixTabControl" TabStripPlacement="Left" Margin="11,0,268,0" Background="{x:Null}" Width="840">
+            <TabItem Header="{Binding Source={x:Static resx:UIPoseStrings.HeadHair}}" Width="200" Height="40" Background="{x:Null}" Style="{DynamicResource MenuLevel2}">
                 <StackPanel>
-                    <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.Head2}}" Padding="0,0,0,5" Width="730">
+                    <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.Head2}}" Width="620">
                         <StackPanel>
                             <StackPanel Orientation="Vertical">
                                 <StackPanel Orientation="Horizontal">
                                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Face}}"  VerticalAlignment="Center" Width="60"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="Head" Checked="Toggles_Checked"/>
-                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Ears}}"  VerticalAlignment="Center" Width="auto"/>
+                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Eyebrows}}"  VerticalAlignment="Center" Width="90"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="EyebrowLeft" Content="L"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="EyebrowRight" Content="R"/>
+                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Eyes}}"  VerticalAlignment="Center" Width="90"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="EyeLeft" Content="L"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="EyeRight" Content="R"/>
+                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Ears}}"  VerticalAlignment="Center" Width="90"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="EarLeft" Content="L"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="EarRight" Content="R"/>
-                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.VieraEars}}"  VerticalAlignment="Center" Width="80"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Nose}}"  VerticalAlignment="Center" Width="60"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="Nose"/>
+                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Brows}}"  VerticalAlignment="Center" Width="90"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="BrowLeft" Content="L"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="BrowRight" Content="R"/>
+                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.VieraEars}}"  VerticalAlignment="Center" Width="90"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="VieraEarALeft" Content="L1"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="VieraEarBLeft" Content="L2"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked"  Name="VieraEarARight" Content="R1"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="VieraEarBRight" Content="R2"/>
-                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Nose}}"  VerticalAlignment="Center" Width="60"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="Nose"/>
-                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Bridge}}"   VerticalAlignment="Center" Width="auto"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="Bridge"/>
                                 </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Eyes}}"  VerticalAlignment="Center" Width="60"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="EyeLeft" Content="L"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="EyeRight" Content="R"/>
-                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Eyebrows}}"  VerticalAlignment="Center" Width="auto"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="EyebrowLeft" Content="L"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="EyebrowRight" Content="R"/>
-                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Brows}}"  VerticalAlignment="Center" Width="auto"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="BrowLeft" Content="L"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="BrowRight" Content="R"/>
-                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Eyelids}}"  VerticalAlignment="Center" Width="auto"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Bridge}}"   VerticalAlignment="Center" Width="60"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="Bridge"/>
+                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Eyelids}}"  VerticalAlignment="Center" Width="90"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="EyelidUpperLeft" Content="L"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="EyelidUpperRight" Content="R"/>
-                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.LowerLids}}"  VerticalAlignment="Center" Width="auto"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="EyelidLowerLeft" Content="L"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="EyelidLowerRight" Content="R"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Cheeks}}"  VerticalAlignment="Center" Width="60"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="CheekLeft" Content="L"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="CheekRight" Content="R"/>
-                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Jaw}}"  VerticalAlignment="Center" Width="60"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="Jaw"/>
-                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Mouth}}"  VerticalAlignment="Center" Margin="34,0,0,0" Width="60"/>
+                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Mouth}}"  VerticalAlignment="Center" Width="90"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="LipsLeft" Content="L"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="LipsRight" Content="R"/>
-                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.UpperLip}}" Width="auto"/>
+                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.UpperLip}}" Width="90"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="LipUpperA" Content="L1"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="LipUpperB" Content="R1"/>
-                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.LowerLip}}" Width="auto" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Jaw}}"  VerticalAlignment="Center" Width="60"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="Jaw"/>
+                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.LowerLids}}"  VerticalAlignment="Center" Width="90"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="EyelidLowerLeft" Content="L"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="EyelidLowerRight" Content="R"/>
+                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Cheeks}}"  VerticalAlignment="Center" Width="90"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="CheekLeft" Content="L"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="CheekRight" Content="R"/>
+                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.LowerLip}}" Width="90" />
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="LipLowerA" Content="L2"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="LipLowerB"  Content="R2"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
                                 </StackPanel>
                             </StackPanel>
                         </StackPanel>
 
                     </GroupBox>
                     <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Head}}"  VerticalAlignment="Center" Width="75"/>
+                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Head}}" VerticalAlignment="Center" Width="75"/>
                         <Button x:Name="SavestateHead01" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="28" Padding="0" Click="SavestateHead01_Click">
                             <StackPanel Orientation="Horizontal" Width="50" Height="16">
                                 <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
@@ -275,7 +131,7 @@
                             </StackPanel>
                         </Button>
                     </StackPanel>
-                    <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.HairAccessories}}" Margin="0,5,0,0" Width="730" Padding="0,0,0,5">
+                    <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.HairAccessories}}" Margin="0,5,0,0" Width="620">
                         <StackPanel>
                             <StackPanel Orientation="Vertical">
                                 <StackPanel Orientation="Horizontal">
@@ -289,9 +145,6 @@
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExHairD" Content="4"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExHairE" Content="5"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExHairF" Content="6"/>
-                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.HrothgarWhiskers}}"  VerticalAlignment="Center"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked"  Name="HrothWhiskersLeft" Content="L"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="HrothWhiskersRight" Content="R"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label VerticalAlignment="Center" Width="80"/>
@@ -304,7 +157,12 @@
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExHairJ" Content="10"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExHairK" Content="11"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExHairL" Content="12"/>
-                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Earrings}}"  VerticalAlignment="Center" Width="65"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.HrothgarWhiskers}}"  VerticalAlignment="Center"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked"  Name="HrothWhiskersLeft" Content="L"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="HrothWhiskersRight" Content="R"/>
+                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Earrings}}"  VerticalAlignment="Center" Width="80"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="EarringALeft" Checked="Toggles_Checked" Content="L1"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="EarringBLeft" Checked="Toggles_Checked" Content="L2"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="EarringARight" Checked="Toggles_Checked" Content="R1"/>
@@ -313,64 +171,70 @@
                             </StackPanel>
                         </StackPanel>
                     </GroupBox>
-                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Hair}}"  VerticalAlignment="Center" Width="75"/>
-                        <Button x:Name="SavestateHair01" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="28" Padding="0" Click="SavestateHair01_Click">
-                            <StackPanel Orientation="Horizontal" Width="50" Height="16">
-                                <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
-                                <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="LoadstateHair01"  materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left"  Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" IsEnabled="False" Click="LoadstateHair01_Click">
-                            <StackPanel Orientation="Horizontal" Width="50" Height="16">
-                                <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
-                                <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="SavestateHair02" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" Click="SavestateHair02_Click">
-                            <StackPanel Orientation="Horizontal" Width="50" Height="16">
-                                <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
-                                <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="LoadstateHair02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left"  Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" IsEnabled="False" Click="LoadstateHair02_Click">
-                            <StackPanel Orientation="Horizontal" Width="50" Height="16">
-                                <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
-                                <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
-                            </StackPanel>
-                        </Button>
-                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Earrings}}"  Margin="50,0,0,0" VerticalAlignment="Center" Width="75"/>
-                        <Button x:Name="SavestateEarrings01" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="28" Padding="0" Click="SavestateEarrings01_Click">
-                            <StackPanel Orientation="Horizontal" Width="50" Height="16">
-                                <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
-                                <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="LoadstateEarrings01"  materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left"  Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" IsEnabled="False" Click="LoadstateEarrings01_Click">
-                            <StackPanel Orientation="Horizontal" Width="50" Height="16">
-                                <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
-                                <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="SavestateEarrings02" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" Click="SavestateEarrings02_Click">
-                            <StackPanel Orientation="Horizontal" Width="50" Height="16">
-                                <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
-                                <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="LoadstateEarrings02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left"  Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" IsEnabled="False" Click="LoadstateEarrings02_Click">
-                            <StackPanel Orientation="Horizontal" Width="50" Height="16">
-                                <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
-                                <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
-                            </StackPanel>
-                        </Button>
+                    <StackPanel Orientation="Vertical" Margin="0,5,0,0">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Hair}}"  VerticalAlignment="Center" Width="75"/>
+                            <Button x:Name="SavestateHair01" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="28" Padding="0" Click="SavestateHair01_Click">
+                                <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                                    <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                                    <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="LoadstateHair01"  materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left"  Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" IsEnabled="False" Click="LoadstateHair01_Click">
+                                <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                                    <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                                    <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="SavestateHair02" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" Click="SavestateHair02_Click">
+                                <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                                    <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                                    <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="LoadstateHair02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left"  Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" IsEnabled="False" Click="LoadstateHair02_Click">
+                                <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                                    <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                                    <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                            <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Earrings}}" VerticalAlignment="Center" Width="75"/>
+                            <Button x:Name="SavestateEarrings01" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="28" Padding="0" Click="SavestateEarrings01_Click">
+                                <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                                    <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                                    <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="LoadstateEarrings01"  materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left"  Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" IsEnabled="False" Click="LoadstateEarrings01_Click">
+                                <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                                    <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                                    <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="1" FontSize="16" />
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="SavestateEarrings02" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" Click="SavestateEarrings02_Click">
+                                <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                                    <materialDesign:PackIcon Kind="ContentSave" Margin="12 0 0 0" Padding="0" Width="16" Height="16" />
+                                    <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="LoadstateEarrings02" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left"  Margin="10,0,0,0" VerticalAlignment="Top" Width="50" Height="28" Padding="0" IsEnabled="False" Click="LoadstateEarrings02_Click">
+                                <StackPanel Orientation="Horizontal" Width="50" Height="16">
+                                    <materialDesign:PackIcon Kind="Download" Margin="12 1 0 0" Padding="0" Width="16" Height="16" />
+                                    <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
                     </StackPanel>
                 </StackPanel>
+
+
             </TabItem>
-            <TabItem Header="{Binding Source={x:Static resx:UIPoseStrings.BodyClothes}}" Style="{DynamicResource MenuLevel2}">
+            <TabItem Header="{Binding Source={x:Static resx:UIPoseStrings.BodyClothes}}" Width="200" Height="40" Background="{x:Null}" Style="{DynamicResource MenuLevel2}" VerticalAlignment="Bottom">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.Body2}}" Padding="0,0,0,5">
+                        <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.Body2}}" Margin="100,0,0,0">
                             <StackPanel>
                                 <StackPanel Orientation="Vertical">
                                     <StackPanel Orientation="Horizontal">
@@ -427,56 +291,6 @@
                                         <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Wrists}}"  VerticalAlignment="Center" Width="90"/>
                                         <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="WristLeft" Checked="Toggles_Checked" Content="L"/>
                                         <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="WristRight" Checked="Toggles_Checked" Content="R"/>
-                                    </StackPanel>
-                                </StackPanel>
-                            </StackPanel>
-
-                        </GroupBox>
-                        <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.Hands2}}" Padding="0,0,0,5" Width="310">
-                            <StackPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Hands}}"  VerticalAlignment="Center" Width="80"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="HandLeft" Checked="Toggles_Checked" Content="L"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="HandRight" Checked="Toggles_Checked" Content="R"/>
-                                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Weapons}}"  VerticalAlignment="Center" Width="80"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="WeaponLeft" Checked="Toggles_Checked" Content="L"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="WeaponRight" Checked="Toggles_Checked" Content="R"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Thumb}}"  VerticalAlignment="Center" Width="90"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ThumbALeft" Checked="Toggles_Checked" Content="L1"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ThumbBLeft" Checked="Toggles_Checked" Content="L2"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ThumbARight" Checked="Toggles_Checked" Content="R1"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ThumbBRight" Checked="Toggles_Checked" Content="R2"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Index}}"  VerticalAlignment="Center" Width="90"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="IndexALeft" Checked="Toggles_Checked" Content="L1"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="IndexBLeft" Checked="Toggles_Checked" Content="L2"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="IndexARight" Checked="Toggles_Checked" Content="R1"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="IndexBRight" Checked="Toggles_Checked" Content="R2"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Middle}}"  VerticalAlignment="Center" Width="90"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="MiddleALeft" Checked="Toggles_Checked" Content="L1"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="MiddleBLeft" Checked="Toggles_Checked" Content="L2"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="MiddleARight" Checked="Toggles_Checked" Content="R1"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="MiddleBRight" Checked="Toggles_Checked" Content="R2"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Ring}}"  VerticalAlignment="Center" Width="90"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="RingALeft" Checked="Toggles_Checked" Content="L1"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="RingBLeft" Checked="Toggles_Checked" Content="L2"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="RingARight" Checked="Toggles_Checked" Content="R1"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="RingBRight"  Checked="Toggles_Checked" Content="R2"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Pinky}}"  VerticalAlignment="Center" Width="90"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="PinkyALeft" Checked="Toggles_Checked" Content="L1"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="PinkyBLeft" Checked="Toggles_Checked" Content="L2"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="PinkyARight" Checked="Toggles_Checked" Content="R1"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="PinkyBRight"  Checked="Toggles_Checked" Content="R2"/>
                                     </StackPanel>
                                 </StackPanel>
                             </StackPanel>
@@ -644,14 +458,67 @@
                                     <TextBlock Margin="2 -1 0 0" VerticalAlignment="Center" Padding="0" Text="2" FontSize="16" />
                                 </StackPanel>
                             </Button>
+
                         </StackPanel>
+
                     </StackPanel>
+                    <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.Hands2}}" Width="310" Margin="0,10,0,0">
+                        <StackPanel>
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Hands}}"  VerticalAlignment="Center" Width="80"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="HandLeft" Checked="Toggles_Checked" Content="L"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="HandRight" Checked="Toggles_Checked" Content="R"/>
+                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Weapons}}"  VerticalAlignment="Center" Width="80"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="WeaponLeft" Checked="Toggles_Checked" Content="L"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="WeaponRight" Checked="Toggles_Checked" Content="R"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Thumb}}"  VerticalAlignment="Center" Width="90"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ThumbALeft" Checked="Toggles_Checked" Content="L1"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ThumbBLeft" Checked="Toggles_Checked" Content="L2"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ThumbARight" Checked="Toggles_Checked" Content="R1"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="ThumbBRight" Checked="Toggles_Checked" Content="R2"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Index}}"  VerticalAlignment="Center" Width="90"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="IndexALeft" Checked="Toggles_Checked" Content="L1"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="IndexBLeft" Checked="Toggles_Checked" Content="L2"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="IndexARight" Checked="Toggles_Checked" Content="R1"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="IndexBRight" Checked="Toggles_Checked" Content="R2"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Middle}}"  VerticalAlignment="Center" Width="90"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="MiddleALeft" Checked="Toggles_Checked" Content="L1"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="MiddleBLeft" Checked="Toggles_Checked" Content="L2"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="MiddleARight" Checked="Toggles_Checked" Content="R1"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="MiddleBRight" Checked="Toggles_Checked" Content="R2"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Ring}}"  VerticalAlignment="Center" Width="90"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="RingALeft" Checked="Toggles_Checked" Content="L1"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="RingBLeft" Checked="Toggles_Checked" Content="L2"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="RingARight" Checked="Toggles_Checked" Content="R1"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="RingBRight"  Checked="Toggles_Checked" Content="R2"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Pinky}}"  VerticalAlignment="Center" Width="90"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="PinkyALeft" Checked="Toggles_Checked" Content="L1"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="PinkyBLeft" Checked="Toggles_Checked" Content="L2"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="PinkyARight" Checked="Toggles_Checked" Content="R1"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="PinkyBRight"  Checked="Toggles_Checked" Content="R2"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+
+                    </GroupBox>
+
                 </StackPanel>
 
             </TabItem>
-            <TabItem Header="{Binding Source={x:Static resx:UIPoseStrings.HandsLegs}}" Style="{DynamicResource MenuLevel2}">
+            <TabItem Header="{Binding Source={x:Static resx:UIPoseStrings.HandsLegs}}" Width="200" Height="40" Background="{x:Null}" Style="{DynamicResource MenuLevel2}">
                 <StackPanel>
-                    <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.WaistLegs}}" Width="720" Padding="0,0,0,5">
+                    <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.WaistLegs}}" Width="620">
                         <StackPanel>
                             <StackPanel Orientation="Vertical">
                                 <StackPanel Orientation="Horizontal">
@@ -667,20 +534,19 @@
                                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Sheathes}}"  VerticalAlignment="Center" Width="95"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="SheatheLeft" Checked="Toggles_Checked" Content="L"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="SheatheRight" Checked="Toggles_Checked" Content="R"/>
-                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Holsters}}"  VerticalAlignment="Center" Width="90"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="HolsterLeft" Checked="Toggles_Checked" Content="L"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="HolsterRight" Checked="Toggles_Checked" Content="R"/>
                                 </StackPanel>
-                                <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Legs}}"  VerticalAlignment="Center" Width="80"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="LegLeft" Checked="Toggles_Checked" Content="L"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="LegRight" Checked="Toggles_Checked" Content="R"/>
                                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Knees}}"  VerticalAlignment="Center" Width="90"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="KneeLeft" Checked="Toggles_Checked" Content="L"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="KneeRight" Checked="Toggles_Checked" Content="R"/>
-
+                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Holsters}}" Margin="71,0,0,0" VerticalAlignment="Center" Width="95"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="HolsterLeft" Checked="Toggles_Checked" Content="L"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="HolsterRight" Checked="Toggles_Checked" Content="R"/>
                                 </StackPanel>
-                                <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Poleyns}}"  VerticalAlignment="Center" Width="80"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="PoleynLeft" Checked="Toggles_Checked" Content="L"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="PoleynRight" Checked="Toggles_Checked" Content="R"/>
@@ -688,7 +554,7 @@
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="CalfLeft" Checked="Toggles_Checked" Content="L"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="CalfRight" Checked="Toggles_Checked" Content="R"/>
                                 </StackPanel>
-                                <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Feet}}"  VerticalAlignment="Center" Width="80"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="FootLeft" Checked="Toggles_Checked" Content="L"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="FootRight" Checked="Toggles_Checked" Content="R"/>
@@ -785,10 +651,10 @@
                 </StackPanel>
 
             </TabItem>
-            <TabItem Header="{Binding Source={x:Static resx:UIPoseStrings.EquipOther}}" Style="{DynamicResource MenuLevel2}" HorizontalAlignment="Right">
+            <TabItem Header="{Binding Source={x:Static resx:UIPoseStrings.EquipOther}}" Width="200" Height="40" Background="{x:Null}" Style="{DynamicResource MenuLevel2}">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.Clothes2}}" Padding="0,0,0,5">
+                        <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.Clothes2}}" Margin="150,0,0,0">
                             <StackPanel>
                                 <StackPanel Orientation="Vertical">
                                     <StackPanel Orientation="Horizontal">
@@ -837,60 +703,8 @@
                             </StackPanel>
 
                         </GroupBox>
-                        <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.Equipment}}" Padding="0,0,0,5" Width="428">
-                            <StackPanel>
-                                <StackPanel Orientation="Vertical">
-                                    <StackPanel Orientation="Horizontal">
-                                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Helm}}"  VerticalAlignment="Center" Width="60"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetA" Content="1"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetB" Content="2" />
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetC" Content="3"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetD" Content="4" />
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetE" Content="5"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetF" Content="6"/>
-                                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Top}}"  VerticalAlignment="Center" Width="40"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopA" Content="1"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopB" Content="2" />
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopC" Content="3"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                        <Label  VerticalAlignment="Center" Width="60"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetG" Content="7"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetH" Content="8" />
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetI" Content="9"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetJ" Content="10" />
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetK" Content="11"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetL" Content="12"/>
-                                        <Label  VerticalAlignment="Center" Width="40"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopD" Content="4"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopE" Content="5" />
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopF" Content="6"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal"  Margin="0,5,0,0">
-                                        <Label  VerticalAlignment="Center" Width="60"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetM" Content="13"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetN" Content="14" />
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetO" Content="15"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetP" Content="16" />
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetQ" Content="17"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetR" Content="18"/>
-                                        <Label  VerticalAlignment="Center" Width="40"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopG" Content="7"/>
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopH" Content="8" />
-                                        <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopI" Content="9"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                    </StackPanel>
-                                </StackPanel>
-                            </StackPanel>
-
-                        </GroupBox>
-
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                    <StackPanel Orientation="Horizontal" Margin="175,5,0,0">
                         <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Clothes}}"  VerticalAlignment="Center" Width="75"/>
                         <Button x:Name="SavestateClothes01" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="28" Padding="0" Click="SavestateClothes01_Click">
                             <StackPanel Orientation="Horizontal" Width="50" Height="16">
@@ -917,7 +731,7 @@
                             </StackPanel>
                         </Button>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                    <StackPanel Orientation="Horizontal" Margin="175,5,0,0">
                         <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Helm}}"  VerticalAlignment="Center" Width="75"/>
                         <Button x:Name="SavestateHelm01" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="28" Padding="0" Click="SavestateHelm01_Click">
                             <StackPanel Orientation="Horizontal" Width="50" Height="16">
@@ -944,7 +758,7 @@
                             </StackPanel>
                         </Button>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                    <StackPanel Orientation="Horizontal" Margin="175,5,0,0">
                         <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Top}}"  VerticalAlignment="Center" Width="75"/>
                         <Button x:Name="SavestateTop01" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="28" Padding="0" Click="SavestateTop01_Click">
                             <StackPanel Orientation="Horizontal" Width="50" Height="16">
@@ -971,35 +785,52 @@
                             </StackPanel>
                         </Button>
                     </StackPanel>
-                </StackPanel>
-
-            </TabItem>
-
-            <TabItem Header="{Binding Source={x:Static resx:UIPoseStrings.Other}}" Style="{DynamicResource MenuLevel2}">
-                <StackPanel>
-                    <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.Other}}" Width="720" Padding="0,0,0,5">
+                    <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.Equipment}}" Margin="0,10,0,0" Width="428">
                         <StackPanel>
                             <StackPanel Orientation="Vertical">
                                 <StackPanel Orientation="Horizontal">
-                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Root}}"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="Root" />
-                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Abdomen}}"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="Abdomen" />
-                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Throw}}"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="Throw" />
+                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Helm}}"  VerticalAlignment="Center" Width="60"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetA" Content="1"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetB" Content="2" />
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetC" Content="3"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetD" Content="4" />
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetE" Content="5"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetF" Content="6"/>
+                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Top}}"  VerticalAlignment="Center" Width="40"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopA" Content="1"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopB" Content="2" />
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopC" Content="3"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                    <Label  VerticalAlignment="Center" Width="60"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetG" Content="7"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetH" Content="8" />
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetI" Content="9"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetJ" Content="10" />
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetK" Content="11"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetL" Content="12"/>
+                                    <Label  VerticalAlignment="Center" Width="40"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopD" Content="4"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopE" Content="5" />
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopF" Content="6"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"  Margin="0,5,0,0">
+                                    <Label  VerticalAlignment="Center" Width="60"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetM" Content="13"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetN" Content="14" />
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetO" Content="15"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetP" Content="16" />
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetQ" Content="17"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExMetR" Content="18"/>
+                                    <Label  VerticalAlignment="Center" Width="40"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopG" Content="7"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopH" Content="8" />
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="ExTopI" Content="9"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Head}}"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="RootHead" />
-                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Unknown}}"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="Unknown00" />
+
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Weapons}}"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="Weapon01" Checked="Toggles_Checked" Content="1"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="Weapon02" Checked="Toggles_Checked" Content="2" />
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="Weapon03" Checked="Toggles_Checked" Content="3"/>
-                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="Weapon04" Checked="Toggles_Checked" Content="4" />
                                 </StackPanel>
                             </StackPanel>
                         </StackPanel>
@@ -1009,7 +840,172 @@
                 </StackPanel>
 
             </TabItem>
-        </mah:MetroAnimatedTabControl>
-    </Grid>
+            <TabItem Header="{Binding Source={x:Static resx:UIPoseStrings.SaveLoad}}" Width="200" Height="40" Background="{x:Null}" Style="{DynamicResource MenuLevel2}">
+                <Grid>
+                    <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.StandardSaving}}" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="175" Width="630"/>
+                    <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.AdvancedLoading}}" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="175" Width="630" Margin="0,255,0,0"/>
+                    <Button x:Name="SaveCMP" ToolTip="{Binding Source={x:Static resx:UIPoseStrings.SaveCMPToolTip}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="225,70,0,0" VerticalAlignment="Top" Width="180" Click="SaveCMP_Click" Height="28" Padding="0,4">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ContentSave" Padding="0" Margin="0,2,0,0" />
+                            <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="{Binding Source={x:Static resx:UIPoseStrings.SaveCMPFile}}" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="LoadCMP" ToolTip="{Binding Source={x:Static resx:UIPoseStrings.LoadCMPToolTip}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="225,103,0,0" VerticalAlignment="Top" Width="180" Click="LoadCMP_Click" Height="28" IsEnabled="False" Padding="0,4">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Download" Padding="0" Margin="0,3,0,0" />
+                            <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="{Binding Source={x:Static resx:UIPoseStrings.LoadCMPFile}}" />
+                        </StackPanel>
+                    </Button>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="250,200,0,0" VerticalAlignment="Top">
+                        <Label Content="Scaling In Load:" Width="95" />
+                        <ToggleButton x:Name="ScaleSaveToggle" Checked="ScaleSaveToggle_Checked" Unchecked="ScaleSaveToggle_Unchecked"/>
+                    </StackPanel>
+                    <Button x:Name="AdvLoadCMP" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="225,395,0,0" VerticalAlignment="Top" Width="180" Click="AdvLoadCMP_Click" Height="28" IsEnabled="False" Padding="0,4">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Download" Padding="0" Margin="0,3,0,0" />
+                            <TextBlock Margin="8 0 0 0" VerticalAlignment="Center" Padding="0" Text="{Binding Source={x:Static resx:UIPoseStrings.AdvLoadCMPFile}}" />
+                        </StackPanel>
+                    </Button>
+                    <CheckBox x:Name="HeadAdvLoad" Content="{Binding Source={x:Static resx:UIPoseStrings.Head2}}" HorizontalAlignment="Left" Margin="75,300,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
+                    <CheckBox x:Name="HairAdvLoad" Content="{Binding Source={x:Static resx:UIPoseStrings.Hair2}}" HorizontalAlignment="Left" Margin="75,330,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
+                    <CheckBox x:Name="EarringsAdvLoad" Content="{Binding Source={x:Static resx:UIPoseStrings.Earrings2}}" HorizontalAlignment="Left" Margin="75,360,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
+                    <CheckBox x:Name="BodyAdvLoad" Content="{Binding Source={x:Static resx:UIPoseStrings.Body2}}" HorizontalAlignment="Left" Margin="175,300,0,0" VerticalAlignment="Top" FontSize="13.25"  Height="28"/>
+                    <CheckBox x:Name="LeftArmAdvLoad" Content="{Binding Source={x:Static resx:UIPoseStrings.LeftArm2}}" HorizontalAlignment="Left" Margin="175,330,0,0" VerticalAlignment="Top" FontSize="13.25"  Height="28"/>
+                    <CheckBox x:Name="RightArmAdvLoad" Content="{Binding Source={x:Static resx:UIPoseStrings.RightArm2}}" HorizontalAlignment="Left" Margin="175,360,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
+                    <CheckBox x:Name="ClothesAdvLoad" Content="{Binding Source={x:Static resx:UIPoseStrings.Clothes2}}" HorizontalAlignment="Left" Margin="275,300,0,0" VerticalAlignment="Top" FontSize="13.25"  Height="28"/>
+                    <CheckBox x:Name="HelmAdvLoad" Content="{Binding Source={x:Static resx:UIPoseStrings.Helm2}}" HorizontalAlignment="Left" Margin="275,330,0,0" VerticalAlignment="Top" FontSize="13.25"  Height="28"/>
+                    <CheckBox x:Name="TopAdvLoad" Content="{Binding Source={x:Static resx:UIPoseStrings.Top2}}" HorizontalAlignment="Left" Margin="275,360,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
+                    <CheckBox x:Name="WeaponsAdvLoad" Content="{Binding Source={x:Static resx:UIPoseStrings.Weapons2}}" HorizontalAlignment="Left" Margin="375,300,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
+                    <CheckBox x:Name="LeftHandAdvLoad" Content="{Binding Source={x:Static resx:UIPoseStrings.LeftHand2}}" HorizontalAlignment="Left" Margin="375,330,0,0" VerticalAlignment="Top" FontSize="13.25"  Height="28"/>
+                    <CheckBox x:Name="RightHandAdvLoad" Content="{Binding Source={x:Static resx:UIPoseStrings.RightHand2}}" HorizontalAlignment="Left" Margin="375,360,0,0" VerticalAlignment="Top" FontSize="13.25"  Height="28"/>
+                    <CheckBox x:Name="WaistAdvLoad" Content="{Binding Source={x:Static resx:UIPoseStrings.Waist2}}" HorizontalAlignment="Left" Margin="475,300,0,0" VerticalAlignment="Top" FontSize="13.25"  Height="28"/>
+                    <CheckBox x:Name="LeftLegAdvLoad" Content="{Binding Source={x:Static resx:UIPoseStrings.LeftLeg2}}" HorizontalAlignment="Left" Margin="475,330,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
+                    <CheckBox x:Name="RightLegAdvLoad" Content="{Binding Source={x:Static resx:UIPoseStrings.RightLeg2}}" HorizontalAlignment="Left" Margin="475,360,0,0" VerticalAlignment="Top" FontSize="13.25" Height="28"/>
+                    <Button x:Name="SelectAll" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="203,435,0,0" VerticalAlignment="Top" Width="110" Click="SelectAll_Click" Height="28" Content="{Binding Source={x:Static resx:UIPoseStrings.SelectAll}}"/>
+                    <Button x:Name="SelectNone" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="318,435,0,0" VerticalAlignment="Top" Width="110" Click="SelectNone_Click" Height="28" Content="{Binding Source={x:Static resx:UIPoseStrings.SelectNone}}"/>
+                </Grid>
 
+            </TabItem>
+        </mah:MetroAnimatedTabControl>
+
+        <!-- Lowwer Body Bones -->
+
+        <!-- Finger Bones -->
+
+        <!-- Upper Body -->
+
+        <!-- Head Bones -->
+
+        <!-- X Rot -->
+        <mah:NumericUpDown Minimum="0" Maximum="360" x:Name="XUpDown" Value="{Binding UserBoneX, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="956,215,0,0" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C0000FF" StringFormat="F5" Interval="0.5" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
+        <Label ToolTip="{Binding Source={x:Static resx:UIPoseStrings.XRotToolTip}}" HorizontalAlignment="Left" Height="28" Margin="864,218,0,0" VerticalAlignment="Top" FontSize="13" Content="{Binding Source={x:Static resx:UIPoseStrings.XRot}}"/>
+        <Slider x:Name="BoneSliderX" Value="{Binding UserBoneX, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left"  Margin="956,220,0,0" VerticalAlignment="Top" Width="145" Minimum="0" Maximum="360" TickFrequency="0.5" IsEnabled="False" Visibility="Hidden"/>
+
+        <!-- Y Rot -->
+        <mah:NumericUpDown Minimum="0" Maximum="360" x:Name="YUpDown" Value="{Binding UserBoneY, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="956,245,0,0" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8C008000" StringFormat="F5" Interval="0.5" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
+        <Label ToolTip="{Binding Source={x:Static resx:UIPoseStrings.YRotToolTip}}" HorizontalAlignment="Left" Height="28" Margin="864,248,0,0" VerticalAlignment="Top" FontSize="13" Content="{Binding Source={x:Static resx:UIPoseStrings.YRot}}"/>
+        <Slider x:Name="BoneSliderY" Value="{Binding UserBoneY, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="956,250,0,0" VerticalAlignment="Top" Width="145" Minimum="0" Maximum="360" TickFrequency="0.5" IsEnabled="False" Visibility="Hidden"/>
+
+        <!-- Z Rot -->
+        <mah:NumericUpDown Minimum="0" Maximum="360" x:Name="ZUpDown" Value="{Binding UserBoneZ, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="956,275,0,0" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8CFF0000" StringFormat="F5" Interval="0.5" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
+        <Label ToolTip="{Binding Source={x:Static resx:UIPoseStrings.ZRotToolTip}}" HorizontalAlignment="Left" Height="28" Margin="864,278,0,0" VerticalAlignment="Top" FontSize="13" Content="{Binding Source={x:Static resx:UIPoseStrings.ZRot}}"/>
+        <Slider x:Name="BoneSliderZ" Value="{Binding UserBoneZ, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="956,280,0,0" VerticalAlignment="Top" Width="145" Minimum="0" Maximum="360" TickFrequency="0.5" IsEnabled="False" Visibility="Hidden"/>
+
+        <!-- Rotation Sliders Toggle -->
+        <ToggleButton x:Name="BoneSliderButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1067,187,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Checked="BoneSliderButton_Checked" Unchecked="BoneSliderButton_Unchecked" />
+        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.RotationSliders}}" ToolTip="{Binding Source={x:Static resx:UIPoseStrings.RotationSlidersToolTip}}" HorizontalAlignment="Left" Margin="956,189,0,0" VerticalAlignment="Top" Height="28"/>
+
+        <!-- Settings -->
+        <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.PoseMatrixSettings}}" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignGroupBox}" Padding="0,0,0,0" Margin="864,331,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="189" Width="245">
+            <StackPanel x:Name="PoseMatrixSetting" IsEnabled="False" Orientation="Vertical" Margin="25,5,0,0">
+                <StackPanel Orientation="Horizontal">
+                    <Label x:Name="EditModeText" Content="{Binding Source={x:Static resx:UIPoseStrings.EnableEditing}}" HorizontalAlignment="Left" Width="140" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="EditModeButton" Checked="EditModeButton_Checked" Unchecked="EditModeButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label x:Name="PhysicsText" Content="{Binding Source={x:Static resx:UIPoseStrings.EnablePhysics}}" HorizontalAlignment="Left" Width="140" VerticalAlignment="Top" Height="28"/>
+                    <ToggleButton x:Name="PhysicsButton" Checked="PhysicsButton_Checked" Unchecked="PhysicsButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsEnabled="False"   HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Edit Scale:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Width="140"/>
+                    <ToggleButton x:Name="ScaleEdit" IsEnabled="False"  Checked="ScaleEdit_Checked" Unchecked="ScaleEdit_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" />
+                </StackPanel>
+                <StackPanel  Orientation="Horizontal">
+                    <Label Content="Scaling Mode:" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="28" Width="140"/>
+                    <ToggleButton x:Name="ScaleToggle" IsEnabled="False"  Checked="ScaleToggle_Checked" Unchecked="ScaleToggle_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}"   HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.ToggleHelmParenting}}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="140" Height="28"/>
+                    <ToggleButton x:Name="HelmToggle" Checked="HelmToggle_Checked" Unchecked="HelmToggle_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Weapon Postion Mode:" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="28" Width="140"/>
+                    <ToggleButton x:Name="WeaponPoSToggle" IsEnabled="False"  Checked="WeaponPoSToggle_Checked" Unchecked="WeaponPoSToggle_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+
+        <Button x:Name="HeadShortcut" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="863,11,0,0" VerticalAlignment="Top" Width="33" Click="HeadShortcut_Click" Height="33" IsEnabled="true" Padding="0">
+            <Button.Background>
+                <ImageBrush ImageSource="/ConceptMatrix;component/Resources/head.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="HairShortcut" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="902,11,0,0" VerticalAlignment="Top" Width="33" Click="HairShortcut_Click" Height="33" IsEnabled="true" Padding="0">
+            <Button.Background>
+                <ImageBrush ImageSource="/ConceptMatrix;component/Resources/hair.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="BodyShortcut" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="863,46,0,0" VerticalAlignment="Top" Width="33" Click="BodyShortcut_Click" Height="33" IsEnabled="true" Padding="0">
+            <Button.Background>
+                <ImageBrush ImageSource="/ConceptMatrix;component/Resources/body.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="ClothesShortcut" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="902,46,0,0" VerticalAlignment="Top" Width="33" Click="ClothesShortcut_Click" Height="33" IsEnabled="true" Padding="0">
+            <Button.Background>
+                <ImageBrush ImageSource="/ConceptMatrix;component/Resources/clothes.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="HandsShortcut" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="863,81,0,0" VerticalAlignment="Top" Width="33" Click="HandsShortcut_Click" Height="33" IsEnabled="true" Padding="0">
+            <Button.Background>
+                <ImageBrush ImageSource="/ConceptMatrix;component/Resources/hands.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="PantsShortcut" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="902,81,0,0" VerticalAlignment="Top" Width="33" Click="PantsShortcut_Click" Height="33" IsEnabled="true" Padding="0">
+            <Button.Background>
+                <ImageBrush ImageSource="/ConceptMatrix;component/Resources/legs.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="EquipShortcut" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="863,116,0,0" VerticalAlignment="Top" Width="33" Click="EquipShortcut_Click" Height="33" IsEnabled="true" Padding="0">
+            <Button.Background>
+                <ImageBrush ImageSource="/ConceptMatrix;component/Resources/equip.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="OtherShortcut" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="902,116,0,0" VerticalAlignment="Top" Width="33" Click="OtherShortcut_Click" Height="33" IsEnabled="true" Padding="0">
+            <Button.Background>
+                <ImageBrush ImageSource="/ConceptMatrix;component/Resources/other.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="SaveShortcut" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="863,151,0,0" VerticalAlignment="Top" Width="33" Click="SaveShortcut_Click" Height="33" IsEnabled="true" Padding="0">
+            <Button.Background>
+                <ImageBrush ImageSource="/ConceptMatrix;component/Resources/save.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="LoadShortcut" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="902,151,0,0" VerticalAlignment="Top" Width="33" Click="LoadShortcut_Click" Height="33" IsEnabled="true" Padding="0">
+            <Button.Background>
+                <ImageBrush ImageSource="/ConceptMatrix;component/Resources/load.png"/>
+            </Button.Background>
+        </Button>
+        <!-- Parental bone rotation -->
+        <ToggleButton x:Name="ParentingToggle" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1067,303,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"/>
+        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.ParentRotation}}" HorizontalAlignment="Left" Margin="940,303,0,0" VerticalAlignment="Top" Height="28"/>
+
+        <!-- Other -->
+
+        <!-- Savestate Buttons -->
+
+
+    </Grid>
 </UserControl>
