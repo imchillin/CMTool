@@ -250,6 +250,7 @@ namespace ConceptMatrix.ViewModel
         public void Bone_Flag_Manager()
         {
             var Race = Memory.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Race));
+            var TailType = Memory.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.TailType));
             if (face_check != FaceRace.Middy && Race < 7)
             {
                 face_check = FaceRace.Middy;
@@ -274,7 +275,7 @@ namespace ConceptMatrix.ViewModel
                 bone_neck.Remove(bone_face_hroth);
                 bone_neck.Add(bone_face_viera);
             }
-            EnableTertiaryFlags(Race);
+            EnableTertiaryFlags(Race , TailType);
         }
 
         public static byte[] GetBytes(Quaternion q)
@@ -294,7 +295,7 @@ namespace ConceptMatrix.ViewModel
             bytes.AddRange(BitConverter.GetBytes(Z));
             return bytes.ToArray();
         }
-        public void EnableTertiaryFlags(int race)
+        public void EnableTertiaryFlags(int race, int tailtype)
         {
             if (!ReadTetriaryFromRunTime)
             {
@@ -324,8 +325,8 @@ namespace ConceptMatrix.ViewModel
                         bone_face_viera.Remove(bone_viera_ear_l[i]);
                         bone_face_viera.Remove(bone_viera_ear_r[i]);
                     }
-                    bone_face_viera.Add(bone_viera_ear_l[CharacterDetails.TailType.value]);
-                    bone_face_viera.Add(bone_viera_ear_r[CharacterDetails.TailType.value]);
+                    bone_face_viera.Add(bone_viera_ear_l[tailtype]);
+                    bone_face_viera.Add(bone_viera_ear_r[tailtype]);
                 }
                 #region Exhair
                 int exhair_value = Memory.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHair_Value));
