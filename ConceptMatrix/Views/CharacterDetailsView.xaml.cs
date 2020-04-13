@@ -945,14 +945,20 @@ namespace ConceptMatrix.Views
 
 		private void HighLightButton_Checked(object sender, RoutedEventArgs e)
 		{
-			CharacterDetails.Highlights.value = 128;
-			MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Highlights), "byte", "80");
+			if (HighLightButton.IsMouseOver || HighLightButton.IsKeyboardFocusWithin)
+			{
+				CharacterDetails.Highlights.value = 128;
+				MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Highlights), "byte", "80");
+			}
 		}
 
 		private void HighLightButton_Unchecked(object sender, RoutedEventArgs e)
 		{
-			CharacterDetails.Highlights.value = 0;
-			MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Highlights), "byte", "0");
+			if (HighLightButton.IsMouseOver || HighLightButton.IsKeyboardFocusWithin)
+			{
+				CharacterDetails.Highlights.value = 0;
+				MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Highlights), "byte", "0");
+			}
 		}
 
 		#endregion
