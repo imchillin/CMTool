@@ -857,7 +857,7 @@
                         </StackPanel>
                     </Button>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="250,200,0,0" VerticalAlignment="Top">
-                        <Label Content="Scaling In Load:" Width="95" />
+                        <Label Content="Scaling In Load:" Width="Auto" />
                         <ToggleButton x:Name="ScaleSaveToggle" Checked="ScaleSaveToggle_Checked" Unchecked="ScaleSaveToggle_Unchecked"/>
                     </StackPanel>
                     <Button x:Name="AdvLoadCMP" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="225,395,0,0" VerticalAlignment="Top" Width="180" Click="AdvLoadCMP_Click" Height="28" IsEnabled="False" Padding="0,4">
