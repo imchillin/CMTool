@@ -15,7 +15,7 @@ namespace ConceptMatrix.Utility
         private CharacterOffsets c = Settings.Instance.Character;
         private string GAS(params string[] args) => MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, args);
         private string GASG(params string[] args) => MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, args);
-
+        private string GASGG(params string[] args) => MemoryManager.GetAddressString(CharacterDetailsViewModel.GposeAddr, args);
         public BackgroundWorker worker;
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
         public ThreadWriting()
@@ -325,8 +325,19 @@ namespace ConceptMatrix.Utility
                     }
                     if (CharacterDetails.EmoteSpeed1.freeze)
                     {
-                        m.writeBytes(GASG(c.EmoteSpeed1), CharacterDetails.EmoteSpeed1.GetBytes());
-                        m.writeBytes(GASG(c.EmoteSpeed2), CharacterDetails.EmoteSpeed1.GetBytes());
+                        if (CharacterDetails.GposeMode)
+                        {
+                            if (CharacterDetails.TargetModeActive)
+                            {
+                                m.writeBytes(GASG(c.EmoteSpeed1), CharacterDetails.EmoteSpeed1.GetBytes());
+                                m.writeBytes(GASG(c.EmoteSpeed2), CharacterDetails.EmoteSpeed1.GetBytes());
+                            }
+                            else
+                            {
+                                m.writeBytes(GASGG(c.EmoteSpeed1), CharacterDetails.EmoteSpeed1.GetBytes());
+                                m.writeBytes(GASGG(c.EmoteSpeed2), CharacterDetails.EmoteSpeed1.GetBytes());
+                            }
+                        }
                     }
                     if (CharacterDetails.Emote.freeze)
                     {

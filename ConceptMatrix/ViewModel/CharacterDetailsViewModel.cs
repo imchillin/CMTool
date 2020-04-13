@@ -25,6 +25,7 @@ namespace ConceptMatrix.ViewModel
         public int WritingCheck = 0;
         public static UIntPtr OldMemoryLocation;
         public static string baseAddr;
+        public static string GposeAddr;
         public static Views.CharacterDetailsView Viewtime;
 
         private readonly Mem m = MemoryManager.Instance.MemLib;
@@ -163,10 +164,17 @@ namespace ConceptMatrix.ViewModel
                 {
                     if (CharacterDetails.TargetModeActive)
                         baseAddr = MemoryManager.Add(MemoryManager.Instance.GposeAddress, eOffset);
-                    else baseAddr = MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, eOffset);
+                    else
+                    {
+                        baseAddr = MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, eOffset);
+                        GposeAddr = MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, eOffset);
+                    }
                 }
-                else baseAddr = MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset);
-
+                else
+                {
+                    baseAddr = MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset);
+                    GposeAddr = string.Empty;
+                }
                 if (CharacterDetails.TargetModeActive)
                 {
                     if (!CharacterDetails.GposeMode) baseAddr = MemoryManager.Instance.TargetAddress;
@@ -327,6 +335,11 @@ namespace ConceptMatrix.ViewModel
 
                             Application.Current.Dispatcher.Invoke(() => //Use Dispather to Update UI Immediately  
                             {
+                                MainViewModel.ViewTime.AnimSpeed.IsEnabled = false;
+                                MainViewModel.ViewTime.EmoteSpeed.IsEnabled = false;
+                                MainViewModel.ViewTime.Setto0.IsEnabled = false;
+                                CharacterDetails.EmoteSpeed1.freeze = false;
+
                                 MainViewModel.ViewTime5.PoseMatrixSetting.IsEnabled = false;
                                 MainViewModel.ViewTime5.EditModeButton.IsChecked = false;
                                 PoseMatrixView.PosingMatrix.PoseMatrixSetting.IsEnabled = false;
@@ -460,6 +473,10 @@ namespace ConceptMatrix.ViewModel
                             Application.Current.Dispatcher.Invoke(() => //Use Dispather to Update UI Immediately  
                             {
                                 MainViewModel.MainTime.ActorDataUnfreeze();
+                                MainViewModel.ViewTime.AnimSpeed.IsEnabled = true;
+                                MainViewModel.ViewTime.EmoteSpeed.IsEnabled = true;
+                                MainViewModel.ViewTime.Setto0.IsEnabled = true;
+
                                 MainViewModel.ViewTime5.PoseMatrixSetting.IsEnabled = true;
                                 PoseMatrixView.PosingMatrix.PoseMatrixSetting.IsEnabled = true;
                                 MainViewModel.ViewTime5.LoadCMP.IsEnabled = true;
@@ -696,8 +713,21 @@ namespace ConceptMatrix.ViewModel
 
                 if (!CharacterDetails.EmoteOld.freeze) CharacterDetails.EmoteOld.value = (int)m.read2Byte((GAS(baseAddr, c.EmoteOld)));
 
-                if (!CharacterDetails.EmoteSpeed1.freeze) CharacterDetails.EmoteSpeed1.value = (float)m.readFloat((GAS(MemoryManager.Instance.GposeAddress, c.EmoteSpeed1)));
+                if (!CharacterDetails.EmoteSpeed1.freeze)
+                {
+                    if (CharacterDetails.GposeMode)
+                    {
+                        if (CharacterDetails.TargetModeActive)
+                        {
+                            CharacterDetails.EmoteSpeed1.value = (float)m.readFloat((GAS(MemoryManager.Instance.GposeAddress, c.EmoteSpeed1)));
+                        }
+                        else
+                        {
+                            CharacterDetails.EmoteSpeed1.value = (float)m.readFloat((GAS(GposeAddr, c.EmoteSpeed1)));
+                        }
+                    }
 
+                }
                 if (!CharacterDetails.WeaponRed.freeze) CharacterDetails.WeaponRed.value = m.readFloat(GAS(baseAddr, c.WeaponRed));
 
                 if (!CharacterDetails.WeaponGreen.freeze) CharacterDetails.WeaponGreen.value = m.readFloat(GAS(baseAddr, c.WeaponGreen));

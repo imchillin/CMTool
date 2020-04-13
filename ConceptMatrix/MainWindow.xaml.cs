@@ -1146,6 +1146,10 @@ namespace ConceptMatrix
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Instance.GposeEntityOffset;
             if (MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheckAddress)) == 1 && MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheck2Address)) == 4)
             {
+                MainViewModel.ViewTime.AnimSpeed.IsEnabled = true;
+                MainViewModel.ViewTime.EmoteSpeed.IsEnabled = true;
+                MainViewModel.ViewTime.Setto0.IsEnabled = true;
+
                 MainViewModel.ViewTime.LinkPositionText.IsEnabled = true;
                 MainViewModel.ViewTime.LinkPosition.IsEnabled = true;
                 MainViewModel.ViewTime5.PoseMatrixSetting.IsEnabled = true;
@@ -1166,7 +1170,6 @@ namespace ConceptMatrix
             MainViewModel.ViewTime.CamXCheck.IsEnabled = false;
             MainViewModel.ViewTime.CamYCheck.IsEnabled = false;
             MainViewModel.ViewTime.CamZCheck.IsEnabled = false;
-            MainViewModel.ViewTime.AnimSpeed.IsEnabled = false;
             MainViewModel.ViewTime.GposeViewSettingsLoad.IsEnabled = false;
 
             /*
@@ -1218,6 +1221,14 @@ namespace ConceptMatrix
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Add(MemoryManager.Instance.BaseAddress, CharacterDetailsViewModel.eOffset);
             if (MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheckAddress)) == 0)
             {
+                MainViewModel.ViewTime.AnimSpeed.IsEnabled = false;
+                MainViewModel.ViewTime.AnimSpeed.IsChecked = false;
+                CharacterDetails.EmoteSpeed1.freeze = false;
+                MainViewModel.ViewTime.EmoteSpeed.IsEnabled = false;
+                MainViewModel.ViewTime.Setto0.IsEnabled = false;
+
+                CharacterDetails.EmoteSpeed1.freeze = false;
+
                 MainViewModel.ViewTime5.PoseMatrixSetting.IsEnabled = false;
                 MainViewModel.ViewTime5.EditModeButton.IsChecked = false;
                 // just in case?
@@ -1230,7 +1241,6 @@ namespace ConceptMatrix
                 CharacterDetailsView5.PosingMatrix.PoseMatrixSetting.IsEnabled = false;
                 CharacterDetailsView5.PosingMatrix.EditModeButton.IsChecked = false;
 
-                MainViewModel.ViewTime.AnimSpeed.IsChecked = false;
                 MainViewModel.ViewTime5.LoadCMP.IsEnabled = false;
                 MainViewModel.ViewTime5.AdvLoadCMP.IsEnabled = false;
                 lock (CharacterDetails.LinkedActors)
