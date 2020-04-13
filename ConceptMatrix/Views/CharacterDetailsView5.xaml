@@ -999,7 +999,7 @@
             </Button.Background>
         </Button>
         <!-- Parental bone rotation -->
-        <ToggleButton x:Name="ParentingToggle" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1067,303,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"/>
+        <ToggleButton x:Name="ParentingToggle" IsChecked="{Binding ParentingToggle}" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="1067,303,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"/>
         <Label Content="{Binding Source={x:Static resx:UIPoseStrings.ParentRotation}}" HorizontalAlignment="Left" Margin="940,303,0,0" VerticalAlignment="Top" Height="28"/>
 
         <!-- Other -->

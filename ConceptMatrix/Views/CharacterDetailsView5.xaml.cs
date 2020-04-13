@@ -943,11 +943,10 @@ namespace ConceptMatrix.Views
             {
                 BoneSliderButton.IsChecked = true;
             }
-            if (SaveSettings.Default.RelativeBones == true)
+            if (SaveSettings.Default.ScalingLoad == true)
             {
-                ParentingToggle.IsChecked = true;
+                ScaleSaveToggle.IsChecked = true;
             }
-
             exhair_buttons = new ToggleButton[] { ExHairA, ExHairB, ExHairC, ExHairD, ExHairE, ExHairF, ExHairG, ExHairH, ExHairI, ExHairJ, ExHairK, ExHairL };
             exmet_buttons = new ToggleButton[] { ExMetA, ExMetB, ExMetC, ExMetD, ExMetE, ExMetF, ExMetG, ExMetH, ExMetI, ExMetJ, ExMetK, ExMetL, ExMetM, ExMetN, ExMetO, ExMetP, ExMetQ, ExMetR };
             extop_buttons = new ToggleButton[] { ExTopA, ExTopB, ExTopC, ExTopD, ExTopE, ExTopF, ExTopG, ExTopH, ExTopI};
