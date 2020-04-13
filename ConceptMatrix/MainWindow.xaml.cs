@@ -472,7 +472,6 @@ namespace ConceptMatrix
                 CharacterDetails.Nose.freeze = true;
                 CharacterDetails.Lips.freeze = true;
                 CharacterDetails.BodyType.freeze = true;
-                CharacterDetails.Highlights.freeze = true;
                 CharacterDetails.Hair.freeze = true;
                 CharacterDetails.HairTone.freeze = true;
                 CharacterDetails.HighlightTone.freeze = true;
@@ -617,7 +616,6 @@ namespace ConceptMatrix
                     CharacterDetails.Nose.freeze = true;
                     CharacterDetails.Lips.freeze = true;
                     CharacterDetails.BodyType.freeze = true;
-                    CharacterDetails.Highlights.freeze = true;
                     CharacterDetails.Voices.freeze = true;
                     CharacterDetails.Hair.freeze = true;
                     CharacterDetails.HairTone.freeze = true;
@@ -1037,7 +1035,6 @@ namespace ConceptMatrix
             CharacterDetails.Ear.freeze = false;
             CharacterDetails.Neck.freeze = false;
             CharacterDetails.Wrist.freeze = false;
-            CharacterDetails.Highlights.freeze = false;
             CharacterDetails.RFinger.freeze = false;
             CharacterDetails.LFinger.freeze = false;
             CharacterDetails.ScaleX.freeze = false;
@@ -1308,7 +1305,6 @@ namespace ConceptMatrix
             CharacterDetails.Nose.freeze = true;
             CharacterDetails.Lips.freeze = true;
             CharacterDetails.BodyType.freeze = true;
-            CharacterDetails.Highlights.freeze = true;
             CharacterDetails.Hair.freeze = true;
             CharacterDetails.HairTone.freeze = true;
             CharacterDetails.HighlightTone.freeze = true;
@@ -1426,7 +1422,6 @@ namespace ConceptMatrix
             CharacterDetails.Nose.freeze = false;
             CharacterDetails.Lips.freeze = false;
             CharacterDetails.BodyType.freeze = false;
-            CharacterDetails.Highlights.freeze = false;
             CharacterDetails.Hair.freeze = false;
             CharacterDetails.HairTone.freeze = false;
             CharacterDetails.HighlightTone.freeze = false;

@@ -38,10 +38,10 @@ namespace ConceptMatrix.Utility
                     }
                     var xdad = (byte)m.readByte(GAS(c.EntityType));
                     var EntitySub = (byte)m.readByte(GAS(c.EntitySub));
-                    if(EntitySub!=5)
+                    if (EntitySub != 5)
                     {
                         if (CharacterDetails.EntityType.freeze && !CharacterDetails.EntityType.Activated) m.writeBytes(GAS(c.EntityType), CharacterDetails.EntityType.GetBytes());
-                        if (CharacterDetails.ModelType.freeze)m.writeBytes(GAS(c.ModelType), CharacterDetails.ModelType.GetBytes());
+                        if (CharacterDetails.ModelType.freeze) m.writeBytes(GAS(c.ModelType), CharacterDetails.ModelType.GetBytes());
                     }
                     else
                     {
@@ -58,12 +58,12 @@ namespace ConceptMatrix.Utility
                     if (CharacterDetails.Hair.freeze && !CharacterDetails.Hair.Activated) m.writeBytes(GAS(c.Hair), CharacterDetails.Hair.GetBytes());
                     if (CharacterDetails.TailType.freeze && !CharacterDetails.TailType.Activated) m.writeBytes(GAS(c.TailType), CharacterDetails.TailType.GetBytes());
                     if (CharacterDetails.HairTone.freeze && !CharacterDetails.HairTone.Activated) m.writeBytes(GAS(c.HairTone), CharacterDetails.HairTone.GetBytes());
-                    if (CharacterDetails.HighlightTone.freeze && !CharacterDetails.HighlightTone.Activated) m.writeBytes(GAS(c.HighlightTone), CharacterDetails.HighlightTone.GetBytes());
-                    if (CharacterDetails.Highlights.freeze && !CharacterDetails.Highlights.Activated)
+                    if (CharacterDetails.HighlightTone.freeze && !CharacterDetails.HighlightTone.Activated)
                     {
                         m.writeBytes(GAS(c.Highlights), CharacterDetails.Highlights.GetBytes());
                         if (CharacterDetails.Highlights.value >= 80) CharacterDetails.Highlights.SpecialActivate = true;
                         else CharacterDetails.Highlights.SpecialActivate = false;
+                        m.writeBytes(GAS(c.HighlightTone), CharacterDetails.HighlightTone.GetBytes());
                     }
                     if (CharacterDetails.Voices.freeze && !CharacterDetails.Voices.Activated) m.writeBytes(GAS(c.Voices), CharacterDetails.Voices.GetBytes());
                     if (CharacterDetails.Skintone.freeze && !CharacterDetails.Skintone.Activated) m.writeBytes(GAS(c.Skintone), CharacterDetails.Skintone.GetBytes());

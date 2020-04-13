@@ -504,16 +504,16 @@ namespace ConceptMatrix.ViewModel
                 if (!CharacterDetails.Clan.freeze) CharacterDetails.Clan.value = CharacterBytes[4];
                 if (!CharacterDetails.Head.freeze) CharacterDetails.Head.value = CharacterBytes[5];
                 if (!CharacterDetails.Hair.freeze) CharacterDetails.Hair.value = CharacterBytes[6];
-                if (!CharacterDetails.Highlights.freeze)
+                if (!CharacterDetails.Skintone.freeze) CharacterDetails.Skintone.value = CharacterBytes[8];
+                if (!CharacterDetails.RightEye.freeze) CharacterDetails.RightEye.value = CharacterBytes[9];
+                if (!CharacterDetails.HairTone.freeze) CharacterDetails.HairTone.value = CharacterBytes[10];
+                if (!CharacterDetails.HighlightTone.freeze)
                 {
                     CharacterDetails.Highlights.value = CharacterBytes[7];
                     if (CharacterBytes[7] >= 80) CharacterDetails.Highlights.SpecialActivate = true;
                     else CharacterDetails.Highlights.SpecialActivate = false;
+                    CharacterDetails.HighlightTone.value = CharacterBytes[11];
                 }
-                if (!CharacterDetails.Skintone.freeze) CharacterDetails.Skintone.value = CharacterBytes[8];
-                if (!CharacterDetails.RightEye.freeze) CharacterDetails.RightEye.value = CharacterBytes[9];
-                if (!CharacterDetails.HairTone.freeze) CharacterDetails.HairTone.value = CharacterBytes[10];
-                if (!CharacterDetails.HighlightTone.freeze) CharacterDetails.HighlightTone.value = CharacterBytes[11];
                 if (!CharacterDetails.FacialFeatures.freeze) CharacterDetails.FacialFeatures.value = CharacterBytes[12];
                 if (!CharacterDetails.LimbalEyes.freeze) CharacterDetails.LimbalEyes.value = CharacterBytes[13];
                 if (!CharacterDetails.EyeBrowType.freeze) CharacterDetails.EyeBrowType.value = CharacterBytes[14];
