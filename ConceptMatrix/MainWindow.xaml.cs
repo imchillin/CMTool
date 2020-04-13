@@ -334,6 +334,8 @@ namespace ConceptMatrix
                 else
                 {
                     CharSaves Save1 = new CharSaves(); // Gearsave is class with all address
+                    c.Filename = c.Filename.Replace(@"\", " ");
+                    c.Filename = c.Filename.Replace(@"/", " ");
                     Save1.Description = c.Filename;
                     Save1.DateCreated = DateTime.Now.ToString("yyyy-MM-dd HH':'mm':'ss");
                     Save1.MainHand = new WepTuple(CharacterDetails.Job.value, CharacterDetails.WeaponBase.value, CharacterDetails.WeaponV.value, CharacterDetails.WeaponDye.value);

@@ -756,6 +756,8 @@ namespace ConceptMatrix.Views
                 string path = SaveSettings.Default.GearsetsDirectory;
                 if (!Directory.Exists(path)) System.IO.Directory.CreateDirectory(path);
                 GearSaves Save1 = new GearSaves(); // Gearsave is class with all address
+                c.Filename = c.Filename.Replace(@"\", " ");
+                c.Filename = c.Filename.Replace(@"/", " ");
                 Save1.Description = c.Filename;
                 Save1.DateCreated = DateTime.Now.ToString("yyyy-MM-dd HH':'mm':'ss");
                 Save1.MainHand = new WepTuple(CharacterDetails.Job.value, CharacterDetails.WeaponBase.value, CharacterDetails.WeaponV.value, CharacterDetails.WeaponDye.value);
