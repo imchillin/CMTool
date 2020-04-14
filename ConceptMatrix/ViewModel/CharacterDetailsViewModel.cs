@@ -472,7 +472,6 @@ namespace ConceptMatrix.ViewModel
 
                             Application.Current.Dispatcher.Invoke(() => //Use Dispather to Update UI Immediately  
                             {
-                                MainViewModel.MainTime.ActorDataUnfreeze();
                                 MainViewModel.ViewTime.AnimSpeed.IsEnabled = true;
                                 MainViewModel.ViewTime.EmoteSpeed.IsEnabled = true;
                                 MainViewModel.ViewTime.Setto0.IsEnabled = true;
