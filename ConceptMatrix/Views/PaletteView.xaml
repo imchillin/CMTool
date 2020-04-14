@@ -133,7 +133,7 @@
         <Button x:Name="Default2" Style="{StaticResource MaterialDesignRaisedDarkButton}" wpf:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="559,457,0,0" VerticalAlignment="Top" Width="145" Grid.Row="1" Height="28" Click="Default2_Click" Padding="0,4"/>
         <Label Content="{Binding Source={x:Static resx:MiscStrings.ChangeLanguage}}" HorizontalAlignment="Left" Margin="752,429,0,0" VerticalAlignment="Top" Grid.Row="1"/>
         <Button x:Name="ChangeLang" Style="{StaticResource MaterialDesignRaisedDarkButton}" wpf:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:MiscStrings.ChangeLanguage2}}" HorizontalAlignment="Left" Margin="880,429,0,0" VerticalAlignment="Top" Width="148" Grid.Row="1" Height="28" Padding="0,4" Click="ChangeLang_Click"/>
-        <ToggleButton x:Name="ActorDataGpose" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="Time Toggle Switch" Margin="1007,463,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="22"  IsTabStop="False" Grid.Row="1" Checked="ActorDataGpose_Checked" Unchecked="ActorDataGpose_Unchecked" />
+        <ToggleButton x:Name="ActorDataGpose" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="Time Toggle Switch" Margin="1028,463,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="22"  IsTabStop="False" Grid.Row="1" Checked="ActorDataGpose_Checked" Unchecked="ActorDataGpose_Unchecked" />
         <Label Content="Un-Freeze ActorData Upon Entering Gpose: " HorizontalAlignment="Left" Margin="752,460,0,0" VerticalAlignment="Top" Grid.Row="1"/>
 
     </Grid>
