@@ -22,6 +22,7 @@ namespace ConceptMatrix.Views
             if (SaveSettings.Default.Theme == "Dark") ThemeButton.IsChecked = true;
             if (SaveSettings.Default.HasBackground == true) BackgroundButton.IsChecked = true;
             if (SaveSettings.Default.WindowsExplorer == true) Windowstoggled.IsChecked = true;
+            if (SaveSettings.Default.UnfreezeOnGp == true) ActorDataGpose.IsChecked = true;
             SaveDirectory.Text = SaveSettings.Default.ProfileDirectory;
             SaveDirectory2.Text = SaveSettings.Default.MatrixPoseDirectory;
             SaveDirectory3.Text = SaveSettings.Default.GearsetsDirectory;
@@ -167,6 +168,16 @@ namespace ConceptMatrix.Views
 
             System.Windows.Forms.Application.Restart();
             System.Windows.Application.Current.Shutdown();
+        }
+
+        private void ActorDataGpose_Checked(object sender, RoutedEventArgs e)
+        {
+            SaveSettings.Default.UnfreezeOnGp = true;
+        }
+
+        private void ActorDataGpose_Unchecked(object sender, RoutedEventArgs e)
+        {
+            SaveSettings.Default.UnfreezeOnGp = false;
         }
     }
 }

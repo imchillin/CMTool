@@ -117,6 +117,7 @@ namespace ConceptMatrix.Utility
         public bool TopApp { get; set; }  = false;
         public bool WindowsExplorer { get; set; } = false;
         public bool KeepDyes { get; set; } = true;
+        public bool UnfreezeOnGp { get; set; } = true;
         public bool ReminderTool { get; set; } = false;
         public int ClassIndex { get; set; } = 0;
         public bool RotationSliders { get; set; } = true;

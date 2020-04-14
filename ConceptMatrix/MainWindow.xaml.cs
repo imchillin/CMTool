@@ -1158,7 +1158,7 @@ namespace ConceptMatrix
                 MainViewModel.ViewTime6.PoseMatrixSetting.IsEnabled = true;
                 MainViewModel.ViewTime6.LoadCMP.IsEnabled = true;
                 MainViewModel.ViewTime6.AdvLoadCMP.IsEnabled = true;
-                ActorDataUnfreeze();
+                if (SaveSettings.Default.UnfreezeOnGp == true) ActorDataUnfreeze();
             }
         }
 
