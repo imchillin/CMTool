@@ -254,10 +254,12 @@ namespace ConceptMatrix.ViewModel
                         m.writeBytes(GAS(MemoryManager.Instance.GposeFilters, c.GBlue), CharacterDetails.GBlue.GetBytes());
                         m.writeBytes(GAS(MemoryManager.Instance.GposeFilters, c.GGreens), CharacterDetails.GGreens.GetBytes());
                         m.writeBytes(GAS(MemoryManager.Instance.GposeFilters, c.GRed), CharacterDetails.GRed.GetBytes());
+                        CharacterDetails.FilterAoB.value = MemoryManager.ByteArrayToStringU(m.readBytes(GAS(MemoryManager.Instance.GposeFilters, c.Brightness), 60));
                     }
                     else
                     {
                         byte[] FIlterBytes = m.readBytes(GAS(MemoryManager.Instance.GposeFilters, c.Brightness), 60);
+                        CharacterDetails.FilterAoB.value = MemoryManager.ByteArrayToStringU(FIlterBytes);
                         CharacterDetails.Brightness.value = BitConverter.ToSingle(FIlterBytes, 0);
                         CharacterDetails.Exposure.value = BitConverter.ToSingle(FIlterBytes, 4);
                         CharacterDetails.Filmic.value = BitConverter.ToSingle(FIlterBytes, 8);
