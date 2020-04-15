@@ -91,6 +91,7 @@ namespace ConceptMatrix
 
         private void App_Exit(object sender, ExitEventArgs e)
         {
+            if(MainViewModel.worker.IsBusy) MainViewModel.worker.CancelAsync();
             Utility.SaveSettings.Default.Save();
             if (MainViewModel.ViewTime5.EditModeButton.IsChecked == true) MainViewModel.ViewTime5.EditModeButton.IsChecked = false;
             if (MainViewModel.ViewTime6.EditModeButton.IsChecked == true) MainViewModel.ViewTime6.EditModeButton.IsChecked = false;

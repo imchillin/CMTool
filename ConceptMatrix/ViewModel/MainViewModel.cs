@@ -23,7 +23,7 @@ namespace ConceptMatrix.ViewModel
     {
         private static Mediator mediator;
 
-        private static BackgroundWorker worker;
+        public static BackgroundWorker worker;
         public Mem MemLib = new Mem();
         public static int gameProcId = 0;
         public static ThreadWriting ThreadTime;
@@ -443,6 +443,7 @@ namespace ConceptMatrix.ViewModel
                 if (worker.CancellationPending)
                 {
                     e.Cancel = true;
+                    break;
                 }
                 // sleep for 50 ms
                 Thread.Sleep(50);
