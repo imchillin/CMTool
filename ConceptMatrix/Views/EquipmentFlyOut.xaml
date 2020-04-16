@@ -128,6 +128,7 @@
                                 <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.AppearanceOnly}}"/>
                                 <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.EquipmentOnly}}"/>
                             </ComboBox>
+                            <CheckBox Content="Grab ModelType" x:Name="KeepModel" HorizontalAlignment="Left" Margin="316,11,0,0" VerticalAlignment="Top" Width="147" Checked="KeepModel_Checked" Unchecked="KeepModel_Unchecked"/>
                         </Grid>
                     </TabItem>
                 </controls:MetroAnimatedTabControl>

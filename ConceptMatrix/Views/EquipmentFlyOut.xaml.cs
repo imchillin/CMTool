@@ -38,6 +38,7 @@ namespace ConceptMatrix.Views
             CurrentlyEquippedName.Visibility = Visibility.Hidden;
             EquippedLabel.Visibility = Visibility.Hidden;
             ClassBox.Visibility = Visibility.Hidden;
+            KeepModel.IsChecked = SaveSettings.Default.KeepModelType;
         }
 
         private static ImageSource CreateSource(SaintCoinach.Imaging.ImageFile file)
@@ -705,8 +706,11 @@ namespace ConceptMatrix.Views
             CharacterDetails.FacePaint.value = CharacterBytes[24];
             CharacterDetails.FacePaintColor.value = CharacterBytes[25];
             MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Race), CharacterBytes);
-            CharacterDetails.ModelType.value = _cGearSet.ModelType;
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.ModelType),"int", _cGearSet.ModelType.ToString());
+            if (KeepModel.IsChecked == true)
+            {
+                CharacterDetails.ModelType.value = _cGearSet.ModelType;
+                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.ModelType), "int", _cGearSet.ModelType.ToString());
+            }
             Task.Delay(25).Wait();
             if (CharacterDetails.LimbalEyes.Activated == true) { CharacterDetails.LimbalEyes.freeze = true; CharacterDetails.LimbalEyes.Activated = false; }
 
@@ -960,6 +964,16 @@ namespace ConceptMatrix.Views
                 if (ClassBox.SelectedIndex < 0) return;
                 SaveSettings.Default.ClassIndex = ClassBox.SelectedIndex;
             }
+        }
+
+        private void KeepModel_Checked(object sender, RoutedEventArgs e)
+        {
+            SaveSettings.Default.KeepModelType = true;
+        }
+
+        private void KeepModel_Unchecked(object sender, RoutedEventArgs e)
+        {
+            SaveSettings.Default.KeepModelType = false;
         }
     }
 }
