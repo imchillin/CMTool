@@ -21,6 +21,7 @@ using ConceptMatrix.Views;
 using WepTuple = System.Tuple<int, int, int, int>;
 using SaintCoinach;
 using System.Globalization;
+using System.Windows.Input;
 
 namespace ConceptMatrix
 {
@@ -1452,6 +1453,15 @@ namespace ConceptMatrix
             CharacterDetails.LFinger.freeze = false;
             CharacterDetails.ModelType.freeze = false;
             CharacterDetails.Voices.freeze = false;
+        }
+
+        private void MetroWindow_Activated(object sender, EventArgs e)
+        {
+        }
+
+        private void MetroWindow_Deactivated(object sender, EventArgs e)
+        {
+            FocusManager.SetFocusedElement(FocusManager.GetFocusScope(GposeLabel), null);
         }
     }
 }
