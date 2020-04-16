@@ -1098,12 +1098,18 @@ namespace ConceptMatrix.Utility
                 Int64 num1 = BitConverter.ToInt64(memoryAddress, 0);
 
                 UIntPtr base1 = (UIntPtr)0;
-
-                for (int i = 1; i < offsets.Length; i++)
+                try
                 {
-                    base1 = new UIntPtr(Convert.ToUInt64(num1 + offsets[i]));
-                    ReadProcessMemory(pHandle, base1, memoryAddress, (UIntPtr)size, IntPtr.Zero);
-                    num1 = BitConverter.ToInt64(memoryAddress, 0);
+                    for (int i = 1; i < offsets.Length; i++)
+                    {
+                        base1 = new UIntPtr(Convert.ToUInt64(num1 + offsets[i]));
+                        ReadProcessMemory(pHandle, base1, memoryAddress, (UIntPtr)size, IntPtr.Zero);
+                        num1 = BitConverter.ToInt64(memoryAddress, 0);
+                    }
+                }
+                catch
+                {
+                    return (UIntPtr)0;
                 }
                 return base1;
             }
