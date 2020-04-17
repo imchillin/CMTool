@@ -6,6 +6,7 @@ using System.Globalization;
 using System.IO;
 using System.IO.Pipes;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security.Principal;
 using System.Text;
@@ -307,7 +308,6 @@ namespace ConceptMatrix.Utility
                 {
                     MessageBox.Show("ERROR: SeDebugPrivilege not enabled. Please report this!");
                 }
-                Console.WriteLine(debugPrivilegeCheck);
                 pHandle = OpenProcess(0x1F0FFF, true, pid);
 
                 if (pHandle == IntPtr.Zero)
@@ -755,10 +755,17 @@ namespace ConceptMatrix.Utility
             byte[] memory = new byte[4];
             UIntPtr theCode;
             theCode = get64bitCode(code, file);
-            if (ReadProcessMemory(pHandle, theCode, memory, (UIntPtr)4, IntPtr.Zero))
-                return BitConverter.ToInt32(memory, 0);
-            else
+            try
+            {
+                if (ReadProcessMemory(pHandle, theCode, memory, (UIntPtr)4, IntPtr.Zero))
+                    return BitConverter.ToInt32(memory, 0);
+                else
+                    return 0;
+            }
+            catch
+            {
                 return 0;
+            }
         }
 
         /// <summary>
@@ -773,11 +780,17 @@ namespace ConceptMatrix.Utility
             UIntPtr theCode;
 
             theCode = get64bitCode(code, file);
-
-            if (ReadProcessMemory(pHandle, theCode, memory, (UIntPtr)16, IntPtr.Zero))
-                return BitConverter.ToInt64(memory, 0);
-            else
+            try
+            {
+                if (ReadProcessMemory(pHandle, theCode, memory, (UIntPtr)16, IntPtr.Zero))
+                    return BitConverter.ToInt64(memory, 0);
+                else
+                    return 0;
+            }
+            catch
+            {
                 return 0;
+            }
         }
 
         /// <summary>
@@ -791,11 +804,18 @@ namespace ConceptMatrix.Utility
             byte[] memory = new byte[8];
             UIntPtr theCode;
             theCode = get64bitCode(code, file);
-
-            if (ReadProcessMemory(pHandle, theCode, memory, (UIntPtr)8, IntPtr.Zero))
-                return BitConverter.ToUInt64(memory, 0);
-            else
+            try
+            {
+                if (ReadProcessMemory(pHandle, theCode, memory, (UIntPtr)8, IntPtr.Zero))
+                    return BitConverter.ToUInt64(memory, 0);
+                else
+                    return 0;
+            }
+            catch
+            {
                 return 0;
+            }
+
         }
 
         /// <summary>
@@ -874,10 +894,17 @@ namespace ConceptMatrix.Utility
             UIntPtr theCode;
             theCode = get64bitCode(code, file);
 
-            if (ReadProcessMemory(pHandle, theCode, memoryTiny, (UIntPtr)2, IntPtr.Zero))
-                return BitConverter.ToInt32(memoryTiny, 0);
-            else
+            try
+            {
+                if (ReadProcessMemory(pHandle, theCode, memoryTiny, (UIntPtr)2, IntPtr.Zero))
+                    return BitConverter.ToInt32(memoryTiny, 0);
+                else
+                    return 0;
+            }
+            catch
+            {
                 return 0;
+            }
         }
 
         /// <summary>
@@ -892,11 +919,17 @@ namespace ConceptMatrix.Utility
 
             UIntPtr theCode;
             theCode = get64bitCode(code, file);
-
-            if (ReadProcessMemory(pHandle, theCode, memoryTiny, (UIntPtr)1, IntPtr.Zero))
-                return BitConverter.ToInt32(memoryTiny, 0);
-            else
+            try
+            {
+                if (ReadProcessMemory(pHandle, theCode, memoryTiny, (UIntPtr)1, IntPtr.Zero))
+                    return BitConverter.ToInt32(memoryTiny, 0);
+                else
+                    return 0;
+            }
+            catch
+            {
                 return 0;
+            }
         }
 
         public int readPByte(UIntPtr address, string code, string file = "")
@@ -1020,7 +1053,11 @@ namespace ConceptMatrix.Utility
                 memory = System.Text.Encoding.UTF8.GetBytes(write);
                 size = write.Length;
             }
-            //Debug.Write("DEBUG: Writing bytes [TYPE:" + type + " ADDR:" + theCode + "] " + String.Join(",", memory) + Environment.NewLine);
+#if DEBUG
+            StackTrace stackTrace = new StackTrace(true);
+            StackFrame sf = stackTrace.GetFrame(1);
+            Debug.Write("DEBUG: Writing bytes[" + sf.GetMethod().Name + "():L" + sf.GetFileLineNumber() + "] [TYPE:" + type + " ADDR:" + theCode.ToUInt64().ToString("X") + "] " + String.Join(",", memory) + Environment.NewLine);
+#endif
             return WriteProcessMemory(pHandle, theCode, memory, (UIntPtr)size, IntPtr.Zero);
         }
 
@@ -1192,7 +1229,7 @@ namespace ConceptMatrix.Utility
                 }
                 catch
                 {
-                    return (UIntPtr)0;
+                    return UIntPtr.Zero;
                 }
                 return base1;
             }
