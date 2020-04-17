@@ -298,6 +298,16 @@ namespace ConceptMatrix.Utility
                     return false;
                 }
                 Process.EnterDebugMode();
+                var debugPrivilegeCheck = CheckSeDebugPrivilege(out var isDebugEnabled);
+                if (debugPrivilegeCheck != 0)
+                {
+                    MessageBox.Show("ERROR: CheckSeDebugPrivilege failed with error " + debugPrivilegeCheck);
+                }
+                else if (!isDebugEnabled)
+                {
+                    MessageBox.Show("ERROR: SeDebugPrivilege not enabled. Please report this!");
+                }
+                Console.WriteLine(debugPrivilegeCheck);
                 pHandle = OpenProcess(0x1F0FFF, true, pid);
 
                 if (pHandle == IntPtr.Zero)
@@ -322,6 +332,79 @@ namespace ConceptMatrix.Utility
                 return false;
             }
         }
+
+        #region CheckSeDebugPrivilege
+        [DllImport("kernel32.dll", SetLastError = true)]
+        public static extern IntPtr GetCurrentProcess();
+
+        [DllImport("advapi32.dll", SetLastError = true)]
+        public static extern bool OpenProcessToken(
+            IntPtr ProcessHandle,
+            UInt32 DesiredAccess,
+            out IntPtr TokenHandle);
+
+        [DllImport("advapi32.dll", SetLastError = true)]
+        public static extern bool LookupPrivilegeValue(string lpSystemName, string lpName, ref LUID lpLuid);
+
+        [DllImport("advapi32.dll", SetLastError = true)]
+        public static extern bool PrivilegeCheck(
+            IntPtr ClientToken,
+            ref PRIVILEGE_SET RequiredPrivileges,
+            out bool pfResult);
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct LUID
+        {
+            public UInt32 LowPart;
+            public Int32 HighPart;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct PRIVILEGE_SET
+        {
+            public UInt32 PrivilegeCount;
+            public UInt32 Control;
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)]
+            public LUID_AND_ATTRIBUTES[] Privilege;
+        }
+        public struct LUID_AND_ATTRIBUTES
+        {
+            public LUID Luid;
+            public UInt32 Attributes;
+        }
+
+        private static int CheckSeDebugPrivilege(out bool IsDebugEnabled)
+        {
+            IsDebugEnabled = false;
+
+            if (!OpenProcessToken(GetCurrentProcess(), 0x8 /*TOKEN_QUERY*/, out var TokenHandle))
+                return Marshal.GetLastWin32Error();
+
+            var luidDebugPrivilege = new LUID();
+            if (!LookupPrivilegeValue(null, "SeDebugPrivilege", ref luidDebugPrivilege))
+                return Marshal.GetLastWin32Error();
+
+            var RequiredPrivileges = new PRIVILEGE_SET
+            {
+                PrivilegeCount = 1,
+                Control = 1 /* PRIVILEGE_SET_ALL_NECESSARY */,
+                Privilege = new LUID_AND_ATTRIBUTES[1]
+            };
+
+            RequiredPrivileges.Privilege[0].Luid = luidDebugPrivilege;
+            RequiredPrivileges.Privilege[0].Attributes = 2 /* SE_PRIVILEGE_ENABLED */;
+
+            if (!PrivilegeCheck(TokenHandle, ref RequiredPrivileges, out var bResult))
+                return Marshal.GetLastWin32Error();
+
+            // bResult == true => SeDebugPrivilege is on; otherwise it's off
+            IsDebugEnabled = bResult;
+
+            CloseHandle(TokenHandle);
+
+            return 0;
+        }
+        #endregion
 
 
         /// <summary>
