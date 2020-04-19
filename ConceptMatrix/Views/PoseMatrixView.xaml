@@ -40,17 +40,17 @@
                                 <ToggleButton x:Name="HelmToggle" IsEnabled="False" Checked="HelmToggle_Checked" Unchecked="HelmToggle_Unchecked" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
-                                <Label Content="Edit Scaling:" Width="95"  VerticalAlignment="Center"/>
+                                <Label Content="{Binding Source={x:Static resx:UIPoseStrings.EditScaling}}" Width="95"  VerticalAlignment="Center"/>
                                 <ToggleButton x:Name="ScaleEdit" IsEnabled="False" Checked="ScaleEdit_Checked" Unchecked="ScaleEdit_Unchecked"  />
-                                <Label Content="Scaling Mode:"  VerticalAlignment="Center" Width="95"/>
+                                <Label Content="{Binding Source={x:Static resx:UIPoseStrings.ScalingMode}}"  VerticalAlignment="Center" Width="95"/>
                                 <ToggleButton x:Name="ScaleToggle" IsEnabled="False" Checked="ScaleToggle_Checked" Unchecked="ScaleToggle_Unchecked" />
-                                <Label Content="Weapon Postion Mode:"  VerticalAlignment="Center"/>
+                                <Label Content="{Binding Source={x:Static resx:UIPoseStrings.WeaponPostionMode}}"  VerticalAlignment="Center"/>
                                 <ToggleButton x:Name="WeaponPoSToggle" IsEnabled="False" Checked="WeaponPoSToggle_Checked" Unchecked="WeaponPoSToggle_Unchecked"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
                                 <Label Content="{Binding Source={x:Static resx:UIPoseStrings.EnablePhysics}}"  Width="95" VerticalAlignment="Center"/>
                                 <ToggleButton Name="PhysicsButton" Checked="PhysicsButton_Checked" Unchecked="PhysicsButton_Unchecked" IsEnabled="False" />
-                                <Label Content="Scaling In Load:" Width="95" />
+                                <Label Content="{Binding Source={x:Static resx:UIPoseStrings.ScalingInLoad}}" Width="95" />
                                 <ToggleButton x:Name="ScaleSaveToggle" Checked="ScaleSaveToggle_Checked" Unchecked="ScaleSaveToggle_Unchecked"/>
                             </StackPanel>
                         </StackPanel>
@@ -129,7 +129,7 @@
                                 Margin="5,5,0,0" Width="165" Maximum="{Binding MaxBone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Minimum="{Binding MinBone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TickFrequency="0.5"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                <GroupBox Header="Cube Rotation - Bones" x:Name="CubeBox">
+                <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.CubeRotationBones}}" x:Name="CubeBox">
                     <Border BorderBrush="Black" BorderThickness="3" Height="155" Width="200" Background="#FF2E2E2E">
                         <local:PoseRotationView x:Name="Cube" IsEnabled="False">
                             <local:PoseRotationView.DataContext>
@@ -145,7 +145,7 @@
                 </GroupBox>
             </StackPanel>
         </StackPanel>
-        <GroupBox Margin="0,250,754,60" Grid.ColumnSpan="2" Header="Actor Model Properties" x:Name="ActorProperties" Visibility="Hidden">
+        <GroupBox Margin="0,250,754,60" Grid.ColumnSpan="2" Header="{Binding Source={x:Static resx:UIStringsContent.ActorModelProperties}}" x:Name="ActorProperties" Visibility="Hidden">
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <!-- X Rot -->
@@ -180,15 +180,15 @@
                     <CheckBox IsChecked="{Binding CharacterDetails.CharacterDetails.Z.freeze}" x:Name="ZCheck" Content="{Binding Source={x:Static resx:UIStringsContent.ZPos}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.ZPosToolTip}}" Height="28"/>
                     <mah:NumericUpDown x:Name="PosZ" Value="{Binding CharacterDetails.CharacterDetails.Z.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#8CFF0000" StringFormat="F5" Interval="0.01" SourceUpdated="PosZ_SourceUpdated" TextAlignment="Right" Height="28" MinWidth="0" MinHeight="0" FontSize="11.35" FontFamily="Segoe UI"/>
                     <!-- Relative Pos -->
-                    <Label Content="Relative PoS:" ToolTip="{Binding Source={x:Static resx:UIStringsContent.RelativeXYZPosToolTip}}" Height="28"/>
+                    <Label Content="{Binding Source={x:Static resx:UIStringsContent.RelativePoS}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.RelativeXYZPosToolTip}}" Height="28"/>
                     <ToggleButton Name="PosRelButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.CharacterDetails.RelativePositioning, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Height="28" BorderThickness="1" Checked="PosRelButton_Checked" Unchecked="PosRelButton_Unchecked" />
                 </StackPanel>
             </StackPanel>
 
         </GroupBox>
-        <CheckBox x:Name="ToggleModelView" Content="Toggle Actor/Model Box" Grid.ColumnSpan="2" Margin="10,466,949,39" Checked="ToggleModelView_Checked" Unchecked="ToggleModelView_Unchecked"/>
+        <CheckBox x:Name="ToggleModelView" Content="{Binding Source={x:Static resx:UIPoseStrings.ToggleActorModelBox}}" Grid.ColumnSpan="2" Margin="10,466,949,39" Checked="ToggleModelView_Checked" Unchecked="ToggleModelView_Unchecked"/>
         <mah:NumericUpDown Value="{Binding BoneInterval, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Background="{x:Null}" TextAlignment="Right"  BorderThickness="2" Maximum="360" Minimum="0"  StringFormat="F3" Interval="0.01" FontSize="11.35" FontFamily="Segoe UI" Margin="95,493,909,11" Grid.ColumnSpan="2"/>
-        <Label Content="Bone Intervals:" Margin="9,493,39,12"/>
+        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.BoneIntervals}}" Margin="9,493,39,12"/>
         <mah:MetroAnimatedTabControl  Background="{x:Null}" Grid.Column="1" Margin="231,155,10,0">
             <TabItem Header="{Binding Source={x:Static resx:UIPoseStrings.HeadHair}}" Style="{DynamicResource MenuLevel2}">
                 <StackPanel>

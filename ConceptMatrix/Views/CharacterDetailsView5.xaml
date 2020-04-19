@@ -857,7 +857,7 @@
                         </StackPanel>
                     </Button>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="250,200,0,0" VerticalAlignment="Top">
-                        <Label Content="Scaling In Load:" Width="Auto" />
+                        <Label Content="{Binding Source={x:Static resx:UIPoseStrings.ScalingInLoad}}" Width="Auto" />
                         <ToggleButton x:Name="ScaleSaveToggle" Checked="ScaleSaveToggle_Checked" Unchecked="ScaleSaveToggle_Unchecked"/>
                     </StackPanel>
                     <Button x:Name="AdvLoadCMP" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="225,395,0,0" VerticalAlignment="Top" Width="180" Click="AdvLoadCMP_Click" Height="28" IsEnabled="False" Padding="0,4">
@@ -927,11 +927,11 @@
                     <ToggleButton x:Name="PhysicsButton" Checked="PhysicsButton_Checked" Unchecked="PhysicsButton_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsEnabled="False"   HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Edit Scale:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Width="140"/>
+                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.EditScaling}}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Width="140"/>
                     <ToggleButton x:Name="ScaleEdit" IsEnabled="False"  Checked="ScaleEdit_Checked" Unchecked="ScaleEdit_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" />
                 </StackPanel>
                 <StackPanel  Orientation="Horizontal">
-                    <Label Content="Scaling Mode:" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="28" Width="140"/>
+                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.ScalingMode}}" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="28" Width="140"/>
                     <ToggleButton x:Name="ScaleToggle" IsEnabled="False"  Checked="ScaleToggle_Checked" Unchecked="ScaleToggle_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}"   HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
@@ -939,7 +939,7 @@
                     <ToggleButton x:Name="HelmToggle" Checked="HelmToggle_Checked" Unchecked="HelmToggle_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Weapon Postion Mode:" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="28" Width="140"/>
+                    <Label Content="{Binding Source={x:Static resx:UIPoseStrings.WeaponPostionMode}}" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="28" Width="140"/>
                     <ToggleButton x:Name="WeaponPoSToggle" IsEnabled="False"  Checked="WeaponPoSToggle_Checked" Unchecked="WeaponPoSToggle_Unchecked" Style="{StaticResource MaterialDesignSwitchToggleButton}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">

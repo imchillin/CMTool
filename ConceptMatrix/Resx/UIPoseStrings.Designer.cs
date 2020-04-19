@@ -133,6 +133,15 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bone Intervals:.
+        /// </summary>
+        public static string BoneIntervals {
+            get {
+                return ResourceManager.GetString("BoneIntervals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Breasts:.
         /// </summary>
         public static string Breasts {
@@ -223,6 +232,15 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cube Rotation - Bones.
+        /// </summary>
+        public static string CubeRotationBones {
+            get {
+                return ResourceManager.GetString("CubeRotationBones", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Detect Tertiary Bones.
         /// </summary>
         public static string DetectTertiaryBones {
@@ -255,6 +273,15 @@ namespace ConceptMatrix.Resx {
         public static string Ears {
             get {
                 return ResourceManager.GetString("Ears", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Scaling:.
+        /// </summary>
+        public static string EditScaling {
+            get {
+                return ResourceManager.GetString("EditScaling", resourceCulture);
             }
         }
         
@@ -881,6 +908,24 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Scaling In Load:.
+        /// </summary>
+        public static string ScalingInLoad {
+            get {
+                return ResourceManager.GetString("ScalingInLoad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scaling Mode:.
+        /// </summary>
+        public static string ScalingMode {
+            get {
+                return ResourceManager.GetString("ScalingMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select All.
         /// </summary>
         public static string SelectAll {
@@ -998,6 +1043,15 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Toggle Actor/Model Box.
+        /// </summary>
+        public static string ToggleActorModelBox {
+            get {
+                return ResourceManager.GetString("ToggleActorModelBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Helm Parenting Mode:.
         /// </summary>
         public static string ToggleHelmParenting {
@@ -1084,6 +1138,15 @@ namespace ConceptMatrix.Resx {
         public static string WaistLegs {
             get {
                 return ResourceManager.GetString("WaistLegs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weapon Postion Mode:.
+        /// </summary>
+        public static string WeaponPostionMode {
+            get {
+                return ResourceManager.GetString("WeaponPostionMode", resourceCulture);
             }
         }
         

@@ -141,6 +141,9 @@
   <data name="BodyClothes" xml:space="preserve">
     <value>身体 &amp; 腕</value>
   </data>
+  <data name="BoneIntervals" xml:space="preserve">
+    <value>骨骼间距：</value>
+  </data>
   <data name="Breasts" xml:space="preserve">
     <value>胸：</value>
   </data>
@@ -171,6 +174,9 @@
   <data name="Couters" xml:space="preserve">
     <value>手肘：</value>
   </data>
+  <data name="CubeRotationBones" xml:space="preserve">
+    <value>立方体旋转 - 骨骼</value>
+  </data>
   <data name="DetectTertiaryBones" xml:space="preserve">
     <value>检测三次骨骼</value>
   </data>
@@ -182,6 +188,9 @@
   </data>
   <data name="Ears" xml:space="preserve">
     <value>耳朵：</value>
+  </data>
+  <data name="EditScaling" xml:space="preserve">
+    <value>编辑缩放：</value>
   </data>
   <data name="Elbows" xml:space="preserve">
     <value>肘：</value>
@@ -393,6 +402,12 @@
   <data name="Scabbards" xml:space="preserve">
     <value>刀鞘：</value>
   </data>
+  <data name="ScalingInLoad" xml:space="preserve">
+    <value>导入缩放：</value>
+  </data>
+  <data name="ScalingMode" xml:space="preserve">
+    <value>缩放模式：</value>
+  </data>
   <data name="SelectAll" xml:space="preserve">
     <value>全选</value>
   </data>
@@ -432,6 +447,9 @@
   <data name="Toes" xml:space="preserve">
     <value>脚趾：</value>
   </data>
+  <data name="ToggleActorModelBox" xml:space="preserve">
+    <value>显示角色/模型框</value>
+  </data>
   <data name="ToggleHelmParenting" xml:space="preserve">
     <value>切换连动模式</value>
   </data>
@@ -461,6 +479,9 @@
   </data>
   <data name="WaistLegs" xml:space="preserve">
     <value>腰腿</value>
+  </data>
+  <data name="WeaponPostionMode" xml:space="preserve">
+    <value>武器位置模式：</value>
   </data>
   <data name="Weapons" xml:space="preserve">
     <value>武器：</value>

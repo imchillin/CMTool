@@ -1323,4 +1323,16 @@
   <data name="FreezeCam" xml:space="preserve">
     <value>冻结相机</value>
   </data>
+  <data name="Linked" xml:space="preserve">
+    <value>连接：</value>
+  </data>
+  <data name="PosingMatrixOld" xml:space="preserve">
+    <value>动作矩阵(旧)</value>
+  </data>
+  <data name="ActorModelProperties" xml:space="preserve">
+    <value>角色模型属性</value>
+  </data>
+  <data name="RelativePoS" xml:space="preserve">
+    <value>相对位置</value>
+  </data>
 </root>
