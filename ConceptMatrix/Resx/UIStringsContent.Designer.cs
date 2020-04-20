@@ -89,6 +89,15 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Actor Model Properties.
+        /// </summary>
+        public static string ActorModelProperties {
+            get {
+                return ResourceManager.GetString("ActorModelProperties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Actor Properties.
         /// </summary>
         public static string ActorProperties {
@@ -1920,6 +1929,15 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Linked:.
+        /// </summary>
+        public static string Linked {
+            get {
+                return ResourceManager.GetString("Linked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Toggles linking for this actor.
         ///• Changing position or rotation of any linked actor will affect them all.
         ///• Turn this on for all actors you want to move together!.
@@ -2472,6 +2490,15 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Posing Matrix(old).
+        /// </summary>
+        public static string PosingMatrixOld {
+            get {
+                return ResourceManager.GetString("PosingMatrixOld", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Load actor position from file.
         ///• Hold CTRL to load relative to current GPose View.
         ///• Hold ALT to load and rotate relative to current GPose View &amp; cam angle.
@@ -2595,6 +2622,15 @@ namespace ConceptMatrix.Resx {
         public static string RefreshButton {
             get {
                 return ResourceManager.GetString("RefreshButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Relative PoS:.
+        /// </summary>
+        public static string RelativePoS {
+            get {
+                return ResourceManager.GetString("RelativePoS", resourceCulture);
             }
         }
         

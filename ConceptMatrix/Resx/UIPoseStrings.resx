@@ -496,4 +496,25 @@
   <data name="ParentRotation" xml:space="preserve">
     <value>Parenting Mode:</value>
   </data>
+  <data name="BoneIntervals" xml:space="preserve">
+    <value>Bone Intervals:</value>
+  </data>
+  <data name="CubeRotationBones" xml:space="preserve">
+    <value>Cube Rotation - Bones</value>
+  </data>
+  <data name="EditScaling" xml:space="preserve">
+    <value>Edit Scaling:</value>
+  </data>
+  <data name="ScalingInLoad" xml:space="preserve">
+    <value>Scaling In Load:</value>
+  </data>
+  <data name="ScalingMode" xml:space="preserve">
+    <value>Scaling Mode:</value>
+  </data>
+  <data name="ToggleActorModelBox" xml:space="preserve">
+    <value>Toggle Actor/Model Box</value>
+  </data>
+  <data name="WeaponPostionMode" xml:space="preserve">
+    <value>Weapon Postion Mode:</value>
+  </data>
 </root>

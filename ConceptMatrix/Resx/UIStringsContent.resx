@@ -127,6 +127,9 @@
     <value>Display the list of targetable entities in the area around you.
 • The list is populated based on distance from the player, and can potentially shift if any entities change positions, including minions.</value>
   </data>
+  <data name="ActorModelProperties" xml:space="preserve">
+    <value>Actor Model Properties</value>
+  </data>
   <data name="ActorProperties" xml:space="preserve">
     <value>Actor Properties</value>
   </data>
@@ -758,6 +761,9 @@
   <data name="LimbalRingTattooColor" xml:space="preserve">
     <value>Limbal Ring / Tattoos Color</value>
   </data>
+  <data name="Linked" xml:space="preserve">
+    <value>Linked:</value>
+  </data>
   <data name="LinkPositionToolTip" xml:space="preserve">
     <value>Toggles linking for this actor.
 • Changing position or rotation of any linked actor will affect them all.
@@ -950,6 +956,9 @@
   <data name="PosingMatrix" xml:space="preserve">
     <value>Posing Matrix</value>
   </data>
+  <data name="PosingMatrixOld" xml:space="preserve">
+    <value>Posing Matrix(old)</value>
+  </data>
   <data name="PosSettingsLoadToolTip" xml:space="preserve">
     <value>Load actor position from file.
 • Hold CTRL to load relative to current GPose View.
@@ -998,6 +1007,9 @@ View</value>
   </data>
   <data name="RefreshButton" xml:space="preserve">
     <value>Refresh</value>
+  </data>
+  <data name="RelativePoS" xml:space="preserve">
+    <value>Relative PoS:</value>
   </data>
   <data name="RelativeXYZPos" xml:space="preserve">
     <value>Relative XYZ Pos:</value>
