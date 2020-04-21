@@ -23,6 +23,9 @@ Make sure to check out the included [wiki](https://github.com/imchillin/CMTool/w
 ## Authors
 
 * **LeonBlade** - *Initial work* - [LeonBlade](https://github.com/LeonBlade)
+* **Johto** - *Further development* - [Khyrou](https://github.com/Khyrou)
+* **KrisanThyme** - *Concept Matrix and further improvements* - [KrisanThyme](https://github.com/KrisanThyme)
+* **EnaLagrange** - *Posing Matrix Parenting and random tidbits* - [enalagrange](https://github.com/enalagrange)
 
 ## License
 
