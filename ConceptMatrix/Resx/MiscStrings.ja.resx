@@ -186,12 +186,6 @@
   <data name="DonateDevs2" xml:space="preserve">
     <value>開発者に寄付をしたいですか？ Ko-fiを介して寄付することができます、下のボタンをクリックしてください。</value>
   </data>
-  <data name="DonateJohto" xml:space="preserve">
-    <value>Johtoに寄付</value>
-  </data>
-  <data name="DonateKrisan" xml:space="preserve">
-    <value>Krisan Thymeに寄付</value>
-  </data>
   <data name="DonateLeon" xml:space="preserve">
     <value>LeonBladeに寄付</value>
   </data>

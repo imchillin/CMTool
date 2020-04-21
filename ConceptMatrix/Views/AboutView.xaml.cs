@@ -21,19 +21,10 @@ namespace ConceptMatrix.Views
 		{
 			Process.Start($"https://github.com/{App.GithubRepo}");
 		}
-		private void DonateButton_OnClick(object sender, RoutedEventArgs e)
-		{
-			Process.Start("https://ko-fi.com/seibanaut");
-		}
 
-		private void DonateButton_OnClick2(object sender, RoutedEventArgs e)
+		private void LeonDonateButton_OnClick(object sender, RoutedEventArgs e)
 		{
 			Process.Start("https://ko-fi.com/leonblade");
-		}
-
-		private void DonateButton_OnClick3(object sender, RoutedEventArgs e)
-		{
-			Process.Start("https://ko-fi.com/krisanthyme");
 		}
 
 		private void ChatButton_Click(object sender, RoutedEventArgs e)
@@ -46,7 +37,7 @@ namespace ConceptMatrix.Views
 			Process.Start($"https://discord.gg/{App.DiscordCode}");
 		}
 
-        private void Gitbutton2_Click(object sender, RoutedEventArgs e)
+        private void EnaDonateButton_Click(object sender, RoutedEventArgs e)
         {
             Process.Start("https://ko-fi.com/enalagrange");
         }

@@ -19,7 +19,7 @@ namespace ConceptMatrix.Resx {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class MiscStrings {
@@ -259,7 +259,7 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Feel like you want to make a donation? It would be gratefully received. Click any of the buttons below to donate via Ko-fi..
+        ///   Looks up a localized string similar to Feel like you want to make a donation? It would be gratefully received. Click any of the buttons below to donate..
         /// </summary>
         public static string DonateDevs2 {
             get {
@@ -273,24 +273,6 @@ namespace ConceptMatrix.Resx {
         public static string DonateEna {
             get {
                 return ResourceManager.GetString("DonateEna", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Donate to Johto.
-        /// </summary>
-        public static string DonateJohto {
-            get {
-                return ResourceManager.GetString("DonateJohto", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Donate to Krisan Thyme.
-        /// </summary>
-        public static string DonateKrisan {
-            get {
-                return ResourceManager.GetString("DonateKrisan", resourceCulture);
             }
         }
         

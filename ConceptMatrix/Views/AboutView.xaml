@@ -97,39 +97,18 @@
                     <!-- LeonBlade Donate -->
 					<Border BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}" Grid.Column="1">
 						<Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
-                            x:Name="ChatButton1" Click="DonateButton_OnClick2">
+                            x:Name="ChatButton1" Click="LeonDonateButton_OnClick">
 							<StackPanel Orientation="Horizontal">
 								<materialDesign:PackIcon Kind="Link" Margin="0,2,8,0" />
-                                <TextBlock Margin="0 0 0 0" VerticalAlignment="Center" FontSize="14" Text="{Binding Source={x:Static resx:MiscStrings.DonateLeon}}" />
-                            </StackPanel>
-						</Button>
-					</Border>
-
-					<!-- Johto Donate -->
-					<Border BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}" Grid.Column="1">
-						<Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
-                            x:Name="GitHubButton1" Width="auto" Click="DonateButton_OnClick">
-							<StackPanel Orientation="Horizontal">
-								<materialDesign:PackIcon Kind="Link" Margin="0,2,8,0" />
-                                <TextBlock Margin="0 0 0 0" VerticalAlignment="Center" FontSize="14" Width="auto" Text="{Binding Source={x:Static resx:MiscStrings.DonateJohto}}"/>
-                            </StackPanel>
-						</Button>
-					</Border>
-
-					<!-- Krisan Donate -->
-					<Border BorderThickness="0 1 0 1" BorderBrush="{DynamicResource MaterialDesignDivider}" Grid.Column="1">
-						<Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
-                            x:Name="GitHubButton1_Copy" Width="auto" Click="DonateButton_OnClick3">
-							<StackPanel Orientation="Horizontal">
-								<materialDesign:PackIcon Kind="Link" Margin="0,2,8,0" />
-                                <TextBlock Margin="0 0 0 0" VerticalAlignment="Center" FontSize="14" Width="auto" Text="{Binding Source={x:Static resx:MiscStrings.DonateKrisan}}"/>
+								<TextBlock Margin="0 0 0 0" VerticalAlignment="Center" FontSize="14" Text="{Binding Source={x:Static resx:MiscStrings.DonateLeon}}" />
 							</StackPanel>
 						</Button>
 					</Border>
-                    <!-- Ena Donate -->
+
+					<!-- Ena Donate -->
                     <Border BorderThickness="0 1 0 1" BorderBrush="{DynamicResource MaterialDesignDivider}" Grid.Column="1">
                         <Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
-                            x:Name="Gitbutton2" Width="auto" Click="Gitbutton2_Click" >
+                            x:Name="Gitbutton2" Width="auto" Click="EnaDonateButton_Click" >
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Link" Margin="0,2,8,0" />
                                 <TextBlock Margin="0 0 0 0" VerticalAlignment="Center" FontSize="14" Width="auto" Text="{Binding Source={x:Static resx:MiscStrings.DonateEna}}"/>

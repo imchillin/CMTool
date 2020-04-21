@@ -186,12 +186,6 @@
   <data name="DonateDevs2" xml:space="preserve">
     <value>Vous avez envie de faire un don? Il serait reçu avec reconnaissance. Cliquez sur l'un des boutons ci-dessous pour faire un don via Ko-fi.</value>
   </data>
-  <data name="DonateJohto" xml:space="preserve">
-    <value>Faire un don à Johto</value>
-  </data>
-  <data name="DonateKrisan" xml:space="preserve">
-    <value>Faire un don à Krisan Thyme</value>
-  </data>
   <data name="DonateLeon" xml:space="preserve">
     <value>Faire un don à LeonBlade</value>
   </data>

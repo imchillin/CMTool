@@ -186,12 +186,6 @@
   <data name="DonateDevs2" xml:space="preserve">
     <value>想要赞助？ 我将不胜感激。 请点击以下按钮通过Ko-fi赞助。</value>
   </data>
-  <data name="DonateJohto" xml:space="preserve">
-    <value>赞助Johto</value>
-  </data>
-  <data name="DonateKrisan" xml:space="preserve">
-    <value>赞助Krisan Thyme</value>
-  </data>
   <data name="DonateLeon" xml:space="preserve">
     <value>赞助LeonBlade</value>
   </data>

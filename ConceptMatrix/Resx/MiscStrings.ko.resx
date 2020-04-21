@@ -186,12 +186,6 @@
   <data name="DonateDevs2" xml:space="preserve">
     <value>후원을 하고 싶으신가요? 그것을 감사히 받겠습니다. Ko-fi를 통해 후원하려면 아래 버튼들 중 하나를 클릭해주세요</value>
   </data>
-  <data name="DonateJohto" xml:space="preserve">
-    <value>Johto에게 후원하기</value>
-  </data>
-  <data name="DonateKrisan" xml:space="preserve">
-    <value>Krisan Thyme에게 후원하기</value>
-  </data>
   <data name="DonateLeon" xml:space="preserve">
     <value>LeonBlade에게 후원하기</value>
   </data>
