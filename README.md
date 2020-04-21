@@ -18,13 +18,11 @@ The tool doesn’t really need much in a way of installation, all you need to do
 
 ### Usage
 
-Make sure to check out the included [wiki](https://github.com/imchillin/CMTool/wiki/) for guides and tutorials on how to use the CMTool. If you have any questions that weren’t answered there, join us on [Discord](https://discord.gg/hq3DnBa) and ask for help there.
+Make sure to check out the included [wiki](https://github.com/imchillin/CMTool/wiki/) for guides and tutorials on how to use the CMTool. If you have any questions that weren’t answered there, join us on [Discord](https://discord.gg/EenZwsN) and ask for help there.
 
 ## Authors
 
 * **LeonBlade** - *Initial work* - [LeonBlade](https://github.com/LeonBlade)
-* **Johto** - *Further development* - [Khyrou](https://github.com/Khyrou)
-* **KrisanThyme** - *Concept Matrix and further improvements* - [KrisanThyme](https://github.com/KrisanThyme)
 
 ## License
 
