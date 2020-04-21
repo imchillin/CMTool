@@ -24,7 +24,7 @@ namespace ConceptMatrix
 		public static readonly string UpdaterBin = "ConceptMatrixUpdater";
 		public static readonly string GithubRepo = "imchillin/CMTool";
 		public static readonly string TwitterHandle = "ffxivsstool";
-		public static readonly string DiscordCode = "hq3DnBa";
+		public static readonly string DiscordCode = "EenZwsN";
 
 		public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
         protected override void OnStartup(StartupEventArgs e)
