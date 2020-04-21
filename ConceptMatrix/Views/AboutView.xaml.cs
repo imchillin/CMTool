@@ -27,19 +27,23 @@ namespace ConceptMatrix.Views
 			Process.Start("https://ko-fi.com/leonblade");
 		}
 
-		private void ChatButton_Click(object sender, RoutedEventArgs e)
+		private void YuukiDonateButton_OnClick(object sender, RoutedEventArgs e)
+		{
+			Process.Start("https://ko-fi.com/missanithrope");
+		}
+		private void EnaDonateButton_Click(object sender, RoutedEventArgs e)
+		{
+			Process.Start("https://ko-fi.com/enalagrange");
+		}
+
+		private void TwitterButton_OnClick(object sender, RoutedEventArgs e)
 		{
 			Process.Start($"https://twitter.com/{App.TwitterHandle}");
 		}
 
-		private void AboutDiscordBtn_Click(object sender, RoutedEventArgs e)
+		private void DiscordBtn_OnClick(object sender, RoutedEventArgs e)
 		{
 			Process.Start($"https://discord.gg/{App.DiscordCode}");
 		}
-
-        private void EnaDonateButton_Click(object sender, RoutedEventArgs e)
-        {
-            Process.Start("https://ko-fi.com/enalagrange");
-        }
     }
 }

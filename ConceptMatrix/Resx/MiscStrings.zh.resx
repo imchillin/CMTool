@@ -288,4 +288,7 @@
   <data name="Transparency" xml:space="preserve">
     <value>UI 透明度</value>
   </data>
+  <data name="DonateYuuki" xml:space="preserve">
+    <value>赞助Yuuki</value>
+  </data>
 </root>

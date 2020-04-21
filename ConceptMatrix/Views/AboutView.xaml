@@ -34,7 +34,7 @@
                     <TextBlock TextWrapping="Wrap" Foreground="{DynamicResource MaterialDesignBodyLight}" Text="{Binding Source={x:Static resx:MiscStrings.GetInTouch2}}" Margin="8" Height="35" />
 					<Border BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}" Grid.Column="1">
 						<Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
-                            x:Name="DiscordBtn" Click="AboutDiscordBtn_Click">
+                            x:Name="DiscordBtn" Click="DiscordBtn_OnClick">
 							<StackPanel Orientation="Horizontal">
 								<materialDesign:PackIcon Kind="Link" Margin="0,2,8,0" />
                                 <TextBlock Margin="0 0 0 0" VerticalAlignment="Center" FontSize="14" Text="{Binding Source={x:Static resx:UIStringsContent.Discord}}" />
@@ -43,7 +43,7 @@
 					</Border>
 					<Border BorderThickness="0 1 0 1" BorderBrush="{DynamicResource MaterialDesignDivider}" Grid.Column="1">
 						<Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
-                            x:Name="TwitterBtn" Click="ChatButton_Click">
+                            x:Name="TwitterBtn" Click="TwitterButton_OnClick">
 							<StackPanel Orientation="Horizontal">
 								<materialDesign:PackIcon Kind="Link" Margin="0,2,8,0" />
                                 <TextBlock Margin="0 0 0 0" VerticalAlignment="Center" FontSize="14" Text="{Binding Source={x:Static resx:UIStringsContent.Twitter}}" />
@@ -97,7 +97,7 @@
                     <!-- LeonBlade Donate -->
 					<Border BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}" Grid.Column="1">
 						<Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
-                            x:Name="ChatButton1" Click="LeonDonateButton_OnClick">
+                            x:Name="LeonDonateButton" Click="LeonDonateButton_OnClick">
 							<StackPanel Orientation="Horizontal">
 								<materialDesign:PackIcon Kind="Link" Margin="0,2,8,0" />
 								<TextBlock Margin="0 0 0 0" VerticalAlignment="Center" FontSize="14" Text="{Binding Source={x:Static resx:MiscStrings.DonateLeon}}" />
@@ -108,14 +108,25 @@
 					<!-- Ena Donate -->
                     <Border BorderThickness="0 1 0 1" BorderBrush="{DynamicResource MaterialDesignDivider}" Grid.Column="1">
                         <Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
-                            x:Name="Gitbutton2" Width="auto" Click="EnaDonateButton_Click" >
+                            x:Name="EnaDonateButton" Width="auto" Click="EnaDonateButton_Click" >
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Link" Margin="0,2,8,0" />
                                 <TextBlock Margin="0 0 0 0" VerticalAlignment="Center" FontSize="14" Width="auto" Text="{Binding Source={x:Static resx:MiscStrings.DonateEna}}"/>
                             </StackPanel>
                         </Button>
                     </Border>
-                </StackPanel>
+
+					<!-- Yuuki Donate -->
+					<Border BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}" Grid.Column="1">
+						<Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
+                            x:Name="YuukiDonateButton" Click="YuukiDonateButton_OnClick">
+							<StackPanel Orientation="Horizontal">
+								<materialDesign:PackIcon Kind="Link" Margin="0,2,8,0" />
+								<TextBlock Margin="0 0 0 0" VerticalAlignment="Center" FontSize="14" Text="{Binding Source={x:Static resx:MiscStrings.DonateYuuki}}" />
+							</StackPanel>
+						</Button>
+					</Border>
+				</StackPanel>
 
 				<materialDesign:PackIcon Grid.Column="0"  Kind="Donate" Width="96" Height="96" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.RowSpan="3" />
 			</Grid>

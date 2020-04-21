@@ -259,7 +259,7 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Feel like you want to make a donation? It would be gratefully received. Click any of the buttons below to donate..
+        ///   Looks up a localized string similar to Feel like you want to make a donation? It would be gratefully received. Click any of the buttons below to donate via Ko-fi..
         /// </summary>
         public static string DonateDevs2 {
             get {
@@ -282,6 +282,15 @@ namespace ConceptMatrix.Resx {
         public static string DonateLeon {
             get {
                 return ResourceManager.GetString("DonateLeon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Donate to Yuuki.
+        /// </summary>
+        public static string DonateYuuki {
+            get {
+                return ResourceManager.GetString("DonateYuuki", resourceCulture);
             }
         }
         
