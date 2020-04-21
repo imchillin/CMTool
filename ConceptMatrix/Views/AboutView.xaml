@@ -117,7 +117,7 @@
                     </Border>
 
 					<!-- Yuuki Donate -->
-					<Border BorderThickness="0 1 0 0" BorderBrush="{DynamicResource MaterialDesignDivider}" Grid.Column="1">
+					<Border BorderThickness="0 0 0 1" BorderBrush="{DynamicResource MaterialDesignDivider}" Grid.Column="1">
 						<Button Style="{DynamicResource MaterialDesignFlatButton}" HorizontalAlignment="Left"
                             x:Name="YuukiDonateButton" Click="YuukiDonateButton_OnClick">
 							<StackPanel Orientation="Horizontal">

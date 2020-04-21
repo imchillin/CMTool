@@ -286,7 +286,7 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Donate to Yuuki.
+        ///   Looks up a localized string similar to Donate to Yuuki &amp; Ani.
         /// </summary>
         public static string DonateYuuki {
             get {
