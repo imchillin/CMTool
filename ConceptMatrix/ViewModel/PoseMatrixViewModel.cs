@@ -62,7 +62,6 @@ namespace ConceptMatrix.ViewModel
         public float CubeBone_Y { get; set; }
         public float CubeBone_Z { get; set; }
         public float CubeBone_W { get; set; }
-
         public double MaxBone { get; set; }
         public double MinBone { get; set; }
 

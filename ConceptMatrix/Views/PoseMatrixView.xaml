@@ -130,7 +130,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                 <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.CubeRotationBones}}" x:Name="CubeBox">
-                    <Border BorderBrush="Black" BorderThickness="3" Height="155" Width="200" Background="#FF2E2E2E">
+                    <Border BorderBrush="Black" BorderThickness="3" Height="155" Width="340" Background="#FF2E2E2E">
                         <local:PoseRotationView x:Name="Cube" IsEnabled="False">
                             <local:PoseRotationView.DataContext>
                                 <MultiBinding Converter="{StaticResource ResourceKey=QuaternionConverter}">

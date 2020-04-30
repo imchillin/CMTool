@@ -2841,6 +2841,13 @@ namespace ConceptMatrix.Views
             BoneSliderX.IsEnabled = true;
             BoneSliderY.IsEnabled = true;
             BoneSliderZ.IsEnabled = true;
+            Cube.xCubeChange = false;
+            Cube.yCubeChange = false;
+            Cube.zCubeChange = false;
+            Cube.XUpDownCube.Value = 0;
+            Cube.YUpDownCube.Value = 0;
+            Cube.ZUpDownCube.Value = 0;
+
             #region ToggleButton Ischecked
             Root.IsChecked = (newActive == Root) ? true : false;
             Abdomen.IsChecked = (newActive == Abdomen) ? true : false;
