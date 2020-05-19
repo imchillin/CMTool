@@ -375,7 +375,7 @@ namespace ConceptMatrix.ViewModel
                     var offset = JsonConvert.DeserializeObject<Settings>(jsonStr);
                     if (!string.Equals(Settings.Instance.LastUpdated, offset.LastUpdated))
                     {
-                        File.WriteAllText(@"./OffsetSettings.json", jsonStr);
+                        File.WriteAllText(@"./OffsetSettingsCN.json", jsonStr);
                         Settings.Instance = offset;
                         return true;
                     }
@@ -399,7 +399,7 @@ namespace ConceptMatrix.ViewModel
                     var offset = JsonConvert.DeserializeObject<Settings>(jsonStr);
                     if (!string.Equals(Settings.Instance.LastUpdated, offset.LastUpdated))
                     {
-                        File.WriteAllText(@"./OffsetSettings.json", jsonStr);
+                        File.WriteAllText(@"./OffsetSettingsKO.json", jsonStr);
                         Settings.Instance = offset;
                         return true;
                     }
