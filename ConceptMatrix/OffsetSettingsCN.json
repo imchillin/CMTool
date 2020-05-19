@@ -1,18 +1,18 @@
 {
   "LastUpdated": "5.18",
-  "CameraOffset": "1BF9B20", //done
-  "GposeOffset": "1BF9D08", //done
-  "GposeEntityOffset": "1BFCBA0", //done
-  "GposeCheckOffset": "1BAEC88", //done
-  "GposeCheck2Offset": "1BFD8F0", //done
-  "AoBOffset": "1BFB110", //done
-  "TargetOffset": "1BF9D70", //done
-  "TimeOffset": "1BDAB48", //done
-  "WeatherOffset": "1BB1818", //done
-  "TerritoryOffset": "1BD8320", //done
-  "GposeFilters": "1BD8AA8", //done
-  "MusicOffset": "1BFCAF0", //done
-  "SkeletonOffset": "132F0B0", //done
+  "CameraOffset": "1BF9B20",
+  "GposeOffset": "1BF9D08",
+  "GposeEntityOffset": "1BFCBA0",
+  "GposeCheckOffset": "1BAEC88",
+  "GposeCheck2Offset": "1BFD8F0",
+  "AoBOffset": "1BFB110",
+  "TargetOffset": "1BF9D70",
+  "TimeOffset": "1BDAB48",
+  "WeatherOffset": "1BB1818",
+  "TerritoryOffset": "1BD8320",
+  "GposeFilters": "1BD8AA8",
+  "MusicOffset": "1BFCAF0",
+  "SkeletonOffset": "132F0B0",
   "SkeletonOffset2": "13301DD",
   "SkeletonOffset3": "133DE44",
   "SkeletonOffset4": "132F0C0",
