@@ -1051,7 +1051,7 @@ namespace ConceptMatrix.Utility
             {
                 memory = new byte[write.Length];
                 memory = System.Text.Encoding.UTF8.GetBytes(write);
-                size = write.Length;
+                size = memory.Length;
             }
 #if DEBUG
             StackTrace stackTrace = new StackTrace(true);
