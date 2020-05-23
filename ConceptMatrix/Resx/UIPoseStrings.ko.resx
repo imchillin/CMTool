@@ -489,4 +489,7 @@
   <data name="ParentRotation" xml:space="preserve">
     <value>육아 회전 :</value>
   </data>
+  <data name="MirrorSelected" xml:space="preserve">
+    <value>좌우 반전</value>
+  </data>
 </root>

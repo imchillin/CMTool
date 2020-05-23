@@ -517,4 +517,7 @@
   <data name="WeaponPostionMode" xml:space="preserve">
     <value>Weapon Postion Mode:</value>
   </data>
+  <data name="MirrorSelected" xml:space="preserve">
+    <value>Mirror Selected</value>
+  </data>
 </root>

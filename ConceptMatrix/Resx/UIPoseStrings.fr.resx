@@ -489,4 +489,7 @@
   <data name="ParentRotation" xml:space="preserve">
     <value>Rotation parentale:</value>
   </data>
+  <data name="MirrorSelected" xml:space="preserve">
+    <value>Miroir Actif</value>
+  </data>
 </root>

@@ -321,6 +321,9 @@
   <data name="Middle" xml:space="preserve">
     <value>中指：</value>
   </data>
+  <data name="Mirror Selected" xml:space="preserve">
+    <value>左右反转</value>
+  </data>
   <data name="Mouth" xml:space="preserve">
     <value>嘴巴：</value>
   </data>

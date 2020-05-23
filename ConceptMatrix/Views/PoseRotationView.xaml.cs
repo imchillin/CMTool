@@ -27,7 +27,7 @@ namespace ConceptMatrix.Views
 
         private DragState dragState;
         private Quaternion newrot;
-        public bool xCubeChange = true, yCubeChange = true, zCubeChange = true;
+        // public bool xCubeChange = true, yCubeChange = true, zCubeChange = true;
 
         public PoseRotationView()
         {
@@ -121,38 +121,17 @@ namespace ConceptMatrix.Views
         }
         private void XUpDownCube_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            if (xCubeChange)
-            {
-                CubeValueChanged(new Vector3D(0, 0, -1), e);
-            }
-            else
-            {
-                xCubeChange = true;
-            }
+            CubeValueChanged(new Vector3D(0, 0, -1), e);
         }
 
         private void YUpDownCube_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            if (yCubeChange)
-            {
-                CubeValueChanged(new Vector3D(0, -1, 0), e);
-            }
-            else
-            {
-                yCubeChange = true;
-            }
+            CubeValueChanged(new Vector3D(0, -1, 0), e);
         }
 
         private void ZUpDownCube_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
-            if (zCubeChange)
-            {
-                CubeValueChanged(new Vector3D(1, 0, 0), e);
-            }
-            else
-            {
-                zCubeChange = true;
-            }
-    }
+            CubeValueChanged(new Vector3D(1, 0, 0), e);
+        }
     }
 }

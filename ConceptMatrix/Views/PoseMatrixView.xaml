@@ -189,6 +189,11 @@
         <CheckBox x:Name="ToggleModelView" Content="{Binding Source={x:Static resx:UIPoseStrings.ToggleActorModelBox}}" Grid.ColumnSpan="2" Margin="10,466,949,39" Checked="ToggleModelView_Checked" Unchecked="ToggleModelView_Unchecked"/>
         <mah:NumericUpDown Value="{Binding BoneInterval, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Background="{x:Null}" TextAlignment="Right"  BorderThickness="2" Maximum="360" Minimum="0"  StringFormat="F3" Interval="0.01" FontSize="11.35" FontFamily="Segoe UI" Margin="95,493,909,11" Grid.ColumnSpan="2"/>
         <Label Content="{Binding Source={x:Static resx:UIPoseStrings.BoneIntervals}}" Margin="9,493,39,12"/>
+        <Button x:Name="TestMirror" Margin="91,479,762,19" Click="Test_Mirror_Click" Grid.Column="1">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="0 0 0 0" VerticalAlignment="Center" Padding="0" Text="{Binding Source={x:Static resx:UIPoseStrings.MirrorSelected}}" Width="100" />
+            </StackPanel>
+        </Button>
         <mah:MetroAnimatedTabControl  Background="{x:Null}" Grid.Column="1" Margin="231,155,10,0">
             <TabItem Header="{Binding Source={x:Static resx:UIPoseStrings.HeadHair}}" Style="{DynamicResource MenuLevel2}">
                 <StackPanel>
@@ -656,7 +661,7 @@
                             <StackPanel Orientation="Vertical">
                                 <StackPanel Orientation="Horizontal">
                                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Waist}}"  VerticalAlignment="Center" Width="80"/>
-                                    <ToggleButton  IsEnabled="False" Name="Waist" Checked="Toggles_Checked"/>
+                                    <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Name="Waist" Checked="Toggles_Checked"/>
                                     <Label  VerticalAlignment="Center" Width="33"/>
                                     <Label Content="{Binding Source={x:Static resx:UIPoseStrings.Tail}}"  VerticalAlignment="Center" Width="60"/>
                                     <ToggleButton Unchecked="Toggles_Unchecked" IsEnabled="False" Checked="Toggles_Checked" Name="TailA" Content="1"/>
