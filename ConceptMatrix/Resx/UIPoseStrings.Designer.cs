@@ -673,6 +673,15 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mirror Selected.
+        /// </summary>
+        public static string MirrorSelected {
+            get {
+                return ResourceManager.GetString("MirrorSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mouth:.
         /// </summary>
         public static string Mouth {

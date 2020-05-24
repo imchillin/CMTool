@@ -1,6 +1,7 @@
 ﻿using ConceptMatrix.Models;
 using ConceptMatrix.Utility;
 using ConceptMatrix.ViewModel;
+using MahApps.Metro.Controls;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -25,12 +26,28 @@ namespace ConceptMatrix.Views
         private readonly Mem m = MemoryManager.Instance.MemLib;
 
         private DragState dragState;
-        private Quaternion oldrot, newrot;
+        private Quaternion newrot;
+        // public bool xCubeChange = true, yCubeChange = true, zCubeChange = true;
 
         public PoseRotationView()
         {
             InitializeComponent();
         }
+        public Quaternion RotateEuler(Vector3D axis, double angle)
+        {
+            // Applies the desired rotation first then the original rotation second.
+            // Not the other way around (which would be rotationDelta * q). This makes it
+            // more intuitive to adjust the roll, pitch, and yaw relative to the original
+            // rotation.
+            var rotationDelta = new Quaternion(axis, angle);
+            rotationDelta.Normalize();
+            var q = (MainViewModel.ViewTime.AltRotate) ? RotationQuaternion.Quaternion * rotationDelta : rotationDelta * RotationQuaternion.Quaternion;
+            q.Normalize();
+
+            RotationQuaternion.SetCurrentValue(QuaternionRotation3D.QuaternionProperty, q);
+            return q;
+        }
+
         private void Viewport3D_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
             var el = (UIElement)sender;
@@ -62,17 +79,7 @@ namespace ConceptMatrix.Views
                     default:
                         return;
                 }
-
-                // Applies the desired rotation first then the original rotation second.
-                // Not the other way around (which would be rotationDelta * q). This makes it
-                // more intuitive to adjust the roll, pitch, and yaw relative to the original
-                // rotation.
-                var rotationDelta = new Quaternion(axis, angle);
-                rotationDelta.Normalize();
-                var q = (MainViewModel.ViewTime.AltRotate) ? RotationQuaternion.Quaternion * rotationDelta : rotationDelta * RotationQuaternion.Quaternion;
-                q.Normalize();
-
-                RotationQuaternion.SetCurrentValue(QuaternionRotation3D.QuaternionProperty, q);
+                RotateEuler(axis, angle);
                 dragState.lastPoint = curPoint;
             }
         }
@@ -101,6 +108,30 @@ namespace ConceptMatrix.Views
             var q = (Quaternion)qv;
 
             PoseMatrixViewModel.PoseVM.RotateHelperQuaternion(q);
+        }
+        private void CubeValueChanged(Vector3D vec, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            if (e.NewValue != null)
+            {
+                double? value;
+                if (e.OldValue == null) value = e.NewValue;
+                else value = e.NewValue - e.OldValue;
+                PoseMatrixViewModel.PoseVM.RotateHelperQuaternion(RotateEuler(vec, -(double)value));
+            }
+        }
+        private void XUpDownCube_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            CubeValueChanged(new Vector3D(0, 0, -1), e);
+        }
+
+        private void YUpDownCube_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            CubeValueChanged(new Vector3D(0, -1, 0), e);
+        }
+
+        private void ZUpDownCube_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        {
+            CubeValueChanged(new Vector3D(1, 0, 0), e);
         }
     }
 }

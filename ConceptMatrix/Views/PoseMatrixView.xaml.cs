@@ -2838,9 +2838,18 @@ namespace ConceptMatrix.Views
             PoseMatrixViewModel.PoseVM.newrot = new Vector3D(0, 0, 0);
             PoseMatrixViewModel.PoseVM.PointerPath = null;
             PoseMatrixViewModel.PoseVM.PointerType = 0;
+            PoseMatrixViewModel.PoseVM.BNode = null;
             BoneSliderX.IsEnabled = true;
             BoneSliderY.IsEnabled = true;
             BoneSliderZ.IsEnabled = true;
+            // Cube.xCubeChange = false;
+            // Cube.yCubeChange = false;
+            // Cube.zCubeChange = false;
+            Cube.XUpDownCube.Value = 0;
+            Cube.YUpDownCube.Value = 0;
+            Cube.ZUpDownCube.Value = 0;
+
+
             #region ToggleButton Ischecked
             Root.IsChecked = (newActive == Root) ? true : false;
             Abdomen.IsChecked = (newActive == Abdomen) ? true : false;
@@ -13338,6 +13347,11 @@ namespace ConceptMatrix.Views
         private void ScaleSaveToggle_Unchecked(object sender, RoutedEventArgs e)
         {
             SaveSettings.Default.ScalingLoad = false;
+        }
+
+        private void Test_Mirror_Click(object sender, RoutedEventArgs e)
+        {
+            PoseMatrixViewModel.PoseVM.MirrorHelper();
         }
 
         private void DisableTertiary()
