@@ -610,7 +610,7 @@ namespace ConceptMatrix.ViewModel
             bone_face.Child(Settings.Instance.Bones.EyelidLowerRight_Bone, false, Settings.Instance.Bones.EyelidLowerLeft_Bone);
             bone_eye_l = bone_face.Child(Settings.Instance.Bones.EyeLeft_Bone, true, Settings.Instance.Bones.EyeRight_Bone);
             bone_eye_l.Child(Settings.Instance.Bones.EyeRight_Bone, false, Settings.Instance.Bones.EyeLeft_Bone);
-            bone_face.Child(Settings.Instance.Bones.EarLeft_Bone, true, Settings.Instance.Bones.EarLeft_Bone);
+            bone_face.Child(Settings.Instance.Bones.EarLeft_Bone, true, Settings.Instance.Bones.EarRight_Bone);
             bone_face.Child(Settings.Instance.Bones.EarRight_Bone, false, Settings.Instance.Bones.EarLeft_Bone);
             bone_face.Child(Settings.Instance.Bones.EarringALeft_Bone, true, Settings.Instance.Bones.EarringARight_Bone);
             bone_face.Child(Settings.Instance.Bones.EarringBLeft_Bone, true, Settings.Instance.Bones.EarringBRight_Bone);
