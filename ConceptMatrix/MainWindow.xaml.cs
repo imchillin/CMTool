@@ -388,6 +388,7 @@ namespace ConceptMatrix
             m.writeMemory(GAS(c.RenderToggle), "int", "2");
             Task.Delay(100).Wait();
             m.writeMemory(GAS(c.RenderToggle), "int", "0");
+            Task.Delay(200).Wait();
 
             if (uncheck) Uncheck_OnLoad();
         }
@@ -672,6 +673,7 @@ namespace ConceptMatrix
                         CharacterDetails.LeftEye.freeze = true;
                         CharacterDetails.FacePaint.freeze = true;
                         CharacterDetails.FacePaintColor.freeze = true;
+                        /*
                         if (CharacterDetails.RightEyeBlue.freeze == true) { CharacterDetails.RightEyeBlue.freeze = false; CharacterDetails.RightEyeBlue.freezetest = true; }
                         if (CharacterDetails.RightEyeGreen.freeze == true) { CharacterDetails.RightEyeGreen.freeze = false; CharacterDetails.RightEyeGreen.freezetest = true; }
                         if (CharacterDetails.RightEyeRed.freeze == true) { CharacterDetails.RightEyeRed.freeze = false; CharacterDetails.RightEyeRed.freezetest = true; }
@@ -706,6 +708,41 @@ namespace ConceptMatrix
                         if (CharacterDetails.HairBluePigment.freeze == true) { CharacterDetails.HairBluePigment.freeze = false; CharacterDetails.HairBluePigment.freezetest = true; }
                         if (CharacterDetails.HairRedPigment.freeze == true) { CharacterDetails.HairRedPigment.freeze = false; CharacterDetails.HairRedPigment.freezetest = true; }
                         if (CharacterDetails.Height.freeze == true) { CharacterDetails.Height.freeze = false; CharacterDetails.Height.freezetest = true; }
+                        */
+                        CharacterDetails.RightEyeBlue.freeze = true;
+                        CharacterDetails.RightEyeGreen.freeze = true;
+                        CharacterDetails.RightEyeRed.freeze = true;
+                        CharacterDetails.LeftEyeBlue.freeze = true;
+                        CharacterDetails.LeftEyeGreen.freeze = true;
+                        CharacterDetails.LeftEyeRed.freeze = true;
+                        CharacterDetails.LipsB.freeze = true;
+                        CharacterDetails.LipsG.freeze = true;
+                        CharacterDetails.LipsR.freeze = true;
+                        CharacterDetails.LimbalB.freeze = true;
+                        CharacterDetails.LimbalG.freeze = true;
+                        CharacterDetails.LimbalR.freeze = true;
+                        CharacterDetails.MuscleTone.freeze = true;
+                        CharacterDetails.TailSize.freeze = true;
+                        CharacterDetails.BustX.freeze = true;
+                        CharacterDetails.BustY.freeze = true;
+                        CharacterDetails.BustZ.freeze = true;
+                        CharacterDetails.LipsBrightness.freeze = true;
+                        CharacterDetails.SkinBlueGloss.freeze = true;
+                        CharacterDetails.SkinGreenGloss.freeze = true;
+                        CharacterDetails.SkinRedGloss.freeze = true;
+                        CharacterDetails.SkinBluePigment.freeze = true;
+                        CharacterDetails.SkinGreenPigment.freeze = true;
+                        CharacterDetails.SkinRedPigment.freeze = true;
+                        CharacterDetails.HighlightBluePigment.freeze = true;
+                        CharacterDetails.HighlightGreenPigment.freeze = true;
+                        CharacterDetails.HighlightRedPigment.freeze = true;
+                        CharacterDetails.HairGlowBlue.freeze = true;
+                        CharacterDetails.HairGlowGreen.freeze = true;
+                        CharacterDetails.HairGlowRed.freeze = true;
+                        CharacterDetails.HairGreenPigment.freeze = true;
+                        CharacterDetails.HairBluePigment.freeze = true;
+                        CharacterDetails.HairRedPigment.freeze = true;
+                        CharacterDetails.Height.freeze = true;
 
                     } // 0 = All ; 1= Appearance; 2=Equipment
                     if (savechoice == 0 || savechoice == 2)
@@ -722,6 +759,7 @@ namespace ConceptMatrix
                         CharacterDetails.Wrist.freeze = true;
                         CharacterDetails.RFinger.freeze = true;
                         CharacterDetails.LFinger.freeze = true;
+                        /*
                         if (CharacterDetails.WeaponGreen.freeze == true) { CharacterDetails.WeaponGreen.freeze = false; CharacterDetails.WeaponGreen.Cantbeused = true; }
                         if (CharacterDetails.WeaponBlue.freeze == true) { CharacterDetails.WeaponBlue.freeze = false; CharacterDetails.WeaponBlue.Cantbeused = true; }
                         if (CharacterDetails.WeaponRed.freeze == true) { CharacterDetails.WeaponRed.freeze = false; CharacterDetails.WeaponRed.Cantbeused = true; }
@@ -734,6 +772,19 @@ namespace ConceptMatrix
                         if (CharacterDetails.OffhandRed.freeze == true) { CharacterDetails.OffhandRed.freeze = false; CharacterDetails.OffhandRed.Cantbeused = true; }
                         if (CharacterDetails.OffhandBlue.freeze == true) { CharacterDetails.OffhandBlue.freeze = false; CharacterDetails.OffhandBlue.Cantbeused = true; }
                         if (CharacterDetails.OffhandGreen.freeze == true) { CharacterDetails.OffhandGreen.freeze = false; CharacterDetails.OffhandGreen.Cantbeused = true; }
+                        */
+                        CharacterDetails.WeaponGreen.freeze = true;
+                        CharacterDetails.WeaponBlue.freeze = true;
+                        CharacterDetails.WeaponRed.freeze = true;
+                        CharacterDetails.WeaponZ.freeze = true;
+                        CharacterDetails.WeaponY.freeze = true;
+                        CharacterDetails.WeaponX.freeze = true;
+                        CharacterDetails.OffhandZ.freeze = true;
+                        CharacterDetails.OffhandY.freeze = true;
+                        CharacterDetails.OffhandX.freeze = true;
+                        CharacterDetails.OffhandRed.freeze = true;
+                        CharacterDetails.OffhandBlue.freeze = true;
+                        CharacterDetails.OffhandGreen.freeze = true;
                     }
                     Task.Delay(45).Wait();
                     {
@@ -842,6 +893,7 @@ namespace ConceptMatrix
                             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.RightEyeGreen), "float", charSaves.characterDetails.RightEyeGreen.value.ToString());
                             CharacterDetails.RightEyeBlue.value = charSaves.characterDetails.RightEyeBlue.value;
                             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.RightEyeBlue), "float", charSaves.characterDetails.RightEyeBlue.value.ToString());
+                            /*
                             if (CharacterDetails.MuscleTone.freezetest == true) { CharacterDetails.MuscleTone.freeze = true; CharacterDetails.MuscleTone.freezetest = false; }
                             if (CharacterDetails.TailSize.freezetest == true) { CharacterDetails.TailSize.freeze = true; CharacterDetails.TailSize.freezetest = false; }
                             if (CharacterDetails.BustX.freezetest == true) { CharacterDetails.BustX.freeze = true; CharacterDetails.BustX.freezetest = false; }
@@ -876,6 +928,7 @@ namespace ConceptMatrix
                             if (CharacterDetails.LimbalR.freezetest == true) { CharacterDetails.LimbalR.freeze = true; CharacterDetails.LimbalR.freezetest = false; }
                             if (CharacterDetails.LimbalB.freezetest == true) { CharacterDetails.LimbalB.freeze = true; CharacterDetails.LimbalB.freezetest = false; }
                             if (CharacterDetails.LimbalG.freezetest == true) { CharacterDetails.LimbalG.freeze = true; CharacterDetails.LimbalG.freezetest = false; }
+                            */
                         }
                         if (savechoice == 0 || savechoice == 2)
                         {
@@ -941,6 +994,7 @@ namespace ConceptMatrix
                             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.OffhandY), "float", charSaves.characterDetails.OffhandY.value.ToString());
                             CharacterDetails.OffhandZ.value = charSaves.characterDetails.OffhandZ.value;
                             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.OffhandZ), "float", charSaves.characterDetails.OffhandZ.value.ToString());
+                            /*
                             if (CharacterDetails.WeaponGreen.Cantbeused == true) { CharacterDetails.WeaponGreen.freeze = true; CharacterDetails.WeaponGreen.Cantbeused = false; }
                             if (CharacterDetails.WeaponBlue.Cantbeused == true) { CharacterDetails.WeaponBlue.freeze = true; CharacterDetails.WeaponBlue.Cantbeused = false; }
                             if (CharacterDetails.WeaponRed.Cantbeused == true) { CharacterDetails.WeaponRed.freeze = true; CharacterDetails.WeaponRed.Cantbeused = false; }
@@ -953,6 +1007,7 @@ namespace ConceptMatrix
                             if (CharacterDetails.OffhandRed.Cantbeused == true) { CharacterDetails.OffhandRed.freeze = true; CharacterDetails.OffhandRed.Cantbeused = false; }
                             if (CharacterDetails.OffhandBlue.Cantbeused == true) { CharacterDetails.OffhandBlue.freeze = true; CharacterDetails.OffhandBlue.Cantbeused = false; }
                             if (CharacterDetails.OffhandGreen.Cantbeused == true) { CharacterDetails.OffhandGreen.freeze = true; CharacterDetails.OffhandGreen.Cantbeused = false; }
+                            */
                         }
                     }
                 }
@@ -1009,6 +1064,53 @@ namespace ConceptMatrix
             CharacterDetails.TestArray2.freeze = false;
             CharacterDetails.BodyType.freeze = false;
             CharacterDetails.LimbalEyes.freeze = false;
+
+            CharacterDetails.RightEyeBlue.freeze = false;
+            CharacterDetails.RightEyeGreen.freeze = false;
+            CharacterDetails.RightEyeRed.freeze = false;
+            CharacterDetails.LeftEyeBlue.freeze = false;
+            CharacterDetails.LeftEyeGreen.freeze = false;
+            CharacterDetails.LeftEyeRed.freeze = false;
+            CharacterDetails.LipsB.freeze = false;
+            CharacterDetails.LipsG.freeze = false;
+            CharacterDetails.LipsR.freeze = false;
+            CharacterDetails.LimbalB.freeze = false;
+            CharacterDetails.LimbalG.freeze = false;
+            CharacterDetails.LimbalR.freeze = false;
+            CharacterDetails.MuscleTone.freeze = false;
+            CharacterDetails.TailSize.freeze = false;
+            CharacterDetails.BustX.freeze = false;
+            CharacterDetails.BustY.freeze = false;
+            CharacterDetails.BustZ.freeze = false;
+            CharacterDetails.LipsBrightness.freeze = false;
+            CharacterDetails.SkinBlueGloss.freeze = false;
+            CharacterDetails.SkinGreenGloss.freeze = false;
+            CharacterDetails.SkinRedGloss.freeze = false;
+            CharacterDetails.SkinBluePigment.freeze = false;
+            CharacterDetails.SkinGreenPigment.freeze = false;
+            CharacterDetails.SkinRedPigment.freeze = false;
+            CharacterDetails.HighlightBluePigment.freeze = false;
+            CharacterDetails.HighlightGreenPigment.freeze = false;
+            CharacterDetails.HighlightRedPigment.freeze = false;
+            CharacterDetails.HairGlowBlue.freeze = false;
+            CharacterDetails.HairGlowGreen.freeze = false;
+            CharacterDetails.HairGlowRed.freeze = false;
+            CharacterDetails.HairGreenPigment.freeze = false;
+            CharacterDetails.HairBluePigment.freeze = false;
+            CharacterDetails.HairRedPigment.freeze = false;
+            CharacterDetails.Height.freeze = false;
+            CharacterDetails.WeaponGreen.freeze = false;
+            CharacterDetails.WeaponBlue.freeze = false;
+            CharacterDetails.WeaponRed.freeze = false;
+            CharacterDetails.WeaponZ.freeze = false;
+            CharacterDetails.WeaponY.freeze = false;
+            CharacterDetails.WeaponX.freeze = false;
+            CharacterDetails.OffhandZ.freeze = false;
+            CharacterDetails.OffhandY.freeze = false;
+            CharacterDetails.OffhandX.freeze = false;
+            CharacterDetails.OffhandRed.freeze = false;
+            CharacterDetails.OffhandBlue.freeze = false;
+            CharacterDetails.OffhandGreen.freeze = false;
         }
         private void Uncheck_Click(object sender, RoutedEventArgs e)
         {
