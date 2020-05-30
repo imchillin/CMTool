@@ -27,12 +27,12 @@
         <Border BorderBrush="Black" BorderThickness="1,1,1,0" HorizontalAlignment="Left" Height="190" Margin="534,340,-1,0" VerticalAlignment="Top" Width="582" Grid.ColumnSpan="2"/>
 
         <!-- FC Tag -->
-        <CheckBox  IsChecked="{Binding CharacterDetails.FCTag.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.FreeCompanyTag}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.FreeCompanyToolTip}}" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Style="{StaticResource MaterialDesignTextBox}" x:Name="FCTagBox" HorizontalAlignment="Left" Height="23" Margin="168,35,0,0" Text="{Binding CharacterDetails.FCTag.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="128"  materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.FreeCompanyTagWaterMark}}" FontSize="11.35" MaxLength="6" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+        <CheckBox  IsChecked="{Binding CharacterDetails.FCTag.freeze}" IsEnabled="False" Content="{Binding Source={x:Static resx:UIStringsContent.FreeCompanyTag}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.FreeCompanyToolTip}}" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Height="23"/>
+        <TextBox Style="{StaticResource MaterialDesignTextBox}" IsEnabled="False" x:Name="FCTagBox" HorizontalAlignment="Left" Height="23" Margin="168,35,0,0" Text="{Binding CharacterDetails.FCTag.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="128"  materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.FreeCompanyTagWaterMark}}" FontSize="11.35" MaxLength="6" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
 
         <!-- Job Icon -->
-        <CheckBox IsChecked="{Binding CharacterDetails.JobIco.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.JobIcon}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.JobIconToolTip}}" HorizontalAlignment="Left" Margin="311,35,0,0" VerticalAlignment="Top" Height="23"/>
-        <ComboBox SelectedIndex="{Binding CharacterDetails.JobIco.value}" HorizontalAlignment="Left" Margin="396,35,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Padding="0,1">
+        <CheckBox IsChecked="{Binding CharacterDetails.JobIco.freeze}" IsEnabled="False" Content="{Binding Source={x:Static resx:UIStringsContent.JobIcon}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.JobIconToolTip}}" HorizontalAlignment="Left" Margin="311,35,0,0" VerticalAlignment="Top" Height="23"/>
+        <ComboBox SelectedIndex="{Binding CharacterDetails.JobIco.value}" IsEnabled="False" HorizontalAlignment="Left" Margin="396,35,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Padding="0,1">
             <ComboBoxItem Content="None" Background="{x:Null}"/>
             <ComboBoxItem Content="Gladiator" Background="{x:Null}"/>
             <ComboBoxItem Content="Pugilist" Background="{x:Null}"/>
@@ -79,14 +79,14 @@
         </ComboBox>
 
         <!-- Title -->
-        <CheckBox IsChecked="{Binding CharacterDetails.Title.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.Title}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.TitleToolTip}}" HorizontalAlignment="Left" Margin="311,5,0,0" VerticalAlignment="Top" Height="23"/>
-        <ComboBox x:Name="TitleBox" SelectedIndex="{Binding CharacterDetails.Title.value}" HorizontalAlignment="Left" Margin="396,5,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Padding="0,1"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.Title.freeze}" IsEnabled="False" Content="{Binding Source={x:Static resx:UIStringsContent.Title}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.TitleToolTip}}" HorizontalAlignment="Left" Margin="311,5,0,0" VerticalAlignment="Top" Height="23"/>
+        <ComboBox x:Name="TitleBox" IsEnabled="False" SelectedIndex="{Binding CharacterDetails.Title.value}" HorizontalAlignment="Left" Margin="396,5,0,0" VerticalAlignment="Top" Width="128" Height="23" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Padding="0,1"/>
 
         <Border BorderBrush="Black" BorderThickness="0,1,0,0" HorizontalAlignment="Left" Height="462" Margin="0,68,0,0" VerticalAlignment="Top" Width="535"/>
 
         <!-- Name -->
-        <CheckBox  IsChecked="{Binding CharacterDetails.Name.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.Name}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.NameToolTip}}" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Style="{StaticResource MaterialDesignTextBox}" x:Name="NameBox" HorizontalAlignment="Left" Height="23" Margin="168,5,0,0" Text="{Binding CharacterDetails.Name.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="128"  materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.NameWaterMark}}" KeyUp="NameBox_KeyUp" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+        <CheckBox  IsChecked="{Binding CharacterDetails.Name.freeze}" IsEnabled="False" Content="{Binding Source={x:Static resx:UIStringsContent.Name}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.NameToolTip}}" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Height="23"/>
+        <TextBox Style="{StaticResource MaterialDesignTextBox}" IsEnabled="False" x:Name="NameBox" HorizontalAlignment="Left" Height="23" Margin="168,5,0,0" Text="{Binding CharacterDetails.Name.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="128"  materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.NameWaterMark}}" KeyUp="NameBox_KeyUp" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
 
         <!-- Race -->
         <CheckBox IsChecked="{Binding CharacterDetails.Race.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.Race}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.RaceToolTip}}" HorizontalAlignment="Left" Margin="8,77,0,0" VerticalAlignment="Top" Height="23"/>

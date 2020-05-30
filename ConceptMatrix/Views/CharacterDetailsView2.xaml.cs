@@ -864,5 +864,16 @@ namespace ConceptMatrix.Views
             CharacterDetails.WeaponZ.value = 0;
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.WeaponZ), "float", "0");
         }
+
+        private void MainHandChangedEventHandler(object sender, TextChangedEventArgs e)
+        {
+            TextBox mainhandBox = sender as TextBox;
+            if (mainhandBox.Text == "0")
+            {
+                mainhandBox.Text = "31";
+                CharacterDetails.WeaponV.value = 1;
+                CharacterDetails.Job.value = 301;
+            }
+        }
     }
 }

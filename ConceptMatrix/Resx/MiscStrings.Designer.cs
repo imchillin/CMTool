@@ -349,6 +349,15 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Illegal characters.
+        /// </summary>
+        public static string IllegalCharacterValidationText {
+            get {
+                return ResourceManager.GetString("IllegalCharacterValidationText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hydaelyn Theme.
         /// </summary>
         public static string LightTheme {
@@ -372,6 +381,15 @@ namespace ConceptMatrix.Resx {
         public static string MatrixSaves {
             get {
                 return ResourceManager.GetString("MatrixSaves", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Must be greater than 0..
+        /// </summary>
+        public static string MinLengthValidationText {
+            get {
+                return ResourceManager.GetString("MinLengthValidationText", resourceCulture);
             }
         }
         

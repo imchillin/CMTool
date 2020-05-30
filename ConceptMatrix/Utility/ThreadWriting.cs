@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Media.Media3D;
 
 namespace ConceptMatrix.Utility
@@ -41,7 +42,10 @@ namespace ConceptMatrix.Utility
                     if (EntitySub != 5)
                     {
                         if (CharacterDetails.EntityType.freeze && !CharacterDetails.EntityType.Activated) m.writeBytes(GAS(c.EntityType), CharacterDetails.EntityType.GetBytes());
-                        if (CharacterDetails.ModelType.freeze) m.writeBytes(GAS(c.ModelType), CharacterDetails.ModelType.GetBytes());
+                        if (CharacterDetails.ModelType.freeze)
+                        {
+                            m.writeBytes(GAS(c.ModelType), CharacterDetails.ModelType.GetBytes());
+                        }
                     }
                     else
                     {
@@ -49,8 +53,6 @@ namespace ConceptMatrix.Utility
                         CharacterDetails.ModelType.freeze = false;
                     }
                     if (CharacterDetails.BodyType.freeze && !CharacterDetails.BodyType.Activated) m.writeBytes(GAS(c.BodyType), CharacterDetails.BodyType.GetBytes());
-                    if (CharacterDetails.Title.freeze && !CharacterDetails.Title.Activated) m.writeBytes(GAS(c.Title), CharacterDetails.Title.GetBytes());
-                    if (CharacterDetails.JobIco.freeze && !CharacterDetails.JobIco.Activated) m.writeBytes(GAS(c.JobIco), CharacterDetails.JobIco.GetBytes());
                     if (CharacterDetails.Race.freeze && !CharacterDetails.Race.Activated) m.writeBytes(GAS(c.Race), CharacterDetails.Race.GetBytes());
                     if (CharacterDetails.Clan.freeze && !CharacterDetails.Clan.Activated) m.writeBytes(GAS(c.Clan), CharacterDetails.Clan.GetBytes());
                     if (CharacterDetails.Gender.freeze && !CharacterDetails.Gender.Activated) m.writeBytes(GAS(c.Gender), CharacterDetails.Gender.GetBytes());
@@ -139,17 +141,6 @@ namespace ConceptMatrix.Utility
 
                     if (CharacterDetails.NPCName.freeze && !CharacterDetails.NPCName.Activated) m.writeBytes(GAS(c.NPCName), CharacterDetails.NPCName.GetBytes());
                     if (CharacterDetails.NPCModel.freeze && !CharacterDetails.NPCModel.Activated) m.writeBytes(GAS(c.NPCModel), CharacterDetails.NPCModel.GetBytes());
-                    if (CharacterDetails.Name.freeze)
-                    {
-                        CharacterDetails.Name.value = CharacterDetails.Name.value.Replace("\0", string.Empty);
-                        m.writeMemory(GAS(c.Name), "string", CharacterDetails.Name.value + "\0\0\0\0");
-                    }
-                    if (CharacterDetails.FCTag.freeze)
-                    {
-                        CharacterDetails.FCTag.value = CharacterDetails.FCTag.value.Replace("\0", string.Empty);
-                        if (xdad == 1)
-                            m.writeMemory(GAS(c.FCTag), "string", CharacterDetails.FCTag.value + "\0\0\0\0");
-                    }
                     if (CharacterDetails.BustZ.freeze) m.writeBytes(GAS(c.Body.Base, c.Body.Bust.Base, c.Body.Bust.Z), CharacterDetails.BustZ.GetBytes());
                     if (CharacterDetails.BustY.freeze) m.writeBytes(GAS(c.Body.Base, c.Body.Bust.Base, c.Body.Bust.Y), CharacterDetails.BustY.GetBytes());
                     if (CharacterDetails.BustX.freeze) m.writeBytes(GAS(c.Body.Base, c.Body.Bust.Base, c.Body.Bust.X), CharacterDetails.BustX.GetBytes());

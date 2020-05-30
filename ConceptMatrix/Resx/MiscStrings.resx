@@ -291,4 +291,10 @@
   <data name="DonateYuuki" xml:space="preserve">
     <value>Donate to Yuuki &amp; Ani</value>
   </data>
+  <data name="IllegalCharacterValidationText" xml:space="preserve">
+    <value>Illegal characters</value>
+  </data>
+  <data name="MinLengthValidationText" xml:space="preserve">
+    <value>Must be greater than 0.</value>
+  </data>
 </root>

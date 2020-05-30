@@ -262,7 +262,7 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<float> FreezeFacial { get; set; }
         [JsonIgnore] public Address<string> TestArray { get; set; } // Appereance
         [JsonIgnore] public Address<string> TestArray2 { get; set; } // Equipment
-        [JsonIgnore] public Address<int> ModelType { get; set; } // Equipment
+        public Address<int> ModelType { get; set; } // Equipment
         [JsonIgnore] public Address<byte> BodyType { get; set; }
         [JsonIgnore] public Address<float> HDR { get; set; }
         [JsonIgnore] public Address<float> Brightness { get; set; }

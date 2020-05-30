@@ -191,7 +191,7 @@
         <Label Content="{Binding Source={x:Static resx:UIPoseStrings.BoneIntervals}}" Margin="9,493,39,12"/>
         <Button x:Name="TestMirror" Margin="91,479,762,19" Click="Test_Mirror_Click" Grid.Column="1">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Margin="0 0 0 0" VerticalAlignment="Center" Padding="0" Text="{Binding Source={x:Static resx:UIPoseStrings.MirrorSelected}}" Width="100" />
+                <TextBlock Margin="0 0 0 0" VerticalAlignment="Center" TextAlignment="Center" Padding="0" Text="{Binding Source={x:Static resx:UIPoseStrings.MirrorSelected}}" Width="100" />
             </StackPanel>
         </Button>
         <mah:MetroAnimatedTabControl  Background="{x:Null}" Grid.Column="1" Margin="231,155,10,0">

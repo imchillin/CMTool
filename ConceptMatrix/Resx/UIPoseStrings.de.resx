@@ -489,7 +489,7 @@
   <data name="ParentRotation" xml:space="preserve">
     <value>Eltern Rotation:</value>
   </data>
-  <data name="Mirror Selected" xml:space="preserve">
+  <data name="MirrorSelected" xml:space="preserve">
     <value>Spiegeln</value>
   </data>
 </root>
