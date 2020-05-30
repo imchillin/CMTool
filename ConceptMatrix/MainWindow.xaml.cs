@@ -184,15 +184,15 @@ namespace ConceptMatrix
                 {
                     m.writeMemory(GAS(c.EntityType), "byte", "2");
                     m.writeMemory(GAS(c.RenderToggle), "int", "2");
-                    Task.Delay(50).Wait();
+                    Task.Delay(100).Wait();
                     m.writeMemory(GAS(c.RenderToggle), "int", "0");
-                    Task.Delay(50).Wait();
+                    Task.Delay(100).Wait();
                     m.writeMemory(GAS(c.EntityType), "byte", "1");
                 }
                 else
                 {
                     m.writeMemory(GAS(c.RenderToggle), "int", "2");
-                    Task.Delay(50).Wait();
+                    Task.Delay(100).Wait();
                     m.writeMemory(GAS(c.RenderToggle), "int", "0");
                 }
             }
@@ -375,21 +375,21 @@ namespace ConceptMatrix
             // I know this is ugly.
             m.writeMemory(GAS(c.ModelType), "int", modelType.ToString());
             m.writeMemory(GAS(c.RenderToggle), "int", "2");
-            Task.Delay(50).Wait();
+            Task.Delay(100).Wait();
             m.writeMemory(GAS(c.RenderToggle), "int", "0");
 
         }
-        private void LoadModel()
+        private void LoadModel(bool uncheck=true)
         {
             var m = MemoryManager.Instance.MemLib;
             var c = Settings.Instance.Character;
             string GAS(params string[] args) => MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, args);
 
             m.writeMemory(GAS(c.RenderToggle), "int", "2");
-            Task.Delay(50).Wait();
+            Task.Delay(100).Wait();
             m.writeMemory(GAS(c.RenderToggle), "int", "0");
 
-            Uncheck_OnLoad();
+            if (uncheck) Uncheck_OnLoad();
         }
         private void LetsgoGear()
         {

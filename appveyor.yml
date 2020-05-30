@@ -4,7 +4,7 @@ configuration: Release
 # skip_non_tags: true
 
 image:
-  - Visual Studio 2017
+  - Visual Studio 2019
   
 cache:
   - packages -> **\packages.config
