@@ -126,6 +126,9 @@
   <data name="DateCreated" xml:space="preserve">
     <value>作成日</value>
   </data>
+  <data name="FreezeLoadedValues" xml:space="preserve">
+    <value>変更の固定維持</value>
+  </data>
   <data name="GearsetName" xml:space="preserve">
     <value>ギアセットの名前</value>
   </data>

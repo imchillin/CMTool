@@ -126,6 +126,9 @@
   <data name="DateCreated" xml:space="preserve">
     <value>생성 날짜</value>
   </data>
+  <data name="FreezeLoadedValues" xml:space="preserve">
+    <value>불러오기 시 고정</value>
+  </data>
   <data name="GearsetName" xml:space="preserve">
     <value>장비세트 이름</value>
   </data>

@@ -116,6 +116,7 @@ namespace ConceptMatrix.Utility
         public string Accent { get; set; } = "Blue";
         public bool TopApp { get; set; }  = false;
         public bool WindowsExplorer { get; set; } = false;
+        public bool FreezeLoadedValues { get; set; } = false;
         public bool KeepDyes { get; set; } = true;
         public bool UnfreezeOnGp { get; set; } = true;
         public bool ReminderTool { get; set; } = false;

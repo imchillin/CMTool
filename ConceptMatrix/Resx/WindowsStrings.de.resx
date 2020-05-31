@@ -126,6 +126,9 @@
   <data name="DateCreated" xml:space="preserve">
     <value>Erstellungsdatum</value>
   </data>
+  <data name="FreezeLoadedValues" xml:space="preserve">
+    <value>Geladene Werte einfrieren</value>
+  </data>
   <data name="GearsetName" xml:space="preserve">
     <value>Ausrüstungsset Name</value>
   </data>

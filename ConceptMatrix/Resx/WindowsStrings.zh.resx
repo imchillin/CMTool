@@ -126,6 +126,9 @@
   <data name="DateCreated" xml:space="preserve">
     <value>创建日期</value>
   </data>
+  <data name="FreezeLoadedValues" xml:space="preserve">
+    <value>保持变更不变</value>
+  </data>
   <data name="GearsetName" xml:space="preserve">
     <value>套装名称</value>
   </data>

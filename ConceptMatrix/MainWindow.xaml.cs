@@ -379,7 +379,7 @@ namespace ConceptMatrix
             m.writeMemory(GAS(c.RenderToggle), "int", "0");
 
         }
-        private void LoadModel(bool uncheck=true)
+        private void LoadModel(bool check=false)
         {
             var m = MemoryManager.Instance.MemLib;
             var c = Settings.Instance.Character;
@@ -390,7 +390,7 @@ namespace ConceptMatrix
             m.writeMemory(GAS(c.RenderToggle), "int", "0");
             Task.Delay(200).Wait();
 
-            if (uncheck) Uncheck_OnLoad();
+            if (!check) Uncheck_OnLoad();
         }
         private void LetsgoGear()
         {
@@ -478,7 +478,7 @@ namespace ConceptMatrix
                 CharacterDetails.OffhandV.value = (byte)equpmentarray.OffHand.Item3;
                 CharacterDetails.OffhandDye.value = (byte)equpmentarray.OffHand.Item4;
                 MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Offhand), EquipmentFlyOut.WepTupleToByteAry(equpmentarray.OffHand));
-                LoadModel();
+                LoadModel(SaveSettings.Default.FreezeLoadedValues);
                 Load.IsEnabled = true;
             }
             catch (Exception exc)
@@ -551,7 +551,7 @@ namespace ConceptMatrix
                 CharacterDetails.FacePaint.value = fam.Choice[24];
                 CharacterDetails.FacePaintColor.value = fam.Choice[25];
                 MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Race), fam.Choice);
-                LoadModel();
+                LoadModel(SaveSettings.Default.FreezeLoadedValues);
                 Load.IsEnabled = true;
             }
         }
@@ -1011,7 +1011,7 @@ namespace ConceptMatrix
                         }
                     }
                 }
-                LoadModel();
+                LoadModel(SaveSettings.Default.FreezeLoadedValues);
                 Load.IsEnabled = true;
             }
             catch (Exception exc)

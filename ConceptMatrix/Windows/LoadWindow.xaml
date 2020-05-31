@@ -12,7 +12,7 @@
         BorderThickness="1"              
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         mc:Ignorable="d"
-        Title="{Binding Source={x:Static resx:WindowsStrings.LoadWindow}}" Height="313.003" Width="349.244" ResizeMode="NoResize" Icon="/ConceptMatrix;component/cmtool-icon.ico" WindowStartupLocation="CenterOwner">
+        Title="{Binding Source={x:Static resx:WindowsStrings.LoadWindow}}" Height="325" Width="349.244" ResizeMode="NoResize" Icon="/ConceptMatrix;component/cmtool-icon.ico" WindowStartupLocation="CenterOwner">
     <Grid Margin="0,0,0,2">
         <ListBox BorderThickness="1" FontSize="24" Margin="10,10,0,0" BorderBrush="Black" HorizontalAlignment="Left" VerticalAlignment="Top" Width="321" Height="222">
             <ListBoxItem x:Name="All"  Content="{Binding Source={x:Static resx:WindowsStrings.LoadAllCharacter}}" Uid="1" KeyDown="All_KeyDown" PreviewMouseDown="All_PreviewMouseDown"/>
@@ -21,9 +21,13 @@
             <ListBoxItem x:Name="Dat" Content="{Binding Source={x:Static resx:WindowsStrings.LoadDat}}" BorderThickness="0,1,0,0" Uid="3" BorderBrush="Black" KeyDown="Dat_KeyDown" PreviewMouseDown="Dat_PreviewMouseDown" Height="41" />
             <ListBoxItem x:Name="Gearset" Content="{Binding Source={x:Static resx:WindowsStrings.LoadGearset}}" BorderThickness="0,1,0,0" Uid="3" BorderBrush="Black" KeyDown="Gearset_KeyDown" PreviewMouseDown="Gearset_PreviewMouseDown" Height="41" />
         </ListBox>
-        <ToggleButton x:Name="Windowstoggled" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="Time Toggle Switch" Margin="232,248,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="22"  IsTabStop="False" Checked="Windowstoggled_Checked" Unchecked="Windowstoggled_Unchecked" />
-        <Label Content="{Binding Source={x:Static resx:WindowsStrings.No}}" HorizontalAlignment="Left" Margin="198,244,0,0" VerticalAlignment="Top"/>
-        <Label Content="{Binding Source={x:Static resx:WindowsStrings.Yes}}" HorizontalAlignment="Left" Margin="266,244,0,0" VerticalAlignment="Top"/>
-        <Label Content="{Binding Source={x:Static resx:WindowsStrings.UseWindowsEx}}" HorizontalAlignment="Left" Margin="10,244,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <ToggleButton x:Name="Windowstoggled" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="Time Toggle Switch" Margin="232,234,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="22"  IsTabStop="False" Checked="Windowstoggled_Checked" Unchecked="Windowstoggled_Unchecked" />
+        <Label Content="{Binding Source={x:Static resx:WindowsStrings.No}}" HorizontalAlignment="Left" Margin="198,232,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding Source={x:Static resx:WindowsStrings.Yes}}" HorizontalAlignment="Left" Margin="266,232,0,0" VerticalAlignment="Top"/>
+        <Label Content="{Binding Source={x:Static resx:WindowsStrings.UseWindowsEx}}" HorizontalAlignment="Left" Margin="10,231,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="{Binding Source={x:Static resx:WindowsStrings.FreezeLoadedValues}}" HorizontalAlignment="Left" Margin="10,254,0,-1" VerticalAlignment="Top" FontSize="14"/>
+        <ToggleButton x:Name="FreezeLoadedValuesToggled" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="Time Toggle Switch" Margin="232,256,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="22"  IsTabStop="False" Checked="FreezeLoadedValues_Checked" Unchecked="UnfreezeLoadedValues_Unchecked" />
+        <Label Content="{Binding Source={x:Static resx:WindowsStrings.No}}" HorizontalAlignment="Left" Margin="198,255,0,-1" VerticalAlignment="Top"/>
+        <Label Content="{Binding Source={x:Static resx:WindowsStrings.Yes}}" HorizontalAlignment="Left" Margin="266,255,0,-1" VerticalAlignment="Top"/>
     </Grid>
 </Window>

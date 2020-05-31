@@ -13,6 +13,7 @@ namespace ConceptMatrix.Windows
         {
             InitializeComponent();
             if (SaveSettings.Default.WindowsExplorer == true) Windowstoggled.IsChecked = true;
+            if (SaveSettings.Default.FreezeLoadedValues == true) FreezeLoadedValuesToggled.IsChecked = true;
         }
 
         private void All_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -98,6 +99,22 @@ namespace ConceptMatrix.Windows
             if (Windowstoggled.IsKeyboardFocusWithin || Windowstoggled.IsMouseOver)
             {
                 SaveSettings.Default.WindowsExplorer = false;
+            }
+        }
+
+        private void FreezeLoadedValues_Checked(object sender, RoutedEventArgs e)
+        {
+            if (FreezeLoadedValuesToggled.IsKeyboardFocusWithin || FreezeLoadedValuesToggled.IsMouseOver)
+            {
+                SaveSettings.Default.FreezeLoadedValues = true;
+            }
+        }
+
+        private void UnfreezeLoadedValues_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (FreezeLoadedValuesToggled.IsKeyboardFocusWithin || FreezeLoadedValuesToggled.IsMouseOver)
+            {
+                SaveSettings.Default.FreezeLoadedValues = false;
             }
         }
     }
