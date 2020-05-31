@@ -562,7 +562,19 @@ namespace ConceptMatrix.ViewModel
               bone_tail_c,
               bone_tail_d,
               bone_eye_l,
-              bone_eye_r;
+              bone_eye_r,
+              cloth_back_a_l,
+              cloth_back_b_l,
+              cloth_back_a_r,
+              cloth_back_b_r,
+              cloth_side_a_l,
+              cloth_side_b_l,
+              cloth_side_a_r,
+              cloth_side_b_r,
+              cloth_front_a_l,
+              cloth_front_b_l,
+              cloth_front_a_r,
+              cloth_front_b_r;
         public BoneNodes[] bone_exhair;
         public BoneNodes[] bone_exmet;
         public BoneNodes[] bone_viera_ear_l;
@@ -582,24 +594,24 @@ namespace ConceptMatrix.ViewModel
             #endregion
 
             #region clothes tree
-            bone_lumbar.Child(Settings.Instance.Bones.ClothBackALeft_Bone, true, Settings.Instance.Bones.ClothBackARight_Bone);
-            bone_lumbar.Child(Settings.Instance.Bones.ClothBackBLeft_Bone, true, Settings.Instance.Bones.ClothBackARight_Bone);
-            bone_lumbar.Child(Settings.Instance.Bones.ClothBackCLeft_Bone, true, Settings.Instance.Bones.ClothBackARight_Bone);
-            bone_lumbar.Child(Settings.Instance.Bones.ClothBackARight_Bone, false, Settings.Instance.Bones.ClothBackALeft_Bone);
-            bone_lumbar.Child(Settings.Instance.Bones.ClothBackBRight_Bone, false, Settings.Instance.Bones.ClothBackBLeft_Bone);
-            bone_lumbar.Child(Settings.Instance.Bones.ClothBackCRight_Bone, false, Settings.Instance.Bones.ClothBackCLeft_Bone);
-            bone_lumbar.Child(Settings.Instance.Bones.ClothSideALeft_Bone, true, Settings.Instance.Bones.ClothSideARight_Bone);
-            bone_lumbar.Child(Settings.Instance.Bones.ClothSideBLeft_Bone, true, Settings.Instance.Bones.ClothSideBRight_Bone);
-            bone_lumbar.Child(Settings.Instance.Bones.ClothSideCLeft_Bone, true, Settings.Instance.Bones.ClothSideCRight_Bone);
-            bone_lumbar.Child(Settings.Instance.Bones.ClothSideARight_Bone, false, Settings.Instance.Bones.ClothSideALeft_Bone);
-            bone_lumbar.Child(Settings.Instance.Bones.ClothSideBRight_Bone, false, Settings.Instance.Bones.ClothSideBLeft_Bone);
-            bone_lumbar.Child(Settings.Instance.Bones.ClothSideCRight_Bone, false, Settings.Instance.Bones.ClothSideCLeft_Bone);
-            bone_lumbar.Child(Settings.Instance.Bones.ClothFrontALeft_Bone, true, Settings.Instance.Bones.ClothFrontARight_Bone);
-            bone_lumbar.Child(Settings.Instance.Bones.ClothFrontBLeft_Bone, true, Settings.Instance.Bones.ClothFrontBRight_Bone);
-            bone_lumbar.Child(Settings.Instance.Bones.ClothFrontCLeft_Bone, true, Settings.Instance.Bones.ClothFrontCRight_Bone);
-            bone_lumbar.Child(Settings.Instance.Bones.ClothFrontARight_Bone, false, Settings.Instance.Bones.ClothFrontALeft_Bone);
-            bone_lumbar.Child(Settings.Instance.Bones.ClothFrontBRight_Bone, false, Settings.Instance.Bones.ClothFrontBLeft_Bone);
-            bone_lumbar.Child(Settings.Instance.Bones.ClothFrontCRight_Bone, false, Settings.Instance.Bones.ClothFrontCLeft_Bone);
+            cloth_back_a_l = bone_lumbar.Child(Settings.Instance.Bones.ClothBackALeft_Bone, true, Settings.Instance.Bones.ClothBackARight_Bone);
+            cloth_back_b_l = cloth_back_a_l.Child(Settings.Instance.Bones.ClothBackBLeft_Bone, true, Settings.Instance.Bones.ClothBackARight_Bone);
+            cloth_back_b_l.Child(Settings.Instance.Bones.ClothBackCLeft_Bone, true, Settings.Instance.Bones.ClothBackARight_Bone);
+            cloth_back_a_r = bone_lumbar.Child(Settings.Instance.Bones.ClothBackARight_Bone, false, Settings.Instance.Bones.ClothBackALeft_Bone);
+            cloth_back_b_r = cloth_back_a_r.Child(Settings.Instance.Bones.ClothBackBRight_Bone, false, Settings.Instance.Bones.ClothBackBLeft_Bone);
+            cloth_back_b_r.Child(Settings.Instance.Bones.ClothBackCRight_Bone, false, Settings.Instance.Bones.ClothBackCLeft_Bone);
+            cloth_side_a_l = bone_lumbar.Child(Settings.Instance.Bones.ClothSideALeft_Bone, true, Settings.Instance.Bones.ClothSideARight_Bone);
+            cloth_side_b_l = cloth_side_a_l.Child(Settings.Instance.Bones.ClothSideBLeft_Bone, true, Settings.Instance.Bones.ClothSideBRight_Bone);
+            cloth_side_b_l.Child(Settings.Instance.Bones.ClothSideCLeft_Bone, true, Settings.Instance.Bones.ClothSideCRight_Bone);
+            cloth_side_a_r = bone_lumbar.Child(Settings.Instance.Bones.ClothSideARight_Bone, false, Settings.Instance.Bones.ClothSideALeft_Bone);
+            cloth_side_b_r = cloth_side_a_r.Child(Settings.Instance.Bones.ClothSideBRight_Bone, false, Settings.Instance.Bones.ClothSideBLeft_Bone);
+            cloth_side_b_r.Child(Settings.Instance.Bones.ClothSideCRight_Bone, false, Settings.Instance.Bones.ClothSideCLeft_Bone);
+            cloth_front_a_l = bone_lumbar.Child(Settings.Instance.Bones.ClothFrontALeft_Bone, true, Settings.Instance.Bones.ClothFrontARight_Bone);
+            cloth_front_b_l = cloth_front_a_l.Child(Settings.Instance.Bones.ClothFrontBLeft_Bone, true, Settings.Instance.Bones.ClothFrontBRight_Bone);
+            cloth_front_b_l.Child(Settings.Instance.Bones.ClothFrontCLeft_Bone, true, Settings.Instance.Bones.ClothFrontCRight_Bone);
+            cloth_front_a_r = bone_lumbar.Child(Settings.Instance.Bones.ClothFrontARight_Bone, false, Settings.Instance.Bones.ClothFrontALeft_Bone);
+            cloth_front_b_r = cloth_front_a_r.Child(Settings.Instance.Bones.ClothFrontBRight_Bone, false, Settings.Instance.Bones.ClothFrontBLeft_Bone);
+            cloth_front_b_r.Child(Settings.Instance.Bones.ClothFrontCRight_Bone, false, Settings.Instance.Bones.ClothFrontCLeft_Bone);
             #endregion
 
             #region facebone (middy) tree

@@ -1948,7 +1948,11 @@ namespace ConceptMatrix.Views
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
                         PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothFrontALeft_Size;
                     }
-                    else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothFrontALeft_Bone;
+                    else
+                    {
+                        PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothFrontALeft_Bone;
+                        PoseMatrixViewModel.PoseVM.BNode = PoseMatrixViewModel.PoseVM.cloth_front_a_l;
+                    }
                     break;
                 case "ClothFrontBLeft":
                     if (ScaleToggle.IsChecked == true)
@@ -1956,7 +1960,11 @@ namespace ConceptMatrix.Views
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
                         PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothFrontBLeft_Size;
                     }
-                    else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothFrontBLeft_Bone;
+                    else
+                    {
+                        PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothFrontBLeft_Bone;
+                        PoseMatrixViewModel.PoseVM.BNode = PoseMatrixViewModel.PoseVM.cloth_front_b_l;
+                    }
                     break;
                 case "ClothFrontCLeft":
                     if (ScaleToggle.IsChecked == true)
@@ -1972,7 +1980,11 @@ namespace ConceptMatrix.Views
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
                         PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothFrontARight_Size;
                     }
-                    else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothFrontARight_Bone;
+                    else
+                    {
+                        PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothFrontARight_Bone;
+                        PoseMatrixViewModel.PoseVM.BNode = PoseMatrixViewModel.PoseVM.cloth_front_a_r;
+                    }
                     break;
                 case "ClothFrontBRight":
                     if (ScaleToggle.IsChecked == true)
@@ -1980,7 +1992,11 @@ namespace ConceptMatrix.Views
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
                         PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothFrontBRight_Size;
                     }
-                    else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothFrontBRight_Bone;
+                    else
+                    {
+                        PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothFrontBRight_Bone;
+                        PoseMatrixViewModel.PoseVM.BNode = PoseMatrixViewModel.PoseVM.cloth_front_b_r;
+                    }
                     break;
                 case "ClothFrontCRight":
                     if (ScaleToggle.IsChecked == true)
@@ -1997,7 +2013,11 @@ namespace ConceptMatrix.Views
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
                         PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothBackALeft_Size;
                     }
-                    else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothBackALeft_Bone;
+                    else
+                    {
+                        PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothBackALeft_Bone;
+                        PoseMatrixViewModel.PoseVM.BNode = PoseMatrixViewModel.PoseVM.cloth_back_a_l;
+                    }
                     break;
                 case "ClothBackBLeft":
                     if (ScaleToggle.IsChecked == true)
@@ -2005,7 +2025,11 @@ namespace ConceptMatrix.Views
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
                         PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothBackBLeft_Size;
                     }
-                    else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothBackBLeft_Bone;
+                    else
+                    {
+                        PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothBackBLeft_Bone;
+                        PoseMatrixViewModel.PoseVM.BNode = PoseMatrixViewModel.PoseVM.cloth_back_b_l;
+                    }
                     break;
                 case "ClothBackCLeft":
                     if (ScaleToggle.IsChecked == true)
@@ -2022,7 +2046,11 @@ namespace ConceptMatrix.Views
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
                         PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothBackARight_Size;
                     }
-                    else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothBackARight_Bone;
+                    else
+                    {
+                        PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothBackARight_Bone;
+                        PoseMatrixViewModel.PoseVM.BNode = PoseMatrixViewModel.PoseVM.cloth_back_a_r;
+                    }
                     break;
                 case "ClothBackBRight":
                     if (ScaleToggle.IsChecked == true)
@@ -2030,7 +2058,11 @@ namespace ConceptMatrix.Views
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
                         PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothBackBRight_Size;
                     }
-                    else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothBackBRight_Bone;
+                    else
+                    {
+                        PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothBackBRight_Bone;
+                        PoseMatrixViewModel.PoseVM.BNode = PoseMatrixViewModel.PoseVM.cloth_back_b_r;
+                    }
                     break;
                 case "ClothBackCRight":
                     if (ScaleToggle.IsChecked == true)
@@ -2047,7 +2079,11 @@ namespace ConceptMatrix.Views
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
                         PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothSideALeft_Size;
                     }
-                    else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothSideALeft_Bone;
+                    else
+                    {
+                        PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothSideALeft_Bone;
+                        PoseMatrixViewModel.PoseVM.BNode = PoseMatrixViewModel.PoseVM.cloth_side_a_l;
+                    }
                     break;
                 case "ClothSideBLeft":
                     if (ScaleToggle.IsChecked == true)
@@ -2055,7 +2091,11 @@ namespace ConceptMatrix.Views
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
                         PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothSideBLeft_Size;
                     }
-                    else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothSideBLeft_Bone;
+                    else
+                    {
+                        PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothSideBLeft_Bone;
+                        PoseMatrixViewModel.PoseVM.BNode = PoseMatrixViewModel.PoseVM.cloth_side_b_l;
+                    }
                     break;
                 case "ClothSideCLeft":
                     if (ScaleToggle.IsChecked == true)
@@ -2071,7 +2111,11 @@ namespace ConceptMatrix.Views
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
                         PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothSideARight_Size;
                     }
-                    else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothSideARight_Bone;
+                    else
+                    {
+                        PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothSideARight_Bone;
+                        PoseMatrixViewModel.PoseVM.BNode = PoseMatrixViewModel.PoseVM.cloth_side_a_r;
+                    }
                     break;
                 case "ClothSideBRight":
                     if (ScaleToggle.IsChecked == true)
@@ -2079,7 +2123,11 @@ namespace ConceptMatrix.Views
                         PoseMatrixViewModel.PoseVM.PointerType = 1;
                         PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothSideBRight_Size;
                     }
-                    else PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothSideBRight_Bone;
+                    else
+                    {
+                        PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.ClothSideBRight_Bone;
+                        PoseMatrixViewModel.PoseVM.BNode = PoseMatrixViewModel.PoseVM.cloth_side_b_r;
+                    }
                     break;
                 case "ClothSideCRight":
                     if (ScaleToggle.IsChecked == true)
