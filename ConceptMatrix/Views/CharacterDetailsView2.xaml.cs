@@ -827,14 +827,14 @@ namespace ConceptMatrix.Views
                 CharacterDetails.LFingerVa.value = EquipmentArray[38];
                 MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HeadPiece), EquipmentArray);
                 CharacterDetails.Job.value = equpmentarray.MainHand.Item1;
-                CharacterDetails.WeaponBase.value = equpmentarray.MainHand.Item2;
                 CharacterDetails.WeaponV.value = (byte)equpmentarray.MainHand.Item3;
                 CharacterDetails.WeaponDye.value = (byte)equpmentarray.MainHand.Item4;
+                CharacterDetails.WeaponBase.value = equpmentarray.MainHand.Item2;
                 MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Job), EquipmentFlyOut.WepTupleToByteAry(equpmentarray.MainHand));
                 CharacterDetails.Offhand.value = equpmentarray.OffHand.Item1;
-                CharacterDetails.OffhandBase.value = equpmentarray.OffHand.Item2;
                 CharacterDetails.OffhandV.value = (byte)equpmentarray.OffHand.Item3;
                 CharacterDetails.OffhandDye.value = (byte)equpmentarray.OffHand.Item4;
+                CharacterDetails.OffhandBase.value = equpmentarray.OffHand.Item2;
                 MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Offhand), EquipmentFlyOut.WepTupleToByteAry(equpmentarray.OffHand));
                 LoadGearSet.IsEnabled = true;
             }
@@ -870,9 +870,8 @@ namespace ConceptMatrix.Views
             TextBox mainhandBox = sender as TextBox;
             if (mainhandBox.Text == "0")
             {
-                mainhandBox.Text = "31";
-                CharacterDetails.WeaponV.value = 1;
-                CharacterDetails.Job.value = 301;
+                CharacterDetails.WeaponV.value = 0;
+                CharacterDetails.Job.value = 0;
             }
         }
     }
