@@ -10187,17 +10187,17 @@ namespace ConceptMatrix.Views
             MiddleBRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.MiddleBRight_Bone), 16));
             ThumbBRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ThumbBRight_Bone), 16));
 
-            HandRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HandRight_Size), 16));
-            IndexARight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.IndexARight_Size), 16));
-            PinkyARight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PinkyARight_Size), 16));
-            RingARight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.RingARight_Size), 16));
-            MiddleARight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.MiddleARight_Size), 16));
-            ThumbARight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ThumbARight_Size), 16));
-            IndexBRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.IndexBRight_Size), 16));
-            PinkyBRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PinkyBRight_Size), 16));
-            RingBRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.RingBRight_Size), 16));
-            MiddleBRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.MiddleBRight_Size), 16));
-            ThumbBRight_Sav02 = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ThumbBRight_Size), 16));
+            HandRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HandRight_Size), 16));
+            IndexARight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.IndexARight_Size), 16));
+            PinkyARight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PinkyARight_Size), 16));
+            RingARight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.RingARight_Size), 16));
+            MiddleARight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.MiddleARight_Size), 16));
+            ThumbARight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ThumbARight_Size), 16));
+            IndexBRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.IndexBRight_Size), 16));
+            PinkyBRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.PinkyBRight_Size), 16));
+            RingBRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.RingBRight_Size), 16));
+            MiddleBRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.MiddleBRight_Size), 16));
+            ThumbBRight_Sav02Size = MemoryManager.ByteArrayToString(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ThumbBRight_Size), 16));
         }
         private void LoadstateRightHand01_Click(object sender, RoutedEventArgs e)
         {
