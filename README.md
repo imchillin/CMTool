@@ -1,3 +1,5 @@
+### Please note that we are working on a new architecture for this tool. You can find this new architecture in https://github.com/imchillin/CM3 .
+
 # CMTool
 
 如果你在中国服务器，请从此链接下载，https://file.bluefissure.com/FFXIV/
