@@ -82,7 +82,7 @@
                                 <CheckBox x:Name="WaistAdvLoad" Margin="10,0,0,0" Content="{Binding Source={x:Static resx:UIPoseStrings.Waist2}}"  VerticalAlignment="Center" Width="90" Padding="0"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="-10,5,0,0">
-                                <CheckBox x:Name="HairAdvLoad"  Content="{Binding Source={x:Static resx:UIPoseStrings.Hair2}}"  Margin="10,0,0,0" VerticalAlignment="Center" Width="80" Padding="0"/>
+                                <CheckBox x:Name="FaceAdvLoad"  Content="{Binding Source={x:Static resx:UIPoseStrings.Face}}"  Margin="10,0,0,0" VerticalAlignment="Center" Width="80" Padding="0"/>
                                 <CheckBox x:Name="LeftArmAdvLoad" Content="{Binding Source={x:Static resx:UIPoseStrings.LeftArm2}}" Margin="10,0,0,0"  VerticalAlignment="Center" Width="80" Padding="0"/>
                                 <CheckBox x:Name="HelmAdvLoad" Content="{Binding Source={x:Static resx:UIPoseStrings.Helm2}}"  Margin="10,0,0,0" VerticalAlignment="Center" Width="80" Padding="0"/>
                                 <CheckBox x:Name="LeftHandAdvLoad" Content="{Binding Source={x:Static resx:UIPoseStrings.LeftHand2}}" Margin="10,0,0,0"  VerticalAlignment="Center" Width="90" Padding="0"/>

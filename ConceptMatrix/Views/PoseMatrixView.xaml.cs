@@ -6106,8 +6106,13 @@ namespace ConceptMatrix.Views
                     var Race = MemoryManager.Instance.MemLib.readByte(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Race));
 
                     #region Head
-                    if (HeadAdvLoad.IsChecked == true)
+                    if (HeadAdvLoad.IsChecked == true || FaceAdvLoad.IsChecked == true)
                     {
+                        string prevFace = "";
+                        if (HeadAdvLoad.IsChecked == false)
+                        {
+                            prevFace = MemoryManager.ByteArrayToStringU(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Head_Bone), 16));
+                        }
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Head_Bone), MemoryManager.StringToByteArray(BoneLoader.Head.Replace(" ", string.Empty)));
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EarLeft_Bone), MemoryManager.StringToByteArray(BoneLoader.EarLeft.Replace(" ", string.Empty)));
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EarRight_Bone), MemoryManager.StringToByteArray(BoneLoader.EarRight.Replace(" ", string.Empty)));
@@ -6116,7 +6121,6 @@ namespace ConceptMatrix.Views
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyelidLowerRight_Bone), MemoryManager.StringToByteArray(BoneLoader.EyelidLowerRight.Replace(" ", string.Empty)));
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyeLeft_Bone), MemoryManager.StringToByteArray(BoneLoader.EyeLeft.Replace(" ", string.Empty)));
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EyeRight_Bone), MemoryManager.StringToByteArray(BoneLoader.EyeRight.Replace(" ", string.Empty)));
-                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Nose_Bone), MemoryManager.StringToByteArray(BoneLoader.Nose.Replace(" ", string.Empty)));
                         if (Race < 7)
                         {
                             if (BoneLoader.Race == "01" || BoneLoader.Race == "02" || BoneLoader.Race == "03" || BoneLoader.Race == "04" || BoneLoader.Race == "05" || BoneLoader.Race == "06")
@@ -6322,12 +6326,8 @@ namespace ConceptMatrix.Views
                                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraEar04BRight_Bone), MemoryManager.StringToByteArray(BoneLoader.VieraEar04BRight.Replace(" ", string.Empty)));
                                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraLipLowerB_Bone), MemoryManager.StringToByteArray(BoneLoader.VieraLipLowerB.Replace(" ", string.Empty)));
                             }
-                        }
-                    }
-                    #endregion
-                    #region Hair
-                    if (HairAdvLoad.IsChecked == true)
-                    {
+                       }
+                        // hair loading
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HairA_Bone), MemoryManager.StringToByteArray(BoneLoader.HairA.Replace(" ", string.Empty)));
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HairFrontLeft_Bone), MemoryManager.StringToByteArray(BoneLoader.HairFrontLeft.Replace(" ", string.Empty)));
                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HairFrontRight_Bone), MemoryManager.StringToByteArray(BoneLoader.HairFrontRight.Replace(" ", string.Empty)));
@@ -6417,6 +6417,28 @@ namespace ConceptMatrix.Views
                             {
                                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.ExHairL_Bone), MemoryManager.StringToByteArray(BoneLoader.ExHairL.Replace(" ", string.Empty)));
                             }
+                        }
+                        // nose loading
+                        string noseTemp = MemoryManager.ByteArrayToStringU(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Nose_Bone), 16));
+                        m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Nose_Bone), MemoryManager.StringToByteArray(BoneLoader.Nose.Replace(" ", string.Empty)));
+                        // face re-rotation
+                        if (prevFace != "")
+                        {
+                            while (MemoryManager.ByteArrayToStringU(m.readBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Nose_Bone), 16)) == noseTemp) ;
+                            PoseMatrixViewModel.PoseVM.PointerType = 0;
+                            PoseMatrixViewModel.PoseVM.PointerPath = Settings.Instance.Bones.Head_Bone;
+                            PoseMatrixViewModel.PoseVM.BNode = PoseMatrixViewModel.PoseVM.bone_face;
+                            byte[] bytearray = MemoryManager.StringToByteArray(prevFace.Replace(" ", string.Empty));
+                            var euler = new Quaternion(
+                            BitConverter.ToSingle(bytearray, 0),
+                            BitConverter.ToSingle(bytearray, 4),
+                            BitConverter.ToSingle(bytearray, 8),
+                            BitConverter.ToSingle(bytearray, 12)).ToEulerAngles();
+                            PoseMatrixViewModel.PoseVM.BoneX = (float)euler.X;
+                            PoseMatrixViewModel.PoseVM.BoneY = (float)euler.Y;
+                            PoseMatrixViewModel.PoseVM.BoneZ = (float)euler.Z;
+                            PoseMatrixViewModel.PoseVM.RotateHelper();
+                            PoseMatrixViewModel.PoseVM.PointerPath = null;
                         }
                     }
                     #endregion
@@ -6782,7 +6804,7 @@ namespace ConceptMatrix.Views
                         if (ScaleSaveToggle.IsChecked == true)
                         {
                             #region Head
-                            if (HeadAdvLoad.IsChecked == true)
+                            if (HeadAdvLoad.IsChecked == true || FaceAdvLoad.IsChecked == true)
                             {
                                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.Head_Size), MemoryManager.StringToByteArray(BoneLoader.HeadSize.Replace(" ", string.Empty)));
                                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.EarLeft_Size), MemoryManager.StringToByteArray(BoneLoader.EarLeftSize.Replace(" ", string.Empty)));
@@ -6999,11 +7021,6 @@ namespace ConceptMatrix.Views
                                         m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.VieraLipLowerB_Size), MemoryManager.StringToByteArray(BoneLoader.VieraLipLowerBSize.Replace(" ", string.Empty)));
                                     }
                                 }
-                            }
-                            #endregion
-                            #region Hair
-                            if (HairAdvLoad.IsChecked == true)
-                            {
                                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HairA_Size), MemoryManager.StringToByteArray(BoneLoader.HairASize.Replace(" ", string.Empty)));
                                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HairFrontLeft_Size), MemoryManager.StringToByteArray(BoneLoader.HairFrontLeftSize.Replace(" ", string.Empty)));
                                 m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, Settings.Instance.Bones.HairFrontRight_Size), MemoryManager.StringToByteArray(BoneLoader.HairFrontRightSize.Replace(" ", string.Empty)));
@@ -7436,7 +7453,7 @@ namespace ConceptMatrix.Views
         private void SelectAll_Click(object sender, RoutedEventArgs e)
         {
             HeadAdvLoad.IsChecked = true;
-            HairAdvLoad.IsChecked = true;
+            FaceAdvLoad.IsChecked = true;
             EarringsAdvLoad.IsChecked = true;
             BodyAdvLoad.IsChecked = true;
             LeftArmAdvLoad.IsChecked = true;
@@ -7454,7 +7471,7 @@ namespace ConceptMatrix.Views
         private void SelectNone_Click(object sender, RoutedEventArgs e)
         {
             HeadAdvLoad.IsChecked = false;
-            HairAdvLoad.IsChecked = false;
+            FaceAdvLoad.IsChecked = false;
             EarringsAdvLoad.IsChecked = false;
             BodyAdvLoad.IsChecked = false;
             LeftArmAdvLoad.IsChecked = false;
