@@ -1,5 +1,5 @@
 {
-  "LastUpdated": "5.18",
+  "LastUpdated": "5.18a",
   "CameraOffset": "1BFCAA0",
   "GposeOffset": "1BFCC88",
   "GposeEntityOffset": "1BFEDD8",
@@ -18,9 +18,9 @@
   "SkeletonOffset4": "132F530",
   "SkeletonOffset5": "132F4AB",
   "SkeletonOffset6": "133065D",
-  "PhysicsOffset": "39E228",
-  "PhysicsOffset2": "39E21F",
-  "PhysicsOffset3": "39E232",
+  "PhysicsOffset": "39E1A8",
+  "PhysicsOffset2": "39E19F",
+  "PhysicsOffset3": "39E1B2",
   "CharacterRenderOffset": "4545D0",
   "CharacterRenderOffset2": "4545C6",
   "Character": {
