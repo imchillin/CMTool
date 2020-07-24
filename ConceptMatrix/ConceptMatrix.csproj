@@ -458,6 +458,9 @@
     <None Include="Resources\ItemKR.json" />
     <None Include="Resources\MonsterList.csv" />
     <None Include="Resources\PropsList.csv" />
+    <None Include="Resources\Stain.json" />
+    <None Include="Resources\StainCN.json" />
+    <None Include="Resources\StainKR.json" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.config" />
