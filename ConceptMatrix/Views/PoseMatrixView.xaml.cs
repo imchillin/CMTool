@@ -4840,7 +4840,7 @@ namespace ConceptMatrix.Views
         }
         private void UnsafeLoad(string boneOffset, string boneLoader)
         {
-            if (boneLoader == "null") return;
+            if (boneLoader == null || boneLoader == "null") return;
             byte[] bytearray = MemoryManager.StringToByteArray(boneLoader.Replace(" ", string.Empty));
             m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, boneOffset), bytearray);
         }
