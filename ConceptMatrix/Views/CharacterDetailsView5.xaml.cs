@@ -970,7 +970,7 @@ namespace ConceptMatrix.Views
        //     WeaponPoSToggle.IsChecked = false;
        //     ScaleEdit.IsChecked = false;
         //    ScaleToggle.IsChecked = false;
-         //   HelmToggle.IsChecked = false;
+            HelmToggle.IsChecked = false;
             PoseMatrixViewModel.PoseVM.ReadTetriaryFromRunTime = false;
             MainViewModel.MainTime.PoseVMNew.IsEnabled = true;
             UncheckAll();
