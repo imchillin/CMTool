@@ -1137,7 +1137,7 @@ namespace ConceptMatrix.Utility
         /// </summary>
         /// <param name="address">Address to write to</param>
         /// <param name="write">Byte array to write to</param>
-        public void writeBytes(UIntPtr address, byte[] write)
+        public void writeBytes(UIntPtr address, params byte[] write)
         {
             WriteProcessMemory(pHandle, address, write, (UIntPtr)write.Length, out IntPtr bytesRead);
         }

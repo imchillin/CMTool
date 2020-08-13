@@ -416,12 +416,15 @@ namespace ConceptMatrix.ViewModel
                                 MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.LFinger), "bytes", "00 00 00 00");
                             }
                             #endregion
-
-                            m.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.EntityType), "byte", "0x02");
+                            string GASD(params string[] args) => MemoryManager.GetAddressString(baseAddr, args);
+                            var EntityType = m.get64bitCode(GASD(c.EntityType));
+                            m.writeBytes(EntityType, 2);
                             Task.Delay(1500).Wait();
-                            m.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.EntityType), "byte", "0x01");
+                            m.writeBytes(EntityType, 1);
                             Task.Delay(50).Wait();
                             m.writeMemory(GAS(MemoryManager.Instance.GposeAddress, c.EntityType), "byte", "0x01");
+
+
                             InGpose = true;
 
                             Application.Current.Dispatcher.Invoke(() => //Use Dispather to Update UI Immediately  
