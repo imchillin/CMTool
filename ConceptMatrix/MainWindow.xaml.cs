@@ -181,18 +181,22 @@ namespace ConceptMatrix
             {
                 if (xdad == 1)
                 {
-                    m.writeMemory(GAS(c.EntityType), "byte", "2");
-                    m.writeMemory(GAS(c.RenderToggle), "int", "2");
+                    var Render = m.get64bitCode(GAS(c.RenderToggle));
+                    var EntityType = m.get64bitCode(GAS(c.EntityType));
+                    m.writeBytes(EntityType, 2);
+                    m.writeBytes(Render,2);
                     Task.Delay(100).Wait();
-                    m.writeMemory(GAS(c.RenderToggle), "int", "0");
+                    m.writeBytes(Render, 0);
                     Task.Delay(100).Wait();
-                    m.writeMemory(GAS(c.EntityType), "byte", "1");
+                    m.writeBytes(EntityType, 1);
                 }
                 else
                 {
-                    m.writeMemory(GAS(c.RenderToggle), "int", "2");
+                    var Render = m.get64bitCode(GAS(c.RenderToggle));
+                    var EntityType = m.get64bitCode(GAS(c.EntityType));
+                    m.writeBytes(Render, 2);
                     Task.Delay(100).Wait();
-                    m.writeMemory(GAS(c.RenderToggle), "int", "0");
+                    m.writeBytes(Render, 0);
                 }
             }
             if (!check) Uncheck_OnLoad();
@@ -377,10 +381,12 @@ namespace ConceptMatrix
             CharacterDetails.ModelType.freeze = true;
             CharacterDetails.ModelType.value = modelType;
             // I know this is ugly.
-            m.writeMemory(GAS(c.ModelType), "int", modelType.ToString());
-            m.writeMemory(GAS(c.RenderToggle), "int", "2");
+            var Render = m.get64bitCode(GAS(c.RenderToggle));
+            var ModelT = m.get64bitCode(GAS(c.ModelType));
+            m.writeBytes(ModelT, BitConverter.GetBytes(modelType));
+            m.writeBytes(Render, 2);
             Task.Delay(100).Wait();
-            m.writeMemory(GAS(c.RenderToggle), "int", "0");
+            m.writeBytes(Render, 0);
 
         }
         private void LetsgoGear()
