@@ -176,27 +176,49 @@ namespace ConceptMatrix
             var c = Settings.Instance.Character;
 
             string GAS(params string[] args) => MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, args);
+            string GASD(params string[] args) => MemoryManager.GetAddressString(MemoryManager.Instance.TargetAddress, args);
             var xdad = (byte)MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.EntityType));
             if (m.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheckAddress)) == 0)
             {
                 if (xdad == 1)
                 {
-                    var Render = m.get64bitCode(GAS(c.RenderToggle));
-                    var EntityType = m.get64bitCode(GAS(c.EntityType));
-                    m.writeBytes(EntityType, 2);
-                    m.writeBytes(Render,2);
-                    Task.Delay(100).Wait();
-                    m.writeBytes(Render, 0);
-                    Task.Delay(100).Wait();
-                    m.writeBytes(EntityType, 1);
+                    //TargetMode
+                    if (GposeButton.IsChecked == false && TargetButton.IsChecked == true)
+                    {
+                        m.writeMemory(GASD(c.EntityType), "byte", "2");
+                        m.writeMemory(GASD(c.RenderToggle), "int", "2");
+                        Task.Delay(100).Wait();
+                        m.writeMemory(GASD(c.RenderToggle), "int", "0");
+                        Task.Delay(100).Wait();
+                        m.writeMemory(GASD(c.EntityType), "byte", "1");
+                    }
+                    else //this handles ActorTable/AoBOffset
+                    {
+                        var Render = m.get64bitCode(GAS(c.RenderToggle));
+                        var EntityType = m.get64bitCode(GAS(c.EntityType));
+                        m.writeBytes(EntityType, 2);
+                        m.writeBytes(Render, 2);
+                        Task.Delay(100).Wait();
+                        m.writeBytes(Render, 0);
+                        Task.Delay(100).Wait();
+                        m.writeBytes(EntityType, 1);
+                    }
                 }
                 else
                 {
-                    var Render = m.get64bitCode(GAS(c.RenderToggle));
-                    var EntityType = m.get64bitCode(GAS(c.EntityType));
-                    m.writeBytes(Render, 2);
-                    Task.Delay(100).Wait();
-                    m.writeBytes(Render, 0);
+                    if (GposeButton.IsChecked == false && TargetButton.IsChecked == true)
+                    {
+                        m.writeMemory(GASD(c.RenderToggle), "int", "2");
+                        Task.Delay(100).Wait();
+                        m.writeMemory(GASD(c.RenderToggle), "int", "0");
+                    }
+                    else
+                    {
+                        var Render = m.get64bitCode(GAS(c.RenderToggle));
+                        m.writeBytes(Render, 2);
+                        Task.Delay(100).Wait();
+                        m.writeBytes(Render, 0);
+                    }
                 }
             }
             if (!check) Uncheck_OnLoad();
@@ -377,16 +399,26 @@ namespace ConceptMatrix
             var m = MemoryManager.Instance.MemLib;
             var c = Settings.Instance.Character;
             string GAS(params string[] args) => MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, args);
-
+            string GASD(params string[] args) => MemoryManager.GetAddressString(MemoryManager.Instance.TargetAddress, args);
             CharacterDetails.ModelType.freeze = true;
             CharacterDetails.ModelType.value = modelType;
             // I know this is ugly.
-            var Render = m.get64bitCode(GAS(c.RenderToggle));
-            var ModelT = m.get64bitCode(GAS(c.ModelType));
-            m.writeBytes(ModelT, BitConverter.GetBytes(modelType));
-            m.writeBytes(Render, 2);
-            Task.Delay(100).Wait();
-            m.writeBytes(Render, 0);
+            if (GposeButton.IsChecked == false && TargetButton.IsChecked == true)
+            {
+                m.writeMemory(GASD(c.ModelType), "int", modelType.ToString());
+                m.writeMemory(GASD(c.RenderToggle), "int", "2");
+                Task.Delay(100).Wait();
+                m.writeMemory(GASD(c.RenderToggle), "int", "0");
+            }
+            else
+            {
+                var Render = m.get64bitCode(GAS(c.RenderToggle));
+                var ModelT = m.get64bitCode(GAS(c.ModelType));
+                m.writeBytes(ModelT, BitConverter.GetBytes(modelType));
+                m.writeBytes(Render, 2);
+                Task.Delay(100).Wait();
+                m.writeBytes(Render, 0);
+            }
 
         }
         private void LetsgoGear()
