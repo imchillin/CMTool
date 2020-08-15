@@ -933,9 +933,9 @@ namespace ConceptMatrix.Views
         private void EditModeButton_Unchecked(object sender, RoutedEventArgs e)
         {
             PhysicsButton.IsChecked = false;
-           // WeaponPoSToggle.IsChecked = false;
-          //  ScaleEdit.IsChecked = false;
-           // ScaleToggle.IsChecked = false;
+            WeaponPoSToggle.IsChecked = false;
+            ScaleEdit.IsChecked = false;
+            ScaleToggle.IsChecked = false;
             HelmToggle.IsChecked = false;
             PoseMatrixViewModel.PoseVM.ReadTetriaryFromRunTime = false;
             MainViewModel.MainTime.PoseVMOLD.IsEnabled = true;
@@ -944,12 +944,12 @@ namespace ConceptMatrix.Views
             Memory.MemLib.writeMemory(Memory.SkeletonAddress, "bytes", "0x41 0x0F 0x29 0x5C 0x12 0x10");
             Memory.MemLib.writeMemory(Memory.SkeletonAddress2, "bytes", "0x43 0x0F 0x29 0x5C 0x18 0x10");
             Memory.MemLib.writeMemory(Memory.SkeletonAddress3, "bytes", "0x0F 0x29 0x5E 0x10");
-            //Memory.MemLib.writeMemory(Memory.SkeletonAddress4, "bytes", "0x41 0x0F 0x29 0x44 0x12 0x20");
-            //Memory.MemLib.writeMemory(Memory.SkeletonAddress6, "bytes", "0x43 0x0F 0x29 0x44 0x18 0x20");
+            Memory.MemLib.writeMemory(Memory.SkeletonAddress4, "bytes", "0x41 0x0F 0x29 0x44 0x12 0x20");
+            Memory.MemLib.writeMemory(Memory.SkeletonAddress6, "bytes", "0x43 0x0F 0x29 0x44 0x18 0x20");
 
             Memory.MemLib.writeMemory(Memory.PhysicsAddress, "bytes", "0x0F 0x29 0x48 0x10");
             Memory.MemLib.writeMemory(Memory.PhysicsAddress2, "bytes", "0x0F 0x29 0x00");
-          //  Memory.MemLib.writeMemory(Memory.PhysicsAddress3, "bytes", "0x0F 0x29 0x40 0x20");
+            Memory.MemLib.writeMemory(Memory.PhysicsAddress3, "bytes", "0x0F 0x29 0x40 0x20");
         }
 
         private void ScaleEdit_Checked(object sender, RoutedEventArgs e)
@@ -3265,10 +3265,10 @@ namespace ConceptMatrix.Views
         {
             #region Enable Controls
             PhysicsButton.IsEnabled = true;
-           // ScaleEdit.IsEnabled = true;
+            ScaleEdit.IsEnabled = true;
             HelmToggle.IsEnabled = true;
-           // WeaponPoSToggle.IsEnabled = true;
-            //       ScaleToggle.IsEnabled = true;
+            WeaponPoSToggle.IsEnabled = true;
+            ScaleToggle.IsEnabled = true;
             // TertiaryButton.IsEnabled = true;
             //Root.IsEnabled = true;
             //Abdomen.IsEnabled = true;

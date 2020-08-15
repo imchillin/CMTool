@@ -23,6 +23,7 @@ namespace ConceptMatrix.Views
             if (SaveSettings.Default.HasBackground == true) BackgroundButton.IsChecked = true;
             if (SaveSettings.Default.WindowsExplorer == true) Windowstoggled.IsChecked = true;
             if (SaveSettings.Default.UnfreezeOnGp == true) ActorDataGpose.IsChecked = true;
+            if (SaveSettings.Default.DebugMode == true) DebugMode.IsChecked = true;
             SaveDirectory.Text = SaveSettings.Default.ProfileDirectory;
             SaveDirectory2.Text = SaveSettings.Default.MatrixPoseDirectory;
             SaveDirectory3.Text = SaveSettings.Default.GearsetsDirectory;
@@ -178,6 +179,26 @@ namespace ConceptMatrix.Views
         private void ActorDataGpose_Unchecked(object sender, RoutedEventArgs e)
         {
             SaveSettings.Default.UnfreezeOnGp = false;
+        }
+
+        private void DebugMode_Checked(object sender, RoutedEventArgs e)
+        {
+            if (DebugMode.IsKeyboardFocusWithin || DebugMode.IsMouseOver)
+            {
+                SaveSettings.Default.DebugMode = true;
+                System.Windows.Forms.Application.Restart();
+                System.Windows.Application.Current.Shutdown();
+            }
+        }
+
+        private void DebugMode_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (DebugMode.IsKeyboardFocusWithin || DebugMode.IsMouseOver)
+            {
+                SaveSettings.Default.DebugMode = false;
+                System.Windows.Forms.Application.Restart();
+                System.Windows.Application.Current.Shutdown();
+            }
         }
     }
 }

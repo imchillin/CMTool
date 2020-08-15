@@ -416,7 +416,7 @@ namespace ConceptMatrix.ViewModel
                                 MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.LFinger), "bytes", "00 00 00 00");
                             }
                             #endregion
-                            string GASD(params string[] args) => MemoryManager.GetAddressString(baseAddr, args);
+                            string GASD(params string[] args) => MemoryManager.GetAddressString(MemoryManager.Add(MemoryManager.Instance.BaseAddress, "8"), args);
                             var EntityType = m.get64bitCode(GASD(c.EntityType));
                             m.writeBytes(EntityType, 2);
                             Task.Delay(1500).Wait();
