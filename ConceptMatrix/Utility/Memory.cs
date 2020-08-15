@@ -298,16 +298,7 @@ namespace ConceptMatrix.Utility
                     Debug.WriteLine("ERROR: OpenProcess: Process is not responding or null.");
                     return false;
                 }
-                Process.EnterDebugMode();
-                var debugPrivilegeCheck = CheckSeDebugPrivilege(out var isDebugEnabled);
-                if (debugPrivilegeCheck != 0)
-                {
-                    MessageBox.Show("ERROR: CheckSeDebugPrivilege failed with error " + debugPrivilegeCheck);
-                }
-                else if (!isDebugEnabled)
-                {
-                    MessageBox.Show("ERROR: SeDebugPrivilege not enabled. Please report this!");
-                }
+                if (SaveSettings.Default.DebugMode == true) Process.EnterDebugMode();
                 pHandle = OpenProcess(0x1F0FFF, true, pid);
 
                 if (pHandle == IntPtr.Zero)

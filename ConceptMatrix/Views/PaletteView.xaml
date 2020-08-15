@@ -104,6 +104,8 @@
             <TextBlock Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Text="{Binding Source={x:Static resx:MiscStrings.EnableBackground}}" Margin="300,5,-300,5"/>
             <TextBlock Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Text="{Binding Source={x:Static resx:MiscStrings.Transparency}}" Margin="450,5,-450,5"/>
             <Slider Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" x:Name="AppTransparencySlider" ValueChanged="AppTransparencyChanged" Width="200" Margin="550,5,-640,5"/>
+            <TextBlock Grid.Row="1" VerticalAlignment="Center" Text="Debug Mode:" Margin="771,5,-751,7" Grid.Column="2"/>
+            <ToggleButton x:Name="DebugMode" Grid.Row="1" Grid.Column="2" Margin="871,5,-795,5" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="DebugMode_Checked" Unchecked="DebugMode_Unchecked" />
         </Grid>
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="0,0,0,134">
             <ItemsControl ItemsSource="{Binding Swatches, Mode=OneTime}">

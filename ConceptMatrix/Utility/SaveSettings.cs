@@ -115,6 +115,7 @@ namespace ConceptMatrix.Utility
         public string Primary { get; set; } = "Blue";
         public string Accent { get; set; } = "Blue";
         public bool TopApp { get; set; }  = false;
+        public bool DebugMode { get; set; } = true;
         public bool WindowsExplorer { get; set; } = false;
         public bool FreezeLoadedValues { get; set; } = false;
         public bool KeepDyes { get; set; } = true;
