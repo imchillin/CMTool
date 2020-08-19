@@ -60,7 +60,6 @@ namespace ConceptMatrix.ViewModel
                     if (CharacterDetails.SelectedIndex != -1)
                     {
                         var Value = MainViewModel.MainTime.ActorCMB.Items[CharacterDetails.SelectedIndex] as ActorTable;
-                        Console.WriteLine(Value.ActorID + Value.Name);
                         mediator.SendEntitySelection(((Value.ActorID + 1) * 8).ToString("X"));
                     }
                     else mediator.SendEntitySelection(((CharacterDetails.SelectedIndex + 1) * 8).ToString("X"));
