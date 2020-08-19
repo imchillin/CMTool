@@ -31,8 +31,7 @@ namespace ConceptMatrix.ViewModel
         private readonly Mem m = MemoryManager.Instance.MemLib;
         private CharacterOffsets c = Settings.Instance.Character;
         private string GAS(params string[] args) => MemoryManager.GetAddressString(args);
-
-		public RefreshEntitiesCommand RefreshEntitiesCommand { get; }
+        public RefreshEntitiesCommand RefreshEntitiesCommand { get; }
 		public CharacterDetailsViewModel(Mediator mediator) : base(mediator)
         {
             model = new CharacterDetails();
@@ -52,107 +51,75 @@ namespace ConceptMatrix.ViewModel
         /// 
         private void Model_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
+            //shitty but oh well xd
             if (e.PropertyName == "SelectedIndex")
-                mediator.SendEntitySelection(((CharacterDetails.SelectedIndex + 1) * 8).ToString("X"));
+            {
+                if (!CharacterDetails.GposeMode && !CharacterDetails.TargetModeActive)
+
+                {
+                    if (CharacterDetails.SelectedIndex != -1)
+                    {
+                        var Value = MainViewModel.MainTime.ActorCMB.Items[CharacterDetails.SelectedIndex] as ActorTable;
+                        Console.WriteLine(Value.ActorID + Value.Name);
+                        mediator.SendEntitySelection(((Value.ActorID + 1) * 8).ToString("X"));
+                    }
+                    else mediator.SendEntitySelection(((CharacterDetails.SelectedIndex + 1) * 8).ToString("X"));
+                }
+                else mediator.SendEntitySelection(((CharacterDetails.SelectedIndex + 1) * 8).ToString("X"));
+            }
         }
         public void Refresh()
         {
-            try
+            // clear the entity list
+            CharacterDetails.Names.Clear();
+            // loop over entity list size
+            if (CharacterDetails.GposeMode && CharacterDetails.TargetModeActive)
             {
-                // clear the entity list
-                CharacterDetails.Names.Clear();
-                // loop over entity list size
-                float x1 = 0;
-                float y1 = 0;
-                float z1 = 0;
-                if (CharacterDetails.GposeMode && CharacterDetails.TargetModeActive)
+                for (var i = 0; i < m.readLong(MemoryManager.Instance.GposeEntityOffset); i++)
                 {
-                    for (var i = 0; i < m.readLong(MemoryManager.Instance.GposeEntityOffset); i++)
-                    {
-                        int Test = 0;
-                        var addr = GAS(MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, ((i + 1) * 8).ToString("X")), c.Name);
-                        var x2 = m.readFloat(GAS(MemoryManager.Add(MemoryManager.Instance.GposeAddress, ((i + 1) * 8).ToString("X")), c.Body.Base, c.Body.Position.X));
-                        var y2 = m.readFloat(GAS(MemoryManager.Add(MemoryManager.Instance.GposeAddress, ((i + 1) * 8).ToString("X")), c.Body.Base, c.Body.Position.Y));
-                        var z2 = m.readFloat(GAS(MemoryManager.Add(MemoryManager.Instance.GposeAddress, ((i + 1) * 8).ToString("X")), c.Body.Base, c.Body.Position.Z));
-                        if (i == 0)
-                        {
-                            x1 = x2;
-                            y1 = y2;
-                            z1 = z2;
-                        }
-                        else
-                        {
-                            Test = (int)Math.Round(Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2) + Math.Pow(z2 - z1, 2)));
-                        }
-                        var name = m.readString(addr);
-                        if (name.IndexOf('\0') != -1)
-                            name = name.Substring(0, name.IndexOf('\0'));
-                        if (i != 0) name += $" ({Test})";
-                        CharacterDetails.Names.Add(name);
-                    }
+                    int Test = 0;
+                    var addr = GAS(MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, ((i + 1) * 8).ToString("X")), c.Name);
+                    var Yalms = m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, ((i + 1) * 8).ToString("X")), "0x92"));
+                    var name = m.readString(addr);
+                    if (name.IndexOf('\0') != -1)
+                        name = name.Substring(0, name.IndexOf('\0'));
+                    if (i != 0) name += $" ({Yalms})";
+                    CharacterDetails.Names.Add(new ActorTable { Name = name, ActorID = i, Yalm = Yalms });
                 }
-                else if (CharacterDetails.GposeMode && !CharacterDetails.TargetModeActive)
-                {
-                    for (var i = 0; i < m.readLong(MemoryManager.Instance.GposeEntityOffset); i++)
-                    {
-                        int Test = 0;
-                        var addr = GAS(MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, ((i + 1) * 8).ToString("X")), c.Name);
-                        var x2 = m.readFloat(GAS(MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, ((i + 1) * 8).ToString("X")), c.Body.Base, c.Body.Position.X));
-                        var y2 = m.readFloat(GAS(MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, ((i + 1) * 8).ToString("X")), c.Body.Base, c.Body.Position.Y));
-                        var z2 = m.readFloat(GAS(MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, ((i + 1) * 8).ToString("X")), c.Body.Base, c.Body.Position.Z));
-                        if (i == 0)
-                        {
-                            x1 = x2;
-                            y1 = y2;
-                            z1 = z2;
-                        }
-                        else
-                        {
-                            Test = (int)Math.Round(Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2) + Math.Pow(z2 - z1, 2)));
-                        }
-                        var name = m.readString(addr);
-                        if (name.IndexOf('\0') != -1)
-                            name = name.Substring(0, name.IndexOf('\0'));
-                        if (i != 0) name += $" ({Test})";
-                        CharacterDetails.Names.Add(name);
-                    }
-                }
-                else
-                {
-                    for (var i = 0; i < m.readLong(MemoryManager.Instance.BaseAddress); i++)
-                    {
-                        int Test = 0;
-                        var addr = GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, ((i + 1) * 8).ToString("X")), c.Name);
-                        var x2 = m.readFloat(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, ((i + 1) * 8).ToString("X")), c.Body.Base, c.Body.Position.X));
-                        var y2 = m.readFloat(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, ((i + 1) * 8).ToString("X")), c.Body.Base, c.Body.Position.Y));
-                        var z2 = m.readFloat(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, ((i + 1) * 8).ToString("X")), c.Body.Base, c.Body.Position.Z));
-                        if (i == 0)
-                        {
-                            x1 = x2;
-                            y1 = y2;
-                            z1 = z2;
-                        }
-                        else
-                        {
-                            Test = (int)Math.Round(Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2) + Math.Pow(z2 - z1, 2)));
-                        }
-                        var name = m.readString(addr);
-                        if (name.IndexOf('\0') != -1)
-                            name = name.Substring(0, name.IndexOf('\0'));
-                        if (i != 0) name += $" ({Test})";
-                        CharacterDetails.Names.Add(name);
-                    }
-                }
-                // set the enable state
-                CharacterDetails.IsEnabled = true;
-                // set the index if its under 0
-                if (CharacterDetails.SelectedIndex < 0)
-                    CharacterDetails.SelectedIndex = 0;
             }
-            catch (Exception ex)
+            else if (CharacterDetails.GposeMode && !CharacterDetails.TargetModeActive)
             {
-                System.Windows.MessageBox.Show(ex.ToString());
+                for (var i = 0; i < m.readLong(MemoryManager.Instance.GposeEntityOffset); i++)
+                {
+                    var addr = GAS(MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, ((i + 1) * 8).ToString("X")), c.Name);
+                    var Yalms = m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, ((i + 1) * 8).ToString("X")), "0x92"));
+                    var name = m.readString(addr);
+                    if (name.IndexOf('\0') != -1)
+                        name = name.Substring(0, name.IndexOf('\0'));
+                    if (i != 0) name += $" ({Yalms})";
+                    CharacterDetails.Names.Add(new ActorTable { Name = name, ActorID = i, Yalm = Yalms });
+                }
             }
+            else
+            {
+                for (var i = 0; i < 424; i++)
+                {
+                    var objectID = m.readByte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, ((i + 1) * 8).ToString("X")), "0x8C"));
+                    //shitty but oh well xd i'm not going work hard 
+                    if (objectID == 0 || objectID == 4 || objectID == 5 || objectID == 6 || objectID == 7 || objectID == 8 || objectID == 11 || objectID == 12 || objectID == 13) continue;
+                    var addr = GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, ((i + 1) * 8).ToString("X")), c.Name);
+                    var Yalms = m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, ((i + 1) * 8).ToString("X")), "0x92"));
+                    var name = m.readString(addr);
+                    if (name.IndexOf('\0') != -1) name = name.Substring(0, name.IndexOf('\0'));
+                    if (i != 0) name += $" ({Yalms})";
+                    CharacterDetails.Names.Add(new ActorTable { Name = name, ActorID = i, Yalm = Yalms });
+                }
+            }
+            // set the enable state
+            CharacterDetails.IsEnabled = true;
+            // set the index if its under 0
+            if (CharacterDetails.SelectedIndex < 0)
+                CharacterDetails.SelectedIndex = 0;
         }
         private void Work()
         {
