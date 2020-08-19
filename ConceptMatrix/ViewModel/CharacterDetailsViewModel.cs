@@ -78,7 +78,7 @@ namespace ConceptMatrix.ViewModel
                 {
                     int Test = 0;
                     var addr = GAS(MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, ((i + 1) * 8).ToString("X")), c.Name);
-                    var Yalms = m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, ((i + 1) * 8).ToString("X")), "0x92"));
+                    var Yalms = m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, ((i + 1) * 8).ToString("X")), "0x92"));
                     var name = m.readString(addr);
                     if (name.IndexOf('\0') != -1)
                         name = name.Substring(0, name.IndexOf('\0'));
@@ -91,7 +91,7 @@ namespace ConceptMatrix.ViewModel
                 for (var i = 0; i < m.readLong(MemoryManager.Instance.GposeEntityOffset); i++)
                 {
                     var addr = GAS(MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, ((i + 1) * 8).ToString("X")), c.Name);
-                    var Yalms = m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, ((i + 1) * 8).ToString("X")), "0x92"));
+                    var Yalms = m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, ((i + 1) * 8).ToString("X")), "0x92"));
                     var name = m.readString(addr);
                     if (name.IndexOf('\0') != -1)
                         name = name.Substring(0, name.IndexOf('\0'));
