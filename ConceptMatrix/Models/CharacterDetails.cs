@@ -25,6 +25,13 @@ namespace ConceptMatrix.Models
         public float Rotation4;
     }
 
+    public class ActorTable
+    {
+        public string Name { get; set; }
+        public int ActorID { get; set; }
+        public UIntPtr Address { get; set; }
+        public int Yalm { get; set; }
+    }
     public class CharacterDetails : BaseModel
     {
         [JsonIgnore]
@@ -40,9 +47,9 @@ namespace ConceptMatrix.Models
             set => size = value;
         }
 
-        [JsonIgnore] private ObservableCollection<string> names;
+        [JsonIgnore] private ObservableCollection<ActorTable> names;
         [JsonIgnore]
-        public ObservableCollection<string> Names
+        public ObservableCollection<ActorTable> Names
         {
             get => names;
             set => names = value;
@@ -468,7 +475,7 @@ namespace ConceptMatrix.Models
             Race = new Address<byte>();
             Clan = new Address<byte>();
             Gender = new Address<byte>();
-            names = new ObservableCollection<string>();
+            names = new ObservableCollection<ActorTable>();
             BustX = new Address<float>();
             BustY = new Address<float>();
             BustZ = new Address<float>();
