@@ -13183,6 +13183,11 @@ namespace ConceptMatrix.Views
             SaveSettings.Default.ScalingLoad = false;
         }
 
+        private void Test_Mirror_Click(object sender, RoutedEventArgs e)
+        {
+            PoseMatrixViewModel.PoseVM.MirrorHelper();
+        }
+
         private void DisableTertiary()
         {
             #region Disable Tertiary
