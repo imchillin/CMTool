@@ -12462,6 +12462,7 @@ namespace ConceptMatrix.Views
         {
             ScaleToggle.IsChecked = false;
             Memory.MemLib.writeMemory(Memory.SkeletonAddress5, "bytes", "0x90 0x90 0x90 0x90 0x90");
+            Memory.MemLib.writeMemory(Memory.SkeletonAddress7, "bytes", "0x90 0x90 0x90 0x90 0x90");
             if (WeaponPoSToggle.IsKeyboardFocusWithin || WeaponPoSToggle.IsMouseOver)
             {
                 UncheckAll();
@@ -12596,7 +12597,7 @@ namespace ConceptMatrix.Views
         private void WeaponPoSToggle_Unchecked(object sender, RoutedEventArgs e)
         {
             Memory.MemLib.writeMemory(Memory.SkeletonAddress5, "bytes", "0x41 0x0F 0x29 0x24 0x12");
-
+            Memory.MemLib.writeMemory(Memory.SkeletonAddress7, "bytes", "0x43 0x0F 0x29 0x24 0x18");
             if (WeaponPoSToggle.IsKeyboardFocusWithin || WeaponPoSToggle.IsMouseOver)
             {
                 UncheckAll();

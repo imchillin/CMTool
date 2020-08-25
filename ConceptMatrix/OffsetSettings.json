@@ -12,12 +12,13 @@
   "TerritoryOffset": "1D07760",
   "GposeFilters": "1CE7138",
   "MusicOffset": "1D27560",
-  "SkeletonOffset": "14081C0",
-  "SkeletonOffset2": "14092ED",
-  "SkeletonOffset3": "1416F54",
-  "SkeletonOffset4": "14081D0",
-  "SkeletonOffset5": "1408148",
-  "SkeletonOffset6": "14092FD",
+  "SkeletonOffset": "14081C0", // ROTATION
+  "SkeletonOffset2": "14092ED", // ROTATION
+  "SkeletonOffset3": "1416F54", // ROTATION
+  "SkeletonOffset4": "14081D0", //SCALE
+  "SkeletonOffset5": "140814B", //POSITION
+  "SkeletonOffset6": "14092FD", // SCALE
+  "SkeletonOffset7": "1409278", //POSITION
   "PhysicsOffset": "383338",
   "PhysicsOffset2": "38332F",
   "PhysicsOffset3": "383342",

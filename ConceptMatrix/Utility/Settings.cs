@@ -47,7 +47,8 @@ namespace ConceptMatrix.Utility
         public string SkeletonOffset4 { get; set; }
         public string SkeletonOffset5 { get; set; }
         public string SkeletonOffset6 { get; set; }
-        public string PhysicsOffset { get; set; }
+		public string SkeletonOffset7 { get; set; }
+		public string PhysicsOffset { get; set; }
         public string PhysicsOffset2 { get; set; }
         public string PhysicsOffset3 { get; set; }
         public string CharacterRenderOffset { get; set; }

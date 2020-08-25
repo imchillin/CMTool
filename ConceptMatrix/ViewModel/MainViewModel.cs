@@ -433,6 +433,7 @@ namespace ConceptMatrix.ViewModel
             MemoryManager.Instance.SkeletonAddress4 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.SkeletonOffset4, NumberStyles.HexNumber));
             MemoryManager.Instance.SkeletonAddress5 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.SkeletonOffset5, NumberStyles.HexNumber));
             MemoryManager.Instance.SkeletonAddress6 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.SkeletonOffset6, NumberStyles.HexNumber));
+            MemoryManager.Instance.SkeletonAddress7 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.SkeletonOffset7, NumberStyles.HexNumber));
             MemoryManager.Instance.PhysicsAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.PhysicsOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.PhysicsAddress2 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.PhysicsOffset2, NumberStyles.HexNumber));
             MemoryManager.Instance.PhysicsAddress3 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.PhysicsOffset3, NumberStyles.HexNumber));
