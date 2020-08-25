@@ -1003,7 +1003,11 @@
         <Label Content="{Binding Source={x:Static resx:UIPoseStrings.ParentRotation}}" HorizontalAlignment="Left" Margin="940,303,0,0" VerticalAlignment="Top" Height="28"/>
 
         <!-- Other -->
-
+        <Button x:Name="TestMirror" Margin="11,488,957,10" Click="Test_Mirror_Click">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="0 0 0 0" VerticalAlignment="Center" TextAlignment="Center" Padding="0" Text="{Binding Source={x:Static resx:UIPoseStrings.MirrorSelected}}" Width="100" />
+            </StackPanel>
+        </Button>
         <!-- Savestate Buttons -->
 
 
