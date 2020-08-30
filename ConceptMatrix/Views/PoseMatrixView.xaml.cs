@@ -4824,19 +4824,16 @@ namespace ConceptMatrix.Views
 
         private void SafeLoad(string boneOffset, string boneLoader)
         {
-            if (boneLoader == "null") return;
-            byte[] bytearray = MemoryManager.StringToByteArray(boneLoader.Replace(" ", string.Empty));
-            var euler = new Quaternion(
-                BitConverter.ToSingle(bytearray, 0),
-                BitConverter.ToSingle(bytearray, 4),
-                BitConverter.ToSingle(bytearray, 8),
-                BitConverter.ToSingle(bytearray, 12)).ToEulerAngles();
-            if (Double.IsNaN(euler.X)) euler.X = 0;
-            if (Double.IsNaN(euler.Y)) euler.Y = 0;
-            if (Double.IsNaN(euler.Z)) euler.Z = 0;
-            bytearray = PoseMatrixViewModel.GetBytes(euler.ToQuaternion());
-
-            m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, boneOffset), bytearray);
+            try
+            {
+                if (boneLoader == "null") return;
+                var bytearray = MemoryManager.StringToByteArray(boneLoader.Replace(" ", string.Empty));
+                m.writeBytes(GAS(CharacterDetailsViewModel.baseAddr, boneOffset), bytearray);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error while calling SafeLoad: " + ex.Message);
+            }
         }
         private void UnsafeLoad(string boneOffset, string boneLoader)
         {
@@ -5110,11 +5107,17 @@ namespace ConceptMatrix.Views
                     SafeLoad(Settings.Instance.Bones.EarringBRight_Bone, BoneLoader.EarringBRight);
                     #endregion
                     #region Body
+                    Console.WriteLine("SpineA");
                     SafeLoad(Settings.Instance.Bones.SpineA_Bone, BoneLoader.SpineA);
+                    Console.WriteLine("SpineB");
                     SafeLoad(Settings.Instance.Bones.SpineB_Bone, BoneLoader.SpineB);
+                    Console.WriteLine("BreastLeft");
                     SafeLoad(Settings.Instance.Bones.BreastLeft_Bone, BoneLoader.BreastLeft);
+                    Console.WriteLine("BreastRight");
                     SafeLoad(Settings.Instance.Bones.BreastRight_Bone, BoneLoader.BreastRight);
+                    Console.WriteLine("SpineC");
                     SafeLoad(Settings.Instance.Bones.SpineC_Bone, BoneLoader.SpineC);
+                    Console.WriteLine("Scabbard");
                     SafeLoad(Settings.Instance.Bones.ScabbardLeft_Bone, BoneLoader.ScabbardLeft);
                     SafeLoad(Settings.Instance.Bones.ScabbardRight_Bone, BoneLoader.ScabbardRight);
                     SafeLoad(Settings.Instance.Bones.Neck_Bone, BoneLoader.Neck);
