@@ -1,5 +1,5 @@
 {
-  "LastUpdated": "5.2",
+  "LastUpdated": "5.2a",
   "CameraOffset": "1C61A00",
   "GposeOffset": "1C61BE8",
   "GposeEntityOffset": "1C64A80",
@@ -11,7 +11,7 @@
   "WeatherOffset": "1BB4838",
   "TerritoryOffset": "1C60650",
   "GposeFilters": "1C40638",
-  "MusicOffset": "1C12660",
+  "MusicOffset": "1C7F738",
   "SkeletonOffset": "1380920",
   "SkeletonOffset2": "1381A4D",
   "SkeletonOffset3": "138F6B4",
