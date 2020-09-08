@@ -1,4 +1,4 @@
-﻿using ConceptMatrix.Utility;
+using ConceptMatrix.Utility;
 using ConceptMatrix.Views;
 using MaterialDesignThemes.Wpf;
 using Newtonsoft.Json;
@@ -281,136 +281,73 @@ namespace ConceptMatrix.ViewModel
         }
         private void LoadSettings(string region)
         {
-            if (region=="Live")
+            // Why wasn't this done before... seriously?
+            var file = @"./OffsetSettings";
+            switch (region)
             {
-                using (var reader = new StreamReader(@"./OffsetSettings.json"))
+                case "zh":
+                    file += "CN";
+                    break;
+                case "ko":
+                    file += "KO";
+                    break;
+            }
+            file += ".json";
+
+            using (var reader = new StreamReader(file))
+            {
+                try
                 {
-                    try
-                    {
-                        Settings.Instance = JsonConvert.DeserializeObject<Settings>(reader.ReadToEnd());
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex);
-                    }
+                    Settings.Instance = JsonConvert.DeserializeObject<Settings>(reader.ReadToEnd());
                 }
-                if (CheckUpdate(region) == true)
+                catch (Exception ex)
                 {
-                    System.Windows.MessageBox.Show("We successfully updated offsets automatically for you! Please Restart the program or Press Find New Process on the top right of the application if this doesn't work!", "Oh wow!");
+                    Console.WriteLine(ex);
                 }
             }
-            else if (region == "zh")
+            if (CheckUpdate(region) == true)
             {
-                using (var reader = new StreamReader(@"./OffsetSettingsCN.json"))
-                {
-                    try
-                    {
-                        Settings.Instance = JsonConvert.DeserializeObject<Settings>(reader.ReadToEnd());
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex);
-                    }
-                }
-                if (CheckUpdate(region) == true)
-                {
-                    System.Windows.MessageBox.Show("We successfully updated offsets automatically for you! Please Restart the program or Press Find New Process on the top right of the application if this doesn't work!", "Oh wow!");
-                }
-            }
-            else if (region == "ko")
-            {
-                using (var reader = new StreamReader(@"./OffsetSettingsKO.json"))
-                {
-                    try
-                    {
-                        Settings.Instance = JsonConvert.DeserializeObject<Settings>(reader.ReadToEnd());
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex);
-                    }
-                }
-                if (CheckUpdate(region) == true)
-                {
-                    System.Windows.MessageBox.Show("We successfully updated offsets automatically for you! Please Restart the program or Press Find New Process on the top right of the application if this doesn't work!", "Oh wow!");
-                }
+                System.Windows.MessageBox.Show("We successfully updated offsets automatically for you! Please Restart the program or Press Find New Process on the top right of the application if this doesn't work!", "Oh wow!");
             }
         }
         private bool CheckUpdate(string region)
         {
-            if (region == "Live")
+            // Why wasn't this done before... seriously?
+            var file = @"OffsetSettings";
+            switch (region)
             {
-                try
+                case "zh":
+                    file += "CN";
+                    break;
+                case "ko":
+                    file += "KO";
+                    break;
+            }
+            file += ".json";
+
+            try
+            {
+                string jsonStr;
+                ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
+                using (var HAH = new WebClient())
                 {
-                    string jsonStr;
-                    ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
-                    using (var HAH = new WebClient())
-                    {
-                        jsonStr = HAH.DownloadString(@"https://raw.githubusercontent.com/imchillin/CMTool/master/ConceptMatrix/OffsetSettings.json");
-                    }
-                    var offset = JsonConvert.DeserializeObject<Settings>(jsonStr);
-                    if (!string.Equals(Settings.Instance.LastUpdated, offset.LastUpdated))
-                    {
-                        File.WriteAllText(@"./OffsetSettings.json", jsonStr);
-                        Settings.Instance = offset;
-                        return true;
-                    }
-                    else return false;
+                    jsonStr = HAH.DownloadString(@"https://raw.githubusercontent.com/imchillin/CMTool/master/ConceptMatrix/" + file);
                 }
-                catch
+                var offset = JsonConvert.DeserializeObject<Settings>(jsonStr);
+                
+                if (string.Compare(offset.LastUpdated, Settings.Instance.LastUpdated) > 0)
                 {
-                    return false;
+                    File.WriteAllText($"./{file}", jsonStr);
+                    Settings.Instance = offset;
+                    return true;
                 }
             }
-            else if (region == "zh")
+            catch
             {
-                try
-                {
-                    string jsonStr;
-                    ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
-                    using (var HAH = new WebClient())
-                    {
-                        jsonStr = HAH.DownloadString(@"https://raw.githubusercontent.com/imchillin/CMTool/master/ConceptMatrix/OffsetSettingsCN.json");
-                    }
-                    var offset = JsonConvert.DeserializeObject<Settings>(jsonStr);
-                    if (!string.Equals(Settings.Instance.LastUpdated, offset.LastUpdated))
-                    {
-                        File.WriteAllText(@"./OffsetSettingsCN.json", jsonStr);
-                        Settings.Instance = offset;
-                        return true;
-                    }
-                    else return false;
-                }
-                catch
-                {
-                    return false;
-                }
+                return false;
             }
-            else if (region == "ko")
-            {
-                try
-                {
-                    string jsonStr;
-                    ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
-                    using (var HAH = new WebClient())
-                    {
-                        jsonStr = HAH.DownloadString(@"https://raw.githubusercontent.com/imchillin/CMTool/master/ConceptMatrix/OffsetSettingsKO.json");
-                    }
-                    var offset = JsonConvert.DeserializeObject<Settings>(jsonStr);
-                    if (!string.Equals(Settings.Instance.LastUpdated, offset.LastUpdated))
-                    {
-                        File.WriteAllText(@"./OffsetSettingsKO.json", jsonStr);
-                        Settings.Instance = offset;
-                        return true;
-                    }
-                    else return false;
-                }
-                catch
-                {
-                    return false;
-                }
-            }
-            else return false;
+
+            return false;
         }
         private void Worker_DoWork(object sender, DoWorkEventArgs e)
         {
