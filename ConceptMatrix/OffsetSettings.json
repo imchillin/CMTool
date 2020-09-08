@@ -1,7 +1,7 @@
 {
-  "LastUpdated": "5.31a", // actual 5.31 update lol
+  "LastUpdated": "5.31b",
   "CameraOffset": "1D09BA0",
-  "GposeOffset": "1D09E70",
+  "GposeOffset": "1D09DB0",
   "GposeEntityOffset": "1D0B190",
   "GposeCheckOffset": "1D0D990",
   "GposeCheck2Offset": "1D0D970",
