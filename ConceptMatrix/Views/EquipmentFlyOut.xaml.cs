@@ -480,7 +480,7 @@ namespace ConceptMatrix.Views
             EquippedLabel.Visibility = Visibility.Hidden;
             if (isUserInteraction)
             {
-                if (!CharacterDetailsView2.CheckItemList())
+                if (!EquipmentView.CheckItemList())
                     return;
                 CurrentlyEquippedName.Visibility = Visibility.Visible;
                 EquippedLabel.Visibility = Visibility.Visible;
@@ -533,13 +533,13 @@ namespace ConceptMatrix.Views
                 if (EquipBoxC.SelectedIndex == 11) GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
                 if (EquipBoxC.SelectedIndex == 12)
                 {
-                    if (!CharacterDetailsView2.CheckPropList())
+                    if (!EquipmentView.CheckPropList())
                         return;
                     GearPicker(CharacterDetailsView._exdProvider.ItemsProps.Values.ToArray());
                 }
                 if (EquipBoxC.SelectedIndex == 13)
                 {
-                    if (!CharacterDetailsView2.CheckPropList())
+                    if (!EquipmentView.CheckPropList())
                         return;
                     GearPicker(CharacterDetailsView._exdProvider.ItemsProps.Values.ToArray());
                 }
@@ -930,7 +930,7 @@ namespace ConceptMatrix.Views
             {
                 if (NPCTab.IsSelected)
                 {
-                    if (!CharacterDetailsView2.CheckResidentList()) return;
+                    if (!EquipmentView.CheckResidentList()) return;
                     if(!UserDoneInteraction)ResidentSelector(CharacterDetailsView._exdProvider.Residents.Values.Where(c => c.IsGoodNpc()).ToArray());
                     CurrentlyEquippedName.Visibility = Visibility.Hidden;
                     EquippedLabel.Visibility = Visibility.Hidden;

@@ -155,22 +155,22 @@ namespace ConceptMatrix.ViewModel
                 {
                     Application.Current.Dispatcher.Invoke(() => //Use Dispather to Update UI Immediately  
                     {
-                        MainViewModel.ViewTime.MonsterCheck.IsChecked = false;
-                        MainViewModel.ViewTime.MonsterCheck.IsEnabled = false;
-                        MainViewModel.ViewTime.MonsterNum.IsEnabled = false;
-                        MainViewModel.ViewTime4.EntityBox.IsEnabled = false;
-                        MainViewModel.ViewTime4.EntityCheck.IsChecked = false;
-                        MainViewModel.ViewTime4.EntityCheck.IsEnabled = false;
+                        MainViewModel.characterView.MonsterCheck.IsChecked = false;
+                        MainViewModel.characterView.MonsterCheck.IsEnabled = false;
+                        MainViewModel.characterView.MonsterNum.IsEnabled = false;
+                        MainViewModel.actorPropView.EntityBox.IsEnabled = false;
+                        MainViewModel.actorPropView.EntityCheck.IsChecked = false;
+                        MainViewModel.actorPropView.EntityCheck.IsEnabled = false;
                     });
                 }
                 else
                 {
                     Application.Current.Dispatcher.Invoke(() => //Use Dispather to Update UI Immediately  
                     {
-                        MainViewModel.ViewTime.MonsterCheck.IsEnabled = true;
-                        MainViewModel.ViewTime.MonsterNum.IsEnabled = true;
-                        MainViewModel.ViewTime4.EntityBox.IsEnabled = true;
-                        MainViewModel.ViewTime4.EntityCheck.IsEnabled = true;
+                        MainViewModel.characterView.MonsterCheck.IsEnabled = true;
+                        MainViewModel.characterView.MonsterNum.IsEnabled = true;
+                        MainViewModel.actorPropView.EntityBox.IsEnabled = true;
+                        MainViewModel.actorPropView.EntityCheck.IsEnabled = true;
                     });
                 }
                 if (!CharacterDetails.Name.freeze)
@@ -255,28 +255,28 @@ namespace ConceptMatrix.ViewModel
 
                             Application.Current.Dispatcher.Invoke(() => //Use Dispather to Update UI Immediately  
                             {
-                                MainViewModel.ViewTime.AnimSpeed.IsEnabled = false;
-                                MainViewModel.ViewTime.EmoteSpeed.IsEnabled = false;
-                                MainViewModel.ViewTime.Setto0.IsEnabled = false;
+                                MainViewModel.characterView.AnimSpeed.IsEnabled = false;
+                                MainViewModel.characterView.EmoteSpeed.IsEnabled = false;
+                                MainViewModel.characterView.Setto0.IsEnabled = false;
                                 CharacterDetails.EmoteSpeed1.freeze = false;
 
-                                MainViewModel.ViewTime5.PoseMatrixSetting.IsEnabled = false;
-                                MainViewModel.ViewTime5.EditModeButton.IsChecked = false;
+                                MainViewModel.posing2View.PoseMatrixSetting.IsEnabled = false;
+                                MainViewModel.posing2View.EditModeButton.IsChecked = false;
                                 PoseMatrixView.PosingMatrix.PoseMatrixSetting.IsEnabled = false;
                                 PoseMatrixView.PosingMatrix.EditModeButton.IsChecked = false;
-                                MainViewModel.ViewTime5.LoadCMP.IsEnabled = false;
-                                MainViewModel.ViewTime5.AdvLoadCMP.IsEnabled = false;
+                                MainViewModel.posing2View.LoadCMP.IsEnabled = false;
+                                MainViewModel.posing2View.AdvLoadCMP.IsEnabled = false;
                                 PoseMatrixView.PosingMatrix.LoadCMP.IsEnabled = false;
                                 PoseMatrixView.PosingMatrix.AdvLoadCMP.IsEnabled = false;
 
-                                MainViewModel.ViewTime6.PoseMatrixSetting.IsEnabled = false;
-                                MainViewModel.ViewTime6.EditModeButton.IsChecked = false;
-                                CharacterDetailsView5.PosingMatrix.PoseMatrixSetting.IsEnabled = false;
-                                CharacterDetailsView5.PosingMatrix.EditModeButton.IsChecked = false;
-                                MainViewModel.ViewTime6.LoadCMP.IsEnabled = false;
-                                MainViewModel.ViewTime6.AdvLoadCMP.IsEnabled = false;
-                                CharacterDetailsView5.PosingMatrix.LoadCMP.IsEnabled = false;
-                                CharacterDetailsView5.PosingMatrix.AdvLoadCMP.IsEnabled = false;
+                                MainViewModel.posingView.PoseMatrixSetting.IsEnabled = false;
+                                MainViewModel.posingView.EditModeButton.IsChecked = false;
+                                PosingOldView.PosingMatrix.PoseMatrixSetting.IsEnabled = false;
+                                PosingOldView.PosingMatrix.EditModeButton.IsChecked = false;
+                                MainViewModel.posingView.LoadCMP.IsEnabled = false;
+                                MainViewModel.posingView.AdvLoadCMP.IsEnabled = false;
+                                PosingOldView.PosingMatrix.LoadCMP.IsEnabled = false;
+                                PosingOldView.PosingMatrix.AdvLoadCMP.IsEnabled = false;
                             });
                         }
                     }
@@ -395,23 +395,23 @@ namespace ConceptMatrix.ViewModel
 
                             Application.Current.Dispatcher.Invoke(() => //Use Dispather to Update UI Immediately  
                             {
-                                MainViewModel.ViewTime.AnimSpeed.IsEnabled = true;
-                                MainViewModel.ViewTime.EmoteSpeed.IsEnabled = true;
-                                MainViewModel.ViewTime.Setto0.IsEnabled = true;
+                                MainViewModel.characterView.AnimSpeed.IsEnabled = true;
+                                MainViewModel.characterView.EmoteSpeed.IsEnabled = true;
+                                MainViewModel.characterView.Setto0.IsEnabled = true;
 
-                                MainViewModel.ViewTime5.PoseMatrixSetting.IsEnabled = true;
+                                MainViewModel.posing2View.PoseMatrixSetting.IsEnabled = true;
                                 PoseMatrixView.PosingMatrix.PoseMatrixSetting.IsEnabled = true;
-                                MainViewModel.ViewTime5.LoadCMP.IsEnabled = true;
-                                MainViewModel.ViewTime5.AdvLoadCMP.IsEnabled = true;
+                                MainViewModel.posing2View.LoadCMP.IsEnabled = true;
+                                MainViewModel.posing2View.AdvLoadCMP.IsEnabled = true;
                                 PoseMatrixView.PosingMatrix.LoadCMP.IsEnabled = true;
                                 PoseMatrixView.PosingMatrix.AdvLoadCMP.IsEnabled = true;
 
-                                MainViewModel.ViewTime6.PoseMatrixSetting.IsEnabled = true;
-                                CharacterDetailsView5.PosingMatrix.PoseMatrixSetting.IsEnabled = true;
-                                MainViewModel.ViewTime6.LoadCMP.IsEnabled = true;
-                                MainViewModel.ViewTime6.AdvLoadCMP.IsEnabled = true;
-                                CharacterDetailsView5.PosingMatrix.LoadCMP.IsEnabled = true;
-                                CharacterDetailsView5.PosingMatrix.AdvLoadCMP.IsEnabled = true;
+                                MainViewModel.posingView.PoseMatrixSetting.IsEnabled = true;
+                                PosingOldView.PosingMatrix.PoseMatrixSetting.IsEnabled = true;
+                                MainViewModel.posingView.LoadCMP.IsEnabled = true;
+                                MainViewModel.posingView.AdvLoadCMP.IsEnabled = true;
+                                PosingOldView.PosingMatrix.LoadCMP.IsEnabled = true;
+                                PosingOldView.PosingMatrix.AdvLoadCMP.IsEnabled = true;
                             });
                         }
                     }
@@ -544,10 +544,10 @@ namespace ConceptMatrix.ViewModel
                             PoseMatrixView.PosingMatrix.EnableTertiary();
                             if (PoseMatrixViewModel.PoseVM.PointerPath != null) PoseMatrixView.PosingMatrix.GetPointers(PoseMatrixViewModel.PoseVM.TheButton);
                         }
-                        if (CharacterDetailsView5.PosingMatrix.EditModeButton.IsChecked == true)
+                        if (PosingOldView.PosingMatrix.EditModeButton.IsChecked == true)
                         {
-                            CharacterDetailsView5.PosingMatrix.EnableTertiary();
-                            if (PoseMatrixViewModel.PoseVM.PointerPath != null) CharacterDetailsView5.PosingMatrix.GetPointers(PoseMatrixViewModel.PoseVM.TheButton);
+                            PosingOldView.PosingMatrix.EnableTertiary();
+                            if (PoseMatrixViewModel.PoseVM.PointerPath != null) PosingOldView.PosingMatrix.GetPointers(PoseMatrixViewModel.PoseVM.TheButton);
                         }
                     });
                 }

@@ -1,10 +1,13 @@
-using ConceptMatrix.Utility;
+﻿using ConceptMatrix.Utility;
 using ConceptMatrix.Views;
+using Lumina;
+using Lumina.Excel.GeneratedSheets;
 using MaterialDesignThemes.Wpf;
 using Newtonsoft.Json;
 using SaintCoinach;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
 using System.IO;
@@ -22,19 +25,20 @@ namespace ConceptMatrix.ViewModel
     public class MainViewModel : INotifyPropertyChanged
     {
         private static Mediator mediator;
+        public static Lumina.Lumina lumina;
 
         public static BackgroundWorker worker;
         public Mem MemLib = new Mem();
         public static int gameProcId = 0;
-        public static ThreadWriting ThreadTime;
-        public static RotationView RotTime;
-        public static CharacterDetailsView5 ViewTime6;
-        public static PoseMatrixView ViewTime5;
+        public static ThreadWriting threadWriting;
+        public static RotationView rotationView;
+        public static PosingOldView posingView;
+        public static PoseMatrixView posing2View;
         public static PoseMatrixViewModel PoseMatrixVM;
-        public static CharacterDetailsView4 ViewTime4;
-        public static CharacterDetailsView3 ViewTime3;
-        public static CharacterDetailsView2 ViewTime2;
-        public static CharacterDetailsView ViewTime;
+        public static ActorPropertiesView actorPropView;
+        public static WorldView worldView;
+        public static EquipmentView equipView;
+        public static CharacterDetailsView characterView;
         public static AboutView AboutTime;
         public static MainWindow MainTime;
         public static MainViewModel MainViewModelX;
@@ -47,6 +51,8 @@ namespace ConceptMatrix.ViewModel
         public PackIconKind AOTToggleStatus { get; set; } = PackIconKind.ToggleSwitchOffOutline;
 		public Brush ToggleForeground { get; set; } = new SolidColorBrush(Color.FromArgb(0x75, 0xFF, 0xFF, 0xFF));
 
+        private List<FStain> stains;
+
 		public MainViewModel()
         {
             try
@@ -55,9 +61,13 @@ namespace ConceptMatrix.ViewModel
                 {
                     if (!App.IsValidGamePath(GameDirectory))
                     {
-                        FlexibleMessageBox.Show($"Please make sure ffxivgame.ver is in \n\n{GameDirectory}/game diirectory", $"ValidGamePath Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        FlexibleMessageBox.Show($"Please make sure ffxivgame.ver is in \n\n{GameDirectory}/game directory", $"ValidGamePath Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
+
+                    // Set up Lumina for the game.
+                    lumina = new Lumina.Lumina(Path.Combine(GameDirectory, "game", "sqpack"));
+
                     ARealmReversed realm = null;
                     if (File.Exists(Path.Combine(GameDirectory, "FFXIVBoot.exe")) || File.Exists(Path.Combine(GameDirectory, "rail_files", "rail_game_identify.json")))
                     {
@@ -83,6 +93,8 @@ namespace ConceptMatrix.ViewModel
                         else if (SaveSettings.Default.Language == "fr") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.French);
                         else realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.English);
                     }
+
+
                     Initialize(realm, RegionType);
                     MainWindow.HasRead = true;
                 }
@@ -98,28 +110,28 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Add(MemoryManager.Instance.BaseAddress, "8");
                 //  ViewTime5.bonetree = ViewTime5.InitBonetree();
                 Task.Delay(40).Wait();
-                ThreadTime = new ThreadWriting(); // Thread Writing
+                threadWriting = new ThreadWriting(); // Thread Writing
 
                 PoseMatrixVM = new PoseMatrixViewModel();
                 PoseMatrixViewModel.PoseVM.InitBonetree();
-                ViewTime5.DataContext = PoseMatrixVM;
-                ViewTime6.DataContext = PoseMatrixVM;
-                ViewTime5.RotationUpDown.DataContext = this;
-                ViewTime5.RotationUpDown2.DataContext = this;
-                ViewTime5.RotationUpDown3.DataContext = this;
-                ViewTime5.RotationSlider.DataContext = this;
-                ViewTime5.RotationSlider2.DataContext = this;
-                ViewTime5.RotationSlider3.DataContext = this;
-                ViewTime5.RotateCheckBox1.DataContext = this;
-                ViewTime5.RotateCheckBox2.DataContext = this;
-                ViewTime5.RotateCheckBox3.DataContext = this;
-                ViewTime5.PosX.DataContext = this;
-                ViewTime5.PosY.DataContext = this;
-                ViewTime5.PosZ.DataContext = this;
-                ViewTime5.XCheck.DataContext = this;
-                ViewTime5.YCheck.DataContext = this;
-                ViewTime5.ZCheck.DataContext = this;
-                ViewTime5.PosRelButton.DataContext = this;
+                posing2View.DataContext = PoseMatrixVM;
+                posingView.DataContext = PoseMatrixVM;
+                posing2View.RotationUpDown.DataContext = this;
+                posing2View.RotationUpDown2.DataContext = this;
+                posing2View.RotationUpDown3.DataContext = this;
+                posing2View.RotationSlider.DataContext = this;
+                posing2View.RotationSlider2.DataContext = this;
+                posing2View.RotationSlider3.DataContext = this;
+                posing2View.RotateCheckBox1.DataContext = this;
+                posing2View.RotateCheckBox2.DataContext = this;
+                posing2View.RotateCheckBox3.DataContext = this;
+                posing2View.PosX.DataContext = this;
+                posing2View.PosY.DataContext = this;
+                posing2View.PosZ.DataContext = this;
+                posing2View.XCheck.DataContext = this;
+                posing2View.YCheck.DataContext = this;
+                posing2View.ZCheck.DataContext = this;
+                posing2View.PosRelButton.DataContext = this;
                 if (SaveSettings.Default.AdvancedMove == true)
                 {
                     CharacterDetails.CharacterDetails.RelativePositioning = true;
@@ -132,10 +144,10 @@ namespace ConceptMatrix.ViewModel
         public static void ShutDownStuff()
         {
             worker.CancelAsync();
-            ThreadTime.worker.CancelAsync();
+            threadWriting.worker.CancelAsync();
             characterDetails = null;
             mediator = null;
-            ThreadTime = null;
+            threadWriting = null;
         }
         
         private void Initialize(ARealmReversed realm, string Determination)
@@ -174,6 +186,31 @@ namespace ConceptMatrix.ViewModel
                     System.Windows.MessageBox.Show("Unable to delete SaintCoinach.History.zip! Please don't open zip or use it.", "Oh wow!");
                 }
             }
+
+            // Get the stains (dyes).
+            var stainSheet = lumina.GetExcelSheet<Stain>();
+            this.stains = new List<FStain>();
+
+            foreach (var stain in stainSheet)
+            {
+                var colorBytes = BitConverter.GetBytes(stain.Color);
+                this.stains.Add(
+                    new FStain() { 
+                        Color = new SolidColorBrush(Color.FromRgb(colorBytes[2], colorBytes[1], colorBytes[0])), 
+                        Name = stain.RowId == 0 ? "None" : stain.Name 
+                    }
+                );
+            }
+
+            // Assign the item sources for the dye combo boxes.
+            equipView.MHBox.ItemsSource = stains;
+            equipView.OHBox.ItemsSource = stains;
+            equipView.HeadDye.ItemsSource = stains;
+            equipView.ChestBox.ItemsSource = stains;
+            equipView.ArmBox.ItemsSource = stains;
+            equipView.LegBox.ItemsSource = stains;
+            equipView.FeetBox.ItemsSource = stains;
+
             try
             {
                 realm.Packs.GetPack(new SaintCoinach.IO.PackIdentifier("exd", SaintCoinach.IO.PackIdentifier.DefaultExpansion, 0)).KeepInMemory = true;
@@ -184,21 +221,21 @@ namespace ConceptMatrix.ViewModel
                 CharacterDetailsView._exdProvider.MonsterList();
                 CharacterDetailsView._exdProvider.MakeTerritoryTypeList();
                 ExdCsvReader.MonsterX = CharacterDetailsView._exdProvider.Monsters.Values.ToArray();
-                for (int i = 0; i < CharacterDetailsView._exdProvider.Dyes.Count; i++)
+                /*for (int i = 0; i < CharacterDetailsView._exdProvider.Dyes.Count; i++)
                 {
-                    ViewTime2.HeadDye.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
-                    ViewTime2.ChestBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
-                    ViewTime2.ArmBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
-                    ViewTime2.MHBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
-                    ViewTime2.OHBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
-                    ViewTime2.LegBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
-                    ViewTime2.FeetBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
-                }
+                    equipView.HeadDye.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
+                    equipView.ChestBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
+                    equipView.ArmBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
+                    equipView.MHBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
+                    equipView.OHBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
+                    equipView.LegBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
+                    equipView.FeetBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
+                }*/
                 foreach (ExdCsvReader.Monster xD in ExdCsvReader.MonsterX)
                 {
                     if (xD.Real == true)
                     {
-                        ViewTime.SpecialControl.ModelBox.Items.Add(new ExdCsvReader.Monster
+                        characterView.SpecialControl.ModelBox.Items.Add(new ExdCsvReader.Monster
                         {
                             Index = Convert.ToInt32(xD.Index),
                             Name = xD.Name.ToString()
@@ -207,11 +244,11 @@ namespace ConceptMatrix.ViewModel
                 }
                 for (int i = 0; i < CharacterDetailsView._exdProvider.Races.Count; i++)
                 {
-                    ViewTime.RaceBox.Items.Add(CharacterDetailsView._exdProvider.Races[i].Name);
+                    characterView.RaceBox.Items.Add(CharacterDetailsView._exdProvider.Races[i].Name);
                 }
                 for (int i = 0; i < CharacterDetailsView._exdProvider.Tribes.Count; i++)
                 {
-                    ViewTime.ClanBox.Items.Add(CharacterDetailsView._exdProvider.Tribes[i].Name);
+                    characterView.ClanBox.Items.Add(CharacterDetailsView._exdProvider.Tribes[i].Name);
                 }
                 var WeatherSheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Weather>();
                 foreach (SaintCoinach.Xiv.Weather weather in WeatherSheet)
@@ -219,7 +256,7 @@ namespace ConceptMatrix.ViewModel
                     if (weather.Key == 0 || weather.Icon == null)
                     {
                         byte[] Bytes = { (byte)weather.Key, (byte)weather.Key };
-                        ViewTime3.ForceWeatherBox.Items.Add(new ExdCsvReader.Weather
+                        worldView.ForceWeatherBox.Items.Add(new ExdCsvReader.Weather
                         {
                             Index = Convert.ToInt32(weather.Key),
                             Key = BitConverter.ToUInt16(Bytes, 0),
@@ -232,7 +269,7 @@ namespace ConceptMatrix.ViewModel
                         byte[] Bytes = { (byte)weather.Key, (byte)weather.Key };
                         try
                         {
-                            ViewTime3.ForceWeatherBox.Items.Add(new ExdCsvReader.Weather
+                            worldView.ForceWeatherBox.Items.Add(new ExdCsvReader.Weather
                             {
                                 Index = Convert.ToInt32(weather.Key),
                                 Name = weather.Name.ToString(),
@@ -242,7 +279,7 @@ namespace ConceptMatrix.ViewModel
                         }
                         catch
                         {
-                            ViewTime3.ForceWeatherBox.Items.Add(new ExdCsvReader.Weather
+                            worldView.ForceWeatherBox.Items.Add(new ExdCsvReader.Weather
                             {
                                 Index = Convert.ToInt32(weather.Key),
                                 Name = weather.Name.ToString(),
@@ -258,20 +295,20 @@ namespace ConceptMatrix.ViewModel
                 {
                     if (status.Key == 0)
                     {
-                        ViewTime4.StatusEffectBox2.Items.Add(new ComboBoxItem() { Content = "None", Tag = 0 });
+                        actorPropView.StatusEffectBox2.Items.Add(new ComboBoxItem() { Content = "None", Tag = 0 });
                     }
                     if (Sets.Contains(status.VFX) || status.VFX <= 0) continue;
                     Sets.Add(status.VFX);
                     string name = status.Name.ToString();
                     if (name.Length <= 0) name = "None";
-                    ViewTime4.StatusEffectBox2.Items.Add(new ComboBoxItem() { Content = name, Tag = status.Key });
+                    actorPropView.StatusEffectBox2.Items.Add(new ComboBoxItem() { Content = name, Tag = status.Key });
                 }
                 var TitleSheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Title>();
                 foreach (SaintCoinach.Xiv.Title title in TitleSheet)
                 {
                     string Title = title.Feminine;
                     if (Title.Length <= 0) Title = "No Title";
-                    ViewTime.TitleBox.Items.Add(Title);
+                    characterView.TitleBox.Items.Add(Title);
                 }
             }
             catch(Exception)

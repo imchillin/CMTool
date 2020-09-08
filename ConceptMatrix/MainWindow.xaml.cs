@@ -30,19 +30,21 @@ namespace ConceptMatrix
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-
-        public int Processcheck = 0;
         public static bool HasRead = false;
         public static ARealmReversed Realm;
         public static bool CurrentlySaving = false;
-        string exepath = Directory.GetParent(Assembly.GetExecutingAssembly().Location).FullName;
-        public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
-
+        public CharacterDetails CharacterDetails
+        {
+            get => (CharacterDetails)BaseViewModel.model; 
+            set => BaseViewModel.model = value; 
+        }
         readonly Version version = Assembly.GetExecutingAssembly().GetName().Version;
+
         public MainWindow()
         {
-            ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
+            ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
             var settings = SaveSettings.Default;
+
             //Culture setting
             LanguageSelection();
             var ci = new CultureInfo(settings.Language)
@@ -53,8 +55,6 @@ namespace ConceptMatrix
             CultureInfo.DefaultThreadCurrentUICulture = ci;
             CultureInfo.CurrentCulture = ci;
             CultureInfo.CurrentUICulture = ci;
-
-            JsonSerializer serializer = new JsonSerializer();
 
             // Call the update method.
             UpdateProgram();
@@ -74,13 +74,13 @@ namespace ConceptMatrix
             try
             {
                 //Search for any process for the game.
-                FindProcessStartUP();
+                FindGameProcess();
 
                 InitializeComponent();
             }
             catch (Exception e)
             {
-                System.Windows.MessageBox.Show($"Please make sure you are running Concept Matrix in the folder it came in. If you continue to receive this error, Please make sure your Anti - Virus is not blocking CMTool. Error: {e.Message} Exception: {e.InnerException}"+ "\n======================================================\n" + $"Stacktrace: {e.StackTrace}"+ "\n======================================================\n" + $"TargetMethod: {e.TargetSite}","Error!");
+                MessageBox.Show($"Please make sure you are running Concept Matrix in the folder it came in. If you continue to receive this error, Please make sure your Anti - Virus is not blocking CMTool. Error: {e.Message} Exception: {e.InnerException}"+ "\n======================================================\n" + $"Stacktrace: {e.StackTrace}"+ "\n======================================================\n" + $"TargetMethod: {e.TargetSite}","Error!");
                 Environment.Exit(-1);
                 return;
             }
@@ -148,24 +148,38 @@ namespace ConceptMatrix
                 new Int32Rect(0, 0, icon.Width, icon.Height),
                 BitmapSizeOptions.FromEmptyOptions());
         }
+
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            
             Title = $"{App.ToolName} v{version}";
             DataContext = new MainViewModel();
+
+            var ph = new PaletteHelper();
+
             var accentColor = SaveSettings.Default.Accent;
-            new PaletteHelper().ReplaceAccentColor(accentColor);
+            ph.ReplaceAccentColor(accentColor);
+
             var primaryColor = SaveSettings.Default.Primary;
-            new PaletteHelper().ReplacePrimaryColor(primaryColor);
+            ph.ReplacePrimaryColor(primaryColor);
+
             var theme = SaveSettings.Default.Theme;
-            new PaletteHelper().SetLightDark(theme != "Light");
+            ph.SetLightDark(theme != "Light");
+
             this.Topmost = SaveSettings.Default.TopApp;
+
 			// toggle status
 			(DataContext as MainViewModel).ToggleStatus(SaveSettings.Default.TopApp);
+
             //Check if these directories exist
-            if (!Directory.Exists(SaveSettings.Default.ProfileDirectory)) { System.IO.Directory.CreateDirectory(SaveSettings.Default.ProfileDirectory); }
-            if (!Directory.Exists(SaveSettings.Default.MatrixPoseDirectory)) { System.IO.Directory.CreateDirectory(SaveSettings.Default.MatrixPoseDirectory); }
-            if (!Directory.Exists(SaveSettings.Default.GearsetsDirectory)) { System.IO.Directory.CreateDirectory(SaveSettings.Default.GearsetsDirectory); }
+            if (!Directory.Exists(SaveSettings.Default.ProfileDirectory))
+                Directory.CreateDirectory(SaveSettings.Default.ProfileDirectory);
+
+            if (!Directory.Exists(SaveSettings.Default.MatrixPoseDirectory))
+                Directory.CreateDirectory(SaveSettings.Default.MatrixPoseDirectory);
+
+            if (!Directory.Exists(SaveSettings.Default.GearsetsDirectory))
+                Directory.CreateDirectory(SaveSettings.Default.GearsetsDirectory);
+
             // CharacterDetailsView._exdProvider.MakeCharaMakeFeatureList();
             // CharacterDetailsView._exdProvider.MakeCharaMakeFeatureFacialList();
             // CharacterDetailsView._exdProvider.MakeTerritoryTypeList();
@@ -177,10 +191,10 @@ namespace ConceptMatrix
 
             string GAS(params string[] args) => MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, args);
             string GASD(params string[] args) => MemoryManager.GetAddressString(MemoryManager.Instance.TargetAddress, args);
-            var xdad = (byte)MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.EntityType));
+            var entityType = (byte)MemoryManager.Instance.MemLib.readByte(GAS(Settings.Instance.Character.EntityType));
             if (m.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheckAddress)) == 0)
             {
-                if (xdad == 1)
+                if (entityType == 1)
                 {
                     //TargetMode
                     if (GposeButton.IsChecked == false && TargetButton.IsChecked == true)
@@ -223,88 +237,82 @@ namespace ConceptMatrix
             }
             if (!check) Uncheck_OnLoad();
         }
-        private void CharacterRefreshButton_Click(object sender, RoutedEventArgs e)
-        {
-            LoadModel(true);
-        }
+        private void CharacterRefreshButton_Click(object sender, RoutedEventArgs e) => LoadModel(true);
 
-        private void FindProcessStartUP()
+        private void FindGameProcess()
         {
-            List<ProcessLooker.Game> GameList = new List<ProcessLooker.Game>();
-            Process[] processlist = Process.GetProcesses();
-            Processcheck = 0;
-            foreach (Process theprocess in processlist)
+            var GameList = new List<ProcessLooker.Game>();
+            var processlist = Process.GetProcesses();
+            var processCheck = 0;
+            foreach (Process p in processlist)
             {
-                if (theprocess.ProcessName.ToLower().Contains("ffxiv_dx11"))
+                if (p.ProcessName.ToLower().Contains("ffxiv_dx11"))
                 {
-                    Processcheck++;
+                    processCheck++;
                     GameList.Add(new ProcessLooker.Game()
                     {
-                        ProcessName = theprocess.ProcessName,
-                        ID = theprocess.Id, StartTime = theprocess.StartTime,
-                        AppIcon = IconToImageSource(System.Drawing.Icon.ExtractAssociatedIcon(theprocess.MainModule.FileName)),
-                        GameDirectory = Path.GetFullPath(Path.Combine(theprocess.MainModule.FileName, "..", "..")).ToString()
+                        ProcessName = p.ProcessName,
+                        ID = p.Id, StartTime = p.StartTime,
+                        AppIcon = IconToImageSource(System.Drawing.Icon.ExtractAssociatedIcon(p.MainModule.FileName)),
+                        GameDirectory = Path.GetFullPath(Path.Combine(p.MainModule.FileName, "..", "..")).ToString()
                     });
                 }
             }
-            if (Processcheck > 1)
+            if (processCheck > 1 || processCheck <= 0)
             {
-                ProcessLooker f = new ProcessLooker(GameList);
-                f.Topmost= SaveSettings.Default.TopApp;
+                ProcessLooker f = new ProcessLooker(GameList)
+                {
+                    Topmost = SaveSettings.Default.TopApp
+                };
+
                 f.ShowDialog();
+
                 if (f.Choice == null)
                 {
                     Close();
                     return;
                 }
+
                 MainViewModel.GameDirectory = f.Choice.GameDirectory;
                 MainViewModel.gameProcId = f.Choice.ID;
             }
-            if (Processcheck == 1)
+
+            if (processCheck == 1)
             {
                 MainViewModel.gameProcId = GameList[0].ID;
                 MainViewModel.GameDirectory = GameList[0].GameDirectory;
-            }
-            if (Processcheck <= 0)
-            {
-                ProcessLooker f = new ProcessLooker(GameList);
-                f.Topmost = SaveSettings.Default.TopApp;
-                f.ShowDialog();
-                if (f.Choice == null)
-                {
-                    Close();
-                    return;
-                }
-                MainViewModel.GameDirectory = f.Choice.GameDirectory;
-                MainViewModel.gameProcId = f.Choice.ID;
             }
         }
 
         private void FindProcess_Click(object sender, RoutedEventArgs e)
         {
-            List<ProcessLooker.Game> GameList = new List<ProcessLooker.Game>();
+            var GameList = new List<ProcessLooker.Game>();
+            var processlist = Process.GetProcesses();
 
-            Process[] processlist = Process.GetProcesses();
-            Processcheck = 0;
-            foreach (Process theprocess in processlist)
+            var proccessCheck = 0;
+
+            foreach (Process p in processlist)
             {
-                if (theprocess.ProcessName.ToLower().Contains("ffxiv_dx11"))
+                if (p.ProcessName.ToLower().Contains("ffxiv_dx11"))
                 {
-                    Processcheck++;
+                    proccessCheck++;
                     GameList.Add(new ProcessLooker.Game()
                     {
-                        ProcessName = theprocess.ProcessName,
-                        ID = theprocess.Id,
-                        StartTime = theprocess.StartTime,
-                        AppIcon = IconToImageSource(System.Drawing.Icon.ExtractAssociatedIcon(theprocess.MainModule.FileName)),
-                        GameDirectory = Path.GetFullPath(Path.Combine(theprocess.MainModule.FileName, "..", "..")).ToString()
+                        ProcessName = p.ProcessName,
+                        ID = p.Id,
+                        StartTime = p.StartTime,
+                        AppIcon = IconToImageSource(System.Drawing.Icon.ExtractAssociatedIcon(p.MainModule.FileName)),
+                        GameDirectory = Path.GetFullPath(Path.Combine(p.MainModule.FileName, "..", "..")).ToString()
                     });
                 }
             }
-            if (Processcheck > 1)
+
+            if (proccessCheck > 1)
             {
-                ProcessLooker f = new ProcessLooker(GameList);
-                f.Topmost = SaveSettings.Default.TopApp;
+                var f = new ProcessLooker(GameList)
+                {
+                    Topmost = SaveSettings.Default.TopApp
+                };
                 f.ShowDialog();
                 if (f.Choice == null)
                     return;
@@ -313,7 +321,8 @@ namespace ConceptMatrix
                 MainViewModel.gameProcId = f.Choice.ID;
                 DataContext = new MainViewModel();
             }
-            if (Processcheck == 1)
+
+            if (proccessCheck == 1)
             {
                 MainViewModel.ShutDownStuff();
                 MainViewModel.GameDirectory = GameList[0].GameDirectory;
@@ -333,14 +342,14 @@ namespace ConceptMatrix
             if (SaveSettings.Default.WindowsExplorer)
             {
                 string path = SaveSettings.Default.ProfileDirectory;
-                if (!Directory.Exists(path)) { System.IO.Directory.CreateDirectory(path); }
+                if (!Directory.Exists(path)) Directory.CreateDirectory(path);
                 SaveFileDialog dig = new SaveFileDialog();
                 dig.Filter = "Concept Matrix Appearance File(*.cma)|*.cma";
                 dig.InitialDirectory = path;
                 if (dig.ShowDialog() == true)
                 {
                     CharSaves Save1 = new CharSaves(); // Gearsave is class with all 
-                    string extension = System.IO.Path.GetExtension(".cma");
+                    string extension = Path.GetExtension(".cma");
                     string result = dig.SafeFileName.Substring(0, dig.SafeFileName.Length - extension.Length);
                     Save1.Description = result;
                     Save1.DateCreated = DateTime.Now.ToString("yyyy-MM-dd HH':'mm':'ss");
@@ -1240,8 +1249,8 @@ namespace ConceptMatrix
             CharacterDetails.RotateFreeze = false;
             CharacterDetailsView.xyzcheck = false;
             CharacterDetailsView.numbcheck = false;
-            CharacterDetailsView3.FreezeCamAngleSet = false;
-            MainViewModel.ViewTime5.UncheckAll();
+            WorldView.FreezeCamAngleSet = false;
+            MainViewModel.posing2View.UncheckAll();
         }
 
 		private void AlwaysOnTop_Click(object sender, RoutedEventArgs e)
@@ -1268,11 +1277,11 @@ namespace ConceptMatrix
         {
             CharacterRefreshButton.IsEnabled = false;
 
-            MainViewModel.ViewTime.CamXCheck.IsEnabled = true;
-            MainViewModel.ViewTime.CamYCheck.IsEnabled = true;
-            MainViewModel.ViewTime.CamZCheck.IsEnabled = true;
-            MainViewModel.ViewTime.AnimSpeed.IsEnabled = true;
-            MainViewModel.ViewTime.GposeViewSettingsLoad.IsEnabled = true;
+            MainViewModel.characterView.CamXCheck.IsEnabled = true;
+            MainViewModel.characterView.CamYCheck.IsEnabled = true;
+            MainViewModel.characterView.CamZCheck.IsEnabled = true;
+            MainViewModel.characterView.AnimSpeed.IsEnabled = true;
+            MainViewModel.characterView.GposeViewSettingsLoad.IsEnabled = true;
 
             /*
             MainViewModel.ViewTime.FaceCamXCheck.IsEnabled = true;
@@ -1280,42 +1289,42 @@ namespace ConceptMatrix
             MainViewModel.ViewTime.FaceCamZCheck.IsEnabled = true;
             */
 
-            MainViewModel.ViewTime.HairSelectButton.IsEnabled = false;
-            MainViewModel.ViewTime.ModelTypeButton.IsEnabled = false;
-            MainViewModel.ViewTime.HighlightcolorSearch.IsEnabled = false;
-            MainViewModel.ViewTime.LeftEyeSearch.IsEnabled = false;
-            MainViewModel.ViewTime.LimbalEyeSearch.IsEnabled = false;
-            MainViewModel.ViewTime.RightEyeSearch.IsEnabled = false;
-            MainViewModel.ViewTime.SkinSearch.IsEnabled = false;
-            MainViewModel.ViewTime.FacePaint_Color.IsEnabled = false;
-            MainViewModel.ViewTime.FacePaint_Color_Copy.IsEnabled = false;
-            MainViewModel.ViewTime.FacialFeature.IsEnabled = false;
-            MainViewModel.ViewTime.LipColorSearch.IsEnabled = false;
-            MainViewModel.ViewTime.HairColorSearch.IsEnabled = false;
-            MainViewModel.ViewTime.SpecialControl.IsOpen = false;
-            MainViewModel.ViewTime.SpecialControl.AnimatedTabControl.SelectedIndex = -1;
+            MainViewModel.characterView.HairSelectButton.IsEnabled = false;
+            MainViewModel.characterView.ModelTypeButton.IsEnabled = false;
+            MainViewModel.characterView.HighlightcolorSearch.IsEnabled = false;
+            MainViewModel.characterView.LeftEyeSearch.IsEnabled = false;
+            MainViewModel.characterView.LimbalEyeSearch.IsEnabled = false;
+            MainViewModel.characterView.RightEyeSearch.IsEnabled = false;
+            MainViewModel.characterView.SkinSearch.IsEnabled = false;
+            MainViewModel.characterView.FacePaint_Color.IsEnabled = false;
+            MainViewModel.characterView.FacePaint_Color_Copy.IsEnabled = false;
+            MainViewModel.characterView.FacialFeature.IsEnabled = false;
+            MainViewModel.characterView.LipColorSearch.IsEnabled = false;
+            MainViewModel.characterView.HairColorSearch.IsEnabled = false;
+            MainViewModel.characterView.SpecialControl.IsOpen = false;
+            MainViewModel.characterView.SpecialControl.AnimatedTabControl.SelectedIndex = -1;
 
-            MainViewModel.ViewTime2.BodySearch.IsEnabled = false;
-            MainViewModel.ViewTime2.EarSearch.IsEnabled = false;
-            MainViewModel.ViewTime2.FeetSearch.IsEnabled = false;
-            MainViewModel.ViewTime2.HandSearch.IsEnabled = false;
-            MainViewModel.ViewTime2.HeadSearch.IsEnabled = false;
-            MainViewModel.ViewTime2.LeftSearch.IsEnabled = false;
-            MainViewModel.ViewTime2.LegsSearch.IsEnabled = false;
-            MainViewModel.ViewTime2.MainSearch.IsEnabled = false;
-            MainViewModel.ViewTime2.NeckSearch.IsEnabled = false;
-            MainViewModel.ViewTime2.OffSearch.IsEnabled = false;
-            MainViewModel.ViewTime2.PropSearch.IsEnabled = false;
-            MainViewModel.ViewTime2.PropSearchOH.IsEnabled = false;
-            MainViewModel.ViewTime2.RightSearch.IsEnabled = false;
-            MainViewModel.ViewTime2.WristSearch.IsEnabled = false;
-            MainViewModel.ViewTime2.NPC_Click.IsEnabled = false;
-            MainViewModel.ViewTime2.EquipmentControl.IsOpen = false;
-            MainViewModel.ViewTime2.EquipmentControl.AnimatedTabControl.SelectedIndex = -1;
+            MainViewModel.equipView.BodySearch.IsEnabled = false;
+            MainViewModel.equipView.EarSearch.IsEnabled = false;
+            MainViewModel.equipView.FeetSearch.IsEnabled = false;
+            MainViewModel.equipView.HandSearch.IsEnabled = false;
+            MainViewModel.equipView.HeadSearch.IsEnabled = false;
+            MainViewModel.equipView.LeftSearch.IsEnabled = false;
+            MainViewModel.equipView.LegsSearch.IsEnabled = false;
+            MainViewModel.equipView.MainSearch.IsEnabled = false;
+            MainViewModel.equipView.NeckSearch.IsEnabled = false;
+            MainViewModel.equipView.OffSearch.IsEnabled = false;
+            MainViewModel.equipView.PropSearch.IsEnabled = false;
+            MainViewModel.equipView.PropSearchOH.IsEnabled = false;
+            MainViewModel.equipView.RightSearch.IsEnabled = false;
+            MainViewModel.equipView.WristSearch.IsEnabled = false;
+            MainViewModel.equipView.NPC_Click.IsEnabled = false;
+            MainViewModel.equipView.EquipmentControl.IsOpen = false;
+            MainViewModel.equipView.EquipmentControl.AnimatedTabControl.SelectedIndex = -1;
 
-            MainViewModel.ViewTime4.StatusEffectBox.IsReadOnly = false;
-            MainViewModel.ViewTime4.StatusEffectBox2.IsReadOnly = false;
-            MainViewModel.ViewTime4.StatusEffectZero.IsEnabled = true;
+            MainViewModel.actorPropView.StatusEffectBox.IsReadOnly = false;
+            MainViewModel.actorPropView.StatusEffectBox2.IsReadOnly = false;
+            MainViewModel.actorPropView.StatusEffectZero.IsEnabled = true;
 
             if (TargetButton.IsEnabled == true)
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Instance.GposeAddress;
@@ -1323,19 +1332,19 @@ namespace ConceptMatrix
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Instance.GposeEntityOffset;
             if (MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheckAddress)) == 1 && MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheck2Address)) == 4)
             {
-                MainViewModel.ViewTime.AnimSpeed.IsEnabled = true;
-                MainViewModel.ViewTime.EmoteSpeed.IsEnabled = true;
-                MainViewModel.ViewTime.Setto0.IsEnabled = true;
+                MainViewModel.characterView.AnimSpeed.IsEnabled = true;
+                MainViewModel.characterView.EmoteSpeed.IsEnabled = true;
+                MainViewModel.characterView.Setto0.IsEnabled = true;
 
-                MainViewModel.ViewTime.LinkPositionText.IsEnabled = true;
-                MainViewModel.ViewTime.LinkPosition.IsEnabled = true;
-                MainViewModel.ViewTime5.PoseMatrixSetting.IsEnabled = true;
-                MainViewModel.ViewTime5.LoadCMP.IsEnabled = true;
-                MainViewModel.ViewTime5.AdvLoadCMP.IsEnabled = true;
+                MainViewModel.characterView.LinkPositionText.IsEnabled = true;
+                MainViewModel.characterView.LinkPosition.IsEnabled = true;
+                MainViewModel.posing2View.PoseMatrixSetting.IsEnabled = true;
+                MainViewModel.posing2View.LoadCMP.IsEnabled = true;
+                MainViewModel.posing2View.AdvLoadCMP.IsEnabled = true;
 
-                MainViewModel.ViewTime6.PoseMatrixSetting.IsEnabled = true;
-                MainViewModel.ViewTime6.LoadCMP.IsEnabled = true;
-                MainViewModel.ViewTime6.AdvLoadCMP.IsEnabled = true;
+                MainViewModel.posingView.PoseMatrixSetting.IsEnabled = true;
+                MainViewModel.posingView.LoadCMP.IsEnabled = true;
+                MainViewModel.posingView.AdvLoadCMP.IsEnabled = true;
                 if (SaveSettings.Default.UnfreezeOnGp == true) ActorDataUnfreeze();
             }
         }
@@ -1344,10 +1353,10 @@ namespace ConceptMatrix
         {
             CharacterRefreshButton.IsEnabled = true;
 
-            MainViewModel.ViewTime.CamXCheck.IsEnabled = false;
-            MainViewModel.ViewTime.CamYCheck.IsEnabled = false;
-            MainViewModel.ViewTime.CamZCheck.IsEnabled = false;
-            MainViewModel.ViewTime.GposeViewSettingsLoad.IsEnabled = false;
+            MainViewModel.characterView.CamXCheck.IsEnabled = false;
+            MainViewModel.characterView.CamYCheck.IsEnabled = false;
+            MainViewModel.characterView.CamZCheck.IsEnabled = false;
+            MainViewModel.characterView.GposeViewSettingsLoad.IsEnabled = false;
 
             /*
             MainViewModel.ViewTime.FaceCamXCheck.IsEnabled = false;
@@ -1362,72 +1371,72 @@ namespace ConceptMatrix
             CharacterDetails.FaceCamY.freeze = false;
             CharacterDetails.FaceCamZ.freeze = false;
 
-            MainViewModel.ViewTime.HairSelectButton.IsEnabled = true;
-            MainViewModel.ViewTime.ModelTypeButton.IsEnabled = true;
-            MainViewModel.ViewTime.HighlightcolorSearch.IsEnabled = true;
-            MainViewModel.ViewTime.LeftEyeSearch.IsEnabled = true;
-            MainViewModel.ViewTime.LimbalEyeSearch.IsEnabled = true;
-            MainViewModel.ViewTime.RightEyeSearch.IsEnabled = true;
-            MainViewModel.ViewTime.SkinSearch.IsEnabled = true;
-            MainViewModel.ViewTime.FacePaint_Color.IsEnabled = true;
-            MainViewModel.ViewTime.FacePaint_Color_Copy.IsEnabled = true;
-            MainViewModel.ViewTime.FacialFeature.IsEnabled = true;
-            MainViewModel.ViewTime.LipColorSearch.IsEnabled = true;
-            MainViewModel.ViewTime.HairColorSearch.IsEnabled = true;
-            MainViewModel.ViewTime2.BodySearch.IsEnabled = true;
-            MainViewModel.ViewTime2.EarSearch.IsEnabled = true;
-            MainViewModel.ViewTime2.FeetSearch.IsEnabled = true;
-            MainViewModel.ViewTime2.HandSearch.IsEnabled = true;
-            MainViewModel.ViewTime2.HeadSearch.IsEnabled = true;
-            MainViewModel.ViewTime2.LeftSearch.IsEnabled = true;
-            MainViewModel.ViewTime2.LegsSearch.IsEnabled = true;
-            MainViewModel.ViewTime2.MainSearch.IsEnabled = true;
-            MainViewModel.ViewTime2.NeckSearch.IsEnabled = true;
-            MainViewModel.ViewTime2.OffSearch.IsEnabled = true;
-            MainViewModel.ViewTime2.PropSearch.IsEnabled = true;
-            MainViewModel.ViewTime2.PropSearchOH.IsEnabled = true;
-            MainViewModel.ViewTime2.RightSearch.IsEnabled = true;
-            MainViewModel.ViewTime2.WristSearch.IsEnabled = true;
-            MainViewModel.ViewTime2.NPC_Click.IsEnabled = true;
+            MainViewModel.characterView.HairSelectButton.IsEnabled = true;
+            MainViewModel.characterView.ModelTypeButton.IsEnabled = true;
+            MainViewModel.characterView.HighlightcolorSearch.IsEnabled = true;
+            MainViewModel.characterView.LeftEyeSearch.IsEnabled = true;
+            MainViewModel.characterView.LimbalEyeSearch.IsEnabled = true;
+            MainViewModel.characterView.RightEyeSearch.IsEnabled = true;
+            MainViewModel.characterView.SkinSearch.IsEnabled = true;
+            MainViewModel.characterView.FacePaint_Color.IsEnabled = true;
+            MainViewModel.characterView.FacePaint_Color_Copy.IsEnabled = true;
+            MainViewModel.characterView.FacialFeature.IsEnabled = true;
+            MainViewModel.characterView.LipColorSearch.IsEnabled = true;
+            MainViewModel.characterView.HairColorSearch.IsEnabled = true;
+            MainViewModel.equipView.BodySearch.IsEnabled = true;
+            MainViewModel.equipView.EarSearch.IsEnabled = true;
+            MainViewModel.equipView.FeetSearch.IsEnabled = true;
+            MainViewModel.equipView.HandSearch.IsEnabled = true;
+            MainViewModel.equipView.HeadSearch.IsEnabled = true;
+            MainViewModel.equipView.LeftSearch.IsEnabled = true;
+            MainViewModel.equipView.LegsSearch.IsEnabled = true;
+            MainViewModel.equipView.MainSearch.IsEnabled = true;
+            MainViewModel.equipView.NeckSearch.IsEnabled = true;
+            MainViewModel.equipView.OffSearch.IsEnabled = true;
+            MainViewModel.equipView.PropSearch.IsEnabled = true;
+            MainViewModel.equipView.PropSearchOH.IsEnabled = true;
+            MainViewModel.equipView.RightSearch.IsEnabled = true;
+            MainViewModel.equipView.WristSearch.IsEnabled = true;
+            MainViewModel.equipView.NPC_Click.IsEnabled = true;
 
-            MainViewModel.ViewTime4.StatusEffectBox.IsReadOnly = true;
-            MainViewModel.ViewTime4.StatusEffectBox2.IsReadOnly = true;
-            MainViewModel.ViewTime4.StatusEffectZero.IsEnabled = false;
+            MainViewModel.actorPropView.StatusEffectBox.IsReadOnly = true;
+            MainViewModel.actorPropView.StatusEffectBox2.IsReadOnly = true;
+            MainViewModel.actorPropView.StatusEffectZero.IsEnabled = false;
 
             if (GposeButton.IsKeyboardFocusWithin || GposeButton.IsMouseOver)
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Add(MemoryManager.Instance.BaseAddress, CharacterDetailsViewModel.eOffset);
             if (MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheckAddress)) == 0)
             {
-                MainViewModel.ViewTime.AnimSpeed.IsEnabled = false;
-                MainViewModel.ViewTime.AnimSpeed.IsChecked = false;
+                MainViewModel.characterView.AnimSpeed.IsEnabled = false;
+                MainViewModel.characterView.AnimSpeed.IsChecked = false;
                 CharacterDetails.EmoteSpeed1.freeze = false;
-                MainViewModel.ViewTime.EmoteSpeed.IsEnabled = false;
-                MainViewModel.ViewTime.Setto0.IsEnabled = false;
+                MainViewModel.characterView.EmoteSpeed.IsEnabled = false;
+                MainViewModel.characterView.Setto0.IsEnabled = false;
 
                 CharacterDetails.EmoteSpeed1.freeze = false;
 
-                MainViewModel.ViewTime5.PoseMatrixSetting.IsEnabled = false;
-                MainViewModel.ViewTime5.EditModeButton.IsChecked = false;
+                MainViewModel.posing2View.PoseMatrixSetting.IsEnabled = false;
+                MainViewModel.posing2View.EditModeButton.IsChecked = false;
                 // just in case?
                 PoseMatrixView.PosingMatrix.PoseMatrixSetting.IsEnabled = false;
                 PoseMatrixView.PosingMatrix.EditModeButton.IsChecked = false;
 
-                MainViewModel.ViewTime6.PoseMatrixSetting.IsEnabled = false;
-                MainViewModel.ViewTime6.EditModeButton.IsChecked = false;
+                MainViewModel.posingView.PoseMatrixSetting.IsEnabled = false;
+                MainViewModel.posingView.EditModeButton.IsChecked = false;
 
-                CharacterDetailsView5.PosingMatrix.PoseMatrixSetting.IsEnabled = false;
-                CharacterDetailsView5.PosingMatrix.EditModeButton.IsChecked = false;
+                PosingOldView.PosingMatrix.PoseMatrixSetting.IsEnabled = false;
+                PosingOldView.PosingMatrix.EditModeButton.IsChecked = false;
 
-                MainViewModel.ViewTime5.LoadCMP.IsEnabled = false;
-                MainViewModel.ViewTime5.AdvLoadCMP.IsEnabled = false;
+                MainViewModel.posing2View.LoadCMP.IsEnabled = false;
+                MainViewModel.posing2View.AdvLoadCMP.IsEnabled = false;
                 lock (CharacterDetails.LinkedActors)
                 {
-                    MainViewModel.ViewTime.LinkPositionText.IsEnabled = false;
-                    MainViewModel.ViewTime.LinkPosition.IsChecked = false;
-                    MainViewModel.ViewTime.LinkPosition.IsEnabled = false;
+                    MainViewModel.characterView.LinkPositionText.IsEnabled = false;
+                    MainViewModel.characterView.LinkPosition.IsChecked = false;
+                    MainViewModel.characterView.LinkPosition.IsEnabled = false;
                     CharacterDetails.LinkedActors.Clear();
                     CharacterDetails.IsLinked = false;
-                    MainViewModel.ViewTime.LinkedGposeView = false;
+                    MainViewModel.characterView.LinkedGposeView = false;
                 }
             }
         }

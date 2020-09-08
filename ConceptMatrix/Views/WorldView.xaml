@@ -7,7 +7,7 @@
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:Views="clr-namespace:ConceptMatrix.Views"
-             x:Class="ConceptMatrix.Views.CharacterDetailsView3"
+             x:Class="ConceptMatrix.Views.WorldView"
              xmlns:resx="clr-namespace:ConceptMatrix.Resx"
              TextElement.FontSize="13.25"
              mc:Ignorable="d" 

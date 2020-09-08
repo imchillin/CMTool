@@ -41,7 +41,7 @@ namespace ConceptMatrix.Views
             // rotation.
             var rotationDelta = new Quaternion(axis, angle);
             rotationDelta.Normalize();
-            var q = (MainViewModel.ViewTime.AltRotate) ? RotationQuaternion.Quaternion * rotationDelta : rotationDelta * RotationQuaternion.Quaternion;
+            var q = (MainViewModel.characterView.AltRotate) ? RotationQuaternion.Quaternion * rotationDelta : rotationDelta * RotationQuaternion.Quaternion;
             q.Normalize();
 
             RotationQuaternion.SetCurrentValue(QuaternionRotation3D.QuaternionProperty, q);

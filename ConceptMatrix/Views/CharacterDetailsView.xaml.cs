@@ -53,7 +53,7 @@ namespace ConceptMatrix.Views
 		{
 			InitializeComponent();
             if (SaveSettings.Default.HasBackground == false) ActorBG.Opacity = 0;
-            MainViewModel.ViewTime = this;
+            MainViewModel.characterView = this;
 			CharacterDetailsViewModel.Viewtime = this;
             if(SaveSettings.Default.RotationSliders == true)
             {

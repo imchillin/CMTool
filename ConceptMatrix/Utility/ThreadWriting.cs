@@ -469,7 +469,7 @@ namespace ConceptMatrix.Utility
                         linkedActor.Rotation4 = (float)newRotQ.W;
                     }
 
-                    if (MainViewModel.ViewTime.LinkedGposeView)
+                    if (MainViewModel.characterView.LinkedGposeView)
                     {
                         float newX = (float)(CharacterDetails.CamX.value - deltaX);
                         float newY = (float)(CharacterDetails.CamY.value - deltaY);

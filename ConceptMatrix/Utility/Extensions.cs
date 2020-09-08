@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media.Media3D;
@@ -114,14 +115,20 @@ namespace ConceptMatrix.Utility
 
 		public static string TerritoryName(int ID)
 		{
-			ExdCsvReader.TerritoryType value;
-			if (CharacterDetailsView._exdProvider.TerritoryTypes.TryGetValue(ID, out value))
+			try
 			{
-				return $"{value.Name} - {value.Index}";
+				if (CharacterDetailsView._exdProvider.TerritoryTypes.TryGetValue(ID, out ExdCsvReader.TerritoryType value))
+				{
+					return $"{value.Name} - {value.Index}";
+				}
+				else
+				{
+					return $"Unknown Zone - 0";
+				}
 			}
-			else
+			catch (Exception)
 			{
-				return $"Unknown Zone - 0";
+				return "Unknown Zone - 0";
 			}
 		}
 	}

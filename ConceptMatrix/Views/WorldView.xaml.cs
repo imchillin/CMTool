@@ -17,7 +17,7 @@ namespace ConceptMatrix.Views
     /// <summary>
     /// Interaction logic for CharacterDetailsView3.xaml
     /// </summary>
-    public partial class CharacterDetailsView3 : UserControl
+    public partial class WorldView : UserControl
     {
         public class FiltersDetails : BaseModel
         {
@@ -27,11 +27,11 @@ namespace ConceptMatrix.Views
         private bool isUserInteraction;
         private bool istimeLocked=false;
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
-        public CharacterDetailsView3()
+        public WorldView()
         {
             InitializeComponent();
             if (SaveSettings.Default.HasBackground == false) WorldBG.Opacity = 0;
-            MainViewModel.ViewTime3 = this;
+            MainViewModel.worldView = this;
         }
 
         private void MaxZoomXD(object sender, RoutedPropertyChangedEventArgs<double?> e)

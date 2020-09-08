@@ -35,19 +35,19 @@
                 <Views:CharacterDetailsView Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
             </TabItem>
             <TabItem Header="{Binding Source={x:Static resx:UIStringsContent.ActorProperties}}" Style="{DynamicResource MenuLevel2}">
-                <Views:CharacterDetailsView4 Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
+                <Views:ActorPropertiesView Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
             </TabItem>
             <TabItem Header="{Binding Source={x:Static resx:UIStringsContent.Equipment}}" Style="{DynamicResource MenuLevel2}">
-                <Views:CharacterDetailsView2 Margin="0,4,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
+                <Views:EquipmentView Margin="0,4,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
             </TabItem>
             <TabItem Header="{Binding Source={x:Static resx:UIStringsContent.PosingMatrixOld}}" x:Name="PoseVMOLD" Style="{DynamicResource MenuLevel2}">
-                <Views:CharacterDetailsView5 Margin="0,4,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
+                <Views:PosingOldView Margin="0,4,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
             </TabItem>
             <TabItem Header="{Binding Source={x:Static resx:UIStringsContent.PosingMatrix}}" x:Name="PoseVMNew" Style="{DynamicResource MenuLevel2}">
                 <Views:PoseMatrixView Margin="0,4,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
             </TabItem>
             <TabItem Header="{Binding Source={x:Static resx:UIStringsContent.World}}" Style="{DynamicResource MenuLevel2}">
-                <Views:CharacterDetailsView3 Margin="0,4,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
+                <Views:WorldView Margin="0,4,-1,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="530"/>
             </TabItem>
             <TabItem Header="{Binding Source={x:Static resx:UIStringsContent.About}}" Style="{DynamicResource MenuLevel2}">
                 <Views:AboutView Margin="0" HorizontalAlignment="Left" Width="1102" Height="530"/>

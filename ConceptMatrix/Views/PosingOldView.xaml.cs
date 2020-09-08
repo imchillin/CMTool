@@ -18,9 +18,9 @@ namespace ConceptMatrix.Views
     /// <summary>
     /// Interaction logic for CharacterDetailsView5.xaml
     /// </summary>
-    public partial class CharacterDetailsView5 : UserControl
+    public partial class PosingOldView : UserControl
     {
-        public static CharacterDetailsView5 PosingMatrix;
+        public static PosingOldView PosingMatrix;
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
         private string GAS(params string[] args) => MemoryManager.GetAddressString(args);
 
@@ -901,11 +901,11 @@ namespace ConceptMatrix.Views
         public bool TopSaved02;
         #endregion
 
-        public CharacterDetailsView5()
+        public PosingOldView()
         {
             InitializeComponent();
             PosingMatrix = this;
-            MainViewModel.ViewTime6 = this;
+            MainViewModel.posingView = this;
             if (SaveSettings.Default.HasBackground == false) PoseBG.Opacity = 0;
             if (SaveSettings.Default.AltPoseRotate == true)
             {

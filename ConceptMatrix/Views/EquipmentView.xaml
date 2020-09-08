@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="ConceptMatrix.Views.CharacterDetailsView2"
+﻿<UserControl x:Class="ConceptMatrix.Views.EquipmentView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,6 +7,7 @@
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:resx="clr-namespace:ConceptMatrix.Resx"
              xmlns:Views="clr-namespace:ConceptMatrix.Views"
+			 xmlns:lumina="clr-namespace:Lumina.Excel.GeneratedSheets;assembly=Lumina.Generated"
              TextElement.FontSize="13.25"
              mc:Ignorable="d" d:DesignWidth="1115" Height="530">
     <UserControl.Background>
@@ -30,6 +31,14 @@
                     <VirtualizingStackPanel />
                 </ItemsPanelTemplate>
             </ComboBox.ItemsPanel>
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal">
+						<Rectangle Fill="{Binding Path=Color, FallbackValue='#000000'}" Width="16" Height="16" Margin="0 0 10 0" />
+						<TextBlock Text="{Binding Path=Name, FallbackValue='Unknown'}" />
+					</StackPanel>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
         </ComboBox>
         <Button Name="MainSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="475,5,0,0" VerticalAlignment="Top" Width="65" Click="MainSearch_Click" Height="38"/>
         <Button x:Name="PropSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.PropView}}" HorizontalAlignment="Left" Margin="560,5,0,0" VerticalAlignment="Top" Width="65" FontSize="13" Padding="0,-2,0,0" Click="PropSearch_Click" Height="38"/>
@@ -78,6 +87,14 @@
                     <VirtualizingStackPanel />
                 </ItemsPanelTemplate>
             </ComboBox.ItemsPanel>
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal">
+						<Rectangle Fill="{Binding Path=Color, FallbackValue='#000000'}" Width="16" Height="16" Margin="0 0 10 0" />
+						<TextBlock Text="{Binding Path=Name, FallbackValue='Unknown'}" />
+					</StackPanel>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
         </ComboBox>
         <Button Name="OffSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="475,55,0,0" VerticalAlignment="Top" Width="65" Click="OffSearch_Click" Height="38"/>
         <Button x:Name="PropSearchOH" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.PropView}}" HorizontalAlignment="Left" Margin="560,55,0,0" VerticalAlignment="Top" Width="65" FontSize="13" Padding="0,-2,0,0" Click="PropSearchOH_Click" Height="38"/>
@@ -104,6 +121,14 @@
                     <VirtualizingStackPanel />
                 </ItemsPanelTemplate>
             </ComboBox.ItemsPanel>
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal">
+						<Rectangle Fill="{Binding Path=Color, FallbackValue='#000000'}" Width="16" Height="16" Margin="0 0 10 0" />
+						<TextBlock Text="{Binding Path=Name, FallbackValue='Unknown'}" />
+					</StackPanel>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
         </ComboBox>
         <Button Name="HeadSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="475,105,0,0" VerticalAlignment="Top" Width="65" Click="HeadSearch_Click" Height="38"/>
 
@@ -129,6 +154,14 @@
                     <VirtualizingStackPanel />
                 </ItemsPanelTemplate>
             </ComboBox.ItemsPanel>
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal">
+						<Rectangle Fill="{Binding Path=Color, FallbackValue='#000000'}" Width="16" Height="16" Margin="0 0 10 0" />
+						<TextBlock Text="{Binding Path=Name, FallbackValue='Unknown'}" />
+					</StackPanel>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
         </ComboBox>
         <Button Name="BodySearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="475,155,0,0" VerticalAlignment="Top" Width="65" Click="BodySearch_Click" Height="38"/>
 
@@ -154,6 +187,14 @@
                     <VirtualizingStackPanel />
                 </ItemsPanelTemplate>
             </ComboBox.ItemsPanel>
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal">
+						<Rectangle Fill="{Binding Path=Color, FallbackValue='#000000'}" Width="16" Height="16" Margin="0 0 10 0" />
+						<TextBlock Text="{Binding Path=Name, FallbackValue='Unknown'}" />
+					</StackPanel>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
         </ComboBox>
         <Button Name="HandSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="475,205,0,0" VerticalAlignment="Top" Width="65" Click="HandSearch_Click" Height="38"/>
 
@@ -179,6 +220,14 @@
                     <VirtualizingStackPanel />
                 </ItemsPanelTemplate>
             </ComboBox.ItemsPanel>
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal">
+						<Rectangle Fill="{Binding Path=Color, FallbackValue='#000000'}" Width="16" Height="16" Margin="0 0 10 0" />
+						<TextBlock Text="{Binding Path=Name, FallbackValue='Unknown'}" />
+					</StackPanel>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
         </ComboBox>
         <Button Name="LegsSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="475,255,0,0" VerticalAlignment="Top" Width="65" Click="LegsSearch_Click" Height="38"/>
 
@@ -198,13 +247,21 @@
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <ComboBox x:Name="FeetBox" SelectedIndex="{Binding Path=CharacterDetails.FeetDye.value}" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.Dyes}}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="320,305,0,0" VerticalAlignment="Top" Width="150" IsEditable="True" StaysOpenOnEdit="True" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
-            <ComboBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <VirtualizingStackPanel />
-                </ItemsPanelTemplate>
-            </ComboBox.ItemsPanel>
-        </ComboBox>
+		<ComboBox x:Name="FeetBox" SelectedIndex="{Binding Path=CharacterDetails.FeetDye.value}" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.Dyes}}" HorizontalAlignment="Left" Margin="320,305,0,0" VerticalAlignment="Top" Width="150" IsEditable="True" StaysOpenOnEdit="True" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+			<ComboBox.ItemsPanel>
+				<ItemsPanelTemplate>
+					<VirtualizingStackPanel />
+				</ItemsPanelTemplate>
+			</ComboBox.ItemsPanel>
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal">
+						<Rectangle Fill="{Binding Path=Color, FallbackValue='#000000'}" Width="16" Height="16" Margin="0 0 10 0" />
+						<TextBlock Text="{Binding Path=Name, FallbackValue='Unknown'}" />
+					</StackPanel>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
         <Button Name="FeetSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="475,305,0,0" VerticalAlignment="Top" Width="65" Click="FeetSearch_Click" Height="38"/>
 
         <!-- Ears -->

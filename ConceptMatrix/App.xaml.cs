@@ -93,8 +93,8 @@ namespace ConceptMatrix
         {
             if(MainViewModel.worker.IsBusy) MainViewModel.worker.CancelAsync();
             Utility.SaveSettings.Default.Save();
-            if (MainViewModel.ViewTime5.EditModeButton.IsChecked == true) MainViewModel.ViewTime5.EditModeButton.IsChecked = false;
-            if (MainViewModel.ViewTime6.EditModeButton.IsChecked == true) MainViewModel.ViewTime6.EditModeButton.IsChecked = false;
+            if (MainViewModel.posing2View.EditModeButton.IsChecked == true) MainViewModel.posing2View.EditModeButton.IsChecked = false;
+            if (MainViewModel.posingView.EditModeButton.IsChecked == true) MainViewModel.posingView.EditModeButton.IsChecked = false;
         }
 
         private void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)

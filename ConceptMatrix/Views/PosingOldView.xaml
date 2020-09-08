@@ -8,7 +8,7 @@
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:Converters="clr-namespace:ConceptMatrix.Converters"
              xmlns:resx="clr-namespace:ConceptMatrix.Resx"
-             x:Class="ConceptMatrix.Views.CharacterDetailsView5"
+             x:Class="ConceptMatrix.Views.PosingOldView"
              mc:Ignorable="d"
              d:DesignHeight="530" d:DesignWidth="1115" Height="530">
     <UserControl.Resources>

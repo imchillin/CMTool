@@ -903,7 +903,7 @@ namespace ConceptMatrix.Views
         {
             InitializeComponent();
             PosingMatrix = this;
-            MainViewModel.ViewTime5 = this;
+            MainViewModel.posing2View = this;
             if (SaveSettings.Default.HasBackground == false) PoseBG.Opacity = 0;
             exhair_buttons = new ToggleButton[] { ExHairA, ExHairB, ExHairC, ExHairD, ExHairE, ExHairF, ExHairG, ExHairH, ExHairI, ExHairJ, ExHairK, ExHairL };
             exmet_buttons = new ToggleButton[] { ExMetA, ExMetB, ExMetC, ExMetD, ExMetE, ExMetF, ExMetG, ExMetH, ExMetI, ExMetJ, ExMetK, ExMetL, ExMetM, ExMetN, ExMetO, ExMetP, ExMetQ, ExMetR };

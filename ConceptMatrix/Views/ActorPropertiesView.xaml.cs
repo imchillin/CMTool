@@ -23,14 +23,14 @@ namespace ConceptMatrix.Views
     /// <summary>
     /// Interaction logic for CharacterDetailsView4.xaml
     /// </summary>
-    public partial class CharacterDetailsView4 : UserControl
+    public partial class ActorPropertiesView : UserControl
     {
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
-        public CharacterDetailsView4()
+        public ActorPropertiesView()
         {
             InitializeComponent();
             if (SaveSettings.Default.HasBackground == false) PropBG.Opacity = 0;
-            MainViewModel.ViewTime4 = this;
+            MainViewModel.actorPropView = this;
         }
 
         private void RedPxD(object sender, RoutedPropertyChangedEventArgs<double?> e)

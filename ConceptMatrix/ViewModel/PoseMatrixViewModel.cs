@@ -91,7 +91,7 @@ namespace ConceptMatrix.ViewModel
                             MinBone = -10;
                             MaxBone = 10;
                             PoseMatrixView.PosingMatrix.Cube.IsEnabled = false;
-                            CharacterDetailsView5.PosingMatrix.Cube.IsEnabled = false;
+                            PosingOldView.PosingMatrix.Cube.IsEnabled = false;
                         }
                         else
                         {
@@ -101,10 +101,10 @@ namespace ConceptMatrix.ViewModel
                             PoseMatrixView.PosingMatrix.BoneSliderY.IsEnabled = false;
                             PoseMatrixView.PosingMatrix.BoneSliderZ.IsEnabled = false;
                             PoseMatrixView.PosingMatrix.Cube.IsEnabled = false;
-                            CharacterDetailsView5.PosingMatrix.BoneSliderX.IsEnabled = false;
-                            CharacterDetailsView5.PosingMatrix.BoneSliderY.IsEnabled = false;
-                            CharacterDetailsView5.PosingMatrix.BoneSliderZ.IsEnabled = false;
-                            CharacterDetailsView5.PosingMatrix.Cube.IsEnabled = false;
+                            PosingOldView.PosingMatrix.BoneSliderX.IsEnabled = false;
+                            PosingOldView.PosingMatrix.BoneSliderY.IsEnabled = false;
+                            PosingOldView.PosingMatrix.BoneSliderZ.IsEnabled = false;
+                            PosingOldView.PosingMatrix.Cube.IsEnabled = false;
                         }
                         BoneX = BitConverter.ToSingle(bytearray, 0);
                         BoneY = BitConverter.ToSingle(bytearray, 4);
@@ -406,11 +406,11 @@ namespace ConceptMatrix.ViewModel
                     PoseMatrixView.PosingMatrix.TailD.IsEnabled = true;
                     PoseMatrixView.PosingMatrix.TailE.IsEnabled = true;
 
-                    CharacterDetailsView5.PosingMatrix.TailA.IsEnabled = true;
-                    CharacterDetailsView5.PosingMatrix.TailB.IsEnabled = true;
-                    CharacterDetailsView5.PosingMatrix.TailC.IsEnabled = true;
-                    CharacterDetailsView5.PosingMatrix.TailD.IsEnabled = true;
-                    CharacterDetailsView5.PosingMatrix.TailE.IsEnabled = true;
+                    PosingOldView.PosingMatrix.TailA.IsEnabled = true;
+                    PosingOldView.PosingMatrix.TailB.IsEnabled = true;
+                    PosingOldView.PosingMatrix.TailC.IsEnabled = true;
+                    PosingOldView.PosingMatrix.TailD.IsEnabled = true;
+                    PosingOldView.PosingMatrix.TailE.IsEnabled = true;
                     bone_waist.Add(bone_tail_a);
                 }
                 if (race == 7)
@@ -418,8 +418,8 @@ namespace ConceptMatrix.ViewModel
                     PoseMatrixView.PosingMatrix.HrothWhiskersLeft.IsEnabled = true;
                     PoseMatrixView.PosingMatrix.HrothWhiskersRight.IsEnabled = true;
 
-                    CharacterDetailsView5.PosingMatrix.HrothWhiskersLeft.IsEnabled = true;
-                    CharacterDetailsView5.PosingMatrix.HrothWhiskersRight.IsEnabled = true;
+                    PosingOldView.PosingMatrix.HrothWhiskersLeft.IsEnabled = true;
+                    PosingOldView.PosingMatrix.HrothWhiskersRight.IsEnabled = true;
                 }
                 if (race == 8)
                 {
@@ -428,10 +428,10 @@ namespace ConceptMatrix.ViewModel
                     PoseMatrixView.PosingMatrix.VieraEarBLeft.IsEnabled = true;
                     PoseMatrixView.PosingMatrix.VieraEarBRight.IsEnabled = true;
 
-                    CharacterDetailsView5.PosingMatrix.VieraEarALeft.IsEnabled = true;
-                    CharacterDetailsView5.PosingMatrix.VieraEarARight.IsEnabled = true;
-                    CharacterDetailsView5.PosingMatrix.VieraEarBLeft.IsEnabled = true;
-                    CharacterDetailsView5.PosingMatrix.VieraEarBRight.IsEnabled = true;
+                    PosingOldView.PosingMatrix.VieraEarALeft.IsEnabled = true;
+                    PosingOldView.PosingMatrix.VieraEarARight.IsEnabled = true;
+                    PosingOldView.PosingMatrix.VieraEarBLeft.IsEnabled = true;
+                    PosingOldView.PosingMatrix.VieraEarBRight.IsEnabled = true;
                     for (int i = 0; i < bone_viera_ear_l.Length; i++)
                     {
                         bone_face_viera.Remove(bone_viera_ear_l[i]);
@@ -447,7 +447,7 @@ namespace ConceptMatrix.ViewModel
                     if (i >= 12) break;
                     bone_face.Add(bone_exhair[i]);
                     PoseMatrixView.PosingMatrix.exhair_buttons[i].IsEnabled = true;
-                    CharacterDetailsView5.PosingMatrix.exhair_buttons[i].IsEnabled = true;
+                    PosingOldView.PosingMatrix.exhair_buttons[i].IsEnabled = true;
                 }
                 #endregion
                 #region ExMet
@@ -455,10 +455,10 @@ namespace ConceptMatrix.ViewModel
                 for (int i = 0; i < exmet_value - 1; i++)
                 {
                     if (i >= 18) break; // for now keep it like this
-                    if (PoseMatrixView.PosingMatrix.HelmToggle.IsChecked == true || CharacterDetailsView5.PosingMatrix.HelmToggle.IsChecked == true) bone_face.Add(bone_exmet[i]);
+                    if (PoseMatrixView.PosingMatrix.HelmToggle.IsChecked == true || PosingOldView.PosingMatrix.HelmToggle.IsChecked == true) bone_face.Add(bone_exmet[i]);
 
                     PoseMatrixView.PosingMatrix.exmet_buttons[i].IsEnabled = true;
-                    CharacterDetailsView5.PosingMatrix.exmet_buttons[i].IsEnabled = true;
+                    PosingOldView.PosingMatrix.exmet_buttons[i].IsEnabled = true;
                 }
                 #endregion
                 #region ExTop
@@ -467,7 +467,7 @@ namespace ConceptMatrix.ViewModel
                 {
                     if (i >=9) break;
                     PoseMatrixView.PosingMatrix.extop_buttons[i].IsEnabled = true;
-                    CharacterDetailsView5.PosingMatrix.extop_buttons[i].IsEnabled = true;
+                    PosingOldView.PosingMatrix.extop_buttons[i].IsEnabled = true;
                 }
                 #endregion
             }

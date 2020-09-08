@@ -19,14 +19,14 @@ namespace ConceptMatrix.Views
     /// <summary>
     /// Interaction logic for CharacterDetailsView2.xaml
     /// </summary>
-    public partial class CharacterDetailsView2 : UserControl
+    public partial class EquipmentView : UserControl
     {
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
-        public CharacterDetailsView2()
+        public EquipmentView()
         {
             InitializeComponent();
             if (SaveSettings.Default.HasBackground == false) EquipBG.Opacity = 0;
-            MainViewModel.ViewTime2 = this;
+            MainViewModel.equipView = this;
         }
 
         private void XPos2_V(object sender, RoutedPropertyChangedEventArgs<double?> e)

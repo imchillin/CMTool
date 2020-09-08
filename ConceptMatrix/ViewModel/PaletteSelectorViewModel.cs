@@ -29,19 +29,19 @@ namespace ConceptMatrix.ViewModel
         {
             if (!isBG)
             {
-                MainViewModel.ViewTime.ActorBG.Opacity = 0;
-                MainViewModel.ViewTime2.EquipBG.Opacity = 0;
-                MainViewModel.ViewTime3.WorldBG.Opacity = 0;
-                MainViewModel.ViewTime4.PropBG.Opacity = 0;
+                MainViewModel.characterView.ActorBG.Opacity = 0;
+                MainViewModel.equipView.EquipBG.Opacity = 0;
+                MainViewModel.worldView.WorldBG.Opacity = 0;
+                MainViewModel.actorPropView.PropBG.Opacity = 0;
            //     MainViewModel.ViewTime5.PoseBG.Opacity = 0;
                 MainViewModel.AboutTime.AboutBG.Opacity = 0;
             }
             else
             {
-                MainViewModel.ViewTime.ActorBG.Opacity = 100;
-                MainViewModel.ViewTime2.EquipBG.Opacity = 100;
-                MainViewModel.ViewTime3.WorldBG.Opacity = 100;
-                MainViewModel.ViewTime4.PropBG.Opacity = 100;
+                MainViewModel.characterView.ActorBG.Opacity = 100;
+                MainViewModel.equipView.EquipBG.Opacity = 100;
+                MainViewModel.worldView.WorldBG.Opacity = 100;
+                MainViewModel.actorPropView.PropBG.Opacity = 100;
              //   MainViewModel.ViewTime5.PoseBG.Opacity = 100;
                 MainViewModel.AboutTime.AboutBG.Opacity = 100;
             }
