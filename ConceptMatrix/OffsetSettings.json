@@ -1,5 +1,5 @@
 {
-  "LastUpdated": "5.31c",
+  "LastUpdated": "5.31d",
   "CameraOffset": "1D09BA0",
   "GposeOffset": "1D09DB0",
   "GposeEntityOffset": "1D0B190",
@@ -7,7 +7,7 @@
   "GposeCheck2Offset": "1D0D970",
   "AoBOffset": "1D31B38",
   "TargetOffset": "1D09DF0",
-  "TimeOffset": "1CEF950",
+  "TimeOffset": "1CEA6E8",
   "WeatherOffset": "1CC0B08",
   "TerritoryOffset": "1D08760",
   "GposeFilters": "1CE8138",
@@ -59,7 +59,7 @@
       "MuscleTone": "240,28,20,C",
       "TailSize": "148,74"
     },
-    "TimeControl": "A0,28,80",
+    "TimeControl": "10,10,28,80",
     "Weather": "20",
     "ForceWeather": "26",
     "Music": "C0,116",
