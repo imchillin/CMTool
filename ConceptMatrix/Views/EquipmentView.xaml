@@ -7,10 +7,17 @@
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:resx="clr-namespace:ConceptMatrix.Resx"
              xmlns:Views="clr-namespace:ConceptMatrix.Views"
-			 xmlns:lumina="clr-namespace:Lumina.Excel.GeneratedSheets;assembly=Lumina.Generated"
              TextElement.FontSize="13.25"
              mc:Ignorable="d" d:DesignWidth="1115" Height="530">
-    <UserControl.Background>
+	<UserControl.Resources>
+		<DataTemplate x:Key="DyeTemplate">
+			<StackPanel Orientation="Horizontal">
+				<Rectangle Fill="{Binding Path=Color, FallbackValue='Transparent'}" Stroke="#33000000" Width="16" Height="16" Margin="6 0 6 0" />
+				<TextBlock Text="{Binding Path=Name, FallbackValue='Unknown'}" />
+			</StackPanel>
+        </DataTemplate>
+	</UserControl.Resources>
+	<UserControl.Background>
         <ImageBrush x:Name="EquipBG" ImageSource="/ConceptMatrix;component/Resources/equipbg.png"/>
     </UserControl.Background>
     <Grid Height="530">
@@ -25,21 +32,13 @@
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <ComboBox x:Name="MHBox" SelectedIndex="{Binding Path=CharacterDetails.WeaponDye.value}" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.Dyes}}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="320,5,0,0" VerticalAlignment="Top" Width="150" IsEditable="True" StaysOpenOnEdit="True" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
-            <ComboBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <VirtualizingStackPanel />
-                </ItemsPanelTemplate>
-            </ComboBox.ItemsPanel>
-			<ComboBox.ItemTemplate>
-				<DataTemplate>
-					<StackPanel Orientation="Horizontal">
-						<Rectangle Fill="{Binding Path=Color, FallbackValue='#000000'}" Width="16" Height="16" Margin="0 0 10 0" />
-						<TextBlock Text="{Binding Path=Name, FallbackValue='Unknown'}" />
-					</StackPanel>
-				</DataTemplate>
-			</ComboBox.ItemTemplate>
-        </ComboBox>
+		<ComboBox x:Name="MHBox" SelectedValuePath="Id" SelectedIndex="{Binding Path=CharacterDetails.WeaponDye.value}" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.Dyes}}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="320,5,0,0" VerticalAlignment="Top" Width="150" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" ItemTemplate="{DynamicResource DyeTemplate}">
+			<ComboBox.ItemsPanel>
+				<ItemsPanelTemplate>
+					<VirtualizingStackPanel />
+				</ItemsPanelTemplate>
+			</ComboBox.ItemsPanel>
+		</ComboBox>
         <Button Name="MainSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="475,5,0,0" VerticalAlignment="Top" Width="65" Click="MainSearch_Click" Height="38"/>
         <Button x:Name="PropSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.PropView}}" HorizontalAlignment="Left" Margin="560,5,0,0" VerticalAlignment="Top" Width="65" FontSize="13" Padding="0,-2,0,0" Click="PropSearch_Click" Height="38"/>
         <TextBox TextChanged="MainHandChangedEventHandler" Text="{Binding Path=CharacterDetails.WeaponBase.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="105,5,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="60" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
@@ -81,21 +80,13 @@
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <ComboBox x:Name="OHBox" SelectedIndex="{Binding Path=CharacterDetails.OffhandDye.value}" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.Dyes}}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="320,55,0,0" VerticalAlignment="Top" Width="150" StaysOpenOnEdit="True" IsEditable="True" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
-            <ComboBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <VirtualizingStackPanel />
-                </ItemsPanelTemplate>
-            </ComboBox.ItemsPanel>
-			<ComboBox.ItemTemplate>
-				<DataTemplate>
-					<StackPanel Orientation="Horizontal">
-						<Rectangle Fill="{Binding Path=Color, FallbackValue='#000000'}" Width="16" Height="16" Margin="0 0 10 0" />
-						<TextBlock Text="{Binding Path=Name, FallbackValue='Unknown'}" />
-					</StackPanel>
-				</DataTemplate>
-			</ComboBox.ItemTemplate>
-        </ComboBox>
+		<ComboBox x:Name="OHBox" SelectedValuePath="Id" SelectedIndex="{Binding Path=CharacterDetails.OffhandDye.value}" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.Dyes}}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="320,55,0,0" VerticalAlignment="Top" Width="150" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" ItemTemplate="{DynamicResource DyeTemplate}">
+			<ComboBox.ItemsPanel>
+				<ItemsPanelTemplate>
+					<VirtualizingStackPanel />
+				</ItemsPanelTemplate>
+			</ComboBox.ItemsPanel>
+		</ComboBox>
         <Button Name="OffSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="475,55,0,0" VerticalAlignment="Top" Width="65" Click="OffSearch_Click" Height="38"/>
         <Button x:Name="PropSearchOH" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.PropView}}" HorizontalAlignment="Left" Margin="560,55,0,0" VerticalAlignment="Top" Width="65" FontSize="13" Padding="0,-2,0,0" Click="PropSearchOH_Click" Height="38"/>
 
@@ -115,21 +106,13 @@
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <ComboBox x:Name="HeadDye" SelectedIndex="{Binding Path=CharacterDetails.HeadDye.value}" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.Dyes}}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="320,105,0,0" VerticalAlignment="Top" Width="150" IsEditable="True" StaysOpenOnEdit="True" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
-            <ComboBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <VirtualizingStackPanel />
-                </ItemsPanelTemplate>
-            </ComboBox.ItemsPanel>
-			<ComboBox.ItemTemplate>
-				<DataTemplate>
-					<StackPanel Orientation="Horizontal">
-						<Rectangle Fill="{Binding Path=Color, FallbackValue='#000000'}" Width="16" Height="16" Margin="0 0 10 0" />
-						<TextBlock Text="{Binding Path=Name, FallbackValue='Unknown'}" />
-					</StackPanel>
-				</DataTemplate>
-			</ComboBox.ItemTemplate>
-        </ComboBox>
+		<ComboBox x:Name="HeadDye" SelectedValuePath="Id" SelectedIndex="{Binding Path=CharacterDetails.HeadDye.value}" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.Dyes}}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="320,105,0,0" VerticalAlignment="Top" Width="150" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" ItemTemplate="{DynamicResource DyeTemplate}">
+			<ComboBox.ItemsPanel>
+				<ItemsPanelTemplate>
+					<VirtualizingStackPanel />
+				</ItemsPanelTemplate>
+			</ComboBox.ItemsPanel>
+		</ComboBox>
         <Button Name="HeadSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="475,105,0,0" VerticalAlignment="Top" Width="65" Click="HeadSearch_Click" Height="38"/>
 
         <!-- Body -->
@@ -148,21 +131,13 @@
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <ComboBox x:Name="ChestBox" SelectedIndex="{Binding Path=CharacterDetails.ChestDye.value}" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.Dyes}}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="320,155,0,0" VerticalAlignment="Top" Width="150" StaysOpenOnEdit="True" IsEditable="True" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
-            <ComboBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <VirtualizingStackPanel />
-                </ItemsPanelTemplate>
-            </ComboBox.ItemsPanel>
-			<ComboBox.ItemTemplate>
-				<DataTemplate>
-					<StackPanel Orientation="Horizontal">
-						<Rectangle Fill="{Binding Path=Color, FallbackValue='#000000'}" Width="16" Height="16" Margin="0 0 10 0" />
-						<TextBlock Text="{Binding Path=Name, FallbackValue='Unknown'}" />
-					</StackPanel>
-				</DataTemplate>
-			</ComboBox.ItemTemplate>
-        </ComboBox>
+		<ComboBox x:Name="ChestBox" SelectedValuePath="Id" SelectedIndex="{Binding Path=CharacterDetails.ChestDye.value}" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.Dyes}}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="320,155,0,0" VerticalAlignment="Top" Width="150" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" ItemTemplate="{DynamicResource DyeTemplate}">
+			<ComboBox.ItemsPanel>
+				<ItemsPanelTemplate>
+					<VirtualizingStackPanel />
+				</ItemsPanelTemplate>
+			</ComboBox.ItemsPanel>
+		</ComboBox>
         <Button Name="BodySearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="475,155,0,0" VerticalAlignment="Top" Width="65" Click="BodySearch_Click" Height="38"/>
 
         <!-- Hands -->
@@ -181,20 +156,12 @@
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <ComboBox x:Name="ArmBox" SelectedIndex="{Binding Path=CharacterDetails.ArmsDye.value}" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.Dyes}}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="320,205,0,0" VerticalAlignment="Top" Width="150" StaysOpenOnEdit="True" IsEditable="True" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+		<ComboBox x:Name="ArmBox" SelectedValuePath="Id" SelectedIndex="{Binding Path=CharacterDetails.ArmsDye.value}" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.Dyes}}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="320,205,0,0" VerticalAlignment="Top" Width="150" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" ItemTemplate="{DynamicResource DyeTemplate}">
             <ComboBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel />
                 </ItemsPanelTemplate>
             </ComboBox.ItemsPanel>
-			<ComboBox.ItemTemplate>
-				<DataTemplate>
-					<StackPanel Orientation="Horizontal">
-						<Rectangle Fill="{Binding Path=Color, FallbackValue='#000000'}" Width="16" Height="16" Margin="0 0 10 0" />
-						<TextBlock Text="{Binding Path=Name, FallbackValue='Unknown'}" />
-					</StackPanel>
-				</DataTemplate>
-			</ComboBox.ItemTemplate>
         </ComboBox>
         <Button Name="HandSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="475,205,0,0" VerticalAlignment="Top" Width="65" Click="HandSearch_Click" Height="38"/>
 
@@ -214,21 +181,13 @@
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-        <ComboBox x:Name="LegBox" SelectedIndex="{Binding Path=CharacterDetails.LegsDye.value}" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.Dyes}}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="320,255,0,0" VerticalAlignment="Top" Width="150" IsEditable="True" StaysOpenOnEdit="True" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
-            <ComboBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <VirtualizingStackPanel />
-                </ItemsPanelTemplate>
-            </ComboBox.ItemsPanel>
-			<ComboBox.ItemTemplate>
-				<DataTemplate>
-					<StackPanel Orientation="Horizontal">
-						<Rectangle Fill="{Binding Path=Color, FallbackValue='#000000'}" Width="16" Height="16" Margin="0 0 10 0" />
-						<TextBlock Text="{Binding Path=Name, FallbackValue='Unknown'}" />
-					</StackPanel>
-				</DataTemplate>
-			</ComboBox.ItemTemplate>
-        </ComboBox>
+		<ComboBox x:Name="LegBox" SelectedValuePath="Id" SelectedIndex="{Binding Path=CharacterDetails.LegsDye.value}" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.Dyes}}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="320,255,0,0" VerticalAlignment="Top" Width="150" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" ItemTemplate="{DynamicResource DyeTemplate}">
+			<ComboBox.ItemsPanel>
+				<ItemsPanelTemplate>
+					<VirtualizingStackPanel />
+				</ItemsPanelTemplate>
+			</ComboBox.ItemsPanel>
+		</ComboBox>
         <Button Name="LegsSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="475,255,0,0" VerticalAlignment="Top" Width="65" Click="LegsSearch_Click" Height="38"/>
 
         <!-- Feet -->
@@ -247,20 +206,12 @@
                 </StackPanel>
             </materialDesign:HintAssist.Hint>
         </TextBox>
-		<ComboBox x:Name="FeetBox" SelectedIndex="{Binding Path=CharacterDetails.FeetDye.value}" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.Dyes}}" HorizontalAlignment="Left" Margin="320,305,0,0" VerticalAlignment="Top" Width="150" IsEditable="True" StaysOpenOnEdit="True" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+		<ComboBox x:Name="FeetBox" SelectedValuePath="Id" SelectedIndex="{Binding Path=CharacterDetails.FeetDye.value}" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.Dyes}}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" HorizontalAlignment="Left" Margin="320,305,0,0" VerticalAlignment="Top" Width="150" Height="38" ItemTemplate="{DynamicResource DyeTemplate}">
 			<ComboBox.ItemsPanel>
 				<ItemsPanelTemplate>
 					<VirtualizingStackPanel />
 				</ItemsPanelTemplate>
 			</ComboBox.ItemsPanel>
-			<ComboBox.ItemTemplate>
-				<DataTemplate>
-					<StackPanel Orientation="Horizontal">
-						<Rectangle Fill="{Binding Path=Color, FallbackValue='#000000'}" Width="16" Height="16" Margin="0 0 10 0" />
-						<TextBlock Text="{Binding Path=Name, FallbackValue='Unknown'}" />
-					</StackPanel>
-				</DataTemplate>
-			</ComboBox.ItemTemplate>
 		</ComboBox>
         <Button Name="FeetSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="475,305,0,0" VerticalAlignment="Top" Width="65" Click="FeetSearch_Click" Height="38"/>
 

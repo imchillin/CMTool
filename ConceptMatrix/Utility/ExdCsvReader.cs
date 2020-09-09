@@ -1,10 +1,13 @@
 ﻿using ConceptMatrix.Properties;
+using ConceptMatrix.ViewModel;
 using ConceptMatrix.Views;
+using Lumina.Excel.GeneratedSheets;
 using Microsoft.VisualBasic.FileIO;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows.Media;
 using GearTuple = System.Tuple<int, int, int>;
 using WepTuple = System.Tuple<int, int, int, int>;
@@ -98,11 +101,6 @@ namespace ConceptMatrix.Utility
 				return $"{EquipmentFlyOut.GearTupleToComma(Gear.HeadGear)} - {EquipmentFlyOut.GearTupleToComma(Gear.BodyGear)} - {EquipmentFlyOut.GearTupleToComma(Gear.HandsGear)} - {EquipmentFlyOut.GearTupleToComma(Gear.LegsGear)} - {EquipmentFlyOut.GearTupleToComma(Gear.FeetGear)} - {EquipmentFlyOut.GearTupleToComma(Gear.EarGear)} - {EquipmentFlyOut.GearTupleToComma(Gear.NeckGear)} - {EquipmentFlyOut.GearTupleToComma(Gear.WristGear)} - {EquipmentFlyOut.GearTupleToComma(Gear.LRingGear)} - {EquipmentFlyOut.GearTupleToComma(Gear.RRingGear)}";
 			}
 		}
-		public class Race
-		{
-			public int Index { get; set; }
-			public string Name { get; set; }
-		}
 		public class Tribe
 		{
 			public int Index { get; set; }
@@ -126,11 +124,6 @@ namespace ConceptMatrix.Utility
 			public int Gender { get; set; }
 			public int Tribe { get; set; }
 			public List<Features> Features { get; set; }
-		}
-		public class Dye
-		{
-			public int Index { get; set; }
-			public string Name { get; set; }
 		}
 
 		public class Emote
@@ -185,16 +178,13 @@ namespace ConceptMatrix.Utility
 		public static Emote[] Emotesx;
 		public static BGM[] BGMX;
 		public static Monster[] MonsterX;
-		public static Dye[] DyesX;
 		public Dictionary<int, Item> Items = null;
 		public Dictionary<int, Item> ItemsProps = null;
 		public Dictionary<int, TerritoryType> TerritoryTypes = null;
-        public Dictionary<int, Dye> Dyes = null;
 		public Dictionary<int, Emote> Emotes = null;
 		public Dictionary<int, Resident> Residents = null;
 		public Dictionary<int, CharaMakeCustomizeFeature> CharaMakeFeatures = null;
 		public Dictionary<int, CharaMakeCustomizeFeature2> CharaMakeFeatures2 = null;
-		public Dictionary<int, Race> Races = null;
 		public Dictionary<int, Tribe> Tribes = null;
 		public Dictionary<int, Monster> Monsters = null;
 		public Dictionary<int, BGM> BGMs = null;
@@ -312,37 +302,14 @@ namespace ConceptMatrix.Utility
 
 			}
 		}
-		public void RaceList()
-		{
-			Races = new Dictionary<int, Race>();
-			try
-			{
-				var RaceSheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Race>();
-				foreach (var Parse in RaceSheet)
-				{
-					Race race = new Race
-					{
-						Index = Parse.Key,
-						Name = Parse.Feminine
-					};
-					if (Parse.Key == 0)
-						race.Name = "None";
-					Races.Add(Parse.Key, race);
-				}
-			}
-			catch (Exception)
-			{
-				Races = null;
-				//throw;
-			}
-		}
+
 		public void EmoteList()
 		{
 			Emotes = new Dictionary<int, Emote>();
 			{
 				try
 				{
-					using (TextFieldParser parser = new TextFieldParser(new StringReader(Resources.actiontimeline)))
+					using (var parser = new TextFieldParser(new StringReader(Resources.actiontimeline)))
 					{
 						parser.TextFieldType = FieldType.Delimited;
 						parser.SetDelimiters(",");
@@ -381,13 +348,14 @@ namespace ConceptMatrix.Utility
 				}
 			}
 		}
+
 		public void MonsterList()
 		{
 			Monsters = new Dictionary<int, Monster>();
 			{
 				try
 				{
-					using (TextFieldParser parser = new TextFieldParser(new StringReader(Resources.MonsterList)))
+					using (var parser = new TextFieldParser(new StringReader(Resources.MonsterList)))
 					{
 						parser.TextFieldType = FieldType.Delimited;
 						parser.SetDelimiters(",");
@@ -396,65 +364,33 @@ namespace ConceptMatrix.Utility
 						while (!parser.EndOfData)
 						{
 							rowCount++;
-							Monster monster = new Monster();
+							var monster = new Monster();
 							//Processing row
-							string[] fields = parser.ReadFields();
-							int fCount = 0;
+							var fields = parser.ReadFields();
+							var fCount = 0;
 							monster.Index = int.Parse(fields[0]);
-							foreach (string field in fields)
+							foreach (var field in fields)
 							{
 								fCount++;
 
 								if (fCount == 2)
-								{
 									monster.Name = field;
-								}
 							}
-							if (monster.Name.Length >= 1) monster.Real = true;
-							// Console.WriteLine($"{rowCount} - {monster.Name}");
+							if (monster.Name.Length >= 1)
+								monster.Real = true;
+
 							Monsters.Add(monster.Index, monster);
 						}
-						//Console.WriteLine($"{rowCount} Monsters read");
 					}
 				}
 
 				catch (Exception)
 				{
 					Monsters = null;
-
-				//	throw;
-
 				}
 			}
 		}
-		public void DyeList()
-		{
-			Dyes = new Dictionary<int, Dye>();
-			{
-				try
-				{
-					var sheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Stain>();
-					foreach (var Parse in sheet)
-					{
-						Dye dye = new Dye
-						{
-							Index = Parse.Key,
-							Name = Parse.Name
-						};
-						if (Parse.Key == 0)
-							dye.Name = "None";
-						Dyes.Add(Parse.Key, dye);
-					}
-				}
-				catch (Exception)
-				{
-					Dyes = null;
 
-					//throw;
-
-				}
-			}
-		}
 		ItemType Heh(int cat)
 		{
 			switch (cat)
@@ -479,7 +415,7 @@ namespace ConceptMatrix.Utility
 					return ItemType.Ring;
 				case 11:
 					return ItemType.Shield;
-				case int n when (n >= 1 && n <= 10 || n >= 11 && n <= 32 || n == 84 || n >= 87 && n <= 89 || n >= 96 && n <= 99 || n >= 105 && n <= 107):
+				case int n when n >= 1 && n <= 10 || n >= 11 && n <= 32 || n == 84 || n >= 87 && n <= 89 || n >= 96 && n <= 99 || n >= 105 && n <= 107:
 					return ItemType.Wep;
 				default:
 					return ItemType.Trash;
@@ -494,7 +430,9 @@ namespace ConceptMatrix.Utility
 					var sheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Item>();
 					foreach (var Parse in sheet)
 					{
-						if (Parse.EquipSlotCategory.Key <= 0) continue;
+						if (Parse.EquipSlotCategory.Key <= 0)
+							continue;
+
 						var item = new Item
 						{
 							Index = Parse.Key,
@@ -502,6 +440,7 @@ namespace ConceptMatrix.Utility
 							ClassJobListStringName = Parse.ClassJobCategory.ToString(),
 							Type = Heh(Parse.ItemUICategory.Key)
 						};
+
                         if (Parse.ItemUICategory.Key == 11)
 						{
 							item.ModelMain = Parse.ModelMain.ToString();
@@ -512,10 +451,13 @@ namespace ConceptMatrix.Utility
 							item.ModelMain = Parse.ModelMain.ToString();
 							item.ModelOff = Parse.ModelSub.ToString();
 						}
+
 						try
 						{
-							if (Parse.Icon == null) item.Icon = null;
-							else item.Icon = Parse.Icon;
+							if (Parse.Icon == null)
+								item.Icon = null;
+							else
+								item.Icon = Parse.Icon;
 						}
 						catch
 						{

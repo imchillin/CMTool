@@ -1,14 +1,18 @@
 ﻿using ConceptMatrix.Utility;
 using ConceptMatrix.Views;
 using Lumina;
+using Lumina.Data.Files;
 using Lumina.Excel.GeneratedSheets;
+using Lumina.Extensions;
 using MaterialDesignThemes.Wpf;
 using Newtonsoft.Json;
 using SaintCoinach;
+using SaintCoinach.Imaging;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -18,6 +22,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Xml.Serialization;
 
 namespace ConceptMatrix.ViewModel
@@ -50,8 +55,6 @@ namespace ConceptMatrix.ViewModel
 
         public PackIconKind AOTToggleStatus { get; set; } = PackIconKind.ToggleSwitchOffOutline;
 		public Brush ToggleForeground { get; set; } = new SolidColorBrush(Color.FromArgb(0x75, 0xFF, 0xFF, 0xFF));
-
-        private List<FStain> stains;
 
 		public MainViewModel()
         {
@@ -187,17 +190,21 @@ namespace ConceptMatrix.ViewModel
                 }
             }
 
-            // Get the stains (dyes).
-            var stainSheet = lumina.GetExcelSheet<Stain>();
-            this.stains = new List<FStain>();
+			#region My stuff
 
-            foreach (var stain in stainSheet)
+			// Get the stains (dyes).
+            var stains = new List<CMStain>();
+            // Loop through the Stains to add to a list.
+            foreach (var stain in lumina.GetExcelSheet<Stain>())
             {
+                // Convert color to bytes to turn into a solid color brush.
                 var colorBytes = BitConverter.GetBytes(stain.Color);
-                this.stains.Add(
-                    new FStain() { 
+                stains.Add(
+                    new CMStain()
+                    {
+                        Id = stain.RowId,
                         Color = new SolidColorBrush(Color.FromRgb(colorBytes[2], colorBytes[1], colorBytes[0])), 
-                        Name = stain.RowId == 0 ? "None" : stain.Name 
+                        Name = stain.Name.DefaultIfEmpty("None")
                     }
                 );
             }
@@ -211,84 +218,54 @@ namespace ConceptMatrix.ViewModel
             equipView.LegBox.ItemsSource = stains;
             equipView.FeetBox.ItemsSource = stains;
 
+            // Race and Tribes.
+            characterView.RaceBox.ItemsSource = from r in lumina.GetExcelSheet<Race>() select r.Feminine.DefaultIfEmpty("None");
+            characterView.ClanBox.ItemsSource = from t in lumina.GetExcelSheet<Tribe>() select t.Feminine.DefaultIfEmpty("None");
+
+            // Setting weather lists.
+            var weatherList = new List<CMWeather>();
+            // Loop through the weathers to add to a list.
+            foreach (var weather in lumina.GetExcelSheet<Weather>())
+            {
+                var icon = lumina.GetIcon(weather.Icon);
+                var cmw = new CMWeather()
+                {
+                    Id = (byte)weather.RowId,
+                    Name = weather.Name.DefaultIfEmpty("None"),
+                    Icon = icon.GetImage()
+                };
+
+                weatherList.Add(cmw);
+            }
+
+            // Assign the item sources for the weather combo boxes.
+            worldView.ForceWeatherBox.ItemsSource = weatherList;
+            worldView.WeatherBox.ItemsSource = weatherList;
+
+            #endregion
+
             try
             {
                 realm.Packs.GetPack(new SaintCoinach.IO.PackIdentifier("exd", SaintCoinach.IO.PackIdentifier.DefaultExpansion, 0)).KeepInMemory = true;
                 MainWindow.Realm = realm;
-                CharacterDetailsView._exdProvider.RaceList();
-                CharacterDetailsView._exdProvider.TribeList();
-                CharacterDetailsView._exdProvider.DyeList();
                 CharacterDetailsView._exdProvider.MonsterList();
                 CharacterDetailsView._exdProvider.MakeTerritoryTypeList();
                 ExdCsvReader.MonsterX = CharacterDetailsView._exdProvider.Monsters.Values.ToArray();
-                /*for (int i = 0; i < CharacterDetailsView._exdProvider.Dyes.Count; i++)
+                
+                foreach (ExdCsvReader.Monster m in ExdCsvReader.MonsterX)
                 {
-                    equipView.HeadDye.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
-                    equipView.ChestBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
-                    equipView.ArmBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
-                    equipView.MHBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
-                    equipView.OHBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
-                    equipView.LegBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
-                    equipView.FeetBox.Items.Add(CharacterDetailsView._exdProvider.Dyes[i].Name);
-                }*/
-                foreach (ExdCsvReader.Monster xD in ExdCsvReader.MonsterX)
-                {
-                    if (xD.Real == true)
+                    if (m.Real == true)
                     {
                         characterView.SpecialControl.ModelBox.Items.Add(new ExdCsvReader.Monster
                         {
-                            Index = Convert.ToInt32(xD.Index),
-                            Name = xD.Name.ToString()
+                            Index = Convert.ToInt32(m.Index),
+                            Name = m.Name.ToString()
                         });
                     }
                 }
-                for (int i = 0; i < CharacterDetailsView._exdProvider.Races.Count; i++)
-                {
-                    characterView.RaceBox.Items.Add(CharacterDetailsView._exdProvider.Races[i].Name);
-                }
-                for (int i = 0; i < CharacterDetailsView._exdProvider.Tribes.Count; i++)
-                {
-                    characterView.ClanBox.Items.Add(CharacterDetailsView._exdProvider.Tribes[i].Name);
-                }
-                var WeatherSheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Weather>();
-                foreach (SaintCoinach.Xiv.Weather weather in WeatherSheet)
-                {
-                    if (weather.Key == 0 || weather.Icon == null)
-                    {
-                        byte[] Bytes = { (byte)weather.Key, (byte)weather.Key };
-                        worldView.ForceWeatherBox.Items.Add(new ExdCsvReader.Weather
-                        {
-                            Index = Convert.ToInt32(weather.Key),
-                            Key = BitConverter.ToUInt16(Bytes, 0),
-                            Name = weather.Name.ToString(),
-                            Icon = null
-                        });
-                    }
-                    else
-                    {
-                        byte[] Bytes = { (byte)weather.Key, (byte)weather.Key };
-                        try
-                        {
-                            worldView.ForceWeatherBox.Items.Add(new ExdCsvReader.Weather
-                            {
-                                Index = Convert.ToInt32(weather.Key),
-                                Name = weather.Name.ToString(),
-                                Key = BitConverter.ToUInt16(Bytes, 0),
-                                Icon = ExdCsvReader.CreateSource(weather.Icon)
-                            });
-                        }
-                        catch
-                        {
-                            worldView.ForceWeatherBox.Items.Add(new ExdCsvReader.Weather
-                            {
-                                Index = Convert.ToInt32(weather.Key),
-                                Name = weather.Name.ToString(),
-                                Key = BitConverter.ToUInt16(Bytes, 0),
-                                Icon = null
-                            });
-                        }
-                    }
-                }
+
+
+
                 var StatusSheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Status>();
                 HashSet<byte> Sets = new HashSet<byte>();
                 foreach (SaintCoinach.Xiv.Status status in StatusSheet)
@@ -311,9 +288,9 @@ namespace ConceptMatrix.ViewModel
                     characterView.TitleBox.Items.Add(Title);
                 }
             }
-            catch(Exception)
+            catch(Exception ex)
             {
-            
+                Console.WriteLine(ex.Message);
             }
         }
         private void LoadSettings(string region)

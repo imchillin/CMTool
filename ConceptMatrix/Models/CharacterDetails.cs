@@ -261,7 +261,7 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<byte> Weather { get; set; }
         [JsonIgnore] public Address<ushort> ForceWeather { get; set; }
         [JsonIgnore] public Address<byte> EntityType { get; set; }
-        [JsonIgnore] public Address<int> Territoryxd { get; set; }
+        [JsonIgnore] public Address<int> Territory { get; set; }
         [JsonIgnore] public Address<short> DataPath { get; set; }
         [JsonIgnore] public Address<short> NPCName { get; set; }
         [JsonIgnore] public Address<short> NPCModel { get; set; }
@@ -336,7 +336,7 @@ namespace ConceptMatrix.Models
             TestArray = new Address<string>();
             EntityType = new Address<byte>();
             FreezeFacial = new Address<float>();
-            Territoryxd = new Address<int>();
+            Territory = new Address<int>();
             DataPath = new Address<short>();
             DataHead = new Address<byte>();
             NPCName = new Address<short>();

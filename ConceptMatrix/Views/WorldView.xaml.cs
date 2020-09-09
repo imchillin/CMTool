@@ -1,11 +1,14 @@
 ﻿using ConceptMatrix.Models;
 using ConceptMatrix.Utility;
 using ConceptMatrix.ViewModel;
+using Lumina.Excel.GeneratedSheets;
+using Lumina.Extensions;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -23,7 +26,7 @@ namespace ConceptMatrix.Views
         {
             public Address<string> FilterAoB { get; set; }
         }
-        private List<ExdCsvReader.Weather> AllowedWeathers;
+        private List<CMWeather> AllowedWeathers;
         private bool isUserInteraction;
         private bool istimeLocked=false;
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
@@ -261,89 +264,42 @@ namespace ConceptMatrix.Views
                 TimeControlUpDown.ValueChanged += TimeVA;
             }
         }
-        public void WeatherSelector(List<ExdCsvReader.Weather> allowedWeathers, int currentWeather)
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
-
-            AllowedWeathers = allowedWeathers;
-            WeatherBox.Items.Clear();
-            for (int i = 0; i < allowedWeathers.Count; i++)
+            try
             {
-                if (allowedWeathers[i].Index == 0 || allowedWeathers[i].Icon2 == null)
-                {
-                    WeatherBox.Items.Add(new ExdCsvReader.Weather
-                    {
-                        Index = Convert.ToInt32(allowedWeathers[i].Index),
-                        Name = allowedWeathers[i].Name.ToString(),
-                        Icon = null
-                    });
-                }
-                else
-                {
-                    WeatherBox.Items.Add(new ExdCsvReader.Weather
-                    {
-                        Index = Convert.ToInt32(allowedWeathers[i].Index),
-                        Name = allowedWeathers[i].Name.ToString(),
-                        Icon = ExdCsvReader.CreateSource(allowedWeathers[i].Icon2)
-                    });
-                }
-
-                if (allowedWeathers[i].Index == currentWeather)
-                    WeatherBox.SelectedIndex = i;
+                // Get the allowed weathers for this territory.
+                var allowedWeathers = MainViewModel.lumina.GetExcelSheet<TerritoryType>().First(t => t.RowId == CharacterDetails.Territory.value).AllowedWeather();
+                WeatherBox.ItemsSource = from w in allowedWeathers 
+                                         select new CMWeather() { Id = (byte)w.RowId, Icon = MainViewModel.lumina.GetIcon(w.Icon).GetImage(), Name = w.Name };
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Unable to get allowed weathers for this zone.", App.ToolName, MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-        public static bool CheckTerritoryList()
-        {
-            if (CharacterDetailsView._exdProvider.TerritoryTypes == null)
-            {
-                CharacterDetailsView._exdProvider.MakeTerritoryTypeList();
-                if (CharacterDetailsView._exdProvider.TerritoryTypes == null)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (!CheckTerritoryList()) return;
-
-            int territory = MemoryManager.Instance.MemLib.readInt(MemoryManager.GetAddressString(MemoryManager.Instance.TerritoryAddress, Settings.Instance.Character.Territory));
-
-            if (!CharacterDetailsView._exdProvider.TerritoryTypes.ContainsKey(territory))
-            {
-                MessageBox.Show("Could not find your current zone. Make sure you are using the latest version.", App.ToolName, MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-
-            if (CharacterDetailsView._exdProvider.TerritoryTypes[territory].WeatherRate == null)
-            {
-                MessageBox.Show("Setting weather is not supported for your current zone.", App.ToolName, MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-            WeatherSelector(CharacterDetailsView._exdProvider.TerritoryTypes[territory].WeatherRate.AllowedWeathers, MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.WeatherAddress, Settings.Instance.Character.Weather)));
-        }
-        public ExdCsvReader.Weather Choice = null;
         private void WeatherBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            // Only allow for user interaction changes to the selection.
             if (isUserInteraction)
             {
-                if (WeatherBox.SelectedItem == null) return;
+                if (WeatherBox.SelectedItem == null)
+                    return;
 
-                Choice = AllowedWeathers[WeatherBox.SelectedIndex];
-                CharacterDetails.Weather.value = (byte)AllowedWeathers[WeatherBox.SelectedIndex].Index;
-                string hexValue = AllowedWeathers[WeatherBox.SelectedIndex].Index.ToString("X");
+                var selectedWeather = WeatherBox.SelectedItem as CMWeather;
+
+                CharacterDetails.Weather.value = selectedWeather.Id;
+                var hexValue = selectedWeather.Id.ToString("X");
+
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.WeatherAddress, Settings.Instance.Character.Weather), "byte", hexValue);
-
             }
             isUserInteraction = false;
         }
 
-        private void WeatherBox_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            isUserInteraction = true;
-        }
+        // Ensures that any updates to the selection made by mutating the items doesn't cause a memory write.
+        private void WeatherBox_PreviewMouseDown(object sender, MouseButtonEventArgs e) => isUserInteraction = true;
 
         private void Filters_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
@@ -1229,9 +1185,9 @@ namespace ConceptMatrix.Views
             {
                 if (ForceWeatherBox.SelectedIndex >= 0)
                 {
-                    var Value = (ExdCsvReader.Weather)ForceWeatherBox.SelectedItem;
-                    CharacterDetails.ForceWeather.value = Value.Key;
-                    m.writeMemory(GAS(MemoryManager.Instance.GposeFilters, c.ForceWeather), "int", Value.Key.ToString());
+                    var Value = (CMWeather)ForceWeatherBox.SelectedItem;
+                    CharacterDetails.ForceWeather.value = Value.Id;
+                    m.writeMemory(GAS(MemoryManager.Instance.GposeFilters, c.ForceWeather), "byte", Value.Id.ToString());
                 }
             }
         }

@@ -1,10 +1,17 @@
-﻿using ConceptMatrix.Views;
+﻿using ConceptMatrix.ViewModel;
+using ConceptMatrix.Views;
+using Lumina.Data.Files;
+using Lumina.Excel.GeneratedSheets;
+using SaintCoinach.Imaging;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using System.Windows.Media.Media3D;
 
 namespace ConceptMatrix.Utility
@@ -130,6 +137,63 @@ namespace ConceptMatrix.Utility
 			{
 				return "Unknown Zone - 0";
 			}
+		}
+
+		public static string DefaultIfEmpty(this string s, string @default) => s.Equals(string.Empty) ? @default : s;
+
+		private static unsafe Image GetImage(byte[] bytes, int width, int height)
+		{
+			Image image;
+			fixed (byte* p = bytes)
+			{
+				var ptr = (IntPtr)p;
+				using (var tempImage = new Bitmap(width, height, width * 4, System.Drawing.Imaging.PixelFormat.Format32bppArgb, ptr))
+				{
+					image = new Bitmap(tempImage);
+				}
+			}
+
+			return image;
+		}
+
+		public static ImageSource GetImage(this TexFile tex)
+		{
+			var image = GetImage(tex.ImageData, tex.Header.Width, tex.Header.Height);
+			using (var ms = new MemoryStream())
+			{
+				image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+				ms.Seek(0, SeekOrigin.Begin);
+
+				var bmp = new System.Windows.Media.Imaging.BitmapImage();
+				bmp.BeginInit();
+				bmp.CacheOption = System.Windows.Media.Imaging.BitmapCacheOption.OnLoad;
+				bmp.StreamSource = ms;
+				bmp.EndInit();
+
+				return bmp;
+			}
+		}
+
+		/// <summary>
+		/// Gets a List of allowed weathers for a given territory.
+		/// </summary>
+		/// <param name="territoryType">The territory for this extension.</param>
+		/// <returns>List of weathers in this territory.</returns>
+		public static List<Weather> AllowedWeather(this TerritoryType territoryType)
+		{
+			// Create list of weathers to return.
+			var w = new List<Weather>();
+
+			// Get weather sheet and rates for this specific territory.
+			var weatherSheet = MainViewModel.lumina.GetExcelSheet<Weather>();
+			var weatherRate = MainViewModel.lumina.GetExcelSheet<WeatherRate>().FirstOrDefault(wr => wr.RowId == territoryType.WeatherRate);
+
+			// Iterate over the weather rates to get all weathers to add to the list.
+			foreach (var wr in weatherRate.UnkStruct0)
+				w.Add(weatherSheet.FirstOrDefault(x => x.RowId == wr.Weather));
+
+			// Return the list of weathers in this territory.
+			return w;
 		}
 	}
 }
