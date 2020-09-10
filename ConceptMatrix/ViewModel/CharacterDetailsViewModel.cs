@@ -26,7 +26,7 @@ namespace ConceptMatrix.ViewModel
         public static UIntPtr OldMemoryLocation;
         public static string baseAddr;
         public static string GposeAddr;
-        public static Views.CharacterDetailsView Viewtime;
+        public static CharacterDetailsView Viewtime;
 
         private readonly Mem m = MemoryManager.Instance.MemLib;
         private CharacterOffsets c = Settings.Instance.Character;
@@ -71,49 +71,38 @@ namespace ConceptMatrix.ViewModel
         {
             // clear the entity list
             CharacterDetails.Names.Clear();
-            // loop over entity list size
-            if (CharacterDetails.GposeMode && CharacterDetails.TargetModeActive)
+
+            // Switch base address if we're in gpose or not.
+            var addrBase = CharacterDetails.GposeMode ? MemoryManager.Instance.GposeEntityOffset : MemoryManager.Instance.BaseAddress;
+            var count = CharacterDetails.GposeMode ? m.readLong(MemoryManager.Instance.GposeEntityOffset) : 424;
+
+            // Loop over the amount of entities based on mode via count.
+            for (var i = 0; i < count; i++)
             {
-                for (var i = 0; i < m.readLong(MemoryManager.Instance.GposeEntityOffset); i++)
-                {
-                    int Test = 0;
-                    var addr = GAS(MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, ((i + 1) * 8).ToString("X")), c.Name);
-                    var Yalms = m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, ((i + 1) * 8).ToString("X")), "0x92"));
-                    var name = m.readString(addr);
-                    if (name.IndexOf('\0') != -1)
-                        name = name.Substring(0, name.IndexOf('\0'));
-                    if (i != 0) name += $" ({Yalms})";
-                    CharacterDetails.Names.Add(new ActorTable { Name = name, ActorID = i, Yalm = Yalms });
-                }
+                // Get the address base for the current iterating item.
+                var currentBase = MemoryManager.Add(addrBase, ((i + 1) * 8).ToString("X"));
+
+                // Read the object id.
+                var objectID = m.readByte(GAS(currentBase, "0x8C"));
+                // Ignore objects of a certain ID.
+                if (objectID == 0 || objectID == 4 || objectID == 5 || objectID == 6 || objectID == 7 || objectID == 8 || objectID == 11 || objectID == 12 || objectID == 13)
+                    continue;
+
+                // Get the address for the name.
+                var name = m.readString(GAS(currentBase, c.Name));
+                // Read the yalms distance.
+                var yalms = m.read2Byte(GAS(currentBase, "0x92"));
+                // Substring the name to trim off excess characters (not sure if this is needed?)
+                if (name.IndexOf('\0') != -1)
+                    name = name.Substring(0, name.IndexOf('\0'));
+                // Include yalms if it's not the current player.
+                if (i != 0)
+                    name += $" ({yalms})";
+
+                // Add name to the list.
+                CharacterDetails.Names.Add(new ActorTable { Name = name, ActorID = i, Yalm = yalms });
             }
-            else if (CharacterDetails.GposeMode && !CharacterDetails.TargetModeActive)
-            {
-                for (var i = 0; i < m.readLong(MemoryManager.Instance.GposeEntityOffset); i++)
-                {
-                    var addr = GAS(MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, ((i + 1) * 8).ToString("X")), c.Name);
-                    var Yalms = m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.GposeEntityOffset, ((i + 1) * 8).ToString("X")), "0x92"));
-                    var name = m.readString(addr);
-                    if (name.IndexOf('\0') != -1)
-                        name = name.Substring(0, name.IndexOf('\0'));
-                    if (i != 0) name += $" ({Yalms})";
-                    CharacterDetails.Names.Add(new ActorTable { Name = name, ActorID = i, Yalm = Yalms });
-                }
-            }
-            else
-            {
-                for (var i = 0; i < 424; i++)
-                {
-                    var objectID = m.readByte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, ((i + 1) * 8).ToString("X")), "0x8C"));
-                    //shitty but oh well i'm not going work hard 
-                    if (objectID == 0 || objectID == 4 || objectID == 5 || objectID == 6 || objectID == 7 || objectID == 8 || objectID == 11 || objectID == 12 || objectID == 13) continue;
-                    var addr = GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, ((i + 1) * 8).ToString("X")), c.Name);
-                    var Yalms = m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, ((i + 1) * 8).ToString("X")), "0x92"));
-                    var name = m.readString(addr);
-                    if (name.IndexOf('\0') != -1) name = name.Substring(0, name.IndexOf('\0'));
-                    if (i != 0) name += $" ({Yalms})";
-                    CharacterDetails.Names.Add(new ActorTable { Name = name, ActorID = i, Yalm = Yalms });
-                }
-            }
+
             // set the enable state
             CharacterDetails.IsEnabled = true;
             // set the index if its under 0
@@ -674,65 +663,65 @@ namespace ConceptMatrix.ViewModel
 
                 if (!CharacterDetails.OffhandRed.freeze) CharacterDetails.OffhandRed.value = m.readFloat(GAS(baseAddr, c.OffhandRed));
 
-                if (!CharacterDetails.LimbalG.freeze) CharacterDetails.LimbalG.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.LimbalG));
+                if (!CharacterDetails.LimbalG.freeze) CharacterDetails.LimbalG.value = m.readFloat(GAS(baseAddr, c.LimbalG));
 
-                if (!CharacterDetails.LimbalB.freeze) CharacterDetails.LimbalB.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.LimbalB));
+                if (!CharacterDetails.LimbalB.freeze) CharacterDetails.LimbalB.value = m.readFloat(GAS(baseAddr, c.LimbalB));
 
-                if (!CharacterDetails.LimbalR.freeze) CharacterDetails.LimbalR.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.LimbalR));
+                if (!CharacterDetails.LimbalR.freeze) CharacterDetails.LimbalR.value = m.readFloat(GAS(baseAddr, c.LimbalR));
 
-                if (!CharacterDetails.ScaleX.freeze) CharacterDetails.ScaleX.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.Body.Base, c.Body.Scale.X));
+                if (!CharacterDetails.ScaleX.freeze) CharacterDetails.ScaleX.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Scale.X));
 
-                if (!CharacterDetails.ScaleY.freeze) CharacterDetails.ScaleY.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.Body.Base, c.Body.Scale.Y));
+                if (!CharacterDetails.ScaleY.freeze) CharacterDetails.ScaleY.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Scale.Y));
 
-                if (!CharacterDetails.ScaleZ.freeze) CharacterDetails.ScaleZ.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.Body.Base, c.Body.Scale.Z));
+                if (!CharacterDetails.ScaleZ.freeze) CharacterDetails.ScaleZ.value = m.readFloat(GAS(baseAddr, c.Body.Base, c.Body.Scale.Z));
 
-                if (!CharacterDetails.LipsB.freeze) CharacterDetails.LipsB.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.LipsB));
+                if (!CharacterDetails.LipsB.freeze) CharacterDetails.LipsB.value = m.readFloat(GAS(baseAddr, c.LipsB));
 
-                if (!CharacterDetails.LipsG.freeze) CharacterDetails.LipsG.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.LipsG));
+                if (!CharacterDetails.LipsG.freeze) CharacterDetails.LipsG.value = m.readFloat(GAS(baseAddr, c.LipsG));
 
-                if (!CharacterDetails.LipsR.freeze) CharacterDetails.LipsR.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.LipsR));
+                if (!CharacterDetails.LipsR.freeze) CharacterDetails.LipsR.value = m.readFloat(GAS(baseAddr, c.LipsR));
 
-                if (!CharacterDetails.LipsBrightness.freeze) CharacterDetails.LipsBrightness.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.LipsBrightness));
+                if (!CharacterDetails.LipsBrightness.freeze) CharacterDetails.LipsBrightness.value = m.readFloat(GAS(baseAddr, c.LipsBrightness));
 
-                if (!CharacterDetails.RightEyeBlue.freeze) CharacterDetails.RightEyeBlue.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.RightEyeBlue));
-                if (!CharacterDetails.RightEyeGreen.freeze) CharacterDetails.RightEyeGreen.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.RightEyeGreen));
+                if (!CharacterDetails.RightEyeBlue.freeze) CharacterDetails.RightEyeBlue.value = m.readFloat(GAS(baseAddr, c.RightEyeBlue));
+                if (!CharacterDetails.RightEyeGreen.freeze) CharacterDetails.RightEyeGreen.value = m.readFloat(GAS(baseAddr, c.RightEyeGreen));
 
-                if (!CharacterDetails.RightEyeRed.freeze) CharacterDetails.RightEyeRed.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.RightEyeRed));
-                if (!CharacterDetails.LeftEyeBlue.freeze) CharacterDetails.LeftEyeBlue.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.LeftEyeBlue));
+                if (!CharacterDetails.RightEyeRed.freeze) CharacterDetails.RightEyeRed.value = m.readFloat(GAS(baseAddr, c.RightEyeRed));
+                if (!CharacterDetails.LeftEyeBlue.freeze) CharacterDetails.LeftEyeBlue.value = m.readFloat(GAS(baseAddr, c.LeftEyeBlue));
 
-                if (!CharacterDetails.LeftEyeGreen.freeze) CharacterDetails.LeftEyeGreen.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.LeftEyeGreen));
+                if (!CharacterDetails.LeftEyeGreen.freeze) CharacterDetails.LeftEyeGreen.value = m.readFloat(GAS(baseAddr, c.LeftEyeGreen));
 
-                if (!CharacterDetails.LeftEyeRed.freeze) CharacterDetails.LeftEyeRed.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.LeftEyeRed));
+                if (!CharacterDetails.LeftEyeRed.freeze) CharacterDetails.LeftEyeRed.value = m.readFloat(GAS(baseAddr, c.LeftEyeRed));
 
-                if (!CharacterDetails.HighlightBluePigment.freeze) CharacterDetails.HighlightBluePigment.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.HighlightBluePigment));
+                if (!CharacterDetails.HighlightBluePigment.freeze) CharacterDetails.HighlightBluePigment.value = m.readFloat(GAS(baseAddr, c.HighlightBluePigment));
 
-                if (!CharacterDetails.HighlightGreenPigment.freeze) CharacterDetails.HighlightGreenPigment.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.HighlightGreenPigment));
+                if (!CharacterDetails.HighlightGreenPigment.freeze) CharacterDetails.HighlightGreenPigment.value = m.readFloat(GAS(baseAddr, c.HighlightGreenPigment));
 
-                if (!CharacterDetails.HighlightRedPigment.freeze) CharacterDetails.HighlightRedPigment.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.HighlightRedPigment));
+                if (!CharacterDetails.HighlightRedPigment.freeze) CharacterDetails.HighlightRedPigment.value = m.readFloat(GAS(baseAddr, c.HighlightRedPigment));
 
-                if (!CharacterDetails.HairGlowBlue.freeze) CharacterDetails.HairGlowBlue.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.HairGlowBlue));
+                if (!CharacterDetails.HairGlowBlue.freeze) CharacterDetails.HairGlowBlue.value = m.readFloat(GAS(baseAddr, c.HairGlowBlue));
 
-                if (!CharacterDetails.HairGlowGreen.freeze) CharacterDetails.HairGlowGreen.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.HairGlowGreen));
+                if (!CharacterDetails.HairGlowGreen.freeze) CharacterDetails.HairGlowGreen.value = m.readFloat(GAS(baseAddr, c.HairGlowGreen));
 
-                if (!CharacterDetails.HairGlowRed.freeze) CharacterDetails.HairGlowRed.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.HairGlowRed));
+                if (!CharacterDetails.HairGlowRed.freeze) CharacterDetails.HairGlowRed.value = m.readFloat(GAS(baseAddr, c.HairGlowRed));
 
-                if (!CharacterDetails.HairBluePigment.freeze) CharacterDetails.HairBluePigment.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.HairBluePigment));
+                if (!CharacterDetails.HairBluePigment.freeze) CharacterDetails.HairBluePigment.value = m.readFloat(GAS(baseAddr, c.HairBluePigment));
 
-                if (!CharacterDetails.HairGreenPigment.freeze) CharacterDetails.HairGreenPigment.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.HairGreenPigment));
+                if (!CharacterDetails.HairGreenPigment.freeze) CharacterDetails.HairGreenPigment.value = m.readFloat(GAS(baseAddr, c.HairGreenPigment));
 
-                if (!CharacterDetails.HairRedPigment.freeze) CharacterDetails.HairRedPigment.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.HairRedPigment));
+                if (!CharacterDetails.HairRedPigment.freeze) CharacterDetails.HairRedPigment.value = m.readFloat(GAS(baseAddr, c.HairRedPigment));
 
-                if (!CharacterDetails.SkinBlueGloss.freeze) CharacterDetails.SkinBlueGloss.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.SkinBlueGloss));
+                if (!CharacterDetails.SkinBlueGloss.freeze) CharacterDetails.SkinBlueGloss.value = m.readFloat(GAS(baseAddr, c.SkinBlueGloss));
 
-                if (!CharacterDetails.SkinGreenGloss.freeze) CharacterDetails.SkinGreenGloss.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.SkinGreenGloss));
+                if (!CharacterDetails.SkinGreenGloss.freeze) CharacterDetails.SkinGreenGloss.value = m.readFloat(GAS(baseAddr, c.SkinGreenGloss));
 
-                if (!CharacterDetails.SkinRedGloss.freeze) CharacterDetails.SkinRedGloss.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.SkinRedGloss));
+                if (!CharacterDetails.SkinRedGloss.freeze) CharacterDetails.SkinRedGloss.value = m.readFloat(GAS(baseAddr, c.SkinRedGloss));
 
-                if (!CharacterDetails.SkinBluePigment.freeze) CharacterDetails.SkinBluePigment.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.SkinBluePigment));
+                if (!CharacterDetails.SkinBluePigment.freeze) CharacterDetails.SkinBluePigment.value = m.readFloat(GAS(baseAddr, c.SkinBluePigment));
 
-                if (!CharacterDetails.SkinGreenPigment.freeze) CharacterDetails.SkinGreenPigment.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.SkinGreenPigment));
+                if (!CharacterDetails.SkinGreenPigment.freeze) CharacterDetails.SkinGreenPigment.value = m.readFloat(GAS(baseAddr, c.SkinGreenPigment));
 
-                if (!CharacterDetails.SkinRedPigment.freeze) CharacterDetails.SkinRedPigment.value = m.readFloat(GAS(CharacterDetailsViewModel.baseAddr, c.SkinRedPigment));
+                if (!CharacterDetails.SkinRedPigment.freeze) CharacterDetails.SkinRedPigment.value = m.readFloat(GAS(baseAddr, c.SkinRedPigment));
 
                 if (!CharacterDetails.CameraHeight2.freeze) CharacterDetails.CameraHeight2.value = m.readFloat(GAS(MemoryManager.Instance.CameraAddress, c.CameraHeight2));
 
@@ -805,10 +794,10 @@ namespace ConceptMatrix.ViewModel
 
                 if (!CharacterDetails.CamViewX.freeze) CharacterDetails.CamViewX.value = m.readFloat(GAS(baseAddr, c.CamViewX));
 
-                if (!CharacterDetails.StatusEffect.freeze) CharacterDetails.StatusEffect.value = (int)m.read2Byte(GAS(baseAddr, c.StatusEffect));
+                if (!CharacterDetails.StatusEffect.freeze) CharacterDetails.StatusEffect.value = m.read2Byte(GAS(baseAddr, c.StatusEffect));
                 if (!CharacterDetails.Weather.freeze) CharacterDetails.Weather.value = (byte)m.readByte(GAS(MemoryManager.Instance.WeatherAddress, c.Weather));
                 if (!CharacterDetails.ForceWeather.freeze) CharacterDetails.ForceWeather.value = (ushort)m.read2Byte(GAS(MemoryManager.Instance.GposeFilters, c.ForceWeather));
-                CharacterDetails.TimeControl.value = (int)m.readInt(GAS(MemoryManager.Instance.TimeAddress, c.TimeControl));
+                CharacterDetails.TimeControl.value = m.readInt(GAS(MemoryManager.Instance.TimeAddress, c.TimeControl));
                 if (!CharacterDetails.HeadPiece.Activated) CharacterDetails.HeadSlot.value = CharacterDetails.HeadPiece.value + "," + CharacterDetails.HeadV.value + "," + CharacterDetails.HeadDye.value;
                 if (!CharacterDetails.Chest.Activated) CharacterDetails.BodySlot.value = CharacterDetails.Chest.value + "," + CharacterDetails.ChestV.value + "," + CharacterDetails.ChestDye.value;
                 if (!CharacterDetails.Arms.Activated) CharacterDetails.ArmSlot.value = CharacterDetails.Arms.value + "," + CharacterDetails.ArmsV.value + "," + CharacterDetails.ArmsDye.value;
@@ -824,7 +813,7 @@ namespace ConceptMatrix.ViewModel
             }
             catch (Exception ex)
             {
-				System.Windows.MessageBox.Show(ex.Message + "\n" + ex.StackTrace, App.ToolName, MessageBoxButton.OK, MessageBoxImage.Error);
+				MessageBox.Show(ex.Message + "\n" + ex.StackTrace, App.ToolName, MessageBoxButton.OK, MessageBoxImage.Error);
 				mediator.Work -= Work;
                 mediator.Work += Work;
             }
