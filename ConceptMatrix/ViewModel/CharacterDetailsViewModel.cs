@@ -11,6 +11,8 @@ using System.Windows;
 using ConceptMatrix.Views;
 using System.Windows.Documents;
 using System.Collections.Generic;
+using System.Linq;
+using System.Collections.ObjectModel;
 
 namespace ConceptMatrix.ViewModel
 {
@@ -98,9 +100,15 @@ namespace ConceptMatrix.ViewModel
                 if (name.IndexOf('\0') != -1)
                     name = name.Substring(0, name.IndexOf('\0'));
 
+                // Get the actor address from the pointer.
+                var address = m.readLong(currentBase);
+
                 // Add name to the list.
-                CharacterDetails.Names.Add(new ActorTable { Name = name, ActorID = i, Yalm = yalms });
+                CharacterDetails.Names.Add(new ActorTable { Name = name, ActorID = i, Yalm = yalms, Address = new IntPtr(address) });
             }
+
+            // Sort the names list by yalms.
+            CharacterDetails.Names = CharacterDetails.Names.OrderBy(a => a.Yalm).ToList();
 
             // set the enable state
             CharacterDetails.IsEnabled = true;
@@ -153,6 +161,9 @@ namespace ConceptMatrix.ViewModel
                 }
                 else
                 {
+                    if (Application.Current == null)
+                        return;
+
                     Application.Current.Dispatcher.Invoke(() => //Use Dispather to Update UI Immediately  
                     {
                         MainViewModel.characterView.MonsterCheck.IsEnabled = true;
@@ -601,27 +612,27 @@ namespace ConceptMatrix.ViewModel
 
                 if (!CharacterDetails.Transparency.freeze) CharacterDetails.Transparency.value = m.readFloat(GAS(baseAddr, c.Transparency));
 
-                if (!CharacterDetails.ModelType.freeze) CharacterDetails.ModelType.value = (int)m.read2Byte((GAS(baseAddr, c.ModelType)));
+                if (!CharacterDetails.ModelType.freeze) CharacterDetails.ModelType.value = m.read2Byte(GAS(baseAddr, c.ModelType));
 
-                if (!CharacterDetails.DataPath.freeze) CharacterDetails.DataPath.value = (short)m.read2Byte((GAS(baseAddr, c.DataPath)));
+                if (!CharacterDetails.DataPath.freeze) CharacterDetails.DataPath.value = (short)m.read2Byte(GAS(baseAddr, c.DataPath));
 
-                if (!CharacterDetails.NPCName.freeze) CharacterDetails.NPCName.value = (short)m.read2Byte((GAS(baseAddr, c.NPCName)));
+                if (!CharacterDetails.NPCName.freeze) CharacterDetails.NPCName.value = (short)m.read2Byte(GAS(baseAddr, c.NPCName));
 
-                if (!CharacterDetails.NPCModel.freeze) CharacterDetails.NPCModel.value = (short)m.read2Byte((GAS(baseAddr, c.NPCModel)));
+                if (!CharacterDetails.NPCModel.freeze) CharacterDetails.NPCModel.value = (short)m.read2Byte(GAS(baseAddr, c.NPCModel));
 
-                CharacterDetails.AltCheckPlayerFrozen.value = (float)m.readFloat((GAS(baseAddr, c.AltCheckPlayerFrozen)));
+                CharacterDetails.AltCheckPlayerFrozen.value = m.readFloat(GAS(baseAddr, c.AltCheckPlayerFrozen));
 
-                CharacterDetails.EmoteIsPlayerFrozen.value = (byte)m.readByte((GAS(baseAddr, c.EmoteIsPlayerFrozen)));
+                CharacterDetails.EmoteIsPlayerFrozen.value = (byte)m.readByte(GAS(baseAddr, c.EmoteIsPlayerFrozen));
 
                 if (CharacterDetails.AltCheckPlayerFrozen.value == 0) { Viewtime.FrozenPlayaLabel.Dispatcher.Invoke(new Action(() => { Viewtime.FrozenPlayaLabel.Content = MiscStrings.TargetActorIs; if (SaveSettings.Default.Theme == "Dark") Viewtime.FrozenPlayaLabel.Foreground = System.Windows.Media.Brushes.White; else Viewtime.FrozenPlayaLabel.Foreground = System.Windows.Media.Brushes.Black; })); }
                 else if (CharacterDetails.EmoteIsPlayerFrozen.value == 0 && CharacterDetails.AltCheckPlayerFrozen.value == 1) { Viewtime.FrozenPlayaLabel.Dispatcher.Invoke(new Action(() => { Viewtime.FrozenPlayaLabel.Content = MiscStrings.TargetActorIs2; Viewtime.FrozenPlayaLabel.Foreground = System.Windows.Media.Brushes.Red; })); }
                 else if (CharacterDetails.EmoteIsPlayerFrozen.value == 1 && CharacterDetails.AltCheckPlayerFrozen.value == 1) { Viewtime.FrozenPlayaLabel.Dispatcher.Invoke(new Action(() => { Viewtime.FrozenPlayaLabel.Content = MiscStrings.TargetActorIs3; Viewtime.FrozenPlayaLabel.Foreground = System.Windows.Media.Brushes.Green; })); }
 
-                if (!CharacterDetails.Emote.freeze) CharacterDetails.Emote.value = (int)m.read2Byte((GAS(baseAddr, c.Emote)));
+                if (!CharacterDetails.Emote.freeze) CharacterDetails.Emote.value = m.read2Byte((GAS(baseAddr, c.Emote)));
 
                 if (!CharacterDetails.EntityType.freeze) CharacterDetails.EntityType.value = (byte)m.readByte(GAS(baseAddr, c.EntityType));
 
-                if (!CharacterDetails.EmoteOld.freeze) CharacterDetails.EmoteOld.value = (int)m.read2Byte((GAS(baseAddr, c.EmoteOld)));
+                if (!CharacterDetails.EmoteOld.freeze) CharacterDetails.EmoteOld.value = m.read2Byte(GAS(baseAddr, c.EmoteOld));
 
                 if (!CharacterDetails.EmoteSpeed1.freeze)
                 {
@@ -629,11 +640,13 @@ namespace ConceptMatrix.ViewModel
                     {
                         if (CharacterDetails.TargetModeActive)
                         {
-                            CharacterDetails.EmoteSpeed1.value = (float)m.readFloat((GAS(MemoryManager.Instance.GposeAddress, c.EmoteSpeed1)));
+                            CharacterDetails.EmoteSpeed1.value = m.readFloat(GAS(MemoryManager.Instance.GposeAddress, c.EmoteSpeed1));
                         }
                         else
                         {
-                            CharacterDetails.EmoteSpeed1.value = (float)m.readFloat((GAS(GposeAddr, c.EmoteSpeed1)));
+                            // Stupid fix for an issue where gposeaddr isn't set with target mode on causing a problem on initial loop.
+                            if (GposeAddr != string.Empty)
+                                CharacterDetails.EmoteSpeed1.value = m.readFloat(GAS(GposeAddr, c.EmoteSpeed1));
                         }
                     }
 
