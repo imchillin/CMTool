@@ -33,27 +33,27 @@ namespace ConceptMatrix.Views
             MainViewModel.actorPropView = this;
         }
 
-        private void RedPxD(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void RedPChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (RedP.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.SkinRedPigment), "float", RedP.Value.ToString());
-            RedP.ValueChanged -= RedPxD;
+            RedP.ValueChanged -= RedPChanged;
         }
 
         private void RedP_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (RedP.IsKeyboardFocusWithin || RedP.IsMouseOver)
             {
-                RedP.ValueChanged -= RedPxD;
-                RedP.ValueChanged += RedPxD;
+                RedP.ValueChanged -= RedPChanged;
+                RedP.ValueChanged += RedPChanged;
             }
         }
 
-        private void GreenPxd(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void GreenPChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (GreenP.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.SkinGreenPigment), "float", GreenP.Value.ToString());
-            GreenP.ValueChanged -= GreenPxd;
+            GreenP.ValueChanged -= GreenPChanged;
         }
 
 
@@ -61,156 +61,156 @@ namespace ConceptMatrix.Views
         {
             if (GreenP.IsKeyboardFocusWithin || GreenP.IsMouseOver)
             {
-                GreenP.ValueChanged -= GreenPxd;
-                GreenP.ValueChanged += GreenPxd;
+                GreenP.ValueChanged -= GreenPChanged;
+                GreenP.ValueChanged += GreenPChanged;
             }
         }
 
-        private void BluePxd(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void BluePChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (BlueP.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.SkinBluePigment), "float", BlueP.Value.ToString());
-            BlueP.ValueChanged -= BluePxd;
+            BlueP.ValueChanged -= BluePChanged;
         }
 
         private void BlueP_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (BlueP.IsKeyboardFocusWithin || BlueP.IsMouseOver)
             {
-                BlueP.ValueChanged -= BluePxd;
-                BlueP.ValueChanged += BluePxd;
+                BlueP.ValueChanged -= BluePChanged;
+                BlueP.ValueChanged += BluePChanged;
             }
         }
 
-        private void RedGxd(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void RedGChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (RedG.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.SkinRedGloss), "float", RedG.Value.ToString());
-            RedG.ValueChanged -= RedGxd;
+            RedG.ValueChanged -= RedGChanged;
         }
 
         private void RedG_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (RedG.IsKeyboardFocusWithin || RedG.IsMouseOver)
             {
-                RedG.ValueChanged -= RedGxd;
-                RedG.ValueChanged += RedGxd;
+                RedG.ValueChanged -= RedGChanged;
+                RedG.ValueChanged += RedGChanged;
             }
         }
 
-        private void GreenGxD(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void GreenGChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (GreenG.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.SkinGreenGloss), "float", GreenG.Value.ToString());
-            GreenG.ValueChanged -= GreenGxD;
+            GreenG.ValueChanged -= GreenGChanged;
         }
 
         private void GreenG_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (GreenG.IsKeyboardFocusWithin || GreenG.IsMouseOver)
             {
-                GreenG.ValueChanged -= GreenGxD;
-                GreenG.ValueChanged += GreenGxD;
+                GreenG.ValueChanged -= GreenGChanged;
+                GreenG.ValueChanged += GreenGChanged;
             }
         }
 
-        private void BlueGxd(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void BlueGChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (BlueG.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.SkinBlueGloss), "float", BlueG.Value.ToString());
-            BlueG.ValueChanged -= BlueGxd;
+            BlueG.ValueChanged -= BlueGChanged;
         }
 
         private void BlueG_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (BlueG.IsKeyboardFocusWithin || BlueG.IsMouseOver)
             {
-                BlueG.ValueChanged -= BlueGxd;
-                BlueG.ValueChanged += BlueGxd;
+                BlueG.ValueChanged -= BlueGChanged;
+                BlueG.ValueChanged += BlueGChanged;
             }
         }
 
-        private void LipsBrightxd(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void LipsBrightChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (LipsBright.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.LipsBrightness), "float", LipsBright.Value.ToString());
-            LipsBright.ValueChanged -= LipsBrightxd;
+            LipsBright.ValueChanged -= LipsBrightChanged;
         }
 
         private void LipsBright_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (LipsBright.IsKeyboardFocusWithin || LipsBright.IsMouseOver)
             {
-                LipsBright.ValueChanged -= LipsBrightxd;
-                LipsBright.ValueChanged += LipsBrightxd;
+                LipsBright.ValueChanged -= LipsBrightChanged;
+                LipsBright.ValueChanged += LipsBrightChanged;
             }
         }
 
-        private void LipsRedxd(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void LipsRedChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (LipsRed.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.LipsR), "float", LipsRed.Value.ToString());
-            LipsRed.ValueChanged -= LipsRedxd;
+            LipsRed.ValueChanged -= LipsRedChanged;
         }
 
         private void LipsRed_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (LipsRed.IsKeyboardFocusWithin || LipsRed.IsMouseOver)
             {
-                LipsRed.ValueChanged -= LipsRedxd;
-                LipsRed.ValueChanged += LipsRedxd;
+                LipsRed.ValueChanged -= LipsRedChanged;
+                LipsRed.ValueChanged += LipsRedChanged;
             }
         }
 
-        private void LipsGreenxd(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void LipsGreenChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (LipsGreen.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.LipsG), "float", LipsGreen.Value.ToString());
-            LipsGreen.ValueChanged -= LipsGreenxd;
+            LipsGreen.ValueChanged -= LipsGreenChanged;
         }
 
         private void LipsGreen_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (LipsGreen.IsKeyboardFocusWithin || LipsGreen.IsMouseOver)
             {
-                LipsGreen.ValueChanged -= LipsGreenxd;
-                LipsGreen.ValueChanged += LipsGreenxd;
+                LipsGreen.ValueChanged -= LipsGreenChanged;
+                LipsGreen.ValueChanged += LipsGreenChanged;
             }
         }
 
-        private void LipsBluexd(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void LipsBlueChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (LipsBlue.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.LipsB), "float", LipsBlue.Value.ToString());
-            LipsBlue.ValueChanged -= LipsBluexd;
+            LipsBlue.ValueChanged -= LipsBlueChanged;
         }
 
         private void LipsBlue_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (LipsBlue.IsKeyboardFocusWithin || LipsBlue.IsMouseOver)
             {
-                LipsBlue.ValueChanged -= LipsBluexd;
-                LipsBlue.ValueChanged += LipsBluexd;
+                LipsBlue.ValueChanged -= LipsBlueChanged;
+                LipsBlue.ValueChanged += LipsBlueChanged;
             }
         }
 
-        private void HairRedxD(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void HairRedChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (HairRed.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HairRedPigment), "float", HairRed.Value.ToString());
-            HairRed.ValueChanged -= HairRedxD;
+            HairRed.ValueChanged -= HairRedChanged;
         }
 
         private void HairRed_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (HairRed.IsKeyboardFocusWithin || HairRed.IsMouseOver)
             {
-                HairRed.ValueChanged -= HairRedxD;
-                HairRed.ValueChanged += HairRedxD;
+                HairRed.ValueChanged -= HairRedChanged;
+                HairRed.ValueChanged += HairRedChanged;
             }
         }
 
-        private void HairGreenXD(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void HairGreenChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (HairGreen.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HairGreenPigment), "float", HairGreen.Value.ToString());
@@ -220,12 +220,12 @@ namespace ConceptMatrix.Views
         {
             if (HairGreen.IsKeyboardFocusWithin || HairGreen.IsMouseOver)
             {
-                HairGreen.ValueChanged -= HairGreenXD;
-                HairGreen.ValueChanged += HairGreenXD;
+                HairGreen.ValueChanged -= HairGreenChanged;
+                HairGreen.ValueChanged += HairGreenChanged;
             }
         }
 
-        private void HairBluexd(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void HairBlueChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (HairBlue.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HairBluePigment), "float", HairBlue.Value.ToString());
@@ -235,44 +235,44 @@ namespace ConceptMatrix.Views
         {
             if (HairBlue.IsKeyboardFocusWithin || HairBlue.IsMouseOver)
             {
-                HairBlue.ValueChanged -= HairBluexd;
-                HairBlue.ValueChanged += HairBluexd;
+                HairBlue.ValueChanged -= HairBlueChanged;
+                HairBlue.ValueChanged += HairBlueChanged;
             }
         }
 
-        private void HairRedGxd(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void HairRedGChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (HairRedGlow.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HairGlowRed), "float", HairRedGlow.Value.ToString());
-            HairRedGlow.ValueChanged -= HairRedGxd;
+            HairRedGlow.ValueChanged -= HairRedGChanged;
         }
 
         private void HairRedGlow_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (HairRedGlow.IsKeyboardFocusWithin || HairRedGlow.IsMouseOver)
             {
-                HairRedGlow.ValueChanged -= HairRedGxd;
-                HairRedGlow.ValueChanged += HairRedGxd;
+                HairRedGlow.ValueChanged -= HairRedGChanged;
+                HairRedGlow.ValueChanged += HairRedGChanged;
             }
         }
 
-        private void HairGreenGxD(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void HairGreenGChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (HairGreenGlow.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HairGlowGreen), "float", HairGreenGlow.Value.ToString());
-            HairGreenGlow.ValueChanged -= HairGreenGxD;
+            HairGreenGlow.ValueChanged -= HairGreenGChanged;
         }
 
         private void HairGreenGlow_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (HairGreenGlow.IsKeyboardFocusWithin || HairGreenGlow.IsMouseOver)
             {
-                HairGreenGlow.ValueChanged -= HairGreenGxD;
-                HairGreenGlow.ValueChanged += HairGreenGxD;
+                HairGreenGlow.ValueChanged -= HairGreenGChanged;
+                HairGreenGlow.ValueChanged += HairGreenGChanged;
             }
         }
 
-        private void HairBlueGxD(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void HairBlueGChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (HairBlueGlow.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HairGlowBlue), "float", HairBlueGlow.Value.ToString());
@@ -282,152 +282,152 @@ namespace ConceptMatrix.Views
         {
             if (HairBlueGlow.IsKeyboardFocusWithin || HairBlueGlow.IsMouseOver)
             {
-                HairBlueGlow.ValueChanged -= HairBlueGxD;
-                HairBlueGlow.ValueChanged += HairBlueGxD;
+                HairBlueGlow.ValueChanged -= HairBlueGChanged;
+                HairBlueGlow.ValueChanged += HairBlueGChanged;
             }
         }
 
-        private void HRPXD(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void HRPChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (HRP.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HighlightRedPigment), "float", HRP.Value.ToString());
-            HRP.ValueChanged -= HRPXD;
+            HRP.ValueChanged -= HRPChanged;
         }
 
         private void HRP_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (HRP.IsKeyboardFocusWithin || HRP.IsMouseOver)
             {
-                HRP.ValueChanged -= HRPXD;
-                HRP.ValueChanged += HRPXD;
+                HRP.ValueChanged -= HRPChanged;
+                HRP.ValueChanged += HRPChanged;
             }
         }
 
-        private void HGPxd(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void HGPChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (HGP.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HighlightGreenPigment), "float", HGP.Value.ToString());
-            HGP.ValueChanged -= HGPxd;
+            HGP.ValueChanged -= HGPChanged;
         }
 
         private void HGP_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (HGP.IsKeyboardFocusWithin || HGP.IsMouseOver)
             {
-                HGP.ValueChanged -= HGPxd;
-                HGP.ValueChanged += HGPxd;
+                HGP.ValueChanged -= HGPChanged;
+                HGP.ValueChanged += HGPChanged;
             }
         }
 
-        private void HBPXD(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void HBPChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (HBP.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HighlightBluePigment), "float", HBP.Value.ToString());
-            HBP.ValueChanged -= HBPXD;
+            HBP.ValueChanged -= HBPChanged;
         }
 
         private void HBP_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (HBP.IsKeyboardFocusWithin || HBP.IsMouseOver)
             {
-                HBP.ValueChanged -= HBPXD;
-                HBP.ValueChanged += HBPXD;
+                HBP.ValueChanged -= HBPChanged;
+                HBP.ValueChanged += HBPChanged;
             }
         }
 
-        private void LeyeRxd(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void LeyeRChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (LEyeR.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.LeftEyeRed), "float", LEyeR.Value.ToString());
-            LEyeR.ValueChanged -= LeyeRxd;
+            LEyeR.ValueChanged -= LeyeRChanged;
         }
 
         private void LEyeR_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (LEyeR.IsKeyboardFocusWithin || LEyeR.IsMouseOver)
             {
-                LEyeR.ValueChanged -= LeyeRxd;
-                LEyeR.ValueChanged += LeyeRxd;
+                LEyeR.ValueChanged -= LeyeRChanged;
+                LEyeR.ValueChanged += LeyeRChanged;
             }
         }
 
-        private void LEyeGxd(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void LEyeGChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (LeyeG.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.LeftEyeGreen), "float", LeyeG.Value.ToString());
-            LeyeG.ValueChanged -= LEyeGxd;
+            LeyeG.ValueChanged -= LEyeGChanged;
         }
 
         private void LeyeG_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (LeyeG.IsKeyboardFocusWithin || LeyeG.IsMouseOver)
             {
-                LeyeG.ValueChanged -= LEyeGxd;
-                LeyeG.ValueChanged += LEyeGxd;
+                LeyeG.ValueChanged -= LEyeGChanged;
+                LeyeG.ValueChanged += LEyeGChanged;
             }
         }
 
-        private void LeyebXD(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void LeyebChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (LeyeB.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.LeftEyeBlue), "float", LeyeB.Value.ToString());
-            LeyeB.ValueChanged -= LeyebXD;
+            LeyeB.ValueChanged -= LeyebChanged;
         }
 
         private void LeyeB_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (LeyeB.IsKeyboardFocusWithin || LeyeB.IsMouseOver)
             {
-                LeyeB.ValueChanged -= LeyebXD;
-                LeyeB.ValueChanged += LeyebXD;
+                LeyeB.ValueChanged -= LeyebChanged;
+                LeyeB.ValueChanged += LeyebChanged;
             }
         }
 
-        private void ReyeRxd(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void ReyeRChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (ReyeR.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.RightEyeRed), "float", ReyeR.Value.ToString());
-            ReyeR.ValueChanged -= ReyeRxd;
+            ReyeR.ValueChanged -= ReyeRChanged;
         }
 
         private void ReyeR_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (ReyeR.IsKeyboardFocusWithin || ReyeR.IsMouseOver)
             {
-                ReyeR.ValueChanged -= ReyeRxd;
-                ReyeR.ValueChanged += ReyeRxd;
+                ReyeR.ValueChanged -= ReyeRChanged;
+                ReyeR.ValueChanged += ReyeRChanged;
             }
         }
 
-        private void ReyeGxd(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void ReyeGChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (ReyeG.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.RightEyeGreen), "float", ReyeG.Value.ToString());
-            ReyeG.ValueChanged -= ReyeGxd;
+            ReyeG.ValueChanged -= ReyeGChanged;
         }
 
         private void ReyeG_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (ReyeG.IsKeyboardFocusWithin || ReyeG.IsMouseOver)
             {
-                ReyeG.ValueChanged -= ReyeGxd;
-                ReyeG.ValueChanged += ReyeGxd;
+                ReyeG.ValueChanged -= ReyeGChanged;
+                ReyeG.ValueChanged += ReyeGChanged;
             }
         }
 
-        private void ReyeBxd(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void ReyeBChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (ReyeB.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.RightEyeBlue), "float", ReyeB.Value.ToString());
-            ReyeB.ValueChanged -= ReyeBxd;
+            ReyeB.ValueChanged -= ReyeBChanged;
         }
 
         private void ReyeB_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (ReyeB.IsKeyboardFocusWithin || ReyeB.IsMouseOver)
             {
-                ReyeB.ValueChanged -= ReyeBxd;
-                ReyeB.ValueChanged += ReyeBxd;
+                ReyeB.ValueChanged -= ReyeBChanged;
+                ReyeB.ValueChanged += ReyeBChanged;
             }
         }
 
@@ -435,41 +435,41 @@ namespace ConceptMatrix.Views
         {
 
         }
-        private void LRXD(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void LRChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (LR.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.LimbalR), "float", LR.Value.ToString());
-            LR.ValueChanged -= LRXD;
+            LR.ValueChanged -= LRChanged;
         }
 
         private void LR_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (LR.IsKeyboardFocusWithin || LR.IsMouseOver)
             {
-                LR.ValueChanged -= LRXD;
-                LR.ValueChanged += LRXD;
+                LR.ValueChanged -= LRChanged;
+                LR.ValueChanged += LRChanged;
             }
         }
-        private void GRXD(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void GRChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (GR.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.LimbalG), "float", GR.Value.ToString());
-            GR.ValueChanged -= GRXD;
+            GR.ValueChanged -= GRChanged;
         }
         private void GR_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (GR.IsKeyboardFocusWithin || GR.IsMouseOver)
             {
-                GR.ValueChanged -= GRXD;
-                GR.ValueChanged += GRXD;
+                GR.ValueChanged -= GRChanged;
+                GR.ValueChanged += GRChanged;
             }
         }
 
-        private void BRXD(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void BRCHanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (BR.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.LimbalB), "float", BR.Value.ToString());
-            BR.ValueChanged -= BRXD;
+            BR.ValueChanged -= BRCHanged;
         }
 
 
@@ -477,32 +477,32 @@ namespace ConceptMatrix.Views
         {
             if (BR.IsKeyboardFocusWithin || BR.IsMouseOver)
             {
-                BR.ValueChanged -= BRXD;
-                BR.ValueChanged += BRXD;
+                BR.ValueChanged -= BRCHanged;
+                BR.ValueChanged += BRCHanged;
             }
         }
 
-        private void ScaleXxD(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void ScaleXChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (ScaleX.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Scale.X), "float", ScaleX.Value.ToString());
-            ScaleX.ValueChanged -= ScaleXxD;
+            ScaleX.ValueChanged -= ScaleXChanged;
         }
 
         private void ScaleX_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (ScaleX.IsKeyboardFocusWithin || ScaleX.IsMouseOver)
             {
-                ScaleX.ValueChanged -= ScaleXxD;
-                ScaleX.ValueChanged += ScaleXxD;
+                ScaleX.ValueChanged -= ScaleXChanged;
+                ScaleX.ValueChanged += ScaleXChanged;
             }
         }
 
-        private void ScaleYXd(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void ScaleYChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (ScaleY.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Scale.Y), "float", ScaleY.Value.ToString());
-            ScaleY.ValueChanged -= ScaleYXd;
+            ScaleY.ValueChanged -= ScaleYChanged;
         }
 
 
@@ -510,24 +510,24 @@ namespace ConceptMatrix.Views
         {
             if (ScaleY.IsKeyboardFocusWithin || ScaleY.IsMouseOver)
             {
-                ScaleY.ValueChanged -= ScaleYXd;
-                ScaleY.ValueChanged += ScaleYXd;
+                ScaleY.ValueChanged -= ScaleYChanged;
+                ScaleY.ValueChanged += ScaleYChanged;
             }
         }
 
-        private void ScaleZxD(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void ScaleZChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (ScaleZ.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.Scale.Z), "float", ScaleZ.Value.ToString());
-            ScaleZ.ValueChanged -= ScaleZxD;
+            ScaleZ.ValueChanged -= ScaleZChanged;
         }
 
         private void ScaleZ_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (ScaleZ.IsKeyboardFocusWithin || ScaleZ.IsMouseOver)
             {
-                ScaleZ.ValueChanged -= ScaleZxD;
-                ScaleZ.ValueChanged += ScaleZxD;
+                ScaleZ.ValueChanged -= ScaleZChanged;
+                ScaleZ.ValueChanged += ScaleZChanged;
             }
         }
         private void PlayerAoBbox_KeyDown(object sender, KeyEventArgs e)
@@ -539,7 +539,7 @@ namespace ConceptMatrix.Views
             }
         }
 
-        private void StatusEff(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void StatusEffectedChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             var m = MemoryManager.Instance.MemLib;
             var c = Settings.Instance.Character;
@@ -547,15 +547,15 @@ namespace ConceptMatrix.Views
             string GASG(params string[] args) => MemoryManager.GetAddressString(MemoryManager.Instance.GposeAddress, args);
 
             m.writeMemory(GASG(c.StatusEffect), "2bytes", (CharacterDetails.StatusEffect.value).ToString());
-            StatusEffectBox.ValueChanged -= StatusEff;
+            StatusEffectBox.ValueChanged -= StatusEffectedChanged;
         }
 
         private void StatusEffectBox_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (StatusEffectBox.IsMouseOver || StatusEffectBox.IsKeyboardFocusWithin)
             {
-                StatusEffectBox.ValueChanged -= StatusEff;
-                StatusEffectBox.ValueChanged += StatusEff;
+                StatusEffectBox.ValueChanged -= StatusEffectedChanged;
+                StatusEffectBox.ValueChanged += StatusEffectedChanged;
             }
         }
 

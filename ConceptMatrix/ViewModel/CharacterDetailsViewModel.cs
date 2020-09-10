@@ -148,10 +148,10 @@ namespace ConceptMatrix.ViewModel
                 }
                 var nameAddr = GAS(baseAddr, c.Name);
                 var fcnameAddr = GAS(baseAddr, c.FCTag);
-                var xdad = (byte)m.readByte(GAS(baseAddr, c.EntityType));
-                var SubType = (byte)m.readByte(GAS(baseAddr, c.EntitySub));
-                CharacterDetails.EntitySub.value = SubType;
-                if(SubType==5)
+                var entityType = (byte)m.readByte(GAS(baseAddr, c.EntityType));
+                var entitySubType = (byte)m.readByte(GAS(baseAddr, c.EntitySub));
+                CharacterDetails.EntitySub.value = entitySubType;
+                if(entitySubType == 5)
                 {
                     Application.Current.Dispatcher.Invoke(() => //Use Dispather to Update UI Immediately  
                     {
@@ -185,9 +185,9 @@ namespace ConceptMatrix.ViewModel
                     var fcname = m.readString(fcnameAddr);
                     if (fcname.IndexOf('\0') != -1)
                         fcname = fcname.Substring(0, fcname.IndexOf('\0'));
-                    if (xdad == 1)
+                    if (entityType == 1)
                         CharacterDetails.FCTag.value = fcname;
-                    if (xdad != 1)
+                    if (entityType != 1)
                         CharacterDetails.FCTag.value = string.Empty;
                 }
                 if (!CurrentlySavingFilter)
