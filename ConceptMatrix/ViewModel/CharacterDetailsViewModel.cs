@@ -51,7 +51,7 @@ namespace ConceptMatrix.ViewModel
         /// 
         private void Model_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            //shitty but oh well xd
+            //shitty but oh well
             if (e.PropertyName == "SelectedIndex")
             {
                 if (!CharacterDetails.GposeMode && !CharacterDetails.TargetModeActive)
@@ -104,7 +104,7 @@ namespace ConceptMatrix.ViewModel
                 for (var i = 0; i < 424; i++)
                 {
                     var objectID = m.readByte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, ((i + 1) * 8).ToString("X")), "0x8C"));
-                    //shitty but oh well xd i'm not going work hard 
+                    //shitty but oh well i'm not going work hard 
                     if (objectID == 0 || objectID == 4 || objectID == 5 || objectID == 6 || objectID == 7 || objectID == 8 || objectID == 11 || objectID == 12 || objectID == 13) continue;
                     var addr = GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, ((i + 1) * 8).ToString("X")), c.Name);
                     var Yalms = m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, ((i + 1) * 8).ToString("X")), "0x92"));

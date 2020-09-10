@@ -76,145 +76,145 @@ namespace ConceptMatrix.Views
             }
         }
 
-        private void WeaponRedxd(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void WeaponRedChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (WeaponRed.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.WeaponRed), "float", WeaponRed.Value.ToString());
-            WeaponRed.ValueChanged -= WeaponRedxd;
+            WeaponRed.ValueChanged -= WeaponRedChanged;
         }
 
         private void WeaponRed_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (WeaponRed.IsKeyboardFocusWithin || WeaponRed.IsMouseOver)
             {
-                WeaponRed.ValueChanged -= WeaponRedxd;
-                WeaponRed.ValueChanged += WeaponRedxd;
+                WeaponRed.ValueChanged -= WeaponRedChanged;
+                WeaponRed.ValueChanged += WeaponRedChanged;
             }
         }
 
-        private void WeaponGreenxD(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void WeaponGreenChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (WeaponGreen.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.WeaponGreen), "float", WeaponGreen.Value.ToString());
-            WeaponGreen.ValueChanged -= WeaponGreenxD;
+            WeaponGreen.ValueChanged -= WeaponGreenChanged;
         }
 
         private void WeaponGreen_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (WeaponGreen.IsKeyboardFocusWithin || WeaponGreen.IsMouseOver)
             {
-                WeaponGreen.ValueChanged -= WeaponGreenxD;
-                WeaponGreen.ValueChanged += WeaponGreenxD;
+                WeaponGreen.ValueChanged -= WeaponGreenChanged;
+                WeaponGreen.ValueChanged += WeaponGreenChanged;
             }
         }
 
-        private void WeaponBluexD(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void WeaponBlueChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (WeaponBlue.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.WeaponBlue), "float", WeaponBlue.Value.ToString());
-            WeaponBlue.ValueChanged -= WeaponBluexD;
+            WeaponBlue.ValueChanged -= WeaponBlueChanged;
         }
 
         private void WeaponBlue_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (WeaponBlue.IsKeyboardFocusWithin || WeaponBlue.IsMouseOver)
             {
-                WeaponBlue.ValueChanged -= WeaponBluexD;
-                WeaponBlue.ValueChanged += WeaponBluexD;
+                WeaponBlue.ValueChanged -= WeaponBlueChanged;
+                WeaponBlue.ValueChanged += WeaponBlueChanged;
             }
         }
 
-        private void OXPOSXD(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void OXPosChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (OXPos.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.OffhandX), "float", OXPos.Value.ToString());
-            OXPos.ValueChanged -= OXPOSXD;
+            OXPos.ValueChanged -= OXPosChanged;
         }
 
         private void OXPos_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (OXPos.IsKeyboardFocusWithin || OXPos.IsMouseOver)
             {
-                OXPos.ValueChanged -= OXPOSXD;
-                OXPos.ValueChanged += OXPOSXD;
+                OXPos.ValueChanged -= OXPosChanged;
+                OXPos.ValueChanged += OXPosChanged;
             }
         }
 
-        private void OYPOSXD(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void OYPosChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (OYPos.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.OffhandY), "float", OYPos.Value.ToString());
-            OYPos.ValueChanged -= OYPOSXD;
+            OYPos.ValueChanged -= OYPosChanged;
         }
 
         private void OYPos_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (OYPos.IsKeyboardFocusWithin || OYPos.IsMouseOver)
             {
-                OYPos.ValueChanged -= OYPOSXD;
-                OYPos.ValueChanged += OYPOSXD;
+                OYPos.ValueChanged -= OYPosChanged;
+                OYPos.ValueChanged += OYPosChanged;
             }
         }
 
-        private void OZPosXD(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void OZPosChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (OZPos.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.OffhandZ), "float", OZPos.Value.ToString());
-            OZPos.ValueChanged -= OZPosXD;
+            OZPos.ValueChanged -= OZPosChanged;
         }
 
         private void OZPos_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (OZPos.IsKeyboardFocusWithin || OZPos.IsMouseOver)
             {
-                OZPos.ValueChanged -= OZPosXD;
-                OZPos.ValueChanged += OZPosXD;
+                OZPos.ValueChanged -= OZPosChanged;
+                OZPos.ValueChanged += OZPosChanged;
             }
         }
-        private void OFfRedxD(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void OffRedChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (OffRed.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.OffhandRed), "float", OffRed.Value.ToString());
-            OffRed.ValueChanged -= OFfRedxD;
+            OffRed.ValueChanged -= OffRedChanged;
         }
         private void OffRed_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (OffRed.IsKeyboardFocusWithin || OffRed.IsMouseOver)
             {
-                OffRed.ValueChanged -= OFfRedxD;
-                OffRed.ValueChanged += OFfRedxD;
+                OffRed.ValueChanged -= OffRedChanged;
+                OffRed.ValueChanged += OffRedChanged;
             }
         }
 
-        private void OFFGXD(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void OffGChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (OffGreen.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.OffhandGreen), "float", OffGreen.Value.ToString());
-            OffGreen.ValueChanged -= OFFGXD;
+            OffGreen.ValueChanged -= OffGChanged;
         }
 
         private void OffGreen_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (OffGreen.IsKeyboardFocusWithin || OffGreen.IsMouseOver)
             {
-                OffGreen.ValueChanged -= OFFGXD;
-                OffGreen.ValueChanged += OFFGXD;
+                OffGreen.ValueChanged -= OffGChanged;
+                OffGreen.ValueChanged += OffGChanged;
             }
         }
 
-        private void OFFBXD(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void OffBChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (OffBlue.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.OffhandBlue), "float", OffBlue.Value.ToString());
-            OffBlue.ValueChanged -= OFFBXD;
+            OffBlue.ValueChanged -= OffBChanged;
         }
 
         private void OffBlue_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (OffBlue.IsKeyboardFocusWithin || OffBlue.IsMouseOver)
             {
-                OffBlue.ValueChanged -= OFFBXD;
-                OffBlue.ValueChanged += OFFBXD;
+                OffBlue.ValueChanged -= OffBChanged;
+                OffBlue.ValueChanged += OffBChanged;
             }
         }
         public static bool CheckItemList()
