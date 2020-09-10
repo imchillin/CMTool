@@ -121,8 +121,21 @@
         <mah:NumericUpDown x:Name="StatusEffectBox" Maximum="2250" Minimum="0" Value="{Binding Path=CharacterDetails.StatusEffect.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="865,464,0,0" VerticalAlignment="Top" Width="150" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Interval="1" TextAlignment="Right" NumericInputMode="Numbers" SourceUpdated="StatusEffectBox_SourceUpdated" Speedup="False" Height="28" IsReadOnly="True"/>
         <Button x:Name="StatusEffectZero" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.ResetButton}}" HorizontalAlignment="Left" Margin="1025,477,0,0" VerticalAlignment="Top" Width="70" Height="28" FontSize="14" Click="StatusEffectZero_Click" IsEnabled="False"/>
         <Label x:Name="StatusEffectText" Content="{Binding Source={x:Static resx:UIStringsContent.StatusEffect}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.StatusEffectToolTip}}" HorizontalAlignment="Left" Margin="765,472,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="0"/>
-        <ComboBox x:Name="StatusEffectBox2" SelectedValuePath="Tag" SelectedValue="{Binding CharacterDetails.StatusEffect.value}" HorizontalAlignment="Left" Margin="865,497,0,0" VerticalAlignment="Top" Width="150" Height="28" FontSize="11.35" SelectedIndex="0" SelectionChanged="StatusEffectBox2_SelectionChanged" IsReadOnly="True" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
-        </ComboBox>
+        <ComboBox x:Name="StatusEffectBox2" SelectedValue="{Binding CharacterDetails.StatusEffect.value}" HorizontalAlignment="Left" Margin="865,497,0,0" VerticalAlignment="Top" Width="150" Height="28" FontSize="11.35" SelectedIndex="0" SelectionChanged="StatusEffectBox2_SelectionChanged" IsReadOnly="True" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal">
+						<Image Width="20" Height="20" Source="{Binding Icon}"/>
+						<Label Content="{Binding Name}" />
+					</StackPanel>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+			<ComboBox.ItemsPanel>
+				<ItemsPanelTemplate>
+					<VirtualizingStackPanel />
+				</ItemsPanelTemplate>
+			</ComboBox.ItemsPanel>
+		</ComboBox>
 
     </Grid>
 </UserControl>

@@ -242,6 +242,18 @@ namespace ConceptMatrix.ViewModel
             worldView.ForceWeatherBox.ItemsSource = weatherList;
             worldView.WeatherBox.ItemsSource = weatherList;
 
+            // Get status sheet.
+            var statusList = from s in lumina.GetExcelSheet<Status>()
+                             where s.VFX.Row != 0 || s.RowId == 0
+                             select new CMStatus()
+                             {
+                                 Id = s.RowId,
+                                 Name = s.Name.DefaultIfEmpty("None"),
+                                 Description = s.Description,
+                                 Icon = lumina.GetIcon(s.Icon).GetImage()
+                             };
+            actorPropView.StatusEffectBox2.ItemsSource = statusList;
+
             #endregion
 
             try
@@ -264,22 +276,6 @@ namespace ConceptMatrix.ViewModel
                     }
                 }
 
-
-
-                var StatusSheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Status>();
-                HashSet<byte> Sets = new HashSet<byte>();
-                foreach (SaintCoinach.Xiv.Status status in StatusSheet)
-                {
-                    if (status.Key == 0)
-                    {
-                        actorPropView.StatusEffectBox2.Items.Add(new ComboBoxItem() { Content = "None", Tag = 0 });
-                    }
-                    if (Sets.Contains(status.VFX) || status.VFX <= 0) continue;
-                    Sets.Add(status.VFX);
-                    string name = status.Name.ToString();
-                    if (name.Length <= 0) name = "None";
-                    actorPropView.StatusEffectBox2.Items.Add(new ComboBoxItem() { Content = name, Tag = status.Key });
-                }
                 var TitleSheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Title>();
                 foreach (SaintCoinach.Xiv.Title title in TitleSheet)
                 {
