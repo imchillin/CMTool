@@ -26,76 +26,77 @@ namespace ConceptMatrix.Views
         {
             public Address<string> FilterAoB { get; set; }
         }
-        private List<CMWeather> AllowedWeathers;
         private bool isUserInteraction;
-        private bool istimeLocked=false;
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
         public WorldView()
         {
             InitializeComponent();
-            if (SaveSettings.Default.HasBackground == false) WorldBG.Opacity = 0;
+            if (SaveSettings.Default.HasBackground == false)
+                WorldBG.Opacity = 0;
             MainViewModel.worldView = this;
         }
 
-        private void MaxZoomXD(object sender, RoutedPropertyChangedEventArgs<double?> e)
+		#region Stupid ass shit sick of these dumb names
+
+		private void MaxZoomChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (MaxZoom.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.Max), "float", MaxZoom.Value.ToString());
-            MaxZoom.ValueChanged -= MaxZoomXD;
+            MaxZoom.ValueChanged -= MaxZoomChanged;
         }
 
         private void MaxZoom_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (MaxZoom.IsMouseOver || MaxZoom.IsKeyboardFocusWithin)
             {
-                MaxZoom.ValueChanged -= MaxZoomXD;
-                MaxZoom.ValueChanged += MaxZoomXD;
+                MaxZoom.ValueChanged -= MaxZoomChanged;
+                MaxZoom.ValueChanged += MaxZoomChanged;
             }
         }
 
-        private void MinZoomXD(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void MinZoomChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (Min_Zoom.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.Min), "float", Min_Zoom.Value.ToString());
-            Min_Zoom.ValueChanged -= MinZoomXD;
+            Min_Zoom.ValueChanged -= MinZoomChanged;
         }
 
         private void Min_Zoom_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (Min_Zoom.IsMouseOver || Min_Zoom.IsKeyboardFocusWithin)
             {
-                Min_Zoom.ValueChanged -= MinZoomXD;
-                Min_Zoom.ValueChanged += MinZoomXD;
+                Min_Zoom.ValueChanged -= MinZoomChanged;
+                Min_Zoom.ValueChanged += MinZoomChanged;
             }
         }
 
-        private void CurrentZoomxD(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void CurrentZoomChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (CurrentZoom.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CZoom), "float", CurrentZoom.Value.ToString());
-            CurrentZoom.ValueChanged -= CurrentZoomxD;
+            CurrentZoom.ValueChanged -= CurrentZoomChanged;
         }
-        private void CurrentZoomxD(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void CurrentZoom2Changed(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (CurrentZoom.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CZoom), "float", CZoom2.Value.ToString());
-            CZoom2.ValueChanged -= CurrentZoomxD;
+            CZoom2.ValueChanged -= CurrentZoom2Changed;
         }
         private void CurrentZoom_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (CurrentZoom.IsMouseOver || CurrentZoom.IsKeyboardFocusWithin)
             {
-                CurrentZoom.ValueChanged -= CurrentZoomxD;
-                CurrentZoom.ValueChanged += CurrentZoomxD;
+                CurrentZoom.ValueChanged -= CurrentZoomChanged;
+                CurrentZoom.ValueChanged += CurrentZoomChanged;
             }
             if (CZoom2.IsMouseOver || CZoom2.IsKeyboardFocusWithin)
             {
-                CZoom2.ValueChanged -= CurrentZoomxD;
-                CZoom2.ValueChanged += CurrentZoomxD;
+                CZoom2.ValueChanged -= CurrentZoom2Changed;
+                CZoom2.ValueChanged += CurrentZoom2Changed;
             }
         }
 
-        private void CurrentFOVXD(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void CurrentZoomChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (CurrentFOV.Value.HasValue)
             {
@@ -111,7 +112,7 @@ namespace ConceptMatrix.Views
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.FOVC), "float", CurrentFOV.Value.ToString());
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.FOVMAX), "float", CurrentFOV.Value.ToString());
             }
-            FOV1S.ValueChanged -= CurrentFOVXD;
+            FOV1S.ValueChanged -= CurrentZoomChanged;
         }
         private void CurrentFOV_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
@@ -122,48 +123,48 @@ namespace ConceptMatrix.Views
             }
             if (FOV1S.IsMouseOver || FOV1S.IsKeyboardFocusWithin)
             {
-                FOV1S.ValueChanged -= CurrentFOVXD;
-                FOV1S.ValueChanged += CurrentFOVXD;
+                FOV1S.ValueChanged -= CurrentZoomChanged;
+                FOV1S.ValueChanged += CurrentZoomChanged;
             }
         }
 
-        private void CamHeightxd(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void CamHeightChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (CameraHeight2.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CameraHeight2), "float", CameraHeight2.Value.ToString());
-            CameraHeight2.ValueChanged -= CamHeightxd;
+            CameraHeight2.ValueChanged -= CamHeightChanged;
         }
 
         private void CameraHeight2_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (CameraHeight2.IsMouseOver || CameraHeight2.IsKeyboardFocusWithin)
             {
-                CameraHeight2.ValueChanged -= CamHeightxd;
-                CameraHeight2.ValueChanged += CamHeightxd;
+                CameraHeight2.ValueChanged -= CamHeightChanged;
+                CameraHeight2.ValueChanged += CamHeightChanged;
             }
         }
 
-        private void CamYMinxD(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void CamYMinChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (CamYMin.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CameraYAMin), "float", CamYMin.Value.ToString());
-            CamYMin.ValueChanged -= CamYMinxD;
+            CamYMin.ValueChanged -= CamYMinChanged;
         }
 
         private void CamYMin_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (CamYMin.IsMouseOver || CamYMin.IsKeyboardFocusWithin)
             {
-                CamYMin.ValueChanged -= CamYMinxD;
-                CamYMin.ValueChanged += CamYMinxD;
+                CamYMin.ValueChanged -= CamYMinChanged;
+                CamYMin.ValueChanged += CamYMinChanged;
             }
         }
 
-        private void CamYMaxxD(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void CamYMaxChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (CamYMax.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CameraYAMax), "float", CamYMax.Value.ToString());
-            CamYMax.ValueChanged -= CamYMaxxD;
+            CamYMax.ValueChanged -= CamYMaxChanged;
         }
 
 
@@ -171,16 +172,16 @@ namespace ConceptMatrix.Views
         {
             if (CamYMax.IsMouseOver || CamYMax.IsKeyboardFocusWithin)
             {
-                CamYMax.ValueChanged -= CamYMaxxD;
-                CamYMax.ValueChanged += CamYMaxxD;
+                CamYMax.ValueChanged -= CamYMaxChanged;
+                CamYMax.ValueChanged += CamYMaxChanged;
             }
         }
 
-        private void FOV2XD(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void FOV2Changed(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (FOV2.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.FOV2), "float", FOV2.Value.ToString());
-            FOV2.ValueChanged -= FOV2XD;
+            FOV2.ValueChanged -= FOV2Changed;
         }
         private void FOV2Ax(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
@@ -192,8 +193,8 @@ namespace ConceptMatrix.Views
         {
             if (FOV2.IsMouseOver || FOV2.IsKeyboardFocusWithin)
             {
-                FOV2.ValueChanged -= FOV2XD;
-                FOV2.ValueChanged += FOV2XD;
+                FOV2.ValueChanged -= FOV2Changed;
+                FOV2.ValueChanged += FOV2Changed;
             }
             if (FOV2S.IsMouseOver || FOV2S.IsKeyboardFocusWithin)
             {
@@ -201,19 +202,19 @@ namespace ConceptMatrix.Views
                 FOV2S.ValueChanged += FOV2Ax;
             }
         }
-        private void CamUpDownXd(object sender, RoutedPropertyChangedEventArgs<double?> e)
+        private void CamUpDownChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (CamUpDown.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CameraUpDown), "float", CamUpDown.Value.ToString());
-            CamUpDown.ValueChanged -= CamUpDownXd;
+            CamUpDown.ValueChanged -= CamUpDownChanged;
         }
 
         private void CamUpDown_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             if (CamUpDown.IsMouseOver || CamUpDown.IsKeyboardFocusWithin)
             {
-                CamUpDown.ValueChanged -= CamUpDownXd;
-                CamUpDown.ValueChanged += CamUpDownXd;
+                CamUpDown.ValueChanged -= CamUpDownChanged;
+                CamUpDown.ValueChanged += CamUpDownChanged;
             }
         }
 
@@ -236,27 +237,27 @@ namespace ConceptMatrix.Views
         {
 
         }
-        private void Timexd_ValueChanged_1(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void TimeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            TimeControlUpDown.Value = Timexd.Value;
+            TimeControlUpDown.Value = TimeSlider.Value;
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.TimeAddress, Settings.Instance.Character.TimeControl), "int", TimeControlUpDown.Value.ToString());
-            Timexd.ValueChanged -= Timexd_ValueChanged_1;
+            TimeSlider.ValueChanged -= TimeSlider_ValueChanged;
         }
         private void TimeVA(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (TimeControlUpDown.Value.HasValue)
             {
-                Timexd.Value = (double)TimeControlUpDown.Value;
+                TimeSlider.Value = (double)TimeControlUpDown.Value;
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.TimeAddress, Settings.Instance.Character.TimeControl), "int", TimeControlUpDown.Value.ToString());
             }
             TimeControlUpDown.ValueChanged -= TimeVA;
         }
-        private void Timexd_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
+        private void Time_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
-            if (Timexd.IsMouseOver || Timexd.IsKeyboardFocusWithin)
+            if (TimeSlider.IsMouseOver || TimeSlider.IsKeyboardFocusWithin)
             {
-                Timexd.ValueChanged -= Timexd_ValueChanged_1;
-                Timexd.ValueChanged += Timexd_ValueChanged_1;
+                TimeSlider.ValueChanged -= TimeSlider_ValueChanged;
+                TimeSlider.ValueChanged += TimeSlider_ValueChanged;
             }
             if (TimeControlUpDown.IsMouseOver || TimeControlUpDown.IsKeyboardFocusWithin)
             {
@@ -265,14 +266,23 @@ namespace ConceptMatrix.Views
             }
         }
 
+        #endregion
+
         private void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 // Get the allowed weathers for this territory.
                 var allowedWeathers = MainViewModel.lumina.GetExcelSheet<TerritoryType>().First(t => t.RowId == CharacterDetails.Territory.value).AllowedWeather();
-                WeatherBox.ItemsSource = from w in allowedWeathers 
-                                         select new CMWeather() { Id = (byte)w.RowId, Icon = MainViewModel.lumina.GetIcon(w.Icon).GetImage(), Name = w.Name };
+                // Create a CMWeather list for use in an itemssource.
+                var cmWeathers = from w in allowedWeathers
+                                 select new CMWeather() { Id = (byte)w.RowId, Icon = MainViewModel.lumina.GetIcon(w.Icon).GetImage(), Name = w.Name };
+
+                // Set the item source to the CMWeather list.
+                WeatherBox.ItemsSource = cmWeathers;
+
+                // Set the selected item to be the weather that's currently active. 
+                WeatherBox.SelectedIndex = cmWeathers.TakeWhile(w => w.Id != CharacterDetails.Weather.value).Count();
             }
             catch (Exception)
             {
@@ -334,7 +344,9 @@ namespace ConceptMatrix.Views
             else CharacterDetailsViewModel.CurrentlySavingFilter = false;
         }
 
-        private void BrightSlider_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
+		#region More useless shit
+
+		private void BrightSlider_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             {
                 if (BrightSlider.IsMouseOver || BrightSlider.IsKeyboardFocusWithin)
@@ -841,6 +853,8 @@ namespace ConceptMatrix.Views
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.GposeFilters, Settings.Instance.Character.FilterEnable), "byte", "00");
         }
 
+        #endregion
+
         private void Load_Button_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dig = new OpenFileDialog();
@@ -887,27 +901,8 @@ namespace ConceptMatrix.Views
 
         private void TimeButton_Click(object sender, RoutedEventArgs e)
         {
-            Timexd.Value = 0;
+            TimeSlider.Value = 0;
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.TimeAddress, Settings.Instance.Character.TimeControl), "int", "0");
-        }
-
-        private async void TimeButtonLock_Checked(object sender, RoutedEventArgs e)
-        {
-            istimeLocked = true;
-            while(istimeLocked)
-            {
-                if (!istimeLocked) break;
-                if (TimeControlUpDown.Value == 0) TimeControlUpDown.Value += 86400;
-                TimeControlUpDown.Value -= 1;
-                if (TimeControlUpDown.Value == int.MinValue) TimeControlUpDown.Value += 86400;
-                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.TimeAddress, Settings.Instance.Character.TimeControl), "int", TimeControlUpDown.Value.ToString());
-                await System.Threading.Tasks.Task.Delay(37);
-            }
-        }
-
-        private void TimeButtonLock_Unchecked(object sender, RoutedEventArgs e)
-        {
-            istimeLocked = false;
         }
 
         private void ResetCams_Click(object sender, RoutedEventArgs e)
@@ -943,14 +938,17 @@ namespace ConceptMatrix.Views
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CamPanY), "float", CharacterDetails.CamPanY.value.ToString());
         }
 
-        private void Renda_Click(object sender, RoutedEventArgs e)
+        private void Render_Click(object sender, RoutedEventArgs e)
         {
-            var Old= System.BitConverter.GetBytes(MemoryManager.Instance.MemLib.read2Byte(MemoryManager.Instance.CharacterRenderAddress2));
+            var old = System.BitConverter.GetBytes(MemoryManager.Instance.MemLib.read2Byte(MemoryManager.Instance.CharacterRenderAddress2));
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.CharacterRenderAddress2, "bytes", "0x00 0x00");
             System.Threading.Tasks.Task.Delay(50).Wait();
-            MemoryManager.Instance.MemLib.writeBytes(MemoryManager.Instance.CharacterRenderAddress2, Old);
+            MemoryManager.Instance.MemLib.writeBytes(MemoryManager.Instance.CharacterRenderAddress2, old);
         }
-        private void CamAngleVC(object sender, RoutedPropertyChangedEventArgs<double?> e)
+
+		#region More trash
+
+		private void CamAngleVC(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (CamAngleY.Value.HasValue)
             {
@@ -1015,6 +1013,8 @@ namespace ConceptMatrix.Views
                 CamPanX.ValueChanged += CamPanVC2;
             }
         }
+
+        #endregion
 
         static public bool FreezeCamAngleSet = false;
         private void FreezeCamAngle_Click(object sender, RoutedEventArgs e)
