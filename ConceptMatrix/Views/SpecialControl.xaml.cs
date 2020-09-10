@@ -523,15 +523,15 @@ namespace ConceptMatrix.Views
 
         private void SearchModelBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string filter = SearchModelBox.Text.ToLower();
+            var filter = SearchModelBox.Text.ToLower();
             ModelBox.Items.Clear();
-            foreach (ExdCsvReader.Monster xD in ExdCsvReader.MonsterX.Where(g => g.Name.ToLower().Contains(filter)))
-                if (xD.Real == true)
+            foreach (var m in ExdCsvReader.MonsterX.Where(g => g.Name.ToLower().Contains(filter)))
+                if (m.Real == true)
                 {
                     ModelBox.Items.Add(new ExdCsvReader.Monster
                     {
-                        Index = Convert.ToInt32(xD.Index),
-                        Name = xD.Name.ToString()
+                        Index = Convert.ToInt32(m.Index),
+                        Name = m.Name.ToString()
                     });
                 }
         }
@@ -586,9 +586,9 @@ namespace ConceptMatrix.Views
                 DidUserInteract = false;
                 Random rnd = new Random();
                 int Value = rnd.Next(CharacterFeature.Items.Count);
-                var checkxd = (FeatureSelect)CharacterFeature.Items[Value];
-                CharacterDetails.Hair.value = (byte)checkxd.ID;
-                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Hair), "byte", checkxd.ID.ToString("X"));
+                var featureCheck = (FeatureSelect)CharacterFeature.Items[Value];
+                CharacterDetails.Hair.value = (byte)featureCheck.ID;
+                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Hair), "byte", featureCheck.ID.ToString("X"));
             }
             catch (Exception e)
             {

@@ -31,13 +31,13 @@ namespace ConceptMatrix.Views
             InitializeComponent();
             _exdProvider.BGMList();
             ExdCsvReader.BGMX = _exdProvider.BGMs.Values.ToArray();
-            foreach (ExdCsvReader.BGM xD in ExdCsvReader.BGMX)
+            foreach (var bgm in ExdCsvReader.BGMX)
             {
                 BGMBox.Items.Add(new ExdCsvReader.BGM
                 {
-                    Index = Convert.ToInt32(xD.Index),
-                    Name = xD.Name.ToString(),
-                    Location = xD.Location.ToString(),
+                    Index = Convert.ToInt32(bgm.Index),
+                    Name = bgm.Name.ToString(),
+                    Location = bgm.Location.ToString(),
                 });
             }
         }
@@ -58,12 +58,12 @@ namespace ConceptMatrix.Views
         {
             string filter = searchTextBox.Text.ToLower();
             BGMBox.Items.Clear();
-            foreach (ExdCsvReader.BGM xD in ExdCsvReader.BGMX.Where(g => g.Name.ToLower().Contains(filter)))
+            foreach (var bgm in ExdCsvReader.BGMX.Where(g => g.Name.ToLower().Contains(filter)))
                 BGMBox.Items.Add(new ExdCsvReader.BGM
                 {
-                    Index = Convert.ToInt32(xD.Index),
-                    Name = xD.Name.ToString(),
-                    Location = xD.Location.ToString(),
+                    Index = Convert.ToInt32(bgm.Index),
+                    Name = bgm.Name.ToString(),
+                    Location = bgm.Location.ToString(),
                 });
         }
     }

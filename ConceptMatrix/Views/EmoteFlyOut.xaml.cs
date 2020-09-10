@@ -23,46 +23,46 @@ namespace ConceptMatrix.Views
             InitializeComponent();
             _exdProvider.EmoteList();
             ExdCsvReader.Emotesx = _exdProvider.Emotes.Values.ToArray();
-            foreach (ExdCsvReader.Emote xD in ExdCsvReader.Emotesx)
+            foreach (var emote in ExdCsvReader.Emotesx)
             {
                 AllBox.Items.Add(new ExdCsvReader.Emote
                 {
-                    Index = Convert.ToInt32(xD.Index),
-                    Name = xD.Name.ToString()
+                    Index = Convert.ToInt32(emote.Index),
+                    Name = emote.Name.ToString()
                 });
-                if (xD.Realist == true)
+                if (emote.Realist == true)
                 {
                     SocialBox.Items.Add(new ExdCsvReader.Emote
                     {
-                        Index = Convert.ToInt32(xD.Index),
-                        Name = xD.Name.ToString()
+                        Index = Convert.ToInt32(emote.Index),
+                        Name = emote.Name.ToString()
                     });
                 }
-                if (xD.BattleReal == true)
+                if (emote.BattleReal == true)
                 {
                     BattleBox.Items.Add(new ExdCsvReader.Emote
                     {
-                        Index = Convert.ToInt32(xD.Index),
-                        Name = xD.Name.ToString()
+                        Index = Convert.ToInt32(emote.Index),
+                        Name = emote.Name.ToString()
                     });
                 }
-                if (xD.SpeacialReal == true)
+                if (emote.SpeacialReal == true)
                 {
                     MonsterBox.Items.Add(new ExdCsvReader.Emote
                     {
-                        Index = Convert.ToInt32(xD.Index),
-                        Name = xD.Name.ToString()
+                        Index = Convert.ToInt32(emote.Index),
+                        Name = emote.Name.ToString()
                     });
                 }
             }
             if (SaveSettings.Default.FavoriteEmotes.Count > 0)
             {
-                foreach (ExdCsvReader.Emote xD in SaveSettings.Default.FavoriteEmotes)
+                foreach (var emote in SaveSettings.Default.FavoriteEmotes)
                 {
                     FavoriteBox.Items.Add(new ExdCsvReader.Emote
                     {
-                        Index = Convert.ToInt32(xD.Index),
-                        Name = xD.Name.ToString()
+                        Index = Convert.ToInt32(emote.Index),
+                        Name = emote.Name.ToString()
                     });
                 }
             }
@@ -70,57 +70,57 @@ namespace ConceptMatrix.Views
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string filter = searchTextBox.Text.ToLower();
+            var filter = searchTextBox.Text.ToLower();
             SocialBox.Items.Clear();
-            foreach (ExdCsvReader.Emote xD in ExdCsvReader.Emotesx.Where(g => g.Name.ToLower().Contains(filter)))
-                if (xD.Realist == true)
+            foreach (var emote in ExdCsvReader.Emotesx.Where(g => g.Name.ToLower().Contains(filter)))
+                if (emote.Realist == true)
                 {
                     SocialBox.Items.Add(new ExdCsvReader.Emote
                     {
-                        Index = Convert.ToInt32(xD.Index),
-                        Name = xD.Name.ToString()
+                        Index = Convert.ToInt32(emote.Index),
+                        Name = emote.Name.ToString()
                     });
                 }
         }
 
         private void SearchTextBoxMonster_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string filter = SearchTextBoxMonster.Text.ToLower();
+            var filter = SearchTextBoxMonster.Text.ToLower();
             MonsterBox.Items.Clear();
-            foreach (ExdCsvReader.Emote xD in ExdCsvReader.Emotesx.Where(g => g.Name.ToLower().Contains(filter)))
-                if (xD.SpeacialReal == true)
+            foreach (var emote in ExdCsvReader.Emotesx.Where(g => g.Name.ToLower().Contains(filter)))
+                if (emote.SpeacialReal == true)
                 {
                     MonsterBox.Items.Add(new ExdCsvReader.Emote
                     {
-                        Index = Convert.ToInt32(xD.Index),
-                        Name = xD.Name.ToString()
+                        Index = Convert.ToInt32(emote.Index),
+                        Name = emote.Name.ToString()
                     });
                 }
         }
 
         private void SearchTextBoxAll_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string filter = SearchTextBoxAll.Text.ToLower();
+            var filter = SearchTextBoxAll.Text.ToLower();
             AllBox.Items.Clear();
-            foreach (ExdCsvReader.Emote xD in ExdCsvReader.Emotesx.Where(g => g.Name.ToLower().Contains(filter)))
+            foreach (var emote in ExdCsvReader.Emotesx.Where(g => g.Name.ToLower().Contains(filter)))
                 AllBox.Items.Add(new ExdCsvReader.Emote
                 {
-                    Index = Convert.ToInt32(xD.Index),
-                    Name = xD.Name.ToString()
+                    Index = Convert.ToInt32(emote.Index),
+                    Name = emote.Name.ToString()
                 });
         }
 
         private void BattleTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string filter = BattleTextBox.Text.ToLower();
+            var filter = BattleTextBox.Text.ToLower();
             BattleBox.Items.Clear();
-            foreach (ExdCsvReader.Emote xD in ExdCsvReader.Emotesx.Where(g => g.Name.ToLower().Contains(filter)))
-                if (xD.BattleReal == true)
+            foreach (var emote in ExdCsvReader.Emotesx.Where(g => g.Name.ToLower().Contains(filter)))
+                if (emote.BattleReal == true)
                 {
                     BattleBox.Items.Add(new ExdCsvReader.Emote
                     {
-                        Index = Convert.ToInt32(xD.Index),
-                        Name = xD.Name.ToString()
+                        Index = Convert.ToInt32(emote.Index),
+                        Name = emote.Name.ToString()
                     });
                 }
         }
@@ -134,12 +134,12 @@ namespace ConceptMatrix.Views
                 if (AnimBox.SelectedIndex == 0)
                 {
                     var Value = (ExdCsvReader.Emote)SocialBox.SelectedItem;
-                    CharacterDetails.Emote.value = (int)Value.Index;
+                    CharacterDetails.Emote.value = Value.Index;
                 }
                 if (AnimBox.SelectedIndex == 1)
                 {
                     var Value = (ExdCsvReader.Emote)SocialBox.SelectedItem;
-                    CharacterDetails.EmoteOld.value = (int)Value.Index;
+                    CharacterDetails.EmoteOld.value = Value.Index;
                 }
             }
         }
@@ -153,12 +153,12 @@ namespace ConceptMatrix.Views
                 if (AnimBox.SelectedIndex == 0)
                 {
                     var Value = (ExdCsvReader.Emote)BattleBox.SelectedItem;
-                    CharacterDetails.Emote.value = (int)Value.Index;
+                    CharacterDetails.Emote.value = Value.Index;
                 }
                 if (AnimBox.SelectedIndex == 1)
                 {
                     var Value = (ExdCsvReader.Emote)BattleBox.SelectedItem;
-                    CharacterDetails.EmoteOld.value = (int)Value.Index;
+                    CharacterDetails.EmoteOld.value = Value.Index;
                 }
             }
         }
@@ -172,12 +172,12 @@ namespace ConceptMatrix.Views
                 if (AnimBox.SelectedIndex == 0)
                 {
                     var Value = (ExdCsvReader.Emote)MonsterBox.SelectedItem;
-                    CharacterDetails.Emote.value = (int)Value.Index;
+                    CharacterDetails.Emote.value = Value.Index;
                 }
                 if (AnimBox.SelectedIndex == 1)
                 {
                     var Value = (ExdCsvReader.Emote)MonsterBox.SelectedItem;
-                    CharacterDetails.EmoteOld.value = (int)Value.Index;
+                    CharacterDetails.EmoteOld.value = Value.Index;
                 }
             }
         }
@@ -191,12 +191,12 @@ namespace ConceptMatrix.Views
                 if (AnimBox.SelectedIndex == 0)
                 {
                     var Value = (ExdCsvReader.Emote)AllBox.SelectedItem;
-                    CharacterDetails.Emote.value = (int)Value.Index;
+                    CharacterDetails.Emote.value = Value.Index;
                 }
                 if (AnimBox.SelectedIndex == 1)
                 {
                     var Value = (ExdCsvReader.Emote)AllBox.SelectedItem;
-                    CharacterDetails.EmoteOld.value = (int)Value.Index;
+                    CharacterDetails.EmoteOld.value = Value.Index;
                 }
             }
         }
@@ -217,14 +217,14 @@ namespace ConceptMatrix.Views
         private void SearchTextBoxFav_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (SaveSettings.Default.FavoriteEmotes.Count <= 0) return;
-            string filter = SearchTextBoxFav.Text.ToLower();
+            var filter = SearchTextBoxFav.Text.ToLower();
             FavoriteBox.Items.Clear();
-            foreach (ExdCsvReader.Emote xD in SaveSettings.Default.FavoriteEmotes.Where(g => g.Name.ToLower().Contains(filter)))
+            foreach (var emote in SaveSettings.Default.FavoriteEmotes.Where(g => g.Name.ToLower().Contains(filter)))
             {
                 FavoriteBox.Items.Add(new ExdCsvReader.Emote
                 {
-                    Index = Convert.ToInt32(xD.Index),
-                    Name = xD.Name.ToString()
+                    Index = Convert.ToInt32(emote.Index),
+                    Name = emote.Name.ToString()
                 });
             }
         }

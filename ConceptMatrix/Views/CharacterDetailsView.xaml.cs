@@ -685,18 +685,18 @@ namespace ConceptMatrix.Views
 		{
 			if (EmoteBox.IsMouseOver || EmoteBox.IsKeyboardFocusWithin)
 			{
-				EmoteBox.ValueChanged -= Emotexd;
-				EmoteBox.ValueChanged += Emotexd;
+				EmoteBox.ValueChanged -= Emote_Changed;
+				EmoteBox.ValueChanged += Emote_Changed;
 			}
 		}
-		private void Emotexd(object sender, RoutedPropertyChangedEventArgs<double?> e)
+		private void Emote_Changed(object sender, RoutedPropertyChangedEventArgs<double?> e)
 		{
 			if (EmoteBox.Value.HasValue)
 				if (EmoteBox.Value <= 8800) CharacterDetails.Emote.value = (int)EmoteBox.Value;
-			EmoteBox.ValueChanged -= Emotexd;
+			EmoteBox.ValueChanged -= Emote_Changed;
 		}
 
-		private void Setto0_Click(object sender, RoutedEventArgs e)
+		private void SetZero_Click(object sender, RoutedEventArgs e)
 		{
 			CharacterDetails.EmoteSpeed1.value = 0;
 			CharacterDetails.EmoteSpeed2.value = 0;
@@ -1132,12 +1132,11 @@ namespace ConceptMatrix.Views
 			}
 		}
 
-		private void Button_Click_1(object sender, RoutedEventArgs e)
+		private void RandomButton_Click(object sender, RoutedEventArgs e)
 		{
 			try
 			{
-
-				Random rnd = new Random();
+				var rnd = new Random();
 				CharacterDetails.Race.value = (byte)rnd.Next(1, 7);
 				MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Race), CharacterDetails.Race.GetBytes());
 				if (CharacterDetails.Race.value == 1) CharacterDetails.Clan.value = (byte)rnd.Next(1, 3);
