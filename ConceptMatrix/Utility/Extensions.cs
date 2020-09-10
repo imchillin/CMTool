@@ -190,7 +190,8 @@ namespace ConceptMatrix.Utility
 
 			// Iterate over the weather rates to get all weathers to add to the list.
 			foreach (var wr in weatherRate.UnkStruct0)
-				w.Add(weatherSheet.FirstOrDefault(x => x.RowId == wr.Weather));
+				if (wr.Weather != 0)
+					w.Add(weatherSheet.FirstOrDefault(x => x.RowId == wr.Weather));
 
 			// Return the list of weathers in this territory.
 			return w;
