@@ -24,8 +24,33 @@
             <Setter Property="mah:ControlsHelper.HeaderFontSize" Value="19.5"></Setter>
         </Style>
         <DataTemplate x:Key="cmbTemplate">
-            <Label Content="{Binding Name}"/>
-        </DataTemplate>
+			<WrapPanel>
+				<TextBlock x:Name="Name" Margin="0 0 6 0">
+					<TextBlock.Style>
+						<Style TargetType="TextBlock">
+							<Setter Property="Text" Value="{Binding Name}" />
+							<Style.Triggers>
+								<DataTrigger Binding="{Binding Name}" Value="">
+									<Setter Property="Text" Value="(N/A)" />
+								</DataTrigger>
+							</Style.Triggers>
+						</Style>
+					</TextBlock.Style>
+				</TextBlock>
+				<TextBlock x:Name="Yalms" Opacity="0.3">
+					<TextBlock.Style>
+						<Style TargetType="TextBlock">
+							<Setter Property="Text" Value="{Binding Yalm, StringFormat='({0})'}" />
+							<Style.Triggers>
+								<DataTrigger Binding="{Binding ActorID}" Value="0">
+									<Setter Property="Text" Value="(You)" />
+								</DataTrigger>
+							</Style.Triggers>
+						</Style>
+					</TextBlock.Style>
+				</TextBlock>
+			</WrapPanel>
+		</DataTemplate>
     </Window.Resources>
 
     <Grid>
@@ -56,8 +81,19 @@
                 <Views:PaletteView Margin="0" HorizontalAlignment="Left" Width="1102" Height="530"/>
             </TabItem>
         </TabControl>
-        <ComboBox x:Name="ActorCMB" ToolTip="{Binding Source={x:Static resx:UIStringsContent.ActorEntityListToolTip}}" ItemTemplate="{StaticResource cmbTemplate}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="131" ItemsSource="{Binding Path=CharacterDetails.CharacterDetails.Names}" SelectedIndex="{Binding Path=CharacterDetails.CharacterDetails.SelectedIndex}" IsTabStop="False"/>
-        <Button HorizontalAlignment="Left" Style="{StaticResource MaterialDesignRaisedAccentButton}"  ToolTip="{Binding Source={x:Static resx:UIStringsContent.ActorRefreshToolTip}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="146,7,0,0" VerticalAlignment="Top" Width="74" Command="{Binding Path=CharacterDetails.RefreshEntitiesCommand}" IsTabStop="False">
+
+		<ComboBox x:Name="ActorCMB"
+				  ToolTip="{Binding Source={x:Static resx:UIStringsContent.ActorEntityListToolTip}}"
+				  ItemTemplate="{StaticResource cmbTemplate}"
+				  HorizontalAlignment="Left"
+				  Margin="10,10,0,0"
+				  VerticalAlignment="Top"
+				  Width="131"
+				  ItemsSource="{Binding Path=CharacterDetails.CharacterDetails.Names}"
+				  SelectedIndex="{Binding Path=CharacterDetails.CharacterDetails.SelectedIndex}"
+				  IsTabStop="False" />
+
+		<Button HorizontalAlignment="Left" Style="{StaticResource MaterialDesignRaisedAccentButton}"  ToolTip="{Binding Source={x:Static resx:UIStringsContent.ActorRefreshToolTip}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="146,7,0,0" VerticalAlignment="Top" Width="74" Command="{Binding Path=CharacterDetails.RefreshEntitiesCommand}" IsTabStop="False">
             <DockPanel>
                 <Image Source="Resources/Refresh.png" RenderTransformOrigin="0.5,0.5">
                     <Image.RenderTransform>

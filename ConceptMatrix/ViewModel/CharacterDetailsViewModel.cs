@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Media.Media3D;
 using System.Windows;
 using ConceptMatrix.Views;
+using System.Windows.Documents;
+using System.Collections.Generic;
 
 namespace ConceptMatrix.ViewModel
 {
@@ -95,9 +97,6 @@ namespace ConceptMatrix.ViewModel
                 // Substring the name to trim off excess characters (not sure if this is needed?)
                 if (name.IndexOf('\0') != -1)
                     name = name.Substring(0, name.IndexOf('\0'));
-                // Include yalms if it's not the current player.
-                if (i != 0)
-                    name += $" ({yalms})";
 
                 // Add name to the list.
                 CharacterDetails.Names.Add(new ActorTable { Name = name, ActorID = i, Yalm = yalms });
