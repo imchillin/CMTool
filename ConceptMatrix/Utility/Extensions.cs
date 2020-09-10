@@ -158,6 +158,9 @@ namespace ConceptMatrix.Utility
 
 		public static ImageSource GetImage(this TexFile tex)
 		{
+			if (tex == null)
+				return null;
+
 			var image = GetImage(tex.ImageData, tex.Header.Width, tex.Header.Height);
 			using (var ms = new MemoryStream())
 			{
