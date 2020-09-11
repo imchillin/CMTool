@@ -12,6 +12,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Media.Media3D;
 
 namespace ConceptMatrix.Utility
@@ -161,20 +162,16 @@ namespace ConceptMatrix.Utility
 			if (tex == null)
 				return null;
 
-			var image = GetImage(tex.ImageData, tex.Header.Width, tex.Header.Height);
-			using (var ms = new MemoryStream())
-			{
-				image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-				ms.Seek(0, SeekOrigin.Begin);
-
-				var bmp = new System.Windows.Media.Imaging.BitmapImage();
-				bmp.BeginInit();
-				bmp.CacheOption = System.Windows.Media.Imaging.BitmapCacheOption.OnLoad;
-				bmp.StreamSource = ms;
-				bmp.EndInit();
-
-				return bmp;
-			}
+			return BitmapSource.Create(
+				tex.Header.Width,
+				tex.Header.Height,
+				96,
+				96,
+				PixelFormats.Bgra32,
+				null,
+				tex.ImageData,
+				tex.Header.Width * 4
+			);
 		}
 
 		/// <summary>
