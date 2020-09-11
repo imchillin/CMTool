@@ -620,8 +620,8 @@ namespace ConceptMatrix.Views
                 var valuesAsList = Enum.GetValues(typeof(FacialEnums)).Cast<FacialEnums>().ToList();
                 foreach (var CharaFeature in _reader.CharaMakeFeatures2)
                 {
-                    if (tribeKey != CharaFeature.Value.Tribe) continue;
-                    if (tribeKey == CharaFeature.Value.Tribe && gender == CharaFeature.Value.Gender)
+                    if (tribeKey != CharaFeature.Tribe) continue;
+                    if (tribeKey == CharaFeature.Tribe && gender == CharaFeature.Gender)
                     {
                         FacialFeatureView.Items.Add(new Features() { ID = 0, FeatureImage = GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Nope")) });
                         for (int i = 0; i < 7; i++)
@@ -630,7 +630,7 @@ namespace ConceptMatrix.Views
                             {
                                 int IconUIID = FaceKey + (i * 4);
                                 int NewID = (int)valuesAsList[i];
-                                FacialFeatureView.Items.Add(new Features() { ID = NewID, FeatureImage = CharaFeature.Value.Features[IconUIID].Icon });
+                                FacialFeatureView.Items.Add(new Features() { ID = NewID, FeatureImage = CharaFeature.Features[IconUIID].Icon });
                             }
                             catch
                             {

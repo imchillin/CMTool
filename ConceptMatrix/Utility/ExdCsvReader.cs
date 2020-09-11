@@ -1,11 +1,15 @@
 ﻿using ConceptMatrix.Properties;
 using ConceptMatrix.ViewModel;
 using ConceptMatrix.Views;
+using Lumina.Data.Files;
+using Lumina.Data.Parsing;
 using Lumina.Excel.GeneratedSheets;
+using Lumina.Extensions;
 using Microsoft.VisualBasic.FileIO;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows.Media;
@@ -70,7 +74,7 @@ namespace ConceptMatrix.Utility
 			public string ModelOff { get; set; }
 			public ItemType Type { get; set; }
 			public string ClassJobListStringName { get; set; }
-			public SaintCoinach.Imaging.ImageFile Icon { get; set; }
+			public TexFile Icon { get; set; }
 
 			public override string ToString()
 			{
@@ -178,13 +182,13 @@ namespace ConceptMatrix.Utility
 		public static Emote[] Emotesx;
 		public static BGM[] BGMX;
 		public static Monster[] MonsterX;
-		public Dictionary<int, Item> Items = null;
+		public List<Item> Items = null;
 		public Dictionary<int, Item> ItemsProps = null;
 		public Dictionary<int, TerritoryType> TerritoryTypes = null;
 		public Dictionary<int, Emote> Emotes = null;
 		public Dictionary<int, Resident> Residents = null;
-		public Dictionary<int, CharaMakeCustomizeFeature> CharaMakeFeatures = null;
-		public Dictionary<int, CharaMakeCustomizeFeature2> CharaMakeFeatures2 = null;
+		public List<CharaMakeCustomizeFeature> CharaMakeFeatures = null;
+		public List<CharaMakeCustomizeFeature2> CharaMakeFeatures2 = null;
 		public Dictionary<int, Tribe> Tribes = null;
 		public Dictionary<int, Monster> Monsters = null;
 		public Dictionary<int, BGM> BGMs = null;
@@ -197,109 +201,54 @@ namespace ConceptMatrix.Utility
 				PixelFormats.Bgra32, null,
 				argb, file.Width * 4);
 		}
-		private List<Features> FeatureD(IEnumerable<SaintCoinach.Xiv.CharaMakeType.CharaMakeFeatureIcon> parse)
+		private List<Features> GetFeatures(int[] features)
 		{
-			List<Features> NewList = new List<Features>();
-			foreach (var Parse in parse)
-			{
-				try
-				{
-					if (Parse.FacialFeatureIcon == null) NewList.Add(new Features { FeatureID = Parse.Count, Icon = SpecialControl.GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Corrupted")) });
-					else NewList.Add(new Features { FeatureID = Parse.Count, Icon = CreateSource(Parse.FacialFeatureIcon) });
-				}
-				catch
-				{
-					using (StreamWriter writer = new StreamWriter("ErrorLog.txt", true))
-					{
-						writer.WriteLine($"FacialFeature Image File ID Corrupted: {Parse.Count}");
-					}
-					NewList.Add(new Features { FeatureID = Parse.Count, Icon = SpecialControl.GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Corrupted")) });
-				}
-			}
-			return NewList;
+			// SpecialControl.GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Corrupted"))
+			return (from f in features select new Features { Icon = MainViewModel.lumina.GetIcon(f).GetImage() }).ToList();
 		}
 		public void MakeCharaMakeFeatureFacialList()
 		{
-			CharaMakeFeatures2 = new Dictionary<int, CharaMakeCustomizeFeature2>();
+			CharaMakeFeatures2 = new List<CharaMakeCustomizeFeature2>();
 			try
 			{
-				var sheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.CharaMakeType>();
-				foreach (var test in sheet)
+				var sheet = MainViewModel.lumina.GetExcelSheet<CharaMakeType>();
+				foreach (var cmt in sheet)
 				{
 					//   rowCount++;
-					CharaMakeCustomizeFeature2 feature = new CharaMakeCustomizeFeature2(); ;
-					feature.Index = test.Key;
-					feature.Gender = test.Gender;
-					feature.Race = test.Race.Key;
-					feature.Tribe = test.Tribe.Key;
-					feature.Features = FeatureD(test.FacialFeatureIcon);
-					CharaMakeFeatures2.Add(test.Key, feature);
+					var feature = new CharaMakeCustomizeFeature2();
+					feature.Index = (int)cmt.RowId;
+					feature.Gender = cmt.Gender;
+					feature.Race = (int)cmt.Race.Row;
+					feature.Tribe = (int)cmt.Tribe.Row;
+					feature.Features = GetFeatures(cmt.Unknown3291);
+					CharaMakeFeatures2.Add(feature);
 				}
 			}
 			catch (Exception)
 			{
 			}
 		}
+
 		public void MakeCharaMakeFeatureList()
 		{
-			CharaMakeFeatures = new Dictionary<int, CharaMakeCustomizeFeature>();
+			var corruptedImage = SpecialControl.GetImageStream((System.Drawing.Image)Resources.ResourceManager.GetObject("Corrupted"));
+
+			CharaMakeFeatures = new List<CharaMakeCustomizeFeature>();
 			try
 			{
-				var sheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.CharaMakeCustomize>();
-				int rowCount = 0;
-				foreach (var test in sheet)
+				var cmcSheet = MainViewModel.lumina.GetExcelSheet<CharaMakeCustomize>();
+				foreach (var cmc in cmcSheet)
 				{
-					rowCount++;
-					var feature = new CharaMakeCustomizeFeature
+					CharaMakeFeatures.Add(new CharaMakeCustomizeFeature
 					{
-						Index = test.Key,
-						FeatureID = test.FeatureID
-					};
-					try
-					{
-						if (test.Icon == null) feature.Icon = SpecialControl.GetImageStream((System.Drawing.Image)Resources.ResourceManager.GetObject("Corrupted"));
-						else feature.Icon = CreateSource(test.Icon);
-					}
-					catch
-					{
-						using (StreamWriter writer = new StreamWriter("ErrorLog.txt", true))
-						{
-							writer.WriteLine($"Feature Image File ID Corrupted: {test.Key}");
-						}
-
-						feature.Icon = SpecialControl.GetImageStream((System.Drawing.Image)Resources.ResourceManager.GetObject("Corrupted"));
-					}
-					CharaMakeFeatures.Add(rowCount, feature);
+						Index = (int)cmc.RowId,
+						FeatureID = cmc.FeatureID,
+						Icon = cmc.Icon == 0 ? corruptedImage : MainViewModel.lumina.GetIcon((int)cmc.Icon).GetImage()
+					});
 				}
 			}
 			catch (Exception)
 			{
-			}
-		}
-		public void TribeList()
-		{
-			Tribes = new Dictionary<int, Tribe>();
-			try
-			{
-				var TribeSheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Tribe>();
-				foreach (var Parse in TribeSheet)
-				{
-					var tribe = new Tribe
-					{
-						Index = Parse.Key,
-						Name = Parse.Feminine
-					};
-					if (Parse.Key == 0) { tribe.Name = "None"; }
-					Tribes.Add(Parse.Key, tribe);
-				}
-			}
-
-			catch (Exception)
-			{
-				Tribes = null;
-
-				//throw;
-
 			}
 		}
 
@@ -391,7 +340,7 @@ namespace ConceptMatrix.Utility
 			}
 		}
 
-		ItemType Heh(int cat)
+		ItemType AsType(int cat)
 		{
 			switch (cat)
 			{
@@ -423,57 +372,25 @@ namespace ConceptMatrix.Utility
 		}
 		public void MakeItemList()
 		{
-			Items = new Dictionary<int, Item>();
-			{
-				try
-				{
-					var sheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Item>();
-					foreach (var Parse in sheet)
+			var sw = Stopwatch.StartNew();
+			var itemSheet = MainViewModel.lumina.GetExcelSheet<Lumina.Excel.GeneratedSheets.Item>();
+			sw.Stop();
+			Console.WriteLine(">>>> " + sw.ElapsedMilliseconds);
+
+			Items = new List<Item>();
+
+			foreach (var i in itemSheet)
+				if (i.EquipSlotCategory.Row > 0)
+					Items.Add(new Item
 					{
-						if (Parse.EquipSlotCategory.Key <= 0)
-							continue;
-
-						var item = new Item
-						{
-							Index = Parse.Key,
-							Name = Parse.Name,
-							ClassJobListStringName = Parse.ClassJobCategory.ToString(),
-							Type = Heh(Parse.ItemUICategory.Key)
-						};
-
-                        if (Parse.ItemUICategory.Key == 11)
-						{
-							item.ModelMain = Parse.ModelMain.ToString();
-							item.ModelOff = Parse.ModelMain.ToString();
-						}
-						else
-						{
-							item.ModelMain = Parse.ModelMain.ToString();
-							item.ModelOff = Parse.ModelSub.ToString();
-						}
-
-						try
-						{
-							if (Parse.Icon == null)
-								item.Icon = null;
-							else
-								item.Icon = Parse.Icon;
-						}
-						catch
-						{
-							using (StreamWriter writer = new StreamWriter("ErrorLog.txt", true))
-							{
-								writer.WriteLine($"Equipment Image File ID Corrupted: {Parse.Key}, {Parse.Name}, {Parse.ModelMain.ToString()}, {Parse.ModelSub.ToString()}");
-							}
-							item.Icon = null;
-						}
-						Items.Add(Parse.Key, item);
-					}
-				}
-				catch (Exception)
-				{
-				}
-			}
+						Index = (int)i.RowId,
+						Name = i.Name,
+						ClassJobListStringName = i.ClassJobCategory.Value.Name,
+						Type = AsType((int)i.ItemUICategory.Row),
+						Icon = MainViewModel.lumina.GetIcon(i.Icon),
+						ModelMain = i.ModelMain.AsQuad().ToString(),
+						ModelOff = i.ItemUICategory.Row == 11 ? i.ModelMain.AsQuad().ToString() : i.ModelSub.AsQuad().ToString()
+					});
 		}
 		public void MakeResidentList()
 		{

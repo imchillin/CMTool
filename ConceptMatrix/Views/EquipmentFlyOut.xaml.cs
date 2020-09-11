@@ -67,7 +67,8 @@ namespace ConceptMatrix.Views
                 PixelFormats.Bgra32, null,
                 argb, file.Width * 4);
         }
-        public class Itemx
+
+        public class CMItem
         {
             public int Index { get; set; }
             public string Name { get; set; }
@@ -86,7 +87,7 @@ namespace ConceptMatrix.Views
             {
                 foreach (ExdCsvReader.Item game in _items)
                 {
-                    EquipBox.Items.Add(new Itemx
+                    EquipBox.Items.Add(new CMItem
                     {
                         Name = game.Name,
                         ModelMain = game.ModelMain,
@@ -136,13 +137,13 @@ namespace ConceptMatrix.Views
                         }
                     }
 
-                    EquipBox.Items.Add(new Itemx
+                    EquipBox.Items.Add(new CMItem
                     {
                         Name = game.Name,
                         ModelMain = game.ModelMain,
                         ModelOff = game.ModelOff,
                         Type = game.Type,
-                        Icon = CreateSource(game.Icon)
+                        Icon = game.Icon.GetImage()
                     });
                     if (!found) // Only looking for a match once and will stop trying to match. 
                     {
@@ -490,47 +491,47 @@ namespace ConceptMatrix.Views
                     CheckIncluded.Visibility = Visibility.Visible;
                     KeepDyes.Visibility = Visibility.Visible;
                     CheckIncluded.Content = FlyOutStrings.IncludeOffhand;
-                    GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray());
+                    GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray());
                 }
                 if (EquipBoxC.SelectedIndex == 1)
                 {
                     CheckIncluded.Visibility = Visibility.Visible;
                     KeepDyes.Visibility = Visibility.Visible;
                     CheckIncluded.Content = FlyOutStrings.NoneOffHand;
-                    GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray());
+                    GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray());
                 }
                 if (EquipBoxC.SelectedIndex == 2)
                 {
                     KeepDyes.Visibility = Visibility.Visible;
-                    GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Head).ToArray());
+                    GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Head).ToArray());
                 }
                 if (EquipBoxC.SelectedIndex == 3)
                 {
                     KeepDyes.Visibility = Visibility.Visible;
-                    GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Body).ToArray());
+                    GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Body).ToArray());
                 }
 
                 if (EquipBoxC.SelectedIndex == 4)
                 {
                     KeepDyes.Visibility = Visibility.Visible;
-                    GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Hands).ToArray());
+                    GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Hands).ToArray());
                 }
                 if (EquipBoxC.SelectedIndex == 5)
                 {
                     KeepDyes.Visibility = Visibility.Visible;
-                    GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Legs).ToArray());
+                    GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Legs).ToArray());
                 }
                 if (EquipBoxC.SelectedIndex == 6)
                 {
                     KeepDyes.Visibility = Visibility.Visible;
-                    GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Feet).ToArray());
+                    GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Feet).ToArray());
                 }
 
-                if (EquipBoxC.SelectedIndex == 7) GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Ears).ToArray());
-                if (EquipBoxC.SelectedIndex == 8) GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Neck).ToArray());
-                if (EquipBoxC.SelectedIndex == 9) GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Wrists).ToArray());
-                if (EquipBoxC.SelectedIndex == 10) GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
-                if (EquipBoxC.SelectedIndex == 11) GearPicker(CharacterDetailsView._exdProvider.Items.Values.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
+                if (EquipBoxC.SelectedIndex == 7) GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ears).ToArray());
+                if (EquipBoxC.SelectedIndex == 8) GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Neck).ToArray());
+                if (EquipBoxC.SelectedIndex == 9) GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wrists).ToArray());
+                if (EquipBoxC.SelectedIndex == 10) GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
+                if (EquipBoxC.SelectedIndex == 11) GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
                 if (EquipBoxC.SelectedIndex == 12)
                 {
                     if (!EquipmentView.CheckPropList())
@@ -556,7 +557,7 @@ namespace ConceptMatrix.Views
             {
                 if (EquipBox.SelectedItem == null)
                     return;
-                var Value = (Itemx)EquipBox.SelectedItem;
+                var Value = (CMItem)EquipBox.SelectedItem;
                 if (EquipBoxC.SelectedIndex == 0)
                 {
                     CharacterDetails.WeaponSlot.value = Value.ModelMain;
@@ -859,7 +860,7 @@ namespace ConceptMatrix.Views
             {
                 if (EquipBoxC.SelectedIndex > 11)
                 {
-                    EquipBox.Items.Add(new Itemx
+                    EquipBox.Items.Add(new CMItem
                     {
                         Name = game.Name,
                         ModelMain = game.ModelMain,
@@ -905,13 +906,13 @@ namespace ConceptMatrix.Views
                         }
                     }
 
-                    EquipBox.Items.Add(new Itemx
+                    EquipBox.Items.Add(new CMItem
                     {
                         Name = game.Name.ToString(),
                         ModelMain = game.ModelMain,
                         ModelOff = game.ModelOff,
                         Type = game.Type,
-                        Icon = CreateSource(game.Icon)
+                        Icon = game.Icon.GetImage()
                     });
                 }
             }
