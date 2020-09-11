@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
@@ -262,6 +263,13 @@ namespace ConceptMatrix.ViewModel
                 MainWindow.Realm = realm;
                 CharacterDetailsView._exdProvider.MonsterList();
                 CharacterDetailsView._exdProvider.MakeTerritoryTypeList();
+
+                var sw = Stopwatch.StartNew();
+                CharacterDetailsView._exdProvider.MakeItemList();
+                sw.Stop();
+
+                Console.WriteLine($"MakeItemList took {sw.ElapsedMilliseconds}ms");
+
                 ExdCsvReader.MonsterX = CharacterDetailsView._exdProvider.Monsters.Values.ToArray();
                 
                 foreach (ExdCsvReader.Monster m in ExdCsvReader.MonsterX)
