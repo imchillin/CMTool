@@ -89,6 +89,7 @@
 				  Margin="10,10,0,0"
 				  VerticalAlignment="Top"
 				  Width="131"
+				  Height="28"
 				  ItemsSource="{Binding Path=CharacterDetails.CharacterDetails.Names}"
 				  SelectedIndex="{Binding Path=CharacterDetails.CharacterDetails.SelectedIndex}"
 				  IsTabStop="False" />
