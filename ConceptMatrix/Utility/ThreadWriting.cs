@@ -469,21 +469,6 @@ namespace ConceptMatrix.Utility
                         linkedActor.Rotation4 = (float)newRotQ.W;
                     }
 
-                    if (MainViewModel.characterView.LinkedGposeView)
-                    {
-                        float newX = (float)(CharacterDetails.CamX.value - deltaX);
-                        float newY = (float)(CharacterDetails.CamY.value - deltaY);
-                        float newZ = (float)(CharacterDetails.CamZ.value - deltaZ);
-
-                        CharacterDetails.CamX.value = newX;
-                        CharacterDetails.CamY.value = newY;
-                        CharacterDetails.CamZ.value = newZ;
-                        
-                        m.writeBytes(GASG(MemoryManager.Instance.GposeAddress, c.CamX), CharacterDetails.CamX.GetBytes());
-                        m.writeBytes(GASG(MemoryManager.Instance.GposeAddress, c.CamY), CharacterDetails.CamY.GetBytes());
-                        m.writeBytes(GASG(MemoryManager.Instance.GposeAddress, c.CamZ), CharacterDetails.CamZ.GetBytes());
-                    }
-
                     currActor.X = currActorMemX;
                     currActor.Y = currActorMemY;
                     currActor.Z = currActorMemZ;

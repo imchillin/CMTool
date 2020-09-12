@@ -33,7 +33,7 @@ namespace ConceptMatrix
 
             Dispatcher.UnhandledException += DispatcherOnUnhandledException;
 
-            Application.Current.DispatcherUnhandledException += CurrentOnDispatcherUnhandledException;
+            Current.DispatcherUnhandledException += CurrentOnDispatcherUnhandledException;
 
             TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
 
@@ -58,7 +58,7 @@ namespace ConceptMatrix
                         {
 
                             Process.Start("https://dotnet.microsoft.com/download/dotnet-framework/net472");
-                            Application.Current.Shutdown();
+                            Current.Shutdown();
                         }
                     }
                 }
@@ -69,7 +69,7 @@ namespace ConceptMatrix
                     {
 
                         Process.Start("https://dotnet.microsoft.com/download/dotnet-framework/net472");
-                        Application.Current.Shutdown();
+                        Current.Shutdown();
                     }
                 }
             }
@@ -91,10 +91,15 @@ namespace ConceptMatrix
 
         private void App_Exit(object sender, ExitEventArgs e)
         {
-            if(MainViewModel.worker.IsBusy) MainViewModel.worker.CancelAsync();
-            Utility.SaveSettings.Default.Save();
-            if (MainViewModel.posing2View.EditModeButton.IsChecked == true) MainViewModel.posing2View.EditModeButton.IsChecked = false;
-            if (MainViewModel.posingView.EditModeButton.IsChecked == true) MainViewModel.posingView.EditModeButton.IsChecked = false;
+            if(MainViewModel.worker.IsBusy)
+                MainViewModel.worker.CancelAsync();
+            SaveSettings.Default.Save();
+            if (MainViewModel.posing2View.EditModeButton.IsChecked == true)
+                MainViewModel.posing2View.EditModeButton.IsChecked = false;
+            if (MainViewModel.posingView.EditModeButton.IsChecked == true)
+                MainViewModel.posingView.EditModeButton.IsChecked = false;
+
+            MainViewModel.ShutDownStuff();
         }
 
         private void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)

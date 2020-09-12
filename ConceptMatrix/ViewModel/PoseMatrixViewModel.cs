@@ -1,7 +1,6 @@
 ﻿using ConceptMatrix.Models;
 using ConceptMatrix.Utility;
 using ConceptMatrix.Views;
-using SaintCoinach.Graphics;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

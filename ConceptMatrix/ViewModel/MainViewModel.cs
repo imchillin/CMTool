@@ -6,8 +6,6 @@ using Lumina.Excel.GeneratedSheets;
 using Lumina.Extensions;
 using MaterialDesignThemes.Wpf;
 using Newtonsoft.Json;
-using SaintCoinach;
-using SaintCoinach.Imaging;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,6 +16,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
@@ -54,6 +53,8 @@ namespace ConceptMatrix.ViewModel
         public static string GameDirectory = "";
 		public CharacterDetailsViewModel CharacterDetails { get => characterDetails; set => characterDetails = value; }
 
+        public static Thread luminaThread;
+
         public PackIconKind AOTToggleStatus { get; set; } = PackIconKind.ToggleSwitchOffOutline;
 		public Brush ToggleForeground { get; set; } = new SolidColorBrush(Color.FromArgb(0x75, 0xFF, 0xFF, 0xFF));
 
@@ -72,34 +73,43 @@ namespace ConceptMatrix.ViewModel
                     // Set up Lumina for the game.
                     lumina = new Lumina.Lumina(Path.Combine(GameDirectory, "game", "sqpack"));
 
-                    ARealmReversed realm = null;
+                    luminaThread = new Thread(() =>
+                    {
+                        while (true)
+                        {
+                            lumina.ProcessFileHandleQueue();
+                            Thread.Yield();
+                        }
+                    });
+
+                    // Start the Lumina file thread.
+                    luminaThread.Start();
+
                     if (File.Exists(Path.Combine(GameDirectory, "FFXIVBoot.exe")) || File.Exists(Path.Combine(GameDirectory, "rail_files", "rail_game_identify.json")))
                     {
                         RegionType = "zh";
-                        File.WriteAllText("Definitions/Item.json", Properties.Resources.ItemCN);
-                        File.WriteAllText("Definitions/Stain.json", Properties.Resources.StainCN);
-                        realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.ChineseSimplified);
+                        lumina.Options.DefaultExcelLanguage = Lumina.Data.Language.ChineseSimplified;
                     }
                     else if (File.Exists(Path.Combine(GameDirectory, "boot", "FFXIV_Boot.exe")))
                     {
                         RegionType = "ko";
-                        File.WriteAllText("Definitions/Item.json", Properties.Resources.ItemKR);
-                        File.WriteAllText("Definitions/Stain.json", Properties.Resources.StainKR);
-                        realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.Korean);
+                        lumina.Options.DefaultExcelLanguage = Lumina.Data.Language.Korean;
                     }
                     if (RegionType == "Live")
                     {
-                        File.WriteAllText("Definitions/Item.json", Properties.Resources.Item);
-                        File.WriteAllText("Definitions/Stain.json", Properties.Resources.Stain);
-                        if (SaveSettings.Default.Language == "en") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.English);
-                        else if (SaveSettings.Default.Language == "ja") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.Japanese);
-                        else if (SaveSettings.Default.Language == "de") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.German);
-                        else if (SaveSettings.Default.Language == "fr") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.French);
-                        else realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.English);
+                        if (SaveSettings.Default.Language == "en")
+                            lumina.Options.DefaultExcelLanguage = Lumina.Data.Language.English;
+                        else if (SaveSettings.Default.Language == "ja")
+                            lumina.Options.DefaultExcelLanguage = Lumina.Data.Language.Japanese;
+                        else if (SaveSettings.Default.Language == "de")
+                            lumina.Options.DefaultExcelLanguage = Lumina.Data.Language.German;
+                        else if (SaveSettings.Default.Language == "fr")
+                            lumina.Options.DefaultExcelLanguage = Lumina.Data.Language.French;
+                        else
+                            lumina.Options.DefaultExcelLanguage = Lumina.Data.Language.English;
                     }
 
-
-                    Initialize(realm, RegionType);
+                    Initialize(RegionType);
                     MainWindow.HasRead = true;
                 }
                 mediator = new Mediator();
@@ -152,47 +162,14 @@ namespace ConceptMatrix.ViewModel
             characterDetails = null;
             mediator = null;
             threadWriting = null;
+
+            // Kill the Lumina thread.
+            luminaThread.Abort();
         }
         
-        private void Initialize(ARealmReversed realm, string Determination)
+   
+        private void Initialize(string Determination)
         {
-            if (!realm.IsCurrentVersion)
-            {
-                try
-                {
-                    if (File.Exists("SaintCoinach.History.zip"))
-                        File.Delete("SaintCoinach.History.zip");
-                    if (File.Exists(Path.Combine(GameDirectory, "FFXIVBoot.exe")) || File.Exists(Path.Combine(GameDirectory, "rail_files", "rail_game_identify.json")))
-                    {
-                        File.WriteAllText("Definitions/Item.json", Properties.Resources.ItemCN);
-                        File.WriteAllText("Definitions/Stain.json", Properties.Resources.StainCN);
-                        realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.ChineseSimplified);
-                    }
-                    else if (File.Exists(Path.Combine(GameDirectory, "boot", "FFXIV_Boot.exe")))
-                    {
-                        File.WriteAllText("Definitions/Item.json", Properties.Resources.ItemKR);
-                        File.WriteAllText("Definitions/Stain.json", Properties.Resources.StainKR);
-                        realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.Korean);
-                    }
-                    if (Determination == "Live")
-                    {
-                        File.WriteAllText("Definitions/Item.json", Properties.Resources.Item);
-                        File.WriteAllText("Definitions/Stain.json", Properties.Resources.Stain);
-                        if (SaveSettings.Default.Language == "en") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.English);
-                        else if (SaveSettings.Default.Language == "ja") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.Japanese);
-                        else if (SaveSettings.Default.Language == "de") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.German);
-                        else if (SaveSettings.Default.Language == "fr") realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.French);
-                        else realm = new ARealmReversed(GameDirectory, SaintCoinach.Ex.Language.English);
-                    }
-                }
-                catch
-                {
-                    System.Windows.MessageBox.Show("Unable to delete SaintCoinach.History.zip! Please don't open zip or use it.", "Oh wow!");
-                }
-            }
-
-			#region My stuff
-
 			// Get the stains (dyes).
             var stains = new List<ExdCsvReader.CMStain>();
             // Loop through the Stains to add to a list.
@@ -255,20 +232,15 @@ namespace ConceptMatrix.ViewModel
                              };
             actorPropView.StatusEffectBox2.ItemsSource = statusList;
 
-            #endregion
+            // Get the title sheet.
+            var titleSheet = lumina.GetExcelSheet<Title>().Select(title => title.Feminine.DefaultIfEmpty("None"));
+            characterView.TitleBox.ItemsSource = titleSheet;
 
             try
             {
-                realm.Packs.GetPack(new SaintCoinach.IO.PackIdentifier("exd", SaintCoinach.IO.PackIdentifier.DefaultExpansion, 0)).KeepInMemory = true;
-                MainWindow.Realm = realm;
                 CharacterDetailsView._exdProvider.MonsterList();
                 CharacterDetailsView._exdProvider.MakeTerritoryTypeList();
-
-                var sw = Stopwatch.StartNew();
                 CharacterDetailsView._exdProvider.MakeItemList();
-                sw.Stop();
-
-                Console.WriteLine($"MakeItemList took {sw.ElapsedMilliseconds}ms");
                 
                 foreach (var m in CharacterDetailsView._exdProvider.Monsters)
                 {
@@ -280,14 +252,6 @@ namespace ConceptMatrix.ViewModel
                             Name = m.Name.ToString()
                         });
                     }
-                }
-
-                var TitleSheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Title>();
-                foreach (SaintCoinach.Xiv.Title title in TitleSheet)
-                {
-                    string Title = title.Feminine;
-                    if (Title.Length <= 0) Title = "No Title";
-                    characterView.TitleBox.Items.Add(Title);
                 }
             }
             catch(Exception ex)
@@ -343,19 +307,18 @@ namespace ConceptMatrix.ViewModel
 
             try
             {
-                string jsonStr;
                 ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
-                using (var HAH = new WebClient())
+                using (var wc = new WebClient())
                 {
-                    jsonStr = HAH.DownloadString(@"https://raw.githubusercontent.com/imchillin/CMTool/master/ConceptMatrix/" + file);
-                }
-                var offset = JsonConvert.DeserializeObject<Settings>(jsonStr);
-                
-                if (string.Compare(offset.LastUpdated, Settings.Instance.LastUpdated) > 0)
-                {
-                    File.WriteAllText($"./{file}", jsonStr);
-                    Settings.Instance = offset;
-                    return true;
+                    var jsonStr = wc.DownloadString(@"https://raw.githubusercontent.com/imchillin/CMTool/master/ConceptMatrix/" + file);
+                    var offset = JsonConvert.DeserializeObject<Settings>(jsonStr);
+
+                    if (string.Compare(offset.LastUpdated, Settings.Instance.LastUpdated) > 0)
+                    {
+                        File.WriteAllText($"./{file}", jsonStr);
+                        Settings.Instance = offset;
+                        return true;
+                    }
                 }
             }
             catch
@@ -402,7 +365,8 @@ namespace ConceptMatrix.ViewModel
                 // sleep for 50 ms
                 Thread.Sleep(50);
                 // check if our memory manager is set /saving
-                if (!MainWindow.CurrentlySaving) mediator.SendWork();
+                if (!MainWindow.CurrentlySaving)
+                    mediator.SendWork();
             }
         }
 

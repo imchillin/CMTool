@@ -19,7 +19,6 @@ using MaterialDesignThemes.Wpf;
 using System.Net;
 using ConceptMatrix.Views;
 using WepTuple = System.Tuple<int, int, int, int>;
-using SaintCoinach;
 using System.Globalization;
 using System.Windows.Input;
 
@@ -31,7 +30,6 @@ namespace ConceptMatrix
     public partial class MainWindow : MetroWindow
     {
         public static bool HasRead = false;
-        public static ARealmReversed Realm;
         public static bool CurrentlySaving = false;
         public CharacterDetails CharacterDetails
         {
@@ -367,8 +365,9 @@ namespace ConceptMatrix
             else
             {
                 string path = SaveSettings.Default.ProfileDirectory;
-                if (!Directory.Exists(path)) { System.IO.Directory.CreateDirectory(path); }
-                var c = new Windows.GearSave("Save Concept Matrix Appearance File", "Write Character Save name here...");
+                if (!Directory.Exists(path))
+                    Directory.CreateDirectory(path);
+                var c = new GearSave("Save Concept Matrix Appearance File", "Write Character Save name here...");
                 c.Owner = Application.Current.MainWindow;
                 c.ShowDialog();
                 if (c.Filename == null) { CurrentlySaving = false; return; }
@@ -434,7 +433,7 @@ namespace ConceptMatrix
         {
             if (!SaveSettings.Default.WindowsExplorer)
             {
-                Windows.GearsetChooseWindow fam = new Windows.GearsetChooseWindow("Select the saved gearset you want to load.");
+                GearsetChooseWindow fam = new GearsetChooseWindow("Select the saved gearset you want to load.");
                 fam.Owner = Application.Current.MainWindow;
                 fam.ShowDialog();
                 if (fam.Choice != null)
@@ -447,7 +446,8 @@ namespace ConceptMatrix
             {
                 OpenFileDialog dig = new OpenFileDialog();
                 string path = SaveSettings.Default.GearsetsDirectory;
-                if (!Directory.Exists(path)) { System.IO.Directory.CreateDirectory(path);  }
+                if (!Directory.Exists(path))
+                    Directory.CreateDirectory(path);
                 dig.InitialDirectory = path;
                 dig.Filter = "Concept Matrix Appearance File(*.cma;*.json)|*.cma;*.json";
                 dig.DefaultExt = ".cma";
@@ -479,7 +479,7 @@ namespace ConceptMatrix
                 CharacterDetails.Wrist.freeze = true;
                 CharacterDetails.RFinger.freeze = true;
                 CharacterDetails.LFinger.freeze = true;
-                System.Threading.Tasks.Task.Delay(25).Wait();
+                Task.Delay(25).Wait();
                 CharacterDetails.HeadPiece.value = (EquipmentArray[0] + EquipmentArray[1] * 256);
                 CharacterDetails.HeadV.value = EquipmentArray[2];
                 CharacterDetails.HeadDye.value = EquipmentArray[3];
@@ -521,7 +521,7 @@ namespace ConceptMatrix
             }
             catch (Exception exc)
             {
-                MessageBox.Show("One or more fields were not formatted correctly.\n\n" + exc, " Error " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version, MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("One or more fields were not formatted correctly.\n\n" + exc, " Error " + Assembly.GetExecutingAssembly().GetName().Version, MessageBoxButton.OK, MessageBoxImage.Error);
                 Load.IsEnabled = true;
             }
         }
@@ -597,7 +597,7 @@ namespace ConceptMatrix
         {
             if (!SaveSettings.Default.WindowsExplorer)
             {
-                Windows.SaveChooseWindow fam = new Windows.SaveChooseWindow("Select saved Character[All].");
+                Windows.SaveChooseWindow fam = new SaveChooseWindow("Select saved Character[All].");
                 fam.Owner = Application.Current.MainWindow;
                 fam.ShowDialog();
                 if (fam.Choice != null)
@@ -624,7 +624,7 @@ namespace ConceptMatrix
         {
             if (!SaveSettings.Default.WindowsExplorer)
             {
-                Windows.SaveChooseWindow fam = new Windows.SaveChooseWindow("Select saved Character[Appearance].");
+                Windows.SaveChooseWindow fam = new SaveChooseWindow("Select saved Character[Appearance].");
                 fam.Owner = Application.Current.MainWindow;
                 fam.ShowDialog();
                 if (fam.Choice != null)
@@ -651,7 +651,7 @@ namespace ConceptMatrix
         {
             if (!SaveSettings.Default.WindowsExplorer)
             {
-                Windows.SaveChooseWindow fam = new Windows.SaveChooseWindow("Select the Character[Equipment].");
+                SaveChooseWindow fam = new SaveChooseWindow("Select the Character[Equipment].");
                 fam.Owner = Application.Current.MainWindow;
                 fam.ShowDialog();
                 if (fam.Choice != null)
@@ -1436,7 +1436,6 @@ namespace ConceptMatrix
                     MainViewModel.characterView.LinkPosition.IsEnabled = false;
                     CharacterDetails.LinkedActors.Clear();
                     CharacterDetails.IsLinked = false;
-                    MainViewModel.characterView.LinkedGposeView = false;
                 }
             }
         }

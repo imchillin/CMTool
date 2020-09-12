@@ -3,7 +3,6 @@ using ConceptMatrix.Views;
 using Lumina.Data.Files;
 using Lumina.Data.Parsing;
 using Lumina.Excel.GeneratedSheets;
-using SaintCoinach.Imaging;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

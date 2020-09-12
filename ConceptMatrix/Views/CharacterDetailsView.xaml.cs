@@ -28,26 +28,6 @@ namespace ConceptMatrix.Views
         public bool AltRotate;
         public bool AdvancedMove;
 
-		// Experimental secret feature to move the GPose View with the character.
-		// This lets you "walk around" the area with an actor.
-		//
-		// For best results freeze the following:
-		//   - Character XYZ
-		//   - Character rotation
-		//   - GPose View XYZ
-		//   - Cam Pan X (optional but it looks better)
-		//
-		// Quirks are:
-		//   - Move too far from the initial gpose position will cull actors from the
-		//     gpose entity list. This will cause linked actors to get lost. You can
-		//     move the current GPose target actor with no limitations.
-		//
-		//   - When actors cull from the gpose entity list, you can't switch between
-		//     them in-game with tab etc.
-		//
-		//   - Visual jitter in the actor's motion sometimes.
-		public bool LinkedGposeView = false;
-
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
 		public CharacterDetailsView()
 		{
@@ -392,21 +372,6 @@ namespace ConceptMatrix.Views
 
 				CharacterDetails.LinkedActors.Add(linked);
 			}
-
-			if (secret_feature)
-			{
-				LinkedGposeView = true;
-
-				// TBD: There's some kind of (thread?) race that messes things up sometimes if these aren't frozen
-				xyzcheck = true;
-				CharacterDetails.X.freeze = true;
-				CharacterDetails.Y.freeze = true;
-				CharacterDetails.Z.freeze = true;
-				CharacterDetails.CamX.freeze = true;
-				CharacterDetails.CamY.freeze = true;
-				CharacterDetails.CamZ.freeze = true;
-				CharacterDetails.CamAngleX.freeze = true;
-			}
 		}
 		private void LinkPosition_Unchecked(object sender, RoutedEventArgs e)
 		{
@@ -414,17 +379,6 @@ namespace ConceptMatrix.Views
 			{
 				CharacterDetails.LinkedActors.RemoveAll(x => x.Name == CharacterDetails.Name.value);
 			}
-
-			LinkedGposeView = false;
-		}
-
-		private void LinkGposeView_Checked(object sender, RoutedEventArgs e)
-		{
-			LinkedGposeView = true;
-		}
-		private void LinkGposeView_Unchecked(object sender, RoutedEventArgs e)
-		{
-			LinkedGposeView = false;
 		}
 
 		private void HighlightCheckbox_Checked(object sender, RoutedEventArgs e)

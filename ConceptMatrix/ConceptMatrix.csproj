@@ -542,10 +542,6 @@
       <Project>{67cf62f2-4ee4-4517-8826-5fd6dc5cea6a}</Project>
       <Name>ConceptMatrixUpdater</Name>
     </ProjectReference>
-    <ProjectReference Include="..\lib\SaintCoinach\SaintCoinach\SaintCoinach.csproj">
-      <Project>{8a7d65eb-3de3-4631-b286-cc73a3126002}</Project>
-      <Name>SaintCoinach</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="ControlzEx">
