@@ -1,4 +1,4 @@
-﻿using ConceptMatrix.Utility;
+using ConceptMatrix.Utility;
 using ConceptMatrix.Views;
 using Lumina;
 using Lumina.Data.Files;
@@ -194,14 +194,14 @@ namespace ConceptMatrix.ViewModel
 			#region My stuff
 
 			// Get the stains (dyes).
-            var stains = new List<CMStain>();
+            var stains = new List<ExdCsvReader.CMStain>();
             // Loop through the Stains to add to a list.
             foreach (var stain in lumina.GetExcelSheet<Stain>())
             {
                 // Convert color to bytes to turn into a solid color brush.
                 var colorBytes = BitConverter.GetBytes(stain.Color);
                 stains.Add(
-                    new CMStain()
+                    new ExdCsvReader.CMStain()
                     {
                         Id = stain.RowId,
                         Color = new SolidColorBrush(Color.FromRgb(colorBytes[2], colorBytes[1], colorBytes[0])), 
@@ -224,12 +224,12 @@ namespace ConceptMatrix.ViewModel
             characterView.ClanBox.ItemsSource = from t in lumina.GetExcelSheet<Tribe>() select t.Feminine.DefaultIfEmpty("None");
 
             // Setting weather lists.
-            var weatherList = new List<CMWeather>();
+            var weatherList = new List<ExdCsvReader.CMWeather>();
             // Loop through the weathers to add to a list.
             foreach (var weather in lumina.GetExcelSheet<Weather>())
             {
                 var icon = lumina.GetIcon(weather.Icon);
-                var cmw = new CMWeather()
+                var cmw = new ExdCsvReader.CMWeather()
                 {
                     Id = (byte)weather.RowId,
                     Name = weather.Name.DefaultIfEmpty("None"),
@@ -246,7 +246,7 @@ namespace ConceptMatrix.ViewModel
             // Get status sheet.
             var statusList = from s in lumina.GetExcelSheet<Status>()
                              where s.VFX.Row != 0 || s.RowId == 0
-                             select new CMStatus()
+                             select new ExdCsvReader.CMStatus()
                              {
                                  Id = s.RowId,
                                  Name = s.Name.DefaultIfEmpty("None"),

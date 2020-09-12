@@ -570,7 +570,7 @@ namespace ConceptMatrix.Views
             {
                 if (StatusEffectBox2.SelectedIndex >= 0)
                 {
-                    var status = (CMStatus)StatusEffectBox2.SelectedItem;
+                    var status = (ExdCsvReader.CMStatus)StatusEffectBox2.SelectedItem;
                     CharacterDetails.StatusEffect.value = (int)status.Id;
                     m.writeMemory(GASG(c.StatusEffect), "int", status.Id.ToString());
                 }

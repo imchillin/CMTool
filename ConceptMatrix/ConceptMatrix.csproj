@@ -134,7 +134,6 @@
     <Compile Include="Controls\QuaternionEditor.xaml.cs">
       <DependentUpon>QuaternionEditor.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CustomTypes.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\CharacterDetails.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

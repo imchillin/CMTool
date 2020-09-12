@@ -66,6 +66,7 @@ namespace ConceptMatrix.Utility
 			Shield,
 			Trash,
 		}
+
 		public class CMItem
 		{
 			public int Index { get; set; }
@@ -80,6 +81,33 @@ namespace ConceptMatrix.Utility
 			{
 				return Name;
 			}
+		}
+
+		public class CMStain
+		{
+			public uint Id { get; set; }
+			public SolidColorBrush Color { get; set; }
+			public string Name { get; set; }
+
+			public override string ToString() => this.Name;
+		}
+
+		public class CMWeather
+		{
+			public byte Id { get; set; }
+			public string Name { get; set; }
+
+			public ImageSource Icon { get; set; }
+
+			public override string ToString() => this.Name;
+		}
+
+		public class CMStatus
+		{
+			public uint Id { get; set; }
+			public string Name { get; set; }
+			public string Description { get; set; }
+			public ImageSource Icon { get; set; }
 		}
 		public class CMResident
 		{
@@ -136,19 +164,14 @@ namespace ConceptMatrix.Utility
 				return Name;
 			}
 		}
-		public class CMWeather
-		{
-			public int Index { get; set; }
-			public string Name { get; set; }
-            public ImageSource Icon { get; set; }
-            public SaintCoinach.Imaging.ImageFile Icon2 { get; set; }
-        }
+
 		public class CMTerritoryType
 		{
 			public string Name { get; set; }
 			public int Index { get; set; }
 			public CMWeatherRate WeatherRate { get; set; }
 		}
+
 		public class CMWeatherRate
 		{
 			public int Index { get; set; }
@@ -164,6 +187,7 @@ namespace ConceptMatrix.Utility
 				return Name;
 			}
 		}
+
 		public class CMBgm
 		{
 			public int Index { get; set; }

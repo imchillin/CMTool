@@ -276,7 +276,7 @@ namespace ConceptMatrix.Views
                 var allowedWeathers = MainViewModel.lumina.GetExcelSheet<TerritoryType>().First(t => t.RowId == CharacterDetails.Territory.value).AllowedWeather();
                 // Create a CMWeather list for use in an itemssource.
                 var cmWeathers = from w in allowedWeathers
-                                 select new CMWeather() { Id = (byte)w.RowId, Icon = MainViewModel.lumina.GetIcon(w.Icon).GetImage(), Name = w.Name };
+                                 select new ExdCsvReader.CMWeather() { Id = (byte)w.RowId, Icon = MainViewModel.lumina.GetIcon(w.Icon).GetImage(), Name = w.Name };
 
                 // Set the item source to the CMWeather list.
                 WeatherBox.ItemsSource = cmWeathers;
@@ -298,7 +298,7 @@ namespace ConceptMatrix.Views
                 if (WeatherBox.SelectedItem == null)
                     return;
 
-                var selectedWeather = WeatherBox.SelectedItem as CMWeather;
+                var selectedWeather = WeatherBox.SelectedItem as ExdCsvReader.CMWeather;
 
                 CharacterDetails.Weather.value = selectedWeather.Id;
                 var hexValue = selectedWeather.Id.ToString("X");
@@ -1185,7 +1185,7 @@ namespace ConceptMatrix.Views
             {
                 if (ForceWeatherBox.SelectedIndex >= 0)
                 {
-                    var Value = (CMWeather)ForceWeatherBox.SelectedItem;
+                    var Value = (ExdCsvReader.CMWeather)ForceWeatherBox.SelectedItem;
                     CharacterDetails.ForceWeather.value = Value.Id;
                     m.writeMemory(GAS(MemoryManager.Instance.GposeFilters, c.ForceWeather), "byte", Value.Id.ToString());
                 }
