@@ -204,7 +204,7 @@ namespace ConceptMatrix.Utility
 		public List<CMEmote> Emotes;
 		public Dictionary<int, CMResident> Residents = null;
 		public IEnumerable<CMCharaMakeCustomizeFeature> CharaMakeFeatures = null;
-		public IEnumerable<CMCharaMakeCustomizeFeature2> CharaMakeFeatures2 = null;
+		public List<CMCharaMakeCustomizeFeature2> CharaMakeFeatures2 = null;
 		public List<CMMonster> Monsters = null;
 		public List<CMBgm> BGMs = null;
 		public IEnumerable<CMStatus> Statuses = null;
@@ -261,7 +261,7 @@ namespace ConceptMatrix.Utility
 		{
 			try
 			{
-				this.CharaMakeFeatures2 = from c in MainViewModel.lumina.GetExcelSheet<CharaMakeType>()
+				this.CharaMakeFeatures2 = (from c in MainViewModel.lumina.GetExcelSheet<CharaMakeType>()
 										  select new CMCharaMakeCustomizeFeature2
 										  {
 											  Index = (int)c.RowId,
@@ -269,7 +269,7 @@ namespace ConceptMatrix.Utility
 											  Race = (int)c.Race.Row,
 											  Tribe = (int)c.Tribe.Row,
 											  Features = GetFeatures(c.FacialFeatureOptions)
-										  };
+										  }).ToList();
 			}
 			catch (Exception)
 			{
@@ -429,8 +429,6 @@ namespace ConceptMatrix.Utility
 						ModelMain = i.ModelMain.AsQuad().ToString(),
 						ModelOff = i.ItemUICategory.Row == 11 ? i.ModelMain.AsQuad().ToString() : i.ModelSub.AsQuad().ToString()
 					});
-
-			Console.WriteLine(Items.Count);
 		}
 
 		public void MakeResidentList()

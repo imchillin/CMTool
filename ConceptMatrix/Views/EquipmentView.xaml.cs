@@ -219,10 +219,10 @@ namespace ConceptMatrix.Views
         }
         public static bool CheckItemList()
         {
-            if (CharacterDetailsView._exdProvider.Items == null)
+            if (CharacterDetailsView.dataProvider.Items == null)
             {
-                CharacterDetailsView._exdProvider.MakeItemList();
-                if (CharacterDetailsView._exdProvider.Items == null)
+                CharacterDetailsView.dataProvider.MakeItemList();
+                if (CharacterDetailsView.dataProvider.Items == null)
                 {
                     return false;
                 }
@@ -231,10 +231,10 @@ namespace ConceptMatrix.Views
         }
         public static bool CheckPropList()
         {
-            if (CharacterDetailsView._exdProvider.ItemsProps == null)
+            if (CharacterDetailsView.dataProvider.ItemsProps == null)
             {
-                CharacterDetailsView._exdProvider.MakePropList();
-                if (CharacterDetailsView._exdProvider.ItemsProps == null)
+                CharacterDetailsView.dataProvider.MakePropList();
+                if (CharacterDetailsView.dataProvider.ItemsProps == null)
                 {
                     return false;
                 }
@@ -257,7 +257,7 @@ namespace ConceptMatrix.Views
                     EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                     EquipmentControl.ClassBox.Visibility = Visibility.Visible;
                     EquipmentControl.CheckIncluded.Content = FlyOutStrings.IncludeOffhand;
-                    EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray());
+                    EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
             }
@@ -272,7 +272,7 @@ namespace ConceptMatrix.Views
                 EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                 EquipmentControl.ClassBox.Visibility = Visibility.Visible;
                 EquipmentControl.CheckIncluded.Content = FlyOutStrings.IncludeOffhand;
-                EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray());
+                EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray());
             }
         }
 
@@ -292,7 +292,7 @@ namespace ConceptMatrix.Views
                     EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                     EquipmentControl.ClassBox.Visibility = Visibility.Visible;
                     EquipmentControl.CheckIncluded.Content = FlyOutStrings.NoneOffHand;
-                    EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray());
+                    EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
             }
@@ -307,7 +307,7 @@ namespace ConceptMatrix.Views
                 EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                 EquipmentControl.ClassBox.Visibility = Visibility.Visible;
                 EquipmentControl.CheckIncluded.Content = FlyOutStrings.NoneOffHand;
-                EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray());
+                EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray());
             }
         }
 
@@ -326,7 +326,7 @@ namespace ConceptMatrix.Views
                     EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
                     EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                     EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                    EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Head).ToArray());
+                    EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.ToArray().Where(c => c.Type == ExdCsvReader.ItemType.Head).ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
             }
@@ -340,7 +340,7 @@ namespace ConceptMatrix.Views
                 EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
                 EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                 EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Head).ToArray());
+                EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.ToArray().Where(c => c.Type == ExdCsvReader.ItemType.Head).ToArray());
             }
         }
 
@@ -359,7 +359,7 @@ namespace ConceptMatrix.Views
                     EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
                     EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                     EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                    var test = CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Body).ToArray();
+                    var test = CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Body).ToArray();
                     EquipmentControl.GearPicker(test);
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
@@ -374,7 +374,7 @@ namespace ConceptMatrix.Views
                 EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
                 EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                 EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Body).ToArray());
+                EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Body).ToArray());
             }
         }
 
@@ -393,7 +393,7 @@ namespace ConceptMatrix.Views
                     EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
                     EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                     EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                    EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Hands).ToArray());
+                    EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Hands).ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
             }
@@ -407,7 +407,7 @@ namespace ConceptMatrix.Views
                 EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
                 EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                 EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Hands).ToArray());
+                EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Hands).ToArray());
             }
         }
 
@@ -426,7 +426,7 @@ namespace ConceptMatrix.Views
                     EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
                     EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                     EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                    EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Legs).ToArray());
+                    EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Legs).ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
             }
@@ -440,7 +440,7 @@ namespace ConceptMatrix.Views
                 EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
                 EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                 EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Legs).ToArray());
+                EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Legs).ToArray());
             }
         }
 
@@ -459,7 +459,7 @@ namespace ConceptMatrix.Views
                     EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
                     EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                     EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                    EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Feet).ToArray());
+                    EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Feet).ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
             }
@@ -473,7 +473,7 @@ namespace ConceptMatrix.Views
                 EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
                 EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                 EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Feet).ToArray());
+                EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Feet).ToArray());
             }
         }
 
@@ -492,7 +492,7 @@ namespace ConceptMatrix.Views
                     EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
                     EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                     EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                    EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ears).ToArray());
+                    EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ears).ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
             }
@@ -506,7 +506,7 @@ namespace ConceptMatrix.Views
                 EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
                 EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                 EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ears).ToArray());
+                EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ears).ToArray());
             }
         }
 
@@ -525,7 +525,7 @@ namespace ConceptMatrix.Views
                     EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
                     EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                     EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                    EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Neck).ToArray());
+                    EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Neck).ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
             }
@@ -539,7 +539,7 @@ namespace ConceptMatrix.Views
                 EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
                 EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                 EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Neck).ToArray());
+                EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Neck).ToArray());
             }
         }
 
@@ -558,7 +558,7 @@ namespace ConceptMatrix.Views
                     EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
                     EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                     EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                    EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wrists).ToArray());
+                    EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wrists).ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
             }
@@ -572,7 +572,7 @@ namespace ConceptMatrix.Views
                 EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
                 EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                 EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wrists).ToArray());
+                EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wrists).ToArray());
             }
         }
 
@@ -591,7 +591,7 @@ namespace ConceptMatrix.Views
                     EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
                     EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                     EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                    EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
+                    EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
             }
@@ -605,7 +605,7 @@ namespace ConceptMatrix.Views
                 EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
                 EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                 EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
+                EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
             }
         }
 
@@ -624,7 +624,7 @@ namespace ConceptMatrix.Views
                     EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
                     EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                     EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                    EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
+                    EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
             }
@@ -638,15 +638,15 @@ namespace ConceptMatrix.Views
                 EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
                 EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
                 EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
+                EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
             }
         }
         public static bool CheckResidentList()
         {
-            if (CharacterDetailsView._exdProvider.Residents == null)
+            if (CharacterDetailsView.dataProvider.Residents == null)
             {
-                CharacterDetailsView._exdProvider.MakeResidentList();
-                if (CharacterDetailsView._exdProvider.Residents == null)
+                CharacterDetailsView.dataProvider.MakeResidentList();
+                if (CharacterDetailsView.dataProvider.Residents == null)
                     return false;
             }
             return true;
@@ -663,7 +663,7 @@ namespace ConceptMatrix.Views
                     EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Hidden;
                     EquipmentControl.EquippedLabel.Visibility = Visibility.Hidden;
                     EquipmentControl.ClassBox.Visibility = Visibility.Hidden;
-                    if (!EquipmentFlyOut.UserDoneInteraction) EquipmentControl.ResidentSelector(CharacterDetailsView._exdProvider.Residents.Values.Where(c => c.IsGoodNpc()).ToArray());
+                    if (!EquipmentFlyOut.UserDoneInteraction) EquipmentControl.ResidentSelector(CharacterDetailsView.dataProvider.Residents.Values.Where(c => c.IsGoodNpc()).ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
             }
@@ -674,7 +674,7 @@ namespace ConceptMatrix.Views
                 EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Hidden;
                 EquipmentControl.EquippedLabel.Visibility = Visibility.Hidden;
                 EquipmentControl.ClassBox.Visibility = Visibility.Hidden;
-                if (!EquipmentFlyOut.UserDoneInteraction) EquipmentControl.ResidentSelector(CharacterDetailsView._exdProvider.Residents.Values.Where(c => c.IsGoodNpc()).ToArray());
+                if (!EquipmentFlyOut.UserDoneInteraction) EquipmentControl.ResidentSelector(CharacterDetailsView.dataProvider.Residents.Values.Where(c => c.IsGoodNpc()).ToArray());
             }
         }
         private void DigitCheckInput(object sender, TextCompositionEventArgs e)
@@ -698,7 +698,7 @@ namespace ConceptMatrix.Views
                     EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Hidden;
                     EquipmentControl.EquippedLabel.Visibility = Visibility.Hidden;
                     EquipmentControl.ClassBox.Visibility = Visibility.Hidden;
-                    EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.ItemsProps.ToArray());
+                    EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.ItemsProps.ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
             }
@@ -712,7 +712,7 @@ namespace ConceptMatrix.Views
                 EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Hidden;
                 EquipmentControl.EquippedLabel.Visibility = Visibility.Hidden;
                 EquipmentControl.ClassBox.Visibility = Visibility.Hidden;
-                EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.ItemsProps.ToArray());
+                EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.ItemsProps.ToArray());
             }
         }
 
@@ -730,7 +730,7 @@ namespace ConceptMatrix.Views
                     EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Hidden;
                     EquipmentControl.EquippedLabel.Visibility = Visibility.Hidden;
                     EquipmentControl.ClassBox.Visibility = Visibility.Hidden;
-                    EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.ItemsProps.ToArray());
+                    EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.ItemsProps.ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
             }
@@ -743,7 +743,7 @@ namespace ConceptMatrix.Views
                 EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Hidden;
                 EquipmentControl.EquippedLabel.Visibility = Visibility.Hidden;
                 EquipmentControl.ClassBox.Visibility = Visibility.Hidden;
-                EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.ItemsProps.ToArray());
+                EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.ItemsProps.ToArray());
             }
         }
         private void SaveGearset_Click(object sender, RoutedEventArgs e)

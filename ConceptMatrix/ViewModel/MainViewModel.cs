@@ -177,35 +177,38 @@ namespace ConceptMatrix.ViewModel
             // Local stopwatch used for timing the startup lumina processes.
             var sw = Stopwatch.StartNew();
 
-            new Thread(() =>
+            Task.Run(() => CharacterDetailsView.dataProvider.MakeItemList());
+            Task.Run(() => CharacterDetailsView.dataProvider.MakePropList());
+            Task.Run(() => CharacterDetailsView.dataProvider.MakeResidentList());
+            Task.Run(() => CharacterDetailsView.dataProvider.MakeCharaMakeFeatureFacialList());
+            Task.Run(() => CharacterDetailsView.dataProvider.MakeCharaMakeFeatureList());
+            Task.Run(() => CharacterDetailsView.dataProvider.EmoteList());
+            Task.Run(() =>
             {
-                EquipmentView.CheckItemList();
-                EquipmentView.CheckPropList();
-                EquipmentView.CheckResidentList();
-                CharacterDetailsView._exdProvider.MakeCharaMakeFeatureFacialList();
-                CharacterDetailsView._exdProvider.MakeCharaMakeFeatureList(); // bug
-                CharacterDetailsView._exdProvider.EmoteList();
-                CharacterDetailsView._exdProvider.MonsterList();
-                CharacterDetailsView._exdProvider.MakeTerritoryTypeList();
-                CharacterDetailsView._exdProvider.GetStatuses();
-                CharacterDetailsView._exdProvider.GetStains();
-
+                CharacterDetailsView.dataProvider.MonsterList();
+                App.Current.Dispatcher.Invoke(() => characterView.SpecialControl.ModelBox.ItemsSource = CharacterDetailsView.dataProvider.Monsters);
+            });
+            Task.Run(() => CharacterDetailsView.dataProvider.MakeTerritoryTypeList());
+            Task.Run(() =>
+            {
+                CharacterDetailsView.dataProvider.GetStatuses();
+                App.Current.Dispatcher.Invoke(() => actorPropView.StatusEffectBox2.ItemsSource = CharacterDetailsView.dataProvider.Statuses);
+            });
+            Task.Run(() =>
+            {
+                CharacterDetailsView.dataProvider.GetStains();
                 App.Current.Dispatcher.Invoke(() =>
                 {
                     // Assign the item sources for the dye combo boxes.
-                    equipView.MHBox.ItemsSource = CharacterDetailsView._exdProvider.Stains;
-                    equipView.OHBox.ItemsSource = CharacterDetailsView._exdProvider.Stains;
-                    equipView.HeadDye.ItemsSource = CharacterDetailsView._exdProvider.Stains;
-                    equipView.ChestBox.ItemsSource = CharacterDetailsView._exdProvider.Stains;
-                    equipView.ArmBox.ItemsSource = CharacterDetailsView._exdProvider.Stains;
-                    equipView.LegBox.ItemsSource = CharacterDetailsView._exdProvider.Stains;
-                    equipView.FeetBox.ItemsSource = CharacterDetailsView._exdProvider.Stains;
-                    actorPropView.StatusEffectBox2.ItemsSource = CharacterDetailsView._exdProvider.Statuses;
-                    characterView.SpecialControl.ModelBox.ItemsSource = CharacterDetailsView._exdProvider.Monsters;
+                    equipView.MHBox.ItemsSource = CharacterDetailsView.dataProvider.Stains;
+                    equipView.OHBox.ItemsSource = CharacterDetailsView.dataProvider.Stains;
+                    equipView.HeadDye.ItemsSource = CharacterDetailsView.dataProvider.Stains;
+                    equipView.ChestBox.ItemsSource = CharacterDetailsView.dataProvider.Stains;
+                    equipView.ArmBox.ItemsSource = CharacterDetailsView.dataProvider.Stains;
+                    equipView.LegBox.ItemsSource = CharacterDetailsView.dataProvider.Stains;
+                    equipView.FeetBox.ItemsSource = CharacterDetailsView.dataProvider.Stains;
                 });
-            }).Start();
-
-            Console.WriteLine($"MakeCharaMakeFeatureList time...? {sw.ElapsedMilliseconds}ms");
+            });
 
             // Race and Tribes.
             characterView.RaceBox.ItemsSource = from r in lumina.GetExcelSheet<Race>() select r.Feminine.DefaultIfEmpty("None");

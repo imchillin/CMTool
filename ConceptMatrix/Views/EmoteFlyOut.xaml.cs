@@ -16,7 +16,7 @@ namespace ConceptMatrix.Views
     /// </summary>
     public partial class EmoteFlyOut : Flyout
     {
-        private ExdCsvReader _exdProvider = CharacterDetailsView._exdProvider;
+        private ExdCsvReader _exdProvider = CharacterDetailsView.dataProvider;
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
         public EmoteFlyOut()
         {

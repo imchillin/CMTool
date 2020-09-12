@@ -3,6 +3,7 @@ using ConceptMatrix.Utility;
 using ConceptMatrix.ViewModel;
 using MahApps.Metro.Controls;
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows;
@@ -22,9 +23,7 @@ namespace ConceptMatrix.Views
         private ExdCsvReader _reader;
         private int _tribe;
         private int _gender;
-        private int _race;
         private int _face;
-        private int _startIndex;
         public int Choice = -1;
         private bool DidUserInteract = false;
         private bool isUserInteraction;
@@ -56,12 +55,11 @@ namespace ConceptMatrix.Views
                 item.Background = newColor;
                 item.FontSize = 24;
                 item.FontWeight = FontWeights.Bold;
-                item.Content = (i - start);
+                item.Content = i - start;
                 colorListView.Items.Add(item);
             }
-
-            _startIndex = start;
         }
+
         public void CharaMakeColorSelectorLips(CmpReader colorMap, int start, int length)
         {
             colorListView.Items.Clear();
@@ -98,7 +96,6 @@ namespace ConceptMatrix.Views
                 item.Content = "Light-" + (i - (1792 - 128));
                 colorListView.Items.Add(item);
             }
-            _startIndex = start;
         }
         private void colorListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -322,7 +319,6 @@ namespace ConceptMatrix.Views
             _tribe = tribe;
             _gender = gender;
             _reader = reader;
-            _race = race;
             _face = face;
             FillFacialFeature(_face, tribe, gender);
         }
@@ -497,7 +493,7 @@ namespace ConceptMatrix.Views
         {
             var filter = SearchModelBox.Text.ToLower();
             ModelBox.Items.Clear();
-            foreach (var m in CharacterDetailsView._exdProvider.Monsters.Where(g => g.Name.ToLower().Contains(filter)))
+            foreach (var m in CharacterDetailsView.dataProvider.Monsters.Where(g => g.Name.ToLower().Contains(filter)))
                 if (m.Real == true)
                 {
                     ModelBox.Items.Add(new ExdCsvReader.CMMonster
@@ -514,16 +510,16 @@ namespace ConceptMatrix.Views
             {
                 if (HairTab.IsSelected)
                 {
-                    CharaMakeFeatureSelector(CharacterDetails.Clan.value, CharacterDetails.Gender.value, CharacterDetailsView._exdProvider);
+                    CharaMakeFeatureSelector(CharacterDetails.Clan.value, CharacterDetails.Gender.value, CharacterDetailsView.dataProvider);
                 }
                 else if (PaintTab.IsSelected)
                 {
                     CheckIncluded.IsChecked = false;
-                    CharaMakeFeatureSelector2(CharacterDetails.Clan.value, CharacterDetails.Gender.value, CharacterDetailsView._exdProvider);
+                    CharaMakeFeatureSelector2(CharacterDetails.Clan.value, CharacterDetails.Gender.value, CharacterDetailsView.dataProvider);
                 }
                 else if(FacialTab.IsSelected)
                 {
-                    CharaMakeFeatureSelector3(CharacterDetails.Head.value, CharacterDetails.Race.value, CharacterDetails.Clan.value, CharacterDetails.Gender.value, CharacterDetailsView._exdProvider);
+                    CharaMakeFeatureSelector3(CharacterDetails.Head.value, CharacterDetails.Race.value, CharacterDetails.Clan.value, CharacterDetails.Gender.value, CharacterDetailsView.dataProvider);
                 }
             }
             else return;
@@ -591,7 +587,7 @@ namespace ConceptMatrix.Views
                 FacialFeatureView.Items.Clear();
 
                 // Get the features that match our tribe and gender.
-                var data = _reader.CharaMakeFeatures2.First(f => f.Tribe == tribeKey && f.Gender == gender);
+                var data = _reader.CharaMakeFeatures2[((tribeKey - 1) * 2) + gender];
 
                 // Add the no feature option.
                 FacialFeatureView.Items.Add(new Features { ID = 0, FeatureImage = Nope });
@@ -601,7 +597,7 @@ namespace ConceptMatrix.Views
                     FacialFeatureView.Items.Add(new Features { ID = (int)Math.Pow(2, i), FeatureImage = data.Features[8 * i + faceKey].Icon });
 
                 // Add the legacy mark option.
-                FacialFeatureView.Items.Add(new Features { ID = 128, FeatureImage = Legacy  });
+                FacialFeatureView.Items.Add(new Features { ID = 128, FeatureImage = Legacy });
 
                 // What?
                 DidUserInteract = false;

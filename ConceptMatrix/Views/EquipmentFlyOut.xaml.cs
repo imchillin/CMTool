@@ -464,58 +464,58 @@ namespace ConceptMatrix.Views
                     CheckIncluded.Visibility = Visibility.Visible;
                     KeepDyes.Visibility = Visibility.Visible;
                     CheckIncluded.Content = FlyOutStrings.IncludeOffhand;
-                    GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray());
+                    GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray());
                 }
                 if (EquipBoxC.SelectedIndex == 1)
                 {
                     CheckIncluded.Visibility = Visibility.Visible;
                     KeepDyes.Visibility = Visibility.Visible;
                     CheckIncluded.Content = FlyOutStrings.NoneOffHand;
-                    GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray());
+                    GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray());
                 }
                 if (EquipBoxC.SelectedIndex == 2)
                 {
                     KeepDyes.Visibility = Visibility.Visible;
-                    GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Head).ToArray());
+                    GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Head).ToArray());
                 }
                 if (EquipBoxC.SelectedIndex == 3)
                 {
                     KeepDyes.Visibility = Visibility.Visible;
-                    GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Body).ToArray());
+                    GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Body).ToArray());
                 }
 
                 if (EquipBoxC.SelectedIndex == 4)
                 {
                     KeepDyes.Visibility = Visibility.Visible;
-                    GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Hands).ToArray());
+                    GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Hands).ToArray());
                 }
                 if (EquipBoxC.SelectedIndex == 5)
                 {
                     KeepDyes.Visibility = Visibility.Visible;
-                    GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Legs).ToArray());
+                    GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Legs).ToArray());
                 }
                 if (EquipBoxC.SelectedIndex == 6)
                 {
                     KeepDyes.Visibility = Visibility.Visible;
-                    GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Feet).ToArray());
+                    GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Feet).ToArray());
                 }
 
-                if (EquipBoxC.SelectedIndex == 7) GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ears).ToArray());
-                if (EquipBoxC.SelectedIndex == 8) GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Neck).ToArray());
-                if (EquipBoxC.SelectedIndex == 9) GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wrists).ToArray());
-                if (EquipBoxC.SelectedIndex == 10) GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
-                if (EquipBoxC.SelectedIndex == 11) GearPicker(CharacterDetailsView._exdProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
+                if (EquipBoxC.SelectedIndex == 7) GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ears).ToArray());
+                if (EquipBoxC.SelectedIndex == 8) GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Neck).ToArray());
+                if (EquipBoxC.SelectedIndex == 9) GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wrists).ToArray());
+                if (EquipBoxC.SelectedIndex == 10) GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
+                if (EquipBoxC.SelectedIndex == 11) GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
                 if (EquipBoxC.SelectedIndex == 12)
                 {
                     if (!EquipmentView.CheckPropList())
                         return;
-                    GearPicker(CharacterDetailsView._exdProvider.ItemsProps.ToArray());
+                    GearPicker(CharacterDetailsView.dataProvider.ItemsProps.ToArray());
                 }
                 if (EquipBoxC.SelectedIndex == 13)
                 {
                     if (!EquipmentView.CheckPropList())
                         return;
-                    GearPicker(CharacterDetailsView._exdProvider.ItemsProps.ToArray());
+                    GearPicker(CharacterDetailsView.dataProvider.ItemsProps.ToArray());
                 }
                 isUserInteraction = false;
             }
@@ -905,7 +905,7 @@ namespace ConceptMatrix.Views
                 if (NPCTab.IsSelected)
                 {
                     if (!EquipmentView.CheckResidentList()) return;
-                    if(!UserDoneInteraction)ResidentSelector(CharacterDetailsView._exdProvider.Residents.Values.Where(c => c.IsGoodNpc()).ToArray());
+                    if(!UserDoneInteraction)ResidentSelector(CharacterDetailsView.dataProvider.Residents.Values.Where(c => c.IsGoodNpc()).ToArray());
                     CurrentlyEquippedName.Visibility = Visibility.Hidden;
                     EquippedLabel.Visibility = Visibility.Hidden;
                     ClassBox.Visibility = Visibility.Hidden;

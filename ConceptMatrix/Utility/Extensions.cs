@@ -130,7 +130,7 @@ namespace ConceptMatrix.Utility
 		{
 			try
 			{
-				if (CharacterDetailsView._exdProvider.TerritoryTypes?.First(t => t.Index == ID) is var value && value != null)
+				if (CharacterDetailsView.dataProvider.TerritoryTypes?.First(t => t.Index == ID) is var value && value != null)
 					return $"{value.Name} - {value.Index}";
 				else
 					return $"Unknown Zone - 0";

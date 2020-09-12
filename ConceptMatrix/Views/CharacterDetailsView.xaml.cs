@@ -22,7 +22,7 @@ namespace ConceptMatrix.Views
 	public partial class CharacterDetailsView : UserControl
 	{
 		public static CmpReader _colorMap = new CmpReader(Properties.Resources.human);
-		public static ExdCsvReader _exdProvider = new ExdCsvReader();
+		public static ExdCsvReader dataProvider = new ExdCsvReader();
 		public static bool xyzcheck = false;
 		public static bool numbcheck = false;
         public bool AltRotate;
@@ -885,7 +885,7 @@ namespace ConceptMatrix.Views
 				if (!SpecialControl.HairTab.IsSelected)
 				{
 					SpecialControl.HairTab.IsSelected = true;
-					SpecialControl.CharaMakeFeatureSelector(CharacterDetails.Clan.value, CharacterDetails.Gender.value, _exdProvider);
+					SpecialControl.CharaMakeFeatureSelector(CharacterDetails.Clan.value, CharacterDetails.Gender.value, dataProvider);
 				}
 				else SpecialControl.IsOpen = !SpecialControl.IsOpen;
 			}
@@ -893,7 +893,7 @@ namespace ConceptMatrix.Views
 			{
 				SpecialControl.IsOpen = !SpecialControl.IsOpen;
 				SpecialControl.HairTab.IsSelected = true;
-				SpecialControl.CharaMakeFeatureSelector(CharacterDetails.Clan.value, CharacterDetails.Gender.value, _exdProvider);
+				SpecialControl.CharaMakeFeatureSelector(CharacterDetails.Clan.value, CharacterDetails.Gender.value, dataProvider);
 			}
 		}
 
@@ -1035,7 +1035,7 @@ namespace ConceptMatrix.Views
 				{
 					SpecialControl.PaintTab.IsSelected = true;
 					SpecialControl.CheckIncluded.IsChecked = false;
-					SpecialControl.CharaMakeFeatureSelector2(CharacterDetails.Clan.value, CharacterDetails.Gender.value, _exdProvider);
+					SpecialControl.CharaMakeFeatureSelector2(CharacterDetails.Clan.value, CharacterDetails.Gender.value, dataProvider);
 				}
 				else SpecialControl.IsOpen = !SpecialControl.IsOpen;
 			}
@@ -1044,7 +1044,7 @@ namespace ConceptMatrix.Views
 				SpecialControl.IsOpen = !SpecialControl.IsOpen;
 				SpecialControl.PaintTab.IsSelected = true;
 				SpecialControl.CheckIncluded.IsChecked = false;
-				SpecialControl.CharaMakeFeatureSelector2(CharacterDetails.Clan.value, CharacterDetails.Gender.value, _exdProvider);
+				SpecialControl.CharaMakeFeatureSelector2(CharacterDetails.Clan.value, CharacterDetails.Gender.value, dataProvider);
 			}
 		}
 
@@ -1055,7 +1055,7 @@ namespace ConceptMatrix.Views
 				if (!SpecialControl.FacialTab.IsSelected)
 				{
 					SpecialControl.FacialTab.IsSelected = true;
-					SpecialControl.CharaMakeFeatureSelector3(CharacterDetails.Head.value, CharacterDetails.Race.value, CharacterDetails.Clan.value, CharacterDetails.Gender.value, _exdProvider);
+					//SpecialControl.CharaMakeFeatureSelector3(CharacterDetails.Head.value, CharacterDetails.Race.value, CharacterDetails.Clan.value, CharacterDetails.Gender.value, _exdProvider);
 				}
 				else SpecialControl.IsOpen = !SpecialControl.IsOpen;
 			}
@@ -1063,7 +1063,7 @@ namespace ConceptMatrix.Views
 			{
 				SpecialControl.IsOpen = !SpecialControl.IsOpen;
 				SpecialControl.FacialTab.IsSelected = true;
-				SpecialControl.CharaMakeFeatureSelector3(CharacterDetails.Head.value, CharacterDetails.Race.value, CharacterDetails.Clan.value, CharacterDetails.Gender.value, _exdProvider);
+				//SpecialControl.CharaMakeFeatureSelector3(CharacterDetails.Head.value, CharacterDetails.Race.value, CharacterDetails.Clan.value, CharacterDetails.Gender.value, _exdProvider);
 			}
 		}
 
@@ -1102,7 +1102,7 @@ namespace ConceptMatrix.Views
 				MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Clan), CharacterDetails.Clan.GetBytes());
 				CharacterDetails.Gender.value = (byte)rnd.Next(0, 2);
 				MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Gender), CharacterDetails.Gender.GetBytes());
-				SpecialControl.HairRandomPick(CharacterDetails.Clan.value, CharacterDetails.Gender.value, _exdProvider);
+				SpecialControl.HairRandomPick(CharacterDetails.Clan.value, CharacterDetails.Gender.value, dataProvider);
 				if (CharacterDetails.Race.value == 1 && CharacterDetails.Clan.value == 1 && CharacterDetails.Gender.value == 0) CharacterDetails.Head.value = (byte)rnd.Next(0, 8);
 				else if (CharacterDetails.Race.value == 1 && CharacterDetails.Clan.value == 1 && CharacterDetails.Gender.value == 1) CharacterDetails.Head.value = (byte)rnd.Next(0, 6);
 				else CharacterDetails.Head.value = (byte)rnd.Next(0, 5);
