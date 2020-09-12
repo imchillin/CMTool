@@ -1,6 +1,7 @@
 ﻿using ConceptMatrix.ViewModel;
 using ConceptMatrix.Views;
 using Lumina.Data.Files;
+using Lumina.Data.Parsing;
 using Lumina.Excel.GeneratedSheets;
 using SaintCoinach.Imaging;
 using System;
@@ -19,8 +20,8 @@ namespace ConceptMatrix.Utility
 {
 	public static class Extensions
 	{
-		private static double Deg2Rad = (Math.PI * 2) / 360;
-		private static double Rad2Deg = 360 / (Math.PI * 2);
+		private static readonly double Deg2Rad = (Math.PI * 2) / 360;
+		private static readonly double Rad2Deg = 360 / (Math.PI * 2);
 
 		/// <summary>
 		/// Convert into a Quaternion assuming the Vector3D represents euler angles.
@@ -121,18 +122,19 @@ namespace ConceptMatrix.Utility
 			return q;
 		}
 
+		/// <summary>
+		/// Get territory name from its ID.
+		/// </summary>
+		/// <param name="ID">Territory ID</param>
+		/// <returns>Name of the territory</returns>
 		public static string TerritoryName(int ID)
 		{
 			try
 			{
-				if (CharacterDetailsView._exdProvider.TerritoryTypes.TryGetValue(ID, out ExdCsvReader.TerritoryType value))
-				{
+				if (CharacterDetailsView._exdProvider.TerritoryTypes.First(t => t.Index == ID) is var value)
 					return $"{value.Name} - {value.Index}";
-				}
 				else
-				{
 					return $"Unknown Zone - 0";
-				}
 			}
 			catch (Exception)
 			{

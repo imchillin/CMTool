@@ -116,9 +116,8 @@ namespace ConceptMatrix.Utility
 			public int FeatureID { get; set; }
 			public ImageSource Icon { get; set; }
 		}
-		public class Features
+		public class CMFeature
 		{
-			public int FeatureID { get; set; }
 			public ImageSource Icon { get; set; }
 		}
 		public class CharaMakeCustomizeFeature2
@@ -127,7 +126,7 @@ namespace ConceptMatrix.Utility
 			public int Race { get; set; }
 			public int Gender { get; set; }
 			public int Tribe { get; set; }
-			public List<Features> Features { get; set; }
+			public List<CMFeature> Features { get; set; }
 		}
 
 		public class Emote
@@ -142,24 +141,23 @@ namespace ConceptMatrix.Utility
 				return Name;
 			}
 		}
-		public class Weather
+		public class CMWeather
 		{
 			public int Index { get; set; }
 			public string Name { get; set; }
-            public ushort Key { get; set; }
             public ImageSource Icon { get; set; }
             public SaintCoinach.Imaging.ImageFile Icon2 { get; set; }
         }
-		public class TerritoryType
+		public class CMTerritoryType
 		{
 			public string Name { get; set; }
 			public int Index { get; set; }
-			public WeatherRate WeatherRate { get; set; }
+			public CMWeatherRate WeatherRate { get; set; }
 		}
-		public class WeatherRate
+		public class CMWeatherRate
 		{
 			public int Index { get; set; }
-			public List<Weather> AllowedWeathers { get; set; }
+			public List<CMWeather> AllowedWeathers { get; set; }
 		}
 		public class Monster
 		{
@@ -184,7 +182,7 @@ namespace ConceptMatrix.Utility
 		public static Monster[] MonsterX;
 		public List<Item> Items = null;
 		public Dictionary<int, Item> ItemsProps = null;
-		public Dictionary<int, TerritoryType> TerritoryTypes = null;
+		public List<CMTerritoryType> TerritoryTypes = null;
 		public Dictionary<int, Emote> Emotes = null;
 		public Dictionary<int, Resident> Residents = null;
 		public List<CharaMakeCustomizeFeature> CharaMakeFeatures = null;
@@ -192,20 +190,16 @@ namespace ConceptMatrix.Utility
 		public Dictionary<int, Tribe> Tribes = null;
 		public Dictionary<int, Monster> Monsters = null;
 		public Dictionary<int, BGM> BGMs = null;
-		public static ImageSource CreateSource(SaintCoinach.Imaging.ImageFile file)
-		{
-			var argb = SaintCoinach.Imaging.ImageConverter.GetA8R8G8B8(file);
-			return System.Windows.Media.Imaging.BitmapSource.Create(
-									   file.Width, file.Height,
-				96, 96,
-				PixelFormats.Bgra32, null,
-				argb, file.Width * 4);
-		}
-		private List<Features> GetFeatures(int[] features)
+
+		private List<CMFeature> GetFeatures(int[] features)
 		{
 			// SpecialControl.GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Corrupted"))
-			return (from f in features select new Features { Icon = MainViewModel.lumina.GetIcon(f).GetImage() }).ToList();
+			return (from f in features select new CMFeature { Icon = MainViewModel.lumina.GetIcon(f).GetImage() }).ToList();
 		}
+
+		/// <summary>
+		/// Create the face feature list.
+		/// </summary>
 		public void MakeCharaMakeFeatureFacialList()
 		{
 			CharaMakeFeatures2 = new List<CharaMakeCustomizeFeature2>();
@@ -214,13 +208,14 @@ namespace ConceptMatrix.Utility
 				var sheet = MainViewModel.lumina.GetExcelSheet<CharaMakeType>();
 				foreach (var cmt in sheet)
 				{
-					//   rowCount++;
-					var feature = new CharaMakeCustomizeFeature2();
-					feature.Index = (int)cmt.RowId;
-					feature.Gender = cmt.Gender;
-					feature.Race = (int)cmt.Race.Row;
-					feature.Tribe = (int)cmt.Tribe.Row;
-					feature.Features = GetFeatures(cmt.Unknown3291);
+					var feature = new CharaMakeCustomizeFeature2
+					{
+						Index = (int)cmt.RowId,
+						Gender = cmt.Gender,
+						Race = (int)cmt.Race.Row,
+						Tribe = (int)cmt.Tribe.Row,
+						Features = GetFeatures(cmt.FacialFeatureOptions)
+					};
 					CharaMakeFeatures2.Add(feature);
 				}
 			}
@@ -267,12 +262,12 @@ namespace ConceptMatrix.Utility
 						while (!parser.EndOfData)
 						{
 							rowCount++;
-							Emote emote = new Emote();
+							var emote = new Emote();
 							//Processing row
-							string[] fields = parser.ReadFields();
-							int fCount = 0;
+							var fields = parser.ReadFields();
+							var fCount = 0;
 							emote.Index = int.Parse(fields[0]);
-							foreach (string field in fields)
+							foreach (var field in fields)
 							{
 								fCount++;
 
@@ -287,13 +282,9 @@ namespace ConceptMatrix.Utility
 						}
 					}
 				}
-
 				catch (Exception)
 				{
 					Emotes = null;
-
-				//	throw;
-
 				}
 			}
 		}
@@ -370,12 +361,10 @@ namespace ConceptMatrix.Utility
 					return ItemType.Trash;
 			}
 		}
+		
 		public void MakeItemList()
 		{
-			var sw = Stopwatch.StartNew();
 			var itemSheet = MainViewModel.lumina.GetExcelSheet<Lumina.Excel.GeneratedSheets.Item>();
-			sw.Stop();
-			Console.WriteLine(">>>> " + sw.ElapsedMilliseconds);
 
 			Items = new List<Item>();
 
@@ -392,75 +381,93 @@ namespace ConceptMatrix.Utility
 						ModelOff = i.ItemUICategory.Row == 11 ? i.ModelMain.AsQuad().ToString() : i.ModelSub.AsQuad().ToString()
 					});
 		}
+
 		public void MakeResidentList()
 		{
 			Residents = new Dictionary<int, Resident>();
 
 			try
 			{
-				var sheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.ENpcResident>();
-				foreach (var Parse in sheet)
-				{
-					Residents.Add(Parse.Key, new Resident { Index = Parse.Key, Name = Parse.Singular });
-				}
-				var eNpcBases = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.ENpcBase>();
+				var npcResidentSheet = MainViewModel.lumina.GetExcelSheet<ENpcResident>();
 
-				foreach (var parse in eNpcBases)
+				foreach (var npc in npcResidentSheet)
+					Residents.Add((int)npc.RowId, new Resident { Index = (int)npc.RowId, Name = npc.Singular });
+
+				var npcBaseSheet = MainViewModel.lumina.GetExcelSheet<ENpcBase>();
+
+				foreach (var npc in npcBaseSheet)
 				{
-					//  Console.WriteLine($"{parse.NpcEquip.ModelHead[0]+ parse.NpcEquip.ModelHead[1]* 256},{parse.NpcEquip.ModelHead[2]}");
-					//   Console.WriteLine(parse.NpcEquip.Key);
-					int id = parse.Key;
-					//  int modelid = parse.ModelID;
-					GearSet gear = new GearSet();
-					List<byte> customize = new List<byte>();
-					customize.AddRange(new List<byte>() { Convert.ToByte(parse.Race.Key), Convert.ToByte(parse.Gender)
-					   , Convert.ToByte(parse.BodyType), Convert.ToByte(parse.Height)
-				   , Convert.ToByte(parse.Tribe.Key), Convert.ToByte(parse.Face) , Convert.ToByte(parse.HairStyle), Convert.ToByte(parse.HairHighlight)
-				   , Convert.ToByte(parse.SkinColor), Convert.ToByte(parse.EyeHeterochromia), Convert.ToByte(parse.HairColor), Convert.ToByte(parse.HairHighlightColor)
-				   , Convert.ToByte(parse.FacialFeature), Convert.ToByte(parse.FacialFeatureColor), Convert.ToByte(parse.Eyebrows), Convert.ToByte(parse.EyeColor)
-				   , Convert.ToByte(parse.EyeShape), Convert.ToByte(parse.Nose), Convert.ToByte(parse.Jaw), Convert.ToByte(parse.Mouth)
-				   , Convert.ToByte(parse.LipColor), Convert.ToByte(parse.BustOrTone1), Convert.ToByte(parse.ExtraFeature1), Convert.ToByte(parse.ExtraFeature2OrBust)
-				   , Convert.ToByte(parse.FacePaint), Convert.ToByte(parse.FacePaintColor) });
-					gear.ModelType = parse.ModelChara.Key;
-					gear.Customize = customize.ToArray();
-					if (parse.NpcEquip.Key > 0)
+					var gear = new GearSet();
+					var customize = new List<byte>();
+
+					customize.AddRange(new List<byte>()
 					{
-						gear.MainWep = new WepTuple(parse.NpcEquip.ModelMain.Value1, parse.NpcEquip.ModelMain.Value2, parse.NpcEquip.ModelMain.Value3, parse.NpcEquip.DyeMain.Key);
-						gear.OffWep = new WepTuple(parse.NpcEquip.ModelSub.Value1, parse.NpcEquip.ModelSub.Value2, parse.NpcEquip.ModelSub.Value3, parse.NpcEquip.DyeOff.Key);
-						gear.HeadGear = new GearTuple((parse.NpcEquip.ModelHead[0] + parse.NpcEquip.ModelHead[1] * 256), parse.NpcEquip.ModelHead[2], parse.NpcEquip.DyeHead.Key);
-						gear.BodyGear = new GearTuple((parse.NpcEquip.ModelBody[0] + parse.NpcEquip.ModelBody[1] * 256), parse.NpcEquip.ModelBody[2], parse.NpcEquip.DyeBody.Key);
-						gear.HandsGear = new GearTuple((parse.NpcEquip.ModelHands[0] + parse.NpcEquip.ModelHands[1] * 256), parse.NpcEquip.ModelHands[2], parse.NpcEquip.DyeHands.Key);
-						gear.LegsGear = new GearTuple((parse.NpcEquip.ModelLegs[0] + parse.NpcEquip.ModelLegs[1] * 256), parse.NpcEquip.ModelLegs[2], parse.NpcEquip.DyeLegs.Key);
-						gear.FeetGear = new GearTuple((parse.NpcEquip.ModelFeet[0] + parse.NpcEquip.ModelFeet[1] * 256), parse.NpcEquip.ModelFeet[2], parse.NpcEquip.DyeFeet.Key);
-						gear.EarGear = new GearTuple((parse.NpcEquip.ModelEars[0] + parse.NpcEquip.ModelEars[1] * 256), parse.NpcEquip.ModelEars[2], 0);
-						gear.NeckGear = new GearTuple((parse.NpcEquip.ModelNeck[0] + parse.NpcEquip.ModelNeck[1] * 256), parse.NpcEquip.ModelNeck[2], 0);
-						gear.WristGear = new GearTuple((parse.NpcEquip.ModelWrists[0] + parse.NpcEquip.ModelWrists[1] * 256), parse.NpcEquip.ModelWrists[2], 0);
-						gear.RRingGear = new GearTuple((parse.NpcEquip.ModelRightRing[0] + parse.NpcEquip.ModelRightRing[1] * 256), parse.NpcEquip.ModelRightRing[2], 0);
-						gear.LRingGear = new GearTuple((parse.NpcEquip.ModelLeftRing[0] + parse.NpcEquip.ModelLeftRing[1] * 256), parse.NpcEquip.ModelLeftRing[2], 0);
+						Convert.ToByte(npc.Race.Row),
+						npc.Gender,
+						npc.BodyType,
+						npc.Height,
+						Convert.ToByte(npc.Tribe.Row),
+						npc.Face,
+						npc.HairStyle,
+						npc.HairHighlight,
+						npc.SkinColor,
+						npc.EyeHeterochromia,
+						npc.HairColor,
+						npc.HairHighlightColor,
+						npc.FacialFeature,
+						npc.FacialFeatureColor,
+						npc.Eyebrows,
+						npc.EyeColor,
+						npc.EyeShape,
+						npc.Nose,
+						npc.Jaw,
+						npc.Mouth,
+						npc.LipColor,
+						npc.BustOrTone1,
+						npc.ExtraFeature1,
+						npc.ExtraFeature2OrBust,
+						npc.FacePaint,
+						npc.FacePaintColor
+					});
+
+					gear.ModelType = (int)npc.ModelChara.Row;
+					gear.Customize = customize.ToArray();
+
+					WepTuple GetWeaponTuple(ulong model, Stain dye) => new WepTuple((ushort)model, (ushort)model >> 16, (ushort)model >> 32, (int)dye.RowId);
+					GearTuple GetGearTuple(uint model, Stain dye = null) => new GearTuple((ushort)model, (ushort)model >> 16, dye == null ? 0 : (int)dye.RowId);
+
+					if (npc.NpcEquip.Row > 0)
+					{
+						gear.MainWep = GetWeaponTuple(npc.NpcEquip.Value.ModelMainHand, npc.NpcEquip.Value.DyeMainHand.Value);
+						gear.OffWep = GetWeaponTuple(npc.NpcEquip.Value.ModelOffHand, npc.NpcEquip.Value.DyeOffHand.Value);
+						gear.HeadGear = GetGearTuple(npc.NpcEquip.Value.ModelHead, npc.NpcEquip.Value.DyeHead.Value);
+						gear.BodyGear = GetGearTuple(npc.NpcEquip.Value.ModelBody, npc.NpcEquip.Value.DyeBody.Value);
+						gear.HandsGear = GetGearTuple(npc.NpcEquip.Value.ModelHands, npc.NpcEquip.Value.DyeHands.Value);
+						gear.LegsGear = GetGearTuple(npc.NpcEquip.Value.ModelLegs, npc.NpcEquip.Value.DyeLegs.Value);
+						gear.FeetGear = GetGearTuple(npc.NpcEquip.Value.ModelFeet, npc.NpcEquip.Value.DyeFeet.Value);
+						gear.EarGear = GetGearTuple(npc.NpcEquip.Value.ModelEars);
+						gear.NeckGear = GetGearTuple(npc.NpcEquip.Value.ModelNeck);
+						gear.WristGear = GetGearTuple(npc.NpcEquip.Value.ModelWrists);
+						gear.RRingGear = GetGearTuple(npc.NpcEquip.Value.ModelRightRing);
+						gear.LRingGear = GetGearTuple(npc.NpcEquip.Value.ModelLeftRing);
 					}
 					else
 					{
-						gear.MainWep = new WepTuple(parse.ModelMain.Value1, parse.ModelMain.Value2, parse.ModelMain.Value3, parse.DyeMain.Key);
-						gear.OffWep = new WepTuple(parse.ModelSub.Value1, parse.ModelSub.Value2, parse.ModelSub.Value3, parse.DyeOff.Key);
-						gear.HeadGear = new GearTuple((parse.ModelHead[0] + parse.ModelHead[1] * 256), parse.ModelHead[2], parse.DyeHead.Key);
-						gear.BodyGear = new GearTuple((parse.ModelBody[0] + parse.ModelBody[1] * 256), parse.ModelBody[2], parse.DyeBody.Key);
-						gear.HandsGear = new GearTuple((parse.ModelHands[0] + parse.ModelHands[1] * 256), parse.ModelHands[2], parse.DyeHands.Key);
-						gear.LegsGear = new GearTuple((parse.ModelLegs[0] + parse.ModelLegs[1] * 256), parse.ModelLegs[2], parse.DyeLegs.Key);
-						gear.FeetGear = new GearTuple((parse.ModelFeet[0] + parse.ModelFeet[1] * 256), parse.ModelFeet[2], parse.DyeFeet.Key);
-						gear.EarGear = new GearTuple((parse.ModelEars[0] + parse.ModelEars[1] * 256), parse.ModelEars[2], 0);
-						gear.NeckGear = new GearTuple((parse.ModelNeck[0] + parse.ModelNeck[1] * 256), parse.ModelNeck[2], 0);
-						gear.WristGear = new GearTuple((parse.ModelWrists[0] + parse.ModelWrists[1] * 256), parse.ModelWrists[2], 0);
-						gear.RRingGear = new GearTuple((parse.ModelRightRing[0] + parse.ModelRightRing[1] * 256), parse.ModelRightRing[2], 0);
-						gear.LRingGear = new GearTuple((parse.ModelLeftRing[0] + parse.ModelLeftRing[1] * 256), parse.ModelLeftRing[2], 0);
+						gear.MainWep = GetWeaponTuple(npc.ModelMainHand, npc.DyeMainHand.Value);
+						gear.OffWep = GetWeaponTuple(npc.ModelOffHand, npc.DyeOffHand.Value);
+						gear.HeadGear = GetGearTuple(npc.ModelHead, npc.DyeHead.Value);
+						gear.BodyGear = GetGearTuple(npc.ModelBody, npc.DyeBody.Value);
+						gear.HandsGear = GetGearTuple(npc.ModelHands, npc.DyeHands.Value);
+						gear.LegsGear = GetGearTuple(npc.ModelLegs, npc.DyeLegs.Value);
+						gear.FeetGear = GetGearTuple(npc.ModelFeet, npc.DyeFeet.Value);
+						gear.EarGear = GetGearTuple(npc.ModelEars);
+						gear.NeckGear = GetGearTuple(npc.ModelNeck);
+						gear.WristGear = GetGearTuple(npc.ModelWrists);
+						gear.RRingGear = GetGearTuple(npc.ModelRightRing);
+						gear.LRingGear = GetGearTuple(npc.ModelLeftRing);
 					}
-					try
-					{
-						Residents[id].Gear = gear;
-					}
-					catch (Exception e)
-					{
-						throw e;
-					}
+
+					Residents[(int)npc.RowId].Gear = gear;
 				}
 			}
 			catch (Exception)
@@ -468,43 +475,41 @@ namespace ConceptMatrix.Utility
 				Residents = null;
 			}
 		}
+
         public void MakeTerritoryTypeList()
         {
-            TerritoryTypes = new Dictionary<int, TerritoryType>();
+            TerritoryTypes = new List<CMTerritoryType>();
 			try
             {
-                var sheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.TerritoryType>();
-                var WeatherSheet = MainWindow.Realm.GameData.GetSheet<SaintCoinach.Xiv.Weather>();
-                foreach (var Parse in sheet)
-                {
-					TerritoryType territory = new TerritoryType
-					{
-						Name = Parse.PlaceName.Name,
-                        Index = Parse.Key,
-                        WeatherRate = new WeatherRate()
-                    };
-                    territory.WeatherRate.AllowedWeathers = new List<Weather>();
-                    foreach (var Test in Parse.WeatherRate.PossibleWeathers)
-                    {
-                        territory.WeatherRate.Index = Test.Key;
-                     //   Test.Icon
-                        if (Test.Key != 0) territory.WeatherRate.AllowedWeathers.Add(new Weather() { Index = Test.Key, Name = Test.Name, Icon2 = Test.Icon });
-                        else territory.WeatherRate.AllowedWeathers.Add(new Weather() { Index = Test.Key, Name = "None", Icon2 = null });
-                    }
-                    if (Parse.RegionPlaceName.Name == "Norvrandt")
-                    {
-                        territory.WeatherRate.AllowedWeathers.Add(new Weather() { Index = 118, Name = "Everlasting Light #1", Icon2 = WeatherSheet[118].Icon });
-                        territory.WeatherRate.AllowedWeathers.Add(new Weather() { Index = 129, Name = "Everlasting Light #2", Icon2 = WeatherSheet[129].Icon });
-                    }
-                    TerritoryTypes.Add(Parse.Key, territory);
-                }
-            }
+				var lumina = MainViewModel.lumina;
+				var weatherSheet = lumina.GetExcelSheet<Weather>();
+				var weatherRateSheet = lumina.GetExcelSheet<WeatherRate>();
+				var territorySheet = from t in lumina.GetExcelSheet<TerritoryType>()
+									 where t.PlaceName.Value.Name.Length > 0
+									 select new CMTerritoryType
+									 {
+										 Index = (int)t.RowId,
+										 Name = t.PlaceName.Value.Name,
+										 WeatherRate = new CMWeatherRate
+										 {
+											 Index = t.WeatherRate,
+											 AllowedWeathers = (from w in weatherRateSheet.First(x => x.RowId == t.WeatherRate).UnkStruct0
+																where w.Weather > 0
+																// Weather fetched from the weather sheet that matches the current row.
+															    let weather = weatherSheet.First(x => x.RowId == w.Weather)
+															    select new CMWeather
+															    {
+																    Index = (ushort)weather.RowId,
+																    Name = weather.Name,
+																    Icon = lumina.GetIcon(weather.Icon).GetImage()
+															    }).ToList()
+										 }
+									 };
+
+			}
             catch (Exception)
             {
                 TerritoryTypes = null;
-
-            //    throw;
-
             }
         }
 		public void MakePropList()
@@ -513,7 +518,7 @@ namespace ConceptMatrix.Utility
 			{
 				try
 				{
-					using (TextFieldParser parser = new TextFieldParser(new StringReader(Resources.PropsList)))
+					using (var parser = new TextFieldParser(new StringReader(Resources.PropsList)))
 					{
 						parser.TextFieldType = FieldType.Delimited;
 						parser.SetDelimiters(",");
@@ -524,12 +529,12 @@ namespace ConceptMatrix.Utility
 							rowCount++;
 
 							var item = new Item();
-							string[] fields = parser.ReadFields();
-							int fCount = 0;
-							int index = 0;
+							var fields = parser.ReadFields();
+							var fCount = 0;
+							var index = 0;
 							if (rowCount == 1)
 								continue;
-							foreach (string field in fields)
+							foreach (var field in fields)
 							{
 								fCount++;
 
@@ -551,42 +556,38 @@ namespace ConceptMatrix.Utility
 									}
 								}
 							}
-							//Debug.WriteLine(item.Name + " - ");
 							ItemsProps.Add(index, item);
 						}
-						//. Debug.WriteLine($"ExdCsvReader: {rowCount} items read");
 					}
 				}
 				catch (Exception)
 				{
 					ItemsProps = null;
-
-				//	throw;
-
 				}
 			}
 		}
+
 		public void BGMList()
 		{
 			BGMs = new Dictionary<int, BGM>();
 			{
 				try
 				{
-					using (TextFieldParser parser = new TextFieldParser(new StringReader(Resources.BGM)))
+					using (var parser = new TextFieldParser(new StringReader(Resources.BGM)))
 					{
 						parser.TextFieldType = FieldType.Delimited;
 						parser.SetDelimiters(",");
-						int rowCount = 0;
+						var rowCount = 0;
 						parser.ReadFields();
 						while (!parser.EndOfData)
 						{
 							rowCount++;
-							BGM bGM = new BGM();
+							var bGM = new BGM();
 							//Processing row
-							string[] fields = parser.ReadFields();
-							int fCount = 0;
+							var fields = parser.ReadFields();
+							var fCount = 0;
 							bGM.Index = int.Parse(fields[0]);
-							foreach (string field in fields)
+							foreach (var field in fields)
 							{
 								fCount++;
 
@@ -611,9 +612,6 @@ namespace ConceptMatrix.Utility
 				catch (Exception)
 				{
 					BGMs = null;
-
-				//	throw;
-
 				}
 			}
 		}

@@ -453,15 +453,13 @@ namespace ConceptMatrix.Views
             try
             {
                 CharacterFeature.Items.Clear();
-                int added = 0;
-                for (int i = 0; i < 200; i++)
+                for (var i = 0; i < 200; i++)
                 {
                     var feature = GetFeature(GetHairstyleCustomizeIndex(_tribe, _gender == 0), 100, (byte)i);
 
                     if (feature == null)
                         continue;
                     CharacterFeature.Items.Add(new FeatureSelect() { ID = feature.FeatureID, FeatureImage = feature.Icon });
-                    added++;
                 }
                 DidUserInteract = false;
             }
@@ -605,70 +603,37 @@ namespace ConceptMatrix.Views
             ExtraFeature = 32,
             ExtraFeature2 = 64
         }
-        public void FillFacialFeature(int FaceKey, int tribeKey, int gender)
+        public void FillFacialFeature(int faceKey, int tribeKey, int gender)
         {
             try
             {
-                FaceKey--;
-                if (FaceKey < 0) FaceKey = 0;
+                // Subtract one from the face key to get the proper index for the array.
+                faceKey = Math.Max(faceKey - 1, 0);
+                // Clear out the facial features list.
                 FacialFeatureView.Items.Clear();
-                if (FaceKey > 3 && tribeKey >= 2 && tribeKey != 13 && tribeKey != 14 ||
-                    FaceKey >= 6 && tribeKey == 1 && gender == 0 ||
-                    FaceKey >= 5 && tribeKey == 1 && gender == 1) { FaceKey = 0; }
-                if (tribeKey == 13 || tribeKey == 14) gender = 0; //Hrothgar
-                if (tribeKey == 15 || tribeKey == 16) gender = 1; // Veria
-                var valuesAsList = Enum.GetValues(typeof(FacialEnums)).Cast<FacialEnums>().ToList();
-                foreach (var CharaFeature in _reader.CharaMakeFeatures2)
-                {
-                    if (tribeKey != CharaFeature.Tribe) continue;
-                    if (tribeKey == CharaFeature.Tribe && gender == CharaFeature.Gender)
-                    {
-                        FacialFeatureView.Items.Add(new Features() { ID = 0, FeatureImage = GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Nope")) });
-                        for (int i = 0; i < 7; i++)
-                        {
-                            try
-                            {
-                                int IconUIID = FaceKey + (i * 4);
-                                int NewID = (int)valuesAsList[i];
-                                FacialFeatureView.Items.Add(new Features() { ID = NewID, FeatureImage = CharaFeature.Features[IconUIID].Icon });
-                            }
-                            catch
-                            {
-                                int NewID = (int)valuesAsList[i];
-                                FacialFeatureView.Items.Add(new Features() { ID = NewID, FeatureImage = GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Corrupted")) });
-                            }
-                        }
-                        FacialFeatureView.Items.Add(new Features() { ID = 128, FeatureImage = GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Legacy")) });
-                    }
-                }
+
+                // Get the features that match our tribe and gender.
+                var data = _reader.CharaMakeFeatures2.Where(f => f.Tribe == tribeKey && f.Gender == gender).First();
+
+                // Add the no feature option.
+                FacialFeatureView.Items.Add(new Features { ID = 0, FeatureImage = GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Nope")) });
+
+                // Loop over the 7 facial feature options available.
+                for (var i = 0; i < 7; i++)
+                    FacialFeatureView.Items.Add(new Features { ID = (int)Math.Pow(2, i), FeatureImage = data.Features[8 * i + faceKey].Icon });
+
+                // Add the legacy mark option.
+                FacialFeatureView.Items.Add(new Features { ID = 128, FeatureImage = GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Legacy")) });
+
+                // What?
                 DidUserInteract = false;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw e;
+                Console.WriteLine(ex.Message);
             }
         }
-        /* Old
-         *                 FacialFeatureView.Items.Clear();
-                if (FaceKey > 3 && tribeKey >= 2 ||
-                    FaceKey >= 6 && tribeKey == 1 && gender == 0 ||
-                    FaceKey >= 5 && tribeKey == 1 && gender == 1) { FaceKey = 0; }
-                var valuesAsList = Enum.GetValues(typeof(FacialEnums)).Cast<FacialEnums>().ToList();
-                foreach (var CharaFeature in _reader.CharaMakeFeatures2)
-                {
-                    if (tribeKey != CharaFeature.Value.Tribe) continue;
-                    if (tribeKey == CharaFeature.Value.Tribe && gender == CharaFeature.Value.Gender)
-                    {
-                        FacialFeatureView.Items.Add(new Features() { ID = 0, FeatureImage = GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Nope")) });
-                        for (int i = 0; i < 7; i++)
-                        {
-                            int IconUIID = FaceKey + (i * 6);
-                            int NewID = (int)valuesAsList[i];
-                            FacialFeatureView.Items.Add(new Features() { ID = NewID, FeatureImage = CharaFeature.Value.Features[IconUIID].Icon });
-                        }
-                        FacialFeatureView.Items.Add(new Features() { ID = 128, FeatureImage = GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Legacy")) });
-                    }
-                }*/
+
         private void FacialFeatureView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (FacialFeatureView.SelectedItem == null)
