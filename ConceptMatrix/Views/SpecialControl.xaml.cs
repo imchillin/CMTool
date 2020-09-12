@@ -28,9 +28,6 @@ namespace ConceptMatrix.Views
         public int Choice = -1;
         private bool DidUserInteract = false;
         private bool isUserInteraction;
-        [DllImport("gdi32.dll")]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        internal static extern bool DeleteObject(IntPtr value);
 
         public class FeatureSelect
         {
@@ -337,7 +334,7 @@ namespace ConceptMatrix.Views
             for (var i = 1; i < length; i++)
             {
                // Debug.WriteLine(startIndex + i);
-                var feature = _reader.CharaMakeFeatures[startIndex + i];
+                var feature = _reader.CharaMakeFeatures.ElementAt(startIndex + i);
 
                 if (feature.FeatureID == dataKey)
                 {
@@ -425,21 +422,17 @@ namespace ConceptMatrix.Views
             try
             {
                 FacePaintFeature.Items.Clear();
-                int added = 0;
-                for (int i = 0; i < 200; i++)
+                for (var i = 0; i < 200; i++)
                 {
                     if (i == 0)
                     {
-                        FacePaintFeature.Items.Add(new FeatureSelect() { ID = 0, FeatureImage = GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Nope")) });
-                        added++;
+                        FacePaintFeature.Items.Add(new FeatureSelect() { ID = 0, FeatureImage = Nope });
                         continue;
                     }
                     var feature = GetFeature(GetFacePaintByIndex(_tribe, _gender == 0), 50, (byte)i);
-
                     if (feature == null)
                         continue;
                     FacePaintFeature.Items.Add(new FeatureSelect() { ID = feature.FeatureID, FeatureImage = feature.Icon });
-                    added++;
                 }
                 DidUserInteract = false;
             }
@@ -456,7 +449,6 @@ namespace ConceptMatrix.Views
                 for (var i = 0; i < 200; i++)
                 {
                     var feature = GetFeature(GetHairstyleCustomizeIndex(_tribe, _gender == 0), 100, (byte)i);
-
                     if (feature == null)
                         continue;
                     CharacterFeature.Items.Add(new FeatureSelect() { ID = feature.FeatureID, FeatureImage = feature.Icon });
@@ -467,24 +459,6 @@ namespace ConceptMatrix.Views
             {
                 throw e;
             }
-        }
-
-        public static BitmapSource GetImageStream(System.Drawing.Image myImage)
-        {
-            var bitmap = new System.Drawing.Bitmap(myImage);
-            IntPtr bmpPt = bitmap.GetHbitmap();
-            BitmapSource bitmapSource =
-             System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
-                   bmpPt,
-                   IntPtr.Zero,
-                   Int32Rect.Empty,
-                   BitmapSizeOptions.FromEmptyOptions());
-
-            //freeze bitmapSource and clear memory to avoid memory leaks
-            bitmapSource.Freeze();
-            DeleteObject(bmpPt);
-
-            return bitmapSource;
         }
 
         private void CharacterFeature_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -603,6 +577,10 @@ namespace ConceptMatrix.Views
             ExtraFeature = 32,
             ExtraFeature2 = 64
         }
+
+        public ImageSource Nope = App.GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Nope"));
+        public ImageSource Legacy = App.GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Legacy"));
+
         public void FillFacialFeature(int faceKey, int tribeKey, int gender)
         {
             try
@@ -613,17 +591,17 @@ namespace ConceptMatrix.Views
                 FacialFeatureView.Items.Clear();
 
                 // Get the features that match our tribe and gender.
-                var data = _reader.CharaMakeFeatures2.Where(f => f.Tribe == tribeKey && f.Gender == gender).First();
+                var data = _reader.CharaMakeFeatures2.First(f => f.Tribe == tribeKey && f.Gender == gender);
 
                 // Add the no feature option.
-                FacialFeatureView.Items.Add(new Features { ID = 0, FeatureImage = GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Nope")) });
+                FacialFeatureView.Items.Add(new Features { ID = 0, FeatureImage = Nope });
 
                 // Loop over the 7 facial feature options available.
                 for (var i = 0; i < 7; i++)
                     FacialFeatureView.Items.Add(new Features { ID = (int)Math.Pow(2, i), FeatureImage = data.Features[8 * i + faceKey].Icon });
 
                 // Add the legacy mark option.
-                FacialFeatureView.Items.Add(new Features { ID = 128, FeatureImage = GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Legacy")) });
+                FacialFeatureView.Items.Add(new Features { ID = 128, FeatureImage = Legacy  });
 
                 // What?
                 DidUserInteract = false;
@@ -651,7 +629,7 @@ namespace ConceptMatrix.Views
                 else
                     result += (byte)r.ID;
             }
-            CharacterDetails.FacialFeatures.value = (byte)result;
+            CharacterDetails.FacialFeatures.value = result;
             string hexValue = result.ToString("X");
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.FacialFeatures), "byte", hexValue);
             e.Handled = true;

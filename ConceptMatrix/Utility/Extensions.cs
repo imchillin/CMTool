@@ -130,7 +130,7 @@ namespace ConceptMatrix.Utility
 		{
 			try
 			{
-				if (CharacterDetailsView._exdProvider.TerritoryTypes.First(t => t.Index == ID) is var value)
+				if (CharacterDetailsView._exdProvider.TerritoryTypes?.First(t => t.Index == ID) is var value && value != null)
 					return $"{value.Name} - {value.Index}";
 				else
 					return $"Unknown Zone - 0";
@@ -163,7 +163,7 @@ namespace ConceptMatrix.Utility
 			if (tex == null)
 				return null;
 
-			return BitmapSource.Create(
+			var bmp = BitmapSource.Create(
 				tex.Header.Width,
 				tex.Header.Height,
 				96,
@@ -173,6 +173,10 @@ namespace ConceptMatrix.Utility
 				tex.ImageData,
 				tex.Header.Width * 4
 			);
+
+			bmp.Freeze();
+
+			return bmp;
 		}
 
 		/// <summary>

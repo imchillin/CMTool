@@ -40,6 +40,8 @@ namespace ConceptMatrix
 
         public MainWindow()
         {
+            Console.WriteLine($"Took {App.sw.ElapsedMilliseconds}ms to get to MainWindow.ctor()");
+
             ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
             var settings = SaveSettings.Default;
 
@@ -149,6 +151,8 @@ namespace ConceptMatrix
 
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            Console.WriteLine($"Took {App.sw.ElapsedMilliseconds}ms to get to MetroWindow_Loaded");
+
             Title = $"{App.ToolName} v{version}";
             DataContext = new MainViewModel();
 

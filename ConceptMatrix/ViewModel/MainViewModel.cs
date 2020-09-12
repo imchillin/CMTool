@@ -51,6 +51,7 @@ namespace ConceptMatrix.ViewModel
         public static string RegionType = "Live";
 		public event PropertyChangedEventHandler PropertyChanged;
         public static string GameDirectory = "";
+
 		public CharacterDetailsViewModel CharacterDetails { get => characterDetails; set => characterDetails = value; }
 
         public static Thread luminaThread;
@@ -60,6 +61,9 @@ namespace ConceptMatrix.ViewModel
 
 		public MainViewModel()
         {
+            Console.WriteLine($"Time taken to reach MainViewModel.ctor() {App.sw.ElapsedMilliseconds}ms");
+            App.sw.Stop();
+
             try
             {
                 if (!MainWindow.HasRead)
@@ -72,7 +76,7 @@ namespace ConceptMatrix.ViewModel
 
                     // Set up Lumina for the game.
                     lumina = new Lumina.Lumina(Path.Combine(GameDirectory, "game", "sqpack"));
-
+                    // Thread for handling Lumina file queueing.
                     luminaThread = new Thread(() =>
                     {
                         while (true)
@@ -168,33 +172,40 @@ namespace ConceptMatrix.ViewModel
         }
         
    
-        private void Initialize(string Determination)
+        private void Initialize(string _)
         {
-			// Get the stains (dyes).
-            var stains = new List<ExdCsvReader.CMStain>();
-            // Loop through the Stains to add to a list.
-            foreach (var stain in lumina.GetExcelSheet<Stain>())
-            {
-                // Convert color to bytes to turn into a solid color brush.
-                var colorBytes = BitConverter.GetBytes(stain.Color);
-                stains.Add(
-                    new ExdCsvReader.CMStain()
-                    {
-                        Id = stain.RowId,
-                        Color = new SolidColorBrush(Color.FromRgb(colorBytes[2], colorBytes[1], colorBytes[0])), 
-                        Name = stain.Name.DefaultIfEmpty("None")
-                    }
-                );
-            }
+            // Local stopwatch used for timing the startup lumina processes.
+            var sw = Stopwatch.StartNew();
 
-            // Assign the item sources for the dye combo boxes.
-            equipView.MHBox.ItemsSource = stains;
-            equipView.OHBox.ItemsSource = stains;
-            equipView.HeadDye.ItemsSource = stains;
-            equipView.ChestBox.ItemsSource = stains;
-            equipView.ArmBox.ItemsSource = stains;
-            equipView.LegBox.ItemsSource = stains;
-            equipView.FeetBox.ItemsSource = stains;
+            new Thread(() =>
+            {
+                EquipmentView.CheckItemList();
+                EquipmentView.CheckPropList();
+                EquipmentView.CheckResidentList();
+                CharacterDetailsView._exdProvider.MakeCharaMakeFeatureFacialList();
+                CharacterDetailsView._exdProvider.MakeCharaMakeFeatureList(); // bug
+                CharacterDetailsView._exdProvider.EmoteList();
+                CharacterDetailsView._exdProvider.MonsterList();
+                CharacterDetailsView._exdProvider.MakeTerritoryTypeList();
+                CharacterDetailsView._exdProvider.GetStatuses();
+                CharacterDetailsView._exdProvider.GetStains();
+
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    // Assign the item sources for the dye combo boxes.
+                    equipView.MHBox.ItemsSource = CharacterDetailsView._exdProvider.Stains;
+                    equipView.OHBox.ItemsSource = CharacterDetailsView._exdProvider.Stains;
+                    equipView.HeadDye.ItemsSource = CharacterDetailsView._exdProvider.Stains;
+                    equipView.ChestBox.ItemsSource = CharacterDetailsView._exdProvider.Stains;
+                    equipView.ArmBox.ItemsSource = CharacterDetailsView._exdProvider.Stains;
+                    equipView.LegBox.ItemsSource = CharacterDetailsView._exdProvider.Stains;
+                    equipView.FeetBox.ItemsSource = CharacterDetailsView._exdProvider.Stains;
+                    actorPropView.StatusEffectBox2.ItemsSource = CharacterDetailsView._exdProvider.Statuses;
+                    characterView.SpecialControl.ModelBox.ItemsSource = CharacterDetailsView._exdProvider.Monsters;
+                });
+            }).Start();
+
+            Console.WriteLine($"MakeCharaMakeFeatureList time...? {sw.ElapsedMilliseconds}ms");
 
             // Race and Tribes.
             characterView.RaceBox.ItemsSource = from r in lumina.GetExcelSheet<Race>() select r.Feminine.DefaultIfEmpty("None");
@@ -220,44 +231,13 @@ namespace ConceptMatrix.ViewModel
             worldView.ForceWeatherBox.ItemsSource = weatherList;
             worldView.WeatherBox.ItemsSource = weatherList;
 
-            // Get status sheet.
-            var statusList = from s in lumina.GetExcelSheet<Status>()
-                             where s.VFX.Row != 0 || s.RowId == 0
-                             select new ExdCsvReader.CMStatus()
-                             {
-                                 Id = s.RowId,
-                                 Name = s.Name.DefaultIfEmpty("None"),
-                                 Description = s.Description,
-                                 Icon = lumina.GetIcon(s.Icon).GetImage()
-                             };
-            actorPropView.StatusEffectBox2.ItemsSource = statusList;
 
             // Get the title sheet.
             var titleSheet = lumina.GetExcelSheet<Title>().Select(title => title.Feminine.DefaultIfEmpty("None"));
             characterView.TitleBox.ItemsSource = titleSheet;
 
-            try
-            {
-                CharacterDetailsView._exdProvider.MonsterList();
-                CharacterDetailsView._exdProvider.MakeTerritoryTypeList();
-                CharacterDetailsView._exdProvider.MakeItemList();
-                
-                foreach (var m in CharacterDetailsView._exdProvider.Monsters)
-                {
-                    if (m.Real == true)
-                    {
-                        characterView.SpecialControl.ModelBox.Items.Add(new ExdCsvReader.CMMonster
-                        {
-                            Index = Convert.ToInt32(m.Index),
-                            Name = m.Name.ToString()
-                        });
-                    }
-                }
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            sw.Stop();
+            Console.WriteLine($"Lumina initialalize sheet fetching took {sw.ElapsedMilliseconds}ms");
         }
         private void LoadSettings(string region)
         {

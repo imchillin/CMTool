@@ -58,7 +58,7 @@ namespace ConceptMatrix.Views
             bool found = false;
             if (EquipBoxC.SelectedIndex > 11)
             {
-                foreach (ExdCsvReader.CMItem game in _items)
+                foreach (var game in _items)
                 {
                     EquipBox.Items.Add(new CMItem
                     {
@@ -72,8 +72,8 @@ namespace ConceptMatrix.Views
             }
             else
             {
-                string selectedTag = ((ComboBoxItem)ClassBox.SelectedItem).Tag.ToString();
-                foreach (ExdCsvReader.CMItem game in _items)
+                var selectedTag = ((ComboBoxItem)ClassBox.SelectedItem).Tag.ToString();
+                foreach (var game in _items)
                 {
                     if(MainViewModel.RegionType=="Live" && SaveSettings.Default.Language == "zh" 
                         || MainViewModel.RegionType == "Live" && SaveSettings.Default.Language == "ko")
@@ -290,12 +290,12 @@ namespace ConceptMatrix.Views
         }
         public static byte[] WepTupleToByteAry(WepTuple tuple)
         {
-            byte[] bytes = new byte[8];
+            var bytes = new byte[8];
 
-            BitConverter.GetBytes((Int16)tuple.Item1).CopyTo(bytes, 0);
-            BitConverter.GetBytes((Int16)tuple.Item2).CopyTo(bytes, 2);
-            BitConverter.GetBytes((Int16)tuple.Item3).CopyTo(bytes, 4);
-            BitConverter.GetBytes((Int16)tuple.Item4).CopyTo(bytes, 6);
+            BitConverter.GetBytes((short)tuple.Item1).CopyTo(bytes, 0);
+            BitConverter.GetBytes((short)tuple.Item2).CopyTo(bytes, 2);
+            BitConverter.GetBytes((short)tuple.Item3).CopyTo(bytes, 4);
+            BitConverter.GetBytes((short)tuple.Item4).CopyTo(bytes, 6);
 
             return bytes;
         }
@@ -336,7 +336,7 @@ namespace ConceptMatrix.Views
         {
             byte[] bytes = new byte[4];
 
-            BitConverter.GetBytes((Int16)tuple.Item1).CopyTo(bytes, 0);
+            BitConverter.GetBytes((short)tuple.Item1).CopyTo(bytes, 0);
             bytes[2] = (byte)tuple.Item2;
             bytes[3] = (byte)tuple.Item3;
 

@@ -16,12 +16,12 @@ namespace ConceptMatrix.Views
     /// </summary>
     public partial class EmoteFlyOut : Flyout
     {
-        private ExdCsvReader _exdProvider = new ExdCsvReader();
+        private ExdCsvReader _exdProvider = CharacterDetailsView._exdProvider;
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
         public EmoteFlyOut()
         {
             InitializeComponent();
-            _exdProvider.EmoteList();
+            /*
             foreach (var emote in _exdProvider.Emotes)
             {
                 AllBox.Items.Add(new ExdCsvReader.CMEmote
@@ -53,7 +53,7 @@ namespace ConceptMatrix.Views
                         Name = emote.Name.ToString()
                     });
                 }
-            }
+            }*/
             if (SaveSettings.Default.FavoriteEmotes.Count > 0)
             {
                 foreach (var emote in SaveSettings.Default.FavoriteEmotes)

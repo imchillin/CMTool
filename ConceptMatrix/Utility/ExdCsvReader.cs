@@ -9,9 +9,11 @@ using Microsoft.VisualBasic.FileIO;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Windows;
 using System.Windows.Media;
 using GearTuple = System.Tuple<int, int, int>;
 using WepTuple = System.Tuple<int, int, int, int>;
@@ -196,20 +198,60 @@ namespace ConceptMatrix.Utility
 			public string Note { get; set; }
 		}
 
-		public List<CMItem> Items;
-		public List<CMItem> ItemsProps;
-		public List<CMTerritoryType> TerritoryTypes;
+		public List<CMItem> Items = null;
+		public List<CMItem> ItemsProps = null;
+		public List<CMTerritoryType> TerritoryTypes = null;
 		public List<CMEmote> Emotes;
-		public Dictionary<int, CMResident> Residents;
-		public List<CMCharaMakeCustomizeFeature> CharaMakeFeatures;
-		public List<CMCharaMakeCustomizeFeature2> CharaMakeFeatures2;
-		public List<CMMonster> Monsters;
-		public List<CMBgm> BGMs;
+		public Dictionary<int, CMResident> Residents = null;
+		public IEnumerable<CMCharaMakeCustomizeFeature> CharaMakeFeatures = null;
+		public IEnumerable<CMCharaMakeCustomizeFeature2> CharaMakeFeatures2 = null;
+		public List<CMMonster> Monsters = null;
+		public List<CMBgm> BGMs = null;
+		public IEnumerable<CMStatus> Statuses = null;
+		public IEnumerable<CMStain> Stains = null;
 
-		private List<CMFeature> GetFeatures(int[] features)
+		public ImageSource Corrupted = App.GetImageStream((System.Drawing.Image)Resources.ResourceManager.GetObject("Corrupted"));
+
+		private List<CMFeature> GetFeatures(int[] features) => (from f in features select new CMFeature { Icon = MainViewModel.lumina.GetIcon(f).GetImage() }).ToList();
+
+		public void GetStains()
 		{
-			// SpecialControl.GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Corrupted"))
-			return (from f in features select new CMFeature { Icon = MainViewModel.lumina.GetIcon(f).GetImage() }).ToList();
+			try
+			{
+				this.Stains = from s in MainViewModel.lumina.GetExcelSheet<Stain>()
+							  let colorBytes = BitConverter.GetBytes(s.Color)
+							  select new CMStain()
+							  {
+								  Id = s.RowId,
+								  Color = new SolidColorBrush(Color.FromRgb(colorBytes[2], colorBytes[1], colorBytes[0])),
+								  Name = s.Name.DefaultIfEmpty("None")
+							  };
+
+			}
+			catch
+			{
+				MessageBox.Show("Error occured while loading Stains!", App.ToolName, MessageBoxButton.OK, MessageBoxImage.Error);
+			}
+		}
+
+		public void GetStatuses()
+		{
+			try
+			{
+				this.Statuses = from s in MainViewModel.lumina.GetExcelSheet<Status>()
+								where s.VFX.Row != 0 || s.RowId == 0
+								select new CMStatus()
+								{
+									Id = s.RowId,
+									Name = s.Name.DefaultIfEmpty("None"),
+									Description = s.Description,
+									Icon = MainViewModel.lumina.GetIcon(s.Icon).GetImage()
+								};
+			}
+			catch (Exception)
+			{
+				MessageBox.Show("Error occured while loading Statuses!", App.ToolName, MessageBoxButton.OK, MessageBoxImage.Error);
+			}
 		}
 
 		/// <summary>
@@ -217,49 +259,41 @@ namespace ConceptMatrix.Utility
 		/// </summary>
 		public void MakeCharaMakeFeatureFacialList()
 		{
-			CharaMakeFeatures2 = new List<CMCharaMakeCustomizeFeature2>();
 			try
 			{
-				var sheet = MainViewModel.lumina.GetExcelSheet<CharaMakeType>();
-				foreach (var cmt in sheet)
-				{
-					var feature = new CMCharaMakeCustomizeFeature2
-					{
-						Index = (int)cmt.RowId,
-						Gender = cmt.Gender,
-						Race = (int)cmt.Race.Row,
-						Tribe = (int)cmt.Tribe.Row,
-						Features = GetFeatures(cmt.FacialFeatureOptions)
-					};
-					CharaMakeFeatures2.Add(feature);
-				}
+				this.CharaMakeFeatures2 = from c in MainViewModel.lumina.GetExcelSheet<CharaMakeType>()
+										  select new CMCharaMakeCustomizeFeature2
+										  {
+											  Index = (int)c.RowId,
+											  Gender = c.Gender,
+											  Race = (int)c.Race.Row,
+											  Tribe = (int)c.Tribe.Row,
+											  Features = GetFeatures(c.FacialFeatureOptions)
+										  };
 			}
 			catch (Exception)
 			{
+				MessageBox.Show("Error occured while loading Facial Features!", App.ToolName, MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 
 		public void MakeCharaMakeFeatureList()
 		{
-			var corruptedImage = SpecialControl.GetImageStream((System.Drawing.Image)Resources.ResourceManager.GetObject("Corrupted"));
-
-			CharaMakeFeatures = new List<CMCharaMakeCustomizeFeature>();
 			try
 			{
-				var cmcSheet = MainViewModel.lumina.GetExcelSheet<CharaMakeCustomize>();
-				foreach (var cmc in cmcSheet)
-				{
-					CharaMakeFeatures.Add(new CMCharaMakeCustomizeFeature
-					{
-						Index = (int)cmc.RowId,
-						FeatureID = cmc.FeatureID,
-						Icon = cmc.Icon == 0 ? corruptedImage : MainViewModel.lumina.GetIcon((int)cmc.Icon).GetImage()
-					});
-				}
+				this.CharaMakeFeatures = (from cmc in MainViewModel.lumina.GetExcelSheet<CharaMakeCustomize>()
+										 select new CMCharaMakeCustomizeFeature
+										 {
+											 Index = (int)cmc.RowId,
+											 FeatureID = cmc.FeatureID,
+											 Icon = MainViewModel.lumina.GetIcon((int)cmc.Icon).GetImage()
+										 }).ToList();
 			}
 			catch (Exception)
 			{
+				MessageBox.Show("Error occured while loading Character Customize!", App.ToolName, MessageBoxButton.OK, MessageBoxImage.Error);
 			}
+			
 		}
 
 		public void EmoteList()
@@ -395,6 +429,8 @@ namespace ConceptMatrix.Utility
 						ModelMain = i.ModelMain.AsQuad().ToString(),
 						ModelOff = i.ItemUICategory.Row == 11 ? i.ModelMain.AsQuad().ToString() : i.ModelSub.AsQuad().ToString()
 					});
+
+			Console.WriteLine(Items.Count);
 		}
 
 		public void MakeResidentList()

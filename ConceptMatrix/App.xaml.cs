@@ -5,9 +5,11 @@ using Microsoft.Win32;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
+using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using Application = System.Windows.Application;
 using Clipboard = System.Windows.Clipboard;
@@ -26,9 +28,13 @@ namespace ConceptMatrix
 		public static readonly string TwitterHandle = "FFXIVCMTool";
 		public static readonly string DiscordCode = "EenZwsN";
 
+        public static Stopwatch sw;
+
 		public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
         protected override void OnStartup(StartupEventArgs e)
         {
+            sw = Stopwatch.StartNew();
+
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
             Dispatcher.UnhandledException += DispatcherOnUnhandledException;
@@ -41,6 +47,28 @@ namespace ConceptMatrix
             base.OnStartup(e);
 
             this.Exit += App_Exit;
+        }
+
+        [DllImport("gdi32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        internal static extern bool DeleteObject(IntPtr value);
+
+        public static BitmapSource GetImageStream(System.Drawing.Image image)
+        {
+            var bitmap = new System.Drawing.Bitmap(image);
+            var bmpPt = bitmap.GetHbitmap();
+            var bitmapSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
+                bmpPt,
+                IntPtr.Zero,
+                Int32Rect.Empty,
+                BitmapSizeOptions.FromEmptyOptions()
+            );
+
+            //freeze bitmapSource and clear memory to avoid memory leaks
+            bitmapSource.Freeze();
+            DeleteObject(bmpPt);
+
+            return bitmapSource;
         }
 
         private static void GetDotNetFromRegistry()
