@@ -329,7 +329,7 @@ namespace ConceptMatrix.Views
             _face = face;
             FillFacialFeature(_face, tribe, gender);
         }
-        ExdCsvReader.CharaMakeCustomizeFeature GetFeature(int startIndex, int length, byte dataKey)
+        ExdCsvReader.CMCharaMakeCustomizeFeature GetFeature(int startIndex, int length, byte dataKey)
         {
             if (dataKey == 0)
                 return null; // Custom or not specified.
@@ -513,8 +513,8 @@ namespace ConceptMatrix.Views
                 if (ModelBox.SelectedItem == null)
                     return;
                 if (CharacterDetails.EntitySub.value == 5 || MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.EntitySub))==5) return; 
-                var Value = (ExdCsvReader.Monster)ModelBox.SelectedItem;
-                CharacterDetails.ModelType.value = (int)Value.Index;
+                var Value = (ExdCsvReader.CMMonster)ModelBox.SelectedItem;
+                CharacterDetails.ModelType.value = Value.Index;
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.ModelType), "int", Value.Index.ToString());
             }
         }
@@ -523,10 +523,10 @@ namespace ConceptMatrix.Views
         {
             var filter = SearchModelBox.Text.ToLower();
             ModelBox.Items.Clear();
-            foreach (var m in ExdCsvReader.MonsterX.Where(g => g.Name.ToLower().Contains(filter)))
+            foreach (var m in CharacterDetailsView._exdProvider.Monsters.Where(g => g.Name.ToLower().Contains(filter)))
                 if (m.Real == true)
                 {
-                    ModelBox.Items.Add(new ExdCsvReader.Monster
+                    ModelBox.Items.Add(new ExdCsvReader.CMMonster
                     {
                         Index = Convert.ToInt32(m.Index),
                         Name = m.Name.ToString()

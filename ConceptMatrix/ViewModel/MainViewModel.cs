@@ -269,14 +269,12 @@ namespace ConceptMatrix.ViewModel
                 sw.Stop();
 
                 Console.WriteLine($"MakeItemList took {sw.ElapsedMilliseconds}ms");
-
-                ExdCsvReader.MonsterX = CharacterDetailsView._exdProvider.Monsters.Values.ToArray();
                 
-                foreach (ExdCsvReader.Monster m in ExdCsvReader.MonsterX)
+                foreach (var m in CharacterDetailsView._exdProvider.Monsters)
                 {
                     if (m.Real == true)
                     {
-                        characterView.SpecialControl.ModelBox.Items.Add(new ExdCsvReader.Monster
+                        characterView.SpecialControl.ModelBox.Items.Add(new ExdCsvReader.CMMonster
                         {
                             Index = Convert.ToInt32(m.Index),
                             Name = m.Name.ToString()

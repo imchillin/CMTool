@@ -21,11 +21,11 @@ namespace ConceptMatrix.Views
     /// </summary>
     public partial class EquipmentFlyOut : Flyout
     {
-        public ExdCsvReader.Item[] _items;
+        public ExdCsvReader.CMItem[] _items;
         public static GearSet _cGearSet = new GearSet();
         private GearSet _gearSet = new GearSet();
-        private ExdCsvReader.Resident[] _residents;
-        public ExdCsvReader.Resident Choice = null;
+        private ExdCsvReader.CMResident[] _residents;
+        public ExdCsvReader.CMResident Choice = null;
         private bool isUserInteraction = false;
         public static bool UserDoneInteraction = false;
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
@@ -77,7 +77,7 @@ namespace ConceptMatrix.Views
             public ExdCsvReader.ItemType Type { get; set; }
             public ImageSource Icon { get; set; }
         }
-        public void GearPicker(ExdCsvReader.Item[] items)
+        public void GearPicker(ExdCsvReader.CMItem[] items)
         {
             EquipBox.Items.Clear();
             _items = items;
@@ -85,7 +85,7 @@ namespace ConceptMatrix.Views
             bool found = false;
             if (EquipBoxC.SelectedIndex > 11)
             {
-                foreach (ExdCsvReader.Item game in _items)
+                foreach (ExdCsvReader.CMItem game in _items)
                 {
                     EquipBox.Items.Add(new CMItem
                     {
@@ -100,7 +100,7 @@ namespace ConceptMatrix.Views
             else
             {
                 string selectedTag = ((ComboBoxItem)ClassBox.SelectedItem).Tag.ToString();
-                foreach (ExdCsvReader.Item game in _items)
+                foreach (ExdCsvReader.CMItem game in _items)
                 {
                     if(MainViewModel.RegionType=="Live" && SaveSettings.Default.Language == "zh" 
                         || MainViewModel.RegionType == "Live" && SaveSettings.Default.Language == "ko")
@@ -536,13 +536,13 @@ namespace ConceptMatrix.Views
                 {
                     if (!EquipmentView.CheckPropList())
                         return;
-                    GearPicker(CharacterDetailsView._exdProvider.ItemsProps.Values.ToArray());
+                    GearPicker(CharacterDetailsView._exdProvider.ItemsProps.ToArray());
                 }
                 if (EquipBoxC.SelectedIndex == 13)
                 {
                     if (!EquipmentView.CheckPropList())
                         return;
-                    GearPicker(CharacterDetailsView._exdProvider.ItemsProps.Values.ToArray());
+                    GearPicker(CharacterDetailsView._exdProvider.ItemsProps.ToArray());
                 }
                 isUserInteraction = false;
             }
@@ -632,14 +632,14 @@ namespace ConceptMatrix.Views
                 }
             }
         }
-        public void ResidentSelector(ExdCsvReader.Resident[] residents)
+        public void ResidentSelector(ExdCsvReader.CMResident[] residents)
         {
             UserDoneInteraction = true;
             CurrentlyEquippedName.Visibility = Visibility.Hidden;
             EquippedLabel.Visibility = Visibility.Hidden;
             residentlist.Items.Clear();
             _residents = residents;
-            foreach (ExdCsvReader.Resident resident in _residents) residentlist.Items.Add(resident);
+            foreach (ExdCsvReader.CMResident resident in _residents) residentlist.Items.Add(resident);
             _residents = residents;
         }
 
@@ -773,7 +773,7 @@ namespace ConceptMatrix.Views
             {
                 if (residentlist.SelectedItem == null)
                     return;
-                Choice = residentlist.SelectedItem as ExdCsvReader.Resident;
+                Choice = residentlist.SelectedItem as ExdCsvReader.CMResident;
                 var gs = Choice.Gear;
                 if(LoadType.SelectedIndex==0)
                 {
@@ -856,7 +856,7 @@ namespace ConceptMatrix.Views
             string filter = SearchModelBox.Text.ToLower();
             EquipBox.Items.Clear();
             string selectedTag = ((ComboBoxItem)ClassBox.SelectedItem).Tag.ToString();
-            foreach (ExdCsvReader.Item game in _items.Where(g => g.Name.ToLower().Contains(filter)))
+            foreach (ExdCsvReader.CMItem game in _items.Where(g => g.Name.ToLower().Contains(filter)))
             {
                 if (EquipBoxC.SelectedIndex > 11)
                 {
@@ -922,7 +922,7 @@ namespace ConceptMatrix.Views
         {
             string filter = SearchModelBox2.Text.ToLower();
             residentlist.Items.Clear();
-            foreach (ExdCsvReader.Resident resident in _residents.Where(g => g.Name.ToLower().Contains(filter))) residentlist.Items.Add(resident);
+            foreach (ExdCsvReader.CMResident resident in _residents.Where(g => g.Name.ToLower().Contains(filter))) residentlist.Items.Add(resident);
         }
 
         private void AnimatedTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)

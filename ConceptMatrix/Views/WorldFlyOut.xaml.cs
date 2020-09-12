@@ -24,16 +24,16 @@ namespace ConceptMatrix.Views
     /// </summary>
     public partial class WorldFlyOut : Flyout
     {
-        private ExdCsvReader _exdProvider = new ExdCsvReader();
+        private readonly ExdCsvReader _exdProvider = new ExdCsvReader();
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
+
         public WorldFlyOut()
         {
             InitializeComponent();
             _exdProvider.BGMList();
-            ExdCsvReader.BGMX = _exdProvider.BGMs.Values.ToArray();
-            foreach (var bgm in ExdCsvReader.BGMX)
+            foreach (var bgm in _exdProvider.BGMs)
             {
-                BGMBox.Items.Add(new ExdCsvReader.BGM
+                BGMBox.Items.Add(new ExdCsvReader.CMBgm
                 {
                     Index = Convert.ToInt32(bgm.Index),
                     Name = bgm.Name.ToString(),
@@ -48,7 +48,7 @@ namespace ConceptMatrix.Views
             {
                 if (BGMBox.SelectedItem == null)
                     return;
-                var Value = (ExdCsvReader.BGM)BGMBox.SelectedItem;
+                var Value = (ExdCsvReader.CMBgm)BGMBox.SelectedItem;
                 CharacterDetails.MusicBGM.value = Value.Index;
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.MusicOffset, Settings.Instance.Character.Music2), "int", Value.Index.ToString());
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.MusicOffset, Settings.Instance.Character.Music), "int", Value.Index.ToString());
@@ -58,8 +58,8 @@ namespace ConceptMatrix.Views
         {
             string filter = searchTextBox.Text.ToLower();
             BGMBox.Items.Clear();
-            foreach (var bgm in ExdCsvReader.BGMX.Where(g => g.Name.ToLower().Contains(filter)))
-                BGMBox.Items.Add(new ExdCsvReader.BGM
+            foreach (var bgm in _exdProvider.BGMs.Where(g => g.Name.ToLower().Contains(filter)))
+                BGMBox.Items.Add(new ExdCsvReader.CMBgm
                 {
                     Index = Convert.ToInt32(bgm.Index),
                     Name = bgm.Name.ToString(),

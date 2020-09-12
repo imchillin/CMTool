@@ -22,17 +22,16 @@ namespace ConceptMatrix.Views
         {
             InitializeComponent();
             _exdProvider.EmoteList();
-            ExdCsvReader.Emotesx = _exdProvider.Emotes.Values.ToArray();
-            foreach (var emote in ExdCsvReader.Emotesx)
+            foreach (var emote in _exdProvider.Emotes)
             {
-                AllBox.Items.Add(new ExdCsvReader.Emote
+                AllBox.Items.Add(new ExdCsvReader.CMEmote
                 {
                     Index = Convert.ToInt32(emote.Index),
                     Name = emote.Name.ToString()
                 });
                 if (emote.Realist == true)
                 {
-                    SocialBox.Items.Add(new ExdCsvReader.Emote
+                    SocialBox.Items.Add(new ExdCsvReader.CMEmote
                     {
                         Index = Convert.ToInt32(emote.Index),
                         Name = emote.Name.ToString()
@@ -40,7 +39,7 @@ namespace ConceptMatrix.Views
                 }
                 if (emote.BattleReal == true)
                 {
-                    BattleBox.Items.Add(new ExdCsvReader.Emote
+                    BattleBox.Items.Add(new ExdCsvReader.CMEmote
                     {
                         Index = Convert.ToInt32(emote.Index),
                         Name = emote.Name.ToString()
@@ -48,7 +47,7 @@ namespace ConceptMatrix.Views
                 }
                 if (emote.SpeacialReal == true)
                 {
-                    MonsterBox.Items.Add(new ExdCsvReader.Emote
+                    MonsterBox.Items.Add(new ExdCsvReader.CMEmote
                     {
                         Index = Convert.ToInt32(emote.Index),
                         Name = emote.Name.ToString()
@@ -59,7 +58,7 @@ namespace ConceptMatrix.Views
             {
                 foreach (var emote in SaveSettings.Default.FavoriteEmotes)
                 {
-                    FavoriteBox.Items.Add(new ExdCsvReader.Emote
+                    FavoriteBox.Items.Add(new ExdCsvReader.CMEmote
                     {
                         Index = Convert.ToInt32(emote.Index),
                         Name = emote.Name.ToString()
@@ -72,10 +71,10 @@ namespace ConceptMatrix.Views
         {
             var filter = searchTextBox.Text.ToLower();
             SocialBox.Items.Clear();
-            foreach (var emote in ExdCsvReader.Emotesx.Where(g => g.Name.ToLower().Contains(filter)))
+            foreach (var emote in _exdProvider.Emotes.Where(g => g.Name.ToLower().Contains(filter)))
                 if (emote.Realist == true)
                 {
-                    SocialBox.Items.Add(new ExdCsvReader.Emote
+                    SocialBox.Items.Add(new ExdCsvReader.CMEmote
                     {
                         Index = Convert.ToInt32(emote.Index),
                         Name = emote.Name.ToString()
@@ -87,10 +86,10 @@ namespace ConceptMatrix.Views
         {
             var filter = SearchTextBoxMonster.Text.ToLower();
             MonsterBox.Items.Clear();
-            foreach (var emote in ExdCsvReader.Emotesx.Where(g => g.Name.ToLower().Contains(filter)))
+            foreach (var emote in _exdProvider.Emotes.Where(g => g.Name.ToLower().Contains(filter)))
                 if (emote.SpeacialReal == true)
                 {
-                    MonsterBox.Items.Add(new ExdCsvReader.Emote
+                    MonsterBox.Items.Add(new ExdCsvReader.CMEmote
                     {
                         Index = Convert.ToInt32(emote.Index),
                         Name = emote.Name.ToString()
@@ -102,8 +101,8 @@ namespace ConceptMatrix.Views
         {
             var filter = SearchTextBoxAll.Text.ToLower();
             AllBox.Items.Clear();
-            foreach (var emote in ExdCsvReader.Emotesx.Where(g => g.Name.ToLower().Contains(filter)))
-                AllBox.Items.Add(new ExdCsvReader.Emote
+            foreach (var emote in _exdProvider.Emotes.Where(g => g.Name.ToLower().Contains(filter)))
+                AllBox.Items.Add(new ExdCsvReader.CMEmote
                 {
                     Index = Convert.ToInt32(emote.Index),
                     Name = emote.Name.ToString()
@@ -114,10 +113,10 @@ namespace ConceptMatrix.Views
         {
             var filter = BattleTextBox.Text.ToLower();
             BattleBox.Items.Clear();
-            foreach (var emote in ExdCsvReader.Emotesx.Where(g => g.Name.ToLower().Contains(filter)))
+            foreach (var emote in _exdProvider.Emotes.Where(g => g.Name.ToLower().Contains(filter)))
                 if (emote.BattleReal == true)
                 {
-                    BattleBox.Items.Add(new ExdCsvReader.Emote
+                    BattleBox.Items.Add(new ExdCsvReader.CMEmote
                     {
                         Index = Convert.ToInt32(emote.Index),
                         Name = emote.Name.ToString()
@@ -133,12 +132,12 @@ namespace ConceptMatrix.Views
                     return;
                 if (AnimBox.SelectedIndex == 0)
                 {
-                    var Value = (ExdCsvReader.Emote)SocialBox.SelectedItem;
+                    var Value = (ExdCsvReader.CMEmote)SocialBox.SelectedItem;
                     CharacterDetails.Emote.value = Value.Index;
                 }
                 if (AnimBox.SelectedIndex == 1)
                 {
-                    var Value = (ExdCsvReader.Emote)SocialBox.SelectedItem;
+                    var Value = (ExdCsvReader.CMEmote)SocialBox.SelectedItem;
                     CharacterDetails.EmoteOld.value = Value.Index;
                 }
             }
@@ -152,12 +151,12 @@ namespace ConceptMatrix.Views
                     return;
                 if (AnimBox.SelectedIndex == 0)
                 {
-                    var Value = (ExdCsvReader.Emote)BattleBox.SelectedItem;
+                    var Value = (ExdCsvReader.CMEmote)BattleBox.SelectedItem;
                     CharacterDetails.Emote.value = Value.Index;
                 }
                 if (AnimBox.SelectedIndex == 1)
                 {
-                    var Value = (ExdCsvReader.Emote)BattleBox.SelectedItem;
+                    var Value = (ExdCsvReader.CMEmote)BattleBox.SelectedItem;
                     CharacterDetails.EmoteOld.value = Value.Index;
                 }
             }
@@ -171,12 +170,12 @@ namespace ConceptMatrix.Views
                     return;
                 if (AnimBox.SelectedIndex == 0)
                 {
-                    var Value = (ExdCsvReader.Emote)MonsterBox.SelectedItem;
+                    var Value = (ExdCsvReader.CMEmote)MonsterBox.SelectedItem;
                     CharacterDetails.Emote.value = Value.Index;
                 }
                 if (AnimBox.SelectedIndex == 1)
                 {
-                    var Value = (ExdCsvReader.Emote)MonsterBox.SelectedItem;
+                    var Value = (ExdCsvReader.CMEmote)MonsterBox.SelectedItem;
                     CharacterDetails.EmoteOld.value = Value.Index;
                 }
             }
@@ -190,12 +189,12 @@ namespace ConceptMatrix.Views
                     return;
                 if (AnimBox.SelectedIndex == 0)
                 {
-                    var Value = (ExdCsvReader.Emote)AllBox.SelectedItem;
+                    var Value = (ExdCsvReader.CMEmote)AllBox.SelectedItem;
                     CharacterDetails.Emote.value = Value.Index;
                 }
                 if (AnimBox.SelectedIndex == 1)
                 {
-                    var Value = (ExdCsvReader.Emote)AllBox.SelectedItem;
+                    var Value = (ExdCsvReader.CMEmote)AllBox.SelectedItem;
                     CharacterDetails.EmoteOld.value = Value.Index;
                 }
             }
@@ -207,7 +206,7 @@ namespace ConceptMatrix.Views
             {
                 if (SocialBox.SelectedItem == null)
                     return;
-                var Value = (ExdCsvReader.Emote)SocialBox.SelectedItem;
+                var Value = (ExdCsvReader.CMEmote)SocialBox.SelectedItem;
                 if (SaveSettings.Default.FavoriteEmotes.Any(p => p.Index == Value.Index)) return;
                 SaveSettings.Default.FavoriteEmotes.Add(Value);
                 FavoriteBox.Items.Add(SocialBox.SelectedItem);
@@ -221,7 +220,7 @@ namespace ConceptMatrix.Views
             FavoriteBox.Items.Clear();
             foreach (var emote in SaveSettings.Default.FavoriteEmotes.Where(g => g.Name.ToLower().Contains(filter)))
             {
-                FavoriteBox.Items.Add(new ExdCsvReader.Emote
+                FavoriteBox.Items.Add(new ExdCsvReader.CMEmote
                 {
                     Index = Convert.ToInt32(emote.Index),
                     Name = emote.Name.ToString()
@@ -237,12 +236,12 @@ namespace ConceptMatrix.Views
                     return;
                 if (AnimBox.SelectedIndex == 0)
                 {
-                    var Value = (ExdCsvReader.Emote)FavoriteBox.SelectedItem;
+                    var Value = (ExdCsvReader.CMEmote)FavoriteBox.SelectedItem;
                     CharacterDetails.Emote.value = (int)Value.Index;
                 }
                 if (AnimBox.SelectedIndex == 1)
                 {
-                    var Value = (ExdCsvReader.Emote)FavoriteBox.SelectedItem;
+                    var Value = (ExdCsvReader.CMEmote)FavoriteBox.SelectedItem;
                     CharacterDetails.EmoteOld.value = (int)Value.Index;
                 }
             }
@@ -254,7 +253,7 @@ namespace ConceptMatrix.Views
             {
                 if (BattleBox.SelectedItem == null)
                     return;
-                var Value = (ExdCsvReader.Emote)BattleBox.SelectedItem;
+                var Value = (ExdCsvReader.CMEmote)BattleBox.SelectedItem;
                 if (SaveSettings.Default.FavoriteEmotes.Any(p => p.Index == Value.Index)) return;
                 SaveSettings.Default.FavoriteEmotes.Add(Value);
                 FavoriteBox.Items.Add(BattleBox.SelectedItem);
@@ -267,7 +266,7 @@ namespace ConceptMatrix.Views
             {
                 if (MonsterBox.SelectedItem == null)
                     return;
-                var Value = (ExdCsvReader.Emote)MonsterBox.SelectedItem;
+                var Value = (ExdCsvReader.CMEmote)MonsterBox.SelectedItem;
                 if (SaveSettings.Default.FavoriteEmotes.Any(p => p.Index == Value.Index)) return;
                 SaveSettings.Default.FavoriteEmotes.Add(Value);
                 FavoriteBox.Items.Add(MonsterBox.SelectedItem);
@@ -280,7 +279,7 @@ namespace ConceptMatrix.Views
             {
                 if (AllBox.SelectedItem == null)
                     return;
-                var Value = (ExdCsvReader.Emote)AllBox.SelectedItem;
+                var Value = (ExdCsvReader.CMEmote)AllBox.SelectedItem;
                 if (SaveSettings.Default.FavoriteEmotes.Any(p => p.Index == Value.Index)) return;
                 SaveSettings.Default.FavoriteEmotes.Add(Value);
                 FavoriteBox.Items.Add(AllBox.SelectedItem);
@@ -293,7 +292,7 @@ namespace ConceptMatrix.Views
             {
                 if (FavoriteBox.SelectedItem == null)
                     return;
-                var Value = (ExdCsvReader.Emote)FavoriteBox.SelectedItem;
+                var Value = (ExdCsvReader.CMEmote)FavoriteBox.SelectedItem;
                 var itemToRemove = SaveSettings.Default.FavoriteEmotes.SingleOrDefault(r => r.Index == Value.Index);
                 SaveSettings.Default.FavoriteEmotes.Remove(itemToRemove);
                 FavoriteBox.Items.Remove(FavoriteBox.SelectedItem);

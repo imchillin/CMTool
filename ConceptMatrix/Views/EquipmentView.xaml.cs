@@ -698,7 +698,7 @@ namespace ConceptMatrix.Views
                     EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Hidden;
                     EquipmentControl.EquippedLabel.Visibility = Visibility.Hidden;
                     EquipmentControl.ClassBox.Visibility = Visibility.Hidden;
-                    EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.ItemsProps.Values.ToArray());
+                    EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.ItemsProps.ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
             }
@@ -712,7 +712,7 @@ namespace ConceptMatrix.Views
                 EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Hidden;
                 EquipmentControl.EquippedLabel.Visibility = Visibility.Hidden;
                 EquipmentControl.ClassBox.Visibility = Visibility.Hidden;
-                EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.ItemsProps.Values.ToArray());
+                EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.ItemsProps.ToArray());
             }
         }
 
@@ -730,7 +730,7 @@ namespace ConceptMatrix.Views
                     EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Hidden;
                     EquipmentControl.EquippedLabel.Visibility = Visibility.Hidden;
                     EquipmentControl.ClassBox.Visibility = Visibility.Hidden;
-                    EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.ItemsProps.Values.ToArray());
+                    EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.ItemsProps.ToArray());
                 }
                 else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
             }
@@ -743,7 +743,7 @@ namespace ConceptMatrix.Views
                 EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Hidden;
                 EquipmentControl.EquippedLabel.Visibility = Visibility.Hidden;
                 EquipmentControl.ClassBox.Visibility = Visibility.Hidden;
-                EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.ItemsProps.Values.ToArray());
+                EquipmentControl.GearPicker(CharacterDetailsView._exdProvider.ItemsProps.ToArray());
             }
         }
         private void SaveGearset_Click(object sender, RoutedEventArgs e)

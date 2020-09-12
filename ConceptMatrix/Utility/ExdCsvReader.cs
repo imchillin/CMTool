@@ -66,7 +66,7 @@ namespace ConceptMatrix.Utility
 			Shield,
 			Trash,
 		}
-		public class Item
+		public class CMItem
 		{
 			public int Index { get; set; }
 			public string Name { get; set; }
@@ -81,7 +81,7 @@ namespace ConceptMatrix.Utility
 				return Name;
 			}
 		}
-		public class Resident
+		public class CMResident
 		{
 			public int Index { get; set; }
 			public string Name { get; set; }
@@ -105,12 +105,7 @@ namespace ConceptMatrix.Utility
 				return $"{EquipmentFlyOut.GearTupleToComma(Gear.HeadGear)} - {EquipmentFlyOut.GearTupleToComma(Gear.BodyGear)} - {EquipmentFlyOut.GearTupleToComma(Gear.HandsGear)} - {EquipmentFlyOut.GearTupleToComma(Gear.LegsGear)} - {EquipmentFlyOut.GearTupleToComma(Gear.FeetGear)} - {EquipmentFlyOut.GearTupleToComma(Gear.EarGear)} - {EquipmentFlyOut.GearTupleToComma(Gear.NeckGear)} - {EquipmentFlyOut.GearTupleToComma(Gear.WristGear)} - {EquipmentFlyOut.GearTupleToComma(Gear.LRingGear)} - {EquipmentFlyOut.GearTupleToComma(Gear.RRingGear)}";
 			}
 		}
-		public class Tribe
-		{
-			public int Index { get; set; }
-			public string Name { get; set; }
-		}
-		public class CharaMakeCustomizeFeature
+		public class CMCharaMakeCustomizeFeature
 		{
 			public int Index { get; set; }
 			public int FeatureID { get; set; }
@@ -120,7 +115,7 @@ namespace ConceptMatrix.Utility
 		{
 			public ImageSource Icon { get; set; }
 		}
-		public class CharaMakeCustomizeFeature2
+		public class CMCharaMakeCustomizeFeature2
 		{
 			public int Index { get; set; }
 			public int Race { get; set; }
@@ -129,7 +124,7 @@ namespace ConceptMatrix.Utility
 			public List<CMFeature> Features { get; set; }
 		}
 
-		public class Emote
+		public class CMEmote
 		{
 			public int Index { get; set; }
 			public bool Realist { get; set; }
@@ -159,7 +154,7 @@ namespace ConceptMatrix.Utility
 			public int Index { get; set; }
 			public List<CMWeather> AllowedWeathers { get; set; }
 		}
-		public class Monster
+		public class CMMonster
 		{
 			public int Index { get; set; }
 			public bool Real { get; set; }
@@ -169,7 +164,7 @@ namespace ConceptMatrix.Utility
 				return Name;
 			}
 		}
-		public class BGM
+		public class CMBgm
 		{
 			public int Index { get; set; }
 			public string Name { get; set; }
@@ -177,19 +172,15 @@ namespace ConceptMatrix.Utility
 			public string Note { get; set; }
 		}
 
-		public static Emote[] Emotesx;
-		public static BGM[] BGMX;
-		public static Monster[] MonsterX;
-		public List<Item> Items = null;
-		public Dictionary<int, Item> ItemsProps = null;
-		public List<CMTerritoryType> TerritoryTypes = null;
-		public Dictionary<int, Emote> Emotes = null;
-		public Dictionary<int, Resident> Residents = null;
-		public List<CharaMakeCustomizeFeature> CharaMakeFeatures = null;
-		public List<CharaMakeCustomizeFeature2> CharaMakeFeatures2 = null;
-		public Dictionary<int, Tribe> Tribes = null;
-		public Dictionary<int, Monster> Monsters = null;
-		public Dictionary<int, BGM> BGMs = null;
+		public List<CMItem> Items;
+		public List<CMItem> ItemsProps;
+		public List<CMTerritoryType> TerritoryTypes;
+		public List<CMEmote> Emotes;
+		public Dictionary<int, CMResident> Residents;
+		public List<CMCharaMakeCustomizeFeature> CharaMakeFeatures;
+		public List<CMCharaMakeCustomizeFeature2> CharaMakeFeatures2;
+		public List<CMMonster> Monsters;
+		public List<CMBgm> BGMs;
 
 		private List<CMFeature> GetFeatures(int[] features)
 		{
@@ -202,13 +193,13 @@ namespace ConceptMatrix.Utility
 		/// </summary>
 		public void MakeCharaMakeFeatureFacialList()
 		{
-			CharaMakeFeatures2 = new List<CharaMakeCustomizeFeature2>();
+			CharaMakeFeatures2 = new List<CMCharaMakeCustomizeFeature2>();
 			try
 			{
 				var sheet = MainViewModel.lumina.GetExcelSheet<CharaMakeType>();
 				foreach (var cmt in sheet)
 				{
-					var feature = new CharaMakeCustomizeFeature2
+					var feature = new CMCharaMakeCustomizeFeature2
 					{
 						Index = (int)cmt.RowId,
 						Gender = cmt.Gender,
@@ -228,13 +219,13 @@ namespace ConceptMatrix.Utility
 		{
 			var corruptedImage = SpecialControl.GetImageStream((System.Drawing.Image)Resources.ResourceManager.GetObject("Corrupted"));
 
-			CharaMakeFeatures = new List<CharaMakeCustomizeFeature>();
+			CharaMakeFeatures = new List<CMCharaMakeCustomizeFeature>();
 			try
 			{
 				var cmcSheet = MainViewModel.lumina.GetExcelSheet<CharaMakeCustomize>();
 				foreach (var cmc in cmcSheet)
 				{
-					CharaMakeFeatures.Add(new CharaMakeCustomizeFeature
+					CharaMakeFeatures.Add(new CMCharaMakeCustomizeFeature
 					{
 						Index = (int)cmc.RowId,
 						FeatureID = cmc.FeatureID,
@@ -249,7 +240,7 @@ namespace ConceptMatrix.Utility
 
 		public void EmoteList()
 		{
-			Emotes = new Dictionary<int, Emote>();
+			Emotes = new List<CMEmote>();
 			{
 				try
 				{
@@ -262,7 +253,7 @@ namespace ConceptMatrix.Utility
 						while (!parser.EndOfData)
 						{
 							rowCount++;
-							var emote = new Emote();
+							var emote = new CMEmote();
 							//Processing row
 							var fields = parser.ReadFields();
 							var fCount = 0;
@@ -278,7 +269,7 @@ namespace ConceptMatrix.Utility
 							if (emote.Name.Contains("mon_sp/")) { emote.Name = emote.Name.Remove(0, 7).ToString(); emote.SpeacialReal = true; }
 							if (emote.Name.Contains("battle/")) { emote.Name = emote.Name.Remove(0, 7).ToString(); emote.BattleReal = true; }
 							if (emote.Name.Contains("human_sp/")) { emote.Name = emote.Name.Remove(0, 9).ToString(); emote.SpeacialReal = true; }
-							Emotes.Add(emote.Index, emote);
+							Emotes.Add(emote);
 						}
 					}
 				}
@@ -291,7 +282,7 @@ namespace ConceptMatrix.Utility
 
 		public void MonsterList()
 		{
-			Monsters = new Dictionary<int, Monster>();
+			Monsters = new List<CMMonster>();
 			{
 				try
 				{
@@ -304,7 +295,7 @@ namespace ConceptMatrix.Utility
 						while (!parser.EndOfData)
 						{
 							rowCount++;
-							var monster = new Monster();
+							var monster = new CMMonster();
 							//Processing row
 							var fields = parser.ReadFields();
 							var fCount = 0;
@@ -319,7 +310,7 @@ namespace ConceptMatrix.Utility
 							if (monster.Name.Length >= 1)
 								monster.Real = true;
 
-							Monsters.Add(monster.Index, monster);
+							Monsters.Add(monster);
 						}
 					}
 				}
@@ -364,13 +355,13 @@ namespace ConceptMatrix.Utility
 		
 		public void MakeItemList()
 		{
-			var itemSheet = MainViewModel.lumina.GetExcelSheet<Lumina.Excel.GeneratedSheets.Item>();
+			var itemSheet = MainViewModel.lumina.GetExcelSheet<Item>();
 
-			Items = new List<Item>();
+			Items = new List<CMItem>();
 
 			foreach (var i in itemSheet)
 				if (i.EquipSlotCategory.Row > 0)
-					Items.Add(new Item
+					Items.Add(new CMItem
 					{
 						Index = (int)i.RowId,
 						Name = i.Name,
@@ -384,14 +375,14 @@ namespace ConceptMatrix.Utility
 
 		public void MakeResidentList()
 		{
-			Residents = new Dictionary<int, Resident>();
+			Residents = new Dictionary<int, CMResident>();
 
 			try
 			{
 				var npcResidentSheet = MainViewModel.lumina.GetExcelSheet<ENpcResident>();
 
 				foreach (var npc in npcResidentSheet)
-					Residents.Add((int)npc.RowId, new Resident { Index = (int)npc.RowId, Name = npc.Singular });
+					Residents.Add((int)npc.RowId, new CMResident { Index = (int)npc.RowId, Name = npc.Singular });
 
 				var npcBaseSheet = MainViewModel.lumina.GetExcelSheet<ENpcBase>();
 
@@ -498,7 +489,7 @@ namespace ConceptMatrix.Utility
 
 		public void MakePropList()
 		{
-			ItemsProps = new Dictionary<int, Item>();
+			ItemsProps = new List<CMItem>();
 			{
 				try
 				{
@@ -512,7 +503,7 @@ namespace ConceptMatrix.Utility
 							//Processing row
 							rowCount++;
 
-							var item = new Item();
+							var item = new CMItem();
 							var fields = parser.ReadFields();
 							var fCount = 0;
 							var index = 0;
@@ -540,7 +531,7 @@ namespace ConceptMatrix.Utility
 									}
 								}
 							}
-							ItemsProps.Add(index, item);
+							ItemsProps.Add(item);
 						}
 					}
 				}
@@ -553,7 +544,7 @@ namespace ConceptMatrix.Utility
 
 		public void BGMList()
 		{
-			BGMs = new Dictionary<int, BGM>();
+			BGMs = new List<CMBgm>();
 			{
 				try
 				{
@@ -566,29 +557,23 @@ namespace ConceptMatrix.Utility
 						while (!parser.EndOfData)
 						{
 							rowCount++;
-							var bGM = new BGM();
+							var bgm = new CMBgm();
 							//Processing row
 							var fields = parser.ReadFields();
 							var fCount = 0;
-							bGM.Index = int.Parse(fields[0]);
+							bgm.Index = int.Parse(fields[0]);
 							foreach (var field in fields)
 							{
 								fCount++;
 
 								if (fCount == 2)
-								{
-									bGM.Name = field;
-								}
+									bgm.Name = field;
 								if (fCount == 3)
-								{
-									bGM.Location = field;
-								}
+									bgm.Location = field;
 								if (fCount == 4)
-								{
-									bGM.Note = field;
-								}
+									bgm.Note = field;
 							}
-							BGMs.Add(bGM.Index, bGM);
+							BGMs.Add(bgm);
 						}
 					}
 				}

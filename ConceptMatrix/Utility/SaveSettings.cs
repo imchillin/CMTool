@@ -142,7 +142,7 @@ namespace ConceptMatrix.Utility
         public string EquipmentBytes { get; set; } = "";
         public WepTuple MainHandQuads { get; set; }
         public WepTuple OffHandQuads { get; set; }
-        public List<ExdCsvReader.Emote> FavoriteEmotes { get; set; } = new List<ExdCsvReader.Emote>();
+        public List<ExdCsvReader.CMEmote> FavoriteEmotes { get; set; } = new List<ExdCsvReader.CMEmote>();
 
         public CameraSettings LastCameraSave { get; set; }
         public double UITransparency { get; set; } = 1000;
