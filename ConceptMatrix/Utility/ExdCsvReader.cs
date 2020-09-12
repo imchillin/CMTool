@@ -478,40 +478,24 @@ namespace ConceptMatrix.Utility
 
         public void MakeTerritoryTypeList()
         {
-            TerritoryTypes = new List<CMTerritoryType>();
 			try
             {
-				var lumina = MainViewModel.lumina;
-				var weatherSheet = lumina.GetExcelSheet<Weather>();
-				var weatherRateSheet = lumina.GetExcelSheet<WeatherRate>();
-				var territorySheet = from t in lumina.GetExcelSheet<TerritoryType>()
+				var territorySheet = from t in MainViewModel.lumina.GetExcelSheet<TerritoryType>()
 									 where t.PlaceName.Value.Name.Length > 0
 									 select new CMTerritoryType
 									 {
 										 Index = (int)t.RowId,
-										 Name = t.PlaceName.Value.Name,
-										 WeatherRate = new CMWeatherRate
-										 {
-											 Index = t.WeatherRate,
-											 AllowedWeathers = (from w in weatherRateSheet.First(x => x.RowId == t.WeatherRate).UnkStruct0
-																where w.Weather > 0
-																// Weather fetched from the weather sheet that matches the current row.
-															    let weather = weatherSheet.First(x => x.RowId == w.Weather)
-															    select new CMWeather
-															    {
-																    Index = (ushort)weather.RowId,
-																    Name = weather.Name,
-																    Icon = lumina.GetIcon(weather.Icon).GetImage()
-															    }).ToList()
-										 }
+										 Name = t.PlaceName.Value.Name
 									 };
 
+				TerritoryTypes = territorySheet.ToList();
 			}
             catch (Exception)
             {
                 TerritoryTypes = null;
             }
         }
+
 		public void MakePropList()
 		{
 			ItemsProps = new Dictionary<int, Item>();
