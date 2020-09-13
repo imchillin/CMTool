@@ -16,13 +16,28 @@ namespace ConceptMatrix.Views
     /// </summary>
     public partial class EmoteFlyOut : Flyout
     {
-        private ExdCsvReader _exdProvider = CharacterDetailsView.dataProvider;
+        private readonly ExdCsvReader dataProvider = CharacterDetailsView.dataProvider;
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
         public EmoteFlyOut()
         {
             InitializeComponent();
-            /*
-            foreach (var emote in _exdProvider.Emotes)
+
+            if (SaveSettings.Default.FavoriteEmotes.Count > 0)
+            {
+                foreach (var emote in SaveSettings.Default.FavoriteEmotes)
+                {
+                    FavoriteBox.Items.Add(new ExdCsvReader.CMEmote
+                    {
+                        Index = Convert.ToInt32(emote.Index),
+                        Name = emote.Name.ToString()
+                    });
+                }
+            }
+        }
+        
+        public void Initialize()
+        {
+            foreach (var emote in dataProvider.Emotes)
             {
                 AllBox.Items.Add(new ExdCsvReader.CMEmote
                 {
@@ -53,17 +68,6 @@ namespace ConceptMatrix.Views
                         Name = emote.Name.ToString()
                     });
                 }
-            }*/
-            if (SaveSettings.Default.FavoriteEmotes.Count > 0)
-            {
-                foreach (var emote in SaveSettings.Default.FavoriteEmotes)
-                {
-                    FavoriteBox.Items.Add(new ExdCsvReader.CMEmote
-                    {
-                        Index = Convert.ToInt32(emote.Index),
-                        Name = emote.Name.ToString()
-                    });
-                }
             }
         }
 
@@ -71,7 +75,7 @@ namespace ConceptMatrix.Views
         {
             var filter = searchTextBox.Text.ToLower();
             SocialBox.Items.Clear();
-            foreach (var emote in _exdProvider.Emotes.Where(g => g.Name.ToLower().Contains(filter)))
+            foreach (var emote in dataProvider.Emotes.Where(g => g.Name.ToLower().Contains(filter)))
                 if (emote.Realist == true)
                 {
                     SocialBox.Items.Add(new ExdCsvReader.CMEmote
@@ -86,7 +90,7 @@ namespace ConceptMatrix.Views
         {
             var filter = SearchTextBoxMonster.Text.ToLower();
             MonsterBox.Items.Clear();
-            foreach (var emote in _exdProvider.Emotes.Where(g => g.Name.ToLower().Contains(filter)))
+            foreach (var emote in dataProvider.Emotes.Where(g => g.Name.ToLower().Contains(filter)))
                 if (emote.SpeacialReal == true)
                 {
                     MonsterBox.Items.Add(new ExdCsvReader.CMEmote
@@ -101,7 +105,7 @@ namespace ConceptMatrix.Views
         {
             var filter = SearchTextBoxAll.Text.ToLower();
             AllBox.Items.Clear();
-            foreach (var emote in _exdProvider.Emotes.Where(g => g.Name.ToLower().Contains(filter)))
+            foreach (var emote in dataProvider.Emotes.Where(g => g.Name.ToLower().Contains(filter)))
                 AllBox.Items.Add(new ExdCsvReader.CMEmote
                 {
                     Index = Convert.ToInt32(emote.Index),
@@ -113,7 +117,7 @@ namespace ConceptMatrix.Views
         {
             var filter = BattleTextBox.Text.ToLower();
             BattleBox.Items.Clear();
-            foreach (var emote in _exdProvider.Emotes.Where(g => g.Name.ToLower().Contains(filter)))
+            foreach (var emote in dataProvider.Emotes.Where(g => g.Name.ToLower().Contains(filter)))
                 if (emote.BattleReal == true)
                 {
                     BattleBox.Items.Add(new ExdCsvReader.CMEmote

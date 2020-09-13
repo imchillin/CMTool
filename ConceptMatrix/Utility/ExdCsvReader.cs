@@ -106,7 +106,7 @@ namespace ConceptMatrix.Utility
 
 		public class CMStatus
 		{
-			public uint Id { get; set; }
+			public int Id { get; set; }
 			public string Name { get; set; }
 			public string Description { get; set; }
 			public ImageSource Icon { get; set; }
@@ -220,7 +220,7 @@ namespace ConceptMatrix.Utility
 			{
 				this.Stains = from s in MainViewModel.lumina.GetExcelSheet<Stain>()
 							  let colorBytes = BitConverter.GetBytes(s.Color)
-							  select new CMStain()
+							  select new CMStain
 							  {
 								  Id = s.RowId,
 								  Color = new SolidColorBrush(Color.FromRgb(colorBytes[2], colorBytes[1], colorBytes[0])),
@@ -240,12 +240,11 @@ namespace ConceptMatrix.Utility
 			{
 				this.Statuses = from s in MainViewModel.lumina.GetExcelSheet<Status>()
 								where s.VFX.Row != 0 || s.RowId == 0
-								select new CMStatus()
+								select new CMStatus
 								{
-									Id = s.RowId,
+									Id = (int)s.RowId,
 									Name = s.Name.DefaultIfEmpty("None"),
-									Description = s.Description,
-									Icon = MainViewModel.lumina.GetIcon(s.Icon).GetImage()
+									Icon = MainViewModel.lumina.GetIcon(s.Icon)?.GetImage()
 								};
 			}
 			catch (Exception)

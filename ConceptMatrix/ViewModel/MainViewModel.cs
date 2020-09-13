@@ -170,19 +170,34 @@ namespace ConceptMatrix.ViewModel
             // Kill the Lumina thread.
             luminaThread.Abort();
         }
-        
-   
+
+
         private void Initialize(string _)
         {
             // Local stopwatch used for timing the startup lumina processes.
             var sw = Stopwatch.StartNew();
 
+            Task.Run(() =>
+            {
+                var races = from r in lumina.GetExcelSheet<Race>() select r.Feminine.DefaultIfEmpty("None");
+                var tribes = from t in lumina.GetExcelSheet<Tribe>() select t.Feminine.DefaultIfEmpty("None");
+
+                App.Current.Dispatcher.Invoke(() =>
+                {
+                    characterView.RaceBox.ItemsSource = races;
+                    characterView.ClanBox.ItemsSource = tribes;
+                });
+            });
             Task.Run(() => CharacterDetailsView.dataProvider.MakeItemList());
             Task.Run(() => CharacterDetailsView.dataProvider.MakePropList());
             Task.Run(() => CharacterDetailsView.dataProvider.MakeResidentList());
             Task.Run(() => CharacterDetailsView.dataProvider.MakeCharaMakeFeatureFacialList());
             Task.Run(() => CharacterDetailsView.dataProvider.MakeCharaMakeFeatureList());
-            Task.Run(() => CharacterDetailsView.dataProvider.EmoteList());
+            Task.Run(() =>
+            {
+                CharacterDetailsView.dataProvider.EmoteList();
+                App.Current.Dispatcher.Invoke(() => characterView.EmoteFlyouts.Initialize());
+            });
             Task.Run(() =>
             {
                 CharacterDetailsView.dataProvider.MonsterList();
@@ -209,35 +224,27 @@ namespace ConceptMatrix.ViewModel
                     equipView.FeetBox.ItemsSource = CharacterDetailsView.dataProvider.Stains;
                 });
             });
-
-            // Race and Tribes.
-            characterView.RaceBox.ItemsSource = from r in lumina.GetExcelSheet<Race>() select r.Feminine.DefaultIfEmpty("None");
-            characterView.ClanBox.ItemsSource = from t in lumina.GetExcelSheet<Tribe>() select t.Feminine.DefaultIfEmpty("None");
-
-            // Setting weather lists.
-            var weatherList = new List<ExdCsvReader.CMWeather>();
-            // Loop through the weathers to add to a list.
-            foreach (var weather in lumina.GetExcelSheet<Weather>())
+            Task.Run(() =>
             {
-                var icon = lumina.GetIcon(weather.Icon);
-                var cmw = new ExdCsvReader.CMWeather()
+                var weatherList = from w in lumina.GetExcelSheet<Weather>()
+                                  select new ExdCsvReader.CMWeather
+                                  {
+                                      Id = (byte)w.RowId,
+                                      Name = w.Name.DefaultIfEmpty("None"),
+                                      Icon = lumina.GetIcon(w.Icon).GetImage()
+                                  };
+
+                App.Current.Dispatcher.Invoke(() =>
                 {
-                    Id = (byte)weather.RowId,
-                    Name = weather.Name.DefaultIfEmpty("None"),
-                    Icon = icon.GetImage()
-                };
-
-                weatherList.Add(cmw);
-            }
-
-            // Assign the item sources for the weather combo boxes.
-            worldView.ForceWeatherBox.ItemsSource = weatherList;
-            worldView.WeatherBox.ItemsSource = weatherList;
-
-
-            // Get the title sheet.
-            var titleSheet = lumina.GetExcelSheet<Title>().Select(title => title.Feminine.DefaultIfEmpty("None"));
-            characterView.TitleBox.ItemsSource = titleSheet;
+                    worldView.ForceWeatherBox.ItemsSource = weatherList;
+                    worldView.WeatherBox.ItemsSource = weatherList;
+                });
+            });
+            Task.Run(() =>
+            {
+                var titleSheet = lumina.GetExcelSheet<Title>().Select(title => title.Feminine.DefaultIfEmpty("None"));
+                App.Current.Dispatcher.Invoke(() => characterView.TitleBox.ItemsSource = titleSheet);
+            });
 
             sw.Stop();
             Console.WriteLine($"Lumina initialalize sheet fetching took {sw.ElapsedMilliseconds}ms");
