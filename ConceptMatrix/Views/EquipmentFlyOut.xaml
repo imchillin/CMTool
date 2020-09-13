@@ -1,4 +1,4 @@
-﻿<controls:Flyout
+<controls:Flyout
     xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
     x:Class="ConceptMatrix.Views.EquipmentFlyOut"   
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"   
@@ -95,7 +95,7 @@
                                 </DataGrid.Columns>
                             </DataGrid>
                             <TextBox x:Name="SearchModelBox" materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:FlyOutStrings.Search}}" VerticalAlignment="Top" Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" Margin="2,370,0,0" TextWrapping="Wrap" Width="461" TextChanged="SearchModelBox_TextChanged" BorderThickness="0,1" Height="27"/>
-                            <ComboBox materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:FlyOutStrings.SelectType}}" x:Name="EquipBoxC" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="154" SelectionChanged="EquipBoxC_SelectionChanged" PreviewMouseDown="EquipBoxC_PreviewMouseDown">
+                            <ComboBox materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:FlyOutStrings.SelectType}}" x:Name="CategoryBox" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="154" SelectionChanged="EquipBoxC_SelectionChanged" PreviewMouseDown="EquipBoxC_PreviewMouseDown">
                                 <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.MainHand}}"/>
                                 <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.OffHand}}"/>
                                 <ComboBoxItem Content="{Binding Source={x:Static resx:FlyOutStrings.Head}}"/>

@@ -134,132 +134,6 @@ namespace ConceptMatrix.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {
-        ///  &quot;sheet&quot;: &quot;Item&quot;,
-        ///  &quot;defaultColumn&quot;: &quot;Name&quot;,
-        ///  &quot;definitions&quot;: [
-        ///    {
-        ///      &quot;name&quot;: &quot;Singular&quot;
-        ///    },
-        ///    {
-        ///      &quot;index&quot;: 1,
-        ///      &quot;name&quot;: &quot;Adjective&quot;
-        ///    },
-        ///    {
-        ///      &quot;index&quot;: 2,
-        ///      &quot;name&quot;: &quot;Plural&quot;
-        ///    },
-        ///    {
-        ///      &quot;index&quot;: 3,
-        ///      &quot;name&quot;: &quot;PossessivePronoun&quot;
-        ///    },
-        ///    {
-        ///      &quot;index&quot;: 4,
-        ///      &quot;name&quot;: &quot;StartsWithVowel&quot;
-        ///    },
-        ///    {
-        ///      &quot;index&quot;: 6,
-        ///      &quot;name&quot;: &quot;Pronoun&quot;
-        ///    },
-        ///    {
-        ///      &quot;index&quot;: 7,
-        ///      &quot;name&quot;: &quot;Article&quot;
-        ///    },
-        ///    {
-        ///      &quot;index&quot;: 8,
-        ///  [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string Item {
-            get {
-                return ResourceManager.GetString("Item", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {
-        ///  &quot;sheet&quot;: &quot;Item&quot;,
-        ///  &quot;defaultColumn&quot;: &quot;Name&quot;,
-        ///  &quot;definitions&quot;: [
-        ///    {
-        ///      &quot;name&quot;: &quot;Singular&quot;
-        ///    },
-        ///    {
-        ///      &quot;index&quot;: 1,
-        ///      &quot;name&quot;: &quot;Adjective&quot;
-        ///    },
-        ///    {
-        ///      &quot;index&quot;: 2,
-        ///      &quot;name&quot;: &quot;Plural&quot;
-        ///    },
-        ///    {
-        ///      &quot;index&quot;: 3,
-        ///      &quot;name&quot;: &quot;PossessivePronoun&quot;
-        ///    },
-        ///    {
-        ///      &quot;index&quot;: 4,
-        ///      &quot;name&quot;: &quot;StartsWithVowel&quot;
-        ///    },
-        ///    {
-        ///      &quot;index&quot;: 6,
-        ///      &quot;name&quot;: &quot;Pronoun&quot;
-        ///    },
-        ///    {
-        ///      &quot;index&quot;: 7,
-        ///      &quot;name&quot;: &quot;Article&quot;
-        ///    },
-        ///    {
-        ///      &quot;index&quot;: 8,
-        ///  [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string ItemCN {
-            get {
-                return ResourceManager.GetString("ItemCN", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {
-        ///  &quot;sheet&quot;: &quot;Item&quot;,
-        ///  &quot;defaultColumn&quot;: &quot;Name&quot;,
-        ///  &quot;definitions&quot;: [
-        ///    {
-        ///      &quot;name&quot;: &quot;Singular&quot;
-        ///    },
-        ///    {
-        ///      &quot;index&quot;: 1,
-        ///      &quot;name&quot;: &quot;Adjective&quot;
-        ///    },
-        ///    {
-        ///      &quot;index&quot;: 2,
-        ///      &quot;name&quot;: &quot;Plural&quot;
-        ///    },
-        ///    {
-        ///      &quot;index&quot;: 3,
-        ///      &quot;name&quot;: &quot;PossessivePronoun&quot;
-        ///    },
-        ///    {
-        ///      &quot;index&quot;: 4,
-        ///      &quot;name&quot;: &quot;StartsWithVowel&quot;
-        ///    },
-        ///    {
-        ///      &quot;index&quot;: 6,
-        ///      &quot;name&quot;: &quot;Pronoun&quot;
-        ///    },
-        ///    {
-        ///      &quot;index&quot;: 7,
-        ///      &quot;name&quot;: &quot;Article&quot;
-        ///    },
-        ///    {
-        ///      &quot;index&quot;: 8,
-        ///  [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string ItemKR {
-            get {
-                return ResourceManager.GetString("ItemKR", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Legacy {
@@ -390,7 +264,7 @@ namespace ConceptMatrix.Properties {
         ///      &quot;name&quot;: &quot;Shade&quot;
         ///    },
         ///    {
-        ///      &quot;index&quot;: 2,
+        ///      &quot;index&quot;: 3,
         ///      &quot;name&quot;: &quot;Name&quot;
         ///    }
         ///  ]

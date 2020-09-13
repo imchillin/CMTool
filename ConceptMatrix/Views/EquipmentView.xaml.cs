@@ -3,6 +3,7 @@ using ConceptMatrix.Resx;
 using ConceptMatrix.Utility;
 using ConceptMatrix.ViewModel;
 using ConceptMatrix.Windows;
+using MahApps.Metro.Controls;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -241,406 +242,86 @@ namespace ConceptMatrix.Views
             }
             return true;
         }
-        private void MainSearch_Click(object sender, RoutedEventArgs e)
+
+        [Flags]
+        private enum ItemCategory : int
         {
-            if (!CheckItemList())
-                return;
-            if (EquipmentControl.IsOpen)
-            {
-                if(!EquipmentControl.EquipTab.IsSelected || EquipmentControl.EquipBoxC.SelectedIndex != 0)
-                {
-                    EquipmentControl.EquipTab.IsSelected=true;
-                    EquipmentControl.EquipBoxC.SelectedIndex = 0;
-                    EquipmentControl.CheckIncluded.Visibility = Visibility.Visible;
-                    EquipmentControl.KeepDyes.Visibility = Visibility.Visible;
-                    EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
-                    EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
-                    EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                    EquipmentControl.CheckIncluded.Content = FlyOutStrings.IncludeOffhand;
-                    EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray());
-                }
-                else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
-            }
-            else
-            {
-                EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
-                EquipmentControl.EquipBoxC.SelectedIndex = 0;
-                EquipmentControl.EquipTab.IsSelected = true;
-                EquipmentControl.CheckIncluded.Visibility = Visibility.Visible;
-                EquipmentControl.KeepDyes.Visibility = Visibility.Visible;
-                EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
-                EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
-                EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                EquipmentControl.CheckIncluded.Content = FlyOutStrings.IncludeOffhand;
-                EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray());
-            }
+            MainHand,
+            OffHand,
+            Head,
+            Body,
+            Arms,
+            Legs,
+            Feet,
+            Ears,
+            Neck,
+            Wrist,
+            RightRing,
+            LeftRing
         }
 
-        private void OffSearch_Click(object sender, RoutedEventArgs e)
+        private void EquipmentControlOpen(ExdCsvReader.CMItem[] items, ItemCategory category)
         {
-            if (!CheckItemList())
-                return;
-            if (EquipmentControl.IsOpen)
-            {
-                if (!EquipmentControl.EquipTab.IsSelected || EquipmentControl.EquipBoxC.SelectedIndex != 1)
-                {
-                    EquipmentControl.EquipBoxC.SelectedIndex = 1;
-                    EquipmentControl.EquipTab.IsSelected = true;
-                    EquipmentControl.CheckIncluded.Visibility = Visibility.Visible;
-                    EquipmentControl.KeepDyes.Visibility = Visibility.Visible;
-                    EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
-                    EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
-                    EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                    EquipmentControl.CheckIncluded.Content = FlyOutStrings.NoneOffHand;
-                    EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray());
-                }
-                else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
-            }
-            else
-            {
-                EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
-                EquipmentControl.EquipBoxC.SelectedIndex = 1;
-                EquipmentControl.EquipTab.IsSelected = true;
-                EquipmentControl.CheckIncluded.Visibility = Visibility.Visible;
-                EquipmentControl.KeepDyes.Visibility = Visibility.Visible;
-                EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
-                EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
-                EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                EquipmentControl.CheckIncluded.Content = FlyOutStrings.NoneOffHand;
-                EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray());
-            }
+            // Open or close the menu.
+            EquipmentControl.IsOpen = !(EquipmentControl.IsOpen && EquipmentControl.CategoryBox.SelectedIndex == (int)category);
+            // Select the equip tab.
+            EquipmentControl.EquipTab.IsSelected = true;
+            // Set the category box.
+            EquipmentControl.CategoryBox.SelectedIndex = (int)category;
+
+            // Set the gear for this category.
+            EquipmentControl.GearPicker(items);
+
+            // Check included control only visible for main hand and offhand.
+            EquipmentControl.CheckIncluded.Visibility =  category == ItemCategory.MainHand || category == ItemCategory.OffHand ? Visibility.Visible : Visibility.Hidden;
+            // Set the check included label based on MH/OH, other values don't matter because it will be invisible.
+            EquipmentControl.CheckIncluded.Content = category == ItemCategory.MainHand ? FlyOutStrings.IncludeOffhand : FlyOutStrings.NoneOffHand;
+            // Turn on the class list filtering.
+            EquipmentControl.ClassBox.Visibility = Visibility.Visible;
+            // Enable the currently equipped prefix label.
+            EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
+            // Enable the currently equipped name.
+            EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
+            // Enable the dyes for equipment that isn't the accessories.
+            EquipmentControl.KeepDyes.Visibility = category < ItemCategory.Ears ? Visibility.Visible : Visibility.Hidden;
         }
 
-        private void HeadSearch_Click(object sender, RoutedEventArgs e)
-        {
-            if (!CheckItemList())
-                return;
-            if (EquipmentControl.IsOpen)
-            {
-                if (!EquipmentControl.EquipTab.IsSelected || EquipmentControl.EquipBoxC.SelectedIndex != 2)
-                {
-                    EquipmentControl.EquipTab.IsSelected = true;
-                    EquipmentControl.EquipBoxC.SelectedIndex = 2;
-                    EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
-                    EquipmentControl.KeepDyes.Visibility = Visibility.Visible;
-                    EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
-                    EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
-                    EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                    EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.ToArray().Where(c => c.Type == ExdCsvReader.ItemType.Head).ToArray());
-                }
-                else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
-            }
-            else
-            {
-                EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
-                EquipmentControl.EquipTab.IsSelected = true;
-                EquipmentControl.EquipBoxC.SelectedIndex = 2;
-                EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
-                EquipmentControl.KeepDyes.Visibility = Visibility.Visible;
-                EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
-                EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
-                EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.ToArray().Where(c => c.Type == ExdCsvReader.ItemType.Head).ToArray());
-            }
-        }
+        private void MainSearch_Click(object sender, RoutedEventArgs e) =>
+            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray(), ItemCategory.MainHand);
 
-        private void BodySearch_Click(object sender, RoutedEventArgs e)
-        {
-            if (!CheckItemList())
-                return;
-            if (EquipmentControl.IsOpen)
-            {
-                if (!EquipmentControl.EquipTab.IsSelected || EquipmentControl.EquipBoxC.SelectedIndex != 3)
-                {
-                    EquipmentControl.EquipTab.IsSelected = true;
-                    EquipmentControl.EquipBoxC.SelectedIndex = 3;
-                    EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
-                    EquipmentControl.KeepDyes.Visibility = Visibility.Visible;
-                    EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
-                    EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
-                    EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                    var test = CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Body).ToArray();
-                    EquipmentControl.GearPicker(test);
-                }
-                else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
-            }
-            else
-            {
-                EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
-                EquipmentControl.EquipTab.IsSelected = true;
-                EquipmentControl.EquipBoxC.SelectedIndex = 3;
-                EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
-                EquipmentControl.KeepDyes.Visibility = Visibility.Visible;
-                EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
-                EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
-                EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Body).ToArray());
-            }
-        }
+        private void OffSearch_Click(object sender, RoutedEventArgs e) =>
+            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray(), ItemCategory.OffHand);
 
-        private void HandSearch_Click(object sender, RoutedEventArgs e)
-        {
-            if (!CheckItemList())
-                return;
-            if (EquipmentControl.IsOpen)
-            {
-                if (!EquipmentControl.EquipTab.IsSelected || EquipmentControl.EquipBoxC.SelectedIndex != 4)
-                {
-                    EquipmentControl.EquipTab.IsSelected = true;
-                    EquipmentControl.EquipBoxC.SelectedIndex = 4;
-                    EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
-                    EquipmentControl.KeepDyes.Visibility = Visibility.Visible;
-                    EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
-                    EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
-                    EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                    EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Hands).ToArray());
-                }
-                else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
-            }
-            else
-            {
-                EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
-                EquipmentControl.EquipTab.IsSelected = true;
-                EquipmentControl.EquipBoxC.SelectedIndex = 4;
-                EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
-                EquipmentControl.KeepDyes.Visibility = Visibility.Visible;
-                EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
-                EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
-                EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Hands).ToArray());
-            }
-        }
+        private void HeadSearch_Click(object sender, RoutedEventArgs e) =>
+            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.ToArray().Where(c => c.Type == ExdCsvReader.ItemType.Head).ToArray(), ItemCategory.Head);
 
-        private void LegsSearch_Click(object sender, RoutedEventArgs e)
-        {
-            if (!CheckItemList())
-                return;
-            if (EquipmentControl.IsOpen)
-            {
-                if (!EquipmentControl.EquipTab.IsSelected || EquipmentControl.EquipBoxC.SelectedIndex != 5)
-                {
-                    EquipmentControl.EquipTab.IsSelected = true;
-                    EquipmentControl.EquipBoxC.SelectedIndex = 5;
-                    EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
-                    EquipmentControl.KeepDyes.Visibility = Visibility.Visible;
-                    EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
-                    EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
-                    EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                    EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Legs).ToArray());
-                }
-                else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
-            }
-            else
-            {
-                EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
-                EquipmentControl.EquipTab.IsSelected = true;
-                EquipmentControl.EquipBoxC.SelectedIndex = 5;
-                EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
-                EquipmentControl.KeepDyes.Visibility = Visibility.Visible;
-                EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
-                EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
-                EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Legs).ToArray());
-            }
-        }
+        private void BodySearch_Click(object sender, RoutedEventArgs e) =>
+            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Body).ToArray(), ItemCategory.Body);
 
-        private void FeetSearch_Click(object sender, RoutedEventArgs e)
-        {
-            if (!CheckItemList())
-                return;
-            if (EquipmentControl.IsOpen)
-            {
-                if (!EquipmentControl.EquipTab.IsSelected||EquipmentControl.EquipBoxC.SelectedIndex!=6)
-                {
-                    EquipmentControl.EquipTab.IsSelected = true;
-                    EquipmentControl.EquipBoxC.SelectedIndex = 6;
-                    EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
-                    EquipmentControl.KeepDyes.Visibility = Visibility.Visible;
-                    EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
-                    EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
-                    EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                    EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Feet).ToArray());
-                }
-                else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
-            }
-            else
-            {
-                EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
-                EquipmentControl.EquipTab.IsSelected = true;
-                EquipmentControl.EquipBoxC.SelectedIndex = 6;
-                EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
-                EquipmentControl.KeepDyes.Visibility = Visibility.Visible;
-                EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
-                EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
-                EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Feet).ToArray());
-            }
-        }
+        private void HandSearch_Click(object sender, RoutedEventArgs e) =>
+            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Hands).ToArray(), ItemCategory.Arms);
 
-        private void EarSearch_Click(object sender, RoutedEventArgs e)
-        {
-            if (!CheckItemList())
-                return;
-            if (EquipmentControl.IsOpen)
-            {
-                if (!EquipmentControl.EquipTab.IsSelected || EquipmentControl.EquipBoxC.SelectedIndex != 7)
-                {
-                    EquipmentControl.EquipTab.IsSelected = true;
-                    EquipmentControl.EquipBoxC.SelectedIndex = 7;
-                    EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
-                    EquipmentControl.KeepDyes.Visibility = Visibility.Hidden;
-                    EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
-                    EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
-                    EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                    EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ears).ToArray());
-                }
-                else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
-            }
-            else
-            {
-                EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
-                EquipmentControl.EquipTab.IsSelected = true;
-                EquipmentControl.EquipBoxC.SelectedIndex = 7;
-                EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
-                EquipmentControl.KeepDyes.Visibility = Visibility.Hidden;
-                EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
-                EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
-                EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ears).ToArray());
-            }
-        }
+        private void LegsSearch_Click(object sender, RoutedEventArgs e) =>
+            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Legs).ToArray(), ItemCategory.Legs);
 
-        private void NeckSearch_Click(object sender, RoutedEventArgs e)
-        {
-            if (!CheckItemList())
-                return;
-            if (EquipmentControl.IsOpen)
-            {
-                if (!EquipmentControl.EquipTab.IsSelected || EquipmentControl.EquipBoxC.SelectedIndex != 8)
-                {
-                    EquipmentControl.EquipTab.IsSelected = true;
-                    EquipmentControl.EquipBoxC.SelectedIndex = 8;
-                    EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
-                    EquipmentControl.KeepDyes.Visibility = Visibility.Hidden;
-                    EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
-                    EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
-                    EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                    EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Neck).ToArray());
-                }
-                else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
-            }
-            else
-            {
-                EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
-                EquipmentControl.EquipTab.IsSelected = true;
-                EquipmentControl.EquipBoxC.SelectedIndex = 8;
-                EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
-                EquipmentControl.KeepDyes.Visibility = Visibility.Hidden;
-                EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
-                EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
-                EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Neck).ToArray());
-            }
-        }
+        private void FeetSearch_Click(object sender, RoutedEventArgs e) =>
+            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Feet).ToArray(), ItemCategory.Feet);
 
-        private void WristSearch_Click(object sender, RoutedEventArgs e)
-        {
-            if (!CheckItemList())
-                return;
-            if (EquipmentControl.IsOpen)
-            {
-                if (!EquipmentControl.EquipTab.IsSelected || EquipmentControl.EquipBoxC.SelectedIndex != 9)
-                {
-                    EquipmentControl.EquipTab.IsSelected = true;
-                    EquipmentControl.EquipBoxC.SelectedIndex = 9;
-                    EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
-                    EquipmentControl.KeepDyes.Visibility = Visibility.Hidden;
-                    EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
-                    EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
-                    EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                    EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wrists).ToArray());
-                }
-                else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
-            }
-            else
-            {
-                EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
-                EquipmentControl.EquipTab.IsSelected = true;
-                EquipmentControl.EquipBoxC.SelectedIndex = 9;
-                EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
-                EquipmentControl.KeepDyes.Visibility = Visibility.Hidden;
-                EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
-                EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
-                EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wrists).ToArray());
-            }
-        }
+        private void EarSearch_Click(object sender, RoutedEventArgs e) =>
+            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ears).ToArray(), ItemCategory.Ears);
 
-        private void RightSearch_Click(object sender, RoutedEventArgs e)
-        {
-            if (!CheckItemList())
-                return;
-            if (EquipmentControl.IsOpen)
-            {
-                if (!EquipmentControl.EquipTab.IsSelected || EquipmentControl.EquipBoxC.SelectedIndex != 10)
-                {
-                    EquipmentControl.EquipTab.IsSelected = true;
-                    EquipmentControl.EquipBoxC.SelectedIndex = 10;
-                    EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
-                    EquipmentControl.KeepDyes.Visibility = Visibility.Hidden;
-                    EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
-                    EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
-                    EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                    EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
-                }
-                else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
-            }
-            else
-            {
-                EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
-                EquipmentControl.EquipBoxC.SelectedIndex = 10;
-                EquipmentControl.EquipTab.IsSelected = true;
-                EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
-                EquipmentControl.KeepDyes.Visibility = Visibility.Hidden;
-                EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
-                EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
-                EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
-            }
-        }
+        private void NeckSearch_Click(object sender, RoutedEventArgs e) =>
+            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Neck).ToArray(), ItemCategory.Neck);
 
-        private void LeftSearch_Click(object sender, RoutedEventArgs e)
-        {
-            if (!CheckItemList())
-                return;
-            if (EquipmentControl.IsOpen)
-            {
-                if (!EquipmentControl.EquipTab.IsSelected||EquipmentControl.EquipBoxC.SelectedIndex!=11)
-                {
-                    EquipmentControl.EquipTab.IsSelected = true;
-                    EquipmentControl.EquipBoxC.SelectedIndex = 11;
-                    EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
-                    EquipmentControl.KeepDyes.Visibility = Visibility.Hidden;
-                    EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
-                    EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
-                    EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                    EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
-                }
-                else EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
-            }
-            else
-            {
-                EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
-                EquipmentControl.EquipTab.IsSelected = true;
-                EquipmentControl.EquipBoxC.SelectedIndex = 11;
-                EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
-                EquipmentControl.KeepDyes.Visibility = Visibility.Hidden;
-                EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Visible;
-                EquipmentControl.EquippedLabel.Visibility = Visibility.Visible;
-                EquipmentControl.ClassBox.Visibility = Visibility.Visible;
-                EquipmentControl.GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
-            }
-        }
+        private void WristSearch_Click(object sender, RoutedEventArgs e) =>
+            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wrists).ToArray(), ItemCategory.Wrist);
+
+        private void RightSearch_Click(object sender, RoutedEventArgs e) =>
+            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray(), ItemCategory.RightRing);
+
+        private void LeftSearch_Click(object sender, RoutedEventArgs e) =>
+            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray(), ItemCategory.LeftRing);
+
         public static bool CheckResidentList()
         {
             if (CharacterDetailsView.dataProvider.Residents == null)
@@ -689,10 +370,10 @@ namespace ConceptMatrix.Views
                 return;
             if (EquipmentControl.IsOpen)
             {
-                if (!EquipmentControl.EquipTab.IsSelected || EquipmentControl.EquipBoxC.SelectedIndex != 12)
+                if (!EquipmentControl.EquipTab.IsSelected || EquipmentControl.CategoryBox.SelectedIndex != 12)
                 {
                     EquipmentControl.EquipTab.IsSelected = true;
-                    EquipmentControl.EquipBoxC.SelectedIndex = 12;
+                    EquipmentControl.CategoryBox.SelectedIndex = 12;
                     EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
                     EquipmentControl.KeepDyes.Visibility = Visibility.Hidden;
                     EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Hidden;
@@ -705,7 +386,7 @@ namespace ConceptMatrix.Views
             else
             {
                 EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
-                EquipmentControl.EquipBoxC.SelectedIndex = 12;
+                EquipmentControl.CategoryBox.SelectedIndex = 12;
                 EquipmentControl.EquipTab.IsSelected = true;
                 EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
                 EquipmentControl.KeepDyes.Visibility = Visibility.Hidden;
@@ -722,10 +403,10 @@ namespace ConceptMatrix.Views
                 return;
             if (EquipmentControl.IsOpen)
             {
-                if (!EquipmentControl.EquipTab.IsSelected || EquipmentControl.EquipBoxC.SelectedIndex != 13)
+                if (!EquipmentControl.EquipTab.IsSelected || EquipmentControl.CategoryBox.SelectedIndex != 13)
                 {
                     EquipmentControl.EquipTab.IsSelected = true;
-                    EquipmentControl.EquipBoxC.SelectedIndex = 13;
+                    EquipmentControl.CategoryBox.SelectedIndex = 13;
                     EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
                     EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Hidden;
                     EquipmentControl.EquippedLabel.Visibility = Visibility.Hidden;
@@ -737,7 +418,7 @@ namespace ConceptMatrix.Views
             else
             {
                 EquipmentControl.IsOpen = !EquipmentControl.IsOpen;
-                EquipmentControl.EquipBoxC.SelectedIndex = 13;
+                EquipmentControl.CategoryBox.SelectedIndex = 13;
                 EquipmentControl.EquipTab.IsSelected = true;
                 EquipmentControl.CheckIncluded.Visibility = Visibility.Hidden;
                 EquipmentControl.CurrentlyEquippedName.Visibility = Visibility.Hidden;

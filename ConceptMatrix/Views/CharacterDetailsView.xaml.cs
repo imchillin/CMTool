@@ -1055,7 +1055,7 @@ namespace ConceptMatrix.Views
 				if (!SpecialControl.FacialTab.IsSelected)
 				{
 					SpecialControl.FacialTab.IsSelected = true;
-					//SpecialControl.CharaMakeFeatureSelector3(CharacterDetails.Head.value, CharacterDetails.Race.value, CharacterDetails.Clan.value, CharacterDetails.Gender.value, _exdProvider);
+					SpecialControl.CharaMakeFeatureSelector3(CharacterDetails.Head.value, CharacterDetails.Race.value, CharacterDetails.Clan.value, CharacterDetails.Gender.value, dataProvider);
 				}
 				else SpecialControl.IsOpen = !SpecialControl.IsOpen;
 			}
@@ -1063,7 +1063,7 @@ namespace ConceptMatrix.Views
 			{
 				SpecialControl.IsOpen = !SpecialControl.IsOpen;
 				SpecialControl.FacialTab.IsSelected = true;
-				//SpecialControl.CharaMakeFeatureSelector3(CharacterDetails.Head.value, CharacterDetails.Race.value, CharacterDetails.Clan.value, CharacterDetails.Gender.value, _exdProvider);
+				SpecialControl.CharaMakeFeatureSelector3(CharacterDetails.Head.value, CharacterDetails.Race.value, CharacterDetails.Clan.value, CharacterDetails.Gender.value, dataProvider);
 			}
 		}
 

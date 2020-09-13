@@ -76,7 +76,7 @@ namespace ConceptMatrix.Utility
 			public string ModelMain { get; set; }
 			public string ModelOff { get; set; }
 			public ItemType Type { get; set; }
-			public string ClassJobListStringName { get; set; }
+			public string ClassJobCategory { get; set; }
 			public TexFile Icon { get; set; }
 
 			public override string ToString()
@@ -423,7 +423,7 @@ namespace ConceptMatrix.Utility
 					{
 						Index = (int)i.RowId,
 						Name = i.Name,
-						ClassJobListStringName = i.ClassJobCategory.Value.Name,
+						ClassJobCategory = i.ClassJobCategory.Value.Name,
 						Type = AsType((int)i.ItemUICategory.Row),
 						Icon = MainViewModel.lumina.GetIcon(i.Icon),
 						ModelMain = i.ModelMain.AsQuad().ToString(),

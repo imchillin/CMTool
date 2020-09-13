@@ -56,9 +56,9 @@ namespace ConceptMatrix.Views
             _items = items;
             CurrentlyEquippedName.Content = "None";
             bool found = false;
-            if (EquipBoxC.SelectedIndex > 11)
+            if (CategoryBox.SelectedIndex > 11)
             {
-                foreach (var game in _items)
+                foreach (var game in items)
                 {
                     EquipBox.Items.Add(new CMItem
                     {
@@ -73,40 +73,40 @@ namespace ConceptMatrix.Views
             else
             {
                 var selectedTag = ((ComboBoxItem)ClassBox.SelectedItem).Tag.ToString();
-                foreach (var game in _items)
+                foreach (var game in items)
                 {
                     if(MainViewModel.RegionType=="Live" && SaveSettings.Default.Language == "zh" 
                         || MainViewModel.RegionType == "Live" && SaveSettings.Default.Language == "ko")
                     {
                         if (ClassBox.SelectedIndex != 0)
                         {
-                            if (EquipBoxC.SelectedIndex != 0 && EquipBoxC.SelectedIndex != 1)
+                            if (CategoryBox.SelectedIndex != 0 && CategoryBox.SelectedIndex != 1)
                             {
                                 if (ClassBox.SelectedIndex == 4)
                                 {
-                                    if (!game.ClassJobListStringName.Equals(selectedTag)) continue;
+                                    if (!game.ClassJobCategory.Equals(selectedTag)) continue;
                                 }
-                                else if (!game.ClassJobListStringName.Contains(selectedTag)) continue;
+                                else if (!game.ClassJobCategory.Contains(selectedTag)) continue;
                             }
                             else if (ClassBox.SelectedIndex >= 7)
                             {
-                                if (!game.ClassJobListStringName.Contains(selectedTag)) continue;
+                                if (!game.ClassJobCategory.Contains(selectedTag)) continue;
                             }
                         }
                     }
                     else if (ClassBox.SelectedIndex != 0)
                     {
-                        if (EquipBoxC.SelectedIndex != 0 && EquipBoxC.SelectedIndex != 1)
+                        if (CategoryBox.SelectedIndex != 0 && CategoryBox.SelectedIndex != 1)
                         {
                             if (ClassBox.SelectedIndex == 4)
                             {
-                                if (!game.ClassJobListStringName.Equals(ClassBox.Text)) continue;
+                                if (!game.ClassJobCategory.Equals(ClassBox.Text)) continue;
                             }
-                            else if (!game.ClassJobListStringName.Contains(ClassBox.Text)) continue;
+                            else if (!game.ClassJobCategory.Contains(ClassBox.Text)) continue;
                         }
                         else if (ClassBox.SelectedIndex >= 7)
                         {
-                            if (!game.ClassJobListStringName.Contains(ClassBox.Text)) continue;
+                            if (!game.ClassJobCategory.Contains(ClassBox.Text)) continue;
                         }
                     }
 
@@ -121,7 +121,7 @@ namespace ConceptMatrix.Views
                     if (!found) // Only looking for a match once and will stop trying to match. 
                     {
                         var Modelmain = CommaToGearTuple(game.ModelMain);
-                        if (EquipBoxC.SelectedIndex == 0)
+                        if (CategoryBox.SelectedIndex == 0)
                         {
                             if (CharacterDetails.Job.value > 0)
                             {
@@ -130,7 +130,7 @@ namespace ConceptMatrix.Views
                             }
                         }
                         else
-                        if (EquipBoxC.SelectedIndex == 1)
+                        if (CategoryBox.SelectedIndex == 1)
                         {
                             var ModelOff = CommaToGearTuple(game.ModelOff);
                             if (CharacterDetails.Offhand.value > 0)
@@ -148,7 +148,7 @@ namespace ConceptMatrix.Views
                             }
                         }
                         else
-                        if (EquipBoxC.SelectedIndex == 2)
+                        if (CategoryBox.SelectedIndex == 2)
                         {
                             if (CharacterDetails.HeadPiece.value > 0)
                             {
@@ -160,7 +160,7 @@ namespace ConceptMatrix.Views
                             }
                         }
                         else
-                        if (EquipBoxC.SelectedIndex == 3)
+                        if (CategoryBox.SelectedIndex == 3)
                         {
                             if (CharacterDetails.Chest.value > 0)
                             {
@@ -172,7 +172,7 @@ namespace ConceptMatrix.Views
                             }
                         }
                         else
-                        if (EquipBoxC.SelectedIndex == 4)
+                        if (CategoryBox.SelectedIndex == 4)
                         {
                             if (CharacterDetails.Arms.value > 0)
                             {
@@ -184,7 +184,7 @@ namespace ConceptMatrix.Views
                             }
                         }
                         else
-                        if (EquipBoxC.SelectedIndex == 5)
+                        if (CategoryBox.SelectedIndex == 5)
                         {
                             if (CharacterDetails.Legs.value > 0)
                             {
@@ -196,7 +196,7 @@ namespace ConceptMatrix.Views
                             }
                         }
                         else
-                        if (EquipBoxC.SelectedIndex == 6)
+                        if (CategoryBox.SelectedIndex == 6)
                         {
                             if (CharacterDetails.Feet.value > 0)
                             {
@@ -208,7 +208,7 @@ namespace ConceptMatrix.Views
                             }
                         }
                         else
-                        if (EquipBoxC.SelectedIndex == 7)
+                        if (CategoryBox.SelectedIndex == 7)
                         {
                             if (CharacterDetails.Ear.value > 0)
                             {
@@ -220,7 +220,7 @@ namespace ConceptMatrix.Views
                             }
                         }
                         else
-                        if (EquipBoxC.SelectedIndex == 8)
+                        if (CategoryBox.SelectedIndex == 8)
                         {
                             if (CharacterDetails.Neck.value > 0)
                             {
@@ -232,7 +232,7 @@ namespace ConceptMatrix.Views
                             }
                         }
                         else
-                        if (EquipBoxC.SelectedIndex == 9)
+                        if (CategoryBox.SelectedIndex == 9)
                         {
                             if (CharacterDetails.Wrist.value > 0)
                             {
@@ -244,7 +244,7 @@ namespace ConceptMatrix.Views
                             }
                         }
                         else
-                        if (EquipBoxC.SelectedIndex == 10)
+                        if (CategoryBox.SelectedIndex == 10)
                         {
                             if (CharacterDetails.RFinger.value > 0)
                             {
@@ -256,7 +256,7 @@ namespace ConceptMatrix.Views
                             }
                         }
                         else
-                        if (EquipBoxC.SelectedIndex == 11)
+                        if (CategoryBox.SelectedIndex == 11)
                         {
                             if (CharacterDetails.LFinger.value > 0)
                             {
@@ -274,18 +274,18 @@ namespace ConceptMatrix.Views
             }
             if(CurrentlyEquippedName.Content.ToString()=="None")
             {
-                if (EquipBoxC.SelectedIndex == 0 && CharacterDetails.Job.value > 0 ||
-                    EquipBoxC.SelectedIndex == 1 && CharacterDetails.Offhand.value > 0 ||
-                    EquipBoxC.SelectedIndex == 2 && CharacterDetails.HeadPiece.value > 0 ||
-                    EquipBoxC.SelectedIndex == 3 && CharacterDetails.Chest.value > 0 ||
-                    EquipBoxC.SelectedIndex == 4 && CharacterDetails.Arms.value > 0 ||
-                    EquipBoxC.SelectedIndex == 5 && CharacterDetails.Legs.value > 0 ||
-                    EquipBoxC.SelectedIndex == 6 && CharacterDetails.Feet.value > 0 ||
-                    EquipBoxC.SelectedIndex == 7 && CharacterDetails.Ear.value > 0 ||
-                    EquipBoxC.SelectedIndex == 8 && CharacterDetails.Neck.value > 0 ||
-                    EquipBoxC.SelectedIndex == 9 && CharacterDetails.Wrist.value > 0 ||
-                    EquipBoxC.SelectedIndex == 10 && CharacterDetails.RFinger.value > 0 ||
-                    EquipBoxC.SelectedIndex == 11 && CharacterDetails.LFinger.value > 0) CurrentlyEquippedName.Content = "Unknown? Unable to verifiy";
+                if (CategoryBox.SelectedIndex == 0 && CharacterDetails.Job.value > 0 ||
+                    CategoryBox.SelectedIndex == 1 && CharacterDetails.Offhand.value > 0 ||
+                    CategoryBox.SelectedIndex == 2 && CharacterDetails.HeadPiece.value > 0 ||
+                    CategoryBox.SelectedIndex == 3 && CharacterDetails.Chest.value > 0 ||
+                    CategoryBox.SelectedIndex == 4 && CharacterDetails.Arms.value > 0 ||
+                    CategoryBox.SelectedIndex == 5 && CharacterDetails.Legs.value > 0 ||
+                    CategoryBox.SelectedIndex == 6 && CharacterDetails.Feet.value > 0 ||
+                    CategoryBox.SelectedIndex == 7 && CharacterDetails.Ear.value > 0 ||
+                    CategoryBox.SelectedIndex == 8 && CharacterDetails.Neck.value > 0 ||
+                    CategoryBox.SelectedIndex == 9 && CharacterDetails.Wrist.value > 0 ||
+                    CategoryBox.SelectedIndex == 10 && CharacterDetails.RFinger.value > 0 ||
+                    CategoryBox.SelectedIndex == 11 && CharacterDetails.LFinger.value > 0) CurrentlyEquippedName.Content = "Unknown? Unable to verifiy";
             }
         }
         public static byte[] WepTupleToByteAry(WepTuple tuple)
@@ -459,59 +459,59 @@ namespace ConceptMatrix.Views
                 CurrentlyEquippedName.Visibility = Visibility.Visible;
                 EquippedLabel.Visibility = Visibility.Visible;
                 ClassBox.Visibility = Visibility.Visible;
-                if (EquipBoxC.SelectedIndex == 0)
+                if (CategoryBox.SelectedIndex == 0)
                 {
                     CheckIncluded.Visibility = Visibility.Visible;
                     KeepDyes.Visibility = Visibility.Visible;
                     CheckIncluded.Content = FlyOutStrings.IncludeOffhand;
                     GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray());
                 }
-                if (EquipBoxC.SelectedIndex == 1)
+                if (CategoryBox.SelectedIndex == 1)
                 {
                     CheckIncluded.Visibility = Visibility.Visible;
                     KeepDyes.Visibility = Visibility.Visible;
                     CheckIncluded.Content = FlyOutStrings.NoneOffHand;
                     GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray());
                 }
-                if (EquipBoxC.SelectedIndex == 2)
+                if (CategoryBox.SelectedIndex == 2)
                 {
                     KeepDyes.Visibility = Visibility.Visible;
                     GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Head).ToArray());
                 }
-                if (EquipBoxC.SelectedIndex == 3)
+                if (CategoryBox.SelectedIndex == 3)
                 {
                     KeepDyes.Visibility = Visibility.Visible;
                     GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Body).ToArray());
                 }
 
-                if (EquipBoxC.SelectedIndex == 4)
+                if (CategoryBox.SelectedIndex == 4)
                 {
                     KeepDyes.Visibility = Visibility.Visible;
                     GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Hands).ToArray());
                 }
-                if (EquipBoxC.SelectedIndex == 5)
+                if (CategoryBox.SelectedIndex == 5)
                 {
                     KeepDyes.Visibility = Visibility.Visible;
                     GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Legs).ToArray());
                 }
-                if (EquipBoxC.SelectedIndex == 6)
+                if (CategoryBox.SelectedIndex == 6)
                 {
                     KeepDyes.Visibility = Visibility.Visible;
                     GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Feet).ToArray());
                 }
 
-                if (EquipBoxC.SelectedIndex == 7) GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ears).ToArray());
-                if (EquipBoxC.SelectedIndex == 8) GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Neck).ToArray());
-                if (EquipBoxC.SelectedIndex == 9) GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wrists).ToArray());
-                if (EquipBoxC.SelectedIndex == 10) GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
-                if (EquipBoxC.SelectedIndex == 11) GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
-                if (EquipBoxC.SelectedIndex == 12)
+                if (CategoryBox.SelectedIndex == 7) GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ears).ToArray());
+                if (CategoryBox.SelectedIndex == 8) GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Neck).ToArray());
+                if (CategoryBox.SelectedIndex == 9) GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wrists).ToArray());
+                if (CategoryBox.SelectedIndex == 10) GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
+                if (CategoryBox.SelectedIndex == 11) GearPicker(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray());
+                if (CategoryBox.SelectedIndex == 12)
                 {
                     if (!EquipmentView.CheckPropList())
                         return;
                     GearPicker(CharacterDetailsView.dataProvider.ItemsProps.ToArray());
                 }
-                if (EquipBoxC.SelectedIndex == 13)
+                if (CategoryBox.SelectedIndex == 13)
                 {
                     if (!EquipmentView.CheckPropList())
                         return;
@@ -531,74 +531,74 @@ namespace ConceptMatrix.Views
                 if (EquipBox.SelectedItem == null)
                     return;
                 var Value = (CMItem)EquipBox.SelectedItem;
-                if (EquipBoxC.SelectedIndex == 0)
+                if (CategoryBox.SelectedIndex == 0)
                 {
                     CharacterDetails.WeaponSlot.value = Value.ModelMain;
                     if (CheckIncluded.IsChecked == true && Value.Type != ExdCsvReader.ItemType.Shield) CharacterDetails.OffhandSlot.value = Value.ModelOff;
                     WriteGear_Click();
                 }
-                if (EquipBoxC.SelectedIndex == 1)
+                if (CategoryBox.SelectedIndex == 1)
                 {
                     if (CheckIncluded.IsChecked == true) CharacterDetails.OffhandSlot.value = Value.ModelMain;
                     else CharacterDetails.OffhandSlot.value = Value.ModelOff;
                     WriteGear_Click();
                 }
-                if (EquipBoxC.SelectedIndex == 2)
+                if (CategoryBox.SelectedIndex == 2)
                 {
                     CharacterDetails.HeadSlot.value = Value.ModelMain;
                     WriteGear_Click();
                 }
-                if (EquipBoxC.SelectedIndex == 3)
+                if (CategoryBox.SelectedIndex == 3)
                 {
                     CharacterDetails.BodySlot.value = Value.ModelMain;
                     WriteGear_Click();
                 }
-                if (EquipBoxC.SelectedIndex == 4)
+                if (CategoryBox.SelectedIndex == 4)
                 {
                     CharacterDetails.ArmSlot.value = Value.ModelMain;
                     WriteGear_Click();
                 }
-                if (EquipBoxC.SelectedIndex == 5)
+                if (CategoryBox.SelectedIndex == 5)
                 {
                     CharacterDetails.LegSlot.value = Value.ModelMain;
                     WriteGear_Click();
                 }
-                if (EquipBoxC.SelectedIndex == 6)
+                if (CategoryBox.SelectedIndex == 6)
                 {
                     CharacterDetails.FeetSlot.value = Value.ModelMain;
                     WriteGear_Click();
                 }
-                if (EquipBoxC.SelectedIndex == 7)
+                if (CategoryBox.SelectedIndex == 7)
                 {
                     CharacterDetails.EarSlot.value = Value.ModelMain;
                     WriteGear_Click();
                 }
-                if (EquipBoxC.SelectedIndex == 8)
+                if (CategoryBox.SelectedIndex == 8)
                 {
                     CharacterDetails.NeckSlot.value = Value.ModelMain;
                     WriteGear_Click();
                 }
-                if (EquipBoxC.SelectedIndex == 9)
+                if (CategoryBox.SelectedIndex == 9)
                 {
                     CharacterDetails.WristSlot.value = Value.ModelMain;
                     WriteGear_Click();
                 }
-                if (EquipBoxC.SelectedIndex == 10)
+                if (CategoryBox.SelectedIndex == 10)
                 {
                     CharacterDetails.RFingerSlot.value = Value.ModelMain;
                     WriteGear_Click();
                 }
-                if (EquipBoxC.SelectedIndex == 11)
+                if (CategoryBox.SelectedIndex == 11)
                 {
                     CharacterDetails.LFingerSlot.value = Value.ModelMain;
                     WriteGear_Click();
                 }
-                if (EquipBoxC.SelectedIndex == 12)
+                if (CategoryBox.SelectedIndex == 12)
                 {
                     CharacterDetails.WeaponSlot.value = Value.ModelMain;
                     WriteGear_Click();
                 }
-                if (EquipBoxC.SelectedIndex == 13)
+                if (CategoryBox.SelectedIndex == 13)
                 {
                     CharacterDetails.OffhandSlot.value = Value.ModelMain;
                     WriteGear_Click();
@@ -824,14 +824,14 @@ namespace ConceptMatrix.Views
 
         private void SearchModelBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (EquipBoxC.SelectedItem == null)
+            if (CategoryBox.SelectedItem == null)
                 return;
             string filter = SearchModelBox.Text.ToLower();
             EquipBox.Items.Clear();
             string selectedTag = ((ComboBoxItem)ClassBox.SelectedItem).Tag.ToString();
             foreach (ExdCsvReader.CMItem game in _items.Where(g => g.Name.ToLower().Contains(filter)))
             {
-                if (EquipBoxC.SelectedIndex > 11)
+                if (CategoryBox.SelectedIndex > 11)
                 {
                     EquipBox.Items.Add(new CMItem
                     {
@@ -849,33 +849,33 @@ namespace ConceptMatrix.Views
                     {
                         if (ClassBox.SelectedIndex != 0)
                         {
-                            if (EquipBoxC.SelectedIndex != 0 && EquipBoxC.SelectedIndex != 1)
+                            if (CategoryBox.SelectedIndex != 0 && CategoryBox.SelectedIndex != 1)
                             {
                                 if (ClassBox.SelectedIndex == 4)
                                 {
-                                    if (!game.ClassJobListStringName.Equals(selectedTag)) continue;
+                                    if (!game.ClassJobCategory.Equals(selectedTag)) continue;
                                 }
-                                else if (!game.ClassJobListStringName.Contains(selectedTag)) continue;
+                                else if (!game.ClassJobCategory.Contains(selectedTag)) continue;
                             }
                             else if (ClassBox.SelectedIndex >= 7)
                             {
-                                if (!game.ClassJobListStringName.Contains(selectedTag)) continue;
+                                if (!game.ClassJobCategory.Contains(selectedTag)) continue;
                             }
                         }
                     }
                     else if (ClassBox.SelectedIndex != 0)
                     {
-                        if (EquipBoxC.SelectedIndex != 0 && EquipBoxC.SelectedIndex != 1)
+                        if (CategoryBox.SelectedIndex != 0 && CategoryBox.SelectedIndex != 1)
                         {
                             if (ClassBox.SelectedIndex == 4)
                             {
-                                if (!game.ClassJobListStringName.Equals(ClassBox.Text)) continue;
+                                if (!game.ClassJobCategory.Equals(ClassBox.Text)) continue;
                             }
-                            else if (!game.ClassJobListStringName.Contains(ClassBox.Text)) continue;
+                            else if (!game.ClassJobCategory.Contains(ClassBox.Text)) continue;
                         }
                         else if (ClassBox.SelectedIndex >= 7)
                         {
-                            if (!game.ClassJobListStringName.Contains(ClassBox.Text)) continue;
+                            if (!game.ClassJobCategory.Contains(ClassBox.Text)) continue;
                         }
                     }
 
