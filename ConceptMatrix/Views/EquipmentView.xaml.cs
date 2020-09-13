@@ -287,40 +287,40 @@ namespace ConceptMatrix.Views
         }
 
         private void MainSearch_Click(object sender, RoutedEventArgs e) =>
-            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray(), ItemCategory.MainHand);
+            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.ToArray().Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray(), ItemCategory.MainHand);
 
         private void OffSearch_Click(object sender, RoutedEventArgs e) =>
-            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray(), ItemCategory.OffHand);
+            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.ToArray().Where(c => c.Type == ExdCsvReader.ItemType.Wep || c.Type == ExdCsvReader.ItemType.Shield).ToArray(), ItemCategory.OffHand);
 
         private void HeadSearch_Click(object sender, RoutedEventArgs e) =>
             EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.ToArray().Where(c => c.Type == ExdCsvReader.ItemType.Head).ToArray(), ItemCategory.Head);
 
         private void BodySearch_Click(object sender, RoutedEventArgs e) =>
-            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Body).ToArray(), ItemCategory.Body);
+            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.ToArray().Where(c => c.Type == ExdCsvReader.ItemType.Body).ToArray(), ItemCategory.Body);
 
         private void HandSearch_Click(object sender, RoutedEventArgs e) =>
-            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Hands).ToArray(), ItemCategory.Arms);
+            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.ToArray().Where(c => c.Type == ExdCsvReader.ItemType.Hands).ToArray(), ItemCategory.Arms);
 
         private void LegsSearch_Click(object sender, RoutedEventArgs e) =>
-            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Legs).ToArray(), ItemCategory.Legs);
+            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.ToArray().Where(c => c.Type == ExdCsvReader.ItemType.Legs).ToArray(), ItemCategory.Legs);
 
         private void FeetSearch_Click(object sender, RoutedEventArgs e) =>
-            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Feet).ToArray(), ItemCategory.Feet);
+            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.ToArray().Where(c => c.Type == ExdCsvReader.ItemType.Feet).ToArray(), ItemCategory.Feet);
 
         private void EarSearch_Click(object sender, RoutedEventArgs e) =>
-            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ears).ToArray(), ItemCategory.Ears);
+            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.ToArray().Where(c => c.Type == ExdCsvReader.ItemType.Ears).ToArray(), ItemCategory.Ears);
 
         private void NeckSearch_Click(object sender, RoutedEventArgs e) =>
-            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Neck).ToArray(), ItemCategory.Neck);
+            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.ToArray().Where(c => c.Type == ExdCsvReader.ItemType.Neck).ToArray(), ItemCategory.Neck);
 
         private void WristSearch_Click(object sender, RoutedEventArgs e) =>
-            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Wrists).ToArray(), ItemCategory.Wrist);
+            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.ToArray().Where(c => c.Type == ExdCsvReader.ItemType.Wrists).ToArray(), ItemCategory.Wrist);
 
         private void RightSearch_Click(object sender, RoutedEventArgs e) =>
-            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray(), ItemCategory.RightRing);
+            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.ToArray().Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray(), ItemCategory.RightRing);
 
         private void LeftSearch_Click(object sender, RoutedEventArgs e) =>
-            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray(), ItemCategory.LeftRing);
+            EquipmentControlOpen(CharacterDetailsView.dataProvider.Items.ToArray().Where(c => c.Type == ExdCsvReader.ItemType.Ring).ToArray(), ItemCategory.LeftRing);
 
         public static bool CheckResidentList()
         {
