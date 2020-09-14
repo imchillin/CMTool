@@ -243,8 +243,7 @@ namespace ConceptMatrix.Views
             return true;
         }
 
-        [Flags]
-        private enum ItemCategory : int
+        public enum ItemCategory : int
         {
             MainHand,
             OffHand,

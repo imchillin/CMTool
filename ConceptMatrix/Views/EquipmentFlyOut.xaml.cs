@@ -14,6 +14,9 @@ using GearTuple = System.Tuple<int, int, int>;
 using WepTuple = System.Tuple<int, int, int, int>;
 using System.Windows.Data;
 using System.Runtime.CompilerServices;
+using static ConceptMatrix.Views.EquipmentView;
+using static ConceptMatrix.Utility.ExdCsvReader;
+using Lumina.Excel.GeneratedSheets;
 
 namespace ConceptMatrix.Views
 {
@@ -24,7 +27,6 @@ namespace ConceptMatrix.Views
     {
         public ExdCsvReader.CMItem[] _items;
         public static GearSet _cGearSet = new GearSet();
-        private GearSet _gearSet = new GearSet();
         private ExdCsvReader.CMResident[] _residents;
         public ExdCsvReader.CMResident Choice = null;
         private bool isUserInteraction = false;
@@ -42,19 +44,13 @@ namespace ConceptMatrix.Views
             KeepModel.IsChecked = SaveSettings.Default.KeepModelType;
         }
 
-        public class CMItem
-        {
-            public int Index { get; set; }
-            public string Name { get; set; }
-            public string ModelMain { get; set; }
-            public string ModelOff { get; set; }
-            public ExdCsvReader.ItemType Type { get; set; }
-            public ImageSource Icon { get; set; }
-        }
         public void GearPicker(ExdCsvReader.CMItem[] items)
         {
             _items = items;
+            // Search/filter the items in the data grid.
             SearchForItem();
+            // Search for the current equipped item in this slot.
+            FindItemName();
         }
         public static byte[] WepTupleToByteAry(WepTuple tuple)
         {
@@ -298,11 +294,11 @@ namespace ConceptMatrix.Views
             {
                 if (EquipBox.SelectedItem == null)
                     return;
-                var Value = (CMItem)EquipBox.SelectedItem;
+                var Value = (ExdCsvReader.CMItem)EquipBox.SelectedItem;
                 if (CategoryBox.SelectedIndex == 0)
                 {
                     CharacterDetails.WeaponSlot.value = Value.ModelMain;
-                    if (CheckIncluded.IsChecked == true && Value.Type != ExdCsvReader.ItemType.Shield) CharacterDetails.OffhandSlot.value = Value.ModelOff;
+                    if (CheckIncluded.IsChecked == true && Value.Type != ItemType.Shield) CharacterDetails.OffhandSlot.value = Value.ModelOff;
                     WriteGear_Click();
                 }
                 if (CategoryBox.SelectedIndex == 1)
@@ -372,6 +368,9 @@ namespace ConceptMatrix.Views
                     WriteGear_Click();
                 }
             }
+            
+            // Look for the new item that changed.
+            FindItemName();
         }
         public void ResidentSelector(ExdCsvReader.CMResident[] residents)
         {
@@ -586,6 +585,80 @@ namespace ConceptMatrix.Views
             }
         }
 
+        private int GetGearValue(int @base, int variant) =>
+            (@base << 0) + (variant << 16);
+
+        private ulong GetWeaponValue(int @base, int variant, int model) =>
+            ((ulong)@base << 0) + ((ulong)variant << 16) + ((ulong)model << 32);
+
+        private void FindItemName()
+        {
+            // Ensure we have a valid category selected.
+            if (CategoryBox.SelectedItem == null)
+                return;
+
+            // Filter for finding current item name.
+            Func<ExdCsvReader.CMItem, bool> filter;
+
+            switch ((ItemCategory)CategoryBox.SelectedIndex)
+            {
+                case ItemCategory.MainHand:
+                    filter = i => i.ModelMain == $"{CharacterDetails.Job.value}, {CharacterDetails.WeaponBase.value}, {CharacterDetails.WeaponV.value}, 0" && i.Type == ItemType.Wep;
+                    break;
+                case ItemCategory.OffHand:
+                    filter = i => i.ModelMain == $"{CharacterDetails.Offhand.value}, {CharacterDetails.OffhandBase.value}, {CharacterDetails.OffhandV.value}, 0" && (i.Type == ItemType.Wep || i.Type == ItemType.Shield);
+                    break;
+                case ItemCategory.Head:
+                    filter = i => i.ModelMain == $"{CharacterDetails.HeadPiece.value}, {CharacterDetails.HeadV.value}, 0, 0" && i.Type == ItemType.Head;
+                    break;
+                case ItemCategory.Body:
+                    filter = i => i.ModelMain == $"{CharacterDetails.Chest.value}, {CharacterDetails.ChestV.value}, 0, 0" && i.Type == ItemType.Body;
+                    break;
+                case ItemCategory.Arms:
+                    filter = i => i.ModelMain == $"{CharacterDetails.Arms.value}, {CharacterDetails.ArmsV.value}, 0, 0" && i.Type == ItemType.Hands;
+                    break;
+                case ItemCategory.Legs:
+                    filter = i => i.ModelMain == $"{CharacterDetails.Legs.value}, {CharacterDetails.LegsV.value}, 0, 0" && i.Type == ItemType.Legs;
+                    break;
+                case ItemCategory.Feet:
+                    filter = i => i.ModelMain == $"{CharacterDetails.Feet.value}, {CharacterDetails.FeetVa.value}, 0, 0" && i.Type == ItemType.Feet;
+                    break;
+                case ItemCategory.Neck:
+                    filter = i => i.ModelMain == $"{CharacterDetails.Neck.value}, {CharacterDetails.NeckVa.value}, 0, 0" && i.Type == ItemType.Neck;
+                    break;
+                case ItemCategory.Wrist:
+                    filter = i => i.ModelMain == $"{CharacterDetails.Wrist.value}, {CharacterDetails.WristVa.value}, 0, 0" && i.Type == ItemType.Wrists;
+                    break;
+                case ItemCategory.Ears:
+                    filter = i => i.ModelMain == $"{CharacterDetails.Ear.value}, {CharacterDetails.EarVa.value}, 0, 0" && i.Type == ItemType.Ears;
+                    break;
+                case ItemCategory.RightRing:
+                    filter = i => i.ModelMain == $"{CharacterDetails.RFinger.value}, {CharacterDetails.RFingerVa.value}, 0, 0" && i.Type == ItemType.Ring;
+                    break;
+                case ItemCategory.LeftRing:
+                    filter = i => i.ModelMain == $"{CharacterDetails.LFinger.value}, {CharacterDetails.LFingerVa.value}, 0, 0" && i.Type == ItemType.Ring;
+                    break;
+                default:
+                    return;
+            }
+
+            try
+            {
+                // Attempt to find item with the filter.
+                var found = CharacterDetailsView.dataProvider.Items.ToArray().First(filter);
+                CurrentlyEquippedName.Content = found.Name;
+            }
+            catch
+            {
+                // If nothing matches set it to None.
+                CurrentlyEquippedName.Content = "None";
+            }
+
+        }
+
+        /// <summary>
+        /// Displays and filters items in the datagrid.
+        /// </summary>
         private void SearchForItem()
         {
             if (CategoryBox.SelectedItem == null)
@@ -594,14 +667,16 @@ namespace ConceptMatrix.Views
 
             EquipBox.Items.Clear();
 
+            // Get the selected tag from the combobox.
             var selectedTag = ((ComboBoxItem)ClassBox.SelectedItem).Tag.ToString();
+            // Localized version of tag.
             var selectedTagLocalized = ((ComboBoxItem)ClassBox.Items[ClassBox.SelectedIndex]).Content.ToString();
 
             foreach (var item in _items.Where(g => g.Name.ToLower().Contains(filter)))
             {
                 if (CategoryBox.SelectedIndex > 11)
                 {
-                    EquipBox.Items.Add(new CMItem
+                    EquipBox.Items.Add(new ExdCsvReader.CMItem
                     {
                         Name = item.Name,
                         ModelMain = item.ModelMain,
@@ -644,13 +719,13 @@ namespace ConceptMatrix.Views
                                 continue;
                     }
 
-                    EquipBox.Items.Add(new CMItem
+                    EquipBox.Items.Add(new ExdCsvReader.CMItem
                     {
                         Name = item.Name.ToString(),
                         ModelMain = item.ModelMain,
                         ModelOff = item.ModelOff,
                         Type = item.Type,
-                        Icon = item.Icon.GetImage()
+                        Icon = item.Icon
                     });
                 }
             }
