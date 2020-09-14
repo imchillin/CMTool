@@ -162,7 +162,7 @@ namespace ConceptMatrix.ViewModel
         public static void ShutDownStuff()
         {
             worker.CancelAsync();
-            threadWriting.worker.CancelAsync();
+            threadWriting?.worker.CancelAsync();
             characterDetails = null;
             mediator = null;
             threadWriting = null;
@@ -176,7 +176,7 @@ namespace ConceptMatrix.ViewModel
         {
             // Local stopwatch used for timing the startup lumina processes.
             var sw = Stopwatch.StartNew();
-
+            
             Task.Run(() =>
             {
                 var races = from r in lumina.GetExcelSheet<Race>() select r.Feminine.DefaultIfEmpty("None");
@@ -226,19 +226,27 @@ namespace ConceptMatrix.ViewModel
             });
             Task.Run(() =>
             {
-                var weatherList = from w in lumina.GetExcelSheet<Weather>()
-                                  select new ExdCsvReader.CMWeather
-                                  {
-                                      Id = (byte)w.RowId,
-                                      Name = w.Name.DefaultIfEmpty("None"),
-                                      Icon = lumina.GetIcon(w.Icon).GetImage()
-                                  };
-
-                App.Current.Dispatcher.Invoke(() =>
+                try
                 {
-                    worldView.ForceWeatherBox.ItemsSource = weatherList;
-                    worldView.WeatherBox.ItemsSource = weatherList;
-                });
+
+                    var weatherList = from w in lumina.GetExcelSheet<Weather>()
+                                      select new ExdCsvReader.CMWeather
+                                      {
+                                          Id = w.RowId,
+                                          Name = w.Name.DefaultIfEmpty("None"),
+                                          Icon = lumina.GetIcon(w.Icon).GetImage()
+                                      };
+
+                    App.Current.Dispatcher.Invoke(() =>
+                    {
+                        worldView.ForceWeatherBox.ItemsSource = weatherList;
+                        worldView.WeatherBox.ItemsSource = weatherList;
+                    });
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("There was a problem fetching the weather list!");
+                }
             });
             Task.Run(() =>
             {

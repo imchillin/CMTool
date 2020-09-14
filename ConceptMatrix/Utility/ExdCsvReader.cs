@@ -96,7 +96,7 @@ namespace ConceptMatrix.Utility
 
 		public class CMWeather
 		{
-			public byte Id { get; set; }
+			public uint Id { get; set; }
 			public string Name { get; set; }
 
 			public ImageSource Icon { get; set; }
@@ -238,7 +238,8 @@ namespace ConceptMatrix.Utility
 		{
 			try
 			{
-				this.Statuses = from s in MainViewModel.lumina.GetExcelSheet<Status>()
+				var statusSheet = MainViewModel.lumina.GetExcelSheet<Status>();
+				this.Statuses = from s in statusSheet
 								where s.VFX.Row != 0 || s.RowId == 0
 								select new CMStatus
 								{
@@ -412,22 +413,29 @@ namespace ConceptMatrix.Utility
 		
 		public void MakeItemList()
 		{
-			var itemSheet = MainViewModel.lumina.GetExcelSheet<Item>();
+			try
+			{
+				var itemSheet = MainViewModel.lumina.GetExcelSheet<Item>();
 
-			Items = new List<CMItem>();
+				Items = new List<CMItem>();
 
-			foreach (var i in itemSheet)
-				if (i.EquipSlotCategory.Row > 0)
-					Items.Add(new CMItem
-					{
-						Index = (int)i.RowId,
-						Name = i.Name,
-						ClassJobCategory = i.ClassJobCategory.Value.Name,
-						Type = AsType((int)i.ItemUICategory.Row),
-						Icon = MainViewModel.lumina.GetIcon(i.Icon),
-						ModelMain = i.ModelMain.AsQuad().ToString(),
-						ModelOff = i.ItemUICategory.Row == 11 ? i.ModelMain.AsQuad().ToString() : i.ModelSub.AsQuad().ToString()
-					});
+				foreach (var i in itemSheet)
+					if (i.EquipSlotCategory.Row > 0)
+						Items.Add(new CMItem
+						{
+							Index = (int)i.RowId,
+							Name = i.Name,
+							ClassJobCategory = i.ClassJobCategory.Value.Name,
+							Type = AsType((int)i.ItemUICategory.Row),
+							Icon = MainViewModel.lumina.GetIcon(i.Icon),
+							ModelMain = i.ModelMain.AsQuad().ToString(),
+							ModelOff = i.ItemUICategory.Row == 11 ? i.ModelMain.AsQuad().ToString() : i.ModelSub.AsQuad().ToString()
+						});
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
 		}
 
 		public void MakeResidentList()

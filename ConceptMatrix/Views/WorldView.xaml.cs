@@ -299,8 +299,7 @@ namespace ConceptMatrix.Views
                     return;
 
                 var selectedWeather = WeatherBox.SelectedItem as ExdCsvReader.CMWeather;
-
-                CharacterDetails.Weather.value = selectedWeather.Id;
+                CharacterDetails.Weather.value = (byte)selectedWeather.Id;
                 var hexValue = selectedWeather.Id.ToString("X");
 
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.WeatherAddress, Settings.Instance.Character.Weather), "byte", hexValue);
@@ -1186,7 +1185,7 @@ namespace ConceptMatrix.Views
                 if (ForceWeatherBox.SelectedIndex >= 0)
                 {
                     var Value = (ExdCsvReader.CMWeather)ForceWeatherBox.SelectedItem;
-                    CharacterDetails.ForceWeather.value = Value.Id;
+                    CharacterDetails.ForceWeather.value = (ushort)Value.Id;
                     m.writeMemory(GAS(MemoryManager.Instance.GposeFilters, c.ForceWeather), "byte", Value.Id.ToString());
                 }
             }
