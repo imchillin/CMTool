@@ -489,8 +489,8 @@ namespace ConceptMatrix.Utility
 					gear.ModelType = (int)npc.ModelChara.Row;
 					gear.Customize = customize.ToArray();
 
-					WepTuple GetWeaponTuple(ulong model, Stain dye) => new WepTuple((ushort)model, (ushort)model >> 16, (ushort)model >> 32, (int)dye.RowId);
-					GearTuple GetGearTuple(uint model, Stain dye = null) => new GearTuple((ushort)model, (ushort)model >> 16, dye == null ? 0 : (int)dye.RowId);
+					WepTuple GetWeaponTuple(ulong model, Stain dye) => new WepTuple((short)model, (short)(model >> 16), (short)(model >> 32), (int)dye.RowId);
+					GearTuple GetGearTuple(uint model, Stain dye = null) => new GearTuple((short)model, (short)(model >> 16), dye == null ? 0 : (int)dye.RowId);
 
 					if (npc.NpcEquip.Row > 0)
 					{
