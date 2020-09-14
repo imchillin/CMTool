@@ -29,6 +29,7 @@ namespace ConceptMatrix.Utility
         }
         #endregion
         public string LastUpdated { get; set; }
+		public string NewLastUpdated { get; set; }
         public string AoBOffset { get; set; }
         public string GposeOffset { get; set; }
         public string GposeEntityOffset { get; set; }

@@ -311,7 +311,10 @@ namespace ConceptMatrix.ViewModel
                     var jsonStr = wc.DownloadString(@"https://raw.githubusercontent.com/imchillin/CMTool/master/ConceptMatrix/" + file);
                     var offset = JsonConvert.DeserializeObject<Settings>(jsonStr);
 
-                    if (string.Compare(offset.LastUpdated, Settings.Instance.LastUpdated) > 0)
+                    if (Settings.Instance.NewLastUpdated == null)
+                        Settings.Instance.NewLastUpdated = Settings.Instance.LastUpdated;
+
+                    if (string.Compare(offset.NewLastUpdated, Settings.Instance.NewLastUpdated) > 0)
                     {
                         File.WriteAllText($"./{file}", jsonStr);
                         Settings.Instance = offset;

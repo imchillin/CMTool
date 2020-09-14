@@ -1,5 +1,6 @@
 {
-  "LastUpdated": "5.31f",
+  "LastUpdated": "5.31f", // bad legacy support
+  "NewLastUpdated":  "5.31g",
   "CameraOffset": "1D09BA0",
   "GposeOffset": "1D09DB0",
   "GposeEntityOffset": "1D0B190",
