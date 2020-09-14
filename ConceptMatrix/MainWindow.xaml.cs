@@ -181,10 +181,6 @@ namespace ConceptMatrix
 
             if (!Directory.Exists(SaveSettings.Default.GearsetsDirectory))
                 Directory.CreateDirectory(SaveSettings.Default.GearsetsDirectory);
-
-            // CharacterDetailsView._exdProvider.MakeCharaMakeFeatureList();
-            // CharacterDetailsView._exdProvider.MakeCharaMakeFeatureFacialList();
-            // CharacterDetailsView._exdProvider.MakeTerritoryTypeList();
         }
         private void LoadModel(bool check = false)
         {
@@ -246,7 +242,7 @@ namespace ConceptMatrix
             var GameList = new List<ProcessLooker.Game>();
             var processlist = Process.GetProcesses();
             var processCheck = 0;
-            foreach (Process p in processlist)
+            foreach (var p in processlist)
             {
                 if (p.ProcessName.ToLower().Contains("ffxiv_dx11"))
                 {
