@@ -1,5 +1,5 @@
 {
-  "LastUpdated": "5.21",
+  "LastUpdated": "5.21a",
   "CameraOffset": "1C5E270",
   "GposeOffset": "1C5E458",
   "GposeEntityOffset": "1C605A8",
@@ -18,6 +18,7 @@
   "SkeletonOffset4": "137F5C0",
   "SkeletonOffset5": "137F53B",
   "SkeletonOffset6": "13806ED",
+  "SkeletonOffset7": "1380668",
   "PhysicsOffset": "37A118",
   "PhysicsOffset2": "37A10F",
   "PhysicsOffset3": "37A122",
