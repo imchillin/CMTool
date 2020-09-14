@@ -492,16 +492,16 @@ namespace ConceptMatrix.Views
         private void SearchModelBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             var filter = SearchModelBox.Text.ToLower();
-            ModelBox.Items.Clear();
-            foreach (var m in CharacterDetailsView.dataProvider.Monsters.Where(g => g.Name.ToLower().Contains(filter)))
-                if (m.Real == true)
-                {
-                    ModelBox.Items.Add(new ExdCsvReader.CMMonster
-                    {
-                        Index = Convert.ToInt32(m.Index),
-                        Name = m.Name.ToString()
-                    });
-                }
+
+            var filtered = from m in CharacterDetailsView.dataProvider.Monsters
+                           where m.Name.ToLower().Contains(filter) && m.Real
+                           select new ExdCsvReader.CMMonster
+                           {
+                               Index = Convert.ToInt32(m.Index),
+                               Name = m.Name.ToString()
+                           };
+
+            ModelBox.ItemsSource = filtered;
         }
 
         private void AnimatedTabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
