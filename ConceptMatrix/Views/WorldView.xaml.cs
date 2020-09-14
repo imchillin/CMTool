@@ -235,7 +235,7 @@ namespace ConceptMatrix.Views
         }
         private void TimeControlUpDown_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
-
+            
         }
         private void TimeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {

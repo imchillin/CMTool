@@ -366,7 +366,7 @@ namespace ConceptMatrix.ViewModel
                 Thread.Sleep(50);
                 // check if our memory manager is set /saving
                 if (!MainWindow.CurrentlySaving)
-                    mediator.SendWork();
+                    mediator?.SendWork();
             }
         }
 
