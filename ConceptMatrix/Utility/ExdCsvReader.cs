@@ -548,8 +548,8 @@ namespace ConceptMatrix.Utility
 			}
             catch (Exception)
             {
-                TerritoryTypes = null;
-            }
+				MessageBox.Show("Error occured while loading TerritoryType!", App.ToolName, MessageBoxButton.OK, MessageBoxImage.Error);
+			}
         }
 
 		public void MakePropList()

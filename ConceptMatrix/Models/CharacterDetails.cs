@@ -76,6 +76,8 @@ namespace ConceptMatrix.Models
 
         [JsonIgnore]
         public string TerritoryName { get; set; }
+        [JsonIgnore]
+        public int Territory { get; set; }
 
         [JsonIgnore] public bool IsEnabled { get; set; }
         [JsonIgnore] public bool GposeMode { get; set; }
@@ -261,7 +263,6 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<byte> Weather { get; set; }
         [JsonIgnore] public Address<ushort> ForceWeather { get; set; }
         [JsonIgnore] public Address<byte> EntityType { get; set; }
-        [JsonIgnore] public Address<int> Territory { get; set; }
         [JsonIgnore] public Address<short> DataPath { get; set; }
         [JsonIgnore] public Address<short> NPCName { get; set; }
         [JsonIgnore] public Address<short> NPCModel { get; set; }
@@ -336,7 +337,6 @@ namespace ConceptMatrix.Models
             TestArray = new Address<string>();
             EntityType = new Address<byte>();
             FreezeFacial = new Address<float>();
-            Territory = new Address<int>();
             DataPath = new Address<short>();
             DataHead = new Address<byte>();
             NPCName = new Address<short>();

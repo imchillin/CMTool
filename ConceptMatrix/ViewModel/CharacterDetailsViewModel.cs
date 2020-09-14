@@ -120,8 +120,8 @@ namespace ConceptMatrix.ViewModel
         {
             try
             {
-                CharacterDetails.Territory.value = m.readInt(GAS(MemoryManager.Instance.TerritoryAddress, c.Territory));
-                CharacterDetails.TerritoryName = Extensions.TerritoryName(CharacterDetails.Territory.value);
+                CharacterDetails.Territory = m.readInt(MemoryManager.Instance.TerritoryAddress);
+                CharacterDetails.TerritoryName = Extensions.TerritoryName(CharacterDetails.Territory);
                 if (CharacterDetails.GposeMode)
                 {
                     if (CharacterDetails.TargetModeActive)
