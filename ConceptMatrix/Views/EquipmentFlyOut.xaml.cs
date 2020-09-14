@@ -593,39 +593,40 @@ namespace ConceptMatrix.Views
             var filter = SearchModelBox.Text.ToLower();
 
             EquipBox.Items.Clear();
+
             var selectedTag = ((ComboBoxItem)ClassBox.SelectedItem).Tag.ToString();
-            foreach (var game in _items.Where(g => g.Name.ToLower().Contains(filter)))
+            var selectedTagLocalized = ((ComboBoxItem)ClassBox.Items[ClassBox.SelectedIndex]).Content.ToString();
+
+            foreach (var item in _items.Where(g => g.Name.ToLower().Contains(filter)))
             {
                 if (CategoryBox.SelectedIndex > 11)
                 {
                     EquipBox.Items.Add(new CMItem
                     {
-                        Name = game.Name,
-                        ModelMain = game.ModelMain,
-                        ModelOff = game.ModelOff,
-                        Type = game.Type,
+                        Name = item.Name,
+                        ModelMain = item.ModelMain,
+                        ModelOff = item.ModelOff,
+                        Type = item.Type,
                         Icon = null
                     });
                 }
                 else
                 {
-                    if (MainViewModel.RegionType == "Live" && SaveSettings.Default.Language == "zh"
-                        || MainViewModel.RegionType == "Live" && SaveSettings.Default.Language == "ko")
+                    if (MainViewModel.RegionType == "Live" && SaveSettings.Default.Language == "zh" || MainViewModel.RegionType == "Live" && SaveSettings.Default.Language == "ko")
                     {
                         if (ClassBox.SelectedIndex != 0)
                         {
                             if (CategoryBox.SelectedIndex != 0 && CategoryBox.SelectedIndex != 1)
                             {
                                 if (ClassBox.SelectedIndex == 4)
-                                {
-                                    if (!game.ClassJobCategory.Equals(selectedTag)) continue;
-                                }
-                                else if (!game.ClassJobCategory.Contains(selectedTag)) continue;
+                                    if (!item.ClassJobCategory.Equals(selectedTag))
+                                        continue;
+                                else if (!item.ClassJobCategory.Contains(selectedTag))
+                                    continue;
                             }
                             else if (ClassBox.SelectedIndex >= 7)
-                            {
-                                if (!game.ClassJobCategory.Contains(selectedTag)) continue;
-                            }
+                                if (!item.ClassJobCategory.Contains(selectedTag))
+                                    continue;
                         }
                     }
                     else if (ClassBox.SelectedIndex != 0)
@@ -633,24 +634,23 @@ namespace ConceptMatrix.Views
                         if (CategoryBox.SelectedIndex != 0 && CategoryBox.SelectedIndex != 1)
                         {
                             if (ClassBox.SelectedIndex == 4)
-                            {
-                                if (!game.ClassJobCategory.Equals(ClassBox.Text)) continue;
-                            }
-                            else if (!game.ClassJobCategory.Contains(ClassBox.Text)) continue;
+                                if (!item.ClassJobCategory.Equals(selectedTagLocalized))
+                                    continue;
+                            else if (!item.ClassJobCategory.Contains(selectedTagLocalized))
+                                continue;
                         }
                         else if (ClassBox.SelectedIndex >= 7)
-                        {
-                            if (!game.ClassJobCategory.Contains(ClassBox.Text)) continue;
-                        }
+                            if (!item.ClassJobCategory.Contains(selectedTagLocalized))
+                                continue;
                     }
 
                     EquipBox.Items.Add(new CMItem
                     {
-                        Name = game.Name.ToString(),
-                        ModelMain = game.ModelMain,
-                        ModelOff = game.ModelOff,
-                        Type = game.Type,
-                        Icon = game.Icon.GetImage()
+                        Name = item.Name.ToString(),
+                        ModelMain = item.ModelMain,
+                        ModelOff = item.ModelOff,
+                        Type = item.Type,
+                        Icon = item.Icon.GetImage()
                     });
                 }
             }
@@ -704,6 +704,7 @@ namespace ConceptMatrix.Views
             {
                 if (ClassBox.SelectedIndex < 0) return;
                 SaveSettings.Default.ClassIndex = ClassBox.SelectedIndex;
+                SearchForItem();
             }
         }
 
