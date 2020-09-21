@@ -7,8 +7,11 @@ using Microsoft.Win32;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -17,28 +20,95 @@ using System.Windows.Media.Media3D;
 
 namespace ConceptMatrix.Views
 {
+    public class FiltersDetails : BaseModel
+    {
+        public Address<string> FilterAoB { get; set; }
+    }
+
     /// <summary>
     /// Interaction logic for CharacterDetailsView3.xaml
     /// </summary>
-    public partial class WorldView : UserControl
+    public partial class WorldView : UserControl, INotifyPropertyChanged
     {
-        public class FiltersDetails : BaseModel
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private bool timeIsFrozen;
+        public bool TimeIsFrozen
         {
-            public Address<string> FilterAoB { get; set; }
+            get => timeIsFrozen;
+            set
+            {
+                WriteTimeFrozen(value);
+                timeIsFrozen = value;
+                OnPropertyChanged();
+            }
         }
+
+        private string timeString;
+        public string TimeString { get => timeString; set { timeString = value; OnPropertyChanged(); } }
+
+        private long frozenTime;
+        public long FrozenTime { get => frozenTime; set { frozenTime = value; OnPropertyChanged(); } }
+
+        protected void OnPropertyChanged([CallerMemberName] string name = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+
         private bool isUserInteraction;
+
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
+
         public WorldView()
         {
             InitializeComponent();
             if (SaveSettings.Default.HasBackground == false)
                 WorldBG.Opacity = 0;
             MainViewModel.worldView = this;
+            DataContext = this;
+            // Create a worker because the mediator should get something else to do...
+            MainViewModel.mediator.Work += this.TimeWorker;
         }
 
-		#region Stupid ass shit sick of these dumb names
+        private void WriteTimeFrozen(bool frozen)
+        {
+            var on = new byte[] { 0x48, 0x89, 0x83, 0x08, 0x16, 0x00, 0x00 };
+            var off = new byte[] { 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 };
 
-		private void MaxZoomChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
+            if (MemoryManager.Instance.TimeStopAsm != 0)
+            {
+                var m = MemoryManager.Instance.MemLib;
+                m.writeBytes(MemoryManager.Instance.TimeStopAsm.ToString("X"), frozen ? off : on);
+            }
+        }
+
+        private void TimeWorker()
+        {
+            if (MemoryManager.Instance.TimeAddress == null)
+                return;
+
+            var m = MemoryManager.Instance.MemLib;
+
+            try
+            {
+                // Get the structure pointer
+                var timeStructPtr = m.readLong(MemoryManager.Instance.TimeAddress);
+
+                // Get the current time.
+                var worldTime = m.readLong($"{timeStructPtr:X}+{Settings.Instance.Character.MovingTime}");
+                worldTime %= 86400;
+
+                if (TimeIsFrozen)
+                    m.writeBytes($"{timeStructPtr:X}+{Settings.Instance.Character.MovingTime}", BitConverter.GetBytes(FrozenTime));
+                else
+                    FrozenTime = worldTime;
+
+                var time = TimeSpan.FromSeconds(FrozenTime);
+                TimeString = string.Format("{0:D2}:{1:D2}", time.Hours, time.Minutes);
+            }
+            catch { }
+        }
+
+        #region Stupid ass shit sick of these dumb names
+
+        private void MaxZoomChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (MaxZoom.Value.HasValue)
                 MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.Max), "float", MaxZoom.Value.ToString());
@@ -221,7 +291,7 @@ namespace ConceptMatrix.Views
         private void Weather_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
         {
             if (Weather.Value.HasValue)
-                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.WeatherAddress, Settings.Instance.Character.Weather), "byte", Weather.Value.ToString());
+                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.WeatherAddress, Settings.Instance.Character.Weather), "byte", Convert.ToByte(Weather.Value).ToString("X"));
             Weather.ValueChanged -= Weather_ValueChanged;
         }
 
@@ -231,38 +301,6 @@ namespace ConceptMatrix.Views
             {
                 Weather.ValueChanged -= Weather_ValueChanged;
                 Weather.ValueChanged += Weather_ValueChanged;
-            }
-        }
-        private void TimeControlUpDown_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
-        {
-            
-        }
-        private void TimeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            TimeControlUpDown.Value = TimeSlider.Value;
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.TimeAddress, Settings.Instance.Character.TimeControl), "int", TimeControlUpDown.Value.ToString());
-            TimeSlider.ValueChanged -= TimeSlider_ValueChanged;
-        }
-        private void TimeVA(object sender, RoutedPropertyChangedEventArgs<double?> e)
-        {
-            if (TimeControlUpDown.Value.HasValue)
-            {
-                TimeSlider.Value = (double)TimeControlUpDown.Value;
-                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.TimeAddress, Settings.Instance.Character.TimeControl), "int", TimeControlUpDown.Value.ToString());
-            }
-            TimeControlUpDown.ValueChanged -= TimeVA;
-        }
-        private void Time_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
-        {
-            if (TimeSlider.IsMouseOver || TimeSlider.IsKeyboardFocusWithin)
-            {
-                TimeSlider.ValueChanged -= TimeSlider_ValueChanged;
-                TimeSlider.ValueChanged += TimeSlider_ValueChanged;
-            }
-            if (TimeControlUpDown.IsMouseOver || TimeControlUpDown.IsKeyboardFocusWithin)
-            {
-                TimeControlUpDown.ValueChanged -= TimeVA;
-                TimeControlUpDown.ValueChanged += TimeVA;
             }
         }
 
@@ -310,7 +348,7 @@ namespace ConceptMatrix.Views
         // Ensures that any updates to the selection made by mutating the items doesn't cause a memory write.
         private void WeatherBox_PreviewMouseDown(object sender, MouseButtonEventArgs e) => isUserInteraction = true;
 
-        private void Filters_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void Filters_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (Filters.SelectedItem == null) return;
             if (Filters.IsKeyboardFocusWithin || Filters.IsMouseOver)
@@ -898,12 +936,6 @@ namespace ConceptMatrix.Views
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.CharacterRenderAddress, "bytes", "0xE9 0xB8 0x00 0x00 0x00");
         }
 
-        private void TimeButton_Click(object sender, RoutedEventArgs e)
-        {
-            TimeSlider.Value = 0;
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.TimeAddress, Settings.Instance.Character.TimeControl), "int", "0");
-        }
-
         private void ResetCams_Click(object sender, RoutedEventArgs e)
         {
             CharacterDetails.CameraHeight2.value = 0;
@@ -939,7 +971,7 @@ namespace ConceptMatrix.Views
 
         private void Render_Click(object sender, RoutedEventArgs e)
         {
-            var old = System.BitConverter.GetBytes(MemoryManager.Instance.MemLib.read2Byte(MemoryManager.Instance.CharacterRenderAddress2));
+            var old = BitConverter.GetBytes(MemoryManager.Instance.MemLib.read2Byte(MemoryManager.Instance.CharacterRenderAddress2));
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.CharacterRenderAddress2, "bytes", "0x00 0x00");
             System.Threading.Tasks.Task.Delay(50).Wait();
             MemoryManager.Instance.MemLib.writeBytes(MemoryManager.Instance.CharacterRenderAddress2, old);
@@ -1016,6 +1048,7 @@ namespace ConceptMatrix.Views
         #endregion
 
         static public bool FreezeCamAngleSet = false;
+
         private void FreezeCamAngle_Click(object sender, RoutedEventArgs e)
         {
             SetFreezeCamAngle(!FreezeCamAngleSet);
@@ -1186,7 +1219,7 @@ namespace ConceptMatrix.Views
                 {
                     var Value = (ExdCsvReader.CMWeather)ForceWeatherBox.SelectedItem;
                     CharacterDetails.ForceWeather.value = (ushort)Value.Id;
-                    m.writeMemory(GAS(MemoryManager.Instance.GposeFilters, c.ForceWeather), "byte", Value.Id.ToString());
+                    m.writeMemory(GAS(MemoryManager.Instance.GposeFilters, c.ForceWeather), "byte", Value.Id.ToString("X"));
                 }
             }
         }

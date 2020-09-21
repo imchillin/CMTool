@@ -29,7 +29,7 @@ namespace ConceptMatrix.ViewModel
 {
     public class MainViewModel : INotifyPropertyChanged
     {
-        private static Mediator mediator;
+        public static Mediator mediator;
         public static Lumina.Lumina lumina;
 
         public static BackgroundWorker worker;
@@ -116,7 +116,6 @@ namespace ConceptMatrix.ViewModel
                     Initialize(RegionType);
                     MainWindow.HasRead = true;
                 }
-                mediator = new Mediator();
                 MainViewModelX = this;
                 MemoryManager.Instance.MemLib.OpenProcess(gameProcId);
                 LoadSettings(RegionType);
@@ -166,6 +165,9 @@ namespace ConceptMatrix.ViewModel
             characterDetails = null;
             mediator = null;
             threadWriting = null;
+
+            // Turn off the time stop code.
+            MemoryManager.Instance.MemLib.writeBytes(MemoryManager.Instance.TimeStopAsm.ToString("X"), new byte[] { 0x48, 0x89, 0x83, 0x08, 0x16, 0x00, 0x00 });
 
             // Kill the Lumina thread.
             luminaThread.Abort();

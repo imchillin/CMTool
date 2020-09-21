@@ -1,4 +1,4 @@
-using ConceptMatrix.Models;
+﻿using ConceptMatrix.Models;
 using ConceptMatrix.Utility;
 using ConceptMatrix.ViewModel;
 using Microsoft.Win32;
@@ -45,6 +45,9 @@ namespace ConceptMatrix
 
             GetDotNetFromRegistry();
             base.OnStartup(e);
+
+            // This is weird to do here, but this app already sucks.
+            MainViewModel.mediator = new Mediator();
 
             this.Exit += App_Exit;
         }

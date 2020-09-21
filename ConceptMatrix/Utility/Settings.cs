@@ -88,8 +88,10 @@ namespace ConceptMatrix.Utility
         public string JobIco { get; set; }
         public string Race { get; set; }
         public string RenderDistance { get; set; }
-        public string TimeControl { get; set; }
-        public string Weather { get; set; }
+
+		public string MovingTime { get; set; }
+
+		public string Weather { get; set; }
         public string StatusEffect { get; set; }
         public string ForceWeather { get; set; }
         public string Gender { get; set; }

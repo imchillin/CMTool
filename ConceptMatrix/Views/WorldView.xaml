@@ -147,19 +147,49 @@
         <Button Content="{Binding Source={x:Static resx:UIStringsContent.RefreshButton}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="926,421,0,0" VerticalAlignment="Top" Width="165" Click="RefreshButton_Click" Height="28" Padding="0,4"/>
 
         <CheckBox IsChecked="{Binding CharacterDetails.ForceWeather.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.WeatherForce}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.WeatherForceToolTip}}" HorizontalAlignment="Left" Margin="410,454,0,0" VerticalAlignment="Top" Height="28"/>
-        <ComboBox x:Name="ForceWeatherBox" ItemTemplate="{StaticResource cmbTemplate}" SelectedValuePath="Id" SelectedValue="{Binding CharacterDetails.ForceWeather.value}" HorizontalAlignment="Left" Margin="530,454,0,0" VerticalAlignment="Top" Width="142" Height="28" FontSize="11.35" SelectionChanged="ForceWeatherBox_SelectionChanged" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Padding="0">
-            <ComboBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <VirtualizingStackPanel />
-                </ItemsPanelTemplate>
-            </ComboBox.ItemsPanel>
-        </ComboBox>
+		<ComboBox x:Name="ForceWeatherBox" ItemTemplate="{StaticResource cmbTemplate}" SelectedValuePath="Id" SelectedValue="{Binding CharacterDetails.ForceWeather.value}" HorizontalAlignment="Left" Margin="530,454,0,0" VerticalAlignment="Top" Width="142" Height="28" FontSize="11.35" SelectionChanged="ForceWeatherBox_SelectionChanged" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Padding="0">
+			<ComboBox.ItemsPanel>
+				<ItemsPanelTemplate>
+					<VirtualizingStackPanel />
+				</ItemsPanelTemplate>
+			</ComboBox.ItemsPanel>
+		</ComboBox>
 
-        <Slider x:Name="TimeSlider" Value="{Binding Path=CharacterDetails.TimeControl.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="677,359,0,0" VerticalAlignment="Top" Width="234" Maximum="90000" SmallChange="1" Interval="1" Height="28" Minimum="-90000" SourceUpdated="Time_SourceUpdated"/>
-        <Button x:Name="TimeButton" Content="{Binding Source={x:Static resx:UIStringsContent.DefaultTime}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="926,355,0,0" VerticalAlignment="Top" Width="165" Height="28" FontSize="12" Click="TimeButton_Click" Padding="0,4"/>
-        <mah:NumericUpDown x:Name="TimeControlUpDown" Value="{Binding Path=CharacterDetails.TimeControl.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="530,355,0,0" VerticalAlignment="Top" Width="142" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Interval="1"  TextAlignment="Right" SourceUpdated="Time_SourceUpdated" NumericInputMode="Numbers" Maximum="2147483647" Minimum="-2147483648" FontSize="11.35" FontFamily="Sogoe UI"/>
-        <Label Content="{Binding Source={x:Static resx:UIStringsContent.TimeControl}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.TimeControlToolTip}}" HorizontalAlignment="Left" Margin="410,355,0,0" VerticalAlignment="Top" Height="28"/>
-        <TextBox x:Name="BGMTEXT" Style="{StaticResource MaterialDesignTextBox}" Margin="530,388,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="142" TextAlignment="Left" PreviewTextInput="DigitCheckInput" Text="0" Height="28" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" FontSize="11.35" Padding="5,0,0,0"/>
+		<!-- Time Controls -->
+		<CheckBox IsChecked="{Binding Path=TimeIsFrozen}" Content="{Binding Source={x:Static resx:UIStringsContent.TimeControl}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.TimeControlToolTip}}" HorizontalAlignment="Left" Margin="410,355,0,0" VerticalAlignment="Top" Height="28"/>
+		<mah:NumericUpDown x:Name="TimeControlUpDown"
+						   IsEnabled="{Binding Path=TimeIsFrozen}"
+						   Value="{Binding Path=FrozenTime, UpdateSourceTrigger=PropertyChanged}"
+						   HorizontalAlignment="Left"
+						   Margin="530,355,0,0"
+						   VerticalAlignment="Top"
+						   Width="142"
+						   Background="{x:Null}"
+						   BorderThickness="0,0,0,1"
+						   BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"
+						   Interval="1"
+						   TextAlignment="Right"
+						   NumericInputMode="Numbers"
+						   Minimum="0"
+						   Maximum="86400"
+						   FontSize="11.35"
+						   FontFamily="Sogoe UI"/>
+		<Slider x:Name="TimeSlider"
+				IsEnabled="{Binding Path=TimeIsFrozen, UpdateSourceTrigger=PropertyChanged}"
+				Value="{Binding Path=FrozenTime}"
+				HorizontalAlignment="Left"
+				Margin="677,359,0,0"
+				VerticalAlignment="Top"
+				Width="234"
+				Minimum="0"
+				Maximum="86400"
+				SmallChange="1"
+				Interval="1"
+				Height="28"/>
+		<Label Content="{Binding Path=TimeString}" HorizontalAlignment="Left" Margin="926,354,0,0" VerticalAlignment="Top" Width="165" HorizontalContentAlignment="Center" Height="28"/>
+
+
+		<TextBox x:Name="BGMTEXT" Style="{StaticResource MaterialDesignTextBox}" Margin="530,388,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="142" TextAlignment="Left" PreviewTextInput="DigitCheckInput" Text="0" Height="28" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" FontSize="11.35" Padding="5,0,0,0"/>
         <Button x:Name="ApplyButton" Content="{Binding Source={x:Static resx:UIStringsContent.Apply}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="1011,388,0,0" VerticalAlignment="Top" Width="80" Click="ApplyButton_Click" Height="28" Padding="0,4"/>
         <ToggleButton x:Name="RenderButton" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding Path=CharacterDetails.CharacterRender.Activated}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.RenderToggleToolTip}}" Margin="878,485,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28"  IsTabStop="False" Checked="RenderButton_Checked" Unchecked="RenderButton_Unchecked" />
         <Label Content="{Binding Source={x:Static resx:UIStringsContent.RenderLimit}}" HorizontalAlignment="Left" Margin="688,485,0,0" VerticalAlignment="Top" FontSize="14" Height="28"/>
@@ -189,6 +219,6 @@
             </StackPanel>
         </Button>
 
-        <Views:WorldFlyOut x:Name="WorldFlyout" Width="667" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Height="530" Padding="0"/>
-    </Grid>
+		<Views:WorldFlyOut x:Name="WorldFlyout" Width="667" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Height="530" Padding="0"/>
+	</Grid>
 </UserControl>

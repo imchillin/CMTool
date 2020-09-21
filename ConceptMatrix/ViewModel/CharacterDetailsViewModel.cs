@@ -90,6 +90,12 @@ namespace ConceptMatrix.ViewModel
             MemoryManager.Instance.PhysicsAddress3 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.PhysicsOffset3, NumberStyles.HexNumber));
             MemoryManager.Instance.CharacterRenderAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.CharacterRenderOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.CharacterRenderAddress2 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.CharacterRenderOffset2, NumberStyles.HexNumber));
+
+            var m = MemoryManager.Instance.MemLib;
+            var start = m.theProc.MainModule.BaseAddress;
+            var end = start + m.theProc.MainModule.ModuleMemorySize;
+
+            MemoryManager.Instance.TimeStopAsm = m.AoBScan(start.ToInt64(), end.ToInt64(), "48 89 83 08 16 00 00").FirstOrDefault();
         }
 
         /// <summary>
@@ -854,7 +860,6 @@ namespace ConceptMatrix.ViewModel
                 if (!CharacterDetails.StatusEffect.freeze) CharacterDetails.StatusEffect.value = m.read2Byte(GAS(baseAddr, c.StatusEffect));
                 if (!CharacterDetails.Weather.freeze) CharacterDetails.Weather.value = (byte)m.readByte(GAS(MemoryManager.Instance.WeatherAddress, c.Weather));
                 if (!CharacterDetails.ForceWeather.freeze) CharacterDetails.ForceWeather.value = (ushort)m.read2Byte(GAS(MemoryManager.Instance.GposeFilters, c.ForceWeather));
-                CharacterDetails.TimeControl.value = m.readInt(GAS(MemoryManager.Instance.TimeAddress, c.TimeControl));
                 if (!CharacterDetails.HeadPiece.Activated) CharacterDetails.HeadSlot.value = CharacterDetails.HeadPiece.value + "," + CharacterDetails.HeadV.value + "," + CharacterDetails.HeadDye.value;
                 if (!CharacterDetails.Chest.Activated) CharacterDetails.BodySlot.value = CharacterDetails.Chest.value + "," + CharacterDetails.ChestV.value + "," + CharacterDetails.ChestDye.value;
                 if (!CharacterDetails.Arms.Activated) CharacterDetails.ArmSlot.value = CharacterDetails.Arms.value + "," + CharacterDetails.ArmsV.value + "," + CharacterDetails.ArmsDye.value;
