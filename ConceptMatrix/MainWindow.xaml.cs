@@ -314,7 +314,7 @@ namespace ConceptMatrix
                 f.ShowDialog();
                 if (f.Choice == null)
                     return;
-                MainViewModel.ShutDownStuff();
+                MainViewModel.Shutdown();
                 MainViewModel.GameDirectory = f.Choice.GameDirectory;
                 MainViewModel.gameProcId = f.Choice.ID;
                 DataContext = new MainViewModel();
@@ -322,7 +322,7 @@ namespace ConceptMatrix
 
             if (proccessCheck == 1)
             {
-                MainViewModel.ShutDownStuff();
+                MainViewModel.Shutdown();
                 MainViewModel.GameDirectory = GameList[0].GameDirectory;
                 MainViewModel.gameProcId = GameList[0].ID;
                 DataContext = new MainViewModel();

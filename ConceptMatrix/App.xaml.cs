@@ -1,4 +1,4 @@
-﻿using ConceptMatrix.Models;
+using ConceptMatrix.Models;
 using ConceptMatrix.Utility;
 using ConceptMatrix.ViewModel;
 using Microsoft.Win32;
@@ -127,7 +127,7 @@ namespace ConceptMatrix
             if (MainViewModel.posingView.EditModeButton.IsChecked == true)
                 MainViewModel.posingView.EditModeButton.IsChecked = false;
 
-            MainViewModel.ShutDownStuff();
+            MainViewModel.Shutdown();
         }
 
         private void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)

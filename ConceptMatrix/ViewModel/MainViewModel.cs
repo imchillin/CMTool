@@ -159,7 +159,7 @@ namespace ConceptMatrix.ViewModel
             {
             }
         }
-        public static void ShutDownStuff()
+        public static void Shutdown()
         {
             worker.CancelAsync();
             threadWriting?.worker.CancelAsync();
