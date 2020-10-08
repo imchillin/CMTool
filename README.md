@@ -1,4 +1,4 @@
-### Please note that we are working on a new architecture for this tool. You can find this new architecture in https://github.com/imchillin/CM3 .
+### Please note that we are working on a new architecture for this tool. You can find this new architecture in https://github.com/imchillin/Anamnesis .
 
 # CMTool
 
