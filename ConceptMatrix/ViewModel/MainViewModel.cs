@@ -163,7 +163,6 @@ namespace ConceptMatrix.ViewModel
             worker.CancelAsync();
             threadWriting?.worker.CancelAsync();
             characterDetails = null;
-            mediator = null;
             threadWriting = null;
 
             // Turn off the time stop code.

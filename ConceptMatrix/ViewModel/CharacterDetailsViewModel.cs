@@ -1,4 +1,4 @@
-﻿using ConceptMatrix.Commands;
+using ConceptMatrix.Commands;
 using ConceptMatrix.Models;
 using ConceptMatrix.Utility;
 using System;

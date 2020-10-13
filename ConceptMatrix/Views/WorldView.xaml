@@ -156,38 +156,39 @@
 		</ComboBox>
 
 		<!-- Time Controls -->
-		<CheckBox IsChecked="{Binding Path=TimeIsFrozen}" Content="{Binding Source={x:Static resx:UIStringsContent.TimeControl}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.TimeControlToolTip}}" HorizontalAlignment="Left" Margin="410,355,0,0" VerticalAlignment="Top" Height="28"/>
-		<mah:NumericUpDown x:Name="TimeControlUpDown"
-						   IsEnabled="{Binding Path=TimeIsFrozen}"
-						   Value="{Binding Path=FrozenTime, UpdateSourceTrigger=PropertyChanged}"
-						   HorizontalAlignment="Left"
-						   Margin="530,355,0,0"
-						   VerticalAlignment="Top"
-						   Width="142"
-						   Background="{x:Null}"
-						   BorderThickness="0,0,0,1"
-						   BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"
-						   Interval="1"
-						   TextAlignment="Right"
-						   NumericInputMode="Numbers"
-						   Minimum="0"
-						   Maximum="86400"
-						   FontSize="11.35"
-						   FontFamily="Sogoe UI"/>
-		<Slider x:Name="TimeSlider"
-				IsEnabled="{Binding Path=TimeIsFrozen, UpdateSourceTrigger=PropertyChanged}"
-				Value="{Binding Path=FrozenTime}"
-				HorizontalAlignment="Left"
-				Margin="677,359,0,0"
-				VerticalAlignment="Top"
-				Width="234"
-				Minimum="0"
-				Maximum="86400"
-				SmallChange="1"
-				Interval="1"
-				Height="28"/>
-		<Label Content="{Binding Path=TimeString}" HorizontalAlignment="Left" Margin="926,354,0,0" VerticalAlignment="Top" Width="165" HorizontalContentAlignment="Center" Height="28"/>
-
+		<Grid Name="TimeControls">
+			<CheckBox IsChecked="{Binding Path=TimeIsFrozen}" Content="{Binding Source={x:Static resx:UIStringsContent.TimeControl}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.TimeControlToolTip}}" HorizontalAlignment="Left" Margin="410,355,0,0" VerticalAlignment="Top" Height="28"/>
+			<mah:NumericUpDown x:Name="TimeControlUpDown"
+						       IsEnabled="{Binding Path=TimeIsFrozen}"
+						       Value="{Binding Path=FrozenTime, UpdateSourceTrigger=PropertyChanged}"
+						       HorizontalAlignment="Left"
+						       Margin="530,355,0,0"
+						       VerticalAlignment="Top"
+						       Width="142"
+						       Background="{x:Null}"
+						       BorderThickness="0,0,0,1"
+						       BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"
+						       Interval="1"
+						       TextAlignment="Right"
+						       NumericInputMode="Numbers"
+						       Minimum="0"
+						       Maximum="86400"
+						       FontSize="11.35"
+						       FontFamily="Sogoe UI"/>
+			<Slider x:Name="TimeSlider"
+				    IsEnabled="{Binding Path=TimeIsFrozen, UpdateSourceTrigger=PropertyChanged}"
+				    Value="{Binding Path=FrozenTime}"
+				    HorizontalAlignment="Left"
+				    Margin="677,359,0,0"
+				    VerticalAlignment="Top"
+				    Width="234"
+				    Minimum="0"
+				    Maximum="86400"
+				    SmallChange="1"
+				    Interval="1"
+				    Height="28"/>
+			<Label Content="{Binding Path=TimeString}" HorizontalAlignment="Left" Margin="926,354,0,0" VerticalAlignment="Top" Width="165" HorizontalContentAlignment="Center" Height="28"/>
+		</Grid>
 
 		<TextBox x:Name="BGMTEXT" Style="{StaticResource MaterialDesignTextBox}" Margin="530,388,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="142" TextAlignment="Left" PreviewTextInput="DigitCheckInput" Text="0" Height="28" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" FontSize="11.35" Padding="5,0,0,0"/>
         <Button x:Name="ApplyButton" Content="{Binding Source={x:Static resx:UIStringsContent.Apply}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="1011,388,0,0" VerticalAlignment="Top" Width="80" Click="ApplyButton_Click" Height="28" Padding="0,4"/>
@@ -219,6 +220,6 @@
             </StackPanel>
         </Button>
 
-		<Views:WorldFlyOut x:Name="WorldFlyout" Width="667" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Height="530" Padding="0"/>
+		<Views:WorldFlyOut x:Name="WorldFlyout" Width="667" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Collapsed" Height="530" Padding="0"/>
 	</Grid>
 </UserControl>

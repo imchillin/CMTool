@@ -1,4 +1,4 @@
-﻿using ConceptMatrix.Models;
+using ConceptMatrix.Models;
 using ConceptMatrix.Utility;
 using ConceptMatrix.ViewModel;
 using Lumina.Excel.GeneratedSheets;
@@ -62,7 +62,9 @@ namespace ConceptMatrix.Views
             if (SaveSettings.Default.HasBackground == false)
                 WorldBG.Opacity = 0;
             MainViewModel.worldView = this;
-            DataContext = this;
+
+            TimeControls.DataContext = this;
+
             // Create a worker because the mediator should get something else to do...
             MainViewModel.mediator.Work += this.TimeWorker;
         }
