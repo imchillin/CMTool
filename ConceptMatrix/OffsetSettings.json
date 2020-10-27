@@ -1,6 +1,6 @@
 {
-  "LastUpdated": "5.31f", // bad legacy support
-  "NewLastUpdated": "5.35",
+  "LastUpdated": "5.35", // bad legacy support
+  "NewLastUpdated": "5.35h",
   "CameraOffset": "1D0AC20",
   "GposeOffset": "1D0AE30",
   "GposeEntityOffset": "1D0C210",
@@ -13,18 +13,18 @@
   "TerritoryOffset": "1D0ABB8",
   "GposeFilters": "1CE91B8",
   "MusicOffset": "1D295E0",
-  "SkeletonOffset": "1409800", // ROTATION
-  "SkeletonOffset2": "140A92D", // ROTATION
-  "SkeletonOffset3": "1418594", // ROTATION
-  "SkeletonOffset4": "1409810", //SCALE
-  "SkeletonOffset5": "140978B", //POSITION
-  "SkeletonOffset6": "140A93D", // SCALE
-  "SkeletonOffset7": "140A8B8", //POSITION
-  "PhysicsOffset": "383738",
-  "PhysicsOffset2": "38372F",
-  "PhysicsOffset3": "383742",
-  "CharacterRenderOffset": "43AF80",
-  "CharacterRenderOffset2": "43AF76",
+  "SkeletonOffset": "1409920", // ROTATION
+  "SkeletonOffset2": "140AA4D", // ROTATION
+  "SkeletonOffset3": "14186B4", // ROTATION
+  "SkeletonOffset4": "1409930", //SCALE
+  "SkeletonOffset5": "14098AB", //POSITION
+  "SkeletonOffset6": "140AA5D", // SCALE
+  "SkeletonOffset7": "140A9D8", //POSITION
+  "PhysicsOffset": "3836A8",
+  "PhysicsOffset2": "38369F",
+  "PhysicsOffset3": "3836B2",
+  "CharacterRenderOffset": "43AEF0",
+  "CharacterRenderOffset2": "43AEE6",
   "Character": {
     "Name": "30",
     "ActorID": "34",
