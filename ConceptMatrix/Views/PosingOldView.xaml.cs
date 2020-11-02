@@ -3594,8 +3594,13 @@ namespace ConceptMatrix.Views
         {
             MainWindow.CurrentlySaving = true;
             SaveFileDialog dig = new SaveFileDialog();
-            if (!Directory.Exists(SaveSettings.Default.MatrixPoseSaveLoadDirectory)) { System.IO.Directory.CreateDirectory(SaveSettings.Default.MatrixPoseSaveLoadDirectory); }
-            dig.InitialDirectory = SaveSettings.Default.MatrixPoseSaveLoadDirectory;
+            try
+            {
+                if (!Directory.Exists(SaveSettings.Default.MatrixPoseSaveLoadDirectory))
+                    Directory.CreateDirectory(SaveSettings.Default.MatrixPoseSaveLoadDirectory);
+                dig.InitialDirectory = SaveSettings.Default.MatrixPoseSaveLoadDirectory;
+            }
+            catch (Exception) { }
             dig.Filter = "Concept Matrix Pose File(*.cmp)|*.cmp";
             if (dig.ShowDialog() == true)
             {
@@ -4823,8 +4828,13 @@ namespace ConceptMatrix.Views
             DisableTertiary();
             PoseMatrixViewModel.PoseVM.Bone_Flag_Manager();
             OpenFileDialog dig = new OpenFileDialog();
-            if (!Directory.Exists(SaveSettings.Default.MatrixPoseSaveLoadDirectory)) { System.IO.Directory.CreateDirectory(SaveSettings.Default.MatrixPoseSaveLoadDirectory); }
-            dig.InitialDirectory = SaveSettings.Default.MatrixPoseSaveLoadDirectory;
+            try
+            {
+                if (!Directory.Exists(SaveSettings.Default.MatrixPoseSaveLoadDirectory))
+                    Directory.CreateDirectory(SaveSettings.Default.MatrixPoseSaveLoadDirectory);
+                dig.InitialDirectory = SaveSettings.Default.MatrixPoseSaveLoadDirectory;
+            }
+            catch (Exception) { }
             dig.Filter = "Concept Matrix Pose File(*.cmp)|*.cmp";
             dig.DefaultExt = ".cmp";
             if (dig.ShowDialog() == true)
@@ -6086,7 +6096,8 @@ namespace ConceptMatrix.Views
         private void AdvLoadCMP_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dig = new OpenFileDialog();
-            dig.InitialDirectory = SaveSettings.Default.MatrixPoseSaveLoadDirectory;
+            if (Directory.Exists(SaveSettings.Default.MatrixPoseSaveLoadDirectory))
+                dig.InitialDirectory = SaveSettings.Default.MatrixPoseSaveLoadDirectory;
             dig.Filter = "Concept Matrix Pose File(*.cmp)|*.cmp";
             dig.DefaultExt = ".cmp";
             if (dig.ShowDialog() == true)
