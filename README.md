@@ -18,7 +18,7 @@ The tool doesn’t really need much in a way of installation, all you need to do
 
 ### Usage
 
-Make sure to check out the included [wiki](https://github.com/imchillin/CMTool/wiki/) for guides and tutorials on how to use the CMTool. If you have any questions that weren’t answered there, join us on [Discord](https://discord.gg/EenZwsN) and ask for help there.
+Make sure to check out the included [wiki](https://github.com/imchillin/CMTool/wiki/) for guides and tutorials on how to use the CMTool. If you have any questions that weren’t answered there, join us on [Discord](https://discord.com/invite/crystallinemeans) and ask for help there.
 
 ## Authors
 
