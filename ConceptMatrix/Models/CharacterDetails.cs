@@ -290,7 +290,6 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<byte> FilterEnable { get; set; }
         [JsonIgnore] public Address<bool> LoadChecked { get; set; }
         [JsonIgnore] public Address<byte> EmoteIsPlayerFrozen { get; set; }
-        [JsonIgnore] public Address<float> AltCheckPlayerFrozen { get; set; }
         [JsonIgnore] public Address<int> MusicBGM { get; set; }
         [JsonIgnore] public Address<float> CamAngleX { get; set; }
         [JsonIgnore] public Address<float> CamAngleY { get; set; }
@@ -311,7 +310,6 @@ namespace ConceptMatrix.Models
             CamPanX = new Address<float>();
             CamPanY = new Address<float>();
             MusicBGM = new Address<int>();
-            AltCheckPlayerFrozen = new Address<float>();
             EmoteIsPlayerFrozen = new Address<byte>();
             LoadChecked = new Address<bool>();
             HDR = new Address<float>();

@@ -97,17 +97,12 @@
         <Button x:Name="AoBButton" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.Apply}}" HorizontalAlignment="Left" Margin="840,418,0,0" VerticalAlignment="Top" Width="95" Click="AoBButton_Click" Padding="0,4"/>
 
         <!-- Transformation Data -->
-        <GroupBox IsEnabled="False" Header="{Binding Source={x:Static resx:UIStringsContent.TransformationData}}" HorizontalAlignment="Left" VerticalAlignment="Top"  Style="{DynamicResource MaterialDesignGroupBox}" Margin="834,161,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" Height="146" Width="263" />
 
-        <!-- Transformation Name -->
-        <CheckBox IsEnabled="False" IsChecked="{Binding CharacterDetails.NPCName.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.Name}}" HorizontalAlignment="Left" Margin="840,205,0,0" VerticalAlignment="Top" Height="28"/>
-        <mah:NumericUpDown IsEnabled="False" x:Name="NPCNameBox" Value="{Binding CharacterDetails.NPCName.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="928,205,0,0" VerticalAlignment="Top" Width="160" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" TextAlignment="Right" Height="28"/>
+		<!-- Transformation Name -->
 
-        <!-- Transformation Model -->
-        <CheckBox IsEnabled="False" IsChecked="{Binding CharacterDetails.NPCModel.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.NPCModel}}" HorizontalAlignment="Left" Margin="840,235,0,0" VerticalAlignment="Top" Height="28"/>
-        <mah:NumericUpDown IsEnabled="False" x:Name="NPCModelBox" Value="{Binding CharacterDetails.NPCModel.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="928,235,0,0" VerticalAlignment="Top" Width="160" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" TextAlignment="Right" Height="28"/>
+		<!-- Transformation Model -->
 
-        <Label Content="{Binding Source={x:Static resx:UIStringsContent.VisualEffect}}" HorizontalAlignment="Left" Margin="10,474,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="0" Height="40" FontSize="18" FontWeight="Bold"/>
+		<Label Content="{Binding Source={x:Static resx:UIStringsContent.VisualEffect}}" HorizontalAlignment="Left" Margin="10,474,0,0" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="0" Height="40" FontSize="18" FontWeight="Bold"/>
 
         <!-- Wet -->
         <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.Wetness.Activated}" Margin="232,462,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" BorderThickness="1" />

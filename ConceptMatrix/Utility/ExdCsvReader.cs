@@ -240,7 +240,7 @@ namespace ConceptMatrix.Utility
 			{
 				var statusSheet = MainViewModel.lumina.GetExcelSheet<Status>();
 				this.Statuses = from s in statusSheet
-								where s.VFX.Row != 0 || s.RowId == 0
+								where s.VFX != 0 || s.RowId == 0
 								select new CMStatus
 								{
 									Id = (int)s.RowId,

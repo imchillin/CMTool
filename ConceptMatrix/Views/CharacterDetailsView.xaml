@@ -24,9 +24,9 @@
 
     <Grid>
         <Border BorderBrush="Black" BorderThickness="0,0,1,0" HorizontalAlignment="Left" Height="530" Margin="-110,0,0,0" VerticalAlignment="Top" Width="645"/>
-        <Border BorderBrush="Black" BorderThickness="1,1,1,0" HorizontalAlignment="Left" Height="190" Margin="534,340,-1,0" VerticalAlignment="Top" Width="582" Grid.ColumnSpan="2"/>
+		<Border BorderBrush="Black" BorderThickness="1,1,1,0" HorizontalAlignment="Left" Height="190" Margin="534,340,-1,0" VerticalAlignment="Top" Width="582" Grid.ColumnSpan="2"/>
 
-        <!-- FC Tag -->
+		<!-- FC Tag -->
         <CheckBox  IsChecked="{Binding CharacterDetails.FCTag.freeze}" IsEnabled="False" Content="{Binding Source={x:Static resx:UIStringsContent.FreeCompanyTag}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.FreeCompanyToolTip}}" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox Style="{StaticResource MaterialDesignTextBox}" IsEnabled="False" x:Name="FCTagBox" HorizontalAlignment="Left" Height="23" Margin="168,35,0,0" Text="{Binding CharacterDetails.FCTag.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="128"  materialDesign:HintAssist.Hint="{Binding Source={x:Static resx:UIStringsContent.FreeCompanyTagWaterMark}}" FontSize="11.35" MaxLength="6" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
 
@@ -205,8 +205,8 @@
         <Button x:Name="FacePaint_Color" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,347.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="FacePaint_Color_Click"/>
 
         <!-- Voice Type -->
-        <CheckBox IsChecked="{Binding CharacterDetails.Voices.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.VoiceType}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.VoiceTypeToolTip}}" HorizontalAlignment="Left" Margin="311,407,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,407.118,0,0" Text="{Binding CharacterDetails.Voices.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" BorderThickness="0,0,0,1" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+        <CheckBox IsEnabled="False" IsChecked="{Binding CharacterDetails.Voices.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.VoiceType}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.VoiceTypeToolTip}}" HorizontalAlignment="Left" Margin="311,407,0,0" VerticalAlignment="Top" Height="23"/>
+        <TextBox IsEnabled="False" Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,407.118,0,0" Text="{Binding CharacterDetails.Voices.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" BorderThickness="0,0,0,1" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
 
         <!-- Model Type -->
         <CheckBox x:Name="MonsterCheck" IsChecked="{Binding CharacterDetails.ModelType.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.ModelType}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.ModelTypeToolTip}}" HorizontalAlignment="Left" Margin="311,437,0,0" VerticalAlignment="Top" Height="23"/>
@@ -308,18 +308,18 @@
         </Border>
 
         <!-- Idle Anim -->
-        <CheckBox IsChecked="{Binding CharacterDetails.Emote.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.IdleAnim}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.IdleAnimToolTip}}" HorizontalAlignment="Left" Margin="545,375,0,0" VerticalAlignment="Top" Height="28"/>
-        <mah:NumericUpDown x:Name="EmoteBox" Maximum="8800" Minimum="1" Value="{Binding CharacterDetails.Emote.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,375,0,0" VerticalAlignment="Top" Width="115" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" TextAlignment="Right" NumericInputMode="Numbers" SourceUpdated="EmoteBox_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="11.35"/>
-        <Button x:Name="EmoteSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="773,375,0,0" VerticalAlignment="Top" Width="65" Height="28" Click="EmoteSearch_Click"/>
+        <CheckBox IsEnabled="False" IsChecked="{Binding CharacterDetails.Emote.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.IdleAnim}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.IdleAnimToolTip}}" HorizontalAlignment="Left" Margin="545,375,0,0" VerticalAlignment="Top" Height="28"/>
+		<mah:NumericUpDown IsEnabled="False" x:Name="EmoteBox" Maximum="8800" Minimum="1" Value="{Binding CharacterDetails.Emote.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,375,0,0" VerticalAlignment="Top" Width="115" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" TextAlignment="Right" NumericInputMode="Numbers" SourceUpdated="EmoteBox_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="11.35"/>
+        <Button IsEnabled="False" x:Name="EmoteSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="773,375,0,0" VerticalAlignment="Top" Width="65" Height="28" Click="EmoteSearch_Click"/>
 
         <!-- Force Anim -->
-        <CheckBox IsChecked="{Binding CharacterDetails.EmoteOld.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.ForceAnim}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.ForceAnimToolTip}}" HorizontalAlignment="Left" Margin="545,405,0,0" VerticalAlignment="Top" Height="28"/>
-        <mah:NumericUpDown x:Name="EmoteBox2" Maximum="8800" Minimum="1" Value="{Binding CharacterDetails.EmoteOld.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,405,0,0" VerticalAlignment="Top" Width="115" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" TextAlignment="Right" NumericInputMode="Numbers" SourceUpdated="EmoteBox_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="11.35"/>
-        <Button x:Name="EmoteSearch2" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="773,405,0,0" VerticalAlignment="Top" Width="65" Height="28" Click="EmoteOldSearch_Click"/>
+		<CheckBox IsEnabled="False" IsChecked="{Binding CharacterDetails.EmoteOld.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.ForceAnim}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.ForceAnimToolTip}}" HorizontalAlignment="Left" Margin="545,405,0,0" VerticalAlignment="Top" Height="28"/>
+		<mah:NumericUpDown IsEnabled="False" x:Name="EmoteBox2" Maximum="8800" Minimum="1" Value="{Binding CharacterDetails.EmoteOld.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,405,0,0" VerticalAlignment="Top" Width="115" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" TextAlignment="Right" NumericInputMode="Numbers" SourceUpdated="EmoteBox_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="11.35"/>
+		<Button IsEnabled="False" x:Name="EmoteSearch2" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="773,405,0,0" VerticalAlignment="Top" Width="65" Height="28" Click="EmoteOldSearch_Click"/>
 
         <!-- Lock Facial Anim -->
-        <CheckBox IsChecked="{Binding CharacterDetails.FreezeFacial.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.LockFacialAnimation}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.LockFacialAnimationToolTip}}" HorizontalAlignment="Left" Margin="545,465,0,0" VerticalAlignment="Top" Height="28"/>
-        <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.FreezeFacial.Activated}" Margin="705,467,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" />
+        <CheckBox IsEnabled="False" IsChecked="{Binding CharacterDetails.FreezeFacial.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.LockFacialAnimation}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.LockFacialAnimationToolTip}}" HorizontalAlignment="Left" Margin="545,465,0,0" VerticalAlignment="Top" Height="28"/>
+		<ToggleButton IsEnabled="False" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.FreezeFacial.Activated}" Margin="705,467,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" />
 
         <!-- Anim Speed -->
         <CheckBox x:Name="AnimSpeed" IsChecked="{Binding CharacterDetails.EmoteSpeed1.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.AnimSpeed}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.AnimSpeedToolTip}}" HorizontalAlignment="Left" Margin="545,435,0,0" VerticalAlignment="Top" Height="28" IsEnabled="False"/>
@@ -354,6 +354,8 @@
         <!-- Target Status Label -->
         <Label x:Name="FrozenPlayaLabel" x:FieldModifier="public" Content="Targeted Actor is ???" HorizontalAlignment="Left" Height="28" Margin="540,495,0,0" VerticalAlignment="Top" Width="260" FontWeight="Bold" FontSize="14"/>
 
+		<Label Content="DISABLED" Margin="604,413,376,86" FontSize="18" FontWeight="Bold"/>
+		
         <!-- Data Path -->
         <CheckBox IsChecked="{Binding CharacterDetails.DataPath.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.DataPath}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.DataPathToolTip}}" HorizontalAlignment="Left" Margin="545,345,0,0" VerticalAlignment="Top" Height="28"/>
         <ComboBox x:Name="DataPathBox" SelectedValuePath="Tag" SelectedValue="{Binding CharacterDetails.DataPath.value}" HorizontalAlignment="Left" Margin="654,345,0,0" VerticalAlignment="Top" Width="184" Height="28" FontSize="11.35" SelectedIndex="0" SelectionChanged="DataPathBox_SelectionChanged" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
@@ -418,7 +420,7 @@
         <ToggleButton Name="LinkPosition" IsChecked="{Binding CharacterDetails.IsLinked, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="914,187,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Checked="LinkPosition_Checked" Unchecked="LinkPosition_Unchecked" IsEnabled="False" />
 
         <Views:EmoteFlyOut x:Name="EmoteFlyouts" Width="534" HorizontalAlignment="Left" VerticalAlignment="Top" Height="Auto" Visibility="Hidden"/>
-        <Views:SpecialControl x:Name="SpecialControl" Width="579" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Margin="536,0,0,0"/>
+		<Views:SpecialControl x:Name="SpecialControl" Width="579" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Margin="536,0,0,0"/>
 
     </Grid>
 </UserControl>

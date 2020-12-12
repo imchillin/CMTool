@@ -63,7 +63,7 @@ namespace ConceptMatrix.Windows
 
             if (!Directory.Exists(PathX))
             {
-                System.Windows.MessageBox.Show("Could not find CMTool/Saves Directory: " + PathX);
+                MessageBox.Show("Could not find CMTool/Saves Directory: " + PathX);
                 return output;
             }
 
