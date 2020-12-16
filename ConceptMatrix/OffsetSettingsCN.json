@@ -1,30 +1,30 @@
 {
   "LastUpdated": "5.21", // bad legacy support
-  "NewLastUpdated": "5.3",
-  "CameraOffset": "1D04F90", 
-  "GposeOffset": "1D051A0", 
-  "GposeEntityOffset": "1D06580", 
-  "GposeCheckOffset": "1D08D80", 
-  "GposeCheck2Offset": "1D08D60", 
-  "AoBOffset": "1D2CF18", 
-  "TargetOffset": "1D051E0", 
-  "TimeOffset": "1CE5AF0", 
-  "WeatherOffset": "1CBBEB8", 
-  "TerritoryOffset": "1D04F28", 
-  "GposeFilters": "1CE3538", 
-  "MusicOffset": "1D1B728", 
-  "SkeletonOffset": "1406C80", // ROTATION
-  "SkeletonOffset2": "1407DAD", // ROTATION
-  "SkeletonOffset3": "1415A14", // ROTATION
-  "SkeletonOffset4": "1406C90", // SCALE: SkeletonOffset + 0x10
-  "SkeletonOffset5": "1406C0B", // POSITION: SkeletonOffset - 0x75
-  "SkeletonOffset6": "1407DBD", // SCALE: SkeletonOffset2 + 0x10
-  "SkeletonOffset7": "1407D38", // POSITION: SkeletonOffset2 - 0x75
-  "PhysicsOffset": "382E68",
-  "PhysicsOffset2": "382E5F",
-  "PhysicsOffset3": "382E72",
-  "CharacterRenderOffset": "43A6B0",
-  "CharacterRenderOffset2": "43A6A6",
+  "NewLastUpdated": "5.3+",
+  "CameraOffset": "1D04F90",
+  "GposeOffset": "1D051A0",
+  "GposeEntityOffset": "1D06580",
+  "GposeCheckOffset": "1D08D80",
+  "GposeCheck2Offset": "1D08D60",
+  "AoBOffset": "1D2CF18",
+  "TargetOffset": "1D051E0",
+  "TimeOffset": "1CE5AF0",
+  "WeatherOffset": "1CBBEB8",
+  "TerritoryOffset": "1D04F28",
+  "GposeFilters": "1CE3538",
+  "MusicOffset": "1D1B728",
+  "SkeletonOffset": "1406A40", // ROTATION
+  "SkeletonOffset2": "1407B6D", // ROTATION
+  "SkeletonOffset3": "14157D4", // ROTATION
+  "SkeletonOffset4": "1406A50", // SCALE: SkeletonOffset + 0x10
+  "SkeletonOffset5": "14069CB", // POSITION: SkeletonOffset - 0x75
+  "SkeletonOffset6": "1407B7D", // SCALE: SkeletonOffset2 + 0x10
+  "SkeletonOffset7": "1407AF8", // POSITION: SkeletonOffset2 - 0x75
+  "PhysicsOffset": "382B88",
+  "PhysicsOffset2": "382B7F",
+  "PhysicsOffset3": "382B92",
+  "CharacterRenderOffset": "43A3D0",
+  "CharacterRenderOffset2": "43A3C6",
   "Character": {
     "Name": "30",
     "ActorID": "34",
