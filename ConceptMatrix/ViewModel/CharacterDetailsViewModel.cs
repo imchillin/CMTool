@@ -66,35 +66,69 @@ namespace ConceptMatrix.ViewModel
         /// </summary>
         public void FetchOffsets()
         {
-            MemoryManager.Instance.BaseAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.AoBOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.TargetAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.TargetOffset, NumberStyles.HexNumber));
-            MemoryManager.Instance.CameraAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.CameraOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.GposeAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.GposeOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.GposeEntityOffset = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.GposeEntityOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.GposeCheckAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.GposeCheckOffset, NumberStyles.HexNumber));
-            MemoryManager.Instance.TimeAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.TimeOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.WeatherAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.WeatherOffset, NumberStyles.HexNumber));
-            MemoryManager.Instance.TerritoryAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.TerritoryOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.GposeFilters = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.GposeFilters, NumberStyles.HexNumber));
-            MemoryManager.Instance.SkeletonAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.SkeletonOffset, NumberStyles.HexNumber));
-            MemoryManager.Instance.SkeletonAddress2 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.SkeletonOffset2, NumberStyles.HexNumber));
-            MemoryManager.Instance.SkeletonAddress3 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.SkeletonOffset3, NumberStyles.HexNumber));
-            MemoryManager.Instance.SkeletonAddress4 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.SkeletonOffset4, NumberStyles.HexNumber));
-            MemoryManager.Instance.SkeletonAddress5 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.SkeletonOffset5, NumberStyles.HexNumber));
-            MemoryManager.Instance.SkeletonAddress6 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.SkeletonOffset6, NumberStyles.HexNumber));
-            MemoryManager.Instance.SkeletonAddress7 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.SkeletonOffset7, NumberStyles.HexNumber));
-            MemoryManager.Instance.PhysicsAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.PhysicsOffset, NumberStyles.HexNumber));
-            MemoryManager.Instance.PhysicsAddress2 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.PhysicsOffset2, NumberStyles.HexNumber));
-            MemoryManager.Instance.PhysicsAddress3 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.PhysicsOffset3, NumberStyles.HexNumber));
-            MemoryManager.Instance.CharacterRenderAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.CharacterRenderOffset, NumberStyles.HexNumber));
-            MemoryManager.Instance.CharacterRenderAddress2 = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.CharacterRenderOffset2, NumberStyles.HexNumber));
 
             var m = MemoryManager.Instance.MemLib;
-            var start = m.theProc.MainModule.BaseAddress;
+            var start = m.theProc.MainModule.BaseAddress.ToInt64();
             var end = start + m.theProc.MainModule.ModuleMemorySize;
 
-            MemoryManager.Instance.TimeStopAsm = m.AoBScan(start.ToInt64(), end.ToInt64(), "48 89 83 08 16 00 00").FirstOrDefault();
+            // Shorthand function even though I could just make the entire function in this scope I decided not to.
+            string GSAFS(string signature, int skip, int adjust = 0, bool baseOffset = false)
+			{
+                var addr = m.AoBScan(start, end, signature).FirstOrDefault();
+                if (addr == 0)
+                    throw new Exception("Invalid address found!");
+
+                return (GetStaticAddressFromSig(m, addr, skip, baseOffset) + adjust).ToString("X");
+			}
+
+            string ScanText(string signature) => m.AoBScan(start, end, signature).FirstOrDefault().ToString("X");
+
+            // Getting static addresses from assembly.
+            MemoryManager.Instance.BaseAddress = GSAFS("88 91 ?? ?? ?? ?? 48 8D 3D ?? ?? ?? ??", 9, -8);
+            MemoryManager.Instance.CameraAddress = GSAFS("4F 8B B4 C6 ?? ?? ?? ??", 4, 0, true);
+            MemoryManager.Instance.TerritoryAddress = GSAFS("8B 1D ?? ?? ?? ?? 0F 45 D8 39 1D", 2);
+            MemoryManager.Instance.TimeAddress = GSAFS("48 8B 15 ?? ?? ?? ?? 4C 8B 82 18 16 00 00", 3);
+
+            // Skeleton posing addresses.
+            MemoryManager.Instance.SkeletonAddress = ScanText("41 0F 29 5C 12 10");
+            MemoryManager.Instance.SkeletonAddress2 = ScanText("43 0F 29 5C 18 10");
+            MemoryManager.Instance.SkeletonAddress3 = ScanText("0F 29 5E 10 49 8B 73 28");
+            MemoryManager.Instance.SkeletonAddress4 = ScanText("41 0F 29 44 12 20");
+            MemoryManager.Instance.SkeletonAddress5 = ScanText("41 0F 29 24 12");
+            MemoryManager.Instance.SkeletonAddress6 = ScanText("43 0F 29 44 18 20");
+            MemoryManager.Instance.SkeletonAddress7 = ScanText("43 0f 29 24 18");
+
+            // Physics.
+            var physics = m.AoBScan(start, end, "0F 29 48 10 41 0F 28 44 24 20 0F 29 40 20 48 8B 46").FirstOrDefault();
+            MemoryManager.Instance.PhysicsAddress = physics.ToString("X");
+            MemoryManager.Instance.PhysicsAddress2 = (physics - 0x9).ToString("X");
+            MemoryManager.Instance.PhysicsAddress3 = (physics + 0xA).ToString("X");
+
+            // Render limit.
+            var render = m.AoBScan(start, end, "E9 B8 00 00 00 F3 0F 10").FirstOrDefault();
+            MemoryManager.Instance.CharacterRenderAddress = render.ToString("X");
+            MemoryManager.Instance.CharacterRenderAddress2 = (render - 0xA).ToString("X");
+
+            // Cheap hook. (temp?)
+            MemoryManager.Instance.TimeStopAsm = m.AoBScan(start, end, "48 89 83 08 16 00 00").FirstOrDefault();
         }
+
+        // This is SUPER janky but I don't want to spend time implementing something better right now.
+        // This function assumes you know what you're doing and is not going to sanity check anything.
+        private long GetStaticAddressFromSig(Mem m, long address, int skip, bool baseOffset = false)
+		{
+            var read = m.readBytes(new UIntPtr((ulong)address), 8 + skip);
+            var offset = BitConverter.ToInt32(read, skip);
+            if (baseOffset)
+                return m.theProc.MainModule.BaseAddress.ToInt64() + offset;
+            return address + skip + offset + 4;
+		}
 
         /// <summary>
         /// Model property changed
@@ -328,7 +362,7 @@ namespace ConceptMatrix.ViewModel
                             });
                         }
                     }
-                    else if (m.readByte(GAS(MemoryManager.Instance.GposeCheckAddress)) == 1 && m.readByte(GAS(MemoryManager.Instance.GposeCheck2Address)) == 4)
+                    else if (m.readByte(GAS(MemoryManager.Instance.GposeCheckAddress)) == 1)
                     {
                         if (!InGpose)
                         {
