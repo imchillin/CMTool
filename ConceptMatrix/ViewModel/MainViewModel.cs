@@ -79,7 +79,7 @@ namespace ConceptMatrix.ViewModel
                     // Thread for handling Lumina file queueing.
                     luminaThread = new Thread(() =>
                     {
-                        while (true)
+                        while (luminaThread.IsAlive)
                         {
                             lumina.ProcessFileHandleQueue();
                             Thread.Yield();
