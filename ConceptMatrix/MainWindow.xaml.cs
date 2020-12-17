@@ -1156,7 +1156,6 @@ namespace ConceptMatrix
         private void Uncheck_Click(object sender, RoutedEventArgs e)
         {
             CharacterDetails.TimeControl.freeze = false;
-            CharacterDetails.MusicBGM.freeze = false;
             CharacterDetails.Weather.freeze = false;
             CharacterDetails.CZoom.freeze = false;
             CharacterDetails.CameraYAMax.freeze = false;
@@ -1330,7 +1329,7 @@ namespace ConceptMatrix
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Instance.GposeAddress;
             if (TargetButton.IsEnabled == false)
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Instance.GposeEntityOffset;
-            if (MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheckAddress)) == 1 && MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheck2Address)) == 4)
+            if (MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheckAddress)) == 1)
             {
                 MainViewModel.characterView.AnimSpeed.IsEnabled = true;
                 MainViewModel.characterView.EmoteSpeed.IsEnabled = true;

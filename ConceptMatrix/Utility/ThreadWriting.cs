@@ -309,11 +309,6 @@ namespace ConceptMatrix.Utility
                         m.writeBytes(GAS(c.Ear), CharacterDetails.Ear.GetBytes());
                         m.writeBytes(GAS(c.EarVa), CharacterDetails.EarVa.GetBytes());
                     }
-                    if (CharacterDetails.MusicBGM.freeze)
-                    {
-                        m.writeBytes(MemoryManager.GetAddressString(MemoryManager.Instance.MusicOffset, c.Music2), CharacterDetails.MusicBGM.GetBytes());
-                        m.writeBytes(MemoryManager.GetAddressString(MemoryManager.Instance.MusicOffset, c.Music), CharacterDetails.MusicBGM.GetBytes());
-                    }
                     if (CharacterDetails.EmoteSpeed1.freeze)
                     {
                         if (CharacterDetails.GposeMode)

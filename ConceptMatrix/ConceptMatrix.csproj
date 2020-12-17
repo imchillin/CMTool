@@ -238,9 +238,6 @@
     <Compile Include="Views\SpecialControl.xaml.cs">
       <DependentUpon>SpecialControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\WorldFlyOut.xaml.cs">
-      <DependentUpon>WorldFlyOut.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windows\CharacterSaveChooseWindow.xaml.cs">
       <DependentUpon>CharacterSaveChooseWindow.xaml</DependentUpon>
     </Compile>
@@ -343,10 +340,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SpecialControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\WorldFlyOut.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -462,7 +455,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Resources\actiontimeline.csv" />
-    <None Include="Resources\BGM.csv" />
     <None Include="Resources\human.cmp" />
     <None Include="Resources\Item.json" />
     <None Include="Resources\ItemCN.json" />

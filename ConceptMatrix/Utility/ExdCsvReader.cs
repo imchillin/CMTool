@@ -190,14 +190,6 @@ namespace ConceptMatrix.Utility
 			}
 		}
 
-		public class CMBgm
-		{
-			public int Index { get; set; }
-			public string Name { get; set; }
-			public string Location { get; set; }
-			public string Note { get; set; }
-		}
-
 		public List<CMItem> Items = null;
 		public List<CMItem> ItemsProps = null;
 		public List<CMTerritoryType> TerritoryTypes = null;
@@ -206,7 +198,6 @@ namespace ConceptMatrix.Utility
 		public IEnumerable<CMCharaMakeCustomizeFeature> CharaMakeFeatures = null;
 		public List<CMCharaMakeCustomizeFeature2> CharaMakeFeatures2 = null;
 		public List<CMMonster> Monsters = null;
-		public List<CMBgm> BGMs = null;
 		public IEnumerable<CMStatus> Statuses = null;
 		public IEnumerable<CMStain> Stains = null;
 
@@ -603,49 +594,6 @@ namespace ConceptMatrix.Utility
 				catch (Exception)
 				{
 					ItemsProps = null;
-				}
-			}
-		}
-
-		public void BGMList()
-		{
-			BGMs = new List<CMBgm>();
-			{
-				try
-				{
-					using (var parser = new TextFieldParser(new StringReader(Resources.BGM)))
-					{
-						parser.TextFieldType = FieldType.Delimited;
-						parser.SetDelimiters(",");
-						var rowCount = 0;
-						parser.ReadFields();
-						while (!parser.EndOfData)
-						{
-							rowCount++;
-							var bgm = new CMBgm();
-							//Processing row
-							var fields = parser.ReadFields();
-							var fCount = 0;
-							bgm.Index = int.Parse(fields[0]);
-							foreach (var field in fields)
-							{
-								fCount++;
-
-								if (fCount == 2)
-									bgm.Name = field;
-								if (fCount == 3)
-									bgm.Location = field;
-								if (fCount == 4)
-									bgm.Note = field;
-							}
-							BGMs.Add(bgm);
-						}
-					}
-				}
-
-				catch (Exception)
-				{
-					BGMs = null;
 				}
 			}
 		}

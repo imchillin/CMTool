@@ -916,18 +916,6 @@ namespace ConceptMatrix.Views
                 e.Handled = true;
         }
 
-        private void ApplyButton_Click(object sender, RoutedEventArgs e)
-        {
-            CharacterDetails.MusicBGM.value = int.Parse(BGMTEXT.Text);
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.MusicOffset, Settings.Instance.Character.Music2), "int", BGMTEXT.Text);
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.MusicOffset, Settings.Instance.Character.Music), "int", BGMTEXT.Text);
-        }
-
-        private void SearchBGM_Click(object sender, RoutedEventArgs e)
-        {
-            WorldFlyout.IsOpen = !WorldFlyout.IsOpen;
-        }
-
         private void RenderButton_Checked(object sender, RoutedEventArgs e)
         {
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.CharacterRenderAddress, "bytes", "0x90 0x90 0x90 0x90 0x90");

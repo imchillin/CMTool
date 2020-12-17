@@ -34,14 +34,12 @@ namespace ConceptMatrix.Utility
         public string GposeOffset { get; set; }
         public string GposeEntityOffset { get; set; }
         public string GposeCheckOffset { get; set; }
-        public string GposeCheck2Offset { get; set; }
         public string CameraOffset { get; set; }
         public string TimeOffset { get; set; }
         public string WeatherOffset { get; set; }
         public string TerritoryOffset { get; set; }
         public string TargetOffset { get; set; }
         public string GposeFilters { get; set; }
-        public string MusicOffset { get; set; }
         public string SkeletonOffset { get; set; }
         public string SkeletonOffset2 { get; set; }
         public string SkeletonOffset3 { get; set; }
@@ -119,8 +117,6 @@ namespace ConceptMatrix.Utility
         public string LimbalG { get; set; }
         public string LimbalB { get; set; }
         public string RenderToggle { get; set; }
-        public string Music { get; set; }
-        public string Music2 { get; set; }
         public string RHeight { get; set; }
         public string RBust { get; set; }
         public string Highlights { get; set; }
