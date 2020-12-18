@@ -116,7 +116,7 @@ namespace ConceptMatrix.ViewModel
             MemoryManager.Instance.CharacterRenderAddress2 = (render - 0xA).ToString("X");
 
             // Cheap hook. (temp?)
-            MemoryManager.Instance.TimeStopAsm = m.AoBScan(start, end, "48 89 83 08 16 00 00").FirstOrDefault();
+            MemoryManager.Instance.TimeStopAsm = m.AoBScan(start, end, "48 89 83 08 16 00 00 48 69").FirstOrDefault();
         }
 
         // This is SUPER janky but I don't want to spend time implementing something better right now.

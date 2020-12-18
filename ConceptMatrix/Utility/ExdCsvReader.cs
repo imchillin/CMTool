@@ -1,9 +1,9 @@
 ﻿using ConceptMatrix.Properties;
+using ConceptMatrix.Sheets;
 using ConceptMatrix.ViewModel;
 using ConceptMatrix.Views;
 using Lumina.Data.Files;
 using Lumina.Data.Parsing;
-using Lumina.Excel.GeneratedSheets;
 using Lumina.Extensions;
 using Microsoft.VisualBasic.FileIO;
 using Newtonsoft.Json;
@@ -215,7 +215,7 @@ namespace ConceptMatrix.Utility
 							  {
 								  Id = s.RowId,
 								  Color = new SolidColorBrush(Color.FromRgb(colorBytes[2], colorBytes[1], colorBytes[0])),
-								  Name = s.Name.DefaultIfEmpty("None")
+								  Name = s.Name.RawString.DefaultIfEmpty("None")
 							  };
 
 			}
@@ -235,7 +235,7 @@ namespace ConceptMatrix.Utility
 								select new CMStatus
 								{
 									Id = (int)s.RowId,
-									Name = s.Name.DefaultIfEmpty("None"),
+									Name = s.Name.RawString.DefaultIfEmpty("None"),
 									Icon = MainViewModel.lumina.GetIcon(s.Icon)?.GetImage()
 								};
 			}
@@ -257,8 +257,8 @@ namespace ConceptMatrix.Utility
 										  {
 											  Index = (int)c.RowId,
 											  Gender = c.Gender,
-											  Race = (int)c.Race.Row,
-											  Tribe = (int)c.Tribe.Row,
+											  Race = c.Race,
+											  Tribe = c.Tribe,
 											  Features = GetFeatures(c.FacialFeatureOptions)
 										  }).ToList();
 			}
@@ -411,16 +411,16 @@ namespace ConceptMatrix.Utility
 				Items = new List<CMItem>();
 
 				foreach (var i in itemSheet)
-					if (i.EquipSlotCategory.Row > 0)
+					if (i.EquipSlotCategory > 0)
 						Items.Add(new CMItem
 						{
 							Index = (int)i.RowId,
 							Name = i.Name,
 							ClassJobCategory = i.ClassJobCategory.Value.Name,
-							Type = AsType((int)i.ItemUICategory.Row),
+							Type = AsType(i.ItemUICategory),
 							Icon = MainViewModel.lumina.GetIcon(i.Icon).GetImage(),
 							ModelMain = i.ModelMain.AsQuad().ToString(),
-							ModelOff = i.ItemUICategory.Row == 11 ? i.ModelMain.AsQuad().ToString() : i.ModelSub.AsQuad().ToString()
+							ModelOff = i.ItemUICategory == 11 ? i.ModelMain.AsQuad().ToString() : i.ModelSub.AsQuad().ToString()
 						});
 			}
 			catch (Exception ex)
@@ -449,11 +449,11 @@ namespace ConceptMatrix.Utility
 
 					customize.AddRange(new List<byte>()
 					{
-						Convert.ToByte(npc.Race.Row),
+						Convert.ToByte(npc.Race),
 						npc.Gender,
 						npc.BodyType,
 						npc.Height,
-						Convert.ToByte(npc.Tribe.Row),
+						Convert.ToByte(npc.Tribe),
 						npc.Face,
 						npc.HairStyle,
 						npc.HairHighlight,
@@ -477,7 +477,7 @@ namespace ConceptMatrix.Utility
 						npc.FacePaintColor
 					});
 
-					gear.ModelType = (int)npc.ModelChara.Row;
+					gear.ModelType = npc.ModelChara;
 					gear.Customize = customize.ToArray();
 
 					WepTuple GetWeaponTuple(ulong model, Stain dye) => new WepTuple((short)model, (short)(model >> 16), (short)(model >> 32), (int)dye.RowId);
@@ -528,7 +528,7 @@ namespace ConceptMatrix.Utility
 			try
             {
 				var territorySheet = from t in MainViewModel.lumina.GetExcelSheet<TerritoryType>()
-									 where t.PlaceName.Value.Name.Length > 0
+									 where t.PlaceName.Value.Name.RawString.Length > 0
 									 select new CMTerritoryType
 									 {
 										 Index = (int)t.RowId,

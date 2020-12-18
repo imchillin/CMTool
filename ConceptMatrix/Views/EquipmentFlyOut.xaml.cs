@@ -16,7 +16,6 @@ using System.Windows.Data;
 using System.Runtime.CompilerServices;
 using static ConceptMatrix.Views.EquipmentView;
 using static ConceptMatrix.Utility.ExdCsvReader;
-using Lumina.Excel.GeneratedSheets;
 
 namespace ConceptMatrix.Views
 {

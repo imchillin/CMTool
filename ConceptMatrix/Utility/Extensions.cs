@@ -1,8 +1,8 @@
-﻿using ConceptMatrix.ViewModel;
+﻿using ConceptMatrix.Sheets;
+using ConceptMatrix.ViewModel;
 using ConceptMatrix.Views;
 using Lumina.Data.Files;
 using Lumina.Data.Parsing;
-using Lumina.Excel.GeneratedSheets;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

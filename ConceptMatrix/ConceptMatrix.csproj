@@ -171,6 +171,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>WindowsStrings.resx</DependentUpon>
     </Compile>
+    <Compile Include="Sheets\CharaMakeCustomize.cs" />
+    <Compile Include="Sheets\CharaMakeType.cs" />
+    <Compile Include="Sheets\ClassJobCategory.cs" />
+    <Compile Include="Sheets\ENpcBase.cs" />
+    <Compile Include="Sheets\ENpcResident.cs" />
+    <Compile Include="Sheets\Item.cs" />
+    <Compile Include="Sheets\NpcEquip.cs" />
+    <Compile Include="Sheets\PlaceName.cs" />
+    <Compile Include="Sheets\Race.cs" />
+    <Compile Include="Sheets\Stain.cs" />
+    <Compile Include="Sheets\Status.cs" />
+    <Compile Include="Sheets\TerritoryType.cs" />
+    <Compile Include="Sheets\Title.cs" />
+    <Compile Include="Sheets\Tribe.cs" />
+    <Compile Include="Sheets\Weather.cs" />
+    <Compile Include="Sheets\WeatherRate.cs" />
     <Compile Include="Utility\FlexibleMessageBox.cs" />
     <Compile Include="Utility\QuaternionConverter.cs" />
     <Compile Include="Utility\CmpReader.cs" />
@@ -456,14 +472,8 @@
     </None>
     <None Include="Resources\actiontimeline.csv" />
     <None Include="Resources\human.cmp" />
-    <None Include="Resources\Item.json" />
-    <None Include="Resources\ItemCN.json" />
-    <None Include="Resources\ItemKR.json" />
     <None Include="Resources\MonsterList.csv" />
     <None Include="Resources\PropsList.csv" />
-    <None Include="Resources\Stain.json" />
-    <None Include="Resources\StainCN.json" />
-    <None Include="Resources\StainKR.json" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.config" />
@@ -529,14 +539,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Lumina\src\Lumina.Generated\Lumina.Generated.csproj">
-      <Project>{3EF9CFCE-5ABC-402C-ADEA-F16E2AF307C2}</Project>
-      <Name>Lumina.Generated</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Lumina\src\Lumina\Lumina.csproj">
-      <Project>{eb4190f4-656a-41cc-9d01-4a07c4a859af}</Project>
-      <Name>Lumina</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ConceptMatrixUpdater\ConceptMatrixUpdater.csproj">
       <Project>{67cf62f2-4ee4-4517-8826-5fd6dc5cea6a}</Project>
       <Name>ConceptMatrixUpdater</Name>
@@ -553,6 +555,9 @@
       <Version>4.2.1</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Lumina">
+      <Version>2.5.1</Version>
     </PackageReference>
     <PackageReference Include="MahApps.Metro">
       <Version>1.6.5</Version>
@@ -576,6 +581,7 @@
       <Version>4.6.0</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>If $(ConfigurationName) == Debug (

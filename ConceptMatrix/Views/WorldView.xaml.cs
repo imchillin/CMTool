@@ -1,7 +1,7 @@
 using ConceptMatrix.Models;
+using ConceptMatrix.Sheets;
 using ConceptMatrix.Utility;
 using ConceptMatrix.ViewModel;
-using Lumina.Excel.GeneratedSheets;
 using Lumina.Extensions;
 using Microsoft.Win32;
 using Newtonsoft.Json;

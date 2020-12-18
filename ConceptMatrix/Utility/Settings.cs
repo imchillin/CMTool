@@ -30,28 +30,12 @@ namespace ConceptMatrix.Utility
         #endregion
         public string LastUpdated { get; set; }
 		public string NewLastUpdated { get; set; }
-        public string AoBOffset { get; set; }
         public string GposeOffset { get; set; }
         public string GposeEntityOffset { get; set; }
         public string GposeCheckOffset { get; set; }
-        public string CameraOffset { get; set; }
-        public string TimeOffset { get; set; }
         public string WeatherOffset { get; set; }
-        public string TerritoryOffset { get; set; }
         public string TargetOffset { get; set; }
         public string GposeFilters { get; set; }
-        public string SkeletonOffset { get; set; }
-        public string SkeletonOffset2 { get; set; }
-        public string SkeletonOffset3 { get; set; }
-        public string SkeletonOffset4 { get; set; }
-        public string SkeletonOffset5 { get; set; }
-        public string SkeletonOffset6 { get; set; }
-		public string SkeletonOffset7 { get; set; }
-		public string PhysicsOffset { get; set; }
-        public string PhysicsOffset2 { get; set; }
-        public string PhysicsOffset3 { get; set; }
-        public string CharacterRenderOffset { get; set; }
-        public string CharacterRenderOffset2 { get; set; }
         public CharacterOffsets Character { get; set; }
         public PositionOffsets Position { get; set; }
         public BonesOffsets Bones { get; set; }

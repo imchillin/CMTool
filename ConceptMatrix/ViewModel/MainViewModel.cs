@@ -1,8 +1,8 @@
+using ConceptMatrix.Sheets;
 using ConceptMatrix.Utility;
 using ConceptMatrix.Views;
 using Lumina;
 using Lumina.Data.Files;
-using Lumina.Excel.GeneratedSheets;
 using Lumina.Extensions;
 using MaterialDesignThemes.Wpf;
 using Newtonsoft.Json;
@@ -180,8 +180,8 @@ namespace ConceptMatrix.ViewModel
             
             Task.Run(() =>
             {
-                var races = from r in lumina.GetExcelSheet<Race>() select r.Feminine.DefaultIfEmpty("None");
-                var tribes = from t in lumina.GetExcelSheet<Tribe>() select t.Feminine.DefaultIfEmpty("None");
+                var races = from r in lumina.GetExcelSheet<Race>() select r.Feminine.RawString.DefaultIfEmpty("None");
+                var tribes = from t in lumina.GetExcelSheet<Tribe>() select t.Feminine.RawString.DefaultIfEmpty("None");
 
                 App.Current.Dispatcher.Invoke(() =>
                 {
@@ -234,7 +234,7 @@ namespace ConceptMatrix.ViewModel
                                       select new ExdCsvReader.CMWeather
                                       {
                                           Id = w.RowId,
-                                          Name = w.Name.DefaultIfEmpty("None"),
+                                          Name = w.Name.RawString.DefaultIfEmpty("None"),
                                           Icon = lumina.GetIcon(w.Icon).GetImage()
                                       };
 
@@ -251,7 +251,7 @@ namespace ConceptMatrix.ViewModel
             });
             Task.Run(() =>
             {
-                var titleSheet = lumina.GetExcelSheet<Title>().Select(title => title.Feminine.DefaultIfEmpty("None"));
+                var titleSheet = lumina.GetExcelSheet<Title>().Select(title => title.Feminine.RawString.DefaultIfEmpty("None"));
                 App.Current.Dispatcher.Invoke(() => characterView.TitleBox.ItemsSource = titleSheet);
             });
 
