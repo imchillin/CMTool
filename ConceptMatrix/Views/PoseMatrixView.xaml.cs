@@ -4868,7 +4868,7 @@ namespace ConceptMatrix.Views
 
             {
                 SaveSettings.Default.MatrixPoseSaveLoadDirectory = Path.GetDirectoryName(dig.FileName);
-                if (MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheckAddress)) == 1)
+                if (CharacterDetails.GposeMode)
                 {
                     UncheckAll();
                     EditModeButton.IsChecked = true;
@@ -5661,7 +5661,7 @@ namespace ConceptMatrix.Views
             if (dig.ShowDialog() == true)
             {
                 SaveSettings.Default.MatrixPoseSaveLoadDirectory = Path.GetDirectoryName(dig.FileName);
-                if (MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheckAddress)) == 1)
+                if (CharacterDetails.GposeMode)
                 {
                     UncheckAll();
                     EditModeButton.IsChecked = true;

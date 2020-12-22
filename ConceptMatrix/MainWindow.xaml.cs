@@ -190,7 +190,7 @@ namespace ConceptMatrix
             string GAS(params string[] args) => MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, args);
             string GASD(params string[] args) => MemoryManager.GetAddressString(MemoryManager.Instance.TargetAddress, args);
             var entityType = (byte)MemoryManager.Instance.MemLib.readByte(GAS(Settings.Instance.Character.EntityType));
-            if (m.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheckAddress)) == 0)
+            if (!CharacterDetails.GposeMode)
             {
                 if (entityType == 1)
                 {
@@ -1329,7 +1329,7 @@ namespace ConceptMatrix
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Instance.GposeAddress;
             if (TargetButton.IsEnabled == false)
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Instance.GposeEntityOffset;
-            if (MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheckAddress)) == 1)
+            if (CharacterDetails.GposeMode)
             {
                 MainViewModel.characterView.AnimSpeed.IsEnabled = true;
                 MainViewModel.characterView.EmoteSpeed.IsEnabled = true;
@@ -1404,7 +1404,7 @@ namespace ConceptMatrix
 
             if (GposeButton.IsKeyboardFocusWithin || GposeButton.IsMouseOver)
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Add(MemoryManager.Instance.BaseAddress, CharacterDetailsViewModel.eOffset);
-            if (MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheckAddress)) == 0)
+            if (!CharacterDetails.GposeMode)
             {
                 MainViewModel.characterView.AnimSpeed.IsEnabled = false;
                 MainViewModel.characterView.AnimSpeed.IsChecked = false;

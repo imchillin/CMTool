@@ -26,7 +26,6 @@ namespace ConceptMatrix.ViewModel
         public static bool EnabledEditing = false;
         public static bool CurrentlySavingFilter = false;
         public static bool CheckingGPose = false;
-        public bool InGpose = false;
         public int WritingCheck = 0;
         public static UIntPtr OldMemoryLocation;
         public static string baseAddr;
@@ -69,7 +68,6 @@ namespace ConceptMatrix.ViewModel
             MemoryManager.Instance.TargetAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.TargetOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.GposeAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.GposeOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.GposeEntityOffset = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.GposeEntityOffset, NumberStyles.HexNumber));
-            MemoryManager.Instance.GposeCheckAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.GposeCheckOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.WeatherAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.WeatherOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.GposeFilters = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.GposeFilters, NumberStyles.HexNumber));
 
@@ -203,6 +201,9 @@ namespace ConceptMatrix.ViewModel
         {
             try
             {
+                // Just get the Gpose Mode here and stop reading it everywhere...
+                CharacterDetails.GposeMode = m.readLong(GAS(MemoryManager.Instance.GposeAddress)) != 0;
+
                 CharacterDetails.Territory = m.readInt(MemoryManager.Instance.TerritoryAddress);
                 CharacterDetails.TerritoryName = Extensions.TerritoryName(CharacterDetails.Territory);
                 if (CharacterDetails.GposeMode)
@@ -328,174 +329,162 @@ namespace ConceptMatrix.ViewModel
 
                 if (!CheckingGPose)
                 {
-                    if (m.readByte(GAS(MemoryManager.Instance.GposeCheckAddress)) == 0)
+                    if (!CharacterDetails.GposeMode)
                     {
-                        if (InGpose)
+                        Application.Current.Dispatcher.Invoke(() => //Use Dispather to Update UI Immediately  
                         {
-                            CharacterDetails.GposeMode = false;
-                            InGpose = false;
+                            MainViewModel.characterView.AnimSpeed.IsEnabled = false;
+                            MainViewModel.characterView.EmoteSpeed.IsEnabled = false;
+                            MainViewModel.characterView.Setto0.IsEnabled = false;
+                            CharacterDetails.EmoteSpeed1.freeze = false;
 
-                            Application.Current.Dispatcher.Invoke(() => //Use Dispather to Update UI Immediately  
-                            {
-                                MainViewModel.characterView.AnimSpeed.IsEnabled = false;
-                                MainViewModel.characterView.EmoteSpeed.IsEnabled = false;
-                                MainViewModel.characterView.Setto0.IsEnabled = false;
-                                CharacterDetails.EmoteSpeed1.freeze = false;
+                            MainViewModel.posing2View.PoseMatrixSetting.IsEnabled = false;
+                            MainViewModel.posing2View.EditModeButton.IsChecked = false;
+                            PoseMatrixView.PosingMatrix.PoseMatrixSetting.IsEnabled = false;
+                            PoseMatrixView.PosingMatrix.EditModeButton.IsChecked = false;
+                            MainViewModel.posing2View.LoadCMP.IsEnabled = false;
+                            MainViewModel.posing2View.AdvLoadCMP.IsEnabled = false;
+                            PoseMatrixView.PosingMatrix.LoadCMP.IsEnabled = false;
+                            PoseMatrixView.PosingMatrix.AdvLoadCMP.IsEnabled = false;
 
-                                MainViewModel.posing2View.PoseMatrixSetting.IsEnabled = false;
-                                MainViewModel.posing2View.EditModeButton.IsChecked = false;
-                                PoseMatrixView.PosingMatrix.PoseMatrixSetting.IsEnabled = false;
-                                PoseMatrixView.PosingMatrix.EditModeButton.IsChecked = false;
-                                MainViewModel.posing2View.LoadCMP.IsEnabled = false;
-                                MainViewModel.posing2View.AdvLoadCMP.IsEnabled = false;
-                                PoseMatrixView.PosingMatrix.LoadCMP.IsEnabled = false;
-                                PoseMatrixView.PosingMatrix.AdvLoadCMP.IsEnabled = false;
-
-                                MainViewModel.posingView.PoseMatrixSetting.IsEnabled = false;
-                                MainViewModel.posingView.EditModeButton.IsChecked = false;
-                                PosingOldView.PosingMatrix.PoseMatrixSetting.IsEnabled = false;
-                                PosingOldView.PosingMatrix.EditModeButton.IsChecked = false;
-                                MainViewModel.posingView.LoadCMP.IsEnabled = false;
-                                MainViewModel.posingView.AdvLoadCMP.IsEnabled = false;
-                                PosingOldView.PosingMatrix.LoadCMP.IsEnabled = false;
-                                PosingOldView.PosingMatrix.AdvLoadCMP.IsEnabled = false;
-                            });
-                        }
+                            MainViewModel.posingView.PoseMatrixSetting.IsEnabled = false;
+                            MainViewModel.posingView.EditModeButton.IsChecked = false;
+                            PosingOldView.PosingMatrix.PoseMatrixSetting.IsEnabled = false;
+                            PosingOldView.PosingMatrix.EditModeButton.IsChecked = false;
+                            MainViewModel.posingView.LoadCMP.IsEnabled = false;
+                            MainViewModel.posingView.AdvLoadCMP.IsEnabled = false;
+                            PosingOldView.PosingMatrix.LoadCMP.IsEnabled = false;
+                            PosingOldView.PosingMatrix.AdvLoadCMP.IsEnabled = false;
+                        });
                     }
-                    else if (m.readByte(GAS(MemoryManager.Instance.GposeCheckAddress)) == 1)
+                    else
                     {
-                        if (!InGpose)
+                        CharacterDetails.SelectedIndex = 0;
+
+                        #region Equipment Fix
+
+                        if (m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Job)) <= 0)
                         {
-                            CharacterDetails.SelectedIndex = 0;
-                            CharacterDetails.GposeMode = true;
-
-                            #region Equipment Fix
-
-                            if (m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Job)) <= 0)
-                            {
-                                CharacterDetails.Job.value = 0;
-                                CharacterDetails.WeaponBase.value = 0;
-                                CharacterDetails.WeaponV.value = 0;
-                                CharacterDetails.WeaponDye.value = 0;
-                                MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Job), "bytes", "2D 01 1F 00 01 00 00 00");
-                            }
-
-                            if (m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Offhand)) <= 0)
-                            {
-                                CharacterDetails.Offhand.value = 0;
-                                CharacterDetails.OffhandBase.value = 0;
-                                CharacterDetails.OffhandV.value = 0;
-                                CharacterDetails.OffhandDye.value = 0;
-                                MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Offhand), "bytes", "00 00 00 00 00 00 00 00");
-                            }
-
-                            if (m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.HeadPiece)) <= 0)
-                            {
-                                CharacterDetails.HeadPiece.value = 0;
-                                CharacterDetails.HeadV.value = 0;
-                                CharacterDetails.HeadDye.value = 0;
-                                MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.HeadPiece), "bytes", "00 00 00 00");
-                            }
-
-                            if (m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Chest)) <= 0)
-                            {
-                                CharacterDetails.Chest.value = 0;
-                                CharacterDetails.ChestV.value = 0;
-                                CharacterDetails.ChestDye.value = 0;
-                                MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Chest), "bytes", "00 00 00 00");
-                            }
-
-                            if (m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Arms)) <= 0)
-                            {
-                                CharacterDetails.Arms.value = 0;
-                                CharacterDetails.ArmsV.value = 0;
-                                CharacterDetails.ArmsDye.value = 0;
-                                MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Arms), "bytes", "00 00 00 00");
-                            }
-
-                            if (m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Legs)) <= 0)
-                            {
-                                CharacterDetails.Legs.value = 0;
-                                CharacterDetails.LegsV.value = 0;
-                                CharacterDetails.LegsDye.value = 0;
-                                MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Legs), "bytes", "00 00 00 00");
-                            }
-
-                            if (m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Feet)) <= 0)
-                            {
-                                CharacterDetails.Feet.value = 0;
-                                CharacterDetails.FeetVa.value = 0;
-                                CharacterDetails.FeetDye.value = 0;
-                                MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Feet), "bytes", "00 00 00 00");
-                            }
-
-                            if (m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Neck)) <= 0)
-                            {
-                                CharacterDetails.Neck.value = 0;
-                                CharacterDetails.NeckVa.value = 0;
-                                MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Neck), "bytes", "00 00 00 00");
-                            }
-
-                            if (m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Wrist)) <= 0)
-                            {
-                                CharacterDetails.Wrist.value = 0;
-                                CharacterDetails.WristVa.value = 0;
-                                MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Wrist), "bytes", "00 00 00 00");
-                            }
-
-                            if (m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Ear)) <= 0)
-                            {
-                                CharacterDetails.Ear.value = 0;
-                                CharacterDetails.EarVa.value = 0;
-                                MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Ear), "bytes", "00 00 00 00");
-                            }
-
-                            if (m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.RFinger)) <= 0)
-                            {
-                                CharacterDetails.RFinger.value = 0;
-                                CharacterDetails.RFingerVa.value = 0;
-                                MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.RFinger), "bytes", "00 00 00 00");
-                            }
-
-                            if (m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.LFinger)) <= 0)
-                            {
-                                CharacterDetails.LFinger.value = 0;
-                                CharacterDetails.LFingerVa.value = 0;
-                                MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.LFinger), "bytes", "00 00 00 00");
-                            }
-                            #endregion
-                            string GASD(params string[] args) => MemoryManager.GetAddressString(MemoryManager.Add(MemoryManager.Instance.BaseAddress, "8"), args);
-                            var EntityType = m.get64bitCode(GASD(c.EntityType));
-                            m.writeBytes(EntityType, 2);
-                            Task.Delay(1500).Wait();
-                            m.writeBytes(EntityType, 1);
-                            Task.Delay(50).Wait();
-                            m.writeMemory(GAS(MemoryManager.Instance.GposeAddress, c.EntityType), "byte", "0x01");
-
-
-                            InGpose = true;
-
-                            Application.Current.Dispatcher.Invoke(() => //Use Dispather to Update UI Immediately  
-                            {
-                                MainViewModel.characterView.AnimSpeed.IsEnabled = true;
-                                MainViewModel.characterView.EmoteSpeed.IsEnabled = true;
-                                MainViewModel.characterView.Setto0.IsEnabled = true;
-
-                                MainViewModel.posing2View.PoseMatrixSetting.IsEnabled = true;
-                                PoseMatrixView.PosingMatrix.PoseMatrixSetting.IsEnabled = true;
-                                MainViewModel.posing2View.LoadCMP.IsEnabled = true;
-                                MainViewModel.posing2View.AdvLoadCMP.IsEnabled = true;
-                                PoseMatrixView.PosingMatrix.LoadCMP.IsEnabled = true;
-                                PoseMatrixView.PosingMatrix.AdvLoadCMP.IsEnabled = true;
-
-                                MainViewModel.posingView.PoseMatrixSetting.IsEnabled = true;
-                                PosingOldView.PosingMatrix.PoseMatrixSetting.IsEnabled = true;
-                                MainViewModel.posingView.LoadCMP.IsEnabled = true;
-                                MainViewModel.posingView.AdvLoadCMP.IsEnabled = true;
-                                PosingOldView.PosingMatrix.LoadCMP.IsEnabled = true;
-                                PosingOldView.PosingMatrix.AdvLoadCMP.IsEnabled = true;
-                            });
+                            CharacterDetails.Job.value = 0;
+                            CharacterDetails.WeaponBase.value = 0;
+                            CharacterDetails.WeaponV.value = 0;
+                            CharacterDetails.WeaponDye.value = 0;
+                            MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Job), "bytes", "2D 01 1F 00 01 00 00 00");
                         }
+
+                        if (m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Offhand)) <= 0)
+                        {
+                            CharacterDetails.Offhand.value = 0;
+                            CharacterDetails.OffhandBase.value = 0;
+                            CharacterDetails.OffhandV.value = 0;
+                            CharacterDetails.OffhandDye.value = 0;
+                            MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Offhand), "bytes", "00 00 00 00 00 00 00 00");
+                        }
+
+                        if (m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.HeadPiece)) <= 0)
+                        {
+                            CharacterDetails.HeadPiece.value = 0;
+                            CharacterDetails.HeadV.value = 0;
+                            CharacterDetails.HeadDye.value = 0;
+                            MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.HeadPiece), "bytes", "00 00 00 00");
+                        }
+
+                        if (m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Chest)) <= 0)
+                        {
+                            CharacterDetails.Chest.value = 0;
+                            CharacterDetails.ChestV.value = 0;
+                            CharacterDetails.ChestDye.value = 0;
+                            MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Chest), "bytes", "00 00 00 00");
+                        }
+
+                        if (m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Arms)) <= 0)
+                        {
+                            CharacterDetails.Arms.value = 0;
+                            CharacterDetails.ArmsV.value = 0;
+                            CharacterDetails.ArmsDye.value = 0;
+                            MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Arms), "bytes", "00 00 00 00");
+                        }
+
+                        if (m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Legs)) <= 0)
+                        {
+                            CharacterDetails.Legs.value = 0;
+                            CharacterDetails.LegsV.value = 0;
+                            CharacterDetails.LegsDye.value = 0;
+                            MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Legs), "bytes", "00 00 00 00");
+                        }
+
+                        if (m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Feet)) <= 0)
+                        {
+                            CharacterDetails.Feet.value = 0;
+                            CharacterDetails.FeetVa.value = 0;
+                            CharacterDetails.FeetDye.value = 0;
+                            MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Feet), "bytes", "00 00 00 00");
+                        }
+
+                        if (m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Neck)) <= 0)
+                        {
+                            CharacterDetails.Neck.value = 0;
+                            CharacterDetails.NeckVa.value = 0;
+                            MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Neck), "bytes", "00 00 00 00");
+                        }
+
+                        if (m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Wrist)) <= 0)
+                        {
+                            CharacterDetails.Wrist.value = 0;
+                            CharacterDetails.WristVa.value = 0;
+                            MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Wrist), "bytes", "00 00 00 00");
+                        }
+
+                        if (m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Ear)) <= 0)
+                        {
+                            CharacterDetails.Ear.value = 0;
+                            CharacterDetails.EarVa.value = 0;
+                            MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.Ear), "bytes", "00 00 00 00");
+                        }
+
+                        if (m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.RFinger)) <= 0)
+                        {
+                            CharacterDetails.RFinger.value = 0;
+                            CharacterDetails.RFingerVa.value = 0;
+                            MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.RFinger), "bytes", "00 00 00 00");
+                        }
+
+                        if (m.read2Byte(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.LFinger)) <= 0)
+                        {
+                            CharacterDetails.LFinger.value = 0;
+                            CharacterDetails.LFingerVa.value = 0;
+                            MemoryManager.Instance.MemLib.writeMemory(GAS(MemoryManager.Add(MemoryManager.Instance.BaseAddress, eOffset), c.LFinger), "bytes", "00 00 00 00");
+                        }
+                        #endregion
+                        string GASD(params string[] args) => MemoryManager.GetAddressString(MemoryManager.Add(MemoryManager.Instance.BaseAddress, "8"), args);
+                        var EntityType = m.get64bitCode(GASD(c.EntityType));
+                        m.writeBytes(EntityType, 2);
+                        Task.Delay(1500).Wait();
+                        m.writeBytes(EntityType, 1);
+                        Task.Delay(50).Wait();
+                        m.writeMemory(GAS(MemoryManager.Instance.GposeAddress, c.EntityType), "byte", "0x01");
+
+
+                        Application.Current.Dispatcher.Invoke(() => //Use Dispather to Update UI Immediately  
+                        {
+                            MainViewModel.characterView.AnimSpeed.IsEnabled = true;
+                            MainViewModel.characterView.EmoteSpeed.IsEnabled = true;
+                            MainViewModel.characterView.Setto0.IsEnabled = true;
+
+                            MainViewModel.posing2View.PoseMatrixSetting.IsEnabled = true;
+                            PoseMatrixView.PosingMatrix.PoseMatrixSetting.IsEnabled = true;
+                            MainViewModel.posing2View.LoadCMP.IsEnabled = true;
+                            MainViewModel.posing2View.AdvLoadCMP.IsEnabled = true;
+                            PoseMatrixView.PosingMatrix.LoadCMP.IsEnabled = true;
+                            PoseMatrixView.PosingMatrix.AdvLoadCMP.IsEnabled = true;
+
+                            MainViewModel.posingView.PoseMatrixSetting.IsEnabled = true;
+                            PosingOldView.PosingMatrix.PoseMatrixSetting.IsEnabled = true;
+                            MainViewModel.posingView.LoadCMP.IsEnabled = true;
+                            MainViewModel.posingView.AdvLoadCMP.IsEnabled = true;
+                            PosingOldView.PosingMatrix.LoadCMP.IsEnabled = true;
+                            PosingOldView.PosingMatrix.AdvLoadCMP.IsEnabled = true;
+                        });
                     }
                 }
                 byte[] CharacterBytes = m.readBytes(GAS(baseAddr, c.Race), 26);
