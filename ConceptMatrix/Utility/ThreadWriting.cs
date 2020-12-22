@@ -31,7 +31,7 @@ namespace ConceptMatrix.Utility
             try
             {
 
-                while (true)
+                while (!worker.CancellationPending)
                 {
                     if (worker.CancellationPending)
                     {

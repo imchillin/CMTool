@@ -1,6 +1,6 @@
 {
   "LastUpdated": "5.35", // bad legacy support
-  "NewLastUpdated": "5.4.0.1",
+  "NewLastUpdated": "5.4.0.2",
   "CameraOffset": "1D8A070",
   "GposeOffset": "1D8A280",
   "GposeEntityOffset": "1D8B660",
@@ -60,7 +60,7 @@
       "MuscleTone": "240,28,20,C",
       "TailSize": "148,74"
     },
-    "MovingTime": "78",
+    "MovingTime": "1608",
     "Weather": "20",
     "ForceWeather": "27",
     "Music": "C0,116",

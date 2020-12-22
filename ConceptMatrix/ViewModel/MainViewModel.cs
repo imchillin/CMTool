@@ -332,7 +332,7 @@ namespace ConceptMatrix.ViewModel
         }
         private void Worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            while (true)
+            while (!worker.CancellationPending)
             {
                 if (worker.CancellationPending)
                 {
