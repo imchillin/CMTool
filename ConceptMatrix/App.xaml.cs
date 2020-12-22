@@ -26,7 +26,7 @@ namespace ConceptMatrix
 		public static readonly string UpdaterBin = "ConceptMatrixUpdater";
 		public static readonly string GithubRepo = "imchillin/CMTool";
 		public static readonly string TwitterHandle = "FFXIVCMTool";
-		public static readonly string DiscordCode = "EenZwsN";
+		public static readonly string DiscordCode = "CrystallineMeans";
 
         public static Stopwatch sw;
 
