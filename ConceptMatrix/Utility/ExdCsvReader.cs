@@ -419,8 +419,8 @@ namespace ConceptMatrix.Utility
 							ClassJobCategory = i.ClassJobCategory.Value.Name,
 							Type = AsType(i.ItemUICategory),
 							Icon = MainViewModel.lumina.GetIcon(i.Icon).GetImage(),
-							ModelMain = i.ModelMain.AsQuad().ToString(),
-							ModelOff = i.ItemUICategory == 11 ? i.ModelMain.AsQuad().ToString() : i.ModelSub.AsQuad().ToString()
+							ModelMain = i.ModelMain.AsQuad().AsModel(),
+							ModelOff = i.ItemUICategory == 11 ? i.ModelMain.AsQuad().AsModel() : i.ModelSub.AsQuad().AsModel()
 						});
 			}
 			catch (Exception ex)

@@ -52,6 +52,8 @@ namespace ConceptMatrix.Utility
             return new Quaternion(x, y, z, w);
 		}
 
+		public static string AsModel(this Quad q) => $"{q.A}, {q.B}, {q.C}, {q.D}";
+
 		private static double NormalizeAngle(double angle)
 		{
 			while (angle > 360)
