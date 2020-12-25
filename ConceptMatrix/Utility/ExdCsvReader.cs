@@ -116,6 +116,7 @@ namespace ConceptMatrix.Utility
 			public int Index { get; set; }
 			public string Name { get; set; }
 			public GearSet Gear { get; set; }
+			public int Model { get; set; }
 
 			public override string ToString()
 			{
@@ -124,7 +125,7 @@ namespace ConceptMatrix.Utility
 
 			public bool IsGoodNpc()
 			{
-				if (Gear.Customize[0] != 0 && Name.Length != 0)
+				if ((Gear.Customize[0] != 0|| Model != 0) && Name.Length != 0)
 					return true;
 
 				return false;
@@ -515,6 +516,7 @@ namespace ConceptMatrix.Utility
 					}
 
 					Residents[(int)npc.RowId].Gear = gear;
+					Residents[(int)npc.RowId].Model = npc.ModelChara;
 				}
 			}
 			catch (Exception)
