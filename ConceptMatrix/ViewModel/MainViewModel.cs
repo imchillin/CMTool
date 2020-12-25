@@ -160,29 +160,38 @@ namespace ConceptMatrix.ViewModel
         }
         public static void Shutdown()
         {
-            worker.CancelAsync();
-            threadWriting?.worker.CancelAsync();
-            characterDetails = null;
-            threadWriting = null;
+			try
+			{
+				worker.CancelAsync();
+				threadWriting?.worker.CancelAsync();
+				characterDetails = null;
+				threadWriting = null;
 
-            // Turn off the time stop code.
-            MemoryManager.Instance.MemLib.writeBytes(MemoryManager.Instance.TimeStopAsm.ToString("X"), new byte[] { 0x48, 0x89, 0x83, 0x08, 0x16, 0x00, 0x00 });
+				// Turn off the time stop code.
+				MemoryManager.Instance.MemLib.writeBytes(MemoryManager.Instance.TimeStopAsm.ToString("X"), new byte[] { 0x48, 0x89, 0x83, 0x08, 0x16, 0x00, 0x00 });
 
-            // Remove nops for skeleton instructions.
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress, "bytes", "0x41 0x0F 0x29 0x5C 0x12 0x10");
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress2, "bytes", "0x43 0x0F 0x29 0x5C 0x18 0x10");
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress3, "bytes", "0x0F 0x29 0x5E 0x10");
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress4, "bytes", "0x41 0x0F 0x29 0x44 0x12 0x20");
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress5, "bytes", "0x41 0x0F 0x29 0x24 0x12");
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress6, "bytes", "0x43 0x0F 0x29 0x44 0x18 0x20");
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress7, "bytes", "0x43 0x0F 0x29 0x24 0x18");
+				// Remove nops for skeleton instructions.
+				MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress, "bytes", "0x41 0x0F 0x29 0x5C 0x12 0x10");
+				MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress2, "bytes", "0x43 0x0F 0x29 0x5C 0x18 0x10");
+				MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress3, "bytes", "0x0F 0x29 0x5E 0x10");
+				MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress4, "bytes", "0x41 0x0F 0x29 0x44 0x12 0x20");
+				MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress5, "bytes", "0x41 0x0F 0x29 0x24 0x12");
+				MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress6, "bytes", "0x43 0x0F 0x29 0x44 0x18 0x20");
+				MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress7, "bytes", "0x43 0x0F 0x29 0x24 0x18");
 
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.PhysicsAddress, "bytes", "0x0F 0x29 0x48 0x10");
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.PhysicsAddress2, "bytes", "0x0F 0x29 0x00");
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.PhysicsAddress3, "bytes", "0x0F 0x29 0x40 0x20");
+				MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.PhysicsAddress, "bytes", "0x0F 0x29 0x48 0x10");
+				MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.PhysicsAddress2, "bytes", "0x0F 0x29 0x00");
+				MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.PhysicsAddress3, "bytes", "0x0F 0x29 0x40 0x20");
 
-            // Kill the Lumina thread.
-            luminaThread.Abort();
+				// Kill the Lumina thread.
+				luminaThread.Abort();
+			}
+            catch (Exception ex)
+			{
+                MessageBox.Show("Crashed while shutting down! You may experience some bugs with the game if you clicked reload process and may require a game restart!");
+                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.StackTrace);
+			}
         }
 
 
