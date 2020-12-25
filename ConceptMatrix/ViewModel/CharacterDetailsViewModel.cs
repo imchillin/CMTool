@@ -68,6 +68,8 @@ namespace ConceptMatrix.ViewModel
         {
             MemoryManager.Instance.TargetAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.TargetOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.GposeAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.GposeOffset, NumberStyles.HexNumber));
+            MemoryManager.Instance.GposeCheckAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.GposeCheckOffset, NumberStyles.HexNumber));
+            MemoryManager.Instance.GposeCheck2Address = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.GposeCheck2Offset, NumberStyles.HexNumber));
             MemoryManager.Instance.GposeEntityOffset = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.GposeEntityOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.WeatherAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.WeatherOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.GposeFilters = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.GposeFilters, NumberStyles.HexNumber));
@@ -202,9 +204,6 @@ namespace ConceptMatrix.ViewModel
         {
             try
             {
-                // Just get the Gpose Mode here and stop reading it everywhere...
-                CharacterDetails.GposeMode = m.readLong(GAS(MemoryManager.Instance.GposeAddress)) != 0;
-
                 CharacterDetails.Territory = m.readInt(MemoryManager.Instance.TerritoryAddress);
                 CharacterDetails.TerritoryName = Extensions.TerritoryName(CharacterDetails.Territory);
                 if (CharacterDetails.GposeMode)
@@ -330,10 +329,12 @@ namespace ConceptMatrix.ViewModel
 
                 if (!CheckingGPose)
                 {
-                    if (!CharacterDetails.GposeMode)
+                    if (m.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheckAddress)) == 0 &&
+                        m.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheck2Address)) == 1)
                     {
                         if (InGpose)
                         {
+                            CharacterDetails.GposeMode = false;
                             InGpose = false;
 
                             Application.Current.Dispatcher.Invoke(() => //Use Dispather to Update UI Immediately  
@@ -363,7 +364,8 @@ namespace ConceptMatrix.ViewModel
                             });
                         }
                     }
-                    else if (CharacterDetails.GposeMode)
+                    else if (m.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheckAddress)) == 1 &&
+                             m.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheck2Address)) == 4)
                     {
                         if (!InGpose)
                         {
@@ -472,7 +474,7 @@ namespace ConceptMatrix.ViewModel
                             Task.Delay(50).Wait();
                             m.writeMemory(GAS(MemoryManager.Instance.GposeAddress, c.EntityType), "byte", "0x01");
 
-
+                            CharacterDetails.GposeMode = true;
                             InGpose = true;
 
                             Application.Current.Dispatcher.Invoke(() => //Use Dispather to Update UI Immediately  
