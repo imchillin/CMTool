@@ -117,7 +117,11 @@ namespace ConceptMatrix.ViewModel
                     MainWindow.HasRead = true;
                 }
                 MainViewModelX = this;
-                MemoryManager.Instance.MemLib.OpenProcess(gameProcId);
+                if (!MemoryManager.Instance.MemLib.OpenProcess(gameProcId))
+				{
+                    MessageBox.Show("Could not open process!", App.ToolName);
+                    App.Current.Shutdown();
+				}
                 LoadSettings(RegionType);
                 worker = new BackgroundWorker();
                 worker.DoWork += Worker_DoWork;
@@ -154,8 +158,9 @@ namespace ConceptMatrix.ViewModel
                     CharacterDetails.CharacterDetails.RelativePositioning = true;
                 }
             }
-            catch(Exception)
+            catch(Exception ex)
             {
+                MessageBox.Show(ex.Message, "Error occured in MainViewModel");
             }
         }
         public static void Shutdown()

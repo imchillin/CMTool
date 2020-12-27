@@ -317,8 +317,9 @@ namespace ConceptMatrix.Utility
 
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.Message, "OpenProcess Failed");
                 Debug.WriteLine("ERROR: OpenProcess has crashed.");
                 return false;
             }
