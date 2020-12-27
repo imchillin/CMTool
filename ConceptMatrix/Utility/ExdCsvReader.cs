@@ -85,6 +85,13 @@ namespace ConceptMatrix.Utility
 			}
 		}
 
+		public class CMVoice
+		{
+			public byte Voice { get; set; }
+			public string Name { get; set; }
+			public string Group { get; set; }
+		}
+
 		public class CMStain
 		{
 			public uint Id { get; set; }
