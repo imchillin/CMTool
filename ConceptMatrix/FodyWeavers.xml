@@ -6,5 +6,4 @@
       ConceptMatrixUpdater
     </ExcludeAssemblies>
   </Costura>
-  <PropertyChanged />
 </Weavers>
