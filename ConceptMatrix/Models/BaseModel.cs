@@ -18,12 +18,9 @@ namespace ConceptMatrix.Models
         public T value { get; set; }
         [JsonIgnore] public bool freeze { get; set; }
         [JsonIgnore] public bool Activated { get; set; }
-        [JsonIgnore] public bool Cantbeused { get; set; }
         [JsonIgnore] public bool Checker { get; set; }
-        [JsonIgnore] public bool Checked { get; set; }
         [JsonIgnore] public bool SpecialActivate { get; set; }
         [JsonIgnore] public int Selected { get; set; }
-        [JsonIgnore] public bool freezetest { get; set; }
         /// <summary>
         /// Get a byte array of this address
         /// </summary>
