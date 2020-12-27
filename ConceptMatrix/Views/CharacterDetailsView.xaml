@@ -205,10 +205,20 @@
         <Button x:Name="FacePaint_Color" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="231,347.118,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="FacePaint_Color_Click"/>
 
         <!-- Voice Type -->
-        <CheckBox IsEnabled="False" IsChecked="{Binding CharacterDetails.Voices.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.VoiceType}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.VoiceTypeToolTip}}" HorizontalAlignment="Left" Margin="311,407,0,0" VerticalAlignment="Top" Height="23"/>
-        <TextBox IsEnabled="False" Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,407.118,0,0" Text="{Binding CharacterDetails.Voices.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" BorderThickness="0,0,0,1" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+        <CheckBox IsChecked="{Binding CharacterDetails.Voices.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.VoiceType}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.VoiceTypeToolTip}}" HorizontalAlignment="Left" Margin="311,407,0,0" VerticalAlignment="Top" Height="23"/>
+		<ComboBox x:Name="Voices" SelectedValue="{Binding CharacterDetails.Voices.value}" SelectedValuePath="Voice" DisplayMemberPath="Name" HorizontalAlignment="Left" Height="23" Margin="469,407.118,0,0" VerticalAlignment="Top" Width="55" BorderThickness="0,0,0,1" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
+			<ComboBox.GroupStyle>
+				<GroupStyle>
+					<GroupStyle.HeaderTemplate>
+						<DataTemplate>
+							<TextBlock FontStyle="Italic" FontSize="13" Text="{Binding Name}" Margin="8" Foreground="Gray" />
+						</DataTemplate>
+					</GroupStyle.HeaderTemplate>
+				</GroupStyle>
+			</ComboBox.GroupStyle>
+		</ComboBox>
 
-        <!-- Model Type -->
+		<!-- Model Type -->
         <CheckBox x:Name="MonsterCheck" IsChecked="{Binding CharacterDetails.ModelType.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.ModelType}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.ModelTypeToolTip}}" HorizontalAlignment="Left" Margin="311,437,0,0" VerticalAlignment="Top" Height="23"/>
         <TextBox x:Name="MonsterNum" Style="{StaticResource MaterialDesignTextBox}" HorizontalAlignment="Left" PreviewTextInput="DigitCheckInput" Height="23" Margin="469,437.118,0,0" Text="{Binding CharacterDetails.ModelType.value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="55" TextAlignment="Center" FontSize="11.35" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
         <Button x:Name="ModelTypeButton" ToolTip="{Binding Source={x:Static resx:UIStringsContent.ModelTypeButtonToolTip}}" Content="{Binding Source={x:Static resx:UIStringsContent.ModelList}}" materialDesign:ShadowAssist.ShadowDepth="Depth3" HorizontalAlignment="Left" Margin="311,467.118,0,0" VerticalAlignment="Top" Width="213" Height="23" Click="ModelTypeButton_Click"/>
@@ -420,7 +430,7 @@
         <ToggleButton Name="LinkPosition" IsChecked="{Binding CharacterDetails.IsLinked, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="914,187,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Checked="LinkPosition_Checked" Unchecked="LinkPosition_Unchecked" IsEnabled="False" />
 
         <Views:EmoteFlyOut x:Name="EmoteFlyouts" Width="534" HorizontalAlignment="Left" VerticalAlignment="Top" Height="Auto" Visibility="Hidden"/>
-		<Views:SpecialControl x:Name="SpecialControl" Width="579" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Margin="536,0,0,0"/>
+		<Views:SpecialControl x:Name="SpecialControl" Width="579" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Collapsed" Margin="536,0,0,0"/>
 
     </Grid>
 </UserControl>

@@ -20,6 +20,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Forms;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -161,6 +162,7 @@ namespace ConceptMatrix.ViewModel
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error occured in MainViewModel");
+                MessageBox.Show(ex.StackTrace);
             }
         }
         public static void Shutdown()
@@ -199,6 +201,7 @@ namespace ConceptMatrix.ViewModel
 			}
         }
 
+        private IEnumerable<string> races, tribes;
 
         private void Initialize(string _)
         {
@@ -207,8 +210,8 @@ namespace ConceptMatrix.ViewModel
             
             Task.Run(() =>
             {
-                var races = from r in lumina.GetExcelSheet<Race>() select r.Feminine.RawString.DefaultIfEmpty("None");
-                var tribes = from t in lumina.GetExcelSheet<Tribe>() select t.Feminine.RawString.DefaultIfEmpty("None");
+                this.races = from r in lumina.GetExcelSheet<Race>() select r.Feminine.RawString.DefaultIfEmpty("None");
+                this.tribes = from t in lumina.GetExcelSheet<Tribe>() select t.Feminine.RawString.DefaultIfEmpty("None");
 
                 App.Current.Dispatcher.Invoke(() =>
                 {
@@ -256,7 +259,6 @@ namespace ConceptMatrix.ViewModel
             {
                 try
                 {
-
                     var weatherList = from w in lumina.GetExcelSheet<Weather>()
                                       select new ExdCsvReader.CMWeather
                                       {
@@ -280,6 +282,24 @@ namespace ConceptMatrix.ViewModel
             {
                 var titleSheet = lumina.GetExcelSheet<Title>().Select(title => title.Feminine.RawString.DefaultIfEmpty("None"));
                 App.Current.Dispatcher.Invoke(() => characterView.TitleBox.ItemsSource = titleSheet);
+            });
+            Task.Run(() =>
+            {
+                var voices = new List<ExdCsvReader.CMVoice>();
+                var cmtSheet = lumina.GetExcelSheet<CharaMakeType>().Where(c => c.Tribe != 0);
+                var r = this.races.ToArray();
+                var t = this.tribes.ToArray();
+                var male = Resx.MiscStrings.Male;
+                var female = Resx.MiscStrings.Female;
+
+                foreach (var cmt in cmtSheet)
+                    for (var i = 0; i < cmt.VoiceStruct.Length; i++)
+                        voices.Add(new ExdCsvReader.CMVoice() { Voice = cmt.VoiceStruct[i], Name = $"Voice {i + 1} ({cmt.VoiceStruct[i]})", Group = $"{r[cmt.Race]}, {t[cmt.Tribe]} ({(cmt.Gender==0?male:female)})" });
+
+                var lcv = new ListCollectionView(voices);
+                lcv.GroupDescriptions.Add(new PropertyGroupDescription("Group"));
+
+                App.Current.Dispatcher.Invoke(() => characterView.Voices.ItemsSource = lcv);
             });
 
             sw.Stop();
@@ -309,6 +329,7 @@ namespace ConceptMatrix.ViewModel
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex);
+                    MessageBox.Show("Could not load settings!");
                 }
             }
             if (CheckUpdate(region) == true)
