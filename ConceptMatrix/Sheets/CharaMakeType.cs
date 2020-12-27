@@ -14,6 +14,7 @@ namespace ConceptMatrix.Sheets
         public int Race;
         public int Tribe;
         public sbyte Gender;
+        public byte[] VoiceStruct;
         public int[] FacialFeatureOptions;
 
         public uint RowId { get; set; }
@@ -27,6 +28,9 @@ namespace ConceptMatrix.Sheets
             Race = parser.ReadColumn<int>(0);
             Tribe = parser.ReadColumn<int>(1);
             Gender = parser.ReadColumn<sbyte>(2);
+            VoiceStruct = new byte[12];
+            for (var i = 0; i < 12; i++)
+                VoiceStruct[i] = parser.ReadColumn<byte>(3279 + i);
             FacialFeatureOptions = new int[7 * 8];
             for (var i = 0; i < 7 * 8; i++)
                 FacialFeatureOptions[i] = parser.ReadColumn<int>(3291 + i);
