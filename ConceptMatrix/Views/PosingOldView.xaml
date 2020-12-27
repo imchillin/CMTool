@@ -29,17 +29,8 @@
             <Label Content="{Binding Source={x:Static resx:UIPoseStrings.RealTimeRotation}}" ToolTip="{Binding Source={x:Static resx:UIPoseStrings.RealTimeRotationToolTip}}" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16"/>
         </Viewbox>
         <Border BorderBrush="Black" BorderThickness="3" HorizontalAlignment="Left" Height="150" Margin="955,35,0,0" VerticalAlignment="Top" Width="150" Background="#FF2E2E2E">
-            <local:PoseRotationView x:Name="Cube" Height="Auto" Width="Auto">
-                <local:PoseRotationView.DataContext>
-                    <MultiBinding Converter="{StaticResource ResourceKey=QuaternionConverter}">
-                        <Binding Path="CubeBone_X" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
-                        <Binding Path="CubeBone_Y" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
-                        <Binding Path="CubeBone_Z" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
-                        <Binding Path="CubeBone_W" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
-                    </MultiBinding>
-                </local:PoseRotationView.DataContext>
-            </local:PoseRotationView>
-        </Border>
+			<local:PoseRotationView x:Name="Cube" Height="Auto" Width="Auto" />
+		</Border>
 
         <mah:MetroAnimatedTabControl x:Name="MatrixTabControl" TabStripPlacement="Left" Margin="11,0,268,0" Background="{x:Null}" Width="840">
             <TabItem Header="{Binding Source={x:Static resx:UIPoseStrings.HeadHair}}" Width="200" Height="40" Background="{x:Null}" Style="{DynamicResource MenuLevel2}">

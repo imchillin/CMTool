@@ -22,17 +22,13 @@ namespace ConceptMatrix.Views
         }
 
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
-        private string GAS(params string[] args) => MemoryManager.GetAddressString(args);
-        private readonly Mem m = MemoryManager.Instance.MemLib;
-
         private DragState dragState;
-        private Quaternion newrot;
-        // public bool xCubeChange = true, yCubeChange = true, zCubeChange = true;
 
         public PoseRotationView()
         {
             InitializeComponent();
         }
+
         public Quaternion RotateEuler(Vector3D axis, double angle)
         {
             // Applies the desired rotation first then the original rotation second.
@@ -48,7 +44,7 @@ namespace ConceptMatrix.Views
             return q;
         }
 
-        private void Viewport3D_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
+        private void Viewport3D_MouseMove(object sender, MouseEventArgs e)
         {
             var el = (UIElement)sender;
 
@@ -84,20 +80,19 @@ namespace ConceptMatrix.Views
             }
         }
 
-        private void Viewport3D_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void Viewport3D_MouseDown(object sender, MouseButtonEventArgs e)
         {
             var el = (UIElement)sender;
             if (dragState.isTracking)
                 return;
 
-            newrot = (Quaternion)RotationQuaternion.GetValue(QuaternionRotation3D.QuaternionProperty);
             dragState.lastPoint = e.MouseDevice.GetPosition(el);
             dragState.isTracking = true;
             dragState.mouseButton = e.ChangedButton;
             el.CaptureMouse();
         }
 
-        private void Viewport3D_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void Viewport3D_MouseUp(object sender, MouseButtonEventArgs e)
         {
             var el = (UIElement)sender;
             el.ReleaseMouseCapture();

@@ -131,17 +131,8 @@
             <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                 <GroupBox Header="{Binding Source={x:Static resx:UIPoseStrings.CubeRotationBones}}" x:Name="CubeBox">
                     <Border BorderBrush="Black" BorderThickness="3" Height="155" Width="340" Background="#FF2E2E2E">
-                        <local:PoseRotationView x:Name="Cube" IsEnabled="False">
-                            <local:PoseRotationView.DataContext>
-                                <MultiBinding Converter="{StaticResource ResourceKey=QuaternionConverter}">
-                                    <Binding Path="CubeBone_X" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
-                                    <Binding Path="CubeBone_Y" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
-                                    <Binding Path="CubeBone_Z" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
-                                    <Binding Path="CubeBone_W" NotifyOnSourceUpdated="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" />
-                                </MultiBinding>
-                            </local:PoseRotationView.DataContext>
-                        </local:PoseRotationView>
-                    </Border>
+						<local:PoseRotationView x:Name="Cube" IsEnabled="False" />
+					</Border>
                 </GroupBox>
             </StackPanel>
         </StackPanel>

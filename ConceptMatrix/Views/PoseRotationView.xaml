@@ -228,7 +228,7 @@
                                 <Model3DGroup.Transform>
                                     <RotateTransform3D CenterY="0.5">
                                         <RotateTransform3D.Rotation>
-                                            <QuaternionRotation3D x:Name="RotationQuaternion" Quaternion="{Binding}" />
+                                            <QuaternionRotation3D x:Name="RotationQuaternion" Quaternion="{Binding Quat}" />
                                         </RotateTransform3D.Rotation>
                                     </RotateTransform3D>
                                 </Model3DGroup.Transform>

@@ -24,7 +24,7 @@ namespace ConceptMatrix.Views
         public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
         private string GAS(params string[] args) => MemoryManager.GetAddressString(args);
 
-        private MemoryManager Memory = MemoryManager.Instance;
+        private readonly MemoryManager Memory = MemoryManager.Instance;
         private readonly Mem m = MemoryManager.Instance.MemLib;
         public ToggleButton[] exhair_buttons, exmet_buttons, extop_buttons;
         public ToggleButton ToggleSave;

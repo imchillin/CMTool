@@ -65,6 +65,18 @@ namespace ConceptMatrix.ViewModel
         public double MaxBone { get; set; }
         public double MinBone { get; set; }
 
+        public Quaternion Quat
+        {
+            get => new Quaternion(CubeBone_X, CubeBone_Y, CubeBone_Z, CubeBone_W);
+            set
+            {
+                CubeBone_X = (float)value.X;
+                CubeBone_Y = (float)value.Y;
+                CubeBone_Z = (float)value.Z;
+                CubeBone_W = (float)value.W;
+            }
+        }
+
         private string pointerPath;
         public string PointerPath
         {
