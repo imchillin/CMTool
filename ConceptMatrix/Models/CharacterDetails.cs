@@ -260,7 +260,7 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<string> BodySlot { get; set; }
         [JsonIgnore] public Address<string> ArmSlot { get; set; }
         [JsonIgnore] public Address<int> TimeControl { get; set; }
-        [JsonIgnore] public Address<byte> Weather { get; set; }
+        [JsonIgnore] public Address<ushort> Weather { get; set; }
         [JsonIgnore] public Address<ushort> ForceWeather { get; set; }
         [JsonIgnore] public Address<byte> EntityType { get; set; }
         [JsonIgnore] public Address<short> DataPath { get; set; }
@@ -351,7 +351,7 @@ namespace ConceptMatrix.Models
             RBust = new Address<byte>();
             Jaw = new Address<byte>();
             TimeControl = new Address<int>();
-            Weather = new Address<byte>();
+            Weather = new Address<ushort>();
             ForceWeather = new Address<ushort>();
             LFingerSlot = new Address<string>();
             RFingerSlot = new Address<string>();

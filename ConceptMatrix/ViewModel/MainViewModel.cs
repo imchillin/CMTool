@@ -56,6 +56,7 @@ namespace ConceptMatrix.ViewModel
 		public CharacterDetailsViewModel CharacterDetails { get => characterDetails; set => characterDetails = value; }
 
         public static Thread luminaThread;
+        private static bool threadAlive = true;
 
         public PackIconKind AOTToggleStatus { get; set; } = PackIconKind.ToggleSwitchOffOutline;
 		public Brush ToggleForeground { get; set; } = new SolidColorBrush(Color.FromArgb(0x75, 0xFF, 0xFF, 0xFF));
@@ -80,7 +81,7 @@ namespace ConceptMatrix.ViewModel
                     // Thread for handling Lumina file queueing.
                     luminaThread = new Thread(() =>
                     {
-                        while (luminaThread.IsAlive)
+                        while (luminaThread.IsAlive && threadAlive)
                         {
                             lumina.ProcessFileHandleQueue();
                             Thread.Yield();
@@ -190,8 +191,8 @@ namespace ConceptMatrix.ViewModel
 				MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.PhysicsAddress2, "bytes", "0x0F 0x29 0x00");
 				MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.PhysicsAddress3, "bytes", "0x0F 0x29 0x40 0x20");
 
-				// Kill the Lumina thread.
-				luminaThread.Abort();
+                // Kill the Lumina thread.
+                threadAlive = false;
 			}
             catch (Exception ex)
 			{
@@ -262,7 +263,7 @@ namespace ConceptMatrix.ViewModel
                     var weatherList = from w in lumina.GetExcelSheet<Weather>()
                                       select new ExdCsvReader.CMWeather
                                       {
-                                          Id = w.RowId,
+                                          Id = (ushort)w.RowId,
                                           Name = w.Name.RawString.DefaultIfEmpty("None"),
                                           Icon = lumina.GetIcon(w.Icon).GetImage()
                                       };
@@ -385,7 +386,7 @@ namespace ConceptMatrix.ViewModel
                 if (worker.CancellationPending)
                 {
                     e.Cancel = true;
-                    break;
+                    return;
                 }
                 // sleep for 50 ms
                 Thread.Sleep(50);

@@ -907,9 +907,9 @@ namespace ConceptMatrix.ViewModel
             }
             catch (Exception ex)
             {
-				MessageBox.Show(ex.Message + "\n" + ex.StackTrace, App.ToolName, MessageBoxButton.OK, MessageBoxImage.Error);
+				//MessageBox.Show(ex.Message + "\n" + ex.StackTrace, App.ToolName, MessageBoxButton.OK, MessageBoxImage.Error);
 				mediator.Work -= Work;
-                mediator.Work += Work;
+                //mediator.Work += Work;
             }
         }
     }
