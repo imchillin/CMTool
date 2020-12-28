@@ -10,7 +10,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-You need to have .NET framework installed on your computer, version 4.6.2 or higher. You can download it [here](https://dotnet.microsoft.com/download/dotnet-framework). You might also need to have „C++ Redistributable 2012-2019” installed to have Saintcoinach working properly, grab it from [here](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads).
+You need to have .NET framework installed on your computer, version 4.6.2 or higher. You can download it [here](https://dotnet.microsoft.com/download/dotnet-framework). 
 
 ### Installing
 
