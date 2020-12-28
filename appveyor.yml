@@ -1,7 +1,7 @@
 configuration: Release
 
 # Don't build unless it's tagged
-# skip_non_tags: true
+skip_non_tags: true
 
 image:
   - Visual Studio 2019
@@ -16,14 +16,6 @@ init:
       {
           Update-AppveyorBuild -Version $env:APPVEYOR_REPO_TAG_NAME
       }
-
-# Patch the Assembly Info file to have the version based on the tag name
-assembly_info:
-  patch: true
-  file: '**\AssemblyInfo.*'
-  assembly_version: '{version}'
-  assembly_file_version: '{version}'
-  assembly_informational_version: '{version}'
 
 before_build:
   - git submodule update --init --recursive --remote
