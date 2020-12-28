@@ -103,7 +103,7 @@ namespace ConceptMatrix.Utility
 
 		public class CMWeather
 		{
-			public uint Id { get; set; }
+			public ushort Id { get; set; }
 			public string Name { get; set; }
 
 			public ImageSource Icon { get; set; }
