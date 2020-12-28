@@ -219,6 +219,29 @@ namespace ConceptMatrix.ViewModel
                     characterView.RaceBox.ItemsSource = races;
                     characterView.ClanBox.ItemsSource = tribes;
                 });
+
+                try
+                {
+                    var voices = new List<ExdCsvReader.CMVoice>();
+                    var cmtSheet = lumina.GetExcelSheet<CharaMakeType>().Where(c => c.Tribe != 0);
+                    var r = this.races.ToArray();
+                    var t = this.tribes.ToArray();
+                    var male = Resx.MiscStrings.Male;
+                    var female = Resx.MiscStrings.Female;
+
+                    foreach (var cmt in cmtSheet)
+                        for (var i = 0; i < cmt.VoiceStruct.Length; i++)
+                            voices.Add(new ExdCsvReader.CMVoice() { Voice = cmt.VoiceStruct[i], Name = $"Voice {i + 1} ({cmt.VoiceStruct[i]})", Group = $"{r[cmt.Race]}, {t[cmt.Tribe]} ({(cmt.Gender == 0 ? male : female)})" });
+
+                    var lcv = new ListCollectionView(voices);
+                    lcv.GroupDescriptions.Add(new PropertyGroupDescription("Group"));
+
+                    App.Current.Dispatcher.Invoke(() => characterView.Voices.ItemsSource = lcv);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message + "\n" + ex.StackTrace + "\n" + ex.InnerException.StackTrace, "Error fetching voices sheet!");
+                }
             });
             Task.Run(() => CharacterDetailsView.dataProvider.MakeItemList());
             Task.Run(() => CharacterDetailsView.dataProvider.MakePropList());
@@ -283,24 +306,6 @@ namespace ConceptMatrix.ViewModel
             {
                 var titleSheet = lumina.GetExcelSheet<Title>().Select(title => title.Feminine.RawString.DefaultIfEmpty("None"));
                 App.Current.Dispatcher.Invoke(() => characterView.TitleBox.ItemsSource = titleSheet);
-            });
-            Task.Run(() =>
-            {
-                var voices = new List<ExdCsvReader.CMVoice>();
-                var cmtSheet = lumina.GetExcelSheet<CharaMakeType>().Where(c => c.Tribe != 0);
-                var r = this.races.ToArray();
-                var t = this.tribes.ToArray();
-                var male = Resx.MiscStrings.Male;
-                var female = Resx.MiscStrings.Female;
-
-                foreach (var cmt in cmtSheet)
-                    for (var i = 0; i < cmt.VoiceStruct.Length; i++)
-                        voices.Add(new ExdCsvReader.CMVoice() { Voice = cmt.VoiceStruct[i], Name = $"Voice {i + 1} ({cmt.VoiceStruct[i]})", Group = $"{r[cmt.Race]}, {t[cmt.Tribe]} ({(cmt.Gender==0?male:female)})" });
-
-                var lcv = new ListCollectionView(voices);
-                lcv.GroupDescriptions.Add(new PropertyGroupDescription("Group"));
-
-                App.Current.Dispatcher.Invoke(() => characterView.Voices.ItemsSource = lcv);
             });
 
             sw.Stop();
