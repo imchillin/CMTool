@@ -95,7 +95,7 @@ namespace ConceptMatrix.Views
 
                 // Get the current time.
                 var worldTime = m.readLong($"{timeStructPtr:X}+{Settings.Instance.Character.MovingTime}");
-                worldTime %= 86400;
+                worldTime %= 2764800;
 
                 if (TimeIsFrozen)
                     m.writeBytes($"{timeStructPtr:X}+{Settings.Instance.Character.MovingTime}", BitConverter.GetBytes(FrozenTime));
@@ -290,62 +290,7 @@ namespace ConceptMatrix.Views
             }
         }
 
-        private void Weather_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double?> e)
-        {
-            if (Weather.Value.HasValue)
-                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.WeatherAddress, Settings.Instance.Character.Weather), "byte", Convert.ToByte(Weather.Value).ToString("X"));
-            Weather.ValueChanged -= Weather_ValueChanged;
-        }
-
-        private void Weather_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
-        {
-            if (Weather.IsMouseOver || Weather.IsKeyboardFocusWithin)
-            {
-                Weather.ValueChanged -= Weather_ValueChanged;
-                Weather.ValueChanged += Weather_ValueChanged;
-            }
-        }
-
         #endregion
-
-        private void RefreshButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                // Get the allowed weathers for this territory.
-                var allowedWeathers = MainViewModel.lumina.GetExcelSheet<TerritoryType>().First(t => t.RowId == CharacterDetails.Territory).AllowedWeather();
-                // Create a CMWeather list for use in an itemssource.
-                var cmWeathers = from w in allowedWeathers
-                                 select new ExdCsvReader.CMWeather() { Id = (byte)w.RowId, Icon = MainViewModel.lumina.GetIcon(w.Icon).GetImage(), Name = w.Name };
-
-                // Set the item source to the CMWeather list.
-                WeatherBox.ItemsSource = cmWeathers;
-
-                // Set the selected item to be the weather that's currently active. 
-                WeatherBox.SelectedIndex = cmWeathers.TakeWhile(w => w.Id != CharacterDetails.Weather.value).Count();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Unable to get allowed weathers for this zone.", App.ToolName, MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        private void WeatherBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            // Only allow for user interaction changes to the selection.
-            if (isUserInteraction)
-            {
-                if (WeatherBox.SelectedItem == null)
-                    return;
-
-                var selectedWeather = WeatherBox.SelectedItem as ExdCsvReader.CMWeather;
-                CharacterDetails.Weather.value = (byte)selectedWeather.Id;
-                var hexValue = selectedWeather.Id.ToString("X");
-
-                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.WeatherAddress, Settings.Instance.Character.Weather), "byte", hexValue);
-            }
-            isUserInteraction = false;
-        }
 
         // Ensures that any updates to the selection made by mutating the items doesn't cause a memory write.
         private void WeatherBox_PreviewMouseDown(object sender, MouseButtonEventArgs e) => isUserInteraction = true;
@@ -916,16 +861,6 @@ namespace ConceptMatrix.Views
                 e.Handled = true;
         }
 
-        private void RenderButton_Checked(object sender, RoutedEventArgs e)
-        {
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.CharacterRenderAddress, "bytes", "0x90 0x90 0x90 0x90 0x90");
-        }
-
-        private void RenderButton_Unchecked(object sender, RoutedEventArgs e)
-        {
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.CharacterRenderAddress, "bytes", "0xE9 0xB8 0x00 0x00 0x00");
-        }
-
         private void ResetCams_Click(object sender, RoutedEventArgs e)
         {
             CharacterDetails.CameraHeight2.value = 0;
@@ -957,14 +892,6 @@ namespace ConceptMatrix.Views
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CamPanX), "float", CharacterDetails.CamPanX.value.ToString());
             CharacterDetails.CamPanY.value = 0;
             MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.CameraAddress, Settings.Instance.Character.CamPanY), "float", CharacterDetails.CamPanY.value.ToString());
-        }
-
-        private void Render_Click(object sender, RoutedEventArgs e)
-        {
-            var old = BitConverter.GetBytes(MemoryManager.Instance.MemLib.read2Byte(MemoryManager.Instance.CharacterRenderAddress2));
-            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.CharacterRenderAddress2, "bytes", "0x00 0x00");
-            System.Threading.Tasks.Task.Delay(50).Wait();
-            MemoryManager.Instance.MemLib.writeBytes(MemoryManager.Instance.CharacterRenderAddress2, old);
         }
 
 		#region More trash

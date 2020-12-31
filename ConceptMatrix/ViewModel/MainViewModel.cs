@@ -294,7 +294,6 @@ namespace ConceptMatrix.ViewModel
                     App.Current.Dispatcher.Invoke(() =>
                     {
                         worldView.ForceWeatherBox.ItemsSource = weatherList;
-                        worldView.WeatherBox.ItemsSource = weatherList;
                     });
                 }
                 catch (Exception ex)
