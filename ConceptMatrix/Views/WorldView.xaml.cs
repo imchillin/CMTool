@@ -50,6 +50,9 @@ namespace ConceptMatrix.Views
         private long frozenTime;
         public long FrozenTime { get => frozenTime; set { frozenTime = value; OnPropertyChanged(); } }
 
+        private byte moon;
+        public double Moon { get => moon; set { moon = (byte)value; OnPropertyChanged(); } }
+
         protected void OnPropertyChanged([CallerMemberName] string name = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 
         private bool isUserInteraction;
@@ -94,18 +97,27 @@ namespace ConceptMatrix.Views
                 var timeStructPtr = m.readLong(MemoryManager.Instance.TimeAddress);
 
                 // Get the current time.
-                var worldTime = m.readLong($"{timeStructPtr:X}+{Settings.Instance.Character.MovingTime}");
-                worldTime %= 2764800;
+                var readTime = m.readLong($"{timeStructPtr:X}+{Settings.Instance.Character.MovingTime}") % 2764800;
+                var dayTime = readTime % 86400;
+                var moonCycle = (byte)Math.Floor(readTime / 86400f);
 
                 if (TimeIsFrozen)
-                    m.writeBytes($"{timeStructPtr:X}+{Settings.Instance.Character.MovingTime}", BitConverter.GetBytes(FrozenTime));
+                {
+                    var newTime = (long)(FrozenTime + (86400 * (Moon - 1)));
+                    m.writeBytes($"{timeStructPtr:X}+{Settings.Instance.Character.MovingTime}", BitConverter.GetBytes(newTime));
+                }
                 else
-                    FrozenTime = worldTime;
+                {
+                    FrozenTime = dayTime;
+                    Moon = moonCycle;
+                }
 
                 var time = TimeSpan.FromSeconds(FrozenTime);
                 TimeString = string.Format("{0:D2}:{1:D2}", time.Hours, time.Minutes);
             }
-            catch { }
+            catch
+            {
+            }
         }
 
         #region Stupid ass shit sick of these dumb names
@@ -1135,7 +1147,7 @@ namespace ConceptMatrix.Views
                 if (ForceWeatherBox.SelectedIndex >= 0)
                 {
                     var Value = (ExdCsvReader.CMWeather)ForceWeatherBox.SelectedItem;
-                    CharacterDetails.ForceWeather.value = (ushort)Value.Id;
+                    CharacterDetails.ForceWeather.value = Value.Id;
                     m.writeMemory(GAS(MemoryManager.Instance.GposeFilters, c.ForceWeather), "byte", Value.Id.ToString("X"));
                 }
             }

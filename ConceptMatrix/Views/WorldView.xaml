@@ -162,7 +162,7 @@
 						       TextAlignment="Right"
 						       NumericInputMode="Numbers"
 						       Minimum="0"
-						       Maximum="86400"
+						       Maximum="2764800"
 						       FontSize="11.35"
 						       FontFamily="Sogoe UI"/>
 			<Slider x:Name="TimeSlider"
@@ -177,7 +177,8 @@
 				    SmallChange="1"
 				    Interval="1"
 				    Height="28"/>
-			<Label Content="{Binding Path=TimeString}" HorizontalAlignment="Left" Margin="926,354,0,0" VerticalAlignment="Top" Width="165" HorizontalContentAlignment="Center" Height="28"/>
+			<Label Content="{Binding Path=TimeString}" HorizontalAlignment="Left" Margin="926,354,0,0" VerticalAlignment="Top" Width="179" HorizontalContentAlignment="Center" Height="28"/>
+			<Slider Name="DaySlider" Value="{Binding Path=Moon}" Minimum="1" Maximum="32" SmallChange="1" HorizontalAlignment="Left" Margin="677,392,0,0" VerticalAlignment="Top" Width="234" TickPlacement="BottomRight"/>
 		</Grid>
 
 		<CheckBox  IsChecked="{Binding CharacterDetails.CamPanY.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.CamPanY}}" HorizontalAlignment="Left" Margin="16,421,0,0" VerticalAlignment="Top" Height="28" Width="107"/>
