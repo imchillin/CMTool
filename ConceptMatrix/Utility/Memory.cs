@@ -1331,13 +1331,18 @@ namespace ConceptMatrix.Utility
         /// <returns>UIntPtr to created code cave for use for later deallocation</returns>
         public UIntPtr CreateCodeCave(string code, byte[] newBytes, int replaceCount, int size = 0x10000, string file = "")
         {
-            if (replaceCount < 5)
-                return UIntPtr.Zero; // returning UIntPtr.Zero instead of throwing an exception
-                                     // to better match existing code
-
             UIntPtr theCode;
             theCode = get64bitCode(code, file);
             UIntPtr address = theCode;
+
+            return CreateCodeCave(address, newBytes, replaceCount, size);
+        }
+
+        public UIntPtr CreateCodeCave(UIntPtr address, byte[] newBytes, int replaceCount, int size = 0x10000)
+		{
+            if (replaceCount < 5)
+                return UIntPtr.Zero; // returning UIntPtr.Zero instead of throwing an exception
+                                     // to better match existing code
 
             // if x64 we need to try to allocate near the address so we dont run into the +-2GB limit of the 0xE9 jmp
 
@@ -1346,7 +1351,7 @@ namespace ConceptMatrix.Utility
 
             for (var i = 0; i < 10 && caveAddress == UIntPtr.Zero; i++)
             {
-                caveAddress = VirtualAllocEx(pHandle, FindFreeBlockForRegion(prefered, (uint)newBytes.Length),
+                caveAddress = VirtualAllocEx(pHandle, FindFreeBlockForRegion(prefered.ToUInt64(), (uint)newBytes.Length),
                                              (uint)size, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
 
                 if (caveAddress == UIntPtr.Zero)
@@ -1374,7 +1379,7 @@ namespace ConceptMatrix.Utility
             writeBytes(address, jmpBytes);
 
             byte[] caveBytes = new byte[5 + newBytes.Length];
-            offset = (int)(((long)address + jmpBytes.Length) - ((long)caveAddress + newBytes.Length) - 5);
+            offset = (int)((long)address + jmpBytes.Length - ((long)caveAddress + newBytes.Length) - 5);
 
             newBytes.CopyTo(caveBytes, 0);
             caveBytes[newBytes.Length] = 0xE9;
@@ -1383,15 +1388,75 @@ namespace ConceptMatrix.Utility
             writeBytes(caveAddress, caveBytes);
 
             return caveAddress;
+		}
+
+        // array of memory allocations
+        private List<MemoryAlloc> memoryAllocs = new List<MemoryAlloc>();
+
+        /// <summary>
+        /// Memory allocated
+        /// </summary>
+        struct MemoryAlloc
+        {
+            public ulong allocateNearThisAddress;
+            public ulong address;
+            public ulong pointer;
+            public ulong size;
+            public ulong SizeLeft => size - (pointer - address);
+            public uint lastProtection;
         }
 
+        public ulong Alloc(uint size, ulong allocateNearThisAddress)
+		{
+            GetSystemInfo(out SYSTEM_INFO systemInfo);
+
+            try
+			{
+                // check for existing alloc near this address
+                var i = memoryAllocs.Select((alloc, index) => new { alloc, index })
+                                    .Where(pair => pair.alloc.allocateNearThisAddress == allocateNearThisAddress)
+                                    .Select(pair => pair.index).First();
+
+                // get the alloc from the array
+                var found = memoryAllocs[i];
+                // is there enough room
+                if (found.SizeLeft >= size)
+                {
+                    var ret = found.pointer;
+                    found.pointer += size;
+                    memoryAllocs[i] = found;
+                    return ret;
+                }
+            }
+			catch {}
+
+            var addr = FindFreeBlockForRegion(allocateNearThisAddress, size);
+
+            VirtualQueryEx(theProc.Handle, new UIntPtr((ulong)addr), out MEMORY_BASIC_INFORMATION mbi);
+
+            memoryAllocs.Add(new MemoryAlloc
+            {
+                address = addr.ToUInt64(),
+                allocateNearThisAddress = allocateNearThisAddress,
+                pointer = addr.ToUInt64() + size,
+                size = systemInfo.pageSize,
+                lastProtection = mbi.Protect
+            });
+
+            if (VirtualAllocEx(theProc.Handle, new UIntPtr((ulong)addr), size, MEM_RESERVE | MEM_COMMIT, PAGE_EXECUTE_READWRITE) == null)
+                throw new Exception("Couldn't allocate memory at " + addr);
+
+            return (ulong)addr;
+        }
+
+        /*
         private UIntPtr FindFreeBlockForRegion(UIntPtr baseAddress, uint size)
         {
             UIntPtr minAddress = UIntPtr.Subtract(baseAddress, 0x70000000);
             UIntPtr maxAddress = UIntPtr.Add(baseAddress, 0x70000000);
 
             UIntPtr ret = UIntPtr.Zero;
-            UIntPtr tmpAddress = UIntPtr.Zero;
+            UIntPtr tmpAddress;
 
             GetSystemInfo(out SYSTEM_INFO si);
 
@@ -1411,12 +1476,9 @@ namespace ConceptMatrix.Utility
                 maxAddress = si.maximumApplicationAddress;
             }
 
-            MEMORY_BASIC_INFORMATION mbi;
+			UIntPtr current = minAddress;
 
-            UIntPtr current = minAddress;
-            UIntPtr previous = current;
-
-            while (VirtualQueryEx(pHandle, current, out mbi).ToUInt64() != 0)
+			while (VirtualQueryEx(pHandle, current, out MEMORY_BASIC_INFORMATION mbi).ToUInt64() != 0)
             {
                 if ((long)mbi.BaseAddress > (long)maxAddress)
                     return UIntPtr.Zero;  // No memory found, let windows handle
@@ -1478,8 +1540,8 @@ namespace ConceptMatrix.Utility
                 if (mbi.RegionSize % si.allocationGranularity > 0)
                     mbi.RegionSize += si.allocationGranularity - (mbi.RegionSize % si.allocationGranularity);
 
-                previous = current;
-                current = UIntPtr.Add(mbi.BaseAddress, (int)mbi.RegionSize);
+				UIntPtr previous = current;
+				current = UIntPtr.Add(mbi.BaseAddress, (int)mbi.RegionSize);
 
                 if ((long)current > (long)maxAddress)
                     return ret;
@@ -1489,6 +1551,108 @@ namespace ConceptMatrix.Utility
             }
 
             return ret;
+        }*/
+
+        private UIntPtr FindFreeBlockForRegion(ulong @base, uint size)
+        {
+            // initialize minimum and maximum address space relative to the base address
+            // maximum JMP instruction for 64-bit is a relative JMP using the RIP register
+            // jump to offset of 32-bit value, max being 7FFFFFFF
+            // cheat engine slices off the Fs to give just 70000000 for unknown reasons
+            var minAddress = @base - 0x70000000; // 0x10000 (32-bit)
+            var maxAddress = @base + 0x70000000; // 0xfffffffff (32-bit)
+
+            // retrieve system info
+            GetSystemInfo(out SYSTEM_INFO systemInfo);
+
+            // keep min and max values within the system range for a given application
+            if (minAddress < (ulong)systemInfo.minimumApplicationAddress)
+                minAddress = (ulong)systemInfo.minimumApplicationAddress;
+            if (maxAddress > (ulong)systemInfo.maximumApplicationAddress)
+                maxAddress = (ulong)systemInfo.maximumApplicationAddress;
+
+            // address for the current loop
+            ulong addr = minAddress;
+            // address from the last loop
+            ulong oldAddr = 0;
+            // current result to be passed back from function
+            ulong result = 0;
+
+            // query information about pages in virtual address space into mbi
+            while (VirtualQueryEx(theProc.Handle, new UIntPtr(addr), out MEMORY_BASIC_INFORMATION mbi).ToUInt64() != 0)
+            {
+                // the base address is past the max address
+                if (mbi.BaseAddress.ToUInt64() > maxAddress)
+                    return UIntPtr.Zero; // throw new Exception("Base address is greater than max address.");
+
+                // check if the state is free to allocate and the region size allocated is enough to fit our requested size
+                if (mbi.State == MEM_FREE && mbi.RegionSize > size)
+                {
+                    // set address to the current base address
+                    ulong nAddr = mbi.BaseAddress.ToUInt64();
+                    // get potential offset from granuarltiy alignment
+                    var offset = systemInfo.allocationGranularity - (nAddr % systemInfo.allocationGranularity);
+
+                    // checks base address if it's on the edge of the allocation granularity (page)
+                    if (mbi.BaseAddress.ToUInt64() % systemInfo.allocationGranularity > 0)
+                    {
+                        if ((ulong)mbi.RegionSize - offset >= size)
+                        {
+                            // increase by potential offset
+                            nAddr += offset;
+
+                            // address is under base address
+                            if (nAddr < @base)
+                            {
+                                // move into the region
+                                nAddr += (ulong)mbi.RegionSize - offset - size;
+                                // prevent overflow past base address
+                                if (nAddr > @base)
+                                    nAddr = @base;
+                                // align to page
+                                nAddr -= nAddr % systemInfo.allocationGranularity;
+                            }
+
+                            // new address is less than the one found last loop
+                            if (Math.Abs((long)(nAddr - @base)) < Math.Abs((long)(result - @base)))
+                                result = nAddr;
+                        }
+                    }
+                    else
+                    {
+                        // address is under base address
+                        if (nAddr < @base)
+                        {
+                            // move into the region
+                            nAddr += (ulong)mbi.RegionSize - size;
+                            // prevent overflow past base address
+                            if (nAddr > @base)
+                                nAddr = @base;
+                            // align to page
+                            nAddr -= nAddr % systemInfo.allocationGranularity;
+                        }
+
+                        // new address is less than the one found last loop
+                        if (Math.Abs((long)(nAddr - @base)) < Math.Abs((long)(result - @base)))
+                            result = nAddr;
+                    }
+                }
+
+                // region size isn't aligned with allocation granularity increase by difference 
+                if (mbi.RegionSize % systemInfo.allocationGranularity > 0)
+                    mbi.RegionSize += systemInfo.allocationGranularity - (mbi.RegionSize % systemInfo.allocationGranularity);
+
+                // set old address
+                oldAddr = addr;
+                // increase address to the next region from our base address
+                addr = (ulong)mbi.BaseAddress + (ulong)mbi.RegionSize;
+
+                // address goes over max size or overflow
+                if (addr > maxAddress || oldAddr > addr)
+                    return (UIntPtr)result;
+            }
+
+            return (UIntPtr)result; // maybe not a good idea not sure
         }
 #endif
 
