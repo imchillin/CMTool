@@ -1404,7 +1404,7 @@ namespace ConceptMatrix
 
             if (GposeButton.IsKeyboardFocusWithin || GposeButton.IsMouseOver)
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Add(MemoryManager.Instance.BaseAddress, CharacterDetailsViewModel.eOffset);
-            if (!CharacterDetails.GposeMode)
+            if (MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheckAddress)) == 0 && MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheck2Address)) == 1)
             {
                 MainViewModel.characterView.AnimSpeed.IsEnabled = false;
                 MainViewModel.characterView.AnimSpeed.IsChecked = false;
