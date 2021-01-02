@@ -136,15 +136,6 @@
 			<materialDesign:PackIcon Kind="Download" Height="24" Width="24"/>
 		</Button>
 
-		<CheckBox IsChecked="{Binding CharacterDetails.ForceWeather.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.Weather}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.WeatherForceToolTip}}" HorizontalAlignment="Left" Margin="410,390,0,0" VerticalAlignment="Top" Height="28"/>
-		<ComboBox x:Name="ForceWeatherBox" ItemTemplate="{StaticResource cmbTemplate}" SelectedValuePath="Id" SelectedValue="{Binding CharacterDetails.ForceWeather.value}" HorizontalAlignment="Left" Margin="530,390,0,0" VerticalAlignment="Top" Width="142" Height="28" FontSize="11.35" SelectionChanged="ForceWeatherBox_SelectionChanged" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Padding="0">
-			<ComboBox.ItemsPanel>
-				<ItemsPanelTemplate>
-					<VirtualizingStackPanel />
-				</ItemsPanelTemplate>
-			</ComboBox.ItemsPanel>
-		</ComboBox>
-
 		<!-- Time Controls -->
 		<Grid Name="TimeControls">
 			<CheckBox IsChecked="{Binding Path=TimeIsFrozen}" Content="{Binding Source={x:Static resx:UIStringsContent.TimeControl}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.TimeControlToolTip}}" HorizontalAlignment="Left" Margin="410,355,0,0" VerticalAlignment="Top" Height="28"/>
@@ -178,7 +169,42 @@
 				    Interval="1"
 				    Height="28"/>
 			<Label Content="{Binding Path=TimeString}" HorizontalAlignment="Left" Margin="926,354,0,0" VerticalAlignment="Top" Width="179" HorizontalContentAlignment="Center" Height="28"/>
-			<Slider Name="DaySlider" Value="{Binding Path=Moon}" Minimum="1" Maximum="32" SmallChange="1" HorizontalAlignment="Left" Margin="677,392,0,0" VerticalAlignment="Top" Width="234" TickPlacement="BottomRight"/>
+			<Slider Name="DaySlider" 
+					Value="{Binding Path=Moon}"
+					IsEnabled="{Binding Path=TimeIsFrozen}"
+					Minimum="1"
+					Maximum="32"
+					SmallChange="1"
+					HorizontalAlignment="Left"
+					Margin="677,392,0,0"
+					VerticalAlignment="Top"
+					Width="234"
+					TickPlacement="BottomRight"/>
+			<mah:NumericUpDown x:Name="MoonPhase"
+							   IsEnabled="{Binding TimeIsFrozen}"
+							   Value="{Binding Path=Moon}"
+							   HorizontalAlignment="Left"
+							   Margin="530,388,0,0"
+							   VerticalAlignment="Top"
+							   Width="142"
+							   Background="{x:Null}"
+							   BorderThickness="0,0,0,1"
+							   BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"
+							   Interval="1"
+							   TextAlignment="Right"
+							   NumericInputMode="Numbers"
+							   Minimum="1"
+							   Maximum="32"
+							   FontSize="11.35"
+							   FontFamily="Sogoe UI"/>
+			<ComboBox x:Name="ForceWeatherBox" ItemTemplate="{StaticResource cmbTemplate}" SelectedValuePath="Id" SelectedValue="{Binding CharacterDetails.ForceWeather.value}" HorizontalAlignment="Left" Margin="530,421,0,0" VerticalAlignment="Top" Width="142" Height="28" FontSize="11.35" SelectionChanged="ForceWeatherBox_SelectionChanged" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" Padding="0">
+				<ComboBox.ItemsPanel>
+					<ItemsPanelTemplate>
+						<VirtualizingStackPanel />
+					</ItemsPanelTemplate>
+				</ComboBox.ItemsPanel>
+			</ComboBox>
+			<CheckBox IsChecked="{Binding CharacterDetails.ForceWeather.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.Weather}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.WeatherForceToolTip}}" HorizontalAlignment="Left" Margin="410,421,0,0" VerticalAlignment="Top" Height="28"/>
 		</Grid>
 
 		<CheckBox  IsChecked="{Binding CharacterDetails.CamPanY.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.CamPanY}}" HorizontalAlignment="Left" Margin="16,421,0,0" VerticalAlignment="Top" Height="28" Width="107"/>
