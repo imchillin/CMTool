@@ -1,6 +1,6 @@
 {
   "LastUpdated": "5.35", // bad legacy support
-  "NewLastUpdated": "5.4.0.3",
+  "NewLastUpdated": "5.4.0-4",
   "CameraOffset": "1D8A070",
   "GposeOffset": "1D8A258",
   "GposeEntityOffset": "1D8B660",
@@ -135,7 +135,7 @@
     "Job": "F08", // MAIN HAND
     "WeaponBase": "F0A",
     "WeaponV": "F0C",
-    "WeaponDye": "F0F",
+    "WeaponDye": "F0E",
     "Offhand": "F70",
     "OffhandBase": "F72",
     "OffhandV": "F74",
