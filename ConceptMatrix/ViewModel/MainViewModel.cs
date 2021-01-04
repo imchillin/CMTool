@@ -191,6 +191,8 @@ namespace ConceptMatrix.ViewModel
 				MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.PhysicsAddress2, "bytes", "0x0F 0x29 0x00");
 				MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.PhysicsAddress3, "bytes", "0x0F 0x29 0x40 0x20");
 
+                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.CharacterRenderAddress, "bytes", "0xE9 0xB8 0x00 0x00 0x00");
+
                 // Kill the Lumina thread.
                 threadAlive = false;
 			}
@@ -287,7 +289,7 @@ namespace ConceptMatrix.ViewModel
                                       select new ExdCsvReader.CMWeather
                                       {
                                           Id = (ushort)w.RowId,
-                                          Name = w.Name.RawString.DefaultIfEmpty("None"),
+                                          Name = $"{w.Name.RawString.DefaultIfEmpty("None")} ({w.RowId})",
                                           Icon = lumina.GetIcon(w.Icon).GetImage()
                                       };
 

@@ -307,6 +307,55 @@ namespace ConceptMatrix.Views
         // Ensures that any updates to the selection made by mutating the items doesn't cause a memory write.
         private void WeatherBox_PreviewMouseDown(object sender, MouseButtonEventArgs e) => isUserInteraction = true;
 
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // Get the allowed weathers for this territory.
+                var allowedWeathers = MainViewModel.lumina.GetExcelSheet<TerritoryType>().First(t => t.RowId == CharacterDetails.Territory).AllowedWeather();
+                // Create a CMWeather list for use in an itemssource.
+                var cmWeathers = from w in allowedWeathers
+                                 select new ExdCsvReader.CMWeather() { Id = (byte)w.RowId, Icon = MainViewModel.lumina.GetIcon(w.Icon).GetImage(), Name = w.Name };
+
+                // Set the item source to the CMWeather list.
+                WeatherBox.ItemsSource = cmWeathers;
+
+                // Set the selected item to be the weather that's currently active. 
+                WeatherBox.SelectedIndex = cmWeathers.TakeWhile(w => w.Id != CharacterDetails.Weather.value).Count();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Unable to get allowed weathers for this zone.", App.ToolName, MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void WeatherBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Only allow for user interaction changes to the selection.
+            if (isUserInteraction)
+            {
+                if (WeatherBox.SelectedItem == null)
+                    return;
+
+                var selectedWeather = WeatherBox.SelectedItem as ExdCsvReader.CMWeather;
+                CharacterDetails.Weather.value = (byte)selectedWeather.Id;
+                var hexValue = selectedWeather.Id.ToString("X");
+
+                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(MemoryManager.Instance.WeatherAddress, Settings.Instance.Character.Weather), "byte", hexValue);
+            }
+            isUserInteraction = false;
+        }
+
+        private void RenderButton_Checked(object sender, RoutedEventArgs e)
+        {
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.CharacterRenderAddress, "bytes", "0x90 0x90 0x90 0x90 0x90");
+        }
+
+        private void RenderButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.CharacterRenderAddress, "bytes", "0xE9 0xB8 0x00 0x00 0x00");
+        }
+
         private void Filters_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (Filters.SelectedItem == null) return;
