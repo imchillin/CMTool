@@ -364,7 +364,7 @@
 		<!-- Target Status Label -->
 		<Label x:Name="FrozenPlayaLabel" x:FieldModifier="public" Content="Targeted Actor is ???" HorizontalAlignment="Left" Height="28" Margin="540,495,0,0" VerticalAlignment="Top" Width="260" FontWeight="Bold" FontSize="14"/>
 
-		<Label Content="BROKEN DUE TO &#10;CHANGES IN 5.4" Margin="534,376,176,46" FontSize="40" FontWeight="Bold" Foreground="White"/>
+		<Label Content="BROKEN DUE TO &#10;CHANGES IN 5.4" Margin="534,376,256,46" FontSize="40" FontWeight="Bold" Foreground="White"/>
 
 		<!-- Data Path -->
 		<CheckBox IsChecked="{Binding CharacterDetails.DataPath.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.DataPath}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.DataPathToolTip}}" HorizontalAlignment="Left" Margin="545,345,0,0" VerticalAlignment="Top" Height="28"/>
