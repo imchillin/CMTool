@@ -364,7 +364,7 @@ namespace ConceptMatrix.ViewModel
                 ServicePointManager.SecurityProtocol = (ServicePointManager.SecurityProtocol & SecurityProtocolType.Ssl3) | (SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12);
                 using (var wc = new WebClient())
                 {
-                    var jsonStr = wc.DownloadString(@"https://raw.githubusercontent.com/imchillin/CMTool/master/ConceptMatrix/" + file);
+                    var jsonStr = wc.DownloadString(@"https://raw.githubusercontent.com/imchillin/CMTool/master/ConceptMatrix/" + file + "?" + DateTime.Now);
                     var offset = JsonConvert.DeserializeObject<Settings>(jsonStr);
 
                     if (Settings.Instance.NewLastUpdated == null)
