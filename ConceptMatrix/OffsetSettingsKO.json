@@ -1,30 +1,30 @@
 {
   "LastUpdated": "5.2b", // bad legacy support
-  "NewLastUpdated": "5.2x6", // weird fix with x
-  "CameraOffset": "1C60A00",
-  "GposeOffset": "1C60BE8",
-  "GposeEntityOffset": "1C63A80",
-  "GposeCheckOffset": "1C647F0",
-  "GposeCheck2Offset": "1C647D0",
-  "AoBOffset": "1C8A8F8",
-  "TargetOffset": "1C60C50",
-  "TimeOffset": "1C41578",
-  "WeatherOffset": "1BB3838",
-  "TerritoryOffset": "1C60998",
-  "GposeFilters": "1C3F638",
-  "MusicOffset": "1C7E738",
-  "SkeletonOffset": "137FF10",
-  "SkeletonOffset2": "138103D",
-  "SkeletonOffset3": "138ECA4",
-  "SkeletonOffset4": "137FF20",
-  "SkeletonOffset5": "137FE9B",
-  "SkeletonOffset6": "138104D",
-  "SkeletonOffset7": "1380FC8",
-  "PhysicsOffset": "3799E8",
-  "PhysicsOffset2": "3799DF",
-  "PhysicsOffset3": "3799F2",
-  "CharacterRenderOffset": "430310",
-  "CharacterRenderOffset2": "430306",
+  "NewLastUpdated": "5.3", // weird fix with x
+  "CameraOffset": "1C60A00", // unused
+  "GposeOffset": "1D080B0",
+  "GposeEntityOffset": "1D09490",
+  "GposeCheckOffset": "1D0BC90",
+  "GposeCheck2Offset": "1D0BC70",
+  "AoBOffset": "1C8A8F8", // unused
+  "TargetOffset": "1D07FF0",
+  "TimeOffset": "1C41578", // unused
+  "WeatherOffset": "1CBEDF8",
+  "TerritoryOffset": "1C60998", // unused
+  "GposeFilters": "1CE6438",
+  "MusicOffset": "1C7E738", // unused
+  "SkeletonOffset": "137FF10", // unused
+  "SkeletonOffset2": "138103D", // unused
+  "SkeletonOffset3": "138ECA4", // unused
+  "SkeletonOffset4": "137FF20", // unused
+  "SkeletonOffset5": "137FE9B", // unused
+  "SkeletonOffset6": "138104D", // unused
+  "SkeletonOffset7": "1380FC8", // unused
+  "PhysicsOffset": "3799E8", // unused
+  "PhysicsOffset2": "3799DF", // unused
+  "PhysicsOffset3": "3799F2", // unused
+  "CharacterRenderOffset": "430310", // unused
+  "CharacterRenderOffset2": "430306", // unused
   "Character": {
     "Name": "30",
     "ActorID": "2C",
