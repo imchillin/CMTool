@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ConceptMatrix.Sheets
 {
-    [Sheet("TerritoryType", columnHash: 0xb7598447)]
+    [Sheet("TerritoryType")]
     public class TerritoryType : IExcelRow
     {
 
