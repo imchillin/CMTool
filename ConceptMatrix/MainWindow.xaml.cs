@@ -1647,5 +1647,47 @@ namespace ConceptMatrix
         {
             FocusManager.SetFocusedElement(FocusManager.GetFocusScope(GposeLabel), null);
         }
-    }
+
+        Reloaded.Injector.Injector injector;
+
+		private void InjectBtn_Click(object sender, RoutedEventArgs e)
+		{
+            var proc = Process.GetProcessById(MainViewModel.gameProcId);
+            injector = new Reloaded.Injector.Injector(proc);
+
+            injector.Inject(DllPath.Text);
+		}
+
+        struct AnimParam
+		{
+            public IntPtr ptr;
+            public short animId;
+            public short loopId;
+            public IntPtr ptr2;
+		}
+
+		private void InitBtn_Click(object sender, RoutedEventArgs e)
+		{
+            injector.CallFunction(DllPath.Text, "Initialize", 0);
+		}
+
+		private void EjectBtn_Click(object sender, RoutedEventArgs e)
+		{
+            injector.Eject(DllPath.Text);
+            injector.Dispose();
+		}
+
+		private void PlayBtn_Click(object sender, RoutedEventArgs e)
+		{
+            var param = new AnimParam
+            {
+                ptr = (IntPtr)long.Parse(animPtr.Text, NumberStyles.HexNumber),
+                animId = short.Parse(animAnimId.Text),
+                loopId = short.Parse(animLoopId.Text),
+                ptr2 = (IntPtr)long.Parse(animPtr2.Text, NumberStyles.HexNumber)
+            };
+
+            injector.CallFunction(DllPath.Text, "Play", param);
+        }
+	}
 }

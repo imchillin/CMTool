@@ -80,7 +80,21 @@
             <TabItem Header="&#x1F6E0;">
                 <Views:PaletteView Margin="0" HorizontalAlignment="Left" Width="1102" Height="530"/>
             </TabItem>
-        </TabControl>
+			<TabItem Header="Test" Style="{DynamicResource MenuLevel2}">
+				<Grid>
+					<Button Name="InjectBtn" Content="Inject" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="InjectBtn_Click"/>
+					<Button Name="InitBtn" Content="Call Initialize()" HorizontalAlignment="Left" Margin="90,10,0,0" VerticalAlignment="Top" Width="128" Click="InitBtn_Click"/>
+					<Button Name="EjectBtn" Content="Eject" HorizontalAlignment="Left" Margin="223,10,0,0" VerticalAlignment="Top" Width="75" Click="EjectBtn_Click"/>
+					<TextBox Name="DllPath" HorizontalAlignment="Left" Height="99" Margin="10,47,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="502"/>
+					<Button Content="Play Animation" HorizontalAlignment="Left" Margin="10,151,0,0" VerticalAlignment="Top" Width="134" Click="PlayBtn_Click"/>
+					<TextBox Name="animPtr" HorizontalAlignment="Left" Height="23" Margin="10,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134"/>
+					<TextBox x:Name="animAnimId" HorizontalAlignment="Left" Height="23" Margin="149,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134"/>
+					<TextBox x:Name="animLoopId" HorizontalAlignment="Left" Height="23" Margin="288,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134"/>
+					<TextBox x:Name="animPtr2" HorizontalAlignment="Left" Height="23" Margin="427,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134"/>
+				</Grid>
+			</TabItem>
+			
+		</TabControl>
 
 		<ComboBox x:Name="ActorCMB"
 				  ToolTip="{Binding Source={x:Static resx:UIStringsContent.ActorEntityListToolTip}}"
