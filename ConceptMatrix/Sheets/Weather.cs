@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ConceptMatrix.Sheets
 {
-    [Sheet("Weather", columnHash: 0x02cf2541)]
+    [Sheet("Weather")]
     public class Weather : IExcelRow
     {
 
