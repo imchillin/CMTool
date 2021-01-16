@@ -1,13 +1,13 @@
 {
   "LastUpdated": "5.2b", // bad legacy support
-  "NewLastUpdated": "5.3", // weird fix with x
+  "NewLastUpdated": "5.3.0.1", // weird fix with x
   "CameraOffset": "1C60A00", // unused
   "GposeOffset": "1D080B0",
   "GposeEntityOffset": "1D09490",
   "GposeCheckOffset": "1D0BC90",
   "GposeCheck2Offset": "1D0BC70",
   "AoBOffset": "1C8A8F8", // unused
-  "TargetOffset": "1D07FF0",
+  "TargetOffset": "1D080F0",
   "TimeOffset": "1C41578", // unused
   "WeatherOffset": "1CBEDF8",
   "TerritoryOffset": "1C60998", // unused
