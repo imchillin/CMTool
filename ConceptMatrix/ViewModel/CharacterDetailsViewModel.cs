@@ -14,6 +14,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.Diagnostics;
+using Reloaded.Injector;
 
 namespace ConceptMatrix.ViewModel
 {
@@ -118,6 +120,38 @@ namespace ConceptMatrix.ViewModel
 
             // Cheap hook. (temp?)
             MemoryManager.Instance.TimeStopAsm = m.AoBScan(start, end, "48 89 83 08 16 00 00 48 69").FirstOrDefault();
+
+            // Scan for animation.
+            var animationFunction = m.AoBScan(start, end, "48 89 5c 24 08 48 89 6c 24 10 48 89 74 24 18 57 48 83 ec 20 49 8b e9 41 0f b7 d8 48 8b f1").FirstOrDefault();
+            Console.WriteLine(animationFunction.ToString("X"));
+
+            try
+            {
+                var gameProc = Process.GetProcessById(MainViewModel.gameProcId);
+                if (gameProc == null)
+                    throw new Exception("Couldn't Initialize Cubus with invalid process!");
+
+                // Create the injector.
+                MainViewModel.injector = new Injector(gameProc);
+
+                if (MainViewModel.injector.GetModuleHandleFromName(MainViewModel.CubusModule) != IntPtr.Zero)
+                {
+                    MessageBox.Show("Already in baby!!!");
+                }
+                else
+                {
+                    // Inject Cubus into the game process.
+                    if (MainViewModel.injector.Inject(MainViewModel.CubusModule) == 0)
+                        throw new Exception("Cubus failed to inject!");
+
+                    // Call the Initialize method on Cubus.
+                    MainViewModel.injector.CallFunction(MainViewModel.CubusModule, "Initialize", animationFunction);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Initializing Cubus");
+            }
         }
 
         // This is SUPER janky but I don't want to spend time implementing something better right now.
@@ -339,9 +373,9 @@ namespace ConceptMatrix.ViewModel
 
                             Application.Current.Dispatcher.Invoke(() => //Use Dispather to Update UI Immediately  
                             {
-                                MainViewModel.characterView.AnimSpeed.IsEnabled = false;
-                                MainViewModel.characterView.EmoteSpeed.IsEnabled = false;
-                                MainViewModel.characterView.Setto0.IsEnabled = false;
+                                //MainViewModel.characterView.AnimSpeed.IsEnabled = false;
+                                //MainViewModel.characterView.EmoteSpeed.IsEnabled = false;
+                                //MainViewModel.characterView.Setto0.IsEnabled = false;
                                 CharacterDetails.EmoteSpeed1.freeze = false;
 
                                 MainViewModel.posing2View.PoseMatrixSetting.IsEnabled = false;
@@ -479,9 +513,9 @@ namespace ConceptMatrix.ViewModel
 
                             Application.Current.Dispatcher.Invoke(() => //Use Dispather to Update UI Immediately  
                             {
-                                MainViewModel.characterView.AnimSpeed.IsEnabled = true;
-                                MainViewModel.characterView.EmoteSpeed.IsEnabled = true;
-                                MainViewModel.characterView.Setto0.IsEnabled = true;
+                                //MainViewModel.characterView.AnimSpeed.IsEnabled = true;
+                                //MainViewModel.characterView.EmoteSpeed.IsEnabled = true;
+                                //MainViewModel.characterView.Setto0.IsEnabled = true;
 
                                 MainViewModel.posing2View.PoseMatrixSetting.IsEnabled = true;
                                 PoseMatrixView.PosingMatrix.PoseMatrixSetting.IsEnabled = true;
@@ -711,11 +745,7 @@ namespace ConceptMatrix.ViewModel
                 if (CharacterDetails.EmoteIsPlayerFrozen.value == 0) { Viewtime.FrozenPlayaLabel.Dispatcher.Invoke(new Action(() => { Viewtime.FrozenPlayaLabel.Content = MiscStrings.TargetActorIs2; Viewtime.FrozenPlayaLabel.Foreground = System.Windows.Media.Brushes.Red; })); }
                 else if (CharacterDetails.EmoteIsPlayerFrozen.value == 1) { Viewtime.FrozenPlayaLabel.Dispatcher.Invoke(new Action(() => { Viewtime.FrozenPlayaLabel.Content = MiscStrings.TargetActorIs3; Viewtime.FrozenPlayaLabel.Foreground = System.Windows.Media.Brushes.Green; })); }
 
-                if (!CharacterDetails.Emote.freeze) CharacterDetails.Emote.value = m.read2Byte((GAS(baseAddr, c.Emote)));
-
                 if (!CharacterDetails.EntityType.freeze) CharacterDetails.EntityType.value = (byte)m.readByte(GAS(baseAddr, c.EntityType));
-
-                if (!CharacterDetails.EmoteOld.freeze) CharacterDetails.EmoteOld.value = m.read2Byte(GAS(baseAddr, c.EmoteOld));
 
                 if (!CharacterDetails.EmoteSpeed1.freeze)
                 {

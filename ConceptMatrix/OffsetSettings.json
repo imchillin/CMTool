@@ -1,17 +1,19 @@
 {
   "LastUpdated": "5.35", // bad legacy support
   "NewLastUpdated": "5.4.1.0",
-  "CameraOffset": "1D8A070", // unused
+
   "GposeOffset": "1D8A280",
   "GposeEntityOffset": "1D8B660",
   "GposeCheckOffset": "1D8DE60",
   "GposeCheck2Offset": "1D8DE40",
-  "AoBOffset": "1DB2048", // unused
   "TargetOffset": "1D8A2C0",
-  "TimeOffset": "1D6A800", // unused
   "WeatherOffset": "1D3FCC8",
-  "TerritoryOffset": "1D8A008", // unused
   "GposeFilters": "1D682B8",
+
+  "CameraOffset": "1D8A070", // unused
+  "AoBOffset": "1DB2048", // unused
+  "TimeOffset": "1D6A800", // unused
+  "TerritoryOffset": "1D8A008", // unused
   "MusicOffset": "1DA8A30", // unused
   "SkeletonOffset": "1463BE0", // ROTATION
   "SkeletonOffset2": "1464D0D", // ROTATION

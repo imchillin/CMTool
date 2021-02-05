@@ -297,43 +297,49 @@ namespace ConceptMatrix.Utility
 
 		public void EmoteList()
 		{
-			Emotes = new List<CMEmote>();
+			Emotes = new List<CMEmote>
 			{
-				try
+				new CMEmote
 				{
-					using (var parser = new TextFieldParser(new StringReader(Resources.actiontimeline)))
-					{
-						parser.TextFieldType = FieldType.Delimited;
-						parser.SetDelimiters(",");
-						int rowCount = 0;
-						parser.ReadFields();
-						while (!parser.EndOfData)
-						{
-							rowCount++;
-							var emote = new CMEmote();
-							//Processing row
-							var fields = parser.ReadFields();
-							var fCount = 0;
-							emote.Index = int.Parse(fields[0]);
-							foreach (var field in fields)
-							{
-								fCount++;
+					Index = 0,
+					Name = "None"
+				}
+			};
 
-								if (fCount == 2)
-									emote.Name = field;
-							}
-							if (emote.Name.Contains("normal/")) { emote.Name = emote.Name.Remove(0, 7).ToString(); emote.Realist = true; }
-							if (emote.Name.Contains("mon_sp/")) { emote.Name = emote.Name.Remove(0, 7).ToString(); emote.SpeacialReal = true; }
-							if (emote.Name.Contains("battle/")) { emote.Name = emote.Name.Remove(0, 7).ToString(); emote.BattleReal = true; }
-							if (emote.Name.Contains("human_sp/")) { emote.Name = emote.Name.Remove(0, 9).ToString(); emote.SpeacialReal = true; }
-							Emotes.Add(emote);
+			try
+			{
+				using (var parser = new TextFieldParser(new StringReader(Resources.actiontimeline)))
+				{
+					parser.TextFieldType = FieldType.Delimited;
+					parser.SetDelimiters(",");
+					int rowCount = 0;
+					parser.ReadFields();
+					while (!parser.EndOfData)
+					{
+						rowCount++;
+						var emote = new CMEmote();
+						//Processing row
+						var fields = parser.ReadFields();
+						var fCount = 0;
+						emote.Index = int.Parse(fields[0]);
+						foreach (var field in fields)
+						{
+							fCount++;
+
+							if (fCount == 2)
+								emote.Name = field;
 						}
+						if (emote.Name.Contains("normal/")) { emote.Name = emote.Name.Remove(0, 7).ToString(); emote.Realist = true; }
+						if (emote.Name.Contains("mon_sp/")) { emote.Name = emote.Name.Remove(0, 7).ToString(); emote.SpeacialReal = true; }
+						if (emote.Name.Contains("battle/")) { emote.Name = emote.Name.Remove(0, 7).ToString(); emote.BattleReal = true; }
+						if (emote.Name.Contains("human_sp/")) { emote.Name = emote.Name.Remove(0, 9).ToString(); emote.SpeacialReal = true; }
+						Emotes.Add(emote);
 					}
 				}
-				catch (Exception)
-				{
-					Emotes = null;
-				}
+			}
+			catch (Exception)
+			{
+				Emotes = null;
 			}
 		}
 

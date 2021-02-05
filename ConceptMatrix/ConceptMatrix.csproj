@@ -544,6 +544,10 @@
       <Project>{67cf62f2-4ee4-4517-8826-5fd6dc5cea6a}</Project>
       <Name>ConceptMatrixUpdater</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Cubus\Cubus.csproj">
+      <Project>{45622974-0d37-492f-8664-97a037b7316d}</Project>
+      <Name>Cubus</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="ControlzEx">

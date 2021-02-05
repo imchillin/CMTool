@@ -13,6 +13,7 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media.Media3D;
 using System.Windows.Threading;
+using Cubus;
 
 namespace ConceptMatrix.Views
 {
@@ -601,7 +602,7 @@ namespace ConceptMatrix.Views
 
         #region Emote
 
-        private void EmoteSearch_Click(object sender, RoutedEventArgs e)
+        private void AnimStartSearchClick(object sender, RoutedEventArgs e)
 		{
 			if (EmoteFlyouts.IsOpen)
 			{
@@ -618,7 +619,7 @@ namespace ConceptMatrix.Views
 			}
 		}
 
-		private void EmoteOldSearch_Click(object sender, RoutedEventArgs e)
+		private void AnimSearchClick(object sender, RoutedEventArgs e)
 		{
 			if (EmoteFlyouts.IsOpen)
 			{
@@ -633,21 +634,6 @@ namespace ConceptMatrix.Views
 				EmoteFlyouts.IsOpen = !EmoteFlyouts.IsOpen;
 				EmoteFlyouts.AnimBox.SelectedIndex = 1;
 			}
-		}
-
-		private void EmoteBox_SourceUpdated(object sender, DataTransferEventArgs e)
-		{
-			if (EmoteBox.IsMouseOver || EmoteBox.IsKeyboardFocusWithin)
-			{
-				EmoteBox.ValueChanged -= Emote_Changed;
-				EmoteBox.ValueChanged += Emote_Changed;
-			}
-		}
-		private void Emote_Changed(object sender, RoutedPropertyChangedEventArgs<double?> e)
-		{
-			if (EmoteBox.Value.HasValue)
-				if (EmoteBox.Value <= 8800) CharacterDetails.Emote.value = (int)EmoteBox.Value;
-			EmoteBox.ValueChanged -= Emote_Changed;
 		}
 
 		private void SetZero_Click(object sender, RoutedEventArgs e)
@@ -1542,6 +1528,17 @@ namespace ConceptMatrix.Views
 					CharacterDetails.CamViewZ.value = settings.OffsetZ;
 				}
 			}
+		}
+
+		private void PlayAnimationBtn_Click(object sender, RoutedEventArgs e)
+		{
+			// Play the requested emote.
+			MainViewModel.injector.CallFunction(MainViewModel.CubusModule, "Play", new AnimationParameters()
+			{
+				actor = (IntPtr)MemoryManager.Instance.MemLib.readLong(CharacterDetailsViewModel.baseAddr),
+				startId = CharacterDetails.AnimStartId,
+				animId = CharacterDetails.AnimId
+			});
 		}
 	}
 }

@@ -6,6 +6,7 @@ using Lumina.Data.Files;
 using Lumina.Extensions;
 using MaterialDesignThemes.Wpf;
 using Newtonsoft.Json;
+using Reloaded.Injector;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,6 +17,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -53,6 +55,10 @@ namespace ConceptMatrix.ViewModel
 		public event PropertyChangedEventHandler PropertyChanged;
         public static string GameDirectory = "";
 
+        // Cubus
+        public static Injector injector;
+        public static string CubusModule = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Cubus.dll");
+
 		public CharacterDetailsViewModel CharacterDetails { get => characterDetails; set => characterDetails = value; }
 
         public static Thread luminaThread;
@@ -65,6 +71,8 @@ namespace ConceptMatrix.ViewModel
         {
             Console.WriteLine($"Time taken to reach MainViewModel.ctor() {App.sw.ElapsedMilliseconds}ms");
             App.sw.Stop();
+
+            this.InitializeCubus();
 
             try
             {
@@ -115,7 +123,7 @@ namespace ConceptMatrix.ViewModel
                             lumina.Options.DefaultExcelLanguage = Lumina.Data.Language.English;
                     }
 
-                    Initialize(RegionType);
+                    Initialize();
                     MainWindow.HasRead = true;
                 }
                 MainViewModelX = this;
@@ -166,9 +174,29 @@ namespace ConceptMatrix.ViewModel
                 MessageBox.Show(ex.StackTrace);
             }
         }
+
+        /// <summary>
+        /// Initializes Cubus.
+        /// </summary>
+        public void InitializeCubus()
+		{
+            
+		}
+
         public static void Shutdown()
         {
-			try
+            try
+            {
+                // Eject Cubus.
+                //injector?.Eject(CubusModule);
+                injector?.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error while Disposing Cubus!");
+            }
+
+            try
 			{
 				worker.CancelAsync();
 				threadWriting?.worker.CancelAsync();
@@ -195,7 +223,7 @@ namespace ConceptMatrix.ViewModel
 
                 // Kill the Lumina thread.
                 threadAlive = false;
-			}
+            }
             catch (Exception ex)
 			{
                 MessageBox.Show("Crashed while shutting down! You may experience some bugs with the game if you clicked reload process and may require a game restart!");
@@ -206,7 +234,7 @@ namespace ConceptMatrix.ViewModel
 
         private IEnumerable<string> races, tribes;
 
-        private void Initialize(string _)
+        private void Initialize()
         {
             // Local stopwatch used for timing the startup lumina processes.
             var sw = Stopwatch.StartNew();

@@ -1,36 +1,40 @@
 ﻿using Reloaded.Hooks;
-using Reloaded.Hooks.Definitions;
 using System;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace Cubus
 {
 	public static class Cubus
 	{
-		[UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-		private delegate void PlayAnimation(IntPtr ptr, short animId, short loopId, IntPtr ptr2);
-		private static PlayAnimation playAnim;
+		[UnmanagedFunctionPointer(CallingConvention.StdCall)]
+		private delegate bool PlayAnimation(IntPtr actor, short startId, short animId, IntPtr funcPtr);
+		private static PlayAnimation playAnimation = null;
 
-		public struct AnimParam
+		[DllExport]
+		public static void Initialize(long funcAddr)
 		{
-			public IntPtr ptr;
-			public short animId;
-			public short loopId;
-			public IntPtr ptr2;
+			try
+			{
+				// TODO: Accept a struct param with the addresses we fetch from host!
+				if (playAnimation == null)
+					playAnimation = ReloadedHooks.Instance.CreateWrapper<PlayAnimation>(funcAddr, out var _);
+
+				// playAnimHook = ReloadedHooks.Instance.CreateHook<PlayAnimation>(PlayAnimationDetour, 0x7FF786E83300);
+				// playAnimHook.Activate();
+			}
+			catch
+			{
+				MessageBox.Show("Error at Cubus.Initialize()");
+			}
 		}
 
 		[DllExport]
-		public static void Initialize()
+		public static void Play(AnimationParameters param)
 		{
-			playAnim = ReloadedHooks.Instance.CreateWrapper<PlayAnimation>(0x7FF79576E370, out var _);
-			//playAnimationHook = ReloadedHooks.Instance.CreateHook<PlayAnimation>(Animation, 0x7FF7955134D0);
-			//playAnimationHook.Activate();
-		}
-
-		[DllExport]
-		public static void Play(AnimParam param)
-		{
-			playAnim.Invoke(param.ptr, param.animId, param.loopId, param.ptr2);
+			//MessageBox.Show($"{param.actor.ToInt64():X}, {param.startId}, {param.animId}, {(param.actor + 0xC00).ToInt64():X}");
+			playAnimation.Invoke(param.actor, 0, 3182, IntPtr.Zero);
+			playAnimation.Invoke(param.actor, param.startId, param.animId, param.actor + 0xC00);
 		}
 	}
 }
