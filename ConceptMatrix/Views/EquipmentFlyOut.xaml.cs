@@ -748,10 +748,13 @@ namespace ConceptMatrix.Views
                             }
 
 
-
+                                
 
 
                         }
+                        else if (ClassBox.SelectedIndex >= 7)
+                            if (!item.ClassJobCategory.Contains(selectedTagLocalized))
+                                continue;
                     }
 
                     EquipBox.Items.Add(new ExdCsvReader.CMItem
