@@ -675,6 +675,7 @@ namespace ConceptMatrix.Views
             {
                 if (CategoryBox.SelectedIndex > 11)
                 {
+
                     EquipBox.Items.Add(new ExdCsvReader.CMItem
                     {
                         Name = item.Name,
@@ -692,10 +693,10 @@ namespace ConceptMatrix.Views
                         {
                             if (CategoryBox.SelectedIndex != 0 && CategoryBox.SelectedIndex != 1)
                             {
-                                if (ClassBox.SelectedIndex == 4)
-                                    if (!item.ClassJobCategory.Equals(selectedTag))
-                                        continue;
-                                else if (!item.ClassJobCategory.Contains(selectedTag))
+                                //if (ClassBox.SelectedIndex == 4)
+                                //    if (!item.ClassJobCategory.Equals(selectedTag))
+                                //        continue;
+                                if (!item.ClassJobCategory.Contains(selectedTag))
                                     continue;
                             }
                             else if (ClassBox.SelectedIndex >= 7)
@@ -707,11 +708,49 @@ namespace ConceptMatrix.Views
                     {
                         if (CategoryBox.SelectedIndex != 0 && CategoryBox.SelectedIndex != 1)
                         {
-                            if (ClassBox.SelectedIndex == 4)
-                                if (!item.ClassJobCategory.Equals(selectedTagLocalized))
+                            
+
+                            if (ClassBox.SelectedIndex >= 7)
+                            {
+                                if((ClassBox.SelectedIndex <= 10) || (ClassBox.SelectedIndex >= 14 && ClassBox.SelectedIndex <= 17) || (ClassBox.SelectedIndex >= 21 && ClassBox.SelectedIndex <= 23))
+                                {
+                                    if (!item.ClassJobCategory.Contains(selectedTagLocalized) && !item.ClassJobCategory.Equals("All Classes") && !item.ClassJobCategory.Contains("Disciple of War"))
+                                        continue;
+                                }
+
+                                if ((ClassBox.SelectedIndex >= 11 && ClassBox.SelectedIndex <= 13) || (ClassBox.SelectedIndex >= 18 && ClassBox.SelectedIndex <= 20) || (ClassBox.SelectedIndex == 33))
+                                {
+                                    if (!item.ClassJobCategory.Contains(selectedTagLocalized) && !item.ClassJobCategory.Equals("All Classes") && !item.ClassJobCategory.Contains("Disciple of Magic"))
+                                        continue;
+                                }
+
+                                if ((ClassBox.SelectedIndex >= 24 && ClassBox.SelectedIndex <= 31))
+                                {
+                                    if (!item.ClassJobCategory.Contains(selectedTagLocalized) && !item.ClassJobCategory.Equals("All Classes") && !item.ClassJobCategory.Contains("Disciple of Hand"))
+                                        continue;
+                                }
+
+                                if ((ClassBox.SelectedIndex >= 32 && ClassBox.SelectedIndex <= 34))
+                                {
+                                    if (!item.ClassJobCategory.Contains(selectedTagLocalized) && !item.ClassJobCategory.Equals("All Classes") && !item.ClassJobCategory.Contains("Disciple of Land"))
+                                        continue;
+                                }
+
+                                //if (!item.ClassJobCategory.Contains(selectedTagLocalized) && !item.ClassJobCategory.Equals("All Classes"))
+                                //    continue;
+                            }
+                            else
+                            {
+                                if (!item.ClassJobCategory.Equals(selectedTagLocalized) && !item.ClassJobCategory.Equals("All Classes"))
                                     continue;
-                            else if (!item.ClassJobCategory.Contains(selectedTagLocalized))
-                                continue;
+                                else if (!item.ClassJobCategory.Contains(selectedTagLocalized) && !item.ClassJobCategory.Equals("All Classes"))
+                                    continue;
+                            }
+
+
+                                
+
+
                         }
                         else if (ClassBox.SelectedIndex >= 7)
                             if (!item.ClassJobCategory.Contains(selectedTagLocalized))
