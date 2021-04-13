@@ -22,16 +22,15 @@ namespace ConceptMatrix.Sheets
 
         public override void PopulateData(RowParser parser, GameData gameData, Language language)
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData(parser, gameData, language);
 
             Name = parser.ReadColumn<string>(9);
             Icon = parser.ReadColumn<ushort>(10);
             ItemUICategory = parser.ReadColumn<byte>(15);
             EquipSlotCategory = parser.ReadColumn<byte>(17);
 
-            // Shifted by one column in 5.4 for International client.
-            if (language == Language.Korean)
+            // Column shifted at 40, reverted in 5.5 for International client, Korean client hasn't changed.
+            if (language != Language.ChineseSimplified)
             {
                 ClassJobCategory = new LazyRow<ClassJobCategory>(gameData, parser.ReadColumn<byte>(43), language);
                 ModelMain = parser.ReadColumn<ulong>(47);
