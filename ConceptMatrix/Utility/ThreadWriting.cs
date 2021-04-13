@@ -309,31 +309,10 @@ namespace ConceptMatrix.Utility
                         m.writeBytes(GAS(c.Ear), CharacterDetails.Ear.GetBytes());
                         m.writeBytes(GAS(c.EarVa), CharacterDetails.EarVa.GetBytes());
                     }
-                    if (CharacterDetails.EmoteSpeed1.freeze)
-                    {
-                        if (CharacterDetails.GposeMode)
-                        {
-                            if (CharacterDetails.TargetModeActive)
-                            {
-                                m.writeBytes(GASG(c.EmoteSpeed1), CharacterDetails.EmoteSpeed1.GetBytes());
-                                m.writeBytes(GASG(c.EmoteSpeed2), CharacterDetails.EmoteSpeed1.GetBytes());
-                            }
-                            else
-                            {
-                                m.writeBytes(GASGG(c.EmoteSpeed1), CharacterDetails.EmoteSpeed1.GetBytes());
-                                m.writeBytes(GASGG(c.EmoteSpeed2), CharacterDetails.EmoteSpeed1.GetBytes());
-                            }
-                        }
-                    }
                     if (CharacterDetails.Emote.freeze)
                     {
                         if (CharacterDetails.Emote.value > 8800) CharacterDetails.Emote.value = 8800;
                         m.writeBytes(GAS(c.Emote), CharacterDetails.Emote.GetBytes());
-                    }
-                    if (CharacterDetails.EmoteOld.freeze)
-                    {
-                        if (CharacterDetails.EmoteOld.value > 8800) CharacterDetails.EmoteOld.value = 8800;
-                        m.writeBytes(GAS(c.EmoteOld), CharacterDetails.EmoteOld.GetBytes());
                     }
 
                     if (CharacterDetails.GposeMode == true)

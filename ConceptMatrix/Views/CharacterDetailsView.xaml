@@ -317,25 +317,14 @@
 			</Views:RotationView>
 		</Border>
 
-		<!-- Idle Anim -->
-		<CheckBox IsEnabled="False" IsChecked="{Binding CharacterDetails.Emote.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.IdleAnim}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.IdleAnimToolTip}}" HorizontalAlignment="Left" Margin="545,375,0,0" VerticalAlignment="Top" Height="28"/>
-		<mah:NumericUpDown IsEnabled="False" x:Name="EmoteBox" Maximum="8800" Minimum="1" Value="{Binding CharacterDetails.Emote.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,375,0,0" VerticalAlignment="Top" Width="115" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" TextAlignment="Right" NumericInputMode="Numbers" SourceUpdated="EmoteBox_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="11.35"/>
-		<Button IsEnabled="False" x:Name="EmoteSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="773,375,0,0" VerticalAlignment="Top" Width="65" Height="28" Click="EmoteSearch_Click"/>
-
-		<!-- Force Anim -->
-		<CheckBox IsEnabled="False" IsChecked="{Binding CharacterDetails.EmoteOld.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.ForceAnim}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.ForceAnimToolTip}}" HorizontalAlignment="Left" Margin="545,405,0,0" VerticalAlignment="Top" Height="28"/>
-		<mah:NumericUpDown IsEnabled="False" x:Name="EmoteBox2" Maximum="8800" Minimum="1" Value="{Binding CharacterDetails.EmoteOld.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,405,0,0" VerticalAlignment="Top" Width="115" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" TextAlignment="Right" NumericInputMode="Numbers" SourceUpdated="EmoteBox_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="11.35"/>
-		<Button IsEnabled="False" x:Name="EmoteSearch2" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="773,405,0,0" VerticalAlignment="Top" Width="65" Height="28" Click="EmoteOldSearch_Click"/>
-
-		<!-- Lock Facial Anim -->
-		<CheckBox IsEnabled="False" IsChecked="{Binding CharacterDetails.FreezeFacial.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.LockFacialAnimation}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.LockFacialAnimationToolTip}}" HorizontalAlignment="Left" Margin="545,465,0,0" VerticalAlignment="Top" Height="28"/>
-		<ToggleButton IsEnabled="False" Style="{StaticResource MaterialDesignSwitchToggleButton}" IsChecked="{Binding CharacterDetails.FreezeFacial.Activated}" Margin="705,467,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" />
-
-		<!-- Anim Speed -->
-		<CheckBox x:Name="AnimSpeed" IsChecked="{Binding CharacterDetails.EmoteSpeed1.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.AnimSpeed}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.AnimSpeedToolTip}}" HorizontalAlignment="Left" Margin="545,435,0,0" VerticalAlignment="Top" Height="28" IsEnabled="False"/>
-		<mah:NumericUpDown x:Name="EmoteSpeed" Value="{Binding CharacterDetails.EmoteSpeed1.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,435,0,0" VerticalAlignment="Top" Width="115" Background="{x:Null}" BorderThickness="0,0,0,1"  IsEnabled="False" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F3" Interval="0.10" TextAlignment="Right" FontFamily="Segoe UI" FontSize="11.35" Height="28"/>
-		<Button x:Name="Setto0" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.Zero}}" HorizontalAlignment="Left" Margin="773,435,0,0" VerticalAlignment="Top" Width="65" Height="28"  IsEnabled="False" FontSize="14" Click="SetZero_Click"/>
-
+		<!-- Anim -->
+		<CheckBox IsChecked="{Binding CharacterDetails.Emote.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.ForceAnim}}" HorizontalAlignment="Left" Margin="545,375,0,0" VerticalAlignment="Top" Height="28"/>
+		<mah:NumericUpDown x:Name="EmoteBox" Maximum="8800" Minimum="1" Value="{Binding CharacterDetails.Emote.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="654,375,0,0" VerticalAlignment="Top" Width="115" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" TextAlignment="Right" NumericInputMode="Numbers" SourceUpdated="EmoteBox_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="11.35"/>
+		<Button x:Name="EmoteSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="773,375,0,0" VerticalAlignment="Top" Width="65" Height="28" Click="EmoteSearch_Click"/>
+		<!--<ToggleButton Name="EnableAnim" Margin="804,427,0,78" HorizontalAlignment="Left" Checked="EnableAnim_Checked" Unchecked="EnableAnim_Unchecked" />
+		<Label Content="Enable toggle for animations outside of&#xD;&#xA;GPose. You may also use inside of GPose&#xD;&#xA;if animations aren't working properly." Margin="545,408,316,57"/>
+		-->
+		
 		<CheckBox x:Name="CamXCheck" IsChecked="{Binding CharacterDetails.CamX.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.GposeViewX}}" HorizontalAlignment="Left" Margin="848,435,0,0" VerticalAlignment="Top" Height="28" IsEnabled="False"/>
 		<mah:NumericUpDown x:Name="CamX" Value="{Binding CharacterDetails.CamX.value, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="966,435,0,0" VerticalAlignment="Top" Width="140" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" StringFormat="F10" Interval="0.01" TextAlignment="Right" SourceUpdated="CamX_SourceUpdated" Height="28" FontFamily="Segoe UI" FontSize="11.35"/>
 
@@ -363,8 +352,6 @@
 
 		<!-- Target Status Label -->
 		<Label x:Name="FrozenPlayaLabel" x:FieldModifier="public" Content="Targeted Actor is ???" HorizontalAlignment="Left" Height="28" Margin="540,495,0,0" VerticalAlignment="Top" Width="260" FontWeight="Bold" FontSize="14"/>
-
-		<Label Content="BROKEN DUE TO &#10;CHANGES IN 5.4" Margin="534,376,256,46" FontSize="40" FontWeight="Bold" Foreground="White"/>
 
 		<!-- Data Path -->
 		<CheckBox IsChecked="{Binding CharacterDetails.DataPath.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.DataPath}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.DataPathToolTip}}" HorizontalAlignment="Left" Margin="545,345,0,0" VerticalAlignment="Top" Height="28"/>
@@ -429,8 +416,8 @@
 		</Viewbox>
 		<ToggleButton Name="LinkPosition" IsChecked="{Binding CharacterDetails.IsLinked, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="914,187,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Checked="LinkPosition_Checked" Unchecked="LinkPosition_Unchecked" IsEnabled="False" />
 
-		<Views:EmoteFlyOut x:Name="EmoteFlyouts" Width="534" HorizontalAlignment="Left" VerticalAlignment="Top" Height="Auto" Visibility="Collapsed"/>
-		<Views:SpecialControl x:Name="SpecialControl" Width="579" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Margin="536,0,0,0"/>
+		<Views:EmoteFlyOut x:Name="EmoteFlyouts" Width="534" HorizontalAlignment="Left" VerticalAlignment="Top" Height="Auto" Visibility="Hidden"/>
+		<Views:SpecialControl x:Name="SpecialControl" Width="579" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Collapsed" Margin="536,0,0,0"/>
 
 	</Grid>
 </UserControl>

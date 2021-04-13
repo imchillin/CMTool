@@ -104,7 +104,6 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<string> FCTag { get; set; }
         [JsonIgnore] public Address<int> Title { get; set; }
         [JsonIgnore] public Address<byte> JobIco { get; set; }
-        [JsonIgnore] public Address<int> EmoteOld { get; set; }
         [JsonIgnore] public Address<byte> Race { get; set; }
         [JsonIgnore] public Address<byte> Clan { get; set; }
         [JsonIgnore] public Address<byte> Gender { get; set; }
@@ -134,9 +133,7 @@ namespace ConceptMatrix.Models
         [JsonIgnore] public Address<byte> HighlightTone { get; set; }
         [JsonIgnore] public Address<byte> Skintone { get; set; }
         [JsonIgnore] public Address<byte> FacialFeatures { get; set; }
-        [JsonIgnore] public Address<int> Emote { get; set; }
-        [JsonIgnore] public Address<float> EmoteSpeed1 { get; set; }
-        [JsonIgnore] public Address<float> EmoteSpeed2 { get; set; }
+        [JsonIgnore] public Address<short> Emote { get; set; }
         [JsonIgnore] public Address<byte> Eye { get; set; }
         [JsonIgnore] public Address<byte> RightEye { get; set; }
         [JsonIgnore] public Address<byte> LeftEye { get; set; }
@@ -486,7 +483,6 @@ namespace ConceptMatrix.Models
             HairTone = new Address<byte>();
             Highlights = new Address<byte>();
             HighlightTone = new Address<byte>();
-            EmoteOld = new Address<int>();
             Skintone = new Address<byte>();
             FacialFeatures = new Address<byte>();
             Eye = new Address<byte>();
@@ -498,9 +494,7 @@ namespace ConceptMatrix.Models
             Lips = new Address<byte>();
             LipsTone = new Address<byte>();
             TailType = new Address<byte>();
-            Emote = new Address<int>();
-            EmoteSpeed1 = new Address<float>();
-            EmoteSpeed2 = new Address<float>();
+            Emote = new Address<short>();
             Max.Checker = true;
             Min.Checker = true;
             CZoom.Checker = true;

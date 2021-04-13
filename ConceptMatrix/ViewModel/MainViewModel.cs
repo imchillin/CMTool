@@ -177,9 +177,11 @@ namespace ConceptMatrix.ViewModel
 
 				// Turn off the time stop code.
 				MemoryManager.Instance.MemLib.writeBytes(MemoryManager.Instance.TimeStopAsm.ToString("X"), new byte[] { 0x48, 0x89, 0x83, 0x08, 0x16, 0x00, 0x00 });
+                // Turn off the emote hack.
+                MemoryManager.Instance.MemLib.writeBytes(MemoryManager.Instance.EmoteHack, new byte[] { 0x66, 0x89, 0x8B, 0xD0, 0x00, 0x00, 0x00 });
 
-				// Remove nops for skeleton instructions.
-				MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress, "bytes", "0x41 0x0F 0x29 0x5C 0x12 0x10");
+                // Remove nops for skeleton instructions.
+                MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress, "bytes", "0x41 0x0F 0x29 0x5C 0x12 0x10");
 				MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress2, "bytes", "0x43 0x0F 0x29 0x5C 0x18 0x10");
 				MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress3, "bytes", "0x0F 0x29 0x5E 0x10");
 				MemoryManager.Instance.MemLib.writeMemory(MemoryManager.Instance.SkeletonAddress4, "bytes", "0x41 0x0F 0x29 0x44 0x12 0x20");

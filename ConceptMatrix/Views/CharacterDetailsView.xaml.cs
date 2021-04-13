@@ -646,14 +646,8 @@ namespace ConceptMatrix.Views
 		private void Emote_Changed(object sender, RoutedPropertyChangedEventArgs<double?> e)
 		{
 			if (EmoteBox.Value.HasValue)
-				if (EmoteBox.Value <= 8800) CharacterDetails.Emote.value = (int)EmoteBox.Value;
+				if (EmoteBox.Value <= 8800) CharacterDetails.Emote.value = (short)EmoteBox.Value;
 			EmoteBox.ValueChanged -= Emote_Changed;
-		}
-
-		private void SetZero_Click(object sender, RoutedEventArgs e)
-		{
-			CharacterDetails.EmoteSpeed1.value = 0;
-			CharacterDetails.EmoteSpeed2.value = 0;
 		}
 
         #endregion
@@ -1542,6 +1536,16 @@ namespace ConceptMatrix.Views
 					CharacterDetails.CamViewZ.value = settings.OffsetZ;
 				}
 			}
+		}
+
+		private void EnableAnim_Checked(object sender, RoutedEventArgs e)
+		{
+			MemoryManager.Instance.MemLib.writeBytes(MemoryManager.Instance.EmoteHack, new byte[] { 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 });
+		}
+
+		private void EnableAnim_Unchecked(object sender, RoutedEventArgs e)
+		{
+			MemoryManager.Instance.MemLib.writeBytes(MemoryManager.Instance.EmoteHack, new byte[] { 0x66, 0x89, 0x8B, 0xD0, 0x00, 0x00, 0x00 });
 		}
 	}
 }

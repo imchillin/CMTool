@@ -1181,7 +1181,6 @@ namespace ConceptMatrix
             CharacterDetails.FaceCamZ.freeze = false;
             CharacterDetails.FaceCamY.freeze = false;
             CharacterDetails.FaceCamX.freeze = false;
-            CharacterDetails.EmoteSpeed1.freeze = false;
             CharacterDetails.Emote.freeze = false;
             CharacterDetails.MuscleTone.freeze = false;
             CharacterDetails.TailSize.freeze = false;
@@ -1241,7 +1240,6 @@ namespace ConceptMatrix
             CharacterDetails.Rotation2.freeze = false;
             CharacterDetails.Rotation3.freeze = false;
             CharacterDetails.Rotation4.freeze = false;
-            CharacterDetails.EmoteOld.freeze = false;
             CharacterDetails.EntityType.freeze = false;
             CharacterDetails.DataPath.freeze = false;
             CharacterDetails.ForceWeather.freeze = false;
@@ -1279,7 +1277,6 @@ namespace ConceptMatrix
             MainViewModel.characterView.CamXCheck.IsEnabled = true;
             MainViewModel.characterView.CamYCheck.IsEnabled = true;
             MainViewModel.characterView.CamZCheck.IsEnabled = true;
-            MainViewModel.characterView.AnimSpeed.IsEnabled = true;
             MainViewModel.characterView.GposeViewSettingsLoad.IsEnabled = true;
 
             /*
@@ -1331,10 +1328,6 @@ namespace ConceptMatrix
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Instance.GposeEntityOffset;
             if (CharacterDetails.GposeMode)
             {
-                MainViewModel.characterView.AnimSpeed.IsEnabled = true;
-                MainViewModel.characterView.EmoteSpeed.IsEnabled = true;
-                MainViewModel.characterView.Setto0.IsEnabled = true;
-
                 MainViewModel.characterView.LinkPositionText.IsEnabled = true;
                 MainViewModel.characterView.LinkPosition.IsEnabled = true;
                 MainViewModel.posing2View.PoseMatrixSetting.IsEnabled = true;
@@ -1406,14 +1399,6 @@ namespace ConceptMatrix
                 CharacterDetailsViewModel.baseAddr = MemoryManager.Add(MemoryManager.Instance.BaseAddress, CharacterDetailsViewModel.eOffset);
             if (MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheckAddress)) == 0 && MemoryManager.Instance.MemLib.readByte(MemoryManager.GetAddressString(MemoryManager.Instance.GposeCheck2Address)) == 1)
             {
-                MainViewModel.characterView.AnimSpeed.IsEnabled = false;
-                MainViewModel.characterView.AnimSpeed.IsChecked = false;
-                CharacterDetails.EmoteSpeed1.freeze = false;
-                MainViewModel.characterView.EmoteSpeed.IsEnabled = false;
-                MainViewModel.characterView.Setto0.IsEnabled = false;
-
-                CharacterDetails.EmoteSpeed1.freeze = false;
-
                 MainViewModel.posing2View.PoseMatrixSetting.IsEnabled = false;
                 MainViewModel.posing2View.EditModeButton.IsChecked = false;
                 // just in case?

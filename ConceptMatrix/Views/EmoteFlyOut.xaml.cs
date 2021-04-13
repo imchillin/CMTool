@@ -134,16 +134,8 @@ namespace ConceptMatrix.Views
             {
                 if (SocialBox.SelectedItem == null)
                     return;
-                if (AnimBox.SelectedIndex == 0)
-                {
-                    var Value = (ExdCsvReader.CMEmote)SocialBox.SelectedItem;
-                    CharacterDetails.Emote.value = Value.Index;
-                }
-                if (AnimBox.SelectedIndex == 1)
-                {
-                    var Value = (ExdCsvReader.CMEmote)SocialBox.SelectedItem;
-                    CharacterDetails.EmoteOld.value = Value.Index;
-                }
+                var Value = (ExdCsvReader.CMEmote)SocialBox.SelectedItem;
+                CharacterDetails.Emote.value = (short)Value.Index;
             }
         }
 
@@ -153,16 +145,8 @@ namespace ConceptMatrix.Views
             {
                 if (BattleBox.SelectedItem == null)
                     return;
-                if (AnimBox.SelectedIndex == 0)
-                {
-                    var Value = (ExdCsvReader.CMEmote)BattleBox.SelectedItem;
-                    CharacterDetails.Emote.value = Value.Index;
-                }
-                if (AnimBox.SelectedIndex == 1)
-                {
-                    var Value = (ExdCsvReader.CMEmote)BattleBox.SelectedItem;
-                    CharacterDetails.EmoteOld.value = Value.Index;
-                }
+                var Value = (ExdCsvReader.CMEmote)BattleBox.SelectedItem;
+                CharacterDetails.Emote.value = (short)Value.Index;
             }
         }
 
@@ -172,16 +156,8 @@ namespace ConceptMatrix.Views
             {
                 if (MonsterBox.SelectedItem == null)
                     return;
-                if (AnimBox.SelectedIndex == 0)
-                {
-                    var Value = (ExdCsvReader.CMEmote)MonsterBox.SelectedItem;
-                    CharacterDetails.Emote.value = Value.Index;
-                }
-                if (AnimBox.SelectedIndex == 1)
-                {
-                    var Value = (ExdCsvReader.CMEmote)MonsterBox.SelectedItem;
-                    CharacterDetails.EmoteOld.value = Value.Index;
-                }
+                var Value = (ExdCsvReader.CMEmote)MonsterBox.SelectedItem;
+                CharacterDetails.Emote.value = (short)Value.Index;
             }
         }
 
@@ -191,16 +167,8 @@ namespace ConceptMatrix.Views
             {
                 if (AllBox.SelectedItem == null)
                     return;
-                if (AnimBox.SelectedIndex == 0)
-                {
-                    var Value = (ExdCsvReader.CMEmote)AllBox.SelectedItem;
-                    CharacterDetails.Emote.value = Value.Index;
-                }
-                if (AnimBox.SelectedIndex == 1)
-                {
-                    var Value = (ExdCsvReader.CMEmote)AllBox.SelectedItem;
-                    CharacterDetails.EmoteOld.value = Value.Index;
-                }
+                var Value = (ExdCsvReader.CMEmote)AllBox.SelectedItem;
+                CharacterDetails.Emote.value = (short)Value.Index;
             }
         }
 
@@ -238,16 +206,8 @@ namespace ConceptMatrix.Views
             {
                 if (FavoriteBox.SelectedItem == null)
                     return;
-                if (AnimBox.SelectedIndex == 0)
-                {
-                    var Value = (ExdCsvReader.CMEmote)FavoriteBox.SelectedItem;
-                    CharacterDetails.Emote.value = (int)Value.Index;
-                }
-                if (AnimBox.SelectedIndex == 1)
-                {
-                    var Value = (ExdCsvReader.CMEmote)FavoriteBox.SelectedItem;
-                    CharacterDetails.EmoteOld.value = (int)Value.Index;
-                }
+                var Value = (ExdCsvReader.CMEmote)FavoriteBox.SelectedItem;
+                CharacterDetails.Emote.value = (short)Value.Index;
             }
         }
 

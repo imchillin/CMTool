@@ -879,7 +879,7 @@ namespace ConceptMatrix.Utility
         /// <param name="code">address, module + pointer + offset, module + offset OR label in .ini file.</param>
         /// <param name="file">path and file name to ini file. (OPTIONAL)</param>
         /// <returns></returns>
-        public int read2Byte(string code, string file = "")
+        public short read2Byte(string code, string file = "")
         {
             byte[] memoryTiny = new byte[4];
 
@@ -889,7 +889,7 @@ namespace ConceptMatrix.Utility
             try
             {
                 if (ReadProcessMemory(pHandle, theCode, memoryTiny, (UIntPtr)2, IntPtr.Zero))
-                    return BitConverter.ToInt32(memoryTiny, 0);
+                    return BitConverter.ToInt16(memoryTiny, 0);
                 else
                     return 0;
             }
