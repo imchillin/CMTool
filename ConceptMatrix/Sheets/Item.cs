@@ -31,7 +31,7 @@ namespace ConceptMatrix.Sheets
             EquipSlotCategory = parser.ReadColumn<byte>(17);
 
             // Shifted by one column in 5.4 for International client.
-            if (language == Language.Korean || language == Language.ChineseSimplified || language == Language.ChineseTraditional)
+            if (language == Language.Korean)
             {
                 ClassJobCategory = new LazyRow<ClassJobCategory>(gameData, parser.ReadColumn<byte>(43), language);
                 ModelMain = parser.ReadColumn<ulong>(47);
