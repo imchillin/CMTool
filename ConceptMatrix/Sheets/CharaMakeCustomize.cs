@@ -1,4 +1,5 @@
-﻿using Lumina.Data;
+﻿using Lumina;
+using Lumina.Data;
 using Lumina.Excel;
 using System;
 using System.Collections.Generic;
@@ -8,19 +9,15 @@ using System.Threading.Tasks;
 
 namespace ConceptMatrix.Sheets
 {
-    [Sheet("CharaMakeCustomize", columnHash: 0x2ba6bf0f)]
-    public class CharaMakeCustomize : IExcelRow
+    [Sheet("CharaMakeCustomize")]
+    public class CharaMakeCustomize : ExcelRow
     {
         public byte FeatureID;
         public uint Icon;
 
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData(RowParser parser, Lumina.Lumina lumina, Language language)
+        public override void PopulateData(RowParser parser, GameData gameData, Language language)
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData(parser, gameData, language);
 
             FeatureID = parser.ReadColumn<byte>(0);
             Icon = parser.ReadColumn<uint>(1);

@@ -192,8 +192,8 @@ namespace ConceptMatrix.Utility
 			var w = new List<Weather>();
 
 			// Get weather sheet and rates for this specific territory.
-			var weatherSheet = MainViewModel.lumina.GetExcelSheet<Weather>();
-			var weatherRate = MainViewModel.lumina.GetExcelSheet<WeatherRate>().FirstOrDefault(wr => wr.RowId == territoryType.WeatherRate);
+			var weatherSheet = MainViewModel.gameData.GetExcelSheet<Weather>();
+			var weatherRate = MainViewModel.gameData.GetExcelSheet<WeatherRate>().FirstOrDefault(wr => wr.RowId == territoryType.WeatherRate);
 
 			// Iterate over the weather rates to get all weathers to add to the list.
 			foreach (var wr in weatherRate.UnkStruct0)

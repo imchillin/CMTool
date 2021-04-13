@@ -1,4 +1,5 @@
-﻿using Lumina.Data;
+﻿using Lumina;
+using Lumina.Data;
 using Lumina.Excel;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 namespace ConceptMatrix.Sheets
 {
     [Sheet("Item")]
-    public class Item : IExcelRow
+    public class Item : ExcelRow
     {
         public string Name;
         public ushort Icon;
@@ -19,10 +20,7 @@ namespace ConceptMatrix.Sheets
         public ulong ModelMain;
         public ulong ModelSub;
 
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData(RowParser parser, Lumina.Lumina lumina, Language language)
+        public override void PopulateData(RowParser parser, GameData gameData, Language language)
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
@@ -35,13 +33,13 @@ namespace ConceptMatrix.Sheets
             // Shifted by one column in 5.4 for International client.
             if (language == Language.Korean || language == Language.ChineseSimplified || language == Language.ChineseTraditional)
             {
-                ClassJobCategory = new LazyRow<ClassJobCategory>(lumina, parser.ReadColumn<byte>(43), language);
+                ClassJobCategory = new LazyRow<ClassJobCategory>(gameData, parser.ReadColumn<byte>(43), language);
                 ModelMain = parser.ReadColumn<ulong>(47);
                 ModelSub = parser.ReadColumn<ulong>(48);
             }
             else
             {
-                ClassJobCategory = new LazyRow<ClassJobCategory>(lumina, parser.ReadColumn<byte>(44), language);
+                ClassJobCategory = new LazyRow<ClassJobCategory>(gameData, parser.ReadColumn<byte>(44), language);
                 ModelMain = parser.ReadColumn<ulong>(48);
                 ModelSub = parser.ReadColumn<ulong>(49);
             }

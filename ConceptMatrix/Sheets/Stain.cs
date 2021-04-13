@@ -1,4 +1,5 @@
-﻿using Lumina.Data;
+﻿using Lumina;
+using Lumina.Data;
 using Lumina.Excel;
 using Lumina.Text;
 using System;
@@ -10,20 +11,15 @@ using System.Threading.Tasks;
 namespace ConceptMatrix.Sheets
 {
     [Sheet("Stain", columnHash: 0xa2420e68)]
-    public class Stain : IExcelRow
+    public class Stain : ExcelRow
     {
-
         public uint Color;
         public byte Shade;
         public SeString Name;
 
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData(RowParser parser, Lumina.Lumina lumina, Language language)
+        public override void PopulateData(RowParser parser, GameData gameData, Language language)
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData(parser, gameData, language);
 
             Color = parser.ReadColumn<uint>(0);
             Shade = parser.ReadColumn<byte>(1);

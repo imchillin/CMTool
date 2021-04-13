@@ -211,13 +211,13 @@ namespace ConceptMatrix.Utility
 
 		public ImageSource Corrupted = App.GetImageStream((System.Drawing.Image)Resources.ResourceManager.GetObject("Corrupted"));
 
-		private List<CMFeature> GetFeatures(int[] features) => (from f in features select new CMFeature { Icon = MainViewModel.lumina.GetIcon(f).GetImage() }).ToList();
+		private List<CMFeature> GetFeatures(int[] features) => (from f in features select new CMFeature { Icon = MainViewModel.gameData.GetIcon(f).GetImage() }).ToList();
 
 		public void GetStains()
 		{
 			try
 			{
-				this.Stains = from s in MainViewModel.lumina.GetExcelSheet<Stain>()
+				this.Stains = from s in MainViewModel.gameData.GetExcelSheet<Stain>()
 							  let colorBytes = BitConverter.GetBytes(s.Color)
 							  select new CMStain
 							  {
@@ -237,14 +237,14 @@ namespace ConceptMatrix.Utility
 		{
 			try
 			{
-				var statusSheet = MainViewModel.lumina.GetExcelSheet<Status>();
+				var statusSheet = MainViewModel.gameData.GetExcelSheet<Status>();
 				this.Statuses = from s in statusSheet
 								where s.VFX != 0 || s.RowId == 0
 								select new CMStatus
 								{
 									Id = (int)s.RowId,
 									Name = s.Name.RawString.DefaultIfEmpty("None"),
-									Icon = MainViewModel.lumina.GetIcon(s.Icon)?.GetImage()
+									Icon = MainViewModel.gameData.GetIcon(s.Icon)?.GetImage()
 								};
 			}
 			catch (Exception)
@@ -260,7 +260,7 @@ namespace ConceptMatrix.Utility
 		{
 			try
 			{
-				this.CharaMakeFeatures2 = (from c in MainViewModel.lumina.GetExcelSheet<CharaMakeType>()
+				this.CharaMakeFeatures2 = (from c in MainViewModel.gameData.GetExcelSheet<CharaMakeType>()
 										  select new CMCharaMakeCustomizeFeature2
 										  {
 											  Index = (int)c.RowId,
@@ -280,12 +280,12 @@ namespace ConceptMatrix.Utility
 		{
 			try
 			{
-				this.CharaMakeFeatures = (from cmc in MainViewModel.lumina.GetExcelSheet<CharaMakeCustomize>()
+				this.CharaMakeFeatures = (from cmc in MainViewModel.gameData.GetExcelSheet<CharaMakeCustomize>()
 										 select new CMCharaMakeCustomizeFeature
 										 {
 											 Index = (int)cmc.RowId,
 											 FeatureID = cmc.FeatureID,
-											 Icon = MainViewModel.lumina.GetIcon((int)cmc.Icon).GetImage()
+											 Icon = MainViewModel.gameData.GetIcon((int)cmc.Icon).GetImage()
 										 }).ToList();
 			}
 			catch (Exception)
@@ -414,7 +414,7 @@ namespace ConceptMatrix.Utility
 		{
 			try
 			{
-				var itemSheet = MainViewModel.lumina.GetExcelSheet<Item>();
+				var itemSheet = MainViewModel.gameData.GetExcelSheet<Item>();
 
 				Items = new List<CMItem>();
 
@@ -426,7 +426,7 @@ namespace ConceptMatrix.Utility
 							Name = i.Name,
 							ClassJobCategory = i.ClassJobCategory.Value.Name,
 							Type = AsType(i.ItemUICategory),
-							Icon = MainViewModel.lumina.GetIcon(i.Icon).GetImage(),
+							Icon = MainViewModel.gameData.GetIcon(i.Icon).GetImage(),
 							ModelMain = i.ModelMain.AsQuad().AsModel(),
 							ModelOff = i.ItemUICategory == 11 ? i.ModelMain.AsQuad().AsModel() : i.ModelSub.AsQuad().AsModel()
 						});
@@ -443,12 +443,12 @@ namespace ConceptMatrix.Utility
 
 			try
 			{
-				var npcResidentSheet = MainViewModel.lumina.GetExcelSheet<ENpcResident>();
+				var npcResidentSheet = MainViewModel.gameData.GetExcelSheet<ENpcResident>();
 
 				foreach (var npc in npcResidentSheet)
 					Residents.Add((int)npc.RowId, new CMResident { Index = (int)npc.RowId, Name = npc.Singular });
 
-				var npcBaseSheet = MainViewModel.lumina.GetExcelSheet<ENpcBase>();
+				var npcBaseSheet = MainViewModel.gameData.GetExcelSheet<ENpcBase>();
 
 				foreach (var npc in npcBaseSheet)
 				{
@@ -536,7 +536,7 @@ namespace ConceptMatrix.Utility
         {
 			try
             {
-				var territorySheet = from t in MainViewModel.lumina.GetExcelSheet<TerritoryType>()
+				var territorySheet = from t in MainViewModel.gameData.GetExcelSheet<TerritoryType>()
 									 where t.PlaceName.Value.Name.RawString.Length > 0
 									 select new CMTerritoryType
 									 {
@@ -546,7 +546,7 @@ namespace ConceptMatrix.Utility
 
 				TerritoryTypes = territorySheet.ToList();
 			}
-            catch (Exception)
+            catch (Exception ex)
             {
 				MessageBox.Show("Error occured while loading TerritoryType!", App.ToolName, MessageBoxButton.OK, MessageBoxImage.Error);
 			}

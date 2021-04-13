@@ -1,4 +1,5 @@
-﻿using Lumina.Data;
+﻿using Lumina;
+using Lumina.Data;
 using Lumina.Excel;
 using Lumina.Text;
 using System;
@@ -9,19 +10,14 @@ using System.Threading.Tasks;
 
 namespace ConceptMatrix.Sheets
 {
-    [Sheet("PlaceName", columnHash: 0x46ef07bb)]
-    public class PlaceName : IExcelRow
+    [Sheet("PlaceName")]
+    public class PlaceName : ExcelRow
     {
-
         public SeString Name;
 
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData(RowParser parser, Lumina.Lumina lumina, Language language)
+        public override void PopulateData(RowParser parser, GameData gameData, Language language)
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData(parser, gameData, language);
 
             Name = parser.ReadColumn<SeString>(0);
         }

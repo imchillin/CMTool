@@ -31,7 +31,7 @@ namespace ConceptMatrix.ViewModel
     public class MainViewModel : INotifyPropertyChanged
     {
         public static Mediator mediator;
-        public static Lumina.Lumina lumina;
+        public static GameData gameData;
 
         public static BackgroundWorker worker;
         public Mem MemLib = new Mem();
@@ -77,13 +77,13 @@ namespace ConceptMatrix.ViewModel
                     }
 
                     // Set up Lumina for the game.
-                    lumina = new Lumina.Lumina(Path.Combine(GameDirectory, "game", "sqpack"));
+                    gameData = new GameData(Path.Combine(GameDirectory, "game", "sqpack"));
                     // Thread for handling Lumina file queueing.
                     luminaThread = new Thread(() =>
                     {
                         while (luminaThread.IsAlive && threadAlive)
                         {
-                            lumina.ProcessFileHandleQueue();
+                            gameData.ProcessFileHandleQueue();
                             Thread.Yield();
                         }
                     });
@@ -94,25 +94,25 @@ namespace ConceptMatrix.ViewModel
                     if (File.Exists(Path.Combine(GameDirectory, "FFXIVBoot.exe")) || File.Exists(Path.Combine(GameDirectory, "rail_files", "rail_game_identify.json")))
                     {
                         RegionType = "zh";
-                        lumina.Options.DefaultExcelLanguage = Lumina.Data.Language.ChineseSimplified;
+                        gameData.Options.DefaultExcelLanguage = Lumina.Data.Language.ChineseSimplified;
                     }
                     else if (File.Exists(Path.Combine(GameDirectory, "boot", "FFXIV_Boot.exe")))
                     {
                         RegionType = "ko";
-                        lumina.Options.DefaultExcelLanguage = Lumina.Data.Language.Korean;
+                        gameData.Options.DefaultExcelLanguage = Lumina.Data.Language.Korean;
                     }
                     if (RegionType == "Live")
                     {
                         if (SaveSettings.Default.Language == "en")
-                            lumina.Options.DefaultExcelLanguage = Lumina.Data.Language.English;
+                            gameData.Options.DefaultExcelLanguage = Lumina.Data.Language.English;
                         else if (SaveSettings.Default.Language == "ja")
-                            lumina.Options.DefaultExcelLanguage = Lumina.Data.Language.Japanese;
+                            gameData.Options.DefaultExcelLanguage = Lumina.Data.Language.Japanese;
                         else if (SaveSettings.Default.Language == "de")
-                            lumina.Options.DefaultExcelLanguage = Lumina.Data.Language.German;
+                            gameData.Options.DefaultExcelLanguage = Lumina.Data.Language.German;
                         else if (SaveSettings.Default.Language == "fr")
-                            lumina.Options.DefaultExcelLanguage = Lumina.Data.Language.French;
+                            gameData.Options.DefaultExcelLanguage = Lumina.Data.Language.French;
                         else
-                            lumina.Options.DefaultExcelLanguage = Lumina.Data.Language.English;
+                            gameData.Options.DefaultExcelLanguage = Lumina.Data.Language.English;
                     }
 
                     Initialize(RegionType);
@@ -213,8 +213,8 @@ namespace ConceptMatrix.ViewModel
             
             Task.Run(() =>
             {
-                this.races = from r in lumina.GetExcelSheet<Race>() select r.Feminine.RawString.DefaultIfEmpty("None");
-                this.tribes = from t in lumina.GetExcelSheet<Tribe>() select t.Feminine.RawString.DefaultIfEmpty("None");
+                this.races = from r in gameData.GetExcelSheet<Race>() select r.Feminine.RawString.DefaultIfEmpty("None");
+                this.tribes = from t in gameData.GetExcelSheet<Tribe>() select t.Feminine.RawString.DefaultIfEmpty("None");
 
                 App.Current.Dispatcher.Invoke(() =>
                 {
@@ -225,7 +225,7 @@ namespace ConceptMatrix.ViewModel
                 try
                 {
                     var voices = new List<ExdCsvReader.CMVoice>();
-                    var cmtSheet = lumina.GetExcelSheet<CharaMakeType>().Where(c => c.Tribe != 0);
+                    var cmtSheet = gameData.GetExcelSheet<CharaMakeType>().Where(c => c.Tribe != 0);
                     var r = this.races.ToArray();
                     var t = this.tribes.ToArray();
                     var male = Resx.MiscStrings.Male;
@@ -285,12 +285,12 @@ namespace ConceptMatrix.ViewModel
             {
                 try
                 {
-                    var weatherList = from w in lumina.GetExcelSheet<Weather>()
+                    var weatherList = from w in gameData.GetExcelSheet<Weather>()
                                       select new ExdCsvReader.CMWeather
                                       {
                                           Id = (ushort)w.RowId,
                                           Name = $"{w.Name.RawString.DefaultIfEmpty("None")} ({w.RowId})",
-                                          Icon = lumina.GetIcon(w.Icon).GetImage()
+                                          Icon = gameData.GetIcon(w.Icon).GetImage()
                                       };
 
                     App.Current.Dispatcher.Invoke(() =>
@@ -305,7 +305,7 @@ namespace ConceptMatrix.ViewModel
             });
             Task.Run(() =>
             {
-                var titleSheet = lumina.GetExcelSheet<Title>().Select(title => title.Feminine.RawString.DefaultIfEmpty("None"));
+                var titleSheet = gameData.GetExcelSheet<Title>().Select(title => title.Feminine.RawString.DefaultIfEmpty("None"));
                 App.Current.Dispatcher.Invoke(() => characterView.TitleBox.ItemsSource = titleSheet);
             });
 

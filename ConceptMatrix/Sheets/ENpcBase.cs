@@ -1,4 +1,5 @@
-﻿using Lumina.Data;
+﻿using Lumina;
+using Lumina.Data;
 using Lumina.Excel;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 namespace ConceptMatrix.Sheets
 {
     [Sheet("ENpcBase", columnHash: 0x927347d8)]
-    public class ENpcBase : IExcelRow
+    public class ENpcBase : ExcelRow
     {
         public ushort ModelChara;
         public byte Race;
@@ -65,13 +66,9 @@ namespace ConceptMatrix.Sheets
         public uint ModelRightRing;
         public LazyRow<Stain> DyeRightRing;
 
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData(RowParser parser, Lumina.Lumina lumina, Language language)
+        public override void PopulateData(RowParser parser, GameData gameData, Language language)
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData(parser, gameData, language);
 
             ModelChara = parser.ReadColumn<ushort>(35);
             Race = parser.ReadColumn<byte>(36);
@@ -100,32 +97,32 @@ namespace ConceptMatrix.Sheets
             ExtraFeature2OrBust = parser.ReadColumn<byte>(59);
             FacePaint = parser.ReadColumn<byte>(60);
             FacePaintColor = parser.ReadColumn<byte>(61);
-            NpcEquip = new LazyRow<NpcEquip>(lumina, parser.ReadColumn<ushort>(63), language);
+            NpcEquip = new LazyRow<NpcEquip>(gameData, parser.ReadColumn<ushort>(63), language);
             ModelMainHand = parser.ReadColumn<ulong>(65);
-            DyeMainHand = new LazyRow<Stain>(lumina, parser.ReadColumn<byte>(66), language);
+            DyeMainHand = new LazyRow<Stain>(gameData, parser.ReadColumn<byte>(66), language);
             ModelOffHand = parser.ReadColumn<ulong>(67);
-            DyeOffHand = new LazyRow<Stain>(lumina, parser.ReadColumn<byte>(68), language);
+            DyeOffHand = new LazyRow<Stain>(gameData, parser.ReadColumn<byte>(68), language);
             ModelHead = parser.ReadColumn<uint>(69);
-            DyeHead = new LazyRow<Stain>(lumina, parser.ReadColumn<byte>(70), language);
+            DyeHead = new LazyRow<Stain>(gameData, parser.ReadColumn<byte>(70), language);
             Visor = parser.ReadColumn<bool>(71);
             ModelBody = parser.ReadColumn<uint>(72);
-            DyeBody = new LazyRow<Stain>(lumina, parser.ReadColumn<byte>(73), language);
+            DyeBody = new LazyRow<Stain>(gameData, parser.ReadColumn<byte>(73), language);
             ModelHands = parser.ReadColumn<uint>(74);
-            DyeHands = new LazyRow<Stain>(lumina, parser.ReadColumn<byte>(75), language);
+            DyeHands = new LazyRow<Stain>(gameData, parser.ReadColumn<byte>(75), language);
             ModelLegs = parser.ReadColumn<uint>(76);
-            DyeLegs = new LazyRow<Stain>(lumina, parser.ReadColumn<byte>(77), language);
+            DyeLegs = new LazyRow<Stain>(gameData, parser.ReadColumn<byte>(77), language);
             ModelFeet = parser.ReadColumn<uint>(78);
-            DyeFeet = new LazyRow<Stain>(lumina, parser.ReadColumn<byte>(79), language);
+            DyeFeet = new LazyRow<Stain>(gameData, parser.ReadColumn<byte>(79), language);
             ModelEars = parser.ReadColumn<uint>(80);
-            DyeEars = new LazyRow<Stain>(lumina, parser.ReadColumn<byte>(81), language);
+            DyeEars = new LazyRow<Stain>(gameData, parser.ReadColumn<byte>(81), language);
             ModelNeck = parser.ReadColumn<uint>(82);
-            DyeNeck = new LazyRow<Stain>(lumina, parser.ReadColumn<byte>(83), language);
+            DyeNeck = new LazyRow<Stain>(gameData, parser.ReadColumn<byte>(83), language);
             ModelWrists = parser.ReadColumn<uint>(84);
-            DyeWrists = new LazyRow<Stain>(lumina, parser.ReadColumn<byte>(85), language);
+            DyeWrists = new LazyRow<Stain>(gameData, parser.ReadColumn<byte>(85), language);
             ModelLeftRing = parser.ReadColumn<uint>(86);
-            DyeLeftRing = new LazyRow<Stain>(lumina, parser.ReadColumn<byte>(87), language);
+            DyeLeftRing = new LazyRow<Stain>(gameData, parser.ReadColumn<byte>(87), language);
             ModelRightRing = parser.ReadColumn<uint>(88);
-            DyeRightRing = new LazyRow<Stain>(lumina, parser.ReadColumn<byte>(89), language);
+            DyeRightRing = new LazyRow<Stain>(gameData, parser.ReadColumn<byte>(89), language);
         }
     }
 }

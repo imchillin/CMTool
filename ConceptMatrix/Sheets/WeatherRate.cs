@@ -1,4 +1,5 @@
-﻿using Lumina.Data;
+﻿using Lumina;
+using Lumina.Data;
 using Lumina.Excel;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 namespace ConceptMatrix.Sheets
 {
     [Sheet("WeatherRate")]
-    public class WeatherRate : IExcelRow
+    public class WeatherRate : ExcelRow
     {
         public struct UnkStruct0Struct
         {
@@ -19,21 +20,19 @@ namespace ConceptMatrix.Sheets
 
         public UnkStruct0Struct[] UnkStruct0;
 
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData(RowParser parser, Lumina.Lumina lumina, Language language)
+        public override void PopulateData(RowParser parser, GameData gameData, Language language)
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData(parser, gameData, language);
 
             UnkStruct0 = new UnkStruct0Struct[8];
             for (var i = 0; i < 8; i++)
             {
-                UnkStruct0[i] = new UnkStruct0Struct();
-                UnkStruct0[i].Weather = parser.ReadColumn<int>(0 + (i * 2 + 0));
-                UnkStruct0[i].Rate = parser.ReadColumn<byte>(0 + (i * 2 + 1));
-            }
+				UnkStruct0[i] = new UnkStruct0Struct
+				{
+					Weather = parser.ReadColumn<int>(i * 2 + 0),
+					Rate = parser.ReadColumn<byte>(i * 2 + 1)
+				};
+			}
         }
     }
 }

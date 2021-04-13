@@ -312,10 +312,10 @@ namespace ConceptMatrix.Views
             try
             {
                 // Get the allowed weathers for this territory.
-                var allowedWeathers = MainViewModel.lumina.GetExcelSheet<TerritoryType>().First(t => t.RowId == CharacterDetails.Territory).AllowedWeather();
+                var allowedWeathers = MainViewModel.gameData.GetExcelSheet<TerritoryType>().First(t => t.RowId == CharacterDetails.Territory).AllowedWeather();
                 // Create a CMWeather list for use in an itemssource.
                 var cmWeathers = from w in allowedWeathers
-                                 select new ExdCsvReader.CMWeather() { Id = (byte)w.RowId, Icon = MainViewModel.lumina.GetIcon(w.Icon).GetImage(), Name = w.Name };
+                                 select new ExdCsvReader.CMWeather() { Id = (byte)w.RowId, Icon = MainViewModel.gameData.GetIcon(w.Icon).GetImage(), Name = w.Name };
 
                 // Set the item source to the CMWeather list.
                 WeatherBox.ItemsSource = cmWeathers;

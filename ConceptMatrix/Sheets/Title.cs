@@ -1,4 +1,5 @@
-﻿using Lumina.Data;
+﻿using Lumina;
+using Lumina.Data;
 using Lumina.Excel;
 using Lumina.Text;
 using System;
@@ -10,21 +11,16 @@ using System.Threading.Tasks;
 namespace ConceptMatrix.Sheets
 {
     [Sheet("Title", columnHash: 0x83e3f9ba)]
-    public class Title : IExcelRow
+    public class Title : ExcelRow
     {
-
         public SeString Masculine;
         public SeString Feminine;
         public bool IsPrefix;
         public ushort Order;
 
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData(RowParser parser, Lumina.Lumina lumina, Language language)
+        public override void PopulateData(RowParser parser, GameData gameData, Language language)
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData(parser, gameData, language);
 
             Masculine = parser.ReadColumn<SeString>(0);
             Feminine = parser.ReadColumn<SeString>(1);

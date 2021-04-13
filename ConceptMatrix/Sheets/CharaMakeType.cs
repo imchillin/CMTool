@@ -1,4 +1,5 @@
-﻿using Lumina.Data;
+﻿using Lumina;
+using Lumina.Data;
 using Lumina.Excel;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 namespace ConceptMatrix.Sheets
 {
     [Sheet("CharaMakeType", columnHash: 0x80d7db6d)]
-    public class CharaMakeType : IExcelRow
+    public class CharaMakeType : ExcelRow
     {
         public int Race;
         public int Tribe;
@@ -17,13 +18,9 @@ namespace ConceptMatrix.Sheets
         public byte[] VoiceStruct;
         public int[] FacialFeatureOptions;
 
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData(RowParser parser, Lumina.Lumina lumina, Language language)
+        public override void PopulateData(RowParser parser, GameData gameData, Language language)
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData(parser, gameData, language);
 
             Race = parser.ReadColumn<int>(0);
             Tribe = parser.ReadColumn<int>(1);
