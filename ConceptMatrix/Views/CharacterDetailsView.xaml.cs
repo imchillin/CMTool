@@ -603,36 +603,12 @@ namespace ConceptMatrix.Views
 
         private void EmoteSearch_Click(object sender, RoutedEventArgs e)
 		{
-			if (EmoteFlyouts.IsOpen)
-			{
-				if (EmoteFlyouts.AnimBox.SelectedIndex != 0)
-				{
-					EmoteFlyouts.AnimBox.SelectedIndex = 0;
-				}
-				else EmoteFlyouts.IsOpen = !EmoteFlyouts.IsOpen;
-			}
-			else
-			{
-				EmoteFlyouts.IsOpen = !EmoteFlyouts.IsOpen;
-				EmoteFlyouts.AnimBox.SelectedIndex = 0;
-			}
+			EmoteFlyouts.IsOpen = !EmoteFlyouts.IsOpen;
 		}
 
 		private void EmoteOldSearch_Click(object sender, RoutedEventArgs e)
 		{
-			if (EmoteFlyouts.IsOpen)
-			{
-				if (EmoteFlyouts.AnimBox.SelectedIndex != 1)
-				{
-					EmoteFlyouts.AnimBox.SelectedIndex = 1;
-				}
-				else EmoteFlyouts.IsOpen = !EmoteFlyouts.IsOpen;
-			}
-			else
-			{
-				EmoteFlyouts.IsOpen = !EmoteFlyouts.IsOpen;
-				EmoteFlyouts.AnimBox.SelectedIndex = 1;
-			}
+			EmoteFlyouts.IsOpen = !EmoteFlyouts.IsOpen;
 		}
 
 		private void EmoteBox_SourceUpdated(object sender, DataTransferEventArgs e)
