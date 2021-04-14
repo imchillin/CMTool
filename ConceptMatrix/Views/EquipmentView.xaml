@@ -116,7 +116,7 @@
         <Button Name="HeadSearch" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="{Binding Source={x:Static resx:UIStringsContent.View}}" HorizontalAlignment="Left" Margin="475,105,0,0" VerticalAlignment="Top" Width="65" Click="HeadSearch_Click" Height="38"/>
 
         <!-- Body -->
-        <CheckBox IsChecked="{Binding Path=CharacterDetails.Chest.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.Body}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.BodyToolTip}}" HorizontalAlignment="Left" Margin="8,155,0,0" VerticalAlignment="Top" Height="38"/>
+        <CheckBox IsChecked="{Binding Path=CharacterDetails.Chest.freeze}" Content="{Binding Source={x:Static resx:UIStringsContent.Body}}" ToolTip="{Binding Source={x:Static resx:UIStringsContent.BodyToolTip2}}" HorizontalAlignment="Left" Margin="8,155,0,0" VerticalAlignment="Top" Height="38"/>
         <TextBox Text="{Binding Path=CharacterDetails.Chest.value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="105,155,0,0" VerticalAlignment="Top" HorizontalAlignment="left" Width="60" TextAlignment="Center" PreviewTextInput="DigitCheckInput" Height="38" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}">
             <materialDesign:HintAssist.Hint>
                 <StackPanel Orientation="Horizontal"  Margin="0 0 0 0" >
