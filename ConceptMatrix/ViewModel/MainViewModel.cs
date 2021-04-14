@@ -53,7 +53,9 @@ namespace ConceptMatrix.ViewModel
 		public event PropertyChangedEventHandler PropertyChanged;
         public static string GameDirectory = "";
 
-		public CharacterDetailsViewModel CharacterDetails { get => characterDetails; set => characterDetails = value; }
+        public static ImageSource Corrupted = App.GetImageStream((System.Drawing.Image)Properties.Resources.ResourceManager.GetObject("Corrupted"));
+
+        public CharacterDetailsViewModel CharacterDetails { get => characterDetails; set => characterDetails = value; }
 
         public static Thread luminaThread;
         private static bool threadAlive = true;
@@ -166,6 +168,19 @@ namespace ConceptMatrix.ViewModel
                 MessageBox.Show(ex.StackTrace);
             }
         }
+
+        public static ImageSource GetLuminaIconImage(ushort icon)
+		{
+			try
+			{
+                return gameData.GetIcon(icon).GetImage();
+            }
+            catch
+			{
+                return Corrupted;
+			}
+        }
+
         public static void Shutdown()
         {
 			try

@@ -426,7 +426,7 @@ namespace ConceptMatrix.Utility
 							Name = i.Name,
 							ClassJobCategory = i.ClassJobCategory.Value.Name,
 							Type = AsType(i.ItemUICategory),
-							Icon = MainViewModel.gameData.GetIcon(i.Icon).GetImage(),
+							Icon = MainViewModel.GetLuminaIconImage(i.Icon),
 							ModelMain = i.ModelMain.AsQuad().AsModel(),
 							ModelOff = i.ItemUICategory == 11 ? i.ModelMain.AsQuad().AsModel() : i.ModelSub.AsQuad().AsModel()
 						});
