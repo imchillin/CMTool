@@ -117,7 +117,8 @@ namespace ConceptMatrix.ViewModel
             MemoryManager.Instance.CharacterRenderAddress2 = (render - 0xA).ToString("X");
 
             // Cheap hook. (temp?)
-            MemoryManager.Instance.TimeStopAsm = m.AoBScan(start, end, "48 89 83 08 16 00 00 48 69").FirstOrDefault();
+            MemoryManager.Instance.TimeStopAsm = m.AoBScan(start, end, "48 89 ?? 08 16 00 00 48 69").FirstOrDefault();
+            MemoryManager.Instance.TimeAsm = m.readBytes(MemoryManager.Instance.TimeStopAsm.ToString("X"), 7);
 
             // Cheap ass emote hack.
             MemoryManager.Instance.EmoteHack = ScanText("66 89 8B D0 00 00 00 48 8B 43 60 48 85 C0");

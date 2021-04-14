@@ -176,7 +176,7 @@ namespace ConceptMatrix.ViewModel
 				threadWriting = null;
 
 				// Turn off the time stop code.
-				MemoryManager.Instance.MemLib.writeBytes(MemoryManager.Instance.TimeStopAsm.ToString("X"), new byte[] { 0x48, 0x89, 0x83, 0x08, 0x16, 0x00, 0x00 });
+				MemoryManager.Instance.MemLib.writeBytes(MemoryManager.Instance.TimeStopAsm.ToString("X"), MemoryManager.Instance.TimeAsm);
                 // Turn off the emote hack.
                 MemoryManager.Instance.MemLib.writeBytes(MemoryManager.Instance.EmoteHack, new byte[] { 0x66, 0x89, 0x8B, 0xD0, 0x00, 0x00, 0x00 });
 

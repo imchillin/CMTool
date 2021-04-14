@@ -35,6 +35,7 @@ namespace ConceptMatrix.Utility
         }
 
         public long TimeStopAsm;
+        public byte[] TimeAsm;
         public string BaseAddress { get; set; }
         public string CameraAddress { get; set; }
         public string GposeAddress { get; set; }

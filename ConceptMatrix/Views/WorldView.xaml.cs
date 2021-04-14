@@ -74,13 +74,12 @@ namespace ConceptMatrix.Views
 
         private void WriteTimeFrozen(bool frozen)
         {
-            var on = new byte[] { 0x48, 0x89, 0x83, 0x08, 0x16, 0x00, 0x00 };
             var off = new byte[] { 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 };
 
             if (MemoryManager.Instance.TimeStopAsm != 0)
             {
                 var m = MemoryManager.Instance.MemLib;
-                m.writeBytes(MemoryManager.Instance.TimeStopAsm.ToString("X"), frozen ? off : on);
+                m.writeBytes(MemoryManager.Instance.TimeStopAsm.ToString("X"), frozen ? off : MemoryManager.Instance.TimeAsm);
             }
         }
 
