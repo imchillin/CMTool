@@ -1,6 +1,6 @@
 {
   "LastUpdated": "5.35", // bad legacy support
-  "NewLastUpdated": "5.5.0.0",
+  "NewLastUpdated": "5.5.0.1",
   "CameraOffset": "1D8A070", // unused
   "GposeOffset": "1DB8120",
   "GposeEntityOffset": "1DB9500",
@@ -67,7 +67,7 @@
     "Music2": "C0,114",
     "NameHeight": "164",
     "RenderToggle": "104",
-    "Transparency": "1808",
+    "Transparency": "182C",
     "EntityType": "8C",
     "EntitySub": "8D",
     "ModelType": "1B4",
