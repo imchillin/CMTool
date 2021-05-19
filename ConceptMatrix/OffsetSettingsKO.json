@@ -1,6 +1,6 @@
 {
   "LastUpdated": "5.2b", // bad legacy support
-  "NewLastUpdated": "5.3.0.1", // weird fix with x
+  "NewLastUpdated": "5.4.0.0", // weird fix with x
   "CameraOffset": "1C60A00", // unused
   "GposeOffset": "1D88580",
   "GposeEntityOffset": "1D89960",
