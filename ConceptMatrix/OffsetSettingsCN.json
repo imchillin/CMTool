@@ -1,25 +1,25 @@
 {
   "LastUpdated": "5.21", // bad legacy support
-  "NewLastUpdated": "5.4",
+  "NewLastUpdated": "5.41",
   "CameraOffset": "1D85470", // unused
-  "GposeOffset": "1D85680",
-  "GposeEntityOffset": "1D86A60",
-  "GposeCheckOffset": "1D89260",
-  "GposeCheck2Offset": "1D89240",
+  "GposeOffset": "1D84680",
+  "GposeEntityOffset": "1D85A60",
+  "GposeCheckOffset": "1D88260",
+  "GposeCheck2Offset": "1D88240",
   "AoBOffset": "1D2CF18", // unused
-  "TargetOffset": "1D856C0",
+  "TargetOffset": "1D846C0",
   "TimeOffset": "1CE5AF0", // unused
-  "WeatherOffset": "1D3AFC8",
+  "WeatherOffset": "1D39FC8",
   "TerritoryOffset": "1D04F28", // unused
-  "GposeFilters": "1D63638",
+  "GposeFilters": "1D62638",
   "MusicOffset": "1D1B728", // unused
-  "SkeletonOffset": "1461580", // ROTATION
-  "SkeletonOffset2": "14626AD", // ROTATION
-  "SkeletonOffset3": "1470314", // ROTATION
-  "SkeletonOffset4": "1461590", // SCALE: SkeletonOffset + 0x10
-  "SkeletonOffset5": "146150B", // POSITION: SkeletonOffset - 0x75
-  "SkeletonOffset6": "14626BD", // SCALE: SkeletonOffset2 + 0x10
-  "SkeletonOffset7": "1462638", // POSITION: SkeletonOffset2 - 0x75
+  "SkeletonOffset": "1461290", // ROTATION
+  "SkeletonOffset2": "14623BD", // ROTATION
+  "SkeletonOffset3": "1470024", // ROTATION
+  "SkeletonOffset4": "14612A0", // SCALE: SkeletonOffset + 0x10
+  "SkeletonOffset5": "146121B", // POSITION: SkeletonOffset - 0x75
+  "SkeletonOffset6": "14623CD", // SCALE: SkeletonOffset2 + 0x10
+  "SkeletonOffset7": "1462348", // POSITION: SkeletonOffset2 - 0x75
   "PhysicsOffset": "382B88", // unused
   "PhysicsOffset2": "382B7F", // unused
   "PhysicsOffset3": "382B92", // unused
@@ -122,10 +122,7 @@
     "CameraUpDown": "218",
     "EmoteIsPlayerFrozen": "7C4",
     "AltCheckPlayerFrozen": "DA4",
-    "Emote": "18BE",
-    "EmoteOld": "C60",
-    "EmoteSpeed1": "CD4",
-    "EmoteSpeed2": "CD8",
+    "Emote": "CC0",
     "FreezeFacial": "CDC",
     "DataPath": "F0,938",
     "DataHead": "F0,93C",
