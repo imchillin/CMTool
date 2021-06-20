@@ -37,7 +37,7 @@ deploy:
   provider: GitHub
   draft: true
   auth_token:
-    secure: O6Rsj+hoS5X7Q1u7TjtFwjRN53ohwjF8Mik/BpVidoefAag5FfpxoWqS5GTdJECG
+    secure: EAqDpXZoRTQ494m/Cxjf7IogaPI1fFxRATLxOUXugdVIgAgT26/GlJAKIlnJIGiV
   artifact: CMTool.zip
   on:
     branch: master
