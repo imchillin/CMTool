@@ -66,13 +66,7 @@ namespace ConceptMatrix.ViewModel
         /// </summary>
         public void FetchOffsets()
         {
-            MemoryManager.Instance.TargetAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.TargetOffset, NumberStyles.HexNumber));
             MemoryManager.Instance.GposeAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.GposeOffset, NumberStyles.HexNumber));
-            MemoryManager.Instance.GposeCheckAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.GposeCheckOffset, NumberStyles.HexNumber));
-            MemoryManager.Instance.GposeCheck2Address = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.GposeCheck2Offset, NumberStyles.HexNumber));
-            MemoryManager.Instance.GposeEntityOffset = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.GposeEntityOffset, NumberStyles.HexNumber));
-            MemoryManager.Instance.WeatherAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.WeatherOffset, NumberStyles.HexNumber));
-            MemoryManager.Instance.GposeFilters = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.GposeFilters, NumberStyles.HexNumber));
 
             var m = MemoryManager.Instance.MemLib;
             var start = m.theProc.MainModule.BaseAddress.ToInt64();
@@ -85,7 +79,8 @@ namespace ConceptMatrix.ViewModel
                 if (addr == 0)
                     throw new Exception("Invalid address found!");
 
-                return (GetStaticAddressFromSig(m, addr, skip, baseOffset) + adjust).ToString("X");
+                var a = GetStaticAddressFromSig(m, addr, skip, baseOffset);
+                return (a + adjust).ToString("X");
 			}
 
             string ScanText(string signature) => m.AoBScan(start, end, signature).FirstOrDefault().ToString("X");
@@ -95,6 +90,14 @@ namespace ConceptMatrix.ViewModel
             MemoryManager.Instance.CameraAddress = GSAFS("4F 8B B4 C6 ?? ?? ?? ??", 4, 0, true);
             MemoryManager.Instance.TerritoryAddress = GSAFS("8B 1D ?? ?? ?? ?? 0F 45 D8 39 1D", 2);
             MemoryManager.Instance.TimeAddress = GSAFS("48 8B 15 ?? ?? ?? ?? 4C 8B 82 18 16 00 00", 3);
+
+            MemoryManager.Instance.TargetAddress = GSAFS("48 8B 05 ?? ?? ?? ?? 48 8D 0D ?? ?? ?? ?? FF 50 ?? 48 85 DB", 3, 0x80);
+            // MemoryManager.Instance.GposeAddress = GSAFS("48 8D 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? 48 8D 8E", 3, 0x14A0);
+            MemoryManager.Instance.GposeEntityOffset = GSAFS("48 8D 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? 48 8D 8E", 3, 0x14A0);
+            MemoryManager.Instance.GposeCheckAddress = GSAFS("48 8B 15 ?? ?? ?? ?? 48 89 6C 24", 3);
+            MemoryManager.Instance.GposeCheck2Address = GSAFS("8D 48 FF 48 8D 05 ?? ?? ?? ?? 8B 0C 88 48 8B 02 83 F9 04 49 8B CA", 6);
+            MemoryManager.Instance.GposeFilters = GSAFS("4C 8B 05 ?? ?? ?? ?? 41 8B 80 ?? ?? ?? ?? C1 E8 02", 3);
+            MemoryManager.Instance.WeatherAddress = GSAFS("49 8B 9D ?? ?? ?? ?? 48 8D 0D", 10, 8);
 
             // Skeleton posing addresses.
             MemoryManager.Instance.SkeletonAddress = ScanText("41 0F 29 5C 12 10");
