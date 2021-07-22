@@ -1,6 +1,6 @@
 {
   "LastUpdated": "5.2b", // bad legacy support
-  "NewLastUpdated": "5.4.0.1", // weird fix with x
+  "NewLastUpdated": "5.4.5.0", // weird fix with x
   "CameraOffset": "1C60A00", // unused
   "GposeOffset": "1D87580",
   "GposeEntityOffset": "1D88960",
@@ -120,7 +120,7 @@
     "FOVMAX": "128",
     "FOV2": "12C",
     "CameraUpDown": "218",
-    "EmoteIsPlayerFrozen": "784",
+    "EmoteIsPlayerFrozen": "7C4",
     "AltCheckPlayerFrozen": "DA4",
     "Emote": "18BE",
     "EmoteOld": "C60",
