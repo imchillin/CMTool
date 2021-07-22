@@ -1,30 +1,5 @@
 {
-  "LastUpdated": "5.35", // bad legacy support
   "NewLastUpdated": "5.5.8.0",
-  "CameraOffset": "1D8A070", // unused
-  "GposeOffset": "1DB8180",
-  "GposeEntityOffset": "1DB8180", // unused
-  "GposeCheckOffset": "1DC3D60", // unused
-  "GposeCheck2Offset": "1DC3D40", // unused
-  "AoBOffset": "1DB2048", // unused
-  "TargetOffset": "1DC01C0", // unused
-  "TimeOffset": "1D6A800", // unused
-  "WeatherOffset": "1D753C8", // unused
-  "TerritoryOffset": "1D8A008", // unused
-  "GposeFilters": "1D9DBD8", // unused
-  "MusicOffset": "1DA8A30", // unused
-  "SkeletonOffset": "1463BE0", // ROTATION
-  "SkeletonOffset2": "1464D0D", // ROTATION
-  "SkeletonOffset3": "1472974", // ROTATION
-  "SkeletonOffset4": "1463BF0", //SCALE
-  "SkeletonOffset5": "1463B6B", //POSITION
-  "SkeletonOffset6": "1464D1D", // SCALE
-  "SkeletonOffset7": "1464C98", //POSITION
-  "PhysicsOffset": "38A768", // unused
-  "PhysicsOffset2": "38A75F", // unused
-  "PhysicsOffset3": "38A772", // unused
-  "CharacterRenderOffset": "442380", // unused
-  "CharacterRenderOffset2": "442376", // unused
   "Character": {
     "Name": "30",
     "ActorID": "74",

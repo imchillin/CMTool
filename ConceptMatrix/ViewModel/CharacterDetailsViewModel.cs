@@ -66,8 +66,6 @@ namespace ConceptMatrix.ViewModel
         /// </summary>
         public void FetchOffsets()
         {
-            MemoryManager.Instance.GposeAddress = MemoryManager.Instance.GetBaseAddress(int.Parse(Settings.Instance.GposeOffset, NumberStyles.HexNumber));
-
             var m = MemoryManager.Instance.MemLib;
             var start = m.theProc.MainModule.BaseAddress.ToInt64();
             var end = start + m.theProc.MainModule.ModuleMemorySize;
@@ -91,8 +89,8 @@ namespace ConceptMatrix.ViewModel
             MemoryManager.Instance.TerritoryAddress = GSAFS("8B 1D ?? ?? ?? ?? 0F 45 D8 39 1D", 2);
             MemoryManager.Instance.TimeAddress = GSAFS("48 8B 15 ?? ?? ?? ?? 4C 8B 82 18 16 00 00", 3);
 
-            MemoryManager.Instance.TargetAddress = GSAFS("48 8B 05 ?? ?? ?? ?? 48 8D 0D ?? ?? ?? ?? FF 50 ?? 48 85 DB", 3, 0x80);
-            // MemoryManager.Instance.GposeAddress = GSAFS("48 8D 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? 48 8D 8E", 3, 0x14A0);
+            MemoryManager.Instance.TargetAddress = GSAFS("48 8B 05 ?? ?? ?? ?? 48 8D 0D ?? ?? ?? ?? FF 50 ?? 48 85 DB", 3, 0x100);
+            MemoryManager.Instance.GposeAddress = GSAFS("48 8B 05 ?? ?? ?? ?? 48 8D 0D ?? ?? ?? ?? FF 50 18 48 85 DB", 3, 0xC0);
             MemoryManager.Instance.GposeEntityOffset = GSAFS("48 8D 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? 48 8D 8E", 3, 0x14A0);
             MemoryManager.Instance.GposeCheckAddress = GSAFS("48 8B 15 ?? ?? ?? ?? 48 89 6C 24", 3);
             MemoryManager.Instance.GposeCheck2Address = GSAFS("8D 48 FF 48 8D 05 ?? ?? ?? ?? 8B 0C 88 48 8B 02 83 F9 04 49 8B CA", 6);
