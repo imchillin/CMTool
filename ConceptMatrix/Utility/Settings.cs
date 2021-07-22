@@ -28,7 +28,7 @@ namespace ConceptMatrix.Utility
             }
         }
         #endregion
-		public string NewLastUpdated { get; set; }
+		public string Version { get; set; }
         public CharacterOffsets Character { get; set; }
         public PositionOffsets Position { get; set; }
         public BonesOffsets Bones { get; set; }

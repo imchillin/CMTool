@@ -384,10 +384,13 @@ namespace ConceptMatrix.ViewModel
                     var jsonStr = wc.DownloadString(@"https://raw.githubusercontent.com/imchillin/CMTool/master/ConceptMatrix/" + file + "?" + DateTime.Now);
                     var offset = JsonConvert.DeserializeObject<Settings>(jsonStr);
 
-                    if (Settings.Instance.NewLastUpdated == null)
-                        Settings.Instance.NewLastUpdated = Settings.Instance.LastUpdated;
+                    if (Settings.Instance.Version == null)
+                    {
+                        MessageBox.Show("Please update CMTool to get the latest offsets!", "Concept Matrix", MessageBoxButtons.OK);
+                        return false;
+                    }
 
-                    if (string.Compare(offset.NewLastUpdated, Settings.Instance.NewLastUpdated) > 0)
+                    if (string.Compare(offset.Version, Settings.Instance.Version) > 0)
                     {
                         File.WriteAllText($"./{file}", jsonStr);
                         Settings.Instance = offset;
