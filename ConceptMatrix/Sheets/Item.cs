@@ -36,12 +36,6 @@ namespace ConceptMatrix.Sheets
                 ModelMain = parser.ReadColumn<ulong>(47);
                 ModelSub = parser.ReadColumn<ulong>(48);
             }
-            else if (language == Language.Korean)
-            {
-                ClassJobCategory = new LazyRow<ClassJobCategory>(gameData, parser.ReadColumn<byte>(44), language);
-                ModelMain = parser.ReadColumn<ulong>(48);
-                ModelSub = parser.ReadColumn<ulong>(49);
-            }
             else
             {
                 ClassJobCategory = new LazyRow<ClassJobCategory>(gameData, parser.ReadColumn<byte>(43), language);
