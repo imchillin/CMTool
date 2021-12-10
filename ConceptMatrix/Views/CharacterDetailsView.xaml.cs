@@ -25,55 +25,55 @@ namespace ConceptMatrix.Views
 		public static ExdCsvReader dataProvider = new ExdCsvReader();
 		public static bool xyzcheck = false;
 		public static bool numbcheck = false;
-        public bool AltRotate;
-        public bool AdvancedMove;
+		public bool AltRotate;
+		public bool AdvancedMove;
 
-        public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
+		public CharacterDetails CharacterDetails { get => (CharacterDetails)BaseViewModel.model; set => BaseViewModel.model = value; }
 		public CharacterDetailsView()
 		{
 			InitializeComponent();
-            if (SaveSettings.Default.HasBackground == false) ActorBG.Opacity = 0;
-            MainViewModel.characterView = this;
+			if (SaveSettings.Default.HasBackground == false) ActorBG.Opacity = 0;
+			MainViewModel.characterView = this;
 			CharacterDetailsViewModel.Viewtime = this;
-            if(SaveSettings.Default.RotationSliders == true)
-            {
-                RotSliderButton.IsChecked = true;
-                RotationUpDown.Visibility = Visibility.Hidden;
-                RotationUpDown.IsEnabled = false;
-                RotationUpDown2.Visibility = Visibility.Hidden;
-                RotationUpDown2.IsEnabled = false;
-                RotationUpDown3.Visibility = Visibility.Hidden;
-                RotationUpDown3.IsEnabled = false;
+			if (SaveSettings.Default.RotationSliders == true)
+			{
+				RotSliderButton.IsChecked = true;
+				RotationUpDown.Visibility = Visibility.Hidden;
+				RotationUpDown.IsEnabled = false;
+				RotationUpDown2.Visibility = Visibility.Hidden;
+				RotationUpDown2.IsEnabled = false;
+				RotationUpDown3.Visibility = Visibility.Hidden;
+				RotationUpDown3.IsEnabled = false;
 
-                RotationSlider.Visibility = Visibility.Visible;
-                RotationSlider.IsEnabled = true;
-                RotationSlider2.Visibility = Visibility.Visible;
-                RotationSlider2.IsEnabled = true;
-                RotationSlider3.Visibility = Visibility.Visible;
-                RotationSlider3.IsEnabled = true;
-            }
-            else if (SaveSettings.Default.RotationSliders == false)
-            {
-                RotationUpDown.Visibility = Visibility.Visible;
-                RotationUpDown.IsEnabled = true;
-                RotationUpDown2.Visibility = Visibility.Visible;
-                RotationUpDown2.IsEnabled = true;
-                RotationUpDown3.Visibility = Visibility.Visible;
-                RotationUpDown3.IsEnabled = true;
+				RotationSlider.Visibility = Visibility.Visible;
+				RotationSlider.IsEnabled = true;
+				RotationSlider2.Visibility = Visibility.Visible;
+				RotationSlider2.IsEnabled = true;
+				RotationSlider3.Visibility = Visibility.Visible;
+				RotationSlider3.IsEnabled = true;
+			}
+			else if (SaveSettings.Default.RotationSliders == false)
+			{
+				RotationUpDown.Visibility = Visibility.Visible;
+				RotationUpDown.IsEnabled = true;
+				RotationUpDown2.Visibility = Visibility.Visible;
+				RotationUpDown2.IsEnabled = true;
+				RotationUpDown3.Visibility = Visibility.Visible;
+				RotationUpDown3.IsEnabled = true;
 
-                RotationSlider.Visibility = Visibility.Hidden;
-                RotationSlider.IsEnabled = false;
-                RotationSlider2.Visibility = Visibility.Hidden;
-                RotationSlider2.IsEnabled = false;
-                RotationSlider3.Visibility = Visibility.Hidden;
-                RotationSlider3.IsEnabled = false;
-            }
-            if (SaveSettings.Default.AltRotate == true)
-            {
-                RotRelButton.IsChecked = true;
-            }
+				RotationSlider.Visibility = Visibility.Hidden;
+				RotationSlider.IsEnabled = false;
+				RotationSlider2.Visibility = Visibility.Hidden;
+				RotationSlider2.IsEnabled = false;
+				RotationSlider3.Visibility = Visibility.Hidden;
+				RotationSlider3.IsEnabled = false;
+			}
+			if (SaveSettings.Default.AltRotate == true)
+			{
+				RotRelButton.IsChecked = true;
+			}
 
-        }
+		}
 
 		#region Height
 
@@ -113,8 +113,8 @@ namespace ConceptMatrix.Views
 
 		private void NameBox_KeyUp(object sender, KeyEventArgs e)
 		{
-            if (e.Key != Key.Enter) return;
-            e.Handled = true;
+			if (e.Key != Key.Enter) return;
+			e.Handled = true;
 			CharacterDetails.Name.value = NameBox.Text.Replace("\0", string.Empty);
 			MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Name), "string", NameBox.Text + "\0\0\0\0");
 		}
@@ -199,11 +199,11 @@ namespace ConceptMatrix.Views
 			BustZSlider.ValueChanged -= BustZ1;
 		}
 
-        #endregion
+		#endregion
 
-        #region Rotation
+		#region Rotation
 
-        /// <summary>	
+		/// <summary>	
 		/// Gets the euler angles from the UI elements.	
 		/// </summary>	
 		/// <returns>Vector3D representing euler angles.</returns>	
@@ -211,58 +211,58 @@ namespace ConceptMatrix.Views
 
 		// I'm scared of the above being wrong sometimes (the GUI controls don't always match the real rotation).
 		// Using this one based on the raw values until convinced it's safe.
-		private Vector3D GetCurrenRotation() =>  new Quaternion(CharacterDetails.Rotation.value,
-											                    CharacterDetails.Rotation2.value,
-											                    CharacterDetails.Rotation3.value,
-											                    CharacterDetails.Rotation4.value).ToEulerAngles();
+		private Vector3D GetCurrenRotation() => new Quaternion(CharacterDetails.Rotation.value,
+																CharacterDetails.Rotation2.value,
+																CharacterDetails.Rotation3.value,
+																CharacterDetails.Rotation4.value).ToEulerAngles();
 
 		private void RotationUpDown_SourceUpdated(object sender, DataTransferEventArgs e)
-        {
+		{
 
-            if (RotationSlider.IsKeyboardFocusWithin || RotationSlider.IsMouseOver)
-            {
-                RotationSlider.ValueChanged -= RotV2;
-                RotationSlider.ValueChanged += RotV2;
-            }
+			if (RotationSlider.IsKeyboardFocusWithin || RotationSlider.IsMouseOver)
+			{
+				RotationSlider.ValueChanged -= RotV2;
+				RotationSlider.ValueChanged += RotV2;
+			}
 
-            if (RotationUpDown.IsKeyboardFocusWithin || RotationUpDown.IsMouseOver)
-            {
-                RotationUpDown.ValueChanged -= RotV;
-                RotationUpDown.ValueChanged += RotV;
-            }
-        }
-        private void RotationUpDown2_SourceUpdated(object sender, DataTransferEventArgs e)
-        {
-            if (RotationSlider2.IsKeyboardFocusWithin || RotationSlider2.IsMouseOver)
-            {
-                RotationSlider2.ValueChanged -= RotV2;
-                RotationSlider2.ValueChanged += RotV2;
-            }
+			if (RotationUpDown.IsKeyboardFocusWithin || RotationUpDown.IsMouseOver)
+			{
+				RotationUpDown.ValueChanged -= RotV;
+				RotationUpDown.ValueChanged += RotV;
+			}
+		}
+		private void RotationUpDown2_SourceUpdated(object sender, DataTransferEventArgs e)
+		{
+			if (RotationSlider2.IsKeyboardFocusWithin || RotationSlider2.IsMouseOver)
+			{
+				RotationSlider2.ValueChanged -= RotV2;
+				RotationSlider2.ValueChanged += RotV2;
+			}
 
-            if (RotationUpDown2.IsKeyboardFocusWithin || RotationUpDown2.IsMouseOver)
-            {
-                RotationUpDown2.ValueChanged -= RotV;
-                RotationUpDown2.ValueChanged += RotV;
-            }
-        }
-        private void RotationUpDown3_SourceUpdated(object sender, DataTransferEventArgs e)
-        {
-            if (RotationSlider3.IsKeyboardFocusWithin || RotationSlider3.IsMouseOver)
-            {
-                RotationSlider3.ValueChanged -= RotV2;
-                RotationSlider3.ValueChanged += RotV2;
-            }
+			if (RotationUpDown2.IsKeyboardFocusWithin || RotationUpDown2.IsMouseOver)
+			{
+				RotationUpDown2.ValueChanged -= RotV;
+				RotationUpDown2.ValueChanged += RotV;
+			}
+		}
+		private void RotationUpDown3_SourceUpdated(object sender, DataTransferEventArgs e)
+		{
+			if (RotationSlider3.IsKeyboardFocusWithin || RotationSlider3.IsMouseOver)
+			{
+				RotationSlider3.ValueChanged -= RotV2;
+				RotationSlider3.ValueChanged += RotV2;
+			}
 
-            if (RotationUpDown3.IsKeyboardFocusWithin || RotationUpDown3.IsMouseOver)
-            {
-                RotationUpDown3.ValueChanged -= RotV;
-                RotationUpDown3.ValueChanged += RotV;
-            }
-        }
-        private void RotV(object sender, RoutedPropertyChangedEventArgs<double?> e)
-        {
-            // Get the euler angles from UI.	
-            var quat = GetEulerAngles().ToQuaternion();
+			if (RotationUpDown3.IsKeyboardFocusWithin || RotationUpDown3.IsMouseOver)
+			{
+				RotationUpDown3.ValueChanged -= RotV;
+				RotationUpDown3.ValueChanged += RotV;
+			}
+		}
+		private void RotV(object sender, RoutedPropertyChangedEventArgs<double?> e)
+		{
+			// Get the euler angles from UI.	
+			var quat = GetEulerAngles().ToQuaternion();
 
 			lock (CharacterDetails.Rotation)
 			{
@@ -271,15 +271,15 @@ namespace ConceptMatrix.Views
 				CharacterDetails.Rotation3.value = (float)quat.Z;
 				CharacterDetails.Rotation4.value = (float)quat.W;
 			}
-            // Remove listeners for value changed.	
-            RotationUpDown.ValueChanged -= RotV;
-            RotationUpDown2.ValueChanged -= RotV;
-            RotationUpDown3.ValueChanged -= RotV;
-        }
-        private void RotV2(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            // Get the euler angles from UI.	
-            var quat = GetEulerAngles().ToQuaternion();
+			// Remove listeners for value changed.	
+			RotationUpDown.ValueChanged -= RotV;
+			RotationUpDown2.ValueChanged -= RotV;
+			RotationUpDown3.ValueChanged -= RotV;
+		}
+		private void RotV2(object sender, RoutedPropertyChangedEventArgs<double> e)
+		{
+			// Get the euler angles from UI.	
+			var quat = GetEulerAngles().ToQuaternion();
 
 			lock (CharacterDetails.Rotation)
 			{
@@ -290,57 +290,57 @@ namespace ConceptMatrix.Views
 			}
 			// Remove listeners for value changed.	
 			RotationSlider.ValueChanged -= RotV2;
-            RotationSlider2.ValueChanged -= RotV2;
-            RotationSlider3.ValueChanged -= RotV2;
-            //  Console.WriteLine(CharacterDetails.RotateY);	
-        }
+			RotationSlider2.ValueChanged -= RotV2;
+			RotationSlider3.ValueChanged -= RotV2;
+			//  Console.WriteLine(CharacterDetails.RotateY);	
+		}
 
 
-        private void RotSliderButton_Checked(object sender, RoutedEventArgs e)
-        {
-            SaveSettings.Default.RotationSliders = true;
-            RotationUpDown.Visibility = Visibility.Hidden;
-            RotationUpDown.IsEnabled = false;
-            RotationUpDown2.Visibility = Visibility.Hidden;
-            RotationUpDown2.IsEnabled = false;
-            RotationUpDown3.Visibility = Visibility.Hidden;
-            RotationUpDown3.IsEnabled = false;
+		private void RotSliderButton_Checked(object sender, RoutedEventArgs e)
+		{
+			SaveSettings.Default.RotationSliders = true;
+			RotationUpDown.Visibility = Visibility.Hidden;
+			RotationUpDown.IsEnabled = false;
+			RotationUpDown2.Visibility = Visibility.Hidden;
+			RotationUpDown2.IsEnabled = false;
+			RotationUpDown3.Visibility = Visibility.Hidden;
+			RotationUpDown3.IsEnabled = false;
 
-            RotationSlider.Visibility = Visibility.Visible;
-            RotationSlider.IsEnabled = true;
-            RotationSlider2.Visibility = Visibility.Visible;
-            RotationSlider2.IsEnabled = true;
-            RotationSlider3.Visibility = Visibility.Visible;
-            RotationSlider3.IsEnabled = true;
-        }
-        private void RotSliderButton_Unchecked(object sender, RoutedEventArgs e)
-        {
-            SaveSettings.Default.RotationSliders = false;
-            RotationUpDown.Visibility = Visibility.Visible;
-            RotationUpDown.IsEnabled = true;
-            RotationUpDown2.Visibility = Visibility.Visible;
-            RotationUpDown2.IsEnabled = true;
-            RotationUpDown3.Visibility = Visibility.Visible;
-            RotationUpDown3.IsEnabled = true;
+			RotationSlider.Visibility = Visibility.Visible;
+			RotationSlider.IsEnabled = true;
+			RotationSlider2.Visibility = Visibility.Visible;
+			RotationSlider2.IsEnabled = true;
+			RotationSlider3.Visibility = Visibility.Visible;
+			RotationSlider3.IsEnabled = true;
+		}
+		private void RotSliderButton_Unchecked(object sender, RoutedEventArgs e)
+		{
+			SaveSettings.Default.RotationSliders = false;
+			RotationUpDown.Visibility = Visibility.Visible;
+			RotationUpDown.IsEnabled = true;
+			RotationUpDown2.Visibility = Visibility.Visible;
+			RotationUpDown2.IsEnabled = true;
+			RotationUpDown3.Visibility = Visibility.Visible;
+			RotationUpDown3.IsEnabled = true;
 
-            RotationSlider.Visibility = Visibility.Hidden;
-            RotationSlider.IsEnabled = false;
-            RotationSlider2.Visibility = Visibility.Hidden;
-            RotationSlider2.IsEnabled = false;
-            RotationSlider3.Visibility = Visibility.Hidden;
-            RotationSlider3.IsEnabled = false;
-        }
+			RotationSlider.Visibility = Visibility.Hidden;
+			RotationSlider.IsEnabled = false;
+			RotationSlider2.Visibility = Visibility.Hidden;
+			RotationSlider2.IsEnabled = false;
+			RotationSlider3.Visibility = Visibility.Hidden;
+			RotationSlider3.IsEnabled = false;
+		}
 
-        private void RotRelButton_Checked(object sender, RoutedEventArgs e)
-        {
-            SaveSettings.Default.AltRotate = true;
-            AltRotate = true;
-        }
-        private void RotRelButton_Unchecked(object sender, RoutedEventArgs e)
-        {
-            SaveSettings.Default.AltRotate = false;
-            AltRotate = false;
-        }
+		private void RotRelButton_Checked(object sender, RoutedEventArgs e)
+		{
+			SaveSettings.Default.AltRotate = true;
+			AltRotate = true;
+		}
+		private void RotRelButton_Unchecked(object sender, RoutedEventArgs e)
+		{
+			SaveSettings.Default.AltRotate = false;
+			AltRotate = false;
+		}
 
 		bool ShiftHeld() => Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift);
 		bool CtrlHeld() => Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl);
@@ -382,15 +382,15 @@ namespace ConceptMatrix.Views
 		}
 
 		private void HighlightCheckbox_Checked(object sender, RoutedEventArgs e)
-        {
-            HighlightCheckbox.IsChecked = true;
-        }
-        private void HighlightCheckbox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            HighlightCheckbox.IsChecked = false;
-        }
+		{
+			HighlightCheckbox.IsChecked = true;
+		}
+		private void HighlightCheckbox_Unchecked(object sender, RoutedEventArgs e)
+		{
+			HighlightCheckbox.IsChecked = false;
+		}
 
-        private void Freeze1234_Click(object sender, RoutedEventArgs e)
+		private void Freeze1234_Click(object sender, RoutedEventArgs e)
 		{
 			numbcheck = !numbcheck;
 			CharacterDetails.RotateFreeze = numbcheck;
@@ -461,11 +461,11 @@ namespace ConceptMatrix.Views
 				oldZ = e.OldValue ?? 0;
 			}
 
-            // Get the angle of the position.
-            var degrees = GetEulerAngles().Y;
+			// Get the angle of the position.
+			var degrees = GetEulerAngles().Y;
 
-            // Get the cos and sin of radians.
-            var ca = Math.Cos(degrees * Deg2Rad);
+			// Get the cos and sin of radians.
+			var ca = Math.Cos(degrees * Deg2Rad);
 			var sa = Math.Sin(degrees * Deg2Rad);
 
 			// Calculate the new vector.
@@ -478,11 +478,11 @@ namespace ConceptMatrix.Views
 
 			MemoryManager.Instance.MemLib.writeMemory(
 				MemoryManager.GetAddressString(
-					CharacterDetailsViewModel.baseAddr, 
-					Settings.Instance.Character.Body.Base, 
+					CharacterDetailsViewModel.baseAddr,
+					Settings.Instance.Character.Body.Base,
 					Settings.Instance.Character.Body.Position.X
 				),
-				"float", 
+				"float",
 				PosX.Value.ToString()
 			);
 
@@ -529,20 +529,20 @@ namespace ConceptMatrix.Views
 			CharacterDetails.Z.freeze = xyzcheck;
 		}
 
-        private void PosRelButton_Checked(object sender, RoutedEventArgs e)
-        {
-            AdvancedMove = true;
+		private void PosRelButton_Checked(object sender, RoutedEventArgs e)
+		{
+			AdvancedMove = true;
 		}
-        private void PosRelButton_Unchecked(object sender, RoutedEventArgs e)
-        {
-            AdvancedMove = false;
+		private void PosRelButton_Unchecked(object sender, RoutedEventArgs e)
+		{
+			AdvancedMove = false;
 		}
 
-        #endregion
+		#endregion
 
-        #region Tail
+		#region Tail
 
-        private void TailSz(object sender, RoutedPropertyChangedEventArgs<double?> e)
+		private void TailSz(object sender, RoutedPropertyChangedEventArgs<double?> e)
 		{
 			if (TailSize.Value.HasValue)
 				MemoryManager.Instance.MemLib.writeMemory(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Body.Base, Settings.Instance.Character.Body.TailSize), "float", TailSize.Value.ToString());
@@ -597,11 +597,11 @@ namespace ConceptMatrix.Views
 			Transparency.ValueChanged -= Transps;
 		}
 
-        #endregion
+		#endregion
 
-        #region Emote
+		#region Emote
 
-        private void EmoteSearch_Click(object sender, RoutedEventArgs e)
+		private void EmoteSearch_Click(object sender, RoutedEventArgs e)
 		{
 			EmoteFlyouts.IsOpen = !EmoteFlyouts.IsOpen;
 		}
@@ -626,11 +626,11 @@ namespace ConceptMatrix.Views
 			EmoteBox.ValueChanged -= Emote_Changed;
 		}
 
-        #endregion
+		#endregion
 
-        #region Camera
+		#region Camera
 
-        private void CamX_SourceUpdated(object sender, DataTransferEventArgs e)
+		private void CamX_SourceUpdated(object sender, DataTransferEventArgs e)
 		{
 			if (CamX.IsMouseOver || CamX.IsKeyboardFocusWithin)
 			{
@@ -848,9 +848,9 @@ namespace ConceptMatrix.Views
 				SpecialControl.ClanBox.SelectedIndex = 2;
 			}
 		}
-        private void HairSelectButton_Click_1(object sender, RoutedEventArgs e)
+		private void HairSelectButton_Click_1(object sender, RoutedEventArgs e)
 		{
-            if (SpecialControl.IsOpen)
+			if (SpecialControl.IsOpen)
 			{
 				if (!SpecialControl.HairTab.IsSelected)
 				{
@@ -1061,115 +1061,215 @@ namespace ConceptMatrix.Views
 			try
 			{
 				var rnd = new Random();
-				CharacterDetails.Race.value = (byte)rnd.Next(1, 7);
-				MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Race), CharacterDetails.Race.GetBytes());
-				if (CharacterDetails.Race.value == 1) CharacterDetails.Clan.value = (byte)rnd.Next(1, 3);
-				else if (CharacterDetails.Race.value == 2) CharacterDetails.Clan.value = (byte)rnd.Next(3, 5);
-				else if (CharacterDetails.Race.value == 3) CharacterDetails.Clan.value = (byte)rnd.Next(5, 7);
-				else if (CharacterDetails.Race.value == 4) CharacterDetails.Clan.value = (byte)rnd.Next(7, 9);
-				else if (CharacterDetails.Race.value == 5) CharacterDetails.Clan.value = (byte)rnd.Next(9, 11);
-				else if (CharacterDetails.Race.value == 6) CharacterDetails.Clan.value = (byte)rnd.Next(11, 13);
-				MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Clan), CharacterDetails.Clan.GetBytes());
-				CharacterDetails.Gender.value = (byte)rnd.Next(0, 2);
-				MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Gender), CharacterDetails.Gender.GetBytes());
-				SpecialControl.HairRandomPick(CharacterDetails.Clan.value, CharacterDetails.Gender.value, dataProvider);
-				if (CharacterDetails.Race.value == 1 && CharacterDetails.Clan.value == 1 && CharacterDetails.Gender.value == 0) CharacterDetails.Head.value = (byte)rnd.Next(0, 8);
-				else if (CharacterDetails.Race.value == 1 && CharacterDetails.Clan.value == 1 && CharacterDetails.Gender.value == 1) CharacterDetails.Head.value = (byte)rnd.Next(0, 6);
-				else CharacterDetails.Head.value = (byte)rnd.Next(0, 5);
-				MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Head), CharacterDetails.Head.GetBytes());
-				CharacterDetails.HairTone.value = (byte)rnd.Next(0, 193);
-				MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HairTone), CharacterDetails.HairTone.GetBytes());
-				if (rnd.Next(2) == 1)
+				//Randomize Race
+				if (CharacterDetails.Race.freeze == false)
 				{
-					CharacterDetails.Highlights.value = 128;
-					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Highlights), CharacterDetails.Highlights.GetBytes());
-					CharacterDetails.HighlightTone.value = (byte)rnd.Next(0, 193);
-					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HighlightTone), CharacterDetails.HighlightTone.GetBytes());
+					CharacterDetails.Race.value = (byte)rnd.Next(1, 7);
+					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Race), CharacterDetails.Race.GetBytes());
 				}
-				else
+				//Randomize Clan
+				if (CharacterDetails.Clan.freeze == false)
 				{
-					CharacterDetails.Highlights.value = 0;
-					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Highlights), CharacterDetails.Highlights.GetBytes());
-					CharacterDetails.HighlightTone.value = 0;
-					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HighlightTone), CharacterDetails.HighlightTone.GetBytes());
+					if (CharacterDetails.Race.value == 1) CharacterDetails.Clan.value = (byte)rnd.Next(1, 3);
+					else if (CharacterDetails.Race.value == 2) CharacterDetails.Clan.value = (byte)rnd.Next(3, 5);
+					else if (CharacterDetails.Race.value == 3) CharacterDetails.Clan.value = (byte)rnd.Next(5, 7);
+					else if (CharacterDetails.Race.value == 4) CharacterDetails.Clan.value = (byte)rnd.Next(7, 9);
+					else if (CharacterDetails.Race.value == 5) CharacterDetails.Clan.value = (byte)rnd.Next(9, 11);
+					else if (CharacterDetails.Race.value == 6) CharacterDetails.Clan.value = (byte)rnd.Next(11, 13);
+					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Clan), CharacterDetails.Clan.GetBytes());
 				}
-				CharacterDetails.RHeight.value = (byte)rnd.Next(0, 101);
-				MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.RHeight), CharacterDetails.RHeight.GetBytes());
-				CharacterDetails.RBust.value = (byte)rnd.Next(0, 101);
-				MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.RBust), CharacterDetails.RBust.GetBytes());
-				CharacterDetails.Eye.value = (byte)rnd.Next(0, 6);
-				MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Eye), CharacterDetails.Eye.GetBytes());
-				CharacterDetails.EyeBrowType.value = (byte)rnd.Next(0, 5);
-				MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.EyeBrowType), CharacterDetails.EyeBrowType.GetBytes());
-				if (rnd.Next(100) < 15) //Checks if there should be Odd Eyes.
+				//Randomize Gender
+				if (CharacterDetails.Gender.freeze == false)
 				{
-					CharacterDetails.RightEye.value = (byte)rnd.Next(0, 193);
-					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.RightEye), CharacterDetails.RightEye.GetBytes());
-					CharacterDetails.LeftEye.value = (byte)rnd.Next(0, 193);
-					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.LeftEye), CharacterDetails.LeftEye.GetBytes());
+					CharacterDetails.Gender.value = (byte)rnd.Next(0, 2);
+					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Gender), CharacterDetails.Gender.GetBytes());
 				}
-				else
+				//Randomize Hairstyle
+				if (CharacterDetails.Hair.freeze == false)
 				{
-					CharacterDetails.RightEye.value = (byte)rnd.Next(0, 193);
-					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.RightEye), CharacterDetails.RightEye.GetBytes());
-					CharacterDetails.LeftEye.value = CharacterDetails.RightEye.value;
-					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.LeftEye), CharacterDetails.LeftEye.GetBytes());
+					SpecialControl.HairRandomPick(CharacterDetails.Clan.value, CharacterDetails.Gender.value, dataProvider);
 				}
-				CharacterDetails.Nose.value = (byte)rnd.Next(0, 6);
-				MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Nose), CharacterDetails.Nose.GetBytes());
-				if (rnd.Next(100) < 25) // 25% chance Lip coloring may happen?
+				//Randomize Head/Face
+				if (CharacterDetails.Head.freeze == false)
 				{
-					CharacterDetails.Lips.value = (byte)rnd.Next(128, 134);
-					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Lips), CharacterDetails.Lips.GetBytes());
-					if (rnd.Next(2) == 1) // 50% chance it'll be dark lips?
+					if (CharacterDetails.Race.value == 1 && CharacterDetails.Clan.value == 1 && CharacterDetails.Gender.value == 0) CharacterDetails.Head.value = (byte)rnd.Next(0, 8);
+					else if (CharacterDetails.Race.value == 1 && CharacterDetails.Clan.value == 1 && CharacterDetails.Gender.value == 1) CharacterDetails.Head.value = (byte)rnd.Next(0, 6);
+					else CharacterDetails.Head.value = (byte)rnd.Next(0, 5);
+					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Head), CharacterDetails.Head.GetBytes());
+				}
+				//Randomize Hair color/tone
+				if (CharacterDetails.HairTone.freeze == false)
+				{
+					CharacterDetails.HairTone.value = (byte)rnd.Next(0, 193);
+					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HairTone), CharacterDetails.HairTone.GetBytes());
+				}
+				//Randomize Highlights
+				if (CharacterDetails.Highlights.freeze == false)
+				{
+					if (rnd.Next(2) == 1)
 					{
-						CharacterDetails.LipsTone.value = (byte)rnd.Next(0, 96);
-						MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.LipsTone), CharacterDetails.LipsTone.GetBytes());
+						CharacterDetails.Highlights.value = 128;
+						MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Highlights), CharacterDetails.Highlights.GetBytes());
+						CharacterDetails.HighlightTone.value = (byte)rnd.Next(0, 193);
+						MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HighlightTone), CharacterDetails.HighlightTone.GetBytes());
 					}
 					else
 					{
-						CharacterDetails.LipsTone.value = (byte)rnd.Next(128, 224);
-						MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.LipsTone), CharacterDetails.LipsTone.GetBytes());
+						CharacterDetails.Highlights.value = 0;
+						MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Highlights), CharacterDetails.Highlights.GetBytes());
+						CharacterDetails.HighlightTone.value = 0;
+						MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.HighlightTone), CharacterDetails.HighlightTone.GetBytes());
 					}
 				}
-				else
+				//Randomize Height
+				if (CharacterDetails.RHeight.freeze == false)
+				{
+					CharacterDetails.RHeight.value = (byte)rnd.Next(0, 101);
+					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.RHeight), CharacterDetails.RHeight.GetBytes());
+				}
+				//Randomize Bust
+				if (CharacterDetails.RBust.freeze == false)
+				{
+					CharacterDetails.RBust.value = (byte)rnd.Next(0, 101);
+					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.RBust), CharacterDetails.RBust.GetBytes());
+				}
+				//Randomize Eye shape
+				if (CharacterDetails.Eye.freeze == false)
+				{
+					CharacterDetails.Eye.value = (byte)rnd.Next(0, 6);
+					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Eye), CharacterDetails.Eye.GetBytes());
+				}
+				//Randomize Eyebrow shape
+				if (CharacterDetails.EyeBrowType.freeze == false)
+				{
+					CharacterDetails.EyeBrowType.value = (byte)rnd.Next(0, 5);
+					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.EyeBrowType), CharacterDetails.EyeBrowType.GetBytes());
+				}
+				//Randomize right eye
+				if (CharacterDetails.RightEye.freeze == false)
+				{
+					CharacterDetails.RightEye.value = (byte)rnd.Next(0, 193);
+					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.RightEye), CharacterDetails.RightEye.GetBytes());
+				}
+				//Randomize left eye (odd eye)
+				if (CharacterDetails.LeftEye.freeze == false)
+				{
+					if (rnd.Next(100) < 15) //15% chance of odd eyes
+					{
+						CharacterDetails.LeftEye.value = (byte)rnd.Next(0, 193);
+						MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.LeftEye), CharacterDetails.LeftEye.GetBytes());
+					}
+					else
+					{
+						CharacterDetails.LeftEye.value = CharacterDetails.RightEye.value;
+						MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.LeftEye), CharacterDetails.LeftEye.GetBytes());
+					}
+				}
+				//Randomize nose
+				if (CharacterDetails.Nose.freeze == false)
+				{
+					CharacterDetails.Nose.value = (byte)rnd.Next(0, 6);
+					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Nose), CharacterDetails.Nose.GetBytes());
+				}
+
+				//Randomize lip shape (more annoying than the rest because lipstick'd lips are "different" lips than the plain lips)
+				//Randomize mouth/Lips before considering lipstick
+				if (CharacterDetails.Lips.freeze == false)
 				{
 					CharacterDetails.Lips.value = (byte)rnd.Next(0, 6);
 					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Lips), CharacterDetails.Lips.GetBytes());
-					CharacterDetails.LipsTone.value = 0;
-					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.LipsTone), CharacterDetails.LipsTone.GetBytes());
 				}
-				CharacterDetails.Jaw.value = (byte)rnd.Next(0, 6);
-				MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Jaw), CharacterDetails.Jaw.GetBytes());
-				if (rnd.Next(100) < 25) //25% having facial feature?
+				//Now try randomizing lip color
+				if (CharacterDetails.LipsTone.freeze == false)
 				{
-					CharacterDetails.FacialFeatures.value = (byte)rnd.Next(0, 256);
-					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.FacialFeatures), CharacterDetails.FacialFeatures.GetBytes());
-					if (CharacterDetails.Race.value == 6)
-					{
-						CharacterDetails.LimbalEyes.value = (byte)rnd.Next(0, 192);
-						MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.LimbalEyes), CharacterDetails.LimbalEyes.GetBytes());
+					if (rnd.Next(100) < 25)
+					{// 25% chance Lip coloring may happen?
+					 //Since we're randomizing lip color, need to make sure 
+					 //that Lips/mouth value is in the lipstick range of 128-134 as opposed to non-lipstick range 0-6
+						if ((int)CharacterDetails.Lips.value < 128)
+						{
+							CharacterDetails.Lips.value = (byte)((int)CharacterDetails.Lips.value + 128);
+						}
+						if (rnd.Next(2) == 1) // 50% chance it'll be dark lips?
+						{
+							CharacterDetails.LipsTone.value = (byte)rnd.Next(0, 96);
+							MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.LipsTone), CharacterDetails.LipsTone.GetBytes());
+						}
+						else
+						{
+							CharacterDetails.LipsTone.value = (byte)rnd.Next(128, 224);
+							MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.LipsTone), CharacterDetails.LipsTone.GetBytes());
+						}
+					}
+					else
+					{//Randomized lip color will be "no lipstick"
+					 //If lips/mouth shape is frozen and prior to the randomization it had lip color,
+					 //then its value is in range (128-134).
+					 //In this scenario of no lipstick being the new choice, the mouth shape needs to be returned
+					 //to the no-lipstick range of (0-6)
+						if ((int)CharacterDetails.Lips.value >= 128)
+						{
+							CharacterDetails.Lips.value = (byte)((int)CharacterDetails.Lips.value - 128);
+						}
+						CharacterDetails.LipsTone.value = 0;
+						MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.LipsTone), CharacterDetails.LipsTone.GetBytes());
 					}
 				}
-				else
+				//Randomize Jaw shape 
+				if (CharacterDetails.Jaw.freeze == false)
 				{
-					CharacterDetails.FacialFeatures.value = 0;
-					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.FacialFeatures), CharacterDetails.FacialFeatures.GetBytes());
-					CharacterDetails.LimbalEyes.value = 0;
-					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.LimbalEyes), CharacterDetails.LimbalEyes.GetBytes());
+					CharacterDetails.Jaw.value = (byte)rnd.Next(0, 6);
+					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Jaw), CharacterDetails.Jaw.GetBytes());
 				}
-				if (rnd.Next(100) < 25)
+				//Randomize Facial Features (includes tattoos/limbal eye glow depending on race)
+				if (CharacterDetails.FacialFeatures.freeze == false)
 				{
-					if (rnd.Next(2) == 1) //50% Chance of being reversed
-					{
-						CharacterDetails.FacePaint.value = (byte)rnd.Next(128, 157);
-						MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.FacePaint), CharacterDetails.FacePaint.GetBytes());
+					if (rnd.Next(100) < 25)
+					{ //25% having facial feature?
+						CharacterDetails.FacialFeatures.value = (byte)rnd.Next(0, 256);
+						MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.FacialFeatures), CharacterDetails.FacialFeatures.GetBytes());
 					}
 					else
 					{
-						CharacterDetails.FacePaint.value = (byte)rnd.Next(0, 29);
+						CharacterDetails.FacialFeatures.value = 0;
+						MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.FacialFeatures), CharacterDetails.FacialFeatures.GetBytes());
+					}
+				}
+				//Randomize Au ra LimbalEyes color OR tattoo color (same variable used between)
+				//It's ok to have a color even if the facial feature doesn't specify a tattoo/limbalEyes
+				if (CharacterDetails.LimbalEyes.freeze == false)
+				{
+					CharacterDetails.LimbalEyes.value = (byte)rnd.Next(0, 192);
+					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.LimbalEyes), CharacterDetails.LimbalEyes.GetBytes());
+				}
+
+				//Randomize Facepaint Type
+				if (CharacterDetails.FacePaint.freeze == false)
+				{
+					if (rnd.Next(100) < 25)
+					{ //25% of even having facepaint
+						if (rnd.Next(2) == 1)
+						{ //50% Chance of facepaint being reversed/mirrored
+							CharacterDetails.FacePaint.value = (byte)rnd.Next(128, 157);
+							MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.FacePaint), CharacterDetails.FacePaint.GetBytes());
+						}
+						else
+						{
+							CharacterDetails.FacePaint.value = (byte)rnd.Next(0, 29);
+							MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.FacePaint), CharacterDetails.FacePaint.GetBytes());
+						}
+					}
+					else
+					{
+						CharacterDetails.FacePaint.value = 0;
 						MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.FacePaint), CharacterDetails.FacePaint.GetBytes());
 					}
+				}
+
+				//Randomize Facepaint Color
+				//It's ok to have a color even if facepaint=0
+				if (CharacterDetails.FacePaintColor.freeze == false)
+				{
 					if (rnd.Next(2) == 1) // 50% chance it'll be dark Paint?
 					{
 						CharacterDetails.FacePaintColor.value = (byte)rnd.Next(0, 96);
@@ -1181,21 +1281,28 @@ namespace ConceptMatrix.Views
 						MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.FacePaintColor), CharacterDetails.FacePaintColor.GetBytes());
 					}
 				}
-				else
+
+				//Randomize Tail/ear shape 
+				if (CharacterDetails.TailType.freeze == false)
 				{
-					CharacterDetails.FacePaint.value = 0;
-					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.FacePaint), CharacterDetails.FacePaint.GetBytes());
-					CharacterDetails.FacePaintColor.value = 0;
-					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.FacePaintColor), CharacterDetails.FacePaintColor.GetBytes());
+					if (CharacterDetails.Race.value == 4) CharacterDetails.TailType.value = (byte)rnd.Next(0, 9);
+					//else if elezen/au ra/lalafell
+					else if (CharacterDetails.Race.value == 3 || CharacterDetails.Race.value == 2 || CharacterDetails.Race.value == 6) CharacterDetails.TailType.value = (byte)rnd.Next(0, 4);
+					else CharacterDetails.TailType.value = 0;
+					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.TailType), CharacterDetails.TailType.GetBytes());
 				}
-				if (CharacterDetails.Race.value == 4) CharacterDetails.TailType.value = (byte)rnd.Next(0, 9);
-				else if (CharacterDetails.Race.value == 3 || CharacterDetails.Race.value == 2 || CharacterDetails.Race.value == 6) CharacterDetails.TailType.value = (byte)rnd.Next(0, 4);
-				else CharacterDetails.TailType.value = 0;
-				MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.TailType), CharacterDetails.TailType.GetBytes());
-				CharacterDetails.TailorMuscle.value = (byte)rnd.Next(0, 101);
-				MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.TailorMuscle), CharacterDetails.TailorMuscle.GetBytes());
-				CharacterDetails.Skintone.value = (byte)rnd.Next(0, 192);
-				MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Skintone), CharacterDetails.Skintone.GetBytes());
+				//Randomize Tail length/Muscle definition
+				if (CharacterDetails.TailorMuscle.freeze == false)
+				{
+					CharacterDetails.TailorMuscle.value = (byte)rnd.Next(0, 101);
+					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.TailorMuscle), CharacterDetails.TailorMuscle.GetBytes());
+				}
+				//Randomize Skintone
+				if (CharacterDetails.Skintone.freeze == false)
+				{
+					CharacterDetails.Skintone.value = (byte)rnd.Next(0, 192);
+					MemoryManager.Instance.MemLib.writeBytes(MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, Settings.Instance.Character.Skintone), CharacterDetails.Skintone.GetBytes());
+				}
 			}
 			catch (System.Exception ex)
 			{
@@ -1210,69 +1317,69 @@ namespace ConceptMatrix.Views
 			}
 		}
 
-        private void DataPathBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var m = MemoryManager.Instance.MemLib;
-            var c = Settings.Instance.Character;
+		private void DataPathBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			var m = MemoryManager.Instance.MemLib;
+			var c = Settings.Instance.Character;
 
-            string GAS(params string[] args) => MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, args);
+			string GAS(params string[] args) => MemoryManager.GetAddressString(CharacterDetailsViewModel.baseAddr, args);
 
-            if (DataPathBox.IsKeyboardFocusWithin || DataPathBox.IsMouseOver)
-            {
-                if (DataPathBox.SelectedIndex >= 0)
-                {
-                    CharacterDetails.DataPath.value = short.Parse(((ComboBoxItem)DataPathBox.SelectedItem).Tag.ToString());
-                    m.writeMemory(GAS(c.DataPath), "int", ((ComboBoxItem)DataPathBox.SelectedItem).Tag.ToString());
-                    if (CharacterDetails.Clan.value == 1 || CharacterDetails.Clan.value == 3 || CharacterDetails.Clan.value == 5 || CharacterDetails.Clan.value == 7 || CharacterDetails.Clan.value == 9 || CharacterDetails.Clan.value == 11 || CharacterDetails.Clan.value == 13 || CharacterDetails.Clan.value == 15)
-                    {
-                        if (CharacterDetails.DataPath.value == 301)
-                        {
-                            m.writeMemory(GAS(c.DataHead), "byte", "0x65");
-                        }
-                        else if (CharacterDetails.DataPath.value == 401)
-                        {
-                            m.writeMemory(GAS(c.DataHead), "byte", "0x65");
-                        }
-                        else m.writeMemory(GAS(c.DataHead), "byte", "0x01");
-                    }
-                    else
-                    {
-                        if (CharacterDetails.Clan.value == 2 || CharacterDetails.Clan.value == 4 || CharacterDetails.Clan.value == 6 || CharacterDetails.Clan.value == 8 || CharacterDetails.Clan.value == 10)
-                        {
-                            if (CharacterDetails.DataPath.value == 101)
-                            {
-                                m.writeMemory(GAS(c.DataHead), "byte", "0x01");
-                            }
-                            else if (CharacterDetails.DataPath.value == 201)
-                            {
-                                m.writeMemory(GAS(c.DataHead), "byte", "0x01");
-                            }
-                            else m.writeMemory(GAS(c.DataHead), "byte", "0x65");
-                        }
-                        else
-                        {
-                            if (CharacterDetails.DataPath.value == 101)
-                            {
-                                m.writeMemory(GAS(c.DataHead), "byte", "0x65");
-                            }
-                            else if (CharacterDetails.DataPath.value == 201)
-                            {
-                                m.writeMemory(GAS(c.DataHead), "byte", "0x65");
-                            }
-                            if (CharacterDetails.DataPath.value == 301)
-                            {
-                                m.writeMemory(GAS(c.DataHead), "byte", "0xC9");
-                            }
-                            else if (CharacterDetails.DataPath.value == 401)
-                            {
-                                m.writeMemory(GAS(c.DataHead), "byte", "0xC9");
-                            }
-                            else m.writeMemory(GAS(c.DataHead), "byte", "0x65");
-                        }
-                    }
-                }
-            }
-        }
+			if (DataPathBox.IsKeyboardFocusWithin || DataPathBox.IsMouseOver)
+			{
+				if (DataPathBox.SelectedIndex >= 0)
+				{
+					CharacterDetails.DataPath.value = short.Parse(((ComboBoxItem)DataPathBox.SelectedItem).Tag.ToString());
+					m.writeMemory(GAS(c.DataPath), "int", ((ComboBoxItem)DataPathBox.SelectedItem).Tag.ToString());
+					if (CharacterDetails.Clan.value == 1 || CharacterDetails.Clan.value == 3 || CharacterDetails.Clan.value == 5 || CharacterDetails.Clan.value == 7 || CharacterDetails.Clan.value == 9 || CharacterDetails.Clan.value == 11 || CharacterDetails.Clan.value == 13 || CharacterDetails.Clan.value == 15)
+					{
+						if (CharacterDetails.DataPath.value == 301)
+						{
+							m.writeMemory(GAS(c.DataHead), "byte", "0x65");
+						}
+						else if (CharacterDetails.DataPath.value == 401)
+						{
+							m.writeMemory(GAS(c.DataHead), "byte", "0x65");
+						}
+						else m.writeMemory(GAS(c.DataHead), "byte", "0x01");
+					}
+					else
+					{
+						if (CharacterDetails.Clan.value == 2 || CharacterDetails.Clan.value == 4 || CharacterDetails.Clan.value == 6 || CharacterDetails.Clan.value == 8 || CharacterDetails.Clan.value == 10)
+						{
+							if (CharacterDetails.DataPath.value == 101)
+							{
+								m.writeMemory(GAS(c.DataHead), "byte", "0x01");
+							}
+							else if (CharacterDetails.DataPath.value == 201)
+							{
+								m.writeMemory(GAS(c.DataHead), "byte", "0x01");
+							}
+							else m.writeMemory(GAS(c.DataHead), "byte", "0x65");
+						}
+						else
+						{
+							if (CharacterDetails.DataPath.value == 101)
+							{
+								m.writeMemory(GAS(c.DataHead), "byte", "0x65");
+							}
+							else if (CharacterDetails.DataPath.value == 201)
+							{
+								m.writeMemory(GAS(c.DataHead), "byte", "0x65");
+							}
+							if (CharacterDetails.DataPath.value == 301)
+							{
+								m.writeMemory(GAS(c.DataHead), "byte", "0xC9");
+							}
+							else if (CharacterDetails.DataPath.value == 401)
+							{
+								m.writeMemory(GAS(c.DataHead), "byte", "0xC9");
+							}
+							else m.writeMemory(GAS(c.DataHead), "byte", "0x65");
+						}
+					}
+				}
+			}
+		}
 
 		double GetCameraAngleXAsDegrees()
 		{
@@ -1385,9 +1492,9 @@ namespace ConceptMatrix.Views
 
 						var rotated_point = transform.Transform(new Point3D(CharacterDetails.X.value, CharacterDetails.Y.value, CharacterDetails.Z.value));
 
-						CharacterDetails.X.value = (float) rotated_point.X;
-						CharacterDetails.Y.value = (float) rotated_point.Y;
-						CharacterDetails.Z.value = (float) rotated_point.Z;
+						CharacterDetails.X.value = (float)rotated_point.X;
+						CharacterDetails.Y.value = (float)rotated_point.Y;
+						CharacterDetails.Z.value = (float)rotated_point.Z;
 					}
 
 					lock (CharacterDetails.Rotation)
@@ -1512,16 +1619,6 @@ namespace ConceptMatrix.Views
 					CharacterDetails.CamViewZ.value = settings.OffsetZ;
 				}
 			}
-		}
-
-		private void EnableAnim_Checked(object sender, RoutedEventArgs e)
-		{
-			MemoryManager.Instance.MemLib.writeBytes(MemoryManager.Instance.EmoteHack, new byte[] { 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 });
-		}
-
-		private void EnableAnim_Unchecked(object sender, RoutedEventArgs e)
-		{
-			MemoryManager.Instance.MemLib.writeBytes(MemoryManager.Instance.EmoteHack, new byte[] { 0x66, 0x89, 0x8B, 0xD0, 0x00, 0x00, 0x00 });
 		}
 	}
 }
