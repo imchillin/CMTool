@@ -86,7 +86,7 @@ namespace ConceptMatrix.ViewModel
 
             // Getting static addresses from assembly.
             MemoryManager.Instance.BaseAddress = GSAFS("88 91 ?? ?? ?? ?? 48 8D 3D ?? ?? ?? ??", 9, -8);
-            MemoryManager.Instance.CameraAddress = GSAFS("4F 8B B4 C6 ?? ?? ?? ??", 4, 0, true);
+            MemoryManager.Instance.CameraAddress = GSAFS("48 8D 35 ?? ?? ?? ?? 48 8B 09", 4, 0, true);
             MemoryManager.Instance.TerritoryAddress = GSAFS("8B 1D ?? ?? ?? ?? 0F 45 D8 39 1D", 2);
             MemoryManager.Instance.TimeAddress = GSAFS("48 8B 15 ?? ?? ?? ?? 4C 8B 82 18 16 00 00", 3);
 
