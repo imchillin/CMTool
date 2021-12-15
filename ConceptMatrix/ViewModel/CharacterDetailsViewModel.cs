@@ -75,7 +75,8 @@ namespace ConceptMatrix.ViewModel
 			{
                 var addr = m.AoBScan(start, end, signature).FirstOrDefault();
                 if (addr == 0)
-                    throw new Exception("Invalid address found!");
+                    return "0";
+                    //throw new Exception("Invalid address found!");
 
                 var a = GetStaticAddressFromSig(m, addr, skip, baseOffset);
                 return (a + adjust).ToString("X");
