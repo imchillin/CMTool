@@ -1,12 +1,12 @@
 {
-  "Version": "5.5.8.0",
+  "Version": "6.0.0.0",
   "Character": {
     "Name": "30",
     "ActorID": "74",
     "FCTag": "18B2",
     "Title": "1960",
     "JobIco": "1E0",
-    "Voices": "1DC",
+    "Voices": "19BE",
     "Body": {
       "Base": "F0",
       "Position": {
@@ -42,7 +42,7 @@
     "Music2": "C0,114",
     "NameHeight": "164",
     "RenderToggle": "104",
-    "Transparency": "182C",
+    "Transparency": "18B8",
     "EntityType": "8C",
     "EntitySub": "8D",
     "ModelType": "1B4",
