@@ -82,7 +82,7 @@ namespace ConceptMatrix.ViewModel
       MemoryManager.Instance.BaseAddress = GSAFS("88 91 ?? ?? ?? ?? 48 8D 3D ?? ?? ?? ??", 9, -8);
       MemoryManager.Instance.CameraAddress = GSAFS("48 8D 35 ?? ?? ?? ?? 48 8B 09", 3, 0);
       MemoryManager.Instance.TerritoryAddress = GSAFS("8B 1D ?? ?? ?? ?? 0F 45 D8 39 1D", 2);
-      MemoryManager.Instance.TimeAddress = GSAFS("48 8B 15 ?? ?? ?? ?? 4C 8B 82 18 16 00 00", 3);
+      MemoryManager.Instance.TimeAddress = GSAFS("48 8B 15 ?? ?? ?? ?? 4C 8B 82 ?? ?? ?? ?? 4C 03 82 ?? ?? ?? ?? 44 0F B6 ?? ?? ?? ?? ?? 4D 8B C8", 3);
 
       MemoryManager.Instance.TargetAddress = GSAFS("48 8B 05 ?? ?? ?? ?? 48 8D 0D ?? ?? ?? ?? FF 50 ?? 48 85 DB", 3, 0x100);
       MemoryManager.Instance.GposeAddress = GSAFS("48 8B 05 ?? ?? ?? ?? 48 8D 0D ?? ?? ?? ?? FF 50 18 48 85 DB", 3, 0xC0);
@@ -113,7 +113,7 @@ namespace ConceptMatrix.ViewModel
       MemoryManager.Instance.CharacterRenderAddress2 = (render - 0xA).ToString("X");
 
       // Cheap hook. (temp?)
-      MemoryManager.Instance.TimeStopAsm = m.AoBScan(start, end, "48 89 ?? 08 16 00 00 48 69").FirstOrDefault();
+      MemoryManager.Instance.TimeStopAsm = m.AoBScan(start, end, "48 89 87 ?? ?? ?? ?? 48 69 C0 ?? ?? ?? ?? 48 2B C8 F3 48 0F 2A C1").FirstOrDefault();
       MemoryManager.Instance.TimeAsm = m.readBytes(MemoryManager.Instance.TimeStopAsm.ToString("X"), 7);
 
       // Cheap ass emote hack.
@@ -348,9 +348,9 @@ namespace ConceptMatrix.ViewModel
                 PoseMatrixView.PosingMatrix.LoadCMP.IsEnabled = false;
                 PoseMatrixView.PosingMatrix.AdvLoadCMP.IsEnabled = false;
 
-                              // MainViewModel.characterView.EnableAnim.IsChecked = false;
+                // MainViewModel.characterView.EnableAnim.IsChecked = false;
 
-                              MainViewModel.posingView.PoseMatrixSetting.IsEnabled = false;
+                MainViewModel.posingView.PoseMatrixSetting.IsEnabled = false;
                 MainViewModel.posingView.EditModeButton.IsChecked = false;
                 PosingOldView.PosingMatrix.PoseMatrixSetting.IsEnabled = false;
                 PosingOldView.PosingMatrix.EditModeButton.IsChecked = false;
@@ -483,9 +483,9 @@ namespace ConceptMatrix.ViewModel
                 PoseMatrixView.PosingMatrix.LoadCMP.IsEnabled = true;
                 PoseMatrixView.PosingMatrix.AdvLoadCMP.IsEnabled = true;
 
-                          // MainViewModel.characterView.EnableAnim.IsChecked = false;
+                // MainViewModel.characterView.EnableAnim.IsChecked = false;
 
-                          MainViewModel.posingView.PoseMatrixSetting.IsEnabled = true;
+                MainViewModel.posingView.PoseMatrixSetting.IsEnabled = true;
                 PosingOldView.PosingMatrix.PoseMatrixSetting.IsEnabled = true;
                 MainViewModel.posingView.LoadCMP.IsEnabled = true;
                 MainViewModel.posingView.AdvLoadCMP.IsEnabled = true;
