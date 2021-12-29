@@ -844,6 +844,15 @@ namespace ConceptMatrix.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to RPR.
+        /// </summary>
+        public static string RPR {
+            get {
+                return ResourceManager.GetString("RPR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SAM.
         /// </summary>
         public static string SAM {
@@ -876,6 +885,15 @@ namespace ConceptMatrix.Resx {
         public static string SelectType {
             get {
                 return ResourceManager.GetString("SelectType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SGE.
+        /// </summary>
+        public static string SGE {
+            get {
+                return ResourceManager.GetString("SGE", resourceCulture);
             }
         }
         
