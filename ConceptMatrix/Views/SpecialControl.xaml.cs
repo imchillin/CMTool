@@ -365,10 +365,10 @@ namespace ConceptMatrix.Views
                     return isMale ? 1200 : 1300;
                 case 13: // The Lost/Helions
                 case 14: // The Lost/Helions
-                    return 1400;
+                    return isMale ? 1400 : 1500;
                 case 15: // Rava
                 case 16: // Veena
-                    return 1500;
+                    return isMale ? 1600 : 1700;
             }
 
             throw new NotImplementedException();
@@ -378,37 +378,37 @@ namespace ConceptMatrix.Views
             switch (tribeKey)
             {
                 case 1: // Midlander
-                    return isMale ? 1600 : 1650;
-                case 2: // Highlander
-                    return isMale ? 1700 : 1750;
-                case 3: // Wildwood
-                    return isMale ? 1800 : 1850;
-                case 4: // Duskwight
-                    return isMale ? 1900 : 1950;
-                case 5: // Plainsfolks
                     return isMale ? 2000 : 2050;
-                case 6: // Dunesfolk
+                case 2: // Highlander
                     return isMale ? 2100 : 2150;
-                case 7: // Seeker of the Sun
+                case 3: // Wildwood
                     return isMale ? 2200 : 2250;
-                case 8: // Keeper of the Moon
+                case 4: // Duskwight
                     return isMale ? 2300 : 2350;
-                case 9: // Sea Wolf
+                case 5: // Plainsfolks
                     return isMale ? 2400 : 2450;
-                case 10: // Hellsguard
+                case 6: // Dunesfolk
                     return isMale ? 2500 : 2550;
-                case 11: // Raen
+                case 7: // Seeker of the Sun
                     return isMale ? 2600 : 2650;
-                case 12: // Xaela
+                case 8: // Keeper of the Moon
                     return isMale ? 2700 : 2750;
+                case 9: // Sea Wolf
+                    return isMale ? 2800 : 2850;
+                case 10: // Hellsguard
+                    return isMale ? 2900 : 2950;
+                case 11: // Raen
+                    return isMale ? 3000 : 3050;
+                case 12: // Xaela
+                    return isMale ? 3100 : 3150;
                 case 13: // Helions
-                    return 2800;
+                    return isMale ? 3200 : 3250;
                 case 14: // The Lost
-                    return 2850;
+                    return isMale ? 3300 : 3350;
                 case 15: // Rava
-                    return 2900;
+                    return isMale ? 3400 : 3450;
                 case 16: // Veena
-                    return 2950;
+                    return isMale ? 3500 : 3550;
             }
 
             throw new NotImplementedException();
