@@ -1,12 +1,12 @@
 {
-  "Version": "6.1.1.0",
+  "Version": "6.1.1.1",
   "Character": {
     "Name": "30",
     "ActorID": "74",
-    "FCTag": "18B2",
-    "Title": "1960",
+    "FCTag": "1A30",
+    "Title": "1A5C",
     "JobIco": "1E0",
-    "Voices": "19BE",
+    "Voices": "1ABA",
 
     // Model
     "Body": {
